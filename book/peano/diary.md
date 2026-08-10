@@ -4280,3 +4280,61 @@ result root exists. The broad A2 optimizer/Pareto task remains open, and every
 minimality, best-known, vector-audit, review, publication, publication-union,
 freeze, A2, proof/admission authority, training, retrieval, and evaluation
 eligibility flag remains false.
+
+## 2026-08-10 — The bounded pilot answered exactly its frozen question
+
+The infrastructure boundary was followed by one real submission, WMI job
+`219765`, from clean commit `0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d`,
+tree `9051b43aa3f7f75d37ce8d410b9c7a81ba472d94`, and snapshot
+`707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824`.
+Both producer seeds emitted the same 848,463 bytes. A separately loaded
+seed-2 verifier accepted all nine artifacts from the empty context and
+recomputed the comparison. The terminal collection records `COMPLETED`, exit
+`0:0`, 60 elapsed seconds, and
+`completed-and-independently-verified`.
+
+The result made the depth tradeoff visible. Metrics below are bytes, nodes,
+depth, and Cuts in that order:
+
+| theorem | retained | A2.2 direct | layered |
+| --- | ---: | ---: | ---: |
+| `odd_add_odd` | `14,977 / 302 / 32 / 7` | `13,640 / 274 / 31 / 6` | `12,709 / 269 / 37 / 3` |
+| `finite_bounded_injective_surjective` | `1,913,452 / 42,463 / 89 / 1,266` | `1,870,657 / 41,341 / 89 / 1,235` | `297,637 / 8,355 / 95 / 20` |
+| `beta_product_swap_last_invariant` | `391,540 / 7,439 / 67 / 205` | `386,189 / 7,413 / 67 / 203` | `118,018 / 2,011 / 79 / 9` |
+
+Every fixed-set frontier contains the A2.2 direct rebuild and layered closure.
+The retained predecessor is dominated. The node-first tie-break chooses the
+layered closure for display, but its greater depth keeps the direct rebuild
+nondominated. That is a clean result about nine preregistered artifacts, not a
+minimality or global-best theorem.
+
+We retained the candidate at artifact/document/theorem-record identities
+`3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b` /
+`90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770` /
+`4cfcbe22312ff2b92022189e65d3742bc096ba989dacaa82b2054e84282928e5`,
+and the verification at
+`6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a` /
+`e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc` /
+`18f882717346477304285c9336d7b769ccf95cd1b58c32b65d335f3e8caa4188`.
+Execution and collection roots are `7a597563…` and `52339b92…`. A controlled
+local CPython 3.12 verifier replay reproduced the retained 18,327-byte receipt
+and accepted 9/9 artifacts; it did not recreate the optimizer run.
+
+The retention set has exactly 19 files. We did not keep the 277,025,280-byte
+transfer archive and did not independently rehash it; its snapshot identity is
+only transitively bound by the retained receipts. The `sacct` row is an
+unauthenticated observation and has no `MaxRSS`, so there is no peak-memory or
+memory-ceiling claim. The identical producer stderr logs preserve harmless
+pre-existing Python 3.12 `SyntaxWarning`s; scheduler and verifier stderr are
+empty. The four focused retained-result tests passed in 3.40 seconds; their
+33,374-byte source has SHA-256
+`28b251f9ab75bea0012949390923b039e267d4721c09bd9ff9b6a08de89cc602`.
+
+Most importantly, the candidate and verifier keep every best-known,
+minimality, optimized-vector, dependency-vector-completeness, publication,
+publication-union, review, lineage, freeze, A2, authority, training, retrieval,
+and evaluation flag false. The separate Git receipt proves the clean execution
+boundary while `producer_git_verified` remains false inside the result. No
+library theorem, public graph edge, catalog record, generated page, or deployed
+page changed. The next work is independent readable/optimized-vector audit and
+the verified publication union, not a larger unbounded local rebuild.

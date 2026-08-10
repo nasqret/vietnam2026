@@ -1693,8 +1693,8 @@ and
 `d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9`.
 The focused protocol gate passed 59 tests in 0.31 seconds.
 
-What does **not** exist yet matters just as much: no real local or WMI pilot
-build, result sidecar, layered result certificate, metric vector,
+What did **not** exist at source freeze matters just as much: no real local or
+WMI pilot build, result sidecar, layered result certificate, metric vector,
 nondominated set, representative, Pareto frontier, document root, or theorem-
 record root. Running the no-argument CLI merely reports protocol readiness and
 writes nothing:
@@ -1703,13 +1703,12 @@ writes nothing:
 python3 scripts/build_peano_hydra_library_optimizer_comparison_pilot.py
 ```
 
-A future retained build first needs an external canonical producer-source
-state. It is byte-bound but deliberately carries `git_verified=false`; a
-separate successor receipt must verify the commit, tree, ancestry, and clean
-submission. Until that run and an independent optimized-vector audit succeed,
-“best-known,” vector-audit, publication, A2, authority, review, freeze,
-training, retrieval, and evaluation remain false. The broad optimizer/Pareto
-milestone is intentionally still open.
+A retained build needs an external canonical producer-source state. It is
+byte-bound but deliberately carries `git_verified=false`; a separate receipt
+must verify the commit, tree, ancestry, and clean submission. The execution
+described below preserves this ordering. Its result still does not complete an
+independent optimized-vector audit, so “best-known,” publication, A2,
+authority, review, freeze, training, retrieval, and evaluation remain false.
 
 ### A2.3a external execution infrastructure (no submission/result)
 
@@ -1766,11 +1765,78 @@ The WMI protocol file passed 18 tests in 0.72 seconds. The three focused suites
 passed 52 tests in 8.45 seconds (10 + 24 + 18). The earlier independent threat
 audit reported no blocker before the final route refreeze.
 
-This is runnable infrastructure, not a run. There is still no result sidecar,
-fresh verification/collection receipt, candidate metric vector, frontier,
-representative, or result root. Every best-known, vector-audit, publication,
-publication-union, review, freeze, A2, proof/admission authority, training,
-retrieval, and evaluation eligibility flag remains false.
+This tranche was runnable infrastructure, not yet a run. The successor below
+records the later execution separately so infrastructure tests do not masquerade
+as optimizer observations.
+
+### The fixed A2.3a pilot ran, and its boundary stayed small
+
+WMI job `219765` ran the frozen comparison from clean commit
+`0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d`, tree
+`9051b43aa3f7f75d37ce8d410b9c7a81ba472d94`, and snapshot
+`707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824`.
+The two producer seeds emitted the same 848,463 bytes. The separate seed-2
+verifier accepted all nine proof artifacts from the empty context and rebuilt
+the comparison. Terminal collection records `COMPLETED`, exit `0:0`, 60
+elapsed seconds, and `completed-and-independently-verified`.
+
+Here are the observed vectors, written as
+`artifact bytes / proof nodes / proof depth / Cuts`:
+
+| Theorem | retained replay | A2.2 direct rebuild | layered closure |
+| --- | ---: | ---: | ---: |
+| `odd_add_odd` | `14,977 / 302 / 32 / 7` | `13,640 / 274 / 31 / 6` | `12,709 / 269 / 37 / 3` |
+| `finite_bounded_injective_surjective` | `1,913,452 / 42,463 / 89 / 1,266` | `1,870,657 / 41,341 / 89 / 1,235` | `297,637 / 8,355 / 95 / 20` |
+| `beta_product_swap_last_invariant` | `391,540 / 7,439 / 67 / 205` | `386,189 / 7,413 / 67 / 203` | `118,018 / 2,011 / 79 / 9` |
+
+All three frontiers are exactly
+`[a2.2-direct-cut-rebuild, layered-closure]`. The old retained artifact is
+dominated inside this fixed set. The layered construction has fewer bytes,
+nodes, and Cuts, but it is deeper; therefore the direct rebuild remains on the
+frontier. The preregistered node-first tie-break chooses `layered-closure` as
+the display representative in all three cases. “Representative” here means a
+stable display choice among three named candidates, not “best proof we know.”
+
+The candidate is retained at SHA-256/root/theorem-record root
+`3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b` /
+`90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770` /
+`4cfcbe22312ff2b92022189e65d3742bc096ba989dacaa82b2054e84282928e5`.
+The independent verification is retained at
+`6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a` /
+`e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc` /
+`18f882717346477304285c9336d7b769ccf95cd1b58c32b65d335f3e8caa4188`.
+Execution and collection receipt artifact/root pairs are
+`779a971237f9ac5efe3a86dca5b5c4d74a6da56ab154b91e106f7fd1dac63a34` /
+`7a597563c173cd0cb3d57ff42cd566a8531756e84bf8ba907e7c79ec7295dc0e`
+and
+`25e616fc9225ab59db6a089e8a53ed2d44915a54b42f073bcaaa020fc2ff609a` /
+`52339b926ea8b9650787a3db138185e21144f6cdf83596d224ccc6b23435daf2`.
+A controlled local CPython 3.12 replay of the retained verifier reproduced its
+18,327 bytes and accepted 9/9 artifacts. It did not rerun the optimizer
+locally.
+
+The retention boundary is intentionally literal: 19 files, consisting of the
+candidate, independent verification, and 17 operational source, deposit,
+submission, execution, collection, scheduler, and log files. The original
+277,025,280-byte transfer archive was deleted after collection and was not
+independently rehashed. Its snapshot hash is bound transitively through the
+receipts; that is weaker than retaining and rehashing the archive itself. The
+`sacct` row is an unauthenticated scheduler observation. Its `MaxRSS` field is
+empty, so the run supplies no measured peak memory or memory ceiling.
+Scheduler and verifier stderr are empty; the two producer stderr files retain
+the same harmless pre-existing Python 3.12 `SyntaxWarning`s for `\/`. The
+focused retained-result gate passed four tests in 3.40 seconds; its 33,374-byte
+source SHA-256 is
+`28b251f9ab75bea0012949390923b039e267d4721c09bd9ff9b6a08de89cc602`.
+
+The result documents still say `producer_git_verified=false`; the separate
+clean-Git receipt proves only the operational source boundary. No readable or
+optimized direct dependency vector has yet passed its independent publication
+audit. Every minimality, global-best/`optimized_best_known`, vector-audit and
+completeness, publication and publication-union, review, lineage, freeze, A2,
+proof/admission/publication authority, training, retrieval, and evaluation
+flag therefore stays false. Nothing entered the admitted library, 1,038-edge
+graph, catalog, generated page source, or deployed site.
 
 ## What “matched compute” means
 

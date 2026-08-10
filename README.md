@@ -106,6 +106,28 @@ the theorem replay root is
 It remains schema-labeled candidate/evaluation-ineligible: dependency-view,
 lineage, independent-deposit, and benchmark gates still prevent calling it a
 frozen production `L0`.
+The bounded A2.3a proof-assembly pilot has also completed on WMI job `219765`
+for exactly three roots and three preregistered candidates per root. Two
+producer hash seeds emitted identical 848,463-byte candidate documents and a
+separate kernel-only verifier accepted all nine artifacts. The retained
+candidate has SHA-256/root
+`3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b` /
+`90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770`;
+the verification SHA-256/root is
+`6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a` /
+`e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc`.
+For each root the fixed comparison frontier contains the A2.2 direct rebuild
+and layered closure, and the deterministic node-first display rule selects the
+layered closure. That statement is only about the frozen comparison set: no
+global best, minimality, independently audited or complete dependency vector,
+publication/readiness/union, review, lineage, freeze, A2 completion,
+proof/admission/publication authority, training, retrieval, or evaluation
+eligibility is claimed, and the public library, graph, catalog, and pages are
+unchanged. The retained 19-file evidence excludes the deleted transfer
+archive; its snapshot is only transitively receipt-bound. The `sacct` row is
+unauthenticated and lacks `MaxRSS`, so no memory ceiling is claimed. Producer
+stderr contains only retained pre-existing Python 3.12 `SyntaxWarning`s;
+scheduler and verifier stderr are empty.
 The synchronized vault includes all 384 generated lemma notes. The released
 source-bound corpus retains 13,344 transitions in 1,692
 kernel-checked sessions under fingerprint

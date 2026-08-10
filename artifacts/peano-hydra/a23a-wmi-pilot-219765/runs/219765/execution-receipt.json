@@ -1,0 +1,467 @@
+{
+  "authority_claims": {
+    "a2_complete": false,
+    "dependency_vectors_complete": false,
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "lineage_complete": false,
+    "minimality_claim": false,
+    "optimized_best_known": false,
+    "optimized_vector_independently_audited": false,
+    "proof_authority": false,
+    "publication_authority": false,
+    "publication_ready": false,
+    "publication_union_complete": false,
+    "publication_union_verified": false,
+    "retrieval_eligible": false,
+    "review_complete": false,
+    "theorem_admission_authority": false,
+    "training_eligible": false
+  },
+  "classification": "two-producer-byte-identity-and-independent-verification",
+  "error": null,
+  "evidence": {
+    "candidate": {
+      "bytes": 848463,
+      "path": "candidate-hashseed-0.json",
+      "root_sha256": "90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770",
+      "sha256": "3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b"
+    },
+    "producer_byte_identical": true,
+    "producer_hash_seeds": [
+      0,
+      1
+    ],
+    "verifier": {
+      "bytes": 18327,
+      "hash_seed": 2,
+      "path": "independent-verifier-receipt.json",
+      "root_sha256": "e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc",
+      "sha256": "6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a",
+      "status": "passed"
+    }
+  },
+  "finished_at": "2026-08-10T00:53:22.999206+00:00",
+  "format": "peano-hydra-a23a-wmi-execution-receipt",
+  "job_id": "219765",
+  "processes": [
+    {
+      "argv": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-P",
+        "-s",
+        "-S",
+        "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+        "--producer-source-state",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/inputs/producer-source-state.json",
+        "--output",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/runs/219765/candidate-hashseed-0.json"
+      ],
+      "duration_seconds_millis": 26924,
+      "environment": {
+        "HOME": "/nonexistent/peano-a23a-wmi",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23a-disabled-pycache",
+        "TZ": "UTC"
+      },
+      "finished_at": "2026-08-10T00:52:50.832159+00:00",
+      "hash_seed": 0,
+      "output_limit_reached": false,
+      "returncode": 0,
+      "role": "producer-0",
+      "started_at": "2026-08-10T00:52:23.903467+00:00",
+      "stderr": {
+        "bytes": 1447,
+        "path": "producer-0.stderr.log",
+        "sha256": "6e0581b6b3a3f4b0ccd7bd102bb79825b641d7470ff15e8579e231caab5b51af"
+      },
+      "stdout": {
+        "bytes": 117,
+        "path": "producer-0.stdout.log",
+        "sha256": "6ea76700dc04a8d0e0a83b1d4a53b3afa5186ffe716d14d44d6b92303e6b7acd"
+      },
+      "timed_out": false,
+      "timeout_seconds": 360
+    },
+    {
+      "argv": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-P",
+        "-s",
+        "-S",
+        "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+        "--producer-source-state",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/inputs/producer-source-state.json",
+        "--output",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/runs/219765/candidate-hashseed-1.json"
+      ],
+      "duration_seconds_millis": 26288,
+      "environment": {
+        "HOME": "/nonexistent/peano-a23a-wmi",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "1",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23a-disabled-pycache",
+        "TZ": "UTC"
+      },
+      "finished_at": "2026-08-10T00:53:17.123712+00:00",
+      "hash_seed": 1,
+      "output_limit_reached": false,
+      "returncode": 0,
+      "role": "producer-1",
+      "started_at": "2026-08-10T00:52:50.832239+00:00",
+      "stderr": {
+        "bytes": 1447,
+        "path": "producer-1.stderr.log",
+        "sha256": "6e0581b6b3a3f4b0ccd7bd102bb79825b641d7470ff15e8579e231caab5b51af"
+      },
+      "stdout": {
+        "bytes": 117,
+        "path": "producer-1.stdout.log",
+        "sha256": "6ea76700dc04a8d0e0a83b1d4a53b3afa5186ffe716d14d44d6b92303e6b7acd"
+      },
+      "timed_out": false,
+      "timeout_seconds": 360
+    },
+    {
+      "argv": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-P",
+        "-s",
+        "-S",
+        "scripts/verify_peano_hydra_library_optimizer_comparison_pilot.py",
+        "--candidate",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/runs/219765/candidate-hashseed-0.json",
+        "--producer-source-state",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/inputs/producer-source-state.json",
+        "--output",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/runs/219765/independent-verifier-receipt.json"
+      ],
+      "duration_seconds_millis": 5852,
+      "environment": {
+        "HOME": "/nonexistent/peano-a23a-wmi",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "2",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23a-disabled-pycache",
+        "TZ": "UTC"
+      },
+      "finished_at": "2026-08-10T00:53:22.993028+00:00",
+      "hash_seed": 2,
+      "output_limit_reached": false,
+      "returncode": 0,
+      "role": "independent-verifier",
+      "started_at": "2026-08-10T00:53:17.138462+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "independent-verifier.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 144,
+        "path": "independent-verifier.stdout.log",
+        "sha256": "ea0b95150724f498b785f52ec7cfc870523005f3e80417007796335a07ab78c7"
+      },
+      "timed_out": false,
+      "timeout_seconds": 90
+    }
+  ],
+  "requested_resources": {
+    "cpus_per_task": 1,
+    "memory_mib": 4096,
+    "nodes": 1,
+    "ntasks": 1,
+    "partition": "cpu_idle",
+    "time_limit": "00:15:00",
+    "time_limit_seconds": 900
+  },
+  "root_preimage": {
+    "format": "peano-hydra-a23a-wmi-execution-receipt-root-preimage",
+    "payload": {
+      "authority_claims": {
+        "a2_complete": false,
+        "dependency_vectors_complete": false,
+        "evaluation_eligible": false,
+        "freeze_ready": false,
+        "lineage_complete": false,
+        "minimality_claim": false,
+        "optimized_best_known": false,
+        "optimized_vector_independently_audited": false,
+        "proof_authority": false,
+        "publication_authority": false,
+        "publication_ready": false,
+        "publication_union_complete": false,
+        "publication_union_verified": false,
+        "retrieval_eligible": false,
+        "review_complete": false,
+        "theorem_admission_authority": false,
+        "training_eligible": false
+      },
+      "classification": "two-producer-byte-identity-and-independent-verification",
+      "error": null,
+      "evidence": {
+        "candidate": {
+          "bytes": 848463,
+          "path": "candidate-hashseed-0.json",
+          "root_sha256": "90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770",
+          "sha256": "3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b"
+        },
+        "producer_byte_identical": true,
+        "producer_hash_seeds": [
+          0,
+          1
+        ],
+        "verifier": {
+          "bytes": 18327,
+          "hash_seed": 2,
+          "path": "independent-verifier-receipt.json",
+          "root_sha256": "e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc",
+          "sha256": "6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a",
+          "status": "passed"
+        }
+      },
+      "finished_at": "2026-08-10T00:53:22.999206+00:00",
+      "format": "peano-hydra-a23a-wmi-execution-receipt",
+      "job_id": "219765",
+      "processes": [
+        {
+          "argv": [
+            "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+            "-B",
+            "-P",
+            "-s",
+            "-S",
+            "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+            "--producer-source-state",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/inputs/producer-source-state.json",
+            "--output",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/runs/219765/candidate-hashseed-0.json"
+          ],
+          "duration_seconds_millis": 26924,
+          "environment": {
+            "HOME": "/nonexistent/peano-a23a-wmi",
+            "LANG": "C.UTF-8",
+            "LC_ALL": "C.UTF-8",
+            "PATH": "/usr/bin:/bin",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONHASHSEED": "0",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23a-disabled-pycache",
+            "TZ": "UTC"
+          },
+          "finished_at": "2026-08-10T00:52:50.832159+00:00",
+          "hash_seed": 0,
+          "output_limit_reached": false,
+          "returncode": 0,
+          "role": "producer-0",
+          "started_at": "2026-08-10T00:52:23.903467+00:00",
+          "stderr": {
+            "bytes": 1447,
+            "path": "producer-0.stderr.log",
+            "sha256": "6e0581b6b3a3f4b0ccd7bd102bb79825b641d7470ff15e8579e231caab5b51af"
+          },
+          "stdout": {
+            "bytes": 117,
+            "path": "producer-0.stdout.log",
+            "sha256": "6ea76700dc04a8d0e0a83b1d4a53b3afa5186ffe716d14d44d6b92303e6b7acd"
+          },
+          "timed_out": false,
+          "timeout_seconds": 360
+        },
+        {
+          "argv": [
+            "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+            "-B",
+            "-P",
+            "-s",
+            "-S",
+            "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+            "--producer-source-state",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/inputs/producer-source-state.json",
+            "--output",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/runs/219765/candidate-hashseed-1.json"
+          ],
+          "duration_seconds_millis": 26288,
+          "environment": {
+            "HOME": "/nonexistent/peano-a23a-wmi",
+            "LANG": "C.UTF-8",
+            "LC_ALL": "C.UTF-8",
+            "PATH": "/usr/bin:/bin",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONHASHSEED": "1",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23a-disabled-pycache",
+            "TZ": "UTC"
+          },
+          "finished_at": "2026-08-10T00:53:17.123712+00:00",
+          "hash_seed": 1,
+          "output_limit_reached": false,
+          "returncode": 0,
+          "role": "producer-1",
+          "started_at": "2026-08-10T00:52:50.832239+00:00",
+          "stderr": {
+            "bytes": 1447,
+            "path": "producer-1.stderr.log",
+            "sha256": "6e0581b6b3a3f4b0ccd7bd102bb79825b641d7470ff15e8579e231caab5b51af"
+          },
+          "stdout": {
+            "bytes": 117,
+            "path": "producer-1.stdout.log",
+            "sha256": "6ea76700dc04a8d0e0a83b1d4a53b3afa5186ffe716d14d44d6b92303e6b7acd"
+          },
+          "timed_out": false,
+          "timeout_seconds": 360
+        },
+        {
+          "argv": [
+            "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+            "-B",
+            "-P",
+            "-s",
+            "-S",
+            "scripts/verify_peano_hydra_library_optimizer_comparison_pilot.py",
+            "--candidate",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/runs/219765/candidate-hashseed-0.json",
+            "--producer-source-state",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/inputs/producer-source-state.json",
+            "--output",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23a-pilot/707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824/runs/219765/independent-verifier-receipt.json"
+          ],
+          "duration_seconds_millis": 5852,
+          "environment": {
+            "HOME": "/nonexistent/peano-a23a-wmi",
+            "LANG": "C.UTF-8",
+            "LC_ALL": "C.UTF-8",
+            "PATH": "/usr/bin:/bin",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONHASHSEED": "2",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23a-disabled-pycache",
+            "TZ": "UTC"
+          },
+          "finished_at": "2026-08-10T00:53:22.993028+00:00",
+          "hash_seed": 2,
+          "output_limit_reached": false,
+          "returncode": 0,
+          "role": "independent-verifier",
+          "started_at": "2026-08-10T00:53:17.138462+00:00",
+          "stderr": {
+            "bytes": 0,
+            "path": "independent-verifier.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 144,
+            "path": "independent-verifier.stdout.log",
+            "sha256": "ea0b95150724f498b785f52ec7cfc870523005f3e80417007796335a07ab78c7"
+          },
+          "timed_out": false,
+          "timeout_seconds": 90
+        }
+      ],
+      "requested_resources": {
+        "cpus_per_task": 1,
+        "memory_mib": 4096,
+        "nodes": 1,
+        "ntasks": 1,
+        "partition": "cpu_idle",
+        "time_limit": "00:15:00",
+        "time_limit_seconds": 900
+      },
+      "runtime": {
+        "dont_write_bytecode": true,
+        "executable": "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "implementation": "CPython",
+        "machine": "x86_64",
+        "no_site": true,
+        "pycache_prefix": "/proc/peano-hydra-a23a-disabled-pycache",
+        "python_version": "3.12.12",
+        "safe_path": true
+      },
+      "source": {
+        "git_commit": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+        "git_receipt": {
+          "bytes": 28400,
+          "path": "producer-git-verification-receipt.json",
+          "sha256": "04158535ba4d920190f63e8a4cc48effcc33ccc162d8a7472265862149dc907e"
+        },
+        "git_tree": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+        "infrastructure_manifest": {
+          "bytes": 5618,
+          "path": "wmi-infrastructure-manifest.json",
+          "sha256": "5b4e740afa2af94a154185b9b7e8200f25c683b93f73e5aa92335f33e002d87b"
+        },
+        "provenance": {
+          "git_commit": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+          "git_dirty": false,
+          "sha256": "7862d7916c8b13ce26fe5540c6f901c22e6db55089aa9bfa1c2344d707129301",
+          "sync_timestamp": "2026-08-10T00:51:24Z"
+        },
+        "snapshot_sha256": "707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824",
+        "source_state": {
+          "bytes": 2377,
+          "path": "producer-source-state.json",
+          "sha256": "3b6658ea8fae6c9430714781398232dd91a4d9c5edc756bd734a28cdb1734c82"
+        }
+      },
+      "started_at": "2026-08-10T00:52:23.841350+00:00",
+      "status": "passed",
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "7a597563c173cd0cb3d57ff42cd566a8531756e84bf8ba907e7c79ec7295dc0e",
+  "runtime": {
+    "dont_write_bytecode": true,
+    "executable": "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "no_site": true,
+    "pycache_prefix": "/proc/peano-hydra-a23a-disabled-pycache",
+    "python_version": "3.12.12",
+    "safe_path": true
+  },
+  "source": {
+    "git_commit": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+    "git_receipt": {
+      "bytes": 28400,
+      "path": "producer-git-verification-receipt.json",
+      "sha256": "04158535ba4d920190f63e8a4cc48effcc33ccc162d8a7472265862149dc907e"
+    },
+    "git_tree": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+    "infrastructure_manifest": {
+      "bytes": 5618,
+      "path": "wmi-infrastructure-manifest.json",
+      "sha256": "5b4e740afa2af94a154185b9b7e8200f25c683b93f73e5aa92335f33e002d87b"
+    },
+    "provenance": {
+      "git_commit": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+      "git_dirty": false,
+      "sha256": "7862d7916c8b13ce26fe5540c6f901c22e6db55089aa9bfa1c2344d707129301",
+      "sync_timestamp": "2026-08-10T00:51:24Z"
+    },
+    "snapshot_sha256": "707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824",
+    "source_state": {
+      "bytes": 2377,
+      "path": "producer-source-state.json",
+      "sha256": "3b6658ea8fae6c9430714781398232dd91a4d9c5edc756bd734a28cdb1734c82"
+    }
+  },
+  "started_at": "2026-08-10T00:52:23.841350+00:00",
+  "status": "passed",
+  "v": 1
+}

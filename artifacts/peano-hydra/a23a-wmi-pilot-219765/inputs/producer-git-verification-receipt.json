@@ -1,0 +1,813 @@
+{
+  "authority_claims": {
+    "a2_complete": false,
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "minimality_claim": false,
+    "optimized_best_known": false,
+    "optimized_vector_independently_audited": false,
+    "proof_authority": false,
+    "publication_ready": false,
+    "publication_union_complete": false,
+    "training_eligible": false
+  },
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 35,
+      "stdout_sha256": "b6d9afe6e5be5d40f0e18a09a0708100902e19a4d0e11fb5d3930d59785cb1aa"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 54,
+      "stdout_sha256": "6a7cf70a0ea3c9ee930bf13713938a64e73b555aad79e272f86a4a0bce1547fd"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--verify",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 41,
+      "stdout_sha256": "7954906f59001ddc5dd8931f80f18eaf44ee6cb41a565a90ef44d624e8b8d044"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--verify",
+        "HEAD^{tree}"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 41,
+      "stdout_sha256": "871d3423d4d6557f8772e4ff847c40ae276ac789652d36fb633262f00f693eb7"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--quiet",
+        "--no-ext-diff",
+        "--"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--quiet",
+        "--no-ext-diff",
+        "--"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "training/peano_hydra/library-optimizer-comparison-pilot-schema-v1.json"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 121,
+      "stdout_sha256": "fdf68088e1a6b72f2f4c89400de38c815d3946c65108a19145f511f5a6bf631c"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "--no-ext-diff",
+        "--no-textconv",
+        "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d:training/peano_hydra/library-optimizer-comparison-pilot-schema-v1.json"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 26493,
+      "stdout_sha256": "006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "training/peano_hydra/library_optimizer_comparison_pilot.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 109,
+      "stdout_sha256": "73ee3763af38a4af7c64ade6fff731603b0694c105586d516e9b45d236963543"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "--no-ext-diff",
+        "--no-textconv",
+        "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d:training/peano_hydra/library_optimizer_comparison_pilot.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 81389,
+      "stdout_sha256": "7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 114,
+      "stdout_sha256": "ea9345e851c9e0d2badaf08ded4400f555e666b7f56fbe442c4e5179cdda9025"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "--no-ext-diff",
+        "--no-textconv",
+        "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d:scripts/build_peano_hydra_library_optimizer_comparison_pilot.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 9092,
+      "stdout_sha256": "3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_pilot.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 124,
+      "stdout_sha256": "c2ca00ecfcd9a6ac0f02f16bbb866ec9df587cb93f42c16977f29f0254242109"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "--no-ext-diff",
+        "--no-textconv",
+        "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d:peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_pilot.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 46611,
+      "stdout_sha256": "d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "scripts/build_peano_hydra_a23a_producer_source_state.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 106,
+      "stdout_sha256": "8df789769e225df3135e718cca991e7a05947ad9bd14bf1afbf67ce5b42ece73"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "--no-ext-diff",
+        "--no-textconv",
+        "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d:scripts/build_peano_hydra_a23a_producer_source_state.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 38567,
+      "stdout_sha256": "4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--verify",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 41,
+      "stdout_sha256": "7954906f59001ddc5dd8931f80f18eaf44ee6cb41a565a90ef44d624e8b8d044"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--verify",
+        "HEAD^{tree}"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 41,
+      "stdout_sha256": "871d3423d4d6557f8772e4ff847c40ae276ac789652d36fb633262f00f693eb7"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--quiet",
+        "--no-ext-diff",
+        "--"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--quiet",
+        "--no-ext-diff",
+        "--"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "commit_sha1": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+  "format": "peano-hydra-a23a-producer-git-verification-receipt",
+  "generator": {
+    "blob_oid_sha1": "8cb19ce3d3a6f7eee895e23547f77452e10f3e96",
+    "bytes": 38567,
+    "committed_sha256": "4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26",
+    "live_sha256": "4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26",
+    "mode": "100644",
+    "path": "scripts/build_peano_hydra_a23a_producer_source_state.py",
+    "verified": true
+  },
+  "git_tool": {
+    "bytes": 118864,
+    "path": "/usr/bin/git",
+    "sha256": "7588ceab299393618d6f8861502ac0588d1594025f301d9a61a898215b5571d3",
+    "version": "git version 2.39.5 (Apple Git-154)"
+  },
+  "root_preimage": {
+    "format": "peano-hydra-a23a-producer-git-verification-receipt-root-preimage",
+    "payload": {
+      "authority_claims": {
+        "a2_complete": false,
+        "evaluation_eligible": false,
+        "freeze_ready": false,
+        "minimality_claim": false,
+        "optimized_best_known": false,
+        "optimized_vector_independently_audited": false,
+        "proof_authority": false,
+        "publication_ready": false,
+        "publication_union_complete": false,
+        "training_eligible": false
+      },
+      "commands": [
+        {
+          "argv": [
+            "git",
+            "--version"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 35,
+          "stdout_sha256": "b6d9afe6e5be5d40f0e18a09a0708100902e19a4d0e11fb5d3930d59785cb1aa"
+        },
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 54,
+          "stdout_sha256": "6a7cf70a0ea3c9ee930bf13713938a64e73b555aad79e272f86a4a0bce1547fd"
+        },
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "--verify",
+            "HEAD"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 41,
+          "stdout_sha256": "7954906f59001ddc5dd8931f80f18eaf44ee6cb41a565a90ef44d624e8b8d044"
+        },
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "--verify",
+            "HEAD^{tree}"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 41,
+          "stdout_sha256": "871d3423d4d6557f8772e4ff847c40ae276ac789652d36fb633262f00f693eb7"
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--porcelain=v1",
+            "-z",
+            "--untracked-files=all"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--quiet",
+            "--no-ext-diff",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--cached",
+            "--quiet",
+            "--no-ext-diff",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-files",
+            "--stage",
+            "-z",
+            "--",
+            "training/peano_hydra/library-optimizer-comparison-pilot-schema-v1.json"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 121,
+          "stdout_sha256": "fdf68088e1a6b72f2f4c89400de38c815d3946c65108a19145f511f5a6bf631c"
+        },
+        {
+          "argv": [
+            "git",
+            "show",
+            "--no-ext-diff",
+            "--no-textconv",
+            "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d:training/peano_hydra/library-optimizer-comparison-pilot-schema-v1.json"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 26493,
+          "stdout_sha256": "006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-files",
+            "--stage",
+            "-z",
+            "--",
+            "training/peano_hydra/library_optimizer_comparison_pilot.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 109,
+          "stdout_sha256": "73ee3763af38a4af7c64ade6fff731603b0694c105586d516e9b45d236963543"
+        },
+        {
+          "argv": [
+            "git",
+            "show",
+            "--no-ext-diff",
+            "--no-textconv",
+            "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d:training/peano_hydra/library_optimizer_comparison_pilot.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 81389,
+          "stdout_sha256": "7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-files",
+            "--stage",
+            "-z",
+            "--",
+            "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 114,
+          "stdout_sha256": "ea9345e851c9e0d2badaf08ded4400f555e666b7f56fbe442c4e5179cdda9025"
+        },
+        {
+          "argv": [
+            "git",
+            "show",
+            "--no-ext-diff",
+            "--no-textconv",
+            "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d:scripts/build_peano_hydra_library_optimizer_comparison_pilot.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 9092,
+          "stdout_sha256": "3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-files",
+            "--stage",
+            "-z",
+            "--",
+            "peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_pilot.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 124,
+          "stdout_sha256": "c2ca00ecfcd9a6ac0f02f16bbb866ec9df587cb93f42c16977f29f0254242109"
+        },
+        {
+          "argv": [
+            "git",
+            "show",
+            "--no-ext-diff",
+            "--no-textconv",
+            "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d:peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_pilot.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 46611,
+          "stdout_sha256": "d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-files",
+            "--stage",
+            "-z",
+            "--",
+            "scripts/build_peano_hydra_a23a_producer_source_state.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 106,
+          "stdout_sha256": "8df789769e225df3135e718cca991e7a05947ad9bd14bf1afbf67ce5b42ece73"
+        },
+        {
+          "argv": [
+            "git",
+            "show",
+            "--no-ext-diff",
+            "--no-textconv",
+            "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d:scripts/build_peano_hydra_a23a_producer_source_state.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 38567,
+          "stdout_sha256": "4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26"
+        },
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "--verify",
+            "HEAD"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 41,
+          "stdout_sha256": "7954906f59001ddc5dd8931f80f18eaf44ee6cb41a565a90ef44d624e8b8d044"
+        },
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "--verify",
+            "HEAD^{tree}"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 41,
+          "stdout_sha256": "871d3423d4d6557f8772e4ff847c40ae276ac789652d36fb633262f00f693eb7"
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--porcelain=v1",
+            "-z",
+            "--untracked-files=all"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--quiet",
+            "--no-ext-diff",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--cached",
+            "--quiet",
+            "--no-ext-diff",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "commit_sha1": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+      "format": "peano-hydra-a23a-producer-git-verification-receipt",
+      "generator": {
+        "blob_oid_sha1": "8cb19ce3d3a6f7eee895e23547f77452e10f3e96",
+        "bytes": 38567,
+        "committed_sha256": "4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26",
+        "live_sha256": "4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26",
+        "mode": "100644",
+        "path": "scripts/build_peano_hydra_a23a_producer_source_state.py",
+        "verified": true
+      },
+      "git_tool": {
+        "bytes": 118864,
+        "path": "/usr/bin/git",
+        "sha256": "7588ceab299393618d6f8861502ac0588d1594025f301d9a61a898215b5571d3",
+        "version": "git version 2.39.5 (Apple Git-154)"
+      },
+      "source_files": [
+        {
+          "blob_oid_sha1": "4d662a35330cbec0ea99032c80f62cd3e754d0de",
+          "bytes": 26493,
+          "committed_sha256": "006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae",
+          "live_sha256": "006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae",
+          "mode": "100644",
+          "path": "training/peano_hydra/library-optimizer-comparison-pilot-schema-v1.json",
+          "verified": true
+        },
+        {
+          "blob_oid_sha1": "07b9c2ed0751ce24c80eee542332a8d9c5050c1d",
+          "bytes": 81389,
+          "committed_sha256": "7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee",
+          "live_sha256": "7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee",
+          "mode": "100644",
+          "path": "training/peano_hydra/library_optimizer_comparison_pilot.py",
+          "verified": true
+        },
+        {
+          "blob_oid_sha1": "0276b2f763d058506e733b9cae46f3ca8294b99c",
+          "bytes": 9092,
+          "committed_sha256": "3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee",
+          "live_sha256": "3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee",
+          "mode": "100644",
+          "path": "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+          "verified": true
+        },
+        {
+          "blob_oid_sha1": "4df5caa13227cab542ab7cce3539ee02cf836f1d",
+          "bytes": 46611,
+          "committed_sha256": "d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9",
+          "live_sha256": "d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9",
+          "mode": "100644",
+          "path": "peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_pilot.py",
+          "verified": true
+        }
+      ],
+      "source_state_artifact_sha256": "3b6658ea8fae6c9430714781398232dd91a4d9c5edc756bd734a28cdb1734c82",
+      "source_state_root_sha256": "b8517b9d10868a3942cf5a42ceb8c61e34b317647ddac19da0a8cef998438029",
+      "source_state_sha256": "64ceb310fb0030ac0a1c040d5a15076a53ac1882dd17d725ea92e404f66d942b",
+      "status": "passed",
+      "tree_sha1": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+      "v": 1,
+      "verification": {
+        "clean_after": true,
+        "clean_before": true,
+        "commit_stable": true,
+        "diff_cached_quiet_after": true,
+        "diff_cached_quiet_before": true,
+        "diff_quiet_after": true,
+        "diff_quiet_before": true,
+        "generator_matches_head": true,
+        "head_after": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+        "head_before": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+        "porcelain_after_bytes": 0,
+        "porcelain_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "porcelain_before_bytes": 0,
+        "porcelain_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "producer_files_match_head": true,
+        "stage_zero_regular_blobs": true,
+        "tree_after": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+        "tree_before": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+        "tree_stable": true
+      }
+    },
+    "v": 1
+  },
+  "root_sha256": "332fdc27d3a427d00bf7fa1ac4877c7c1fa73cf408413aedea179ae6846a7c6c",
+  "source_files": [
+    {
+      "blob_oid_sha1": "4d662a35330cbec0ea99032c80f62cd3e754d0de",
+      "bytes": 26493,
+      "committed_sha256": "006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae",
+      "live_sha256": "006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae",
+      "mode": "100644",
+      "path": "training/peano_hydra/library-optimizer-comparison-pilot-schema-v1.json",
+      "verified": true
+    },
+    {
+      "blob_oid_sha1": "07b9c2ed0751ce24c80eee542332a8d9c5050c1d",
+      "bytes": 81389,
+      "committed_sha256": "7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee",
+      "live_sha256": "7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee",
+      "mode": "100644",
+      "path": "training/peano_hydra/library_optimizer_comparison_pilot.py",
+      "verified": true
+    },
+    {
+      "blob_oid_sha1": "0276b2f763d058506e733b9cae46f3ca8294b99c",
+      "bytes": 9092,
+      "committed_sha256": "3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee",
+      "live_sha256": "3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee",
+      "mode": "100644",
+      "path": "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+      "verified": true
+    },
+    {
+      "blob_oid_sha1": "4df5caa13227cab542ab7cce3539ee02cf836f1d",
+      "bytes": 46611,
+      "committed_sha256": "d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9",
+      "live_sha256": "d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9",
+      "mode": "100644",
+      "path": "peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_pilot.py",
+      "verified": true
+    }
+  ],
+  "source_state_artifact_sha256": "3b6658ea8fae6c9430714781398232dd91a4d9c5edc756bd734a28cdb1734c82",
+  "source_state_root_sha256": "b8517b9d10868a3942cf5a42ceb8c61e34b317647ddac19da0a8cef998438029",
+  "source_state_sha256": "64ceb310fb0030ac0a1c040d5a15076a53ac1882dd17d725ea92e404f66d942b",
+  "status": "passed",
+  "tree_sha1": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+  "v": 1,
+  "verification": {
+    "clean_after": true,
+    "clean_before": true,
+    "commit_stable": true,
+    "diff_cached_quiet_after": true,
+    "diff_cached_quiet_before": true,
+    "diff_quiet_after": true,
+    "diff_quiet_before": true,
+    "generator_matches_head": true,
+    "head_after": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+    "head_before": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+    "porcelain_after_bytes": 0,
+    "porcelain_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "porcelain_before_bytes": 0,
+    "porcelain_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "producer_files_match_head": true,
+    "stage_zero_regular_blobs": true,
+    "tree_after": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+    "tree_before": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+    "tree_stable": true
+  }
+}

@@ -706,14 +706,10 @@ The source protocol is frozen at these exact identities:
   `d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9`.
 
 The protocol gate passed 59 tests in 0.31 seconds. The CLI writes nothing by
-default and requires an externally derived canonical producer-source state
-before a future build. No real three-root build has run locally or on WMI, and
-no result sidecar, layered result certificate, metric vector, nondominated
-set, representative, Pareto frontier, document root, or theorem-record root
-exists. Consequently the broad A2 optimizer/comparison/Pareto gate remains
-open. `optimized_best_known`, `optimized_vector_independently_audited`, all
-publication-union fields, `a2_complete`, authority, review, freeze, training,
-retrieval, and evaluation remain false.
+default and requires an externally derived canonical producer-source state.
+At this source-freeze checkpoint no real three-root build had run locally or
+on WMI. The separately retained execution below preserves that ordering: the
+candidate universe and claim boundary were fixed before any result existed.
 
 #### A2.3a external execution infrastructure (no submission/result)
 
@@ -778,12 +774,96 @@ The WMI-protocol file passed 18 tests in 0.72 seconds. The focused
 source-state, independent-verifier, and WMI-protocol suite passed 52 tests in
 8.45 seconds: 10, 24, and 18 respectively. The earlier independent threat
 audit reported no blocker before the final route refreeze. These are
-infrastructure gates, not optimizer observations. There is still no result
-sidecar, verification or collection receipt, candidate vector, frontier,
-representative, result root,
-best-known claim, independent optimized-vector audit, publication union, or
-A2 completion. Proof/admission/publication authority and every training,
-retrieval, and evaluation eligibility field remain false.
+infrastructure gates, not optimizer observations. At that checkpoint there was
+no result sidecar, verification or collection receipt, candidate vector,
+frontier, representative, or result root. The successor execution is recorded
+separately so those test results are not misrepresented as proof observations.
+
+#### A2.3a fixed-pilot execution and retention
+
+WMI job `219765` executed the already frozen three-root, three-candidate
+protocol from clean commit
+`0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d`, tree
+`9051b43aa3f7f75d37ce8d410b9c7a81ba472d94`, and content-addressed snapshot
+`707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824`.
+The two producers ran under `PYTHONHASHSEED=0` and `1` and produced identical
+848,463-byte documents. The separately loaded seed-2 verifier accepted all
+nine transported certificates from the empty context and recomputed the
+metrics, fixed-set frontiers, representatives, aggregates, and roots. Terminal
+collection records `COMPLETED`, exit `0:0`, one CPU, requested memory `4G`,
+node `c2n1`, 60 elapsed seconds, and classification
+`completed-and-independently-verified`.
+
+The retained result identities are:
+
+| Evidence | Bytes | Artifact SHA-256 | Root SHA-256 | Theorem-record root |
+| --- | ---: | --- | --- | --- |
+| candidate | 848,463 | `3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b` | `90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770` | `4cfcbe22312ff2b92022189e65d3742bc096ba989dacaa82b2054e84282928e5` |
+| independent verification | 18,327 | `6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a` | `e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc` | `18f882717346477304285c9336d7b769ccf95cd1b58c32b65d335f3e8caa4188` |
+| execution receipt | 18,088 | `779a971237f9ac5efe3a86dca5b5c4d74a6da56ab154b91e106f7fd1dac63a34` | `7a597563c173cd0cb3d57ff42cd566a8531756e84bf8ba907e7c79ec7295dc0e` | n/a |
+| collection receipt | 8,707 | `25e616fc9225ab59db6a089e8a53ed2d44915a54b42f073bcaaa020fc2ff609a` | `52339b926ea8b9650787a3db138185e21144f6cdf83596d224ccc6b23435daf2` | n/a |
+
+The producer source-state artifact/semantic/root identities are
+`3b6658ea8fae6c9430714781398232dd91a4d9c5edc756bd734a28cdb1734c82` /
+`64ceb310fb0030ac0a1c040d5a15076a53ac1882dd17d725ea92e404f66d942b` /
+`b8517b9d10868a3942cf5a42ceb8c61e34b317647ddac19da0a8cef998438029`.
+The clean-Git receipt artifact/root pair is
+`04158535ba4d920190f63e8a4cc48effcc33ccc162d8a7472265862149dc907e` /
+`332fdc27d3a427d00bf7fa1ac4877c7c1fa73cf408413aedea179ae6846a7c6c`;
+the infrastructure-manifest pair is
+`5b4e740afa2af94a154185b9b7e8200f25c683b93f73e5aa92335f33e002d87b` /
+`d0a299cd7b83c3584df36f7ae680613136f662c123768c871e8ba74806cf3a6b`.
+The result documents themselves retain `producer_git_verified=false`: the
+separate Git receipt authenticates the operational source boundary without
+granting mathematical authority.
+
+The exact metric vectors are shown as `(artifact bytes / proof nodes / proof
+depth / Cuts)`:
+
+| Root | retained replay | A2.2 direct-Cut rebuild | layered closure |
+| --- | ---: | ---: | ---: |
+| `odd_add_odd` | `14,977 / 302 / 32 / 7` | `13,640 / 274 / 31 / 6` | `12,709 / 269 / 37 / 3` |
+| `finite_bounded_injective_surjective` | `1,913,452 / 42,463 / 89 / 1,266` | `1,870,657 / 41,341 / 89 / 1,235` | `297,637 / 8,355 / 95 / 20` |
+| `beta_product_swap_last_invariant` | `391,540 / 7,439 / 67 / 205` | `386,189 / 7,413 / 67 / 203` | `118,018 / 2,011 / 79 / 9` |
+
+Each nondominated set is exactly
+`[a2.2-direct-cut-rebuild, layered-closure]`. The retained replay artifact is
+dominated within the frozen universe. The node-first preregistered tie-break
+selects `layered-closure` for display in all three records, while the depth
+tradeoff keeps the A2.2 direct rebuild on every frontier. This establishes
+only the fixed comparison-set statement; it is not global optimality,
+minimality, `best-known`, or an independently audited dependency-vector claim.
+
+A controlled local CPython 3.12 invocation of the retained independent
+verifier reproduced its 18,327 output bytes and accepted 9/9 artifacts. That
+is a replay of one retained result through the verifier boundary, not evidence
+that a second local optimizer run reproduced the WMI execution.
+
+The retained set contains exactly 19 files: the candidate, independent
+verification, and 17 operational source/deposit/submission/execution/
+collection/scheduler/log files under
+`artifacts/peano-hydra/a23a-wmi-pilot-219765/`. The submitted
+277,025,280-byte transfer archive was deleted after collection and was not
+independently rehashed. Its snapshot identity is transitively bound by the
+retained deposit, submission, execution, collection, commit, tree, and source
+receipts; no independent archive digest is claimed. The `sacct` row is an
+unauthenticated scheduler observation. Its `MaxRSS` field is empty, so neither
+the row nor the 4 GiB request establishes peak memory or a memory ceiling.
+Scheduler and verifier stderr are empty. Both producer stderr logs retain the
+same harmless pre-existing Python 3.12 `SyntaxWarning`s for `\/`. The focused
+retained-result test source is 33,374 bytes with SHA-256
+`28b251f9ab75bea0012949390923b039e267d4721c09bd9ff9b6a08de89cc602`;
+its four tests passed in 3.40 seconds.
+
+This closes only fixed-pilot execution and evidence retention. Direct and
+transitive dependency surfaces remain separate, and the readable and proposed
+optimized direct vectors still need independent audits and an ordered verified
+publication union. Every minimality, global-best/`optimized_best_known`,
+independently audited optimized-vector, dependency-vector completeness,
+publication, publication-union, review, lineage, freeze, A2 completion,
+proof/admission/publication authority, training, retrieval, and evaluation
+flag remains false. No admitted theorem, replay artifact, metadata row, public
+library/graph/catalog entry, page source, or deployed page changed.
 
 ### 2.4 Sealed-test law
 

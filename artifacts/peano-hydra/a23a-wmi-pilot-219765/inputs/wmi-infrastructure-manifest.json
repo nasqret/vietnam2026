@@ -1,0 +1,153 @@
+{
+  "files": [
+    {
+      "bytes": 38567,
+      "mode": "100644",
+      "path": "scripts/build_peano_hydra_a23a_producer_source_state.py",
+      "sha256": "4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26"
+    },
+    {
+      "bytes": 9092,
+      "mode": "100644",
+      "path": "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+      "sha256": "3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee"
+    },
+    {
+      "bytes": 18945,
+      "mode": "100644",
+      "path": "scripts/verify_peano_hydra_library_optimizer_comparison_pilot.py",
+      "sha256": "1250d0202236a6aa727509c5270767fe91e48cf34e5a6fd9c13ac1a59722f014"
+    },
+    {
+      "bytes": 78295,
+      "mode": "100644",
+      "path": "training/peano_hydra/library_optimizer_comparison_verifier.py",
+      "sha256": "683ee529ed4be0e93504846340eeddf47eae1cb3f84967168a971d422ade1dbe"
+    },
+    {
+      "bytes": 97330,
+      "mode": "100755",
+      "path": "scripts/run_peano_hydra_a23a_wmi.py",
+      "sha256": "46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632"
+    },
+    {
+      "bytes": 14793,
+      "mode": "100755",
+      "path": "scripts/submit_wmi_hydra_a23a_pilot.sh",
+      "sha256": "ce94c5e5e77ff83998f147fb77d3e698eae41366774867238b16990accc7fbee"
+    },
+    {
+      "bytes": 5618,
+      "mode": "100755",
+      "path": "scripts/collect_wmi_hydra_a23a_pilot.sh",
+      "sha256": "ddafef2eab12d18ba766325b5dbb077a0075cc8589bc553a72bd60aff910cb0e"
+    },
+    {
+      "bytes": 4975,
+      "mode": "100755",
+      "path": "slurm/peano_wmi_hydra_a23a_pilot.sbatch",
+      "sha256": "1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c"
+    },
+    {
+      "bytes": 11608,
+      "mode": "100644",
+      "path": "peano-lab/py/tests/test_peano_hydra_a23a_producer_source_state.py",
+      "sha256": "acdde9367e5fdea7fdfc4e6cef1c3ee4c2bddeb4b9fbe1e025581eb3c7fe8860"
+    },
+    {
+      "bytes": 34779,
+      "mode": "100644",
+      "path": "peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_verifier.py",
+      "sha256": "08f838332ffca805c934a6c44cf59148e9f0f9168c784f1b7a9c8b8cf353239a"
+    },
+    {
+      "bytes": 27192,
+      "mode": "100644",
+      "path": "peano-lab/py/tests/test_peano_hydra_a23a_wmi_protocol.py",
+      "sha256": "cc75ad16a90c289d07851f7d59cf79f2e960acd86d9257f8155a1cabc532a755"
+    }
+  ],
+  "format": "peano-hydra-a23a-wmi-infrastructure-manifest",
+  "git_commit": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+  "git_tree": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+  "root_preimage": {
+    "format": "peano-hydra-a23a-wmi-infrastructure-manifest-root-preimage",
+    "payload": {
+      "files": [
+        {
+          "bytes": 38567,
+          "mode": "100644",
+          "path": "scripts/build_peano_hydra_a23a_producer_source_state.py",
+          "sha256": "4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26"
+        },
+        {
+          "bytes": 9092,
+          "mode": "100644",
+          "path": "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+          "sha256": "3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee"
+        },
+        {
+          "bytes": 18945,
+          "mode": "100644",
+          "path": "scripts/verify_peano_hydra_library_optimizer_comparison_pilot.py",
+          "sha256": "1250d0202236a6aa727509c5270767fe91e48cf34e5a6fd9c13ac1a59722f014"
+        },
+        {
+          "bytes": 78295,
+          "mode": "100644",
+          "path": "training/peano_hydra/library_optimizer_comparison_verifier.py",
+          "sha256": "683ee529ed4be0e93504846340eeddf47eae1cb3f84967168a971d422ade1dbe"
+        },
+        {
+          "bytes": 97330,
+          "mode": "100755",
+          "path": "scripts/run_peano_hydra_a23a_wmi.py",
+          "sha256": "46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632"
+        },
+        {
+          "bytes": 14793,
+          "mode": "100755",
+          "path": "scripts/submit_wmi_hydra_a23a_pilot.sh",
+          "sha256": "ce94c5e5e77ff83998f147fb77d3e698eae41366774867238b16990accc7fbee"
+        },
+        {
+          "bytes": 5618,
+          "mode": "100755",
+          "path": "scripts/collect_wmi_hydra_a23a_pilot.sh",
+          "sha256": "ddafef2eab12d18ba766325b5dbb077a0075cc8589bc553a72bd60aff910cb0e"
+        },
+        {
+          "bytes": 4975,
+          "mode": "100755",
+          "path": "slurm/peano_wmi_hydra_a23a_pilot.sbatch",
+          "sha256": "1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c"
+        },
+        {
+          "bytes": 11608,
+          "mode": "100644",
+          "path": "peano-lab/py/tests/test_peano_hydra_a23a_producer_source_state.py",
+          "sha256": "acdde9367e5fdea7fdfc4e6cef1c3ee4c2bddeb4b9fbe1e025581eb3c7fe8860"
+        },
+        {
+          "bytes": 34779,
+          "mode": "100644",
+          "path": "peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_verifier.py",
+          "sha256": "08f838332ffca805c934a6c44cf59148e9f0f9168c784f1b7a9c8b8cf353239a"
+        },
+        {
+          "bytes": 27192,
+          "mode": "100644",
+          "path": "peano-lab/py/tests/test_peano_hydra_a23a_wmi_protocol.py",
+          "sha256": "cc75ad16a90c289d07851f7d59cf79f2e960acd86d9257f8155a1cabc532a755"
+        }
+      ],
+      "format": "peano-hydra-a23a-wmi-infrastructure-manifest",
+      "git_commit": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+      "git_tree": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "d0a299cd7b83c3584df36f7ae680613136f662c123768c871e8ba74806cf3a6b",
+  "v": 1
+}

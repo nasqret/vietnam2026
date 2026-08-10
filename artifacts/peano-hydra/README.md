@@ -124,7 +124,7 @@ shape, semantic and rerooted mutations, strict path handling, and create-only
 publication. It passed 23 tests in 44.12 seconds; the exact retained CLI
 `--check` passed too.
 
-## A2.3a optimizer/comparison protocol (no result artifact yet)
+## A2.3a bounded optimizer/comparison result
 
 Frozen on 2026-08-10, the A2.3a source protocol fixes a bounded experiment for
 exactly the three A2.2 theorem roots. Each root has exactly three candidate
@@ -135,16 +135,7 @@ representative tie-break
 `(proof_nodes, proof_depth, cut_nodes, artifact_bytes, candidate_kind_order,
 artifact_sha256, candidate_id)`.
 
-This is intentionally not an artifact listing. No local or WMI production
-comparison has run, and
-`l0-optimizer-comparison-pilot-candidate-v1.json` does not exist as retained
-evidence. In particular there is no fresh layered result certificate,
-candidate metric vector, nondominated set, representative, Pareto frontier,
-document root, or theorem-record root to report. The CLI writes nothing by
-default and requires an externally derived canonical producer-source state
-before a future build. That state is byte-bound but deliberately carries
-`git_verified=false`; a separate successor receipt must verify the commit,
-tree, ancestry, and clean submission.
+The source protocol remains frozen at these identities:
 
 - schema semantic/artifact SHA-256:
   `07e5842c221fe84337e163ce5c858ab03dfbbc93d1477f5661edfdd6f8ba3978` /
@@ -158,33 +149,112 @@ tree, ancestry, and clean submission.
   and
 - focused protocol tests: 59 passed in 0.31 seconds.
 
-Direct dependency vectors and transitive closures remain separate surfaces,
-and no optimized vector has been independently audited. All best-known,
-vector-audit, publication, publication-union, A2, authority, review, freeze,
-training, retrieval, and evaluation flags remain false. The broad retained
-optimizer/comparison/Pareto result is still the next A2 gate.
+WMI job `219765` then ran the fixed three-root, three-candidate comparison from
+clean source commit `0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d`, tree
+`9051b43aa3f7f75d37ce8d410b9c7a81ba472d94`, and snapshot
+`707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824`.
+The requested envelope was one `cpu_idle` CPU, 4,096 MiB, and 15 minutes under
+x86-64 CPython 3.12.12. Hash-seed-0 and hash-seed-1 producers emitted
+byte-identical 848,463-byte candidate documents, and the separately loaded
+hash-seed-2 verifier accepted all nine artifacts from the empty context and
+recomputed the comparison. The terminal collector records `COMPLETED`, exit
+`0:0`, node `c2n1`, 60 elapsed seconds, and classification
+`completed-and-independently-verified`.
 
-## A2.3a external execution infrastructure (no submission/result)
+The retained candidate has SHA-256
+`3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b`,
+document root
+`90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770`,
+and theorem-record root
+`4cfcbe22312ff2b92022189e65d3742bc096ba989dacaa82b2054e84282928e5`.
+The 18,327-byte independent-verification receipt has SHA-256
+`6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a`,
+document root
+`e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc`,
+and theorem-record root
+`18f882717346477304285c9336d7b769ccf95cd1b58c32b65d335f3e8caa4188`.
+The same verifier was replayed locally under CPython 3.12 and reproduced the
+retained verification bytes while accepting 9/9 artifacts; this is a bounded
+replay of the retained candidate, not a claim that another optimizer run was
+reproduced locally.
 
-This directory still contains no A2.3a comparison result. The successor source
-tranche only makes the frozen protocol executable across an audited boundary:
-a clean-Git generator emits the exact producer state plus a separate Git
-receipt; a fresh, independently loaded stdlib-plus-kernel verifier rechecks
-all nine artifacts and recomputes the comparison; and a content-addressed WMI
-worker runs hash-seed-0/1 producers followed by the hash-seed-2 verifier. The
-fixed remote request is one `cpu_idle` CPU, 4,096 MiB, and 15 minutes under
-x86-64 CPython 3.12.12. Execution and collection receipts are create-only
-commit markers, not authority grants, and infrastructure/resource failures are
-classified `unknown`.
+Metrics below are `(artifact bytes / proof nodes / proof depth / Cuts)`. Every
+frontier is exactly `[a2.2-direct-cut-rebuild, layered-closure]`, and the
+preregistered node-first tie-break selects `layered-closure` as display
+representative for all three roots.
 
-The guarded submitter defaults to `--test-only`. That path still writes or
-verifies an immutable snapshot on the remote WMI filesystem and calls
-`sbatch --test-only`, but it creates no Slurm job. A real submission requires
-`--submit --confirm PEANO-HYDRA-A23A-WMI-PILOT`. Both wrappers accept an
-optional syntax-validated `WMI_SSH_JUMP`, passed only as SSH `-J` beside the
-validated target. An observed target/jump route records only the operational
-transport mechanism. No successful test-only outcome, real submission, or
-cluster job is claimed here.
+| Theorem | `retained-replay` | `a2.2-direct-cut-rebuild` | `layered-closure` |
+| --- | ---: | ---: | ---: |
+| `odd_add_odd` | `14,977 / 302 / 32 / 7` | `13,640 / 274 / 31 / 6` | `12,709 / 269 / 37 / 3` |
+| `finite_bounded_injective_surjective` | `1,913,452 / 42,463 / 89 / 1,266` | `1,870,657 / 41,341 / 89 / 1,235` | `297,637 / 8,355 / 95 / 20` |
+| `beta_product_swap_last_invariant` | `391,540 / 7,439 / 67 / 205` | `386,189 / 7,413 / 67 / 203` | `118,018 / 2,011 / 79 / 9` |
+
+The retained replay member is dominated in this exact fixed comparison set.
+The two frontier members trade depth against the other axes; the selected
+representative is a deterministic display choice, not a globally best or
+minimal proof.
+
+## A2.3a retained WMI evidence
+
+The create-only operational evidence lives under
+`a23a-wmi-pilot-219765/`. Its key rooted receipts are:
+
+- producer source state: artifact SHA-256
+  `3b6658ea8fae6c9430714781398232dd91a4d9c5edc756bd734a28cdb1734c82`,
+  semantic source-state SHA-256
+  `64ceb310fb0030ac0a1c040d5a15076a53ac1882dd17d725ea92e404f66d942b`,
+  and root
+  `b8517b9d10868a3942cf5a42ceb8c61e34b317647ddac19da0a8cef998438029`;
+- separate clean-Git receipt: artifact SHA-256
+  `04158535ba4d920190f63e8a4cc48effcc33ccc162d8a7472265862149dc907e`
+  and root
+  `332fdc27d3a427d00bf7fa1ac4877c7c1fa73cf408413aedea179ae6846a7c6c`;
+- infrastructure manifest: artifact SHA-256
+  `5b4e740afa2af94a154185b9b7e8200f25c683b93f73e5aa92335f33e002d87b`
+  and root
+  `d0a299cd7b83c3584df36f7ae680613136f662c123768c871e8ba74806cf3a6b`;
+- execution receipt: artifact SHA-256
+  `779a971237f9ac5efe3a86dca5b5c4d74a6da56ab154b91e106f7fd1dac63a34`
+  and root
+  `7a597563c173cd0cb3d57ff42cd566a8531756e84bf8ba907e7c79ec7295dc0e`;
+  and
+- collection receipt: artifact SHA-256
+  `25e616fc9225ab59db6a089e8a53ed2d44915a54b42f073bcaaa020fc2ff609a`
+  and root
+  `52339b926ea8b9650787a3db138185e21144f6cdf83596d224ccc6b23435daf2`.
+
+The exact 19-file retention set is the two top-level result documents plus
+these 17 operational files:
+
+| Operational path below `a23a-wmi-pilot-219765/` | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `collections/job-219765.json` | 8,707 | `25e616fc9225ab59db6a089e8a53ed2d44915a54b42f073bcaaa020fc2ff609a` |
+| `deposit.tsv` | 438 | `31a194c1469efd8f58d5c473fd28ae2675b7947d49212001ff0776a8bb01e14e` |
+| `inputs/.peano-source-provenance.tsv` | 68 | `7862d7916c8b13ce26fe5540c6f901c22e6db55089aa9bfa1c2344d707129301` |
+| `inputs/producer-git-verification-receipt.json` | 28,400 | `04158535ba4d920190f63e8a4cc48effcc33ccc162d8a7472265862149dc907e` |
+| `inputs/producer-source-state.json` | 2,377 | `3b6658ea8fae6c9430714781398232dd91a4d9c5edc756bd734a28cdb1734c82` |
+| `inputs/wmi-infrastructure-manifest.json` | 5,618 | `5b4e740afa2af94a154185b9b7e8200f25c683b93f73e5aa92335f33e002d87b` |
+| `logs/peano-hydra-a23a-219765.err` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| `logs/peano-hydra-a23a-219765.out` | 422 | `88c0e3278fbf2a1b68f1e56db45595f5f47bbd12a55dc085d628ad681dec15b3` |
+| `runs/219765/execution-receipt.json` | 18,088 | `779a971237f9ac5efe3a86dca5b5c4d74a6da56ab154b91e106f7fd1dac63a34` |
+| `runs/219765/independent-verifier.stderr.log` | 0 | `e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855` |
+| `runs/219765/independent-verifier.stdout.log` | 144 | `ea0b95150724f498b785f52ec7cfc870523005f3e80417007796335a07ab78c7` |
+| `runs/219765/producer-0.stderr.log` | 1,447 | `6e0581b6b3a3f4b0ccd7bd102bb79825b641d7470ff15e8579e231caab5b51af` |
+| `runs/219765/producer-0.stdout.log` | 117 | `6ea76700dc04a8d0e0a83b1d4a53b3afa5186ffe716d14d44d6b92303e6b7acd` |
+| `runs/219765/producer-1.stderr.log` | 1,447 | `6e0581b6b3a3f4b0ccd7bd102bb79825b641d7470ff15e8579e231caab5b51af` |
+| `runs/219765/producer-1.stdout.log` | 117 | `6ea76700dc04a8d0e0a83b1d4a53b3afa5186ffe716d14d44d6b92303e6b7acd` |
+| `sacct.psv` | 39 | `26eec8cb84f436121c29698eef456e582055493f246697ff84a80615df935023` |
+| `submission.tsv` | 553 | `053a0cf2fa7b4d0b5c688724e903cbe57c8d699f22c45fa0d580564060042602` |
+
+The submitted 277,025,280-byte transfer archive was deleted after collection
+and is neither retained nor independently rehashed here. Its snapshot hash is
+bound transitively through the deposit, submission, execution, collection,
+commit, tree, and source receipts; this is not an independent archive-hash
+claim. The retained `sacct` row is an unauthenticated scheduler observation.
+It contains no `MaxRSS`, so neither it nor the 4 GiB request establishes a
+peak-memory measurement or memory ceiling. Scheduler and verifier stderr are
+empty. The two identical producer stderr logs retain harmless pre-existing
+Python 3.12 `SyntaxWarning`s for `\/`; they are not proof failures.
 
 - source-state generator/test SHA-256:
   `4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
@@ -203,14 +273,23 @@ cluster job is claimed here.
 
 The WMI protocol file passed 18 tests in 0.72 seconds. The 10 source-state, 24
 verifier, and 18 WMI-protocol tests then passed together: 52 passed in 8.45
-seconds. The earlier independent threat audit found no blocker before the
-final route refreeze.
-Those results establish only infrastructure contracts. There is no retained
-pilot document, verification receipt, collection receipt, metric vector,
-frontier, representative, document root, or theorem-record root. All
-minimality, optimized/best-known, vector-audit, publication,
-publication-union, review, freeze, A2, proof/admission authority, training,
-retrieval, and evaluation eligibility flags remain false.
+seconds. The 33,374-byte retained-result gate has SHA-256
+`28b251f9ab75bea0012949390923b039e267d4721c09bd9ff9b6a08de89cc602`
+and passed 4 tests in 3.40 seconds. The result closes only the fixed
+three-root/three-candidate A2.3a
+execution-and-retention subgate. Direct and transitive dependency surfaces
+remain distinct, and no readable or optimized dependency vector has been
+independently approved for publication. `producer_git_verified` remains false
+inside both result documents; the separate Git receipt proves the clean
+execution boundary without turning that field or any mathematical authority
+on.
+
+All minimality, global-best/`optimized_best_known`, independently audited
+optimized-vector, dependency-vector completeness, publication,
+publication-union, review, lineage, freeze, A2 completion, proof/admission/
+publication authority, training, retrieval, and evaluation eligibility flags
+remain false. The public library, replay pack, 1,038-edge graph, catalog, page
+sources, and deployed pages are unchanged.
 
 ## H1.1b3 selected candidate page source
 

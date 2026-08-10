@@ -4286,3 +4286,53 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   or root exists. All minimality/best-known/vector-audit, review, publication,
   publication-union, freeze, A2, proof/admission authority, and
   training/retrieval/evaluation eligibility flags remain false.
+
+## 2026-08-10 — A2.3a fixed-pilot WMI result retained without widening authority
+
+- WMI job `219765` executed the frozen three-root, three-candidate protocol
+  from clean commit `0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d`, tree
+  `9051b43aa3f7f75d37ce8d410b9c7a81ba472d94`, and snapshot
+  `707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824`.
+  Hash-seed-0/1 producer documents were byte-identical. The independently
+  loaded seed-2 verifier accepted all nine artifacts and recomputed the fixed
+  comparison. Terminal collection records `COMPLETED`, `0:0`, node `c2n1`, 60
+  seconds, and `completed-and-independently-verified`.
+- Retained the 848,463-byte candidate at artifact/document/theorem-record
+  identities `3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b` /
+  `90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770` /
+  `4cfcbe22312ff2b92022189e65d3742bc096ba989dacaa82b2054e84282928e5`.
+  The 18,327-byte independent verification identities are
+  `6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a` /
+  `e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc` /
+  `18f882717346477304285c9336d7b769ccf95cd1b58c32b65d335f3e8caa4188`.
+  Execution/collection artifact-root pairs are `779a9712…` / `7a597563…`
+  and `25e616fc…` / `52339b92…`. A controlled local CPython 3.12 verifier
+  replay reproduced the retained verification bytes and accepted 9/9; it did
+  not rerun the optimizer.
+- Exact metrics `(bytes / nodes / depth / Cuts)` are: `odd_add_odd`,
+  retained `14,977 / 302 / 32 / 7`, direct `13,640 / 274 / 31 / 6`, layered
+  `12,709 / 269 / 37 / 3`; `finite_bounded_injective_surjective`, retained
+  `1,913,452 / 42,463 / 89 / 1,266`, direct
+  `1,870,657 / 41,341 / 89 / 1,235`, layered
+  `297,637 / 8,355 / 95 / 20`; `beta_product_swap_last_invariant`, retained
+  `391,540 / 7,439 / 67 / 205`, direct `386,189 / 7,413 / 67 / 203`, layered
+  `118,018 / 2,011 / 79 / 9`. Every fixed-set frontier is
+  `[a2.2-direct-cut-rebuild, layered-closure]`; the preregistered display
+  representative is layered. The retained member is dominated only within
+  this exact universe.
+- Retained exactly 19 files: the candidate and verifier plus 17 operational
+  evidence files. The 277,025,280-byte transfer archive was deleted and was
+  not independently rehashed; the snapshot digest is only transitively bound.
+  The `sacct` row is unauthenticated and has empty `MaxRSS`, so no memory
+  ceiling is claimed. Scheduler/verifier stderr are empty; identical producer
+  stderr preserves harmless pre-existing Python 3.12 `SyntaxWarning`s. The
+  33,374-byte retained-result test source has SHA-256
+  `28b251f9ab75bea0012949390923b039e267d4721c09bd9ff9b6a08de89cc602`;
+  all four focused tests passed in 3.40 seconds.
+- This closes only the A2.3a fixed-pilot execution-and-retention subgate.
+  `producer_git_verified` remains false in both result documents while a
+  separate clean-Git receipt binds the operational source. Every minimality,
+  global-best, optimized/readable-vector audit and completeness, publication/
+  union, review, lineage, freeze, A2, proof/admission/publication authority,
+  training, retrieval, and evaluation flag remains false. No public library,
+  1,038-edge graph, catalog, page source, or deployed page changed.

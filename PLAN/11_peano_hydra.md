@@ -518,13 +518,70 @@ focused files passed 52 tests in 8.45 seconds (10 source-state, 24 verifier,
 and 18 WMI protocol). The earlier independent threat audit reported no blocker
 before the final route refreeze.
 
-No real optimizer process, WMI submission, cluster job, result sidecar,
-verification receipt, collection receipt, frontier,
-representative, or result root was produced. The infrastructure cannot make a
-candidate retained or authoritative: every minimality, best-known,
-vector-audit, publication, publication-union, review, freeze, A2, proof or
-admission authority, training eligibility, retrieval eligibility, and
-evaluation eligibility field remains false.
+That tranche ended at infrastructure readiness. The successor execution below
+does not retroactively turn its local tests into result evidence.
+
+On 2026-08-10, **A2.3a fixed-pilot execution and retention** completed on WMI
+job `219765`. The job used clean commit
+`0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d`, tree
+`9051b43aa3f7f75d37ce8d410b9c7a81ba472d94`, and snapshot
+`707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824`.
+Both producer seeds emitted the same 848,463 bytes, the seed-2 independent
+verifier accepted 9/9 kernel artifacts, and the terminal collection records
+`COMPLETED`, `0:0`, 60 elapsed seconds, and
+`completed-and-independently-verified`. A controlled local CPython 3.12 replay
+of the retained verifier reproduced its 18,327 bytes; this checks the retained
+document and is not a second local optimizer run.
+
+The retained candidate artifact/document/theorem-record identities are
+`3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b` /
+`90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770` /
+`4cfcbe22312ff2b92022189e65d3742bc096ba989dacaa82b2054e84282928e5`.
+The verification artifact/document/theorem-record identities are
+`6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a` /
+`e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc` /
+`18f882717346477304285c9336d7b769ccf95cd1b58c32b65d335f3e8caa4188`.
+Execution and collection receipt artifact/root pairs are
+`779a971237f9ac5efe3a86dca5b5c4d74a6da56ab154b91e106f7fd1dac63a34` /
+`7a597563c173cd0cb3d57ff42cd566a8531756e84bf8ba907e7c79ec7295dc0e`
+and
+`25e616fc9225ab59db6a089e8a53ed2d44915a54b42f073bcaaa020fc2ff609a` /
+`52339b926ea8b9650787a3db138185e21144f6cdf83596d224ccc6b23435daf2`.
+
+The exact metric vectors are `(artifact bytes / proof nodes / proof depth /
+Cuts)`:
+
+| Root | retained | A2.2 direct | layered closure |
+| --- | ---: | ---: | ---: |
+| `odd_add_odd` | `14,977 / 302 / 32 / 7` | `13,640 / 274 / 31 / 6` | `12,709 / 269 / 37 / 3` |
+| `finite_bounded_injective_surjective` | `1,913,452 / 42,463 / 89 / 1,266` | `1,870,657 / 41,341 / 89 / 1,235` | `297,637 / 8,355 / 95 / 20` |
+| `beta_product_swap_last_invariant` | `391,540 / 7,439 / 67 / 205` | `386,189 / 7,413 / 67 / 203` | `118,018 / 2,011 / 79 / 9` |
+
+For every root the fixed-set frontier is exactly
+`[a2.2-direct-cut-rebuild, layered-closure]`; the preregistered tie-break
+chooses `layered-closure`. This is a fixed three-candidate pilot statement,
+not a best-known, global-optimum, or minimality claim.
+
+Nineteen evidence files are retained: the candidate and verifier plus 17
+operational source, deposit, submission, execution, collection, scheduler,
+and log files under `artifacts/peano-hydra/a23a-wmi-pilot-219765/`. The
+277,025,280-byte transfer archive was deleted and was not independently
+rehashed; its snapshot identity is only transitively receipt-bound. The
+retained `sacct` row is an unauthenticated scheduler observation, `MaxRSS` is
+absent, and no peak-memory or memory-ceiling claim follows. Producer stderr
+retains identical harmless pre-existing Python 3.12 `SyntaxWarning`s; scheduler
+and verifier stderr are empty. The retained-result gate source has SHA-256
+`28b251f9ab75bea0012949390923b039e267d4721c09bd9ff9b6a08de89cc602`;
+its four tests passed in 3.40 seconds.
+
+This closes only fixed-pilot execution and retention. The result documents
+deliberately keep `producer_git_verified=false`; a separate rooted clean-Git
+receipt binds the execution boundary. Every minimality, global-best/
+`optimized_best_known`, independently audited optimized-vector,
+dependency-vector completeness, publication, publication-union, review,
+lineage, freeze, A2 completion, proof/admission/publication authority,
+training, retrieval, and evaluation flag remains false. No public library,
+graph, catalog, or page changed.
 
 ### H1.2 Build lineage before rows
 
@@ -810,26 +867,37 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       no-default-write program for exactly the three A2.2 roots and exactly
       three constructions per root, with canonical four-axis componentwise
       comparison and a deterministic representative. This checkbox records
-      source/protocol readiness only: no real build, retained result, frontier,
-      independently audited optimized vector, or authority exists yet.
+      the source/protocol freeze only; it did not itself produce the later
+      retained result, frontier, independently audited optimized vector, or
+      authority.
 - [x] **A2.3a external execution infrastructure (no submission/result):**
       freeze the clean-Git source-state/receipt generator, independently loaded
       kernel verifier, content-addressed one-CPU WMI runner, guarded submitter,
       terminal collector, and their local adversarial contracts. This records
-      executable transport readiness only. Test-only would write a remote
-      immutable snapshot but create no job; no test-only outcome is claimed,
-      no real submission has run, and no optimizer result or authority exists.
-- [ ] Define and retain the optimizer program, comparison set, and Pareto
-      evidence before assigning any `best-known` label. Audit the resulting
-      optimized-construction vector independently from the readable recipe.
+      executable transport readiness only. Test-only writes a remote immutable
+      snapshot but creates no job. At the end of this infrastructure tranche
+      no test-only outcome or real submission was claimed; the successor item
+      records the later job and still grants no authority.
+- [x] **A2.3a fixed-pilot execution and retention:** run the frozen three-root,
+      three-candidate comparison through two byte-compared producers, a
+      separately loaded kernel verifier, and terminal WMI collection; retain
+      the exact candidate, verifier, source, Git, infrastructure, execution,
+      scheduler, and collection evidence. This checks only the bounded pilot
+      comparison set and does not assign `best-known`, minimality, dependency-
+      vector, publication, graph, or authority status.
+- [ ] Independently audit both the readable-recipe and proposed optimized-
+      construction direct dependency vectors, separately from their
+      transitive closures.
+- [ ] Complete the comparison evidence required for any `best-known` or global
+      A2 claim beyond the fixed three-candidate pilot.
 - [ ] Compile accepted units into reviewable theorem proposals containing
       lineage, dependencies, explanations, scripts, traces, certificates,
       metrics, provenance, and Book/vault/Explorer previews.
 - [ ] Produce a patch/PR only on explicit export. No unreviewed theorem enters
       `TheoremSpec` or a public catalog.
 - [ ] Require deterministic documentation and leave-one-out checks for both
-      readable-proof and optimized-construction dependency vectors; publish
-      their ordered union as the theorem graph edge set.
+      readable-proof and optimized-construction dependency vectors; verify and
+      publish their ordered union as the theorem graph edge set.
 
 ### A3 — Hybrid native/Vampire assistance
 
@@ -1171,26 +1239,37 @@ and benchmark work precede GPU training.
       transitively reachable, Python alias metrics are non-comparable, and all
       authority/minimality/optimized/best-known/publication/eligibility flags
       remain false.
-- [x] A2.3a freezes the bounded three-root, three-candidate optimizer and
-      comparison protocol without running it. The exact schema
+- [x] A2.3a froze the bounded three-root, three-candidate optimizer and
+      comparison protocol before execution. The exact schema
       semantic/artifact pair is `07e5842c221fe843…` / `006d38ef781fc022…`;
       the program/CLI/focused-test source identities are
       `7ac7d784c3660c1…` / `3acbd3ec0f190699…` /
-      `d5ae3e830573c7a5…`, and 59 focused tests passed in 0.31 seconds. There is
-      no WMI or local result build, result sidecar, layered-certificate set,
-      candidate metric vector, nondominated set, representative, or Pareto
-      frontier. The broad A2 optimizer/comparison/Pareto item and independent
-      optimized-vector audit remain open; every best-known, publication, A2,
-      authority, and eligibility flag remains false.
+      `d5ae3e830573c7a5…`, and 59 focused tests passed in 0.31 seconds. This
+      source/protocol subgate is distinct from the later retained result.
 - [x] A2.3a's external execution infrastructure now binds a clean committed
       producer source state, an independent kernel-only verifier, deterministic
       dual-producer execution, and terminal WMI collection. Its source-state,
       verifier, and WMI protocol gates pass 52 tests in 8.45 seconds; the WMI
       file alone passes 18 in 0.72 seconds. The earlier independent threat
-      audit reported no blocker before the final route refreeze. This still
-      records infrastructure only: no submission/result, Slurm job, frontier,
-      representative, verification/collection receipt, or authority exists,
-      and every eligibility field remains false.
+      audit reported no blocker before the final route refreeze. That tranche
+      records infrastructure readiness only; its successor below records the
+      real bounded execution.
+- [x] WMI job `219765` executed and retained the frozen three-root,
+      three-candidate A2.3a pilot. The dual producers were byte-identical, the
+      independent verifier accepted 9/9 artifacts, and terminal collection
+      classified it `completed-and-independently-verified`. Candidate,
+      verifier, execution, and collection artifact/root identities begin
+      `3e989784…` / `90a3d97a…`, `6a794214…` / `e21290f6…`,
+      `779a9712…` / `7a597563…`, and `25e616fc…` / `52339b92…`.
+      All three fixed frontiers contain the A2.2 direct and layered members;
+      the deterministic representative is layered. This closes only bounded
+      execution and its 19-file evidence retention. The transfer archive is
+      absent and not independently rehashed; `sacct` is unauthenticated,
+      `MaxRSS` is absent, and no memory ceiling is claimed. Every global-best,
+      minimality, vector-audit/completeness, publication/union, A2, authority,
+      review/freeze, and eligibility flag remains false. Its exact retained-
+      result gate passed 4 tests in 3.40 seconds (source SHA-256
+      `28b251f9ab75bea…`).
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1201,11 +1280,11 @@ and benchmark work precede GPU training.
       separately from deployed-page coverage while preserving metadata v1;
       H1.1b3 retains page source without claiming deployment; A2.1 adds only a
       readable-recipe dependency diagnostic; A2.2 adds only three checked
-      candidate construction rebuilds; and A2.3a freezes only the bounded
-      protocol/program that will compare them with layered closures. The
-      immediate A2 work is to execute and retain the real comparison/Pareto
-      result, independently audit readable and optimized vectors, and derive
-      the verified union before a
+      candidate construction rebuilds; and A2.3a retains only the bounded
+      fixed-set comparison with layered closures. The immediate A2 work is to
+      independently audit readable and optimized vectors, complete any
+      evidence needed for a best-known/global comparison, and derive the
+      verified publication union before a
       source-state request to an external owner. No 200-unit gold corpus,
       registered live-Vampire
       `Dispatch` route, production Vampire integration, capability comparison,

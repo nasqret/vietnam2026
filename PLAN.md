@@ -333,12 +333,30 @@ at root
 It binds 384 source locators and 1,038 declared publication edges, but only 240
 rows have the complete source/definition/atlas/vault/two-explorer join. The
 remaining explorer and definition gaps are exactly 144 missing/zero stale;
-all 317 extra explorer names are disjoint non-`L0` provenance. All 384 rows
+all 317 extra explorer names are disjoint non-`L0` provenance. A2.3a WMI job
+`219765` has now completed and retained the preregistered fixed comparison for
+exactly three roots and three candidates per root: dual producers were byte-
+identical, the independent verifier accepted all nine artifacts, and terminal
+collection passed. Its candidate/verifier roots are `90a3d97a…` /
+`e21290f6…`; execution/collection roots are `7a597563…` / `52339b92…`.
+All three fixed-set frontiers contain the A2.2 direct and layered candidates,
+with layered selected by the deterministic display tie-break. This is not a
+global-best, minimality, optimized-vector, publication, graph, or A2 claim.
+The 19-file retained evidence omits the deleted transfer archive; its snapshot
+hash is only transitively bound. The unauthenticated `sacct` observation has no
+`MaxRSS`, so no memory ceiling is claimed; producer stderr contains only
+retained pre-existing Python 3.12 `SyntaxWarning`s. Every minimality,
+global-best, vector audit/completeness, publication/union, review, lineage,
+freeze, A2, authority, and training/retrieval/evaluation flag remains false.
+No public library, graph, catalog, page source, or deployed page changed. All
+384 rows
 still lack reviewed readable/optimized dependency vectors, leave-one-out
 receipts, publication unions, best-known comparison, human review, and
-lineage. The next order is to repair those 144 records, complete A2, and only
-then issue a source-state request to an external owner. Review registries are
-still empty, so no living catalog has been declared frozen production `L0`,
-and neither A0 nor H1 is complete. See
+lineage. The next order is to repair those 144 records, independently audit
+the readable and optimized vectors, verify their publication union, complete
+the remaining global A2 evidence, and only then issue a source-state request
+to an external owner. Review registries are still empty, so no living catalog
+has been declared frozen production `L0`, and neither A0 nor H1 is complete.
+See
 [`docs/PEANO_HYDRA_DESIGN.md`](docs/PEANO_HYDRA_DESIGN.md) and
 [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md).
