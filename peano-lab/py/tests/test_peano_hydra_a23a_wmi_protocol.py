@@ -720,6 +720,9 @@ def test_wmi_shell_protocol_is_guarded_held_isolated_and_never_run_in_tests() ->
     collect = COLLECT.read_text(encoding="utf-8")
     sbatch = SBATCH.read_text(encoding="utf-8")
     assert "mode=test-only" in submit
+    assert submit.index('stage="$(mktemp -d)"') < submit.index(
+        'stage="$(cd "$stage" && pwd -P)"'
+    ) < submit.index('source_state="$stage/producer-source-state.json"')
     assert "python_path = str(Path(sys.executable))" in runner
     assert "Path(sys.executable).resolve()" not in runner
     assert "PEANO-HYDRA-A23A-WMI-PILOT" in submit

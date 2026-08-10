@@ -507,9 +507,9 @@ The independent verifier module/CLI/test SHA-256s are
 The WMI runner/sbatch/submit/collect/test SHA-256s are
 `46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
 `1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
-`c20795123075a4d3828364618365e3a77430a6059114a48e4fcca9173f634a33` /
+`a2f4823b6b71e80083a57a255fa2fe11edcc3394b9b030be0cf7b8f87cc3c1dc` /
 `f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` /
-`e34025a6d785814f19828f331af0632d3ce284bd58f47e2f0d828fa1b47af491`.
+`95936bd087550a09f972b0c2cfe075eeab05a63f879a2cc13f1c97ee2809a949`.
 The three focused files passed 48 tests in 8.19 seconds (10 source-state, 24
 verifier, and 14 WMI protocol), and an independent 48/48 threat audit reported
 no blocker.

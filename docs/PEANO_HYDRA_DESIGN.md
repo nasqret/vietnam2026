@@ -767,9 +767,9 @@ The frozen execution-infrastructure identities are:
 | `peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_verifier.py` | 34,779 | `08f838332ffca805c934a6c44cf59148e9f0f9168c784f1b7a9c8b8cf353239a` |
 | `scripts/run_peano_hydra_a23a_wmi.py` | 97,330 | `46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` |
 | `slurm/peano_wmi_hydra_a23a_pilot.sbatch` | 4,975 | `1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` |
-| `scripts/submit_wmi_hydra_a23a_pilot.sh` | 14,445 | `c20795123075a4d3828364618365e3a77430a6059114a48e4fcca9173f634a33` |
+| `scripts/submit_wmi_hydra_a23a_pilot.sh` | 14,478 | `a2f4823b6b71e80083a57a255fa2fe11edcc3394b9b030be0cf7b8f87cc3c1dc` |
 | `scripts/collect_wmi_hydra_a23a_pilot.sh` | 5,322 | `f61d97fec0eb2e03801ba3b5a291e1d0b257514f4a80983bcd0007b116b32f08` |
-| `peano-lab/py/tests/test_peano_hydra_a23a_wmi_protocol.py` | 25,894 | `e34025a6d785814f19828f331af0632d3ce284bd58f47e2f0d828fa1b47af491` |
+| `peano-lab/py/tests/test_peano_hydra_a23a_wmi_protocol.py` | 26,074 | `95936bd087550a09f972b0c2cfe075eeab05a63f879a2cc13f1c97ee2809a949` |
 
 The focused source-state, independent-verifier, and WMI-protocol suite passed
 48 tests in 8.19 seconds: 10, 24, and 14 respectively. An independent threat

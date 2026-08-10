@@ -34,6 +34,7 @@ if [ -z "$confirmation" ]; then confirmation=none; fi
 script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 repo_root="$(git -C "$script_dir/.." rev-parse --show-toplevel)"
 stage="$(mktemp -d)"
+stage="$(cd "$stage" && pwd -P)"
 cleanup() {
   case "$stage" in
     /tmp/*|/private/tmp/*|/var/folders/*|/private/var/folders/*)
