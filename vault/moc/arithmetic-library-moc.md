@@ -6,62 +6,60 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-## Current library editions — Alpha v6, 2026-08-09
+## Current library editions — Alpha v7, 2026-08-10
 
 This status supersedes, without erasing, the dated checkpoint language below.
 **Stable** is the unchanged official checked edition: 432 theorems, 1,185
 declared direct edges, and 22 layers. Sealed **Alpha v1** remains 885 rows and
 sealed **Alpha v2** remains 902 rows, and sealed **Alpha v3** remains 923
-rows. Sealed **Alpha v4** remains 965 rows. Sealed additive **Alpha v5**
-preserves the v4 ledger and appends 7 `FactorialVal` rows at indices 965--971;
-it is now the sealed 972-row parent. Current additive **Alpha v6** preserves
-that exact ledger and appends 21 Bertrand rows at indices 972--992 in an exact
-8 threshold + 5 finite Legendre sum + 5 relational power + 3 valuation bridge
-split: 993 theorems, 2,977 direct edges, and 45 layers, comprising Stable plus
-561 Alpha-only rows.
+rows. Sealed **Alpha v4** remains 965 rows, sealed **Alpha v5** remains 972
+rows, and sealed **Alpha v6** remains 993 rows. Current additive **Alpha v7**
+preserves that exact v6 ledger and appends 24 Bertrand rows at indices
+993--1016 in an exact 3 initial-segment constructors + 5 Legendre-successor +
+4 shared `PowTotal` + 2 compact $H/J$ base + 5 finite Legendre-recurrence + 3
+compact $H/J$ transport + 2 factorial--Legendre agreement split: 1,017
+theorems, 3,072 direct edges, and 45 layers, comprising Stable plus 585
+Alpha-only rows.
 
-Membership and evidence are independent. Alpha v6 contains 432
-`stable_closed`, 138 `alpha_closed`, 422 `body_checked`, and one
+Membership and evidence are independent. Alpha v7 contains 432
+`stable_closed`, 138 `alpha_closed`, 446 `body_checked`, and one
 `pending_layered_closure` row. Only 570 closed rows are available for checked
-use; the other 423 still need whole-library empty-context closure. The current
-runtime surface is `peano_lab.library.editions_v6` (`edition`, `entry`,
+use; the other 447 still need whole-library empty-context closure. The current
+runtime surface is `peano_lab.library.editions_v7` (`edition`, `entry`,
 `replay`), with Stable as the default and body-only/pending Alpha replay
 rejected.
 
-The current artifact index is `artifacts/peano-library/channels-v6.json`; it
-links Alpha v6's catalog, metrics, and graph while the Stable snapshot stays
+The current artifact index is `artifacts/peano-library/channels-v7.json`; it
+links Alpha v7's catalog, metrics, and graph while the Stable snapshot stays
 at `artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
 artifacts remain sealed parents. The graph's
 reachability reduction is for structural review and display, not a claim of
-proof-semantic minimality. Cold closure of the Bertrand additions and any
-Stable promotion are pending. Older descriptions of
-reviewed rows as private or unregistered record their historical Stable
-status; enrolled rows are now Alpha-only unless separately promoted.
+proof-semantic minimality. Cold closure of the 447 body-only or
+closure-pending Alpha rows and any Stable promotion are pending. Older
+descriptions of reviewed rows as private or unregistered record their
+historical Stable status; enrolled rows are now Alpha-only unless separately
+promoted.
 
-Alpha v6's enrollment, specification, and edition roots are
-`dc25a3dc0ab7346f9188eee1262700b40bb09efdacfa849f3a27475ed870b5a7`,
-`50f395c30e4f21a7b7602bc56451bf2363d1a23d811bba62a33c08e2defc1da1`,
+Alpha v7's enrollment, specification, and edition roots are
+`aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c`,
+`838c8f48f81eddcdf3e9de0f9557cee1c25eb78015513d99cfe8ab76975edc65`,
 and
-`7e46b80c4799e51da32cedf21a130274200fa14b21e0fec3b42f74d1523ab23b`.
+`9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff`.
 Membership, evidence, and channel-pointer roots are
-`bd8faa84d1ef0c090fb07aa21ecd966d4f4356999fcd12cf4f74d0e5ae8572b8`,
-`c1fcedbd7bbc5e8655dbce3b00ab0bd9296489a3b4358fb548eeb32d081e8682`,
+`e6d22473986c7e4ec1e4566f156c3dad710a4a9be2ae7b830490546da48cb703`,
+`a3709e040891b7c180c5c35876ec0e033b58ad12ce5179c3b0215ed11c1a93b6`,
 and
-`4dc0f9411227e041dbbbcc2626a04d995a6ceeedb91fe9c2d246f377596693b7`.
+`e868088b8abf7b98e1a3976058adfca5ed542a1d9b29c275ebd16c070cd810c3`.
 Artifact hashes are catalog
-`c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d`,
+`7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`,
 metrics
-`f2a6c22b9fe50581a4cfe8d3b1b494fa274d26d0b51b60e92735650a09391be7`,
+`c40f18bda0ec8feb9294cf445d08b51daf868e46b3931daf55bad91413d39e0d`,
 graph
-`532c2482a3b1c371026bd80b1b7297faffc4a1b1ee3e53031e499f1611b3ae16`,
+`85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`,
 and channels
-`6ef8bb93b2e24bdfe45389ca9417b6333ce83ae249ee49a957959a6b3471b86c`.
-The v6 suffix-depth and body-receipt roots are
-`d103de2054a0bd4de3b2faa9d98435a4f705594f8a69968e9ca956c455cb61d3`
-and
-`c23b2fc58fabd3803a0ded5f02d4ea348d67a00b25f5b28b35f3d6bcb00ff2f1`.
+`fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
 
-The 423 missing closures are required for a whole-Alpha-v6 promotion, not for an
+The 447 missing closures are required for a whole-Alpha-v7 promotion, not for an
 unrelated smaller dependency-closed batch; every proposed batch receives its
 own isolated promotion receipt.
 
@@ -290,24 +288,26 @@ prime-power valuations, binomial coefficients, prime products, and explicit
 power inequalities. The navigable status page is
 [`Bertrand's postulate campaign`](../../book/arithmetic-library/bertrand-campaign.md).
 
-Current Alpha v6 preserves the exact 972-row Alpha v5 ledger and appends 21
-Bertrand specifications at indices 972--992: 8 threshold-base, 5 finite
-Legendre-sum, 5 relational-power, and 3 valuation-bridge rows. Together the 91
-enrolled campaign rows cover quantitative order, constructive interval
-search, bounded and exact multiplicative valuation, recursive factorial
-valuation, the six-step integer guard, total ceiling/floor-square relations,
-the quotient budget, threshold bases, finite quotient sums, and the first
-power/valuation bridges. Every dependency-curried body checks, but all 91
-remain `body_checked`; checked use is still 570 and Stable is still 432.
+Current Alpha v7 preserves the exact 993-row Alpha v6 ledger and appends 24
+Bertrand specifications at indices 993--1016 in the frozen 3+5+4+2+5+3+2
+split: initial-segment constructors, Legendre-successor facts, shared
+`PowTotal` facts, compact $H/J$ bases, finite Legendre recurrence, compact
+$H/J$ transport, and factorial--Legendre agreement. Together the 115 enrolled
+campaign rows cover quantitative order, constructive interval search, bounded
+and exact multiplicative valuation, recursive factorial valuation, finite
+quotient sums and their recurrence, equality with `FactorialVal`, the
+six-step integer guard, total ceiling/floor-square relations, the quotient
+budget, threshold bases, and compact $H/J$ six-step transport. Every
+dependency-curried body checks, but all 115 remain `body_checked`; checked use
+is still 570 and Stable is still 432.
 
-The five Legendre-successor rows in `5b9433a` and four capacity-shared
-`PowTotal` rows in `b2035ce` are pushed candidates, not Alpha-v6 members. The
-successor suite has a maximum local closure of 81,828 nodes/depth 95. The
-shared-power closures have 5,327, 10,630, 11,062, and 13,336 nodes, saving
-59,836, 59,833, 59,836, and 119,652 nodes against their historical comparison
-counts. The $H/J$ base-window layer is in progress. The finite Legendre
-recurrence, its equality with factorial valuation, and Bertrand's postulate
-itself are **not yet proved**.
+The finite Legendre recurrence,
+`prime_factorial_valuation_eq_legendre_sum`, and compact $H/J$ transport are
+therefore complete body evidence, not empty-context admission or promotion.
+The all-$s$ envelope, binomial and prime-product bounds, final inequality,
+finite coverage, and Bertrand's postulate itself are **not yet proved**. Heavy
+local gates run serially, with each proof module or mutation group in a fresh
+Python process and no concurrent proof worker.
 
 ## Design and trust
 

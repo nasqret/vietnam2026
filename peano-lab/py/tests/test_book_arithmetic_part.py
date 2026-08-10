@@ -253,22 +253,24 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "**965** theorems",
         "**972** theorems",
         "**993** theorems",
+        "**1,017** theorems",
         "**570** theorems",
         "**2,641** edges / **45** layers",
         "**2,730** edges / **45** layers",
         "**2,891** edges / **45** layers",
         "**2,912** edges / **45** layers",
-        "**2,977** edges / **45** layers",
+        "**3,072** edges / **45** layers",
         "432 Stable plus 453 Alpha-only rows",
         "432 Stable plus 491 Alpha-only rows",
         "432 Stable plus 533 Alpha-only rows",
         "432 Stable plus 540 Alpha-only rows",
         "432 Stable plus 561 Alpha-only rows",
+        "432 Stable plus 585 Alpha-only rows",
         "314 `body_checked`",
         "352 `body_checked`",
         "394 `body_checked`",
         "401 `body_checked`",
-        "422 `body_checked`",
+        "446 `body_checked`",
         "one `pending_layered_closure`",
         'edition("alpha").checked_specs',
         'entry("cell_list_extensional", edition="alpha")',
@@ -279,13 +281,11 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "artifacts/peano-library/channels-v3.json",
         "artifacts/peano-library/channels-v4.json",
         "artifacts/peano-library/channels-v5.json",
-        "artifacts/peano-library/channels-v6.json",
-        "46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473",
-        "bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af",
-        "94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892",
-        "dc25a3dc0ab7346f9188eee1262700b40bb09efdacfa849f3a27475ed870b5a7",
-        "7e46b80c4799e51da32cedf21a130274200fa14b21e0fec3b42f74d1523ab23b",
+        "artifacts/peano-library/channels-v7.json",
+        "aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c",
+        "9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff",
         "c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d",
+        "7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4",
         "Bertrand campaign chapter",
         "direct neighborhood",
     ):
@@ -295,12 +295,13 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
     assert "316 Alpha-only specifications" in normalized_proof_explorer
     assert "748" in normalized_proof_explorer
     for exact in (
-        "## Current Alpha v6 layer",
-        "| Alpha v6 specifications | 993 |",
+        "## Current Alpha v7 layer",
+        "| Alpha v7 specifications | 1,017 |",
         "| `FactorialVal` rows | 7 |",
         "8 + 5 + 5 + 3",
+        "3 + 5 + 4 + 2 + 5 + 3 + 2",
         "## Alpha v6 threshold, finite-sum, and bridge layer",
-        "## Pushed candidates beyond Alpha v6",
+        "## Alpha v7 recurrence, equality, and $H/J$ layer",
         "eight-row threshold tranche",
         "five-row finite Legendre-sum interface",
         "does **not** yet prove",
@@ -314,22 +315,26 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "`5b9433a`",
         "`b2035ce`",
         "`5b189f0`",
-        "81,828 structural nodes",
-        "59,836, 59,833, 59,836, and 119,652 nodes",
-        "make peano-library-alpha-v6-check",
+        "`70c5b16`",
+        "`de58034`",
+        "`985a773`",
+        "`158d87c`",
+        "`00e8361`",
+        "`874e81e`",
+        "prime_factorial_valuation_eq_legendre_sum",
+        "make peano-library-alpha-v7-check",
     ):
         assert exact in bertrand
     for exact in (
-        "## Peano Alpha v6 — threshold, finite-sum, and bridge layer",
-        "[`peano-library/channels-v6.json`](peano-library/channels-v6.json)",
-        "993 theorem specifications, 2,977 declared direct edges",
-        "c23b2fc58fabd3803a0ded5f02d4ea348d67a00b25f5b28b35f3d6bcb00ff2f1",
-        "five Legendre-successor rows in commit `5b9433a`",
+        "## Peano Alpha v7 — Bertrand recurrence, equality, and transport",
+        "[`peano-library/channels-v7.json`](peano-library/channels-v7.json)",
+        "1,017 theorem specifications, 3,072 declared direct edges",
+        "aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c",
+        "prime_factorial_valuation_eq_legendre_sum",
+        "make peano-library-alpha-v7-check",
     ):
         assert exact in artifacts
-    assert "four capacity-shared `PowTotal` rows in `b2035ce`" in (
-        normalized_artifacts
-    )
+    assert "all twenty-four additions fail closed" in normalized_artifacts
 
 
 def test_generated_atlas_is_byte_current() -> None:

@@ -17,18 +17,19 @@ $$
 
 ```{admonition} Current evidence boundary
 :class: warning
-Bertrand's postulate is **not yet proved** in this repository. Alpha v5 is a
-sealed 972-row parent, and current Alpha v6 contains ninety-one campaign
-specifications whose dependency-curried bodies check. Its twenty-one new rows
-enroll eight threshold-base facts, five finite Legendre-sum facts, five
-relational-power facts, and three Legendre-valuation bridge facts. They remain
-`body_checked`, have no empty-context admission metadata, and are unavailable
-through checked theorem replay. Five Legendre-successor rows and four
-capacity-shared `PowTotal` rows are pushed candidates outside v6. The finite
-Legendre recurrence and its equality with factorial valuation, binomial
-coefficients, central-binomial bounds, the primorial bound, exact main
-inequality, finite coverage, and both Bertrand endpoints remain open. The
-$H/J$ base-window layer is currently in progress.
+Bertrand's postulate is **not yet proved** in this repository. Alpha v6 is the
+sealed 993-row parent, and current Alpha v7 contains 115 campaign
+specifications whose dependency-curried bodies check. Its twenty-four-row
+suffix has the exact 3+5+4+2+5+3+2 split: initial-segment constructors,
+Legendre-successor facts, capacity-shared `PowTotal` facts, the compact $H/J$
+base window, finite Legendre recurrence, compact $H/J$ transport, and
+factorial--Legendre agreement. In particular, the equality between
+`FactorialVal` and the finite Legendre sum and the compact six-step $H/J$
+transport now have complete body evidence. Every v7 suffix row nevertheless
+remains `body_checked`, has no empty-context admission metadata, and is
+unavailable through checked theorem replay. Binomial coefficients,
+central-binomial bounds, the primorial bound, the completed main inequality,
+finite coverage, and both Bertrand endpoints remain open.
 ```
 
 The binding statement, logic, representation, validation, and release rules
@@ -55,47 +56,48 @@ bounded_prime_interval_search(l,u)
 Consequently, the negative branch is explicit data. The proof never turns
 $\neg\neg\exists p$ into $\exists p$.
 
-## Current Alpha v6 layer
+## Current Alpha v7 layer
 
-Alpha v6 is an additive child of the sealed 972-row Alpha v5 ledger.
+Alpha v7 is an additive child of the sealed 993-row Alpha v6 ledger, published
+in commit `874e81e`.
 
 | Quantity | Exact value |
 |---|---:|
-| Alpha v6 specifications | 993 |
+| Alpha v7 specifications | 1,017 |
 | Stable rows | 432 |
-| Alpha-only rows | 561 |
+| Alpha-only rows | 585 |
 | checked-use rows | 570 |
-| direct dependency edges | 2,977 |
+| direct dependency edges | 3,072 |
 | dependency layers | 45 |
 | first-round Bertrand rows | 21 |
 | Round-2 Bertrand rows | 42 |
 | `FactorialVal` rows | 7 |
 | Alpha-v6 threshold / finite-sum / power / valuation rows | 8 + 5 + 5 + 3 |
+| Alpha-v7 constructor / successor / total-power / base / recurrence / transport / equality rows | 3 + 5 + 4 + 2 + 5 + 3 + 2 |
 
-All ninety-one campaign additions are `body_checked`; checked use remains
+All 115 campaign additions are `body_checked`; checked use remains
 unchanged at 570. The current enrollment root is
-`dc25a3dc0ab7346f9188eee1262700b40bb09efdacfa849f3a27475ed870b5a7`.
+`aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c`.
 The ordered specification root is
-`50f395c30e4f21a7b7602bc56451bf2363d1a23d811bba62a33c08e2defc1da1`.
+`838c8f48f81eddcdf3e9de0f9557cee1c25eb78015513d99cfe8ab76975edc65`.
 The full edition identity is
-`7e46b80c4799e51da32cedf21a130274200fa14b21e0fec3b42f74d1523ab23b`.
+`9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff`.
 The membership, evidence, and channel-pointer roots are respectively
-`bd8faa84d1ef0c090fb07aa21ecd966d4f4356999fcd12cf4f74d0e5ae8572b8`,
-`c1fcedbd7bbc5e8655dbce3b00ab0bd9296489a3b4358fb548eeb32d081e8682`,
+`e6d22473986c7e4ec1e4566f156c3dad710a4a9be2ae7b830490546da48cb703`,
+`a3709e040891b7c180c5c35876ec0e033b58ad12ce5179c3b0215ed11c1a93b6`,
 and
-`4dc0f9411227e041dbbbcc2626a04d995a6ceeedb91fe9c2d246f377596693b7`.
+`e868088b8abf7b98e1a3976058adfca5ed542a1d9b29c275ebd16c070cd810c3`.
 The deterministic channel pointer is
-[`channels-v6.json`](https://github.com/nasqret/vietnam2026/blob/5b189f080ddb21e36e68359bc2aea28b550d5ee2/artifacts/peano-library/channels-v6.json).
-The v6 catalog, metrics, reduced graph, and channels SHA-256 values are
-`c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d`,
-`f2a6c22b9fe50581a4cfe8d3b1b494fa274d26d0b51b60e92735650a09391be7`,
-`532c2482a3b1c371026bd80b1b7297faffc4a1b1ee3e53031e499f1611b3ae16`,
+[`channels-v7.json`](https://github.com/nasqret/vietnam2026/blob/874e81e/artifacts/peano-library/channels-v7.json).
+The v7 catalog, metrics, reduced graph, and channels SHA-256 values are
+`7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`,
+`c40f18bda0ec8feb9294cf445d08b51daf868e46b3931daf55bad91413d39e0d`,
+`85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`,
 and
-`6ef8bb93b2e24bdfe45389ca9417b6333ce83ae249ee49a957959a6b3471b86c`.
-The exact suffix-depth and fresh body-receipt roots are
-`d103de2054a0bd4de3b2faa9d98435a4f705594f8a69968e9ca956c455cb61d3`
-and
-`c23b2fc58fabd3803a0ded5f02d4ea348d67a00b25f5b28b35f3d6bcb00ff2f1`.
+`fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
+The evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
+446 `body_checked`, and one `pending_layered_closure` row. No v7 row was
+promoted.
 
 ### B0 — constructive interval search
 
@@ -262,12 +264,16 @@ fail closed. Each nevertheless has evidence `body_checked`,
 The local closure measurements above are feasibility evidence and are not
 empty-context admission.
 
-## Pushed candidates beyond Alpha v6
+## Alpha v7 recurrence, equality, and $H/J$ layer
 
-Two later reviewed proof tranches are pushed but deliberately absent from the
-v6 enrollment ledger.
+Alpha v7 enrolls twenty-four rows over the byte-identical v6 prefix. The first
+three are optimized constructive initial-segment constructors:
+`eisenstein_initial_segment_indicator_choice`,
+`eisenstein_initial_segment_prefix_extend`, and
+`eisenstein_initial_segment_prefix_exists`.
 
-Commit `5b9433a` adds five Legendre-successor ingredients:
+The next five are the Legendre-successor ingredients originally authored in
+`5b9433a`:
 
 - `division_remainder_successor_cases`;
 - `division_successor_quotient_by_bit`;
@@ -275,23 +281,24 @@ Commit `5b9433a` adds five Legendre-successor ingredients:
 - `power_quotient_prefix_decoded_divrem`; and
 - `power_quotient_successor_pointwise_add`.
 
-Their exact local closure maxima are 81,828 structural nodes, depth 95, 6,931
-distinct objects, and 7,226 proof-DAG edges. These pointwise quotient facts do
-not yet supply the finite Legendre-sum recurrence or identify that sum with
-`FactorialVal`.
+They feed five finite-recurrence rows culminating in
+`prime_legendre_sum_succ`, authored in `de58034`. The recurrence is complete
+as dependency-curried body evidence.
 
-Commit `b2035ce` adds four capacity-shared `PowTotal` candidates:
+The four capacity-shared `PowTotal` rows originally authored in `b2035ce` are
 `pow_successor_compose_from_total`, `pow_mul_exp_from_total`,
 `pow_exponent_monotone_from_total`, and `pow_two_seed_bundle_from_total`.
-Their checked local closures have respectively 5,327, 10,630, 11,062, and
-13,336 structural nodes. Against the frozen historical comparison counts they
-save exactly 59,836, 59,833, 59,836, and 119,652 nodes; the maximum observed
-depth is 143 and the maximum distinct-object count is 3,140. Sharing is a
-capacity result, not enrollment or promotion.
+They support the two-row compact base-window layer in `70c5b16` and the
+three-row compact six-step transport in `985a773`. The final transport theorem
+is `bertrand_hj_six_step_from_total`.
 
-The $H/J$ base-window layer is in progress and has no Alpha-v6 rows. The
-finite Legendre recurrence, Legendre's equality, and Bertrand's postulate are
-still open.
+Finally, `158d87c` proves `factorial_legendre_successor_agreement` and
+`prime_factorial_valuation_eq_legendre_sum`, completing Legendre's equality
+with `FactorialVal` at the body-evidence level. `00e8361` supplies the
+optimized constructor source needed by the frozen dependency order. All seven
+source blocks replay, reject their prescribed mutations, contain zero `DNE`,
+and remain fail-closed `body_checked` rows. This is enrollment, not promotion:
+Bertrand's postulate is still open.
 
 ## Dependency roadmap
 
@@ -342,9 +349,10 @@ $$
 
 and the exact identity $E(s+6)=E(s)+2s+6$. `FloorSqrt`, ceiling-by-six, the
 quotient complement, threshold arithmetic, and the first relational-power
-bridge are now formalized and enrolled body-only. The actual exponential
-$H/J$ bases, $H$ transport, and the final power-product bridge remain
-obligations; authoring of the base-window layer is in progress.
+bridge, compact $H/J$ bases, and six-step $H/J$ transport are now formalized
+and enrolled body-only. The all-$s$ residue-class induction/envelope and the
+final power-product bridge remain obligations before this route can feed the
+large-$n$ theorem.
 
 The first implementation may use the more proof-friendly large branch
 $n\ge2048$ rather than 512. Its base roots are $s=64,\ldots,69$, where
@@ -375,9 +383,15 @@ statement.
 | `85625d6` | additive, fail-closed Alpha v5 channel |
 | `bb24543` | five-row relational-power bridge |
 | `2f41a97` | three-row Legendre-valuation bridge |
-| `5b9433a` | five Legendre-successor candidates outside v6 |
-| `b2035ce` | four capacity-shared `PowTotal` candidates outside v6 |
+| `5b9433a` | five Legendre-successor bodies, later enrolled in v7 |
+| `b2035ce` | four capacity-shared `PowTotal` bodies, later enrolled in v7 |
 | `5b189f0` | additive, fail-closed Alpha v6 channel |
+| `70c5b16` | compact two-row $H/J$ base window |
+| `de58034` | five-row finite Legendre recurrence |
+| `985a773` | compact three-row $H/J$ six-step transport |
+| `158d87c` | factorial valuation equals the finite Legendre sum |
+| `00e8361` | optimized constructive initial-segment constructors |
+| `874e81e` | additive, fail-closed Alpha v7 channel |
 
 All checkpoints are pushed to `nasqret/vietnam2026` on
 `agent/new-theorems-tranche-01`.
@@ -385,30 +399,14 @@ All checkpoints are pushed to `nasqret/vietnam2026` on
 ## Reproduce the current gates
 
 ```bash
-make peano-library-alpha-v6-check
-
-PYTHONPATH=peano-lab/py python3 -m pytest -q \
-  peano-lab/py/tests/test_bertrand_prime_interval_candidate.py \
-  peano-lab/py/tests/test_bertrand_power_order_candidate.py \
-  peano-lab/py/tests/test_bertrand_power_growth_candidate.py \
-  peano-lab/py/tests/test_bertrand_power_valuation_candidate.py \
-  peano-lab/py/tests/test_bertrand_power_valuation_laws_candidate.py \
-  peano-lab/py/tests/test_bertrand_power_divisibility_candidate.py \
-  peano-lab/py/tests/test_bertrand_integer_envelope_candidate.py \
-  peano-lab/py/tests/test_bertrand_ceil_sqrt_candidate.py \
-  peano-lab/py/tests/test_bertrand_floor_sqrt_total_candidate.py \
-  peano-lab/py/tests/test_bertrand_quotient_budget_candidate.py \
-  peano-lab/py/tests/test_bertrand_factorial_valuation_candidate.py \
-  peano-lab/py/tests/test_bertrand_threshold_base_candidate.py \
-  peano-lab/py/tests/test_bertrand_legendre_sum_candidate.py \
-  peano-lab/py/tests/test_bertrand_power_bridge_candidate.py \
-  peano-lab/py/tests/test_bertrand_legendre_valuation_bridge_candidate.py \
-  peano-lab/py/tests/test_bertrand_legendre_successor_candidate.py \
-  peano-lab/py/tests/test_bertrand_power_total_candidate.py
+make peano-library-alpha-v7-check
 ```
 
-The first command validates the published Alpha-v6 evidence boundary and
-independently replays its twenty-one new dependency-curried bodies. The second
-includes expensive local empty-context feasibility checks, including the nine
-candidate rows outside v6; it does not upgrade Alpha evidence or promote
-anything to Stable.
+This validates the published Alpha-v7 evidence boundary and independently
+replays its twenty-four new dependency-curried bodies. On a memory-constrained
+laptop, heavyweight proof modules must run serially in fresh Python processes,
+with RSS observed and no concurrent proof worker. The v7 Make target therefore
+splits mutation groups and proof modules across fresh processes. A single
+monolithic pytest process can retain proof DAGs and is not an approved local
+gate. Successful replay does not upgrade Alpha evidence or promote anything
+to Stable.

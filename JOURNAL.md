@@ -5144,3 +5144,66 @@ Work on the $H/J$ base window is in progress. The finite Legendre recurrence,
 Legendre's equality with factorial valuation, binomial and primorial bounds,
 the final large-$n$ inequality, finite coverage, and Bertrand's postulate
 remain open.
+
+## 2026-08-10 — Bertrand proof recovery and Alpha v7
+
+The apparent proof-run crashes were diagnosed before work resumed. macOS
+jetsam reports showed two concurrent Python proof builders, each retaining
+roughly 15 GB on a 16 GB host; additional Python resource reports recorded
+large file-backed write volumes. This was host memory pressure, not a kernel
+rejection or a failed theorem. All subsequent proof work used a single heavy
+worker, explicit RSS observation, and fresh Python processes for separate
+modules. The Alpha-v7 Make gate now preserves that discipline by splitting
+mutation groups and heavyweight proof suites rather than accumulating all
+proof DAGs in one pytest process.
+
+Five proof checkpoints were completed and pushed before publication:
+
+- `985a773` proves the compact three-row $H/J$ six-step transport;
+- `158d87c` proves factorial valuation equals the finite Legendre sum;
+- `00e8361` supplies the optimized three-row constructive initial-segment
+  interface; and
+- the earlier `70c5b16` and `de58034` checkpoints provide the compact $H/J$
+  base window and finite Legendre recurrence used by the release.
+
+Commit `874e81e` publishes Alpha v7 over the exact sealed 993-row Alpha-v6
+parent. It appends twenty-four rows at indices 993--1016 in the frozen split
+3 constructors + 5 Legendre-successor + 4 shared `PowTotal` + 2 $H/J$ base +
+5 Legendre-recurrence + 3 $H/J$ transport + 2 factorial--Legendre agreement.
+The resulting edition has 1,017 specifications, 3,072 declared direct edges,
+45 layers, 432 Stable rows, 585 Alpha-only rows, and 570 checked-use rows.
+Evidence is 432 `stable_closed`, 138 `alpha_closed`, 446 `body_checked`, and
+one `pending_layered_closure`.
+
+The deterministic builder check, independent verifier with all twenty-four
+body replays, five runtime edition tests, and all thirty release-verifier
+cases passed: two positive checks and twenty-eight mutation cases. The cases
+were deliberately run in fresh-process groups; cases 1--26 completed before
+the execution-session ceiling and cases 27--30 passed separately. Every new
+row remains `body_checked` with
+`checked_use=false`, null proof tag, and null empty-context closure metadata.
+No theorem was promoted to Stable.
+
+The enrollment, specification, edition, membership, evidence, and
+channel-pointer roots are respectively
+`aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c`,
+`838c8f48f81eddcdf3e9de0f9557cee1c25eb78015513d99cfe8ab76975edc65`,
+`9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff`,
+`e6d22473986c7e4ec1e4566f156c3dad710a4a9be2ae7b830490546da48cb703`,
+`a3709e040891b7c180c5c35876ec0e033b58ad12ce5179c3b0215ed11c1a93b6`,
+and
+`e868088b8abf7b98e1a3976058adfca5ed542a1d9b29c275ebd16c070cd810c3`.
+Artifact SHA-256 values are catalog
+`7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`,
+metrics
+`c40f18bda0ec8feb9294cf445d08b51daf868e46b3931daf55bad91413d39e0d`,
+graph
+`85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`,
+and channels
+`fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
+
+The finite Legendre recurrence, the `FactorialVal` equality, and compact
+$H/J$ transport are now complete at the dependency-curried body-evidence
+level. Bertrand's postulate itself remains open: the all-$s$ exponential
+envelope, binomial and prime-product bounds, the final large-$n$ inequality,
+finite coverage, and the constructive endpoint still require proof.

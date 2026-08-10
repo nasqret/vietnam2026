@@ -2454,3 +2454,54 @@
   Legendre recurrence, Legendre's equality with `FactorialVal`, binomial and
   primorial bounds, the final inequality, finite coverage, and Bertrand's
   postulate remain open.
+
+## 2026-08-10 — current Alpha v7 / Bertrand recurrence-and-transport contract
+
+- **Current edition:** commit `874e81e` publishes Alpha v7 as the exact sealed
+  993-row Alpha-v6 prefix plus twenty-four dependency-topological Bertrand rows
+  at indices 993--1016. The suffix split is 3 initial-segment constructors + 5
+  Legendre-successor + 4 capacity-shared `PowTotal` + 2 compact $H/J$ base + 5
+  finite Legendre-recurrence + 3 compact $H/J$ transport + 2
+  factorial--Legendre agreement rows.
+- **Inventory and evidence:** Alpha v7 has 1,017 specifications, 3,072 declared
+  direct edges, 45 layers, 432 Stable rows, 585 Alpha-only rows, and exactly
+  570 checked-use rows. Evidence is 432 `stable_closed`, 138 `alpha_closed`,
+  446 `body_checked`, and one `pending_layered_closure`. All twenty-four suffix
+  rows have `checked_use=false`, null proof tags, null empty-context closure
+  metadata, and fail-closed replay. There was no Stable promotion.
+- **Completed body mathematics:** the finite Legendre recurrence,
+  `prime_factorial_valuation_eq_legendre_sum`, the compact $H/J$ base window,
+  and the compact six-step $H/J$ transport all have complete
+  dependency-curried body evidence with zero DNE and mutation rejection. This
+  does not claim empty-context admission. Bertrand's postulate remains open;
+  the all-$s$ envelope, binomial and prime-product bounds, final inequality,
+  finite coverage, and constructive capstone remain.
+- **Exact roots:** enrollment
+  `aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c`;
+  specification
+  `838c8f48f81eddcdf3e9de0f9557cee1c25eb78015513d99cfe8ab76975edc65`;
+  edition
+  `9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff`;
+  membership
+  `e6d22473986c7e4ec1e4566f156c3dad710a4a9be2ae7b830490546da48cb703`;
+  evidence
+  `a3709e040891b7c180c5c35876ec0e033b58ad12ce5179c3b0215ed11c1a93b6`;
+  channel pointer
+  `e868088b8abf7b98e1a3976058adfca5ed542a1d9b29c275ebd16c070cd810c3`.
+- **Artifact SHA-256:** catalog
+  `7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`;
+  metrics
+  `c40f18bda0ec8feb9294cf445d08b51daf868e46b3931daf55bad91413d39e0d`;
+  graph
+  `85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`;
+  channels
+  `fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
+  The sealed v6 catalog parent remains
+  `c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d`.
+- **Crash-safe local gate:** the August 9 host failures were memory pressure,
+  not proof failures. macOS jetsam diagnostics recorded two concurrent Python
+  proof processes at roughly 15 GB each on a 16 GB machine. Heavy proof gates
+  must therefore run one at a time, each module or mutation group in a fresh
+  Python process, with RSS observed and no concurrent proof worker. The v7
+  Make target encodes this split; a monolithic retained-DAG pytest run is not
+  an approved laptop gate.

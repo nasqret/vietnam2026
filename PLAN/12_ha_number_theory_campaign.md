@@ -1219,3 +1219,66 @@ candidates with 5,327, 10,630, 11,062, and 13,336 closure nodes, saving
 59,836, 59,833, 59,836, and 119,652 nodes against the recorded historical
 comparisons. These measurements do not enroll the rows. Legendre recurrence,
 Legendre equality, and Bertrand remain open.
+
+## 2026-08-10 — Alpha v7 and the next Bertrand proof front
+
+Commit `874e81e` publishes Alpha v7 over the exact sealed 993-row Alpha-v6
+parent. It appends twenty-four reviewed rows at indices 993--1016 in the frozen
+dependency-topological split 3 initial-segment constructors + 5
+Legendre-successor + 4 capacity-shared `PowTotal` + 2 compact $H/J$ base + 5
+finite Legendre-recurrence + 3 compact $H/J$ transport + 2
+factorial--Legendre agreement.
+
+| Edition | Theorems | Direct edges | Layers | Checked use |
+|---|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 432 |
+| Alpha v6 (sealed parent) | 993 | 2,977 | 45 | 570 |
+| Alpha v7 (current) | 1,017 | 3,072 | 45 | 570 |
+
+Alpha v7 has 432 Stable and 585 Alpha-only rows. Evidence is 432
+`stable_closed`, 138 `alpha_closed`, 446 `body_checked`, and one
+`pending_layered_closure`. All twenty-four suffix rows have
+`checked_use=false`, null proof tags, null empty-context closure metadata, and
+fail-closed replay. Deterministic build, independent replay of every suffix
+body, and all thirty release-verifier cases (two positive checks and
+twenty-eight mutation cases) establish body evidence only; no row was
+promoted.
+
+The enrollment, specification, edition, membership, evidence, and
+channel-pointer roots are:
+
+- `aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c`;
+- `838c8f48f81eddcdf3e9de0f9557cee1c25eb78015513d99cfe8ab76975edc65`;
+- `9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff`;
+- `e6d22473986c7e4ec1e4566f156c3dad710a4a9be2ae7b830490546da48cb703`;
+- `a3709e040891b7c180c5c35876ec0e033b58ad12ce5179c3b0215ed11c1a93b6`;
+- `e868088b8abf7b98e1a3976058adfca5ed542a1d9b29c275ebd16c070cd810c3`.
+
+Artifact SHA-256 values are catalog
+`7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`,
+metrics
+`c40f18bda0ec8feb9294cf445d08b51daf868e46b3931daf55bad91413d39e0d`,
+graph
+`85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`,
+and channels
+`fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
+
+Current mathematical gates:
+
+- [x] B3b-recurrence: finite Legendre-sum successor recurrence, enrolled
+  body-only in Alpha v7;
+- [x] B3b-equality: `prime_factorial_valuation_eq_legendre_sum`, enrolled
+  body-only in Alpha v7;
+- [x] B6d-$H/J$ local layer: compact six-root base window and compact
+  six-step transport, enrolled body-only in Alpha v7;
+- [ ] B6d-$H/J$ global layer: derive the all-$s$ residue-class envelope and
+  final power-product inequality from those local transport bodies;
+- [ ] B4/B5: binomial integrality, central-binomial and prime-product bounds;
+- [ ] B7/B8: finite coverage, constructive branch combination, capstone
+  closure, Book graph, and reviewed release.
+
+Crash-safe execution is a binding local constraint. Heavy proof modules and
+mutation groups run serially in fresh Python processes, with RSS observed and
+no concurrent proof worker. The v7 Make target encodes the split; a monolithic
+retained-DAG pytest process is not an approved laptop gate. Bertrand's
+postulate remains open.

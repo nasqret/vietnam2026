@@ -568,3 +568,66 @@ Alpha v6. The successor suite's largest local closure is 81,828 nodes at depth
 do not enroll or admit the rows. The $H/J$ base-window layer is in progress;
 the finite Legendre recurrence, Legendre's equality, and Bertrand's postulate
 remain open.
+
+## Peano Alpha v7 — Bertrand recurrence, equality, and transport (2026-08-10)
+
+Alpha v7, published in commit `874e81e`, preserves the sealed 993-row Alpha-v6
+ledger byte-for-byte and appends twenty-four specifications at indices
+993--1016. Their frozen dependency-topological split is 3 initial-segment
+constructors, 5 Legendre-successor facts, 4 capacity-shared `PowTotal` facts,
+2 compact $H/J$ base-window facts, 5 finite Legendre-recurrence facts, 3
+compact $H/J$ transport facts, and 2 factorial--Legendre agreement facts. Every
+earlier artifact family remains immutable; Stable is unchanged at 432 rows.
+
+Current topology and evidence:
+
+- 1,017 theorem specifications, 3,072 declared direct edges, and 45 layers;
+- 432 Stable rows and 585 Alpha-only rows;
+- 432 `stable_closed`, 138 `alpha_closed`, 446 `body_checked`, and one
+  `pending_layered_closure` row; and
+- 570 checked-use rows; all twenty-four additions fail closed with
+  `checked_use=false`, null proof tags, and null empty-context closure
+  evidence.
+
+The deterministic pointer is
+[`peano-library/channels-v7.json`](peano-library/channels-v7.json). Its exact
+artifact SHA-256 values are:
+
+- catalog: `7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`;
+- metrics: `c40f18bda0ec8feb9294cf445d08b51daf868e46b3931daf55bad91413d39e0d`;
+- reduced graph: `85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`;
+  and
+- channel pointer: `fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
+
+The ordered-enrollment, ordered-specification, edition, membership, evidence,
+and channel-pointer roots are respectively
+`aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c`,
+`838c8f48f81eddcdf3e9de0f9557cee1c25eb78015513d99cfe8ab76975edc65`,
+`9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff`,
+`e6d22473986c7e4ec1e4566f156c3dad710a4a9be2ae7b830490546da48cb703`,
+`a3709e040891b7c180c5c35876ec0e033b58ad12ce5179c3b0215ed11c1a93b6`,
+and
+`e868088b8abf7b98e1a3976058adfca5ed542a1d9b29c275ebd16c070cd810c3`.
+The v7 pointer binds the sealed v6 catalog SHA-256
+`c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d`.
+
+The verifier independently replays every dependency-curried suffix body and
+fails closed under binding, evidence, topology, artifact, and body mutations.
+This completes body evidence for finite Legendre recurrence,
+`prime_factorial_valuation_eq_legendre_sum`, and compact $H/J$ six-step
+transport; it is not empty-context admission or Stable promotion. Bertrand's
+postulate remains open.
+
+Rebuild or verify this channel with:
+
+```bash
+python3 scripts/build_peano_library_channels_v7.py
+python3 scripts/build_peano_library_channels_v7.py --check
+python3 scripts/verify_peano_library_channels_v7.py
+make peano-library-alpha-v7-check
+```
+
+Heavy proof validation is deliberately serial. Each proof module and mutation
+group runs in a fresh Python process, with no concurrent proof worker, so
+retained proof DAGs cannot accumulate across the entire gate on a
+memory-constrained laptop.
