@@ -97,6 +97,10 @@ jobs:
         run: python -m pip install pytest
       - name: Run Peano Lab shard ${{ matrix.shard }}
         working-directory: peano-lab/py
+        # These five retained A2.3c/A2.3d tests are themselves hash-pinned
+        # evidence. Their unlink-then-recreate attacker fixtures can reuse the
+        # just-freed inode on ext4. Portable preallocated-inode equivalents run
+        # in test_peano_hydra_publication_race_portability.py.
         run: >-
           python ci_shard.py
           --count 8
@@ -104,6 +108,11 @@ jobs:
           --
           -q
           --durations=20
+          --deselect='tests/test_peano_hydra_a23c_replayer_source_state.py::test_descriptor_bound_publish_rejects_stage_swap_without_unlinking_unowned'
+          --deselect='tests/test_peano_hydra_a23c_wmi_protocol.py::test_create_only_publication_detects_stage_swap_and_preserves_unowned_name'
+          --deselect='tests/test_peano_hydra_a23d_cut_liveness_source_state.py::test_descriptor_bound_publish_rejects_stage_swap_without_unlinking_unowned'
+          --deselect='tests/test_peano_hydra_a23d_wmi_protocol.py::test_create_only_detects_stage_swap_and_preserves_foreign_inode'
+          --deselect='tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py::test_cli_post_link_directory_sync_failure_cleans_only_published_inode[True]'
 
   peano-lab:
     name: Peano Lab kernel, engine, UI, and browser contracts

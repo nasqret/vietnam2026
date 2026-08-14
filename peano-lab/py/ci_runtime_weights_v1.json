@@ -86,6 +86,7 @@
     {"path": "test_peano_hydra_macro_runner.py", "weight": 14000},
     {"path": "test_peano_hydra_macros.py", "weight": 500},
     {"path": "test_peano_hydra_policy.py", "weight": 9000},
+    {"path": "test_peano_hydra_publication_race_portability.py", "weight": 1000},
     {"path": "test_peano_hydra_qwen_bridge.py", "weight": 1000},
     {"path": "test_peano_hydra_result_schema.py", "weight": 1000},
     {"path": "test_peano_hydra_vampire_assistant.py", "weight": 2000},

@@ -1511,10 +1511,11 @@ compiler, not a dependency-selection optimizer.
 | `training/peano_hydra/library_pilot_optimized_construction_comparison_verifier.py` | 35,352 | `552be2d82cda8d4b0c8c5131196e45b1904b249b2c648ddbce71b13bd11d565c` |
 | `scripts/build_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,136 | `0e4d228eeb4f53458226cc5e20d8dfd2249719e271021aa8fc299286f339aa0f` |
 | `scripts/verify_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,633 | `c3627ce6e22b493766c72f4f5eae1085f60240487303480f8271d00d5bd8c765` |
-| `peano-lab/py/tests/test_peano_hydra_library_pilot_optimized_construction_comparison.py` | 18,095 | `19a14d78098a2c058816fab404a8d98e09de4be5ebd52a1c20eb1539016d2bcc` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_optimized_construction_comparison.py` | 18,213 | `551ef130eb9029582467100ef5348ab6efc6cb9890249e672aac83f0b5495689` |
 
 The focused gate passes 27 tests in 0.54 seconds; the sharder passes 32 in
-0.18 seconds; together they pass 59 in 0.68 seconds. The 113-entry CI profile
+0.18 seconds; together they pass 59 in 0.68 seconds. At that source checkpoint
+the 113-entry CI profile
 assigns 1,500 ms and models loads 549,500 / 550,000 / 549,800 / 549,500 /
 549,500 / 550,000 / 550,000 / 549,500 ms.
 
@@ -1540,12 +1541,18 @@ The retention root is
 0644 files / 26,200 bytes, 0755 directories, no symlinks, and C-sorted
 inventory root
 `b70e6c34c7954551cd21a812ef12a21668718261a31e8c0f255487eff54b37ad`.
-The retained-result test is 13,218 bytes with SHA-256
-`6a34dca20de82408cfd3ad10b8a5c570109c6f745f68a9d83e51d6cb24b95def`;
-4 tests pass in 0.36 seconds, the 32-test sharder passes in 0.17 seconds, and
-the 63-test bounded source/result/sharder gate passes in 0.92 seconds. The CI
-profile has 114 entries, assigns 1,500 ms to the result, and models loads
-550,500 / 550,000 / 549,800 / 550,000 / 550,000 / 550,000 / 549,500 /
+The retained-result test is 13,347 bytes with SHA-256
+`5b0a424bdb06e6dcfbab3ae3cf210ed151779da34d38c0c67562cf992f4a436a`;
+it remains a four-test artifact gate. Linux CI portability is enforced without
+editing the retained A2.3c/A2.3d sources: A2.3e selects the active CPython 3.12,
+and five historical unlink/recreate fixtures are replaced at shard invocation
+by deterministic preallocated-inode equivalents. The new test is 5,475 bytes,
+SHA-256
+`01f3af8ae0e4ea20cebe5e13758cca2b205a4998bbcd2086b9d10d2a84e71154`.
+The bounded source/result/portability/sharder gate passes 68 tests in 0.91
+seconds; the protected A2.3c/A2.3d result gates pass 8 in 1.06 seconds. The CI
+profile has 115 entries, assigns 1,000 ms to the portability gate, and models
+loads 550,000 / 550,000 / 549,800 / 550,500 / 550,500 / 550,000 / 550,000 /
 549,500 ms.
 
 This boundary has no WMI job, network, tactic execution, fresh kernel

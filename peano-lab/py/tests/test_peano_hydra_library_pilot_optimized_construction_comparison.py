@@ -37,7 +37,11 @@ VERIFY_CLI = (
     ROOT
     / "scripts/verify_peano_hydra_library_pilot_optimized_construction_comparison.py"
 )
-PYTHON312 = Path("/opt/homebrew/bin/python3.12")
+PYTHON312 = (
+    Path(sys.executable)
+    if sys.implementation.name == "cpython" and sys.version_info[:2] == (3, 12)
+    else Path("/opt/homebrew/bin/python3.12")
+)
 
 EXPECTED_IDENTITIES = {
     SCHEMA: (
