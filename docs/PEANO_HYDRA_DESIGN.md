@@ -975,6 +975,14 @@ creating a job. Real submission additionally requires
 `--submit --confirm PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. The validated optional
 `WMI_SSH_JUMP` is passed only as an SSH `-J` argument pair.
 
+One clean-commit `--test-only` invocation found that Bash 3.2 under `set -u`
+treated the unset optional-SSH array expansion as an unbound variable. It
+failed locally before command execution or SSH, so it deposited no snapshot
+and called no remote `sbatch`. The refrozen wrappers now have six dynamic
+fake-SSH/no-network cases covering unset, explicit-empty, and exact
+`-J jump.example` routing for both submit and collect. There has still been no
+successful real WMI test-only transport or real submission.
+
 The frozen infrastructure identities are:
 
 | Source | Bytes | SHA-256 |
@@ -983,19 +991,21 @@ The frozen infrastructure identities are:
 | `peano-lab/py/tests/test_peano_hydra_a23b_producer_source_state.py` | 11,630 | `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917` |
 | `training/peano_hydra/library_pilot_dependency_vector_audit_verifier.py` | 99,551 | `080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` |
 | `scripts/verify_peano_hydra_library_pilot_dependency_vector_audit.py` | 18,652 | `e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` |
-| `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py` | 17,394 | `eefa3590098700a8791e23038ddca2a67efd336ce521996aedd7ef3e60c6b3b9` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py` | 17,393 | `9ba762a895ec278e03bc9655fd83238f75ec7639c3d65186f135c8593ee006a4` |
 | `scripts/run_peano_hydra_a23b_wmi.py` | 107,618 | `ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` |
 | `slurm/peano_wmi_hydra_a23b_vector_audit.sbatch` | 5,032 | `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` |
-| `scripts/submit_wmi_hydra_a23b_vector_audit.sh` | 14,860 | `e76f0255a48c9204e8f1a739289bd65d2c4e34f1a2594b9c2a915a4a397da59b` |
-| `scripts/collect_wmi_hydra_a23b_vector_audit.sh` | 5,632 | `f0943cb33b7794255cabfe30a7928ba01b01809c965c444d96ddbc32ed335b8a` |
-| `peano-lab/py/tests/test_peano_hydra_a23b_wmi_protocol.py` | 27,869 | `e6b1ecef8c8c76935996cfcd7a6fbb95e729d0b5fb204fa0925e45ba41e11852` |
+| `scripts/submit_wmi_hydra_a23b_vector_audit.sh` | 14,826 | `9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` |
+| `scripts/collect_wmi_hydra_a23b_vector_audit.sh` | 5,638 | `5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` |
+| `peano-lab/py/tests/test_peano_hydra_a23b_wmi_protocol.py` | 31,982 | `822724aa824e830f4f5f700c182025252ac20599b00786315252a4199b0bd364` |
 
-The 10 source-state, 12 verifier, and 16 WMI protocol tests passed together:
-38 in 8.65 seconds. An independent execution-boundary threat audit reported
-PASS. No network call, test-only deposit, real submission, six-baseline/44-
-attempt producer build, WMI job, result, verification receipt, execution
-receipt, collection receipt, or runtime content root exists. All dependency-
-vector, publication, A2, authority, and eligibility flags remain false.
+The 10 source-state, 12 verifier, and 22 WMI protocol tests passed together:
+44 in 12.80 seconds. An independent execution-boundary threat audit reported
+PASS. Apart from the failed-before-SSH local test-only invocation, there was
+no network call, snapshot deposit, remote `sbatch`, real submission, six-
+baseline/44-attempt producer build, WMI job, result, verification receipt,
+execution receipt, collection receipt, or runtime content root. All
+dependency-vector, publication, A2, authority, and eligibility flags remain
+false.
 
 ### 2.4 Sealed-test law
 

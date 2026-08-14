@@ -509,4 +509,3 @@ def test_no_a23b_candidate_or_verification_result_is_retained() -> None:
     assert not list(
         artifact_root.glob("l0-pilot-dependency-vector-audit-*.json")
     )
-

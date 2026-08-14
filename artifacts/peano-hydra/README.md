@@ -376,22 +376,24 @@ The exact frozen source identities are:
 | `../../peano-lab/py/tests/test_peano_hydra_a23b_producer_source_state.py` | 11,630 | `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917` |
 | `../../training/peano_hydra/library_pilot_dependency_vector_audit_verifier.py` | 99,551 | `080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` |
 | `../../scripts/verify_peano_hydra_library_pilot_dependency_vector_audit.py` | 18,652 | `e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` |
-| `../../peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py` | 17,394 | `eefa3590098700a8791e23038ddca2a67efd336ce521996aedd7ef3e60c6b3b9` |
+| `../../peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py` | 17,393 | `9ba762a895ec278e03bc9655fd83238f75ec7639c3d65186f135c8593ee006a4` |
 | `../../scripts/run_peano_hydra_a23b_wmi.py` | 107,618 | `ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` |
 | `../../slurm/peano_wmi_hydra_a23b_vector_audit.sbatch` | 5,032 | `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` |
-| `../../scripts/submit_wmi_hydra_a23b_vector_audit.sh` | 14,860 | `e76f0255a48c9204e8f1a739289bd65d2c4e34f1a2594b9c2a915a4a397da59b` |
-| `../../scripts/collect_wmi_hydra_a23b_vector_audit.sh` | 5,632 | `f0943cb33b7794255cabfe30a7928ba01b01809c965c444d96ddbc32ed335b8a` |
-| `../../peano-lab/py/tests/test_peano_hydra_a23b_wmi_protocol.py` | 27,869 | `e6b1ecef8c8c76935996cfcd7a6fbb95e729d0b5fb204fa0925e45ba41e11852` |
+| `../../scripts/submit_wmi_hydra_a23b_vector_audit.sh` | 14,826 | `9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` |
+| `../../scripts/collect_wmi_hydra_a23b_vector_audit.sh` | 5,638 | `5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` |
+| `../../peano-lab/py/tests/test_peano_hydra_a23b_wmi_protocol.py` | 31,982 | `822724aa824e830f4f5f700c182025252ac20599b00786315252a4199b0bd364` |
 
-The source-state, verifier, and WMI files passed 38 focused no-network tests
-in 8.65 seconds (10 / 12 / 16), and an independent threat audit reported
-PASS. No SSH connection, test-only deposit, `sbatch`, real submission, six-
-baseline/44-attempt build, result, verification receipt, execution receipt,
-collection receipt, or runtime root exists. This directory therefore still
-contains no A2.3b artifact. Vector completeness/necessity, independent
-negative replay, minimality, `optimized_best_known`, publication or its
-union, public-graph application, A2, authority, and all eligibility flags
-remain false.
+The source-state, verifier, and WMI files passed 44 focused no-network tests
+in 12.80 seconds (10 / 12 / 22), and an independent threat audit reported
+PASS. One clean-commit test-only invocation failed locally before SSH on the
+old empty-array route; the refrozen wrappers pass six fake-SSH/no-network
+routing cases. No successful real test-only transport, SSH connection,
+snapshot deposit, `sbatch`, real submission, six-baseline/44-attempt build,
+result, verification receipt, execution receipt, collection receipt, or
+runtime root exists. This directory therefore still contains no A2.3b
+artifact. Vector completeness/necessity, independent negative replay,
+minimality, `optimized_best_known`, publication or its union, public-graph
+application, A2, authority, and all eligibility flags remain false.
 
 ## H1.1b3 selected candidate page source
 

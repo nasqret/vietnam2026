@@ -1924,24 +1924,28 @@ timeout, process, malformed, scheduler, or missing evidence remains
 `unknown`, and the receipt is create-only and written last.
 
 The submitter defaults to `--test-only`; real submission requires the literal
-confirmation `PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. Neither path was invoked.
-There was no SSH contact, snapshot deposit, `sbatch` call, local real audit,
-or WMI job. Source-state generator/test identities are
+confirmation `PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. One clean-commit test-only
+invocation exposed an empty optional-SSH-array bug and stopped locally before
+SSH. Six fake-SSH/no-network cases now cover unset, explicit-empty, and exact
+`-J jump.example` routing for both wrappers. There was no successful real
+test-only transport, SSH contact, snapshot deposit, `sbatch` call, real
+submission, local real audit, or WMI job. Source-state generator/test
+identities are
 `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
 `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917`.
 Verifier module/CLI/test identities are
 `080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` /
 `e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` /
-`eefa3590098700a8791e23038ddca2a67efd336ce521996aedd7ef3e60c6b3b9`.
+`9ba762a895ec278e03bc9655fd83238f75ec7639c3d65186f135c8593ee006a4`.
 Runner/sbatch/submit/collect/test identities are
 `ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` /
 `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
-`e76f0255a48c9204e8f1a739289bd65d2c4e34f1a2594b9c2a915a4a397da59b` /
-`f0943cb33b7794255cabfe30a7928ba01b01809c965c444d96ddbc32ed335b8a` /
-`e6b1ecef8c8c76935996cfcd7a6fbb95e729d0b5fb204fa0925e45ba41e11852`.
+`9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` /
+`5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` /
+`822724aa824e830f4f5f700c182025252ac20599b00786315252a4199b0bd364`.
 
-The focused source-state, verifier, and WMI gates passed 38 tests in 8.65
-seconds (10, 12, and 16 respectively), and an independent threat audit passed.
+The focused source-state, verifier, and WMI gates passed 44 tests in 12.80
+seconds (10, 12, and 22 respectively), and an independent threat audit passed.
 Those tests establish only infrastructure contracts. There is still no A2.3b
 result or runtime receipt/root, and every vector-completeness, independence,
 best-known, publication, A2, authority, and eligibility flag remains false.

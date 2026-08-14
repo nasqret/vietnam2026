@@ -43,6 +43,72 @@ def _canonical(value: object) -> bytes:
     ).encode("utf-8")
 
 
+def _install_fake_ssh(tmp_path: Path) -> tuple[Path, Path]:
+    fake_bin = tmp_path / "fake-bin"
+    fake_bin.mkdir()
+    log = tmp_path / "ssh-argv.bin"
+    fake_ssh = fake_bin / "ssh"
+    fake_ssh.write_text(
+        """#!/bin/bash
+set -eu
+: "${WMI_TEST_SSH_LOG:?}"
+{
+  printf '%s\\0' "$#"
+  printf '%s\\0' "$@"
+} >> "$WMI_TEST_SSH_LOG"
+cat > /dev/null
+""",
+        encoding="utf-8",
+    )
+    fake_ssh.chmod(0o755)
+    return fake_bin, log
+
+
+def _fake_ssh_calls(log: Path) -> list[list[str]]:
+    fields = log.read_bytes().split(b"\0")
+    assert fields.pop() == b""
+    calls: list[list[str]] = []
+    cursor = 0
+    while cursor < len(fields):
+        count = int(fields[cursor].decode("ascii"))
+        cursor += 1
+        call = [
+            field.decode("utf-8")
+            for field in fields[cursor : cursor + count]
+        ]
+        assert len(call) == count
+        calls.append(call)
+        cursor += count
+    return calls
+
+
+def _clean_protocol_repository(tmp_path: Path) -> Path:
+    repository = tmp_path / "repository"
+    repository.mkdir()
+    protocol_sources = {
+        *WMI.INFRASTRUCTURE_SOURCES,
+        *(path for path, _digest in WMI.FROZEN_PRODUCER_SOURCES),
+    }
+    for relative in sorted(protocol_sources):
+        destination = repository / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(ROOT / relative, destination)
+    for argv in (
+        ("init", "-q"),
+        ("config", "user.email", "hydra-test@example.invalid"),
+        ("config", "user.name", "Hydra Test"),
+        ("add", "."),
+        ("commit", "-q", "-m", "fixture"),
+    ):
+        subprocess.run(
+            ["git", *argv],
+            cwd=repository,
+            check=True,
+            capture_output=True,
+        )
+    return repository
+
+
 def _shared_digest(name: str, position: int) -> str:
     return hashlib.sha256(f"{name}:{position}".encode("ascii")).hexdigest()
 
@@ -705,10 +771,14 @@ def test_shell_protocol_is_content_addressed_held_bounded_and_isolated() -> None
     generator = SOURCE_STATE.read_text(encoding="utf-8")
 
     assert 'stage="$(cd "$stage" && pwd -P)"' in submit
-    assert 'ssh_route=(-J "$ssh_jump")' in submit
-    assert 'ssh_route=(-J "$ssh_jump")' in collect
-    assert '"${ssh_route[@]}" "$ssh_target"' in submit
-    assert '"${ssh_route[@]}" "$ssh_target"' in collect
+    assert "ssh_command=(ssh -o BatchMode=yes -o ConnectTimeout=15)" in submit
+    assert "ssh_command=(ssh -o BatchMode=yes -o ConnectTimeout=15)" in collect
+    assert 'ssh_command+=(-J "$ssh_jump")' in submit
+    assert 'ssh_command+=(-J "$ssh_jump")' in collect
+    assert '"${ssh_command[@]}" "$ssh_target"' in submit
+    assert '"${ssh_command[@]}" "$ssh_target"' in collect
+    assert "ssh_route=()" not in submit
+    assert "ssh_route=()" not in collect
     assert 'git -C "$repo_root" archive --format=tar HEAD' in submit
     assert 'snapshot_sha256="$(shasum -a 256 "$archive"' in submit
     assert "sbatch --hold --parsable" in submit
@@ -767,6 +837,76 @@ def test_hostile_jump_is_rejected_before_any_network_call(
     )
     assert completed.returncode == 2
     assert "invalid WMI_SSH_JUMP" in completed.stderr
+
+
+@pytest.mark.parametrize(
+    ("script", "expected_call_count"),
+    ((SUBMIT, 2), (COLLECT, 1)),
+)
+@pytest.mark.parametrize("ssh_jump", (None, "", "jump.example"))
+def test_bash32_direct_and_jump_ssh_argv_are_exact_without_network(
+    tmp_path: Path,
+    script: Path,
+    expected_call_count: int,
+    ssh_jump: str | None,
+) -> None:
+    bash = Path("/bin/bash")
+    version = subprocess.run(
+        [str(bash), "--version"],
+        check=True,
+        capture_output=True,
+        text=True,
+        timeout=10,
+    ).stdout
+    if sys.platform == "darwin":
+        assert "GNU bash, version 3.2." in version
+
+    fake_bin, ssh_log = _install_fake_ssh(tmp_path)
+    environment = {
+        **os.environ,
+        "PATH": f"{fake_bin}{os.pathsep}{os.environ['PATH']}",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "WMI_SSH_TARGET": "worker.example",
+        "WMI_TEST_SSH_LOG": str(ssh_log),
+    }
+    if ssh_jump is None:
+        environment.pop("WMI_SSH_JUMP", None)
+    else:
+        environment["WMI_SSH_JUMP"] = ssh_jump
+
+    if script == SUBMIT:
+        repository = _clean_protocol_repository(tmp_path)
+        script_under_test = repository / script.relative_to(ROOT)
+        argv = ["--test-only"]
+    else:
+        repository = ROOT
+        script_under_test = script
+        argv = ["--test-only", "--job-id", "1"]
+    completed = subprocess.run(
+        [str(bash), str(script_under_test), *argv],
+        cwd=repository,
+        env=environment,
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+    assert completed.returncode == 0, completed.stderr
+
+    calls = _fake_ssh_calls(ssh_log)
+    assert len(calls) == expected_call_count
+    expected_prefix = [
+        "-o",
+        "BatchMode=yes",
+        "-o",
+        "ConnectTimeout=15",
+    ]
+    if ssh_jump:
+        expected_prefix.extend(("-J", ssh_jump))
+    expected_prefix.append("worker.example")
+    for call in calls:
+        assert call[: len(expected_prefix)] == expected_prefix
+        assert len(call) == len(expected_prefix) + 1
 
 
 @pytest.mark.parametrize("script", (SUBMIT, COLLECT, SBATCH))

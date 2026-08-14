@@ -663,9 +663,12 @@ and 15 minutes, publishes bounded child logs and a create-only execution
 receipt last, and treats timeout, resource, scheduler, process, malformed, or
 missing evidence as `unknown`. The guarded submitter defaults to
 `--test-only`; real submission requires
-`--submit --confirm PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. Neither mode was run,
-and no SSH, snapshot deposit, `sbatch`, producer campaign, or collector
-operation occurred.
+`--submit --confirm PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. One clean-commit
+`--test-only` invocation exposed an empty optional-SSH-array bug and stopped
+locally before SSH. The refrozen wrappers are covered for unset, explicit-
+empty, and exact `-J jump.example` routing by fake-SSH/no-network tests. No
+successful real test-only transport, SSH, snapshot deposit, `sbatch`, real
+submission, producer campaign, or collector operation occurred.
 
 Source-state generator/test SHA-256s are
 `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
@@ -673,15 +676,15 @@ Source-state generator/test SHA-256s are
 Verifier module/CLI/test SHA-256s are
 `080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` /
 `e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` /
-`eefa3590098700a8791e23038ddca2a67efd336ce521996aedd7ef3e60c6b3b9`.
+`9ba762a895ec278e03bc9655fd83238f75ec7639c3d65186f135c8593ee006a4`.
 WMI runner/sbatch/submit/collect/test SHA-256s are
 `ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` /
 `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
-`e76f0255a48c9204e8f1a739289bd65d2c4e34f1a2594b9c2a915a4a397da59b` /
-`f0943cb33b7794255cabfe30a7928ba01b01809c965c444d96ddbc32ed335b8a` /
-`e6b1ecef8c8c76935996cfcd7a6fbb95e729d0b5fb204fa0925e45ba41e11852`.
-The three focused files passed 38 tests in 8.65 seconds (10 source-state, 12
-verifier, 16 WMI protocol), and the independent execution-boundary threat
+`9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` /
+`5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` /
+`822724aa824e830f4f5f700c182025252ac20599b00786315252a4199b0bd364`.
+The three focused files passed 44 tests in 12.80 seconds (10 source-state, 12
+verifier, 22 WMI protocol), and the independent execution-boundary threat
 audit reported PASS. These are infrastructure tests only. No runtime source,
 Git, infrastructure, execution, verification, or collection receipt/root
 exists yet; all vector, publication, A2, authority, and eligibility flags
@@ -1001,8 +1004,10 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       generator, separately loaded six-baseline kernel verifier,
       content-addressed dual-producer WMI runner, guarded submitter, terminal
       collector, and their no-network adversarial contracts. This records
-      executable transport readiness only: no test-only call, SSH, snapshot
-      deposit, Slurm job, real audit, result, or receipt was produced.
+      executable transport readiness only: one test-only invocation stopped
+      locally at a wrapper bug before SSH, and no successful test-only
+      transport, SSH, snapshot deposit, Slurm job, real audit, result, or
+      receipt was produced.
 - [ ] Execute the fixed pilot's readable-recipe and proposed layered-
       construction direct dependency-vector audits through the frozen dual-
       producer path. Independently kernel-check the six baselines and verify
@@ -1411,8 +1416,8 @@ and benchmark work precede GPU training.
       producer route records as 22 shared compiler observations that it does
       not independently replay. Dual-producer/seed-2-verifier WMI execution,
       receipt-last collection, and clean-Git provenance are ready but unused.
-      The 10 source-state, 12 verifier, and 16 WMI tests passed together: 38
-      in 8.65 seconds. No runtime receipt/root or vector/A2/authority claim
+      The 10 source-state, 12 verifier, and 22 WMI tests passed together: 44
+      in 12.80 seconds. No runtime receipt/root or vector/A2/authority claim
       follows.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
