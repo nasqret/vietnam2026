@@ -36,10 +36,14 @@ arithmetic library. Start with:
   the additive K3C `CellListValid`/`ListMember` interface, exact seventeen-row
   Alpha v2 append, body-evidence boundary, and next append/restriction gate;
 - [`ha-bertrand-postulate-campaign-rfc-v1.md`](ha-bertrand-postulate-campaign-rfc-v1.md):
-  the binding native Bertrand campaign contract, including both exact
+  the base native Bertrand campaign contract, including both exact
   endpoints, constructive bounded-search semantics, the integerized
   Erdős--Tochiori route, B0--B8 gates, evidence/promotion rules, and the
   source/prior-art ledger;
+- [`ha-bertrand-postulate-campaign-rfc-v2.md`](ha-bertrand-postulate-campaign-rfc-v2.md):
+  the binding factorized-threshold amendment, freezing `16 * 32` as the
+  native carrier for the mathematical cutoff 512, retaining public `n + n`
+  surfaces, and requiring checked transport to internal `2 * n` helpers;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
   the repository execution plan and first canonical-interface tranche.
 

@@ -32,9 +32,14 @@ central-binomial bounds, the primorial bound, the completed main inequality,
 finite coverage, and both Bertrand endpoints remain open.
 ```
 
-The binding statement, logic, representation, validation, and release rules
-are frozen in
+The binding statement, logic, validation, and release rules are frozen in
 [`RFC HA-R6-BERTRAND-1`](https://github.com/nasqret/vietnam2026/blob/9efc5cd95ae7698a092c922d83e29f9d2dedea24/research/arithmetic-library/ha-bertrand-postulate-campaign-rfc-v1.md).
+Its threshold representation is amended by
+[`RFC HA-R6-BERTRAND-2`](../../research/arithmetic-library/ha-bertrand-postulate-campaign-rfc-v2.md):
+the mathematical cutoff 512 has canonical native carrier `16 * 32`, public
+Bertrand surfaces retain `n + n`, and any move to an internal `2 * n` helper
+requires a live checked equality rewrite. The amendment changes no endpoint,
+logical authority, or evidence status.
 It selects an integer-only Erdős--Tochiori central-binomial proof. No real
 numbers, logarithms, primitive binomial operation, classical axiom, or new
 kernel rule is permitted.
