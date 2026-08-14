@@ -2107,16 +2107,53 @@ The replayer module, controlled CLI, and focused test are 91,304 / 49,259 /
 `524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b` /
 `dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
 The source-only synthetic/adversarial gate passed 54 tests in 5.57 seconds.
-Its conservative measured CI weight is 6,000 ms; the 104-entry profile models
-eight loads of 541,500 / 542,000 / 541,800 / 541,500 / 542,000 / 541,500 /
-541,500 / 542,000 ms.
+
+The separately frozen result verifier is standard-library-only and tactic-
+free. Its module, CLI, and focused test are 85,510 / 16,309 / 23,256 bytes at
+SHA-256
+`33f197045cabe95bda3b7ae0ff871b08cb1b186a861827ea08ad0f76cf7908d8` /
+`ab013184633e3ef2b92d8ca9521d39a95646576ea7ede8e53e8b74f6f86ffd05` /
+`5edcb9d22d30de7e0e6a7db6be0e4d470ae344634f2141a02652fa1f9b88615c`.
+Its 26 tests cover canonical structure, retained inputs, three baseline
+receipts, 22 observations, and their exact 44-route join. This verifier does
+not import or execute the replayer, tactic engine, baseline, or negative
+replay.
+
+The clean-Git source-state builder and test are 40,801 / 12,372 bytes at
+SHA-256
+`cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9` /
+`aceb80d04294ad1c87007594187e3b89e9ea553185902bd44ddde6b5db26ab55`.
+The runner, Slurm file, submitter, collector, and no-network WMI test are
+109,511 / 5,055 / 14,904 / 5,710 / 34,542 bytes at SHA-256
+`3db7ed105c016fa58a567d2fc8d8a66a9957f6856133195872d2c8fa455a8306` /
+`f2b2cd1879147d5dbf234a5dc7cd49aefd92152a0cd1b02bf67c02d6feb4fc29` /
+`b8301b661a36b54446038759d3d7f421e52b0dee352a335facd32e77693f78cc` /
+`dee7801fbd7e21e94d483156f5eca52d57b8ec58fa3ba6e108dd7c657fcd99b7` /
+`98f35727e1ec22f5c50318acf3a63e5cde094cbb03a9bbfcece2758ac86d6d7b`.
+
+A future execution runs fresh replayers under hash seeds 0 and 1, accepts only
+byte-identical candidate files, and then starts the separate seed-2 verifier.
+The WMI envelope is one CPU, 4 GiB, and 15 minutes. Replayer/verifier timeouts
+are 360/90 seconds, JSON and child-log caps are 16,000,000 bytes/16 MiB, and
+timeout, excess output, nonzero exit, missing evidence, or scheduler conflict
+stays `unknown`. Receipts use create-only publication and reject replacement
+and symlink targets.
+
+The new 11 source-state, 26 verifier, and 28 WMI tests passed as 65 bounded
+no-network tests in an independent 18.40-second run. Conservative measured
+weights are 6,000 / 9,000 / 6,000 ms; the source-protocol test remains 6,000
+ms. The 107-entry profile models eight loads of 544,500 / 544,000 / 544,800 /
+544,500 / 545,000 / 544,000 / 544,000 / 544,000 ms.
 
 Only the A2.3c source protocol and execution-infrastructure readiness are
-complete. The real replay, WMI execution, and result remain open. Route
-rejection, dependency/vector necessity, vector completeness, minimality,
-optimized-vector audit, best-known status, publication and publication union,
-public-graph application, A2 completion, and all proof/admission/publication
-authority and training/retrieval/evaluation eligibility flags remain false.
+complete. No real replay, network call, WMI job, execution receipt, or result
+exists. The real replay, WMI execution, and result remain open.
+`bounded_three_root_vector_audit_complete`, `dependency_necessity_established`,
+`route_rejections_independently_verified`, and `vector_optimizer_executed`
+remain false, as do vector completeness, minimality, optimized-vector audit,
+best-known status, publication and publication union, public-graph application,
+A2 completion, and all proof/admission/publication authority and training/
+retrieval/evaluation eligibility flags.
 
 ## What “matched compute” means
 

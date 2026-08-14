@@ -820,16 +820,48 @@ The replayer module, controlled CLI, and focused test are 91,304 / 49,259 /
 `524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b` /
 `dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
 The controlled synthetic/adversarial source gate passed 54 tests in 5.57
-seconds. Its measured conservative CI weight is 6,000 ms; the 104-entry
-profile models eight loads of 541,500 / 542,000 / 541,800 / 541,500 / 542,000
-/ 541,500 / 541,500 / 542,000 ms.
+seconds. The later execution-infrastructure freeze adds a standard-library-
+only, tactic-free structural verifier without running the campaign. Its module,
+CLI, and focused test are 85,510 / 16,309 / 23,256 bytes at SHA-256
+`33f197045cabe95bda3b7ae0ff871b08cb1b186a861827ea08ad0f76cf7908d8` /
+`ab013184633e3ef2b92d8ca9521d39a95646576ea7ede8e53e8b74f6f86ffd05` /
+`5edcb9d22d30de7e0e6a7db6be0e4d470ae344634f2141a02652fa1f9b88615c`.
+The verifier checks the exact three-baseline, 22-observation, and 44-route-join
+structure but executes no tactic, baseline, or negative replay; its focused
+gate has 26 tests.
 
-Only source-protocol and execution-infrastructure readiness is complete. The
-real replay, WMI execution, and retained-result gate stays open. Route
-rejection, dependency/vector necessity, vector completeness, minimality,
-optimized-vector audit, best-known status, publication/publication union,
-public-graph application, A2 completion, proof/admission/publication authority,
-and all eligibility claims remain false.
+The clean-Git source-state builder/test are 40,801 / 12,372 bytes at SHA-256
+`cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9` /
+`aceb80d04294ad1c87007594187e3b89e9ea553185902bd44ddde6b5db26ab55`.
+The WMI runner, Slurm file, submitter, collector, and no-network test are
+109,511 / 5,055 / 14,904 / 5,710 / 34,542 bytes at SHA-256
+`3db7ed105c016fa58a567d2fc8d8a66a9957f6856133195872d2c8fa455a8306` /
+`f2b2cd1879147d5dbf234a5dc7cd49aefd92152a0cd1b02bf67c02d6feb4fc29` /
+`b8301b661a36b54446038759d3d7f421e52b0dee352a335facd32e77693f78cc` /
+`dee7801fbd7e21e94d483156f5eca52d57b8ec58fa3ba6e108dd7c657fcd99b7` /
+`98f35727e1ec22f5c50318acf3a63e5cde094cbb03a9bbfcece2758ac86d6d7b`.
+The future execution path must run fresh hash-seed-0 and hash-seed-1 replayers,
+require byte-identical candidates, and then invoke the separate seed-2,
+standard-library-only tactic-free verifier. It is bounded to one CPU, 4 GiB,
+and 15 minutes, with 360-second replayer, 90-second verifier, 16,000,000-byte
+JSON, and 16-MiB child-log caps. Timeout, output exhaustion, nonzero exit,
+missing evidence, or accounting disagreement is `unknown`; receipts are
+published create-only without replacement or symlink acceptance.
+
+The new 11 source-state, 26 verifier, and 28 WMI tests passed as 65 bounded
+no-network tests in an independent 18.40-second run. Their conservative
+measured CI weights are 6,000 / 9,000 / 6,000 ms; the original source-protocol
+test remains 6,000 ms. The 107-entry profile models eight loads of 544,500 /
+544,000 / 544,800 / 544,500 / 545,000 / 544,000 / 544,000 / 544,000 ms.
+
+Only source-protocol and execution-infrastructure readiness is complete. No
+real replay, network call, WMI job, execution receipt, or result exists. The
+real replay, WMI execution, and retained-result gate stays open.
+`bounded_three_root_vector_audit_complete`, `dependency_necessity_established`,
+`route_rejections_independently_verified`, and `vector_optimizer_executed`
+remain false, as do vector completeness, minimality, optimized-vector audit,
+best-known status, publication/publication union, public-graph application, A2
+completion, proof/admission/publication authority, and all eligibility claims.
 
 ### H1.2 Build lineage before rows
 
@@ -1167,9 +1199,13 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       omission replays, and their two-to-one join to 44 retained route rows;
       require an independently implemented wrapper in a fresh controlled
       process without importing the A2.3b producer, calling
-      `compile_candidate_body`, or invoking route assemblers. This checkbox
-      records only source/synthetic/adversarial readiness; the pinned parser,
-      tactic engine, and intuitionistic kernel remain shared.
+      `compile_candidate_body`, or invoking route assemblers; and freeze the
+      clean-Git source-state boundary, dual-seed byte-identity runner,
+      standard-library-only tactic-free structural verifier, bounded WMI
+      transport, fail-closed collector, and create-only receipts. This
+      checkbox records only source/synthetic/adversarial and execution-
+      infrastructure readiness; the pinned parser, tactic engine, and
+      intuitionistic kernel remain shared by the future replayers.
 - [ ] **A2.3c real replay, WMI execution, and retained result:** run and retain
       the frozen 3-baseline/22-observation campaign before making any
       independent-negative-replay claim. Even a passing run does not by itself
@@ -1606,7 +1642,12 @@ and benchmark work precede GPU training.
       and intuitionistic kernel. Schema artifact/semantic identities begin
       `be38f796…` / `a0d84c31…`; module/CLI/test identities begin
       `f5b5dd45…` / `524ced1b…` / `dc5591dc…`. Its 54 controlled tests passed
-      in 5.57 seconds. This is a source-only, no-campaign/no-result/no-write
+      in 5.57 seconds. The separate verifier identities begin `33f19704…` /
+      `ab013184…` / `5edcb9d2…`; source-state identities begin `cfe1db8b…` /
+      `aceb80d0…`; and runner/Slurm/submit/collect/WMI-test identities begin
+      `3db7ed10…` / `f2b2cd18…` / `b8301b66…` / `dee7801f…` / `98f35727…`.
+      The 65-test no-network infrastructure gate passed in 18.40 seconds. This
+      is a source-and-infrastructure-only, no-network/no-job/no-result
       checkpoint.
 - [ ] A2.3c's real local/WMI replay and retained-result gate remains open.
       Route/vector necessity, completeness, minimality, optimized/best-known

@@ -533,15 +533,54 @@ The exact frozen source identities are:
   `dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
 
 The controlled synthetic/adversarial gate passed 54 tests in 5.57 seconds.
-Its measured conservative CI weight is 6,000 ms. The profile now has 104
-entries and models eight loads of 541,500 / 542,000 / 541,800 / 541,500 /
-542,000 / 541,500 / 541,500 / 542,000 ms.
 
-Only A2.3c source-protocol and infrastructure readiness is complete. The real
-replay/WMI/result gate is open. Route rejection, dependency/vector necessity,
-vector completeness, minimality, optimized-vector audit, best-known status,
-publication and publication union, public-graph application, A2, proof/
-admission/publication authority, and all eligibility flags remain false.
+The frozen result consumer is standard-library-only and tactic-free. It checks
+canonical structure, pinned provenance and retained-evidence identities, the
+three baseline receipts, all 22 observation records, and their exact 44-route
+join without executing the tactic engine, a baseline, or a negative replay.
+Its module, CLI, and 26-test focused file are:
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `../../training/peano_hydra/library_pilot_dependency_vector_negative_replay_verifier.py` | 85,510 | `33f197045cabe95bda3b7ae0ff871b08cb1b186a861827ea08ad0f76cf7908d8` |
+| `../../scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay_result.py` | 16,309 | `ab013184633e3ef2b92d8ca9521d39a95646576ea7ede8e53e8b74f6f86ffd05` |
+| `../../peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay_verifier.py` | 23,256 | `5edcb9d22d30de7e0e6a7db6be0e4d470ae344634f2141a02652fa1f9b88615c` |
+
+The clean-Git evidence and bounded WMI transport sources are:
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `../../scripts/build_peano_hydra_a23c_replayer_source_state.py` | 40,801 | `cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9` |
+| `../../peano-lab/py/tests/test_peano_hydra_a23c_replayer_source_state.py` | 12,372 | `aceb80d04294ad1c87007594187e3b89e9ea553185902bd44ddde6b5db26ab55` |
+| `../../scripts/run_peano_hydra_a23c_negative_replay_wmi.py` | 109,511 | `3db7ed105c016fa58a567d2fc8d8a66a9957f6856133195872d2c8fa455a8306` |
+| `../../slurm/peano_wmi_hydra_a23c_negative_replay.sbatch` | 5,055 | `f2b2cd1879147d5dbf234a5dc7cd49aefd92152a0cd1b02bf67c02d6feb4fc29` |
+| `../../scripts/submit_wmi_hydra_a23c_negative_replay.sh` | 14,904 | `b8301b661a36b54446038759d3d7f421e52b0dee352a335facd32e77693f78cc` |
+| `../../scripts/collect_wmi_hydra_a23c_negative_replay.sh` | 5,710 | `dee7801fbd7e21e94d483156f5eca52d57b8ec58fa3ba6e108dd7c657fcd99b7` |
+| `../../peano-lab/py/tests/test_peano_hydra_a23c_wmi_protocol.py` | 34,542 | `98f35727e1ec22f5c50318acf3a63e5cde094cbb03a9bbfcece2758ac86d6d7b` |
+
+The future execution path launches fresh replayers under hash seeds 0 and 1,
+requires byte-identical candidate files, and only then runs the separate seed-2
+structural verifier. The reviewed WMI envelope is one CPU, 4 GiB, and 15
+minutes. Replayers are capped at 360 seconds each, the verifier at 90 seconds,
+JSON at 16,000,000 bytes, and each child log at 16 MiB. Timeout, output-limit,
+nonzero-exit, absent-evidence, and accounting conflicts remain `unknown`;
+receipt publication is create-only and rejects replacement and symlink paths.
+
+The new 11 source-state, 26 verifier, and 28 WMI tests passed as 65 bounded
+no-network tests in an independent 18.40-second run. Conservative measured CI
+weights are 6,000 / 9,000 / 6,000 ms respectively; the source-protocol test
+retains its 6,000 ms weight. The 107-entry profile models eight loads of
+544,500 / 544,000 / 544,800 / 544,500 / 545,000 / 544,000 / 544,000 /
+544,000 ms.
+
+Only A2.3c source-protocol and infrastructure readiness is complete. No real
+replay, network call, WMI job, execution receipt, or result exists. The real
+replay/WMI/result gate is open. `bounded_three_root_vector_audit_complete`,
+`dependency_necessity_established`, `route_rejections_independently_verified`,
+and `vector_optimizer_executed` remain false, as do vector completeness,
+minimality, optimized-vector audit, best-known status, publication and
+publication union, public-graph application, A2, proof/admission/publication
+authority, and all eligibility flags.
 
 ## H1.1b3 selected candidate page source
 

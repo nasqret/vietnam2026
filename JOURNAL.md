@@ -4573,13 +4573,45 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b` /
   `dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
   The synthetic/adversarial source gate passed 54 tests in 5.57 seconds.
-- Its measured conservative CI weight is 6,000 ms. The 104-entry profile now
-  models eight loads of 541,500 / 542,000 / 541,800 / 541,500 / 542,000 /
-  541,500 / 541,500 / 542,000 ms.
+- Froze a separate standard-library-only, tactic-free structural consumer for a
+  future result. Its module, CLI, and focused test are 85,510 / 16,309 / 23,256
+  bytes at SHA-256
+  `33f197045cabe95bda3b7ae0ff871b08cb1b186a861827ea08ad0f76cf7908d8` /
+  `ab013184633e3ef2b92d8ca9521d39a95646576ea7ede8e53e8b74f6f86ffd05` /
+  `5edcb9d22d30de7e0e6a7db6be0e4d470ae344634f2141a02652fa1f9b88615c`.
+  Its 26 tests check exact three-baseline, 22-observation, and 44-route-join
+  structure without executing a tactic, baseline, or negative replay.
+- Froze the clean-Git source-state builder/test at 40,801 / 12,372 bytes and
+  SHA-256
+  `cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9` /
+  `aceb80d04294ad1c87007594187e3b89e9ea553185902bd44ddde6b5db26ab55`.
+  The WMI runner, Slurm file, submitter, collector, and no-network test are
+  109,511 / 5,055 / 14,904 / 5,710 / 34,542 bytes at SHA-256
+  `3db7ed105c016fa58a567d2fc8d8a66a9957f6856133195872d2c8fa455a8306` /
+  `f2b2cd1879147d5dbf234a5dc7cd49aefd92152a0cd1b02bf67c02d6feb4fc29` /
+  `b8301b661a36b54446038759d3d7f421e52b0dee352a335facd32e77693f78cc` /
+  `dee7801fbd7e21e94d483156f5eca52d57b8ec58fa3ba6e108dd7c657fcd99b7` /
+  `98f35727e1ec22f5c50318acf3a63e5cde094cbb03a9bbfcece2758ac86d6d7b`.
+- The execution design runs fresh replayers under hash seeds 0 and 1, requires
+  byte-identical candidates, and only then invokes the separate structural
+  verifier under seed 2. The WMI envelope is one CPU, 4 GiB, and 15 minutes;
+  each replayer is capped at 360 seconds, the verifier at 90 seconds, and JSON
+  and child-log reads at 16,000,000 and 16 MiB. Timeout, excess output,
+  nonzero exit, missing evidence, scheduler disagreement, or other incomplete
+  execution stays `unknown`. Receipt publication is create-only and refuses
+  replacement or symlink targets.
+- The new 11 source-state, 26 verifier, and 28 WMI tests passed as 65 bounded
+  no-network tests in an independent 18.40-second run. Conservative measured
+  CI weights are 6,000 / 9,000 / 6,000 ms respectively; the original source-
+  protocol test remains 6,000 ms. The 107-entry profile models eight loads of
+  544,500 / 544,000 / 544,800 / 544,500 / 545,000 / 544,000 / 544,000 /
+  544,000 ms.
 - This checks only A2.3c source-protocol and infrastructure readiness. No real
-  negative replay, WMI execution, or retained A2.3c result exists. Route
-  rejection, dependency/vector necessity, vector completeness, minimality,
-  optimized-vector audit, best-known status, publication and publication
-  union, public-graph application, A2 completion, and every proof/admission/
-  publication authority or training/retrieval/evaluation eligibility claim
-  remain false.
+  negative replay, network call, WMI job, execution, or retained A2.3c result
+  exists. `bounded_three_root_vector_audit_complete`,
+  `dependency_necessity_established`, `route_rejections_independently_verified`,
+  and `vector_optimizer_executed` remain false, as do vector completeness,
+  minimality, optimized-vector audit, best-known status, publication and
+  publication union, public-graph application, A2 completion, and every proof/
+  admission/publication authority or training/retrieval/evaluation eligibility
+  claim.
