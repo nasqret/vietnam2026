@@ -1024,12 +1024,62 @@ sharder gate passed 159 in 28.66 seconds. CI has 111 profiles, 7,500/8,000 ms
 new weights, and loads 549,000 / 549,500 / 549,300 / 549,500 / 549,000 /
 549,500 / 549,000 / 549,000 ms; 32 sharder tests passed in 0.28 seconds.
 
-No job, execution/collection receipt, retained result, network action,
-publication, or graph mutation exists. Execution and retention remain open.
+At that infrastructure checkpoint no job, execution/collection receipt,
+retained result, network action, publication, or graph mutation existed. The
+later retained run is recorded below.
 Necessity, route rejection, minimality, optimized/best-known or completeness
 claims, publication/union, graph application, A2, authority,
 review/lineage/freeze, and eligibility remain false. The graph remains 1,038
 edges.
+
+#### A2.3d job 220246 bounded execution and retention
+
+The frozen one-root envelope ran from clean commit
+`25228180c956456145eba64601e829103731e903`, tree
+`528ca1d3c0e697048479acdd690b54a9d13fa469`, and snapshot
+`52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d`.
+Job `220246` completed `0:0` on `c3n1` in three seconds with one CPU and 4 GiB
+requested. Blank retained `MaxRSS` means no peak-memory or ceiling claim.
+
+Both fresh seed-0 runs of the same producer emitted an identical 74,579-byte
+candidate at artifact/root `a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0` /
+`fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835`.
+This is repeatability only. The theorem-record root is
+`a90eef83d3344369496a6d54254aa38cba4fb082ab3ba399742f36babfaad803`;
+the result remains `[mul_add, add_comm]`, proof/artifact `5c480eb5…` /
+`c606af87…`, fuel 1,936, and 240/30/5 nodes/depth/Cuts.
+
+The separately authored verifier independently reconstructed the liveness
+ledger, vector, proof, and artifact while sharing the pinned codec/kernel. Its
+12,737-byte artifact/root is `8f6531d3a0544a6d308ebd0abf7e41ed2436984758e76e66797ff1023e0a2821` /
+`b3c253674f488eeed1e5a14e4be6632b0fe6ed946cf611ee0b3fde66f79acad7`;
+a fresh local seed-31337 run reproduced it byte-for-byte. Execution and
+collection artifact/root pairs are `46922d976e00925a62bef9792bdeaa50c6e6800d9d034c132fae6b952be35bc7` / `28e660ea1b9f455c2cbb9022b045fc9ef57922c0bf007d413de2ca106d31ead1` and
+`1f8907520cc2e7508a841719f43111538245a6c640de042b422213da0dc5de3a` / `fe9d57683008f8b61768a133d8ba453d2819e337c31fd1afe4ee397a7b880fb1`.
+
+Exactly 17 normalized files, 174,231 bytes, are retained under
+`artifacts/peano-hydra/a23d-wmi-cut-liveness-220246/` at inventory root
+`db3914f58b1ab4019fbe447c6454a261ec9a32e74b7a25772e0483bfbad2ac81`.
+They are regular 0644 files in 0755 directories with no symlinks. Source-
+state/Git/infra artifact-root pairs are `1e0315e75364721408799db01db3b7f39896d84c26b83c50bcd103994533a421` / `7db294f75a67cd6252c2831dd8ae11ba5ba0d185a736328031e0724602b38363`,
+`3a207d46b9142ca951705cac066221e1d2b6b54005d542b9275b4585360e6876` / `3194cbf1ff2041fe448ac4c3781356c8e28d79acd43c22dbd4b5c597e2beb7da`, and `afcf38c94167814123950b47aa38cb97d8564c89adf2ecc976a320a7525a585f` / `09a05076bc8e57174790575d59e41a0b4c0090602f8305465e84339b172fc01e`; source state keeps
+`git_verified=false`. Four identical candidate/stdout blobs normalize to one
+candidate. The 283,796,480-byte archive, full source snapshot, duplicate run
+outputs, global ledger, and job pointer are omitted.
+
+The 33,018-byte result test at SHA-256
+`ba6e9e1f96b214582cb8201a1207b7f6954e227aa78525a9c8a0f5f7f0009ae7`
+passed four tests in 0.63 seconds. The sharder passed 32 in 0.09 seconds; the
+bounded combined gate passed 163 in 29.27 seconds. CI has 112 profiles, a
+2,500 ms result weight, and loads 549,500 / 549,500 / 549,800 / 549,500 /
+549,500 / 549,500 / 549,500 / 549,500 ms.
+
+This closes only one-root proof-liveness execution and retention. Dependency
+necessity, route rejection, logical/cardinality minimality, global
+optimization, best-known status, global `optimized_vector_independently_audited`,
+vector completeness, publication/union, graph application, A2, authority,
+review/lineage/freeze, and eligibility remain open/false. The graph stays
+1,038 edges.
 
 ### H1.2 Build lineage before rows
 
@@ -1396,10 +1446,13 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       producer executions, independently implemented reconstruction process,
       bounded Slurm runner, held submit/collect wrappers, and no-network
       adversarial gates. This is infrastructure only; no job or result exists.
-- [ ] **A2.3d execution and retention:** execute any separately frozen real
-      campaign boundary and retain an independently verified result/evidence
-      bundle. No campaign, network/WMI job, result artifact, or retention is
-      authorized or implied by source readiness.
+- [x] **A2.3d job 220246 bounded execution and retention:** execute the frozen
+      one-root Cut-liveness envelope through two byte-compared fresh runs of
+      the same seed-0 producer, pass and locally reproduce the independently
+      authored verifier, and retain the exact normalized 17-file bundle. This
+      closes only the construction-derived one-root vector; it grants no
+      necessity, route-rejection, minimality, global optimization, best-known,
+      completeness, publication, A2, or authority claim.
 - [ ] Define and independently audit any future true optimized-construction
       direct vector; the A2.3a layered package is not a dependency-selection
       optimizer.
@@ -1860,8 +1913,14 @@ and benchmark work precede GPU training.
       identities. It binds one CPU/4,096 MiB/15 minutes, two fresh seed-0
       producer processes, one separately implemented verifier, fail-closed
       collection, and 42 no-network tests; it grants no execution authority.
-- [ ] A2.3d real execution and retention remain open. No real campaign,
-      network/WMI job, result artifact, or retained evidence bundle exists.
+- [x] A2.3d job `220246` completed the one-root execution-and-retention
+      subgate from commit `25228180…`, tree `528ca1d3…`, and snapshot
+      `52480a73…`. The two identical producer candidates are 74,579 bytes at
+      `a9077a7b…` / `fd0497da…`; the independently reconstructed verifier is
+      12,737 bytes at `8f6531d3…` / `b3c25367…`. Exactly 17 files and 174,231
+      bytes are retained at inventory root `db3914f5…`. Necessity,
+      minimality, global optimization, best-known, completeness, publication,
+      A2, authority, and eligibility remain false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1879,9 +1938,10 @@ and benchmark work precede GPU training.
       execution, six-baseline verification, structural checking, and
       retention; A2.3c froze the independent-negative-replay source boundary;
       and job 220227 later completed only its bounded three-baseline,
-      22-wrapper-observation, 44-row-join execution and retention. A2.3d now
-      freezes only a one-root proof-producing Cut-liveness source boundary;
-      its execution and retention remain open.
+      22-wrapper-observation, 44-row-join execution and retention. A2.3d then
+      froze and executed only a one-root proof-producing Cut-liveness boundary;
+      job 220246 retains that scoped result without promoting any global
+      optimized-vector or necessity claim.
       The immediate A2 work is to define and independently audit a genuine
       optimized-construction vector, establish any separately claimed route or
       dependency necessity, complete the evidence needed for a best-known/

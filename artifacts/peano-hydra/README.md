@@ -676,7 +676,7 @@ and publication union, public-graph application, A2, all authority, and every
 training/retrieval/evaluation eligibility claim remain open. The public graph
 is unchanged at exactly 1,038 edges.
 
-## A2.3d one-root Cut-liveness source protocol (no artifact)
+## A2.3d one-root Cut-liveness source protocol (source checkpoint)
 
 Frozen on 2026-08-14, A2.3d is source-only readiness for one exact
 proof-producing transformation. It authenticates retained `odd_add_odd`
@@ -723,8 +723,9 @@ weight makes 109 explicit CI profile entries and eight modeled loads of
 547,000 / 547,500 / 547,300 / 547,500 / 547,000 / 547,000 / 547,500 /
 547,500 ms.
 
-No A2.3d result artifact exists here. No real campaign, network call, WMI job,
-execution receipt, or retention was performed; those gates remain open. The
+This source checkpoint created no result artifact and ran no real campaign,
+network call, WMI job, execution receipt, or retention. The later bounded run
+and retained evidence are recorded below. The
 two-name vector is only the output of exact vacuous-root-Cut normalization,
 not dependency necessity, global minimality, best-known or independently
 audited optimized-vector evidence. Vector/global completeness, publication
@@ -733,10 +734,11 @@ all eligibility claims remain false. The public graph stays exactly 1,038
 edges.
 
 
-## A2.3d clean-Git/WMI execution infrastructure (no artifact)
+## A2.3d clean-Git/WMI execution infrastructure (pre-execution checkpoint)
 
-The execution boundary is frozen, but no job has run. A detached clean-Git
-derivation authenticates the exact six A2.3d protocol sources, `HEAD`, tree,
+At this checkpoint the execution boundary was frozen, but no job had run. A
+detached clean-Git derivation authenticates the exact six A2.3d protocol
+sources, `HEAD`, tree,
 stage-0 blobs, modes, and clean status. The source-state document keeps
 `git_verified=false`; its separate Git receipt is the clean-source evidence.
 An immutable content-addressed deposit then binds that source state, Git
@@ -772,12 +774,69 @@ CI now has 111 profiles with 7,500/8,000 ms new weights and modeled loads
 549,000 / 549,500 / 549,300 / 549,500 / 549,000 / 549,500 / 549,000 /
 549,000 ms.
 
-No A2.3d candidate, verifier, execution, collection, or result artifact is
-retained here, and no network or WMI action occurred. Execution and retention
-remain open. Dependency necessity, route rejection, minimality,
+That infrastructure checkpoint retained no A2.3d candidate, verifier,
+execution, collection, or result artifact and performed no network or WMI
+action. Job 220246 and its retained result are recorded below. Dependency
+necessity, route rejection, minimality,
 optimized/best-known or completeness claims, publication/union, graph
 application, A2, authority, review/lineage/freeze, and eligibility remain
 false. The public graph remains 1,038 edges.
+
+## A2.3d job 220246 bounded execution and retained result
+
+The canonical evidence bundle is
+[`a23d-wmi-cut-liveness-220246/`](a23d-wmi-cut-liveness-220246/). It binds
+clean commit `25228180c956456145eba64601e829103731e903`, tree
+`528ca1d3c0e697048479acdd690b54a9d13fa469`, and snapshot
+`52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d`.
+Job `220246` completed `0:0` on `c3n1` in three seconds with one CPU and 4 GiB
+requested. Its exact accounting row has blank `MaxRSS`; the bundle therefore
+makes no peak-memory or memory-ceiling claim.
+
+Both fresh seed-0 executions of the same producer emitted an identical
+74,579-byte candidate at artifact/root
+`a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0` /
+`fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835`.
+This establishes deterministic repeatability only. The theorem-record root is
+`a90eef83d3344369496a6d54254aa38cba4fb082ab3ba399742f36babfaad803`.
+The construction keeps `[mul_add, add_comm]` and the exact 11,958-byte
+kernel-accepted artifact `c606af87…`, proof `5c480eb5…`, fuel 1,936, and
+240/30/5 nodes/depth/Cuts.
+
+The separate verifier independently reconstructed the step ledger, vector,
+proof, and artifact while sharing the authenticated codec/kernel. Its
+12,737-byte artifact/root is
+`8f6531d3a0544a6d308ebd0abf7e41ed2436984758e76e66797ff1023e0a2821` /
+`b3c253674f488eeed1e5a14e4be6632b0fe6ed946cf611ee0b3fde66f79acad7`;
+a fresh local seed-31337 replay reproduced it byte-for-byte. The 19,383-byte
+execution receipt has artifact/root `46922d976e00925a62bef9792bdeaa50c6e6800d9d034c132fae6b952be35bc7` / `28e660ea1b9f455c2cbb9022b045fc9ef57922c0bf007d413de2ca106d31ead1`; the 8,942-byte
+collection receipt has `1f8907520cc2e7508a841719f43111538245a6c640de042b422213da0dc5de3a` / `fe9d57683008f8b61768a133d8ba453d2819e337c31fd1afe4ee397a7b880fb1` and accepts the exact
+terminal scheduler, source, process, and log joins.
+
+Source state, Git receipt, and infrastructure manifest are retained at
+artifact/root pairs `1e0315e75364721408799db01db3b7f39896d84c26b83c50bcd103994533a421` / `7db294f75a67cd6252c2831dd8ae11ba5ba0d185a736328031e0724602b38363`, `3a207d46b9142ca951705cac066221e1d2b6b54005d542b9275b4585360e6876` /
+`3194cbf1ff2041fe448ac4c3781356c8e28d79acd43c22dbd4b5c597e2beb7da`, and `afcf38c94167814123950b47aa38cb97d8564c89adf2ecc976a320a7525a585f` / `09a05076bc8e57174790575d59e41a0b4c0090602f8305465e84339b172fc01e`. The source state correctly keeps
+`git_verified=false`; clean-Git evidence belongs to the separate receipt. The
+closed bundle has exactly 17 regular 0644 files, 174,231 bytes, 0755
+directories, no symlinks, and C-sorted inventory root
+`db3914f58b1ab4019fbe447c6454a261ec9a32e74b7a25772e0483bfbad2ac81`.
+Four byte-identical candidate/stdout blobs are normalized to one canonical
+candidate. The 283,796,480-byte transfer archive, full source tree, duplicate
+run-local outputs, global ledger, and job pointer are intentionally omitted.
+
+The 33,018-byte result gate at SHA-256
+`ba6e9e1f96b214582cb8201a1207b7f6954e227aa78525a9c8a0f5f7f0009ae7`
+passed four tests in 0.63 seconds. The sharder passed 32 in 0.09 seconds; the
+bounded combined gate passed 163 in 29.27 seconds. The 112-entry profile gives
+this test 2,500 ms and models 549,500 / 549,500 / 549,800 / 549,500 /
+549,500 / 549,500 / 549,500 / 549,500 ms.
+
+This is one theorem's proof-liveness normalization, not dependency necessity,
+route rejection, logical/cardinality minimality, a global optimizer, or
+best-known evidence. Global `optimized_vector_independently_audited`, vector
+completeness, publication and union, graph application, A2, authority,
+review/lineage/freeze, and eligibility remain false. The public graph remains
+exactly 1,038 edges.
 
 ## H1.1b3 selected candidate page source
 

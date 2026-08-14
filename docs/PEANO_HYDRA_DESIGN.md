@@ -1356,9 +1356,9 @@ producer document. The 85-test focused synthetic/adversarial gate passed in
 with modeled eight-shard loads 547,000 / 547,500 / 547,300 / 547,500 /
 547,000 / 547,000 / 547,500 / 547,500 ms.
 
-This is only source-protocol readiness. No real campaign, network call, WMI
-job, result artifact, execution receipt, or retained evidence exists;
-execution and retention remain open. `retained-used` is structural use only,
+This source-protocol checkpoint ran no real campaign, network call, WMI job,
+result artifact, execution receipt, or retention; those gates were still open
+at that point. `retained-used` is structural use only,
 not dependency necessity. The transformation's local vacuous-Cut normal form
 does not establish global minimality, independently audited optimized-vector
 status, or best-known status. Vector/global completeness, publication and
@@ -1369,8 +1369,9 @@ public graph remains exactly 1,038 edges.
 
 #### A2.3d clean-Git and WMI execution boundary
 
-The source protocol now has a frozen execution envelope, but no execution
-evidence. A source-state generator authenticates the six exact A2.3d files,
+At the infrastructure checkpoint the source protocol had a frozen execution
+envelope but no execution evidence. A source-state generator authenticates
+the six exact A2.3d files,
 while a separate Git receipt binds stable `HEAD`, tree, stage-0 blob/mode
 identity, and a clean worktree. The source-state document itself keeps
 `git_verified=false`. An immutable snapshot joins those records to an
@@ -1414,13 +1415,71 @@ suites, and models eight loads of 549,000 / 549,500 / 549,300 / 549,500 /
 549,000 / 549,500 / 549,000 / 549,000 ms. The sharder passed 32 tests in
 0.28 seconds.
 
-This subsection is readiness only. No network, WMI job, real campaign,
-execution or collection receipt, retained candidate/result, publication, or
-graph mutation exists. The construction-derived direct vector does not imply
+This subsection records the pre-execution checkpoint. At that point no
+network, WMI job, real campaign, execution or collection receipt, retained
+candidate/result, publication, or graph mutation existed. The later retained
+run is specified below. The construction-derived direct vector does not imply
 necessity, route rejection, minimality, global optimization, best-known
 status, or vector completeness. Publication/union, graph application, A2,
 authority, review/lineage/freeze, and eligibility remain false; the public
 graph remains 1,038 edges.
+
+#### A2.3d bounded execution and retention boundary
+
+Job `220246` executed the frozen boundary from commit
+`25228180c956456145eba64601e829103731e903`, tree
+`528ca1d3c0e697048479acdd690b54a9d13fa469`, and snapshot
+`52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d`.
+It terminated `COMPLETED|0:0` on `c3n1` in three seconds under one CPU and
+4 GiB requested. The exact retained accounting row has blank `MaxRSS`; no
+peak-memory or memory-ceiling claim is part of this boundary.
+
+The process receipt binds two fresh invocations of the same seed-0 producer,
+not two implementations or distinct hash seeds. Both emit the exact
+74,579-byte candidate at artifact/root
+`a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0` /
+`fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835`,
+with theorem-record root
+`a90eef83d3344369496a6d54254aa38cba4fb082ab3ba399742f36babfaad803`.
+The theorem output is `[mul_add, add_comm]`, proof/artifact `5c480eb5…` /
+`c606af87…`, fuel 1,936, and 240/30/5 nodes/depth/Cuts.
+
+The independent verifier separately reconstructs the encoded liveness
+transformation and matches the exact proof and artifact bytes while sharing
+the authenticated codec and intuitionistic kernel. Its 12,737-byte
+artifact/root is `8f6531d3a0544a6d308ebd0abf7e41ed2436984758e76e66797ff1023e0a2821` /
+`b3c253674f488eeed1e5a14e4be6632b0fe6ed946cf611ee0b3fde66f79acad7`.
+A fresh local seed-31337 execution reproduces that receipt byte-for-byte. The
+19,383-byte execution receipt is `46922d976e00925a62bef9792bdeaa50c6e6800d9d034c132fae6b952be35bc7` / `28e660ea1b9f455c2cbb9022b045fc9ef57922c0bf007d413de2ca106d31ead1`; the 8,942-byte
+collection receipt is `1f8907520cc2e7508a841719f43111538245a6c640de042b422213da0dc5de3a` / `fe9d57683008f8b61768a133d8ba453d2819e337c31fd1afe4ee397a7b880fb1`.
+
+The retained evidence root is
+`artifacts/peano-hydra/a23d-wmi-cut-liveness-220246/`: exactly 17 regular
+0644 files, 174,231 bytes, 0755 directories, no symlinks, and C-sorted
+inventory root
+`db3914f58b1ab4019fbe447c6454a261ec9a32e74b7a25772e0483bfbad2ac81`.
+Source-state/Git/infra artifact-root pairs are `1e0315e75364721408799db01db3b7f39896d84c26b83c50bcd103994533a421` / `7db294f75a67cd6252c2831dd8ae11ba5ba0d185a736328031e0724602b38363`,
+`3a207d46b9142ca951705cac066221e1d2b6b54005d542b9275b4585360e6876` / `3194cbf1ff2041fe448ac4c3781356c8e28d79acd43c22dbd4b5c597e2beb7da`, and `afcf38c94167814123950b47aa38cb97d8564c89adf2ecc976a320a7525a585f` / `09a05076bc8e57174790575d59e41a0b4c0090602f8305465e84339b172fc01e`. The source state
+keeps `git_verified=false`; the detached Git receipt holds clean-source
+facts. Four identical candidate/stdout blobs normalize to one candidate. The
+283,796,480-byte archive, full source snapshot, duplicate run files, global
+ledger, and job pointer are excluded from retention.
+
+The result gate is 33,018 bytes at SHA-256
+`ba6e9e1f96b214582cb8201a1207b7f6954e227aa78525a9c8a0f5f7f0009ae7`;
+four tests pass in 0.63 seconds. The sharder passes 32 in 0.09 seconds and the
+bounded combined gate passes 163 in 29.27 seconds. CI contains 112 explicit
+profiles, uses a 2,500 ms result weight, and models loads 549,500 / 549,500 /
+549,800 / 549,500 / 549,500 / 549,500 / 549,500 / 549,500 ms.
+
+The positive claim is construction-scoped: this exact proof has an
+independently reproduced Cut-liveness direct vector. It does not imply
+dependency necessity, route rejection, logical/cardinality minimality, global
+optimization, or best-known status. Global
+`optimized_vector_independently_audited`, vector completeness,
+publication/union, graph application, A2, authority, review/lineage/freeze,
+and all eligibility claims remain false; the public graph remains 1,038
+edges.
 
 ### 2.4 Sealed-test law
 

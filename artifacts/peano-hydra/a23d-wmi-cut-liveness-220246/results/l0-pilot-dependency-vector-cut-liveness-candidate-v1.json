@@ -1,0 +1,1009 @@
+{
+  "a2_complete": false,
+  "aggregate": {
+    "candidate_artifact_count": 1,
+    "deleted_vacuous_root_cut_count": 2,
+    "derived_direct_dependency_count": 2,
+    "initial_direct_dependency_count": 4,
+    "pilot_theorem_count": 1,
+    "retained_used_root_cut_count": 2
+  },
+  "algorithm": {
+    "id": "binder-aware-inner-first-vacuous-direct-cut-elimination-v1",
+    "opaque_direct_lemmas_transformed": false,
+    "processing_order": "inner-first",
+    "proof_producing": true,
+    "scope": "exact-declared-root-direct-cut-spine-only"
+  },
+  "authority_granted": false,
+  "best_known": false,
+  "bounded_one_root_protocol_executed": true,
+  "bounded_three_root_vector_audit_complete": false,
+  "dependency_minimality_established": false,
+  "dependency_necessity_established": false,
+  "dependency_vectors_complete": false,
+  "evaluation_eligible": false,
+  "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-v1",
+  "freeze_complete": false,
+  "global_comparison_complete": false,
+  "human_review_complete": false,
+  "id": "peano-hydra-l0-pilot-dependency-vector-cut-liveness-candidate-v1",
+  "implementation": {
+    "source_count": 9,
+    "source_root_sha256": "7e759740a06051e99130d73d679d865606cc1305bcfbde822e80fbdbba5f9064",
+    "sources": [
+      {
+        "bytes": 257,
+        "path": "peano-lab/py/peano_lab/__init__.py",
+        "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+      },
+      {
+        "bytes": 263,
+        "path": "peano-lab/py/peano_lab/kernel/__init__.py",
+        "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+      },
+      {
+        "bytes": 27892,
+        "path": "peano-lab/py/peano_lab/kernel/artifact_codec.py",
+        "sha256": "c9c4d3847c2c5fa7af683fb84f9e93341782e4b82f2579a675b97602aba39110"
+      },
+      {
+        "bytes": 10738,
+        "path": "peano-lab/py/peano_lab/kernel/checker.py",
+        "sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19"
+      },
+      {
+        "bytes": 10950,
+        "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+        "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+      },
+      {
+        "bytes": 5015,
+        "path": "peano-lab/py/peano_lab/kernel/proofs.py",
+        "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+      },
+      {
+        "bytes": 5165,
+        "path": "peano-lab/py/peano_lab/kernel/subst.py",
+        "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+      },
+      {
+        "bytes": 9133,
+        "path": "peano-lab/py/peano_lab/kernel/terms.py",
+        "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+      },
+      {
+        "bytes": 55485,
+        "path": "training/peano_hydra/library_pilot_dependency_vector_cut_liveness.py",
+        "sha256": "9d657c7698faf89bc83d43aff9116493492eed4d854a8ef21968d10b91574abe"
+      }
+    ]
+  },
+  "inputs": {
+    "dependency_artifacts": [
+      {
+        "artifact_bytes": 3447,
+        "artifact_path": "certificates/0007-mul_add-aeabac97da97840a927c69265493c8a2355b711fa9fdc37b5c482b530b057cb7.pl2",
+        "artifact_sha256": "aeabac97da97840a927c69265493c8a2355b711fa9fdc37b5c482b530b057cb7",
+        "formula_sha256": "6c7d695dfd0c3b56e49507b7f510182794963f91ab9e5f1466dc40f145a7a0a5",
+        "index": 7,
+        "name": "mul_add",
+        "proof_term_sha256": "c32deba7cbdcfff28fe47fc2f2515cbb684f754c9b6b96860c8c89b02dfdf1ac"
+      },
+      {
+        "artifact_bytes": 1023,
+        "artifact_path": "certificates/0001-add_succ_left-09d9cd46daa969e93fdb83d9119f8c14fb226f11356acc69882759e270371983.pl2",
+        "artifact_sha256": "09d9cd46daa969e93fdb83d9119f8c14fb226f11356acc69882759e270371983",
+        "formula_sha256": "9c089dd32a335c2b820b4ea3c0902821860bcb80bbf5c306c0fdad15c8da1756",
+        "index": 1,
+        "name": "add_succ_left",
+        "proof_term_sha256": "769124fe14b55a54436635de5be893ee15ba997d5db435c159a3d00e611907d7"
+      },
+      {
+        "artifact_bytes": 1368,
+        "artifact_path": "certificates/0003-add_assoc-a239a7199c5294b1060e7f9a8244cd290036b5bc63f22ec767f68c9821026744.pl2",
+        "artifact_sha256": "a239a7199c5294b1060e7f9a8244cd290036b5bc63f22ec767f68c9821026744",
+        "formula_sha256": "4c7b9113d46e6c5646a169320d17464dcf78c0c97be26f4ef03a9d7f3afd3171",
+        "index": 3,
+        "name": "add_assoc",
+        "proof_term_sha256": "bc649ea7f7bb208ab963a2cc5137fc00b005d261a35d447a065dd094faa7399f"
+      },
+      {
+        "artifact_bytes": 2551,
+        "artifact_path": "certificates/0002-add_comm-e7094296018260b6c03fb3846c61bacc94e8d0f39739379326db409d99aeef9f.pl2",
+        "artifact_sha256": "e7094296018260b6c03fb3846c61bacc94e8d0f39739379326db409d99aeef9f",
+        "formula_sha256": "25b3cc29a1427896f1aa3935bc167b449d4501668be477e477180454ba292f94",
+        "index": 2,
+        "name": "add_comm",
+        "proof_term_sha256": "1d083e7da855b6e22c63dc081cd86cffa5beb4690f4298e6c804fe8717c4baaa"
+      }
+    ],
+    "replay_manifest": {
+      "artifact_bytes": 3241451,
+      "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+      "artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+      "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+      "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba"
+    },
+    "replay_report": {
+      "artifact_bytes": 828,
+      "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1-report.json",
+      "artifact_sha256": "35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10"
+    },
+    "root_artifact": {
+      "artifact_bytes": 14977,
+      "artifact_path": "certificates/0256-odd_add_odd-7ecd5c3f4ac81e800fc5d14b07758681b78f66a868d3d265a811c725aa6558c7.pl2",
+      "artifact_sha256": "7ecd5c3f4ac81e800fc5d14b07758681b78f66a868d3d265a811c725aa6558c7",
+      "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+      "fuel": 2432,
+      "index": 256,
+      "name": "odd_add_odd",
+      "proof_term_sha256": "0199da96fdf6834e9c1affbc343a62e312c497c9a9c014904bf8cdd8ce5f5f38"
+    }
+  },
+  "lineage_complete": false,
+  "logic_mode": "intuitionistic",
+  "optimized_best_known": false,
+  "optimized_vector_independently_audited": false,
+  "producer_git_verified": false,
+  "public_graph_applied": false,
+  "publication_applied": false,
+  "publication_union_complete": false,
+  "publication_union_verified": false,
+  "research_evaluation_eligible": false,
+  "retrieval_eligible": false,
+  "root_preimage": {
+    "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-root-preimage-v1",
+    "payload": {
+      "a2_complete": false,
+      "aggregate": {
+        "candidate_artifact_count": 1,
+        "deleted_vacuous_root_cut_count": 2,
+        "derived_direct_dependency_count": 2,
+        "initial_direct_dependency_count": 4,
+        "pilot_theorem_count": 1,
+        "retained_used_root_cut_count": 2
+      },
+      "algorithm": {
+        "id": "binder-aware-inner-first-vacuous-direct-cut-elimination-v1",
+        "opaque_direct_lemmas_transformed": false,
+        "processing_order": "inner-first",
+        "proof_producing": true,
+        "scope": "exact-declared-root-direct-cut-spine-only"
+      },
+      "authority_granted": false,
+      "best_known": false,
+      "bounded_one_root_protocol_executed": true,
+      "bounded_three_root_vector_audit_complete": false,
+      "dependency_minimality_established": false,
+      "dependency_necessity_established": false,
+      "dependency_vectors_complete": false,
+      "evaluation_eligible": false,
+      "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-v1",
+      "freeze_complete": false,
+      "global_comparison_complete": false,
+      "human_review_complete": false,
+      "id": "peano-hydra-l0-pilot-dependency-vector-cut-liveness-candidate-v1",
+      "implementation": {
+        "source_count": 9,
+        "source_root_sha256": "7e759740a06051e99130d73d679d865606cc1305bcfbde822e80fbdbba5f9064",
+        "sources": [
+          {
+            "bytes": 257,
+            "path": "peano-lab/py/peano_lab/__init__.py",
+            "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+          },
+          {
+            "bytes": 263,
+            "path": "peano-lab/py/peano_lab/kernel/__init__.py",
+            "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+          },
+          {
+            "bytes": 27892,
+            "path": "peano-lab/py/peano_lab/kernel/artifact_codec.py",
+            "sha256": "c9c4d3847c2c5fa7af683fb84f9e93341782e4b82f2579a675b97602aba39110"
+          },
+          {
+            "bytes": 10738,
+            "path": "peano-lab/py/peano_lab/kernel/checker.py",
+            "sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19"
+          },
+          {
+            "bytes": 10950,
+            "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+            "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+          },
+          {
+            "bytes": 5015,
+            "path": "peano-lab/py/peano_lab/kernel/proofs.py",
+            "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+          },
+          {
+            "bytes": 5165,
+            "path": "peano-lab/py/peano_lab/kernel/subst.py",
+            "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+          },
+          {
+            "bytes": 9133,
+            "path": "peano-lab/py/peano_lab/kernel/terms.py",
+            "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+          },
+          {
+            "bytes": 55485,
+            "path": "training/peano_hydra/library_pilot_dependency_vector_cut_liveness.py",
+            "sha256": "9d657c7698faf89bc83d43aff9116493492eed4d854a8ef21968d10b91574abe"
+          }
+        ]
+      },
+      "inputs": {
+        "dependency_artifacts": [
+          {
+            "artifact_bytes": 3447,
+            "artifact_path": "certificates/0007-mul_add-aeabac97da97840a927c69265493c8a2355b711fa9fdc37b5c482b530b057cb7.pl2",
+            "artifact_sha256": "aeabac97da97840a927c69265493c8a2355b711fa9fdc37b5c482b530b057cb7",
+            "formula_sha256": "6c7d695dfd0c3b56e49507b7f510182794963f91ab9e5f1466dc40f145a7a0a5",
+            "index": 7,
+            "name": "mul_add",
+            "proof_term_sha256": "c32deba7cbdcfff28fe47fc2f2515cbb684f754c9b6b96860c8c89b02dfdf1ac"
+          },
+          {
+            "artifact_bytes": 1023,
+            "artifact_path": "certificates/0001-add_succ_left-09d9cd46daa969e93fdb83d9119f8c14fb226f11356acc69882759e270371983.pl2",
+            "artifact_sha256": "09d9cd46daa969e93fdb83d9119f8c14fb226f11356acc69882759e270371983",
+            "formula_sha256": "9c089dd32a335c2b820b4ea3c0902821860bcb80bbf5c306c0fdad15c8da1756",
+            "index": 1,
+            "name": "add_succ_left",
+            "proof_term_sha256": "769124fe14b55a54436635de5be893ee15ba997d5db435c159a3d00e611907d7"
+          },
+          {
+            "artifact_bytes": 1368,
+            "artifact_path": "certificates/0003-add_assoc-a239a7199c5294b1060e7f9a8244cd290036b5bc63f22ec767f68c9821026744.pl2",
+            "artifact_sha256": "a239a7199c5294b1060e7f9a8244cd290036b5bc63f22ec767f68c9821026744",
+            "formula_sha256": "4c7b9113d46e6c5646a169320d17464dcf78c0c97be26f4ef03a9d7f3afd3171",
+            "index": 3,
+            "name": "add_assoc",
+            "proof_term_sha256": "bc649ea7f7bb208ab963a2cc5137fc00b005d261a35d447a065dd094faa7399f"
+          },
+          {
+            "artifact_bytes": 2551,
+            "artifact_path": "certificates/0002-add_comm-e7094296018260b6c03fb3846c61bacc94e8d0f39739379326db409d99aeef9f.pl2",
+            "artifact_sha256": "e7094296018260b6c03fb3846c61bacc94e8d0f39739379326db409d99aeef9f",
+            "formula_sha256": "25b3cc29a1427896f1aa3935bc167b449d4501668be477e477180454ba292f94",
+            "index": 2,
+            "name": "add_comm",
+            "proof_term_sha256": "1d083e7da855b6e22c63dc081cd86cffa5beb4690f4298e6c804fe8717c4baaa"
+          }
+        ],
+        "replay_manifest": {
+          "artifact_bytes": 3241451,
+          "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+          "artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+          "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+          "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba"
+        },
+        "replay_report": {
+          "artifact_bytes": 828,
+          "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1-report.json",
+          "artifact_sha256": "35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10"
+        },
+        "root_artifact": {
+          "artifact_bytes": 14977,
+          "artifact_path": "certificates/0256-odd_add_odd-7ecd5c3f4ac81e800fc5d14b07758681b78f66a868d3d265a811c725aa6558c7.pl2",
+          "artifact_sha256": "7ecd5c3f4ac81e800fc5d14b07758681b78f66a868d3d265a811c725aa6558c7",
+          "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+          "fuel": 2432,
+          "index": 256,
+          "name": "odd_add_odd",
+          "proof_term_sha256": "0199da96fdf6834e9c1affbc343a62e312c497c9a9c014904bf8cdd8ce5f5f38"
+        }
+      },
+      "lineage_complete": false,
+      "logic_mode": "intuitionistic",
+      "optimized_best_known": false,
+      "optimized_vector_independently_audited": false,
+      "producer_git_verified": false,
+      "public_graph_applied": false,
+      "publication_applied": false,
+      "publication_union_complete": false,
+      "publication_union_verified": false,
+      "research_evaluation_eligible": false,
+      "retrieval_eligible": false,
+      "route_rejections_independently_verified": false,
+      "schema": {
+        "artifact_bytes": 12566,
+        "artifact_sha256": "388190b4235b9892b38193714b0331a35b6c533c0605072c5d0663ad9cd9c0aa",
+        "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-schema",
+        "id": "peano-hydra-library-pilot-dependency-vector-cut-liveness-schema-v1",
+        "semantic_sha256": "9e8887072cc6051cf9cb9177609ab31aed35ca305a42c7d9c22d4ac339b6f5c5",
+        "v": 1
+      },
+      "status": "candidate-only-bounded-one-root-proof-producing-cut-liveness-normalization",
+      "theorem": {
+        "a2_complete": false,
+        "authority_granted": false,
+        "best_known": false,
+        "bounded_one_root_cut_liveness_complete": true,
+        "bounded_three_root_vector_audit_complete": false,
+        "candidate_artifact": {
+          "artifact_base64": "WyJwZWFuby1sYWItdjIiLDE5MzYsWyJmb3JhbGwiLFsiZm9yYWxsIixbImltcCIsWyJleGlzdHMiLFsiZXEiLFsidmFyIiwyXSxbImFkZCIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV0sWyJzdWNjIixbInplcm8iXV1dXV0sWyJpbXAiLFsiZXhpc3RzIixbImVxIixbInZhciIsMV0sWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiZXhpc3RzIixbImVxIixbImFkZCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV1dXV1dXV0sWyJjdXQiLFsiZm9yYWxsIixbImZvcmFsbCIsWyJmb3JhbGwiLFsiZXEiLFsibXVsIixbInZhciIsMl0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXSxbImFkZCIsWyJtdWwiLFsidmFyIiwyXSxbInZhciIsMV1dLFsibXVsIixbInZhciIsMl0sWyJ2YXIiLDBdXV1dXV1dLFsiZm9yYWxsIixbImZvcmFsbCIsWyJpbXAiLFsiZXhpc3RzIixbImVxIixbInZhciIsMl0sWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiaW1wIixbImV4aXN0cyIsWyJlcSIsWyJ2YXIiLDFdLFsiYWRkIixbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDBdXSxbInN1Y2MiLFsiemVybyJdXV1dXSxbImV4aXN0cyIsWyJlcSIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dXV1dXV1dLFsiY3V0IixbImZvcmFsbCIsWyJmb3JhbGwiLFsiZm9yYWxsIixbImVxIixbImFkZCIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsidmFyIiwwXV0sWyJhZGQiLFsidmFyIiwyXSxbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwwXV1dXV1dXSxbImZvcmFsbCIsWyJmb3JhbGwiLFsiZm9yYWxsIixbImVxIixbIm11bCIsWyJ2YXIiLDJdLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV0sWyJhZGQiLFsibXVsIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwwXV1dXV1dXSxbImZvcmFsbF9pbnRybyIsWyJmb3JhbGxfaW50cm8iLFsiaW5kIixbImVxIixbImFkZCIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsidmFyIiwwXV0sWyJhZGQiLFsidmFyIiwyXSxbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbInZhciIsMF0sWyJhZGQiLFsidmFyIiwyXSxbImFkZCIsWyJ2YXIiLDFdLFsiemVybyJdXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEEzIl0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsiYWRkIixbInZhciIsMl0sWyJ2YXIiLDBdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTMiXSxbInZhciIsMF1dXSxbImVxX3JlZmwiLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV1dXSxbImZvcmFsbF9pbnRybyIsWyJpbXBfaW50cm8iLFsiZXFfc3Vic3QiLFsiZXEiLFsidmFyIiwwXSxbImFkZCIsWyJ2YXIiLDNdLFsiYWRkIixbInZhciIsMl0sWyJzdWNjIixbInZhciIsMV1dXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEE0Il0sWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dXSxbInZhciIsMF1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbImFkZCIsWyJ2YXIiLDNdLFsidmFyIiwyXV0sWyJ2YXIiLDFdXV0sWyJhZGQiLFsidmFyIiwzXSxbInZhciIsMF1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNCJdLFsidmFyIiwxXV0sWyJ2YXIiLDBdXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJzdWNjIixbImFkZCIsWyJhZGQiLFsidmFyIiwzXSxbInZhciIsMl1dLFsidmFyIiwxXV1dLFsidmFyIiwwXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbInZhciIsMl1dLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJ2YXIiLDBdXSxbInN1Y2MiLFsiYWRkIixbInZhciIsM10sWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dXV1dLFsiZXFfc3ltIixbImh5cCIsMF1dLFsiZXFfcmVmbCIsWyJzdWNjIixbImFkZCIsWyJ2YXIiLDJdLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV1dXV1dXV1dXV1dXSxbImZvcmFsbF9pbnRybyIsWyJmb3JhbGxfaW50cm8iLFsiaW5kIixbImVxIixbIm11bCIsWyJ2YXIiLDJdLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV0sWyJhZGQiLFsibXVsIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwwXV0sWyJhZGQiLFsibXVsIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbIm11bCIsWyJ2YXIiLDJdLFsiemVybyJdXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEEzIl0sWyJ2YXIiLDBdXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJtdWwiLFsidmFyIiwyXSxbInZhciIsMV1dLFsiYWRkIixbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJ2YXIiLDBdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTUiXSxbInZhciIsMV1dXSxbImVxX3N1YnN0IixbImVxIixbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJ2YXIiLDBdXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBMyJdLFsibXVsIixbInZhciIsMV0sWyJ2YXIiLDBdXV1dLFsiZXFfcmVmbCIsWyJtdWwiLFsidmFyIiwxXSxbInZhciIsMF1dXV1dXSxbImZvcmFsbF9pbnRybyIsWyJpbXBfaW50cm8iLFsiZXFfc3Vic3QiLFsiZXEiLFsibXVsIixbInZhciIsM10sWyJ2YXIiLDBdXSxbImFkZCIsWyJtdWwiLFsidmFyIiwzXSxbInZhciIsMl1dLFsibXVsIixbInZhciIsM10sWyJzdWNjIixbInZhciIsMV1dXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEE0Il0sWyJ2YXIiLDFdXSxbInZhciIsMF1dXSxbImVxX3N1YnN0IixbImVxIixbInZhciIsMF0sWyJhZGQiLFsibXVsIixbInZhciIsM10sWyJ2YXIiLDJdXSxbIm11bCIsWyJ2YXIiLDNdLFsic3VjYyIsWyJ2YXIiLDFdXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNiJdLFsidmFyIiwyXV0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJhZGQiLFsibXVsIixbInZhciIsM10sWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dXSxbInZhciIsM11dLFsiYWRkIixbIm11bCIsWyJ2YXIiLDNdLFsidmFyIiwyXV0sWyJ2YXIiLDBdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTYiXSxbInZhciIsMl1dLFsidmFyIiwwXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsiYWRkIixbInZhciIsMF0sWyJ2YXIiLDNdXSxbImFkZCIsWyJtdWwiLFsidmFyIiwzXSxbInZhciIsMl1dLFsiYWRkIixbIm11bCIsWyJ2YXIiLDNdLFsidmFyIiwxXV0sWyJ2YXIiLDNdXV1dLFsiZXFfc3ltIixbImh5cCIsMF1dLFsiZXFfc3Vic3QiLFsiZXEiLFsidmFyIiwwXSxbImFkZCIsWyJtdWwiLFsidmFyIiwzXSxbInZhciIsMl1dLFsiYWRkIixbIm11bCIsWyJ2YXIiLDNdLFsidmFyIiwxXV0sWyJ2YXIiLDNdXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImh5cCIsMV0sWyJtdWwiLFsidmFyIiwyXSxbInZhciIsMV1dXSxbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwwXV1dLFsidmFyIiwyXV1dLFsiZXFfcmVmbCIsWyJhZGQiLFsibXVsIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbImFkZCIsWyJtdWwiLFsidmFyIiwyXSxbInZhciIsMF1dLFsidmFyIiwyXV1dXV1dXV1dXV1dXV1dLFsiY3V0IixbImZvcmFsbCIsWyJmb3JhbGwiLFsiZXEiLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXSxbImFkZCIsWyJ2YXIiLDBdLFsidmFyIiwxXV1dXV0sWyJmb3JhbGwiLFsiZm9yYWxsIixbImltcCIsWyJleGlzdHMiLFsiZXEiLFsidmFyIiwyXSxbImFkZCIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV0sWyJzdWNjIixbInplcm8iXV1dXV0sWyJpbXAiLFsiZXhpc3RzIixbImVxIixbInZhciIsMV0sWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiZXhpc3RzIixbImVxIixbImFkZCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV1dXV1dXV0sWyJjdXQiLFsiZm9yYWxsIixbImVxIixbImFkZCIsWyJ6ZXJvIl0sWyJ2YXIiLDBdXSxbInZhciIsMF1dXSxbImZvcmFsbCIsWyJmb3JhbGwiLFsiZXEiLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXSxbImFkZCIsWyJ2YXIiLDBdLFsidmFyIiwxXV1dXV0sWyJpbmQiLFsiZXEiLFsiYWRkIixbInplcm8iXSxbInZhciIsMF1dLFsidmFyIiwwXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJ2YXIiLDBdLFsiemVybyJdXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBMyJdLFsiemVybyJdXV0sWyJlcV9yZWZsIixbInplcm8iXV1dLFsiZm9yYWxsX2ludHJvIixbImltcF9pbnRybyIsWyJlcV9zdWJzdCIsWyJlcSIsWyJ2YXIiLDBdLFsic3VjYyIsWyJ2YXIiLDFdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbInplcm8iXV0sWyJ2YXIiLDBdXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJzdWNjIixbInZhciIsMF1dLFsic3VjYyIsWyJ2YXIiLDFdXV0sWyJlcV9zeW0iLFsiaHlwIiwwXV0sWyJlcV9yZWZsIixbInN1Y2MiLFsidmFyIiwwXV1dXV1dXV0sWyJjdXQiLFsiZm9yYWxsIixbImZvcmFsbCIsWyJlcSIsWyJhZGQiLFsic3VjYyIsWyJ2YXIiLDFdXSxbInZhciIsMF1dLFsic3VjYyIsWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV1dXSxbImZvcmFsbCIsWyJmb3JhbGwiLFsiZXEiLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXSxbImFkZCIsWyJ2YXIiLDBdLFsidmFyIiwxXV1dXV0sWyJmb3JhbGxfaW50cm8iLFsiaW5kIixbImVxIixbImFkZCIsWyJzdWNjIixbInZhciIsMV1dLFsidmFyIiwwXV0sWyJzdWNjIixbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbInZhciIsMF0sWyJzdWNjIixbImFkZCIsWyJ2YXIiLDFdLFsiemVybyJdXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEEzIl0sWyJzdWNjIixbInZhciIsMF1dXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJzdWNjIixbInZhciIsMV1dLFsic3VjYyIsWyJ2YXIiLDBdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTMiXSxbInZhciIsMF1dXSxbImVxX3JlZmwiLFsic3VjYyIsWyJ2YXIiLDBdXV1dXSxbImZvcmFsbF9pbnRybyIsWyJpbXBfaW50cm8iLFsiZXFfc3Vic3QiLFsiZXEiLFsidmFyIiwwXSxbInN1Y2MiLFsiYWRkIixbInZhciIsMl0sWyJzdWNjIixbInZhciIsMV1dXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEE0Il0sWyJzdWNjIixbInZhciIsMV1dXSxbInZhciIsMF1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsidmFyIiwyXV0sWyJ2YXIiLDFdXV0sWyJzdWNjIixbInZhciIsMF1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNCJdLFsidmFyIiwxXV0sWyJ2YXIiLDBdXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJzdWNjIixbInZhciIsMF1dLFsic3VjYyIsWyJzdWNjIixbImFkZCIsWyJ2YXIiLDJdLFsidmFyIiwxXV1dXV0sWyJlcV9zeW0iLFsiaHlwIiwwXV0sWyJlcV9yZWZsIixbInN1Y2MiLFsic3VjYyIsWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV1dXV1dXV1dXSxbImZvcmFsbF9pbnRybyIsWyJpbmQiLFsiZXEiLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXSxbImFkZCIsWyJ2YXIiLDBdLFsidmFyIiwxXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsidmFyIiwwXSxbImFkZCIsWyJ6ZXJvIl0sWyJ2YXIiLDFdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTMiXSxbInZhciIsMF1dXSxbImVxX3N1YnN0IixbImVxIixbInZhciIsMV0sWyJ2YXIiLDBdXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJoeXAiLDFdLFsidmFyIiwwXV1dLFsiZXFfcmVmbCIsWyJ2YXIiLDBdXV1dLFsiZm9yYWxsX2ludHJvIixbImltcF9pbnRybyIsWyJlcV9zdWJzdCIsWyJlcSIsWyJ2YXIiLDBdLFsiYWRkIixbInN1Y2MiLFsidmFyIiwxXV0sWyJ2YXIiLDJdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbInZhciIsMV1dLFsidmFyIiwwXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dXSxbInZhciIsMF1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImh5cCIsMV0sWyJ2YXIiLDBdXSxbInZhciIsMV1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsidmFyIiwwXV0sWyJzdWNjIixbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwyXV1dXSxbImVxX3N5bSIsWyJoeXAiLDBdXSxbImVxX3JlZmwiLFsic3VjYyIsWyJhZGQiLFsidmFyIiwwXSxbInZhciIsMV1dXV1dXV1dXV1dXV0sWyJmb3JhbGxfaW50cm8iLFsiZm9yYWxsX2ludHJvIixbImltcF9pbnRybyIsWyJpbXBfaW50cm8iLFsiZXhpc3RzX2VsaW0iLFsiaHlwIiwxXSxbImV4aXN0c19lbGltIixbImh5cCIsMV0sWyJleGlzdHNfaW50cm8iLFsiYWRkIixbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwwXV0sWyJzdWNjIixbInplcm8iXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsiYWRkIixbInZhciIsMF0sWyJ2YXIiLDNdXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJhZGQiLFsiYWRkIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbInN1Y2MiLFsiemVybyJdXV1dXSxbImVxX3N5bSIsWyJoeXAiLDFdXSxbImVxX3N1YnN0IixbImVxIixbImFkZCIsWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbImFkZCIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiZXFfc3ltIixbImh5cCIsMF1dLFsiZXFfc3Vic3QiLFsiZXEiLFsiYWRkIixbInZhciIsMF0sWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dLFsic3VjYyIsWyJ6ZXJvIl1dXV0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsiYWRkIixbImFkZCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJzdWNjIixbInplcm8iXV1dXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV0sWyJ6ZXJvIl1dXSxbImVxX3N1YnN0IixbImVxIixbImFkZCIsWyJzdWNjIixbInZhciIsMF1dLFsiYWRkIixbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXSxbInN1Y2MiLFsiemVybyJdXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbImFkZCIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEEzIl0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwxXV1dXSxbImVxX3N1YnN0IixbImVxIixbImFkZCIsWyJzdWNjIixbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDJdXV0sWyJ2YXIiLDBdXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJhZGQiLFsiYWRkIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbInN1Y2MiLFsiemVybyJdXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNCJdLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dXSxbInplcm8iXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbInN1Y2MiLFsidmFyIiwwXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbImFkZCIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEEzIl0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbInZhciIsMF0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsiYWRkIixbImFkZCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJzdWNjIixbInplcm8iXV1dXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXV0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNCJdLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV0sWyJ6ZXJvIl1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInN1Y2MiLFsidmFyIiwwXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBMyJdLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJhZGQiLFsic3VjYyIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwyXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXV0sWyJ2YXIiLDBdXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNiJdLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dXSxbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsidmFyIiwwXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV0sWyJzdWNjIixbInplcm8iXV1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsic3VjYyIsWyJ2YXIiLDBdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV0sWyJ6ZXJvIl1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsic3VjYyIsWyJzdWNjIixbInZhciIsMF1dXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTMiXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJhZGQiLFsic3VjYyIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwyXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXV0sWyJzdWNjIixbInN1Y2MiLFsidmFyIiwwXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJoeXAiLDVdLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dXSxbInZhciIsMV1dLFsidmFyIiwwXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJ2YXIiLDBdXSxbInN1Y2MiLFsic3VjYyIsWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJoeXAiLDRdLFsic3VjYyIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwxXV1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDBdXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJ2YXIiLDBdXSxbInN1Y2MiLFsic3VjYyIsWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNCJdLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJzdWNjIixbImFkZCIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwxXV0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwyXV1dXV0sWyJzdWNjIixbInN1Y2MiLFsidmFyIiwwXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJoeXAiLDRdLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDBdXV1dLFsiZXFfcmVmbCIsWyJzdWNjIixbInN1Y2MiLFsiYWRkIixbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDBdXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV0K",
+          "artifact_bytes": 11958,
+          "artifact_sha256": "c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22",
+          "canonical_roundtrip_checked": true,
+          "empty_context_kernel_checked": true,
+          "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+          "fuel": 1936,
+          "fuel_basis": {
+            "formula": "8 * intrinsic_proof_nodes + 16",
+            "role": "deterministic-replay-envelope-metadata-not-a-comparison-axis-or-authority"
+          },
+          "proof_term_sha256": "5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4",
+          "tree_metrics": {
+            "cut_nodes": 5,
+            "proof_depth": 30,
+            "proof_nodes": 240
+          }
+        },
+        "closure_context": {
+          "basis": "retained-manifest-graph-descriptive-context-not-direct-vector-input",
+          "derived_vector_closure": {
+            "count": 5,
+            "dependencies": [
+              "zero_add",
+              "add_succ_left",
+              "add_comm",
+              "add_assoc",
+              "mul_add"
+            ],
+            "lf_bytes": 50,
+            "lf_sha256": "a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2"
+          },
+          "dropped_direct_dependencies_remaining_reachable": [
+            "add_succ_left",
+            "add_assoc"
+          ],
+          "initial_vector_closure": {
+            "count": 5,
+            "dependencies": [
+              "zero_add",
+              "add_succ_left",
+              "add_comm",
+              "add_assoc",
+              "mul_add"
+            ],
+            "lf_bytes": 50,
+            "lf_sha256": "a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2"
+          },
+          "unchanged": true
+        },
+        "dependency_minimality_established": false,
+        "dependency_necessity_established": false,
+        "dependency_vectors_complete": false,
+        "derived_direct_vector": {
+          "count": 2,
+          "dependencies": [
+            "mul_add",
+            "add_comm"
+          ],
+          "lf_bytes": 17,
+          "lf_sha256": "ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4"
+        },
+        "evaluation_eligible": false,
+        "freeze_complete": false,
+        "global_comparison_complete": false,
+        "human_review_complete": false,
+        "index": 256,
+        "initial_direct_vector": {
+          "count": 4,
+          "dependencies": [
+            "mul_add",
+            "add_succ_left",
+            "add_assoc",
+            "add_comm"
+          ],
+          "lf_bytes": 41,
+          "lf_sha256": "9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc"
+        },
+        "input_direct_cut_spine": [
+          {
+            "artifact_bytes": 3447,
+            "artifact_path": "certificates/0007-mul_add-aeabac97da97840a927c69265493c8a2355b711fa9fdc37b5c482b530b057cb7.pl2",
+            "artifact_sha256": "aeabac97da97840a927c69265493c8a2355b711fa9fdc37b5c482b530b057cb7",
+            "declared_index": 0,
+            "dependency_index": 7,
+            "formula_sha256": "6c7d695dfd0c3b56e49507b7f510182794963f91ab9e5f1466dc40f145a7a0a5",
+            "name": "mul_add",
+            "opaque_lemma_bytes": 3275,
+            "opaque_lemma_empty_context_kernel_checked": true,
+            "opaque_lemma_proof_sha256": "c32deba7cbdcfff28fe47fc2f2515cbb684f754c9b6b96860c8c89b02dfdf1ac",
+            "proposition_formula_sha256": "6c7d695dfd0c3b56e49507b7f510182794963f91ab9e5f1466dc40f145a7a0a5",
+            "root_conclusion_exact": true
+          },
+          {
+            "artifact_bytes": 1023,
+            "artifact_path": "certificates/0001-add_succ_left-09d9cd46daa969e93fdb83d9119f8c14fb226f11356acc69882759e270371983.pl2",
+            "artifact_sha256": "09d9cd46daa969e93fdb83d9119f8c14fb226f11356acc69882759e270371983",
+            "declared_index": 1,
+            "dependency_index": 1,
+            "formula_sha256": "9c089dd32a335c2b820b4ea3c0902821860bcb80bbf5c306c0fdad15c8da1756",
+            "name": "add_succ_left",
+            "opaque_lemma_bytes": 898,
+            "opaque_lemma_empty_context_kernel_checked": true,
+            "opaque_lemma_proof_sha256": "769124fe14b55a54436635de5be893ee15ba997d5db435c159a3d00e611907d7",
+            "proposition_formula_sha256": "9c089dd32a335c2b820b4ea3c0902821860bcb80bbf5c306c0fdad15c8da1756",
+            "root_conclusion_exact": true
+          },
+          {
+            "artifact_bytes": 1368,
+            "artifact_path": "certificates/0003-add_assoc-a239a7199c5294b1060e7f9a8244cd290036b5bc63f22ec767f68c9821026744.pl2",
+            "artifact_sha256": "a239a7199c5294b1060e7f9a8244cd290036b5bc63f22ec767f68c9821026744",
+            "declared_index": 2,
+            "dependency_index": 3,
+            "formula_sha256": "4c7b9113d46e6c5646a169320d17464dcf78c0c97be26f4ef03a9d7f3afd3171",
+            "name": "add_assoc",
+            "opaque_lemma_bytes": 1214,
+            "opaque_lemma_empty_context_kernel_checked": true,
+            "opaque_lemma_proof_sha256": "bc649ea7f7bb208ab963a2cc5137fc00b005d261a35d447a065dd094faa7399f",
+            "proposition_formula_sha256": "4c7b9113d46e6c5646a169320d17464dcf78c0c97be26f4ef03a9d7f3afd3171",
+            "root_conclusion_exact": true
+          },
+          {
+            "artifact_bytes": 2551,
+            "artifact_path": "certificates/0002-add_comm-e7094296018260b6c03fb3846c61bacc94e8d0f39739379326db409d99aeef9f.pl2",
+            "artifact_sha256": "e7094296018260b6c03fb3846c61bacc94e8d0f39739379326db409d99aeef9f",
+            "declared_index": 3,
+            "dependency_index": 2,
+            "formula_sha256": "25b3cc29a1427896f1aa3935bc167b449d4501668be477e477180454ba292f94",
+            "name": "add_comm",
+            "opaque_lemma_bytes": 2444,
+            "opaque_lemma_empty_context_kernel_checked": true,
+            "opaque_lemma_proof_sha256": "1d083e7da855b6e22c63dc081cd86cffa5beb4690f4298e6c804fe8717c4baaa",
+            "proposition_formula_sha256": "25b3cc29a1427896f1aa3935bc167b449d4501668be477e477180454ba292f94",
+            "root_conclusion_exact": true
+          }
+        ],
+        "lineage_complete": false,
+        "name": "odd_add_odd",
+        "normalization_steps_inner_first": [
+          {
+            "bound_hypothesis_use_count": 2,
+            "declared_index": 3,
+            "dependency": "add_comm",
+            "first_use_path": [
+              "ForallIntro.body",
+              "ForallIntro.body",
+              "ImpIntro.body",
+              "ImpIntro.body",
+              "ExistsElim.body",
+              "ExistsElim.body",
+              "ExistsIntro.p",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.eq_proof",
+              "EqSym.proof",
+              "ForallElim.p",
+              "ForallElim.p",
+              "Hyp[4]"
+            ],
+            "input_body_proof_sha256": "32efdb1ae3051eec4455aba20f99c573f930b8af8d02ffeb3b44445a68cacaad",
+            "intermediate_kernel_checked": true,
+            "opaque_lemma_proof_sha256": "1d083e7da855b6e22c63dc081cd86cffa5beb4690f4298e6c804fe8717c4baaa",
+            "outcome": "retained-used",
+            "output_proof_sha256": "c4dd36e40aad48f37681c86e365fb35d4be354cb805c808be22a6d7a624f430b",
+            "processing_index": 0,
+            "surrounding_context_nearest_first": [
+              "add_assoc",
+              "add_succ_left",
+              "mul_add"
+            ]
+          },
+          {
+            "bound_hypothesis_use_count": 0,
+            "declared_index": 2,
+            "dependency": "add_assoc",
+            "first_use_path": null,
+            "input_body_proof_sha256": "c4dd36e40aad48f37681c86e365fb35d4be354cb805c808be22a6d7a624f430b",
+            "intermediate_kernel_checked": true,
+            "opaque_lemma_proof_sha256": "bc649ea7f7bb208ab963a2cc5137fc00b005d261a35d447a065dd094faa7399f",
+            "outcome": "deleted-vacuous",
+            "output_proof_sha256": "4d2b3f0594fb1b5010518530cc7aa8f81bcf667b7d50a6803295a99755e5275e",
+            "processing_index": 1,
+            "surrounding_context_nearest_first": [
+              "add_succ_left",
+              "mul_add"
+            ]
+          },
+          {
+            "bound_hypothesis_use_count": 0,
+            "declared_index": 1,
+            "dependency": "add_succ_left",
+            "first_use_path": null,
+            "input_body_proof_sha256": "4d2b3f0594fb1b5010518530cc7aa8f81bcf667b7d50a6803295a99755e5275e",
+            "intermediate_kernel_checked": true,
+            "opaque_lemma_proof_sha256": "769124fe14b55a54436635de5be893ee15ba997d5db435c159a3d00e611907d7",
+            "outcome": "deleted-vacuous",
+            "output_proof_sha256": "82d61bf651f55a8b07473c7feff62ab7b9ead8ca3df4f1f5a4faa0c066d4506b",
+            "processing_index": 2,
+            "surrounding_context_nearest_first": [
+              "mul_add"
+            ]
+          },
+          {
+            "bound_hypothesis_use_count": 1,
+            "declared_index": 0,
+            "dependency": "mul_add",
+            "first_use_path": [
+              "Cut.body",
+              "ForallIntro.body",
+              "ForallIntro.body",
+              "ImpIntro.body",
+              "ImpIntro.body",
+              "ExistsElim.body",
+              "ExistsElim.body",
+              "ExistsIntro.p",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.body_proof",
+              "EqSubst.eq_proof",
+              "EqSym.proof",
+              "ForallElim.p",
+              "ForallElim.p",
+              "ForallElim.p",
+              "Hyp[5]"
+            ],
+            "input_body_proof_sha256": "82d61bf651f55a8b07473c7feff62ab7b9ead8ca3df4f1f5a4faa0c066d4506b",
+            "intermediate_kernel_checked": true,
+            "opaque_lemma_proof_sha256": "c32deba7cbdcfff28fe47fc2f2515cbb684f754c9b6b96860c8c89b02dfdf1ac",
+            "outcome": "retained-used",
+            "output_proof_sha256": "5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4",
+            "processing_index": 3,
+            "surrounding_context_nearest_first": []
+          }
+        ],
+        "opaque_lemma_subtree_survival": [
+          {
+            "dependency": "mul_add",
+            "direct_cut_retained": true,
+            "input_subtree_occurrences": 1,
+            "opaque_lemma_proof_sha256": "c32deba7cbdcfff28fe47fc2f2515cbb684f754c9b6b96860c8c89b02dfdf1ac",
+            "output_subtree_occurrences": 1,
+            "survives_elsewhere_after_root_cut_deletion": false
+          },
+          {
+            "dependency": "add_succ_left",
+            "direct_cut_retained": false,
+            "input_subtree_occurrences": 2,
+            "opaque_lemma_proof_sha256": "769124fe14b55a54436635de5be893ee15ba997d5db435c159a3d00e611907d7",
+            "output_subtree_occurrences": 1,
+            "survives_elsewhere_after_root_cut_deletion": true
+          },
+          {
+            "dependency": "add_assoc",
+            "direct_cut_retained": false,
+            "input_subtree_occurrences": 2,
+            "opaque_lemma_proof_sha256": "bc649ea7f7bb208ab963a2cc5137fc00b005d261a35d447a065dd094faa7399f",
+            "output_subtree_occurrences": 1,
+            "survives_elsewhere_after_root_cut_deletion": true
+          },
+          {
+            "dependency": "add_comm",
+            "direct_cut_retained": true,
+            "input_subtree_occurrences": 1,
+            "opaque_lemma_proof_sha256": "1d083e7da855b6e22c63dc081cd86cffa5beb4690f4298e6c804fe8717c4baaa",
+            "output_subtree_occurrences": 1,
+            "survives_elsewhere_after_root_cut_deletion": false
+          }
+        ],
+        "optimized_best_known": false,
+        "optimized_vector_independently_audited": false,
+        "post_transform_idempotence": {
+          "checked": true,
+          "proof_term_sha256": "5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4",
+          "retained_dependencies": [
+            "mul_add",
+            "add_comm"
+          ],
+          "second_pass_outcomes_inner_first": [
+            {
+              "dependency": "add_comm",
+              "outcome": "retained-used"
+            },
+            {
+              "dependency": "mul_add",
+              "outcome": "retained-used"
+            }
+          ]
+        },
+        "producer_git_verified": false,
+        "proof_producing_cut_liveness_normalization_complete": true,
+        "public_graph_applied": false,
+        "publication_applied": false,
+        "publication_union_complete": false,
+        "publication_union_verified": false,
+        "record_sha256": "a90eef83d3344369496a6d54254aa38cba4fb082ab3ba399742f36babfaad803",
+        "research_evaluation_eligible": false,
+        "retrieval_eligible": false,
+        "route_rejections_independently_verified": false,
+        "statement": {
+          "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+          "target_preserved_exactly": true
+        },
+        "training_eligible": false
+      },
+      "theorem_count": 1,
+      "theorem_record_root_sha256": "a90eef83d3344369496a6d54254aa38cba4fb082ab3ba399742f36babfaad803",
+      "training_eligible": false,
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835",
+  "route_rejections_independently_verified": false,
+  "schema": {
+    "artifact_bytes": 12566,
+    "artifact_sha256": "388190b4235b9892b38193714b0331a35b6c533c0605072c5d0663ad9cd9c0aa",
+    "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-schema",
+    "id": "peano-hydra-library-pilot-dependency-vector-cut-liveness-schema-v1",
+    "semantic_sha256": "9e8887072cc6051cf9cb9177609ab31aed35ca305a42c7d9c22d4ac339b6f5c5",
+    "v": 1
+  },
+  "status": "candidate-only-bounded-one-root-proof-producing-cut-liveness-normalization",
+  "theorem": {
+    "a2_complete": false,
+    "authority_granted": false,
+    "best_known": false,
+    "bounded_one_root_cut_liveness_complete": true,
+    "bounded_three_root_vector_audit_complete": false,
+    "candidate_artifact": {
+      "artifact_base64": "WyJwZWFuby1sYWItdjIiLDE5MzYsWyJmb3JhbGwiLFsiZm9yYWxsIixbImltcCIsWyJleGlzdHMiLFsiZXEiLFsidmFyIiwyXSxbImFkZCIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV0sWyJzdWNjIixbInplcm8iXV1dXV0sWyJpbXAiLFsiZXhpc3RzIixbImVxIixbInZhciIsMV0sWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiZXhpc3RzIixbImVxIixbImFkZCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV1dXV1dXV0sWyJjdXQiLFsiZm9yYWxsIixbImZvcmFsbCIsWyJmb3JhbGwiLFsiZXEiLFsibXVsIixbInZhciIsMl0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXSxbImFkZCIsWyJtdWwiLFsidmFyIiwyXSxbInZhciIsMV1dLFsibXVsIixbInZhciIsMl0sWyJ2YXIiLDBdXV1dXV1dLFsiZm9yYWxsIixbImZvcmFsbCIsWyJpbXAiLFsiZXhpc3RzIixbImVxIixbInZhciIsMl0sWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiaW1wIixbImV4aXN0cyIsWyJlcSIsWyJ2YXIiLDFdLFsiYWRkIixbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDBdXSxbInN1Y2MiLFsiemVybyJdXV1dXSxbImV4aXN0cyIsWyJlcSIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dXV1dXV1dLFsiY3V0IixbImZvcmFsbCIsWyJmb3JhbGwiLFsiZm9yYWxsIixbImVxIixbImFkZCIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsidmFyIiwwXV0sWyJhZGQiLFsidmFyIiwyXSxbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwwXV1dXV1dXSxbImZvcmFsbCIsWyJmb3JhbGwiLFsiZm9yYWxsIixbImVxIixbIm11bCIsWyJ2YXIiLDJdLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV0sWyJhZGQiLFsibXVsIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwwXV1dXV1dXSxbImZvcmFsbF9pbnRybyIsWyJmb3JhbGxfaW50cm8iLFsiaW5kIixbImVxIixbImFkZCIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsidmFyIiwwXV0sWyJhZGQiLFsidmFyIiwyXSxbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbInZhciIsMF0sWyJhZGQiLFsidmFyIiwyXSxbImFkZCIsWyJ2YXIiLDFdLFsiemVybyJdXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEEzIl0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsiYWRkIixbInZhciIsMl0sWyJ2YXIiLDBdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTMiXSxbInZhciIsMF1dXSxbImVxX3JlZmwiLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV1dXSxbImZvcmFsbF9pbnRybyIsWyJpbXBfaW50cm8iLFsiZXFfc3Vic3QiLFsiZXEiLFsidmFyIiwwXSxbImFkZCIsWyJ2YXIiLDNdLFsiYWRkIixbInZhciIsMl0sWyJzdWNjIixbInZhciIsMV1dXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEE0Il0sWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dXSxbInZhciIsMF1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbImFkZCIsWyJ2YXIiLDNdLFsidmFyIiwyXV0sWyJ2YXIiLDFdXV0sWyJhZGQiLFsidmFyIiwzXSxbInZhciIsMF1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNCJdLFsidmFyIiwxXV0sWyJ2YXIiLDBdXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJzdWNjIixbImFkZCIsWyJhZGQiLFsidmFyIiwzXSxbInZhciIsMl1dLFsidmFyIiwxXV1dLFsidmFyIiwwXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbInZhciIsMl1dLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJ2YXIiLDBdXSxbInN1Y2MiLFsiYWRkIixbInZhciIsM10sWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dXV1dLFsiZXFfc3ltIixbImh5cCIsMF1dLFsiZXFfcmVmbCIsWyJzdWNjIixbImFkZCIsWyJ2YXIiLDJdLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV1dXV1dXV1dXV1dXSxbImZvcmFsbF9pbnRybyIsWyJmb3JhbGxfaW50cm8iLFsiaW5kIixbImVxIixbIm11bCIsWyJ2YXIiLDJdLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV0sWyJhZGQiLFsibXVsIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwwXV0sWyJhZGQiLFsibXVsIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbIm11bCIsWyJ2YXIiLDJdLFsiemVybyJdXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEEzIl0sWyJ2YXIiLDBdXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJtdWwiLFsidmFyIiwyXSxbInZhciIsMV1dLFsiYWRkIixbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJ2YXIiLDBdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTUiXSxbInZhciIsMV1dXSxbImVxX3N1YnN0IixbImVxIixbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJ2YXIiLDBdXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBMyJdLFsibXVsIixbInZhciIsMV0sWyJ2YXIiLDBdXV1dLFsiZXFfcmVmbCIsWyJtdWwiLFsidmFyIiwxXSxbInZhciIsMF1dXV1dXSxbImZvcmFsbF9pbnRybyIsWyJpbXBfaW50cm8iLFsiZXFfc3Vic3QiLFsiZXEiLFsibXVsIixbInZhciIsM10sWyJ2YXIiLDBdXSxbImFkZCIsWyJtdWwiLFsidmFyIiwzXSxbInZhciIsMl1dLFsibXVsIixbInZhciIsM10sWyJzdWNjIixbInZhciIsMV1dXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEE0Il0sWyJ2YXIiLDFdXSxbInZhciIsMF1dXSxbImVxX3N1YnN0IixbImVxIixbInZhciIsMF0sWyJhZGQiLFsibXVsIixbInZhciIsM10sWyJ2YXIiLDJdXSxbIm11bCIsWyJ2YXIiLDNdLFsic3VjYyIsWyJ2YXIiLDFdXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNiJdLFsidmFyIiwyXV0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJhZGQiLFsibXVsIixbInZhciIsM10sWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dXSxbInZhciIsM11dLFsiYWRkIixbIm11bCIsWyJ2YXIiLDNdLFsidmFyIiwyXV0sWyJ2YXIiLDBdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTYiXSxbInZhciIsMl1dLFsidmFyIiwwXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsiYWRkIixbInZhciIsMF0sWyJ2YXIiLDNdXSxbImFkZCIsWyJtdWwiLFsidmFyIiwzXSxbInZhciIsMl1dLFsiYWRkIixbIm11bCIsWyJ2YXIiLDNdLFsidmFyIiwxXV0sWyJ2YXIiLDNdXV1dLFsiZXFfc3ltIixbImh5cCIsMF1dLFsiZXFfc3Vic3QiLFsiZXEiLFsidmFyIiwwXSxbImFkZCIsWyJtdWwiLFsidmFyIiwzXSxbInZhciIsMl1dLFsiYWRkIixbIm11bCIsWyJ2YXIiLDNdLFsidmFyIiwxXV0sWyJ2YXIiLDNdXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImh5cCIsMV0sWyJtdWwiLFsidmFyIiwyXSxbInZhciIsMV1dXSxbIm11bCIsWyJ2YXIiLDJdLFsidmFyIiwwXV1dLFsidmFyIiwyXV1dLFsiZXFfcmVmbCIsWyJhZGQiLFsibXVsIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbImFkZCIsWyJtdWwiLFsidmFyIiwyXSxbInZhciIsMF1dLFsidmFyIiwyXV1dXV1dXV1dXV1dXV1dLFsiY3V0IixbImZvcmFsbCIsWyJmb3JhbGwiLFsiZXEiLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXSxbImFkZCIsWyJ2YXIiLDBdLFsidmFyIiwxXV1dXV0sWyJmb3JhbGwiLFsiZm9yYWxsIixbImltcCIsWyJleGlzdHMiLFsiZXEiLFsidmFyIiwyXSxbImFkZCIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV0sWyJzdWNjIixbInplcm8iXV1dXV0sWyJpbXAiLFsiZXhpc3RzIixbImVxIixbInZhciIsMV0sWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiZXhpc3RzIixbImVxIixbImFkZCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV1dXV1dXV0sWyJjdXQiLFsiZm9yYWxsIixbImVxIixbImFkZCIsWyJ6ZXJvIl0sWyJ2YXIiLDBdXSxbInZhciIsMF1dXSxbImZvcmFsbCIsWyJmb3JhbGwiLFsiZXEiLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXSxbImFkZCIsWyJ2YXIiLDBdLFsidmFyIiwxXV1dXV0sWyJpbmQiLFsiZXEiLFsiYWRkIixbInplcm8iXSxbInZhciIsMF1dLFsidmFyIiwwXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJ2YXIiLDBdLFsiemVybyJdXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBMyJdLFsiemVybyJdXV0sWyJlcV9yZWZsIixbInplcm8iXV1dLFsiZm9yYWxsX2ludHJvIixbImltcF9pbnRybyIsWyJlcV9zdWJzdCIsWyJlcSIsWyJ2YXIiLDBdLFsic3VjYyIsWyJ2YXIiLDFdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbInplcm8iXV0sWyJ2YXIiLDBdXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJzdWNjIixbInZhciIsMF1dLFsic3VjYyIsWyJ2YXIiLDFdXV0sWyJlcV9zeW0iLFsiaHlwIiwwXV0sWyJlcV9yZWZsIixbInN1Y2MiLFsidmFyIiwwXV1dXV1dXV0sWyJjdXQiLFsiZm9yYWxsIixbImZvcmFsbCIsWyJlcSIsWyJhZGQiLFsic3VjYyIsWyJ2YXIiLDFdXSxbInZhciIsMF1dLFsic3VjYyIsWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV1dXSxbImZvcmFsbCIsWyJmb3JhbGwiLFsiZXEiLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXSxbImFkZCIsWyJ2YXIiLDBdLFsidmFyIiwxXV1dXV0sWyJmb3JhbGxfaW50cm8iLFsiaW5kIixbImVxIixbImFkZCIsWyJzdWNjIixbInZhciIsMV1dLFsidmFyIiwwXV0sWyJzdWNjIixbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbInZhciIsMF0sWyJzdWNjIixbImFkZCIsWyJ2YXIiLDFdLFsiemVybyJdXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEEzIl0sWyJzdWNjIixbInZhciIsMF1dXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJzdWNjIixbInZhciIsMV1dLFsic3VjYyIsWyJ2YXIiLDBdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTMiXSxbInZhciIsMF1dXSxbImVxX3JlZmwiLFsic3VjYyIsWyJ2YXIiLDBdXV1dXSxbImZvcmFsbF9pbnRybyIsWyJpbXBfaW50cm8iLFsiZXFfc3Vic3QiLFsiZXEiLFsidmFyIiwwXSxbInN1Y2MiLFsiYWRkIixbInZhciIsMl0sWyJzdWNjIixbInZhciIsMV1dXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEE0Il0sWyJzdWNjIixbInZhciIsMV1dXSxbInZhciIsMF1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsidmFyIiwyXV0sWyJ2YXIiLDFdXV0sWyJzdWNjIixbInZhciIsMF1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNCJdLFsidmFyIiwxXV0sWyJ2YXIiLDBdXV0sWyJlcV9zdWJzdCIsWyJlcSIsWyJzdWNjIixbInZhciIsMF1dLFsic3VjYyIsWyJzdWNjIixbImFkZCIsWyJ2YXIiLDJdLFsidmFyIiwxXV1dXV0sWyJlcV9zeW0iLFsiaHlwIiwwXV0sWyJlcV9yZWZsIixbInN1Y2MiLFsic3VjYyIsWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV1dXV1dXV1dXSxbImZvcmFsbF9pbnRybyIsWyJpbmQiLFsiZXEiLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXSxbImFkZCIsWyJ2YXIiLDBdLFsidmFyIiwxXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsidmFyIiwwXSxbImFkZCIsWyJ6ZXJvIl0sWyJ2YXIiLDFdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTMiXSxbInZhciIsMF1dXSxbImVxX3N1YnN0IixbImVxIixbInZhciIsMV0sWyJ2YXIiLDBdXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJoeXAiLDFdLFsidmFyIiwwXV1dLFsiZXFfcmVmbCIsWyJ2YXIiLDBdXV1dLFsiZm9yYWxsX2ludHJvIixbImltcF9pbnRybyIsWyJlcV9zdWJzdCIsWyJlcSIsWyJ2YXIiLDBdLFsiYWRkIixbInN1Y2MiLFsidmFyIiwxXV0sWyJ2YXIiLDJdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbInZhciIsMV1dLFsidmFyIiwwXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dXSxbInZhciIsMF1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImZvcmFsbF9lbGltIixbImh5cCIsMV0sWyJ2YXIiLDBdXSxbInZhciIsMV1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsidmFyIiwwXV0sWyJzdWNjIixbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwyXV1dXSxbImVxX3N5bSIsWyJoeXAiLDBdXSxbImVxX3JlZmwiLFsic3VjYyIsWyJhZGQiLFsidmFyIiwwXSxbInZhciIsMV1dXV1dXV1dXV1dXV0sWyJmb3JhbGxfaW50cm8iLFsiZm9yYWxsX2ludHJvIixbImltcF9pbnRybyIsWyJpbXBfaW50cm8iLFsiZXhpc3RzX2VsaW0iLFsiaHlwIiwxXSxbImV4aXN0c19lbGltIixbImh5cCIsMV0sWyJleGlzdHNfaW50cm8iLFsiYWRkIixbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwwXV0sWyJzdWNjIixbInplcm8iXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsiYWRkIixbInZhciIsMF0sWyJ2YXIiLDNdXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJhZGQiLFsiYWRkIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbInN1Y2MiLFsiemVybyJdXV1dXSxbImVxX3N5bSIsWyJoeXAiLDFdXSxbImVxX3N1YnN0IixbImVxIixbImFkZCIsWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbImFkZCIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiZXFfc3ltIixbImh5cCIsMF1dLFsiZXFfc3Vic3QiLFsiZXEiLFsiYWRkIixbInZhciIsMF0sWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dLFsic3VjYyIsWyJ6ZXJvIl1dXV0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsiYWRkIixbImFkZCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJzdWNjIixbInplcm8iXV1dXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV0sWyJ6ZXJvIl1dXSxbImVxX3N1YnN0IixbImVxIixbImFkZCIsWyJzdWNjIixbInZhciIsMF1dLFsiYWRkIixbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXSxbInN1Y2MiLFsiemVybyJdXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbImFkZCIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEEzIl0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwxXV1dXSxbImVxX3N1YnN0IixbImVxIixbImFkZCIsWyJzdWNjIixbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDJdXV0sWyJ2YXIiLDBdXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJhZGQiLFsiYWRkIixbInZhciIsMl0sWyJ2YXIiLDFdXSxbInN1Y2MiLFsiemVybyJdXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNCJdLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dXSxbInplcm8iXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbInN1Y2MiLFsidmFyIiwwXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbImFkZCIsWyJhZGQiLFsidmFyIiwyXSxbInZhciIsMV1dLFsic3VjYyIsWyJ6ZXJvIl1dXV1dLFsiZXFfc3ltIixbImZvcmFsbF9lbGltIixbImF4aW9tIiwiUEEzIl0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbInZhciIsMF0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsiYWRkIixbImFkZCIsWyJ2YXIiLDJdLFsidmFyIiwxXV0sWyJzdWNjIixbInplcm8iXV1dXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXV0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNCJdLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV0sWyJ6ZXJvIl1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInN1Y2MiLFsidmFyIiwwXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBMyJdLFsiYWRkIixbInZhciIsMV0sWyJ2YXIiLDBdXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJhZGQiLFsic3VjYyIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwyXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXV0sWyJ2YXIiLDBdXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNiJdLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dXSxbImFkZCIsWyJ2YXIiLDFdLFsidmFyIiwwXV1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsidmFyIiwwXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV0sWyJzdWNjIixbInplcm8iXV1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsic3VjYyIsWyJ2YXIiLDBdXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTQiXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV0sWyJ6ZXJvIl1dXSxbImVxX3N1YnN0IixbImVxIixbInN1Y2MiLFsiYWRkIixbInN1Y2MiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsic3VjYyIsWyJzdWNjIixbInZhciIsMF1dXV0sWyJlcV9zeW0iLFsiZm9yYWxsX2VsaW0iLFsiYXhpb20iLCJQQTMiXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJhZGQiLFsidmFyIiwxXSxbInZhciIsMF1dXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJhZGQiLFsic3VjYyIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwyXV1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXV0sWyJzdWNjIixbInN1Y2MiLFsidmFyIiwwXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJoeXAiLDVdLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dXSxbInZhciIsMV1dLFsidmFyIiwwXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJ2YXIiLDBdXSxbInN1Y2MiLFsic3VjYyIsWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJoeXAiLDRdLFsic3VjYyIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwxXV1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDBdXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJ2YXIiLDBdXSxbInN1Y2MiLFsic3VjYyIsWyJhZGQiLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMl1dLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJheGlvbSIsIlBBNCJdLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMF1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dLFsiZXFfc3Vic3QiLFsiZXEiLFsic3VjYyIsWyJzdWNjIixbImFkZCIsWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwxXV0sWyJtdWwiLFsic3VjYyIsWyJzdWNjIixbInplcm8iXV1dLFsidmFyIiwyXV1dXV0sWyJzdWNjIixbInN1Y2MiLFsidmFyIiwwXV1dXSxbImVxX3N5bSIsWyJmb3JhbGxfZWxpbSIsWyJmb3JhbGxfZWxpbSIsWyJoeXAiLDRdLFsibXVsIixbInN1Y2MiLFsic3VjYyIsWyJ6ZXJvIl1dXSxbInZhciIsMV1dXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDBdXV1dLFsiZXFfcmVmbCIsWyJzdWNjIixbInN1Y2MiLFsiYWRkIixbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDBdXSxbIm11bCIsWyJzdWNjIixbInN1Y2MiLFsiemVybyJdXV0sWyJ2YXIiLDFdXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV0K",
+      "artifact_bytes": 11958,
+      "artifact_sha256": "c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22",
+      "canonical_roundtrip_checked": true,
+      "empty_context_kernel_checked": true,
+      "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+      "fuel": 1936,
+      "fuel_basis": {
+        "formula": "8 * intrinsic_proof_nodes + 16",
+        "role": "deterministic-replay-envelope-metadata-not-a-comparison-axis-or-authority"
+      },
+      "proof_term_sha256": "5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4",
+      "tree_metrics": {
+        "cut_nodes": 5,
+        "proof_depth": 30,
+        "proof_nodes": 240
+      }
+    },
+    "closure_context": {
+      "basis": "retained-manifest-graph-descriptive-context-not-direct-vector-input",
+      "derived_vector_closure": {
+        "count": 5,
+        "dependencies": [
+          "zero_add",
+          "add_succ_left",
+          "add_comm",
+          "add_assoc",
+          "mul_add"
+        ],
+        "lf_bytes": 50,
+        "lf_sha256": "a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2"
+      },
+      "dropped_direct_dependencies_remaining_reachable": [
+        "add_succ_left",
+        "add_assoc"
+      ],
+      "initial_vector_closure": {
+        "count": 5,
+        "dependencies": [
+          "zero_add",
+          "add_succ_left",
+          "add_comm",
+          "add_assoc",
+          "mul_add"
+        ],
+        "lf_bytes": 50,
+        "lf_sha256": "a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2"
+      },
+      "unchanged": true
+    },
+    "dependency_minimality_established": false,
+    "dependency_necessity_established": false,
+    "dependency_vectors_complete": false,
+    "derived_direct_vector": {
+      "count": 2,
+      "dependencies": [
+        "mul_add",
+        "add_comm"
+      ],
+      "lf_bytes": 17,
+      "lf_sha256": "ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4"
+    },
+    "evaluation_eligible": false,
+    "freeze_complete": false,
+    "global_comparison_complete": false,
+    "human_review_complete": false,
+    "index": 256,
+    "initial_direct_vector": {
+      "count": 4,
+      "dependencies": [
+        "mul_add",
+        "add_succ_left",
+        "add_assoc",
+        "add_comm"
+      ],
+      "lf_bytes": 41,
+      "lf_sha256": "9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc"
+    },
+    "input_direct_cut_spine": [
+      {
+        "artifact_bytes": 3447,
+        "artifact_path": "certificates/0007-mul_add-aeabac97da97840a927c69265493c8a2355b711fa9fdc37b5c482b530b057cb7.pl2",
+        "artifact_sha256": "aeabac97da97840a927c69265493c8a2355b711fa9fdc37b5c482b530b057cb7",
+        "declared_index": 0,
+        "dependency_index": 7,
+        "formula_sha256": "6c7d695dfd0c3b56e49507b7f510182794963f91ab9e5f1466dc40f145a7a0a5",
+        "name": "mul_add",
+        "opaque_lemma_bytes": 3275,
+        "opaque_lemma_empty_context_kernel_checked": true,
+        "opaque_lemma_proof_sha256": "c32deba7cbdcfff28fe47fc2f2515cbb684f754c9b6b96860c8c89b02dfdf1ac",
+        "proposition_formula_sha256": "6c7d695dfd0c3b56e49507b7f510182794963f91ab9e5f1466dc40f145a7a0a5",
+        "root_conclusion_exact": true
+      },
+      {
+        "artifact_bytes": 1023,
+        "artifact_path": "certificates/0001-add_succ_left-09d9cd46daa969e93fdb83d9119f8c14fb226f11356acc69882759e270371983.pl2",
+        "artifact_sha256": "09d9cd46daa969e93fdb83d9119f8c14fb226f11356acc69882759e270371983",
+        "declared_index": 1,
+        "dependency_index": 1,
+        "formula_sha256": "9c089dd32a335c2b820b4ea3c0902821860bcb80bbf5c306c0fdad15c8da1756",
+        "name": "add_succ_left",
+        "opaque_lemma_bytes": 898,
+        "opaque_lemma_empty_context_kernel_checked": true,
+        "opaque_lemma_proof_sha256": "769124fe14b55a54436635de5be893ee15ba997d5db435c159a3d00e611907d7",
+        "proposition_formula_sha256": "9c089dd32a335c2b820b4ea3c0902821860bcb80bbf5c306c0fdad15c8da1756",
+        "root_conclusion_exact": true
+      },
+      {
+        "artifact_bytes": 1368,
+        "artifact_path": "certificates/0003-add_assoc-a239a7199c5294b1060e7f9a8244cd290036b5bc63f22ec767f68c9821026744.pl2",
+        "artifact_sha256": "a239a7199c5294b1060e7f9a8244cd290036b5bc63f22ec767f68c9821026744",
+        "declared_index": 2,
+        "dependency_index": 3,
+        "formula_sha256": "4c7b9113d46e6c5646a169320d17464dcf78c0c97be26f4ef03a9d7f3afd3171",
+        "name": "add_assoc",
+        "opaque_lemma_bytes": 1214,
+        "opaque_lemma_empty_context_kernel_checked": true,
+        "opaque_lemma_proof_sha256": "bc649ea7f7bb208ab963a2cc5137fc00b005d261a35d447a065dd094faa7399f",
+        "proposition_formula_sha256": "4c7b9113d46e6c5646a169320d17464dcf78c0c97be26f4ef03a9d7f3afd3171",
+        "root_conclusion_exact": true
+      },
+      {
+        "artifact_bytes": 2551,
+        "artifact_path": "certificates/0002-add_comm-e7094296018260b6c03fb3846c61bacc94e8d0f39739379326db409d99aeef9f.pl2",
+        "artifact_sha256": "e7094296018260b6c03fb3846c61bacc94e8d0f39739379326db409d99aeef9f",
+        "declared_index": 3,
+        "dependency_index": 2,
+        "formula_sha256": "25b3cc29a1427896f1aa3935bc167b449d4501668be477e477180454ba292f94",
+        "name": "add_comm",
+        "opaque_lemma_bytes": 2444,
+        "opaque_lemma_empty_context_kernel_checked": true,
+        "opaque_lemma_proof_sha256": "1d083e7da855b6e22c63dc081cd86cffa5beb4690f4298e6c804fe8717c4baaa",
+        "proposition_formula_sha256": "25b3cc29a1427896f1aa3935bc167b449d4501668be477e477180454ba292f94",
+        "root_conclusion_exact": true
+      }
+    ],
+    "lineage_complete": false,
+    "name": "odd_add_odd",
+    "normalization_steps_inner_first": [
+      {
+        "bound_hypothesis_use_count": 2,
+        "declared_index": 3,
+        "dependency": "add_comm",
+        "first_use_path": [
+          "ForallIntro.body",
+          "ForallIntro.body",
+          "ImpIntro.body",
+          "ImpIntro.body",
+          "ExistsElim.body",
+          "ExistsElim.body",
+          "ExistsIntro.p",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.eq_proof",
+          "EqSym.proof",
+          "ForallElim.p",
+          "ForallElim.p",
+          "Hyp[4]"
+        ],
+        "input_body_proof_sha256": "32efdb1ae3051eec4455aba20f99c573f930b8af8d02ffeb3b44445a68cacaad",
+        "intermediate_kernel_checked": true,
+        "opaque_lemma_proof_sha256": "1d083e7da855b6e22c63dc081cd86cffa5beb4690f4298e6c804fe8717c4baaa",
+        "outcome": "retained-used",
+        "output_proof_sha256": "c4dd36e40aad48f37681c86e365fb35d4be354cb805c808be22a6d7a624f430b",
+        "processing_index": 0,
+        "surrounding_context_nearest_first": [
+          "add_assoc",
+          "add_succ_left",
+          "mul_add"
+        ]
+      },
+      {
+        "bound_hypothesis_use_count": 0,
+        "declared_index": 2,
+        "dependency": "add_assoc",
+        "first_use_path": null,
+        "input_body_proof_sha256": "c4dd36e40aad48f37681c86e365fb35d4be354cb805c808be22a6d7a624f430b",
+        "intermediate_kernel_checked": true,
+        "opaque_lemma_proof_sha256": "bc649ea7f7bb208ab963a2cc5137fc00b005d261a35d447a065dd094faa7399f",
+        "outcome": "deleted-vacuous",
+        "output_proof_sha256": "4d2b3f0594fb1b5010518530cc7aa8f81bcf667b7d50a6803295a99755e5275e",
+        "processing_index": 1,
+        "surrounding_context_nearest_first": [
+          "add_succ_left",
+          "mul_add"
+        ]
+      },
+      {
+        "bound_hypothesis_use_count": 0,
+        "declared_index": 1,
+        "dependency": "add_succ_left",
+        "first_use_path": null,
+        "input_body_proof_sha256": "4d2b3f0594fb1b5010518530cc7aa8f81bcf667b7d50a6803295a99755e5275e",
+        "intermediate_kernel_checked": true,
+        "opaque_lemma_proof_sha256": "769124fe14b55a54436635de5be893ee15ba997d5db435c159a3d00e611907d7",
+        "outcome": "deleted-vacuous",
+        "output_proof_sha256": "82d61bf651f55a8b07473c7feff62ab7b9ead8ca3df4f1f5a4faa0c066d4506b",
+        "processing_index": 2,
+        "surrounding_context_nearest_first": [
+          "mul_add"
+        ]
+      },
+      {
+        "bound_hypothesis_use_count": 1,
+        "declared_index": 0,
+        "dependency": "mul_add",
+        "first_use_path": [
+          "Cut.body",
+          "ForallIntro.body",
+          "ForallIntro.body",
+          "ImpIntro.body",
+          "ImpIntro.body",
+          "ExistsElim.body",
+          "ExistsElim.body",
+          "ExistsIntro.p",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.body_proof",
+          "EqSubst.eq_proof",
+          "EqSym.proof",
+          "ForallElim.p",
+          "ForallElim.p",
+          "ForallElim.p",
+          "Hyp[5]"
+        ],
+        "input_body_proof_sha256": "82d61bf651f55a8b07473c7feff62ab7b9ead8ca3df4f1f5a4faa0c066d4506b",
+        "intermediate_kernel_checked": true,
+        "opaque_lemma_proof_sha256": "c32deba7cbdcfff28fe47fc2f2515cbb684f754c9b6b96860c8c89b02dfdf1ac",
+        "outcome": "retained-used",
+        "output_proof_sha256": "5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4",
+        "processing_index": 3,
+        "surrounding_context_nearest_first": []
+      }
+    ],
+    "opaque_lemma_subtree_survival": [
+      {
+        "dependency": "mul_add",
+        "direct_cut_retained": true,
+        "input_subtree_occurrences": 1,
+        "opaque_lemma_proof_sha256": "c32deba7cbdcfff28fe47fc2f2515cbb684f754c9b6b96860c8c89b02dfdf1ac",
+        "output_subtree_occurrences": 1,
+        "survives_elsewhere_after_root_cut_deletion": false
+      },
+      {
+        "dependency": "add_succ_left",
+        "direct_cut_retained": false,
+        "input_subtree_occurrences": 2,
+        "opaque_lemma_proof_sha256": "769124fe14b55a54436635de5be893ee15ba997d5db435c159a3d00e611907d7",
+        "output_subtree_occurrences": 1,
+        "survives_elsewhere_after_root_cut_deletion": true
+      },
+      {
+        "dependency": "add_assoc",
+        "direct_cut_retained": false,
+        "input_subtree_occurrences": 2,
+        "opaque_lemma_proof_sha256": "bc649ea7f7bb208ab963a2cc5137fc00b005d261a35d447a065dd094faa7399f",
+        "output_subtree_occurrences": 1,
+        "survives_elsewhere_after_root_cut_deletion": true
+      },
+      {
+        "dependency": "add_comm",
+        "direct_cut_retained": true,
+        "input_subtree_occurrences": 1,
+        "opaque_lemma_proof_sha256": "1d083e7da855b6e22c63dc081cd86cffa5beb4690f4298e6c804fe8717c4baaa",
+        "output_subtree_occurrences": 1,
+        "survives_elsewhere_after_root_cut_deletion": false
+      }
+    ],
+    "optimized_best_known": false,
+    "optimized_vector_independently_audited": false,
+    "post_transform_idempotence": {
+      "checked": true,
+      "proof_term_sha256": "5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4",
+      "retained_dependencies": [
+        "mul_add",
+        "add_comm"
+      ],
+      "second_pass_outcomes_inner_first": [
+        {
+          "dependency": "add_comm",
+          "outcome": "retained-used"
+        },
+        {
+          "dependency": "mul_add",
+          "outcome": "retained-used"
+        }
+      ]
+    },
+    "producer_git_verified": false,
+    "proof_producing_cut_liveness_normalization_complete": true,
+    "public_graph_applied": false,
+    "publication_applied": false,
+    "publication_union_complete": false,
+    "publication_union_verified": false,
+    "record_sha256": "a90eef83d3344369496a6d54254aa38cba4fb082ab3ba399742f36babfaad803",
+    "research_evaluation_eligible": false,
+    "retrieval_eligible": false,
+    "route_rejections_independently_verified": false,
+    "statement": {
+      "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+      "target_preserved_exactly": true
+    },
+    "training_eligible": false
+  },
+  "theorem_count": 1,
+  "theorem_record_root_sha256": "a90eef83d3344369496a6d54254aa38cba4fb082ab3ba399742f36babfaad803",
+  "training_eligible": false,
+  "v": 1
+}

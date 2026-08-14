@@ -1,0 +1,511 @@
+{
+  "authority_claims": {
+    "a2_complete": false,
+    "dependency_vectors_complete": false,
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "lineage_complete": false,
+    "minimality_claim": false,
+    "optimized_best_known": false,
+    "optimized_vector_independently_audited": false,
+    "proof_authority": false,
+    "public_graph_applied": false,
+    "publication_authority": false,
+    "publication_ready": false,
+    "publication_union_complete": false,
+    "publication_union_verified": false,
+    "retrieval_eligible": false,
+    "review_complete": false,
+    "theorem_admission_authority": false,
+    "training_eligible": false
+  },
+  "classification": "two-producer-byte-identity-and-independent-cut-liveness-verification",
+  "error": null,
+  "evidence": {
+    "candidate": {
+      "artifact_bytes": 74579,
+      "artifact_sha256": "a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0",
+      "derived_direct_dependencies": [
+        "mul_add",
+        "add_comm"
+      ],
+      "execution_bound": true,
+      "path": "l0-pilot-dependency-vector-cut-liveness-candidate-v1.json",
+      "root_sha256": "fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835",
+      "source_state_root_sha256": "7db294f75a67cd6252c2831dd8ae11ba5ba0d185a736328031e0724602b38363",
+      "theorem_index": 256,
+      "theorem_name": "odd_add_odd"
+    },
+    "evidence_boundary": {
+      "bounded_one_root_cut_liveness_execution_complete": true,
+      "construction_direct_vector_execution_bound": true,
+      "dependency_necessity_established": false,
+      "derived_direct_vector_independently_reproduced": true,
+      "global_comparison_complete": false,
+      "logical_minimality_established": false,
+      "optimized_best_known": false,
+      "optimized_vector_independently_audited": false,
+      "public_graph_applied": false,
+      "publication_applied": false,
+      "route_rejections_independently_verified": false,
+      "shared_kernel_with_producer": true
+    },
+    "producer_byte_identical": true,
+    "producer_hash_seeds": [
+      0,
+      0
+    ],
+    "producer_run_count": 2,
+    "verifier": {
+      "artifact_bytes": 12737,
+      "artifact_sha256": "8f6531d3a0544a6d308ebd0abf7e41ed2436984758e76e66797ff1023e0a2821",
+      "hash_seed": 0,
+      "path": "l0-pilot-dependency-vector-cut-liveness-independent-verification-v1.json",
+      "root_sha256": "b3c253674f488eeed1e5a14e4be6632b0fe6ed946cf611ee0b3fde66f79acad7",
+      "status": "passed"
+    }
+  },
+  "finished_at": "2026-08-14T11:17:05.187613+00:00",
+  "format": "peano-hydra-a23d-cut-liveness-wmi-execution-receipt",
+  "job_id": "220246",
+  "processes": [
+    {
+      "argv": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-P",
+        "-s",
+        "-S",
+        "scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+        "--build",
+        "--repository-root",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23d-cut-liveness/52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d/source"
+      ],
+      "duration_seconds_millis": 770,
+      "environment": {
+        "HOME": "/nonexistent/peano-a23d-wmi",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23d-disabled-pycache",
+        "TZ": "UTC"
+      },
+      "finished_at": "2026-08-14T11:17:03.681265+00:00",
+      "hash_seed": 0,
+      "output_limit_reached": false,
+      "returncode": 0,
+      "role": "producer-0",
+      "started_at": "2026-08-14T11:17:02.910334+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "producer-0.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 74579,
+        "path": "producer-0.stdout.log",
+        "sha256": "a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0"
+      },
+      "timed_out": false,
+      "timeout_seconds": 60
+    },
+    {
+      "argv": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-P",
+        "-s",
+        "-S",
+        "scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+        "--build",
+        "--repository-root",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23d-cut-liveness/52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d/source"
+      ],
+      "duration_seconds_millis": 679,
+      "environment": {
+        "HOME": "/nonexistent/peano-a23d-wmi",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23d-disabled-pycache",
+        "TZ": "UTC"
+      },
+      "finished_at": "2026-08-14T11:17:04.375743+00:00",
+      "hash_seed": 0,
+      "output_limit_reached": false,
+      "returncode": 0,
+      "role": "producer-1",
+      "started_at": "2026-08-14T11:17:03.695340+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "producer-1.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 74579,
+        "path": "producer-1.stdout.log",
+        "sha256": "a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0"
+      },
+      "timed_out": false,
+      "timeout_seconds": 60
+    },
+    {
+      "argv": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-P",
+        "-s",
+        "-S",
+        "scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+        "--verify",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23d-cut-liveness/52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d/runs/220246/l0-pilot-dependency-vector-cut-liveness-candidate-v1.json",
+        "--repository-root",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23d-cut-liveness/52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d/source"
+      ],
+      "duration_seconds_millis": 776,
+      "environment": {
+        "HOME": "/nonexistent/peano-a23d-wmi",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23d-disabled-pycache",
+        "TZ": "UTC"
+      },
+      "finished_at": "2026-08-14T11:17:05.173451+00:00",
+      "hash_seed": 0,
+      "output_limit_reached": false,
+      "returncode": 0,
+      "role": "independent-verifier",
+      "started_at": "2026-08-14T11:17:04.396673+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "independent-verifier.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 12737,
+        "path": "independent-verifier.stdout.log",
+        "sha256": "8f6531d3a0544a6d308ebd0abf7e41ed2436984758e76e66797ff1023e0a2821"
+      },
+      "timed_out": false,
+      "timeout_seconds": 90
+    }
+  ],
+  "requested_resources": {
+    "cpus_per_task": 1,
+    "memory_mib": 4096,
+    "nodes": 1,
+    "ntasks": 1,
+    "partition": "cpu_idle",
+    "time_limit": "00:15:00",
+    "time_limit_seconds": 900
+  },
+  "root_preimage": {
+    "format": "peano-hydra-a23d-cut-liveness-wmi-execution-receipt-root-preimage",
+    "payload": {
+      "authority_claims": {
+        "a2_complete": false,
+        "dependency_vectors_complete": false,
+        "evaluation_eligible": false,
+        "freeze_ready": false,
+        "lineage_complete": false,
+        "minimality_claim": false,
+        "optimized_best_known": false,
+        "optimized_vector_independently_audited": false,
+        "proof_authority": false,
+        "public_graph_applied": false,
+        "publication_authority": false,
+        "publication_ready": false,
+        "publication_union_complete": false,
+        "publication_union_verified": false,
+        "retrieval_eligible": false,
+        "review_complete": false,
+        "theorem_admission_authority": false,
+        "training_eligible": false
+      },
+      "classification": "two-producer-byte-identity-and-independent-cut-liveness-verification",
+      "error": null,
+      "evidence": {
+        "candidate": {
+          "artifact_bytes": 74579,
+          "artifact_sha256": "a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0",
+          "derived_direct_dependencies": [
+            "mul_add",
+            "add_comm"
+          ],
+          "execution_bound": true,
+          "path": "l0-pilot-dependency-vector-cut-liveness-candidate-v1.json",
+          "root_sha256": "fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835",
+          "source_state_root_sha256": "7db294f75a67cd6252c2831dd8ae11ba5ba0d185a736328031e0724602b38363",
+          "theorem_index": 256,
+          "theorem_name": "odd_add_odd"
+        },
+        "evidence_boundary": {
+          "bounded_one_root_cut_liveness_execution_complete": true,
+          "construction_direct_vector_execution_bound": true,
+          "dependency_necessity_established": false,
+          "derived_direct_vector_independently_reproduced": true,
+          "global_comparison_complete": false,
+          "logical_minimality_established": false,
+          "optimized_best_known": false,
+          "optimized_vector_independently_audited": false,
+          "public_graph_applied": false,
+          "publication_applied": false,
+          "route_rejections_independently_verified": false,
+          "shared_kernel_with_producer": true
+        },
+        "producer_byte_identical": true,
+        "producer_hash_seeds": [
+          0,
+          0
+        ],
+        "producer_run_count": 2,
+        "verifier": {
+          "artifact_bytes": 12737,
+          "artifact_sha256": "8f6531d3a0544a6d308ebd0abf7e41ed2436984758e76e66797ff1023e0a2821",
+          "hash_seed": 0,
+          "path": "l0-pilot-dependency-vector-cut-liveness-independent-verification-v1.json",
+          "root_sha256": "b3c253674f488eeed1e5a14e4be6632b0fe6ed946cf611ee0b3fde66f79acad7",
+          "status": "passed"
+        }
+      },
+      "finished_at": "2026-08-14T11:17:05.187613+00:00",
+      "format": "peano-hydra-a23d-cut-liveness-wmi-execution-receipt",
+      "job_id": "220246",
+      "processes": [
+        {
+          "argv": [
+            "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+            "-B",
+            "-P",
+            "-s",
+            "-S",
+            "scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+            "--build",
+            "--repository-root",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23d-cut-liveness/52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d/source"
+          ],
+          "duration_seconds_millis": 770,
+          "environment": {
+            "HOME": "/nonexistent/peano-a23d-wmi",
+            "LANG": "C.UTF-8",
+            "LC_ALL": "C.UTF-8",
+            "PATH": "/usr/bin:/bin",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONHASHSEED": "0",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23d-disabled-pycache",
+            "TZ": "UTC"
+          },
+          "finished_at": "2026-08-14T11:17:03.681265+00:00",
+          "hash_seed": 0,
+          "output_limit_reached": false,
+          "returncode": 0,
+          "role": "producer-0",
+          "started_at": "2026-08-14T11:17:02.910334+00:00",
+          "stderr": {
+            "bytes": 0,
+            "path": "producer-0.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 74579,
+            "path": "producer-0.stdout.log",
+            "sha256": "a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0"
+          },
+          "timed_out": false,
+          "timeout_seconds": 60
+        },
+        {
+          "argv": [
+            "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+            "-B",
+            "-P",
+            "-s",
+            "-S",
+            "scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+            "--build",
+            "--repository-root",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23d-cut-liveness/52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d/source"
+          ],
+          "duration_seconds_millis": 679,
+          "environment": {
+            "HOME": "/nonexistent/peano-a23d-wmi",
+            "LANG": "C.UTF-8",
+            "LC_ALL": "C.UTF-8",
+            "PATH": "/usr/bin:/bin",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONHASHSEED": "0",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23d-disabled-pycache",
+            "TZ": "UTC"
+          },
+          "finished_at": "2026-08-14T11:17:04.375743+00:00",
+          "hash_seed": 0,
+          "output_limit_reached": false,
+          "returncode": 0,
+          "role": "producer-1",
+          "started_at": "2026-08-14T11:17:03.695340+00:00",
+          "stderr": {
+            "bytes": 0,
+            "path": "producer-1.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 74579,
+            "path": "producer-1.stdout.log",
+            "sha256": "a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0"
+          },
+          "timed_out": false,
+          "timeout_seconds": 60
+        },
+        {
+          "argv": [
+            "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+            "-B",
+            "-P",
+            "-s",
+            "-S",
+            "scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+            "--verify",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23d-cut-liveness/52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d/runs/220246/l0-pilot-dependency-vector-cut-liveness-candidate-v1.json",
+            "--repository-root",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23d-cut-liveness/52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d/source"
+          ],
+          "duration_seconds_millis": 776,
+          "environment": {
+            "HOME": "/nonexistent/peano-a23d-wmi",
+            "LANG": "C.UTF-8",
+            "LC_ALL": "C.UTF-8",
+            "PATH": "/usr/bin:/bin",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONHASHSEED": "0",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23d-disabled-pycache",
+            "TZ": "UTC"
+          },
+          "finished_at": "2026-08-14T11:17:05.173451+00:00",
+          "hash_seed": 0,
+          "output_limit_reached": false,
+          "returncode": 0,
+          "role": "independent-verifier",
+          "started_at": "2026-08-14T11:17:04.396673+00:00",
+          "stderr": {
+            "bytes": 0,
+            "path": "independent-verifier.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 12737,
+            "path": "independent-verifier.stdout.log",
+            "sha256": "8f6531d3a0544a6d308ebd0abf7e41ed2436984758e76e66797ff1023e0a2821"
+          },
+          "timed_out": false,
+          "timeout_seconds": 90
+        }
+      ],
+      "requested_resources": {
+        "cpus_per_task": 1,
+        "memory_mib": 4096,
+        "nodes": 1,
+        "ntasks": 1,
+        "partition": "cpu_idle",
+        "time_limit": "00:15:00",
+        "time_limit_seconds": 900
+      },
+      "runtime": {
+        "dont_write_bytecode": true,
+        "executable": "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "implementation": "CPython",
+        "machine": "x86_64",
+        "no_site": true,
+        "optimize": 0,
+        "pycache_prefix": "/proc/peano-hydra-a23d-disabled-pycache",
+        "python_version": "3.12.12",
+        "safe_path": true,
+        "user_site_disabled": true
+      },
+      "source": {
+        "git_commit": "25228180c956456145eba64601e829103731e903",
+        "git_receipt": {
+          "bytes": 35158,
+          "path": "cut-liveness-git-verification-receipt.json",
+          "sha256": "3a207d46b9142ca951705cac066221e1d2b6b54005d542b9275b4585360e6876"
+        },
+        "git_tree": "528ca1d3c0e697048479acdd690b54a9d13fa469",
+        "infrastructure_manifest": {
+          "bytes": 5790,
+          "path": "wmi-infrastructure-manifest.json",
+          "sha256": "afcf38c94167814123950b47aa38cb97d8564c89adf2ecc976a320a7525a585f"
+        },
+        "provenance": {
+          "git_commit": "25228180c956456145eba64601e829103731e903",
+          "git_dirty": false,
+          "sha256": "85d75a9c229d40a0597543513e78600d6c15986a0392b164d16446988f6eb934",
+          "sync_timestamp": "2026-08-14T11:15:08Z"
+        },
+        "snapshot_sha256": "52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d",
+        "source_state": {
+          "bytes": 3372,
+          "path": "cut-liveness-source-state.json",
+          "sha256": "1e0315e75364721408799db01db3b7f39896d84c26b83c50bcd103994533a421"
+        }
+      },
+      "started_at": "2026-08-14T11:17:02.859119+00:00",
+      "status": "passed",
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "28e660ea1b9f455c2cbb9022b045fc9ef57922c0bf007d413de2ca106d31ead1",
+  "runtime": {
+    "dont_write_bytecode": true,
+    "executable": "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "no_site": true,
+    "optimize": 0,
+    "pycache_prefix": "/proc/peano-hydra-a23d-disabled-pycache",
+    "python_version": "3.12.12",
+    "safe_path": true,
+    "user_site_disabled": true
+  },
+  "source": {
+    "git_commit": "25228180c956456145eba64601e829103731e903",
+    "git_receipt": {
+      "bytes": 35158,
+      "path": "cut-liveness-git-verification-receipt.json",
+      "sha256": "3a207d46b9142ca951705cac066221e1d2b6b54005d542b9275b4585360e6876"
+    },
+    "git_tree": "528ca1d3c0e697048479acdd690b54a9d13fa469",
+    "infrastructure_manifest": {
+      "bytes": 5790,
+      "path": "wmi-infrastructure-manifest.json",
+      "sha256": "afcf38c94167814123950b47aa38cb97d8564c89adf2ecc976a320a7525a585f"
+    },
+    "provenance": {
+      "git_commit": "25228180c956456145eba64601e829103731e903",
+      "git_dirty": false,
+      "sha256": "85d75a9c229d40a0597543513e78600d6c15986a0392b164d16446988f6eb934",
+      "sync_timestamp": "2026-08-14T11:15:08Z"
+    },
+    "snapshot_sha256": "52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d",
+    "source_state": {
+      "bytes": 3372,
+      "path": "cut-liveness-source-state.json",
+      "sha256": "1e0315e75364721408799db01db3b7f39896d84c26b83c50bcd103994533a421"
+    }
+  },
+  "started_at": "2026-08-14T11:17:02.859119+00:00",
+  "status": "passed",
+  "v": 1
+}

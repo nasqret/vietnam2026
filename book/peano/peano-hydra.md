@@ -2293,9 +2293,9 @@ Its conservative 20,000 ms CI weight yields a 109-entry profile and modeled
 eight-shard loads of 547,000 / 547,500 / 547,300 / 547,500 / 547,000 /
 547,000 / 547,500 / 547,500 ms.
 
-Only source-protocol readiness is frozen. No real campaign, network call, WMI
-job, result artifact, or retention occurred; execution and retention remain
-open. A lemma's surviving structural use is not a necessity proof, and
+That source-protocol checkpoint ran no real campaign, network call, WMI job,
+result artifact, or retention; execution and retention were still open. A
+lemma's surviving structural use is not a necessity proof, and
 vacuous-Cut deletion is not a global minimality or best-known optimizer.
 Independently audited optimized-vector status, vector/global completeness,
 publication and publication union, graph application, A2, authority,
@@ -2303,7 +2303,7 @@ review/lineage/freeze, and eligibility all remain false. The public graph
 remains exactly 1,038 edges.
 
 
-### A2.3d execution infrastructure is frozen, not executed
+### A2.3d execution infrastructure pre-execution checkpoint
 
 The next boundary is now implementation-ready without being result-bearing.
 A clean-Git generator authenticates the exact six source-protocol files plus
@@ -2343,13 +2343,69 @@ CI has 111 profiles, weights 7,500/8,000 ms, and loads 549,000 / 549,500 /
 549,300 / 549,500 / 549,000 / 549,500 / 549,000 / 549,000 ms. The sharder
 passed 32/32 in 0.28 seconds.
 
-No WMI submission, real campaign, execution or collection receipt, retained
-result, publication, or graph mutation occurred. Execution and retention are
-still open. The vector remains proof-construction-specific, not evidence of
+At that infrastructure checkpoint no WMI submission, real campaign, execution
+or collection receipt, retained result, publication, or graph mutation had
+occurred. The later retained run is recorded below. The vector remains
+proof-construction-specific, not evidence of
 necessity, route rejection, minimality, global optimization, best-known
 status, or vector completeness. Publication/union, graph application, A2,
 authority, review/lineage/freeze, and eligibility remain false. The graph
 remains 1,038 edges.
+
+### A2.3d job 220246: a bounded proof-liveness result, not a global optimum
+
+The real envelope ran from clean commit
+`25228180c956456145eba64601e829103731e903`, tree
+`528ca1d3c0e697048479acdd690b54a9d13fa469`, and receipt-bound snapshot
+`52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d`.
+Job `220246` completed `0:0` on `c3n1` in three seconds with one CPU and 4 GiB
+requested. The accounting evidence has blank `MaxRSS`, so no peak-memory or
+memory-ceiling claim follows.
+
+Two fresh seed-0 processes running the same deterministic producer emitted
+byte-identical 74,579-byte candidates at artifact/root
+`a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0` /
+`fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835`.
+That is repeatability, not implementation or hash-seed independence. The
+theorem-record root is
+`a90eef83d3344369496a6d54254aa38cba4fb082ab3ba399742f36babfaad803`.
+The candidate binds `[mul_add, add_comm]`, proof `5c480eb5…`, artifact
+`c606af87…`, 1,936 fuel, and 240/30/5 nodes/depth/Cuts.
+
+The separately authored verifier independently reconstructed the inner-first
+ledger, vector, proof, and canonical bytes while intentionally sharing the
+authenticated codec/kernel. Its 12,737-byte artifact/root is
+`8f6531d3a0544a6d308ebd0abf7e41ed2436984758e76e66797ff1023e0a2821` /
+`b3c253674f488eeed1e5a14e4be6632b0fe6ed946cf611ee0b3fde66f79acad7`.
+A fresh local seed-31337 replay matched the receipt byte-for-byte. The
+execution and collection artifact/root pairs are `46922d976e00925a62bef9792bdeaa50c6e6800d9d034c132fae6b952be35bc7` / `28e660ea1b9f455c2cbb9022b045fc9ef57922c0bf007d413de2ca106d31ead1`
+and `1f8907520cc2e7508a841719f43111538245a6c640de042b422213da0dc5de3a` / `fe9d57683008f8b61768a133d8ba453d2819e337c31fd1afe4ee397a7b880fb1`.
+
+The retained bundle
+`artifacts/peano-hydra/a23d-wmi-cut-liveness-220246/` has exactly 17 regular
+0644 files, 174,231 bytes, 0755 directories, no symlinks, and C-sorted
+inventory root
+`db3914f58b1ab4019fbe447c6454a261ec9a32e74b7a25772e0483bfbad2ac81`.
+Source-state/Git/infra artifact-root pairs are `1e0315e75364721408799db01db3b7f39896d84c26b83c50bcd103994533a421` / `7db294f75a67cd6252c2831dd8ae11ba5ba0d185a736328031e0724602b38363`,
+`3a207d46b9142ca951705cac066221e1d2b6b54005d542b9275b4585360e6876` / `3194cbf1ff2041fe448ac4c3781356c8e28d79acd43c22dbd4b5c597e2beb7da`, and `afcf38c94167814123950b47aa38cb97d8564c89adf2ecc976a320a7525a585f` / `09a05076bc8e57174790575d59e41a0b4c0090602f8305465e84339b172fc01e`. The source-state
+flag remains `git_verified=false`; clean-tree evidence is separate. Four
+identical candidate/stdout blobs normalize to one canonical result. The
+283,796,480-byte archive, full source snapshot, duplicate run outputs, global
+ledger, and job pointer are omitted intentionally.
+
+The 33,018-byte retained-result gate, SHA-256
+`ba6e9e1f96b214582cb8201a1207b7f6954e227aa78525a9c8a0f5f7f0009ae7`,
+passed four tests in 0.63 seconds. The sharder passed 32 in 0.09 seconds; the
+complete bounded gate passed 163 in 29.27 seconds. CI now has 112 profiles, a
+2,500 ms result weight, and loads 549,500 / 549,500 / 549,800 / 549,500 /
+549,500 / 549,500 / 549,500 / 549,500 ms.
+
+This closes one-root execution and retention only. Structural use is not
+dependency necessity; Cut thinning is not route rejection, logical or
+cardinality minimality, global optimization, or best-known evidence. Global
+`optimized_vector_independently_audited`, vector completeness, publication
+and union, graph application, A2, authority, review/lineage/freeze, and all
+eligibility claims remain false. The graph remains 1,038 edges.
 
 ## What “matched compute” means
 
