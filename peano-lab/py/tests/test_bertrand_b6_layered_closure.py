@@ -6,11 +6,13 @@ roots are canonical dependency closures.  They rebuild every reachable
 non-Stable theorem body, including both growth rows and the complete all-root
 H/J graph, and stop only at the checked Stable registry boundary.
 
-The balanced exact-power seed is substituted only in the heavy main pools
-where that seed is reachable.  Prior candidate closure receipts are never
-loaded as theorem authority.  Structural body interning and LayeredReplay are
-untrusted construction steps; every interned body and every final candidate
-is checked by the unchanged kernel before a receipt may be frozen.
+The heavy main pools retain the exact legacy Alpha-v7 seed and transport rows
+as unreachable candidates while routing every reachable client through the
+explicit balanced-v1 successor lineage.  No theorem is substituted under the
+legacy seed name.  Prior candidate closure receipts are never loaded as
+theorem authority.  Structural body interning and LayeredReplay are untrusted
+construction steps; every interned body and every final candidate is checked
+by the unchanged kernel before a receipt may be frozen.
 """
 
 from __future__ import annotations
@@ -34,7 +36,7 @@ from peano_lab.kernel.checker import check
 from peano_lab.kernel.formulas import Formula, Imp
 from peano_lab.kernel.proofs import DNE, Proof
 from peano_lab.library import (
-    bertrand_power_seed_balanced_candidate as balanced_seed_provider,
+    bertrand_balanced_v1_successor_candidate as balanced_v1_provider,
 )
 from peano_lab.library.bertrand_b6_growth_candidate import (
     make_bertrand_b6_growth_candidate_theorems,
@@ -142,23 +144,61 @@ EXPECTED_ROOT_DEPENDENCIES = {
     ),
 }
 
-BALANCED_SEED_PROVIDER_NAMES = (
+BALANCED_V1_UNIQUE_LINEAGE_NAMES = (
     "eight_times_eight_eq_sixty_four",
     "eight_times_sixteen_eq_one_twenty_eight",
+    "pow_two_seed_bundle_balanced_v1_from_total",
+    "bertrand_h_six_step_transport_balanced_v1_from_total",
+    "bertrand_j_six_step_transport_balanced_v1_from_total",
+    "bertrand_hj_six_step_balanced_v1_from_total",
+)
+BALANCED_V1_COLLISION_NAMES = (
+    "pow_eleven_two_le_pow_two_seven_from_total",
+    "pow_six_ten_le_pow_four_thirteen_from_total",
+    "pow_six_six_le_pow_four_eight_from_total",
+    "pow_six_four_le_pow_four_six_from_total",
+    "pow_two_double_eq_pow_four_from_total",
+    "bertrand_hj_six_block_iterate_from_total",
+)
+BALANCED_V1_PROVIDER_NAMES = (
+    *BALANCED_V1_UNIQUE_LINEAGE_NAMES,
+    *BALANCED_V1_COLLISION_NAMES,
+)
+BALANCED_V1_SEED_NAME = BALANCED_V1_UNIQUE_LINEAGE_NAMES[2]
+LEGACY_ALPHA_V7_NAMES = (
     "pow_two_seed_bundle_from_total",
+    "bertrand_h_six_step_transport_from_total",
+    "bertrand_j_six_step_transport_from_total",
+    "bertrand_hj_six_step_from_total",
 )
-BALANCED_SEED_NAME = BALANCED_SEED_PROVIDER_NAMES[-1]
-BALANCED_SEED_PROVIDER_SOURCE_SHA256 = (
-    "76f290ee51d70fe62b14d81777488f5823050597249a9aa1beafcfdaad894eab"
+LEGACY_SEED_NAME = LEGACY_ALPHA_V7_NAMES[0]
+BALANCED_V1_TO_LEGACY_LINEAGE = (
+    (BALANCED_V1_UNIQUE_LINEAGE_NAMES[2], LEGACY_ALPHA_V7_NAMES[0]),
+    (BALANCED_V1_UNIQUE_LINEAGE_NAMES[3], LEGACY_ALPHA_V7_NAMES[1]),
+    (BALANCED_V1_UNIQUE_LINEAGE_NAMES[4], LEGACY_ALPHA_V7_NAMES[2]),
+    (BALANCED_V1_UNIQUE_LINEAGE_NAMES[5], LEGACY_ALPHA_V7_NAMES[3]),
 )
-BALANCED_SEED_PROVIDER_SCRIPT_SHA256 = (
-    "2b83f8e5ff38b9fd620570de270cbd79e928b933ac49e0db4a5ac042e69d267b"
+BALANCED_V1_PROVIDER_SOURCE_SHA256 = (
+    "852f3dc63a0bd6e80dccee70046c628e1929ae3e08bb200a016d25e1429d5b7b"
 )
-BALANCED_SEED_PROVIDER_LOGICAL_SHA256 = (
-    "2f16ad95b11aa3044770df1f3312bfefb3c0fd2aa32f1da2403641daa97f12ea"
+BALANCED_V1_PROVIDER_SCRIPT_SHA256 = (
+    "0cdb8d835b263537843d09014eb6eacf141a6fe9a9d3cbac9e873951ffeb74c7"
+)
+BALANCED_V1_PROVIDER_LOGICAL_SHA256 = (
+    "26ef14eee1a037dcfd4a22377ec6654b85320c4f78c12ab97dd596381b11d661"
 )
 
-PENDING_LAYERED_CLOSURE = "PENDING_B6_LAYERED_CLOSURE"
+PENDING_SUCCESSOR_LINEAGE_CLOSURES = {
+    "bertrand_main_inequality_factorized_from_total": (
+        "PENDING_B6_SUCCESSOR_LINEAGE_FACTOR_FROM_TOTAL"
+    ),
+    "bertrand_main_inequality_factorized": (
+        "PENDING_B6_SUCCESSOR_LINEAGE_FACTOR_THIN"
+    ),
+    "bertrand_main_inequality_nat": (
+        "PENDING_B6_SUCCESSOR_LINEAGE_PUBLIC_NAT"
+    ),
+}
 EXPECTED_LAYERED_CLOSURES: dict[str, dict[str, object] | str] = {
     "bertrand_floor_power_product_le_h_from_total": {
         "root_name": "bertrand_floor_power_product_le_h_from_total",
@@ -247,29 +287,31 @@ EXPECTED_LAYERED_CLOSURES: dict[str, dict[str, object] | str] = {
     "bertrand_main_inequality_factorized_from_total": {
         "root_name": "bertrand_main_inequality_factorized_from_total",
         "topology_sha256": (
-            "b9f0f9fb2e5e4067daf9df4eb04022e2cf13767ec95c33297470c7483dfdabae"
+            "5e538dae4538444ec7331e7ed6d5419f9f4c1454f7c19e7a35fac69234bec9b1"
         ),
-        "candidate_pool_count": 88,
+        "candidate_pool_count": 92,
         "candidate_pool_script_sha256": (
-            "1f84f11cdeabf6cce8dbe83ac964753517bb143ef83609eed75347b275ceac89"
+            "a842566011afeec4b945394f78687a95e30785ae85b5903ea68238128e5a5e58"
         ),
         "candidate_pool_logical_sha256": (
-            "ce44bb36af7c6124c9869139c9c5577df6a504b2de0b5489c3ea8b9dc0b45f83"
+            "704482d923da054643b141b20fb429fcfb09573edb5168b82e0aebd6395a9835"
         ),
-        "unreachable_candidate_count": 18,
+        "unreachable_candidate_count": 22,
         "unreachable_candidate_names_sha256": (
-            "808f77afec6f6d2ed797d16d96c4a6236c11140356aba6de1a4d5cc3f8a702fb"
+            "592336d0d62a70d9c026f11d1b5a32573a1d021831da414c527e32cf65f28264"
         ),
-        "balanced_seed_substituted": True,
-        "balanced_seed_provider_source_sha256": (
-            "76f290ee51d70fe62b14d81777488f5823050597249a9aa1beafcfdaad894eab"
+        "same_name_seed_substituted": False,
+        "balanced_v1_lineage_used": True,
+        "balanced_v1_provider_source_sha256": (
+            "852f3dc63a0bd6e80dccee70046c628e1929ae3e08bb200a016d25e1429d5b7b"
         ),
-        "balanced_seed_provider_script_sha256": (
-            "2b83f8e5ff38b9fd620570de270cbd79e928b933ac49e0db4a5ac042e69d267b"
+        "balanced_v1_provider_script_sha256": (
+            "0cdb8d835b263537843d09014eb6eacf141a6fe9a9d3cbac9e873951ffeb74c7"
         ),
-        "balanced_seed_provider_logical_sha256": (
-            "2f16ad95b11aa3044770df1f3312bfefb3c0fd2aa32f1da2403641daa97f12ea"
+        "balanced_v1_provider_logical_sha256": (
+            "26ef14eee1a037dcfd4a22377ec6654b85320c4f78c12ab97dd596381b11d661"
         ),
+        "legacy_alpha_v7_reachable_count": 0,
         "node_count": 111,
         "stable_atomic_count": 41,
         "candidate_body_count": 70,
@@ -295,29 +337,31 @@ EXPECTED_LAYERED_CLOSURES: dict[str, dict[str, object] | str] = {
     "bertrand_main_inequality_factorized": {
         "root_name": "bertrand_main_inequality_factorized",
         "topology_sha256": (
-            "145d4e47f3e405a726bc212474bd850894253bd7dcd660f47978f5c9b341fe98"
+            "90cd580587444411a759f9d377da149d5d4f4ff2216bbf54a4973cc9354cebe2"
         ),
-        "candidate_pool_count": 89,
+        "candidate_pool_count": 93,
         "candidate_pool_script_sha256": (
-            "1f6ed04aaee53e71d13df58a33310ce3670bc1542bbae4087fdab191298f5e1c"
+            "76aac879f081a354311b9cf35daaf18a5c13bcf69cee781d478097ce1e83db23"
         ),
         "candidate_pool_logical_sha256": (
-            "c11064518af962f11d83675143e43da3ef7029a4082e093eb6d54f7c31681cc2"
+            "cc4774f28459375417f1308ce9abb165deb92d24858409d3f0eda4357c9e3f11"
         ),
-        "unreachable_candidate_count": 18,
+        "unreachable_candidate_count": 22,
         "unreachable_candidate_names_sha256": (
-            "808f77afec6f6d2ed797d16d96c4a6236c11140356aba6de1a4d5cc3f8a702fb"
+            "592336d0d62a70d9c026f11d1b5a32573a1d021831da414c527e32cf65f28264"
         ),
-        "balanced_seed_substituted": True,
-        "balanced_seed_provider_source_sha256": (
-            "76f290ee51d70fe62b14d81777488f5823050597249a9aa1beafcfdaad894eab"
+        "same_name_seed_substituted": False,
+        "balanced_v1_lineage_used": True,
+        "balanced_v1_provider_source_sha256": (
+            "852f3dc63a0bd6e80dccee70046c628e1929ae3e08bb200a016d25e1429d5b7b"
         ),
-        "balanced_seed_provider_script_sha256": (
-            "2b83f8e5ff38b9fd620570de270cbd79e928b933ac49e0db4a5ac042e69d267b"
+        "balanced_v1_provider_script_sha256": (
+            "0cdb8d835b263537843d09014eb6eacf141a6fe9a9d3cbac9e873951ffeb74c7"
         ),
-        "balanced_seed_provider_logical_sha256": (
-            "2f16ad95b11aa3044770df1f3312bfefb3c0fd2aa32f1da2403641daa97f12ea"
+        "balanced_v1_provider_logical_sha256": (
+            "26ef14eee1a037dcfd4a22377ec6654b85320c4f78c12ab97dd596381b11d661"
         ),
+        "legacy_alpha_v7_reachable_count": 0,
         "node_count": 112,
         "stable_atomic_count": 41,
         "candidate_body_count": 71,
@@ -343,29 +387,31 @@ EXPECTED_LAYERED_CLOSURES: dict[str, dict[str, object] | str] = {
     "bertrand_main_inequality_nat": {
         "root_name": "bertrand_main_inequality_nat",
         "topology_sha256": (
-            "bd4bb0c71190b0d7babde408e47a4d8f667f2898fc879f40583801af99a1db04"
+            "f248abdddd830f8b3ffbaf41b4c9491616411e2cec14dabeea97989ca9adb4c5"
         ),
-        "candidate_pool_count": 90,
+        "candidate_pool_count": 94,
         "candidate_pool_script_sha256": (
-            "ed2b4bfbb30007f3dec28ceb18fcea5a0cc922c507b45501d9e0487a9fa1df4c"
+            "3276ae5391ee9bdb0eb9f5aad99362927fd7358c76bfd44ae741e2e9efe1a3eb"
         ),
         "candidate_pool_logical_sha256": (
-            "63821d5cea25cfaa2170c47aa3548a6d0c9ce65143edddd0eb21bad85f119cd4"
+            "2487813a38f7320252290e40515390dc26293dd3a41c359ea91e090201e63311"
         ),
-        "unreachable_candidate_count": 18,
+        "unreachable_candidate_count": 22,
         "unreachable_candidate_names_sha256": (
-            "808f77afec6f6d2ed797d16d96c4a6236c11140356aba6de1a4d5cc3f8a702fb"
+            "592336d0d62a70d9c026f11d1b5a32573a1d021831da414c527e32cf65f28264"
         ),
-        "balanced_seed_substituted": True,
-        "balanced_seed_provider_source_sha256": (
-            "76f290ee51d70fe62b14d81777488f5823050597249a9aa1beafcfdaad894eab"
+        "same_name_seed_substituted": False,
+        "balanced_v1_lineage_used": True,
+        "balanced_v1_provider_source_sha256": (
+            "852f3dc63a0bd6e80dccee70046c628e1929ae3e08bb200a016d25e1429d5b7b"
         ),
-        "balanced_seed_provider_script_sha256": (
-            "2b83f8e5ff38b9fd620570de270cbd79e928b933ac49e0db4a5ac042e69d267b"
+        "balanced_v1_provider_script_sha256": (
+            "0cdb8d835b263537843d09014eb6eacf141a6fe9a9d3cbac9e873951ffeb74c7"
         ),
-        "balanced_seed_provider_logical_sha256": (
-            "2f16ad95b11aa3044770df1f3312bfefb3c0fd2aa32f1da2403641daa97f12ea"
+        "balanced_v1_provider_logical_sha256": (
+            "26ef14eee1a037dcfd4a22377ec6654b85320c4f78c12ab97dd596381b11d661"
         ),
+        "legacy_alpha_v7_reachable_count": 0,
         "node_count": 113,
         "stable_atomic_count": 41,
         "candidate_body_count": 72,
@@ -474,55 +520,74 @@ def _provider_logical_sha256(rows: tuple[TheoremSpec, ...]) -> str:
 
 
 @lru_cache(maxsize=1)
-def _balanced_seed_specs() -> tuple[TheoremSpec, ...]:
-    rows = balanced_seed_provider.make_bertrand_power_seed_balanced_candidate_theorems(
-        TheoremSpec
+def _balanced_v1_specs() -> tuple[TheoremSpec, ...]:
+    rows = (
+        balanced_v1_provider.make_bertrand_balanced_v1_successor_candidate_theorems(
+            TheoremSpec
+        )
     )
-    assert tuple(row.name for row in rows) == BALANCED_SEED_PROVIDER_NAMES
+    assert tuple(row.name for row in rows) == BALANCED_V1_PROVIDER_NAMES
+    assert balanced_v1_provider.EXPECTED_NAMES == BALANCED_V1_PROVIDER_NAMES
     assert len({row.name for row in rows}) == len(rows)
-    assert not (set(BALANCED_SEED_PROVIDER_NAMES) & set(_specs_by_name()))
+    assert not (set(BALANCED_V1_PROVIDER_NAMES) & set(_specs_by_name()))
     assert sha256(
-        Path(balanced_seed_provider.__file__).read_bytes()
-    ).hexdigest() == BALANCED_SEED_PROVIDER_SOURCE_SHA256
+        Path(balanced_v1_provider.__file__).read_bytes()
+    ).hexdigest() == BALANCED_V1_PROVIDER_SOURCE_SHA256
     assert (
         _provider_script_sha256(rows)
-        == BALANCED_SEED_PROVIDER_SCRIPT_SHA256
+        == BALANCED_V1_PROVIDER_SCRIPT_SHA256
     )
     assert (
         _provider_logical_sha256(rows)
-        == BALANCED_SEED_PROVIDER_LOGICAL_SHA256
+        == BALANCED_V1_PROVIDER_LOGICAL_SHA256
     )
-
-    old_rows = tuple(
-        row for row in _main_prior_specs() if row.name == BALANCED_SEED_NAME
-    )
-    assert len(old_rows) == 1
-    old_seed = old_rows[0]
-    replacement = rows[-1]
-    assert replacement.name == old_seed.name
-    assert replacement.statement == old_seed.statement
-    assert replacement.dependencies != old_seed.dependencies
-    assert replacement.script != old_seed.script
     return rows
 
 
 @lru_cache(maxsize=1)
-def _balanced_main_prior_specs() -> tuple[TheoremSpec, ...]:
-    prior = _main_prior_specs()
-    provider = _balanced_seed_specs()
-    old_seed = next(row for row in prior if row.name == BALANCED_SEED_NAME)
-    old_index = prior.index(old_seed)
+def _successor_main_prior_specs() -> tuple[TheoremSpec, ...]:
+    legacy = (*_main_prior_specs(), *_all_s_specs())
+    assert len({row.name for row in legacy}) == len(legacy)
+    assert not (set(LEGACY_ALPHA_V7_NAMES) & set(_specs_by_name()))
+    provider = _balanced_v1_specs()
+    legacy_by_name = {row.name: row for row in legacy}
+    provider_by_name = {row.name: row for row in provider}
+    collisions = set(legacy_by_name) & set(provider_by_name)
+    assert collisions == set(BALANCED_V1_COLLISION_NAMES)
+
+    for name in BALANCED_V1_COLLISION_NAMES:
+        original = legacy_by_name[name]
+        replacement = provider_by_name[name]
+        assert replacement.statement == original.statement
+        assert replacement.summary == original.summary
+        assert replacement.dependencies != original.dependencies
+        assert replacement.script != original.script
+
+    for successor_name, legacy_name in BALANCED_V1_TO_LEGACY_LINEAGE:
+        successor = provider_by_name[successor_name]
+        original = legacy_by_name[legacy_name]
+        assert successor.statement == original.statement
+        assert successor.dependencies != original.dependencies
+        assert successor.script != original.script
+        if legacy_name != LEGACY_SEED_NAME:
+            assert successor.summary == original.summary
+
+    retained = tuple(row for row in legacy if row.name not in collisions)
     rows = (
-        *prior[:old_index],
+        *retained,
         *provider,
-        *prior[old_index + 1 :],
     )
-    assert rows[:old_index] == prior[:old_index]
-    assert rows[old_index : old_index + len(provider)] == provider
-    assert rows[old_index + len(provider) :] == prior[old_index + 1 :]
-    assert all(row is not old_seed for row in rows)
-    assert sum(row.name == BALANCED_SEED_NAME for row in rows) == 1
+    assert rows[: len(retained)] == retained
+    assert rows[len(retained) :] == provider
+    assert len(rows) == len(legacy) + len(provider) - len(collisions)
     assert len({row.name for row in rows}) == len(rows)
+    rows_by_name = {row.name: row for row in rows}
+    for name in LEGACY_ALPHA_V7_NAMES:
+        assert rows_by_name[name] is legacy_by_name[name]
+    assert LEGACY_SEED_NAME != BALANCED_V1_SEED_NAME
+    assert rows_by_name[LEGACY_SEED_NAME] is not rows_by_name[
+        BALANCED_V1_SEED_NAME
+    ]
     return rows
 
 
@@ -541,31 +606,34 @@ def _candidate_pool(root_name: str) -> tuple[TheoremSpec, ...]:
             & {row.name for row in rows}
         )
         assert not (
-            set(BALANCED_SEED_PROVIDER_NAMES[:-1])
+            set(BALANCED_V1_PROVIDER_NAMES)
             & {row.name for row in rows}
         )
     elif root_name in MAIN_ROOTS:
         prefix_length = MAIN_ROOTS.index(root_name) + 1
         rows = (
-            *_balanced_main_prior_specs(),
-            *_all_s_specs(),
+            *_successor_main_prior_specs(),
             *_growth_specs(),
             *_main_specs()[:prefix_length],
         )
+        assert len(rows) == 91 + prefix_length
         assert tuple(row.name for row in rows[-prefix_length:]) == (
             MAIN_ROOTS[:prefix_length]
         )
         assert tuple(
             row
             for row in rows
-            if row.name in BALANCED_SEED_PROVIDER_NAMES
-        ) == _balanced_seed_specs()
-        old_seed = next(
-            row
-            for row in _main_prior_specs()
-            if row.name == BALANCED_SEED_NAME
+            if row.name in BALANCED_V1_PROVIDER_NAMES
+        ) == _balanced_v1_specs()
+        legacy = {
+            row.name: row
+            for row in (*_main_prior_specs(), *_all_s_specs())
+        }
+        by_name = {row.name: row for row in rows}
+        assert all(
+            by_name[name] is legacy[name]
+            for name in LEGACY_ALPHA_V7_NAMES
         )
-        assert all(row is not old_seed for row in rows)
     else:
         raise AssertionError(f"unknown B6 layered root {root_name!r}")
 
@@ -823,15 +891,32 @@ def test_b6_layered_closure_static_manifest_is_fail_closed() -> None:
     assert tuple(EXPECTED_ROOT_DEPENDENCIES) == ROOTS
     assert tuple(EXPECTED_LAYERED_CLOSURES) == ROOTS
     assert all(
-        expected == PENDING_LAYERED_CLOSURE
-        or isinstance(expected, dict)
-        for expected in EXPECTED_LAYERED_CLOSURES.values()
+        isinstance(EXPECTED_LAYERED_CLOSURES[name], dict)
+        for name in GROWTH_ROOTS
+    )
+    assert tuple(PENDING_SUCCESSOR_LINEAGE_CLOSURES) == MAIN_ROOTS
+    assert len(set(PENDING_SUCCESSOR_LINEAGE_CLOSURES.values())) == len(
+        MAIN_ROOTS
+    )
+    assert all(
+        EXPECTED_LAYERED_CLOSURES[name]
+        == PENDING_SUCCESSOR_LINEAGE_CLOSURES[name]
+        or isinstance(EXPECTED_LAYERED_CLOSURES[name], dict)
+        for name in MAIN_ROOTS
     )
     assert tuple(row.name for row in _growth_specs()) == GROWTH_ROOTS
     assert tuple(row.name for row in _main_specs()) == MAIN_ROOTS
-    assert tuple(row.name for row in _balanced_seed_specs()) == (
-        BALANCED_SEED_PROVIDER_NAMES
+    assert tuple(row.name for row in _balanced_v1_specs()) == (
+        BALANCED_V1_PROVIDER_NAMES
     )
+    legacy = (*_main_prior_specs(), *_all_s_specs())
+    provider = _balanced_v1_specs()
+    assert {
+        row.name for row in legacy
+    } & {row.name for row in provider} == set(
+        BALANCED_V1_COLLISION_NAMES
+    )
+    assert len(_successor_main_prior_specs()) == len(legacy) + 6
     for root_name in ROOTS:
         root = next(
             row
@@ -908,14 +993,38 @@ def test_b6_root_pruned_layered_empty_context_closure(
 
     if root_name in GROWTH_ROOTS:
         assert not (
-            set(BALANCED_SEED_PROVIDER_NAMES) & set(blueprint.names)
+            set(BALANCED_V1_PROVIDER_NAMES) & set(blueprint.names)
         )
         assert not (
             (set(GROWTH_ROOTS) - {root_name}) & set(candidates)
         )
-        balanced_seed_substituted = False
+        lineage_receipt: dict[str, object] = {
+            "balanced_seed_substituted": False,
+            "balanced_seed_provider_source_sha256": None,
+            "balanced_seed_provider_script_sha256": None,
+            "balanced_seed_provider_logical_sha256": None,
+        }
     else:
-        assert set(BALANCED_SEED_PROVIDER_NAMES) <= candidate_names
+        assert set(BALANCED_V1_PROVIDER_NAMES) <= candidate_names
+        assert not (
+            set(BALANCED_V1_PROVIDER_NAMES) & unreachable_candidates
+        )
+        assert set(LEGACY_ALPHA_V7_NAMES) <= unreachable_candidates
+        legacy_alpha_v7_reachable = (
+            set(LEGACY_ALPHA_V7_NAMES) & candidate_names
+        )
+        assert not legacy_alpha_v7_reachable
+        assert not (set(LEGACY_ALPHA_V7_NAMES) & stable_names)
+        assert all(
+            not (
+                set(candidates[name].dependencies)
+                & set(LEGACY_ALPHA_V7_NAMES)
+            )
+            for name in candidate_names
+        )
+        assert LEGACY_SEED_NAME in candidates
+        assert BALANCED_V1_SEED_NAME in candidates
+        assert LEGACY_SEED_NAME != BALANCED_V1_SEED_NAME
         assert {
             "bertrand_hj_six_block_iterate_from_total",
             "bertrand_hj_envelope_thirty_two",
@@ -925,7 +1034,24 @@ def test_b6_root_pruned_layered_empty_context_closure(
             MAIN_ROOTS[: MAIN_ROOTS.index(root_name) + 1]
         )
         assert required_main_prefix <= candidate_names
-        balanced_seed_substituted = True
+        assert len(pool) == 92 + MAIN_ROOTS.index(root_name)
+        assert len(unreachable_candidates) == 22
+        lineage_receipt = {
+            "same_name_seed_substituted": False,
+            "balanced_v1_lineage_used": True,
+            "balanced_v1_provider_source_sha256": (
+                BALANCED_V1_PROVIDER_SOURCE_SHA256
+            ),
+            "balanced_v1_provider_script_sha256": (
+                BALANCED_V1_PROVIDER_SCRIPT_SHA256
+            ),
+            "balanced_v1_provider_logical_sha256": (
+                BALANCED_V1_PROVIDER_LOGICAL_SHA256
+            ),
+            "legacy_alpha_v7_reachable_count": len(
+                legacy_alpha_v7_reachable
+            ),
+        }
 
     limits = DEFAULT_LAYERED_REPLAY_LIMITS
     assert len(blueprint.names) <= limits.max_nodes
@@ -1023,22 +1149,7 @@ def test_b6_root_pruned_layered_empty_context_closure(
         "unreachable_candidate_names_sha256": sha256(
             "\0".join(sorted(unreachable_candidates)).encode()
         ).hexdigest(),
-        "balanced_seed_substituted": balanced_seed_substituted,
-        "balanced_seed_provider_source_sha256": (
-            BALANCED_SEED_PROVIDER_SOURCE_SHA256
-            if balanced_seed_substituted
-            else None
-        ),
-        "balanced_seed_provider_script_sha256": (
-            BALANCED_SEED_PROVIDER_SCRIPT_SHA256
-            if balanced_seed_substituted
-            else None
-        ),
-        "balanced_seed_provider_logical_sha256": (
-            BALANCED_SEED_PROVIDER_LOGICAL_SHA256
-            if balanced_seed_substituted
-            else None
-        ),
+        **lineage_receipt,
         "node_count": len(blueprint.names),
         "stable_atomic_count": len(stable_names),
         "candidate_body_count": len(candidate_names),

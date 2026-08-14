@@ -17,7 +17,9 @@ from pathlib import Path
 import pytest
 
 from peano_lab.library import (
+    bertrand_balanced_v1_successor_candidate as balanced_v1_successor_provider,
     bertrand_power_seed_balanced_candidate as balanced_seed_provider,
+    editions_v7,
 )
 from peano_lab.engine.state import proof_identity_metrics, proof_metrics, start
 from peano_lab.engine.tactics import (
@@ -485,6 +487,220 @@ EXPECTED_HEAVY_ENVELOPE_LAYERED_AUDIT: dict[str, object] | str = {
     ),
 }
 
+# The additive balanced-v1 package keeps the four immutable Alpha-v7 legacy
+# rows in each candidate pool, but redirects the post-v7 graph through six
+# new names and exactly six same-name successor bodies.  These gates remain
+# distinct from the historical same-name seed substitution receipts above.
+BALANCED_V1_SUCCESSOR_NAMES = (
+    "eight_times_eight_eq_sixty_four",
+    "eight_times_sixteen_eq_one_twenty_eight",
+    "pow_two_seed_bundle_balanced_v1_from_total",
+    "bertrand_h_six_step_transport_balanced_v1_from_total",
+    "bertrand_j_six_step_transport_balanced_v1_from_total",
+    "bertrand_hj_six_step_balanced_v1_from_total",
+    "pow_eleven_two_le_pow_two_seven_from_total",
+    "pow_six_ten_le_pow_four_thirteen_from_total",
+    "pow_six_six_le_pow_four_eight_from_total",
+    "pow_six_four_le_pow_four_six_from_total",
+    "pow_two_double_eq_pow_four_from_total",
+    HEAVY_ITERATOR_ROOT,
+)
+BALANCED_V1_UNIQUE_NAMES = BALANCED_V1_SUCCESSOR_NAMES[:6]
+BALANCED_V1_BASE_REPLACEMENT_NAMES = BALANCED_V1_SUCCESSOR_NAMES[6:11]
+BALANCED_V1_POST_V7_REPLACEMENT_NAMES = (
+    *BALANCED_V1_BASE_REPLACEMENT_NAMES,
+    HEAVY_ITERATOR_ROOT,
+)
+BALANCED_V1_LEGACY_ALPHA_NAMES = (
+    "pow_two_seed_bundle_from_total",
+    "bertrand_h_six_step_transport_from_total",
+    "bertrand_j_six_step_transport_from_total",
+    "bertrand_hj_six_step_from_total",
+)
+BALANCED_V1_REACHABLE_NEW_NAMES = BALANCED_V1_UNIQUE_NAMES
+BALANCED_V1_SUCCESSOR_SOURCE_SHA256 = (
+    "852f3dc63a0bd6e80dccee70046c628e1929ae3e08bb200a016d25e1429d5b7b"
+)
+BALANCED_V1_SUCCESSOR_SCRIPT_SHA256 = (
+    "0cdb8d835b263537843d09014eb6eacf141a6fe9a9d3cbac9e873951ffeb74c7"
+)
+BALANCED_V1_SUCCESSOR_LOGICAL_SHA256 = (
+    "26ef14eee1a037dcfd4a22377ec6654b85320c4f78c12ab97dd596381b11d661"
+)
+
+PENDING_BALANCED_V1_ROW_FIVE_LAYERED_AUDIT = (
+    "PENDING_BALANCED_V1_ROW_FIVE_LAYERED_AUDIT"
+)
+EXPECTED_BALANCED_V1_ROW_FIVE_LAYERED_AUDIT: dict[str, object] | str = (
+    {
+        "topology_sha256": (
+            "034ef47246387392bd36d6a3f3ebe6a8f91ccebd795cf1fbd80a20d1cd95a803"
+        ),
+        "balanced_v1_successor_names": (
+            "eight_times_eight_eq_sixty_four",
+            "eight_times_sixteen_eq_one_twenty_eight",
+            "pow_two_seed_bundle_balanced_v1_from_total",
+            "bertrand_h_six_step_transport_balanced_v1_from_total",
+            "bertrand_j_six_step_transport_balanced_v1_from_total",
+            "bertrand_hj_six_step_balanced_v1_from_total",
+            "pow_eleven_two_le_pow_two_seven_from_total",
+            "pow_six_ten_le_pow_four_thirteen_from_total",
+            "pow_six_six_le_pow_four_eight_from_total",
+            "pow_six_four_le_pow_four_six_from_total",
+            "pow_two_double_eq_pow_four_from_total",
+            "bertrand_hj_six_block_iterate_from_total",
+        ),
+        "balanced_v1_successor_source_sha256": (
+            "852f3dc63a0bd6e80dccee70046c628e1929ae3e08bb200a016d25e1429d5b7b"
+        ),
+        "balanced_v1_successor_script_sha256": (
+            "0cdb8d835b263537843d09014eb6eacf141a6fe9a9d3cbac9e873951ffeb74c7"
+        ),
+        "balanced_v1_successor_logical_sha256": (
+            "26ef14eee1a037dcfd4a22377ec6654b85320c4f78c12ab97dd596381b11d661"
+        ),
+        "legacy_alpha_names": (
+            "pow_two_seed_bundle_from_total",
+            "bertrand_h_six_step_transport_from_total",
+            "bertrand_j_six_step_transport_from_total",
+            "bertrand_hj_six_step_from_total",
+        ),
+        "post_v7_replacement_names": (
+            "pow_eleven_two_le_pow_two_seven_from_total",
+            "pow_six_ten_le_pow_four_thirteen_from_total",
+            "pow_six_six_le_pow_four_eight_from_total",
+            "pow_six_four_le_pow_four_six_from_total",
+            "pow_two_double_eq_pow_four_from_total",
+            "bertrand_hj_six_block_iterate_from_total",
+        ),
+        "root_node_kind": "candidate_body",
+        "candidate_pool_count": 88,
+        "unreachable_candidate_count": 35,
+        "unreachable_candidate_names_sha256": (
+            "bb83b4069bf27b22d5ea14aad2f41a0d12e8fd197efeb4f33f1da5af46a5fabb"
+        ),
+        "node_count": 87,
+        "stable_atomic_count": 34,
+        "candidate_body_count": 53,
+        "dependency_edge_count": 288,
+        "layer_sizes": (35, 13, 13, 8, 5, 4, 7, 1, 1),
+        "max_fan_in": 13,
+        "raw_body_union_objects": 97_700,
+        "interned_body_union_objects": 11_718,
+        "body_union_object_savings": 85_982,
+        "proof_nodes": 134_034,
+        "proof_depth": 179,
+        "proof_objects": 13_633,
+        "proof_edges": 18_279,
+        "reused_objects": 4_647,
+        "annotation_occurrences": 892_269,
+        "envelope_depth": 208,
+        "package_formula_occurrences": 32_239,
+        "package_formula_depth": 147,
+        "proof_dag_sha256": (
+            "1d2a6ff4398f14ee3a793c9adfb8f59bb29320e79b1dda186f0a88c878df06b3"
+        ),
+    }
+)
+PENDING_BALANCED_V1_ROW_SIX_LAYERED_AUDIT = (
+    "PENDING_BALANCED_V1_ROW_SIX_LAYERED_AUDIT"
+)
+EXPECTED_BALANCED_V1_ROW_SIX_LAYERED_AUDIT: dict[str, object] | str = (
+    {
+        "topology_sha256": (
+            "24920eeb9d052bbee7afdaff61f35f75d51a060e2877e56af3a75b667a121121"
+        ),
+        "balanced_v1_successor_names": (
+            "eight_times_eight_eq_sixty_four",
+            "eight_times_sixteen_eq_one_twenty_eight",
+            "pow_two_seed_bundle_balanced_v1_from_total",
+            "bertrand_h_six_step_transport_balanced_v1_from_total",
+            "bertrand_j_six_step_transport_balanced_v1_from_total",
+            "bertrand_hj_six_step_balanced_v1_from_total",
+            "pow_eleven_two_le_pow_two_seven_from_total",
+            "pow_six_ten_le_pow_four_thirteen_from_total",
+            "pow_six_six_le_pow_four_eight_from_total",
+            "pow_six_four_le_pow_four_six_from_total",
+            "pow_two_double_eq_pow_four_from_total",
+            "bertrand_hj_six_block_iterate_from_total",
+        ),
+        "balanced_v1_successor_source_sha256": (
+            "852f3dc63a0bd6e80dccee70046c628e1929ae3e08bb200a016d25e1429d5b7b"
+        ),
+        "balanced_v1_successor_script_sha256": (
+            "0cdb8d835b263537843d09014eb6eacf141a6fe9a9d3cbac9e873951ffeb74c7"
+        ),
+        "balanced_v1_successor_logical_sha256": (
+            "26ef14eee1a037dcfd4a22377ec6654b85320c4f78c12ab97dd596381b11d661"
+        ),
+        "legacy_alpha_names": (
+            "pow_two_seed_bundle_from_total",
+            "bertrand_h_six_step_transport_from_total",
+            "bertrand_j_six_step_transport_from_total",
+            "bertrand_hj_six_step_from_total",
+        ),
+        "post_v7_replacement_names": (
+            "pow_eleven_two_le_pow_two_seven_from_total",
+            "pow_six_ten_le_pow_four_thirteen_from_total",
+            "pow_six_six_le_pow_four_eight_from_total",
+            "pow_six_four_le_pow_four_six_from_total",
+            "pow_two_double_eq_pow_four_from_total",
+            "bertrand_hj_six_block_iterate_from_total",
+        ),
+        "root_node_kind": "candidate_body",
+        "candidate_pool_count": 89,
+        "unreachable_candidate_count": 34,
+        "unreachable_candidate_names_sha256": (
+            "6e7b8cc9e06949f00e3ff81ddd796dbadba0aafa6758a2c45348f735f8310715"
+        ),
+        "node_count": 90,
+        "stable_atomic_count": 35,
+        "candidate_body_count": 55,
+        "dependency_edge_count": 298,
+        "layer_sizes": (36, 14, 13, 8, 5, 4, 7, 1, 1, 1),
+        "max_fan_in": 13,
+        "raw_body_union_objects": 101_490,
+        "interned_body_union_objects": 14_032,
+        "body_union_object_savings": 87_458,
+        "proof_nodes": 194_196,
+        "proof_depth": 179,
+        "proof_objects": 16_034,
+        "proof_edges": 21_647,
+        "reused_objects": 5_614,
+        "annotation_occurrences": 1_089_379,
+        "envelope_depth": 208,
+        "package_formula_occurrences": 33_555,
+        "package_formula_depth": 147,
+        "proof_dag_sha256": (
+            "882b6a9b31f212dacb05e6758ea9c2ec6b9cd25d0d5fa4eb1bdb4292cdfa7374"
+        ),
+        "pow_exists_node_kind": "stable_atomic",
+        "iterator_node_kind": "candidate_body",
+    }
+)
+
+BALANCED_V1_UNCHANGED_RECEIPT_KEYS = (
+    "node_count",
+    "stable_atomic_count",
+    "candidate_body_count",
+    "dependency_edge_count",
+    "layer_sizes",
+    "max_fan_in",
+    "raw_body_union_objects",
+    "interned_body_union_objects",
+    "body_union_object_savings",
+    "proof_nodes",
+    "proof_depth",
+    "proof_objects",
+    "proof_edges",
+    "reused_objects",
+    "annotation_occurrences",
+    "envelope_depth",
+    "package_formula_occurrences",
+    "package_formula_depth",
+    "proof_dag_sha256",
+)
+
 
 @dataclass(frozen=True, slots=True)
 class _HeavyIteratorBlueprint:
@@ -672,6 +888,149 @@ def _heavy_envelope_candidate_pool() -> tuple[TheoremSpec, ...]:
     """Extend the balanced heavy-only pool by the row-six root."""
 
     iterator_pool = _heavy_iterator_candidate_pool()
+    envelope = _specs()[5]
+    assert envelope.name == HEAVY_ENVELOPE_ROOT
+    assert envelope.name not in {item.name for item in iterator_pool}
+    rows = (*iterator_pool, envelope)
+    assert rows[:-1] == iterator_pool
+    assert len({item.name for item in rows}) == len(rows)
+    return rows
+
+
+@lru_cache(maxsize=1)
+def _balanced_v1_successor_rows() -> tuple[TheoremSpec, ...]:
+    """Load and pin the additive balanced-v1 provider exactly once."""
+
+    factory = (
+        balanced_v1_successor_provider
+        .make_bertrand_balanced_v1_successor_candidate_theorems
+    )
+    rows = factory(TheoremSpec)
+    assert tuple(item.name for item in rows) == BALANCED_V1_SUCCESSOR_NAMES
+    assert (
+        balanced_v1_successor_provider.EXPECTED_NAMES
+        == BALANCED_V1_SUCCESSOR_NAMES
+    )
+    assert len({item.name for item in rows}) == len(rows) == 12
+    assert not (set(BALANCED_V1_SUCCESSOR_NAMES) & set(_specs_by_name()))
+    assert sha256(
+        Path(balanced_v1_successor_provider.__file__).read_bytes()
+    ).hexdigest() == BALANCED_V1_SUCCESSOR_SOURCE_SHA256
+    assert (
+        _provider_script_sha256(rows)
+        == BALANCED_V1_SUCCESSOR_SCRIPT_SHA256
+    )
+    assert (
+        _provider_logical_sha256(rows)
+        == BALANCED_V1_SUCCESSOR_LOGICAL_SHA256
+    )
+    return rows
+
+
+def _replace_balanced_v1_same_name_rows(
+    rows: tuple[TheoremSpec, ...],
+    replacements: dict[str, TheoremSpec],
+    expected_names: tuple[str, ...],
+) -> tuple[TheoremSpec, ...]:
+    """Replace an exact collision set while retaining every other object."""
+
+    assert set(replacements) == set(expected_names)
+    originals: dict[str, TheoremSpec] = {}
+    for name in expected_names:
+        matches = tuple(item for item in rows if item.name == name)
+        assert len(matches) == 1
+        original = matches[0]
+        successor = replacements[name]
+        assert successor is not original
+        assert successor.name == original.name
+        assert successor.statement == original.statement
+        assert successor.summary == original.summary
+        assert successor.dependencies != original.dependencies
+        assert successor.script != original.script
+        originals[name] = original
+
+    result = tuple(replacements.get(item.name, item) for item in rows)
+    assert len(result) == len(rows)
+    assert len({item.name for item in result}) == len(result)
+    for name in expected_names:
+        assert sum(item is replacements[name] for item in result) == 1
+        assert all(item is not originals[name] for item in result)
+    for original, successor in zip(rows, result, strict=True):
+        if original.name not in replacements:
+            assert successor is original
+    return result
+
+
+@lru_cache(maxsize=1)
+def _balanced_v1_iterator_candidate_pool() -> tuple[TheoremSpec, ...]:
+    """Wire row five through additive successors without mutating Alpha v7."""
+
+    provider = _balanced_v1_successor_rows()
+    provider_by_name = {item.name: item for item in provider}
+    unique_rows = tuple(
+        provider_by_name[name] for name in BALANCED_V1_UNIQUE_NAMES
+    )
+    prior = _prior_specs()
+    replaced_prior = _replace_balanced_v1_same_name_rows(
+        prior,
+        {
+            name: provider_by_name[name]
+            for name in BALANCED_V1_BASE_REPLACEMENT_NAMES
+        },
+        BALANCED_V1_BASE_REPLACEMENT_NAMES,
+    )
+    row_five_prefix = _specs()[:5]
+    replaced_row_five = _replace_balanced_v1_same_name_rows(
+        row_five_prefix,
+        {HEAVY_ITERATOR_ROOT: provider_by_name[HEAVY_ITERATOR_ROOT]},
+        (HEAVY_ITERATOR_ROOT,),
+    )
+
+    legacy_names = {item.name for item in (*prior, *row_five_prefix)}
+    assert set(BALANCED_V1_SUCCESSOR_NAMES) & legacy_names == set(
+        BALANCED_V1_POST_V7_REPLACEMENT_NAMES
+    )
+    occupied_names = {item.name for item in (*prior, *row_five_prefix)}
+    assert not (set(BALANCED_V1_UNIQUE_NAMES) & occupied_names)
+    replacement_positions = tuple(
+        index
+        for index, item in enumerate(prior)
+        if item.name in BALANCED_V1_BASE_REPLACEMENT_NAMES
+    )
+    assert len(replacement_positions) == len(
+        BALANCED_V1_BASE_REPLACEMENT_NAMES
+    )
+    insertion_index = min(replacement_positions)
+    rows = (
+        *replaced_prior[:insertion_index],
+        *unique_rows,
+        *replaced_prior[insertion_index:],
+        *replaced_row_five,
+    )
+    assert len(rows) == len(prior) + len(unique_rows) + len(row_five_prefix)
+    assert len({item.name for item in rows}) == len(rows)
+    assert {
+        item.name
+        for item in rows
+        if item.name in BALANCED_V1_SUCCESSOR_NAMES
+    } == set(BALANCED_V1_SUCCESSOR_NAMES)
+    for name in BALANCED_V1_SUCCESSOR_NAMES:
+        assert sum(item is provider_by_name[name] for item in rows) == 1
+
+    replaced_names = set(BALANCED_V1_POST_V7_REPLACEMENT_NAMES)
+    for original in (*prior, *row_five_prefix):
+        if original.name in replaced_names:
+            assert all(item is not original for item in rows)
+        else:
+            assert sum(item is original for item in rows) == 1
+    return rows
+
+
+@lru_cache(maxsize=1)
+def _balanced_v1_envelope_candidate_pool() -> tuple[TheoremSpec, ...]:
+    """Extend the explicit balanced-v1 row-five pool by row six."""
+
+    iterator_pool = _balanced_v1_iterator_candidate_pool()
     envelope = _specs()[5]
     assert envelope.name == HEAVY_ENVELOPE_ROOT
     assert envelope.name not in {item.name for item in iterator_pool}
@@ -881,6 +1240,129 @@ def _heavy_envelope_blueprint() -> _HeavyIteratorBlueprint:
     )
 
 
+def _balanced_v1_blueprint(
+    pool: tuple[TheoremSpec, ...],
+    root_name: str,
+    *,
+    label: str,
+) -> _HeavyIteratorBlueprint:
+    """Prune one explicit successor pool at its root and Stable boundary."""
+
+    public = _specs_by_name()
+    candidates = {item.name: item for item in pool}
+    assert len(candidates) == len(pool)
+    for name in set(public) & set(candidates):
+        assert public[name] == candidates[name]
+
+    stable_names: set[str] = set()
+    candidate_order: list[str] = []
+    marks: dict[str, int] = {}
+
+    def visit(name: str) -> None:
+        if name in public:
+            stable_names.add(name)
+            return
+        item = candidates.get(name)
+        if item is None:
+            raise AssertionError(
+                f"unknown balanced-v1 {label} dependency {name!r}"
+            )
+        mark = marks.get(name, 0)
+        if mark == 1:
+            raise AssertionError(
+                f"cyclic balanced-v1 {label} dependency at {name!r}"
+            )
+        if mark == 2:
+            return
+        marks[name] = 1
+        for dependency in item.dependencies:
+            visit(dependency)
+        marks[name] = 2
+        candidate_order.append(name)
+
+    visit(root_name)
+    names = tuple(sorted(stable_names)) + tuple(candidate_order)
+    positions = {name: index for index, name in enumerate(names)}
+    assert len(positions) == len(names)
+
+    kinds = tuple(
+        "stable_atomic" if name in stable_names else "candidate_body"
+        for name in names
+    )
+    selected_specs = tuple(
+        public[name] if name in stable_names else candidates[name]
+        for name in names
+    )
+    targets = tuple(_closed_formula(item.statement) for item in selected_specs)
+    dependencies = tuple(
+        ()
+        if kind == "stable_atomic"
+        else tuple(positions[name] for name in item.dependencies)
+        for kind, item in zip(kinds, selected_specs, strict=True)
+    )
+
+    depths: list[int] = []
+    for node_id, node_dependencies in enumerate(dependencies):
+        if any(dependency >= node_id for dependency in node_dependencies):
+            raise AssertionError(
+                f"balanced-v1 {label} dependency did not precede its node"
+            )
+        depths.append(
+            0
+            if not node_dependencies
+            else 1 + max(depths[item] for item in node_dependencies)
+        )
+    layer_lists: list[list[int]] = [
+        [] for _ in range(1 + max(depths, default=0))
+    ]
+    for node_id, depth in enumerate(depths):
+        layer_lists[depth].append(node_id)
+    layers = tuple(tuple(layer) for layer in layer_lists)
+
+    rows = (
+        "\x1f".join(
+            (
+                str(node_id),
+                name,
+                kinds[node_id],
+                selected_specs[node_id].statement,
+                "\x1e".join(
+                    names[dependency]
+                    for dependency in dependencies[node_id]
+                ),
+            )
+        )
+        for node_id, name in enumerate(names)
+    )
+    return _HeavyIteratorBlueprint(
+        names=names,
+        targets=targets,
+        dependencies=dependencies,
+        layers=layers,
+        kinds=kinds,
+        root=positions[root_name],
+        topology_sha256=sha256("\x1c".join(rows).encode()).hexdigest(),
+    )
+
+
+@lru_cache(maxsize=1)
+def _balanced_v1_iterator_blueprint() -> _HeavyIteratorBlueprint:
+    return _balanced_v1_blueprint(
+        _balanced_v1_iterator_candidate_pool(),
+        HEAVY_ITERATOR_ROOT,
+        label="row-five",
+    )
+
+
+@lru_cache(maxsize=1)
+def _balanced_v1_envelope_blueprint() -> _HeavyIteratorBlueprint:
+    return _balanced_v1_blueprint(
+        _balanced_v1_envelope_candidate_pool(),
+        HEAVY_ENVELOPE_ROOT,
+        label="row-six",
+    )
+
+
 def _heavy_iterator_dependency_curried_body(
     item: TheoremSpec,
     targets_by_name: dict[str, Formula],
@@ -998,6 +1480,77 @@ def _heavy_envelope_bundle() -> LayeredReplayBundle:
     return LayeredReplayBundle(tuple(nodes), blueprint.root)
 
 
+def _balanced_v1_bundle(
+    blueprint: _HeavyIteratorBlueprint,
+    pool: tuple[TheoremSpec, ...],
+    *,
+    root_name: str,
+) -> LayeredReplayBundle:
+    """Rebuild every reachable successor body with Stable atomic leaves."""
+
+    public = _specs_by_name()
+    candidates = {item.name: item for item in pool}
+    assert len(candidates) == len(pool)
+    targets_by_name = dict(
+        zip(blueprint.names, blueprint.targets, strict=True)
+    )
+    nodes: list[LayeredReplayNode] = []
+    built_candidates: list[str] = []
+    for node_id, name in enumerate(blueprint.names):
+        if blueprint.kinds[node_id] == "stable_atomic":
+            theorem = replay(name)
+            assert theorem.formula == blueprint.targets[node_id]
+            assert theorem.spec == public[name]
+            body = theorem.certificate
+        else:
+            built_candidates.append(name)
+            body = _heavy_iterator_dependency_curried_body(
+                candidates[name],
+                targets_by_name,
+            )
+        nodes.append(
+            LayeredReplayNode(
+                node_id=node_id,
+                target=blueprint.targets[node_id],
+                dependencies=blueprint.dependencies[node_id],
+                body=body,
+            )
+        )
+
+    expected_candidates = tuple(
+        name
+        for name, kind in zip(
+            blueprint.names,
+            blueprint.kinds,
+            strict=True,
+        )
+        if kind == "candidate_body"
+    )
+    assert tuple(built_candidates) == expected_candidates
+    assert built_candidates[-1] == root_name
+    if root_name == HEAVY_ENVELOPE_ROOT:
+        assert HEAVY_ITERATOR_ROOT in built_candidates
+    return LayeredReplayBundle(tuple(nodes), blueprint.root)
+
+
+@lru_cache(maxsize=1)
+def _balanced_v1_iterator_bundle() -> LayeredReplayBundle:
+    return _balanced_v1_bundle(
+        _balanced_v1_iterator_blueprint(),
+        _balanced_v1_iterator_candidate_pool(),
+        root_name=HEAVY_ITERATOR_ROOT,
+    )
+
+
+@lru_cache(maxsize=1)
+def _balanced_v1_envelope_bundle() -> LayeredReplayBundle:
+    return _balanced_v1_bundle(
+        _balanced_v1_envelope_blueprint(),
+        _balanced_v1_envelope_candidate_pool(),
+        root_name=HEAVY_ENVELOPE_ROOT,
+    )
+
+
 def _body(item: TheoremSpec) -> tuple[Proof, Formula]:
     available = _available()
     target = _closed_formula(item.statement)
@@ -1103,6 +1656,335 @@ def _mutate_direct_cut(proof: Proof, index: int) -> Proof:
         zero = Zero()
         return replace(proof, proposition=Eq(zero, zero), lemma=EqRefl(zero))
     return replace(proof, body=_mutate_direct_cut(proof.body, index - 1))
+
+
+def _balanced_v1_layered_receipt(
+    *,
+    blueprint: _HeavyIteratorBlueprint,
+    pool: tuple[TheoremSpec, ...],
+    root_name: str,
+    historical: dict[str, object],
+    label: str,
+) -> dict[str, object]:
+    """Kernel-audit one explicit successor graph and return its receipt."""
+
+    assert root_name in (HEAVY_ITERATOR_ROOT, HEAVY_ENVELOPE_ROOT)
+    public = _specs_by_name()
+    provider = _balanced_v1_successor_rows()
+    provider_by_name = {item.name: item for item in provider}
+    candidates = {item.name: item for item in pool}
+    assert len(candidates) == len(pool)
+    stable_names = {
+        name
+        for name, kind in zip(
+            blueprint.names,
+            blueprint.kinds,
+            strict=True,
+        )
+        if kind == "stable_atomic"
+    }
+    candidate_names = set(blueprint.names) - stable_names
+    pool_names = set(candidates)
+    unreachable_candidates = pool_names - set(blueprint.names)
+
+    prior_by_name = {item.name: item for item in _prior_specs()}
+    assert len(prior_by_name) == len(_prior_specs())
+    for name in BALANCED_V1_LEGACY_ALPHA_NAMES:
+        legacy = prior_by_name[name]
+        entry = editions_v7.entry(
+            name,
+            edition=editions_v7.EditionName.ALPHA,
+        )
+        assert entry is not None
+        assert entry.spec == legacy
+        assert entry.membership is editions_v7.Membership.ALPHA_ONLY
+        assert entry.evidence is editions_v7.EvidenceStatus.BODY_CHECKED
+        assert not entry.checked_use
+        assert candidates[name] is legacy
+        assert name in unreachable_candidates
+        assert name not in blueprint.names
+
+    old_replacements = {
+        item.name: item
+        for item in (*_prior_specs(), *_specs()[:5])
+        if item.name in BALANCED_V1_POST_V7_REPLACEMENT_NAMES
+    }
+    assert set(old_replacements) == set(
+        BALANCED_V1_POST_V7_REPLACEMENT_NAMES
+    )
+    for name in BALANCED_V1_POST_V7_REPLACEMENT_NAMES:
+        assert candidates[name] is provider_by_name[name]
+        assert candidates[name] is not old_replacements[name]
+        assert all(item is not old_replacements[name] for item in pool)
+
+    assert stable_names <= set(public)
+    assert not (candidate_names & set(public))
+    assert candidate_names <= pool_names
+    assert set(BALANCED_V1_REACHABLE_NEW_NAMES) <= candidate_names
+    assert set(BALANCED_V1_SUCCESSOR_NAMES) <= candidate_names
+    assert set(BALANCED_V1_LEGACY_ALPHA_NAMES) <= unreachable_candidates
+    assert blueprint.kinds == (
+        ("stable_atomic",) * len(stable_names)
+        + ("candidate_body",) * len(candidate_names)
+    )
+    expected_pool_count, expected_unreachable_count = (
+        (88, 35)
+        if root_name == HEAVY_ITERATOR_ROOT
+        else (89, 34)
+    )
+    assert len(pool) == expected_pool_count
+    assert len(unreachable_candidates) == expected_unreachable_count
+    assert len(pool) == historical["candidate_pool_count"] + 4
+    assert (
+        len(unreachable_candidates)
+        == historical["unreachable_candidate_count"] + 4
+    )
+
+    assert blueprint.names[blueprint.root] == root_name
+    assert blueprint.kinds[blueprint.root] == "candidate_body"
+    assert blueprint.targets[blueprint.root] == _closed_formula(
+        candidates[root_name].statement
+    )
+    assert tuple(
+        blueprint.names[dependency]
+        for dependency in blueprint.dependencies[blueprint.root]
+    ) == candidates[root_name].dependencies
+    if root_name == HEAVY_ITERATOR_ROOT:
+        assert HEAVY_ENVELOPE_ROOT not in candidates
+        assert HEAVY_ENVELOPE_ROOT not in blueprint.names
+    else:
+        pow_exists_id = blueprint.names.index("pow_exists")
+        iterator_id = blueprint.names.index(HEAVY_ITERATOR_ROOT)
+        assert blueprint.kinds[pow_exists_id] == "stable_atomic"
+        assert blueprint.dependencies[pow_exists_id] == ()
+        assert blueprint.kinds[iterator_id] == "candidate_body"
+        assert tuple(
+            blueprint.names[dependency]
+            for dependency in blueprint.dependencies[iterator_id]
+        ) == provider_by_name[HEAVY_ITERATOR_ROOT].dependencies
+        assert iterator_id in blueprint.dependencies[blueprint.root]
+
+    assert blueprint.root in blueprint.layers[-1]
+    assert all(tuple(sorted(layer)) == layer for layer in blueprint.layers)
+    assert {
+        node_id for layer in blueprint.layers for node_id in layer
+    } == set(range(len(blueprint.names)))
+    assert all(
+        dependency < node_id
+        for node_id, dependencies in enumerate(blueprint.dependencies)
+        for dependency in dependencies
+    )
+    for node_id, name in enumerate(blueprint.names):
+        if blueprint.kinds[node_id] == "stable_atomic":
+            assert blueprint.dependencies[node_id] == ()
+        else:
+            assert tuple(
+                blueprint.names[dependency]
+                for dependency in blueprint.dependencies[node_id]
+            ) == candidates[name].dependencies
+
+    reachable: set[int] = set()
+    pending = [blueprint.root]
+    while pending:
+        node_id = pending.pop()
+        if node_id in reachable:
+            continue
+        reachable.add(node_id)
+        pending.extend(blueprint.dependencies[node_id])
+    assert reachable == set(range(len(blueprint.names)))
+    assert len(blueprint.names) <= DEFAULT_LAYERED_REPLAY_LIMITS.max_nodes
+    assert (
+        sum(map(len, blueprint.dependencies))
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_dependency_edges
+    )
+    assert (
+        max(map(len, blueprint.dependencies))
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_dependencies_per_node
+    )
+
+    raw_bundle = (
+        _balanced_v1_iterator_bundle()
+        if root_name == HEAVY_ITERATOR_ROOT
+        else _balanced_v1_envelope_bundle()
+    )
+    assert raw_bundle.root == blueprint.root
+    assert len(raw_bundle.nodes) == len(blueprint.names)
+    interned_bundle = intern_layered_replay_bodies(
+        raw_bundle,
+        blueprint.targets[blueprint.root],
+        limits=DEFAULT_LAYERED_REPLAY_LIMITS,
+    )
+    assert type(interned_bundle) is LayeredReplayBundle
+    assert interned_bundle.root == raw_bundle.root
+    assert len(interned_bundle.nodes) == len(raw_bundle.nodes)
+    for raw_node, interned_node in zip(
+        raw_bundle.nodes,
+        interned_bundle.nodes,
+        strict=True,
+    ):
+        assert type(interned_node) is LayeredReplayNode
+        assert interned_node.node_id == raw_node.node_id
+        assert interned_node.target is raw_node.target
+        assert interned_node.dependencies is raw_node.dependencies
+        assert interned_node.body == raw_node.body
+
+    raw_body_union_objects = _proof_union_object_count(
+        tuple(node.body for node in raw_bundle.nodes)
+    )
+    interned_body_union_objects = _proof_union_object_count(
+        tuple(node.body for node in interned_bundle.nodes)
+    )
+    body_union_object_savings = (
+        raw_body_union_objects - interned_body_union_objects
+    )
+    assert body_union_object_savings > 0
+    print(
+        f"BERTRAND HJ BALANCED V1 {label} BODY INTERNING "
+        f"raw_body_union_objects={raw_body_union_objects} "
+        f"interned_body_union_objects={interned_body_union_objects} "
+        f"savings={body_union_object_savings}",
+        flush=True,
+    )
+
+    targets_by_id = {
+        node.node_id: node.target for node in interned_bundle.nodes
+    }
+    for node in interned_bundle.nodes:
+        body_target = node.target
+        for dependency in reversed(node.dependencies):
+            body_target = Imp(targets_by_id[dependency], body_target)
+        assert check((), node.body, body_target), (
+            f"interned balanced-v1 {label} body failed its exact "
+            f"dependency-curried kernel judgment at node {node.node_id} "
+            f"({blueprint.names[node.node_id]!r})"
+        )
+        assert not any(type(item) is DNE for item in _walk(node.body))
+
+    compilation = compile_layered_replay(
+        interned_bundle,
+        blueprint.targets[blueprint.root],
+        limits=DEFAULT_LAYERED_REPLAY_LIMITS,
+    )
+    assert type(compilation) is LayeredReplayCandidate
+    assert compilation.target == blueprint.targets[blueprint.root]
+    assert compilation.layers == blueprint.layers
+    assert len(compilation.package_formulas) == len(blueprint.layers)
+    assert (
+        compilation.package_formula_occurrences
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_package_formula_occurrences
+    )
+    assert (
+        compilation.maximum_package_formula_depth
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_package_formula_depth
+    )
+    assert (
+        compilation.proof_nodes
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_candidate_proof_occurrences
+    )
+    assert (
+        compilation.proof_objects
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_candidate_proof_objects
+    )
+    assert (
+        compilation.proof_depth
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_candidate_proof_depth
+    )
+    assert (
+        compilation.proof_annotation_occurrences
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_candidate_annotation_occurrences
+    )
+    assert (
+        compilation.proof_envelope_depth
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_candidate_envelope_depth
+    )
+    assert compilation.proof_nodes <= MAX_LIVE_PROOF_NODES
+    assert compilation.proof_depth <= MAX_LIVE_PROOF_DEPTH
+    assert compilation.proof_objects <= MAX_LIVE_PROOF_OBJECTS
+    assert not any(
+        type(item) is DNE for item in _walk(compilation.certificate)
+    )
+
+    proof_dag_sha256 = _proof_dag_sha256(compilation.certificate)
+    kernel_accepted = check(
+        (),
+        compilation.certificate,
+        compilation.target,
+    )
+    actual: dict[str, object] = {
+        "topology_sha256": blueprint.topology_sha256,
+        "balanced_v1_successor_names": BALANCED_V1_SUCCESSOR_NAMES,
+        "balanced_v1_successor_source_sha256": (
+            BALANCED_V1_SUCCESSOR_SOURCE_SHA256
+        ),
+        "balanced_v1_successor_script_sha256": (
+            BALANCED_V1_SUCCESSOR_SCRIPT_SHA256
+        ),
+        "balanced_v1_successor_logical_sha256": (
+            BALANCED_V1_SUCCESSOR_LOGICAL_SHA256
+        ),
+        "legacy_alpha_names": BALANCED_V1_LEGACY_ALPHA_NAMES,
+        "post_v7_replacement_names": (
+            BALANCED_V1_POST_V7_REPLACEMENT_NAMES
+        ),
+        "root_node_kind": blueprint.kinds[blueprint.root],
+        "candidate_pool_count": len(pool),
+        "unreachable_candidate_count": len(unreachable_candidates),
+        "unreachable_candidate_names_sha256": sha256(
+            "\0".join(sorted(unreachable_candidates)).encode()
+        ).hexdigest(),
+        "node_count": len(blueprint.names),
+        "stable_atomic_count": len(stable_names),
+        "candidate_body_count": len(candidate_names),
+        "dependency_edge_count": sum(map(len, blueprint.dependencies)),
+        "layer_sizes": tuple(map(len, blueprint.layers)),
+        "max_fan_in": max(map(len, blueprint.dependencies)),
+        "raw_body_union_objects": raw_body_union_objects,
+        "interned_body_union_objects": interned_body_union_objects,
+        "body_union_object_savings": body_union_object_savings,
+        "proof_nodes": compilation.proof_nodes,
+        "proof_depth": compilation.proof_depth,
+        "proof_objects": compilation.proof_objects,
+        "proof_edges": compilation.proof_edges,
+        "reused_objects": compilation.reused_objects,
+        "annotation_occurrences": (
+            compilation.proof_annotation_occurrences
+        ),
+        "envelope_depth": compilation.proof_envelope_depth,
+        "package_formula_occurrences": (
+            compilation.package_formula_occurrences
+        ),
+        "package_formula_depth": (
+            compilation.maximum_package_formula_depth
+        ),
+        "proof_dag_sha256": proof_dag_sha256,
+    }
+    if root_name == HEAVY_ENVELOPE_ROOT:
+        pow_exists_id = blueprint.names.index("pow_exists")
+        iterator_id = blueprint.names.index(HEAVY_ITERATOR_ROOT)
+        actual["pow_exists_node_kind"] = blueprint.kinds[pow_exists_id]
+        actual["iterator_node_kind"] = blueprint.kinds[iterator_id]
+
+    print(
+        f"BERTRAND HJ BALANCED V1 {label} LAYERED CLOSURE RECEIPT "
+        f"actual={actual!r} kernel_accepted={kernel_accepted}",
+        flush=True,
+    )
+    assert kernel_accepted
+    assert blueprint.topology_sha256 != historical["topology_sha256"]
+    assert (
+        actual["unreachable_candidate_names_sha256"]
+        != historical["unreachable_candidate_names_sha256"]
+    )
+    for key in BALANCED_V1_UNCHANGED_RECEIPT_KEYS:
+        assert actual[key] == historical[key]
+    if root_name == HEAVY_ENVELOPE_ROOT:
+        for key in (
+            "pow_exists_node_kind",
+            "iterator_node_kind",
+            "root_node_kind",
+        ):
+            assert actual[key] == historical[key]
+    return actual
 
 
 def test_hj_all_s_factory_is_frozen_expanded_and_isolated() -> None:
@@ -1222,6 +2104,130 @@ def test_hj_all_s_static_audit_manifests_are_frozen() -> None:
         assert old != new
         assert old in surfaces[name]
         assert surfaces[name].replace(old, new, 1) != surfaces[name]
+
+
+def test_hj_all_s_balanced_v1_successor_lineage_manifest_is_frozen() -> None:
+    """Check both successor DAGs without constructing any proof body."""
+
+    provider = _balanced_v1_successor_rows()
+    provider_by_name = {item.name: item for item in provider}
+    assert tuple(provider_by_name) == BALANCED_V1_SUCCESSOR_NAMES
+    assert sha256(
+        Path(balanced_v1_successor_provider.__file__).read_bytes()
+    ).hexdigest() == BALANCED_V1_SUCCESSOR_SOURCE_SHA256
+    assert (
+        _provider_script_sha256(provider)
+        == BALANCED_V1_SUCCESSOR_SCRIPT_SHA256
+    )
+    assert (
+        _provider_logical_sha256(provider)
+        == BALANCED_V1_SUCCESSOR_LOGICAL_SHA256
+    )
+
+    prior_by_name = {item.name: item for item in _prior_specs()}
+    old_replacements = {
+        item.name: item
+        for item in (*_prior_specs(), *_specs()[:5])
+        if item.name in BALANCED_V1_POST_V7_REPLACEMENT_NAMES
+    }
+    assert set(old_replacements) == set(
+        BALANCED_V1_POST_V7_REPLACEMENT_NAMES
+    )
+    cases = (
+        (
+            HEAVY_ITERATOR_ROOT,
+            _balanced_v1_iterator_blueprint(),
+            _balanced_v1_iterator_candidate_pool(),
+            EXPECTED_HEAVY_ITERATOR_LAYERED_AUDIT,
+            88,
+            35,
+        ),
+        (
+            HEAVY_ENVELOPE_ROOT,
+            _balanced_v1_envelope_blueprint(),
+            _balanced_v1_envelope_candidate_pool(),
+            EXPECTED_HEAVY_ENVELOPE_LAYERED_AUDIT,
+            89,
+            34,
+        ),
+    )
+    for (
+        root_name,
+        blueprint,
+        pool,
+        historical,
+        expected_pool_count,
+        expected_unreachable_count,
+    ) in cases:
+        assert isinstance(historical, dict)
+        candidates = {item.name: item for item in pool}
+        assert len(candidates) == len(pool) == expected_pool_count
+        assert {
+            item.name
+            for item in pool
+            if item.name in BALANCED_V1_SUCCESSOR_NAMES
+        } == set(BALANCED_V1_SUCCESSOR_NAMES)
+        for name in BALANCED_V1_SUCCESSOR_NAMES:
+            assert candidates[name] is provider_by_name[name]
+
+        stable_names = {
+            name
+            for name, kind in zip(
+                blueprint.names,
+                blueprint.kinds,
+                strict=True,
+            )
+            if kind == "stable_atomic"
+        }
+        candidate_names = set(blueprint.names) - stable_names
+        unreachable = set(candidates) - set(blueprint.names)
+        assert len(pool) == historical["candidate_pool_count"] + 4
+        assert len(unreachable) == expected_unreachable_count
+        assert (
+            len(unreachable)
+            == historical["unreachable_candidate_count"] + 4
+        )
+        assert len(blueprint.names) == historical["node_count"]
+        assert len(stable_names) == historical["stable_atomic_count"]
+        assert len(candidate_names) == historical["candidate_body_count"]
+        assert sum(map(len, blueprint.dependencies)) == historical[
+            "dependency_edge_count"
+        ]
+        assert tuple(map(len, blueprint.layers)) == historical["layer_sizes"]
+        assert max(map(len, blueprint.dependencies)) == historical[
+            "max_fan_in"
+        ]
+        assert blueprint.topology_sha256 != historical["topology_sha256"]
+        assert blueprint.names[blueprint.root] == root_name
+
+        reachable: set[int] = set()
+        pending = [blueprint.root]
+        while pending:
+            node_id = pending.pop()
+            if node_id in reachable:
+                continue
+            reachable.add(node_id)
+            pending.extend(blueprint.dependencies[node_id])
+        assert reachable == set(range(len(blueprint.names)))
+        assert set(BALANCED_V1_SUCCESSOR_NAMES) <= candidate_names
+        assert set(BALANCED_V1_LEGACY_ALPHA_NAMES) <= unreachable
+
+        for name in BALANCED_V1_LEGACY_ALPHA_NAMES:
+            legacy = prior_by_name[name]
+            entry = editions_v7.entry(
+                name,
+                edition=editions_v7.EditionName.ALPHA,
+            )
+            assert entry is not None
+            assert entry.spec == legacy
+            assert entry.membership is editions_v7.Membership.ALPHA_ONLY
+            assert entry.evidence is editions_v7.EvidenceStatus.BODY_CHECKED
+            assert not entry.checked_use
+            assert candidates[name] is legacy
+            assert name not in blueprint.names
+        for name in BALANCED_V1_POST_V7_REPLACEMENT_NAMES:
+            assert candidates[name] is provider_by_name[name]
+            assert all(item is not old_replacements[name] for item in pool)
 
 
 @pytest.mark.parametrize(
@@ -1815,6 +2821,44 @@ def test_hj_all_s_row_six_root_pruned_layered_empty_context_closure() -> None:
         f"kernel accepts it: {actual!r}"
     )
     assert actual == EXPECTED_HEAVY_ENVELOPE_LAYERED_AUDIT
+
+
+def test_hj_all_s_row_five_balanced_v1_root_pruned_layered_closure() -> None:
+    """Audit the explicit additive successor path for row five."""
+
+    historical = EXPECTED_HEAVY_ITERATOR_LAYERED_AUDIT
+    assert isinstance(historical, dict)
+    actual = _balanced_v1_layered_receipt(
+        blueprint=_balanced_v1_iterator_blueprint(),
+        pool=_balanced_v1_iterator_candidate_pool(),
+        root_name=HEAVY_ITERATOR_ROOT,
+        historical=historical,
+        label="ROW FIVE",
+    )
+    assert isinstance(EXPECTED_BALANCED_V1_ROW_FIVE_LAYERED_AUDIT, dict), (
+        "freeze the balanced-v1 row-five receipt only after every candidate "
+        f"body and the final certificate pass the kernel: {actual!r}"
+    )
+    assert actual == EXPECTED_BALANCED_V1_ROW_FIVE_LAYERED_AUDIT
+
+
+def test_hj_all_s_row_six_balanced_v1_root_pruned_layered_closure() -> None:
+    """Audit row six while rebuilding the balanced-v1 iterator body."""
+
+    historical = EXPECTED_HEAVY_ENVELOPE_LAYERED_AUDIT
+    assert isinstance(historical, dict)
+    actual = _balanced_v1_layered_receipt(
+        blueprint=_balanced_v1_envelope_blueprint(),
+        pool=_balanced_v1_envelope_candidate_pool(),
+        root_name=HEAVY_ENVELOPE_ROOT,
+        historical=historical,
+        label="ROW SIX",
+    )
+    assert isinstance(EXPECTED_BALANCED_V1_ROW_SIX_LAYERED_AUDIT, dict), (
+        "freeze the balanced-v1 row-six receipt only after every candidate "
+        f"body and the final certificate pass the kernel: {actual!r}"
+    )
+    assert actual == EXPECTED_BALANCED_V1_ROW_SIX_LAYERED_AUDIT
 
 
 @pytest.mark.skipif(
