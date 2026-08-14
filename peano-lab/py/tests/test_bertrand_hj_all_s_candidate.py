@@ -429,6 +429,62 @@ EXPECTED_HEAVY_ITERATOR_LAYERED_AUDIT: dict[str, object] | str = {
     ),
 }
 
+# Row six is a separate root-pruned closure.  Its graph must rebuild row five
+# as an ordinary dependency-curried candidate body; the frozen row-five
+# receipt above is diagnostic evidence only and supplies no theorem authority.
+HEAVY_ENVELOPE_ROOT = "bertrand_hj_envelope_thirty_two"
+PENDING_HEAVY_ENVELOPE_LAYERED_AUDIT = (
+    "PENDING_HEAVY_ENVELOPE_LAYERED_AUDIT"
+)
+EXPECTED_HEAVY_ENVELOPE_LAYERED_AUDIT: dict[str, object] | str = {
+    "topology_sha256": (
+        "2542f5e168ac64ceb2acbb70150c21a4fe232e767f236584e86c45a7c1db29e2"
+    ),
+    "balanced_seed_provider_names": (
+        "eight_times_eight_eq_sixty_four",
+        "eight_times_sixteen_eq_one_twenty_eight",
+        "pow_two_seed_bundle_from_total",
+    ),
+    "balanced_seed_provider_source_sha256": (
+        "76f290ee51d70fe62b14d81777488f5823050597249a9aa1beafcfdaad894eab"
+    ),
+    "balanced_seed_provider_script_sha256": (
+        "2b83f8e5ff38b9fd620570de270cbd79e928b933ac49e0db4a5ac042e69d267b"
+    ),
+    "balanced_seed_provider_logical_sha256": (
+        "2f16ad95b11aa3044770df1f3312bfefb3c0fd2aa32f1da2403641daa97f12ea"
+    ),
+    "pow_exists_node_kind": "stable_atomic",
+    "iterator_node_kind": "candidate_body",
+    "root_node_kind": "candidate_body",
+    "candidate_pool_count": 85,
+    "unreachable_candidate_count": 30,
+    "unreachable_candidate_names_sha256": (
+        "601bb8bf676787646371837dbdbe646828349e10e079eac782087e2b98327c4b"
+    ),
+    "node_count": 90,
+    "stable_atomic_count": 35,
+    "candidate_body_count": 55,
+    "dependency_edge_count": 298,
+    "layer_sizes": (36, 14, 13, 8, 5, 4, 7, 1, 1, 1),
+    "max_fan_in": 13,
+    "raw_body_union_objects": 101_490,
+    "interned_body_union_objects": 14_032,
+    "body_union_object_savings": 87_458,
+    "proof_nodes": 194_196,
+    "proof_depth": 179,
+    "proof_objects": 16_034,
+    "proof_edges": 21_647,
+    "reused_objects": 5_614,
+    "annotation_occurrences": 1_089_379,
+    "envelope_depth": 208,
+    "package_formula_occurrences": 33_555,
+    "package_formula_depth": 147,
+    "proof_dag_sha256": (
+        "882b6a9b31f212dacb05e6758ea9c2ec6b9cd25d0d5fa4eb1bdb4292cdfa7374"
+    ),
+}
+
 
 @dataclass(frozen=True, slots=True)
 class _HeavyIteratorBlueprint:
@@ -612,6 +668,20 @@ def _heavy_iterator_candidate_pool() -> tuple[TheoremSpec, ...]:
 
 
 @lru_cache(maxsize=1)
+def _heavy_envelope_candidate_pool() -> tuple[TheoremSpec, ...]:
+    """Extend the balanced heavy-only pool by the row-six root."""
+
+    iterator_pool = _heavy_iterator_candidate_pool()
+    envelope = _specs()[5]
+    assert envelope.name == HEAVY_ENVELOPE_ROOT
+    assert envelope.name not in {item.name for item in iterator_pool}
+    rows = (*iterator_pool, envelope)
+    assert rows[:-1] == iterator_pool
+    assert len({item.name for item in rows}) == len(rows)
+    return rows
+
+
+@lru_cache(maxsize=1)
 def _heavy_iterator_blueprint() -> _HeavyIteratorBlueprint:
     """Prune row five at its root and stop at the Stable boundary."""
 
@@ -711,6 +781,106 @@ def _heavy_iterator_blueprint() -> _HeavyIteratorBlueprint:
     )
 
 
+@lru_cache(maxsize=1)
+def _heavy_envelope_blueprint() -> _HeavyIteratorBlueprint:
+    """Prune row six at its root and stop only at Stable theorems."""
+
+    public = _specs_by_name()
+    candidates = {
+        item.name: item for item in _heavy_envelope_candidate_pool()
+    }
+    for name in set(public) & set(candidates):
+        assert public[name] == candidates[name]
+
+    stable_names: set[str] = set()
+    candidate_order: list[str] = []
+    marks: dict[str, int] = {}
+
+    def visit(name: str) -> None:
+        if name in public:
+            stable_names.add(name)
+            return
+        item = candidates.get(name)
+        if item is None:
+            raise AssertionError(f"unknown heavy envelope dependency {name!r}")
+        mark = marks.get(name, 0)
+        if mark == 1:
+            raise AssertionError(
+                f"cyclic heavy envelope dependency at {name!r}"
+            )
+        if mark == 2:
+            return
+        marks[name] = 1
+        for dependency in item.dependencies:
+            visit(dependency)
+        marks[name] = 2
+        candidate_order.append(name)
+
+    visit(HEAVY_ENVELOPE_ROOT)
+    names = tuple(sorted(stable_names)) + tuple(candidate_order)
+    positions = {name: index for index, name in enumerate(names)}
+    assert len(positions) == len(names)
+
+    kinds = tuple(
+        "stable_atomic" if name in stable_names else "candidate_body"
+        for name in names
+    )
+    selected_specs = tuple(
+        public[name] if name in stable_names else candidates[name]
+        for name in names
+    )
+    targets = tuple(_closed_formula(item.statement) for item in selected_specs)
+    dependencies = tuple(
+        ()
+        if kind == "stable_atomic"
+        else tuple(positions[name] for name in item.dependencies)
+        for kind, item in zip(kinds, selected_specs, strict=True)
+    )
+
+    depths: list[int] = []
+    for node_id, node_dependencies in enumerate(dependencies):
+        if any(dependency >= node_id for dependency in node_dependencies):
+            raise AssertionError(
+                "heavy envelope dependency did not precede its node"
+            )
+        depths.append(
+            0
+            if not node_dependencies
+            else 1 + max(depths[item] for item in node_dependencies)
+        )
+    layer_lists: list[list[int]] = [
+        [] for _ in range(1 + max(depths, default=0))
+    ]
+    for node_id, depth in enumerate(depths):
+        layer_lists[depth].append(node_id)
+    layers = tuple(tuple(layer) for layer in layer_lists)
+
+    rows = (
+        "\x1f".join(
+            (
+                str(node_id),
+                name,
+                kinds[node_id],
+                selected_specs[node_id].statement,
+                "\x1e".join(
+                    names[dependency]
+                    for dependency in dependencies[node_id]
+                ),
+            )
+        )
+        for node_id, name in enumerate(names)
+    )
+    return _HeavyIteratorBlueprint(
+        names=names,
+        targets=targets,
+        dependencies=dependencies,
+        layers=layers,
+        kinds=kinds,
+        root=positions[HEAVY_ENVELOPE_ROOT],
+        topology_sha256=sha256("\x1c".join(rows).encode()).hexdigest(),
+    )
+
+
 def _heavy_iterator_dependency_curried_body(
     item: TheoremSpec,
     targets_by_name: dict[str, Formula],
@@ -776,6 +946,55 @@ def _heavy_iterator_bundle() -> LayeredReplayBundle:
         )
         if kind == "candidate_body"
     )
+    return LayeredReplayBundle(tuple(nodes), blueprint.root)
+
+
+@lru_cache(maxsize=1)
+def _heavy_envelope_bundle() -> LayeredReplayBundle:
+    """Build row six with row five retained as a candidate body."""
+
+    blueprint = _heavy_envelope_blueprint()
+    public = _specs_by_name()
+    candidates = {
+        item.name: item for item in _heavy_envelope_candidate_pool()
+    }
+    targets_by_name = dict(
+        zip(blueprint.names, blueprint.targets, strict=True)
+    )
+    nodes: list[LayeredReplayNode] = []
+    built_candidates: list[str] = []
+    for node_id, name in enumerate(blueprint.names):
+        if blueprint.kinds[node_id] == "stable_atomic":
+            theorem = replay(name)
+            assert theorem.formula == blueprint.targets[node_id]
+            assert theorem.spec == public[name]
+            body = theorem.certificate
+        else:
+            built_candidates.append(name)
+            body = _heavy_iterator_dependency_curried_body(
+                candidates[name],
+                targets_by_name,
+            )
+        nodes.append(
+            LayeredReplayNode(
+                node_id=node_id,
+                target=blueprint.targets[node_id],
+                dependencies=blueprint.dependencies[node_id],
+                body=body,
+            )
+        )
+    expected_candidates = tuple(
+        name
+        for name, kind in zip(
+            blueprint.names,
+            blueprint.kinds,
+            strict=True,
+        )
+        if kind == "candidate_body"
+    )
+    assert tuple(built_candidates) == expected_candidates
+    assert HEAVY_ITERATOR_ROOT in built_candidates
+    assert HEAVY_ENVELOPE_ROOT == built_candidates[-1]
     return LayeredReplayBundle(tuple(nodes), blueprint.root)
 
 
@@ -1332,6 +1551,270 @@ def test_hj_all_s_row_five_root_pruned_layered_empty_context_closure() -> None:
         f"kernel accepts it: {actual!r}"
     )
     assert actual == EXPECTED_HEAVY_ITERATOR_LAYERED_AUDIT
+
+
+def test_hj_all_s_row_six_root_pruned_layered_empty_context_closure() -> None:
+    """Audit the final envelope without importing the row-five receipt."""
+
+    blueprint = _heavy_envelope_blueprint()
+    public = _specs_by_name()
+    iterator_pool = _heavy_iterator_candidate_pool()
+    pool = _heavy_envelope_candidate_pool()
+    provider = _heavy_iterator_balanced_seed_provider()
+    candidates = {item.name: item for item in pool}
+    stable_names = {
+        name
+        for name, kind in zip(
+            blueprint.names,
+            blueprint.kinds,
+            strict=True,
+        )
+        if kind == "stable_atomic"
+    }
+    candidate_names = set(blueprint.names) - stable_names
+    pool_names = set(candidates)
+    unreachable_candidates = pool_names - set(blueprint.names)
+
+    old_seed = next(
+        item
+        for item in _prior_specs()
+        if item.name == BALANCED_SEED_PROVIDER_NAMES[-1]
+    )
+    assert pool[:-1] == iterator_pool
+    assert pool[-1] == _specs()[5]
+    assert tuple(
+        item for item in pool if item.name in BALANCED_SEED_PROVIDER_NAMES
+    ) == provider
+    assert all(item is not old_seed for item in pool)
+    assert BALANCED_SEED_PROVIDER_NAMES[-1] not in public
+    assert stable_names <= set(public)
+    assert not (candidate_names & set(public))
+    assert candidate_names <= pool_names
+    assert set(BALANCED_SEED_PROVIDER_NAMES) <= candidate_names
+    assert blueprint.kinds == (
+        ("stable_atomic",) * len(stable_names)
+        + ("candidate_body",) * len(candidate_names)
+    )
+
+    assert blueprint.names[blueprint.root] == HEAVY_ENVELOPE_ROOT
+    assert blueprint.kinds[blueprint.root] == "candidate_body"
+    assert blueprint.targets[blueprint.root] == _closed_formula(
+        _specs()[5].statement
+    )
+    assert tuple(
+        blueprint.names[dependency]
+        for dependency in blueprint.dependencies[blueprint.root]
+    ) == EXPECTED_DEPENDENCIES[HEAVY_ENVELOPE_ROOT]
+
+    pow_exists_id = blueprint.names.index("pow_exists")
+    iterator_id = blueprint.names.index(HEAVY_ITERATOR_ROOT)
+    assert blueprint.kinds[pow_exists_id] == "stable_atomic"
+    assert blueprint.dependencies[pow_exists_id] == ()
+    assert blueprint.kinds[iterator_id] == "candidate_body"
+    assert tuple(
+        blueprint.names[dependency]
+        for dependency in blueprint.dependencies[iterator_id]
+    ) == EXPECTED_DEPENDENCIES[HEAVY_ITERATOR_ROOT]
+    assert iterator_id in blueprint.dependencies[blueprint.root]
+
+    assert blueprint.root in blueprint.layers[-1]
+    assert all(tuple(sorted(layer)) == layer for layer in blueprint.layers)
+    assert {
+        node_id for layer in blueprint.layers for node_id in layer
+    } == set(range(len(blueprint.names)))
+    assert all(
+        dependency < node_id
+        for node_id, dependencies in enumerate(blueprint.dependencies)
+        for dependency in dependencies
+    )
+    for node_id, name in enumerate(blueprint.names):
+        if blueprint.kinds[node_id] == "stable_atomic":
+            assert blueprint.dependencies[node_id] == ()
+        else:
+            assert tuple(
+                blueprint.names[dependency]
+                for dependency in blueprint.dependencies[node_id]
+            ) == candidates[name].dependencies
+
+    reachable: set[int] = set()
+    pending = [blueprint.root]
+    while pending:
+        node_id = pending.pop()
+        if node_id in reachable:
+            continue
+        reachable.add(node_id)
+        pending.extend(blueprint.dependencies[node_id])
+    assert reachable == set(range(len(blueprint.names)))
+    assert len(blueprint.names) <= DEFAULT_LAYERED_REPLAY_LIMITS.max_nodes
+    assert (
+        sum(map(len, blueprint.dependencies))
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_dependency_edges
+    )
+    assert (
+        max(map(len, blueprint.dependencies))
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_dependencies_per_node
+    )
+
+    raw_bundle = _heavy_envelope_bundle()
+    assert raw_bundle.nodes[pow_exists_id].dependencies == ()
+    assert raw_bundle.nodes[iterator_id].dependencies
+    interned_bundle = intern_layered_replay_bodies(
+        raw_bundle,
+        blueprint.targets[blueprint.root],
+        limits=DEFAULT_LAYERED_REPLAY_LIMITS,
+    )
+    assert type(interned_bundle) is LayeredReplayBundle
+    assert interned_bundle.root == raw_bundle.root
+    assert len(interned_bundle.nodes) == len(raw_bundle.nodes)
+    for raw_node, interned_node in zip(
+        raw_bundle.nodes,
+        interned_bundle.nodes,
+        strict=True,
+    ):
+        assert type(interned_node) is LayeredReplayNode
+        assert interned_node.node_id == raw_node.node_id
+        assert interned_node.target is raw_node.target
+        assert interned_node.dependencies is raw_node.dependencies
+        assert interned_node.body == raw_node.body
+
+    raw_body_union_objects = _proof_union_object_count(
+        tuple(node.body for node in raw_bundle.nodes)
+    )
+    interned_body_union_objects = _proof_union_object_count(
+        tuple(node.body for node in interned_bundle.nodes)
+    )
+    body_union_object_savings = (
+        raw_body_union_objects - interned_body_union_objects
+    )
+    assert body_union_object_savings > 0
+    print(
+        "BERTRAND HJ ROW SIX BODY INTERNING "
+        f"raw_body_union_objects={raw_body_union_objects} "
+        f"interned_body_union_objects={interned_body_union_objects} "
+        f"savings={body_union_object_savings}",
+        flush=True,
+    )
+
+    targets_by_id = {
+        node.node_id: node.target for node in interned_bundle.nodes
+    }
+    for node in interned_bundle.nodes:
+        body_target = node.target
+        for dependency in reversed(node.dependencies):
+            body_target = Imp(targets_by_id[dependency], body_target)
+        assert check((), node.body, body_target), (
+            "interned heavy envelope body failed its exact dependency-curried "
+            f"kernel judgment at node {node.node_id} "
+            f"({blueprint.names[node.node_id]!r})"
+        )
+
+    compilation = compile_layered_replay(
+        interned_bundle,
+        blueprint.targets[blueprint.root],
+        limits=DEFAULT_LAYERED_REPLAY_LIMITS,
+    )
+    assert type(compilation) is LayeredReplayCandidate
+    assert compilation.target == blueprint.targets[blueprint.root]
+    assert compilation.layers == blueprint.layers
+    assert len(compilation.package_formulas) == len(blueprint.layers)
+    assert (
+        compilation.package_formula_occurrences
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_package_formula_occurrences
+    )
+    assert (
+        compilation.maximum_package_formula_depth
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_package_formula_depth
+    )
+    assert (
+        compilation.proof_nodes
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_candidate_proof_occurrences
+    )
+    assert (
+        compilation.proof_objects
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_candidate_proof_objects
+    )
+    assert (
+        compilation.proof_depth
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_candidate_proof_depth
+    )
+    assert (
+        compilation.proof_annotation_occurrences
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_candidate_annotation_occurrences
+    )
+    assert (
+        compilation.proof_envelope_depth
+        <= DEFAULT_LAYERED_REPLAY_LIMITS.max_candidate_envelope_depth
+    )
+    assert compilation.proof_nodes <= MAX_LIVE_PROOF_NODES
+    assert compilation.proof_depth <= MAX_LIVE_PROOF_DEPTH
+    assert compilation.proof_objects <= MAX_LIVE_PROOF_OBJECTS
+    assert not any(
+        type(node) is DNE for node in _walk(compilation.certificate)
+    )
+
+    proof_dag_sha256 = _proof_dag_sha256(compilation.certificate)
+    provider_source_sha256 = sha256(
+        Path(balanced_seed_provider.__file__).read_bytes()
+    ).hexdigest()
+    assert provider_source_sha256 == BALANCED_SEED_PROVIDER_SOURCE_SHA256
+    provider_script_sha256 = _provider_script_sha256(provider)
+    provider_logical_sha256 = _provider_logical_sha256(provider)
+    kernel_accepted = check(
+        (),
+        compilation.certificate,
+        compilation.target,
+    )
+    actual: dict[str, object] = {
+        "topology_sha256": blueprint.topology_sha256,
+        "balanced_seed_provider_names": BALANCED_SEED_PROVIDER_NAMES,
+        "balanced_seed_provider_source_sha256": provider_source_sha256,
+        "balanced_seed_provider_script_sha256": provider_script_sha256,
+        "balanced_seed_provider_logical_sha256": provider_logical_sha256,
+        "pow_exists_node_kind": blueprint.kinds[pow_exists_id],
+        "iterator_node_kind": blueprint.kinds[iterator_id],
+        "root_node_kind": blueprint.kinds[blueprint.root],
+        "candidate_pool_count": len(pool),
+        "unreachable_candidate_count": len(unreachable_candidates),
+        "unreachable_candidate_names_sha256": sha256(
+            "\0".join(sorted(unreachable_candidates)).encode()
+        ).hexdigest(),
+        "node_count": len(blueprint.names),
+        "stable_atomic_count": len(stable_names),
+        "candidate_body_count": len(candidate_names),
+        "dependency_edge_count": sum(map(len, blueprint.dependencies)),
+        "layer_sizes": tuple(map(len, blueprint.layers)),
+        "max_fan_in": max(map(len, blueprint.dependencies)),
+        "raw_body_union_objects": raw_body_union_objects,
+        "interned_body_union_objects": interned_body_union_objects,
+        "body_union_object_savings": body_union_object_savings,
+        "proof_nodes": compilation.proof_nodes,
+        "proof_depth": compilation.proof_depth,
+        "proof_objects": compilation.proof_objects,
+        "proof_edges": compilation.proof_edges,
+        "reused_objects": compilation.reused_objects,
+        "annotation_occurrences": (
+            compilation.proof_annotation_occurrences
+        ),
+        "envelope_depth": compilation.proof_envelope_depth,
+        "package_formula_occurrences": (
+            compilation.package_formula_occurrences
+        ),
+        "package_formula_depth": (
+            compilation.maximum_package_formula_depth
+        ),
+        "proof_dag_sha256": proof_dag_sha256,
+    }
+    print(
+        "BERTRAND HJ ROW SIX LAYERED CLOSURE RECEIPT "
+        f"actual={actual!r} kernel_accepted={kernel_accepted}",
+        flush=True,
+    )
+    assert kernel_accepted
+    assert isinstance(EXPECTED_HEAVY_ENVELOPE_LAYERED_AUDIT, dict), (
+        "freeze the isolated row-six LayeredReplay receipt only after the "
+        f"kernel accepts it: {actual!r}"
+    )
+    assert actual == EXPECTED_HEAVY_ENVELOPE_LAYERED_AUDIT
 
 
 @pytest.mark.skipif(
