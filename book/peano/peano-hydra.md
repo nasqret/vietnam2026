@@ -1884,19 +1884,16 @@ authenticates implementation bytes before imports, bypasses the eager Hydra
 initializer, and runs only in a sanitized fresh `python -B -P -s -S` worker.
 It writes nothing by default and an explicit result path is create-only.
 
-Seventy-eight synthetic/adversarial tests passed in 2.24 seconds. They did not
-execute the six real baselines or 44 real omission attempts on this Mac or on
-WMI. There is no A2.3b result, audit sidecar, route receipt, document root,
-theorem-record root, execution receipt, or publication artifact. Thus the
-source protocol is frozen while vector completeness, necessity, independent
-audit or optimizer evidence, minimality, best-known status, publication and
-its union, public-graph application, A2, authority, and training/retrieval/
-evaluation eligibility all remain false.
+Seventy-eight synthetic/adversarial tests passed in 2.24 seconds. At this
+source-freeze checkpoint they had not executed the six real baselines or 44
+real omission attempts. The later first WMI attempt remained `unknown` and is
+described below; it did not create an accepted A2.3b result or publication
+artifact.
 
 ### The A2.3b runner preserves the difference between checking and observing
 
-The next source-only tranche makes the experiment executable without
-pretending that it has run. A producer-independent clean-Git program binds the
+The next source-only tranche made the experiment executable before its first
+run. A producer-independent clean-Git program binds the
 four frozen A2.3b sources and its own committed stage-zero blob. It emits the
 small source state expected by the producer with `git_verified=false`, then a
 separate receipt binds the commit, tree, blobs, live bytes, and Git tool. This
@@ -1914,8 +1911,8 @@ verified rejections—or even 22 observations from independent algorithms.
 `negative_observations_independently_verified` and
 `route_rejections_independently_verified` therefore stay false.
 
-If executed, the WMI worker will use x86-64 CPython 3.12.12 and three fresh
-isolated processes: producer seeds 0 and 1 must emit identical bytes, then a
+The WMI worker uses x86-64 CPython 3.12.12 and three fresh isolated processes:
+producer seeds 0 and 1 must emit identical bytes, then a
 seed-2 verifier checks the six baselines and the structural boundary. Only the
 successful execution receipt may say that the 44 producer records are bound
 to actual executions; that still is not independent negative replay. The
@@ -1927,28 +1924,65 @@ The submitter defaults to `--test-only`; real submission requires the literal
 confirmation `PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. One clean-commit test-only
 invocation exposed an empty optional-SSH-array bug and stopped locally before
 SSH. Six fake-SSH/no-network cases now cover unset, explicit-empty, and exact
-`-J jump.example` routing for both wrappers. There was no successful real
-test-only transport, SSH contact, snapshot deposit, `sbatch` call, real
-submission, local real audit, or WMI job. Source-state generator/test
-identities are
+`-J jump.example` routing for both wrappers. At that checkpoint there had been
+no successful transport or WMI job. Source-state generator/test identities
+are
 `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
 `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917`.
 Verifier module/CLI/test identities are
-`080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` /
-`e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` /
-`9ba762a895ec278e03bc9655fd83238f75ec7639c3d65186f135c8593ee006a4`.
+`b5f5cf39ea7b12d3ed52ee176ed733b28fa2e9224640e89dac77df87b14dfab1` /
+`ed9e234f5af04e5878e6f4fd23aace512c66c0bc249fc33dd19c1fcbcdb908c2` /
+`43ade850e88d5e7f2ce92ece60857892b79beb2e4b38b0d3a709558352b4d04b`.
 Runner/sbatch/submit/collect/test identities are
-`ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` /
+`2332115e988aada771258f861b986486bc40dc05865935ff3a699453acfe96f1` /
 `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
 `9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` /
 `5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` /
-`822724aa824e830f4f5f700c182025252ac20599b00786315252a4199b0bd364`.
+`d93b3a12f34829bc56f0729a099dc694f9d42dbe7c36c7ffe92844075cb961ef`.
 
-The focused source-state, verifier, and WMI gates passed 44 tests in 12.80
-seconds (10, 12, and 22 respectively), and an independent threat audit passed.
-Those tests establish only infrastructure contracts. There is still no A2.3b
-result or runtime receipt/root, and every vector-completeness, independence,
-best-known, publication, A2, authority, and eligibility flag remains false.
+The focused source-state, verifier, and WMI gates pass 45 tests in 15.27
+seconds (10, 13, and 22 respectively), and an independent threat audit passed.
+Those tests establish only infrastructure contracts.
+
+### An `unknown` WMI run is not a negative theorem result
+
+Job 220218 ran the two producer processes to completion. Each wrote the same
+3,160,729 bytes, with SHA-256
+`f93e410f64425b31090c933fd7cb7b92bee8f071c3152c79fa55f88001d9841a`
+and candidate document root
+`f26234fa38634dd154afd504f3d41c3b0529ef7a7d2e8930569ebbf70b6723a6`.
+This is strong reproducibility evidence for the producer bytes. It is not an
+independent rerun of any negative tactic observation.
+
+The verifier then rejected the first layered baseline receipt for
+`odd_add_odd`. The discrepancy was in the verifier's expected provenance:
+the old implementation transported A2.3a modular source rows, while A2.3b
+freshly reconstructs them. The failed seed-2 run emitted no independent-
+verifier receipt. The execution protocol consequently emitted
+`status=unknown` and `classification=independent-verifier-process-unknown`,
+with root
+`cd1872d348b201ba1259fa116be43d66555576e30d3dbc9811fa04c85bdda876`.
+Terminal collection also remained `unknown`, at root
+`a610f3feaa3b1d5afa6cbb64be34ea743246f02eb56bc1cc3a2b36ad4dedd681`.
+Those roots preserve what happened without granting a scientific negative
+conclusion about the dependency vectors.
+
+The corrected verifier independently reconstructs each modular body source
+from the pinned A2.1 receipt route, A2.2 rebuild row where present, and replay
+identity. It then checks the stable body identity separately. A local
+postmortem against the preserved candidate yielded byte-identical verifier
+receipts under two hash seeds: 16,925 bytes, SHA-256
+`707942bb93d5ad9d26ddf3bbd6733e5b5d403508146a70981c2b507b5a01aad7`,
+root
+`efe9643d7b3b99f40b9bef6042285efeaa9e5f03d145a09a580a615cd15efa4a`.
+This local regression diagnostic is not the missing WMI verifier receipt and
+has no retrospective execution or result authority.
+
+The refrozen module/CLI/test sizes are 109,448 / 18,653 / 21,277 bytes; the
+runner/WMI-test sizes are 107,619 / 31,983 bytes. A fresh WMI rerun is pending.
+Until it clears the corrected receipt-last path, every vector-completeness,
+independence, best-known, publication, A2, authority, and eligibility flag
+remains false.
 
 ## What “matched compute” means
 

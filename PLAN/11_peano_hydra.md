@@ -636,9 +636,9 @@ public-graph application, review, lineage, freeze readiness, A2 completion,
 proof/admission/publication authority, and training/retrieval/evaluation
 eligibility all remain false.
 
-On 2026-08-14, **A2.3b external execution infrastructure (no
-submission/result)** froze the boundary needed to run that exact protocol
-without widening its evidence. A producer-independent clean-Git generator
+On 2026-08-14, **A2.3b external execution infrastructure** froze the boundary
+needed to run that exact protocol without widening its evidence. A producer-
+independent clean-Git generator
 binds the four frozen producer sources plus its own committed stage-zero blob,
 emits the required eight-field source state with `git_verified=false`, and
 publishes a separate domain-separated Git receipt and evidence envelope. It
@@ -674,21 +674,44 @@ Source-state generator/test SHA-256s are
 `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
 `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917`.
 Verifier module/CLI/test SHA-256s are
-`080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` /
-`e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` /
-`9ba762a895ec278e03bc9655fd83238f75ec7639c3d65186f135c8593ee006a4`.
+`b5f5cf39ea7b12d3ed52ee176ed733b28fa2e9224640e89dac77df87b14dfab1` /
+`ed9e234f5af04e5878e6f4fd23aace512c66c0bc249fc33dd19c1fcbcdb908c2` /
+`43ade850e88d5e7f2ce92ece60857892b79beb2e4b38b0d3a709558352b4d04b`.
 WMI runner/sbatch/submit/collect/test SHA-256s are
-`ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` /
+`2332115e988aada771258f861b986486bc40dc05865935ff3a699453acfe96f1` /
 `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
 `9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` /
 `5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` /
-`822724aa824e830f4f5f700c182025252ac20599b00786315252a4199b0bd364`.
-The three focused files passed 44 tests in 12.80 seconds (10 source-state, 12
+`d93b3a12f34829bc56f0729a099dc694f9d42dbe7c36c7ffe92844075cb961ef`.
+The three focused files pass 45 tests in 15.27 seconds (10 source-state, 13
 verifier, 22 WMI protocol), and the independent execution-boundary threat
-audit reported PASS. These are infrastructure tests only. No runtime source,
-Git, infrastructure, execution, verification, or collection receipt/root
-exists yet; all vector, publication, A2, authority, and eligibility flags
-remain false.
+audit reported PASS. These are infrastructure tests only.
+
+The first real attempt, WMI job 220218, is deliberately **not** the unchecked
+execution milestone below. Its seed-0 and seed-1 producers both exited 0 and
+emitted byte-identical 3,160,729-byte candidates at SHA-256
+`f93e410f64425b31090c933fd7cb7b92bee8f071c3152c79fa55f88001d9841a`.
+The independent verifier then exited 1 because its layered-baseline
+expectation reused retained A2.3a modular provenance instead of independently
+reconstructing the fresh A2.3b provenance. The failed seed-2 run emitted no
+independent-verifier receipt. Execution and terminal collection therefore
+remained `unknown`, at roots
+`cd1872d348b201ba1259fa116be43d66555576e30d3dbc9811fa04c85bdda876`
+and
+`a610f3feaa3b1d5afa6cbb64be34ea743246f02eb56bc1cc3a2b36ad4dedd681`.
+No route rejection, dependency necessity, or other scientific negative
+conclusion follows from that failed verification boundary.
+
+The refrozen verifier reconstructs the exact A2.1/A2.2 receipt routes and
+replay provenance. A local, two-hash-seed postmortem against the preserved job
+candidate produced an identical passing 16,925-byte diagnostic receipt at
+SHA-256
+`707942bb93d5ad9d26ddf3bbd6733e5b5d403508146a70981c2b507b5a01aad7`
+and root
+`efe9643d7b3b99f40b9bef6042285efeaa9e5f03d145a09a580a615cd15efa4a`.
+That local postmortem diagnostic is not the missing WMI verifier receipt and
+has no result/execution authority. A clean fresh WMI rerun remains pending,
+and all vector, publication, A2, authority, and eligibility flags remain false.
 
 ### H1.2 Build lineage before rows
 
@@ -999,21 +1022,27 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       semantics, controlled-worker/source identities, and a no-default-write
       CLI. This checkbox records source and synthetic adversarial tests only;
       no real audit result or artifact exists.
-- [x] **A2.3b external execution infrastructure (no submission/result):**
+- [x] **A2.3b external execution infrastructure:**
       freeze the producer-independent clean-Git source-state/Git-receipt
       generator, separately loaded six-baseline kernel verifier,
       content-addressed dual-producer WMI runner, guarded submitter, terminal
       collector, and their no-network adversarial contracts. This records
-      executable transport readiness only: one test-only invocation stopped
-      locally at a wrapper bug before SSH, and no successful test-only
-      transport, SSH, snapshot deposit, Slurm job, real audit, result, or
-      receipt was produced.
+      executable transport readiness only. The later first real attempt is
+      tracked separately because it terminated `unknown`, not as a result.
+- [x] **A2.3b job 220218 unknown and verifier rerun boundary refrozen:** retain
+      the exact fact that both producer bytes matched, preserve the verifier
+      provenance mismatch and unknown execution/collection roots, correct the
+      independently reconstructed layered provenance expectation, and pin the
+      corrected module/CLI in the runner. This grants no scientific negative
+      conclusion or result authority.
 - [ ] Execute the fixed pilot's readable-recipe and proposed layered-
       construction direct dependency-vector audits through the frozen dual-
       producer path. Independently kernel-check the six baselines and verify
       the structural receipts, while retaining negative rows only as producer
       execution observations—not independently replayed rejections—and keep
-      the direct vectors separate from their transitive closures.
+      the direct vectors separate from their transitive closures. Job 220218
+      does not satisfy this item; a fresh rerun of the corrected boundary is
+      pending.
 - [ ] Define and independently audit any future true optimized-construction
       direct vector; the A2.3a layered package is not a dependency-selection
       optimizer.
@@ -1399,26 +1428,27 @@ and benchmark work precede GPU training.
       review/freeze, and eligibility flag remains false. Its exact retained-
       result gate passed 4 tests in 3.40 seconds (source SHA-256
       `28b251f9ab75bea…`).
-- [x] A2.3b froze the next bounded source protocol without executing it. It
+- [x] A2.3b froze the next bounded source protocol before executing it. It
       fixes roots 256/376/379, two separately domain-labeled construction
       routes, 22 ordered direct edges per route, and 44 reverse-order
       single-omission attempts. The schema semantic/artifact identities begin
       `6782197c…` / `c4af0d2f…`; its 44-file implementation-source root begins
       `4260928c…`; and the producer/CLI/test identities begin `3f2c9df0…` /
       `29f56547…` / `6c3a0490…`. Seventy-eight synthetic tests passed in 2.24
-      seconds. No real baseline/omission campaign, result, sidecar, receipt,
-      root, publication union, graph change, or authority follows; all vector-
-      audit/completeness, independence, best-known, A2, and eligibility flags
-      remain false.
-- [x] A2.3b external execution infrastructure is now frozen without a WMI
-      submission or result. The independent verifier kernel-checks all six
+      seconds. That source-only checkpoint granted no result, publication
+      union, graph change, or authority; the later job 220218 remained unknown
+      at independent verification. All vector-audit/completeness,
+      independence, best-known, A2, and eligibility flags remain false.
+- [x] A2.3b external execution infrastructure is frozen. The independent
+      verifier kernel-checks all six
       full-vector baselines and recomputes structure, while labeling the 44
       producer route records as 22 shared compiler observations that it does
-      not independently replay. Dual-producer/seed-2-verifier WMI execution,
-      receipt-last collection, and clean-Git provenance are ready but unused.
-      The 10 source-state, 12 verifier, and 22 WMI tests passed together: 44
-      in 12.80 seconds. No runtime receipt/root or vector/A2/authority claim
-      follows.
+      not independently replay. Job 220218 produced byte-identical producer
+      candidates but stopped at a verifier provenance mismatch, so its
+      execution/collection receipts are `unknown` and imply no negative
+      scientific result. The corrected rerun boundary passes 10 source-state,
+      13 verifier, and 22 WMI tests: 45 in 15.27 seconds. A fresh rerun remains
+      pending; no vector/A2/authority claim follows.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1430,9 +1460,10 @@ and benchmark work precede GPU training.
       H1.1b3 retains page source without claiming deployment; A2.1 adds only a
       readable-recipe dependency diagnostic; A2.2 adds only three checked
       candidate construction rebuilds; A2.3a retains only the bounded
-      fixed-set comparison with layered closures; and A2.3b freezes only the
-      unexecuted three-root/two-route/44-attempt vector-audit source protocol
-      and its unused external execution infrastructure.
+      fixed-set comparison with layered closures; and A2.3b freezes the three-
+      root/two-route/44-attempt vector-audit protocol. Its first attempt was
+      unknown at independent verification, and its corrected external
+      execution boundary is pending a fresh rerun.
       The immediate A2 work is to execute the bounded vector audit,
       independently verify its six baselines and structural receipts, bind
       (without independently replaying) its negative producer observations,

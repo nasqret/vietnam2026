@@ -141,6 +141,15 @@ EXPECTED_ATTEMPT_COUNT = 44
 EXPECTED_UNIQUE_SHARED_OBSERVATION_COUNT = 22
 EXPECTED_BASELINE_ARTIFACT_COUNT = 6
 RETAINED_PUBLIC_GRAPH_EDGES = 1_038
+_STABLE_BODY_RECEIPT_FIELDS = (
+    "certificate_representation",
+    "certificate_sha256",
+    "dependency_count",
+    "kernel_accepted",
+    "metrics.proof_depth",
+    "metrics.proof_nodes",
+    "target_formula_sha256",
+)
 
 GLOBAL_FALSE_FIELDS = (
     "a2_complete",
@@ -1590,13 +1599,236 @@ def _expected_readable_diagnostics(
     }
 
 
+def _accepted_a21_attempt(
+    audit_row: Mapping[str, object], *, name: str
+) -> dict[str, object] | None:
+    """Select the sole retained A2.1 accepted omission, when one exists."""
+
+    recipe = audit_row.get("recipe_audit")
+    attempts = None if type(recipe) is not dict else recipe.get("attempts")
+    if type(attempts) is not list:
+        raise LibraryPilotDependencyVectorAuditVerificationError(
+            f"fixed A2.1 attempt list for {name!r} is malformed"
+        )
+    accepted = [
+        row
+        for row in attempts
+        if type(row) is dict and row.get("outcome") == "kernel-accepted"
+    ]
+    if not accepted:
+        return None
+    if (
+        len(accepted) != 1
+        or type(accepted[0].get("positive_receipt")) is not dict
+    ):
+        raise LibraryPilotDependencyVectorAuditVerificationError(
+            f"fixed A2.1 accepted omission for {name!r} is malformed"
+        )
+    return accepted[0]
+
+
+def _expected_modular_body_receipt(
+    name: str,
+    *,
+    audit_row: Mapping[str, object],
+    rebuild_row: Mapping[str, object] | None,
+) -> tuple[dict[str, object], dict[str, object]]:
+    """Independently recover the pinned A2.1/A2.2 body-receipt route."""
+
+    accepted_attempt = _accepted_a21_attempt(audit_row, name=name)
+    readable_container = audit_row.get("readable")
+    recipe = audit_row.get("recipe_audit")
+    readable = (
+        None
+        if type(readable_container) is not dict
+        else readable_container.get("proof")
+    )
+    initial = None if type(recipe) is not dict else recipe.get(
+        "positive_receipt"
+    )
+    if (
+        type(readable) is not dict
+        or type(initial) is not dict
+        or readable != initial
+    ):
+        raise LibraryPilotDependencyVectorAuditVerificationError(
+            f"fixed A2.1 initial readable receipt for {name!r} differs"
+        )
+    initial_sha = _require_sha256(
+        f"fixed A2.1 initial receipt for {name!r}",
+        initial.get("receipt_sha256"),
+    )
+    readable_sha = _require_sha256(
+        f"fixed A2.1 readable receipt for {name!r}",
+        readable.get("receipt_sha256"),
+    )
+    if rebuild_row is None:
+        if (
+            accepted_attempt is not None
+            or type(recipe) is not dict
+            or tuple(recipe.get("initial_dependencies", ()))
+            != tuple(audit_row.get("declared_dependencies", ()))
+            or tuple(recipe.get("candidate_dependencies", ()))
+            != tuple(audit_row.get("declared_dependencies", ()))
+        ):
+            raise LibraryPilotDependencyVectorAuditVerificationError(
+                f"fixed A2.1 no-omission route for {name!r} differs"
+            )
+        return initial, {
+            "a2_1_initial_readable_receipt_sha256": readable_sha,
+            "a2_1_recipe_audit_positive_receipt_sha256": initial_sha,
+            "receipt_route": "no-accepted-omission-recipe-audit-fallback",
+        }
+
+    body = rebuild_row.get("body_receipt")
+    accepted = (
+        None
+        if accepted_attempt is None
+        else accepted_attempt.get("positive_receipt")
+    )
+    candidate_dependencies = tuple(
+        rebuild_row.get("candidate_direct_dependencies", ())
+    )
+    retained_dependencies = tuple(
+        rebuild_row.get("retained_direct_dependencies", ())
+    )
+    spine = rebuild_row.get("direct_cut_spine")
+    omitted = None if type(spine) is not dict else spine.get(
+        "omitted_direct_dependency"
+    )
+    if (
+        type(body) is not dict
+        or type(accepted) is not dict
+        or body != accepted
+        or tuple(audit_row.get("declared_dependencies", ()))
+        != retained_dependencies
+        or tuple(accepted_attempt.get("before_dependencies", ()))
+        != retained_dependencies
+        or tuple(accepted_attempt.get("after_dependencies", ()))
+        != candidate_dependencies
+        or accepted_attempt.get("omitted_dependency") != omitted
+        or tuple(
+            dependency
+            for dependency in retained_dependencies
+            if dependency != omitted
+        )
+        != candidate_dependencies
+    ):
+        raise LibraryPilotDependencyVectorAuditVerificationError(
+            f"fixed A2.1/A2.2 accepted body route for {name!r} differs"
+        )
+    return body, {
+        "accepted_after_dependencies": list(candidate_dependencies),
+        "accepted_omitted_dependency": omitted,
+        "a2_1_initial_readable_receipt_sha256": readable_sha,
+        "a2_1_last_accepted_receipt_sha256": _require_sha256(
+            f"fixed A2.1 accepted receipt for {name!r}",
+            accepted.get("receipt_sha256"),
+        ),
+        "a2_2_body_receipt_sha256": _require_sha256(
+            f"fixed A2.2 body receipt for {name!r}",
+            body.get("receipt_sha256"),
+        ),
+        "receipt_route": "a2.2-and-last-accepted-omission",
+    }
+
+
+def _expected_modular_body_source(
+    name: str,
+    *,
+    audit_row: Mapping[str, object],
+    rebuild_row: Mapping[str, object] | None,
+    replay_row: Mapping[str, object],
+) -> dict[str, object]:
+    """Rebuild one fresh layered provenance row without producer code."""
+
+    receipt, receipt_source = _expected_modular_body_receipt(
+        name, audit_row=audit_row, rebuild_row=rebuild_row
+    )
+    if rebuild_row is None:
+        artifact = replay_row.get("artifact")
+        dependencies = tuple(replay_row.get("declared_dependencies", ()))
+        if type(artifact) is not dict:
+            raise LibraryPilotDependencyVectorAuditVerificationError(
+                f"fixed replay artifact for {name!r} is malformed"
+            )
+        artifact_sha256 = artifact.get("sha256")
+        proof_term_sha256 = replay_row.get("proof_term_sha256")
+        kind = "retained-replay"
+    else:
+        artifact = rebuild_row.get("rebuilt_certificate")
+        dependencies = tuple(
+            rebuild_row.get("candidate_direct_dependencies", ())
+        )
+        if type(artifact) is not dict:
+            raise LibraryPilotDependencyVectorAuditVerificationError(
+                f"fixed A2.2 artifact for {name!r} is malformed"
+            )
+        artifact_sha256 = artifact.get("artifact_sha256")
+        proof_term_sha256 = artifact.get("proof_term_sha256")
+        kind = "a2.2-direct-cut-rebuild"
+    if (
+        not all(
+            type(dependency) is str and dependency
+            for dependency in dependencies
+        )
+        or len(set(dependencies)) != len(dependencies)
+        or replay_row.get("name") != name
+        or audit_row.get("name") != name
+        or type(replay_row.get("index")) is not int
+    ):
+        raise LibraryPilotDependencyVectorAuditVerificationError(
+            f"fixed modular provenance identity for {name!r} is malformed"
+        )
+    source = {
+        **receipt_source,
+        "a2_1_record_sha256": _require_sha256(
+            f"fixed A2.1 record for {name!r}", audit_row.get("record_sha256")
+        ),
+        "artifact_sha256": _require_sha256(
+            f"fixed modular artifact for {name!r}", artifact_sha256
+        ),
+        "body_certificate_sha256": _require_sha256(
+            f"fixed modular body for {name!r}",
+            receipt.get("certificate_sha256"),
+        ),
+        "dependencies": list(dependencies),
+        "formula_sha256": _require_sha256(
+            f"fixed replay formula for {name!r}",
+            replay_row.get("formula_sha256"),
+        ),
+        "index": replay_row["index"],
+        "kind": kind,
+        "name": name,
+        "proof_term_sha256": _require_sha256(
+            f"fixed modular proof for {name!r}", proof_term_sha256
+        ),
+        "identity_metrics_comparable": False,
+        "source_identity_metrics_transportable": False,
+        "stable_receipt_fields_compared": list(_STABLE_BODY_RECEIPT_FIELDS),
+    }
+    if rebuild_row is not None:
+        if rebuild_row.get("name") != name:
+            raise LibraryPilotDependencyVectorAuditVerificationError(
+                f"fixed A2.2 modular identity for {name!r} differs"
+            )
+        source["a2_2_record_sha256"] = _require_sha256(
+            f"fixed A2.2 record for {name!r}",
+            rebuild_row.get("record_sha256"),
+        )
+    return source
+
+
 def _expected_layered_diagnostics(
     *,
     name: str,
     dependencies: tuple[str, ...],
     closure: tuple[str, ...],
     root_body_receipt: Mapping[str, object],
+    a21_rows: Mapping[str, dict[str, object]],
+    a22_rows: Mapping[str, dict[str, object]],
     a23_row: Mapping[str, object],
+    replay_rows: Mapping[str, dict[str, object]],
 ) -> dict[str, object]:
     layered = next(
         (
@@ -1618,21 +1850,53 @@ def _expected_layered_diagnostics(
         or len(retained_sources) != len(node_names)
         or node_names != (*closure, name)
         or not retained_sources
+        or not all(type(source) is dict for source in retained_sources)
         or retained_sources[-1].get("name") != name
     ):
         raise LibraryPilotDependencyVectorAuditVerificationError(
             f"fixed A2.3a body-source transport for {name!r} differs"
         )
+    fresh_sources: list[dict[str, object]] = []
+    for node_name in node_names[:-1]:
+        audit_row = a21_rows.get(node_name)
+        replay_row = replay_rows.get(node_name)
+        rebuild_row = a22_rows.get(node_name)
+        if (
+            type(audit_row) is not dict
+            or type(replay_row) is not dict
+            or (rebuild_row is not None and type(rebuild_row) is not dict)
+        ):
+            raise LibraryPilotDependencyVectorAuditVerificationError(
+                f"fixed fresh modular source for {node_name!r} is missing"
+            )
+        fresh_sources.append(
+            _expected_modular_body_source(
+                node_name,
+                audit_row=audit_row,
+                rebuild_row=rebuild_row,
+                replay_row=replay_row,
+            )
+        )
+    root_replay_row = replay_rows.get(name)
+    if (
+        type(root_replay_row) is not dict
+        or root_replay_row.get("index") != a23_row.get("index")
+        or root_replay_row.get("formula_sha256")
+        != layered.get("formula_sha256")
+    ):
+        raise LibraryPilotDependencyVectorAuditVerificationError(
+            f"fixed root replay join for {name!r} differs"
+        )
     root_source = {
         "body_certificate_sha256": root_body_receipt["certificate_sha256"],
         "dependencies": list(dependencies),
-        "formula_sha256": layered["formula_sha256"],
-        "index": a23_row["index"],
+        "formula_sha256": root_replay_row["formula_sha256"],
+        "index": root_replay_row["index"],
         "kind": "fresh-root-candidate-body",
         "name": name,
         "root_body_receipt": deepcopy(dict(root_body_receipt)),
     }
-    fresh_sources = [*deepcopy(retained_sources[:-1]), root_source]
+    fresh_sources.append(root_source)
     identities = [
         {
             "body_certificate_sha256": source["body_certificate_sha256"],
@@ -2339,7 +2603,10 @@ def verify_pilot_dependency_vector_audit(
                 dependencies=dependencies,
                 closure=layered_closure,
                 root_body_receipt=root_body_receipt,
+                a21_rows=a21_rows,
+                a22_rows=a22_rows,
                 a23_row=a23_row,
+                replay_rows=replay_rows,
             ),
         }
         route_rows = theorem.get("routes")

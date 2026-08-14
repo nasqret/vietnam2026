@@ -252,6 +252,109 @@ def test_frozen_sources_inputs_and_six_baseline_artifacts_kernel_check() -> None
     assert accepted == [True] * 6
 
 
+def test_unknown_job_220218_mismatch_diagnostic_goldens_reconstruct() -> None:
+    """Regress mismatch diagnostics; grant no result/execution authority."""
+
+    goldens = {
+        "odd_add_odd": {
+            "baseline": (
+                "f5f47017f83000f11e9d172809bef8a24a8129788a5846834d87dea3503f5861"
+            ),
+            "identity": (
+                "2b94fa7bfc83bbc35831a6c7e93d3847731130aa3cc6aaf4a13d904e672dcd64"
+            ),
+            "provenance": (
+                "17a2a8f785a2d8bd53e8f0126b20fa6121589d2ae2129d8f1dd952becce7fb79"
+            ),
+            "source_count": 6,
+        },
+        "finite_bounded_injective_surjective": {
+            "baseline": (
+                "1a26e5387c603a5486d2a5997a1f00a502d7998820fc0ea75a455d5267d58f78"
+            ),
+            "identity": (
+                "cbd44b126bdee88f9129676a7592bed8b37a4c25ead091ea049faf2bb9c129a7"
+            ),
+            "provenance": (
+                "b6ff38ab7e5262acefdf7a2aa69c0a38d7828c53edb2268831c0ab8642f6a750"
+            ),
+            "source_count": 120,
+        },
+        "beta_product_swap_last_invariant": {
+            "baseline": (
+                "09baf29e9dd471d30d23854aed3e0337fb0d82dbb73e6c9aec1c84507eff281a"
+            ),
+            "identity": (
+                "2ba58aca941891764257b2ff86175c00f8a5cf546e0448143c52e1fa0cc85501"
+            ),
+            "provenance": (
+                "1daa8ea8d13a1fb2af2e988455dc7a3a466ba5e65e18e30f9f59cd1060bc8fd6"
+            ),
+            "source_count": 32,
+        },
+    }
+    fixed = verifier._load_fixed_inputs(ROOT)
+    layered_vectors = {
+        name: tuple(row["candidate_direct_dependencies"])
+        for name, row in fixed["a22_rows"].items()
+    }
+    for index, name in verifier.EXPECTED_THEOREMS:
+        dependencies = verifier.EXPECTED_DIRECT[name]
+        closure = verifier._closure(
+            name,
+            dependencies,
+            replay_rows=fixed["replay_rows"],
+            fixed_vectors=layered_vectors,
+        )
+        diagnostics = verifier._expected_layered_diagnostics(
+            name=name,
+            dependencies=dependencies,
+            closure=closure,
+            root_body_receipt=verifier._expected_root_body_receipt(
+                fixed["a22_rows"][name], fixed["replay_rows"][name]
+            ),
+            a21_rows=fixed["a21_rows"],
+            a22_rows=fixed["a22_rows"],
+            a23_row=fixed["a23_rows"][name],
+            replay_rows=fixed["replay_rows"],
+        )
+        observation = verifier._baseline_artifact_observations(
+            name=name,
+            a22_row=fixed["a22_rows"][name],
+            a23_row=fixed["a23_rows"][name],
+            replay_row=fixed["replay_rows"][name],
+        )[verifier.LAYERED_ROUTE]
+        proof = verifier._proof_receipt_from_observation(observation)
+        surface = verifier._surface(
+            dependencies,
+            closure,
+            basis=(
+                "proposed-layered-root-input-graph-not-final-cut-spine"
+            ),
+        )
+        baseline_preimage = {
+            "diagnostics": diagnostics,
+            "format": verifier.BASELINE_RECEIPT_PREIMAGE_FORMAT,
+            "index": index,
+            "name": name,
+            "proof": proof,
+            "route": verifier.LAYERED_ROUTE,
+            "surface": surface,
+            "v": 1,
+        }
+        assert {
+            "baseline": verifier._sha256_json(baseline_preimage),
+            "identity": diagnostics["modular_body_identity_root_sha256"],
+            "provenance": diagnostics[
+                "modular_body_provenance_root_sha256"
+            ],
+            "source_count": len(diagnostics["fresh_body_sources"]),
+        } == goldens[name]
+        first_source = diagnostics["fresh_body_sources"][0]
+        assert "a2_1_record_sha256" in first_source
+        assert "formula_sha256" in first_source
+
+
 def test_producer_source_state_binds_exact_four_files_and_false_git() -> None:
     state = _producer_source_state()
     assert verifier._validate_producer_source_state(state, root=ROOT) == state

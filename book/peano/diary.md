@@ -4379,16 +4379,15 @@ The CLI authenticates bytes before imports, avoids the eager Hydra initializer,
 requires a sanitized `python -B -P -s -S` worker and explicit source state,
 writes nothing by default, and creates rather than overwrites an output.
 
-Seventy-eight synthetic and adversarial tests passed in 2.24 seconds. We did
-not execute the real baselines or 44 omissions on this Mac or on WMI, and no
-result, sidecar, route receipt, root, or publication artifact exists. The
-protocol is frozen, but vector completeness, necessity, independence,
-minimality, best-known status, publication and its union, graph application,
-A2, authority, and every eligibility flag remain false.
+Seventy-eight synthetic and adversarial tests passed in 2.24 seconds. At this
+source-freeze point we had not executed the real baselines or 44 omissions.
+The later first WMI attempt remained `unknown`; it did not create an accepted
+result, publication artifact, or authority.
 
 ## 2026-08-14 — An independent verifier must name what it did not replay
 
-The execution boundary for A2.3b is now frozen, but it has not been crossed.
+At this infrastructure checkpoint the execution boundary for A2.3b was
+frozen but had not yet been crossed.
 The clean-Git generator knows only the four producer files and its own
 committed stage-zero blob. It creates the producer's eight-field source state
 with `git_verified=false`, then emits a separate Git receipt for commit, tree,
@@ -4420,18 +4419,18 @@ The source-state generator/test hashes are
 `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
 `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917`.
 The verifier module/CLI/test hashes are
-`080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` /
-`e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` /
-`9ba762a895ec278e03bc9655fd83238f75ec7639c3d65186f135c8593ee006a4`.
+`b5f5cf39ea7b12d3ed52ee176ed733b28fa2e9224640e89dac77df87b14dfab1` /
+`ed9e234f5af04e5878e6f4fd23aace512c66c0bc249fc33dd19c1fcbcdb908c2` /
+`43ade850e88d5e7f2ce92ece60857892b79beb2e4b38b0d3a709558352b4d04b`.
 Runner/sbatch/submit/collect/test hashes are
-`ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` /
+`2332115e988aada771258f861b986486bc40dc05865935ff3a699453acfe96f1` /
 `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
 `9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` /
 `5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` /
-`822724aa824e830f4f5f700c182025252ac20599b00786315252a4199b0bd364`.
+`d93b3a12f34829bc56f0729a099dc694f9d42dbe7c36c7ffe92844075cb961ef`.
 
-Ten source-state, twelve verifier, and twenty-two WMI protocol cases passed:
-44 in 12.80 seconds; the WMI file alone passed in 4.71 seconds. The existing CI
+Ten source-state, thirteen verifier, and twenty-two WMI protocol cases pass:
+45 in 15.27 seconds; the WMI file alone passes in 5.25 seconds. The existing CI
 weights remain 6,000, 3,500, and 1,000 ms. An independent threat audit
 reported PASS.
 
@@ -4440,8 +4439,47 @@ test-only invocation exposed Bash 3.2's `set -u` handling of an unset optional
 array and failed locally before command execution or SSH. The fixed wrappers
 now pass six dynamic fake-SSH/
 no-network cases for unset, explicit-empty, and exact `-J jump.example`
-routing on both submit and collect. No successful real test-only transport,
-network call, deposit, real submission, local real audit, WMI job, or result
-artifact occurred. There are no runtime source, Git, infrastructure,
-verification, execution, or collection roots to quote yet, and every vector,
-publication, A2, authority, and eligibility flag remains false.
+routing on both submit and collect. No real WMI job had occurred at that
+checkpoint.
+
+## 2026-08-14 — The first A2.3b run taught us to preserve `unknown`
+
+Job 220218 did real work without earning a result. Both producers completed,
+and their 3,160,729-byte candidate documents were exactly identical at
+SHA-256
+`f93e410f64425b31090c933fd7cb7b92bee8f071c3152c79fa55f88001d9841a`.
+The candidate's own document root was
+`f26234fa38634dd154afd504f3d41c3b0529ef7a7d2e8930569ebbf70b6723a6`.
+That is useful execution provenance, but it does not independently verify a
+single compiler rejection.
+
+The seed-2 verifier failed quickly on the layered baseline receipt for
+`odd_add_odd`. The failure was in our independent expectation: it had copied
+the old A2.3a modular provenance even though A2.3b freshly reconstructs those
+source rows. The failed seed-2 run emitted no independent-verifier receipt.
+The execution receipt correctly became
+`independent-verifier-process-unknown`, at root
+`cd1872d348b201ba1259fa116be43d66555576e30d3dbc9811fa04c85bdda876`.
+The scheduler saw a failed wrapper exit while the accepted execution evidence
+said `unknown`, so collection remained
+`scheduler-execution-evidence-conflict-or-unknown`, at root
+`a610f3feaa3b1d5afa6cbb64be34ea743246f02eb56bc1cc3a2b36ad4dedd681`.
+We do not turn that mismatch into a dependency-necessity finding. Job 220218
+has no scientific negative conclusion.
+
+The repair reconstructs every closure node from pinned A2.1 audit receipts,
+A2.2 rebuild rows, and replay identities, then compares the stable modular
+body identity separately from provenance. The preserved candidate generated
+the same passing postmortem receipt under two local hash seeds: 16,925 bytes,
+SHA-256
+`707942bb93d5ad9d26ddf3bbd6733e5b5d403508146a70981c2b507b5a01aad7`,
+root
+`efe9643d7b3b99f40b9bef6042285efeaa9e5f03d145a09a580a615cd15efa4a`.
+It is a local mismatch diagnostic, not the missing WMI verifier receipt, and
+it grants no retrospective execution or result authority.
+
+The corrected verifier module, CLI, and test are 109,448, 18,653, and 21,277
+bytes at `b5f5cf39…`, `ed9e234f…`, and `43ade850…`. The repinned runner and WMI
+test are 107,619 and 31,983 bytes at `2332115e…` and `d93b3a12…`. A clean WMI
+rerun is still pending. Until it passes the full receipt-last boundary, every
+vector, publication, A2, authority, and eligibility flag remains false.

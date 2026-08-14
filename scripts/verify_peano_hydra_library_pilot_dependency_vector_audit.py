@@ -77,9 +77,9 @@ VERIFIER_PATH = (
     / "library_pilot_dependency_vector_audit_verifier.py"
 )
 VERIFIER_MODULE_NAME = "_peano_hydra_a23b_independent_verifier"
-VERIFIER_SOURCE_BYTES = 99_551
+VERIFIER_SOURCE_BYTES = 109_448
 VERIFIER_SOURCE_SHA256 = (
-    "080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720"
+    "b5f5cf39ea7b12d3ed52ee176ed733b28fa2e9224640e89dac77df87b14dfab1"
 )
 _KERNEL_IMPORT_SOURCES = (
     (

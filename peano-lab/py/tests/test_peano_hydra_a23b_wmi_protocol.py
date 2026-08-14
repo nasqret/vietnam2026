@@ -405,18 +405,18 @@ def test_protocol_constants_are_exactly_three_six_forty_four_and_twenty_two() ->
         "independent-a2.3b-pilot-dependency-vector-audit-verification-v1"
     )
     verifier_module_raw = (ROOT / WMI.VERIFIER_MODULE_PATH).read_bytes()
-    assert len(verifier_module_raw) == WMI.VERIFIER_MODULE_BYTES == 99_551
+    assert len(verifier_module_raw) == WMI.VERIFIER_MODULE_BYTES == 109_448
     assert (
         hashlib.sha256(verifier_module_raw).hexdigest()
         == WMI.VERIFIER_MODULE_SHA256
-        == "080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720"
+        == "b5f5cf39ea7b12d3ed52ee176ed733b28fa2e9224640e89dac77df87b14dfab1"
     )
     verifier_cli_raw = (ROOT / WMI.VERIFIER_CLI_PATH).read_bytes()
-    assert len(verifier_cli_raw) == WMI.VERIFIER_CLI_BYTES == 18_652
+    assert len(verifier_cli_raw) == WMI.VERIFIER_CLI_BYTES == 18_653
     assert (
         hashlib.sha256(verifier_cli_raw).hexdigest()
         == WMI.VERIFIER_CLI_SHA256
-        == "e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360"
+        == "ed9e234f5af04e5878e6f4fd23aace512c66c0bc249fc33dd19c1fcbcdb908c2"
     )
     assert {
         "bounded_three_root_vector_audit_complete",

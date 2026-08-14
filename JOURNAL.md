@@ -4369,11 +4369,9 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   default, and publishes only create-only output. The focused gate passed 78
   synthetic/adversarial tests in 2.24 seconds; its conservative deterministic
   CI weight is 3,000 ms.
-- No real baseline/44-attempt audit ran locally or on WMI. No result sidecar,
-  receipt, document/theorem root, execution evidence, publication union, or
-  public-graph change exists. Vector completeness/necessity, independence,
-  minimality, `optimized_best_known`, publication, A2, authority, and all
-  training/retrieval/evaluation eligibility flags remain false.
+- At this source-freeze checkpoint no real baseline/44-attempt audit had run
+  locally or on WMI. The later first WMI attempt is recorded below as
+  `unknown`; it did not produce an accepted result or change any authority.
 
 ## 2026-08-14 — A2.3b external execution infrastructure frozen without execution
 
@@ -4402,17 +4400,17 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
   `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917`.
   Verifier module/CLI/test SHA-256s are
-  `080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` /
-  `e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` /
-  `9ba762a895ec278e03bc9655fd83238f75ec7639c3d65186f135c8593ee006a4`.
+  `b5f5cf39ea7b12d3ed52ee176ed733b28fa2e9224640e89dac77df87b14dfab1` /
+  `ed9e234f5af04e5878e6f4fd23aace512c66c0bc249fc33dd19c1fcbcdb908c2` /
+  `43ade850e88d5e7f2ce92ece60857892b79beb2e4b38b0d3a709558352b4d04b`.
   WMI runner/sbatch/submit/collect/test SHA-256s are
-  `ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` /
+  `2332115e988aada771258f861b986486bc40dc05865935ff3a699453acfe96f1` /
   `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
   `9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` /
   `5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` /
-  `822724aa824e830f4f5f700c182025252ac20599b00786315252a4199b0bd364`.
-- The focused files passed 44 tests in 12.80 seconds: 10 source-state, 12
-  verifier, and 22 WMI protocol; the WMI file alone passed in 4.71 seconds.
+  `d93b3a12f34829bc56f0729a099dc694f9d42dbe7c36c7ffe92844075cb961ef`.
+- The refrozen focused files pass 45 tests in 15.27 seconds: 10 source-state,
+  13 verifier, and 22 WMI protocol; the WMI file alone passes in 5.25 seconds.
   The CI weights remain 6,000 / 3,500 / 1,000 ms, and the
   102-entry eight-shard modeled loads are 540,500 / 540,500 / 540,800 /
   540,500 / 540,500 / 540,500 / 540,500 / 540,500 ms. The independent threat
@@ -4420,11 +4418,47 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - One clean-commit test-only invocation found an empty optional-array routing
   bug and failed locally before SSH. The refrozen Bash 3.2 wrappers pass six
   dynamic fake-SSH/no-network cases covering unset, explicit-empty, and exact
-  `-J jump.example` routing for submit and collect. No successful real test-
-  only transport, network/SSH call, snapshot deposit, real submission,
-  `sbatch`, local or WMI producer campaign, result, verification, execution,
-  collection, or runtime receipt/root exists. Six independently checked
-  baselines do not independently replay 44 producer records or their 22
-  shared compiler observations. Every dependency-vector, publication, A2,
-  authority, review/freeze, and training/retrieval/evaluation flag remains
-  false.
+  `-J jump.example` routing for submit and collect. At this infrastructure
+  freeze checkpoint no successful transport or WMI job existed. Six
+  independently checked baselines do not independently replay 44 producer
+  records or their 22 shared compiler observations.
+
+## 2026-08-14 — A2.3b job 220218 stayed unknown; rerun boundary refrozen
+
+- The first real WMI attempt crossed the transport boundary but not the
+  scientific result gate. Producer seeds 0 and 1 both exited successfully and
+  emitted byte-identical 3,160,729-byte candidates at SHA-256
+  `f93e410f64425b31090c933fd7cb7b92bee8f071c3152c79fa55f88001d9841a`
+  and document root
+  `f26234fa38634dd154afd504f3d41c3b0529ef7a7d2e8930569ebbf70b6723a6`.
+  That byte identity is an execution fact, not independent validation of the
+  44 route rejections or 22 shared compiler observations.
+- The independent verifier exited 1 on the first layered baseline receipt for
+  `odd_add_odd`. Its original expectation transported retained A2.3a modular
+  provenance where the A2.3b producer had freshly reconstructed provenance.
+  The failed seed-2 run emitted no independent-verifier receipt.
+  The runner therefore published an `unknown` execution receipt with
+  classification `independent-verifier-process-unknown`; its root is
+  `cd1872d348b201ba1259fa116be43d66555576e30d3dbc9811fa04c85bdda876`.
+  Terminal collection also stayed `unknown`, with classification
+  `scheduler-execution-evidence-conflict-or-unknown` and root
+  `a610f3feaa3b1d5afa6cbb64be34ea743246f02eb56bc1cc3a2b36ad4dedd681`.
+  Thus job 220218 supports no scientific negative conclusion and no vector,
+  publication, A2, authority, or eligibility claim.
+- The corrected verifier now independently rebuilds each closure node's exact
+  A2.1/A2.2 body-receipt route and replay provenance, then separately checks
+  stable modular-body identity parity. Against the preserved job candidate,
+  two local hash-seed runs produced the same passing 16,925-byte diagnostic
+  receipt: SHA-256
+  `707942bb93d5ad9d26ddf3bbd6733e5b5d403508146a70981c2b507b5a01aad7`,
+  root
+  `efe9643d7b3b99f40b9bef6042285efeaa9e5f03d145a09a580a615cd15efa4a`.
+  This local postmortem diagnostic is not the missing WMI verifier receipt and
+  grants no result or execution authority; it only validates the corrected
+  expectation against preserved bytes.
+- The rerun pins are verifier module/CLI/test 109,448 / 18,653 / 21,277 bytes
+  at `b5f5cf39…` / `ed9e234f…` / `43ade850…`; runner/WMI-test 107,619 /
+  31,983 bytes at `2332115e…` / `d93b3a12…`. The 45 focused tests and all 32
+  CI-sharder tests pass together as 77 tests in 15.27 seconds. A fresh WMI
+  rerun is pending; no prior candidate or postmortem verifier receipt is being
+  promoted to an A2.3b result.

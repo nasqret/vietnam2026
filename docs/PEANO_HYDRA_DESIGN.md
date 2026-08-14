@@ -913,12 +913,12 @@ state before imports, direct-loads the producer without executing
 `python -B -P -s -S` worker, writes nothing by default, and uses create-only
 publication for an explicit destination.
 
-The focused gate passed 78 synthetic/adversarial tests in 2.24 seconds. It did
-not run any of the six real baselines or 44 real omissions locally or on WMI,
-and no audit candidate, sidecar, receipt, document root, theorem-record root,
-or publication artifact exists. A per-root ordered union in a future result
-would remain a bounded local diagnostic, not a verified publication union or
-public-graph update.
+The focused gate passed 78 synthetic/adversarial tests in 2.24 seconds. At
+this source-freeze checkpoint it had not run any of the six real baselines or
+44 real omissions. The later first WMI attempt remained `unknown`, as recorded
+below, and produced no accepted audit result or publication artifact. A per-
+root ordered union in a future result would remain a bounded local diagnostic,
+not a verified publication union or public-graph update.
 
 Consequently only `bounded_three_root_protocol_frozen` is true;
 `bounded_three_root_vector_audit_complete` remains false. The protocol does
@@ -928,7 +928,7 @@ union completion, public-graph application, review, lineage, freeze readiness,
 A2 completion, proof/admission/publication authority, or training/retrieval/
 evaluation eligibility.
 
-#### A2.3b external execution infrastructure (no submission/result)
+#### A2.3b external execution infrastructure and unknown first attempt
 
 The source-to-cluster boundary is frozen separately from the audit result. A
 producer-independent generator authenticates the exact four-file A2.3b
@@ -989,23 +989,44 @@ The frozen infrastructure identities are:
 | --- | ---: | --- |
 | `scripts/build_peano_hydra_a23b_producer_source_state.py` | 38,902 | `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` |
 | `peano-lab/py/tests/test_peano_hydra_a23b_producer_source_state.py` | 11,630 | `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917` |
-| `training/peano_hydra/library_pilot_dependency_vector_audit_verifier.py` | 99,551 | `080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` |
-| `scripts/verify_peano_hydra_library_pilot_dependency_vector_audit.py` | 18,652 | `e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` |
-| `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py` | 17,393 | `9ba762a895ec278e03bc9655fd83238f75ec7639c3d65186f135c8593ee006a4` |
-| `scripts/run_peano_hydra_a23b_wmi.py` | 107,618 | `ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` |
+| `training/peano_hydra/library_pilot_dependency_vector_audit_verifier.py` | 109,448 | `b5f5cf39ea7b12d3ed52ee176ed733b28fa2e9224640e89dac77df87b14dfab1` |
+| `scripts/verify_peano_hydra_library_pilot_dependency_vector_audit.py` | 18,653 | `ed9e234f5af04e5878e6f4fd23aace512c66c0bc249fc33dd19c1fcbcdb908c2` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py` | 21,277 | `43ade850e88d5e7f2ce92ece60857892b79beb2e4b38b0d3a709558352b4d04b` |
+| `scripts/run_peano_hydra_a23b_wmi.py` | 107,619 | `2332115e988aada771258f861b986486bc40dc05865935ff3a699453acfe96f1` |
 | `slurm/peano_wmi_hydra_a23b_vector_audit.sbatch` | 5,032 | `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` |
 | `scripts/submit_wmi_hydra_a23b_vector_audit.sh` | 14,826 | `9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` |
 | `scripts/collect_wmi_hydra_a23b_vector_audit.sh` | 5,638 | `5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` |
-| `peano-lab/py/tests/test_peano_hydra_a23b_wmi_protocol.py` | 31,982 | `822724aa824e830f4f5f700c182025252ac20599b00786315252a4199b0bd364` |
+| `peano-lab/py/tests/test_peano_hydra_a23b_wmi_protocol.py` | 31,983 | `d93b3a12f34829bc56f0729a099dc694f9d42dbe7c36c7ffe92844075cb961ef` |
 
-The 10 source-state, 12 verifier, and 22 WMI protocol tests passed together:
-44 in 12.80 seconds. An independent execution-boundary threat audit reported
-PASS. Apart from the failed-before-SSH local test-only invocation, there was
-no network call, snapshot deposit, remote `sbatch`, real submission, six-
-baseline/44-attempt producer build, WMI job, result, verification receipt,
-execution receipt, collection receipt, or runtime content root. All
-dependency-vector, publication, A2, authority, and eligibility flags remain
-false.
+The 10 source-state, 13 verifier, and 22 WMI protocol tests pass together: 45
+in 15.27 seconds. An independent execution-boundary threat audit reported
+PASS.
+
+Job 220218 was the first real use of this boundary, and it terminated
+`unknown`. Producer seeds 0 and 1 both exited successfully and emitted the
+same 3,160,729-byte candidate at SHA-256
+`f93e410f64425b31090c933fd7cb7b92bee8f071c3152c79fa55f88001d9841a`.
+The verifier exited 1 when its expected layered receipt transported retained
+A2.3a modular provenance instead of reconstructing the fresh A2.3b provenance.
+The failed seed-2 run emitted no independent-verifier receipt. The execution
+receipt root is
+`cd1872d348b201ba1259fa116be43d66555576e30d3dbc9811fa04c85bdda876`;
+the terminal collection root is
+`a610f3feaa3b1d5afa6cbb64be34ea743246f02eb56bc1cc3a2b36ad4dedd681`.
+Both receipts are `unknown`. They authenticate an infrastructure mismatch but
+establish no scientific negative conclusion about any route observation.
+
+The correction derives each modular provenance row from pinned A2.1 audit,
+A2.2 rebuild, and replay data, while separately enforcing stable body identity
+parity. A two-seed local postmortem against the preserved candidate generated
+the same passing 16,925-byte diagnostic verifier receipt: SHA-256
+`707942bb93d5ad9d26ddf3bbd6733e5b5d403508146a70981c2b507b5a01aad7`,
+root
+`efe9643d7b3b99f40b9bef6042285efeaa9e5f03d145a09a580a615cd15efa4a`.
+That local postmortem is a regression oracle only, not the missing WMI
+verifier receipt; it has no result or execution authority. A fresh WMI rerun
+is pending. All dependency-vector, publication, A2, authority, and eligibility
+flags remain false.
 
 ### 2.4 Sealed-test law
 

@@ -293,7 +293,7 @@ sources, and deployed pages are unchanged.
 
 ## A2.3b dependency-vector audit source protocol (no artifact)
 
-Frozen on 2026-08-14, A2.3b defines an unexecuted, candidate-only audit for
+Frozen on 2026-08-14, A2.3b defines a source-frozen, candidate-only audit for
 exactly roots 256, 376, and 379. Their ordered direct vectors have 3, 14, and 5
 edges. Each edge receives one reverse-order omission attempt through
 `readable-direct-closure` and one through
@@ -328,11 +328,12 @@ The frozen identities are:
   `6c3a0490b86ac2ae7aef3206c480fa14f6e15994106153788d79633fc3025d06`
   (94,869 bytes).
 
-The focused gate passed 78 synthetic/adversarial tests in 2.24 seconds. No
-real baseline or omission campaign ran locally or on WMI, and this directory
-contains no A2.3b result sidecar, route receipt, result root, execution receipt,
-or publication artifact. The future per-root ordered union is bounded local
-diagnostic data only and cannot update the public graph.
+The focused gate passed 78 synthetic/adversarial tests in 2.24 seconds. At
+this source-freeze checkpoint no real baseline or omission campaign had run.
+The later job 220218 remained `unknown`, as recorded below, and this directory
+contains no accepted A2.3b result or publication artifact. The future per-root
+ordered union is bounded local diagnostic data only and cannot update the
+public graph.
 
 Only the source protocol is frozen. Vector completeness or necessity,
 independent audit/optimizer evidence, minimality, `optimized_best_known`,
@@ -340,7 +341,7 @@ publication or publication-union completion, public-graph application, A2,
 proof/admission/publication authority, and training/retrieval/evaluation
 eligibility remain false.
 
-## A2.3b external execution infrastructure (no artifact/result)
+## A2.3b external execution infrastructure and unknown first attempt
 
 The source-only execution boundary is now frozen. A producer-independent
 generator binds the four A2.3b producer files and its own committed stage-zero
@@ -360,7 +361,7 @@ receipt could set only the last field true after two real byte-identical
 producer processes; it would not turn the negative records into independent
 replays.
 
-The reviewed but unexecuted WMI path uses x86-64 CPython 3.12.12, isolated
+The reviewed WMI path uses x86-64 CPython 3.12.12, isolated
 `python -B -P -s -S` processes, producer seeds 0/1, a seed-2 verifier, one
 `cpu_idle` CPU, 4,096 MiB, and 15 minutes. Child output is bounded and the
 execution receipt is create-only and last. Resource, timeout, scheduler,
@@ -374,26 +375,47 @@ The exact frozen source identities are:
 | --- | ---: | --- |
 | `../../scripts/build_peano_hydra_a23b_producer_source_state.py` | 38,902 | `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` |
 | `../../peano-lab/py/tests/test_peano_hydra_a23b_producer_source_state.py` | 11,630 | `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917` |
-| `../../training/peano_hydra/library_pilot_dependency_vector_audit_verifier.py` | 99,551 | `080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` |
-| `../../scripts/verify_peano_hydra_library_pilot_dependency_vector_audit.py` | 18,652 | `e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` |
-| `../../peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py` | 17,393 | `9ba762a895ec278e03bc9655fd83238f75ec7639c3d65186f135c8593ee006a4` |
-| `../../scripts/run_peano_hydra_a23b_wmi.py` | 107,618 | `ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` |
+| `../../training/peano_hydra/library_pilot_dependency_vector_audit_verifier.py` | 109,448 | `b5f5cf39ea7b12d3ed52ee176ed733b28fa2e9224640e89dac77df87b14dfab1` |
+| `../../scripts/verify_peano_hydra_library_pilot_dependency_vector_audit.py` | 18,653 | `ed9e234f5af04e5878e6f4fd23aace512c66c0bc249fc33dd19c1fcbcdb908c2` |
+| `../../peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py` | 21,277 | `43ade850e88d5e7f2ce92ece60857892b79beb2e4b38b0d3a709558352b4d04b` |
+| `../../scripts/run_peano_hydra_a23b_wmi.py` | 107,619 | `2332115e988aada771258f861b986486bc40dc05865935ff3a699453acfe96f1` |
 | `../../slurm/peano_wmi_hydra_a23b_vector_audit.sbatch` | 5,032 | `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` |
 | `../../scripts/submit_wmi_hydra_a23b_vector_audit.sh` | 14,826 | `9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` |
 | `../../scripts/collect_wmi_hydra_a23b_vector_audit.sh` | 5,638 | `5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` |
-| `../../peano-lab/py/tests/test_peano_hydra_a23b_wmi_protocol.py` | 31,982 | `822724aa824e830f4f5f700c182025252ac20599b00786315252a4199b0bd364` |
+| `../../peano-lab/py/tests/test_peano_hydra_a23b_wmi_protocol.py` | 31,983 | `d93b3a12f34829bc56f0729a099dc694f9d42dbe7c36c7ffe92844075cb961ef` |
 
-The source-state, verifier, and WMI files passed 44 focused no-network tests
-in 12.80 seconds (10 / 12 / 22), and an independent threat audit reported
-PASS. One clean-commit test-only invocation failed locally before SSH on the
-old empty-array route; the refrozen wrappers pass six fake-SSH/no-network
-routing cases. No successful real test-only transport, SSH connection,
-snapshot deposit, `sbatch`, real submission, six-baseline/44-attempt build,
-result, verification receipt, execution receipt, collection receipt, or
-runtime root exists. This directory therefore still contains no A2.3b
-artifact. Vector completeness/necessity, independent negative replay,
-minimality, `optimized_best_known`, publication or its union, public-graph
-application, A2, authority, and all eligibility flags remain false.
+The source-state, verifier, and WMI files pass 45 focused no-network tests in
+15.27 seconds (10 / 13 / 22), and an independent threat audit reported PASS.
+One clean-commit test-only invocation failed locally before SSH on the old
+empty-array route; the refrozen wrappers pass six fake-SSH/no-network routing
+cases.
+
+WMI job 220218 later ran both producer processes successfully. Their outputs
+are byte-identical, 3,160,729 bytes, and have SHA-256
+`f93e410f64425b31090c933fd7cb7b92bee8f071c3152c79fa55f88001d9841a`.
+The independent verifier exited 1 on a layered provenance-receipt mismatch,
+and the failed seed-2 run emitted no independent-verifier receipt. Execution
+and collection stayed `unknown`. Their roots are respectively
+`cd1872d348b201ba1259fa116be43d66555576e30d3dbc9811fa04c85bdda876`
+and
+`a610f3feaa3b1d5afa6cbb64be34ea743246f02eb56bc1cc3a2b36ad4dedd681`.
+Those receipts preserve an infrastructure failure, not a scientific negative
+finding about any of the 44 route records.
+
+The verifier fix reconstructs fresh A2.1/A2.2/replay provenance rather than
+transporting retained A2.3a provenance. A two-seed local postmortem against
+the preserved candidate produced the same passing 16,925-byte diagnostic
+receipt, SHA-256
+`707942bb93d5ad9d26ddf3bbd6733e5b5d403508146a70981c2b507b5a01aad7`,
+root
+`efe9643d7b3b99f40b9bef6042285efeaa9e5f03d145a09a580a615cd15efa4a`.
+This local postmortem diagnostic is not the missing WMI verifier receipt and
+has no result/execution authority. A fresh WMI rerun is pending, and no job
+220218 candidate or postmortem diagnostic is promoted into this artifact tree.
+This directory therefore still contains no accepted A2.3b result artifact.
+Vector completeness/necessity, independent negative replay, minimality,
+`optimized_best_known`, publication or its union, public-graph application,
+A2, authority, and all eligibility flags remain false.
 
 ## H1.1b3 selected candidate page source
 
