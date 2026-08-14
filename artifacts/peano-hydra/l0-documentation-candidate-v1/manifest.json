@@ -1,0 +1,189 @@
+{
+  "aggregate": {
+    "declared_dependency_edges": 1038,
+    "definition_count": 40,
+    "theorem_count": 384
+  },
+  "evaluation_eligible": false,
+  "files": [
+    {
+      "bytes": 29324,
+      "name": "schema.json",
+      "sha256": "a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c"
+    },
+    {
+      "bytes": 6334632,
+      "name": "explicit.json",
+      "sha256": "f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936"
+    },
+    {
+      "bytes": 11190180,
+      "name": "defined.json",
+      "sha256": "164b34dd0cad555baf2164ee3da114fb60a447bd667112481e7225097dd17cea"
+    },
+    {
+      "bytes": 3729,
+      "name": "isolation-receipt.json",
+      "sha256": "8c8a6882d0d5a82552942fc0c3efe5a900244a9cad02c32b24cabe3d86a0eee6"
+    }
+  ],
+  "format": "peano-hydra-library-documentation-manifest",
+  "freeze_ready": false,
+  "id": "authoring-l0-documentation-candidate-v1",
+  "logic_mode": "intuitionistic",
+  "retrieval_eligible": false,
+  "root_preimage": {
+    "format": "peano-hydra-library-documentation-manifest-root-preimage",
+    "payload": {
+      "aggregate": {
+        "declared_dependency_edges": 1038,
+        "definition_count": 40,
+        "theorem_count": 384
+      },
+      "evaluation_eligible": false,
+      "files": [
+        {
+          "bytes": 29324,
+          "name": "schema.json",
+          "sha256": "a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c"
+        },
+        {
+          "bytes": 6334632,
+          "name": "explicit.json",
+          "sha256": "f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936"
+        },
+        {
+          "bytes": 11190180,
+          "name": "defined.json",
+          "sha256": "164b34dd0cad555baf2164ee3da114fb60a447bd667112481e7225097dd17cea"
+        },
+        {
+          "bytes": 3729,
+          "name": "isolation-receipt.json",
+          "sha256": "8c8a6882d0d5a82552942fc0c3efe5a900244a9cad02c32b24cabe3d86a0eee6"
+        }
+      ],
+      "format": "peano-hydra-library-documentation-manifest",
+      "freeze_ready": false,
+      "id": "authoring-l0-documentation-candidate-v1",
+      "logic_mode": "intuitionistic",
+      "retrieval_eligible": false,
+      "schema": {
+        "artifact_sha256": "a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c",
+        "format": "peano-hydra-library-documentation-bundle-schema",
+        "id": "peano-hydra-library-documentation-bundle-v1",
+        "sha256": "30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d",
+        "v": 1
+      },
+      "source_bindings": {
+        "compactor": {
+          "callable": "peano_lab.library.defined_edition.compact_theorem_spec",
+          "path": "peano-lab/py/peano_lab/library/defined_edition.py",
+          "runtime_dependencies": [
+            {
+              "path": "peano-lab/py/peano_lab/kernel/terms.py",
+              "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+            },
+            {
+              "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+              "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+            }
+          ],
+          "source_sha256": "0e08246b93743f9efb8ad8c054a1e4361914570c6d3f56ed62092992a5551f55"
+        },
+        "registry": {
+          "id": "peano-lab.defined-predicates",
+          "parser_registry_definition_count": 43,
+          "parser_registry_semantic_sha256": "924c8bc220f23ce772b72991b8234c3499be7698dc086d90509d39760a1ed0fe",
+          "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
+          "serialized_definition_count": 40,
+          "source_sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903",
+          "v": 2
+        },
+        "replay_catalog": {
+          "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/catalog.json",
+          "artifact_sha256": "326ffe660da6e34a3aa12e0aa13096078a0bf20c45c440049aaf5d5bed1f1be7",
+          "catalog_sha256": "f5c7318229ea76b372d7f09250241ba7bb98b3829a8853e85ad2d8528b710a51",
+          "ordered_root_sha256": "73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b",
+          "schema": "peano-library-snapshot-v3",
+          "source_root_sha256": "6fefaa2bdc92e477ce20444122ea1c752420e7efc1706a664777cb887128a3be",
+          "theorem_count": 384
+        },
+        "replay_manifest": {
+          "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+          "artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+          "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+          "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba"
+        },
+        "repository": {
+          "commit": "32803924d7def862ccf0b738cd1ed494a3165f7e",
+          "source": "retained-replay-pack-snapshot",
+          "tree": "e945e4963ad53b1c07008fd8356980bdacc3bafe",
+          "url": "https://github.com/nasqret/vietnam2026"
+        }
+      },
+      "status": "candidate",
+      "training_eligible": false,
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4",
+  "schema": {
+    "artifact_sha256": "a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c",
+    "format": "peano-hydra-library-documentation-bundle-schema",
+    "id": "peano-hydra-library-documentation-bundle-v1",
+    "sha256": "30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d",
+    "v": 1
+  },
+  "source_bindings": {
+    "compactor": {
+      "callable": "peano_lab.library.defined_edition.compact_theorem_spec",
+      "path": "peano-lab/py/peano_lab/library/defined_edition.py",
+      "runtime_dependencies": [
+        {
+          "path": "peano-lab/py/peano_lab/kernel/terms.py",
+          "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+        },
+        {
+          "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        }
+      ],
+      "source_sha256": "0e08246b93743f9efb8ad8c054a1e4361914570c6d3f56ed62092992a5551f55"
+    },
+    "registry": {
+      "id": "peano-lab.defined-predicates",
+      "parser_registry_definition_count": 43,
+      "parser_registry_semantic_sha256": "924c8bc220f23ce772b72991b8234c3499be7698dc086d90509d39760a1ed0fe",
+      "path": "peano-lab/py/peano_lab/library/defined_syntax.py",
+      "serialized_definition_count": 40,
+      "source_sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903",
+      "v": 2
+    },
+    "replay_catalog": {
+      "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/catalog.json",
+      "artifact_sha256": "326ffe660da6e34a3aa12e0aa13096078a0bf20c45c440049aaf5d5bed1f1be7",
+      "catalog_sha256": "f5c7318229ea76b372d7f09250241ba7bb98b3829a8853e85ad2d8528b710a51",
+      "ordered_root_sha256": "73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b",
+      "schema": "peano-library-snapshot-v3",
+      "source_root_sha256": "6fefaa2bdc92e477ce20444122ea1c752420e7efc1706a664777cb887128a3be",
+      "theorem_count": 384
+    },
+    "replay_manifest": {
+      "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+      "artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+      "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+      "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba"
+    },
+    "repository": {
+      "commit": "32803924d7def862ccf0b738cd1ed494a3165f7e",
+      "source": "retained-replay-pack-snapshot",
+      "tree": "e945e4963ad53b1c07008fd8356980bdacc3bafe",
+      "url": "https://github.com/nasqret/vietnam2026"
+    }
+  },
+  "status": "candidate",
+  "training_eligible": false,
+  "v": 1
+}

@@ -1,8 +1,12 @@
-# Peano Hydra: where symbolic search should end and learned search begin
+# Peano Hydra: a living arithmetic workshop with many proof explorers
 
-Peano Hydra is an experiment, not a new trust assumption. We want to combine a
-proof-producing arithmetic prover with a small language model and ask a narrow,
-measurable question:
+Peano Hydra is a living arithmetic workshop and a controlled experiment, not a
+new trust assumption. Its permanent job is to help authors grow an unusually
+careful elementary-number-theory library in the one curated Peano Lab
+language: precise statements, exact direct dependencies, readable proofs,
+efficient certificates, and documentation generated from those same checked
+artifacts. Its experimental job is to combine a proof-producing arithmetic
+prover with a small language model and ask a narrow, measurable question:
 
 > Under the same inference budget, can the language model help solve more new
 > problems than the strongest system that does not generate language-model
@@ -47,6 +51,82 @@ independently checkable negative certificates or agreement with a genuinely
 independent reference decision procedure. Until then Hydra is a sound prover,
 not a decider.
 
+## One language and two visible logic modes
+
+Hydra does not introduce a “solver language” or an “AI language.” Authors see
+Peano Lab formulas, defined notation with conservative expansion receipts,
+proof states, tactics, dependencies, and certificates. TPTP, Vampire clauses,
+model tokens, Lean definitions, and Rust bytes are internal transport formats.
+This is important pedagogically: the library remains readable without knowing
+which tool happened to discover a proof.
+
+The default profile is constructive: intuitionistic first-order logic,
+PA1–PA6, and unrestricted formula induction. Classical arithmetic is a
+different, visibly labeled profile using Peano Lab's existing double-negation-
+elimination rule. In that profile we may derive and offer excluded middle,
+
+\[
+  A \lor \neg A,
+\]
+
+as a convenient theorem or tactic. We do not add excluded middle as a second
+primitive merely because it is familiar. DNE and excluded middle are
+equivalent over the surrounding intuitionistic logic, and two primitive paths
+would obscure which assumption a certificate used. Constructive theorems are
+safe imports into a classical session; a DNE-dependent theorem is never an
+import into a constructive session.
+
+## From a sentence to a documented theorem
+
+This section specifies the A1–A5 target workflow; the current implementation
+is only the A0 protocol slice described later in this chapter. The planned live
+assistant will separate three kinds of acceptance that ordinary coding
+assistants often blur:
+
+1. **Meaning:** the author accepts one proposed formal reading of the prose.
+2. **Derivation:** the kernel accepts a certificate for exactly that reading.
+3. **Publication:** a reviewer accepts the complete library artifact.
+
+Suppose an author scribbles, “Every prime dividing a product divides one of
+the factors.” Before searching for a proof, the workbench will keep the
+verbatim sentence and revision, classify it as a claim, and show one or more
+candidate formulas. Each candidate includes a binder table, assumptions,
+readable defined notation, its primitive expansion, and a structural read-back
+in ordinary language. If primality, nonzero assumptions, or the direction of
+divisibility is ambiguous, the assistant says so and identifies whether the
+observation came from the parser, definition expander, library graph, bounded
+evaluation, kernel, Vampire, a model, or a human reviewer.
+
+This authority label changes the meaning of a diagnostic. A parser can prove
+that syntax is malformed. A kernel can prove that a supplied certificate does
+not derive the target. A bounded evaluator can exhibit a concrete checked
+counterexample within its stated range. Vampire or Qwen can only propose that
+something looks wrong or that search stalled. Exhaustion is `unknown`, never
+“false.” Most importantly, a proof of a nearby formula does not show that a
+candidate captured the author's sentence.
+
+Once the author explicitly accepts a reading, Peano Lab will open the ordinary
+interactive proof workspace. Native closure will run first; bounded Vampire
+hints and sparse Qwen or teacher proposals will appear only where useful. A completed
+certificate is checked against the owner-held original target. The resulting
+theorem proposal includes exact dependencies, a readable script, a best-known
+optimized certificate, proof metrics, provenance, mutation evidence,
+explanation, and previews for the Book, Obsidian vault, and proof explorer.
+Only explicit review and export can create a patch or pull request.
+
+The planned workspace will be revisioned and append-only. Every asynchronous
+result will carry the document revision, source-unit identity, logic profile, library epoch, and
+proof-state precondition it observed. If the author edits while a model is
+thinking, the late response becomes `stale`; it cannot silently rewrite the
+new document. Training consent defaults to deny, prompt text cannot execute
+proof or Git commands, and provider failure changes no accepted state.
+
+There will also be two tempos of library use. `authoring-live` will follow the
+newest reviewed library and benefit immediately from new number theory.
+`research-eval` will use a physically copied, content-addressed epoch and a fixed
+lineage mask. The first makes the product useful; the second prevents a growing
+quadratic-reciprocity development from leaking answers into an experiment.
+
 ## One authority, many fallible explorers
 
 Hydra deliberately has many ways to be clever and one way to be right.
@@ -58,7 +138,7 @@ original goal -> deterministic symbolic closure -> certificate -> kernel
                          v
                   typed macro proposal
                    /      |      \
-          native search   Qwen   Vampire/E/SMT hints
+          native search   Qwen      Vampire hints
                    \      |      /
                     transactional engine
                          |
@@ -73,18 +153,241 @@ The kernel is the sole positive authority. Everything else is untrusted:
 
 - native normalization, rewriting, connection or focused search;
 - theorem retrieval and clause ranking;
-- Qwen as a student policy or value model;
-- Codex as a teacher and data generator;
-- Vampire, E, or an SMT solver as an external search assistant; and
+- separate Qwen LoRA roles for formalization, retrieval, macro policy,
+  value/ranking, critique, and explanation drafting from checked artifacts;
+- Codex as a TRAIN/DEV teacher, formalizer, critic, and data generator;
+- Vampire as the initial external search assistant; and
 - translators and proof reconstruction code.
 
-This is especially important for Vampire. Vampire is a powerful classical
+This is especially important for Vampire. Vampire is the only first-class
+external prover in the initial portfolio and is a powerful classical
 first-order prover, while Peano Lab's default logic is intuitionistic. A raw
 Vampire success is not automatically a proof in Heyting arithmetic. We may use
-it on a separately justified validity-preserving translation or on a stable
-arithmetic side goal, and we may mine its derivation for instantiations or
-lemmas. The final result still has to be reconstructed into ordinary Peano
-proof terms and replayed. There is no trusted `vampire_proved` rule.
+it on a separately justified validity-preserving translation, or ask it for
+premise bundles, instantiations, witnesses, cuts, rewrites, and skeletons. The
+final result still has to be reconstructed into ordinary Peano proof terms and
+replayed. There is no trusted `vampire_proved` rule. E and SMT are deferred
+comparison tools, not unnamed fallback authorities.
+
+### What the first executable Vampire slices prove
+
+A3 makes the trust boundary executable without pretending that a solver status
+is a Peano proof. It accepts one **closed** primitive Peano goal and an
+explicitly allowed premise set, emits deterministic classical TPTP FOF bytes,
+and records which internal TPTP symbol came from which Peano source. No ambient
+theorem catalog can leak an extra premise into that problem.
+
+The data path is deliberately asymmetric:
+
+```text
+closed Peano goal + explicitly selected premises
+        -> deterministic TPTP problem
+        -> untrusted executable and raw SZS bytes
+        -> small deterministic public-command reconstruction
+        -> transactional Peano execution
+        -> fresh original-goal kernel replay
+```
+
+Reconstruction v3 has only three small families. Top-level reflexivity may
+produce `refl`. One selected PA axiom may produce `apply NAME`; one selected
+public theorem may produce `use NAME` and `apply NAME`. A top-level conjunction
+with exactly two selected PA axioms may produce `split`, `apply NAME1`, and
+`apply NAME2` in branch order. Other multi-premise cases are commandless. Raw
+SZS bytes are never interpreted as tactic text. Swapped or irrelevant premises
+therefore produce ordinary failing tactics and exact transactional rollback.
+Even a plan that closes all goals reaches QED only through fresh replay by the
+independent kernel against the owner-held original target.
+
+Fake executables remain valuable: they reproducibly exercise deterministic
+problem bytes, exact arguments, copy-and-rehash provenance, no-shell execution,
+wall and output ceilings, malformed responses, and forced kernel rejection.
+A3.1 separately asked whether those same narrow paths work with real Vampire.
+The [official Vampire 5.0.1 release](https://github.com/vprover/vampire/releases/tag/v5.0.1)
+for macOS ARM64 was downloaded into a temporary directory only. Its ZIP
+SHA-256 was
+`8c92e649fe7bc622a70000afbdf5a5c51007b384e2d8b8235c95474cc7a68f35`;
+the extracted executable SHA-256 was
+`b5168c690e0293cdac78f16d8418d7eeabcd6708f90a60cd2bf45313b6d98699`.
+Nothing was vendored or installed.
+
+For the real direct diagnostic `0 + 0 = 0` with only `PA3` disclosed,
+Vampire returned inert `SZS Theorem`. Offline reconstruction proposed the
+ordinary command `apply PA3`. Fresh kernel replay accepted its canonical
+2-node, depth-2 proof term. The `encode_proof` SHA-256 was
+`25b6f555180e9737fe4aeb0e51f1f9e97911ed9ffc41c6a80ef97088930711cd`;
+the complete `peano-lab-v2` artifact SHA-256 was
+`3c65761490733d3382932780f26ff2fb382f82eb536a45af41840b172be7efca`.
+The conjunction `1 + 0 = 1 ∧ 1 · 0 = 0` with selected premises `PA3`, `PA5`
+had TPTP SHA-256
+`60b2666d452d253bd982170cc8c3d586c2be836ee72355a4fc108d313d403f96`.
+Its real result returned inert `SZS Theorem` and reconstructed
+`split; apply PA3; apply PA5`; fresh replay
+accepted a 5-node, depth-3 proof term. The `encode_proof` SHA-256 was
+`3d47f7636f578cbcaf638006942e19c8ff9c565359967d44b32d20668ef5f812`;
+the complete `peano-lab-v2` artifact SHA-256 was
+`cc520fd2f72148dc05450c414151a55cca4a18ce528e15bb150d9ea89e493d68`.
+
+WMI provided an independent architecture check with the official x86-64
+binary, SHA-256
+`81532e088c4ee1238d7ea1d8e868a2dccf8d358ad4d2126d257b4dda7f2e6bd9`.
+On the same conjunction, a real `--mode vampire` invocation returned
+`SZS Theorem`; Vampire reported 0.001 seconds and 8 MB. These are diagnostic
+solver-reported observations, not campaign-grade host resource attestations
+and not evidence that Vampire outperforms another method.
+
+The diagnostic is usable now through a one-shot command (replace the binary
+path with the exact local Vampire executable):
+
+```bash
+python3 scripts/peano_hydra_vampire_assist.py \
+  '1 + 0 = 1 ∧ 1 · 0 = 0' \
+  --premise PA3 --premise PA5 \
+  --vampire /absolute/path/to/vampire \
+  --wall-time-ms 5000 --output-bytes 65536
+```
+
+The program prints one canonical JSON result and creates no file by default.
+For this goal its reconstructed command list is `split`, `apply PA3`,
+`apply PA5`; `status = accepted` is emitted only after fresh public replay and
+the independent kernel check. The same result explicitly says that H0 host
+containment, live Dispatch registration, and every campaign/training/
+retrieval/evaluation/publication eligibility flag are false.
+
+There is still a useful systems lesson. Frozen H0 `Dispatch` permits exactly
+one adapter process. A source broker cannot occupy that process and then spawn
+a second Vampire process. The diagnostics used direct `run_vampire` followed
+by offline reconstruction; they were not a live registered `Dispatch` route.
+Production integration still needs a reviewed host-protocol amendment or one
+self-contained linked executable. Native closure, portfolio scheduling,
+solve/resource AUC, and any Vampire capability advantage remain open A3/H2
+work.
+
+### The first interactive Hydra loop
+
+A3.2 and A4.0 now join the pieces into a small terminal experiment. This is
+the first place where a person can alternate ordinary Peano tactics, a typed
+Qwen proposal, and a direct Vampire attempt while keeping one immutable proof
+owner. It is intentionally a preview rather than the browser assistant.
+
+The join lives in three modules. `interactive_assistant.py` owns the session
+and its transitions. `qwen_hydra_bridge.py` turns a canonical goal plus an
+explicit retrieved premise list into a bounded prompt and parses a strict
+proposal. `vampire_live.py` lets the host start one pinned Vampire executable
+as its sole child, then sends only reconstructed public Peano commands back to
+the proof owner. The terminal front end is
+`scripts/peano_hydra_assistant_repl.py`.
+
+The key distinction is between **proposing** and **committing**. A Qwen request
+contains the current canonical goal, visible `name : statement` pairs, and
+finite allow-lists. The terminal accepts a strict JSON response with exactly
+four fields:
+
+```json
+{"format":"peano-hydra-qwen-proposal","macros":[],"premises":["PA3","PA5"],"v":1}
+```
+
+Parsing that object proves only that it is well formed and respects those
+allow-lists. It does not run a tactic and does not change the proof owner. The
+user must explicitly choose `:accept` for typed macros or `:resolve` to hand
+the selected premises to Vampire. A later manual step makes an old proposal
+stale. The session retains the exact model-response bytes and re-parses them
+before execution, so constructing a look-alike Python proposal object does not
+grant premise-selection provenance. Extra JSON fields, duplicated keys,
+Markdown fences, unknown names, masked operations, and free-form tactic text
+are rejected rather than repaired.
+
+For small programmatic experiments the Python bridge also recognizes a
+bounded canonical line form containing only `premises:` and `macro:` records.
+It produces the same validated proposal object and gains no extra authority;
+the terminal's `:model` command deliberately remains JSON-only.
+
+Vampire receives no authority from that selection. The host owns an absolute
+binary path, its expected SHA-256, exact arguments, and wall/CPU/memory/output
+bounds. It copies and rehashes the executable, runs it without a shell as the
+only child, and treats all SZS output as inert bytes. In this first preview the
+focused goal must be closed and have no local context. The small v3
+reconstructor may then propose ordinary commands. They execute on a temporary
+owner. Failure at any phase returns the exact prior session; if the commands
+close the theorem, a fresh replay against the original goal must pass the
+independent kernel. The closed session retains that checked-certificate
+receipt; no goal plus no receipt is not displayed as QED. Checked open
+progress may be kept, but is not called QED.
+
+To run the terminal without Vampire:
+
+```bash
+python3 scripts/peano_hydra_assistant_repl.py \
+  --theorem '0 + 0 = 0'
+```
+
+Every non-command line is one manual tactic. Useful session commands are:
+
+```text
+:goals                 show the checked state
+:script                print the replayable Peano Lab script
+:qwen NAME...          print an exact proposal prompt
+:model STRICT_JSON     attach an inert proposal
+:accept                transact its typed macros
+:resolve               send its selected premises to Vampire
+:vampire NAME...       call Vampire with an explicit premise list
+:discard               drop pending Qwen data
+:undo                  restore the preceding immutable session
+:help                  show all commands
+:quit                  leave without claiming an unfinished theorem
+```
+
+With a locally pinned Vampire, pass both its absolute path and digest:
+
+```bash
+python3 scripts/peano_hydra_assistant_repl.py \
+  --theorem '1 + 0 = 1 ∧ 1 · 0 = 0' \
+  --vampire /absolute/path/to/vampire \
+  --vampire-sha256 HEX64
+```
+
+Then either ask directly:
+
+```text
+:vampire PA3 PA5
+:script
+```
+
+or exercise the Qwen-selection seam without granting the model execution
+rights:
+
+```text
+:qwen PA3 PA5
+:model {"format":"peano-hydra-qwen-proposal","macros":[],"premises":["PA3","PA5"],"v":1}
+:resolve
+:script
+```
+
+An unretained diagnostic run with the real Vampire 5.0.1 conjunction binary
+returned inert theorem status. The
+reconstructor emitted exactly `split`, `apply PA3`, and `apply PA5`; fresh
+original-goal replay accepted the resulting certificate. This demonstrates
+the joined data path, not superiority over native tactics or a retained
+campaign receipt.
+
+There was deliberately no trained-Qwen live result in this integration. The
+current model-v3 checkpoint was trained for the older next-tactic contract,
+whereas this bridge expects premise selection plus typed macros. WMI was
+also unreachable during the integration session. We therefore retained the
+model boundary and used an explicit JSON proposal rather than silently
+translating incompatible output or claiming a model result. A real service
+must additionally put wall-time, memory, process, and network containment
+around its model transport; the bridge itself bounds only prompt and response
+bytes.
+
+This preview does not modify frozen H0 `Dispatch`, run in the browser, provide
+the asynchronous A5 service, or establish any Qwen or Vampire capability
+advantage. Those are later gates. What it establishes is smaller and useful:
+the proposed human--model--resolution loop can already end only in ordinary
+Peano commands and a fresh independent-kernel decision.
+
+For this slice, the disjoint terminal/Qwen/session/CI tests passed 59 cases,
+and the direct-child Vampire/reconstructor/frozen-macro tests passed 91 cases.
+Ten focused Book tests and the Book command-replay check passed too.
 
 ## The critical frontier
 
@@ -575,7 +878,7 @@ of the following as the fragment permits:
 - focused intuitionistic or connection/tableau search;
 - induction-candidate enumeration;
 - deterministic theorem retrieval; and
-- reconstructed hints from external first-order or SMT solvers.
+- bounded, reconstructed Vampire hints.
 
 Each component is measured alone and in portfolio. Development-only scheduling
 chooses the strongest solved-versus-resource envelope. That frozen system is
@@ -596,10 +899,17 @@ captures the gain, increasing the transformer is the wrong engineering move.
 
 ## Training data must end in QED
 
-A positive policy row is admissible only when it lies on a complete trajectory
+A positive proof-policy row is admissible only when it lies on a complete trajectory
 whose final certificate checks against the original goal. Partial progress,
 an attractive lemma, a solver assertion, and a syntactically valid tactic are
 useful diagnostic or negative data but not positive proof labels.
+
+Prose data obeys a different authority. A positive formalization row requires
+the human-approved source-to-statement pair and explicit training consent; it
+does not require that the author already has a proof. Conversely, a kernel QED
+shows derivability but cannot certify that a generated formula faithfully
+translated a sentence. Keeping the corpora and adapter roles separate lets us
+measure both tasks instead of hiding one inside the other.
 
 The first curriculum target is deliberately large and balanced: at least
 100,000 unique macro transitions from at least 20,000 checked QED roots, every
@@ -608,12 +918,1577 @@ frontier choice. Clean generation must be byte-for-byte reproducible. The
 tokenizer must reject examples that do not fit; silent truncation changes the
 task and can remove the answer.
 
-The initial student stays modest—roughly 1.7–3 billion Qwen parameters—until
-the data and search design pass causal gates. Supervised training must beat the
-identical pretrained model on DEV, solve a meaningful number of registered
-frontier cases, and have a positive paired confidence bound. Value search and
-expert iteration have their own incremental gates. Only newly discovered,
-independently checked QEDs enter expert iteration.
+The initial student stays modest—roughly 1.7–3 billion Qwen parameters, with a
+hard initial family ceiling below 10 billion—until the data and search design
+pass causal gates. Separate LoRA adapters or tagged tasks cover formalization,
+retrieval, macro policy, value/ranking, critique, and checked-artifact
+explanation drafting. Supervised proof training
+must beat the identical pretrained model on DEV, solve a meaningful number of
+registered frontier cases, and have a positive paired confidence bound.
+Formalization has its own human semantic-accuracy and ambiguity-abstention
+metrics. Value search and expert iteration have their own incremental gates.
+Only newly discovered, independently checked QEDs enter proof expert
+iteration.
+
+## A faster kernel needs two proofs, not one
+
+The readable Python checker remains the final QED authority today. The safe
+Rust implementation already gives Hydra useful native and browser-WASM speed:
+it can reject malformed candidates, filter rollouts, and cheaply test solver
+reconstructions before the Python replay. Differential agreement across many
+mutations is strong engineering evidence, but it is not the final theorem we
+want.
+
+There are two distinct Lean obligations:
+
+\[
+  \text{Lean checker accepts}
+  \Longrightarrow
+  \text{derivable}
+  \Longrightarrow
+  \text{true in the intended model},
+\]
+
+and
+
+\[
+  \text{exact committed Rust returns Accept}
+  \Longrightarrow
+  \text{Lean checker specification accepts}.
+\]
+
+The first proves the mathematical algorithm. The second is source refinement.
+Writing the same-looking checker again in Lean establishes only the first;
+finite tests cannot manufacture the second. Hydra therefore uses staged
+K5–K11 gates: freeze a logic-carrying wire format and typed outcomes, measure,
+harden Rust and resource accounting, prove the v3 specification, translate or
+otherwise refine the exact safe-Rust accepted path, soak Rust and Python across
+platforms, and only then review authority.
+
+This also fixes an important error vocabulary. `InvalidCertificate`,
+`MalformedInput`, `ResourceExhausted`, and `InternalError` are different
+outcomes. Only `Accept` grants QED, but exhaustion says nothing about whether a
+theorem exists. If exact Rust-source refinement fails, Rust remains an
+excellent accelerator and Python or dual checking remains the authority. That
+is a useful and honest engineering outcome.
+
+## First H1 implementation: exact records before automation
+
+The first H1 slice implements two deliberately narrow protocols. Authoring
+schema v1 (semantic digest
+`31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`)
+stores canonical documents, exact UTF-8 source units, alternative
+formalizations, diagnostics, proof attempts, and draft or freshly checked
+theorem proposals. It pins the existing defined-syntax registry rather than
+inventing another notation layer. A generic model or solver can emit only an
+explicitly untrusted diagnostic; kernel authority requires replay, and human
+review/export authority requires an ordered source-reviewed event deposit.
+Every event binds an actor, the single session owner, a sequence, its
+predecessor, and a rolling prefix root. The production deposits are empty.
+
+The review of this code produced a small but memorable example of why strict
+serialization matters. In Python,
+
+```python
+False == 0  # True
+True == 1   # True
+```
+
+so ordinary object equality is not exact JSON equality. An early epoch draft
+could compare `false` in one root payload with `0` in another and call them
+equal. The corrected validator compares canonical JSON bytes, type-checks
+every version integer, and refuses to return a normalized object whose root or
+preimage differs from the input commitment. The same version discipline now
+applies to authoring records.
+
+Library-epoch schema v1 (semantic digest
+`f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`)
+also distinguishes a living candidate from a frozen research epoch. Candidate
+loading always rechecks current Git provenance and the complete 384-theorem
+catalog. If relevant sources change after import, the service must restart;
+new hashes cannot be paired with stale imported theorem objects. Evidence
+reads are bounded and reject final symlinks, while packed path text is checked
+without consulting the living repository.
+
+That first protocol fixture is still not $L_0$. It contains the catalog,
+semantic profile, and retained H0 report, but only certificate *hashes*. We did
+not mutate that version to make the word “pack” retroactively mean something
+stronger. Instead we introduced a subordinate replay-pack format whose claim
+is smaller than an epoch freeze and can be tested directly.
+
+## From certificate hashes to an offline replay pack
+
+Replay-pack schema v1 has semantic digest
+`d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`.
+Its candidate directory contains a canonical copy of that schema, the source
+catalog, the constructive semantic profile, one manifest, and 384 raw
+`peano-lab-v2` certificate artifacts. The certificate payload is 80,088,767
+bytes; the largest artifact is 3,608,301 bytes. The ordered theorem replay root
+is `88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`,
+while the stronger manifest root—which also binds schema, catalog, profile,
+resource declarations, paths, and verifier sources—is
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`.
+
+The distinction between the builder and verifier is part of the lesson. The
+builder is allowed to see authored scripts, replay the living catalog, measure
+Python object sharing, and serialize certificates. The verifier is not. It is
+loaded directly from one source file, imports only the kernel and standard
+library, and runs in a new Python process with
+`-I -S -X pycache_prefix=<fresh-dir>`. The cache's repository subtree must not
+exist when verification starts, bytecode writes are then disabled, and only
+the exact Peano package root is appended after standard-library paths. A
+meta-path guard makes imports of the theorem library, tactic engine, UI,
+training package, Torch, and Transformers fail. The worker records that none
+was loaded. Its executed package initializers, kernel modules, decoder,
+verifier, and CLI are themselves hashed into the manifest, checked immediately
+after import, and checked again after the last theorem.
+
+The order of work is intentionally defensive. The worker first validates the
+complete manifest—exact JSON types, theorem count and order, prior-only
+dependencies, content-addressed relative paths, aggregate resource ceilings,
+root preimages, source identities, and the exact directory listing—before it
+opens a single certificate. Root and certificate enumeration stop after their
+declared bounds. Every artifact is opened with no-follow and nonblocking flags,
+then required by descriptor metadata to be a stable bounded regular file; a
+FIFO therefore fails without hanging the worker. The decoder accepts only
+exact tagged constructors, exact arities and child sorts, nonnegative exact
+integers, one canonical byte spelling, and explicit byte/node/depth/integer
+limits. Decoding is inert: even a syntactically valid false proof or DNE node
+gains no authority.
+
+For theorem $i$, the verifier parses the catalog's statement independently,
+requires it to be closed, and compares it structurally with the decoded target.
+It recomputes canonical formula and proof hashes, the readable canonical
+statement, tree nodes, depth, and Cut count. Only then does it ask
+
+```python
+check((), proof, original_target)
+```
+
+in intuitionistic mode. An adversarial test uses a DNE certificate that the
+separate classical checker really does accept, reroots every local commitment,
+and confirms that this worker rejects it. Other tests reroot wrong proofs,
+wrong targets, Boolean-for-integer aliases, oversized resources, malformed
+paths, bad dependencies, source drift, stale bytecode, symlinks, FIFOs,
+unbounded directory inputs, missing/extra files, and mutated bytes. Report
+destinations are checked both before and after replay using lexical, resolved,
+Unicode-normalized, case-folded components. Thus a report cannot replace the
+manifest through an APFS case alias. The report itself is written by flush,
+file `fsync`, and atomic replacement outside the pack. Failure never becomes a
+partial successful report.
+
+There is a subtle serialization lesson here too. `peano-lab-v2` expands a
+Python proof DAG into a tree. Tree occurrences, maximum depth, Cuts, encoded
+bytes, and kernel acceptance are therefore reconstructable from the pack.
+Python object identities are not. The manifest labels distinct objects, unique
+edges, and reused references as source-stage observations, verifies their DAG
+invariants, and binds them to the source catalog without claiming to rediscover
+sharing from the bytes. Likewise, the historical Python `repr` hash is retained
+as construction provenance but is not a portable theorem-authority condition.
+
+The builder publishes the staging directory atomically only after that fresh
+worker succeeds. The ordinary test suite repeats the complete 384-theorem
+worker replay and requires its canonical report to be byte-identical to the
+retained 828-byte report. The corrected replay-pack and bounded-decoder
+selection passed 145 tests in 47.56 seconds. The report SHA-256 is
+`35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10`.
+
+The wider release gates matter because the decoder is shipped in the browser
+kernel package, not hidden in a research-only environment. The deterministic
+full-suite shards covered every Peano test: 3,048 passed, 12 skipped, and two
+environment controls were rerun successfully in isolation, yielding 3,050
+passing non-skipped cases overall. Lambda Lab passed 360 tests plus 36
+subtests. Browser build `2026-08-09b`, application `a-7fe525e910c8`, seals 150
+Python sources in a 154-entry manifest and stages locally without a deployment
+claim. The clean warning-as-error Book built all 46 sources, its integrity gate
+found no broken or unsafe target, all 194 deep links and 287 commands replayed,
+and the 490-note vault resolved all 4,981 links.
+
+What did we earn? We may now say: **a replay-complete candidate-$L_0$ pack was
+validated in an isolated fresh interpreter**. We may not say that production
+$L_0$ is frozen. The schema itself enforces `status = candidate` and
+`evaluation_eligible = false`. The dependency list is the current declared
+publication list, not separately minimized readable and optimized vectors;
+there is no leave-one-out receipt, complete definition/document bundle,
+lineage mask, reviewed Git-state deposit, independent owner receipt, or sealed
+benchmark. Those are the remaining H1.1 gates. The authoring side likewise
+still needs the 200-unit adjudicated corpus and live browser/recovery behavior
+before A0/H1.0 can close.
+
+## Turning unknowns into a candidate epoch ledger
+
+The replay pack answered one narrow question: can an isolated checker recover
+and validate every certificate? An epoch freeze must answer a broader one:
+what exactly do we know about every theorem, and which facts are still only
+claims? H1.1a introduces a canonical metadata ledger to make that boundary
+executable.
+
+Its schema has semantic digest
+`71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`
+and exact document SHA-256
+`9867378c8802501d2120ad4d94a86378815cf90b003eafc92b164685da61c956`.
+The distinction matters: the first hash commits to the JSON value, while the
+second also commits to two-space indentation and the final line feed. The
+canonical candidate occupies 5,880,054 bytes and has root
+`b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`.
+Its root preimage contains the complete body, and the validator reconstructs
+the expected body from the exact retained inputs rather than accepting a
+merely self-consistent rerooted replacement.
+
+The ledger cannot be confused with an owner deposit. The schema fixes
+
+```text
+status = candidate
+freeze_ready = false
+evaluation_eligible = false
+```
+
+and contains no administrative escape hatch that changes those values. It
+pins the replay manifest, independent verification report, copied catalog,
+constructive profile, source commit `32803924…`, and source tree before it
+emits the repository identity. In replay order, its 384 theorem rows bind
+canonical and source statements, formula and proof hashes, readable scripts,
+certificate paths and metrics, the logic profile, and source file, file hash,
+declaration line, and declaration kind. The source audit found all 384
+locators. The rows contain 1,038 declared publication edges.
+
+That last adjective—*declared*—is doing real work. A readable proof can import
+one set of lemmas while an optimizer constructs a smaller certificate from
+another. The graph used for leakage masks must eventually contain the union of
+both direct vectors. H1.1a therefore stores the declared publication vector
+but leaves the readable vector, optimized vector, two leave-one-out receipts,
+and publication union explicitly null. It sets `minimality_claim = false` and
+labels the retained construction `submitted-not-best-known`. A2, not the
+metadata builder, owns the comparison that may eventually justify
+“best-known.”
+
+### A documentation join is not a file count
+
+The ledger gives each documentation source a per-theorem receipt with one of
+three states: `present`, `stale`, or `missing`. Presence requires the record to
+join the exact replay theorem; the mere existence of a similarly named file is
+not enough.
+
+The vault and theorem atlas cover all 384 rows, with zero missing and zero
+stale receipts. The atlas links to immutable commit `32803924…`, not a moving
+branch. Its four links per theorem—source, vault note, snapshot record, and
+research record—give 1,536 links, all blob-audited at that commit. This fixes a
+subtle documentation error: a beautiful current atlas whose permalink points
+to an older partial snapshot is not evidence for the current theorem.
+
+The proof explorers expose a different trap. Each corpus has 557 rows, but
+only 240 public rows join this 384-theorem candidate. The other 317 names are
+disjoint later or non-`L0` material. They remain useful provenance, but the
+whole corpus must never be placed in this epoch's training, retrieval, or
+evaluation context. Doing so would silently enlarge the frozen library through
+documentation rather than theorem imports.
+
+For 144 candidate theorems, the explicit explorer record and the defined-
+notation explorer record are physically absent. Their definition receipt is
+therefore absent too. The exact gap is 144 missing and zero stale in all three
+classes. This yields 240 documentation-complete rows, where “complete” means
+that the same theorem has all six joins: source locator, definition receipt,
+atlas card, vault note, explicit explorer row, and defined explorer row. A
+single aggregate count can now be traced back to exact row receipts rather
+than inferred from unrelated corpus totals.
+
+Every theorem also retains pending fields for human explanation review,
+lineage assignment, A2's best-known comparison, readable and optimized direct
+dependency evidence, and their publication union. Each of these gap counts is
+384. This is not disappointing metadata. It is the point of the exercise: an
+unknown represented as `null` plus a counted obligation is safer than a
+plausible value promoted without evidence.
+
+H1.1 therefore remains open. The next internal step is mechanical but
+important: generate and audit the 144 missing explorer and definition records,
+then run the A2 comparison/dependency work. Only after those repairs should the
+project issue a source-state freeze request to an external independent owner.
+That owner deposit still will not activate a benchmark; benchmark activation
+is a later, separately authorized event.
+
+The implementation gate has 53 focused adversarial tests. They cover exact
+input pins, deterministic rebuilding, fully rerooted forgeries, claim
+escalation, non-$L_0$ exclusion, source/report drift, hostile file types, and
+the no-default-write CLI. The retained artifacts reproduce byte-for-byte under
+`--check`. These tests validate the ledger protocol; they do not fill any of
+the recorded gaps or substitute for external owner review.
+
+## Why filtering a larger explorer is not isolation
+
+On 2026-08-09, H1.1b1 addressed the 144-row selected-API gap discovered by the
+metadata ledger. The obvious implementation was to extend or filter the
+existing 557-row proof explorer. We rejected it after inspecting the records,
+because top-level membership is not the whole information boundary.
+
+The legacy public rows contain `dependents` arrays. Across those rows, 757 name
+references point into the disjoint 317-row candidate corpus. A filter that
+keeps only the 384 selected top-level names can therefore still disclose names
+from outside the selection. Hashing the complete corpus is not a repair: if a
+disjoint theorem later changes, the 384-theorem documentation root changes as
+well. That would couple an alleged candidate-$L_0$ identity to material that is
+not in candidate $L_0$.
+
+The safe construction is deliberately less clever. Start with the retained
+replay manifest, preserve its exact 384-row order, and construct every record
+again. Resolve every declared dependency and tactic reference only in that
+selected namespace. Do not copy global PA tags, `dependents`, closures, links,
+scopes, foreign theorem names or bodies, or hashes of the larger explorers.
+The result is a tagless selected API. The old 557-row explicit and defined
+explorers, their tag map, and metadata v1 remain untouched as historical and
+research-facing surfaces.
+
+There was a second, quieter information leak at import time. Importing the
+single-theorem compactor used to import the full quadratic-reciprocity stack.
+That was unnecessary for selected compaction and loaded the wider theorem
+corpus merely by asking for a utility function. The wider import is now lazy:
+`compact_theorem_spec` can be imported without the 557-row stack, while
+`defined_library_edition()` imports that stack only when the historical edition
+is actually requested. This is not a security sandbox against arbitrary
+Python; it is a precise dependency boundary for the deterministic builder.
+
+### The five-document envelope
+
+The candidate bundle lives at
+`artifacts/peano-hydra/l0-documentation-candidate-v1/` and contains exactly
+five files:
+
+1. `schema.json`, the closed protocol and source-binding contract;
+2. `explicit.json`, the replay-ordered explicit proof records;
+3. `defined.json`, the conservative notation records and expansion receipts;
+4. `isolation-receipt.json`, the selected-membership and graph check; and
+5. `manifest.json`, the hash envelope over the first four.
+
+The explicit side contains exactly 384 theorems, 1,038 internal declared
+dependency edges, and 13,862 tactic lines using 20 tactic heads. Its parser
+finds 3,989 theorem-reference occurrences: 1,035 declared edges are directly
+mentioned by tactic text and three are implicit. These counts describe the
+submitted readable scripts; they do not prove dependency minimality.
+
+The defined side serializes 40 core definition records and pins the complete
+43-entry parser registry: those 40 core definitions plus three adjacent ones.
+The exact-AST compactor changes 321 theorem statements and 624 of the 950 local
+propositions. It records 2,027 definition occurrences. Expanded statement
+text occupies 224,948 characters and the defined rendering 29,098; expanded
+local propositions occupy 148,105 characters and their defined rendering
+25,733. The shorter rendering is useful for people and models, but the receipt
+earns trust only by expanding back to the exact original AST.
+
+Each retained file has both a semantic root where applicable and an exact
+canonical artifact hash:
+
+| File | Semantic identity/root | Artifact SHA-256 |
+|---|---|---|
+| `schema.json` | `30236aaaecc41104e7e193476f59a8b764d56fe86c63ca04c1561ad38645832d` | `a442e89ac312302dcee777b5741ca7f2d67e10f6ebcc996b8096fc6061c28a9c` |
+| `explicit.json` | `b7942fa5a866ff7cd8a38f30c93787ec0abd2948e69710651e4d3578e64377da` | `f1c9f364db0cb7ae7f4c7fe065b1ef48d5522fc49711667479ec3dc4db723936` |
+| `defined.json` | `897fd5e4bedb44b63853e428ff5bc2e2c273e30a0c239450e0ec8f93d73fc61f` | `164b34dd0cad555baf2164ee3da114fb60a447bd667112481e7225097dd17cea` |
+| `isolation-receipt.json` | `64bdc2c52bcaf88d26382bbe514be4a442cc876b8df2a353c272587e1516d919` | `8c8a6882d0d5a82552942fc0c3efe5a900244a9cad02c32b24cabe3d86a0eee6` |
+| `manifest.json` | `8f7ef8fcca69bc6f5f8b39c220293b8414a65fd81576c584f78e59da104d46a4` | `5ded97c27b859cc4725362bc76aba89fac06c5f11843b50529b78050b19348bf` |
+
+The schema identity in the first row is its semantic digest. The isolation
+receipt checks exact order and membership, equality of the explicit and
+defined name sequences, internal dependency closure, absence of duplicate or
+foreign names, and absence of fields such as tags and `dependents`. These
+negative checks are central: a document can have all 384 desired rows and
+still be contaminated by one extra reference.
+
+The focused implementation file passed 36 tests in 126.87 seconds. After the
+final roots were pinned, the seven targeted retained-artifact tests passed
+with 36 deselected in 7.10 seconds. Final acceptance then passed all 43 focused
+tests in 115.64 seconds and 23 compatibility tests in 18.19 seconds. This is
+implementation evidence, not a claim about epoch authority.
+
+H1.1b1 creates selected API records, not deployed pages and not a frozen
+epoch. It grants no human-review, owner, source-state, minimality, readable or
+optimized dependency, best-known, publication-union, A2, training, retrieval,
+or evaluation claim. Metadata v1 truthfully remains the historical
+240-complete ledger. H1.1b2 will introduce metadata v2 that binds the isolated
+bundle and reports selected API coverage separately from deployed-page
+coverage; H1.1 itself remains open.
+
+### A successor ledger, not a rewritten past
+
+H1.1b2 now performs that binding. The tempting implementation was to rerun the
+old metadata builder and let its coverage number change from 240 to 384. That
+would make a supposedly historical receipt depend on today's generated pages
+and would silently change the meaning of a sealed hash. Instead, metadata v1
+remains byte-for-byte immutable. Metadata v2 names it as one exact predecessor
+and adds a second, exact documentation source: the isolated H1.1b1 bundle.
+
+This gives a useful example of evidence monotonicity. New evidence may add a
+successor claim, but it may not rewrite what an earlier receipt observed. The
+new ledger keeps the predecessor's theorem semantics, proof receipts, source
+locators, atlas and vault receipts, unresolved review fields, and historical
+page status. For each replay-ordered theorem it then adds:
+
+- the predecessor row hash;
+- the selected explicit-API record hash;
+- the selected defined-API record hash;
+- a typed preimage and hash for the theorem's definition uses; and
+- a new theorem-row hash included in an ordered 384-row root.
+
+The join checks far more than the theorem name. Statement source, canonical
+formula, script, source location, layer, explanation, and declared dependency
+vector must all agree. Definition occurrences must resolve from stable IDs to
+the right names in canonical registry order; their total remains exactly
+2,027. A completely rerooted but semantically mismatched predecessor or bundle
+is rejected because validation reconstructs the expected document from the
+fixed artifacts.
+
+The resulting numbers intentionally answer two different questions. There are
+384 complete selected API rows. There are still only 240 rows for which both
+historical deployed-page receipts are present, leaving 144 pending explicit
+pages and 144 pending defined pages. “We can address a machine-readable record”
+is not the same statement as “we deployed and reviewed its teaching page.”
+
+Schema v2 has semantic digest
+`498dde0a3b4f762197d8c371609dfac2eabf7edcfc37a6d3c5cdf6ca21efb38a`
+and artifact SHA-256
+`27af1e5c1ee0e73cb012db3d8b94cb9a6e1be48d08e8158ad48b8edac399973e`.
+The 3,732,032-byte ledger has artifact SHA-256
+`dc6a59ce08397eba698651f6ed4faac0533dec55c13d5a8ca49d863d19d7b72d`,
+root `e0c1d3683e111d7f2883cebbc423694159e82d95471d9375866a81ec596dfb9e`,
+and theorem-record root
+`22330158f52f049ec920992f51f96a0ab0e9939c3eeb893f533616c17b48e98a`.
+The 1,891-byte readiness artifact has SHA-256
+`f257646d1ba5b51835c8b1718538b4b21c89ea402ba073a9630842708db0206b`
+and binds the exact ledger bytes in addition to the semantic root.
+
+Even the output path is treated as evidence. The loader rejects symlinked
+ancestor components, and the CLI's create-if-absent publication cannot
+overwrite a file introduced in the inspection-to-publication race window. A
+test deliberately creates such a competitor: the tool preserves its inode and
+bytes, rolls back its own sibling, and leaves no staging files.
+
+Nothing here freezes $L_0$. The ledger remains intuitionistic, candidate-only,
+and ineligible for training, retrieval, and evaluation. All 384 theorems still
+lack human review, lineage, verified readable and optimized dependency vectors,
+a publication union, and best-known comparison. Those are the next pieces of
+the campaign, not details that documentation completeness can waive. A2 and
+the 144-row deployed-page repair can proceed in parallel, but both must finish
+before an owner freeze.
+
+The final focused suite passed 46 tests in 101.07 seconds. It includes exact
+retained byte and root pins, cross-join and fully rerooted forgeries, strict
+loader and import isolation, the public-readiness reconstruction boundary, the
+private one-build CLI contract, and both ordinary and racing publication
+failures. An independent post-optimization threat review found no blocker.
+
+### A generated page source is not yet a deployment
+
+H1.1b3 adds the missing presentation *source* without changing the historical
+explorer. A new tagless static tree at
+`book/_static/pa-selected-library/` is reconstructed only from the exact
+five-file H1.1b1 bundle. It contains an explicit proof page and a defined-
+notation page for each of the 384 replay theorems, 40 definition pages, and one
+index: 809 HTML pages among 813 exact files. There are no tags, aliases,
+client-side scripts, or references to the 317 disjoint legacy candidates.
+
+This distinction matters:
+
+- `generated = true` means the repository retains and can deterministically
+  reconstruct all selected static files;
+- `deployed = false` means no external host receipt or public availability
+  observation has been made; and
+- `reviewed = false` remains true in substance: generated prose and pages do
+  not grant human, owner, freeze, retrieval, training, or evaluation authority.
+
+The API keeps replay order and binds 1,038 dependency edges, 13,862 tactic
+lines, 755 theorem-definition relationships, 2,027 definition occurrences,
+and 58 conceptual definition edges. The manifest binds the other 812 files.
+All local links and fragments are checked, the stylesheet is scoped below
+`body.pa-selected-library`, and every page carries a candidate banner.
+
+The schema semantic/artifact hashes are
+`eefb4b1154581f248696de3f81bd90296398e5353c6a42d0d01f35b3ccdb2abb` /
+`8cdf0e947ce7156109b7591c99ed28d8ee1f938edd3cddfb414d48d7efacdafd`.
+The API artifact/root hashes are
+`a7a4be8ba895b9e69955e82bda5bbfe7418eeda47632a59899e6ba0896acaaf0` /
+`2efbb00a763f120e5cee6271f3d64838b3a54e04e73a4c78c738f4d50f0b83b1`;
+the manifest artifact/root hashes are
+`751c3eefc99e5b30d612049fd99a0d890cd696b3fda0f426ca64d835c5fe2e6f` /
+`94b38f4914853c87315f0bc94d33347164d4cb7c01cd81568b1c4f47cb1b1563`.
+The external readiness artifact/root hashes are
+`69b11b858348e3dda9a007b495c7198634822623d45314f6f82f551141bc9357` /
+`8f7bf0fc18917b92d02d862e13507d28f1bf7d2842fcd93427d3a2879a193b1f`.
+
+The page core passed 11 focused tests in 74.53 seconds. The WMI runner now
+reconstructs and compares it before building the Book, then the integrity gate
+audits the copied 813-file tree separately from the legacy explorer. Check the
+retained source without writing:
+
+```console
+python3 scripts/build_peano_hydra_library_pages.py \
+  --output-dir book/_static/pa-selected-library \
+  --report artifacts/peano-hydra/library-page-deployment-candidate-v1-readiness.json \
+  --check
+```
+
+Nothing in this step changes metadata-v2's historical 240 deployed page pairs
+or its two 144-row gaps. A host receipt and an additive metadata successor are
+required before those numbers can change. The integration harness passed 11
+tests, 17 focused Book tests passed, and the warning-as-error Book build plus
+its 3,133-page integrity scan completed with no broken targets, fragments,
+escapes, remote runtime assets, or unsafe active links.
+
+## Auditing what one tactic recipe actually needs
+
+The first A2 slice asks a deliberately narrower question than “what are the
+minimal dependencies of this theorem?” It asks:
+
+> If we leave the tactic script unchanged and remove one imported theorem,
+> does that exact script still construct a certificate accepted by the kernel?
+
+That wording is the key to interpreting the result. Suppose a theorem has
+target $T$ and declared direct dependencies $D_1,\ldots,D_k$. The body checker
+does not trust or replay those named theorems. It temporarily turns them into
+ordinary assumptions and checks the curried proposition
+
+$$
+D_1 \to D_2 \to \cdots \to D_k \to T.
+$$
+
+The generated `intro` prelude names those assumptions exactly as the retained
+script expects. The authored tactic lines then run unchanged. Success is not a
+tactic-layer opinion: the compiler returns the real formula and proof objects,
+and the independent Peano Lab kernel checks the certificate from the empty
+context against the complete curried target. This is useful positive evidence,
+but it is intentionally non-admitting. Named dependencies have not yet been
+resolved into closed certificates for $T$.
+
+### Why the audit repeats to a fixed point
+
+The algorithm starts from the declared vector and visits it backwards. A
+kernel-accepted omission is kept immediately. After a complete pass, it starts
+again with the shorter vector. It stops only when a complete pass accepts
+nothing:
+
+```text
+working := declared dependencies
+repeat
+    removed := false
+    for dependency in reverse(copy(working))
+        candidate := working without dependency
+        if kernel accepts compile(exact script, candidate)
+            working := candidate
+            removed := true
+until one complete pass has removed nothing
+```
+
+Repeating matters because removing an assumption changes the proof context in
+which later commands run. Fixing reverse declaration order makes the result
+reproducible; it does not make it order-independent or globally optimal. The
+terminal pass provides a leave-one-out observation for every dependency still
+present in this particular fixed point.
+
+Errors are evidence only when their meaning is controlled. A normal tactic or
+incomplete-proof rejection says that this exact recipe did not survive that
+omission. It does **not** say that no proof exists without the dependency. A
+timeout, resource limit, malformed input, unexpected exception, or internal
+failure is `unknown`; it aborts the entire document and can never masquerade
+as a necessary edge. The compiler preserves finalization-limit status before
+the user-facing `checked_final` path can turn it into a generic error.
+
+### What happened on the 384-theorem library
+
+Two complete builds over the selected replay pack were byte-identical. Starting
+from 1,038 declared edges, the audit made 1,060 omission observations:
+
+| outcome | count | meaning |
+| --- | ---: | --- |
+| kernel accepted | 3 | the exact script checked with this assumption removed |
+| exact recipe rejected | 1,057 | this exact script failed; no necessity claim |
+| unknown | 0 | any nonzero value would have blocked the artifact |
+
+The three candidate reductions are:
+
+| theorem | candidate omission |
+| --- | --- |
+| `odd_add_odd` | `add_succ_left` |
+| `finite_bounded_injective_surjective` | `beta_at_unique` |
+| `beta_product_swap_last_invariant` | `le_refl` |
+
+Thus the diagnostic candidate vector has 1,035 edges. The public library still
+has 1,038. Each affected A2.1 row says
+`requires_certificate_rebuild = true`, because its retained closed certificate
+was constructed under the old vector. That field remains immutable historical
+evidence. The A2.2 successor described below now supplies and checks all three
+closed rebuilds without rewriting A2.1 or proposing a graph change.
+
+The readable and submitted-construction receipts have different hash domains,
+so later pipelines cannot silently substitute one role for the other. In A2.1,
+however, both observe the same retained `TheoremSpec` tactic recipe. No
+optimizer program, comparison set, or Pareto receipt exists yet. It would be
+incorrect to call the result an optimized proof, a best-known construction, a
+minimal dependency vector, or a publication union.
+
+The schema's semantic/artifact SHA-256s are
+`54d6b5128067b1f93d8f7393e0730d7da3a4ac838a0b55b6b6fe0ce92a0d4bc4` /
+`ee6eb4daf48fbf320e79a54065befed758ff33c5251ec4a2c18b8093c349c0ff`.
+The retained sidecar occupies 4,188,048 bytes. Its artifact SHA-256 is
+`4b867bb1ce0161e6392f29d9262e035929e5da86b224063546a2a42c17fd9040`,
+its document root is
+`12166de8fb0cc028c3b026deb939418a19f001ff8342acab479d433e15d3a83e`,
+and its replay-ordered theorem-record root is
+`8ae5553e79b15c4e83a76e1eab92cb0983539fa913dfe2bec29d0fb17fb7d784`.
+All authority and eligibility flags are false, and the existing replay pack,
+metadata ledgers, certificates, generated pages, and graph are unchanged.
+
+The build command writes nothing unless an output is explicit. The retained
+artifact can be reconstructed and compared read-only with:
+
+```console
+python3 scripts/build_peano_hydra_library_dependency_audit.py \
+  --check \
+  --output artifacts/peano-hydra/l0-dependency-audit-candidate-v1.json
+```
+
+Twenty-six focused tests cover the small fixed-point fixtures, independent
+kernel rejection, structured resource and internal failures, strict canonical
+JSON, fixed source and import provenance, hash-binding mutations, no-follow
+loading, create-only atomic publication, and the exact retained pins. This
+closes a useful A2 diagnostic subgate. It does not close A2, H1.1, or any
+training, retrieval, evaluation, publication, or freeze gate.
+
+## Closing the three reduced constructions
+
+A2.1 proved three shorter *curried carriers*. It did not yet prove the three
+original theorems from no assumptions. On 2026-08-09, A2.2 performed that
+missing
+step, without turning the experiment into a library edit.
+
+For a candidate direct vector $D_1,\ldots,D_k$, the unchanged tactic recipe
+first constructs and checks
+
+$$
+D_1 \to \cdots \to D_k \to T.
+$$
+
+The rebuild then obtains each $D_i$ from the exact retained replay pack and
+checks that dependency certificate independently from the empty context. It
+peels the generated implication introductions and inserts the checked
+dependencies as a deterministic nested `Cut` spine. Finally, the independent
+kernel checks the resulting closed proof from the empty context against the
+original, uncurried $T$. A named library theorem never becomes a kernel axiom;
+its certificate is proof data.
+
+This distinction matters. “The body still compiles after removing a
+hypothesis” and “the original theorem has a closed certificate using that
+shorter direct Cut spine” are different propositions about different proof
+objects. A2.2 now has the second kind of evidence for all three A2.1 rows:
+
+| theorem | direct edges | artifact bytes | proof nodes | Cuts |
+| --- | ---: | ---: | ---: | ---: |
+| `odd_add_odd` | 4 → 3 | 14,977 → 13,640 | 302 → 274 | 7 → 6 |
+| `finite_bounded_injective_surjective` | 15 → 14 | 1,913,452 → 1,870,657 | 42,463 → 41,341 | 1,266 → 1,235 |
+| `beta_product_swap_last_invariant` | 6 → 5 | 391,540 → 386,189 | 7,439 → 7,413 | 205 → 203 |
+
+Across these three candidate constructions, the direct vectors change from 25
+to 22 edges. The canonical certificates are 49,483 bytes smaller and contain
+1,176 fewer intrinsic proof-tree nodes and 34 fewer Cuts than their immediate
+retained predecessors. This is a useful exact comparison, but it is only a
+descriptive predecessor comparison. No optimizer program or comparison set
+has yet been declared, so the smaller objects are not called optimized,
+minimal, Pareto-optimal, or best-known. Counts based on Python object identity
+or alias sharing are schedule- and assembly-dependent; the sidecar marks them
+non-comparable and excludes them from the deltas.
+
+Nor did the library suddenly become free of the omitted lemmas. The direct
+Cut spine for `odd_add_odd` omits `add_succ_left`, but that name remains in its
+retained transitive closure. The same is true of `beta_at_unique` for
+`finite_bounded_injective_surjective` and `le_refl` for
+`beta_product_swap_last_invariant`. “Not a direct edge in this construction”
+is the exact claim; “not used transitively” would be false.
+
+The candidate sidecar is
+`artifacts/peano-hydra/l0-construction-rebuild-candidate-v1.json`. The schema's
+semantic/artifact SHA-256s are
+`a189ad140f5e7093f11a2f433705d4dafb71d474672e822cf39e45dbeb1ca571` /
+`d1fc09c035e28f96913cdadd63f17c853901fc8dcd2e17df3a094a919612bf9f`.
+The exact 3,106,352-byte sidecar has artifact SHA-256
+`6176c44a63f791bc27ddd550aa915db6e78c8fbf9f9f0918299f1b3f639fc182`,
+document root
+`91ecc6b4bb22f4b46cdfa3fcdd2401dce47d8fef38c15101d221c207fd7793b0`,
+and replay-ordered theorem-record root
+`42d718621f91b52bf55a7909751eab695fefd28da2989863de50470d14397ef5`.
+It can be rebuilt and compared without overwriting it:
+
+```console
+python3 scripts/build_peano_hydra_library_construction_rebuild.py \
+  --check \
+  --output artifacts/peano-hydra/l0-construction-rebuild-candidate-v1.json
+```
+
+The focused adversarial gate covers fresh empty-context checking, exact pinned
+inputs, deterministic rebuilding, certificate and metadata mutations,
+rerooted forgeries, path safety, the explicit direct Cut spine, and the
+create-only command-line boundary. The admitted `TheoremSpec` records,
+retained certificates, replay pack, metadata ledgers, catalog, generated
+pages, and 1,038-edge public graph remain unchanged.
+
+That focused suite passed 23 tests in 44.12 seconds, and the exact retained
+CLI `--check` passed.
+
+This checks only the A2.2 rebuild box. Every authority, minimality,
+optimized-best-known, review, publication, freeze, training, retrieval, and
+evaluation flag is false. A2 still needs a declared optimizer, comparison set
+and Pareto evidence, separately audited readable and optimized vectors, and a
+verified ordered publication union.
+
+### Freezing the experiment before running it
+
+A proof optimizer is easy to overstate. If we search first and describe the
+search space afterward, “best” may merely mean “the candidate we happened to
+notice.” A2.3a therefore freezes a deliberately small experiment before it
+creates any result.
+
+The pilot names three theorem roots: `odd_add_odd`,
+`finite_bounded_injective_surjective`, and
+`beta_product_swap_last_invariant`. For each root it will compare exactly
+three constructions:
+
+1. the exact retained replay certificate;
+2. the exact shorter direct-Cut certificate from A2.2; and
+3. a new closure-only certificate assembled by the existing layered replay
+   compiler.
+
+The third construction is worth separating from tactic search. We start with
+already checked closed proofs, verify the declared outer Cut spine, peel that
+spine to recover a modular proof body, reintroduce its assumptions, and check
+the curried body. The existing compiler then packages only the reachable
+dependency closure. It does not rerun the theorem's tactic script, and it is
+not a newly invented factorer.
+
+Each finished certificate will be checked from the empty context against the
+original theorem. The comparison will use only four reproducible quantities:
+serialized artifact bytes, proof-tree nodes, proof depth, and Cut nodes. One
+candidate dominates another if it is no worse on all four and strictly better
+on at least one. Every nondominated candidate will remain visible. A stable
+display representative will be chosen by
+
+```text
+(proof_nodes, proof_depth, cut_nodes, artifact_bytes,
+ candidate_kind_order, artifact_sha256, candidate_id)
+```
+
+That last choice is a user-interface convention within this exact pilot, not
+a mathematical optimality theorem. Object-alias counts, wall time, and memory
+are excluded because they do not describe the transported proof artifact in
+the same stable way.
+
+There is a second subtlety. A layered Cut tree can package an entire reachable
+closure without telling us which dependencies deserve to be direct edges.
+The protocol therefore records the direct vector and transitive closure as
+different surfaces. Selecting a compact layered certificate cannot silently
+certify an optimized dependency vector; a domain-separated audit must still do
+that work.
+
+The source protocol is now frozen. Its schema semantic/artifact SHA-256 pair
+is
+`07e5842c221fe84337e163ce5c858ab03dfbbc93d1477f5661edfdd6f8ba3978` /
+`006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae`.
+The program, no-default-write CLI, and adversarial-test source SHA-256s are
+`7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee`,
+`3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee`,
+and
+`d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9`.
+The focused protocol gate passed 59 tests in 0.31 seconds.
+
+What did **not** exist at source freeze matters just as much: no real local or
+WMI pilot build, result sidecar, layered result certificate, metric vector,
+nondominated set, representative, Pareto frontier, document root, or theorem-
+record root. Running the no-argument CLI merely reports protocol readiness and
+writes nothing:
+
+```console
+python3 scripts/build_peano_hydra_library_optimizer_comparison_pilot.py
+```
+
+A retained build needs an external canonical producer-source state. It is
+byte-bound but deliberately carries `git_verified=false`; a separate receipt
+must verify the commit, tree, ancestry, and clean submission. The execution
+described below preserves this ordering. Its result still does not complete an
+independent optimized-vector audit, so “best-known,” publication, A2,
+authority, review, freeze, training, retrieval, and evaluation remain false.
+
+### A2.3a external execution infrastructure (no submission/result)
+
+The frozen question now has a deliberately narrow way to run elsewhere. The
+first program observes a clean committed source tree without importing the
+optimizer. It emits the exact eight-field producer state expected by the
+protocol, still marked `git_verified=false`, and a separate receipt for the
+clean HEAD/tree, stage-zero blobs, live bytes, and Git tool. Separating the two
+documents prevents an operational Git check from turning into mathematical
+authority.
+
+The answer is then checked by a different program in a fresh interpreter. That
+verifier may import the standard library and pinned Peano kernel, but not the
+producer, layered compiler, tactic engine, library, or replay-pack code. It
+canonicalizes and checks all nine certificates from the empty context, then
+recomputes the metrics, three nondominated sets, representatives, aggregate
+counts, and roots. Thus agreement with the producer is evidence about this
+fixed comparison, not a declaration that any dependency vector is optimal or
+ready to publish.
+
+The WMI worker makes nondeterminism and failure classification explicit. Two
+fresh producers run with hash seeds 0 and 1 and must emit identical bytes; a
+third process verifies those bytes with seed 2. The fixed request is one
+`cpu_idle` CPU, 4 GiB, and 15 minutes under x86-64 CPython 3.12.12. Timeout,
+OOM, preemption, missing evidence, or an untyped process failure means
+`unknown`, not “optimizer failed.” The execution receipt is written last, and
+a later collector binds it to one terminal Slurm row and the exact bounded
+logs.
+
+There is an important operational footnote. The submitter defaults to
+`--test-only`, but that mode still creates or verifies the immutable
+content-addressed snapshot on WMI before asking `sbatch --test-only` to check
+the request. It creates no Slurm job. A real job needs both `--submit` and the
+literal confirmation `PEANO-HYDRA-A23A-WMI-PILOT`. This tranche claims no
+successful test-only outcome, real submission, or cluster job. Both wrappers
+accept an optional syntax-validated `WMI_SSH_JUMP`, passed only as SSH `-J`
+beside the validated target; an observed target/jump route is an operational
+transport mechanism, not execution evidence.
+
+The source-state generator/test identities are
+`4812314f101ac302f712a87641f37ffb627e4cbaa916605e6c7e1e0b0ed90a26` /
+`acdde9367e5fdea7fdfc4e6cef1c3ee4c2bddeb4b9fbe1e025581eb3c7fe8860`.
+The verifier module/CLI/test identities are
+`683ee529ed4be0e93504846340eeddf47eae1cb3f84967168a971d422ade1dbe` /
+`1250d0202236a6aa727509c5270767fe91e48cf34e5a6fd9c13ac1a59722f014` /
+`08f838332ffca805c934a6c44cf59148e9f0f9168c784f1b7a9c8b8cf353239a`.
+The WMI runner/sbatch/submit/collect/test identities are
+`46c9bea044640ccf057a5113eff2f3c6161206c55521b8fcd7c48e7342ff8632` /
+`1f09c62532a0c9f10fc11bb00a420e1eea1967dc70686ad503c1e5207b75538c` /
+`ce94c5e5e77ff83998f147fb77d3e698eae41366774867238b16990accc7fbee` /
+`ddafef2eab12d18ba766325b5dbb077a0075cc8589bc553a72bd60aff910cb0e` /
+`cc75ad16a90c289d07851f7d59cf79f2e960acd86d9257f8155a1cabc532a755`.
+The WMI protocol file passed 18 tests in 0.72 seconds. The three focused suites
+passed 52 tests in 8.45 seconds (10 + 24 + 18). The earlier independent threat
+audit reported no blocker before the final route refreeze.
+
+This tranche was runnable infrastructure, not yet a run. The successor below
+records the later execution separately so infrastructure tests do not masquerade
+as optimizer observations.
+
+### The fixed A2.3a pilot ran, and its boundary stayed small
+
+WMI job `219765` ran the frozen comparison from clean commit
+`0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d`, tree
+`9051b43aa3f7f75d37ce8d410b9c7a81ba472d94`, and snapshot
+`707398a7494482dbcc38c8438582688e01f88b395ab61e64be4a7d6396178824`.
+The two producer seeds emitted the same 848,463 bytes. The separate seed-2
+verifier accepted all nine proof artifacts from the empty context and rebuilt
+the comparison. Terminal collection records `COMPLETED`, exit `0:0`, 60
+elapsed seconds, and `completed-and-independently-verified`.
+
+Here are the observed vectors, written as
+`artifact bytes / proof nodes / proof depth / Cuts`:
+
+| Theorem | retained replay | A2.2 direct rebuild | layered closure |
+| --- | ---: | ---: | ---: |
+| `odd_add_odd` | `14,977 / 302 / 32 / 7` | `13,640 / 274 / 31 / 6` | `12,709 / 269 / 37 / 3` |
+| `finite_bounded_injective_surjective` | `1,913,452 / 42,463 / 89 / 1,266` | `1,870,657 / 41,341 / 89 / 1,235` | `297,637 / 8,355 / 95 / 20` |
+| `beta_product_swap_last_invariant` | `391,540 / 7,439 / 67 / 205` | `386,189 / 7,413 / 67 / 203` | `118,018 / 2,011 / 79 / 9` |
+
+All three frontiers are exactly
+`[a2.2-direct-cut-rebuild, layered-closure]`. The old retained artifact is
+dominated inside this fixed set. The layered construction has fewer bytes,
+nodes, and Cuts, but it is deeper; therefore the direct rebuild remains on the
+frontier. The preregistered node-first tie-break chooses `layered-closure` as
+the display representative in all three cases. “Representative” here means a
+stable display choice among three named candidates, not “best proof we know.”
+
+The candidate is retained at SHA-256/root/theorem-record root
+`3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b` /
+`90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770` /
+`4cfcbe22312ff2b92022189e65d3742bc096ba989dacaa82b2054e84282928e5`.
+The independent verification is retained at
+`6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a` /
+`e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc` /
+`18f882717346477304285c9336d7b769ccf95cd1b58c32b65d335f3e8caa4188`.
+Execution and collection receipt artifact/root pairs are
+`779a971237f9ac5efe3a86dca5b5c4d74a6da56ab154b91e106f7fd1dac63a34` /
+`7a597563c173cd0cb3d57ff42cd566a8531756e84bf8ba907e7c79ec7295dc0e`
+and
+`25e616fc9225ab59db6a089e8a53ed2d44915a54b42f073bcaaa020fc2ff609a` /
+`52339b926ea8b9650787a3db138185e21144f6cdf83596d224ccc6b23435daf2`.
+A controlled local CPython 3.12 replay of the retained verifier reproduced its
+18,327 bytes and accepted 9/9 artifacts. It did not rerun the optimizer
+locally.
+
+The retention boundary is intentionally literal: 19 files, consisting of the
+candidate, independent verification, and 17 operational source, deposit,
+submission, execution, collection, scheduler, and log files. The original
+277,025,280-byte transfer archive was deleted after collection and was not
+independently rehashed. Its snapshot hash is bound transitively through the
+receipts; that is weaker than retaining and rehashing the archive itself. The
+`sacct` row is an unauthenticated scheduler observation. Its `MaxRSS` field is
+empty, so the run supplies no measured peak memory or memory ceiling.
+Scheduler and verifier stderr are empty; the two producer stderr files retain
+the same harmless pre-existing Python 3.12 `SyntaxWarning`s for `\/`. The
+focused retained-result gate passed four tests in 3.40 seconds; its 33,374-byte
+source SHA-256 is
+`28b251f9ab75bea0012949390923b039e267d4721c09bd9ff9b6a08de89cc602`.
+
+The result documents still say `producer_git_verified=false`; the separate
+clean-Git receipt proves only the operational source boundary. No readable or
+optimized direct dependency vector has yet passed its independent publication
+audit. Every minimality, global-best/`optimized_best_known`, vector-audit and
+completeness, publication and publication-union, review, lineage, freeze, A2,
+proof/admission/publication authority, training, retrieval, and evaluation
+flag therefore stays false. Nothing entered the admitted library, 1,038-edge
+graph, catalog, generated page source, or deployed site.
+
+### The A2.3b vector audit is frozen source, not evidence yet
+
+The next bounded question is whether every named direct dependency survives a
+single-edge omission test on both of the constructions that matter for the
+three pilot roots. A2.3b freezes that question for exactly
+`odd_add_odd` (256), `finite_bounded_injective_surjective` (376), and
+`beta_product_swap_last_invariant` (379). Their direct vectors contain 3, 14,
+and 5 edges: 22 edges in all.
+
+Every edge is tried once through `readable-direct-closure` and once through
+`proposed-layered-closure-construction`, in reverse vector order. The result
+schedule is therefore exactly 22 omission attempts per route and 44 overall,
+after one full-vector baseline per root and route. The readable path freshly
+builds the dependency-curried body and closed direct-Cut certificate. The
+layered path must freshly rebuild the omitted root body, recompute that root's
+closure over fixed A2.2 non-root vectors, recover every modular body and
+provenance row, and then call the existing layered compiler. Reusing a cached
+baseline root body is forbidden.
+
+Only a structured rejection at the exact frozen route is negative evidence.
+An accepted omission or any unknown, malformed, unsupported, internal, or
+resource outcome aborts the candidate document. Although the two assembly
+receipts are domain-separated, they share the same pinned root-body compiler
+and kernel. A preassembly body rejection is recorded as one shared
+observation, not two independent confirmations. Likewise, each per-root
+ordered union is only a bounded local diagnostic; it is not written to the
+public graph.
+
+The frozen source identities are:
+
+| Source | Bytes | SHA-256 |
+| --- | ---: | --- |
+| schema | 21,875 | `c4af0d2f850ad16fa7d4a3c086ad13356020a4ccb9a15e0d612babb8db690283` |
+| producer | 120,990 | `3f2c9df051ce4271466b70bdf21ffd59d7ffc298905302d8b42946ca2c87804e` |
+| controlled-worker CLI | 24,509 | `29f56547e6f228cf812df6c013670977de2088d2fccbb7da2fb64cda0ad7737a` |
+| focused synthetic test | 94,869 | `6c3a0490b86ac2ae7aef3206c480fa14f6e15994106153788d79633fc3025d06` |
+
+The schema semantic SHA-256 is
+`6782197c9925f5552aab030a11b996c157e2d06344a2d136d8babc1ee1fdc3df`,
+and the 44-file implementation-source root is
+`4260928ce3d4243c548e3beda3d6bf823aa9f480dbf58367cab64cad8bf3cdb0`.
+The CLI requires an externally supplied four-file producer source state,
+authenticates implementation bytes before imports, bypasses the eager Hydra
+initializer, and runs only in a sanitized fresh `python -B -P -s -S` worker.
+It writes nothing by default and an explicit result path is create-only.
+
+Seventy-eight synthetic/adversarial tests passed in 2.24 seconds. At this
+source-freeze checkpoint they had not executed the six real baselines or 44
+real omission attempts. The later first WMI attempt remained `unknown` and is
+described below; it did not create an accepted A2.3b result or publication
+artifact.
+
+### The A2.3b runner preserves the difference between checking and observing
+
+The next source-only tranche made the experiment executable before its first
+run. A producer-independent clean-Git program binds the
+four frozen A2.3b sources and its own committed stage-zero blob. It emits the
+small source state expected by the producer with `git_verified=false`, then a
+separate receipt binds the commit, tree, blobs, live bytes, and Git tool. This
+keeps operational provenance out of the producer's mathematical claim.
+
+The independent verifier has an equally important narrow boundary. It loads
+only the standard library and pinned Peano kernel. The three readable
+baselines are joined to the exact A2.2 artifacts; the three layered baselines
+are joined to the exact retained A2.3a artifacts. All six are decoded,
+canonically re-encoded, and checked from the empty context. The verifier also
+recomputes the candidate's structure and roots, including exactly 44
+route-labeled producer records paired into 22 shared root-body observations.
+It cannot replay the tactic compiler, so those are not 44 independently
+verified rejections—or even 22 observations from independent algorithms.
+`negative_observations_independently_verified` and
+`route_rejections_independently_verified` therefore stay false.
+
+The WMI worker uses x86-64 CPython 3.12.12 and three fresh isolated processes:
+producer seeds 0 and 1 must emit identical bytes, then a
+seed-2 verifier checks the six baselines and the structural boundary. Only the
+successful execution receipt may say that the 44 producer records are bound
+to actual executions; that still is not independent negative replay. The
+fixed envelope is one `cpu_idle` CPU, 4,096 MiB, and 15 minutes. Resource,
+timeout, process, malformed, scheduler, or missing evidence remains
+`unknown`, and the receipt is create-only and written last.
+
+The submitter defaults to `--test-only`; real submission requires the literal
+confirmation `PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. One clean-commit test-only
+invocation exposed an empty optional-SSH-array bug and stopped locally before
+SSH. Six fake-SSH/no-network cases now cover unset, explicit-empty, and exact
+`-J jump.example` routing for both wrappers. At that checkpoint there had been
+no successful transport or WMI job. Source-state generator/test identities
+are
+`bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
+`728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917`.
+Verifier module/CLI/test identities are
+`b5f5cf39ea7b12d3ed52ee176ed733b28fa2e9224640e89dac77df87b14dfab1` /
+`ed9e234f5af04e5878e6f4fd23aace512c66c0bc249fc33dd19c1fcbcdb908c2` /
+`43ade850e88d5e7f2ce92ece60857892b79beb2e4b38b0d3a709558352b4d04b`.
+Runner/sbatch/submit/collect/test identities are
+`2332115e988aada771258f861b986486bc40dc05865935ff3a699453acfe96f1` /
+`611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
+`9774a8705112c0222d300d9ef89235dbc493eb159b907e0e977337b9042d9fe2` /
+`5d006e8c453ae78c70fa880695755f8ddf5b488459bb06ab4dd2738ad281089d` /
+`d93b3a12f34829bc56f0729a099dc694f9d42dbe7c36c7ffe92844075cb961ef`.
+
+The focused source-state, verifier, and WMI gates pass 45 tests in 15.27
+seconds (10, 13, and 22 respectively), and an independent threat audit passed.
+Those tests establish only infrastructure contracts.
+
+### An `unknown` WMI run is not a negative theorem result
+
+Job 220218 ran the two producer processes to completion. Each wrote the same
+3,160,729 bytes, with SHA-256
+`f93e410f64425b31090c933fd7cb7b92bee8f071c3152c79fa55f88001d9841a`
+and candidate document root
+`f26234fa38634dd154afd504f3d41c3b0529ef7a7d2e8930569ebbf70b6723a6`.
+This is strong reproducibility evidence for the producer bytes. It is not an
+independent rerun of any negative tactic observation.
+
+The verifier then rejected the first layered baseline receipt for
+`odd_add_odd`. The discrepancy was in the verifier's expected provenance:
+the old implementation transported A2.3a modular source rows, while A2.3b
+freshly reconstructs them. The failed seed-2 run emitted no independent-
+verifier receipt. The execution protocol consequently emitted
+`status=unknown` and `classification=independent-verifier-process-unknown`,
+with root
+`cd1872d348b201ba1259fa116be43d66555576e30d3dbc9811fa04c85bdda876`.
+Terminal collection also remained `unknown`, at root
+`a610f3feaa3b1d5afa6cbb64be34ea743246f02eb56bc1cc3a2b36ad4dedd681`.
+Those roots preserve what happened without granting a scientific negative
+conclusion about the dependency vectors.
+
+The corrected verifier independently reconstructs each modular body source
+from the pinned A2.1 receipt route, A2.2 rebuild row where present, and replay
+identity. It then checks the stable body identity separately. A local
+postmortem against the preserved candidate yielded byte-identical verifier
+receipts under two hash seeds: 16,925 bytes, SHA-256
+`707942bb93d5ad9d26ddf3bbd6733e5b5d403508146a70981c2b507b5a01aad7`,
+root
+`efe9643d7b3b99f40b9bef6042285efeaa9e5f03d145a09a580a615cd15efa4a`.
+This local regression diagnostic is not the missing WMI verifier receipt and
+has no retrospective execution or result authority.
+
+The refrozen module/CLI/test sizes are 109,448 / 18,653 / 21,277 bytes; the
+runner/WMI-test sizes are 107,619 / 31,983 bytes. The fresh corrected rerun is
+recorded next; it does not promote any job-220218 bytes. Every vector-
+completeness, independence, best-known, publication, A2, authority, and
+eligibility flag remains false.
+
+### The corrected rerun proves its boundary, not dependency necessity
+
+WMI job `220220` executed from clean commit
+`720021aec7afff0463ef8dd1180db2702b415301`, tree
+`03383d9b3c5850edfeb8f3401d55116fa4cdd5a2`, and snapshot
+`64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4`.
+Hash-seed-0 and hash-seed-1 producers exited successfully and generated
+byte-identical candidates. A separately loaded seed-2 verifier also exited
+successfully. The terminal scheduler row is
+`220220|COMPLETED|0:0|0:0|237||4G|1|c3n1`. The execution classification is
+`two-producer-byte-identity-and-independent-baseline-verification`; the
+collection classification is
+`completed-dual-producer-and-independent-baselines-verified`.
+
+The 3,160,729-byte candidate has artifact SHA-256, document root, and theorem-
+record root
+`4f4965508b63d852697c94fe0e7707759b39c5cf456ec2db8aa5a5afe719f2ad`,
+`21f4c7a06dd8b1abf01d8eddd8c1942733f0955141ba682d53229078e15d5e85`,
+and
+`6a90eee2d8a306e41b944735940044b142cf1c4f02441133c25c94111e11d336`.
+For the 16,925-byte independent verifier receipt those identities are
+`50c207c4de0cabe8a50518da4d20e83925f0e1df29ffd78df05e249ea18d4396`,
+`ef0dfac8552789bb4dc0e6694a1704c63a8781a93a1f0d9117c6e5c6babcfbd1`,
+and
+`87bef2a0d30c789424a15bb257e1bc743f74f4bfa27fb899ab59a44f4d522585`.
+Execution artifact/root identities are
+`dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318` /
+`c010a79955e93b29651557977001f6f6abff7cd63ba7f1fa1b9deb2a5bc3c08b`,
+and collection artifact/root identities are
+`d1602e23f7736482b039c3d32537fa012d91302f42d62f75ccab9c11583542a9` /
+`9f58b68b2fe811cfa82a25395e53b08c01cdd145b57f234d2cde0ca287cf42e5`.
+
+The verifier independently authenticates, canonically re-encodes, and checks
+in the empty kernel context six full-vector artifacts. Artifact SHA-256 and
+`(bytes / nodes / depth / Cuts)` are:
+
+- `odd_add_odd`: readable
+  `8064d28bd99adbaa1cde42c7ebd0f94880b345c889d6afc18e4b607749310ecc`
+  `(13,640 / 274 / 31 / 6)`; layered
+  `3fe6ba0a5ab6ca95a159ddb2d8fa44fd674a0eab4376069b3cc2db9f6c3c2962`
+  `(12,709 / 269 / 37 / 3)`;
+- `finite_bounded_injective_surjective`: readable
+  `623865d90504af44cddca3d76ac4f009be8aa289e80d2785b72b121a52954504`
+  `(1,870,657 / 41,341 / 89 / 1,235)`; layered
+  `af1410f83a9ab66080a80311d9262341f4cbd4b136a64e889b94c7f12fc342e1`
+  `(297,637 / 8,355 / 95 / 20)`; and
+- `beta_product_swap_last_invariant`: readable
+  `507940a3e456122fadb3b43d34891a70c91baa87615be80c1fca059e9ebd82df`
+  `(386,189 / 7,413 / 67 / 203)`; layered
+  `fc08873008eea245be7b8b2961e1a00bf659c25dd257785d2e2345ff29fde9a1`
+  `(118,018 / 2,011 / 79 / 9)`.
+
+That independent check must not be confused with replaying the negative
+compiler behavior. The two producer executions bind 44 route-labeled
+exact-recipe rejection records. The verifier checks their canonical structure
+and pairs them into 22 unique shared root-body compiler observations, but it
+does not invoke the tactic compiler. The execution receipt therefore records
+the observations as execution-bound; the verifier receipt itself
+conservatively keeps `producer_observations_execution_bound=false`,
+`negative_observations_independently_verified=false`, and
+`route_rejections_independently_verified=false`. There are 44 routed records,
+not 44 independent negative observations, and the 22 shared observations are
+not yet independently certified proofs of dependency necessity.
+
+The retained directory
+`artifacts/peano-hydra/a23b-wmi-vector-audit-220220/` contains exactly 19
+nested regular files: the two canonical documents under `results/` plus 17
+operational records. They total 3,248,650 bytes and have C-sorted
+`<sha256>\t<bytes>\t<relative-path>\n` inventory root
+`e9eec4b239d3f9b870695b51ace1ee8f5667071e52b3d30378ebb056d839476f`.
+No top-level result copy, transfer archive, complete snapshot, global ledger,
+or job pointer is retained. The snapshot digest is receipt-bound rather than
+independently rehashed from a retained archive. The unauthenticated `sacct`
+row has empty `MaxRSS`, so it does not support a peak-memory or memory-ceiling
+claim. Raw job-220218 evidence is intentionally absent; the earlier `unknown`
+receipts and mismatch regressions preserve that history without making it
+part of the successful evidence bundle.
+
+The retained-result gate source is 51,450 bytes with SHA-256
+`6a5031239729474a91bb4e1a14d1ebd4639c126e35a307e76805751df0501de4`;
+its four tests passed in 2.63 seconds. The 32 CI-sharder tests passed in 0.25
+seconds. The bounded source-state, corrected-verifier, WMI-protocol, retained-
+result, and sharder gate passed 81 tests in 17.92 seconds. The 103-entry CI
+profile assigns this result gate 3,500 ms and models eight loads of 541,000 /
+541,000 / 540,800 / 541,000 / 541,000 / 541,000 / 541,000 / 541,000 ms.
+
+Job 220220 closes only bounded execution, independent validation of six
+baselines and the structural receipts, and exact retention.
+`bounded_three_root_vector_audit_complete` remains false. Independent replay
+or certification of the 22 negative observations, derivation and independent
+audit of a genuine optimized-construction vector, global and vector
+completeness, minimality, best-known status, publication and publication
+union, graph application, and A2 completion all remain open. Every authority,
+review, freeze, lineage, and training/retrieval/evaluation eligibility flag is
+false. The public theorem graph remains 1,038 edges.
+
+### A2.3c freezes the independent replay before running it
+
+A2.3c narrows the remaining negative-evidence question to one controlled
+experiment. Its frozen shape is exactly three full-vector baselines and 22
+unique reverse-order single-omission observations, followed by a two-to-one
+join to the 44 A2.3b route-labeled rows. The default CLI emits only a canonical
+source-protocol description: it runs no proof campaign, creates no result, and
+writes no file. At that source freeze there was not yet a local or WMI result.
+
+The replayer supplies an independent wrapper in a fresh controlled process. It
+does not import the A2.3b producer, call `compile_candidate_body`, or invoke a
+readable or layered route assembler. It does share the pinned theorem parser,
+tactic engine, and intuitionistic kernel. This is process/wrapper independence,
+not independent implementation of the lower proof machinery. A future passing
+campaign could independently reproduce the 22 exact omitted-edge script
+failures at that lower boundary; it would not independently verify the two
+route constructions or prove logical dependency necessity.
+
+The 26,551-byte schema is pinned at artifact/semantic SHA-256
+`be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4` /
+`a0d84c3168a9b779bfb5fdc483a2ec847e4cc34f85bcf8aee4c7351a6363ccb0`.
+The replayer module, controlled CLI, and focused test are 91,304 / 49,259 /
+87,120 bytes at SHA-256
+`f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4` /
+`524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b` /
+`dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
+The source-only synthetic/adversarial gate passed 54 tests in 5.57 seconds.
+
+The separately frozen result verifier is standard-library-only and tactic-
+free. Its module, CLI, and focused test are 85,510 / 16,309 / 23,256 bytes at
+SHA-256
+`33f197045cabe95bda3b7ae0ff871b08cb1b186a861827ea08ad0f76cf7908d8` /
+`ab013184633e3ef2b92d8ca9521d39a95646576ea7ede8e53e8b74f6f86ffd05` /
+`5edcb9d22d30de7e0e6a7db6be0e4d470ae344634f2141a02652fa1f9b88615c`.
+Its 26 tests cover canonical structure, retained inputs, three baseline
+receipts, 22 observations, and their exact 44-route join. This verifier does
+not import or execute the replayer, tactic engine, baseline, or negative
+replay.
+
+The clean-Git source-state builder and test are 40,801 / 12,372 bytes at
+SHA-256
+`cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9` /
+`aceb80d04294ad1c87007594187e3b89e9ea553185902bd44ddde6b5db26ab55`.
+The runner, Slurm file, submitter, collector, and no-network WMI test are
+109,511 / 5,055 / 14,904 / 5,710 / 34,542 bytes at SHA-256
+`3db7ed105c016fa58a567d2fc8d8a66a9957f6856133195872d2c8fa455a8306` /
+`f2b2cd1879147d5dbf234a5dc7cd49aefd92152a0cd1b02bf67c02d6feb4fc29` /
+`b8301b661a36b54446038759d3d7f421e52b0dee352a335facd32e77693f78cc` /
+`dee7801fbd7e21e94d483156f5eca52d57b8ec58fa3ba6e108dd7c657fcd99b7` /
+`98f35727e1ec22f5c50318acf3a63e5cde094cbb03a9bbfcece2758ac86d6d7b`.
+
+A future execution runs fresh replayers under hash seeds 0 and 1, accepts only
+byte-identical candidate files, and then starts the separate seed-2 verifier.
+The WMI envelope is one CPU, 4 GiB, and 15 minutes. Replayer/verifier timeouts
+are 360/90 seconds, JSON and child-log caps are 16,000,000 bytes/16 MiB, and
+timeout, excess output, nonzero exit, missing evidence, or scheduler conflict
+stays `unknown`. Receipts use create-only publication and reject replacement
+and symlink targets.
+
+The new 11 source-state, 26 verifier, and 28 WMI tests passed as 65 bounded
+no-network tests in an independent 18.40-second run. Conservative measured
+weights are 6,000 / 9,000 / 6,000 ms; the source-protocol test remains 6,000
+ms. The 107-entry profile models eight loads of 544,500 / 544,000 / 544,800 /
+544,500 / 545,000 / 544,000 / 544,000 / 544,000 ms.
+
+At that freeze, only the A2.3c source protocol and execution-infrastructure
+readiness were complete. The later job-220227 execution is recorded next.
+`bounded_three_root_vector_audit_complete`, `dependency_necessity_established`,
+`route_rejections_independently_verified`, and `vector_optimizer_executed`
+remain false, as do vector completeness, minimality, optimized-vector audit,
+best-known status, publication and publication union, public-graph application,
+A2 completion, and all proof/admission/publication authority and training/
+retrieval/evaluation eligibility flags.
+
+### A2.3c job 220227 closes only the replay-and-retention subgate
+
+Job `220227` executed from clean commit
+`a1830b8d019baaec72d1d2b3cc8046c72d22a336`, tree
+`2bed15ee16c4c6b3360f4d6a711246e9020cfd9c`, and receipt-bound snapshot
+`b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719`.
+The retained Slurm row is
+`220227|COMPLETED|0:0|0:0|89||4G|1|c3n1`. Two fresh runs of the same replayer
+under hash seeds 0 and 1 took 43.924 and 43.784 seconds and produced identical
+candidate bytes. They test deterministic execution; they are not independent
+implementations. The separate seed-2 tactic-free verifier passed in 0.608
+seconds. Execution and collection are classified
+`two-replayer-byte-identity-and-independent-structural-verification` and
+`completed-dual-replayer-and-independent-structural-verification`.
+
+The 322,779-byte candidate's artifact, document, and theorem-record roots are
+`46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba` /
+`f17e8c4a2b8080401376ab04f96d771b466946b87b816cb99be54299cbd6a02f` /
+`823b26485a1e345aca8b925974641301fd122097c52c05ff842e34b09d44787d`.
+It accepted one full-vector baseline for each pilot root, at root
+`768aa4b5edd9eb44615b62d505944eafd57cdf8fc3f106a43d6168c9be4fc415`,
+then reproduced 3 / 14 / 5 single-omission failures for roots 256 / 376 / 379.
+The 22 fresh records have root
+`6db464c56b52449144f3934214c292dff485910e43421a1763b7203515c0f304`.
+Their exact structural pairing to the 44 readable/proposed-layered labels has
+root `db60c479b5a0c3b621f958e5ef01c98ef095df975a1d51893309ec0cac730ebf`.
+
+The claim is intentionally at the wrapper layer. The fresh implementation
+imports no A2.3b producer and calls neither `compile_candidate_body` nor a
+route assembler, while sharing the pinned parser, tactic engine, and kernel.
+Thus the 22 exact wrapper-level observations are independently reproduced,
+but their two route labels are a structural join. Neither route rejection nor
+logical dependency necessity follows.
+
+The 27,484-byte independent structural receipt has artifact, document, and
+theorem-record identities
+`48884600840c37044e099683b832659aec1fb22e4068637ad7212c104fe10293` /
+`364d4ee4099856c44ee1633439f2e5b1c57ae24cc90d9178cdf7445008504733` /
+`fb67221ddc8163cf3c62cabc3d79d0d63d544a485a020c18272cf8af3c605274`.
+Execution and collection artifact/root pairs are
+`f5c051493fac987a4010043b2bc0b5ef85a8cf37976aff36b331a3c57c93c5b1` /
+`60513353afa2539f82568ae4360d98192584920af4bfd530d930e97e94efacdf`
+and `2f187bde83cdd2bba97cacb0af0a6dcc4c204e6d0eb224ff5732e2433ed6266d` /
+`17421fa3ebdf15020acc2bafad9ce100641d3403b2ce938a9c0b02fc42286814`.
+Source-state, Git-receipt, and infrastructure artifact/root pairs are
+`4fbcb219cf746da206fb07b99f6149922b761fff551fafd0b28f557bc53bf0b0` /
+`832372c5838b2cf3230f5d305ba6b4c9350d165e3c68debe1667f7fa6653722b`,
+`42ebb8a353b205916a167de74bf3adc8412f9e16ad2bae8dab9213a7a37b8b8d` /
+`85825e1ac8a9e7255fc64afd305bee99d93dac44382dd64e1723483388eeb7b7`,
+and `2057bc1ab33e2cd863062bc370bb16b6d8f7022592b7ca73be5b05850282ecce` /
+`5fb4363d47b5d0bc55ab68186f158087c3750e0a512361acf9c2d711e0f41f43`.
+
+The standard-library-only structural verifier executes no tactic, baseline,
+or omission and binds neither tactic semantics nor the later execution
+receipt. An isolated hash-seed-31337 audit reproduced its retained bytes
+exactly, but that is a structural check rather than another tactic replay.
+The two real replayer processes own the 22 observations.
+
+The retained directory
+`artifacts/peano-hydra/a23c-wmi-negative-replay-220227/` contains exactly 17
+nested regular files totaling 419,166 bytes, with inventory root
+`05d80cae1648769a377d3d5fc429f0edac0f484bd526b2607e236930baf282d0`.
+Files are 0644, directories 0755, and there are no symlinks. The
+282,733,056-byte transfer archive and full snapshot are omitted, so the
+snapshot digest is receipt-bound. The duplicate seed-1 candidate and both
+candidate-valued stdout files are also omitted; the retained candidate is
+their normalized representative, so post-retention dual-output identity is
+execution-receipt-bound. A live
+scheduler batch observation reported `136692K`, but retained `sacct.psv` has
+blank `MaxRSS`; no retained peak-memory claim is made.
+
+The 36,808-byte retained-result gate at SHA-256
+`624cefad17d2a419958a5334459121f344c1f941ef229f0bb3db3ef867309ec8`
+passed four tests in 0.52 seconds. The sharder passed 32 tests in 0.11 seconds;
+the combined bounded gate passed 155 tests in 25.20 seconds. The 108-entry
+profile gives the result gate 3,500 ms and models 544,500 / 544,500 / 544,800 /
+545,000 / 545,000 / 545,000 / 545,000 / 544,500 ms across eight shards.
+
+This finishes only the bounded A2.3c replay execution and retention: three
+unique baseline records executed in each seed-0/seed-1 run, 22 independent
+wrapper observations, and their structural 44-label join. Route and dependency
+necessity, a genuine optimized-construction vector and its independent audit,
+vector/global completeness, minimality, best-known status, publication and
+publication union, graph application, A2, authority, and eligibility all
+remain open. The public graph remains 1,038 edges.
+
+### A2.3d freezes one proof-producing transformation, not an optimized-vector claim
+
+A2.3d asks a smaller question than the earlier three-root campaigns: can one
+exact retained proof produce a smaller honest direct-dependency vector by a
+mechanical proof transformation? Its sole root is `odd_add_odd` (index 256).
+The authenticated outer Cut spine is `mul_add`, `add_succ_left`, `add_assoc`,
+`add_comm`; the four lemma certificates remain opaque. Processing that spine
+inner-first with binder-aware hypothesis indices retains `add_comm`, deletes
+vacuous `add_assoc`, deletes vacuous `add_succ_left`, and retains `mul_add`.
+The resulting direct vector for this exact proof is `[mul_add, add_comm]`.
+
+This is a real proof transformation rather than a relabeled vector. Each
+intermediate proof and the final proof is checked by the unchanged
+intuitionistic kernel, the final context is empty, and a second pass is
+idempotent. The 240-node proof has depth 30 and five Cut nodes. Its proof
+SHA-256 is
+`5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4`;
+the 11,958-byte carrier has SHA-256
+`c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22`
+and deterministic replay fuel 1,936. The ordered direct-vector LF identity
+changes from
+`9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc`
+to `ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4`.
+
+The transitive closure is deliberately reported separately. Recomputed from
+the pinned retained manifest, it stays `zero_add`, `add_succ_left`,
+`add_comm`, `add_assoc`, `mul_add`, with LF root
+`a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2`.
+Thus both deleted direct names remain reachable through opaque retained
+lemmas. Closure is descriptive retained-graph context, not an input to the
+direct-vector decision.
+
+The exact source-only checkpoint is:
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `training/peano_hydra/library-pilot-dependency-vector-cut-liveness-schema-v1.json` | 12,566 | `388190b4235b9892b38193714b0331a35b6c533c0605072c5d0663ad9cd9c0aa` |
+| `training/peano_hydra/library_pilot_dependency_vector_cut_liveness.py` | 55,485 | `9d657c7698faf89bc83d43aff9116493492eed4d854a8ef21968d10b91574abe` |
+| `scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 38,965 | `03b160f5515027dc5ea8dac58d9f1225ec87a363b079386d23498c38fc6cfb16` |
+| `training/peano_hydra/library_pilot_dependency_vector_cut_liveness_verifier.py` | 81,450 | `63ab7b96cee903f3ea2af4bda64d52409b656ea700a725332c0c569c9f3b3108` |
+| `scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 35,415 | `a71bc1a2a802e130b4688ffb702659d15c6ea94120090ee00df3e4a23fda9523` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 56,843 | `6f5686484596328d1f64bd6bed7e109f3459a54aaf6b3754c546e96e4a74e725` |
+
+The schema semantic SHA-256 is
+`9e8887072cc6051cf9cb9177609ab31aed35ca305a42c7d9c22d4ac339b6f5c5f`.
+The producer CLI is no-default-write and pinned to a fresh bounded CPython
+3.12 child that executes captured authenticated source bytes. A separate
+verifier reconstructs the transform and exact evidence rather than trusting
+the producer. The synthetic/adversarial gate passed 85 tests in 16.18 seconds.
+Its conservative 20,000 ms CI weight yields a 109-entry profile and modeled
+eight-shard loads of 547,000 / 547,500 / 547,300 / 547,500 / 547,000 /
+547,000 / 547,500 / 547,500 ms.
+
+That source-protocol checkpoint ran no real campaign, network call, WMI job,
+result artifact, or retention; execution and retention were still open. A
+lemma's surviving structural use is not a necessity proof, and
+vacuous-Cut deletion is not a global minimality or best-known optimizer.
+Independently audited optimized-vector status, vector/global completeness,
+publication and publication union, graph application, A2, authority,
+review/lineage/freeze, and eligibility all remain false. The public graph
+remains exactly 1,038 edges.
+
+
+### A2.3d execution infrastructure pre-execution checkpoint
+
+The next boundary is now implementation-ready without being result-bearing.
+A clean-Git generator authenticates the exact six source-protocol files plus
+stable `HEAD`, tree, stage-0 blobs, modes, and clean status. Its source-state
+record keeps `git_verified=false`; a detached Git receipt owns the positive
+clean-source facts. The submitter packages those bytes into one immutable,
+content-addressed snapshot.
+
+The runner is pinned to Linux x86_64 CPython 3.12.12, one CPU, 4,096 MiB, and
+15 minutes. It starts the deterministic producer twice in fresh processes,
+both with required seed 0, and requires the exact byte-identical 74,579-byte
+candidate at artifact/root `a9077a7b…` / `fd0497da…`. A third process runs
+the separately authored verifier and requires the exact 12,737-byte receipt at
+artifact/root `8f6531d3…` / `b3c25367…`. The repeated producer is only a
+repeatability check. The verifier independently derives the transformation
+but shares the authenticated codec/kernel and supplies no independent kernel-
+semantics claim.
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `scripts/build_peano_hydra_a23d_cut_liveness_source_state.py` | 43,334 | `1161c123a96158123107f452b22692ad9c516431e2bb71848d7e051994faf6f1` |
+| `scripts/run_peano_hydra_a23d_cut_liveness_wmi.py` | 95,659 | `c737d05b74e39c6956bae9eaa97dd7bb606e98e718c6f06430ee05522fc523b8` |
+| `scripts/submit_wmi_hydra_a23d_cut_liveness.sh` | 14,920 | `0f9552a739a1ba64e25e958498d22a6025ad8b83d7b1b1671c9fe421e06cf1d3` |
+| `scripts/collect_wmi_hydra_a23d_cut_liveness.sh` | 5,692 | `6c570194a672c4f48aa0f4214e2918469214fe6ac57c4671a150fc621ec6e509` |
+| `slurm/peano_wmi_hydra_a23d_cut_liveness.sbatch` | 5,057 | `de5463e13d626cd0e7c34c1ce96e0e3e7b5aaf5e6304453f794ac41f06c629d9` |
+| `peano-lab/py/tests/test_peano_hydra_a23d_cut_liveness_source_state.py` | 13,797 | `3b3f90e687f7fdf71783480cfee5fb5c94085d2f7853f9e332c00cf1b7b31901` |
+| `peano-lab/py/tests/test_peano_hydra_a23d_wmi_protocol.py` | 32,420 | `0927e477f321bed217bcac531057d68dc03658bc0bd5cba3743ea911a5d104ce` |
+
+The child bounds are 60/60/90 seconds with 16 MiB per captured stream and a
+900-second allocation. Any nonzero, timeout, resource, malformed, missing, or
+conflicting condition remains `unknown`. Descriptor/post-path reads,
+process-group termination, held submission, exact ledger/source/deposit
+bindings, and descriptor-bound create-only publication are tested. The two
+new suites passed 12/12 in 5.86 seconds and 30/30 in 6.17 seconds; the complete
+bounded source/infrastructure/sharder gate passed 159/159 in 28.66 seconds.
+CI has 111 profiles, weights 7,500/8,000 ms, and loads 549,000 / 549,500 /
+549,300 / 549,500 / 549,000 / 549,500 / 549,000 / 549,000 ms. The sharder
+passed 32/32 in 0.28 seconds.
+
+At that infrastructure checkpoint no WMI submission, real campaign, execution
+or collection receipt, retained result, publication, or graph mutation had
+occurred. The later retained run is recorded below. The vector remains
+proof-construction-specific, not evidence of
+necessity, route rejection, minimality, global optimization, best-known
+status, or vector completeness. Publication/union, graph application, A2,
+authority, review/lineage/freeze, and eligibility remain false. The graph
+remains 1,038 edges.
+
+### A2.3d job 220246: a bounded proof-liveness result, not a global optimum
+
+The real envelope ran from clean commit
+`25228180c956456145eba64601e829103731e903`, tree
+`528ca1d3c0e697048479acdd690b54a9d13fa469`, and receipt-bound snapshot
+`52480a731e184565a0f6627d62d6b034d9c4f2a66fa5e508335def68998c9a7d`.
+Job `220246` completed `0:0` on `c3n1` in three seconds with one CPU and 4 GiB
+requested. The accounting evidence has blank `MaxRSS`, so no peak-memory or
+memory-ceiling claim follows.
+
+Two fresh seed-0 processes running the same deterministic producer emitted
+byte-identical 74,579-byte candidates at artifact/root
+`a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0` /
+`fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835`.
+That is repeatability, not implementation or hash-seed independence. The
+theorem-record root is
+`a90eef83d3344369496a6d54254aa38cba4fb082ab3ba399742f36babfaad803`.
+The candidate binds `[mul_add, add_comm]`, proof `5c480eb5…`, artifact
+`c606af87…`, 1,936 fuel, and 240/30/5 nodes/depth/Cuts.
+
+The separately authored verifier independently reconstructed the inner-first
+ledger, vector, proof, and canonical bytes while intentionally sharing the
+authenticated codec/kernel. Its 12,737-byte artifact/root is
+`8f6531d3a0544a6d308ebd0abf7e41ed2436984758e76e66797ff1023e0a2821` /
+`b3c253674f488eeed1e5a14e4be6632b0fe6ed946cf611ee0b3fde66f79acad7`.
+A fresh local seed-31337 replay matched the receipt byte-for-byte. The
+execution and collection artifact/root pairs are `46922d976e00925a62bef9792bdeaa50c6e6800d9d034c132fae6b952be35bc7` / `28e660ea1b9f455c2cbb9022b045fc9ef57922c0bf007d413de2ca106d31ead1`
+and `1f8907520cc2e7508a841719f43111538245a6c640de042b422213da0dc5de3a` / `fe9d57683008f8b61768a133d8ba453d2819e337c31fd1afe4ee397a7b880fb1`.
+
+The retained bundle
+`artifacts/peano-hydra/a23d-wmi-cut-liveness-220246/` has exactly 17 regular
+0644 files, 174,231 bytes, 0755 directories, no symlinks, and C-sorted
+inventory root
+`db3914f58b1ab4019fbe447c6454a261ec9a32e74b7a25772e0483bfbad2ac81`.
+Source-state/Git/infra artifact-root pairs are `1e0315e75364721408799db01db3b7f39896d84c26b83c50bcd103994533a421` / `7db294f75a67cd6252c2831dd8ae11ba5ba0d185a736328031e0724602b38363`,
+`3a207d46b9142ca951705cac066221e1d2b6b54005d542b9275b4585360e6876` / `3194cbf1ff2041fe448ac4c3781356c8e28d79acd43c22dbd4b5c597e2beb7da`, and `afcf38c94167814123950b47aa38cb97d8564c89adf2ecc976a320a7525a585f` / `09a05076bc8e57174790575d59e41a0b4c0090602f8305465e84339b172fc01e`. The source-state
+flag remains `git_verified=false`; clean-tree evidence is separate. Four
+identical candidate/stdout blobs normalize to one canonical result. The
+283,796,480-byte archive, full source snapshot, duplicate run outputs, global
+ledger, and job pointer are omitted intentionally.
+
+The 33,018-byte retained-result gate, SHA-256
+`ba6e9e1f96b214582cb8201a1207b7f6954e227aa78525a9c8a0f5f7f0009ae7`,
+passed four tests in 0.63 seconds. The sharder passed 32 in 0.09 seconds; the
+complete bounded gate passed 163 in 29.27 seconds. CI now has 112 profiles, a
+2,500 ms result weight, and loads 549,500 / 549,500 / 549,800 / 549,500 /
+549,500 / 549,500 / 549,500 / 549,500 ms.
+
+This closes one-root execution and retention only. Structural use is not
+dependency necessity; Cut thinning is not route rejection, logical or
+cardinality minimality, global optimization, or best-known evidence. Global
+`optimized_vector_independently_audited`, vector completeness, publication
+and union, graph application, A2, authority, review/lineage/freeze, and all
+eligibility claims remain false. The graph remains 1,038 edges.
+
+### A2.3e compares one construction vector inside an exact fixed set
+
+A2.3e does not search for a new proof. It authenticates the retained A2.3a
+candidate and independent receipt, then the retained A2.3d candidate and
+independent receipt. A separate stdlib-only verifier reconstructs the exact
+four-row `odd_add_odd` table without importing tactics, the kernel, or the
+comparison producer:
+
+| candidate | bytes | nodes | depth | Cuts |
+|---|---:|---:|---:|---:|
+| retained replay | 14,977 | 302 | 32 | 7 |
+| A2.2 direct-Cut rebuild | 13,640 | 274 | 31 | 6 |
+| layered closure | 12,709 | 269 | 37 | 3 |
+| Cut-liveness | 11,958 | 240 | 30 | 5 |
+
+`layered-closure` and `cut-liveness` are both nondominated. Cut-liveness wins
+the registered representative tie-break because proof nodes come first;
+layered closure still has two fewer Cuts. The result is therefore a bounded
+fixed-set selection rather than componentwise dominance, best-known status,
+or a global optimization claim.
+
+The exact `[mul_add, add_comm]` vector is now defined and independently bound
+for the one A2.3d construction. This theorem-scoped fact does not make its two
+names logically necessary, does not establish minimum cardinality, and does
+not reclassify the A2.3a layered package as a vector optimizer. The frozen
+source table is:
+
+| path | bytes | SHA-256 |
+|---|---:|---|
+| `training/peano_hydra/library-pilot-optimized-construction-comparison-schema-v1.json` | 9,702 | `f927f2c0590a82495498230a7b6c159e63c8670162540fdd5283f86cccb35d54` |
+| `training/peano_hydra/library_pilot_optimized_construction_comparison.py` | 33,466 | `b7242039928552c1a38b23ac555d8998caa74bf4e9c7d68830cc53a8001acfd4` |
+| `training/peano_hydra/library_pilot_optimized_construction_comparison_verifier.py` | 35,352 | `552be2d82cda8d4b0c8c5131196e45b1904b249b2c648ddbce71b13bd11d565c` |
+| `scripts/build_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,136 | `0e4d228eeb4f53458226cc5e20d8dfd2249719e271021aa8fc299286f339aa0f` |
+| `scripts/verify_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,633 | `c3627ce6e22b493766c72f4f5eae1085f60240487303480f8271d00d5bd8c765` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_optimized_construction_comparison.py` | 18,213 | `551ef130eb9029582467100ef5348ab6efc6cb9890249e672aac83f0b5495689` |
+
+The focused test passed 27 cases in 0.54 seconds; the sharder passed 32 in
+0.18 seconds; the combined gate passed 59 in 0.68 seconds. At that source
+checkpoint CI had 113
+profiles, a 1,500 ms weight, and modeled loads 549,500 / 550,000 / 549,800 /
+549,500 / 549,500 / 550,000 / 550,000 / 549,500 ms.
+
+The source checkpoint preceded a separate retained local execution. That
+execution preserves the same narrow boundary and is recorded next.
+
+### The retained A2.3e answer is still only a fixed-set answer
+
+Controlled CPython 3.12 `-B -P -s -S` launches from source commit
+`7e0c24ee917f859551452b0a2a41f73dd18e51d7` and tree
+`64c25f1801630eb7a4864034cf6cbac7b8cd2378` rebuilt the aggregate and ran the
+separately authored stdlib verifier. Repeat launches were byte-identical. The
+retained identities are:
+
+| document | bytes | artifact SHA-256 | root SHA-256 |
+|---|---:|---|---|
+| candidate | 14,953 | `213107ea9d940f3cbd998e3deb22bdae3e6a1a9aaa4ab945bfbea9899e25cd08` | `054a1f78ca16647f5a6b003570b20791295a4b5e9f7b127de170f4e6e1e7de03` |
+| independent receipt | 11,247 | `1c1075c469550c5aef4e4500819a548ade66ca5166a811bc0dc391c6fecd23bb` | `d62c417f1eb5cf8597c7ee8492e2b3610fdfd834c0f9ef474f110d2f9d963c8c` |
+
+The bundle at
+`artifacts/peano-hydra/a23e-local-fixed-comparison-7e0c24e/` is exactly two
+0644 files / 26,200 bytes under 0755 directories, with no symlinks and
+inventory root
+`b70e6c34c7954551cd21a812ef12a21668718261a31e8c0f255487eff54b37ad`.
+Its four-test 13,347-byte result gate has SHA-256
+`5b0a424bdb06e6dcfbab3ae3cf210ed151779da34d38c0c67562cf992f4a436a`
+and remains a four-test artifact gate. The Linux portability follow-up changes
+only test harnesses: the A2.3e tests use the active CPython 3.12, and five
+nonportable unlink/recreate fixtures in hash-pinned A2.3c/A2.3d tests are
+replaced at Linux shard invocation by deterministic preallocated-inode tests.
+The new gate is 5,475 bytes at
+`01f3af8ae0e4ea20cebe5e13758cca2b205a4998bbcd2086b9d10d2a84e71154`.
+The bounded source/result/portability/sharder gate passed 68 tests in 0.91
+seconds, and the unchanged A2.3c/A2.3d result gates passed 8 in 1.06 seconds.
+CI has 115 profiles, a 1,000 ms portability weight, and loads 550,000 /
+550,000 / 549,800 / 550,500 / 550,500 / 550,000 / 550,000 / 549,500 ms.
+
+This was local, tactic-free aggregation: no WMI job, network, tactic execution,
+fresh kernel execution, or execution-authority receipt. Repetition does not
+create a second implementation. Global `optimized_vector_independently_audited`,
+best-known/global comparison, necessity, minimality, vector completeness,
+publication/union, graph application, A2, authority, review/lineage/freeze,
+and eligibility remain false. The graph remains 1,038 edges.
 
 ## What “matched compute” means
 
@@ -660,9 +2535,9 @@ The campaign proceeds in order:
 | Gate | Question | Required evidence |
 |---|---|---|
 | H0 | Is the logic and fragment exact? | conformance, reference agreement, mutation rejection |
-| H1 | Is there clean headroom? | frozen $L_0$, sealed lineage split, symbolic and teacher DEV probes |
-| H2 | Is the non-LLM baseline strong? | proof-producing portfolio and replayed resource curves |
-| H3 | Is the curriculum real proof data? | deterministic corpus, complete QED roots, zero leakage |
+| H1 | Are authoring and evaluation isolated? | strict schemas, frozen $L_0$, sealed lineage split, symbolic and teacher DEV probes |
+| H2 | Is the non-LLM baseline strong? | native/Vampire proof-producing portfolio and replayed resource curves |
+| H3 | Are the curricula legitimate? | adjudicated prose pairs, complete QED roots, deterministic builds, zero leakage |
 | H4 | Which learned component helps? | model ladder and matched causal ablations |
 | H5 | Does the LLM win once, fairly? | one-shot sealed matched-compute comparison |
 | H6 | Can another group reproduce it? | source, environments, raw traces, certificates, tables, review |
@@ -672,6 +2547,12 @@ campaign, including benchmark authorship, independent evaluation, replication,
 and release, is more realistically four to six months. GPU training is not the
 first step; it is one guarded step after semantics, leakage control, and a
 strong baseline exist.
+
+The A0–A6 product gates proceed in parallel from authoring schemas through the
+sentence workbench, artifact compiler, Vampire/Qwen help, asynchronous live
+assistant, and reviewed library admission. The K5–K11 gates independently
+govern any future Rust-authority change. Finishing one track never waives the
+acceptance criteria of another.
 
 ## What would be novel
 

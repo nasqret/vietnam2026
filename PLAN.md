@@ -27,8 +27,8 @@ mathematics — with every idea presented **informally (runnable) and formally (
 | Peano Lab | [`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md) | Sound browser theorem prover for PA: kernel → checked arithmetic tactics → UI → book/vault/corpus. |
 | Foundational arithmetic library | [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md) | Versioned lemma DAG: congruence and divisibility → division/gcd/primes → an honestly represented FTA. |
 | Native quadratic reciprocity | [`PLAN/11_quadratic_reciprocity.md`](PLAN/11_quadratic_reciprocity.md) | Parity and finite folds → Euler/Gauss/Eisenstein → a checked reciprocity certificate. |
-| Peano Hydra | [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md) | Falsifiable neuro-symbolic campaign: frozen fragment/library/benchmark → strong symbolic baseline → sparse LLM guidance → matched-compute evaluation. |
-| Kernel acceleration | [`PLAN/12_peano_kernel_acceleration.md`](PLAN/12_peano_kernel_acceleration.md) | Profile-guided Python checker/replay optimization followed by an independently validated native/WASM Rust shadow checker. |
+| Peano Hydra | [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md) | Living native-PA library and prose authoring assistant plus a frozen Vampire/Qwen matched-compute campaign. |
+| Kernel acceleration | [`PLAN/12_peano_kernel_acceleration.md`](PLAN/12_peano_kernel_acceleration.md) | Python authority, native/WASM Rust acceleration, and staged Lean algorithm/source-refinement gates before any authority change. |
 
 ## L2 / L3
 
@@ -157,10 +157,9 @@ M20's native arithmetic and synchronized release artifacts are complete. The
 main Jupyter Book now includes a guided zero-to-FTA route, a quadratic
 reciprocity campaign chapter, and a generated interactive 384-proof atlas;
 the integrated local browser candidate deterministically verifies as build
-`2026-08-04b`, application `a-903a05e31da9`, with 150 worker sources. Its
-source inventory, content manifest, and deployment contracts pass; complete
-local staging awaits the gitignored pinned vendor mirror. It is not deployed,
-and direct attached-browser UI inspection remains
+`2026-08-09b`, application `a-7fe525e910c8`, with 150 worker sources. Its
+source inventory, content manifest, deployment contracts, and complete local
+stage pass. It is not deployed, and direct attached-browser UI inspection remains
 explicitly unclaimed. Model-v3 curriculum training is a separate milestone—not mathematical
 admission of FTA or prime unboundedness. See
 [`PLAN/10_arithmetic_library.md`](PLAN/10_arithmetic_library.md).
@@ -267,20 +266,37 @@ replacement job `210714` failed at gate 15 after a second direct-edge mutation
 still checked. Neither fail-closed dependency-minimality result is a QR result;
 attached-browser validation also remains a publication gate.
 
-## Parallel Peano Hydra campaign
+## Parallel Peano Hydra program
 
-H0–H6 now define a binding neuro-symbolic experiment rather than another model
-demo. The kernel remains the sole theorem authority; native search,
-retrieval/ranking, Qwen, Codex, Vampire, E, SMT solvers, translations, and
-reconstruction are all untrusted. H0 freezes the exact logic/fragment and
-forbids a general Heyting-arithmetic decidability claim. H1 freezes an ordered
-library epoch and a lineage-separated benchmark under an independent owner.
-H2 establishes the strongest proof-producing symbolic baseline before model
-credit is possible. H3 requires a deterministic, balanced macro curriculum of
-complete checked QEDs. H4 admits learned components only through paired DEV
-gates. H5 is a one-shot `S` versus `S+R` versus full-Hydra comparison at
-matched time, compute, energy, and cost; a failed preregistered gate is reported
-as no demonstrated LLM advantage. H6 requires independent reproduction.
+The adopted Hydra plan has a permanent product track and a sealed research
+track. Both use only the curated Peano Lab object language. The product will
+grow a reviewed elementary-number-theory library with exact direct dependencies, readable
+scripts, best-known checked certificates, and generated documentation. Its
+planned revisioned authoring assistant will turn accepted prose into candidate
+PA statements, flag evidenced ambiguity or mistakes, open a Peano Lab proof
+workspace, and export a reviewable patch only after explicit human acceptance.
+
+Constructive PA is the default. Classical `PA+DNE` is a separately versioned,
+visible mode; excluded middle may be a derived surface theorem, not a second
+casually added kernel axiom. Native search is planned to perform dense closure,
+Vampire is the initial external hint engine, and future separate small Qwen
+LoRA roles will handle formalization, retrieval, sparse macro proposals,
+ranking, and critique. All
+remain untrusted. Rust native/WASM checking can accelerate candidate filtering,
+but Python keeps final QED authority until the exact Rust accepted path is
+refined to the Lean specification and survives the K5–K11 review/soak gates.
+
+H0–H6 define the falsifiable experiment rather than another model demo. H0
+freezes the exact logic/fragment and forbids a general Heyting-arithmetic
+decidability claim. H1 freezes authoring contracts, an ordered library epoch,
+and a lineage-separated benchmark under an independent owner. H2 establishes
+the strongest native/Vampire proof-producing symbolic baseline before model
+credit is possible. H3 requires deterministic checked macro and separately
+adjudicated formalization corpora. H4 admits learned components only through
+paired DEV gates. H5 is a one-shot `S` versus `S+R` versus full-Hydra
+comparison at matched time, compute, energy, and cost; a failed preregistered
+gate is reported as no demonstrated LLM advantage. H6 requires independent
+reproduction. A0–A6 separately deliver the live authoring product.
 
 The existing four-goal Qwen result is retained only as a launch regression,
 not evidence for the campaign. Any later quadratic-reciprocity development
@@ -296,7 +312,51 @@ or isolated untrusted reconstruction. The retained H0 report
 records two identical 384-theorem cold roots, 1,024 positives, exact pinned-Lean
 agreement, all required mutation/trust-boundary rejections, and the complete
 H0.3 typed-macro evidence bundle. No H1 benchmark is sealed, no Hydra training
-claim exists,
-and no H5 result exists. See
+claim exists, and no H5 result exists. The first H1/A0 protocol slices now
+provide a 28-test canonical authoring boundary (digest
+`31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`)
+and a 38-test live-candidate/epoch transition boundary (digest
+`f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`).
+The historical three-file epoch fixture remains provenance-only. The new
+subordinate replay-pack-v1 candidate supplies all 384 canonical certificates:
+schema digest
+`d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`,
+manifest root
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`,
+and fresh-kernel replay root
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+The standard acceptance test repeats all 384 checks in an import-guarded
+`python -I -S -X pycache_prefix=<fresh-dir>` worker and reproduces the retained
+report exactly. H1.1a now retains a 5,880,054-byte candidate metadata ledger
+at root
+`b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`.
+It binds 384 source locators and 1,038 declared publication edges, but only 240
+rows have the complete source/definition/atlas/vault/two-explorer join. The
+remaining explorer and definition gaps are exactly 144 missing/zero stale;
+all 317 extra explorer names are disjoint non-`L0` provenance. A2.3a WMI job
+`219765` has now completed and retained the preregistered fixed comparison for
+exactly three roots and three candidates per root: dual producers were byte-
+identical, the independent verifier accepted all nine artifacts, and terminal
+collection passed. Its candidate/verifier roots are `90a3d97a…` /
+`e21290f6…`; execution/collection roots are `7a597563…` / `52339b92…`.
+All three fixed-set frontiers contain the A2.2 direct and layered candidates,
+with layered selected by the deterministic display tie-break. This is not a
+global-best, minimality, optimized-vector, publication, graph, or A2 claim.
+The 19-file retained evidence omits the deleted transfer archive; its snapshot
+hash is only transitively bound. The unauthenticated `sacct` observation has no
+`MaxRSS`, so no memory ceiling is claimed; producer stderr contains only
+retained pre-existing Python 3.12 `SyntaxWarning`s. Every minimality,
+global-best, vector audit/completeness, publication/union, review, lineage,
+freeze, A2, authority, and training/retrieval/evaluation flag remains false.
+No public library, graph, catalog, page source, or deployed page changed. All
+384 rows
+still lack reviewed readable/optimized dependency vectors, leave-one-out
+receipts, publication unions, best-known comparison, human review, and
+lineage. The next order is to repair those 144 records, independently audit
+the readable and optimized vectors, verify their publication union, complete
+the remaining global A2 evidence, and only then issue a source-state request
+to an external owner. Review registries are still empty, so no living catalog
+has been declared frozen production `L0`, and neither A0 nor H1 is complete.
+See
 [`docs/PEANO_HYDRA_DESIGN.md`](docs/PEANO_HYDRA_DESIGN.md) and
 [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md).

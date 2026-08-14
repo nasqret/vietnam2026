@@ -1,0 +1,699 @@
+{
+  "additional_fields_policy": "forbidden-by-exact-fixed-source-reconstruction",
+  "algorithm": {
+    "artifact_fuel": "fresh layered artifact fuel = 8 * proof_nodes + 16",
+    "candidate_universe": [
+      {
+        "candidate_id": "retained-replay",
+        "candidate_kind_order": 0,
+        "construction": "exact retained replay-pack artifact"
+      },
+      {
+        "candidate_id": "a2.2-direct-cut-rebuild",
+        "candidate_kind_order": 1,
+        "construction": "exact A2.2 rebuilt direct-Cut artifact"
+      },
+      {
+        "candidate_id": "layered-closure",
+        "candidate_kind_order": 2,
+        "construction": "fresh layered-closure artifact compiled from recovered modular bodies"
+      }
+    ],
+    "closure_graph": "reachable nodes only; replay order; A2.2 reduced direct vectors for the three changed rows and retained replay vectors for every other node",
+    "layered_compiler": "peano_lab.library.layered_replay.compile_layered_replay; no new factorer",
+    "modular_body_recovery": "decode and empty-context-check the selected closed artifact; verify and peel its exact outer direct-Cut spine against retained dependency proof hashes; re-curry one ImpIntro per direct dependency; independently kernel-check the curried body",
+    "processing_bound": "one pilot root is compiled at a time with exact inclusive bundle sizes 6, 120, and 32 in registered root order; one fixed three-root union cache retains only 127 recovered curried modular bodies, 328 direct graph edges, 7365 structural proof occurrences, and at most 373 occurrences in one body, reuses them across roots, and is cleared before return; no closed predecessor artifacts, tactic replay, or full-library body construction are cached",
+    "representative": "minimum deterministic tuple (proof_nodes, proof_depth, cut_nodes, artifact_bytes, candidate_kind_order, artifact_sha256, candidate_id) within the fixed three-candidate universe",
+    "selection": "retain every candidate not componentwise dominated on artifact_bytes, proof_nodes, proof_depth, and cut_nodes"
+  },
+  "canonical_json": {
+    "artifact_payload": "RFC 4648 canonical base64 of the fresh layered peano-lab-v2 bytes only",
+    "document": "UTF-8; keys sorted; two-space indentation; one final LF",
+    "hash_preimage": "UTF-8; keys sorted; compact separators; no final LF",
+    "numbers": "exact integers only; booleans are not integers",
+    "objects": "duplicate keys forbidden; cycles and non-JSON values forbidden"
+  },
+  "claim_boundary": {
+    "authority": "candidate A2.3a bounded optimizer/comparison pilot evidence only; every compared artifact is independently checked from the empty context against the exact original target",
+    "comparison": "only canonical artifact bytes and intrinsic proof-tree nodes, depth, and Cut occurrences are ordered; Python identity/alias metrics are excluded",
+    "dependency_semantics": "direct vectors and reachable transitive closures are recorded as separate surfaces for every construction",
+    "execution_boundary": "ordinary source-byte, module-origin, and callable-identity drift is checked; hostile preloaded-sys.modules isolation is not claimed, and retained successor runs require a fresh controlled worker",
+    "minimality": "nondominance and the representative are relative only to the exact three-candidate pilot universe; they are never global best, best-known, optimized-vector, or minimality claims",
+    "next_gate": "a domain-separated producer git commit/tree/clean-submission receipt, an independent leave-one-out audit of selected optimized vectors, a wider reviewed optimizer program, and publication-union verification remain future A2 work",
+    "producer_provenance": "live schema, module, CLI, and focused-test bytes are bound; the supplied commit and tree remain explicitly unverified until a domain-separated successor receipt checks git show, tree, ancestry, and clean submission",
+    "use": "A2, publication, freeze, review, training, retrieval, and evaluation authority are all false"
+  },
+  "constants": {
+    "a2_complete": false,
+    "candidate_count_per_theorem": 3,
+    "comparison_metrics": [
+      "artifact_bytes",
+      "proof_nodes",
+      "proof_depth",
+      "cut_nodes"
+    ],
+    "dependency_vectors_complete": false,
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "lineage_complete": false,
+    "logic_mode": "intuitionistic",
+    "minimality_claim": false,
+    "optimized_best_known": false,
+    "optimized_vector_independently_audited": false,
+    "pilot_theorem_count": 3,
+    "publication_ready": false,
+    "publication_union_complete": false,
+    "publication_union_verified": false,
+    "retrieval_eligible": false,
+    "review_complete": false,
+    "status": "candidate",
+    "training_eligible": false
+  },
+  "emitted_document_contract": {
+    "additional_fields": "forbidden by exact reconstruction for every owned object below",
+    "artifact_common": {
+      "fields": [
+        "artifact_sha256",
+        "candidate_id",
+        "candidate_kind_order",
+        "certificate_representation",
+        "fuel",
+        "formula_sha256",
+        "kernel_accepted",
+        "kernel_context",
+        "logic_mode",
+        "metrics",
+        "proof_term_sha256",
+        "source",
+        "surface"
+      ],
+      "types": {
+        "artifact_sha256": "sha256-string",
+        "candidate_id": "registered-safe-ascii-nonempty-string",
+        "candidate_kind_order": "nonnegative-integer",
+        "certificate_representation": "literal:peano-lab-v2",
+        "formula_sha256": "sha256-string",
+        "fuel": "positive-integer",
+        "kernel_accepted": "literal:true",
+        "kernel_context": "literal:empty",
+        "logic_mode": "literal:intuitionistic",
+        "metrics": "artifact_metrics",
+        "proof_term_sha256": "sha256-string",
+        "source": "candidate-kind-specific-source",
+        "surface": "dependency_surface"
+      }
+    },
+    "artifact_layered_extension": {
+      "additional_field": "artifact_base64",
+      "type": "canonical-RFC4648-base64-string"
+    },
+    "artifact_metrics": {
+      "fields": [
+        "artifact_bytes",
+        "cut_nodes",
+        "proof_depth",
+        "proof_nodes"
+      ],
+      "types": {
+        "artifact_bytes": "positive-integer",
+        "cut_nodes": "nonnegative-integer",
+        "proof_depth": "positive-integer",
+        "proof_nodes": "positive-integer"
+      },
+      "use_in_dominance": [
+        "artifact_bytes",
+        "proof_nodes",
+        "proof_depth",
+        "cut_nodes"
+      ]
+    },
+    "artifact_sources": {
+      "a2.2-direct-cut-rebuild": {
+        "fields": [
+          "construction_rebuild_record_sha256",
+          "construction_rebuild_root_sha256"
+        ],
+        "types": "sha256-string"
+      },
+      "layered-closure": {
+        "fields": [
+          "compiler_callable",
+          "compiler_source_sha256"
+        ],
+        "types": {
+          "compiler_callable": "literal:peano_lab.library.layered_replay.compile_layered_replay",
+          "compiler_source_sha256": "sha256-string"
+        }
+      },
+      "retained-replay": {
+        "fields": [
+          "artifact_path",
+          "manifest_record_index",
+          "manifest_root_sha256"
+        ],
+        "types": {
+          "artifact_path": "safe-relative-string",
+          "manifest_record_index": "nonnegative-integer",
+          "manifest_root_sha256": "sha256-string"
+        }
+      }
+    },
+    "comparison": {
+      "fields": [
+        "axes_in_componentwise_order",
+        "candidate_universe_complete",
+        "candidate_universe_ids_in_order",
+        "claim",
+        "global_best_claim",
+        "minimality_claim",
+        "nondominated_candidate_ids_in_input_order",
+        "representative_candidate_id",
+        "representative_tie_break"
+      ],
+      "types": {
+        "axes_in_componentwise_order": "exact-four-string-list",
+        "candidate_universe_complete": "literal:true",
+        "candidate_universe_ids_in_order": "exact-registered-three-string-list",
+        "claim": "literal:bounded-three-candidate-pilot-only",
+        "global_best_claim": "literal:false",
+        "minimality_claim": "literal:false",
+        "nondominated_candidate_ids_in_input_order": "nonempty-unique-subsequence-of-candidate-universe",
+        "representative_candidate_id": "member-of-nondominated-candidate-ids",
+        "representative_tie_break": "exact-seven-string-list"
+      }
+    },
+    "dependency_surface": {
+      "fields": [
+        "direct_dependencies",
+        "direct_dependencies_lf_sha256",
+        "direct_dependency_count",
+        "surface_basis",
+        "transitive_closure_count",
+        "transitive_closure_dependencies_in_replay_order",
+        "transitive_closure_lf_sha256"
+      ],
+      "types": {
+        "direct_dependencies": "unique-string-list-in-source-vector-order",
+        "direct_dependencies_lf_sha256": "sha256-string",
+        "direct_dependency_count": "nonnegative-integer-equal-list-length",
+        "surface_basis": "candidate-kind-specific-registered-literal",
+        "transitive_closure_count": "nonnegative-integer-equal-list-length",
+        "transitive_closure_dependencies_in_replay_order": "unique-string-list",
+        "transitive_closure_lf_sha256": "sha256-string"
+      }
+    },
+    "fixed_input": {
+      "fields": [
+        "artifact_path",
+        "artifact_sha256",
+        "root_sha256",
+        "theorem_record_root_sha256"
+      ],
+      "types": {
+        "artifact_path": "safe-relative-string",
+        "artifact_sha256": "sha256-string",
+        "root_sha256": "sha256-string",
+        "theorem_record_root_sha256": "sha256-string"
+      }
+    },
+    "implementation_source": {
+      "fields": [
+        "module",
+        "path",
+        "sha256"
+      ],
+      "types": {
+        "module": "nonempty-string",
+        "path": "safe-relative-string",
+        "sha256": "sha256-string"
+      }
+    },
+    "layered_body_source": {
+      "common_fields": [
+        "artifact_sha256",
+        "body_certificate_sha256",
+        "dependencies",
+        "index",
+        "identity_metrics_comparable",
+        "kind",
+        "name",
+        "proof_term_sha256",
+        "receipt_route",
+        "source_identity_metrics_transportable",
+        "stable_receipt_fields_compared"
+      ],
+      "receipt_binding_variants": {
+        "a2.2-and-last-accepted-omission": [
+          "accepted_after_dependencies",
+          "accepted_omitted_dependency",
+          "a2_1_initial_readable_receipt_sha256",
+          "a2_1_last_accepted_receipt_sha256",
+          "a2_2_body_receipt_sha256"
+        ],
+        "no-accepted-omission-recipe-audit-fallback": [
+          "a2_1_initial_readable_receipt_sha256",
+          "a2_1_recipe_audit_positive_receipt_sha256"
+        ]
+      },
+      "types": {
+        "accepted_after_dependencies": "unique-string-list-in-source-vector-order",
+        "accepted_omitted_dependency": "nonempty-string",
+        "artifact_sha256": "sha256-string",
+        "body_certificate_sha256": "sha256-string",
+        "dependencies": "unique-string-list-in-source-vector-order",
+        "identity_metrics_comparable": "literal:false",
+        "index": "nonnegative-integer",
+        "kind": "literal:retained-replay-or-a2.2-direct-cut-rebuild",
+        "name": "nonempty-string",
+        "proof_term_sha256": "sha256-string",
+        "receipt_hash_fields": "sha256-string",
+        "receipt_route": "registered-receipt-route-string",
+        "source_identity_metrics_transportable": "literal:false",
+        "stable_receipt_fields_compared": "exact-seven-string-list-excluding-proof-edges-and-identity-metrics"
+      }
+    },
+    "layered_bundle": {
+      "fields": [
+        "body_sources",
+        "compiler_result_type",
+        "dependency_edge_count",
+        "layer_count",
+        "layers",
+        "maximum_package_formula_depth",
+        "node_count",
+        "node_names_in_replay_order",
+        "node_names_lf_sha256",
+        "package_formula_occurrences"
+      ],
+      "types": {
+        "body_sources": "layered-body-source-list-equal-node-count",
+        "compiler_result_type": "literal:LayeredReplayCandidate",
+        "dependency_edge_count": "nonnegative-integer",
+        "layer_count": "positive-integer-equal-layers-length",
+        "layers": "list-of-lists-of-unique-local-node-integers-partitioning-nodes",
+        "maximum_package_formula_depth": "positive-integer",
+        "node_count": "positive-integer",
+        "node_names_in_replay_order": "unique-nonempty-string-list-equal-node-count",
+        "node_names_lf_sha256": "sha256-string",
+        "package_formula_occurrences": "positive-integer"
+      }
+    },
+    "original": {
+      "fields": [
+        "formula_sha256",
+        "statement_canonical_sha256",
+        "statement_source_sha256"
+      ],
+      "types": "sha256-string"
+    },
+    "producer_source_file": {
+      "fields": [
+        "bytes",
+        "path",
+        "sha256"
+      ],
+      "types": {
+        "bytes": "positive-integer",
+        "path": "one-of-four-exact-ordered-producer-paths",
+        "sha256": "sha256-string"
+      }
+    },
+    "producer_source_state": {
+      "fields": [
+        "commit_sha1",
+        "files",
+        "format",
+        "git_verified",
+        "root_preimage",
+        "root_sha256",
+        "tree_sha1",
+        "v"
+      ],
+      "file_paths_in_order": [
+        "training/peano_hydra/library-optimizer-comparison-pilot-schema-v1.json",
+        "training/peano_hydra/library_optimizer_comparison_pilot.py",
+        "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+        "peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_pilot.py"
+      ],
+      "preimage_fields": [
+        "format",
+        "payload",
+        "v"
+      ],
+      "types": {
+        "commit_sha1": "lowercase-40-hex-string",
+        "files": "exact-ordered-four-producer-source-file-list",
+        "format": "literal:peano-hydra-producer-source-state",
+        "git_verified": "literal:false",
+        "root_preimage": "typed-preimage-of-all-fields-except-root-preimage-and-root-sha256",
+        "root_sha256": "sha256-string",
+        "tree_sha1": "lowercase-40-hex-string",
+        "v": "literal:1"
+      }
+    },
+    "root": {
+      "body_fields": [
+        "a2_complete",
+        "aggregate",
+        "dependency_vectors_complete",
+        "evaluation_eligible",
+        "format",
+        "freeze_ready",
+        "id",
+        "inputs",
+        "lineage_complete",
+        "logic_mode",
+        "minimality_claim",
+        "optimized_best_known",
+        "optimized_vector_independently_audited",
+        "publication_ready",
+        "publication_union_complete",
+        "publication_union_verified",
+        "producer_git_verified",
+        "producer_source_state",
+        "producer_source_state_sha256",
+        "retrieval_eligible",
+        "review_complete",
+        "schema",
+        "status",
+        "theorem_count",
+        "theorem_records",
+        "training_eligible",
+        "v"
+      ],
+      "envelope_fields": [
+        "root_preimage",
+        "root_sha256",
+        "theorems"
+      ],
+      "false_claim_fields": [
+        "a2_complete",
+        "dependency_vectors_complete",
+        "evaluation_eligible",
+        "freeze_ready",
+        "lineage_complete",
+        "minimality_claim",
+        "optimized_best_known",
+        "optimized_vector_independently_audited",
+        "publication_ready",
+        "publication_union_complete",
+        "publication_union_verified",
+        "producer_git_verified",
+        "retrieval_eligible",
+        "review_complete",
+        "training_eligible"
+      ],
+      "producer_types": {
+        "producer_git_verified": "literal:false",
+        "producer_source_state": "producer_source_state",
+        "producer_source_state_sha256": "sha256-string"
+      }
+    },
+    "root_aggregate": {
+      "fields": [
+        "candidate_artifact_count",
+        "candidate_count_per_theorem",
+        "cached_modular_body_count",
+        "cached_modular_body_direct_edges",
+        "cached_modular_body_maximum_proof_nodes",
+        "cached_modular_body_proof_nodes",
+        "nondominated_members_total",
+        "pilot_theorem_count",
+        "representative_counts",
+        "retained_public_graph_edges"
+      ],
+      "types": {
+        "cached_modular_body_count": "literal:127",
+        "cached_modular_body_direct_edges": "literal:328",
+        "cached_modular_body_maximum_proof_nodes": "literal:373",
+        "cached_modular_body_proof_nodes": "literal:7365",
+        "candidate_artifact_count": "literal:9",
+        "candidate_count_per_theorem": "literal:3",
+        "nondominated_members_total": "integer-in-range-3-through-9",
+        "pilot_theorem_count": "literal:3",
+        "representative_counts": "exact-map-of-three-candidate-ids-to-nonnegative-integers-summing-to-3",
+        "retained_public_graph_edges": "literal:1038"
+      }
+    },
+    "root_inputs": {
+      "fields": [
+        "construction_rebuild",
+        "dependency_audit",
+        "implementation",
+        "layered_replay_limits",
+        "replay_pack"
+      ],
+      "types": {
+        "construction_rebuild": "fixed_input",
+        "dependency_audit": "fixed_input",
+        "implementation": "ordered-implementation-source-list",
+        "layered_replay_limits": "exact-LayeredReplayLimits-field-map",
+        "replay_pack": "replay-pack-input"
+      }
+    },
+    "root_preimage": {
+      "fields": [
+        "format",
+        "payload",
+        "v"
+      ],
+      "types": {
+        "format": "literal:peano-hydra-library-optimizer-comparison-pilot-root-preimage",
+        "payload": "exact-root-body-object",
+        "v": "literal:1"
+      }
+    },
+    "schema_identity": {
+      "fields": [
+        "artifact_sha256",
+        "format",
+        "id",
+        "sha256",
+        "v"
+      ],
+      "types": {
+        "artifact_sha256": "sha256-string",
+        "format": "literal:peano-hydra-library-optimizer-comparison-pilot-schema",
+        "id": "literal:peano-hydra-library-optimizer-comparison-pilot-v1",
+        "sha256": "sha256-string",
+        "v": "literal:1"
+      }
+    },
+    "theorem_record": {
+      "false_claim_fields": [
+        "a2_complete",
+        "dependency_vectors_complete",
+        "lineage_complete",
+        "minimality_claim",
+        "optimized_best_known",
+        "optimized_vector_independently_audited",
+        "public_graph_applied",
+        "publication_union_complete",
+        "publication_union_verified",
+        "review_complete"
+      ],
+      "fields": [
+        "a2_complete",
+        "artifacts",
+        "comparison",
+        "dependency_vectors_complete",
+        "index",
+        "layered_bundle",
+        "lineage_complete",
+        "minimality_claim",
+        "name",
+        "optimized_best_known",
+        "optimized_vector_independently_audited",
+        "original",
+        "public_graph_applied",
+        "publication_union_complete",
+        "publication_union_verified",
+        "record_sha256",
+        "review_complete"
+      ],
+      "types": {
+        "artifacts": "exact-three-artifact-list-in-registered-candidate-order",
+        "comparison": "comparison",
+        "index": "registered-root-index",
+        "layered_bundle": "layered_bundle",
+        "name": "registered-root-name",
+        "original": "original",
+        "record_sha256": "sha256-string"
+      }
+    },
+    "theorem_records": {
+      "fields": [
+        "count",
+        "preimage",
+        "root_sha256"
+      ],
+      "preimage_fields": [
+        "format",
+        "records",
+        "v"
+      ],
+      "record_identity_fields": [
+        "index",
+        "name",
+        "record_sha256"
+      ]
+    }
+  },
+  "fixed_inputs": {
+    "construction_rebuild": {
+      "artifact_path": "artifacts/peano-hydra/l0-construction-rebuild-candidate-v1.json",
+      "artifact_sha256": "6176c44a63f791bc27ddd550aa915db6e78c8fbf9f9f0918299f1b3f639fc182",
+      "root_sha256": "91ecc6b4bb22f4b46cdfa3fcdd2401dce47d8fef38c15101d221c207fd7793b0",
+      "schema_artifact_sha256": "d1fc09c035e28f96913cdadd63f17c853901fc8dcd2e17df3a094a919612bf9f",
+      "schema_semantic_sha256": "a189ad140f5e7093f11a2f433705d4dafb71d474672e822cf39e45dbeb1ca571",
+      "theorem_record_root_sha256": "42d718621f91b52bf55a7909751eab695fefd28da2989863de50470d14397ef5"
+    },
+    "dependency_audit": {
+      "artifact_path": "artifacts/peano-hydra/l0-dependency-audit-candidate-v1.json",
+      "artifact_sha256": "4b867bb1ce0161e6392f29d9262e035929e5da86b224063546a2a42c17fd9040",
+      "root_sha256": "12166de8fb0cc028c3b026deb939418a19f001ff8342acab479d433e15d3a83e",
+      "schema_artifact_sha256": "ee6eb4daf48fbf320e79a54065befed758ff33c5251ec4a2c18b8093c349c0ff",
+      "schema_semantic_sha256": "54d6b5128067b1f93d8f7393e0730d7da3a4ac838a0b55b6b6fe0ce92a0d4bc4",
+      "theorem_record_root_sha256": "8ae5553e79b15c4e83a76e1eab92cb0983539fa913dfe2bec29d0fb17fb7d784"
+    },
+    "implementation": [
+      {
+        "callables": [
+          "peano_lab.library.layered_replay.LayeredReplayBundle",
+          "peano_lab.library.layered_replay.LayeredReplayCandidate",
+          "peano_lab.library.layered_replay.LayeredReplayLimits",
+          "peano_lab.library.layered_replay.LayeredReplayNode",
+          "peano_lab.library.layered_replay.compile_layered_replay"
+        ],
+        "path": "peano-lab/py/peano_lab/library/layered_replay.py",
+        "sha256": "ad4421446336b7c8c0db9f12298a5aa66718dfeac76282ab91bf0db3ce00f4c4"
+      },
+      {
+        "callables": [
+          "peano_lab.kernel.checker.check"
+        ],
+        "path": "peano-lab/py/peano_lab/kernel/checker.py",
+        "sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19"
+      },
+      {
+        "callables": [
+          "peano_lab.kernel.artifact_codec.decode_artifact",
+          "peano_lab.kernel.artifact_codec.encode_artifact_bounded",
+          "peano_lab.kernel.artifact_codec.encode_formula",
+          "peano_lab.kernel.artifact_codec.encode_proof"
+        ],
+        "path": "peano-lab/py/peano_lab/kernel/artifact_codec.py",
+        "sha256": "c9c4d3847c2c5fa7af683fb84f9e93341782e4b82f2579a675b97602aba39110"
+      },
+      {
+        "callables": [
+          "training.peano_hydra.library_replay_pack.proof_tree_metrics"
+        ],
+        "path": "training/peano_hydra/library_replay_pack.py",
+        "sha256": "8c5f3b44bed64bc3a49a7990d16a6f3c4a966b14c2bf4c732227041bc81506ee"
+      },
+      {
+        "callables": [
+          "peano_lab.kernel.proofs.Cut",
+          "peano_lab.kernel.proofs.ImpIntro",
+          "peano_lab.kernel.proofs.Proof"
+        ],
+        "path": "peano-lab/py/peano_lab/kernel/proofs.py",
+        "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+      },
+      {
+        "callables": [
+          "peano_lab.kernel.formulas.Formula",
+          "peano_lab.kernel.formulas.Imp"
+        ],
+        "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+        "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+      },
+      {
+        "callables": [
+          "peano_lab.engine.state.proof_identity_metrics"
+        ],
+        "path": "peano-lab/py/peano_lab/engine/state.py",
+        "sha256": "453904142273f14d01379c73c637be3476d035b093047587ff6990f1d572ac2f"
+      },
+      {
+        "callables": [
+          "peano_lab.kernel.terms.Term"
+        ],
+        "path": "peano-lab/py/peano_lab/kernel/terms.py",
+        "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+      },
+      {
+        "callables": [
+          "peano_lab.kernel.subst.shift_formula",
+          "peano_lab.kernel.subst.subst_formula"
+        ],
+        "path": "peano-lab/py/peano_lab/kernel/subst.py",
+        "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+      }
+    ],
+    "replay_pack": {
+      "manifest_artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+      "manifest_artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+      "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+      "replay_report_artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1-report.json",
+      "replay_report_artifact_sha256": "35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10",
+      "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba"
+    }
+  },
+  "format": "peano-hydra-library-optimizer-comparison-pilot-schema",
+  "hash_contracts": {
+    "artifact_sha256": "SHA-256 of exact canonical peano-lab-v2 bytes",
+    "closure_lf_sha256": "SHA-256 of replay-order dependency names, each followed by LF",
+    "document_root_sha256": "SHA-256 of exact compact canonical root_preimage",
+    "record_sha256": "SHA-256 of compact canonical theorem record after removing only record_sha256",
+    "theorem_record_root_sha256": "SHA-256 of the compact canonical typed ordered record-identity preimage"
+  },
+  "id": "peano-hydra-library-optimizer-comparison-pilot-v1",
+  "limits": {
+    "artifact_bytes": 8000000,
+    "document_bytes": 16000000,
+    "json_depth": 256,
+    "json_items": 4000000,
+    "layered_replay": {
+      "max_body_annotation_occurrences": 500000,
+      "max_body_depth": 256,
+      "max_body_envelope_depth": 256,
+      "max_body_objects": 100000,
+      "max_body_occurrences": 500000,
+      "max_candidate_annotation_occurrences": 5000000,
+      "max_candidate_envelope_depth": 256,
+      "max_candidate_proof_depth": 256,
+      "max_candidate_proof_objects": 100000,
+      "max_candidate_proof_occurrences": 500000,
+      "max_dependencies_per_node": 256,
+      "max_dependency_edges": 65536,
+      "max_formula_depth": 256,
+      "max_formula_occurrences_per_target": 100000,
+      "max_nodes": 4096,
+      "max_package_formula_depth": 256,
+      "max_package_formula_occurrences": 500000,
+      "max_total_body_annotation_occurrences": 5000000,
+      "max_total_body_objects": 500000,
+      "max_total_body_occurrences": 5000000,
+      "max_total_formula_occurrences": 500000
+    },
+    "schema_bytes": 1000000,
+    "source_file_bytes": 16000000
+  },
+  "required_theorems": [
+    {
+      "index": 256,
+      "name": "odd_add_odd"
+    },
+    {
+      "index": 376,
+      "name": "finite_bounded_injective_surjective"
+    },
+    {
+      "index": 379,
+      "name": "beta_product_swap_last_invariant"
+    }
+  ],
+  "v": 1
+}

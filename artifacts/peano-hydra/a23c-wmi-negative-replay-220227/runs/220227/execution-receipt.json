@@ -1,0 +1,521 @@
+{
+  "authority_claims": {
+    "a2_complete": false,
+    "dependency_vectors_complete": false,
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "lineage_complete": false,
+    "minimality_claim": false,
+    "optimized_best_known": false,
+    "optimized_vector_independently_audited": false,
+    "proof_authority": false,
+    "public_graph_applied": false,
+    "publication_authority": false,
+    "publication_ready": false,
+    "publication_union_complete": false,
+    "publication_union_verified": false,
+    "retrieval_eligible": false,
+    "review_complete": false,
+    "theorem_admission_authority": false,
+    "training_eligible": false
+  },
+  "classification": "two-replayer-byte-identity-and-independent-structural-verification",
+  "error": null,
+  "evidence": {
+    "candidate": {
+      "baseline_record_count": 3,
+      "bytes": 322779,
+      "independent_negative_observation_count": 22,
+      "negative_observations_independently_verified": true,
+      "path": "l0-pilot-dependency-vector-negative-replay-candidate-v1.json",
+      "replayer_observations_execution_bound": true,
+      "replayer_source_state_root_sha256": "832372c5838b2cf3230f5d305ba6b4c9350d165e3c68debe1667f7fa6653722b",
+      "retained_route_row_count": 44,
+      "root_sha256": "f17e8c4a2b8080401376ab04f96d771b466946b87b816cb99be54299cbd6a02f",
+      "sha256": "46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba"
+    },
+    "evidence_boundary": {
+      "full_vector_baseline_record_count": 3,
+      "independent_negative_observation_count": 22,
+      "independent_wrapper_implementation": true,
+      "negative_observations_independently_verified": true,
+      "replayer_observations_execution_bound": true,
+      "retained_route_row_count": 44,
+      "route_rejections_independently_verified": false,
+      "shared_engine_with_a2.3b": true,
+      "structural_receipts_verified": true,
+      "tactic_semantics_independently_verified_by_verifier": false
+    },
+    "replayer_byte_identical": true,
+    "replayer_hash_seeds": [
+      0,
+      1
+    ],
+    "verifier": {
+      "bytes": 27484,
+      "hash_seed": 2,
+      "path": "l0-pilot-dependency-vector-negative-replay-independent-verification-v1.json",
+      "root_sha256": "364d4ee4099856c44ee1633439f2e5b1c57ae24cc90d9178cdf7445008504733",
+      "sha256": "48884600840c37044e099683b832659aec1fb22e4068637ad7212c104fe10293",
+      "status": "passed"
+    }
+  },
+  "finished_at": "2026-08-14T07:42:31.760536+00:00",
+  "format": "peano-hydra-a23c-negative-replay-wmi-execution-receipt",
+  "job_id": "220227",
+  "processes": [
+    {
+      "argv": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-P",
+        "-s",
+        "-S",
+        "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+        "--execute",
+        "--confirm",
+        "PEANO-HYDRA-A23C-NEGATIVE-REPLAY",
+        "--hash-seed",
+        "0",
+        "--output",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23c-negative-replay/b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719/runs/220227/l0-pilot-dependency-vector-negative-replay-candidate-v1.json"
+      ],
+      "duration_seconds_millis": 43924,
+      "environment": {
+        "HOME": "/nonexistent/peano-a23c-wmi",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "0",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23c-disabled-pycache",
+        "TZ": "UTC"
+      },
+      "finished_at": "2026-08-14T07:41:47.313308+00:00",
+      "hash_seed": 0,
+      "output_limit_reached": false,
+      "returncode": 0,
+      "role": "replayer-0",
+      "started_at": "2026-08-14T07:41:03.386821+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "replayer-0.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 322779,
+        "path": "replayer-0.stdout.log",
+        "sha256": "46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba"
+      },
+      "timed_out": false,
+      "timeout_seconds": 360
+    },
+    {
+      "argv": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-P",
+        "-s",
+        "-S",
+        "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+        "--execute",
+        "--confirm",
+        "PEANO-HYDRA-A23C-NEGATIVE-REPLAY",
+        "--hash-seed",
+        "1",
+        "--output",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23c-negative-replay/b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719/runs/220227/l0-pilot-dependency-vector-negative-replay-candidate-v1-hashseed-1.json"
+      ],
+      "duration_seconds_millis": 43784,
+      "environment": {
+        "HOME": "/nonexistent/peano-a23c-wmi",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "1",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23c-disabled-pycache",
+        "TZ": "UTC"
+      },
+      "finished_at": "2026-08-14T07:42:31.100209+00:00",
+      "hash_seed": 1,
+      "output_limit_reached": false,
+      "returncode": 0,
+      "role": "replayer-1",
+      "started_at": "2026-08-14T07:41:47.313448+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "replayer-1.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 322779,
+        "path": "replayer-1.stdout.log",
+        "sha256": "46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba"
+      },
+      "timed_out": false,
+      "timeout_seconds": 360
+    },
+    {
+      "argv": [
+        "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "-B",
+        "-P",
+        "-s",
+        "-S",
+        "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay_result.py",
+        "--candidate",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23c-negative-replay/b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719/runs/220227/l0-pilot-dependency-vector-negative-replay-candidate-v1.json",
+        "--output",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23c-negative-replay/b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719/runs/220227/l0-pilot-dependency-vector-negative-replay-independent-verification-v1.json",
+        "--repository-root",
+        "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23c-negative-replay/b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719/source"
+      ],
+      "duration_seconds_millis": 608,
+      "environment": {
+        "HOME": "/nonexistent/peano-a23c-wmi",
+        "LANG": "C.UTF-8",
+        "LC_ALL": "C.UTF-8",
+        "PATH": "/usr/bin:/bin",
+        "PYTHONDONTWRITEBYTECODE": "1",
+        "PYTHONHASHSEED": "2",
+        "PYTHONNOUSERSITE": "1",
+        "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23c-disabled-pycache",
+        "TZ": "UTC"
+      },
+      "finished_at": "2026-08-14T07:42:31.732007+00:00",
+      "hash_seed": 2,
+      "output_limit_reached": false,
+      "returncode": 0,
+      "role": "independent-verifier",
+      "started_at": "2026-08-14T07:42:31.122566+00:00",
+      "stderr": {
+        "bytes": 0,
+        "path": "independent-verifier.stderr.log",
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout": {
+        "bytes": 212,
+        "path": "independent-verifier.stdout.log",
+        "sha256": "4ce13eea5c6e7b0905058adb02e6b5d82f57dfbe290ac3a806a52b2314b23f61"
+      },
+      "timed_out": false,
+      "timeout_seconds": 90
+    }
+  ],
+  "requested_resources": {
+    "cpus_per_task": 1,
+    "memory_mib": 4096,
+    "nodes": 1,
+    "ntasks": 1,
+    "partition": "cpu_idle",
+    "time_limit": "00:15:00",
+    "time_limit_seconds": 900
+  },
+  "root_preimage": {
+    "format": "peano-hydra-a23c-negative-replay-wmi-execution-receipt-root-preimage",
+    "payload": {
+      "authority_claims": {
+        "a2_complete": false,
+        "dependency_vectors_complete": false,
+        "evaluation_eligible": false,
+        "freeze_ready": false,
+        "lineage_complete": false,
+        "minimality_claim": false,
+        "optimized_best_known": false,
+        "optimized_vector_independently_audited": false,
+        "proof_authority": false,
+        "public_graph_applied": false,
+        "publication_authority": false,
+        "publication_ready": false,
+        "publication_union_complete": false,
+        "publication_union_verified": false,
+        "retrieval_eligible": false,
+        "review_complete": false,
+        "theorem_admission_authority": false,
+        "training_eligible": false
+      },
+      "classification": "two-replayer-byte-identity-and-independent-structural-verification",
+      "error": null,
+      "evidence": {
+        "candidate": {
+          "baseline_record_count": 3,
+          "bytes": 322779,
+          "independent_negative_observation_count": 22,
+          "negative_observations_independently_verified": true,
+          "path": "l0-pilot-dependency-vector-negative-replay-candidate-v1.json",
+          "replayer_observations_execution_bound": true,
+          "replayer_source_state_root_sha256": "832372c5838b2cf3230f5d305ba6b4c9350d165e3c68debe1667f7fa6653722b",
+          "retained_route_row_count": 44,
+          "root_sha256": "f17e8c4a2b8080401376ab04f96d771b466946b87b816cb99be54299cbd6a02f",
+          "sha256": "46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba"
+        },
+        "evidence_boundary": {
+          "full_vector_baseline_record_count": 3,
+          "independent_negative_observation_count": 22,
+          "independent_wrapper_implementation": true,
+          "negative_observations_independently_verified": true,
+          "replayer_observations_execution_bound": true,
+          "retained_route_row_count": 44,
+          "route_rejections_independently_verified": false,
+          "shared_engine_with_a2.3b": true,
+          "structural_receipts_verified": true,
+          "tactic_semantics_independently_verified_by_verifier": false
+        },
+        "replayer_byte_identical": true,
+        "replayer_hash_seeds": [
+          0,
+          1
+        ],
+        "verifier": {
+          "bytes": 27484,
+          "hash_seed": 2,
+          "path": "l0-pilot-dependency-vector-negative-replay-independent-verification-v1.json",
+          "root_sha256": "364d4ee4099856c44ee1633439f2e5b1c57ae24cc90d9178cdf7445008504733",
+          "sha256": "48884600840c37044e099683b832659aec1fb22e4068637ad7212c104fe10293",
+          "status": "passed"
+        }
+      },
+      "finished_at": "2026-08-14T07:42:31.760536+00:00",
+      "format": "peano-hydra-a23c-negative-replay-wmi-execution-receipt",
+      "job_id": "220227",
+      "processes": [
+        {
+          "argv": [
+            "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+            "-B",
+            "-P",
+            "-s",
+            "-S",
+            "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+            "--execute",
+            "--confirm",
+            "PEANO-HYDRA-A23C-NEGATIVE-REPLAY",
+            "--hash-seed",
+            "0",
+            "--output",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23c-negative-replay/b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719/runs/220227/l0-pilot-dependency-vector-negative-replay-candidate-v1.json"
+          ],
+          "duration_seconds_millis": 43924,
+          "environment": {
+            "HOME": "/nonexistent/peano-a23c-wmi",
+            "LANG": "C.UTF-8",
+            "LC_ALL": "C.UTF-8",
+            "PATH": "/usr/bin:/bin",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONHASHSEED": "0",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23c-disabled-pycache",
+            "TZ": "UTC"
+          },
+          "finished_at": "2026-08-14T07:41:47.313308+00:00",
+          "hash_seed": 0,
+          "output_limit_reached": false,
+          "returncode": 0,
+          "role": "replayer-0",
+          "started_at": "2026-08-14T07:41:03.386821+00:00",
+          "stderr": {
+            "bytes": 0,
+            "path": "replayer-0.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 322779,
+            "path": "replayer-0.stdout.log",
+            "sha256": "46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba"
+          },
+          "timed_out": false,
+          "timeout_seconds": 360
+        },
+        {
+          "argv": [
+            "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+            "-B",
+            "-P",
+            "-s",
+            "-S",
+            "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+            "--execute",
+            "--confirm",
+            "PEANO-HYDRA-A23C-NEGATIVE-REPLAY",
+            "--hash-seed",
+            "1",
+            "--output",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23c-negative-replay/b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719/runs/220227/l0-pilot-dependency-vector-negative-replay-candidate-v1-hashseed-1.json"
+          ],
+          "duration_seconds_millis": 43784,
+          "environment": {
+            "HOME": "/nonexistent/peano-a23c-wmi",
+            "LANG": "C.UTF-8",
+            "LC_ALL": "C.UTF-8",
+            "PATH": "/usr/bin:/bin",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONHASHSEED": "1",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23c-disabled-pycache",
+            "TZ": "UTC"
+          },
+          "finished_at": "2026-08-14T07:42:31.100209+00:00",
+          "hash_seed": 1,
+          "output_limit_reached": false,
+          "returncode": 0,
+          "role": "replayer-1",
+          "started_at": "2026-08-14T07:41:47.313448+00:00",
+          "stderr": {
+            "bytes": 0,
+            "path": "replayer-1.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 322779,
+            "path": "replayer-1.stdout.log",
+            "sha256": "46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba"
+          },
+          "timed_out": false,
+          "timeout_seconds": 360
+        },
+        {
+          "argv": [
+            "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+            "-B",
+            "-P",
+            "-s",
+            "-S",
+            "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay_result.py",
+            "--candidate",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23c-negative-replay/b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719/runs/220227/l0-pilot-dependency-vector-negative-replay-candidate-v1.json",
+            "--output",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23c-negative-replay/b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719/runs/220227/l0-pilot-dependency-vector-negative-replay-independent-verification-v1.json",
+            "--repository-root",
+            "/work/bnaskrecki/peano-lab-training/tmp/hydra-a23c-negative-replay/b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719/source"
+          ],
+          "duration_seconds_millis": 608,
+          "environment": {
+            "HOME": "/nonexistent/peano-a23c-wmi",
+            "LANG": "C.UTF-8",
+            "LC_ALL": "C.UTF-8",
+            "PATH": "/usr/bin:/bin",
+            "PYTHONDONTWRITEBYTECODE": "1",
+            "PYTHONHASHSEED": "2",
+            "PYTHONNOUSERSITE": "1",
+            "PYTHONPYCACHEPREFIX": "/proc/peano-hydra-a23c-disabled-pycache",
+            "TZ": "UTC"
+          },
+          "finished_at": "2026-08-14T07:42:31.732007+00:00",
+          "hash_seed": 2,
+          "output_limit_reached": false,
+          "returncode": 0,
+          "role": "independent-verifier",
+          "started_at": "2026-08-14T07:42:31.122566+00:00",
+          "stderr": {
+            "bytes": 0,
+            "path": "independent-verifier.stderr.log",
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          "stdout": {
+            "bytes": 212,
+            "path": "independent-verifier.stdout.log",
+            "sha256": "4ce13eea5c6e7b0905058adb02e6b5d82f57dfbe290ac3a806a52b2314b23f61"
+          },
+          "timed_out": false,
+          "timeout_seconds": 90
+        }
+      ],
+      "requested_resources": {
+        "cpus_per_task": 1,
+        "memory_mib": 4096,
+        "nodes": 1,
+        "ntasks": 1,
+        "partition": "cpu_idle",
+        "time_limit": "00:15:00",
+        "time_limit_seconds": 900
+      },
+      "runtime": {
+        "dont_write_bytecode": true,
+        "executable": "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+        "implementation": "CPython",
+        "machine": "x86_64",
+        "no_site": true,
+        "optimize": 0,
+        "pycache_prefix": "/proc/peano-hydra-a23c-disabled-pycache",
+        "python_version": "3.12.12",
+        "safe_path": true,
+        "user_site_disabled": true
+      },
+      "source": {
+        "git_commit": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+        "git_receipt": {
+          "bytes": 29334,
+          "path": "replayer-git-verification-receipt.json",
+          "sha256": "42ebb8a353b205916a167de74bf3adc8412f9e16ad2bae8dab9213a7a37b8b8d"
+        },
+        "git_tree": "2bed15ee16c4c6b3360f4d6a711246e9020cfd9c",
+        "infrastructure_manifest": {
+          "bytes": 5858,
+          "path": "wmi-infrastructure-manifest.json",
+          "sha256": "2057bc1ab33e2cd863062bc370bb16b6d8f7022592b7ca73be5b05850282ecce"
+        },
+        "provenance": {
+          "git_commit": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+          "git_dirty": false,
+          "sha256": "cba0c0d750421fd223686f8d76a169cbd9e5b21a680abc7cb250845d36ed277f",
+          "sync_timestamp": "2026-08-14T07:39:16Z"
+        },
+        "snapshot_sha256": "b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719",
+        "source_state": {
+          "bytes": 2500,
+          "path": "replayer-source-state.json",
+          "sha256": "4fbcb219cf746da206fb07b99f6149922b761fff551fafd0b28f557bc53bf0b0"
+        }
+      },
+      "started_at": "2026-08-14T07:41:03.337486+00:00",
+      "status": "passed",
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "60513353afa2539f82568ae4360d98192584920af4bfd530d930e97e94efacdf",
+  "runtime": {
+    "dont_write_bytecode": true,
+    "executable": "/projects/wmi_conda/anaconda/2025.12-1/envs/pytorch-gpu/bin/python",
+    "implementation": "CPython",
+    "machine": "x86_64",
+    "no_site": true,
+    "optimize": 0,
+    "pycache_prefix": "/proc/peano-hydra-a23c-disabled-pycache",
+    "python_version": "3.12.12",
+    "safe_path": true,
+    "user_site_disabled": true
+  },
+  "source": {
+    "git_commit": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+    "git_receipt": {
+      "bytes": 29334,
+      "path": "replayer-git-verification-receipt.json",
+      "sha256": "42ebb8a353b205916a167de74bf3adc8412f9e16ad2bae8dab9213a7a37b8b8d"
+    },
+    "git_tree": "2bed15ee16c4c6b3360f4d6a711246e9020cfd9c",
+    "infrastructure_manifest": {
+      "bytes": 5858,
+      "path": "wmi-infrastructure-manifest.json",
+      "sha256": "2057bc1ab33e2cd863062bc370bb16b6d8f7022592b7ca73be5b05850282ecce"
+    },
+    "provenance": {
+      "git_commit": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+      "git_dirty": false,
+      "sha256": "cba0c0d750421fd223686f8d76a169cbd9e5b21a680abc7cb250845d36ed277f",
+      "sync_timestamp": "2026-08-14T07:39:16Z"
+    },
+    "snapshot_sha256": "b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719",
+    "source_state": {
+      "bytes": 2500,
+      "path": "replayer-source-state.json",
+      "sha256": "4fbcb219cf746da206fb07b99f6149922b761fff551fafd0b28f557bc53bf0b0"
+    }
+  },
+  "started_at": "2026-08-14T07:41:03.337486+00:00",
+  "status": "passed",
+  "v": 1
+}

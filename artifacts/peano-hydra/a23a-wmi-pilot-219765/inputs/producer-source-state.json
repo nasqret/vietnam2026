@@ -1,0 +1,63 @@
+{
+  "commit_sha1": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+  "files": [
+    {
+      "bytes": 26493,
+      "path": "training/peano_hydra/library-optimizer-comparison-pilot-schema-v1.json",
+      "sha256": "006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae"
+    },
+    {
+      "bytes": 81389,
+      "path": "training/peano_hydra/library_optimizer_comparison_pilot.py",
+      "sha256": "7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee"
+    },
+    {
+      "bytes": 9092,
+      "path": "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+      "sha256": "3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee"
+    },
+    {
+      "bytes": 46611,
+      "path": "peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_pilot.py",
+      "sha256": "d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9"
+    }
+  ],
+  "format": "peano-hydra-producer-source-state",
+  "git_verified": false,
+  "root_preimage": {
+    "format": "peano-hydra-producer-source-state-root-preimage",
+    "payload": {
+      "commit_sha1": "0f6ca3a0cf5998212e3a0ad508ba77e88a15a17d",
+      "files": [
+        {
+          "bytes": 26493,
+          "path": "training/peano_hydra/library-optimizer-comparison-pilot-schema-v1.json",
+          "sha256": "006d38ef781fc022b7b8929be35058038df02a0eee91eb2213128598c66a59ae"
+        },
+        {
+          "bytes": 81389,
+          "path": "training/peano_hydra/library_optimizer_comparison_pilot.py",
+          "sha256": "7ac7d784c3660c1c9b839c906e50e2a88dced6af96ded00b900165e25ec12eee"
+        },
+        {
+          "bytes": 9092,
+          "path": "scripts/build_peano_hydra_library_optimizer_comparison_pilot.py",
+          "sha256": "3acbd3ec0f190699d484ef0c800e4919c7cc8404fbbd50ba6daf90a5deb5d6ee"
+        },
+        {
+          "bytes": 46611,
+          "path": "peano-lab/py/tests/test_peano_hydra_library_optimizer_comparison_pilot.py",
+          "sha256": "d5ae3e830573c7a561462f5e0e91ef99bff42f6533986106cc65fc34f0e35dc9"
+        }
+      ],
+      "format": "peano-hydra-producer-source-state",
+      "git_verified": false,
+      "tree_sha1": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "b8517b9d10868a3942cf5a42ceb8c61e34b317647ddac19da0a8cef998438029",
+  "tree_sha1": "9051b43aa3f7f75d37ce8d410b9c7a81ba472d94",
+  "v": 1
+}

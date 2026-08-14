@@ -6,6 +6,7 @@ import hashlib
 import importlib.util
 import os
 from pathlib import Path
+import shutil
 import sys
 import uuid
 
@@ -119,12 +120,55 @@ def test_snapshot_contains_the_complete_proof_explorer_evidence_boundary() -> No
     )
 
 
-def test_runner_checks_both_generators_before_the_book_build() -> None:
+def test_snapshot_contains_the_selected_library_page_evidence_boundary() -> None:
+    packager = _load(PACKAGER, "_test_wmi_book_packager_selected_boundary")
+    selected = {path.as_posix() for path in packager.snapshot_files(REPO)}
+    required = {
+        "scripts/build_peano_hydra_library_pages.py",
+        "training/peano_hydra/library_page_deployment.py",
+        "training/peano_hydra/library-page-deployment-schema-v1.json",
+        "training/peano_hydra/library_documentation_bundle.py",
+        "training/peano_hydra/library-documentation-bundle-schema-v1.json",
+        "artifacts/peano-hydra/l0-documentation-candidate-v1/schema.json",
+        "artifacts/peano-hydra/l0-documentation-candidate-v1/explicit.json",
+        "artifacts/peano-hydra/l0-documentation-candidate-v1/defined.json",
+        "artifacts/peano-hydra/l0-documentation-candidate-v1/isolation-receipt.json",
+        "artifacts/peano-hydra/l0-documentation-candidate-v1/manifest.json",
+        (
+            "artifacts/peano-hydra/"
+            "library-page-deployment-candidate-v1-readiness.json"
+        ),
+        "book/_static/pa-selected-library/index.html",
+        "book/_static/pa-selected-library/assets/pages.css",
+        "book/_static/pa-selected-library/api/deployment.json",
+        "book/_static/pa-selected-library/schema.json",
+        "book/_static/pa-selected-library/manifest.json",
+    }
+    assert required <= selected
+    assert sum(
+        path.startswith("book/_static/pa-selected-library/explicit/")
+        and path.endswith(".html")
+        for path in selected
+    ) == 384
+    assert sum(
+        path.startswith("book/_static/pa-selected-library/defined/")
+        and path.endswith(".html")
+        for path in selected
+    ) == 384
+    assert sum(
+        path.startswith("book/_static/pa-selected-library/definition/")
+        and path.endswith(".html")
+        for path in selected
+    ) == 40
+
+
+def test_runner_checks_all_static_generators_before_the_book_build() -> None:
     source = RUNNER.read_text(encoding="utf-8")
     labels = (
         '"05-atlas-check"',
         '"06-proof-explorer-check"',
         '"06b-defined-proof-explorer-check"',
+        '"06c-selected-library-pages-check"',
         '"07-jupyter-book-build"',
         '"08-book-integrity"',
     )
@@ -132,6 +176,45 @@ def test_runner_checks_both_generators_before_the_book_build() -> None:
     assert positions == sorted(positions)
     assert '[str(venv_python), "scripts/build_pa_proof_explorer.py", "--check"]' in source
     assert '[str(venv_python), "scripts/build_pa_defined_explorer.py", "--check"]' in source
+    selected_command = (
+        '"scripts/build_peano_hydra_library_pages.py",\n'
+        '                    "--output-dir",\n'
+        '                    "book/_static/pa-selected-library",'
+    )
+    assert selected_command in source
+    assert '"library-page-deployment-candidate-v1-readiness.json"' in source
+
+
+def test_checker_audits_selected_library_as_a_separate_candidate_surface(
+    tmp_path: Path,
+) -> None:
+    checker = _load(CHECKER, "_test_wmi_book_checker_selected_library")
+    html_root = tmp_path / "html"
+    selected_relative = Path("_static/pa-selected-library")
+    built = html_root / selected_relative
+    shutil.copytree(REPO / "book" / selected_relative, built)
+
+    errors: list[str] = []
+    payload = checker._check_selected_library_copy(REPO / "book", html_root, errors)
+
+    assert errors == []
+    assert payload["deployed"] is False
+    assert payload["tree_file_count"] == 813
+    assert payload["html_page_count"] == 809
+    assert payload["theorem_count"] == 384
+    assert payload["explicit_page_count"] == 384
+    assert payload["defined_page_count"] == 384
+    assert payload["definition_page_count"] == 40
+    assert payload["source_manifest"] == payload["built_manifest"]
+
+    with (built / "index.html").open("ab") as stream:
+        stream.write(b"<!-- copied-byte drift -->\n")
+    drift_errors: list[str] = []
+    checker._check_selected_library_copy(REPO / "book", html_root, drift_errors)
+    assert any(
+        "built selected-library output differs from source: index.html" in error
+        for error in drift_errors
+    )
 
 
 def test_checker_rejects_an_existing_target_outside_html_root(

@@ -60,7 +60,6 @@ from .defined_syntax import (
     parse_defined_formula_in_context,
     parse_defined_formula_with_names,
 )
-from .quadratic_reciprocity_stack_runtime import quadratic_reciprocity_stack
 from .theorems import TheoremSpec
 
 
@@ -851,6 +850,12 @@ def _edition_metrics(records: tuple[DefinedTheoremRecord, ...]) -> DefinedEditio
 @lru_cache(maxsize=1)
 def defined_library_edition() -> DefinedLibraryEdition:
     """Build the exact 557-theorem QR closure in definition-aware syntax."""
+
+    # The per-theorem compactor is also used by Hydra's isolated 384-row
+    # public documentation bundle.  Import the wider QR research closure only
+    # when this 557-row edition is explicitly requested, so merely importing
+    # ``compact_theorem_spec`` cannot load non-L0 candidate theorem bodies.
+    from .quadratic_reciprocity_stack_runtime import quadratic_reciprocity_stack
 
     stack = quadratic_reciprocity_stack()
     records = tuple(

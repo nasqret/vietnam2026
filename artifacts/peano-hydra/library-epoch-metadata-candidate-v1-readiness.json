@@ -1,0 +1,31 @@
+{
+  "declared_dependency_edges": 1038,
+  "evaluation_eligible": false,
+  "format": "peano-hydra-library-epoch-metadata-readiness",
+  "freeze_ready": false,
+  "gaps": {
+    "atlas_missing_count": 0,
+    "atlas_stale_count": 0,
+    "defined_explorer_missing_count": 144,
+    "defined_explorer_stale_count": 0,
+    "definition_receipt_missing_count": 144,
+    "definition_receipt_stale_count": 0,
+    "explicit_explorer_missing_count": 144,
+    "explicit_explorer_stale_count": 0,
+    "human_review_pending_count": 384,
+    "lineage_pending_count": 384,
+    "optimized_best_known_pending_count": 384,
+    "optimized_dependency_vectors_pending_count": 384,
+    "publication_union_pending_count": 384,
+    "readable_dependency_vectors_unverified_count": 384,
+    "source_locator_missing_count": 0,
+    "vault_missing_count": 0,
+    "vault_stale_count": 0
+  },
+  "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+  "metadata_root_sha256": "b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279",
+  "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba",
+  "status": "candidate",
+  "theorem_count": 384,
+  "v": 1
+}

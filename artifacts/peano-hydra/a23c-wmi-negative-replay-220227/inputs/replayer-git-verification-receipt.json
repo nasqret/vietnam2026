@@ -1,0 +1,829 @@
+{
+  "authority_claims": {
+    "a2_complete": false,
+    "dependency_vectors_complete": false,
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "lineage_complete": false,
+    "minimality_claim": false,
+    "optimized_best_known": false,
+    "optimized_vector_independently_audited": false,
+    "proof_authority": false,
+    "public_graph_applied": false,
+    "publication_authority": false,
+    "publication_ready": false,
+    "publication_union_complete": false,
+    "publication_union_verified": false,
+    "retrieval_eligible": false,
+    "review_complete": false,
+    "theorem_admission_authority": false,
+    "training_eligible": false
+  },
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "--version"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 35,
+      "stdout_sha256": "b6d9afe6e5be5d40f0e18a09a0708100902e19a4d0e11fb5d3930d59785cb1aa"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 54,
+      "stdout_sha256": "6a7cf70a0ea3c9ee930bf13713938a64e73b555aad79e272f86a4a0bce1547fd"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--verify",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 41,
+      "stdout_sha256": "28ccfed6ae839a6d173850e1aea2565a24a1c2f72a9c33e9ab27fc6b29e7b273"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--verify",
+        "HEAD^{tree}"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 41,
+      "stdout_sha256": "9a43f60669f3ce4f97024cb295d015e933f71cd4d56676bfd60238d3a7e1e05c"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--quiet",
+        "--no-ext-diff",
+        "--"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--quiet",
+        "--no-ext-diff",
+        "--"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "training/peano_hydra/library-pilot-dependency-vector-negative-replay-schema-v1.json"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 134,
+      "stdout_sha256": "672e21b5cf4c882c94acc52116ecb45165efaa546b56be47caf3789967e73f28"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "--no-ext-diff",
+        "--no-textconv",
+        "a1830b8d019baaec72d1d2b3cc8046c72d22a336:training/peano_hydra/library-pilot-dependency-vector-negative-replay-schema-v1.json"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 26551,
+      "stdout_sha256": "be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "training/peano_hydra/library_pilot_dependency_vector_negative_replay.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 122,
+      "stdout_sha256": "4ab118dd5e9bf0f90079cbaba98a818ec4d640b0c56d10862ddbe025fa2a7fb9"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "--no-ext-diff",
+        "--no-textconv",
+        "a1830b8d019baaec72d1d2b3cc8046c72d22a336:training/peano_hydra/library_pilot_dependency_vector_negative_replay.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 91304,
+      "stdout_sha256": "f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 128,
+      "stdout_sha256": "640b3b83785137385e43f3ed187d83319b572182bbe7c5b9f3ec66b067bd2aa4"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "--no-ext-diff",
+        "--no-textconv",
+        "a1830b8d019baaec72d1d2b3cc8046c72d22a336:scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 49259,
+      "stdout_sha256": "524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 137,
+      "stdout_sha256": "89349b566bbed5cab085effb28480dbe13f1db23d52e8f694c22e2d762044972"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "--no-ext-diff",
+        "--no-textconv",
+        "a1830b8d019baaec72d1d2b3cc8046c72d22a336:peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 87120,
+      "stdout_sha256": "dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82"
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--stage",
+        "-z",
+        "--",
+        "scripts/build_peano_hydra_a23c_replayer_source_state.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 106,
+      "stdout_sha256": "2103ba8cc470fa6036e6705a6b7c3cf7880278d0a73e6d7b8fd6320fd9bfe569"
+    },
+    {
+      "argv": [
+        "git",
+        "show",
+        "--no-ext-diff",
+        "--no-textconv",
+        "a1830b8d019baaec72d1d2b3cc8046c72d22a336:scripts/build_peano_hydra_a23c_replayer_source_state.py"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 40801,
+      "stdout_sha256": "cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--verify",
+        "HEAD"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 41,
+      "stdout_sha256": "28ccfed6ae839a6d173850e1aea2565a24a1c2f72a9c33e9ab27fc6b29e7b273"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--verify",
+        "HEAD^{tree}"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 41,
+      "stdout_sha256": "9a43f60669f3ce4f97024cb295d015e933f71cd4d56676bfd60238d3a7e1e05c"
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--porcelain=v1",
+        "-z",
+        "--untracked-files=all"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--quiet",
+        "--no-ext-diff",
+        "--"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--quiet",
+        "--no-ext-diff",
+        "--"
+      ],
+      "exit_code": 0,
+      "stderr_bytes": 0,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "commit_sha1": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+  "format": "peano-hydra-a23c-replayer-git-verification-receipt",
+  "generator": {
+    "blob_oid_sha1": "dff33bc740a6eb850d7179b08e684bf53b6d2037",
+    "bytes": 40801,
+    "committed_sha256": "cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9",
+    "live_sha256": "cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9",
+    "mode": "100644",
+    "path": "scripts/build_peano_hydra_a23c_replayer_source_state.py",
+    "verified": true
+  },
+  "git_tool": {
+    "bytes": 118864,
+    "path": "/usr/bin/git",
+    "sha256": "7588ceab299393618d6f8861502ac0588d1594025f301d9a61a898215b5571d3",
+    "version": "git version 2.39.5 (Apple Git-154)"
+  },
+  "root_preimage": {
+    "format": "peano-hydra-a23c-replayer-git-verification-receipt-root-preimage",
+    "payload": {
+      "authority_claims": {
+        "a2_complete": false,
+        "dependency_vectors_complete": false,
+        "evaluation_eligible": false,
+        "freeze_ready": false,
+        "lineage_complete": false,
+        "minimality_claim": false,
+        "optimized_best_known": false,
+        "optimized_vector_independently_audited": false,
+        "proof_authority": false,
+        "public_graph_applied": false,
+        "publication_authority": false,
+        "publication_ready": false,
+        "publication_union_complete": false,
+        "publication_union_verified": false,
+        "retrieval_eligible": false,
+        "review_complete": false,
+        "theorem_admission_authority": false,
+        "training_eligible": false
+      },
+      "commands": [
+        {
+          "argv": [
+            "git",
+            "--version"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 35,
+          "stdout_sha256": "b6d9afe6e5be5d40f0e18a09a0708100902e19a4d0e11fb5d3930d59785cb1aa"
+        },
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "--show-toplevel"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 54,
+          "stdout_sha256": "6a7cf70a0ea3c9ee930bf13713938a64e73b555aad79e272f86a4a0bce1547fd"
+        },
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "--verify",
+            "HEAD"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 41,
+          "stdout_sha256": "28ccfed6ae839a6d173850e1aea2565a24a1c2f72a9c33e9ab27fc6b29e7b273"
+        },
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "--verify",
+            "HEAD^{tree}"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 41,
+          "stdout_sha256": "9a43f60669f3ce4f97024cb295d015e933f71cd4d56676bfd60238d3a7e1e05c"
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--porcelain=v1",
+            "-z",
+            "--untracked-files=all"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--quiet",
+            "--no-ext-diff",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--cached",
+            "--quiet",
+            "--no-ext-diff",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-files",
+            "--stage",
+            "-z",
+            "--",
+            "training/peano_hydra/library-pilot-dependency-vector-negative-replay-schema-v1.json"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 134,
+          "stdout_sha256": "672e21b5cf4c882c94acc52116ecb45165efaa546b56be47caf3789967e73f28"
+        },
+        {
+          "argv": [
+            "git",
+            "show",
+            "--no-ext-diff",
+            "--no-textconv",
+            "a1830b8d019baaec72d1d2b3cc8046c72d22a336:training/peano_hydra/library-pilot-dependency-vector-negative-replay-schema-v1.json"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 26551,
+          "stdout_sha256": "be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-files",
+            "--stage",
+            "-z",
+            "--",
+            "training/peano_hydra/library_pilot_dependency_vector_negative_replay.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 122,
+          "stdout_sha256": "4ab118dd5e9bf0f90079cbaba98a818ec4d640b0c56d10862ddbe025fa2a7fb9"
+        },
+        {
+          "argv": [
+            "git",
+            "show",
+            "--no-ext-diff",
+            "--no-textconv",
+            "a1830b8d019baaec72d1d2b3cc8046c72d22a336:training/peano_hydra/library_pilot_dependency_vector_negative_replay.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 91304,
+          "stdout_sha256": "f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-files",
+            "--stage",
+            "-z",
+            "--",
+            "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 128,
+          "stdout_sha256": "640b3b83785137385e43f3ed187d83319b572182bbe7c5b9f3ec66b067bd2aa4"
+        },
+        {
+          "argv": [
+            "git",
+            "show",
+            "--no-ext-diff",
+            "--no-textconv",
+            "a1830b8d019baaec72d1d2b3cc8046c72d22a336:scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 49259,
+          "stdout_sha256": "524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-files",
+            "--stage",
+            "-z",
+            "--",
+            "peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 137,
+          "stdout_sha256": "89349b566bbed5cab085effb28480dbe13f1db23d52e8f694c22e2d762044972"
+        },
+        {
+          "argv": [
+            "git",
+            "show",
+            "--no-ext-diff",
+            "--no-textconv",
+            "a1830b8d019baaec72d1d2b3cc8046c72d22a336:peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 87120,
+          "stdout_sha256": "dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82"
+        },
+        {
+          "argv": [
+            "git",
+            "ls-files",
+            "--stage",
+            "-z",
+            "--",
+            "scripts/build_peano_hydra_a23c_replayer_source_state.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 106,
+          "stdout_sha256": "2103ba8cc470fa6036e6705a6b7c3cf7880278d0a73e6d7b8fd6320fd9bfe569"
+        },
+        {
+          "argv": [
+            "git",
+            "show",
+            "--no-ext-diff",
+            "--no-textconv",
+            "a1830b8d019baaec72d1d2b3cc8046c72d22a336:scripts/build_peano_hydra_a23c_replayer_source_state.py"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 40801,
+          "stdout_sha256": "cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9"
+        },
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "--verify",
+            "HEAD"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 41,
+          "stdout_sha256": "28ccfed6ae839a6d173850e1aea2565a24a1c2f72a9c33e9ab27fc6b29e7b273"
+        },
+        {
+          "argv": [
+            "git",
+            "rev-parse",
+            "--verify",
+            "HEAD^{tree}"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 41,
+          "stdout_sha256": "9a43f60669f3ce4f97024cb295d015e933f71cd4d56676bfd60238d3a7e1e05c"
+        },
+        {
+          "argv": [
+            "git",
+            "status",
+            "--porcelain=v1",
+            "-z",
+            "--untracked-files=all"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--quiet",
+            "--no-ext-diff",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "argv": [
+            "git",
+            "diff",
+            "--cached",
+            "--quiet",
+            "--no-ext-diff",
+            "--"
+          ],
+          "exit_code": 0,
+          "stderr_bytes": 0,
+          "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "stdout_bytes": 0,
+          "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "commit_sha1": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+      "format": "peano-hydra-a23c-replayer-git-verification-receipt",
+      "generator": {
+        "blob_oid_sha1": "dff33bc740a6eb850d7179b08e684bf53b6d2037",
+        "bytes": 40801,
+        "committed_sha256": "cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9",
+        "live_sha256": "cfe1db8b7a35ca254b135b0c1b55e88c18c8e91b72385594ffed5892a5f964f9",
+        "mode": "100644",
+        "path": "scripts/build_peano_hydra_a23c_replayer_source_state.py",
+        "verified": true
+      },
+      "git_tool": {
+        "bytes": 118864,
+        "path": "/usr/bin/git",
+        "sha256": "7588ceab299393618d6f8861502ac0588d1594025f301d9a61a898215b5571d3",
+        "version": "git version 2.39.5 (Apple Git-154)"
+      },
+      "source_files": [
+        {
+          "blob_oid_sha1": "def5eece92e6b5eb6815d8121f6357d6f7e5302b",
+          "bytes": 26551,
+          "committed_sha256": "be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4",
+          "live_sha256": "be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4",
+          "mode": "100644",
+          "path": "training/peano_hydra/library-pilot-dependency-vector-negative-replay-schema-v1.json",
+          "verified": true
+        },
+        {
+          "blob_oid_sha1": "4f87b5c49412afcdde11bb94f1f096c3e0284a1f",
+          "bytes": 91304,
+          "committed_sha256": "f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4",
+          "live_sha256": "f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4",
+          "mode": "100644",
+          "path": "training/peano_hydra/library_pilot_dependency_vector_negative_replay.py",
+          "verified": true
+        },
+        {
+          "blob_oid_sha1": "d008e90621f3125cc35b98ef4286dc5bd92af994",
+          "bytes": 49259,
+          "committed_sha256": "524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b",
+          "live_sha256": "524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b",
+          "mode": "100644",
+          "path": "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+          "verified": true
+        },
+        {
+          "blob_oid_sha1": "535f2c5f557030ad84fda5baa232399183eff666",
+          "bytes": 87120,
+          "committed_sha256": "dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82",
+          "live_sha256": "dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82",
+          "mode": "100644",
+          "path": "peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+          "verified": true
+        }
+      ],
+      "source_state_artifact_sha256": "4fbcb219cf746da206fb07b99f6149922b761fff551fafd0b28f557bc53bf0b0",
+      "source_state_root_sha256": "832372c5838b2cf3230f5d305ba6b4c9350d165e3c68debe1667f7fa6653722b",
+      "source_state_sha256": "d4f67373b2f284ff29d70596944844bdcb1c4a014ca992d808a031ac135b13af",
+      "status": "passed",
+      "tree_sha1": "2bed15ee16c4c6b3360f4d6a711246e9020cfd9c",
+      "v": 1,
+      "verification": {
+        "clean_after": true,
+        "clean_before": true,
+        "commit_stable": true,
+        "diff_cached_quiet_after": true,
+        "diff_cached_quiet_before": true,
+        "diff_quiet_after": true,
+        "diff_quiet_before": true,
+        "generator_matches_head": true,
+        "head_after": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+        "head_before": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+        "porcelain_after_bytes": 0,
+        "porcelain_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "porcelain_before_bytes": 0,
+        "porcelain_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "replayer_files_match_head": true,
+        "stage_zero_regular_blobs": true,
+        "tree_after": "2bed15ee16c4c6b3360f4d6a711246e9020cfd9c",
+        "tree_before": "2bed15ee16c4c6b3360f4d6a711246e9020cfd9c",
+        "tree_stable": true
+      }
+    },
+    "v": 1
+  },
+  "root_sha256": "85825e1ac8a9e7255fc64afd305bee99d93dac44382dd64e1723483388eeb7b7",
+  "source_files": [
+    {
+      "blob_oid_sha1": "def5eece92e6b5eb6815d8121f6357d6f7e5302b",
+      "bytes": 26551,
+      "committed_sha256": "be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4",
+      "live_sha256": "be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4",
+      "mode": "100644",
+      "path": "training/peano_hydra/library-pilot-dependency-vector-negative-replay-schema-v1.json",
+      "verified": true
+    },
+    {
+      "blob_oid_sha1": "4f87b5c49412afcdde11bb94f1f096c3e0284a1f",
+      "bytes": 91304,
+      "committed_sha256": "f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4",
+      "live_sha256": "f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4",
+      "mode": "100644",
+      "path": "training/peano_hydra/library_pilot_dependency_vector_negative_replay.py",
+      "verified": true
+    },
+    {
+      "blob_oid_sha1": "d008e90621f3125cc35b98ef4286dc5bd92af994",
+      "bytes": 49259,
+      "committed_sha256": "524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b",
+      "live_sha256": "524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b",
+      "mode": "100644",
+      "path": "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+      "verified": true
+    },
+    {
+      "blob_oid_sha1": "535f2c5f557030ad84fda5baa232399183eff666",
+      "bytes": 87120,
+      "committed_sha256": "dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82",
+      "live_sha256": "dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82",
+      "mode": "100644",
+      "path": "peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+      "verified": true
+    }
+  ],
+  "source_state_artifact_sha256": "4fbcb219cf746da206fb07b99f6149922b761fff551fafd0b28f557bc53bf0b0",
+  "source_state_root_sha256": "832372c5838b2cf3230f5d305ba6b4c9350d165e3c68debe1667f7fa6653722b",
+  "source_state_sha256": "d4f67373b2f284ff29d70596944844bdcb1c4a014ca992d808a031ac135b13af",
+  "status": "passed",
+  "tree_sha1": "2bed15ee16c4c6b3360f4d6a711246e9020cfd9c",
+  "v": 1,
+  "verification": {
+    "clean_after": true,
+    "clean_before": true,
+    "commit_stable": true,
+    "diff_cached_quiet_after": true,
+    "diff_cached_quiet_before": true,
+    "diff_quiet_after": true,
+    "diff_quiet_before": true,
+    "generator_matches_head": true,
+    "head_after": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+    "head_before": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+    "porcelain_after_bytes": 0,
+    "porcelain_after_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "porcelain_before_bytes": 0,
+    "porcelain_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "replayer_files_match_head": true,
+    "stage_zero_regular_blobs": true,
+    "tree_after": "2bed15ee16c4c6b3360f4d6a711246e9020cfd9c",
+    "tree_before": "2bed15ee16c4c6b3360f4d6a711246e9020cfd9c",
+    "tree_stable": true
+  }
+}

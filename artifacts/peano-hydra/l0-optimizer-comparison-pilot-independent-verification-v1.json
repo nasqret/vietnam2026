@@ -1,0 +1,454 @@
+{
+  "a2_complete": false,
+  "aggregate": {
+    "candidate_artifact_count": 9,
+    "kernel_accepted_artifact_count": 9,
+    "nondominated_members_total": 6,
+    "pilot_theorem_count": 3,
+    "representative_counts": {
+      "a2.2-direct-cut-rebuild": 0,
+      "layered-closure": 3,
+      "retained-replay": 0
+    }
+  },
+  "candidate": {
+    "artifact_bytes": 848463,
+    "artifact_sha256": "3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b",
+    "root_sha256": "90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770",
+    "theorem_record_root_sha256": "4cfcbe22312ff2b92022189e65d3742bc096ba989dacaa82b2054e84282928e5"
+  },
+  "candidate_status": "candidate",
+  "dependency_vectors_complete": false,
+  "evaluation_eligible": false,
+  "format": "peano-hydra-library-optimizer-comparison-pilot-verification",
+  "freeze_ready": false,
+  "id": "independent-a2.3a-optimizer-comparison-pilot-verification-v1",
+  "kernel_artifacts_verified": true,
+  "lineage_complete": false,
+  "logic_mode": "intuitionistic",
+  "minimality_claim": false,
+  "optimized_best_known": false,
+  "optimized_vector_independently_audited": false,
+  "producer_git_verified": false,
+  "producer_source_state": {
+    "artifact_bytes": 2377,
+    "artifact_sha256": "3b6658ea8fae6c9430714781398232dd91a4d9c5edc756bd734a28cdb1734c82",
+    "root_sha256": "b8517b9d10868a3942cf5a42ceb8c61e34b317647ddac19da0a8cef998438029",
+    "semantic_sha256": "64ceb310fb0030ac0a1c040d5a15076a53ac1882dd17d725ea92e404f66d942b"
+  },
+  "producer_source_state_sha256": "64ceb310fb0030ac0a1c040d5a15076a53ac1882dd17d725ea92e404f66d942b",
+  "proof_authority": false,
+  "publication_authority": false,
+  "publication_ready": false,
+  "publication_union_complete": false,
+  "publication_union_verified": false,
+  "retrieval_eligible": false,
+  "review_complete": false,
+  "root_preimage": {
+    "format": "peano-hydra-library-optimizer-comparison-pilot-verification-root-preimage",
+    "payload": {
+      "a2_complete": false,
+      "aggregate": {
+        "candidate_artifact_count": 9,
+        "kernel_accepted_artifact_count": 9,
+        "nondominated_members_total": 6,
+        "pilot_theorem_count": 3,
+        "representative_counts": {
+          "a2.2-direct-cut-rebuild": 0,
+          "layered-closure": 3,
+          "retained-replay": 0
+        }
+      },
+      "candidate": {
+        "artifact_bytes": 848463,
+        "artifact_sha256": "3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b",
+        "root_sha256": "90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770",
+        "theorem_record_root_sha256": "4cfcbe22312ff2b92022189e65d3742bc096ba989dacaa82b2054e84282928e5"
+      },
+      "candidate_status": "candidate",
+      "dependency_vectors_complete": false,
+      "evaluation_eligible": false,
+      "format": "peano-hydra-library-optimizer-comparison-pilot-verification",
+      "freeze_ready": false,
+      "id": "independent-a2.3a-optimizer-comparison-pilot-verification-v1",
+      "kernel_artifacts_verified": true,
+      "lineage_complete": false,
+      "logic_mode": "intuitionistic",
+      "minimality_claim": false,
+      "optimized_best_known": false,
+      "optimized_vector_independently_audited": false,
+      "producer_git_verified": false,
+      "producer_source_state": {
+        "artifact_bytes": 2377,
+        "artifact_sha256": "3b6658ea8fae6c9430714781398232dd91a4d9c5edc756bd734a28cdb1734c82",
+        "root_sha256": "b8517b9d10868a3942cf5a42ceb8c61e34b317647ddac19da0a8cef998438029",
+        "semantic_sha256": "64ceb310fb0030ac0a1c040d5a15076a53ac1882dd17d725ea92e404f66d942b"
+      },
+      "producer_source_state_sha256": "64ceb310fb0030ac0a1c040d5a15076a53ac1882dd17d725ea92e404f66d942b",
+      "proof_authority": false,
+      "publication_authority": false,
+      "publication_ready": false,
+      "publication_union_complete": false,
+      "publication_union_verified": false,
+      "retrieval_eligible": false,
+      "review_complete": false,
+      "status": "passed",
+      "theorem_admission_authority": false,
+      "theorem_count": 3,
+      "theorem_records": {
+        "count": 3,
+        "preimage": {
+          "format": "peano-hydra-library-optimizer-comparison-pilot-verification-records-preimage",
+          "records": [
+            {
+              "index": 256,
+              "name": "odd_add_odd",
+              "record_sha256": "1450b9a0886bf8b9483651e560d59c478672d248ef1772a331d6a1e1f38f0878"
+            },
+            {
+              "index": 376,
+              "name": "finite_bounded_injective_surjective",
+              "record_sha256": "a27ec33ea8e8b243ff3fed1ace9ea94ebe0819ee60b1e7a91c315d5be62dfd2e"
+            },
+            {
+              "index": 379,
+              "name": "beta_product_swap_last_invariant",
+              "record_sha256": "da6890fe2fae9ae99959a3391d96928b90de1f4ed284936bbe51c3f60bb01291"
+            }
+          ],
+          "v": 1
+        },
+        "root_sha256": "18f882717346477304285c9336d7b769ccf95cd1b58c32b65d335f3e8caa4188"
+      },
+      "training_eligible": false,
+      "v": 1,
+      "verifier": {
+        "bytecode_write_disabled": true,
+        "import_policy": "stdlib-and-peano-kernel-only",
+        "kernel_sources": [
+          {
+            "module": "peano_lab",
+            "path": "peano-lab/py/peano_lab/__init__.py",
+            "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+          },
+          {
+            "module": "peano_lab.kernel",
+            "path": "peano-lab/py/peano_lab/kernel/__init__.py",
+            "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+          },
+          {
+            "module": "peano_lab.kernel.artifact_codec",
+            "path": "peano-lab/py/peano_lab/kernel/artifact_codec.py",
+            "sha256": "c9c4d3847c2c5fa7af683fb84f9e93341782e4b82f2579a675b97602aba39110"
+          },
+          {
+            "module": "peano_lab.kernel.checker",
+            "path": "peano-lab/py/peano_lab/kernel/checker.py",
+            "sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19"
+          },
+          {
+            "module": "peano_lab.kernel.formulas",
+            "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+            "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+          },
+          {
+            "module": "peano_lab.kernel.proofs",
+            "path": "peano-lab/py/peano_lab/kernel/proofs.py",
+            "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+          },
+          {
+            "module": "peano_lab.kernel.terms",
+            "path": "peano-lab/py/peano_lab/kernel/terms.py",
+            "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+          },
+          {
+            "module": "peano_lab.kernel.subst",
+            "path": "peano-lab/py/peano_lab/kernel/subst.py",
+            "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+          }
+        ],
+        "load_mode": "direct-source-module-without-training-package-init",
+        "path": "training/peano_hydra/library_optimizer_comparison_verifier.py",
+        "pycache_prefix": "/proc/peano-hydra-a23a-disabled-pycache",
+        "safe_path": true,
+        "sha256": "683ee529ed4be0e93504846340eeddf47eae1cb3f84967168a971d422ade1dbe",
+        "site_import_disabled": true,
+        "source_loader_preflight": "pathfinder-sourcefileloader-exact-origin",
+        "stdlib_precedes_peano_root": true,
+        "user_site_disabled": true
+      }
+    },
+    "v": 1
+  },
+  "root_sha256": "e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc",
+  "status": "passed",
+  "theorem_admission_authority": false,
+  "theorem_count": 3,
+  "theorem_records": {
+    "count": 3,
+    "preimage": {
+      "format": "peano-hydra-library-optimizer-comparison-pilot-verification-records-preimage",
+      "records": [
+        {
+          "index": 256,
+          "name": "odd_add_odd",
+          "record_sha256": "1450b9a0886bf8b9483651e560d59c478672d248ef1772a331d6a1e1f38f0878"
+        },
+        {
+          "index": 376,
+          "name": "finite_bounded_injective_surjective",
+          "record_sha256": "a27ec33ea8e8b243ff3fed1ace9ea94ebe0819ee60b1e7a91c315d5be62dfd2e"
+        },
+        {
+          "index": 379,
+          "name": "beta_product_swap_last_invariant",
+          "record_sha256": "da6890fe2fae9ae99959a3391d96928b90de1f4ed284936bbe51c3f60bb01291"
+        }
+      ],
+      "v": 1
+    },
+    "root_sha256": "18f882717346477304285c9336d7b769ccf95cd1b58c32b65d335f3e8caa4188"
+  },
+  "theorems": [
+    {
+      "artifacts": [
+        {
+          "artifact_sha256": "7ecd5c3f4ac81e800fc5d14b07758681b78f66a868d3d265a811c725aa6558c7",
+          "candidate_id": "retained-replay",
+          "candidate_kind_order": 0,
+          "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+          "fuel": 2432,
+          "kernel_accepted": true,
+          "kernel_context": "empty",
+          "metrics": {
+            "artifact_bytes": 14977,
+            "cut_nodes": 7,
+            "proof_depth": 32,
+            "proof_nodes": 302
+          },
+          "proof_term_sha256": "0199da96fdf6834e9c1affbc343a62e312c497c9a9c014904bf8cdd8ce5f5f38"
+        },
+        {
+          "artifact_sha256": "8064d28bd99adbaa1cde42c7ebd0f94880b345c889d6afc18e4b607749310ecc",
+          "candidate_id": "a2.2-direct-cut-rebuild",
+          "candidate_kind_order": 1,
+          "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+          "fuel": 2208,
+          "kernel_accepted": true,
+          "kernel_context": "empty",
+          "metrics": {
+            "artifact_bytes": 13640,
+            "cut_nodes": 6,
+            "proof_depth": 31,
+            "proof_nodes": 274
+          },
+          "proof_term_sha256": "4067a32d9787024c486b6162a041556a9a07620630d6507920e760eb99f4b996"
+        },
+        {
+          "artifact_sha256": "3fe6ba0a5ab6ca95a159ddb2d8fa44fd674a0eab4376069b3cc2db9f6c3c2962",
+          "candidate_id": "layered-closure",
+          "candidate_kind_order": 2,
+          "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+          "fuel": 2168,
+          "kernel_accepted": true,
+          "kernel_context": "empty",
+          "metrics": {
+            "artifact_bytes": 12709,
+            "cut_nodes": 3,
+            "proof_depth": 37,
+            "proof_nodes": 269
+          },
+          "proof_term_sha256": "aacd19d627ef6d8fc685fa53b13bcec637f3595e5fc5eb91e8ca6fdb40a9d2ad"
+        }
+      ],
+      "candidate_record_sha256": "bc8be263f85324cd4ef1b21bc0042bd78e746d813890213d23c3aa8bb1dd246a",
+      "index": 256,
+      "name": "odd_add_odd",
+      "nondominated_candidate_ids_in_input_order": [
+        "a2.2-direct-cut-rebuild",
+        "layered-closure"
+      ],
+      "record_sha256": "1450b9a0886bf8b9483651e560d59c478672d248ef1772a331d6a1e1f38f0878",
+      "representative_candidate_id": "layered-closure"
+    },
+    {
+      "artifacts": [
+        {
+          "artifact_sha256": "2db94478ba8ed9083f2e98079ac97102bf715cb9fadd90f662007819b4c0c0b6",
+          "candidate_id": "retained-replay",
+          "candidate_kind_order": 0,
+          "formula_sha256": "a0e3d1080e2fdda1b5043ddab641542573ac0d54c85f050c9b1c0f68ca0c7e61",
+          "fuel": 339720,
+          "kernel_accepted": true,
+          "kernel_context": "empty",
+          "metrics": {
+            "artifact_bytes": 1913452,
+            "cut_nodes": 1266,
+            "proof_depth": 89,
+            "proof_nodes": 42463
+          },
+          "proof_term_sha256": "d3aa668536fc47bc2b152d66d46096f014908151d9b8335dc9a216d4aef02147"
+        },
+        {
+          "artifact_sha256": "623865d90504af44cddca3d76ac4f009be8aa289e80d2785b72b121a52954504",
+          "candidate_id": "a2.2-direct-cut-rebuild",
+          "candidate_kind_order": 1,
+          "formula_sha256": "a0e3d1080e2fdda1b5043ddab641542573ac0d54c85f050c9b1c0f68ca0c7e61",
+          "fuel": 330744,
+          "kernel_accepted": true,
+          "kernel_context": "empty",
+          "metrics": {
+            "artifact_bytes": 1870657,
+            "cut_nodes": 1235,
+            "proof_depth": 89,
+            "proof_nodes": 41341
+          },
+          "proof_term_sha256": "3e2b64d254224aa6a13af069c74422d4a00ac85ebe73d0e939afcfa36316b33b"
+        },
+        {
+          "artifact_sha256": "af1410f83a9ab66080a80311d9262341f4cbd4b136a64e889b94c7f12fc342e1",
+          "candidate_id": "layered-closure",
+          "candidate_kind_order": 2,
+          "formula_sha256": "a0e3d1080e2fdda1b5043ddab641542573ac0d54c85f050c9b1c0f68ca0c7e61",
+          "fuel": 66856,
+          "kernel_accepted": true,
+          "kernel_context": "empty",
+          "metrics": {
+            "artifact_bytes": 297637,
+            "cut_nodes": 20,
+            "proof_depth": 95,
+            "proof_nodes": 8355
+          },
+          "proof_term_sha256": "e58c15e5caee08f5cf7ca4d6a53327416121f2816af3d3d3246a67400bea9a20"
+        }
+      ],
+      "candidate_record_sha256": "7184f2a942867686b8c573218c1e356132b67c49d05ec781f46d52c47000e8b0",
+      "index": 376,
+      "name": "finite_bounded_injective_surjective",
+      "nondominated_candidate_ids_in_input_order": [
+        "a2.2-direct-cut-rebuild",
+        "layered-closure"
+      ],
+      "record_sha256": "a27ec33ea8e8b243ff3fed1ace9ea94ebe0819ee60b1e7a91c315d5be62dfd2e",
+      "representative_candidate_id": "layered-closure"
+    },
+    {
+      "artifacts": [
+        {
+          "artifact_sha256": "19ff8744792d838ad6863af9e282fb17aa60f41c0ce51c5dfc927a4ecbd6635f",
+          "candidate_id": "retained-replay",
+          "candidate_kind_order": 0,
+          "formula_sha256": "bcb808230bb4f3f4e84416a5371d98f0809220ec499ff67b396d4ec1d717482d",
+          "fuel": 59528,
+          "kernel_accepted": true,
+          "kernel_context": "empty",
+          "metrics": {
+            "artifact_bytes": 391540,
+            "cut_nodes": 205,
+            "proof_depth": 67,
+            "proof_nodes": 7439
+          },
+          "proof_term_sha256": "3397b57bd4244f9f7f91bd7225fbc9d10efb8c45b18b9bf3379b12ae5d036ce5"
+        },
+        {
+          "artifact_sha256": "507940a3e456122fadb3b43d34891a70c91baa87615be80c1fca059e9ebd82df",
+          "candidate_id": "a2.2-direct-cut-rebuild",
+          "candidate_kind_order": 1,
+          "formula_sha256": "bcb808230bb4f3f4e84416a5371d98f0809220ec499ff67b396d4ec1d717482d",
+          "fuel": 59320,
+          "kernel_accepted": true,
+          "kernel_context": "empty",
+          "metrics": {
+            "artifact_bytes": 386189,
+            "cut_nodes": 203,
+            "proof_depth": 67,
+            "proof_nodes": 7413
+          },
+          "proof_term_sha256": "8e475f89c515bb4f56c6f0ce8adb64693805b835e80d408442f6e1e4520d0e5c"
+        },
+        {
+          "artifact_sha256": "fc08873008eea245be7b8b2961e1a00bf659c25dd257785d2e2345ff29fde9a1",
+          "candidate_id": "layered-closure",
+          "candidate_kind_order": 2,
+          "formula_sha256": "bcb808230bb4f3f4e84416a5371d98f0809220ec499ff67b396d4ec1d717482d",
+          "fuel": 16104,
+          "kernel_accepted": true,
+          "kernel_context": "empty",
+          "metrics": {
+            "artifact_bytes": 118018,
+            "cut_nodes": 9,
+            "proof_depth": 79,
+            "proof_nodes": 2011
+          },
+          "proof_term_sha256": "84cc60dc82ce73b963f69887df6707fb5f38e5ed4f0862c5ac9e3ea40c66d014"
+        }
+      ],
+      "candidate_record_sha256": "086f4c1a2f16ba7454c0b31f44ac7b8f5d31e75c82d8cf3adc045af2939e40b0",
+      "index": 379,
+      "name": "beta_product_swap_last_invariant",
+      "nondominated_candidate_ids_in_input_order": [
+        "a2.2-direct-cut-rebuild",
+        "layered-closure"
+      ],
+      "record_sha256": "da6890fe2fae9ae99959a3391d96928b90de1f4ed284936bbe51c3f60bb01291",
+      "representative_candidate_id": "layered-closure"
+    }
+  ],
+  "training_eligible": false,
+  "v": 1,
+  "verifier": {
+    "bytecode_write_disabled": true,
+    "import_policy": "stdlib-and-peano-kernel-only",
+    "kernel_sources": [
+      {
+        "module": "peano_lab",
+        "path": "peano-lab/py/peano_lab/__init__.py",
+        "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+      },
+      {
+        "module": "peano_lab.kernel",
+        "path": "peano-lab/py/peano_lab/kernel/__init__.py",
+        "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+      },
+      {
+        "module": "peano_lab.kernel.artifact_codec",
+        "path": "peano-lab/py/peano_lab/kernel/artifact_codec.py",
+        "sha256": "c9c4d3847c2c5fa7af683fb84f9e93341782e4b82f2579a675b97602aba39110"
+      },
+      {
+        "module": "peano_lab.kernel.checker",
+        "path": "peano-lab/py/peano_lab/kernel/checker.py",
+        "sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19"
+      },
+      {
+        "module": "peano_lab.kernel.formulas",
+        "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+        "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+      },
+      {
+        "module": "peano_lab.kernel.proofs",
+        "path": "peano-lab/py/peano_lab/kernel/proofs.py",
+        "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+      },
+      {
+        "module": "peano_lab.kernel.terms",
+        "path": "peano-lab/py/peano_lab/kernel/terms.py",
+        "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+      },
+      {
+        "module": "peano_lab.kernel.subst",
+        "path": "peano-lab/py/peano_lab/kernel/subst.py",
+        "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+      }
+    ],
+    "load_mode": "direct-source-module-without-training-package-init",
+    "path": "training/peano_hydra/library_optimizer_comparison_verifier.py",
+    "pycache_prefix": "/proc/peano-hydra-a23a-disabled-pycache",
+    "safe_path": true,
+    "sha256": "683ee529ed4be0e93504846340eeddf47eae1cb3f84967168a971d422ade1dbe",
+    "site_import_disabled": true,
+    "source_loader_preflight": "pathfinder-sourcefileloader-exact-origin",
+    "stdlib_precedes_peano_root": true,
+    "user_site_disabled": true
+  }
+}

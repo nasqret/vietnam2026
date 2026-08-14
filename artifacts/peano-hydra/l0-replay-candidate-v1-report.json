@@ -1,0 +1,28 @@
+{
+  "artifact_bytes_total": 80088767,
+  "format": "peano-hydra-library-replay-verification",
+  "kernel_checked_count": 384,
+  "logic_mode": "intuitionistic",
+  "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+  "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba",
+  "status": "passed",
+  "theorem_count": 384,
+  "v": 1,
+  "worker_isolation": {
+    "forbidden_import_prefixes": [
+      "peano_lab.library",
+      "peano_lab.engine",
+      "peano_lab.ui",
+      "training",
+      "torch",
+      "transformers"
+    ],
+    "forbidden_modules_loaded": [],
+    "format": "peano-hydra-replay-worker-isolation",
+    "fresh_repo_pycache": true,
+    "guard": "meta-path-reject",
+    "python_isolated_mode": true,
+    "python_no_site": true,
+    "v": 1
+  }
+}

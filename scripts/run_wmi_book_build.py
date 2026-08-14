@@ -267,6 +267,23 @@ def main() -> int:
                 True,
             ),
             (
+                "06c-selected-library-pages-check",
+                [
+                    str(venv_python),
+                    "scripts/build_peano_hydra_library_pages.py",
+                    "--output-dir",
+                    "book/_static/pa-selected-library",
+                    "--report",
+                    (
+                        "artifacts/peano-hydra/"
+                        "library-page-deployment-candidate-v1-readiness.json"
+                    ),
+                    "--check",
+                ],
+                600,
+                True,
+            ),
+            (
                 "07-jupyter-book-build",
                 [str(jupyter_book), "build", "book/", "--warningiserror", "--keep-going"],
                 1800,
@@ -290,9 +307,9 @@ def main() -> int:
             encoding="utf-8", errors="replace"
         ).strip()
 
-        # The two deterministic source generators were checked before Sphinx
-        # was allowed to run.  This final non-executing gate audits the copied
-        # explorer microsite and every other built relative target.
+        # The deterministic source generators were checked before Sphinx was
+        # allowed to run.  This final non-executing gate audits both static PA
+        # surfaces independently and every other built relative target.
         row = _run_step(
             "08-book-integrity",
             [

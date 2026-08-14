@@ -518,15 +518,13 @@ session commands replay. Automated worker boot is green. A direct in-app Pyodide
 still pending because no browser was attached to this session. This candidate is staged locally
 only; production is untouched.
 
-The last fully synchronized local browser candidate is build `2026-07-28p`, immutable application
-release `a-48059fcca9d3`. It exposes 137 unique checked theorems, including
-constructive relational gcd existence, balanced-natural Bézout, Gauss
-cancellation, and Euclid's lemma, together with the reviewed self-contained
-Cut rule. It preserves both parent snapshots as provenance and binds a freshly
-regenerated proof-trace corpus and application manifest. Its complete suite
-passes 1,090 tests on Python 3.10; the 36-source warning-as-error book and all
-264 documented commands are green. It has not been deployed or promoted;
-production remains untouched.
+The current fully synchronized local browser candidate is build `2026-08-09b`,
+immutable application release `a-7fe525e910c8`. It mounts 150 Python sources
+and exposes all 384 checked public theorems. The 154-entry application manifest
+also binds the strict `peano-lab-v2` artifact decoder used by Hydra's offline
+candidate replay pack. Deterministic full-tree sharding and the two
+environment-specific reruns cover 3,050 passing Peano cases with 12 registered
+skips. It has not been deployed or promoted; production remains untouched.
 
 The preceding local browser candidate is build `2026-07-29g`, immutable
 application release `a-6b72d4fe4ca4`. It exposes all 183 checked

@@ -8,7 +8,9 @@ import pytest
 
 import peano_lab.kernel.artifact_codec as artifact_codec
 from peano_lab.kernel.artifact_codec import (
+    ArtifactDecodeError,
     ArtifactLimitError,
+    decode_artifact,
     encode_artifact,
     encode_artifact_bounded,
     encode_formula,
@@ -65,6 +67,8 @@ def test_every_term_constructor_has_exact_canonical_bytes(
     term: object, expected: bytes
 ) -> None:
     assert encode_term(term) == expected
+    artifact = encode_artifact(1, Eq(term, term), EqRefl(term))
+    assert decode_artifact(artifact) == (1, Eq(term, term), EqRefl(term))
 
 
 @pytest.mark.parametrize(
@@ -83,6 +87,8 @@ def test_every_formula_constructor_has_exact_canonical_bytes(
     formula: object, expected: bytes
 ) -> None:
     assert encode_formula(formula) == expected
+    artifact = encode_artifact(1, formula, REFL)
+    assert decode_artifact(artifact) == (1, formula, REFL)
 
 
 @pytest.mark.parametrize(
@@ -138,6 +144,8 @@ def test_every_proof_constructor_has_exact_canonical_bytes(
     proof: object, expected: bytes
 ) -> None:
     assert encode_proof(proof) == expected
+    artifact = encode_artifact(1, ATOM, proof)
+    assert decode_artifact(artifact) == (1, ATOM, proof)
 
 
 @pytest.mark.parametrize("number", range(1, 7))
@@ -323,8 +331,87 @@ def test_encoding_is_inert_and_does_not_claim_the_proof_matches_the_target() -> 
     )
     assert type(encoded) is bytes
     assert encoded.endswith(b"\n") and not encoded.endswith(b"\n\n")
+    assert decode_artifact(encoded) == (0, false_target, EqRefl(ZERO))
+
+
+@pytest.mark.parametrize(
+    "mutation",
+    [
+        b'["peano-lab-v2",1,["eq",["zero"],["zero"]],["eq_refl",["zero"]]]',
+        b'["peano-lab-v2",1,["eq",["zero"],["zero"]],["eq_refl",["zero"]]]\n\n',
+        b' ["peano-lab-v2",1,["eq",["zero"],["zero"]],["eq_refl",["zero"]]]\n',
+        b'["peano-lab-v2",true,["eq",["zero"],["zero"]],["eq_refl",["zero"]]]\n',
+        b'["peano-lab-v2",1.0,["eq",["zero"],["zero"]],["eq_refl",["zero"]]]\n',
+        b'["peano-lab-v2",-0,["eq",["zero"],["zero"]],["eq_refl",["zero"]]]\n',
+        b'["\\u0070eano-lab-v2",1,["eq",["zero"],["zero"]],["eq_refl",["zero"]]]\n',
+        b'["peano-lab-v2",1, ["eq",["zero"],["zero"]],["eq_refl",["zero"]]]\n',
+        b'["peano-lab-v2",NaN,["eq",["zero"],["zero"]],["eq_refl",["zero"]]]\n',
+        b'["peano-lab-v2",1,["eq",["zero"],["zero"],0],["eq_refl",["zero"]]]\n',
+        b'["peano-lab-v2",1,["eq",["zero"],["zero"]],["eq_refl",["bot"]]]\n',
+        b'["peano-lab-v2",1,["foreign"],["eq_refl",["zero"]]]\n',
+        b'["peano-lab-v2",1,["eq",["zero"],["zero"]],["foreign"]]\n',
+        b'["peano-lab-v2",1,["eq",["zero"],["zero"]],["axiom","PA7"]]\n',
+    ],
+)
+def test_decoder_rejects_noncanonical_or_malformed_artifacts(mutation: bytes) -> None:
+    with pytest.raises(ArtifactDecodeError):
+        decode_artifact(mutation)
+
+
+@pytest.mark.parametrize(
+    ("limits", "message"),
+    [
+        ({"max_bytes": 1}, "byte"),
+        ({"max_nodes": 1}, "node"),
+        ({"max_depth": 1}, "depth"),
+    ],
+)
+def test_decoder_enforces_explicit_resource_limits(
+    limits: dict[str, int], message: str
+) -> None:
+    with pytest.raises(ArtifactDecodeError, match=message):
+        decode_artifact(encode_artifact(1, ATOM, REFL), **limits)
+
+
+def test_decoder_node_and_depth_boundaries_are_exact() -> None:
+    artifact = encode_artifact(1, ATOM, REFL)
+    assert decode_artifact(artifact, max_nodes=5, max_depth=2) == (1, ATOM, REFL)
+    with pytest.raises(ArtifactDecodeError, match="node"):
+        decode_artifact(artifact, max_nodes=4, max_depth=2)
+    with pytest.raises(ArtifactDecodeError, match="depth"):
+        decode_artifact(artifact, max_nodes=5, max_depth=1)
+
+
+def test_decoder_bounds_integer_tokens_before_constructing_kernel_syntax() -> None:
+    digits = b"1" * (artifact_codec.MAX_DECODE_INTEGER_DIGITS + 1)
+    artifact = (
+        b'["peano-lab-v2",'
+        + digits
+        + b',["eq",["zero"],["zero"]],["eq_refl",["zero"]]]\n'
+    )
+    with pytest.raises(ArtifactDecodeError, match="decimal-digit"):
+        decode_artifact(artifact)
+
+
+@pytest.mark.parametrize("artifact", [None, "not bytes", bytearray(b"x")])
+def test_decoder_requires_exact_bytes(artifact: object) -> None:
+    with pytest.raises(ArtifactDecodeError, match="exact bytes"):
+        decode_artifact(artifact)  # type: ignore[arg-type]
+
+
+@pytest.mark.parametrize("field", ["max_bytes", "max_nodes", "max_depth"])
+@pytest.mark.parametrize("bad", [0, -1, True, 1.5, None])
+def test_decoder_limits_must_be_positive_exact_integers(
+    field: str, bad: object
+) -> None:
+    with pytest.raises(ValueError, match="positive exact integer"):
+        decode_artifact(
+            encode_artifact(1, ATOM, REFL),
+            **{field: bad},  # type: ignore[arg-type]
+        )
 
 
 def test_exported_format_label_cannot_mutate_the_wire_tag(monkeypatch: pytest.MonkeyPatch) -> None:
     monkeypatch.setattr(artifact_codec, "FORMAT_TAG", "attacker-controlled")
     assert encode_artifact(1, ATOM, REFL).startswith(b'["peano-lab-v2",1,')
+    assert decode_artifact(encode_artifact(1, ATOM, REFL))[0] == 1

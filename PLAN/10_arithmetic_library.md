@@ -305,17 +305,16 @@ does not determine the architecture.
 - The generated 384-theorem snapshot has 1,806,923 structural occurrences,
   52,626 Cuts, and 329 Cut-bearing certificates. Its ordered root is
   `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
-  The vault has 482 notes and 4,886 resolved links, including all 384 generated
+  The vault has 490 notes and 4,981 resolved links, including all 384 generated
   theorem notes. The last source-bound 1,692-session/13,344-transition corpus
   remains intentionally tied to the historical 247-theorem checkpoint and has
   fingerprint
   `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
   its smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and all 247
   QEDs. The integrated local browser candidate deterministically verifies as
-  build `2026-08-04b`, application `a-903a05e31da9`, with 150 worker sources;
-  its source inventory, content manifest, and deployment contracts pass.
-  Complete local staging awaits the gitignored pinned vendor mirror, and the
-  build has not been deployed.
+  build `2026-08-09b`, application `a-7fe525e910c8`, with 150 worker sources;
+  its source inventory, content manifest, deployment contracts, and complete
+  local stage pass. The build has not been deployed.
 - The current Book source set has 46 sources. Its last strict arithmetic-branch
   rebuild completed without warnings; 194 deep links and 47 executable blocks
   containing 287 commands verify. The generated atlas contains 384 checked

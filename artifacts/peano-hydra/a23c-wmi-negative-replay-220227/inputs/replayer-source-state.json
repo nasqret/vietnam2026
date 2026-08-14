@@ -1,0 +1,63 @@
+{
+  "commit_sha1": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+  "files": [
+    {
+      "bytes": 26551,
+      "path": "training/peano_hydra/library-pilot-dependency-vector-negative-replay-schema-v1.json",
+      "sha256": "be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4"
+    },
+    {
+      "bytes": 91304,
+      "path": "training/peano_hydra/library_pilot_dependency_vector_negative_replay.py",
+      "sha256": "f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4"
+    },
+    {
+      "bytes": 49259,
+      "path": "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+      "sha256": "524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b"
+    },
+    {
+      "bytes": 87120,
+      "path": "peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+      "sha256": "dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82"
+    }
+  ],
+  "format": "peano-hydra-a23c-replayer-source-state",
+  "git_verified": false,
+  "root_preimage": {
+    "format": "peano-hydra-a23c-replayer-source-state-root-preimage",
+    "payload": {
+      "commit_sha1": "a1830b8d019baaec72d1d2b3cc8046c72d22a336",
+      "files": [
+        {
+          "bytes": 26551,
+          "path": "training/peano_hydra/library-pilot-dependency-vector-negative-replay-schema-v1.json",
+          "sha256": "be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4"
+        },
+        {
+          "bytes": 91304,
+          "path": "training/peano_hydra/library_pilot_dependency_vector_negative_replay.py",
+          "sha256": "f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4"
+        },
+        {
+          "bytes": 49259,
+          "path": "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+          "sha256": "524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b"
+        },
+        {
+          "bytes": 87120,
+          "path": "peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+          "sha256": "dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82"
+        }
+      ],
+      "format": "peano-hydra-a23c-replayer-source-state",
+      "git_verified": false,
+      "tree_sha1": "2bed15ee16c4c6b3360f4d6a711246e9020cfd9c",
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "832372c5838b2cf3230f5d305ba6b4c9350d165e3c68debe1667f7fa6653722b",
+  "tree_sha1": "2bed15ee16c4c6b3360f4d6a711246e9020cfd9c",
+  "v": 1
+}

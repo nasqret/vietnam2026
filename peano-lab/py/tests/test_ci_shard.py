@@ -253,17 +253,208 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     profile = load_runtime_profile(DEFAULT_RUNTIME_PROFILE, tests_root, files)
 
     assert profile.fallback_ms == 1000
-    assert len(profile.weights_ms) == 78
+    assert len(profile.weights_ms) == 115
     assert profile.weight_ms(tests_root / "test_congruence_beta_admission.py") == 274_300
+    assert profile.weight_ms(tests_root / "test_peano_hydra_authoring.py") == 500
+    assert profile.weight_ms(tests_root / "test_peano_hydra_assistant_repl.py") == 3_000
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_a23a_producer_source_state.py"
+        )
+        == 7_000
+    )
+    assert (
+        profile.weight_ms(tests_root / "test_peano_hydra_a23a_wmi_protocol.py")
+        == 1_500
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_a23b_producer_source_state.py"
+        )
+        == 6_000
+    )
+    assert (
+        profile.weight_ms(tests_root / "test_peano_hydra_a23b_wmi_protocol.py")
+        == 1_000
+    )
     assert profile.weight_ms(tests_root / "test_peano_hydra_conformance.py") == 6_000
+    assert (
+        profile.weight_ms(tests_root / "test_peano_hydra_library_replay_pack.py")
+        == 50_000
+    )
+    assert profile.weight_ms(tests_root / "test_peano_hydra_library_epoch.py") == 126_000
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_library_epoch_metadata.py"
+        )
+        == 80_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_library_documentation_bundle.py"
+        )
+        == 120_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_library_epoch_metadata_v2.py"
+        )
+        == 360_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_library_dependency_audit.py"
+        )
+        == 15_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_library_construction_rebuild.py"
+        )
+        == 45_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_library_optimizer_comparison_pilot.py"
+        )
+        == 1_500
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_library_pilot_dependency_vector_audit.py"
+        )
+        == 3_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root
+            / "test_peano_hydra_library_pilot_dependency_vector_audit_result.py"
+        )
+        == 3_500
+    )
+    assert (
+        profile.weight_ms(
+            tests_root
+            / "test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py"
+        )
+        == 3_500
+    )
+    assert (
+        profile.weight_ms(
+            tests_root
+            / "test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py"
+        )
+        == 20_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root
+            / "test_peano_hydra_library_pilot_dependency_vector_cut_liveness_result.py"
+        )
+        == 2_500
+    )
+    assert (
+        profile.weight_ms(
+            tests_root
+            / "test_peano_hydra_library_pilot_dependency_vector_negative_replay.py"
+        )
+        == 6_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root
+            / "test_peano_hydra_library_pilot_dependency_vector_negative_replay_result.py"
+        )
+        == 3_500
+    )
+    assert (
+        profile.weight_ms(
+            tests_root
+            / "test_peano_hydra_library_pilot_dependency_vector_negative_replay_verifier.py"
+        )
+        == 9_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root
+            / "test_peano_hydra_library_pilot_optimized_construction_comparison.py"
+        )
+        == 1_500
+    )
+    assert (
+        profile.weight_ms(
+            tests_root
+            / (
+                "test_peano_hydra_library_pilot_"
+                "optimized_construction_comparison_result.py"
+            )
+        )
+        == 1_500
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_a23c_replayer_source_state.py"
+        )
+        == 6_000
+    )
+    assert (
+        profile.weight_ms(tests_root / "test_peano_hydra_a23c_wmi_protocol.py")
+        == 6_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_a23d_cut_liveness_source_state.py"
+        )
+        == 7_500
+    )
+    assert (
+        profile.weight_ms(tests_root / "test_peano_hydra_a23d_wmi_protocol.py")
+        == 8_000
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_library_optimizer_comparison_result.py"
+        )
+        == 3_500
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_library_optimizer_comparison_verifier.py"
+        )
+        == 2_500
+    )
+    assert profile.weight_ms(tests_root / "test_peano_hydra_library_pages.py") == 90_000
+    assert (
+        profile.weight_ms(tests_root / "test_peano_hydra_interactive_assistant.py")
+        == 2_000
+    )
     assert profile.weight_ms(tests_root / "test_peano_hydra_macro_runner.py") == 14_000
     assert profile.weight_ms(tests_root / "test_peano_hydra_macros.py") == 500
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_publication_race_portability.py"
+        )
+        == 1_000
+    )
     assert profile.weight_ms(tests_root / "test_peano_hydra_result_schema.py") == 1_000
+    assert profile.weight_ms(tests_root / "test_peano_hydra_qwen_bridge.py") == 1_000
+    assert profile.weight_ms(tests_root / "test_peano_hydra_vampire_assistant.py") == 2_000
+    assert profile.weight_ms(tests_root / "test_peano_hydra_vampire_adapter.py") == 2_000
+    assert profile.weight_ms(tests_root / "test_peano_hydra_vampire_live.py") == 6_000
     shards = partition_test_files(files, 8, profile)
     assert [
         sum(profile.weight_ms(path) for path in shard)
         for shard in shards
-    ] == [424_000, 423_800, 424_000, 424_000, 424_500, 424_000, 424_500, 423_500]
+    ] == [
+        550_000,
+        550_000,
+        549_800,
+        550_500,
+        550_500,
+        550_000,
+        550_000,
+        549_500,
+    ]
 
 
 def test_cli_reports_modeled_runtime_and_source_bytes(

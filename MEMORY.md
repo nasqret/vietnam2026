@@ -237,12 +237,12 @@
   kernel-judged H0–H6 experiment before implementation. Standard Heyting
   arithmetic is not claimed decidable; any decision result requires an exact
   restricted fragment and independent negative evidence. H1 freezes an ordered
-  library epoch (the historical 247-theorem corpus checkpoint or a later
-  explicitly frozen successor) and a sealed
+  library epoch (at least the current 384-theorem checked runtime at freeze)
+  and a sealed
   lineage-separated benchmark; later mathematics, including the quadratic-
   reciprocity campaign, enters a new epoch. Native search,
-  retrieval/ranking, Qwen, Codex, Vampire/E/SMT, translations, and
-  reconstruction are untrusted. Generative actions occur only at symbolic
+  retrieval/ranking, Qwen, Codex, Vampire, translations, and reconstruction
+  are untrusted; E/SMT are deferred comparison adapters. Generative actions occur only at symbolic
   critical frontiers through macros compiled to public Peano commands. The H5
   headline compares symbolic `S`, non-generative `S+R`, and full Hydra under
   matched resources; teacher-oracle DEV pilots and the historical four-goal
@@ -280,6 +280,81 @@
   H0.3 macro/Dispatch/rollback evidence from clean commit
   `26c2503b36c6884bfbfa6dabd1494bbda49d8926`. Report v1 is provisional and
   superseded. H1 epoch and benchmark sealing remain open.
+- **Peano Hydra expanded product architecture (2026-08-04):** Hydra's only
+  object language is the curated Peano Lab PA language. The adopted target
+  architecture has a future living authoring/library product beside the
+  frozen H0–H6 experiment. Constructive
+  intuitionistic PA is the default; classical arithmetic uses a separately
+  versioned `PA+DNE` profile, with `A \/ ~A` offered only as a derived surface
+  result if desired. The planned `authoring-live` lane will follow reviewed
+  library HEAD, whereas `research-eval` will see a physically copied content-
+  addressed epoch and lineage mask. The planned live assistant will retain verbatim revisioned prose, propose
+  alternative formalizations, labels diagnostic authority, rejects stale
+  asynchronous replies, defaults training consent to deny, and exports only
+  explicit human-accepted/reviewed theorem proposals. Native closure and
+  Vampire are intended to do dense symbolic work; future separate sub-10B Qwen LoRA roles will provide
+  formalization, retrieval, macro, value, critique, and checked-artifact
+  explanation proposals. Python
+  remains sole final QED authority. Rust native/WASM is an accelerator/shadow
+  until K5–K11 freeze a logic-carrying protocol, harden resource outcomes,
+  prove the checker specification in Lean, refine the exact Rust accepted path
+  to it, complete a dual-check soak, and approve a separate cutover. H1/A0
+  schemas and epoch isolation are the active implementation slice; `L0` is not
+  yet frozen and no Vampire/Qwen result follows from this architecture update.
+  The first authoring protocol has digest
+  `31a344bbc0b22cfacf5803c85d25a80a0234cf7387395283c5e1ab25ada80553`
+  and 28 focused tests; the epoch protocol has digest
+  `f4695013ee4aeb660abf3a1e57a6334d86c990a8904c4435d94628694a2e875b`
+  and 38 focused tests. Independent review forced type-exact JSON roots and
+  versions, live-only candidate provenance, restart on post-import source
+  drift, bounded/no-follow reads, evidence-scoped diagnostics, and ordered
+  actor/session event roots. Both production review registries are empty. The
+  three-file epoch fixture remains provenance-only. A separate candidate
+  replay pack now carries all 384 exact `peano-lab-v2` certificates
+  (80,088,767 bytes), schema digest
+  `d60b07fe68aa4ba023c9bb873e2df4190752f70252caca21da7e76dcd393f02d`,
+  manifest root
+  `fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`,
+  and fresh-worker reproduced replay root
+  `88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+  A strict decoder and fresh
+  `python -I -S -X pycache_prefix=<fresh-dir>` worker bind the original closed
+  target, block living-library/engine/UI/training/model imports, and ask the
+  intuitionistic kernel to replay every proof. This closes only H1.1's replay-
+  transport subgate: the pack enforces `candidate` and evaluation-ineligible,
+  while exact dependency views/minimization, complete document receipts,
+  lineage, source-state/owner freeze, and benchmark sealing remain absent.
+  H1.1a now adds a candidate-only readiness ledger without changing either
+  earlier protocol. Metadata schema v1 has semantic digest
+  `71995b59d4f5592a08a90dc354a91888f5f1f6f89ec4428be291aea19e76062c`;
+  its 5,880,054-byte retained document has root
+  `b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`
+  and file SHA-256
+  `e719dd526d0aa07e2521fb2e499f2ee6810506d32a912298f11dbac60a2c0289`.
+  It records 384 source locators, 1,038 declared edges, and 240 complete
+  six-way documentation joins. Atlas/vault gaps are zero; explorer and
+  definition receipts have 144 missing/zero stale rows. The explorers' 317
+  additional names are disjoint non-`L0` provenance and cannot enter the
+  epoch's retrieval, training, or evaluation surfaces. Human review, lineage,
+  best-known comparison, readable/optimized dependency vectors, leave-one-out
+  receipts, and publication unions remain pending for all 384 rows. The 53
+  focused adversarial tests pass; H1.1 remains open until the 144 rows and A2
+  evidence are repaired before an external source-state/owner request.
+  A0/H1 therefore remain open.
+- **Peano Hydra interactive preview (2026-08-09):** A3.2/A4.0 now provide a
+  runnable terminal join without changing frozen H0 `Dispatch` or the Peano
+  kernel. `interactive_assistant.py` keeps one immutable proof owner; manual
+  tactics use the public surface; exact-byte, owner-bound Qwen JSON remains an
+  inert premise/macro proposal; and `vampire_live.py` runs one host-owned,
+  copied-and-rehashed direct Vampire child under explicit resource ceilings.
+  Failed proof-state transitions preserve the identical session; validation
+  or transport exceptions also leave the proof owner untouched. A closed
+  session prints `qed` only when it carries the fresh original-goal kernel
+  certificate receipt. An unretained real Vampire 5.0.1 diagnostic reconstructed
+  `split; apply PA3; apply PA5` and passed that kernel gate. No trained Qwen
+  used the new contract: model-v3 retains its historical next-tactic format,
+  and WMI was unreachable. This is a local functional preview, not browser or
+  production integration, an H5 comparison, or evidence of solver advantage.
 - **Four formal foundations, on purpose:** Lean 4 = CIC, Agda = MLTT, Rocq (ex-Coq) = CIC, Mizar =
   Tarski–Grothendieck set theory. The same statements are proved in all four to *show* the foundations.
 - **Local tooling present:** Lean/`elan`/`lake` ✓ (proofs verifiable here), `jupyter-book` ✓, `gh` (as
@@ -562,13 +637,12 @@
   329 Cut-bearing certificates. Its ordered root is
   `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
   The synchronized research graph has 385 records (384 checked and one
-  language-blocked conventional interface). The Obsidian vault has 482 notes
-  and 4,886 resolved links, including all 384 generated theorem notes. The
+  language-blocked conventional interface). The Obsidian vault has 490 notes
+  and 4,981 resolved links, including all 384 generated theorem notes. The
   integrated local browser candidate deterministically verifies as build
-  `2026-08-04b`, application `a-903a05e31da9`, with 150 worker sources; its
-  source inventory, content manifest, and deployment contracts pass. Complete
-  local staging awaits the gitignored pinned vendor mirror, and the build is
-  not deployed.
+  `2026-08-09b`, application `a-7fe525e910c8`, with 150 worker sources; its
+  source inventory, content manifest, deployment contracts, and complete local
+  stage pass. The build is not deployed.
 - **QR heavy-execution boundary (2026-07-30):** proof replay, certificate
   profiling, mutation audits, full-ladder tests, and documentation builds run
   on WMI from content-addressed dirty-worktree archives; the Mac is restricted
@@ -1460,8 +1534,8 @@
   all-case receipt is
   `2e6e5df23ec90555bb754b7297d87b75f37a1e6f9fcd5a6d9da6facbf1ad1f68`.
   Traps/timeouts/rejections cannot grant or retract QED. Candidate
-  browser build `2026-08-04e` has application address
-  `a-129c5c680e53`, 150 mounted worker sources, and 154 sealed application
+  browser build `2026-08-09b` has application address
+  `a-7fe525e910c8`, 150 mounted worker sources, and 154 sealed application
   entries; it is not deployed.
 - **Model-v3 prelaunch durability and chain binding (2026-07-30):** the
   one-shot trainer preserves adapter/tokenizer tensors before its explicit

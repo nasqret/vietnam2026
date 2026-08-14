@@ -1,0 +1,153 @@
+{
+  "files": [
+    {
+      "bytes": 43334,
+      "mode": "100755",
+      "path": "scripts/build_peano_hydra_a23d_cut_liveness_source_state.py",
+      "sha256": "1161c123a96158123107f452b22692ad9c516431e2bb71848d7e051994faf6f1"
+    },
+    {
+      "bytes": 38965,
+      "mode": "100755",
+      "path": "scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+      "sha256": "03b160f5515027dc5ea8dac58d9f1225ec87a363b079386d23498c38fc6cfb16"
+    },
+    {
+      "bytes": 35415,
+      "mode": "100755",
+      "path": "scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+      "sha256": "a71bc1a2a802e130b4688ffb702659d15c6ea94120090ee00df3e4a23fda9523"
+    },
+    {
+      "bytes": 81450,
+      "mode": "100644",
+      "path": "training/peano_hydra/library_pilot_dependency_vector_cut_liveness_verifier.py",
+      "sha256": "63ab7b96cee903f3ea2af4bda64d52409b656ea700a725332c0c569c9f3b3108"
+    },
+    {
+      "bytes": 95659,
+      "mode": "100755",
+      "path": "scripts/run_peano_hydra_a23d_cut_liveness_wmi.py",
+      "sha256": "c737d05b74e39c6956bae9eaa97dd7bb606e98e718c6f06430ee05522fc523b8"
+    },
+    {
+      "bytes": 14920,
+      "mode": "100755",
+      "path": "scripts/submit_wmi_hydra_a23d_cut_liveness.sh",
+      "sha256": "0f9552a739a1ba64e25e958498d22a6025ad8b83d7b1b1671c9fe421e06cf1d3"
+    },
+    {
+      "bytes": 5692,
+      "mode": "100755",
+      "path": "scripts/collect_wmi_hydra_a23d_cut_liveness.sh",
+      "sha256": "6c570194a672c4f48aa0f4214e2918469214fe6ac57c4671a150fc621ec6e509"
+    },
+    {
+      "bytes": 5057,
+      "mode": "100755",
+      "path": "slurm/peano_wmi_hydra_a23d_cut_liveness.sbatch",
+      "sha256": "de5463e13d626cd0e7c34c1ce96e0e3e7b5aaf5e6304453f794ac41f06c629d9"
+    },
+    {
+      "bytes": 13797,
+      "mode": "100644",
+      "path": "peano-lab/py/tests/test_peano_hydra_a23d_cut_liveness_source_state.py",
+      "sha256": "3b3f90e687f7fdf71783480cfee5fb5c94085d2f7853f9e332c00cf1b7b31901"
+    },
+    {
+      "bytes": 56843,
+      "mode": "100644",
+      "path": "peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+      "sha256": "6f5686484596328d1f64bd6bed7e109f3459a54aaf6b3754c546e96e4a74e725"
+    },
+    {
+      "bytes": 32420,
+      "mode": "100644",
+      "path": "peano-lab/py/tests/test_peano_hydra_a23d_wmi_protocol.py",
+      "sha256": "0927e477f321bed217bcac531057d68dc03658bc0bd5cba3743ea911a5d104ce"
+    }
+  ],
+  "format": "peano-hydra-a23d-wmi-infrastructure-manifest",
+  "git_commit": "25228180c956456145eba64601e829103731e903",
+  "git_tree": "528ca1d3c0e697048479acdd690b54a9d13fa469",
+  "root_preimage": {
+    "format": "peano-hydra-a23d-wmi-infrastructure-manifest-root-preimage",
+    "payload": {
+      "files": [
+        {
+          "bytes": 43334,
+          "mode": "100755",
+          "path": "scripts/build_peano_hydra_a23d_cut_liveness_source_state.py",
+          "sha256": "1161c123a96158123107f452b22692ad9c516431e2bb71848d7e051994faf6f1"
+        },
+        {
+          "bytes": 38965,
+          "mode": "100755",
+          "path": "scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+          "sha256": "03b160f5515027dc5ea8dac58d9f1225ec87a363b079386d23498c38fc6cfb16"
+        },
+        {
+          "bytes": 35415,
+          "mode": "100755",
+          "path": "scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+          "sha256": "a71bc1a2a802e130b4688ffb702659d15c6ea94120090ee00df3e4a23fda9523"
+        },
+        {
+          "bytes": 81450,
+          "mode": "100644",
+          "path": "training/peano_hydra/library_pilot_dependency_vector_cut_liveness_verifier.py",
+          "sha256": "63ab7b96cee903f3ea2af4bda64d52409b656ea700a725332c0c569c9f3b3108"
+        },
+        {
+          "bytes": 95659,
+          "mode": "100755",
+          "path": "scripts/run_peano_hydra_a23d_cut_liveness_wmi.py",
+          "sha256": "c737d05b74e39c6956bae9eaa97dd7bb606e98e718c6f06430ee05522fc523b8"
+        },
+        {
+          "bytes": 14920,
+          "mode": "100755",
+          "path": "scripts/submit_wmi_hydra_a23d_cut_liveness.sh",
+          "sha256": "0f9552a739a1ba64e25e958498d22a6025ad8b83d7b1b1671c9fe421e06cf1d3"
+        },
+        {
+          "bytes": 5692,
+          "mode": "100755",
+          "path": "scripts/collect_wmi_hydra_a23d_cut_liveness.sh",
+          "sha256": "6c570194a672c4f48aa0f4214e2918469214fe6ac57c4671a150fc621ec6e509"
+        },
+        {
+          "bytes": 5057,
+          "mode": "100755",
+          "path": "slurm/peano_wmi_hydra_a23d_cut_liveness.sbatch",
+          "sha256": "de5463e13d626cd0e7c34c1ce96e0e3e7b5aaf5e6304453f794ac41f06c629d9"
+        },
+        {
+          "bytes": 13797,
+          "mode": "100644",
+          "path": "peano-lab/py/tests/test_peano_hydra_a23d_cut_liveness_source_state.py",
+          "sha256": "3b3f90e687f7fdf71783480cfee5fb5c94085d2f7853f9e332c00cf1b7b31901"
+        },
+        {
+          "bytes": 56843,
+          "mode": "100644",
+          "path": "peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py",
+          "sha256": "6f5686484596328d1f64bd6bed7e109f3459a54aaf6b3754c546e96e4a74e725"
+        },
+        {
+          "bytes": 32420,
+          "mode": "100644",
+          "path": "peano-lab/py/tests/test_peano_hydra_a23d_wmi_protocol.py",
+          "sha256": "0927e477f321bed217bcac531057d68dc03658bc0bd5cba3743ea911a5d104ce"
+        }
+      ],
+      "format": "peano-hydra-a23d-wmi-infrastructure-manifest",
+      "git_commit": "25228180c956456145eba64601e829103731e903",
+      "git_tree": "528ca1d3c0e697048479acdd690b54a9d13fa469",
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "09a05076bc8e57174790575d59e41a0b4c0090602f8305465e84339b172fc01e",
+  "v": 1
+}

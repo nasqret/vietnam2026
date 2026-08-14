@@ -39,6 +39,7 @@ The exact abstracts, session plans and reading lists live on the [landing page](
 | `artifacts/` | **Formal proofs** in four systems, plus `lean-fta/`: a pinned, sorry-free Lean proof of prime-factorization existence and uniqueness up to permutation. |
 | `lab-lambda/` | The **Lambda Lab**, repackaged to run **directly in the browser** (Pyodide + xterm.js). Deployed to `/lab-lambda`. |
 | `peano-lab/` | The **Peano Lab** browser prover, its independent PA kernel, 384-entry checked arithmetic ladder, and reproducible proof-trace corpus. |
+| `training/peano_hydra/` | **Peano Hydra** contracts and research plumbing for the living PA authoring assistant and frozen native/Vampire/Qwen campaign. |
 | `research/` | The **research dossier** — including the 385-node arithmetic catalog (384 checked and one representation-blocked), native and Lean FTA certificates, the quadratic-reciprocity campaign, and source/license maps. |
 | `scripts/` | Book replay gate plus the deterministic Peano trace generation, export, and kernel-judged evaluation pipeline. |
 | `docs/` | Lecturer-facing docs: how to build, deploy, and run each piece. |
@@ -94,16 +95,49 @@ a deployment claim. The generated 384-theorem snapshot has 1,806,923
 structural occurrences, 52,626 Cuts, and 329 Cut-bearing certificates, with
 ordered root
 `73b31b4775d24b6bb9730f2f2df37409aa56dc771fe3e1d0f9de5134b166e89b`.
+Hydra's new replay-complete candidate pack physically carries all 384
+canonical certificates (80,088,767 bytes) and rechecks them against their
+original closed goals in an import-guarded fresh
+`python -I -S -X pycache_prefix=<fresh-dir>` worker. Its
+manifest root is
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`;
+the theorem replay root is
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+It remains schema-labeled candidate/evaluation-ineligible: dependency-view,
+lineage, independent-deposit, and benchmark gates still prevent calling it a
+frozen production `L0`.
+The bounded A2.3a proof-assembly pilot has also completed on WMI job `219765`
+for exactly three roots and three preregistered candidates per root. Two
+producer hash seeds emitted identical 848,463-byte candidate documents and a
+separate kernel-only verifier accepted all nine artifacts. The retained
+candidate has SHA-256/root
+`3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b` /
+`90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770`;
+the verification SHA-256/root is
+`6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a` /
+`e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc`.
+For each root the fixed comparison frontier contains the A2.2 direct rebuild
+and layered closure, and the deterministic node-first display rule selects the
+layered closure. That statement is only about the frozen comparison set: no
+global best, minimality, independently audited or complete dependency vector,
+publication/readiness/union, review, lineage, freeze, A2 completion,
+proof/admission/publication authority, training, retrieval, or evaluation
+eligibility is claimed, and the public library, graph, catalog, and pages are
+unchanged. The retained 19-file evidence excludes the deleted transfer
+archive; its snapshot is only transitively receipt-bound. The `sacct` row is
+unauthenticated and lacks `MaxRSS`, so no memory ceiling is claimed. Producer
+stderr contains only retained pre-existing Python 3.12 `SyntaxWarning`s;
+scheduler and verifier stderr are empty.
 The synchronized vault includes all 384 generated lemma notes. The released
 source-bound corpus retains 13,344 transitions in 1,692
 kernel-checked sessions under fingerprint
 `6fc52e25f17dc2ff0c0e7a141c350430d6aa1d0a7a87b82e22840f442f666939`;
 its isolated smoke has 494 sessions, 9,235 raw/9,232 unique transitions, and
 all 247 authored QEDs. The integrated local browser candidate deterministically
-verifies as build `2026-08-04b`, application `a-903a05e31da9`, with 150 worker
+verifies as build `2026-08-09b`, application `a-7fe525e910c8`, with 150 worker
 sources; its source inventory, content manifest, and deployment contracts pass.
-A complete local stage is not claimed in this isolated clone because its
-gitignored pinned vendor mirror is absent, and the build is not deployed. The
+The content-addressed local stage assembled successfully. The build is not
+deployed, and direct attached-browser UI inspection remains unclaimed. The
 strict Jupyter Book rebuild completes over all 46 sources; its post-build
 integrity gate reports zero broken relative targets or fragments and
 byte-identical explicit and defined Proof Explorer trees.

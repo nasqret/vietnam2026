@@ -1,0 +1,1 @@
+["peano-lab-v2",80,["forall",["or",["eq",["var",0],["zero"]],["exists",["eq",["var",1],["succ",["var",0]]]]]],["ind",["or",["eq",["var",0],["zero"]],["exists",["eq",["var",1],["succ",["var",0]]]]],["or_intro_l",["eq_refl",["zero"]]],["forall_intro",["imp_intro",["or_intro_r",["exists_intro",["var",0],["eq_refl",["succ",["var",0]]]]]]]]]

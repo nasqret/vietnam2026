@@ -1,0 +1,284 @@
+{
+  "algorithm": {
+    "id": "binder-aware-inner-first-vacuous-direct-cut-elimination-v1",
+    "input_contract": [
+      "authenticate and canonically decode the exact retained odd_add_odd artifact and its four declared dependency artifacts",
+      "independently intuitionistic-kernel-check the retained root and every opaque direct-Cut lemma",
+      "extract exactly the declared outer direct-Cut spine and bind every proposition and opaque lemma to its retained dependency artifact"
+    ],
+    "normalization_contract": [
+      "peel the exact declared outer direct-Cut spine without entering opaque lemma certificates",
+      "process the peeled spine from innermost to outermost in the exact order add_comm, add_assoc, add_succ_left, mul_add",
+      "retain a Cut exactly when its bound proposition hypothesis occurs in the current body under binder-aware de Bruijn traversal",
+      "otherwise delete the vacuous Cut and decrement only proposition-hypothesis indices free relative to that Cut",
+      "intuitionistic-kernel-check every intermediate proof under the exact remaining surrounding dependency context",
+      "derive the output direct vector solely from retained root-spine Cuts in original declaration order"
+    ],
+    "proposition_hypothesis_binders": [
+      "ImpIntro.body",
+      "Cut.body",
+      "OrElim.left_case",
+      "OrElim.right_case",
+      "ExistsElim.body"
+    ],
+    "proof_producing": true,
+    "scope": "exact root direct-Cut spine only; opaque dependency lemmas are authenticated and preserved without internal normalization"
+  },
+  "canonical_output": {
+    "artifact": {
+      "artifact_bytes": 11958,
+      "artifact_sha256": "c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22",
+      "cut_nodes": 5,
+      "fuel": 1936,
+      "fuel_formula": "8 * intrinsic_proof_nodes + 16",
+      "proof_depth": 30,
+      "proof_nodes": 240,
+      "proof_term_sha256": "5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4"
+    },
+    "derived_direct_dependencies": [
+      "mul_add",
+      "add_comm"
+    ],
+    "derived_direct_dependencies_lf_sha256": "ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4",
+    "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-v1",
+    "id": "peano-hydra-l0-pilot-dependency-vector-cut-liveness-candidate-v1",
+    "initial_direct_dependencies_lf_sha256": "9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc",
+    "normalization_outcomes_inner_first": [
+      {
+        "dependency": "add_comm",
+        "outcome": "retained-used"
+      },
+      {
+        "dependency": "add_assoc",
+        "outcome": "deleted-vacuous"
+      },
+      {
+        "dependency": "add_succ_left",
+        "outcome": "deleted-vacuous"
+      },
+      {
+        "dependency": "mul_add",
+        "outcome": "retained-used"
+      }
+    ],
+    "retained_graph_descriptive_closure": {
+      "basis": "retained-manifest-graph-descriptive-context-not-direct-vector-input",
+      "dependencies_in_replay_order": [
+        "zero_add",
+        "add_succ_left",
+        "add_comm",
+        "add_assoc",
+        "mul_add"
+      ],
+      "dropped_direct_dependencies_remaining_reachable": [
+        "add_succ_left",
+        "add_assoc"
+      ],
+      "lf_sha256": "a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2",
+      "unchanged_by_root_direct_cut_normalization": true
+    },
+    "status": "candidate-only-bounded-one-root-proof-producing-cut-liveness-normalization"
+  },
+  "claim_boundary": {
+    "false_claims": [
+      "a2_complete",
+      "authority_granted",
+      "best_known",
+      "bounded_three_root_vector_audit_complete",
+      "dependency_minimality_established",
+      "dependency_necessity_established",
+      "dependency_vectors_complete",
+      "evaluation_eligible",
+      "freeze_complete",
+      "global_comparison_complete",
+      "human_review_complete",
+      "lineage_complete",
+      "optimized_best_known",
+      "optimized_vector_independently_audited",
+      "producer_git_verified",
+      "public_graph_applied",
+      "publication_applied",
+      "publication_union_complete",
+      "publication_union_verified",
+      "research_evaluation_eligible",
+      "retrieval_eligible",
+      "route_rejections_independently_verified",
+      "training_eligible"
+    ],
+    "interpretation": [
+      "retained-used means only that this exact transformed proof structurally references the corresponding root dependency hypothesis",
+      "deleted-vacuous means only that this exact root Cut can be capture-safely removed without changing any other proof constructor or opaque lemma",
+      "the derived two-name vector is optimal only under this registered vacuous-root-Cut deletion transform",
+      "remaining use is not mathematical necessity and the result is not a globally minimum-cardinality dependency vector",
+      "removed direct names may remain in the retained transitive closure through opaque retained lemmas",
+      "no publication, graph, authority, review, freeze, training, retrieval, evaluation, or A2 status follows"
+    ]
+  },
+  "fixed_inputs": {
+    "dependencies": [
+      {
+        "artifact_bytes": 3447,
+        "artifact_path": "certificates/0007-mul_add-aeabac97da97840a927c69265493c8a2355b711fa9fdc37b5c482b530b057cb7.pl2",
+        "artifact_sha256": "aeabac97da97840a927c69265493c8a2355b711fa9fdc37b5c482b530b057cb7",
+        "declared_index": 0,
+        "formula_sha256": "6c7d695dfd0c3b56e49507b7f510182794963f91ab9e5f1466dc40f145a7a0a5",
+        "index": 7,
+        "name": "mul_add",
+        "proof_term_sha256": "c32deba7cbdcfff28fe47fc2f2515cbb684f754c9b6b96860c8c89b02dfdf1ac"
+      },
+      {
+        "artifact_bytes": 1023,
+        "artifact_path": "certificates/0001-add_succ_left-09d9cd46daa969e93fdb83d9119f8c14fb226f11356acc69882759e270371983.pl2",
+        "artifact_sha256": "09d9cd46daa969e93fdb83d9119f8c14fb226f11356acc69882759e270371983",
+        "declared_index": 1,
+        "formula_sha256": "9c089dd32a335c2b820b4ea3c0902821860bcb80bbf5c306c0fdad15c8da1756",
+        "index": 1,
+        "name": "add_succ_left",
+        "proof_term_sha256": "769124fe14b55a54436635de5be893ee15ba997d5db435c159a3d00e611907d7"
+      },
+      {
+        "artifact_bytes": 1368,
+        "artifact_path": "certificates/0003-add_assoc-a239a7199c5294b1060e7f9a8244cd290036b5bc63f22ec767f68c9821026744.pl2",
+        "artifact_sha256": "a239a7199c5294b1060e7f9a8244cd290036b5bc63f22ec767f68c9821026744",
+        "declared_index": 2,
+        "formula_sha256": "4c7b9113d46e6c5646a169320d17464dcf78c0c97be26f4ef03a9d7f3afd3171",
+        "index": 3,
+        "name": "add_assoc",
+        "proof_term_sha256": "bc649ea7f7bb208ab963a2cc5137fc00b005d261a35d447a065dd094faa7399f"
+      },
+      {
+        "artifact_bytes": 2551,
+        "artifact_path": "certificates/0002-add_comm-e7094296018260b6c03fb3846c61bacc94e8d0f39739379326db409d99aeef9f.pl2",
+        "artifact_sha256": "e7094296018260b6c03fb3846c61bacc94e8d0f39739379326db409d99aeef9f",
+        "declared_index": 3,
+        "formula_sha256": "25b3cc29a1427896f1aa3935bc167b449d4501668be477e477180454ba292f94",
+        "index": 2,
+        "name": "add_comm",
+        "proof_term_sha256": "1d083e7da855b6e22c63dc081cd86cffa5beb4690f4298e6c804fe8717c4baaa"
+      }
+    ],
+    "replay_manifest": {
+      "artifact_bytes": 3241451,
+      "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+      "artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+      "manifest_root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d",
+      "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba",
+      "theorem_count": 384
+    },
+    "replay_report": {
+      "artifact_bytes": 828,
+      "artifact_path": "artifacts/peano-hydra/l0-replay-candidate-v1-report.json",
+      "artifact_sha256": "35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10"
+    },
+    "root": {
+      "artifact_bytes": 14977,
+      "artifact_path": "certificates/0256-odd_add_odd-7ecd5c3f4ac81e800fc5d14b07758681b78f66a868d3d265a811c725aa6558c7.pl2",
+      "artifact_sha256": "7ecd5c3f4ac81e800fc5d14b07758681b78f66a868d3d265a811c725aa6558c7",
+      "declared_dependencies": [
+        "mul_add",
+        "add_succ_left",
+        "add_assoc",
+        "add_comm"
+      ],
+      "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+      "index": 256,
+      "name": "odd_add_odd",
+      "proof_term_sha256": "0199da96fdf6834e9c1affbc343a62e312c497c9a9c014904bf8cdd8ce5f5f38",
+      "source_fuel": 2432
+    }
+  },
+  "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-schema",
+  "id": "peano-hydra-library-pilot-dependency-vector-cut-liveness-schema-v1",
+  "limits": {
+    "max_artifact_bytes": 65536,
+    "max_cli_stderr_bytes": 65536,
+    "max_cli_stdout_bytes": 1048576,
+    "max_cli_wall_seconds": 30,
+    "max_dependency_count": 4,
+    "max_document_bytes": 1048576,
+    "max_formula_or_proof_depth": 128,
+    "max_json_depth": 64,
+    "max_json_nodes": 100000,
+    "max_proof_nodes": 10000,
+    "max_schema_bytes": 262144,
+    "max_transform_visits": 50000
+  },
+  "logic_mode": "intuitionistic",
+  "producer_contract": {
+    "controlled_runtime": {
+      "cwd": "exact physical repository root with a non-symlink lexical ancestor chain",
+      "environment": "sanitized allowlist; every Python injection variable absent except the exact deterministic hash, no-bytecode, and disabled-pycache settings",
+      "execution_boundary": "fresh bounded child with hard stdout, stderr, and wall-time caps",
+      "hash_randomization": 0,
+      "implementation_source_closure": [
+        {
+          "bytes": 257,
+          "path": "peano-lab/py/peano_lab/__init__.py",
+          "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+        },
+        {
+          "bytes": 263,
+          "path": "peano-lab/py/peano_lab/kernel/__init__.py",
+          "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+        },
+        {
+          "bytes": 27892,
+          "path": "peano-lab/py/peano_lab/kernel/artifact_codec.py",
+          "sha256": "c9c4d3847c2c5fa7af683fb84f9e93341782e4b82f2579a675b97602aba39110"
+        },
+        {
+          "bytes": 10738,
+          "path": "peano-lab/py/peano_lab/kernel/checker.py",
+          "sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19"
+        },
+        {
+          "bytes": 10950,
+          "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        },
+        {
+          "bytes": 5015,
+          "path": "peano-lab/py/peano_lab/kernel/proofs.py",
+          "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+        },
+        {
+          "bytes": 5165,
+          "path": "peano-lab/py/peano_lab/kernel/subst.py",
+          "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+        },
+        {
+          "bytes": 9133,
+          "path": "peano-lab/py/peano_lab/kernel/terms.py",
+          "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+        }
+      ],
+      "producer_load_mode": "authenticated-source-bytes-SourceFileLoader.source_to_code-exec",
+      "pycache_prefix": "/proc/peano-hydra-a23d-cut-liveness-disabled-pycache",
+      "python_implementation": "cpython",
+      "python_flags": [
+        "-B",
+        "-P",
+        "-s",
+        "-S"
+      ],
+      "python_hash_seed": "0",
+      "python_major": 3,
+      "python_minor": 12,
+      "python_optimize": 0
+    },
+    "default_write": false,
+    "failure_semantics": "malformed input, identity drift, resource exhaustion, traversal disagreement, kernel rejection, or canonicalization failure aborts without a result",
+    "independent_verifier_required_for_audit_claim": true,
+    "output_mode": "canonical stdout unless an absent explicit create-only path is authorized",
+    "predecessor_imports_forbidden": [
+      "training.peano_hydra.library_dependency_audit",
+      "training.peano_hydra.library_construction_rebuild",
+      "training.peano_hydra.library_optimizer_comparison_pilot",
+      "training.peano_hydra.library_pilot_dependency_vector_audit",
+      "training.peano_hydra.library_pilot_dependency_vector_negative_replay"
+    ],
+    "tactic_or_live_library_replay_forbidden": true
+  },
+  "status": "frozen-source-protocol-no-retained-result",
+  "v": 1
+}

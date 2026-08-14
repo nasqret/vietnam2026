@@ -5,13 +5,17 @@ tags: [peano-lab, neuro-symbolic, theorem-proving, research-protocol]
 
 # Peano Hydra
 
-**Peano Hydra** is a falsifiable campaign to test whether sparse LLM guidance
-improves a strong proof-producing symbolic prover for Peano Lab under matched
-resources.
+**Peano Hydra** is both a living native-PA workshop and a falsifiable campaign.
+The workshop grows a reviewed arithmetic library and uses a
+[[peano-authoring-assistant]] to turn accepted prose into checked, documented
+artifacts. The campaign tests whether sparse LLM guidance improves a strong
+proof-producing native/[[vampire-reconstruction|Vampire]] prover for Peano Lab
+under matched resources.
 
 Its many search components are untrusted: native closure, theorem retrieval,
-clause ranking, Qwen policies, Codex teacher proposals, Vampire, E, SMT
-solvers, translations, and proof reconstruction. Every positive result becomes
+clause ranking, role-separated Qwen LoRA policies and explanation drafts,
+Codex teacher proposals,
+Vampire, translations, and proof reconstruction. Every positive result becomes
 a theorem only after the [[trusted-kernel]] checks a self-contained
 [[proof-certificate]] against the original goal.
 
@@ -29,7 +33,32 @@ H0 completed on 2026-08-04. Its retained report is
 `55c60502b2229f4420bd4557058842bebb582f491739e82a6dae06de5b803fdb`.
 The earlier v1 is provisional H0.1/H0.2 evidence and is superseded for the
 complete-H0 claim.
-H1 remains open; no sealed benchmark or LLM-advantage result exists.
+H1 remains open; no sealed benchmark or LLM-advantage result exists. Its first
+executable slices are the 28-test canonical [[peano-authoring-assistant]]
+contract and the 38-test [[library-epoch]] transition protocol. The historical
+epoch fixture remains provenance-only, but a subordinate replay-complete
+candidate pack now carries and fresh-worker kernel-replays all 384 canonical
+certificates in an import-guarded
+`python -I -S -X pycache_prefix=<fresh-dir>` worker. Its manifest root is
+`fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d`
+and its theorem replay root is
+`88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba`.
+This closes only the replay-transport subgate: both production review
+registries are empty and the pack is evaluation-ineligible. H1.1a's retained
+candidate metadata ledger (root
+`b2f397cec26d5f22bf0806da1f6e219d26bb5e319a503395150d9278efae8279`)
+makes the next gaps exact: 384 sources, 1,038 declared edges, 240 complete
+documentation joins, and 144 missing/zero stale explorer and definition rows.
+The 317 extra explorer names are disjoint non-$L_0$ provenance. Dependency
+views, leave-one-out evidence, human review, best-known comparison, lineage,
+independent deposit, and benchmark sealing remain absent for all 384 rows. It
+is not an A0/H1 or production-$L_0$ completion claim.
+
+Peano Lab remains the sole object language. Under [[peano-logic-profiles]],
+constructive PA is the default and classical PA+DNE is separately labeled. Living
+`authoring-live` HEAD and frozen `research-eval` epochs are physically
+separated. The native/WASM checker stays a shadow until the
+[[verified-rust-kernel]] refinement gates pass.
 
 H0 freezes the [[peano-hydra-semantic-profile]]: closed intuitionistic PA,
 PA1--PA6, unrestricted induction, no classical checker, no decision fragment,
@@ -52,6 +81,24 @@ untrusted, failure rolls back exactly, and every accepted trace is replay-aware.
 Historical surface-macro-v0 rows remain schema-incomplete and comparison-
 ineligible; H0 completion does not retroactively promote them.
 
+The A3.2/A4.0 functional preview now joins one immutable proof owner with
+manual public tactics, proposal-only Qwen data, and a bounded direct-child
+Vampire call. `QwenHydraRequest` binds the current goal, retrieved
+`name : statement` pairs, and exact allow-lists; terminal attachment accepts a
+strict exact-field JSON premise/typed-macro proposal with no mutation or QED
+authority. The Python bridge also has a bounded canonical line form for
+programmatic experiments, with the same authority boundary. A host-owned
+transport must enforce wall, memory, process, and network limits beyond the
+bridge's prompt/response byte bounds. A validated
+premise list may be passed to Vampire, but SZS remains inert: only reconstructed
+public commands can advance a temporary owner, failure restores the identical
+owner, and every closed result needs fresh original-goal kernel replay. The
+unretained real Vampire 5.0.1 conjunction diagnostic reconstructed
+`split; apply PA3; apply PA5` and kernel-checked. No trained-Qwen live inference
+was run because model-v3 uses the historical next-tactic contract and WMI was
+unreachable during integration. The terminal is not browser/production A5 or
+frozen-H0 `Dispatch`, and establishes no capability advantage.
+
 ## Related
 
 - [[critical-proof-frontier]]
@@ -62,5 +109,9 @@ ineligible; H0 completion does not retroactively promote them.
 - [[library-epoch]]
 - [[sealed-theorem-benchmark]]
 - [[matched-compute-proof-evaluation]]
+- [[peano-authoring-assistant]]
+- [[peano-logic-profiles]]
+- [[vampire-reconstruction]]
+- [[verified-rust-kernel]]
 - [[kernel-guided-policy-training]]
 - [[peano-lab-moc]]

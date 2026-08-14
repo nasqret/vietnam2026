@@ -1,0 +1,228 @@
+{
+  "additional_fields_policy": "forbidden-at-every-schema-owned-object",
+  "canonical_json": {
+    "document": "UTF-8, sorted keys, two-space indentation, one final LF",
+    "hash_preimage": "UTF-8, sorted keys, compact separators, no final LF",
+    "numbers": "integers only",
+    "objects": "duplicate keys forbidden"
+  },
+  "constants": {
+    "authoring_scope": "living-authoring-head",
+    "candidate_status": "candidate",
+    "frozen_scope": "immutable-research-epoch",
+    "frozen_status": "frozen",
+    "logic_mode": "intuitionistic",
+    "owner_role": "independent-evaluation-owner"
+  },
+  "epoch": {
+    "candidate": {
+      "constants": {
+        "benchmark.status": "not-sealed",
+        "evaluation_eligible": false,
+        "independent_commitment": null,
+        "pack": null,
+        "repository.source": "git-head",
+        "scope": "living-authoring-head",
+        "status": "candidate"
+      },
+      "required": [
+        "benchmark",
+        "catalog",
+        "evaluation_eligible",
+        "format",
+        "h0_replay",
+        "id",
+        "independent_commitment",
+        "logic_mode",
+        "pack",
+        "repository",
+        "root_preimage",
+        "root_sha256",
+        "scope",
+        "semantic_profile",
+        "status",
+        "v"
+      ]
+    },
+    "frozen": {
+      "constants": {
+        "external_owner_receipt_required": true,
+        "pack_bytes_required": true,
+        "repository.relevant_dirty": false,
+        "repository.source": "git-commit",
+        "scope": "immutable-research-epoch",
+        "status": "frozen"
+      },
+      "required": [
+        "benchmark",
+        "catalog",
+        "evaluation_eligible",
+        "format",
+        "h0_replay",
+        "id",
+        "independent_commitment",
+        "logic_mode",
+        "pack",
+        "repository",
+        "root_preimage",
+        "root_sha256",
+        "scope",
+        "semantic_profile",
+        "status",
+        "v"
+      ]
+    }
+  },
+  "format": "peano-hydra-library-epoch-schema",
+  "freeze_authority": {
+    "current_registered_receipts": 0,
+    "rule": "receipt SHA-256, deposit ID, and owner ID must match a reviewed registry entry",
+    "v1_can_publish_frozen_epoch": false
+  },
+  "hashes": {
+    "catalog_artifact_sha256": "SHA-256 of the exact canonical catalog document bytes",
+    "catalog_sha256": "SHA-256 of the compact canonical catalog JSON value",
+    "epoch_root_sha256": "SHA-256 of the exact root_preimage compact canonical JSON",
+    "h0_report_sha256": "SHA-256 of the exact retained H0 report bytes",
+    "owner_receipt_sha256": "SHA-256 of the separately supplied canonical owner-receipt document bytes",
+    "pack_root_sha256": "SHA-256 of the explicit ordered content-addressed pack-file preimage"
+  },
+  "id": "peano-hydra-library-epoch-v1",
+  "inner_objects": {
+    "benchmark": {
+      "required": [
+        "commitment_sha256",
+        "status"
+      ],
+      "variants": {
+        "not-sealed": {
+          "commitment_sha256": null
+        },
+        "sealed": {
+          "commitment_sha256": "lowercase-sha256"
+        }
+      }
+    },
+    "catalog": {
+      "required": [
+        "artifact_path",
+        "artifact_sha256",
+        "catalog_sha256",
+        "certificate_representation",
+        "evaluation_certificate_representation",
+        "id",
+        "ordered_root_sha256",
+        "schema",
+        "source_root_sha256",
+        "theorem_count"
+      ]
+    },
+    "h0_replay": {
+      "required": [
+        "artifact_case_count",
+        "campaign_eligible",
+        "lean_source_commit",
+        "lean_source_root_sha256",
+        "lean_verifier_sha256",
+        "library_count",
+        "profile_sha256",
+        "replay_pass_count",
+        "replay_root_sha256",
+        "report_format",
+        "report_path",
+        "report_sha256",
+        "report_v",
+        "source_commit",
+        "validation_passed"
+      ]
+    },
+    "independent_commitment": {
+      "required": [
+        "candidate_root_sha256",
+        "deposit_id",
+        "owner_id",
+        "owner_role",
+        "pack_root_sha256",
+        "receipt_format",
+        "receipt_sha256",
+        "receipt_v"
+      ]
+    },
+    "owner_receipt": {
+      "external_artifact": true,
+      "format": "peano-hydra-library-epoch-owner-receipt",
+      "required": [
+        "benchmark",
+        "candidate_root_sha256",
+        "catalog_sha256",
+        "deposit_id",
+        "epoch_id",
+        "format",
+        "owner_id",
+        "owner_role",
+        "pack_root_sha256",
+        "repository_commit",
+        "semantic_profile_sha256",
+        "v"
+      ],
+      "v": 1
+    },
+    "pack": {
+      "exact_file_count": 3,
+      "file_required": [
+        "bytes",
+        "path",
+        "role",
+        "sha256"
+      ],
+      "file_roles": [
+        "catalog",
+        "semantic-profile",
+        "h0-replay"
+      ],
+      "path_policy": "pack/<role>-<exact-file-sha256>.json",
+      "required": [
+        "files",
+        "format",
+        "root_preimage",
+        "root_sha256",
+        "v"
+      ],
+      "root_preimage_format": "peano-hydra-library-epoch-pack-root-preimage",
+      "validation": "frozen epochs require separately supplied exact bytes for every listed file"
+    },
+    "repository": {
+      "required": [
+        "commit",
+        "relevant_dirty",
+        "source"
+      ]
+    },
+    "root_preimage": {
+      "forbidden_recursive_fields": [
+        "root_preimage",
+        "root_sha256"
+      ],
+      "format": "peano-hydra-library-epoch-root-preimage",
+      "required": [
+        "format",
+        "payload",
+        "v"
+      ],
+      "v": 1
+    },
+    "semantic_profile": {
+      "required": [
+        "artifact_path",
+        "artifact_sha256",
+        "certificate_representation",
+        "format",
+        "id",
+        "logic",
+        "sha256",
+        "v"
+      ]
+    }
+  },
+  "v": 1
+}

@@ -1,0 +1,323 @@
+{
+  "a2_complete": false,
+  "authority_granted": false,
+  "best_known": false,
+  "bounded_three_root_vector_audit_complete": false,
+  "candidate_artifact_sha256": "a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0",
+  "candidate_root_sha256": "fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835",
+  "dependency_minimality_established": false,
+  "dependency_necessity_established": false,
+  "dependency_necessity_independently_verified": false,
+  "dependency_vectors_complete": false,
+  "derived_artifact_byte_identical": true,
+  "derived_direct_vector_independently_reproduced": true,
+  "encoded_tagged_array_transform_independently_executed": true,
+  "evaluation_eligible": false,
+  "execution_receipt_bound": false,
+  "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-independent-verification-v1",
+  "freeze_complete": false,
+  "global_comparison_complete": false,
+  "global_optimized_vector_audit_complete": false,
+  "human_review_complete": false,
+  "id": "independent-peano-hydra-l0-pilot-dependency-vector-cut-liveness-verification-v1",
+  "input_and_dependency_artifacts_independently_authenticated": true,
+  "input_and_output_kernel_checked": true,
+  "kernel_sources": {
+    "count": 8,
+    "load_mode": "authenticated-source-bytes-source_to_code-private-namespace",
+    "preimage": {
+      "format": "peano-hydra-a23d-cut-liveness-verifier-kernel-sources-preimage-v1",
+      "records": [
+        {
+          "bytes": 257,
+          "path": "peano_lab/__init__.py",
+          "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+        },
+        {
+          "bytes": 263,
+          "path": "peano_lab/kernel/__init__.py",
+          "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+        },
+        {
+          "bytes": 27892,
+          "path": "peano_lab/kernel/artifact_codec.py",
+          "sha256": "c9c4d3847c2c5fa7af683fb84f9e93341782e4b82f2579a675b97602aba39110"
+        },
+        {
+          "bytes": 10738,
+          "path": "peano_lab/kernel/checker.py",
+          "sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19"
+        },
+        {
+          "bytes": 10950,
+          "path": "peano_lab/kernel/formulas.py",
+          "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+        },
+        {
+          "bytes": 5015,
+          "path": "peano_lab/kernel/proofs.py",
+          "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+        },
+        {
+          "bytes": 9133,
+          "path": "peano_lab/kernel/terms.py",
+          "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+        },
+        {
+          "bytes": 5165,
+          "path": "peano_lab/kernel/subst.py",
+          "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+        }
+      ],
+      "v": 1
+    },
+    "root_sha256": "176475ce7539eb99221e25e9319afad3a0e0948977d94542fed6c1d8cd77ca9f"
+  },
+  "lineage_complete": false,
+  "logic_mode": "intuitionistic",
+  "logical_minimality_independently_verified": false,
+  "optimized_best_known": false,
+  "optimized_vector_independently_audited": false,
+  "producer_git_verified": false,
+  "producer_imported_by_verifier": false,
+  "producer_semantics_independently_verified": false,
+  "proof_liveness_transform_idempotent": true,
+  "public_graph_applied": false,
+  "publication_applied": false,
+  "publication_union_complete": false,
+  "publication_union_verified": false,
+  "research_evaluation_eligible": false,
+  "retrieval_eligible": false,
+  "root_preimage": {
+    "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-independent-verification-v1-root-preimage-v1",
+    "payload": {
+      "a2_complete": false,
+      "authority_granted": false,
+      "best_known": false,
+      "bounded_three_root_vector_audit_complete": false,
+      "candidate_artifact_sha256": "a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0",
+      "candidate_root_sha256": "fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835",
+      "dependency_minimality_established": false,
+      "dependency_necessity_established": false,
+      "dependency_necessity_independently_verified": false,
+      "dependency_vectors_complete": false,
+      "derived_artifact_byte_identical": true,
+      "derived_direct_vector_independently_reproduced": true,
+      "encoded_tagged_array_transform_independently_executed": true,
+      "evaluation_eligible": false,
+      "execution_receipt_bound": false,
+      "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-independent-verification-v1",
+      "freeze_complete": false,
+      "global_comparison_complete": false,
+      "global_optimized_vector_audit_complete": false,
+      "human_review_complete": false,
+      "id": "independent-peano-hydra-l0-pilot-dependency-vector-cut-liveness-verification-v1",
+      "input_and_dependency_artifacts_independently_authenticated": true,
+      "input_and_output_kernel_checked": true,
+      "kernel_sources": {
+        "count": 8,
+        "load_mode": "authenticated-source-bytes-source_to_code-private-namespace",
+        "preimage": {
+          "format": "peano-hydra-a23d-cut-liveness-verifier-kernel-sources-preimage-v1",
+          "records": [
+            {
+              "bytes": 257,
+              "path": "peano_lab/__init__.py",
+              "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+            },
+            {
+              "bytes": 263,
+              "path": "peano_lab/kernel/__init__.py",
+              "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+            },
+            {
+              "bytes": 27892,
+              "path": "peano_lab/kernel/artifact_codec.py",
+              "sha256": "c9c4d3847c2c5fa7af683fb84f9e93341782e4b82f2579a675b97602aba39110"
+            },
+            {
+              "bytes": 10738,
+              "path": "peano_lab/kernel/checker.py",
+              "sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19"
+            },
+            {
+              "bytes": 10950,
+              "path": "peano_lab/kernel/formulas.py",
+              "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+            },
+            {
+              "bytes": 5015,
+              "path": "peano_lab/kernel/proofs.py",
+              "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+            },
+            {
+              "bytes": 9133,
+              "path": "peano_lab/kernel/terms.py",
+              "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+            },
+            {
+              "bytes": 5165,
+              "path": "peano_lab/kernel/subst.py",
+              "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+            }
+          ],
+          "v": 1
+        },
+        "root_sha256": "176475ce7539eb99221e25e9319afad3a0e0948977d94542fed6c1d8cd77ca9f"
+      },
+      "lineage_complete": false,
+      "logic_mode": "intuitionistic",
+      "logical_minimality_independently_verified": false,
+      "optimized_best_known": false,
+      "optimized_vector_independently_audited": false,
+      "producer_git_verified": false,
+      "producer_imported_by_verifier": false,
+      "producer_semantics_independently_verified": false,
+      "proof_liveness_transform_idempotent": true,
+      "public_graph_applied": false,
+      "publication_applied": false,
+      "publication_union_complete": false,
+      "publication_union_verified": false,
+      "research_evaluation_eligible": false,
+      "retrieval_eligible": false,
+      "route_rejections_independently_verified": false,
+      "schema": {
+        "artifact_bytes": 12566,
+        "artifact_sha256": "388190b4235b9892b38193714b0331a35b6c533c0605072c5d0663ad9cd9c0aa",
+        "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-schema",
+        "id": "peano-hydra-library-pilot-dependency-vector-cut-liveness-schema-v1",
+        "semantic_sha256": "9e8887072cc6051cf9cb9177609ab31aed35ca305a42c7d9c22d4ac339b6f5c5",
+        "v": 1
+      },
+      "schema_claim_boundary_sha256": "0bcea142f7b5aa2199783d03ad51e19330a0deda505c561cb0082d2bc31a16de",
+      "status": "passed",
+      "theorem": {
+        "candidate_artifact_sha256": "c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22",
+        "derived_direct_dependencies": [
+          "mul_add",
+          "add_comm"
+        ],
+        "derived_direct_dependencies_lf_sha256": "ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4",
+        "index": 256,
+        "input_direct_cut_spine": [
+          "mul_add",
+          "add_succ_left",
+          "add_assoc",
+          "add_comm"
+        ],
+        "input_direct_cut_spine_lf_sha256": "9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc",
+        "name": "odd_add_odd",
+        "normalization_steps_inner_first": [
+          {
+            "dependency": "add_comm",
+            "hypothesis_occurrences": 2,
+            "outcome": "retained-used"
+          },
+          {
+            "dependency": "add_assoc",
+            "hypothesis_occurrences": 0,
+            "outcome": "deleted-vacuous"
+          },
+          {
+            "dependency": "add_succ_left",
+            "hypothesis_occurrences": 0,
+            "outcome": "deleted-vacuous"
+          },
+          {
+            "dependency": "mul_add",
+            "hypothesis_occurrences": 1,
+            "outcome": "retained-used"
+          }
+        ],
+        "output_fuel": 1936,
+        "output_metrics": {
+          "cut_nodes": 5,
+          "proof_depth": 30,
+          "proof_nodes": 240
+        },
+        "output_proof_term_sha256": "5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4",
+        "record_sha256": "30725d8f5836e50f0e77e8d37542b37d2ff9f04c43302702d7eb3e996561ee86",
+        "retained_transitive_closure": [
+          "zero_add",
+          "add_succ_left",
+          "add_comm",
+          "add_assoc",
+          "mul_add"
+        ],
+        "retained_transitive_closure_lf_sha256": "a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2"
+      },
+      "training_eligible": false,
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "b3c253674f488eeed1e5a14e4be6632b0fe6ed946cf611ee0b3fde66f79acad7",
+  "route_rejections_independently_verified": false,
+  "schema": {
+    "artifact_bytes": 12566,
+    "artifact_sha256": "388190b4235b9892b38193714b0331a35b6c533c0605072c5d0663ad9cd9c0aa",
+    "format": "peano-hydra-library-pilot-dependency-vector-cut-liveness-schema",
+    "id": "peano-hydra-library-pilot-dependency-vector-cut-liveness-schema-v1",
+    "semantic_sha256": "9e8887072cc6051cf9cb9177609ab31aed35ca305a42c7d9c22d4ac339b6f5c5",
+    "v": 1
+  },
+  "schema_claim_boundary_sha256": "0bcea142f7b5aa2199783d03ad51e19330a0deda505c561cb0082d2bc31a16de",
+  "status": "passed",
+  "theorem": {
+    "candidate_artifact_sha256": "c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22",
+    "derived_direct_dependencies": [
+      "mul_add",
+      "add_comm"
+    ],
+    "derived_direct_dependencies_lf_sha256": "ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4",
+    "index": 256,
+    "input_direct_cut_spine": [
+      "mul_add",
+      "add_succ_left",
+      "add_assoc",
+      "add_comm"
+    ],
+    "input_direct_cut_spine_lf_sha256": "9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc",
+    "name": "odd_add_odd",
+    "normalization_steps_inner_first": [
+      {
+        "dependency": "add_comm",
+        "hypothesis_occurrences": 2,
+        "outcome": "retained-used"
+      },
+      {
+        "dependency": "add_assoc",
+        "hypothesis_occurrences": 0,
+        "outcome": "deleted-vacuous"
+      },
+      {
+        "dependency": "add_succ_left",
+        "hypothesis_occurrences": 0,
+        "outcome": "deleted-vacuous"
+      },
+      {
+        "dependency": "mul_add",
+        "hypothesis_occurrences": 1,
+        "outcome": "retained-used"
+      }
+    ],
+    "output_fuel": 1936,
+    "output_metrics": {
+      "cut_nodes": 5,
+      "proof_depth": 30,
+      "proof_nodes": 240
+    },
+    "output_proof_term_sha256": "5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4",
+    "record_sha256": "30725d8f5836e50f0e77e8d37542b37d2ff9f04c43302702d7eb3e996561ee86",
+    "retained_transitive_closure": [
+      "zero_add",
+      "add_succ_left",
+      "add_comm",
+      "add_assoc",
+      "mul_add"
+    ],
+    "retained_transitive_closure_lf_sha256": "a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2"
+  },
+  "training_eligible": false,
+  "v": 1
+}

@@ -15,8 +15,8 @@ and fetches application sources concurrently while Pyodide starts. Complete vers
 are uploaded before the HTML pointer and retained after promotion; an unversioned response must
 revalidate.
 
-The current local candidate is build `2026-08-04e` with manifest identity
-`a-129c5c680e53`. These labels identify local built bytes;
+The current local candidate is build `2026-08-09b` with manifest identity
+`a-7fe525e910c8`. These labels identify local built bytes;
 they do not assert that anything has been staged or deployed.
 
 This optimization does not weaken the [[trusted-kernel]] boundary. Network completion order never

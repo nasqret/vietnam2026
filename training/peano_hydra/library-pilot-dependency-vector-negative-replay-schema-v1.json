@@ -1,0 +1,583 @@
+{
+  "additional_fields_policy": "reject-unregistered-fields-in-result-and-receipts",
+  "algorithm": {
+    "baseline": [
+      "load the exact live theorem row and require its registered index, statement hash, direct vector, script hash, and command count",
+      "construct the dependency-curried target with the pinned replay_target callable",
+      "start a fresh proof state, introduce every full-vector dependency in declared order, and apply every script command in order",
+      "require checked_final to return an exact kernel proof and record only bounded structural and hash receipts"
+    ],
+    "join": [
+      "authenticate the exact retained A2.3b candidate before decoding it",
+      "require exactly the two registered route rows for each root",
+      "require every retained route row to match its registered reverse-order omission task, command index, command, cause type, phase, kind, and shared observation preimage",
+      "join each one of 22 independent body replays to exactly two retained route labels; never treat the labels as two independent executions"
+    ],
+    "negative_replay": [
+      "derive exactly one trial vector per direct dependency by reverse declared order",
+      "construct the trial dependency-curried target with replay_target, start a fresh state, and introduce only the retained trial dependencies in their original order",
+      "require every script command strictly before the registered failure index to succeed",
+      "at the registered command require an exact TacticError, not TacticLimit or any subclass, with exact command, index, omitted name, and message",
+      "abort on an early rejection, accepted registered command, incomplete metadata, resource or recursion limit, syntax subclass, internal exception, changed target, malformed state, or any unknown outcome"
+    ],
+    "order": "roots in indices 256, 376, 379; within each root reverse declared dependency order",
+    "result_publication": "the protocol writes nothing by default; a real campaign requires the explicit execute switch and confirmation token, emits canonical stdout, and uses an explicit absent create-only destination only when file publication is requested"
+  },
+  "canonical_json": {
+    "allow_nan": false,
+    "duplicate_keys": "reject",
+    "encoding": "UTF-8",
+    "floats": "reject",
+    "indent": 2,
+    "integer_domain": "[-9007199254740991,9007199254740991]",
+    "key_order": "lexicographic",
+    "line_ending": "LF",
+    "terminal_newline": true
+  },
+  "claim_boundary": {
+    "a2": "this is a bounded independent replay of 22 shared root-body negative observations only; A2 completion remains false",
+    "dependency_semantics": "an exact replay rejection is evidence about one registered theorem script under one single-edge-omitted direct vector; it is not proof that the omitted theorem is logically necessary",
+    "independence": "the replayer is separately direct-loaded, calls no A2.3b producer or verifier code, calls no compile_candidate_body wrapper, and independently reconstructs targets and executions from pinned lower-level Peano APIs and immutable upstream inputs",
+    "optimizer": "no dependency optimizer is run and no optimized, minimal, complete, unique, or best-known vector is derived",
+    "publication": "no public graph, theorem catalog, artifact page, admission boundary, publication union, or retained result changes merely because this source protocol exists",
+    "route_labels": "the retained readable and proposed-layered rows share the same preassembly root-body execution; replaying that shared body independently does not independently execute either route-specific assembler and route_rejections_independently_verified remains false",
+    "scope": "exactly three roots, three full-vector baselines, 22 shared single-omission body replays, and a structural two-to-one join to 44 retained route rows",
+    "shared_engine": "A2.3c is implementation-independent from the A2.3b producer wrapper but deliberately uses the same pinned Peano tactic engine and intuitionistic kernel; this is explicit shared-engine evidence, not a second proof semantics"
+  },
+  "constants": {
+    "expected_baseline_count": 3,
+    "expected_independent_observation_count": 22,
+    "expected_retained_route_row_count": 44,
+    "logic_mode": "intuitionistic",
+    "retained_public_graph_edges": 1038,
+    "routes": [
+      "readable-direct-closure",
+      "proposed-layered-closure-construction"
+    ]
+  },
+  "controlled_worker_contract": {
+    "argv": "python -B -P -s -S scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py --_controlled-worker ...",
+    "bytecode": "disabled with fixed nonexistent /proc/peano-hydra-a23c-disabled-pycache prefix",
+    "cwd": "exact lexical repository root",
+    "environment": "fresh allowlisted environment with explicit decimal PYTHONHASHSEED and no Python injection variables",
+    "imports": "authenticate schema, replayer source, retained predecessors, and every implementation source before direct-loading the replayer under a private module name; retain stable source-file identities, then require exact post-load bytes, hashes, loaders, caches, and module-name-to-source closure",
+    "output": "no default write; explicit destination must be absent, have a safe existing parent, and be published create-only after descriptor-bound staging, complete canonical validation, exact inode verification, and parent-directory fsync",
+    "parent": "ordinary invocations spawn one fresh capability-gated controlled child and incrementally drain hard-capped stdout/stderr under the wall limit; a worker marker and static environment cannot enter worker mode alone"
+  },
+  "fixed_inputs": {
+    "a2.3b_candidate": {
+      "artifact_sha256": "4f4965508b63d852697c94fe0e7707759b39c5cf456ec2db8aa5a5afe719f2ad",
+      "bytes": 3160729,
+      "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/results/l0-pilot-dependency-vector-audit-candidate-v1.json",
+      "root_sha256": "21f4c7a06dd8b1abf01d8eddd8c1942733f0955141ba682d53229078e15d5e85",
+      "theorem_records_root_sha256": "6a90eee2d8a306e41b944735940044b142cf1c4f02441133c25c94111e11d336"
+    },
+    "a2.3b_collection": {
+      "artifact_sha256": "d1602e23f7736482b039c3d32537fa012d91302f42d62f75ccab9c11583542a9",
+      "bytes": 8841,
+      "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/collections/job-220220.json",
+      "root_sha256": "9f58b68b2fe811cfa82a25395e53b08c01cdd145b57f234d2cde0ca287cf42e5"
+    },
+    "a2.3b_execution": {
+      "artifact_sha256": "dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318",
+      "bytes": 19990,
+      "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/runs/220220/execution-receipt.json",
+      "root_sha256": "c010a79955e93b29651557977001f6f6abff7cd63ba7f1fa1b9deb2a5bc3c08b"
+    },
+    "a2.3b_verification": {
+      "artifact_sha256": "50c207c4de0cabe8a50518da4d20e83925f0e1df29ffd78df05e249ea18d4396",
+      "bytes": 16925,
+      "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/results/l0-pilot-dependency-vector-audit-independent-verification-v1.json",
+      "root_sha256": "ef0dfac8552789bb4dc0e6694a1704c63a8781a93a1f0d9117c6e5c6babcfbd1",
+      "theorem_records_root_sha256": "87bef2a0d30c789424a15bb257e1bc743f74f4bfa27fb899ab59a44f4d522585"
+    },
+    "replay_manifest": {
+      "artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+      "bytes": 3241451,
+      "path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json",
+      "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba",
+      "root_sha256": "fe6718465fbb5e89154ccfce5c511b51ee296b21568d1759a00dda8a21f8a25d"
+    },
+    "replay_report": {
+      "artifact_sha256": "35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10",
+      "bytes": 828,
+      "path": "artifacts/peano-hydra/l0-replay-candidate-v1-report.json",
+      "replay_root_sha256": "88e39a886949e2ef31220397e529871bc907f9cd9311c27dc97710d12ef1e3ba"
+    }
+  },
+  "format": "peano-hydra-library-pilot-dependency-vector-negative-replay-schema",
+  "hash_contracts": {
+    "document_root": "SHA-256 of compact canonical root_preimage object",
+    "implementation_source_root": "SHA-256 of compact canonical implementation_sources array",
+    "observation_record": "SHA-256 of compact canonical observation with record_sha256 omitted",
+    "script": "SHA-256 of UTF-8 commands joined by LF with one terminal LF",
+    "source_artifact": "SHA-256 of exact file bytes",
+    "task_root": "SHA-256 of compact canonical ordered task identity array"
+  },
+  "id": "independent-a2.3c-pilot-dependency-vector-negative-replay-v1",
+  "implementation_source_root_sha256": "b37836ec81ab2f0af638427a937d92519b5b70579de86d38c9321514692f55c1",
+  "implementation_sources": [
+    {
+      "path": "peano-lab/py/peano_lab/__init__.py",
+      "sha256": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/engine/__init__.py",
+      "sha256": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/engine/decide.py",
+      "sha256": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/engine/induction.py",
+      "sha256": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/engine/norm_num.py",
+      "sha256": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/engine/proof_reduction.py",
+      "sha256": "deb17a5a0d5562f73248d6fbaa8db46b923c7bab07e491f37cb98e5e19a8251f"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/engine/rewrite.py",
+      "sha256": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/engine/state.py",
+      "sha256": "453904142273f14d01379c73c637be3476d035b093047587ff6990f1d572ac2f"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/engine/tactics.py",
+      "sha256": "fde9605bce6e14513260ffeb69eea8ae40a6ad7d44da3ff550fb3edf9b6396e4"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/engine/trace.py",
+      "sha256": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/kernel/__init__.py",
+      "sha256": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/kernel/artifact_codec.py",
+      "sha256": "c9c4d3847c2c5fa7af683fb84f9e93341782e4b82f2579a675b97602aba39110"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/kernel/checker.py",
+      "sha256": "396c593f0d734d1c5cb728610a95f17c5f8a0c2076ef173203f9265d030f6a19"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+      "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/kernel/proofs.py",
+      "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/kernel/subst.py",
+      "sha256": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/kernel/terms.py",
+      "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/__init__.py",
+      "sha256": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/theorems.py",
+      "sha256": "bfa6fad2c91a774b37c3ee458e9b59d679f7257a1ab4b2bef3f88bbccdb82a2f"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/parity.py",
+      "sha256": "f39325d72c0f29969b6e01cfd92451fe29f911a485a628f2baa33c0319dcf2da"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/quadratic_residue_surface.py",
+      "sha256": "ab7abd5b9fcf306035de6eb849ad65f8287e84e6cc00ad909aeed7e880915246"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/quadratic_residue_theorems.py",
+      "sha256": "d08e6a29295be014c67ec52d8cf7b67cc4b7c99abe6dde3708c162beccc4126d"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/finite_fold_surface.py",
+      "sha256": "95ef546b5865dce135453afc3b7fe02ea1fa680b588e3358bfa243d358683f30"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/finite_fold_theorems.py",
+      "sha256": "e69c41198d25aa0cba3bbf8415344050b28ecb8d058c1cd8d98415e0db09178c"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/finite_range_theorems.py",
+      "sha256": "8ca4812b8059e76ec2faf4e4269d5192adee320df281b16dacfd5e7b9682833f"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/finite_sum_theorems.py",
+      "sha256": "0d60b7a4fa21161def737fc6759b23e0679694052e95d97b419aa1ecb293c56e"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/finite_congruence_theorems.py",
+      "sha256": "d82ad67620210cd81741bc8eb287569f9bf5124714ba50da65985c7d33a8ec68"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/finite_bitcount_theorems.py",
+      "sha256": "4704e64d968b6ff19d302ef404dac38a8510aff980fd41063dde0010d6390e6c"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/finite_factorial_theorems.py",
+      "sha256": "a51240629fb661c3d732cb30ad32d3fdc1d3da8b9d01f80023f12429dc7e3709"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/power_congruence_theorems.py",
+      "sha256": "f1b34a176f9c77d60ef7dd1908ec7e6163608f684451c992dbd9fb8dacf34423"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/qr_small_moduli.py",
+      "sha256": "fb8dbbb75817e15f4e522e6d4ce20a0b4a13f4a836872ad6b8de6ed51c0d5530"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/power_algebra_theorems.py",
+      "sha256": "6566c3539a18801c32d0a3ae7b6abe242bb8cf62e95184271680f0303b6fc302"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/gauss_sign_bridge.py",
+      "sha256": "2ea4ae59ea1d5120d93af74d7f4c1cff624c9ad3a0aeac36d3b8dd2901412b76"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/gauss_half_range.py",
+      "sha256": "3653e994bc5862c686d21a9597e0aef19302eccdbcc3badffc260918b2a656d7"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/finite_permutation_theorems.py",
+      "sha256": "6265e4cf5938beadbf77182b7a5357a9435abd9948015a955539b451430420ce"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/finite_product_permutation_theorems.py",
+      "sha256": "a9d799a189d8061b1ee97f163172f95396a35819cfef791543407ee0a34aea5a"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/finite_product_reindex_support.py",
+      "sha256": "7adf1f63c23e39ab1428061355cebb3caddd3bf51e909185ec22d83b6442fc7c"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/qr_bounded_units.py",
+      "sha256": "1ca3673054052094c32cabfca6a59f7e801ccd51b1fd9fee780d52fecaa70562"
+    },
+    {
+      "path": "peano-lab/py/peano_lab/library/qr_prime_units.py",
+      "sha256": "ea611d606ed0b345e75e230c77ea9ec5ee5ce9a2b1d85ae400c2ac94819c11cd"
+    }
+  ],
+  "independence_contract": {
+    "a2.3b_producer_imported": false,
+    "a2.3b_verifier_imported": false,
+    "compile_candidate_body_called": false,
+    "fresh_process_required": true,
+    "independent_wrapper_implementation": true,
+    "lower_level_call_sequence": [
+      "replay_target",
+      "start",
+      "apply_tactic:intro",
+      "apply_tactic:script-command",
+      "ProofState/invariants_ok:after-every-success",
+      "checked_final:baseline-only"
+    ],
+    "route_specific_assemblers_called": false,
+    "shared_engine_with_a2.3b": true,
+    "shared_intuitionistic_kernel": true
+  },
+  "limits": {
+    "max_document_bytes": 16000000,
+    "max_json_depth": 256,
+    "max_json_items": 4000000,
+    "max_source_bytes": 16000000,
+    "max_stderr_bytes": 1048576,
+    "max_stdout_bytes": 16000000,
+    "max_tasks": 22,
+    "max_wall_seconds": 900
+  },
+  "qualified_callables": {
+    "apply_tactic": "peano_lab.engine.tactics.apply_tactic",
+    "checked_final": "peano_lab.engine.tactics.checked_final",
+    "formula_encode": "peano_lab.kernel.artifact_codec.encode_formula",
+    "proof_encode": "peano_lab.kernel.artifact_codec.encode_proof",
+    "proof_metrics": "peano_lab.engine.state.proof_resource_metrics",
+    "proof_state_invariants": "peano_lab.engine.state.invariants_ok",
+    "proof_state_type": "peano_lab.engine.state.ProofState",
+    "replay_target": "peano_lab.library.theorems.replay_target",
+    "start": "peano_lab.engine.state.start"
+  },
+  "required_false_result_fields": [
+    "a2_complete",
+    "bounded_three_root_vector_audit_complete",
+    "dependency_necessity_established",
+    "dependency_vectors_complete",
+    "evaluation_eligible",
+    "freeze_ready",
+    "lineage_complete",
+    "minimality_claim",
+    "optimized_best_known",
+    "optimized_vector_independently_audited",
+    "proof_authority",
+    "public_graph_applied",
+    "publication_authority",
+    "publication_ready",
+    "publication_union_complete",
+    "publication_union_verified",
+    "retrieval_eligible",
+    "review_complete",
+    "route_rejections_independently_verified",
+    "theorem_admission_authority",
+    "training_eligible",
+    "vector_optimizer_executed"
+  ],
+  "required_theorems": [
+    {
+      "dependencies": [
+        "mul_add",
+        "add_assoc",
+        "add_comm"
+      ],
+      "index": 256,
+      "name": "odd_add_odd",
+      "script_command_count": 10,
+      "script_sha256": "4d303cb1b7886cceba15a4d29f198ca16eff7aabca04ca577ae48d06878eed59",
+      "statement_sha256": "bd3780bb05fa5b37c137f073d0824b16479e754d20ae5a2088784b2161e92376",
+      "tasks": [
+        {
+          "attempt_index": 0,
+          "expected_command": "simp [mul_add, add_assoc, add_comm]",
+          "expected_command_index": 9,
+          "expected_message": "unknown hypothesis 'add_comm'.",
+          "omitted_dependency": "add_comm"
+        },
+        {
+          "attempt_index": 1,
+          "expected_command": "simp [mul_add, add_assoc, add_comm]",
+          "expected_command_index": 9,
+          "expected_message": "unknown hypothesis 'add_assoc'.",
+          "omitted_dependency": "add_assoc"
+        },
+        {
+          "attempt_index": 2,
+          "expected_command": "simp [mul_add, add_assoc, add_comm]",
+          "expected_command_index": 9,
+          "expected_message": "unknown hypothesis 'mul_add'.",
+          "omitted_dependency": "mul_add"
+        }
+      ]
+    },
+    {
+      "dependencies": [
+        "finite_surjective_zero",
+        "finite_contains_decidable",
+        "finite_bounded_last_succ",
+        "beta_prefix_swap_last_from_entries",
+        "finite_swap_last_bounded",
+        "finite_swap_last_injective",
+        "finite_bounded_prefix_without_top",
+        "finite_injective_prefix_succ",
+        "finite_surjective_succ_from_prefix",
+        "finite_swap_last_surjective_back",
+        "finite_no_top_successor_gate",
+        "le_succ",
+        "le_refl",
+        "lt_irrefl_expanded"
+      ],
+      "index": 376,
+      "name": "finite_bounded_injective_surjective",
+      "script_command_count": 178,
+      "script_sha256": "6f501cc65ba7d78844c5dd6f42463be97c89b32c6dc2e19d40236a7618315533",
+      "statement_sha256": "9e0cad653da9de17ab7bbac3cb3bf49bc6d4a1304bda508669943b25fd247257",
+      "tasks": [
+        {
+          "attempt_index": 0,
+          "expected_command": "specialize lt_irrefl_expanded n",
+          "expected_command_index": 107,
+          "expected_message": "unknown hypothesis 'lt_irrefl_expanded'.",
+          "omitted_dependency": "lt_irrefl_expanded"
+        },
+        {
+          "attempt_index": 1,
+          "expected_command": "specialize le_refl (S n)",
+          "expected_command_index": 96,
+          "expected_message": "unknown hypothesis 'le_refl'.",
+          "omitted_dependency": "le_refl"
+        },
+        {
+          "attempt_index": 2,
+          "expected_command": "specialize le_succ (S j)",
+          "expected_command_index": 91,
+          "expected_message": "unknown hypothesis 'le_succ'.",
+          "omitted_dependency": "le_succ"
+        },
+        {
+          "attempt_index": 3,
+          "expected_command": "specialize finite_no_top_successor_gate b",
+          "expected_command_index": 162,
+          "expected_message": "unknown hypothesis 'finite_no_top_successor_gate'.",
+          "omitted_dependency": "finite_no_top_successor_gate"
+        },
+        {
+          "attempt_index": 4,
+          "expected_command": "specialize finite_swap_last_surjective_back b",
+          "expected_command_index": 144,
+          "expected_message": "unknown hypothesis 'finite_swap_last_surjective_back'.",
+          "omitted_dependency": "finite_swap_last_surjective_back"
+        },
+        {
+          "attempt_index": 5,
+          "expected_command": "specialize finite_surjective_succ_from_prefix x2",
+          "expected_command_index": 135,
+          "expected_message": "unknown hypothesis 'finite_surjective_succ_from_prefix'.",
+          "omitted_dependency": "finite_surjective_succ_from_prefix"
+        },
+        {
+          "attempt_index": 6,
+          "expected_command": "specialize finite_injective_prefix_succ x2",
+          "expected_command_index": 121,
+          "expected_message": "unknown hypothesis 'finite_injective_prefix_succ'.",
+          "omitted_dependency": "finite_injective_prefix_succ"
+        },
+        {
+          "attempt_index": 7,
+          "expected_command": "specialize finite_bounded_prefix_without_top x2",
+          "expected_command_index": 112,
+          "expected_message": "unknown hypothesis 'finite_bounded_prefix_without_top'.",
+          "omitted_dependency": "finite_bounded_prefix_without_top"
+        },
+        {
+          "attempt_index": 8,
+          "expected_command": "specialize finite_swap_last_injective b",
+          "expected_command_index": 68,
+          "expected_message": "unknown hypothesis 'finite_swap_last_injective'.",
+          "omitted_dependency": "finite_swap_last_injective"
+        },
+        {
+          "attempt_index": 9,
+          "expected_command": "specialize finite_swap_last_bounded b",
+          "expected_command_index": 49,
+          "expected_message": "unknown hypothesis 'finite_swap_last_bounded'.",
+          "omitted_dependency": "finite_swap_last_bounded"
+        },
+        {
+          "attempt_index": 10,
+          "expected_command": "specialize beta_prefix_swap_last_from_entries b",
+          "expected_command_index": 34,
+          "expected_message": "unknown hypothesis 'beta_prefix_swap_last_from_entries'.",
+          "omitted_dependency": "beta_prefix_swap_last_from_entries"
+        },
+        {
+          "attempt_index": 11,
+          "expected_command": "specialize finite_bounded_last_succ b",
+          "expected_command_index": 24,
+          "expected_message": "unknown hypothesis 'finite_bounded_last_succ'.",
+          "omitted_dependency": "finite_bounded_last_succ"
+        },
+        {
+          "attempt_index": 12,
+          "expected_command": "specialize finite_contains_decidable b",
+          "expected_command_index": 15,
+          "expected_message": "unknown hypothesis 'finite_contains_decidable'.",
+          "omitted_dependency": "finite_contains_decidable"
+        },
+        {
+          "attempt_index": 13,
+          "expected_command": "specialize finite_surjective_zero b",
+          "expected_command_index": 5,
+          "expected_message": "unknown hypothesis 'finite_surjective_zero'.",
+          "omitted_dependency": "finite_surjective_zero"
+        }
+      ]
+    },
+    {
+      "dependencies": [
+        "beta_product_replace_balance",
+        "beta_product_succ_decompose",
+        "beta_at_unique",
+        "le_succ",
+        "lt_irrefl_expanded"
+      ],
+      "index": 379,
+      "name": "beta_product_swap_last_invariant",
+      "script_command_count": 102,
+      "script_sha256": "b84a265093efa741e13cb8ac729dc53ce9baca8710dd51fac2b6c17534e373ed",
+      "statement_sha256": "a23f0b2f4451b4e423b9f15132ac02b6a035ce4d06f8eb95d744977109272465",
+      "tasks": [
+        {
+          "attempt_index": 0,
+          "expected_command": "specialize lt_irrefl_expanded n",
+          "expected_command_index": 73,
+          "expected_message": "unknown hypothesis 'lt_irrefl_expanded'.",
+          "omitted_dependency": "lt_irrefl_expanded"
+        },
+        {
+          "attempt_index": 1,
+          "expected_command": "specialize le_succ (S j)",
+          "expected_command_index": 67,
+          "expected_message": "unknown hypothesis 'le_succ'.",
+          "omitted_dependency": "le_succ"
+        },
+        {
+          "attempt_index": 2,
+          "expected_command": "specialize beta_at_unique b",
+          "expected_command_index": 41,
+          "expected_message": "unknown hypothesis 'beta_at_unique'.",
+          "omitted_dependency": "beta_at_unique"
+        },
+        {
+          "attempt_index": 3,
+          "expected_command": "specialize beta_product_succ_decompose b",
+          "expected_command_index": 19,
+          "expected_message": "unknown hypothesis 'beta_product_succ_decompose'.",
+          "omitted_dependency": "beta_product_succ_decompose"
+        },
+        {
+          "attempt_index": 4,
+          "expected_command": "specialize beta_product_replace_balance n",
+          "expected_command_index": 79,
+          "expected_message": "unknown hypothesis 'beta_product_replace_balance'.",
+          "omitted_dependency": "beta_product_replace_balance"
+        }
+      ]
+    }
+  ],
+  "result_contract": {
+    "completed_campaign": {
+      "baseline_count": 3,
+      "campaign_executed": true,
+      "negative_observations_independently_verified": true,
+      "result_exists": true,
+      "retained_route_row_count": 44,
+      "route_rejections_independently_verified": false,
+      "shared_observation_count": 22,
+      "status": "passed"
+    },
+    "source_only": {
+      "campaign_executed": false,
+      "negative_observations_independently_verified": false,
+      "result_exists": false,
+      "route_rejections_independently_verified": false,
+      "status": "source-only-no-campaign"
+    }
+  },
+  "runtime_binding": {
+    "byteorder": "little",
+    "cache_tag": "cpython-312",
+    "implementation": "cpython",
+    "int_max_str_digits": 4300,
+    "major": 3,
+    "micro": 12,
+    "minor": 12,
+    "optimize": 0,
+    "platform_prefix": "linux",
+    "safe_path": true
+  },
+  "v": 1
+}

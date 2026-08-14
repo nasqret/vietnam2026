@@ -26,12 +26,17 @@ REPO = Path(__file__).resolve().parents[1]
 TREE_INPUTS = (
     Path("book"),
     Path("artifacts/peano-library"),
+    Path("artifacts/peano-hydra/l0-documentation-candidate-v1"),
     Path("research/arithmetic-library"),
     # The proof-explorer generator reads the theorem stack as well as the
     # native term/formula grammar, PA axioms, proof constructors, and tactic
     # registry.  Snapshot the complete package rather than relying on WMI's
     # ambient checkout for any part of that evidence boundary.
     Path("peano-lab/py/peano_lab"),
+    # The selected-library page checker imports the complete Hydra package and
+    # reconstructs its pages only from the retained five-file documentation
+    # bundle above.  Keep that import/evidence boundary inside the snapshot.
+    Path("training/peano_hydra"),
 )
 
 FILE_INPUTS = (
@@ -39,11 +44,16 @@ FILE_INPUTS = (
     Path("scripts/build_arithmetic_book_atlas.py"),
     Path("scripts/build_pa_defined_explorer.py"),
     Path("scripts/build_pa_proof_explorer.py"),
+    Path("scripts/build_peano_hydra_library_pages.py"),
     Path("scripts/check_wmi_book_build.py"),
     Path("scripts/package_wmi_book_snapshot.py"),
     Path("scripts/run_wmi_book_build.py"),
     Path("scripts/submit_wmi_book_build.sh"),
     Path("slurm/peano_wmi_book_build.sbatch"),
+    Path(
+        "artifacts/peano-hydra/"
+        "library-page-deployment-candidate-v1-readiness.json"
+    ),
 )
 
 EXCLUDED_PARTS = {
