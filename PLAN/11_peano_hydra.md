@@ -800,8 +800,8 @@ independent negative replay**. The exact registered campaign contains three
 full-vector baselines and 22 unique reverse-order single-omission observations,
 then joins each observation to two retained route rows for an exact 44-to-22
 mapping. Default CLI operation emits only the canonical source protocol: no
-campaign executes, no result exists, and no file is written. A real local or
-WMI replay has not occurred.
+campaign executes, no result exists, and no file is written. At that source
+freeze, a real local or WMI replay had not occurred.
 
 The wrapper implementation is separate and runs in a fresh controlled process.
 It imports no A2.3b producer, does not call `compile_candidate_body`, and does
@@ -854,14 +854,92 @@ measured CI weights are 6,000 / 9,000 / 6,000 ms; the original source-protocol
 test remains 6,000 ms. The 107-entry profile models eight loads of 544,500 /
 544,000 / 544,800 / 544,500 / 545,000 / 544,000 / 544,000 / 544,000 ms.
 
-Only source-protocol and execution-infrastructure readiness is complete. No
-real replay, network call, WMI job, execution receipt, or result exists. The
-real replay, WMI execution, and retained-result gate stays open.
+At that source freeze, only source-protocol and execution-infrastructure
+readiness was complete; no replay or result yet existed. The later bounded
+job-220227 execution and retained-result checkpoint is recorded below.
 `bounded_three_root_vector_audit_complete`, `dependency_necessity_established`,
 `route_rejections_independently_verified`, and `vector_optimizer_executed`
 remain false, as do vector completeness, minimality, optimized-vector audit,
 best-known status, publication/publication union, public-graph application, A2
 completion, proof/admission/publication authority, and all eligibility claims.
+
+#### A2.3c job 220227 bounded execution and retention
+
+WMI job `220227` ran from clean commit
+`a1830b8d019baaec72d1d2b3cc8046c72d22a336`, tree
+`2bed15ee16c4c6b3360f4d6a711246e9020cfd9c`, and receipt-bound snapshot
+`b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719`.
+The retained accounting row is
+`220227|COMPLETED|0:0|0:0|89||4G|1|c3n1`. Fresh hash-seed-0 and hash-seed-1
+runs of the same replayer exited 0 in 43.924 and 43.784 seconds and emitted
+byte-identical candidates; this checks determinism, not implementation
+independence. The separate hash-seed-2 structural verifier exited 0 in 0.608
+seconds. Execution/collection classifications are
+`two-replayer-byte-identity-and-independent-structural-verification` and
+`completed-dual-replayer-and-independent-structural-verification`.
+
+The 322,779-byte candidate has artifact/document/theorem-record SHA-256s
+`46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba` /
+`f17e8c4a2b8080401376ab04f96d771b466946b87b816cb99be54299cbd6a02f` /
+`823b26485a1e345aca8b925974641301fd122097c52c05ff842e34b09d44787d`.
+Its three full-vector-baseline, 22 independently reproduced wrapper-
+observation, and exact 44-route structural-join roots are
+`768aa4b5edd9eb44615b62d505944eafd57cdf8fc3f106a43d6168c9be4fc415` /
+`6db464c56b52449144f3934214c292dff485910e43421a1763b7203515c0f304` /
+`db60c479b5a0c3b621f958e5ef01c98ef095df975a1d51893309ec0cac730ebf`.
+The theorem split is exactly 3 / 14 / 5 observations for roots 256 / 376 /
+379. Because the independently implemented wrapper calls the shared pinned
+parser, tactic engine, and intuitionistic kernel but neither route assembler,
+these are independent exact wrapper-level script/omission observations—not
+independent rejection of either route and not logical dependency necessity.
+
+The 27,484-byte tactic-free structural receipt has artifact/document/theorem-
+record SHA-256s
+`48884600840c37044e099683b832659aec1fb22e4068637ad7212c104fe10293` /
+`364d4ee4099856c44ee1633439f2e5b1c57ae24cc90d9178cdf7445008504733` /
+`fb67221ddc8163cf3c62cabc3d79d0d63d544a485a020c18272cf8af3c605274`.
+Execution and collection artifact/root pairs are
+`f5c051493fac987a4010043b2bc0b5ef85a8cf37976aff36b331a3c57c93c5b1` /
+`60513353afa2539f82568ae4360d98192584920af4bfd530d930e97e94efacdf`
+and `2f187bde83cdd2bba97cacb0af0a6dcc4c204e6d0eb224ff5732e2433ed6266d` /
+`17421fa3ebdf15020acc2bafad9ce100641d3403b2ce938a9c0b02fc42286814`.
+Source-state, Git-receipt, and infrastructure artifact/root pairs are
+`4fbcb219cf746da206fb07b99f6149922b761fff551fafd0b28f557bc53bf0b0` /
+`832372c5838b2cf3230f5d305ba6b4c9350d165e3c68debe1667f7fa6653722b`,
+`42ebb8a353b205916a167de74bf3adc8412f9e16ad2bae8dab9213a7a37b8b8d` /
+`85825e1ac8a9e7255fc64afd305bee99d93dac44382dd64e1723483388eeb7b7`,
+and `2057bc1ab33e2cd863062bc370bb16b6d8f7022592b7ca73be5b05850282ecce` /
+`5fb4363d47b5d0bc55ab68186f158087c3750e0a512361acf9c2d711e0f41f43`.
+An isolated hash-seed-31337 audit reran this frozen tactic-free verifier and
+reproduced its retained bytes exactly. The verifier still does not execute
+tactics, rerun baselines or omissions, bind tactic semantics, or bind the
+later execution receipt; those flags remain false.
+
+Exactly 17 nested regular files totaling 419,166 bytes are retained under
+`artifacts/peano-hydra/a23c-wmi-negative-replay-220227/`. Their C-sorted
+`<sha256>\t<bytes>\t<relative-path>\n` inventory root is
+`05d80cae1648769a377d3d5fc429f0edac0f484bd526b2607e236930baf282d0`.
+The 282,733,056-byte transfer archive and full snapshot are omitted, making the
+snapshot digest receipt-bound. The duplicate seed-1 candidate and both
+candidate-valued stdout files are omitted; the retained candidate is their
+normalized representative, so post-retention dual-output identity is
+execution-receipt-bound. A live batch observation reported `136692K`, but the
+retained `sacct` row has blank `MaxRSS`; no retained peak-memory or ceiling
+claim is made. The 36,808-byte result gate at SHA-256
+`624cefad17d2a419958a5334459121f344c1f941ef229f0bb3db3ef867309ec8`
+passed four tests in 0.52 seconds; the 108-entry CI profile assigns it 3,500 ms
+and models loads of 544,500 / 544,500 / 544,800 / 545,000 / 545,000 /
+545,000 / 545,000 / 544,500 ms. The combined bounded gate passed 155 tests in
+25.20 seconds; the CI sharder contributed 32 tests in 0.11 seconds.
+
+This closes only bounded job-220227 execution and exact retention: three unique
+baseline records executed in each seed-0/seed-1 run, 22 independent wrapper-
+level omission observations, and their structural two-to-one join to 44 route
+labels. Route rejection, dependency
+necessity, a genuine optimized vector and its independent audit, vector/global
+completeness, minimality, best-known status, publication and publication
+union, graph application, and A2 remain open. All authority and eligibility
+flags stay false; the public graph remains 1,038 edges.
 
 ### H1.2 Build lineage before rows
 
@@ -1206,9 +1284,12 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       checkbox records only source/synthetic/adversarial and execution-
       infrastructure readiness; the pinned parser, tactic engine, and
       intuitionistic kernel remain shared by the future replayers.
-- [ ] **A2.3c real replay, WMI execution, and retained result:** run and retain
-      the frozen 3-baseline/22-observation campaign before making any
-      independent-negative-replay claim. Even a passing run does not by itself
+- [x] **A2.3c job 220227 bounded replay execution and retained result:** run
+      the frozen three-baseline/22-observation campaign through two fresh
+      byte-compared executions of the same replayer, pass the separate tactic-
+      free structural verifier, independently reproduce that verifier receipt,
+      and retain the exact nested 17-file bundle. This closes only the exact
+      wrapper-level observations and structural 44-row join; it does not
       establish route rejection, dependency/vector necessity, minimality,
       vector completeness, optimized/best-known status, publication, A2, or
       authority.
@@ -1649,9 +1730,17 @@ and benchmark work precede GPU training.
       The 65-test no-network infrastructure gate passed in 18.40 seconds. This
       is a source-and-infrastructure-only, no-network/no-job/no-result
       checkpoint.
-- [ ] A2.3c's real local/WMI replay and retained-result gate remains open.
-      Route/vector necessity, completeness, minimality, optimized/best-known
-      status, publication, A2, authority, and eligibility flags stay false.
+- [x] A2.3c job `220227` completed the bounded replay-and-retention subgate
+      from commit `a1830b8d…`, tree `2bed15ee…`, and receipt-bound snapshot
+      `b8e30114…`. The same replayer under seeds 0/1 emitted byte-identical
+      322,779-byte candidates at artifact/root `46989ea7…` / `f17e8c4a…`;
+      the tactic-free structural receipt is 27,484 bytes at artifact/root
+      `48884600…` / `364d4ee4…`. The run accepted three baselines and
+      independently reproduced 22 exact wrapper-level omissions, then joined
+      them structurally to 44 retained route labels. Exactly 17 nested files,
+      419,166 bytes, are retained at inventory root `05d80cae…`. Route/vector
+      necessity, completeness, minimality, optimized/best-known status,
+      publication, A2, authority, and eligibility flags stay false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1667,11 +1756,12 @@ and benchmark work precede GPU training.
       root/two-route/44-attempt vector-audit protocol. Its first attempt
       remained unknown; job 220220 later completed only corrected bounded
       execution, six-baseline verification, structural checking, and
-      retention; and A2.3c now freezes only the independent-negative-replay
-      source/infrastructure boundary.
-      The immediate A2 work is to execute and retain the A2.3c 22-observation
-      replay, define and audit a genuine optimized-
-      construction vector, complete the evidence needed for a best-known/
+      retention; A2.3c froze the independent-negative-replay source boundary;
+      and job 220227 later completed only its bounded three-baseline,
+      22-wrapper-observation, 44-row-join execution and retention.
+      The immediate A2 work is to define and independently audit a genuine
+      optimized-construction vector, establish any separately claimed route or
+      dependency necessity, complete the evidence needed for a best-known/
       global comparison, and derive the
       verified publication union before a
       source-state request to an external owner. No 200-unit gold corpus,

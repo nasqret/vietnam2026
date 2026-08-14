@@ -1,0 +1,601 @@
+{
+  "a2_complete": false,
+  "aggregate": {
+    "full_vector_baseline_count": 3,
+    "negative_observation_count": 22,
+    "retained_route_pair_count": 22,
+    "retained_route_row_count": 44,
+    "theorem_count": 3
+  },
+  "bounded_three_root_vector_audit_complete": false,
+  "candidate": {
+    "artifact_bytes": 322779,
+    "artifact_sha256": "46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba",
+    "baseline_records_root_sha256": "768aa4b5edd9eb44615b62d505944eafd57cdf8fc3f106a43d6168c9be4fc415",
+    "negative_observation_records_root_sha256": "6db464c56b52449144f3934214c292dff485910e43421a1763b7203515c0f304",
+    "retained_route_join_root_sha256": "db60c479b5a0c3b621f958e5ef01c98ef095df975a1d51893309ec0cac730ebf",
+    "root_sha256": "f17e8c4a2b8080401376ab04f96d771b466946b87b816cb99be54299cbd6a02f",
+    "theorem_records_root_sha256": "823b26485a1e345aca8b925974641301fd122097c52c05ff842e34b09d44787d"
+  },
+  "candidate_negative_observations_structurally_verified": true,
+  "candidate_status": "passed",
+  "dependency_necessity_established": false,
+  "dependency_vectors_complete": false,
+  "evaluation_eligible": false,
+  "execution_receipt_bound": false,
+  "format": "peano-hydra-library-pilot-dependency-vector-negative-replay-independent-verification",
+  "freeze_ready": false,
+  "id": "independent-a2.3c-pilot-vector-negative-replay-structural-verification-v1",
+  "kernel_baselines_independently_reexecuted": false,
+  "lineage_complete": false,
+  "logic_mode": "intuitionistic",
+  "minimality_claim": false,
+  "negative_observations_independently_verified": false,
+  "negative_replays_independently_reexecuted": false,
+  "optimized_best_known": false,
+  "optimized_vector_independently_audited": false,
+  "predecessor_evidence_authenticated": true,
+  "producer_environment_structurally_verified": true,
+  "producer_independence_source_verified": true,
+  "proof_authority": false,
+  "protocol_sources": {
+    "count": 4,
+    "independence_source_scan": "no-a2.3b-wrapper-import-or-compile-candidate-body-call",
+    "preimage": {
+      "format": "peano-hydra-library-pilot-dependency-vector-negative-replay-verified-protocol-sources-preimage",
+      "sources": [
+        {
+          "bytes": 26551,
+          "path": "training/peano_hydra/library-pilot-dependency-vector-negative-replay-schema-v1.json",
+          "sha256": "be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4"
+        },
+        {
+          "bytes": 91304,
+          "path": "training/peano_hydra/library_pilot_dependency_vector_negative_replay.py",
+          "sha256": "f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4"
+        },
+        {
+          "bytes": 49259,
+          "path": "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+          "sha256": "524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b"
+        },
+        {
+          "bytes": 87120,
+          "path": "peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+          "sha256": "dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82"
+        }
+      ],
+      "v": 1
+    },
+    "root_sha256": "b8cce5333e2ea310dc321eff523ec010caf15a4e43cfc10a3a6abb5049db0685"
+  },
+  "public_graph_applied": false,
+  "publication_authority": false,
+  "publication_ready": false,
+  "publication_union_complete": false,
+  "publication_union_verified": false,
+  "retained_evidence": {
+    "count": 8,
+    "preimage": {
+      "evidence": [
+        {
+          "artifact_sha256": "4f4965508b63d852697c94fe0e7707759b39c5cf456ec2db8aa5a5afe719f2ad",
+          "bytes": 3160729,
+          "label": "a2.3b_candidate",
+          "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/results/l0-pilot-dependency-vector-audit-candidate-v1.json"
+        },
+        {
+          "artifact_sha256": "d1602e23f7736482b039c3d32537fa012d91302f42d62f75ccab9c11583542a9",
+          "bytes": 8841,
+          "label": "a2.3b_collection",
+          "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/collections/job-220220.json"
+        },
+        {
+          "artifact_sha256": "dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318",
+          "bytes": 19990,
+          "label": "a2.3b_execution",
+          "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/runs/220220/execution-receipt.json"
+        },
+        {
+          "artifact_sha256": "50c207c4de0cabe8a50518da4d20e83925f0e1df29ffd78df05e249ea18d4396",
+          "bytes": 16925,
+          "label": "a2.3b_verification",
+          "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/results/l0-pilot-dependency-vector-audit-independent-verification-v1.json"
+        },
+        {
+          "artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+          "bytes": 3241451,
+          "label": "replay_manifest",
+          "path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json"
+        },
+        {
+          "artifact_sha256": "35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10",
+          "bytes": 828,
+          "label": "replay_report",
+          "path": "artifacts/peano-hydra/l0-replay-candidate-v1-report.json"
+        },
+        {
+          "artifact_sha256": "ecf037e5d684a7472c2b02c917b5962e87daef02c688967f28b05afd85e339b0",
+          "bytes": 2405,
+          "label": "a2.3b_producer_source_state",
+          "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/inputs/producer-source-state.json"
+        },
+        {
+          "artifact_sha256": "384392a3a92a1e173576edb415f21f695729cdc71f81bf125afde65fce1041f6",
+          "bytes": 29092,
+          "label": "a2.3b_producer_git_verification",
+          "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/inputs/producer-git-verification-receipt.json"
+        }
+      ],
+      "format": "peano-hydra-library-pilot-dependency-vector-negative-replay-verified-retained-evidence-preimage",
+      "v": 1
+    },
+    "root_sha256": "ae935cf5acab3b4a8d2cdcd5bb916d8d6548f4074a68d1f9c64c8b4207a1486f",
+    "status": "exact-retained-predecessors-and-source-evidence-authenticated"
+  },
+  "retrieval_eligible": false,
+  "review_complete": false,
+  "root_preimage": {
+    "format": "peano-hydra-library-pilot-dependency-vector-negative-replay-independent-verification-root-preimage",
+    "payload": {
+      "a2_complete": false,
+      "aggregate": {
+        "full_vector_baseline_count": 3,
+        "negative_observation_count": 22,
+        "retained_route_pair_count": 22,
+        "retained_route_row_count": 44,
+        "theorem_count": 3
+      },
+      "bounded_three_root_vector_audit_complete": false,
+      "candidate": {
+        "artifact_bytes": 322779,
+        "artifact_sha256": "46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba",
+        "baseline_records_root_sha256": "768aa4b5edd9eb44615b62d505944eafd57cdf8fc3f106a43d6168c9be4fc415",
+        "negative_observation_records_root_sha256": "6db464c56b52449144f3934214c292dff485910e43421a1763b7203515c0f304",
+        "retained_route_join_root_sha256": "db60c479b5a0c3b621f958e5ef01c98ef095df975a1d51893309ec0cac730ebf",
+        "root_sha256": "f17e8c4a2b8080401376ab04f96d771b466946b87b816cb99be54299cbd6a02f",
+        "theorem_records_root_sha256": "823b26485a1e345aca8b925974641301fd122097c52c05ff842e34b09d44787d"
+      },
+      "candidate_negative_observations_structurally_verified": true,
+      "candidate_status": "passed",
+      "dependency_necessity_established": false,
+      "dependency_vectors_complete": false,
+      "evaluation_eligible": false,
+      "execution_receipt_bound": false,
+      "format": "peano-hydra-library-pilot-dependency-vector-negative-replay-independent-verification",
+      "freeze_ready": false,
+      "id": "independent-a2.3c-pilot-vector-negative-replay-structural-verification-v1",
+      "kernel_baselines_independently_reexecuted": false,
+      "lineage_complete": false,
+      "logic_mode": "intuitionistic",
+      "minimality_claim": false,
+      "negative_observations_independently_verified": false,
+      "negative_replays_independently_reexecuted": false,
+      "optimized_best_known": false,
+      "optimized_vector_independently_audited": false,
+      "predecessor_evidence_authenticated": true,
+      "producer_environment_structurally_verified": true,
+      "producer_independence_source_verified": true,
+      "proof_authority": false,
+      "protocol_sources": {
+        "count": 4,
+        "independence_source_scan": "no-a2.3b-wrapper-import-or-compile-candidate-body-call",
+        "preimage": {
+          "format": "peano-hydra-library-pilot-dependency-vector-negative-replay-verified-protocol-sources-preimage",
+          "sources": [
+            {
+              "bytes": 26551,
+              "path": "training/peano_hydra/library-pilot-dependency-vector-negative-replay-schema-v1.json",
+              "sha256": "be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4"
+            },
+            {
+              "bytes": 91304,
+              "path": "training/peano_hydra/library_pilot_dependency_vector_negative_replay.py",
+              "sha256": "f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4"
+            },
+            {
+              "bytes": 49259,
+              "path": "scripts/verify_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+              "sha256": "524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b"
+            },
+            {
+              "bytes": 87120,
+              "path": "peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_negative_replay.py",
+              "sha256": "dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82"
+            }
+          ],
+          "v": 1
+        },
+        "root_sha256": "b8cce5333e2ea310dc321eff523ec010caf15a4e43cfc10a3a6abb5049db0685"
+      },
+      "public_graph_applied": false,
+      "publication_authority": false,
+      "publication_ready": false,
+      "publication_union_complete": false,
+      "publication_union_verified": false,
+      "retained_evidence": {
+        "count": 8,
+        "preimage": {
+          "evidence": [
+            {
+              "artifact_sha256": "4f4965508b63d852697c94fe0e7707759b39c5cf456ec2db8aa5a5afe719f2ad",
+              "bytes": 3160729,
+              "label": "a2.3b_candidate",
+              "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/results/l0-pilot-dependency-vector-audit-candidate-v1.json"
+            },
+            {
+              "artifact_sha256": "d1602e23f7736482b039c3d32537fa012d91302f42d62f75ccab9c11583542a9",
+              "bytes": 8841,
+              "label": "a2.3b_collection",
+              "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/collections/job-220220.json"
+            },
+            {
+              "artifact_sha256": "dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318",
+              "bytes": 19990,
+              "label": "a2.3b_execution",
+              "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/runs/220220/execution-receipt.json"
+            },
+            {
+              "artifact_sha256": "50c207c4de0cabe8a50518da4d20e83925f0e1df29ffd78df05e249ea18d4396",
+              "bytes": 16925,
+              "label": "a2.3b_verification",
+              "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/results/l0-pilot-dependency-vector-audit-independent-verification-v1.json"
+            },
+            {
+              "artifact_sha256": "8b9f9dc8e35e5eb02e43bcffd6aed6280006f4a01c396e43c43c2cbe4cbfb604",
+              "bytes": 3241451,
+              "label": "replay_manifest",
+              "path": "artifacts/peano-hydra/l0-replay-candidate-v1/manifest.json"
+            },
+            {
+              "artifact_sha256": "35f5547978a4d58c5af30c33d253c92af494b94f6d6500a866a13f2fd1fa7f10",
+              "bytes": 828,
+              "label": "replay_report",
+              "path": "artifacts/peano-hydra/l0-replay-candidate-v1-report.json"
+            },
+            {
+              "artifact_sha256": "ecf037e5d684a7472c2b02c917b5962e87daef02c688967f28b05afd85e339b0",
+              "bytes": 2405,
+              "label": "a2.3b_producer_source_state",
+              "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/inputs/producer-source-state.json"
+            },
+            {
+              "artifact_sha256": "384392a3a92a1e173576edb415f21f695729cdc71f81bf125afde65fce1041f6",
+              "bytes": 29092,
+              "label": "a2.3b_producer_git_verification",
+              "path": "artifacts/peano-hydra/a23b-wmi-vector-audit-220220/inputs/producer-git-verification-receipt.json"
+            }
+          ],
+          "format": "peano-hydra-library-pilot-dependency-vector-negative-replay-verified-retained-evidence-preimage",
+          "v": 1
+        },
+        "root_sha256": "ae935cf5acab3b4a8d2cdcd5bb916d8d6548f4074a68d1f9c64c8b4207a1486f",
+        "status": "exact-retained-predecessors-and-source-evidence-authenticated"
+      },
+      "retrieval_eligible": false,
+      "review_complete": false,
+      "route_rejections_independently_verified": false,
+      "source_protocol_authenticated": true,
+      "status": "passed",
+      "structural_receipts_verified": true,
+      "structural_result_verified": true,
+      "tactic_semantics_independently_verified": false,
+      "theorem_admission_authority": false,
+      "theorem_count": 3,
+      "theorem_records": {
+        "count": 3,
+        "preimage": {
+          "format": "peano-hydra-library-pilot-dependency-vector-negative-replay-independent-verification-records-preimage",
+          "records": [
+            {
+              "index": 256,
+              "name": "odd_add_odd",
+              "record_sha256": "c0b6cd38e6ce1ae21eb8406a19247e40be050ab36ae6f753cec3de1032064e50"
+            },
+            {
+              "index": 376,
+              "name": "finite_bounded_injective_surjective",
+              "record_sha256": "1ff2d0a4d364e45fac36e75c43a27ba861a0cfa0c5bf4d427b43a275318197ed"
+            },
+            {
+              "index": 379,
+              "name": "beta_product_swap_last_invariant",
+              "record_sha256": "4a88384ef8399a591c8f1590807761e702709e1a5d5fe35ee81b7fdec51772c8"
+            }
+          ],
+          "v": 1
+        },
+        "root_sha256": "fb67221ddc8163cf3c62cabc3d79d0d63d544a485a020c18272cf8af3c605274"
+      },
+      "theorems": [
+        {
+          "a2_complete": false,
+          "baseline_record_sha256": "eaeb36911123876b01dd7abf0d454e6e03edac73167f9869820b49360c55f868",
+          "bounded_three_root_vector_audit_complete": false,
+          "dependency_necessity_established": false,
+          "dependency_vectors_complete": false,
+          "evaluation_eligible": false,
+          "execution_receipt_bound": false,
+          "freeze_ready": false,
+          "index": 256,
+          "kernel_baselines_independently_reexecuted": false,
+          "lineage_complete": false,
+          "minimality_claim": false,
+          "name": "odd_add_odd",
+          "negative_observation_count": 3,
+          "negative_observation_records_root_sha256": "231ea4617511e821ce02cff2e953104eec3862b331826f4ff1f3fc9913b74764",
+          "negative_observations_independently_verified": false,
+          "negative_replays_independently_reexecuted": false,
+          "optimized_best_known": false,
+          "optimized_vector_independently_audited": false,
+          "proof_authority": false,
+          "public_graph_applied": false,
+          "publication_authority": false,
+          "publication_ready": false,
+          "publication_union_complete": false,
+          "publication_union_verified": false,
+          "record_sha256": "c0b6cd38e6ce1ae21eb8406a19247e40be050ab36ae6f753cec3de1032064e50",
+          "retained_route_pair_count": 3,
+          "retrieval_eligible": false,
+          "review_complete": false,
+          "route_rejections_independently_verified": false,
+          "structural_result_verified": true,
+          "tactic_semantics_independently_verified": false,
+          "theorem_admission_authority": false,
+          "training_eligible": false,
+          "vector_optimizer_executed": false
+        },
+        {
+          "a2_complete": false,
+          "baseline_record_sha256": "c6a68e44dc995d791a9b336f50dcaf2f39df4dff903292e0686c319462af1794",
+          "bounded_three_root_vector_audit_complete": false,
+          "dependency_necessity_established": false,
+          "dependency_vectors_complete": false,
+          "evaluation_eligible": false,
+          "execution_receipt_bound": false,
+          "freeze_ready": false,
+          "index": 376,
+          "kernel_baselines_independently_reexecuted": false,
+          "lineage_complete": false,
+          "minimality_claim": false,
+          "name": "finite_bounded_injective_surjective",
+          "negative_observation_count": 14,
+          "negative_observation_records_root_sha256": "c2887226ca6a90305ec6493ea7d78aaab7766bf98ab31fbeac20bd1528ae3847",
+          "negative_observations_independently_verified": false,
+          "negative_replays_independently_reexecuted": false,
+          "optimized_best_known": false,
+          "optimized_vector_independently_audited": false,
+          "proof_authority": false,
+          "public_graph_applied": false,
+          "publication_authority": false,
+          "publication_ready": false,
+          "publication_union_complete": false,
+          "publication_union_verified": false,
+          "record_sha256": "1ff2d0a4d364e45fac36e75c43a27ba861a0cfa0c5bf4d427b43a275318197ed",
+          "retained_route_pair_count": 14,
+          "retrieval_eligible": false,
+          "review_complete": false,
+          "route_rejections_independently_verified": false,
+          "structural_result_verified": true,
+          "tactic_semantics_independently_verified": false,
+          "theorem_admission_authority": false,
+          "training_eligible": false,
+          "vector_optimizer_executed": false
+        },
+        {
+          "a2_complete": false,
+          "baseline_record_sha256": "fcbc2e919ab0aaa6714d749e02fa5c787c506354091432569feb42f5b82a427c",
+          "bounded_three_root_vector_audit_complete": false,
+          "dependency_necessity_established": false,
+          "dependency_vectors_complete": false,
+          "evaluation_eligible": false,
+          "execution_receipt_bound": false,
+          "freeze_ready": false,
+          "index": 379,
+          "kernel_baselines_independently_reexecuted": false,
+          "lineage_complete": false,
+          "minimality_claim": false,
+          "name": "beta_product_swap_last_invariant",
+          "negative_observation_count": 5,
+          "negative_observation_records_root_sha256": "146fd3f4d60a9569412db0d69b16ad5db956246af16c9e60e3d990bf40519b37",
+          "negative_observations_independently_verified": false,
+          "negative_replays_independently_reexecuted": false,
+          "optimized_best_known": false,
+          "optimized_vector_independently_audited": false,
+          "proof_authority": false,
+          "public_graph_applied": false,
+          "publication_authority": false,
+          "publication_ready": false,
+          "publication_union_complete": false,
+          "publication_union_verified": false,
+          "record_sha256": "4a88384ef8399a591c8f1590807761e702709e1a5d5fe35ee81b7fdec51772c8",
+          "retained_route_pair_count": 5,
+          "retrieval_eligible": false,
+          "review_complete": false,
+          "route_rejections_independently_verified": false,
+          "structural_result_verified": true,
+          "tactic_semantics_independently_verified": false,
+          "theorem_admission_authority": false,
+          "training_eligible": false,
+          "vector_optimizer_executed": false
+        }
+      ],
+      "training_eligible": false,
+      "v": 1,
+      "vector_optimizer_executed": false,
+      "verifier": {
+        "bytecode_write_disabled": true,
+        "import_policy": "python-standard-library-only-no-peano-or-training-import",
+        "load_mode": "authenticated-source-bytes-source_to_code-exec",
+        "module_name": "_peano_hydra_a23c_tactic_free_structural_verifier",
+        "path": "training/peano_hydra/library_pilot_dependency_vector_negative_replay_verifier.py",
+        "pycache_prefix": "/proc/peano-hydra-a23c-disabled-pycache",
+        "sha256": "33f197045cabe95bda3b7ae0ff871b08cb1b186a861827ea08ad0f76cf7908d8",
+        "source_bytes": 85510,
+        "tactic_free": true
+      }
+    },
+    "v": 1
+  },
+  "root_sha256": "364d4ee4099856c44ee1633439f2e5b1c57ae24cc90d9178cdf7445008504733",
+  "route_rejections_independently_verified": false,
+  "source_protocol_authenticated": true,
+  "status": "passed",
+  "structural_receipts_verified": true,
+  "structural_result_verified": true,
+  "tactic_semantics_independently_verified": false,
+  "theorem_admission_authority": false,
+  "theorem_count": 3,
+  "theorem_records": {
+    "count": 3,
+    "preimage": {
+      "format": "peano-hydra-library-pilot-dependency-vector-negative-replay-independent-verification-records-preimage",
+      "records": [
+        {
+          "index": 256,
+          "name": "odd_add_odd",
+          "record_sha256": "c0b6cd38e6ce1ae21eb8406a19247e40be050ab36ae6f753cec3de1032064e50"
+        },
+        {
+          "index": 376,
+          "name": "finite_bounded_injective_surjective",
+          "record_sha256": "1ff2d0a4d364e45fac36e75c43a27ba861a0cfa0c5bf4d427b43a275318197ed"
+        },
+        {
+          "index": 379,
+          "name": "beta_product_swap_last_invariant",
+          "record_sha256": "4a88384ef8399a591c8f1590807761e702709e1a5d5fe35ee81b7fdec51772c8"
+        }
+      ],
+      "v": 1
+    },
+    "root_sha256": "fb67221ddc8163cf3c62cabc3d79d0d63d544a485a020c18272cf8af3c605274"
+  },
+  "theorems": [
+    {
+      "a2_complete": false,
+      "baseline_record_sha256": "eaeb36911123876b01dd7abf0d454e6e03edac73167f9869820b49360c55f868",
+      "bounded_three_root_vector_audit_complete": false,
+      "dependency_necessity_established": false,
+      "dependency_vectors_complete": false,
+      "evaluation_eligible": false,
+      "execution_receipt_bound": false,
+      "freeze_ready": false,
+      "index": 256,
+      "kernel_baselines_independently_reexecuted": false,
+      "lineage_complete": false,
+      "minimality_claim": false,
+      "name": "odd_add_odd",
+      "negative_observation_count": 3,
+      "negative_observation_records_root_sha256": "231ea4617511e821ce02cff2e953104eec3862b331826f4ff1f3fc9913b74764",
+      "negative_observations_independently_verified": false,
+      "negative_replays_independently_reexecuted": false,
+      "optimized_best_known": false,
+      "optimized_vector_independently_audited": false,
+      "proof_authority": false,
+      "public_graph_applied": false,
+      "publication_authority": false,
+      "publication_ready": false,
+      "publication_union_complete": false,
+      "publication_union_verified": false,
+      "record_sha256": "c0b6cd38e6ce1ae21eb8406a19247e40be050ab36ae6f753cec3de1032064e50",
+      "retained_route_pair_count": 3,
+      "retrieval_eligible": false,
+      "review_complete": false,
+      "route_rejections_independently_verified": false,
+      "structural_result_verified": true,
+      "tactic_semantics_independently_verified": false,
+      "theorem_admission_authority": false,
+      "training_eligible": false,
+      "vector_optimizer_executed": false
+    },
+    {
+      "a2_complete": false,
+      "baseline_record_sha256": "c6a68e44dc995d791a9b336f50dcaf2f39df4dff903292e0686c319462af1794",
+      "bounded_three_root_vector_audit_complete": false,
+      "dependency_necessity_established": false,
+      "dependency_vectors_complete": false,
+      "evaluation_eligible": false,
+      "execution_receipt_bound": false,
+      "freeze_ready": false,
+      "index": 376,
+      "kernel_baselines_independently_reexecuted": false,
+      "lineage_complete": false,
+      "minimality_claim": false,
+      "name": "finite_bounded_injective_surjective",
+      "negative_observation_count": 14,
+      "negative_observation_records_root_sha256": "c2887226ca6a90305ec6493ea7d78aaab7766bf98ab31fbeac20bd1528ae3847",
+      "negative_observations_independently_verified": false,
+      "negative_replays_independently_reexecuted": false,
+      "optimized_best_known": false,
+      "optimized_vector_independently_audited": false,
+      "proof_authority": false,
+      "public_graph_applied": false,
+      "publication_authority": false,
+      "publication_ready": false,
+      "publication_union_complete": false,
+      "publication_union_verified": false,
+      "record_sha256": "1ff2d0a4d364e45fac36e75c43a27ba861a0cfa0c5bf4d427b43a275318197ed",
+      "retained_route_pair_count": 14,
+      "retrieval_eligible": false,
+      "review_complete": false,
+      "route_rejections_independently_verified": false,
+      "structural_result_verified": true,
+      "tactic_semantics_independently_verified": false,
+      "theorem_admission_authority": false,
+      "training_eligible": false,
+      "vector_optimizer_executed": false
+    },
+    {
+      "a2_complete": false,
+      "baseline_record_sha256": "fcbc2e919ab0aaa6714d749e02fa5c787c506354091432569feb42f5b82a427c",
+      "bounded_three_root_vector_audit_complete": false,
+      "dependency_necessity_established": false,
+      "dependency_vectors_complete": false,
+      "evaluation_eligible": false,
+      "execution_receipt_bound": false,
+      "freeze_ready": false,
+      "index": 379,
+      "kernel_baselines_independently_reexecuted": false,
+      "lineage_complete": false,
+      "minimality_claim": false,
+      "name": "beta_product_swap_last_invariant",
+      "negative_observation_count": 5,
+      "negative_observation_records_root_sha256": "146fd3f4d60a9569412db0d69b16ad5db956246af16c9e60e3d990bf40519b37",
+      "negative_observations_independently_verified": false,
+      "negative_replays_independently_reexecuted": false,
+      "optimized_best_known": false,
+      "optimized_vector_independently_audited": false,
+      "proof_authority": false,
+      "public_graph_applied": false,
+      "publication_authority": false,
+      "publication_ready": false,
+      "publication_union_complete": false,
+      "publication_union_verified": false,
+      "record_sha256": "4a88384ef8399a591c8f1590807761e702709e1a5d5fe35ee81b7fdec51772c8",
+      "retained_route_pair_count": 5,
+      "retrieval_eligible": false,
+      "review_complete": false,
+      "route_rejections_independently_verified": false,
+      "structural_result_verified": true,
+      "tactic_semantics_independently_verified": false,
+      "theorem_admission_authority": false,
+      "training_eligible": false,
+      "vector_optimizer_executed": false
+    }
+  ],
+  "training_eligible": false,
+  "v": 1,
+  "vector_optimizer_executed": false,
+  "verifier": {
+    "bytecode_write_disabled": true,
+    "import_policy": "python-standard-library-only-no-peano-or-training-import",
+    "load_mode": "authenticated-source-bytes-source_to_code-exec",
+    "module_name": "_peano_hydra_a23c_tactic_free_structural_verifier",
+    "path": "training/peano_hydra/library_pilot_dependency_vector_negative_replay_verifier.py",
+    "pycache_prefix": "/proc/peano-hydra-a23c-disabled-pycache",
+    "sha256": "33f197045cabe95bda3b7ae0ff871b08cb1b186a861827ea08ad0f76cf7908d8",
+    "source_bytes": 85510,
+    "tactic_free": true
+  }
+}

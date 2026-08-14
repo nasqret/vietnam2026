@@ -1181,15 +1181,112 @@ weights are 6,000 / 9,000 / 6,000 ms, while the original source-protocol test
 remains 6,000 ms. The 107-entry runtime profile models eight loads of 544,500 /
 544,000 / 544,800 / 544,500 / 545,000 / 544,000 / 544,000 / 544,000 ms.
 
-This completes only A2.3c source-protocol and execution-infrastructure
-readiness. No real replay, network call, WMI job, execution receipt, or result
-exists. A real replay, WMI execution, and retained result remain required.
+At that checkpoint this completed only A2.3c source-protocol and execution-
+infrastructure readiness. The later job-220227 execution and retention are
+recorded below.
 `bounded_three_root_vector_audit_complete`, `dependency_necessity_established`,
 `route_rejections_independently_verified`, and `vector_optimizer_executed`
 remain false, as do vector completeness, minimality, optimized-vector audit,
 best-known status, publication and publication union, public-graph application,
 A2 completion, and all proof/admission/publication authority and eligibility
 flags.
+
+#### A2.3c bounded WMI replay and retained-result boundary
+
+WMI job `220227` executed from clean commit
+`a1830b8d019baaec72d1d2b3cc8046c72d22a336`, tree
+`2bed15ee16c4c6b3360f4d6a711246e9020cfd9c`, and receipt-bound snapshot
+`b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719`.
+Its retained accounting row is
+`220227|COMPLETED|0:0|0:0|89||4G|1|c3n1`. The worker ran the same authenticated
+replayer implementation in fresh hash-seed-0 and hash-seed-1 processes. Both
+exited 0 in 43.924 / 43.784 seconds and emitted byte-identical candidates.
+This is a determinism control, not independent implementation replication.
+The separately loaded hash-seed-2 structural verifier exited 0 in 0.608
+seconds. Execution/collection classifications are
+`two-replayer-byte-identity-and-independent-structural-verification` /
+`completed-dual-replayer-and-independent-structural-verification`.
+
+The canonical candidate is 322,779 bytes at artifact SHA-256
+`46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba`,
+document root
+`f17e8c4a2b8080401376ab04f96d771b466946b87b816cb99be54299cbd6a02f`,
+and theorem-record root
+`823b26485a1e345aca8b925974641301fd122097c52c05ff842e34b09d44787d`.
+The three accepted full-vector baseline records have root
+`768aa4b5edd9eb44615b62d505944eafd57cdf8fc3f106a43d6168c9be4fc415`.
+The independent wrapper reproduced 22 exact reverse-order single-omission
+observations—3 / 14 / 5 for roots 256 / 376 / 379—at root
+`6db464c56b52449144f3934214c292dff485910e43421a1763b7203515c0f304`.
+Each is structurally paired with the readable and proposed-layered retained
+rows, giving 44 labels at join root
+`db60c479b5a0c3b621f958e5ef01c98ef095df975a1d51893309ec0cac730ebf`.
+
+This independence is confined to the wrapper/process boundary. The replayer
+imports no A2.3b producer and calls no `compile_candidate_body` or route
+assembler, while sharing the authenticated parser, tactic engine, and
+intuitionistic kernel. Therefore the execution independently reproduces the
+22 exact wrapper-level observations but does not independently execute either
+route. The two-to-one mapping is structural and establishes neither route
+rejection nor logical dependency necessity.
+
+The tactic-free structural receipt is 27,484 bytes at artifact SHA-256
+`48884600840c37044e099683b832659aec1fb22e4068637ad7212c104fe10293`,
+document root
+`364d4ee4099856c44ee1633439f2e5b1c57ae24cc90d9178cdf7445008504733`,
+and theorem-record root
+`fb67221ddc8163cf3c62cabc3d79d0d63d544a485a020c18272cf8af3c605274`.
+Execution and collection artifact/root identities are
+`f5c051493fac987a4010043b2bc0b5ef85a8cf37976aff36b331a3c57c93c5b1` /
+`60513353afa2539f82568ae4360d98192584920af4bfd530d930e97e94efacdf`
+and `2f187bde83cdd2bba97cacb0af0a6dcc4c204e6d0eb224ff5732e2433ed6266d` /
+`17421fa3ebdf15020acc2bafad9ce100641d3403b2ce938a9c0b02fc42286814`.
+Source-state, Git-receipt, and infrastructure artifact/root pairs are
+`4fbcb219cf746da206fb07b99f6149922b761fff551fafd0b28f557bc53bf0b0` /
+`832372c5838b2cf3230f5d305ba6b4c9350d165e3c68debe1667f7fa6653722b`,
+`42ebb8a353b205916a167de74bf3adc8412f9e16ad2bae8dab9213a7a37b8b8d` /
+`85825e1ac8a9e7255fc64afd305bee99d93dac44382dd64e1723483388eeb7b7`,
+and `2057bc1ab33e2cd863062bc370bb16b6d8f7022592b7ca73be5b05850282ecce` /
+`5fb4363d47b5d0bc55ab68186f158087c3750e0a512361acf9c2d711e0f41f43`.
+
+The standard-library-only verifier authenticates source and retained
+predecessor receipts and reconstructs all result roots. It does not execute a
+tactic, baseline, or negative replay; independently bind tactic semantics; or
+bind the later execution receipt. Those verifier flags remain false. A
+post-run isolated execution under hash seed 31337 reproduced the retained
+verifier document byte-for-byte, checking structural reproducibility without
+adding a second tactic replay.
+
+Retention contains exactly 17 nested regular files and 419,166 bytes under
+`artifacts/peano-hydra/a23c-wmi-negative-replay-220227/`. The C-sorted
+`<sha256>\t<bytes>\t<relative-path>\n` inventory root is
+`05d80cae1648769a377d3d5fc429f0edac0f484bd526b2607e236930baf282d0`;
+files are 0644, directories 0755, and no symlink exists. The 282,733,056-byte
+transfer archive and full snapshot are omitted, so the snapshot digest is
+receipt-bound. The duplicate seed-1 candidate and both candidate-valued
+process stdout files are also omitted; the retained candidate is their
+normalized representative, and post-retention dual-output identity is
+execution-receipt-bound. Although a live scheduler batch view reported
+`136692K`, retained `sacct.psv` has blank
+`MaxRSS`; no retained memory measurement or ceiling follows.
+
+The 36,808-byte exact-result test at SHA-256
+`624cefad17d2a419958a5334459121f344c1f941ef229f0bb3db3ef867309ec8`
+passed four tests in 0.52 seconds. The CI sharder passed 32 tests in
+0.11 seconds, and the combined bounded release gate passed 155 tests in
+25.20 seconds. The 108-entry profile assigns this gate 3,500 ms and models 544,500 /
+544,500 / 544,800 / 545,000 / 545,000 / 545,000 / 545,000 / 544,500 ms
+across eight shards.
+
+This closes only bounded job-220227 execution and evidence retention: three
+unique baseline records executed in each seed-0/seed-1 run, 22 independent
+exact wrapper observations, and the structural 44-label join.
+`route_rejections_independently_verified=false`,
+`dependency_necessity_established=false`, and all vector-completeness,
+minimality, optimized-vector, best-known, publication, union, graph, A2,
+authority, review/freeze/lineage, and eligibility claims remain false. A true
+optimized-construction vector and any route/necessity claim still require
+separate derivation and independent audit. The public graph remains 1,038.
 
 ### 2.4 Sealed-test law
 

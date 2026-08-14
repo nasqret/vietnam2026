@@ -2087,7 +2087,7 @@ experiment. Its frozen shape is exactly three full-vector baselines and 22
 unique reverse-order single-omission observations, followed by a two-to-one
 join to the 44 A2.3b route-labeled rows. The default CLI emits only a canonical
 source-protocol description: it runs no proof campaign, creates no result, and
-writes no file. There is not yet a local or WMI campaign result.
+writes no file. At that source freeze there was not yet a local or WMI result.
 
 The replayer supplies an independent wrapper in a fresh controlled process. It
 does not import the A2.3b producer, call `compile_candidate_body`, or invoke a
@@ -2145,15 +2145,100 @@ weights are 6,000 / 9,000 / 6,000 ms; the source-protocol test remains 6,000
 ms. The 107-entry profile models eight loads of 544,500 / 544,000 / 544,800 /
 544,500 / 545,000 / 544,000 / 544,000 / 544,000 ms.
 
-Only the A2.3c source protocol and execution-infrastructure readiness are
-complete. No real replay, network call, WMI job, execution receipt, or result
-exists. The real replay, WMI execution, and result remain open.
+At that freeze, only the A2.3c source protocol and execution-infrastructure
+readiness were complete. The later job-220227 execution is recorded next.
 `bounded_three_root_vector_audit_complete`, `dependency_necessity_established`,
 `route_rejections_independently_verified`, and `vector_optimizer_executed`
 remain false, as do vector completeness, minimality, optimized-vector audit,
 best-known status, publication and publication union, public-graph application,
 A2 completion, and all proof/admission/publication authority and training/
 retrieval/evaluation eligibility flags.
+
+### A2.3c job 220227 closes only the replay-and-retention subgate
+
+Job `220227` executed from clean commit
+`a1830b8d019baaec72d1d2b3cc8046c72d22a336`, tree
+`2bed15ee16c4c6b3360f4d6a711246e9020cfd9c`, and receipt-bound snapshot
+`b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719`.
+The retained Slurm row is
+`220227|COMPLETED|0:0|0:0|89||4G|1|c3n1`. Two fresh runs of the same replayer
+under hash seeds 0 and 1 took 43.924 and 43.784 seconds and produced identical
+candidate bytes. They test deterministic execution; they are not independent
+implementations. The separate seed-2 tactic-free verifier passed in 0.608
+seconds. Execution and collection are classified
+`two-replayer-byte-identity-and-independent-structural-verification` and
+`completed-dual-replayer-and-independent-structural-verification`.
+
+The 322,779-byte candidate's artifact, document, and theorem-record roots are
+`46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba` /
+`f17e8c4a2b8080401376ab04f96d771b466946b87b816cb99be54299cbd6a02f` /
+`823b26485a1e345aca8b925974641301fd122097c52c05ff842e34b09d44787d`.
+It accepted one full-vector baseline for each pilot root, at root
+`768aa4b5edd9eb44615b62d505944eafd57cdf8fc3f106a43d6168c9be4fc415`,
+then reproduced 3 / 14 / 5 single-omission failures for roots 256 / 376 / 379.
+The 22 fresh records have root
+`6db464c56b52449144f3934214c292dff485910e43421a1763b7203515c0f304`.
+Their exact structural pairing to the 44 readable/proposed-layered labels has
+root `db60c479b5a0c3b621f958e5ef01c98ef095df975a1d51893309ec0cac730ebf`.
+
+The claim is intentionally at the wrapper layer. The fresh implementation
+imports no A2.3b producer and calls neither `compile_candidate_body` nor a
+route assembler, while sharing the pinned parser, tactic engine, and kernel.
+Thus the 22 exact wrapper-level observations are independently reproduced,
+but their two route labels are a structural join. Neither route rejection nor
+logical dependency necessity follows.
+
+The 27,484-byte independent structural receipt has artifact, document, and
+theorem-record identities
+`48884600840c37044e099683b832659aec1fb22e4068637ad7212c104fe10293` /
+`364d4ee4099856c44ee1633439f2e5b1c57ae24cc90d9178cdf7445008504733` /
+`fb67221ddc8163cf3c62cabc3d79d0d63d544a485a020c18272cf8af3c605274`.
+Execution and collection artifact/root pairs are
+`f5c051493fac987a4010043b2bc0b5ef85a8cf37976aff36b331a3c57c93c5b1` /
+`60513353afa2539f82568ae4360d98192584920af4bfd530d930e97e94efacdf`
+and `2f187bde83cdd2bba97cacb0af0a6dcc4c204e6d0eb224ff5732e2433ed6266d` /
+`17421fa3ebdf15020acc2bafad9ce100641d3403b2ce938a9c0b02fc42286814`.
+Source-state, Git-receipt, and infrastructure artifact/root pairs are
+`4fbcb219cf746da206fb07b99f6149922b761fff551fafd0b28f557bc53bf0b0` /
+`832372c5838b2cf3230f5d305ba6b4c9350d165e3c68debe1667f7fa6653722b`,
+`42ebb8a353b205916a167de74bf3adc8412f9e16ad2bae8dab9213a7a37b8b8d` /
+`85825e1ac8a9e7255fc64afd305bee99d93dac44382dd64e1723483388eeb7b7`,
+and `2057bc1ab33e2cd863062bc370bb16b6d8f7022592b7ca73be5b05850282ecce` /
+`5fb4363d47b5d0bc55ab68186f158087c3750e0a512361acf9c2d711e0f41f43`.
+
+The standard-library-only structural verifier executes no tactic, baseline,
+or omission and binds neither tactic semantics nor the later execution
+receipt. An isolated hash-seed-31337 audit reproduced its retained bytes
+exactly, but that is a structural check rather than another tactic replay.
+The two real replayer processes own the 22 observations.
+
+The retained directory
+`artifacts/peano-hydra/a23c-wmi-negative-replay-220227/` contains exactly 17
+nested regular files totaling 419,166 bytes, with inventory root
+`05d80cae1648769a377d3d5fc429f0edac0f484bd526b2607e236930baf282d0`.
+Files are 0644, directories 0755, and there are no symlinks. The
+282,733,056-byte transfer archive and full snapshot are omitted, so the
+snapshot digest is receipt-bound. The duplicate seed-1 candidate and both
+candidate-valued stdout files are also omitted; the retained candidate is
+their normalized representative, so post-retention dual-output identity is
+execution-receipt-bound. A live
+scheduler batch observation reported `136692K`, but retained `sacct.psv` has
+blank `MaxRSS`; no retained peak-memory claim is made.
+
+The 36,808-byte retained-result gate at SHA-256
+`624cefad17d2a419958a5334459121f344c1f941ef229f0bb3db3ef867309ec8`
+passed four tests in 0.52 seconds. The sharder passed 32 tests in 0.11 seconds;
+the combined bounded gate passed 155 tests in 25.20 seconds. The 108-entry
+profile gives the result gate 3,500 ms and models 544,500 / 544,500 / 544,800 /
+545,000 / 545,000 / 545,000 / 545,000 / 544,500 ms across eight shards.
+
+This finishes only the bounded A2.3c replay execution and retention: three
+unique baseline records executed in each seed-0/seed-1 run, 22 independent
+wrapper observations, and their structural 44-label join. Route and dependency
+necessity, a genuine optimized-construction vector and its independent audit,
+vector/global completeness, minimality, best-known status, publication and
+publication union, graph application, A2, authority, and eligibility all
+remain open. The public graph remains 1,038 edges.
 
 ## What “matched compute” means
 

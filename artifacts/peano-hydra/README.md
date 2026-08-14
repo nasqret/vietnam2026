@@ -501,15 +501,15 @@ application, and A2 completion remain open. Every authority, review, freeze,
 lineage, and training/retrieval/evaluation eligibility flag remains false.
 The public graph remains exactly 1,038 edges.
 
-## A2.3c negative-replay source protocol (no campaign/result artifact)
+## A2.3c negative-replay source protocol (pre-execution checkpoint)
 
 The A2.3c source-only checkpoint freezes the controlled protocol and
 infrastructure for replaying A2.3b's shared compiler observations. Its exact
 registered shape is three full-vector baselines and 22 unique reverse-order
 single-omission observations, joined two-to-one to the 44 retained route rows.
 The default CLI emits only a source-protocol description to stdout: it runs no
-campaign, creates no result, and writes no file. No local or WMI replay has
-been accepted, and this directory contains no A2.3c result artifact.
+campaign, creates no result, and writes no file. At this source checkpoint no
+local or WMI replay had been accepted and no A2.3c result artifact existed.
 
 The implementation is independent at its wrapper and fresh-process boundary.
 It does not import the A2.3b producer, call `compile_candidate_body`, or invoke
@@ -573,14 +573,108 @@ retains its 6,000 ms weight. The 107-entry profile models eight loads of
 544,500 / 544,000 / 544,800 / 544,500 / 545,000 / 544,000 / 544,000 /
 544,000 ms.
 
-Only A2.3c source-protocol and infrastructure readiness is complete. No real
-replay, network call, WMI job, execution receipt, or result exists. The real
-replay/WMI/result gate is open. `bounded_three_root_vector_audit_complete`,
+This source checkpoint completed only A2.3c protocol and infrastructure
+readiness; the later job-220227 execution and retention are recorded below.
+`bounded_three_root_vector_audit_complete`,
 `dependency_necessity_established`, `route_rejections_independently_verified`,
 and `vector_optimizer_executed` remain false, as do vector completeness,
 minimality, optimized-vector audit, best-known status, publication and
 publication union, public-graph application, A2, proof/admission/publication
 authority, and all eligibility flags.
+
+## A2.3c job-220227 bounded replay result
+
+WMI job `220227` ran from clean commit
+`a1830b8d019baaec72d1d2b3cc8046c72d22a336`, tree
+`2bed15ee16c4c6b3360f4d6a711246e9020cfd9c`, and receipt-bound snapshot
+`b8e30114001162ef4a189d702f55844bda4f401abd452d7e212f2aeecdfc3719`.
+The exact retained accounting row is
+`220227|COMPLETED|0:0|0:0|89||4G|1|c3n1`. Hash-seed-0 and hash-seed-1 fresh
+runs of the same replayer implementation exited 0 after 43.924 and 43.784
+seconds and emitted byte-identical output. This is a determinism check, not
+two independent implementations. The separate seed-2 tactic-free verifier
+exited 0 after 0.608 seconds. Execution is classified
+`two-replayer-byte-identity-and-independent-structural-verification` and
+collection is
+`completed-dual-replayer-and-independent-structural-verification`.
+
+The canonical evidence identities are:
+
+| evidence | bytes | artifact SHA-256 | document root SHA-256 |
+|---|---:|---|---|
+| candidate | 322,779 | `46989ea781e1f66b585c5e0817fdf4e76ba24ff34feec71e9cea2162289f2dba` | `f17e8c4a2b8080401376ab04f96d771b466946b87b816cb99be54299cbd6a02f` |
+| tactic-free verification | 27,484 | `48884600840c37044e099683b832659aec1fb22e4068637ad7212c104fe10293` | `364d4ee4099856c44ee1633439f2e5b1c57ae24cc90d9178cdf7445008504733` |
+| execution receipt | 20,492 | `f5c051493fac987a4010043b2bc0b5ef85a8cf37976aff36b331a3c57c93c5b1` | `60513353afa2539f82568ae4360d98192584920af4bfd530d930e97e94efacdf` |
+| collection receipt | 8,967 | `2f187bde83cdd2bba97cacb0af0a6dcc4c204e6d0eb224ff5732e2433ed6266d` | `17421fa3ebdf15020acc2bafad9ce100641d3403b2ce938a9c0b02fc42286814` |
+| source state | 2,500 | `4fbcb219cf746da206fb07b99f6149922b761fff551fafd0b28f557bc53bf0b0` | `832372c5838b2cf3230f5d305ba6b4c9350d165e3c68debe1667f7fa6653722b` |
+| Git verification | 29,334 | `42ebb8a353b205916a167de74bf3adc8412f9e16ad2bae8dab9213a7a37b8b8d` | `85825e1ac8a9e7255fc64afd305bee99d93dac44382dd64e1723483388eeb7b7` |
+| WMI infrastructure | 5,858 | `2057bc1ab33e2cd863062bc370bb16b6d8f7022592b7ca73be5b05850282ecce` | `5fb4363d47b5d0bc55ab68186f158087c3750e0a512361acf9c2d711e0f41f43` |
+
+The candidate theorem-record root is
+`823b26485a1e345aca8b925974641301fd122097c52c05ff842e34b09d44787d`;
+the verifier theorem-record root is
+`fb67221ddc8163cf3c62cabc3d79d0d63d544a485a020c18272cf8af3c605274`.
+The replay accepted one full-vector baseline for each of roots 256, 376, and
+379, at aggregate root
+`768aa4b5edd9eb44615b62d505944eafd57cdf8fc3f106a43d6168c9be4fc415`.
+The independent wrapper then reproduced exactly 3 / 14 / 5 reverse-order
+single-omission observations. Their 22-record root is
+`6db464c56b52449144f3934214c292dff485910e43421a1763b7203515c0f304`.
+Each fresh observation is structurally joined to its readable and proposed-
+layered A2.3b rows, giving 44 labels at join root
+`db60c479b5a0c3b621f958e5ef01c98ef095df975a1d51893309ec0cac730ebf`.
+
+Independence is still layer-specific. The replayer's fresh wrapper does not
+import the A2.3b producer, call `compile_candidate_body`, or run either route
+assembler, but it shares the pinned parser, tactic engine, and intuitionistic
+kernel. It therefore independently reproduces the 22 exact wrapper-level
+script/omission observations without independently rejecting either route or
+proving dependency necessity. The standard-library-only verifier is tactic-
+free: it authenticates and reconstructs the candidate and its receipts, but
+does not rerun a baseline or omission, bind tactics to runtime semantics, or
+bind the later execution receipt. Its corresponding four flags remain false.
+An isolated post-run audit under hash seed 31337 reproduced the retained
+27,484-byte structural receipt byte-for-byte; that is independent structural
+reproducibility, not another tactic execution.
+
+The nested bundle at `a23c-wmi-negative-replay-220227/` contains exactly 17
+regular files: two canonical results under `results/`, the source-state, Git,
+infrastructure, source-provenance, deposit, submission, accounting, execution,
+collection, and bounded log records. Their total is 419,166 bytes. All files
+are mode 0644,
+directories are 0755, and no symlink is retained. The C-sorted
+`<sha256>\t<bytes>\t<relative-path>\n` inventory root is
+`05d80cae1648769a377d3d5fc429f0edac0f484bd526b2607e236930baf282d0`.
+There is no top-level result copy, transfer archive, full source snapshot,
+global ledger, or job pointer. The 282,733,056-byte archive is omitted, so the
+snapshot SHA-256 is receipt-bound rather than independently rehashed from
+retained archive bytes. The duplicate seed-1 candidate and both candidate-
+valued replayer stdout files are omitted; the retained candidate is their
+normalized representative, so post-retention dual-output identity is
+execution-receipt-bound. A live scheduler batch observation reported
+`136692K`, but the retained `sacct.psv` row has blank `MaxRSS`; this bundle
+supports no retained peak-memory or memory-ceiling claim.
+
+The exact retained-result test source is 36,808 bytes at SHA-256
+`624cefad17d2a419958a5334459121f344c1f941ef229f0bb3db3ef867309ec8`;
+its four tests passed in 0.52 seconds. The CI sharder passed 32 tests in
+0.11 seconds. The combined bounded A2.3c gate passed 155 tests in 25.20 seconds.
+The 108-entry CI profile assigns the result test 3,500 ms and models eight
+loads of 544,500 / 544,500 / 544,800 / 545,000 / 545,000 / 545,000 /
+545,000 / 544,500 ms.
+
+This completes only the bounded job-220227 execution-and-retention subgate:
+three unique baseline records executed in each seed-0/seed-1 run, 22
+independently reproduced exact wrapper observations, and their structural join
+to 44 route labels. It does not complete the vector
+audit. `route_rejections_independently_verified`,
+`dependency_necessity_established`,
+`bounded_three_root_vector_audit_complete`, and `vector_optimizer_executed`
+remain false. A genuine optimized-construction vector and its independent
+audit, vector/global completeness, minimality, best-known status, publication
+and publication union, public-graph application, A2, all authority, and every
+training/retrieval/evaluation eligibility claim remain open. The public graph
+is unchanged at exactly 1,038 edges.
 
 ## H1.1b3 selected candidate page source
 
