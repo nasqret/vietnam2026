@@ -1838,6 +1838,61 @@ proof/admission/publication authority, training, retrieval, and evaluation
 flag therefore stays false. Nothing entered the admitted library, 1,038-edge
 graph, catalog, generated page source, or deployed site.
 
+### The A2.3b vector audit is frozen source, not evidence yet
+
+The next bounded question is whether every named direct dependency survives a
+single-edge omission test on both of the constructions that matter for the
+three pilot roots. A2.3b freezes that question for exactly
+`odd_add_odd` (256), `finite_bounded_injective_surjective` (376), and
+`beta_product_swap_last_invariant` (379). Their direct vectors contain 3, 14,
+and 5 edges: 22 edges in all.
+
+Every edge is tried once through `readable-direct-closure` and once through
+`proposed-layered-closure-construction`, in reverse vector order. The result
+schedule is therefore exactly 22 omission attempts per route and 44 overall,
+after one full-vector baseline per root and route. The readable path freshly
+builds the dependency-curried body and closed direct-Cut certificate. The
+layered path must freshly rebuild the omitted root body, recompute that root's
+closure over fixed A2.2 non-root vectors, recover every modular body and
+provenance row, and then call the existing layered compiler. Reusing a cached
+baseline root body is forbidden.
+
+Only a structured rejection at the exact frozen route is negative evidence.
+An accepted omission or any unknown, malformed, unsupported, internal, or
+resource outcome aborts the candidate document. Although the two assembly
+receipts are domain-separated, they share the same pinned root-body compiler
+and kernel. A preassembly body rejection is recorded as one shared
+observation, not two independent confirmations. Likewise, each per-root
+ordered union is only a bounded local diagnostic; it is not written to the
+public graph.
+
+The frozen source identities are:
+
+| Source | Bytes | SHA-256 |
+| --- | ---: | --- |
+| schema | 21,875 | `c4af0d2f850ad16fa7d4a3c086ad13356020a4ccb9a15e0d612babb8db690283` |
+| producer | 120,990 | `3f2c9df051ce4271466b70bdf21ffd59d7ffc298905302d8b42946ca2c87804e` |
+| controlled-worker CLI | 24,509 | `29f56547e6f228cf812df6c013670977de2088d2fccbb7da2fb64cda0ad7737a` |
+| focused synthetic test | 94,869 | `6c3a0490b86ac2ae7aef3206c480fa14f6e15994106153788d79633fc3025d06` |
+
+The schema semantic SHA-256 is
+`6782197c9925f5552aab030a11b996c157e2d06344a2d136d8babc1ee1fdc3df`,
+and the 44-file implementation-source root is
+`4260928ce3d4243c548e3beda3d6bf823aa9f480dbf58367cab64cad8bf3cdb0`.
+The CLI requires an externally supplied four-file producer source state,
+authenticates implementation bytes before imports, bypasses the eager Hydra
+initializer, and runs only in a sanitized fresh `python -B -P -s -S` worker.
+It writes nothing by default and an explicit result path is create-only.
+
+Seventy-eight synthetic/adversarial tests passed in 2.24 seconds. They did not
+execute the six real baselines or 44 real omission attempts on this Mac or on
+WMI. There is no A2.3b result, audit sidecar, route receipt, document root,
+theorem-record root, execution receipt, or publication artifact. Thus the
+source protocol is frozen while vector completeness, necessity, independent
+audit or optimizer evidence, minimality, best-known status, publication and
+its union, public-graph application, A2, authority, and training/retrieval/
+evaluation eligibility all remain false.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

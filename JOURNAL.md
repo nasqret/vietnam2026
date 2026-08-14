@@ -4336,3 +4336,41 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   union, review, lineage, freeze, A2, proof/admission/publication authority,
   training, retrieval, and evaluation flag remains false. No public library,
   1,038-edge graph, catalog, page source, or deployed page changed.
+
+## 2026-08-14 — A2.3b bounded dual-route audit source protocol frozen
+
+- Froze an unexecuted candidate-only protocol for exactly roots 256, 376, and
+  379. Their fixed vectors contain 3, 14, and 5 direct edges. Reverse-order
+  single omissions run through `readable-direct-closure` and
+  `proposed-layered-closure-construction`: 22 attempts per route, 44 total,
+  after six route baselines.
+- The readable route recompiles the root body and closed direct-Cut candidate.
+  The proposed-layered route regenerates the trial root body before closure,
+  applies the single-root vector override over fixed A2.2 non-root vectors,
+  recovers exact modular bodies/provenance, and invokes the existing layered
+  compiler. Baseline root-body reuse is forbidden.
+- Both route receipts are domain-separated, but their pinned root-body compiler
+  and kernel are shared. Preassembly rejection is therefore one shared
+  observation, not independent corroboration. Only allowlisted exact-route
+  rejection counts as negative evidence; accepted omissions and every
+  unknown/resource/internal/malformed outcome abort the candidate document.
+- Frozen the 21,875-byte schema at semantic/artifact SHA-256
+  `6782197c9925f5552aab030a11b996c157e2d06344a2d136d8babc1ee1fdc3df` /
+  `c4af0d2f850ad16fa7d4a3c086ad13356020a4ccb9a15e0d612babb8db690283`.
+  The 44-file implementation-source root is
+  `4260928ce3d4243c548e3beda3d6bf823aa9f480dbf58367cab64cad8bf3cdb0`.
+  Producer/CLI/test files are 120,990 / 24,509 / 94,869 bytes at SHA-256
+  `3f2c9df051ce4271466b70bdf21ffd59d7ffc298905302d8b42946ca2c87804e` /
+  `29f56547e6f228cf812df6c013670977de2088d2fccbb7da2fb64cda0ad7737a` /
+  `6c3a0490b86ac2ae7aef3206c480fa14f6e15994106153788d79633fc3025d06`.
+- The controlled CLI authenticates implementation and explicit four-file
+  producer source state before import, bypasses the eager Hydra initializer,
+  requires a sanitized fresh `python -B -P -s -S` worker, writes nothing by
+  default, and publishes only create-only output. The focused gate passed 78
+  synthetic/adversarial tests in 2.24 seconds; its conservative deterministic
+  CI weight is 3,000 ms.
+- No real baseline/44-attempt audit ran locally or on WMI. No result sidecar,
+  receipt, document/theorem root, execution evidence, publication union, or
+  public-graph change exists. Vector completeness/necessity, independence,
+  minimality, `optimized_best_known`, publication, A2, authority, and all
+  training/retrieval/evaluation eligibility flags remain false.

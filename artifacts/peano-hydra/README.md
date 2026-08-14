@@ -291,6 +291,55 @@ publication authority, training, retrieval, and evaluation eligibility flags
 remain false. The public library, replay pack, 1,038-edge graph, catalog, page
 sources, and deployed pages are unchanged.
 
+## A2.3b dependency-vector audit source protocol (no artifact)
+
+Frozen on 2026-08-14, A2.3b defines an unexecuted, candidate-only audit for
+exactly roots 256, 376, and 379. Their ordered direct vectors have 3, 14, and 5
+edges. Each edge receives one reverse-order omission attempt through
+`readable-direct-closure` and one through
+`proposed-layered-closure-construction`: 22 attempts per route and 44 total,
+after six full-vector baselines.
+
+The readable route freshly compiles the root body and closed direct-Cut
+candidate. The proposed-layered route freshly regenerates the root body,
+recomputes the single-root override closure over fixed A2.2 vectors, recovers
+all modular bodies and provenance rows, and invokes the existing layered
+compiler. Both routes share the pinned body compiler and kernel, so a body
+rejection before assembly is one shared observation rather than independent
+corroboration. Only exact structured route rejection is negative evidence;
+accepted omissions and every unknown or resource/internal/malformed outcome
+abort the candidate document.
+
+The frozen identities are:
+
+- schema semantic/artifact SHA-256:
+  `6782197c9925f5552aab030a11b996c157e2d06344a2d136d8babc1ee1fdc3df` /
+  `c4af0d2f850ad16fa7d4a3c086ad13356020a4ccb9a15e0d612babb8db690283`
+  (21,875 bytes);
+- 44-file implementation-source vector root:
+  `4260928ce3d4243c548e3beda3d6bf823aa9f480dbf58367cab64cad8bf3cdb0`;
+- producer SHA-256:
+  `3f2c9df051ce4271466b70bdf21ffd59d7ffc298905302d8b42946ca2c87804e`
+  (120,990 bytes);
+- no-default-write controlled-worker CLI SHA-256:
+  `29f56547e6f228cf812df6c013670977de2088d2fccbb7da2fb64cda0ad7737a`
+  (24,509 bytes); and
+- focused synthetic-test SHA-256:
+  `6c3a0490b86ac2ae7aef3206c480fa14f6e15994106153788d79633fc3025d06`
+  (94,869 bytes).
+
+The focused gate passed 78 synthetic/adversarial tests in 2.24 seconds. No
+real baseline or omission campaign ran locally or on WMI, and this directory
+contains no A2.3b result sidecar, route receipt, result root, execution receipt,
+or publication artifact. The future per-root ordered union is bounded local
+diagnostic data only and cannot update the public graph.
+
+Only the source protocol is frozen. Vector completeness or necessity,
+independent audit/optimizer evidence, minimality, `optimized_best_known`,
+publication or publication-union completion, public-graph application, A2,
+proof/admission/publication authority, and training/retrieval/evaluation
+eligibility remain false.
+
 ## H1.1b3 selected candidate page source
 
 The retained tagless source tree is

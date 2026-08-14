@@ -857,13 +857,76 @@ its four tests passed in 3.40 seconds.
 
 This closes only fixed-pilot execution and evidence retention. Direct and
 transitive dependency surfaces remain separate, and the readable and proposed
-optimized direct vectors still need independent audits and an ordered verified
-publication union. Every minimality, global-best/`optimized_best_known`,
+layered-construction direct vectors still need independent audits and an
+ordered verified publication union. The layered package is not a dependency-
+selection optimizer; any true optimized-construction vector remains separate
+future work. Every minimality, global-best/`optimized_best_known`,
 independently audited optimized-vector, dependency-vector completeness,
 publication, publication-union, review, lineage, freeze, A2 completion,
 proof/admission/publication authority, training, retrieval, and evaluation
 flag remains false. No admitted theorem, replay artifact, metadata row, public
 library/graph/catalog entry, page source, or deployed page changed.
+
+#### A2.3b bounded vector-audit source protocol (no build/result)
+
+The 2026-08-14 A2.3b tranche freezes the next experiment before executing it.
+The universe is exactly roots `odd_add_odd` (256),
+`finite_bounded_injective_surjective` (376), and
+`beta_product_swap_last_invariant` (379). Their ordered direct vectors contain
+3, 14, and 5 edges. Each vector is examined through exactly two routes:
+
+1. `readable-direct-closure` freshly compiles the dependency-curried root body
+   and then the closed direct-Cut candidate using the remaining replay
+   certificates; and
+2. `proposed-layered-closure-construction` freshly regenerates the root body,
+   recomputes the single-root vector-override closure over fixed A2.2 non-root
+   vectors, recovers each exact modular body and provenance row, and invokes
+   the existing layered replay compiler.
+
+Each route first checks one full-vector baseline, then attempts one omission
+per edge in reverse direct-vector order. The fixed schedule therefore has 22
+attempts per route and 44 total. Only an allowlisted exact-route rejection is
+negative evidence. Any accepted omission or unknown, resource, malformed,
+unsupported, internal, or unclassified outcome aborts the document. The two
+receipts are domain-separated at route assembly, but both routes intentionally
+share the pinned root-body compiler and unchanged intuitionistic kernel. A
+root-body rejection before assembly is one shared preassembly observation,
+not independent confirmation by two implementations.
+
+The exact source identities are:
+
+| Source | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `training/peano_hydra/library-pilot-dependency-vector-audit-schema-v1.json` | 21,875 | `c4af0d2f850ad16fa7d4a3c086ad13356020a4ccb9a15e0d612babb8db690283` |
+| `training/peano_hydra/library_pilot_dependency_vector_audit.py` | 120,990 | `3f2c9df051ce4271466b70bdf21ffd59d7ffc298905302d8b42946ca2c87804e` |
+| `scripts/build_peano_hydra_library_pilot_dependency_vector_audit.py` | 24,509 | `29f56547e6f228cf812df6c013670977de2088d2fccbb7da2fb64cda0ad7737a` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit.py` | 94,869 | `6c3a0490b86ac2ae7aef3206c480fa14f6e15994106153788d79633fc3025d06` |
+
+The schema semantic SHA-256 is
+`6782197c9925f5552aab030a11b996c157e2d06344a2d136d8babc1ee1fdc3df`;
+the canonical schema artifact SHA-256 is the first table row. The ordered
+44-file implementation-source vector has root
+`4260928ce3d4243c548e3beda3d6bf823aa9f480dbf58367cab64cad8bf3cdb0`.
+The CLI authenticates those sources and an explicit four-file producer source
+state before imports, direct-loads the producer without executing
+`training.peano_hydra.__init__`, requires a sanitized fresh
+`python -B -P -s -S` worker, writes nothing by default, and uses create-only
+publication for an explicit destination.
+
+The focused gate passed 78 synthetic/adversarial tests in 2.24 seconds. It did
+not run any of the six real baselines or 44 real omissions locally or on WMI,
+and no audit candidate, sidecar, receipt, document root, theorem-record root,
+or publication artifact exists. A per-root ordered union in a future result
+would remain a bounded local diagnostic, not a verified publication union or
+public-graph update.
+
+Consequently only `bounded_three_root_protocol_frozen` is true;
+`bounded_three_root_vector_audit_complete` remains false. The protocol does
+not establish vector completeness or necessity, route or optimizer
+independence, minimality, `optimized_best_known`, publication, publication-
+union completion, public-graph application, review, lineage, freeze readiness,
+A2 completion, proof/admission/publication authority, or training/retrieval/
+evaluation eligibility.
 
 ### 2.4 Sealed-test law
 

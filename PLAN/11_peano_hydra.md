@@ -583,6 +583,59 @@ lineage, freeze, A2 completion, proof/admission/publication authority,
 training, retrieval, and evaluation flag remains false. No public library,
 graph, catalog, or page changed.
 
+On 2026-08-14, **A2.3b froze only the bounded dual-route dependency-vector
+audit source protocol**. Its universe is exactly the same three roots, in
+indices 256, 376, and 379. Their fixed direct vectors contain 3, 14, and 5
+edges. For each edge, the protocol schedules one reverse-order omission on
+each of two routes: `readable-direct-closure` and
+`proposed-layered-closure-construction`. That is exactly 22 attempts per route
+and 44 attempts overall, plus one checked baseline per root and route.
+
+The readable route freshly compiles the dependency-curried body and then the
+closed direct-Cut candidate. The proposed-layered route must instead
+regenerate the omitted root body, recompute its single-root vector-override
+closure over the fixed A2.2 vectors, recover every exact modular body and
+provenance row, and invoke the existing layered compiler. A shared root-body
+rejection is explicitly recorded as one shared preassembly observation, not
+as independent corroboration by two algorithms. Only an allowlisted,
+route-exact rejection is negative evidence; an accepted omission, unknown,
+malformed, unsupported, internal, resource, or unclassified outcome aborts
+the candidate document.
+
+This tranche did **not** run the six baselines or 44 real omission attempts on
+this Mac or on WMI. It produced no candidate result, audit sidecar, route
+receipt, theorem-record root, execution receipt, or publication artifact. Its
+per-root ordered union is only a bounded local diagnostic and is never applied
+to the retained 1,038-edge graph. The 78 focused tests are synthetic protocol
+and adversarial tests; they passed in 2.24 seconds and are not vector-audit
+observations.
+
+The schema is 21,875 bytes with semantic/artifact SHA-256s
+`6782197c9925f5552aab030a11b996c157e2d06344a2d136d8babc1ee1fdc3df` /
+`c4af0d2f850ad16fa7d4a3c086ad13356020a4ccb9a15e0d612babb8db690283`.
+The 44-file implementation-source vector root is
+`4260928ce3d4243c548e3beda3d6bf823aa9f480dbf58367cab64cad8bf3cdb0`.
+The producer, no-default-write controlled-worker CLI, and focused-test sources
+are respectively 120,990 / 24,509 / 94,869 bytes with SHA-256s
+`3f2c9df051ce4271466b70bdf21ffd59d7ffc298905302d8b42946ca2c87804e`,
+`29f56547e6f228cf812df6c013670977de2088d2fccbb7da2fb64cda0ad7737a`,
+and
+`6c3a0490b86ac2ae7aef3206c480fa14f6e15994106153788d79633fc3025d06`.
+The CLI requires an externally supplied four-file producer source state,
+authenticates the 44 pinned implementation sources before imports, bypasses
+the eager Hydra package initializer in a fresh sanitized
+`python -B -P -s -S` worker, writes nothing by default, and publishes only to
+an absent explicit destination.
+
+`bounded_three_root_protocol_frozen` is true, but
+`bounded_three_root_vector_audit_complete` remains false. No readable or
+proposed-layered vector is independently audited yet. Dependency-vector
+completeness or necessity, independent optimizer evidence, minimality,
+`optimized_best_known`, publication or publication-union completion,
+public-graph application, review, lineage, freeze readiness, A2 completion,
+proof/admission/publication authority, and training/retrieval/evaluation
+eligibility all remain false.
+
 ### H1.2 Build lineage before rows
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
@@ -885,9 +938,20 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       scheduler, and collection evidence. This checks only the bounded pilot
       comparison set and does not assign `best-known`, minimality, dependency-
       vector, publication, graph, or authority status.
-- [ ] Independently audit both the readable-recipe and proposed optimized-
-      construction direct dependency vectors, separately from their
+- [x] **A2.3b — bounded dual-route vector-audit source protocol only:** freeze
+      exact reverse-order single-omission algorithms for the 22 readable and
+      22 proposed-layered route edges across roots 256, 376, and 379, including
+      route-specific baselines, shared-preassembly labeling, abort-on-unknown
+      semantics, controlled-worker/source identities, and a no-default-write
+      CLI. This checkbox records source and synthetic adversarial tests only;
+      no real audit result or artifact exists.
+- [ ] Execute and independently verify the fixed pilot's readable-recipe and
+      proposed layered-construction direct dependency-vector audits,
+      separately from their
       transitive closures.
+- [ ] Define and independently audit any future true optimized-construction
+      direct vector; the A2.3a layered package is not a dependency-selection
+      optimizer.
 - [ ] Complete the comparison evidence required for any `best-known` or global
       A2 claim beyond the fixed three-candidate pilot.
 - [ ] Compile accepted units into reviewable theorem proposals containing
@@ -1270,6 +1334,17 @@ and benchmark work precede GPU training.
       review/freeze, and eligibility flag remains false. Its exact retained-
       result gate passed 4 tests in 3.40 seconds (source SHA-256
       `28b251f9ab75bea…`).
+- [x] A2.3b froze the next bounded source protocol without executing it. It
+      fixes roots 256/376/379, two separately domain-labeled construction
+      routes, 22 ordered direct edges per route, and 44 reverse-order
+      single-omission attempts. The schema semantic/artifact identities begin
+      `6782197c…` / `c4af0d2f…`; its 44-file implementation-source root begins
+      `4260928c…`; and the producer/CLI/test identities begin `3f2c9df0…` /
+      `29f56547…` / `6c3a0490…`. Seventy-eight synthetic tests passed in 2.24
+      seconds. No real baseline/omission campaign, result, sidecar, receipt,
+      root, publication union, graph change, or authority follows; all vector-
+      audit/completeness, independence, best-known, A2, and eligibility flags
+      remain false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1280,9 +1355,11 @@ and benchmark work precede GPU training.
       separately from deployed-page coverage while preserving metadata v1;
       H1.1b3 retains page source without claiming deployment; A2.1 adds only a
       readable-recipe dependency diagnostic; A2.2 adds only three checked
-      candidate construction rebuilds; and A2.3a retains only the bounded
-      fixed-set comparison with layered closures. The immediate A2 work is to
-      independently audit readable and optimized vectors, complete any
+      candidate construction rebuilds; A2.3a retains only the bounded
+      fixed-set comparison with layered closures; and A2.3b freezes only the
+      unexecuted three-root/two-route/44-attempt vector-audit source protocol.
+      The immediate A2 work is to execute and independently verify the bounded
+      vector audit, complete any
       evidence needed for a best-known/global comparison, and derive the
       verified publication union before a
       source-state request to an external owner. No 200-unit gold corpus,

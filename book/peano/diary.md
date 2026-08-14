@@ -4338,3 +4338,50 @@ boundary while `producer_git_verified` remains false inside the result. No
 library theorem, public graph edge, catalog record, generated page, or deployed
 page changed. The next work is independent readable/optimized-vector audit and
 the verified publication union, not a larger unbounded local rebuild.
+
+## 2026-08-14 — Freeze the two routes before counting their rejections
+
+The A2.3a pilot selected a layered construction for display, but that did not
+authenticate its direct dependency vector. The next step could easily have
+blurred three different statements: “this frozen recipe rejected one
+omission,” “this dependency is mathematically necessary,” and “this vector is
+optimal.” A2.3b freezes only the first experiment.
+
+The scope is deliberately tiny: roots 256, 376, and 379, whose vectors have 3,
+14, and 5 edges. Every edge is omitted once from the readable direct-closure
+route and once from the proposed layered-closure construction, in reverse
+vector order. That fixes 22 attempts per route and 44 total, plus six checked
+baselines. The readable route recompiles the dependency-curried body and its
+direct-Cut closure. The layered route must regenerate the root body from the
+trial vector, recompute the single-root override closure over fixed A2.2
+non-root vectors, recover all exact modular bodies, and compile a fresh layered
+certificate. A cached baseline body would answer a different question and is
+forbidden.
+
+The strongest design lesson came from apparent redundancy. Two domain-
+separated route receipts are useful, but both routes share the same pinned
+root-body compiler and kernel. If that shared preassembly step rejects a trial,
+we record one shared underlying observation, not two independent confirmations.
+Only a structured rejection at the exact route counts as negative evidence;
+an accepted omission, unknown, resource interruption, malformed value, or
+unclassified exception aborts the candidate document.
+
+The source freeze binds schema semantic/artifact identities
+`6782197c9925f5552aab030a11b996c157e2d06344a2d136d8babc1ee1fdc3df` /
+`c4af0d2f850ad16fa7d4a3c086ad13356020a4ccb9a15e0d612babb8db690283`,
+the 44-file implementation root
+`4260928ce3d4243c548e3beda3d6bf823aa9f480dbf58367cab64cad8bf3cdb0`,
+and producer/CLI/test source identities
+`3f2c9df051ce4271466b70bdf21ffd59d7ffc298905302d8b42946ca2c87804e` /
+`29f56547e6f228cf812df6c013670977de2088d2fccbb7da2fb64cda0ad7737a` /
+`6c3a0490b86ac2ae7aef3206c480fa14f6e15994106153788d79633fc3025d06`.
+The CLI authenticates bytes before imports, avoids the eager Hydra initializer,
+requires a sanitized `python -B -P -s -S` worker and explicit source state,
+writes nothing by default, and creates rather than overwrites an output.
+
+Seventy-eight synthetic and adversarial tests passed in 2.24 seconds. We did
+not execute the real baselines or 44 omissions on this Mac or on WMI, and no
+result, sidecar, route receipt, root, or publication artifact exists. The
+protocol is frozen, but vector completeness, necessity, independence,
+minimality, best-known status, publication and its union, graph application,
+A2, authority, and every eligibility flag remain false.
