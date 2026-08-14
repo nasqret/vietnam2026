@@ -253,7 +253,7 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     profile = load_runtime_profile(DEFAULT_RUNTIME_PROFILE, tests_root, files)
 
     assert profile.fallback_ms == 1000
-    assert len(profile.weights_ms) == 99
+    assert len(profile.weights_ms) == 102
     assert profile.weight_ms(tests_root / "test_congruence_beta_admission.py") == 274_300
     assert profile.weight_ms(tests_root / "test_peano_hydra_authoring.py") == 500
     assert profile.weight_ms(tests_root / "test_peano_hydra_assistant_repl.py") == 3_000
@@ -266,6 +266,16 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     assert (
         profile.weight_ms(tests_root / "test_peano_hydra_a23a_wmi_protocol.py")
         == 1_500
+    )
+    assert (
+        profile.weight_ms(
+            tests_root / "test_peano_hydra_a23b_producer_source_state.py"
+        )
+        == 6_000
+    )
+    assert (
+        profile.weight_ms(tests_root / "test_peano_hydra_a23b_wmi_protocol.py")
+        == 1_000
     )
     assert profile.weight_ms(tests_root / "test_peano_hydra_conformance.py") == 6_000
     assert (
@@ -317,6 +327,13 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     )
     assert (
         profile.weight_ms(
+            tests_root
+            / "test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py"
+        )
+        == 3_500
+    )
+    assert (
+        profile.weight_ms(
             tests_root / "test_peano_hydra_library_optimizer_comparison_result.py"
         )
         == 3_500
@@ -343,7 +360,16 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     assert [
         sum(profile.weight_ms(path) for path in shard)
         for shard in shards
-    ] == [539_000, 539_500, 538_800, 539_000, 539_500, 539_500, 539_500, 539_000]
+    ] == [
+        540_500,
+        540_500,
+        540_800,
+        540_500,
+        540_500,
+        540_500,
+        540_500,
+        540_500,
+    ]
 
 
 def test_cli_reports_modeled_runtime_and_source_bytes(

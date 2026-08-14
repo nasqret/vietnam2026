@@ -636,6 +636,57 @@ public-graph application, review, lineage, freeze readiness, A2 completion,
 proof/admission/publication authority, and training/retrieval/evaluation
 eligibility all remain false.
 
+On 2026-08-14, **A2.3b external execution infrastructure (no
+submission/result)** froze the boundary needed to run that exact protocol
+without widening its evidence. A producer-independent clean-Git generator
+binds the four frozen producer sources plus its own committed stage-zero blob,
+emits the required eight-field source state with `git_verified=false`, and
+publishes a separate domain-separated Git receipt and evidence envelope. It
+imports no audit producer.
+
+The separately loaded verifier imports only the standard library and the
+pinned Peano kernel. It authenticates, decodes, canonically re-encodes, and
+empty-context checks six baseline artifacts: three readable baselines joined
+to the exact A2.2 embedded artifacts and three layered baselines joined to the
+exact retained A2.3a artifacts. It independently recomputes the structural
+receipts, roots, order, surfaces, and the `44 route records / 22 shared
+observations` pairing. It does **not** rerun the tactic compiler and therefore
+keeps `negative_observations_independently_verified`,
+`route_rejections_independently_verified`, and
+`producer_observations_execution_bound` false in its receipt. Only a future
+successful execution receipt may set the last field true.
+
+The source-only WMI path pins x86-64 CPython 3.12.12, isolated
+`python -B -P -s -S` workers, producer hash seeds 0 and 1 with required byte
+identity, and a seed-2 verifier. It requests one `cpu_idle` CPU, 4,096 MiB,
+and 15 minutes, publishes bounded child logs and a create-only execution
+receipt last, and treats timeout, resource, scheduler, process, malformed, or
+missing evidence as `unknown`. The guarded submitter defaults to
+`--test-only`; real submission requires
+`--submit --confirm PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. Neither mode was run,
+and no SSH, snapshot deposit, `sbatch`, producer campaign, or collector
+operation occurred.
+
+Source-state generator/test SHA-256s are
+`bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
+`728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917`.
+Verifier module/CLI/test SHA-256s are
+`080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` /
+`e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` /
+`eefa3590098700a8791e23038ddca2a67efd336ce521996aedd7ef3e60c6b3b9`.
+WMI runner/sbatch/submit/collect/test SHA-256s are
+`ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` /
+`611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
+`e76f0255a48c9204e8f1a739289bd65d2c4e34f1a2594b9c2a915a4a397da59b` /
+`f0943cb33b7794255cabfe30a7928ba01b01809c965c444d96ddbc32ed335b8a` /
+`e6b1ecef8c8c76935996cfcd7a6fbb95e729d0b5fb204fa0925e45ba41e11852`.
+The three focused files passed 38 tests in 8.65 seconds (10 source-state, 12
+verifier, 16 WMI protocol), and the independent execution-boundary threat
+audit reported PASS. These are infrastructure tests only. No runtime source,
+Git, infrastructure, execution, verification, or collection receipt/root
+exists yet; all vector, publication, A2, authority, and eligibility flags
+remain false.
+
 ### H1.2 Build lineage before rows
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
@@ -945,10 +996,19 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       semantics, controlled-worker/source identities, and a no-default-write
       CLI. This checkbox records source and synthetic adversarial tests only;
       no real audit result or artifact exists.
-- [ ] Execute and independently verify the fixed pilot's readable-recipe and
-      proposed layered-construction direct dependency-vector audits,
-      separately from their
-      transitive closures.
+- [x] **A2.3b external execution infrastructure (no submission/result):**
+      freeze the producer-independent clean-Git source-state/Git-receipt
+      generator, separately loaded six-baseline kernel verifier,
+      content-addressed dual-producer WMI runner, guarded submitter, terminal
+      collector, and their no-network adversarial contracts. This records
+      executable transport readiness only: no test-only call, SSH, snapshot
+      deposit, Slurm job, real audit, result, or receipt was produced.
+- [ ] Execute the fixed pilot's readable-recipe and proposed layered-
+      construction direct dependency-vector audits through the frozen dual-
+      producer path. Independently kernel-check the six baselines and verify
+      the structural receipts, while retaining negative rows only as producer
+      execution observations—not independently replayed rejections—and keep
+      the direct vectors separate from their transitive closures.
 - [ ] Define and independently audit any future true optimized-construction
       direct vector; the A2.3a layered package is not a dependency-selection
       optimizer.
@@ -1345,6 +1405,15 @@ and benchmark work precede GPU training.
       root, publication union, graph change, or authority follows; all vector-
       audit/completeness, independence, best-known, A2, and eligibility flags
       remain false.
+- [x] A2.3b external execution infrastructure is now frozen without a WMI
+      submission or result. The independent verifier kernel-checks all six
+      full-vector baselines and recomputes structure, while labeling the 44
+      producer route records as 22 shared compiler observations that it does
+      not independently replay. Dual-producer/seed-2-verifier WMI execution,
+      receipt-last collection, and clean-Git provenance are ready but unused.
+      The 10 source-state, 12 verifier, and 16 WMI tests passed together: 38
+      in 8.65 seconds. No runtime receipt/root or vector/A2/authority claim
+      follows.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1357,9 +1426,12 @@ and benchmark work precede GPU training.
       readable-recipe dependency diagnostic; A2.2 adds only three checked
       candidate construction rebuilds; A2.3a retains only the bounded
       fixed-set comparison with layered closures; and A2.3b freezes only the
-      unexecuted three-root/two-route/44-attempt vector-audit source protocol.
-      The immediate A2 work is to execute and independently verify the bounded
-      vector audit, complete any
+      unexecuted three-root/two-route/44-attempt vector-audit source protocol
+      and its unused external execution infrastructure.
+      The immediate A2 work is to execute the bounded vector audit,
+      independently verify its six baselines and structural receipts, bind
+      (without independently replaying) its negative producer observations,
+      complete any
       evidence needed for a best-known/global comparison, and derive the
       verified publication union before a
       source-state request to an external owner. No 200-unit gold corpus,

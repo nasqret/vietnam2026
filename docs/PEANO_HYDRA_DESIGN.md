@@ -928,6 +928,75 @@ union completion, public-graph application, review, lineage, freeze readiness,
 A2 completion, proof/admission/publication authority, or training/retrieval/
 evaluation eligibility.
 
+#### A2.3b external execution infrastructure (no submission/result)
+
+The source-to-cluster boundary is frozen separately from the audit result. A
+producer-independent generator authenticates the exact four-file A2.3b
+producer vector, verifies a clean committed tree and its own stage-zero Git
+blob, and emits the eight-field producer source state with
+`git_verified=false`. A separate Git receipt binds HEAD, tree, blobs, live
+bytes, and the resolved Git executable; a third domain-separated envelope
+binds the two outputs. The generator does not import the producer.
+
+The independent verifier is loaded directly in a fresh process and imports
+only the Python standard library and pinned Peano kernel modules. It joins the
+three readable baselines to the exact A2.2 embedded artifacts and the three
+layered baselines to the exact retained A2.3a artifacts, then authenticates,
+decodes, canonically re-encodes, and empty-context checks all six. It also
+recomputes every structural receipt, theorem and document root, route order,
+surface hash, and cross-route pairing. Its evidence boundary is explicit:
+
+| Surface | Independent verifier establishes | It does not establish |
+| --- | --- | --- |
+| six full-vector baselines | exact retained-artifact parity and six empty-context kernel checks | a new proof search or optimizer run |
+| 44 route records | canonical structure, hashes, order, and receipt roots | that the producer's tactic executions really rejected |
+| 22 shared observation preimages | exact equality and pairing of the two route-labeled records | 22 independent implementations or 44 independent rejections |
+
+Thus `kernel_baseline_artifacts_verified`,
+`producer_observations_structurally_verified`, and
+`structural_receipts_verified` may be true in a future verifier receipt, while
+`negative_observations_independently_verified`,
+`route_rejections_independently_verified`, and
+`producer_observations_execution_bound` remain false there. Only a successful
+external execution receipt can bind the producer observations to two actual
+fresh producer processes; it still cannot convert them into independently
+replayed negative evidence.
+
+The WMI worker pins x86-64 CPython 3.12.12 and isolated
+`python -B -P -s -S` processes. It runs producers at hash seeds 0 and 1,
+requires byte-identical candidate documents, and invokes the verifier at seed
+2. The job envelope is one `cpu_idle` CPU, 4,096 MiB, and 15 minutes. Child
+output is bounded, the execution receipt is published create-only and last,
+and the terminal collector binds one accounting row plus exact bounded logs.
+Timeout, resource, scheduler, child-process, malformed, or missing evidence is
+`unknown`. The submitter defaults to `--test-only`, which would deposit or
+verify a content-addressed snapshot and call `sbatch --test-only` without
+creating a job. Real submission additionally requires
+`--submit --confirm PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. The validated optional
+`WMI_SSH_JUMP` is passed only as an SSH `-J` argument pair.
+
+The frozen infrastructure identities are:
+
+| Source | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `scripts/build_peano_hydra_a23b_producer_source_state.py` | 38,902 | `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` |
+| `peano-lab/py/tests/test_peano_hydra_a23b_producer_source_state.py` | 11,630 | `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917` |
+| `training/peano_hydra/library_pilot_dependency_vector_audit_verifier.py` | 99,551 | `080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` |
+| `scripts/verify_peano_hydra_library_pilot_dependency_vector_audit.py` | 18,652 | `e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py` | 17,394 | `eefa3590098700a8791e23038ddca2a67efd336ce521996aedd7ef3e60c6b3b9` |
+| `scripts/run_peano_hydra_a23b_wmi.py` | 107,618 | `ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` |
+| `slurm/peano_wmi_hydra_a23b_vector_audit.sbatch` | 5,032 | `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` |
+| `scripts/submit_wmi_hydra_a23b_vector_audit.sh` | 14,860 | `e76f0255a48c9204e8f1a739289bd65d2c4e34f1a2594b9c2a915a4a397da59b` |
+| `scripts/collect_wmi_hydra_a23b_vector_audit.sh` | 5,632 | `f0943cb33b7794255cabfe30a7928ba01b01809c965c444d96ddbc32ed335b8a` |
+| `peano-lab/py/tests/test_peano_hydra_a23b_wmi_protocol.py` | 27,869 | `e6b1ecef8c8c76935996cfcd7a6fbb95e729d0b5fb204fa0925e45ba41e11852` |
+
+The 10 source-state, 12 verifier, and 16 WMI protocol tests passed together:
+38 in 8.65 seconds. An independent execution-boundary threat audit reported
+PASS. No network call, test-only deposit, real submission, six-baseline/44-
+attempt producer build, WMI job, result, verification receipt, execution
+receipt, collection receipt, or runtime content root exists. All dependency-
+vector, publication, A2, authority, and eligibility flags remain false.
+
 ### 2.4 Sealed-test law
 
 The unit of separation is a mathematical **lineage**, not a row or filename.

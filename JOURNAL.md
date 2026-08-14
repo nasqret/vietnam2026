@@ -4374,3 +4374,53 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   public-graph change exists. Vector completeness/necessity, independence,
   minimality, `optimized_best_known`, publication, A2, authority, and all
   training/retrieval/evaluation eligibility flags remain false.
+
+## 2026-08-14 — A2.3b external execution infrastructure frozen without execution
+
+- Added a producer-independent clean-Git source-state generator for the exact
+  four frozen A2.3b producer sources plus its own committed stage-zero blob.
+  It emits the required eight-field state with `git_verified=false`, a
+  separate HEAD/tree/blob/live-byte/Git-tool receipt, and a domain-separated
+  evidence envelope; it imports no audit producer.
+- Added the separately loaded stdlib-plus-pinned-kernel verifier. It joins the
+  three readable baselines to the exact A2.2 embedded artifacts and the three
+  layered baselines to the exact retained A2.3a artifacts, canonically
+  re-encodes and empty-context checks all six, and independently recomputes
+  the structural receipts, roots, order, surfaces, and 44-route/22-shared
+  pairing. It does not rerun tactic compilation: negative observations and
+  route rejections remain not independently verified, and its receipt keeps
+  `producer_observations_execution_bound=false`.
+- Added the content-addressed WMI path: x86-64 CPython 3.12.12, isolated
+  `python -B -P -s -S`, byte-compared producer seeds 0/1, seed-2 verifier, one
+  `cpu_idle` CPU, 4,096 MiB, 15 minutes, bounded child logs, create-only
+  receipt-last execution, and terminal collection against one accounting row.
+  Timeout/resource/scheduler/process/malformed/missing evidence is `unknown`.
+  The guarded submitter defaults to `--test-only`; real submission requires
+  `PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. The optional validated SSH jump remains
+  an exact `-J` argument pair.
+- Source-state generator/test SHA-256s are
+  `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
+  `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917`.
+  Verifier module/CLI/test SHA-256s are
+  `080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` /
+  `e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` /
+  `eefa3590098700a8791e23038ddca2a67efd336ce521996aedd7ef3e60c6b3b9`.
+  WMI runner/sbatch/submit/collect/test SHA-256s are
+  `ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` /
+  `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
+  `e76f0255a48c9204e8f1a739289bd65d2c4e34f1a2594b9c2a915a4a397da59b` /
+  `f0943cb33b7794255cabfe30a7928ba01b01809c965c444d96ddbc32ed335b8a` /
+  `e6b1ecef8c8c76935996cfcd7a6fbb95e729d0b5fb204fa0925e45ba41e11852`.
+- The focused files passed 38 tests in 8.65 seconds: 10 source-state, 12
+  verifier, and 16 WMI protocol. Per-file measurements of 5.21 / 3.03 / 0.66
+  seconds yielded conservative CI weights of 6,000 / 3,500 / 1,000 ms; the
+  102-entry eight-shard modeled loads are 540,500 / 540,500 / 540,800 /
+  540,500 / 540,500 / 540,500 / 540,500 / 540,500 ms. The independent threat
+  audit reported PASS.
+- This was source-only work. No network/SSH call, test-only deposit, real
+  submission, `sbatch`, local or WMI producer campaign, result, verification,
+  execution, collection, or runtime receipt/root exists. Six independently
+  checked baselines do not independently replay 44 producer records or their
+  22 shared compiler observations. Every dependency-vector, publication,
+  A2, authority, review/freeze, and training/retrieval/evaluation flag remains
+  false.

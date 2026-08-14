@@ -1893,6 +1893,59 @@ audit or optimizer evidence, minimality, best-known status, publication and
 its union, public-graph application, A2, authority, and training/retrieval/
 evaluation eligibility all remain false.
 
+### The A2.3b runner preserves the difference between checking and observing
+
+The next source-only tranche makes the experiment executable without
+pretending that it has run. A producer-independent clean-Git program binds the
+four frozen A2.3b sources and its own committed stage-zero blob. It emits the
+small source state expected by the producer with `git_verified=false`, then a
+separate receipt binds the commit, tree, blobs, live bytes, and Git tool. This
+keeps operational provenance out of the producer's mathematical claim.
+
+The independent verifier has an equally important narrow boundary. It loads
+only the standard library and pinned Peano kernel. The three readable
+baselines are joined to the exact A2.2 artifacts; the three layered baselines
+are joined to the exact retained A2.3a artifacts. All six are decoded,
+canonically re-encoded, and checked from the empty context. The verifier also
+recomputes the candidate's structure and roots, including exactly 44
+route-labeled producer records paired into 22 shared root-body observations.
+It cannot replay the tactic compiler, so those are not 44 independently
+verified rejections—or even 22 observations from independent algorithms.
+`negative_observations_independently_verified` and
+`route_rejections_independently_verified` therefore stay false.
+
+If executed, the WMI worker will use x86-64 CPython 3.12.12 and three fresh
+isolated processes: producer seeds 0 and 1 must emit identical bytes, then a
+seed-2 verifier checks the six baselines and the structural boundary. Only the
+successful execution receipt may say that the 44 producer records are bound
+to actual executions; that still is not independent negative replay. The
+fixed envelope is one `cpu_idle` CPU, 4,096 MiB, and 15 minutes. Resource,
+timeout, process, malformed, scheduler, or missing evidence remains
+`unknown`, and the receipt is create-only and written last.
+
+The submitter defaults to `--test-only`; real submission requires the literal
+confirmation `PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`. Neither path was invoked.
+There was no SSH contact, snapshot deposit, `sbatch` call, local real audit,
+or WMI job. Source-state generator/test identities are
+`bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
+`728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917`.
+Verifier module/CLI/test identities are
+`080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` /
+`e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` /
+`eefa3590098700a8791e23038ddca2a67efd336ce521996aedd7ef3e60c6b3b9`.
+Runner/sbatch/submit/collect/test identities are
+`ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` /
+`611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
+`e76f0255a48c9204e8f1a739289bd65d2c4e34f1a2594b9c2a915a4a397da59b` /
+`f0943cb33b7794255cabfe30a7928ba01b01809c965c444d96ddbc32ed335b8a` /
+`e6b1ecef8c8c76935996cfcd7a6fbb95e729d0b5fb204fa0925e45ba41e11852`.
+
+The focused source-state, verifier, and WMI gates passed 38 tests in 8.65
+seconds (10, 12, and 16 respectively), and an independent threat audit passed.
+Those tests establish only infrastructure contracts. There is still no A2.3b
+result or runtime receipt/root, and every vector-completeness, independence,
+best-known, publication, A2, authority, and eligibility flag remains false.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

@@ -4385,3 +4385,56 @@ result, sidecar, route receipt, root, or publication artifact exists. The
 protocol is frozen, but vector completeness, necessity, independence,
 minimality, best-known status, publication and its union, graph application,
 A2, authority, and every eligibility flag remain false.
+
+## 2026-08-14 — An independent verifier must name what it did not replay
+
+The execution boundary for A2.3b is now frozen, but it has not been crossed.
+The clean-Git generator knows only the four producer files and its own
+committed stage-zero blob. It creates the producer's eight-field source state
+with `git_verified=false`, then emits a separate Git receipt for commit, tree,
+blob, live-byte, and Git-tool provenance. Keeping that receipt separate avoids
+smuggling an operational fact into the producer document.
+
+The verifier forced a more subtle distinction. It can independently recover
+the three readable baselines from A2.2 and the three layered baselines from
+the retained A2.3a evidence, re-encode them, and check all six from the empty
+context. It can also recompute every hash, root, order, and surface in the 44
+route records and confirm that they reduce to 22 shared root-body observation
+preimages. It does not import the tactic engine or rerun
+`compile_candidate_body`. Therefore it cannot truthfully call those 44
+negative executions independently verified. Its receipt keeps both negative-
+verification flags false; only a later external execution receipt can bind
+the records to actual producer processes, and even that will not create an
+independent negative replay.
+
+The dormant WMI path makes that evidence boundary executable. Two isolated
+producer processes at hash seeds 0 and 1 must agree byte for byte before a
+third seed-2 verifier runs. The reviewed runtime is x86-64 CPython 3.12.12
+with `-B -P -s -S`, one `cpu_idle` CPU, 4,096 MiB, and 15 minutes. Bounded
+child logs and a create-only receipt-last protocol make timeout, resource,
+scheduler, process, malformed, or missing evidence an `unknown`, not a
+dependency claim. Test-only is the default; a real job additionally requires
+`PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`.
+
+The source-state generator/test hashes are
+`bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` /
+`728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917`.
+The verifier module/CLI/test hashes are
+`080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` /
+`e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` /
+`eefa3590098700a8791e23038ddca2a67efd336ce521996aedd7ef3e60c6b3b9`.
+Runner/sbatch/submit/collect/test hashes are
+`ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` /
+`611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` /
+`e76f0255a48c9204e8f1a739289bd65d2c4e34f1a2594b9c2a915a4a397da59b` /
+`f0943cb33b7794255cabfe30a7928ba01b01809c965c444d96ddbc32ed335b8a` /
+`e6b1ecef8c8c76935996cfcd7a6fbb95e729d0b5fb204fa0925e45ba41e11852`.
+
+Ten source-state, twelve verifier, and sixteen WMI protocol cases passed: 38
+in 8.65 seconds. Measured per-file runs were 5.21, 3.03, and 0.66 seconds, so
+their conservative CI weights are 6,000, 3,500, and 1,000 ms. An independent
+threat audit reported PASS. We made no network call, test-only deposit, real
+submission, local real audit, WMI job, or result artifact. There are no runtime
+source, Git, infrastructure, verification, execution, or collection roots to
+quote yet, and every vector, publication, A2, authority, and eligibility flag
+remains false.

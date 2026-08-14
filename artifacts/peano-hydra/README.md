@@ -340,6 +340,59 @@ publication or publication-union completion, public-graph application, A2,
 proof/admission/publication authority, and training/retrieval/evaluation
 eligibility remain false.
 
+## A2.3b external execution infrastructure (no artifact/result)
+
+The source-only execution boundary is now frozen. A producer-independent
+generator binds the four A2.3b producer files and its own committed stage-zero
+blob, emits the eight-field producer source state with `git_verified=false`,
+and separately roots the clean-Git receipt and their evidence envelope. The
+independent verifier imports only the standard library and pinned Peano
+kernel. It joins and empty-context checks six exact baseline artifacts: three
+readable artifacts from A2.2 and three layered artifacts retained in A2.3a.
+
+The verifier independently recomputes canonical structure, receipts, roots,
+orders, surfaces, and the pairing of 44 producer route records into 22 shared
+root-body observations. It does not import or replay the tactic compiler.
+Accordingly it keeps `negative_observations_independently_verified`,
+`route_rejections_independently_verified`, and
+`producer_observations_execution_bound` false. A successful WMI execution
+receipt could set only the last field true after two real byte-identical
+producer processes; it would not turn the negative records into independent
+replays.
+
+The reviewed but unexecuted WMI path uses x86-64 CPython 3.12.12, isolated
+`python -B -P -s -S` processes, producer seeds 0/1, a seed-2 verifier, one
+`cpu_idle` CPU, 4,096 MiB, and 15 minutes. Child output is bounded and the
+execution receipt is create-only and last. Resource, timeout, scheduler,
+process, malformed, or missing evidence is `unknown`. The submitter defaults
+to `--test-only`; real submission requires
+`--submit --confirm PEANO-HYDRA-A23B-WMI-VECTOR-AUDIT`.
+
+The exact frozen source identities are:
+
+| Source | Bytes | SHA-256 |
+| --- | ---: | --- |
+| `../../scripts/build_peano_hydra_a23b_producer_source_state.py` | 38,902 | `bdc8b4f5b55bcfe22594e2eb40c8c51f4e29df9ef75215b2c9bb0bb561243ea3` |
+| `../../peano-lab/py/tests/test_peano_hydra_a23b_producer_source_state.py` | 11,630 | `728e939359cf750b6e22607ef118b72953752c02cbaecdec9899c99c4ff63917` |
+| `../../training/peano_hydra/library_pilot_dependency_vector_audit_verifier.py` | 99,551 | `080222fb0fd6ef14aaf3622b1a6da26d6cb61026a37b462a8195004d4b4a9720` |
+| `../../scripts/verify_peano_hydra_library_pilot_dependency_vector_audit.py` | 18,652 | `e08d761cb57b58e5b799e48752369507a3d5f50d149d2dfc714a06fbc89f9360` |
+| `../../peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py` | 17,394 | `eefa3590098700a8791e23038ddca2a67efd336ce521996aedd7ef3e60c6b3b9` |
+| `../../scripts/run_peano_hydra_a23b_wmi.py` | 107,618 | `ac086463d2fa956579afe8a577104cae4b5a55e8b9b6dcf0920e4cd72d16b8b0` |
+| `../../slurm/peano_wmi_hydra_a23b_vector_audit.sbatch` | 5,032 | `611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100` |
+| `../../scripts/submit_wmi_hydra_a23b_vector_audit.sh` | 14,860 | `e76f0255a48c9204e8f1a739289bd65d2c4e34f1a2594b9c2a915a4a397da59b` |
+| `../../scripts/collect_wmi_hydra_a23b_vector_audit.sh` | 5,632 | `f0943cb33b7794255cabfe30a7928ba01b01809c965c444d96ddbc32ed335b8a` |
+| `../../peano-lab/py/tests/test_peano_hydra_a23b_wmi_protocol.py` | 27,869 | `e6b1ecef8c8c76935996cfcd7a6fbb95e729d0b5fb204fa0925e45ba41e11852` |
+
+The source-state, verifier, and WMI files passed 38 focused no-network tests
+in 8.65 seconds (10 / 12 / 16), and an independent threat audit reported
+PASS. No SSH connection, test-only deposit, `sbatch`, real submission, six-
+baseline/44-attempt build, result, verification receipt, execution receipt,
+collection receipt, or runtime root exists. This directory therefore still
+contains no A2.3b artifact. Vector completeness/necessity, independent
+negative replay, minimality, `optimized_best_known`, publication or its
+union, public-graph application, A2, authority, and all eligibility flags
+remain false.
+
 ## H1.1b3 selected candidate page source
 
 The retained tagless source tree is
