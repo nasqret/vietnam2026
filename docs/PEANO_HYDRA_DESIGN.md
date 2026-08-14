@@ -1288,6 +1288,84 @@ authority, review/freeze/lineage, and eligibility claims remain false. A true
 optimized-construction vector and any route/necessity claim still require
 separate derivation and independent audit. The public graph remains 1,038.
 
+#### A2.3d one-root Cut-liveness source-only boundary
+
+The 2026-08-14 A2.3d tranche freezes a proof-producing transformation and its
+independent reconstruction contract before any real execution or retention.
+Its universe is exactly retained theorem 256, `odd_add_odd`, and the exact
+artifacts named by its declared outer Cut spine:
+`mul_add`, `add_succ_left`, `add_assoc`, `add_comm`. The producer authenticates
+the root and dependency bytes, formulas, conclusions, proof hashes, and
+empty-context kernel checks. Direct lemma proof trees are opaque; the
+transformation never normalizes inside them.
+
+The algorithm peels only that exact outer spine and processes it inner-first.
+At each Cut it performs a bounded binder-aware de Bruijn traversal over
+proposition hypotheses. A used hypothesis retains the Cut. A vacuous one
+deletes the Cut and decrements only indices free relative to that binder. The
+registered outcomes are:
+
+| inner-first dependency | outcome |
+|---|---|
+| `add_comm` | retained-used |
+| `add_assoc` | deleted-vacuous |
+| `add_succ_left` | deleted-vacuous |
+| `mul_add` | retained-used |
+
+The derived direct vector is `[mul_add, add_comm]`. Every intermediate is
+kernel-checked under the exact remaining context, the final proof is checked
+from the empty context, and a second normalization pass is identical. The
+proof has 240 nodes, depth 30, five Cut nodes, and the deterministic replay
+envelope `8 * proof_nodes + 16 = 1,936`. Its proof SHA-256 is
+`5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4`;
+the 11,958-byte encoded carrier has SHA-256
+`c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22`.
+Initial/derived direct-vector LF roots are
+`9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc`
+and `ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4`.
+
+The closure receipt is deliberately outside the direct-vector input. An
+independent walk of the pinned retained manifest yields the unchanged
+replay-ordered closure `zero_add`, `add_succ_left`, `add_comm`, `add_assoc`,
+`mul_add`, with LF root
+`a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2`.
+Both deleted direct names remain reachable through opaque retained lemmas.
+Opaque proof-subtree survival receipts also require every direct lemma hash to
+remain present after normalization.
+
+The six frozen sources are:
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `training/peano_hydra/library-pilot-dependency-vector-cut-liveness-schema-v1.json` | 12,566 | `388190b4235b9892b38193714b0331a35b6c533c0605072c5d0663ad9cd9c0aa` |
+| `training/peano_hydra/library_pilot_dependency_vector_cut_liveness.py` | 55,485 | `9d657c7698faf89bc83d43aff9116493492eed4d854a8ef21968d10b91574abe` |
+| `scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 38,965 | `03b160f5515027dc5ea8dac58d9f1225ec87a363b079386d23498c38fc6cfb16` |
+| `training/peano_hydra/library_pilot_dependency_vector_cut_liveness_verifier.py` | 81,450 | `63ab7b96cee903f3ea2af4bda64d52409b656ea700a725332c0c569c9f3b3108` |
+| `scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 35,415 | `a71bc1a2a802e130b4688ffb702659d15c6ea94120090ee00df3e4a23fda9523` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 56,843 | `6f5686484596328d1f64bd6bed7e109f3459a54aaf6b3754c546e96e4a74e725` |
+
+The schema semantic SHA-256 is
+`9e8887072cc6051cf9cb9177609ab31aed35ca305a42c7d9c22d4ac339b6f5c5f`.
+The no-default-write builder requires exact CPython 3.12 and executes
+authenticated captured producer plus kernel-source bytes in a fresh child
+with deterministic flags, a sanitized environment, fixed disabled pycache,
+and hard stream/wall bounds. The separate verifier reconstructs the exact
+transform and rejects unknown or rerooted fields rather than trusting a
+producer document. The 85-test focused synthetic/adversarial gate passed in
+16.18 seconds. A conservative 20,000 ms weight creates a 109-entry CI profile
+with modeled eight-shard loads 547,000 / 547,500 / 547,300 / 547,500 /
+547,000 / 547,000 / 547,500 / 547,500 ms.
+
+This is only source-protocol readiness. No real campaign, network call, WMI
+job, result artifact, execution receipt, or retained evidence exists;
+execution and retention remain open. `retained-used` is structural use only,
+not dependency necessity. The transformation's local vacuous-Cut normal form
+does not establish global minimality, independently audited optimized-vector
+status, or best-known status. Vector/global completeness, publication and
+publication union, graph application, A2, authority, review/lineage/freeze,
+and every training/retrieval/evaluation eligibility claim remain false. The
+public graph remains exactly 1,038 edges.
+
 ### 2.4 Sealed-test law
 
 The unit of separation is a mathematical **lineage**, not a row or filename.

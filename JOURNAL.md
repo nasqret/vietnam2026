@@ -4705,3 +4705,59 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   publication and publication union, graph application, and A2 remain open.
   Every authority, review, freeze, lineage, and training/retrieval/evaluation
   eligibility flag remains false; the public graph remains 1,038 edges.
+
+## 2026-08-14 — A2.3d one-root Cut-liveness source protocol frozen
+
+- Froze a source-only, proof-producing experiment for exactly retained root
+  `odd_add_odd` (index 256), not a campaign result. The producer authenticates
+  the exact retained `7ecd5c3f…` root artifact and all four exact declared
+  dependency artifacts, peels only the declared outer `Cut` spine, and
+  processes it inner-first without transforming the opaque lemma proofs.
+  Binder-aware hypothesis liveness retains `add_comm`, deletes vacuous
+  `add_assoc`, deletes vacuous `add_succ_left`, and retains `mul_add`.
+  Therefore this exact transformed proof has direct vector
+  `[mul_add, add_comm]`; this is not dependency necessity, global minimality,
+  or an independently audited optimized vector.
+- The ephemeral reconstructed proof is empty-context intuitionistic-kernel
+  checked and has proof SHA-256
+  `5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4`.
+  Its canonical artifact is 11,958 bytes at SHA-256
+  `c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22`,
+  with 240 proof nodes, depth 30, five `Cut` nodes, and deterministic replay
+  fuel 1,936. Initial/derived vector LF roots are
+  `9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc`
+  and `ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4`.
+  The retained-graph descriptive closure remains the five replay-ordered names
+  `zero_add`, `add_succ_left`, `add_comm`, `add_assoc`, `mul_add`, at LF root
+  `a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2`;
+  both dropped direct names remain reachable through opaque retained lemmas.
+- Frozen source identities are:
+
+  | source | bytes | SHA-256 |
+  |---|---:|---|
+  | `training/peano_hydra/library-pilot-dependency-vector-cut-liveness-schema-v1.json` | 12,566 | `388190b4235b9892b38193714b0331a35b6c533c0605072c5d0663ad9cd9c0aa` |
+  | `training/peano_hydra/library_pilot_dependency_vector_cut_liveness.py` | 55,485 | `9d657c7698faf89bc83d43aff9116493492eed4d854a8ef21968d10b91574abe` |
+  | `scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 38,965 | `03b160f5515027dc5ea8dac58d9f1225ec87a363b079386d23498c38fc6cfb16` |
+  | `training/peano_hydra/library_pilot_dependency_vector_cut_liveness_verifier.py` | 81,450 | `63ab7b96cee903f3ea2af4bda64d52409b656ea700a725332c0c569c9f3b3108` |
+  | `scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 35,415 | `a71bc1a2a802e130b4688ffb702659d15c6ea94120090ee00df3e4a23fda9523` |
+  | `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 56,843 | `6f5686484596328d1f64bd6bed7e109f3459a54aaf6b3754c546e96e4a74e725` |
+
+  The schema semantic SHA-256 is
+  `9e8887072cc6051cf9cb9177609ab31aed35ca305a42c7d9c22d4ac339b6f5c5f`.
+  Controlled execution is pinned to CPython 3.12, captured authenticated source
+  bytes, deterministic hash/runtime flags, hard stream/time bounds, and
+  create-only publication. The independent verifier reconstructs the exact
+  transform and rejects rerooted or drifted evidence rather than trusting the
+  producer document.
+- The focused synthetic/adversarial gate passed 85 tests in 16.18 seconds. A
+  conservative 20,000 ms CI weight raises the explicit profile to 109 entries
+  and models eight loads of 547,000 / 547,500 / 547,300 / 547,500 / 547,000 /
+  547,000 / 547,500 / 547,500 ms.
+- This checks off source-protocol readiness only. No real campaign, network
+  call, WMI job, retained candidate/result artifact, publication, or graph
+  mutation occurred. Execution and retention remain open. Dependency
+  necessity, minimality, best-known or optimized status, vector/global
+  completeness, publication and publication union, public-graph application,
+  A2 completion, authority, review/lineage/freeze, and all training/retrieval/
+  evaluation eligibility claims remain false. The public graph stays exactly
+  1,038 edges.

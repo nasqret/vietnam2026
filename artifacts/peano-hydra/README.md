@@ -676,6 +676,62 @@ and publication union, public-graph application, A2, all authority, and every
 training/retrieval/evaluation eligibility claim remain open. The public graph
 is unchanged at exactly 1,038 edges.
 
+## A2.3d one-root Cut-liveness source protocol (no artifact)
+
+Frozen on 2026-08-14, A2.3d is source-only readiness for one exact
+proof-producing transformation. It authenticates retained `odd_add_odd`
+(index 256, artifact prefix `7ecd5c3f…`) and the exact artifacts behind its
+declared outer Cut spine `mul_add`, `add_succ_left`, `add_assoc`, `add_comm`.
+The producer keeps those lemma certificates opaque and processes the spine
+inner-first with binder-aware proposition-hypothesis indexing. It retains
+`add_comm`, deletes vacuous `add_assoc`, deletes vacuous `add_succ_left`, and
+retains `mul_add`, deriving this proof's direct vector
+`[mul_add, add_comm]`.
+
+The empty-context kernel-checked proof has SHA-256
+`5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4`.
+Its 11,958-byte canonical carrier has SHA-256
+`c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22`,
+240 proof nodes, depth 30, five Cuts, and deterministic replay fuel 1,936.
+Initial and derived vector LF roots are
+`9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc`
+and `ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4`.
+The retained-graph descriptive closure stays
+`zero_add`, `add_succ_left`, `add_comm`, `add_assoc`, `mul_add` at LF root
+`a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2`;
+the two dropped direct names remain reachable. Closure is context computed
+independently from the retained manifest, not an input dependency vector.
+
+The exact six-file source freeze is:
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| [`../../training/peano_hydra/library-pilot-dependency-vector-cut-liveness-schema-v1.json`](../../training/peano_hydra/library-pilot-dependency-vector-cut-liveness-schema-v1.json) | 12,566 | `388190b4235b9892b38193714b0331a35b6c533c0605072c5d0663ad9cd9c0aa` |
+| [`../../training/peano_hydra/library_pilot_dependency_vector_cut_liveness.py`](../../training/peano_hydra/library_pilot_dependency_vector_cut_liveness.py) | 55,485 | `9d657c7698faf89bc83d43aff9116493492eed4d854a8ef21968d10b91574abe` |
+| [`../../scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py`](../../scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py) | 38,965 | `03b160f5515027dc5ea8dac58d9f1225ec87a363b079386d23498c38fc6cfb16` |
+| [`../../training/peano_hydra/library_pilot_dependency_vector_cut_liveness_verifier.py`](../../training/peano_hydra/library_pilot_dependency_vector_cut_liveness_verifier.py) | 81,450 | `63ab7b96cee903f3ea2af4bda64d52409b656ea700a725332c0c569c9f3b3108` |
+| [`../../scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py`](../../scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py) | 35,415 | `a71bc1a2a802e130b4688ffb702659d15c6ea94120090ee00df3e4a23fda9523` |
+| [`../../peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py`](../../peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py) | 56,843 | `6f5686484596328d1f64bd6bed7e109f3459a54aaf6b3754c546e96e4a74e725` |
+
+The schema semantic SHA-256 is
+`9e8887072cc6051cf9cb9177609ab31aed35ca305a42c7d9c22d4ac339b6f5c5f`.
+The no-default-write CLI is pinned to CPython 3.12 and runs captured,
+authenticated source bytes in a fresh bounded child. The independent verifier
+reconstructs the exact transform and exact evidence shape. Its 85 focused
+synthetic/adversarial tests passed in 16.18 seconds. The conservative 20,000 ms
+weight makes 109 explicit CI profile entries and eight modeled loads of
+547,000 / 547,500 / 547,300 / 547,500 / 547,000 / 547,000 / 547,500 /
+547,500 ms.
+
+No A2.3d result artifact exists here. No real campaign, network call, WMI job,
+execution receipt, or retention was performed; those gates remain open. The
+two-name vector is only the output of exact vacuous-root-Cut normalization,
+not dependency necessity, global minimality, best-known or independently
+audited optimized-vector evidence. Vector/global completeness, publication
+and its union, graph application, A2, authority, review/lineage/freeze, and
+all eligibility claims remain false. The public graph stays exactly 1,038
+edges.
+
 ## H1.1b3 selected candidate page source
 
 The retained tagless source tree is

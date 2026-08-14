@@ -69,6 +69,7 @@
     {"path": "test_peano_hydra_library_pilot_dependency_vector_audit.py", "weight": 3000},
     {"path": "test_peano_hydra_library_pilot_dependency_vector_audit_result.py", "weight": 3500},
     {"path": "test_peano_hydra_library_pilot_dependency_vector_audit_verifier.py", "weight": 3500},
+    {"path": "test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py", "weight": 20000},
     {"path": "test_peano_hydra_library_pilot_dependency_vector_negative_replay.py", "weight": 6000},
     {"path": "test_peano_hydra_library_pilot_dependency_vector_negative_replay_result.py", "weight": 3500},
     {"path": "test_peano_hydra_library_pilot_dependency_vector_negative_replay_verifier.py", "weight": 9000},

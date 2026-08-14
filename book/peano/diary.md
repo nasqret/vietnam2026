@@ -4747,3 +4747,58 @@ false. A real optimized-construction vector still has to be defined and
 independently audited; completeness, minimality, best-known status,
 publication and its union, graph application, A2, authority, and eligibility
 also remain open. The public graph is still 1,038 edges.
+
+## 2026-08-14 — Removing two vacuous Cuts is a proof transform, not a necessity theorem
+
+The next A2 experiment is deliberately one root wide. We froze A2.3d around
+the exact retained `odd_add_odd` artifact and its declared outer dependency
+spine `mul_add`, `add_succ_left`, `add_assoc`, `add_comm`. The producer
+authenticates those five artifact byte strings, leaves the four lemma proofs
+opaque, and walks the spine inner-first. A binder-aware count finds the
+`add_assoc` and `add_succ_left` hypotheses vacuous in this particular body;
+capture-safe deletion leaves the direct vector `[mul_add, add_comm]`.
+
+That result is genuinely proof-producing but intentionally narrow. Every
+intermediate and the final proof pass the unchanged intuitionistic kernel from
+the empty context; a second pass is idempotent. The proof SHA-256 is
+`5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4`,
+and the 11,958-byte canonical artifact has SHA-256
+`c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22`.
+It has 240 nodes, depth 30, five Cuts, and replay fuel 1,936. The direct-vector
+LF root changes from
+`9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc`
+to `ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4`.
+The descriptive retained-manifest closure does not change: its five names are
+`zero_add`, `add_succ_left`, `add_comm`, `add_assoc`, and `mul_add`, at LF root
+`a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2`.
+In particular, both names removed from the direct spine remain transitively
+reachable through opaque lemmas.
+
+The frozen source boundary is exact:
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `training/peano_hydra/library-pilot-dependency-vector-cut-liveness-schema-v1.json` | 12,566 | `388190b4235b9892b38193714b0331a35b6c533c0605072c5d0663ad9cd9c0aa` |
+| `training/peano_hydra/library_pilot_dependency_vector_cut_liveness.py` | 55,485 | `9d657c7698faf89bc83d43aff9116493492eed4d854a8ef21968d10b91574abe` |
+| `scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 38,965 | `03b160f5515027dc5ea8dac58d9f1225ec87a363b079386d23498c38fc6cfb16` |
+| `training/peano_hydra/library_pilot_dependency_vector_cut_liveness_verifier.py` | 81,450 | `63ab7b96cee903f3ea2af4bda64d52409b656ea700a725332c0c569c9f3b3108` |
+| `scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 35,415 | `a71bc1a2a802e130b4688ffb702659d15c6ea94120090ee00df3e4a23fda9523` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 56,843 | `6f5686484596328d1f64bd6bed7e109f3459a54aaf6b3754c546e96e4a74e725` |
+
+The schema semantic SHA-256 is
+`9e8887072cc6051cf9cb9177609ab31aed35ca305a42c7d9c22d4ac339b6f5c5f`.
+The controlled CPython 3.12 CLI defaults to description and no write; its
+fresh bounded child executes captured authenticated producer and kernel-source
+bytes. A separately implemented verifier reconstructs the transform rather
+than accepting producer claims. Eighty-five focused synthetic and adversarial
+tests passed in 16.18 seconds. We assigned a conservative 20,000 ms CI weight;
+the 109-entry profile models eight loads of 547,000 / 547,500 / 547,300 /
+547,500 / 547,000 / 547,000 / 547,500 / 547,500 ms.
+
+This diary entry records source readiness only. There was no real campaign,
+network call, WMI job, retained result, or artifact publication, and execution
+and retention remain open. Structural use in this proof is not mathematical
+necessity; vacuous-Cut normal form is not global minimality or best-known
+optimization. No publication or union, graph update, A2 completion, authority,
+review, lineage, freeze, or eligibility follows. The graph remains 1,038
+edges, and every broad claim stays false.

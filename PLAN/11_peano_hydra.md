@@ -941,6 +941,53 @@ completeness, minimality, best-known status, publication and publication
 union, graph application, and A2 remain open. All authority and eligibility
 flags stay false; the public graph remains 1,038 edges.
 
+#### A2.3d one-root proof-producing Cut-liveness source protocol
+
+On 2026-08-14, **A2.3d froze source readiness only** for one exact
+`odd_add_odd` transformation. It authenticates retained root 256 and all four
+artifacts in its declared outer Cut spine, keeps each direct lemma proof
+opaque, and performs binder-aware vacuous-hypothesis deletion inner-first.
+The exact outcomes are retained `add_comm`, deleted `add_assoc`, deleted
+`add_succ_left`, retained `mul_add`, producing the direct vector
+`[mul_add, add_comm]` for this transformed proof.
+
+The empty-context kernel-checked proof is 240 nodes deep to 30, contains five
+Cuts, and uses deterministic replay fuel 1,936. Its proof SHA-256 is
+`5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4`;
+the 11,958-byte canonical carrier has SHA-256
+`c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22`.
+The initial/derived vector LF roots are `9bb59dbd…` / `ca9176e5…`. The
+five-name retained-manifest closure remains at LF root `a4abec5d…`, and both
+dropped direct names remain transitively reachable. This descriptive closure
+is not an input dependency vector.
+
+The frozen six-file identities are:
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `training/peano_hydra/library-pilot-dependency-vector-cut-liveness-schema-v1.json` | 12,566 | `388190b4235b9892b38193714b0331a35b6c533c0605072c5d0663ad9cd9c0aa` |
+| `training/peano_hydra/library_pilot_dependency_vector_cut_liveness.py` | 55,485 | `9d657c7698faf89bc83d43aff9116493492eed4d854a8ef21968d10b91574abe` |
+| `scripts/build_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 38,965 | `03b160f5515027dc5ea8dac58d9f1225ec87a363b079386d23498c38fc6cfb16` |
+| `training/peano_hydra/library_pilot_dependency_vector_cut_liveness_verifier.py` | 81,450 | `63ab7b96cee903f3ea2af4bda64d52409b656ea700a725332c0c569c9f3b3108` |
+| `scripts/verify_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 35,415 | `a71bc1a2a802e130b4688ffb702659d15c6ea94120090ee00df3e4a23fda9523` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_dependency_vector_cut_liveness.py` | 56,843 | `6f5686484596328d1f64bd6bed7e109f3459a54aaf6b3754c546e96e4a74e725` |
+
+The schema semantic SHA-256 is
+`9e8887072cc6051cf9cb9177609ab31aed35ca305a42c7d9c22d4ac339b6f5c5f`.
+The CPython-3.12 controlled
+producer and independent reconstructing verifier passed 85 synthetic and
+adversarial tests in 16.18 seconds. Its conservative CI weight is 20,000 ms;
+the 109-entry profile models eight loads of 547,000 / 547,500 / 547,300 /
+547,500 / 547,000 / 547,000 / 547,500 / 547,500 ms.
+
+This checkpoint created no retained result artifact and ran no real campaign,
+network call, or WMI job. A2.3d execution and retention remain separately
+open. Use in this one proof does not establish dependency necessity; deleting
+vacuous Cuts does not establish global minimality, best-known status, or an
+independently audited optimized vector. Vector/global completeness,
+publication and union, graph application, A2, authority, review/lineage/freeze,
+and eligibility remain false. The public graph stays 1,038 edges.
+
 ### H1.2 Build lineage before rows
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
@@ -1293,6 +1340,18 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       establish route rejection, dependency/vector necessity, minimality,
       vector completeness, optimized/best-known status, publication, A2, or
       authority.
+- [x] **A2.3d source-only one-root Cut-liveness protocol readiness:** freeze
+      the exact retained `odd_add_odd` root/four-artifact spine, binder-aware
+      inner-first vacuous-Cut transform, `[mul_add, add_comm]` output vector,
+      empty-context kernel proof, canonical LF/closure/subtree/idempotence
+      receipts, CPython-3.12 no-default-write producer, independent
+      reconstructing verifier, and focused adversarial gate. This checkbox is
+      only a six-file source/protocol freeze; it grants no result or broad
+      vector claim.
+- [ ] **A2.3d execution and retention:** execute any separately frozen real
+      campaign boundary and retain an independently verified result/evidence
+      bundle. No campaign, network/WMI job, result artifact, or retention is
+      authorized or implied by source readiness.
 - [ ] Define and independently audit any future true optimized-construction
       direct vector; the A2.3a layered package is not a dependency-selection
       optimizer.
@@ -1741,6 +1800,16 @@ and benchmark work precede GPU training.
       419,166 bytes, are retained at inventory root `05d80cae…`. Route/vector
       necessity, completeness, minimality, optimized/best-known status,
       publication, A2, authority, and eligibility flags stay false.
+- [x] A2.3d source-only readiness is frozen for the one-root `odd_add_odd`
+      binder-aware Cut-liveness transform. It authenticates the exact retained
+      four-Cut spine, derives `[mul_add, add_comm]`, kernel-checks its own proof,
+      and binds an independent reconstructing verifier. The six source pins
+      begin `388190b4…`, `9d657c76…`, `03b160f5…`, `63ab7b96…`,
+      `a71bc1a2…`, and `6f568648…`; 85 focused tests passed in 16.18 seconds.
+      This is not a necessity, minimality, best-known, optimized-vector,
+      publication, graph, A2, or authority claim.
+- [ ] A2.3d real execution and retention remain open. No real campaign,
+      network/WMI job, result artifact, or retained evidence bundle exists.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1758,7 +1827,9 @@ and benchmark work precede GPU training.
       execution, six-baseline verification, structural checking, and
       retention; A2.3c froze the independent-negative-replay source boundary;
       and job 220227 later completed only its bounded three-baseline,
-      22-wrapper-observation, 44-row-join execution and retention.
+      22-wrapper-observation, 44-row-join execution and retention. A2.3d now
+      freezes only a one-root proof-producing Cut-liveness source boundary;
+      its execution and retention remain open.
       The immediate A2 work is to define and independently audit a genuine
       optimized-construction vector, establish any separately claimed route or
       dependency necessity, complete the evidence needed for a best-known/
