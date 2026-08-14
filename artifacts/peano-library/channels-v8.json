@@ -1,0 +1,72 @@
+{
+  "channel_pointer_root_sha256": "1fd2216e0448fbeb0d8da60dea3b89fca4d4f7192371fc87a8c5cd35dccf3c70",
+  "channels": {
+    "alpha": {
+      "artifact_path": "artifacts/peano-library/alpha/catalog-v8.json",
+      "artifact_sha256": "c06c5fde7b84b4a8524dd408a2b046d06c7a88ccb5814877b7ccfec0d20b1370",
+      "artifacts": {
+        "catalog": {
+          "path": "artifacts/peano-library/alpha/catalog-v8.json",
+          "sha256": "c06c5fde7b84b4a8524dd408a2b046d06c7a88ccb5814877b7ccfec0d20b1370"
+        },
+        "dependency_graph": {
+          "path": "artifacts/peano-library/alpha/dependency-graph-v8.mmd",
+          "sha256": "ff194534f1efd56dd771237b6a44279a705309df21c1fa319b6669f3e1cab008"
+        },
+        "metrics": {
+          "path": "artifacts/peano-library/alpha/metrics-v8.json",
+          "sha256": "90c14911ef50391dd9fd99865a83a6e0886911253504096a30e497d30c1a6813"
+        }
+      },
+      "checked_use_count": 570,
+      "edition_identity_sha256": "2101b7b384ec9791c41d07d8115123d6842729615a0084ce87cead619bc8c123",
+      "evidence_counts": {
+        "alpha_closed": 138,
+        "body_checked": 484,
+        "pending_layered_closure": 1,
+        "stable_closed": 432
+      },
+      "evidence_root_sha256": "4230c17701be2c604ea413be90c26bad41889d593dcaaeff311217b4e26367b4",
+      "membership_root_sha256": "4471bdcf06a2d3af866850b39f394a436ad608b4c0b166c0449620e5dd3c9ee3",
+      "ordered_enrollment_root_sha256": "a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2",
+      "ordered_spec_root_sha256": "fe49d664e5a88f6637c7790b104e9b0aa3c583e48f9a4a1405d5b098f7f61df9",
+      "parent_alpha_v7_sha256": "7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4",
+      "theorem_count": 1055
+    },
+    "stable": {
+      "artifact_path": "artifacts/peano-library/catalog-v1.json",
+      "artifact_sha256": "87fca4ab6e66d01f728ada1d9c6442f1167b8f2a8fe51cd6ec5eda901b3daffd",
+      "artifacts": {
+        "catalog": {
+          "path": "artifacts/peano-library/catalog-v1.json",
+          "sha256": "87fca4ab6e66d01f728ada1d9c6442f1167b8f2a8fe51cd6ec5eda901b3daffd"
+        },
+        "dependency_graph": {
+          "path": "artifacts/peano-library/dependency-graph.mmd",
+          "sha256": "a74b5e3c7c387c7b92890f8f49541fd7577c8898d4acb0abd0a51a54e69f76e3"
+        },
+        "metrics": {
+          "path": "artifacts/peano-library/metrics.json",
+          "sha256": "667517b5283ef8ace4ea6f00e03a4b9ca324a25be8cae292e6fbf1abdd09c710"
+        }
+      },
+      "checked_use_count": 432,
+      "evidence_counts": {
+        "stable_closed": 432
+      },
+      "evidence_root_sha256": "6d738331ab608ce9daa00baacbdaaee579cdd5f8cda95719186bb5716c8a57db",
+      "legacy_ordered_root_sha256": "4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079",
+      "membership_root_sha256": "8ec1c3d83402bd36e0f4bc88050421ca921e5cd48d709965d3ad93b13d139bc2",
+      "ordered_enrollment_root_sha256": "b8162aaeff873cbec5aa405e12df7f07dd5ecbd7f7f9f780acfb4bc8e5908efd",
+      "ordered_spec_root_sha256": "414a4b7a7ec3199ef7216ba8d15144c03cd087f50e053fddadecdd96dcceaa98",
+      "theorem_count": 432
+    }
+  },
+  "default_channel": "stable",
+  "parent_channels_v7": {
+    "path": "artifacts/peano-library/channels-v7.json",
+    "sha256": "fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30"
+  },
+  "policy": "Stable is the official checked library. Alpha is the cumulative building library and contains mixed evidence; checked_use is explicit. Stable is a keyed exact subset of Alpha with its own append-only, dependency-topological release order. A future promotion publishes a new snapshot while retaining Alpha enrollment origin, provenance, source, and canonical position.",
+  "schema": "peano-library-channels-v8"
+}

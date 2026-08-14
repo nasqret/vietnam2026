@@ -2505,3 +2505,56 @@
   Python process, with RSS observed and no concurrent proof worker. The v7
   Make target encodes this split; a monolithic retained-DAG pytest run is not
   an approved laptop gate.
+
+## 2026-08-15 — current Alpha v8 / Choose-central contract
+
+- **Current edition:** Alpha v8 is the exact sealed 1,017-row Alpha-v7 prefix
+  plus 38 dependency-topological Bertrand rows at indices 1017--1054. The
+  frozen microbatches are 24 recurrence-defined `Choose`/baseline
+  `CentralBinom` rows across ten sources, then 14 recurrence, factorial and
+  weighted bridge, growth, seed, and lower-bound rows across nine sources.
+- **Inventory and evidence:** 1,055 specifications, 3,224 declared direct
+  edges, 45 layers, 432 Stable rows, 623 Alpha-only rows, and 570 checked-use
+  rows. Evidence is 432 `stable_closed`, 138 `alpha_closed`, 484
+  `body_checked`, and one `pending_layered_closure`. All 38 suffix rows reject
+  checked replay; there was no Stable promotion.
+- **Completed body mathematics:** recurrence-defined Pascal/Choose existence,
+  extensionality, functionality, zero/self/Pascal/symmetry/positivity laws;
+  central-binomial existence, functionality, positivity, zero and recurrence;
+  weighted and factorial bridges; strict growth and seed packages; and
+  `four_pow_lt_mul_central_binom`. These are dependency-curried body claims,
+  not empty-context admission.
+- **Binding RFC:**
+  `research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md`,
+  SHA-256
+  `4f337990babf85ffaacdc990f0e09a3c1943b8edb20c72ffef675cbb28cde83b`.
+- **Exact roots:** enrollment
+  `a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2`;
+  specification
+  `fe49d664e5a88f6637c7790b104e9b0aa3c583e48f9a4a1405d5b098f7f61df9`;
+  edition
+  `2101b7b384ec9791c41d07d8115123d6842729615a0084ce87cead619bc8c123`;
+  membership
+  `4471bdcf06a2d3af866850b39f394a436ad608b4c0b166c0449620e5dd3c9ee3`;
+  evidence
+  `4230c17701be2c604ea413be90c26bad41889d593dcaaeff311217b4e26367b4`;
+  channel pointer
+  `1fd2216e0448fbeb0d8da60dea3b89fca4d4f7192371fc87a8c5cd35dccf3c70`;
+  suffix depth
+  `c13a4a20e16e2fc84fccbc11889dd64e2527ad42d45df15731845f3fd4eb94b1`;
+  38-body receipts
+  `fb6e40f2470a9c436f02676ea15b99a389ee7495b4c6cd81212a42a7010b4466`.
+- **Artifact and gate names:** v8 uses
+  `artifacts/peano-library/alpha/catalog-v8.json`, `metrics-v8.json`,
+  `dependency-graph-v8.mmd`, and `artifacts/peano-library/channels-v8.json`.
+  Their SHA-256 values are
+  `c06c5fde7b84b4a8524dd408a2b046d06c7a88ccb5814877b7ccfec0d20b1370`,
+  `90c14911ef50391dd9fd99865a83a6e0886911253504096a30e497d30c1a6813`,
+  `ff194534f1efd56dd771237b6a44279a705309df21c1fa319b6669f3e1cab008`,
+  and
+  `dec01b10ee9359b1f7057187725016d343bfb7f3176d8779c85da7f26983234d`.
+  The gate is `make peano-library-alpha-v8-check`, with all 19 focused suites and
+  verifier mutation groups run serially in fresh Python processes.
+- **Open front:** the primorial and no-prime central upper bounds, large-input
+  contradiction, finite coverage, constructive capstone, and Bertrand's
+  postulate remain open.

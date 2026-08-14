@@ -22,7 +22,7 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 override STAGEPEANO := _deploy/peano-lab
 override PEANOAPPID := a-526f19ff3b30
 
-.PHONY: help book book-atlas book-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -59,6 +59,10 @@ help:
 	@echo "  make peano-library-alpha-v7-check  verify Alpha v7 and replay all 24 appended bodies"
 	@echo "  make peano-library-channels-v7  compatibility alias for the Bertrand Alpha v7 build"
 	@echo "  make peano-library-channels-v7-check  compatibility alias for the Bertrand Alpha v7 check"
+	@echo "  make peano-library-alpha-v8  regenerate additive 38-row Bertrand Alpha v8 artifacts"
+	@echo "  make peano-library-alpha-v8-check  verify v8, replay 38 bodies, then run 19 source suites serially"
+	@echo "  make peano-library-channels-v8  compatibility alias for the Bertrand Alpha v8 build"
+	@echo "  make peano-library-channels-v8-check  compatibility alias for the Bertrand Alpha v8 check"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
 	@echo "  make ha-k3b-list-lookup-check  run the Alpha K3B ListAt surface checks"
@@ -210,6 +214,50 @@ peano-library-alpha-v7-check:
 	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_hj_transport_candidate.py
 	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_factorial_legendre_candidate.py
 
+peano-library-alpha-v8:
+	python3 scripts/build_peano_library_channels_v8.py
+
+peano-library-alpha-v8-check:
+	python3 scripts/build_peano_library_channels_v8.py --check
+	python3 scripts/verify_peano_library_channels_v8.py
+	python3 -m pytest -q \
+		scripts/test_verify_peano_library_channels_v8.py::test_repository_v8_validates_with_all_thirty_eight_body_replays \
+		scripts/test_verify_peano_library_channels_v8.py::test_v8_builder_is_byte_deterministic_for_all_outputs
+	python3 -m pytest -q \
+		scripts/test_verify_peano_library_channels_v8.py::test_parent_prefix_mutation_is_rejected \
+		scripts/test_verify_peano_library_channels_v8.py::test_parent_family_binding_mutation_is_rejected \
+		scripts/test_verify_peano_library_channels_v8.py::test_each_source_block_runtime_specification_is_pinned
+	python3 -m pytest -q \
+		scripts/test_verify_peano_library_channels_v8.py::test_source_test_and_rfc_documents_are_byte_bound \
+		scripts/test_verify_peano_library_channels_v8.py::test_every_source_block_document_is_byte_bound \
+		scripts/test_verify_peano_library_channels_v8.py::test_source_test_rfc_parent_cross_bundle_mutation_is_rejected
+	python3 -m pytest -q \
+		scripts/test_verify_peano_library_channels_v8.py::test_fabricated_closure_checked_use_and_proof_tag_are_rejected \
+		scripts/test_verify_peano_library_channels_v8.py::test_body_receipt_mutation_is_rejected_by_fresh_kernel_replay \
+		scripts/test_verify_peano_library_channels_v8.py::test_each_v8_artifact_mutation_is_rejected \
+		scripts/test_verify_peano_library_channels_v8.py::test_stable_pointer_object_cannot_change \
+		scripts/test_verify_peano_library_channels_v8.py::test_sealed_v7_parent_artifact_mutation_is_rejected
+	cd peano-lab/py && python3 -m pytest -q tests/test_library_editions_v8.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_foundation_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_row_functional_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_table_row_functional_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_laws_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_diagonal_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_recurrence_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_pascal_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_symmetry_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_positive_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_central_binom_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_central_binom_zero_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_central_binom_succ_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_weighted_vertical_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_central_binom_recurrence_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_factorial_support_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_choose_factorial_bridge_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_central_binom_growth_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_central_binom_lower_seed_candidate.py
+	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_central_binom_lower_bound_candidate.py
+
 peano-library-channels: peano-library-alpha
 
 peano-library-channels-check: peano-library-alpha-check
@@ -237,6 +285,10 @@ peano-library-channels-v6-check: peano-library-alpha-v6-check
 peano-library-channels-v7: peano-library-alpha-v7
 
 peano-library-channels-v7-check: peano-library-alpha-v7-check
+
+peano-library-channels-v8: peano-library-alpha-v8
+
+peano-library-channels-v8-check: peano-library-alpha-v8-check
 
 ha-number-theory-check:
 	python3 scripts/verify_ha_number_theory_campaign.py

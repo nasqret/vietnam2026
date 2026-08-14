@@ -44,6 +44,11 @@ arithmetic library. Start with:
   the binding factorized-threshold amendment, freezing `16 * 32` as the
   native carrier for the mathematical cutoff 512, retaining public `n + n`
   surfaces, and requiring checked transport to internal `2 * n` helpers;
+- [`Choose/CentralBinom tranche RFC`](ha-bertrand-choose-central-binomial-tranche-rfc-v1.md):
+  the exact 24+14 Alpha-v8 enrollment order for the reviewed
+  recurrence-defined `Choose`, `CentralBinom`, factorial/weighted bridge, and
+  strict central lower-bound bodies, with body-only evidence and promotion
+  boundaries frozen;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
   the repository execution plan and first canonical-interface tranche.
 

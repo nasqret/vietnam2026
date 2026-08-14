@@ -17,19 +17,16 @@ $$
 
 ```{admonition} Current evidence boundary
 :class: warning
-Bertrand's postulate is **not yet proved** in this repository. Alpha v6 is the
-sealed 993-row parent, and current Alpha v7 contains 115 campaign
-specifications whose dependency-curried bodies check. Its twenty-four-row
-suffix has the exact 3+5+4+2+5+3+2 split: initial-segment constructors,
-Legendre-successor facts, capacity-shared `PowTotal` facts, the compact $H/J$
-base window, finite Legendre recurrence, compact $H/J$ transport, and
-factorial--Legendre agreement. In particular, the equality between
-`FactorialVal` and the finite Legendre sum and the compact six-step $H/J$
-transport now have complete body evidence. Every v7 suffix row nevertheless
-remains `body_checked`, has no empty-context admission metadata, and is
-unavailable through checked theorem replay. Binomial coefficients,
-central-binomial bounds, the primorial bound, the completed main inequality,
-finite coverage, and both Bertrand endpoints remain open.
+Bertrand's postulate is **not yet proved** in this repository. Alpha v7 is the
+sealed 1,017-row parent, and current Alpha v8 contains 153 campaign
+specifications whose dependency-curried bodies check. Its thirty-eight-row
+suffix is frozen in 24+14 microbatches: recurrence-defined `Choose` and
+baseline `CentralBinom`, followed by the central recurrence, factorial and
+weighted bridges, strict growth, the fourth-row seed, and
+`four_pow_lt_mul_central_binom`. Every v8 suffix row remains `body_checked`,
+has no empty-context admission metadata, and is unavailable through checked
+theorem replay. The primorial and no-prime central upper bounds, large-input
+contradiction, finite coverage, and both Bertrand endpoints remain open.
 ```
 
 The binding statement, logic, validation, and release rules are frozen in
@@ -40,6 +37,8 @@ the mathematical cutoff 512 has canonical native carrier `16 * 32`, public
 Bertrand surfaces retain `n + n`, and any move to an internal `2 * n` helper
 requires a live checked equality rewrite. The amendment changes no endpoint,
 logical authority, or evidence status.
+The additive Choose/central-binomial tranche is separately bound by
+[`RFC HA-R6-BERTRAND-CB-1`](../../research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md).
 It selects an integer-only Erdős--Tochiori central-binomial proof. No real
 numbers, logarithms, primitive binomial operation, classical axiom, or new
 kernel rule is permitted.
@@ -61,47 +60,55 @@ bounded_prime_interval_search(l,u)
 Consequently, the negative branch is explicit data. The proof never turns
 $\neg\neg\exists p$ into $\exists p$.
 
-## Current Alpha v7 layer
+## Current Alpha v8 layer
 
-Alpha v7 is an additive child of the sealed 993-row Alpha v6 ledger, published
-in commit `874e81e`.
+Alpha v8 is an additive child of the sealed 1,017-row Alpha v7 ledger. Alpha
+v7 remains the historical release published in commit `874e81e`.
 
 | Quantity | Exact value |
 |---|---:|
-| Alpha v7 specifications | 1,017 |
+| Alpha v8 specifications | 1,055 |
 | Stable rows | 432 |
-| Alpha-only rows | 585 |
+| Alpha-only rows | 623 |
 | checked-use rows | 570 |
-| direct dependency edges | 3,072 |
+| direct dependency edges | 3,224 |
 | dependency layers | 45 |
 | first-round Bertrand rows | 21 |
 | Round-2 Bertrand rows | 42 |
 | `FactorialVal` rows | 7 |
 | Alpha-v6 threshold / finite-sum / power / valuation rows | 8 + 5 + 5 + 3 |
 | Alpha-v7 constructor / successor / total-power / base / recurrence / transport / equality rows | 3 + 5 + 4 + 2 + 5 + 3 + 2 |
+| Alpha-v8 Choose / central baseline and recurrence / bridge / lower-bound rows | 24 + 14 |
 
-All 115 campaign additions are `body_checked`; checked use remains
+All 153 campaign additions are `body_checked`; checked use remains
 unchanged at 570. The current enrollment root is
-`aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c`.
-The ordered specification root is
-`838c8f48f81eddcdf3e9de0f9557cee1c25eb78015513d99cfe8ab76975edc65`.
+`a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2`.
 The full edition identity is
-`9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff`.
-The membership, evidence, and channel-pointer roots are respectively
-`e6d22473986c7e4ec1e4566f156c3dad710a4a9be2ae7b830490546da48cb703`,
-`a3709e040891b7c180c5c35876ec0e033b58ad12ce5179c3b0215ed11c1a93b6`,
+`2101b7b384ec9791c41d07d8115123d6842729615a0084ce87cead619bc8c123`.
+The ordered-specification, membership, evidence, and channel-pointer roots are
+`fe49d664e5a88f6637c7790b104e9b0aa3c583e48f9a4a1405d5b098f7f61df9`,
+`4471bdcf06a2d3af866850b39f394a436ad608b4c0b166c0449620e5dd3c9ee3`,
+`4230c17701be2c604ea413be90c26bad41889d593dcaaeff311217b4e26367b4`,
 and
-`e868088b8abf7b98e1a3976058adfca5ed542a1d9b29c275ebd16c070cd810c3`.
+`1fd2216e0448fbeb0d8da60dea3b89fca4d4f7192371fc87a8c5cd35dccf3c70`.
 The deterministic channel pointer is
-[`channels-v7.json`](https://github.com/nasqret/vietnam2026/blob/874e81e/artifacts/peano-library/channels-v7.json).
-The v7 catalog, metrics, reduced graph, and channels SHA-256 values are
+`artifacts/peano-library/channels-v8.json`; its catalog, metrics, and reduced
+graph are the matching `catalog-v8.json`, `metrics-v8.json`, and
+`dependency-graph-v8.mmd`. Their SHA-256 values are
+`c06c5fde7b84b4a8524dd408a2b046d06c7a88ccb5814877b7ccfec0d20b1370`,
+`90c14911ef50391dd9fd99865a83a6e0886911253504096a30e497d30c1a6813`,
+`ff194534f1efd56dd771237b6a44279a705309df21c1fa319b6669f3e1cab008`,
+and
+`dec01b10ee9359b1f7057187725016d343bfb7f3176d8779c85da7f26983234d`.
+The sealed v7 catalog, metrics, reduced graph, and
+channels SHA-256 values remain
 `7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`,
 `c40f18bda0ec8feb9294cf445d08b51daf868e46b3931daf55bad91413d39e0d`,
 `85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`,
 and
 `fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
-The evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
-446 `body_checked`, and one `pending_layered_closure` row. No v7 row was
+The v8 evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
+484 `body_checked`, and one `pending_layered_closure` row. No v8 row was
 promoted.
 
 ### B0 — constructive interval search
@@ -157,7 +164,7 @@ statement has an exact hash, and complete proof traversals find zero `DNE`.
 These local closures establish feasibility; the Alpha evidence remains
 body-only until the versioned two-process cold receipt is accepted.
 
-### B3 — factorial valuations
+### Factorial valuations (part of binding gate B2)
 
 Sealed Alpha v5 enrolls seven rows at indices 965--971:
 
@@ -305,28 +312,48 @@ source blocks replay, reject their prescribed mutations, contain zero `DNE`,
 and remain fail-closed `body_checked` rows. This is enrollment, not promotion:
 Bertrand's postulate is still open.
 
+## Alpha v8 recurrence-defined Choose and central lower bound
+
+Alpha v8 preserves that complete v7 prefix and appends 38 reviewed rows in two
+dependency-topological microbatches. The first 24 construct finite Pascal rows
+with Gödel-$\beta$ codes, prove their pointwise and table extensionality, and
+derive relational `Choose` existence, functionality, zero, self, Pascal,
+symmetry, and positivity laws together with baseline `CentralBinom` wrappers.
+The second 14 add the central zero and successor laws, weighted vertical and
+factorial bridges, strict arithmetic growth, the exact fourth-row seed, and
+
+$$
+4^n<n\binom{2n}{n}\qquad(4\le n).
+$$
+
+The exact endpoint is the relational theorem
+`four_pow_lt_mul_central_binom`. The tranche is controlled by
+[`RFC HA-R6-BERTRAND-CB-1`](../../research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md),
+whose frozen SHA-256 is
+`4f337990babf85ffaacdc990f0e09a3c1943b8edb20c72ffef675cbb28cde83b`.
+All 38 dependency-curried body receipts replay with combined root
+`fb6e40f2470a9c436f02676ea15b99a389ee7495b4c6cd81212a42a7010b4466`.
+This is still body evidence: every new row rejects checked replay, and no
+Stable promotion or full campaign theorem follows from enrollment alone.
+
 ## Dependency roadmap
 
 ```text
-B0 interval decision ------------------------------------------+
-                                                               |
-B1 order, powers, FloorSqrt, floor/ceiling arithmetic ----+    |
-                                                          |    |
-B2 valuations + finite sums -------+                      |    |
-                                    |                      |    |
-B3 FactorialVal + Legendre equality-+                      |    |
-B4 Choose/CentralBinom -------------+----> B5 factor ranges|    |
-              |                     |    + primorial bound |    |
-              `---------------------+                      |    |
-                                                          v    v
-                                                   B6 main inequality
-                                                          |
-                                          B7 n >= 512 theorem
-                                                          |
-                                      B8 finite coverage + BP01/BP02
+checked Alpha baseline
+  |-- B0 bounded interval decision
+  `-- B1 discrete inequality/fold API
+        |-- B2 prime-power valuations and Legendre
+        |-- B3 Choose/CentralBinom [Alpha v8 body evidence]
+        `-- B4 Primorial [open; also depends on B3]
+
+B2 + B3 + B4 --------------------> B5 central factor upper bound [open]
+B1 --------------------------------> B6 native main inequality [candidate]
+B0 + B3 + B5 + B6 ----------------> B7 n >= 512 [open]
+B0 + B7 + certified prime chain ---> B8 endpoints BP01 and BP02 [open]
 ```
 
-The central lower bound will prove $4^n<n\binom{2n}{n}$. Under an explicit
+The Alpha-v8 central lower bound proves $4^n<n\binom{2n}{n}$ at the
+body-evidence level. Under an explicit
 no-prime certificate for $(n,2n]$, valuations and the primorial will give
 
 $$
@@ -344,7 +371,7 @@ n(2n)^{\lfloor\sqrt{2n}\rfloor}
 \qquad(n\ge512).
 $$
 
-The current work reduces its difficult growth component to six residue
+The post-v7 candidate work reduces its difficult growth component to six residue
 classes using
 
 $$
@@ -353,18 +380,20 @@ E(s)=\left\lceil\frac{s^2}{6}\right\rceil,
 $$
 
 and the exact identity $E(s+6)=E(s)+2s+6$. `FloorSqrt`, ceiling-by-six, the
-quotient complement, threshold arithmetic, and the first relational-power
-bridge, compact $H/J$ bases, and six-step $H/J$ transport are now formalized
-and enrolled body-only. The all-$s$ residue-class induction/envelope and the
-final power-product bridge remain obligations before this route can feed the
-large-$n$ theorem.
+quotient complement, threshold arithmetic, the relational-power bridge,
+compact $H/J$ bases, six-step transport, the all-$s$ envelope, and
+`bertrand_main_inequality_nat` now have reviewed candidate bodies and closure
+receipts. The post-v7 envelope and main-inequality rows remain outside Alpha
+v8, however, and cannot feed a checked large-$n$ contradiction until the B4
+primorial bound, B5 no-prime central upper bound, and branch integration are
+complete.
 
-The first implementation may use the more proof-friendly large branch
-$n\ge2048$ rather than 512. Its base roots are $s=64,\ldots,69$, where
-$s+1\le128=2^7$ gives uniform relational-power bounds without enormous
-evaluated numerals. The finite branch then extends the Landau chain by the
-primes 1031 and 2053. This changes only the internal split, not Bertrand's
-statement.
+The implemented candidate lineage uses the RFC-v2 cutoff carrier
+`16 * 32`, mathematically 512, and the root-32 envelope over the six bases
+$s=32,\ldots,37$. In particular, `bertrand_hj_envelope_thirty_two` supplies
+the factorized large-branch envelope without placing a literal 512 in the
+public proof surface. The earlier possible $n\ge2048$ optimization and roots
+$64,\ldots,69$ were not selected for this lineage.
 
 ## Durable checkpoints
 
@@ -397,6 +426,10 @@ statement.
 | `158d87c` | factorial valuation equals the finite Legendre sum |
 | `00e8361` | optimized constructive initial-segment constructors |
 | `874e81e` | additive, fail-closed Alpha v7 channel |
+| `d1cbe16` | all-root $H/J$ envelope candidate bodies |
+| `8ea03f2` | B6 main-inequality candidate bodies |
+| `d1ad971` | dependency-closed B6 inequality graph audit |
+| `d46e513`--`74dc219` | frozen 38-row Choose/central-binomial tranche |
 
 All checkpoints are pushed to `nasqret/vietnam2026` on
 `agent/new-theorems-tranche-01`.
@@ -404,14 +437,14 @@ All checkpoints are pushed to `nasqret/vietnam2026` on
 ## Reproduce the current gates
 
 ```bash
-make peano-library-alpha-v7-check
+make peano-library-alpha-v8-check
 ```
 
-This validates the published Alpha-v7 evidence boundary and independently
-replays its twenty-four new dependency-curried bodies. On a memory-constrained
-laptop, heavyweight proof modules must run serially in fresh Python processes,
-with RSS observed and no concurrent proof worker. The v7 Make target therefore
-splits mutation groups and proof modules across fresh processes. A single
+This validates the Alpha-v8 evidence boundary and independently replays its
+thirty-eight new dependency-curried bodies. On a memory-constrained laptop,
+the nineteen focused source-block suites run serially in fresh Python
+processes, with RSS observed and no concurrent proof worker. The v8 Make
+target also splits verifier mutation groups across fresh processes. A single
 monolithic pytest process can retain proof DAGs and is not an approved local
 gate. Successful replay does not upgrade Alpha evidence or promote anything
 to Stable.

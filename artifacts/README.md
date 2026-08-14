@@ -631,3 +631,59 @@ Heavy proof validation is deliberately serial. Each proof module and mutation
 group runs in a fresh Python process, with no concurrent proof worker, so
 retained proof DAGs cannot accumulate across the entire gate on a
 memory-constrained laptop.
+
+## Peano Alpha v8 — Choose and central-binomial lower bound (2026-08-15)
+
+Alpha v8 preserves the sealed 1,017-row Alpha-v7 ledger byte-for-byte and
+appends thirty-eight reviewed Bertrand specifications at indices 1017--1054.
+The binding 24+14 microbatches first build recurrence-defined `Choose` and
+baseline `CentralBinom`, then add the central recurrence, weighted and
+factorial bridges, strict growth, the fourth-row seed, and
+`four_pow_lt_mul_central_binom`. Stable remains unchanged at 432 rows.
+
+Current topology and evidence:
+
+- 1,055 theorem specifications, 3,224 declared direct edges, and 45 layers;
+- 432 Stable rows and 623 Alpha-only rows;
+- 432 `stable_closed`, 138 `alpha_closed`, 484 `body_checked`, and one
+  `pending_layered_closure` row; and
+- 570 checked-use rows; all thirty-eight additions fail closed with
+  `checked_use=false`, null proof tags, and null empty-context closure
+  evidence.
+
+The deterministic pointer is
+[`peano-library/channels-v8.json`](peano-library/channels-v8.json). Its exact
+artifact SHA-256 values are:
+
+- catalog: `c06c5fde7b84b4a8524dd408a2b046d06c7a88ccb5814877b7ccfec0d20b1370`;
+- metrics: `90c14911ef50391dd9fd99865a83a6e0886911253504096a30e497d30c1a6813`;
+- reduced graph: `ff194534f1efd56dd771237b6a44279a705309df21c1fa319b6669f3e1cab008`;
+  and
+- channel pointer: `dec01b10ee9359b1f7057187725016d343bfb7f3176d8779c85da7f26983234d`.
+
+The ordered-enrollment, ordered-specification, edition, membership, evidence,
+and channel-pointer roots are respectively
+`a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2`,
+`fe49d664e5a88f6637c7790b104e9b0aa3c583e48f9a4a1405d5b098f7f61df9`,
+`2101b7b384ec9791c41d07d8115123d6842729615a0084ce87cead619bc8c123`,
+`4471bdcf06a2d3af866850b39f394a436ad608b4c0b166c0449620e5dd3c9ee3`,
+`4230c17701be2c604ea413be90c26bad41889d593dcaaeff311217b4e26367b4`,
+and
+`1fd2216e0448fbeb0d8da60dea3b89fca4d4f7192371fc87a8c5cd35dccf3c70`.
+The append is controlled by
+[`RFC HA-R6-BERTRAND-CB-1`](../research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md).
+
+The verifier independently replays every suffix body and cross-binds each row
+to its exact source, focused test, RFC, and sealed Alpha-v7 catalog. This is
+body evidence, not empty-context admission or Stable promotion. The primorial,
+no-prime central upper bound, large-input integration, finite coverage, and
+Bertrand endpoints remain open.
+
+Rebuild or verify this channel with:
+
+```bash
+python3 scripts/build_peano_library_channels_v8.py
+python3 scripts/build_peano_library_channels_v8.py --check
+python3 scripts/verify_peano_library_channels_v8.py
+make peano-library-alpha-v8-check
+```

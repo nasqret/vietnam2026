@@ -254,23 +254,27 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "**972** theorems",
         "**993** theorems",
         "**1,017** theorems",
+        "**1,055** theorems",
         "**570** theorems",
         "**2,641** edges / **45** layers",
         "**2,730** edges / **45** layers",
         "**2,891** edges / **45** layers",
         "**2,912** edges / **45** layers",
         "**3,072** edges / **45** layers",
+        "**3,224** edges / **45** layers",
         "432 Stable plus 453 Alpha-only rows",
         "432 Stable plus 491 Alpha-only rows",
         "432 Stable plus 533 Alpha-only rows",
         "432 Stable plus 540 Alpha-only rows",
         "432 Stable plus 561 Alpha-only rows",
         "432 Stable plus 585 Alpha-only rows",
+        "432 Stable plus 623 Alpha-only rows",
         "314 `body_checked`",
         "352 `body_checked`",
         "394 `body_checked`",
         "401 `body_checked`",
         "446 `body_checked`",
+        "484 `body_checked`",
         "one `pending_layered_closure`",
         'edition("alpha").checked_specs',
         'entry("cell_list_extensional", edition="alpha")',
@@ -282,26 +286,48 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "artifacts/peano-library/channels-v4.json",
         "artifacts/peano-library/channels-v5.json",
         "artifacts/peano-library/channels-v7.json",
+        "artifacts/peano-library/alpha/catalog-v8.json",
+        "artifacts/peano-library/alpha/metrics-v8.json",
+        "artifacts/peano-library/alpha/dependency-graph-v8.mmd",
+        "artifacts/peano-library/channels-v8.json",
         "aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c",
         "9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff",
+        "a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2",
+        "2101b7b384ec9791c41d07d8115123d6842729615a0084ce87cead619bc8c123",
         "c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d",
         "7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4",
+        "c06c5fde7b84b4a8524dd408a2b046d06c7a88ccb5814877b7ccfec0d20b1370",
+        "90c14911ef50391dd9fd99865a83a6e0886911253504096a30e497d30c1a6813",
+        "ff194534f1efd56dd771237b6a44279a705309df21c1fa319b6669f3e1cab008",
+        "dec01b10ee9359b1f7057187725016d343bfb7f3176d8779c85da7f26983234d",
+        "RFC HA-R6-BERTRAND-CB-1",
         "Bertrand campaign chapter",
         "direct neighborhood",
     ):
         assert exact in source
-    assert "<library-editions>" in index
+    for exact in (
+        "<library-editions>",
+        "<strong>1,055</strong><span>Alpha v8 theorems</span>",
+        "1,055 theorems, 3,224 direct edges",
+        "484 `body_checked`",
+        "RFC HA-R6-BERTRAND-CB-1",
+    ):
+        assert exact in index
     assert "241 Stable prerequisites" in normalized_proof_explorer
     assert "316 Alpha-only specifications" in normalized_proof_explorer
     assert "748" in normalized_proof_explorer
     for exact in (
-        "## Current Alpha v7 layer",
-        "| Alpha v7 specifications | 1,017 |",
+        "## Current Alpha v8 layer",
+        "| Alpha v8 specifications | 1,055 |",
         "| `FactorialVal` rows | 7 |",
         "8 + 5 + 5 + 3",
         "3 + 5 + 4 + 2 + 5 + 3 + 2",
+        "24 + 14",
         "## Alpha v6 threshold, finite-sum, and bridge layer",
         "## Alpha v7 recurrence, equality, and $H/J$ layer",
+        "## Alpha v8 recurrence-defined Choose and central lower bound",
+        "B3 Choose/CentralBinom [Alpha v8 body evidence]",
+        "B4 Primorial [open; also depends on B3]",
         "eight-row threshold tranche",
         "five-row finite Legendre-sum interface",
         "does **not** yet prove",
@@ -321,8 +347,14 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "`158d87c`",
         "`00e8361`",
         "`874e81e`",
+        "`d1cbe16`",
+        "`8ea03f2`",
+        "`d1ad971`",
+        "`d46e513`--`74dc219`",
         "prime_factorial_valuation_eq_legendre_sum",
-        "make peano-library-alpha-v7-check",
+        "four_pow_lt_mul_central_binom",
+        "RFC HA-R6-BERTRAND-CB-1",
+        "make peano-library-alpha-v8-check",
     ):
         assert exact in bertrand
     for exact in (
@@ -335,6 +367,17 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
     ):
         assert exact in artifacts
     assert "all twenty-four additions fail closed" in normalized_artifacts
+    for exact in (
+        "## Peano Alpha v8 — Choose and central-binomial lower bound",
+        "[`peano-library/channels-v8.json`](peano-library/channels-v8.json)",
+        "1,055 theorem specifications, 3,224 declared direct edges",
+        "a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2",
+        "four_pow_lt_mul_central_binom",
+        "RFC HA-R6-BERTRAND-CB-1",
+        "make peano-library-alpha-v8-check",
+    ):
+        assert exact in artifacts
+    assert "all thirty-eight additions fail closed" in normalized_artifacts
 
 
 def test_generated_atlas_is_byte_current() -> None:
