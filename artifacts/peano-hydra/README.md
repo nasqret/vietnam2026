@@ -732,6 +732,53 @@ and its union, graph application, A2, authority, review/lineage/freeze, and
 all eligibility claims remain false. The public graph stays exactly 1,038
 edges.
 
+
+## A2.3d clean-Git/WMI execution infrastructure (no artifact)
+
+The execution boundary is frozen, but no job has run. A detached clean-Git
+derivation authenticates the exact six A2.3d protocol sources, `HEAD`, tree,
+stage-0 blobs, modes, and clean status. The source-state document keeps
+`git_verified=false`; its separate Git receipt is the clean-source evidence.
+An immutable content-addressed deposit then binds that source state, Git
+receipt, infrastructure manifest, and provenance row.
+
+The runner is pinned to one CPU, 4,096 MiB, 15 minutes, and Linux x86_64
+CPython 3.12.12. It will run two fresh copies of the same deterministic
+producer at required seed 0 and require byte-identical 74,579-byte candidate
+documents at artifact/root `a9077a7b…` / `fd0497da…`. A third process runs
+the separately authored reconstructing verifier and requires its exact
+12,737-byte artifact/root `8f6531d3…` / `b3c25367…`. The repeated producer
+is a determinism check, not implementation or seed independence. The verifier
+shares the authenticated codec and kernel and does not independently establish
+kernel semantics.
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `../../scripts/build_peano_hydra_a23d_cut_liveness_source_state.py` | 43,334 | `1161c123a96158123107f452b22692ad9c516431e2bb71848d7e051994faf6f1` |
+| `../../scripts/run_peano_hydra_a23d_cut_liveness_wmi.py` | 95,659 | `c737d05b74e39c6956bae9eaa97dd7bb606e98e718c6f06430ee05522fc523b8` |
+| `../../scripts/submit_wmi_hydra_a23d_cut_liveness.sh` | 14,920 | `0f9552a739a1ba64e25e958498d22a6025ad8b83d7b1b1671c9fe421e06cf1d3` |
+| `../../scripts/collect_wmi_hydra_a23d_cut_liveness.sh` | 5,692 | `6c570194a672c4f48aa0f4214e2918469214fe6ac57c4671a150fc621ec6e509` |
+| `../../slurm/peano_wmi_hydra_a23d_cut_liveness.sbatch` | 5,057 | `de5463e13d626cd0e7c34c1ce96e0e3e7b5aaf5e6304453f794ac41f06c629d9` |
+| `../../peano-lab/py/tests/test_peano_hydra_a23d_cut_liveness_source_state.py` | 13,797 | `3b3f90e687f7fdf71783480cfee5fb5c94085d2f7853f9e332c00cf1b7b31901` |
+| `../../peano-lab/py/tests/test_peano_hydra_a23d_wmi_protocol.py` | 32,420 | `0927e477f321bed217bcac531057d68dc03658bc0bd5cba3743ea911a5d104ce` |
+
+Descriptor/post-path source checks, bounded process groups, 16 MiB stream
+caps, 60/60/90-second children, unknown-on-failure classification, held
+submission, and descriptor-bound create-only receipts are all covered. The
+source-state and WMI suites passed 12 tests in 5.86 seconds and 30 in 6.17
+seconds; together they passed 42 in 12.25 seconds. The full bounded gate
+passed 159 tests in 28.66 seconds, including 32 sharder tests in 0.28 seconds.
+CI now has 111 profiles with 7,500/8,000 ms new weights and modeled loads
+549,000 / 549,500 / 549,300 / 549,500 / 549,000 / 549,500 / 549,000 /
+549,000 ms.
+
+No A2.3d candidate, verifier, execution, collection, or result artifact is
+retained here, and no network or WMI action occurred. Execution and retention
+remain open. Dependency necessity, route rejection, minimality,
+optimized/best-known or completeness claims, publication/union, graph
+application, A2, authority, review/lineage/freeze, and eligibility remain
+false. The public graph remains 1,038 edges.
+
 ## H1.1b3 selected candidate page source
 
 The retained tagless source tree is

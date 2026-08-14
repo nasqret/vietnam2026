@@ -2302,6 +2302,55 @@ publication and publication union, graph application, A2, authority,
 review/lineage/freeze, and eligibility all remain false. The public graph
 remains exactly 1,038 edges.
 
+
+### A2.3d execution infrastructure is frozen, not executed
+
+The next boundary is now implementation-ready without being result-bearing.
+A clean-Git generator authenticates the exact six source-protocol files plus
+stable `HEAD`, tree, stage-0 blobs, modes, and clean status. Its source-state
+record keeps `git_verified=false`; a detached Git receipt owns the positive
+clean-source facts. The submitter packages those bytes into one immutable,
+content-addressed snapshot.
+
+The runner is pinned to Linux x86_64 CPython 3.12.12, one CPU, 4,096 MiB, and
+15 minutes. It starts the deterministic producer twice in fresh processes,
+both with required seed 0, and requires the exact byte-identical 74,579-byte
+candidate at artifact/root `a9077a7b…` / `fd0497da…`. A third process runs
+the separately authored verifier and requires the exact 12,737-byte receipt at
+artifact/root `8f6531d3…` / `b3c25367…`. The repeated producer is only a
+repeatability check. The verifier independently derives the transformation
+but shares the authenticated codec/kernel and supplies no independent kernel-
+semantics claim.
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `scripts/build_peano_hydra_a23d_cut_liveness_source_state.py` | 43,334 | `1161c123a96158123107f452b22692ad9c516431e2bb71848d7e051994faf6f1` |
+| `scripts/run_peano_hydra_a23d_cut_liveness_wmi.py` | 95,659 | `c737d05b74e39c6956bae9eaa97dd7bb606e98e718c6f06430ee05522fc523b8` |
+| `scripts/submit_wmi_hydra_a23d_cut_liveness.sh` | 14,920 | `0f9552a739a1ba64e25e958498d22a6025ad8b83d7b1b1671c9fe421e06cf1d3` |
+| `scripts/collect_wmi_hydra_a23d_cut_liveness.sh` | 5,692 | `6c570194a672c4f48aa0f4214e2918469214fe6ac57c4671a150fc621ec6e509` |
+| `slurm/peano_wmi_hydra_a23d_cut_liveness.sbatch` | 5,057 | `de5463e13d626cd0e7c34c1ce96e0e3e7b5aaf5e6304453f794ac41f06c629d9` |
+| `peano-lab/py/tests/test_peano_hydra_a23d_cut_liveness_source_state.py` | 13,797 | `3b3f90e687f7fdf71783480cfee5fb5c94085d2f7853f9e332c00cf1b7b31901` |
+| `peano-lab/py/tests/test_peano_hydra_a23d_wmi_protocol.py` | 32,420 | `0927e477f321bed217bcac531057d68dc03658bc0bd5cba3743ea911a5d104ce` |
+
+The child bounds are 60/60/90 seconds with 16 MiB per captured stream and a
+900-second allocation. Any nonzero, timeout, resource, malformed, missing, or
+conflicting condition remains `unknown`. Descriptor/post-path reads,
+process-group termination, held submission, exact ledger/source/deposit
+bindings, and descriptor-bound create-only publication are tested. The two
+new suites passed 12/12 in 5.86 seconds and 30/30 in 6.17 seconds; the complete
+bounded source/infrastructure/sharder gate passed 159/159 in 28.66 seconds.
+CI has 111 profiles, weights 7,500/8,000 ms, and loads 549,000 / 549,500 /
+549,300 / 549,500 / 549,000 / 549,500 / 549,000 / 549,000 ms. The sharder
+passed 32/32 in 0.28 seconds.
+
+No WMI submission, real campaign, execution or collection receipt, retained
+result, publication, or graph mutation occurred. Execution and retention are
+still open. The vector remains proof-construction-specific, not evidence of
+necessity, route rejection, minimality, global optimization, best-known
+status, or vector completeness. Publication/union, graph application, A2,
+authority, review/lineage/freeze, and eligibility remain false. The graph
+remains 1,038 edges.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

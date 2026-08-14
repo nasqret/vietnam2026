@@ -988,6 +988,49 @@ independently audited optimized vector. Vector/global completeness,
 publication and union, graph application, A2, authority, review/lineage/freeze,
 and eligibility remain false. The public graph stays 1,038 edges.
 
+
+#### A2.3d clean-Git/WMI infrastructure readiness
+
+The execution envelope is now frozen without running it. A detached source-
+state/Git protocol authenticates the six source files and one stable clean
+`HEAD`/tree/stage-0 vector. An immutable snapshot binds those receipts to
+the infrastructure manifest and provenance. The source state retains
+`git_verified=false`; the separate Git receipt owns the clean-tree facts.
+
+The WMI runner requests one CPU, 4,096 MiB, and 15 minutes under pinned Linux
+x86_64 CPython 3.12.12. It will run the deterministic producer twice in fresh
+seed-0 processes, compare the exact 74,579-byte candidate
+(`a9077a7b…` / `fd0497da…`), then run the separately authored verifier and
+require the exact 12,737-byte receipt (`8f6531d3…` / `b3c25367…`). The
+producer pair is repeatability evidence only. The verifier independently
+reconstructs the transformation but shares the authenticated codec/kernel.
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `scripts/build_peano_hydra_a23d_cut_liveness_source_state.py` | 43,334 | `1161c123a96158123107f452b22692ad9c516431e2bb71848d7e051994faf6f1` |
+| `scripts/run_peano_hydra_a23d_cut_liveness_wmi.py` | 95,659 | `c737d05b74e39c6956bae9eaa97dd7bb606e98e718c6f06430ee05522fc523b8` |
+| `scripts/submit_wmi_hydra_a23d_cut_liveness.sh` | 14,920 | `0f9552a739a1ba64e25e958498d22a6025ad8b83d7b1b1671c9fe421e06cf1d3` |
+| `scripts/collect_wmi_hydra_a23d_cut_liveness.sh` | 5,692 | `6c570194a672c4f48aa0f4214e2918469214fe6ac57c4671a150fc621ec6e509` |
+| `slurm/peano_wmi_hydra_a23d_cut_liveness.sbatch` | 5,057 | `de5463e13d626cd0e7c34c1ce96e0e3e7b5aaf5e6304453f794ac41f06c629d9` |
+| `peano-lab/py/tests/test_peano_hydra_a23d_cut_liveness_source_state.py` | 13,797 | `3b3f90e687f7fdf71783480cfee5fb5c94085d2f7853f9e332c00cf1b7b31901` |
+| `peano-lab/py/tests/test_peano_hydra_a23d_wmi_protocol.py` | 32,420 | `0927e477f321bed217bcac531057d68dc03658bc0bd5cba3743ea911a5d104ce` |
+
+The 60/60/90-second child bounds, 16 MiB streams, 900-second allocation,
+unknown-on-failure policy, source/path inode checks, process-group termination,
+held ledgered submission, exact accounting/log joins, and descriptor-bound
+create-only receipts are tested. Source-state and WMI suites passed 12 tests
+in 5.86 seconds and 30 in 6.17 seconds; the bounded source/infrastructure/
+sharder gate passed 159 in 28.66 seconds. CI has 111 profiles, 7,500/8,000 ms
+new weights, and loads 549,000 / 549,500 / 549,300 / 549,500 / 549,000 /
+549,500 / 549,000 / 549,000 ms; 32 sharder tests passed in 0.28 seconds.
+
+No job, execution/collection receipt, retained result, network action,
+publication, or graph mutation exists. Execution and retention remain open.
+Necessity, route rejection, minimality, optimized/best-known or completeness
+claims, publication/union, graph application, A2, authority,
+review/lineage/freeze, and eligibility remain false. The graph remains 1,038
+edges.
+
 ### H1.2 Build lineage before rows
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
@@ -1348,6 +1391,11 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       reconstructing verifier, and focused adversarial gate. This checkbox is
       only a six-file source/protocol freeze; it grants no result or broad
       vector claim.
+- [x] **A2.3d clean-Git/WMI infrastructure readiness:** freeze the exact
+      source-state/Git derivation, immutable deposit, two fresh deterministic
+      producer executions, independently implemented reconstruction process,
+      bounded Slurm runner, held submit/collect wrappers, and no-network
+      adversarial gates. This is infrastructure only; no job or result exists.
 - [ ] **A2.3d execution and retention:** execute any separately frozen real
       campaign boundary and retain an independently verified result/evidence
       bundle. No campaign, network/WMI job, result artifact, or retention is
@@ -1808,6 +1856,10 @@ and benchmark work precede GPU training.
       `a71bc1a2…`, and `6f568648…`; 85 focused tests passed in 16.18 seconds.
       This is not a necessity, minimality, best-known, optimized-vector,
       publication, graph, A2, or authority claim.
+- [x] A2.3d clean-Git/WMI infrastructure is frozen at seven exact source/test
+      identities. It binds one CPU/4,096 MiB/15 minutes, two fresh seed-0
+      producer processes, one separately implemented verifier, fail-closed
+      collection, and 42 no-network tests; it grants no execution authority.
 - [ ] A2.3d real execution and retention remain open. No real campaign,
       network/WMI job, result artifact, or retained evidence bundle exists.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records

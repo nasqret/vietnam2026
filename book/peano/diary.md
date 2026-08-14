@@ -4802,3 +4802,45 @@ necessity; vacuous-Cut normal form is not global minimality or best-known
 optimization. No publication or union, graph update, A2 completion, authority,
 review, lineage, freeze, or eligibility follows. The graph remains 1,038
 edges, and every broad claim stays false.
+
+
+## 2026-08-14 — The A2.3d runner is frozen, but has not run
+
+We now have a clean-Git/WMI boundary for the one-root Cut-liveness experiment.
+It authenticates the exact six frozen source files, packages one immutable
+snapshot, and requests one CPU, 4,096 MiB, and 15 minutes under pinned Linux
+x86_64 CPython 3.12.12. The runner will invoke the deterministic producer
+twice in fresh processes, both at its required seed 0, compare the exact
+74,579-byte candidate bytes (`a9077a7b…`, root `fd0497da…`), and then
+invoke the separately authored verifier for the exact 12,737-byte receipt
+(`8f6531d3…`, root `b3c25367…`). Two runs of one producer demonstrate
+repeatability, not two implementations or hash-seed diversity. The verifier
+reimplements the liveness transform but intentionally shares the codec and
+kernel.
+
+The new infrastructure is frozen at these identities:
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `scripts/build_peano_hydra_a23d_cut_liveness_source_state.py` | 43,334 | `1161c123a96158123107f452b22692ad9c516431e2bb71848d7e051994faf6f1` |
+| `scripts/run_peano_hydra_a23d_cut_liveness_wmi.py` | 95,659 | `c737d05b74e39c6956bae9eaa97dd7bb606e98e718c6f06430ee05522fc523b8` |
+| `scripts/submit_wmi_hydra_a23d_cut_liveness.sh` | 14,920 | `0f9552a739a1ba64e25e958498d22a6025ad8b83d7b1b1671c9fe421e06cf1d3` |
+| `scripts/collect_wmi_hydra_a23d_cut_liveness.sh` | 5,692 | `6c570194a672c4f48aa0f4214e2918469214fe6ac57c4671a150fc621ec6e509` |
+| `slurm/peano_wmi_hydra_a23d_cut_liveness.sbatch` | 5,057 | `de5463e13d626cd0e7c34c1ce96e0e3e7b5aaf5e6304453f794ac41f06c629d9` |
+| `peano-lab/py/tests/test_peano_hydra_a23d_cut_liveness_source_state.py` | 13,797 | `3b3f90e687f7fdf71783480cfee5fb5c94085d2f7853f9e332c00cf1b7b31901` |
+| `peano-lab/py/tests/test_peano_hydra_a23d_wmi_protocol.py` | 32,420 | `0927e477f321bed217bcac531057d68dc03658bc0bd5cba3743ea911a5d104ce` |
+
+Source-state and WMI tests passed 12/12 in 5.86 seconds and 30/30 in
+6.17 seconds; the combined infrastructure gate was 42/42 in 12.25 seconds.
+The bounded source/infrastructure/sharder gate was 159/159 in 28.66 seconds,
+and the sharder itself was 32/32 in 0.28 seconds. CI now has 111 explicit
+profiles; the two new weights are 7,500 and 8,000 ms, with loads 549,000 /
+549,500 / 549,300 / 549,500 / 549,000 / 549,500 / 549,000 / 549,000 ms.
+
+Nothing was sent to WMI. There is no job, execution or collection receipt,
+retained result, publication, or graph change. The exact vector
+`[mul_add, add_comm]` is still only the output of this proof transformation,
+not necessity, route-rejection, minimality, global optimization, best-known,
+or completeness evidence. Publication, union, graph, A2, authority,
+review/lineage/freeze, and eligibility remain false; the graph stays 1,038
+edges.

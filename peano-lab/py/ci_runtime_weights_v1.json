@@ -56,6 +56,8 @@
     {"path": "test_peano_hydra_a23b_wmi_protocol.py", "weight": 1000},
     {"path": "test_peano_hydra_a23c_replayer_source_state.py", "weight": 6000},
     {"path": "test_peano_hydra_a23c_wmi_protocol.py", "weight": 6000},
+    {"path": "test_peano_hydra_a23d_cut_liveness_source_state.py", "weight": 7500},
+    {"path": "test_peano_hydra_a23d_wmi_protocol.py", "weight": 8000},
     {"path": "test_peano_hydra_assistant_repl.py", "weight": 3000},
     {"path": "test_peano_hydra_authoring.py", "weight": 500},
     {"path": "test_peano_hydra_conformance.py", "weight": 6000},
