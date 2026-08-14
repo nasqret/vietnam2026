@@ -15,7 +15,7 @@ and does not change the proof grammar, checker, or tactic engine.
 
 from __future__ import annotations
 
-from dataclasses import dataclass, fields
+from dataclasses import dataclass, fields, replace
 import heapq
 
 from ..engine.state import proof_identity_metrics
@@ -600,6 +600,200 @@ def _layers(
     return tuple(tuple(layer) for layer in grouped), depths
 
 
+class _KernelStructureIds:
+    """Assign exact structural IDs to immutable formula and term trees.
+
+    IDs are process-local implementation details.  Full typed tuples, rather
+    than digests, are dictionary keys, so an ordinary hash collision cannot
+    make unequal annotations compare equal.
+    """
+
+    def __init__(self) -> None:
+        self._identity_ids: dict[int, int] = {}
+        self._structural_ids: dict[tuple[object, ...], int] = {}
+
+    def identify(self, root: object) -> int:
+        pending: list[tuple[object, bool]] = [(root, False)]
+        while pending:
+            value, expanded = pending.pop()
+            identity = id(value)
+            if identity in self._identity_ids:
+                continue
+            children = self._children(value)
+            if not expanded:
+                pending.append((value, True))
+                pending.extend(
+                    (child, False)
+                    for child in reversed(children)
+                    if id(child) not in self._identity_ids
+                )
+                continue
+
+            key = (type(value),) + self._payload(value, children)
+            structural_id = self._structural_ids.get(key)
+            if structural_id is None:
+                structural_id = len(self._structural_ids) + 1
+                self._structural_ids[key] = structural_id
+            self._identity_ids[identity] = structural_id
+        return self._identity_ids[id(root)]
+
+    @staticmethod
+    def _children(value: object) -> tuple[object, ...]:
+        if type(value) in (Succ, Forall, Exists):
+            return (value.term,) if type(value) is Succ else (value.body,)
+        if type(value) in (Add, Mul, Eq, Imp, And, Or):
+            return (value.left, value.right)
+        if type(value) in (Var, Zero, Bot):
+            return ()
+        raise LayeredReplayError(
+            "proof annotation contains a non-kernel formula or term node"
+        )
+
+    def _payload(
+        self, value: object, children: tuple[object, ...]
+    ) -> tuple[object, ...]:
+        if type(value) is Var:
+            return ("index", value.index)
+        if type(value) in (Zero, Bot):
+            return ()
+        return tuple(self._identity_ids[id(child)] for child in children)
+
+
+class _ProofBodyInterner:
+    """Canonicalize exact constructive proof nodes across several roots."""
+
+    def __init__(self) -> None:
+        self._annotations = _KernelStructureIds()
+        self._identity_entries: dict[int, tuple[int, Proof]] = {}
+        self._structural_entries: dict[
+            tuple[object, ...], tuple[int, Proof]
+        ] = {}
+
+    def intern(self, root: Proof) -> Proof:
+        pending: list[tuple[Proof, bool]] = [(root, False)]
+        while pending:
+            proof, expanded = pending.pop()
+            identity = id(proof)
+            if identity in self._identity_entries:
+                continue
+            children = tuple(
+                value
+                for item in fields(proof)
+                if isinstance((value := getattr(proof, item.name)), Proof)
+            )
+            if not expanded:
+                pending.append((proof, True))
+                pending.extend(
+                    (child, False)
+                    for child in reversed(children)
+                    if id(child) not in self._identity_entries
+                )
+                continue
+
+            replacements: dict[str, Proof] = {}
+            payload: list[tuple[str, object]] = []
+            for item in fields(proof):
+                value = getattr(proof, item.name)
+                if isinstance(value, Proof):
+                    child_id, canonical_child = self._identity_entries[id(value)]
+                    payload.append(("proof", child_id))
+                    if canonical_child is not value:
+                        replacements[item.name] = canonical_child
+                elif type(value) in (
+                    Var,
+                    Zero,
+                    Succ,
+                    Add,
+                    Mul,
+                    Eq,
+                    Bot,
+                    Imp,
+                    And,
+                    Or,
+                    Forall,
+                    Exists,
+                ):
+                    payload.append(("annotation", self._annotations.identify(value)))
+                elif type(value) is int:
+                    payload.append(("integer", value))
+                elif type(value) is str:
+                    payload.append(("string", value))
+                else:
+                    raise LayeredReplayError(
+                        "proof body contains a non-kernel constructor field"
+                    )
+
+            key = (type(proof), *payload)
+            entry = self._structural_entries.get(key)
+            if entry is None:
+                canonical = (
+                    proof if not replacements else replace(proof, **replacements)
+                )
+                entry = (len(self._structural_entries) + 1, canonical)
+                self._structural_entries[key] = entry
+            self._identity_entries[identity] = entry
+        return self._identity_entries[id(root)][1]
+
+
+def _intern_layered_replay_bodies(
+    bundle: LayeredReplayBundle,
+    target: Formula,
+    limits: LayeredReplayLimits,
+) -> LayeredReplayBundle:
+    table, order = _validate_graph(bundle, target, limits)
+    interner = _ProofBodyInterner()
+    bodies = {
+        node_id: interner.intern(table[node_id].body) for node_id in order
+    }
+    changed = False
+    nodes: list[LayeredReplayNode] = []
+    for node in bundle.nodes:
+        body = bodies[node.node_id]
+        if body is node.body:
+            nodes.append(node)
+        else:
+            changed = True
+            nodes.append(replace(node, body=body))
+    if not changed:
+        return bundle
+    return LayeredReplayBundle(tuple(nodes), bundle.root)
+
+
+def intern_layered_replay_bodies(
+    bundle: object,
+    target: object,
+    *,
+    limits: LayeredReplayLimits = DEFAULT_LAYERED_REPLAY_LIMITS,
+) -> LayeredReplayBundle | None:
+    """Fail closed while interning equal immutable proof body subgraphs.
+
+    This is an untrusted, deterministic memory prepass for bodies that a
+    caller has already checked individually.  It neither imports the checker
+    nor grants theorem authority.  Node IDs, targets, dependency order, the
+    designated root, and every proof constructor remain structurally equal;
+    only identities of equal ``Proof`` objects may become shared.  The caller
+    must still ask the unchanged kernel to check every transformed body and
+    the final layered certificate against their exact original targets.
+    """
+
+    try:
+        return _intern_layered_replay_bodies(  # type: ignore[arg-type]
+            bundle,
+            target,
+            limits,
+        )
+    except (
+        AttributeError,
+        IndexError,
+        KeyError,
+        LayeredReplayError,
+        RecursionError,
+        TypeError,
+        ValueError,
+    ):
+        return None
+
+
 def _balanced_package(
     entries: tuple[tuple[int, Formula, Proof], ...]
 ) -> tuple[Formula, Proof, dict[int, tuple[bool, ...]]]:
@@ -777,5 +971,6 @@ __all__ = [
     "LayeredReplayNode",
     "LayeredReplayBundle",
     "LayeredReplayCandidate",
+    "intern_layered_replay_bodies",
     "compile_layered_replay",
 ]

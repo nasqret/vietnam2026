@@ -14,7 +14,9 @@ from peano_lab.kernel.proofs import (
     Cut,
     DNE,
     EqRefl,
+    EqSym,
     EqSubst,
+    EqTrans,
     ExistsIntro,
     ForallElim,
     ForallIntro,
@@ -79,6 +81,35 @@ def _diamond_bundle(depth: int = 3, width: int = 2) -> layered.LayeredReplayBund
     return layered.LayeredReplayBundle(tuple(nodes), root)
 
 
+def _zero_equality_chain() -> Proof:
+    return EqTrans(EqRefl(Zero()), EqRefl(Zero()))
+
+
+def _interning_bundle() -> layered.LayeredReplayBundle:
+    nodes = (
+        layered.LayeredReplayNode(0, P, (), _zero_equality_chain()),
+        layered.LayeredReplayNode(1, Q, (), EqRefl(Succ(Zero()))),
+        layered.LayeredReplayNode(2, P, (), EqSym(EqRefl(Zero()))),
+        layered.LayeredReplayNode(
+            3,
+            P,
+            (0, 1, 2),
+            ImpIntro(ImpIntro(ImpIntro(_zero_equality_chain()))),
+        ),
+    )
+    return layered.LayeredReplayBundle(nodes, 3)
+
+
+def _body_target(
+    node: layered.LayeredReplayNode,
+    targets: dict[int, Formula],
+) -> Formula:
+    result = node.target
+    for dependency in reversed(node.dependencies):
+        result = Imp(targets[dependency], result)
+    return result
+
+
 def _all_proof_nodes(proof: Proof) -> tuple[Proof, ...]:
     result: list[Proof] = []
     pending = [proof]
@@ -117,6 +148,7 @@ def test_production_import_and_records_are_neutral_and_name_free() -> None:
         "LayeredReplayNode",
         "LayeredReplayBundle",
         "LayeredReplayCandidate",
+        "intern_layered_replay_bodies",
         "compile_layered_replay",
     ]
     assert tuple(item.name for item in fields(layered.LayeredReplayNode)) == (
@@ -184,6 +216,89 @@ def test_balanced_candidate_is_only_existing_ordinary_proof_nodes() -> None:
         for node in _all_proof_nodes(candidate.certificate)
     )
     assert check((), candidate.certificate, P)
+
+
+def test_body_interning_preserves_kernel_judgments_and_reduces_objects() -> None:
+    bundle = _interning_bundle()
+    interned = layered.intern_layered_replay_bodies(bundle, P)
+
+    assert type(interned) is layered.LayeredReplayBundle
+    assert interned.root == bundle.root
+    originals = {node.node_id: node for node in bundle.nodes}
+    transformed = {node.node_id: node for node in interned.nodes}
+    targets = {node.node_id: node.target for node in bundle.nodes}
+    assert set(transformed) == set(originals)
+    for node_id, original in originals.items():
+        result = transformed[node_id]
+        body_target = _body_target(original, targets)
+        assert result.node_id == original.node_id
+        assert result.target is original.target
+        assert result.dependencies is original.dependencies
+        assert result.body == original.body
+        assert check((), original.body, body_target)
+        assert check((), result.body, body_target)
+
+    zero_chain = transformed[0].body
+    root_body = transformed[3].body
+    assert type(zero_chain) is EqTrans
+    assert type(root_body) is ImpIntro
+    assert type(root_body.body) is ImpIntro
+    assert type(root_body.body.body) is ImpIntro
+    assert root_body.body.body.body is zero_chain
+    assert zero_chain.first is zero_chain.second
+    assert type(transformed[2].body) is EqSym
+    assert transformed[2].body is not zero_chain
+    assert transformed[2].body.proof is zero_chain.first
+    assert transformed[1].body is not zero_chain.first
+
+    original_candidate = layered.compile_layered_replay(bundle, P)
+    interned_candidate = layered.compile_layered_replay(interned, P)
+    assert original_candidate is not None
+    assert interned_candidate is not None
+    assert interned_candidate.layers == original_candidate.layers
+    assert interned_candidate.package_formulas == original_candidate.package_formulas
+    assert interned_candidate.proof_nodes == original_candidate.proof_nodes
+    assert interned_candidate.proof_depth == original_candidate.proof_depth
+    assert interned_candidate.proof_objects < original_candidate.proof_objects
+    assert interned_candidate.reused_objects > original_candidate.reused_objects
+    assert check((), interned_candidate.certificate, P)
+
+
+def test_body_interning_is_deterministic_idempotent_and_fail_closed() -> None:
+    bundle = _interning_bundle()
+    permuted = replace(
+        bundle,
+        nodes=(bundle.nodes[3], bundle.nodes[2], bundle.nodes[0], bundle.nodes[1]),
+    )
+    first = layered.intern_layered_replay_bodies(bundle, P)
+    reordered = layered.intern_layered_replay_bodies(permuted, P)
+
+    assert first is not None
+    assert reordered is not None
+    first_by_id = {node.node_id: node for node in first.nodes}
+    reordered_by_id = {node.node_id: node for node in reordered.nodes}
+    assert tuple(first_by_id) == (0, 1, 2, 3)
+    assert tuple(node.node_id for node in reordered.nodes) == (3, 2, 0, 1)
+    for node_id in first_by_id:
+        assert first_by_id[node_id].body == reordered_by_id[node_id].body
+    assert first_by_id[3].body.body.body.body is first_by_id[0].body
+    assert reordered_by_id[3].body.body.body.body is reordered_by_id[0].body
+    assert layered.intern_layered_replay_bodies(first, P) is first
+
+    assert layered.intern_layered_replay_bodies(object(), P) is None
+    assert layered.intern_layered_replay_bodies(bundle, Q) is None
+    assert layered.intern_layered_replay_bodies(bundle, P, limits=True) is None
+    assert (
+        layered.intern_layered_replay_bodies(
+            bundle,
+            P,
+            limits=replace(
+                layered.DEFAULT_LAYERED_REPLAY_LIMITS,
+                max_total_body_objects=1,
+            ),
+        )
+        is None
+    )
 
 
 def test_graph_resource_target_body_and_classical_mutations_fail_closed() -> None:
