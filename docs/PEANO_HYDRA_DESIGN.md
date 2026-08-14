@@ -1024,9 +1024,84 @@ the same passing 16,925-byte diagnostic verifier receipt: SHA-256
 root
 `efe9643d7b3b99f40b9bef6042285efeaa9e5f03d145a09a580a615cd15efa4a`.
 That local postmortem is a regression oracle only, not the missing WMI
-verifier receipt; it has no result or execution authority. A fresh WMI rerun
-is pending. All dependency-vector, publication, A2, authority, and eligibility
-flags remain false.
+verifier receipt; it has no result or execution authority. No job-220218 bytes
+are promoted into the corrected result below. All dependency-vector,
+publication, A2, authority, and eligibility flags remain false.
+
+#### A2.3b corrected execution and retained evidence boundary
+
+Corrected WMI job `220220` executed from clean commit
+`720021aec7afff0463ef8dd1180db2702b415301`, tree
+`03383d9b3c5850edfeb8f3401d55116fa4cdd5a2`, and snapshot
+`64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4`.
+The hash-seed-0/1 producers exited 0 with byte-identical candidates, and the
+separately loaded hash-seed-2 verifier exited 0. The retained Slurm record is
+`220220|COMPLETED|0:0|0:0|237||4G|1|c3n1`. Execution and collection are
+classified respectively as
+`two-producer-byte-identity-and-independent-baseline-verification` and
+`completed-dual-producer-and-independent-baselines-verified`.
+
+| Evidence | Bytes | Artifact SHA-256 | Root SHA-256 | Theorem-record root |
+| --- | ---: | --- | --- | --- |
+| Candidate | 3,160,729 | `4f4965508b63d852697c94fe0e7707759b39c5cf456ec2db8aa5a5afe719f2ad` | `21f4c7a06dd8b1abf01d8eddd8c1942733f0955141ba682d53229078e15d5e85` | `6a90eee2d8a306e41b944735940044b142cf1c4f02441133c25c94111e11d336` |
+| Independent verifier | 16,925 | `50c207c4de0cabe8a50518da4d20e83925f0e1df29ffd78df05e249ea18d4396` | `ef0dfac8552789bb4dc0e6694a1704c63a8781a93a1f0d9117c6e5c6babcfbd1` | `87bef2a0d30c789424a15bb257e1bc743f74f4bfa27fb899ab59a44f4d522585` |
+| Execution receipt | 19,990 | `dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318` | `c010a79955e93b29651557977001f6f6abff7cd63ba7f1fa1b9deb2a5bc3c08b` | n/a |
+| Collection receipt | 8,841 | `d1602e23f7736482b039c3d32537fa012d91302f42d62f75ccab9c11583542a9` | `9f58b68b2fe811cfa82a25395e53b08c01cdd145b57f234d2cde0ca287cf42e5` | n/a |
+
+The verifier independently authenticates, canonically re-encodes, and
+empty-context kernel-checks exactly six full-vector baseline artifacts:
+
+| Root / route | Artifact SHA-256 | Bytes | Nodes | Depth | Cuts |
+| --- | --- | ---: | ---: | ---: | ---: |
+| `odd_add_odd` / readable | `8064d28bd99adbaa1cde42c7ebd0f94880b345c889d6afc18e4b607749310ecc` | 13,640 | 274 | 31 | 6 |
+| `odd_add_odd` / layered | `3fe6ba0a5ab6ca95a159ddb2d8fa44fd674a0eab4376069b3cc2db9f6c3c2962` | 12,709 | 269 | 37 | 3 |
+| `finite_bounded_injective_surjective` / readable | `623865d90504af44cddca3d76ac4f009be8aa289e80d2785b72b121a52954504` | 1,870,657 | 41,341 | 89 | 1,235 |
+| `finite_bounded_injective_surjective` / layered | `af1410f83a9ab66080a80311d9262341f4cbd4b136a64e889b94c7f12fc342e1` | 297,637 | 8,355 | 95 | 20 |
+| `beta_product_swap_last_invariant` / readable | `507940a3e456122fadb3b43d34891a70c91baa87615be80c1fca059e9ebd82df` | 386,189 | 7,413 | 67 | 203 |
+| `beta_product_swap_last_invariant` / layered | `fc08873008eea245be7b8b2961e1a00bf659c25dd257785d2e2345ff29fde9a1` | 118,018 | 2,011 | 79 | 9 |
+
+The evidence boundary has two layers. The execution receipt binds 44
+route-labeled exact-recipe rejection records to two real byte-identical
+producer processes. The independent verifier validates the canonical
+structure, roots, and pairing of those records into 22 unique shared root-body
+compiler observations, but it never invokes the tactic compiler. Therefore
+the execution receipt has `producer_observations_execution_bound=true`, while
+the verifier document keeps `producer_observations_execution_bound=false`,
+`negative_observations_independently_verified=false`, and
+`route_rejections_independently_verified=false`. The 44 routed records are
+not independent corroboration, and the 22 shared observations are not yet
+independently replayed or certified dependency-necessity proofs.
+
+Retention is exactly 19 nested regular files under
+`artifacts/peano-hydra/a23b-wmi-vector-audit-220220/`: two canonical result
+documents below `results/` and 17 operational files. The total is 3,248,650
+bytes. The C-sorted `<sha256>\t<bytes>\t<relative-path>\n` inventory root is
+`e9eec4b239d3f9b870695b51ace1ee8f5667071e52b3d30378ebb056d839476f`.
+No top-level result copy, transfer archive, full source snapshot, global
+ledger, or job pointer is retained. The snapshot digest is receipt-bound and
+was not independently rehashed from a retained archive. The unauthenticated
+`sacct` row has empty `MaxRSS`; no peak-memory or memory-ceiling claim follows.
+Raw job-220218 evidence is intentionally not in this successful bundle; its
+dated `unknown` roots and mismatch regressions retain the historical failure.
+
+The retained-result test source is 51,450 bytes at SHA-256
+`6a5031239729474a91bb4e1a14d1ebd4639c126e35a307e76805751df0501de4`;
+four tests passed in 2.63 seconds. The CI-sharder file passed 32 tests in 0.25
+seconds. The bounded producer-source-state, corrected-verifier, WMI-protocol,
+retained-result, and sharder release gate passed 81 tests in 17.92 seconds.
+The final CI profile has 103 weights, assigns the result test 3,500 ms, and
+models eight loads of 541,000 / 541,000 / 540,800 / 541,000 / 541,000 /
+541,000 / 541,000 / 541,000 ms.
+
+This closes only the job-220220 execution-and-retention subgate, including
+independent verification of the six baselines and structural receipts.
+`bounded_three_root_vector_audit_complete=false`. Independent replay or
+certification of the 22 negative observations, derivation and audit of a true
+optimized-construction vector, dependency-vector/global completeness,
+minimality, `optimized_best_known`, publication and publication-union,
+public-graph application, and A2 remain open. All authority, review, freeze,
+lineage, and training/retrieval/evaluation eligibility flags remain false.
+The public graph remains 1,038 edges.
 
 ### 2.4 Sealed-test law
 

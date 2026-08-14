@@ -4459,6 +4459,88 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
 - The rerun pins are verifier module/CLI/test 109,448 / 18,653 / 21,277 bytes
   at `b5f5cf39…` / `ed9e234f…` / `43ade850…`; runner/WMI-test 107,619 /
   31,983 bytes at `2332115e…` / `d93b3a12…`. The 45 focused tests and all 32
-  CI-sharder tests pass together as 77 tests in 15.27 seconds. A fresh WMI
-  rerun is pending; no prior candidate or postmortem verifier receipt is being
-  promoted to an A2.3b result.
+  CI-sharder tests pass together as 77 tests in 15.27 seconds. The corrected
+  rerun is recorded below; no job-220218 candidate or postmortem verifier
+  receipt was promoted.
+
+## 2026-08-14 — A2.3b job 220220 bounded execution and retention passed
+
+- WMI job `220220` executed the corrected frozen boundary from clean commit
+  `720021aec7afff0463ef8dd1180db2702b415301`, tree
+  `03383d9b3c5850edfeb8f3401d55116fa4cdd5a2`, and snapshot
+  `64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4`.
+  Hash-seed-0/1 producers exited 0 with byte-identical output; the separately
+  loaded seed-2 verifier exited 0. Slurm records
+  `COMPLETED|0:0|0:0|237||4G|1|c3n1`. Execution is
+  `two-producer-byte-identity-and-independent-baseline-verification`, and
+  collection is `completed-dual-producer-and-independent-baselines-verified`.
+- The 3,160,729-byte candidate has artifact/document/theorem-record identities
+  `4f4965508b63d852697c94fe0e7707759b39c5cf456ec2db8aa5a5afe719f2ad` /
+  `21f4c7a06dd8b1abf01d8eddd8c1942733f0955141ba682d53229078e15d5e85` /
+  `6a90eee2d8a306e41b944735940044b142cf1c4f02441133c25c94111e11d336`.
+  The 16,925-byte independent receipt has identities
+  `50c207c4de0cabe8a50518da4d20e83925f0e1df29ffd78df05e249ea18d4396` /
+  `ef0dfac8552789bb4dc0e6694a1704c63a8781a93a1f0d9117c6e5c6babcfbd1` /
+  `87bef2a0d30c789424a15bb257e1bc743f74f4bfa27fb899ab59a44f4d522585`.
+  Execution artifact/root identities are
+  `dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318` /
+  `c010a79955e93b29651557977001f6f6abff7cd63ba7f1fa1b9deb2a5bc3c08b`;
+  collection artifact/root identities are
+  `d1602e23f7736482b039c3d32537fa012d91302f42d62f75ccab9c11583542a9` /
+  `9f58b68b2fe811cfa82a25395e53b08c01cdd145b57f234d2cde0ca287cf42e5`.
+- The independent verifier authenticated, canonically re-encoded, and
+  empty-context kernel-checked all six full-vector baselines. Listed as
+  artifact SHA-256 and `(bytes / nodes / depth / Cuts)`, they are:
+  `odd_add_odd` readable `8064d28bd99adbaa1cde42c7ebd0f94880b345c889d6afc18e4b607749310ecc`
+  `(13,640 / 274 / 31 / 6)` and layered
+  `3fe6ba0a5ab6ca95a159ddb2d8fa44fd674a0eab4376069b3cc2db9f6c3c2962`
+  `(12,709 / 269 / 37 / 3)`;
+  `finite_bounded_injective_surjective` readable
+  `623865d90504af44cddca3d76ac4f009be8aa289e80d2785b72b121a52954504`
+  `(1,870,657 / 41,341 / 89 / 1,235)` and layered
+  `af1410f83a9ab66080a80311d9262341f4cbd4b136a64e889b94c7f12fc342e1`
+  `(297,637 / 8,355 / 95 / 20)`; and
+  `beta_product_swap_last_invariant` readable
+  `507940a3e456122fadb3b43d34891a70c91baa87615be80c1fca059e9ebd82df`
+  `(386,189 / 7,413 / 67 / 203)` and layered
+  `fc08873008eea245be7b8b2961e1a00bf659c25dd257785d2e2345ff29fde9a1`
+  `(118,018 / 2,011 / 79 / 9)`.
+- The two real producers bind 44 route-labeled exact-recipe rejections to this
+  execution. The verifier independently checks their structure and pairing
+  into 22 unique shared root-body compiler observations, but does not rerun
+  the tactic compiler. Thus the execution receipt says the observations are
+  execution-bound, while the verifier document deliberately keeps
+  `producer_observations_execution_bound=false`; both
+  `negative_observations_independently_verified` and
+  `route_rejections_independently_verified` remain false. These records are
+  producer observations, not independently replayed proofs of dependency
+  necessity.
+- Retained exactly 19 nested files under
+  `artifacts/peano-hydra/a23b-wmi-vector-audit-220220/`: two canonical result
+  documents under `results/` and 17 operational records, totaling 3,248,650
+  bytes. The C-sorted `<sha256>\t<bytes>\t<relative-path>\n` inventory root is
+  `e9eec4b239d3f9b870695b51ace1ee8f5667071e52b3d30378ebb056d839476f`.
+  No top-level result, transfer archive, full source snapshot, global ledger,
+  or job pointer was retained, so the snapshot digest is receipt-bound rather
+  than independently rehashed from a retained archive. The `sacct` row is an
+  unauthenticated scheduler observation with empty `MaxRSS`; it supports no
+  peak-memory or memory-ceiling claim. Raw job-220218 evidence is also absent:
+  its dated unknown receipts and mismatch regressions remain history, not
+  inputs to this bundle.
+- The 51,450-byte retained-result gate has SHA-256
+  `6a5031239729474a91bb4e1a14d1ebd4639c126e35a307e76805751df0501de4`;
+  its four tests passed in 2.63 seconds. The CI sharder passed 32 tests in 0.25
+  seconds. The bounded source-state, corrected-verifier, WMI-protocol,
+  retained-result, and sharder gate passed 81 tests in 17.92 seconds. The CI
+  profile now contains 103 weights, assigns this result test 3,500 ms, and
+  models eight loads of 541,000 / 541,000 / 540,800 / 541,000 / 541,000 /
+  541,000 / 541,000 / 541,000 ms.
+- This checks off only corrected job-220220 execution, independent verification
+  of the six baselines and structural receipts, and bounded retention.
+  `bounded_three_root_vector_audit_complete` remains false. Independent replay
+  or certification of the 22 negative observations, derivation and audit of a
+  genuine optimized-construction vector, global/vector completeness,
+  minimality, best-known, publication and publication-union work, graph
+  application, and A2 completion remain open. Every authority, review, freeze,
+  lineage, and training/retrieval/evaluation eligibility flag remains false;
+  the public graph remains 1,038 edges.

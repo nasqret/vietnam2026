@@ -1,0 +1,10 @@
+/work/bnaskrecki/peano-lab-training/tmp/hydra-a23b-vector-audit/64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4/source/peano-lab/py/peano_lab/library/theorems.py:1057: SyntaxWarning: invalid escape sequence '\/'
+  "forall a b. (exists k. k + a = b) \/ exists k. k + S b = a",
+/work/bnaskrecki/peano-lab-training/tmp/hydra-a23b-vector-audit/64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4/source/peano-lab/py/peano_lab/library/theorems.py:1091: SyntaxWarning: invalid escape sequence '\/'
+  "forall a b. a = b \/ ((exists k. k + S a = b) \/ exists k. k + S b = a)",
+/work/bnaskrecki/peano-lab-training/tmp/hydra-a23b-vector-audit/64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4/source/peano-lab/py/peano_lab/library/theorems.py:1384: SyntaxWarning: invalid escape sequence '\/'
+  "forall r d. (exists k. k + S r = d) -> S r = d \/ exists k. k + S (S r) = d",
+/work/bnaskrecki/peano-lab-training/tmp/hydra-a23b-vector-audit/64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4/source/peano-lab/py/peano_lab/library/theorems.py:5309: SyntaxWarning: invalid escape sequence '\/'
+  "have hsplit : i = S k \/ exists r. r + S i = S k",
+/work/bnaskrecki/peano-lab-training/tmp/hydra-a23b-vector-audit/64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4/source/peano-lab/py/peano_lab/library/finite_range_theorems.py:99: SyntaxWarning: invalid escape sequence '\/'
+  "have hsplit : i = l \/ exists h. h + S i = l",

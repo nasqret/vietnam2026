@@ -1,0 +1,213 @@
+{
+  "accounting": {
+    "allocated_cpus": 1,
+    "derived_exit_code": "0:0",
+    "elapsed_raw_seconds": 237,
+    "exit_code": "0:0",
+    "job_id": "220220",
+    "max_rss": "",
+    "node_list": "c3n1",
+    "raw_bytes": 40,
+    "raw_sha256": "7b98add5fc05e4b3bf1d338136639a971e5b4e1cf244485ff972685b14cff053",
+    "requested_memory": "4G",
+    "state": "COMPLETED"
+  },
+  "authority_claims": {
+    "a2_complete": false,
+    "dependency_vectors_complete": false,
+    "evaluation_eligible": false,
+    "freeze_ready": false,
+    "lineage_complete": false,
+    "minimality_claim": false,
+    "optimized_best_known": false,
+    "optimized_vector_independently_audited": false,
+    "proof_authority": false,
+    "public_graph_applied": false,
+    "publication_authority": false,
+    "publication_ready": false,
+    "publication_union_complete": false,
+    "publication_union_verified": false,
+    "retrieval_eligible": false,
+    "review_complete": false,
+    "theorem_admission_authority": false,
+    "training_eligible": false
+  },
+  "classification": "completed-dual-producer-and-independent-baselines-verified",
+  "collected_at": "2026-08-14T03:52:14.196352+00:00",
+  "execution_receipt": {
+    "bytes": 19990,
+    "exists": true,
+    "path": "execution-receipt.json",
+    "root_sha256": "c010a79955e93b29651557977001f6f6abff7cd63ba7f1fa1b9deb2a5bc3c08b",
+    "sha256": "dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318"
+  },
+  "execution_validation": {
+    "status": "accepted"
+  },
+  "format": "peano-hydra-a23b-wmi-collection-receipt",
+  "job_id": "220220",
+  "root_preimage": {
+    "format": "peano-hydra-a23b-wmi-collection-receipt-root-preimage",
+    "payload": {
+      "accounting": {
+        "allocated_cpus": 1,
+        "derived_exit_code": "0:0",
+        "elapsed_raw_seconds": 237,
+        "exit_code": "0:0",
+        "job_id": "220220",
+        "max_rss": "",
+        "node_list": "c3n1",
+        "raw_bytes": 40,
+        "raw_sha256": "7b98add5fc05e4b3bf1d338136639a971e5b4e1cf244485ff972685b14cff053",
+        "requested_memory": "4G",
+        "state": "COMPLETED"
+      },
+      "authority_claims": {
+        "a2_complete": false,
+        "dependency_vectors_complete": false,
+        "evaluation_eligible": false,
+        "freeze_ready": false,
+        "lineage_complete": false,
+        "minimality_claim": false,
+        "optimized_best_known": false,
+        "optimized_vector_independently_audited": false,
+        "proof_authority": false,
+        "public_graph_applied": false,
+        "publication_authority": false,
+        "publication_ready": false,
+        "publication_union_complete": false,
+        "publication_union_verified": false,
+        "retrieval_eligible": false,
+        "review_complete": false,
+        "theorem_admission_authority": false,
+        "training_eligible": false
+      },
+      "classification": "completed-dual-producer-and-independent-baselines-verified",
+      "collected_at": "2026-08-14T03:52:14.196352+00:00",
+      "execution_receipt": {
+        "bytes": 19990,
+        "exists": true,
+        "path": "execution-receipt.json",
+        "root_sha256": "c010a79955e93b29651557977001f6f6abff7cd63ba7f1fa1b9deb2a5bc3c08b",
+        "sha256": "dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318"
+      },
+      "execution_validation": {
+        "status": "accepted"
+      },
+      "format": "peano-hydra-a23b-wmi-collection-receipt",
+      "job_id": "220220",
+      "scheduler_logs": {
+        "rejections": {},
+        "stderr": {
+          "bytes": 0,
+          "exists": true,
+          "path": "peano-hydra-a23b-220220.err",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "stdout": {
+          "bytes": 436,
+          "exists": true,
+          "path": "peano-hydra-a23b-220220.out",
+          "sha256": "ce56187c8999ea6686c492745d952135bd4067275da002871e2a54f92af4adeb"
+        }
+      },
+      "source_deposit": {
+        "archive_bytes": 278735872,
+        "artifact_bytes": 438,
+        "artifact_sha256": "237ecbc732319b8215faba419fe1fe1692bafbaee907f624c6c205fcc1b18bac",
+        "git_commit": "720021aec7afff0463ef8dd1180db2702b415301",
+        "git_receipt_sha256": "384392a3a92a1e173576edb415f21f695729cdc71f81bf125afde65fce1041f6",
+        "git_tree": "03383d9b3c5850edfeb8f3401d55116fa4cdd5a2",
+        "infrastructure_sha256": "30b5cd45275d41998fa8398aa710e09d85aba4bea4b050acefdab3992fe90e56",
+        "provenance_sha256": "262147bd951e408cc365455835fed638720bbc9d9152416e6e38eb3e97fa1f35",
+        "snapshot_sha256": "64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4",
+        "source_state_sha256": "ecf037e5d684a7472c2b02c917b5962e87daef02c688967f28b05afd85e339b0",
+        "sync_timestamp": "2026-08-14T03:45:32Z"
+      },
+      "status": "passed",
+      "submission": {
+        "artifact_bytes": 553,
+        "artifact_sha256": "854c06b97bb43ec33f5679b83394a7762308d989ca9757b820329efbabecb6f2",
+        "cpus_per_task": 1,
+        "git_commit": "720021aec7afff0463ef8dd1180db2702b415301",
+        "git_receipt_sha256": "384392a3a92a1e173576edb415f21f695729cdc71f81bf125afde65fce1041f6",
+        "git_tree": "03383d9b3c5850edfeb8f3401d55116fa4cdd5a2",
+        "infrastructure_sha256": "30b5cd45275d41998fa8398aa710e09d85aba4bea4b050acefdab3992fe90e56",
+        "job_id": "220220",
+        "memory_mib": 4096,
+        "ntasks": 1,
+        "partition": "cpu_idle",
+        "provenance_sha256": "262147bd951e408cc365455835fed638720bbc9d9152416e6e38eb3e97fa1f35",
+        "sbatch_sha256": "611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100",
+        "snapshot_sha256": "64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4",
+        "source_state_sha256": "ecf037e5d684a7472c2b02c917b5962e87daef02c688967f28b05afd85e339b0",
+        "submission_timestamp": "2026-08-14T05:47:28+02:00",
+        "sync_timestamp": "2026-08-14T03:45:32Z",
+        "time_limit": "00:15:00"
+      },
+      "submitted_sbatch": {
+        "bytes": 5032,
+        "path": "peano_wmi_hydra_a23b_vector_audit.sbatch",
+        "sha256": "611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100"
+      },
+      "v": 1
+    },
+    "v": 1
+  },
+  "root_sha256": "9f58b68b2fe811cfa82a25395e53b08c01cdd145b57f234d2cde0ca287cf42e5",
+  "scheduler_logs": {
+    "rejections": {},
+    "stderr": {
+      "bytes": 0,
+      "exists": true,
+      "path": "peano-hydra-a23b-220220.err",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "bytes": 436,
+      "exists": true,
+      "path": "peano-hydra-a23b-220220.out",
+      "sha256": "ce56187c8999ea6686c492745d952135bd4067275da002871e2a54f92af4adeb"
+    }
+  },
+  "source_deposit": {
+    "archive_bytes": 278735872,
+    "artifact_bytes": 438,
+    "artifact_sha256": "237ecbc732319b8215faba419fe1fe1692bafbaee907f624c6c205fcc1b18bac",
+    "git_commit": "720021aec7afff0463ef8dd1180db2702b415301",
+    "git_receipt_sha256": "384392a3a92a1e173576edb415f21f695729cdc71f81bf125afde65fce1041f6",
+    "git_tree": "03383d9b3c5850edfeb8f3401d55116fa4cdd5a2",
+    "infrastructure_sha256": "30b5cd45275d41998fa8398aa710e09d85aba4bea4b050acefdab3992fe90e56",
+    "provenance_sha256": "262147bd951e408cc365455835fed638720bbc9d9152416e6e38eb3e97fa1f35",
+    "snapshot_sha256": "64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4",
+    "source_state_sha256": "ecf037e5d684a7472c2b02c917b5962e87daef02c688967f28b05afd85e339b0",
+    "sync_timestamp": "2026-08-14T03:45:32Z"
+  },
+  "status": "passed",
+  "submission": {
+    "artifact_bytes": 553,
+    "artifact_sha256": "854c06b97bb43ec33f5679b83394a7762308d989ca9757b820329efbabecb6f2",
+    "cpus_per_task": 1,
+    "git_commit": "720021aec7afff0463ef8dd1180db2702b415301",
+    "git_receipt_sha256": "384392a3a92a1e173576edb415f21f695729cdc71f81bf125afde65fce1041f6",
+    "git_tree": "03383d9b3c5850edfeb8f3401d55116fa4cdd5a2",
+    "infrastructure_sha256": "30b5cd45275d41998fa8398aa710e09d85aba4bea4b050acefdab3992fe90e56",
+    "job_id": "220220",
+    "memory_mib": 4096,
+    "ntasks": 1,
+    "partition": "cpu_idle",
+    "provenance_sha256": "262147bd951e408cc365455835fed638720bbc9d9152416e6e38eb3e97fa1f35",
+    "sbatch_sha256": "611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100",
+    "snapshot_sha256": "64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4",
+    "source_state_sha256": "ecf037e5d684a7472c2b02c917b5962e87daef02c688967f28b05afd85e339b0",
+    "submission_timestamp": "2026-08-14T05:47:28+02:00",
+    "sync_timestamp": "2026-08-14T03:45:32Z",
+    "time_limit": "00:15:00"
+  },
+  "submitted_sbatch": {
+    "bytes": 5032,
+    "path": "peano_wmi_hydra_a23b_vector_audit.sbatch",
+    "sha256": "611b3081f0b53d76343c2d5c684cd74aa12dbb36e0f44e3029541d476bf25100"
+  },
+  "v": 1
+}

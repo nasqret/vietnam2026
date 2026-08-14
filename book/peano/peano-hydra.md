@@ -1979,10 +1979,106 @@ This local regression diagnostic is not the missing WMI verifier receipt and
 has no retrospective execution or result authority.
 
 The refrozen module/CLI/test sizes are 109,448 / 18,653 / 21,277 bytes; the
-runner/WMI-test sizes are 107,619 / 31,983 bytes. A fresh WMI rerun is pending.
-Until it clears the corrected receipt-last path, every vector-completeness,
-independence, best-known, publication, A2, authority, and eligibility flag
-remains false.
+runner/WMI-test sizes are 107,619 / 31,983 bytes. The fresh corrected rerun is
+recorded next; it does not promote any job-220218 bytes. Every vector-
+completeness, independence, best-known, publication, A2, authority, and
+eligibility flag remains false.
+
+### The corrected rerun proves its boundary, not dependency necessity
+
+WMI job `220220` executed from clean commit
+`720021aec7afff0463ef8dd1180db2702b415301`, tree
+`03383d9b3c5850edfeb8f3401d55116fa4cdd5a2`, and snapshot
+`64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4`.
+Hash-seed-0 and hash-seed-1 producers exited successfully and generated
+byte-identical candidates. A separately loaded seed-2 verifier also exited
+successfully. The terminal scheduler row is
+`220220|COMPLETED|0:0|0:0|237||4G|1|c3n1`. The execution classification is
+`two-producer-byte-identity-and-independent-baseline-verification`; the
+collection classification is
+`completed-dual-producer-and-independent-baselines-verified`.
+
+The 3,160,729-byte candidate has artifact SHA-256, document root, and theorem-
+record root
+`4f4965508b63d852697c94fe0e7707759b39c5cf456ec2db8aa5a5afe719f2ad`,
+`21f4c7a06dd8b1abf01d8eddd8c1942733f0955141ba682d53229078e15d5e85`,
+and
+`6a90eee2d8a306e41b944735940044b142cf1c4f02441133c25c94111e11d336`.
+For the 16,925-byte independent verifier receipt those identities are
+`50c207c4de0cabe8a50518da4d20e83925f0e1df29ffd78df05e249ea18d4396`,
+`ef0dfac8552789bb4dc0e6694a1704c63a8781a93a1f0d9117c6e5c6babcfbd1`,
+and
+`87bef2a0d30c789424a15bb257e1bc743f74f4bfa27fb899ab59a44f4d522585`.
+Execution artifact/root identities are
+`dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318` /
+`c010a79955e93b29651557977001f6f6abff7cd63ba7f1fa1b9deb2a5bc3c08b`,
+and collection artifact/root identities are
+`d1602e23f7736482b039c3d32537fa012d91302f42d62f75ccab9c11583542a9` /
+`9f58b68b2fe811cfa82a25395e53b08c01cdd145b57f234d2cde0ca287cf42e5`.
+
+The verifier independently authenticates, canonically re-encodes, and checks
+in the empty kernel context six full-vector artifacts. Artifact SHA-256 and
+`(bytes / nodes / depth / Cuts)` are:
+
+- `odd_add_odd`: readable
+  `8064d28bd99adbaa1cde42c7ebd0f94880b345c889d6afc18e4b607749310ecc`
+  `(13,640 / 274 / 31 / 6)`; layered
+  `3fe6ba0a5ab6ca95a159ddb2d8fa44fd674a0eab4376069b3cc2db9f6c3c2962`
+  `(12,709 / 269 / 37 / 3)`;
+- `finite_bounded_injective_surjective`: readable
+  `623865d90504af44cddca3d76ac4f009be8aa289e80d2785b72b121a52954504`
+  `(1,870,657 / 41,341 / 89 / 1,235)`; layered
+  `af1410f83a9ab66080a80311d9262341f4cbd4b136a64e889b94c7f12fc342e1`
+  `(297,637 / 8,355 / 95 / 20)`; and
+- `beta_product_swap_last_invariant`: readable
+  `507940a3e456122fadb3b43d34891a70c91baa87615be80c1fca059e9ebd82df`
+  `(386,189 / 7,413 / 67 / 203)`; layered
+  `fc08873008eea245be7b8b2961e1a00bf659c25dd257785d2e2345ff29fde9a1`
+  `(118,018 / 2,011 / 79 / 9)`.
+
+That independent check must not be confused with replaying the negative
+compiler behavior. The two producer executions bind 44 route-labeled
+exact-recipe rejection records. The verifier checks their canonical structure
+and pairs them into 22 unique shared root-body compiler observations, but it
+does not invoke the tactic compiler. The execution receipt therefore records
+the observations as execution-bound; the verifier receipt itself
+conservatively keeps `producer_observations_execution_bound=false`,
+`negative_observations_independently_verified=false`, and
+`route_rejections_independently_verified=false`. There are 44 routed records,
+not 44 independent negative observations, and the 22 shared observations are
+not yet independently certified proofs of dependency necessity.
+
+The retained directory
+`artifacts/peano-hydra/a23b-wmi-vector-audit-220220/` contains exactly 19
+nested regular files: the two canonical documents under `results/` plus 17
+operational records. They total 3,248,650 bytes and have C-sorted
+`<sha256>\t<bytes>\t<relative-path>\n` inventory root
+`e9eec4b239d3f9b870695b51ace1ee8f5667071e52b3d30378ebb056d839476f`.
+No top-level result copy, transfer archive, complete snapshot, global ledger,
+or job pointer is retained. The snapshot digest is receipt-bound rather than
+independently rehashed from a retained archive. The unauthenticated `sacct`
+row has empty `MaxRSS`, so it does not support a peak-memory or memory-ceiling
+claim. Raw job-220218 evidence is intentionally absent; the earlier `unknown`
+receipts and mismatch regressions preserve that history without making it
+part of the successful evidence bundle.
+
+The retained-result gate source is 51,450 bytes with SHA-256
+`6a5031239729474a91bb4e1a14d1ebd4639c126e35a307e76805751df0501de4`;
+its four tests passed in 2.63 seconds. The 32 CI-sharder tests passed in 0.25
+seconds. The bounded source-state, corrected-verifier, WMI-protocol, retained-
+result, and sharder gate passed 81 tests in 17.92 seconds. The 103-entry CI
+profile assigns this result gate 3,500 ms and models eight loads of 541,000 /
+541,000 / 540,800 / 541,000 / 541,000 / 541,000 / 541,000 / 541,000 ms.
+
+Job 220220 closes only bounded execution, independent validation of six
+baselines and the structural receipts, and exact retention.
+`bounded_three_root_vector_audit_complete` remains false. Independent replay
+or certification of the 22 negative observations, derivation and independent
+audit of a genuine optimized-construction vector, global and vector
+completeness, minimality, best-known status, publication and publication
+union, graph application, and A2 completion all remain open. Every authority,
+review, freeze, lineage, and training/retrieval/evaluation eligibility flag is
+false. The public theorem graph remains 1,038 edges.
 
 ## What “matched compute” means
 

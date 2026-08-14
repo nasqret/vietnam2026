@@ -710,8 +710,90 @@ SHA-256
 and root
 `efe9643d7b3b99f40b9bef6042285efeaa9e5f03d145a09a580a615cd15efa4a`.
 That local postmortem diagnostic is not the missing WMI verifier receipt and
-has no result/execution authority. A clean fresh WMI rerun remains pending,
-and all vector, publication, A2, authority, and eligibility flags remain false.
+has no result/execution authority. No job-220218 candidate or postmortem bytes
+are promoted into the corrected result below, and all vector, publication,
+A2, authority, and eligibility flags remain false.
+
+The clean corrected rerun, WMI job `220220`, completed from commit
+`720021aec7afff0463ef8dd1180db2702b415301`, tree
+`03383d9b3c5850edfeb8f3401d55116fa4cdd5a2`, and snapshot
+`64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4`.
+Two hash-seed producers exited 0 with byte-identical output, and the separate
+seed-2 verifier exited 0. Slurm retained
+`220220|COMPLETED|0:0|0:0|237||4G|1|c3n1`. Execution and collection
+classifications are
+`two-producer-byte-identity-and-independent-baseline-verification` and
+`completed-dual-producer-and-independent-baselines-verified`.
+
+The 3,160,729-byte candidate's artifact/document/theorem-record identities
+are `4f4965508b63d852697c94fe0e7707759b39c5cf456ec2db8aa5a5afe719f2ad` /
+`21f4c7a06dd8b1abf01d8eddd8c1942733f0955141ba682d53229078e15d5e85` /
+`6a90eee2d8a306e41b944735940044b142cf1c4f02441133c25c94111e11d336`.
+The 16,925-byte verifier's identities are
+`50c207c4de0cabe8a50518da4d20e83925f0e1df29ffd78df05e249ea18d4396` /
+`ef0dfac8552789bb4dc0e6694a1704c63a8781a93a1f0d9117c6e5c6babcfbd1` /
+`87bef2a0d30c789424a15bb257e1bc743f74f4bfa27fb899ab59a44f4d522585`.
+Execution artifact/root identities are
+`dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318` /
+`c010a79955e93b29651557977001f6f6abff7cd63ba7f1fa1b9deb2a5bc3c08b`;
+collection artifact/root identities are
+`d1602e23f7736482b039c3d32537fa012d91302f42d62f75ccab9c11583542a9` /
+`9f58b68b2fe811cfa82a25395e53b08c01cdd145b57f234d2cde0ca287cf42e5`.
+
+The verifier independently authenticated and empty-context checked all six
+baseline artifacts. Artifact SHA-256 and `(bytes / nodes / depth / Cuts)` are:
+`odd_add_odd`, readable
+`8064d28bd99adbaa1cde42c7ebd0f94880b345c889d6afc18e4b607749310ecc`
+`(13,640 / 274 / 31 / 6)` and layered
+`3fe6ba0a5ab6ca95a159ddb2d8fa44fd674a0eab4376069b3cc2db9f6c3c2962`
+`(12,709 / 269 / 37 / 3)`; `finite_bounded_injective_surjective`, readable
+`623865d90504af44cddca3d76ac4f009be8aa289e80d2785b72b121a52954504`
+`(1,870,657 / 41,341 / 89 / 1,235)` and layered
+`af1410f83a9ab66080a80311d9262341f4cbd4b136a64e889b94c7f12fc342e1`
+`(297,637 / 8,355 / 95 / 20)`; and
+`beta_product_swap_last_invariant`, readable
+`507940a3e456122fadb3b43d34891a70c91baa87615be80c1fca059e9ebd82df`
+`(386,189 / 7,413 / 67 / 203)` and layered
+`fc08873008eea245be7b8b2961e1a00bf659c25dd257785d2e2345ff29fde9a1`
+`(118,018 / 2,011 / 79 / 9)`.
+
+The execution binds 44 route-labeled rejection records from the real
+producers. The verifier structurally validates and pairs them into 22 unique
+shared compiler observations, but it does not rerun the tactic compiler.
+Hence the execution receipt records them as execution-bound, while the
+verifier document keeps `producer_observations_execution_bound=false`; its two
+independent-negative flags also remain false. These are producer-observed
+exact-recipe failures, not independent proofs of dependency necessity.
+
+Exactly 19 nested files are retained under
+`artifacts/peano-hydra/a23b-wmi-vector-audit-220220/`, totaling 3,248,650
+bytes. The two canonical result files are below `results/`; 17 operational
+files retain source, deposit, submission, execution, scheduler, collection,
+and bounded logs. Their C-sorted
+`<sha256>\t<bytes>\t<relative-path>\n` inventory root is
+`e9eec4b239d3f9b870695b51ace1ee8f5667071e52b3d30378ebb056d839476f`.
+No top-level result copy, transfer archive, full snapshot, global ledger, job
+pointer, or raw job-220218 evidence is retained. The snapshot digest is thus
+receipt-bound rather than independently rehashed from a retained archive.
+The unauthenticated scheduler row has empty `MaxRSS`, so it supports no peak-
+memory or memory-ceiling claim.
+
+The exact retained-result test source is 51,450 bytes at SHA-256
+`6a5031239729474a91bb4e1a14d1ebd4639c126e35a307e76805751df0501de4`;
+its four tests passed in 2.63 seconds. The CI-sharder file passed 32 tests in
+0.25 seconds. The combined bounded source-state, corrected-verifier, WMI-
+protocol, retained-result, and sharder release gate passed 81 tests in 17.92
+seconds. The 103-entry CI profile gives the result test 3,500 ms and models
+eight loads of 541,000 / 541,000 / 540,800 / 541,000 / 541,000 / 541,000 /
+541,000 / 541,000 ms.
+
+This completes only the bounded job-220220 execution/retention subgate.
+`bounded_three_root_vector_audit_complete` remains false. Independent replay
+or certification of the 22 negatives, a genuine optimized-construction
+vector and its independent audit, vector/global completeness, minimality,
+best-known, publication and publication-union work, graph application, and A2
+remain open. Every authority, review, freeze, lineage, and eligibility flag
+remains false, and the public graph remains 1,038 edges.
 
 ### H1.2 Build lineage before rows
 
@@ -1021,7 +1103,7 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       route-specific baselines, shared-preassembly labeling, abort-on-unknown
       semantics, controlled-worker/source identities, and a no-default-write
       CLI. This checkbox records source and synthetic adversarial tests only;
-      no real audit result or artifact exists.
+      it does not claim the separately tracked later execution result.
 - [x] **A2.3b external execution infrastructure:**
       freeze the producer-independent clean-Git source-state/Git-receipt
       generator, separately loaded six-baseline kernel verifier,
@@ -1035,14 +1117,20 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       independently reconstructed layered provenance expectation, and pin the
       corrected module/CLI in the runner. This grants no scientific negative
       conclusion or result authority.
-- [ ] Execute the fixed pilot's readable-recipe and proposed layered-
-      construction direct dependency-vector audits through the frozen dual-
-      producer path. Independently kernel-check the six baselines and verify
-      the structural receipts, while retaining negative rows only as producer
-      execution observations—not independently replayed rejections—and keep
-      the direct vectors separate from their transitive closures. Job 220218
-      does not satisfy this item; a fresh rerun of the corrected boundary is
-      pending.
+- [x] **A2.3b job 220220 bounded execution and retention:** execute the fixed
+      readable-recipe and proposed layered-construction routes through the
+      frozen byte-compared dual-producer path; independently kernel-check all
+      six full-vector baselines and verify the structural receipts; bind 44
+      routed producer records into 22 shared observations; and retain the
+      exact nested 19-file evidence bundle. This closes execution and
+      retention only. The negative records are execution-bound producer
+      observations, not independently replayed rejections, and
+      `bounded_three_root_vector_audit_complete` remains false.
+- [ ] Independently replay or otherwise certify the 22 shared negative
+      compiler observations before making any dependency-necessity or
+      completed-vector-audit claim; preserve the distinction between 44
+      route-labeled records and 22 shared observations, and between direct
+      vectors and transitive closures.
 - [ ] Define and independently audit any future true optimized-construction
       direct vector; the A2.3a layered package is not a dependency-selection
       optimizer.
@@ -1056,6 +1144,9 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
 - [ ] Require deterministic documentation and leave-one-out checks for both
       readable-proof and optimized-construction dependency vectors; verify and
       publish their ordered union as the theorem graph edge set.
+- [ ] Complete the remaining A2 review, lineage, freeze, publication,
+      authority, and eligibility gates only after the vector and comparison
+      evidence above is independently complete.
 
 ### A3 — Hybrid native/Vampire assistance
 
@@ -1447,8 +1538,21 @@ and benchmark work precede GPU training.
       candidates but stopped at a verifier provenance mismatch, so its
       execution/collection receipts are `unknown` and imply no negative
       scientific result. The corrected rerun boundary passes 10 source-state,
-      13 verifier, and 22 WMI tests: 45 in 15.27 seconds. A fresh rerun remains
-      pending; no vector/A2/authority claim follows.
+      13 verifier, and 22 WMI tests: 45 in 15.27 seconds. The corrected rerun
+      result is tracked separately below; no vector/A2/authority claim follows
+      from infrastructure or job 220218.
+- [x] A2.3b job `220220` completed the bounded execution-and-retention
+      subgate from clean commit `720021ae…`, tree `03383d9b…`, and snapshot
+      `64266e10…`. Two producers were byte-identical and the separate verifier
+      independently checked all six kernel baselines and the structural
+      receipts. Candidate/verifier artifact-root pairs begin
+      `4f496550…` / `21f4c7a0…` and `50c207c4…` / `ef0dfac8…`;
+      execution/collection pairs begin `dc3cb3d4…` / `c010a799…` and
+      `d1602e23…` / `9f58b68b…`. Exactly 19 nested files totaling 3,248,650
+      bytes are retained at inventory root `e9eec4b2…`. The 44 route records
+      are paired into 22 shared execution-bound producer observations, not
+      independently replayed negatives. The public graph remains 1,038 and
+      `bounded_three_root_vector_audit_complete` remains false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1461,14 +1565,14 @@ and benchmark work precede GPU training.
       readable-recipe dependency diagnostic; A2.2 adds only three checked
       candidate construction rebuilds; A2.3a retains only the bounded
       fixed-set comparison with layered closures; and A2.3b freezes the three-
-      root/two-route/44-attempt vector-audit protocol. Its first attempt was
-      unknown at independent verification, and its corrected external
-      execution boundary is pending a fresh rerun.
-      The immediate A2 work is to execute the bounded vector audit,
-      independently verify its six baselines and structural receipts, bind
-      (without independently replaying) its negative producer observations,
-      complete any
-      evidence needed for a best-known/global comparison, and derive the
+      root/two-route/44-attempt vector-audit protocol. Its first attempt
+      remained unknown; job 220220 later completed only corrected bounded
+      execution, six-baseline verification, structural checking, and
+      retention.
+      The immediate A2 work is to independently replay or certify the 22
+      shared negative observations, define and audit a genuine optimized-
+      construction vector, complete the evidence needed for a best-known/
+      global comparison, and derive the
       verified publication union before a
       source-state request to an external owner. No 200-unit gold corpus,
       registered live-Vampire

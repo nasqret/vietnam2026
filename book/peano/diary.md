@@ -4480,6 +4480,99 @@ it grants no retrospective execution or result authority.
 
 The corrected verifier module, CLI, and test are 109,448, 18,653, and 21,277
 bytes at `b5f5cf39…`, `ed9e234f…`, and `43ade850…`. The repinned runner and WMI
-test are 107,619 and 31,983 bytes at `2332115e…` and `d93b3a12…`. A clean WMI
-rerun is still pending. Until it passes the full receipt-last boundary, every
-vector, publication, A2, authority, and eligibility flag remains false.
+test are 107,619 and 31,983 bytes at `2332115e…` and `d93b3a12…`. The clean
+corrected rerun is recorded next. Nothing from job 220218 was promoted into
+it, and every vector, publication, A2, authority, and eligibility flag stayed
+false.
+
+## 2026-08-14 — The corrected A2.3b rerun earned a bounded result
+
+Job 220220 cleared the receipt-last boundary from clean commit
+`720021aec7afff0463ef8dd1180db2702b415301`, tree
+`03383d9b3c5850edfeb8f3401d55116fa4cdd5a2`, and snapshot
+`64266e107ee03fe6833af74f7a8d4d5b645886c064f361acd49e416f72c99ae4`.
+Both producers exited 0 and wrote identical bytes under hash seeds 0 and 1;
+the separately loaded seed-2 verifier also exited 0. The retained scheduler
+row is `220220|COMPLETED|0:0|0:0|237||4G|1|c3n1`. Execution is classified
+`two-producer-byte-identity-and-independent-baseline-verification`, and
+collection is
+`completed-dual-producer-and-independent-baselines-verified`.
+
+The candidate is 3,160,729 bytes. Its artifact, document, and theorem-record
+roots are
+`4f4965508b63d852697c94fe0e7707759b39c5cf456ec2db8aa5a5afe719f2ad`,
+`21f4c7a06dd8b1abf01d8eddd8c1942733f0955141ba682d53229078e15d5e85`,
+and
+`6a90eee2d8a306e41b944735940044b142cf1c4f02441133c25c94111e11d336`.
+The 16,925-byte verifier receipt's corresponding identities are
+`50c207c4de0cabe8a50518da4d20e83925f0e1df29ffd78df05e249ea18d4396`,
+`ef0dfac8552789bb4dc0e6694a1704c63a8781a93a1f0d9117c6e5c6babcfbd1`,
+and
+`87bef2a0d30c789424a15bb257e1bc743f74f4bfa27fb899ab59a44f4d522585`.
+Execution has artifact/root identities
+`dc3cb3d4dc7dae5f842358b1649f131d019742ebeb732d4cad6e92c827b4f318` /
+`c010a79955e93b29651557977001f6f6abff7cd63ba7f1fa1b9deb2a5bc3c08b`;
+collection has
+`d1602e23f7736482b039c3d32537fa012d91302f42d62f75ccab9c11583542a9` /
+`9f58b68b2fe811cfa82a25395e53b08c01cdd145b57f234d2cde0ca287cf42e5`.
+
+The independent verifier authenticated and empty-context checked six exact
+baseline artifacts. Their artifact hashes and `(bytes / nodes / depth /
+Cuts)` are: `odd_add_odd`, readable
+`8064d28bd99adbaa1cde42c7ebd0f94880b345c889d6afc18e4b607749310ecc`
+`(13,640 / 274 / 31 / 6)` and layered
+`3fe6ba0a5ab6ca95a159ddb2d8fa44fd674a0eab4376069b3cc2db9f6c3c2962`
+`(12,709 / 269 / 37 / 3)`; `finite_bounded_injective_surjective`, readable
+`623865d90504af44cddca3d76ac4f009be8aa289e80d2785b72b121a52954504`
+`(1,870,657 / 41,341 / 89 / 1,235)` and layered
+`af1410f83a9ab66080a80311d9262341f4cbd4b136a64e889b94c7f12fc342e1`
+`(297,637 / 8,355 / 95 / 20)`; and
+`beta_product_swap_last_invariant`, readable
+`507940a3e456122fadb3b43d34891a70c91baa87615be80c1fca059e9ebd82df`
+`(386,189 / 7,413 / 67 / 203)` and layered
+`fc08873008eea245be7b8b2961e1a00bf659c25dd257785d2e2345ff29fde9a1`
+`(118,018 / 2,011 / 79 / 9)`.
+
+The important lesson is still about evidence boundaries. The two producer
+processes bind 44 route-labeled exact-recipe rejections to this run. The
+independent verifier checks their structure and pairs them into 22 unique
+shared root-body compiler observations; it does not rerun the compiler.
+Accordingly the execution receipt says the observations are execution-bound,
+while the verifier document keeps
+`producer_observations_execution_bound=false`. It also keeps both independent
+negative-verification flags false. These are reproducible producer
+observations, not independent dependency-necessity proofs.
+
+We retained exactly 19 nested files under
+`artifacts/peano-hydra/a23b-wmi-vector-audit-220220/`, totaling 3,248,650
+bytes. The two canonical result documents live below `results/`; the other 17
+files preserve the source, deposit, submission, execution, scheduler,
+collection, and bounded logs. The C-sorted
+`<sha256>\t<bytes>\t<relative-path>\n` inventory root is
+`e9eec4b239d3f9b870695b51ace1ee8f5667071e52b3d30378ebb056d839476f`.
+We did not retain a top-level result copy, transfer archive, full source
+snapshot, global ledger, or job pointer, so the snapshot digest is bound only
+through the retained receipts rather than an independently rehashed archive.
+The scheduler row is unauthenticated and `MaxRSS` is empty; we make no peak-
+memory or memory-ceiling claim. We also did not retain raw job-220218 evidence
+in this successful bundle; its `unknown` history remains in the dated
+documentation and mismatch regressions.
+
+The retained-result regression source is 51,450 bytes at SHA-256
+`6a5031239729474a91bb4e1a14d1ebd4639c126e35a307e76805751df0501de4`.
+Its four tests passed in 2.63 seconds; the 32 CI-sharder tests passed in 0.25
+seconds. Together, the bounded source-state, corrected-verifier, WMI-protocol,
+retained-result, and sharder gate passed 81 tests in 17.92 seconds. The CI
+profile now has 103 weights, gives this test 3,500 ms, and balances its eight
+modeled loads at 541,000 / 541,000 / 540,800 / 541,000 / 541,000 / 541,000 /
+541,000 / 541,000 ms.
+
+So the checkbox is deliberately narrow: corrected job-220220 execution,
+six-baseline independent verification, structural checking, and retention are
+done. `bounded_three_root_vector_audit_complete` is still false. The 22
+negative observations still need an independent replay or certification path,
+and a genuine optimized-construction vector still needs to be derived and
+audited. Completeness, minimality, best-known, publication and its union,
+public-graph application, and A2 remain open. Every authority, review, freeze,
+lineage, and eligibility flag remains false, and the public graph stays at
+1,038 edges.
