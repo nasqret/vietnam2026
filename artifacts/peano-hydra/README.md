@@ -838,6 +838,49 @@ completeness, publication and union, graph application, A2, authority,
 review/lineage/freeze, and eligibility remain false. The public graph remains
 exactly 1,038 edges.
 
+## A2.3e one-root optimized-construction comparison (source checkpoint)
+
+A2.3e is a tactic-free source protocol over four already retained and
+independently checked `odd_add_odd` artifacts. It authenticates the exact
+A2.3a and A2.3d candidate/verification pairs and reconstructs the following
+fixed universe:
+
+| candidate | bytes | nodes | depth | Cuts |
+|---|---:|---:|---:|---:|
+| retained replay | 14,977 | 302 | 32 | 7 |
+| A2.2 direct-Cut rebuild | 13,640 | 274 | 31 | 6 |
+| layered closure | 12,709 | 269 | 37 | 3 |
+| Cut-liveness | 11,958 | 240 | 30 | 5 |
+
+The componentwise frontier is `layered-closure` plus `cut-liveness`; the
+registered fixed-set tie-break selects `cut-liveness`. The layered artifact
+still has two fewer Cuts, so this is neither componentwise dominance nor a
+global/best-known comparison. The exact `[mul_add, add_comm]` vector is
+theorem-scoped and construction-derived from the independently reproduced
+A2.3d transform. It is not dependency necessity or cardinality minimality,
+and the layered package remains packaging rather than a vector optimizer.
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| [`../../training/peano_hydra/library-pilot-optimized-construction-comparison-schema-v1.json`](../../training/peano_hydra/library-pilot-optimized-construction-comparison-schema-v1.json) | 9,702 | `f927f2c0590a82495498230a7b6c159e63c8670162540fdd5283f86cccb35d54` |
+| [`../../training/peano_hydra/library_pilot_optimized_construction_comparison.py`](../../training/peano_hydra/library_pilot_optimized_construction_comparison.py) | 33,466 | `b7242039928552c1a38b23ac555d8998caa74bf4e9c7d68830cc53a8001acfd4` |
+| [`../../training/peano_hydra/library_pilot_optimized_construction_comparison_verifier.py`](../../training/peano_hydra/library_pilot_optimized_construction_comparison_verifier.py) | 35,352 | `552be2d82cda8d4b0c8c5131196e45b1904b249b2c648ddbce71b13bd11d565c` |
+| [`../../scripts/build_peano_hydra_library_pilot_optimized_construction_comparison.py`](../../scripts/build_peano_hydra_library_pilot_optimized_construction_comparison.py) | 11,136 | `0e4d228eeb4f53458226cc5e20d8dfd2249719e271021aa8fc299286f339aa0f` |
+| [`../../scripts/verify_peano_hydra_library_pilot_optimized_construction_comparison.py`](../../scripts/verify_peano_hydra_library_pilot_optimized_construction_comparison.py) | 11,633 | `c3627ce6e22b493766c72f4f5eae1085f60240487303480f8271d00d5bd8c765` |
+| [`../../peano-lab/py/tests/test_peano_hydra_library_pilot_optimized_construction_comparison.py`](../../peano-lab/py/tests/test_peano_hydra_library_pilot_optimized_construction_comparison.py) | 18,095 | `19a14d78098a2c058816fab404a8d98e09de4be5ebd52a1c20eb1539016d2bcc` |
+
+The focused test passed 27 cases in 0.54 seconds; the sharder passed 32 in
+0.18 seconds; the combined gate passed 59 in 0.68 seconds. CI has 113
+profiles, a 1,500 ms weight, and loads 549,500 / 550,000 / 549,800 / 549,500
+/ 549,500 / 550,000 / 550,000 / 549,500 ms.
+
+No A2.3e result artifact, job, fresh tactic/kernel execution, publication, or
+graph change exists at this checkpoint. Global
+`optimized_vector_independently_audited`, best-known/global comparison,
+necessity, minimality, vector completeness, publication/union, A2, authority,
+review/lineage/freeze, and eligibility remain false. The graph remains 1,038
+edges.
+
 ## H1.1b3 selected candidate page source
 
 The retained tagless source tree is

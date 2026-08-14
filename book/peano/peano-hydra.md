@@ -2407,6 +2407,54 @@ cardinality minimality, global optimization, or best-known evidence. Global
 and union, graph application, A2, authority, review/lineage/freeze, and all
 eligibility claims remain false. The graph remains 1,038 edges.
 
+### A2.3e compares one construction vector inside an exact fixed set
+
+A2.3e does not search for a new proof. It authenticates the retained A2.3a
+candidate and independent receipt, then the retained A2.3d candidate and
+independent receipt. A separate stdlib-only verifier reconstructs the exact
+four-row `odd_add_odd` table without importing tactics, the kernel, or the
+comparison producer:
+
+| candidate | bytes | nodes | depth | Cuts |
+|---|---:|---:|---:|---:|
+| retained replay | 14,977 | 302 | 32 | 7 |
+| A2.2 direct-Cut rebuild | 13,640 | 274 | 31 | 6 |
+| layered closure | 12,709 | 269 | 37 | 3 |
+| Cut-liveness | 11,958 | 240 | 30 | 5 |
+
+`layered-closure` and `cut-liveness` are both nondominated. Cut-liveness wins
+the registered representative tie-break because proof nodes come first;
+layered closure still has two fewer Cuts. The result is therefore a bounded
+fixed-set selection rather than componentwise dominance, best-known status,
+or a global optimization claim.
+
+The exact `[mul_add, add_comm]` vector is now defined and independently bound
+for the one A2.3d construction. This theorem-scoped fact does not make its two
+names logically necessary, does not establish minimum cardinality, and does
+not reclassify the A2.3a layered package as a vector optimizer. The frozen
+source table is:
+
+| path | bytes | SHA-256 |
+|---|---:|---|
+| `training/peano_hydra/library-pilot-optimized-construction-comparison-schema-v1.json` | 9,702 | `f927f2c0590a82495498230a7b6c159e63c8670162540fdd5283f86cccb35d54` |
+| `training/peano_hydra/library_pilot_optimized_construction_comparison.py` | 33,466 | `b7242039928552c1a38b23ac555d8998caa74bf4e9c7d68830cc53a8001acfd4` |
+| `training/peano_hydra/library_pilot_optimized_construction_comparison_verifier.py` | 35,352 | `552be2d82cda8d4b0c8c5131196e45b1904b249b2c648ddbce71b13bd11d565c` |
+| `scripts/build_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,136 | `0e4d228eeb4f53458226cc5e20d8dfd2249719e271021aa8fc299286f339aa0f` |
+| `scripts/verify_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,633 | `c3627ce6e22b493766c72f4f5eae1085f60240487303480f8271d00d5bd8c765` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_optimized_construction_comparison.py` | 18,095 | `19a14d78098a2c058816fab404a8d98e09de4be5ebd52a1c20eb1539016d2bcc` |
+
+The focused test passed 27 cases in 0.54 seconds; the sharder passed 32 in
+0.18 seconds; the combined gate passed 59 in 0.68 seconds. CI has 113
+profiles, a 1,500 ms weight, and modeled loads 549,500 / 550,000 / 549,800 /
+549,500 / 549,500 / 550,000 / 550,000 / 549,500 ms.
+
+This is source readiness only. No A2.3e result has been retained, and no job,
+fresh tactic/kernel execution, publication, or graph mutation occurred.
+Global `optimized_vector_independently_audited`, best-known/global comparison,
+necessity, minimality, vector completeness, publication/union, A2, authority,
+review/lineage/freeze, and eligibility remain false. The graph remains 1,038
+edges.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

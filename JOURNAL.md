@@ -4875,3 +4875,46 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   `optimized_vector_independently_audited`, vector completeness, publication
   and its union, graph application, A2, authority, review/lineage/freeze, and
   all eligibility claims remain false. The public graph remains 1,038 edges.
+
+## 2026-08-14 — A2.3e one-root fixed-set comparison protocol frozen
+
+- Added a tactic-free aggregate over the exact retained `odd_add_odd` A2.3a
+  candidate/verification pair and A2.3d candidate/verification pair. The
+  source protocol authenticates those four predecessor files, reconstructs
+  exactly four proof rows, and independently recomputes the four-axis
+  componentwise comparison without importing a producer, tactic engine, or
+  kernel.
+- The registered rows are retained replay 14,977/302/32/7,
+  A2.2 direct-Cut rebuild 13,640/274/31/6, layered closure
+  12,709/269/37/3, and Cut-liveness 11,958/240/30/5 for
+  bytes/nodes/depth/Cuts. The exact frontier is `layered-closure` plus
+  `cut-liveness`; the deterministic fixed-set tie-break selects
+  `cut-liveness`. It is not componentwise dominant because the layered proof
+  has two fewer Cuts.
+- The protocol records `[mul_add, add_comm]` as one theorem-scoped,
+  construction-derived vector whose A2.3d derivation was independently
+  reproduced. It does not reclassify the layered package as an optimizer and
+  does not convert structural Cut use into theorem-level necessity or
+  minimality.
+- Frozen source identities are:
+
+  | path | bytes | SHA-256 |
+  |---|---:|---|
+  | `training/peano_hydra/library-pilot-optimized-construction-comparison-schema-v1.json` | 9,702 | `f927f2c0590a82495498230a7b6c159e63c8670162540fdd5283f86cccb35d54` |
+  | `training/peano_hydra/library_pilot_optimized_construction_comparison.py` | 33,466 | `b7242039928552c1a38b23ac555d8998caa74bf4e9c7d68830cc53a8001acfd4` |
+  | `training/peano_hydra/library_pilot_optimized_construction_comparison_verifier.py` | 35,352 | `552be2d82cda8d4b0c8c5131196e45b1904b249b2c648ddbce71b13bd11d565c` |
+  | `scripts/build_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,136 | `0e4d228eeb4f53458226cc5e20d8dfd2249719e271021aa8fc299286f339aa0f` |
+  | `scripts/verify_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,633 | `c3627ce6e22b493766c72f4f5eae1085f60240487303480f8271d00d5bd8c765` |
+  | `peano-lab/py/tests/test_peano_hydra_library_pilot_optimized_construction_comparison.py` | 18,095 | `19a14d78098a2c058816fab404a8d98e09de4be5ebd52a1c20eb1539016d2bcc` |
+
+- The focused gate passed 27 tests in 0.54 seconds; the sharder passed 32 in
+  0.18 seconds; together they passed 59 in 0.68 seconds. CI now has 113
+  explicit profiles, assigns 1,500 ms to the new test, and models loads of
+  549,500 / 550,000 / 549,800 / 549,500 / 549,500 / 550,000 / 550,000 /
+  549,500 ms.
+- This is source/protocol readiness only. No A2.3e result artifact, WMI job,
+  tactic execution, fresh kernel execution, publication, or graph mutation
+  occurred. `optimized_vector_independently_audited` remains false globally;
+  best-known, global comparison, necessity, minimality, vector completeness,
+  publication/union, A2, authority, review/lineage/freeze, and eligibility
+  remain open/false. The public graph remains 1,038 edges.

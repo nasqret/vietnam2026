@@ -4898,3 +4898,46 @@ best-known status. Global `optimized_vector_independently_audited`, vector
 completeness, publication/union, graph application, A2, authority,
 review/lineage/freeze, and eligibility remain false. The graph remains 1,038
 edges.
+
+## 2026-08-14 — Compare the construction without calling it globally best
+
+A2.3d finally gave us a genuine construction-derived direct vector for one
+theorem, but that did not answer the comparison question. A2.3e now asks the
+smallest honest follow-up: among four exact retained `odd_add_odd` artifacts,
+what is the componentwise frontier, and which member wins the old deterministic
+tie-break?
+
+The answer is deliberately two-dimensional in spirit. Cut-liveness is smaller
+than retained replay, the A2.2 rebuild, and layered closure in bytes, proof
+nodes, and depth. Layered closure still uses only three Cuts, versus five for
+Cut-liveness. The frontier therefore has two members. The registered tie-break
+selects Cut-liveness because it starts with proof nodes, but that is a
+fixed-universe representative—not “best known,” not global dominance, and not
+a lower bound.
+
+The source protocol and separate stdlib-only verifier authenticate the exact
+A2.3a and A2.3d candidate/receipt pairs. They derive
+`[mul_add, add_comm]` only from the independently reproduced A2.3d receipt and
+never import tactics, the kernel, or the producer being checked. Their frozen
+files are:
+
+| path | bytes | SHA-256 |
+|---|---:|---|
+| `training/peano_hydra/library-pilot-optimized-construction-comparison-schema-v1.json` | 9,702 | `f927f2c0590a82495498230a7b6c159e63c8670162540fdd5283f86cccb35d54` |
+| `training/peano_hydra/library_pilot_optimized_construction_comparison.py` | 33,466 | `b7242039928552c1a38b23ac555d8998caa74bf4e9c7d68830cc53a8001acfd4` |
+| `training/peano_hydra/library_pilot_optimized_construction_comparison_verifier.py` | 35,352 | `552be2d82cda8d4b0c8c5131196e45b1904b249b2c648ddbce71b13bd11d565c` |
+| `scripts/build_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,136 | `0e4d228eeb4f53458226cc5e20d8dfd2249719e271021aa8fc299286f339aa0f` |
+| `scripts/verify_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,633 | `c3627ce6e22b493766c72f4f5eae1085f60240487303480f8271d00d5bd8c765` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_optimized_construction_comparison.py` | 18,095 | `19a14d78098a2c058816fab404a8d98e09de4be5ebd52a1c20eb1539016d2bcc` |
+
+The 27 focused tests passed in 0.54 seconds; 32 sharder tests passed in 0.18;
+the combined gate was 59 in 0.68. The 113-entry profile gives the new test
+1,500 ms and produces loads 549,500 / 550,000 / 549,800 / 549,500 / 549,500
+/ 550,000 / 550,000 / 549,500 ms.
+
+This checkpoint freezes source only. There is no A2.3e retained result or job,
+no fresh proof or kernel execution, no publication, and no graph change.
+Global `optimized_vector_independently_audited`, necessity, minimality,
+best-known/global comparison, vector completeness, publication/union, A2,
+authority, review/lineage/freeze, and eligibility stay false. The graph stays
+at 1,038 edges.

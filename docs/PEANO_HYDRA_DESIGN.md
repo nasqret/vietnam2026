@@ -1481,6 +1481,49 @@ publication/union, graph application, A2, authority, review/lineage/freeze,
 and all eligibility claims remain false; the public graph remains 1,038
 edges.
 
+#### A2.3e one-root fixed-set comparison boundary
+
+A2.3e is a standard-library-only aggregation boundary. It authenticates the
+exact retained A2.3a candidate and kernel-verification receipt plus the exact
+retained A2.3d candidate and reconstruction receipt. It performs no tactic or
+kernel execution. Its producer and separately authored verifier independently
+construct the same four-row `odd_add_odd` comparison:
+
+| construction | artifact bytes | proof nodes | proof depth | Cut nodes |
+|---|---:|---:|---:|---:|
+| retained replay | 14,977 | 302 | 32 | 7 |
+| A2.2 direct-Cut rebuild | 13,640 | 274 | 31 | 6 |
+| layered closure | 12,709 | 269 | 37 | 3 |
+| A2.3d Cut-liveness | 11,958 | 240 | 30 | 5 |
+
+The exact frontier is `[layered-closure, cut-liveness]`; the deterministic
+representative tie-break selects `cut-liveness`. This does not imply global
+coverage or dominance: layered closure remains better on Cut count. The
+positive vector claim is explicitly one theorem and one construction:
+`[mul_add, add_comm]` was independently reproduced by the A2.3d verifier and
+is authenticated by the aggregate. The layered package remains a packaging
+compiler, not a dependency-selection optimizer.
+
+| file | bytes | SHA-256 |
+|---|---:|---|
+| `training/peano_hydra/library-pilot-optimized-construction-comparison-schema-v1.json` | 9,702 | `f927f2c0590a82495498230a7b6c159e63c8670162540fdd5283f86cccb35d54` |
+| `training/peano_hydra/library_pilot_optimized_construction_comparison.py` | 33,466 | `b7242039928552c1a38b23ac555d8998caa74bf4e9c7d68830cc53a8001acfd4` |
+| `training/peano_hydra/library_pilot_optimized_construction_comparison_verifier.py` | 35,352 | `552be2d82cda8d4b0c8c5131196e45b1904b249b2c648ddbce71b13bd11d565c` |
+| `scripts/build_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,136 | `0e4d228eeb4f53458226cc5e20d8dfd2249719e271021aa8fc299286f339aa0f` |
+| `scripts/verify_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,633 | `c3627ce6e22b493766c72f4f5eae1085f60240487303480f8271d00d5bd8c765` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_optimized_construction_comparison.py` | 18,095 | `19a14d78098a2c058816fab404a8d98e09de4be5ebd52a1c20eb1539016d2bcc` |
+
+The focused gate passes 27 tests in 0.54 seconds; the sharder passes 32 in
+0.18 seconds; together they pass 59 in 0.68 seconds. The 113-entry CI profile
+assigns 1,500 ms and models loads 549,500 / 550,000 / 549,800 / 549,500 /
+549,500 / 550,000 / 550,000 / 549,500 ms.
+
+This boundary is source readiness, not a retained result. Global
+`optimized_vector_independently_audited`, best-known/global comparison,
+dependency necessity, logical/cardinality minimality, vector completeness,
+publication/union, graph application, A2, authority, review/lineage/freeze,
+and eligibility remain false. The graph remains 1,038 edges.
+
 ### 2.4 Sealed-test law
 
 The unit of separation is a mathematical **lineage**, not a row or filename.

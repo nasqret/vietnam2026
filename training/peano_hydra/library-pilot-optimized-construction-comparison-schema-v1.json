@@ -1,0 +1,263 @@
+{
+  "algorithm": {
+    "candidate_order": [
+      "retained-replay",
+      "a2.2-direct-cut-rebuild",
+      "layered-closure",
+      "cut-liveness"
+    ],
+    "comparison_axes": [
+      "artifact_bytes",
+      "proof_nodes",
+      "proof_depth",
+      "cut_nodes"
+    ],
+    "id": "fixed-one-root-four-candidate-componentwise-comparison-v1",
+    "representative_tie_break": [
+      "proof_nodes",
+      "proof_depth",
+      "cut_nodes",
+      "artifact_bytes",
+      "candidate_kind_order",
+      "artifact_sha256",
+      "candidate_id"
+    ],
+    "scope": "exact odd_add_odd retained candidate universe only",
+    "source_contract": [
+      "authenticate the exact retained A2.3a candidate and independent verification receipt",
+      "authenticate the exact retained A2.3d candidate and independent reconstruction receipt",
+      "join the four exact odd_add_odd artifact identities and metrics without rebuilding or executing tactics",
+      "derive the construction direct vector only from the A2.3d independent receipt",
+      "compute the componentwise frontier and deterministic representative over the fixed four-candidate universe"
+    ]
+  },
+  "canonical_json": {
+    "allow_duplicate_keys": false,
+    "allow_floats": false,
+    "allow_nonfinite": false,
+    "encoding": "utf-8",
+    "key_order": "lexicographic",
+    "separators": [
+      ",",
+      ":"
+    ],
+    "terminal_newline": true
+  },
+  "claim_boundary": {
+    "false_claims": [
+      "a2_complete",
+      "authority_granted",
+      "best_known",
+      "bounded_three_root_vector_audit_complete",
+      "dependency_minimality_established",
+      "dependency_necessity_established",
+      "dependency_vectors_complete",
+      "evaluation_eligible",
+      "freeze_complete",
+      "global_comparison_complete",
+      "global_optimized_vector_audit_complete",
+      "human_review_complete",
+      "kernel_artifacts_reexecuted",
+      "lineage_complete",
+      "logical_minimality_independently_verified",
+      "optimized_best_known",
+      "optimized_vector_independently_audited",
+      "producer_git_verified",
+      "public_graph_applied",
+      "publication_applied",
+      "publication_union_complete",
+      "publication_union_verified",
+      "research_evaluation_eligible",
+      "retrieval_eligible",
+      "route_rejections_independently_verified",
+      "training_eligible"
+    ],
+    "interpretation": [
+      "construction_direct_vector_independently_reproduced refers only to odd_add_odd and the exact A2.3d Cut-liveness construction",
+      "fixed_set_representative means only the deterministic representative of four named retained artifacts",
+      "the layered candidate is packaging and is not reclassified as a dependency-selection optimizer",
+      "the Cut-liveness vector is construction-derived and is not a theorem-level necessity or cardinality-minimality result",
+      "the comparison does not search outside the fixed candidate universe and therefore grants no best-known or global claim",
+      "no publication, graph, A2, authority, review, freeze, lineage, training, retrieval, or evaluation status follows"
+    ],
+    "scoped_true_claims": [
+      "construction_direct_vector_independently_reproduced",
+      "fixed_one_root_candidate_universe_authenticated",
+      "fixed_set_pareto_frontier_computed",
+      "fixed_set_representative_selected",
+      "theorem_scoped_construction_vector_audit_complete",
+      "upstream_independent_kernel_receipts_authenticated"
+    ]
+  },
+  "controlled_runtime": {
+    "implementation": "CPython",
+    "major": 3,
+    "minor": 12,
+    "process_flags": [
+      "-B",
+      "-P",
+      "-s",
+      "-S"
+    ],
+    "python_environment_keys_absent": [
+      "PYTHONCASEOK",
+      "PYTHONHOME",
+      "PYTHONINSPECT",
+      "PYTHONOPTIMIZE",
+      "PYTHONPATH",
+      "PYTHONSTARTUP",
+      "PYTHONUSERBASE",
+      "PYTHONWARNINGS"
+    ],
+    "required_hash_seed": "0"
+  },
+  "expected_comparison": {
+    "candidate_count": 4,
+    "nondominated_candidate_ids_in_input_order": [
+      "layered-closure",
+      "cut-liveness"
+    ],
+    "representative_candidate_id": "cut-liveness"
+  },
+  "expected_theorem": {
+    "candidates": [
+      {
+        "artifact_sha256": "7ecd5c3f4ac81e800fc5d14b07758681b78f66a868d3d265a811c725aa6558c7",
+        "candidate_id": "retained-replay",
+        "candidate_kind_order": 0,
+        "direct_dependencies": [
+          "mul_add",
+          "add_succ_left",
+          "add_assoc",
+          "add_comm"
+        ],
+        "direct_dependencies_lf_sha256": "9bb59dbdeb07badb9f8ca9d0cc951b71f38dbf7c3edcb1b189d53efcba1708cc",
+        "fuel": 2432,
+        "metrics": {
+          "artifact_bytes": 14977,
+          "cut_nodes": 7,
+          "proof_depth": 32,
+          "proof_nodes": 302
+        },
+        "proof_term_sha256": "0199da96fdf6834e9c1affbc343a62e312c497c9a9c014904bf8cdd8ce5f5f38",
+        "surface_basis": "retained-manifest-literal-direct-cut-spine"
+      },
+      {
+        "artifact_sha256": "8064d28bd99adbaa1cde42c7ebd0f94880b345c889d6afc18e4b607749310ecc",
+        "candidate_id": "a2.2-direct-cut-rebuild",
+        "candidate_kind_order": 1,
+        "direct_dependencies": [
+          "mul_add",
+          "add_assoc",
+          "add_comm"
+        ],
+        "direct_dependencies_lf_sha256": "8989343391d95d3fb8ac8e6bd028e17a86a81e6395daabf981e9739adae0cbbb",
+        "fuel": 2208,
+        "metrics": {
+          "artifact_bytes": 13640,
+          "cut_nodes": 6,
+          "proof_depth": 31,
+          "proof_nodes": 274
+        },
+        "proof_term_sha256": "4067a32d9787024c486b6162a041556a9a07620630d6507920e760eb99f4b996",
+        "surface_basis": "a2.2-rebuilt-literal-direct-cut-spine"
+      },
+      {
+        "artifact_sha256": "3fe6ba0a5ab6ca95a159ddb2d8fa44fd674a0eab4376069b3cc2db9f6c3c2962",
+        "candidate_id": "layered-closure",
+        "candidate_kind_order": 2,
+        "direct_dependencies": [
+          "mul_add",
+          "add_assoc",
+          "add_comm"
+        ],
+        "direct_dependencies_lf_sha256": "8989343391d95d3fb8ac8e6bd028e17a86a81e6395daabf981e9739adae0cbbb",
+        "fuel": 2168,
+        "metrics": {
+          "artifact_bytes": 12709,
+          "cut_nodes": 3,
+          "proof_depth": 37,
+          "proof_nodes": 269
+        },
+        "proof_term_sha256": "aacd19d627ef6d8fc685fa53b13bcec637f3595e5fc5eb91e8ca6fdb40a9d2ad",
+        "surface_basis": "modular-input-graph-not-literal-final-certificate-cut-spine"
+      },
+      {
+        "artifact_sha256": "c606af87e62b2e4d94303a0c8313efa9033d91c26321f7392351f471927ddc22",
+        "candidate_id": "cut-liveness",
+        "candidate_kind_order": 3,
+        "direct_dependencies": [
+          "mul_add",
+          "add_comm"
+        ],
+        "direct_dependencies_lf_sha256": "ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4",
+        "fuel": 1936,
+        "metrics": {
+          "artifact_bytes": 11958,
+          "cut_nodes": 5,
+          "proof_depth": 30,
+          "proof_nodes": 240
+        },
+        "proof_term_sha256": "5c480eb51b7bd0f1f0f8b3485cc071dc1f78aea2baace449533cad27d6dcf6b4",
+        "surface_basis": "a2.3d-transformed-literal-direct-cut-spine"
+      }
+    ],
+    "construction_direct_dependencies": [
+      "mul_add",
+      "add_comm"
+    ],
+    "construction_direct_dependencies_lf_sha256": "ca9176e5c542ed28309d630ef0cb06e69f4edad391a3505e498207b83ac830c4",
+    "formula_sha256": "4d2aa6b4e387657e562641830dab2953890b5493d6e6858b6c36d73b06786c31",
+    "index": 256,
+    "name": "odd_add_odd",
+    "transitive_closure": [
+      "zero_add",
+      "add_succ_left",
+      "add_comm",
+      "add_assoc",
+      "mul_add"
+    ],
+    "transitive_closure_lf_sha256": "a4abec5d9eb955ed95f6eea761c96c3de0166b3df3c64fe8e898d8766ed5c5f2"
+  },
+  "fixed_inputs": [
+    {
+      "artifact_bytes": 848463,
+      "artifact_sha256": "3e989784d371c3383fa5e428df8755d1e94d4c3386328746751981a8a77cab5b",
+      "label": "a2.3a-candidate",
+      "path": "artifacts/peano-hydra/l0-optimizer-comparison-pilot-candidate-v1.json",
+      "root_sha256": "90a3d97a466dc7b1c9e6032b1b56b8ede3fcece8d56a4b39f2d4e5f34dbeb770"
+    },
+    {
+      "artifact_bytes": 18327,
+      "artifact_sha256": "6a7942147b8227c61a0de8a8f533653a6d727efe7843a52f3b524f1c47ac084a",
+      "label": "a2.3a-independent-verification",
+      "path": "artifacts/peano-hydra/l0-optimizer-comparison-pilot-independent-verification-v1.json",
+      "root_sha256": "e21290f654c1a30e0bdf79e796a8ca1da6ad3aa6a1cb1d8ba34d3d376de052dc"
+    },
+    {
+      "artifact_bytes": 74579,
+      "artifact_sha256": "a9077a7b272930477b93c48baef8b14fe0e443627c52177efa863ed0c18375e0",
+      "label": "a2.3d-candidate",
+      "path": "artifacts/peano-hydra/a23d-wmi-cut-liveness-220246/results/l0-pilot-dependency-vector-cut-liveness-candidate-v1.json",
+      "root_sha256": "fd0497da5ea0c12ecb14fa168637ea6d54006ce9b9295010e879df37f5dcd835"
+    },
+    {
+      "artifact_bytes": 12737,
+      "artifact_sha256": "8f6531d3a0544a6d308ebd0abf7e41ed2436984758e76e66797ff1023e0a2821",
+      "label": "a2.3d-independent-verification",
+      "path": "artifacts/peano-hydra/a23d-wmi-cut-liveness-220246/results/l0-pilot-dependency-vector-cut-liveness-independent-verification-v1.json",
+      "root_sha256": "b3c253674f488eeed1e5a14e4be6632b0fe6ed946cf611ee0b3fde66f79acad7"
+    }
+  ],
+  "format": "peano-hydra-library-pilot-optimized-construction-comparison-schema",
+  "id": "peano-hydra-library-pilot-optimized-construction-comparison-schema-v1",
+  "limits": {
+    "max_document_bytes": 1048576,
+    "max_input_bytes": 1048576,
+    "max_json_depth": 96,
+    "max_json_nodes": 250000,
+    "max_schema_bytes": 131072
+  },
+  "logic_mode": "intuitionistic",
+  "v": 1
+}

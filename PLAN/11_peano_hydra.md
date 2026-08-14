@@ -1081,6 +1081,39 @@ vector completeness, publication/union, graph application, A2, authority,
 review/lineage/freeze, and eligibility remain open/false. The graph stays
 1,038 edges.
 
+#### A2.3e one-root construction-vector comparison source protocol
+
+The A2.3e source tranche authenticates the exact retained A2.3a
+candidate/independent receipt and A2.3d candidate/independent receipt. It then
+reconstructs the exact four `odd_add_odd` rows without tactics or a fresh
+kernel run. Their bytes/nodes/depth/Cuts are 14,977/302/32/7 for retained
+replay, 13,640/274/31/6 for the A2.2 direct-Cut rebuild,
+12,709/269/37/3 for layered closure, and 11,958/240/30/5 for Cut-liveness.
+
+The independently recomputed frontier is `[layered-closure, cut-liveness]`.
+The registered tie-break selects `cut-liveness`, while the layered artifact
+still has two fewer Cuts. The protocol therefore binds `[mul_add, add_comm]`
+as one theorem-scoped construction vector whose A2.3d derivation was
+independently reproduced, but it makes no componentwise-dominance,
+best-known, global-optimization, necessity, or minimality claim.
+
+| source | bytes | SHA-256 |
+|---|---:|---|
+| `training/peano_hydra/library-pilot-optimized-construction-comparison-schema-v1.json` | 9,702 | `f927f2c0590a82495498230a7b6c159e63c8670162540fdd5283f86cccb35d54` |
+| `training/peano_hydra/library_pilot_optimized_construction_comparison.py` | 33,466 | `b7242039928552c1a38b23ac555d8998caa74bf4e9c7d68830cc53a8001acfd4` |
+| `training/peano_hydra/library_pilot_optimized_construction_comparison_verifier.py` | 35,352 | `552be2d82cda8d4b0c8c5131196e45b1904b249b2c648ddbce71b13bd11d565c` |
+| `scripts/build_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,136 | `0e4d228eeb4f53458226cc5e20d8dfd2249719e271021aa8fc299286f339aa0f` |
+| `scripts/verify_peano_hydra_library_pilot_optimized_construction_comparison.py` | 11,633 | `c3627ce6e22b493766c72f4f5eae1085f60240487303480f8271d00d5bd8c765` |
+| `peano-lab/py/tests/test_peano_hydra_library_pilot_optimized_construction_comparison.py` | 18,095 | `19a14d78098a2c058816fab404a8d98e09de4be5ebd52a1c20eb1539016d2bcc` |
+
+The focused source gate passed 27 tests in 0.54 seconds, the sharder passed 32
+in 0.18 seconds, and the combined gate passed 59 in 0.68 seconds. CI has 113
+profiles, assigns 1,500 ms to the new test, and models loads 549,500 / 550,000
+/ 549,800 / 549,500 / 549,500 / 550,000 / 550,000 / 549,500 ms. No A2.3e
+result is retained yet. Global `optimized_vector_independently_audited`,
+comparison completeness, publication/union, graph application, A2, authority,
+review/lineage/freeze, and eligibility remain false; the graph stays 1,038.
+
 ### H1.2 Build lineage before rows
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
@@ -1453,9 +1486,15 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       closes only the construction-derived one-root vector; it grants no
       necessity, route-rejection, minimality, global optimization, best-known,
       completeness, publication, A2, or authority claim.
-- [ ] Define and independently audit any future true optimized-construction
-      direct vector; the A2.3a layered package is not a dependency-selection
-      optimizer.
+- [x] **A2.3e one-root construction-vector comparison source readiness:**
+      define `[mul_add, add_comm]` as the exact `odd_add_odd` A2.3d
+      construction vector, authenticate its independent reconstruction, and
+      compare it against the three exact A2.3a artifacts with a separately
+      implemented stdlib-only verifier. The A2.3a layered package remains
+      packaging rather than a dependency-selection optimizer, and the global
+      `optimized_vector_independently_audited` field remains false.
+- [ ] Execute and retain the exact A2.3e aggregate and independent receipt;
+      source/synthetic readiness alone is not a retained comparison result.
 - [ ] Complete the comparison evidence required for any `best-known` or global
       A2 claim beyond the fixed three-candidate pilot.
 - [ ] Compile accepted units into reviewable theorem proposals containing
@@ -1921,6 +1960,12 @@ and benchmark work precede GPU training.
       bytes are retained at inventory root `db3914f5…`. Necessity,
       minimality, global optimization, best-known, completeness, publication,
       A2, authority, and eligibility remain false.
+- [x] A2.3e source readiness now binds the independently reproduced
+      `[mul_add, add_comm]` construction vector into an exact four-artifact
+      `odd_add_odd` comparison. The frontier contains layered closure and
+      Cut-liveness; Cut-liveness is only the fixed-set representative. No
+      A2.3e result is retained, and every global/best-known/publication claim
+      remains false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1942,10 +1987,9 @@ and benchmark work precede GPU training.
       froze and executed only a one-root proof-producing Cut-liveness boundary;
       job 220246 retains that scoped result without promoting any global
       optimized-vector or necessity claim.
-      The immediate A2 work is to define and independently audit a genuine
-      optimized-construction vector, establish any separately claimed route or
-      dependency necessity, complete the evidence needed for a best-known/
-      global comparison, and derive the
+      The immediate A2 work is to execute and retain the exact A2.3e aggregate,
+      establish any separately claimed route or dependency necessity, complete
+      the evidence needed for a best-known/global comparison, and derive the
       verified publication union before a
       source-state request to an external owner. No 200-unit gold corpus,
       registered live-Vampire
