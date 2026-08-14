@@ -1518,7 +1518,40 @@ The focused gate passes 27 tests in 0.54 seconds; the sharder passes 32 in
 assigns 1,500 ms and models loads 549,500 / 550,000 / 549,800 / 549,500 /
 549,500 / 550,000 / 550,000 / 549,500 ms.
 
-This boundary is source readiness, not a retained result. Global
+The source boundary was subsequently executed and retained under the following
+equally narrow local-result boundary.
+
+#### A2.3e retained local-result boundary
+
+The executed source identity is commit
+`7e0c24ee917f859551452b0a2a41f73dd18e51d7`, tree
+`64c25f1801630eb7a4864034cf6cbac7b8cd2378`. Controlled CPython 3.12
+`-B -P -s -S` repeat launches require byte identity for both the candidate and
+the separate stdlib-verifier receipt. The candidate is 14,953 bytes at
+artifact SHA-256
+`213107ea9d940f3cbd998e3deb22bdae3e6a1a9aaa4ab945bfbea9899e25cd08`
+and root `054a1f78ca16647f5a6b003570b20791295a4b5e9f7b127de170f4e6e1e7de03`.
+The receipt is 11,247 bytes at artifact SHA-256
+`1c1075c469550c5aef4e4500819a548ade66ca5166a811bc0dc391c6fecd23bb`
+and root `d62c417f1eb5cf8597c7ee8492e2b3610fdfd834c0f9ef474f110d2f9d963c8c`.
+
+The retention root is
+`artifacts/peano-hydra/a23e-local-fixed-comparison-7e0c24e/`: exactly two
+0644 files / 26,200 bytes, 0755 directories, no symlinks, and C-sorted
+inventory root
+`b70e6c34c7954551cd21a812ef12a21668718261a31e8c0f255487eff54b37ad`.
+The retained-result test is 13,218 bytes with SHA-256
+`6a34dca20de82408cfd3ad10b8a5c570109c6f745f68a9d83e51d6cb24b95def`;
+4 tests pass in 0.36 seconds, the 32-test sharder passes in 0.17 seconds, and
+the 63-test bounded source/result/sharder gate passes in 0.92 seconds. The CI
+profile has 114 entries, assigns 1,500 ms to the result, and models loads
+550,500 / 550,000 / 549,800 / 550,000 / 550,000 / 550,000 / 549,500 /
+549,500 ms.
+
+This boundary has no WMI job, network, tactic execution, fresh kernel
+execution, or execution receipt. Duplicate launches show deterministic output
+only. The stdlib verifier independently reconstructs structure and comparison,
+not tactic/kernel or producer semantics. Global
 `optimized_vector_independently_audited`, best-known/global comparison,
 dependency necessity, logical/cardinality minimality, vector completeness,
 publication/union, graph application, A2, authority, review/lineage/freeze,

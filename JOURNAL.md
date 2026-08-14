@@ -4912,9 +4912,42 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   explicit profiles, assigns 1,500 ms to the new test, and models loads of
   549,500 / 550,000 / 549,800 / 549,500 / 549,500 / 550,000 / 550,000 /
   549,500 ms.
-- This is source/protocol readiness only. No A2.3e result artifact, WMI job,
-  tactic execution, fresh kernel execution, publication, or graph mutation
-  occurred. `optimized_vector_independently_audited` remains false globally;
-  best-known, global comparison, necessity, minimality, vector completeness,
-  publication/union, A2, authority, review/lineage/freeze, and eligibility
-  remain open/false. The public graph remains 1,038 edges.
+- This source checkpoint did not itself execute or retain the aggregate. The
+  bounded local result below now closes that separate subgate without changing
+  any global comparison, publication, graph, A2, or authority claim.
+
+## 2026-08-15 — A2.3e fixed-set aggregate executed and retained locally
+
+- From clean source commit `7e0c24ee917f859551452b0a2a41f73dd18e51d7`
+  (tree `64c25f1801630eb7a4864034cf6cbac7b8cd2378`), controlled
+  CPython 3.12 `-B -P -s -S` launches rebuilt the exact one-root/four-candidate
+  aggregate and ran the separately authored stdlib-only verifier. Repeated
+  build and verifier launches were byte-identical to the retained pair. This
+  is deterministic replay of the same implementations, not two independent
+  comparison implementations or a fresh tactic/kernel check.
+- The canonical candidate is 14,953 bytes, artifact SHA-256
+  `213107ea9d940f3cbd998e3deb22bdae3e6a1a9aaa4ab945bfbea9899e25cd08`,
+  and root
+  `054a1f78ca16647f5a6b003570b20791295a4b5e9f7b127de170f4e6e1e7de03`.
+  The independent receipt is 11,247 bytes, artifact SHA-256
+  `1c1075c469550c5aef4e4500819a548ade66ca5166a811bc0dc391c6fecd23bb`,
+  and root
+  `d62c417f1eb5cf8597c7ee8492e2b3610fdfd834c0f9ef474f110d2f9d963c8c`.
+- They are retained as exactly two 0644 files beneath
+  `artifacts/peano-hydra/a23e-local-fixed-comparison-7e0c24e/results/`:
+  26,200 bytes total, directories 0755, no symlinks, and C-sorted inventory
+  root `b70e6c34c7954551cd21a812ef12a21668718261a31e8c0f255487eff54b37ad`.
+  No WMI job, network access, tactic execution, fresh kernel execution, or
+  execution-authority receipt was involved.
+- The retained-result gate is 13,218 bytes at
+  `6a34dca20de82408cfd3ad10b8a5c570109c6f745f68a9d83e51d6cb24b95def`;
+  its four tests passed in 0.36 seconds. The sharder passed 32 in 0.17 seconds,
+  and the bounded source/result/sharder gate passed 63 in 0.92 seconds. CI now
+  has 114 explicit profiles, assigns 1,500 ms to the result gate, and models
+  loads 550,500 / 550,000 / 549,800 / 550,000 / 550,000 / 550,000 / 549,500 /
+  549,500 ms.
+- The retained fact remains one theorem and four authenticated candidates.
+  Global `optimized_vector_independently_audited`, best-known/global
+  comparison, necessity, minimality, vector completeness, publication/union,
+  graph application, A2, authority, review/lineage/freeze, and all eligibility
+  claims remain false. The public graph remains 1,038 edges.

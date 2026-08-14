@@ -874,12 +874,39 @@ The focused test passed 27 cases in 0.54 seconds; the sharder passed 32 in
 profiles, a 1,500 ms weight, and loads 549,500 / 550,000 / 549,800 / 549,500
 / 549,500 / 550,000 / 550,000 / 549,500 ms.
 
-No A2.3e result artifact, job, fresh tactic/kernel execution, publication, or
-graph change exists at this checkpoint. Global
-`optimized_vector_independently_audited`, best-known/global comparison,
-necessity, minimality, vector completeness, publication/union, A2, authority,
-review/lineage/freeze, and eligibility remain false. The graph remains 1,038
-edges.
+This was the source checkpoint. The bounded local execution below now retains
+the aggregate and receipt without adding a job, tactic/kernel execution,
+publication, graph change, or broader authority.
+
+### A2.3e retained local aggregate
+
+The exact source commit is
+`7e0c24ee917f859551452b0a2a41f73dd18e51d7` with tree
+`64c25f1801630eb7a4864034cf6cbac7b8cd2378`. Controlled CPython 3.12
+`-B -P -s -S` builds and separately authored stdlib-verifier runs reproduced
+the retained documents byte-for-byte across repeat launches:
+
+| retained document | bytes | artifact SHA-256 | root SHA-256 |
+|---|---:|---|---|
+| [`a23e-local-fixed-comparison-7e0c24e/results/l0-pilot-optimized-construction-comparison-candidate-v1.json`](a23e-local-fixed-comparison-7e0c24e/results/l0-pilot-optimized-construction-comparison-candidate-v1.json) | 14,953 | `213107ea9d940f3cbd998e3deb22bdae3e6a1a9aaa4ab945bfbea9899e25cd08` | `054a1f78ca16647f5a6b003570b20791295a4b5e9f7b127de170f4e6e1e7de03` |
+| [`a23e-local-fixed-comparison-7e0c24e/results/l0-pilot-optimized-construction-comparison-independent-verification-v1.json`](a23e-local-fixed-comparison-7e0c24e/results/l0-pilot-optimized-construction-comparison-independent-verification-v1.json) | 11,247 | `1c1075c469550c5aef4e4500819a548ade66ca5166a811bc0dc391c6fecd23bb` | `d62c417f1eb5cf8597c7ee8492e2b3610fdfd834c0f9ef474f110d2f9d963c8c` |
+
+The bundle is exactly two regular 0644 files / 26,200 bytes under 0755
+directories, has no symlinks, and has C-sorted inventory root
+`b70e6c34c7954551cd21a812ef12a21668718261a31e8c0f255487eff54b37ad`.
+The 13,218-byte four-test result gate has SHA-256
+`6a34dca20de82408cfd3ad10b8a5c570109c6f745f68a9d83e51d6cb24b95def`
+and passed in 0.36 seconds. The sharder passed 32 tests in 0.17 seconds; the
+bounded source/result/sharder gate passed 63 in 0.92 seconds. CI has 114
+profiles, gives this result test 1,500 ms, and models loads 550,500 / 550,000 /
+549,800 / 550,000 / 550,000 / 550,000 / 549,500 / 549,500 ms.
+
+There was no WMI job, network access, tactic execution, fresh kernel execution,
+or execution-authority receipt. Repeat runs show determinism, not independent
+implementations. Global `optimized_vector_independently_audited`, best-known
+or global comparison, necessity, minimality, vector completeness,
+publication/union, graph application, A2, authority, review/lineage/freeze,
+and eligibility remain false. The graph remains 1,038 edges.
 
 ## H1.1b3 selected candidate page source
 

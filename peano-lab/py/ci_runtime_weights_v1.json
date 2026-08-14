@@ -77,6 +77,7 @@
     {"path": "test_peano_hydra_library_pilot_dependency_vector_negative_replay_result.py", "weight": 3500},
     {"path": "test_peano_hydra_library_pilot_dependency_vector_negative_replay_verifier.py", "weight": 9000},
     {"path": "test_peano_hydra_library_pilot_optimized_construction_comparison.py", "weight": 1500},
+    {"path": "test_peano_hydra_library_pilot_optimized_construction_comparison_result.py", "weight": 1500},
     {"path": "test_peano_hydra_library_epoch_metadata_v2.py", "weight": 360000},
     {"path": "test_peano_hydra_library_optimizer_comparison_pilot.py", "weight": 1500},
     {"path": "test_peano_hydra_library_optimizer_comparison_result.py", "weight": 3500},

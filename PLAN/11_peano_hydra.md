@@ -1108,11 +1108,38 @@ best-known, global-optimization, necessity, or minimality claim.
 
 The focused source gate passed 27 tests in 0.54 seconds, the sharder passed 32
 in 0.18 seconds, and the combined gate passed 59 in 0.68 seconds. CI has 113
-profiles, assigns 1,500 ms to the new test, and models loads 549,500 / 550,000
-/ 549,800 / 549,500 / 549,500 / 550,000 / 550,000 / 549,500 ms. No A2.3e
-result is retained yet. Global `optimized_vector_independently_audited`,
-comparison completeness, publication/union, graph application, A2, authority,
-review/lineage/freeze, and eligibility remain false; the graph stays 1,038.
+profiles and assigns 1,500 ms to the source test. The separately retained
+local result below closes execution/retention for this fixed set only. Global
+`optimized_vector_independently_audited`, comparison completeness,
+publication/union, graph application, A2, authority, review/lineage/freeze,
+and eligibility remain false; the graph stays 1,038.
+
+#### A2.3e retained local fixed-set aggregate
+
+Clean source commit `7e0c24ee917f859551452b0a2a41f73dd18e51d7` (tree
+`64c25f1801630eb7a4864034cf6cbac7b8cd2378`) was executed locally under
+controlled CPython 3.12 `-B -P -s -S`. Repeated comparison builds and
+stdlib-only verifier launches were byte-identical to the retained pair. This
+establishes deterministic execution and an independently reconstructed
+fixed-set receipt, not independent tactic/kernel semantics or two independent
+producer implementations.
+
+| retained document | bytes | artifact SHA-256 | root SHA-256 |
+|---|---:|---|---|
+| candidate | 14,953 | `213107ea9d940f3cbd998e3deb22bdae3e6a1a9aaa4ab945bfbea9899e25cd08` | `054a1f78ca16647f5a6b003570b20791295a4b5e9f7b127de170f4e6e1e7de03` |
+| independent receipt | 11,247 | `1c1075c469550c5aef4e4500819a548ade66ca5166a811bc0dc391c6fecd23bb` | `d62c417f1eb5cf8597c7ee8492e2b3610fdfd834c0f9ef474f110d2f9d963c8c` |
+
+The nested bundle
+`artifacts/peano-hydra/a23e-local-fixed-comparison-7e0c24e/` is exactly two
+0644 files / 26,200 bytes, with 0755 directories, no symlinks, and inventory
+root `b70e6c34c7954551cd21a812ef12a21668718261a31e8c0f255487eff54b37ad`.
+No WMI job, network, tactic execution, fresh kernel execution, or execution
+receipt exists. The 13,218-byte result gate at
+`6a34dca20de82408cfd3ad10b8a5c570109c6f745f68a9d83e51d6cb24b95def`
+passed 4 tests in 0.36 seconds; the sharder passed 32 in 0.17 seconds; the
+bounded source/result/sharder gate passed 63 in 0.92 seconds. CI has 114
+profiles, uses 1,500 ms for the result gate, and models loads 550,500 /
+550,000 / 549,800 / 550,000 / 550,000 / 550,000 / 549,500 / 549,500 ms.
 
 ### H1.2 Build lineage before rows
 
@@ -1493,8 +1520,12 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       implemented stdlib-only verifier. The A2.3a layered package remains
       packaging rather than a dependency-selection optimizer, and the global
       `optimized_vector_independently_audited` field remains false.
-- [ ] Execute and retain the exact A2.3e aggregate and independent receipt;
-      source/synthetic readiness alone is not a retained comparison result.
+- [x] **A2.3e fixed-set aggregate execution and retention:** execute the exact
+      tactic-free aggregate and separately authored stdlib verifier under the
+      controlled local runtime, require repeat-launch byte identity, and
+      retain the exact two-file candidate/receipt bundle. This closes only the
+      bounded one-root/four-candidate result, not global best-known status,
+      dependency necessity/minimality, publication, A2, or authority.
 - [ ] Complete the comparison evidence required for any `best-known` or global
       A2 claim beyond the fixed three-candidate pilot.
 - [ ] Compile accepted units into reviewable theorem proposals containing
@@ -1963,9 +1994,11 @@ and benchmark work precede GPU training.
 - [x] A2.3e source readiness now binds the independently reproduced
       `[mul_add, add_comm]` construction vector into an exact four-artifact
       `odd_add_odd` comparison. The frontier contains layered closure and
-      Cut-liveness; Cut-liveness is only the fixed-set representative. No
-      A2.3e result is retained, and every global/best-known/publication claim
-      remains false.
+      Cut-liveness; Cut-liveness is only the fixed-set representative.
+- [x] A2.3e local execution retains the exact 14,953-byte aggregate and
+      11,247-byte independent receipt in a two-file bundle. Repeated launches
+      were byte-identical, but there is no WMI or execution-authority receipt
+      and every global/best-known/publication claim remains false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1987,10 +2020,11 @@ and benchmark work precede GPU training.
       froze and executed only a one-root proof-producing Cut-liveness boundary;
       job 220246 retains that scoped result without promoting any global
       optimized-vector or necessity claim.
-      The immediate A2 work is to execute and retain the exact A2.3e aggregate,
-      establish any separately claimed route or dependency necessity, complete
-      the evidence needed for a best-known/global comparison, and derive the
-      verified publication union before a
+      A2.3e later retained its exact bounded local aggregate and independent
+      receipt without promoting global comparison or authority. The immediate
+      A2 work is to establish any separately claimed route or dependency
+      necessity, complete the evidence needed for a best-known/global
+      comparison, and derive the verified publication union before a
       source-state request to an external owner. No 200-unit gold corpus,
       registered live-Vampire
       `Dispatch` route, production Vampire integration, capability comparison,

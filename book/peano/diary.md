@@ -4935,9 +4935,38 @@ the combined gate was 59 in 0.68. The 113-entry profile gives the new test
 1,500 ms and produces loads 549,500 / 550,000 / 549,800 / 549,500 / 549,500
 / 550,000 / 550,000 / 549,500 ms.
 
-This checkpoint freezes source only. There is no A2.3e retained result or job,
-no fresh proof or kernel execution, no publication, and no graph change.
-Global `optimized_vector_independently_audited`, necessity, minimality,
-best-known/global comparison, vector completeness, publication/union, A2,
-authority, review/lineage/freeze, and eligibility stay false. The graph stays
-at 1,038 edges.
+That checkpoint froze source first. The next bounded step retained the exact
+aggregate and independent receipt described below; it still did not create a
+job, fresh proof/kernel execution, publication, or graph change.
+
+## 2026-08-15 — Retain the fixed-set answer, not a global conclusion
+
+We executed source commit `7e0c24ee917f859551452b0a2a41f73dd18e51d7`
+(tree `64c25f1801630eb7a4864034cf6cbac7b8cd2378`) locally under
+controlled CPython 3.12 `-B -P -s -S`. Repeated aggregate builds produced the
+same 14,953-byte candidate at artifact SHA-256
+`213107ea9d940f3cbd998e3deb22bdae3e6a1a9aaa4ab945bfbea9899e25cd08`
+and root `054a1f78ca16647f5a6b003570b20791295a4b5e9f7b127de170f4e6e1e7de03`.
+Repeated runs of the separate stdlib verifier produced the same 11,247-byte
+receipt at artifact SHA-256
+`1c1075c469550c5aef4e4500819a548ade66ca5166a811bc0dc391c6fecd23bb`
+and root `d62c417f1eb5cf8597c7ee8492e2b3610fdfd834c0f9ef474f110d2f9d963c8c`.
+
+The normalized bundle
+`artifacts/peano-hydra/a23e-local-fixed-comparison-7e0c24e/` has exactly two
+0644 files, 26,200 bytes, 0755 directories, no symlinks, and inventory root
+`b70e6c34c7954551cd21a812ef12a21668718261a31e8c0f255487eff54b37ad`.
+The four-test retained-result gate is 13,218 bytes at
+`6a34dca20de82408cfd3ad10b8a5c570109c6f745f68a9d83e51d6cb24b95def`
+and passed in 0.36 seconds. The sharder passed 32 tests in 0.17 seconds; the
+bounded source/result/sharder gate passed 63 in 0.92 seconds. The 114-entry CI
+profile assigns 1,500 ms to the result gate and models loads 550,500 / 550,000
+/ 549,800 / 550,000 / 550,000 / 550,000 / 549,500 / 549,500 ms.
+
+There was no WMI job, network access, tactic execution, fresh kernel run, or
+execution receipt. Byte identity across repeated launches is repeatability,
+not a second independent implementation. Global
+`optimized_vector_independently_audited`, necessity, minimality,
+best-known/global comparison, vector completeness, publication/union, graph
+application, A2, authority, review/lineage/freeze, and eligibility stay
+false. The graph stays at 1,038 edges.

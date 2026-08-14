@@ -2448,12 +2448,40 @@ The focused test passed 27 cases in 0.54 seconds; the sharder passed 32 in
 profiles, a 1,500 ms weight, and modeled loads 549,500 / 550,000 / 549,800 /
 549,500 / 549,500 / 550,000 / 550,000 / 549,500 ms.
 
-This is source readiness only. No A2.3e result has been retained, and no job,
-fresh tactic/kernel execution, publication, or graph mutation occurred.
-Global `optimized_vector_independently_audited`, best-known/global comparison,
-necessity, minimality, vector completeness, publication/union, A2, authority,
-review/lineage/freeze, and eligibility remain false. The graph remains 1,038
-edges.
+The source checkpoint preceded a separate retained local execution. That
+execution preserves the same narrow boundary and is recorded next.
+
+### The retained A2.3e answer is still only a fixed-set answer
+
+Controlled CPython 3.12 `-B -P -s -S` launches from source commit
+`7e0c24ee917f859551452b0a2a41f73dd18e51d7` and tree
+`64c25f1801630eb7a4864034cf6cbac7b8cd2378` rebuilt the aggregate and ran the
+separately authored stdlib verifier. Repeat launches were byte-identical. The
+retained identities are:
+
+| document | bytes | artifact SHA-256 | root SHA-256 |
+|---|---:|---|---|
+| candidate | 14,953 | `213107ea9d940f3cbd998e3deb22bdae3e6a1a9aaa4ab945bfbea9899e25cd08` | `054a1f78ca16647f5a6b003570b20791295a4b5e9f7b127de170f4e6e1e7de03` |
+| independent receipt | 11,247 | `1c1075c469550c5aef4e4500819a548ade66ca5166a811bc0dc391c6fecd23bb` | `d62c417f1eb5cf8597c7ee8492e2b3610fdfd834c0f9ef474f110d2f9d963c8c` |
+
+The bundle at
+`artifacts/peano-hydra/a23e-local-fixed-comparison-7e0c24e/` is exactly two
+0644 files / 26,200 bytes under 0755 directories, with no symlinks and
+inventory root
+`b70e6c34c7954551cd21a812ef12a21668718261a31e8c0f255487eff54b37ad`.
+Its four-test 13,218-byte result gate has SHA-256
+`6a34dca20de82408cfd3ad10b8a5c570109c6f745f68a9d83e51d6cb24b95def`
+and passed in 0.36 seconds. The sharder passed 32 in 0.17 seconds; the bounded
+source/result/sharder gate passed 63 in 0.92 seconds. CI now has 114 profiles,
+a 1,500 ms result weight, and loads 550,500 / 550,000 / 549,800 / 550,000 /
+550,000 / 550,000 / 549,500 / 549,500 ms.
+
+This was local, tactic-free aggregation: no WMI job, network, tactic execution,
+fresh kernel execution, or execution-authority receipt. Repetition does not
+create a second implementation. Global `optimized_vector_independently_audited`,
+best-known/global comparison, necessity, minimality, vector completeness,
+publication/union, graph application, A2, authority, review/lineage/freeze,
+and eligibility remain false. The graph remains 1,038 edges.
 
 ## What “matched compute” means
 
