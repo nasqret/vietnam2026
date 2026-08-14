@@ -4544,3 +4544,42 @@ is untouched, verified in all five contexts). Suite 360 green; deployed as 2026-
   application, and A2 completion remain open. Every authority, review, freeze,
   lineage, and training/retrieval/evaluation eligibility flag remains false;
   the public graph remains 1,038 edges.
+
+## 2026-08-14 — A2.3c independent-negative-replay source boundary frozen
+
+- Froze only the controlled source protocol and execution infrastructure for
+  independently replaying the 22 unique shared root-body observations retained
+  by A2.3b. The registered campaign shape is exactly three full-vector
+  baselines, 22 reverse-order single-omission observations, and a two-to-one
+  join back to the 44 route-labeled A2.3b rows. The default CLI describes this
+  protocol on stdout: it executes no campaign, creates no result, and writes no
+  file. A real replay still requires the explicit `--execute` confirmation and
+  remains unrun, including on WMI.
+- The replayer uses a fresh controlled process and an independently implemented
+  wrapper below the A2.3b producer boundary. It imports neither A2.3b producer,
+  never calls `compile_candidate_body`, and invokes no route-specific
+  assembler. Its evidence is independent at the wrapper/process layer, but it
+  deliberately shares the pinned theorem parser, tactic engine, and
+  intuitionistic kernel with A2.3b. Therefore a future successful run could
+  certify the 22 exact script/omission failures without turning them into
+  independent route-assembler rejections or logical dependency-necessity
+  proofs.
+- The 26,551-byte schema has semantic/artifact SHA-256
+  `a0d84c3168a9b779bfb5fdc483a2ec847e4cc34f85bcf8aee4c7351a6363ccb0` /
+  `be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4`.
+  Replayer module, controlled CLI, and focused test are 91,304 / 49,259 /
+  87,120 bytes at SHA-256
+  `f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4` /
+  `524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b` /
+  `dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
+  The synthetic/adversarial source gate passed 54 tests in 5.57 seconds.
+- Its measured conservative CI weight is 6,000 ms. The 104-entry profile now
+  models eight loads of 541,500 / 542,000 / 541,800 / 541,500 / 542,000 /
+  541,500 / 541,500 / 542,000 ms.
+- This checks only A2.3c source-protocol and infrastructure readiness. No real
+  negative replay, WMI execution, or retained A2.3c result exists. Route
+  rejection, dependency/vector necessity, vector completeness, minimality,
+  optimized-vector audit, best-known status, publication and publication
+  union, public-graph application, A2 completion, and every proof/admission/
+  publication authority or training/retrieval/evaluation eligibility claim
+  remain false.

@@ -1103,6 +1103,49 @@ public-graph application, and A2 remain open. All authority, review, freeze,
 lineage, and training/retrieval/evaluation eligibility flags remain false.
 The public graph remains 1,038 edges.
 
+#### A2.3c source-only independent negative-replay boundary
+
+A2.3c freezes the next experiment without executing it. The source protocol
+registers exactly three full-vector baselines, 22 unique reverse-order
+single-omission observations, and an exact two-to-one join to the 44 retained
+A2.3b route rows. The controlled CLI's default mode emits this canonical
+protocol only: `campaign_executed=false`, `result_exists=false`, and no file is
+written. No local or WMI replay/result is claimed at this checkpoint.
+
+Independence is layer-specific. The replayer is a separately implemented
+wrapper loaded in a fresh controlled process; it imports no A2.3b producer,
+does not call `compile_candidate_body`, and invokes neither route-specific
+assembler. It intentionally shares the pinned theorem parser, tactic engine,
+and intuitionistic kernel. A future successful execution could therefore
+independently reproduce the 22 lower-level script/omission failures, but it
+would not independently execute either construction route or turn those
+failures into logical dependency-necessity proofs.
+
+The exact source pins are:
+
+- schema, 26,551 bytes: artifact SHA-256
+  `be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4`
+  and semantic SHA-256
+  `a0d84c3168a9b779bfb5fdc483a2ec847e4cc34f85bcf8aee4c7351a6363ccb0`;
+- replayer module, 91,304 bytes: SHA-256
+  `f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4`;
+- controlled CLI, 49,259 bytes: SHA-256
+  `524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b`;
+- focused test, 87,120 bytes: SHA-256
+  `dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
+
+The controlled source/synthetic/adversarial gate passed 54 tests in 5.57
+seconds. Its measured conservative CI weight is 6,000 ms. The 104-entry
+runtime profile models eight loads of 541,500 / 542,000 / 541,800 / 541,500 /
+542,000 / 541,500 / 541,500 / 542,000 ms.
+
+This completes only A2.3c source-protocol and execution-infrastructure
+readiness. A real replay, WMI execution, and retained result remain required.
+Route rejection, dependency/vector necessity, vector completeness, minimality,
+optimized-vector audit, best-known status, publication and publication union,
+public-graph application, A2 completion, and all proof/admission/publication
+authority and eligibility flags remain false.
+
 ### 2.4 Sealed-test law
 
 The unit of separation is a mathematical **lineage**, not a row or filename.

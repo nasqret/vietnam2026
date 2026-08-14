@@ -4576,3 +4576,46 @@ audited. Completeness, minimality, best-known, publication and its union,
 public-graph application, and A2 remain open. Every authority, review, freeze,
 lineage, and eligibility flag remains false, and the public graph stays at
 1,038 edges.
+
+## 2026-08-14 — Independent means naming the layer that changed
+
+The next gap after job 220220 was precise: its 44 route-labeled records came
+from only 22 shared root-body compiler observations, and the verifier had not
+rerun those observations. We froze A2.3c before running it. The source protocol
+registers exactly three full-vector baselines, 22 unique reverse-order
+single-omission replays, and a two-to-one join back to all 44 retained route
+rows. Its ordinary invocation prints only the protocol. It runs no campaign,
+creates no result, and writes no file; no real local or WMI replay exists yet.
+
+The new wrapper is independently implemented and must run in a fresh
+controlled process. It imports no A2.3b producer and never calls
+`compile_candidate_body` or either route assembler. That is useful
+independence, but it is deliberately not a second proof stack: it shares the
+pinned theorem parser, tactic engine, and intuitionistic kernel. A later
+passing replay could independently observe the 22 exact script failures at
+that shared lower boundary. It still could not call the paired readable and
+layered route records independent route rejections or establish logical
+dependency necessity.
+
+We pinned the 26,551-byte schema at artifact SHA-256
+`be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4`
+and semantic SHA-256
+`a0d84c3168a9b779bfb5fdc483a2ec847e4cc34f85bcf8aee4c7351a6363ccb0`.
+The 91,304-byte replayer, 49,259-byte controlled CLI, and 87,120-byte focused
+test have SHA-256
+`f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4`,
+`524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b`,
+and
+`dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
+Fifty-four synthetic and adversarial tests passed in 5.57 seconds.
+
+We assigned that measured gate a conservative 6,000 ms CI weight. The
+104-entry profile balances to 541,500 / 542,000 / 541,800 / 541,500 /
+542,000 / 541,500 / 541,500 / 542,000 ms across eight modeled shards.
+
+Only source-protocol and infrastructure readiness is checked. The campaign,
+WMI run, and retained result stay unchecked. Route rejection, dependency or
+vector necessity, vector completeness, minimality, optimized-vector audit,
+best-known status, publication and publication union, graph application, A2,
+and all proof/admission/publication authority and eligibility flags remain
+false.

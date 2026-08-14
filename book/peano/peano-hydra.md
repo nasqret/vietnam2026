@@ -2080,6 +2080,44 @@ union, graph application, and A2 completion all remain open. Every authority,
 review, freeze, lineage, and training/retrieval/evaluation eligibility flag is
 false. The public theorem graph remains 1,038 edges.
 
+### A2.3c freezes the independent replay before running it
+
+A2.3c narrows the remaining negative-evidence question to one controlled
+experiment. Its frozen shape is exactly three full-vector baselines and 22
+unique reverse-order single-omission observations, followed by a two-to-one
+join to the 44 A2.3b route-labeled rows. The default CLI emits only a canonical
+source-protocol description: it runs no proof campaign, creates no result, and
+writes no file. There is not yet a local or WMI campaign result.
+
+The replayer supplies an independent wrapper in a fresh controlled process. It
+does not import the A2.3b producer, call `compile_candidate_body`, or invoke a
+readable or layered route assembler. It does share the pinned theorem parser,
+tactic engine, and intuitionistic kernel. This is process/wrapper independence,
+not independent implementation of the lower proof machinery. A future passing
+campaign could independently reproduce the 22 exact omitted-edge script
+failures at that lower boundary; it would not independently verify the two
+route constructions or prove logical dependency necessity.
+
+The 26,551-byte schema is pinned at artifact/semantic SHA-256
+`be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4` /
+`a0d84c3168a9b779bfb5fdc483a2ec847e4cc34f85bcf8aee4c7351a6363ccb0`.
+The replayer module, controlled CLI, and focused test are 91,304 / 49,259 /
+87,120 bytes at SHA-256
+`f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4` /
+`524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b` /
+`dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
+The source-only synthetic/adversarial gate passed 54 tests in 5.57 seconds.
+Its conservative measured CI weight is 6,000 ms; the 104-entry profile models
+eight loads of 541,500 / 542,000 / 541,800 / 541,500 / 542,000 / 541,500 /
+541,500 / 542,000 ms.
+
+Only the A2.3c source protocol and execution-infrastructure readiness are
+complete. The real replay, WMI execution, and result remain open. Route
+rejection, dependency/vector necessity, vector completeness, minimality,
+optimized-vector audit, best-known status, publication and publication union,
+public-graph application, A2 completion, and all proof/admission/publication
+authority and training/retrieval/evaluation eligibility flags remain false.
+
 ## What “matched compute” means
 
 We compare three frozen systems on the same sealed targets:

@@ -501,6 +501,48 @@ application, and A2 completion remain open. Every authority, review, freeze,
 lineage, and training/retrieval/evaluation eligibility flag remains false.
 The public graph remains exactly 1,038 edges.
 
+## A2.3c negative-replay source protocol (no campaign/result artifact)
+
+The A2.3c source-only checkpoint freezes the controlled protocol and
+infrastructure for replaying A2.3b's shared compiler observations. Its exact
+registered shape is three full-vector baselines and 22 unique reverse-order
+single-omission observations, joined two-to-one to the 44 retained route rows.
+The default CLI emits only a source-protocol description to stdout: it runs no
+campaign, creates no result, and writes no file. No local or WMI replay has
+been accepted, and this directory contains no A2.3c result artifact.
+
+The implementation is independent at its wrapper and fresh-process boundary.
+It does not import the A2.3b producer, call `compile_candidate_body`, or invoke
+either route-specific assembler. It still shares A2.3b's pinned theorem
+parser, tactic engine, and intuitionistic kernel. Consequently even a future
+successful campaign would establish only the 22 exact script/omission
+failures at this shared lower layer; `route_rejections_independently_verified`
+and logical dependency-necessity claims would remain false.
+
+The exact frozen source identities are:
+
+- schema: 26,551 bytes; artifact SHA-256
+  `be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4`;
+  semantic SHA-256
+  `a0d84c3168a9b779bfb5fdc483a2ec847e4cc34f85bcf8aee4c7351a6363ccb0`;
+- replayer module: 91,304 bytes; SHA-256
+  `f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4`;
+- controlled CLI: 49,259 bytes; SHA-256
+  `524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b`;
+- focused test: 87,120 bytes; SHA-256
+  `dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
+
+The controlled synthetic/adversarial gate passed 54 tests in 5.57 seconds.
+Its measured conservative CI weight is 6,000 ms. The profile now has 104
+entries and models eight loads of 541,500 / 542,000 / 541,800 / 541,500 /
+542,000 / 541,500 / 541,500 / 542,000 ms.
+
+Only A2.3c source-protocol and infrastructure readiness is complete. The real
+replay/WMI/result gate is open. Route rejection, dependency/vector necessity,
+vector completeness, minimality, optimized-vector audit, best-known status,
+publication and publication union, public-graph application, A2, proof/
+admission/publication authority, and all eligibility flags remain false.
+
 ## H1.1b3 selected candidate page source
 
 The retained tagless source tree is

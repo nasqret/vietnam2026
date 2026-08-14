@@ -253,7 +253,7 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     profile = load_runtime_profile(DEFAULT_RUNTIME_PROFILE, tests_root, files)
 
     assert profile.fallback_ms == 1000
-    assert len(profile.weights_ms) == 103
+    assert len(profile.weights_ms) == 104
     assert profile.weight_ms(tests_root / "test_congruence_beta_admission.py") == 274_300
     assert profile.weight_ms(tests_root / "test_peano_hydra_authoring.py") == 500
     assert profile.weight_ms(tests_root / "test_peano_hydra_assistant_repl.py") == 3_000
@@ -341,6 +341,13 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
     )
     assert (
         profile.weight_ms(
+            tests_root
+            / "test_peano_hydra_library_pilot_dependency_vector_negative_replay.py"
+        )
+        == 6_000
+    )
+    assert (
+        profile.weight_ms(
             tests_root / "test_peano_hydra_library_optimizer_comparison_result.py"
         )
         == 3_500
@@ -368,14 +375,14 @@ def test_checked_in_profile_matches_current_test_tree() -> None:
         sum(profile.weight_ms(path) for path in shard)
         for shard in shards
     ] == [
-        541_000,
-        541_000,
-        540_800,
-        541_000,
-        541_000,
-        541_000,
-        541_000,
-        541_000,
+        541_500,
+        542_000,
+        541_800,
+        541_500,
+        542_000,
+        541_500,
+        541_500,
+        542_000,
     ]
 
 

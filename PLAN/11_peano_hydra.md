@@ -795,6 +795,42 @@ best-known, publication and publication-union work, graph application, and A2
 remain open. Every authority, review, freeze, lineage, and eligibility flag
 remains false, and the public graph remains 1,038 edges.
 
+On 2026-08-14, **A2.3c froze only the source protocol and infrastructure for
+independent negative replay**. The exact registered campaign contains three
+full-vector baselines and 22 unique reverse-order single-omission observations,
+then joins each observation to two retained route rows for an exact 44-to-22
+mapping. Default CLI operation emits only the canonical source protocol: no
+campaign executes, no result exists, and no file is written. A real local or
+WMI replay has not occurred.
+
+The wrapper implementation is separate and runs in a fresh controlled process.
+It imports no A2.3b producer, does not call `compile_candidate_body`, and does
+not invoke either route-specific assembler. It deliberately shares the pinned
+theorem parser, tactic engine, and intuitionistic kernel. Thus wrapper/process
+independence can support future independent observation of the 22 exact
+script/omission failures, but it does not make those observations independent
+route-assembler rejections or prove logical dependency necessity.
+
+The 26,551-byte schema has artifact/semantic SHA-256
+`be38f796e9d8923024514962f7cc5a5a4f19c828cf502e2912f1ea5094d12ce4` /
+`a0d84c3168a9b779bfb5fdc483a2ec847e4cc34f85bcf8aee4c7351a6363ccb0`.
+The replayer module, controlled CLI, and focused test are 91,304 / 49,259 /
+87,120 bytes at SHA-256
+`f5b5dd45c0ce4e2ed5587fd41b7ea206e92ee05526aebf7be96d80f5bb591aa4` /
+`524ced1b5ca78040ddccc3030f2d5eee9f10c8bdf455ea96efb625595c72759b` /
+`dc5591dcc9d1e48028d1fbaf31971e65bc10c69377167b50317d4558596e6e82`.
+The controlled synthetic/adversarial source gate passed 54 tests in 5.57
+seconds. Its measured conservative CI weight is 6,000 ms; the 104-entry
+profile models eight loads of 541,500 / 542,000 / 541,800 / 541,500 / 542,000
+/ 541,500 / 541,500 / 542,000 ms.
+
+Only source-protocol and execution-infrastructure readiness is complete. The
+real replay, WMI execution, and retained-result gate stays open. Route
+rejection, dependency/vector necessity, vector completeness, minimality,
+optimized-vector audit, best-known status, publication/publication union,
+public-graph application, A2 completion, proof/admission/publication authority,
+and all eligibility claims remain false.
+
 ### H1.2 Build lineage before rows
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
@@ -1126,11 +1162,20 @@ interactive/recovery behavior belong to A1/A5 and are additional H1.0 gates.
       retention only. The negative records are execution-bound producer
       observations, not independently replayed rejections, and
       `bounded_three_root_vector_audit_complete` remains false.
-- [ ] Independently replay or otherwise certify the 22 shared negative
-      compiler observations before making any dependency-necessity or
-      completed-vector-audit claim; preserve the distinction between 44
-      route-labeled records and 22 shared observations, and between direct
-      vectors and transitive closures.
+- [x] **A2.3c source-only negative-replay protocol and infrastructure
+      readiness:** freeze exactly three baselines, 22 unique reverse-order
+      omission replays, and their two-to-one join to 44 retained route rows;
+      require an independently implemented wrapper in a fresh controlled
+      process without importing the A2.3b producer, calling
+      `compile_candidate_body`, or invoking route assemblers. This checkbox
+      records only source/synthetic/adversarial readiness; the pinned parser,
+      tactic engine, and intuitionistic kernel remain shared.
+- [ ] **A2.3c real replay, WMI execution, and retained result:** run and retain
+      the frozen 3-baseline/22-observation campaign before making any
+      independent-negative-replay claim. Even a passing run does not by itself
+      establish route rejection, dependency/vector necessity, minimality,
+      vector completeness, optimized/best-known status, publication, A2, or
+      authority.
 - [ ] Define and independently audit any future true optimized-construction
       direct vector; the A2.3a layered package is not a dependency-selection
       optimizer.
@@ -1553,6 +1598,19 @@ and benchmark work precede GPU training.
       are paired into 22 shared execution-bound producer observations, not
       independently replayed negatives. The public graph remains 1,038 and
       `bounded_three_root_vector_audit_complete` remains false.
+- [x] A2.3c source-protocol and execution-infrastructure readiness is frozen
+      for exactly three baselines, 22 unique observations, and the two-to-one
+      44-route join. The independent wrapper/fresh-process boundary imports no
+      A2.3b producer and calls neither `compile_candidate_body` nor a route
+      assembler, while explicitly sharing the pinned parser, tactic engine,
+      and intuitionistic kernel. Schema artifact/semantic identities begin
+      `be38f796…` / `a0d84c31…`; module/CLI/test identities begin
+      `f5b5dd45…` / `524ced1b…` / `dc5591dc…`. Its 54 controlled tests passed
+      in 5.57 seconds. This is a source-only, no-campaign/no-result/no-write
+      checkpoint.
+- [ ] A2.3c's real local/WMI replay and retained-result gate remains open.
+      Route/vector necessity, completeness, minimality, optimized/best-known
+      status, publication, A2, authority, and eligibility flags stay false.
 - [ ] A0/H1.0 and H1.1 remain open. The candidate pack deliberately records
       declared publication dependencies and source-stage sharing observations,
       not separately completed readable/optimized construction vectors,
@@ -1568,9 +1626,10 @@ and benchmark work precede GPU training.
       root/two-route/44-attempt vector-audit protocol. Its first attempt
       remained unknown; job 220220 later completed only corrected bounded
       execution, six-baseline verification, structural checking, and
-      retention.
-      The immediate A2 work is to independently replay or certify the 22
-      shared negative observations, define and audit a genuine optimized-
+      retention; and A2.3c now freezes only the independent-negative-replay
+      source/infrastructure boundary.
+      The immediate A2 work is to execute and retain the A2.3c 22-observation
+      replay, define and audit a genuine optimized-
       construction vector, complete the evidence needed for a best-known/
       global comparison, and derive the
       verified publication union before a
