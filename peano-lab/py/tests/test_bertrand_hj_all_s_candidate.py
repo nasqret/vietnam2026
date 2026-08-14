@@ -9,13 +9,24 @@ only from successful isolated gates; recursive closure remains pending.
 
 from __future__ import annotations
 
-from dataclasses import replace
+from dataclasses import fields, replace
 from functools import lru_cache
 from hashlib import sha256
 
 import pytest
 
-from peano_lab.kernel.formulas import parse_formula_with_names
+from peano_lab.engine.state import proof_identity_metrics, proof_metrics, start
+from peano_lab.engine.tactics import (
+    MAX_LIVE_PROOF_DEPTH,
+    MAX_LIVE_PROOF_NODES,
+    MAX_LIVE_PROOF_OBJECTS,
+    apply_tactic,
+    checked_final,
+)
+from peano_lab.kernel.checker import check
+from peano_lab.kernel.formulas import Eq, Formula, Imp, parse_formula_with_names
+from peano_lab.kernel.proofs import Cut, DNE, EqRefl, ImpIntro, Proof
+from peano_lab.kernel.terms import Zero
 from peano_lab.library.bertrand_ceil_sqrt_candidate import (
     ceil_div_six_relation,
     floor_sqrt_relation,
@@ -58,7 +69,13 @@ from peano_lab.library.candidate_validation import (
     replay_candidate_bodies,
 )
 from peano_lab.library.power_algebra_theorems import _power_terms
-from peano_lab.library.theorems import TheoremSpec, _closed_formula, _specs_by_name
+from peano_lab.library.theorems import (
+    TheoremSpec,
+    _closed_formula,
+    _primitive,
+    _specs_by_name,
+    replay,
+)
 
 
 EXPECTED_NAMES = (
@@ -309,6 +326,35 @@ EXPECTED_CLOSURES: dict[str, tuple[int, int, int, int, int]] | str = (
     PENDING_CANDIDATE_ONLY
 )
 
+# The four light roots do not traverse the large H/J power graph.  Their
+# receipts are frozen independently, one fresh process per row, before the
+# two heavy roots receive a root-pruned LayeredReplay audit.
+LIGHT_CLOSURE_NAMES = EXPECTED_NAMES[:4]
+EXPECTED_LIGHT_CLOSURES: dict[str, tuple[int, int, int, int, int]] = {
+    "scaled_factor_square_identity": (128, 18, 116, 127, 12),
+    "thirty_two_square_eq_twice_sixteen_times_thirty_two": (
+        467,
+        59,
+        455,
+        466,
+        12,
+    ),
+    "floor_sqrt_factorized_threshold_thirty_two": (
+        1_941,
+        60,
+        1_025,
+        1_071,
+        47,
+    ),
+    "six_block_window_decomposition_above_thirty_two": (
+        694,
+        53,
+        441,
+        468,
+        28,
+    ),
+}
+
 STATEMENT_RECEIPTS_READY = isinstance(EXPECTED_STATEMENTS, dict)
 BODY_RECEIPTS_READY = isinstance(EXPECTED_BODIES, dict)
 ARTIFACT_RECEIPTS_READY = isinstance(EXPECTED_ARTIFACT_SHA256, dict)
@@ -402,6 +448,69 @@ def _local() -> dict[str, TheoremSpec]:
 
 def _available() -> dict[str, TheoremSpec]:
     return dict(_specs_by_name()) | _local()
+
+
+def _body(item: TheoremSpec) -> tuple[Proof, Formula]:
+    available = _available()
+    target = _closed_formula(item.statement)
+    for dependency in reversed(item.dependencies):
+        target = Imp(_closed_formula(available[dependency].statement), target)
+    state = start(target)
+    for dependency in item.dependencies:
+        state = apply_tactic(state, "intro", dependency)
+    for command in item.script:
+        tactic, arguments = _primitive(command)
+        state = apply_tactic(state, tactic, arguments)
+    return checked_final(state, target), target
+
+
+@lru_cache(maxsize=None)
+def _close(name: str) -> tuple[Formula, Proof]:
+    public = _specs_by_name()
+    if name in public:
+        theorem = replay(name)
+        return theorem.formula, theorem.certificate
+
+    item = _local()[name]
+    certificate, _target = _body(item)
+    body = certificate
+    for _dependency in item.dependencies:
+        assert type(body) is ImpIntro
+        body = body.body
+
+    formula = _closed_formula(item.statement)
+    for dependency in reversed(item.dependencies):
+        dependency_formula, dependency_proof = _close(dependency)
+        body = Cut(dependency_formula, formula, dependency_proof, body)
+    return formula, body
+
+
+def _proof_children(proof: Proof) -> tuple[Proof, ...]:
+    return tuple(
+        child
+        for item in fields(proof)
+        if isinstance((child := getattr(proof, item.name)), Proof)
+    )
+
+
+def _walk(proof: Proof):
+    pending = [proof]
+    seen: set[int] = set()
+    while pending:
+        node = pending.pop()
+        if id(node) in seen:
+            continue
+        seen.add(id(node))
+        yield node
+        pending.extend(_proof_children(node))
+
+
+def _mutate_direct_cut(proof: Proof, index: int) -> Proof:
+    assert type(proof) is Cut
+    if index == 0:
+        zero = Zero()
+        return replace(proof, proposition=Eq(zero, zero), lemma=EqRefl(zero))
+    return replace(proof, body=_mutate_direct_cut(proof.body, index - 1))
 
 
 def test_hj_all_s_factory_is_frozen_expanded_and_isolated() -> None:
@@ -585,6 +694,26 @@ def test_hj_all_s_closure_receipts_require_the_isolated_closure_gate() -> None:
         "candidate-only closure receipts are not admissible until the isolated "
         "closure validator is wired"
     )
+
+
+@pytest.mark.parametrize("name", LIGHT_CLOSURE_NAMES, ids=LIGHT_CLOSURE_NAMES)
+def test_hj_all_s_light_closure_is_checked_and_frozen(name: str) -> None:
+    item = next(item for item in _specs() if item.name == name)
+    formula, certificate = _close(name)
+    assert check((), certificate, formula)
+    nodes, depth = proof_metrics(certificate)
+    objects, edges, reused = proof_identity_metrics(certificate)
+    receipt = (nodes, depth, objects, edges, reused)
+    assert nodes < MAX_LIVE_PROOF_NODES
+    assert depth <= MAX_LIVE_PROOF_DEPTH
+    assert objects < MAX_LIVE_PROOF_OBJECTS
+    assert not any(type(node) is DNE for node in _walk(certificate))
+    for index in range(len(item.dependencies)):
+        assert not check((), _mutate_direct_cut(certificate, index), formula)
+    assert name in EXPECTED_LIGHT_CLOSURES, (
+        f"freeze light closure receipt for {name}: {receipt!r}"
+    )
+    assert receipt == EXPECTED_LIGHT_CLOSURES[name]
 
 
 @pytest.mark.skipif(
