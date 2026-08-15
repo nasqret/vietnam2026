@@ -750,3 +750,64 @@ python3 scripts/build_peano_library_channels_v9.py --check
 python3 scripts/verify_peano_library_channels_v9.py
 make peano-library-alpha-v9-check
 ```
+
+## Peano Alpha v10 — Primorial interval splitting (2026-08-15)
+
+Alpha v10 preserves the sealed 1,076-row Alpha-v9 ledger byte-for-byte and
+appends nine reviewed Bertrand specifications at indices 1076--1084. The
+exact 1+8 order pins only the reviewed Product prefix/suffix split, then adds
+offset selector products and the exact Primorial prefix/interval split. The
+provider's concat converse remains excluded. Stable remains unchanged at 432
+rows.
+
+Current topology and evidence:
+
+- 1,085 theorem specifications, 3,306 declared direct edges, and 45 layers;
+- 432 Stable rows and 653 Alpha-only rows;
+- 432 `stable_closed`, 138 `alpha_closed`, 514 `body_checked`, and one
+  `pending_layered_closure` row; and
+- 570 checked-use rows; all nine additions fail closed with
+  `checked_use=false`, null proof tags, and null empty-context closure
+  evidence.
+
+The deterministic pointer is
+[`peano-library/channels-v10.json`](peano-library/channels-v10.json). Its exact
+artifact SHA-256 values are:
+
+- catalog: `46bd50c19b694470542f53f1ef7f61d1ee8fab1f08ad5573ca3534da29053dc3`;
+- metrics: `63044f59aeb6fd84fbe57e26f8358676e679e15ef7456f1823db68bc255703de`;
+- reduced graph: `fdee73e6ea045c90afb7c024e8a209fbea8b03189538611c93678e4fa923aa76`;
+  and
+- channel pointer: `644fb72833d66f30b2194a5d493935f31bae716edb4c76afcb8c6e272399eca2`.
+
+The ordered-enrollment, ordered-specification, edition, membership, evidence,
+and channel-pointer roots are respectively
+`c016d13d555f31c0fabf61e236f9012ac60bf50e2e66210d398d7bc049672b4f`,
+`6ab70321b61bea288df325ffa433c992d0559e9546324583066b4f767249df46`,
+`1e4376021508ac6913770ac18eca8c1406c7b298d7e381f994510c6854baa98d`,
+`01ec76832d511806302056f2f823b2d8c45c477cf92d826bfae28197f1656013`,
+`a00e426172d93e9c9254d97ec2295031873dd02fc97a003eb4824cc22b64e81a`,
+and
+`f2c2760dd275b94572e0ab5a5cc4837fc1e884ea26ea00a55074caa84a4d8f6e`.
+The suffix-depth and fresh nine-body receipt roots are
+`446f6c9d07c3f9e22fa0fbb41a46c95d27804a088d708b13aea0ddd7159c45dd`
+and
+`fdac645cbc070b5a1cdfe71b19e98afe095a183d4cfa0ad4256fa42857ca736c`.
+The append is controlled by the
+[`Primorial interval-split RFC`](../research/arithmetic-library/ha-bertrand-primorial-interval-split-tranche-rfc-v1.md).
+
+The verifier independently replays every suffix body and cross-binds each row
+to its exact source, focused test, RFC, and sealed Alpha-v9 catalog. This is
+body evidence, not empty-context admission or Stable promotion.
+Duplicate-free external-product comparison, `primorial_le_four_pow`, the
+no-prime central upper bound, large-input integration, finite coverage, and
+Bertrand endpoints remain open.
+
+Rebuild or verify this channel with:
+
+```bash
+python3 scripts/build_peano_library_channels_v10.py
+python3 scripts/build_peano_library_channels_v10.py --check
+python3 scripts/verify_peano_library_channels_v10.py
+make peano-library-alpha-v10-check
+```

@@ -1416,3 +1416,69 @@ candidate suites run serially in manifest order, each in a fresh Python
 process; verifier mutation groups are likewise split. Concurrent proof
 workers and a monolithic retained-DAG run are not approved laptop gates.
 Bertrand's postulate remains open.
+
+## 2026-08-15 — Alpha v10 Primorial interval-split front
+
+Alpha v10 preserves the exact sealed 1,076-row Alpha-v9 parent and appends
+nine reviewed Bertrand rows at indices 1076--1084. The dependency order is
+exactly 1+8: the reviewed `beta_product_prefix_suffix_split` prefix selection,
+then eight offset-Primorial interval construction, transport, restriction,
+functionality, and exact split rows. The concat converse from the two-row
+Product provider remains excluded. The binding control document is the
+[`interval-split RFC`](../research/arithmetic-library/ha-bertrand-primorial-interval-split-tranche-rfc-v1.md).
+
+| Edition | Theorems | Direct edges | Layers | Checked use |
+|---|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 432 |
+| Alpha v9 (sealed parent) | 1,076 | 3,276 | 45 | 570 |
+| Alpha v10 (current) | 1,085 | 3,306 | 45 | 570 |
+
+Alpha v10 has 432 Stable and 653 Alpha-only rows. Evidence is exactly 432
+`stable_closed`, 138 `alpha_closed`, 514 `body_checked`, and one
+`pending_layered_closure`. Every v10 suffix row has `checked_use=false`, a
+null proof tag, null empty-context closure metadata, and fail-closed replay.
+No Stable promotion occurred. The enrollment and edition identities are
+`c016d13d555f31c0fabf61e236f9012ac60bf50e2e66210d398d7bc049672b4f`
+and
+`1e4376021508ac6913770ac18eca8c1406c7b298d7e381f994510c6854baa98d`.
+The ordered-specification, membership, evidence, and channel-pointer roots are
+`6ab70321b61bea288df325ffa433c992d0559e9546324583066b4f767249df46`,
+`01ec76832d511806302056f2f823b2d8c45c477cf92d826bfae28197f1656013`,
+`a00e426172d93e9c9254d97ec2295031873dd02fc97a003eb4824cc22b64e81a`,
+and
+`f2c2760dd275b94572e0ab5a5cc4837fc1e884ea26ea00a55074caa84a4d8f6e`.
+The suffix-depth root and fresh nine-body receipt root are
+`446f6c9d07c3f9e22fa0fbb41a46c95d27804a088d708b13aea0ddd7159c45dd`
+and
+`fdac645cbc070b5a1cdfe71b19e98afe095a183d4cfa0ad4256fa42857ca736c`.
+
+The v10 artifact family is named `alpha/catalog-v10.json`,
+`alpha/metrics-v10.json`, `alpha/dependency-graph-v10.mmd`, and
+`channels-v10.json` under `artifacts/peano-library/`. Their SHA-256 values are
+`46bd50c19b694470542f53f1ef7f61d1ee8fab1f08ad5573ca3534da29053dc3`,
+`63044f59aeb6fd84fbe57e26f8358676e679e15ef7456f1823db68bc255703de`,
+`fdee73e6ea045c90afb7c024e8a209fbea8b03189538611c93678e4fa923aa76`,
+and
+`644fb72833d66f30b2194a5d493935f31bae716edb4c76afcb8c6e272399eca2`.
+
+Current mathematical gates, using the binding campaign RFC's B0--B8
+numbering:
+
+- [ ] B3 release gate: the Alpha-v8 Choose/central-binomial lower bodies
+  remain body evidence, with closure/admission still open;
+- [ ] B4: exact Primorial interval splitting now has body evidence;
+  duplicate-free external-product comparison, `primorial_le_four_pow`, and
+  closure/admission remain open;
+- [ ] B5: prime-factor range decomposition and the no-prime central upper
+  bound;
+- [ ] B6 release gate: the main-inequality candidate and its layered closure
+  remain body evidence rather than checked-use authority;
+- [ ] B7: connect B3, B5, and B6 to the constructive large-input branch;
+- [ ] B8: finite coverage, constructive branch combination, capstone closure,
+  Book graph, and reviewed release.
+
+The local release gate is `make peano-library-alpha-v10-check`. Its two
+focused candidate suites run serially in manifest order, each in a fresh
+Python process; verifier mutation groups are likewise split. Concurrent proof
+workers and a monolithic retained-DAG run are not approved laptop gates.
+Bertrand's postulate remains open.

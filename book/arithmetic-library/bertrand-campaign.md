@@ -17,15 +17,15 @@ $$
 
 ```{admonition} Current evidence boundary
 :class: warning
-Bertrand's postulate is **not yet proved** in this repository. Alpha v8 is the
-sealed 1,055-row parent, and current Alpha v9 contains 174 campaign
-specifications whose dependency-curried bodies check. Its twenty-one-row
-suffix is frozen in 10+11 microbatches: a conservative inclusive `Primorial`
-foundation, followed by exact prime-divisibility membership, general
-divisibility, positive-quotient, and monotonicity laws. Every v9 suffix row
-remains `body_checked`, has no empty-context admission metadata, and is
-unavailable through checked theorem replay. Filtered interval splitting,
-duplicate-free external-product comparison, `primorial_le_four_pow`, the
+Bertrand's postulate is **not yet proved** in this repository. Alpha v9 is the
+sealed 1,076-row parent, and current Alpha v10 contains 183 campaign
+specifications whose dependency-curried bodies check. Its nine-row suffix is
+frozen in exact 1+8 dependency order: the pinned Product prefix/suffix split,
+followed by offset-Primorial interval construction and exact splitting.
+Every v10 suffix row remains `body_checked`, has no empty-context admission
+metadata, and is
+unavailable through checked theorem replay. Duplicate-free external-product
+comparison, `primorial_le_four_pow`, the
 no-prime central upper bound, large-input contradiction, finite coverage, and
 both Bertrand endpoints remain open.
 ```
@@ -44,6 +44,8 @@ The Alpha-v9 Primorial append is bound per source by the
 [`foundation RFC`](../../research/arithmetic-library/ha-bertrand-primorial-foundation-tranche-rfc-v1.md)
 and
 [`membership RFC`](../../research/arithmetic-library/ha-bertrand-primorial-membership-tranche-rfc-v1.md).
+The Alpha-v10 split append is bound by the
+[`interval-split RFC`](../../research/arithmetic-library/ha-bertrand-primorial-interval-split-tranche-rfc-v1.md).
 It selects an integer-only Erdős--Tochiori central-binomial proof. No real
 numbers, logarithms, primitive binomial operation, classical axiom, or new
 kernel rule is permitted.
@@ -65,19 +67,19 @@ bounded_prime_interval_search(l,u)
 Consequently, the negative branch is explicit data. The proof never turns
 $\neg\neg\exists p$ into $\exists p$.
 
-## Current Alpha v9 layer
+## Current Alpha v10 layer
 
-Alpha v9 is an additive child of the sealed 1,055-row Alpha v8 ledger. Alpha
-v7 remains the historical release published in commit `874e81e`, and v8 is
-the sealed Choose/central-binomial parent.
+Alpha v10 is an additive child of the sealed 1,076-row Alpha v9 ledger. Alpha
+v8 remains the sealed Choose/central-binomial parent, and v9 remains the
+sealed Primorial foundation and membership parent.
 
 | Quantity | Exact value |
 |---|---:|
-| Alpha v9 specifications | 1,076 |
+| Alpha v10 specifications | 1,085 |
 | Stable rows | 432 |
-| Alpha-only rows | 644 |
+| Alpha-only rows | 653 |
 | checked-use rows | 570 |
-| direct dependency edges | 3,276 |
+| direct dependency edges | 3,306 |
 | dependency layers | 45 |
 | first-round Bertrand rows | 21 |
 | Round-2 Bertrand rows | 42 |
@@ -86,28 +88,29 @@ the sealed Choose/central-binomial parent.
 | Alpha-v7 constructor / successor / total-power / base / recurrence / transport / equality rows | 3 + 5 + 4 + 2 + 5 + 3 + 2 |
 | Alpha-v8 Choose / central baseline and recurrence / bridge / lower-bound rows | 24 + 14 |
 | Alpha-v9 Primorial foundation / membership and monotonicity rows | 10 + 11 |
+| Alpha-v10 Product split / Primorial interval rows | 1 + 8 |
 
-All 174 campaign additions are `body_checked`; checked use remains
+All 183 campaign additions are `body_checked`; checked use remains
 unchanged at 570. The current enrollment root is
-`fe862a0c9d0c47f05ae6740cbc95c67e9b984a715397e18078c11d44f709046f`.
+`c016d13d555f31c0fabf61e236f9012ac60bf50e2e66210d398d7bc049672b4f`.
 The full edition identity is
-`b74d7479d749500dbbd737f7cf5e7ea97a7998f8079233ed87b11c84823e2f80`.
+`1e4376021508ac6913770ac18eca8c1406c7b298d7e381f994510c6854baa98d`.
 The ordered-specification, membership, evidence, and channel-pointer roots are
-`762d1310c41ed92da066701cf7529551324b09f7b501c5a29c530f443afeb998`,
-`4c87c40b5a260d67b5582447cfabb7e3ce62e80303aa4f4d33b1b952995ec356`,
-`108593843459a69d81c333305a50b5368294c3c722437f425b92c942391fe9be`,
+`6ab70321b61bea288df325ffa433c992d0559e9546324583066b4f767249df46`,
+`01ec76832d511806302056f2f823b2d8c45c477cf92d826bfae28197f1656013`,
+`a00e426172d93e9c9254d97ec2295031873dd02fc97a003eb4824cc22b64e81a`,
 and
-`edfb0eacecbd9419b1b303098915e28e45643379b65ab7d807ffcd4d7bd4b3e7`.
+`f2c2760dd275b94572e0ab5a5cc4837fc1e884ea26ea00a55074caa84a4d8f6e`.
 The deterministic channel pointer is
-`artifacts/peano-library/channels-v9.json`; its catalog, metrics, and reduced
-graph are the matching `catalog-v9.json`, `metrics-v9.json`, and
-`dependency-graph-v9.mmd`.
+`artifacts/peano-library/channels-v10.json`; its catalog, metrics, and reduced
+graph are the matching `catalog-v10.json`, `metrics-v10.json`, and
+`dependency-graph-v10.mmd`.
 Their catalog, metrics, reduced-graph, and channel-pointer SHA-256 values are
-`74ab887e9eef3e3fc583b103f392f4e06125cb14a561765373677eb57f830eda`,
-`7397959a4dad4e1d42e6a108156c84666b4cd4f95e07e573d1fcf402f83c2d65`,
-`03b803080cd082642adeb2a89b62ab369c7e69aca4c4dfe90b327ef94c389ab9`,
+`46bd50c19b694470542f53f1ef7f61d1ee8fab1f08ad5573ca3534da29053dc3`,
+`63044f59aeb6fd84fbe57e26f8358676e679e15ef7456f1823db68bc255703de`,
+`fdee73e6ea045c90afb7c024e8a209fbea8b03189538611c93678e4fa923aa76`,
 and
-`77fd0ba0ad1ba461432384c3330041a3dfc641dc84121982eb08456ee2de9a34`.
+`644fb72833d66f30b2194a5d493935f31bae716edb4c76afcb8c6e272399eca2`.
 The sealed v7 catalog, metrics, reduced graph, and
 channels SHA-256 values remain
 `7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`,
@@ -115,8 +118,8 @@ channels SHA-256 values remain
 `85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`,
 and
 `fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
-The v9 evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
-505 `body_checked`, and one `pending_layered_closure` row. No v9 row was
+The v10 evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
+514 `body_checked`, and one `pending_layered_closure` row. No v10 row was
 promoted.
 
 ### B0 — constructive interval search
@@ -369,6 +372,31 @@ This remains body evidence: every new row rejects checked replay, and interval
 splitting, duplicate-free external-product comparison, and the final
 Primorial bound remain future B4 work.
 
+## Alpha v10 Primorial interval splitting
+
+Alpha v10 preserves the complete v9 prefix and appends nine reviewed rows in
+exact 1+8 dependency order. The first row pins only
+`beta_product_prefix_suffix_split` from its two-row provider; the unreviewed
+concat converse remains excluded. The remaining rows define offset selector
+prefixes and interval Primorial products, prove their totality,
+functionality, entry transport and shift, restrict a full selector prefix,
+and conclude
+
+$$
+\operatorname{Primorial}(a+l,z)\Longrightarrow
+\exists x,y\,
+\bigl(\operatorname{Primorial}(a,x)\land
+\operatorname{PrimorialInterval}(a,l,y)\land z=xy\bigr).
+$$
+
+The binding RFC has SHA-256
+`db7d2d58f0b44d3793673b21496ea7f5d5d2747c75795587f6b1c99b2e80f46e`.
+All nine dependency-curried bodies replay with combined root
+`fdac645cbc070b5a1cdfe71b19e98afe095a183d4cfa0ad4256fa42857ca736c`.
+This remains body evidence: every new row rejects checked replay, and
+duplicate-free external-product comparison and the final Primorial bound
+remain future B4 work.
+
 ## Dependency roadmap
 
 ```text
@@ -377,7 +405,7 @@ checked Alpha baseline
   `-- B1 discrete inequality/fold API
         |-- B2 prime-power valuations and Legendre
         |-- B3 Choose/CentralBinom [Alpha v8 body evidence]
-        `-- B4 Primorial [Alpha v9 foundation/membership; bound open; also depends on B3]
+        `-- B4 Primorial [Alpha v10 interval split; bound open; also depends on B3]
 
 B2 + B3 + B4 --------------------> B5 central factor upper bound [open]
 B1 --------------------------------> B6 native main inequality [candidate]
@@ -465,6 +493,7 @@ $64,\ldots,69$ were not selected for this lineage.
 | `d46e513`--`74dc219` | frozen 38-row Choose/central-binomial tranche |
 | `dfb2673` | frozen ten-row Primorial foundation tranche |
 | `b0bc5de` | frozen eleven-row Primorial membership and monotonicity tranche |
+| `c45d68a` | frozen Product split and eight-row Primorial interval tranche |
 
 All checkpoints are pushed to `nasqret/vietnam2026` on
 `agent/new-theorems-tranche-01`.
@@ -472,13 +501,13 @@ All checkpoints are pushed to `nasqret/vietnam2026` on
 ## Reproduce the current gates
 
 ```bash
-make peano-library-alpha-v9-check
+make peano-library-alpha-v10-check
 ```
 
-This validates the Alpha-v9 evidence boundary and independently replays its
-twenty-one new dependency-curried bodies. On a memory-constrained laptop, the
+This validates the Alpha-v10 evidence boundary and independently replays its
+nine new dependency-curried bodies. On a memory-constrained laptop, the
 two focused source-block suites run serially in fresh Python processes, with
-RSS observed and no concurrent proof worker. The v9 Make
+RSS observed and no concurrent proof worker. The v10 Make
 target also splits verifier mutation groups across fresh processes. A single
 monolithic pytest process can retain proof DAGs and is not an approved local
 gate. Successful replay does not upgrade Alpha evidence or promote anything

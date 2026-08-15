@@ -57,6 +57,11 @@ arithmetic library. Start with:
   the exact eleven-row second Alpha-v9 microbatch proving prime divisibility
   membership and Primorial divisibility, positive-quotient, and monotonicity
   laws, while leaving interval splitting and the final bound open;
+- [`Primorial interval-split tranche RFC`](ha-bertrand-primorial-interval-split-tranche-rfc-v1.md):
+  the exact 1+8 Alpha-v10 append pinning the reviewed Product split and
+  proving offset selector-product totality, functionality, transport, and
+  exact Primorial prefix/interval decomposition, while leaving the final
+  product bound open;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
   the repository execution plan and first canonical-interface tranche.
 

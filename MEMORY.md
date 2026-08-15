@@ -2615,3 +2615,55 @@
   prime-product comparison, `primorial_le_four_pow`, the no-prime central
   upper bound, large-input contradiction, finite coverage, constructive
   capstone, and Bertrand's postulate remain open.
+
+## 2026-08-15 — current Alpha v10 / Primorial interval-split contract
+
+- **Current edition:** Alpha v10 is the exact sealed 1,076-row Alpha-v9 prefix
+  plus nine dependency-topological Bertrand rows at indices 1076--1084. The
+  frozen order is one pinned Product split followed by eight offset-Primorial
+  interval rows. The provider's concat converse is deliberately excluded.
+- **Inventory and evidence:** 1,085 specifications, 3,306 declared direct
+  edges, 45 layers, 432 Stable rows, 653 Alpha-only rows, and 570 checked-use
+  rows. Evidence is 432 `stable_closed`, 138 `alpha_closed`, 514
+  `body_checked`, and one `pending_layered_closure`. All nine suffix rows
+  reject checked replay; there was no Stable promotion.
+- **Completed body mathematics:** offset selector-product prefixes and
+  interval Primorials have totality, functionality, entry transport and
+  shift, prefix restriction, and an exact decomposition of
+  `Primorial(a+l)` into prefix and interval factors. These are
+  dependency-curried body claims, not empty-context admission.
+- **Binding RFC:**
+  `research/arithmetic-library/ha-bertrand-primorial-interval-split-tranche-rfc-v1.md`
+  at SHA-256
+  `db7d2d58f0b44d3793673b21496ea7f5d5d2747c75795587f6b1c99b2e80f46e`.
+- **Exact roots:** enrollment
+  `c016d13d555f31c0fabf61e236f9012ac60bf50e2e66210d398d7bc049672b4f`;
+  specification
+  `6ab70321b61bea288df325ffa433c992d0559e9546324583066b4f767249df46`;
+  edition
+  `1e4376021508ac6913770ac18eca8c1406c7b298d7e381f994510c6854baa98d`;
+  membership
+  `01ec76832d511806302056f2f823b2d8c45c477cf92d826bfae28197f1656013`;
+  evidence
+  `a00e426172d93e9c9254d97ec2295031873dd02fc97a003eb4824cc22b64e81a`;
+  channel pointer
+  `f2c2760dd275b94572e0ab5a5cc4837fc1e884ea26ea00a55074caa84a4d8f6e`;
+  suffix depth
+  `446f6c9d07c3f9e22fa0fbb41a46c95d27804a088d708b13aea0ddd7159c45dd`;
+  nine-body receipts
+  `fdac645cbc070b5a1cdfe71b19e98afe095a183d4cfa0ad4256fa42857ca736c`.
+- **Artifact and gate names:** v10 uses
+  `artifacts/peano-library/alpha/catalog-v10.json`, `metrics-v10.json`,
+  `dependency-graph-v10.mmd`, and `artifacts/peano-library/channels-v10.json`.
+  Their SHA-256 values are
+  `46bd50c19b694470542f53f1ef7f61d1ee8fab1f08ad5573ca3534da29053dc3`,
+  `63044f59aeb6fd84fbe57e26f8358676e679e15ef7456f1823db68bc255703de`,
+  `fdee73e6ea045c90afb7c024e8a209fbea8b03189538611c93678e4fa923aa76`,
+  and
+  `644fb72833d66f30b2194a5d493935f31bae716edb4c76afcb8c6e272399eca2`.
+  The gate is `make peano-library-alpha-v10-check`, with both focused suites
+  and verifier mutation groups run serially in fresh Python processes.
+- **Open front:** duplicate-free external prime-product comparison,
+  `primorial_le_four_pow`, the no-prime central upper bound, large-input
+  contradiction, finite coverage, constructive capstone, and Bertrand's
+  postulate remain open.

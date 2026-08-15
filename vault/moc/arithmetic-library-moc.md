@@ -6,7 +6,7 @@ tags: [moc, peano-arithmetic, number-theory, library]
 > The executable and planned dependency graph from elementary equality through
 > divisibility, modular arithmetic, primes, and unique factorization.
 
-## Current library editions — Alpha v9, 2026-08-15
+## Current library editions — Alpha v10, 2026-08-15
 
 This status supersedes, without erasing, the dated checkpoint language below.
 **Stable** is the unchanged official checked edition: 432 theorems, 1,185
@@ -14,40 +14,40 @@ declared direct edges, and 22 layers. Sealed **Alpha v1** remains 885 rows and
 sealed **Alpha v2** remains 902 rows, and sealed **Alpha v3** remains 923
 rows. Sealed **Alpha v4** remains 965 rows, sealed **Alpha v5** remains 972
 rows, sealed **Alpha v6** remains 993 rows, sealed **Alpha v7** remains 1,017
-rows, and sealed **Alpha v8** remains 1,055 rows. Current additive **Alpha
-v9** preserves that exact v8 ledger and appends 21 Bertrand rows at indices
-1055--1075 in frozen 10+11 microbatches across two source blocks: 1,076
-theorems, 3,276 direct edges, and 45 layers, comprising Stable plus 644
-Alpha-only rows.
+rows, sealed **Alpha v8** remains 1,055 rows, and sealed **Alpha v9** remains
+1,076 rows. Current additive **Alpha v10** preserves that exact v9 ledger and
+appends nine Bertrand rows at indices 1076--1084 in exact 1+8 dependency
+order: 1,085 theorems, 3,306 direct edges, and 45 layers, comprising Stable
+plus 653 Alpha-only rows.
 
-Membership and evidence are independent. Alpha v9 contains 432
-`stable_closed`, 138 `alpha_closed`, 505 `body_checked`, and one
+Membership and evidence are independent. Alpha v10 contains 432
+`stable_closed`, 138 `alpha_closed`, 514 `body_checked`, and one
 `pending_layered_closure` row. Only 570 closed rows are available for checked
-use; the other 506 still need whole-library empty-context closure. The current
-runtime surface is `peano_lab.library.editions_v9` (`edition`, `entry`,
+use; the other 515 still need whole-library empty-context closure. The current
+runtime surface is `peano_lab.library.editions_v10` (`edition`, `entry`,
 `replay`), with Stable as the default and body-only/pending Alpha replay
 rejected.
 
-The current artifact index is `artifacts/peano-library/channels-v9.json`; it
-links Alpha v9's catalog, metrics, and graph while the Stable snapshot stays
+The current artifact index is `artifacts/peano-library/channels-v10.json`; it
+links Alpha v10's catalog, metrics, and graph while the Stable snapshot stays
 at `artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
 artifacts remain sealed parents. The graph's
 reachability reduction is for structural review and display, not a claim of
-proof-semantic minimality. Cold closure of the 506 body-only or
+proof-semantic minimality. Cold closure of the 515 body-only or
 closure-pending Alpha rows and any Stable promotion are pending. Older
 descriptions of reviewed rows as private or unregistered record their
 historical Stable status; enrolled rows are now Alpha-only unless separately
 promoted.
 
-Alpha v9's enrollment, specification, edition, membership, evidence, and
+Alpha v10's enrollment, specification, edition, membership, evidence, and
 channel-pointer roots are
-`fe862a0c9d0c47f05ae6740cbc95c67e9b984a715397e18078c11d44f709046f`,
-`762d1310c41ed92da066701cf7529551324b09f7b501c5a29c530f443afeb998`,
-`b74d7479d749500dbbd737f7cf5e7ea97a7998f8079233ed87b11c84823e2f80`,
-`4c87c40b5a260d67b5582447cfabb7e3ce62e80303aa4f4d33b1b952995ec356`,
-`108593843459a69d81c333305a50b5368294c3c722437f425b92c942391fe9be`,
+`c016d13d555f31c0fabf61e236f9012ac60bf50e2e66210d398d7bc049672b4f`,
+`6ab70321b61bea288df325ffa433c992d0559e9546324583066b4f767249df46`,
+`1e4376021508ac6913770ac18eca8c1406c7b298d7e381f994510c6854baa98d`,
+`01ec76832d511806302056f2f823b2d8c45c477cf92d826bfae28197f1656013`,
+`a00e426172d93e9c9254d97ec2295031873dd02fc97a003eb4824cc22b64e81a`,
 and
-`edfb0eacecbd9419b1b303098915e28e45643379b65ab7d807ffcd4d7bd4b3e7`.
+`f2c2760dd275b94572e0ab5a5cc4837fc1e884ea26ea00a55074caa84a4d8f6e`.
 The sealed v8 specification, membership, evidence, and channel-pointer roots
 remain
 `fe49d664e5a88f6637c7790b104e9b0aa3c583e48f9a4a1405d5b098f7f61df9`,
@@ -72,9 +72,17 @@ graph
 `03b803080cd082642adeb2a89b62ab369c7e69aca4c4dfe90b327ef94c389ab9`,
 and channels
 `77fd0ba0ad1ba461432384c3330041a3dfc641dc84121982eb08456ee2de9a34`.
-The 506 missing closures are required for a whole-Alpha-v9 promotion, not for an
-unrelated smaller dependency-closed batch; every proposed batch receives its
-own isolated promotion receipt.
+Alpha-v10 artifact hashes are catalog
+`46bd50c19b694470542f53f1ef7f61d1ee8fab1f08ad5573ca3534da29053dc3`,
+metrics
+`63044f59aeb6fd84fbe57e26f8358676e679e15ef7456f1823db68bc255703de`,
+graph
+`fdee73e6ea045c90afb7c024e8a209fbea8b03189538611c93678e4fa923aa76`,
+and channels
+`644fb72833d66f30b2194a5d493935f31bae716edb4c76afcb8c6e272399eca2`.
+The 515 missing closures are required for a whole-Alpha-v10 promotion, not
+for an unrelated smaller dependency-closed batch; every proposed batch
+receives its own isolated promotion receipt.
 
 The current Stable prefix is specific to channel v1. Later promotion must keep
 Alpha enrollment order and origin/provenance immutable, publish a new channel
@@ -301,25 +309,23 @@ prime-power valuations, binomial coefficients, prime products, and explicit
 power inequalities. The navigable status page is
 [`Bertrand's postulate campaign`](../../book/arithmetic-library/bertrand-campaign.md).
 
-Current Alpha v9 preserves the exact 1,055-row Alpha v8 ledger and appends 21
-Bertrand specifications at indices 1055--1075 in frozen 10+11 microbatches.
-The first freezes the conservative inclusive Primorial foundation; the second
-supplies exact prime-divisibility membership, general divisibility, positive
-quotients, and monotonicity. Together the 174 enrolled campaign rows cover the
+Current Alpha v10 preserves the exact 1,076-row Alpha v9 ledger and appends
+nine Bertrand specifications at indices 1076--1084 in exact 1+8 order. The
+first pins the reviewed Product prefix/suffix split; the remaining eight add
+offset-Primorial interval construction and exact splitting. Together the 183
+enrolled campaign rows cover the
 earlier order, valuation, finite-sum, factorial, $H/J$, and central-binomial
-layers plus this new Primorial layer. Every dependency-curried body checks,
-but all 174 remain `body_checked`; checked use is still 570 and Stable is still
-432. The append is bound per source by the
-[`foundation RFC`](../../research/arithmetic-library/ha-bertrand-primorial-foundation-tranche-rfc-v1.md)
-and
-[`membership RFC`](../../research/arithmetic-library/ha-bertrand-primorial-membership-tranche-rfc-v1.md).
+layers plus the Primorial foundation, membership, and interval-split layers.
+Every dependency-curried body checks, but all 183 remain `body_checked`;
+checked use is still 570 and Stable is still 432. The append is bound by the
+[`interval-split RFC`](../../research/arithmetic-library/ha-bertrand-primorial-interval-split-tranche-rfc-v1.md).
 
 The finite Legendre recurrence,
 `prime_factorial_valuation_eq_legendre_sum`, compact $H/J$ transport,
 recurrence-defined Choose/CentralBinom API, strict central lower bound, and
-Primorial foundation/membership/monotonicity laws are therefore complete body
-evidence, not empty-context admission or promotion. Filtered interval
-splitting, duplicate-free product comparison, `primorial_le_four_pow`, the
+Primorial foundation/membership/monotonicity and interval-split laws are
+therefore complete body evidence, not empty-context admission or promotion.
+Duplicate-free product comparison, `primorial_le_four_pow`, the
 no-prime central upper bound, large-input contradiction, finite coverage, and
 Bertrand's postulate itself are **not yet proved**. Heavy local gates run
 serially, with each of the two new focused suites or each
