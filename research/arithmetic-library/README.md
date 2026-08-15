@@ -49,6 +49,14 @@ arithmetic library. Start with:
   recurrence-defined `Choose`, `CentralBinom`, factorial/weighted bridge, and
   strict central lower-bound bodies, with body-only evidence and promotion
   boundaries frozen;
+- [`Primorial foundation tranche RFC`](ha-bertrand-primorial-foundation-tranche-rfc-v1.md):
+  the exact ten-row first Alpha-v9 microbatch defining the conservative
+  selector, factor-prefix, and inclusive `Primorial` relation together with
+  totality, functionality, decomposition, and positivity;
+- [`Primorial membership tranche RFC`](ha-bertrand-primorial-membership-tranche-rfc-v1.md):
+  the exact eleven-row second Alpha-v9 microbatch proving prime divisibility
+  membership and Primorial divisibility, positive-quotient, and monotonicity
+  laws, while leaving interval splitting and the final bound open;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
   the repository execution plan and first canonical-interface tranche.
 

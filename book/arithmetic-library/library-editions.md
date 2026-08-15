@@ -25,12 +25,13 @@ The repository now has canonical machine-readable artifacts for both
 editions. Stable v1 remains sealed at 432 rows, Alpha v1 remains sealed at 885
 rows, Alpha v2 remains sealed at 902 rows, and Alpha v3 remains sealed at 923
 rows. Alpha v4 remains sealed at 965 rows, Alpha v5 remains sealed at 972
-rows, Alpha v6 remains sealed at 993 rows, and Alpha v7 remains sealed at
-1,017 rows. Current Alpha v8 preserves the entire v7 enrollment ledger
-exactly, then appends thirty-eight reviewed Bertrand rows at indices
-1017--1054. Its two frozen dependency-topological microbatches contain 24
-recurrence-defined `Choose` and baseline `CentralBinom` rows, followed by 14
-central recurrence, factorial bridge, growth, seed, and lower-bound rows. The
+rows, Alpha v6 remains sealed at 993 rows, Alpha v7 remains sealed at 1,017
+rows, and Alpha v8 remains sealed at 1,055 rows. Current Alpha v9 preserves
+the entire v8 enrollment ledger exactly, then appends twenty-one reviewed
+Bertrand rows at indices 1055--1075. Its two frozen dependency-topological
+microbatches contain ten conservative Primorial-foundation rows followed by
+eleven prime-membership, divisibility, positive-quotient, and monotonicity
+rows. The
 initial Stable prefix is a historical fact about these channels, not the
 permanent promotion rule.
 
@@ -44,9 +45,10 @@ permanent promotion rule.
 | Sealed Alpha v5 catalog | **972** theorems | immutable parent: 432 Stable plus 540 Alpha-only rows |
 | Sealed Alpha v6 catalog | **993** theorems | immutable parent: 432 Stable plus 561 Alpha-only rows |
 | Sealed Alpha v7 catalog | **1,017** theorems | immutable parent: 432 Stable plus 585 Alpha-only rows |
-| Current Alpha v8 catalog | **1,055** theorems | 432 Stable plus 623 Alpha-only rows |
+| Sealed Alpha v8 catalog | **1,055** theorems | immutable parent: 432 Stable plus 623 Alpha-only rows |
+| Current Alpha v9 catalog | **1,076** theorems | 432 Stable plus 644 Alpha-only rows |
 | Alpha checked-use subset | **570** theorems | 432 `stable_closed` plus 138 `alpha_closed` rows |
-| Alpha v8 proof graph | **3,224** edges / **45** layers | exact direct dependencies for all 1,055 enrolled rows |
+| Alpha v9 proof graph | **3,276** edges / **45** layers | exact direct dependencies for all 1,076 enrolled rows |
 | Quadratic-reciprocity Alpha slice | **557** specifications | 241 Stable prerequisites and 316 Alpha-only specifications |
 | Stable $\cup$ QR slice | **748** distinct theorem names | 432 Stable plus the 316 QR Alpha-only rows |
 | K3B focused map | **41** nodes | 12 Stable prerequisites, 22 Alpha-only theorem/support nodes, and 7 conservative definitions |
@@ -58,12 +60,13 @@ permanent promotion rule.
 | Bertrand Alpha-v6 tranche | **21** specifications | indices 972--992 in an exact 8+5+5+3 split, all `body_checked`, fail-closed |
 | Bertrand Alpha-v7 tranche | **24** specifications | indices 993--1016 in an exact 3+5+4+2+5+3+2 split, all `body_checked`, fail-closed |
 | Bertrand Alpha-v8 tranche | **38** specifications | indices 1017--1054 in exact 24+14 microbatches, all `body_checked`, fail-closed |
+| Bertrand Alpha-v9 tranche | **21** specifications | indices 1055--1075 in exact 10+11 microbatches, all `body_checked`, fail-closed |
 
 For comparison, the sealed Alpha v1 proof graph has **2,641** edges / **45** layers,
 and its evidence partition was 432 `stable_closed`, 138 `alpha_closed`,
 314 `body_checked`, and one `pending_layered_closure`. Its immutable machine
 surfaces remain `artifacts/peano-library/channels.json` and
-`artifacts/peano-library/alpha/catalog-v1.json`; Alpha v2 through v8 are
+`artifacts/peano-library/alpha/catalog-v1.json`; Alpha v2 through v9 are
 additive children, not in-place rewrites of either file.
 The sealed Alpha v3 graph had **2,730** edges / **45** layers and 352 `body_checked`
 rows; its immutable channel pointer remains
@@ -77,28 +80,39 @@ rows; its immutable channel pointer remains
 The sealed Alpha v7 graph had **3,072** edges / **45** layers and 446 `body_checked`
 rows; its immutable channel pointer remains
 `artifacts/peano-library/channels-v7.json`.
+The sealed Alpha v8 graph had **3,224** edges / **45** layers and 484 `body_checked`
+rows; its immutable channel pointer remains
+`artifacts/peano-library/channels-v8.json`.
 
-The canonical Alpha v8 composition is 432 Stable-origin rows, 316 QR
+The canonical Alpha v9 composition is 432 Stable-origin rows, 316 QR
 additions, 120 strict-HA additions, 17 K3B additions, 17 K3C additions, and 21
 first-round plus 42 Round-2 plus 7 `FactorialVal` plus 21 v6 and 24 v7
-plus 38 v8 Bertrand additions. Its evidence partition is 432 `stable_closed`,
-138 `alpha_closed`, 484 `body_checked`, and one
+plus 38 v8 and 21 v9 Bertrand additions. Its evidence partition is 432
+`stable_closed`, 138 `alpha_closed`, 505 `body_checked`, and one
 `pending_layered_closure`. Thus **Alpha membership does not imply checked
-use**: exactly 570 of the 1,055 entries cross that boundary. Every v8 suffix row
+use**: exactly 570 of the 1,076 entries cross that boundary. Every v9 suffix row
 has `checked_use=false`, a null proof tag, and null empty-context closure
 metadata. Its independently replayed dependency-curried body is evidence for
-that body, not empty-context admission. The current v8
+that body, not empty-context admission. The current v9
 ordered-enrollment root is
-`a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2`;
+`fe862a0c9d0c47f05ae6740cbc95c67e9b984a715397e18078c11d44f709046f`;
 the full edition identity is
-`2101b7b384ec9791c41d07d8115123d6842729615a0084ce87cead619bc8c123`.
+`b74d7479d749500dbbd737f7cf5e7ea97a7998f8079233ed87b11c84823e2f80`.
 The current ordered-specification, membership, evidence, and channel-pointer
-roots are
-`fe49d664e5a88f6637c7790b104e9b0aa3c583e48f9a4a1405d5b098f7f61df9`,
-`4471bdcf06a2d3af866850b39f394a436ad608b4c0b166c0449620e5dd3c9ee3`,
-`4230c17701be2c604ea413be90c26bad41889d593dcaaeff311217b4e26367b4`,
+roots are, respectively,
+`762d1310c41ed92da066701cf7529551324b09f7b501c5a29c530f443afeb998`,
+`4c87c40b5a260d67b5582447cfabb7e3ce62e80303aa4f4d33b1b952995ec356`,
+`108593843459a69d81c333305a50b5368294c3c722437f425b92c942391fe9be`,
 and
-`1fd2216e0448fbeb0d8da60dea3b89fca4d4f7192371fc87a8c5cd35dccf3c70`.
+`edfb0eacecbd9419b1b303098915e28e45643379b65ab7d807ffcd4d7bd4b3e7`.
+The suffix-depth and fresh twenty-one-body receipt roots are
+`61f33ba9e49219ff4a199d082722d9582ac6d87f825851173ac7fdb6931bb52d`
+and
+`1a9bac74069a495d6ce17b906f46821731d6fad4e97d07e7272cf57da72593ab`.
+The sealed v8 enrollment and edition identities remain
+`a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2`
+and
+`2101b7b384ec9791c41d07d8115123d6842729615a0084ce87cead619bc8c123`.
 The sealed v7 enrollment and edition identities remain
 `aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c`
 and
@@ -133,15 +147,31 @@ respectively,
 `ff194534f1efd56dd771237b6a44279a705309df21c1fa319b6669f3e1cab008`,
 and
 `dec01b10ee9359b1f7057187725016d343bfb7f3176d8779c85da7f26983234d`.
-The binding control document is
+The v8 binding control document is
 [`RFC HA-R6-BERTRAND-CB-1`](../../research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md).
+
+The v9 artifact family is
+`artifacts/peano-library/alpha/catalog-v9.json`,
+`artifacts/peano-library/alpha/metrics-v9.json`,
+`artifacts/peano-library/alpha/dependency-graph-v9.mmd`, and
+`artifacts/peano-library/channels-v9.json`. Their SHA-256 values are,
+respectively,
+`74ab887e9eef3e3fc583b103f392f4e06125cb14a561765373677eb57f830eda`,
+`7397959a4dad4e1d42e6a108156c84666b4cd4f95e07e573d1fcf402f83c2d65`,
+`03b803080cd082642adeb2a89b62ab369c7e69aca4c4dfe90b327ef94c389ab9`,
+and
+`77fd0ba0ad1ba461432384c3330041a3dfc641dc84121982eb08456ee2de9a34`.
+Its ten foundation rows and eleven membership rows bind, respectively, to the
+[`Primorial foundation RFC`](../../research/arithmetic-library/ha-bertrand-primorial-foundation-tranche-rfc-v1.md)
+and
+[`Primorial membership RFC`](../../research/arithmetic-library/ha-bertrand-primorial-membership-tranche-rfc-v1.md).
 
 The 557-row focused QR slice omits 191 Stable theorems and 269 Alpha additions
 from the strict-HA, K3B, K3C, and Bertrand tranches; its union with all Stable
 rows has **748** distinct names. Likewise, the 41-node K3B map is a
 deliberately curated visual lens, not a competing catalog. The authoritative
 channel pointers are
-`artifacts/peano-library/channels-v8.json`; it links the current Alpha v8
+`artifacts/peano-library/channels-v9.json`; it links the current Alpha v9
 catalog, metrics, and graph, while the pre-existing Stable artifact remains
 `artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
 artifacts remain sealed parents.
@@ -155,9 +185,11 @@ documents the additive body-checked layer and its pending closure boundary.
 The {doc}`Bertrand campaign chapter <bertrand-campaign>` documents the next
 additive layers, including the completed body proofs of finite Legendre
 recurrence, factorial--Legendre equality, compact $H/J$ transport,
-recurrence-defined Choose/CentralBinom, and the strict central lower bound.
-The primorial and no-prime central upper bounds, branch integration, finite
-coverage, and capstone remain open.
+recurrence-defined Choose/CentralBinom, the strict central lower bound, and
+the Primorial foundation, membership, and monotonicity laws. Filtered interval
+splitting, duplicate-free product comparison, `primorial_le_four_pow`, the
+no-prime central upper bound, branch integration, finite coverage, and the
+capstone remain open.
 
 ## Release membership and proof evidence are different axes
 
@@ -178,7 +210,8 @@ mutation gates pass, but their repeated isolated WMI empty-context receipt is
 pending. They therefore fail closed through checked use.
 All twenty-one Alpha-v3 Bertrand rows, all forty-two Alpha-v4 Round-2 rows,
 the seven Alpha-v5 `FactorialVal` rows, the twenty-one Alpha-v6 rows, the
-twenty-four Alpha-v7 rows, and the thirty-eight Alpha-v8 rows are
+twenty-four Alpha-v7 rows, the thirty-eight Alpha-v8 rows, and the twenty-one
+Alpha-v9 rows are
 in the same body-only state. They include exact valuation
 multiplication, ceiling/floor-square, and quotient-budget theorems whose local
 closures are useful feasibility evidence but do not make them checked-use
@@ -205,6 +238,15 @@ the weighted vertical and factorial bridges; and the exact lower bound
 primorial and no-prime central upper bounds, large-input contradiction, finite
 coverage, and Bertrand endpoints remain open.
 
+Alpha v9 adds the conservative inclusive `Primorial` relation and its
+existence, functionality, zero, successor-decomposition, and positivity laws;
+then it proves the exact prime-divisibility membership equivalence together
+with successor and general divisibility, positive quotients, and weak numeric
+monotonicity. All twenty-one additions remain `body_checked`, unavailable
+through checked replay, and unpromoted. Filtered interval splitting,
+duplicate-free external prime-product comparison, `primorial_le_four_pow`,
+and every downstream Bertrand gate remain open.
+
 Definitions are a third kind of object. They are displayed as yellow hexagons
 because they expand conservatively before parsing; they are neither theorem
 premises nor additional axioms.
@@ -220,10 +262,10 @@ evidence is `stable_closed` or `alpha_closed`; a `body_checked` or
 `pending_layered_closure` request fails closed.
 
 ```python
-from peano_lab.library.editions_v8 import edition, entry, replay
+from peano_lab.library.editions_v9 import edition, entry, replay
 
 len(edition("stable").specs)          # 432
-len(edition("alpha").specs)           # 1055
+len(edition("alpha").specs)           # 1076
 len(edition("alpha").checked_specs)   # 570
 
 entry("cell_list_extensional", edition="alpha")

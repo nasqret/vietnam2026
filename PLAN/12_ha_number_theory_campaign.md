@@ -1348,3 +1348,71 @@ focused candidate suites run serially in manifest order, each in a fresh
 Python process; verifier mutation groups are likewise split. Concurrent proof
 workers and a monolithic retained-DAG run are not approved laptop gates.
 Bertrand's postulate remains open.
+
+## 2026-08-15 — Alpha v9 Primorial foundation and membership front
+
+Alpha v9 preserves the exact sealed 1,055-row Alpha-v8 parent and appends 21
+reviewed Bertrand rows at indices 1055--1075. The dependency-topological
+boundary is exact: ten conservative Primorial-foundation rows, then eleven
+prime-membership, divisibility, positive-quotient, and monotonicity rows. The
+binding control documents are the
+[`foundation RFC`](../research/arithmetic-library/ha-bertrand-primorial-foundation-tranche-rfc-v1.md)
+and
+[`membership RFC`](../research/arithmetic-library/ha-bertrand-primorial-membership-tranche-rfc-v1.md).
+
+| Edition | Theorems | Direct edges | Layers | Checked use |
+|---|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 432 |
+| Alpha v8 (sealed parent) | 1,055 | 3,224 | 45 | 570 |
+| Alpha v9 (current) | 1,076 | 3,276 | 45 | 570 |
+
+Alpha v9 has 432 Stable and 644 Alpha-only rows. Evidence is exactly 432
+`stable_closed`, 138 `alpha_closed`, 505 `body_checked`, and one
+`pending_layered_closure`. Every v9 suffix row has `checked_use=false`, a null
+proof tag, null empty-context closure metadata, and fail-closed replay. No
+Stable promotion occurred. The enrollment and edition identities are
+`fe862a0c9d0c47f05ae6740cbc95c67e9b984a715397e18078c11d44f709046f`
+and
+`b74d7479d749500dbbd737f7cf5e7ea97a7998f8079233ed87b11c84823e2f80`.
+The ordered-specification, membership, evidence, and channel-pointer roots are
+`762d1310c41ed92da066701cf7529551324b09f7b501c5a29c530f443afeb998`,
+`4c87c40b5a260d67b5582447cfabb7e3ce62e80303aa4f4d33b1b952995ec356`,
+`108593843459a69d81c333305a50b5368294c3c722437f425b92c942391fe9be`,
+and
+`edfb0eacecbd9419b1b303098915e28e45643379b65ab7d807ffcd4d7bd4b3e7`.
+The suffix-depth root and fresh 21-body receipt root are
+`61f33ba9e49219ff4a199d082722d9582ac6d87f825851173ac7fdb6931bb52d`
+and
+`1a9bac74069a495d6ce17b906f46821731d6fad4e97d07e7272cf57da72593ab`.
+
+The v9 artifact family is named `alpha/catalog-v9.json`,
+`alpha/metrics-v9.json`, `alpha/dependency-graph-v9.mmd`, and
+`channels-v9.json` under `artifacts/peano-library/`. Their SHA-256 values are
+`74ab887e9eef3e3fc583b103f392f4e06125cb14a561765373677eb57f830eda`,
+`7397959a4dad4e1d42e6a108156c84666b4cd4f95e07e573d1fcf402f83c2d65`,
+`03b803080cd082642adeb2a89b62ab369c7e69aca4c4dfe90b327ef94c389ab9`,
+and
+`77fd0ba0ad1ba461432384c3330041a3dfc641dc84121982eb08456ee2de9a34`.
+
+Current mathematical gates, using the binding campaign RFC's B0--B8
+numbering:
+
+- [ ] B3 release gate: the Alpha-v8 Choose/central-binomial lower bodies
+  remain body evidence, with closure/admission still open;
+- [ ] B4: the Primorial relation, totality, functionality, positivity,
+  prime-divisibility membership, divisibility, and monotonicity now have body
+  evidence; filtered interval splitting, duplicate-free external-product
+  comparison, `primorial_le_four_pow`, and closure/admission remain open;
+- [ ] B5: prime-factor range decomposition and the no-prime central upper
+  bound;
+- [ ] B6 release gate: the main-inequality candidate and its layered closure
+  exist outside Alpha v9, but are not enrolled or checked-use authority;
+- [ ] B7: connect B3, B5, and B6 to the constructive large-input branch;
+- [ ] B8: finite coverage, constructive branch combination, capstone closure,
+  Book graph, and reviewed release.
+
+The local release gate is `make peano-library-alpha-v9-check`. Its two focused
+candidate suites run serially in manifest order, each in a fresh Python
+process; verifier mutation groups are likewise split. Concurrent proof
+workers and a monolithic retained-DAG run are not approved laptop gates.
+Bertrand's postulate remains open.

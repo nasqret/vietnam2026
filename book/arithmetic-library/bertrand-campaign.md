@@ -17,16 +17,17 @@ $$
 
 ```{admonition} Current evidence boundary
 :class: warning
-Bertrand's postulate is **not yet proved** in this repository. Alpha v7 is the
-sealed 1,017-row parent, and current Alpha v8 contains 153 campaign
-specifications whose dependency-curried bodies check. Its thirty-eight-row
-suffix is frozen in 24+14 microbatches: recurrence-defined `Choose` and
-baseline `CentralBinom`, followed by the central recurrence, factorial and
-weighted bridges, strict growth, the fourth-row seed, and
-`four_pow_lt_mul_central_binom`. Every v8 suffix row remains `body_checked`,
-has no empty-context admission metadata, and is unavailable through checked
-theorem replay. The primorial and no-prime central upper bounds, large-input
-contradiction, finite coverage, and both Bertrand endpoints remain open.
+Bertrand's postulate is **not yet proved** in this repository. Alpha v8 is the
+sealed 1,055-row parent, and current Alpha v9 contains 174 campaign
+specifications whose dependency-curried bodies check. Its twenty-one-row
+suffix is frozen in 10+11 microbatches: a conservative inclusive `Primorial`
+foundation, followed by exact prime-divisibility membership, general
+divisibility, positive-quotient, and monotonicity laws. Every v9 suffix row
+remains `body_checked`, has no empty-context admission metadata, and is
+unavailable through checked theorem replay. Filtered interval splitting,
+duplicate-free external-product comparison, `primorial_le_four_pow`, the
+no-prime central upper bound, large-input contradiction, finite coverage, and
+both Bertrand endpoints remain open.
 ```
 
 The binding statement, logic, validation, and release rules are frozen in
@@ -39,6 +40,10 @@ requires a live checked equality rewrite. The amendment changes no endpoint,
 logical authority, or evidence status.
 The additive Choose/central-binomial tranche is separately bound by
 [`RFC HA-R6-BERTRAND-CB-1`](../../research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md).
+The Alpha-v9 Primorial append is bound per source by the
+[`foundation RFC`](../../research/arithmetic-library/ha-bertrand-primorial-foundation-tranche-rfc-v1.md)
+and
+[`membership RFC`](../../research/arithmetic-library/ha-bertrand-primorial-membership-tranche-rfc-v1.md).
 It selects an integer-only Erdős--Tochiori central-binomial proof. No real
 numbers, logarithms, primitive binomial operation, classical axiom, or new
 kernel rule is permitted.
@@ -60,18 +65,19 @@ bounded_prime_interval_search(l,u)
 Consequently, the negative branch is explicit data. The proof never turns
 $\neg\neg\exists p$ into $\exists p$.
 
-## Current Alpha v8 layer
+## Current Alpha v9 layer
 
-Alpha v8 is an additive child of the sealed 1,017-row Alpha v7 ledger. Alpha
-v7 remains the historical release published in commit `874e81e`.
+Alpha v9 is an additive child of the sealed 1,055-row Alpha v8 ledger. Alpha
+v7 remains the historical release published in commit `874e81e`, and v8 is
+the sealed Choose/central-binomial parent.
 
 | Quantity | Exact value |
 |---|---:|
-| Alpha v8 specifications | 1,055 |
+| Alpha v9 specifications | 1,076 |
 | Stable rows | 432 |
-| Alpha-only rows | 623 |
+| Alpha-only rows | 644 |
 | checked-use rows | 570 |
-| direct dependency edges | 3,224 |
+| direct dependency edges | 3,276 |
 | dependency layers | 45 |
 | first-round Bertrand rows | 21 |
 | Round-2 Bertrand rows | 42 |
@@ -79,27 +85,29 @@ v7 remains the historical release published in commit `874e81e`.
 | Alpha-v6 threshold / finite-sum / power / valuation rows | 8 + 5 + 5 + 3 |
 | Alpha-v7 constructor / successor / total-power / base / recurrence / transport / equality rows | 3 + 5 + 4 + 2 + 5 + 3 + 2 |
 | Alpha-v8 Choose / central baseline and recurrence / bridge / lower-bound rows | 24 + 14 |
+| Alpha-v9 Primorial foundation / membership and monotonicity rows | 10 + 11 |
 
-All 153 campaign additions are `body_checked`; checked use remains
+All 174 campaign additions are `body_checked`; checked use remains
 unchanged at 570. The current enrollment root is
-`a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2`.
+`fe862a0c9d0c47f05ae6740cbc95c67e9b984a715397e18078c11d44f709046f`.
 The full edition identity is
-`2101b7b384ec9791c41d07d8115123d6842729615a0084ce87cead619bc8c123`.
+`b74d7479d749500dbbd737f7cf5e7ea97a7998f8079233ed87b11c84823e2f80`.
 The ordered-specification, membership, evidence, and channel-pointer roots are
-`fe49d664e5a88f6637c7790b104e9b0aa3c583e48f9a4a1405d5b098f7f61df9`,
-`4471bdcf06a2d3af866850b39f394a436ad608b4c0b166c0449620e5dd3c9ee3`,
-`4230c17701be2c604ea413be90c26bad41889d593dcaaeff311217b4e26367b4`,
+`762d1310c41ed92da066701cf7529551324b09f7b501c5a29c530f443afeb998`,
+`4c87c40b5a260d67b5582447cfabb7e3ce62e80303aa4f4d33b1b952995ec356`,
+`108593843459a69d81c333305a50b5368294c3c722437f425b92c942391fe9be`,
 and
-`1fd2216e0448fbeb0d8da60dea3b89fca4d4f7192371fc87a8c5cd35dccf3c70`.
+`edfb0eacecbd9419b1b303098915e28e45643379b65ab7d807ffcd4d7bd4b3e7`.
 The deterministic channel pointer is
-`artifacts/peano-library/channels-v8.json`; its catalog, metrics, and reduced
-graph are the matching `catalog-v8.json`, `metrics-v8.json`, and
-`dependency-graph-v8.mmd`. Their SHA-256 values are
-`c06c5fde7b84b4a8524dd408a2b046d06c7a88ccb5814877b7ccfec0d20b1370`,
-`90c14911ef50391dd9fd99865a83a6e0886911253504096a30e497d30c1a6813`,
-`ff194534f1efd56dd771237b6a44279a705309df21c1fa319b6669f3e1cab008`,
+`artifacts/peano-library/channels-v9.json`; its catalog, metrics, and reduced
+graph are the matching `catalog-v9.json`, `metrics-v9.json`, and
+`dependency-graph-v9.mmd`.
+Their catalog, metrics, reduced-graph, and channel-pointer SHA-256 values are
+`74ab887e9eef3e3fc583b103f392f4e06125cb14a561765373677eb57f830eda`,
+`7397959a4dad4e1d42e6a108156c84666b4cd4f95e07e573d1fcf402f83c2d65`,
+`03b803080cd082642adeb2a89b62ab369c7e69aca4c4dfe90b327ef94c389ab9`,
 and
-`dec01b10ee9359b1f7057187725016d343bfb7f3176d8779c85da7f26983234d`.
+`77fd0ba0ad1ba461432384c3330041a3dfc641dc84121982eb08456ee2de9a34`.
 The sealed v7 catalog, metrics, reduced graph, and
 channels SHA-256 values remain
 `7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`,
@@ -107,8 +115,8 @@ channels SHA-256 values remain
 `85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`,
 and
 `fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
-The v8 evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
-484 `body_checked`, and one `pending_layered_closure` row. No v8 row was
+The v9 evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
+505 `body_checked`, and one `pending_layered_closure` row. No v9 row was
 promoted.
 
 ### B0 — constructive interval search
@@ -336,6 +344,31 @@ All 38 dependency-curried body receipts replay with combined root
 This is still body evidence: every new row rejects checked replay, and no
 Stable promotion or full campaign theorem follows from enrollment alone.
 
+## Alpha v9 Primorial foundation and membership
+
+Alpha v9 preserves the complete v8 prefix and appends 21 reviewed rows in two
+dependency-topological microbatches. The first ten freeze the selector and
+factor-prefix encodings and the inclusive mathematical Primorial
+`Primorial(m,z)`, then prove factor choice and prefix totality, Primorial
+existence and functionality, the zero law, successor decomposition, and
+positivity. The next eleven prove
+
+$$
+\operatorname{Prime}(p)\Longrightarrow
+\bigl(p\mid m\#\iff p\le m\bigr),
+$$
+
+successor and arbitrary-index divisibility, positive quotients, and weak
+numeric monotonicity. The two binding RFCs have SHA-256 values
+`c68354c9aaad738581a14ccbe33e7eaa262940bad667d613e84b947454ff1a89`
+and
+`4f569e76c68aa486fd1f1415491a5a3d678a75c239aa72ebd707d67fedde0df5`.
+All 21 dependency-curried body receipts replay with combined root
+`1a9bac74069a495d6ce17b906f46821731d6fad4e97d07e7272cf57da72593ab`.
+This remains body evidence: every new row rejects checked replay, and interval
+splitting, duplicate-free external-product comparison, and the final
+Primorial bound remain future B4 work.
+
 ## Dependency roadmap
 
 ```text
@@ -344,7 +377,7 @@ checked Alpha baseline
   `-- B1 discrete inequality/fold API
         |-- B2 prime-power valuations and Legendre
         |-- B3 Choose/CentralBinom [Alpha v8 body evidence]
-        `-- B4 Primorial [open; also depends on B3]
+        `-- B4 Primorial [Alpha v9 foundation/membership; bound open; also depends on B3]
 
 B2 + B3 + B4 --------------------> B5 central factor upper bound [open]
 B1 --------------------------------> B6 native main inequality [candidate]
@@ -352,7 +385,7 @@ B0 + B3 + B5 + B6 ----------------> B7 n >= 512 [open]
 B0 + B7 + certified prime chain ---> B8 endpoints BP01 and BP02 [open]
 ```
 
-The Alpha-v8 central lower bound proves $4^n<n\binom{2n}{n}$ at the
+The retained Alpha-v8 central lower bound proves $4^n<n\binom{2n}{n}$ at the
 body-evidence level. Under an explicit
 no-prime certificate for $(n,2n]$, valuations and the primorial will give
 
@@ -384,7 +417,7 @@ quotient complement, threshold arithmetic, the relational-power bridge,
 compact $H/J$ bases, six-step transport, the all-$s$ envelope, and
 `bertrand_main_inequality_nat` now have reviewed candidate bodies and closure
 receipts. The post-v7 envelope and main-inequality rows remain outside Alpha
-v8, however, and cannot feed a checked large-$n$ contradiction until the B4
+v9, however, and cannot feed a checked large-$n$ contradiction until the B4
 primorial bound, B5 no-prime central upper bound, and branch integration are
 complete.
 
@@ -430,6 +463,8 @@ $64,\ldots,69$ were not selected for this lineage.
 | `8ea03f2` | B6 main-inequality candidate bodies |
 | `d1ad971` | dependency-closed B6 inequality graph audit |
 | `d46e513`--`74dc219` | frozen 38-row Choose/central-binomial tranche |
+| `dfb2673` | frozen ten-row Primorial foundation tranche |
+| `b0bc5de` | frozen eleven-row Primorial membership and monotonicity tranche |
 
 All checkpoints are pushed to `nasqret/vietnam2026` on
 `agent/new-theorems-tranche-01`.
@@ -437,13 +472,13 @@ All checkpoints are pushed to `nasqret/vietnam2026` on
 ## Reproduce the current gates
 
 ```bash
-make peano-library-alpha-v8-check
+make peano-library-alpha-v9-check
 ```
 
-This validates the Alpha-v8 evidence boundary and independently replays its
-thirty-eight new dependency-curried bodies. On a memory-constrained laptop,
-the nineteen focused source-block suites run serially in fresh Python
-processes, with RSS observed and no concurrent proof worker. The v8 Make
+This validates the Alpha-v9 evidence boundary and independently replays its
+twenty-one new dependency-curried bodies. On a memory-constrained laptop, the
+two focused source-block suites run serially in fresh Python processes, with
+RSS observed and no concurrent proof worker. The v9 Make
 target also splits verifier mutation groups across fresh processes. A single
 monolithic pytest process can retain proof DAGs and is not an approved local
 gate. Successful replay does not upgrade Alpha evidence or promote anything

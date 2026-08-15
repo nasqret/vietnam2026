@@ -30,21 +30,21 @@ twenty-one Bertrand rows, and sealed Alpha v4 adds forty-two Round-2 rows for
 exact valuation multiplication, integer envelopes, ceiling/floor-square
 arithmetic, and the quotient budget. Sealed Alpha v5 preserves that complete
 965-row ledger and appends seven body-checked `FactorialVal` rows. Sealed
-Alpha v5 therefore has 972 rows, sealed Alpha v6 has 993, and sealed Alpha v7
-has 1,017. Current Alpha v8 preserves the entire v7 ledger and appends 38
-body-checked Bertrand rows in exact 24+14 microbatches. They provide the
-recurrence-defined `Choose` and `CentralBinom` foundation, factorial and
-weighted recurrence bridges, and the exact lower bound
-`four_pow_lt_mul_central_binom`. See
+Alpha v5 therefore has 972 rows, sealed Alpha v6 has 993, sealed Alpha v7 has
+1,017, and sealed Alpha v8 has 1,055. Current Alpha v9 preserves the entire v8
+ledger and appends 21 body-checked Bertrand rows in exact 10+11 microbatches.
+They provide the conservative inclusive `Primorial` relation, totality,
+functionality, decomposition, positivity, prime-divisibility membership, and
+divisibility and order monotonicity. See
 {doc}`Alpha and Stable library editions
 <library-editions>` for the exact scopes and lifecycle.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>1,055</strong><span>Alpha v8 theorems</span></div>
+  <div><strong>1,076</strong><span>Alpha v9 theorems</span></div>
   <div><strong>570</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>623</strong><span>Alpha-only rows</span></div>
+  <div><strong>644</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -55,24 +55,28 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The current additive Alpha v8 graph has 1,055 theorems, 3,224 direct edges,
+The current additive Alpha v9 graph has 1,076 theorems, 3,276 direct edges,
 and 45 dependency layers. Its mixed evidence is intentional: 570 rows have
-complete checked-use evidence, while 484 body-only rows and one pending row
+complete checked-use evidence, while 505 body-only rows and one pending row
 remain visible without being treated as empty-context facts. Stable remains
 432; the 885-row Alpha v1, 902-row Alpha v2, 923-row Alpha v3, 965-row Alpha
 v4, 972-row Alpha v5, 993-row Alpha v6, and 1,017-row Alpha v7 parents remain
-sealed. The
+sealed; Alpha v8 remains sealed at 1,055. The
 exact contract and opt-in API are on the {doc}`edition page
 <library-editions>`.
 
-Alpha v8 retains those v7 Legendre and $H/J$ rows and adds the 38-row
-`Choose`/central-binomial tranche controlled by
-[`RFC HA-R6-BERTRAND-CB-1`](../../research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md).
+Alpha v9 retains the Alpha-v8 `Choose`/central-binomial tranche and adds the
+ten-row Primorial foundation and eleven-row membership/monotonicity tranche
+controlled by the
+[`foundation RFC`](../../research/arithmetic-library/ha-bertrand-primorial-foundation-tranche-rfc-v1.md)
+and
+[`membership RFC`](../../research/arithmetic-library/ha-bertrand-primorial-membership-tranche-rfc-v1.md).
 The evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
-484 `body_checked`, and one `pending_layered_closure`; checked use remains
-570. Bertrand's postulate itself is not yet proved: the primorial and
-no-prime central upper bounds, large-input contradiction, finite coverage,
-and constructive capstone remain.
+505 `body_checked`, and one `pending_layered_closure`; checked use remains
+570. Bertrand's postulate itself is not yet proved: filtered interval
+splitting, duplicate-free external-product comparison, the
+`primorial_le_four_pow` bound, the no-prime central upper bound, large-input
+contradiction, finite coverage, and constructive capstone remain.
 
 ## The mathematical metro map
 

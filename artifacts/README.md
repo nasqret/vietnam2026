@@ -687,3 +687,66 @@ python3 scripts/build_peano_library_channels_v8.py --check
 python3 scripts/verify_peano_library_channels_v8.py
 make peano-library-alpha-v8-check
 ```
+
+## Peano Alpha v9 — Primorial foundation and membership (2026-08-15)
+
+Alpha v9 preserves the sealed 1,055-row Alpha-v8 ledger byte-for-byte and
+appends twenty-one reviewed Bertrand specifications at indices 1055--1075.
+The binding 10+11 microbatches first freeze the conservative inclusive
+`Primorial` relation and its recursive laws, then prove exact prime
+membership, divisibility, positive-quotient, and monotonicity laws. Stable
+remains unchanged at 432 rows.
+
+Current topology and evidence:
+
+- 1,076 theorem specifications, 3,276 declared direct edges, and 45 layers;
+- 432 Stable rows and 644 Alpha-only rows;
+- 432 `stable_closed`, 138 `alpha_closed`, 505 `body_checked`, and one
+  `pending_layered_closure` row; and
+- 570 checked-use rows; all twenty-one additions fail closed with
+  `checked_use=false`, null proof tags, and null empty-context closure
+  evidence.
+
+The deterministic pointer is
+[`peano-library/channels-v9.json`](peano-library/channels-v9.json). Its exact
+artifact SHA-256 values are:
+
+- catalog: `74ab887e9eef3e3fc583b103f392f4e06125cb14a561765373677eb57f830eda`;
+- metrics: `7397959a4dad4e1d42e6a108156c84666b4cd4f95e07e573d1fcf402f83c2d65`;
+- reduced graph: `03b803080cd082642adeb2a89b62ab369c7e69aca4c4dfe90b327ef94c389ab9`;
+  and
+- channel pointer: `77fd0ba0ad1ba461432384c3330041a3dfc641dc84121982eb08456ee2de9a34`.
+
+The ordered-enrollment, ordered-specification, edition, membership, evidence,
+and channel-pointer roots are respectively
+`fe862a0c9d0c47f05ae6740cbc95c67e9b984a715397e18078c11d44f709046f`,
+`762d1310c41ed92da066701cf7529551324b09f7b501c5a29c530f443afeb998`,
+`b74d7479d749500dbbd737f7cf5e7ea97a7998f8079233ed87b11c84823e2f80`,
+`4c87c40b5a260d67b5582447cfabb7e3ce62e80303aa4f4d33b1b952995ec356`,
+`108593843459a69d81c333305a50b5368294c3c722437f425b92c942391fe9be`,
+and
+`edfb0eacecbd9419b1b303098915e28e45643379b65ab7d807ffcd4d7bd4b3e7`.
+The suffix-depth and fresh 21-body receipt roots are
+`61f33ba9e49219ff4a199d082722d9582ac6d87f825851173ac7fdb6931bb52d`
+and
+`1a9bac74069a495d6ce17b906f46821731d6fad4e97d07e7272cf57da72593ab`.
+The append is controlled per source by the
+[`Primorial foundation RFC`](../research/arithmetic-library/ha-bertrand-primorial-foundation-tranche-rfc-v1.md)
+and
+[`Primorial membership RFC`](../research/arithmetic-library/ha-bertrand-primorial-membership-tranche-rfc-v1.md).
+
+The verifier independently replays every suffix body and cross-binds each row
+to its exact source, focused test, source-specific RFC, and sealed Alpha-v8
+catalog. This is body evidence, not empty-context admission or Stable
+promotion. Filtered interval splitting, duplicate-free external-product
+comparison, `primorial_le_four_pow`, the no-prime central upper bound,
+large-input integration, finite coverage, and Bertrand endpoints remain open.
+
+Rebuild or verify this channel with:
+
+```bash
+python3 scripts/build_peano_library_channels_v9.py
+python3 scripts/build_peano_library_channels_v9.py --check
+python3 scripts/verify_peano_library_channels_v9.py
+make peano-library-alpha-v9-check
+```
