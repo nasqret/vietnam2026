@@ -17,17 +17,14 @@ $$
 
 ```{admonition} Current evidence boundary
 :class: warning
-Bertrand's postulate is **not yet proved** in this repository. Alpha v9 is the
-sealed 1,076-row parent, and current Alpha v10 contains 183 campaign
-specifications whose dependency-curried bodies check. Its nine-row suffix is
-frozen in exact 1+8 dependency order: the pinned Product prefix/suffix split,
-followed by offset-Primorial interval construction and exact splitting.
-Every v10 suffix row remains `body_checked`, has no empty-context admission
-metadata, and is
-unavailable through checked theorem replay. Duplicate-free external-product
-comparison, `primorial_le_four_pow`, the
-no-prime central upper bound, large-input contradiction, finite coverage, and
-both Bertrand endpoints remain open.
+Bertrand's postulate is **not yet proved** in this repository. Alpha v10 is the
+sealed 1,085-row parent, and current Alpha v11 contains 221 campaign
+specifications whose dependency-curried bodies check. Its thirty-eight-row
+suffix is frozen in exact 20+18 microbatches and closes B4 through the public
+`primorial_le_four_pow` theorem. Every v11 suffix row remains `body_checked`,
+has no empty-context admission metadata, and is unavailable through checked
+theorem replay. The five-range no-prime central upper bound, large-input
+contradiction, finite coverage, and both Bertrand endpoints remain open.
 ```
 
 The binding statement, logic, validation, and release rules are frozen in
@@ -46,6 +43,9 @@ and
 [`membership RFC`](../../research/arithmetic-library/ha-bertrand-primorial-membership-tranche-rfc-v1.md).
 The Alpha-v10 split append is bound by the
 [`interval-split RFC`](../../research/arithmetic-library/ha-bertrand-primorial-interval-split-tranche-rfc-v1.md).
+The Alpha-v11 append is bound by the duplicate-free, Primorial/Choose interval,
+central-binomial upper, Primorial-four-power, and central-prime-support RFCs in
+the same research directory.
 It selects an integer-only Erdős--Tochiori central-binomial proof. No real
 numbers, logarithms, primitive binomial operation, classical axiom, or new
 kernel rule is permitted.
@@ -67,19 +67,19 @@ bounded_prime_interval_search(l,u)
 Consequently, the negative branch is explicit data. The proof never turns
 $\neg\neg\exists p$ into $\exists p$.
 
-## Current Alpha v10 layer
+## Current Alpha v11 layer
 
-Alpha v10 is an additive child of the sealed 1,076-row Alpha v9 ledger. Alpha
-v8 remains the sealed Choose/central-binomial parent, and v9 remains the
-sealed Primorial foundation and membership parent.
+Alpha v11 is an additive child of the sealed 1,085-row Alpha v10 ledger. Alpha
+v8 remains the sealed Choose/central-binomial parent, v9 the sealed Primorial
+foundation and membership parent, and v10 the sealed interval-split parent.
 
 | Quantity | Exact value |
 |---|---:|
-| Alpha v10 specifications | 1,085 |
+| Alpha v11 specifications | 1,123 |
 | Stable rows | 432 |
-| Alpha-only rows | 653 |
+| Alpha-only rows | 691 |
 | checked-use rows | 570 |
-| direct dependency edges | 3,306 |
+| direct dependency edges | 3,482 |
 | dependency layers | 45 |
 | first-round Bertrand rows | 21 |
 | Round-2 Bertrand rows | 42 |
@@ -89,28 +89,29 @@ sealed Primorial foundation and membership parent.
 | Alpha-v8 Choose / central baseline and recurrence / bridge / lower-bound rows | 24 + 14 |
 | Alpha-v9 Primorial foundation / membership and monotonicity rows | 10 + 11 |
 | Alpha-v10 Product split / Primorial interval rows | 1 + 8 |
+| Alpha-v11 duplicate-free / Choose interval / central upper / B4 / B5-support rows | 10 + 10 + 6 + 7 + 5 |
 
-All 183 campaign additions are `body_checked`; checked use remains
+All 221 campaign additions are `body_checked`; checked use remains
 unchanged at 570. The current enrollment root is
-`c016d13d555f31c0fabf61e236f9012ac60bf50e2e66210d398d7bc049672b4f`.
+`c9f6f4015e8e3e5aaeee803706113c85098551276ea3eb01039ade7bd97b1a36`.
 The full edition identity is
-`1e4376021508ac6913770ac18eca8c1406c7b298d7e381f994510c6854baa98d`.
+`46d07832b0c630b9ce1da1d6e639687347cd737774b2b88b923bc5f477b9ddc3`.
 The ordered-specification, membership, evidence, and channel-pointer roots are
-`6ab70321b61bea288df325ffa433c992d0559e9546324583066b4f767249df46`,
-`01ec76832d511806302056f2f823b2d8c45c477cf92d826bfae28197f1656013`,
-`a00e426172d93e9c9254d97ec2295031873dd02fc97a003eb4824cc22b64e81a`,
+`4a1f4302b0a4ede3bf5123ec021b4f2f5f98c2a7e22eadc6f13a446422ad9450`,
+`2f0be30e7de93bcf89235700c419f46656cb638be85ca153154684845e8dabdb`,
+`b82b567e59cabeda6f90fdfedaceb628ca2e7c4b7423be643b8f22865e7599bd`,
 and
-`f2c2760dd275b94572e0ab5a5cc4837fc1e884ea26ea00a55074caa84a4d8f6e`.
+`ecce457947650ae7ddf2a638d8b1f2c8757daea6a95ea9c927ebaef3995d4ccd`.
 The deterministic channel pointer is
-`artifacts/peano-library/channels-v10.json`; its catalog, metrics, and reduced
-graph are the matching `catalog-v10.json`, `metrics-v10.json`, and
-`dependency-graph-v10.mmd`.
+`artifacts/peano-library/channels-v11.json`; its catalog, metrics, and reduced
+graph are the matching `catalog-v11.json`, `metrics-v11.json`, and
+`dependency-graph-v11.mmd`.
 Their catalog, metrics, reduced-graph, and channel-pointer SHA-256 values are
-`46bd50c19b694470542f53f1ef7f61d1ee8fab1f08ad5573ca3534da29053dc3`,
-`63044f59aeb6fd84fbe57e26f8358676e679e15ef7456f1823db68bc255703de`,
-`fdee73e6ea045c90afb7c024e8a209fbea8b03189538611c93678e4fa923aa76`,
+`d992c4aeb37829838cefd668679c513c5d45f6304f9842dcbe825bb25563182c`,
+`92cb654431a1b631cede3a0957993b41b8ad0fb0a0175d1587413dbf54c14300`,
+`c020f3207b0408cf446200b2c91f0767874c50466eebda830c3faeeef08aeae1`,
 and
-`644fb72833d66f30b2194a5d493935f31bae716edb4c76afcb8c6e272399eca2`.
+`039712b6a1db739738f49b5cec20afdc0582ffae477bc43c52f96c00687b066f`.
 The sealed v7 catalog, metrics, reduced graph, and
 channels SHA-256 values remain
 `7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`,
@@ -118,8 +119,8 @@ channels SHA-256 values remain
 `85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`,
 and
 `fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
-The v10 evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
-514 `body_checked`, and one `pending_layered_closure` row. No v10 row was
+The v11 evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
+552 `body_checked`, and one `pending_layered_closure` row. No v11 row was
 promoted.
 
 ### B0 — constructive interval search
@@ -397,6 +398,28 @@ This remains body evidence: every new row rejects checked replay, and
 duplicate-free external-product comparison and the final Primorial bound
 remain future B4 work.
 
+## Alpha v11 B4 capstone and B5 prime support
+
+Alpha v11 preserves the complete v10 prefix and appends thirty-eight reviewed
+rows in exact 20+18 microbatches. The first microbatch proves duplicate-free
+prime-product comparison and connects Primorial intervals to factorial and
+Choose divisibility. The second supplies cap-safe central-binomial upper laws,
+proves the public bound
+
+$$
+\operatorname{Primorial}(n,z)\land \operatorname{Pow}(4,n,q)
+\Longrightarrow z\le q,
+$$
+
+and adds the first B5 prime-divisor and valuation-support rows. In particular,
+under an explicit no-Bertrand certificate, every prime divisor of the central
+binomial coefficient is constructively confined to the three live ranges used
+by the eventual five-range factorization.
+
+All thirty-eight rows remain body evidence only. Their source blocks bind to
+five subordinate RFCs and retain exact focused empty-context receipts, but
+Alpha enrollment itself grants no checked use and changes no Stable row.
+
 ## Dependency roadmap
 
 ```text
@@ -405,9 +428,9 @@ checked Alpha baseline
   `-- B1 discrete inequality/fold API
         |-- B2 prime-power valuations and Legendre
         |-- B3 Choose/CentralBinom [Alpha v8 body evidence]
-        `-- B4 Primorial [Alpha v10 interval split; bound open; also depends on B3]
+        `-- B4 Primorial [Alpha v11 body evidence; bound closed; depends on B3]
 
-B2 + B3 + B4 --------------------> B5 central factor upper bound [open]
+B2 + B3 + B4 --------------------> B5 central factor upper bound [support begun]
 B1 --------------------------------> B6 native main inequality [candidate]
 B0 + B3 + B5 + B6 ----------------> B7 n >= 512 [open]
 B0 + B7 + certified prime chain ---> B8 endpoints BP01 and BP02 [open]
@@ -494,6 +517,8 @@ $64,\ldots,69$ were not selected for this lineage.
 | `dfb2673` | frozen ten-row Primorial foundation tranche |
 | `b0bc5de` | frozen eleven-row Primorial membership and monotonicity tranche |
 | `c45d68a` | frozen Product split and eight-row Primorial interval tranche |
+| `5eef9a5`--`7539b44` | dependency-closed B4 comparison, interval, upper, and capstone tranches |
+| `56ecb02` | first five B5 central prime-divisor support rows |
 
 All checkpoints are pushed to `nasqret/vietnam2026` on
 `agent/new-theorems-tranche-01`.
@@ -501,13 +526,13 @@ All checkpoints are pushed to `nasqret/vietnam2026` on
 ## Reproduce the current gates
 
 ```bash
-make peano-library-alpha-v10-check
+make peano-library-alpha-v11-check
 ```
 
-This validates the Alpha-v10 evidence boundary and independently replays its
-nine new dependency-curried bodies. On a memory-constrained laptop, the
-two focused source-block suites run serially in fresh Python processes, with
-RSS observed and no concurrent proof worker. The v10 Make
+This validates the Alpha-v11 evidence boundary and independently replays its
+thirty-eight new dependency-curried bodies. On a memory-constrained laptop,
+the five focused source-block suites run serially in fresh Python processes,
+with RSS observed and no concurrent proof worker. The v11 Make
 target also splits verifier mutation groups across fresh processes. A single
 monolithic pytest process can retain proof DAGs and is not an approved local
 gate. Successful replay does not upgrade Alpha evidence or promote anything

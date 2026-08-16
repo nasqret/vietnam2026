@@ -1482,3 +1482,66 @@ focused candidate suites run serially in manifest order, each in a fresh
 Python process; verifier mutation groups are likewise split. Concurrent proof
 workers and a monolithic retained-DAG run are not approved laptop gates.
 Bertrand's postulate remains open.
+
+## 2026-08-16 — Alpha v11 Primorial capstone and B5 support
+
+Alpha v11 preserves the exact sealed 1,085-row Alpha-v10 parent and appends
+thirty-eight reviewed Bertrand rows at indices 1085--1122. The dependency
+order is split into exact 20+18 microbatches: duplicate-free products and
+Primorial/Choose interval bounds first, then central upper laws, the public
+Primorial fourth-power capstone, and five B5 prime-divisor support rows.
+
+| Edition | Theorems | Direct edges | Layers | Checked use |
+|---|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 432 |
+| Alpha v10 (sealed parent) | 1,085 | 3,306 | 45 | 570 |
+| Alpha v11 (current) | 1,123 | 3,482 | 45 | 570 |
+
+Alpha v11 has 432 Stable and 691 Alpha-only rows. Evidence is exactly 432
+`stable_closed`, 138 `alpha_closed`, 552 `body_checked`, and one
+`pending_layered_closure`. Every v11 suffix row has `checked_use=false`, a
+null proof tag, null empty-context closure metadata, and fail-closed replay.
+No Stable promotion occurred. The enrollment and edition identities are
+`c9f6f4015e8e3e5aaeee803706113c85098551276ea3eb01039ade7bd97b1a36`
+and
+`46d07832b0c630b9ce1da1d6e639687347cd737774b2b88b923bc5f477b9ddc3`.
+The ordered-specification, membership, evidence, and channel-pointer roots are
+`4a1f4302b0a4ede3bf5123ec021b4f2f5f98c2a7e22eadc6f13a446422ad9450`,
+`2f0be30e7de93bcf89235700c419f46656cb638be85ca153154684845e8dabdb`,
+`b82b567e59cabeda6f90fdfedaceb628ca2e7c4b7423be643b8f22865e7599bd`,
+and
+`ecce457947650ae7ddf2a638d8b1f2c8757daea6a95ea9c927ebaef3995d4ccd`.
+The suffix-depth root and fresh thirty-eight-body receipt root are
+`cf5d550d5a3aa4af1debf9268eca578c30ca408058dcdeb35892bc705287214e`
+and
+`6c314d36cd7bb1e6cb5b213fec9bf9e04ab118e84121830b00c885ede2abac2a`.
+
+The v11 artifact family is named `alpha/catalog-v11.json`,
+`alpha/metrics-v11.json`, `alpha/dependency-graph-v11.mmd`, and
+`channels-v11.json` under `artifacts/peano-library/`. Their SHA-256 values are
+`d992c4aeb37829838cefd668679c513c5d45f6304f9842dcbe825bb25563182c`,
+`92cb654431a1b631cede3a0957993b41b8ad0fb0a0175d1587413dbf54c14300`,
+`c020f3207b0408cf446200b2c91f0767874c50466eebda830c3faeeef08aeae1`,
+and
+`039712b6a1db739738f49b5cec20afdc0582ffae477bc43c52f96c00687b066f`.
+
+Current mathematical gates:
+
+- [ ] B3 release gate: the Alpha-v8 Choose/central-binomial lower bodies
+  remain body evidence, with closure/admission still open;
+- [x] B4 body-evidence gate: duplicate-free comparison, interval bounds, and
+  `primorial_le_four_pow` are complete and enrolled Alpha-only;
+- [ ] B5: outer prime-divisor bounds, three-range classification, and two
+  valuation-support rows now exist; the full five-range product upper bound
+  remains open;
+- [ ] B6 release gate: the main-inequality candidate and its layered closure
+  remain body evidence rather than checked-use authority;
+- [ ] B7: connect B3, B5, and B6 to the constructive large-input branch;
+- [ ] B8: finite coverage, constructive branch combination, capstone closure,
+  Book graph, and reviewed release.
+
+The local release gate is `make peano-library-alpha-v11-check`. Its five
+focused candidate suites run serially in manifest order, each in a fresh
+Python process; verifier mutation groups are likewise split. Concurrent proof
+workers and a monolithic retained-DAG run are not approved laptop gates.
+Bertrand's postulate remains open.

@@ -62,6 +62,17 @@ arithmetic library. Start with:
   proving offset selector-product totality, functionality, transport, and
   exact Primorial prefix/interval decomposition, while leaving the final
   product bound open;
+- [`Primorial duplicate-free tranche RFC`](ha-bertrand-primorial-duplicate-free-tranche-rfc-v1.md)
+  and [`Primorial/Choose interval tranche RFC`](ha-bertrand-primorial-choose-interval-tranche-rfc-v1.md):
+  the first 20-row Alpha-v11 microbatch proving duplicate-free product
+  comparison and connecting Primorial intervals to factorial and Choose
+  divisibility;
+- [`Central-binomial upper tranche RFC`](ha-bertrand-central-binomial-upper-tranche-rfc-v1.md),
+  [`Primorial four-power tranche RFC`](ha-bertrand-primorial-four-power-tranche-rfc-v1.md),
+  and [`central prime-support tranche RFC`](ha-bertrand-central-prime-support-tranche-rfc-v1.md):
+  the second 18-row Alpha-v11 microbatch closing the public B4
+  `primorial_le_four_pow` bound and beginning B5's prime-divisor range and
+  valuation support;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
   the repository execution plan and first canonical-interface tranche.
 

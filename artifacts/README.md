@@ -811,3 +811,61 @@ python3 scripts/build_peano_library_channels_v10.py --check
 python3 scripts/verify_peano_library_channels_v10.py
 make peano-library-alpha-v10-check
 ```
+
+## Peano Alpha v11 — Primorial capstone and B5 support (2026-08-16)
+
+Alpha v11 preserves the sealed 1,085-row Alpha-v10 ledger byte-for-byte and
+appends thirty-eight reviewed Bertrand specifications at indices 1085--1122.
+The exact 20+18 microbatches enroll the dependency-closed chain from
+duplicate-free prime products and Primorial/Choose interval bounds through
+the public `primorial_le_four_pow` capstone and the first B5 central
+prime-divisor support rows. Stable remains unchanged at 432 rows.
+
+Current topology and evidence:
+
+- 1,123 theorem specifications, 3,482 declared direct edges, and 45 layers;
+- 432 Stable rows and 691 Alpha-only rows;
+- 432 `stable_closed`, 138 `alpha_closed`, 552 `body_checked`, and one
+  `pending_layered_closure` row; and
+- 570 checked-use rows; all thirty-eight additions fail closed with
+  `checked_use=false`, null proof tags, and null empty-context closure
+  evidence.
+
+The deterministic pointer is
+[`peano-library/channels-v11.json`](peano-library/channels-v11.json). Its exact
+artifact SHA-256 values are:
+
+- catalog: `d992c4aeb37829838cefd668679c513c5d45f6304f9842dcbe825bb25563182c`;
+- metrics: `92cb654431a1b631cede3a0957993b41b8ad0fb0a0175d1587413dbf54c14300`;
+- reduced graph: `c020f3207b0408cf446200b2c91f0767874c50466eebda830c3faeeef08aeae1`;
+  and
+- channel pointer: `039712b6a1db739738f49b5cec20afdc0582ffae477bc43c52f96c00687b066f`.
+
+The ordered-enrollment, ordered-specification, edition, membership, evidence,
+and channel-pointer roots are respectively
+`c9f6f4015e8e3e5aaeee803706113c85098551276ea3eb01039ade7bd97b1a36`,
+`4a1f4302b0a4ede3bf5123ec021b4f2f5f98c2a7e22eadc6f13a446422ad9450`,
+`46d07832b0c630b9ce1da1d6e639687347cd737774b2b88b923bc5f477b9ddc3`,
+`2f0be30e7de93bcf89235700c419f46656cb638be85ca153154684845e8dabdb`,
+`b82b567e59cabeda6f90fdfedaceb628ca2e7c4b7423be643b8f22865e7599bd`,
+and
+`ecce457947650ae7ddf2a638d8b1f2c8757daea6a95ea9c927ebaef3995d4ccd`.
+The suffix-depth and fresh thirty-eight-body receipt roots are
+`cf5d550d5a3aa4af1debf9268eca578c30ca408058dcdeb35892bc705287214e`
+and
+`6c314d36cd7bb1e6cb5b213fec9bf9e04ab118e84121830b00c885ede2abac2a`.
+
+The verifier independently replays every suffix body and cross-binds each row
+to its exact source, focused test, source-specific RFC, and sealed Alpha-v10
+catalog. This is body evidence, not empty-context admission or Stable
+promotion. The five-range no-prime central upper bound, large-input
+integration, finite coverage, and Bertrand endpoints remain open.
+
+Rebuild or verify this channel with:
+
+```bash
+python3 scripts/build_peano_library_channels_v11.py
+python3 scripts/build_peano_library_channels_v11.py --check
+python3 scripts/verify_peano_library_channels_v11.py
+make peano-library-alpha-v11-check
+```

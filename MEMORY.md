@@ -2667,3 +2667,48 @@
   `primorial_le_four_pow`, the no-prime central upper bound, large-input
   contradiction, finite coverage, constructive capstone, and Bertrand's
   postulate remain open.
+
+## 2026-08-16 — current Alpha v11 / Primorial capstone and B5 support
+
+- **Current edition:** Alpha v11 is the exact sealed 1,085-row Alpha-v10
+  prefix plus thirty-eight dependency-topological Bertrand rows at indices
+  1085--1122, split into exact 20+18 microbatches across five reviewed source
+  blocks.
+- **Inventory and evidence:** 1,123 specifications, 3,482 declared direct
+  edges, 45 layers, 432 Stable rows, 691 Alpha-only rows, and 570 checked-use
+  rows. Evidence is 432 `stable_closed`, 138 `alpha_closed`, 552
+  `body_checked`, and one `pending_layered_closure`. All suffix rows reject
+  checked replay; there was no Stable promotion.
+- **Completed body mathematics:** duplicate-free product comparison,
+  Primorial/Choose interval divisibility and bounds, cap-safe central upper
+  laws, and the public `primorial_le_four_pow` theorem close B4 at
+  candidate/body-evidence level. Five B5 rows add central prime-divisor bounds,
+  three-range classification, and valuation nonzero support.
+- **Exact roots:** enrollment
+  `c9f6f4015e8e3e5aaeee803706113c85098551276ea3eb01039ade7bd97b1a36`;
+  specification
+  `4a1f4302b0a4ede3bf5123ec021b4f2f5f98c2a7e22eadc6f13a446422ad9450`;
+  edition
+  `46d07832b0c630b9ce1da1d6e639687347cd737774b2b88b923bc5f477b9ddc3`;
+  membership
+  `2f0be30e7de93bcf89235700c419f46656cb638be85ca153154684845e8dabdb`;
+  evidence
+  `b82b567e59cabeda6f90fdfedaceb628ca2e7c4b7423be643b8f22865e7599bd`;
+  channel pointer
+  `ecce457947650ae7ddf2a638d8b1f2c8757daea6a95ea9c927ebaef3995d4ccd`;
+  suffix depth
+  `cf5d550d5a3aa4af1debf9268eca578c30ca408058dcdeb35892bc705287214e`;
+  thirty-eight-body receipts
+  `6c314d36cd7bb1e6cb5b213fec9bf9e04ab118e84121830b00c885ede2abac2a`.
+- **Artifacts:** catalog
+  `d992c4aeb37829838cefd668679c513c5d45f6304f9842dcbe825bb25563182c`,
+  metrics
+  `92cb654431a1b631cede3a0957993b41b8ad0fb0a0175d1587413dbf54c14300`,
+  reduced graph
+  `c020f3207b0408cf446200b2c91f0767874c50466eebda830c3faeeef08aeae1`,
+  and channels
+  `039712b6a1db739738f49b5cec20afdc0582ffae477bc43c52f96c00687b066f`.
+  The serial gate is `make peano-library-alpha-v11-check`.
+- **Open front:** complete B5's five-range central upper bound, then B7's
+  constructive large-input contradiction and B8's finite coverage and final
+  Bertrand endpoints.

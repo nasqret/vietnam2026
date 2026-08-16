@@ -257,6 +257,7 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "**1,055** theorems",
         "**1,076** theorems",
         "**1,085** theorems",
+        "**1,123** theorems",
         "**570** theorems",
         "**2,641** edges / **45** layers",
         "**2,730** edges / **45** layers",
@@ -266,6 +267,7 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "**3,224** edges / **45** layers",
         "**3,276** edges / **45** layers",
         "**3,306** edges / **45** layers",
+        "**3,482** edges / **45** layers",
         "432 Stable plus 453 Alpha-only rows",
         "432 Stable plus 491 Alpha-only rows",
         "432 Stable plus 533 Alpha-only rows",
@@ -275,6 +277,7 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "432 Stable plus 623 Alpha-only rows",
         "432 Stable plus 644 Alpha-only rows",
         "432 Stable plus 653 Alpha-only rows",
+        "432 Stable plus 691 Alpha-only rows",
         "314 `body_checked`",
         "352 `body_checked`",
         "394 `body_checked`",
@@ -283,6 +286,7 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "484 `body_checked`",
         "505 `body_checked`",
         "514 `body_checked`",
+        "552 `body_checked`",
         "one `pending_layered_closure`",
         'edition("alpha").checked_specs',
         'entry("cell_list_extensional", edition="alpha")',
@@ -306,6 +310,10 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "artifacts/peano-library/alpha/metrics-v10.json",
         "artifacts/peano-library/alpha/dependency-graph-v10.mmd",
         "artifacts/peano-library/channels-v10.json",
+        "artifacts/peano-library/alpha/catalog-v11.json",
+        "artifacts/peano-library/alpha/metrics-v11.json",
+        "artifacts/peano-library/alpha/dependency-graph-v11.mmd",
+        "artifacts/peano-library/channels-v11.json",
         "aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c",
         "9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff",
         "a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2",
@@ -326,6 +334,14 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "f2c2760dd275b94572e0ab5a5cc4837fc1e884ea26ea00a55074caa84a4d8f6e",
         "446f6c9d07c3f9e22fa0fbb41a46c95d27804a088d708b13aea0ddd7159c45dd",
         "fdac645cbc070b5a1cdfe71b19e98afe095a183d4cfa0ad4256fa42857ca736c",
+        "c9f6f4015e8e3e5aaeee803706113c85098551276ea3eb01039ade7bd97b1a36",
+        "46d07832b0c630b9ce1da1d6e639687347cd737774b2b88b923bc5f477b9ddc3",
+        "4a1f4302b0a4ede3bf5123ec021b4f2f5f98c2a7e22eadc6f13a446422ad9450",
+        "2f0be30e7de93bcf89235700c419f46656cb638be85ca153154684845e8dabdb",
+        "b82b567e59cabeda6f90fdfedaceb628ca2e7c4b7423be643b8f22865e7599bd",
+        "ecce457947650ae7ddf2a638d8b1f2c8757daea6a95ea9c927ebaef3995d4ccd",
+        "cf5d550d5a3aa4af1debf9268eca578c30ca408058dcdeb35892bc705287214e",
+        "6c314d36cd7bb1e6cb5b213fec9bf9e04ab118e84121830b00c885ede2abac2a",
         "c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d",
         "7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4",
         "c06c5fde7b84b4a8524dd408a2b046d06c7a88ccb5814877b7ccfec0d20b1370",
@@ -340,6 +356,10 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "63044f59aeb6fd84fbe57e26f8358676e679e15ef7456f1823db68bc255703de",
         "fdee73e6ea045c90afb7c024e8a209fbea8b03189538611c93678e4fa923aa76",
         "644fb72833d66f30b2194a5d493935f31bae716edb4c76afcb8c6e272399eca2",
+        "d992c4aeb37829838cefd668679c513c5d45f6304f9842dcbe825bb25563182c",
+        "92cb654431a1b631cede3a0957993b41b8ad0fb0a0175d1587413dbf54c14300",
+        "c020f3207b0408cf446200b2c91f0767874c50466eebda830c3faeeef08aeae1",
+        "039712b6a1db739738f49b5cec20afdc0582ffae477bc43c52f96c00687b066f",
         "RFC HA-R6-BERTRAND-CB-1",
         "Primorial foundation RFC",
         "Primorial membership RFC",
@@ -350,18 +370,18 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         assert exact in source
     for exact in (
         "<library-editions>",
-        "<strong>1,085</strong><span>Alpha v10 theorems</span>",
-        "1,085 theorems, 3,306 direct edges",
-        "514 `body_checked`",
-        "1+8 interval-split tranche",
+        "<strong>1,123</strong><span>Alpha v11 theorems</span>",
+        "1,123 theorems, 3,482 direct edges",
+        "552 `body_checked`",
+        "dependency-closed duplicate-free",
     ):
         assert exact in index
     assert "241 Stable prerequisites" in normalized_proof_explorer
     assert "316 Alpha-only specifications" in normalized_proof_explorer
     assert "748" in normalized_proof_explorer
     for exact in (
-        "## Current Alpha v10 layer",
-        "| Alpha v10 specifications | 1,085 |",
+        "## Current Alpha v11 layer",
+        "| Alpha v11 specifications | 1,123 |",
         "| `FactorialVal` rows | 7 |",
         "8 + 5 + 5 + 3",
         "3 + 5 + 4 + 2 + 5 + 3 + 2",
@@ -372,10 +392,11 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "## Alpha v8 recurrence-defined Choose and central lower bound",
         "## Alpha v9 Primorial foundation and membership",
         "## Alpha v10 Primorial interval splitting",
+        "## Alpha v11 B4 capstone and B5 prime support",
         "B3 Choose/CentralBinom [Alpha v8 body evidence]",
         (
-            "B4 Primorial [Alpha v10 interval split; bound open; "
-            "also depends on B3]"
+            "B4 Primorial [Alpha v11 body evidence; bound closed; "
+            "depends on B3]"
         ),
         "eight-row threshold tranche",
         "five-row finite Legendre-sum interface",
@@ -409,7 +430,9 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "`dfb2673`",
         "`b0bc5de`",
         "`c45d68a`",
-        "make peano-library-alpha-v10-check",
+        "`5eef9a5`--`7539b44`",
+        "`56ecb02`",
+        "make peano-library-alpha-v11-check",
     ):
         assert exact in bertrand
     for exact in (
@@ -455,6 +478,16 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
     ):
         assert exact in artifacts
     assert "all nine additions fail closed" in normalized_artifacts
+    for exact in (
+        "## Peano Alpha v11 — Primorial capstone and B5 support",
+        "[`peano-library/channels-v11.json`](peano-library/channels-v11.json)",
+        "1,123 theorem specifications, 3,482 declared direct edges",
+        "c9f6f4015e8e3e5aaeee803706113c85098551276ea3eb01039ade7bd97b1a36",
+        "primorial_le_four_pow",
+        "make peano-library-alpha-v11-check",
+    ):
+        assert exact in artifacts
+    assert "all thirty-eight additions fail closed" in normalized_artifacts
 
 
 def test_generated_atlas_is_byte_current() -> None:

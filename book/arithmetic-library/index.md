@@ -31,20 +31,21 @@ exact valuation multiplication, integer envelopes, ceiling/floor-square
 arithmetic, and the quotient budget. Sealed Alpha v5 preserves that complete
 965-row ledger and appends seven body-checked `FactorialVal` rows. Sealed
 Alpha v5 therefore has 972 rows, sealed Alpha v6 has 993, sealed Alpha v7 has
-1,017, sealed Alpha v8 has 1,055, and sealed Alpha v9 has 1,076. Current Alpha
-v10 preserves the entire v9 ledger and appends nine body-checked Bertrand rows
-in exact 1+8 dependency order. They pin the Product prefix/suffix split and
-provide offset-Primorial interval totality, functionality, transport, and exact
-prefix/interval splitting. See
+1,017, sealed Alpha v8 has 1,055, sealed Alpha v9 has 1,076, and sealed Alpha
+v10 has 1,085. Current Alpha v11 preserves the entire v10 ledger and appends
+thirty-eight body-checked
+Bertrand rows in exact 20+18 microbatches. They close the dependency chain from
+duplicate-free products and interval Choose bounds through
+`primorial_le_four_pow` and the first B5 prime-support rows. See
 {doc}`Alpha and Stable library editions
 <library-editions>` for the exact scopes and lifecycle.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>1,085</strong><span>Alpha v10 theorems</span></div>
+  <div><strong>1,123</strong><span>Alpha v11 theorems</span></div>
   <div><strong>570</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>653</strong><span>Alpha-only rows</span></div>
+  <div><strong>691</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -55,25 +56,24 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The current additive Alpha v10 graph has 1,085 theorems, 3,306 direct edges,
+The current additive Alpha v11 graph has 1,123 theorems, 3,482 direct edges,
 and 45 dependency layers. Its mixed evidence is intentional: 570 rows have
-complete checked-use evidence, while 514 body-only rows and one pending row
+complete checked-use evidence, while 552 body-only rows and one pending row
 remain visible without being treated as empty-context facts. Stable remains
 432; the 885-row Alpha v1, 902-row Alpha v2, 923-row Alpha v3, 965-row Alpha
 v4, 972-row Alpha v5, 993-row Alpha v6, and 1,017-row Alpha v7 parents remain
-sealed; Alpha v8 remains sealed at 1,055, and Alpha v9 remains sealed at
-1,076. The
+sealed; Alpha v8 remains sealed at 1,055, Alpha v9 remains sealed at 1,076,
+and Alpha v10 remains sealed at 1,085. The
 exact contract and opt-in API are on the {doc}`edition page
 <library-editions>`.
 
-Alpha v10 retains the Alpha-v9 Primorial foundation and membership tranches,
-then adds the 1+8 interval-split tranche controlled by the
-[`interval-split RFC`](../../research/arithmetic-library/ha-bertrand-primorial-interval-split-tranche-rfc-v1.md).
+Alpha v11 retains the Alpha-v10 interval-split tranche, then adds the
+dependency-closed duplicate-free, Primorial/Choose interval, central-upper,
+Primorial-four-power, and central-prime-support tranches.
 The evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
-514 `body_checked`, and one `pending_layered_closure`; checked use remains
-570. Bertrand's postulate itself is not yet proved: the interval split is now
-available, but duplicate-free external-product comparison, the
-`primorial_le_four_pow` bound, the no-prime central upper bound, large-input
+552 `body_checked`, and one `pending_layered_closure`; checked use remains
+570. Bertrand's postulate itself is not yet proved: B4's Primorial bound is now
+available, but the five-range no-prime central upper bound, large-input
 contradiction, finite coverage, and constructive capstone remain.
 
 ## The mathematical metro map
