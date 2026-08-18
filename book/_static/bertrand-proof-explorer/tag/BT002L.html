@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT002L — is_gcd_zero_right</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT002I.html">← divides_linear_step</a> <a href="BT002S.html">is_gcd_euclid_forward →</a></nav>
+<p class="pa-tag">BT002L</p><h1>is_gcd_zero_right</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Every natural is the relational gcd of itself and zero.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a. (((exists x. a = a * x) /\ (exists y. 0 = a * y)) /\ forall c. (exists u. a = c * u) -&gt; (exists v. 0 = c * v) -&gt; exists w. a = c * w)</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every natural is the relational gcd of itself and zero.</p><p>Direct prerequisites:
+multiple_refl, multiple_zero.
+The authored body proceeds by direct introduction and elimination.</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0028.html"><code>BT0028</code> multiple_refl</a> <a class="pa-theorem-ref" href="BT0026.html"><code>BT0026</code> multiple_zero</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0034.html"><code>BT0034</code> gcd_balanced_bezout_exists_up_to</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="69a5fe4a7bc164d4"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="split" data-line-id="01cdaa8a70a56e0f"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">split</span></code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="split" data-line-id="78123cf2c5effc89"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">split</span></code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="65ab8fd9d900e48e"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0028.html">multiple_refl</a> a</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="exact" data-line-id="bddea38ee9495f9d"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">exact</span> <a class="pa-theorem-ref" href="BT0028.html">multiple_refl</a></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="specialize" data-line-id="c5d4fbf98e27bd9f"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0026.html">multiple_zero</a> a</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="exact" data-line-id="97c1223712a4f616"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">exact</span> <a class="pa-theorem-ref" href="BT0026.html">multiple_zero</a></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="intro" data-line-id="d6f68baf6aead93b"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="intro" data-line-id="0e571e1a24361b23"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">intro</span> ha</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="intro" data-line-id="9a6bd4a949cea84b"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">intro</span> hz</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="exact" data-line-id="d8612b468dab5f24"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">exact</span> ha</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>91</dd>
+<dt>Layer</dt><dd>3</dd><dt>Lines</dt><dd>11</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>bc5c62f50355b14e75531ce68a6b9f6308a762c7c7b25fa2d157d2533bd9b813</code></dd>
+<dt>Script SHA-256</dt><dd><code>bfb06ed6c499c738e74fa8084446e93fa2947cf6894e7af0e59aa6c092800635</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

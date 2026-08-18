@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0027 — one_multiple</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT0026.html">← multiple_zero</a> <a href="BT0028.html">multiple_refl →</a></nav>
+<p class="pa-tag">BT0027</p><h1>one_multiple</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Every natural number is a multiple of one.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n. exists q. n = 1 * q</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every natural number is a multiple of one.</p><p>Direct prerequisites:
+one_mul.
+The authored body proceeds by direct introduction and elimination.</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0009.html"><code>BT0009</code> one_mul</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00Q4.html"><code>BT00Q4</code> power_divides_zero</a> <a class="pa-theorem-ref" href="BT00VD.html"><code>BT00VD</code> beta_pairwise_coprime_product_divides_common_multiple</a> <a class="pa-theorem-ref" href="BT00VF.html"><code>BT00VF</code> primorial_interval_divides_choose_between</a> <a class="pa-theorem-ref" href="BT00YX.html"><code>BT00YX</code> prime_contribution_factor_divides</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="678f16f3d769d5a3"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="exists" data-line-id="f9f60a30a68ff330"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">exists</span> n</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="symm" data-line-id="c6d935a8bef9ec46"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="apply" data-line-id="bac42607fa62486c"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0009.html">one_mul</a></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>77</dd>
+<dt>Layer</dt><dd>1</dd><dt>Lines</dt><dd>4</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>f97fe313035349a281a34f4097f8c4b6240cc97cc4afbb7e1955edcb1e9be529</code></dd>
+<dt>Script SHA-256</dt><dd><code>bea56560d9250ab9cfdbf0d58bbe23371e5e4526e048f2b4edbcc4d899e204b9</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

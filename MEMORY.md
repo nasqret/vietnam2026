@@ -2712,3 +2712,45 @@
 - **Open front:** complete B5's five-range central upper bound, then B7's
   constructive large-input contradiction and B8's finite coverage and final
   Bertrand endpoints.
+
+## 2026-08-17 — current Alpha v12 / complete Bertrand proof
+
+- **Current edition:** Alpha v12 is the exact sealed 1,123-row Alpha-v11
+  prefix plus 180 dependency-topological Bertrand rows at indices 1123--1302,
+  split into nine exact twenty-row microbatches.
+- **Inventory and evidence:** 1,303 specifications, 4,302 declared direct
+  edges, 45 layers, 432 Stable rows, 871 Alpha-only rows, and 570 checked-use
+  rows. Evidence is 432 `stable_closed`, 138 `alpha_closed`, 732
+  `body_checked`, and one `pending_layered_closure`. All suffix rows reject
+  checked replay; there was no Stable promotion.
+- **Completed mathematics:** the dependency-closed candidate graph now proves
+  the B5 five-range upper bound, B6 main inequality, B7 large-input branch,
+  B8 finite covering, `bertrand_closed_upper`, and `bertrand_strict`. Focused
+  endpoint suites kernel-check the complete empty-context certificates.
+- **Exact roots:** enrollment
+  `f763b9fc3717ad76c7e259d67c3beeadfdaca554bbaaeb3ecd2e55329edf937b`;
+  specification
+  `362da94c3c5e788f296f315b86b5d63534c1567ce00911dbb27227a66ab50e28`;
+  edition
+  `bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061`;
+  membership
+  `726c6134461dace943f909a0073ca0a6cae95a54ff306f8aeefeb3d9a5151926`;
+  evidence
+  `de8a6a57b828c2b3893c6fb31f2611d5180f8de4d1002a21a681739616b761b5`;
+  channel pointer
+  `7ad0c942a2239532696f5d99ee1dc985e13302cf73b4637497b879871d05752c`;
+  suffix depth
+  `ee9494f8dfb9e4070a2ce3d2d740b312d147948dcd296ac0da7ed059c9944e50`;
+  180-body receipts
+  `df0e5cb8402483360f8381c76c7ce6ed6c70245df45556107c40652d00beb0da`.
+- **Artifacts:** catalog
+  `825909e057492de87ef08208451c3475396ca009179c513457b05b57f7e2f109`,
+  metrics
+  `64da675a3144f4bb0875c2e0650064e72d5d3eb613542d217719280addfaacb4`,
+  reduced graph
+  `583d18473200097997fa6b8ef0b57ebef9da95f136555d97b24220f1abb356b8`,
+  and channels
+  `0063b6d25f6f27869b00af0d7a31f53dda22d82e8d9c30779309939b46c60982`.
+  The serial gate is `make peano-library-alpha-v12-check`.
+- **Next release front:** review dependency-closed subsets for checked-use and
+  later Stable promotion. This is release maturation, not missing mathematics.

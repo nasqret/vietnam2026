@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0055 — le_scaled_nonzero</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT0054.html">← base_le_beta_modulus</a> <a href="BT0056.html">scaled_bounded_common_multiple →</a></nav>
+<p class="pa-tag">BT0055</p><h1>le_scaled_nonzero</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Scaling by a nonzero natural does not decrease a natural.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall C B. ~(C = 0) -&gt; exists h. h + B = C * B</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Scaling by a nonzero natural does not decrease a natural.</p><p>Direct prerequisites:
+one_le_of_ne_zero, mul_le_mul_right, one_mul.
+The authored body proceeds by intermediate claims (2), equality transport (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0010.html"><code>BT0010</code> one_le_of_ne_zero</a> <a class="pa-theorem-ref" href="BT001M.html"><code>BT001M</code> mul_le_mul_right</a> <a class="pa-theorem-ref" href="BT0009.html"><code>BT0009</code> one_mul</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0057.html"><code>BT0057</code> beta_value_lt_scaled_base</a> <a class="pa-theorem-ref" href="BT0058.html"><code>BT0058</code> new_value_lt_scaled_base</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="23ba467e646dad37"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> C</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="8496cdfd0d531d1e"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> B</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="1fe6010462ba5019"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> hC</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="have" data-line-id="778cfd43a165da51"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">have</span> h1C : exists h. h + 1 = C</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="a9fa04d5dd6baefc"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0010.html">one_le_of_ne_zero</a> C</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="apply" data-line-id="844147331603bc23"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0010.html">one_le_of_ne_zero</a></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="exact" data-line-id="0006d3f1b5a1296d"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">exact</span> hC</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="have" data-line-id="ba90e4de8004094c"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">have</span> hscaled : exists h. h + 1 * B = C * B</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="specialize" data-line-id="2b48c46c47738a7f"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001M.html">mul_le_mul_right</a> 1</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="specialize" data-line-id="68800b6954e6b11b"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001M.html">mul_le_mul_right</a> C</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="specialize" data-line-id="bc5f9c8e6714379f"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001M.html">mul_le_mul_right</a> B</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="apply" data-line-id="74de17ff53046664"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT001M.html">mul_le_mul_right</a></code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="exact" data-line-id="2b2816889a8219d1"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">exact</span> h1C</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="specialize" data-line-id="6bfbe21a53b46a04"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0009.html">one_mul</a> B</code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="rewrite" data-line-id="80138c4b2a00d8d8"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">rewrite</span> <a class="pa-theorem-ref" href="BT0009.html">one_mul</a> at hscaled</code></li><li class="pa-proof-line" id="proof-line-0016" data-line="16" data-tactic="exact" data-line-id="a2967f693d3462d9"><a class="pa-line-number" href="#proof-line-0016">0016</a><code><span class="pa-tactic-ref">exact</span> hscaled</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>180</dd>
+<dt>Layer</dt><dd>6</dd><dt>Lines</dt><dd>16</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>3a0c9778138f2ee2ecbab9a5c829a4b1f40f19de61b65eae4765f67ebb1dedaa</code></dd>
+<dt>Script SHA-256</dt><dd><code>26164a4810f022358e01942e0fcfa047d19e6e9d1cd54f31020cc053004f379e</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

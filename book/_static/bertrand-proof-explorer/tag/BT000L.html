@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT000L — add_eq_zero_right</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT000K.html">← le_total</a> <a href="BT000M.html">mul_eq_zero →</a></nav>
+<p class="pa-tag">BT000L</p><h1>add_eq_zero_right</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>A sum equal to zero has zero as its right addend.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a b. a + b = 0 -&gt; b = 0</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>A sum equal to zero has zero as its right addend.</p><p>Direct prerequisites:
+none.
+The authored body proceeds by structural induction (1), equality transport (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row">none</div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT000M.html"><code>BT000M</code> mul_eq_zero</a> <a class="pa-theorem-ref" href="BT000Y.html"><code>BT000Y</code> le_zero</a> <a class="pa-theorem-ref" href="BT001X.html"><code>BT001X</code> add_eq_zero_left</a> <a class="pa-theorem-ref" href="BT0020.html"><code>BT0020</code> mul_eq_one_components</a> <a class="pa-theorem-ref" href="BT002G.html"><code>BT002G</code> factor_difference</a> <a class="pa-theorem-ref" href="BT005C.html"><code>BT005C</code> bounded_beta_exclusive_recode_invariant</a> <a class="pa-theorem-ref" href="BT005E.html"><code>BT005E</code> beta_prefix_product_trace_exists</a> <a class="pa-theorem-ref" href="BT0069.html"><code>BT0069</code> beta_factor_divides_product</a> <a class="pa-theorem-ref" href="BT007U.html"><code>BT007U</code> beta_repeat_empty</a> <a class="pa-theorem-ref" href="BT0084.html"><code>BT0084</code> beta_range_empty</a> <a class="pa-theorem-ref" href="BT0089.html"><code>BT0089</code> beta_prefix_sum_trace_exists</a> <a class="pa-theorem-ref" href="BT00S0.html"><code>BT00S0</code> prime_power_quotient_prefix_exists</a> <a class="pa-theorem-ref" href="BT00SF.html"><code>BT00SF</code> eisenstein_initial_segment_prefix_exists</a> <a class="pa-theorem-ref" href="BT00SH.html"><code>BT00SH</code> division_successor_quotient_by_bit</a> <a class="pa-theorem-ref" href="BT00T3.html"><code>BT00T3</code> beta_pascal_zero_row_exists</a> <a class="pa-theorem-ref" href="BT00T5.html"><code>BT00T5</code> beta_pascal_row_step_exists</a> <a class="pa-theorem-ref" href="BT00T7.html"><code>BT00T7</code> beta_pascal_table_prefix_exists</a> <a class="pa-theorem-ref" href="BT00TF.html"><code>BT00TF</code> beta_pascal_table_diagonal_boundary</a> <a class="pa-theorem-ref" href="BT00U0.html"><code>BT00U0</code> four_power_central_recurrence_step</a> <a class="pa-theorem-ref" href="BT00U8.html"><code>BT00U8</code> primorial_factor_prefix_exists</a> <a class="pa-theorem-ref" href="BT00US.html"><code>BT00US</code> primorial_interval_factor_prefix_exists</a> <a class="pa-theorem-ref" href="BT00XX.html"><code>BT00XX</code> double_quotient_carry_prefix_exists</a> <a class="pa-theorem-ref" href="BT00YQ.html"><code>BT00YQ</code> prime_contribution_prefix_exists</a> <a class="pa-theorem-ref" href="BT010L.html"><code>BT010L</code> prime_contribution_interval_prefix_exists</a> <a class="pa-theorem-ref" href="BT011K.html"><code>BT011K</code> prime_eighty_three</a> <a class="pa-theorem-ref" href="BT011L.html"><code>BT011L</code> prime_one_hundred_sixty_three</a> <a class="pa-theorem-ref" href="BT011M.html"><code>BT011M</code> prime_three_hundred_seventeen</a> <a class="pa-theorem-ref" href="BT011N.html"><code>BT011N</code> prime_five_hundred_twenty_one</a> <a class="pa-theorem-ref" href="BT0127.html"><code>BT0127</code> bertrand_strict</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="d318bbfcf4499fe5"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="induction" data-line-id="41464bc6f063fc1f"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">induction</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="a220a0d234e68942"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="refl" data-line-id="7d5351347ed4f204"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="2812753d39a89e6b"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="exfalso" data-line-id="23920f4592fb11d9"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">exfalso</span></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="apply" data-line-id="4ddcadb3d16c5012"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA1</span></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="rewrite" data-line-id="0a720d3e31f70faa"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">rewrite</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA4</span> at h</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exact" data-line-id="6ca37bb0dbe8cb77"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exact</span> h</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>21</dd>
+<dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>9</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>80f155113c1ed6af4126e1411c83c3c95b9f90b28aca748e5f8c2d4bd31fad9d</code></dd>
+<dt>Script SHA-256</dt><dd><code>95101d09fba47c272299c02874b9f41b651825430c7665b1540d38df2556ef4a</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

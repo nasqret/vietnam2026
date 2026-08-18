@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0125 — bertrand_closed_upper</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT0124.html">← bertrand_small_closed_upper</a> <a href="BT0126.html">bertrand_upper_endpoint_factorization →</a></nav>
+<p class="pa-tag">BT0125</p><h1>bertrand_closed_upper</h1>
+<p class="pa-status-candidate">Alpha body-checked · checked-use disabled</p>
+<p>Every nonzero natural has a prime in its open-closed Bertrand interval.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n. ~(n = 0) -&gt; exists p. ((~(p = 1) /\ forall a b. p = a * b -&gt; a = 1 \/ b = 1) /\ ((exists u. u + S n = p) /\ (exists v. v + p = n + n)))</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every nonzero natural has a prime in its open-closed Bertrand interval.</p><p>Direct prerequisites:
+le_or_lt, bertrand_eventually_closed_upper, bertrand_small_closed_upper.
+The authored body proceeds by case analysis (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT001G.html"><code>BT001G</code> le_or_lt</a> <a class="pa-theorem-ref" href="BT0115.html"><code>BT0115</code> bertrand_eventually_closed_upper</a> <a class="pa-theorem-ref" href="BT0124.html"><code>BT0124</code> bertrand_small_closed_upper</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0127.html"><code>BT0127</code> bertrand_strict</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="01be8666dce78e81"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="eaca71ff8f7194e0"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> hnonzero</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="specialize" data-line-id="4d38289d8f79ee79"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001G.html">le_or_lt</a> (16 * 32)</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="7961bf88b6ffdec2"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001G.html">le_or_lt</a> n</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="cases" data-line-id="d0149437738b3e51"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">cases</span> <a class="pa-theorem-ref" href="BT001G.html">le_or_lt</a></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="specialize" data-line-id="92132ab1d5a04766"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0115.html">bertrand_eventually_closed_upper</a> n</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="apply" data-line-id="ffac9c801fb27a51"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0115.html">bertrand_eventually_closed_upper</a></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="exact" data-line-id="d126a3a404f1279f"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">exact</span> le_or_lt_left</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="specialize" data-line-id="882e4a8ad31c5b98"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0124.html">bertrand_small_closed_upper</a> n</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="apply" data-line-id="60a20d0fe68e8d2b"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0124.html">bertrand_small_closed_upper</a></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="exact" data-line-id="ad175fe99e99d63c"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">exact</span> hnonzero</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="exact" data-line-id="23ed6af886cad01f"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">exact</span> le_or_lt_right</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>1300</dd>
+<dt>Layer</dt><dd>43</dd><dt>Lines</dt><dd>12</dd>
+<dt>Evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>31</dd>
+<dt>Statement SHA-256</dt><dd><code>7131d5cb2f6264600646df6ae949e9bb2b69a927458ce5b39682e9e284f9ad2c</code></dd>
+<dt>Script SHA-256</dt><dd><code>e30c407ac5b55ce2ac2e806166026b1adc96607c3cc44b58892b117958646ace</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_bp01_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_bp01_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>30e31d66c4160fb91df9b846ae58010e4eeb7618506431058d440336e32afad7</code></dd>
+</dl></aside></main></body></html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0045 — beta_at_of_mod_eq_bound</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT0042.html">← beta_at_unique</a> <a href="BT0046.html">dvd_to_mod_zero →</a></nav>
+<p class="pa-tag">BT0045</p><h1>beta_at_of_mod_eq_bound</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>A bounded value congruent to a code is its expanded Gödel-beta value.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall b c i x. (exists h. h + S x = S ((S i) * c)) -&gt; (exists u v. b + S ((S i) * c) * u = x + S ((S i) * c) * v) -&gt; ((exists h. h + S x = S ((S i) * c)) /\ exists q. b = q * S ((S i) * c) + x)</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>A bounded value congruent to a code is its expanded Gödel-beta value.</p><p>Direct prerequisites:
+beta_modulus_nonzero, mod_eq_to_remainder_decomposition.
+The authored body proceeds by direct introduction and elimination.</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT003Y.html"><code>BT003Y</code> beta_modulus_nonzero</a> <a class="pa-theorem-ref" href="BT003X.html"><code>BT003X</code> mod_eq_to_remainder_decomposition</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT005D.html"><code>BT005D</code> beta_prefix_extend</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="a303aae71f0f1fd5"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="837682eb178432e8"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="cbac22be82507b5e"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> i</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="6d0a19d115af51c8"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> x</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="4552bc92eabedebc"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> hx</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="intro" data-line-id="973ac15a135d2afa"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">intro</span> hmod</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="split" data-line-id="1eb0a47f100d1943"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">split</span></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="exact" data-line-id="6bc99c8444b0051d"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">exact</span> hx</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="specialize" data-line-id="d5e1f1fae1499516"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT003X.html">mod_eq_to_remainder_decomposition</a> (S ((S i) * c))</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="specialize" data-line-id="19a0f993f25e0431"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT003X.html">mod_eq_to_remainder_decomposition</a> b</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="specialize" data-line-id="56e9c3a87eb393dc"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT003X.html">mod_eq_to_remainder_decomposition</a> x</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="apply" data-line-id="9f6d5569a3b6fe31"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT003X.html">mod_eq_to_remainder_decomposition</a></code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="specialize" data-line-id="890064a584b96e4a"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT003Y.html">beta_modulus_nonzero</a> c</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="specialize" data-line-id="40a9e9a70c0c660f"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT003Y.html">beta_modulus_nonzero</a> i</code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="exact" data-line-id="98fa94cd8c41f18f"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">exact</span> <a class="pa-theorem-ref" href="BT003Y.html">beta_modulus_nonzero</a></code></li><li class="pa-proof-line" id="proof-line-0016" data-line="16" data-tactic="exact" data-line-id="3a1d1c305c507ae3"><a class="pa-line-number" href="#proof-line-0016">0016</a><code><span class="pa-tactic-ref">exact</span> hx</code></li><li class="pa-proof-line" id="proof-line-0017" data-line="17" data-tactic="exact" data-line-id="c21d30403a1d5d9b"><a class="pa-line-number" href="#proof-line-0017">0017</a><code><span class="pa-tactic-ref">exact</span> hmod</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>145</dd>
+<dt>Layer</dt><dd>7</dd><dt>Lines</dt><dd>17</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>9934b7b533260bf9c2c53f4a06d653873048b3ccb1b78fba0bd897fe6a604536</code></dd>
+<dt>Script SHA-256</dt><dd><code>f7af9b7cd0721835799268ee71c97b20fdf41a2cff3d3236fd03a33fb9bd8201</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

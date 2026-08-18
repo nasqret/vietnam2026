@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT002W — coprime_symm</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT002V.html">← gcd_exists_relational</a> <a href="BT002X.html">coprime_one_right →</a></nav>
+<p class="pa-tag">BT002W</p><h1>coprime_symm</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Coprimality in its expanded common-divisor form is symmetric.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a b. (forall d. (exists x. a = d * x) -&gt; (exists y. b = d * y) -&gt; d = 1) -&gt; forall c. (exists u. b = c * u) -&gt; (exists v. a = c * v) -&gt; c = 1</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Coprimality in its expanded common-divisor form is symmetric.</p><p>Direct prerequisites:
+none.
+The authored body proceeds by direct introduction and elimination.</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row">none</div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT004S.html"><code>BT004S</code> coprime_mul_right</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="21363c8df4fafc2d"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="e47706fc37f52f90"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="50e9cf7c4c1521d8"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="00ef3f1427db8343"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="bd8d28e1547478ca"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> hb</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="intro" data-line-id="4cd32e24dce5efca"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">intro</span> ha</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="specialize" data-line-id="a58c233c72f4915c"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">specialize</span> h c</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="apply" data-line-id="e44890fd061f2d39"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">apply</span> h</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exact" data-line-id="3654548e5c2f81e3"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exact</span> ha</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="exact" data-line-id="8e0dda894322f9fc"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">exact</span> hb</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>102</dd>
+<dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>10</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>6dc29ac438109f8f00b8bbfcefcddde65059035198b22e2e435477fae1b9686d</code></dd>
+<dt>Script SHA-256</dt><dd><code>f63f5b0ea317b640ff71422a6567ac83bb6f1507925d3a320180c47666bd620f</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

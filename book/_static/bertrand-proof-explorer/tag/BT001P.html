@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT001P — division_remainder_exists</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT001O.html">← division_remainder_succ</a> <a href="BT001R.html">division_block_upper →</a></nav>
+<p class="pa-tag">BT001P</p><h1>division_remainder_exists</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Every positive divisor admits a quotient and a strictly bounded remainder.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall m n. ~(m = 0) -&gt; exists q r. n = m * q + r /\ S r &lt;= m</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every positive divisor admits a quotient and a strictly bounded remainder.</p><p>Direct prerequisites:
+zero_or_succ, division_remainder_succ.
+The authored body proceeds by case analysis (2), equality transport (2).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT000Q.html"><code>BT000Q</code> zero_or_succ</a> <a class="pa-theorem-ref" href="BT001O.html"><code>BT001O</code> division_remainder_succ</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT002U.html"><code>BT002U</code> gcd_exists_up_to</a> <a class="pa-theorem-ref" href="BT0034.html"><code>BT0034</code> gcd_balanced_bezout_exists_up_to</a> <a class="pa-theorem-ref" href="BT003B.html"><code>BT003B</code> multiple_decidable_nonzero</a> <a class="pa-theorem-ref" href="BT003X.html"><code>BT003X</code> mod_eq_to_remainder_decomposition</a> <a class="pa-theorem-ref" href="BT0041.html"><code>BT0041</code> beta_at_exists</a> <a class="pa-theorem-ref" href="BT00R1.html"><code>BT00R1</code> ceil_div_six_total</a> <a class="pa-theorem-ref" href="BT00S0.html"><code>BT00S0</code> prime_power_quotient_prefix_exists</a> <a class="pa-theorem-ref" href="BT00X1.html"><code>BT00X1</code> six_block_window_decomposition_above_thirty_two</a> <a class="pa-theorem-ref" href="BT0115.html"><code>BT0115</code> bertrand_eventually_closed_upper</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="11c8dd90892053e0"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> m</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="c6ff9dcbfad5d6b5"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="da64fe3bf1af74a8"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> hm</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="fd973cbd66d4b8f8"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT000Q.html">zero_or_succ</a> m</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="cases" data-line-id="f9b612b951db2eeb"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">cases</span> <a class="pa-theorem-ref" href="BT000Q.html">zero_or_succ</a></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="exfalso" data-line-id="c6c026944f68d894"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">exfalso</span></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="apply" data-line-id="f7ed4b3d28e04ca2"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">apply</span> hm</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="exact" data-line-id="37fcf27ac2e3ac23"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">exact</span> zero_or_succ_left</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="cases" data-line-id="16670018b3659bda"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">cases</span> zero_or_succ_right</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="specialize" data-line-id="09b92c53001c779d"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001O.html">division_remainder_succ</a> x</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="specialize" data-line-id="571d68a1fcbf37ab"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001O.html">division_remainder_succ</a> n</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="rewrite" data-line-id="831d1dd3cfb324ef"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">rewrite</span> zero_or_succ_right_witness</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="rewrite" data-line-id="ad23edc5f7cdd51e"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">rewrite</span> zero_or_succ_right_witness</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="exact" data-line-id="4c727a6596b1c9e3"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">exact</span> <a class="pa-theorem-ref" href="BT001O.html">division_remainder_succ</a></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>60</dd>
+<dt>Layer</dt><dd>2</dd><dt>Lines</dt><dd>14</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>5129cc09f73a6bfed8749bccdd181148e27fa13ee31c796f9e3a8010fb8197a0</code></dd>
+<dt>Script SHA-256</dt><dd><code>d6933eb6a93d5b97576a52af2a43d41551dd84ed00b5888727973ed0412cd1e1</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

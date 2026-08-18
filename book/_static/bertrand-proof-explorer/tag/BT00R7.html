@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT00R7 — floor_sqrt_strict_upper_bound</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT00R6.html">← floor_sqrt_lower_bound</a> <a href="BT00R9.html">square_lt_successor_square →</a></nav>
+<p class="pa-tag">BT00R7</p><h1>floor_sqrt_strict_upper_bound</h1>
+<p class="pa-status-candidate">Alpha body-checked · checked-use disabled</p>
+<p>The floor-square graph projects its strict successor-square bound.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall x s. (((exists bcs_sqrt_lower_gap_projection. bcs_sqrt_lower_gap_projection + (s) * (s) = (x)) /\ exists bcs_sqrt_upper_gap_projection. bcs_sqrt_upper_gap_projection + S (x) = S (s) * S (s))) -&gt; exists k. k + S x = S s * S s</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>The floor-square graph projects its strict successor-square bound.</p><p>Direct prerequisites:
+none.
+The authored body proceeds by case analysis (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row">none</div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00X4.html"><code>BT00X4</code> bertrand_floor_power_product_le_h_from_total</a> <a class="pa-theorem-ref" href="BT010B.html"><code>BT010B</code> floor_sqrt_two_le_of_two_lt</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="5ee9aab21bc17913"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> x</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="63f541421a50b00a"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> s</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="5712e120cf4ae323"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="cases" data-line-id="abc71d874d78cdef"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="exact" data-line-id="211492435bea7812"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">exact</span> h_right</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>952</dd>
+<dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>5</dd>
+<dt>Evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>12</dd>
+<dt>Statement SHA-256</dt><dd><code>df9fbd83265c098574a625eae9ecc7c93515d08743a606ab316ea541fb5316f2</code></dd>
+<dt>Script SHA-256</dt><dd><code>73603fe9dc6670bed9c799c1310d3fc8c46d77ccf3667babe627f036d59307a3</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_ceil_sqrt_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_ceil_sqrt_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>745db5174c6f9348ec97fc6076a909f1dd98e04e899e5a26ebd38b61b842b237</code></dd>
+</dl></aside></main></body></html>

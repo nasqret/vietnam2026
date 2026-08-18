@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT000C — succ_ne_zero</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT000B.html">← add_mul</a> <a href="BT000D.html">succ_injective →</a></nav>
+<p class="pa-tag">BT000C</p><h1>succ_ne_zero</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>No successor is zero (the reusable PA1 lemma).</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n. ~(S n = 0)</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>No successor is zero (the reusable PA1 lemma).</p><p>Direct prerequisites:
+none.
+The authored body proceeds by direct introduction and elimination.</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row">none</div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0022.html"><code>BT0022</code> mul_left_cancel_nonzero</a> <a class="pa-theorem-ref" href="BT003E.html"><code>BT003E</code> factor_search_up_to</a> <a class="pa-theorem-ref" href="BT003G.html"><code>BT003G</code> prime_nonzero</a> <a class="pa-theorem-ref" href="BT003Y.html"><code>BT003Y</code> beta_modulus_nonzero</a> <a class="pa-theorem-ref" href="BT004M.html"><code>BT004M</code> bounded_common_multiple_step</a> <a class="pa-theorem-ref" href="BT004N.html"><code>BT004N</code> bounded_common_multiple_exists</a> <a class="pa-theorem-ref" href="BT005C.html"><code>BT005C</code> bounded_beta_exclusive_recode_invariant</a> <a class="pa-theorem-ref" href="BT005E.html"><code>BT005E</code> beta_prefix_product_trace_exists</a> <a class="pa-theorem-ref" href="BT0069.html"><code>BT0069</code> beta_factor_divides_product</a> <a class="pa-theorem-ref" href="BT007U.html"><code>BT007U</code> beta_repeat_empty</a> <a class="pa-theorem-ref" href="BT0084.html"><code>BT0084</code> beta_range_empty</a> <a class="pa-theorem-ref" href="BT0089.html"><code>BT0089</code> beta_prefix_sum_trace_exists</a> <a class="pa-theorem-ref" href="BT00R1.html"><code>BT00R1</code> ceil_div_six_total</a> <a class="pa-theorem-ref" href="BT00R9.html"><code>BT00R9</code> square_lt_successor_square</a> <a class="pa-theorem-ref" href="BT00RG.html"><code>BT00RG</code> double_triple_remainder_complement_budget</a> <a class="pa-theorem-ref" href="BT00RK.html"><code>BT00RK</code> factorial_nonzero</a> <a class="pa-theorem-ref" href="BT00RP.html"><code>BT00RP</code> prime_factorial_valuation_succ</a> <a class="pa-theorem-ref" href="BT00S0.html"><code>BT00S0</code> prime_power_quotient_prefix_exists</a> <a class="pa-theorem-ref" href="BT00SF.html"><code>BT00SF</code> eisenstein_initial_segment_prefix_exists</a> <a class="pa-theorem-ref" href="BT00SH.html"><code>BT00SH</code> division_successor_quotient_by_bit</a> <a class="pa-theorem-ref" href="BT00SK.html"><code>BT00SK</code> power_quotient_successor_pointwise_add</a> <a class="pa-theorem-ref" href="BT00T3.html"><code>BT00T3</code> beta_pascal_zero_row_exists</a> <a class="pa-theorem-ref" href="BT00T5.html"><code>BT00T5</code> beta_pascal_row_step_exists</a> <a class="pa-theorem-ref" href="BT00T7.html"><code>BT00T7</code> beta_pascal_table_prefix_exists</a> <a class="pa-theorem-ref" href="BT00T9.html"><code>BT00T9</code> beta_pascal_zero_row_pointwise_functional</a> <a class="pa-theorem-ref" href="BT00TA.html"><code>BT00TA</code> beta_pascal_row_step_pointwise_functional</a> <a class="pa-theorem-ref" href="BT00TB.html"><code>BT00TB</code> beta_pascal_table_row_pointwise_functional</a> <a class="pa-theorem-ref" href="BT00TE.html"><code>BT00TE</code> choose_zero</a> <a class="pa-theorem-ref" href="BT00TF.html"><code>BT00TF</code> beta_pascal_table_diagonal_boundary</a> <a class="pa-theorem-ref" href="BT00TH.html"><code>BT00TH</code> beta_pascal_table_successor_cell_recurrence</a> <a class="pa-theorem-ref" href="BT00U8.html"><code>BT00U8</code> primorial_factor_prefix_exists</a> <a class="pa-theorem-ref" href="BT00US.html"><code>BT00US</code> primorial_interval_factor_prefix_exists</a> <a class="pa-theorem-ref" href="BT00VB.html"><code>BT00VB</code> factorial_prime_le_of_divides</a> <a class="pa-theorem-ref" href="BT00VK.html"><code>BT00VK</code> central_binom_strong_upper_step</a> <a class="pa-theorem-ref" href="BT00WE.html"><code>BT00WE</code> ceil_div_six_budget_of_scaled_le</a> <a class="pa-theorem-ref" href="BT00X1.html"><code>BT00X1</code> six_block_window_decomposition_above_thirty_two</a> <a class="pa-theorem-ref" href="BT00XX.html"><code>BT00XX</code> double_quotient_carry_prefix_exists</a> <a class="pa-theorem-ref" href="BT00YQ.html"><code>BT00YQ</code> prime_contribution_prefix_exists</a> <a class="pa-theorem-ref" href="BT010L.html"><code>BT010L</code> prime_contribution_interval_prefix_exists</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="apply" data-line-id="d90f5eae2ece6b13"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA1</span></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>12</dd>
+<dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>1</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>38711df11e3d8fa1d5014115f8bcef8fbbaf89b5cdab99a80006dc2eb96b952e</code></dd>
+<dt>Script SHA-256</dt><dd><code>7d2801ced306f2eae2995089a9f167c92036db23a089ee8d140f2978895068d5</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

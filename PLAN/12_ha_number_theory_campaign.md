@@ -1545,3 +1545,66 @@ focused candidate suites run serially in manifest order, each in a fresh
 Python process; verifier mutation groups are likewise split. Concurrent proof
 workers and a monolithic retained-DAG run are not approved laptop gates.
 Bertrand's postulate remains open.
+
+## 2026-08-17 — Alpha v12 complete Bertrand proof
+
+Alpha v12 preserves the exact sealed 1,123-row Alpha-v11 parent and appends
+the full 180-row dependency closure at indices 1123--1302. The append is split
+into nine exact twenty-row microbatches. Forty-three prerequisite rows publish
+the reviewed B6 base-window, all-root, growth, main-inequality, and finite
+product-order chain; the remaining 137 rows complete B5, B7, B8, BP01, and
+BP02.
+
+| Edition | Theorems | Direct edges | Layers | Checked use |
+|---|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 432 |
+| Alpha v11 (sealed parent) | 1,123 | 3,482 | 45 | 570 |
+| Alpha v12 (current) | 1,303 | 4,302 | 45 | 570 |
+
+Alpha v12 has 432 Stable and 871 Alpha-only rows. Evidence is exactly 432
+`stable_closed`, 138 `alpha_closed`, 732 `body_checked`, and one
+`pending_layered_closure`. Every v12 suffix row has `checked_use=false`, a
+null proof tag, null empty-context closure metadata, and fail-closed replay.
+No Stable promotion occurred. The enrollment and edition identities are
+`f763b9fc3717ad76c7e259d67c3beeadfdaca554bbaaeb3ecd2e55329edf937b`
+and
+`bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061`.
+The ordered-specification, membership, evidence, and channel-pointer roots are
+`362da94c3c5e788f296f315b86b5d63534c1567ce00911dbb27227a66ab50e28`,
+`726c6134461dace943f909a0073ca0a6cae95a54ff306f8aeefeb3d9a5151926`,
+`de8a6a57b828c2b3893c6fb31f2611d5180f8de4d1002a21a681739616b761b5`,
+and
+`7ad0c942a2239532696f5d99ee1dc985e13302cf73b4637497b879871d05752c`.
+The suffix-depth and 180-body receipt roots are
+`ee9494f8dfb9e4070a2ce3d2d740b312d147948dcd296ac0da7ed059c9944e50`
+and
+`df0e5cb8402483360f8381c76c7ce6ed6c70245df45556107c40652d00beb0da`.
+
+The v12 artifact family is named `alpha/catalog-v12.json`,
+`alpha/metrics-v12.json`, `alpha/dependency-graph-v12.mmd`, and
+`channels-v12.json` under `artifacts/peano-library/`. Their SHA-256 values are
+`825909e057492de87ef08208451c3475396ca009179c513457b05b57f7e2f109`,
+`64da675a3144f4bb0875c2e0650064e72d5d3eb613542d217719280addfaacb4`,
+`583d18473200097997fa6b8ef0b57ebef9da95f136555d97b24220f1abb356b8`,
+and
+`0063b6d25f6f27869b00af0d7a31f53dda22d82e8d9c30779309939b46c60982`.
+
+Current mathematical gates:
+
+- [x] B3 body-evidence gate: Choose, CentralBinom, recurrence, factorial
+  bridge, and strict central lower bound;
+- [x] B4 body-evidence gate: Primorial, interval splitting, comparison, and
+  `primorial_le_four_pow`;
+- [x] B5 body-evidence gate: the five-range no-prime central upper bound;
+- [x] B6 body-evidence gate: `bertrand_main_inequality_nat` and its layered
+  closure;
+- [x] B7 body-evidence gate: the constructive large-input contradiction;
+- [x] B8/BP01/BP02 body-evidence gate: finite covering,
+  `bertrand_closed_upper`, and `bertrand_strict`.
+
+The mathematical campaign is complete at candidate and independently
+kernel-checked empty-context evidence level. The remaining work is release
+maturity: dependency-closed checked-use review and eventual Stable promotion.
+The serial release gate is `make peano-library-alpha-v12-check`. It uses
+`PYTHONMALLOC=malloc` and separate processes for the focused suites to avoid
+retaining several large proof DAGs in one process.

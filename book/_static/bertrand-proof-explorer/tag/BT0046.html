@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0046 — dvd_to_mod_zero</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT0045.html">← beta_at_of_mod_eq_bound</a> <a href="BT004C.html">bezout_mod_left →</a></nav>
+<p class="pa-tag">BT0046</p><h1>dvd_to_mod_zero</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>A multiple is balanced-congruent to zero.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall m a. (exists k. a = m * k) -&gt; exists u v. a + m * u = 0 + m * v</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>A multiple is balanced-congruent to zero.</p><p>Direct prerequisites:
+zero_add.
+The authored body proceeds by case analysis (1), equality transport (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0000.html"><code>BT0000</code> zero_add</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT004F.html"><code>BT004F</code> binary_crt</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="8550c31d173875de"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> m</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="514ca97d26e783fe"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="6f02a616cbd335b8"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="cases" data-line-id="9e5259524175ff8f"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="exists" data-line-id="50206a3c24d04603"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">exists</span> 0</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="exists" data-line-id="6093c50ba30b739f"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">exists</span> x</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="rewrite" data-line-id="5a38a712c0c7042f"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">rewrite</span> h_witness</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="simp" data-line-id="a3fa72620c1768b6"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">simp</span> [<a class="pa-theorem-ref" href="BT0000.html">zero_add</a>]</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>146</dd>
+<dt>Layer</dt><dd>1</dd><dt>Lines</dt><dd>8</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>3b77bc1178426af328d8421d69095fe945c23fc793c323a9ffe5bb51c5e73799</code></dd>
+<dt>Script SHA-256</dt><dd><code>9b57de4ed6d34873a26715694625c9de4951667592a04cb8502b6a021888f0ef</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

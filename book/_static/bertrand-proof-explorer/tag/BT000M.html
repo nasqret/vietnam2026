@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT000M — mul_eq_zero</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT000L.html">← add_eq_zero_right</a> <a href="BT000Q.html">zero_or_succ →</a></nav>
+<p class="pa-tag">BT000M</p><h1>mul_eq_zero</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Zero products have a zero factor: the 23-entry core capstone.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n m. n * m = 0 -&gt; n = 0 \/ m = 0</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Zero products have a zero factor: the 23-entry core capstone.</p><p>Direct prerequisites:
+add_eq_zero_right.
+The authored body proceeds by structural induction (1), equality transport (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT000L.html"><code>BT000L</code> add_eq_zero_right</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0021.html"><code>BT0021</code> mul_ne_zero</a> <a class="pa-theorem-ref" href="BT0022.html"><code>BT0022</code> mul_left_cancel_nonzero</a> <a class="pa-theorem-ref" href="BT0024.html"><code>BT0024</code> two_large_factors_impossible</a> <a class="pa-theorem-ref" href="BT004M.html"><code>BT004M</code> bounded_common_multiple_step</a> <a class="pa-theorem-ref" href="BT006N.html"><code>BT006N</code> prime_three</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="c2dfb3bb165ae7ff"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="induction" data-line-id="e89134de11b58dfe"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">induction</span> m</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="90469d5f2ac77aa5"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="right" data-line-id="8db51741abcdf098"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">right</span></code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="refl" data-line-id="ad6e959697729acf"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="intro" data-line-id="f669d7f119dec717"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="left" data-line-id="33d57cb4ca3b7693"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">left</span></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="specialize" data-line-id="4b8d3fb451b7c3cb"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT000L.html">add_eq_zero_right</a> (n * m)</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="specialize" data-line-id="7dcba69acf06ce3d"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT000L.html">add_eq_zero_right</a> n</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="apply" data-line-id="82b1cf5c08643e01"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT000L.html">add_eq_zero_right</a></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="rewrite" data-line-id="0cfdbc0d0e869922"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">rewrite</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA6</span> at h</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="exact" data-line-id="fe46f91720853d08"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">exact</span> h</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>22</dd>
+<dt>Layer</dt><dd>1</dd><dt>Lines</dt><dd>12</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>fc8a78012f8f2c9041a232da57ec2f9bfe30f251aad0f88ae89f2dcd267109b0</code></dd>
+<dt>Script SHA-256</dt><dd><code>4380e30093c8889b86bf419569a33507ce8ba371149fdcb4d52ba45dd544eda9</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

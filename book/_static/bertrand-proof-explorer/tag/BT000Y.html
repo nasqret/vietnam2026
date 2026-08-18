@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT000Y — le_zero</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT000X.html">← le_succ_self</a> <a href="BT0010.html">one_le_of_ne_zero →</a></nav>
+<p class="pa-tag">BT000Y</p><h1>le_zero</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Only zero is less than or equal to zero.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n. n &lt;= 0 -&gt; n = 0</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Only zero is less than or equal to zero.</p><p>Direct prerequisites:
+add_eq_zero_right.
+The authored body proceeds by case analysis (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT000L.html"><code>BT000L</code> add_eq_zero_right</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT002U.html"><code>BT002U</code> gcd_exists_up_to</a> <a class="pa-theorem-ref" href="BT0034.html"><code>BT0034</code> gcd_balanced_bezout_exists_up_to</a> <a class="pa-theorem-ref" href="BT003E.html"><code>BT003E</code> factor_search_up_to</a> <a class="pa-theorem-ref" href="BT003K.html"><code>BT003K</code> prime_divisor_exists_up_to</a> <a class="pa-theorem-ref" href="BT0097.html"><code>BT0097</code> lt_three_cases</a> <a class="pa-theorem-ref" href="BT00JD.html"><code>BT00JD</code> eisenstein_initial_segment_bit_count_functional</a> <a class="pa-theorem-ref" href="BT00PS.html"><code>BT00PS</code> bounded_prime_interval_search</a> <a class="pa-theorem-ref" href="BT00Q5.html"><code>BT00Q5</code> bounded_power_valuation_search</a> <a class="pa-theorem-ref" href="BT00TM.html"><code>BT00TM</code> choose_positive</a> <a class="pa-theorem-ref" href="BT00VV.html"><code>BT00VV</code> primorial_le_four_pow_bounded</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="1214385cbf9e214c"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="4fa1f28c20b8107b"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="cases" data-line-id="45b01d8d5e77d2ea"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="apply" data-line-id="c8c9594b17b24258"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT000L.html">add_eq_zero_right</a></code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="exact" data-line-id="a436ca3edfa8dd2b"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">exact</span> h_witness</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>34</dd>
+<dt>Layer</dt><dd>1</dd><dt>Lines</dt><dd>5</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>f9c4e4faa5263ab84d5c6221a21f22a3a581de21585d30f87fe8e24fcb81faef</code></dd>
+<dt>Script SHA-256</dt><dd><code>f86a5d1480a72a4344d6100da541fe05fe359434c5045166b05d01180449f2d8</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

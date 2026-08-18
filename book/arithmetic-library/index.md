@@ -31,21 +31,21 @@ exact valuation multiplication, integer envelopes, ceiling/floor-square
 arithmetic, and the quotient budget. Sealed Alpha v5 preserves that complete
 965-row ledger and appends seven body-checked `FactorialVal` rows. Sealed
 Alpha v5 therefore has 972 rows, sealed Alpha v6 has 993, sealed Alpha v7 has
-1,017, sealed Alpha v8 has 1,055, sealed Alpha v9 has 1,076, and sealed Alpha
-v10 has 1,085. Current Alpha v11 preserves the entire v10 ledger and appends
-thirty-eight body-checked
-Bertrand rows in exact 20+18 microbatches. They close the dependency chain from
-duplicate-free products and interval Choose bounds through
-`primorial_le_four_pow` and the first B5 prime-support rows. See
+1,017, sealed Alpha v8 has 1,055, sealed Alpha v9 has 1,076, sealed Alpha v10
+has 1,085, and sealed Alpha v11 has 1,123. Current Alpha v12 preserves the
+entire v11 ledger and appends 180 body-checked Bertrand rows in nine exact
+twenty-row microbatches. They publish the dependency-closed proof through the
+five-range upper bound, large-input contradiction, finite covering, and both
+Bertrand endpoints. See
 {doc}`Alpha and Stable library editions
 <library-editions>` for the exact scopes and lifecycle.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>1,123</strong><span>Alpha v11 theorems</span></div>
+  <div><strong>1,303</strong><span>Alpha v12 theorems</span></div>
   <div><strong>570</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>691</strong><span>Alpha-only rows</span></div>
+  <div><strong>871</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -56,25 +56,24 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The current additive Alpha v11 graph has 1,123 theorems, 3,482 direct edges,
+The current additive Alpha v12 graph has 1,303 theorems, 4,302 direct edges,
 and 45 dependency layers. Its mixed evidence is intentional: 570 rows have
-complete checked-use evidence, while 552 body-only rows and one pending row
+complete checked-use evidence, while 732 body-only rows and one pending row
 remain visible without being treated as empty-context facts. Stable remains
 432; the 885-row Alpha v1, 902-row Alpha v2, 923-row Alpha v3, 965-row Alpha
 v4, 972-row Alpha v5, 993-row Alpha v6, and 1,017-row Alpha v7 parents remain
 sealed; Alpha v8 remains sealed at 1,055, Alpha v9 remains sealed at 1,076,
-and Alpha v10 remains sealed at 1,085. The
+Alpha v10 remains sealed at 1,085, and Alpha v11 remains sealed at 1,123. The
 exact contract and opt-in API are on the {doc}`edition page
 <library-editions>`.
 
-Alpha v11 retains the Alpha-v10 interval-split tranche, then adds the
-dependency-closed duplicate-free, Primorial/Choose interval, central-upper,
-Primorial-four-power, and central-prime-support tranches.
+Alpha v12 retains the Alpha-v11 B4 and B5-support tranches, then adds the
+dependency-closed B6 support and B5--BP02 completion chain.
 The evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
-552 `body_checked`, and one `pending_layered_closure`; checked use remains
-570. Bertrand's postulate itself is not yet proved: B4's Primorial bound is now
-available, but the five-range no-prime central upper bound, large-input
-contradiction, finite coverage, and constructive capstone remain.
+732 `body_checked`, and one `pending_layered_closure`; checked use remains
+570. Bertrand's postulate is fully proved at candidate and independently
+kernel-checked empty-context evidence level. The Alpha v12 enrollment records
+that work as body evidence; checked-use and Stable promotion remain separate.
 
 ## The mathematical metro map
 
@@ -108,6 +107,8 @@ proof graph or admission status.
 Its {doc}`interactive dependency graph <dependency-graph>` draws short or
 critical premise chains, start-to-target corridors, and complete transitive
 cones.
+The {doc}`complete Bertrand proof explorer <bertrand-proof-explorer>` applies
+the same interface to all 544 nodes in the final strict theorem's closure.
 
 ## Choose your route
 
@@ -127,6 +128,7 @@ cones.
 | study primes and factorization | {doc}`Primes and unique factorization <primes-and-factorization>` | the FTA and `prime_unbounded` cards in the atlas |
 | follow the reciprocity campaign | {doc}`Quadratic reciprocity campaign <quadratic-reciprocity>` | parity, residue-decision, and finite-fold cards in the atlas |
 | follow the Bertrand campaign | {doc}`Bertrand's postulate campaign <bertrand-campaign>` | constructive interval search, valuations, the central-binomial route, and exact risk gates |
+| inspect the complete Bertrand proof | {doc}`Complete Bertrand proof explorer <bertrand-proof-explorer>` | all 544 nodes, exact tactic bodies, and the interactive 1,917-edge dependency map |
 | train a proof-producing model | {doc}`Using and extending the library <using-the-library>` | the snapshot, corpus and vault links below |
 | audit provenance | {doc}`Sources and clean-room provenance <source-audit>` | catalog source mappings and the separate Lean companion |
 

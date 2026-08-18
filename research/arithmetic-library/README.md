@@ -73,6 +73,18 @@ arithmetic library. Start with:
   the second 18-row Alpha-v11 microbatch closing the public B4
   `primorial_le_four_pow` bound and beginning B5's prime-divisor range and
   valuation support;
+- [`B6 release tranche RFC`](ha-bertrand-b6-release-tranche-rfc-v1.md):
+  the 43-row prerequisite closure for the reviewed main inequality and finite
+  product order support used by Alpha v12;
+- the eleven `ha-bertrand-b5-*-tranche-rfc-v1.md` controls, followed by the
+  [`B7 eventual RFC`](ha-bertrand-b7-eventual-tranche-rfc-v1.md),
+  [`B8 prime-certificate RFC`](ha-bertrand-b8-prime-certificates-tranche-rfc-v1.md),
+  [`B8 covering RFC`](ha-bertrand-b8-covering-tranche-rfc-v1.md),
+  [`B8 small-range RFC`](ha-bertrand-b8-small-range-tranche-rfc-v1.md),
+  [`BP01 RFC`](ha-bertrand-bp01-tranche-rfc-v1.md), and
+  [`BP02 RFC`](ha-bertrand-bp02-tranche-rfc-v1.md): the reviewed completion
+  chain through `bertrand_closed_upper` and `bertrand_strict`, published as
+  the 180-row Alpha-v12 append;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
   the repository execution plan and first canonical-interface tranche.
 

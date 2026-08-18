@@ -22,7 +22,7 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 override STAGEPEANO := _deploy/peano-lab
 override PEANOAPPID := a-526f19ff3b30
 
-.PHONY: help book book-atlas book-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
 	deploy clean
 
@@ -31,6 +31,7 @@ help:
 	@echo "  make book         build the JupyterBook (book/_build/html)"
 	@echo "  make book-atlas   regenerate the checked arithmetic theorem atlas"
 	@echo "  make book-proof-explorer  regenerate the static PA proof explorer"
+	@echo "  make book-bertrand-proof-explorer  regenerate the full Bertrand map"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
 	@echo "  make peano-library-alpha  regenerate the sealed Alpha v1 parent artifacts"
@@ -75,6 +76,10 @@ help:
 	@echo "  make peano-library-alpha-v11-check  verify v11, replay 38 bodies, then run 5 source suites serially"
 	@echo "  make peano-library-channels-v11  compatibility alias for the Bertrand Alpha v11 build"
 	@echo "  make peano-library-channels-v11-check  compatibility alias for the Bertrand Alpha v11 check"
+	@echo "  make peano-library-alpha-v12  regenerate additive 180-row Bertrand Alpha v12 artifacts"
+	@echo "  make peano-library-alpha-v12-check  verify the complete body-checked Bertrand proof release"
+	@echo "  make peano-library-channels-v12  compatibility alias for the Bertrand Alpha v12 build"
+	@echo "  make peano-library-channels-v12-check  compatibility alias for the Bertrand Alpha v12 check"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
 	@echo "  make ha-k3b-list-lookup-check  run the Alpha K3B ListAt surface checks"
@@ -99,7 +104,10 @@ help:
 book-atlas:
 	python3 scripts/build_arithmetic_book_atlas.py
 
-book-proof-explorer:
+book-bertrand-proof-explorer:
+	python3 scripts/build_bertrand_proof_explorer.py
+
+book-proof-explorer: book-bertrand-proof-explorer
 	python3 scripts/build_pa_proof_explorer.py
 	python3 scripts/build_pa_defined_explorer.py
 
@@ -357,6 +365,42 @@ peano-library-alpha-v11-check:
 	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_primorial_four_power_candidate.py
 	cd peano-lab/py && python3 -m pytest -q tests/test_bertrand_central_binom_prime_support_candidate.py
 
+peano-library-alpha-v12:
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v12.py
+
+peano-library-alpha-v12-check:
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v12.py --check
+	PYTHONMALLOC=malloc python3 scripts/verify_peano_library_channels_v12.py
+	PYTHONMALLOC=malloc python3 -m pytest -q \
+		scripts/test_verify_peano_library_channels_v12.py \
+		-k 'not repository_v12 and not builder_is_byte_deterministic'
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q \
+		tests/test_library_editions_v12.py -k 'not one_hundred_eighty'
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_hj_base_thirty_two_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_hj_all_s_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_b6_growth_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_b6_layered_closure.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_finite_product_order_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_b5_order_quotient_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_central_binom_valuation_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_central_binom_carry_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_central_binom_square_tail_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_central_binom_zero_range_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_central_binom_factor_ranges_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_prime_contribution_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_prime_contribution_complete_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_b5_range_boundaries_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_b5_contribution_split_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_b5_central_upper_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_b7_eventual_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_b8_prime_certificates_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_b8_covering_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_b8_small_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_bp01_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_bp02_candidate.py
+	python3 scripts/build_bertrand_proof_explorer.py --check
+	python3 -m pytest -q peano-lab/py/tests/test_bertrand_proof_explorer.py
+
 peano-library-channels: peano-library-alpha
 
 peano-library-channels-check: peano-library-alpha-check
@@ -400,6 +444,10 @@ peano-library-channels-v10-check: peano-library-alpha-v10-check
 peano-library-channels-v11: peano-library-alpha-v11
 
 peano-library-channels-v11-check: peano-library-alpha-v11-check
+
+peano-library-channels-v12: peano-library-alpha-v12
+
+peano-library-channels-v12-check: peano-library-alpha-v12-check
 
 ha-number-theory-check:
 	python3 scripts/verify_ha_number_theory_campaign.py

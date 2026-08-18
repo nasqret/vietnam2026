@@ -869,3 +869,60 @@ python3 scripts/build_peano_library_channels_v11.py --check
 python3 scripts/verify_peano_library_channels_v11.py
 make peano-library-alpha-v11-check
 ```
+
+## Peano Alpha v12 — complete Bertrand proof (2026-08-17)
+
+Alpha v12 preserves the sealed 1,123-row Alpha-v11 ledger byte-for-byte and
+appends 180 reviewed Bertrand specifications at indices 1123--1302. Nine exact
+twenty-row microbatches publish the dependency-closed chain from the B6
+prerequisites through the B5 upper bound, B7 contradiction, B8 finite
+covering, `bertrand_closed_upper`, and `bertrand_strict`. Stable remains
+unchanged at 432 rows.
+
+Current topology and evidence:
+
+- 1,303 theorem specifications, 4,302 declared direct edges, and 45 layers;
+- 432 Stable rows and 871 Alpha-only rows;
+- 432 `stable_closed`, 138 `alpha_closed`, 732 `body_checked`, and one
+  `pending_layered_closure` row; and
+- 570 checked-use rows; all 180 additions fail closed with
+  `checked_use=false`, null proof tags, and null empty-context closure
+  evidence.
+
+The deterministic pointer is
+[`peano-library/channels-v12.json`](peano-library/channels-v12.json). Its exact
+artifact SHA-256 values are:
+
+- catalog: `825909e057492de87ef08208451c3475396ca009179c513457b05b57f7e2f109`;
+- metrics: `64da675a3144f4bb0875c2e0650064e72d5d3eb613542d217719280addfaacb4`;
+- reduced graph: `583d18473200097997fa6b8ef0b57ebef9da95f136555d97b24220f1abb356b8`;
+  and
+- channel pointer: `0063b6d25f6f27869b00af0d7a31f53dda22d82e8d9c30779309939b46c60982`.
+
+The ordered-enrollment, ordered-specification, edition, membership, evidence,
+and channel-pointer roots are respectively
+`f763b9fc3717ad76c7e259d67c3beeadfdaca554bbaaeb3ecd2e55329edf937b`,
+`362da94c3c5e788f296f315b86b5d63534c1567ce00911dbb27227a66ab50e28`,
+`bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061`,
+`726c6134461dace943f909a0073ca0a6cae95a54ff306f8aeefeb3d9a5151926`,
+`de8a6a57b828c2b3893c6fb31f2611d5180f8de4d1002a21a681739616b761b5`,
+and
+`7ad0c942a2239532696f5d99ee1dc985e13302cf73b4637497b879871d05752c`.
+The suffix-depth and fresh 180-body receipt roots are
+`ee9494f8dfb9e4070a2ce3d2d740b312d147948dcd296ac0da7ed059c9944e50`
+and
+`df0e5cb8402483360f8381c76c7ce6ed6c70245df45556107c40652d00beb0da`.
+
+The focused endpoint suites independently kernel-check the complete
+empty-context BP01 and BP02 certificates. Alpha enrollment records the exact
+reviewed bodies and provenance, but deliberately does not grant checked-use or
+Stable authority. Promotion remains a separate release operation.
+
+Rebuild or verify this channel with:
+
+```bash
+python3 scripts/build_peano_library_channels_v12.py
+python3 scripts/build_peano_library_channels_v12.py --check
+python3 scripts/verify_peano_library_channels_v12.py
+make peano-library-alpha-v12-check
+```

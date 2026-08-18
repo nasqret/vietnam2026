@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT008L — bit_count_exists</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT008K.html">← all_bits_last_succ</a> <a href="BT008N.html">bit_count_zero →</a></nav>
+<p class="pa-tag">BT008L</p><h1>bit_count_exists</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Every all-bits prefix has a relational count of its ones.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall b c l. (forall ff_i_a. (exists ff_lt_a_bound. ff_lt_a_bound + S ff_i_a = l) -&gt; exists ff_bit_a. ((((exists ff_h_a_decoded. ff_h_a_decoded + S (ff_bit_a) = S ((S (ff_i_a)) * c)) /\ exists ff_q_a_decoded. b = ff_q_a_decoded * S ((S (ff_i_a)) * c) + (ff_bit_a))) /\ (ff_bit_a = 0 \/ ff_bit_a = 1))) -&gt; exists n. (((exists ff_u_b_sum ff_v_b_sum. ((((exists ff_h_b_sum_start. ff_h_b_sum_start + S (0) = S ((S (0)) * ff_v_b_sum)) /\ exists ff_q_b_sum_start. ff_u_b_sum = ff_q_b_sum_start * S ((S (0)) * ff_v_b_sum) + (0))) /\ ((((exists ff_h_b_sum_terminal. ff_h_b_sum_terminal + S (n) = S ((S (l)) * ff_v_b_sum)) /\ exists ff_q_b_sum_terminal. ff_u_b_sum = ff_q_b_sum_terminal * S ((S (l)) * ff_v_b_sum) + (n))) /\ forall ff_i_b_sum. (exists ff_lt_b_sum_bound. ff_lt_b_sum_bound + S ff_i_b_sum = l) -&gt; exists ff_a_b_sum ff_r_b_sum ff_s_b_sum. ((((exists ff_h_b_sum_summand. ff_h_b_sum_summand + S (ff_a_b_sum) = S ((S (ff_i_b_sum)) * c)) /\ exists ff_q_b_sum_summand. b = ff_q_b_sum_summand * S ((S (ff_i_b_sum)) * c) + (ff_a_b_sum))) /\ ((((exists ff_h_b_sum_partial. ff_h_b_sum_partial + S (ff_r_b_sum) = S ((S (ff_i_b_sum)) * ff_v_b_sum)) /\ exists ff_q_b_sum_partial. ff_u_b_sum = ff_q_b_sum_partial * S ((S (ff_i_b_sum)) * ff_v_b_sum) + (ff_r_b_sum))) /\ ((((exists ff_h_b_sum_successor. ff_h_b_sum_successor + S (ff_s_b_sum) = S ((S (S ff_i_b_sum)) * ff_v_b_sum)) /\ exists ff_q_b_sum_successor. ff_u_b_sum = ff_q_b_sum_successor * S ((S (S ff_i_b_sum)) * ff_v_b_sum) + (ff_s_b_sum))) /\ ff_s_b_sum = ff_r_b_sum + ff_a_b_sum)))))) /\ (forall ff_i_b_bits. (exists ff_lt_b_bits_bound. ff_lt_b_bits_bound + S ff_i_b_bits = l) -&gt; exists ff_bit_b_bits. ((((exists ff_h_b_bits_decoded. ff_h_b_bits_decoded + S (ff_bit_b_bits) = S ((S (ff_i_b_bits)) * c)) /\ exists ff_q_b_bits_decoded. b = ff_q_b_bits_decoded * S ((S (ff_i_b_bits)) * c) + (ff_bit_b_bits))) /\ (ff_bit_b_bits = 0 \/ ff_bit_b_bits = 1)))))</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every all-bits prefix has a relational count of its ones.</p><p>Direct prerequisites:
+beta_sum_exists.
+The authored body proceeds by case analysis (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT008A.html"><code>BT008A</code> beta_sum_exists</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00JE.html"><code>BT00JE</code> eisenstein_initial_segment_bit_count_exact</a> <a class="pa-theorem-ref" href="BT00Y4.html"><code>BT00Y4</code> central_binom_carry_bit_count</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="fb494ddd83be488f"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="0158da2a7e25a944"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="15341572e20f4239"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> l</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="74ee96a1dabf0e52"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> hbits</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="9143248b7bdae779"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT008A.html">beta_sum_exists</a> b</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="specialize" data-line-id="f91f86a314f9fdac"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT008A.html">beta_sum_exists</a> c</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="specialize" data-line-id="d478794435caa876"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT008A.html">beta_sum_exists</a> l</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="cases" data-line-id="437325af4979c434"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">cases</span> <a class="pa-theorem-ref" href="BT008A.html">beta_sum_exists</a></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exists" data-line-id="7dd0e80867bae772"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exists</span> x</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="split" data-line-id="7259b1474ba6bb06"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">split</span></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="exact" data-line-id="d069eee9fc0bee34"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">exact</span> beta_sum_exists_witness</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="exact" data-line-id="266b77972dbd3db3"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">exact</span> hbits</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>301</dd>
+<dt>Layer</dt><dd>19</dd><dt>Lines</dt><dd>12</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>d0cf625f7eb76c99c56da35a6fa4f659fd57033116490760d01738999459799a</code></dd>
+<dt>Script SHA-256</dt><dd><code>1dc5b7bbb730c1794d816065750af324d45858cfd265bf241490ff4d9f370018</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

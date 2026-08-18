@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0010 — one_le_of_ne_zero</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT000Y.html">← le_zero</a> <a href="BT0011.html">ne_zero_of_one_le →</a></nav>
+<p class="pa-tag">BT0010</p><h1>one_le_of_ne_zero</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Every nonzero natural is at least one.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n. ~(n = 0) -&gt; 1 &lt;= n</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every nonzero natural is at least one.</p><p>Direct prerequisites:
+none.
+The authored body proceeds by structural induction (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row">none</div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT002D.html"><code>BT002D</code> divisor_le_nonzero</a> <a class="pa-theorem-ref" href="BT0055.html"><code>BT0055</code> le_scaled_nonzero</a> <a class="pa-theorem-ref" href="BT00QF.html"><code>BT00QF</code> prime_power_exponent_le</a> <a class="pa-theorem-ref" href="BT00QN.html"><code>BT00QN</code> prime_power_successor_cancel_cofactor</a> <a class="pa-theorem-ref" href="BT00S0.html"><code>BT00S0</code> prime_power_quotient_prefix_exists</a> <a class="pa-theorem-ref" href="BT00W0.html"><code>BT00W0</code> power_valuation_nonzero_exponent_divides_base</a> <a class="pa-theorem-ref" href="BT00XG.html"><code>BT00XG</code> division_double_quotient_bit</a> <a class="pa-theorem-ref" href="BT00Y5.html"><code>BT00Y5</code> central_binom_prime_power_contribution_le_double</a> <a class="pa-theorem-ref" href="BT00Y6.html"><code>BT00Y6</code> central_binom_prime_square_tail_exponent_not_two_le</a> <a class="pa-theorem-ref" href="BT00YE.html"><code>BT00YE</code> central_binom_prime_valuation_zero_two_thirds_range</a> <a class="pa-theorem-ref" href="BT00YK.html"><code>BT00YK</code> no_bertrand_central_nonzero_valuation_factor_ranges</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="induction" data-line-id="6fb5c2410ec7765b"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">induction</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="fcf016b598f3c0e3"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="exfalso" data-line-id="fd1ca10633e759b0"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">exfalso</span></code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="apply" data-line-id="c894d138da0c6a7d"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">apply</span> h</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="refl" data-line-id="75a7b36f5e234a9a"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="intro" data-line-id="a1906168df94a162"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="exists" data-line-id="c37b54a8ed56fd78"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">exists</span> n</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="simp" data-line-id="f47fcdeea5281934"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">simp</span></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>35</dd>
+<dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>8</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>9f9374fe6969e53321d624beaac819c8e40bb41f0379ab9690a997b7edf9c78d</code></dd>
+<dt>Script SHA-256</dt><dd><code>7282ae3072a879ce57c34f4aacd013f53ddf4fca106a2b31dd98cfc1d7f57e50</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

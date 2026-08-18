@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT00WY — thirty_two_square_eq_twice_sixteen_times_thirty_two</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT00WX.html">← scaled_factor_square_identity</a> <a href="BT00X0.html">floor_sqrt_factorized_threshold_thirty_two →</a></nav>
+<p class="pa-tag">BT00WY</p><h1>thirty_two_square_eq_twice_sixteen_times_thirty_two</h1>
+<p class="pa-status-candidate">Alpha body-checked · checked-use disabled</p>
+<p>The root-32 square identity carried by the shallow factorization 16*32.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>32 * 32 = 2 * (16 * 32)</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>The root-32 square identity carried by the shallow factorization 16*32.</p><p>Direct prerequisites:
+scaled_factor_square_identity.
+The authored body proceeds by intermediate claims (1), closed numeral normalization (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT00WX.html"><code>BT00WX</code> scaled_factor_square_identity</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00X0.html"><code>BT00X0</code> floor_sqrt_factorized_threshold_thirty_two</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="have" data-line-id="13867854ed17b065"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">have</span> hfactor : 32 = 2 * 16</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="norm_num" data-line-id="d551ca328203a1a7"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">norm_num</span></code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="specialize" data-line-id="ca8d5f76943352a1"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT00WX.html">scaled_factor_square_identity</a> 2</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="27ad7af71eb06574"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT00WX.html">scaled_factor_square_identity</a> 16</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="604edeb2a5ad573d"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT00WX.html">scaled_factor_square_identity</a> 32</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="apply" data-line-id="78e543842179ed0c"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT00WX.html">scaled_factor_square_identity</a></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="exact" data-line-id="89a115fde7d66353"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">exact</span> hfactor</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>1154</dd>
+<dt>Layer</dt><dd>4</dd><dt>Lines</dt><dd>7</dd>
+<dt>Evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>339</dd>
+<dt>Statement SHA-256</dt><dd><code>1956cceff6dca8891691473c37f03d16b21ddba5e96f453c927387edd3045492</code></dd>
+<dt>Script SHA-256</dt><dd><code>fc57d6d3f6245787480731ce27bc190a709a4ac5fe4f76dcd2f5f8b0e50e805f</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_hj_all_s_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_hj_all_s_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>1dd96d72ff5d548dc6d8eb71cdcec58d151dd6632c45301e528a1cb2c9a6f31a</code></dd>
+</dl></aside></main></body></html>

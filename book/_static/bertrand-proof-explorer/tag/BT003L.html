@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT003L — prime_divisor_exists</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT003K.html">← prime_divisor_exists_up_to</a> <a href="BT003M.html">prime_divisor_eq_one_or_self →</a></nav>
+<p class="pa-tag">BT003L</p><h1>prime_divisor_exists</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Every nonzero nonunit natural has a prime divisor.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n. ~(n = 0) -&gt; ~(n = 1) -&gt; exists p. ((~(p = 1) /\ forall a b. p = a * b -&gt; a = 1 \/ b = 1) /\ exists k. n = p * k)</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every nonzero nonunit natural has a prime divisor.</p><p>Direct prerequisites:
+le_refl, prime_divisor_exists_up_to.
+The authored body proceeds by direct introduction and elimination.</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT000E.html"><code>BT000E</code> le_refl</a> <a class="pa-theorem-ref" href="BT003K.html"><code>BT003K</code> prime_divisor_exists_up_to</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0103.html"><code>BT0103</code> prime_contribution_cofactor_eq_one</a> <a class="pa-theorem-ref" href="BT0118.html"><code>BT0118</code> nonprime_has_small_prime_divisor_below_square</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="ec0f01fcccd3a3f5"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="38370a6132b7807a"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> hn0</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="73a4f6a7bbe466bd"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> hn1</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="50197be9ec567034"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT003K.html">prime_divisor_exists_up_to</a> n</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="21eafe92d38bb845"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT003K.html">prime_divisor_exists_up_to</a> n</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="apply" data-line-id="2a7a1fe7f61f8e48"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT003K.html">prime_divisor_exists_up_to</a></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="apply" data-line-id="29b4796f842a0fb6"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT000E.html">le_refl</a></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="exact" data-line-id="9567d0ca734dbe70"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">exact</span> hn0</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exact" data-line-id="90b2768c48f7c78b"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exact</span> hn1</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>126</dd>
+<dt>Layer</dt><dd>9</dd><dt>Lines</dt><dd>9</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>937e67f7de2efd5bec917e9d60536b0e155b0d27025d4f2a14985c147fbea4d2</code></dd>
+<dt>Script SHA-256</dt><dd><code>b8bbaf1129cae7bf2b9846799280e07b719673820b68e6249f3c1fe7ccc9c66e</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

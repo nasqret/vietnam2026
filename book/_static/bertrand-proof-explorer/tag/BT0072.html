@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0072 — parity_cases</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT006N.html">← prime_three</a> <a href="BT007U.html">beta_repeat_empty →</a></nav>
+<p class="pa-tag">BT0072</p><h1>parity_cases</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Every natural has a constructive even-or-odd witness.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n. exists k. n = 2 * k \/ n = 2 * k + 1</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every natural has a constructive even-or-odd witness.</p><p>Direct prerequisites:
+none.
+The authored body proceeds by structural induction (1), case analysis (2), equality transport (2), closed numeral normalization (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row">none</div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00VV.html"><code>BT00VV</code> primorial_le_four_pow_bounded</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="induction" data-line-id="b12321ba313a8a81"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">induction</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="exists" data-line-id="f00209871e468057"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">exists</span> 0</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="left" data-line-id="1abd34d4f31144bf"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">left</span></code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="norm_num" data-line-id="aadea98c010fbe35"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">norm_num</span></code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="cases" data-line-id="75c6decadadd19d8"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">cases</span> IH</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="cases" data-line-id="0862ab87c0bb3f48"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">cases</span> IH_witness</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="exists" data-line-id="d05e118c9551535e"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">exists</span> x</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="right" data-line-id="f0b30bb0e308ef4e"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">right</span></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="rewrite" data-line-id="afcc962e6d8d792c"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">rewrite</span> IH_witness_left</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="simp" data-line-id="8fd5e5c0b2a71d0b"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">simp</span></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="exists" data-line-id="622683d53fdbb28e"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">exists</span> x + 1</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="left" data-line-id="ed224e54aad90993"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">left</span></code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="rewrite" data-line-id="f6f2524d89660dcd"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">rewrite</span> IH_witness_right</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="simp" data-line-id="f1a715ee8c2cf5b2"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">simp</span></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>247</dd>
+<dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>14</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>44703e32a0dd9b0c57a83f302061ae8d9b347664615deb0fd5159d5fa6ebb7c0</code></dd>
+<dt>Script SHA-256</dt><dd><code>c361a7dac19dacc47c6f09894e7f327e254ccc1584fa1e0727a87d4748d49eab</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

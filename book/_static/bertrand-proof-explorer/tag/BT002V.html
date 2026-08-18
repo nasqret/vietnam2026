@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT002V — gcd_exists_relational</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT002U.html">← gcd_exists_up_to</a> <a href="BT002W.html">coprime_symm →</a></nav>
+<p class="pa-tag">BT002V</p><h1>gcd_exists_relational</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Every pair of naturals has a relational greatest common divisor.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a b. exists d. (((exists x. a = d * x) /\ (exists y. b = d * y)) /\ forall c. (exists u. a = c * u) -&gt; (exists v. b = c * v) -&gt; exists w. d = c * w)</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every pair of naturals has a relational greatest common divisor.</p><p>Direct prerequisites:
+le_refl, gcd_exists_up_to.
+The authored body proceeds by intermediate claims (2).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT000E.html"><code>BT000E</code> le_refl</a> <a class="pa-theorem-ref" href="BT002U.html"><code>BT002U</code> gcd_exists_up_to</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT003N.html"><code>BT003N</code> euclid_prime_dvd_product</a> <a class="pa-theorem-ref" href="BT008Q.html"><code>BT008Q</code> prime_coprime_or_divides</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="09f4c8fc67d1bf32"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="6045f7192f3b7057"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="specialize" data-line-id="aa2a287c2fa79039"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT002U.html">gcd_exists_up_to</a> b</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="cb9c05648726ae27"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT002U.html">gcd_exists_up_to</a> b</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="have" data-line-id="baafc5da0dc91f5c"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">have</span> hbb : exists t. t + b = b</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="apply" data-line-id="a13eb59abe130f56"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT000E.html">le_refl</a></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="have" data-line-id="c937f960107b7b15"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">have</span> hall : forall z. exists d. (((exists x. z = d * x) /\ (exists y. b = d * y)) /\ forall c. (exists u. z = c * u) -&gt; (exists v. b = c * v) -&gt; exists w. d = c * w)</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="apply" data-line-id="c89e33399c8bfaff"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT002U.html">gcd_exists_up_to</a></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exact" data-line-id="44a74880a866809e"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exact</span> hbb</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="specialize" data-line-id="dda5cad0800f9e2b"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">specialize</span> hall a</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="exact" data-line-id="9fd3ecfac38d97f3"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">exact</span> hall</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>101</dd>
+<dt>Layer</dt><dd>6</dd><dt>Lines</dt><dd>11</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>90c22e192ead142cbbeab2f48fdc4e07711a124218e3b8105dc87df7a60f4ee2</code></dd>
+<dt>Script SHA-256</dt><dd><code>23c183a249bf6550b41b7b8449b21a284933ff6e7fced25f41ba95cb8db4019b</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

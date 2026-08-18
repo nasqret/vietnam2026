@@ -16,39 +16,54 @@ $$
 $$
 
 ```{admonition} Current evidence boundary
-:class: warning
-Bertrand's postulate is **not yet proved** in this repository. Alpha v10 is the
-sealed 1,085-row parent, and current Alpha v11 contains 221 campaign
-specifications whose dependency-curried bodies check. Its thirty-eight-row
-suffix is frozen in exact 20+18 microbatches and closes B4 through the public
-`primorial_le_four_pow` theorem. Every v11 suffix row remains `body_checked`,
-has no empty-context admission metadata, and is unavailable through checked
-theorem replay. The five-range no-prime central upper bound, large-input
-contradiction, finite coverage, and both Bertrand endpoints remain open.
+:class: important
+Bertrand's postulate is **fully proved in the repository**. The focused BP01
+and BP02 audits kernel-check empty-context certificates for
+`bertrand_closed_upper` and `bertrand_strict`. Current Alpha v12 preserves the
+sealed 1,123-row Alpha-v11 parent and enrolls the complete 180-row dependency
+closure in nine exact twenty-row microbatches. Enrollment remains deliberately
+conservative: every v12 suffix row is `body_checked`, has no checked-use
+permission, and is unavailable through edition replay until a later promotion.
 ```
 
 The binding statement, logic, validation, and release rules are frozen in
 [`RFC HA-R6-BERTRAND-1`](https://github.com/nasqret/vietnam2026/blob/9efc5cd95ae7698a092c922d83e29f9d2dedea24/research/arithmetic-library/ha-bertrand-postulate-campaign-rfc-v1.md).
 Its threshold representation is amended by
-[`RFC HA-R6-BERTRAND-2`](../../research/arithmetic-library/ha-bertrand-postulate-campaign-rfc-v2.md):
+[`RFC HA-R6-BERTRAND-2`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-bertrand-postulate-campaign-rfc-v2.md):
 the mathematical cutoff 512 has canonical native carrier `16 * 32`, public
 Bertrand surfaces retain `n + n`, and any move to an internal `2 * n` helper
 requires a live checked equality rewrite. The amendment changes no endpoint,
 logical authority, or evidence status.
 The additive Choose/central-binomial tranche is separately bound by
-[`RFC HA-R6-BERTRAND-CB-1`](../../research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md).
+[`RFC HA-R6-BERTRAND-CB-1`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md).
 The Alpha-v9 Primorial append is bound per source by the
-[`foundation RFC`](../../research/arithmetic-library/ha-bertrand-primorial-foundation-tranche-rfc-v1.md)
+[`foundation RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-bertrand-primorial-foundation-tranche-rfc-v1.md)
 and
-[`membership RFC`](../../research/arithmetic-library/ha-bertrand-primorial-membership-tranche-rfc-v1.md).
+[`membership RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-bertrand-primorial-membership-tranche-rfc-v1.md).
 The Alpha-v10 split append is bound by the
-[`interval-split RFC`](../../research/arithmetic-library/ha-bertrand-primorial-interval-split-tranche-rfc-v1.md).
+[`interval-split RFC`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-bertrand-primorial-interval-split-tranche-rfc-v1.md).
 The Alpha-v11 append is bound by the duplicate-free, Primorial/Choose interval,
-central-binomial upper, Primorial-four-power, and central-prime-support RFCs in
-the same research directory.
+central-binomial upper, Primorial-four-power, and central-prime-support RFCs.
+The Alpha-v12 append is bound by the B6 release RFC and the seventeen B5, B7,
+B8, BP01, and BP02 tranche RFCs in the same research directory.
 It selects an integer-only Erdős--Tochiori central-binomial proof. No real
 numbers, logarithms, primitive binomial operation, classical axiom, or new
 kernel rule is permitted.
+
+<p>
+  <a class="btn btn-primary"
+     href="../_static/bertrand-proof-explorer/graph.html?target=BT0127&amp;view=prerequisites&amp;edges=focus">
+    Open the complete interactive Bertrand proof map
+  </a>
+  <a class="btn btn-outline-primary"
+     href="../_static/bertrand-proof-explorer/tag/BT0127.html">
+    Read the final strict theorem · BT0127
+  </a>
+</p>
+
+The {doc}`complete Bertrand proof explorer <bertrand-proof-explorer>` contains
+all 544 theorem nodes and 1,917 direct edges in the transitive closure of
+`bertrand_strict`.
 
 ## Why the proof remains constructive
 
@@ -67,19 +82,20 @@ bounded_prime_interval_search(l,u)
 Consequently, the negative branch is explicit data. The proof never turns
 $\neg\neg\exists p$ into $\exists p$.
 
-## Current Alpha v11 layer
+## Current Alpha v12 layer
 
-Alpha v11 is an additive child of the sealed 1,085-row Alpha v10 ledger. Alpha
+Alpha v12 is an additive child of the sealed 1,123-row Alpha v11 ledger. Alpha
 v8 remains the sealed Choose/central-binomial parent, v9 the sealed Primorial
-foundation and membership parent, and v10 the sealed interval-split parent.
+foundation and membership parent, v10 the sealed interval-split parent, and
+v11 the sealed B4-capstone/B5-support parent.
 
 | Quantity | Exact value |
 |---|---:|
-| Alpha v11 specifications | 1,123 |
+| Alpha v12 specifications | 1,303 |
 | Stable rows | 432 |
-| Alpha-only rows | 691 |
+| Alpha-only rows | 871 |
 | checked-use rows | 570 |
-| direct dependency edges | 3,482 |
+| direct dependency edges | 4,302 |
 | dependency layers | 45 |
 | first-round Bertrand rows | 21 |
 | Round-2 Bertrand rows | 42 |
@@ -90,28 +106,29 @@ foundation and membership parent, and v10 the sealed interval-split parent.
 | Alpha-v9 Primorial foundation / membership and monotonicity rows | 10 + 11 |
 | Alpha-v10 Product split / Primorial interval rows | 1 + 8 |
 | Alpha-v11 duplicate-free / Choose interval / central upper / B4 / B5-support rows | 10 + 10 + 6 + 7 + 5 |
+| Alpha-v12 B6 support plus B5--BP02 completion rows | 43 + 137 |
 
-All 221 campaign additions are `body_checked`; checked use remains
+All 401 campaign additions are `body_checked`; checked use remains
 unchanged at 570. The current enrollment root is
-`c9f6f4015e8e3e5aaeee803706113c85098551276ea3eb01039ade7bd97b1a36`.
+`f763b9fc3717ad76c7e259d67c3beeadfdaca554bbaaeb3ecd2e55329edf937b`.
 The full edition identity is
-`46d07832b0c630b9ce1da1d6e639687347cd737774b2b88b923bc5f477b9ddc3`.
+`bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061`.
 The ordered-specification, membership, evidence, and channel-pointer roots are
-`4a1f4302b0a4ede3bf5123ec021b4f2f5f98c2a7e22eadc6f13a446422ad9450`,
-`2f0be30e7de93bcf89235700c419f46656cb638be85ca153154684845e8dabdb`,
-`b82b567e59cabeda6f90fdfedaceb628ca2e7c4b7423be643b8f22865e7599bd`,
+`362da94c3c5e788f296f315b86b5d63534c1567ce00911dbb27227a66ab50e28`,
+`726c6134461dace943f909a0073ca0a6cae95a54ff306f8aeefeb3d9a5151926`,
+`de8a6a57b828c2b3893c6fb31f2611d5180f8de4d1002a21a681739616b761b5`,
 and
-`ecce457947650ae7ddf2a638d8b1f2c8757daea6a95ea9c927ebaef3995d4ccd`.
+`7ad0c942a2239532696f5d99ee1dc985e13302cf73b4637497b879871d05752c`.
 The deterministic channel pointer is
-`artifacts/peano-library/channels-v11.json`; its catalog, metrics, and reduced
-graph are the matching `catalog-v11.json`, `metrics-v11.json`, and
-`dependency-graph-v11.mmd`.
+`artifacts/peano-library/channels-v12.json`; its catalog, metrics, and reduced
+graph are the matching `catalog-v12.json`, `metrics-v12.json`, and
+`dependency-graph-v12.mmd`.
 Their catalog, metrics, reduced-graph, and channel-pointer SHA-256 values are
-`d992c4aeb37829838cefd668679c513c5d45f6304f9842dcbe825bb25563182c`,
-`92cb654431a1b631cede3a0957993b41b8ad0fb0a0175d1587413dbf54c14300`,
-`c020f3207b0408cf446200b2c91f0767874c50466eebda830c3faeeef08aeae1`,
+`825909e057492de87ef08208451c3475396ca009179c513457b05b57f7e2f109`,
+`64da675a3144f4bb0875c2e0650064e72d5d3eb613542d217719280addfaacb4`,
+`583d18473200097997fa6b8ef0b57ebef9da95f136555d97b24220f1abb356b8`,
 and
-`039712b6a1db739738f49b5cec20afdc0582ffae477bc43c52f96c00687b066f`.
+`0063b6d25f6f27869b00af0d7a31f53dda22d82e8d9c30779309939b46c60982`.
 The sealed v7 catalog, metrics, reduced graph, and
 channels SHA-256 values remain
 `7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4`,
@@ -119,8 +136,8 @@ channels SHA-256 values remain
 `85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e`,
 and
 `fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30`.
-The v11 evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
-552 `body_checked`, and one `pending_layered_closure` row. No v11 row was
+The v12 evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
+732 `body_checked`, and one `pending_layered_closure` row. No v12 row was
 promoted.
 
 ### B0 — constructive interval search
@@ -321,8 +338,8 @@ Finally, `158d87c` proves `factorial_legendre_successor_agreement` and
 with `FactorialVal` at the body-evidence level. `00e8361` supplies the
 optimized constructor source needed by the frozen dependency order. All seven
 source blocks replay, reject their prescribed mutations, contain zero `DNE`,
-and remain fail-closed `body_checked` rows. This is enrollment, not promotion:
-Bertrand's postulate is still open.
+and remain fail-closed `body_checked` rows. At that Alpha-v7 checkpoint this
+was enrollment, not promotion, and Bertrand's postulate was still open.
 
 ## Alpha v8 recurrence-defined Choose and central lower bound
 
@@ -340,7 +357,7 @@ $$
 
 The exact endpoint is the relational theorem
 `four_pow_lt_mul_central_binom`. The tranche is controlled by
-[`RFC HA-R6-BERTRAND-CB-1`](../../research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md),
+[`RFC HA-R6-BERTRAND-CB-1`](https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/research/arithmetic-library/ha-bertrand-choose-central-binomial-tranche-rfc-v1.md),
 whose frozen SHA-256 is
 `4f337990babf85ffaacdc990f0e09a3c1943b8edb20c72ffef675cbb28cde83b`.
 All 38 dependency-curried body receipts replay with combined root
@@ -420,6 +437,25 @@ All thirty-eight rows remain body evidence only. Their source blocks bind to
 five subordinate RFCs and retain exact focused empty-context receipts, but
 Alpha enrollment itself grants no checked use and changes no Stable row.
 
+## Alpha v12 complete Bertrand proof
+
+Alpha v12 appends the complete dependency-closed proof chain in nine exact
+twenty-row microbatches. The first forty-three rows publish the reviewed B6
+base-window, all-root, growth, main-inequality, and finite-product-order
+support. The remaining 137 rows complete B5's five-range factorization, derive
+the B7 large-input contradiction, certify and cover the B8 finite range, and
+close both public endpoints:
+
+```text
+bertrand_closed_upper : n != 0 -> exists p, Prime(p) /\ n < p /\ p <= n+n
+bertrand_strict       : 1 < n  -> exists p, Prime(p) /\ n < p /\ p <  n+n
+```
+
+The focused BP01 and BP02 suites independently rebuild their complete
+empty-context graphs and kernel-check the final certificates. Alpha v12 records
+the same exact source bodies and provenance as `body_checked` evidence only;
+it intentionally leaves checked-use and Stable unchanged.
+
 ## Dependency roadmap
 
 ```text
@@ -430,10 +466,10 @@ checked Alpha baseline
         |-- B3 Choose/CentralBinom [Alpha v8 body evidence]
         `-- B4 Primorial [Alpha v11 body evidence; bound closed; depends on B3]
 
-B2 + B3 + B4 --------------------> B5 central factor upper bound [support begun]
-B1 --------------------------------> B6 native main inequality [candidate]
-B0 + B3 + B5 + B6 ----------------> B7 n >= 512 [open]
-B0 + B7 + certified prime chain ---> B8 endpoints BP01 and BP02 [open]
+B2 + B3 + B4 --------------------> B5 central factor upper bound [complete]
+B1 --------------------------------> B6 native main inequality [complete]
+B0 + B3 + B5 + B6 ----------------> B7 n >= 512 [complete]
+B0 + B7 + certified prime chain ---> B8 endpoints BP01 and BP02 [complete]
 ```
 
 The retained Alpha-v8 central lower bound proves $4^n<n\binom{2n}{n}$ at the
@@ -526,14 +562,14 @@ All checkpoints are pushed to `nasqret/vietnam2026` on
 ## Reproduce the current gates
 
 ```bash
-make peano-library-alpha-v11-check
+make peano-library-alpha-v12-check
+make book-bertrand-proof-explorer
 ```
 
-This validates the Alpha-v11 evidence boundary and independently replays its
-thirty-eight new dependency-curried bodies. On a memory-constrained laptop,
-the five focused source-block suites run serially in fresh Python processes,
-with RSS observed and no concurrent proof worker. The v11 Make
-target also splits verifier mutation groups across fresh processes. A single
-monolithic pytest process can retain proof DAGs and is not an approved local
-gate. Successful replay does not upgrade Alpha evidence or promote anything
-to Stable.
+The first command validates the Alpha-v12 evidence boundary, including the
+complete 180-row dependency-closed Bertrand suffix. Its expensive body replay
+and focused proof suites run in bounded, serial stages so a single Python
+process cannot retain the campaign's proof DAGs indefinitely. The second
+command deterministically regenerates the 544-node interactive proof map from
+the byte-frozen v12 catalog. Successful replay does not upgrade Alpha evidence
+or promote anything to Stable.

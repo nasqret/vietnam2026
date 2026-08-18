@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT002I — divides_linear_step</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT002H.html">← divides_remainder</a> <a href="BT002L.html">is_gcd_zero_right →</a></nav>
+<p class="pa-tag">BT002I</p><h1>divides_linear_step</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>A common divisor of a divisor and remainder divides their Euclidean linear step.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall c b q r. (exists u. b = c * u) -&gt; (exists v. r = c * v) -&gt; exists w. b * q + r = c * w</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>A common divisor of a divisor and remainder divides their Euclidean linear step.</p><p>Direct prerequisites:
+mul_assoc, mul_add.
+The authored body proceeds by case analysis (2), equality transport (2).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0008.html"><code>BT0008</code> mul_assoc</a> <a class="pa-theorem-ref" href="BT0007.html"><code>BT0007</code> mul_add</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT002S.html"><code>BT002S</code> is_gcd_euclid_forward</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="d3a8aa0504b46a8c"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="01100f6e6492fdf3"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="c08c20dc5da01d89"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> q</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="2af29d74a0024d3a"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> r</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="dcb394d3b8f63884"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> hb</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="intro" data-line-id="88a5bf142d2ab62b"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">intro</span> hr</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="cases" data-line-id="5ebdca53219e4837"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">cases</span> hb</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="cases" data-line-id="535059c40c36b754"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">cases</span> hr</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exists" data-line-id="118f0e7cd2006ba3"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exists</span> x * q + x1</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="rewrite" data-line-id="0fa83f8342cb82e7"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">rewrite</span> hb_witness</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="rewrite" data-line-id="521fe1f786702614"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">rewrite</span> hr_witness</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="trans" data-line-id="8bf13e4d61f8a7c8"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">trans</span> c * (x * q) + c * x1</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="congr" data-line-id="11d719f44fde943f"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">congr</span></code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="apply" data-line-id="80509a6900c2c95d"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0008.html">mul_assoc</a></code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="refl" data-line-id="a8f71c5de8694fa3"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0016" data-line="16" data-tactic="symm" data-line-id="2eb926b43dcb5919"><a class="pa-line-number" href="#proof-line-0016">0016</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0017" data-line="17" data-tactic="apply" data-line-id="dbdb090d0595c6d0"><a class="pa-line-number" href="#proof-line-0017">0017</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0007.html">mul_add</a></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>88</dd>
+<dt>Layer</dt><dd>3</dd><dt>Lines</dt><dd>17</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>9415644052f74b1922b2b229c005100f4c4d378bbc48c63650f048c60ee5fbf3</code></dd>
+<dt>Script SHA-256</dt><dd><code>af5d5f39d0d591e704efc8acb7043c7d216fca294e1257fa7cca7c3d05390789</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT00RE — three_mul_eq_two_mul_add_self</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT00RD.html">← mul_le_cancel_left_nonzero</a> <a href="BT00RF.html">ceil_div_six_le_of_upper →</a></nav>
+<p class="pa-tag">BT00RE</p><h1>three_mul_eq_two_mul_add_self</h1>
+<p class="pa-status-candidate">Alpha body-checked · checked-use disabled</p>
+<p>Left multiplication by three is twice the input plus the input.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a. 3 * a = 2 * a + a</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Left multiplication by three is twice the input plus the input.</p><p>Direct prerequisites:
+mul_comm.
+The authored body proceeds by equality transport (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0006.html"><code>BT0006</code> mul_comm</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00RG.html"><code>BT00RG</code> double_triple_remainder_complement_budget</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="aaa9a843dec40d33"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="trans" data-line-id="204099131863ec9b"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">trans</span> a * 3</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="apply" data-line-id="4a0a1a9fb3ebc5d7"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0006.html">mul_comm</a></code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="rewrite" data-line-id="2ff9b43cd7076d74"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">rewrite</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA6</span></code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="congr" data-line-id="25ba9bba47435e32"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">congr</span></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="apply" data-line-id="d1194df5125cfb21"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0006.html">mul_comm</a></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="refl" data-line-id="2da6fcd354a19513"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">refl</span></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>959</dd>
+<dt>Layer</dt><dd>4</dd><dt>Lines</dt><dd>7</dd>
+<dt>Evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>16</dd>
+<dt>Statement SHA-256</dt><dd><code>fd60ac7cbf2e8754e06f24d48aee124c9e6d71fffab65cf83c359b33d0f455c4</code></dd>
+<dt>Script SHA-256</dt><dd><code>ffeed29727b2876ccc703dc2b13fd9c675cf7ca84d8b87e8a3d6588f3ac14f8b</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_quotient_budget_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_quotient_budget_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>78dbb7c472eb10861bbe39ec150f1499198a43c5f3687781c2e104e96516f225</code></dd>
+</dl></aside></main></body></html>

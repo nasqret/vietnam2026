@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0014 — add_le_add_right</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT0013.html">← le_add_right</a> <a href="BT0015.html">add_le_add_left →</a></nav>
+<p class="pa-tag">BT0014</p><h1>add_le_add_right</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Adding the same right summand preserves the witness-defined order.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a b c. (exists k. k + a = b) -&gt; exists r. r + (a + c) = b + c</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Adding the same right summand preserves the witness-defined order.</p><p>Direct prerequisites:
+add_assoc.
+The authored body proceeds by case analysis (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0003.html"><code>BT0003</code> add_assoc</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00R2.html"><code>BT00R2</code> ceil_div_six_functional</a> <a class="pa-theorem-ref" href="BT00RF.html"><code>BT00RF</code> ceil_div_six_le_of_upper</a> <a class="pa-theorem-ref" href="BT00RG.html"><code>BT00RG</code> double_triple_remainder_complement_budget</a> <a class="pa-theorem-ref" href="BT00WV.html"><code>BT00WV</code> bertrand_j_base_thirty_two_window_from_total</a> <a class="pa-theorem-ref" href="BT00YA.html"><code>BT00YA</code> prime_square_tail_of_two_three_range</a> <a class="pa-theorem-ref" href="BT00YB.html"><code>BT00YB</code> division_first_two_of_two_three_range</a> <a class="pa-theorem-ref" href="BT010A.html"><code>BT010A</code> two_lt_double_lower_six</a> <a class="pa-theorem-ref" href="BT011Q.html"><code>BT011Q</code> bertrand_covering_interval</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="4edaa51889638b43"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="7d00785404a7e0b1"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="37a879fc996e3731"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="a6d56ea64d504984"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="cases" data-line-id="70a9a05e96abeb2b"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="exists" data-line-id="d41c2de48f91cc31"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">exists</span> x</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="trans" data-line-id="0e763c156b94fde6"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">trans</span> (x + a) + c</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="symm" data-line-id="c11ff9acf17641a5"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="apply" data-line-id="d200dc268182cac8"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0003.html">add_assoc</a></code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="congr" data-line-id="a9bc22f27f063f95"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">congr</span></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="exact" data-line-id="b81696a8a097a91b"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">exact</span> h_witness</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="refl" data-line-id="2a79006a084b0e37"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">refl</span></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>39</dd>
+<dt>Layer</dt><dd>1</dd><dt>Lines</dt><dd>12</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>c5ea1fada63b0616885522521837b110911a50154a49e3a6c52b103c50bda6d9</code></dd>
+<dt>Script SHA-256</dt><dd><code>867acd6611c178252e924fc98c4296e8f28dcba915229b4f23c585b542f97bfe</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

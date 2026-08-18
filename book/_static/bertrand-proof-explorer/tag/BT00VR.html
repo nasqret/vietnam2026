@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT00VR — double_half_predecessor_data</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT00VQ.html">← primorial_one</a> <a href="BT00VS.html">odd_positive_prefix_predecessor_bound →</a></nav>
+<p class="pa-tag">BT00VR</p><h1>double_half_predecessor_data</h1>
+<p class="pa-status-candidate">Alpha body-checked · checked-use disabled</p>
+<p>An even successor has a nonzero half below its predecessor.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n k. S n = 2 * k -&gt; (~(k = 0) /\ (exists bcf_le_gap_bdhpb_result. bcf_le_gap_bdhpb_result + (k) = n))</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>An even successor has a nonzero half below its predecessor.</p><p>Direct prerequisites:
+two_mul_eq_add_self, add_succ_left.
+The authored body proceeds by structural induction (1), closed numeral normalization (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT00QU.html"><code>BT00QU</code> two_mul_eq_add_self</a> <a class="pa-theorem-ref" href="BT0001.html"><code>BT0001</code> add_succ_left</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00VV.html"><code>BT00VV</code> primorial_le_four_pow_bounded</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="b6ca798fff4e40cc"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="induction" data-line-id="12eeaa1e10896f0f"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">induction</span> k</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="2858f749f2df6fce"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> heq</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="exfalso" data-line-id="c3495012a95d75f2"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">exfalso</span></code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="apply" data-line-id="66dfa0fb5749c5c2"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA1</span></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="trans" data-line-id="7f12c95c0400d81c"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">trans</span> 2 * 0</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="exact" data-line-id="c24efa634c623638"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">exact</span> heq</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="norm_num" data-line-id="44d2f0d96b68ed38"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">norm_num</span></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="intro" data-line-id="9a2974a1a9c1fd20"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">intro</span> heq</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="split" data-line-id="3bb07626ee9bf306"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">split</span></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="intro" data-line-id="138979ff072ef06b"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">intro</span> hk</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="apply" data-line-id="942ded81a1ecea57"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA1</span></code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="exact" data-line-id="2f83c73384903f23"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">exact</span> hk</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="exists" data-line-id="24051a39d37dcb35"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">exists</span> k</code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="apply" data-line-id="01b75dada0180d27"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA2</span></code></li><li class="pa-proof-line" id="proof-line-0016" data-line="16" data-tactic="trans" data-line-id="5808a0f491982ddc"><a class="pa-line-number" href="#proof-line-0016">0016</a><code><span class="pa-tactic-ref">trans</span> 2 * S k</code></li><li class="pa-proof-line" id="proof-line-0017" data-line="17" data-tactic="simp" data-line-id="05c3f355822c10b4"><a class="pa-line-number" href="#proof-line-0017">0017</a><code><span class="pa-tactic-ref">simp</span> [<a class="pa-theorem-ref" href="BT00QU.html">two_mul_eq_add_self</a>, <a class="pa-theorem-ref" href="BT0001.html">add_succ_left</a>]</code></li><li class="pa-proof-line" id="proof-line-0018" data-line="18" data-tactic="symm" data-line-id="0d3da8c5caee6d50"><a class="pa-line-number" href="#proof-line-0018">0018</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0019" data-line="19" data-tactic="exact" data-line-id="c4abc1880fa61750"><a class="pa-line-number" href="#proof-line-0019">0019</a><code><span class="pa-tactic-ref">exact</span> heq</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>1112</dd>
+<dt>Layer</dt><dd>5</dd><dt>Lines</dt><dd>19</dd>
+<dt>Evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>70</dd>
+<dt>Statement SHA-256</dt><dd><code>359118772768df520ecc56bf5e975eb6560e7ca1864b68ff97b3b7aa067ac42e</code></dd>
+<dt>Script SHA-256</dt><dd><code>eb312266ffb32402db25bd4a3f33710c75260515fcb89120b5453bedfd8289f0</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_primorial_four_power_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_primorial_four_power_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>86c0bfa4e5840c35d0ea6a0bf443dedd159c298b21ee6345d1cdc0d5c6ede2f3</code></dd>
+</dl></aside></main></body></html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0017 — le_of_succ_le_succ</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a> <a href="BT0016.html">← succ_le_succ</a> <a href="BT0018.html">le_succ →</a></nav>
+<p class="pa-tag">BT0017</p><h1>le_of_succ_le_succ</h1>
+<p class="pa-status-public">Stable · empty-context checked</p>
+<p>Successor order reflects to the underlying naturals.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a b. (exists k. k + S a = S b) -&gt; exists r. r + a = b</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Successor order reflects to the underlying naturals.</p><p>Direct prerequisites:
+none.
+The authored body proceeds by case analysis (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row">none</div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT002U.html"><code>BT002U</code> gcd_exists_up_to</a> <a class="pa-theorem-ref" href="BT0034.html"><code>BT0034</code> gcd_balanced_bezout_exists_up_to</a> <a class="pa-theorem-ref" href="BT003D.html"><code>BT003D</code> factor_property_succ</a> <a class="pa-theorem-ref" href="BT003K.html"><code>BT003K</code> prime_divisor_exists_up_to</a> <a class="pa-theorem-ref" href="BT0059.html"><code>BT0059</code> beta_exclusive_accumulated_product_step</a> <a class="pa-theorem-ref" href="BT005A.html"><code>BT005A</code> beta_exclusive_recode_congruence_step</a> <a class="pa-theorem-ref" href="BT005E.html"><code>BT005E</code> beta_prefix_product_trace_exists</a> <a class="pa-theorem-ref" href="BT005K.html"><code>BT005K</code> beta_product_succ_append</a> <a class="pa-theorem-ref" href="BT0069.html"><code>BT0069</code> beta_factor_divides_product</a> <a class="pa-theorem-ref" href="BT007V.html"><code>BT007V</code> beta_repeat_succ_extend</a> <a class="pa-theorem-ref" href="BT0085.html"><code>BT0085</code> beta_range_succ_extend</a> <a class="pa-theorem-ref" href="BT0089.html"><code>BT0089</code> beta_prefix_sum_trace_exists</a> <a class="pa-theorem-ref" href="BT0097.html"><code>BT0097</code> lt_three_cases</a> <a class="pa-theorem-ref" href="BT00AA.html"><code>BT00AA</code> finite_lt_succ_eq_or_lt</a> <a class="pa-theorem-ref" href="BT00JD.html"><code>BT00JD</code> eisenstein_initial_segment_bit_count_functional</a> <a class="pa-theorem-ref" href="BT00PS.html"><code>BT00PS</code> bounded_prime_interval_search</a> <a class="pa-theorem-ref" href="BT00Q5.html"><code>BT00Q5</code> bounded_power_valuation_search</a> <a class="pa-theorem-ref" href="BT00TF.html"><code>BT00TF</code> beta_pascal_table_diagonal_boundary</a> <a class="pa-theorem-ref" href="BT00TM.html"><code>BT00TM</code> choose_positive</a> <a class="pa-theorem-ref" href="BT00VV.html"><code>BT00VV</code> primorial_le_four_pow_bounded</a> <a class="pa-theorem-ref" href="BT00WW.html"><code>BT00WW</code> bertrand_hj_base_window_thirty_two_from_total</a> <a class="pa-theorem-ref" href="BT00X1.html"><code>BT00X1</code> six_block_window_decomposition_above_thirty_two</a> <a class="pa-theorem-ref" href="BT011A.html"><code>BT011A</code> prime_le_twenty_two_cases</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of this body receipt. The focused endpoint
+audits separately check the complete empty-context certificates.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="39389f24618aee58"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="3df3a30926193475"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="95da5b6e66cdbfbf"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="cases" data-line-id="ce5440afa90d3af3"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="exists" data-line-id="078d7a24381553a1"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">exists</span> x</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="apply" data-line-id="b07e412ac92ded8e"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA2</span></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="trans" data-line-id="7a0086a5753b5d94"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">trans</span> x + S a</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="symm" data-line-id="46d6d366c32b21e8"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="apply" data-line-id="6b90fab5627bf673"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA4</span></code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="exact" data-line-id="41bacc4fd425a879"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">exact</span> h_witness</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>42</dd>
+<dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>10</dd>
+<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>bfa8be55903d6a037b942f30e28a0606ad55956d00b47532ab2c1cadb87d9a2a</code></dd>
+<dt>Script SHA-256</dt><dd><code>19976e247b08f2c7fedfea4dd8329510bb76b44a5e0e7f825851a74764cfe06d</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>
