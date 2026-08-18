@@ -98,6 +98,39 @@ def test_local_peano_server_serves_the_staged_release_tree() -> None:
     assert "cd peano-lab && python3 -m http.server 8002" not in output
 
 
+def test_proof_explorer_deploy_uses_an_isolated_staging_tree() -> None:
+    output = _dry_run("deploy-proofs")
+
+    assert 'rm -rf "_deploy/proofs"' in output
+    assert "book/_static/pa-proof-explorer/" in output
+    assert "book/_static/bertrand-proof-explorer/" in output
+    assert '"_deploy/proofs/quadratic-reciprocity/explorer/"' in output
+    assert '"_deploy/proofs/bertrand-postulate/explorer/"' in output
+    assert "lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/" in output
+    assert "rsync -avz --delete \"_deploy/proofs/\"" in output
+
+
+def test_proof_explorer_deploy_paths_cannot_be_overridden() -> None:
+    output = subprocess.run(
+        [
+            "make",
+            "-n",
+            "PROOFS=~/public_html",
+            "STAGEPROOFS=/tmp/unsafe",
+            "deploy-proofs",
+        ],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    ).stdout
+
+    assert "/tmp/unsafe" not in output
+    assert 'rm -rf "_deploy/proofs"' in output
+    assert "lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/" in output
+    assert "lts-faculty.wmi.amu.edu.pl:~/public_html/\n" not in output
+
+
 def test_shared_vendor_fetch_creates_matching_local_trees() -> None:
     script = (ROOT / "scripts" / "fetch_vendor.sh").read_text(encoding="utf-8")
 

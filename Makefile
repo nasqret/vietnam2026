@@ -9,6 +9,7 @@ LABNEXT   := ~/public_html/lab-lambda-next
 # overrides from widening either one to an unrelated remote directory.
 override PEANO     := ~/public_html/peano-lab
 override PEANONEXT := ~/public_html/peano-lab-next
+override PROOFS    := ~/public_html/proofs
 STAGE     := _deploy/vietnam2026
 STAGENEXT := _deploy/lab-lambda-next
 PEANO_CORPUS_PYTHON ?= python3
@@ -20,10 +21,12 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
+override STAGEPROOFS := _deploy/proofs
 override PEANOAPPID := a-526f19ff3b30
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
-	stage-peano deploy-site deploy-lab deploy-lab-next deploy-peano deploy-peano-next \
+	stage-peano stage-proofs deploy-site deploy-lab deploy-lab-next deploy-peano \
+	deploy-peano-next deploy-proofs \
 	deploy clean
 
 help:
@@ -98,6 +101,8 @@ help:
 	@echo "  make deploy-lab-next  deploy the Web Worker preview to $(LABNEXT)"
 	@echo "  make deploy-peano  rsync Peano Lab to $(PEANO)"
 	@echo "  make deploy-peano-next  deploy Peano Lab staging to $(PEANONEXT)"
+	@echo "  make stage-proofs  assemble the standalone proof-explorer families"
+	@echo "  make deploy-proofs  publish the proof hub to $(PROOFS)"
 	@echo "  make deploy       stage + deploy-site + deploy-lab"
 	@echo "  make clean        remove build/stage artifacts"
 
@@ -606,6 +611,30 @@ stage: book
 
 deploy-site: stage
 	rsync -avz --delete $(STAGE)/ $(SERVER):$(SITE)/
+
+stage-proofs: book-proof-explorer
+	rm -rf "$(STAGEPROOFS)"
+	mkdir -p "$(STAGEPROOFS)/assets"
+	mkdir -p "$(STAGEPROOFS)/quadratic-reciprocity/explorer"
+	mkdir -p "$(STAGEPROOFS)/bertrand-postulate/explorer"
+	cp deploy/proofs/index.html "$(STAGEPROOFS)/index.html"
+	cp deploy/proofs/quadratic-reciprocity.html \
+		"$(STAGEPROOFS)/quadratic-reciprocity/index.html"
+	cp deploy/proofs/bertrand-postulate.html \
+		"$(STAGEPROOFS)/bertrand-postulate/index.html"
+	cp deploy/proofs/proofs.css "$(STAGEPROOFS)/assets/proofs.css"
+	cp deploy/proofs/proofs-og.png "$(STAGEPROOFS)/assets/proofs-og.png"
+	cp deploy/site.htaccess "$(STAGEPROOFS)/.htaccess"
+	rsync -a --delete --exclude '.DS_Store' \
+		book/_static/pa-proof-explorer/ \
+		"$(STAGEPROOFS)/quadratic-reciprocity/explorer/"
+	rsync -a --delete book/_static/bertrand-proof-explorer/ \
+		"$(STAGEPROOFS)/bertrand-postulate/explorer/"
+	@echo "Staged proof explorers in $(STAGEPROOFS)"
+
+deploy-proofs: stage-proofs
+	rsync -avz --delete "$(STAGEPROOFS)/" $(SERVER):$(PROOFS)/
+	@echo "Deployed proof explorers → https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/"
 
 # The lab IS the worker+self-hosted build (promoted 2026-07-24).
 deploy-lab:

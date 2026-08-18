@@ -10,6 +10,7 @@ server, deploying **incrementally** as pieces are ready.
   - `~/public_html/lab-lambda/`  ← the built browser lab.
   - `~/public_html/peano-lab-next/` ← Peano Lab staging.
   - `~/public_html/peano-lab/` ← Peano Lab production, promoted only after staging gates.
+  - `~/public_html/proofs/` ← standalone proof-explorer families and their shared hub.
 
 ## Deploy recipes
 ```bash
@@ -17,6 +18,7 @@ make deploy-site   # stages (_deploy/vietnam2026) + rsyncs landing page + book +
 make deploy-lab    # rsyncs browser lab
 make deploy-peano-next  # stages and publishes a clean, recorded candidate commit
 make deploy-peano       # reassembles that unchanged commit and promotes it
+make deploy-proofs      # stages and publishes the standalone proof explorers
 ```
 Equivalent inline commands (the Makefile is the source of truth):
 ```bash
@@ -24,6 +26,8 @@ Equivalent inline commands (the Makefile is the source of truth):
 rsync -avz --delete _deploy/vietnam2026/ lts-faculty.wmi.amu.edu.pl:~/public_html/vietnam2026/
 # browser lab
 rsync -avz --delete --exclude '__pycache__' --exclude 'worker' lab-lambda/ lts-faculty.wmi.amu.edu.pl:~/public_html/lab-lambda/
+# proof explorer hub + self-contained family payloads
+rsync -avz --delete _deploy/proofs/ lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/
 ```
 
 ## Subtasks

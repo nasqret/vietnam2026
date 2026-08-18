@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Machine-Checked Proof Explorers</title>
+  <meta name="description" content="Interactive maps of machine-checked proofs in first-order Peano arithmetic.">
+  <meta property="og:title" content="Machine-Checked Proof Explorers">
+  <meta property="og:description" content="Explore Quadratic Reciprocity and Bertrand's Postulate from axioms to final theorem.">
+  <meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/">
+  <link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/">
+  <link rel="stylesheet" href="assets/proofs.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="shell">
+      <a class="site-mark" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/">Bartosz Naskręcki</a>
+      <p class="eyebrow">Native first-order arithmetic</p>
+      <h1>Machine-checked proofs,<br>opened up for reading.</h1>
+      <p class="lede">Trace every dependency, inspect every tactic, and move between exact formulas and readable defined notation. No proof assistant installation is required.</p>
+      <div class="trust-row" aria-label="Proof properties">
+        <span>Kernel checked</span><span>Dependency complete</span><span>Browser native</span>
+      </div>
+    </div>
+  </header>
+  <main class="shell">
+    <section class="family-grid" aria-label="Proof families">
+      <article class="family-card qr-card">
+        <p class="card-kicker">Reciprocity law</p>
+        <h2>Quadratic Reciprocity</h2>
+        <p>Read the proof through 40 linked mathematical definitions, or descend to its exact fully expanded PA formulas.</p>
+        <dl class="stats"><div><dt>557</dt><dd>theorems</dd></div><div><dt>1,787</dt><dd>edges</dd></div><div><dt>40</dt><dd>definitions</dd></div></dl>
+        <a class="primary-action" href="quadratic-reciprocity/">Explore the proof <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="family-card bertrand-card">
+        <p class="card-kicker">Prime existence</p>
+        <h2>Bertrand’s Postulate</h2>
+        <p>Follow the complete constructive route from arithmetic foundations to a prime strictly between <i>n</i> and <i>2n</i>.</p>
+        <dl class="stats"><div><dt>544</dt><dd>theorems</dd></div><div><dt>1,917</dt><dd>edges</dd></div><div><dt>45</dt><dd>layers</dd></div></dl>
+        <a class="primary-action" href="bertrand-postulate/">Explore the proof <span aria-hidden="true">→</span></a>
+      </article>
+    </section>
+    <section class="method-note">
+      <p class="eyebrow">What you can inspect</p>
+      <h2>Statements, definitions, dependencies, scripts, and provenance.</h2>
+      <p>Each explorer is a static, reproducible reading surface generated from the checked theorem catalog. Search by theorem, open a dependency neighborhood, or inspect the exact proof line by line.</p>
+    </section>
+  </main>
+  <footer class="shell"><p>Proof artifacts from the Peano arithmetic library.</p></footer>
+</body>
+</html>
