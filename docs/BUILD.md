@@ -16,6 +16,14 @@ jupyter-book build book/          # → book/_build/html/
 open book/_build/html/index.html  # index.html redirects to intro.html
 ```
 
+To regenerate the exact and conservative definition-aware proof explorers
+without rebuilding the whole book:
+
+```bash
+make book-proof-explorer             # Quadratic Reciprocity and Bertrand editions
+make book-bertrand-defined-explorer  # exact and definition-aware Bertrand only
+```
+
 ## The Lean artifact (verified locally)
 
 ```bash

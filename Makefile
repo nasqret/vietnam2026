@@ -24,7 +24,7 @@ override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override PEANOAPPID := a-526f19ff3b30
 
-.PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs deploy-site deploy-lab deploy-lab-next deploy-peano \
 	deploy-peano-next deploy-proofs \
 	deploy clean
@@ -35,6 +35,7 @@ help:
 	@echo "  make book-atlas   regenerate the checked arithmetic theorem atlas"
 	@echo "  make book-proof-explorer  regenerate the static PA proof explorer"
 	@echo "  make book-bertrand-proof-explorer  regenerate the full Bertrand map"
+	@echo "  make book-bertrand-defined-explorer  regenerate the readable Bertrand map"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
 	@echo "  make peano-library-alpha  regenerate the sealed Alpha v1 parent artifacts"
@@ -112,7 +113,10 @@ book-atlas:
 book-bertrand-proof-explorer:
 	python3 scripts/build_bertrand_proof_explorer.py
 
-book-proof-explorer: book-bertrand-proof-explorer
+book-bertrand-defined-explorer: book-bertrand-proof-explorer
+	python3 scripts/build_bertrand_defined_explorer.py
+
+book-proof-explorer: book-bertrand-defined-explorer
 	python3 scripts/build_pa_proof_explorer.py
 	python3 scripts/build_pa_defined_explorer.py
 
@@ -404,7 +408,10 @@ peano-library-alpha-v12-check:
 	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_bp01_candidate.py
 	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q tests/test_bertrand_bp02_candidate.py
 	python3 scripts/build_bertrand_proof_explorer.py --check
-	python3 -m pytest -q peano-lab/py/tests/test_bertrand_proof_explorer.py
+	PYTHONMALLOC=malloc python3 scripts/build_bertrand_defined_explorer.py --check
+	python3 -m pytest -q \
+		peano-lab/py/tests/test_bertrand_proof_explorer.py \
+		peano-lab/py/tests/test_bertrand_defined_explorer.py
 
 peano-library-channels: peano-library-alpha
 

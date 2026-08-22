@@ -57,6 +57,7 @@ parts:
       - file: arithmetic-library/quadratic-reciprocity
       - file: arithmetic-library/bertrand-campaign
       - file: arithmetic-library/bertrand-proof-explorer
+      - file: arithmetic-library/bertrand-defined-proof-explorer
       - file: arithmetic-library/source-audit
       - file: arithmetic-library/using-the-library
   - caption: "Appendix"

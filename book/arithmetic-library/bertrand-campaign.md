@@ -564,6 +564,7 @@ All checkpoints are pushed to `nasqret/vietnam2026` on
 ```bash
 make peano-library-alpha-v12-check
 make book-bertrand-proof-explorer
+make book-bertrand-defined-explorer
 ```
 
 The first command validates the Alpha-v12 evidence boundary, including the
@@ -571,5 +572,7 @@ complete 180-row dependency-closed Bertrand suffix. Its expensive body replay
 and focused proof suites run in bounded, serial stages so a single Python
 process cannot retain the campaign's proof DAGs indefinitely. The second
 command deterministically regenerates the 544-node interactive proof map from
-the byte-frozen v12 catalog. Successful replay does not upgrade Alpha evidence
-or promote anything to Stable.
+the byte-frozen v12 catalog. The third adds the conservative definition-aware
+reading edition, with linked campaign notation and the same exact proof
+dependencies. Successful replay does not upgrade Alpha evidence or promote
+anything to Stable.

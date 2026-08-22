@@ -102,6 +102,7 @@ def test_proof_explorer_deploy_uses_an_isolated_staging_tree() -> None:
     output = _dry_run("deploy-proofs")
 
     assert 'rm -rf "_deploy/proofs"' in output
+    assert "python3 scripts/build_bertrand_defined_explorer.py" in output
     assert "book/_static/pa-proof-explorer/" in output
     assert "book/_static/bertrand-proof-explorer/" in output
     assert '"_deploy/proofs/quadratic-reciprocity/explorer/"' in output

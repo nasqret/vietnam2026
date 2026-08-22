@@ -43,6 +43,31 @@ def test_bertrand_proof_explorer_is_byte_current() -> None:
     assert "verified Bertrand proof explorer" in result.stdout
 
 
+def test_exact_explorer_preserves_its_independent_defined_edition(
+    monkeypatch, tmp_path: Path
+) -> None:
+    sys.path.insert(0, str(REPO / "scripts"))
+    import build_bertrand_proof_explorer as generator
+
+    output = tmp_path / "explorer"
+    defined = output / "defined" / "tag" / "BT0127.html"
+    defined.parent.mkdir(parents=True)
+    defined.write_text("independent defined edition", encoding="utf-8")
+    stale = output / "stale.html"
+    stale.write_text("stale exact artifact", encoding="utf-8")
+    monkeypatch.setattr(generator, "OUTPUT", output)
+
+    files = {"index.html": b"exact artifact"}
+    generator._write(files)
+
+    assert defined.read_text(encoding="utf-8") == "independent defined edition"
+    assert not stale.exists()
+    assert generator._check(files)
+
+    stale.write_text("unexpected exact artifact", encoding="utf-8")
+    assert not generator._check(files)
+
+
 def test_manifest_freezes_the_complete_strict_closure() -> None:
     manifest = _load(EXPLORER / "manifest.json")
     assert _sha256(CATALOG) == EXPECTED_CATALOG_SHA256

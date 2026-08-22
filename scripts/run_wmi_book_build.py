@@ -267,6 +267,18 @@ def main() -> int:
                 True,
             ),
             (
+                "06c-bertrand-proof-explorer-check",
+                [str(venv_python), "scripts/build_bertrand_proof_explorer.py", "--check"],
+                300,
+                True,
+            ),
+            (
+                "06d-bertrand-defined-proof-explorer-check",
+                [str(venv_python), "scripts/build_bertrand_defined_explorer.py", "--check"],
+                600,
+                True,
+            ),
+            (
                 "07-jupyter-book-build",
                 [str(jupyter_book), "build", "book/", "--warningiserror", "--keep-going"],
                 1800,
@@ -290,7 +302,7 @@ def main() -> int:
             encoding="utf-8", errors="replace"
         ).strip()
 
-        # The two deterministic source generators were checked before Sphinx
+        # The deterministic source generators were checked before Sphinx
         # was allowed to run.  This final non-executing gate audits the copied
         # explorer microsite and every other built relative target.
         row = _run_step(

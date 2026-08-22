@@ -1,6 +1,6 @@
 # Deploying
 
-Four static targets on the faculty server (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
+Five static targets on the faculty server (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
 **no persistent daemons** — which is why the lab is fully client-side):
 
 | URL | Server path | Contents |
@@ -9,6 +9,7 @@ Four static targets on the faculty server (`bnaskrecki@lts-faculty.wmi.amu.edu.p
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | Quadratic Reciprocity and Bertrand proof families |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
 
@@ -20,6 +21,17 @@ make deploy        # = stage + deploy-site + deploy-lab
 
 Peano Lab is deliberately promoted through its own staging and production
 targets; `make deploy` does not publish either Peano channel.
+
+## Standalone proof explorers
+
+```bash
+make deploy-proofs
+```
+
+This rebuilds both the exact and definition-aware editions of each proof
+family, stages them under `_deploy/proofs`, and publishes only the dedicated
+`~/public_html/proofs/` directory. Each family landing page recommends its
+linked-definition view while retaining the unchanged fully expanded PA proof.
 
 ## Step by step
 

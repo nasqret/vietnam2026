@@ -4,7 +4,9 @@ This explorer is the line-by-line reading room for the complete transitive
 dependency closure of `bertrand_strict`. It uses the same searchable theorem
 pages and layered graph controls as the quadratic-reciprocity explorer, but
 its input is the exact Alpha-v12 catalog rather than an independently curated
-campaign stack.
+campaign stack. A parallel definition-aware edition links 28 conservative
+definitions for primes, binomial coefficients, primorials, factorials,
+powers, valuations, and the other mathematical relations used by the proof.
 
 ```{admonition} Complete proof, conservative release status
 :class: important
@@ -24,8 +26,16 @@ renumber an existing page. The final endpoint is
 
 <p>
   <a class="btn btn-primary"
+     href="../_static/bertrand-proof-explorer/defined/graph.html?target=BT0127&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus">
+    Open the definition-aware proof map
+  </a>
+  <a class="btn btn-outline-primary"
+     href="../_static/bertrand-proof-explorer/defined/index.html">
+    Browse theorems and linked definitions
+  </a>
+  <a class="btn btn-outline-primary"
      href="../_static/bertrand-proof-explorer/graph.html?view=prerequisites">
-    Open the complete interactive proof map
+    Open the exact expanded proof map
   </a>
   <a class="btn btn-outline-primary"
      href="../_static/bertrand-proof-explorer/index.html">
@@ -50,6 +60,25 @@ renumber an existing page. The final endpoint is
     </a>
   </p>
 </iframe>
+
+## Reading with mathematical definitions
+
+The definition-aware edition presents each native theorem in conservative
+mathematical notation, while preserving its exact fully expanded PA statement
+and tactic script. Its mixed graph distinguishes genuine proof-dependency
+arrows from notation links. Definition nodes are reading aids: they introduce
+no axiom, kernel rule, theorem dependency, or additional proof authority.
+
+Open the
+<a href="../_static/bertrand-proof-explorer/defined/index.html">
+definition-aware theorem and definition index</a> or the
+<a href="../_static/bertrand-proof-explorer/defined/tag/BT0127.html">
+readable strict Bertrand endpoint</a>. Every linked definition exposes its
+exact expanded formula, while the original expanded edition remains available.
+
+For the campaign-specific vocabulary and mixed-graph trust boundary, continue
+to the {doc}`definition-aware Bertrand proof explorer
+<bertrand-defined-proof-explorer>`.
 
 ## Reading the map
 

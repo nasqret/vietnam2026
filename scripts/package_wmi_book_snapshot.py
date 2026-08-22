@@ -37,6 +37,8 @@ TREE_INPUTS = (
 FILE_INPUTS = (
     Path("requirements.txt"),
     Path("scripts/build_arithmetic_book_atlas.py"),
+    Path("scripts/build_bertrand_defined_explorer.py"),
+    Path("scripts/build_bertrand_proof_explorer.py"),
     Path("scripts/build_pa_defined_explorer.py"),
     Path("scripts/build_pa_proof_explorer.py"),
     Path("scripts/check_wmi_book_build.py"),

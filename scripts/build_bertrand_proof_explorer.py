@@ -23,6 +23,10 @@ REPO = Path(__file__).resolve().parents[1]
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v12.json"
 OUTPUT = REPO / "book" / "_static" / "bertrand-proof-explorer"
 ASSET_SOURCE = REPO / "book" / "_static" / "pa-proof-explorer" / "assets"
+# The definition-aware edition is an independently generated, conservative
+# presentation layer.  Keep it outside the frozen exact-edition manifest while
+# allowing both surfaces to share one stable explorer URL.
+RESERVED_SUBTREES = {"defined"}
 GITHUB_ROOT = (
     "https://github.com/nasqret/vietnam2026/blob/"
     "agent/new-theorems-tranche-01"
@@ -776,7 +780,12 @@ def _write(files: dict[str, bytes]) -> None:
     expected = set(files)
     if OUTPUT.exists():
         for path in sorted(OUTPUT.rglob("*"), reverse=True):
-            if path.is_file() and str(path.relative_to(OUTPUT)) not in expected:
+            relative = path.relative_to(OUTPUT)
+            if (
+                path.is_file()
+                and relative.parts[0] not in RESERVED_SUBTREES
+                and str(relative) not in expected
+            ):
                 path.unlink()
         for path in sorted(OUTPUT.rglob("*"), reverse=True):
             if path.is_dir() and not any(path.iterdir()):
@@ -794,7 +803,9 @@ def _check(files: dict[str, bytes]) -> bool:
         drift.extend(
             str(path.relative_to(OUTPUT))
             for path in OUTPUT.rglob("*")
-            if path.is_file() and str(path.relative_to(OUTPUT)) not in expected
+            if path.is_file()
+            and path.relative_to(OUTPUT).parts[0] not in RESERVED_SUBTREES
+            and str(path.relative_to(OUTPUT)) not in expected
         )
     if drift:
         print(
