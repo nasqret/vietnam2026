@@ -377,3 +377,189 @@ suite in separate bounded Python processes. The
 `peano-library-channels-v13` and `peano-library-channels-v13-check` targets
 are equivalent compatibility aliases. Historical v1–v12 targets and sealed
 Stable artifacts remain unchanged.
+
+### Additive Alpha v14 — complete Kummer theorem and carry-free criterion
+
+The sealed
+[`Alpha v14 Kummer admission RFC`](../research/arithmetic-library/alpha-v14-kummer-admission-rfc-v1.md)
+preserves every Alpha-v13 row and appends the exact **13-body** union of the
+Kummer binomial-carry theorem and its carry-free divisibility corollary.
+The main theorem requires eleven new rows; its corollary requires two more.
+
+- Alpha v14 contains **1,556 entries**, with 5,251 dependency edges and
+  45 layers. Stable remains at 432 rows and checked use stays at 570.
+- Every appended body has an authentic independently kernel-checked proof
+  receipt and exactly `body_checked` evidence; neither flagship obtains
+  checked-use authority or Stable membership.
+- The ordered-enrollment SHA-256 is
+  `d7758c5cfcce4fbe2b48b6b213b134acf9126b84a58a0016c523055be952024e`;
+  the complete edition identity is
+  `06274ac80612403f6851266fa00f8b543d904072434d5717ca95ae7d40588c16`.
+
+Run `make peano-library-alpha-v14` and
+`make peano-library-alpha-v14-check` to generate and independently validate
+the additive release in bounded isolated processes.
+
+### Additive Alpha v15 — supplementary laws and complete two-square iff
+
+The sealed
+[`Alpha v15 frontier admission RFC`](../research/arithmetic-library/alpha-v15-frontier-admission-rfc-v1.md)
+preserves every Alpha-v14 row and admits exactly **117 additional checked
+candidate bodies**: 28 for the two supplementary quadratic laws and 89
+additional bodies for the complete all-natural two-square classification.
+The missing prerequisites were authentic existing proofs of the bounded
+Euler criterion and Gauss lemma, not axioms or fabricated placeholders.
+
+- Both `quadratic_supplement_minus_one_complete` and
+  `quadratic_supplement_two_complete` are enrolled with their exact
+  prerequisites.
+- `two_square_iff_zero_or_even_three_mod_four_prime_valuations` is enrolled
+  with its complete zero-inclusive classification closure; its statement
+  SHA-256 remains
+  `4c39da833a313bab5ae810215dae5bbc9cc78ea951fe97fb177c36a5347cecd5`.
+- Alpha v15 contains **1,673 entries**, with 5,615 edges and 53 layers:
+  432 `stable_closed`, 138 `alpha_closed`, 1,102 `body_checked`, and one
+  `pending_layered_closure`. Stable remains at 432 rows and exactly 570
+  Alpha specifications permit checked theorem use.
+- The ordered-enrollment SHA-256 is
+  `44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175`;
+  the complete edition identity is
+  `2f1a097ac0b6821c74cd4da088c396d3b9960ffd43e169f22b4778d5871adc66`.
+
+Run `make peano-library-alpha-v15` and
+`make peano-library-alpha-v15-check` to generate and independently validate
+the additive release. Its fourteen proof-factory groups replay serially in
+fresh subprocesses rather than accumulating global proof caches.
+
+### Genuine bounded closure progress and the unchanged authority boundary
+
+The constructive Lucas flagship has a 213-row exact dependency slice,
+including 74 rows without release-authorized checked use. The four-square
+flagship has a 390-row slice with 219 such rows; their union contains 481
+rows, including 293 body-only rows. A generic bounded promotion planner
+constructs and independently checks actual empty-context certificates
+without changing any sealed release, trusted kernel, or authority surface.
+
+Naïvely cutting independently closed prerequisites into
+`choose_factorial_bridge` duplicates their shared `choose_exists` proof and
+already requires 194,629 structural nodes, exceeding the frozen 125,000-node
+limit. The reviewed layered-Cut constructor derives the dependent weighted
+lemma contextually and cuts the common prerequisite only once, yielding a
+genuine empty-context certificate with **109,841 structural nodes, 9,535
+proof objects, and depth 104**. This respects the unchanged 125,000-node and
+25,000-object caps. Such a certificate is real proof evidence, but does not
+itself modify release evidence or grant checked theorem use.
+
+The final older Lucas prerequisite, `choose_prime_divides_between`, initially
+defeats the maximum permitted pending-only sixteen-body shared package: its
+29 already-closed Stable leaves total **76,923** structural nodes and its
+three body-only leaves total **89,900**, producing a **166,823-node lower
+bound** before any theorem body is counted. In particular, `choose_exists`
+and the already-closed `factorial_exists` alone require 149,333 nodes.
+
+The separately reviewed
+[`mixed Stable/Lucas promotion RFC`](../research/arithmetic-library/lucas-mixed-promotion-rfc-v1.md)
+resolves the obstruction without changing any limit. Its contextual proof
+contains exactly **eleven pending bodies plus five already-closed Stable
+bodies**, counting all sixteen against the unchanged maximum. The shared
+`beta_prefix_extend` certificate appears only once, reducing actual Stable
+leaves to **42,391 structural nodes and 10,413 proof objects**. Its final
+ordinary empty-context proof is genuinely accepted by the unchanged kernel
+under the original 125,000-node/25,000-object envelope. Thus **all 30 older
+Lucas prerequisites** now have actual independently checked closure
+candidates. A follow-up dependency-ordered microbatch genuinely constructs
+and independently kernel-checks **16 of the 44 Lucas campaign rows** under
+the same unchanged aggregate caps. Three additional dependency-ready
+microbatches then independently close fourteen more:
+
+- **7 proofs / 78,442 nodes / 12,147 objects**.
+- **6 proofs / 75,700 nodes / 10,698 objects**.
+- **1 proof / 62,671 nodes / 5,546 objects**.
+
+Thus **30 of 44 Lucas campaign rows** now have actual closed certificates.
+The remaining fourteen campaign rows, full flagship closure, and checked-use
+promotion remain separate open gates. Their two exact resource-sensitive
+entrances are `lucas_choose_prefix_extend`, whose current direct-premise
+lower bound is **119,156 nodes**, and
+`lucas_prime_row_interior_divisible`, which requires safely reusing the
+newly closed mixed `choose_prime_divides_between` certificate without
+duplicating its shared sixteen-row proof graph.
+
+The dedicated
+[`bounded four-square promotion RFC`](../research/arithmetic-library/four-square-frontier-promotion-rfc-v1.md)
+separately freezes the Lagrange flagship's complete **390-row** slice:
+166 Stable-closed rows, five Alpha-closed rows, **23** older body-only
+prerequisites, and **196** body-only four-square campaign rows. Its 219
+unchecked obligations occupy fifteen exact dependency-ready layers; the
+23 parent obligations form layers of size 17, 5, and 1. Eighteen non-beta
+parents form one dependency-closed subgraph; the remaining five are exact
+beta-prefix construction obligations. One actual sixteen-row parent
+microbatch has **18,008 structural proof nodes and 8,869 proof objects**;
+together with two separately checked parent certificates, this genuinely
+closes eighteen older Lagrange prerequisites. The five remaining beta-prefix
+obligations now have independently kernel-checked singleton certificates:
+
+- `beta_pointwise_mul_prefix_extend`: **30,906 nodes / 4,643 objects**.
+- `beta_pointwise_mul_prefix_exists`: **31,467 nodes / 4,705 objects**.
+- `beta_prefix_append_two_exists`: **29,185 nodes / 4,571 objects**.
+- `beta_division_prefix_extend`: **29,317 nodes / 4,654 objects**.
+- `beta_division_prefix_exists`: **30,106 nodes / 4,725 objects**.
+
+Thus **all 23 older Lagrange prerequisites** now have actual independent
+empty-context closure candidates. The first **52 of 196 four-square campaign
+rows** also have genuine independently checked empty-context certificates,
+constructed in four separate dependency-ordered batches:
+
+- **16 proofs / 1,232 nodes / 1,125 objects**.
+- **16 proofs / 4,552 nodes / 3,664 objects**.
+- **16 proofs / 10,261 nodes / 5,964 objects**.
+- **4 proofs / 77,161 nodes / 12,811 objects**.
+
+Every individual batch respects all original 16-row/125,000-node/25,000-object
+limits. A subsequent second-layer batch first reconstructs ten genuinely
+closed prerequisites in **2,973 nodes / 2,114 objects**, then independently
+kernel-checks sixteen additional campaign bodies in **10,229 nodes / 6,322
+objects**. Consequently, **68 of 196 four-square campaign rows** now have
+genuine empty-context closure certificates. The remaining 128 campaign
+certificates, complete flagship closure, and checked-use promotion remain
+open. Planning and actual bounded candidate certificates never alter the
+sealed release or checked-use authority.
+
+Consequently, the combined **53 previously unchecked older prerequisites**
+for the two flagship families have all been genuinely closed in bounded
+independent proof experiments. The remaining frontier is the exact **240-row
+Alpha-v13 campaign append** itself: 44 Lucas bodies and 196 four-square bodies;
+the first **30 Lucas and 68 four-square** campaign rows also already have
+genuine independent closure certificates. The precise combined result is
+**151 genuinely closed body-only obligations out of 293**, with **142 still
+open** (14 Lucas and 128 Lagrange).
+
+### Sixth campaign — Pythagorean triples and Fermat exponent four
+
+The
+[`Pythagorean/Fermat-four foundations RFC`](../research/arithmetic-library/pythagorean-fermat-four-rfc-v1.md)
+starts a sixth constructive proof family. Its initial **17 independently
+kernel-checked candidate bodies** establish Euclid's subtraction-free
+forward parametrization, ordered square-difference witnesses, parity,
+primitive-leg symmetry, and bounded induction bridges to Fermat's
+fourth-power statement.
+
+The additional
+[`primitive Pythagorean constructor RFC`](../research/arithmetic-library/pythagorean-primitive-rfc-v1.md)
+adds **27 independently kernel-checked candidate bodies**, bringing this
+campaign to **44**. These prove the complete forward primitive Euclidean
+constructor from ordered coprime opposite-parity parameters. They also prove
+that every primitive Pythagorean triple has opposite-parity legs, an odd
+hypotenuse, pairwise coprime coordinates, and a constructive normal form;
+no Pythagorean triple can have two odd legs.
+
+The reverse classification of primitive triples and the strictly decreasing
+Fermat counterexample constructor are explicitly still open. Consequently,
+the Fermat-four prohibition is conditional on the exact displayed descent
+premise and must never be described as an unconditional theorem.
+
+All six definition-aware explorers display their original Alpha admission
+version separately from active Alpha-v15 membership and retain their
+body-only/checked-use boundary. `make stage-proofs` stages the sixth
+`pythagorean-fermat-four/` family beside the existing maps without performing
+any remote deployment.

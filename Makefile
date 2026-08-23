@@ -24,7 +24,7 @@ override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override PEANOAPPID := a-526f19ff3b30
 
-.PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs deploy-site deploy-lab deploy-lab-next deploy-peano \
 	deploy-peano-next deploy-proofs \
 	deploy clean
@@ -36,7 +36,7 @@ help:
 	@echo "  make book-proof-explorer  regenerate the static PA proof explorer"
 	@echo "  make book-bertrand-proof-explorer  regenerate the full Bertrand map"
 	@echo "  make book-bertrand-defined-explorer  regenerate the readable Bertrand map"
-	@echo "  make book-constructive-frontier-explorer  regenerate five evidence-honest frontier proof maps"
+	@echo "  make book-constructive-frontier-explorer  regenerate six evidence-honest frontier proof maps"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
 	@echo "  make peano-library-alpha  regenerate the sealed Alpha v1 parent artifacts"
@@ -89,8 +89,16 @@ help:
 	@echo "  make peano-library-alpha-v13-check  independently verify Alpha v13 and its body-only admission boundary"
 	@echo "  make peano-library-channels-v13  compatibility alias for the Lagrange/Lucas Alpha v13 build"
 	@echo "  make peano-library-channels-v13-check  compatibility alias for the Lagrange/Lucas Alpha v13 check"
+	@echo "  make peano-library-alpha-v14  regenerate additive 13-row Kummer Alpha v14 artifacts"
+	@echo "  make peano-library-alpha-v14-check  independently verify Alpha v14 and its body-only Kummer admission"
+	@echo "  make peano-library-channels-v14  compatibility alias for the Kummer Alpha v14 build"
+	@echo "  make peano-library-channels-v14-check  compatibility alias for the Kummer Alpha v14 check"
+	@echo "  make peano-library-alpha-v15  regenerate additive 117-row supplementary/two-square Alpha v15 artifacts"
+	@echo "  make peano-library-alpha-v15-check  independently verify Alpha v15 and its body-only admission"
+	@echo "  make peano-library-channels-v15  compatibility alias for the supplementary/two-square Alpha v15 build"
+	@echo "  make peano-library-channels-v15-check  compatibility alias for the supplementary/two-square Alpha v15 check"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
-	@echo "  make ha-constructive-frontier-check  replay ordered stages 1-5 in bounded isolated proof processes"
+	@echo "  make ha-constructive-frontier-check  replay ordered stages 1-6 in bounded isolated proof processes"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
 	@echo "  make ha-k3b-list-lookup-check  run the Alpha K3B ListAt surface checks"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
@@ -435,6 +443,30 @@ peano-library-alpha-v13-check:
 	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
 		tests/test_library_editions_v13_admission.py
 
+peano-library-alpha-v14:
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v14.py
+
+peano-library-alpha-v14-check:
+	@# Preserve bounded proof caches by isolating each independent release gate.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v14.py --check
+	PYTHONMALLOC=malloc python3 scripts/verify_peano_library_channels_v14.py
+	PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		scripts/test_verify_peano_library_channels_v14.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_library_editions_v14_admission.py
+
+peano-library-alpha-v15:
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v15.py
+
+peano-library-alpha-v15-check:
+	@# All 14 candidate factories replay serially inside fresh proof workers.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v15.py --check
+	PYTHONMALLOC=malloc python3 scripts/verify_peano_library_channels_v15.py
+	PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		scripts/test_verify_peano_library_channels_v15.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_library_editions_v15_admission.py
+
 peano-library-channels: peano-library-alpha
 
 peano-library-channels-check: peano-library-alpha-check
@@ -486,6 +518,14 @@ peano-library-channels-v12-check: peano-library-alpha-v12-check
 peano-library-channels-v13: peano-library-alpha-v13
 
 peano-library-channels-v13-check: peano-library-alpha-v13-check
+
+peano-library-channels-v14: peano-library-alpha-v14
+
+peano-library-channels-v14-check: peano-library-alpha-v14-check
+
+peano-library-channels-v15: peano-library-alpha-v15
+
+peano-library-channels-v15-check: peano-library-alpha-v15-check
 
 ha-number-theory-check:
 	python3 scripts/verify_ha_number_theory_campaign.py
@@ -539,6 +579,8 @@ ha-number-theory-check:
 ha-constructive-frontier-check:
 	@echo "Stage 1: quadratic reciprocity, supplementary laws, and Bertrand promotion"
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_quadratic_reciprocity_layered_experiment.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_euler_criterion_bounded_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_gauss_lemma_bounded_candidate.py
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_quadratic_supplement_minus_one_candidate.py
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_quadratic_supplement_two_candidate.py
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_bertrand_promotion.py
@@ -574,13 +616,19 @@ ha-constructive-frontier-check:
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_conjugate_identity_candidate.py
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_signed_cases_candidate.py
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_lagrange_final_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_frontier_promotion.py
 	@echo "Stage 5: complete constructive multidigit Lucas theorem"
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_digit_candidate.py
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_convolution_candidate.py
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_low_digit_candidate.py
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_block_digit_candidate.py
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_multidigit_candidate.py
-	@echo "Presentation: five evidence-honest constructive frontier proof maps"
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_frontier_promotion.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_mixed_promotion.py
+	@echo "Stage 6: constructive Pythagorean triples and conditional Fermat-four descent"
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_pythagorean_fermat_four_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_pythagorean_primitive_candidate.py
+	@echo "Presentation: six evidence-honest constructive frontier proof maps"
 	python3 scripts/build_constructive_frontier_explorer.py --check
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_constructive_frontier_explorer.py
 	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_deploy_contract.py
@@ -720,7 +768,8 @@ stage-proofs: book-proof-explorer book-constructive-frontier-explorer
 		"$(STAGEPROOFS)/assets/"
 	mkdir -p "$(STAGEPROOFS)/supplementary-laws" \
 		"$(STAGEPROOFS)/kummer" "$(STAGEPROOFS)/two-squares" \
-		"$(STAGEPROOFS)/four-squares" "$(STAGEPROOFS)/lucas"
+		"$(STAGEPROOFS)/four-squares" "$(STAGEPROOFS)/lucas" \
+		"$(STAGEPROOFS)/pythagorean-fermat-four"
 	rsync -a --delete book/_static/constructive-frontier-explorer/supplementary-laws/ \
 		"$(STAGEPROOFS)/supplementary-laws/"
 	rsync -a --delete book/_static/constructive-frontier-explorer/kummer/ \
@@ -731,6 +780,8 @@ stage-proofs: book-proof-explorer book-constructive-frontier-explorer
 		"$(STAGEPROOFS)/four-squares/"
 	rsync -a --delete book/_static/constructive-frontier-explorer/lucas/ \
 		"$(STAGEPROOFS)/lucas/"
+	rsync -a --delete book/_static/constructive-frontier-explorer/pythagorean-fermat-four/ \
+		"$(STAGEPROOFS)/pythagorean-fermat-four/"
 	@echo "Staged proof explorers in $(STAGEPROOFS)"
 
 deploy-proofs: stage-proofs

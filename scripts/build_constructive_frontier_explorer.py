@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build five offline, evidence-honest constructive frontier proof explorers.
+"""Build six offline, evidence-honest constructive frontier proof explorers.
 
 The generator reads exact dependency-curried candidate factories, the sealed
-Alpha-v13 release, and existing conservative definition templates.  It marks
+Alpha-v15 release, and existing conservative definition templates.  It marks
 actual Alpha enrollment separately from checked-use authority and never confers
 Alpha/Stable theorem authority; every generated page says so prominently.
 """
@@ -29,10 +29,21 @@ if str(PY_ROOT) not in sys.path:
 from peano_lab.kernel.formulas import parse_formula_in_context  # noqa: E402
 from peano_lab.library import bertrand_defined_edition as defined_adapter  # noqa: E402
 from peano_lab.library import editions_v13 as v13  # noqa: E402
+from peano_lab.library import editions_v14 as v14  # noqa: E402
+from peano_lab.library import editions_v15 as v15  # noqa: E402
 from peano_lab.library.bertrand_defined_edition import BERTRAND_DEFINITIONS  # noqa: E402
 from peano_lab.library.defined_edition import DefinedEditionError  # noqa: E402
 from peano_lab.library.defined_syntax import DEFINITIONS  # noqa: E402
 from peano_lab.library.ha_signed_balance_candidate import signed_balance  # noqa: E402
+from peano_lab.library.pythagorean_fermat_four_candidate import (  # noqa: E402
+    fermat_four_counterexample,
+    fermat_four_strict_descent,
+    primitive_pythagorean,
+    pythagorean_triple,
+)
+from peano_lab.library.pythagorean_primitive_candidate import (  # noqa: E402
+    opposite_parity,
+)
 from peano_lab.library.theorems import TheoremSpec, _specs_by_name  # noqa: E402
 
 
@@ -46,10 +57,10 @@ UNENROLLED_CANDIDATE_STATUS = (
     "not enrolled in Alpha or Stable"
 )
 ALPHA_BODY_STATUS = (
-    "Alpha v13 enrolled · body_checked; "
+    "Alpha v15 enrolled · body_checked; "
     "not admitted for checked use or Stable"
 )
-ALPHA_EDITION_VERSION = "v13"
+ALPHA_EDITION_VERSION = "v15"
 MANIFEST_SCHEMA = "peano-lab-constructive-frontier-explorer-v1"
 MAX_DEFINED_STATEMENT_CHARACTERS = 12_000
 MAX_DEFINED_ROOT_STATEMENT_CHARACTERS = 42_000
@@ -71,6 +82,7 @@ class Family:
     definition_names: tuple[str, ...]
     example: str
     optional_module_prefix: str | None = None
+    factory_name_filters: tuple[tuple[str, tuple[str, ...]], ...] = ()
 
 
 FAMILIES = (
@@ -80,14 +92,20 @@ FAMILIES = (
         kicker="Residues of −1 and 2",
         formula="(−1|p) = (−1)^((p−1)/2) · (2|p) = (−1)^((p²−1)/8)",
         description="Follow the complete constructive modulo-four and modulo-eight residue classifications.",
-        scope="Both supplementary-law endpoint bodies are complete; their release admission remains separate.",
+        scope="Both supplementary-law endpoint bodies and their authentic bounded Euler-criterion and Gauss-lemma prerequisites are enrolled in Alpha v15 as body_checked, without checked-use authority or Stable admission.",
         roots=("quadratic_supplement_minus_one_complete", "quadratic_supplement_two_complete"),
         factories=(
+            ("euler_criterion_bounded_candidate", "make_euler_criterion_bounded_candidate_theorems"),
             ("quadratic_supplement_minus_one_candidate", "make_quadratic_supplement_minus_one_candidate_theorems"),
+            ("gauss_lemma_bounded_candidate", "make_gauss_lemma_bounded_candidate_theorems"),
             ("quadratic_supplement_two_candidate", "make_quadratic_supplement_two_candidate_theorems"),
         ),
         definition_names=("Prime", "Odd", "Even", "Mod4One", "Mod4Three", "ModEq", "QRes", "BoundedQRes", "BetaAt", "BitCount", "Mod8One", "Mod8Three", "Mod8Five", "Mod8Seven"),
         example="supplementary",
+        factory_name_filters=(
+            ("euler_criterion_bounded_candidate", ("bounded_euler_criterion_complete",)),
+            ("gauss_lemma_bounded_candidate", ("bounded_gauss_lemma_complete",)),
+        ),
     ),
     Family(
         slug="kummer",
@@ -95,7 +113,7 @@ FAMILIES = (
         kicker="Binomial valuations",
         formula="vₚ (a+b choose a) = number of base-p carries in a+b",
         description="Inspect the constructive bridge from Legendre valuations to explicitly counted addition carries.",
-        scope="The exact binomial-carry endpoint and its carry-free corollary are checked candidate bodies.",
+        scope="The exact binomial-carry endpoint, its carry-free corollary, and their minimal prerequisite closure were first enrolled in Alpha v14 as body_checked and remain in Alpha v15 without checked-use authority or Stable admission.",
         roots=("kummer_binomial_carry_bit_count", "kummer_carry_free_iff_not_divides"),
         factories=(
             ("kummer_valuation_candidate", "make_kummer_valuation_candidate_theorems"),
@@ -111,7 +129,7 @@ FAMILIES = (
         kicker="Prime representations and constructive classification",
         formula="n = x²+y² ⇔ n = 0 or every p ≡ 3 (mod 4) has even vₚ(n)",
         description="Explore the complete constructive all-natural two-square classification: prime representations, multiplication, valuation necessity, strictly decreasing sufficiency, and the explicit zero boundary.",
-        scope="The complete all-natural iff, its nonzero specialization, prime classification, Brahmagupta–Fibonacci multiplication, and explicit constructive witnesses are kernel-checked dependency-curried candidate bodies; selected four-square prerequisites are enrolled in Alpha v13 as body_checked, while full-classification Alpha/Stable admission remains a separate release gate.",
+        scope="The complete all-natural iff, its nonzero specialization, prime classification, Brahmagupta–Fibonacci multiplication, and explicit constructive witnesses are kernel-checked dependency-curried candidate bodies; the complete classification and its exact prerequisite closure are enrolled in Alpha v15 as body_checked, without checked-use authority or Stable admission.",
         roots=(
             "prime_mod_four_one_is_sum_of_two_squares",
             "brahmagupta_fibonacci_two_square_identity",
@@ -281,6 +299,54 @@ FAMILIES = (
         example="lucas",
         optional_module_prefix="lucas_",
     ),
+    Family(
+        slug="pythagorean-fermat-four",
+        title="Pythagorean Triples and Fermat’s Fourth-Power Descent",
+        kicker="Complete forward primitive parametrization and an explicit open descent obligation",
+        formula="x²+y²=z² · gcd(x,y)=1 · conditional descent: x⁴+y⁴≠z²",
+        description="Construct exact primitive Euclidean Pythagorean triples, inspect the opposite-parity, odd-hypotenuse, pairwise-coprime normal form of every primitive triple, and isolate the one still-unproved strict-descent premise behind Fermat’s exponent-four theorem.",
+        scope="Euclid’s complete forward primitive Pythagorean constructor from ordered coprime opposite-parity parameters, witnessed square differences, the opposite-parity/odd-hypotenuse/pairwise-coprime normal form of every primitive triple, and conditional bounded-descent bridges are dependency-curried kernel-checked candidate bodies. The primitive inverse classification and the Fermat strict-descent premise remain unproved; no candidate in this family is enrolled in Alpha or Stable.",
+        roots=(
+            "pythagorean_euclidean_identity",
+            "pythagorean_euclidean_from_order",
+            "pythagorean_primitive_leg_swap",
+            "pythagorean_opposite_parity_hypotenuse_odd",
+            "pythagorean_primitive_euclidean_legs",
+            "pythagorean_primitive_euclidean_constructor",
+            "pythagorean_primitive_euclidean_from_order",
+            "pythagorean_primitive_euclidean_swapped_constructor",
+            "pythagorean_primitive_pairwise_coprime",
+            "pythagorean_primitive_legs_not_both_even",
+            "pythagorean_triple_legs_not_both_odd",
+            "pythagorean_primitive_legs_opposite_parity",
+            "pythagorean_primitive_hypotenuse_odd",
+            "pythagorean_primitive_normal_form",
+            "fermat_four_bounded_descent",
+            "fermat_four_no_square_from_descent",
+            "fermat_four_no_fourth_from_descent",
+        ),
+        factories=(
+            (
+                "pythagorean_fermat_four_candidate",
+                "make_pythagorean_fermat_four_candidate_theorems",
+            ),
+        ),
+        definition_names=(
+            "Pythagorean",
+            "Coprime",
+            "OppositeParity",
+            "PrimitivePythagorean",
+            "FermatFourCounterexample",
+            "FermatFourStrictDescent",
+            "Le",
+            "Lt",
+            "Dvd",
+            "Odd",
+            "Even",
+        ),
+        example="pythagorean",
+        optional_module_prefix="pythagorean_",
+    ),
 )
 
 
@@ -306,6 +372,11 @@ def _custom_definitions() -> dict[str, dict[str, Any]]:
         ("CF0008", "Mod8Five", ("p",), "exists q. p = 8 * q + 5", "p is five modulo eight with a witnessed quotient."),
         ("CF0009", "Mod8Seven", ("p",), "exists q. p = 8 * q + 7", "p is seven modulo eight with a witnessed quotient."),
         ("CF0010", "Digit", ("p", "n", "q", "d"), "(n = p * q + d) /\\ exists h. h + S d = p", "A base-p digit d and quotient q satisfy n = p·q+d with the witnessed strict bound d<p."),
+        ("CF0011", "Pythagorean", ("x", "y", "z"), pythagorean_triple("x", "y", "z"), "The three natural coordinates satisfy the exact Pythagorean equation x²+y²=z²."),
+        ("CF0013", "PrimitivePythagorean", ("x", "y", "z"), primitive_pythagorean("x", "y", "z", tag="frontier"), "The displayed Pythagorean triple has explicitly coprime natural legs."),
+        ("CF0014", "FermatFourCounterexample", ("x", "y", "z"), fermat_four_counterexample("x", "y", "z", tag="frontier"), "Nonzero natural coordinates witness the stronger counterexample x⁴+y⁴=z²."),
+        ("CF0015", "FermatFourStrictDescent", (), fermat_four_strict_descent(tag="frontier"), "Every positive fourth-power counterexample produces another with a strictly smaller natural hypotenuse; this premise remains unproved."),
+        ("CF0016", "OppositeParity", ("m", "n"), opposite_parity("m", "n", tag="frontier"), "The Euclidean parameters have explicitly witnessed opposite natural parity."),
     )
     result: dict[str, dict[str, Any]] = {}
     for identifier, name, parameters, template, summary in records:
@@ -334,7 +405,22 @@ def _definition_table() -> dict[str, dict[str, Any]]:
             "template_sha256": _digest(definition.template_source),
             "origin": "existing-conservative-definition",
         }
-    table.update(_custom_definitions())
+    for name, custom in _custom_definitions().items():
+        existing = table.get(name)
+        if existing is None:
+            table[name] = custom
+            continue
+        existing_formula = parse_formula_in_context(
+            existing["expanded_template"], existing["parameters"]
+        )
+        custom_formula = parse_formula_in_context(
+            custom["expanded_template"], custom["parameters"]
+        )
+        if existing_formula != custom_formula:
+            raise ValueError(
+                f"constructive definition {name!r} shadows an incompatible "
+                "existing conservative definition"
+            )
     return table
 
 
@@ -528,17 +614,45 @@ def _factory_sources(family: Family) -> tuple[tuple[str, str], ...]:
     return tuple(sources)
 
 
+def _alpha_frontier_campaigns() -> dict[str, Any]:
+    """Retain exact historical campaign provenance across additive releases."""
+
+    return {
+        **v13.alpha_v13_enrollment().campaign_by_name,
+        **v14.alpha_v14_enrollment().campaign_by_name,
+        **v15.alpha_v15_enrollment().campaign_by_name,
+    }
+
+
+def _alpha_admission_versions() -> dict[str, str]:
+    """Identify original enrollment separately from the active edition."""
+
+    return {
+        **{name: "v13" for name in v13.FRONTIER_V13_EXPECTED_NAMES},
+        **{name: "v14" for name in v14.FRONTIER_V14_EXPECTED_NAMES},
+        **{name: "v15" for name in v15.FRONTIER_V15_EXPECTED_NAMES},
+    }
+
+
 def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
     rows: list[dict[str, Any]] = []
     selected: dict[str, dict[str, Any]] = {}
-    alpha_entries = v13.ALPHA_EDITION.by_name
-    alpha_campaigns = v13.alpha_v13_enrollment().campaign_by_name
+    alpha_entries = v15.ALPHA_EDITION.by_name
+    alpha_campaigns = _alpha_frontier_campaigns()
+    alpha_admission_versions = _alpha_admission_versions()
+    factory_name_filters = {
+        module: frozenset(names)
+        for module, names in family.factory_name_filters
+    }
     for module_index, (module_name, factory_name) in enumerate(_factory_sources(family)):
         module = importlib.import_module(f"peano_lab.library.{module_name}")
         factory = getattr(module, factory_name, None)
         if not callable(factory):
             raise ValueError(f"missing constructive candidate factory {module_name}.{factory_name}")
         for module_order, item in enumerate(factory(TheoremSpec)):
+            accepted_names = factory_name_filters.get(module_name)
+            if accepted_names is not None and item.name not in accepted_names:
+                continue
             source = {
                 "source_module": f"peano_lab.library.{module_name}",
                 "factory": factory_name,
@@ -561,15 +675,16 @@ def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
                     or tuple(alpha_entry.spec.script) != tuple(item.script)
                 ):
                     raise ValueError(
-                        f"candidate {item.name!r} differs from its sealed Alpha-v13 entry"
+                        f"candidate {item.name!r} differs from its sealed Alpha-v15 entry"
                     )
                 if (
-                    alpha_entry.evidence is not v13.EvidenceStatus.BODY_CHECKED
+                    alpha_entry.evidence is not v15.EvidenceStatus.BODY_CHECKED
                     or alpha_entry.checked_use
                     or alpha_campaign is None
+                    or item.name not in alpha_admission_versions
                 ):
                     raise ValueError(
-                        f"candidate {item.name!r} has unexpected Alpha-v13 evidence"
+                        f"candidate {item.name!r} has unexpected Alpha-v15 evidence"
                     )
             row = {
                 "name": item.name,
@@ -598,8 +713,13 @@ def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
                 "alpha_edition_version": (
                     ALPHA_EDITION_VERSION if alpha_entry is not None else None
                 ),
+                "alpha_admission_version": (
+                    alpha_admission_versions[item.name]
+                    if alpha_entry is not None
+                    else None
+                ),
                 "alpha_edition_identity_sha256": (
-                    v13.ALPHA_V13_IDENTITY_SHA256 if alpha_entry is not None else None
+                    v15.ALPHA_V15_IDENTITY_SHA256 if alpha_entry is not None else None
                 ),
                 "alpha_campaign": (
                     alpha_campaign.value if alpha_campaign is not None else None
@@ -632,7 +752,8 @@ def build_corpora() -> dict[str, dict[str, Any]]:
         node["name"]: slug for slug, nodes in candidates.items() for node in nodes
     }
     public = _specs_by_name()
-    alpha_entries = v13.ALPHA_EDITION.by_name
+    alpha_entries = v15.ALPHA_EDITION.by_name
+    alpha_admission_versions = _alpha_admission_versions()
     corpora: dict[str, dict[str, Any]] = {}
     for family in FAMILIES:
         nodes = candidates[family.slug]
@@ -663,17 +784,17 @@ def build_corpora() -> dict[str, dict[str, Any]]:
                     admitted_stable = False
                 elif alpha_entry is not None:
                     evidence = alpha_entry.evidence.value
-                    if alpha_entry.evidence is v13.EvidenceStatus.STABLE_CLOSED:
+                    if alpha_entry.evidence is v15.EvidenceStatus.STABLE_CLOSED:
                         kind = "stable-admitted-theorem"
                         origin = "sealed-stable-edition"
                         admitted_alpha = True
                         admitted_stable = True
-                    elif alpha_entry.evidence is v13.EvidenceStatus.ALPHA_CLOSED:
+                    elif alpha_entry.evidence is v15.EvidenceStatus.ALPHA_CLOSED:
                         kind = "alpha-admitted-theorem"
                         origin = "sealed-alpha-edition"
                         admitted_alpha = True
                         admitted_stable = False
-                    elif alpha_entry.evidence is v13.EvidenceStatus.BODY_CHECKED:
+                    elif alpha_entry.evidence is v15.EvidenceStatus.BODY_CHECKED:
                         kind = "alpha-enrolled-candidate-not-admitted"
                         origin = "sealed-alpha-body-only"
                         admitted_alpha = False
@@ -707,6 +828,9 @@ def build_corpora() -> dict[str, dict[str, Any]]:
                         "alpha_edition_version": (
                             ALPHA_EDITION_VERSION if enrolled_alpha else None
                         ),
+                        "alpha_admission_version": alpha_admission_versions.get(
+                            dependency
+                        ),
                         "admitted_to_alpha": admitted_alpha,
                         "admitted_to_stable": admitted_stable,
                     }
@@ -722,6 +846,9 @@ def build_corpora() -> dict[str, dict[str, Any]]:
                         "alpha_checked_use": checked_use,
                         "alpha_edition_version": (
                             ALPHA_EDITION_VERSION if enrolled_alpha else None
+                        ),
+                        "alpha_admission_version": alpha_admission_versions.get(
+                            dependency
                         ),
                         "admitted_to_alpha": admitted_alpha,
                         "admitted_to_stable": admitted_stable,
@@ -748,7 +875,7 @@ def build_corpora() -> dict[str, dict[str, Any]]:
             "scope": family.scope,
             "candidate_status": CANDIDATE_STATUS,
             "alpha_edition_version": ALPHA_EDITION_VERSION,
-            "alpha_edition_identity_sha256": v13.ALPHA_V13_IDENTITY_SHA256,
+            "alpha_edition_identity_sha256": v15.ALPHA_V15_IDENTITY_SHA256,
             "alpha_enrolled_node_count": sum(
                 node["enrolled_in_alpha"] for node in nodes
             ),
@@ -792,8 +919,15 @@ def build_corpora() -> dict[str, dict[str, Any]]:
         for node in corpus["nodes"]
         if node["enrolled_in_alpha"]
     }
-    if displayed_alpha_names != set(v13.FRONTIER_V13_EXPECTED_NAMES):
-        raise ValueError("constructive explorers do not cover the exact Alpha-v13 append")
+    expected_alpha_names = (
+        set(v13.FRONTIER_V13_EXPECTED_NAMES)
+        | set(v14.FRONTIER_V14_EXPECTED_NAMES)
+        | set(v15.FRONTIER_V15_EXPECTED_NAMES)
+    )
+    if displayed_alpha_names != expected_alpha_names:
+        raise ValueError(
+            "constructive explorers do not cover the exact Alpha-v13/v14/v15 appends"
+        )
     return corpora
 
 
@@ -879,6 +1013,11 @@ def _example_markup(family: Family) -> str:
             '<label>n <input data-input="n" type="number" min="0" max="120" value="37"></label>'
             '<label>k <input data-input="k" type="number" min="0" max="120" value="7"></label>'
         )
+    elif family.example == "pythagorean":
+        controls = (
+            '<label>First parameter m <input data-input="m" type="number" min="2" max="120" value="2"></label>'
+            '<label>Second parameter n <input data-input="n" type="number" min="1" max="119" value="1"></label>'
+        )
     else:
         controls = '<label>Example integer <input data-input="n" type="number" min="0" max="180" value="37"></label>'
     return (
@@ -922,7 +1061,7 @@ def _family_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     <p class="frontier-formula">{html.escape(family.formula)}</p>
     <p class="frontier-description">{html.escape(family.description)}</p>
     <p class="frontier-status">{html.escape(CANDIDATE_STATUS)}</p>
-    <p class="frontier-reading-note">Alpha v13 body_checked enrollment: {corpus['alpha_enrolled_node_count']} of {corpus['node_count']} displayed bodies · checked-use authorizations: {corpus['alpha_checked_use_node_count']}</p>
+    <p class="frontier-reading-note">Alpha v15 body_checked enrollment: {corpus['alpha_enrolled_node_count']} of {corpus['node_count']} displayed bodies · checked-use authorizations: {corpus['alpha_checked_use_node_count']}</p>
     <p class="frontier-scope">{html.escape(family.scope)}</p>
     <dl class="frontier-stats"><div><dt>{corpus['node_count']}</dt><dd>candidate bodies</dd></div><div><dt>{corpus['edge_count']}</dt><dd>dependency edges</dd></div><div><dt>{corpus['definition_count']}</dt><dd>definitions</dd></div><div><dt>{corpus['formal_line_count']}</dt><dd>exact tactic lines</dd></div></dl>
     <p class="frontier-reading-note">{corpus['compacted_statement_count']} readable definition-compacted statements · {corpus['defined_tactic_proposition_count']} linked local proof propositions · exact AST-equivalence receipts</p>
@@ -932,7 +1071,7 @@ def _family_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     <section class="frontier-detail" id="frontier-detail" aria-live="polite"><h2>Choose a theorem</h2><p>Select a graph node to inspect its readable defined notation, exact first-order statement, linked definitions, declaration, dependencies, proof script, and source receipts.</p></section>
     {_example_markup(family)}
     <section class="frontier-definitions"><h2>Conservative definitions</h2><p>Each notation below expands immediately into the unchanged first-order language; it introduces no trusted kernel predicate.</p>{definition_cards}</section>
-    <section class="frontier-boundary"><h2>Evidence and release boundary</h2><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p><p>Alpha v13 enrolls exactly {corpus['alpha_enrolled_node_count']} of these {corpus['node_count']} displayed bodies as body_checked. Enrollment records an exact dependency-curried proof body; it does not grant checked theorem use, empty-context closure, or Stable membership. This browser surface does not replay a proof, authorize theorem use, alter an edition, or assert completion beyond the exact listed endpoints.</p></section>
+    <section class="frontier-boundary"><h2>Evidence and release boundary</h2><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p><p>Alpha v15 enrolls exactly {corpus['alpha_enrolled_node_count']} of these {corpus['node_count']} displayed bodies as body_checked. Each original Alpha-v13, v14, or v15 enrollment version remains recorded separately. Enrollment records an exact dependency-curried proof body; it does not grant checked theorem use, empty-context closure, or Stable membership. This browser surface does not replay a proof, authorize theorem use, alter an edition, or assert completion beyond the exact listed endpoints.</p></section>
   </main>
   <script id="frontier-corpus" type="application/json">{safe_json}</script>
   <script src="../assets/frontier.js" defer></script>
@@ -1016,7 +1155,7 @@ FRONTIER_JS = r"""(() => {
     const dependencies = node.dependencies.map(dependency => {
       if (nodes.has(dependency)) {
         const target = nodes.get(dependency);
-        const channel = target.enrolled_in_alpha ? "Alpha v13 · body checked" : "candidate · unenrolled";
+        const channel = target.enrolled_in_alpha ? `Alpha ${target.alpha_edition_version} · body checked; first enrolled ${target.alpha_admission_version}` : "candidate · unenrolled";
         return `<button class="frontier-chip internal" data-dependency="${escape(dependency)}" type="button">${escape(dependency)} · ${escape(channel)}</button>`;
       }
       const evidence = external.get(dependency);
@@ -1086,6 +1225,7 @@ FRONTIER_JS = r"""(() => {
   function lucasDigitProduct(n, k, p) { let upper = n, lower = k, product = 1n; const digits = []; do { const nd = upper % p, kd = lower % p; const coefficient = kd <= nd ? choose(nd, kd) : 0n; product *= coefficient; digits.push(`C(${nd},${kd})=${coefficient}`); upper = Math.floor(upper / p); lower = Math.floor(lower / p); } while (upper || lower); return {product, digits}; }
   function twoSquare(n) { for (let x = 0; x * x <= n; x++) { const y = Math.floor(Math.sqrt(n - x * x)); if (x * x + y * y === n) return [x, y]; } return null; }
   function fourSquare(n) { for (let a = 0; a * a <= n; a++) for (let b = 0; a * a + b * b <= n; b++) for (let c = 0; a * a + b * b + c * c <= n; c++) { const d = Math.floor(Math.sqrt(n - a * a - b * b - c * c)); if (a * a + b * b + c * c + d * d === n) return [a, b, c, d]; } return null; }
+  function greatestCommonDivisor(a, b) { let first = Math.abs(a), second = Math.abs(b); while (second) [first, second] = [second, first % second]; return first; }
   function factor(n) { if (n === 0) return {text:"0 (prime valuations undefined)",bad:[]}; let rest = n, text = [], bad = []; for (let p = 2; p * p <= rest; p++) if (rest % p === 0) { let e = 0; while (rest % p === 0) { rest /= p; e++; } text.push(`${p}^${e}`); if (p % 4 === 3 && e % 2) bad.push(`${p}^${e}`); } if (rest > 1) { text.push(`${rest}^1`); if (rest % 4 === 3) bad.push(`${rest}^1`); } return {text:text.join(" · ") || "1",bad}; }
   const example = document.querySelector("[data-example]");
   const form = example?.querySelector("[data-example-form]");
@@ -1098,6 +1238,7 @@ FRONTIER_JS = r"""(() => {
       else if (corpus.example === "kummer") { const p=value("p"),a=value("a"),b=value("b"); if (!prime(p)) throw Error("Choose a prime base."); const binomial=choose(a+b,a), count=carries(a,b,p), v=valuation(binomial,p); output.textContent=`C(${a+b},${a})=${binomial}; v_${p}=${v}; carry count=${count.count}\n${count.digits.join(" | ") || "no nonzero digits"}`; }
       else if (corpus.example === "lucas") { const p=value("p"),n=value("n"),k=value("k"); if (!prime(p)) throw Error("Choose a prime base."); if (![n,k].every(Number.isSafeInteger) || n < 0 || k < 0 || k > n) throw Error("Choose natural inputs with 0 ≤ k ≤ n."); const binomial=choose(n,k), expansion=lucasDigitProduct(n,k,p), modulus=BigInt(p); output.textContent=`C(${n},${k})=${binomial} ≡ ${binomial % modulus} (mod ${p})\n${expansion.digits.join(" · ")}\nDigit product=${expansion.product} ≡ ${expansion.product % modulus} (mod ${p})\nFinite numerical illustration; consult the proof map for the checked theorem boundary.`; }
       else if (corpus.example === "two-squares") { const n=value("n"); if (!Number.isInteger(n) || n < 0) throw Error("Choose a nonnegative integer."); const witness=twoSquare(n), factors=factor(n); output.textContent=`${n} = ${factors.text}\n${witness ? `${n} = ${witness[0]}² + ${witness[1]}²` : "No natural two-square witness."}${factors.bad.length ? `\nOdd 3-mod-4 factor: ${factors.bad.join(", ")}` : ""}`; }
+      else if (corpus.example === "pythagorean") { const m=value("m"),n=value("n"); if (![m,n].every(Number.isSafeInteger) || n < 1 || m <= n) throw Error("Choose natural parameters with 0 < n < m."); const difference=m*m-n*n,doubled=2*m*n,hypotenuse=m*m+n*n,primitive=greatestCommonDivisor(m,n)===1 && (m-n)%2===1; output.textContent=`m=${m}, n=${n}\n(${difference}, ${doubled}, ${hypotenuse})\n${difference}² + ${doubled}² = ${hypotenuse}²\n${primitive ? "Coprime, opposite-parity parameters." : "Parameters do not satisfy the classical primitive criterion."}\nForward constructor only; primitive inverse classification and Fermat strict descent remain open.`; }
       else { const n=value("n"), witness=fourSquare(n); output.textContent=witness ? `${n} = ${witness[0]}² + ${witness[1]}² + ${witness[2]}² + ${witness[3]}²\nConstructive four-square witness; the kernel-checked universal theorem is available in the proof map.` : "No witness found inside the finite example search."; }
     } catch (error) { output.textContent=error.message; }
   }
@@ -1114,7 +1255,7 @@ def _landing_html(corpora: Mapping[str, Mapping[str, Any]]) -> bytes:
         f'<p>{html.escape(family.description)}</p><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p>'
         f'<p>{corpora[family.slug]["node_count"]} candidate bodies · '
         f'{corpora[family.slug]["definition_count"]} conservative definitions · '
-        f'{corpora[family.slug]["alpha_enrolled_node_count"]} Alpha v13 body_checked · '
+        f'{corpora[family.slug]["alpha_enrolled_node_count"]} Alpha v15 body_checked · '
         f'{corpora[family.slug]["alpha_checked_use_node_count"]} checked-use authorizations</p></article>'
         for family in FAMILIES
     )
@@ -1123,7 +1264,7 @@ def _landing_html(corpora: Mapping[str, Mapping[str, Any]]) -> bytes:
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>Constructive Frontier Candidate Proof Explorers</title>'
         '<link rel="stylesheet" href="assets/frontier.css"></head><body>'
-        '<header class="frontier-hero"><p class="frontier-kicker">Five isolated constructive campaigns</p>'
+        '<header class="frontier-hero"><p class="frontier-kicker">Six isolated constructive campaigns</p>'
         '<h1>Candidate proof frontier</h1>'
         f'<p class="frontier-status">{html.escape(CANDIDATE_STATUS)}</p></header>'
         f'<main class="frontier-main">{cards}</main></body></html>\n'
@@ -1173,7 +1314,7 @@ def build_files() -> tuple[dict[str, bytes], dict[str, Any]]:
         "schema": MANIFEST_SCHEMA,
         "candidate_status": CANDIDATE_STATUS,
         "alpha_edition_version": ALPHA_EDITION_VERSION,
-        "alpha_edition_identity_sha256": v13.ALPHA_V13_IDENTITY_SHA256,
+        "alpha_edition_identity_sha256": v15.ALPHA_V15_IDENTITY_SHA256,
         "alpha_enrolled_node_count": sum(
             corpus["alpha_enrolled_node_count"] for corpus in corpora.values()
         ),

@@ -1,27 +1,30 @@
 {
   "admitted_to_alpha": false,
   "admitted_to_stable": false,
-  "aggregate_sha256": "0cf5a470fb623c5a2f79210a5ad1d09abb0b43d7562a806f0ae7345b692a283e",
+  "aggregate_sha256": "dde9a3d2a4aedc24d01bec5c5778dedec04a3bffafd2472b1c34deb193fbd456",
   "alpha_checked_use_node_count": 0,
-  "alpha_edition_identity_sha256": "a010e0ee5dece0d3325e8ec084c1f8769ef8e9ca47e2de891d344e54c1b439d1",
-  "alpha_edition_version": "v13",
-  "alpha_enrolled_node_count": 240,
+  "alpha_edition_identity_sha256": "2f1a097ac0b6821c74cd4da088c396d3b9960ffd43e169f22b4778d5871adc66",
+  "alpha_edition_version": "v15",
+  "alpha_enrolled_node_count": 370,
   "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
   "families": [
     {
       "alpha_checked_use_node_count": 0,
-      "alpha_edition_version": "v13",
-      "alpha_enrolled_node_count": 0,
-      "alpha_enrolled_root_names": [],
+      "alpha_edition_version": "v15",
+      "alpha_enrolled_node_count": 28,
+      "alpha_enrolled_root_names": [
+        "quadratic_supplement_minus_one_complete",
+        "quadratic_supplement_two_complete"
+      ],
       "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
-      "compacted_statement_count": 24,
-      "corpus_sha256": "0b31b08be8b502784e0ddb06d2a3716bb8cfdb6ed2cef43fb688c457e1782c96",
-      "defined_statement_count": 28,
+      "compacted_statement_count": 26,
+      "corpus_sha256": "52a0cc6dec62836af55a8d187afc0b1cfd6b0e451645caae22b91fff5e6f3d34",
+      "defined_statement_count": 30,
       "defined_tactic_proposition_count": 15,
-      "definition_count": 17,
-      "edge_count": 87,
-      "formal_line_count": 1142,
-      "node_count": 28,
+      "definition_count": 18,
+      "edge_count": 100,
+      "formal_line_count": 1382,
+      "node_count": 30,
       "root_names": [
         "quadratic_supplement_minus_one_complete",
         "quadratic_supplement_two_complete"
@@ -31,12 +34,15 @@
     },
     {
       "alpha_checked_use_node_count": 0,
-      "alpha_edition_version": "v13",
-      "alpha_enrolled_node_count": 0,
-      "alpha_enrolled_root_names": [],
+      "alpha_edition_version": "v15",
+      "alpha_enrolled_node_count": 13,
+      "alpha_enrolled_root_names": [
+        "kummer_binomial_carry_bit_count",
+        "kummer_carry_free_iff_not_divides"
+      ],
       "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
       "compacted_statement_count": 10,
-      "corpus_sha256": "441f20fbaf7c7f8d40b73256c114cc901774595ed5d6bcb9f2018a84e192d5c9",
+      "corpus_sha256": "eebea5bf063e8f19e3260082b124d7152c951914d51d26f75622439fba31f431",
       "defined_statement_count": 10,
       "defined_tactic_proposition_count": 10,
       "definition_count": 16,
@@ -52,14 +58,24 @@
     },
     {
       "alpha_checked_use_node_count": 0,
-      "alpha_edition_version": "v13",
-      "alpha_enrolled_node_count": 18,
+      "alpha_edition_version": "v15",
+      "alpha_enrolled_node_count": 107,
       "alpha_enrolled_root_names": [
-        "brahmagupta_fibonacci_two_square_identity"
+        "prime_mod_four_one_is_sum_of_two_squares",
+        "brahmagupta_fibonacci_two_square_identity",
+        "two_square_representation_multiplicatively_closed",
+        "three_mod_four_prime_divides_two_square_norm_divides_both",
+        "all_bad_prime_even_two_square_sufficiency_bounded",
+        "positive_number_with_even_bad_prime_valuations_is_two_square",
+        "nonzero_two_square_iff_even_three_mod_four_prime_valuations",
+        "two_square_iff_zero_or_even_three_mod_four_prime_valuations",
+        "prime_power_valuation_square_even",
+        "three_mod_four_prime_nonzero_norm_positive_valuation_extracts",
+        "three_mod_four_prime_represented_nonzero_valuation_even"
       ],
       "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
       "compacted_statement_count": 100,
-      "corpus_sha256": "e4c3db13077cdd169c3cbc866a45eb32fadca9372350bbe8b0e61f486c3f928e",
+      "corpus_sha256": "8d6b108641383da65316b62ad5f4ab1f8306344baabcd61482ca19eb3672a714",
       "defined_statement_count": 133,
       "defined_tactic_proposition_count": 78,
       "definition_count": 25,
@@ -91,7 +107,7 @@
     },
     {
       "alpha_checked_use_node_count": 0,
-      "alpha_edition_version": "v13",
+      "alpha_edition_version": "v15",
       "alpha_enrolled_node_count": 178,
       "alpha_enrolled_root_names": [
         "four_square_norm_distributes",
@@ -157,7 +173,7 @@
       ],
       "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
       "compacted_statement_count": 122,
-      "corpus_sha256": "43a9c271570cc7fab4ca64b0f7433bcc139d7cde9f3d8c0cde206a1ad42d6989",
+      "corpus_sha256": "7a51fa2f335d7db1d4e0c2f952b878f037ceb8af7aaff4c048bef6836a757f4e",
       "defined_statement_count": 217,
       "defined_tactic_proposition_count": 136,
       "definition_count": 19,
@@ -248,7 +264,7 @@
     },
     {
       "alpha_checked_use_node_count": 0,
-      "alpha_edition_version": "v13",
+      "alpha_edition_version": "v15",
       "alpha_enrolled_node_count": 44,
       "alpha_enrolled_root_names": [
         "lucas_zero_upper_quotient_high_column_vanishes",
@@ -275,7 +291,7 @@
       ],
       "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
       "compacted_statement_count": 57,
-      "corpus_sha256": "adf52cc111a023cd4283d2aa92c5ca04a32377b3d66a70e0a3fece4fe47f0d24",
+      "corpus_sha256": "f9748b9584be0043f01a20956fec5fb237b664a932e6da0684bb31a89fca5305",
       "defined_statement_count": 59,
       "defined_tactic_proposition_count": 33,
       "definition_count": 15,
@@ -317,10 +333,46 @@
       ],
       "slug": "lucas",
       "title": "Lucas’s Multidigit Binomial Theorem"
+    },
+    {
+      "alpha_checked_use_node_count": 0,
+      "alpha_edition_version": "v15",
+      "alpha_enrolled_node_count": 0,
+      "alpha_enrolled_root_names": [],
+      "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
+      "compacted_statement_count": 34,
+      "corpus_sha256": "50d229deae7e6ff21df41cee6885e57662fef7eb96e0cc42b2a2b275610ab9c6",
+      "defined_statement_count": 44,
+      "defined_tactic_proposition_count": 25,
+      "definition_count": 12,
+      "edge_count": 104,
+      "formal_line_count": 861,
+      "node_count": 44,
+      "root_names": [
+        "pythagorean_euclidean_identity",
+        "pythagorean_euclidean_from_order",
+        "pythagorean_primitive_leg_swap",
+        "pythagorean_opposite_parity_hypotenuse_odd",
+        "pythagorean_primitive_euclidean_legs",
+        "pythagorean_primitive_euclidean_constructor",
+        "pythagorean_primitive_euclidean_from_order",
+        "pythagorean_primitive_euclidean_swapped_constructor",
+        "pythagorean_primitive_pairwise_coprime",
+        "pythagorean_primitive_legs_not_both_even",
+        "pythagorean_triple_legs_not_both_odd",
+        "pythagorean_primitive_legs_opposite_parity",
+        "pythagorean_primitive_hypotenuse_odd",
+        "pythagorean_primitive_normal_form",
+        "fermat_four_bounded_descent",
+        "fermat_four_no_square_from_descent",
+        "fermat_four_no_fourth_from_descent"
+      ],
+      "slug": "pythagorean-fermat-four",
+      "title": "Pythagorean Triples and Fermat’s Fourth-Power Descent"
     }
   ],
-  "family_count": 5,
-  "file_count": 14,
+  "family_count": 6,
+  "file_count": 16,
   "files": [
     {
       "bytes": 7293,
@@ -328,64 +380,74 @@
       "sha256": "ed3d81fa9eba07435ccf8bfe9475c01f55a58d35d93dbd3dff78b9b95287b4ef"
     },
     {
-      "bytes": 13795,
+      "bytes": 14704,
       "path": "assets/frontier.js",
-      "sha256": "39d865bb34a061983e318fb9507dbfc89d74b041bb0972babbbe1886f8ef58eb"
+      "sha256": "e21b52a0df3a6fc5d1bf25b7f889018a332f72ecce797e11f99ecf2e13dfac47"
     },
     {
-      "bytes": 2125882,
+      "bytes": 2166378,
       "path": "four-squares/api/corpus.json",
-      "sha256": "43a9c271570cc7fab4ca64b0f7433bcc139d7cde9f3d8c0cde206a1ad42d6989"
+      "sha256": "7a51fa2f335d7db1d4e0c2f952b878f037ceb8af7aaff4c048bef6836a757f4e"
     },
     {
-      "bytes": 1819257,
+      "bytes": 1851654,
       "path": "four-squares/index.html",
-      "sha256": "801e3c17213420aa3aeb8556a81aa9c639d6f57119472d2e660a1e824d26c44a"
+      "sha256": "f27de9bda03d2b2a95f0b9f7011692bb38a31e6a4bc472c0c0cee3a5dbd9f97c"
     },
     {
-      "bytes": 3162,
+      "bytes": 3803,
       "path": "index.html",
-      "sha256": "f69042423dbfb755f24bb34919d31d14861e30584f0a4e3ee53b1f343b6c36b0"
+      "sha256": "1d114fb897517f8f15bad51f817b0cc63c996db17ca43a4760d062cb2614ff32"
     },
     {
-      "bytes": 988727,
+      "bytes": 994841,
       "path": "kummer/api/corpus.json",
-      "sha256": "441f20fbaf7c7f8d40b73256c114cc901774595ed5d6bcb9f2018a84e192d5c9"
+      "sha256": "eebea5bf063e8f19e3260082b124d7152c951914d51d26f75622439fba31f431"
     },
     {
-      "bytes": 1003048,
+      "bytes": 1008375,
       "path": "kummer/index.html",
-      "sha256": "5dd53f293de91a50ec5d4e7d49ec9a2ea8e834a173c36dfa4550fafbfd14a29c"
+      "sha256": "42979a31c3495a28304b6a1bf19b1a147bf8083c994f027eeac9d5281dc25a66"
     },
     {
-      "bytes": 2496335,
+      "bytes": 2509738,
       "path": "lucas/api/corpus.json",
-      "sha256": "adf52cc111a023cd4283d2aa92c5ca04a32377b3d66a70e0a3fece4fe47f0d24"
+      "sha256": "f9748b9584be0043f01a20956fec5fb237b664a932e6da0684bb31a89fca5305"
     },
     {
-      "bytes": 2393367,
+      "bytes": 2404127,
       "path": "lucas/index.html",
-      "sha256": "71dfb42a78d184df8cede4aa8e10b6393c59829a9635d3e745ef4b46a783e33c"
+      "sha256": "f6c65b4ccdd0552c39328521445e55075e79d420769e876be1175e61e5aab9ec"
     },
     {
-      "bytes": 301293,
+      "bytes": 307464,
+      "path": "pythagorean-fermat-four/api/corpus.json",
+      "sha256": "50d229deae7e6ff21df41cee6885e57662fef7eb96e0cc42b2a2b275610ab9c6"
+    },
+    {
+      "bytes": 264177,
+      "path": "pythagorean-fermat-four/index.html",
+      "sha256": "60cb4a9d49b44b4b70e55d76dc24cb56ae7724c8263138798ac9add8b41cf23c"
+    },
+    {
+      "bytes": 371355,
       "path": "supplementary-laws/api/corpus.json",
-      "sha256": "0b31b08be8b502784e0ddb06d2a3716bb8cfdb6ed2cef43fb688c457e1782c96"
+      "sha256": "52a0cc6dec62836af55a8d187afc0b1cfd6b0e451645caae22b91fff5e6f3d34"
     },
     {
-      "bytes": 257848,
+      "bytes": 320864,
       "path": "supplementary-laws/index.html",
-      "sha256": "178276830a8c4bba64ea8ea0aca16ba8c9a7e5e49a93f0f89bbe1441eba55511"
+      "sha256": "a2358cc81ba275229bbe948d38f33d7cd25c983a8cc634747936c53008a5382d"
     },
     {
-      "bytes": 2138737,
+      "bytes": 2173024,
       "path": "two-squares/api/corpus.json",
-      "sha256": "e4c3db13077cdd169c3cbc866a45eb32fadca9372350bbe8b0e61f486c3f928e"
+      "sha256": "8d6b108641383da65316b62ad5f4ab1f8306344baabcd61482ca19eb3672a714"
     },
     {
-      "bytes": 1962424,
+      "bytes": 1991449,
       "path": "two-squares/index.html",
-      "sha256": "fea5dee3d010b4dddddfceb91dc5751054ec7f318c38992203846fcdc8135b3f"
+      "sha256": "8476e16569296919083999e6b9aa0c92e8605874c901d6f23535f5d2d39b8fca"
     }
   ],
   "schema": "peano-lab-constructive-frontier-explorer-v1"

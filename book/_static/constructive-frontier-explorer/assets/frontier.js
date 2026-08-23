@@ -66,7 +66,7 @@
     const dependencies = node.dependencies.map(dependency => {
       if (nodes.has(dependency)) {
         const target = nodes.get(dependency);
-        const channel = target.enrolled_in_alpha ? "Alpha v13 · body checked" : "candidate · unenrolled";
+        const channel = target.enrolled_in_alpha ? `Alpha ${target.alpha_edition_version} · body checked; first enrolled ${target.alpha_admission_version}` : "candidate · unenrolled";
         return `<button class="frontier-chip internal" data-dependency="${escape(dependency)}" type="button">${escape(dependency)} · ${escape(channel)}</button>`;
       }
       const evidence = external.get(dependency);
@@ -136,6 +136,7 @@
   function lucasDigitProduct(n, k, p) { let upper = n, lower = k, product = 1n; const digits = []; do { const nd = upper % p, kd = lower % p; const coefficient = kd <= nd ? choose(nd, kd) : 0n; product *= coefficient; digits.push(`C(${nd},${kd})=${coefficient}`); upper = Math.floor(upper / p); lower = Math.floor(lower / p); } while (upper || lower); return {product, digits}; }
   function twoSquare(n) { for (let x = 0; x * x <= n; x++) { const y = Math.floor(Math.sqrt(n - x * x)); if (x * x + y * y === n) return [x, y]; } return null; }
   function fourSquare(n) { for (let a = 0; a * a <= n; a++) for (let b = 0; a * a + b * b <= n; b++) for (let c = 0; a * a + b * b + c * c <= n; c++) { const d = Math.floor(Math.sqrt(n - a * a - b * b - c * c)); if (a * a + b * b + c * c + d * d === n) return [a, b, c, d]; } return null; }
+  function greatestCommonDivisor(a, b) { let first = Math.abs(a), second = Math.abs(b); while (second) [first, second] = [second, first % second]; return first; }
   function factor(n) { if (n === 0) return {text:"0 (prime valuations undefined)",bad:[]}; let rest = n, text = [], bad = []; for (let p = 2; p * p <= rest; p++) if (rest % p === 0) { let e = 0; while (rest % p === 0) { rest /= p; e++; } text.push(`${p}^${e}`); if (p % 4 === 3 && e % 2) bad.push(`${p}^${e}`); } if (rest > 1) { text.push(`${rest}^1`); if (rest % 4 === 3) bad.push(`${rest}^1`); } return {text:text.join(" · ") || "1",bad}; }
   const example = document.querySelector("[data-example]");
   const form = example?.querySelector("[data-example-form]");
@@ -148,6 +149,7 @@
       else if (corpus.example === "kummer") { const p=value("p"),a=value("a"),b=value("b"); if (!prime(p)) throw Error("Choose a prime base."); const binomial=choose(a+b,a), count=carries(a,b,p), v=valuation(binomial,p); output.textContent=`C(${a+b},${a})=${binomial}; v_${p}=${v}; carry count=${count.count}\n${count.digits.join(" | ") || "no nonzero digits"}`; }
       else if (corpus.example === "lucas") { const p=value("p"),n=value("n"),k=value("k"); if (!prime(p)) throw Error("Choose a prime base."); if (![n,k].every(Number.isSafeInteger) || n < 0 || k < 0 || k > n) throw Error("Choose natural inputs with 0 ≤ k ≤ n."); const binomial=choose(n,k), expansion=lucasDigitProduct(n,k,p), modulus=BigInt(p); output.textContent=`C(${n},${k})=${binomial} ≡ ${binomial % modulus} (mod ${p})\n${expansion.digits.join(" · ")}\nDigit product=${expansion.product} ≡ ${expansion.product % modulus} (mod ${p})\nFinite numerical illustration; consult the proof map for the checked theorem boundary.`; }
       else if (corpus.example === "two-squares") { const n=value("n"); if (!Number.isInteger(n) || n < 0) throw Error("Choose a nonnegative integer."); const witness=twoSquare(n), factors=factor(n); output.textContent=`${n} = ${factors.text}\n${witness ? `${n} = ${witness[0]}² + ${witness[1]}²` : "No natural two-square witness."}${factors.bad.length ? `\nOdd 3-mod-4 factor: ${factors.bad.join(", ")}` : ""}`; }
+      else if (corpus.example === "pythagorean") { const m=value("m"),n=value("n"); if (![m,n].every(Number.isSafeInteger) || n < 1 || m <= n) throw Error("Choose natural parameters with 0 < n < m."); const difference=m*m-n*n,doubled=2*m*n,hypotenuse=m*m+n*n,primitive=greatestCommonDivisor(m,n)===1 && (m-n)%2===1; output.textContent=`m=${m}, n=${n}\n(${difference}, ${doubled}, ${hypotenuse})\n${difference}² + ${doubled}² = ${hypotenuse}²\n${primitive ? "Coprime, opposite-parity parameters." : "Parameters do not satisfy the classical primitive criterion."}\nForward constructor only; primitive inverse classification and Fermat strict descent remain open.`; }
       else { const n=value("n"), witness=fourSquare(n); output.textContent=witness ? `${n} = ${witness[0]}² + ${witness[1]}² + ${witness[2]}² + ${witness[3]}²\nConstructive four-square witness; the kernel-checked universal theorem is available in the proof map.` : "No witness found inside the finite example search."; }
     } catch (error) { output.textContent=error.message; }
   }

@@ -94,6 +94,38 @@ arithmetic library. Start with:
   their sealed 1,303-row Alpha-v12 parent, 240 body-only Alpha enrollments,
   unchanged Stable/checked-use authority, and independently verifiable
   provenance, topology, root, and artifact receipts;
+- [`Alpha v14 Kummer admission RFC`](alpha-v14-kummer-admission-rfc-v1.md):
+  the exact additive thirteen-row closure of Kummer's binomial carry theorem
+  and its carry-free corollary, preserving the sealed Alpha-v13 parent and
+  unchanged checked-use/Stable authority;
+- [`Alpha v15 supplementary/two-square admission RFC`](alpha-v15-frontier-admission-rfc-v1.md):
+  the exact 117-row closure of both supplementary laws and the complete
+  all-natural two-square classification, including authentic bounded
+  Euler-criterion and Gauss-lemma prerequisites;
+- [`bounded Lucas/Lagrange promotion RFC`](ha-frontier-promotion-rfc-v1.md):
+  exact dependency slices, unchanged-kernel empty-context certificate
+  construction, shared-premise layered Cuts, immutable workstation caps,
+  and the distinction between real proof certificates and release authority;
+- [`mixed Stable/Lucas promotion RFC`](lucas-mixed-promotion-rfc-v1.md):
+  unchanged-kernel contextual sharing across eleven body-only and five
+  already-closed Stable rows, yielding an actual bounded empty-context proof
+  of the formerly oversized final older Lucas prerequisite;
+- [`bounded Lagrange promotion RFC`](four-square-frontier-promotion-rfc-v1.md):
+  the exact 390-row four-square dependency slice, its 23 older and 196
+  campaign body-only obligations, constructive dependency-ready layers,
+  bounded actual parent proofs, and unchanged release authority;
+- [`Bounded Lucas/Lagrange frontier-promotion RFC`](ha-frontier-promotion-rfc-v1.md):
+  exact sealed dependency slices, independently kernel-checked empty-context
+  certificates, bounded shared-layer cuts, and the unchanged release-authority
+  boundary for the Lucas and four-square flagships;
+- [`Pythagorean/Fermat-four foundations RFC`](pythagorean-fermat-four-rfc-v1.md):
+  the checked constructive Euclidean forward parametrization,
+  primitive-leg symmetry, and conditional descent bridges, with the missing
+  primitive inverse and Fermat strict-descent constructor stated explicitly;
+- [`primitive Pythagorean constructor RFC`](pythagorean-primitive-rfc-v1.md):
+  the complete forward primitive Euclidean parametrization from ordered,
+  coprime, opposite-parity parameters, odd hypotenuses, and pairwise
+  coprimality, without claiming the still-open inverse classification;
 - [`quadratic supplementary laws RFC`](ha-quadratic-supplementary-laws-rfc-v1.md):
   complete constructive proofs of both supplementary laws, including the
   exact beta-coded Gauss reflection-count identification and separate
@@ -221,14 +253,17 @@ arithmetic library. Start with:
   classification, develop four-square/Fermat descent, then extend to
   primitive roots, Lucas, Pell, and cyclotomic arithmetic.
 
-## Current additive Alpha v13: completed Lagrange and Lucas body enrollment
+## Historical additive Alpha v13: completed Lagrange and Lucas body enrollment
+
+This section records the immutable Alpha-v13 checkpoint. The current Alpha
+v15 release and unchanged Stable boundary are documented below.
 
 Alpha v13 appends exactly 240 dependency-topologically ordered, independently
 kernel-checked proof bodies to the unchanged sealed 1,303-entry Alpha-v12
 parent: 196 entries in the completed Lagrange four-square closure and 44
 entries in the completed arbitrary-length Lucas closure. Eighteen of the
 four-square closure rows are shared two-square prerequisites; this does not
-enroll the full two-square classification. Exactly 224 of the 464 current
+enroll the full two-square classification. Exactly 224 of the 464 then-current
 frontier candidate rows remain outside Alpha v13.
 
 The complete 1,543-entry Alpha-v13 ledger has 432 `stable_closed`, 138
@@ -273,9 +308,10 @@ process to prevent proof-certificate caches from accumulating across stages;
 compact tracebacks also prevent deep formula-rendering memory explosions;
 successful body checks never modify sealed Alpha or Stable evidence.
 
-Run `make book-constructive-frontier-explorer` to regenerate the five
+Run `make book-constructive-frontier-explorer` to regenerate the six
 definition-aware, evidence-honest interactive maps for supplementary laws,
-Kummer, two squares, four squares, and Lucas. Each map includes a verified
+Kummer, two squares, four squares, Lucas, and Pythagorean/Fermat-four
+candidates. Each map includes a verified
 Exact/Defined notation switch, exact expansion-equivalence receipts, linked
 definitions, numerical witnesses, and zoom/focus/print controls.
 `make stage-proofs` assembles them beside the existing quadratic-reciprocity
@@ -702,7 +738,7 @@ has no remaining planned entry. Conventional integer-coefficient Bézout is not
 available in the natural-only term language, while the checked balanced
 four-natural relation supplies the native replacement.
 
-## 2026-08-09 — current additive Alpha v2 and Stable editions
+## 2026-08-09 — historical additive Alpha v2 and Stable editions
 
 The arithmetic library now has two explicit cumulative editions. **Stable**
 is the official checked library and remains the default. **Alpha** is the
@@ -765,3 +801,90 @@ dependency-liveness, and identity gates. Promoting all of Alpha would require
 closing the remaining 332 rows; a smaller dependency-closed batch need not
 wait for unrelated Alpha rows. WMI is down for the weekend, so no K3C cold
 receipt, whole-Alpha-v2 closure, or new promotion receipt is claimed here.
+
+## 2026-08-24 — current additive Alpha v15 and unchanged Stable editions
+
+The preceding Alpha-v2 section is a historical checkpoint, not the current
+release pointer. Stable is still the official default at **432 theorems**.
+The newest additive Alpha edition is v15, containing **1,673 theorems**;
+every earlier version remains sealed and reproducible.
+
+| Edition | Theorems | Direct edges | Layers | Checked use | New reviewed campaign |
+|---|---:|---:|---:|---:|---|
+| Stable | 432 | 1,185 | 22 | 432 | Official unchanged edition |
+| Alpha v13 | 1,543 | 5,189 | 45 | 570 | Lagrange four-square and multidigit Lucas |
+| Alpha v14 | 1,556 | 5,251 | 45 | 570 | Kummer carry theorem and carry-free corollary |
+| Alpha v15 | 1,673 | 5,615 | 53 | 570 | Both supplementary laws and full two-square classification |
+
+Alpha v14 appends exactly thirteen `body_checked` Kummer rows. Alpha v15
+appends exactly 28 supplementary-law rows, including independently checked
+bounded Euler and Gauss prerequisites, and 89 additional two-square rows.
+Its final evidence ledger is **432 stable_closed, 138 alpha_closed,
+1,102 body_checked, and one pending_layered_closure**. Its ordered-enrollment
+identity is
+`44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175`;
+its complete edition identity is
+`2f1a097ac0b6821c74cd4da088c396d3b9960ffd43e169f22b4778d5871adc66`.
+
+Body enrollment, independently checked empty-context proof certificates,
+release-authorized checked use, and Stable promotion remain separate. Local
+bounded promotion experiments can produce genuine closed certificates without
+changing the sealed release or granting checked-use authority. In particular,
+the reviewed layered-Cut constructor shares the previously duplicated
+`choose_exists` premise and closes `choose_factorial_bridge` in **109,841
+structural nodes and 9,535 proof objects**, below the unchanged 125,000-node
+and 25,000-object limits; this does not itself promote the row.
+The final older Lucas prerequisite, `choose_prime_divides_between`, has a
+measured **166,823-node** leaf total in the pending-only sixteen-body shared
+package. A separate reviewed mixed package contextualizes **eleven body-only
+rows and five already-closed Stable rows**, still counting all sixteen against
+the original cap. Its actual Stable leaf budget drops to **42,391 nodes and
+10,413 proof objects** by sharing the common beta-prefix infrastructure.
+The unchanged kernel genuinely accepts the resulting empty-context proof under
+the original 125,000-node/25,000-object limits: **all 30 older Lucas
+prerequisites now have actual independent closure candidates**. A subsequent
+independently kernel-checked sixteen-row campaign microbatch closes the first
+sixteen campaign rows. Three further separate batches close another fourteen:
+**7/78,442/12,147**, **6/75,700/10,698**, and **1/62,671/5,546**
+rows/nodes/objects. Therefore **30 of 44 Lucas campaign rows** now have
+genuine empty-context certificates; fourteen campaign rows and checked-use
+promotion remain separate open gates.
+
+The dedicated four-square promotion planner pins Lagrange's exact 390-row
+dependency slice. An independently checked sixteen-row parent microbatch
+uses only **18,008 structural nodes and 8,869 proof objects**; together with
+two previously checked rows, it closes eighteen older Lagrange prerequisites.
+The remaining five beta-prefix parents now also have genuine independently
+checked singleton certificates of **30,906, 31,467, 29,185, 29,317, and
+30,106 structural nodes**, respectively. Therefore **all 23 older Lagrange
+prerequisites are independently closable** under the original policy. Four
+further genuinely checked campaign microbatches close **52 of 196 Lagrange
+campaign rows**. Their exact row/node/object counts are **16/1,232/1,125**,
+**16/4,552/3,664**, **16/10,261/5,964**, and **4/77,161/12,811**;
+every batch independently respects the original proof envelope. A further
+second-layer batch recreates ten genuine prerequisite certificates in
+**2,973 nodes / 2,114 objects**, then closes another sixteen campaign rows
+in **10,229 nodes / 6,322 objects**. Therefore **68 of 196 Lagrange campaign
+rows** now have actual empty-context certificates. The remaining 128 campaign
+rows and flagship-wide closure remain open, without any change to sealed
+release authority.
+
+Across both flagship slices, **all 53 older parent prerequisites now have
+genuine bounded closure candidates**. The next exact promotion frontier is
+the original 240-row Alpha-v13 append: 44 Lucas rows and 196 Lagrange rows;
+its first **30 Lucas rows and 68 Lagrange rows** now also have actual
+independently checked empty-context certificates. In total, **151 of the
+293 body-only obligations** across both exact flagship slices now have
+genuine closure candidates; **142** remain (14 Lucas and 128 Lagrange).
+
+Six offline interactive proof families now cover the supplementary laws,
+Kummer, two squares, four squares, Lucas, and the new Pythagorean/Fermat-four
+candidate campaign. The Pythagorean forward constructor is actually proved;
+its additional **27** independently checked candidate bodies prove the
+complete forward **primitive** Euclidean constructor and show that every
+primitive triple has opposite-parity legs, an odd hypotenuse, pairwise
+coprime coordinates, and a constructive normal form. The sixth campaign
+therefore contains **44** checked candidate bodies. The primitive inverse
+classification and Fermat strict-descent premise are not proved. No
+unconditional Fermat-four theorem, checked-use promotion, Stable promotion,
+or remote deployment is inferred.

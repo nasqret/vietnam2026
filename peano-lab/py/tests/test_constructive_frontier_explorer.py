@@ -1,4 +1,4 @@
-"""Bounded audit of five offline, evidence-honest candidate proof explorers."""
+"""Bounded audit of six offline, evidence-honest candidate proof explorers."""
 
 from __future__ import annotations
 
@@ -27,6 +27,8 @@ from peano_lab.library.bertrand_defined_edition import (  # noqa: E402
 )
 from peano_lab.library import editions_v12 as v12  # noqa: E402
 from peano_lab.library import editions_v13 as v13  # noqa: E402
+from peano_lab.library import editions_v14 as v14  # noqa: E402
+from peano_lab.library import editions_v15 as v15  # noqa: E402
 
 
 EXPECTED_FAMILIES = (
@@ -35,13 +37,15 @@ EXPECTED_FAMILIES = (
     "two-squares",
     "four-squares",
     "lucas",
+    "pythagorean-fermat-four",
 )
-EXPECTED_ALPHA_V13_ENROLLMENT_BY_FAMILY = {
-    "supplementary-laws": 0,
-    "kummer": 0,
-    "two-squares": 18,
+EXPECTED_ALPHA_V15_ENROLLMENT_BY_FAMILY = {
+    "supplementary-laws": 28,
+    "kummer": 13,
+    "two-squares": 107,
     "four-squares": 178,
     "lucas": 44,
+    "pythagorean-fermat-four": 0,
 }
 REQUIRED_ROOTS = {
     "supplementary-laws": {
@@ -158,6 +162,25 @@ REQUIRED_ROOTS = {
         "lucas_theorem_for_length",
         "lucas_theorem",
     },
+    "pythagorean-fermat-four": {
+        "pythagorean_euclidean_identity",
+        "pythagorean_euclidean_from_order",
+        "pythagorean_primitive_leg_swap",
+        "pythagorean_opposite_parity_hypotenuse_odd",
+        "pythagorean_primitive_euclidean_legs",
+        "pythagorean_primitive_euclidean_constructor",
+        "pythagorean_primitive_euclidean_from_order",
+        "pythagorean_primitive_euclidean_swapped_constructor",
+        "pythagorean_primitive_pairwise_coprime",
+        "pythagorean_primitive_legs_not_both_even",
+        "pythagorean_triple_legs_not_both_odd",
+        "pythagorean_primitive_legs_opposite_parity",
+        "pythagorean_primitive_hypotenuse_odd",
+        "pythagorean_primitive_normal_form",
+        "fermat_four_bounded_descent",
+        "fermat_four_no_square_from_descent",
+        "fermat_four_no_fourth_from_descent",
+    },
 }
 
 
@@ -170,6 +193,78 @@ def _corpus(files: dict[str, bytes], slug: str) -> dict[str, object]:
     return json.loads(files[f"{slug}/api/corpus.json"])
 
 
+def test_custom_coprime_alias_preserves_its_existing_reviewed_definition() -> None:
+    coprime = generator._definition_table()["Coprime"]
+
+    assert coprime["id"] == "PD0005"
+    assert coprime["origin"] == "existing-conservative-definition"
+
+
+def test_incompatible_custom_definition_cannot_shadow_existing_identity(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    custom = generator._custom_definitions()
+    custom["Coprime"] = {
+        "id": "CF9999",
+        "name": "Coprime",
+        "parameters": ["x", "y"],
+        "summary": "forged collision",
+        "expanded_template": "x = y",
+        "template_sha256": sha256(b"x = y").hexdigest(),
+        "origin": "frontier-conservative-display-alias",
+    }
+    monkeypatch.setattr(generator, "_custom_definitions", lambda: custom)
+
+    with pytest.raises(ValueError, match="shadows an incompatible"):
+        generator._definition_table()
+
+
+def _browser_example(
+    files: dict[str, bytes], example_name: str, inputs: dict[str, int]
+) -> str:
+    """Run the actual standalone calculator against a tiny browser stub."""
+
+    corpus = json.dumps(
+        {
+            "nodes": [],
+            "external_dependencies": [],
+            "definitions": [],
+            "edges": [],
+            "root_names": [],
+            "example": example_name,
+        }
+    )
+    harness = (
+        f"const corpus = {corpus};\n"
+        f"const values = {json.dumps(inputs)};\n"
+        "const output = {textContent: ''};\n"
+        "const form = {addEventListener() {}};\n"
+        "const example = {querySelector(selector) {\n"
+        "  if (selector === '[data-example-form]') return form;\n"
+        "  if (selector === '[data-example-result]') return output;\n"
+        "  const input = selector.match(/data-input=\\\"([^\\\"]+)\\\"/);\n"
+        "  return input ? {value: values[input[1]]} : null;\n"
+        "}};\n"
+        "global.document = {\n"
+        "  getElementById(id) { return id === 'frontier-corpus'\n"
+        "    ? {textContent: JSON.stringify(corpus)} : null; },\n"
+        "  querySelector(selector) {\n"
+        "    return selector === '[data-example]' ? example : null;\n"
+        "  },\n"
+        "  querySelectorAll() { return []; }\n"
+        "};\n"
+        "global.window = {print() {}};\n"
+        + files["assets/frontier.js"].decode()
+        + "\nprocess.stdout.write(output.textContent);\n"
+    )
+    return subprocess.run(
+        ["node", "-e", harness],
+        check=True,
+        text=True,
+        capture_output=True,
+    ).stdout
+
+
 def test_frontier_inventory_is_deterministic_complete_and_evidence_honest(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
@@ -179,18 +274,18 @@ def test_frontier_inventory_is_deterministic_complete_and_evidence_honest(
     assert files == repeated_files
     assert manifest == repeated_manifest
     assert manifest["schema"] == generator.MANIFEST_SCHEMA
-    assert manifest["family_count"] == 5
+    assert manifest["family_count"] == 6
     assert tuple(row["slug"] for row in manifest["families"]) == EXPECTED_FAMILIES
     assert manifest["candidate_status"] == generator.CANDIDATE_STATUS
-    assert manifest["alpha_edition_version"] == "v13"
+    assert manifest["alpha_edition_version"] == "v15"
     assert manifest["alpha_edition_identity_sha256"] == (
-        v13.ALPHA_V13_IDENTITY_SHA256
+        v15.ALPHA_V15_IDENTITY_SHA256
     )
-    assert manifest["alpha_enrolled_node_count"] == 240
+    assert manifest["alpha_enrolled_node_count"] == 370
     assert manifest["alpha_checked_use_node_count"] == 0
     assert manifest["admitted_to_alpha"] is False
     assert manifest["admitted_to_stable"] is False
-    assert manifest["file_count"] == len(files) == 14
+    assert manifest["file_count"] == len(files) == 16
     assert {row["path"] for row in manifest["files"]} == set(files) - {"manifest.json"}
     for row in manifest["files"]:
         assert row["sha256"] == sha256(files[row["path"]]).hexdigest()
@@ -208,12 +303,12 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
 
     assert corpus["slug"] == slug
     assert corpus["candidate_status"] == generator.CANDIDATE_STATUS
-    assert corpus["alpha_edition_version"] == "v13"
+    assert corpus["alpha_edition_version"] == "v15"
     assert corpus["alpha_edition_identity_sha256"] == (
-        v13.ALPHA_V13_IDENTITY_SHA256
+        v15.ALPHA_V15_IDENTITY_SHA256
     )
     assert corpus["alpha_enrolled_node_count"] == (
-        EXPECTED_ALPHA_V13_ENROLLMENT_BY_FAMILY[slug]
+        EXPECTED_ALPHA_V15_ENROLLMENT_BY_FAMILY[slug]
     )
     assert corpus["alpha_checked_use_node_count"] == 0
     assert corpus["admitted_to_alpha"] is False
@@ -240,23 +335,27 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
 
     for node in nodes:
         assert node["statement_sha256"] == sha256(node["statement"].encode()).hexdigest()
-        alpha_entry = v13.ALPHA_EDITION.by_name.get(node["name"])
+        alpha_entry = v15.ALPHA_EDITION.by_name.get(node["name"])
         assert node["enrolled_in_alpha"] is (alpha_entry is not None)
         assert node["alpha_checked_use"] is False
         if alpha_entry is None:
             assert node["status"] == generator.UNENROLLED_CANDIDATE_STATUS
             assert node["alpha_evidence"] is None
             assert node["alpha_edition_version"] is None
+            assert node["alpha_admission_version"] is None
             assert node["alpha_edition_identity_sha256"] is None
             assert node["alpha_campaign"] is None
         else:
             assert node["status"] == generator.ALPHA_BODY_STATUS
             assert node["alpha_evidence"] == "body_checked"
-            assert node["alpha_edition_version"] == "v13"
+            assert node["alpha_edition_version"] == "v15"
+            assert node["alpha_admission_version"] in {"v13", "v14", "v15"}
             assert node["alpha_edition_identity_sha256"] == (
-                v13.ALPHA_V13_IDENTITY_SHA256
+                v15.ALPHA_V15_IDENTITY_SHA256
             )
-            assert node["alpha_campaign"] in {"four_square", "lucas"}
+            assert node["alpha_campaign"] in {
+                "four_square", "lucas", "kummer", "supplementary", "two_square"
+            }
             assert alpha_entry.spec.statement == node["statement"]
             assert tuple(alpha_entry.spec.dependencies) == tuple(node["dependencies"])
             assert tuple(alpha_entry.spec.script) == tuple(node["script"])
@@ -271,7 +370,7 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
 
     for edge in corpus["edges"]:
         assert edge["target"] in names
-        alpha_entry = v13.ALPHA_EDITION.by_name.get(edge["source"])
+        alpha_entry = v15.ALPHA_EDITION.by_name.get(edge["source"])
         assert edge["enrolled_in_alpha"] is (alpha_entry is not None)
         assert edge["alpha_checked_use"] is (
             alpha_entry.checked_use if alpha_entry is not None else False
@@ -315,7 +414,7 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
     ]
 
 
-def test_frontier_exactly_displays_the_minimal_alpha_v13_append(
+def test_frontier_exactly_displays_all_three_minimal_alpha_appends(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
     files, manifest = generated
@@ -326,12 +425,16 @@ def test_frontier_exactly_displays_the_minimal_alpha_v13_append(
         if node["enrolled_in_alpha"]
     }
 
-    assert enrolled == set(v13.FRONTIER_V13_EXPECTED_NAMES)
-    assert len(enrolled) == manifest["alpha_enrolled_node_count"] == 240
+    assert enrolled == (
+        set(v13.FRONTIER_V13_EXPECTED_NAMES)
+        | set(v14.FRONTIER_V14_EXPECTED_NAMES)
+        | set(v15.FRONTIER_V15_EXPECTED_NAMES)
+    )
+    assert len(enrolled) == manifest["alpha_enrolled_node_count"] == 370
     assert {
         row["slug"]: row["alpha_enrolled_node_count"]
         for row in manifest["families"]
-    } == EXPECTED_ALPHA_V13_ENROLLMENT_BY_FAMILY
+    } == EXPECTED_ALPHA_V15_ENROLLMENT_BY_FAMILY
     assert all(row["alpha_checked_use_node_count"] == 0 for row in manifest["families"])
 
 
@@ -772,11 +875,97 @@ def test_two_square_surface_identifies_the_complete_zero_inclusive_iff(
         "4c39da833a313bab5ae810215dae5bbc9cc78ea951fe97fb177c36a5347cecd5"
     )
     assert "complete all-natural iff" in corpus["scope"]
-    assert "Alpha/Stable admission remains a separate release gate" in corpus["scope"]
-    assert endpoint["enrolled_in_alpha"] is False
-    assert endpoint["alpha_evidence"] is None
+    assert "enrolled in Alpha v15 as body_checked" in corpus["scope"]
+    assert "without checked-use authority or Stable admission" in corpus["scope"]
+    assert endpoint["enrolled_in_alpha"] is True
+    assert endpoint["alpha_evidence"] == "body_checked"
+    assert endpoint["alpha_admission_version"] == "v15"
+    assert endpoint["alpha_campaign"] == "two_square"
+    assert endpoint["alpha_checked_use"] is False
     assert endpoint["admitted_to_alpha"] is False
     assert endpoint["admitted_to_stable"] is False
+
+
+def test_supplementary_explorer_includes_exact_euler_and_gauss_prerequisites(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, _manifest = generated
+    corpus = _corpus(files, "supplementary-laws")
+    rows = {node["name"]: node for node in corpus["nodes"]}
+
+    for name in (
+        "bounded_euler_criterion_complete",
+        "bounded_gauss_lemma_complete",
+        "quadratic_supplement_minus_one_complete",
+        "quadratic_supplement_two_complete",
+    ):
+        assert rows[name]["enrolled_in_alpha"] is True
+        assert rows[name]["alpha_evidence"] == "body_checked"
+        assert rows[name]["alpha_campaign"] == "supplementary"
+        assert rows[name]["alpha_admission_version"] == "v15"
+        assert rows[name]["alpha_checked_use"] is False
+
+
+def test_frontier_preserves_each_flagships_original_enrollment_release(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, _manifest = generated
+    roots = (
+        ("four-squares", "four_square_lagrange", "v13"),
+        ("lucas", "lucas_theorem", "v13"),
+        ("kummer", "kummer_binomial_carry_bit_count", "v14"),
+        ("kummer", "kummer_carry_free_iff_not_divides", "v14"),
+        ("supplementary-laws", "quadratic_supplement_minus_one_complete", "v15"),
+        ("supplementary-laws", "quadratic_supplement_two_complete", "v15"),
+        (
+            "two-squares",
+            "two_square_iff_zero_or_even_three_mod_four_prime_valuations",
+            "v15",
+        ),
+    )
+
+    for slug, name, version in roots:
+        node = next(
+            row for row in _corpus(files, slug)["nodes"] if row["name"] == name
+        )
+        assert node["alpha_edition_version"] == "v15"
+        assert node["alpha_admission_version"] == version
+        assert node["alpha_checked_use"] is False
+
+
+def test_pythagorean_campaign_exposes_only_forward_and_conditional_proofs(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, _manifest = generated
+    corpus = _corpus(files, "pythagorean-fermat-four")
+    rows = {node["name"]: node for node in corpus["nodes"]}
+
+    assert corpus["node_count"] == 44
+    assert corpus["alpha_enrolled_node_count"] == 0
+    assert "primitive inverse classification" in corpus["scope"]
+    assert "Fermat strict-descent premise remain unproved" in corpus["scope"]
+    assert "complete forward primitive Pythagorean constructor" in corpus["scope"]
+    assert {
+        "Pythagorean",
+        "Coprime",
+        "OppositeParity",
+        "PrimitivePythagorean",
+        "FermatFourCounterexample",
+        "FermatFourStrictDescent",
+    } <= {definition["name"] for definition in corpus["definitions"]}
+    assert " -> " in rows["fermat_four_no_square_from_descent"]["statement"]
+    assert " -> " in rows["fermat_four_no_fourth_from_descent"]["statement"]
+    assert all(not node["enrolled_in_alpha"] for node in rows.values())
+    assert {
+        "peano_lab.library.pythagorean_fermat_four_candidate",
+        "peano_lab.library.pythagorean_primitive_candidate",
+    } == {node["source_module"] for node in rows.values()}
+    assert 'data-input="m"' in files[
+        "pythagorean-fermat-four/index.html"
+    ].decode()
+    assert "primitive inverse classification and Fermat strict descent remain open" in (
+        files["assets/frontier.js"].decode()
+    )
 
 
 def test_curated_definitions_expand_to_unchanged_first_order_formulas(
@@ -903,47 +1092,7 @@ def test_lucas_browser_calculator_replays_actual_multidigit_examples(
     lower: int,
 ) -> None:
     files, _manifest = generated
-    corpus = json.dumps(
-        {
-            "nodes": [],
-            "external_dependencies": [],
-            "definitions": [],
-            "edges": [],
-            "root_names": [],
-            "example": "lucas",
-        }
-    )
-    inputs = json.dumps({"p": prime, "n": upper, "k": lower})
-    harness = (
-        f"const corpus = {corpus};\n"
-        f"const values = {inputs};\n"
-        "const output = {textContent: ''};\n"
-        "const form = {addEventListener() {}};\n"
-        "const example = {querySelector(selector) {\n"
-        "  if (selector === '[data-example-form]') return form;\n"
-        "  if (selector === '[data-example-result]') return output;\n"
-        "  const input = selector.match(/data-input=\\\"([^\\\"]+)\\\"/);\n"
-        "  return input ? {value: values[input[1]]} : null;\n"
-        "}};\n"
-        "global.document = {\n"
-        "  getElementById(id) { return id === 'frontier-corpus'\n"
-        "    ? {textContent: JSON.stringify(corpus)} : null; },\n"
-        "  querySelector(selector) {\n"
-        "    return selector === '[data-example]' ? example : null;\n"
-        "  },\n"
-        "  querySelectorAll() { return []; }\n"
-        "};\n"
-        "global.window = {print() {}};\n"
-        + files["assets/frontier.js"].decode()
-        + "\nprocess.stdout.write(output.textContent);\n"
-    )
-
-    process = subprocess.run(
-        ["node", "-e", harness],
-        check=True,
-        text=True,
-        capture_output=True,
-    )
+    output = _browser_example(files, "lucas", {"p": prime, "n": upper, "k": lower})
     exact = comb(upper, lower)
     expected = 1
     digit_upper, digit_lower = upper, lower
@@ -953,9 +1102,49 @@ def test_lucas_browser_calculator_replays_actual_multidigit_examples(
         digit_upper //= prime
         digit_lower //= prime
 
-    assert f"C({upper},{lower})={exact} ≡ {exact % prime} (mod {prime})" in process.stdout
-    assert f"Digit product={expected} ≡ {expected % prime} (mod {prime})" in process.stdout
+    assert f"C({upper},{lower})={exact} ≡ {exact % prime} (mod {prime})" in output
+    assert f"Digit product={expected} ≡ {expected % prime} (mod {prime})" in output
     assert exact % prime == expected % prime
+
+
+@pytest.mark.parametrize(
+    ("first", "second", "coordinates", "primitive"),
+    (
+        (2, 1, (3, 4, 5), True),
+        (3, 2, (5, 12, 13), True),
+        (4, 1, (15, 8, 17), True),
+        (4, 3, (7, 24, 25), True),
+        (3, 1, (8, 6, 10), False),
+        (6, 2, (32, 24, 40), False),
+    ),
+)
+def test_pythagorean_browser_calculator_constructs_exact_euclidean_triples(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+    first: int,
+    second: int,
+    coordinates: tuple[int, int, int],
+    primitive: bool,
+) -> None:
+    files, _manifest = generated
+    output = _browser_example(files, "pythagorean", {"m": first, "n": second})
+    difference, doubled, hypotenuse = coordinates
+
+    assert f"({difference}, {doubled}, {hypotenuse})" in output
+    assert f"{difference}² + {doubled}² = {hypotenuse}²" in output
+    assert difference * difference + doubled * doubled == hypotenuse * hypotenuse
+    assert ("Coprime, opposite-parity parameters." in output) is primitive
+    assert "primitive inverse classification and Fermat strict descent remain open" in output
+
+
+@pytest.mark.parametrize(("first", "second"), ((1, 1), (4, 0), (2, 3)))
+def test_pythagorean_browser_calculator_rejects_invalid_parameter_order(
+    generated: tuple[dict[str, bytes], dict[str, object]], first: int, second: int
+) -> None:
+    files, _manifest = generated
+
+    assert "Choose natural parameters with 0 < n < m." == _browser_example(
+        files, "pythagorean", {"m": first, "n": second}
+    )
 
 
 def test_duplicate_factories_preserve_deterministic_first_source_and_provenance(
@@ -988,39 +1177,39 @@ def test_duplicate_factories_preserve_deterministic_first_source_and_provenance(
         "missing_campaign",
     ),
 )
-def test_alpha_v13_frontier_evidence_and_identity_mutations_are_rejected(
+def test_alpha_v15_frontier_evidence_and_identity_mutations_are_rejected(
     monkeypatch: pytest.MonkeyPatch, mutation: str,
 ) -> None:
     family = next(item for item in generator.FAMILIES if item.slug == "four-squares")
     root = "four_square_lagrange"
-    alpha_entries = dict(v13.ALPHA_EDITION.by_name)
+    alpha_entries = dict(v15.ALPHA_EDITION.by_name)
     entry = alpha_entries[root]
-    message = "unexpected Alpha-v13 evidence"
+    message = "unexpected Alpha-v15 evidence"
 
     if mutation == "statement":
         entry = replace(entry, spec=replace(entry.spec, statement=entry.spec.statement + " "))
-        message = "sealed Alpha-v13 entry"
+        message = "sealed Alpha-v15 entry"
     elif mutation == "dependencies":
         entry = replace(entry, spec=replace(entry.spec, dependencies=entry.spec.dependencies[:-1]))
-        message = "sealed Alpha-v13 entry"
+        message = "sealed Alpha-v15 entry"
     elif mutation == "script":
         entry = replace(entry, spec=replace(entry.spec, script=entry.spec.script[:-1]))
-        message = "sealed Alpha-v13 entry"
+        message = "sealed Alpha-v15 entry"
     elif mutation == "closed_evidence":
         entry = replace(entry, evidence=v13.EvidenceStatus.ALPHA_CLOSED)
     elif mutation == "pending_evidence":
         entry = replace(entry, evidence=v13.EvidenceStatus.PENDING_LAYERED_CLOSURE)
     else:
-        campaigns = dict(v13.alpha_v13_enrollment().campaign_by_name)
+        campaigns = generator._alpha_frontier_campaigns()
         campaigns.pop(root)
         monkeypatch.setattr(
-            generator.v13,
-            "alpha_v13_enrollment",
-            lambda: SimpleNamespace(campaign_by_name=campaigns),
+            generator,
+            "_alpha_frontier_campaigns",
+            lambda: campaigns,
         )
     alpha_entries[root] = entry
     monkeypatch.setattr(
-        generator.v13,
+        generator.v15,
         "ALPHA_EDITION",
         SimpleNamespace(by_name=alpha_entries),
     )
@@ -1037,6 +1226,10 @@ def test_frontier_generation_never_mutates_sealed_release_authority() -> None:
         len(v12.ALPHA_CHECKED_SPECS),
         v13.ALPHA_V13_IDENTITY_SHA256,
         len(v13.ALPHA_CHECKED_SPECS),
+        v14.ALPHA_V14_IDENTITY_SHA256,
+        len(v14.ALPHA_CHECKED_SPECS),
+        v15.ALPHA_V15_IDENTITY_SHA256,
+        len(v15.ALPHA_CHECKED_SPECS),
     )
 
     generator.build_files()
@@ -1048,6 +1241,10 @@ def test_frontier_generation_never_mutates_sealed_release_authority() -> None:
         len(v12.ALPHA_CHECKED_SPECS),
         v13.ALPHA_V13_IDENTITY_SHA256,
         len(v13.ALPHA_CHECKED_SPECS),
+        v14.ALPHA_V14_IDENTITY_SHA256,
+        len(v14.ALPHA_CHECKED_SPECS),
+        v15.ALPHA_V15_IDENTITY_SHA256,
+        len(v15.ALPHA_CHECKED_SPECS),
     )
 
 
@@ -1065,16 +1262,21 @@ def test_frontier_generator_check_detects_tampering_without_remote_assets(
     assert "https://" not in files["assets/frontier.js"].decode()
 
 
-def test_repository_proof_hub_labels_all_five_candidate_families() -> None:
+def test_repository_proof_hub_labels_all_six_candidate_families() -> None:
     hub = (REPO / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
     assert generator.CANDIDATE_STATUS in hub
     for slug in EXPECTED_FAMILIES:
         assert f'href="{slug}/"' in hub
-    assert hub.count("Not admitted to Alpha/Stable") == 2
-    assert "18 prerequisites Alpha v13 enrolled; classification not enrolled" in hub
     assert hub.count(
         "Alpha v13 enrolled · body_checked; no checked-use authority"
     ) == 2
+    assert hub.count(
+        "Alpha v14 enrolled · body_checked; no checked-use authority"
+    ) == 1
+    assert hub.count(
+        "Alpha v15 enrolled · body_checked; no checked-use authority"
+    ) == 2
+    assert "Not enrolled in Alpha/Stable; Fermat descent remains conditional" in hub
     assert 'href="quadratic-reciprocity/"' in hub
     assert 'href="bertrand-postulate/"' in hub
 

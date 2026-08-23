@@ -122,6 +122,7 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
         "two-squares",
         "four-squares",
         "lucas",
+        "pythagorean-fermat-four",
     ):
         assert f"book/_static/constructive-frontier-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output

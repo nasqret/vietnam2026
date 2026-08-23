@@ -252,6 +252,8 @@ footer { padding: 0 0 3rem; color: var(--muted); font-size: 0.86rem; }
 .four-squares-card .primary-action { background: #9b5832; }
 .lucas-card .card-kicker { color: #465db1; }
 .lucas-card .primary-action { background: #465db1; }
+.pythagorean-card .card-kicker { color: #9a4268; }
+.pythagorean-card .primary-action { background: #9a4268; }
 
 .crumbs {
   display: flex;
