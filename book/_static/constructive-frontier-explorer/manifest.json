@@ -1,13 +1,21 @@
 {
   "admitted_to_alpha": false,
   "admitted_to_stable": false,
-  "aggregate_sha256": "567bdba3cb43fbcfc3a1655dbcc0cfc7c527dcfbc26cba18c0f166f7837fc4a0",
-  "candidate_status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+  "aggregate_sha256": "0cf5a470fb623c5a2f79210a5ad1d09abb0b43d7562a806f0ae7345b692a283e",
+  "alpha_checked_use_node_count": 0,
+  "alpha_edition_identity_sha256": "a010e0ee5dece0d3325e8ec084c1f8769ef8e9ca47e2de891d344e54c1b439d1",
+  "alpha_edition_version": "v13",
+  "alpha_enrolled_node_count": 240,
+  "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
   "families": [
     {
-      "candidate_status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "alpha_checked_use_node_count": 0,
+      "alpha_edition_version": "v13",
+      "alpha_enrolled_node_count": 0,
+      "alpha_enrolled_root_names": [],
+      "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
       "compacted_statement_count": 24,
-      "corpus_sha256": "5f48966102e77079553b742a691a9a137fa6064936c4d2b602ca337e9e2c7c52",
+      "corpus_sha256": "0b31b08be8b502784e0ddb06d2a3716bb8cfdb6ed2cef43fb688c457e1782c96",
       "defined_statement_count": 28,
       "defined_tactic_proposition_count": 15,
       "definition_count": 17,
@@ -22,9 +30,13 @@
       "title": "Quadratic Supplementary Laws"
     },
     {
-      "candidate_status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "alpha_checked_use_node_count": 0,
+      "alpha_edition_version": "v13",
+      "alpha_enrolled_node_count": 0,
+      "alpha_enrolled_root_names": [],
+      "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
       "compacted_statement_count": 10,
-      "corpus_sha256": "b4f3027b1044b8929485163ce8cf6c1b7ff13a0df782c68316341e77ef07ecaf",
+      "corpus_sha256": "441f20fbaf7c7f8d40b73256c114cc901774595ed5d6bcb9f2018a84e192d5c9",
       "defined_statement_count": 10,
       "defined_tactic_proposition_count": 10,
       "definition_count": 16,
@@ -39,9 +51,15 @@
       "title": "Kummer’s Carry Theorem"
     },
     {
-      "candidate_status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "alpha_checked_use_node_count": 0,
+      "alpha_edition_version": "v13",
+      "alpha_enrolled_node_count": 18,
+      "alpha_enrolled_root_names": [
+        "brahmagupta_fibonacci_two_square_identity"
+      ],
+      "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
       "compacted_statement_count": 100,
-      "corpus_sha256": "ab1118c7d4f1a0ceadde915c1012f61129cad4950fdb43b851c2a7f60a6654e0",
+      "corpus_sha256": "e4c3db13077cdd169c3cbc866a45eb32fadca9372350bbe8b0e61f486c3f928e",
       "defined_statement_count": 133,
       "defined_tactic_proposition_count": 78,
       "definition_count": 25,
@@ -72,9 +90,74 @@
       "title": "Fermat and Sums of Two Squares"
     },
     {
-      "candidate_status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "alpha_checked_use_node_count": 0,
+      "alpha_edition_version": "v13",
+      "alpha_enrolled_node_count": 178,
+      "alpha_enrolled_root_names": [
+        "four_square_norm_distributes",
+        "quaternion_coordinate_absolute_total",
+        "four_square_two_square_factor_identity",
+        "four_square_odd_prime_half_coordinate_seed",
+        "four_square_odd_prime_half_seed_norm_strict",
+        "four_square_odd_prime_bounded_modular_seed",
+        "four_square_non_two_prime_bounded_modular_seed",
+        "four_square_prime_bounded_modular_seed",
+        "four_square_branch_even_represented_strict_step",
+        "four_square_bounded_strict_descent_from_odd_signed_quaternion",
+        "four_square_conjugate_global_compensation",
+        "four_square_signed_conjugate_quaternion",
+        "four_square_conjugate_absolute_coordinates_total",
+        "four_square_cross_interleaved_prefix_exists",
+        "four_square_cross_intersection",
+        "four_square_descent_centered_signed_remainder_exists",
+        "four_square_descent_centered_four_remainders_exist",
+        "four_square_descent_even_multiplier_matching_parity_halving",
+        "four_square_descent_odd_centered_norm_strict",
+        "four_square_descent_bounded_centered_quotient_nonzero",
+        "four_square_descent_odd_centered_strict_step",
+        "four_square_euler_quaternion_conditional",
+        "four_square_euler_add_permute_sixteen",
+        "four_square_euler_three_square_expansion",
+        "four_square_euler_coordinate_triple_decompose",
+        "four_square_euler_global_compensation",
+        "four_square_euler_quaternion",
+        "four_square_euler_four_square_product_total",
+        "four_square_euler_representations_closed_under_multiplication",
+        "four_square_descent_below_prime_multiplier_bounded",
+        "four_square_prime_from_bounded_strict_descent_and_seed",
+        "four_square_prime_from_bounded_strict_descent",
+        "four_square_lagrange_bounded_from_primes",
+        "four_square_lagrange_from_all_primes",
+        "four_square_prime_from_odd_signed_quaternion",
+        "four_square_prime_representation",
+        "four_square_lagrange",
+        "four_square_parity_even_norm_pair_selection",
+        "four_square_parity_even_multiplier_halving",
+        "four_square_parity_represented_double_halving",
+        "four_square_prime_half_square_residues_injective",
+        "four_square_square_residue_prefix_exists",
+        "four_square_half_square_residue_prefix_injective",
+        "four_square_bounded_complement_prefix_exists",
+        "four_square_signed_conjugate_negative_blocks",
+        "four_square_signed_natural_positive_first_blocks",
+        "four_square_signed_orientation_mask_00",
+        "four_square_signed_orientation_mask_03",
+        "four_square_signed_orientation_mask_07",
+        "four_square_signed_orientation_mask_15",
+        "four_square_signed_divisible_norm_product_representation",
+        "four_square_signed_absolute_block_representation",
+        "four_square_signed_centered_representation",
+        "four_square_signed_centered_square_congruent",
+        "four_square_signed_centered_norm_congruent",
+        "four_square_signed_centered_norm_quotient_exists",
+        "four_square_signed_absolute_congruence_divisible",
+        "four_square_signed_conjugate_positive_blocks",
+        "four_square_signed_conjugate_mixed_blocks",
+        "four_square_signed_natural_negative_first_blocks"
+      ],
+      "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
       "compacted_statement_count": 122,
-      "corpus_sha256": "1b6d652e2b7af184d721048d96818d6419659c9acd0f50f17644a99e8c5b328e",
+      "corpus_sha256": "43a9c271570cc7fab4ca64b0f7433bcc139d7cde9f3d8c0cde206a1ad42d6989",
       "defined_statement_count": 217,
       "defined_tactic_proposition_count": 136,
       "definition_count": 19,
@@ -164,9 +247,35 @@
       "title": "Lagrange’s Four-Square Theorem"
     },
     {
-      "candidate_status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "alpha_checked_use_node_count": 0,
+      "alpha_edition_version": "v13",
+      "alpha_enrolled_node_count": 44,
+      "alpha_enrolled_root_names": [
+        "lucas_zero_upper_quotient_high_column_vanishes",
+        "lucas_prime_block_digit_congruence",
+        "lucas_one_step_division_congruence",
+        "lucas_prime_row_interior_zero_mod",
+        "lucas_pascal_congruence_step",
+        "lucas_prime_shift_below_base",
+        "lucas_prime_shift_high_column",
+        "lucas_repeated_prime_shift_below_base",
+        "lucas_low_digit_product_congruence",
+        "lucas_digit_chain_exists",
+        "lucas_prime_digit_chain_exists",
+        "lucas_modular_backward_product_fold",
+        "lucas_choose_prefix_exists",
+        "lucas_choose_prefix_point",
+        "lucas_multidigit_congruence_from_one_step",
+        "lucas_terminating_multidigit_theorem_from_one_step",
+        "lucas_prime_digit_chain_terminal_zero",
+        "lucas_terminating_prime_digit_chain_exists",
+        "lucas_terminating_multidigit_theorem",
+        "lucas_theorem_for_length",
+        "lucas_theorem"
+      ],
+      "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
       "compacted_statement_count": 57,
-      "corpus_sha256": "0c898bf2113fa84c3c9f3759b945269e3830f4688e7c5dd1cce16e6d93286d7b",
+      "corpus_sha256": "adf52cc111a023cd4283d2aa92c5ca04a32377b3d66a70e0a3fece4fe47f0d24",
       "defined_statement_count": 59,
       "defined_tactic_proposition_count": 33,
       "definition_count": 15,
@@ -219,64 +328,64 @@
       "sha256": "ed3d81fa9eba07435ccf8bfe9475c01f55a58d35d93dbd3dff78b9b95287b4ef"
     },
     {
-      "bytes": 13436,
+      "bytes": 13795,
       "path": "assets/frontier.js",
-      "sha256": "d2004d87c1dcbc95accfec6be395ce9cd5d3ecd09c00f2107cd6a68ac92fae57"
+      "sha256": "39d865bb34a061983e318fb9507dbfc89d74b041bb0972babbbe1886f8ef58eb"
     },
     {
-      "bytes": 1946448,
+      "bytes": 2125882,
       "path": "four-squares/api/corpus.json",
-      "sha256": "1b6d652e2b7af184d721048d96818d6419659c9acd0f50f17644a99e8c5b328e"
+      "sha256": "43a9c271570cc7fab4ca64b0f7433bcc139d7cde9f3d8c0cde206a1ad42d6989"
     },
     {
-      "bytes": 1675841,
+      "bytes": 1819257,
       "path": "four-squares/index.html",
-      "sha256": "2dd4b2f3bc7d4fa441ae4fcaa2d80bbc6c5a4660bfd4358bd2af7ca2407c3f7b"
+      "sha256": "801e3c17213420aa3aeb8556a81aa9c639d6f57119472d2e660a1e824d26c44a"
     },
     {
-      "bytes": 2648,
+      "bytes": 3162,
       "path": "index.html",
-      "sha256": "a040be86879ef4a0f9804807799510816d8df7746df2413997e4978d3810fc89"
+      "sha256": "f69042423dbfb755f24bb34919d31d14861e30584f0a4e3ee53b1f343b6c36b0"
     },
     {
-      "bytes": 969592,
+      "bytes": 988727,
       "path": "kummer/api/corpus.json",
-      "sha256": "b4f3027b1044b8929485163ce8cf6c1b7ff13a0df782c68316341e77ef07ecaf"
+      "sha256": "441f20fbaf7c7f8d40b73256c114cc901774595ed5d6bcb9f2018a84e192d5c9"
     },
     {
-      "bytes": 987720,
+      "bytes": 1003048,
       "path": "kummer/index.html",
-      "sha256": "279bdd8c1385c3c4314654f12a33f86f5995b27274431bb956401f24e83770b3"
+      "sha256": "5dd53f293de91a50ec5d4e7d49ec9a2ea8e834a173c36dfa4550fafbfd14a29c"
     },
     {
-      "bytes": 2438416,
+      "bytes": 2496335,
       "path": "lucas/api/corpus.json",
-      "sha256": "0c898bf2113fa84c3c9f3759b945269e3830f4688e7c5dd1cce16e6d93286d7b"
+      "sha256": "adf52cc111a023cd4283d2aa92c5ca04a32377b3d66a70e0a3fece4fe47f0d24"
     },
     {
-      "bytes": 2347002,
+      "bytes": 2393367,
       "path": "lucas/index.html",
-      "sha256": "2f5512c439aa3d0daa14114214203337ed525108b7332768ded5fe198aa0c047"
+      "sha256": "71dfb42a78d184df8cede4aa8e10b6393c59829a9635d3e745ef4b46a783e33c"
     },
     {
-      "bytes": 278416,
+      "bytes": 301293,
       "path": "supplementary-laws/api/corpus.json",
-      "sha256": "5f48966102e77079553b742a691a9a137fa6064936c4d2b602ca337e9e2c7c52"
+      "sha256": "0b31b08be8b502784e0ddb06d2a3716bb8cfdb6ed2cef43fb688c457e1782c96"
     },
     {
-      "bytes": 239658,
+      "bytes": 257848,
       "path": "supplementary-laws/index.html",
-      "sha256": "a8d23b906840539d35a1c4575e3786240793e37094fbfa369d4302da8dd77890"
+      "sha256": "178276830a8c4bba64ea8ea0aca16ba8c9a7e5e49a93f0f89bbe1441eba55511"
     },
     {
-      "bytes": 2032877,
+      "bytes": 2138737,
       "path": "two-squares/api/corpus.json",
-      "sha256": "ab1118c7d4f1a0ceadde915c1012f61129cad4950fdb43b851c2a7f60a6654e0"
+      "sha256": "e4c3db13077cdd169c3cbc866a45eb32fadca9372350bbe8b0e61f486c3f928e"
     },
     {
-      "bytes": 1879487,
+      "bytes": 1962424,
       "path": "two-squares/index.html",
-      "sha256": "6c48bc2fbe4ac1c67bbcf0ba29e788a6d2e36a1565577cb2e23767b68bcec516"
+      "sha256": "fea5dee3d010b4dddddfceb91dc5751054ec7f318c38992203846fcdc8135b3f"
     }
   ],
   "schema": "peano-lab-constructive-frontier-explorer-v1"

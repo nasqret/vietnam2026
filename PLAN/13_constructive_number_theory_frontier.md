@@ -303,7 +303,9 @@ remains open.
   SHA-256
   `fb653494c208dd59fac181164286a628866e3f7ca467e2a04314b9cb1f3c29a5`.
   No mathematical gap remains in its dependency-curried candidate body;
-  independent empty-context closure and Alpha/Stable admission remain open.
+  its exact 196-row dependency closure is enrolled in Alpha v13 with
+  `body_checked` evidence only. Independent empty-context closure,
+  checked-use admission, and Stable admission remain open.
 - Stage 5: sixty-four independently checked constructive candidate bodies
   establish the **complete unconditional multidigit Lucas theorem**. They
   include both unrestricted prime-row shifts, every high-column boundary,
@@ -313,7 +315,9 @@ remains open.
   `lucas_theorem` has exact statement SHA-256
   `396e47df462c415ea6ea8e29c7506bfb1dc7077a96e768295b1949256d9b0564`.
   No mathematical gap remains in its dependency-curried candidate body;
-  independent empty-context closure and Alpha/Stable admission remain open.
+  its exact 44-row dependency closure is enrolled in Alpha v13 with
+  `body_checked` evidence only. Independent empty-context closure,
+  checked-use admission, and Stable admission remain open.
 - Aggregate checkpoint: exactly 464 checked constructive candidate proof
   bodies across stages 1–5, plus twenty-two independently constructed and
   kernel-checked empty-context certificates for existing Bertrand
@@ -322,9 +326,54 @@ remains open.
   and complete multidigit Lucas; `make stage-proofs` assembles them beside
   the existing
   quadratic reciprocity and Bertrand families without requiring faculty-host
-  access. The complete ordered local gate passes **2,113 tests across 40
-  focused suites**, each running in a separate bounded Python process.
-  Stable remains at 432 rows, sealed Alpha v12 remains at 1,303 rows, and
-  exactly 570 Alpha specifications permit checked theorem uses.
+  access. Before additive Alpha-v13 admission, the complete ordered local gate
+  passed **2,113 tests across 40 focused suites**, each running in a separate
+  bounded Python process; dedicated Alpha-v13 admission and explorer-evidence
+  audits now provide additional focused release coverage.
+  Stable remains at 432 rows, the historical sealed Alpha v12 remains
+  byte-for-byte at 1,303 rows, and exactly 570 Alpha specifications permit
+  checked theorem uses in both the historical v12 and current v13 views.
 - Run `make ha-constructive-frontier-check` to replay the focused campaigns
   serially in bounded, independent Python processes.
+
+### Additive Alpha v13 release — evidence and membership boundary
+
+The sealed
+[`Alpha v13 frontier admission RFC`](../research/arithmetic-library/alpha-v13-frontier-admission-rfc-v1.md)
+adds exactly the missing dependency closures of the completed four-square
+and multidigit Lucas roots while preserving Alpha v12 as an object-identical
+prefix:
+
+- The 240 new `body_checked` Alpha-only rows comprise precisely 196 rows in
+  the four-square campaign closure and 44 rows in the Lucas campaign closure.
+  Eighteen of the four-square dependencies also appear in the two-square
+  browser family; this does not enroll the final two-square classification.
+- Of the 464 frontier candidate rows, exactly 240 enter Alpha v13 and the
+  remaining 224 stay unenrolled. The supplementary laws, Kummer theorem, and
+  complete two-square classification endpoints receive no inferred membership.
+- Alpha v13 contains 1,543 entries: 432 `stable_closed`, 138 `alpha_closed`,
+  972 `body_checked`, and one `pending_layered_closure`; its dependency graph
+  has 5,189 edges and 45 layers. Stable remains exactly 432 entries, and the
+  checked-use surface remains exactly 570 entries.
+- Fifty-three unchecked parent ancestors still prevent either new flagship
+  from becoming an empty-context theorem or granting checked theorem use.
+  Enrollment, mathematical completion of a dependency-curried body,
+  independent empty-context closure, and Stable promotion remain four
+  separate claims.
+- `four_square_lagrange` retains exact statement SHA-256
+  `fb653494c208dd59fac181164286a628866e3f7ca467e2a04314b9cb1f3c29a5`;
+  `lucas_theorem` retains exact statement SHA-256
+  `396e47df462c415ea6ea8e29c7506bfb1dc7077a96e768295b1949256d9b0564`.
+- The Alpha v13 ordered enrollment SHA-256 is
+  `6b223edfe6a2e02dc09576671f4fc5f5a41aaf4156f829164222dd3e494da22f`,
+  and its complete edition identity SHA-256 is
+  `a010e0ee5dece0d3325e8ec084c1f8769ef8e9ca47e2de891d344e54c1b439d1`.
+
+Run `make peano-library-alpha-v13` to regenerate only the additive versioned
+release artifacts. Run `make peano-library-alpha-v13-check` to check those
+artifacts deterministically, invoke the independent verifier, reject forged
+authority and tampered release evidence, and execute the dedicated admission
+suite in separate bounded Python processes. The
+`peano-library-channels-v13` and `peano-library-channels-v13-check` targets
+are equivalent compatibility aliases. Historical v1–v12 targets and sealed
+Stable artifacts remain unchanged.

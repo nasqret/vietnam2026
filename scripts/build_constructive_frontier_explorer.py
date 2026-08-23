@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""Build five offline, evidence-honest constructive candidate proof explorers.
+"""Build five offline, evidence-honest constructive frontier proof explorers.
 
-The generator reads exact dependency-curried candidate factories and existing
-conservative definition templates.  It neither replays a proof nor confers
-Alpha/Stable authority; every generated page says so prominently.
+The generator reads exact dependency-curried candidate factories, the sealed
+Alpha-v13 release, and existing conservative definition templates.  It marks
+actual Alpha enrollment separately from checked-use authority and never confers
+Alpha/Stable theorem authority; every generated page says so prominently.
 """
 
 from __future__ import annotations
@@ -27,7 +28,7 @@ if str(PY_ROOT) not in sys.path:
 
 from peano_lab.kernel.formulas import parse_formula_in_context  # noqa: E402
 from peano_lab.library import bertrand_defined_edition as defined_adapter  # noqa: E402
-from peano_lab.library import editions_v12 as v12  # noqa: E402
+from peano_lab.library import editions_v13 as v13  # noqa: E402
 from peano_lab.library.bertrand_defined_edition import BERTRAND_DEFINITIONS  # noqa: E402
 from peano_lab.library.defined_edition import DefinedEditionError  # noqa: E402
 from peano_lab.library.defined_syntax import DEFINITIONS  # noqa: E402
@@ -38,8 +39,17 @@ from peano_lab.library.theorems import TheoremSpec, _specs_by_name  # noqa: E402
 OUTPUT = REPO / "book" / "_static" / "constructive-frontier-explorer"
 CANDIDATE_STATUS = (
     "dependency-curried kernel-checked candidate body; "
-    "not admitted to Alpha/Stable"
+    "Alpha enrollment varies; not admitted for checked use or Stable"
 )
+UNENROLLED_CANDIDATE_STATUS = (
+    "dependency-curried kernel-checked candidate body; "
+    "not enrolled in Alpha or Stable"
+)
+ALPHA_BODY_STATUS = (
+    "Alpha v13 enrolled · body_checked; "
+    "not admitted for checked use or Stable"
+)
+ALPHA_EDITION_VERSION = "v13"
 MANIFEST_SCHEMA = "peano-lab-constructive-frontier-explorer-v1"
 MAX_DEFINED_STATEMENT_CHARACTERS = 12_000
 MAX_DEFINED_ROOT_STATEMENT_CHARACTERS = 42_000
@@ -101,7 +111,7 @@ FAMILIES = (
         kicker="Prime representations and constructive classification",
         formula="n = x²+y² ⇔ n = 0 or every p ≡ 3 (mod 4) has even vₚ(n)",
         description="Explore the complete constructive all-natural two-square classification: prime representations, multiplication, valuation necessity, strictly decreasing sufficiency, and the explicit zero boundary.",
-        scope="The complete all-natural iff, its nonzero specialization, prime classification, Brahmagupta–Fibonacci multiplication, and explicit constructive witnesses are kernel-checked dependency-curried candidate bodies; Alpha/Stable admission remains a separate release gate.",
+        scope="The complete all-natural iff, its nonzero specialization, prime classification, Brahmagupta–Fibonacci multiplication, and explicit constructive witnesses are kernel-checked dependency-curried candidate bodies; selected four-square prerequisites are enrolled in Alpha v13 as body_checked, while full-classification Alpha/Stable admission remains a separate release gate.",
         roots=(
             "prime_mod_four_one_is_sum_of_two_squares",
             "brahmagupta_fibonacci_two_square_identity",
@@ -141,7 +151,7 @@ FAMILIES = (
         kicker="Complete constructive universal representation",
         formula="∀ n ∈ ℕ. ∃ a,b,c,d. n = a² + b² + c² + d²",
         description="Explore the complete constructive proof that every natural number is a sum of four squares: both Euler quaternion identities, actual bounded prime seeds, all sixteen signed orientations, strict multiplier descent, and explicit prime-factor witnesses.",
-        scope="The complete universal Lagrange four-square theorem, representation of every prime, complete eight-variable Euler identity and signed-conjugate identity, explicit multiplicative closure, constructive modular seeds for every prime, all sixteen signed centered orientations, and bounded strict prime-multiple descent are kernel-checked dependency-curried candidate bodies; Alpha/Stable admission remains a separate release gate.",
+        scope="The complete universal Lagrange four-square theorem, representation of every prime, complete eight-variable Euler identity and signed-conjugate identity, explicit multiplicative closure, constructive modular seeds for every prime, all sixteen signed centered orientations, and bounded strict prime-multiple descent are kernel-checked dependency-curried bodies; the universal endpoint and its exact prerequisite closure are enrolled in Alpha v13 as body_checked, without checked-use authority or Stable admission.",
         roots=(
             "quaternion_coordinate_square_balance_total",
             "quaternion_coordinate_absolute_total",
@@ -232,7 +242,7 @@ FAMILIES = (
         kicker="Complete constructive base-p digitwise congruence",
         formula="n = Σ nᵢpⁱ · k = Σ kᵢpⁱ · (n choose k) ≡ ∏ (nᵢ choose kᵢ) (mod p)",
         description="Explore the complete unconditional constructive multidigit Lucas congruence, genuinely terminating beta-coded digit chains, exact prime-block Pascal identities, coefficient streams, and witnessed digitwise products.",
-        scope="The complete arbitrary-length multidigit Lucas congruence, terminating beta-coded quotient/digit chains, actual coefficient/product witnesses, and unrestricted prime-block one-step identity are kernel-checked dependency-curried candidate bodies; Alpha/Stable admission remains a separate release gate.",
+        scope="The complete arbitrary-length multidigit Lucas congruence, terminating beta-coded quotient/digit chains, actual coefficient/product witnesses, and unrestricted prime-block one-step identity are kernel-checked dependency-curried bodies; the multidigit endpoint and its exact prerequisite closure are enrolled in Alpha v13 as body_checked, without checked-use authority or Stable admission.",
         roots=(
             "lucas_digit_carry_iff_prime_divides",
             "lucas_digit_no_carry_iff_not_divides",
@@ -521,6 +531,8 @@ def _factory_sources(family: Family) -> tuple[tuple[str, str], ...]:
 def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
     rows: list[dict[str, Any]] = []
     selected: dict[str, dict[str, Any]] = {}
+    alpha_entries = v13.ALPHA_EDITION.by_name
+    alpha_campaigns = v13.alpha_v13_enrollment().campaign_by_name
     for module_index, (module_name, factory_name) in enumerate(_factory_sources(family)):
         module = importlib.import_module(f"peano_lab.library.{module_name}")
         factory = getattr(module, factory_name, None)
@@ -540,6 +552,25 @@ def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
                 )
                 selected[item.name]["sources"].append(source)
                 continue
+            alpha_entry = alpha_entries.get(item.name)
+            alpha_campaign = alpha_campaigns.get(item.name)
+            if alpha_entry is not None:
+                if (
+                    alpha_entry.spec.statement != item.statement
+                    or tuple(alpha_entry.spec.dependencies) != tuple(item.dependencies)
+                    or tuple(alpha_entry.spec.script) != tuple(item.script)
+                ):
+                    raise ValueError(
+                        f"candidate {item.name!r} differs from its sealed Alpha-v13 entry"
+                    )
+                if (
+                    alpha_entry.evidence is not v13.EvidenceStatus.BODY_CHECKED
+                    or alpha_entry.checked_use
+                    or alpha_campaign is None
+                ):
+                    raise ValueError(
+                        f"candidate {item.name!r} has unexpected Alpha-v13 evidence"
+                    )
             row = {
                 "name": item.name,
                 "summary": item.summary,
@@ -552,7 +583,27 @@ def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
                 "sources": [source],
                 "module_index": module_index,
                 "module_order": module_order,
-                "status": CANDIDATE_STATUS,
+                "status": (
+                    ALPHA_BODY_STATUS
+                    if alpha_entry is not None
+                    else UNENROLLED_CANDIDATE_STATUS
+                ),
+                "enrolled_in_alpha": alpha_entry is not None,
+                "alpha_evidence": (
+                    alpha_entry.evidence.value if alpha_entry is not None else None
+                ),
+                "alpha_checked_use": (
+                    alpha_entry.checked_use if alpha_entry is not None else False
+                ),
+                "alpha_edition_version": (
+                    ALPHA_EDITION_VERSION if alpha_entry is not None else None
+                ),
+                "alpha_edition_identity_sha256": (
+                    v13.ALPHA_V13_IDENTITY_SHA256 if alpha_entry is not None else None
+                ),
+                "alpha_campaign": (
+                    alpha_campaign.value if alpha_campaign is not None else None
+                ),
                 "admitted_to_alpha": False,
                 "admitted_to_stable": False,
                 "root": item.name in family.roots,
@@ -581,15 +632,23 @@ def build_corpora() -> dict[str, dict[str, Any]]:
         node["name"]: slug for slug, nodes in candidates.items() for node in nodes
     }
     public = _specs_by_name()
-    alpha_entries = v12.ALPHA_EDITION.by_name
+    alpha_entries = v13.ALPHA_EDITION.by_name
     corpora: dict[str, dict[str, Any]] = {}
     for family in FAMILIES:
         nodes = candidates[family.slug]
         local = {node["name"] for node in nodes}
         edges: list[dict[str, Any]] = []
-        external: dict[str, dict[str, str]] = {}
+        external: dict[str, dict[str, Any]] = {}
         for node in nodes:
             for dependency in node["dependencies"]:
+                alpha_entry = alpha_entries.get(dependency)
+                enrolled_alpha = alpha_entry is not None
+                alpha_evidence = (
+                    alpha_entry.evidence.value if alpha_entry is not None else None
+                )
+                checked_use = (
+                    alpha_entry.checked_use if alpha_entry is not None else False
+                )
                 if dependency in local:
                     kind = "internal-candidate"
                     origin = family.slug
@@ -602,19 +661,19 @@ def build_corpora() -> dict[str, dict[str, Any]]:
                     evidence = "dependency-curried-candidate-body"
                     admitted_alpha = False
                     admitted_stable = False
-                elif (entry := alpha_entries.get(dependency)) is not None:
-                    evidence = entry.evidence.value
-                    if entry.evidence is v12.EvidenceStatus.STABLE_CLOSED:
+                elif alpha_entry is not None:
+                    evidence = alpha_entry.evidence.value
+                    if alpha_entry.evidence is v13.EvidenceStatus.STABLE_CLOSED:
                         kind = "stable-admitted-theorem"
                         origin = "sealed-stable-edition"
                         admitted_alpha = True
                         admitted_stable = True
-                    elif entry.evidence is v12.EvidenceStatus.ALPHA_CLOSED:
+                    elif alpha_entry.evidence is v13.EvidenceStatus.ALPHA_CLOSED:
                         kind = "alpha-admitted-theorem"
                         origin = "sealed-alpha-edition"
                         admitted_alpha = True
                         admitted_stable = False
-                    elif entry.evidence is v12.EvidenceStatus.BODY_CHECKED:
+                    elif alpha_entry.evidence is v13.EvidenceStatus.BODY_CHECKED:
                         kind = "alpha-enrolled-candidate-not-admitted"
                         origin = "sealed-alpha-body-only"
                         admitted_alpha = False
@@ -642,6 +701,12 @@ def build_corpora() -> dict[str, dict[str, Any]]:
                         "target": node["name"],
                         "kind": kind,
                         "evidence": evidence,
+                        "enrolled_in_alpha": enrolled_alpha,
+                        "alpha_evidence": alpha_evidence,
+                        "alpha_checked_use": checked_use,
+                        "alpha_edition_version": (
+                            ALPHA_EDITION_VERSION if enrolled_alpha else None
+                        ),
                         "admitted_to_alpha": admitted_alpha,
                         "admitted_to_stable": admitted_stable,
                     }
@@ -652,6 +717,12 @@ def build_corpora() -> dict[str, dict[str, Any]]:
                         "kind": kind,
                         "origin": origin,
                         "evidence": evidence,
+                        "enrolled_in_alpha": enrolled_alpha,
+                        "alpha_evidence": alpha_evidence,
+                        "alpha_checked_use": checked_use,
+                        "alpha_edition_version": (
+                            ALPHA_EDITION_VERSION if enrolled_alpha else None
+                        ),
                         "admitted_to_alpha": admitted_alpha,
                         "admitted_to_stable": admitted_stable,
                     }
@@ -676,6 +747,19 @@ def build_corpora() -> dict[str, dict[str, Any]]:
             "description": family.description,
             "scope": family.scope,
             "candidate_status": CANDIDATE_STATUS,
+            "alpha_edition_version": ALPHA_EDITION_VERSION,
+            "alpha_edition_identity_sha256": v13.ALPHA_V13_IDENTITY_SHA256,
+            "alpha_enrolled_node_count": sum(
+                node["enrolled_in_alpha"] for node in nodes
+            ),
+            "alpha_checked_use_node_count": sum(
+                node["alpha_checked_use"] for node in nodes
+            ),
+            "alpha_enrolled_root_names": [
+                node["name"]
+                for node in nodes
+                if node["root"] and node["enrolled_in_alpha"]
+            ],
             "admitted_to_alpha": False,
             "admitted_to_stable": False,
             "root_names": [name for name in family.roots if name in local],
@@ -702,6 +786,14 @@ def build_corpora() -> dict[str, dict[str, Any]]:
             "edges": edges,
             "example": family.example,
         }
+    displayed_alpha_names = {
+        node["name"]
+        for corpus in corpora.values()
+        for node in corpus["nodes"]
+        if node["enrolled_in_alpha"]
+    }
+    if displayed_alpha_names != set(v13.FRONTIER_V13_EXPECTED_NAMES):
+        raise ValueError("constructive explorers do not cover the exact Alpha-v13 append")
     return corpora
 
 
@@ -830,6 +922,7 @@ def _family_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     <p class="frontier-formula">{html.escape(family.formula)}</p>
     <p class="frontier-description">{html.escape(family.description)}</p>
     <p class="frontier-status">{html.escape(CANDIDATE_STATUS)}</p>
+    <p class="frontier-reading-note">Alpha v13 body_checked enrollment: {corpus['alpha_enrolled_node_count']} of {corpus['node_count']} displayed bodies · checked-use authorizations: {corpus['alpha_checked_use_node_count']}</p>
     <p class="frontier-scope">{html.escape(family.scope)}</p>
     <dl class="frontier-stats"><div><dt>{corpus['node_count']}</dt><dd>candidate bodies</dd></div><div><dt>{corpus['edge_count']}</dt><dd>dependency edges</dd></div><div><dt>{corpus['definition_count']}</dt><dd>definitions</dd></div><div><dt>{corpus['formal_line_count']}</dt><dd>exact tactic lines</dd></div></dl>
     <p class="frontier-reading-note">{corpus['compacted_statement_count']} readable definition-compacted statements · {corpus['defined_tactic_proposition_count']} linked local proof propositions · exact AST-equivalence receipts</p>
@@ -839,7 +932,7 @@ def _family_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     <section class="frontier-detail" id="frontier-detail" aria-live="polite"><h2>Choose a theorem</h2><p>Select a graph node to inspect its readable defined notation, exact first-order statement, linked definitions, declaration, dependencies, proof script, and source receipts.</p></section>
     {_example_markup(family)}
     <section class="frontier-definitions"><h2>Conservative definitions</h2><p>Each notation below expands immediately into the unchanged first-order language; it introduces no trusted kernel predicate.</p>{definition_cards}</section>
-    <section class="frontier-boundary"><h2>Evidence and release boundary</h2><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p><p>This browser surface does not replay a proof, authorize theorem use, alter an edition, or assert completion beyond the exact listed endpoints.</p></section>
+    <section class="frontier-boundary"><h2>Evidence and release boundary</h2><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p><p>Alpha v13 enrolls exactly {corpus['alpha_enrolled_node_count']} of these {corpus['node_count']} displayed bodies as body_checked. Enrollment records an exact dependency-curried proof body; it does not grant checked theorem use, empty-context closure, or Stable membership. This browser surface does not replay a proof, authorize theorem use, alter an edition, or assert completion beyond the exact listed endpoints.</p></section>
   </main>
   <script id="frontier-corpus" type="application/json">{safe_json}</script>
   <script src="../assets/frontier.js" defer></script>
@@ -921,9 +1014,19 @@ FRONTIER_JS = r"""(() => {
       if (center) item.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});
     });
     const dependencies = node.dependencies.map(dependency => {
-      if (nodes.has(dependency)) return `<button class="frontier-chip internal" data-dependency="${escape(dependency)}" type="button">${escape(dependency)} · candidate</button>`;
+      if (nodes.has(dependency)) {
+        const target = nodes.get(dependency);
+        const channel = target.enrolled_in_alpha ? "Alpha v13 · body checked" : "candidate · unenrolled";
+        return `<button class="frontier-chip internal" data-dependency="${escape(dependency)}" type="button">${escape(dependency)} · ${escape(channel)}</button>`;
+      }
       const evidence = external.get(dependency);
-      const channel = evidence?.admitted_to_stable ? "Stable closed" : evidence?.admitted_to_alpha ? "Alpha closed" : "candidate · not admitted";
+      const channel = evidence?.admitted_to_stable
+        ? "Stable closed"
+        : evidence?.admitted_to_alpha
+          ? "Alpha closed"
+          : evidence?.enrolled_in_alpha
+            ? `Alpha ${evidence.alpha_edition_version} · ${evidence.alpha_evidence} · not admitted`
+            : "candidate · unenrolled";
       return `<button class="frontier-chip external" data-dependency="${escape(dependency)}" type="button" title="${escape(evidence?.evidence || "release-status-unattested")}">${escape(dependency)} · ${escape(channel)}</button>`;
     }).join("");
     const provenance = node.sources.map(source => `<span class="frontier-chip ${source.selected ? "internal" : "external"}">${escape(source.source_module)} · ${source.selected ? "selected canonical source" : source.matches_selected_statement ? "matching alternate source" : "non-selected alternate statement"}</span>`).join("");
@@ -1010,7 +1113,9 @@ def _landing_html(corpora: Mapping[str, Mapping[str, Any]]) -> bytes:
         f'<article><h2><a href="{family.slug}/">{html.escape(family.title)}</a></h2>'
         f'<p>{html.escape(family.description)}</p><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p>'
         f'<p>{corpora[family.slug]["node_count"]} candidate bodies · '
-        f'{corpora[family.slug]["definition_count"]} conservative definitions</p></article>'
+        f'{corpora[family.slug]["definition_count"]} conservative definitions · '
+        f'{corpora[family.slug]["alpha_enrolled_node_count"]} Alpha v13 body_checked · '
+        f'{corpora[family.slug]["alpha_checked_use_node_count"]} checked-use authorizations</p></article>'
         for family in FAMILIES
     )
     return (
@@ -1043,6 +1148,12 @@ def build_files() -> tuple[dict[str, bytes], dict[str, Any]]:
                 "slug": family.slug,
                 "title": family.title,
                 "candidate_status": CANDIDATE_STATUS,
+                "alpha_edition_version": ALPHA_EDITION_VERSION,
+                "alpha_enrolled_node_count": corpus["alpha_enrolled_node_count"],
+                "alpha_checked_use_node_count": corpus[
+                    "alpha_checked_use_node_count"
+                ],
+                "alpha_enrolled_root_names": corpus["alpha_enrolled_root_names"],
                 "node_count": corpus["node_count"],
                 "edge_count": corpus["edge_count"],
                 "definition_count": corpus["definition_count"],
@@ -1061,6 +1172,14 @@ def build_files() -> tuple[dict[str, bytes], dict[str, Any]]:
     manifest = {
         "schema": MANIFEST_SCHEMA,
         "candidate_status": CANDIDATE_STATUS,
+        "alpha_edition_version": ALPHA_EDITION_VERSION,
+        "alpha_edition_identity_sha256": v13.ALPHA_V13_IDENTITY_SHA256,
+        "alpha_enrolled_node_count": sum(
+            corpus["alpha_enrolled_node_count"] for corpus in corpora.values()
+        ),
+        "alpha_checked_use_node_count": sum(
+            corpus["alpha_checked_use_node_count"] for corpus in corpora.values()
+        ),
         "admitted_to_alpha": False,
         "admitted_to_stable": False,
         "family_count": len(FAMILIES),

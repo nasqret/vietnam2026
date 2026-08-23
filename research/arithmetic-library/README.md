@@ -89,6 +89,11 @@ arithmetic library. Start with:
   542-/544-node dependency-closed capstone slices, the 339-/341-row
   body-evidence gap, eight cross-campaign QR prerequisites, and the
   fail-closed proof-checking preflight for a future immutable release;
+- [`Alpha v13 frontier admission RFC`](alpha-v13-frontier-admission-rfc-v1.md):
+  the exact additive 196-row Lagrange and 44-row Lucas dependency closures,
+  their sealed 1,303-row Alpha-v12 parent, 240 body-only Alpha enrollments,
+  unchanged Stable/checked-use authority, and independently verifiable
+  provenance, topology, root, and artifact receipts;
 - [`quadratic supplementary laws RFC`](ha-quadratic-supplementary-laws-rfc-v1.md):
   complete constructive proofs of both supplementary laws, including the
   exact beta-coded Gauss reflection-count identification and separate
@@ -215,6 +220,52 @@ arithmetic library. Start with:
   existing evidence, prove full Kummer, construct the two-square
   classification, develop four-square/Fermat descent, then extend to
   primitive roots, Lucas, Pell, and cyclotomic arithmetic.
+
+## Current additive Alpha v13: completed Lagrange and Lucas body enrollment
+
+Alpha v13 appends exactly 240 dependency-topologically ordered, independently
+kernel-checked proof bodies to the unchanged sealed 1,303-entry Alpha-v12
+parent: 196 entries in the completed Lagrange four-square closure and 44
+entries in the completed arbitrary-length Lucas closure. Eighteen of the
+four-square closure rows are shared two-square prerequisites; this does not
+enroll the full two-square classification. Exactly 224 of the 464 current
+frontier candidate rows remain outside Alpha v13.
+
+The complete 1,543-entry Alpha-v13 ledger has 432 `stable_closed`, 138
+`alpha_closed`, 972 `body_checked`, and one `pending_layered_closure` entry.
+Its sealed graph contains 5,189 dependency edges across 45 layers. Stable
+remains its exact object-identical 432-entry release; the only entries
+permitted for checked theorem use are the same 570 independently closed
+Stable/Alpha theorems already available in Alpha v12. All 240 new entries are
+`ALPHA_ONLY` and `BODY_CHECKED`, with `checked_use = false`. Fifty-three
+unchecked Alpha-v12 parent ancestors block any inferred empty-context closure
+or checked-use authority for the two new flagships.
+
+The enrolled roots retain their exact first-order statement receipts:
+
+- `four_square_lagrange`: every natural is a sum of four witnessed natural
+  squares; SHA-256
+  `fb653494c208dd59fac181164286a628866e3f7ca467e2a04314b9cb1f3c29a5`.
+- `lucas_theorem`: the complete constructive multidigit binomial congruence
+  with witnessed terminating base-prime digit streams; SHA-256
+  `396e47df462c415ea6ea8e29c7506bfb1dc7077a96e768295b1949256d9b0564`.
+
+The sealed Alpha-v13 ordered enrollment identity is
+`6b223edfe6a2e02dc09576671f4fc5f5a41aaf4156f829164222dd3e494da22f`; its
+complete edition identity is
+`a010e0ee5dece0d3325e8ec084c1f8769ef8e9ca47e2de891d344e54c1b439d1`.
+The complete construction, boundary, and exact provenance are specified in
+the [Alpha v13 frontier admission RFC](alpha-v13-frontier-admission-rfc-v1.md).
+
+Run `make peano-library-alpha-v13` to regenerate the four versioned Alpha-v13
+artifacts. Run `make peano-library-alpha-v13-check` to execute the deterministic
+builder check, the independent artifact verifier, a fail-closed release
+tampering suite, and the focused release admission suite as separate bounded
+Python processes. The compatibility
+aliases are `make peano-library-channels-v13` and
+`make peano-library-channels-v13-check`. These additive commands never change
+Alpha v1–v12, the sealed Stable edition, or the historical QR/Stable proof
+authority boundary.
 
 Run `make ha-constructive-frontier-check` for the isolated, resource-bounded
 post-Bertrand frontier audits. Each focused suite runs in its own Python

@@ -1,7 +1,12 @@
 {
   "admitted_to_alpha": false,
   "admitted_to_stable": false,
-  "candidate_status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+  "alpha_checked_use_node_count": 0,
+  "alpha_edition_identity_sha256": "a010e0ee5dece0d3325e8ec084c1f8769ef8e9ca47e2de891d344e54c1b439d1",
+  "alpha_edition_version": "v13",
+  "alpha_enrolled_node_count": 0,
+  "alpha_enrolled_root_names": [],
+  "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
   "compacted_statement_count": 24,
   "defined_statement_count": 28,
   "defined_tactic_proposition_count": 15,
@@ -216,6 +221,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_comm",
@@ -224,6 +233,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "zero_add",
@@ -232,6 +245,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "prime_predecessor_nonzero",
@@ -240,6 +257,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "pow_exists",
@@ -248,6 +269,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "release-status-unattested",
       "kind": "external-unenrolled-candidate",
       "source": "bounded_euler_criterion_complete",
@@ -256,6 +281,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "pow_predecessor_parity_mod",
@@ -264,6 +293,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "parity_cases",
@@ -272,6 +305,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "zero_add",
@@ -280,6 +317,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "odd_predecessor_double_half",
@@ -288,6 +329,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "quadratic_supplement_minus_one_half_parity",
@@ -296,6 +341,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "source": "odd_half_even_iff_mod4_one",
@@ -304,6 +353,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "odd_predecessor_double_half",
@@ -312,6 +365,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "quadratic_supplement_minus_one_half_parity",
@@ -320,6 +377,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "source": "odd_half_odd_iff_mod4_three",
@@ -328,6 +389,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "quadratic_supplement_minus_one_residue_iff_mod_four_one",
@@ -336,6 +401,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "quadratic_supplement_minus_one_nonresidue_iff_mod_four_three",
@@ -344,6 +413,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_assoc",
@@ -352,6 +425,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "parity_cases",
@@ -360,6 +437,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_add",
@@ -368,6 +449,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "four_mul_eq_double_double",
@@ -376,6 +461,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "eight_mul_eq_double_four",
@@ -384,6 +473,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "parity_cases",
@@ -392,6 +485,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "division_remainder_unique",
@@ -400,6 +497,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "mod_eight_remainder_unique",
@@ -408,6 +509,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "even_successor_to_odd",
@@ -416,6 +521,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_add",
@@ -424,6 +533,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "four_mul_eq_double_double",
@@ -432,6 +545,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "eight_mul_eq_double_four",
@@ -440,6 +557,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "odd_successor_to_even",
@@ -448,6 +569,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_add",
@@ -456,6 +581,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "four_mul_eq_double_double",
@@ -464,6 +593,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "eight_mul_eq_double_four",
@@ -472,6 +605,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "doubling_gauss_even_count_implies_good_mod_eight",
@@ -480,6 +617,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "doubling_gauss_odd_count_implies_bad_mod_eight",
@@ -488,6 +629,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "mod_eight_good_bad_exclusive",
@@ -496,6 +641,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "parity_cases",
@@ -504,6 +653,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_le_mul_left",
@@ -512,6 +665,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_succ_left",
@@ -520,6 +677,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_add",
@@ -528,6 +689,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_assoc",
@@ -536,6 +701,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_comm",
@@ -544,6 +713,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_succ_left",
@@ -552,6 +725,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_le_mul_left",
@@ -560,6 +737,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_right_cancel",
@@ -568,6 +749,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_comm",
@@ -576,6 +761,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "zero_add",
@@ -584,6 +773,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_assoc",
@@ -592,6 +785,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_comm",
@@ -600,6 +797,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_succ_left",
@@ -608,6 +809,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "beta_range_entry_eq",
@@ -616,6 +821,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "beta_at_unique",
@@ -624,6 +833,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "source": "eisenstein_initial_segment_decoded_choice",
@@ -632,6 +845,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "doubling_half_range_below_odd_modulus",
@@ -640,6 +857,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "source": "odd_signed_division_branch_exact",
@@ -648,6 +869,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "doubling_floor_above_implies_double_above_half",
@@ -656,6 +881,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "doubling_floor_below_implies_double_at_most_half",
@@ -664,6 +893,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "reflected_double_above_odd_half",
@@ -672,6 +905,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "lt_not_le",
@@ -680,6 +917,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "zero_add",
@@ -688,6 +929,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_succ_left",
@@ -696,6 +941,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_comm",
@@ -704,6 +953,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "zero_add",
@@ -712,6 +965,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_succ_left",
@@ -720,6 +977,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "doubling_half_decomposition_lower_bound",
@@ -728,6 +989,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "source": "eisenstein_initial_segment_bit_count_exact",
@@ -736,6 +1001,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "source": "complementary_bit_counts_add_length",
@@ -744,6 +1013,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_comm",
@@ -752,6 +1025,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "zero_add",
@@ -760,6 +1037,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_succ_left",
@@ -768,6 +1049,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "add_right_cancel",
@@ -776,6 +1061,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "parity_cases",
@@ -784,6 +1073,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "source": "eisenstein_initial_segment_prefix_exists",
@@ -792,6 +1085,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "doubling_gauss_initial_segment_complement",
@@ -800,6 +1097,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "doubling_gauss_count_shape_from_initial_segment_complement",
@@ -808,6 +1109,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "doubling_gauss_count_parity_mod_eight_complete",
@@ -816,6 +1121,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "nonzero_is_succ",
@@ -824,6 +1133,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "mul_add",
@@ -832,6 +1145,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "zero_add",
@@ -840,6 +1157,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "odd_prime_strictly_exceeds_two",
@@ -848,6 +1169,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "source": "beta_range_exists",
@@ -856,6 +1181,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "release-status-unattested",
       "kind": "external-unenrolled-candidate",
       "source": "bounded_gauss_lemma_complete",
@@ -864,6 +1193,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "doubling_gauss_reflection_count_shape",
@@ -872,6 +1205,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "quadratic_supplement_two_conditional_on_gauss_count_shape",
@@ -880,6 +1217,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "quadratic_supplement_two_half_complete",
@@ -888,6 +1229,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "quadratic_supplement_two_half_complete",
@@ -896,6 +1241,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "quadratic_supplement_two_residue_iff_mod_eight_one_or_seven",
@@ -904,6 +1253,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "dependency-curried-candidate-body",
       "kind": "internal-candidate",
       "source": "quadratic_supplement_two_nonresidue_iff_mod_eight_three_or_five",
@@ -915,6 +1268,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "add_assoc",
@@ -923,6 +1280,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "add_comm",
@@ -931,6 +1292,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "add_right_cancel",
@@ -939,6 +1304,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "add_succ_left",
@@ -947,6 +1316,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "beta_at_unique",
@@ -955,6 +1328,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "beta_range_entry_eq",
@@ -963,6 +1340,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "beta_range_exists",
@@ -971,6 +1352,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "release-status-unattested",
       "kind": "external-unenrolled-candidate",
       "name": "bounded_euler_criterion_complete",
@@ -979,6 +1364,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
       "evidence": "release-status-unattested",
       "kind": "external-unenrolled-candidate",
       "name": "bounded_gauss_lemma_complete",
@@ -987,6 +1376,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "name": "complementary_bit_counts_add_length",
@@ -995,6 +1388,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "division_remainder_unique",
@@ -1003,6 +1400,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "name": "eisenstein_initial_segment_bit_count_exact",
@@ -1011,6 +1412,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "name": "eisenstein_initial_segment_decoded_choice",
@@ -1019,6 +1424,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "name": "eisenstein_initial_segment_prefix_exists",
@@ -1027,6 +1436,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "even_successor_to_odd",
@@ -1035,6 +1448,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "four_mul_eq_double_double",
@@ -1043,6 +1460,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "lt_not_le",
@@ -1051,6 +1472,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "mul_add",
@@ -1059,6 +1484,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "mul_assoc",
@@ -1067,6 +1496,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "mul_comm",
@@ -1075,6 +1508,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "mul_le_mul_left",
@@ -1083,6 +1520,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "nonzero_is_succ",
@@ -1091,6 +1532,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "name": "odd_half_even_iff_mod4_one",
@@ -1099,6 +1544,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "name": "odd_half_odd_iff_mod4_three",
@@ -1107,6 +1556,10 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
       "evidence": "body_checked",
       "kind": "alpha-enrolled-candidate-not-admitted",
       "name": "odd_signed_division_branch_exact",
@@ -1115,6 +1568,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "odd_successor_to_even",
@@ -1123,6 +1580,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "parity_cases",
@@ -1131,6 +1592,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "pow_exists",
@@ -1139,6 +1604,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "pow_predecessor_parity_mod",
@@ -1147,6 +1616,10 @@
     {
       "admitted_to_alpha": true,
       "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v13",
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
       "evidence": "stable_closed",
       "kind": "stable-admitted-theorem",
       "name": "zero_add",
@@ -1162,6 +1635,11 @@
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "∀ p. ∀ n. p = S n → Prime(p) → ¬n = 0",
@@ -1208,6 +1686,7 @@
         "statement_status": "exact-ast-equivalent"
       },
       "dependencies": [],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_minus_one_candidate_theorems",
       "module_index": 0,
       "module_order": 0,
@@ -1237,12 +1716,17 @@
       ],
       "statement": "forall p n. p = S n -> ((~(p = 1) /\\ forall frm_prime_left_qsm_prime frm_prime_right_qsm_prime. p = frm_prime_left_qsm_prime * frm_prime_right_qsm_prime -> frm_prime_left_qsm_prime = 1 \\/ frm_prime_right_qsm_prime = 1)) -> ~(n = 0)",
       "statement_sha256": "981f890dda85857cd047906cf398fcc9e195cc8c9f3642d89810a0bc24136cc0",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "The predecessor of a prime cannot be zero."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "forall p n h. p = S n -> p = 2 * h + 1 -> n = h + h",
@@ -1273,6 +1757,7 @@
         "mul_comm",
         "zero_add"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_minus_one_candidate_theorems",
       "module_index": 0,
       "module_order": 1,
@@ -1317,12 +1802,17 @@
       ],
       "statement": "forall p n h. p = S n -> p = 2 * h + 1 -> n = h + h",
       "statement_sha256": "34a72fd5c00ef7946258390cd8c35d58cc3ec74049f23875f1d6ba705350bc9c",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "An odd successor has predecessor equal to twice its odd half."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -1508,6 +1998,7 @@
         "parity_cases",
         "zero_add"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_minus_one_candidate_theorems",
       "module_index": 0,
       "module_order": 2,
@@ -1618,12 +2109,17 @@
       ],
       "statement": "forall p n h. p = S n -> ((~(p = 1) /\\ forall frm_prime_left_qsm_prime frm_prime_right_qsm_prime. p = frm_prime_left_qsm_prime * frm_prime_right_qsm_prime -> frm_prime_left_qsm_prime = 1 \\/ frm_prime_right_qsm_prime = 1)) -> n = h + h -> ((((((exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor) -> (exists qsm_even_half. h = 2 * qsm_even_half)) /\\ ((exists qsm_even_half. h = 2 * qsm_even_half) -> (exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)))) /\\ ((((~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)) -> (exists qsm_odd_half. h = 2 * qsm_odd_half + 1)) /\\ ((exists qsm_odd_half. h = 2 * qsm_odd_half + 1) -> (~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)))))))",
       "statement_sha256": "bda266c91596a44668d02dffceb0bdce7c900a46463f6d47c0d0b9561ea52aba",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "For an odd prime, its predecessor is a quadratic residue exactly when the prime's half is even, and a nonresidue exactly when that half is odd."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -1859,6 +2355,7 @@
         "quadratic_supplement_minus_one_half_parity",
         "odd_half_even_iff_mod4_one"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_minus_one_candidate_theorems",
       "module_index": 0,
       "module_order": 3,
@@ -1916,12 +2413,17 @@
       ],
       "statement": "forall p n. p = S n -> ((~(p = 1) /\\ forall frm_prime_left_qsm_prime frm_prime_right_qsm_prime. p = frm_prime_left_qsm_prime * frm_prime_right_qsm_prime -> frm_prime_left_qsm_prime = 1 \\/ frm_prime_right_qsm_prime = 1)) -> (exists qsm_odd_modulus. p = 2 * qsm_odd_modulus + 1) -> ((((exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor) -> (exists qsm_four_one_modulus. p = 4 * qsm_four_one_modulus + 1)) /\\ ((exists qsm_four_one_modulus. p = 4 * qsm_four_one_modulus + 1) -> (exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor))))",
       "statement_sha256": "6c421211493d2f15a974fd7828e2bfdae80d4391cf65413efbf9e83c98e10c9d",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "The first supplementary law: minus one is a quadratic residue modulo an odd prime exactly when that prime is one modulo four."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -2157,6 +2659,7 @@
         "quadratic_supplement_minus_one_half_parity",
         "odd_half_odd_iff_mod4_three"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_minus_one_candidate_theorems",
       "module_index": 0,
       "module_order": 4,
@@ -2216,12 +2719,17 @@
       ],
       "statement": "forall p n. p = S n -> ((~(p = 1) /\\ forall frm_prime_left_qsm_prime frm_prime_right_qsm_prime. p = frm_prime_left_qsm_prime * frm_prime_right_qsm_prime -> frm_prime_left_qsm_prime = 1 \\/ frm_prime_right_qsm_prime = 1)) -> (exists qsm_odd_modulus. p = 2 * qsm_odd_modulus + 1) -> ((((~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)) -> (exists qsm_four_three_modulus. p = 4 * qsm_four_three_modulus + 3)) /\\ ((exists qsm_four_three_modulus. p = 4 * qsm_four_three_modulus + 3) -> (~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)))))",
       "statement_sha256": "c99890cd3fa32b6fe2f6bb79ec3a0f773530a49e0288ce17f0b249a78f7b8b06",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "The first supplementary law's complementary branch: minus one is a nonresidue exactly for odd primes that are three modulo four."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "∀ p. ∀ n. p = S n → Prime(p) → Odd(p) → (QRes(p,n) → Mod4One(p)) ∧ (Mod4One(p) → QRes(p,n)) ∧ ((¬QRes(p,n) → Mod4Three(p)) ∧ (Mod4Three(p) → ¬QRes(p,n)))",
@@ -2380,6 +2888,7 @@
         "quadratic_supplement_minus_one_residue_iff_mod_four_one",
         "quadratic_supplement_minus_one_nonresidue_iff_mod_four_three"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_minus_one_candidate_theorems",
       "module_index": 0,
       "module_order": 5,
@@ -2417,12 +2926,17 @@
       ],
       "statement": "forall p n. p = S n -> ((~(p = 1) /\\ forall frm_prime_left_qsm_prime frm_prime_right_qsm_prime. p = frm_prime_left_qsm_prime * frm_prime_right_qsm_prime -> frm_prime_left_qsm_prime = 1 \\/ frm_prime_right_qsm_prime = 1)) -> (exists qsm_odd_modulus. p = 2 * qsm_odd_modulus + 1) -> (((((exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor) -> (exists qsm_four_one_modulus. p = 4 * qsm_four_one_modulus + 1)) /\\ ((exists qsm_four_one_modulus. p = 4 * qsm_four_one_modulus + 1) -> (exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)))) /\\ ((((~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)) -> (exists qsm_four_three_modulus. p = 4 * qsm_four_three_modulus + 3)) /\\ ((exists qsm_four_three_modulus. p = 4 * qsm_four_three_modulus + 3) -> (~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor))))))",
       "statement_sha256": "7ea81062b843e7fff4939ffce5b6fa14a87312619f7f49e3abd5993bfa02134e",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "Complete constructive first supplementary law, including both the one-modulo-four residue and three-modulo-four nonresidue cases."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "forall a. 8 * a = 2 * (4 * a)",
@@ -2452,6 +2966,7 @@
       "dependencies": [
         "mul_assoc"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 0,
@@ -2477,12 +2992,17 @@
       ],
       "statement": "forall a. 8 * a = 2 * (4 * a)",
       "statement_sha256": "e855597bfd7ffd5055cad7152ca8f8cc2e9fbb34a97f054f0e53698a730f1df1",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "Multiplication by eight is twice multiplication by four."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "∀ p. Odd(p) → (∃ x. p = 8 · x + 1) ∨ ((∃ x. p = 8 · x + 3) ∨ ((∃ x. p = 8 · x + 5) ∨ (∃ x. p = 8 · x + 7)))",
@@ -2534,6 +3054,7 @@
         "four_mul_eq_double_double",
         "eight_mul_eq_double_four"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 1,
@@ -2600,12 +3121,17 @@
       ],
       "statement": "forall p. (exists qst_odd_modulus. p = 2 * qst_odd_modulus + 1) -> (((exists qst_mod_eight_one. p = 8 * qst_mod_eight_one + 1) \\/ ((exists qst_mod_eight_three. p = 8 * qst_mod_eight_three + 3) \\/ ((exists qst_mod_eight_five. p = 8 * qst_mod_eight_five + 5) \\/ (exists qst_mod_eight_seven. p = 8 * qst_mod_eight_seven + 7)))))",
       "statement_sha256": "c5c8e14bd03c8405d805453d74239c312a1920d95fd6d6a042fa419f6a65402a",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "Every odd natural constructively belongs to one of the four residue classes one, three, five or seven modulo eight."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "forall h. exists e. (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape)))",
@@ -2635,6 +3161,7 @@
       "dependencies": [
         "parity_cases"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 2,
@@ -2667,12 +3194,17 @@
       ],
       "statement": "forall h. exists e. (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape)))",
       "statement_sha256": "c6e32e7398f6fead2a77f30f6de95c8ddee60a58bbaafbb3e0a52841354687a5",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "The explicit reflection-count shape for doubling exists constructively for every odd-prime half."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "∀ p. ∀ a. ∀ r. ∀ b. ∀ s. p = 8 · a + r → Lt(r,8) → p = 8 · b + s → Lt(s,8) → r = s",
@@ -2730,6 +3262,7 @@
       "dependencies": [
         "division_remainder_unique"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 3,
@@ -2772,12 +3305,17 @@
       ],
       "statement": "forall p a r b s. p = 8 * a + r -> (exists u. u + S r = 8) -> p = 8 * b + s -> (exists v. v + S s = 8) -> r = s",
       "statement_sha256": "a28a40170b35f9dd532b0be43b88fbd59ba196554d2791a8fa1933f42ed59568",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "Two bounded decompositions modulo eight have the same remainder."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "forall p. (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> false",
@@ -2807,6 +3345,7 @@
       "dependencies": [
         "mod_eight_remainder_unique"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 4,
@@ -2930,12 +3469,17 @@
       ],
       "statement": "forall p. (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> false",
       "statement_sha256": "f2bda38ce48a9c7235a1101a54372e135379f3ff4e6588060a47fee368bfd758",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "The favorable modulo-eight classes one and seven cannot equal the unfavorable classes three and five."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -3025,6 +3569,7 @@
         "four_mul_eq_double_double",
         "eight_mul_eq_double_four"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 5,
@@ -3076,12 +3621,17 @@
       ],
       "statement": "forall p h e. p = 2 * h + 1 -> (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape))) -> (exists qst_even_count. e = 2 * qst_even_count) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))",
       "statement_sha256": "49010a6533f273d3a2ea04025dcbf1e51239346a1a766bc7a0bb1c556b9ae2c5",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "An even doubling reflection count forces the prime to be one or seven modulo eight."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -3171,6 +3721,7 @@
         "four_mul_eq_double_double",
         "eight_mul_eq_double_four"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 6,
@@ -3222,12 +3773,17 @@
       ],
       "statement": "forall p h e. p = 2 * h + 1 -> (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape))) -> (exists qst_odd_count. e = 2 * qst_odd_count + 1) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))",
       "statement_sha256": "9221fcaef856417aef75584dff9989e894bd85c39ec0e6086503cdab7d0063a7",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "An odd doubling reflection count forces the prime to be three or five modulo eight."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "∀ p. ∀ h. ∀ e. p = 2 · h + 1 → h = 2 · e ∨ (∃ x. h = 2 · x + 1 ∧ e = S x) → (Even(e) → (∃ x. p = 8 · x + 1) ∨ (∃ x. p = 8 · x + 7)) ∧ ((∃ x. p = 8 · x + 1) ∨ (∃ x. p = 8 · x + 7) → Even(e)) ∧ ((Odd(e) → (∃ x. p = 8 · x + 3) ∨ (∃ x. p = 8 · x + 5)) ∧ ((∃ x. p = 8 · x + 3) ∨ (∃ x. p = 8 · x + 5) → Odd(e)))",
@@ -3313,6 +3869,7 @@
         "mod_eight_good_bad_exclusive",
         "parity_cases"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 7,
@@ -3392,12 +3949,17 @@
       ],
       "statement": "forall p h e. p = 2 * h + 1 -> (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape))) -> ((((((exists qst_even_count. e = 2 * qst_even_count) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))) /\\ ((((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (exists qst_even_count. e = 2 * qst_even_count)))) /\\ ((((exists qst_odd_count. e = 2 * qst_odd_count + 1) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))) /\\ ((((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> (exists qst_odd_count. e = 2 * qst_odd_count + 1))))))",
       "statement_sha256": "6e9c3f633796505c9621006d86680f2f93cf701e8ab59ac702a30b9e85d55f9c",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "For the exact doubling reflection-count shape, evenness is equivalent to classes one/seven and oddness to three/five."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -3490,6 +4052,7 @@
         "mul_le_mul_left",
         "add_succ_left"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 8,
@@ -3530,12 +4093,17 @@
       ],
       "statement": "forall h k x. (((h = 2 * k) \\/ (h = 2 * k + 1))) -> (exists qst_le_floor. qst_le_floor + (x) = (k)) -> (exists qst_le_doubled. qst_le_doubled + (2 * x) = (h))",
       "statement_sha256": "f04c55cb31fcec06595f360bc5fe09e4078d5cb063827165a92455231575298b",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "A source at most the odd-half floor has doubled value at most the half."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "∀ h. ∀ k. ∀ x. h = 2 · k ∨ h = 2 · k + 1 → Lt(k,x) → Lt(h,2 · x)",
@@ -3592,6 +4160,7 @@
         "add_comm",
         "add_succ_left"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 9,
@@ -3628,12 +4197,17 @@
       ],
       "statement": "forall h k x. (((h = 2 * k) \\/ (h = 2 * k + 1))) -> (exists qst_lt_floor. qst_lt_floor + S (k) = (x)) -> (exists qst_lt_doubled. qst_lt_doubled + S (h) = (2 * x))",
       "statement_sha256": "42bdee2de2f17c442bf5083337ded23ba4ce4aec60b55d87eb73a623ddd1bd96",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "A source strictly above the odd-half floor doubles beyond the half."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -3732,6 +4306,7 @@
       "dependencies": [
         "mul_le_mul_left"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 10,
@@ -3769,12 +4344,17 @@
       ],
       "statement": "forall p h x. p = 2 * h + 1 -> (exists qst_le_source. qst_le_source + (x) = (h)) -> (exists qst_lt_canonical. qst_lt_canonical + S (2 * x) = (p))",
       "statement_sha256": "0ae0029bd0c6412bd8577fbb5a18fa9d40ec6253bdd23341851f6400d5117e2a",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "Doubling a value in the canonical half range never wraps modulo the odd modulus."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "∀ p. ∀ h. ∀ x. ∀ m. p = 2 · h + 1 → Le(m,h) → 2 · x + m = p → Lt(h,2 · x)",
@@ -3840,6 +4420,7 @@
         "add_comm",
         "add_succ_left"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 11,
@@ -3905,12 +4486,17 @@
       ],
       "statement": "forall p h x m. p = 2 * h + 1 -> (exists qst_le_magnitude. qst_le_magnitude + (m) = (h)) -> 2 * x + m = p -> (exists qst_lt_doubled. qst_lt_doubled + S (h) = (2 * x))",
       "statement_sha256": "b5e1411d4f6027c6456e11b14e209922194b018709b2edb5bfc839d13fb8e015",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "An exact reflected doubled value necessarily lies above the odd half."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -4254,6 +4840,7 @@
         "zero_add",
         "add_succ_left"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 12,
@@ -4440,12 +5027,17 @@
       ],
       "statement": "forall p h a b c mb mc sb sc ib ic k. p = 2 * h + 1 -> a = 2 -> ((h = 2 * k) \\/ (h = 2 * k + 1)) -> (forall gsp_range_index_qst_goal_half. (exists gsp_lt_gap_qst_goal_half_range_bound. gsp_lt_gap_qst_goal_half_range_bound + S gsp_range_index_qst_goal_half = h) -> (((exists gsp_beta_height_qst_goal_half_range_entry. gsp_beta_height_qst_goal_half_range_entry + S (1 + gsp_range_index_qst_goal_half) = S ((S (gsp_range_index_qst_goal_half)) * c)) /\\ exists gsp_beta_quotient_qst_goal_half_range_entry. b = gsp_beta_quotient_qst_goal_half_range_entry * S ((S (gsp_range_index_qst_goal_half)) * c) + (1 + gsp_range_index_qst_goal_half)))) -> (forall gsp_index_qst_goal_signed. (exists gsp_lt_gap_qst_goal_signed_index_bound. gsp_lt_gap_qst_goal_signed_index_bound + S gsp_index_qst_goal_signed = h) -> (exists gsp_value_qst_goal_signed_entry gsp_magnitude_qst_goal_signed_entry gsp_sign_qst_goal_signed_entry. (((exists ff_h_gsp_qst_goal_signed_entry_source. ff_h_gsp_qst_goal_signed_entry_source + S (gsp_value_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * c)) /\\ exists ff_q_gsp_qst_goal_signed_entry_source. b = ff_q_gsp_qst_goal_signed_entry_source * S ((S (gsp_index_qst_goal_signed)) * c) + (gsp_value_qst_goal_signed_entry))) /\\ ((((exists ff_h_gsp_qst_goal_signed_entry_magnitude. ff_h_gsp_qst_goal_signed_entry_magnitude + S (gsp_magnitude_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * mc)) /\\ exists ff_q_gsp_qst_goal_signed_entry_magnitude. mb = ff_q_gsp_qst_goal_signed_entry_magnitude * S ((S (gsp_index_qst_goal_signed)) * mc) + (gsp_magnitude_qst_goal_signed_entry))) /\\ ((((exists ff_h_gsp_qst_goal_signed_entry_sign. ff_h_gsp_qst_goal_signed_entry_sign + S (gsp_sign_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * sc)) /\\ exists ff_q_gsp_qst_goal_signed_entry_sign. sb = ff_q_gsp_qst_goal_signed_entry_sign * S ((S (gsp_index_qst_goal_signed)) * sc) + (gsp_sign_qst_goal_signed_entry))) /\\ ((exists gsp_lt_gap_qst_goal_signed_entry_positive. gsp_lt_gap_qst_goal_signed_entry_positive + S 0 = gsp_magnitude_qst_goal_signed_entry) /\\ ((exists gsp_le_gap_qst_goal_signed_entry_bounded. gsp_le_gap_qst_goal_signed_entry_bounded + gsp_magnitude_qst_goal_signed_entry = h) /\\ ((gsp_sign_qst_goal_signed_entry = 0 \\/ gsp_sign_qst_goal_signed_entry = 1) /\\ (((gsp_sign_qst_goal_signed_entry = 0 /\\ (exists gsp_mod_left_qst_goal_signed_entry_lower gsp_mod_right_qst_goal_signed_entry_lower. (a * gsp_value_qst_goal_signed_entry) + p * gsp_mod_left_qst_goal_signed_entry_lower = (gsp_magnitude_qst_goal_signed_entry) + p * gsp_mod_right_qst_goal_signed_entry_lower)) \\/ (gsp_sign_qst_goal_signed_entry = 1 /\\ (exists gsp_mod_left_qst_goal_signed_entry_reflected gsp_mod_right_qst_goal_signed_entry_reflected. (a * gsp_value_qst_goal_signed_entry) + p * gsp_mod_left_qst_goal_signed_entry_reflected = ((2 * h) * gsp_magnitude_qst_goal_signed_entry) + p * gsp_mod_right_qst_goal_signed_entry_reflected))))))))))) -> (forall eis_index_qst_goal_initial. (exists eis_lt_gap_qst_goal_initial_bound. eis_lt_gap_qst_goal_initial_bound + S (eis_index_qst_goal_initial) = h) -> exists eis_bit_qst_goal_initial. ((((exists ff_h_eis_qst_goal_initial_decoded. ff_h_eis_qst_goal_initial_decoded + S (eis_bit_qst_goal_initial) = S ((S (eis_index_qst_goal_initial)) * ic)) /\\ exists ff_q_eis_qst_goal_initial_decoded. ib = ff_q_eis_qst_goal_initial_decoded * S ((S (eis_index_qst_goal_initial)) * ic) + (eis_bit_qst_goal_initial))) /\\ (((eis_bit_qst_goal_initial = 1 /\\ (exists eis_le_gap_qst_goal_initial_choice_inside. eis_le_gap_qst_goal_initial_choice_inside + (S eis_index_qst_goal_initial) = k)) \\/ (eis_bit_qst_goal_initial = 0 /\\ (exists eis_lt_gap_qst_goal_initial_choice_outside. eis_lt_gap_qst_goal_initial_choice_outside + S (k) = S eis_index_qst_goal_initial)))))) -> (forall i s t. (exists qst_complement_gap_goal. qst_complement_gap_goal + S i = h) -> (((exists ff_h_qst_goal_sign. ff_h_qst_goal_sign + S (s) = S ((S (i)) * sc)) /\\ exists ff_q_qst_goal_sign. sb = ff_q_qst_goal_sign * S ((S (i)) * sc) + (s))) -> (((exists ff_h_qst_goal_indicator. ff_h_qst_goal_indicator + S (t) = S ((S (i)) * ic)) /\\ exists ff_q_qst_goal_indicator. ib = ff_q_qst_goal_indicator * S ((S (i)) * ic) + (t))) -> ((s = 0 /\\ t = 1) \\/ (s = 1 /\\ t = 0)))",
       "statement_sha256": "4e82078fb10ab261cc9516669ba89357c4c4335a20f074465a5e069cc207bd5b",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "For multiplication by two, every actual Gauss sign bit is exactly complementary to the floor-half initial-segment bit."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "∀ h. ∀ k. h = 2 · k ∨ h = 2 · k + 1 → Le(k,h)",
@@ -4492,6 +5084,7 @@
         "zero_add",
         "add_succ_left"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 13,
@@ -4536,12 +5129,17 @@
       ],
       "statement": "forall h k. (((h = 2 * k) \\/ (h = 2 * k + 1))) -> exists gap. gap + k = h",
       "statement_sha256": "f058225358138197ec1d136234b807bee2a64a55bee8cfdcd589a341653a9c58",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "A natural half in either doubled decomposition is at most the full length."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -4712,6 +5310,7 @@
         "add_succ_left",
         "add_right_cancel"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 14,
@@ -4811,12 +5410,17 @@
       ],
       "statement": "forall h k sb sc ib ic e. (((h = 2 * k) \\/ (h = 2 * k + 1))) -> (forall eis_index_qst_initial_prefix. (exists eis_lt_gap_qst_initial_prefix_bound. eis_lt_gap_qst_initial_prefix_bound + S (eis_index_qst_initial_prefix) = h) -> exists eis_bit_qst_initial_prefix. ((((exists ff_h_eis_qst_initial_prefix_decoded. ff_h_eis_qst_initial_prefix_decoded + S (eis_bit_qst_initial_prefix) = S ((S (eis_index_qst_initial_prefix)) * ic)) /\\ exists ff_q_eis_qst_initial_prefix_decoded. ib = ff_q_eis_qst_initial_prefix_decoded * S ((S (eis_index_qst_initial_prefix)) * ic) + (eis_bit_qst_initial_prefix))) /\\ (((eis_bit_qst_initial_prefix = 1 /\\ (exists eis_le_gap_qst_initial_prefix_choice_inside. eis_le_gap_qst_initial_prefix_choice_inside + (S eis_index_qst_initial_prefix) = k)) \\/ (eis_bit_qst_initial_prefix = 0 /\\ (exists eis_lt_gap_qst_initial_prefix_choice_outside. eis_lt_gap_qst_initial_prefix_choice_outside + S (k) = S eis_index_qst_initial_prefix)))))) -> (((exists ff_u_qst_sign_count_sum ff_v_qst_sign_count_sum. ((((exists ff_h_qst_sign_count_sum_start. ff_h_qst_sign_count_sum_start + S (0) = S ((S (0)) * ff_v_qst_sign_count_sum)) /\\ exists ff_q_qst_sign_count_sum_start. ff_u_qst_sign_count_sum = ff_q_qst_sign_count_sum_start * S ((S (0)) * ff_v_qst_sign_count_sum) + (0))) /\\ ((((exists ff_h_qst_sign_count_sum_terminal. ff_h_qst_sign_count_sum_terminal + S (e) = S ((S (h)) * ff_v_qst_sign_count_sum)) /\\ exists ff_q_qst_sign_count_sum_terminal. ff_u_qst_sign_count_sum = ff_q_qst_sign_count_sum_terminal * S ((S (h)) * ff_v_qst_sign_count_sum) + (e))) /\\ forall ff_i_qst_sign_count_sum. (exists ff_lt_qst_sign_count_sum_bound. ff_lt_qst_sign_count_sum_bound + S ff_i_qst_sign_count_sum = h) -> exists ff_a_qst_sign_count_sum ff_r_qst_sign_count_sum ff_s_qst_sign_count_sum. ((((exists ff_h_qst_sign_count_sum_summand. ff_h_qst_sign_count_sum_summand + S (ff_a_qst_sign_count_sum) = S ((S (ff_i_qst_sign_count_sum)) * sc)) /\\ exists ff_q_qst_sign_count_sum_summand. sb = ff_q_qst_sign_count_sum_summand * S ((S (ff_i_qst_sign_count_sum)) * sc) + (ff_a_qst_sign_count_sum))) /\\ ((((exists ff_h_qst_sign_count_sum_partial. ff_h_qst_sign_count_sum_partial + S (ff_r_qst_sign_count_sum) = S ((S (ff_i_qst_sign_count_sum)) * ff_v_qst_sign_count_sum)) /\\ exists ff_q_qst_sign_count_sum_partial. ff_u_qst_sign_count_sum = ff_q_qst_sign_count_sum_partial * S ((S (ff_i_qst_sign_count_sum)) * ff_v_qst_sign_count_sum) + (ff_r_qst_sign_count_sum))) /\\ ((((exists ff_h_qst_sign_count_sum_successor. ff_h_qst_sign_count_sum_successor + S (ff_s_qst_sign_count_sum) = S ((S (S ff_i_qst_sign_count_sum)) * ff_v_qst_sign_count_sum)) /\\ exists ff_q_qst_sign_count_sum_successor. ff_u_qst_sign_count_sum = ff_q_qst_sign_count_sum_successor * S ((S (S ff_i_qst_sign_count_sum)) * ff_v_qst_sign_count_sum) + (ff_s_qst_sign_count_sum))) /\\ ff_s_qst_sign_count_sum = ff_r_qst_sign_count_sum + ff_a_qst_sign_count_sum)))))) /\\ (forall ff_i_qst_sign_count_bits. (exists ff_lt_qst_sign_count_bits_bound. ff_lt_qst_sign_count_bits_bound + S ff_i_qst_sign_count_bits = h) -> exists ff_bit_qst_sign_count_bits. ((((exists ff_h_qst_sign_count_bits_decoded. ff_h_qst_sign_count_bits_decoded + S (ff_bit_qst_sign_count_bits) = S ((S (ff_i_qst_sign_count_bits)) * sc)) /\\ exists ff_q_qst_sign_count_bits_decoded. sb = ff_q_qst_sign_count_bits_decoded * S ((S (ff_i_qst_sign_count_bits)) * sc) + (ff_bit_qst_sign_count_bits))) /\\ (ff_bit_qst_sign_count_bits = 0 \\/ ff_bit_qst_sign_count_bits = 1))))) -> (forall i s t. (exists qst_complement_gap_count. qst_complement_gap_count + S i = h) -> (((exists ff_h_qst_count_sign. ff_h_qst_count_sign + S (s) = S ((S (i)) * sc)) /\\ exists ff_q_qst_count_sign. sb = ff_q_qst_count_sign * S ((S (i)) * sc) + (s))) -> (((exists ff_h_qst_count_indicator. ff_h_qst_count_indicator + S (t) = S ((S (i)) * ic)) /\\ exists ff_q_qst_count_indicator. ib = ff_q_qst_count_indicator * S ((S (i)) * ic) + (t))) -> ((s = 0 /\\ t = 1) \\/ (s = 1 /\\ t = 0))) -> (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape)))",
       "statement_sha256": "f7a938a7db1dcd6e211ac6460407b36e194cd9e752b65f18e152b3706404e9a3",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "The existing initial-segment count and complementary BitCount theorems prove the exact doubling reflection-count shape once pointwise complementarity of the actual signs is supplied."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -5059,6 +5663,7 @@
         "doubling_gauss_initial_segment_complement",
         "doubling_gauss_count_shape_from_initial_segment_complement"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 15,
@@ -5135,12 +5740,17 @@
       ],
       "statement": "forall p h a b c mb mc sb sc e. p = 2 * h + 1 -> a = 2 -> (forall gsp_range_index_qst_goal_half. (exists gsp_lt_gap_qst_goal_half_range_bound. gsp_lt_gap_qst_goal_half_range_bound + S gsp_range_index_qst_goal_half = h) -> (((exists gsp_beta_height_qst_goal_half_range_entry. gsp_beta_height_qst_goal_half_range_entry + S (1 + gsp_range_index_qst_goal_half) = S ((S (gsp_range_index_qst_goal_half)) * c)) /\\ exists gsp_beta_quotient_qst_goal_half_range_entry. b = gsp_beta_quotient_qst_goal_half_range_entry * S ((S (gsp_range_index_qst_goal_half)) * c) + (1 + gsp_range_index_qst_goal_half)))) -> (forall gsp_index_qst_goal_signed. (exists gsp_lt_gap_qst_goal_signed_index_bound. gsp_lt_gap_qst_goal_signed_index_bound + S gsp_index_qst_goal_signed = h) -> (exists gsp_value_qst_goal_signed_entry gsp_magnitude_qst_goal_signed_entry gsp_sign_qst_goal_signed_entry. (((exists ff_h_gsp_qst_goal_signed_entry_source. ff_h_gsp_qst_goal_signed_entry_source + S (gsp_value_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * c)) /\\ exists ff_q_gsp_qst_goal_signed_entry_source. b = ff_q_gsp_qst_goal_signed_entry_source * S ((S (gsp_index_qst_goal_signed)) * c) + (gsp_value_qst_goal_signed_entry))) /\\ ((((exists ff_h_gsp_qst_goal_signed_entry_magnitude. ff_h_gsp_qst_goal_signed_entry_magnitude + S (gsp_magnitude_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * mc)) /\\ exists ff_q_gsp_qst_goal_signed_entry_magnitude. mb = ff_q_gsp_qst_goal_signed_entry_magnitude * S ((S (gsp_index_qst_goal_signed)) * mc) + (gsp_magnitude_qst_goal_signed_entry))) /\\ ((((exists ff_h_gsp_qst_goal_signed_entry_sign. ff_h_gsp_qst_goal_signed_entry_sign + S (gsp_sign_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * sc)) /\\ exists ff_q_gsp_qst_goal_signed_entry_sign. sb = ff_q_gsp_qst_goal_signed_entry_sign * S ((S (gsp_index_qst_goal_signed)) * sc) + (gsp_sign_qst_goal_signed_entry))) /\\ ((exists gsp_lt_gap_qst_goal_signed_entry_positive. gsp_lt_gap_qst_goal_signed_entry_positive + S 0 = gsp_magnitude_qst_goal_signed_entry) /\\ ((exists gsp_le_gap_qst_goal_signed_entry_bounded. gsp_le_gap_qst_goal_signed_entry_bounded + gsp_magnitude_qst_goal_signed_entry = h) /\\ ((gsp_sign_qst_goal_signed_entry = 0 \\/ gsp_sign_qst_goal_signed_entry = 1) /\\ (((gsp_sign_qst_goal_signed_entry = 0 /\\ (exists gsp_mod_left_qst_goal_signed_entry_lower gsp_mod_right_qst_goal_signed_entry_lower. (a * gsp_value_qst_goal_signed_entry) + p * gsp_mod_left_qst_goal_signed_entry_lower = (gsp_magnitude_qst_goal_signed_entry) + p * gsp_mod_right_qst_goal_signed_entry_lower)) \\/ (gsp_sign_qst_goal_signed_entry = 1 /\\ (exists gsp_mod_left_qst_goal_signed_entry_reflected gsp_mod_right_qst_goal_signed_entry_reflected. (a * gsp_value_qst_goal_signed_entry) + p * gsp_mod_left_qst_goal_signed_entry_reflected = ((2 * h) * gsp_magnitude_qst_goal_signed_entry) + p * gsp_mod_right_qst_goal_signed_entry_reflected))))))))))) -> (((exists ff_u_qst_goal_count_sum ff_v_qst_goal_count_sum. ((((exists ff_h_qst_goal_count_sum_start. ff_h_qst_goal_count_sum_start + S (0) = S ((S (0)) * ff_v_qst_goal_count_sum)) /\\ exists ff_q_qst_goal_count_sum_start. ff_u_qst_goal_count_sum = ff_q_qst_goal_count_sum_start * S ((S (0)) * ff_v_qst_goal_count_sum) + (0))) /\\ ((((exists ff_h_qst_goal_count_sum_terminal. ff_h_qst_goal_count_sum_terminal + S (e) = S ((S (h)) * ff_v_qst_goal_count_sum)) /\\ exists ff_q_qst_goal_count_sum_terminal. ff_u_qst_goal_count_sum = ff_q_qst_goal_count_sum_terminal * S ((S (h)) * ff_v_qst_goal_count_sum) + (e))) /\\ forall ff_i_qst_goal_count_sum. (exists ff_lt_qst_goal_count_sum_bound. ff_lt_qst_goal_count_sum_bound + S ff_i_qst_goal_count_sum = h) -> exists ff_a_qst_goal_count_sum ff_r_qst_goal_count_sum ff_s_qst_goal_count_sum. ((((exists ff_h_qst_goal_count_sum_summand. ff_h_qst_goal_count_sum_summand + S (ff_a_qst_goal_count_sum) = S ((S (ff_i_qst_goal_count_sum)) * sc)) /\\ exists ff_q_qst_goal_count_sum_summand. sb = ff_q_qst_goal_count_sum_summand * S ((S (ff_i_qst_goal_count_sum)) * sc) + (ff_a_qst_goal_count_sum))) /\\ ((((exists ff_h_qst_goal_count_sum_partial. ff_h_qst_goal_count_sum_partial + S (ff_r_qst_goal_count_sum) = S ((S (ff_i_qst_goal_count_sum)) * ff_v_qst_goal_count_sum)) /\\ exists ff_q_qst_goal_count_sum_partial. ff_u_qst_goal_count_sum = ff_q_qst_goal_count_sum_partial * S ((S (ff_i_qst_goal_count_sum)) * ff_v_qst_goal_count_sum) + (ff_r_qst_goal_count_sum))) /\\ ((((exists ff_h_qst_goal_count_sum_successor. ff_h_qst_goal_count_sum_successor + S (ff_s_qst_goal_count_sum) = S ((S (S ff_i_qst_goal_count_sum)) * ff_v_qst_goal_count_sum)) /\\ exists ff_q_qst_goal_count_sum_successor. ff_u_qst_goal_count_sum = ff_q_qst_goal_count_sum_successor * S ((S (S ff_i_qst_goal_count_sum)) * ff_v_qst_goal_count_sum) + (ff_s_qst_goal_count_sum))) /\\ ff_s_qst_goal_count_sum = ff_r_qst_goal_count_sum + ff_a_qst_goal_count_sum)))))) /\\ (forall ff_i_qst_goal_count_bits. (exists ff_lt_qst_goal_count_bits_bound. ff_lt_qst_goal_count_bits_bound + S ff_i_qst_goal_count_bits = h) -> exists ff_bit_qst_goal_count_bits. ((((exists ff_h_qst_goal_count_bits_decoded. ff_h_qst_goal_count_bits_decoded + S (ff_bit_qst_goal_count_bits) = S ((S (ff_i_qst_goal_count_bits)) * sc)) /\\ exists ff_q_qst_goal_count_bits_decoded. sb = ff_q_qst_goal_count_bits_decoded * S ((S (ff_i_qst_goal_count_bits)) * sc) + (ff_bit_qst_goal_count_bits))) /\\ (ff_bit_qst_goal_count_bits = 0 \\/ ff_bit_qst_goal_count_bits = 1))))) -> (((h = 2 * e) \\/ (exists qst_count_half_goal. h = 2 * qst_count_half_goal + 1 /\\ e = S qst_count_half_goal)))",
       "statement_sha256": "8681aaac3169a14ae1dae90e15bf11ed5fed927cfd16cee2b4bed91326c796bd",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "The beta-coded Gauss reflection count for multiplication by two has exactly the explicit ceiling-half shape."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -5393,6 +6003,7 @@
       "dependencies": [
         "doubling_gauss_count_parity_mod_eight_complete"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 16,
@@ -5453,12 +6064,17 @@
       ],
       "statement": "forall p h e. p = 2 * h + 1 -> ((~(p = 1) /\\ forall frm_prime_left_qst_prime frm_prime_right_qst_prime. p = frm_prime_left_qst_prime * frm_prime_right_qst_prime -> frm_prime_left_qst_prime = 1 \\/ frm_prime_right_qst_prime = 1)) -> (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape))) -> ((((((exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two) -> (exists qst_even_count. e = 2 * qst_even_count)) /\\ ((exists qst_even_count. e = 2 * qst_even_count) -> (exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))) /\\ ((((~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)) -> (exists qst_odd_count. e = 2 * qst_odd_count + 1)) /\\ ((exists qst_odd_count. e = 2 * qst_odd_count + 1) -> (~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two))))))) -> ((((((exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))) /\\ ((((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))) /\\ ((((~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))) /\\ ((((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> (~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))))))",
       "statement_sha256": "65abe8256615b1b0e6d5a71c4074c9c44d8d450957edf30cda4f59b253db2471",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "The exact second supplementary law follows constructively once the existing Gauss reflection count is identified with the explicit doubling-count shape."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "∀ p. ∀ h. p = 2 · h + 1 → Prime(p) → Lt(2,p)",
@@ -5521,6 +6137,7 @@
         "mul_add",
         "zero_add"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 17,
@@ -5560,12 +6177,17 @@
       ],
       "statement": "forall p h. p = 2 * h + 1 -> ((~(p = 1) /\\ forall frm_prime_left_qst_bounded_prime frm_prime_right_qst_bounded_prime. p = frm_prime_left_qst_bounded_prime * frm_prime_right_qst_bounded_prime -> frm_prime_left_qst_bounded_prime = 1 \\/ frm_prime_right_qst_bounded_prime = 1)) -> exists gap. gap + S 2 = p",
       "statement_sha256": "9a4579fcc57264c4bc27677ef42c2a28e2e983fef86cddd901c2029c185600a6",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "Every prime admitting an odd decomposition is strictly greater than two."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -5734,6 +6356,7 @@
         "doubling_gauss_reflection_count_shape",
         "quadratic_supplement_two_conditional_on_gauss_count_shape"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 18,
@@ -5824,12 +6447,17 @@
       ],
       "statement": "forall p h a. p = 2 * h + 1 -> ((~(p = 1) /\\ forall frm_prime_left_qst_half_prime frm_prime_right_qst_half_prime. p = frm_prime_left_qst_half_prime * frm_prime_right_qst_half_prime -> frm_prime_left_qst_half_prime = 1 \\/ frm_prime_right_qst_half_prime = 1)) -> a = 2 -> ((((((exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))) /\\ ((((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))) /\\ ((((~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))) /\\ ((((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> (~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))))))",
       "statement_sha256": "62eb85561c5000ec0ac4d9dd2a16d743f1358de99cfd9eb05b0cead67a01167d",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "Complete constructive second supplementary law for an explicitly decomposed odd prime, with no unproved count-shape hypothesis."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -5987,6 +6615,7 @@
       "dependencies": [
         "quadratic_supplement_two_half_complete"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 19,
@@ -6020,12 +6649,17 @@
       ],
       "statement": "forall p. ((~(p = 1) /\\ forall frm_prime_left_qst_endpoint_prime frm_prime_right_qst_endpoint_prime. p = frm_prime_left_qst_endpoint_prime * frm_prime_right_qst_endpoint_prime -> frm_prime_left_qst_endpoint_prime = 1 \\/ frm_prime_right_qst_endpoint_prime = 1)) -> (exists qst_odd_modulus. p = 2 * qst_odd_modulus + 1) -> ((((exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))) /\\ ((((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two))))",
       "statement_sha256": "df55b1cd3398dc6bf064dc8957ea318ad311b99ebf1b3ecffb804b463c1df532",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "The second supplementary law: two is a quadratic residue modulo an odd prime exactly in classes one and seven modulo eight."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [
           {
@@ -6183,6 +6817,7 @@
       "dependencies": [
         "quadratic_supplement_two_half_complete"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 20,
@@ -6216,12 +6851,17 @@
       ],
       "statement": "forall p. ((~(p = 1) /\\ forall frm_prime_left_qst_endpoint_prime frm_prime_right_qst_endpoint_prime. p = frm_prime_left_qst_endpoint_prime * frm_prime_right_qst_endpoint_prime -> frm_prime_left_qst_endpoint_prime = 1 \\/ frm_prime_right_qst_endpoint_prime = 1)) -> (exists qst_odd_modulus. p = 2 * qst_odd_modulus + 1) -> ((((~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))) /\\ ((((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> (~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))))",
       "statement_sha256": "dd9b0415da856a4198e7eb027d2c055549bc34588378d301a952748eaeb80877",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "The complementary second supplementary law: two is a nonresidue exactly in classes three and five modulo eight."
     },
     {
       "admitted_to_alpha": false,
       "admitted_to_stable": false,
+      "alpha_campaign": null,
+      "alpha_checked_use": false,
+      "alpha_edition_identity_sha256": null,
+      "alpha_edition_version": null,
+      "alpha_evidence": null,
       "defined": {
         "defined_script_lines": [],
         "defined_statement": "∀ p. Prime(p) → Odd(p) → (QRes(p,2) → (∃ x. p = 8 · x + 1) ∨ (∃ x. p = 8 · x + 7)) ∧ ((∃ x. p = 8 · x + 1) ∨ (∃ x. p = 8 · x + 7) → QRes(p,2)) ∧ ((¬QRes(p,2) → (∃ x. p = 8 · x + 3) ∨ (∃ x. p = 8 · x + 5)) ∧ ((∃ x. p = 8 · x + 3) ∨ (∃ x. p = 8 · x + 5) → ¬QRes(p,2)))",
@@ -6330,6 +6970,7 @@
         "quadratic_supplement_two_residue_iff_mod_eight_one_or_seven",
         "quadratic_supplement_two_nonresidue_iff_mod_eight_three_or_five"
       ],
+      "enrolled_in_alpha": false,
       "factory": "make_quadratic_supplement_two_candidate_theorems",
       "module_index": 1,
       "module_order": 21,
@@ -6361,7 +7002,7 @@
       ],
       "statement": "forall p. ((~(p = 1) /\\ forall frm_prime_left_qst_endpoint_prime frm_prime_right_qst_endpoint_prime. p = frm_prime_left_qst_endpoint_prime * frm_prime_right_qst_endpoint_prime -> frm_prime_left_qst_endpoint_prime = 1 \\/ frm_prime_right_qst_endpoint_prime = 1)) -> (exists qst_odd_modulus. p = 2 * qst_odd_modulus + 1) -> ((((((exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))) /\\ ((((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))) /\\ ((((~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))) /\\ ((((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> (~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))))))",
       "statement_sha256": "146a886f8f3a54d358321b54faf68a591362016e86139bd487a5496c7af74034",
-      "status": "dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
       "summary": "Complete constructive second supplementary law: the quadratic residue status of two is classified exactly by the four odd classes modulo eight."
     }
   ],

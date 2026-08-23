@@ -24,7 +24,7 @@ override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override PEANOAPPID := a-526f19ff3b30
 
-.PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs deploy-site deploy-lab deploy-lab-next deploy-peano \
 	deploy-peano-next deploy-proofs \
 	deploy clean
@@ -85,6 +85,10 @@ help:
 	@echo "  make peano-library-alpha-v12-check  verify the complete body-checked Bertrand proof release"
 	@echo "  make peano-library-channels-v12  compatibility alias for the Bertrand Alpha v12 build"
 	@echo "  make peano-library-channels-v12-check  compatibility alias for the Bertrand Alpha v12 check"
+	@echo "  make peano-library-alpha-v13  regenerate additive 196+44-row Lagrange/Lucas Alpha v13 artifacts"
+	@echo "  make peano-library-alpha-v13-check  independently verify Alpha v13 and its body-only admission boundary"
+	@echo "  make peano-library-channels-v13  compatibility alias for the Lagrange/Lucas Alpha v13 build"
+	@echo "  make peano-library-channels-v13-check  compatibility alias for the Lagrange/Lucas Alpha v13 check"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
 	@echo "  make ha-constructive-frontier-check  replay ordered stages 1-5 in bounded isolated proof processes"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
@@ -418,6 +422,19 @@ peano-library-alpha-v12-check:
 		peano-lab/py/tests/test_bertrand_proof_explorer.py \
 		peano-lab/py/tests/test_bertrand_defined_explorer.py
 
+peano-library-alpha-v13:
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v13.py
+
+peano-library-alpha-v13-check:
+	@# Every gate owns its interpreter: 240 dependency-curried body receipts
+	@# never accumulate alongside independent release/admission proof caches.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v13.py --check
+	PYTHONMALLOC=malloc python3 scripts/verify_peano_library_channels_v13.py
+	PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		scripts/test_verify_peano_library_channels_v13.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_library_editions_v13_admission.py
+
 peano-library-channels: peano-library-alpha
 
 peano-library-channels-check: peano-library-alpha-check
@@ -465,6 +482,10 @@ peano-library-channels-v11-check: peano-library-alpha-v11-check
 peano-library-channels-v12: peano-library-alpha-v12
 
 peano-library-channels-v12-check: peano-library-alpha-v12-check
+
+peano-library-channels-v13: peano-library-alpha-v13
+
+peano-library-channels-v13-check: peano-library-alpha-v13-check
 
 ha-number-theory-check:
 	python3 scripts/verify_ha_number_theory_campaign.py

@@ -64,9 +64,19 @@
       if (center) item.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});
     });
     const dependencies = node.dependencies.map(dependency => {
-      if (nodes.has(dependency)) return `<button class="frontier-chip internal" data-dependency="${escape(dependency)}" type="button">${escape(dependency)} · candidate</button>`;
+      if (nodes.has(dependency)) {
+        const target = nodes.get(dependency);
+        const channel = target.enrolled_in_alpha ? "Alpha v13 · body checked" : "candidate · unenrolled";
+        return `<button class="frontier-chip internal" data-dependency="${escape(dependency)}" type="button">${escape(dependency)} · ${escape(channel)}</button>`;
+      }
       const evidence = external.get(dependency);
-      const channel = evidence?.admitted_to_stable ? "Stable closed" : evidence?.admitted_to_alpha ? "Alpha closed" : "candidate · not admitted";
+      const channel = evidence?.admitted_to_stable
+        ? "Stable closed"
+        : evidence?.admitted_to_alpha
+          ? "Alpha closed"
+          : evidence?.enrolled_in_alpha
+            ? `Alpha ${evidence.alpha_edition_version} · ${evidence.alpha_evidence} · not admitted`
+            : "candidate · unenrolled";
       return `<button class="frontier-chip external" data-dependency="${escape(dependency)}" type="button" title="${escape(evidence?.evidence || "release-status-unattested")}">${escape(dependency)} · ${escape(channel)}</button>`;
     }).join("");
     const provenance = node.sources.map(source => `<span class="frontier-chip ${source.selected ? "internal" : "external"}">${escape(source.source_module)} · ${source.selected ? "selected canonical source" : source.matches_selected_statement ? "matching alternate source" : "non-selected alternate statement"}</span>`).join("");

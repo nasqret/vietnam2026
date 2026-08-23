@@ -10,6 +10,7 @@ from math import comb, isqrt
 from pathlib import Path
 import subprocess
 import sys
+from types import SimpleNamespace
 
 import pytest
 
@@ -25,6 +26,7 @@ from peano_lab.library.bertrand_defined_edition import (  # noqa: E402
     parse_bertrand_defined_formula_in_context,
 )
 from peano_lab.library import editions_v12 as v12  # noqa: E402
+from peano_lab.library import editions_v13 as v13  # noqa: E402
 
 
 EXPECTED_FAMILIES = (
@@ -34,6 +36,13 @@ EXPECTED_FAMILIES = (
     "four-squares",
     "lucas",
 )
+EXPECTED_ALPHA_V13_ENROLLMENT_BY_FAMILY = {
+    "supplementary-laws": 0,
+    "kummer": 0,
+    "two-squares": 18,
+    "four-squares": 178,
+    "lucas": 44,
+}
 REQUIRED_ROOTS = {
     "supplementary-laws": {
         "quadratic_supplement_minus_one_complete",
@@ -173,6 +182,12 @@ def test_frontier_inventory_is_deterministic_complete_and_evidence_honest(
     assert manifest["family_count"] == 5
     assert tuple(row["slug"] for row in manifest["families"]) == EXPECTED_FAMILIES
     assert manifest["candidate_status"] == generator.CANDIDATE_STATUS
+    assert manifest["alpha_edition_version"] == "v13"
+    assert manifest["alpha_edition_identity_sha256"] == (
+        v13.ALPHA_V13_IDENTITY_SHA256
+    )
+    assert manifest["alpha_enrolled_node_count"] == 240
+    assert manifest["alpha_checked_use_node_count"] == 0
     assert manifest["admitted_to_alpha"] is False
     assert manifest["admitted_to_stable"] is False
     assert manifest["file_count"] == len(files) == 14
@@ -193,6 +208,14 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
 
     assert corpus["slug"] == slug
     assert corpus["candidate_status"] == generator.CANDIDATE_STATUS
+    assert corpus["alpha_edition_version"] == "v13"
+    assert corpus["alpha_edition_identity_sha256"] == (
+        v13.ALPHA_V13_IDENTITY_SHA256
+    )
+    assert corpus["alpha_enrolled_node_count"] == (
+        EXPECTED_ALPHA_V13_ENROLLMENT_BY_FAMILY[slug]
+    )
+    assert corpus["alpha_checked_use_node_count"] == 0
     assert corpus["admitted_to_alpha"] is False
     assert corpus["admitted_to_stable"] is False
     assert corpus["node_count"] == len(nodes) > 0
@@ -217,7 +240,26 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
 
     for node in nodes:
         assert node["statement_sha256"] == sha256(node["statement"].encode()).hexdigest()
-        assert node["status"] == generator.CANDIDATE_STATUS
+        alpha_entry = v13.ALPHA_EDITION.by_name.get(node["name"])
+        assert node["enrolled_in_alpha"] is (alpha_entry is not None)
+        assert node["alpha_checked_use"] is False
+        if alpha_entry is None:
+            assert node["status"] == generator.UNENROLLED_CANDIDATE_STATUS
+            assert node["alpha_evidence"] is None
+            assert node["alpha_edition_version"] is None
+            assert node["alpha_edition_identity_sha256"] is None
+            assert node["alpha_campaign"] is None
+        else:
+            assert node["status"] == generator.ALPHA_BODY_STATUS
+            assert node["alpha_evidence"] == "body_checked"
+            assert node["alpha_edition_version"] == "v13"
+            assert node["alpha_edition_identity_sha256"] == (
+                v13.ALPHA_V13_IDENTITY_SHA256
+            )
+            assert node["alpha_campaign"] in {"four_square", "lucas"}
+            assert alpha_entry.spec.statement == node["statement"]
+            assert tuple(alpha_entry.spec.dependencies) == tuple(node["dependencies"])
+            assert tuple(alpha_entry.spec.script) == tuple(node["script"])
         assert node["admitted_to_alpha"] is False
         assert node["admitted_to_stable"] is False
         assert node["source_module"].startswith("peano_lab.library.")
@@ -229,6 +271,14 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
 
     for edge in corpus["edges"]:
         assert edge["target"] in names
+        alpha_entry = v13.ALPHA_EDITION.by_name.get(edge["source"])
+        assert edge["enrolled_in_alpha"] is (alpha_entry is not None)
+        assert edge["alpha_checked_use"] is (
+            alpha_entry.checked_use if alpha_entry is not None else False
+        )
+        assert edge["alpha_evidence"] == (
+            alpha_entry.evidence.value if alpha_entry is not None else None
+        )
         assert edge["kind"] in {
             "internal-candidate",
             "cross-family-candidate",
@@ -257,6 +307,32 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
             assert edge["evidence"] == "alpha_closed"
             assert edge["admitted_to_alpha"] is True
             assert edge["admitted_to_stable"] is False
+
+    assert corpus["alpha_enrolled_root_names"] == [
+        node["name"]
+        for node in nodes
+        if node["root"] and node["enrolled_in_alpha"]
+    ]
+
+
+def test_frontier_exactly_displays_the_minimal_alpha_v13_append(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, manifest = generated
+    enrolled = {
+        node["name"]
+        for slug in EXPECTED_FAMILIES
+        for node in _corpus(files, slug)["nodes"]
+        if node["enrolled_in_alpha"]
+    }
+
+    assert enrolled == set(v13.FRONTIER_V13_EXPECTED_NAMES)
+    assert len(enrolled) == manifest["alpha_enrolled_node_count"] == 240
+    assert {
+        row["slug"]: row["alpha_enrolled_node_count"]
+        for row in manifest["families"]
+    } == EXPECTED_ALPHA_V13_ENROLLMENT_BY_FAMILY
+    assert all(row["alpha_checked_use_node_count"] == 0 for row in manifest["families"])
 
 
 @pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
@@ -418,7 +494,7 @@ def test_family_pages_are_offline_interactive_and_clearly_candidate_labeled(
         assert root in page
 
 
-def test_four_square_and_multidigit_lucas_are_complete_but_unadmitted(
+def test_four_square_and_multidigit_lucas_are_enrolled_without_checked_authority(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
     files, _manifest = generated
@@ -429,9 +505,11 @@ def test_four_square_and_multidigit_lucas_are_complete_but_unadmitted(
     assert "constructive modular seeds for every prime" in four["scope"]
     assert "all sixteen signed centered orientations" in four["scope"]
     assert "bounded strict prime-multiple descent" in four["scope"]
-    assert "Alpha/Stable admission remains a separate release gate" in four["scope"]
+    assert "enrolled in Alpha v13 as body_checked" in four["scope"]
+    assert "without checked-use authority or Stable admission" in four["scope"]
     assert "complete arbitrary-length multidigit Lucas congruence" in lucas["scope"]
-    assert "Alpha/Stable admission remains a separate release gate" in lucas["scope"]
+    assert "enrolled in Alpha v13 as body_checked" in lucas["scope"]
+    assert "without checked-use authority or Stable admission" in lucas["scope"]
     assert "kernel-checked universal theorem is available in the proof map" in files[
         "assets/frontier.js"
     ].decode()
@@ -504,6 +582,11 @@ def test_four_square_surface_exposes_the_complete_unconditional_lagrange_theorem
     assert universal["statement"].startswith("forall n.")
     assert "four_square_signed_centered_representation" in prime["dependencies"]
     assert "four_square_prime_representation" in universal["dependencies"]
+    assert universal["enrolled_in_alpha"] is True
+    assert universal["alpha_evidence"] == "body_checked"
+    assert universal["alpha_checked_use"] is False
+    assert universal["alpha_campaign"] == "four_square"
+    assert universal["status"] == generator.ALPHA_BODY_STATUS
     assert universal["admitted_to_alpha"] is False
     assert universal["admitted_to_stable"] is False
     assert corpus["root_names"][-1] == "four_square_lagrange"
@@ -665,6 +748,11 @@ def test_lucas_surface_exposes_the_complete_unconditional_one_step_congruence(
     )
     assert corpus["root_names"][-1] == "lucas_theorem"
     assert rows["lucas_theorem"]["statement"].startswith("forall p n k C.")
+    assert rows["lucas_theorem"]["enrolled_in_alpha"] is True
+    assert rows["lucas_theorem"]["alpha_evidence"] == "body_checked"
+    assert rows["lucas_theorem"]["alpha_checked_use"] is False
+    assert rows["lucas_theorem"]["alpha_campaign"] == "lucas"
+    assert rows["lucas_theorem"]["status"] == generator.ALPHA_BODY_STATUS
     assert rows["lucas_theorem"]["admitted_to_alpha"] is False
 
 
@@ -685,6 +773,8 @@ def test_two_square_surface_identifies_the_complete_zero_inclusive_iff(
     )
     assert "complete all-natural iff" in corpus["scope"]
     assert "Alpha/Stable admission remains a separate release gate" in corpus["scope"]
+    assert endpoint["enrolled_in_alpha"] is False
+    assert endpoint["alpha_evidence"] is None
     assert endpoint["admitted_to_alpha"] is False
     assert endpoint["admitted_to_stable"] is False
 
@@ -887,12 +977,66 @@ def test_duplicate_factories_preserve_deterministic_first_source_and_provenance(
     assert all(row["sources"][1]["matches_selected_statement"] for row in rows)
 
 
+@pytest.mark.parametrize(
+    "mutation",
+    (
+        "statement",
+        "dependencies",
+        "script",
+        "closed_evidence",
+        "pending_evidence",
+        "missing_campaign",
+    ),
+)
+def test_alpha_v13_frontier_evidence_and_identity_mutations_are_rejected(
+    monkeypatch: pytest.MonkeyPatch, mutation: str,
+) -> None:
+    family = next(item for item in generator.FAMILIES if item.slug == "four-squares")
+    root = "four_square_lagrange"
+    alpha_entries = dict(v13.ALPHA_EDITION.by_name)
+    entry = alpha_entries[root]
+    message = "unexpected Alpha-v13 evidence"
+
+    if mutation == "statement":
+        entry = replace(entry, spec=replace(entry.spec, statement=entry.spec.statement + " "))
+        message = "sealed Alpha-v13 entry"
+    elif mutation == "dependencies":
+        entry = replace(entry, spec=replace(entry.spec, dependencies=entry.spec.dependencies[:-1]))
+        message = "sealed Alpha-v13 entry"
+    elif mutation == "script":
+        entry = replace(entry, spec=replace(entry.spec, script=entry.spec.script[:-1]))
+        message = "sealed Alpha-v13 entry"
+    elif mutation == "closed_evidence":
+        entry = replace(entry, evidence=v13.EvidenceStatus.ALPHA_CLOSED)
+    elif mutation == "pending_evidence":
+        entry = replace(entry, evidence=v13.EvidenceStatus.PENDING_LAYERED_CLOSURE)
+    else:
+        campaigns = dict(v13.alpha_v13_enrollment().campaign_by_name)
+        campaigns.pop(root)
+        monkeypatch.setattr(
+            generator.v13,
+            "alpha_v13_enrollment",
+            lambda: SimpleNamespace(campaign_by_name=campaigns),
+        )
+    alpha_entries[root] = entry
+    monkeypatch.setattr(
+        generator.v13,
+        "ALPHA_EDITION",
+        SimpleNamespace(by_name=alpha_entries),
+    )
+
+    with pytest.raises(ValueError, match=message):
+        generator._family_nodes(family)
+
+
 def test_frontier_generation_never_mutates_sealed_release_authority() -> None:
     before = (
         v12.ALPHA_V12_ENROLLMENT_SHA256,
         v12.ALPHA_V12_IDENTITY_SHA256,
         v12.STABLE_EDITION.identity_sha256,
         len(v12.ALPHA_CHECKED_SPECS),
+        v13.ALPHA_V13_IDENTITY_SHA256,
+        len(v13.ALPHA_CHECKED_SPECS),
     )
 
     generator.build_files()
@@ -902,6 +1046,8 @@ def test_frontier_generation_never_mutates_sealed_release_authority() -> None:
         v12.ALPHA_V12_IDENTITY_SHA256,
         v12.STABLE_EDITION.identity_sha256,
         len(v12.ALPHA_CHECKED_SPECS),
+        v13.ALPHA_V13_IDENTITY_SHA256,
+        len(v13.ALPHA_CHECKED_SPECS),
     )
 
 
@@ -924,7 +1070,11 @@ def test_repository_proof_hub_labels_all_five_candidate_families() -> None:
     assert generator.CANDIDATE_STATUS in hub
     for slug in EXPECTED_FAMILIES:
         assert f'href="{slug}/"' in hub
-    assert hub.count("Not admitted to Alpha/Stable") >= 5
+    assert hub.count("Not admitted to Alpha/Stable") == 2
+    assert "18 prerequisites Alpha v13 enrolled; classification not enrolled" in hub
+    assert hub.count(
+        "Alpha v13 enrolled · body_checked; no checked-use authority"
+    ) == 2
     assert 'href="quadratic-reciprocity/"' in hub
     assert 'href="bertrand-postulate/"' in hub
 
