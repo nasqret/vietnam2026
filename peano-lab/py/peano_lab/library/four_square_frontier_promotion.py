@@ -305,6 +305,62 @@ FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_CHECKED_DIAGNOSTICS = (
     ("four_square_euler_add_permute_sixteen", 767, 627),
     ("four_square_euler_add_permute_twelve", 628, 497),
 )
+FOUR_SQUARE_CAMPAIGN_CONTINUATION_READY_COUNT = 34
+FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITES = (
+    "even_sum_parity_cases",
+    "even_sum_iff_same_parity",
+    "odd_sum_parity_cases",
+    "mul_shuffle_four",
+    "two_mul_eq_add_self",
+    "mul_le_cancel_left_nonzero",
+    "four_square_parity_odd_blocks_crossed_selection",
+    "two_square_product_expands",
+    "two_square_add_swap_nested",
+    "four_square_product_shuffle",
+    "four_square_add_swap_right_tail",
+    "four_square_complement_gap_symmetry",
+    "four_square_euler_cross_swap",
+    "four_square_euler_add_permute_nine",
+    "four_square_euler_add_permute_six",
+    "four_square_euler_add_permute_sixteen",
+)
+FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES = (
+    "four_square_parity_even_coordinate_pair_selection",
+    "four_square_descent_matching_parity_sum_even",
+    "two_square_product_norm_blocks",
+    "two_square_absolute_difference_square_balance",
+    "four_square_product_square",
+    "four_square_descent_odd_centered_magnitude_half_bound",
+    "four_square_complement_prefix_bounded",
+    "four_square_signed_pair_cross_decomposition",
+    "four_square_euler_double_cross_swap",
+    "four_square_euler_three_square_expansion",
+    "four_square_euler_cross_triple_expansion",
+    "four_square_euler_diagonal_regroup",
+)
+FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_NODE_UPPER_BOUND = 18_867
+FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_OBJECT_UPPER_BOUND = 13_801
+FOUR_SQUARE_CAMPAIGN_CONTINUATION_NODE_UPPER_BOUND = 21_029
+FOUR_SQUARE_CAMPAIGN_CONTINUATION_OBJECT_UPPER_BOUND = 15_823
+FOUR_SQUARE_CAMPAIGN_CONTINUATION_CHECKED_PREREQUISITE_DIAGNOSTICS = (
+    16,
+    11_374,
+    7_149,
+)
+FOUR_SQUARE_CAMPAIGN_CONTINUATION_CHECKED_DIAGNOSTICS = (
+    ("four_square_parity_even_coordinate_pair_selection", 3_061, 1_176),
+    ("four_square_descent_matching_parity_sum_even", 1_890, 1_046),
+    ("two_square_product_norm_blocks", 1_170, 473),
+    ("two_square_absolute_difference_square_balance", 1_194, 523),
+    ("four_square_product_square", 385, 319),
+    ("four_square_descent_odd_centered_magnitude_half_bound", 2_058, 1_133),
+    ("four_square_complement_prefix_bounded", 645, 456),
+    ("four_square_signed_pair_cross_decomposition", 788, 426),
+    ("four_square_euler_double_cross_swap", 639, 351),
+    ("four_square_euler_three_square_expansion", 888, 521),
+    ("four_square_euler_cross_triple_expansion", 752, 394),
+    ("four_square_euler_diagonal_regroup", 793, 653),
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -758,6 +814,56 @@ def construct_four_square_second_layer_campaign_microbatch() -> tuple[
     return tuple(item.diagnostics for item in prerequisites), result
 
 
+def construct_four_square_continuation_campaign_microbatch() -> tuple[
+    tuple[CheckedFrontierPromotionCertificate, ...],
+    tuple[ConstructedFrontierClosedCandidate, ...],
+]:
+    """Recreate sixteen closed predecessors and check twelve new campaign rows.
+
+    The first stage includes exactly six already proved parent rows and ten
+    already proved campaign predecessors. The second stage checks only new
+    Alpha-v13 campaign obligations using those actual ``Proof`` objects.
+    Both stages independently obey all original microbatch constraints and
+    never change existing release evidence.
+    """
+
+    if any(
+        bound >= limit
+        for bound, limit in (
+            (
+                FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_NODE_UPPER_BOUND,
+                MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES,
+            ),
+            (
+                FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_OBJECT_UPPER_BOUND,
+                MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS,
+            ),
+            (
+                FOUR_SQUARE_CAMPAIGN_CONTINUATION_NODE_UPPER_BOUND,
+                MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES,
+            ),
+            (
+                FOUR_SQUARE_CAMPAIGN_CONTINUATION_OBJECT_UPPER_BOUND,
+                MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS,
+            ),
+        )
+    ):
+        raise FrontierPromotionError(
+            "four-square continuation direct proof envelope exceeds its immutable cap"
+        )
+    plan = four_square_frontier_plan()
+    prerequisites = construct_frontier_closed_microbatch(
+        FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITES,
+        plan=plan.source,
+    )
+    actual_proofs = {item.name: item.certificate for item in prerequisites}
+    result = construct_four_square_campaign_microbatch(
+        FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES,
+        prerequisites=actual_proofs,
+    )
+    return tuple(item.diagnostics for item in prerequisites), result
+
+
 def _validate_beta_parent_surface(
     plan: FourSquareFrontierPlan,
 ) -> dict[str, tuple[str, ...]]:
@@ -935,6 +1041,15 @@ __all__ = [
     "FOUR_SQUARE_INITIAL_CAMPAIGN_LEAF_BUDGETS",
     "FOUR_SQUARE_INITIAL_CAMPAIGN_READY_COUNT",
     "FOUR_SQUARE_CAMPAIGN_NEXT_READY_COUNT",
+    "FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES",
+    "FOUR_SQUARE_CAMPAIGN_CONTINUATION_NODE_UPPER_BOUND",
+    "FOUR_SQUARE_CAMPAIGN_CONTINUATION_OBJECT_UPPER_BOUND",
+    "FOUR_SQUARE_CAMPAIGN_CONTINUATION_CHECKED_DIAGNOSTICS",
+    "FOUR_SQUARE_CAMPAIGN_CONTINUATION_CHECKED_PREREQUISITE_DIAGNOSTICS",
+    "FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITES",
+    "FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_NODE_UPPER_BOUND",
+    "FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_OBJECT_UPPER_BOUND",
+    "FOUR_SQUARE_CAMPAIGN_CONTINUATION_READY_COUNT",
     "FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_DIRECT_NODE_UPPER_BOUND",
     "FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_DIRECT_OBJECT_UPPER_BOUND",
     "FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_CHECKED_DIAGNOSTICS",
@@ -953,6 +1068,7 @@ __all__ = [
     "MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS",
     "construct_four_square_beta_parent_certificates",
     "construct_four_square_campaign_microbatch",
+    "construct_four_square_continuation_campaign_microbatch",
     "construct_four_square_initial_campaign_certificates",
     "construct_four_square_parent_microbatch",
     "construct_four_square_second_layer_campaign_microbatch",

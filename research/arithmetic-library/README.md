@@ -846,9 +846,14 @@ prerequisites now have actual independent closure candidates**. A subsequent
 independently kernel-checked sixteen-row campaign microbatch closes the first
 sixteen campaign rows. Three further separate batches close another fourteen:
 **7/78,442/12,147**, **6/75,700/10,698**, and **1/62,671/5,546**
-rows/nodes/objects. Therefore **30 of 44 Lucas campaign rows** now have
-genuine empty-context certificates; fourteen campaign rows and checked-use
-promotion remain separate open gates.
+rows/nodes/objects. The next reviewed shared profiles also genuinely close
+`lucas_choose_prefix_extend` in **30,854 nodes / 5,615 objects**,
+`lucas_choose_prefix_exists` in **30,916 nodes / 5,677 objects**, and
+`lucas_prime_row_interior_divisible` in **70,258 nodes / 11,011 objects**.
+Each is an actual unchanged-kernel empty-context proof under the original
+16-body/125,000-node/25,000-object limits. Therefore **33 of 44 Lucas
+campaign rows** now have genuine empty-context certificates; eleven campaign
+rows and checked-use promotion remain separate open gates.
 
 The dedicated four-square promotion planner pins Lagrange's exact 390-row
 dependency slice. An independently checked sixteen-row parent microbatch
@@ -864,18 +869,21 @@ campaign rows**. Their exact row/node/object counts are **16/1,232/1,125**,
 every batch independently respects the original proof envelope. A further
 second-layer batch recreates ten genuine prerequisite certificates in
 **2,973 nodes / 2,114 objects**, then closes another sixteen campaign rows
-in **10,229 nodes / 6,322 objects**. Therefore **68 of 196 Lagrange campaign
-rows** now have actual empty-context certificates. The remaining 128 campaign
-rows and flagship-wide closure remain open, without any change to sealed
-release authority.
+in **10,229 nodes / 6,322 objects**. The next sealed continuation reconstructs
+sixteen genuine predecessor certificates in **11,374 nodes / 7,149 objects**,
+then independently kernel-checks twelve additional campaign rows in **14,263
+nodes / 7,471 objects**. Therefore **80 of 196 Lagrange campaign rows** now
+have actual empty-context certificates. The remaining 116 campaign rows and
+flagship-wide closure remain open, without any change to sealed release
+authority.
 
 Across both flagship slices, **all 53 older parent prerequisites now have
 genuine bounded closure candidates**. The next exact promotion frontier is
 the original 240-row Alpha-v13 append: 44 Lucas rows and 196 Lagrange rows;
-its first **30 Lucas rows and 68 Lagrange rows** now also have actual
-independently checked empty-context certificates. In total, **151 of the
+its first **33 Lucas rows and 80 Lagrange rows** now also have actual
+independently checked empty-context certificates. In total, **166 of the
 293 body-only obligations** across both exact flagship slices now have
-genuine closure candidates; **142** remain (14 Lucas and 128 Lagrange).
+genuine closure candidates; **127** remain (11 Lucas and 116 Lagrange).
 
 Six offline interactive proof families now cover the supplementary laws,
 Kummer, two squares, four squares, Lucas, and the new Pythagorean/Fermat-four

@@ -101,6 +101,34 @@ LUCAS_CAMPAIGN_THIRD_MICROBATCH = (
 LUCAS_CAMPAIGN_FOURTH_MICROBATCH = (
     "lucas_terminating_prime_digit_chain_exists",
 )
+LUCAS_CHOOSE_EXISTENCE_SHARED_ROWS = (
+    "beta_pascal_zero_row_extend",
+    "beta_pascal_zero_row_exists",
+    "beta_pascal_row_step_extend",
+    "beta_pascal_row_step_exists",
+    "beta_pascal_table_prefix_extend",
+    "beta_pascal_table_prefix_exists",
+    "choose_exists",
+)
+LUCAS_PREFIX_SHARED_TARGETS = (
+    "lucas_choose_prefix_extend",
+    "lucas_choose_prefix_exists",
+)
+LUCAS_INTERIOR_SHARED_TARGETS = (
+    "lucas_prime_row_interior_divisible",
+    "lucas_prime_row_interior_zero_mod",
+    "lucas_prime_shift_below_base",
+)
+# Actual unchanged-kernel empty-context checks completed for these rows only.
+# These diagnostic observations never grant release membership or checked use.
+LUCAS_CAMPAIGN_SHARED_CHECKED_DIAGNOSTICS = (
+    ("lucas_choose_prefix_extend", 30_854, 5_615, 8),
+    ("lucas_choose_prefix_exists", 30_916, 5_677, 9),
+    ("lucas_prime_row_interior_divisible", 70_258, 11_011, 16),
+)
+LUCAS_CAMPAIGN_SHARED_CHECKED_NAMES = tuple(
+    name for name, _nodes, _objects, _bodies in LUCAS_CAMPAIGN_SHARED_CHECKED_DIAGNOSTICS
+)
 
 
 @dataclass(frozen=True, slots=True)
@@ -145,6 +173,67 @@ class LucasCampaignClosurePlan:
     @property
     def initially_ready_rows(self) -> tuple[LucasCampaignClosureRow, ...]:
         return tuple(row for row in self.rows if row.ready_without_candidates)
+
+
+@dataclass(frozen=True, slots=True)
+class LucasCampaignSharedProfile:
+    """Exact fixed sealed profile; no receipt or theorem authority is implied."""
+
+    target: str
+    pending_rows: tuple[str, ...]
+    stable_rows: tuple[str, ...]
+    observed_checked_leaf_nodes: int
+    observed_checked_leaf_objects: int
+
+    @property
+    def contextual_body_count(self) -> int:
+        return len(self.pending_rows) + len(self.stable_rows)
+
+
+def lucas_campaign_shared_profile(target: str) -> LucasCampaignSharedProfile:
+    if type(target) is not str:
+        raise FrontierPromotionError("Lucas shared campaign target must be an exact string")
+    if target == LUCAS_PREFIX_SHARED_TARGETS[0]:
+        return LucasCampaignSharedProfile(
+            target, LUCAS_CHOOSE_EXISTENCE_SHARED_ROWS + (target,), (), 29_809, 5_167
+        )
+    if target == LUCAS_PREFIX_SHARED_TARGETS[1]:
+        return LucasCampaignSharedProfile(
+            target,
+            LUCAS_CHOOSE_EXISTENCE_SHARED_ROWS + LUCAS_PREFIX_SHARED_TARGETS,
+            (),
+            29_809,
+            5_167,
+        )
+
+    interior_pending = tuple(
+        name for name in LUCAS_MIXED_PENDING_ROWS if name != "choose_self_of_eq"
+    ) + (LUCAS_INTERIOR_SHARED_TARGETS[0],)
+    if target == LUCAS_INTERIOR_SHARED_TARGETS[0]:
+        return LucasCampaignSharedProfile(
+            target, interior_pending, LUCAS_MIXED_STABLE_ROWS, 42_391, 10_413
+        )
+    zero_pending = interior_pending + (LUCAS_INTERIOR_SHARED_TARGETS[1],)
+    zero_stable = tuple(
+        name for name in LUCAS_MIXED_STABLE_ROWS if name != "beta_range_succ_extend"
+    )
+    if target == LUCAS_INTERIOR_SHARED_TARGETS[1]:
+        return LucasCampaignSharedProfile(
+            target, zero_pending, zero_stable, 71_621, 14_980
+        )
+    if target == LUCAS_INTERIOR_SHARED_TARGETS[2]:
+        return LucasCampaignSharedProfile(
+            target,
+            zero_pending + (target,),
+            (
+                "beta_prefix_product_trace_exists",
+                "beta_product_exists",
+                "factorial_exists",
+            ),
+            71_741,
+            15_080,
+        )
+    raise FrontierPromotionError("unsupported Lucas shared campaign target")
 
 
 def lucas_campaign_closure_plan(
@@ -410,3 +499,23 @@ def construct_lucas_mixed_closed_candidate(
         )
     receipt = check_frontier_promotion_certificate(target, candidate.certificate, plan=selected)
     return ConstructedFrontierClosedCandidate(target, candidate.certificate, receipt)
+
+
+def construct_lucas_shared_campaign_closed_candidate(
+    target: str,
+    *,
+    prerequisites: Mapping[str, Proof] | None = None,
+    plan: FrontierPromotionPlan | None = None,
+) -> ConstructedFrontierClosedCandidate:
+    """Check one exact predefined campaign root under the unchanged hard caps."""
+
+    profile = lucas_campaign_shared_profile(target)
+    if profile.contextual_body_count > MAX_FRONTIER_CLOSURE_MICROBATCH:
+        raise FrontierPromotionError("Lucas shared campaign profile exceeds its body cap")
+    return construct_lucas_mixed_closed_candidate(
+        target,
+        pending_rows=profile.pending_rows,
+        stable_rows=profile.stable_rows,
+        prerequisites=prerequisites,
+        plan=plan,
+    )

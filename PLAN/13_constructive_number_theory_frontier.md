@@ -476,14 +476,18 @@ microbatches then independently close fourteen more:
 - **6 proofs / 75,700 nodes / 10,698 objects**.
 - **1 proof / 62,671 nodes / 5,546 objects**.
 
-Thus **30 of 44 Lucas campaign rows** now have actual closed certificates.
-The remaining fourteen campaign rows, full flagship closure, and checked-use
-promotion remain separate open gates. Their two exact resource-sensitive
-entrances are `lucas_choose_prefix_extend`, whose current direct-premise
-lower bound is **119,156 nodes**, and
-`lucas_prime_row_interior_divisible`, which requires safely reusing the
-newly closed mixed `choose_prime_divides_between` certificate without
-duplicating its shared sixteen-row proof graph.
+The next two formerly blocked entrances also now have genuine independently
+checked closure certificates. Contextualizing the shared older Choose
+infrastructure reduces the **119,156-node** direct-prefix lower bound to
+actual empty-context proofs of **30,854 nodes / 5,615 objects** for
+`lucas_choose_prefix_extend` and **30,916 nodes / 5,677 objects** for
+`lucas_choose_prefix_exists`. A separate exact sixteen-body mixed package
+then closes `lucas_prime_row_interior_divisible` in **70,258 nodes / 11,011
+objects**. These are actual unchanged-kernel proofs, not inferred evidence,
+and every package respects all original resource limits. Thus **33 of 44
+Lucas campaign rows** now have actual closed certificates. The remaining
+eleven campaign rows, full flagship closure, and checked-use promotion
+remain separate open gates.
 
 The dedicated
 [`bounded four-square promotion RFC`](../research/arithmetic-library/four-square-frontier-promotion-rfc-v1.md)
@@ -519,20 +523,23 @@ Every individual batch respects all original 16-row/125,000-node/25,000-object
 limits. A subsequent second-layer batch first reconstructs ten genuinely
 closed prerequisites in **2,973 nodes / 2,114 objects**, then independently
 kernel-checks sixteen additional campaign bodies in **10,229 nodes / 6,322
-objects**. Consequently, **68 of 196 four-square campaign rows** now have
-genuine empty-context closure certificates. The remaining 128 campaign
-certificates, complete flagship closure, and checked-use promotion remain
-open. Planning and actual bounded candidate certificates never alter the
-sealed release or checked-use authority.
+objects**. A further sealed continuation first reconstructs sixteen genuine
+predecessor certificates in **11,374 nodes / 7,149 objects**, then
+independently kernel-checks twelve new four-square campaign bodies in
+**14,263 nodes / 7,471 objects**. Consequently, **80 of 196 four-square
+campaign rows** now have genuine empty-context closure certificates. The
+remaining 116 campaign certificates, complete flagship closure, and
+checked-use promotion remain open. Planning and actual bounded candidate
+certificates never alter the sealed release or checked-use authority.
 
 Consequently, the combined **53 previously unchecked older prerequisites**
 for the two flagship families have all been genuinely closed in bounded
 independent proof experiments. The remaining frontier is the exact **240-row
 Alpha-v13 campaign append** itself: 44 Lucas bodies and 196 four-square bodies;
-the first **30 Lucas and 68 four-square** campaign rows also already have
+the first **33 Lucas and 80 four-square** campaign rows also already have
 genuine independent closure certificates. The precise combined result is
-**151 genuinely closed body-only obligations out of 293**, with **142 still
-open** (14 Lucas and 128 Lagrange).
+**166 genuinely closed body-only obligations out of 293**, with **127 still
+open** (11 Lucas and 116 Lagrange).
 
 ### Sixth campaign — Pythagorean triples and Fermat exponent four
 

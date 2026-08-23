@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 from collections import Counter
 from dataclasses import dataclass
+from functools import lru_cache
 from hashlib import sha256
 import html
 import importlib
@@ -31,9 +32,16 @@ from peano_lab.library import bertrand_defined_edition as defined_adapter  # noq
 from peano_lab.library import editions_v13 as v13  # noqa: E402
 from peano_lab.library import editions_v14 as v14  # noqa: E402
 from peano_lab.library import editions_v15 as v15  # noqa: E402
+from peano_lab.library import four_square_frontier_promotion as four_square_closure  # noqa: E402
+from peano_lab.library import lucas_mixed_promotion as lucas_closure  # noqa: E402
 from peano_lab.library.bertrand_defined_edition import BERTRAND_DEFINITIONS  # noqa: E402
 from peano_lab.library.defined_edition import DefinedEditionError  # noqa: E402
 from peano_lab.library.defined_syntax import DEFINITIONS  # noqa: E402
+from peano_lab.library.frontier_promotion import (  # noqa: E402
+    MAX_FRONTIER_CLOSURE_MICROBATCH,
+    MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES,
+    MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS,
+)
 from peano_lab.library.ha_signed_balance_candidate import signed_balance  # noqa: E402
 from peano_lab.library.pythagorean_fermat_four_candidate import (  # noqa: E402
     fermat_four_counterexample,
@@ -59,6 +67,11 @@ UNENROLLED_CANDIDATE_STATUS = (
 ALPHA_BODY_STATUS = (
     "Alpha v15 enrolled · body_checked; "
     "not admitted for checked use or Stable"
+)
+EXPERIMENTAL_CLOSURE_STATUS = (
+    "independently replay-verified empty-context experiment; "
+    "no persisted certificate, Alpha evidence change, checked-use authority, "
+    "or Stable promotion"
 )
 ALPHA_EDITION_VERSION = "v15"
 MANIFEST_SCHEMA = "peano-lab-constructive-frontier-explorer-v1"
@@ -634,12 +647,342 @@ def _alpha_admission_versions() -> dict[str, str]:
     }
 
 
-def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
+def _verified_experimental_names(
+    names: object,
+    *,
+    allowed: set[str],
+    source: str,
+    batch_limit: bool = True,
+) -> tuple[str, ...]:
+    """Validate named checked experiments without manufacturing a proof receipt."""
+
+    if type(names) is not tuple or not names:
+        raise ValueError(f"{source} must contain an exact nonempty named tuple")
+    if any(type(name) is not str for name in names):
+        raise ValueError(f"{source} contains a non-string experimental theorem")
+    if len(set(names)) != len(names):
+        raise ValueError(f"{source} repeats an experimental theorem")
+    if batch_limit and len(names) > MAX_FRONTIER_CLOSURE_MICROBATCH:
+        raise ValueError(f"{source} exceeds the unchanged experimental microbatch limit")
+    unexpected = set(names).difference(allowed)
+    if unexpected:
+        raise ValueError(
+            f"{source} contains noncampaign experimental rows: {sorted(unexpected)!r}"
+        )
+    for name in names:
+        old = v13.ALPHA_EDITION.by_name.get(name)
+        current = v15.ALPHA_EDITION.by_name.get(name)
+        if (
+            old is None
+            or current is None
+            or old.spec != current.spec
+            or old.evidence is not v13.EvidenceStatus.BODY_CHECKED
+            or current.evidence is not v15.EvidenceStatus.BODY_CHECKED
+            or old.checked_use
+            or current.checked_use
+        ):
+            raise ValueError(
+                f"{source} does not match the sealed body-only Alpha entry {name!r}"
+            )
+    return names
+
+
+def _checked_experimental_diagnostics(
+    diagnostics: object,
+    *,
+    expected_names: tuple[str, ...],
+    source: str,
+) -> tuple[tuple[str, int, int], ...]:
+    """Bind actual prior replay diagnostics to exactly their named proof batch."""
+
+    if type(diagnostics) is not tuple or len(diagnostics) != len(expected_names):
+        raise ValueError(f"{source} has incomplete checked experimental diagnostics")
+    if any(
+        type(item) is not tuple
+        or len(item) != 3
+        or type(item[0]) is not str
+        or type(item[1]) is not int
+        or type(item[2]) is not int
+        or item[1] <= 0
+        or item[2] <= 0
+        or item[1] > MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES
+        or item[2] > MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS
+        for item in diagnostics
+    ):
+        raise ValueError(f"{source} exceeds immutable experimental proof limits")
+    if tuple(item[0] for item in diagnostics) != expected_names:
+        raise ValueError(f"{source} checked experimental names differ from their batch")
+    return diagnostics
+
+
+@lru_cache(maxsize=1)
+def _experimental_closure_campaigns() -> dict[str, dict[str, Any]]:
+    """Expose only named, previously checked experiments; never replay proofs."""
+
+    lucas_plan = lucas_closure.lucas_campaign_closure_plan()
+    lucas_allowed = {row.name for row in lucas_plan.rows}
+    if len(lucas_allowed) != lucas_closure.LUCAS_CAMPAIGN_EXPECTED_COUNT:
+        raise ValueError("Lucas experimental campaign differs from its sealed slice")
+    if lucas_plan.parent_alpha_identity_sha256 != v13.ALPHA_V13_IDENTITY_SHA256:
+        raise ValueError("Lucas experimental campaign has an unsealed Alpha parent")
+
+    lucas_batches: list[tuple[str, tuple[str, ...]]] = []
+    for label, names in (
+        ("lucas-initial", lucas_closure.LUCAS_CAMPAIGN_INITIAL_MICROBATCH),
+        ("lucas-second", lucas_closure.LUCAS_CAMPAIGN_SECOND_MICROBATCH),
+        ("lucas-third", lucas_closure.LUCAS_CAMPAIGN_THIRD_MICROBATCH),
+        ("lucas-fourth", lucas_closure.LUCAS_CAMPAIGN_FOURTH_MICROBATCH),
+    ):
+        lucas_batches.append(
+            (
+                label,
+                _verified_experimental_names(
+                    names, allowed=lucas_allowed, source=f"{label} microbatch"
+                ),
+            )
+        )
+    shared_checked = getattr(lucas_closure, "LUCAS_CAMPAIGN_SHARED_CHECKED_NAMES", ())
+    if shared_checked:
+        checked_diagnostics = getattr(
+            lucas_closure, "LUCAS_CAMPAIGN_SHARED_CHECKED_DIAGNOSTICS", ()
+        )
+        if (
+            type(checked_diagnostics) is not tuple
+            or len(checked_diagnostics) != len(shared_checked)
+            or any(
+                type(item) is not tuple
+                or len(item) != 4
+                or type(item[0]) is not str
+                or any(type(value) is not int or value <= 0 for value in item[1:])
+                or item[1] > MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES
+                or item[2] > MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS
+                or item[3] > MAX_FRONTIER_CLOSURE_MICROBATCH
+                for item in checked_diagnostics
+            )
+            or tuple(item[0] for item in checked_diagnostics) != shared_checked
+        ):
+            raise ValueError(
+                "Lucas shared checked experimental names lack matching bounded replay diagnostics"
+            )
+        lucas_batches.append(
+            (
+                "lucas-shared-checked",
+                _verified_experimental_names(
+                    shared_checked,
+                    allowed=lucas_allowed,
+                    source="Lucas independently checked shared roots",
+                ),
+            )
+        )
+
+    four_plan = four_square_closure.four_square_frontier_plan()
+    four_allowed = {row.name for row in four_plan.campaign_obligations}
+    four_parents = {row.name for row in four_plan.parent_obligations}
+    if (
+        len(four_allowed) != four_square_closure.FOUR_SQUARE_FRONTIER_CAMPAIGN_COUNT
+        or len(four_parents)
+        != four_square_closure.FOUR_SQUARE_FRONTIER_PARENT_COUNT
+        or four_plan.source.parent_alpha_identity_sha256
+        != v13.ALPHA_V13_IDENTITY_SHA256
+    ):
+        raise ValueError("four-square experimental campaign differs from its sealed slice")
+
+    four_batches: list[tuple[str, tuple[str, ...]]] = []
+    initial_batches = four_square_closure.four_square_initial_campaign_batches()
+    initial_checked = (
+        four_square_closure.FOUR_SQUARE_INITIAL_CAMPAIGN_CHECKED_BATCH_DIAGNOSTICS
+    )
+    if len(initial_batches) != len(initial_checked):
+        raise ValueError("four-square initial checked microbatch diagnostics are incomplete")
+    for batch, checked in zip(initial_batches, initial_checked, strict=True):
+        if (
+            type(checked) is not tuple
+            or len(checked) != 3
+            or checked[0] != len(batch.names)
+            or any(type(value) is not int or value <= 0 for value in checked)
+            or checked[1] > MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES
+            or checked[2] > MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS
+        ):
+            raise ValueError("four-square initial checked microbatch exceeds immutable limits")
+        label = f"four-square-initial-{batch.index + 1}"
+        four_batches.append(
+            (
+                label,
+                _verified_experimental_names(
+                    batch.names, allowed=four_allowed, source=f"{label} microbatch"
+                ),
+            )
+        )
+
+    second_names = _verified_experimental_names(
+        four_square_closure.FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_NAMES,
+        allowed=four_allowed,
+        source="four-square independently checked second layer",
+    )
+    _checked_experimental_diagnostics(
+        four_square_closure.FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_CHECKED_DIAGNOSTICS,
+        expected_names=second_names,
+        source="four-square second layer",
+    )
+    four_batches.append(("four-square-second-layer", second_names))
+
+    continuation_checked = getattr(
+        four_square_closure,
+        "FOUR_SQUARE_CAMPAIGN_CONTINUATION_CHECKED_DIAGNOSTICS",
+        (),
+    )
+    if continuation_checked:
+        continuation_names = _verified_experimental_names(
+            four_square_closure.FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES,
+            allowed=four_allowed,
+            source="four-square independently checked continuation",
+        )
+        _checked_experimental_diagnostics(
+            continuation_checked,
+            expected_names=continuation_names,
+            source="four-square continuation",
+        )
+        four_batches.append(("four-square-continuation", continuation_names))
+
+    non_beta = _verified_experimental_names(
+        four_square_closure.FOUR_SQUARE_NON_BETA_PARENT_NAMES,
+        allowed=four_parents,
+        source="four-square checked non-beta parents",
+        batch_limit=False,
+    )
+    non_beta_checked = (
+        four_square_closure.FOUR_SQUARE_NON_BETA_MICROBATCH_DIAGNOSTICS
+    )
+    _checked_experimental_diagnostics(
+        non_beta_checked,
+        expected_names=non_beta[:MAX_FRONTIER_CLOSURE_MICROBATCH],
+        source="four-square checked non-beta parent microbatch",
+    )
+    established = {
+        name
+        for name, _nodes in four_square_closure.FOUR_SQUARE_ESTABLISHED_PARENT_DIAGNOSTICS
+    }
+    if not set(non_beta[MAX_FRONTIER_CLOSURE_MICROBATCH:]) <= established:
+        raise ValueError("four-square remaining non-beta parents lack checked diagnostics")
+
+    beta = _verified_experimental_names(
+        four_square_closure.FOUR_SQUARE_BETA_PARENT_NAMES,
+        allowed=four_parents,
+        source="four-square checked beta parent singletons",
+    )
+    _checked_experimental_diagnostics(
+        four_square_closure.FOUR_SQUARE_BETA_PARENT_CHECKED_DIAGNOSTICS,
+        expected_names=beta,
+        source="four-square beta parent singleton replays",
+    )
+    parent_names = non_beta + beta
+    if set(parent_names) != four_parents:
+        raise ValueError("four-square checked parent experiments omit sealed rows")
+
+    policies = {
+        "max_microbatch_rows": MAX_FRONTIER_CLOSURE_MICROBATCH,
+        "max_proof_nodes": MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES,
+        "max_proof_objects": MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS,
+    }
+    result: dict[str, dict[str, Any]] = {}
+    for slug, campaign, root, total, batches, checked_parents, parent_total in (
+        (
+            "lucas",
+            "lucas",
+            "lucas_theorem",
+            lucas_closure.LUCAS_CAMPAIGN_EXPECTED_COUNT,
+            lucas_batches,
+            (),
+            len(lucas_plan.parent_names),
+        ),
+        (
+            "four-squares",
+            "four_square",
+            four_square_closure.FOUR_SQUARE_FRONTIER_ROOT,
+            four_square_closure.FOUR_SQUARE_FRONTIER_CAMPAIGN_COUNT,
+            four_batches,
+            parent_names,
+            four_square_closure.FOUR_SQUARE_FRONTIER_PARENT_COUNT,
+        ),
+    ):
+        names = tuple(name for _label, batch in batches for name in batch)
+        if len(names) != len(set(names)):
+            raise ValueError(f"{slug} repeats a checked experimental campaign row")
+        if len(names) > total:
+            raise ValueError(f"{slug} overstates its sealed experimental campaign")
+        result[slug] = {
+            "campaign": campaign,
+            "root": root,
+            "status": EXPERIMENTAL_CLOSURE_STATUS,
+            "source_alpha_edition_version": "v13",
+            "source_alpha_edition_identity_sha256": v13.ALPHA_V13_IDENTITY_SHA256,
+            "verified_campaign_names": list(names),
+            "verified_campaign_row_count": len(names),
+            "campaign_row_count": total,
+            "verified_parent_names": list(checked_parents),
+            "verified_parent_row_count": len(checked_parents),
+            "parent_row_count": parent_total,
+            "parent_progress_recorded": bool(checked_parents),
+            "verified_obligation_row_count": len(names) + len(checked_parents),
+            "obligation_row_count": total + parent_total,
+            "verified_microbatches": [
+                {"label": label, "names": list(batch), "row_count": len(batch)}
+                for label, batch in batches
+            ],
+            "immutable_limits": dict(policies),
+            "flagship_experimentally_verified": root in names,
+            "has_persisted_certificates": False,
+            "replayed_during_generation": False,
+            "changes_alpha_evidence": False,
+            "grants_checked_use": False,
+            "grants_stable_membership": False,
+        }
+    return result
+
+
+def _experimental_closure_by_name(
+    campaigns: Mapping[str, Mapping[str, Any]],
+) -> dict[str, dict[str, str]]:
+    """Index only validated named historical experiments, never observations."""
+
+    result: dict[str, dict[str, str]] = {}
+    for progress in campaigns.values():
+        for batch in progress["verified_microbatches"]:
+            for name in batch["names"]:
+                if name in result:
+                    raise ValueError(f"experimental theorem {name!r} occurs in two campaigns")
+                result[name] = {
+                    "campaign": str(progress["campaign"]),
+                    "role": "campaign",
+                    "microbatch": str(batch["label"]),
+                }
+        for name in progress["verified_parent_names"]:
+            previous = result.get(name)
+            if previous is not None and previous["campaign"] != progress["campaign"]:
+                raise ValueError(f"experimental parent {name!r} crosses campaigns")
+            result[name] = {
+                "campaign": str(progress["campaign"]),
+                "role": "parent",
+                "microbatch": "four-square-checked-parent",
+            }
+    return result
+
+
+def _family_nodes(
+    family: Family,
+    *,
+    experimental_by_name: Mapping[str, Mapping[str, str]] | None = None,
+) -> tuple[dict[str, Any], ...]:
     rows: list[dict[str, Any]] = []
     selected: dict[str, dict[str, Any]] = {}
     alpha_entries = v15.ALPHA_EDITION.by_name
     alpha_campaigns = _alpha_frontier_campaigns()
     alpha_admission_versions = _alpha_admission_versions()
+    experiments = (
+        _experimental_closure_by_name(_experimental_closure_campaigns())
+        if experimental_by_name is None
+        else experimental_by_name
+    )
     factory_name_filters = {
         module: frozenset(names)
         for module, names in family.factory_name_filters
@@ -668,6 +1011,7 @@ def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
                 continue
             alpha_entry = alpha_entries.get(item.name)
             alpha_campaign = alpha_campaigns.get(item.name)
+            experimental_closure = experiments.get(item.name)
             if alpha_entry is not None:
                 if (
                     alpha_entry.spec.statement != item.statement
@@ -686,6 +1030,14 @@ def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
                     raise ValueError(
                         f"candidate {item.name!r} has unexpected Alpha-v15 evidence"
                     )
+            if experimental_closure is not None and (
+                alpha_entry is None
+                or alpha_admission_versions.get(item.name) != "v13"
+                or experimental_closure["role"] != "campaign"
+            ):
+                raise ValueError(
+                    f"candidate {item.name!r} has unsealed experimental closure metadata"
+                )
             row = {
                 "name": item.name,
                 "summary": item.summary,
@@ -726,6 +1078,23 @@ def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
                 ),
                 "admitted_to_alpha": False,
                 "admitted_to_stable": False,
+                "experimental_closure_verified": experimental_closure is not None,
+                "experimental_closure_campaign": (
+                    experimental_closure["campaign"]
+                    if experimental_closure is not None
+                    else None
+                ),
+                "experimental_closure_microbatch": (
+                    experimental_closure["microbatch"]
+                    if experimental_closure is not None
+                    else None
+                ),
+                "experimental_closure_status": (
+                    EXPERIMENTAL_CLOSURE_STATUS
+                    if experimental_closure is not None
+                    else None
+                ),
+                "experimental_closure_has_persisted_certificate": False,
                 "root": item.name in family.roots,
             }
             selected[item.name] = row
@@ -736,6 +1105,8 @@ def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
 
 
 def build_corpora() -> dict[str, dict[str, Any]]:
+    experimental_campaigns = _experimental_closure_campaigns()
+    experimental_by_name = _experimental_closure_by_name(experimental_campaigns)
     definitions = _definition_table()
     definitions_by_id = {
         definition["id"]: definition for definition in definitions.values()
@@ -744,7 +1115,7 @@ def build_corpora() -> dict[str, dict[str, Any]]:
         raise ValueError("constructive frontier definitions repeat a stable identifier")
     candidates: dict[str, tuple[dict[str, Any], ...]] = {}
     for family in FAMILIES:
-        rows = _family_nodes(family)
+        rows = _family_nodes(family, experimental_by_name=experimental_by_name)
         for row in rows:
             row["defined"] = _defined_node(row, definitions_by_id)
         candidates[family.slug] = rows
@@ -763,6 +1134,7 @@ def build_corpora() -> dict[str, dict[str, Any]]:
         for node in nodes:
             for dependency in node["dependencies"]:
                 alpha_entry = alpha_entries.get(dependency)
+                experiment = experimental_by_name.get(dependency)
                 enrolled_alpha = alpha_entry is not None
                 alpha_evidence = (
                     alpha_entry.evidence.value if alpha_entry is not None else None
@@ -833,6 +1205,13 @@ def build_corpora() -> dict[str, dict[str, Any]]:
                         ),
                         "admitted_to_alpha": admitted_alpha,
                         "admitted_to_stable": admitted_stable,
+                        "experimental_closure_verified": experiment is not None,
+                        "experimental_closure_campaign": (
+                            experiment["campaign"] if experiment is not None else None
+                        ),
+                        "experimental_closure_role": (
+                            experiment["role"] if experiment is not None else None
+                        ),
                     }
                 )
                 if kind != "internal-candidate":
@@ -852,6 +1231,13 @@ def build_corpora() -> dict[str, dict[str, Any]]:
                         ),
                         "admitted_to_alpha": admitted_alpha,
                         "admitted_to_stable": admitted_stable,
+                        "experimental_closure_verified": experiment is not None,
+                        "experimental_closure_campaign": (
+                            experiment["campaign"] if experiment is not None else None
+                        ),
+                        "experimental_closure_role": (
+                            experiment["role"] if experiment is not None else None
+                        ),
                     }
         family_definitions = []
         for name in family.definition_names:
@@ -866,6 +1252,25 @@ def build_corpora() -> dict[str, dict[str, Any]]:
         }
         for definition_id in sorted(used_definition_ids.difference(included_ids)):
             family_definitions.append(definitions_by_id[definition_id])
+        experimental_visible = [
+            node for node in nodes if node["experimental_closure_verified"]
+        ]
+        relevant_experiments = []
+        for campaign_slug, progress in experimental_campaigns.items():
+            visible_names = [
+                node["name"]
+                for node in experimental_visible
+                if node["experimental_closure_campaign"] == progress["campaign"]
+            ]
+            if not visible_names and campaign_slug != family.slug:
+                continue
+            relevant_experiments.append(
+                {
+                    **progress,
+                    "visible_node_names": visible_names,
+                    "visible_node_count": len(visible_names),
+                }
+            )
         corpora[family.slug] = {
             "schema": "peano-lab-constructive-frontier-family-v1",
             "slug": family.slug,
@@ -882,6 +1287,13 @@ def build_corpora() -> dict[str, dict[str, Any]]:
             "alpha_checked_use_node_count": sum(
                 node["alpha_checked_use"] for node in nodes
             ),
+            "experimental_closure_status": EXPERIMENTAL_CLOSURE_STATUS,
+            "experimental_closed_visible_node_count": len(experimental_visible),
+            "experimental_closure_campaigns": relevant_experiments,
+            "experimental_closure_has_persisted_certificates": False,
+            "experimental_closure_replayed_during_generation": False,
+            "experimental_closure_grants_checked_use": False,
+            "experimental_closure_grants_stable_membership": False,
             "alpha_enrolled_root_names": [
                 node["name"]
                 for node in nodes
@@ -975,15 +1387,23 @@ def _svg(corpus: Mapping[str, Any]) -> str:
         local = {row["name"] for row in nodes}
         external_count = sum(dependency not in local for dependency in node["dependencies"])
         label = name if len(name) <= 35 else name[:32] + "…"
-        classes = "frontier-node frontier-root" if node["root"] else "frontier-node"
+        classes = ["frontier-node"]
+        if node["root"]:
+            classes.append("frontier-root")
+        if node["experimental_closure_verified"]:
+            classes.append("frontier-experiment-verified")
+        experimental_note = (
+            " · replay experiment ✓" if node["experimental_closure_verified"] else ""
+        )
         drawn.append(
-            f'<g class="{classes}" data-node="{html.escape(name, quote=True)}" '
+            f'<g class="{" ".join(classes)}" data-node="{html.escape(name, quote=True)}" '
             f'tabindex="0" role="button" aria-label="{html.escape(name, quote=True)}" '
             f'transform="translate({x},{y})">'
             '<rect width="274" height="41" rx="10"/>'
             f'<text x="12" y="18">{html.escape(label)}</text>'
             f'<text class="frontier-node-meta" x="12" y="33">'
-            f'{len(node["script"])} proof lines · {external_count} external</text></g>'
+            f'{len(node["script"])} proof lines · {external_count} external'
+            f'{experimental_note}</text></g>'
         )
     return (
         f'<svg class="frontier-svg" id="frontier-graph" role="img" '
@@ -1028,6 +1448,53 @@ def _example_markup(family: Family) -> str:
     )
 
 
+def _experimental_progress_markup(corpus: Mapping[str, Any]) -> str:
+    """Render historical proof experiments apart from sealed release evidence."""
+
+    campaigns = corpus["experimental_closure_campaigns"]
+    if not campaigns:
+        return ""
+    cards = []
+    for campaign in campaigns:
+        verified = int(campaign["verified_campaign_row_count"])
+        total = int(campaign["campaign_row_count"])
+        visible = int(campaign["visible_node_count"])
+        label = "Lucas" if campaign["campaign"] == "lucas" else "Lagrange four-square"
+        parents = (
+            f'<p>Older parent rows: <strong>{campaign["verified_parent_row_count"]}'
+            f' / {campaign["parent_row_count"]}</strong> independently '
+            "replay-verified outside this candidate map. Total sealed-slice "
+            f'obligations experimentally verified: <strong>'
+            f'{campaign["verified_obligation_row_count"]} / '
+            f'{campaign["obligation_row_count"]}</strong>.</p>'
+            if campaign["parent_progress_recorded"]
+            else ""
+        )
+        cards.append(
+            f'<article class="frontier-experimental-card" '
+            f'data-experimental-campaign="{html.escape(campaign["campaign"], quote=True)}">'
+            f'<h3>{label} campaign · {verified} / {total}</h3>'
+            f'<progress max="{total}" value="{verified}" '
+            f'aria-label="{label} independently replay-verified experimental rows">'
+            f'{verified}/{total}</progress>'
+            f'<p><strong>{visible}</strong> verified campaign '
+            f'{"node" if visible == 1 else "nodes"} visible in this proof family; '
+            "the campaign denominator includes rows shared with other maps.</p>"
+            f"{parents}</article>"
+        )
+    return (
+        '<section class="frontier-experimental" '
+        'aria-labelledby="frontier-experimental-heading">'
+        '<h2 id="frontier-experimental-heading">Independent closure experiments</h2>'
+        '<p class="frontier-experimental-disclaimer">Previously independently '
+        "replay-verified empty-context experiments. Certificates are not persisted; "
+        "this browser does not replay proofs. Alpha release evidence, checked-use "
+        "authority, and Stable membership remain unchanged.</p>"
+        + "".join(cards)
+        + "</section>"
+    )
+
+
 def _family_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     safe_json = json.dumps(corpus, ensure_ascii=False, separators=(",", ":")).replace(
         "</", "<\\/"
@@ -1067,11 +1534,12 @@ def _family_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     <p class="frontier-reading-note">{corpus['compacted_statement_count']} readable definition-compacted statements · {corpus['defined_tactic_proposition_count']} linked local proof propositions · exact AST-equivalence receipts</p>
   </header>
   <main class="frontier-main">
-    <section class="frontier-graph-section"><div class="frontier-toolbar"><h2>Interactive proof map</h2><label>Search theorems <input id="frontier-search" type="search" placeholder="Name, summary, exact or defined statement"></label><div class="frontier-view-controls" role="group" aria-label="Statement notation"><button data-frontier-view="defined" type="button" aria-pressed="true">Readable definitions</button><button data-frontier-view="exact" type="button" aria-pressed="false">Exact HA</button></div><span>Gold nodes are family endpoints; badges count external premises.</span></div><div class="frontier-map-controls" role="group" aria-label="Proof graph controls"><button id="frontier-zoom-out" type="button" aria-label="Zoom out">−</button><output id="frontier-zoom-level">100%</output><button id="frontier-zoom-in" type="button" aria-label="Zoom in">+</button><button id="frontier-zoom-fit" type="button">Fit map</button><button id="frontier-focus" type="button" aria-pressed="false">Focus dependencies</button><button id="frontier-print" type="button">Print proof map</button></div><div class="frontier-graph-scroll">{_svg(corpus)}</div></section>
+{_experimental_progress_markup(corpus)}
+    <section class="frontier-graph-section"><div class="frontier-toolbar"><h2>Interactive proof map</h2><label>Search theorems <input id="frontier-search" type="search" placeholder="Name, summary, exact or defined statement"></label><div class="frontier-view-controls" role="group" aria-label="Statement notation"><button data-frontier-view="defined" type="button" aria-pressed="true">Readable definitions</button><button data-frontier-view="exact" type="button" aria-pressed="false">Exact HA</button></div><span>Gold nodes are endpoints; teal outlines mark replay-verified experiments, not release evidence.</span></div><div class="frontier-map-controls" role="group" aria-label="Proof graph controls"><button id="frontier-zoom-out" type="button" aria-label="Zoom out">−</button><output id="frontier-zoom-level">100%</output><button id="frontier-zoom-in" type="button" aria-label="Zoom in">+</button><button id="frontier-zoom-fit" type="button">Fit map</button><button id="frontier-focus" type="button" aria-pressed="false">Focus dependencies</button><button id="frontier-print" type="button">Print proof map</button></div><div class="frontier-graph-scroll">{_svg(corpus)}</div></section>
     <section class="frontier-detail" id="frontier-detail" aria-live="polite"><h2>Choose a theorem</h2><p>Select a graph node to inspect its readable defined notation, exact first-order statement, linked definitions, declaration, dependencies, proof script, and source receipts.</p></section>
     {_example_markup(family)}
     <section class="frontier-definitions"><h2>Conservative definitions</h2><p>Each notation below expands immediately into the unchanged first-order language; it introduces no trusted kernel predicate.</p>{definition_cards}</section>
-    <section class="frontier-boundary"><h2>Evidence and release boundary</h2><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p><p>Alpha v15 enrolls exactly {corpus['alpha_enrolled_node_count']} of these {corpus['node_count']} displayed bodies as body_checked. Each original Alpha-v13, v14, or v15 enrollment version remains recorded separately. Enrollment records an exact dependency-curried proof body; it does not grant checked theorem use, empty-context closure, or Stable membership. This browser surface does not replay a proof, authorize theorem use, alter an edition, or assert completion beyond the exact listed endpoints.</p></section>
+    <section class="frontier-boundary"><h2>Evidence and release boundary</h2><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p><p>Alpha v15 enrolls exactly {corpus['alpha_enrolled_node_count']} of these {corpus['node_count']} displayed bodies as body_checked. Each original Alpha-v13, v14, or v15 enrollment version remains recorded separately. Enrollment records an exact dependency-curried proof body; it does not grant checked theorem use, empty-context closure, or Stable membership. Separately displayed historical replay experiments have no persisted certificate and do not change release evidence, checked-use authority, or Stable admission. This browser surface does not replay a proof, authorize theorem use, alter an edition, or assert completion beyond the exact listed endpoints.</p></section>
   </main>
   <script id="frontier-corpus" type="application/json">{safe_json}</script>
   <script src="../assets/frontier.js" defer></script>
@@ -1085,6 +1553,8 @@ FRONTIER_CSS = r""":root{color-scheme:light dark;--ink:#162137;--muted:#617089;-
 """
 
 FRONTIER_CSS += r""".frontier-reading-note{max-width:950px;margin:1rem 0 0;color:#b9e7dc;font-size:.78rem}.frontier-view-controls,.frontier-map-controls{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem}.frontier-view-controls button,.frontier-map-controls button{min-height:34px;padding:.38rem .7rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer;font-size:.76rem}.frontier-view-controls button[aria-pressed="true"],.frontier-map-controls button[aria-pressed="true"]{border-color:var(--violet);background:#6249ca18;color:var(--violet);font-weight:700}.frontier-map-controls{margin-top:.85rem}.frontier-map-controls output{min-width:42px;text-align:center;color:var(--muted);font-size:.74rem}.frontier-definition-link{padding:0;border:0;background:none;color:var(--violet);font:inherit;text-decoration:underline;text-decoration-style:dotted;cursor:pointer}.frontier-definition-link:hover,.frontier-definition-link:focus{text-decoration-style:solid}.frontier-receipt{display:flex;flex-wrap:wrap;gap:.4rem;margin:.55rem 0;color:var(--teal);font-size:.74rem}.frontier-mode-note{color:var(--muted);font-size:.8rem}.frontier-definition:target{border-color:var(--violet)}@media print{body{background:#fff;color:#111}.frontier-hero{padding:1rem;color:#111;background:#fff}.frontier-back,.frontier-toolbar label,.frontier-view-controls,.frontier-map-controls,.frontier-example{display:none!important}.frontier-main{width:100%;margin:0}.frontier-graph-section,.frontier-detail,.frontier-definitions,.frontier-boundary{break-inside:avoid-page;border-color:#ddd;box-shadow:none}.frontier-graph-scroll{overflow:visible;max-height:none;border:0}.frontier-svg{width:100%!important;height:auto!important}.frontier-detail pre{max-height:none}.frontier-status{color:#111;background:#fff;border-color:#777}.frontier-definition-link{color:#222}}"""
+
+FRONTIER_CSS += r""".frontier-experimental{margin-bottom:1.25rem;padding:1.2rem;border:1px solid #0a887a52;border-radius:16px;background:var(--surface);box-shadow:0 8px 30px #1720330b}.frontier-experimental h2{margin:.15rem 0;font:600 1.35rem Georgia,serif}.frontier-experimental-disclaimer{max-width:960px;color:var(--muted);font-size:.85rem}.frontier-experimental-card{margin-top:.8rem;padding:.85rem 1rem;border:1px solid #0a887a45;border-radius:12px}.frontier-experimental-card h3{margin:0 0 .55rem;color:var(--teal);font-size:.96rem}.frontier-experimental-card progress{width:min(420px,100%);height:11px;accent-color:var(--teal)}.frontier-experimental-card p{margin:.5rem 0 0;color:var(--muted);font-size:.8rem}.frontier-experiment-verified rect{stroke:#087f78!important;stroke-width:1.8!important}.frontier-experimental-note{margin:.75rem 0;padding:.7rem .85rem;border:1px solid #0a887a52;border-radius:10px;color:var(--teal);font-size:.78rem}@media(prefers-color-scheme:dark){.frontier-experiment-verified rect{stroke:#75d4c6!important}}@media print{.frontier-experimental{break-inside:avoid-page;border-color:#777;box-shadow:none}.frontier-experiment-verified rect{stroke:#333!important;stroke-dasharray:4 2}}"""
 
 
 FRONTIER_JS = r"""(() => {
@@ -1156,7 +1626,8 @@ FRONTIER_JS = r"""(() => {
       if (nodes.has(dependency)) {
         const target = nodes.get(dependency);
         const channel = target.enrolled_in_alpha ? `Alpha ${target.alpha_edition_version} · body checked; first enrolled ${target.alpha_admission_version}` : "candidate · unenrolled";
-        return `<button class="frontier-chip internal" data-dependency="${escape(dependency)}" type="button">${escape(dependency)} · ${escape(channel)}</button>`;
+        const experiment = target.experimental_closure_verified ? " · independent replay experiment; not admitted" : "";
+        return `<button class="frontier-chip internal" data-dependency="${escape(dependency)}" type="button">${escape(dependency)} · ${escape(channel)}${escape(experiment)}</button>`;
       }
       const evidence = external.get(dependency);
       const channel = evidence?.admitted_to_stable
@@ -1166,7 +1637,8 @@ FRONTIER_JS = r"""(() => {
           : evidence?.enrolled_in_alpha
             ? `Alpha ${evidence.alpha_edition_version} · ${evidence.alpha_evidence} · not admitted`
             : "candidate · unenrolled";
-      return `<button class="frontier-chip external" data-dependency="${escape(dependency)}" type="button" title="${escape(evidence?.evidence || "release-status-unattested")}">${escape(dependency)} · ${escape(channel)}</button>`;
+      const experiment = evidence?.experimental_closure_verified ? " · independent replay experiment; not admitted" : "";
+      return `<button class="frontier-chip external" data-dependency="${escape(dependency)}" type="button" title="${escape(evidence?.evidence || "release-status-unattested")}">${escape(dependency)} · ${escape(channel)}${escape(experiment)}</button>`;
     }).join("");
     const provenance = node.sources.map(source => `<span class="frontier-chip ${source.selected ? "internal" : "external"}">${escape(source.source_module)} · ${source.selected ? "selected canonical source" : source.matches_selected_statement ? "matching alternate source" : "non-selected alternate statement"}</span>`).join("");
     const defined = node.defined;
@@ -1186,9 +1658,12 @@ FRONTIER_JS = r"""(() => {
     const attestation = receipt
       ? `<p class="frontier-receipt">Exact AST equivalence verified · ${receipt.expanded_characters} → ${receipt.defined_characters} characters · defined SHA-256 ${escape(receipt.defined_source_sha256)}</p><p><small>Canonical expanded AST SHA-256 ${escape(receipt.canonical_expansion_sha256)}</small></p>`
       : `<p class="frontier-mode-note">This statement remains exact only: ${escape(defined.statement_status)}. No unverified equivalence is claimed.</p>`;
+    const experiment = node.experimental_closure_verified
+      ? `<p class="frontier-experimental-note"><strong>Independent replay-verified experiment, not release evidence.</strong> Named microbatch ${escape(node.experimental_closure_microbatch)} previously checked an empty-context proof. No certificate is persisted; Alpha evidence remains body_checked, with no checked-use authority or Stable promotion.</p>`
+      : "";
     const heading = readable ? "Readable conservative defined notation" : "Exact expanded first-order HA statement";
     const proofHeading = readable ? "Proof script with verified readable local propositions" : "Exact stored proof script";
-    detail.innerHTML = `<h2>${escape(name)}</h2><p>${escape(node.summary)}</p><p class="frontier-status">${escape(node.status)}</p><p><small>${escape(node.source_module)} · exact statement SHA-256 ${escape(node.statement_sha256)}</small></p><h3>${heading}</h3><pre>${statement}</pre>${attestation}<h3>Linked definitions in this proof</h3><div class="frontier-dependency-list">${uses || "No reviewed notation aliases are needed for this formula."}</div><h3>Declared dependencies</h3><div class="frontier-dependency-list">${dependencies || "No declared dependencies."}</div><h3>Source provenance</h3><div class="frontier-dependency-list">${provenance}</div><h3>${proofHeading}</h3><pre>${proof || "No tactic commands."}</pre>`;
+    detail.innerHTML = `<h2>${escape(name)}</h2><p>${escape(node.summary)}</p><p class="frontier-status">${escape(node.status)}</p>${experiment}<p><small>${escape(node.source_module)} · exact statement SHA-256 ${escape(node.statement_sha256)}</small></p><h3>${heading}</h3><pre>${statement}</pre>${attestation}<h3>Linked definitions in this proof</h3><div class="frontier-dependency-list">${uses || "No reviewed notation aliases are needed for this formula."}</div><h3>Declared dependencies</h3><div class="frontier-dependency-list">${dependencies || "No declared dependencies."}</div><h3>Source provenance</h3><div class="frontier-dependency-list">${provenance}</div><h3>${proofHeading}</h3><pre>${proof || "No tactic commands."}</pre>`;
     detail.querySelectorAll("[data-dependency]").forEach(item => {
       if (nodes.has(item.dataset.dependency)) item.addEventListener("click", () => openNode(item.dataset.dependency,true));
     });
@@ -1256,7 +1731,9 @@ def _landing_html(corpora: Mapping[str, Mapping[str, Any]]) -> bytes:
         f'<p>{corpora[family.slug]["node_count"]} candidate bodies · '
         f'{corpora[family.slug]["definition_count"]} conservative definitions · '
         f'{corpora[family.slug]["alpha_enrolled_node_count"]} Alpha v15 body_checked · '
-        f'{corpora[family.slug]["alpha_checked_use_node_count"]} checked-use authorizations</p></article>'
+        f'{corpora[family.slug]["alpha_checked_use_node_count"]} checked-use authorizations · '
+        f'{corpora[family.slug]["experimental_closed_visible_node_count"]} '
+        "independent replay experiments (not release evidence)</p></article>"
         for family in FAMILIES
     )
     return (
@@ -1273,6 +1750,7 @@ def _landing_html(corpora: Mapping[str, Mapping[str, Any]]) -> bytes:
 
 def build_files() -> tuple[dict[str, bytes], dict[str, Any]]:
     corpora = build_corpora()
+    experimental_campaigns = _experimental_closure_campaigns()
     files: dict[str, bytes] = {
         "index.html": _landing_html(corpora),
         "assets/frontier.css": FRONTIER_CSS.encode("utf-8"),
@@ -1293,6 +1771,12 @@ def build_files() -> tuple[dict[str, bytes], dict[str, Any]]:
                 "alpha_enrolled_node_count": corpus["alpha_enrolled_node_count"],
                 "alpha_checked_use_node_count": corpus[
                     "alpha_checked_use_node_count"
+                ],
+                "experimental_closed_visible_node_count": corpus[
+                    "experimental_closed_visible_node_count"
+                ],
+                "experimental_closure_campaigns": corpus[
+                    "experimental_closure_campaigns"
                 ],
                 "alpha_enrolled_root_names": corpus["alpha_enrolled_root_names"],
                 "node_count": corpus["node_count"],
@@ -1321,6 +1805,16 @@ def build_files() -> tuple[dict[str, bytes], dict[str, Any]]:
         "alpha_checked_use_node_count": sum(
             corpus["alpha_checked_use_node_count"] for corpus in corpora.values()
         ),
+        "experimental_closure_status": EXPERIMENTAL_CLOSURE_STATUS,
+        "experimental_closed_visible_node_count": sum(
+            corpus["experimental_closed_visible_node_count"]
+            for corpus in corpora.values()
+        ),
+        "experimental_closure_campaigns": list(experimental_campaigns.values()),
+        "experimental_closure_has_persisted_certificates": False,
+        "experimental_closure_replayed_during_generation": False,
+        "experimental_closure_grants_checked_use": False,
+        "experimental_closure_grants_stable_membership": False,
         "admitted_to_alpha": False,
         "admitted_to_stable": False,
         "family_count": len(FAMILIES),

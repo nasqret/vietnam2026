@@ -109,19 +109,36 @@ campaign microbatches were then independently kernel-checked:
 
 The three-batch focused proof gate passed in **105.26 seconds** without
 replaying `choose_exists` or the expensive mixed `choose_prime_divides_between`
-certificate. Genuine candidate closure has therefore reached **30/30 old Lucas
-parents and 30/44 Lucas campaign rows**. No Alpha-v13/v14/v15 or Stable
+certificate. Subsequently both resource-sensitive entrance gates received
+actual independently verified empty-context proofs through new sealed shared
+profiles:
+
+```text
+campaign theorem                      proof nodes  proof objects  shared bodies
+lucas_choose_prefix_extend                30,854          5,615              8
+lucas_choose_prefix_exists                30,916          5,677              9
+lucas_prime_row_interior_divisible        70,258         11,011             16
+```
+
+The dedicated kernel proof gate passed **8 tests in 434.36 seconds**, retaining
+all original constructive-kernel, theorem-surface, 16-body, 125,000-node, and
+25,000-object limits. The expensive seven-minute interior replay is available
+only through explicit `PEANO_LUCAS_INTERIOR_REPLAY=1` opt-in; normal focused
+gates pin the exact already-verified names and observed diagnostics without
+claiming a retained proof object or sealed receipt. The immutable
+`LUCAS_CAMPAIGN_SHARED_CHECKED_NAMES` overlay includes only those three actually
+verified rows, never the unverified deeper profiles.
+
+Genuine candidate closure has therefore reached **30/30 old Lucas parents and
+33/44 Lucas campaign rows**. No Alpha-v13/v14/v15 or Stable
 authority, evidence classification, checked-use count, or theorem statement
 has changed.
 
-## Exact remaining fourteen campaign bodies
+## Exact remaining eleven campaign bodies
 
 The precise remaining dependency-ordered frontier is:
 
 ```text
-lucas_choose_prefix_extend
-lucas_choose_prefix_exists
-lucas_prime_row_interior_divisible
 lucas_prime_row_interior_zero_mod
 lucas_prime_shift_below_base
 lucas_repeated_prime_shift_below_base
@@ -135,22 +152,20 @@ lucas_theorem_for_length
 lucas_theorem
 ```
 
-Two precise resource-sensitive entrance gates dominate this remaining slice.
-`lucas_choose_prefix_extend` directly consumes the independently checked
-89,492-node `choose_exists` proof together with the 29,057-node Stable
-`beta_prefix_extend` proof; its exact direct prerequisite floor is **119,156
-nodes**, leaving only 5,844 nodes for its script and packaging inside the
-unchanged 125,000 cap. Both proofs share extensive Stable ancestry, so a mixed
-layer can contextualize the Pascal-existence chain to avoid duplicated
-`beta_prefix_extend` occurrences if the direct candidate does not fit.
+The old direct-prefix floor was **119,156 nodes**: the 89,492-node
+`choose_exists` proof plus 29,664 nodes of Stable premises. The now-checked
+8/9-body shared packages instead expose `beta_prefix_extend` once, leaving
+only **29,809 Stable leaf nodes / 5,167 proof objects**. Similarly the now
+checked 16-body prime-interior package replaces local `choose_self_of_eq` with
+its genuine independently checked certificate, preserving the unchanged hard
+cap while closing the new exact campaign root.
 
-`lucas_prime_row_interior_divisible` directly consumes the successfully checked
-mixed `choose_prime_divides_between` proof. Its exact sealed body has only 22
-tactic lines and additionally requires the 25-node `le_refl` proof, but
-reconstructing its parent is deliberately expensive. Its parent mixed package
-already occupies all **16** allowed contextual rows, so composing the child
-requires either passing the already-checked parent as a genuine proof object
-or replacing a cheap contextual parent body with its independent certificate
-while preserving the unchanged total row, structural-node and proof-object
-ceilings. No further row is claimed closed without an actual independent
-empty-context kernel check.
+Two further precise profiles have been planned but **not kernel-checked**:
+`lucas_prime_row_interior_zero_mod` fits exactly 16 contextual bodies with a
+**71,621-node / 14,980-object** Stable-leaf lower bound, and
+`lucas_prime_shift_below_base` fits 16 bodies with a
+**71,741-node / 15,080-object** Stable-leaf lower bound. Their remaining
+body-only leaf certificates, local scripts, final proof envelopes, and actual
+empty-context kernel checks have not yet been accepted. Accordingly neither
+row appears in `LUCAS_CAMPAIGN_SHARED_CHECKED_NAMES`; all eleven remaining
+campaign rows are honestly excluded from the proven overlay.

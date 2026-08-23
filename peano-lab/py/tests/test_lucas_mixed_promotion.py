@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 import pytest
@@ -22,17 +23,23 @@ from peano_lab.library.lucas_mixed_promotion import (
     LUCAS_CAMPAIGN_INITIAL_OBSERVED_DIRECT_STABLE_NODES,
     LUCAS_CAMPAIGN_INITIAL_OBSERVED_DIRECT_STABLE_OBJECTS,
     LUCAS_CAMPAIGN_SECOND_MICROBATCH,
+    LUCAS_CAMPAIGN_SHARED_CHECKED_DIAGNOSTICS,
+    LUCAS_CAMPAIGN_SHARED_CHECKED_NAMES,
     LUCAS_CAMPAIGN_THIRD_MICROBATCH,
     LUCAS_CAMPAIGN_FOURTH_MICROBATCH,
+    LUCAS_INTERIOR_SHARED_TARGETS,
     LUCAS_MIXED_OBSERVED_STABLE_LEAF_NODES,
     LUCAS_MIXED_OBSERVED_STABLE_LEAF_OBJECTS,
     LUCAS_MIXED_PENDING_ROWS,
     LUCAS_MIXED_STABLE_ROWS,
     LUCAS_MIXED_TARGET,
+    LUCAS_PREFIX_SHARED_TARGETS,
     construct_lucas_campaign_closed_microbatch,
     construct_lucas_mixed_closed_candidate,
+    construct_lucas_shared_campaign_closed_candidate,
     lucas_campaign_closure_plan,
     lucas_campaign_ready_after,
+    lucas_campaign_shared_profile,
     lucas_mixed_promotion_plan,
 )
 
@@ -140,6 +147,142 @@ def test_lucas_campaign_ready_after_sixteen_exactly_exposes_nine_rows() -> None:
     }
     with pytest.raises(FrontierPromotionError, match="foreign row"):
         lucas_campaign_ready_after(("choose_zero",))
+
+
+@pytest.mark.parametrize(
+    "name,body_count,leaf_nodes,leaf_objects",
+    (
+        ("lucas_choose_prefix_extend", 8, 29_809, 5_167),
+        ("lucas_choose_prefix_exists", 9, 29_809, 5_167),
+        ("lucas_prime_row_interior_divisible", 16, 42_391, 10_413),
+        ("lucas_prime_row_interior_zero_mod", 16, 71_621, 14_980),
+        ("lucas_prime_shift_below_base", 16, 71_741, 15_080),
+    ),
+)
+def test_lucas_shared_campaign_profiles_preserve_exact_hard_caps(
+    name, body_count, leaf_nodes, leaf_objects
+) -> None:
+    profile = lucas_campaign_shared_profile(name)
+    assert profile.contextual_body_count == body_count <= 16
+    assert profile.observed_checked_leaf_nodes == leaf_nodes < 125_000
+    assert profile.observed_checked_leaf_objects == leaf_objects < 25_000
+    mixed = lucas_mixed_promotion_plan(
+        name,
+        pending_rows=profile.pending_rows,
+        stable_rows=profile.stable_rows,
+    )
+    assert mixed.contextual_body_count == body_count
+
+
+def test_lucas_shared_campaign_rejects_unknown_profile() -> None:
+    with pytest.raises(FrontierPromotionError, match="unsupported"):
+        lucas_campaign_shared_profile("lucas_theorem")
+
+
+def test_lucas_shared_checked_overlay_exports_verified_roots_only() -> None:
+    assert LUCAS_CAMPAIGN_SHARED_CHECKED_DIAGNOSTICS == (
+        ("lucas_choose_prefix_extend", 30_854, 5_615, 8),
+        ("lucas_choose_prefix_exists", 30_916, 5_677, 9),
+        ("lucas_prime_row_interior_divisible", 70_258, 11_011, 16),
+    )
+    assert LUCAS_CAMPAIGN_SHARED_CHECKED_NAMES == (
+        "lucas_choose_prefix_extend",
+        "lucas_choose_prefix_exists",
+        "lucas_prime_row_interior_divisible",
+    )
+    assert "lucas_prime_row_interior_zero_mod" not in LUCAS_CAMPAIGN_SHARED_CHECKED_NAMES
+    assert "lucas_prime_shift_below_base" not in LUCAS_CAMPAIGN_SHARED_CHECKED_NAMES
+    assert all(nodes < 125_000 and objects < 25_000 and bodies <= 16 for (
+        _name, nodes, objects, bodies
+    ) in LUCAS_CAMPAIGN_SHARED_CHECKED_DIAGNOSTICS)
+
+
+def test_lucas_shared_prefix_campaign_genuinely_closes_both_rows() -> None:
+    plan = frontier_promotion_plan(("lucas_theorem",))
+    table = v13.ALPHA_EDITION.by_name
+    cache = {}
+
+    def close(name: str):
+        if name in cache:
+            return cache[name]
+        dependencies = {
+            dependency: close(dependency)
+            for dependency in table[name].spec.dependencies
+            if not table[dependency].checked_use
+        }
+        result = construct_frontier_closed_candidate(
+            name, prerequisites=dependencies, plan=plan
+        )
+        cache[name] = result.certificate
+        return result.certificate
+
+    for target in LUCAS_PREFIX_SHARED_TARGETS:
+        profile = lucas_campaign_shared_profile(target)
+        mixed = lucas_mixed_promotion_plan(
+            target,
+            pending_rows=profile.pending_rows,
+            stable_rows=profile.stable_rows,
+            plan=plan,
+        )
+        result = construct_lucas_shared_campaign_closed_candidate(
+            target,
+            prerequisites={name: close(name) for name in mixed.pending_leaves},
+            plan=plan,
+        )
+        print(
+            f"Lucas shared campaign {target}: "
+            f"{result.diagnostics.proof_nodes} proof nodes / "
+            f"{result.diagnostics.proof_objects} proof objects"
+        )
+        assert result.diagnostics.proof_nodes < 125_000
+        assert result.diagnostics.proof_objects < 25_000
+        assert not table[target].checked_use
+
+
+@pytest.mark.skipif(
+    os.environ.get("PEANO_LUCAS_INTERIOR_REPLAY") != "1",
+    reason="expensive independently verified mixed replay is explicit opt-in",
+)
+@pytest.mark.parametrize("target", (LUCAS_INTERIOR_SHARED_TARGETS[0],))
+def test_lucas_shared_interior_campaign_has_genuine_closed_certificate(target) -> None:
+    plan = frontier_promotion_plan(("lucas_theorem",))
+    table = v13.ALPHA_EDITION.by_name
+    cache = {}
+
+    def close(name: str):
+        if name in cache:
+            return cache[name]
+        dependencies = {
+            dependency: close(dependency)
+            for dependency in table[name].spec.dependencies
+            if not table[dependency].checked_use
+        }
+        result = construct_frontier_closed_candidate(
+            name, prerequisites=dependencies, plan=plan
+        )
+        cache[name] = result.certificate
+        return result.certificate
+
+    profile = lucas_campaign_shared_profile(target)
+    mixed = lucas_mixed_promotion_plan(
+        target,
+        pending_rows=profile.pending_rows,
+        stable_rows=profile.stable_rows,
+        plan=plan,
+    )
+    result = construct_lucas_shared_campaign_closed_candidate(
+        target,
+        prerequisites={name: close(name) for name in mixed.pending_leaves},
+        plan=plan,
+    )
+    print(
+        f"Lucas shared campaign {target}: "
+        f"{result.diagnostics.proof_nodes} proof nodes / "
+        f"{result.diagnostics.proof_objects} proof objects"
+    )
+    assert result.diagnostics.proof_nodes < 125_000
+    assert result.diagnostics.proof_objects < 25_000
+    assert not table[target].checked_use
 
 
 def test_lucas_campaign_progression_reaches_thirty_without_expensive_parents() -> None:

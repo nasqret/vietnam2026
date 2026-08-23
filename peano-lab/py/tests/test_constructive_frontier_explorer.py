@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from collections import Counter
 from dataclasses import replace
+from functools import lru_cache
 from hashlib import sha256
 import json
 from math import comb, isqrt
@@ -29,6 +30,8 @@ from peano_lab.library import editions_v12 as v12  # noqa: E402
 from peano_lab.library import editions_v13 as v13  # noqa: E402
 from peano_lab.library import editions_v14 as v14  # noqa: E402
 from peano_lab.library import editions_v15 as v15  # noqa: E402
+from peano_lab.library import four_square_frontier_promotion as four_square_closure  # noqa: E402
+from peano_lab.library import lucas_mixed_promotion as lucas_closure  # noqa: E402
 
 
 EXPECTED_FAMILIES = (
@@ -193,6 +196,32 @@ def _corpus(files: dict[str, bytes], slug: str) -> dict[str, object]:
     return json.loads(files[f"{slug}/api/corpus.json"])
 
 
+@lru_cache(maxsize=1)
+def _expected_experimental_campaigns() -> dict[str, set[str]]:
+    """Count only actual named prior replays, never pending observations."""
+
+    lucas = {
+        *lucas_closure.LUCAS_CAMPAIGN_INITIAL_MICROBATCH,
+        *lucas_closure.LUCAS_CAMPAIGN_SECOND_MICROBATCH,
+        *lucas_closure.LUCAS_CAMPAIGN_THIRD_MICROBATCH,
+        *lucas_closure.LUCAS_CAMPAIGN_FOURTH_MICROBATCH,
+        *getattr(lucas_closure, "LUCAS_CAMPAIGN_SHARED_CHECKED_NAMES", ()),
+    }
+    four = {
+        *(name for batch in four_square_closure.four_square_initial_campaign_batches() for name in batch.names),
+        *four_square_closure.FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_NAMES,
+        *(
+            name
+            for name, _nodes, _objects in getattr(
+                four_square_closure,
+                "FOUR_SQUARE_CAMPAIGN_CONTINUATION_CHECKED_DIAGNOSTICS",
+                (),
+            )
+        ),
+    }
+    return {"lucas": lucas, "four_square": four}
+
+
 def test_custom_coprime_alias_preserves_its_existing_reviewed_definition() -> None:
     coprime = generator._definition_table()["Coprime"]
 
@@ -283,6 +312,13 @@ def test_frontier_inventory_is_deterministic_complete_and_evidence_honest(
     )
     assert manifest["alpha_enrolled_node_count"] == 370
     assert manifest["alpha_checked_use_node_count"] == 0
+    assert manifest["experimental_closure_status"] == (
+        generator.EXPERIMENTAL_CLOSURE_STATUS
+    )
+    assert manifest["experimental_closure_has_persisted_certificates"] is False
+    assert manifest["experimental_closure_replayed_during_generation"] is False
+    assert manifest["experimental_closure_grants_checked_use"] is False
+    assert manifest["experimental_closure_grants_stable_membership"] is False
     assert manifest["admitted_to_alpha"] is False
     assert manifest["admitted_to_stable"] is False
     assert manifest["file_count"] == len(files) == 16
@@ -311,6 +347,16 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
         EXPECTED_ALPHA_V15_ENROLLMENT_BY_FAMILY[slug]
     )
     assert corpus["alpha_checked_use_node_count"] == 0
+    assert corpus["experimental_closure_status"] == (
+        generator.EXPERIMENTAL_CLOSURE_STATUS
+    )
+    assert corpus["experimental_closed_visible_node_count"] == sum(
+        node["experimental_closure_verified"] for node in nodes
+    )
+    assert corpus["experimental_closure_has_persisted_certificates"] is False
+    assert corpus["experimental_closure_replayed_during_generation"] is False
+    assert corpus["experimental_closure_grants_checked_use"] is False
+    assert corpus["experimental_closure_grants_stable_membership"] is False
     assert corpus["admitted_to_alpha"] is False
     assert corpus["admitted_to_stable"] is False
     assert corpus["node_count"] == len(nodes) > 0
@@ -361,6 +407,21 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
             assert tuple(alpha_entry.spec.script) == tuple(node["script"])
         assert node["admitted_to_alpha"] is False
         assert node["admitted_to_stable"] is False
+        assert node["experimental_closure_has_persisted_certificate"] is False
+        if node["experimental_closure_verified"]:
+            assert alpha_entry is not None
+            assert node["alpha_evidence"] == "body_checked"
+            assert node["alpha_checked_use"] is False
+            assert node["alpha_admission_version"] == "v13"
+            assert node["experimental_closure_campaign"] in {"lucas", "four_square"}
+            assert isinstance(node["experimental_closure_microbatch"], str)
+            assert node["experimental_closure_status"] == (
+                generator.EXPERIMENTAL_CLOSURE_STATUS
+            )
+        else:
+            assert node["experimental_closure_campaign"] is None
+            assert node["experimental_closure_microbatch"] is None
+            assert node["experimental_closure_status"] is None
         assert node["source_module"].startswith("peano_lab.library.")
         assert isinstance(node["script"], list)
         assert node["sources"][0]["selected"] is True
@@ -378,6 +439,15 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
         assert edge["alpha_evidence"] == (
             alpha_entry.evidence.value if alpha_entry is not None else None
         )
+        if edge["experimental_closure_verified"]:
+            assert edge["experimental_closure_campaign"] in {"lucas", "four_square"}
+            assert edge["experimental_closure_role"] in {"campaign", "parent"}
+            assert alpha_entry is not None
+            assert edge["alpha_evidence"] == "body_checked"
+            assert edge["alpha_checked_use"] is False
+        else:
+            assert edge["experimental_closure_campaign"] is None
+            assert edge["experimental_closure_role"] is None
         assert edge["kind"] in {
             "internal-candidate",
             "cross-family-candidate",
@@ -436,6 +506,212 @@ def test_frontier_exactly_displays_all_three_minimal_alpha_appends(
         for row in manifest["families"]
     } == EXPECTED_ALPHA_V15_ENROLLMENT_BY_FAMILY
     assert all(row["alpha_checked_use_node_count"] == 0 for row in manifest["families"])
+
+
+def test_independent_experimental_progress_uses_only_checked_named_microbatches(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, manifest = generated
+    expected = _expected_experimental_campaigns()
+    campaigns = {
+        item["campaign"]: item for item in manifest["experimental_closure_campaigns"]
+    }
+
+    assert set(campaigns) == {"lucas", "four_square"}
+    assert set(campaigns["lucas"]["verified_campaign_names"]) == expected["lucas"]
+    assert set(campaigns["four_square"]["verified_campaign_names"]) == (
+        expected["four_square"]
+    )
+    assert campaigns["lucas"]["verified_campaign_row_count"] == 33
+    assert campaigns["lucas"]["campaign_row_count"] == 44
+    assert campaigns["lucas"]["verified_parent_row_count"] == 0
+    assert campaigns["lucas"]["parent_progress_recorded"] is False
+    assert campaigns["four_square"]["verified_campaign_row_count"] == 80
+    assert campaigns["four_square"]["campaign_row_count"] == 196
+    assert campaigns["four_square"]["verified_parent_row_count"] == 23
+    assert campaigns["four_square"]["parent_row_count"] == 23
+    assert campaigns["four_square"]["verified_obligation_row_count"] == 103
+    assert campaigns["four_square"]["obligation_row_count"] == 219
+    assert set(campaigns["four_square"]["verified_parent_names"]) == (
+        set(four_square_closure.FOUR_SQUARE_NON_BETA_PARENT_NAMES)
+        | set(four_square_closure.FOUR_SQUARE_BETA_PARENT_NAMES)
+    )
+
+    visible = {
+        campaign: {
+            node["name"]
+            for slug in EXPECTED_FAMILIES
+            for node in _corpus(files, slug)["nodes"]
+            if node["experimental_closure_verified"]
+            and node["experimental_closure_campaign"] == campaign
+        }
+        for campaign in campaigns
+    }
+    assert visible == expected
+    assert manifest["experimental_closed_visible_node_count"] == 113
+    assert all(
+        campaign["status"] == generator.EXPERIMENTAL_CLOSURE_STATUS
+        and campaign["source_alpha_edition_version"] == "v13"
+        and campaign["source_alpha_edition_identity_sha256"]
+        == v13.ALPHA_V13_IDENTITY_SHA256
+        and campaign["flagship_experimentally_verified"] is False
+        and campaign["has_persisted_certificates"] is False
+        and campaign["replayed_during_generation"] is False
+        and campaign["changes_alpha_evidence"] is False
+        and campaign["grants_checked_use"] is False
+        and campaign["grants_stable_membership"] is False
+        and campaign["immutable_limits"]
+        == {
+            "max_microbatch_rows": 16,
+            "max_proof_nodes": 125_000,
+            "max_proof_objects": 25_000,
+        }
+        for campaign in campaigns.values()
+    )
+
+
+@pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
+def test_experimental_campaign_totals_remain_distinct_from_visible_nodes(
+    generated: tuple[dict[str, bytes], dict[str, object]], slug: str,
+) -> None:
+    files, _manifest = generated
+    corpus = _corpus(files, slug)
+    expected = _expected_experimental_campaigns()
+
+    for campaign in corpus["experimental_closure_campaigns"]:
+        visible_names = {
+            node["name"]
+            for node in corpus["nodes"]
+            if node["experimental_closure_verified"]
+            and node["experimental_closure_campaign"] == campaign["campaign"]
+        }
+        assert set(campaign["visible_node_names"]) == visible_names
+        assert campaign["visible_node_count"] == len(visible_names)
+        assert set(campaign["verified_campaign_names"]) == (
+            expected[campaign["campaign"]]
+        )
+        assert campaign["verified_campaign_row_count"] >= len(visible_names)
+        assert campaign["grants_checked_use"] is False
+        assert campaign["grants_stable_membership"] is False
+
+    if slug == "lucas":
+        assert corpus["experimental_closed_visible_node_count"] == 33
+    if slug == "four-squares":
+        assert corpus["experimental_closed_visible_node_count"] < 80
+        assert corpus["experimental_closure_campaigns"][0]["campaign"] == "four_square"
+    if slug == "two-squares":
+        assert corpus["experimental_closed_visible_node_count"] > 0
+        assert corpus["experimental_closure_campaigns"][0]["campaign"] == "four_square"
+
+
+def test_speculative_lucas_and_flagship_roots_never_gain_experimental_evidence(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, _manifest = generated
+    lucas = {node["name"]: node for node in _corpus(files, "lucas")["nodes"]}
+    four = {node["name"]: node for node in _corpus(files, "four-squares")["nodes"]}
+
+    for name in (
+        "lucas_prime_row_interior_zero_mod",
+        "lucas_prime_shift_below_base",
+        "lucas_theorem",
+    ):
+        assert lucas[name]["experimental_closure_verified"] is False
+        assert lucas[name]["alpha_evidence"] == "body_checked"
+        assert lucas[name]["alpha_checked_use"] is False
+    assert four["four_square_lagrange"]["experimental_closure_verified"] is False
+    assert four["four_square_lagrange"]["alpha_checked_use"] is False
+
+
+def test_experimental_overlay_surfaces_checked_parent_rows_without_admission(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, _manifest = generated
+    four = _corpus(files, "four-squares")
+    checked_parents = {
+        row["name"]
+        for row in four["external_dependencies"]
+        if row["experimental_closure_verified"]
+        and row["experimental_closure_role"] == "parent"
+    }
+
+    assert checked_parents
+    assert checked_parents <= (
+        set(four_square_closure.FOUR_SQUARE_NON_BETA_PARENT_NAMES)
+        | set(four_square_closure.FOUR_SQUARE_BETA_PARENT_NAMES)
+    )
+    for dependency in four["external_dependencies"]:
+        if dependency["name"] not in checked_parents:
+            continue
+        assert dependency["alpha_evidence"] == "body_checked"
+        assert dependency["alpha_checked_use"] is False
+        assert dependency["admitted_to_alpha"] is False
+        assert dependency["admitted_to_stable"] is False
+
+
+@pytest.mark.parametrize(
+    ("names", "message"),
+    (
+        ((), "nonempty"),
+        (("lucas_theorem", "lucas_theorem"), "repeats"),
+        (("four_square_lagrange",), "noncampaign"),
+    ),
+)
+def test_experimental_named_batches_fail_closed_under_mutation(
+    names: tuple[str, ...], message: str,
+) -> None:
+    with pytest.raises(ValueError, match=message):
+        generator._verified_experimental_names(
+            names,
+            allowed={"lucas_theorem"},
+            source="mutated experimental microbatch",
+        )
+
+
+@pytest.mark.parametrize(
+    ("diagnostics", "message"),
+    (
+        ((), "incomplete"),
+        ((("lucas_digit_chain_exists", 125_001, 1),), "limits"),
+        ((("lucas_digit_chain_exists", 1, 25_001),), "limits"),
+        ((("lucas_choose_prefix_extend", 1, 1),), "names differ"),
+    ),
+)
+def test_experimental_diagnostics_fail_closed_under_mutation(
+    diagnostics: tuple[tuple[str, int, int], ...], message: str,
+) -> None:
+    with pytest.raises(ValueError, match=message):
+        generator._checked_experimental_diagnostics(
+            diagnostics,
+            expected_names=("lucas_digit_chain_exists",),
+            source="mutated experimental diagnostics",
+        )
+
+
+def test_experimental_progress_panels_and_graph_highlights_are_evidence_honest(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, _manifest = generated
+    four = files["four-squares/index.html"].decode()
+    lucas = files["lucas/index.html"].decode()
+    two = files["two-squares/index.html"].decode()
+    unrelated = files["kummer/index.html"].decode()
+    script = files["assets/frontier.js"].decode()
+    styles = files["assets/frontier.css"].decode()
+
+    assert "Lagrange four-square campaign · 80 / 196" in four
+    assert "23 / 23" in four
+    assert "103 / 219" in four
+    assert "Lucas campaign · 33 / 44" in lucas
+    assert "Lagrange four-square campaign · 80 / 196" in two
+    assert "frontier-experimental-heading" not in unrelated
+    for page in (four, lucas, two):
+        assert "Certificates are not persisted" in page
+        assert "checked-use authority, and Stable membership remain unchanged" in page
+        assert "frontier-experiment-verified" in page
+    assert "Independent replay-verified experiment, not release evidence" in script
+    assert "No certificate is persisted" in script
+    assert ".frontier-experiment-verified rect" in styles
 
 
 @pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
@@ -1277,6 +1553,9 @@ def test_repository_proof_hub_labels_all_six_candidate_families() -> None:
         "Alpha v15 enrolled · body_checked; no checked-use authority"
     ) == 2
     assert "Not enrolled in Alpha/Stable; Fermat descent remains conditional" in hub
+    assert "Independent replay experiment: <strong>80/196</strong>" in hub
+    assert "Independent replay experiment: <strong>33/44</strong>" in hub
+    assert hub.count("no persisted certificate or checked-use authority") == 2
     assert 'href="quadratic-reciprocity/"' in hub
     assert 'href="bertrand-postulate/"' in hub
 

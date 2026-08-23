@@ -15,6 +15,15 @@ from peano_lab.library.four_square_frontier_promotion import (
     FOUR_SQUARE_BETA_PARENT_NAMES,
     FOUR_SQUARE_BETA_PARENT_STABLE_DIRECT_LEAF_BUDGETS,
     FOUR_SQUARE_BETA_PARENT_STATEMENT_SHA256,
+    FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES,
+    FOUR_SQUARE_CAMPAIGN_CONTINUATION_NODE_UPPER_BOUND,
+    FOUR_SQUARE_CAMPAIGN_CONTINUATION_OBJECT_UPPER_BOUND,
+    FOUR_SQUARE_CAMPAIGN_CONTINUATION_CHECKED_DIAGNOSTICS,
+    FOUR_SQUARE_CAMPAIGN_CONTINUATION_CHECKED_PREREQUISITE_DIAGNOSTICS,
+    FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITES,
+    FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_NODE_UPPER_BOUND,
+    FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_OBJECT_UPPER_BOUND,
+    FOUR_SQUARE_CAMPAIGN_CONTINUATION_READY_COUNT,
     FOUR_SQUARE_CAMPAIGN_NEXT_READY_COUNT,
     FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_CHECKED_DIAGNOSTICS,
     FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_CHECKED_PREREQUISITE_DIAGNOSTICS,
@@ -35,6 +44,7 @@ from peano_lab.library.four_square_frontier_promotion import (
     FOUR_SQUARE_NON_BETA_PARENT_NAMES,
     construct_four_square_beta_parent_certificates,
     construct_four_square_campaign_microbatch,
+    construct_four_square_continuation_campaign_microbatch,
     construct_four_square_initial_campaign_certificates,
     construct_four_square_parent_microbatch,
     construct_four_square_shared_closed_candidate,
@@ -195,6 +205,113 @@ def test_sixteen_actual_second_layer_campaign_proofs_have_actual_closed_premises
         not v13.ALPHA_EDITION.by_name[name].checked_use for name in closed_campaign
     )
     assert len(v13.ALPHA_CHECKED_SPECS) == 570
+
+
+def test_sixty_eight_closed_campaign_rows_unlock_exactly_thirty_four_more() -> None:
+    plan = four_square_frontier_plan()
+    closed = (
+        *FOUR_SQUARE_NON_BETA_PARENT_NAMES,
+        *FOUR_SQUARE_BETA_PARENT_NAMES,
+        *plan.ready_campaign_names,
+        *FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_NAMES,
+    )
+    ready = four_square_hypothetical_ready_rows(closed)
+
+    assert len(ready) == FOUR_SQUARE_CAMPAIGN_CONTINUATION_READY_COUNT == 34
+    assert set(FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES) <= set(ready)
+    assert not v13.ALPHA_EDITION.by_name["four_square_lagrange"].checked_use
+
+
+def test_continuation_precursor_and_target_batches_are_exactly_dependency_closed() -> None:
+    plan = four_square_frontier_plan()
+    obligations = {item.name: item for item in plan.obligations}
+    positions = {row.name: row.alpha_index for row in plan.source.pending_rows}
+    precursors = set(FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITES)
+    targets = set(FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES)
+
+    assert len(precursors) == 16
+    assert len(targets) == 12
+    assert not precursors.intersection(targets)
+    assert sum(name in {item.name for item in plan.parent_obligations} for name in precursors) == 6
+    assert tuple(positions[name] for name in FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITES) == tuple(
+        sorted(positions[name] for name in FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITES)
+    )
+    assert tuple(positions[name] for name in FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES) == tuple(
+        sorted(positions[name] for name in FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES)
+    )
+    assert all(
+        set(obligations[name].pending_dependencies) <= precursors
+        for name in precursors | targets
+    )
+    assert FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_NODE_UPPER_BOUND == 18_867
+    assert FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_OBJECT_UPPER_BOUND == 13_801
+    assert FOUR_SQUARE_CAMPAIGN_CONTINUATION_NODE_UPPER_BOUND == 21_029
+    assert FOUR_SQUARE_CAMPAIGN_CONTINUATION_OBJECT_UPPER_BOUND == 15_823
+    assert 18_867 < promotion.MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES
+    assert 21_029 < promotion.MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES
+    assert 13_801 < promotion.MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS
+    assert 15_823 < promotion.MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS
+
+
+def test_twelve_actual_continuation_proofs_advance_campaign_to_eighty() -> None:
+    plan = four_square_frontier_plan()
+    observed = FOUR_SQUARE_CAMPAIGN_CONTINUATION_CHECKED_DIAGNOSTICS
+
+    assert FOUR_SQUARE_CAMPAIGN_CONTINUATION_CHECKED_PREREQUISITE_DIAGNOSTICS == (
+        16,
+        11_374,
+        7_149,
+    )
+    assert tuple(name for name, _nodes, _objects in observed) == (
+        FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES
+    )
+    assert len(observed) == 12
+    assert sum(nodes for _name, nodes, _objects in observed) == 14_263
+    assert sum(objects for _name, _nodes, objects in observed) == 7_471
+    assert 14_263 < promotion.MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES
+    assert 7_471 < promotion.MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS
+    closed_campaign = (
+        set(plan.ready_campaign_names)
+        | set(FOUR_SQUARE_CAMPAIGN_SECOND_LAYER_NAMES)
+        | set(FOUR_SQUARE_CAMPAIGN_CONTINUATION_NAMES)
+    )
+    parents = {item.name for item in plan.parent_obligations}
+    assert len(closed_campaign) == 80
+    assert len(closed_campaign | parents) == 103
+    assert all(
+        not v13.ALPHA_EDITION.by_name[name].checked_use for name in closed_campaign
+    )
+    assert len(v13.ALPHA_CHECKED_SPECS) == 570
+
+
+@pytest.mark.parametrize(
+    ("name", "limit"),
+    (
+        (
+            "FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_NODE_UPPER_BOUND",
+            "MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES",
+        ),
+        (
+            "FOUR_SQUARE_CAMPAIGN_CONTINUATION_PREREQUISITE_OBJECT_UPPER_BOUND",
+            "MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS",
+        ),
+        (
+            "FOUR_SQUARE_CAMPAIGN_CONTINUATION_NODE_UPPER_BOUND",
+            "MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_NODES",
+        ),
+        (
+            "FOUR_SQUARE_CAMPAIGN_CONTINUATION_OBJECT_UPPER_BOUND",
+            "MAX_FRONTIER_CLOSURE_MICROBATCH_PROOF_OBJECTS",
+        ),
+    ),
+)
+def test_continuation_rejects_every_oversized_envelope_before_replay(
+    monkeypatch: pytest.MonkeyPatch, name: str, limit: str
+) -> None:
+    monkeypatch.setattr(promotion, name, getattr(promotion, limit))
+
+    with pytest.raises(FrontierPromotionError, match="immutable cap"):
+        construct_four_square_continuation_campaign_microbatch()
 
 
 @pytest.mark.parametrize(
