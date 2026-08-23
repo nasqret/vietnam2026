@@ -85,8 +85,151 @@ arithmetic library. Start with:
   [`BP02 RFC`](ha-bertrand-bp02-tranche-rfc-v1.md): the reviewed completion
   chain through `bertrand_closed_upper` and `bertrand_strict`, published as
   the 180-row Alpha-v12 append;
+- [`Bertrand promotion RFC`](ha-bertrand-promotion-rfc-v1.md): the exact
+  542-/544-node dependency-closed capstone slices, the 339-/341-row
+  body-evidence gap, eight cross-campaign QR prerequisites, and the
+  fail-closed proof-checking preflight for a future immutable release;
+- [`quadratic supplementary laws RFC`](ha-quadratic-supplementary-laws-rfc-v1.md):
+  complete constructive proofs of both supplementary laws, including the
+  exact beta-coded Gauss reflection-count identification and separate
+  positive/nonresidue branches;
+- [`Kummer theorem campaign RFC`](ha-kummer-theorem-campaign-rfc-v1.md): the
+  general three-prefix carry target, exact arbitrary-input Legendre valuation
+  balance, checked complete Kummer proof body, carry-free/nondivisibility
+  corollary, and remaining admission gates;
+- [`Fermat two-square foundations RFC`](fermat-two-squares-foundations-rfc-v1.md):
+  constructive square-class obstructions, canonical roots of `-1`, divisible
+  two-square norms, and the initial prerequisites for the completed prime proof;
+- [`Fermat square-root grid/pigeonhole RFC`](fermat-two-squares-pigeonhole-rfc-v1.md):
+  sharp prime floor-square norm bounds, oversized-grid witnesses, constructive
+  rectangular noninjectivity, and the subsequent witnessed-residue-grid bridge;
+- [`finite-prefix collision decision RFC`](finite-prefix-collision-decision-rfc-v1.md):
+  constructive collision-or-injectivity decisions and actual witnessed
+  rectangular/square-root-grid pigeonhole collisions;
+- [`Fermat affine residue-grid RFC`](fermat-two-squares-residue-grid-rfc-v1.md):
+  a genuinely beta-coded square-root-sized modular affine grid, its witnessed
+  collision, and the resulting exact balanced congruence;
+- [`Fermat collision-to-norm RFC`](fermat-two-squares-collision-norm-rfc-v1.md):
+  exact signed affine-congruence transport, all four witnessed
+  absolute-difference branches, divisible two-square norms, and row bounds;
+- [`Fermat prime two-square theorem RFC`](fermat-two-squares-prime-rfc-v1.md):
+  the complete constructive proof that every prime congruent to one modulo
+  four has an explicitly witnessed representation as a sum of two squares;
+- [`Fermat two-square classification foundations RFC`](fermat-two-squares-classification-rfc-v1.md):
+  explicit multiplicative composition, complete classification of
+  representable primes, and the obstruction proving that a prime congruent
+  to three modulo four dividing a two-square norm divides both coordinates;
+- [`Fermat two-square valuation RFC`](fermat-two-squares-valuation-rfc-v1.md):
+  exact prime valuations of nonzero squares, extraction of a represented
+  prime-square quotient, strictly decreasing constructive descent, and the
+  complete even-valuation necessity direction for nonzero two-square norms;
+- [`Fermat two-square factor-fold RFC`](fermat-two-squares-factor-fold-rfc-v1.md):
+  constructive beta-coded product assembly, adjacent equal-prime pairing,
+  grouped square-block synthesis, and the canonical good-prime FTA theorem;
+- [`Fermat two-square pairing RFC`](fermat-two-squares-pairing-rfc-v1.md):
+  distinct-prime valuation, witnessed prime-square divisibility from even
+  positive valuation, the complete canonical adjacent-equal-factor pairing
+  step, and bounded constructive descent proving the complete nonzero and
+  zero-inclusive two-square iff classification;
+- [`Brahmagupta two-square multiplication RFC`](fermat-two-squares-brahmagupta-rfc-v1.md):
+  the complete constructive identity with explicit absolute-difference
+  witnesses and closure of represented integers under multiplication;
+- [`four-square identity foundations RFC`](four-square-identity-foundations-rfc-v1.md):
+  conservative signed quaternion coordinates, natural absolute magnitudes,
+  exact four-coordinate square transport, an exact two-column Euler
+  subclass, and the shared foundations of the completed full Euler identity;
+- [`Euler four-square cancellation RFC`](four-square-euler-rfc-v1.md):
+  all twelve quaternion cross-term cancellations, complete certified global
+  subtraction-free regrouping, the unconditional eight-variable identity,
+  explicit four-coordinate witnesses, and full multiplicative closure;
+- [`Lagrange four-square prime-reduction RFC`](four-square-lagrange-rfc-v1.md):
+  explicit small witnesses, all primes equal to two or one modulo four,
+  complete bounded prime-factor descent, and the exact prime-family
+  reduction subsequently discharged by the complete Lagrange tranche;
+- [`Four-square cross-prefix pigeonhole RFC`](four-square-cross-pigeonhole-rfc-v1.md):
+  actual beta-coded interleaving and constructive witnessed intersection of
+  any two bounded injective half-prefixes overflowing their finite codomain;
+- [`Four-square residue-intersection RFC`](four-square-residue-intersection-rfc-v1.md):
+  injectivity of odd-prime half-square residues, genuine beta-coded square
+  remainder prefixes, complementary bounded injective residue families, and
+  unconditional explicitly witnessed modular seeds for every prime;
+- [`Four-square bounded-prime-seed RFC`](four-square-bounded-seed-rfc-v1.md):
+  witnessed half-range square coordinates, sharp prime-square norm bounds,
+  and prime modular seeds retaining the essential multiplier invariant `k < p`;
+- [`Four-square multiplier descent RFC`](four-square-descent-rfc-v1.md):
+  exact quaternion quotients, centered signed remainders, strictly decreasing
+  prime-multiple witnesses, and constructive strong multiplier induction;
+- [`Four-square signed-quaternion RFC`](four-square-signed-quaternion-rfc-v1.md):
+  all sixteen centered sign patterns, signed-square congruence, witnessed
+  centered-norm quotients, and absolute modular divisibility;
+- [`Four-square negative-signed-block RFC`](four-square-signed-block-negative-rfc-v1.md):
+  fully negative conjugate blocks and the complementary three-negative
+  ordinary Hamilton orientation;
+- [`Four-square signed-orientation RFC`](four-square-signed-orientation-rfc-v1.md):
+  exact quotient representations from four witnessed divisible
+  signed-quaternion coordinate magnitudes;
+- [`Four-square signed-case RFC`](four-square-signed-cases-rfc-v1.md):
+  constructive orientation of all sixteen centered-quaternion sign choices;
+- [`Four-square strict-descent bridge RFC`](four-square-lagrange-bridge-rfc-v1.md):
+  the actual unconditional prime modular seeds remove the complete seed
+  premise, with separate sharp bounded-multiplier induction preserving the
+  constructive descent invariant `0 < k < p`;
+- [`Four-square parity-selection RFC`](four-square-parity-selection-rfc-v1.md):
+  constructive same-parity coordinate selection and the even-multiplier
+  four-square halving interface;
+- [`Four-square branch-descent RFC`](four-square-branch-descent-rfc-v1.md):
+  constructive multiplier parity splitting, unconditional even halving, and
+  the odd signed-quaternion representation subsequently proved for every
+  one of its sixteen possible sign configurations;
+- [`Four-square conjugate-identity RFC`](four-square-conjugate-identity-rfc-v1.md):
+  subtraction-free signed-conjugate quaternion blocks and their exact
+  four-square norm identity;
+- [`Four-square Lagrange final-composition RFC`](four-square-lagrange-final-rfc-v1.md):
+  bounded prime seeds, even/odd multiplier descent, signed quaternion
+  representation, and the complete unconditional theorem that every natural
+  number has four explicitly witnessed square coordinates;
+- [`Lucas digit foundations RFC`](lucas-digit-foundations-rfc-v1.md): the
+  complete one-digit carry/divisibility classifications, unique base-prime
+  digit extraction, genuine beta-coded digit prefixes, coherent two-digit
+  reconstruction, the complete sparse prime Pascal row, and reusable base
+  cases for the completed multi-digit congruence;
+- [`Lucas prime-block convolution RFC`](lucas-convolution-rfc-v1.md):
+  exact constructive modular Pascal transport, complete prime-row interior
+  vanishing, and both unrestricted low- and high-column prime-shift
+  congruences;
+- [`Lucas arbitrary-upper-quotient low-digit RFC`](lucas-low-digit-rfc-v1.md):
+  arbitrary iteration of the prime-row shift and the complete Lucas product
+  congruence whenever the lower natural has one base-prime digit;
+- [`Lucas full prime-block digit RFC`](lucas-block-digit-rfc-v1.md): the
+  complete unconditional quotient-times-digit Lucas congruence for arbitrary
+  upper and lower quotients, including out-of-range and both zero boundaries;
+- [`Lucas multidigit quotient-chain RFC`](lucas-multidigit-rfc-v1.md):
+  arbitrary-length coherent beta-coded quotient/digit traces, prime-base
+  totality, exact initial-value recovery, witnessed successor steps, and
+  the complete unconditional arbitrary-length multidigit Lucas theorem with
+  terminating chains and actual digitwise coefficient/product witnesses;
 - [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
-  the repository execution plan and first canonical-interface tranche.
+  the repository execution plan and first canonical-interface tranche;
+- [`../../PLAN/13_constructive_number_theory_frontier.md`](../../PLAN/13_constructive_number_theory_frontier.md):
+  the approved post-Bertrand execution order: close reciprocity and release
+  existing evidence, prove full Kummer, construct the two-square
+  classification, develop four-square/Fermat descent, then extend to
+  primitive roots, Lucas, Pell, and cyclotomic arithmetic.
+
+Run `make ha-constructive-frontier-check` for the isolated, resource-bounded
+post-Bertrand frontier audits. Each focused suite runs in its own Python
+process to prevent proof-certificate caches from accumulating across stages;
+compact tracebacks also prevent deep formula-rendering memory explosions;
+successful body checks never modify sealed Alpha or Stable evidence.
+
+Run `make book-constructive-frontier-explorer` to regenerate the five
+definition-aware, evidence-honest interactive maps for supplementary laws,
+Kummer, two squares, four squares, and Lucas. Each map includes a verified
+Exact/Defined notation switch, exact expansion-equivalence receipts, linked
+definitions, numerical witnesses, and zoom/focus/print controls.
+`make stage-proofs` assembles them beside the existing quadratic-reciprocity
+and Bertrand explorers under the local `_deploy/proofs` tree; publishing
+remains a separate remote action.
 
 Run `make ha-number-theory-check` from the repository root for the fast
 campaign-manifest, 45-row definition-freeze validation with 44 distinct public

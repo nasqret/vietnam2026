@@ -24,7 +24,7 @@ override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override PEANOAPPID := a-526f19ff3b30
 
-.PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check ha-number-theory-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
+.PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs deploy-site deploy-lab deploy-lab-next deploy-peano \
 	deploy-peano-next deploy-proofs \
 	deploy clean
@@ -36,6 +36,7 @@ help:
 	@echo "  make book-proof-explorer  regenerate the static PA proof explorer"
 	@echo "  make book-bertrand-proof-explorer  regenerate the full Bertrand map"
 	@echo "  make book-bertrand-defined-explorer  regenerate the readable Bertrand map"
+	@echo "  make book-constructive-frontier-explorer  regenerate five evidence-honest frontier proof maps"
 	@echo "  make lean         build & axiom-check the Lean artifact"
 	@echo "  make lean-fta     build & exact-axiom-check the Lean FTA companion"
 	@echo "  make peano-library-alpha  regenerate the sealed Alpha v1 parent artifacts"
@@ -85,6 +86,7 @@ help:
 	@echo "  make peano-library-channels-v12  compatibility alias for the Bertrand Alpha v12 build"
 	@echo "  make peano-library-channels-v12-check  compatibility alias for the Bertrand Alpha v12 check"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
+	@echo "  make ha-constructive-frontier-check  replay ordered stages 1-5 in bounded isolated proof processes"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
 	@echo "  make ha-k3b-list-lookup-check  run the Alpha K3B ListAt surface checks"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
@@ -119,6 +121,9 @@ book-bertrand-defined-explorer: book-bertrand-proof-explorer
 book-proof-explorer: book-bertrand-defined-explorer
 	python3 scripts/build_pa_proof_explorer.py
 	python3 scripts/build_pa_defined_explorer.py
+
+book-constructive-frontier-explorer:
+	python3 scripts/build_constructive_frontier_explorer.py
 
 book: book-atlas book-proof-explorer
 	rm -rf book/_build   # full rebuild: incremental Sphinx leaves stale sidebars after TOC changes
@@ -506,6 +511,59 @@ ha-number-theory-check:
 		tests/test_ha_generalized_crt_total_decision_candidate.py \
 		tests/test_ha_number_theory_m5_generalized_crt_admission.py
 
+# Every frontier suite gets a fresh interpreter: proof DAG caches from one
+# constructive campaign must not inflate the memory envelope of the next.
+# Compact tracebacks prevent deeply nested first-order AST repr explosions on
+# an unexpected failed assertion or exploratory proof mutation.
+ha-constructive-frontier-check:
+	@echo "Stage 1: quadratic reciprocity, supplementary laws, and Bertrand promotion"
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_quadratic_reciprocity_layered_experiment.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_quadratic_supplement_minus_one_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_quadratic_supplement_two_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_bertrand_promotion.py
+	@echo "Stage 2: general Kummer valuation and carry-count theorem"
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_kummer_valuation_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_kummer_carry_candidate.py
+	@echo "Stage 3: Fermat two-square roots, bounds, collisions, and residue grids"
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_fermat_two_squares_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_fermat_two_squares_pigeonhole_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_finite_prefix_collision_decision_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_fermat_two_squares_residue_grid_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_fermat_two_squares_collision_norm_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_fermat_two_squares_prime_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_fermat_two_squares_brahmagupta_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_fermat_two_squares_classification_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_fermat_two_squares_valuation_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_fermat_two_squares_factor_fold_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_fermat_two_squares_pairing_candidate.py
+	@echo "Stage 4: unconditional Euler identity, prime seeds, and four-square descent"
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_identity_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_euler_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_lagrange_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_cross_pigeonhole_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_residue_intersection_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_descent_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_signed_quaternion_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_signed_block_negative_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_signed_orientation_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_bounded_seed_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_lagrange_bridge_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_parity_selection_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_branch_descent_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_conjugate_identity_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_signed_cases_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_four_square_lagrange_final_candidate.py
+	@echo "Stage 5: complete constructive multidigit Lucas theorem"
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_digit_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_convolution_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_low_digit_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_block_digit_candidate.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_lucas_multidigit_candidate.py
+	@echo "Presentation: five evidence-honest constructive frontier proof maps"
+	python3 scripts/build_constructive_frontier_explorer.py --check
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_constructive_frontier_explorer.py
+	cd peano-lab/py && python3 -m pytest -q --tb=line tests/test_deploy_contract.py
+
 # Deliberately separate from ha-number-theory-check: this is a lightweight
 # BODY-CHECKED authoring gate, not the isolated cold empty-context closure gate.
 ha-k3b-cell-history-check:
@@ -619,7 +677,7 @@ stage: book
 deploy-site: stage
 	rsync -avz --delete $(STAGE)/ $(SERVER):$(SITE)/
 
-stage-proofs: book-proof-explorer
+stage-proofs: book-proof-explorer book-constructive-frontier-explorer
 	rm -rf "$(STAGEPROOFS)"
 	mkdir -p "$(STAGEPROOFS)/assets"
 	mkdir -p "$(STAGEPROOFS)/quadratic-reciprocity/explorer"
@@ -637,6 +695,21 @@ stage-proofs: book-proof-explorer
 		"$(STAGEPROOFS)/quadratic-reciprocity/explorer/"
 	rsync -a --delete book/_static/bertrand-proof-explorer/ \
 		"$(STAGEPROOFS)/bertrand-postulate/explorer/"
+	rsync -a book/_static/constructive-frontier-explorer/assets/ \
+		"$(STAGEPROOFS)/assets/"
+	mkdir -p "$(STAGEPROOFS)/supplementary-laws" \
+		"$(STAGEPROOFS)/kummer" "$(STAGEPROOFS)/two-squares" \
+		"$(STAGEPROOFS)/four-squares" "$(STAGEPROOFS)/lucas"
+	rsync -a --delete book/_static/constructive-frontier-explorer/supplementary-laws/ \
+		"$(STAGEPROOFS)/supplementary-laws/"
+	rsync -a --delete book/_static/constructive-frontier-explorer/kummer/ \
+		"$(STAGEPROOFS)/kummer/"
+	rsync -a --delete book/_static/constructive-frontier-explorer/two-squares/ \
+		"$(STAGEPROOFS)/two-squares/"
+	rsync -a --delete book/_static/constructive-frontier-explorer/four-squares/ \
+		"$(STAGEPROOFS)/four-squares/"
+	rsync -a --delete book/_static/constructive-frontier-explorer/lucas/ \
+		"$(STAGEPROOFS)/lucas/"
 	@echo "Staged proof explorers in $(STAGEPROOFS)"
 
 deploy-proofs: stage-proofs

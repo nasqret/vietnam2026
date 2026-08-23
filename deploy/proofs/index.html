@@ -6,7 +6,7 @@
   <title>Machine-Checked Proof Explorers</title>
   <meta name="description" content="Interactive maps of machine-checked proofs in first-order Peano arithmetic.">
   <meta property="og:title" content="Machine-Checked Proof Explorers">
-  <meta property="og:description" content="Explore Quadratic Reciprocity and Bertrand's Postulate from axioms to final theorem.">
+  <meta property="og:description" content="Explore admitted proof families and clearly labeled constructive candidate proof frontiers.">
   <meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/">
@@ -21,7 +21,7 @@
       <h1>Machine-checked proofs,<br>opened up for reading.</h1>
       <p class="lede">Trace every dependency, inspect every tactic, and move between exact formulas and readable defined notation. No proof assistant installation is required.</p>
       <div class="trust-row" aria-label="Proof properties">
-        <span>Kernel checked</span><span>Dependency complete</span><span>Browser native</span>
+        <span>Kernel checked</span><span>Exact dependency maps</span><span>Browser native</span>
       </div>
     </div>
   </header>
@@ -42,10 +42,53 @@
         <a class="primary-action" href="bertrand-postulate/">Explore the proof <span aria-hidden="true">→</span></a>
       </article>
     </section>
+    <section class="frontier-intro" aria-labelledby="candidate-frontier-heading">
+      <p class="eyebrow">Constructive research frontier</p>
+      <h2 id="candidate-frontier-heading">Five proof campaigns, transparently labeled.</h2>
+      <p>The following interactive maps switch between byte-exact first-order formulas and reviewed, linked mathematical definitions with checked AST-equivalence receipts. Inspect candidate tactic scripts, dependency neighborhoods, printable maps, and constructive numerical examples. Their theorem bodies are not admitted release authority.</p>
+      <p class="candidate-disclaimer">dependency-curried kernel-checked candidate body; not admitted to Alpha/Stable</p>
+    </section>
+    <section class="family-grid frontier-grid" aria-label="Constructive candidate proof families">
+      <article class="family-card candidate-card supplementary-card">
+        <p class="card-kicker">Candidate · quadratic residues</p>
+        <h2>Supplementary Laws</h2>
+        <p>Inspect both constructive laws for the quadratic characters of −1 and 2, with explicit modulo-four and modulo-eight witnesses.</p>
+        <p class="candidate-badge">Not admitted to Alpha/Stable</p>
+        <a class="primary-action" href="supplementary-laws/">Explore candidate map <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="family-card candidate-card kummer-card">
+        <p class="card-kicker">Candidate · carries and valuations</p>
+        <h2>Kummer’s Theorem</h2>
+        <p>Follow the exact constructive identification of a binomial valuation with its base-p addition carries.</p>
+        <p class="candidate-badge">Not admitted to Alpha/Stable</p>
+        <a class="primary-action" href="kummer/">Explore candidate map <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="family-card candidate-card two-squares-card">
+        <p class="card-kicker">Candidate · complete constructive classification</p>
+        <h2>Fermat’s Two Squares</h2>
+        <p>Explore the complete all-natural two-square criterion, including explicit witnesses, even prime valuations, constructive descent, and the zero boundary.</p>
+        <p class="candidate-badge">Not admitted to Alpha/Stable</p>
+        <a class="primary-action" href="two-squares/">Explore candidate map <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="family-card candidate-card four-squares-card">
+        <p class="card-kicker">Candidate · complete constructive universal theorem</p>
+        <h2>Lagrange’s Four-Square Theorem</h2>
+        <p>Explore the complete proof that every natural number is a sum of four squares, including bounded prime seeds, both quaternion identities, all signed cases, and constructive descent.</p>
+        <p class="candidate-badge">Not admitted to Alpha/Stable</p>
+        <a class="primary-action" href="four-squares/">Explore candidate map <span aria-hidden="true">→</span></a>
+      </article>
+      <article class="family-card candidate-card lucas-card">
+        <p class="card-kicker">Candidate · complete constructive multidigit theorem</p>
+        <h2>Lucas’s Theorem</h2>
+        <p>Explore the complete unconditional digitwise binomial congruence, terminating beta-coded expansions, exact prime-block recurrences, and constructive product witnesses.</p>
+        <p class="candidate-badge">Not admitted to Alpha/Stable</p>
+        <a class="primary-action" href="lucas/">Explore candidate map <span aria-hidden="true">→</span></a>
+      </article>
+    </section>
     <section class="method-note">
       <p class="eyebrow">What you can inspect</p>
       <h2>Statements, definitions, dependencies, scripts, and provenance.</h2>
-      <p>Each explorer is a static, reproducible reading surface generated from the checked theorem catalog. Search by theorem, open a dependency neighborhood, or inspect the exact proof line by line.</p>
+      <p>Each explorer is a static, reproducible reading surface generated from exact theorem specifications. Admitted proof families and isolated kernel-checked candidate bodies retain their separate evidence labels. Search by theorem, open a dependency neighborhood, or inspect the exact proof line by line.</p>
     </section>
   </main>
   <footer class="shell"><p>Proof artifacts from the Peano arithmetic library.</p></footer>

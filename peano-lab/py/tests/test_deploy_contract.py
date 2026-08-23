@@ -111,6 +111,23 @@ def test_proof_explorer_deploy_uses_an_isolated_staging_tree() -> None:
     assert "rsync -avz --delete \"_deploy/proofs/\"" in output
 
 
+def test_all_constructive_frontier_families_stage_without_remote_deployment() -> None:
+    output = _dry_run("stage-proofs")
+
+    assert "python3 scripts/build_constructive_frontier_explorer.py" in output
+    assert "book/_static/constructive-frontier-explorer/assets/" in output
+    for family in (
+        "supplementary-laws",
+        "kummer",
+        "two-squares",
+        "four-squares",
+        "lucas",
+    ):
+        assert f"book/_static/constructive-frontier-explorer/{family}/" in output
+        assert f'"_deploy/proofs/{family}/"' in output
+    assert "lts-faculty.wmi.amu.edu.pl:" not in output
+
+
 def test_proof_explorer_deploy_paths_cannot_be_overridden() -> None:
     output = subprocess.run(
         [

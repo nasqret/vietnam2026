@@ -1,0 +1,1138 @@
+#!/usr/bin/env python3
+"""Build five offline, evidence-honest constructive candidate proof explorers.
+
+The generator reads exact dependency-curried candidate factories and existing
+conservative definition templates.  It neither replays a proof nor confers
+Alpha/Stable authority; every generated page says so prominently.
+"""
+
+from __future__ import annotations
+
+import argparse
+from collections import Counter
+from dataclasses import dataclass
+from hashlib import sha256
+import html
+import importlib
+import json
+from pathlib import Path
+import sys
+from typing import Any, Mapping, Sequence
+
+
+REPO = Path(__file__).resolve().parents[1]
+PY_ROOT = REPO / "peano-lab" / "py"
+if str(PY_ROOT) not in sys.path:
+    sys.path.insert(0, str(PY_ROOT))
+
+from peano_lab.kernel.formulas import parse_formula_in_context  # noqa: E402
+from peano_lab.library import bertrand_defined_edition as defined_adapter  # noqa: E402
+from peano_lab.library import editions_v12 as v12  # noqa: E402
+from peano_lab.library.bertrand_defined_edition import BERTRAND_DEFINITIONS  # noqa: E402
+from peano_lab.library.defined_edition import DefinedEditionError  # noqa: E402
+from peano_lab.library.defined_syntax import DEFINITIONS  # noqa: E402
+from peano_lab.library.ha_signed_balance_candidate import signed_balance  # noqa: E402
+from peano_lab.library.theorems import TheoremSpec, _specs_by_name  # noqa: E402
+
+
+OUTPUT = REPO / "book" / "_static" / "constructive-frontier-explorer"
+CANDIDATE_STATUS = (
+    "dependency-curried kernel-checked candidate body; "
+    "not admitted to Alpha/Stable"
+)
+MANIFEST_SCHEMA = "peano-lab-constructive-frontier-explorer-v1"
+MAX_DEFINED_STATEMENT_CHARACTERS = 12_000
+MAX_DEFINED_ROOT_STATEMENT_CHARACTERS = 42_000
+MAX_DEFINED_TACTIC_PROPOSITION_CHARACTERS = 2_400
+MAX_DEFINED_TACTIC_PROPOSITIONS_PER_NODE = 2
+MAX_DEFINED_TACTIC_PROPOSITIONS_PER_ROOT = 4
+
+
+@dataclass(frozen=True, slots=True)
+class Family:
+    slug: str
+    title: str
+    kicker: str
+    formula: str
+    description: str
+    scope: str
+    roots: tuple[str, ...]
+    factories: tuple[tuple[str, str], ...]
+    definition_names: tuple[str, ...]
+    example: str
+    optional_module_prefix: str | None = None
+
+
+FAMILIES = (
+    Family(
+        slug="supplementary-laws",
+        title="Quadratic Supplementary Laws",
+        kicker="Residues of −1 and 2",
+        formula="(−1|p) = (−1)^((p−1)/2) · (2|p) = (−1)^((p²−1)/8)",
+        description="Follow the complete constructive modulo-four and modulo-eight residue classifications.",
+        scope="Both supplementary-law endpoint bodies are complete; their release admission remains separate.",
+        roots=("quadratic_supplement_minus_one_complete", "quadratic_supplement_two_complete"),
+        factories=(
+            ("quadratic_supplement_minus_one_candidate", "make_quadratic_supplement_minus_one_candidate_theorems"),
+            ("quadratic_supplement_two_candidate", "make_quadratic_supplement_two_candidate_theorems"),
+        ),
+        definition_names=("Prime", "Odd", "Even", "Mod4One", "Mod4Three", "ModEq", "QRes", "BoundedQRes", "BetaAt", "BitCount", "Mod8One", "Mod8Three", "Mod8Five", "Mod8Seven"),
+        example="supplementary",
+    ),
+    Family(
+        slug="kummer",
+        title="Kummer’s Carry Theorem",
+        kicker="Binomial valuations",
+        formula="vₚ (a+b choose a) = number of base-p carries in a+b",
+        description="Inspect the constructive bridge from Legendre valuations to explicitly counted addition carries.",
+        scope="The exact binomial-carry endpoint and its carry-free corollary are checked candidate bodies.",
+        roots=("kummer_binomial_carry_bit_count", "kummer_carry_free_iff_not_divides"),
+        factories=(
+            ("kummer_valuation_candidate", "make_kummer_valuation_candidate_theorems"),
+            ("kummer_carry_candidate", "make_kummer_carry_candidate_theorems"),
+            ("kummer_carry_candidate", "make_kummer_carry_corollary_candidate_theorems"),
+        ),
+        definition_names=("Prime", "Choose", "Factorial", "PowerValuation", "PowerDivides", "LegendreSum", "BetaAt", "BitCount", "AllBits", "Sum", "Carry"),
+        example="kummer",
+    ),
+    Family(
+        slug="two-squares",
+        title="Fermat and Sums of Two Squares",
+        kicker="Prime representations and constructive classification",
+        formula="n = x²+y² ⇔ n = 0 or every p ≡ 3 (mod 4) has even vₚ(n)",
+        description="Explore the complete constructive all-natural two-square classification: prime representations, multiplication, valuation necessity, strictly decreasing sufficiency, and the explicit zero boundary.",
+        scope="The complete all-natural iff, its nonzero specialization, prime classification, Brahmagupta–Fibonacci multiplication, and explicit constructive witnesses are kernel-checked dependency-curried candidate bodies; Alpha/Stable admission remains a separate release gate.",
+        roots=(
+            "prime_mod_four_one_is_sum_of_two_squares",
+            "brahmagupta_fibonacci_two_square_identity",
+            "two_square_representation_multiplicatively_closed",
+            "three_mod_four_prime_divides_two_square_norm_divides_both",
+            "prime_power_valuation_square_even",
+            "three_mod_four_prime_nonzero_norm_positive_valuation_extracts",
+            "three_mod_four_prime_represented_nonzero_valuation_even",
+            "beta_two_square_represented_factor_product",
+            "beta_grouped_prime_square_factor_product_is_two_square",
+            "positive_number_with_admissible_prime_divisors_is_two_square",
+            "even_valuation_sorted_terminal_prime_has_equal_predecessor",
+            "two_square_product_is_two_square",
+            "two_square_representations_closed_under_multiplication",
+            "prime_is_two_squares_iff_two_or_one_mod_four",
+            "all_bad_prime_even_two_square_sufficiency_bounded",
+            "positive_number_with_even_bad_prime_valuations_is_two_square",
+            "nonzero_two_square_iff_even_three_mod_four_prime_valuations",
+            "two_square_iff_zero_or_even_three_mod_four_prime_valuations",
+        ),
+        factories=(
+            ("fermat_two_squares_candidate", "make_fermat_two_squares_candidate_theorems"),
+            ("fermat_two_squares_pigeonhole_candidate", "make_fermat_two_squares_pigeonhole_candidate_theorems"),
+            ("finite_prefix_collision_decision_candidate", "make_finite_prefix_collision_decision_candidate_theorems"),
+            ("fermat_two_squares_residue_grid_candidate", "make_fermat_two_squares_residue_grid_candidate_theorems"),
+            ("fermat_two_squares_collision_norm_candidate", "make_fermat_two_squares_collision_norm_candidate_theorems"),
+            ("fermat_two_squares_prime_candidate", "make_fermat_two_squares_prime_candidate_theorems"),
+            ("fermat_two_squares_classification_candidate", "make_fermat_two_squares_classification_candidate_theorems"),
+        ),
+        definition_names=("Prime", "Mod4One", "Mod4Three", "QRes", "BoundedQRes", "FloorSqrt", "ModEq", "Dvd", "BetaAt", "InjectivePrefix", "AllPrime", "Sorted", "PowerValuation", "SumTwoSquares", "AbsoluteDifference"),
+        example="two-squares",
+        optional_module_prefix="fermat_two_squares_",
+    ),
+    Family(
+        slug="four-squares",
+        title="Lagrange’s Four-Square Theorem",
+        kicker="Complete constructive universal representation",
+        formula="∀ n ∈ ℕ. ∃ a,b,c,d. n = a² + b² + c² + d²",
+        description="Explore the complete constructive proof that every natural number is a sum of four squares: both Euler quaternion identities, actual bounded prime seeds, all sixteen signed orientations, strict multiplier descent, and explicit prime-factor witnesses.",
+        scope="The complete universal Lagrange four-square theorem, representation of every prime, complete eight-variable Euler identity and signed-conjugate identity, explicit multiplicative closure, constructive modular seeds for every prime, all sixteen signed centered orientations, and bounded strict prime-multiple descent are kernel-checked dependency-curried candidate bodies; Alpha/Stable admission remains a separate release gate.",
+        roots=(
+            "quaternion_coordinate_square_balance_total",
+            "quaternion_coordinate_absolute_total",
+            "four_square_norm_distributes",
+            "four_square_two_square_factor_identity",
+            "four_square_two_square_factor_total",
+            "four_square_euler_all_mixed_cancel",
+            "four_square_euler_quaternion_conditional",
+            "four_square_euler_three_square_expansion",
+            "four_square_euler_add_permute_sixteen",
+            "four_square_euler_coordinate_triple_decompose",
+            "four_square_euler_global_compensation",
+            "four_square_euler_quaternion",
+            "four_square_euler_four_square_product_total",
+            "four_square_euler_representations_closed_under_multiplication",
+            "four_square_prime_two_or_one_mod_four",
+            "four_square_lagrange_bounded_from_primes",
+            "four_square_lagrange_from_all_primes",
+            "four_square_lagrange_from_three_mod_four_primes",
+            "four_square_lagrange_iff_three_mod_four_primes",
+            "four_square_cross_interleaved_prefix_exists",
+            "four_square_cross_intersection",
+            "four_square_prime_half_square_residues_injective",
+            "four_square_square_residue_prefix_exists",
+            "four_square_half_square_residue_prefix_injective",
+            "four_square_bounded_complement_prefix_exists",
+            "four_square_odd_prime_modular_seed",
+            "four_square_non_two_prime_modular_seed",
+            "four_square_prime_modular_seed",
+            "four_square_odd_prime_half_coordinate_seed",
+            "four_square_odd_prime_half_seed_norm_strict",
+            "four_square_odd_prime_bounded_modular_seed",
+            "four_square_non_two_prime_bounded_modular_seed",
+            "four_square_prime_bounded_modular_seed",
+            "four_square_descent_quaternion_quotient",
+            "four_square_descent_centered_signed_remainder_exists",
+            "four_square_descent_centered_four_remainders_exist",
+            "four_square_descent_even_multiplier_matching_parity_halving",
+            "four_square_parity_even_norm_pair_selection",
+            "four_square_parity_even_multiplier_halving",
+            "four_square_parity_represented_double_halving",
+            "four_square_parity_represented_additive_double_halving",
+            "four_square_descent_odd_centered_norm_strict",
+            "four_square_descent_bounded_centered_quotient_nonzero",
+            "four_square_descent_odd_centered_strict_step",
+            "four_square_branch_even_represented_strict_step",
+            "four_square_bounded_strict_descent_from_odd_signed_quaternion",
+            "four_square_signed_centered_square_congruent",
+            "four_square_signed_centered_norm_congruent",
+            "four_square_signed_centered_norm_quotient_exists",
+            "four_square_signed_absolute_congruence_divisible",
+            "four_square_signed_conjugate_positive_blocks",
+            "four_square_signed_conjugate_negative_blocks",
+            "four_square_signed_conjugate_mixed_blocks",
+            "four_square_signed_natural_negative_first_blocks",
+            "four_square_signed_natural_positive_first_blocks",
+            "four_square_signed_divisible_norm_product_representation",
+            "four_square_signed_absolute_block_representation",
+            "four_square_signed_orientation_mask_00",
+            "four_square_signed_orientation_mask_03",
+            "four_square_signed_orientation_mask_07",
+            "four_square_signed_orientation_mask_15",
+            "four_square_signed_centered_representation",
+            "four_square_conjugate_global_compensation",
+            "four_square_signed_conjugate_quaternion",
+            "four_square_conjugate_absolute_coordinates_total",
+            "four_square_descent_strict_step_from_centered_quaternion",
+            "four_square_lagrange_from_modular_seeds_and_strict_descent",
+            "four_square_prime_from_strict_descent",
+            "four_square_lagrange_from_strict_descent",
+            "four_square_descent_below_prime_multiplier_bounded",
+            "four_square_prime_from_bounded_strict_descent_and_seed",
+            "four_square_prime_from_bounded_strict_descent",
+            "four_square_lagrange_from_bounded_strict_descent",
+            "four_square_prime_from_odd_signed_quaternion",
+            "four_square_lagrange_from_odd_signed_quaternion",
+            "four_square_prime_representation",
+            "four_square_lagrange",
+        ),
+        factories=(("four_square_identity_candidate", "make_four_square_identity_candidate_theorems"),),
+        definition_names=("Prime", "Le", "Lt", "Dvd", "ModEq", "Product", "SignedBalance", "AbsoluteDifference", "SumTwoSquares", "FourSquareNorm"),
+        example="four-squares",
+        optional_module_prefix="four_square_",
+    ),
+    Family(
+        slug="lucas",
+        title="Lucas’s Multidigit Binomial Theorem",
+        kicker="Complete constructive base-p digitwise congruence",
+        formula="n = Σ nᵢpⁱ · k = Σ kᵢpⁱ · (n choose k) ≡ ∏ (nᵢ choose kᵢ) (mod p)",
+        description="Explore the complete unconditional constructive multidigit Lucas congruence, genuinely terminating beta-coded digit chains, exact prime-block Pascal identities, coefficient streams, and witnessed digitwise products.",
+        scope="The complete arbitrary-length multidigit Lucas congruence, terminating beta-coded quotient/digit chains, actual coefficient/product witnesses, and unrestricted prime-block one-step identity are kernel-checked dependency-curried candidate bodies; Alpha/Stable admission remains a separate release gate.",
+        roots=(
+            "lucas_digit_carry_iff_prime_divides",
+            "lucas_digit_no_carry_iff_not_divides",
+            "lucas_base_p_digit_functional",
+            "lucas_prime_base_digit_prefix_exists",
+            "lucas_base_p_digit_prefix_point",
+            "lucas_base_p_two_digit_reconstruction",
+            "lucas_base_p_two_digit_total",
+            "lucas_prime_row_sparse_complete",
+            "lucas_prime_row_interior_zero_mod",
+            "lucas_pascal_congruence_step",
+            "lucas_prime_shift_below_base",
+            "lucas_prime_shift_high_column",
+            "lucas_repeated_prime_shift_below_base",
+            "lucas_low_digit_product_congruence",
+            "lucas_zero_upper_quotient_high_column_vanishes",
+            "lucas_prime_block_digit_congruence",
+            "lucas_one_step_division_congruence",
+            "lucas_digit_chain_exists",
+            "lucas_prime_digit_chain_exists",
+            "lucas_digit_chain_step_exists",
+            "lucas_choose_prefix_exists",
+            "lucas_choose_prefix_point",
+            "lucas_modular_backward_product_fold",
+            "lucas_multidigit_congruence_from_one_step",
+            "lucas_terminating_multidigit_theorem_from_one_step",
+            "lucas_prime_digit_chain_terminal_zero",
+            "lucas_terminating_prime_digit_chain_exists",
+            "lucas_multidigit_congruence",
+            "lucas_terminating_multidigit_theorem",
+            "lucas_theorem_for_length",
+            "lucas_theorem",
+        ),
+        factories=(("lucas_digit_candidate", "make_lucas_digit_candidate_theorems"),),
+        definition_names=("Prime", "Lt", "Le", "Choose", "Factorial", "Dvd", "ModEq", "Product", "Sum", "PowerValuation", "Carry", "Digit", "BetaAt"),
+        example="lucas",
+        optional_module_prefix="lucas_",
+    ),
+)
+
+
+def _digest(value: str | bytes) -> str:
+    return sha256(value.encode("utf-8") if isinstance(value, str) else value).hexdigest()
+
+
+def _json(value: Any) -> bytes:
+    return (json.dumps(value, ensure_ascii=False, indent=2, sort_keys=True) + "\n").encode(
+        "utf-8"
+    )
+
+
+def _custom_definitions() -> dict[str, dict[str, Any]]:
+    records = (
+        ("CF0001", "AbsoluteDifference", ("a", "b", "d"), "a = b + d \\/ b = a + d", "d is an explicitly witnessed natural absolute difference."),
+        ("CF0002", "SumTwoSquares", ("n",), "exists x y. n = x * x + y * y", "n has explicitly witnessed natural two-square coordinates."),
+        ("CF0003", "FourSquareNorm", ("n", "a", "b", "c", "d"), "n = a * a + b * b + c * c + d * d", "n is the natural norm of four displayed coordinates."),
+        ("CF0004", "SignedBalance", ("code", "left", "right"), signed_balance("code", "left", "right", tag="frontier"), "A conservative signed-natural code balances the formal difference left−right."),
+        ("CF0005", "Carry", ("p", "a", "b"), "exists q. q + p = a + b", "The sum of two natural digits is at least the base p."),
+        ("CF0006", "Mod8One", ("p",), "exists q. p = 8 * q + 1", "p is one modulo eight with a witnessed quotient."),
+        ("CF0007", "Mod8Three", ("p",), "exists q. p = 8 * q + 3", "p is three modulo eight with a witnessed quotient."),
+        ("CF0008", "Mod8Five", ("p",), "exists q. p = 8 * q + 5", "p is five modulo eight with a witnessed quotient."),
+        ("CF0009", "Mod8Seven", ("p",), "exists q. p = 8 * q + 7", "p is seven modulo eight with a witnessed quotient."),
+        ("CF0010", "Digit", ("p", "n", "q", "d"), "(n = p * q + d) /\\ exists h. h + S d = p", "A base-p digit d and quotient q satisfy n = p·q+d with the witnessed strict bound d<p."),
+    )
+    result: dict[str, dict[str, Any]] = {}
+    for identifier, name, parameters, template, summary in records:
+        parse_formula_in_context(template, list(parameters))
+        result[name] = {
+            "id": identifier,
+            "name": name,
+            "parameters": list(parameters),
+            "summary": summary,
+            "expanded_template": template,
+            "template_sha256": _digest(template),
+            "origin": "frontier-conservative-display-alias",
+        }
+    return result
+
+
+def _definition_table() -> dict[str, dict[str, Any]]:
+    table: dict[str, dict[str, Any]] = {}
+    for definition in (*DEFINITIONS, *BERTRAND_DEFINITIONS):
+        table[definition.name] = {
+            "id": definition.stable_id,
+            "name": definition.name,
+            "parameters": list(definition.parameters),
+            "summary": definition.summary,
+            "expanded_template": definition.template_source,
+            "template_sha256": _digest(definition.template_source),
+            "origin": "existing-conservative-definition",
+        }
+    table.update(_custom_definitions())
+    return table
+
+
+def _verified_compaction(
+    compacted: Any,
+    *,
+    source: str,
+    known_definitions: Mapping[str, Mapping[str, Any]],
+    context: str,
+) -> tuple[dict[str, Any], list[dict[str, str]], Counter[str]]:
+    """Reject every source, definition, or AST-equivalence receipt mismatch."""
+
+    receipt = compacted.receipt
+    source_sha256 = _digest(source)
+    if compacted.expanded_source != source:
+        raise ValueError(f"{context}: compaction changed the exact source")
+    if not receipt.exact_ast_equivalence:
+        raise ValueError(f"{context}: compaction lacks exact AST equivalence")
+    if receipt.expanded_source_sha256 != source_sha256:
+        raise ValueError(f"{context}: expanded source SHA-256 mismatch")
+    if receipt.defined_source_sha256 != _digest(compacted.defined_source):
+        raise ValueError(f"{context}: defined source SHA-256 mismatch")
+    if receipt.expanded_characters != len(source):
+        raise ValueError(f"{context}: expanded source character count mismatch")
+    if receipt.defined_characters != len(compacted.defined_source):
+        raise ValueError(f"{context}: defined source character count mismatch")
+
+    parts = [part.as_json() for part in compacted.parts]
+    if "".join(part["text"] for part in parts) != compacted.defined_source:
+        raise ValueError(f"{context}: defined parts do not reconstruct their source")
+    uses = Counter(
+        part["definition"] for part in parts if part["kind"] == "definition"
+    )
+    expected_uses = Counter(
+        {use.definition_id: use.occurrences for use in receipt.definition_uses}
+    )
+    if uses != expected_uses:
+        raise ValueError(f"{context}: linked-definition use count mismatch")
+    for use in receipt.definition_uses:
+        definition = known_definitions.get(use.definition_id)
+        if definition is None or definition["name"] != use.name:
+            raise ValueError(f"{context}: unreviewed or inconsistent definition {use.name}")
+
+    return (
+        {
+            "expanded_source_sha256": receipt.expanded_source_sha256,
+            "defined_source_sha256": receipt.defined_source_sha256,
+            "canonical_expansion_sha256": receipt.canonical_expansion_sha256,
+            "free_names": list(receipt.free_names),
+            "expanded_characters": receipt.expanded_characters,
+            "defined_characters": receipt.defined_characters,
+            "exact_ast_equivalence": True,
+            "definition_uses": [
+                {
+                    "id": use.definition_id,
+                    "name": use.name,
+                    "occurrences": use.occurrences,
+                }
+                for use in receipt.definition_uses
+            ],
+        },
+        parts,
+        uses,
+    )
+
+
+def _defined_node(
+    node: Mapping[str, Any],
+    known_definitions: Mapping[str, Mapping[str, Any]],
+) -> dict[str, Any]:
+    """Build a bounded, fail-closed conservative reading surface for one row."""
+
+    source = str(node["statement"])
+    exact_sha256 = _digest(source)
+    if exact_sha256 != node["statement_sha256"]:
+        raise ValueError(f"theorem {node['name']}: immutable statement SHA-256 mismatch")
+
+    limit = (
+        MAX_DEFINED_ROOT_STATEMENT_CHARACTERS
+        if node["root"]
+        else MAX_DEFINED_STATEMENT_CHARACTERS
+    )
+    defined_statement = source
+    statement_parts: list[dict[str, str]] = [{"kind": "text", "text": source}]
+    statement_receipt: dict[str, Any] | None = None
+    statement_uses: Counter[str] = Counter()
+    if len(source) > limit:
+        statement_status = "exact-only-size-budget"
+    else:
+        try:
+            compacted = defined_adapter.compact_formula_source(source)
+        except DefinedEditionError:
+            statement_status = "exact-only-compaction-unavailable"
+        else:
+            statement_receipt, statement_parts, statement_uses = _verified_compaction(
+                compacted,
+                source=source,
+                known_definitions=known_definitions,
+                context=f"theorem {node['name']}",
+            )
+            defined_statement = compacted.defined_source
+            statement_status = "exact-ast-equivalent"
+
+    tactic_budget = (
+        MAX_DEFINED_TACTIC_PROPOSITIONS_PER_ROOT
+        if node["root"]
+        else MAX_DEFINED_TACTIC_PROPOSITIONS_PER_NODE
+    )
+    considered = 0
+    compact_lines: list[dict[str, Any]] = []
+    script_uses: Counter[str] = Counter()
+    skipped_lines = 0
+    for number, command in enumerate(node["script"], start=1):
+        stripped = command.strip()
+        if not stripped.startswith(("have ", "suffices ")):
+            continue
+        _prefix, separator, proposition_source = stripped.partition(":")
+        if not separator or len(proposition_source.strip()) > MAX_DEFINED_TACTIC_PROPOSITION_CHARACTERS:
+            skipped_lines += 1
+            continue
+        if considered >= tactic_budget:
+            skipped_lines += 1
+            continue
+        considered += 1
+        try:
+            tactic = defined_adapter.compact_tactic_command(command, number)
+        except DefinedEditionError:
+            skipped_lines += 1
+            continue
+        if tactic.line_number != number or tactic.expanded_command != command:
+            raise ValueError(f"theorem {node['name']} line {number}: exact source changed")
+        if tactic.proposition is None:
+            raise ValueError(f"theorem {node['name']} line {number}: proposition receipt missing")
+        proposition_receipt, _parts, proposition_uses = _verified_compaction(
+            tactic.proposition,
+            source=proposition_source.strip(),
+            known_definitions=known_definitions,
+            context=f"theorem {node['name']} line {number}",
+        )
+        command_parts = [part.as_json() for part in tactic.parts]
+        if "".join(part["text"] for part in command_parts) != tactic.defined_command:
+            raise ValueError(f"theorem {node['name']} line {number}: command parts mismatch")
+        command_uses = Counter(
+            part["definition"] for part in command_parts if part["kind"] == "definition"
+        )
+        if command_uses != proposition_uses:
+            raise ValueError(f"theorem {node['name']} line {number}: command definition mismatch")
+        if tactic.defined_command == command:
+            continue
+        compact_lines.append(
+            {
+                "number": number,
+                "defined_command": tactic.defined_command,
+                "expanded_command_sha256": _digest(command),
+                "command_parts": command_parts,
+                "proposition_receipt": proposition_receipt,
+            }
+        )
+        script_uses.update(command_uses)
+
+    total_uses = statement_uses + script_uses
+    return {
+        "defined_statement": defined_statement,
+        "expanded_statement_sha256": exact_sha256,
+        "statement_status": statement_status,
+        "statement_receipt": statement_receipt,
+        "statement_parts": statement_parts,
+        "statement_definition_uses": dict(sorted(statement_uses.items())),
+        "defined_script_lines": compact_lines,
+        "skipped_tactic_propositions": skipped_lines,
+        "script_definition_uses": dict(sorted(script_uses.items())),
+        "definition_uses": dict(sorted(total_uses.items())),
+    }
+
+
+def _factory_sources(family: Family) -> tuple[tuple[str, str], ...]:
+    sources = list(family.factories)
+    known = {module for module, _factory in sources}
+    if family.optional_module_prefix is not None:
+        library = PY_ROOT / "peano_lab" / "library"
+        for path in sorted(library.glob(f"{family.optional_module_prefix}*candidate.py")):
+            module_name = path.stem
+            if module_name in known:
+                continue
+            module = importlib.import_module(f"peano_lab.library.{module_name}")
+            factory_name = f"make_{module_name.removesuffix('_candidate')}_candidate_theorems"
+            factory = getattr(module, factory_name, None)
+            if callable(factory):
+                sources.append((module_name, factory_name))
+                known.add(module_name)
+    return tuple(sources)
+
+
+def _family_nodes(family: Family) -> tuple[dict[str, Any], ...]:
+    rows: list[dict[str, Any]] = []
+    selected: dict[str, dict[str, Any]] = {}
+    for module_index, (module_name, factory_name) in enumerate(_factory_sources(family)):
+        module = importlib.import_module(f"peano_lab.library.{module_name}")
+        factory = getattr(module, factory_name, None)
+        if not callable(factory):
+            raise ValueError(f"missing constructive candidate factory {module_name}.{factory_name}")
+        for module_order, item in enumerate(factory(TheoremSpec)):
+            source = {
+                "source_module": f"peano_lab.library.{module_name}",
+                "factory": factory_name,
+                "statement_sha256": _digest(item.statement),
+                "script_sha256": _digest("\n".join(item.script)),
+                "selected": item.name not in selected,
+            }
+            if item.name in selected:
+                source["matches_selected_statement"] = (
+                    source["statement_sha256"] == selected[item.name]["statement_sha256"]
+                )
+                selected[item.name]["sources"].append(source)
+                continue
+            row = {
+                "name": item.name,
+                "summary": item.summary,
+                "statement": item.statement,
+                "statement_sha256": _digest(item.statement),
+                "dependencies": list(item.dependencies),
+                "script": list(item.script),
+                "source_module": f"peano_lab.library.{module_name}",
+                "factory": factory_name,
+                "sources": [source],
+                "module_index": module_index,
+                "module_order": module_order,
+                "status": CANDIDATE_STATUS,
+                "admitted_to_alpha": False,
+                "admitted_to_stable": False,
+                "root": item.name in family.roots,
+            }
+            selected[item.name] = row
+            rows.append(row)
+    if not rows:
+        raise ValueError(f"constructive family {family.slug} has no candidate bodies")
+    return tuple(rows)
+
+
+def build_corpora() -> dict[str, dict[str, Any]]:
+    definitions = _definition_table()
+    definitions_by_id = {
+        definition["id"]: definition for definition in definitions.values()
+    }
+    if len(definitions_by_id) != len(definitions):
+        raise ValueError("constructive frontier definitions repeat a stable identifier")
+    candidates: dict[str, tuple[dict[str, Any], ...]] = {}
+    for family in FAMILIES:
+        rows = _family_nodes(family)
+        for row in rows:
+            row["defined"] = _defined_node(row, definitions_by_id)
+        candidates[family.slug] = rows
+    family_of = {
+        node["name"]: slug for slug, nodes in candidates.items() for node in nodes
+    }
+    public = _specs_by_name()
+    alpha_entries = v12.ALPHA_EDITION.by_name
+    corpora: dict[str, dict[str, Any]] = {}
+    for family in FAMILIES:
+        nodes = candidates[family.slug]
+        local = {node["name"] for node in nodes}
+        edges: list[dict[str, Any]] = []
+        external: dict[str, dict[str, str]] = {}
+        for node in nodes:
+            for dependency in node["dependencies"]:
+                if dependency in local:
+                    kind = "internal-candidate"
+                    origin = family.slug
+                    evidence = "dependency-curried-candidate-body"
+                    admitted_alpha = False
+                    admitted_stable = False
+                elif dependency in family_of:
+                    kind = "cross-family-candidate"
+                    origin = family_of[dependency]
+                    evidence = "dependency-curried-candidate-body"
+                    admitted_alpha = False
+                    admitted_stable = False
+                elif (entry := alpha_entries.get(dependency)) is not None:
+                    evidence = entry.evidence.value
+                    if entry.evidence is v12.EvidenceStatus.STABLE_CLOSED:
+                        kind = "stable-admitted-theorem"
+                        origin = "sealed-stable-edition"
+                        admitted_alpha = True
+                        admitted_stable = True
+                    elif entry.evidence is v12.EvidenceStatus.ALPHA_CLOSED:
+                        kind = "alpha-admitted-theorem"
+                        origin = "sealed-alpha-edition"
+                        admitted_alpha = True
+                        admitted_stable = False
+                    elif entry.evidence is v12.EvidenceStatus.BODY_CHECKED:
+                        kind = "alpha-enrolled-candidate-not-admitted"
+                        origin = "sealed-alpha-body-only"
+                        admitted_alpha = False
+                        admitted_stable = False
+                    else:
+                        kind = "alpha-pending-candidate-not-admitted"
+                        origin = "sealed-alpha-pending-layered"
+                        admitted_alpha = False
+                        admitted_stable = False
+                elif dependency in public:
+                    kind = "public-registry-release-unverified"
+                    origin = "public-registry-without-sealed-release-attestation"
+                    evidence = "release-status-unattested"
+                    admitted_alpha = False
+                    admitted_stable = False
+                else:
+                    kind = "external-unenrolled-candidate"
+                    origin = "external-candidate-library"
+                    evidence = "release-status-unattested"
+                    admitted_alpha = False
+                    admitted_stable = False
+                edges.append(
+                    {
+                        "source": dependency,
+                        "target": node["name"],
+                        "kind": kind,
+                        "evidence": evidence,
+                        "admitted_to_alpha": admitted_alpha,
+                        "admitted_to_stable": admitted_stable,
+                    }
+                )
+                if kind != "internal-candidate":
+                    external[dependency] = {
+                        "name": dependency,
+                        "kind": kind,
+                        "origin": origin,
+                        "evidence": evidence,
+                        "admitted_to_alpha": admitted_alpha,
+                        "admitted_to_stable": admitted_stable,
+                    }
+        family_definitions = []
+        for name in family.definition_names:
+            if name not in definitions:
+                raise ValueError(f"family {family.slug} requests an unknown definition {name}")
+            family_definitions.append(definitions[name])
+        included_ids = {definition["id"] for definition in family_definitions}
+        used_definition_ids = {
+            definition_id
+            for node in nodes
+            for definition_id in node["defined"]["definition_uses"]
+        }
+        for definition_id in sorted(used_definition_ids.difference(included_ids)):
+            family_definitions.append(definitions_by_id[definition_id])
+        corpora[family.slug] = {
+            "schema": "peano-lab-constructive-frontier-family-v1",
+            "slug": family.slug,
+            "title": family.title,
+            "formula": family.formula,
+            "description": family.description,
+            "scope": family.scope,
+            "candidate_status": CANDIDATE_STATUS,
+            "admitted_to_alpha": False,
+            "admitted_to_stable": False,
+            "root_names": [name for name in family.roots if name in local],
+            "definition_count": len(family_definitions),
+            "node_count": len(nodes),
+            "edge_count": len(edges),
+            "internal_edge_count": sum(edge["kind"] == "internal-candidate" for edge in edges),
+            "external_dependency_count": len(external),
+            "formal_line_count": sum(len(node["script"]) for node in nodes),
+            "defined_statement_count": sum(
+                node["defined"]["statement_status"] == "exact-ast-equivalent"
+                for node in nodes
+            ),
+            "compacted_statement_count": sum(
+                node["defined"]["defined_statement"] != node["statement"]
+                for node in nodes
+            ),
+            "defined_tactic_proposition_count": sum(
+                len(node["defined"]["defined_script_lines"]) for node in nodes
+            ),
+            "definitions": family_definitions,
+            "external_dependencies": sorted(external.values(), key=lambda item: item["name"]),
+            "nodes": list(nodes),
+            "edges": edges,
+            "example": family.example,
+        }
+    return corpora
+
+
+def _svg(corpus: Mapping[str, Any]) -> str:
+    nodes = corpus["nodes"]
+    columns = max(int(node["module_index"]) for node in nodes) + 1
+    rows = max(int(node["module_order"]) for node in nodes) + 1
+    width = max(720, 325 * columns + 85)
+    height = max(330, 58 * rows + 115)
+    locations = {
+        str(node["name"]): (
+            45 + 325 * int(node["module_index"]),
+            76 + 58 * int(node["module_order"]),
+        )
+        for node in nodes
+    }
+    internal_edges = []
+    for edge in corpus["edges"]:
+        if edge["kind"] != "internal-candidate":
+            continue
+        sx, sy = locations[str(edge["source"])]
+        tx, ty = locations[str(edge["target"])]
+        x1, y1, x2, y2 = sx + 274, sy + 20, tx, ty + 20
+        bend = max(35, abs(x2 - x1) // 2)
+        internal_edges.append(
+            f'<path class="frontier-edge" d="M {x1} {y1} '
+            f'C {x1 + bend} {y1}, {x2 - bend} {y2}, {x2} {y2}" '
+            f'data-source="{html.escape(str(edge["source"]), quote=True)}" '
+            f'data-target="{html.escape(str(edge["target"]), quote=True)}"/>'
+        )
+    headings = []
+    modules: dict[int, str] = {}
+    for node in nodes:
+        modules.setdefault(int(node["module_index"]), str(node["source_module"]).split(".")[-1])
+    for index, name in sorted(modules.items()):
+        short = name.removesuffix("_candidate").replace("fermat_two_squares_", "two squares · ")
+        headings.append(
+            f'<text class="frontier-column-label" x="{45 + 325 * index}" y="43">'
+            f'{html.escape(short)}</text>'
+        )
+    drawn = []
+    for node in nodes:
+        name = str(node["name"])
+        x, y = locations[name]
+        local = {row["name"] for row in nodes}
+        external_count = sum(dependency not in local for dependency in node["dependencies"])
+        label = name if len(name) <= 35 else name[:32] + "…"
+        classes = "frontier-node frontier-root" if node["root"] else "frontier-node"
+        drawn.append(
+            f'<g class="{classes}" data-node="{html.escape(name, quote=True)}" '
+            f'tabindex="0" role="button" aria-label="{html.escape(name, quote=True)}" '
+            f'transform="translate({x},{y})">'
+            '<rect width="274" height="41" rx="10"/>'
+            f'<text x="12" y="18">{html.escape(label)}</text>'
+            f'<text class="frontier-node-meta" x="12" y="33">'
+            f'{len(node["script"])} proof lines · {external_count} external</text></g>'
+        )
+    return (
+        f'<svg class="frontier-svg" id="frontier-graph" role="img" '
+        f'aria-label="Interactive candidate proof dependency graph" '
+        f'viewBox="0 0 {width} {height}" width="{width}" height="{height}">'
+        + "".join(internal_edges)
+        + "".join(headings)
+        + "".join(drawn)
+        + "</svg>"
+    )
+
+
+def _example_markup(family: Family) -> str:
+    if family.example == "supplementary":
+        controls = '<label>Prime or integer <input data-input="n" type="number" min="2" max="499" value="41"></label>'
+    elif family.example == "two-squares":
+        controls = '<label>Nonnegative integer <input data-input="n" type="number" min="0" max="499" value="65"></label>'
+    elif family.example == "kummer":
+        controls = (
+            '<label>Prime p <input data-input="p" type="number" min="2" max="29" value="5"></label>'
+            '<label>a <input data-input="a" type="number" min="0" max="120" value="8"></label>'
+            '<label>b <input data-input="b" type="number" min="0" max="120" value="7"></label>'
+        )
+    elif family.example == "lucas":
+        controls = (
+            '<label>Prime p <input data-input="p" type="number" min="2" max="29" value="5"></label>'
+            '<label>n <input data-input="n" type="number" min="0" max="120" value="37"></label>'
+            '<label>k <input data-input="k" type="number" min="0" max="120" value="7"></label>'
+        )
+    else:
+        controls = '<label>Example integer <input data-input="n" type="number" min="0" max="180" value="37"></label>'
+    return (
+        f'<section class="frontier-example" data-example="{family.example}">'
+        '<h2>Constructive numerical example</h2><p>Finite browser arithmetic illustrates the displayed formulas; it is not a theorem certificate.</p>'
+        f'<form data-example-form>{controls}<button type="submit">Compute witness</button></form>'
+        '<output data-example-result aria-live="polite"></output></section>'
+    )
+
+
+def _family_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
+    safe_json = json.dumps(corpus, ensure_ascii=False, separators=(",", ":")).replace(
+        "</", "<\\/"
+    )
+    definition_cards = "".join(
+        f'<details class="frontier-definition" '
+        f'id="frontier-definition-{html.escape(definition["id"], quote=True)}" '
+        f'data-definition-id="{html.escape(definition["id"], quote=True)}">'
+        f'<summary><code>{html.escape(definition["name"])}'
+        f'({html.escape(", ".join(definition["parameters"]))})</code></summary>'
+        f'<p>{html.escape(definition["summary"])}</p>'
+        f'<pre>{html.escape(definition["expanded_template"])}</pre>'
+        f'<small>{html.escape(definition["id"])} · exact expansion SHA-256 '
+        f'{html.escape(definition["template_sha256"])}</small></details>'
+        for definition in corpus["definitions"]
+    )
+    page = f"""<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{html.escape(family.title)} — Constructive Candidate Proof Explorer</title>
+  <meta name="description" content="{html.escape(family.description, quote=True)}">
+  <link rel="stylesheet" href="../assets/frontier.css">
+</head>
+<body data-family="{family.slug}">
+  <header class="frontier-hero">
+    <a class="frontier-back" href="../">← Proof explorer families</a>
+    <p class="frontier-kicker">{html.escape(family.kicker)}</p>
+    <h1>{html.escape(family.title)}</h1>
+    <p class="frontier-formula">{html.escape(family.formula)}</p>
+    <p class="frontier-description">{html.escape(family.description)}</p>
+    <p class="frontier-status">{html.escape(CANDIDATE_STATUS)}</p>
+    <p class="frontier-scope">{html.escape(family.scope)}</p>
+    <dl class="frontier-stats"><div><dt>{corpus['node_count']}</dt><dd>candidate bodies</dd></div><div><dt>{corpus['edge_count']}</dt><dd>dependency edges</dd></div><div><dt>{corpus['definition_count']}</dt><dd>definitions</dd></div><div><dt>{corpus['formal_line_count']}</dt><dd>exact tactic lines</dd></div></dl>
+    <p class="frontier-reading-note">{corpus['compacted_statement_count']} readable definition-compacted statements · {corpus['defined_tactic_proposition_count']} linked local proof propositions · exact AST-equivalence receipts</p>
+  </header>
+  <main class="frontier-main">
+    <section class="frontier-graph-section"><div class="frontier-toolbar"><h2>Interactive proof map</h2><label>Search theorems <input id="frontier-search" type="search" placeholder="Name, summary, exact or defined statement"></label><div class="frontier-view-controls" role="group" aria-label="Statement notation"><button data-frontier-view="defined" type="button" aria-pressed="true">Readable definitions</button><button data-frontier-view="exact" type="button" aria-pressed="false">Exact HA</button></div><span>Gold nodes are family endpoints; badges count external premises.</span></div><div class="frontier-map-controls" role="group" aria-label="Proof graph controls"><button id="frontier-zoom-out" type="button" aria-label="Zoom out">−</button><output id="frontier-zoom-level">100%</output><button id="frontier-zoom-in" type="button" aria-label="Zoom in">+</button><button id="frontier-zoom-fit" type="button">Fit map</button><button id="frontier-focus" type="button" aria-pressed="false">Focus dependencies</button><button id="frontier-print" type="button">Print proof map</button></div><div class="frontier-graph-scroll">{_svg(corpus)}</div></section>
+    <section class="frontier-detail" id="frontier-detail" aria-live="polite"><h2>Choose a theorem</h2><p>Select a graph node to inspect its readable defined notation, exact first-order statement, linked definitions, declaration, dependencies, proof script, and source receipts.</p></section>
+    {_example_markup(family)}
+    <section class="frontier-definitions"><h2>Conservative definitions</h2><p>Each notation below expands immediately into the unchanged first-order language; it introduces no trusted kernel predicate.</p>{definition_cards}</section>
+    <section class="frontier-boundary"><h2>Evidence and release boundary</h2><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p><p>This browser surface does not replay a proof, authorize theorem use, alter an edition, or assert completion beyond the exact listed endpoints.</p></section>
+  </main>
+  <script id="frontier-corpus" type="application/json">{safe_json}</script>
+  <script src="../assets/frontier.js" defer></script>
+</body>
+</html>
+"""
+    return page.encode("utf-8")
+
+
+FRONTIER_CSS = r""":root{color-scheme:light dark;--ink:#162137;--muted:#617089;--paper:#f5f7fc;--surface:#ffffff;--line:#dce2ef;--violet:#6249ca;--teal:#087f78;--gold:#d18a12;--status:#845400;--status-bg:#fff3d5}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.frontier-hero{padding:2.8rem max(calc((100vw - 1250px)/2),5vw) 3rem;color:#fff;background:radial-gradient(circle at 85% 20%,#35337f,transparent 38%),linear-gradient(135deg,#101a31,#202345)}.frontier-back{color:#cbd9f0;text-decoration:none}.frontier-kicker{margin:2rem 0 .4rem;color:#91e6d8;font-size:.75rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.frontier-hero h1{margin:.1rem 0 .55rem;font:600 clamp(2rem,5vw,4.2rem)/1.05 Georgia,serif;letter-spacing:-.04em}.frontier-formula{font:600 clamp(1rem,2vw,1.4rem)/1.4 ui-monospace,SFMono-Regular,monospace;color:#a1ebde}.frontier-description,.frontier-scope{max-width:920px;color:#ccd6e8}.frontier-status{display:inline-block;max-width:920px;margin:.45rem 0;padding:.7rem 1rem;border:1px solid #f3d187;border-radius:12px;background:var(--status-bg);color:var(--status);font-size:.87rem;font-weight:750}.frontier-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;max-width:900px;margin:1.7rem 0 0}.frontier-stats div{padding:.7rem .9rem;border:1px solid #ffffff25;border-radius:12px;background:#ffffff0a}.frontier-stats dt{font-size:1.18rem;font-weight:800}.frontier-stats dd{margin:0;color:#cad3e5;font-size:.74rem}.frontier-main{width:min(1350px,calc(100% - 2rem));margin:1.5rem auto 4rem}.frontier-graph-section,.frontier-detail,.frontier-example,.frontier-definitions,.frontier-boundary{margin-bottom:1.25rem;padding:1.2rem;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:0 8px 30px #1720330b}.frontier-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:1rem}.frontier-toolbar h2,.frontier-detail h2,.frontier-example h2,.frontier-definitions h2,.frontier-boundary h2{margin:.15rem 0;font:600 1.35rem Georgia,serif}.frontier-toolbar label,.frontier-example label{display:grid;gap:.2rem;color:var(--muted);font-size:.75rem}.frontier-toolbar span{color:var(--muted);font-size:.76rem}.frontier-toolbar input,.frontier-example input{min-height:36px;padding:.4rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}.frontier-graph-scroll{overflow:auto;max-height:840px;margin-top:.8rem;border:1px solid var(--line);border-radius:12px;background:linear-gradient(90deg,#f7f9ff 1px,transparent 1px),linear-gradient(#f7f9ff 1px,transparent 1px);background-size:30px 30px}.frontier-svg{display:block;overflow:visible}.frontier-edge{fill:none;stroke:#b3bfd5;stroke-opacity:.62;stroke-width:1.2}.frontier-column-label{fill:var(--muted);font:600 11px ui-sans-serif,system-ui}.frontier-node{cursor:pointer}.frontier-node rect{fill:#f8faff;stroke:#cbd6e8;stroke-width:1}.frontier-node text{fill:#28354d;font:600 10px ui-monospace,monospace}.frontier-node .frontier-node-meta{fill:#697991;font:400 9px ui-sans-serif,system-ui}.frontier-root rect{fill:#fff4d8;stroke:#d18a12;stroke-width:1.3}.frontier-node.selected rect,.frontier-node:focus rect{stroke:var(--violet);stroke-width:2}.frontier-node.dimmed,.frontier-edge.dimmed{opacity:.12}.frontier-detail pre,.frontier-definition pre{max-height:280px;overflow:auto;padding:.8rem;border:1px solid var(--line);border-radius:8px;background:#f7f9ff;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 ui-monospace,monospace}.frontier-dependency-list{display:flex;flex-wrap:wrap;gap:.45rem}.frontier-chip{padding:.25rem .55rem;border:1px solid var(--line);border-radius:999px;font:11px ui-monospace,monospace}.frontier-chip.internal{color:var(--teal);cursor:pointer}.frontier-chip.external{color:var(--muted)}.frontier-example form{display:flex;flex-wrap:wrap;gap:.8rem;align-items:end}.frontier-example input{width:130px}.frontier-example button{min-height:38px;padding:.5rem .9rem;border:0;border-radius:9px;background:var(--violet);color:#fff;font-weight:700}.frontier-example output{display:block;min-height:35px;margin-top:1rem;color:var(--teal);font:600 14px ui-monospace,monospace;white-space:pre-wrap}.frontier-definition{margin:.65rem 0;padding:.7rem .8rem;border:1px solid var(--line);border-radius:10px}.frontier-definition summary{cursor:pointer}.frontier-definition code,.frontier-detail code{font:12px ui-monospace,monospace;color:var(--violet)}.frontier-definition small,.frontier-detail small{color:var(--muted);overflow-wrap:anywhere}.frontier-boundary strong{color:var(--status)}@media(prefers-color-scheme:dark){:root{--ink:#e5eaf4;--muted:#aab6ca;--paper:#0b1020;--surface:#141b2e;--line:#303c54;--violet:#aa99fb;--teal:#75d4c6;--status:#ffe0a0;--status-bg:#493616}.frontier-graph-scroll{background:#11182a}.frontier-node rect{fill:#202b42;stroke:#394864}.frontier-node text{fill:#e1e8f6}.frontier-root rect{fill:#4b391a;stroke:#e7ba56}.frontier-detail pre,.frontier-definition pre{background:#0e1525}.frontier-example button{color:#17142b}.frontier-status{border-color:#8a6627}}@media(max-width:700px){.frontier-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.frontier-toolbar{align-items:stretch}.frontier-main{width:calc(100% - 1rem)}.frontier-hero{padding-inline:1rem}.frontier-example input{width:98px}}
+"""
+
+FRONTIER_CSS += r""".frontier-reading-note{max-width:950px;margin:1rem 0 0;color:#b9e7dc;font-size:.78rem}.frontier-view-controls,.frontier-map-controls{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem}.frontier-view-controls button,.frontier-map-controls button{min-height:34px;padding:.38rem .7rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer;font-size:.76rem}.frontier-view-controls button[aria-pressed="true"],.frontier-map-controls button[aria-pressed="true"]{border-color:var(--violet);background:#6249ca18;color:var(--violet);font-weight:700}.frontier-map-controls{margin-top:.85rem}.frontier-map-controls output{min-width:42px;text-align:center;color:var(--muted);font-size:.74rem}.frontier-definition-link{padding:0;border:0;background:none;color:var(--violet);font:inherit;text-decoration:underline;text-decoration-style:dotted;cursor:pointer}.frontier-definition-link:hover,.frontier-definition-link:focus{text-decoration-style:solid}.frontier-receipt{display:flex;flex-wrap:wrap;gap:.4rem;margin:.55rem 0;color:var(--teal);font-size:.74rem}.frontier-mode-note{color:var(--muted);font-size:.8rem}.frontier-definition:target{border-color:var(--violet)}@media print{body{background:#fff;color:#111}.frontier-hero{padding:1rem;color:#111;background:#fff}.frontier-back,.frontier-toolbar label,.frontier-view-controls,.frontier-map-controls,.frontier-example{display:none!important}.frontier-main{width:100%;margin:0}.frontier-graph-section,.frontier-detail,.frontier-definitions,.frontier-boundary{break-inside:avoid-page;border-color:#ddd;box-shadow:none}.frontier-graph-scroll{overflow:visible;max-height:none;border:0}.frontier-svg{width:100%!important;height:auto!important}.frontier-detail pre{max-height:none}.frontier-status{color:#111;background:#fff;border-color:#777}.frontier-definition-link{color:#222}}"""
+
+
+FRONTIER_JS = r"""(() => {
+  "use strict";
+  const source = document.getElementById("frontier-corpus");
+  if (!source) return;
+  const corpus = JSON.parse(source.textContent);
+  const nodes = new Map(corpus.nodes.map(node => [node.name, node]));
+  const external = new Map(corpus.external_dependencies.map(row => [row.name, row]));
+  const definitions = new Map(corpus.definitions.map(row => [row.id, row]));
+  const escape = value => String(value).replace(/[&<>"']/g, character => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[character]));
+  const detail = document.getElementById("frontier-detail");
+  const graph = document.getElementById("frontier-graph");
+  const graphScroll = document.querySelector(".frontier-graph-scroll");
+  const search = document.getElementById("frontier-search");
+  let selectedName = null;
+  let displayMode = "defined";
+  let dependencyFocus = false;
+  let zoom = 1;
+
+  function linkedParts(parts) {
+    return parts.map(part => part.kind === "definition"
+      ? `<button class="frontier-definition-link" data-definition="${escape(part.definition)}" type="button" title="Open exact conservative expansion">${escape(part.text)}</button>`
+      : escape(part.text)).join("");
+  }
+
+  function openDefinition(identifier) {
+    const card = document.getElementById(`frontier-definition-${identifier}`);
+    if (!card) return;
+    card.open = true;
+    card.scrollIntoView({behavior:"smooth",block:"center"});
+    card.querySelector("summary")?.focus();
+  }
+
+  function refreshVisibility() {
+    const query = search?.value.toLowerCase().trim() || "";
+    const matched = new Set(corpus.nodes.filter(node => !query || `${node.name} ${node.summary} ${node.statement} ${node.defined.defined_statement}`.toLowerCase().includes(query)).map(node => node.name));
+    let neighborhood = null;
+    if (dependencyFocus && selectedName) {
+      neighborhood = new Set([selectedName, ...(nodes.get(selectedName)?.dependencies || [])]);
+      corpus.edges.filter(edge => edge.source === selectedName).forEach(edge => neighborhood.add(edge.target));
+    }
+    const visible = name => matched.has(name) && (!neighborhood || neighborhood.has(name));
+    document.querySelectorAll(".frontier-node").forEach(item => item.classList.toggle("dimmed", !visible(item.dataset.node)));
+    document.querySelectorAll(".frontier-edge").forEach(item => item.classList.toggle("dimmed", !visible(item.dataset.source) || !visible(item.dataset.target)));
+  }
+
+  function setZoom(next) {
+    if (!graph) return;
+    zoom = Math.max(.18, Math.min(2.5, next));
+    const viewBox = graph.viewBox.baseVal;
+    graph.style.width = `${Math.round(viewBox.width * zoom)}px`;
+    graph.style.height = `${Math.round(viewBox.height * zoom)}px`;
+    const label = document.getElementById("frontier-zoom-level");
+    if (label) label.textContent = `${Math.round(zoom * 100)}%`;
+  }
+
+  function openNode(name, center = false) {
+    const node = nodes.get(name);
+    if (!node) return;
+    selectedName = name;
+    document.querySelectorAll(".frontier-node.selected").forEach(item => item.classList.remove("selected"));
+    document.querySelectorAll(".frontier-node").forEach(item => {
+      if (item.dataset.node !== name) return;
+      item.classList.add("selected");
+      if (center) item.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"});
+    });
+    const dependencies = node.dependencies.map(dependency => {
+      if (nodes.has(dependency)) return `<button class="frontier-chip internal" data-dependency="${escape(dependency)}" type="button">${escape(dependency)} · candidate</button>`;
+      const evidence = external.get(dependency);
+      const channel = evidence?.admitted_to_stable ? "Stable closed" : evidence?.admitted_to_alpha ? "Alpha closed" : "candidate · not admitted";
+      return `<button class="frontier-chip external" data-dependency="${escape(dependency)}" type="button" title="${escape(evidence?.evidence || "release-status-unattested")}">${escape(dependency)} · ${escape(channel)}</button>`;
+    }).join("");
+    const provenance = node.sources.map(source => `<span class="frontier-chip ${source.selected ? "internal" : "external"}">${escape(source.source_module)} · ${source.selected ? "selected canonical source" : source.matches_selected_statement ? "matching alternate source" : "non-selected alternate statement"}</span>`).join("");
+    const defined = node.defined;
+    const readable = displayMode === "defined";
+    const statement = readable ? linkedParts(defined.statement_parts) : escape(node.statement);
+    const lineOverrides = new Map(defined.defined_script_lines.map(line => [line.number, line]));
+    const proof = node.script.map((line, index) => {
+      const number = index + 1;
+      const compact = readable ? lineOverrides.get(number) : null;
+      return `${String(number).padStart(3, "0")}  ${compact ? linkedParts(compact.command_parts) : escape(line)}`;
+    }).join("\n");
+    const uses = Object.entries(defined.definition_uses).map(([identifier, count]) => {
+      const definition = definitions.get(identifier);
+      return `<button class="frontier-chip internal" data-definition="${escape(identifier)}" type="button">${escape(definition?.name || identifier)} · ${count}</button>`;
+    }).join("");
+    const receipt = defined.statement_receipt;
+    const attestation = receipt
+      ? `<p class="frontier-receipt">Exact AST equivalence verified · ${receipt.expanded_characters} → ${receipt.defined_characters} characters · defined SHA-256 ${escape(receipt.defined_source_sha256)}</p><p><small>Canonical expanded AST SHA-256 ${escape(receipt.canonical_expansion_sha256)}</small></p>`
+      : `<p class="frontier-mode-note">This statement remains exact only: ${escape(defined.statement_status)}. No unverified equivalence is claimed.</p>`;
+    const heading = readable ? "Readable conservative defined notation" : "Exact expanded first-order HA statement";
+    const proofHeading = readable ? "Proof script with verified readable local propositions" : "Exact stored proof script";
+    detail.innerHTML = `<h2>${escape(name)}</h2><p>${escape(node.summary)}</p><p class="frontier-status">${escape(node.status)}</p><p><small>${escape(node.source_module)} · exact statement SHA-256 ${escape(node.statement_sha256)}</small></p><h3>${heading}</h3><pre>${statement}</pre>${attestation}<h3>Linked definitions in this proof</h3><div class="frontier-dependency-list">${uses || "No reviewed notation aliases are needed for this formula."}</div><h3>Declared dependencies</h3><div class="frontier-dependency-list">${dependencies || "No declared dependencies."}</div><h3>Source provenance</h3><div class="frontier-dependency-list">${provenance}</div><h3>${proofHeading}</h3><pre>${proof || "No tactic commands."}</pre>`;
+    detail.querySelectorAll("[data-dependency]").forEach(item => {
+      if (nodes.has(item.dataset.dependency)) item.addEventListener("click", () => openNode(item.dataset.dependency,true));
+    });
+    detail.querySelectorAll("[data-definition]").forEach(item => item.addEventListener("click", () => openDefinition(item.dataset.definition)));
+    refreshVisibility();
+  }
+  document.querySelectorAll(".frontier-node").forEach(item => {
+    item.addEventListener("click", () => openNode(item.dataset.node));
+    item.addEventListener("keydown", event => { if (event.key === "Enter" || event.key === " ") { event.preventDefault(); openNode(item.dataset.node); } });
+  });
+  search?.addEventListener("input",refreshVisibility);
+  document.querySelectorAll("[data-frontier-view]").forEach(button => {
+    button.addEventListener("click", () => {
+      displayMode = button.dataset.frontierView === "exact" ? "exact" : "defined";
+      document.querySelectorAll("[data-frontier-view]").forEach(item => item.setAttribute("aria-pressed",String(item.dataset.frontierView === displayMode)));
+      if (selectedName) openNode(selectedName);
+    });
+  });
+  document.getElementById("frontier-zoom-out")?.addEventListener("click",()=>setZoom(zoom/1.2));
+  document.getElementById("frontier-zoom-in")?.addEventListener("click",()=>setZoom(zoom*1.2));
+  document.getElementById("frontier-zoom-fit")?.addEventListener("click",()=>{
+    if (graph && graphScroll) setZoom((graphScroll.clientWidth-24)/graph.viewBox.baseVal.width);
+  });
+  document.getElementById("frontier-focus")?.addEventListener("click",event=>{
+    dependencyFocus=!dependencyFocus;
+    event.currentTarget.setAttribute("aria-pressed",String(dependencyFocus));
+    refreshVisibility();
+  });
+  document.getElementById("frontier-print")?.addEventListener("click",()=>window.print());
+  const prime = n => Number.isInteger(n) && n > 1 && Array.from({length: Math.max(0, Math.floor(Math.sqrt(n)) - 1)}, (_, i) => i + 2).every(d => n % d !== 0);
+  function choose(n, k) { let result = 1n; for (let i = 1; i <= k; i++) result = result * BigInt(n - k + i) / BigInt(i); return result; }
+  function valuation(n, p) { let count = 0; const base = BigInt(p); while (n > 0n && n % base === 0n) { n /= base; count++; } return count; }
+  function carries(a, b, p) { let count = 0, carry = 0, first = a, second = b; const digits = []; while (first || second || carry) { const x = first % p, y = second % p, next = x + y + carry >= p ? 1 : 0; digits.push(`${x}+${y}+${carry}→${next}`); count += next; first = Math.floor(first / p); second = Math.floor(second / p); carry = next; if (digits.length > 64) break; } return {count, digits}; }
+  function lucasDigitProduct(n, k, p) { let upper = n, lower = k, product = 1n; const digits = []; do { const nd = upper % p, kd = lower % p; const coefficient = kd <= nd ? choose(nd, kd) : 0n; product *= coefficient; digits.push(`C(${nd},${kd})=${coefficient}`); upper = Math.floor(upper / p); lower = Math.floor(lower / p); } while (upper || lower); return {product, digits}; }
+  function twoSquare(n) { for (let x = 0; x * x <= n; x++) { const y = Math.floor(Math.sqrt(n - x * x)); if (x * x + y * y === n) return [x, y]; } return null; }
+  function fourSquare(n) { for (let a = 0; a * a <= n; a++) for (let b = 0; a * a + b * b <= n; b++) for (let c = 0; a * a + b * b + c * c <= n; c++) { const d = Math.floor(Math.sqrt(n - a * a - b * b - c * c)); if (a * a + b * b + c * c + d * d === n) return [a, b, c, d]; } return null; }
+  function factor(n) { if (n === 0) return {text:"0 (prime valuations undefined)",bad:[]}; let rest = n, text = [], bad = []; for (let p = 2; p * p <= rest; p++) if (rest % p === 0) { let e = 0; while (rest % p === 0) { rest /= p; e++; } text.push(`${p}^${e}`); if (p % 4 === 3 && e % 2) bad.push(`${p}^${e}`); } if (rest > 1) { text.push(`${rest}^1`); if (rest % 4 === 3) bad.push(`${rest}^1`); } return {text:text.join(" · ") || "1",bad}; }
+  const example = document.querySelector("[data-example]");
+  const form = example?.querySelector("[data-example-form]");
+  const output = example?.querySelector("[data-example-result]");
+  function calculate(event) {
+    event?.preventDefault();
+    try {
+      const value = key => Number(example.querySelector(`[data-input="${key}"]`).value);
+      if (corpus.example === "supplementary") { const p = value("n"); if (!prime(p) || p === 2) throw Error("Choose an odd prime ≤ 499."); const squares = new Set(Array.from({length:p},(_,x)=>(x*x)%p)); output.textContent = `p=${p}, p mod 4=${p%4}, p mod 8=${p%8}\n−1 is ${squares.has(p-1)?"a quadratic residue":"a nonresidue"}; 2 is ${squares.has(2)?"a quadratic residue":"a nonresidue"}.`; }
+      else if (corpus.example === "kummer") { const p=value("p"),a=value("a"),b=value("b"); if (!prime(p)) throw Error("Choose a prime base."); const binomial=choose(a+b,a), count=carries(a,b,p), v=valuation(binomial,p); output.textContent=`C(${a+b},${a})=${binomial}; v_${p}=${v}; carry count=${count.count}\n${count.digits.join(" | ") || "no nonzero digits"}`; }
+      else if (corpus.example === "lucas") { const p=value("p"),n=value("n"),k=value("k"); if (!prime(p)) throw Error("Choose a prime base."); if (![n,k].every(Number.isSafeInteger) || n < 0 || k < 0 || k > n) throw Error("Choose natural inputs with 0 ≤ k ≤ n."); const binomial=choose(n,k), expansion=lucasDigitProduct(n,k,p), modulus=BigInt(p); output.textContent=`C(${n},${k})=${binomial} ≡ ${binomial % modulus} (mod ${p})\n${expansion.digits.join(" · ")}\nDigit product=${expansion.product} ≡ ${expansion.product % modulus} (mod ${p})\nFinite numerical illustration; consult the proof map for the checked theorem boundary.`; }
+      else if (corpus.example === "two-squares") { const n=value("n"); if (!Number.isInteger(n) || n < 0) throw Error("Choose a nonnegative integer."); const witness=twoSquare(n), factors=factor(n); output.textContent=`${n} = ${factors.text}\n${witness ? `${n} = ${witness[0]}² + ${witness[1]}²` : "No natural two-square witness."}${factors.bad.length ? `\nOdd 3-mod-4 factor: ${factors.bad.join(", ")}` : ""}`; }
+      else { const n=value("n"), witness=fourSquare(n); output.textContent=witness ? `${n} = ${witness[0]}² + ${witness[1]}² + ${witness[2]}² + ${witness[3]}²\nConstructive four-square witness; the kernel-checked universal theorem is available in the proof map.` : "No witness found inside the finite example search."; }
+    } catch (error) { output.textContent=error.message; }
+  }
+  form?.addEventListener("submit",calculate);
+  calculate();
+  if (corpus.root_names.length) openNode(corpus.root_names[corpus.root_names.length-1]);
+})();
+"""
+
+
+def _landing_html(corpora: Mapping[str, Mapping[str, Any]]) -> bytes:
+    cards = "".join(
+        f'<article><h2><a href="{family.slug}/">{html.escape(family.title)}</a></h2>'
+        f'<p>{html.escape(family.description)}</p><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p>'
+        f'<p>{corpora[family.slug]["node_count"]} candidate bodies · '
+        f'{corpora[family.slug]["definition_count"]} conservative definitions</p></article>'
+        for family in FAMILIES
+    )
+    return (
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">'
+        '<title>Constructive Frontier Candidate Proof Explorers</title>'
+        '<link rel="stylesheet" href="assets/frontier.css"></head><body>'
+        '<header class="frontier-hero"><p class="frontier-kicker">Five isolated constructive campaigns</p>'
+        '<h1>Candidate proof frontier</h1>'
+        f'<p class="frontier-status">{html.escape(CANDIDATE_STATUS)}</p></header>'
+        f'<main class="frontier-main">{cards}</main></body></html>\n'
+    ).encode("utf-8")
+
+
+def build_files() -> tuple[dict[str, bytes], dict[str, Any]]:
+    corpora = build_corpora()
+    files: dict[str, bytes] = {
+        "index.html": _landing_html(corpora),
+        "assets/frontier.css": FRONTIER_CSS.encode("utf-8"),
+        "assets/frontier.js": FRONTIER_JS.encode("utf-8"),
+    }
+    families = []
+    for family in FAMILIES:
+        corpus = corpora[family.slug]
+        corpus_bytes = _json(corpus)
+        files[f"{family.slug}/index.html"] = _family_html(family, corpus)
+        files[f"{family.slug}/api/corpus.json"] = corpus_bytes
+        families.append(
+            {
+                "slug": family.slug,
+                "title": family.title,
+                "candidate_status": CANDIDATE_STATUS,
+                "node_count": corpus["node_count"],
+                "edge_count": corpus["edge_count"],
+                "definition_count": corpus["definition_count"],
+                "formal_line_count": corpus["formal_line_count"],
+                "defined_statement_count": corpus["defined_statement_count"],
+                "compacted_statement_count": corpus["compacted_statement_count"],
+                "defined_tactic_proposition_count": corpus["defined_tactic_proposition_count"],
+                "root_names": corpus["root_names"],
+                "corpus_sha256": _digest(corpus_bytes),
+            }
+        )
+    inventory = [
+        {"path": name, "sha256": _digest(payload), "bytes": len(payload)}
+        for name, payload in sorted(files.items())
+    ]
+    manifest = {
+        "schema": MANIFEST_SCHEMA,
+        "candidate_status": CANDIDATE_STATUS,
+        "admitted_to_alpha": False,
+        "admitted_to_stable": False,
+        "family_count": len(FAMILIES),
+        "families": families,
+        "file_count": len(files) + 1,
+        "files": inventory,
+        "aggregate_sha256": _digest(_json(inventory)),
+    }
+    files["manifest.json"] = _json(manifest)
+    return files, manifest
+
+
+def _safe_output(path: Path) -> Path:
+    resolved = path.resolve(strict=False)
+    if resolved in {REPO.resolve(), REPO.parent.resolve(), PY_ROOT.resolve(), Path("/")}:
+        raise ValueError("refusing a broad constructive-frontier output directory")
+    return resolved
+
+
+def _write(files: Mapping[str, bytes], output: Path) -> None:
+    output = _safe_output(output)
+    for relative, payload in files.items():
+        destination = output / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        destination.write_bytes(payload)
+
+
+def _check(files: Mapping[str, bytes], output: Path) -> bool:
+    output = _safe_output(output)
+    changed = [
+        relative
+        for relative, payload in files.items()
+        if not (output / relative).is_file() or (output / relative).read_bytes() != payload
+    ]
+    actual = {
+        path.relative_to(output).as_posix()
+        for path in output.rglob("*")
+        if path.is_file()
+    } if output.is_dir() else set()
+    changed.extend(sorted(actual.difference(files)))
+    if changed:
+        print(
+            "constructive frontier explorer drift: " + ", ".join(sorted(set(changed))[:15]),
+            file=sys.stderr,
+        )
+        return False
+    return True
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--output", type=Path, default=OUTPUT)
+    parser.add_argument("--check", action="store_true", help="reject generated-output drift")
+    args = parser.parse_args(argv)
+    try:
+        files, manifest = build_files()
+        if args.check:
+            if not _check(files, args.output):
+                return 1
+            verb = "verified"
+        else:
+            _write(files, args.output)
+            verb = "wrote"
+    except (ImportError, OSError, TypeError, ValueError) as error:
+        print(f"constructive frontier explorer: {error}", file=sys.stderr)
+        return 2
+    print(
+        f"{verb} constructive frontier explorer: {manifest['family_count']} families, "
+        f"{manifest['file_count']} files, {manifest['aggregate_sha256']}"
+    )
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
