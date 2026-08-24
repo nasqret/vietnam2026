@@ -1,5 +1,32 @@
 (() => {
   "use strict";
+  const dashboard = document.querySelector("[data-defined-dashboard]");
+  if (dashboard) {
+    const input = dashboard.querySelector("[data-search]");
+    const kind = dashboard.querySelector("[data-kind]");
+    const clear = dashboard.querySelector("[data-clear]");
+    const count = dashboard.querySelector("[data-count]");
+    const entries = Array.from(dashboard.querySelectorAll("[data-entry]"));
+    const refreshLibrary = () => {
+      const query = input.value.toLowerCase().trim();
+      let visible = 0;
+      entries.forEach(entry => {
+        const matched = (!query || entry.dataset.search.includes(query))
+          && (kind.value === "all" || entry.dataset.kind === kind.value);
+        entry.hidden = !matched;
+        if (matched) visible += 1;
+      });
+      count.textContent = `${visible} ${visible === 1 ? "entry" : "entries"}`;
+    };
+    input.addEventListener("input", refreshLibrary);
+    kind.addEventListener("change", refreshLibrary);
+    clear.addEventListener("click", () => {
+      input.value = "";
+      kind.value = "all";
+      refreshLibrary();
+      input.focus();
+    });
+  }
   const source = document.getElementById("frontier-corpus");
   if (!source) return;
   const corpus = JSON.parse(source.textContent);
@@ -11,9 +38,11 @@
   const graph = document.getElementById("frontier-graph");
   const graphScroll = document.querySelector(".frontier-graph-scroll");
   const search = document.getElementById("frontier-search");
+  const parameters = new URLSearchParams(window.location?.search || "");
   let selectedName = null;
-  let displayMode = "defined";
-  let dependencyFocus = false;
+  let displayMode = document.body?.dataset.frontierNotation === "exact"
+    || parameters.get("notation") === "exact" ? "exact" : "defined";
+  let dependencyFocus = parameters.get("view") === "prerequisites";
   let zoom = 1;
 
   function linkedParts(parts) {
@@ -159,6 +188,16 @@
     } catch (error) { output.textContent=error.message; }
   }
   form?.addEventListener("submit",calculate);
-  calculate();
-  if (corpus.root_names.length) openNode(corpus.root_names[corpus.root_names.length-1]);
+  if (example && output) calculate();
+  if (dependencyFocus) {
+    document.getElementById("frontier-focus")?.setAttribute("aria-pressed", "true");
+  }
+  if (corpus.root_names.length) {
+    const requested = parameters.get("target");
+    openNode(nodes.has(requested) ? requested : corpus.root_names[corpus.root_names.length-1]);
+  }
+  const definitionHash = window.location?.hash || "";
+  if (definitionHash.startsWith("#frontier-definition-")) {
+    openDefinition(definitionHash.slice("#frontier-definition-".length));
+  }
 })();

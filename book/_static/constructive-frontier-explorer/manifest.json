@@ -1,7 +1,7 @@
 {
   "admitted_to_alpha": false,
   "admitted_to_stable": false,
-  "aggregate_sha256": "7a3ab7e983f85100de4ec00a808704c74bf98f270cd4bc91525b0d4919ae6654",
+  "aggregate_sha256": "86202aed890675adfccdfd9f3496a3d380399a830b8913e4d347adde79c6381e",
   "alpha_checked_use_node_count": 0,
   "alpha_edition_identity_sha256": "2f1a097ac0b6821c74cd4da088c396d3b9960ffd43e169f22b4778d5871adc66",
   "alpha_edition_version": "v15",
@@ -1519,17 +1519,17 @@
     }
   ],
   "family_count": 6,
-  "file_count": 16,
+  "file_count": 34,
   "files": [
     {
-      "bytes": 8490,
+      "bytes": 24442,
       "path": "assets/frontier.css",
-      "sha256": "9048dbd275ad6f464b14a2ca5bd0942870f9b730a65a1ebfbe9dd609dfa887c8"
+      "sha256": "6a4ca6ed6dea0aafc3f9df594d5f2ea68e5bf49354886f5505006a49c9054aad"
     },
     {
-      "bytes": 15430,
+      "bytes": 17187,
       "path": "assets/frontier.js",
-      "sha256": "0815bd944383895b9951a62e76e862698e3999e788349e7302c86370145fe6ae"
+      "sha256": "3c5b721757d2c387b40b90058313616ddad7761491541ef76eb761c39b43f883"
     },
     {
       "bytes": 2355305,
@@ -1537,14 +1537,29 @@
       "sha256": "b3526ca193582c422e801d9c586407cc2704a7b1bd2d56e4bf6d6e4d7b5d5c9f"
     },
     {
-      "bytes": 2014163,
-      "path": "four-squares/index.html",
-      "sha256": "6b31a6ea742a917b965eb9db393d4ba25cb79a796b41df256f91fcdf45c50572"
+      "bytes": 2013697,
+      "path": "four-squares/explorer/defined/graph.html",
+      "sha256": "6edf802a8c10c20a3a111adba3ecf6ac629397861943cf1b2c2a95a3acb72d52"
     },
     {
-      "bytes": 4160,
+      "bytes": 175400,
+      "path": "four-squares/explorer/defined/index.html",
+      "sha256": "866a72a0b5ee26cbe7757e975d947d451900045a902218cdab53463624dd7a05"
+    },
+    {
+      "bytes": 2013688,
+      "path": "four-squares/explorer/index.html",
+      "sha256": "2d1e71a895e2d0aba0d256668dc2116a66907a456428be923f808b2e04cb16c2"
+    },
+    {
+      "bytes": 3192,
+      "path": "four-squares/index.html",
+      "sha256": "b58f8fbad1f612b91ced9de0dba5e8ed39b1b3e1a7a00f8c3e1fcd67c92b839e"
+    },
+    {
+      "bytes": 3045,
       "path": "index.html",
-      "sha256": "0b15f2e10e8b9e10d2bb853f2459c742bc2a8fa4112dbe419f8d0365f1da7178"
+      "sha256": "cbea302d20a716f334df8a3281556034941059c30ae34ccee5fb6e3cdac8be65"
     },
     {
       "bytes": 1013390,
@@ -1552,9 +1567,24 @@
       "sha256": "440755622970889a90c21757c38a00bb658e7c87b9fb3caeb34a6410793603e7"
     },
     {
-      "bytes": 1023873,
+      "bytes": 1023322,
+      "path": "kummer/explorer/defined/graph.html",
+      "sha256": "d96b5ec6a20d91d1899bbef42f3bd5839deca34fe1a4af9959c4fb5e805fdf77"
+    },
+    {
+      "bytes": 18786,
+      "path": "kummer/explorer/defined/index.html",
+      "sha256": "2d64388d617ff74d9ed87da518da51337b028ad244b76b6b70c52ed7c8056066"
+    },
+    {
+      "bytes": 1023313,
+      "path": "kummer/explorer/index.html",
+      "sha256": "75dc200b5d3d0232da60882a119ea9702a8f792ade1ebd1748db7341568c6c5b"
+    },
+    {
+      "bytes": 2860,
       "path": "kummer/index.html",
-      "sha256": "2e1448146ed38805fc61ce69ab26dc2a8aa5d3390b2cd4d0d1635968d80cb836"
+      "sha256": "29c7e15f641bdca55bb64a5ca34dec3548b0eb8c365c4a94a4559cc241c32b9e"
     },
     {
       "bytes": 2574621,
@@ -1562,9 +1592,24 @@
       "sha256": "2478c4a13b91abc6debeceaf9e1c1ebcf5f7d284258c1b9fc7d04b42f8341270"
     },
     {
-      "bytes": 2460960,
+      "bytes": 2460469,
+      "path": "lucas/explorer/defined/graph.html",
+      "sha256": "ec21d6544ee307a9d7b5a6c27b96395badc07f50e39b418d9fa5099915373188"
+    },
+    {
+      "bytes": 53606,
+      "path": "lucas/explorer/defined/index.html",
+      "sha256": "821f07c08598323a05af67343af95016da66d0ec88f4c849497c3f4c05e95fc6"
+    },
+    {
+      "bytes": 2460460,
+      "path": "lucas/explorer/index.html",
+      "sha256": "839ff1434e1e5485a1a38492f7f2a2e5d7bd29490c45310fbd8eff01b9077715"
+    },
+    {
+      "bytes": 3140,
       "path": "lucas/index.html",
-      "sha256": "c152ae7a9d96044c07e9ce06deb587f548745da1732e47c9ef766dd478e4954c"
+      "sha256": "b3d44d6eb7f324ee74b156dbba79301b4688377bab63bdc86901215c15f22e37"
     },
     {
       "bytes": 337073,
@@ -1572,9 +1617,24 @@
       "sha256": "faeab9e921560ab90c3cba69bc9479dfa18103938edefdf0ca53fe5d27a026f3"
     },
     {
-      "bytes": 288855,
+      "bytes": 288262,
+      "path": "pythagorean-fermat-four/explorer/defined/graph.html",
+      "sha256": "48bc6dce2db177c8eeb5ab16256fd254aa54274d1583ed7bf53bd70332581989"
+    },
+    {
+      "bytes": 35919,
+      "path": "pythagorean-fermat-four/explorer/defined/index.html",
+      "sha256": "577d0269deb3ba95df1c40fe06f40880b54b3e049acdb4770bb57251dbd691bd"
+    },
+    {
+      "bytes": 288253,
+      "path": "pythagorean-fermat-four/explorer/index.html",
+      "sha256": "58db874acaeb1e3de358d4dd5d0994fdb42f6e2484c545068e88b3bcf71a3c51"
+    },
+    {
+      "bytes": 3368,
       "path": "pythagorean-fermat-four/index.html",
-      "sha256": "66d48658ac6aa0155735a29806d14002b6125ff0fc594e6947155f77a89e992f"
+      "sha256": "1f7723a6837e6b629b2b4581bf2d939328f9b1963c9da720992dd5204b1e60bb"
     },
     {
       "bytes": 397152,
@@ -1582,9 +1642,24 @@
       "sha256": "d4307765138540eb77231f9d9cad4e3001a57e7e477ea191261c8db926ee1242"
     },
     {
-      "bytes": 342362,
+      "bytes": 341804,
+      "path": "supplementary-laws/explorer/defined/graph.html",
+      "sha256": "cdf6c1da4bbda8a4bab79d2cb9bed9dc043b31f2b47b47888316370a410d2344"
+    },
+    {
+      "bytes": 30143,
+      "path": "supplementary-laws/explorer/defined/index.html",
+      "sha256": "81f77ecdcb9829a9e9cd61366ac0d14142400ca5287c5fa00f847756e1643882"
+    },
+    {
+      "bytes": 341795,
+      "path": "supplementary-laws/explorer/index.html",
+      "sha256": "8edaa40a86aefc54d53fed8c0b1d0f01774da4ff636124a2d62929394a549d02"
+    },
+    {
+      "bytes": 2877,
       "path": "supplementary-laws/index.html",
-      "sha256": "4ad768e5a4c7eccdfe03697afe6e1b03d1ba71233426c8b381c59d96d11413aa"
+      "sha256": "d5a8f3b1f98dcf1247f017067642cc8a2058c317ee4eb8652826c84f7bc837cc"
     },
     {
       "bytes": 2291008,
@@ -1592,9 +1667,24 @@
       "sha256": "fcfc305fc49035d887013b62440343315193066d8c1581106c9b7c49be718b75"
     },
     {
-      "bytes": 2090481,
+      "bytes": 2089998,
+      "path": "two-squares/explorer/defined/graph.html",
+      "sha256": "e7ba6b65f880634f54e1803028401cea1ea01ecf2330fdce64bf45e6834cd40a"
+    },
+    {
+      "bytes": 109824,
+      "path": "two-squares/explorer/defined/index.html",
+      "sha256": "5f3a2a73e5fbd4641d07c08b96c8997abdfc5a280e9feea0338449a9b5ec323a"
+    },
+    {
+      "bytes": 2089989,
+      "path": "two-squares/explorer/index.html",
+      "sha256": "f87ff32046e164f85f4fa3a7077dd4e325728dc8d63ef40ea901091c9f1fc5d4"
+    },
+    {
+      "bytes": 3211,
       "path": "two-squares/index.html",
-      "sha256": "29ff94fe563bcacd3a818848d4e6963f46c1b8bd3b4edad9ae2eb5b9d59df4c8"
+      "sha256": "b091979abb026ff4b7a782c11a839628df850b6487362868e83e68d3ce053fef"
     }
   ],
   "schema": "peano-lab-constructive-frontier-explorer-v1"

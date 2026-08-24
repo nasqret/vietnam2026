@@ -7,8 +7,19 @@ tree and destinations without touching the faculty server.
 from pathlib import Path
 import subprocess
 
+import pytest
+
 
 ROOT = Path(__file__).resolve().parents[3]
+FRONTIER = ROOT / "book" / "_static" / "constructive-frontier-explorer"
+FRONTIER_FAMILIES = (
+    "supplementary-laws",
+    "kummer",
+    "two-squares",
+    "four-squares",
+    "lucas",
+    "pythagorean-fermat-four",
+)
 
 
 def _dry_run(target: str) -> str:
@@ -116,17 +127,101 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
 
     assert "python3 scripts/build_constructive_frontier_explorer.py" in output
     assert "book/_static/constructive-frontier-explorer/assets/" in output
-    for family in (
-        "supplementary-laws",
-        "kummer",
-        "two-squares",
-        "four-squares",
-        "lucas",
-        "pythagorean-fermat-four",
-    ):
+    for family in FRONTIER_FAMILIES:
         assert f"book/_static/constructive-frontier-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
+
+
+@pytest.mark.parametrize("family", FRONTIER_FAMILIES)
+def test_frontier_family_page_matches_original_proof_family_layout(family: str) -> None:
+    page = (FRONTIER / family / "index.html").read_text(encoding="utf-8")
+    established_layout = (
+        '<link rel="stylesheet" href="../assets/proofs.css">',
+        '<header class="family-hero">',
+        '<div class="shell">',
+        '<nav class="crumbs">',
+        '<div class="hero-actions">',
+        '<main class="shell family-main">',
+        '<section class="view-grid">',
+        '<article class="view-card featured">',
+        '<section class="release-note">',
+    )
+
+    assert f'<body class="family-page {family}-page">' in page
+    for marker in established_layout:
+        assert marker in page
+    assert page.count('<article class="view-card') == 3
+    assert 'href="explorer/defined/"' in page
+    assert 'href="explorer/"' in page
+    assert 'href="explorer/defined/graph.html?target=' in page
+    assert "dependency-curried kernel-checked candidate body" in page
+    assert "not admitted for checked use or Stable" in page
+    assert "frontier-hero" not in page
+    assert "Independent closure experiments" not in page
+    assert "<progress" not in page
+
+
+@pytest.mark.parametrize("family", FRONTIER_FAMILIES)
+def test_frontier_family_preserves_original_nested_explorer_routes(family: str) -> None:
+    family_directory = FRONTIER / family
+    exact_edition = family_directory / "explorer" / "index.html"
+    defined_library = family_directory / "explorer" / "defined" / "index.html"
+    defined_graph = family_directory / "explorer" / "defined" / "graph.html"
+
+    assert (family_directory / "api" / "corpus.json").is_file()
+    assert exact_edition.is_file()
+    assert defined_library.is_file()
+    assert defined_graph.is_file()
+
+    with exact_edition.open(encoding="utf-8") as stream:
+        exact_header = stream.read(16_384)
+    with defined_graph.open(encoding="utf-8") as stream:
+        graph_header = stream.read(16_384)
+
+    assert 'href="../../assets/frontier.css"' in exact_header
+    assert 'href="../../../assets/frontier.css"' in graph_header
+    assert f'data-family="{family}"' in exact_header
+    assert f'data-family="{family}"' in graph_header
+
+
+@pytest.mark.parametrize("family", FRONTIER_FAMILIES)
+def test_frontier_defined_library_restores_original_searchable_reading_surface(
+    family: str,
+) -> None:
+    page = (FRONTIER / family / "explorer" / "defined" / "index.html").read_text(
+        encoding="utf-8"
+    )
+
+    assert 'href="../../../assets/frontier.css"' in page
+    assert '<body class="pa-defined-proof-site" data-page="index"' in page
+    assert '<header class="pd-header pd-hero">' in page
+    assert '<main data-defined-dashboard>' in page
+    assert '<section class="pd-controls">' in page
+    assert '<section class="pd-results">' in page
+    assert "data-search" in page
+    assert "data-kind" in page
+    assert "data-clear" in page
+    assert "data-count" in page
+    assert 'data-entry data-kind="definition"' in page
+    assert 'data-entry data-kind="theorem"' in page
+    assert 'href="graph.html?target=' in page
+    assert "conservative definition · not a theorem" in page
+    assert "no checked-use authority" in page
+
+
+def test_public_proof_hub_keeps_original_cards_without_experiment_progress() -> None:
+    page = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
+
+    assert '<header class="hero">' in page
+    assert '<section class="family-grid" aria-label="Proof families">' in page
+    assert 'href="quadratic-reciprocity/"' in page
+    assert 'href="bertrand-postulate/"' in page
+    for family in FRONTIER_FAMILIES:
+        assert f'href="{family}/"' in page
+    assert "candidate-progress" not in page
+    assert "33/44" not in page
+    assert "80/196" not in page
 
 
 def test_proof_explorer_deploy_paths_cannot_be_overridden() -> None:

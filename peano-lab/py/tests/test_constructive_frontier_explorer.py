@@ -321,7 +321,7 @@ def test_frontier_inventory_is_deterministic_complete_and_evidence_honest(
     assert manifest["experimental_closure_grants_stable_membership"] is False
     assert manifest["admitted_to_alpha"] is False
     assert manifest["admitted_to_stable"] is False
-    assert manifest["file_count"] == len(files) == 16
+    assert manifest["file_count"] == len(files) == 34
     assert {row["path"] for row in manifest["files"]} == set(files) - {"manifest.json"}
     for row in manifest["files"]:
         assert row["sha256"] == sha256(files[row["path"]]).hexdigest()
@@ -688,16 +688,24 @@ def test_experimental_diagnostics_fail_closed_under_mutation(
         )
 
 
-def test_experimental_progress_panels_and_graph_highlights_are_evidence_honest(
+def test_experimental_records_are_collapsed_and_graph_highlights_remain_honest(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
     files, _manifest = generated
-    four = files["four-squares/index.html"].decode()
-    lucas = files["lucas/index.html"].decode()
-    two = files["two-squares/index.html"].decode()
-    unrelated = files["kummer/index.html"].decode()
+    four = files["four-squares/explorer/defined/graph.html"].decode()
+    lucas = files["lucas/explorer/defined/graph.html"].decode()
+    two = files["two-squares/explorer/defined/graph.html"].decode()
+    unrelated = files["kummer/explorer/defined/graph.html"].decode()
     script = files["assets/frontier.js"].decode()
     styles = files["assets/frontier.css"].decode()
+
+    for slug in EXPECTED_FAMILIES:
+        landing = files[f"{slug}/index.html"].decode()
+        library = files[f"{slug}/explorer/defined/index.html"].decode()
+        assert "frontier-experimental-heading" not in landing
+        assert "frontier-experimental-heading" not in library
+        assert "campaign · 80 / 196" not in landing
+        assert "campaign · 33 / 44" not in landing
 
     assert "Lagrange four-square campaign · 80 / 196" in four
     assert "23 / 23" in four
@@ -706,6 +714,8 @@ def test_experimental_progress_panels_and_graph_highlights_are_evidence_honest(
     assert "Lagrange four-square campaign · 80 / 196" in two
     assert "frontier-experimental-heading" not in unrelated
     for page in (four, lucas, two):
+        assert '<details class="frontier-evidence-record">' in page
+        assert "Historical experimental replay records" in page
         assert "Certificates are not persisted" in page
         assert "checked-use authority, and Stable membership remain unchanged" in page
         assert "frontier-experiment-verified" in page
@@ -845,13 +855,78 @@ def test_defined_compaction_rejects_corrupted_equivalence_receipts(
 
 
 @pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
-def test_family_pages_are_offline_interactive_and_clearly_candidate_labeled(
+def test_family_landing_pages_restore_original_quadratic_reciprocity_format(
     generated: tuple[dict[str, bytes], dict[str, object]], slug: str,
 ) -> None:
     files, _manifest = generated
     page = files[f"{slug}/index.html"].decode()
+    corpus = _corpus(files, slug)
+
+    assert f'class="family-page {slug}-page"' in page
+    assert '<header class="family-hero">' in page
+    assert '<div class="shell">' in page
+    assert '<nav class="crumbs">' in page
+    assert '<p class="eyebrow">' in page
+    assert '<p class="formula">' in page
+    assert '<p class="lede">' in page
+    assert '<div class="hero-actions">' in page
+    assert '<main class="shell family-main">' in page
+    assert '<section class="view-grid">' in page
+    assert page.count('class="view-card') == 3
+    assert '<section class="release-note">' in page
+    assert 'href="../assets/proofs.css"' in page
+    assert 'href="explorer/defined/"' in page
+    assert 'href="explorer/"' in page
+    assert f'explorer/defined/graph.html?target={corpus["root_names"][-1]}' in page
+    assert generator.CANDIDATE_STATUS in page
+    assert "frontier-hero" not in page
+    assert "<progress" not in page
+
+
+@pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
+def test_definition_aware_libraries_restore_original_searchable_format(
+    generated: tuple[dict[str, bytes], dict[str, object]], slug: str,
+) -> None:
+    files, _manifest = generated
+    page = files[f"{slug}/explorer/defined/index.html"].decode()
+    corpus = _corpus(files, slug)
+
+    assert 'class="pa-defined-proof-site"' in page
+    assert '<header class="pd-header pd-hero">' in page
+    assert '<main data-defined-dashboard>' in page
+    assert '<section class="pd-controls">' in page
+    assert 'data-search type="search"' in page
+    assert '<select data-kind>' in page
+    assert '<button data-clear type="button">Clear</button>' in page
+    assert '<output data-count>' in page
+    assert '<section class="pd-results">' in page
+    assert page.count('data-kind="theorem"') == corpus["node_count"]
+    assert page.count('data-kind="definition"') == corpus["definition_count"]
+    assert page.count('class="pd-result pd-result-definition"') == (
+        corpus["definition_count"]
+    )
+    assert 'href="../../../assets/frontier.css"' in page
+    assert 'src="../../../assets/frontier.js"' in page
+    assert "conservative definition · not a theorem" in page
+    assert "no checked-use authority" in page
+    assert generator.CANDIDATE_STATUS in page
+    for definition in corpus["definitions"]:
+        assert f'graph.html#frontier-definition-{definition["id"]}' in page
+    for node in corpus["nodes"]:
+        assert f'graph.html?target={node["name"]}' in page
+
+
+@pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
+def test_family_proof_graphs_are_offline_interactive_and_candidate_labeled(
+    generated: tuple[dict[str, bytes], dict[str, object]], slug: str,
+) -> None:
+    files, _manifest = generated
+    page = files[f"{slug}/explorer/defined/graph.html"].decode()
+    exact = files[f"{slug}/explorer/index.html"].decode()
 
     assert generator.CANDIDATE_STATUS in page
+    assert 'class="pa-defined-proof-site"' in page
+    assert '<header class="pd-header">' in page
     assert 'id="frontier-graph"' in page
     assert 'id="frontier-corpus" type="application/json"' in page
     assert 'id="frontier-detail"' in page
@@ -865,8 +940,14 @@ def test_family_pages_are_offline_interactive_and_clearly_candidate_labeled(
     assert 'id="frontier-print"' in page
     assert 'id="frontier-definition-' in page
     assert 'data-example-form' in page
-    assert 'href="../assets/frontier.css"' in page
-    assert 'src="../assets/frontier.js"' in page
+    assert 'href="../../../assets/frontier.css"' in page
+    assert 'src="../../../assets/frontier.js"' in page
+    assert 'data-frontier-notation="defined"' in page
+    assert 'data-frontier-notation="exact"' in exact
+    assert 'href="../../assets/frontier.css"' in exact
+    assert 'src="../../assets/frontier.js"' in exact
+    assert 'data-frontier-view="exact" type="button" aria-pressed="true"' in exact
+    assert generator.CANDIDATE_STATUS in exact
     assert "http://" not in page
     assert "https://" not in page
     for root in REQUIRED_ROOTS[slug]:
@@ -1237,7 +1318,7 @@ def test_pythagorean_campaign_exposes_only_forward_and_conditional_proofs(
         "peano_lab.library.pythagorean_primitive_candidate",
     } == {node["source_module"] for node in rows.values()}
     assert 'data-input="m"' in files[
-        "pythagorean-fermat-four/index.html"
+        "pythagorean-fermat-four/explorer/defined/graph.html"
     ].decode()
     assert "primitive inverse classification and Fermat strict descent remain open" in (
         files["assets/frontier.js"].decode()
@@ -1282,8 +1363,121 @@ def test_interactive_reader_exposes_linked_notation_focus_zoom_and_print(
     assert "refreshVisibility" in javascript
     assert "setZoom" in javascript
     assert "window.print()" in javascript
+    assert 'document.querySelector("[data-defined-dashboard]")' in javascript
+    assert "refreshLibrary" in javascript
+    assert 'parameters.get("target")' in javascript
+    assert 'parameters.get("view") === "prerequisites"' in javascript
+    assert 'dataset.frontierNotation === "exact"' in javascript
     assert "@media print" in stylesheet
     assert ".frontier-definition-link" in stylesheet
+    assert "body.pa-defined-proof-site .pd-header" in stylesheet
+    assert "body.pa-defined-proof-site .pd-controls" in stylesheet
+
+
+def test_defined_library_filters_work_without_an_embedded_graph_corpus(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, _manifest = generated
+    harness = r"""
+const listeners = {};
+const input = {value:"",focused:false,addEventListener(_event,callback){listeners.search=callback},focus(){this.focused=true}};
+const kind = {value:"all",addEventListener(_event,callback){listeners.kind=callback}};
+const clear = {addEventListener(_event,callback){listeners.clear=callback}};
+const count = {textContent:"3 entries"};
+const entries = [
+  {dataset:{search:"prime classification theorem",kind:"theorem"},hidden:false},
+  {dataset:{search:"prime conservative definition",kind:"definition"},hidden:false},
+  {dataset:{search:"lucas digit theorem",kind:"theorem"},hidden:false}
+];
+const dashboard = {
+  querySelector(selector){return ({"[data-search]":input,"[data-kind]":kind,"[data-clear]":clear,"[data-count]":count})[selector]},
+  querySelectorAll(){return entries}
+};
+global.document={querySelector(selector){return selector==="[data-defined-dashboard]"?dashboard:null},getElementById(){return null}};
+global.window={};
+""" + files["assets/frontier.js"].decode() + r"""
+input.value="prime";listeners.search();
+const searched={visible:entries.filter(entry=>!entry.hidden).length,count:count.textContent};
+kind.value="definition";listeners.kind();
+const filtered={visible:entries.filter(entry=>!entry.hidden).map(entry=>entry.dataset.kind),count:count.textContent};
+listeners.clear();
+process.stdout.write(JSON.stringify({searched,filtered,cleared:{visible:entries.filter(entry=>!entry.hidden).length,count:count.textContent,input:input.value,kind:kind.value,focused:input.focused}}));
+"""
+    result = json.loads(
+        subprocess.run(
+            ["node", "-e", harness], check=True, text=True, capture_output=True
+        ).stdout
+    )
+
+    assert result == {
+        "searched": {"visible": 2, "count": "2 entries"},
+        "filtered": {"visible": ["definition"], "count": "1 entry"},
+        "cleared": {
+            "visible": 3,
+            "count": "3 entries",
+            "input": "",
+            "kind": "all",
+            "focused": True,
+        },
+    }
+
+
+def test_graph_deep_links_honor_requested_target_focus_and_exact_edition(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, _manifest = generated
+
+    def node(name: str) -> dict[str, object]:
+        return {
+            "name": name,
+            "summary": f"Summary of {name}",
+            "statement": "0 = 0",
+            "statement_sha256": "0" * 64,
+            "status": generator.ALPHA_BODY_STATUS,
+            "source_module": "peano_lab.library.fixture",
+            "dependencies": [],
+            "sources": [],
+            "script": [],
+            "experimental_closure_verified": False,
+            "defined": {
+                "defined_statement": "0 = 0",
+                "statement_parts": [{"kind": "text", "text": "0 = 0"}],
+                "defined_script_lines": [],
+                "definition_uses": {},
+                "statement_receipt": None,
+                "statement_status": "exact-only-fixture",
+            },
+        }
+
+    corpus = json.dumps(
+        {
+            "nodes": [node("default_root"), node("requested_theorem")],
+            "external_dependencies": [],
+            "definitions": [],
+            "edges": [],
+            "root_names": ["default_root"],
+        }
+    )
+    harness = f"const corpus={corpus};\n" + r"""
+const detail={innerHTML:"",querySelectorAll(){return []}};
+const focus={pressed:"false",setAttribute(_name,value){this.pressed=value},addEventListener(){}};
+global.document={
+  body:{dataset:{frontierNotation:"exact"}},
+  getElementById(id){return id==="frontier-corpus"?{textContent:JSON.stringify(corpus)}:id==="frontier-detail"?detail:id==="frontier-focus"?focus:null},
+  querySelector(){return null},
+  querySelectorAll(){return []}
+};
+global.window={location:{search:"?target=requested_theorem&view=prerequisites",hash:""},print(){}};
+""" + files["assets/frontier.js"].decode() + r"""
+process.stdout.write(JSON.stringify({selected:detail.innerHTML.includes("<h2>requested_theorem</h2>"),exact:detail.innerHTML.includes("Exact expanded first-order HA statement"),focused:focus.pressed}));
+"""
+    result = json.loads(
+        subprocess.run(
+            ["node", "-e", harness], check=True, text=True, capture_output=True
+        ).stdout
+    )
+
+    assert result == {"selected": True, "exact": True, "focused": "true"}
 
 
 def test_two_square_factory_discovery_includes_new_classification_when_present(
@@ -1334,7 +1528,7 @@ def test_two_square_example_exposes_the_zero_boundary_without_valuation_claim(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
     files, _manifest = generated
-    page = files["two-squares/index.html"].decode()
+    page = files["two-squares/explorer/defined/graph.html"].decode()
     javascript = files["assets/frontier.js"].decode()
 
     assert 'data-input="n" type="number" min="0"' in page
@@ -1346,7 +1540,7 @@ def test_lucas_example_computes_the_entire_digitwise_binomial_product(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
     files, _manifest = generated
-    page = files["lucas/index.html"].decode()
+    page = files["lucas/explorer/defined/graph.html"].decode()
     javascript = files["assets/frontier.js"].decode()
 
     assert 'data-input="n" type="number" min="0"' in page
@@ -1553,9 +1747,9 @@ def test_repository_proof_hub_labels_all_six_candidate_families() -> None:
         "Alpha v15 enrolled · body_checked; no checked-use authority"
     ) == 2
     assert "Not enrolled in Alpha/Stable; Fermat descent remains conditional" in hub
-    assert "Independent replay experiment: <strong>80/196</strong>" in hub
-    assert "Independent replay experiment: <strong>33/44</strong>" in hub
-    assert hub.count("no persisted certificate or checked-use authority") == 2
+    assert "Independent replay experiment:" not in hub
+    assert "80/196" not in hub
+    assert "33/44" not in hub
     assert 'href="quadratic-reciprocity/"' in hub
     assert 'href="bertrand-postulate/"' in hub
 
