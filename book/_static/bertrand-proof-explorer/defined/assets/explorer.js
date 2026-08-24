@@ -479,8 +479,8 @@
       metadata.appendChild(term);
       metadata.appendChild(description);
     });
-    var open = state.root.querySelector("[data-graph-open]");
-    open.href = node.href;
+    var open = state.root.querySelector(".pd-graph-details [data-graph-open]");
+    open.setAttribute("href", node.href);
     open.textContent = node.kind === "definition" ? "Open definition →" : "Open theorem →";
     appendRelationList(state, state.root.querySelector("[data-graph-outgoing]"), state.model.outgoing.get(node.id) || [], "out");
     appendRelationList(state, state.root.querySelector("[data-graph-incoming]"), state.model.incoming.get(node.id) || [], "in");

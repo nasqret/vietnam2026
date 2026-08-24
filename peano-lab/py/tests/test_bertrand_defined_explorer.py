@@ -96,7 +96,7 @@ def test_campaign_registry_extends_without_mutating_quadratic_reciprocity() -> N
     assert qr_manifest["theorem_count"] == 557
     assert qr_manifest["definition_count"] == 40
     assert qr_manifest["aggregate_sha256"] == (
-        "15b328ae8560876f11990f773780ba83ed2f9711169d768ac842178801ceb297"
+        "0ea4fd59926f5f2c12231e7c4f7f7f3d0ef900fe61bdf7bee5c81170086a894f"
     )
 
 

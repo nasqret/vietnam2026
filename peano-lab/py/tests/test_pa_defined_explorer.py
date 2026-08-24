@@ -199,6 +199,12 @@ def test_assets_are_pinned_local_scoped_and_avoid_unsafe_sinks(built) -> None:
     assert "outerHTML" not in javascript
     assert "document.write" not in javascript
     assert "eval(" not in javascript
+    assert 'state.root.querySelector(".pd-graph-details [data-graph-open]")' in javascript
+    assert 'open.setAttribute("href", node.href)' in javascript
+    assert "open.href = node.href" not in javascript
+    script_version = generator.PINNED_ASSETS["assets/explorer.js"][:12]
+    for page in ("index.html", "graph.html"):
+        assert f'assets/explorer.js?v={script_version}' in files[page].decode("utf-8")
 
     css = files["assets/explorer.css"].decode("utf-8")
     # Every selector list begins at a scoped body selector; declaration,

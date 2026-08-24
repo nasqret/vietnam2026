@@ -1006,6 +1006,192 @@ def test_canonical_explorer_assets_are_byte_identical_to_original_pa_interfaces(
     )
 
 
+@pytest.mark.parametrize(
+    ("focus", "expected_href", "expected_label", "expected_title"),
+    (
+        (
+            "PA0001",
+            "tag/PA0001.html",
+            "Open theorem →",
+            "PA0001 · Fixture theorem",
+        ),
+        (
+            "PD0001",
+            "definition/PD0001.html",
+            "Open definition →",
+            "PD0001 · Fixture definition",
+        ),
+    ),
+)
+def test_canonical_graph_updates_sidebar_despite_getter_only_svg_href(
+    focus: str,
+    expected_href: str,
+    expected_label: str,
+    expected_title: str,
+) -> None:
+    """Run the actual shared graph against Firefox-style SVG anchor properties."""
+
+    payload = {
+        "nodes": [
+            {
+                "id": "PA0001",
+                "kind": "theorem",
+                "name": "Fixture theorem",
+                "summary": "A theorem with an SVG graph link.",
+                "href": "tag/PA0001.html",
+                "layer": 0,
+                "scope": "candidate",
+            },
+            {
+                "id": "PD0001",
+                "kind": "definition",
+                "name": "Fixture definition",
+                "summary": "A conservative definition.",
+                "href": "definition/PD0001.html",
+            },
+        ],
+        "edges": [],
+        "proof_adjacency": {},
+    }
+    harness = (
+        f"const payload = {json.dumps(payload)};\n"
+        f"const selectedFocus = {json.dumps(focus)};\n"
+        + r"""
+const svgAnchors = [];
+
+class Element {
+  constructor(name, namespace = "html") {
+    this.name = name;
+    this.namespace = namespace;
+    this.attributes = {};
+    this.children = [];
+    this.listeners = {};
+    this.dataset = {};
+    this.textContent = "";
+    this.value = "";
+    this.clientWidth = 960;
+    this.clientHeight = 640;
+    this.classList = {add() {}, remove() {}, contains() { return false; }};
+    this.parentElement = {classList: this.classList};
+    if (namespace === "svg" && name === "a") {
+      Object.defineProperty(this, "href", {
+        enumerable: true,
+        get: () => ({baseVal: this.attributes.href || ""})
+      });
+      svgAnchors.push(this);
+    }
+  }
+
+  get firstChild() { return this.children[0] || null; }
+
+  setAttribute(name, value) {
+    this.attributes[name] = String(value);
+    if (name === "data-graph-node") this.dataset.graphNode = String(value);
+  }
+
+  appendChild(child) {
+    child.parentElement = this;
+    this.children.push(child);
+    return child;
+  }
+
+  removeChild(child) {
+    this.children.splice(this.children.indexOf(child), 1);
+    return child;
+  }
+
+  addEventListener(name, callback) { this.listeners[name] = callback; }
+  focus() {}
+}
+
+const sidebarAnchor = new Element("a");
+const svg = new Element("svg", "svg");
+const title = new Element("h2");
+const summary = new Element("p");
+const selectors = new Map([
+  ["[data-graph-summary]", summary],
+  ["[data-graph-svg]", svg],
+  ["[data-graph-target]", new Element("input")],
+  ["[data-graph-view]", new Element("select")],
+  ["[data-graph-definitions]", new Element("select")],
+  ["[data-graph-edges]", new Element("select")],
+  ["#pd-graph-theorems", new Element("datalist")],
+  ["[data-graph-form]", new Element("form")],
+  ["[data-graph-zoom='in']", new Element("button")],
+  ["[data-graph-zoom='out']", new Element("button")],
+  ["[data-graph-fit]", new Element("button")],
+  ["[data-graph-title]", title],
+  ["[data-graph-kind]", new Element("p")],
+  ["[data-graph-description]", new Element("p")],
+  ["[data-graph-metadata]", new Element("dl")],
+  ["[data-graph-outgoing]", new Element("ul")],
+  ["[data-graph-incoming]", new Element("ul")]
+]);
+const root = new Element("main");
+root.querySelector = function (selector) {
+  if (selector === "[data-graph-open]") {
+    return svgAnchors[0] || sidebarAnchor;
+  }
+  if (selector === ".pd-graph-details [data-graph-open]") {
+    return sidebarAnchor;
+  }
+  if (!selectors.has(selector)) throw new Error("Unexpected selector " + selector);
+  return selectors.get(selector);
+};
+
+global.document = {
+  readyState: "complete",
+  body: {classList: {contains(name) { return name === "pa-defined-proof-site"; }}},
+  createElement(name) { return new Element(name); },
+  createElementNS(_namespace, name) { return new Element(name, "svg"); },
+  createTextNode(value) { return {textContent: String(value)}; },
+  getElementById() { return null; },
+  querySelectorAll(selector) {
+    return selector === "[data-defined-graph]" ? [root] : [];
+  }
+};
+global.window = {
+  PA_DEFINED_GRAPH: payload,
+  location: {
+    href: "https://proofs.example/graph.html?target=PA0001&focus=" + selectedFocus,
+    hash: ""
+  },
+  history: {replaceState() {}},
+  requestAnimationFrame(callback) { callback(); },
+  addEventListener() {}
+};
+"""
+        + generator.DEFINED_EXPLORER_SCRIPT.read_text()
+        + r"""
+const svgHref = Object.getOwnPropertyDescriptor(svgAnchors[0], "href");
+process.stdout.write(JSON.stringify({
+  sidebarHref: sidebarAnchor.attributes.href,
+  sidebarLabel: sidebarAnchor.textContent,
+  title: title.textContent,
+  summary: summary.textContent,
+  svgAnchorCount: svgAnchors.length,
+  firstSvgHref: svgAnchors[0].href.baseVal,
+  svgHrefIsGetterOnly: typeof svgHref.get === "function" && svgHref.set === undefined,
+  viewportRendered: svg.attributes.viewBox !== undefined
+}));
+"""
+    )
+    result = json.loads(
+        subprocess.run(
+            ["node", "-e", harness], check=True, text=True, capture_output=True
+        ).stdout
+    )
+
+    assert result["sidebarHref"] == expected_href
+    assert result["sidebarLabel"] == expected_label
+    assert result["title"] == expected_title
+    assert result["summary"].startswith("1 theorem nodes ·")
+    assert result["svgAnchorCount"] >= 1
+    assert result["firstSvgHref"] == "tag/PA0001.html"
+    assert result["svgHrefIsGetterOnly"] is True
+    assert result["viewportRendered"] is True
+
+
 def test_every_generated_document_navigation_bypasses_proxy_html_caches(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:

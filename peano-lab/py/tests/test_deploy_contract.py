@@ -13,7 +13,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[3]
 FRONTIER = ROOT / "book" / "_static" / "constructive-frontier-explorer"
-CANONICAL_HTML_REVISION = "46c05fcf43da"
+CANONICAL_HTML_REVISION = "1b95ce228950"
 FRONTIER_FAMILIES = (
     "supplementary-laws",
     "kummer",

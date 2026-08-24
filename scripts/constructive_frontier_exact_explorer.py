@@ -16,7 +16,7 @@ from typing import Any
 
 
 _IDENTIFIER = re.compile(r"[A-Za-z_][A-Za-z0-9_']*")
-HTML_REVISION = "46c05fcf43da"
+HTML_REVISION = "1b95ce228950"
 
 
 def _escape(value: object) -> str:

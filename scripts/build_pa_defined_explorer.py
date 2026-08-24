@@ -95,7 +95,7 @@ ADAPTER_MODULE = "peano_lab.library.defined_edition"
 ADAPTER_FUNCTION = "build_defined_edition"
 PINNED_ASSETS = {
     "assets/explorer.css": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220",
-    "assets/explorer.js": "47a90b78691e139e7248f78dc3ecd41ef3f6477491f9547abe3e30ef80d817dc",
+    "assets/explorer.js": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982",
 }
 
 
@@ -445,9 +445,10 @@ def _pinned_assets() -> dict[str, bytes]:
 
 
 def _page(title: str, page: str, body: str, asset_prefix: str = "") -> bytes:
+    script_version = PINNED_ASSETS["assets/explorer.js"][:12]
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{_e(title)}</title><link rel="stylesheet" href="{asset_prefix}assets/explorer.css"><script defer src="{asset_prefix}assets/explorer.js"></script></head>
+<title>{_e(title)}</title><link rel="stylesheet" href="{asset_prefix}assets/explorer.css"><script defer src="{asset_prefix}assets/explorer.js?v={script_version}"></script></head>
 <body class="pa-defined-proof-site" data-page="{_e(page)}">{body}</body></html>
 """.encode()
 
