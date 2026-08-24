@@ -16,10 +16,24 @@ from typing import Any
 
 
 _IDENTIFIER = re.compile(r"[A-Za-z_][A-Za-z0-9_']*")
+HTML_REVISION = "46c05fcf43da"
 
 
 def _escape(value: object) -> str:
     return html.escape(str(value), quote=True)
+
+
+def _navigation_href(href: str, revision: str) -> str:
+    """Give every HTML document its own cache key without changing fragments."""
+
+    if not revision or href.startswith("#"):
+        return _escape(href)
+    destination, marker, fragment = href.partition("#")
+    separator = "&" if "?" in destination else "?"
+    versioned = f"{destination}{separator}v={revision}"
+    if marker:
+        versioned += f"#{fragment}"
+    return _escape(versioned)
 
 
 def _layer(
@@ -87,6 +101,7 @@ def render_exact_index(
     *,
     stylesheet_href: str,
     script_href: str,
+    html_revision: str = HTML_REVISION,
 ) -> bytes:
     """Render the searchable original native-PA theorem-index interface."""
 
@@ -117,7 +132,8 @@ def render_exact_index(
             f'data-name="{_escape(name)}" data-tag="{_escape(tag)}" '
             f'data-status="candidate" data-layer="{layer}" '
             f'data-search="{_escape(searchable)}">'
-            f'<a href="tag/{_escape(tag)}.html"><code>{_escape(tag)}</code> · '
+            f'<a href="{_navigation_href(f"tag/{tag}.html", html_revision)}">'
+            f'<code>{_escape(tag)}</code> · '
             f'<strong>{_escape(name)}</strong></a>'
             f'<p>{_escape(node["summary"])}</p>'
             f'<small>layer {layer} · {len(node["script"])} lines · '
@@ -129,11 +145,17 @@ def render_exact_index(
     count = len(nodes)
     layer_count = len(layer_numbers)
     layer_links = "".join(
-        f'<a href="?layer={number}">{number}</a>'
+        f'<a href="{_navigation_href(f"?layer={number}", html_revision)}">'
+        f'{number}</a>'
         for number in layer_numbers
     )
+    family_href = _navigation_href("../", html_revision)
+    defined_href = _navigation_href("defined/", html_revision)
+    graph_href = _navigation_href(
+        f"defined/graph.html?target={root_tag}", html_revision
+    )
     body = f"""<header class="pa-proof-header pa-hero">
-  <nav><a href="../">{_escape(family.title)}</a><a href="defined/">Defined notation</a><a href="defined/graph.html?target={_escape(root_tag)}">Dependency graph</a></nav>
+  <nav><a href="{family_href}">{_escape(family.title)}</a><a href="{defined_href}">Defined notation</a><a href="{graph_href}">Dependency graph</a></nav>
   <h1>{_escape(family.title)} — Exact Proof Explorer</h1>
   <p>{_escape(family.description)}</p>
   <div class="pa-proof-stats"><b>{count}</b> theorem bodies · <b>{corpus['edge_count']}</b> proof edges · <b>{corpus['formal_line_count']}</b> tactic lines · <b>{layer_count}</b> layers</div>
@@ -160,6 +182,7 @@ def _relation(
     *,
     tags: Mapping[str, str],
     external: Mapping[str, Mapping[str, Any]],
+    html_revision: str,
 ) -> str:
     if not names:
         return '<span class="pa-empty">none</span>'
@@ -168,7 +191,8 @@ def _relation(
         if name in tags:
             tag = tags[name]
             parts.append(
-                f'<a class="pa-theorem-ref" href="{_escape(tag)}.html">'
+                '<a class="pa-theorem-ref" '
+                f'href="{_navigation_href(f"{tag}.html", html_revision)}">'
                 f'<code>{_escape(tag)}</code> {_escape(name)}</a>'
             )
             continue
@@ -188,6 +212,7 @@ def _render_command(
     *,
     tags: Mapping[str, str],
     dependencies: set[str],
+    html_revision: str,
 ) -> tuple[str, str]:
     """Link actual local prerequisite tokens without rewriting proof text."""
 
@@ -202,7 +227,8 @@ def _render_command(
             pieces.append(f'<span class="pa-tactic-ref">{_escape(token)}</span>')
         elif token in dependencies and token in tags:
             pieces.append(
-                f'<a class="pa-theorem-ref" href="{_escape(tags[token])}.html">'
+                '<a class="pa-theorem-ref" '
+                f'href="{_navigation_href(f"{tags[token]}.html", html_revision)}">'
                 f'{_escape(token)}</a>'
             )
         elif token in dependencies:
@@ -223,6 +249,7 @@ def render_exact_theorem(
     *,
     stylesheet_href: str,
     script_href: str,
+    html_revision: str = HTML_REVISION,
 ) -> bytes:
     """Render one lightweight, canonical, evidence-honest exact proof page."""
 
@@ -233,12 +260,16 @@ def render_exact_theorem(
     previous = node_names[index - 1] if index else None
     following = node_names[index + 1] if index + 1 < len(node_names) else None
     previous_link = (
-        f'<a href="{_escape(tags[previous])}.html">← {_escape(previous)}</a>'
+        '<a '
+        f'href="{_navigation_href(f"{tags[previous]}.html", html_revision)}">'
+        f'← {_escape(previous)}</a>'
         if previous is not None
         else ""
     )
     following_link = (
-        f'<a href="{_escape(tags[following])}.html">{_escape(following)} →</a>'
+        '<a '
+        f'href="{_navigation_href(f"{tags[following]}.html", html_revision)}">'
+        f'{_escape(following)} →</a>'
         if following is not None
         else ""
     )
@@ -257,7 +288,10 @@ def render_exact_theorem(
     for number, item in enumerate(node["script"], start=1):
         command = str(item)
         rendered, tactic = _render_command(
-            command, tags=tags, dependencies=dependency_names
+            command,
+            tags=tags,
+            dependencies=dependency_names,
+            html_revision=html_revision,
         )
         stable_id = sha256(
             f"{tag}\0{number}\0{command}".encode("utf-8")
@@ -286,8 +320,15 @@ def render_exact_theorem(
         else ""
     )
     layer = _layer(node, tags, layers)
+    explorer_href = _navigation_href("../index.html", html_revision)
+    defined_href = _navigation_href(
+        f"../defined/tag/{tag}.html", html_revision
+    )
+    graph_href = _navigation_href(
+        f"../defined/graph.html?target={tag}", html_revision
+    )
     body = f"""<header class="pa-proof-header pa-theorem-heading">
-  <nav><a href="../index.html">Explorer</a><a href="../defined/tag/{_escape(tag)}.html">Defined notation</a><a href="../defined/graph.html?target={_escape(tag)}">Dependency graph</a>{previous_link}{following_link}</nav>
+  <nav><a href="{explorer_href}">Explorer</a><a href="{defined_href}">Defined notation</a><a href="{graph_href}">Dependency graph</a>{previous_link}{following_link}</nav>
   <p class="pa-tag">{_escape(tag)}</p><h1>{_escape(name)}</h1>
   <p class="pa-status-candidate">{_escape(_candidate_label(node))}</p>
   <p>{_escape(node['summary'])}</p>
@@ -296,7 +337,7 @@ def render_exact_theorem(
   <div class="pa-proof-panel">
     <section class="pa-statement"><h2>Exact expanded first-order arithmetic statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>{_escape(node['statement'])}</code></pre></section>
     <section class="pa-informal-proof" data-informal-kind="structural" data-informal-review="generated"><h2>Constructive proof overview</h2><p><strong>Generated structural guide</strong></p><p>{_escape(node['summary'])}</p><p>The unchanged tactic script uses {len(dependencies)} declared prerequisite{'s' if len(dependencies) != 1 else ''} and contains {len(lines)} exact native proof lines.</p><p>{_escape(corpus['candidate_status'])}</p>{experiment}</section>
-    <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row">{_relation(dependencies, tags=tags, external=external)}</div><h3>Direct dependents</h3><div class="pa-chip-row">{_relation(dependents, tags=tags, external=external)}</div></section>
+    <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row">{_relation(dependencies, tags=tags, external=external, html_revision=html_revision)}</div><h3>Direct dependents</h3><div class="pa-chip-row">{_relation(dependents, tags=tags, external=external, html_revision=html_revision)}</div></section>
     <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. This dependency-curried candidate body does not grant checked theorem use or Stable membership.</p><ol class="pa-formal-proof">{"".join(lines)}</ol></section>
   </div>
   <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>{layer}</dd><dt>Tactic lines</dt><dd>{len(lines)}</dd><dt>Alpha evidence</dt><dd>{_escape(alpha_evidence)}</dd><dt>Checked-use authority</dt><dd>none</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>{_escape(node['statement_sha256'])}</code></dd><dt>Exact script SHA-256</dt><dd><code>{_escape(source.get('script_sha256', 'not recorded'))}</code></dd><dt>Source module</dt><dd><code>{_escape(source.get('source_module', node.get('source_module', 'not recorded')))}</code></dd><dt>Factory</dt><dd><code>{_escape(source.get('factory', node.get('factory', 'not recorded')))}</code></dd></dl></aside>

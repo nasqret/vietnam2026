@@ -95,6 +95,7 @@ EXPERIMENTAL_CLOSURE_STATUS = (
     "or Stable promotion"
 )
 ALPHA_EDITION_VERSION = "v15"
+CANONICAL_HTML_REVISION = "46c05fcf43da"
 MANIFEST_SCHEMA = "peano-lab-constructive-frontier-explorer-v1"
 MAX_DEFINED_STATEMENT_CHARACTERS = 12_000
 MAX_DEFINED_ROOT_STATEMENT_CHARACTERS = 42_000
@@ -1567,6 +1568,17 @@ def _versioned_asset(filename: str, prefix: str) -> str:
     return f"{prefix}/{filename}?v={_digest(payload)[:12]}"
 
 
+def _navigation_href(path: str) -> str:
+    if path.startswith("#"):
+        return path
+    separator = "&" if "?" in path else "?"
+    return f"{path}{separator}v={CANONICAL_HTML_REVISION}"
+
+
+def _html_href(path: str) -> str:
+    return html.escape(_navigation_href(path), quote=True)
+
+
 def _proof_paths(
     corpus: Mapping[str, Any], tags: Mapping[str, str]
 ) -> dict[str, tuple[str, ...]]:
@@ -1613,7 +1625,7 @@ def _mixed_graph(
             "status": row["status"],
             "layer": len(paths[str(row["name"])]) - 1,
             "summary": row["summary"],
-            "href": f'tag/{tags[str(row["name"])]}.html',
+            "href": _navigation_href(f'tag/{tags[str(row["name"])]}.html'),
             "enrolled_in_alpha": row["enrolled_in_alpha"],
             "alpha_evidence": row["alpha_evidence"],
             "alpha_checked_use": row["alpha_checked_use"],
@@ -1628,7 +1640,7 @@ def _mixed_graph(
             "name": row["name"],
             "signature": f'{row["name"]}({", ".join(row["parameters"])})',
             "summary": row["summary"],
-            "href": f'definition/{row["id"]}.html',
+            "href": _navigation_href(f'definition/{row["id"]}.html'),
         }
         for row in corpus["definitions"]
     )
@@ -1715,7 +1727,7 @@ def _defined_page(
 def _linked_defined_parts(parts: Sequence[Mapping[str, Any]]) -> str:
     return "".join(
         f'<a class="pd-definition-ref" '
-        f'href="../definition/{html.escape(str(part["definition"]), quote=True)}.html">'
+        f'href="{_html_href("../definition/" + str(part["definition"]) + ".html")}">'
         f'{html.escape(str(part["text"]))}</a>'
         if part["kind"] == "definition"
         else html.escape(str(part["text"]))
@@ -1731,7 +1743,7 @@ def _definition_chips(
 ) -> str:
     return " ".join(
         f'<a class="pd-chip pd-definition-chip" '
-        f'href="{prefix}{html.escape(identifier, quote=True)}.html">'
+        f'href="{_html_href(prefix + identifier + ".html")}">'
         f'<code>{html.escape(identifier)}</code> '
         f'{html.escape(str(definitions[identifier]["name"]))}</a>'
         for identifier in identifiers
@@ -1748,7 +1760,7 @@ def _dependency_chips(
         if name in tags:
             chips.append(
                 f'<a class="pd-chip pd-theorem-chip" '
-                f'href="{html.escape(tags[name], quote=True)}.html">'
+                f'href="{_html_href(tags[name] + ".html")}">'
                 f'<code>{html.escape(tags[name])}</code> {html.escape(name)}</a>'
             )
             continue
@@ -1777,6 +1789,14 @@ def _family_landing_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     root_tag = _theorem_tags(family, corpus)[str(corpus["root_names"][-1])]
     title = html.escape(family.title)
     description = html.escape(family.description)
+    focused_graph = _html_href(
+        f"explorer/defined/graph.html?target={target}"
+        "&view=neighborhood&definitions=selected&edges=focus"
+    )
+    prerequisite_graph = _html_href(
+        f"explorer/defined/graph.html?target={target}"
+        "&view=prerequisites&definitions=selected&edges=focus"
+    )
     page = f"""<!doctype html>
 <html lang="en">
 <head>
@@ -1784,19 +1804,19 @@ def _family_landing_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{title} — Proof Explorer</title>
   <meta name="description" content="{html.escape(family.description, quote=True)}">
-  <link rel="stylesheet" href="../assets/proofs.css">
+  <link rel="stylesheet" href="{_html_href('../assets/proofs.css')}">
 </head>
 <body class="family-page {html.escape(family.slug, quote=True)}-page">
   <header class="family-hero">
     <div class="shell">
-      <nav class="crumbs"><a href="../">Proof explorers</a><span>/</span><span>{title}</span></nav>
+      <nav class="crumbs"><a href="{_html_href('../')}">Proof explorers</a><span>/</span><span>{title}</span></nav>
       <p class="eyebrow">{html.escape(family.kicker)} · Constructive arithmetic</p>
       <h1>{title}</h1>
       <p class="formula">{html.escape(family.formula)}</p>
       <p class="lede">{description}</p>
       <div class="hero-actions">
-        <a class="primary-action" href="explorer/defined/graph.html?target={target}&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus">Open the definition-aware map</a>
-        <a class="secondary-action" href="explorer/defined/tag/{root_tag}.html">Read the final theorem</a>
+        <a class="primary-action" href="{focused_graph}">Open the definition-aware map</a>
+        <a class="secondary-action" href="{_html_href(f'explorer/defined/tag/{root_tag}.html')}">Read the final theorem</a>
       </div>
     </div>
   </header>
@@ -1806,19 +1826,19 @@ def _family_landing_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
         <p class="card-kicker">Recommended</p>
         <h2>Defined mathematical notation</h2>
         <p>Browse {corpus['definition_count']} linked conservative definitions and {corpus['node_count']} theorem bodies without losing their exact first-order expansions.</p>
-        <a href="explorer/defined/">Browse definitions and theorems →</a>
+        <a href="{_html_href('explorer/defined/')}">Browse definitions and theorems →</a>
       </article>
       <article class="view-card">
         <p class="card-kicker">Focused route</p>
         <h2>Complete dependency graph</h2>
         <p>Follow the selected theorem through its constructive prerequisites, linked definitions, and original proof scripts.</p>
-        <a href="explorer/defined/graph.html?target={target}&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus">Trace prerequisites →</a>
+        <a href="{prerequisite_graph}">Trace prerequisites →</a>
       </article>
       <article class="view-card">
         <p class="card-kicker">Exact certificate</p>
         <h2>Fully expanded arithmetic</h2>
         <p>Inspect {corpus['formal_line_count']} original tactic lines and {corpus['edge_count']} dependency edges with every definition fully expanded.</p>
-        <a href="explorer/">Open the exact edition →</a>
+        <a href="{_html_href('explorer/')}">Open the exact edition →</a>
       </article>
     </section>
     <section class="release-note"><strong>Candidate artifact:</strong> {corpus['node_count']} theorem bodies · {corpus['definition_count']} linked definitions · {corpus['edge_count']} proof edges · {corpus['formal_line_count']} tactic lines. {html.escape(CANDIDATE_STATUS)}.</section>
@@ -1837,7 +1857,7 @@ def _defined_library_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     definition_cards = "".join(
         f'<article class="pd-result pd-result-definition" data-entry '
         f'data-kind="definition" data-search="{html.escape(" ".join((definition["id"], definition["name"], definition["summary"])).lower(), quote=True)}">'
-        f'<a href="definition/{html.escape(definition["id"], quote=True)}.html">'
+        f'<a href="{_html_href("definition/" + str(definition["id"]) + ".html")}">'
         f'<code>{html.escape(definition["id"])}</code> · '
         f'<strong>{html.escape(definition["name"])}</strong></a>'
         f'<p>{html.escape(definition["summary"])}</p>'
@@ -1847,7 +1867,7 @@ def _defined_library_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     theorem_cards = "".join(
         f'<article class="pd-result" data-entry data-kind="theorem" '
         f'data-search="{html.escape(" ".join((node["name"], tags[node["name"]], node["summary"], node["defined"]["defined_statement"][:240])).lower(), quote=True)}">'
-        f'<a href="tag/{html.escape(tags[node["name"]], quote=True)}.html">'
+        f'<a href="{_html_href("tag/" + tags[node["name"]] + ".html")}">'
         f'<code>{html.escape(tags[node["name"]])}</code> · '
         f'<strong>{html.escape(node["name"])}</strong></a>'
         f'<p>{html.escape(node["summary"])}</p>'
@@ -1857,7 +1877,7 @@ def _defined_library_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     )
     count = int(corpus["definition_count"]) + int(corpus["node_count"])
     body = f"""<header class="pd-header pd-hero">
-    <nav><a href="../../">{html.escape(family.title)}</a><a href="../">Exact explicit edition</a><a href="graph.html?target={root_tag}&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus">Mixed dependency graph</a><a href="tag/{root_tag}.html">Final theorem</a></nav>
+    <nav><a href="{_html_href('../../')}">{html.escape(family.title)}</a><a href="{_html_href('../')}">Exact explicit edition</a><a href="{_html_href(f'graph.html?target={root_tag}&view=neighborhood&definitions=selected&edges=focus')}">Mixed dependency graph</a><a href="{_html_href(f'tag/{root_tag}.html')}">Final theorem</a></nav>
     <p class="pd-kicker">Parallel reading edition</p>
     <h1>{html.escape(family.title)} with defined notation</h1>
     <p>Readable conservative notation is linked to exact expansions while the complete explicit tactic corpus remains visible.</p>
@@ -1930,9 +1950,9 @@ def _defined_theorem_html(
     )
     statement_parts = _linked_defined_parts(defined["statement_parts"])
     body = (
-        '<header class="pd-header"><nav><a href="../index.html">Defined edition</a>'
-        f'<a href="../../tag/{tag}.html">Explicit edition</a>'
-        f'<a href="../graph.html?target={tag}">Mixed graph</a></nav>'
+        f'<header class="pd-header"><nav><a href="{_html_href("../index.html")}">Defined edition</a>'
+        f'<a href="{_html_href(f"../../tag/{tag}.html")}">Explicit edition</a>'
+        f'<a href="{_html_href(f"../graph.html?target={tag}")}">Mixed graph</a></nav>'
         f'<p class="pd-kicker">{tag} · theorem body</p>'
         f'<h1>{html.escape(str(node["name"]))}</h1>'
         f'<p class="pd-status pd-status-candidate">{html.escape(str(node["status"]))}</p>'
@@ -1969,7 +1989,7 @@ def _defined_theorem_html(
         f'<dt>Exact statement SHA-256</dt><dd><code>{html.escape(str(node["statement_sha256"]))}</code></dd>'
         f'<dt>Alpha enrollment</dt><dd>{"body_checked; no checked-use authority" if node["enrolled_in_alpha"] else "not enrolled"}</dd>'
         f'<dt>Native source</dt><dd><code>{html.escape(str(node["source_module"]))}</code></dd>'
-        f'<dt>Explicit proof</dt><dd><a href="../../tag/{tag}.html">open exact theorem page</a></dd>'
+        f'<dt>Explicit proof</dt><dd><a href="{_html_href(f"../../tag/{tag}.html")}">open exact theorem page</a></dd>'
         '</dl></aside></main>'
     )
     return _defined_page(
@@ -1996,7 +2016,7 @@ def _definition_html(
     ]
     user_links = " ".join(
         '<a class="pd-chip pd-theorem-chip" '
-        f'href="../tag/{tags[str(node["name"])]}.html">'
+        f'href="{_html_href("../tag/" + tags[str(node["name"])] + ".html")}">'
         f'<code>{tags[str(node["name"])]}</code> '
         f'{html.escape(str(node["name"]))}</a>'
         for node in users
@@ -2004,9 +2024,9 @@ def _definition_html(
     signature = f'{definition["name"]}({", ".join(definition["parameters"])})'
     body = (
         '<header class="pd-header pd-definition-header"><nav>'
-        '<a href="../index.html">Defined edition</a>'
-        f'<a href="../graph.html?target={root_tag}&amp;focus={identifier}">Mixed graph</a>'
-        '<a href="../../index.html">Exact explicit proof</a></nav>'
+        f'<a href="{_html_href("../index.html")}">Defined edition</a>'
+        f'<a href="{_html_href(f"../graph.html?target={root_tag}&focus={identifier}")}">Mixed graph</a>'
+        f'<a href="{_html_href("../../index.html")}">Exact explicit proof</a></nav>'
         f'<p class="pd-kicker">{html.escape(identifier)} · conservative definition</p>'
         f'<h1>{html.escape(str(definition["name"]))}</h1>'
         f'<p>{html.escape(str(definition["summary"]))}</p></header>'
@@ -2070,9 +2090,9 @@ def _family_html(
     )
     calculator_script = _versioned_asset("frontier.js", "../../../assets")
     body = (
-        '<header class="pd-header"><nav><a href="index.html">Defined edition</a>'
-        '<a href="../index.html">Exact explicit edition</a>'
-        f'<a href="tag/{root_tag}.html">Final theorem</a></nav>'
+        f'<header class="pd-header"><nav><a href="{_html_href("index.html")}">Defined edition</a>'
+        f'<a href="{_html_href("../index.html")}">Exact explicit edition</a>'
+        f'<a href="{_html_href(f"tag/{root_tag}.html")}">Final theorem</a></nav>'
         '<p class="pd-kicker">Typed mixed graph</p>'
         f'<h1>{html.escape(family.title)}: theorems and conservative definitions</h1>'
         '<p>Proof arrows and notation arrows are intentionally different relations. '
@@ -2119,7 +2139,7 @@ def _family_html(
         '<p class="pd-kicker">Selected node</p>'
         '<h2 data-graph-title tabindex="-1">Loading…</h2><p data-graph-kind></p>'
         '<p data-graph-description></p><dl data-graph-metadata></dl>'
-        '<p><a data-graph-open href="index.html">Open node →</a></p>'
+        f'<p><a data-graph-open href="{_html_href("index.html")}">Open node →</a></p>'
         '<h3>Outgoing relations</h3><ul data-graph-outgoing></ul>'
         '<h3>Incoming relations</h3><ul data-graph-incoming></ul></aside></div>'
         f'<p class="pd-callout">{html.escape(CANDIDATE_STATUS)}.</p>'
@@ -2363,7 +2383,7 @@ FRONTIER_JS = r"""(() => {
 
 def _landing_html(corpora: Mapping[str, Mapping[str, Any]]) -> bytes:
     cards = "".join(
-        f'<article class="pd-result"><h2><a href="{family.slug}/">'
+        f'<article class="pd-result"><h2><a href="{_html_href(family.slug + "/")}">'
         f'{html.escape(family.title)}</a></h2>'
         f'<p>{html.escape(family.description)}</p>'
         f'<small>{corpora[family.slug]["node_count"]} theorem bodies · '

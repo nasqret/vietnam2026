@@ -13,6 +13,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[3]
 FRONTIER = ROOT / "book" / "_static" / "constructive-frontier-explorer"
+CANONICAL_HTML_REVISION = "46c05fcf43da"
 FRONTIER_FAMILIES = (
     "supplementary-laws",
     "kummer",
@@ -206,7 +207,7 @@ def test_frontier_assets_are_identical_to_original_proof_explorer_assets(
 def test_frontier_family_page_matches_original_proof_family_layout(family: str) -> None:
     page = (FRONTIER / family / "index.html").read_text(encoding="utf-8")
     established_layout = (
-        '<link rel="stylesheet" href="../assets/proofs.css">',
+        f'<link rel="stylesheet" href="../assets/proofs.css?v={CANONICAL_HTML_REVISION}">',
         '<header class="family-hero">',
         '<div class="shell">',
         '<nav class="crumbs">',
@@ -221,9 +222,12 @@ def test_frontier_family_page_matches_original_proof_family_layout(family: str) 
     for marker in established_layout:
         assert marker in page
     assert page.count('<article class="view-card') == 3
-    assert 'href="explorer/defined/"' in page
-    assert 'href="explorer/"' in page
+    assert f'href="explorer/defined/?v={CANONICAL_HTML_REVISION}"' in page
+    assert f'href="explorer/?v={CANONICAL_HTML_REVISION}"' in page
     assert 'href="explorer/defined/graph.html?target=' in page
+    assert f'&amp;v={CANONICAL_HTML_REVISION}"' in page
+    assert 'href="explorer/defined/tag/' in page
+    assert f'.html?v={CANONICAL_HTML_REVISION}"' in page
     assert "dependency-curried kernel-checked candidate body" in page
     assert "not admitted for checked use or Stable" in page
     assert "frontier-hero" not in page
@@ -261,6 +265,7 @@ def test_frontier_family_preserves_original_nested_explorer_routes(family: str) 
     assert f'src="{exact_script}"' in exact_header
     assert '<body class="pa-proof-site" data-page="index"' in exact_header
     assert "data-proof-dashboard" in exact_header
+    assert f'href="defined/?v={CANONICAL_HTML_REVISION}"' in exact_header
     assert f'href="{defined_stylesheet}"' in graph_header
     assert f'src="{defined_script}"' in graph_header
     assert '<body class="pa-defined-proof-site" data-page="graph"' in graph_header
@@ -310,6 +315,7 @@ def test_frontier_theorems_and_definitions_have_dedicated_canonical_pages(
     )
     definition = definitions[0].read_text(encoding="utf-8")
     defined_index = (explorer / "defined" / "index.html").read_text(encoding="utf-8")
+    exact_index = (explorer / "index.html").read_text(encoding="utf-8")
 
     assert '<body class="pa-proof-site" data-page="theorem"' in exact_theorem
     assert (
@@ -322,8 +328,12 @@ def test_frontier_theorems_and_definitions_have_dedicated_canonical_pages(
         in defined_theorem
     )
     assert '<body class="pa-defined-proof-site" data-page="definition"' in definition
-    assert f'href="tag/{first_tag}"' in defined_index
-    assert f'href="definition/{definitions[0].name}"' in defined_index
+    assert f'href="tag/{first_tag}?v={CANONICAL_HTML_REVISION}"' in exact_index
+    assert f'href="tag/{first_tag}?v={CANONICAL_HTML_REVISION}"' in defined_index
+    assert (
+        f'href="definition/{definitions[0].name}?v={CANONICAL_HTML_REVISION}"'
+        in defined_index
+    )
 
 
 @pytest.mark.parametrize("family", FRONTIER_FAMILIES)
@@ -360,10 +370,11 @@ def test_public_proof_hub_keeps_original_cards_without_experiment_progress() -> 
 
     assert '<header class="hero">' in page
     assert '<section class="family-grid" aria-label="Proof families">' in page
+    assert f'href="assets/proofs.css?v={CANONICAL_HTML_REVISION}"' in page
     assert 'href="quadratic-reciprocity/"' in page
     assert 'href="bertrand-postulate/"' in page
     for family in FRONTIER_FAMILIES:
-        assert f'href="{family}/"' in page
+        assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
     assert "candidate-progress" not in page
     assert "33/44" not in page
     assert "80/196" not in page

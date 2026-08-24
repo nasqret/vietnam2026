@@ -6,12 +6,14 @@ from collections import Counter
 from dataclasses import replace
 from functools import lru_cache
 from hashlib import sha256
+from html.parser import HTMLParser
 import json
 from math import comb, isqrt
 from pathlib import Path
 import subprocess
 import sys
 from types import SimpleNamespace
+from urllib.parse import parse_qs, urlsplit
 
 import pytest
 
@@ -880,10 +882,12 @@ def test_family_landing_pages_restore_original_quadratic_reciprocity_format(
     assert '<section class="view-grid">' in page
     assert page.count('class="view-card') == 3
     assert '<section class="release-note">' in page
-    assert 'href="../assets/proofs.css"' in page
-    assert 'href="explorer/defined/"' in page
-    assert 'href="explorer/"' in page
+    revision = generator.CANONICAL_HTML_REVISION
+    assert f'href="../assets/proofs.css?v={revision}"' in page
+    assert f'href="explorer/defined/?v={revision}"' in page
+    assert f'href="explorer/?v={revision}"' in page
     assert f'explorer/defined/graph.html?target={corpus["root_names"][-1]}' in page
+    assert f'&amp;v={revision}' in page
     assert generator.CANDIDATE_STATUS in page
     assert "frontier-hero" not in page
     assert "<progress" not in page
@@ -1002,6 +1006,43 @@ def test_canonical_explorer_assets_are_byte_identical_to_original_pa_interfaces(
     )
 
 
+def test_every_generated_document_navigation_bypasses_proxy_html_caches(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, _manifest = generated
+
+    class NavigationCollector(HTMLParser):
+        def __init__(self) -> None:
+            super().__init__()
+            self.links: list[str] = []
+
+        def handle_starttag(
+            self, tag: str, attrs: list[tuple[str, str | None]]
+        ) -> None:
+            if tag != "a":
+                return
+            attributes = dict(attrs)
+            href = attributes.get("href")
+            if href is not None:
+                self.links.append(href)
+
+    inspected = 0
+    for path, payload in files.items():
+        if not path.endswith(".html"):
+            continue
+        parser = NavigationCollector()
+        parser.feed(payload.decode())
+        for href in parser.links:
+            if href.startswith("#"):
+                continue
+            assert parse_qs(urlsplit(href).query).get("v") == [
+                generator.CANONICAL_HTML_REVISION
+            ], f"stale cache key for {path}: {href}"
+            inspected += 1
+
+    assert inspected > 8_000
+
+
 @pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
 def test_canonical_graphs_distinguish_actual_proof_and_definition_edges(
     generated: tuple[dict[str, bytes], dict[str, object]], slug: str,
@@ -1028,7 +1069,9 @@ def test_canonical_graphs_distinguish_actual_proof_and_definition_edges(
         assert rendered["kind"] == "theorem"
         assert rendered["scope"] == "candidate"
         assert rendered["alpha_checked_use"] is False
-        assert rendered["href"] == f'tag/{tags[node["name"]]}.html'
+        assert rendered["href"] == (
+            f'tag/{tags[node["name"]]}.html?v={generator.CANONICAL_HTML_REVISION}'
+        )
         path = graph["proof_adjacency"][rendered["id"]]["critical_root_path"]
         assert path[-1] == rendered["id"]
         assert rendered["layer"] == len(path) - 1
@@ -1069,14 +1112,20 @@ def test_every_frontier_theorem_and_definition_has_a_real_canonical_detail_page(
         assert 'class="pd-theorem-layout"' in defined
         assert 'class="pd-formal-proof"' in defined
         assert node["statement_sha256"] in defined
-        assert f'href="../../tag/{tag}.html"' in defined
+        assert (
+            f'href="../../tag/{tag}.html?v={generator.CANONICAL_HTML_REVISION}"'
+            in defined
+        )
         assert node["status"] in defined
         assert "window.PA_DEFINED_GRAPH=" not in defined
         assert 'class="pa-proof-site"' in exact
         assert 'class="pa-theorem-layout"' in exact
         assert 'class="pa-formal-proof"' in exact
         assert node["statement_sha256"] in exact
-        assert f'href="../defined/tag/{tag}.html"' in exact
+        assert (
+            f'href="../defined/tag/{tag}.html?v={generator.CANONICAL_HTML_REVISION}"'
+            in exact
+        )
         assert "no checked-use authority" in exact
         assert "window.PA_DEFINED_GRAPH=" not in exact
         for identifier in node["defined"]["definition_uses"]:
@@ -1877,7 +1926,7 @@ def test_repository_proof_hub_labels_all_six_candidate_families() -> None:
     hub = (REPO / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
     assert generator.CANDIDATE_STATUS in hub
     for slug in EXPECTED_FAMILIES:
-        assert f'href="{slug}/"' in hub
+        assert f'href="{slug}/?v={generator.CANONICAL_HTML_REVISION}"' in hub
     assert hub.count(
         "Alpha v13 enrolled · body_checked; no checked-use authority"
     ) == 2

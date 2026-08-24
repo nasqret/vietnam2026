@@ -430,7 +430,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU0000.html",
+      "href": "tag/KU0000.html?v=46c05fcf43da",
       "id": "KU0000",
       "kind": "theorem",
       "layer": 0,
@@ -445,7 +445,7 @@
       "alpha_evidence": null,
       "enrolled_in_alpha": false,
       "experimental_closure_verified": false,
-      "href": "tag/KU0001.html",
+      "href": "tag/KU0001.html?v=46c05fcf43da",
       "id": "KU0001",
       "kind": "theorem",
       "layer": 1,
@@ -460,7 +460,7 @@
       "alpha_evidence": null,
       "enrolled_in_alpha": false,
       "experimental_closure_verified": false,
-      "href": "tag/KU0002.html",
+      "href": "tag/KU0002.html?v=46c05fcf43da",
       "id": "KU0002",
       "kind": "theorem",
       "layer": 1,
@@ -475,7 +475,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU0003.html",
+      "href": "tag/KU0003.html?v=46c05fcf43da",
       "id": "KU0003",
       "kind": "theorem",
       "layer": 0,
@@ -490,7 +490,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU0004.html",
+      "href": "tag/KU0004.html?v=46c05fcf43da",
       "id": "KU0004",
       "kind": "theorem",
       "layer": 1,
@@ -505,7 +505,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU0005.html",
+      "href": "tag/KU0005.html?v=46c05fcf43da",
       "id": "KU0005",
       "kind": "theorem",
       "layer": 2,
@@ -520,7 +520,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU0006.html",
+      "href": "tag/KU0006.html?v=46c05fcf43da",
       "id": "KU0006",
       "kind": "theorem",
       "layer": 1,
@@ -535,7 +535,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU0007.html",
+      "href": "tag/KU0007.html?v=46c05fcf43da",
       "id": "KU0007",
       "kind": "theorem",
       "layer": 0,
@@ -550,7 +550,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU0008.html",
+      "href": "tag/KU0008.html?v=46c05fcf43da",
       "id": "KU0008",
       "kind": "theorem",
       "layer": 2,
@@ -565,7 +565,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU0009.html",
+      "href": "tag/KU0009.html?v=46c05fcf43da",
       "id": "KU0009",
       "kind": "theorem",
       "layer": 0,
@@ -580,7 +580,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU000A.html",
+      "href": "tag/KU000A.html?v=46c05fcf43da",
       "id": "KU000A",
       "kind": "theorem",
       "layer": 0,
@@ -595,7 +595,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU000B.html",
+      "href": "tag/KU000B.html?v=46c05fcf43da",
       "id": "KU000B",
       "kind": "theorem",
       "layer": 1,
@@ -610,7 +610,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU000C.html",
+      "href": "tag/KU000C.html?v=46c05fcf43da",
       "id": "KU000C",
       "kind": "theorem",
       "layer": 3,
@@ -625,7 +625,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU000D.html",
+      "href": "tag/KU000D.html?v=46c05fcf43da",
       "id": "KU000D",
       "kind": "theorem",
       "layer": 0,
@@ -640,7 +640,7 @@
       "alpha_evidence": "body_checked",
       "enrolled_in_alpha": true,
       "experimental_closure_verified": false,
-      "href": "tag/KU000E.html",
+      "href": "tag/KU000E.html?v=46c05fcf43da",
       "id": "KU000E",
       "kind": "theorem",
       "layer": 4,
@@ -651,7 +651,7 @@
       "tag": "KU000E"
     },
     {
-      "href": "definition/PD0004.html",
+      "href": "definition/PD0004.html?v=46c05fcf43da",
       "id": "PD0004",
       "kind": "definition",
       "name": "Prime",
@@ -659,7 +659,7 @@
       "summary": "p is nonunit and every factorization of p has a unit factor."
     },
     {
-      "href": "definition/PD0041.html",
+      "href": "definition/PD0041.html?v=46c05fcf43da",
       "id": "PD0041",
       "kind": "definition",
       "name": "Choose",
@@ -667,7 +667,7 @@
       "summary": "z is the recurrence-defined binomial coefficient of row n and column k."
     },
     {
-      "href": "definition/PD0023.html",
+      "href": "definition/PD0023.html?v=46c05fcf43da",
       "id": "PD0023",
       "kind": "definition",
       "name": "Factorial",
@@ -675,7 +675,7 @@
       "summary": "z is the relational factorial of n."
     },
     {
-      "href": "definition/PD0046.html",
+      "href": "definition/PD0046.html?v=46c05fcf43da",
       "id": "PD0046",
       "kind": "definition",
       "name": "PowerValuation",
@@ -683,7 +683,7 @@
       "summary": "e is the canonical bounded p-adic power valuation of n."
     },
     {
-      "href": "definition/PD0044.html",
+      "href": "definition/PD0044.html?v=46c05fcf43da",
       "id": "PD0044",
       "kind": "definition",
       "name": "PowerDivides",
@@ -691,7 +691,7 @@
       "summary": "The relational power p to exponent e divides n."
     },
     {
-      "href": "definition/PD0050.html",
+      "href": "definition/PD0050.html?v=46c05fcf43da",
       "id": "PD0050",
       "kind": "definition",
       "name": "LegendreSum",
@@ -699,7 +699,7 @@
       "summary": "e is the finite Legendre sum of the quotients of n by positive powers of p."
     },
     {
-      "href": "definition/PD0013.html",
+      "href": "definition/PD0013.html?v=46c05fcf43da",
       "id": "PD0013",
       "kind": "definition",
       "name": "BetaAt",
@@ -707,7 +707,7 @@
       "summary": "x is the bounded beta-decoded value at index i."
     },
     {
-      "href": "definition/PD0017.html",
+      "href": "definition/PD0017.html?v=46c05fcf43da",
       "id": "PD0017",
       "kind": "definition",
       "name": "BitCount",
@@ -715,7 +715,7 @@
       "summary": "z is the sum of a beta-coded all-bit prefix."
     },
     {
-      "href": "definition/PD0016.html",
+      "href": "definition/PD0016.html?v=46c05fcf43da",
       "id": "PD0016",
       "kind": "definition",
       "name": "AllBits",
@@ -723,7 +723,7 @@
       "summary": "Every decoded entry below l is zero or one."
     },
     {
-      "href": "definition/PD0015.html",
+      "href": "definition/PD0015.html?v=46c05fcf43da",
       "id": "PD0015",
       "kind": "definition",
       "name": "Sum",
@@ -731,7 +731,7 @@
       "summary": "z is the sum of a beta-coded prefix of length l."
     },
     {
-      "href": "definition/CF0005.html",
+      "href": "definition/CF0005.html?v=46c05fcf43da",
       "id": "CF0005",
       "kind": "definition",
       "name": "Carry",
@@ -739,7 +739,7 @@
       "summary": "The sum of two natural digits is at least the base p."
     },
     {
-      "href": "definition/PD0001.html",
+      "href": "definition/PD0001.html?v=46c05fcf43da",
       "id": "PD0001",
       "kind": "definition",
       "name": "Le",
@@ -747,7 +747,7 @@
       "summary": "Witness-defined non-strict order on natural numbers."
     },
     {
-      "href": "definition/PD0002.html",
+      "href": "definition/PD0002.html?v=46c05fcf43da",
       "id": "PD0002",
       "kind": "definition",
       "name": "Lt",
@@ -755,7 +755,7 @@
       "summary": "Witness-defined strict order on natural numbers."
     },
     {
-      "href": "definition/PD0003.html",
+      "href": "definition/PD0003.html?v=46c05fcf43da",
       "id": "PD0003",
       "kind": "definition",
       "name": "Dvd",
@@ -763,7 +763,7 @@
       "summary": "The natural number d divides n."
     },
     {
-      "href": "definition/PD0007.html",
+      "href": "definition/PD0007.html?v=46c05fcf43da",
       "id": "PD0007",
       "kind": "definition",
       "name": "DivRem",
@@ -771,7 +771,7 @@
       "summary": "q and r are a quotient and a strict remainder for n by d."
     },
     {
-      "href": "definition/PD0049.html",
+      "href": "definition/PD0049.html?v=46c05fcf43da",
       "id": "PD0049",
       "kind": "definition",
       "name": "PowerQuotPrefix",
