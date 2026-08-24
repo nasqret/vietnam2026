@@ -321,7 +321,13 @@ def test_frontier_inventory_is_deterministic_complete_and_evidence_honest(
     assert manifest["experimental_closure_grants_stable_membership"] is False
     assert manifest["admitted_to_alpha"] is False
     assert manifest["admitted_to_stable"] is False
-    assert manifest["file_count"] == len(files) == 34
+    expected_detail_pages = sum(
+        2 * int(row["node_count"]) + int(row["definition_count"])
+        for row in manifest["families"]
+    )
+    # Original inventory + four byte-identical canonical assets + six graph APIs
+    # + one exact and one defined page per theorem + one page per definition.
+    assert manifest["file_count"] == len(files) == 44 + expected_detail_pages
     assert {row["path"] for row in manifest["files"]} == set(files) - {"manifest.json"}
     for row in manifest["files"]:
         assert row["sha256"] == sha256(files[row["path"]]).hexdigest()
@@ -718,7 +724,7 @@ def test_experimental_records_are_collapsed_and_graph_highlights_remain_honest(
         assert "Historical experimental replay records" in page
         assert "Certificates are not persisted" in page
         assert "checked-use authority, and Stable membership remain unchanged" in page
-        assert "frontier-experiment-verified" in page
+        assert '"experimental_closure_verified":true' in page
     assert "Independent replay-verified experiment, not release evidence" in script
     assert "No certificate is persisted" in script
     assert ".frontier-experiment-verified rect" in styles
@@ -905,15 +911,25 @@ def test_definition_aware_libraries_restore_original_searchable_format(
     assert page.count('class="pd-result pd-result-definition"') == (
         corpus["definition_count"]
     )
-    assert 'href="../../../assets/frontier.css"' in page
-    assert 'src="../../../assets/frontier.js"' in page
+    stylesheet_digest = sha256(files["assets/defined-explorer.css"]).hexdigest()[:12]
+    script_digest = sha256(files["assets/defined-explorer.js"]).hexdigest()[:12]
+    assert (
+        f'href="../../../assets/defined-explorer.css?v={stylesheet_digest}"'
+        in page
+    )
+    assert (
+        f'src="../../../assets/defined-explorer.js?v={script_digest}"'
+        in page
+    )
     assert "conservative definition · not a theorem" in page
     assert "no checked-use authority" in page
     assert generator.CANDIDATE_STATUS in page
+    family = next(row for row in generator.FAMILIES if row.slug == slug)
+    tags = generator._theorem_tags(family, corpus)
     for definition in corpus["definitions"]:
-        assert f'graph.html#frontier-definition-{definition["id"]}' in page
+        assert f'definition/{definition["id"]}.html' in page
     for node in corpus["nodes"]:
-        assert f'graph.html?target={node["name"]}' in page
+        assert f'tag/{tags[node["name"]]}.html' in page
 
 
 @pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
@@ -923,35 +939,160 @@ def test_family_proof_graphs_are_offline_interactive_and_candidate_labeled(
     files, _manifest = generated
     page = files[f"{slug}/explorer/defined/graph.html"].decode()
     exact = files[f"{slug}/explorer/index.html"].decode()
+    defined_css = sha256(files["assets/defined-explorer.css"]).hexdigest()[:12]
+    defined_js = sha256(files["assets/defined-explorer.js"]).hexdigest()[:12]
+    exact_css = sha256(files["assets/exact-explorer.css"]).hexdigest()[:12]
+    exact_js = sha256(files["assets/exact-explorer.js"]).hexdigest()[:12]
 
     assert generator.CANDIDATE_STATUS in page
     assert 'class="pa-defined-proof-site"' in page
     assert '<header class="pd-header">' in page
-    assert 'id="frontier-graph"' in page
+    assert '<main class="pd-graph-page" data-defined-graph>' in page
+    assert '<form class="pd-graph-controls" data-graph-form>' in page
+    assert 'class="pd-graph-layout"' in page
+    assert 'class="pd-graph-details"' in page
+    assert 'data-graph-svg' in page
+    assert 'data-graph-target' in page
+    assert 'data-graph-view' in page
+    assert 'data-graph-definitions' in page
+    assert 'data-graph-edges' in page
+    assert 'data-graph-zoom="in"' in page
+    assert 'data-graph-zoom="out"' in page
+    assert 'data-graph-fit' in page
+    assert 'window.PA_DEFINED_GRAPH=' in page
+    assert 'id="pa-defined-graph-data"' in page
     assert 'id="frontier-corpus" type="application/json"' in page
-    assert 'id="frontier-detail"' in page
-    assert 'id="frontier-search"' in page
-    assert 'data-frontier-view="defined"' in page
-    assert 'data-frontier-view="exact"' in page
-    assert 'id="frontier-zoom-in"' in page
-    assert 'id="frontier-zoom-out"' in page
-    assert 'id="frontier-zoom-fit"' in page
-    assert 'id="frontier-focus"' in page
-    assert 'id="frontier-print"' in page
-    assert 'id="frontier-definition-' in page
     assert 'data-example-form' in page
-    assert 'href="../../../assets/frontier.css"' in page
-    assert 'src="../../../assets/frontier.js"' in page
-    assert 'data-frontier-notation="defined"' in page
-    assert 'data-frontier-notation="exact"' in exact
-    assert 'href="../../assets/frontier.css"' in exact
-    assert 'src="../../assets/frontier.js"' in exact
-    assert 'data-frontier-view="exact" type="button" aria-pressed="true"' in exact
+    assert f'href="../../../assets/defined-explorer.css?v={defined_css}"' in page
+    assert f'src="../../../assets/defined-explorer.js?v={defined_js}"' in page
+    assert 'class="frontier-main"' not in page
+    assert 'class="frontier-graph-section"' not in page
+    assert 'id="frontier-graph"' not in page
+    assert 'class="pa-proof-site"' in exact
+    assert '<header class="pa-proof-header pa-hero">' in exact
+    assert '<main data-proof-dashboard data-pa-explorer-index>' in exact
+    assert 'class="pa-proof-controls"' in exact
+    assert 'class="pa-proof-results"' in exact
+    assert f'href="../../assets/exact-explorer.css?v={exact_css}"' in exact
+    assert f'src="../../assets/exact-explorer.js?v={exact_js}"' in exact
+    assert 'class="pd-graph-page"' not in exact
     assert generator.CANDIDATE_STATUS in exact
     assert "http://" not in page
     assert "https://" not in page
     for root in REQUIRED_ROOTS[slug]:
         assert root in page
+
+
+def test_canonical_explorer_assets_are_byte_identical_to_original_pa_interfaces(
+    generated: tuple[dict[str, bytes], dict[str, object]],
+) -> None:
+    files, _manifest = generated
+
+    assert files["assets/defined-explorer.css"] == (
+        generator.DEFINED_EXPLORER_STYLESHEET.read_bytes()
+    )
+    assert files["assets/defined-explorer.js"] == (
+        generator.DEFINED_EXPLORER_SCRIPT.read_bytes()
+    )
+    assert files["assets/exact-explorer.css"] == (
+        generator.EXACT_EXPLORER_STYLESHEET.read_bytes()
+    )
+    assert files["assets/exact-explorer.js"] == (
+        generator.EXACT_EXPLORER_SCRIPT.read_bytes()
+    )
+
+
+@pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
+def test_canonical_graphs_distinguish_actual_proof_and_definition_edges(
+    generated: tuple[dict[str, bytes], dict[str, object]], slug: str,
+) -> None:
+    files, _manifest = generated
+    corpus = _corpus(files, slug)
+    family = next(row for row in generator.FAMILIES if row.slug == slug)
+    tags = generator._theorem_tags(family, corpus)
+    graph = json.loads(files[f"{slug}/explorer/defined/api/graph.json"])
+
+    assert graph["path_policy"] == "proof_dependency_edges_only"
+    assert graph["theorem_count"] == corpus["node_count"]
+    assert graph["definition_count"] == corpus["definition_count"]
+    assert graph["external_dependency_count"] == corpus["external_dependency_count"]
+    assert graph["root_name"] == corpus["root_names"][-1]
+    assert graph["root_tag"] == tags[graph["root_name"]]
+    graph_nodes = {node["id"]: node for node in graph["nodes"]}
+    assert set(graph_nodes) == {
+        *tags.values(),
+        *(definition["id"] for definition in corpus["definitions"]),
+    }
+    for node in corpus["nodes"]:
+        rendered = graph_nodes[tags[node["name"]]]
+        assert rendered["kind"] == "theorem"
+        assert rendered["scope"] == "candidate"
+        assert rendered["alpha_checked_use"] is False
+        assert rendered["href"] == f'tag/{tags[node["name"]]}.html'
+        path = graph["proof_adjacency"][rendered["id"]]["critical_root_path"]
+        assert path[-1] == rendered["id"]
+        assert rendered["layer"] == len(path) - 1
+    assert {
+        (edge["source"], edge["target"])
+        for edge in graph["edges"]
+        if edge["kind"] == "proof_dependency"
+    } == {
+        (tags[edge["source"]], tags[edge["target"]])
+        for edge in corpus["edges"]
+        if edge["source"] in tags and edge["target"] in tags
+    }
+    assert {
+        (edge["source"], edge["target"])
+        for edge in graph["edges"]
+        if edge["kind"] == "uses_definition"
+    } == {
+        (tags[node["name"]], identifier)
+        for node in corpus["nodes"]
+        for identifier in node["defined"]["definition_uses"]
+    }
+
+
+@pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
+def test_every_frontier_theorem_and_definition_has_a_real_canonical_detail_page(
+    generated: tuple[dict[str, bytes], dict[str, object]], slug: str,
+) -> None:
+    files, _manifest = generated
+    corpus = _corpus(files, slug)
+    family = next(row for row in generator.FAMILIES if row.slug == slug)
+    tags = generator._theorem_tags(family, corpus)
+
+    for node in corpus["nodes"]:
+        tag = tags[node["name"]]
+        defined = files[f"{slug}/explorer/defined/tag/{tag}.html"].decode()
+        exact = files[f"{slug}/explorer/tag/{tag}.html"].decode()
+        assert 'class="pa-defined-proof-site"' in defined
+        assert 'class="pd-theorem-layout"' in defined
+        assert 'class="pd-formal-proof"' in defined
+        assert node["statement_sha256"] in defined
+        assert f'href="../../tag/{tag}.html"' in defined
+        assert node["status"] in defined
+        assert "window.PA_DEFINED_GRAPH=" not in defined
+        assert 'class="pa-proof-site"' in exact
+        assert 'class="pa-theorem-layout"' in exact
+        assert 'class="pa-formal-proof"' in exact
+        assert node["statement_sha256"] in exact
+        assert f'href="../defined/tag/{tag}.html"' in exact
+        assert "no checked-use authority" in exact
+        assert "window.PA_DEFINED_GRAPH=" not in exact
+        for identifier in node["defined"]["definition_uses"]:
+            assert f'../definition/{identifier}.html' in defined
+
+    for definition in corpus["definitions"]:
+        identifier = definition["id"]
+        page = files[
+            f"{slug}/explorer/defined/definition/{identifier}.html"
+        ].decode()
+        assert 'class="pa-defined-proof-site"' in page
+        assert 'class="pd-definition-page"' in page
+        assert definition["name"] in page
+        assert definition["template_sha256"] in page
+        assert "conservative notation, not a theorem" in page
+        assert "window.PA_DEFINED_GRAPH=" not in page
 
 
 def test_four_square_and_multidigit_lucas_are_enrolled_without_checked_authority(

@@ -4,6 +4,7 @@ These tests deliberately use ``make -n``: CI must verify the exact assembled
 tree and destinations without touching the faculty server.
 """
 
+from hashlib import sha256
 from pathlib import Path
 import subprocess
 
@@ -20,6 +21,20 @@ FRONTIER_FAMILIES = (
     "lucas",
     "pythagorean-fermat-four",
 )
+FRONTIER_TAG_PREFIXES = {
+    "supplementary-laws": "SL",
+    "kummer": "KU",
+    "two-squares": "TS",
+    "four-squares": "FS",
+    "lucas": "LU",
+    "pythagorean-fermat-four": "PF",
+}
+CANONICAL_FRONTIER_ASSETS = (
+    ("defined-explorer.css", "defined/assets/explorer.css"),
+    ("defined-explorer.js", "defined/assets/explorer.js"),
+    ("exact-explorer.css", "assets/explorer.css"),
+    ("exact-explorer.js", "assets/explorer.js"),
+)
 
 
 def _dry_run(target: str) -> str:
@@ -31,6 +46,11 @@ def _dry_run(target: str) -> str:
         text=True,
     )
     return result.stdout
+
+
+def _versioned_frontier_asset(filename: str, prefix: str) -> str:
+    digest = sha256((FRONTIER / "assets" / filename).read_bytes()).hexdigest()[:12]
+    return f"{prefix}/{filename}?v={digest}"
 
 
 def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
@@ -133,6 +153,55 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
 
 
+def test_proof_explorer_stage_installs_only_the_proof_site_cache_policy() -> None:
+    output = _dry_run("stage-proofs")
+    makefile = (ROOT / "Makefile").read_text(encoding="utf-8")
+
+    assert 'cp deploy/proofs/.htaccess "_deploy/proofs/.htaccess"' in output
+    assert 'cp deploy/site.htaccess "_deploy/proofs/.htaccess"' not in output
+    assert "cp deploy/site.htaccess $(STAGE)/.htaccess" in makefile
+
+
+def test_proof_site_cache_headers_preserve_https_and_stay_extension_scoped() -> None:
+    proof_policy = (ROOT / "deploy" / "proofs" / ".htaccess").read_text(
+        encoding="utf-8"
+    )
+    main_site_policy = (ROOT / "deploy" / "site.htaccess").read_text(
+        encoding="utf-8"
+    )
+
+    html_policy = (
+        '  <FilesMatch "\\.(?:html?)$">\n'
+        '    Header always set Cache-Control "no-store, no-cache, '
+        'must-revalidate, max-age=0"\n'
+        '    Header always set Pragma "no-cache"\n'
+        '    Header always set Expires "0"\n'
+        "  </FilesMatch>"
+    )
+    asset_policy = (
+        '  <FilesMatch "\\.(?:css|js|json)$">\n'
+        '    Header always set Cache-Control "no-cache, must-revalidate, '
+        'max-age=0"\n'
+        "  </FilesMatch>"
+    )
+
+    assert main_site_policy.strip() in proof_policy
+    assert '<IfModule mod_headers.c>\n' in proof_policy
+    assert html_policy in proof_policy
+    assert asset_policy in proof_policy
+    assert proof_policy.count("Header always set Cache-Control") == 2
+    assert "Cache-Control" not in main_site_policy
+
+
+@pytest.mark.parametrize(("filename", "canonical_relative"), CANONICAL_FRONTIER_ASSETS)
+def test_frontier_assets_are_identical_to_original_proof_explorer_assets(
+    filename: str, canonical_relative: str
+) -> None:
+    canonical = ROOT / "book" / "_static" / "pa-proof-explorer" / canonical_relative
+
+    assert (FRONTIER / "assets" / filename).read_bytes() == canonical.read_bytes()
+
+
 @pytest.mark.parametrize("family", FRONTIER_FAMILIES)
 def test_frontier_family_page_matches_original_proof_family_layout(family: str) -> None:
     page = (FRONTIER / family / "index.html").read_text(encoding="utf-8")
@@ -179,10 +248,82 @@ def test_frontier_family_preserves_original_nested_explorer_routes(family: str) 
     with defined_graph.open(encoding="utf-8") as stream:
         graph_header = stream.read(16_384)
 
-    assert 'href="../../assets/frontier.css"' in exact_header
-    assert 'href="../../../assets/frontier.css"' in graph_header
+    exact_stylesheet = _versioned_frontier_asset("exact-explorer.css", "../../assets")
+    exact_script = _versioned_frontier_asset("exact-explorer.js", "../../assets")
+    defined_stylesheet = _versioned_frontier_asset(
+        "defined-explorer.css", "../../../assets"
+    )
+    defined_script = _versioned_frontier_asset(
+        "defined-explorer.js", "../../../assets"
+    )
+
+    assert f'href="{exact_stylesheet}"' in exact_header
+    assert f'src="{exact_script}"' in exact_header
+    assert '<body class="pa-proof-site" data-page="index"' in exact_header
+    assert "data-proof-dashboard" in exact_header
+    assert f'href="{defined_stylesheet}"' in graph_header
+    assert f'src="{defined_script}"' in graph_header
+    assert '<body class="pa-defined-proof-site" data-page="graph"' in graph_header
     assert f'data-family="{family}"' in exact_header
     assert f'data-family="{family}"' in graph_header
+
+
+@pytest.mark.parametrize("family", FRONTIER_FAMILIES)
+def test_frontier_graph_restores_original_definition_aware_controls(family: str) -> None:
+    graph = FRONTIER / family / "explorer" / "defined" / "graph.html"
+    with graph.open(encoding="utf-8") as stream:
+        header = stream.read(16_384)
+
+    for marker in (
+        'class="pd-graph-page" data-defined-graph',
+        'class="pd-graph-controls" data-graph-form',
+        "data-graph-target",
+        "data-graph-view",
+        "data-graph-definitions",
+        "data-graph-edges",
+        "data-graph-svg",
+        "data-graph-open",
+        "data-example-form",
+        "window.PA_DEFINED_GRAPH=",
+    ):
+        assert marker in header
+
+
+@pytest.mark.parametrize("family", FRONTIER_FAMILIES)
+def test_frontier_theorems_and_definitions_have_dedicated_canonical_pages(
+    family: str,
+) -> None:
+    explorer = FRONTIER / family / "explorer"
+    exact_tags = {page.name for page in (explorer / "tag").glob("*.html")}
+    defined_tags = {page.name for page in (explorer / "defined" / "tag").glob("*.html")}
+    definitions = tuple((explorer / "defined" / "definition").glob("*.html"))
+
+    assert exact_tags
+    assert exact_tags == defined_tags
+    assert all(tag.startswith(FRONTIER_TAG_PREFIXES[family]) for tag in exact_tags)
+    assert definitions
+
+    first_tag = min(exact_tags)
+    exact_theorem = (explorer / "tag" / first_tag).read_text(encoding="utf-8")
+    defined_theorem = (explorer / "defined" / "tag" / first_tag).read_text(
+        encoding="utf-8"
+    )
+    definition = definitions[0].read_text(encoding="utf-8")
+    defined_index = (explorer / "defined" / "index.html").read_text(encoding="utf-8")
+
+    assert '<body class="pa-proof-site" data-page="theorem"' in exact_theorem
+    assert (
+        f'href="{_versioned_frontier_asset("exact-explorer.css", "../../../assets")}"'
+        in exact_theorem
+    )
+    assert '<body class="pa-defined-proof-site" data-page="theorem"' in defined_theorem
+    assert (
+        f'href="{_versioned_frontier_asset("defined-explorer.css", "../../../../assets")}"'
+        in defined_theorem
+    )
+    assert '<body class="pa-defined-proof-site" data-page="definition"' in definition
+    assert f'href="tag/{first_tag}"' in defined_index
+    assert f'href="definition/{definitions[0].name}"' in defined_index
 
 
 @pytest.mark.parametrize("family", FRONTIER_FAMILIES)
@@ -193,7 +334,11 @@ def test_frontier_defined_library_restores_original_searchable_reading_surface(
         encoding="utf-8"
     )
 
-    assert 'href="../../../assets/frontier.css"' in page
+    stylesheet = _versioned_frontier_asset("defined-explorer.css", "../../../assets")
+    script = _versioned_frontier_asset("defined-explorer.js", "../../../assets")
+
+    assert f'href="{stylesheet}"' in page
+    assert f'src="{script}"' in page
     assert '<body class="pa-defined-proof-site" data-page="index"' in page
     assert '<header class="pd-header pd-hero">' in page
     assert '<main data-defined-dashboard>' in page

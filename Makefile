@@ -758,7 +758,7 @@ stage-proofs: book-proof-explorer book-constructive-frontier-explorer
 		"$(STAGEPROOFS)/bertrand-postulate/index.html"
 	cp deploy/proofs/proofs.css "$(STAGEPROOFS)/assets/proofs.css"
 	cp deploy/proofs/proofs-og.png "$(STAGEPROOFS)/assets/proofs-og.png"
-	cp deploy/site.htaccess "$(STAGEPROOFS)/.htaccess"
+	cp deploy/proofs/.htaccess "$(STAGEPROOFS)/.htaccess"
 	rsync -a --delete --exclude '.DS_Store' \
 		book/_static/pa-proof-explorer/ \
 		"$(STAGEPROOFS)/quadratic-reciprocity/explorer/"

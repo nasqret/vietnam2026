@@ -21,6 +21,11 @@ from pathlib import Path
 import sys
 from typing import Any, Mapping, Sequence
 
+from constructive_frontier_exact_explorer import (
+    render_exact_index,
+    render_exact_theorem,
+)
+
 
 REPO = Path(__file__).resolve().parents[1]
 PY_ROOT = REPO / "peano-lab" / "py"
@@ -59,6 +64,18 @@ OUTPUT = REPO / "book" / "_static" / "constructive-frontier-explorer"
 DEFINED_EXPLORER_STYLESHEET = (
     REPO / "book" / "_static" / "pa-proof-explorer" / "defined"
     / "assets" / "explorer.css"
+)
+DEFINED_EXPLORER_SCRIPT = (
+    REPO / "book" / "_static" / "pa-proof-explorer" / "defined"
+    / "assets" / "explorer.js"
+)
+EXACT_EXPLORER_STYLESHEET = (
+    REPO / "book" / "_static" / "pa-proof-explorer"
+    / "assets" / "explorer.css"
+)
+EXACT_EXPLORER_SCRIPT = (
+    REPO / "book" / "_static" / "pa-proof-explorer"
+    / "assets" / "explorer.js"
 )
 CANDIDATE_STATUS = (
     "dependency-curried kernel-checked candidate body; "
@@ -1499,10 +1516,265 @@ def _experimental_progress_markup(corpus: Mapping[str, Any]) -> str:
     )
 
 
+_FAMILY_TAG_PREFIXES = {
+    "supplementary-laws": "SL",
+    "kummer": "KU",
+    "two-squares": "TS",
+    "four-squares": "FS",
+    "lucas": "LU",
+    "pythagorean-fermat-four": "PF",
+}
+
+
+def _base36(number: int) -> str:
+    if number < 0:
+        raise ValueError("proof tags require a nonnegative ordinal")
+    alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    digits = ""
+    while number:
+        number, remainder = divmod(number, 36)
+        digits = alphabet[remainder] + digits
+    return digits or "0"
+
+
+def _theorem_tags(family: Family, corpus: Mapping[str, Any]) -> dict[str, str]:
+    prefix = _FAMILY_TAG_PREFIXES[family.slug]
+    return {
+        str(node["name"]): prefix + _base36(index).zfill(4)
+        for index, node in enumerate(corpus["nodes"])
+    }
+
+
+@lru_cache(maxsize=8)
+def _canonical_asset(filename: str) -> bytes:
+    sources = {
+        "defined-explorer.css": DEFINED_EXPLORER_STYLESHEET,
+        "defined-explorer.js": DEFINED_EXPLORER_SCRIPT,
+        "exact-explorer.css": EXACT_EXPLORER_STYLESHEET,
+        "exact-explorer.js": EXACT_EXPLORER_SCRIPT,
+    }
+    try:
+        return sources[filename].read_bytes()
+    except KeyError as error:
+        raise ValueError(f"unknown canonical explorer asset {filename!r}") from error
+
+
+def _versioned_asset(filename: str, prefix: str) -> str:
+    if filename == "frontier.js":
+        payload = FRONTIER_JS.encode("utf-8")
+    else:
+        payload = _canonical_asset(filename)
+    return f"{prefix}/{filename}?v={_digest(payload)[:12]}"
+
+
+def _proof_paths(
+    corpus: Mapping[str, Any], tags: Mapping[str, str]
+) -> dict[str, tuple[str, ...]]:
+    by_name = {str(node["name"]): node for node in corpus["nodes"]}
+    paths: dict[str, tuple[str, ...]] = {}
+    active: set[str] = set()
+
+    def path(name: str) -> tuple[str, ...]:
+        if name in paths:
+            return paths[name]
+        if name in active:
+            raise ValueError(f"cyclic local constructive-proof dependency: {name}")
+        active.add(name)
+        candidates = [
+            path(str(dependency))
+            for dependency in by_name[name]["dependencies"]
+            if dependency in by_name
+        ]
+        prefix = max(candidates, key=len, default=())
+        paths[name] = (*prefix, tags[name])
+        active.remove(name)
+        return paths[name]
+
+    for name in by_name:
+        path(name)
+    return paths
+
+
+def _mixed_graph(
+    family: Family,
+    corpus: Mapping[str, Any],
+    tags: Mapping[str, str],
+    paths: Mapping[str, tuple[str, ...]],
+) -> dict[str, Any]:
+    definitions = {str(row["id"]): row for row in corpus["definitions"]}
+    local = set(tags)
+    nodes: list[dict[str, Any]] = [
+        {
+            "id": tags[str(row["name"])],
+            "kind": "theorem",
+            "tag": tags[str(row["name"])],
+            "name": row["name"],
+            "scope": "candidate",
+            "status": row["status"],
+            "layer": len(paths[str(row["name"])]) - 1,
+            "summary": row["summary"],
+            "href": f'tag/{tags[str(row["name"])]}.html',
+            "enrolled_in_alpha": row["enrolled_in_alpha"],
+            "alpha_evidence": row["alpha_evidence"],
+            "alpha_checked_use": row["alpha_checked_use"],
+            "experimental_closure_verified": row["experimental_closure_verified"],
+        }
+        for row in corpus["nodes"]
+    ]
+    nodes.extend(
+        {
+            "id": row["id"],
+            "kind": "definition",
+            "name": row["name"],
+            "signature": f'{row["name"]}({", ".join(row["parameters"])})',
+            "summary": row["summary"],
+            "href": f'definition/{row["id"]}.html',
+        }
+        for row in corpus["definitions"]
+    )
+    proof_edges = [
+        {
+            "kind": "proof_dependency",
+            "source": tags[str(edge["source"])],
+            "target": tags[str(edge["target"])],
+            "body_reference": True,
+            "explicit_reference_count": 1,
+        }
+        for edge in corpus["edges"]
+        if edge["source"] in local and edge["target"] in local
+    ]
+    notation_edges = []
+    for node in corpus["nodes"]:
+        defined = node["defined"]
+        for identifier, occurrences in defined["definition_uses"].items():
+            if identifier not in definitions:
+                raise ValueError(f"unknown constructive graph definition {identifier}")
+            notation_edges.append(
+                {
+                    "kind": "uses_definition",
+                    "source": tags[str(node["name"])],
+                    "target": identifier,
+                    "occurrence_count": occurrences,
+                    "statement_occurrences": defined[
+                        "statement_definition_uses"
+                    ].get(identifier, 0),
+                    "local_proposition_occurrences": defined[
+                        "script_definition_uses"
+                    ].get(identifier, 0),
+                }
+            )
+    return {
+        "schema": "peano-lab-constructive-frontier-defined-graph-v1",
+        "family": family.slug,
+        "orientation": {
+            "proof_dependency": "prerequisite_theorem_to_dependent_theorem",
+            "uses_definition": "theorem_to_definition",
+        },
+        "path_policy": "proof_dependency_edges_only",
+        "candidate_status": CANDIDATE_STATUS,
+        "alpha_edition_identity_sha256": corpus["alpha_edition_identity_sha256"],
+        "theorem_count": len(corpus["nodes"]),
+        "definition_count": len(corpus["definitions"]),
+        "proof_edge_count": len(proof_edges),
+        "notation_edge_count": len(notation_edges),
+        "external_dependency_count": corpus["external_dependency_count"],
+        "root_name": corpus["root_names"][-1],
+        "root_tag": tags[str(corpus["root_names"][-1])],
+        "nodes": nodes,
+        "edges": [*proof_edges, *notation_edges],
+        "proof_adjacency": {
+            tags[name]: {"critical_root_path": list(path)}
+            for name, path in paths.items()
+        },
+    }
+
+
+def _defined_page(
+    family: Family,
+    title: str,
+    body: str,
+    *,
+    page: str,
+    assets: str,
+    extra_script: str = "",
+) -> bytes:
+    stylesheet = _versioned_asset("defined-explorer.css", assets)
+    script = _versioned_asset("defined-explorer.js", assets)
+    return (
+        '<!doctype html>\n<html lang="en"><head><meta charset="utf-8">'
+        '<meta name="viewport" content="width=device-width,initial-scale=1">\n'
+        f'<title>{html.escape(title)}</title>'
+        f'<link rel="stylesheet" href="{html.escape(stylesheet, quote=True)}">'
+        f'<script defer src="{html.escape(script, quote=True)}"></script>'
+        f"{extra_script}</head>\n"
+        f'<body class="pa-defined-proof-site" data-page="{html.escape(page, quote=True)}" '
+        f'data-family="{html.escape(family.slug, quote=True)}">{body}</body></html>\n'
+    ).encode("utf-8")
+
+
+def _linked_defined_parts(parts: Sequence[Mapping[str, Any]]) -> str:
+    return "".join(
+        f'<a class="pd-definition-ref" '
+        f'href="../definition/{html.escape(str(part["definition"]), quote=True)}.html">'
+        f'{html.escape(str(part["text"]))}</a>'
+        if part["kind"] == "definition"
+        else html.escape(str(part["text"]))
+        for part in parts
+    )
+
+
+def _definition_chips(
+    identifiers: Sequence[str],
+    definitions: Mapping[str, Mapping[str, Any]],
+    *,
+    prefix: str = "../definition/",
+) -> str:
+    return " ".join(
+        f'<a class="pd-chip pd-definition-chip" '
+        f'href="{prefix}{html.escape(identifier, quote=True)}.html">'
+        f'<code>{html.escape(identifier)}</code> '
+        f'{html.escape(str(definitions[identifier]["name"]))}</a>'
+        for identifier in identifiers
+    ) or '<span class="pd-empty">none</span>'
+
+
+def _dependency_chips(
+    names: Sequence[str],
+    tags: Mapping[str, str],
+    external: Mapping[str, Mapping[str, Any]],
+) -> str:
+    chips = []
+    for name in names:
+        if name in tags:
+            chips.append(
+                f'<a class="pd-chip pd-theorem-chip" '
+                f'href="{html.escape(tags[name], quote=True)}.html">'
+                f'<code>{html.escape(tags[name])}</code> {html.escape(name)}</a>'
+            )
+            continue
+        evidence = external.get(name)
+        if evidence is None:
+            label = "external candidate; release status unattested"
+        elif evidence["admitted_to_stable"]:
+            label = "Stable closed"
+        elif evidence["admitted_to_alpha"]:
+            label = "Alpha closed"
+        elif evidence["enrolled_in_alpha"]:
+            label = f'Alpha {evidence["alpha_evidence"]}; no checked-use authority'
+        else:
+            label = "unenrolled candidate; no checked-use authority"
+        chips.append(
+            '<span class="pd-chip" data-external-dependency="true">'
+            f'{html.escape(name)} · {html.escape(label)}</span>'
+        )
+    return " ".join(chips) or '<span class="pd-empty">none</span>'
+
+
 def _family_landing_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     """Keep public family entrances identical to the original proof families."""
 
     target = html.escape(str(corpus["root_names"][-1]), quote=True)
+    root_tag = _theorem_tags(family, corpus)[str(corpus["root_names"][-1])]
     title = html.escape(family.title)
     description = html.escape(family.description)
     page = f"""<!doctype html>
@@ -1524,7 +1796,7 @@ def _family_landing_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
       <p class="lede">{description}</p>
       <div class="hero-actions">
         <a class="primary-action" href="explorer/defined/graph.html?target={target}&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus">Open the definition-aware map</a>
-        <a class="secondary-action" href="explorer/defined/graph.html?target={target}">Read the final theorem</a>
+        <a class="secondary-action" href="explorer/defined/tag/{root_tag}.html">Read the final theorem</a>
       </div>
     </div>
   </header>
@@ -1558,13 +1830,14 @@ def _family_landing_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
 
 
 def _defined_library_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
-    """Mirror the original definition-aware searchable theorem-library UI."""
+    """Use the original definition-aware library, including actual detail pages."""
 
-    target = html.escape(str(corpus["root_names"][-1]), quote=True)
+    tags = _theorem_tags(family, corpus)
+    root_tag = tags[str(corpus["root_names"][-1])]
     definition_cards = "".join(
         f'<article class="pd-result pd-result-definition" data-entry '
         f'data-kind="definition" data-search="{html.escape(" ".join((definition["id"], definition["name"], definition["summary"])).lower(), quote=True)}">'
-        f'<a href="graph.html#frontier-definition-{html.escape(definition["id"], quote=True)}">'
+        f'<a href="definition/{html.escape(definition["id"], quote=True)}.html">'
         f'<code>{html.escape(definition["id"])}</code> · '
         f'<strong>{html.escape(definition["name"])}</strong></a>'
         f'<p>{html.escape(definition["summary"])}</p>'
@@ -1573,8 +1846,9 @@ def _defined_library_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     )
     theorem_cards = "".join(
         f'<article class="pd-result" data-entry data-kind="theorem" '
-        f'data-search="{html.escape(" ".join((node["name"], node["summary"], node["defined"]["defined_statement"][:240])).lower(), quote=True)}">'
-        f'<a href="graph.html?target={html.escape(node["name"], quote=True)}">'
+        f'data-search="{html.escape(" ".join((node["name"], tags[node["name"]], node["summary"], node["defined"]["defined_statement"][:240])).lower(), quote=True)}">'
+        f'<a href="tag/{html.escape(tags[node["name"]], quote=True)}.html">'
+        f'<code>{html.escape(tags[node["name"]])}</code> · '
         f'<strong>{html.escape(node["name"])}</strong></a>'
         f'<p>{html.escape(node["summary"])}</p>'
         f'<small>theorem body · {len(node["defined"]["definition_uses"])} '
@@ -1582,17 +1856,8 @@ def _defined_library_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
         for node in corpus["nodes"]
     )
     count = int(corpus["definition_count"]) + int(corpus["node_count"])
-    page = f"""<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{html.escape(family.title)} with defined notation</title>
-  <link rel="stylesheet" href="../../../assets/frontier.css">
-</head>
-<body class="pa-defined-proof-site" data-page="index" data-family="{family.slug}">
-  <header class="pd-header pd-hero">
-    <nav><a href="../../">{html.escape(family.title)}</a><a href="../">Exact explicit edition</a><a href="graph.html?target={target}">Mixed dependency graph</a></nav>
+    body = f"""<header class="pd-header pd-hero">
+    <nav><a href="../../">{html.escape(family.title)}</a><a href="../">Exact explicit edition</a><a href="graph.html?target={root_tag}&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus">Mixed dependency graph</a><a href="tag/{root_tag}.html">Final theorem</a></nav>
     <p class="pd-kicker">Parallel reading edition</p>
     <h1>{html.escape(family.title)} with defined notation</h1>
     <p>Readable conservative notation is linked to exact expansions while the complete explicit tactic corpus remains visible.</p>
@@ -1603,11 +1868,171 @@ def _defined_library_html(family: Family, corpus: Mapping[str, Any]) -> bytes:
     <p class="pd-callout">{html.escape(CANDIDATE_STATUS)}.</p>
     <section class="pd-results">{definition_cards}{theorem_cards}</section>
   </main>
-  <script src="../../../assets/frontier.js" defer></script>
-</body>
-</html>
 """
-    return page.encode("utf-8")
+    return _defined_page(
+        family,
+        f"{family.title} with defined notation",
+        body,
+        page="index",
+        assets="../../../assets",
+    )
+
+
+def _defined_theorem_html(
+    family: Family,
+    corpus: Mapping[str, Any],
+    node: Mapping[str, Any],
+    tags: Mapping[str, str],
+    paths: Mapping[str, tuple[str, ...]],
+) -> bytes:
+    tag = tags[str(node["name"])]
+    definitions = {str(row["id"]): row for row in corpus["definitions"]}
+    external = {
+        str(row["name"]): row for row in corpus["external_dependencies"]
+    }
+    defined = node["defined"]
+    statement_ids = tuple(str(item) for item in defined["statement_definition_uses"])
+    script_ids = tuple(str(item) for item in defined["script_definition_uses"])
+    compact_lines = {
+        int(line["number"]): line for line in defined["defined_script_lines"]
+    }
+    rendered_lines = []
+    for number, exact in enumerate(node["script"], start=1):
+        compact = compact_lines.get(number)
+        command = (
+            _linked_defined_parts(compact["command_parts"])
+            if compact is not None
+            else html.escape(str(exact))
+        )
+        fallback = (
+            '<details class="pd-exact-line"><summary>Exact native replay line'
+            f'</summary><code>{html.escape(str(exact))}</code></details>'
+            if compact is not None
+            else ""
+        )
+        classes = "pd-proof-line pd-proof-line-defined" if compact else "pd-proof-line"
+        rendered_lines.append(
+            f'<li class="{classes}" id="proof-line-{number:04d}" '
+            f'data-line="{number}" data-defined-changed="{str(bool(compact)).lower()}">'
+            f'<a class="pd-line-number" href="#proof-line-{number:04d}">'
+            f'{number:04d}</a><code class="pd-defined-command">{command}</code>'
+            f"{fallback}</li>"
+        )
+    dependents = [
+        str(row["name"])
+        for row in corpus["nodes"]
+        if node["name"] in row["dependencies"]
+    ]
+    experimental = (
+        f'<p class="pd-callout">{html.escape(EXPERIMENTAL_CLOSURE_STATUS)}.</p>'
+        if node["experimental_closure_verified"]
+        else ""
+    )
+    statement_parts = _linked_defined_parts(defined["statement_parts"])
+    body = (
+        '<header class="pd-header"><nav><a href="../index.html">Defined edition</a>'
+        f'<a href="../../tag/{tag}.html">Explicit edition</a>'
+        f'<a href="../graph.html?target={tag}">Mixed graph</a></nav>'
+        f'<p class="pd-kicker">{tag} · theorem body</p>'
+        f'<h1>{html.escape(str(node["name"]))}</h1>'
+        f'<p class="pd-status pd-status-candidate">{html.escape(str(node["status"]))}</p>'
+        f'<p>{html.escape(str(node["summary"]))}</p>{experimental}</header>'
+        '<main class="pd-theorem-layout"><div><section>'
+        '<h2>Statement with defined notation</h2>'
+        '<button type="button" data-copy-target="defined-statement">Copy text</button>'
+        f'<pre id="defined-statement"><code>{statement_parts}</code></pre>'
+        '<p class="pd-callout">Every purple notation token opens its conservative '
+        'definition. This reading surface never changes the unchanged intuitionistic '
+        'kernel or confers checked-use authority.</p></section><section>'
+        '<h2>Definitions used by this theorem</h2><h3>In the theorem statement</h3>'
+        f'<div class="pd-chip-row">{_definition_chips(statement_ids, definitions)}</div>'
+        '<h3>In local proof propositions</h3>'
+        f'<div class="pd-chip-row">{_definition_chips(script_ids, definitions)}</div>'
+        '</section><details><summary>Exact expanded first-order statement</summary>'
+        '<button type="button" data-copy-target="expanded-statement">Copy expansion</button>'
+        f'<pre id="expanded-statement"><code>{html.escape(str(node["statement"]))}'
+        '</code></pre></details><section><h2>Proof neighborhood</h2>'
+        '<h3>Direct theorem prerequisites</h3>'
+        f'<div class="pd-chip-row">{_dependency_chips(node["dependencies"], tags, external)}</div>'
+        '<h3>Direct theorem dependents</h3>'
+        f'<div class="pd-chip-row">{_dependency_chips(dependents, tags, external)}</div>'
+        '</section><section><h2>Definition-aware tactic body</h2>'
+        '<p>Only propositions whose conservative expansion has been checked for '
+        'exact first-order equivalence are compacted. Every changed line retains '
+        'its immutable exact replay command.</p>'
+        f'<ol class="pd-formal-proof">{"".join(rendered_lines)}</ol></section></div>'
+        '<aside><h2>Display receipt</h2><dl>'
+        f'<dt>Proof tag</dt><dd>{tag}</dd>'
+        f'<dt>Local proof layer</dt><dd>{len(paths[str(node["name"])]) - 1}</dd>'
+        f'<dt>Tactic lines</dt><dd>{len(node["script"])}</dd>'
+        f'<dt>Compacted local lines</dt><dd>{len(compact_lines)}</dd>'
+        f'<dt>Exact statement SHA-256</dt><dd><code>{html.escape(str(node["statement_sha256"]))}</code></dd>'
+        f'<dt>Alpha enrollment</dt><dd>{"body_checked; no checked-use authority" if node["enrolled_in_alpha"] else "not enrolled"}</dd>'
+        f'<dt>Native source</dt><dd><code>{html.escape(str(node["source_module"]))}</code></dd>'
+        f'<dt>Explicit proof</dt><dd><a href="../../tag/{tag}.html">open exact theorem page</a></dd>'
+        '</dl></aside></main>'
+    )
+    return _defined_page(
+        family,
+        f"{tag} — {node['name']} — defined notation",
+        body,
+        page="theorem",
+        assets="../../../../assets",
+    )
+
+
+def _definition_html(
+    family: Family,
+    corpus: Mapping[str, Any],
+    definition: Mapping[str, Any],
+    tags: Mapping[str, str],
+) -> bytes:
+    identifier = str(definition["id"])
+    root_tag = tags[str(corpus["root_names"][-1])]
+    users = [
+        node
+        for node in corpus["nodes"]
+        if identifier in node["defined"]["definition_uses"]
+    ]
+    user_links = " ".join(
+        '<a class="pd-chip pd-theorem-chip" '
+        f'href="../tag/{tags[str(node["name"])]}.html">'
+        f'<code>{tags[str(node["name"])]}</code> '
+        f'{html.escape(str(node["name"]))}</a>'
+        for node in users
+    ) or '<span class="pd-empty">none</span>'
+    signature = f'{definition["name"]}({", ".join(definition["parameters"])})'
+    body = (
+        '<header class="pd-header pd-definition-header"><nav>'
+        '<a href="../index.html">Defined edition</a>'
+        f'<a href="../graph.html?target={root_tag}&amp;focus={identifier}">Mixed graph</a>'
+        '<a href="../../index.html">Exact explicit proof</a></nav>'
+        f'<p class="pd-kicker">{html.escape(identifier)} · conservative definition</p>'
+        f'<h1>{html.escape(str(definition["name"]))}</h1>'
+        f'<p>{html.escape(str(definition["summary"]))}</p></header>'
+        '<main class="pd-definition-page"><section><h2>Readable signature</h2>'
+        f'<pre><code>{html.escape(signature)}</code></pre></section><section>'
+        '<h2>Exact expansion</h2><button type="button" '
+        'data-copy-target="definition-expansion">Copy expansion</button>'
+        f'<pre id="definition-expansion"><code>{html.escape(str(definition["expanded_template"]))}</code></pre>'
+        '<p class="pd-callout">This node is conservative notation, not a theorem, '
+        'axiom, predicate constant, or kernel rule. Its expansion remains in the '
+        'unchanged first-order language.</p></section><section>'
+        '<h2>Definition neighborhood</h2>'
+        '<h3>Used by theorem statements or local proof propositions</h3>'
+        f'<div class="pd-chip-row">{user_links}</div></section><aside>'
+        '<h2>Definition receipt</h2><dl><dt>Expansion SHA-256</dt>'
+        f'<dd><code>{html.escape(str(definition["template_sha256"]))}</code></dd>'
+        f'<dt>Origin</dt><dd>{html.escape(str(definition["origin"]))}</dd>'
+        '</dl></aside></main>'
+    )
+    return _defined_page(
+        family,
+        f'{identifier} — {definition["name"]}',
+        body,
+        page="definition",
+        assets="../../../../assets",
+    )
 
 
 def _family_html(
@@ -1616,60 +2041,110 @@ def _family_html(
     *,
     notation: str = "defined",
 ) -> bytes:
-    if notation not in {"defined", "exact"}:
-        raise ValueError("frontier proof graph notation must be defined or exact")
-    safe_json = json.dumps(corpus, ensure_ascii=False, separators=(",", ":")).replace(
-        "</", "<\\/"
+    if notation != "defined":
+        raise ValueError("the canonical mixed graph uses defined notation")
+    tags = _theorem_tags(family, corpus)
+    paths = _proof_paths(corpus, tags)
+    graph = _mixed_graph(family, corpus, tags, paths)
+    root_tag = graph["root_tag"]
+    payload = json.dumps(
+        graph, ensure_ascii=True, sort_keys=True, separators=(",", ":")
+    ).replace("&", r"\u0026").replace("<", r"\u003c").replace(">", r"\u003e")
+    calculator_payload = json.dumps(
+        {
+            "nodes": [],
+            "external_dependencies": [],
+            "definitions": [],
+            "edges": [],
+            "root_names": [],
+            "example": family.example,
+        },
+        ensure_ascii=True,
+        separators=(",", ":"),
     )
-    assets = "../../../assets" if notation == "defined" else "../../assets"
-    family_home = "../../" if notation == "defined" else "../"
-    defined_home = "index.html" if notation == "defined" else "defined/"
-    alternate = "../" if notation == "defined" else "defined/graph.html"
-    alternate_title = "Exact explicit edition" if notation == "defined" else "Defined notation map"
-    exact_selected = notation == "exact"
-    definition_cards = "".join(
-        f'<details class="frontier-definition" '
-        f'id="frontier-definition-{html.escape(definition["id"], quote=True)}" '
-        f'data-definition-id="{html.escape(definition["id"], quote=True)}">'
-        f'<summary><code>{html.escape(definition["name"])}'
-        f'({html.escape(", ".join(definition["parameters"]))})</code></summary>'
-        f'<p>{html.escape(definition["summary"])}</p>'
-        f'<pre>{html.escape(definition["expanded_template"])}</pre>'
-        f'<small>{html.escape(definition["id"])} · exact expansion SHA-256 '
-        f'{html.escape(definition["template_sha256"])}</small></details>'
-        for definition in corpus["definitions"]
+    experiments = (
+        '<details class="frontier-evidence-record"><summary>Historical experimental '
+        f'replay records</summary>{_experimental_progress_markup(corpus)}</details>'
+        if corpus["experimental_closure_campaigns"]
+        else ""
     )
-    page = f"""<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{html.escape(family.title)} — {'Exact proof explorer' if exact_selected else 'Theorems and definitions'}</title>
-  <meta name="description" content="{html.escape(family.description, quote=True)}">
-  <link rel="stylesheet" href="{assets}/frontier.css">
-</head>
-<body class="pa-defined-proof-site" data-page="graph" data-family="{family.slug}" data-frontier-notation="{notation}">
-  <header class="pd-header">
-    <nav><a href="{family_home}">{html.escape(family.title)}</a><a href="{defined_home}">Defined edition</a><a href="{alternate}">{alternate_title}</a></nav>
-    <p class="pd-kicker">{'Exact first-order proof graph' if exact_selected else 'Typed theorem and definition graph'}</p>
-    <h1>{html.escape(family.title)}</h1>
-    <p>{html.escape(family.description)}</p>
-    <div class="pd-stats"><b>{corpus['node_count']}</b> theorem bodies · <b>{corpus['definition_count']}</b> definitions · <b>{corpus['edge_count']}</b> proof edges</div>
-  </header>
-  <main class="frontier-main">
-    <section class="frontier-graph-section"><div class="frontier-toolbar"><h2>Interactive proof map</h2><label>Search theorems <input id="frontier-search" type="search" placeholder="Name, summary, exact or defined statement"></label><div class="frontier-view-controls" role="group" aria-label="Statement notation"><button data-frontier-view="defined" type="button" aria-pressed="{'false' if exact_selected else 'true'}">Readable definitions</button><button data-frontier-view="exact" type="button" aria-pressed="{'true' if exact_selected else 'false'}">Exact HA</button></div><span>Gold nodes are endpoints; teal outlines mark replay-verified experiments, not release evidence.</span></div><div class="frontier-map-controls" role="group" aria-label="Proof graph controls"><button id="frontier-zoom-out" type="button" aria-label="Zoom out">−</button><output id="frontier-zoom-level">100%</output><button id="frontier-zoom-in" type="button" aria-label="Zoom in">+</button><button id="frontier-zoom-fit" type="button">Fit map</button><button id="frontier-focus" type="button" aria-pressed="false">Focus dependencies</button><button id="frontier-print" type="button">Print proof map</button></div><div class="frontier-graph-scroll">{_svg(corpus)}</div></section>
-    <section class="frontier-detail" id="frontier-detail" aria-live="polite"><h2>Choose a theorem</h2><p>Select a graph node to inspect its readable defined notation, exact first-order statement, linked definitions, declaration, dependencies, proof script, and source receipts.</p></section>
-    {_example_markup(family)}
-    <section class="frontier-definitions"><h2>Conservative definitions</h2><p>Each notation below expands immediately into the unchanged first-order language; it introduces no trusted kernel predicate.</p>{definition_cards}</section>
-    <section class="frontier-boundary"><h2>Evidence and release boundary</h2><p><strong>{html.escape(CANDIDATE_STATUS)}</strong></p><p>{html.escape(family.scope)}</p><p>Alpha v15 enrolls exactly {corpus['alpha_enrolled_node_count']} of these {corpus['node_count']} displayed bodies as body_checked. Each original Alpha-v13, v14, or v15 enrollment version remains recorded separately. Enrollment records an exact dependency-curried proof body; it does not grant checked theorem use, empty-context closure, or Stable membership. Separately displayed historical replay experiments have no persisted certificate and do not change release evidence, checked-use authority, or Stable admission. This browser surface does not replay a proof, authorize theorem use, alter an edition, or assert completion beyond the exact listed endpoints.</p></section>
-{f'<details class="frontier-evidence-record"><summary>Historical experimental replay records</summary>{_experimental_progress_markup(corpus)}</details>' if corpus['experimental_closure_campaigns'] else ''}
-  </main>
-  <script id="frontier-corpus" type="application/json">{safe_json}</script>
-  <script src="{assets}/frontier.js" defer></script>
-</body>
-</html>
-"""
-    return page.encode("utf-8")
+    calculator_script = _versioned_asset("frontier.js", "../../../assets")
+    body = (
+        '<header class="pd-header"><nav><a href="index.html">Defined edition</a>'
+        '<a href="../index.html">Exact explicit edition</a>'
+        f'<a href="tag/{root_tag}.html">Final theorem</a></nav>'
+        '<p class="pd-kicker">Typed mixed graph</p>'
+        f'<h1>{html.escape(family.title)}: theorems and conservative definitions</h1>'
+        '<p>Proof arrows and notation arrows are intentionally different relations. '
+        'Only theorem-proof arrows participate in premise paths.</p></header>'
+        '<main class="pd-graph-page" data-defined-graph>'
+        '<form class="pd-graph-controls" data-graph-form>'
+        '<label>Target theorem <input data-graph-target '
+        f'list="pd-graph-theorems" value="{root_tag}" required></label>'
+        '<datalist id="pd-graph-theorems"></datalist>'
+        '<label>View <select data-graph-view>'
+        '<option value="critical">Critical theorem path</option>'
+        '<option value="prerequisites">Complete theorem prerequisite cone</option>'
+        '<option value="neighborhood" selected>Direct theorem neighborhood</option>'
+        '<option value="corpus">Entire theorem corpus</option></select></label>'
+        '<label>Definitions <select data-graph-definitions>'
+        '<option value="selected" selected>Selected node only</option>'
+        '<option value="off">Hide definitions</option>'
+        '<option value="visible">All visible theorem definitions (heavy)</option>'
+        '</select></label><label>Arrows <select data-graph-edges>'
+        '<option value="focus" selected>Focused: path + selected node</option>'
+        '<option value="none">Hide arrows</option>'
+        '<option value="all">All direct arrows (heavy)</option></select></label>'
+        '<button type="submit">Draw</button></form>'
+        '<p class="pd-graph-note">Sparse modes suppress visual objects only. '
+        'Every local proof and notation relation remains in the selected-node panel; '
+        'external prerequisites and their exact release evidence appear on each '
+        'individual theorem page.</p><div class="pd-graph-layout"><section>'
+        '<div class="pd-graph-toolbar"><p data-graph-summary aria-live="polite">'
+        'Loading graph…</p><div><button type="button" data-graph-zoom="in" '
+        'aria-label="Zoom in">+</button><button type="button" data-graph-zoom="out" '
+        'aria-label="Zoom out">−</button><button type="button" data-graph-fit '
+        'aria-label="Fit graph">Fit</button></div></div>'
+        '<div class="pd-graph-stage"><svg data-graph-svg tabindex="0" role="group" '
+        'aria-labelledby="pd-graph-instructions"><text x="20" y="35">'
+        'Loading…</text></svg></div><p id="pd-graph-instructions" '
+        'class="pd-graph-note">Proof arrows run from prerequisite to dependent; '
+        'notation arrows run from a theorem to the definition it uses. Select a '
+        'node to inspect every direct relation.</p><div class="pd-legend">'
+        '<span><i class="pd-legend-theorem"></i> theorem</span>'
+        '<span><i class="pd-legend-definition"></i> definition</span>'
+        '<span><i class="pd-legend-proof"></i> proof dependency</span>'
+        '<span><i class="pd-legend-notation"></i> uses definition</span>'
+        '</div></section><aside class="pd-graph-details">'
+        '<p class="pd-kicker">Selected node</p>'
+        '<h2 data-graph-title tabindex="-1">Loading…</h2><p data-graph-kind></p>'
+        '<p data-graph-description></p><dl data-graph-metadata></dl>'
+        '<p><a data-graph-open href="index.html">Open node →</a></p>'
+        '<h3>Outgoing relations</h3><ul data-graph-outgoing></ul>'
+        '<h3>Incoming relations</h3><ul data-graph-incoming></ul></aside></div>'
+        f'<p class="pd-callout">{html.escape(CANDIDATE_STATUS)}.</p>'
+        f"{_example_markup(family)}"
+        '<section><h2>Evidence and release boundary</h2>'
+        f'<p>{html.escape(family.scope)}</p>'
+        f'<p>Alpha v15 enrolls exactly {corpus["alpha_enrolled_node_count"]} of '
+        f'{corpus["node_count"]} displayed bodies as body_checked. Enrollment does '
+        'not grant checked theorem use, empty-context closure, or Stable membership. '
+        'Historical replay experiments have no persisted certificate and do not '
+        'change release evidence, checked-use authority, or Stable admission.</p>'
+        f'</section>{experiments}<noscript><p class="pd-callout">The graph requires '
+        'JavaScript. Every theorem and definition page remains available from the '
+        'index.</p></noscript></main>'
+        f'<script id="pa-defined-graph-data">window.PA_DEFINED_GRAPH={payload};</script>'
+        f'<script id="frontier-corpus" type="application/json">{calculator_payload}</script>'
+        f'<script defer src="{html.escape(calculator_script, quote=True)}"></script>'
+    )
+    return _defined_page(
+        family,
+        f"{family.title} — theorems and definitions",
+        body,
+        page="graph",
+        assets="../../../assets",
+    )
 
 
 FRONTIER_CSS = r""":root{color-scheme:light dark;--ink:#162137;--muted:#617089;--paper:#f5f7fc;--surface:#ffffff;--line:#dce2ef;--violet:#6249ca;--teal:#087f78;--gold:#d18a12;--status:#845400;--status-bg:#fff3d5}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.frontier-hero{padding:2.8rem max(calc((100vw - 1250px)/2),5vw) 3rem;color:#fff;background:radial-gradient(circle at 85% 20%,#35337f,transparent 38%),linear-gradient(135deg,#101a31,#202345)}.frontier-back{color:#cbd9f0;text-decoration:none}.frontier-kicker{margin:2rem 0 .4rem;color:#91e6d8;font-size:.75rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.frontier-hero h1{margin:.1rem 0 .55rem;font:600 clamp(2rem,5vw,4.2rem)/1.05 Georgia,serif;letter-spacing:-.04em}.frontier-formula{font:600 clamp(1rem,2vw,1.4rem)/1.4 ui-monospace,SFMono-Regular,monospace;color:#a1ebde}.frontier-description,.frontier-scope{max-width:920px;color:#ccd6e8}.frontier-status{display:inline-block;max-width:920px;margin:.45rem 0;padding:.7rem 1rem;border:1px solid #f3d187;border-radius:12px;background:var(--status-bg);color:var(--status);font-size:.87rem;font-weight:750}.frontier-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;max-width:900px;margin:1.7rem 0 0}.frontier-stats div{padding:.7rem .9rem;border:1px solid #ffffff25;border-radius:12px;background:#ffffff0a}.frontier-stats dt{font-size:1.18rem;font-weight:800}.frontier-stats dd{margin:0;color:#cad3e5;font-size:.74rem}.frontier-main{width:min(1350px,calc(100% - 2rem));margin:1.5rem auto 4rem}.frontier-graph-section,.frontier-detail,.frontier-example,.frontier-definitions,.frontier-boundary{margin-bottom:1.25rem;padding:1.2rem;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:0 8px 30px #1720330b}.frontier-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:1rem}.frontier-toolbar h2,.frontier-detail h2,.frontier-example h2,.frontier-definitions h2,.frontier-boundary h2{margin:.15rem 0;font:600 1.35rem Georgia,serif}.frontier-toolbar label,.frontier-example label{display:grid;gap:.2rem;color:var(--muted);font-size:.75rem}.frontier-toolbar span{color:var(--muted);font-size:.76rem}.frontier-toolbar input,.frontier-example input{min-height:36px;padding:.4rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}.frontier-graph-scroll{overflow:auto;max-height:840px;margin-top:.8rem;border:1px solid var(--line);border-radius:12px;background:linear-gradient(90deg,#f7f9ff 1px,transparent 1px),linear-gradient(#f7f9ff 1px,transparent 1px);background-size:30px 30px}.frontier-svg{display:block;overflow:visible}.frontier-edge{fill:none;stroke:#b3bfd5;stroke-opacity:.62;stroke-width:1.2}.frontier-column-label{fill:var(--muted);font:600 11px ui-sans-serif,system-ui}.frontier-node{cursor:pointer}.frontier-node rect{fill:#f8faff;stroke:#cbd6e8;stroke-width:1}.frontier-node text{fill:#28354d;font:600 10px ui-monospace,monospace}.frontier-node .frontier-node-meta{fill:#697991;font:400 9px ui-sans-serif,system-ui}.frontier-root rect{fill:#fff4d8;stroke:#d18a12;stroke-width:1.3}.frontier-node.selected rect,.frontier-node:focus rect{stroke:var(--violet);stroke-width:2}.frontier-node.dimmed,.frontier-edge.dimmed{opacity:.12}.frontier-detail pre,.frontier-definition pre{max-height:280px;overflow:auto;padding:.8rem;border:1px solid var(--line);border-radius:8px;background:#f7f9ff;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 ui-monospace,monospace}.frontier-dependency-list{display:flex;flex-wrap:wrap;gap:.45rem}.frontier-chip{padding:.25rem .55rem;border:1px solid var(--line);border-radius:999px;font:11px ui-monospace,monospace}.frontier-chip.internal{color:var(--teal);cursor:pointer}.frontier-chip.external{color:var(--muted)}.frontier-example form{display:flex;flex-wrap:wrap;gap:.8rem;align-items:end}.frontier-example input{width:130px}.frontier-example button{min-height:38px;padding:.5rem .9rem;border:0;border-radius:9px;background:var(--violet);color:#fff;font-weight:700}.frontier-example output{display:block;min-height:35px;margin-top:1rem;color:var(--teal);font:600 14px ui-monospace,monospace;white-space:pre-wrap}.frontier-definition{margin:.65rem 0;padding:.7rem .8rem;border:1px solid var(--line);border-radius:10px}.frontier-definition summary{cursor:pointer}.frontier-definition code,.frontier-detail code{font:12px ui-monospace,monospace;color:var(--violet)}.frontier-definition small,.frontier-detail small{color:var(--muted);overflow-wrap:anywhere}.frontier-boundary strong{color:var(--status)}@media(prefers-color-scheme:dark){:root{--ink:#e5eaf4;--muted:#aab6ca;--paper:#0b1020;--surface:#141b2e;--line:#303c54;--violet:#aa99fb;--teal:#75d4c6;--status:#ffe0a0;--status-bg:#493616}.frontier-graph-scroll{background:#11182a}.frontier-node rect{fill:#202b42;stroke:#394864}.frontier-node text{fill:#e1e8f6}.frontier-root rect{fill:#4b391a;stroke:#e7ba56}.frontier-detail pre,.frontier-definition pre{background:#0e1525}.frontier-example button{color:#17142b}.frontier-status{border-color:#8a6627}}@media(max-width:700px){.frontier-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.frontier-toolbar{align-items:stretch}.frontier-main{width:calc(100% - 1rem)}.frontier-hero{padding-inline:1rem}.frontier-example input{width:98px}}
@@ -1900,7 +2375,7 @@ def _landing_html(corpora: Mapping[str, Mapping[str, Any]]) -> bytes:
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>Constructive Arithmetic Proof Explorers</title>'
-        '<link rel="stylesheet" href="assets/frontier.css"></head>'
+        f'<link rel="stylesheet" href="{_versioned_asset("defined-explorer.css", "assets")}"></head>'
         '<body class="pa-defined-proof-site" data-page="index">'
         '<header class="pd-header pd-hero"><p class="pd-kicker">Constructive arithmetic</p>'
         '<h1>Proof explorers</h1>'
@@ -1919,11 +2394,24 @@ def build_files() -> tuple[dict[str, bytes], dict[str, Any]]:
             FRONTIER_CSS + "\n" + DEFINED_EXPLORER_STYLESHEET.read_text(encoding="utf-8")
         ).encode("utf-8"),
         "assets/frontier.js": FRONTIER_JS.encode("utf-8"),
+        **{
+            f"assets/{filename}": _canonical_asset(filename)
+            for filename in (
+                "defined-explorer.css",
+                "defined-explorer.js",
+                "exact-explorer.css",
+                "exact-explorer.js",
+            )
+        },
     }
     families = []
     for family in FAMILIES:
         corpus = corpora[family.slug]
         corpus_bytes = _json(corpus)
+        tags = _theorem_tags(family, corpus)
+        paths = _proof_paths(corpus, tags)
+        layers = {name: len(path) - 1 for name, path in paths.items()}
+        graph = _mixed_graph(family, corpus, tags, paths)
         files[f"{family.slug}/index.html"] = _family_landing_html(family, corpus)
         files[f"{family.slug}/explorer/defined/index.html"] = (
             _defined_library_html(family, corpus)
@@ -1931,9 +2419,36 @@ def build_files() -> tuple[dict[str, bytes], dict[str, Any]]:
         files[f"{family.slug}/explorer/defined/graph.html"] = (
             _family_html(family, corpus, notation="defined")
         )
-        files[f"{family.slug}/explorer/index.html"] = (
-            _family_html(family, corpus, notation="exact")
+        files[f"{family.slug}/explorer/defined/api/graph.json"] = _json(graph)
+        files[f"{family.slug}/explorer/index.html"] = render_exact_index(
+            family,
+            corpus,
+            tags,
+            layers,
+            stylesheet_href=_versioned_asset("exact-explorer.css", "../../assets"),
+            script_href=_versioned_asset("exact-explorer.js", "../../assets"),
         )
+        for node in corpus["nodes"]:
+            tag = tags[str(node["name"])]
+            files[f"{family.slug}/explorer/defined/tag/{tag}.html"] = (
+                _defined_theorem_html(family, corpus, node, tags, paths)
+            )
+            files[f"{family.slug}/explorer/tag/{tag}.html"] = render_exact_theorem(
+                family,
+                corpus,
+                node,
+                tags,
+                layers,
+                stylesheet_href=_versioned_asset(
+                    "exact-explorer.css", "../../../assets"
+                ),
+                script_href=_versioned_asset("exact-explorer.js", "../../../assets"),
+            )
+        for definition in corpus["definitions"]:
+            identifier = str(definition["id"])
+            files[
+                f"{family.slug}/explorer/defined/definition/{identifier}.html"
+            ] = _definition_html(family, corpus, definition, tags)
         files[f"{family.slug}/api/corpus.json"] = corpus_bytes
         families.append(
             {

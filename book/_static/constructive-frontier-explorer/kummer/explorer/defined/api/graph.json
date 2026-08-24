@@ -1,0 +1,886 @@
+{
+  "alpha_edition_identity_sha256": "2f1a097ac0b6821c74cd4da088c396d3b9960ffd43e169f22b4778d5871adc66",
+  "candidate_status": "dependency-curried kernel-checked candidate body; Alpha enrollment varies; not admitted for checked use or Stable",
+  "definition_count": 16,
+  "edges": [
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU0000",
+      "target": "KU0001"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU0000",
+      "target": "KU0002"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU0003",
+      "target": "KU0004"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU0004",
+      "target": "KU0005"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU0000",
+      "target": "KU0006"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU0006",
+      "target": "KU0008"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU0007",
+      "target": "KU0008"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU000A",
+      "target": "KU000B"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU0005",
+      "target": "KU000C"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU0008",
+      "target": "KU000C"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU0009",
+      "target": "KU000C"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU000B",
+      "target": "KU000C"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU000D",
+      "target": "KU000E"
+    },
+    {
+      "body_reference": true,
+      "explicit_reference_count": 1,
+      "kind": "proof_dependency",
+      "source": "KU000C",
+      "target": "KU000E"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "KU0000",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "KU0000",
+      "statement_occurrences": 3,
+      "target": "PD0007"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU0001",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "KU0001",
+      "statement_occurrences": 3,
+      "target": "PD0007"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU0002",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "KU0002",
+      "statement_occurrences": 3,
+      "target": "PD0007"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "KU0003",
+      "statement_occurrences": 0,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "KU0007",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 15,
+      "source": "KU0007",
+      "statement_occurrences": 11,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "KU0008",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "KU0008",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU0009",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 8,
+      "source": "KU0009",
+      "statement_occurrences": 4,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU0009",
+      "statement_occurrences": 1,
+      "target": "PD0016"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "KU000A",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 8,
+      "source": "KU000A",
+      "statement_occurrences": 8,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000B",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 4,
+      "source": "KU000B",
+      "statement_occurrences": 4,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "KU000B",
+      "statement_occurrences": 3,
+      "target": "PD0015"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000B",
+      "statement_occurrences": 1,
+      "target": "PD0017"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "KU000C",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000C",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 8,
+      "source": "KU000C",
+      "statement_occurrences": 4,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "KU000C",
+      "statement_occurrences": 0,
+      "target": "PD0016"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000C",
+      "statement_occurrences": 1,
+      "target": "PD0017"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000C",
+      "statement_occurrences": 1,
+      "target": "PD0041"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000C",
+      "statement_occurrences": 1,
+      "target": "PD0046"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "KU000C",
+      "statement_occurrences": 3,
+      "target": "PD0049"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "KU000D",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000D",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000D",
+      "statement_occurrences": 1,
+      "target": "PD0046"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "KU000E",
+      "statement_occurrences": 0,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000E",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "KU000E",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000E",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 4,
+      "source": "KU000E",
+      "statement_occurrences": 4,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "KU000E",
+      "statement_occurrences": 3,
+      "target": "PD0017"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000E",
+      "statement_occurrences": 1,
+      "target": "PD0041"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "KU000E",
+      "statement_occurrences": 1,
+      "target": "PD0046"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "KU000E",
+      "statement_occurrences": 3,
+      "target": "PD0049"
+    }
+  ],
+  "external_dependency_count": 41,
+  "family": "kummer",
+  "nodes": [
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU0000.html",
+      "id": "KU0000",
+      "kind": "theorem",
+      "layer": 0,
+      "name": "division_add_quotient_bit",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "Adding arbitrary dividends changes the sum of their quotients by at most one carry.",
+      "tag": "KU0000"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
+      "experimental_closure_verified": false,
+      "href": "tag/KU0001.html",
+      "id": "KU0001",
+      "kind": "theorem",
+      "layer": 1,
+      "name": "division_add_quotient_lower",
+      "scope": "candidate",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
+      "summary": "The quotient of a sum is at least the sum of its two quotients.",
+      "tag": "KU0001"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": null,
+      "enrolled_in_alpha": false,
+      "experimental_closure_verified": false,
+      "href": "tag/KU0002.html",
+      "id": "KU0002",
+      "kind": "theorem",
+      "layer": 1,
+      "name": "division_add_quotient_upper",
+      "scope": "candidate",
+      "status": "dependency-curried kernel-checked candidate body; not enrolled in Alpha or Stable",
+      "summary": "The quotient of a sum is at most one above the sum of its quotients.",
+      "tag": "KU0002"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU0003.html",
+      "id": "KU0003",
+      "kind": "theorem",
+      "layer": 0,
+      "name": "choose_factorial_valuation_balance",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "An arbitrary binomial valuation is the deficit between three factorial valuations.",
+      "tag": "KU0003"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU0004.html",
+      "id": "KU0004",
+      "kind": "theorem",
+      "layer": 1,
+      "name": "choose_legendre_valuation_balance",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "The valuation of any in-range binomial coefficient is its exact Legendre-sum deficit.",
+      "tag": "KU0004"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU0005.html",
+      "id": "KU0005",
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binomial_legendre_valuation_balance",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "For C(a+b,a), the prime valuation equals the three-summand Legendre deficit.",
+      "tag": "KU0005"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU0006.html",
+      "id": "KU0006",
+      "kind": "theorem",
+      "layer": 1,
+      "name": "add_quotient_carry_choice",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "Three arbitrary power-quotient prefixes admit a constructive pointwise carry bit.",
+      "tag": "KU0006"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU0007.html",
+      "id": "KU0007",
+      "kind": "theorem",
+      "layer": 0,
+      "name": "add_quotient_carry_prefix_extend",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "A three-prefix additive carry code extends by one selected terminal bit.",
+      "tag": "KU0007"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU0008.html",
+      "id": "KU0008",
+      "kind": "theorem",
+      "layer": 2,
+      "name": "add_quotient_carry_prefix_exists",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "Three arbitrary power-quotient prefixes admit a beta-coded additive carry prefix.",
+      "tag": "KU0008"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU0009.html",
+      "id": "KU0009",
+      "kind": "theorem",
+      "layer": 0,
+      "name": "add_quotient_carry_prefix_all_bits",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "Every value decoded from a general additive carry prefix is zero or one.",
+      "tag": "KU0009"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU000A.html",
+      "id": "KU000A",
+      "kind": "theorem",
+      "layer": 0,
+      "name": "add_quotient_carry_prefix_restrict",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "Dropping the terminal position preserves a three-prefix additive carry code.",
+      "tag": "KU000A"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU000B.html",
+      "id": "KU000B",
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_sum_add_carry_exact",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "The sum-prefix quotient total equals both addend totals plus the exact carry count.",
+      "tag": "KU000B"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU000C.html",
+      "id": "KU000C",
+      "kind": "theorem",
+      "layer": 3,
+      "name": "kummer_binomial_carry_bit_count",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "Kummer's theorem: the valuation of C(a+b,a) is the number of base-p addition carries.",
+      "tag": "KU000C"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU000D.html",
+      "id": "KU000D",
+      "kind": "theorem",
+      "layer": 0,
+      "name": "prime_power_valuation_zero_iff_not_divides",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "At a prime base and nonzero value, valuation zero is equivalent to nondivisibility.",
+      "tag": "KU000D"
+    },
+    {
+      "alpha_checked_use": false,
+      "alpha_evidence": "body_checked",
+      "enrolled_in_alpha": true,
+      "experimental_closure_verified": false,
+      "href": "tag/KU000E.html",
+      "id": "KU000E",
+      "kind": "theorem",
+      "layer": 4,
+      "name": "kummer_carry_free_iff_not_divides",
+      "scope": "candidate",
+      "status": "Alpha v15 enrolled · body_checked; not admitted for checked use or Stable",
+      "summary": "A constructed general-Kummer carry prefix has count zero exactly when p does not divide the binomial coefficient.",
+      "tag": "KU000E"
+    },
+    {
+      "href": "definition/PD0004.html",
+      "id": "PD0004",
+      "kind": "definition",
+      "name": "Prime",
+      "signature": "Prime(p)",
+      "summary": "p is nonunit and every factorization of p has a unit factor."
+    },
+    {
+      "href": "definition/PD0041.html",
+      "id": "PD0041",
+      "kind": "definition",
+      "name": "Choose",
+      "signature": "Choose(n, k, z)",
+      "summary": "z is the recurrence-defined binomial coefficient of row n and column k."
+    },
+    {
+      "href": "definition/PD0023.html",
+      "id": "PD0023",
+      "kind": "definition",
+      "name": "Factorial",
+      "signature": "Factorial(n, z)",
+      "summary": "z is the relational factorial of n."
+    },
+    {
+      "href": "definition/PD0046.html",
+      "id": "PD0046",
+      "kind": "definition",
+      "name": "PowerValuation",
+      "signature": "PowerValuation(p, n, e)",
+      "summary": "e is the canonical bounded p-adic power valuation of n."
+    },
+    {
+      "href": "definition/PD0044.html",
+      "id": "PD0044",
+      "kind": "definition",
+      "name": "PowerDivides",
+      "signature": "PowerDivides(p, e, n)",
+      "summary": "The relational power p to exponent e divides n."
+    },
+    {
+      "href": "definition/PD0050.html",
+      "id": "PD0050",
+      "kind": "definition",
+      "name": "LegendreSum",
+      "signature": "LegendreSum(p, n, e)",
+      "summary": "e is the finite Legendre sum of the quotients of n by positive powers of p."
+    },
+    {
+      "href": "definition/PD0013.html",
+      "id": "PD0013",
+      "kind": "definition",
+      "name": "BetaAt",
+      "signature": "BetaAt(b, c, i, x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "href": "definition/PD0017.html",
+      "id": "PD0017",
+      "kind": "definition",
+      "name": "BitCount",
+      "signature": "BitCount(b, c, l, z)",
+      "summary": "z is the sum of a beta-coded all-bit prefix."
+    },
+    {
+      "href": "definition/PD0016.html",
+      "id": "PD0016",
+      "kind": "definition",
+      "name": "AllBits",
+      "signature": "AllBits(b, c, l)",
+      "summary": "Every decoded entry below l is zero or one."
+    },
+    {
+      "href": "definition/PD0015.html",
+      "id": "PD0015",
+      "kind": "definition",
+      "name": "Sum",
+      "signature": "Sum(b, c, l, z)",
+      "summary": "z is the sum of a beta-coded prefix of length l."
+    },
+    {
+      "href": "definition/CF0005.html",
+      "id": "CF0005",
+      "kind": "definition",
+      "name": "Carry",
+      "signature": "Carry(p, a, b)",
+      "summary": "The sum of two natural digits is at least the base p."
+    },
+    {
+      "href": "definition/PD0001.html",
+      "id": "PD0001",
+      "kind": "definition",
+      "name": "Le",
+      "signature": "Le(a, b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "href": "definition/PD0002.html",
+      "id": "PD0002",
+      "kind": "definition",
+      "name": "Lt",
+      "signature": "Lt(a, b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "href": "definition/PD0003.html",
+      "id": "PD0003",
+      "kind": "definition",
+      "name": "Dvd",
+      "signature": "Dvd(d, n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "href": "definition/PD0007.html",
+      "id": "PD0007",
+      "kind": "definition",
+      "name": "DivRem",
+      "signature": "DivRem(n, d, q, r)",
+      "summary": "q and r are a quotient and a strict remainder for n by d."
+    },
+    {
+      "href": "definition/PD0049.html",
+      "id": "PD0049",
+      "kind": "definition",
+      "name": "PowerQuotPrefix",
+      "signature": "PowerQuotPrefix(p, n, b, c, l)",
+      "summary": "The beta-coded prefix stores the quotients of n by the first l positive powers of p."
+    }
+  ],
+  "notation_edge_count": 40,
+  "orientation": {
+    "proof_dependency": "prerequisite_theorem_to_dependent_theorem",
+    "uses_definition": "theorem_to_definition"
+  },
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "KU0000": {
+      "critical_root_path": [
+        "KU0000"
+      ]
+    },
+    "KU0001": {
+      "critical_root_path": [
+        "KU0000",
+        "KU0001"
+      ]
+    },
+    "KU0002": {
+      "critical_root_path": [
+        "KU0000",
+        "KU0002"
+      ]
+    },
+    "KU0003": {
+      "critical_root_path": [
+        "KU0003"
+      ]
+    },
+    "KU0004": {
+      "critical_root_path": [
+        "KU0003",
+        "KU0004"
+      ]
+    },
+    "KU0005": {
+      "critical_root_path": [
+        "KU0003",
+        "KU0004",
+        "KU0005"
+      ]
+    },
+    "KU0006": {
+      "critical_root_path": [
+        "KU0000",
+        "KU0006"
+      ]
+    },
+    "KU0007": {
+      "critical_root_path": [
+        "KU0007"
+      ]
+    },
+    "KU0008": {
+      "critical_root_path": [
+        "KU0000",
+        "KU0006",
+        "KU0008"
+      ]
+    },
+    "KU0009": {
+      "critical_root_path": [
+        "KU0009"
+      ]
+    },
+    "KU000A": {
+      "critical_root_path": [
+        "KU000A"
+      ]
+    },
+    "KU000B": {
+      "critical_root_path": [
+        "KU000A",
+        "KU000B"
+      ]
+    },
+    "KU000C": {
+      "critical_root_path": [
+        "KU0003",
+        "KU0004",
+        "KU0005",
+        "KU000C"
+      ]
+    },
+    "KU000D": {
+      "critical_root_path": [
+        "KU000D"
+      ]
+    },
+    "KU000E": {
+      "critical_root_path": [
+        "KU0003",
+        "KU0004",
+        "KU0005",
+        "KU000C",
+        "KU000E"
+      ]
+    }
+  },
+  "proof_edge_count": 14,
+  "root_name": "kummer_carry_free_iff_not_divides",
+  "root_tag": "KU000E",
+  "schema": "peano-lab-constructive-frontier-defined-graph-v1",
+  "theorem_count": 15
+}
