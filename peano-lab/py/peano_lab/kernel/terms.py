@@ -11,6 +11,12 @@ from __future__ import annotations
 from dataclasses import dataclass
 
 
+# All historic public certificates used unary numerals in this range.  Keep
+# their exact ASTs and hashes unchanged while representing larger decimal
+# literals by binary double-and-add expressions in the *existing* PA language.
+UNARY_NUMERAL_LIMIT = 256
+
+
 class ParseError(ValueError):
     """A final, position-bearing surface-syntax error."""
 
@@ -151,6 +157,16 @@ def _resolve_name(name: str, bound: list[str], free: list[str]) -> int:
 
 
 def _numeral(value: int) -> Term:
+    if type(value) is not int or value < 0:
+        raise ValueError("a PA numeral must be a non-negative integer")
+    if value > UNARY_NUMERAL_LIMIT:
+        # Multiplication by the existing unary term 2 keeps the actual term a
+        # logarithmic-size tree.  Add(t, t) would share Python objects but would
+        # still expand to a linear-size tree for independent kernel replay.
+        half = _numeral(value // 2)
+        doubled: Term = Mul(Succ(Succ(Zero())), half)
+        return Succ(doubled) if value & 1 else doubled
+
     result: Term = Zero()
     for _ in range(value):
         result = Succ(result)
@@ -255,25 +271,60 @@ def parse_term(src: str) -> Term:
 
 def _successor_number(term: Term) -> int | None:
     count = 0
-    while isinstance(term, Succ):
+    while type(term) is Succ:
         count += 1
         term = term.term
-    return count if isinstance(term, Zero) else None
+    return count if type(term) is Zero else None
+
+
+def numeral_value(term: Term) -> int | None:
+    """Decode exactly the canonical unary-or-binary surface numeral encoding.
+
+    Arbitrary closed arithmetic expressions are intentionally not evaluated:
+    printing `2 * 2` as `4` would silently change the stored proof formula.
+    Each binary step is accepted only when it matches the exact encoding
+    produced by :func:`_numeral`, including its historic unary boundary.
+    """
+
+    unary = _successor_number(term)
+    if unary is not None:
+        return unary
+
+    bits: list[int] = []
+    current = term
+    while True:
+        bit = 0
+        if type(current) is Succ:
+            bit = 1
+            current = current.term
+        if type(current) is not Mul:
+            return None
+        if _successor_number(current.left) != 2:
+            return None
+        bits.append(bit)
+        current = current.right
+        base = _successor_number(current)
+        if base is not None:
+            if base > UNARY_NUMERAL_LIMIT:
+                return None
+            value = base
+            for digit in reversed(bits):
+                value = value + value + digit
+                if value <= UNARY_NUMERAL_LIMIT:
+                    return None
+            return value
 
 
 def _pretty_term(term: Term, names: list[str], parent_precedence: int) -> str:
-    if isinstance(term, Var):
+    number = numeral_value(term) if type(term) in (Zero, Succ, Mul) else None
+    if number is not None:
+        text, level = str(number), 4
+    elif isinstance(term, Var):
         text = names[term.index] if 0 <= term.index < len(names) else f"#{term.index}"
         level = 4
-    elif isinstance(term, Zero):
-        text, level = "0", 4
     elif isinstance(term, Succ):
-        number = _successor_number(term)
-        if number is not None:
-            text, level = str(number), 4
-        else:
-            text = "S " + _pretty_term(term.term, names, 3)
-            level = 3
+        text = "S " + _pretty_term(term.term, names, 3)
+        level = 3
     elif isinstance(term, (Add, Mul)):
         level = 1 if isinstance(term, Add) else 2
         symbol = "+" if isinstance(term, Add) else "·"
@@ -300,6 +351,8 @@ __all__ = [
     "Succ",
     "Add",
     "Mul",
+    "UNARY_NUMERAL_LIMIT",
+    "numeral_value",
     "ParseError",
     "parse_term",
     "parse_term_with_names",

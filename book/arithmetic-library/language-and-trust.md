@@ -87,13 +87,13 @@ parsed PA abstract syntax trees.
 This is a reading layer, not a language extension. The compiler, registry,
 `PD` identifiers, hashes, pages, and notation edges are untrusted and cannot
 participate in a theorem dependency path. The current QR slice contains 241
-Stable rows and 316 Alpha-only rows. Its campaign-local labels count 315
-body-checked proper ancestors and the `PA00FW` root pending layered closure;
-canonically, the later HA receipt strengthens `mod_eq_add_cancel_left` from
-that local body label to `alpha_closed`, leaving 314 body-only rows. Compact
-notation therefore grants no theorem evidence or Stable promotion.
-These figures describe the focused QR slice, not the current 902-row Alpha v2
-catalog, which also contains the separately curated K3B and K3C layers.
+Stable rows and 316 Alpha-only rows. The historical campaign-local source
+labels remain separate from current immutable Alpha-v16 evidence: all 316
+Alpha-only QR rows, including the `PA00FW` root, are now `alpha_closed`
+because their complete actual proofs were independently checked. Compact
+notation itself grants neither theorem evidence nor Stable promotion. These
+figures describe the focused QR slice, not the complete current 1,673-row
+Alpha v16 catalog, which also contains other separately curated campaigns.
 
 ## Relational definitions before functions
 

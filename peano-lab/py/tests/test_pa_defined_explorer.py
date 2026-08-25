@@ -8,6 +8,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import subprocess
 import sys
 
 import pytest
@@ -96,6 +97,117 @@ def test_generated_pages_cover_all_theorems_and_definitions(built) -> None:
         page = files[path].decode("utf-8")
         assert "conservative definition" in page
         assert "not a theorem, axiom, predicate constant, or kernel rule" in page
+
+
+def test_defined_edition_preserves_exact_alpha_v16_checked_use_evidence(built) -> None:
+    files, manifest, _raw = built
+    corpus = json.loads(files["api/corpus.json"])
+    graph = json.loads(files["api/graph.json"])
+    explicit = _load(EXPLICIT / "api" / "corpus.json")
+    rows = {row["name"]: row for row in corpus["theorems"]}
+    graph_nodes = {
+        row["name"]: row for row in graph["nodes"] if row["kind"] == "theorem"
+    }
+    root = rows["quadratic_reciprocity_combined"]
+
+    for receipt in (corpus, graph, manifest):
+        assert receipt["alpha_edition_version"] == "v16"
+        assert receipt["alpha_edition_identity_sha256"] == (
+            explicit["alpha_edition_identity_sha256"]
+        )
+        assert receipt["alpha_edition_checked_use_count"] == 885
+        assert receipt["graph_checked_use_count"] == THEOREM_COUNT
+        assert receipt["graph_stable_closed_count"] == 241
+        assert receipt["graph_alpha_closed_count"] == 316
+        assert receipt["graph_newly_promoted_count"] == 315
+    assert root["scope"] == "candidate"
+    assert root["status"] == "alpha_closed"
+    assert root["alpha_evidence"] == "alpha_closed"
+    assert root["alpha_checked_use"] is True
+    assert root["stable_member"] is False
+    assert graph_nodes[root["name"]]["alpha_checked_use"] is True
+    assert graph_nodes[root["name"]]["stable_member"] is False
+
+    page = files[f'tag/{root["tag"]}.html'].decode("utf-8")
+    assert "Alpha v16 checked-use theorem" in page
+    assert "candidate-factory source; Alpha-only" in page
+    assert "<dt>Stable membership</dt><dd>no</dd>" in page
+    assert "pending layered closure" not in page
+    graph_page = files["graph.html"].decode("utf-8")
+    assert 'id="pa-defined-release-evidence"' in graph_page
+    assert "Alpha v16 checked-use theorem; independently closed; not Stable" in graph_page
+
+
+def test_defined_graph_release_overlay_preserves_definition_labels(built) -> None:
+    files, _manifest, _raw = built
+    graph = json.loads(files["api/graph.json"])
+    root = next(
+        node for node in graph["nodes"]
+        if node.get("name") == "quadratic_reciprocity_combined"
+    )
+    stable = next(
+        node for node in graph["nodes"] if node.get("stable_member") is True
+    )
+    definition = next(node for node in graph["nodes"] if node["kind"] == "definition")
+    page = files["graph.html"].decode("utf-8")
+    match = re.search(
+        r'<script id="pa-defined-release-evidence">(.*?)</script>',
+        page,
+        flags=re.DOTALL,
+    )
+    assert match is not None
+    harness = """
+"use strict";
+const payload = __PAYLOAD__;
+const alphaNode = payload.nodes[0];
+const stableNode = payload.nodes[1];
+const definitionNode = payload.nodes[2];
+const title = {textContent: alphaNode.id + " · " + alphaNode.name};
+const kind = {textContent: "Body-checked theorem candidate"};
+let observe;
+global.window = {PA_DEFINED_GRAPH: payload};
+global.document = {
+  readyState: "complete",
+  querySelector(selector) {
+    if (selector !== "[data-defined-graph]") return null;
+    return {querySelector(item) {
+      if (item === "[data-graph-title]") return title;
+      if (item === "[data-graph-kind]") return kind;
+      return null;
+    }};
+  }
+};
+global.MutationObserver = class {
+  constructor(callback) { observe = callback; }
+  observe() {}
+};
+__SCRIPT__
+if (kind.textContent !==
+    "Alpha v16 checked-use theorem; independently closed; not Stable") {
+  throw Error("Alpha-only defined graph evidence missing: " + kind.textContent);
+}
+title.textContent = stableNode.id + " · " + stableNode.name;
+observe();
+if (kind.textContent !== "Stable checked-use theorem; independently closed") {
+  throw Error("Stable defined graph evidence missing: " + kind.textContent);
+}
+title.textContent = definitionNode.id + " · " + definitionNode.name;
+kind.textContent = "Conservative definition — not a theorem or axiom";
+observe();
+if (kind.textContent !== "Conservative definition — not a theorem or axiom") {
+  throw Error("Conservative definition label was corrupted");
+}
+""".replace(
+        "__PAYLOAD__", json.dumps({"nodes": [root, stable, definition]})
+    ).replace("__SCRIPT__", match.group(1))
+    result = subprocess.run(
+        ["node", "--input-type=commonjs", "-"],
+        input=harness,
+        capture_output=True,
+        check=False,
+        text=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
 
 
 def test_mixed_graph_has_typed_edges_and_theorem_only_paths(built) -> None:

@@ -1,4 +1,4 @@
-"""M7 browser commands expose checked scripts and exact Lean stubs."""
+"""Browser commands expose checked scripts and completed Lean certificates."""
 
 from __future__ import annotations
 
@@ -84,10 +84,12 @@ def test_pa_lean_exports_exact_code_and_live_link() -> None:
     assert exported.live_url in output
     assert exported.live_url.startswith(LIVE_LEAN_PREFIX)
     assert unquote(exported.live_url.removeprefix(LIVE_LEAN_PREFIX)) == exported.code
-    assert exported.code.count("sorry") == 1
-    assert "Earlier checked Peano Lab dependencies: add_eq_zero_right" in exported.code
+    assert "sorry" not in exported.code
+    assert "import PeanoLab.Codec" in exported.code
+    assert "PeanoLab.Artifact.check_sound" in exported.code
+    assert "Independently replayed Peano dependencies: add_eq_zero_right" in exported.code
     assert "intro add_eq_zero_right" not in exported.code
-    assert "`sorry` is an intentional proof stub" in output
+    assert "complete constructive certificate" in output
     assert session.run("pa lean") == (
         "Usage: pa lean <theorem>; list names with `pa lib`."
     )

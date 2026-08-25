@@ -60,13 +60,24 @@ earlier 384-entry dirty-registry statement are historical baselines; the
 artifact's first 380 receipts remain the compatibility prefix that must stay
 stable.
 
-A successful cold WMI replay is necessary evidence, but it will not itself be
-public admission.  No layered QR replay has yet been uploaded or run for the
-current snapshot.  The QR root does not appear in `THEOREMS`, `pa lib`, or the
-catalog snapshot. The content-addressed Pyodide application manifest has been
-regenerated for the current 432-theorem runtime and candidate-source inventory,
-but that packaging operation grants no QR admission. Those remain separate
-release gates.
+A fresh successful cold WMI replay remains separate release evidence and would
+not itself constitute public admission. The mathematical proof, however, is
+now complete locally: the unchanged kernel accepted the actual 557-node
+dependency closure as one empty-context certificate with 54,870 structural
+nodes, 35,052 proof objects, and depth 129, and the independent compiled Lean
+verifier accepted the same exact root through its complete canonical bundle.
+See [the completed closure receipt](quadratic-reciprocity-closure-receipt.md).
+The QR root still does not appear in `THEOREMS`, default `pa lib`, or the
+432-theorem Stable catalog; the sealed historical Alpha-v15 release row remains
+`pending_layered_closure`. The separately reviewed immutable Alpha-v16
+successor now promotes the root and exactly 314 formerly body-only QR
+ancestors to `alpha_closed`, raising Alpha checked-use authority from 570 to
+885 while retaining all 788 unrelated body-only rows. Inspect this explicitly
+through `pa lib alpha quadratic_reciprocity_combined`; requesting
+`pa lib alpha check quadratic_reciprocity_combined` independently reconstructs
+and checks its actual empty-context proof. Regenerating a content-addressed
+browser package grants no additional theorem admission, and fresh pinned-WMI
+evidence, deployment, and any future Stable promotion remain separate gates.
 
 ## Trust boundary
 
@@ -465,6 +476,13 @@ Keep proof construction on demand:
 - final QED checks the complete user proof again;
 - `pa lean <name>` exports the exact admitted statement and proof-facing
   script on demand.
+
+The currently admitted opt-in Alpha channel uses the narrower explicit surface
+`pa lib alpha <name>` for evidence inspection, `pa lib alpha check <name>` for
+actual unchanged-kernel empty-context replay, and `pa lean alpha <name>` for
+completed certificate-to-Lean translation. These commands do not enroll an
+Alpha-only theorem in default `pa lib`, live `use`, Stable, or frozen model
+capability datasets; body-only Alpha rows fail closed.
 
 `render_theorem` must describe either recursive dependency Cuts or a balanced
 layer bundle according to the pinned strategy.  It must not claim that every

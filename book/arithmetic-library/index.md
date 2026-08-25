@@ -32,20 +32,23 @@ arithmetic, and the quotient budget. Sealed Alpha v5 preserves that complete
 965-row ledger and appends seven body-checked `FactorialVal` rows. Sealed
 Alpha v5 therefore has 972 rows, sealed Alpha v6 has 993, sealed Alpha v7 has
 1,017, sealed Alpha v8 has 1,055, sealed Alpha v9 has 1,076, sealed Alpha v10
-has 1,085, and sealed Alpha v11 has 1,123. Current Alpha v12 preserves the
+has 1,085, and sealed Alpha v11 has 1,123. Historical Alpha v12 preserves the
 entire v11 ledger and appends 180 body-checked Bertrand rows in nine exact
-twenty-row microbatches. They publish the dependency-closed proof through the
-five-range upper bound, large-input contradiction, finite covering, and both
-Bertrand endpoints. See
+twenty-row microbatches. Alpha v13 adds the four-square and Lucas campaigns;
+v14 adds Kummer's carry theorem; v15 adds the supplementary laws and complete
+two-square classification. Current immutable Alpha v16 preserves all 1,673
+v15 statements while promoting exactly 315 independently proved
+quadratic-reciprocity results, including the final theorem, to checked use.
+Stable remains the unchanged default. See
 {doc}`Alpha and Stable library editions
 <library-editions>` for the exact scopes and lifecycle.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>1,303</strong><span>Alpha v12 theorems</span></div>
-  <div><strong>570</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>871</strong><span>Alpha-only rows</span></div>
+  <div><strong>1,673</strong><span>Alpha v16 theorems</span></div>
+  <div><strong>885</strong><span>Alpha checked-use rows</span></div>
+  <div><strong>1,241</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -56,24 +59,25 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The current additive Alpha v12 graph has 1,303 theorems, 4,302 direct edges,
-and 45 dependency layers. Its mixed evidence is intentional: 570 rows have
-complete checked-use evidence, while 732 body-only rows and one pending row
-remain visible without being treated as empty-context facts. Stable remains
-432; the 885-row Alpha v1, 902-row Alpha v2, 923-row Alpha v3, 965-row Alpha
-v4, 972-row Alpha v5, 993-row Alpha v6, and 1,017-row Alpha v7 parents remain
-sealed; Alpha v8 remains sealed at 1,055, Alpha v9 remains sealed at 1,076,
-Alpha v10 remains sealed at 1,085, and Alpha v11 remains sealed at 1,123. The
-exact contract and opt-in API are on the {doc}`edition page
+The current Alpha v16 graph has 1,673 theorems, 5,615 direct edges, and 53
+dependency layers. Its mixed evidence is intentional: 432 Stable-closed and
+453 Alpha-closed rows have actual checked-use authority, while 788 body-only
+rows remain visible without being treated as empty-context facts. No pending
+row remains. The historical Alpha v12 graph has 1,303 theorems, 4,302 direct
+edges and its immutable evidence partition still includes 732 `body_checked`
+rows. Every Alpha v1--v15 parent remains sealed; Stable remains 432. The exact
+contract and opt-in API are on the {doc}`edition page
 <library-editions>`.
 
-Alpha v12 retains the Alpha-v11 B4 and B5-support tranches, then adds the
-dependency-closed B6 support and B5--BP02 completion chain.
-The evidence partition is exactly 432 `stable_closed`, 138 `alpha_closed`,
-732 `body_checked`, and one `pending_layered_closure`; checked use remains
-570. Bertrand's postulate is fully proved at candidate and independently
-kernel-checked empty-context evidence level. The Alpha v12 enrollment records
-that work as body evidence; checked-use and Stable promotion remain separate.
+Historical Alpha v12 retains the Alpha-v11 B4 and B5-support tranches, then
+adds the dependency-closed B6 support and B5--BP02 completion chain. Its
+frozen partition was 432 `stable_closed`, 138 `alpha_closed`, 732
+`body_checked`, and one `pending_layered_closure`; checked use was 570. The
+current v16 partition is 432 `stable_closed`, 453 `alpha_closed`, 788
+`body_checked`, and zero pending rows. Only the completed
+quadratic-reciprocity closure was promoted; Bertrand, Lucas, four-square,
+Kummer, supplementary-law, and two-square body evidence has not acquired
+checked-use or Stable authority.
 
 ## The mathematical metro map
 

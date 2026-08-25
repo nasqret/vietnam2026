@@ -1,0 +1,1480 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="An evidence-aware interactive map of a constructive number-theory research programme.">
+  <title>Constructive Number Theory · Grand Campaign</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #fffdfd;
+      --paper-alt: #f8f4fa;
+      --background: #f4f0f7;
+      --ink: #27212d;
+      --muted: #706778;
+      --border: #d7ccdd;
+      --rule: #aa9db3;
+      --accent: #713a83;
+      --accent-soft: #eee0f3;
+      --definition: #783f90;
+      --definition-soft: #f0e2f6;
+      --link: #365e91;
+      --available: #176b45;
+      --candidate: #8a5a00;
+      --open: #705078;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      --shadow: 0 .55rem 1.7rem rgb(57 35 67 / 10%);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--ink);
+      font-family: var(--serif);
+      line-height: 1.62;
+    }
+
+    a { color: var(--link); text-underline-offset: .15em; }
+
+    a:focus-visible, button:focus-visible, input:focus-visible,
+    select:focus-visible, summary:focus-visible, [tabindex]:focus-visible {
+      outline: .19rem solid var(--accent);
+      outline-offset: .14rem;
+    }
+
+    .skip-link {
+      position: absolute;
+      z-index: 5;
+      top: .6rem;
+      left: .6rem;
+      padding: .5rem .75rem;
+      background: var(--paper);
+      transform: translateY(-180%);
+    }
+
+    .skip-link:focus { transform: translateY(0); }
+
+    .campaign-header {
+      padding: clamp(1.35rem, 3.5vw, 2.8rem);
+      border-bottom: .31rem solid var(--accent);
+      background: var(--paper);
+      box-shadow: 0 .2rem .8rem rgb(40 27 45 / 8%);
+    }
+
+    .campaign-header > *, .page {
+      width: min(100%, 108rem);
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .campaign-header nav, .kicker, .metrics, .controls, .notice,
+    .legend, .node-meta, .stage-toolbar, .family-card h3,
+    .campaign-header .subtitle, .language-summary, .sources,
+    .relation-button, .status-badge, .evidence-list, .file-help {
+      font-family: var(--sans);
+    }
+
+    .campaign-header nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1.15rem;
+      margin-bottom: 1.2rem;
+      font-size: .91rem;
+    }
+
+    .kicker {
+      margin: 0 0 .3rem;
+      color: var(--definition);
+      font-size: .73rem;
+      font-weight: 750;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      max-width: 68rem;
+      margin: .15rem 0 .45rem;
+      font-size: clamp(2rem, 4.4vw, 3.7rem);
+      font-weight: 500;
+      line-height: 1.07;
+    }
+
+    .subtitle {
+      max-width: 72rem;
+      margin: .3rem 0 0;
+      color: var(--muted);
+      font-size: clamp(.96rem, 1.4vw, 1.1rem);
+    }
+
+    .page { width: min(calc(100% - 2rem), 108rem); margin-top: 1.45rem; margin-bottom: 3rem; }
+
+    .paper {
+      border: 1px solid var(--border);
+      border-radius: .52rem;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+
+    .introduction { padding: 1.05rem 1.2rem; }
+
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem 1.55rem;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      font-size: .92rem;
+    }
+
+    .metrics strong { color: var(--accent); font-size: 1.17rem; }
+
+    .notice {
+      margin: 1rem 0 0;
+      padding: .73rem .85rem;
+      border-left: .29rem solid var(--definition);
+      background: var(--definition-soft);
+      font-size: .87rem;
+    }
+
+    .notice[data-error] { border-left-color: #9a382f; background: #fff0ed; }
+
+    .file-help { margin-top: .8rem; font-size: .88rem; }
+
+    .file-help code, .language-summary code, .node-id, .formal-statement,
+    .definition-expansion, .evidence-list code, .sources code {
+      font-family: var(--mono);
+    }
+
+    .file-help input { display: block; margin-top: .55rem; }
+
+    .workspace {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(19rem, 23rem);
+      align-items: start;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .map-panel, .details-panel, .families-panel, .language-panel, .sources-panel {
+      padding: 1rem 1.12rem;
+    }
+
+    h2, h3, label, button, input, select, summary { font-family: var(--sans); }
+    h2 { margin: 0 0 .75rem; font-size: 1.3rem; }
+    h3 { margin: 1rem 0 .35rem; font-size: 1rem; }
+
+    .map-heading { margin-bottom: .2rem; }
+
+    .section-note {
+      margin: .2rem 0 .9rem;
+      color: var(--muted);
+      font-size: .89rem;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: minmax(12rem, 2fr) repeat(3, minmax(8rem, 1fr));
+      gap: .65rem;
+      align-items: end;
+      margin-bottom: .85rem;
+      font-size: .83rem;
+    }
+
+    .controls label { display: grid; gap: .23rem; }
+
+    button, input, select {
+      min-height: 2.25rem;
+      border: 1px solid var(--rule);
+      border-radius: .33rem;
+      background: var(--paper);
+      color: var(--ink);
+      font: inherit;
+    }
+
+    input, select { width: 100%; padding: .36rem .5rem; }
+    button { padding: .38rem .75rem; cursor: pointer; }
+    button:hover { background: var(--paper-alt); }
+
+    .stage-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: .5rem;
+      margin-bottom: .55rem;
+      font-size: .84rem;
+    }
+
+    .stage-toolbar p { margin: 0; color: var(--muted); }
+
+    .stage-buttons { display: flex; gap: .32rem; }
+    .stage-buttons button { min-width: 2.25rem; padding: .25rem .55rem; }
+
+    .graph-stage {
+      position: relative;
+      min-height: 25rem;
+      max-height: min(76vh, 57rem);
+      overflow: auto;
+      border: 1px solid var(--border);
+      border-radius: .38rem;
+      background: var(--paper-alt);
+      cursor: grab;
+      overscroll-behavior: contain;
+    }
+
+    .graph-stage.is-panning { cursor: grabbing; user-select: none; }
+
+    .graph-stage svg { display: block; width: 100%; min-height: 25rem; }
+
+    .graph-stage .node-card { cursor: pointer; }
+    .graph-stage .node-card:focus { outline: none; }
+    .graph-stage .node-card:focus .node-outline { stroke: var(--accent); stroke-width: 3; }
+    .graph-stage .node-title { font-family: var(--serif); font-size: 11.3px; }
+    .graph-stage .node-label { font-family: var(--mono); font-size: 9px; }
+    .graph-stage .family-label { font-family: var(--sans); font-size: 10px; font-weight: 650; }
+    .graph-stage .layer-label { font-family: var(--mono); font-size: 10px; }
+    .graph-stage .layer-title { font-family: var(--sans); font-size: 9px; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem 1rem;
+      margin-top: .8rem;
+      font-size: .77rem;
+    }
+
+    .legend span { display: inline-flex; align-items: center; gap: .32rem; }
+
+    .legend i {
+      width: .72rem;
+      height: .72rem;
+      border: 1px solid var(--rule);
+      border-radius: 50%;
+    }
+
+    .legend i.available { background: var(--available); }
+    .legend i.candidate { background: var(--candidate); }
+    .legend i.open { background: var(--open); }
+    .legend i.existing { background: var(--link); }
+    .legend i.ancestor { background: var(--accent); }
+    .legend i.dependent { background: var(--available); }
+
+    .details-panel { position: sticky; top: 1rem; overflow-wrap: anywhere; }
+
+    .details-panel h2 { margin-top: .25rem; line-height: 1.25; }
+
+    .node-id {
+      margin: 0;
+      color: var(--definition);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+
+    .status-badge {
+      display: inline-block;
+      margin: .15rem 0 .35rem;
+      padding: .15rem .5rem;
+      border: 1px solid currentColor;
+      border-radius: 2rem;
+      font-size: .74rem;
+    }
+
+    .status-badge.available, .status-badge.existing_foundation,
+    .status-badge.stable_closed, .status-badge.alpha_closed { color: var(--available); }
+    .status-badge.body_checked, .status-badge.pending_layered_closure { color: var(--candidate); }
+    .status-badge.existing_anchor_closure { color: var(--candidate); }
+    .status-badge.existing_anchor_extension { color: var(--link); }
+    .status-badge.open { color: var(--open); }
+
+    .node-meta {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: .3rem .6rem;
+      margin: .85rem 0;
+      font-size: .81rem;
+    }
+
+    .node-meta dt { color: var(--muted); }
+    .node-meta dd { margin: 0; }
+
+    .formal-statement {
+      overflow-wrap: anywhere;
+      margin: .4rem 0;
+      padding: .68rem;
+      border: 1px solid var(--border);
+      border-radius: .32rem;
+      background: var(--paper-alt);
+      font-size: .77rem;
+      line-height: 1.65;
+      white-space: pre-wrap;
+    }
+
+    .relation-list { margin: .3rem 0; padding-left: 1.05rem; }
+    .relation-list li { margin: .25rem 0; }
+
+    .relation-button {
+      min-height: 0;
+      padding: 0;
+      border: 0;
+      color: var(--link);
+      background: transparent;
+      font-size: .8rem;
+      text-align: left;
+      text-decoration: underline;
+      text-underline-offset: .12em;
+    }
+
+    .relation-button:hover { background: transparent; }
+
+    .evidence-list { padding-left: 1.05rem; font-size: .76rem; }
+
+    .families-panel, .language-panel, .sources-panel { margin-top: 1rem; }
+
+    .family-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(15.3rem, 1fr));
+      gap: .65rem;
+    }
+
+    .family-card {
+      width: 100%;
+      min-height: 0;
+      padding: .7rem .75rem;
+      border-left-width: .28rem;
+      border-radius: .28rem;
+      text-align: left;
+    }
+
+    .family-card h3 { margin: 0 0 .22rem; font-size: .86rem; }
+
+    .family-card p {
+      margin: 0;
+      color: var(--muted);
+      font-family: var(--serif);
+      font-size: .79rem;
+      line-height: 1.42;
+    }
+
+    .family-card .family-count {
+      margin-top: .38rem;
+      color: var(--definition);
+      font-family: var(--sans);
+      font-size: .73rem;
+    }
+
+    .family-card[aria-pressed="true"] { background: var(--accent-soft); }
+
+    .language-summary { font-size: .88rem; }
+
+    .definition-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr));
+      gap: .6rem .9rem;
+      padding: .3rem 0;
+    }
+
+    .definition-list > div { padding: .55rem; border-left: .2rem solid var(--border); }
+    .definition-list dt { color: var(--definition); font-family: var(--mono); font-size: .81rem; }
+    .definition-list dd { margin: .18rem 0 0; font-size: .84rem; }
+
+    .definition-expansion {
+      display: block;
+      margin-top: .27rem;
+      color: var(--muted);
+      font-size: .7rem;
+      overflow-wrap: anywhere;
+    }
+
+    .sources { margin: .5rem 0 0; padding-left: 1.2rem; font-size: .8rem; }
+    .sources li { margin: .4rem 0; }
+
+    @media (max-width: 76rem) {
+      .workspace { grid-template-columns: 1fr; }
+      .details-panel { position: static; }
+      .graph-stage { max-height: 70vh; }
+    }
+
+    @media (max-width: 48rem) {
+      .page { width: min(calc(100% - 1.05rem), 108rem); }
+      .controls { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .map-panel, .details-panel { padding: .8rem; }
+      .graph-stage { min-height: 22rem; }
+      .metrics { gap: .5rem 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; }
+    }
+
+    @media print {
+      body { background: white; }
+      .campaign-header { box-shadow: none; }
+      .controls, .stage-buttons, .file-help { display: none !important; }
+      .workspace { grid-template-columns: 1fr; }
+      .graph-stage { max-height: none; overflow: visible; }
+      .details-panel { position: static; }
+      .paper { box-shadow: none; break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#campaign-main">Skip to campaign map</a>
+  <header class="campaign-header">
+    <nav aria-label="Proof library navigation">
+      <a href="../constructive-frontier-explorer/index.html">Constructive proof families</a>
+      <a href="../pa-proof-explorer/defined/index.html">Quadratic Reciprocity</a>
+      <a href="../bertrand-proof-explorer/defined/index.html">Bertrand’s Postulate</a>
+    </nav>
+    <p class="kicker">Constructive arithmetic · 120 major campaign milestones · definitions · evidence boundaries</p>
+    <h1 data-campaign-title>Constructive Number Theory: Grand Campaign</h1>
+    <p class="subtitle" data-campaign-subtitle>A dependency-aware research programme in intuitionistic first-order arithmetic.</p>
+  </header>
+
+  <main class="page" id="campaign-main">
+    <section class="paper introduction" aria-labelledby="campaign-overview-heading">
+      <h2 id="campaign-overview-heading">A mathematical programme, not a theorem certificate</h2>
+      <ul class="metrics" data-metrics aria-label="Campaign inventory">
+        <li><strong>—</strong> major campaign milestones</li>
+        <li><strong>—</strong> constructive tools</li>
+        <li><strong>—</strong> existing anchors</li>
+        <li><strong>—</strong> mathematical families</li>
+      </ul>
+      <p class="notice" data-load-notice role="status">Loading the sealed campaign description…</p>
+      <noscript><p class="notice">This dependency map requires JavaScript. Its complete formal milestone inventory remains available in the neighboring <code>campaign.json</code> file.</p></noscript>
+      <div class="file-help" data-file-help hidden>
+        <p>Browsers usually prevent <code>file://</code> pages from fetching a neighboring JSON file. Open <code>campaign.json</code> below, or serve this directory with <code>python3 -m http.server 8765</code>.</p>
+        <label>Open the local campaign description <input type="file" accept="application/json,.json" data-file-input></label>
+      </div>
+    </section>
+
+    <div class="workspace">
+      <section class="paper map-panel" aria-labelledby="map-heading">
+        <h2 class="map-heading" id="map-heading">The constructive dependency map</h2>
+        <p class="section-note">Rows are proof-development layers; columns are mathematical families. Arrows run from a prerequisite to the goal that needs it.</p>
+
+        <form class="controls" data-controls>
+          <label>Find a milestone or theorem
+            <input type="search" placeholder="G042, reciprocity, class number…" autocomplete="off" data-search>
+          </label>
+          <label>Mathematical family
+            <select data-family><option value="all">Every family</option></select>
+          </label>
+          <label>Highest visible layer
+            <select data-layer><option value="all">Every layer</option></select>
+          </label>
+          <label>Draw dependency arrows
+            <select data-edges>
+              <option value="focused">Selected proof paths</option>
+              <option value="all">Every visible arrow</option>
+              <option value="none">Hide arrows</option>
+            </select>
+          </label>
+        </form>
+
+        <div class="stage-toolbar">
+          <p data-visible-count aria-live="polite">Waiting for the campaign…</p>
+          <div class="stage-buttons" aria-label="Graph viewport controls">
+            <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
+            <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+            <button type="button" data-fit>Fit</button>
+            <button type="button" data-reset>Reset</button>
+          </div>
+        </div>
+
+        <div class="graph-stage" data-stage tabindex="0" role="region" aria-label="Scrollable and zoomable constructive campaign dependency graph">
+          <svg data-graph role="img" aria-labelledby="graph-title graph-description">
+            <title id="graph-title">Constructive number-theory campaign dependency graph</title>
+            <desc id="graph-description">Select a theorem, tool, or research goal to inspect its formal statement and direct or transitive dependencies.</desc>
+          </svg>
+        </div>
+
+        <div class="legend" aria-label="Graph legend">
+          <span><i class="available"></i> available tool or anchor</span>
+          <span><i class="candidate"></i> body-checked anchor</span>
+          <span><i class="existing"></i> existing anchor extension</span>
+          <span><i class="open"></i> open research objective</span>
+          <span><i class="ancestor"></i> selected prerequisite path</span>
+          <span><i class="dependent"></i> downstream dependent path</span>
+        </div>
+      </section>
+
+      <aside class="paper details-panel" aria-labelledby="selected-node-title">
+        <p class="node-id" data-node-id>SELECT A NODE</p>
+        <h2 id="selected-node-title" data-node-title>Explore the programme</h2>
+        <p data-node-introduction>Choose any theorem, foundation tool, or existing proof anchor to see its constructive statement and proof dependencies.</p>
+        <div data-node-content hidden>
+          <span class="status-badge" data-node-status></span>
+          <dl class="node-meta" data-node-meta></dl>
+          <h3>Formal constructive target</h3>
+          <pre class="formal-statement" data-node-statement></pre>
+          <h3>Why this step matters</h3>
+          <p data-node-rationale></p>
+          <p class="notice" data-node-caveat></p>
+          <h3>Direct prerequisites</h3>
+          <ul class="relation-list" data-node-dependencies></ul>
+          <h3>Direct downstream goals</h3>
+          <ul class="relation-list" data-node-dependents></ul>
+          <div data-evidence-section hidden>
+            <h3>Recorded evidence</h3>
+            <ul class="evidence-list" data-node-evidence></ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <section class="paper families-panel" aria-labelledby="family-heading">
+      <h2 id="family-heading">Twelve connected mathematical families</h2>
+      <p class="section-note">Choose a family to retain its own milestones and every cross-family prerequisite milestone, constructive tool, and existing anchor they actually require.</p>
+      <div class="family-grid" data-family-grid></div>
+    </section>
+
+    <details class="paper language-panel">
+      <summary>Object language and conservative definitions</summary>
+      <p class="language-summary" data-language-summary>Loading the constructive-language contract…</p>
+      <dl class="definition-list" data-definition-list></dl>
+    </details>
+
+    <details class="paper sources-panel">
+      <summary>Source documents and ambitious boundaries</summary>
+      <p class="section-note" data-boundary-summary>Research goals are not claims of existing proof, Alpha membership, checked use, or Stable admission.</p>
+      <ul class="sources" data-source-list></ul>
+    </details>
+  </main>
+
+  <script type="application/json" id="campaign-data">{"schema":"constructive-grand-campaign-v1","title":"The constructive number-theory grand campaign","subtitle":"120 major first-order arithmetic milestones, sixteen foundations, and eight honestly classified existing proof anchors","meta":{"generated_at":"2026-08-25","goal_count":120,"tool_count":16,"anchor_count":8,"node_count":144,"max_layer":12,"milestones_include_existing_foundations_and_closure_targets":true,"current_alpha_version":"v16","historical_alpha_versions":["v15"],"current_alpha_checked_use_count":885},"language":{"base_signature":["0","S","+","*","="],"logic":"Intuitionistic first-order Heyting arithmetic with its ordinary induction schema; all quantified variables denote natural-number codes.","conservative_extension_policy":"Every named relation below abbreviates an arithmetical formula over the base signature. Integers, rationals, finite lists, sets, polynomials, finite fields, matrices, lattices, curves, algorithms, and certificates are explicit natural-number codes. No new sort, axiom, excluded middle, infinitary choice, or oracle is admitted.","notation_policy":"Order, signed arithmetic, exponentiation, division, factorials, bounded sums and products, finite set notation, logarithm brackets, and rational inequalities expand into witnessed first-order primitive-recursive relations.","finite_objects":"Gödel beta codes represent finite lists, tables, machines, traces, finite-precision local data, and certificates; every bounded quantifier expands in first-order arithmetic."},"definitions":{"Lt":{"parameters":["a","b"],"meaning":"Witnessed strict order.","expansion":"∃ t. a+S(t)=b"},"Le":{"parameters":["a","b"],"meaning":"Witnessed weak order.","expansion":"∃ t. a+t=b"},"Dvd":{"parameters":["d","n"],"meaning":"Witnessed divisibility.","expansion":"∃ q. n=d*q"},"DivRem":{"parameters":["n","d","q","r"],"meaning":"Euclidean division.","expansion":"d>0 ∧ n=d*q+r ∧ r<d"},"Mod":{"parameters":["a","b","m"],"meaning":"Congruence with a positive modulus.","expansion":"m>0 ∧ a,b have the same witnessed remainder modulo m"},"Gcd":{"parameters":["a","b","g"],"meaning":"Canonical greatest common divisor.","expansion":"Dvd(g,a) ∧ Dvd(g,b) ∧ ∀ d. Dvd(d,a) ∧ Dvd(d,b) → Dvd(d,g)"},"Coprime":{"parameters":["a","b"],"meaning":"Relative primality.","expansion":"Gcd(a,b,1)"},"Prime":{"parameters":["p"],"meaning":"A natural prime.","expansion":"p>1 ∧ ∀ d<p. Dvd(d,p) → d=1"},"Beta":{"parameters":["b","c","i","x"],"meaning":"Gödel beta extraction.","expansion":"∃ q. b=q*(1+(i+1)*c)+x ∧ x<1+(i+1)*c"},"Seq":{"parameters":["s","ell"],"meaning":"A beta-coded list of length ell.","expansion":"s encodes beta parameters and the witnessed natural length ell"},"At":{"parameters":["s","i","x"],"meaning":"A list entry.","expansion":"i is below the coded length of s and its beta-extracted value equals x"},"Sum":{"parameters":["s","ell","z"],"meaning":"Finite witnessed sum.","expansion":"a coded partial-sum trace starts at zero and ends at z"},"Prod":{"parameters":["s","ell","z"],"meaning":"Finite witnessed product.","expansion":"a coded partial-product trace starts at one and ends at z"},"Pow":{"parameters":["a","e","z"],"meaning":"Primitive-recursive exponentiation.","expansion":"a length e+1 multiplication trace starts at one and ends at z"},"Fact":{"parameters":["n","z"],"meaning":"Witnessed factorial.","expansion":"z is the coded finite product of 1 through n"},"Val":{"parameters":["p","n","e"],"meaning":"p-adic valuation only for a positive natural.","expansion":"Prime(p) ∧ n>0 ∧ ∃ u. n=p^e*u ∧ ¬Dvd(p,u)"},"PowerValuation":{"parameters":["p","n","e"],"meaning":"Conservative named alias for the exact positive-input prime-power valuation.","expansion":"Val(p,n,e)"},"Binom":{"parameters":["n","k","z"],"meaning":"Pascal-table binomial coefficient.","expansion":"z is obtained from the witnessed finite Pascal recurrence, with out-of-range values zero"},"Multinom":{"parameters":["n","parts","z"],"meaning":"Finite multinomial coefficient.","expansion":"parts is a finite nonnegative list summing to n and z is its iterated binomial product"},"Digits":{"parameters":["n","p","s"],"meaning":"Finite base-p digits.","expansion":"p>1 and the coded digits are below p and evaluate to n"},"CarryCount":{"parameters":["p","parts","e"],"meaning":"Finite base-p carry multiplicity.","expansion":"a witnessed columnwise addition of the coded parts contains exactly e carries"},"Factorization":{"parameters":["n","s"],"meaning":"Finite prime factorization.","expansion":"n>0, every list entry is Prime, and the witnessed product is n"},"Permutation":{"parameters":["s","t","w"],"meaning":"Witnessed equality up to finite permutation.","expansion":"w is a coded bijection matching all list entries"},"PrimeList":{"parameters":["s","k"],"meaning":"The first k primes.","expansion":"s lists exactly k increasing primes and omits no smaller prime"},"DivisorList":{"parameters":["n","s"],"meaning":"Complete bounded divisor list.","expansion":"n>0 and s lists exactly the positive divisors d≤n"},"Phi":{"parameters":["n","t"],"meaning":"Euler totient.","expansion":"n>0 and t counts the residue classes a<n satisfying Coprime(a,n)"},"Jordan":{"parameters":["k","n","t"],"meaning":"Jordan totient.","expansion":"k>0,n>0 and t counts the coded k-tuples modulo n jointly coprime to n"},"Mobius":{"parameters":["n","z"],"meaning":"Signed Möbius value.","expansion":"z is zero for a squared prime divisor and otherwise the signed parity of distinct prime factors"},"ArithmeticTable":{"parameters":["N","f"],"meaning":"Finite signed arithmetic function.","expansion":"f is a beta-coded signed-value table on the positive naturals ≤N"},"Convolution":{"parameters":["N","f","g","h"],"meaning":"Finite signed Dirichlet convolution on positive inputs.","expansion":"for each n satisfying 0<n≤N, the table h(n) is the signed finite sum of f(d)*g(n/d) over positive divisors d"},"Squarefree":{"parameters":["n"],"meaning":"Positive squarefree natural.","expansion":"n>0 and no PRIME p≤n satisfies Dvd(p*p,n)"},"PowerProfile":{"parameters":["n","w"],"meaning":"Finite perfect-power certificate with the unit exception.","expansion":"(n=1 and w certifies the uniform identity ∀k>0.1=1^k) OR (n>1 and w lists the finitely many PRIME valuations, their positive gcd, and the witnessed roots for its positive divisors)"},"Unit":{"parameters":["a","m"],"meaning":"A modular unit with inverse.","expansion":"m>1 ∧ ∃ b<m. Mod(a*b,1,m)"},"Order":{"parameters":["a","group","d"],"meaning":"Least positive finite multiplicative order.","expansion":"a is a unit in the coded finite group, a^d=1, and no smaller positive exponent does"},"CRTCompatible":{"parameters":["data"],"meaning":"Compatible finite congruence data.","expansion":"every positive listed modulus pair has gcd dividing its signed residue difference"},"CRTSolution":{"parameters":["data","x","M"],"meaning":"Canonical simultaneous-congruence witness.","expansion":"M is the lcm of all positive listed moduli, x<M, and every listed congruence holds"},"Carmichael":{"parameters":["m","c"],"meaning":"Least universal unit exponent.","expansion":"m>1,c>0, every unit has cth power one, and no smaller positive exponent works"},"PrimitiveRoot":{"parameters":["g","m"],"meaning":"Generator of all modular units.","expansion":"∃ t. Phi(m,t) ∧ Order(g,(Z/mZ)*,t)"},"PrimitiveRootModulus":{"parameters":["m","w"],"meaning":"Exact modulus classification with primitive roots.","expansion":"w witnesses m=2, m=4, m=p^k, or m=2*p^k for an odd Prime p and k>0"},"PrimeCount":{"parameters":["x","z"],"meaning":"Exact bounded prime count.","expansion":"z counts the explicitly bounded list of primes p≤x"},"BitLen":{"parameters":["n","ell"],"meaning":"Binary length.","expansion":"(n=0 ∧ ell=1) ∨ (n>0 ∧ 2^(ell-1)≤n<2^ell)"},"LogBracket":{"parameters":["x","L","U","w"],"meaning":"Certified rational lower and upper bounds on log x.","expansion":"x>0, L and U are signed rational codes, and w is a finite rational-series reduction and explicit remainder certificate witnessing L≤log(x)≤U"},"QuadBit":{"parameters":["a","p","s"],"meaning":"Quadratic-character sign bit.","expansion":"Prime(p) ∧ p>2 ∧ ¬Dvd(p,a) ∧ s<2 ∧ (s=0 ↔ ∃ x<p. Mod(x*x,a,p))"},"GaussBit":{"parameters":["a","p","s"],"meaning":"Gauss negative-residue parity.","expansion":"Prime(p),p>2,p∤a and s is the parity of the finite least-residue negative-representative count"},"JacobiBit":{"parameters":["a","n","s"],"meaning":"Odd coprime Jacobi sign bit.","expansion":"n is positive and odd, Coprime(a,n), and s is the factorwise quadratic-bit sum modulo two"},"HilbertBit":{"parameters":["a","b","v","s"],"meaning":"A rational local Hilbert-symbol bit.","expansion":"a,b are nonzero rational codes and s is computed by the explicit real, dyadic, or odd-PRIME local formula"},"HilbertProduct":{"parameters":["a","b","w"],"meaning":"Complete canonical verified finite rational Hilbert support.","expansion":"w is the canonical DUPLICATE-FREE list containing EXACTLY ONCE the real place, the dyadic prime 2, and EVERY prime dividing any numerator or denominator of nonzero rationals a,b; for EACH listed place v it also supplies and verifies the actual local value HilbertBit(a,b,v,s_v)"},"Gaussian":{"parameters":["z"],"meaning":"A signed-pair Gaussian integer.","expansion":"z codes normalized signed integers a,b representing a+b*i"},"GNorm":{"parameters":["z","n"],"meaning":"Gaussian norm.","expansion":"z=(a,b) and n=a²+b² in signed-code arithmetic"},"Eisenstein":{"parameters":["z"],"meaning":"A signed-pair Eisenstein integer.","expansion":"z codes normalized signed integers a,b representing a+b*omega"},"ENorm":{"parameters":["z","n"],"meaning":"Eisenstein norm.","expansion":"z=(a,b) and n=a²-a*b+b² in signed-code arithmetic"},"Primary":{"parameters":["z","ring"],"meaning":"Normalized primary Euclidean-ring element.","expansion":"z is coprime to the ramified prime and satisfies the witnessed finite primary residue convention"},"RingPrime":{"parameters":["z","ring"],"meaning":"Prime element in a coded Euclidean ring.","expansion":"z is a nonzero nonunit and every norm-bounded factorization has a unit factor"},"PowerSymbol":{"parameters":["a","pi","ell","s"],"meaning":"ellth power-residue symbol.","expansion":"pi is an admissible prime, a is coprime to pi, and the finite residue-field power equals the ellth root indexed by s"},"PowerReciprocity":{"parameters":["ell","a","b","w"],"meaning":"Higher reciprocity with all correction factors.","expansion":"w lists every finite ramified and infinite-place correction and verifies the resulting power-symbol product identity"},"FiniteSet":{"parameters":["A","ambient","k"],"meaning":"A duplicate-free finite subset.","expansion":"A codes exactly k distinct members of the specified finite ambient space"},"SetSum":{"parameters":["A","B","ambient","S"],"meaning":"Exact finite sumset.","expansion":"S lists all and only distinct sums a+b in the specified coded ambient group"},"RestrictedSum":{"parameters":["A","ambient","S"],"meaning":"Exact distinct-pair sumset.","expansion":"S lists all and only a+b with distinct entries a≠b of A"},"ZeroSubsequence":{"parameters":["s","k","G","w"],"meaning":"Zero-sum subsequence of distinct INDEX positions.","expansion":"w chooses k distinct list indices, allowing repeated element values, whose sum in G is zero"},"ArithmeticProgression":{"parameters":["A","ambient","a","d","ell"],"meaning":"Containment in a nonzero-step progression.","expansion":"d≠0 in the ambient group and every element of A equals a+i*d for a witnessed i<ell"},"CapSet":{"parameters":["A","n","k"],"meaning":"A progression-free subset of F3^n.","expansion":"A has k distinct coded vectors and contains no three distinct vectors with coordinatewise zero sum modulo three"},"CoefficientBound":{"parameters":["n","B"],"meaning":"Explicit ternary slice-rank monomial count.","expansion":"B=Σ_{0≤j≤floor(2*n/3)} coefficient_j((1+X+X²)^n)"},"Poly":{"parameters":["f","d","R"],"meaning":"Finite polynomial coefficient code.","expansion":"f is a coded list of degree at most d in the specified arithmetically presented ring"},"Eval":{"parameters":["f","x","y","R"],"meaning":"Horner evaluation.","expansion":"a finite witnessed Horner trace over R evaluates f(x)=y"},"Irred":{"parameters":["f","p"],"meaning":"Monic irreducibility over a PRIME field.","expansion":"Prime(p), deg(f)>0, f monic, and every degree-bounded factorization modulo p has a constant factor"},"FiniteField":{"parameters":["F","p","k"],"meaning":"Complete finite prime-power field presentation.","expansion":"Prime(p), k>0, and F encodes an irreducible degree-k polynomial and all quotient-ring arithmetic tables"},"PolyFactorization":{"parameters":["f","F","w"],"meaning":"Full finite-field irreducible factorization.","expansion":"f≠0 and w lists a unit, all monic irreducible factors, and every positive multiplicity"},"SquarefreeDecomposition":{"parameters":["f","F","w"],"meaning":"Characteristic-aware squarefree factorization.","expansion":"f≠0 and w handles derivative-zero inseparable parts via explicit characteristic-p root extraction"},"Rep2":{"parameters":["n","x","y"],"meaning":"Two-square witness.","expansion":"n=x²+y²"},"Rep3":{"parameters":["n","x","y","z"],"meaning":"Three-square witness.","expansion":"n=x²+y²+z²"},"Rep4":{"parameters":["n","a","b","c","d"],"meaning":"Four-square witness.","expansion":"n=a²+b²+c²+d²"},"RepCount":{"parameters":["n","r","k"],"meaning":"Number of ORDERED SIGNED r-square representations.","expansion":"k counts signed tuples in the explicit finite box [-n,n]^r of square sum n"},"Tri":{"parameters":["x","t"],"meaning":"A triangular number.","expansion":"2*t=x*(x+1)"},"IntMatrix":{"parameters":["M","r","c"],"meaning":"A finite signed integer matrix.","expansion":"M is a beta-coded r-by-c table of signed integer codes"},"PositiveDefinite":{"parameters":["Q","r","w"],"meaning":"Witnessed positive definiteness.","expansion":"w supplies strictly positive leading principal minors of a symmetric rational Gram matrix"},"QuadForm":{"parameters":["Q","r","x","n"],"meaning":"A witnessed integral quadratic evaluation.","expansion":"x is an integer vector of length r and x-transpose*Q*x=n in signed-code arithmetic"},"ThreeSquareClass":{"parameters":["Q","U"],"meaning":"A primitive positive nondegenerate ternary form equivalent to three squares.","expansion":"U is an explicitly unimodular integer 3-by-3 matrix and Q=U-transpose*I3*U"},"LocalRepresentation":{"parameters":["Q","n","w"],"meaning":"Complete relevant real, dyadic, and integral local certificates.","expansion":"n>0 and w checks positivity, the dyadic 4^a*(8b+7) obstruction, and every relevant discriminant-prime integral condition"},"ClassicallyIntegral":{"parameters":["Q","r"],"meaning":"A classically integral quadratic lattice.","expansion":"Q is a symmetric integral Gram matrix representing integers on all coded integer vectors"},"FifteenTest":{"parameters":["Q","W"],"meaning":"Exact Conway–Schneeberger test set.","expansion":"W supplies explicit vectors representing 1,2,3,5,6,7,10,14,15"},"ContinuedFraction":{"parameters":["a","b","s"],"meaning":"Finite simple continued fraction.","expansion":"a,b>0 and s is the complete witnessed Euclidean quotient list for a/b"},"Convergent":{"parameters":["s","i","u","v"],"meaning":"Finite convergent.","expansion":"u,v>0 are obtained by the explicit two-term numerator and denominator recurrences"},"QuadraticPeriod":{"parameters":["D","s","ell"],"meaning":"Minimal quadratic continued-fraction period.","expansion":"D>0 is nonsquare and s witnesses repetition of a complete-quotient state with least positive period ell"},"PrimitiveTriple":{"parameters":["a","b","c"],"meaning":"A positive primitive ordered Pythagorean triple in either leg orientation.","expansion":"a,b,c>0 ∧ a²+b²=c² ∧ Coprime(a,b)"},"Cyclotomic":{"parameters":["m","f"],"meaning":"The mth integral cyclotomic polynomial.","expansion":"m>0, f is monic and integral, and the witnessed product over d dividing m equals X^m-1"},"RegularPrime":{"parameters":["p","w"],"meaning":"Checked regular-prime certificate.","expansion":"p is an odd PRIME and w checks p divides no numerator of B2,B4,…,B(p-3) via finite rational computations"},"SimpleLift":{"parameters":["f","p","k","a","b"],"meaning":"A simple Hensel lift.","expansion":"Prime(p),k>0,f(a)=0 modulo p^k,f′(a) is a unit modulo p, b=a modulo p^k, and f(b)=0 modulo p^(k+1)"},"AllRootLifts":{"parameters":["f","p","k","a","S"],"meaning":"The exact possibly empty list of one-step root lifts.","expansion":"Prime(p),k>0 and S lists precisely the t<p satisfying f(a+t*p^k)=0 modulo p^(k+1)"},"TeichLift":{"parameters":["p","k","a","w"],"meaning":"Finite-precision Teichmüller representative.","expansion":"Prime(p),k>0,a<p,w<p^k,Mod(w,a,p),and Mod(w^p,w,p^k)"},"WeierstrassCertificate":{"parameters":["f","p","k","M","d","w"],"meaning":"Normalized preparation from sufficient COUPLED finite source precision.","expansion":"Prime(p),k>0,0<d<M, f is a distinguished HA-total coefficient-function code with a supplied precision modulus, and w verifies the canonical complete-ring factorization through the requested output precision; no uniqueness is inferred from naive independent truncations"},"Execution":{"parameters":["program","input","output","steps","trace"],"meaning":"Fully checked finite machine execution.","expansion":"trace lists exactly steps valid primitive-recursive machine transitions ending at output"},"PrattCertificate":{"parameters":["n","c"],"meaning":"Recursive Pratt certificate.","expansion":"c is a finite tree proving the factorization of n-1 and a witnessed primitive root"},"PocklingtonCertificate":{"parameters":["n","c"],"meaning":"Sound Pocklington certificate.","expansion":"c proves a factor F of n-1 with F>sqrt(n) and supplies all modular-power and gcd checks"},"EllipticCertificate":{"parameters":["n","c"],"meaning":"Sound supplied elliptic primality certificate.","expansion":"c supplies nonsingular curve checks, a certified large prime order factor, suitable point witnesses, and recursive smaller-prime certificates"},"Curve":{"parameters":["E","F"],"meaning":"Nonsingular coded Weierstrass elliptic curve.","expansion":"E is a finite coefficient code and its discriminant is a witnessed unit of the declared field F"},"ECPoint":{"parameters":["E","F","P"],"meaning":"Elliptic point including infinity.","expansion":"P is the distinguished infinity code or a normalized projective solution of the homogeneous curve equation"},"ECAdd":{"parameters":["E","F","P","Q","R"],"meaning":"Total elliptic addition.","expansion":"R is computed by the appropriate witnessed infinity, inverse, doubling, or distinct-point chord formula"},"ECCount":{"parameters":["E","p","r","N"],"meaning":"Point count over a finite extension.","expansion":"Prime(p),r>0,Curve(E,Fp), and N counts every affine point over F_(p^r) plus infinity"},"WeilPairing":{"parameters":["E","F","ell","P","Q","z"],"meaning":"Explicit Weil pairing value.","expansion":"ell is PRIME and distinct from the field characteristic, F contains all ell-torsion and ellth roots, and a witnessed finite Miller trace evaluates z"},"Lattice":{"parameters":["B","d","D"],"meaning":"Full-rank integer lattice.","expansion":"d>0,B is a d-by-d signed integral matrix, and D=|det(B)|>0"},"LLLReduced":{"parameters":["B","U","delta"],"meaning":"Exact rational LLL certificate.","expansion":"U is unimodular, 1/4<delta<1, and B*U satisfies witnessed size-reduction and Lovász inequalities"},"SymmetricPolytope":{"parameters":["C","d","V"],"meaning":"Full-dimensional origin-symmetric convex rational polytope.","expansion":"C=-C about zero, C is bounded convex and d-dimensional, and a finite rational triangulation witnesses volume V"},"TwoDescent":{"parameters":["E","w"],"meaning":"A witnessed finite rational elliptic 2-descent for full rational 2-torsion.","expansion":"E has three witnessed distinct rational roots and w supplies finite two-coverings, a checked rational square-class descent map, real and dyadic tests, and finite support at discriminant and coefficient-denominator primes"},"SelmerWitness":{"parameters":["E","S"],"meaning":"A finite computable two-Selmer superset for full rational 2-torsion.","expansion":"E has three witnessed distinct rational roots and S is a finite explicitly computed rational S-unit square-class Selmer group with complete real, dyadic, discriminant-prime, and denominator-prime local conditions"},"WeakMW":{"parameters":["E","S","iota"],"meaning":"Restricted weak Mordell–Weil finiteness by finite Selmer injection.","expansion":"E has full rational 2-torsion, SelmerWitness(E,S), S is finite and computable, and iota witnesses an injection E(Q)/2E(Q)→S; no quotient image decision, coset representatives, or full Mordell–Weil generators are asserted"}},"families":[{"id":"F01","slug":"divisibility-factorization","title":"Divisibility, gcd, and factorization","summary":"Witnessed prime factorization and finite multiplicative arithmetic.","color":"#4777d8","goal_ids":["G001","G002","G003","G004","G005","G006","G007","G008","G009","G010"]},{"id":"F02","slug":"congruences-crt-orders","title":"Congruences, CRT, and multiplicative orders","summary":"Finite congruence composition, units, and exact generator classifications.","color":"#2b98c8","goal_ids":["G011","G012","G013","G014","G015","G016","G017","G018","G019","G020"]},{"id":"F03","slug":"prime-distribution","title":"Prime distribution, primitive divisors, PNT, and Dirichlet","summary":"From Bertrand witnesses to Zsigmondy, arithmetized PNT, and progression primes.","color":"#2c9d79","goal_ids":["G021","G022","G023","G024","G025","G026","G027","G028","G029","G030"]},{"id":"F04","slug":"binomial-p-adic","title":"Binomial, p-adic, and combinatorial arithmetic","summary":"Carries, valuations, coefficient congruences, and finite precision.","color":"#6b9d35","goal_ids":["G031","G032","G033","G034","G035","G036","G037","G038","G039","G040"]},{"id":"F05","slug":"higher-reciprocity","title":"Quadratic, cubic, quartic, and power reciprocity","summary":"From the existing quadratic graph to corrected higher reciprocity.","color":"#ba8c29","goal_ids":["G041","G042","G043","G044","G045","G046","G047","G048","G049","G050"]},{"id":"F06","slug":"additive-zero-sum","title":"Additive combinatorics and zero-sum theory","summary":"Sharp finite sumsets, zero-sum witnesses, and polynomial methods.","color":"#d57d2f","goal_ids":["G051","G052","G053","G054","G055","G056","G057","G058","G059","G060"]},{"id":"F07","slug":"squares-quadratic-forms","title":"Sums of squares and quadratic forms","summary":"Existing representation anchors, exact counts, and safely restricted local-global.","color":"#cc5d51","goal_ids":["G061","G062","G063","G064","G065","G066","G067","G068","G069","G070"]},{"id":"F08","slug":"diophantine-pell-fermat","title":"Diophantine equations, Pell, and Fermat","summary":"Continued fractions, effective Pell orbits, primitive triples, and genuine descent.","color":"#c04c7d","goal_ids":["G071","G072","G073","G074","G075","G076","G077","G078","G079","G080"]},{"id":"F09","slug":"gaussian-cyclotomic","title":"Gaussian, Eisenstein, and cyclotomic arithmetic","summary":"Euclidean rings, explicit splitting, cyclotomy, and regular-prime Fermat.","color":"#9954b1","goal_ids":["G081","G082","G083","G084","G085","G086","G087","G088","G089","G090"]},{"id":"F10","slug":"finite-fields-local-lifting","title":"Polynomials, finite fields, and local lifting","summary":"Finite-field presentations, complete factorizations, and precision-safe local preparation.","color":"#7662cb","goal_ids":["G091","G092","G093","G094","G095","G096","G097","G098","G099","G100"]},{"id":"F11","slug":"algorithms-certificates-crypto","title":"Constructive algorithms, certificates, and cryptography","summary":"Certified arithmetic computation, primality, RSA, and elliptic certificates.","color":"#4c75b8","goal_ids":["G101","G102","G103","G104","G105","G106","G107","G108","G109","G110"]},{"id":"F12","slug":"elliptic-curves-lattices","title":"Elliptic curves, lattices, and finite Selmer descent","summary":"Total curve arithmetic, point counting, lattice geometry, and weak Mordell–Weil.","color":"#327f91","goal_ids":["G111","G112","G113","G114","G115","G116","G117","G118","G119","G120"]}],"layers":[{"number":0,"title":"Logical and decidable foundations","summary":"Induction, equality, and witnessed order."},{"number":1,"title":"Coding, search, and division","summary":"Finite encodings, bounded minimization, Euclidean division, and descent."},{"number":2,"title":"Elementary effective arithmetic","summary":"Gcd, prime extraction, finite choice, and arithmetic operations."},{"number":3,"title":"Coded algebra and valuations","summary":"Polynomial and matrix codes, modular inverses, and p-adic exponents."},{"number":4,"title":"Congruence composition","summary":"Constructive CRT and the supplementary-law anchor."},{"number":5,"title":"Existing major roots","summary":"Quadratic reciprocity, Bertrand, Kummer, and the Pythagorean constructor."},{"number":6,"title":"First cross-family construction","summary":"Two-square and Lucas roots, finite fields, and local lifts."},{"number":7,"title":"Representation and structural algebra","summary":"The four-square root, Gaussian arithmetic, and polynomial methods."},{"number":8,"title":"Constructive classification","summary":"Closed-anchor targets, field generators, Pell solutions, and lattices."},{"number":9,"title":"Quantitative and inverse theorems","summary":"Representation counts, factorization, and advanced finite algorithms."},{"number":10,"title":"Higher reciprocity and descent","summary":"Zsigmondy, cubic/quartic reciprocity, Fermat descent, and elliptic descent."},{"number":11,"title":"Global finite certificates","summary":"Arithmetized PNT, Hilbert reciprocity, Schoof, and Selmer enumeration."},{"number":12,"title":"Campaign summits","summary":"Dirichlet progression witnesses, higher reciprocity, universality, regular-prime Fermat, and weak Mordell–Weil."}],"tools":["T01","T02","T03","T04","T05","T06","T07","T08","T09","T10","T11","T12","T13","T14","T15","T16"],"anchors":["A01","A02","A03","A04","A05","A06","A07","A08"],"nodes":[{"id":"T01","kind":"tool","title":"Induction schema","family":null,"layer":0,"difficulty":"foundation","statement":"For each HA formula φ: φ(0) ∧ ∀n(φ(n)→φ(n+1)) → ∀n φ(n).","why":"Ordinary first-order induction is ambient HA, not a new reflection principle.","deps":[],"status":"available"},{"id":"T02","kind":"tool","title":"Decidable natural equality","family":null,"layer":0,"difficulty":"foundation","statement":"∀ a b. a=b ∨ a≠b.","why":"Equality of naturals is decidable intuitionistically without general excluded middle.","deps":[],"status":"available"},{"id":"T03","kind":"tool","title":"Witnessed natural order","family":null,"layer":0,"difficulty":"foundation","statement":"∀ a b. a≤b ↔ ∃t. a+t=b.","why":"Every comparison carries a first-order arithmetic witness.","deps":[],"status":"available"},{"id":"T04","kind":"tool","title":"Gödel beta coding","family":null,"layer":1,"difficulty":"foundation","statement":"∀ ell,s. Seq(s,ell) → ∃b,c. ∀i<ell ∃x. Beta(b,c,i,x) ∧ At(s,i,x).","why":"Lists and finite structures remain natural-number codes in one-sorted HA.","deps":["T01","T03"],"status":"available"},{"id":"T05","kind":"tool","title":"Bounded decidable search","family":null,"layer":1,"difficulty":"foundation","statement":"For each decidable arithmetic P: (∃n≤B.P(n)) → ∃n≤B. P(n) ∧ ∀j<n.¬P(j).","why":"Finite minimization extracts a least witness without unbounded choice.","deps":["T01","T02","T03"],"status":"available"},{"id":"T06","kind":"tool","title":"Euclidean division","family":null,"layer":1,"difficulty":"foundation","statement":"∀ n d. d>0 → ∃q r. DivRem(n,d,q,r).","why":"All quotient and residue computations start from explicitly witnessed division.","deps":["T01","T03"],"status":"available"},{"id":"T07","kind":"tool","title":"Bézout identity and gcd","family":null,"layer":2,"difficulty":"foundation","statement":"∀ a b. a+b>0 → ∃g u v. Gcd(a,b,g) ∧ u*a+v*b=g in signed codes.","why":"Canonical gcd and signed Bézout coefficients feed inverses and factorization.","deps":["T06","T15"],"status":"available"},{"id":"T08","kind":"tool","title":"Prime divisor extraction","family":null,"layer":2,"difficulty":"foundation","statement":"∀ n>1. ∃p q. Prime(p) ∧ n=p*q.","why":"A nontrivial natural has a bounded explicitly extracted prime divisor.","deps":["T05","T06"],"status":"available"},{"id":"T09","kind":"tool","title":"Bounded p-adic valuation","family":null,"layer":3,"difficulty":"foundation","statement":"∀ p n. Prime(p) ∧ n>0 → ∃e u. n=p^e*u ∧ ¬Dvd(p,u).","why":"Valuation includes its unit witness and never applies to zero.","deps":["T06","T08","T11"],"status":"available"},{"id":"T10","kind":"tool","title":"Constructive Chinese remaindering","family":null,"layer":4,"difficulty":"foundation","statement":"∀ a b m n. m,n>0 ∧ Coprime(m,n) → ∃x<m*n. Mod(x,a,m) ∧ Mod(x,b,n).","why":"Coprime congruences compose using actual Bézout and inverse witnesses.","deps":["T07","T14"],"status":"available"},{"id":"T11","kind":"tool","title":"Finite sums and products","family":null,"layer":2,"difficulty":"foundation","statement":"∀ s ell. Seq(s,ell) → ∃u v. Sum(s,ell,u) ∧ Prod(s,ell,v).","why":"Every bounded aggregate has a checkable recurrence trace.","deps":["T04","T01"],"status":"available"},{"id":"T12","kind":"tool","title":"Polynomial coding and evaluation","family":null,"layer":3,"difficulty":"foundation","statement":"∀ f d x R. Poly(f,d,R) → ∃y t. Eval(f,x,y,R) ∧ t witnesses Horner evaluation.","why":"Polynomial operations remain finite first-order coefficient computations.","deps":["T04","T11"],"status":"available"},{"id":"T13","kind":"tool","title":"Integer matrices and lattices","family":null,"layer":3,"difficulty":"foundation","statement":"∀M r c. IntMatrix(M,r,c) → ∃t. t checks every requested finite entry, product, and determinant.","why":"One signed-matrix encoding supports forms, lattices, and projective curve arithmetic.","deps":["T04","T11"],"status":"available"},{"id":"T14","kind":"tool","title":"Modular inverse","family":null,"layer":3,"difficulty":"foundation","statement":"∀a m. m>1 ∧ Coprime(a,m) → ∃b<m. Mod(a*b,1,m).","why":"A modular inverse is extracted from witnessed Bézout coefficients.","deps":["T07"],"status":"available"},{"id":"T15","kind":"tool","title":"Strong induction and descent","family":null,"layer":1,"difficulty":"foundation","statement":"For each HA formula P: (∀n. (∀k<n.P(k))→P(n)) → ∀n.P(n).","why":"Well-founded descent is derived from ordinary first-order induction.","deps":["T01","T03"],"status":"available"},{"id":"T16","kind":"tool","title":"Finite witnessed choice","family":null,"layer":2,"difficulty":"foundation","statement":"∀ell. (∀i<ell.∃x.R(i,x)) → ∃s. Seq(s,ell) ∧ ∀i<ell.R(i,At(s,i)).","why":"Induction concatenates only finitely many witnesses, not countable choice.","deps":["T04","T05"],"status":"available"},{"id":"A01","kind":"anchor","title":"Existing quadratic reciprocity proof root","family":"F05","layer":5,"difficulty":"near","statement":"∀ distinct odd primes p,q. ∃a b. QuadBit(p,q,a) ∧ QuadBit(q,p,b) ∧ Mod(a+b,((p-1)/2)*((q-1)/2),2).","why":"The complete ordinary root is independently checked by the unchanged kernel and its self-contained proof bundle is verified by Lean; the new immutable Alpha v16 records alpha_closed checked-use authority while historical Alpha v15 remains immutably pending.","deps":["T07","T09","T14"],"status":"alpha_closed","evidence":{"alpha_version":"v16","release_status":"alpha_closed","alpha_enrolled":true,"checked_use":true,"stable_member":false,"full_empty_context_closure":true,"independent_lean_bundle_verified":true,"ordinary_proof_nodes":54870,"ordinary_proof_objects":35052,"ordinary_proof_depth":129,"bundle_nodes":557,"bundle_dependencies":1787,"bundle_sha256":"3cd040d145f1004d07d277c66a3ffbcb355cd9c4b21938d79a6ec51b4258709c","alpha_identity_sha256":"3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10","historical_alpha_v15":{"release_status":"pending_layered_closure","checked_use":false,"identity_sha256":"2f1a097ac0b6821c74cd4da088c396d3b9960ffd43e169f22b4778d5871adc66"},"release_upgraded_by_focused_certificate":false,"reviewed_dependency_closed_promotion":true,"route":"quadratic-reciprocity/"},"references":["S01","S02","S08","S09"]},{"id":"A02","kind":"anchor","title":"Existing Bertrand postulate proof root","family":"F03","layer":5,"difficulty":"near","statement":"∀n>1. ∃p. Prime(p) ∧ n<p<2*n.","why":"A genuine focused empty-context certificate exists, but the current Alpha-v16 root remains body_checked and has no checked-use authority.","deps":["T08","T09","T11"],"status":"body_checked","evidence":{"alpha_version":"v16","release_status":"body_checked","alpha_enrolled":true,"checked_use":false,"stable_member":false,"focused_empty_context_certificate":true,"release_upgraded_by_focused_certificate":false,"route":"bertrand-postulate/"},"references":["S01","S02","S09"]},{"id":"A03","kind":"anchor","title":"Existing quadratic supplementary laws","family":"F05","layer":4,"difficulty":"near","statement":"∀ odd primes p. ∃a b. QuadBit(p-1,p,a) ∧ Mod(a,(p-1)/2,2) ∧ QuadBit(2,p,b) ∧ Mod(b,(p²-1)/8,2).","why":"The first Alpha-v15 frontier admission remains body_checked in current Alpha v16, without checked-use or Stable promotion.","deps":["T07","T14"],"status":"body_checked","evidence":{"first_admission":"v15","alpha_version":"v16","release_status":"body_checked","alpha_enrolled":true,"checked_use":false,"stable_member":false,"route":"supplementary-laws/"},"references":["S01","S04","S09"]},{"id":"A04","kind":"anchor","title":"Existing Kummer binomial carry theorem","family":"F04","layer":5,"difficulty":"near","statement":"∀p n k. Prime(p) ∧ k≤n → ∃z e. Binom(n,k,z) ∧ Val(p,z,e) ∧ CarryCount(p,[k,n-k],e).","why":"Kummer first entered Alpha v14 and remains body_checked in current Alpha v16.","deps":["T09","T11","T04"],"status":"body_checked","evidence":{"first_admission":"v14","alpha_version":"v16","release_status":"body_checked","alpha_enrolled":true,"checked_use":false,"stable_member":false,"route":"kummer/"},"references":["S01","S03","S04","S09"]},{"id":"A05","kind":"anchor","title":"Existing full all-natural two-square classification","family":"F07","layer":6,"difficulty":"near","statement":"∀n. (∃x y.Rep2(n,x,y)) ↔ n=0 ∨ (n>0 ∧ ∀q≤n. Prime(q) ∧ Mod(q,3,4) → ∃e.Val(q,n,2*e)).","why":"The complete theorem body first entered Alpha v15 and remains body_checked in current Alpha v16; closure and checked-use remain separate work.","deps":["A03","T09","T15"],"status":"body_checked","evidence":{"first_admission":"v15","alpha_version":"v16","release_status":"body_checked","alpha_enrolled":true,"checked_use":false,"stable_member":false,"route":"two-squares/"},"references":["S01","S04","S09"]},{"id":"A06","kind":"anchor","title":"Existing unconditional Lagrange four-square theorem","family":"F07","layer":7,"difficulty":"near","statement":"∀n. ∃a b c d. Rep4(n,a,b,c,d).","why":"The full all-natural theorem body exists in current Alpha v16; partial independent checks do not promote its flagship root.","deps":["A05","T13","T15"],"status":"body_checked","evidence":{"first_admission":"v13","alpha_version":"v16","release_status":"body_checked","alpha_enrolled":true,"checked_use":false,"stable_member":false,"independent_frontier_verified":80,"independent_frontier_total":196,"older_parent_verified":23,"older_parent_total":23,"route":"four-squares/"},"references":["S01","S04","S06","S09"]},{"id":"A07","kind":"anchor","title":"Existing multidigit Lucas theorem","family":"F04","layer":6,"difficulty":"near","statement":"∀p n k. Prime(p) ∧ k≤n → ∃z N K u. Binom(n,k,z) ∧ Digits(n,p,N) ∧ Digits(k,p,K) ∧ u=∏i Binom(Ni,Ki) ∧ Mod(z,u,p).","why":"The full multidigit theorem first entered Alpha v13 and remains body_checked in current Alpha v16; its independent closure frontier is incomplete.","deps":["A04","T04","T09"],"status":"body_checked","evidence":{"first_admission":"v13","alpha_version":"v16","release_status":"body_checked","alpha_enrolled":true,"checked_use":false,"stable_member":false,"independent_frontier_verified":33,"independent_frontier_total":44,"older_parent_verified":30,"older_parent_total":30,"route":"lucas/"},"references":["S01","S04","S05","S09"]},{"id":"A08","kind":"anchor","title":"Existing primitive Pythagorean forward constructor","family":"F08","layer":5,"difficulty":"near","statement":"∀m>k>0. Coprime(m,k) ∧ m,k of opposite parity → ∃a b c. a=m²-k² ∧ b=2*m*k ∧ c=m²+k² ∧ PrimitiveTriple(a,b,c).","why":"Only the dependency-curried forward candidate body exists; it is unenrolled, and the inverse plus Fermat descent remain open.","deps":["T07","T13"],"status":"body_checked","evidence":{"alpha_version":null,"release_status":"unenrolled_dependency_curried_candidate_body","alpha_enrolled":false,"checked_use":false,"stable_member":false,"inverse_parametrization_complete":false,"fermat_four_descent_complete":false,"route":"pythagorean-fermat-four/"},"references":["S01","S07"]},{"id":"G001","kind":"goal","title":"Division with unique quotient and remainder","family":"F01","layer":2,"difficulty":"foundation","statement":"∀n d>0. ∃q r. DivRem(n,d,q,r) ∧ ∀u v. DivRem(n,d,u,v)→u=q ∧ v=r.","why":"Expose existing division as a uniquely witnessed reusable foundation, not a newly missing theorem.","deps":["T06"],"status":"existing_foundation"},{"id":"G002","kind":"goal","title":"Bézout identity and canonical gcd","family":"F01","layer":3,"difficulty":"foundation","statement":"∀a b. a+b>0 → ∃g u v. Gcd(a,b,g) ∧ u*a+v*b=g ∧ ∀h.Gcd(a,b,h)→h=g.","why":"Package existing gcd and signed Bézout machinery into one canonical interface.","deps":["T07"],"status":"existing_foundation"},{"id":"G003","kind":"goal","title":"Euclid's coprime-product lemma","family":"F01","layer":4,"difficulty":"foundation","statement":"∀a b c. Coprime(a,b) ∧ Dvd(a,b*c) → ∃q.c=a*q.","why":"Isolate the existing constructive divisibility cancellation foundation.","deps":["G002"],"status":"existing_foundation"},{"id":"G004","kind":"goal","title":"Existence of prime factorization","family":"F01","layer":4,"difficulty":"foundation","statement":"∀n>0. ∃s. Factorization(n,s).","why":"Index already available prime-divisor descent as a finite factorization witness.","deps":["T08","T15"],"status":"existing_foundation"},{"id":"G005","kind":"goal","title":"Uniqueness of prime factorization","family":"F01","layer":5,"difficulty":"foundation","statement":"∀n s t. Factorization(n,s) ∧ Factorization(n,t) → ∃w.Permutation(s,t,w).","why":"Expose existing prime-factor uniqueness without claiming it is a novel open theorem.","deps":["G003","G004"],"status":"existing_foundation"},{"id":"G006","kind":"goal","title":"Euler's totient product formula","family":"F01","layer":6,"difficulty":"near","statement":"∀n>0. ∃s t. Factorization(n,s) ∧ Phi(n,t) ∧ t=∏ over DISTINCT PRIME p∣n of p^(Val(p,n)-1)*(p-1).","why":"Compute the finite multiplicative totient formula with witnessed prime factors.","deps":["G005","T11"],"status":"open"},{"id":"G007","kind":"goal","title":"Möbius inversion on divisors","family":"F01","layer":7,"difficulty":"ambitious","statement":"∀N f g. ArithmeticTable(N,f) ∧ ArithmeticTable(N,g) ∧ (∀m.0<m≤N → g(m)=∑_{d∣m}f(d)) → ∃h. ∀n.0<n≤N → h(n)=∑_{d∣n}Mobius(d)*g(n/d) ∧ h(n)=f(n).","why":"Require the divisor-sum hypothesis at EVERY POSITIVE input; zero has infinitely many divisors and is outside the finite tables.","deps":["G005","T11"],"status":"open"},{"id":"G008","kind":"goal","title":"Jordan totient multiplicativity","family":"F01","layer":8,"difficulty":"ambitious","statement":"∀k a b. k>0 ∧ a>0 ∧ b>0 ∧ Coprime(a,b) → ∃u v w. Jordan(k,a,u) ∧ Jordan(k,b,v) ∧ Jordan(k,a*b,w) ∧ w=u*v.","why":"Prove finite tuple-count multiplicativity with positive rank and positive modulus.","deps":["G006","G005"],"status":"open"},{"id":"G009","kind":"goal","title":"Finite signed Dirichlet-convolution algebra","family":"F01","layer":9,"difficulty":"ambitious","statement":"∀N>0 ∀f g h. ArithmeticTable(N,f) ∧ ArithmeticTable(N,g) ∧ ArithmeticTable(N,h) → ∃w. w witnesses finite associativity, commutativity, delta identity, and inversion exactly when f(1)=1 or f(1)=-1.","why":"Require N>0 so f(1) exists, quantify only finite signed table codes, and retain the exact unit-at-one inverse criterion.","deps":["G007","G008"],"status":"open"},{"id":"G010","kind":"goal","title":"Squarefree kernels and perfect-power classification","family":"F01","layer":7,"difficulty":"near","statement":"∀n>0. ∃r s w. Squarefree(r) ∧ n=r*s² ∧ PowerProfile(n,w) ∧ ∀u v.Squarefree(u) ∧ n=u*v²→u=r ∧ v=s.","why":"Use valuations only at PRIME divisors and positive perfect-power exponents.","deps":["G005","T09"],"status":"open"},{"id":"G011","kind":"goal","title":"Generalized Chinese remainder theorem","family":"F02","layer":5,"difficulty":"foundation","statement":"∀data. CRTCompatible(data) → ∃x M. CRTSolution(data,x,M) ∧ ∀y.CRTSolution(data,y,M)→y=x.","why":"Consolidate existing CRT foundations into a canonical compatible finite-list interface.","deps":["T10","G002"],"status":"existing_foundation"},{"id":"G012","kind":"goal","title":"Solvability of linear congruences","family":"F02","layer":4,"difficulty":"foundation","statement":"∀a b m g. m>0 ∧ Gcd(a,m,g) → ((∃x<m.Mod(a*x,b,m)) ↔ Dvd(g,b)).","why":"Produce actual least-residue solutions exactly under the gcd divisibility criterion.","deps":["G002","T06"],"status":"open"},{"id":"G013","kind":"goal","title":"Coprime modular cancellation","family":"F02","layer":4,"difficulty":"foundation","statement":"∀a b c m. m>1 ∧ Coprime(a,m) ∧ Mod(a*b,a*c,m) → Mod(b,c,m).","why":"Cancel via a checked modular inverse, with a nontrivial positive modulus.","deps":["G002","T14"],"status":"open"},{"id":"G014","kind":"goal","title":"Euler's theorem for units","family":"F02","layer":7,"difficulty":"near","statement":"∀a m t. m>1 ∧ Unit(a,m) ∧ Phi(m,t) → ∃w.Pow(a,t,w) ∧ Mod(w,1,m).","why":"Certify Euler's theorem for explicitly invertible residues of every positive composite modulus.","deps":["G006","G013"],"status":"open"},{"id":"G015","kind":"goal","title":"Multiplicative order and minimal period","family":"F02","layer":8,"difficulty":"near","statement":"∀a m t. m>1 ∧ Unit(a,m) ∧ Phi(m,t) → ∃d.Order(a,(Z/mZ)*,d) ∧ Dvd(d,t).","why":"Extract the actual least positive order and its witnessed totient divisibility.","deps":["G014","T05"],"status":"open"},{"id":"G016","kind":"goal","title":"Carmichael's universal exponent","family":"F02","layer":9,"difficulty":"ambitious","statement":"∀m>1. ∃c.Carmichael(m,c) ∧ ∀a.Unit(a,m)→Mod(a^c,1,m).","why":"Compute the minimal universal exponent from finite prime-power decomposition.","deps":["G015","G005"],"status":"open"},{"id":"G017","kind":"goal","title":"Primitive roots of odd prime powers","family":"F02","layer":10,"difficulty":"ambitious","statement":"∀p k. Prime(p) ∧ p>2 ∧ k>0 → ∃g.PrimitiveRoot(g,p^k).","why":"Exclude the exceptional noncyclic higher powers of two explicitly.","deps":["G015","G092"],"status":"open"},{"id":"G018","kind":"goal","title":"Classification of cyclic unit groups","family":"F02","layer":11,"difficulty":"summit","statement":"∀m>1. (∃g.PrimitiveRoot(g,m)) ↔ ∃w.PrimitiveRootModulus(m,w).","why":"State exactly the valid moduli 2, 4, odd prime powers, and twice odd prime powers.","deps":["G017","G011"],"status":"open"},{"id":"G019","kind":"goal","title":"Exponential congruence solvability","family":"F02","layer":10,"difficulty":"ambitious","statement":"∀m e b t d u. (∃g.PrimitiveRoot(g,m)) ∧ Unit(b,m) ∧ Phi(m,t) ∧ Gcd(e,t,d) ∧ t=d*u → ((∃x.Unit(x,m) ∧ Mod(x^e,b,m)) ↔ Mod(b^u,1,m)).","why":"Restrict the exact power-congruence criterion to cyclic unit groups.","deps":["G015","G092"],"status":"open"},{"id":"G020","kind":"goal","title":"Simultaneous polynomial congruences","family":"F02","layer":11,"difficulty":"ambitious","statement":"∀data f. data lists pairwise coprime positive moduli and ACTUAL witnessed local roots of f → ∃x M.CRTSolution(data,x,M) ∧ ∀(a,m)∈data.Mod(f(x),0,m).","why":"Glue provided local roots without falsely claiming roots exist at arbitrary moduli.","deps":["G011","G094"],"status":"open"},{"id":"G021","kind":"goal","title":"Euclid's infinitude of primes","family":"F03","layer":3,"difficulty":"foundation","statement":"∀B. ∃p.Prime(p) ∧ p>B.","why":"Reindex the already available constructive finite-product proof, not a missing result.","deps":["T08","T11"],"status":"existing_foundation"},{"id":"G022","kind":"goal","title":"Effective nth-prime upper bound","family":"F03","layer":5,"difficulty":"near","statement":"∀k>0. ∃s p.PrimeList(s,k) ∧ At(s,k-1,p) ∧ p<2^(2^k).","why":"Give an explicitly finite doubly exponential search bound for the kth prime.","deps":["G021","T05"],"status":"open"},{"id":"G023","kind":"goal","title":"Prime divisors in binomial windows","family":"F03","layer":6,"difficulty":"near","statement":"∀n>1. ∃p z.Prime(p) ∧ n<p<2*n ∧ Binom(2*n,n,z) ∧ Val(p,z,1).","why":"Strengthen the existing Bertrand anchor to a multiplicity-one central-binomial prime divisor.","deps":["A02","T09"],"status":"existing_anchor_extension","evidence":{"anchor":"A02","anchor_release_status":"body_checked","new_claim_already_closed":false}},{"id":"G024","kind":"goal","title":"Iterated Bertrand prime chains","family":"F03","layer":6,"difficulty":"near","statement":"∀n>1 ∀k. ∃s.Seq(s,k+1) ∧ At(s,0,n) ∧ ∀i<k.Prime(At(s,i+1)) ∧ At(s,i)<At(s,i+1)<2*At(s,i).","why":"Extend the existing one-step root to an explicit finite witnessed prime chain.","deps":["A02"],"status":"existing_anchor_extension","evidence":{"anchor":"A02","anchor_release_status":"body_checked","new_claim_already_closed":false}},{"id":"G025","kind":"goal","title":"Infinitely many primes three modulo four","family":"F03","layer":5,"difficulty":"near","statement":"∀B. ∃p.Prime(p) ∧ p>B ∧ Mod(p,3,4).","why":"Extract Euclid-type witnesses in the nontrivial quadratic progression 3 modulo 4.","deps":["G003","T08"],"status":"open"},{"id":"G026","kind":"goal","title":"Infinitely many primes one modulo four","family":"F03","layer":7,"difficulty":"ambitious","statement":"∀B. ∃p.Prime(p) ∧ p>B ∧ Mod(p,1,4).","why":"Use the existing supplementary laws to force arbitrarily large primes in the complementary progression.","deps":["A03","G025"],"status":"open"},{"id":"G027","kind":"goal","title":"Effective Chebyshev prime bounds","family":"F03","layer":8,"difficulty":"ambitious","statement":"∀x ell k. x≥2 ∧ BitLen(x,ell) ∧ PrimeCount(x,k) → x≤8*k*ell ∧ k*ell≤8*x.","why":"Use entirely finite integer inequalities with explicit safe constants.","deps":["G023","G024"],"status":"open"},{"id":"G028","kind":"goal","title":"Bang–Zsigmondy primitive prime-divisor theorem","family":"F03","layer":10,"difficulty":"summit","statement":"∀a>b>0 ∀n>1. Coprime(a,b) ∧ ¬((n=2 ∧ ∃j.a+b=2^j) ∨ (a=2 ∧ b=1 ∧ n=6)) → ∃p.Prime(p) ∧ Dvd(p,a^n-b^n) ∧ ∀k.0<k<n→¬Dvd(p,a^k-b^k).","why":"State both exact exceptional families: exponent two with power-of-two sum, and (2,1,6).","deps":["G088","G005","G036"],"status":"open"},{"id":"G029","kind":"goal","title":"Elementary arithmetized prime number theorem","family":"F03","layer":11,"difficulty":"summit","statement":"∀k>0. ∃N. ∀n≥N. ∃ell u s w t. s>0 ∧ PrimeCount(n,t) ∧ LogBracket(n,ell/s,u/s,w) ∧ k*|t*ell-n*s|≤n*s ∧ k*|t*u-n*s|≤n*s.","why":"Encode PNT entirely using finite rational logarithm brackets, explicit threshold witnesses, and signed integer error inequalities.","deps":["G027","G007","G087"],"status":"open"},{"id":"G030","kind":"goal","title":"Dirichlet prime witnesses in coprime progressions","family":"F03","layer":12,"difficulty":"summit","statement":"∀a q B. q>0 ∧ Coprime(a,q) → ∃p.Prime(p) ∧ p>B ∧ Mod(p,a,q).","why":"Pose the full positive-modulus strict-HA progression-prime witness goal, including q=1, without analytic or search oracles.","deps":["G026","G029","G088"],"status":"open"},{"id":"G031","kind":"goal","title":"Pascal recurrence and coefficient totality","family":"F04","layer":3,"difficulty":"foundation","statement":"∀n k. ∃z.Binom(n,k,z) ∧ (0<k≤n → z=Binom(n-1,k-1)+Binom(n-1,k)).","why":"Expose already available finite Pascal arithmetic as an existing shared foundation.","deps":["T04","T11"],"status":"existing_foundation"},{"id":"G032","kind":"goal","title":"Legendre's factorial valuation formula","family":"F04","layer":5,"difficulty":"near","statement":"∀p n F. Prime(p) ∧ Fact(n,F) → ∃e s.Val(p,F,e) ∧ s=[floor(n/p),…,floor(n/p^n)] ∧ Sum(s,n,e).","why":"Make the infinite-looking factorial-valuation sum explicitly finite.","deps":["T09","G031"],"status":"open"},{"id":"G033","kind":"goal","title":"Closed multidigit Lucas digit-product theorem","family":"F04","layer":7,"difficulty":"near","statement":"∀p n k. Prime(p) ∧ k≤n → ∃z N K u.Binom(n,k,z) ∧ Digits(n,p,N) ∧ Digits(k,p,K) ∧ u=∏i Binom(Ni,Ki) ∧ Mod(z,u,p).","why":"The complete theorem body already exists; the task is independent closure and checked-use promotion.","deps":["A07","G031"],"status":"existing_anchor_closure","evidence":{"anchor":"A07","anchor_release_status":"body_checked","independent_frontier_verified":33,"independent_frontier_total":44,"checked_use":false}},{"id":"G034","kind":"goal","title":"Closed Kummer binomial carry valuation","family":"F04","layer":6,"difficulty":"near","statement":"∀p n k. Prime(p) ∧ k≤n → ∃z e.Binom(n,k,z) ∧ Val(p,z,e) ∧ CarryCount(p,[k,n-k],e).","why":"Kummer already exists as an admitted Alpha body; only closure and checked-use are missing.","deps":["A04","G032"],"status":"existing_anchor_closure","evidence":{"anchor":"A04","anchor_release_status":"body_checked","checked_use":false}},{"id":"G035","kind":"goal","title":"Multinomial carry valuation","family":"F04","layer":8,"difficulty":"ambitious","statement":"∀p n parts z. Prime(p) ∧ Multinom(n,parts,z) → ∃e.Val(p,z,e) ∧ CarryCount(p,parts,e).","why":"Extend the existing binomial carry theorem to any finite witnessed summand list.","deps":["G034","G031"],"status":"open"},{"id":"G036","kind":"goal","title":"Lifting the exponent for odd primes","family":"F04","layer":7,"difficulty":"ambitious","statement":"∀p x y n a b. Prime(p) ∧ p>2 ∧ x>y>0 ∧ n>0 ∧ Dvd(p,x-y) ∧ ¬Dvd(p,x*y) ∧ Val(p,x-y,a) ∧ Val(p,n,b) → Val(p,x^n-y^n,a+b).","why":"Require odd PRIME p, positive nonzero difference, positive exponent, and unit inputs.","deps":["T09","G003"],"status":"open"},{"id":"G037","kind":"goal","title":"Wolstenholme's binomial congruence","family":"F04","layer":9,"difficulty":"ambitious","statement":"∀p z. Prime(p) ∧ p≥5 ∧ Binom(2*p-1,p-1,z) → Mod(z,1,p^3).","why":"Use the exact valid prime threshold p≥5 and a finite p-cubed congruence.","deps":["G032","G036"],"status":"open"},{"id":"G038","kind":"goal","title":"Jacobsthal's binomial congruence","family":"F04","layer":10,"difficulty":"ambitious","statement":"∀p n k u v e. Prime(p) ∧ p≥5 ∧ 0<k<n ∧ Binom(p*n,p*k,u) ∧ Binom(n,k,v) ∧ Val(p,n*k*(n-k),e) → Mod(u,v,p^(3+e)).","why":"State a valid LOWER divisibility bound, not an exact valuation, and exclude zero-valuation endpoints.","deps":["G037","G036"],"status":"open"},{"id":"G039","kind":"goal","title":"Prime-power Lucas unit decomposition","family":"F04","layer":10,"difficulty":"ambitious","statement":"∀p n k q. Prime(p) ∧ k≤n ∧ q>0 → ∃z e u.Binom(n,k,z) ∧ Val(p,z,e) ∧ ¬Dvd(p,u) ∧ Mod(z,p^e*u,p^q) with a witnessed digit-factorial unit trace.","why":"Keep p PRIME, k≤n so the coefficient is nonzero, and positive finite precision.","deps":["G033","G095"],"status":"open"},{"id":"G040","kind":"goal","title":"Complete p-adic multinomial congruence","family":"F04","layer":11,"difficulty":"summit","statement":"∀p n parts q z. Prime(p) ∧ q>0 ∧ Multinom(n,parts,z) → ∃e u.CarryCount(p,parts,e) ∧ Val(p,z,e) ∧ ¬Dvd(p,u) ∧ Mod(z,p^e*u,p^q).","why":"Combine prime-base carries and prime-power unit arithmetic at explicit positive finite precision.","deps":["G035","G039"],"status":"open"},{"id":"G041","kind":"goal","title":"Euler's quadratic criterion","family":"F05","layer":5,"difficulty":"near","statement":"∀p a. Prime(p) ∧ p>2 ∧ ¬Dvd(p,a) → ((∃x<p.Mod(x²,a,p)) ↔ Mod(a^((p-1)/2),1,p)).","why":"Decide square residues only for units at genuine odd primes.","deps":["T14","T09"],"status":"open"},{"id":"G042","kind":"goal","title":"Gauss's quadratic-residue lemma","family":"F05","layer":6,"difficulty":"near","statement":"∀p a s. Prime(p) ∧ p>2 ∧ ¬Dvd(p,a) ∧ GaussBit(a,p,s) → QuadBit(a,p,s).","why":"Preserve the essential odd-PRIME and nonzero-residue hypotheses.","deps":["G041","T11"],"status":"open"},{"id":"G043","kind":"goal","title":"Closed quadratic reciprocity over odd primes","family":"F05","layer":7,"difficulty":"near","statement":"∀ distinct odd primes p,q. ∃a b.QuadBit(p,q,a) ∧ QuadBit(q,p,b) ∧ Mod(a+b,((p-1)/2)*((q-1)/2),2).","why":"The exact anchor theorem is independently proved by the original kernel and Lean, and its reviewed dependency-closed promotion now grants Alpha-v16 checked use without Stable admission.","deps":["A01","G042"],"status":"alpha_closed","evidence":{"anchor":"A01","alpha_version":"v16","anchor_release_status":"alpha_closed","full_empty_context_closure":true,"independent_lean_bundle_verified":true,"checked_use":true,"stable_member":false,"historical_alpha_v15_release_status":"pending_layered_closure"}},{"id":"G044","kind":"goal","title":"Closed supplementary laws for minus one and two","family":"F05","layer":5,"difficulty":"near","statement":"∀p. Prime(p) ∧ p>2 → ∃a b.QuadBit(p-1,p,a) ∧ Mod(a,(p-1)/2,2) ∧ QuadBit(2,p,b) ∧ Mod(b,(p²-1)/8,2).","why":"These odd-prime laws already have Alpha bodies; the goal is genuine independent closure.","deps":["A03"],"status":"existing_anchor_closure","evidence":{"anchor":"A03","anchor_release_status":"body_checked","checked_use":false}},{"id":"G045","kind":"goal","title":"Jacobi-symbol reciprocity","family":"F05","layer":8,"difficulty":"ambitious","statement":"∀ positive odd a,b ∀s t. Coprime(a,b) ∧ JacobiBit(a,b,s) ∧ JacobiBit(b,a,t) → Mod(s+t,((a-1)/2)*((b-1)/2),2).","why":"Explicitly quantify both Jacobi sign witnesses and extend prime reciprocity to odd coprime composites.","deps":["G043","G005"],"status":"open"},{"id":"G046","kind":"goal","title":"Constructive Hilbert symbol at odd primes","family":"F05","layer":9,"difficulty":"ambitious","statement":"∀ nonzero rational codes a,b ∀p. Prime(p) ∧ p>2 → ∃s<2.HilbertBit(a,b,p,s).","why":"Compute the symbol only at an odd PRIME place, never an odd composite modulus.","deps":["G045","G095"],"status":"open"},{"id":"G047","kind":"goal","title":"Cubic reciprocity in Eisenstein integers","family":"F05","layer":10,"difficulty":"ambitious","statement":"∀pi rho s. Primary(pi,Eisenstein) ∧ Primary(rho,Eisenstein) ∧ RingPrime(pi,Eisenstein) ∧ RingPrime(rho,Eisenstein) ∧ pi,rho coprime → (PowerSymbol(pi,rho,3,s) ↔ PowerSymbol(rho,pi,3,s)).","why":"Require coprime primary Eisenstein primes and constructive Eisenstein factorization.","deps":["G085","G042"],"status":"open"},{"id":"G048","kind":"goal","title":"Quartic reciprocity in Gaussian integers","family":"F05","layer":10,"difficulty":"ambitious","statement":"∀ coprime primary Gaussian primes pi,rho ∀s t. PowerSymbol(pi,rho,4,s) ∧ PowerSymbol(rho,pi,4,t) → Mod(s-t,2*((Norm(pi)-1)/4)*((Norm(rho)-1)/4),4).","why":"Retain the required quartic sign correction and derive it from Gaussian Euclidean arithmetic.","deps":["G082","G043"],"status":"open"},{"id":"G049","kind":"goal","title":"Hilbert reciprocity over rational places","family":"F05","layer":11,"difficulty":"summit","statement":"∀ nonzero rational codes a,b. ∃w.HilbertProduct(a,b,w) ∧ the sum of all real-place, dyadic, numerator-prime, and denominator-prime local bits in w is even.","why":"Include the real place, p=2, and EVERY prime dividing a numerator or denominator.","deps":["G046","G047","G048"],"status":"open"},{"id":"G050","kind":"goal","title":"Prime-exponent cyclotomic power reciprocity","family":"F05","layer":12,"difficulty":"summit","statement":"∀ell a b. Prime(ell) ∧ ell>2 ∧ a,b coprime admissible primary elements of the ellth cyclotomic integer ring → ∃w.PowerReciprocity(ell,a,b,w).","why":"The exponent ell is prime, whereas the cyclotomic field degree is ell−1; all local corrections are mandatory.","deps":["G088","G047","G048"],"status":"open"},{"id":"G051","kind":"goal","title":"Cauchy–Davenport sumset bound","family":"F06","layer":6,"difficulty":"ambitious","statement":"∀p A B k l S m. Prime(p) ∧ FiniteSet(A,Fp,k) ∧ FiniteSet(B,Fp,l) ∧ k,l>0 ∧ SetSum(A,B,Fp,S) ∧ FiniteSet(S,Fp,m) → m≥min(p,k+l-1).","why":"Prove the exact finite PRIME-field sumset bound with witnessed set cardinalities.","deps":["T16","T12"],"status":"open"},{"id":"G052","kind":"goal","title":"Erdős–Ginzburg–Ziv zero-sum theorem","family":"F06","layer":7,"difficulty":"ambitious","statement":"∀n>0 ∀s. Seq(s,2*n-1) → ∃w.ZeroSubsequence(s,n,Z/nZ,w).","why":"Choose n distinct INDEX positions; repeated element values are allowed.","deps":["G051","T16"],"status":"open"},{"id":"G053","kind":"goal","title":"Restricted-sumset Dias da Silva–Hamidoune bound","family":"F06","layer":8,"difficulty":"ambitious","statement":"∀p A k S m. Prime(p) ∧ FiniteSet(A,Fp,k) ∧ k≥2 ∧ RestrictedSum(A,Fp,S) ∧ FiniteSet(S,Fp,m) → m≥min(p,2*k-3).","why":"Require a PRIME field and at least two distinct input elements.","deps":["G055","G051"],"status":"open"},{"id":"G054","kind":"goal","title":"Olson's cyclic zero-sum bound","family":"F06","layer":8,"difficulty":"ambitious","statement":"∀p A k. Prime(p) ∧ FiniteSet(A,Fp,k) ∧ k²>4*p-3 → ∃j w.0<j≤k ∧ ZeroSubsequence(A,j,Fp,w).","why":"Use a safe classical square-root bound rather than an unsupported exact Olson constant.","deps":["G052"],"status":"open"},{"id":"G055","kind":"goal","title":"Constructive combinatorial Nullstellensatz","family":"F06","layer":7,"difficulty":"ambitious","statement":"∀ finite fields F ∀f,t,S. deg(f)=Σti ∧ coeff(∏Xi^ti,f)≠0 ∧ ∀i.|Si|>ti → ∃x.∀i.xi∈Si ∧ f(x)≠0.","why":"Keep the exact top-degree, nonzero-coefficient, and grid-size assumptions.","deps":["T12","G091"],"status":"open"},{"id":"G056","kind":"goal","title":"Chevalley–Warning congruence","family":"F06","layer":8,"difficulty":"ambitious","statement":"∀p f n Z. Prime(p) ∧ f is a coded polynomial list over Fp in n variables ∧ Σdeg(fi)<n ∧ Z counts their common Fp zeros → Mod(Z,0,p).","why":"Require a PRIME field and the strict total-degree inequality.","deps":["G055","G091"],"status":"open"},{"id":"G057","kind":"goal","title":"Davenport constants for p-groups and rank-two groups","family":"F06","layer":9,"difficulty":"ambitious","statement":"∀ finite abelian groups G=⊕i Z/niZ in CANONICAL invariant-factor form n1∣n2∣⋯. G is a p-group OR has invariant-factor rank≤2 → ∃D w.D=1+Σi(ni-1) ∧ w certifies both an extremal zero-sum-free sequence and universal zero-sum at length D.","why":"Require the canonical divisibility-chain invariant factors; arbitrary decompositions such as C2⊕C3 give a false formula, as do unrestricted general groups.","deps":["G052","G011"],"status":"open"},{"id":"G058","kind":"goal","title":"Vosper's inverse sumset theorem","family":"F06","layer":10,"difficulty":"ambitious","statement":"∀p A B k l S m. Prime(p) ∧ |A|=k≥2 ∧ |B|=l≥2 ∧ S=A+B⊆Fp ∧ |S|=m=k+l-1≤p-2 → ∃a b d≠0.ArithmeticProgression(A,Fp,a,d,k) ∧ ArithmeticProgression(B,Fp,b,d,l).","why":"Retain PRIME p, both cardinality thresholds, p−2, and the common NONZERO step.","deps":["G051","G053"],"status":"open"},{"id":"G059","kind":"goal","title":"Freiman's three-k-minus-four theorem","family":"F06","layer":11,"difficulty":"summit","statement":"∀ finite INTEGER sets A of size k≥3. |A+A|=m≤3*k-4 → ∃a d≠0.ArithmeticProgression(A,Z,a,d,m-k+1).","why":"Restrict to integers and the exact 3k−4 and progression-length hypotheses.","deps":["G058","G057"],"status":"open"},{"id":"G060","kind":"goal","title":"Certified cap-set polynomial bound","family":"F06","layer":12,"difficulty":"summit","statement":"∀n A k B. CapSet(A,n,k) ∧ CoefficientBound(n,B) → k≤3*B, where B=Σ_{j≤floor(2*n/3)}[X^j](1+X+X²)^n.","why":"Use the exact finite F3^n slice-rank coefficient bound without unsupported decimal or analytic constants.","deps":["G055","G056","G053"],"status":"open"},{"id":"G061","kind":"goal","title":"Fermat's prime two-square theorem","family":"F07","layer":7,"difficulty":"near","statement":"∀p. Prime(p) → ((∃x y.Rep2(p,x,y)) ↔ p=2 ∨ Mod(p,1,4)).","why":"This is a specialization of the already body-checked full two-square anchor, not a missing mathematical theorem.","deps":["A05","G041"],"status":"existing_anchor_extension","evidence":{"anchor":"A05","anchor_release_status":"body_checked","checked_use":false}},{"id":"G062","kind":"goal","title":"Closed all-natural two-square criterion","family":"F07","layer":8,"difficulty":"near","statement":"∀n. (∃x y.Rep2(n,x,y)) ↔ n=0 ∨ (n>0 ∧ ∀q≤n. Prime(q) ∧ Mod(q,3,4) → ∃e.Val(q,n,2*e)).","why":"Quantify PRIME q only; the all-natural theorem body already exists and only independent closure is missing.","deps":["A05","G061"],"status":"existing_anchor_closure","evidence":{"anchor":"A05","anchor_release_status":"body_checked","checked_use":false}},{"id":"G063","kind":"goal","title":"Jacobi's two-square representation count","family":"F07","layer":9,"difficulty":"ambitious","statement":"∀n>0 ∀r. RepCount(n,2,r) → r=4*(#{d∣n:d≡1 mod 4}-#{d∣n:d≡3 mod 4}).","why":"Count all ORDERED SIGNED representations, not unordered or nonnegative witnesses.","deps":["G062","G045"],"status":"open"},{"id":"G064","kind":"goal","title":"Closed unconditional Lagrange four-square theorem","family":"F07","layer":8,"difficulty":"near","statement":"∀n. ∃a b c d.Rep4(n,a,b,c,d).","why":"The full unconditional theorem body exists already; the remaining objective is genuine empty-context closure and checked-use.","deps":["A06"],"status":"existing_anchor_closure","evidence":{"anchor":"A06","anchor_release_status":"body_checked","independent_frontier_verified":80,"independent_frontier_total":196,"checked_use":false}},{"id":"G065","kind":"goal","title":"Jacobi's four-square representation formula","family":"F07","layer":10,"difficulty":"ambitious","statement":"∀n>0 ∀r. RepCount(n,4,r) → r=8*Σ_{d∣n,4∤d}d.","why":"The formula counts ORDERED SIGNED four-tuples and is stronger than existing representation existence.","deps":["G064","G063"],"status":"open"},{"id":"G066","kind":"goal","title":"Legendre's three-square theorem","family":"F07","layer":10,"difficulty":"ambitious","statement":"∀n. (∃x y z.Rep3(n,x,y,z)) ↔ ¬∃a b.n=4^a*(8*b+7).","why":"The exact dyadic obstruction requires an additional explicit elementary ternary-form/genus-one reduction and local descent; it is NOT inferred from the four-square theorem alone.","deps":["G064","G046","G068","G043","T13"],"status":"open"},{"id":"G067","kind":"goal","title":"Gauss's three-triangular-number theorem","family":"F07","layer":11,"difficulty":"ambitious","statement":"∀n. ∃x y z a b c.Tri(x,a) ∧ Tri(y,b) ∧ Tri(z,c) ∧ n=a+b+c.","why":"Use the explicit 8n+3 reduction to the preceding three-square theorem.","deps":["G066"],"status":"open"},{"id":"G068","kind":"goal","title":"Reduction of positive binary quadratic forms","family":"F07","layer":8,"difficulty":"ambitious","statement":"∀ integral binary forms Q,w. PositiveDefinite(Q,2,w) → ∃R U.U is unimodular, R=Uᵀ*Q*U, and R satisfies the witnessed Gauss reduction inequalities.","why":"Return an actual integral determinant-one reduction matrix and reduced coefficients.","deps":["T13","G002"],"status":"open"},{"id":"G069","kind":"goal","title":"Effective restricted ternary quadratic local–global criterion","family":"F07","layer":11,"difficulty":"ambitious","statement":"∀Q U n w. n>0 ∧ ThreeSquareClass(Q,U) ∧ LocalRepresentation(Q,n,w) → ∃x.QuadForm(Q,3,x,n).","why":"Restrict to primitive positive nondegenerate integral genus-one forms explicitly equivalent to three squares, with real and full dyadic local checks.","deps":["G066","G095","G068"],"status":"open"},{"id":"G070","kind":"goal","title":"Conway–Schneeberger fifteen theorem","family":"F07","layer":12,"difficulty":"summit","statement":"∀Q r W V. ClassicallyIntegral(Q,r) ∧ PositiveDefinite(Q,r,V) ∧ FifteenTest(Q,W) → ∀n>0.∃x.QuadForm(Q,r,x,n).","why":"Use CLASSICALLY integral positive forms and exactly 1,2,3,5,6,7,10,14,15.","deps":["G064","G066","G068"],"status":"open"},{"id":"G071","kind":"goal","title":"Finite continued fractions from Euclidean division","family":"F08","layer":3,"difficulty":"foundation","statement":"∀a b>0. ∃s.ContinuedFraction(a,b,s).","why":"Compute the full finite quotient list from witnessed Euclidean division.","deps":["T06"],"status":"open"},{"id":"G072","kind":"goal","title":"Convergent best approximation of the second kind","family":"F08","layer":5,"difficulty":"near","statement":"∀a b s i u v. ContinuedFraction(a,b,s) ∧ Convergent(s,i,u,v) → ∀r t.0<t<v → |a*v-b*u|≤|a*t-b*r|.","why":"State best approximation of the SECOND kind with strictly smaller positive denominators.","deps":["G071","G002"],"status":"open"},{"id":"G073","kind":"goal","title":"Periodicity of quadratic continued fractions","family":"F08","layer":7,"difficulty":"ambitious","statement":"∀D>0. ¬∃t.t²=D → ∃s ell>0.QuadraticPeriod(D,s,ell).","why":"Extract a repeated finite complete-quotient state and a genuine minimal period.","deps":["G072","T13"],"status":"open"},{"id":"G074","kind":"goal","title":"Constructive Pell equation solution","family":"F08","layer":8,"difficulty":"ambitious","statement":"∀D>0. ¬∃t.t²=D → ∃x y>0.x²-D*y²=1.","why":"Produce actual positive Pell witnesses from the preceding periodic continued fraction.","deps":["G073"],"status":"open"},{"id":"G075","kind":"goal","title":"Negative Pell equation and period parity","family":"F08","layer":9,"difficulty":"ambitious","statement":"∀D>0 ∀s ell. ¬∃t.t²=D ∧ QuadraticPeriod(D,s,ell) → ((∃x y>0.x²+1=D*y²) ↔ ell is odd).","why":"Require positive nonsquare D and the least continued-fraction period.","deps":["G073","G074"],"status":"open"},{"id":"G076","kind":"goal","title":"Effective generalized Pell representatives","family":"F08","layer":10,"difficulty":"ambitious","statement":"∀D>0 ∀ signed N≠0. ¬∃t.t²=D → ∃S epsilon. epsilon∈Z[√D] has norm ONE, S is a finite list of genuine solutions x²-D*y²=N, and every solution is in the norm-one epsilon-orbit of an element of S.","why":"Permit the EMPTY list when there is no solution and act only by norm-one units of Z[√D].","deps":["G074","G005"],"status":"open"},{"id":"G077","kind":"goal","title":"Complete primitive Pythagorean parametrization","family":"F08","layer":9,"difficulty":"ambitious","statement":"∀a b c. PrimitiveTriple(a,b,c) ↔ ∃m>k>0.Coprime(m,k) ∧ m,k of opposite parity ∧ c=m²+k² ∧ ((a=m²-k² ∧ b=2*m*k) ∨ (a=2*m*k ∧ b=m²-k²)).","why":"Handle BOTH ordered leg orientations, reuse the existing forward candidate A08, and add the genuinely missing inverse direction.","deps":["A08","G005","G062"],"status":"existing_anchor_extension","evidence":{"anchor":"A08","anchor_release_status":"unenrolled_dependency_curried_candidate_body","inverse_direction_already_proved":false}},{"id":"G078","kind":"goal","title":"Fermat's exponent-four strict descent","family":"F08","layer":10,"difficulty":"ambitious","statement":"∀x y>0 ∀z. ¬(x^4+y^4=z²).","why":"The strict descent is genuinely open; the stronger square-hypotenuse obstruction implies exponent-four Fermat.","deps":["G077","G061"],"status":"open"},{"id":"G079","kind":"goal","title":"Fermat's exponent-three descent","family":"F08","layer":10,"difficulty":"ambitious","statement":"∀x y z>0. ¬(x³+y³=z³).","why":"Require actual Eisenstein Euclidean division and unique factorization before cubic descent.","deps":["G084","G085","G005"],"status":"open"},{"id":"G080","kind":"goal","title":"Complete Ramanujan–Nagell classification","family":"F08","layer":12,"difficulty":"summit","statement":"∀x n. x²+7=2^n → (x,n)=(1,3) ∨ (x,n)=(3,4) ∨ (x,n)=(5,5) ∨ (x,n)=(11,7) ∨ (x,n)=(181,15).","why":"Prove that the five known natural solutions are exhaustive, not merely that each example works.","deps":["G074","G085","G095"],"status":"open"},{"id":"G081","kind":"goal","title":"Gaussian Euclidean division","family":"F09","layer":5,"difficulty":"near","statement":"∀ Gaussian a,b≠0. ∃q r u v.a=b*q+r ∧ GNorm(r,u) ∧ GNorm(b,v) ∧ u<v.","why":"Construct an actual nearest square-lattice quotient and strict norm decrease.","deps":["T06","T13"],"status":"open"},{"id":"G082","kind":"goal","title":"Unique factorization in Gaussian integers","family":"F09","layer":7,"difficulty":"ambitious","statement":"∀ Gaussian z≠0. ∃u s.u is a Gaussian unit, s is a finite RingPrime factorization of z, and every other factorization differs by witnessed units and permutation.","why":"Derive Gaussian unique factorization from witnessed Euclidean division rather than assume it.","deps":["G081","G004"],"status":"open"},{"id":"G083","kind":"goal","title":"Classification of Gaussian primes","family":"F09","layer":8,"difficulty":"ambitious","statement":"∀z.RingPrime(z,Gaussian) → ∃p.Prime(p) ∧ ((p=2 ∧ GNorm(z,2)) ∨ (Mod(p,3,4) ∧ z associated to p) ∨ (Mod(p,1,4) ∧ GNorm(z,p))).","why":"Tie the ramified p=2 branch to norm two; without that condition the classification is existentially vacuous.","deps":["G082","G061"],"status":"open"},{"id":"G084","kind":"goal","title":"Eisenstein Euclidean division","family":"F09","layer":6,"difficulty":"near","statement":"∀ Eisenstein a,b≠0. ∃q r u v.a=b*q+r ∧ ENorm(r,u) ∧ ENorm(b,v) ∧ u<v.","why":"Construct the nearest hexagonal-lattice quotient and a strict norm decrease.","deps":["T06","T13"],"status":"open"},{"id":"G085","kind":"goal","title":"Unique factorization in Eisenstein integers","family":"F09","layer":8,"difficulty":"ambitious","statement":"∀ Eisenstein z≠0. ∃u s.u is an Eisenstein unit and s is a finite RingPrime factorization unique up to witnessed associates and permutation.","why":"Supply constructive unique factorization for cubic reciprocity and Fermat's cubic descent.","deps":["G084","G004"],"status":"open"},{"id":"G086","kind":"goal","title":"Classification of Eisenstein primes","family":"F09","layer":9,"difficulty":"ambitious","statement":"∀z.RingPrime(z,Eisenstein) → ∃p.Prime(p) ∧ ((p=3 ∧ ENorm(z,3)) ∨ (Mod(p,2,3) ∧ z associated to p) ∨ (Mod(p,1,3) ∧ ENorm(z,p))).","why":"Tie the ramified p=3 branch to norm three; without that condition the classification is existentially vacuous.","deps":["G085","G026"],"status":"open"},{"id":"G087","kind":"goal","title":"Integral cyclotomic polynomials","family":"F09","layer":7,"difficulty":"ambitious","statement":"∀m>0. ∃f.Cyclotomic(m,f) ∧ f has integer coefficients ∧ ∏_{d∣m}Φd(X)=X^m-1.","why":"Require m>0 and construct all coefficients using finite divisor-indexed exact division.","deps":["T12","G005"],"status":"open"},{"id":"G088","kind":"goal","title":"Irreducibility of cyclotomic polynomials","family":"F09","layer":9,"difficulty":"ambitious","statement":"∀m>0 ∀f.Cyclotomic(m,f) → every coded rational factorization f=g*h has a constant factor.","why":"Quantify over finite rational coefficient codes, not a new field-extension or polynomial sort.","deps":["G087","G097"],"status":"open"},{"id":"G089","kind":"goal","title":"Cyclotomic element norms and exact unit criterion","family":"F09","layer":10,"difficulty":"ambitious","statement":"∀m>0 ∀f.Cyclotomic(m,f) → ∃u.Eval(f,1,u,Z) ∧ (m=1→u=0) ∧ (∀p k.Prime(p) ∧ k>0 ∧ m=p^k→u=p) ∧ (m>1 ∧ ¬∃p k.Prime(p) ∧ k>0 ∧ m=p^k→u=1).","why":"Handle m=1 separately, bind p and k explicitly, and distinguish norm-p NONUNITS at prime powers from genuine norm-one units.","deps":["G088","G095"],"status":"open"},{"id":"G090","kind":"goal","title":"Kummer's Fermat theorem for certified regular primes","family":"F09","layer":12,"difficulty":"summit","statement":"∀p w x y z. RegularPrime(p,w) ∧ x,y,z>0 → ¬(x^p+y^p=z^p).","why":"Assume an explicitly checked regular-prime certificate, not Fermat's theorem at every prime exponent.","deps":["G088","G089","G047"],"status":"open"},{"id":"G091","kind":"goal","title":"Constructing finite fields of prime-power order","family":"F10","layer":6,"difficulty":"ambitious","statement":"∀p k. Prime(p) ∧ k>0 → ∃F f.FiniteField(F,p,k) ∧ Irred(f,p) ∧ deg(f)=k ∧ |F|=p^k.","why":"Produce an irreducible polynomial and all finite arithmetic tables for every valid prime power.","deps":["T12","G005"],"status":"open"},{"id":"G092","kind":"goal","title":"Cyclicity of finite-field units","family":"F10","layer":8,"difficulty":"ambitious","statement":"∀F p k. FiniteField(F,p,k) → ∃g≠0.Order(g,F*,p^k-1).","why":"Extract an actual generator of the witnessed finite-field multiplicative group.","deps":["G091","G014"],"status":"open"},{"id":"G093","kind":"goal","title":"Squarefree polynomial decomposition with inseparable handling","family":"F10","layer":7,"difficulty":"ambitious","statement":"∀ finite fields F ∀ nonzero polynomials f over F. ∃w.SquarefreeDecomposition(f,F,w).","why":"Exclude f=0 and handle derivative-zero inseparable factors by explicit characteristic-p root extraction.","deps":["T12","G002"],"status":"open"},{"id":"G094","kind":"goal","title":"Complete finite-field polynomial factorization","family":"F10","layer":9,"difficulty":"ambitious","statement":"∀ finite fields F ∀ nonzero polynomials f over F. ∃w.PolyFactorization(f,F,w).","why":"Return every monic irreducible factor and multiplicity without assuming an unproved runtime.","deps":["G091","G093","G092"],"status":"open"},{"id":"G095","kind":"goal","title":"Simple-root Hensel lifting","family":"F10","layer":6,"difficulty":"near","statement":"∀f p k a. Prime(p) ∧ k>0 ∧ Mod(f(a),0,p^k) ∧ Unit(f′(a) mod p,p) → ∃!b<p^(k+1).SimpleLift(f,p,k,a,b).","why":"Require a PRIME modulus, positive precision, and the indispensable derivative-unit condition.","deps":["T14","T09"],"status":"open"},{"id":"G096","kind":"goal","title":"Multiple-root lifting certificates","family":"F10","layer":8,"difficulty":"ambitious","statement":"∀f p k a. Prime(p) ∧ k>0 ∧ Mod(f(a),0,p^k) → ∃S.AllRootLifts(f,p,k,a,S).","why":"The exact finite lift list may be EMPTY: a multiple root is not promised to lift.","deps":["G095","G093"],"status":"open"},{"id":"G097","kind":"goal","title":"Eisenstein's polynomial irreducibility criterion","family":"F10","layer":8,"difficulty":"ambitious","statement":"∀p f d. Prime(p) ∧ deg(f)=d≥1 ∧ ¬Dvd(p,fd) ∧ (∀i<d.Dvd(p,fi)) ∧ ¬Dvd(p²,f0) → f is irreducible over rational codes.","why":"Include positive degree, unit leading coefficient modulo p, and the p² nondivisibility of the constant term.","deps":["G093","G005"],"status":"open"},{"id":"G098","kind":"goal","title":"Newton-polygon valuation bounds","family":"F10","layer":9,"difficulty":"ambitious","statement":"∀ nonzero integer polynomials f ∀p. Prime(p) → ∃v g w.f=X^v*g ∧ g(0)≠0 ∧ w is the lower convex hull of valuations of ONLY NONZERO coefficients of g ∧ every encoded NONZERO finite-extension root valuation is the NEGATIVE of a witnessed polygon slope, counted with horizontal-length multiplicity.","why":"Split off zero roots, OMIT zero coefficients, and reverse the lower-hull slope sign: X−p has slope −1 but its root has valuation +1.","deps":["G096","T09"],"status":"open"},{"id":"G099","kind":"goal","title":"Teichmüller representatives at finite precision","family":"F10","layer":10,"difficulty":"ambitious","statement":"∀p k a. Prime(p) ∧ k>0 ∧ a<p → ∃!w<p^k.TeichLift(p,k,a,w).","why":"The statement is false for composite p; require a PRIME and strictly positive precision.","deps":["G095","G092"],"status":"open"},{"id":"G100","kind":"goal","title":"Precision-safe constructive Weierstrass preparation","family":"F10","layer":12,"difficulty":"summit","statement":"∀ HA-total distinguished coefficient-function codes f ∀p k M d. Prime(p) ∧ k>0 ∧ 0<d<M ∧ f supplies sufficient COUPLED source precision for (k,M) → ∃w.WeierstrassCertificate(f,p,k,M,d,w).","why":"Naive uniqueness modulo (p^k,T^M) is FALSE: modulo (8,T²), T+2=(T+6)*(3+T); use a normalized total source and sufficient coupled precision instead.","deps":["G098","G099","G096"],"status":"open"},{"id":"G101","kind":"goal","title":"Certified Euclidean-algorithm complexity","family":"F11","layer":4,"difficulty":"foundation","statement":"∀a b ell. b>0 ∧ BitLen(b,ell) → ∃g steps t.Execution(Euclid,(a,b),g,steps,t) ∧ Gcd(a,b,g) ∧ steps≤2*ell+1.","why":"Attach an explicit logarithmic execution witness to the existing gcd algorithm.","deps":["T06","T15"],"status":"open"},{"id":"G102","kind":"goal","title":"Verified repeated-squaring exponentiation","family":"F11","layer":4,"difficulty":"foundation","statement":"∀a e m. m>1 → ∃z steps t.Execution(BinaryPow,(a,e,m),z,steps,t) ∧ Mod(z,a^e,m) ∧ steps≤3*BitLen(e)+2.","why":"Use a positive nontrivial modulus and a finite binary execution trace.","deps":["T11","T04"],"status":"open"},{"id":"G103","kind":"goal","title":"Pratt primality certificates","family":"F11","layer":7,"difficulty":"near","statement":"∀n. Prime(n) ↔ ∃c.PrattCertificate(n,c).","why":"Prove soundness and completeness of finite recursive factorization and primitive-root certificates.","deps":["G005","G006"],"status":"open"},{"id":"G104","kind":"goal","title":"Pocklington primality certificates","family":"F11","layer":8,"difficulty":"near","statement":"∀n>1 ∀c.PocklingtonCertificate(n,c) → Prime(n).","why":"Check the proved factor bound F>sqrt(n) and every required power and gcd witness.","deps":["G103","G013"],"status":"open"},{"id":"G105","kind":"goal","title":"AKS deterministic primality correctness","family":"F11","layer":11,"difficulty":"summit","statement":"∀n≥2. ∃out steps t.Execution(AKS,n,out,steps,t) ∧ (out=1 ↔ Prime(n)).","why":"Certify the fixed algorithm and both correctness directions first; a polynomial bit-length execution bound is a separate explicitly proved complexity subgoal.","deps":["G087","G094","G102"],"status":"open"},{"id":"G106","kind":"goal","title":"Tonelli–Shanks modular square roots","family":"F11","layer":9,"difficulty":"ambitious","statement":"∀p a. Prime(p) ∧ p>2 ∧ (∃r<p.Mod(r²,a,p)) → ∃x<p ∃t.Mod(x²,a,p) ∧ t is a verified Tonelli–Shanks trace.","why":"Produce a root only under a supplied quadratic-residue witness at an odd PRIME.","deps":["G092","G041"],"status":"open"},{"id":"G107","kind":"goal","title":"Cornacchia sum-of-two-squares algorithm","family":"F11","layer":9,"difficulty":"ambitious","statement":"∀p. Prime(p) ∧ Mod(p,1,4) → ∃x y t.Rep2(p,x,y) ∧ t is a complete verified Cornacchia Euclidean trace.","why":"For primes 1 modulo 4 the root-of-minus-one and descent witnesses guarantee a representation; no failure of one branch is mistaken for global impossibility.","deps":["G061","G071"],"status":"open"},{"id":"G108","kind":"goal","title":"RSA correctness with explicit coprimality","family":"F11","layer":8,"difficulty":"near","statement":"∀ distinct primes p,q ∀e d x. Coprime(x,p*q) ∧ Mod(e*d,1,lcm(p-1,q-1)) → Mod((x^e)^d,x,p*q).","why":"Keep distinct prime factors, an actual inverse modulo the exponent, and explicit message coprimality.","deps":["G011","G014"],"status":"open"},{"id":"G109","kind":"goal","title":"Rabin square roots and CRT certificates","family":"F11","layer":9,"difficulty":"ambitious","statement":"∀ distinct odd primes p,q ∀a. Coprime(a,p*q) ∧ a is a square modulo both p and q → ∃S.S lists EXACTLY four distinct roots x<p*q with Mod(x²,a,p*q).","why":"The exact four-root claim requires two distinct odd primes and a unit residue.","deps":["G011","G061","G041"],"status":"open"},{"id":"G110","kind":"goal","title":"Elliptic-curve primality certificates","family":"F11","layer":12,"difficulty":"summit","statement":"∀n>1 ∀c.EllipticCertificate(n,c) → ∃t.t verifies every recursive curve and order check ∧ Prime(n).","why":"Assert soundness of a SUPPLIED complete certificate, not unconditional ECPP generation or expected runtime.","deps":["G112","G114","G104"],"status":"open"},{"id":"G111","kind":"goal","title":"Associativity of the total elliptic-curve group law","family":"F12","layer":8,"difficulty":"ambitious","statement":"∀ primes p>3 ∀ finite fields F of characteristic p ∀E P Q R. Curve(E,F) ∧ ECPoint(E,F,P) ∧ ECPoint(E,F,Q) ∧ ECPoint(E,F,R) → ∃U V S T.ECAdd(E,F,P,Q,U) ∧ ECAdd(E,F,U,R,S) ∧ ECAdd(E,F,Q,R,V) ∧ ECAdd(E,F,P,V,T) ∧ S=T.","why":"Use the supported characteristic-p>3 short model and include infinity, inverse pairs, tangencies, and exceptional denominators.","deps":["T12","T13","G091"],"status":"open"},{"id":"G112","kind":"goal","title":"Hasse's elliptic point-count bound","family":"F12","layer":9,"difficulty":"ambitious","statement":"∀p>3 ∀E N. Prime(p) ∧ Curve(E,Fp) ∧ ECCount(E,p,1,N) → (N-(p+1))²≤4*p in signed arithmetic.","why":"Require a nonsingular curve over a PRIME field, count infinity, and express the bound without square roots.","deps":["G111","G055"],"status":"open"},{"id":"G113","kind":"goal","title":"Nondegeneracy of the Weil pairing","family":"F12","layer":10,"difficulty":"ambitious","statement":"∀ primes p>3 and ell with ell≠p ∀ finite extensions F of Fp ∀E P. Curve(E,Fp) ∧ F contains the FULL ell-torsion and all ellth roots of unity ∧ P is nonzero ell-torsion → ∃Q z.WeilPairing(E,F,ell,P,Q,z) ∧ z≠1.","why":"Use the supported characteristic-p>3 model, PRIME ell≠p, and an explicit extension containing full torsion and roots of unity.","deps":["G111","G092"],"status":"open"},{"id":"G114","kind":"goal","title":"Schoof's certified elliptic point-count algorithm","family":"F12","layer":11,"difficulty":"summit","statement":"∀p>3 ∀E. Prime(p) ∧ Curve(E,Fp) → ∃N steps t.ECCount(E,p,1,N) ∧ Execution(Schoof,(p,E),N,steps,t).","why":"Certify the actual CRT-reconstructed count and execution first; its polynomial bit-length complexity is a separate independently proved subgoal.","deps":["G112","G113","G094"],"status":"open"},{"id":"G115","kind":"goal","title":"Constructive LLL lattice reduction","family":"F12","layer":7,"difficulty":"ambitious","statement":"∀B d D delta. Lattice(B,d,D) ∧ 1/4<delta<1 → ∃U t.LLLReduced(B,U,delta) ∧ t is a terminating exact-rational reduction trace.","why":"Output a witnessed unimodular transformation and exact Lovász inequalities.","deps":["T13","T15"],"status":"open"},{"id":"G116","kind":"goal","title":"Effective Minkowski lattice theorem","family":"F12","layer":8,"difficulty":"ambitious","statement":"∀B d D C V. Lattice(B,d,D) ∧ SymmetricPolytope(C,d,V) ∧ V>2^d*D → ∃z≠0.B*z∈C.","why":"Require full rank, full dimension, convexity, symmetry ABOUT THE ORIGIN, and the STRICT volume inequality.","deps":["G115"],"status":"open"},{"id":"G117","kind":"goal","title":"Explicit elliptic two-descent with full rational 2-torsion","family":"F12","layer":10,"difficulty":"ambitious","statement":"∀ nonsingular rational elliptic curves E with THREE witnessed distinct rational roots. ∃w.TwoDescent(E,w).","why":"Restrict to full rational 2-torsion and give finite rational square-class coverings without assuming unbuilt general number-field machinery.","deps":["G111","G062","G116"],"status":"open"},{"id":"G118","kind":"goal","title":"Finite two-Selmer witness enumeration with full rational 2-torsion","family":"F12","layer":11,"difficulty":"summit","statement":"∀ nonsingular rational elliptic curves E with THREE witnessed distinct rational roots ∀w. TwoDescent(E,w) → ∃S.SelmerWitness(E,S).","why":"Stay in the same full-rational-2-torsion class and check all real, dyadic, discriminant-prime, and denominator-prime rational square-class conditions.","deps":["G117","G005","G095"],"status":"open"},{"id":"G119","kind":"goal","title":"Rationality of elliptic finite-field zeta functions","family":"F12","layer":10,"difficulty":"ambitious","statement":"∀p>3 ∀E N. Prime(p) ∧ Curve(E,Fp) ∧ ECCount(E,p,1,N) → ∃a.a=p+1-N ∧ ∀r≥1 ∃Nr T.ECCount(E,p,r,Nr) ∧ Seq(T,r+1) ∧ At(T,0,2) ∧ At(T,1,a) ∧ (∀j.j+2≤r→At(T,j+2)=a*At(T,j+1)-p*At(T,j)) ∧ Nr=p^r+1-At(T,r).","why":"Use a witnessed finite signed recurrence PREFIX, base values t0=2 and t1=a, and recurrence only at indices j+2≤r.","deps":["G112","G092"],"status":"open"},{"id":"G120","kind":"goal","title":"Finite 2-Selmer bound for weak Mordell–Weil","family":"F12","layer":12,"difficulty":"summit","statement":"∀ nonsingular rational elliptic curves E with THREE witnessed distinct rational roots. ∃S iota.SelmerWitness(E,S) ∧ S is finite and computable ∧ WeakMW(E,S,iota).","why":"In the SAME full-rational-2-torsion class, prove finiteness ONLY via E(Q)/2E(Q)→S; do not compute its image, quotient representatives, or E(Q) generators.","deps":["G118","G117","G116"],"status":"open"}],"sources":[{"id":"S01","label":"Sealed Alpha v15 and Stable channel manifest","path":"artifacts/peano-library/channels-v15.json","kind":"release_manifest"},{"id":"S02","label":"Existing constructive number-theory frontier plan","path":"PLAN/13_constructive_number_theory_frontier.md","kind":"campaign_plan"},{"id":"S03","label":"Kummer Alpha v14 admission record","path":"research/arithmetic-library/alpha-v14-kummer-admission-rfc-v1.md","kind":"admission_record"},{"id":"S04","label":"Frontier Alpha v15 admission and evidence boundaries","path":"research/arithmetic-library/alpha-v15-frontier-admission-rfc-v1.md","kind":"admission_record"},{"id":"S05","label":"Lucas mixed-evidence promotion record","path":"research/arithmetic-library/lucas-mixed-promotion-rfc-v1.md","kind":"experimental_closure_record"},{"id":"S06","label":"Four-square mixed-evidence promotion record","path":"research/arithmetic-library/four-square-frontier-promotion-rfc-v1.md","kind":"experimental_closure_record"},{"id":"S07","label":"Primitive Pythagorean candidate and missing descent","path":"research/arithmetic-library/pythagorean-primitive-rfc-v1.md","kind":"candidate_record"},{"id":"S08","label":"Completed unchanged-kernel and independent-Lean quadratic reciprocity receipt","path":"research/arithmetic-library/quadratic-reciprocity-closure-receipt.md","kind":"independent_closure_record"},{"id":"S09","label":"Current immutable Alpha v16 quadratic-reciprocity promotion and unchanged Stable channels","path":"artifacts/peano-library/channels-v16.json","kind":"release_manifest"}],"ambitious_boundaries":{"summary":"Current immutable Alpha v16 contains 1,673 theorems, 885 checked-use entries (432 Stable and 453 Alpha-only), 788 body-only entries, and no pending rows. Exactly 315 reviewed quadratic-reciprocity entries gained checked use; historical Alpha v15 remains sealed with 570 checked-use entries and its pending root. Body-only roots, research goals, and Alpha-only evidence never imply Stable admission.","milestone_count_includes_existing_foundations_and_closure_targets":true,"body_checked_and_pending_roots_are_not_checked_use":true,"focused_or_partial_certificates_do_not_upgrade_release_evidence":true,"stable_edition":{"theorem_count":432,"checked_use_count":432,"changed_by_campaign":false},"alpha_v15_edition":{"role":"immutable_historical_parent","theorem_count":1673,"stable_closed_count":432,"alpha_closed_count":138,"checked_use_count":570,"body_checked_count":1102,"pending_layered_closure_count":1,"enrollment_sha256":"44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175","identity_sha256":"2f1a097ac0b6821c74cd4da088c396d3b9960ffd43e169f22b4778d5871adc66","evidence_root_sha256":"4d6cba8b48666d8d3cbea7acd2aa937e418a5bfa2e45bc6ebf5b53affd9a921e","changed_by_campaign":false},"alpha_v16_edition":{"role":"current_immutable_release","theorem_count":1673,"stable_closed_count":432,"alpha_closed_count":453,"checked_use_count":885,"body_checked_count":788,"pending_layered_closure_count":0,"checked_use_promotion_count":315,"dependency_edge_count":5615,"checked_dependency_edge_count":2641,"layer_count":53,"enrollment_sha256":"44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175","identity_sha256":"3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10","evidence_root_sha256":"142d73d908bd86f52af9b6a1d39a5e11679d1db4f463d3e6f17d5c483f283ee4","promoted_names_sha256":"aba2d7a192b6f1c11fbafbed1001bf592ca9ed8f5bee7ac3f1de863dd870a80e","stable_unchanged":true,"historical_v15_unchanged":true,"promoted_origin":"quadratic_reciprocity_only"},"quadratic_reciprocity_evidence_transition":{"bundle_node_count":557,"dependency_edge_count":1787,"historical_v15":{"stable_closed":241,"alpha_closed":1,"body_checked":314,"pending_layered_closure":1},"current_v16":{"stable_closed":241,"alpha_closed":316,"body_checked":0,"pending_layered_closure":0},"promoted_body_checked_count":314,"promoted_pending_root_count":1,"unrelated_body_roots_promoted":0},"excluded_principles":["general excluded middle","unbounded choice","Markov's principle","trusted symbolic or analytic oracles","unverified external computations","assumed unique factorization","unrestricted integral ternary local-global"],"prime_number_theorem":"Expressed through certified finite rational logarithm brackets and explicit error/threshold witnesses.","dirichlet_progressions":"An open ambitious first-order prime-witness target, not an already available proof or a search-oracle assumption.","higher_reciprocity":"All ramified and infinite-place corrections are explicit; no invalid uncorrected symmetry.","davenport":"Exact closed formulas are restricted to finite p-groups or rank at most two; arbitrary groups receive only witnessed bounds.","ternary_local_global":"Restricted to primitive positive nondegenerate genus-one forms with an explicit equivalence to three squares and complete real/dyadic local tests.","fifteen_theorem":"Classically integral positive forms and exactly 1,2,3,5,6,7,10,14,15.","weierstrass_precision":"A normalized factorization needs a total source or coupled precision data; naive independent reduction modulo (p^k,T^M) does not determine either factor uniquely.","elliptic_primality":"Only soundness of an explicitly supplied certificate; no unconditional ECPP-production or runtime claim.","weak_mordell_weil":"Restricted to nonsingular rational elliptic curves with three distinct rational roots, so full rational 2-torsion permits explicit rational square-class descent. Finite E(Q)/2E(Q) follows only by injection into a computable finite 2-Selmer superset; no quotient-image decision, coset representatives, or full rational-point generators.","record_claim":"No unsupported largest, first, or exhaustive-library claim."}}</script>
+  <script>
+    (function () {
+      "use strict";
+
+      var SVG_NS = "http://www.w3.org/2000/svg";
+      var CARD_WIDTH = 146;
+      var CARD_HEIGHT = 62;
+      var CARD_GAP = 8;
+      var LANE_WIDTH = 166;
+      var LEFT_MARGIN = 120;
+      var TOP_MARGIN = 66;
+      var RIGHT_MARGIN = 18;
+      var FAMILY_FALLBACK = "#713a83";
+
+      var state = {
+        campaign: null,
+        byId: new Map(),
+        families: new Map(),
+        dependents: new Map(),
+        selected: null,
+        visible: [],
+        locations: new Map(),
+        familyAncestors: null,
+        zoom: .9,
+        graphWidth: 1200,
+        graphHeight: 720
+      };
+
+      var ui = {
+        title: document.querySelector("[data-campaign-title]"),
+        subtitle: document.querySelector("[data-campaign-subtitle]"),
+        metrics: document.querySelector("[data-metrics]"),
+        notice: document.querySelector("[data-load-notice]"),
+        fileHelp: document.querySelector("[data-file-help]"),
+        fileInput: document.querySelector("[data-file-input]"),
+        controls: document.querySelector("[data-controls]"),
+        search: document.querySelector("[data-search]"),
+        family: document.querySelector("[data-family]"),
+        layer: document.querySelector("[data-layer]"),
+        edges: document.querySelector("[data-edges]"),
+        count: document.querySelector("[data-visible-count]"),
+        stage: document.querySelector("[data-stage]"),
+        graph: document.querySelector("[data-graph]"),
+        nodeId: document.querySelector("[data-node-id]"),
+        nodeTitle: document.querySelector("[data-node-title]"),
+        introduction: document.querySelector("[data-node-introduction]"),
+        content: document.querySelector("[data-node-content]"),
+        nodeStatus: document.querySelector("[data-node-status]"),
+        nodeMeta: document.querySelector("[data-node-meta]"),
+        statement: document.querySelector("[data-node-statement]"),
+        rationale: document.querySelector("[data-node-rationale]"),
+        caveat: document.querySelector("[data-node-caveat]"),
+        dependencies: document.querySelector("[data-node-dependencies]"),
+        dependents: document.querySelector("[data-node-dependents]"),
+        evidenceSection: document.querySelector("[data-evidence-section]"),
+        evidence: document.querySelector("[data-node-evidence]"),
+        familyGrid: document.querySelector("[data-family-grid]"),
+        language: document.querySelector("[data-language-summary]"),
+        definitions: document.querySelector("[data-definition-list]"),
+        sources: document.querySelector("[data-source-list]"),
+        boundaries: document.querySelector("[data-boundary-summary]")
+      };
+
+      function empty(element) {
+        while (element.firstChild) element.removeChild(element.firstChild);
+      }
+
+      function element(name, text, attributes) {
+        var item = document.createElement(name);
+        if (text !== undefined && text !== null) item.textContent = String(text);
+        Object.keys(attributes || {}).forEach(function (key) {
+          item.setAttribute(key, String(attributes[key]));
+        });
+        return item;
+      }
+
+      function svg(name, attributes, text) {
+        var item = document.createElementNS(SVG_NS, name);
+        Object.keys(attributes || {}).forEach(function (key) {
+          item.setAttribute(key, String(attributes[key]));
+        });
+        if (text !== undefined && text !== null) item.textContent = String(text);
+        return item;
+      }
+
+      function norm(value) {
+        return String(value || "").toLocaleLowerCase().trim();
+      }
+
+      function color(value) {
+        return /^#[0-9a-f]{6}$/i.test(String(value || "")) ? value : FAMILY_FALLBACK;
+      }
+
+      function readable(value) {
+        return String(value || "").replace(/_/g, " ");
+      }
+
+      function shorten(value, length) {
+        var text = String(value || "");
+        return text.length <= length ? text : text.slice(0, Math.max(0, length - 1)) + "…";
+      }
+
+      function words(value, maxLength, maxLines) {
+        var pending = String(value || "").split(/\s+/);
+        var result = [];
+        var current = "";
+        pending.forEach(function (word) {
+          if (!current) current = word;
+          else if ((current + " " + word).length <= maxLength) current += " " + word;
+          else {
+            result.push(current);
+            current = word;
+          }
+        });
+        if (current) result.push(current);
+        if (result.length > maxLines) {
+          result = result.slice(0, maxLines);
+          result[maxLines - 1] = shorten(result[maxLines - 1], maxLength - 1) + "…";
+        }
+        return result.map(function (line) { return shorten(line, maxLength); });
+      }
+
+      function closure(start, next) {
+        var seen = new Set();
+        var pending = Array.isArray(start) ? start.slice() : [start];
+        while (pending.length) {
+          var id = pending.pop();
+          if (seen.has(id) || !state.byId.has(id)) continue;
+          seen.add(id);
+          (next(id) || []).forEach(function (other) {
+            if (!seen.has(other)) pending.push(other);
+          });
+        }
+        return seen;
+      }
+
+      function ancestors(id) {
+        return closure(id, function (value) {
+          var node = state.byId.get(value);
+          return node ? node.deps : [];
+        });
+      }
+
+      function descendants(id) {
+        return closure(id, function (value) { return state.dependents.get(value) || []; });
+      }
+
+      function fail(message) {
+        ui.notice.textContent = message;
+        ui.notice.setAttribute("data-error", "true");
+        ui.fileHelp.hidden = false;
+      }
+
+      function embeddedCampaign() {
+        var embedded = document.getElementById("campaign-data");
+        if (!embedded || !String(embedded.textContent || "").trim()) return null;
+        return JSON.parse(embedded.textContent);
+      }
+
+      function validate(payload) {
+        if (!payload || payload.schema !== "constructive-grand-campaign-v1") {
+          throw new Error("The campaign file does not have the expected constructive-grand-campaign-v1 schema.");
+        }
+        if (!Array.isArray(payload.nodes) || !Array.isArray(payload.families) || !Array.isArray(payload.layers)) {
+          throw new Error("The campaign must provide explicit nodes, families, and dependency layers.");
+        }
+
+        var ids = new Set();
+        var familyIds = new Set(payload.families.map(function (family) { return family.id; }));
+        payload.nodes.forEach(function (node) {
+          if (!node || !node.id || ids.has(node.id)) {
+            throw new Error("The campaign contains a missing or repeated node identifier.");
+          }
+          if (["goal", "tool", "anchor"].indexOf(node.kind) === -1) {
+            throw new Error("Node " + node.id + " has an unrecognized proof-planning kind.");
+          }
+          if (!Number.isInteger(node.layer) || node.layer < 0 || !Array.isArray(node.deps)) {
+            throw new Error("Node " + node.id + " lacks an exact nonnegative layer or prerequisite list.");
+          }
+          if (node.family !== null && node.family !== undefined && !familyIds.has(node.family)) {
+            throw new Error("Node " + node.id + " refers to an unknown mathematical family.");
+          }
+          ids.add(node.id);
+        });
+
+        var byId = new Map(payload.nodes.map(function (node) { return [node.id, node]; }));
+        payload.nodes.forEach(function (node) {
+          node.deps.forEach(function (dependency) {
+            if (!byId.has(dependency)) {
+              throw new Error("Node " + node.id + " requires missing prerequisite " + dependency + ".");
+            }
+            if (byId.get(dependency).layer >= node.layer) {
+              throw new Error("Dependency " + dependency + " → " + node.id + " does not advance to a later layer.");
+            }
+          });
+        });
+        return payload;
+      }
+
+      function addMetric(number, label) {
+        var item = element("li");
+        item.appendChild(element("strong", number));
+        item.appendChild(document.createTextNode(" " + label));
+        ui.metrics.appendChild(item);
+      }
+
+      function configure(payload) {
+        state.campaign = validate(payload);
+        state.byId = new Map(payload.nodes.map(function (node) { return [node.id, node]; }));
+        state.families = new Map(payload.families.map(function (family) { return [family.id, family]; }));
+        state.dependents = new Map(payload.nodes.map(function (node) { return [node.id, []]; }));
+        payload.nodes.forEach(function (node) {
+          node.deps.forEach(function (dependency) { state.dependents.get(dependency).push(node.id); });
+        });
+
+        ui.title.textContent = payload.title || "Constructive Number Theory: Grand Campaign";
+        ui.subtitle.textContent = payload.subtitle || ui.subtitle.textContent;
+        document.title = ui.title.textContent + " · Interactive proof programme";
+
+        empty(ui.metrics);
+        var milestones = payload.nodes.filter(function (node) { return node.kind === "goal"; });
+        var openMilestones = milestones.filter(function (node) { return node.status === "open"; });
+        addMetric(milestones.length, "major campaign milestones");
+        addMetric(openMilestones.length, "genuinely open objectives");
+        addMetric(milestones.length - openMilestones.length, "existing or revisited milestones");
+        addMetric(payload.nodes.filter(function (node) { return node.kind === "tool"; }).length, "constructive tools");
+        addMetric(payload.nodes.filter(function (node) { return node.kind === "anchor"; }).length, "existing anchors");
+        addMetric(payload.families.length, "mathematical families");
+        addMetric(Math.max.apply(null, payload.nodes.map(function (node) { return node.layer; })), "development layers above the foundation");
+
+        ui.notice.removeAttribute("data-error");
+        ui.notice.textContent = "Campaign milestones include both existing constructive foundations and genuinely open research objectives. Existing anchors retain only their explicitly stated evidence; arrows never grant empty-context closure, checked use, or Stable admission.";
+        ui.fileHelp.hidden = true;
+
+        while (ui.family.options.length > 1) ui.family.remove(1);
+        payload.families.forEach(function (family) {
+          ui.family.appendChild(element("option", family.title, { value: family.id }));
+        });
+
+        while (ui.layer.options.length > 1) ui.layer.remove(1);
+        payload.layers.slice().sort(function (left, right) {
+          return left.number - right.number;
+        }).forEach(function (layer) {
+          ui.layer.appendChild(element("option", "≤ " + layer.number + " · " + shorten(layer.title, 24), {
+            value: layer.number
+          }));
+        });
+
+        renderFamilies();
+        renderLanguage();
+        renderSources();
+
+        var requested = window.location.hash.replace(/^#/, "").toUpperCase();
+        var goals = payload.nodes.filter(function (node) { return node.kind === "goal"; });
+        state.selected = state.byId.has(requested) ? requested : goals[goals.length - 1].id;
+        updateFilters(false);
+      }
+
+      function renderFamilies() {
+        empty(ui.familyGrid);
+        state.campaign.families.forEach(function (family) {
+          var button = element("button", null, {
+            type: "button",
+            "class": "family-card",
+            "aria-pressed": ui.family.value === family.id ? "true" : "false",
+            "data-family-id": family.id
+          });
+          button.style.borderLeftColor = color(family.color);
+          button.appendChild(element("h3", family.title));
+          button.appendChild(element("p", family.summary || "Constructive arithmetic objectives and prerequisite connections."));
+          var familyMilestones = state.campaign.nodes.filter(function (node) {
+            return node.kind === "goal" && node.family === family.id;
+          });
+          var familyOpen = familyMilestones.filter(function (node) { return node.status === "open"; }).length;
+          button.appendChild(element("p", familyMilestones.length + " milestones · " + familyOpen + " open · " +
+            (familyMilestones.length - familyOpen) + " existing/revisited", { "class": "family-count" }));
+          button.addEventListener("click", function () {
+            ui.family.value = ui.family.value === family.id ? "all" : family.id;
+            updateFilters(true);
+          });
+          ui.familyGrid.appendChild(button);
+        });
+      }
+
+      function renderLanguage() {
+        var language = state.campaign.language || {};
+        var signature = Array.isArray(language.base_signature) ? language.base_signature.join(", ") : "0, S, +, ×, =";
+        ui.language.textContent = (language.logic || "Intuitionistic first-order arithmetic") + "; base signature {" + signature + "}. " +
+          (language.conservative_extension_policy || "Every displayed definition is a conservative abbreviation, not a new trusted axiom.");
+
+        empty(ui.definitions);
+        Object.keys(state.campaign.definitions || {}).forEach(function (name) {
+          var definition = state.campaign.definitions[name];
+          var item = element("div");
+          var parameters = Array.isArray(definition.parameters) ? definition.parameters.join(", ") : "";
+          item.appendChild(element("dt", name + "(" + parameters + ")"));
+          var description = element("dd", definition.meaning || "Conservative display abbreviation.");
+          if (definition.expansion) {
+            description.appendChild(element("code", shorten(definition.expansion, 190), { "class": "definition-expansion" }));
+          }
+          item.appendChild(description);
+          ui.definitions.appendChild(item);
+        });
+      }
+
+      function renderSources() {
+        empty(ui.sources);
+        (state.campaign.sources || []).forEach(function (source) {
+          var item = element("li");
+          item.appendChild(document.createTextNode(String(source.label || source.id || "Source document")));
+          if (source.path) {
+            item.appendChild(document.createTextNode(" · "));
+            item.appendChild(element("code", source.path));
+          }
+          ui.sources.appendChild(item);
+        });
+
+        var boundaries = state.campaign.ambitious_boundaries;
+        if (typeof boundaries === "string") ui.boundaries.textContent = boundaries;
+        else if (boundaries && typeof boundaries.summary === "string") ui.boundaries.textContent = boundaries.summary;
+      }
+
+      function familyClosure(familyId) {
+        if (familyId === "all") return null;
+        var selectedGoals = state.campaign.nodes.filter(function (node) {
+          return node.family === familyId;
+        }).map(function (node) { return node.id; });
+        return closure(selectedGoals, function (id) { return state.byId.get(id).deps; });
+      }
+
+      function updateFilters(preserveSelection) {
+        if (!state.campaign) return;
+        state.familyAncestors = familyClosure(ui.family.value);
+        var term = norm(ui.search.value);
+        var maximumLayer = ui.layer.value === "all" ? Infinity : Number(ui.layer.value);
+
+        state.visible = state.campaign.nodes.filter(function (node) {
+          if (node.layer > maximumLayer) return false;
+          if (state.familyAncestors && !state.familyAncestors.has(node.id)) return false;
+          if (!term) return true;
+          var haystack = norm([node.id, node.title, node.statement, node.why, node.kind, node.status].join(" "));
+          return haystack.indexOf(term) !== -1;
+        });
+
+        var visibleIds = new Set(state.visible.map(function (node) { return node.id; }));
+        if ((!preserveSelection || !visibleIds.has(state.selected)) && state.visible.length) {
+          if (!visibleIds.has(state.selected)) {
+            var goals = state.visible.filter(function (node) { return node.kind === "goal"; });
+            state.selected = (goals[goals.length - 1] || state.visible[state.visible.length - 1]).id;
+          }
+        }
+
+        Array.from(ui.familyGrid.querySelectorAll("[data-family-id]")).forEach(function (button) {
+          button.setAttribute("aria-pressed", button.getAttribute("data-family-id") === ui.family.value ? "true" : "false");
+        });
+
+        var goalsVisible = state.visible.filter(function (node) { return node.kind === "goal"; }).length;
+        ui.count.textContent = state.visible.length + " visible nodes · " + goalsVisible + " campaign milestones";
+        drawGraph();
+        updateDetails();
+      }
+
+      function laneIndex(node) {
+        var families = state.campaign.families;
+        if (node.family && state.families.has(node.family)) {
+          return families.findIndex(function (family) { return family.id === node.family; });
+        }
+        var value = Number(String(node.id).replace(/[^0-9]/g, ""));
+        return (Number.isFinite(value) ? Math.max(0, value - 1) : 0) % Math.max(1, families.length);
+      }
+
+      function computeLayout() {
+        state.locations = new Map();
+        var grouped = new Map();
+        state.visible.forEach(function (node) {
+          var key = node.layer + ":" + laneIndex(node);
+          if (!grouped.has(key)) grouped.set(key, []);
+          grouped.get(key).push(node);
+        });
+
+        var activeLayers = state.campaign.layers.slice().sort(function (left, right) {
+          return left.number - right.number;
+        }).filter(function (layer) {
+          return ui.layer.value === "all" || layer.number <= Number(ui.layer.value);
+        });
+
+        var y = TOP_MARGIN;
+        var bands = [];
+        activeLayers.forEach(function (layer) {
+          var maximum = 0;
+          state.campaign.families.forEach(function (_, index) {
+            var nodes = grouped.get(layer.number + ":" + index) || [];
+            maximum = Math.max(maximum, nodes.length);
+          });
+          var height = Math.max(89, 32 + maximum * (CARD_HEIGHT + CARD_GAP));
+          bands.push({ layer: layer, y: y, height: height });
+          state.campaign.families.forEach(function (_, index) {
+            var nodes = grouped.get(layer.number + ":" + index) || [];
+            nodes.sort(function (left, right) { return String(left.id).localeCompare(String(right.id)); });
+            nodes.forEach(function (node, offset) {
+              state.locations.set(node.id, {
+                x: LEFT_MARGIN + index * LANE_WIDTH + 9,
+                y: y + 23 + offset * (CARD_HEIGHT + CARD_GAP),
+                lane: index
+              });
+            });
+          });
+          y += height;
+        });
+
+        state.graphWidth = LEFT_MARGIN + state.campaign.families.length * LANE_WIDTH + RIGHT_MARGIN;
+        state.graphHeight = y + 16;
+        return bands;
+      }
+
+      function addMarkers() {
+        var definitions = svg("defs");
+        [
+          ["arrow-neutral", "#aa9db3"],
+          ["arrow-ancestor", "#713a83"],
+          ["arrow-dependent", "#176b45"]
+        ].forEach(function (entry) {
+          var marker = svg("marker", {
+            id: entry[0],
+            markerWidth: 8,
+            markerHeight: 8,
+            refX: 7,
+            refY: 4,
+            orient: "auto",
+            markerUnits: "userSpaceOnUse"
+          });
+          marker.appendChild(svg("path", { d: "M 0 0 L 8 4 L 0 8 Z", fill: entry[1] }));
+          definitions.appendChild(marker);
+        });
+        ui.graph.appendChild(definitions);
+      }
+
+      function drawBands(bands) {
+        var backgrounds = svg("g", { "aria-hidden": "true" });
+        bands.forEach(function (band, index) {
+          backgrounds.appendChild(svg("rect", {
+            x: 0,
+            y: band.y,
+            width: state.graphWidth,
+            height: band.height,
+            fill: index % 2 ? "#fffdfd" : "#f8f4fa"
+          }));
+          backgrounds.appendChild(svg("line", {
+            x1: 0,
+            y1: band.y,
+            x2: state.graphWidth,
+            y2: band.y,
+            stroke: "#d7ccdd",
+            "stroke-width": .8
+          }));
+          backgrounds.appendChild(svg("text", {
+            x: 10,
+            y: band.y + 19,
+            "class": "layer-label",
+            fill: "#713a83"
+          }, "LAYER " + String(band.layer.number).padStart(2, "0")));
+          words(band.layer.title, 15, 3).forEach(function (line, offset) {
+            backgrounds.appendChild(svg("text", {
+              x: 10,
+              y: band.y + 36 + offset * 12,
+              "class": "layer-title",
+              fill: "#706778"
+            }, line));
+          });
+        });
+
+        state.campaign.families.forEach(function (family, index) {
+          var x = LEFT_MARGIN + index * LANE_WIDTH;
+          backgrounds.appendChild(svg("line", {
+            x1: x,
+            y1: TOP_MARGIN,
+            x2: x,
+            y2: state.graphHeight,
+            stroke: "#e5dde8",
+            "stroke-width": .8
+          }));
+          backgrounds.appendChild(svg("rect", { x: x + 8, y: 10, width: 5, height: 42, rx: 2, fill: color(family.color) }));
+          words(family.title, 20, 3).forEach(function (line, offset) {
+            backgrounds.appendChild(svg("text", {
+              x: x + 19,
+              y: 22 + offset * 13,
+              "class": "family-label",
+              fill: "#27212d"
+            }, line));
+          });
+        });
+        ui.graph.appendChild(backgrounds);
+      }
+
+      function drawEdges(ancestorIds, descendantIds, visibleIds) {
+        if (ui.edges.value === "none") return;
+        var edgeGroup = svg("g", { "aria-hidden": "true" });
+        state.visible.forEach(function (target) {
+          target.deps.forEach(function (sourceId) {
+            if (!visibleIds.has(sourceId)) return;
+            var isAncestor = ancestorIds.has(sourceId) && ancestorIds.has(target.id);
+            var isDependent = descendantIds.has(sourceId) && descendantIds.has(target.id);
+            if (ui.edges.value === "focused" && !isAncestor && !isDependent) return;
+
+            var source = state.locations.get(sourceId);
+            var destination = state.locations.get(target.id);
+            if (!source || !destination) return;
+            var x1 = source.x + CARD_WIDTH / 2;
+            var y1 = source.y + CARD_HEIGHT;
+            var x2 = destination.x + CARD_WIDTH / 2;
+            var y2 = destination.y;
+            var bend = Math.max(18, Math.min(105, (y2 - y1) * .46));
+            var shade = isAncestor ? "#713a83" : isDependent ? "#176b45" : "#aa9db3";
+            var marker = isAncestor ? "arrow-ancestor" : isDependent ? "arrow-dependent" : "arrow-neutral";
+            edgeGroup.appendChild(svg("path", {
+              d: "M " + x1 + " " + y1 + " C " + x1 + " " + (y1 + bend) + ", " + x2 + " " + (y2 - bend) + ", " + x2 + " " + (y2 - 1),
+              fill: "none",
+              stroke: shade,
+              "stroke-width": isAncestor || isDependent ? 1.75 : .85,
+              "stroke-opacity": isAncestor || isDependent ? .81 : .34,
+              "marker-end": "url(#" + marker + ")"
+            }));
+          });
+        });
+        ui.graph.appendChild(edgeGroup);
+      }
+
+      function nodeColor(node) {
+        if (node.family && state.families.has(node.family)) return color(state.families.get(node.family).color);
+        return node.kind === "tool" ? "#365e91" : "#783f90";
+      }
+
+      function statusColor(status) {
+        if (status === "available" || status === "existing_foundation" || status === "stable_closed" || status === "alpha_closed") return "#176b45";
+        if (status === "body_checked" || status === "pending_layered_closure" || status === "existing_anchor_closure") return "#8a5a00";
+        if (status === "existing_anchor_extension") return "#365e91";
+        return "#705078";
+      }
+
+      function drawNodes(ancestorIds, descendantIds) {
+        var group = svg("g");
+        state.visible.forEach(function (node) {
+          var location = state.locations.get(node.id);
+          if (!location) return;
+          var selected = node.id === state.selected;
+          var related = ancestorIds.has(node.id) || descendantIds.has(node.id);
+          var card = svg("g", {
+            "class": "node-card",
+            "data-node": node.id,
+            tabindex: 0,
+            role: "button",
+            "aria-label": node.id + ": " + node.title + "; layer " + node.layer + "; " + readable(node.status),
+            "aria-pressed": selected ? "true" : "false",
+            opacity: state.selected && !related ? .66 : 1
+          });
+          card.appendChild(svg("title", {}, node.id + " · " + node.title));
+          card.appendChild(svg("rect", {
+            "class": "node-outline",
+            x: location.x,
+            y: location.y,
+            width: CARD_WIDTH,
+            height: CARD_HEIGHT,
+            rx: 5,
+            fill: selected ? "#eee0f3" : "#fffdfd",
+            stroke: selected ? "#713a83" : related ? nodeColor(node) : "#d7ccdd",
+            "stroke-width": selected ? 2.3 : related ? 1.3 : 1
+          }));
+          card.appendChild(svg("rect", {
+            x: location.x,
+            y: location.y,
+            width: 4,
+            height: CARD_HEIGHT,
+            rx: 2,
+            fill: nodeColor(node)
+          }));
+          card.appendChild(svg("text", {
+            x: location.x + 11,
+            y: location.y + 16,
+            "class": "node-label",
+            fill: "#706778"
+          }, node.id + " · " + readable(node.kind)));
+          words(node.title, 20, 2).forEach(function (line, offset) {
+            card.appendChild(svg("text", {
+              x: location.x + 10,
+              y: location.y + 33 + offset * 13,
+              "class": "node-title",
+              fill: "#27212d"
+            }, line));
+          });
+          card.appendChild(svg("circle", {
+            cx: location.x + CARD_WIDTH - 10,
+            cy: location.y + 12,
+            r: 4,
+            fill: statusColor(node.status),
+            stroke: "#fffdfd",
+            "stroke-width": 1
+          }));
+          card.addEventListener("click", function () { choose(node.id, false); });
+          card.addEventListener("keydown", function (event) {
+            if (event.key === "Enter" || event.key === " ") {
+              event.preventDefault();
+              choose(node.id, false);
+            }
+          });
+          group.appendChild(card);
+        });
+        ui.graph.appendChild(group);
+      }
+
+      function drawGraph() {
+        if (!state.campaign) return;
+        var bands = computeLayout();
+        empty(ui.graph);
+        ui.graph.appendChild(svg("title", { id: "graph-title" }, "Constructive number-theory campaign dependency graph"));
+        ui.graph.appendChild(svg("desc", { id: "graph-description" }, "Layered constructive goals, existing anchors, and prerequisite tools."));
+        ui.graph.setAttribute("viewBox", "0 0 " + state.graphWidth + " " + state.graphHeight);
+        addMarkers();
+        drawBands(bands);
+
+        var ancestorIds = state.selected ? ancestors(state.selected) : new Set();
+        var descendantIds = state.selected ? descendants(state.selected) : new Set();
+        var visibleIds = new Set(state.visible.map(function (node) { return node.id; }));
+        drawEdges(ancestorIds, descendantIds, visibleIds);
+        drawNodes(ancestorIds, descendantIds);
+        applyZoom();
+
+        if (!state.visible.length) {
+          ui.graph.appendChild(svg("text", {
+            x: LEFT_MARGIN,
+            y: TOP_MARGIN + 45,
+            fill: "#706778",
+            "font-family": "Georgia, serif",
+            "font-size": 18
+          }, "No goals match these filters. Clear the search or select another family."));
+        }
+      }
+
+      function applyZoom() {
+        ui.graph.style.width = Math.round(state.graphWidth * state.zoom) + "px";
+        ui.graph.style.height = Math.round(state.graphHeight * state.zoom) + "px";
+      }
+
+      function fitGraph() {
+        var widthScale = (ui.stage.clientWidth - 12) / state.graphWidth;
+        var heightScale = (ui.stage.clientHeight - 12) / state.graphHeight;
+        state.zoom = Math.max(.27, Math.min(1.4, widthScale, heightScale));
+        applyZoom();
+      }
+
+      function adjustZoom(factor) {
+        var before = state.zoom;
+        state.zoom = Math.max(.27, Math.min(2.1, state.zoom * factor));
+        var middleX = ui.stage.scrollLeft + ui.stage.clientWidth / 2;
+        var middleY = ui.stage.scrollTop + ui.stage.clientHeight / 2;
+        applyZoom();
+        ui.stage.scrollLeft = middleX * state.zoom / before - ui.stage.clientWidth / 2;
+        ui.stage.scrollTop = middleY * state.zoom / before - ui.stage.clientHeight / 2;
+      }
+
+      function addMeta(label, value) {
+        ui.nodeMeta.appendChild(element("dt", label));
+        ui.nodeMeta.appendChild(element("dd", value));
+      }
+
+      function describeStatus(node) {
+        if (node.status === "stable_closed") return "Independently closed Stable theorem";
+        if (node.status === "alpha_closed") return "Independently closed Alpha-only theorem";
+        if (node.status === "pending_layered_closure") {
+          if (node.evidence && node.evidence.full_empty_context_closure) {
+            return "Independently proved; sealed release promotion pending";
+          }
+          return "Body checked; layered closure pending";
+        }
+        if (node.status === "body_checked") return "Dependency-curried body checked";
+        if (node.status === "available") return "Available constructive foundation";
+        if (node.status === "existing_foundation") return "Existing constructive foundation milestone";
+        if (node.status === "existing_anchor_closure") return "Existing anchor milestone; evidence preserved";
+        if (node.status === "existing_anchor_extension") return "Existing anchor extension milestone";
+        if (node.status === "open") return "Open research objective";
+        return "Recorded evidence: " + readable(node.status || "unspecified");
+      }
+
+      function statusCaveat(node) {
+        if (node.status === "stable_closed") {
+          return "This existing theorem has independently checked Stable evidence. Reusing it as a campaign prerequisite does not prove any later goal automatically.";
+        }
+        if (node.status === "alpha_closed") {
+          return "This existing theorem has an independent Alpha empty-context certificate. Alpha-only checked authority is distinct from promotion to Stable.";
+        }
+        if (node.status === "pending_layered_closure") {
+          if (node.evidence && node.evidence.full_empty_context_closure) {
+            return "The complete ordinary empty-context proof is independently checked, and the full proof bundle is independently verified in Lean. The sealed Alpha release row remains unchanged; checked-use and Stable promotion still require a separate reviewed release.";
+          }
+          return "The dependency-curried root body exists, but the required independent empty-context layered certificate remains pending. This anchor has no checked-use authority or Stable admission.";
+        }
+        if (node.status === "open") {
+          return "This is a proposed mathematical goal. Its statement and arrows do not claim an existing proof, kernel certificate, Alpha enrollment, checked-use authority, or Stable admission.";
+        }
+        if (node.status === "body_checked") {
+          return "A checked dependency-curried body is not an independent empty-context proof. It grants no checked theorem use or Stable membership unless separately recorded.";
+        }
+        if (node.status === "existing_foundation") {
+          return "This milestone records an existing constructive foundation rather than a newly proposed theorem. Its precise proof authority is limited to the evidence explicitly attached to its source.";
+        }
+        if (node.status === "existing_anchor_closure") {
+          if (node.evidence && node.evidence.full_empty_context_closure) {
+            return "The referenced anchor already has a genuine independently checked empty-context proof. This campaign milestone does not itself rewrite the sealed release or grant checked-use or Stable authority.";
+          }
+          return "This milestone restates an existing proof anchor within the campaign. The word closure names its place in this research map, not an independent empty-context certificate; no authority is upgraded.";
+        }
+        if (node.status === "existing_anchor_extension") {
+          return "This milestone extends or reuses an existing anchor. Existing anchor evidence does not automatically establish the extension or confer checked use, empty-context closure, or Stable membership.";
+        }
+        return "Availability names an existing constructive ingredient only. The exact source and evidence determine its authority; displaying an arrow never upgrades that authority.";
+      }
+
+      function relationList(container, ids, emptyMessage) {
+        empty(container);
+        if (!ids.length) {
+          container.appendChild(element("li", emptyMessage));
+          return;
+        }
+        ids.forEach(function (id) {
+          var node = state.byId.get(id);
+          if (!node) return;
+          var item = element("li");
+          var button = element("button", id + " · " + node.title, {
+            type: "button",
+            "class": "relation-button"
+          });
+          button.addEventListener("click", function () { choose(id, true); });
+          item.appendChild(button);
+          container.appendChild(item);
+        });
+      }
+
+      function updateDetails() {
+        var node = state.byId.get(state.selected);
+        if (!node) {
+          ui.content.hidden = true;
+          ui.introduction.hidden = false;
+          return;
+        }
+
+        ui.introduction.hidden = true;
+        ui.content.hidden = false;
+        ui.nodeId.textContent = node.id + " · " + readable(node.kind).toUpperCase();
+        ui.nodeTitle.textContent = node.title;
+        ui.nodeStatus.textContent = describeStatus(node);
+        ui.nodeStatus.className = "status-badge " + (node.status || "open");
+
+        empty(ui.nodeMeta);
+        var family = node.family && state.families.get(node.family);
+        addMeta("Family", family ? family.title : "Cross-family foundation");
+        addMeta("Proof layer", node.layer);
+        addMeta("Difficulty", readable(node.difficulty || "foundation"));
+        addMeta("All prerequisites", Math.max(0, ancestors(node.id).size - 1));
+        addMeta("All downstream nodes", Math.max(0, descendants(node.id).size - 1));
+
+        ui.statement.textContent = node.statement || "No target formula has been recorded.";
+        ui.rationale.textContent = node.why || "This node supplies a constructive arithmetic ingredient for later goals.";
+        ui.caveat.textContent = statusCaveat(node);
+
+        relationList(ui.dependencies, node.deps, "No earlier campaign prerequisite is recorded.");
+        relationList(ui.dependents, state.dependents.get(node.id) || [], "No later campaign goal currently depends directly on this node.");
+
+        empty(ui.evidence);
+        var evidence = node.evidence;
+        if (evidence && typeof evidence === "object" && Object.keys(evidence).length) {
+          Object.keys(evidence).forEach(function (key) {
+            var value = evidence[key];
+            var display = typeof value === "string" ? value : JSON.stringify(value);
+            ui.evidence.appendChild(element("li", readable(key) + ": " + shorten(display, 210)));
+          });
+          ui.evidenceSection.hidden = false;
+        } else {
+          ui.evidenceSection.hidden = true;
+        }
+      }
+
+      function choose(id, reveal) {
+        if (!state.byId.has(id)) return;
+        state.selected = id;
+        try {
+          history.replaceState(null, "", "#" + encodeURIComponent(id));
+        } catch (_) {
+          // Restricted file viewers need no URL mutation to keep the graph usable.
+        }
+
+        var visibleIds = new Set(state.visible.map(function (node) { return node.id; }));
+        if (!visibleIds.has(id)) {
+          ui.search.value = "";
+          ui.layer.value = "all";
+          if (ui.family.value !== "all" && (!state.familyAncestors || !state.familyAncestors.has(id))) {
+            ui.family.value = "all";
+          }
+          updateFilters(true);
+        } else {
+          drawGraph();
+          updateDetails();
+        }
+
+        if (reveal) {
+          var location = state.locations.get(id);
+          if (location) {
+            ui.stage.scrollLeft = Math.max(0, (location.x + CARD_WIDTH / 2) * state.zoom - ui.stage.clientWidth / 2);
+            ui.stage.scrollTop = Math.max(0, (location.y + CARD_HEIGHT / 2) * state.zoom - ui.stage.clientHeight / 2);
+          }
+        }
+      }
+
+      function initializePanning() {
+        var pointer = null;
+        ui.stage.addEventListener("pointerdown", function (event) {
+          if (event.button !== 0 || (event.target.closest && event.target.closest(".node-card"))) return;
+          pointer = {
+            id: event.pointerId,
+            x: event.clientX,
+            y: event.clientY,
+            left: ui.stage.scrollLeft,
+            top: ui.stage.scrollTop
+          };
+          ui.stage.classList.add("is-panning");
+          if (ui.stage.setPointerCapture) ui.stage.setPointerCapture(event.pointerId);
+        });
+        ui.stage.addEventListener("pointermove", function (event) {
+          if (!pointer || event.pointerId !== pointer.id) return;
+          ui.stage.scrollLeft = pointer.left - (event.clientX - pointer.x);
+          ui.stage.scrollTop = pointer.top - (event.clientY - pointer.y);
+        });
+        ["pointerup", "pointercancel", "lostpointercapture"].forEach(function (name) {
+          ui.stage.addEventListener(name, function () {
+            pointer = null;
+            ui.stage.classList.remove("is-panning");
+          });
+        });
+        ui.stage.addEventListener("keydown", function (event) {
+          if (event.target !== ui.stage) return;
+          if (event.key === "+" || event.key === "=") {
+            event.preventDefault();
+            adjustZoom(1.2);
+          } else if (event.key === "-") {
+            event.preventDefault();
+            adjustZoom(1 / 1.2);
+          }
+        });
+      }
+
+      function initializeControls() {
+        ui.controls.addEventListener("submit", function (event) {
+          event.preventDefault();
+          if (state.visible.length) choose(state.visible[0].id, true);
+        });
+        ui.search.addEventListener("input", function () { updateFilters(true); });
+        [ui.family, ui.layer, ui.edges].forEach(function (control) {
+          control.addEventListener("change", function () { updateFilters(true); });
+        });
+        document.querySelector("[data-zoom='in']").addEventListener("click", function () { adjustZoom(1.2); });
+        document.querySelector("[data-zoom='out']").addEventListener("click", function () { adjustZoom(1 / 1.2); });
+        document.querySelector("[data-fit]").addEventListener("click", fitGraph);
+        document.querySelector("[data-reset]").addEventListener("click", function () {
+          ui.search.value = "";
+          ui.family.value = "all";
+          ui.layer.value = "all";
+          ui.edges.value = "focused";
+          state.zoom = .9;
+          updateFilters(true);
+        });
+        ui.fileInput.addEventListener("change", function () {
+          var file = ui.fileInput.files && ui.fileInput.files[0];
+          if (!file) return;
+          var reader = new FileReader();
+          reader.addEventListener("load", function () {
+            try {
+              configure(JSON.parse(String(reader.result)));
+            } catch (error) {
+              fail("The selected campaign description cannot be accepted: " + error.message);
+            }
+          });
+          reader.addEventListener("error", function () { fail("The browser could not read the selected campaign.json file."); });
+          reader.readAsText(file);
+        });
+        initializePanning();
+      }
+
+      function initializeCampaign() {
+        if (window.location.protocol === "file:") {
+          try {
+            var local = embeddedCampaign();
+            if (local) {
+              configure(local);
+              ui.notice.textContent += " This directly opened page uses its embedded campaign snapshot.";
+              return;
+            }
+          } catch (error) {
+            fail("The embedded campaign description cannot be accepted: " + error.message);
+            return;
+          }
+        }
+
+        fetch("./campaign.json", { cache: "no-store" }).then(function (response) {
+          if (!response.ok) throw new Error("HTTP " + response.status + " while requesting campaign.json");
+          return response.json();
+        }).then(configure).catch(function (error) {
+          try {
+            var fallback = embeddedCampaign();
+            if (fallback) {
+              configure(fallback);
+              ui.notice.textContent += " The external description was unavailable; the embedded campaign snapshot is displayed.";
+              return;
+            }
+          } catch (fallbackError) {
+            fail("Neither campaign description can be accepted: " + fallbackError.message);
+            return;
+          }
+          var prefix = window.location.protocol === "file:" ?
+            "This directly opened page cannot fetch its neighboring campaign.json file. " :
+            "The campaign description could not be loaded. ";
+          fail(prefix + error.message);
+        });
+      }
+
+      initializeControls();
+      initializeCampaign();
+    }());
+  </script>
+</body>
+</html>

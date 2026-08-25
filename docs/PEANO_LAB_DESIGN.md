@@ -383,7 +383,9 @@ links + localStorage history + Stop button). New Python package `peano_lab`, new
 
 - `pa prove <formula>` — interactive session (the `prove` UX: goals/context/term panels,
   complete-line `qed`/`abort`, in-proof `help`, `hint`)
-- `pa tactic [name]`, `pa lib [name]` — tactic encyclopedia + proved-theorem library
+- `pa tactic [name]`, `pa lib [name]` — tactic encyclopedia + proved-theorem library;
+  `pa lib alpha [name]` is an opt-in research-evidence inventory, while
+  `pa lib alpha check <name>` independently verifies one admitted Alpha proof
 - `pa axioms`, `pa eval <term>`, `pa simp <term>`
 - proof-producing arithmetic tactics `norm_num`, `ring`, and the narrower `compact_arith`, each
   with an executable tactic card; `compact_arith?` is a pure preview
@@ -529,8 +531,13 @@ reports a success only after the same owner-and-kernel path closes a frozen held
 3. **The theorem ladder as regression** (§6): every library theorem's script replays in CI.
 4. **Book gate**: extend `verify_book_commands.py` to replay `pa`-family deep links and session
    blocks against the peano-lab driver.
-5. Cross-check: `pa lean <thm>` exports the statement (and, for the library, a Lean proof stub)
-   so any library theorem can be spot-checked in Live Lean / Mathlib's `Nat`.
+5. Independent cross-check: `pa lean <thm>` exports the exact statement and its complete
+   constructive proof certificate as an ordinary Lean theorem over `Nat`. The Mathlib-free
+   sibling checker reconstructs and checks every proof constructor before its formally proved
+   soundness theorem supplies the result; no proof placeholder, theorem-name trust, or
+   compiler-reflection axiom is introduced. Explicit `pa lean alpha <thm>` applies the same
+   independently checked conversion only to closed theorems admitted by immutable Alpha v16;
+   body-only rows fail closed and the default Stable/public surface remains unchanged.
 
 ## 6. The theorem ladder (acceptance ladder for the whole project)
 

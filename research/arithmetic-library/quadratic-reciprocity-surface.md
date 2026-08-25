@@ -332,15 +332,20 @@ expansion—roughly half the superseded wrapper's 382,882 occurrences. The
 recursive tree has at least 731,423 proof nodes before most body constructors
 are counted, so it cannot satisfy the 500,000-node policy.
 
-This is a complete body-green mathematical route, not an
-admitted quadratic-reciprocity theorem. Every new item is dependency-curried,
-unregistered and unadmitted. The preferred next experiment is the
-[layered ordinary-`Cut` compiler](layered-cut-bundle.md): one balanced
-conjunction package per dependency layer, every theorem body once, and one
-existing contextual `Cut` per layer, with the unchanged kernel asked to check
-the resulting certificate from the empty context. Full WMI construction,
-mutation checking, capacity/browser profiling, and a distinct receipt-pinned
-admission replay remain.
+This route has now been compiled into a complete genuine
+[layered ordinary-`Cut` proof](layered-cut-bundle.md): one balanced conjunction
+package per dependency layer, each actual theorem body once, and existing
+contextual `Cut` constructors only. The unchanged intuitionistic kernel
+accepted the exact root from the empty context with 54,870 proof nodes, 35,052
+proof objects, and depth 129. Independently, the compiled Lean bundle verifier
+accepted all 557 actual theorem bodies and 1,787 dependencies against the same
+uncurried root. The [full audited receipt](quadratic-reciprocity-closure-receipt.md)
+includes the retained canonical artifact and reproducible verification
+commands. The separately reviewed immutable Alpha-v16 successor promotes the
+315 newly closed QR results to checked-use authority without rewriting its
+sealed Alpha-v15 parent or changing the default Stable/public registry. Fresh
+pinned WMI replay, browser deployment, and any future Stable promotion remain
+separate operations; hashes and release labels never replace actual proofs.
 See the
 [`data package`](../../peano-lab/py/peano_lab/library/gauss_eisenstein_data_candidate.py),
 [`parity truth tables`](../../peano-lab/py/peano_lab/library/quadratic_reciprocity_parity_candidate.py),

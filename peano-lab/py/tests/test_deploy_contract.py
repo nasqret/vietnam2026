@@ -62,6 +62,8 @@ def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
     assert 'peano-lab/worker.js "_deploy/peano-lab/releases/a-' in output
     assert 'peano-lab/APP_MANIFEST.sha256 "_deploy/peano-lab/releases/a-' in output
     assert 'peano-lab/py/ "_deploy/peano-lab/releases/a-' in output
+    assert "research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json" in output
+    assert "/proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json" in output
     assert 'peano-lab/vendor/ "_deploy/peano-lab/vendor/"' in output
     assert "bash scripts/verify_peano_vendor_manifest.sh" in output
     assert "bash scripts/update_peano_app_manifest.sh --check" in output
@@ -152,6 +154,19 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
         assert f"book/_static/constructive-frontier-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
+
+
+def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> None:
+    output = _dry_run("stage-proofs")
+    page = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
+
+    assert "scripts/sync_constructive_grand_campaign.py --check" in output
+    assert "book/_static/constructive-grand-campaign/" in output
+    assert '"_deploy/proofs/grand-campaign/"' in output
+    assert '"_deploy/proofs/artifacts/quadratic-reciprocity-proof-bundle-v1.json"' in output
+    assert '"_deploy/proofs/artifacts/quadratic-reciprocity-closure-receipt.md"' in output
+    assert 'href="grand-campaign/"' in page
+    assert 'href="artifacts/quadratic-reciprocity-proof-bundle-v1.json"' in page
 
 
 def test_proof_explorer_stage_installs_only_the_proof_site_cache_policy() -> None:

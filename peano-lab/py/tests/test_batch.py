@@ -299,18 +299,22 @@ def test_batch_rejects_oversized_numerals_before_parser_or_tactic_execution(
         raise AssertionError("numeral preflight must run before the formula parser")
 
     monkeypatch.setattr(batch, "parse_formula_with_names", parser_must_not_run)
-    with pytest.raises(BatchRequestError, match="numeral 257"):
+    with pytest.raises(BatchRequestError, match=f"numeral {MAX_NUMERAL + 1}"):
         run_proof(f"{MAX_NUMERAL + 1} = 0", ("refl",))
     with pytest.raises(BatchRequestError, match="numeral 100000000"):
         run_proof("100000000x = 0", ("refl",))
-    with pytest.raises(BatchRequestError, match="tactic 1 contains numeral 257"):
+    with pytest.raises(
+        BatchRequestError, match=f"tactic 1 contains numeral {MAX_NUMERAL + 1}"
+    ):
         run_proof("0 = 0", (f"exists {MAX_NUMERAL + 1}",))
 
     assert oversized_numeral("x257 = x257") is None
     assert oversized_numeral("#257") is None
     assert oversized_numeral("'257") is None
-    assert oversized_numeral("257x = 0") == "257"
-    assert oversized_numeral("257_foo = 0") == "257"
+    assert oversized_numeral("257x = 0") is None
+    assert oversized_numeral("257_foo = 0") is None
+    assert oversized_numeral(f"{MAX_NUMERAL + 1}x = 0") == str(MAX_NUMERAL + 1)
+    assert oversized_numeral(f"{MAX_NUMERAL + 1}_foo = 0") == str(MAX_NUMERAL + 1)
 
 
 def test_request_schema_pins_modes_capabilities_and_unknown_fields() -> None:

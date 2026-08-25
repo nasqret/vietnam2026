@@ -54,9 +54,87 @@ qed
 ```
 
 The final line independently checks the generated certificate against the
-original formula. The browser driver limits numeral literals to `0..256` so a
-short decimal input cannot expand into an unbounded successor tree; this is a
-UI resource bound, not a restriction on the PA object language.
+original formula. Numerals through `256` preserve their historic unary proof
+representation; larger literals use compact binary double-and-add terms in
+the unchanged PA language. The browser accepts values through `1,000,000`
+under an explicit resource limit rather than allocating successor trees of
+that size.
+
+## Complete Lean conversion, shared formulas, and quadratic reciprocity
+
+Every checked library theorem has a genuine certificate-to-Lean translation:
+
+```console
+python3 scripts/export_peano_lean.py add_comm --output /private/tmp/add_comm.lean --verify
+python3 scripts/export_peano_lean.py mul_comm --output /private/tmp/mul_comm.lean --verify
+python3 scripts/export_peano_lean.py prime_unbounded --output /private/tmp/prime_unbounded.lean --verify
+```
+
+Complete canonical proof DAGs, including unregistered constructive research
+roots, can also become ordinary Lean theorem modules:
+
+```console
+python3 scripts/export_peano_lean.py quadratic_reciprocity_combined \
+  --proof-bundle research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json \
+  --output /private/tmp/quadratic_reciprocity_combined.lean
+```
+
+The complete quadratic-reciprocity DAG is independently checked by the much
+smaller standalone Lean bundle verifier below; compiling its expanded theorem
+module additionally requires sufficient explicitly bounded Lean resources.
+
+The same completed source is available through `pa lean <name>`. Generated
+modules structurally share terms, formulas, and proof constructors, independently
+check the complete certificate in the Mathlib-free `peano-lab-lean` companion,
+and invoke its proved checker soundness. Their ordinary Lean theorems have no
+placeholders, custom axioms, or trusted native reflection; `#print axioms`
+reports the companion's standard Lean assumptions.
+Compiler verification defaults to one Lean worker, a 1,536 MiB Lean memory
+limit, and a 180-second wall-clock limit; timeouts terminate the entire private
+Lake/Lean process group. Larger exports remain available without verification,
+and explicit `--max-memory-mib` / `--max-verify-seconds` values are bounded.
+
+For large proof campaigns, `training/peano_hydra/scheduler.py` executes
+dependency-ready goals in bounded parallel waves and can safely resume from
+atomic proof checkpoints. Every restored goal is replayed against its original
+statement through the unchanged kernel before dependents can run. The shared
+immutable-prefix search cache reduces the measured existing pilot from 240 to
+39 tactic executions while retaining the identical checked 180-node proof.
+Historical `model-v1`/`v2`/`v3` authorities keep their frozen 256-numeral
+contract; only modern explicitly authorized campaign profiles receive the
+1,000,000 compact-numeral bound.
+
+`peano_lab.library.formula_dag` provides canonical topological formula DAGs and
+capture-safe sharing of repeated defined-predicate expansions. Definitions are
+cached by their exact de Bruijn arguments, never their potentially ambiguous
+surface names, and expansion yields the same ordinary `{0,S,+,*}` formula
+accepted by the unchanged kernel. `peano_lab.library.proof_bundle` provides
+similarly self-contained topological proof DAGs. Every dependency points
+backward, each dependency-curried body is checked exactly once, and the sibling
+Lean companion proves that accepting such a bundle implies an ordinary
+intuitionistic PA derivation of its final root.
+
+The complete native `quadratic_reciprocity_combined` root now passes the
+original empty-context kernel as one certificate of 54,870 structural proof
+nodes, 35,052 distinct proof objects, and depth 129. Its separately retained
+canonical shared artifact contains all 557 real theorem bodies, 1,787 exact
+dependency edges, and 41,722 body nodes. Independently verify it with:
+
+```console
+../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+  research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json
+```
+
+The exact 2,790,229-byte artifact has SHA-256
+`3cd040d145f1004d07d277c66a3ffbcb355cd9c4b21938d79a6ec51b4258709c`.
+The reusable guarded compiler is
+`peano_lab.library.quadratic_reciprocity_closure`; its complete audited
+receipt is `research/arithmetic-library/quadratic-reciprocity-closure-receipt.md`.
+The separately reviewed immutable Alpha-v16 evidence promotion admits exactly
+315 genuinely closed quadratic-reciprocity results while preserving every
+1,673-row enrollment, all earlier sealed editions, and the default 432-theorem
+Stable channel. Alpha now has 885 checked-use theorems and 788 body-only rows;
+body-only research evidence never supplies a closed theorem certificate.
 
 ## Browser startup and caching
 
@@ -95,10 +173,9 @@ Running the command without `--check` updates a stale worker inventory. The
 browser contract test independently requires that this list equal the complete
 package-source set plus the driver. This inventory step does not update
 `APP_MANIFEST.sha256`, select a new `PEANOAPPID`/`APP_ROOT`, or publish a
-release. For the quadratic-reciprocity admission campaign, that manifest and
-its derived application release ID remain pending until admission and the
-cluster/browser gates pass; the existing values continue to identify the
-preceding application assembly.
+release. After local implementation changes, regenerate the application
+manifest and update both local release pointers together; actual production
+promotion remains a separate explicit deployment action.
 
 The teaching surfaces are executable too:
 
@@ -110,7 +187,11 @@ pa tutorial add_comm
 pa tutorial norm_num
 pa lib mul_eq_zero
 pa lib mod5_fourth_power_one
+pa lib alpha
+pa lib alpha quadratic_reciprocity_combined
+pa lib alpha check quadratic_reciprocity_combined
 pa lean add_comm
+pa lean alpha quadratic_reciprocity_combined
 ```
 
 Bare `pa lib` is a lightweight inventory operation: it parses and
@@ -119,6 +200,15 @@ pretty-prints every stored closed statement without replaying certificates.
 check, and `pa lean <name>` likewise obtains the checked theorem on demand.
 Listing names therefore cannot grant theorem authority or accidentally launch
 a full-library replay.
+
+The separate opt-in `pa lib alpha` inventory reports the immutable v16
+evidence partition without opening its proof artifact. An Alpha theorem card
+also remains a lightweight evidence inspection; only the explicit
+`pa lib alpha check <name>` and `pa lean alpha <name>` operations load and
+check its actual empty-context certificate. In particular, 788
+dependency-curried `body_checked` rows cannot be replayed or exported as
+closed theorems, and the ordinary `pa lib`, `use`, and restricted model
+authorities keep their unchanged Stable/public defaults.
 
 Checked library facts can also be composed inside an ordinary live proof:
 
@@ -322,8 +412,14 @@ foundational entries and are exposed once.
 Dependencies are introduced as ordinary hypotheses, then packaged in nested self-contained Cuts.
 Each Cut embeds and checks its dependency proof once; it carries no theorem name or hash. The
 resulting closed certificate is independently checked from the empty context against the original theorem. `pa lib <name>` shows that exact
-replay script; `pa lean <name>` exports the exact statement as a Lean 4 theorem over `Nat`, with one
-intentional proof stub and a Live Lean link for cross-checking.
+replay script; `pa lean <name>` translates the complete constructive certificate
+into an ordinary Lean 4 theorem over `Nat`, without proof placeholders. The
+generated module uses the independently proved checker-soundness theorem in the
+Mathlib-free sibling `peano-lab-lean` project. For a directly compiler-checked
+file, run `python3 scripts/export_peano_lean.py add_comm --output
+/private/tmp/add_comm.lean --verify` from the repository root. The emitted axiom
+audit reports Lean's existing companion assumptions; Python acceptance is never
+introduced as an axiom.
 
 The constructive prime-search layer contributes twelve checked rungs:
 `eq_decidable`, `multiple_decidable_nonzero`, `multiple_decidable`,

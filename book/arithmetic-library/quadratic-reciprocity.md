@@ -7,14 +7,17 @@ constructions, and the final certificate remain ordinary first-order PA.
 
 ![Dependency roadmap for the native quadratic-reciprocity proof](../_static/quadratic-reciprocity-roadmap.svg)
 
-```{admonition} Current Alpha status (2026-08-09)
+```{admonition} Current immutable Alpha v16 status (2026-08-25)
 :class: important
-All 316 QR specifications belong to Alpha. Canonical evidence partitions them
-into 314 body-checked-only rows, one Alpha-closed QR/HA overlap
-(`mod_eq_add_cancel_left`), and the pending layered-closure endpoint. None has
-been promoted to Stable by this enrollment. Older phrases such as
-“unregistered,” “unadmitted,” or “private” below describe the historical
-Stable/public boundary, not absence from today's Alpha library. See
+All 316 Alpha-only QR specifications are now `alpha_closed` with genuine
+checked-use authority: one earlier QR/HA overlap was already closed, and
+immutable Alpha v16 promotes exactly 314 formerly body-only ancestors plus
+the formerly pending final root after checking their actual complete proofs.
+The full QR graph has 241 Stable prerequisites and 316 Alpha-closed
+theorems; none of those 316 has been promoted to Stable. Older phrases such as
+“body-green,” “unregistered,” “unadmitted,” or “private” below describe
+historical checkpoints or the still-unchanged Stable/public boundary, not the
+current Alpha evidence ledger. See
 {doc}`Alpha and Stable library editions <library-editions>`.
 ```
 
@@ -50,13 +53,15 @@ uses 1,520 source characters—well below the 8,192-character input limit—and
 contains no primitive occurrence of `Prime`, `Odd`, `QRes`, `%`, an integer
 sign, or exponentiation.
 
-The same, opposite, and combined bodies kernel-check with their declared
-dependencies as hypotheses. They are Alpha-enrolled but are not closed-use or
-Stable facts: the selected next gate is a WMI-built layered `Cut` certificate, followed by
-mutation testing, capacity profiling, browser replay, and a separate
-receipt-pinned admission. The former recursively expanded closure is now a
-measured baseline rather than the intended release artifact. Throughout this
-chapter, “body-green” names exactly that intermediate evidence level.
+The same, opposite, and combined statements now have actual empty-context
+proofs independently accepted by the unchanged original kernel. The combined
+ordinary certificate contains 54,870 structural proof nodes, 35,052 proof
+objects, and depth 129; a complete 557-node self-contained proof bundle is
+also independently accepted by the separately verified Lean companion.
+Immutable Alpha v16 grants these QR results checked use without making them
+Stable. The former recursively expanded closure remains a measured historical
+baseline. Throughout historical portions of this chapter, “body-green” names
+the intermediate evidence level that preceded the final evidence promotion.
 
 <a href="../_static/pa-proof-explorer/tag/PA00FW.html">Open permanent tag
 <strong>PA00FW</strong> for <code>quadratic_reciprocity_combined</code></a>.
@@ -65,8 +70,9 @@ stable theorem page; the candidate/public status remains visible throughout.
 The parallel
 <a href="../_static/pa-proof-explorer/defined/tag/PA00FW.html">definition-aware
 PA00FW page</a> renders the same formula with linked conservative names and an
-exact native replay line. It inherits the same `pending_layered_closure`
-candidate status; readability does not constitute admission.
+exact native replay line. Both explorer editions separately display current
+`alpha_closed` evidence and historical candidate-source provenance;
+readability itself does not constitute admission.
 
 ```{admonition} Constructive meaning
 :class: important
@@ -1472,17 +1478,21 @@ expanding its theorem dependencies produces 191,648 theorem occurrences,
 down from 382,882 for the superseded wrapper. That count is a static graph
 result, not a closed-proof receipt.
 
-This is a complete body-green mathematical route,
-not an admitted theorem: every candidate in these subsections is
-dependency-curried, unregistered, and unadmitted pending layered WMI closure,
-mutations, capacity profiling, browser replay, and a separate pinned
-admission.
+Historically this was only a complete dependency-curried, body-green
+mathematical route. The subsequent complete layered ordinary-`Cut`
+construction now passes the unchanged kernel from the empty context, the
+full modular proof bundle passes independent Lean verification, and immutable
+Alpha v16 admits exactly the 315 newly closed results for checked use. None
+is added to the default Stable/public registry, and fresh WMI replay remains
+separate evidence rather than a prerequisite for claiming the already checked
+local mathematical proof.
 
 The first full 136-gate WMI attempt, job `187187`, failed closed after 39
 seconds at gate 5. Four scaled-inverse gates passed; the mutation audit then
 found an unused `succ_ne_zero` dependency, so 131 gates were never reached.
-That redundant edge is removed and the focused local suite passes, but no
-complete quadratic-reciprocity admission receipt exists yet. Corrected full
+That redundant edge was removed and the focused local suite passed; at that
+historical checkpoint no complete quadratic-reciprocity admission receipt
+existed. Corrected full
 job `210714`, from clean snapshot `989011c0…1757`, subsequently failed closed
 after 8 minutes 29 seconds at gate 15/136. Fourteen gates passed; the next
 direct-edge mutation showed that replacing
@@ -1799,10 +1809,12 @@ froze the pre-overlap 317-candidate state. The strict-HA campaign has since
 admitted the exact Wilson `bounded_mod_inverse_unique` specification, so the
 live QR partition is 241 public / 316 candidate and the remaining enrollment
 was historically described as 315 proper candidate ancestors plus the root.
-In the canonical Alpha ledger all 316 are now enrolled: 314 remain body-only,
-`mod_eq_add_cancel_left` is Alpha-closed through the HA receipt, and the root
-remains pending layered closure. If the WMI gates pass, the
-separate
+In the immutable historical Alpha-v15 ledger all 316 were enrolled: 314 were
+body-only, `mod_eq_add_cancel_left` was Alpha-closed through the HA receipt,
+and the root remained pending. Current Alpha v16 preserves every historical
+artifact but promotes those 314 ancestors and their root after independently
+checking the complete genuine proof, so all 316 are now Alpha-closed and the
+root has checked-use authority without Stable membership. The separate
 [`public-admission design`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-admission-path.md)
 specifies how to enroll that remaining order without an
 import cycle, recursive fallback, or theorem-name authority. The companion
@@ -1817,11 +1829,11 @@ non-ancestors.
 
 | Gate | Mathematical deliverable | Status |
 |---|---|---|
-| QR-0 | parity, modulo $4$, quadratic-residue decision | checked base layer, including exact classifications mod 3, 5 and 7; the four new parity-client tranches, including odd-half/modulo-four equivalences, are dependency-curried body-green and unadmitted |
-| QR-1 | `Pow`, `Sum`, `Count`, ranges and finite folds | checked base folds; complementary counts, exact sum replacement/swap, fixed-last reindexing, arbitrary sum permutation, and modular sum cancellation are body-green and unadmitted |
-| QR-2 | modular units, bijections, Wilson, Fermat, Euler | the complete factorial Wilson congruence, Euler pointwise/full-prefix/extensional layers, generic adjacent-target fold, both bounded endpoints, shifted PairOrder entrance, balanced iteration, terminal coverage, successor-lift/product/Wilson endpoint, bounded equivalence, and arbitrary-representative transport are body-green; recursive WMI closure/mutations/admission remain |
-| QR-3 | Gauss's lemma | witness-packaged power congruence plus bounded and arbitrary actual-`QRes`/count-parity equivalences are dependency-curried body-green; recursive WMI closure, mutations, profiling, and admission remain |
-| QR-4 | Eisenstein identity and reciprocity | nested Fubini, exact `Q+U=h*k`, pointwise and summed Gauss--Eisenstein parity, one- and two-orientation data packages, constructive parity truth tables, and the exact same/opposite/combined QR surfaces are body-green; downstream integration is `20/20`; recursive closure is statically over capacity, so layered WMI closure, mutation, browser replay, and admission remain |
+| QR-0 | parity, modulo $4$, quadratic-residue decision | all graph prerequisites have independently checked Stable or Alpha-v16 closed proofs; historical body-only labels remain source provenance |
+| QR-1 | `Pow`, `Sum`, `Count`, ranges and finite folds | the complete dependency slice is closed and available for independently checked Alpha-v16 use |
+| QR-2 | modular units, bijections, Wilson, Fermat, Euler | the complete factorial, bounded-product, and representative-transport dependency slice is independently closed in immutable Alpha v16 |
+| QR-3 | Gauss's lemma | bounded and arbitrary actual-`QRes`/count-parity equivalences are independently closed and included in the checked 557-node proof bundle |
+| QR-4 | Eisenstein identity and reciprocity | the exact combined endpoint has a 54,870-node unchanged-kernel empty-context proof; all 557 proof bodies also pass independent Lean verification and the root is `alpha_closed` |
 | QR-5 | supplementary laws and extensions | first and second supplements remain separately scoped after admission of the main graph |
 
 Every gate ends with cold replay, false-target mutation tests, exact

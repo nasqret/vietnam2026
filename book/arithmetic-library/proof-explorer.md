@@ -11,23 +11,20 @@ closure.
 :class: important
 The 557 generated pages contain **241 Stable prerequisites** and **316 Alpha-only
 specifications**. The complete Stable catalog has 432 theorems, so
-191 Stable rows lie outside this QR closure. The current canonical Alpha v2
-catalog has 902 rows; its sealed v1 parent has 885. Stable union this slice has
-only 748 distinct theorem names. K3B and K3C are documented as separate
-focused Alpha layers.
-The generated pages retain their historical `public`/`candidate` labels until
-the unified Alpha explorer is built: read those only as Stable versus
-Alpha-only membership in this slice. They are not canonical evidence labels.
-In particular, the campaign corpus still calls `mod_eq_add_cancel_left`
-body-checked, while its later HA receipt upgrades the same specification to
-`alpha_closed` in the canonical Alpha catalog.
+191 Stable rows lie outside this QR closure. The current canonical Alpha v16
+catalog has 1,673 rows, of which 885 have checked-use authority. Stable union
+this slice has only 748 distinct theorem names. K3B, K3C, Bertrand, Lucas,
+and four squares remain separate focused Alpha layers. Historical
+`public`/`candidate` labels record source and Stable-versus-Alpha membership;
+a separate current evidence overlay marks all 316 Alpha-only QR results
+`alpha_closed` after their actual original-kernel proofs were checked.
 ```
 
 ```{admonition} Read release membership and evidence separately
 :class: note
-In particular, `quadratic_reciprocity_combined` has a
-kernel-checked modular body and a complete 557-node dependency graph, but its
-layered closed certificate is still pending the WMI and admission gates. A
+In particular, `quadratic_reciprocity_combined` has a complete independently
+checked empty-context certificate, a complete 557-node proof bundle, and
+current Alpha-v16 checked-use authority. It is **not** a Stable theorem. A
 permanent tag, source hash, or green modular-body check is provenance—not an
 axiom and not Stable promotion. See {doc}`Alpha and Stable library editions
 <library-editions>` for the release lifecycle.

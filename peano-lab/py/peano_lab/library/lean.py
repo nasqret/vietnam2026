@@ -1,10 +1,9 @@
-"""Deterministic Lean 4 exports for closed Peano Lab formulas.
+"""Deterministic Lean 4 statements and legacy statement-only scaffolds.
 
-This module is deliberately outside the trusted kernel.  It translates a
-kernel formula into a small, readable Lean statement and places the Peano Lab
-tactic script in comments beside an intentional ``sorry`` proof stub.  The
-stub is an invitation to cross-check the theorem in a second prover; it is not
-part of Peano Lab's soundness story.
+The production certificate-to-theorem translator lives in
+``peano_lab.library.lean_certified``.  This module supplies its exact,
+human-readable formula rendering and preserves the older statement-only
+scaffold API for callers that explicitly request a manual Lean proof.
 
 The surface ``a <= b`` notation has already been expanded by Peano Lab's
 parser to ``exists k. k + a = b``.  The exporter renders that expanded formula
@@ -19,7 +18,7 @@ import re
 from urllib.parse import quote
 
 from ..kernel.formulas import And, Bot, Eq, Exists, Forall, Formula, Imp, Or
-from ..kernel.terms import Add, Mul, Succ, Term, Var, Zero
+from ..kernel.terms import Add, Mul, Succ, Term, Var, Zero, numeral_value
 
 
 LIVE_LEAN_PREFIX = "https://live.lean-lang.org/#code="
@@ -30,7 +29,7 @@ _LEAN_IDENTIFIER = re.compile(r"[A-Za-z_][A-Za-z0-9_']*\Z")
 
 @dataclass(frozen=True, slots=True)
 class LeanExport:
-    """A Lean theorem stub and the matching one-click web-editor link."""
+    """A rendered Lean theorem and the matching exact-source editor link."""
 
     name: str
     statement: str
@@ -58,22 +57,19 @@ def _successor_numeral(term: Term) -> int | None:
 
 
 def _term_to_lean(term: Term, names: tuple[str, ...], parent_precedence: int) -> str:
-    if type(term) is Var:
+    numeral = numeral_value(term) if type(term) in (Zero, Succ, Mul) else None
+    if numeral is not None:
+        text, precedence = str(numeral), 4
+    elif type(term) is Var:
         if type(term.index) is not int or term.index < 0 or term.index >= len(names):
             raise ValueError(
                 "Lean export requires a closed formula; "
                 f"de Bruijn index #{term.index} is free at binder depth {len(names)}"
             )
         text, precedence = names[term.index], 4
-    elif type(term) is Zero:
-        text, precedence = "0", 4
     elif type(term) is Succ:
-        numeral = _successor_numeral(term)
-        if numeral is not None:
-            text, precedence = str(numeral), 4
-        else:
-            text = f"Nat.succ ({_term_to_lean(term.term, names, 0)})"
-            precedence = 3
+        text = f"Nat.succ ({_term_to_lean(term.term, names, 0)})"
+        precedence = 3
     elif type(term) in (Add, Mul):
         precedence = 1 if type(term) is Add else 2
         symbol = "+" if type(term) is Add else "*"
@@ -183,8 +179,10 @@ def export_theorem(
     with Mathlib names such as ``add_comm``.  The name is always emitted with
     Lean's ``«escaped identifier»`` syntax, so a future contextual keyword
     cannot make otherwise safe generated code invalid. Its body is
-    intentionally ``sorry``: ``pa lean`` exports a cross-checking *stub*,
-    never a second certificate that Peano Lab might accidentally trust.
+    intentionally a placeholder: this legacy statement-only helper is useful
+    when manually writing an independent proof.  ``pa lean`` instead uses
+    :func:`peano_lab.library.lean_certified.export_checked_theorem` and emits
+    a complete independently checked theorem.
     """
 
     _validate_theorem_name(name)

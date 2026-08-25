@@ -6,6 +6,19 @@ arithmetic library. Start with:
 - [`ha-number-theory-formalization-campaign-blueprint.md`](ha-number-theory-formalization-campaign-blueprint.md):
   the byte-frozen controlling blueprint for the strict-HA number-theory
   campaign;
+- [`Grand constructive number-theory campaign`](../../PLAN/14_constructive_number_theory_grand_campaign.md):
+  the 120-milestone, twelve-family research atlas, exact constructive theorem
+  contracts, sixteen shared tools, eight evidence-qualified existing roots,
+  thirteen execution layers, proof/release gates, and audited prior art;
+- [`Grand campaign machine-readable DAG`](../../book/_static/constructive-grand-campaign/campaign.json)
+  and its [interactive proof-campaign atlas](../../book/_static/constructive-grand-campaign/index.html):
+  the complete dependency-ordered theorem/tool/anchor graph with searchable
+  mathematical families, formal interfaces, and honest evidence labels;
+- [`Completed quadratic-reciprocity closure receipt`](quadratic-reciprocity-closure-receipt.md)
+  and its [complete canonical self-contained proof bundle](artifacts/quadratic-reciprocity-proof-bundle-v1.json):
+  the exact unchanged-kernel ordinary proof of the final reciprocity root,
+  all 557 genuine theorem bodies and 1,787 dependencies, and independent
+  compiled-Lean verification of the same exact constructive theorem;
 - [`ha-number-theory-campaign.json`](ha-number-theory-campaign.json): the
   executable K0--K6/M1--M5 layer status, dependency, and validation-gate
   manifest;
@@ -102,6 +115,11 @@ arithmetic library. Start with:
   the exact 117-row closure of both supplementary laws and the complete
   all-natural two-square classification, including authentic bounded
   Euler-criterion and Gauss-lemma prerequisites;
+- [`Alpha v16 quadratic-reciprocity promotion RFC`](alpha-v16-quadratic-reciprocity-promotion-rfc-v1.md):
+  the immutable evidence-only promotion of exactly 315 genuinely closed
+  quadratic-reciprocity results, their complete independently checked
+  557-node proof bundle, unchanged Stable/enrollment topology, and fail-closed
+  checked-use authority;
 - [`bounded Lucas/Lagrange promotion RFC`](ha-frontier-promotion-rfc-v1.md):
   exact dependency slices, unchanged-kernel empty-context certificate
   construction, shared-premise layered Cuts, immutable workstation caps,
@@ -612,17 +630,20 @@ sums, constructive finite permutation completeness, replacement balance, and
 exact swap-last product invariance. Beyond that admitted checkpoint, the exact
 quadratic-reciprocity route is now body-green through arbitrary Euler and
 Gauss, the signed-count/floor-sum parity bridge, native Eisenstein Fubini,
-`Q+U=h*k`, both QRes truth cases, and the optimized combined endpoint. This is
-a genuine dependency-curried PA body, not a public admission. The exact
+`Q+U=h*k`, both QRes truth cases, and the optimized combined endpoint. The
+complete exact endpoint is now proved: the original unchanged intuitionistic
+kernel accepts its ordinary empty-context layered certificate with 54,870
+structural proof nodes, 35,052 proof objects, and depth 129. The independent
+compiled Lean verifier also accepts the separately retained complete
+557-theorem canonical dependency bundle. The exact
 557-spec/1,787-edge graph has 45 layers, 241 public nodes, 316 candidate nodes,
 and 191,648 theorem occurrences under
-recursive expansion; a rigorous 731,423-node lower bound rules that compiler
-out under the current policy. Layered WMI closure, mutation, capacity,
-browser, and separate pinned-admission receipts are still mandatory. The
-unchanged-kernel compiler accepts an exact-topology distinct-marker surrogate
-at 19,066 nodes/depth 74. One dependency Cut/Hyp check per curried premise
-forces every real projection ID/direction and dependency order; no real QR
-target or body occurs in that test.
+naive recursive expansion; a rigorous 731,423-node lower bound rules out only
+that naive compiler, not the successful 54,870-node layered construction.
+The complete proof is distinct from public Alpha/Stable promotion, browser
+deployment, and a fresh pinned WMI receipt, none of which is implied by local
+closure. Its precise evidence and independently verifiable canonical artifact
+appear in the completed closure receipt linked above.
 
 - [`catalog.json`](catalog.json): the dependency-ordered theorem and planning
   register, including exact Peano statements, source IDs, blockers, and the
@@ -667,21 +688,22 @@ target or body occurs in that test.
   transpose/Fubini, the exact two-orientation quotient identity, and terminal
   parity cancellation;
 - [`quadratic-reciprocity-surface.md`](quadratic-reciprocity-surface.md): the
-  frozen code-free theorem formulas, representation choices, body-green
-  Gauss--Eisenstein route, and explicit admission boundary;
+  frozen code-free theorem formulas, representation choices, complete
+  independently checked Gauss--Eisenstein reciprocity root, and explicit
+  unpromoted release boundary;
 - [`finite-fold-surface.md`](finite-fold-surface.md): the reusable native
   `Pow`, `Sum`, `Count`, range, permutation, and product interfaces underlying
   the reciprocity proof;
 - [`quadratic-reciprocity-capacity.md`](quadratic-reciprocity-capacity.md):
-  structural/object/depth policy, FTA baseline, QR lower bound, and the
-  measured scaffold evidence for the selected compiler;
+  structural/object/depth policy, FTA baseline, historical naive QR lower
+  bound, and the actual accepted 54,870-node layered root;
 - [`quadratic-reciprocity-closure-hotspots.md`](quadratic-reciprocity-closure-hotspots.md):
   the exact recursive-closure recurrence, hotspot audit, and rigorous
   731,423-node lower bound against the 500,000-node policy;
 - [`layered-cut-bundle.md`](layered-cut-bundle.md): the preferred unchanged-
-  kernel compiler, using 45 balanced conjunction packages, 45 ordinary Cuts,
-  and short existing conjunction projections so every modular body appears
-  once;
+  kernel compiler, now independently accepted on the full real root using
+  45 balanced conjunction packages, ordinary Cuts, and short existing
+  conjunction projections so every modular body appears once;
 - [`quadratic-reciprocity-admission-path.md`](quadratic-reciprocity-admission-path.md):
   the post-WMI public migration design, including the injection-based registry
   refactor, exact 316-ancestor-plus-root enrollment, replay strategy, catalog,
@@ -802,12 +824,12 @@ closing the remaining 332 rows; a smaller dependency-closed batch need not
 wait for unrelated Alpha rows. WMI is down for the weekend, so no K3C cold
 receipt, whole-Alpha-v2 closure, or new promotion receipt is claimed here.
 
-## 2026-08-24 — current additive Alpha v15 and unchanged Stable editions
+## 2026-08-25 — current promoted Alpha v16 and unchanged Stable editions
 
 The preceding Alpha-v2 section is a historical checkpoint, not the current
 release pointer. Stable is still the official default at **432 theorems**.
-The newest additive Alpha edition is v15, containing **1,673 theorems**;
-every earlier version remains sealed and reproducible.
+The newest Alpha edition is v16, containing the same **1,673 theorems** as
+its sealed v15 parent; every earlier version remains reproducible.
 
 | Edition | Theorems | Direct edges | Layers | Checked use | New reviewed campaign |
 |---|---:|---:|---:|---:|---|
@@ -815,16 +837,28 @@ every earlier version remains sealed and reproducible.
 | Alpha v13 | 1,543 | 5,189 | 45 | 570 | Lagrange four-square and multidigit Lucas |
 | Alpha v14 | 1,556 | 5,251 | 45 | 570 | Kummer carry theorem and carry-free corollary |
 | Alpha v15 | 1,673 | 5,615 | 53 | 570 | Both supplementary laws and full two-square classification |
+| Alpha v16 | 1,673 | 5,615 | 53 | 885 | 315 genuinely closed quadratic-reciprocity results |
 
 Alpha v14 appends exactly thirteen `body_checked` Kummer rows. Alpha v15
 appends exactly 28 supplementary-law rows, including independently checked
 bounded Euler and Gauss prerequisites, and 89 additional two-square rows.
-Its final evidence ledger is **432 stable_closed, 138 alpha_closed,
+The immutable historical v15 evidence ledger is **432 stable_closed, 138 alpha_closed,
 1,102 body_checked, and one pending_layered_closure**. Its ordered-enrollment
 identity is
 `44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175`;
-its complete edition identity is
+its historical complete edition identity is
 `2f1a097ac0b6821c74cd4da088c396d3b9960ffd43e169f22b4778d5871adc66`.
+
+Alpha v16 preserves that exact ordered-enrollment identity, all 1,673
+specifications, all 5,615 dependency edges, every historical artifact, and
+the unchanged default Stable release. Its current evidence ledger is **432
+stable_closed, 453 alpha_closed, 788 body_checked, and zero pending rows**.
+Exactly 314 previously body-only quadratic-reciprocity ancestors and the
+formerly pending root now have independently checked closed proofs and
+release-authorized checked use. The current complete edition identity is
+`3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10`.
+No Lucas, four-square, Kummer, supplementary-law, two-square, or Bertrand
+body-only theorem gains checked authority from this QR-only promotion.
 
 Body enrollment, independently checked empty-context proof certificates,
 release-authorized checked use, and Stable promotion remain separate. Local

@@ -1,0 +1,1233 @@
+# The Grand Constructive Number-Theory Campaign
+
+Planning baseline: 2026-08-25.
+
+> **Mission.** Build a broad, spectacular, mathematically coherent library of
+> recognizable number-theoretic theorems whose final trusted artifacts are
+> actual derivations in first-order Heyting arithmetic. Every advertised
+> existential theorem must produce its mathematical witness; every
+> obstruction must expose its certificate; every proof must preserve the
+> unchanged intuitionistic kernel and the distinction between candidate,
+> closed, Alpha, and Stable evidence.
+
+This document succeeds
+[`13_constructive_number_theory_frontier.md`](13_constructive_number_theory_frontier.md)
+and extends, rather than replaces, the frozen foundational dossier
+[`ha-number-theory-formalization-campaign-blueprint.md`](../research/arithmetic-library/ha-number-theory-formalization-campaign-blueprint.md).
+Its executable theorem inventory and complete dependency graph are in
+[`campaign.json`](../book/_static/constructive-grand-campaign/campaign.json);
+its browsable interactive graph is
+[`index.html`](../book/_static/constructive-grand-campaign/index.html).
+
+The proposed inventory has **120 major theorem milestones**, grouped into
+**12 families of 10**, supported by **16 reusable proof-engineering tools**
+and **8 existing proof anchors**. Thus its machine-readable research graph
+contains **144 named vertices** and **303 explicit prerequisite edges**.
+The 120 milestones currently split into **102 genuinely open research
+objectives** and **18 existing/revisited constructive foundations or proof
+anchors**. Some milestones deliberately revisit existing
+mathematical roots to require genuine independent closure, stronger variants,
+or correct release promotion; they must not be advertised as 120 previously
+unknown or presently unproved mathematical statements. A goal in this
+blueprint is a significant
+mathematical outcome, not a tactic line, transport lemma, or renamed
+corollary. Its eventual implementation will generally require an entire
+dependency-closed tranche of smaller HA theorem bodies.
+
+The aspiration is a uniquely broad public library of strict object-level HA
+number-theory derivations. A claim such as "largest in history" must await a
+dated, reproducible comparative audit; it is an ambition, not a fact
+established merely by writing a plan.
+
+## 1. Current position: substantial mathematics, honest evidence boundaries
+
+The current immutable release baseline is **Alpha v16**. It preserves every
+sealed v15 theorem specification, enrollment position, dependency, and Stable
+entry; only the independently justified evidence of 315 exact
+quadratic-reciprocity rows changes:
+
+| Evidence or edition | Count | Meaning |
+|---|---:|---|
+| Stable | 432 | Independently checked official Stable theorems. |
+| Alpha v16 total | 1,673 | The unchanged immutable Alpha-v15 theorem ledger with reviewed evidence-only promotions. |
+| `stable_closed` in Alpha | 432 | Stable entries mirrored into Alpha. |
+| `alpha_closed` | 453 | Independently closed Alpha-only entries, including the quadratic-reciprocity root. |
+| `body_checked` | 788 | Authentic dependency-curried checked proof bodies, not closed release authority. |
+| `pending_layered_closure` | 0 | The complete reviewed quadratic-reciprocity closure has been admitted in the new immutable edition. |
+| Checked-use authority | 885 | Exactly `432 + 453`; no unrelated body-only theorem is silently upgraded. |
+| Exact QR-only evidence promotions | 315 | Precisely 314 formerly `body_checked` rows and the formerly pending root. |
+
+The historical sealed **Alpha v15** snapshot remains immutable and auditable:
+its unchanged 1,673 entries were partitioned as 432 `stable_closed`, 138
+`alpha_closed`, 1,102 `body_checked`, and one
+`pending_layered_closure`, giving exactly **570** checked-use entries. Both
+editions retain the same enrollment identity
+`44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175`;
+the reviewed v16 evidence identity is
+`3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10`.
+Its separately sealed current evidence root is
+`142d73d908bd86f52af9b6a1d39a5e11679d1db4f463d3e6f17d5c483f283ee4`.
+Stable remains exactly 432 entries; promoting an Alpha-only theorem does not
+make it Stable.
+
+The following existing roots are campaign anchors rather than claims of
+freshly established release authority:
+
+| Anchor | Reusable result | Exact present boundary |
+|---|---|---|
+| A01 | Quadratic reciprocity. | Complete unchanged-kernel empty-context proof and independent Lean-verified 557-node proof bundle; current Alpha v16 records `alpha_closed` and grants checked use; historical v15 remains immutably pending; not Stable. |
+| A02 | Bertrand's postulate. | Genuine focused constructive root certificates exist; the current Alpha-v16 root remains `body_checked` without checked use. |
+| A03 | Both quadratic supplementary laws. | Current Alpha-v16 dependency-curried `body_checked` roots; first frontier admission remains historically v15. |
+| A04 | Full Kummer carry theorem. | First enrolled in Alpha v14; remains dependency-curried `body_checked` in current v16. |
+| A05 | Complete all-natural two-square classification. | First enrolled in Alpha v15; remains `body_checked` in current v16, not independently closed or Stable. |
+| A06 | Unconditional Lagrange four-square theorem. | First enrolled in Alpha v13; remains `body_checked` in current v16; 80 of 196 campaign rows have experimental closed certificates. |
+| A07 | Complete multidigit Lucas theorem. | First enrolled in Alpha v13; remains `body_checked` in current v16; 33 of 44 campaign rows have experimental closed certificates. |
+| A08 | Primitive Pythagorean forward constructor. | Checked candidate bodies only; inverse classification and Fermat-four descent remain open. |
+
+In particular:
+
+- existing mathematical derivations are reusable proof blueprints;
+- a browser node or Alpha enrollment is not itself empty-context closure;
+- a genuine focused root certificate does not rewrite sealed Alpha evidence;
+  the reviewed QR-only Alpha-v16 promotion is a separate new immutable edition,
+  not an alteration of historical Alpha v15;
+- local experimental closure certificates do not confer checked-use or
+  Stable membership;
+- the completed quadratic-reciprocity root has 54,870 ordinary proof nodes,
+  35,052 proof objects, depth 129, and a separate independently Lean-verified
+  557-node/1,787-edge canonical artifact; its full receipt is
+  `research/arithmetic-library/quadratic-reciprocity-closure-receipt.md`;
+- the presently unproved Pythagorean inverse and Fermat-four strict descent
+  must remain visibly open.
+
+## 2. Fixed object language and statement discipline
+
+The sole trusted mathematical object language remains
+
+```text
+L_HA = { 0, S, +, *, = }
+```
+
+with first-order intuitionistic connectives and quantifiers, equality, the
+existing arithmetic axioms, and genuine HA induction instances. There are no
+new trusted symbols for integers, subtraction, division, exponentiation,
+lists, polynomials, finite fields, valuations, matrices, real numbers,
+complex numbers, elliptic curves, or asymptotic limits.
+
+Every convenient expression in this document is a **conservative display
+abbreviation**. Before it reaches the kernel, it must expand hygienically into
+the fixed language, with independent proofs of totality and functionality
+where those properties are used.
+
+### 2.1 Canonical definitional vocabulary
+
+Representative abbreviations and their intended constructive interfaces are:
+
+```text
+Positive(n)              := exists h. n = S h
+Le(a,b)                  := exists h. h + a = b
+Lt(a,b)                  := exists h. h + S a = b
+Dvd(d,n)                 := exists q. n = d*q
+Prime(p)                 := ~(p = 1) /\ forall a b. p = a*b -> a = 1 \/ b = 1
+Even(n)                  := exists h. n = h+h
+ModEq(m,a,b)             := exists u v. a+m*u = b+m*v
+DivRem(n,d,q,r)          := n = d*q+r /\ Lt(r,d)
+GCD(a,b,g)               := Dvd(g,a) /\ Dvd(g,b)
+                              /\ forall d. Dvd(d,a) -> Dvd(d,b) -> Dvd(d,g)
+Power(p,e,z)             := a beta-coded finite multiplicative history
+PowerValuation(p,n,e)    := e <= n /\ p^e | n
+                              /\ forall k <= n. p^k | n -> k <= e
+Choose(n,k,c)            := the existing recurrence-coded binomial graph
+Factorial(n,f)           := the existing beta-coded finite product graph
+BetaAt(code,scale,i,x)   := the existing witnessed quotient/remainder relation
+Poly(code,d)             := a valid finite coefficient sequence of degree d
+PolyEval(code,x,y)       := witnessed finite evaluation at x
+FiniteField(p,x)         := Prime(p) /\ Lt(x,p)
+SumTwoSquares(n)         := exists x y. n = x*x+y*y
+FourSquares(n)           := exists a b c d. n = a*a+b*b+c*c+d*d
+Signed(z)                := the already frozen canonical signed-natural code
+Rational(q)              := reduced signed numerator and positive denominator
+Matrix(code,r,c)         := a canonical bounded table of signed entries
+ECPoint(p,a,b,P)         := a coded affine point or explicit infinity tag
+                              on a nonsingular finite prime-field curve
+```
+
+The surface formula `PowerValuation(p,n,e)` is not an oracle. Its current
+fully expanded template alone contains approximately 11,910 characters,
+because exponentiation is expressed through beta-coded constant and product
+histories. New work must preserve readable named definitions while retaining
+exact, audited expansion to the trusted kernel.
+
+### 2.2 Mandatory constructive shapes
+
+Prefer one of the following target forms:
+
+```text
+Witness production:
+  forall x. Valid(x) -> exists y. Witness(x,y)
+
+Certified obstruction:
+  forall x. Hypotheses(x) -> ~(Forbidden(x))
+
+Constructive decision:
+  forall x. Valid(x) -> (exists y. Witness(x,y))
+                             \/ (exists c. Obstruction(x,c))
+
+Finite exact count:
+  forall x k. FiniteObject(x) -> Count(x,k)
+                              -> ArithmeticFormula(x,k)
+
+Equivalence:
+  forall x. Hypotheses(x)
+         -> ((P(x) -> Q(x)) /\ (Q(x) -> P(x)))
+
+Finite quantitative approximation:
+  forall precision. Positive(precision)
+    -> exists cutoff. forall n. cutoff <= n
+    -> exists certified_numerators certified_denominators.
+         ExplicitRationalBounds(precision,n,...)
+```
+
+Unrestricted excluded middle, double-negation elimination, Markov's
+principle, countable choice, external CAS computations, a host prover's
+native natural-number theorem, and an unverified asymptotic notation are not
+substitutes for an object-level HA witness or derivation.
+
+## 3. Sixteen shared proof-engineering and mathematics tools
+
+| ID | Tool substrate | Minimum reusable deliverable |
+|---|---|---|
+| T01 | Full HA induction schema. | Checked induction instances with explicit induction predicate and eigenvariable discipline. |
+| T02 | Decidable natural equality. | Witnessed equality case distinction without global excluded middle. |
+| T03 | Witnessed constructive order. | Functional `Le`/`Lt`, monotonicity, boundedness, and strict-descent transport. |
+| T04 | Reviewed Godel beta coding. | Explicit finite sequence access, uniqueness, extension, and bounded decoded histories. |
+| T05 | Bounded search and least witness. | Finite constructive decision, least eligible index, and explicit failure certificate. |
+| T06 | Euclidean division. | Positive-divisor quotient/remainder existence, uniqueness, and normalized arithmetic. |
+| T07 | Bezout and canonical gcd. | Signed witnessed Bezout coefficients, canonical gcd functionality, coprimality. |
+| T08 | Prime divisor extraction. | Every nonunit positive natural yields an explicit prime factor. |
+| T09 | Bounded prime-power valuation. | Exact exponent existence, functionality, multiplicativity, and nonzero boundary. |
+| T10 | Constructive generalized CRT. | Compatibility witnesses, canonical merged residue, and finite extension. |
+| T11 | Coded finite sums and products. | Explicit histories, concatenation, permutation invariance, and exact bounds. |
+| T12 | Finite polynomial coding. | Canonical coefficient vectors, evaluation, derivatives, multiplication, root counting. |
+| T13 | Integer matrices and lattices. | Signed entries, determinants, rank witnesses, finite basis operations. |
+| T14 | Constructive modular inverse. | Actual inverse witness for each verified coprime residue. |
+| T15 | Strong induction and measured descent. | Ordinary HA induction compiled into explicit natural-measure decreases. |
+| T16 | Finite witnessed choice. | Selection over a bounded domain using decidable predicates and explicit output. |
+
+Representation invariants from the existing freeze continue to apply.
+Specifically, foundational finite-list infrastructure cannot circularly use
+CRT-derived beta coding to prove the CRT that was needed to justify that
+coding. Every dependency slice must expose its real chronological construction
+rather than replacing it with a convenient graph edge.
+
+## 4. The twelve mathematical fronts
+
+The JSON companion is the authoritative source for every individual goal's
+formal statement, exact prerequisite IDs, integer layer, feasibility class,
+and rationale. The catalog below is its human mathematical counterpart.
+
+### F01. Divisibility, factorization, and arithmetic functions - G001-G010
+
+This branch turns the already developed divisor infrastructure into a coherent
+constructive arithmetic-function library. Existing division, gcd, and FTA
+results must be marked as reused foundations or independently closed
+strengthenings, never rediscovered as open theorems.
+
+1. **G001 - Euclidean division existence and uniqueness.**
+   `d > 0 -> exists! q r. n = d*q+r /\ r < d`.
+2. **G002 - Canonical gcd with witnessed signed Bezout coefficients.**
+   `exists g u v. GCD(a,b,g) /\ SignedLinearCombination(u,a,v,b,g)`.
+3. **G003 - Euclid's coprime-product lemma.**
+   `Coprime(a,b) -> Dvd(a,b*c) -> Dvd(a,c)`.
+4. **G004 - Effective canonical prime-factorization existence.**
+   `n > 0 -> exists F. CanonicalPrimeFactorization(n,F)`.
+5. **G005 - Literal uniqueness of canonical prime factorization.**
+   `CanonicalPF(n,F) /\ CanonicalPF(n,G) -> F = G`.
+6. **G006 - Euler's totient product formula.**
+   `n > 0 -> Phi(n)*ProductDistinctPrimes(n)
+       = n*ProductDistinctPrimePredecessors(n)`.
+7. **G007 - Constructive Mobius inversion.**
+   `(forall m>0. g(m)=SumDivisors(m,f))
+      -> forall n>0. f(n)=SumDivisors(n,mu(d)*g(n/d))`, with signed
+   function values and witnessed finite divisor sums.
+8. **G008 - Jordan totient and primitive finite tuples.**
+   `n>0 /\ k>0 -> J_k(n)*Product(p^k : Prime(p) /\ p|n)
+       = n^k*Product(p^k-1 : Prime(p) /\ p|n)`, where products run over
+   each distinct prime divisor exactly once.
+9. **G009 - Dirichlet convolution algebra and exact inversion.**
+   `Multiplicative(f) /\ Multiplicative(g) -> Multiplicative(f*g)`;
+   quantify only nonempty coded finite positive-index prefixes or specified
+   HA-provably total integer-valued function codes, prove associativity and
+   the identity, and
+   prove `InvertibleForConvolution(f) <-> f(1)=1 \/ f(1)=-1` over signed
+   integers. Never quantify over arbitrary second-order functions.
+10. **G010 - Squarefree kernels and exact perfect-power detection.**
+    `n > 0 -> exists! s t. Squarefree(s) /\ n=s*t*t`, together with
+    `n>0 /\ k>0 -> (PerfectPower_k(n) <->
+        forall p. Prime(p) /\ p|n -> k | v_p(n))`.
+
+### F02. Congruences, CRT, multiplicative orders, and primitive roots - G011-G020
+
+This family upgrades binary congruence solving into the full finite local
+arithmetic needed for residue algorithms and later algebraic number theory.
+
+1. **G011 - Generalized constructive Chinese remainder theorem.**
+   `forall i,j. ModEq(gcd(m_i,m_j),a_i,a_j)
+      -> exists x. forall i. ModEq(m_i,x,a_i)`.
+2. **G012 - Complete linear congruence criterion and constructor.**
+   `(exists x. ModEq(m,a*x,b)) <-> Dvd(gcd(a,m),b)`.
+3. **G013 - Coprime modular cancellation.**
+   `Coprime(a,m) /\ ModEq(m,a*x,a*y) -> ModEq(m,x,y)`.
+4. **G014 - Euler's theorem for every unit.**
+   `n>0 /\ Coprime(a,n) -> ModEq(n,a^Phi(n),1)`.
+5. **G015 - Minimal multiplicative orders.**
+   `n>0 /\ Coprime(a,n) -> exists! d. OrderMod(n,a,d)`;
+   additionally `OrderMod(n,a,d) -> Dvd(d,Phi(n))`.
+6. **G016 - Carmichael's universal exponent.**
+   `n>0 /\ Coprime(a,n) -> ModEq(n,a^Lambda(n),1)` with exact
+   prime-power and lcm formulas for `Lambda`.
+7. **G017 - Primitive roots of odd prime-power moduli.**
+   `OddPrime(p) /\ k > 0 -> exists g. OrderMod(p^k,g,Phi(p^k))`.
+8. **G018 - Complete classification of cyclic unit groups.**
+   `n>1 -> (PrimitiveRootExists(n) <-> n=2 \/ n=4
+       \/ OddPrimePower(n) \/ TwiceOddPrimePower(n))`. The degenerate
+   modulus-one convention is outside the campaign's `Unit(n,a)` definition.
+9. **G019 - Power equations in finite cyclic unit groups.**
+   `CyclicUnits(n,N) /\ Unit(a,n)
+      -> ((exists x. x^k=a mod n) <-> a^(N/gcd(k,N))=1 mod n)`.
+10. **G020 - Simultaneous polynomial congruences.**
+    For pairwise coprime positive moduli, prove
+    `exists x. forall i. f_i(x)=a_i mod m_i`
+    exactly when each individual congruence has a witnessed root.
+
+### F03. Prime infinitude, prime windows, and effective distribution - G021-G030
+
+The low end of this branch is elementary and already seeded by the prime and
+Bertrand libraries. Full arithmetic-progressions infinitude is a distant,
+explicitly constructive witness theorem, not an immediate corollary.
+
+1. **G021 - Euclid's witnessed infinitude of primes.**
+   `forall B. exists p. Prime(p) /\ B < p`.
+2. **G022 - Effective upper bounds for the `k`-th prime.**
+   `k > 0 -> exists p. NthPrime(k,p) /\ p <= ExplicitPrimeBound(k)`.
+3. **G023 - Constructive binomial-window prime extraction.**
+   `n > 1 -> exists p. Prime(p) /\ n < p /\ p <= n+n`.
+4. **G024 - Iterated Bertrand prime chains.**
+   `n > 0 -> exists p_0,...,p_k.
+      n < p_0 /\ forall i<k. p_i < p_(i+1) < 2*p_i`.
+5. **G025 - Infinitely many primes congruent to `3 mod 4`.**
+   `forall B. exists p. Prime(p) /\ B < p /\ ModEq(4,p,3)`.
+6. **G026 - Infinitely many primes congruent to `1 mod 4`.**
+   `forall B. exists p. Prime(p) /\ B < p /\ ModEq(4,p,1)`.
+7. **G027 - Effective Chebyshev-type prime-counting bounds.**
+   `n >= N_0 -> c_1*n <= Pi(n)*RationalLogUpper(n)
+                    /\ Pi(n)*RationalLogLower(n) <= c_2*n`.
+8. **G028 - Bang-Zsigmondy primitive prime-divisor theorem.**
+   For `Coprime(a,b) /\ a>b>0 /\ n>1`, construct a prime dividing
+   `a^n-b^n` but no earlier `a^j-b^j`, except precisely when
+   `(a,b,n)=(2,1,6)` or when `n=2` and `a+b` is a power of two.
+9. **G029 - An arithmetized elementary prime number theorem.**
+   Freeze the explicit first-order target
+   `forall k>0. exists N. forall n>=N. exists l u s.
+      s>0 /\ RationalLogBracket(n,l,u,s)
+      /\ k*abs(Pi(n)*l-n*s)<=n*s
+      /\ k*abs(Pi(n)*u-n*s)<=n*s`.
+   Here `l/s <= log(n) <= u/s` is itself a finite conservative rational
+   certificate. No analytic oracle, implicit real limit, or unsupported
+   `Pi_2` conservation inference is permitted.
+10. **G030 - Full effective Dirichlet progression witnesses.**
+    `m > 0 /\ Coprime(a,m) -> forall B.
+       exists p. Prime(p) /\ B < p /\ ModEq(m,p,a)`.
+
+### F04. Binomial coefficients, digit carries, and p-adic congruences - G031-G040
+
+Lucas, Kummer, and Legendre already provide unusually valuable seeds here.
+Their corresponding milestones require honest closure or stronger extensions,
+not a false claim that their mathematical bodies are missing.
+
+1. **G031 - Total, functional Pascal/binomial arithmetic.**
+   `exists! c. Choose(n,k,c)` with the exact Pascal recurrence and boundaries.
+2. **G032 - Legendre's exact factorial valuation formula.**
+   `Prime(p) -> v_p(n!) = Sum_{j>=1} floor(n/p^j)`.
+3. **G033 - Full multidigit Lucas theorem.**
+   `Prime(p) /\ Choose(n,k,c)
+       -> c mod p = Product_i Choose(n_i,k_i) mod p`.
+4. **G034 - Full Kummer binomial carry theorem.**
+   `Prime(p) -> v_p(Choose(a+b,a)) = CarryCount(p,a,b)`.
+5. **G035 - Multinomial Kummer theorem.**
+   `Prime(p) -> v_p(Multinomial(n_1,...,n_r))
+      = CarryCountMany(p,n_1,...,n_r)`.
+6. **G036 - Odd-prime lifting-the-exponent formula.**
+   `OddPrime(p) /\ a>b>0 /\ p|(a-b) /\ p∤a*b /\ n>0
+       -> v_p(a^n-b^n)=v_p(a-b)+v_p(n)`.
+7. **G037 - Wolstenholme's congruence.**
+   `Prime(p) /\ p >= 5 -> Choose(2*p-1,p-1) = 1 mod p^3`.
+8. **G038 - Jacobsthal's binomial congruence with an explicit valuation bound.**
+   `Prime(p) /\ p>=5 /\ 0<b<a
+      -> Choose(p*a,p*b) = Choose(a,b) mod p^(3+v_p(a*b*(a-b)))`.
+9. **G039 - Prime-power Lucas unit decomposition.**
+   Under `Prime(p) /\ r>0 /\ k<=n`, construct both the exact valuation and
+   the invertible unit of `Choose(n,k)` modulo `p^r` from finite base-`p`
+   data.
+10. **G040 - Full p-adic multinomial congruence.**
+    Under `Prime(p) /\ r>0`, construct a finite digit-and-carry algorithm
+    computing every multinomial coefficient modulo `p^r`, including all zero
+    and high-valuation branches.
+
+### F05. Quadratic, cubic, quartic, and local reciprocity - G041-G050
+
+The branch begins with the existing quadratic library but requires genuinely
+new Gaussian, Eisenstein, local-symbol, and cyclotomic machinery for its
+higher-power summits.
+
+1. **G041 - Constructive Euler criterion.**
+   `OddPrime(p) /\ p∤a -> Legendre(a,p) = a^((p-1)/2) mod p`.
+2. **G042 - Gauss's finite permutation lemma.**
+   `OddPrime(p) /\ p∤a -> Legendre(a,p)=(-1)^ReflectionCount(p,a)`.
+3. **G043 - Independently closed quadratic reciprocity.**
+   `OddPrime(p) /\ OddPrime(q) /\ p != q
+      -> Legendre(p,q)*Legendre(q,p)=(-1)^(((p-1)/2)*((q-1)/2))`.
+4. **G044 - Both supplementary laws with actual witnesses/obstructions.**
+   `OddPrime(p) -> Legendre(-1,p)=(-1)^((p-1)/2)` and
+   `OddPrime(p) -> Legendre(2,p)=(-1)^((p*p-1)/8)`.
+5. **G045 - Jacobi reciprocity and verified Euclidean evaluation.**
+   `OddPositive(m) /\ OddPositive(n) /\ Coprime(m,n)
+      -> Jacobi(m,n)*Jacobi(n,m)=(-1)^(((m-1)/2)*((n-1)/2))`.
+6. **G046 - Effective odd-prime Hilbert symbol.**
+   Construct `HilbertSymbol_p(a,b)` from signed valuations and explicit unit
+   residue data under `OddPrime(p)` and with both rational arguments nonzero.
+7. **G047 - Cubic reciprocity in Eisenstein arithmetic.**
+   For coprime normalized primary Eisenstein primes away from the ramified
+   prime `3`, prove the exact cubic residue-symbol reciprocity relation.
+8. **G048 - Quartic reciprocity in Gaussian arithmetic.**
+   For coprime normalized primary Gaussian primes away from `1+i`, prove
+   quartic reciprocity with its explicit unit/sign correction.
+9. **G049 - Hilbert's finite product reciprocity law.**
+   For nonzero signed rationals `a,b`, take the canonical duplicate-free
+   finite place set consisting exactly once of infinity, `2`, and every
+   prime dividing their reduced numerators or denominators; verify the actual
+   local symbol at every place and prove
+   `Product_{v in places(a,b)} HilbertSymbol_v(a,b)=1`.
+10. **G050 - Prime-exponent cyclotomic power reciprocity.**
+    For an odd prime exponent `ell`, primary coprime cyclotomic inputs, and
+    explicitly excluded ramification, prove the correct `ell`-power
+    reciprocity relation with all correction factors retained.
+
+### F06. Finite additive combinatorics and zero-sum phenomena - G051-G060
+
+All sets, multisets, subsets, and maps below are finite canonical natural
+codes. Cardinalities, witnesses, and finite polynomial certificates are
+explicit first-order relations.
+
+1. **G051 - Cauchy-Davenport theorem.**
+   `Prime(p) /\ A,B nonempty subsets of F_p
+      -> |A+B| >= min(p,|A|+|B|-1)`.
+2. **G052 - Erdos-Ginzburg-Ziv theorem.**
+   `n>0 /\ Length(S)=2*n-1 -> exists index-subsequence T of S.
+       Length(T)=n /\ Sum(T)=0 mod n`.
+3. **G053 - Dias da Silva-Hamidoune restricted sumset theorem.**
+   `Prime(p) /\ A subset F_p /\ |A|>=2
+       -> |{a+b : a,b in A, a!=b}|
+       >= min(p,2*|A|-3)`.
+4. **G054 - Effective cyclic zero-sum bounds.**
+   Given an explicit valid Olson-type threshold for the chosen finite cyclic
+   regime, construct a nonempty zero-sum subsequence.
+5. **G055 - Combinatorial Nullstellensatz.**
+   For a polynomial over a coded field with total degree `Sum(t_i)`,
+   nonzero coefficient of `Product(X_i^t_i)`, and finite coordinate sets
+   `|S_i|>t_i`, construct a point in `Product(S_i)` at which the polynomial
+   evaluates nonzero.
+6. **G056 - Chevalley-Warning theorem.**
+   `Prime(p) /\ SumDegrees(f_1,...,f_r)<n
+       -> p divides CountCommonZeros_Fp(f_1,...,f_r)`.
+7. **G057 - Davenport constants for valid finite-group classes.**
+   For the canonical invariant-factor decomposition
+   `G = C_(n_1) + ... + C_(n_r)` with `n_i | n_(i+1)`, prove the exact
+   value `1+Sum(n_i-1)` for finite abelian `p`-groups and rank-at-most-two
+   groups; use certified bounds, not that false universal formula, for
+   unrestricted finite abelian groups or arbitrary non-invariant decompositions.
+8. **G058 - Vosper's inverse sumset theorem.**
+   For `Prime(p)`, `A,B subset F_p`, `|A|,|B|>=2`, and
+   `|A+B|=|A|+|B|-1<=p-2`, construct the shared arithmetic progressions
+   with their witnessed nonzero common difference modulo `p`.
+9. **G059 - Freiman's `3k-4` theorem over integer sets.**
+   `|A|=k>=3 /\ |A+A|<=3*k-4
+       -> exists P. ArithmeticProgression(P) /\ A subset P
+                    /\ |P| <= |A+A|-k+1`.
+10. **G060 - Certified finite-field cap-set bound.**
+    For a progression-free `A subset F_3^n`, prove an explicit rational
+    constant `c<3` and a certified bound `|A| <= C*c^n` using finite
+    polynomial-rank witnesses; the safe exact intermediate target is
+    `|A| <= 3*Sum_{j<=floor(2*n/3)} coeff_j((1+x+x*x)^n)`. One entirely
+    rational, cross-multiplied exponential consequence is
+    `10000^n*|A| <= 3*27721^n`.
+
+### F07. Sums of squares, representation counts, and quadratic forms - G061-G070
+
+This branch extends the already constructed two-/four-square roots toward
+representation-count formulas, ternary obstruction, and universal forms.
+
+1. **G061 - Prime two-square representation.**
+   `Prime(p) /\ p=1 mod 4 -> exists x y. p=x*x+y*y`.
+2. **G062 - Complete all-natural two-square criterion.**
+   `SumTwoSquares(n) <-> n=0 \/
+       (n!=0 /\ forall q. Prime(q) /\ q=3 mod 4 -> Even(v_q(n)))`.
+3. **G063 - Jacobi's exact two-square representation formula.**
+   `n>0 -> r_2(n)=4*Sum_{d|n} chi_4(d)`, where `r_2` counts ordered
+   signed integer coordinate pairs, including zero coordinates.
+4. **G064 - Independently closed Lagrange four-square theorem.**
+   `forall n. exists a b c d. n=a*a+b*b+c*c+d*d`.
+5. **G065 - Jacobi's exact four-square representation formula.**
+   `n>0 -> r_4(n)=8*Sum_{d|n, 4∤d} d`, where `r_4` counts ordered
+   signed integer quadruples, including zero coordinates.
+6. **G066 - Legendre's complete three-square theorem.**
+   `(exists x y z. n=x*x+y*y+z*z)
+       <-> ~(exists a b. n=4^a*(8*b+7))`.
+7. **G067 - Gauss's three-triangular-number theorem.**
+   `forall n. exists a b c. n=T(a)+T(b)+T(c)`.
+8. **G068 - Effective reduction of positive binary quadratic forms.**
+   `PositiveDefiniteIntegralForm(Q)
+       -> exists R,U. Reduced(R) /\ Unimodular(U) /\ R=Q[U]`.
+9. **G069 - A valid restricted ternary local-global criterion.**
+   For `n>0` and a primitive positive-definite nondegenerate integral
+   ternary form equipped with a witnessed integral equivalence
+   `Q=U^T*I_3*U`, prove that the real sign condition and all local integral
+   conditions, including the dyadic prime, yield a witnessed global
+   representation. This is the explicitly certified three-square subclass,
+   not a theorem about every genus-one lattice or unrestricted ternary forms.
+10. **G070 - Conway-Schneeberger fifteen theorem.**
+    A positive definite **classically integral** quadratic form is universal
+    exactly when it represents `1,2,3,5,6,7,10,14,15`.
+
+### F08. Continued fractions, Pell equations, and Fermat descent - G071-G080
+
+The arithmetic is performed on canonical signed integers and positive
+denominators. Infinite continued fractions are replaced by finite states,
+explicit period witnesses, and induction over the coded period.
+
+1. **G071 - Total finite continued-fraction expansion.**
+   `p>0 /\ q>0 -> exists C. RationalContinuedFraction(p,q,C)`; the
+   selected first-order coding treats positive rationals, with signed and
+   zero extensions deliberately left outside this milestone.
+2. **G072 - Convergents and best-approximation certificates.**
+   Every canonical convergent comes with determinant, coprimality, and the
+   appropriate bounded-denominator **best approximation of the second
+   kind**, expressed by the signed numerator error `|q*alpha-p|`.
+3. **G073 - Periodicity of nonsquare quadratic continued fractions.**
+   `D>0 /\ ~Square(D) -> exists h t. QuadraticCFPeriod(D,h,t)`.
+4. **G074 - Pell's positive solution theorem.**
+   `D>0 /\ ~Square(D) -> exists x y. y>0 /\ x*x-D*y*y=1`.
+5. **G075 - Exact solvability criterion for negative Pell.**
+   `D>0 /\ ~Square(D)
+      -> (NegativePellSolvable(D) <-> Odd(QuadraticCFPeriodLength(D)))`;
+   never assert that negative Pell is universally solvable.
+6. **G076 - Effective representatives for generalized Pell equations.**
+   `D>0 /\ ~Square(D) /\ SignedNonzero(N) -> exists finite S.
+       EverySolutionOf(x*x-D*y*y=N) is a norm-one-unit translate of some
+       genuine solution s in S`, where the units belong to the explicit
+   order `Z[sqrt(D)]` and `S` is empty exactly when no solution exists.
+7. **G077 - Complete primitive Pythagorean parametrization.**
+   `PrimitiveTriple(a,b,c) -> exists m k.
+       m>k>0 /\ Coprime(m,k) /\ OppositeParity(m,k)
+       /\ {a,b}={m*m-k*k,2*m*k} /\ c=m*m+k*k`.
+   Combine this missing inverse direction with the existing witnessed
+   forward constructor A08 to obtain the complete constructive equivalence.
+8. **G078 - Genuine Fermat exponent-four strict descent.**
+   `x*y*z>0 -> ~(x^4+y^4=z*z)`, hence `x^4+y^4!=z^4`.
+9. **G079 - Fermat exponent-three theorem.**
+   `x*y*z>0 -> ~(x*x*x+y*y*y=z*z*z)`, using audited Eisenstein
+   factorization, the ramified prime over `3`, and explicit descent.
+10. **G080 - Complete Ramanujan-Nagell classification.**
+    `x*x+7=2^n -> n=3 \/ n=4 \/ n=5 \/ n=7 \/ n=15`, with the
+    corresponding explicit witnesses `x=1,3,5,11,181`.
+
+### F09. Gaussian, Eisenstein, and cyclotomic integer arithmetic - G081-G090
+
+Every algebraic integer is a bounded canonical natural code. Ring operations,
+units, associates, norms, primary representatives, ramification, and ideals
+must be definitions with verified HA graphs.
+
+1. **G081 - Gaussian Euclidean division.**
+   `Gaussian(b)!=0 -> exists q r. a=b*q+r /\ Norm(r)<Norm(b)`.
+2. **G082 - Gaussian unique factorization.**
+   Every nonzero Gaussian integer has a canonical prime factorization unique
+   up to the explicitly normalized units.
+3. **G083 - Complete Gaussian prime classification.**
+   Rational primes `2`, `1 mod 4`, and `3 mod 4` are respectively ramified,
+   split, and inert, with witnessed factors in the split case.
+4. **G084 - Eisenstein Euclidean division.**
+   `Eisenstein(b)!=0 -> exists q r. a=b*q+r /\ Norm(r)<Norm(b)`.
+5. **G085 - Eisenstein unique factorization.**
+   Every nonzero Eisenstein integer has a canonical factorization up to its
+   six normalized units.
+6. **G086 - Complete Eisenstein prime classification.**
+   Rational primes `3`, `1 mod 3`, and `2 mod 3` are respectively ramified,
+   split, and inert, with witnessed split factors.
+7. **G087 - Integral cyclotomic polynomial construction.**
+   `n>0 -> x^n-1 = Product_{d|n} Phi_d(x)` with exact integer coefficients.
+8. **G088 - Cyclotomic irreducibility over coded rationals.**
+   `n>0 -> Irreducible_Q(Phi_n)`.
+9. **G089 - Cyclotomic element norms and the unit criterion.**
+   For `n>0`, prove `Norm(1-zeta_n)=Phi_n(1)`: the value is `0` for
+   `n=1`, is `p` when `n=p^k` with `k>0`, and is `1` for non-prime-power
+   `n>1`. Thus `1-zeta_n` is a unit only in the last case, while the
+   prime-power case generates a ramified nonunit.
+10. **G090 - Kummer's Fermat theorem for regular primes.**
+    `OddPrime(p) /\ RegularPrime(p) /\ x*y*z>0
+       -> ~(x^p+y^p=z^p)`; freeze a genuine finite regularity predicate,
+    its ideal/class-group or Bernoulli-numerator bridge, and ramification.
+
+### F10. Finite fields, polynomial factorization, and local lifting - G091-G100
+
+The family treats prime-power fields and local finite precision as finite
+encoded algebra, rather than adding quotient, field, or p-adic primitives to
+the kernel.
+
+1. **G091 - Constructive finite fields of every prime-power order.**
+   `Prime(p) /\ k>0 -> exists F. FiniteFieldCode(F,p^k)`.
+2. **G092 - Cyclicity of finite-field multiplicative groups.**
+   `FiniteFieldCode(F,q) -> exists g. Order_F(g)=q-1`.
+3. **G093 - Squarefree polynomial decomposition in positive characteristic.**
+   For `Prime(p)` and `f!=0`, compute the canonical squarefree factors,
+   explicitly recursing through the inseparable `f'=0` and p-th-root
+   branches.
+4. **G094 - Complete finite-field polynomial factorization.**
+   `f!=0 -> exists factors. IrreducibleFactorization_F(f,factors)`.
+5. **G095 - Simple-root Hensel lifting.**
+   `Prime(p) /\ f(a)=0 mod p /\ f'(a)!=0 mod p
+      -> forall k>0. exists! x mod p^k.
+         x=a mod p /\ f(x)=0 mod p^k`.
+6. **G096 - Certified multiple-root lifting and obstruction.**
+   For `Prime(p)`, an arbitrary root, and positive precision, return either
+   all valid lifts or an explicit finite obstruction; no simple-root
+   uniqueness is presumed.
+7. **G097 - Eisenstein's irreducibility criterion.**
+   `Prime(p) /\ deg(f)>=1 /\ p∤lead(f)
+       /\ (forall i<deg(f). p|coeff_i(f))
+       /\ p*p∤coeff_0(f) -> Irreducible_Q(f)`.
+8. **G098 - Certified Newton-polygon valuation bounds.**
+   Split off the exact zero-root multiplicity `X^v`, omit zero coefficients
+   (equivalently assign them valuation `+infinity`), and construct the exact
+   lower convex polygon using only the remaining nonzero coefficient
+   valuations. Prove that nonzero-root valuations are the negatives of the
+   lower-polygon slopes, with witnessed horizontal-length multiplicities,
+   in the specified finite local extension.
+9. **G099 - Finite-precision Teichmuller representatives.**
+   `Prime(p) /\ k>0 /\ a<p
+       -> exists! t mod p^k. t=a mod p /\ t^p=t mod p^k`.
+10. **G100 - Finite-precision Weierstrass preparation.**
+    Under `Prime(p) /\ k>0 /\ 0<d<M` and explicit distinguished-series
+    coefficient hypotheses, construct a deterministic normalized finite
+    factorization from sufficient **coupled finite** source precision or a
+    specified HA-provably total coefficient-function code. Prove only the
+    correctly normalized finite-output/projection-independence theorem in
+    first-order HA; never quantify over arbitrary infinite series. A residue
+    class modulo `(p^k,T^M)` alone does not determine either factor uniquely.
+
+### F11. Verified algorithms, primality certificates, and cryptography - G101-G110
+
+Mathematical correctness, termination, bit complexity, and release authority
+are separate theorems. No host implementation or cryptographic folklore is a
+trusted proof.
+
+1. **G101 - Euclidean algorithm termination and complexity.**
+   `GCDRun(a,b,trace) -> Length(trace)<=CertifiedBitBound(a,b)`.
+2. **G102 - Verified binary modular exponentiation.**
+   `m>0 /\ ModExpTrace(a,e,m,r,trace) -> r=a^e mod m`, with explicit fuel.
+3. **G103 - Pratt primality-certificate correctness.**
+   `ValidPrattTree(n,C) -> Prime(n)`.
+4. **G104 - Pocklington certificate correctness.**
+   Exact witnessed factorization and coprimality conditions with a
+   sufficiently large known factor of `n-1` imply `Prime(n)`.
+5. **G105 - AKS primality algorithm correctness.**
+   `AksAccept(n) <-> Prime(n)`; polynomial bit complexity is a separately
+   formulated theorem, not inferred from correctness.
+6. **G106 - Tonelli-Shanks square-root construction.**
+   `OddPrime(p) /\ Legendre(a,p)=1 -> exists r. r*r=a mod p` with an
+   explicit decreasing finite-state trace.
+7. **G107 - Cornacchia's representation algorithm.**
+   For `Prime(p) /\ p=1 mod 4`, construct a witnessed square root of `-1`
+   modulo `p` and a complete verified Cornacchia Euclidean trace producing
+   `p=x*x+y*y`. This milestone is the rigorously supported prime/two-square
+   specialization, not a claimed complete general-modulus algorithm; any
+   future global nonrepresentation certificate additionally requires
+   exhaustive verification of every relevant modular-root branch.
+8. **G108 - RSA correctness under its genuine hypotheses.**
+   `N=p*q /\ p!=q /\ Prime(p) /\ Prime(q)
+      /\ e*d=1 mod Phi(N) /\ Coprime(m,N)
+      -> (m^e)^d=m mod N`.
+9. **G109 - Rabin roots and constructive CRT recombination.**
+   For distinct Blum primes and a unit quadratic residue modulo `p*q`,
+   construct exactly four distinct square roots and prove completeness.
+10. **G110 - Elliptic-curve primality-certificate soundness.**
+    `ValidECPPCertificate(n,C) -> Prime(n)` with all curve, order, point,
+    and recursive subcertificate hypotheses checked.
+
+### F12. Elliptic arithmetic, lattices, and constructive arithmetic geometry - G111-G120
+
+This family is intentionally distant. Finite prime-field statements are
+arithmetizable; that fact alone does not prove that a convenient high-level
+algebraic-geometry proof conservatively eliminates to HA.
+
+1. **G111 - Elliptic-curve group law over finite prime fields.**
+   `Prime(p) /\ p>3 /\ Nonsingular(a,b,p)
+      -> AbelianGroup(ECPoints(p,a,b),O,Add)`.
+2. **G112 - Hasse's finite-field point-count bound.**
+   `Prime(p) /\ p>3 /\ Nonsingular(E,p) /\ PointCount(E/F_p,N)
+       /\ SignedDiff(p+1,N,t) -> t*t<=4*p`.
+3. **G113 - Finite Weil pairing and nondegeneracy.**
+   `Prime(p) /\ p>3 /\ Nonsingular(E,p) /\ Prime(ell) /\ ell!=p
+       -> exists pairing.
+       Bilinear /\ Alternating /\ Nondegenerate` on explicitly encoded
+   `ell`-torsion in a finite extension containing all the required torsion
+   points and `ell`-th roots of unity.
+4. **G114 - Schoof point counting.**
+   For `Prime(p) /\ p>3 /\ Nonsingular(E,p)`, construct a certified exact
+   `N=#E(F_p)` through division polynomials, Frobenius traces, and CRT;
+   prove any advertised polynomial bit bound separately.
+5. **G115 - Constructive LLL lattice reduction.**
+   For a full-rank integer basis and rational `1/4<delta<1`, produce a
+   `delta`-LLL-reduced equivalent basis and a decreasing termination measure.
+6. **G116 - Effective Minkowski theorem for rational polytopes.**
+   A full-dimensional bounded convex **rational polytope centrally symmetric
+   about the origin**, together with a full-rank lattice and certified volume
+   `>2^d*abs(det(L))`, yields an actual nonzero lattice point.
+7. **G117 - Explicit elliptic two-descent in an audited valid class.**
+   For explicitly nonsingular curves satisfying the selected rational
+   2-torsion hypotheses, compute the finite squareclass obstruction map.
+8. **G118 - Effective finite 2-Selmer enumeration.**
+   In the same audited rational-2-torsion curve class as G117, construct a
+   finite list of valid Selmer squareclasses using explicit local tests at
+   the real place, the dyadic prime, all discriminant primes, and all
+   coefficient-denominator primes.
+9. **G119 - Rational elliptic zeta function over finite fields.**
+   For `Prime(p)`, `p>3`, a nonsingular short-Weierstrass curve, and signed
+   `t=p+1-#E(F_p)`, prove
+   the first-order-HA-expressible, second-order recurrence
+   `s_0=2 /\ s_1=t /\ s_(r+2)=t*s_(r+1)-p*s_r`
+   and, for every `r>=1`, `#E(F_(p^r))=p^r+1-s_r`, equivalent to the usual
+   rational zeta form without inventing a field `F_(p^0)`.
+10. **G120 - Weak Mordell-Weil via a computable finite Selmer bound.**
+    Construct the finite computable 2-Selmer superset and prove an explicit
+    injection `E(Q)/2E(Q) -> Sel_2(E)` under reviewed curve assumptions.
+    Deduce finiteness without claiming to compute exact quotient cosets,
+    the full rational-point group, its generators, or its rank.
+
+## 5. Macro-DAG: how the entire mathematics fits together
+
+The following graph is an explanatory **phase-split family reduction**. The
+JSON companion contains all exact theorem/tool/anchor edges. Reciprocity,
+algebraic arithmetic, Diophantine results, and elliptic algorithms are split
+into earlier and later phases so their genuine cross-family prerequisites do
+not disappear into an artificial cycle. An arrow means that at least one
+flagship in the target phase uses a substantial source-phase outcome; it does
+not claim every theorem in a family depends on every other theorem.
+
+```mermaid
+flowchart TD
+    HA["Strict first-order HA kernel"] --> TOOLS["T01-T16: witnessed arithmetic, coding, descent"]
+    TOOLS --> F01["F01: divisibility and factorization"]
+    TOOLS --> F02["F02: congruences, CRT, orders"]
+    TOOLS --> F04["F04: binomial and p-adic combinatorics"]
+    TOOLS --> F06["F06: finite additive combinatorics"]
+    TOOLS --> F10["F10: polynomials and finite fields"]
+    TOOLS --> F12A["F12a: finite integer lattices"]
+
+    F01 --> F03["F03: prime distribution"]
+    F01 --> F07A["F07a: two-/four-square foundations"]
+    F01 --> F08A["F08a: Pell and Pythagorean foundations"]
+
+    F02 --> F03
+    F02 --> F05A["F05a: quadratic reciprocity"]
+    F02 --> F10
+    F04 --> F06
+    F04 --> F10
+    F10 --> F05A
+    F10 --> F11A["F11a: classical certified algorithms"]
+
+    F05A --> F07A
+    F05A --> F09A["F09a: Gaussian and Eisenstein rings"]
+    F10 --> F09A
+    F07A --> F08A
+    F06 --> F12A
+
+    F09A --> F05B["F05b: cubic and quartic reciprocity"]
+    F09A --> F09B["F09b: cyclotomic arithmetic"]
+    F09A --> F08B["F08b: Fermat exponent-three descent"]
+    F08A --> F08B
+    F12A --> F07B["F07b: advanced quadratic forms"]
+    F09A --> F07B
+
+    F10 --> F12B["F12b: elliptic groups, Hasse, Schoof"]
+    F11A --> F12B
+    F12A --> F12B
+    F12B --> F11B["F11b: elliptic primality certificates"]
+
+    F03 --> SUMMIT["Arithmetic, algorithmic, algebraic, and geometric summits"]
+    F05B --> SUMMIT
+    F07B --> SUMMIT
+    F08B --> SUMMIT
+    F09B --> SUMMIT
+    F11B --> SUMMIT
+    F12B --> SUMMIT
+```
+
+The graph is deliberately a DAG: apparent feedback between advanced themes
+must be resolved into separately named, earlier foundational theorems rather
+than a circular family-level inference.
+
+## 6. Thirteen proof-engineering layers
+
+### Layer 0 - trust, encoding, and finite decision
+
+Freeze the unchanged HA object language, release evidence vocabulary,
+induction certificates, canonical signed naturals, witnessed order, finite
+choice, bounded search, and noncircular sequence representations.
+
+**Exit gate:** every convenience predicate has a conservative expansion and
+every finite decision returns an explicit witness or obstruction.
+
+### Layer 1 - division, gcd, Bezout, primes, and descent
+
+Consolidate Euclidean division, canonical gcd/lcm, extended Euclid, prime
+extraction, divisor cancellation, strong induction, and decreasing natural
+measures.
+
+**Exit gate:** linear Diophantine witnesses, prime divisors, and all strict
+decreases are available without classical least-counterexample reasoning.
+
+### Layer 2 - finite residues, CRT, valuations, and exact products
+
+Build canonical finite residue tables, modular inverses, generalized finite
+CRT, valuation transport, exact finite products, factorials, and canonical
+divisor/prime lists.
+
+**Exit gate:** congruence problems and finite multiplicative data are
+algorithmic, with no hidden quotient types or choice principles.
+
+### Layer 3 - finite polynomial algebra and cyclic structures
+
+Establish coefficient coding, polynomial evaluation, polynomial division
+over a prime field, finite root bounds, multiplicative orders, and the cyclic
+structure needed for primitive roots.
+
+**Exit gate:** the project can reason about roots, orders, and field
+operations using only bounded natural witnesses.
+
+### Layer 4 - reusable arithmetic functions and digit arithmetic
+
+Develop Euler's totient, Mobius-style finite sums, divisor functions,
+convolution, base-`p` digit streams, valuation identities, multinomial
+coefficients, and exact carry witnesses.
+
+**Exit gate:** theorems about digits, products, coefficients, and divisor
+sums share one audited finite-sum/product substrate.
+
+### Layer 5 - classical local number theory
+
+Complete primitive-root classifications, Hensel's simple-root lifting,
+Jacobi symbols, Euler criteria, square roots modulo primes and prime powers,
+and effective residue-symbol algorithms.
+
+**Exit gate:** every positive residue assertion computes its root and every
+negative assertion supplies a verified obstruction.
+
+### Layer 6 - additive methods, prime-generation, and first form theorems
+
+Develop finite sumsets, Cauchy-Davenport-style inequalities, zero-sum
+arguments, elementary arithmetic-progressions prime-generation routes,
+polygonal-number identities, and quantitative binomial estimates.
+
+**Exit gate:** no infinitary compactness or analytic limit enters a theorem
+advertised as elementary or immediately ready.
+
+### Layer 7 - factor rings, finite extensions, and representation counts
+
+Construct Gaussian and Eisenstein signed-pair arithmetic, exact norm
+multiplication, constructive division, factor extraction, finite field
+extensions, and counting formulas for represented integers.
+
+**Exit gate:** algebraic objects are canonical natural codes with checked
+operations and explicit divisibility witnesses.
+
+### Layer 8 - continued fractions and deep Diophantine descent
+
+Build finite continued-fraction states, periodic-state witnesses, Pell
+solutions, primitive Pythagorean inverse classification, and genuine
+strictly-decreasing Fermat-four counterexample constructors.
+
+**Exit gate:** the currently open inverse and descent premises have actual
+proofs; no conditional theorem is described as unconditional.
+
+### Layer 9 - higher reciprocity and arithmetic geometry substrate
+
+Use finite residue-ring structure, Gaussian/Eisenstein arithmetic, power
+residues, finite modules, matrices, and lattices to formulate constructive
+cubic/quartic reciprocity and finite elliptic-curve group laws.
+
+**Exit gate:** extensions remain conservative encodings; no ideal, quotient,
+field, or point operation is added as a kernel primitive.
+
+### Layer 10 - major representation, lattice, and certified-algorithm results
+
+Attempt three-square classification only after choosing a genuinely
+constructive elementary route; build lattice reduction, point counting,
+high-quality primality certificates, and exact finite curve algorithms.
+
+**Exit gate:** every computational procedure ships with proof-producing
+correctness and a termination measure; every exceptional case is explicit.
+
+### Layer 11 - difficult arithmetic and algebraic summits
+
+Approach Jacobi's representation formulas, advanced reciprocity, primitive
+divisor theorems, regular-prime Fermat implications, strong prime-generation
+estimates, and finite elliptic bounds only after all named prerequisites
+close.
+
+**Exit gate:** each summit owns a feasibility RFC, a dependency-closed
+statement freeze, positive/mutation tests, and a resource-bounded closure
+plan.
+
+### Layer 12 - spectacular synthesis, comparative audit, public atlas
+
+Integrate the independent families into a searchable, proof-explorable,
+witness-producing atlas of strict-HA number theory. Long-range analytic
+summits, if selected, must first receive a complete conservative encoding of
+the required rational approximation apparatus.
+
+**Exit gate:** reproducible independent closure, immutable release promotion,
+full prior-art audit, public human-readable proofs, and honest evidence
+metadata across the atlas.
+
+The actual dispatch order is the canonical graph's strictly increasing layer
+order. The audited inventory below includes tools and existing anchors in the
+vertex count, while the objective count tracks only the 120 theorem goals.
+
+| Layer | Vertices | Theorem objectives | Representative earliest objectives |
+|---|---:|---:|---|
+| 0 | 3 | 0 | Core strict-HA foundations |
+| 1 | 4 | 0 | Finite coding and decision infrastructure |
+| 2 | 5 | 1 | G001 |
+| 3 | 8 | 4 | G002, G021, G031, G071 |
+| 4 | 8 | 6 | G003, G004, G012, G013, G101 |
+| 5 | 13 | 9 | G005, G011, G022, G025, G032 |
+| 6 | 11 | 9 | G006, G023, G024, G034, G042 |
+| 7 | 17 | 16 | G007, G010, G014, G026, G033 |
+| 8 | 21 | 21 | G008, G015, G027, G035, G045 |
+| 9 | 16 | 16 | G009, G016, G037, G046, G057 |
+| 10 | 18 | 18 | G017, G019, G028, G038, G039 |
+| 11 | 11 | 11 | G018, G020, G029, G040, G049 |
+| 12 | 9 | 9 | G030, G050, G060, G070, G080 |
+| **Total** | **144** | **120** | Every prerequisite occurs in an earlier layer |
+
+## 7. Immediate campaigns and long-range summits are different promises
+
+### 7.1 First execution wave: close existing mathematical liabilities
+
+1. **Completed:** independently close the layered QR root and admit its exact
+   315-row dependency-closed checked-use promotion in immutable Alpha v16,
+   without changing Stable or historical Alpha v15.
+2. Convert genuine Bertrand focused certificates into a correctly reviewed,
+   dependency-closed immutable release promotion.
+3. Close the remaining **11 Lucas** campaign obligations.
+4. Close the remaining **116 four-square** campaign obligations.
+5. Plan an independent root-closure slice for the all-natural two-square
+   theorem.
+6. Produce the missing primitive Pythagorean inverse constructor.
+7. Produce the missing strictly decreasing Fermat-four descent constructor.
+8. Repair human-readable display of giant tactic-local propositions by using
+   conservative definition sharing instead of expanding a `PowerValuation`
+   predicate tens of thousands of characters inside a proof line.
+
+These actions strengthen existing truth claims before the campaign acquires
+new visible flagship labels.
+
+### 7.2 Second execution wave: high return from existing foundations
+
+- finite CRT and arithmetic-function strengthening;
+- Jacobi-symbol definition, multiplicativity, reciprocity algorithm;
+- Tonelli-Shanks and Cornacchia correctness;
+- finite polynomial root bound and primitive roots for prime fields;
+- simple Hensel lifting and roots modulo prime powers;
+- valuation lifting with correctly stated exceptional `p=2` conditions;
+- Lucas/Kummer multinomial and carry extensions;
+- primitive Pythagorean inverse, Fermat exponent four, and Pell infrastructure;
+- Gaussian integer Euclidean division and norm factorization;
+- constructive prime-generation families with genuinely elementary proofs.
+
+### 7.3 Third execution wave: breadth with shared finite machinery
+
+- Cauchy-Davenport, zero-sum, and finite additive combinatorics;
+- Jacobi two-/four-square counting formulas;
+- Eisenstein arithmetic and representation by `x*x + 3*y*y`;
+- finite fields of prime-power order and polynomial irreducibility witnesses;
+- deterministic certificate-based primality and factor extraction;
+- finite quadratic forms, reduced-form enumeration, and continued fractions;
+- explicit point addition and scalar arithmetic on nonsingular prime-field
+  elliptic curves.
+
+### 7.4 Summit wave: feasible only after additional audited infrastructure
+
+- constructive cubic and quartic reciprocity;
+- Legendre's complete three-square classification;
+- Bang-Zsigmondy with every exceptional pair stated explicitly;
+- regular-prime Fermat criteria and finite cyclotomic arithmetic;
+- fully certified AKS correctness;
+- Hasse's elliptic-curve point-count bound;
+- Schoof-style exact polynomial-time point counting;
+- genuinely effective full Dirichlet progression results;
+- arithmetized elementary prime-number-theorem bounds.
+
+The last two are **not** promised as quick consequences of the current
+library. Standard existing formalizations use sophisticated analytic
+infrastructure. To remain in strict HA they need either a different
+fully constructive elementary argument with computable bounds, or a major
+separately reviewed conservative arithmetization of the required analysis.
+
+### 7.5 Explicit mathematical and constructive no-go checks
+
+Every implementation review must reject the following tempting but false or
+unsupported shortcuts:
+
+- `Jacobi(a,n)=1` does **not** imply that `a` is a square modulo composite
+  `n`; the negative Jacobi value supplies only a one-direction obstruction.
+- Negative Pell is not universally soluble; its exact criterion is the odd
+  period of the continued fraction for a positive nonsquare.
+- The formula `D(G)=1+Sum(n_i-1)` is not a valid theorem for arbitrary
+  finite abelian groups; retain the stated `p`-group/rank-two hypotheses.
+- Primitive roots occur only for the explicitly classified moduli; units
+  modulo an arbitrary composite do not form a cyclic group.
+- Three-square sufficiency is not an immediate consequence of the existing
+  four-square theorem.
+- Prime valuations always quantify over genuine prime divisors; replacing a
+  prime by an arbitrary composite divisor invalidates the parity criteria.
+- Exponent valuations are undefined on zero, so lifting-the-exponent,
+  Lucas-unit, and square-extraction statements need their nonzero boundaries.
+- `1-zeta_(p^k)` has norm `p` and is **not** a cyclotomic unit.
+- Finite independent `(p,T)` truncation does not determine a Weierstrass
+  factorization uniquely; sufficient coupled precision must be explicit.
+- Weak Mordell-Weil finiteness and a computable finite Selmer overgroup do
+  not supply an algorithm for rational-point rank, exact quotient
+  representatives, or full Mordell-Weil generators.
+- Hasse and Schoof need nonsingularity, finite extension/division-polynomial
+  infrastructure, and, for complexity claims, a separately proved bit-cost
+  model.
+- Goldbach, twin primes, unrestricted prime-gap conjectures, BSD, and
+  unrestricted Fermat/Wiles are **not** presented as available campaign
+  theorems or consequences of finite arithmetizability.
+
+Arithmetizing a statement is not the same as proving it in HA. Even when a
+result is known to admit a weak-arithmetic proof, the campaign still needs a
+concrete, independently checkable object-level derivation.
+
+### 7.6 Flagship priority tranches and dependency-safe dispatch
+
+The following tranches express scientific priority, not a literal execution
+sequence: a listed flagship may depend on goals named in a later-priority
+row. Actual dispatch always recursively closes every predecessor in the
+canonical JSON DAG first, processes strictly increasing layers `0,...,12`,
+and uses tranche preference only to order independent objectives within the
+same layer. Every one of the 120 goals is scheduled by this topological rule;
+the rows highlight priorities and are not an exhaustive coverage index.
+
+| Priority | Concrete objectives | Mathematical reason |
+|---|---|---|
+| 01 | A01-A07 closure/release slices; G043, G062, G064, G033-G034. | Stop conflating existing complete bodies with independent checked-use authority. |
+| 02 | G077 followed by G078. | The missing primitive-triple inverse is the natural strict-descent entry to genuine Fermat four. |
+| 03 | G045, G106, G107. | Quadratic reciprocity plus supplementary laws immediately support Jacobi, modular roots, and binary-form algorithms. |
+| 04 | G001-G005 and G011-G016. | Reuse canonical gcd, factorization, CRT, and orders after recursively closing their exact package prerequisites. |
+| 05 | G095-G096 and the quadratic portions of G020. | Local roots and finite CRT become a reusable prime-power decision surface. |
+| 06 | G031-G040, prioritizing G035-G038. | Existing Lucas/Kummer/factorial infrastructure makes multinomial, LTE, and Wolstenholme unusually attractive. |
+| 07 | G006-G010. | Totient, Mobius, convolution, and valuation kernels power both prime-distribution and finite-group tracks. |
+| 08 | G091-G094, then G017-G019. | Finite polynomial root bounds and field-unit cyclicity precede honest primitive-root classifications. |
+| 09 | G071-G075. | Finite continued fractions yield periodic quadratic states and genuinely constructive Pell solutions. |
+| 10 | G081-G083, then G063. | Gaussian division and prime splitting explain two-square representation counts. |
+| 11 | G084-G086, then G079. | Eisenstein Euclidean arithmetic and the prime above three are prerequisites for exponent-three descent. |
+| 12 | G051-G057. | A shared finite-set/polynomial substrate opens broad additive-combinatorics visibility. |
+| 13 | G061-G065. | Complete form roots and representation formulas create an exceptionally recognizable public atlas. |
+| 14 | G066-G070. | Ternary sufficiency precedes its three-triangular corollary; advanced local/global forms require a separately reviewed constructive route. |
+| 15 | G041-G048. | Cubic/quartic reciprocity becomes legitimate only after primary Gaussian/Eisenstein arithmetic exists. |
+| 16 | G087-G089 and G050. | Cyclotomic values, irreducibility, ramification, and higher reciprocity form a deep coherent algebraic prerequisite. |
+| 17 | G101-G110, splitting correctness from bit complexity. | Proof-producing computational number theory supplies executable public examples and certificate benchmarks. |
+| 18 | G027, G028, G029, G030. | Quantitative prime bounds and primitive divisors precede the audited analytic-estimate infrastructure; arithmetized PNT precedes the chosen Dirichlet implementation, without claiming ordinary PNT alone implies progression-wise infinitude. |
+| 19 | G111, G113, G115-G116, then G112/G114. | Verified elliptic groups, finite extensions, pairings, and lattices precede Hasse/Schoof. |
+| 20 | G090 and G117-G120. | Attempt regular-prime Fermat only after cyclotomic/class machinery; keep arithmetic geometry within finite descent/Selmer bounds and never promise unsupported rank computation. |
+
+Independent tranches may proceed concurrently only when their exact
+transitive dependencies and memory budgets are disjoint or their shared
+premises are independently closed and explicitly charged to the resource
+envelope.
+
+## 8. Mandatory theorem-package contract
+
+Every major goal `Gnnn` eventually ships as the following package:
+
+1. **Statement freeze:** a named human theorem, conservative defined formula,
+   exact expanded first-order AST, alpha-normal form, and SHA-256 identity.
+2. **Hypothesis audit:** positivity, primality, coprimality, nonsingularity,
+   exceptional parameters, finite bounds, and all zero boundaries explicitly
+   present.
+3. **Dependency manifest:** exact direct predecessors and independently
+   verified acyclic transitive closure.
+4. **Mathematical note:** a human-readable proof with definitions, diagrams,
+   and a transparent account of any classical-looking reasoning.
+5. **Constructive content:** actual witnesses, obstruction certificates,
+   finite decisions, and executable examples when the theorem provides them.
+6. **Candidate receipt:** a genuinely kernel-checked dependency-curried proof
+   body, never represented as a closed theorem.
+7. **Closure receipt:** an unchanged-kernel empty-context certificate with
+   explicit structural-node, object, depth, memory, and replay measurements.
+8. **Mutation suite:** false conclusion, changed hypothesis, swapped
+   dependency, malformed witness, and proof-body mutations rejected.
+9. **Presentation receipts:** definition-aware statement and every local
+   proposition proven AST-equivalent to the trusted expanded formula.
+10. **Release evidence:** immutable versioned Alpha enrollment, later checked
+    use, and eventual Stable promotion only when the corresponding gates have
+    actually been completed.
+11. **Prior-art note:** named existing formalizations, their foundations, the
+    strict-HA comparison, search date, and nonexaggerated novelty wording.
+12. **Public explorer:** full theorem map, definitions, exact/canonical proof
+    editions, dependency graph, witness examples, and evidence labels.
+
+## 9. Formula sharing, proof sharing, and memory-safe scaling
+
+The existing TS003F two-square theorem illustrates why scaling is a serious
+engineering issue: its compact defined statement has **260 characters**, its
+fully expanded kernel statement has **21,670 characters**, and two local
+`have` propositions have **21,622 characters each**. Current display safety
+policy skips propositions larger than **2,400 characters**, leaving readable
+pages with giant raw formulas.
+
+The grand campaign therefore needs independent work packages for:
+
+1. hygienic conservative definition registration and exact expansion;
+2. definition-aware compaction of large local tactic propositions;
+3. content-addressed formula DAGs rather than repeated source inlining;
+4. layered retained `Cut` certificates rather than naive recursive expansion;
+5. explicit sharing of closed Stable premises in mixed closure packages;
+6. bounded dependency-ready microbatches and deterministic proof envelopes;
+7. exact peak-memory/structural-node/object-depth accounting;
+8. separate human mathematical statements, canonical defined formulas, and
+   trusted expanded kernel receipts;
+9. fail-closed status propagation through the entire theorem dependency DAG;
+10. local proof exploration without launching an unbounded root replay.
+
+The existing workstation limits remain binding until a specifically reviewed
+RFC changes them:
+
+```text
+maximum closure microbatch: 16 proof bodies
+maximum structural nodes:   125,000
+maximum proof objects:       25,000
+```
+
+No automation may claim a theorem closed merely because a renderer,
+certificate hash, graph transitive reduction, or host-level computation
+looks plausible.
+
+## 10. Comparative positioning and source discipline
+
+The comparison target is not "larger than all theorem libraries." Mature
+systems such as Lean/mathlib, Isabelle/AFP, Rocq/MathComp, Mizar, and
+Metamath contain extensive and often much more mature number theory.
+
+The scientifically meaningful differentiation is narrower:
+
+> A broad public corpus of individually inspectable, dependency-tracked,
+> constructively witnessed **strict first-order HA object-theory proofs**,
+> replayed by an unchanged intuitionistic arithmetic kernel and accompanied
+> by human/executable proof exploration.
+
+A theorem already available in a classical higher-order logic, in dependent
+type theory, or constructively over a host prover's native naturals is not
+thereby available as a strict object-level HA derivation. Conversely, the
+absence of a readily located HA artifact is not a proof of historical
+priority.
+
+The following primary-source baseline was checked while preparing this
+campaign:
+
+1. [Lean/mathlib's quadratic reciprocity documentation](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/LegendreSymbol/QuadraticReciprocity.html)
+   already contains extensive Legendre-symbol and quadratic reciprocity
+   mathematics. The new claim, if earned, concerns object-level strict HA
+   evidence, not the first formal proof of quadratic reciprocity.
+2. [Lean/mathlib's Fermat exponent-four development](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/FLT/Four.html)
+   and its [Fermat exponent-three cyclotomic development](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/FLT/Three.html)
+   make the real dependency difference visible: exponent three uses
+   cyclotomic/Eisenstein and ramification machinery, not merely elementary
+   residue arithmetic.
+3. [Lean/mathlib's primes-in-arithmetic-progressions development](https://leanprover-community.github.io/mathlib4_docs/Mathlib/NumberTheory/LSeries/PrimesInAP.html)
+   develops full Dirichlet results using sophisticated L-series and analytic
+   tools. The desired strict-HA theorem needs its own constructive,
+   conservatively arithmetized route.
+4. [The Isabelle Archive of Formal Proofs three-square theorem](https://isa-afp.org/entries/Three_Squares.html)
+   explicitly depends on Dirichlet-style analytic infrastructure. Four
+   squares alone does not supply its missing constructive sufficiency.
+5. [The Isabelle AFP prime-number theorem](https://isa-afp.org/entries/Prime_Number_Theorem.html)
+   exhibits the substantial analytic apparatus of an existing mature proof;
+   a future HA campaign must first freeze exact rational asymptotic
+   statements and separate every conservative-analysis obligation. The
+   separate [formal elementary Selberg proof](https://arxiv.org/abs/cs/0509025)
+   and [Metamath formalizations of the prime number theorem and Dirichlet's
+   theorem](https://arxiv.org/abs/1608.02029) are direct prior art for
+   G029-G030. The goal is not the first formal elementary PNT.
+6. [Rocq/MathComp's finite-field library](https://math-comp.github.io/htmldoc_2_2_0/mathcomp.field.finfield.html)
+   already constructs finite fields of prime-power order constructively.
+   A strict first-order HA certificate would be a different proof target,
+   not the first constructive finite-field formalization.
+7. [Metamath's intuitionistic four-square theorem](https://us.metamath.org/ileuni/4sq.html)
+   and its [intuitionistic Pythagorean-triple theorem](https://us.metamath.org/ileuni/pythagtrip.html)
+   demonstrate existing constructive formal prior art. Their displayed
+   supporting intuitionistic set-theory infrastructure is not the same as
+   an unchanged first-order HA-only checker.
+8. [The formalized Fermat theorem for regular primes](https://arxiv.org/abs/2410.01466)
+   already establishes the regular-prime result in Lean, using substantial
+   algebraic-number-theory infrastructure. The [official full Fermat's Last
+   Theorem project](https://github.com/ImperialCollegeLondon/FLT) documents
+   the much larger ongoing unrestricted formalization program.
+9. [The Isabelle AFP elliptic-curve group-law development](https://isa-afp.org/entries/Elliptic_Curves_Group_Law.html)
+   is direct prior art for the finite elliptic-group track, while still not
+   constituting a strict object-level HA arithmetic certificate.
+10. [Jeremy Avigad's analysis of number theory and elementary arithmetic](https://www.andrew.cmu.edu/user/avigad/Papers/elementary.pdf)
+    discusses how major analytic-number-theoretic statements can be treated
+    arithmetically. It also explains why a naive appeal to
+    `Pi_2` conservativity does not justify the natural `Pi_3` formulation of
+    the prime number theorem. Arithmetizability, weak-theory provability,
+    and possession of an independently checked HA certificate are different
+    claims.
+11. [Bjorn Poonen's weak Mordell-Weil notes](https://math.mit.edu/~poonen/f01/weakmw.pdf)
+    distinguish the computable finite Selmer group from the finite but not
+    necessarily computable quotient `E(Q)/mE(Q)`. This is why G120 promises
+    a certified Selmer upper bound and injection, never uniformly computed
+    Mordell-Weil generators or rank.
+
+Every novelty statement requires the repository's existing audit protocol:
+exact theorem and foundation query, inspection of likely formal libraries,
+classification by logical target, archive of search date and commit, and an
+explicit correction channel.
+
+## 11. Definition of a successful final atlas
+
+The final public research artifact should make all of the following visible:
+
+- at least 120 named major number-theoretic goals, each linked to its true
+  proof layer and implementation status;
+- exact first-order HA statements with reversible human-readable notation;
+- all existing and future theorem dependencies as an independently checked
+  acyclic graph;
+- mathematical proof families spanning elementary arithmetic, prime
+  distribution, residues, reciprocity, additive combinatorics, quadratic
+  forms, Diophantine equations, finite fields, algebraic arithmetic,
+  certified algorithms, lattices, and finite elliptic curves;
+- explicit constructive algorithms and obstruction witnesses;
+- authentic candidate, closed, Alpha, checked-use, and Stable evidence;
+- per-theorem prior-art comparisons and cautious novelty claims;
+- reproducible offline builds and bounded independent replay;
+- detailed source receipts, mutation tests, and human mathematical PDFs;
+- public interactive proof exploration with the original definition-aware
+  proof-library design language.
+
+Spectacle comes from breadth, mathematical quality, reusable constructive
+ideas, transparent foundations, and proof authenticity - never from
+counting unchecked statements or presenting a plan as an accomplished
+formalization.

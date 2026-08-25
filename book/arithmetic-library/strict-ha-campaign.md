@@ -20,7 +20,7 @@ It separates three facts which are easy to blur in an informal development:
 - its complete empty-context certificate may check while it remains isolated;
 - only an explicit promotion makes it a Stable theorem.
 
-```{admonition} Current Alpha v2 / Stable status (2026-08-09)
+```{admonition} Historical Alpha v2 and current Alpha v16 / Stable status
 :class: important
 The tables and dated checkpoints below preserve the campaign's historical
 `public`/`private` admission boundary. They are not the current library
@@ -28,12 +28,15 @@ membership ledger. The canonical Alpha edition now contains every reviewed row
 from this campaign: its strict-HA contribution is 121 Alpha-closed rows, one of
 which shares an exact QR specification and therefore occupies the earlier QR
 position. These rows are Alpha checked-use facts, but they are not Stable. The
-current additive Alpha v2 edition preserves the sealed 885-row Alpha v1 ledger
-and appends seventeen K3C rows at indices 885--901. It now has 902 specs,
-2,674 direct edges, 45 layers, 470 Alpha-only rows, and 570 checked-use rows;
-Stable remains 432. The authoritative current counts and evidence states are
-in {doc}`Alpha and Stable library editions <library-editions>` and
-`artifacts/peano-library/channels-v2.json`.
+historical additive Alpha v2 edition preserved the sealed 885-row Alpha v1
+ledger and appended seventeen K3C rows at indices 885--901. That sealed
+snapshot has 902 specs, 2,674 direct edges, 45 layers, 470 Alpha-only rows,
+and 570 checked-use rows. Current Alpha v16 has 1,673 specs and 885
+checked-use rows after the independently verified QR-only promotion; Stable
+remains 432. The authoritative current counts and evidence states are in
+{doc}`Alpha and Stable library editions <library-editions>` and
+`artifacts/peano-library/channels-v16.json`; `channels-v2.json` remains an
+immutable historical pointer.
 ```
 
 ## Historical Stable/public boundary

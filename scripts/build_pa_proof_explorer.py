@@ -27,6 +27,7 @@ sys.path.insert(0, str(PY_ROOT))
 from peano_lab.kernel.checker import axiom_formula  # noqa: E402
 from peano_lab.kernel.formulas import pretty_formula  # noqa: E402
 from peano_lab.kernel import proofs as kernel_proofs  # noqa: E402
+from peano_lab.library import editions_v16 as alpha_v16  # noqa: E402
 from peano_lab.library.quadratic_reciprocity_stack_runtime import (  # noqa: E402
     quadratic_reciprocity_stack,
 )
@@ -62,6 +63,18 @@ EXPECTED = {
     "explicit_dependency_reference_count": 8553,
     "graph_sha256": "26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253",
     "source_sha256": "23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1",
+}
+EXPECTED_ALPHA_EVIDENCE = {
+    "alpha_edition_version": "v16",
+    "alpha_edition_identity_sha256": (
+        "3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10"
+    ),
+    "alpha_edition_checked_use_count": 885,
+    "graph_checked_use_count": 557,
+    "graph_stable_closed_count": 241,
+    "graph_alpha_closed_count": 316,
+    "graph_newly_promoted_count": 315,
+    "source_scope_policy": "historical_origin_not_current_release_authority",
 }
 
 
@@ -314,8 +327,8 @@ def _render_index(records: list[dict[str, Any]], stack: Any) -> bytes:
     for row in records:
         search = " ".join((row["name"], row["tag"], row["summary"], row["status"], *[item["name"] for item in row["dependencies"]])).lower()
         cards.append(f'''<article class="pa-proof-result pa-status-{row["scope"]}" data-pa-theorem data-name="{_e(row["name"])}" data-tag="{row["tag"]}" data-status="{row["scope"]}" data-layer="{row["layer"]}" data-search="{_e(search)}"><a href="tag/{row["tag"]}.html"><code>{row["tag"]}</code> · <strong>{_e(row["name"])}</strong></a><p>{_e(row["summary"])}</p><small>layer {row["layer"]} · {len(row["lines"])} lines · {row["status_label"]}</small></article>''')
-    body = f'''<header class="pa-proof-header pa-hero"><p><a href="../../arithmetic-library/quadratic-reciprocity.html">Jupyter Book</a></p><h1>Native PA Proof Explorer</h1><p>The complete replay-free reading surface for the exact quadratic-reciprocity dependency closure.</p><div class="pa-proof-stats"><b>557</b> lemmas · <b>1,787</b> edges · <b>27,491</b> tactic lines · <b>45</b> layers</div><nav><a href="foundations.html">PA language, axioms, and rules</a></nav></header>
-<main data-proof-dashboard data-pa-explorer-index><section class="pa-proof-controls"><label>Search <input data-proof-search data-pa-search type="search"></label><label>Status <select data-proof-status data-pa-status><option value="all">All</option><option value="public">Public (241)</option><option value="candidate">Body-checked candidates (316)</option></select></label><label>Layer <select data-proof-layer data-pa-layer><option value="all">All 45 layers</option>{layers}</select></label><button data-proof-clear data-pa-clear type="button">Clear</button><output data-proof-count data-pa-count>557 lemmas</output></section><section class="pa-layer-map">{''.join(f'<a href="?layer={n}">{n}</a>' for n in range(45))}</section><section class="pa-proof-results">{"".join(cards)}</section></main>'''
+    body = f'''<header class="pa-proof-header pa-hero"><p><a href="../../arithmetic-library/quadratic-reciprocity.html">Jupyter Book</a></p><h1>Native PA Proof Explorer</h1><p>The complete replay-free reading surface for the exact quadratic-reciprocity dependency closure.</p><div class="pa-proof-stats"><b>557</b> checked-use theorems · <b>1,787</b> edges · <b>27,491</b> tactic lines · <b>45</b> layers</div><p>Alpha v16 independently closes the entire graph: 241 Stable theorems and 316 Alpha-only theorems. The source-origin filter preserves the historical 241/316 provenance partition; Alpha-only closure does not grant Stable membership.</p><nav><a href="foundations.html">PA language, axioms, and rules</a></nav></header>
+<main data-proof-dashboard data-pa-explorer-index><section class="pa-proof-controls"><label>Search <input data-proof-search data-pa-search type="search"></label><label>Source origin <select data-proof-status data-pa-status><option value="all">All</option><option value="public">Stable source (241)</option><option value="candidate">Alpha-only candidate-factory source (316)</option></select></label><label>Layer <select data-proof-layer data-pa-layer><option value="all">All 45 layers</option>{layers}</select></label><button data-proof-clear data-pa-clear type="button">Clear</button><output data-proof-count data-pa-count>557 checked-use theorems</output></section><section class="pa-layer-map">{''.join(f'<a href="?layer={n}">{n}</a>' for n in range(45))}</section><section class="pa-proof-results">{"".join(cards)}</section></main>'''
     return _page("Native PA Proof Explorer", "index", body)
 
 
@@ -419,9 +432,8 @@ def _render_graph(graph: dict[str, Any]) -> bytes:
         <div class="pa-graph-legend" aria-label="Graph legend">
           <span><i class="pa-legend-node pa-legend-selected"></i> target</span>
           <span><i class="pa-legend-node pa-legend-critical"></i> chosen chain</span>
-          <span><i class="pa-legend-node pa-legend-public"></i> public theorem</span>
-          <span><i class="pa-legend-node pa-legend-candidate"></i> body-checked candidate</span>
-          <span><i class="pa-legend-node pa-legend-pending"></i> pending layered closure</span>
+          <span><i class="pa-legend-node pa-legend-public"></i> Stable-source checked theorem</span>
+          <span><i class="pa-legend-node pa-legend-candidate"></i> Alpha-only checked theorem; historical candidate-factory source</span>
           <span><i class="pa-legend-edge pa-legend-declared"></i> declared but not cited in tactic body</span>
         </div>
       </section>
@@ -453,6 +465,40 @@ def _render_graph(graph: dict[str, Any]) -> bytes:
       <p class="pa-callout">The interactive graph requires JavaScript. The <a href="index.html">theorem index</a> and every formal proof remain available without it.</p>
     </noscript>
   </main>
+  <script id="pa-proof-release-evidence">
+  (function () {
+    "use strict";
+    function install() {
+      var root = document.querySelector("[data-dependency-graph]");
+      var payload = window.PA_PROOF_GRAPH;
+      if (!root || !payload || !Array.isArray(payload.nodes)) return;
+      var title = root.querySelector("[data-graph-title]");
+      var status = root.querySelector("[data-graph-status]");
+      if (!title || !status || typeof MutationObserver !== "function") return;
+      var nodes = new Map(payload.nodes.map(function (node) {
+        return [node.tag, node];
+      }));
+      function showEvidence() {
+        var tag = title.textContent.split(" · ", 1)[0].trim();
+        var node = nodes.get(tag);
+        if (!node || node.alpha_checked_use !== true) return;
+        status.className = "pa-status-public";
+        status.textContent = node.stable_member ?
+          "Stable checked-use theorem; independently closed" :
+          "Alpha v16 checked-use theorem; independently closed; not Stable";
+      }
+      new MutationObserver(showEvidence).observe(title, {
+        childList: true, characterData: true, subtree: true
+      });
+      showEvidence();
+    }
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", install, { once: true });
+    } else {
+      install();
+    }
+  })();
+  </script>
 </body>
 </html>
 ''').encode("utf-8")
@@ -470,7 +516,17 @@ def _render_theorem(row: dict[str, Any], previous: dict[str, Any] | None, follow
         lines.append(f'<li class="pa-proof-line" id="{line["id"]}" data-line="{line["number"]}" data-tactic="{_e(line["tactic"])}" data-line-id="{line["stable_id"]}"><a class="pa-line-number" href="#{line["id"]}">{line["number"]:04d}</a><code>{_render_command(line)}</code></li>')
     prev_link = f'<a href="{previous["tag"]}.html">← { _e(previous["name"])}</a>' if previous else ""
     next_link = f'<a href="{following["tag"]}.html">{ _e(following["name"])} →</a>' if following else ""
-    body = f'''<header class="pa-proof-header pa-theorem-heading"><nav><a href="../index.html">Explorer</a> · <a href="../foundations.html">Foundations</a> {prev_link} {next_link}</nav><p class="pa-tag">{row["tag"]}</p><h1>{_e(row["name"])}</h1><p class="pa-status-{row["scope"]}">{_e(row["status_label"])}</p><p>{_e(row["summary"])}</p></header><main class="pa-theorem-layout"><div class="pa-proof-panel"><section class="pa-statement"><h2>Exact expanded PA statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>{_e(row["statement"])}</code></pre></section><section class="pa-informal-proof" data-informal-kind="{_e(row["informal"]["kind"])}" data-informal-review="{_e(row["informal"]["review"])}"><h2>{_e(row["informal"]["title"])}</h2><p><strong>{"Curated informal proof" if row["informal"]["review"] == "curated_reviewed" else "Generated structural guide"}</strong></p>{paragraphs}<h3>Referenced ingredients</h3><div class="pa-chip-row">{ingredients}</div></section><section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row">{relation(row["dependencies"])}</div><h3>Direct dependents</h3><div class="pa-chip-row">{relation(row["dependents"])}</div></section><section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Linked names are exact direct references. This {"body-checked candidate is not publicly admitted" if row["scope"] == "candidate" else "public theorem is independently kernel-checked when replayed"}.</p><ol class="pa-formal-proof">{"".join(lines)}</ol></section></div><aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Layer</dt><dd>{row["layer"]}</dd><dt>Lines</dt><dd>{len(row["lines"])}</dd><dt>Specification SHA-256</dt><dd><code>{row["spec_sha256"]}</code></dd><dt>Source</dt><dd><a href="{_e(row["source"]["href"])}">{_e(row["source"]["path"])}:{row["source"]["line"]}</a> ({row["source"]["kind"]})</dd><dt>Source SHA-256</dt><dd><code>{row["source"]["sha256"]}</code></dd></dl></aside></main>'''
+    source_label = (
+        "Stable public-theorem source"
+        if row["scope"] == "public"
+        else "historical candidate-factory source; Alpha-only"
+    )
+    use_label = (
+        "Stable checked-use theorem is independently kernel-checked when replayed"
+        if row["stable_member"]
+        else "Alpha-v16 checked-use theorem is independently kernel-checked when replayed; it is not a Stable theorem"
+    )
+    body = f'''<header class="pa-proof-header pa-theorem-heading"><nav><a href="../index.html">Explorer</a> · <a href="../foundations.html">Foundations</a> {prev_link} {next_link}</nav><p class="pa-tag">{row["tag"]}</p><h1>{_e(row["name"])}</h1><p class="pa-status-public">{_e(row["status_label"])}</p><p>{_e(row["summary"])}</p></header><main class="pa-theorem-layout"><div class="pa-proof-panel"><section class="pa-statement"><h2>Exact expanded PA statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>{_e(row["statement"])}</code></pre></section><section class="pa-informal-proof" data-informal-kind="{_e(row["informal"]["kind"])}" data-informal-review="{_e(row["informal"]["review"])}"><h2>{_e(row["informal"]["title"])}</h2><p><strong>{"Curated informal proof" if row["informal"]["review"] == "curated_reviewed" else "Generated structural guide"}</strong></p>{paragraphs}<h3>Referenced ingredients</h3><div class="pa-chip-row">{ingredients}</div></section><section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row">{relation(row["dependencies"])}</div><h3>Direct dependents</h3><div class="pa-chip-row">{relation(row["dependents"])}</div></section><section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Linked names are exact direct references. This {use_label}.</p><ol class="pa-formal-proof">{"".join(lines)}</ol></section></div><aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Layer</dt><dd>{row["layer"]}</dd><dt>Lines</dt><dd>{len(row["lines"])}</dd><dt>Current Alpha edition</dt><dd>{_e(row["alpha_edition_version"])}</dd><dt>Current release evidence</dt><dd>{_e(row["alpha_evidence"])}</dd><dt>Checked theorem use</dt><dd>{"yes" if row["alpha_checked_use"] else "no"}</dd><dt>Stable membership</dt><dd>{"yes" if row["stable_member"] else "no"}</dd><dt>Historical source origin</dt><dd>{_e(source_label)}</dd><dt>Specification SHA-256</dt><dd><code>{row["spec_sha256"]}</code></dd><dt>Source</dt><dd><a href="{_e(row["source"]["href"])}">{_e(row["source"]["path"])}:{row["source"]["line"]}</a> ({row["source"]["kind"]})</dd><dt>Source SHA-256</dt><dd><code>{row["source"]["sha256"]}</code></dd></dl></aside></main>'''
     return _page(f'{row["tag"]} — {row["name"]}', "theorem", body, "../")
 
 
@@ -610,7 +666,11 @@ def _dependency_graph_payload(
         "nodes": [
             {
                 key: row[key]
-                for key in ("tag", "name", "scope", "status", "layer", "summary")
+                for key in (
+                    "tag", "name", "scope", "status", "layer", "summary",
+                    "alpha_edition_version", "alpha_evidence",
+                    "alpha_checked_use", "stable_member",
+                )
             }
             | {"href": f'../tag/{row["tag"]}.html'}
             for row in records
@@ -639,7 +699,11 @@ def _dependency_graph_schema() -> dict[str, Any]:
             "schema", "theorem_count", "public_count", "candidate_count",
             "edge_count", "layer_count", "formal_line_count",
             "explicit_dependency_reference_count", "graph_sha256",
-            "source_sha256", "orientation", "path_policy", "foundations",
+            "source_sha256", "alpha_edition_version",
+            "alpha_edition_identity_sha256", "alpha_edition_checked_use_count",
+            "graph_checked_use_count", "graph_stable_closed_count",
+            "graph_alpha_closed_count", "graph_newly_promoted_count",
+            "source_scope_policy", "orientation", "path_policy", "foundations",
             "terminals", "layers", "nodes", "edges", "adjacency",
         ],
         "properties": {
@@ -653,6 +717,16 @@ def _dependency_graph_schema() -> dict[str, Any]:
             "explicit_dependency_reference_count": {"type": "integer", "minimum": 0},
             "graph_sha256": {"$ref": "#/$defs/sha256"},
             "source_sha256": {"$ref": "#/$defs/sha256"},
+            "alpha_edition_version": {"const": "v16"},
+            "alpha_edition_identity_sha256": {"$ref": "#/$defs/sha256"},
+            "alpha_edition_checked_use_count": {"type": "integer", "minimum": 0},
+            "graph_checked_use_count": {"type": "integer", "minimum": 0},
+            "graph_stable_closed_count": {"type": "integer", "minimum": 0},
+            "graph_alpha_closed_count": {"type": "integer", "minimum": 0},
+            "graph_newly_promoted_count": {"type": "integer", "minimum": 0},
+            "source_scope_policy": {
+                "const": "historical_origin_not_current_release_authority",
+            },
             "orientation": {"const": "dependency_to_dependent"},
             "path_policy": {"$ref": "#/$defs/path_policy"},
             "foundations": {"$ref": "#/$defs/tag_array"},
@@ -710,6 +784,8 @@ def _dependency_graph_schema() -> dict[str, Any]:
                 "additionalProperties": False,
                 "required": [
                     "tag", "name", "scope", "status", "layer", "summary", "href",
+                    "alpha_edition_version", "alpha_evidence",
+                    "alpha_checked_use", "stable_member",
                 ],
                 "properties": {
                     "tag": {"$ref": "#/$defs/tag"},
@@ -717,12 +793,17 @@ def _dependency_graph_schema() -> dict[str, Any]:
                     "scope": {"enum": ["public", "candidate"]},
                     "status": {
                         "enum": [
-                            "public", "candidate_body_checked", "pending_layered_closure",
+                            "public", "alpha_closed", "candidate_body_checked",
+                            "pending_layered_closure",
                         ],
                     },
                     "layer": {"type": "integer", "minimum": 0},
                     "summary": {"type": "string", "minLength": 1},
                     "href": {"type": "string", "pattern": r"^\.\./tag/PA[0-9A-Y]{4}\.html$"},
+                    "alpha_edition_version": {"const": "v16"},
+                    "alpha_evidence": {"enum": ["stable_closed", "alpha_closed"]},
+                    "alpha_checked_use": {"const": True},
+                    "stable_member": {"type": "boolean"},
                 },
             },
             "edge": {
@@ -800,10 +881,32 @@ def build() -> tuple[dict[str, bytes], dict[str, Any]]:
     edge_reference_counts: Counter[tuple[str, str]] = Counter()
     records = []
     all_tactics: Counter[str] = Counter()
+    evidence_counts: Counter[str] = Counter()
     total_lines = 0
     total_refs = 0
     for index, spec in enumerate(specs):
         scope = "public" if spec.name in public else "candidate"
+        release_entry = alpha_v16.ALPHA_EDITION.by_name.get(spec.name)
+        if release_entry is None or release_entry.spec != spec:
+            raise ValueError(
+                f"QR proof explorer theorem {spec.name!r} differs from sealed Alpha v16"
+            )
+        stable_member = release_entry.membership is alpha_v16.Membership.STABLE
+        expected_evidence = (
+            alpha_v16.EvidenceStatus.STABLE_CLOSED
+            if scope == "public"
+            else alpha_v16.EvidenceStatus.ALPHA_CLOSED
+        )
+        if (
+            release_entry.evidence is not expected_evidence
+            or not release_entry.checked_use
+            or stable_member != (scope == "public")
+        ):
+            raise ValueError(
+                f"QR proof explorer theorem {spec.name!r} has unexpected "
+                "Alpha-v16 evidence, membership, or checked-use authority"
+            )
+        evidence_counts[release_entry.evidence.value] += 1
         counts: Counter[str] = Counter()
         occurrence: Counter[str] = Counter()
         lines = []
@@ -862,20 +965,16 @@ def build() -> tuple[dict[str, bytes], dict[str, Any]]:
             "tag": tags[spec.name],
             "name": spec.name,
             "scope": scope,
-            "status": (
-                "public"
-                if scope == "public"
-                else "pending_layered_closure"
-                if spec.name == "quadratic_reciprocity_combined"
-                else "candidate_body_checked"
-            ),
+            "status": "public" if scope == "public" else "alpha_closed",
             "status_label": (
-                "public native theorem"
-                if scope == "public"
-                else "pending layered closure — body-checked candidate; not publicly admitted"
-                if spec.name == "quadratic_reciprocity_combined"
-                else "body-checked candidate; not publicly admitted"
+                "Stable checked-use theorem · independently closed"
+                if stable_member
+                else "Alpha v16 checked-use theorem · independently closed; not Stable"
             ),
+            "alpha_edition_version": "v16",
+            "alpha_evidence": release_entry.evidence.value,
+            "alpha_checked_use": release_entry.checked_use,
+            "stable_member": stable_member,
             "layer": stack.dependency_depth_by_name[spec.name],
             "summary": spec.summary,
             "statement": spec.statement,
@@ -916,8 +1015,25 @@ def build() -> tuple[dict[str, bytes], dict[str, Any]]:
     }
     if actual != EXPECTED:
         raise ValueError(f"QR proof explorer receipt changed: {actual!r}")
-    corpus = {"schema": "peano-lab-pa-proof-corpus-v1", **actual, "theorems": records}
-    graph = _dependency_graph_payload(records, edges, actual)
+    evidence_receipt = {
+        "alpha_edition_version": "v16",
+        "alpha_edition_identity_sha256": alpha_v16.ALPHA_V16_IDENTITY_SHA256,
+        "alpha_edition_checked_use_count": len(alpha_v16.ALPHA_CHECKED_SPECS),
+        "graph_checked_use_count": sum(row["alpha_checked_use"] for row in records),
+        "graph_stable_closed_count": evidence_counts["stable_closed"],
+        "graph_alpha_closed_count": evidence_counts["alpha_closed"],
+        "graph_newly_promoted_count": len(alpha_v16.QR_PROMOTED_NAMES),
+        "source_scope_policy": "historical_origin_not_current_release_authority",
+    }
+    if evidence_receipt != EXPECTED_ALPHA_EVIDENCE:
+        raise ValueError(
+            f"QR proof explorer Alpha-v16 evidence receipt changed: {evidence_receipt!r}"
+        )
+    receipt = {**actual, **evidence_receipt}
+    corpus = {
+        "schema": "peano-lab-pa-proof-corpus-v1", **receipt, "theorems": records,
+    }
+    graph = _dependency_graph_payload(records, edges, receipt)
     graph_schema = _dependency_graph_schema()
     files: dict[str, bytes] = {
         "index.html": _render_index(records, stack),
@@ -935,7 +1051,7 @@ def build() -> tuple[dict[str, bytes], dict[str, Any]]:
     manifest_files = [{"path": path, "bytes": len(payload), "sha256": _digest(payload)} for path, payload in sorted(files.items())]
     aggregate = _digest("\n".join(f'{item["path"]}\0{item["sha256"]}' for item in manifest_files))
     manifest = {
-        "schema": "peano-lab-pa-proof-explorer-manifest-v1", **actual,
+        "schema": "peano-lab-pa-proof-explorer-manifest-v1", **receipt,
         "generated_file_count": len(files) + 1,
         "canonical_tag_page_count": len(records), "name_alias_page_count": len(records),
         "aggregate_sha256": aggregate,

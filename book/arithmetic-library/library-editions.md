@@ -28,12 +28,14 @@ rows. Alpha v4 remains sealed at 965 rows, Alpha v5 remains sealed at 972
 rows, Alpha v6 remains sealed at 993 rows, Alpha v7 remains sealed at 1,017
 rows, Alpha v8 remains sealed at 1,055 rows, Alpha v9 remains sealed at 1,076
 rows, Alpha v10 remains sealed at 1,085 rows, and Alpha v11 remains sealed at
-1,123 rows. Current Alpha v12 preserves the entire v11 enrollment ledger
-exactly, then appends 180 reviewed Bertrand rows at indices 1123--1302 in nine
-exact twenty-row microbatches. The append publishes the full dependency-closed
-proof through B5, B6, B7, finite coverage, and both Bertrand endpoints. The
-initial Stable prefix is a historical fact about these channels, not the
-permanent promotion rule.
+1,123 rows. Sealed Alpha v12 has 1,303 rows; v13 has 1,543, v14 has 1,556,
+and v15 has 1,673. Current Alpha v16 preserves the exact v15 statement order,
+membership, dependencies, and enrollment identity, then changes only the
+evidence of 315 genuinely closed quadratic-reciprocity theorems. Its final
+root and every prerequisite have real independently checked certificates,
+whereas all 788 unrelated body-only rows remain unavailable. Stable is still
+the unchanged 432-theorem default; the initial Stable prefix is a historical
+fact about these channels, not the permanent promotion rule.
 
 | Surface | Exact scope | What the count means |
 |---|---:|---|
@@ -49,9 +51,15 @@ permanent promotion rule.
 | Sealed Alpha v9 catalog | **1,076** theorems | immutable parent: 432 Stable plus 644 Alpha-only rows |
 | Sealed Alpha v10 catalog | **1,085** theorems | immutable parent: 432 Stable plus 653 Alpha-only rows |
 | Sealed Alpha v11 catalog | **1,123** theorems | immutable parent: 432 Stable plus 691 Alpha-only rows |
-| Current Alpha v12 catalog | **1,303** theorems | 432 Stable plus 871 Alpha-only rows |
-| Alpha checked-use subset | **570** theorems | 432 `stable_closed` plus 138 `alpha_closed` rows |
-| Alpha v12 proof graph | **4,302** edges / **45** layers | exact direct dependencies for all 1,303 enrolled rows |
+| Sealed Alpha v12 catalog | **1,303** theorems | 432 Stable plus 871 Alpha-only rows |
+| Sealed Alpha v13 catalog | **1,543** theorems | Lagrange four-square and multidigit Lucas campaign |
+| Sealed Alpha v14 catalog | **1,556** theorems | Kummer carry theorem and carry-free corollary |
+| Sealed Alpha v15 catalog | **1,673** theorems | supplementary laws and the complete two-square classification |
+| Current Alpha v16 catalog | **1,673** theorems | unchanged enrollment; exactly 315 closed QR evidence promotions |
+| Historical Alpha v12--v15 checked-use subset | **570** theorems | 432 `stable_closed` plus 138 `alpha_closed` rows |
+| Current Alpha v16 checked-use subset | **885** theorems | 432 `stable_closed` plus 453 `alpha_closed` rows |
+| Historical Alpha v12 proof graph | **4,302** edges / **45** layers | exact direct dependencies for all 1,303 enrolled rows |
+| Current Alpha v16 proof graph | **5,615** edges / **53** layers | unchanged exact direct dependencies for all 1,673 enrolled rows |
 | Quadratic-reciprocity Alpha slice | **557** specifications | 241 Stable prerequisites and 316 Alpha-only specifications |
 | Stable $\cup$ QR slice | **748** distinct theorem names | 432 Stable plus the 316 QR Alpha-only rows |
 | K3B focused map | **41** nodes | 12 Stable prerequisites, 22 Alpha-only theorem/support nodes, and 7 conservative definitions |
@@ -108,21 +116,21 @@ evidence, channel-pointer, suffix-depth, and body-receipt roots remain
 and
 `6c314d36cd7bb1e6cb5b213fec9bf9e04ab118e84121830b00c885ede2abac2a`.
 
-The canonical Alpha v12 composition is 432 Stable-origin rows, 316 QR
+The sealed historical Alpha v12 composition is 432 Stable-origin rows, 316 QR
 additions, 120 strict-HA additions, 17 K3B additions, 17 K3C additions, and 21
 first-round plus 42 Round-2 plus 7 `FactorialVal` plus 21 v6 and 24 v7
 plus 38 v8, 21 v9, 9 v10, 38 v11, and 180 v12 Bertrand additions. Its evidence
 partition is 432 `stable_closed`, 138 `alpha_closed`, 732 `body_checked`, and one
 `pending_layered_closure`. Thus **Alpha membership does not imply checked
-use**: exactly 570 of the 1,303 entries cross that boundary. Every v12 suffix row
+use**: exactly 570 of the 1,303 historical entries cross that boundary. Every v12 suffix row
 has `checked_use=false`, a null proof tag, and null empty-context closure
 metadata. Its independently replayed dependency-curried body is evidence for
-that body, not empty-context admission. The current v12
+that body, not empty-context admission. The historical v12
 ordered-enrollment root is
 `f763b9fc3717ad76c7e259d67c3beeadfdaca554bbaaeb3ecd2e55329edf937b`;
 the full edition identity is
 `bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061`.
-The current ordered-specification, membership, evidence, and channel-pointer
+The historical v12 ordered-specification, membership, evidence, and channel-pointer
 roots are, respectively,
 `362da94c3c5e788f296f315b86b5d63534c1567ce00911dbb27227a66ab50e28`,
 `726c6134461dace943f909a0073ca0a6cae95a54ff306f8aeefeb3d9a5151926`,
@@ -259,15 +267,20 @@ Its 180-row append binds the B6 release RFC plus the reviewed B5, B7, B8,
 BP01, and BP02 tranche RFCs. The full dependency-closed candidate proof ends
 in `bertrand_closed_upper` and `bertrand_strict`.
 
-The 557-row focused QR slice omits 191 Stable theorems and 269 Alpha additions
-from the strict-HA, K3B, K3C, and Bertrand tranches; its union with all Stable
-rows has **748** distinct names. Likewise, the 41-node K3B map is a
-deliberately curated visual lens, not a competing catalog. The authoritative
-channel pointers are
-`artifacts/peano-library/channels-v12.json`; it links the current Alpha v12
-catalog, metrics, and graph, while the pre-existing Stable artifact remains
-`artifacts/peano-library/catalog-v1.json`. The v1 channel and Alpha v1
-artifacts remain sealed parents.
+The 557-row focused QR slice omits 191 Stable theorems; its union with all
+Stable rows has **748** distinct names, leaving 925 other current Alpha v16
+entries outside that union. Likewise, the 41-node K3B map is a deliberately
+curated visual lens, not a competing catalog. The current authoritative
+channel pointer is `artifacts/peano-library/channels-v16.json`; it links the
+immutable Alpha v16 catalog, metrics, and graph, while the pre-existing Stable
+artifact remains `artifacts/peano-library/catalog-v1.json`. The historical
+`artifacts/peano-library/channels-v12.json` pointer and every Alpha v1--v15
+artifact remain sealed parents. The unchanged v16 enrollment identity is
+`44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175`;
+its promoted-evidence identity is
+`3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10`.
+The current evidence ledger is 432 `stable_closed`, 453 `alpha_closed`, 788
+`body_checked`, and zero pending rows; exactly 885 permit checked use.
 
 The {doc}`Stable theorem atlas <theorem-atlas>` is authoritative for the 432
 registered theorems. The {doc}`QR proof explorer <proof-explorer>` is an Alpha
@@ -382,14 +395,15 @@ evidence is `stable_closed` or `alpha_closed`; a `body_checked` or
 `pending_layered_closure` request fails closed.
 
 ```python
-from peano_lab.library.editions_v12 import edition, entry, replay
+from peano_lab.library.editions_v16 import edition, entry, replay
 
 len(edition("stable").specs)          # 432
-len(edition("alpha").specs)           # 1303
-len(edition("alpha").checked_specs)   # 570
+len(edition("alpha").specs)           # 1673
+len(edition("alpha").checked_specs)   # 885
 
 entry("cell_list_extensional", edition="alpha")
 replay("signed_decode_nonnegative_constructor", edition="alpha")
+entry("quadratic_reciprocity_combined", edition="alpha")  # alpha_closed
 ```
 
 The ordinary Stable API is unchanged and remains the default. Alpha replay
@@ -399,6 +413,13 @@ authority from documentation. Metadata lookup is cheap, but replay cost varies
 with the transitive certificate: `cell_list_extensional`, for example, closes
 to 95,253 proof nodes. Use the sealed receipts or WMI verification for such
 large rows instead of treating them as laptop smoke tests.
+
+The browser and native shell expose the same explicit boundary through
+`pa lib alpha`, `pa lib alpha <name>`, `pa lib alpha check <name>`, and
+`pa lean alpha <name>`. Evidence inspection never loads the proof bundle;
+checked replay and completed Lean export require the actual independently
+checked closed certificate. The ordinary `pa lib` and live `use` operations
+continue to use the unchanged Stable/public authority.
 
 External website deployment is separate again. A Stable repository snapshot
 does not become Alpha merely because a hosted Peano Lab has not yet deployed

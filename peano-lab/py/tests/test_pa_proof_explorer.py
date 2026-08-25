@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from collections import Counter
 from hashlib import sha256
 from html.parser import HTMLParser
 import html
@@ -208,6 +209,8 @@ def test_generator_rejects_and_prunes_unmanifested_files(tmp_path, monkeypatch) 
 
 
 def test_manifest_pins_the_exact_qr_closure_and_truthful_partition() -> None:
+    from peano_lab.library import editions_v16 as alpha_v16
+
     manifest = _load(MANIFEST)
     records = _records()
     assert _metric(manifest, "theorem_count", "node_count") == THEOREM_COUNT
@@ -221,13 +224,135 @@ def test_manifest_pins_the_exact_qr_closure_and_truthful_partition() -> None:
     scopes = [row["scope"] for row in records]
     assert scopes.count("public") == PUBLIC_COUNT
     assert scopes.count("candidate") == CANDIDATE_COUNT
+    assert manifest["alpha_edition_version"] == "v16"
+    assert manifest["alpha_edition_identity_sha256"] == (
+        alpha_v16.ALPHA_V16_IDENTITY_SHA256
+    )
+    assert manifest["alpha_edition_checked_use_count"] == 885
+    assert manifest["graph_checked_use_count"] == THEOREM_COUNT
+    assert manifest["graph_stable_closed_count"] == PUBLIC_COUNT
+    assert manifest["graph_alpha_closed_count"] == CANDIDATE_COUNT
+    assert manifest["graph_newly_promoted_count"] == 315
+    assert manifest["source_scope_policy"] == (
+        "historical_origin_not_current_release_authority"
+    )
+    assert Counter(
+        (row["scope"], row["alpha_evidence"], row["stable_member"])
+        for row in records
+    ) == {
+        ("public", "stable_closed", True): PUBLIC_COUNT,
+        ("candidate", "alpha_closed", False): CANDIDATE_COUNT,
+    }
+    assert all(row["alpha_checked_use"] is True for row in records)
+    assert all(row["alpha_edition_version"] == "v16" for row in records)
     root = next(row for row in records if row["name"] == "quadratic_reciprocity_combined")
-    assert root["status"] == "pending_layered_closure"
+    assert root["scope"] == "candidate"
+    assert root["status"] == "alpha_closed"
+    assert root["alpha_evidence"] == "alpha_closed"
+    assert root["alpha_checked_use"] is True
+    assert root["stable_member"] is False
     root_page = (EXPLORER / "tag" / f"{root['tag']}.html").read_text(encoding="utf-8")
-    assert "pa-status-candidate" in root_page
-    assert "pending" in root_page.lower()
-    assert "not publicly admitted" in root_page.lower()
-    assert "pa-status-public" not in root_page
+    assert "pa-status-public" in root_page
+    assert "Alpha v16 checked-use theorem" in root_page
+    assert "historical candidate-factory source; Alpha-only" in root_page
+    assert "<dt>Stable membership</dt><dd>no</dd>" in root_page
+    assert "pending layered closure" not in root_page
+    assert "not publicly admitted" not in root_page
+
+
+def test_graph_preserves_source_origin_and_publishes_independent_release_evidence() -> None:
+    graph = _load(GRAPH)
+    manifest = _load(MANIFEST)
+    nodes = {row["name"]: row for row in graph["nodes"]}
+    root = nodes["quadratic_reciprocity_combined"]
+
+    assert root["scope"] == "candidate"
+    assert root["status"] == "alpha_closed"
+    assert root["alpha_edition_version"] == "v16"
+    assert root["alpha_evidence"] == "alpha_closed"
+    assert root["alpha_checked_use"] is True
+    assert root["stable_member"] is False
+    assert graph["alpha_edition_identity_sha256"] == (
+        manifest["alpha_edition_identity_sha256"]
+    )
+    assert graph["graph_checked_use_count"] == THEOREM_COUNT
+    assert Counter(row["scope"] for row in nodes.values()) == {
+        "public": PUBLIC_COUNT,
+        "candidate": CANDIDATE_COUNT,
+    }
+
+    graph_page = (EXPLORER / "graph.html").read_text(encoding="utf-8")
+    assert 'id="pa-proof-release-evidence"' in graph_page
+    assert "Alpha v16 checked-use theorem; independently closed; not Stable" in graph_page
+    assert "historical candidate-factory source" in graph_page
+    assert "pending layered closure" not in graph_page
+
+
+def test_graph_release_overlay_updates_selected_alpha_and_stable_nodes() -> None:
+    graph = _load(GRAPH)
+    root = next(
+        row for row in graph["nodes"]
+        if row["name"] == "quadratic_reciprocity_combined"
+    )
+    stable = next(row for row in graph["nodes"] if row["stable_member"])
+    page = (EXPLORER / "graph.html").read_text(encoding="utf-8")
+    match = re.search(
+        r'<script id="pa-proof-release-evidence">(.*?)</script>',
+        page,
+        flags=re.DOTALL,
+    )
+    assert match is not None
+    harness = """
+"use strict";
+const payload = __PAYLOAD__;
+const rootNode = payload.nodes[0];
+const stableNode = payload.nodes[1];
+const title = {textContent: rootNode.tag + " · " + rootNode.name};
+const status = {className: "pa-status-candidate", textContent: "obsolete"};
+let ready;
+let observe;
+global.window = {PA_PROOF_GRAPH: payload};
+global.document = {
+  readyState: "loading",
+  addEventListener(_event, callback) { ready = callback; },
+  querySelector(selector) {
+    if (selector !== "[data-dependency-graph]") return null;
+    return {querySelector(item) {
+      if (item === "[data-graph-title]") return title;
+      if (item === "[data-graph-status]") return status;
+      return null;
+    }};
+  }
+};
+global.MutationObserver = class {
+  constructor(callback) { observe = callback; }
+  observe() {}
+};
+__SCRIPT__
+if (typeof ready !== "function") throw Error("DOMContentLoaded was not observed");
+ready();
+if (status.textContent !==
+    "Alpha v16 checked-use theorem; independently closed; not Stable") {
+  throw Error("Alpha-only evidence was not shown: " + status.textContent);
+}
+if (status.className !== "pa-status-public") throw Error("checked-use style missing");
+title.textContent = stableNode.tag + " · " + stableNode.name;
+status.textContent = "stale legacy text";
+observe();
+if (status.textContent !== "Stable checked-use theorem; independently closed") {
+  throw Error("Stable evidence was not refreshed: " + status.textContent);
+}
+""".replace("__PAYLOAD__", json.dumps({"nodes": [root, stable]})).replace(
+        "__SCRIPT__", match.group(1)
+    )
+    result = subprocess.run(
+        ["node", "--input-type=commonjs", "-"],
+        input=harness,
+        capture_output=True,
+        check=False,
+        text=True,
+    )
+    assert result.returncode == 0, result.stdout + result.stderr
 
 
 def test_persistent_tags_are_unique_complete_and_not_derived_at_build_time() -> None:

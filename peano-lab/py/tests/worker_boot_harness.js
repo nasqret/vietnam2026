@@ -14,6 +14,13 @@ const listedFiles = Array.from(
   workerSource.matchAll(/"(py\/[^"\n]+\.py)"/g),
   (match) => match[1],
 );
+const listedProofArtifacts = Array.from(
+  new Set(Array.from(
+    workerSource.matchAll(/"(proof-artifacts\/[^"\n]+\.json)"/g),
+    (match) => match[1],
+  )),
+);
+const allRuntimeFiles = [...listedFiles, ...listedProofArtifacts];
 
 function deferred() {
   let resolve;
@@ -79,12 +86,12 @@ async function successfulBootIsConcurrentAndOrdered() {
   vm.runInContext(workerSource, context, { filename: workerPath });
   context.onmessage({ data: { type: "init", build: "test-build" } });
 
-  assert.strictEqual(requests.size, listedFiles.length);
+  assert.strictEqual(requests.size, allRuntimeFiles.length);
   assert.strictEqual(events[1][0], "loadPyodide");
   assert.ok(events.slice(2).every((event) => event[0] === "fetch"));
 
   runtime.resolve(makePyodide(writes));
-  for (const relativePath of [...listedFiles].reverse()) {
+  for (const relativePath of [...allRuntimeFiles].reverse()) {
     requests.get(relativePath).resolve({
       ok: true,
       status: 200,
@@ -95,11 +102,14 @@ async function successfulBootIsConcurrentAndOrdered() {
 
   assert.deepStrictEqual(
     writes.map(([path]) => path),
-    listedFiles.map((path) => "/lab/" + path.replace(/^py\//, "")),
+    [
+      ...listedFiles.map((path) => "/lab/" + path.replace(/^py\//, "")),
+      ...listedProofArtifacts.map((path) => "/lab/" + path),
+    ],
   );
   assert.deepStrictEqual(
     writes.map(([, source]) => source),
-    listedFiles.map((path) => "source:" + path),
+    allRuntimeFiles.map((path) => "source:" + path),
   );
   assert.strictEqual(messages.filter((message) => message.type === "ready").length, 1);
   assert.strictEqual(messages.some((message) => message.type === "error"), false);
@@ -147,7 +157,7 @@ async function failureChoiceIsDeterministicAndAtomic() {
 
   const firstFailure = listedFiles[2];
   const laterFailure = listedFiles[listedFiles.length - 2];
-  for (const relativePath of [...listedFiles].reverse()) {
+  for (const relativePath of [...allRuntimeFiles].reverse()) {
     const failed = relativePath === firstFailure || relativePath === laterFailure;
     requests.get(relativePath).resolve({
       ok: !failed,
@@ -167,10 +177,53 @@ async function failureChoiceIsDeterministicAndAtomic() {
   assert.deepStrictEqual(writes, []);
 }
 
+async function missingProofArtifactFailsBeforeAnyMount() {
+  const messages = [];
+  const writes = [];
+  const requests = new Map();
+  const context = {
+    encodeURIComponent,
+    importScripts() {},
+    loadPyodide() { return Promise.resolve(makePyodide(writes)); },
+    fetch(url) {
+      const request = deferred();
+      requests.set(url, request);
+      return request.promise;
+    },
+    postMessage(message) { messages.push(message); },
+    setTimeout,
+    clearTimeout,
+  };
+  vm.createContext(context);
+  vm.runInContext(workerSource, context, { filename: workerPath });
+  context.onmessage({ data: { type: "init", build: "missing-artifact" } });
+
+  for (const relativePath of allRuntimeFiles) {
+    const failed = relativePath === listedProofArtifacts[0];
+    requests.get(relativePath).resolve({
+      ok: !failed,
+      status: failed ? 404 : 200,
+      text: async () => "source:" + relativePath,
+    });
+  }
+  for (let attempt = 0; attempt < 5; attempt += 1) await tick();
+
+  assert.strictEqual(
+    messages.find((message) => message.type === "error").msg,
+    "could not load " + listedProofArtifacts[0] + " (404)",
+  );
+  assert.strictEqual(messages.some((message) => message.type === "ready"), false);
+  assert.deepStrictEqual(writes, []);
+}
+
 (async () => {
   assert.ok(listedFiles.length > 20);
+  assert.deepStrictEqual(listedProofArtifacts, [
+    "proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json",
+  ]);
   await successfulBootIsConcurrentAndOrdered();
   await failureChoiceIsDeterministicAndAtomic();
+  await missingProofArtifactFailsBeforeAnyMount();
 })().catch((error) => {
   console.error(error.stack || String(error));
   process.exitCode = 1;

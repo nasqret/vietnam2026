@@ -59,6 +59,24 @@ passed the complete pinned Lean 4.31/WMI matrix in job
 Canonical decoding and finite differential tests support Python/Lean
 correspondence but are not an exhaustive theorem about CPython execution.
 
+The current local constructive-verification milestone closes the full exact
+quadratic-reciprocity endpoint. The unchanged original Peano kernel accepts
+`quadratic_reciprocity_combined` from the empty context as one certificate with
+54,870 structural nodes, 35,052 proof objects, and depth 129. A separate
+canonical, self-contained certificate DAG retains all 557 actual theorem
+bodies and 1,787 dependencies; the independent compiled Lean verifier accepts
+its exact final root. The 2,790,229-byte artifact is retained at
+[`research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json`](research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json)
+with SHA-256
+`3cd040d145f1004d07d277c66a3ffbcb355cd9c4b21938d79a6ec51b4258709c`.
+[`scripts/export_peano_lean.py`](scripts/export_peano_lean.py) also translates
+individual checked Peano certificates directly into completed, independently
+compiler-checked Lean theorems. Immutable Alpha v16 promotes the 315 genuinely
+closed quadratic-reciprocity results, including the final root, without
+changing its 1,673 enrolled statements or the 432-theorem default Stable
+edition. Its 885 checked-use theorems remain separate from 788 body-only
+research entries; this release does not claim a new WMI receipt.
+
 The 432-entry native ladder—23 legacy, 212 foundation, 12 mod-five, 137
 quadratic-residue, and 48 strict-HA theorems—reaches the Fundamental Theorem of Arithmetic
 without adding lists, division, remainder, gcd, or factorization as primitive
@@ -91,13 +109,13 @@ The M5 public closure occupies indices 409--431 and exposes arbitrary-modulus
 solvability iff gcd compatibility, the complete relational-LCM solution class,
 the exact zero/nonzero canonical boundary, and a raw-input constructive
 solution-or-obstruction endpoint. Six reviewed convenience rows remain private.
-A separate registry-isolated
-quadratic-reciprocity campaign stack has a
-kernel-checked dependency-curried body for the exact sign-free same-case,
-opposite-case, and combined quadratic-reciprocity surfaces; the optimized
-combined body is `3/65/113/35` (dependencies/commands/nodes/depth). It is not
-yet an admitted library theorem: its 557-spec recursive closure, mutation,
-capacity, browser and receipt gates remain assigned to WMI. The catalog now
+A separate registry-isolated quadratic-reciprocity campaign stack has now
+closed its exact sign-free combined root, both through a complete ordinary
+unchanged-kernel certificate and through the independently Lean-verified
+557-node shared dependency DAG described above. The optimized combined body
+itself is `3/65/113/35` (dependencies/commands/nodes/depth). Public
+Alpha/Stable promotion and a fresh pinned WMI receipt remain separate release
+operations; the proof itself is complete. The catalog now
 has 433 entries: 23 `checked_existing`, 409 `checked_m20`, no planned theorem,
 and one `blocked_by_language` conventional
 integer-coefficient Bézout interface. This is a local draft-PR checkpoint, not
@@ -127,21 +145,24 @@ generated interactive atlas embed all 432 exact statements, authored proof
 recipes, and 1,185 dependency edges with searchable navigation. The selected post-merge
 compatibility matrix passed 1,183 tests with five intentional skips, including
 six loopback-server tests run outside the socket-restricted sandbox; this is
-not relabeled as the complete 220-file Peano suite. The expanded QR checkpoint
-has focused local receipts and awaits its full WMI
-receipt. Full 136-gate job `187187`, against exact dirty snapshot
+not relabeled as the complete 220-file Peano suite. Historical pre-closure QR
+cluster attempts are retained for provenance; they are not the status of the
+new independently checked local final certificate. Full 136-gate job
+`187187`, against exact dirty snapshot
 `2bab0898a5bc628a0e1f06b5e6cdf56af86fe39c2fdbeaaa4147ac43d2c7faaa`,
 failed closed after 39 seconds at gate 5: four scaled-inverse gates passed,
 then the dependency-hygiene mutation test exposed an unused `succ_ne_zero`
-edge. The remaining 131 gates did not run, so this is not a QR result. No
-complete receipt exists yet. Corrected full job `210714`, from exact clean
+edge. The remaining 131 gates did not run, so that historical job was not a QR
+result. Corrected full job `210714`, from exact clean
 snapshot `989011c0…1757`, later failed closed after 8 minutes 29 seconds at
 gate 15/136: 14 gates passed, then the direct-edge mutation audit showed that
 replacing `odd_upper_remainder_reflection -> add_succ_left` did not invalidate
 the certificate. The remaining 121 gates did not run. This is a second
 dependency-minimality failure, not a kernel-soundness failure or a QR result.
-No
-in-app browser was attached for this checkpoint, so direct Pyodide and rendered
+The new complete local closure receipt documents the successful final ordinary
+kernel check and independent Lean verification; no new pinned WMI run is
+represented as having occurred. No in-app browser was attached for this
+checkpoint, so direct Pyodide and rendered
 book UI smokes are explicitly unclaimed.
 
 The current proof-policy experiment is implemented as `model-v3`: 8,494 exact
@@ -247,6 +268,13 @@ Native mode requires Python 3.10 or newer and does not verify or
 load model artifacts. Each selected theorem is nevertheless reconstructed,
 embedded through checked `Cut` nodes, and checked again as part of the final
 empty-context certificate.
+
+The opt-in research channel keeps Stable as the default. Inspect its evidence
+without replaying every certificate using `pa lib alpha`; open the completed
+root with `pa lib alpha quadratic_reciprocity_combined`, or explicitly check
+one admitted theorem using `pa lib alpha check THEOREM`. Theorem export through
+`pa lean alpha THEOREM` independently replays its actual closed proof before
+translating it to Lean; body-only Alpha rows cannot be checked or exported.
 
 ## License
 

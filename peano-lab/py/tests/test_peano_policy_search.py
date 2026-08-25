@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import sys
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from pathlib import Path
 
 import pytest
@@ -16,7 +16,8 @@ if str(ROOT) not in sys.path:
 from peano_lab.batch import verify_proof  # noqa: E402
 from peano_lab.kernel.formulas import parse_formula  # noqa: E402
 from peano_lab.library.theorems import get as get_theorem  # noqa: E402
-from peano_lab.ui.prove import SurfaceCapabilities  # noqa: E402
+from peano_lab.kernel.terms import UNARY_NUMERAL_LIMIT  # noqa: E402
+from peano_lab.ui.prove import MAX_NUMERAL, SurfaceCapabilities  # noqa: E402
 from training.peano_policy.contract import (  # noqa: E402
     EXCLUDED_POLICY_LIBRARY_NAMES,
     HELD_OUT_POLICY_NAMES,
@@ -103,6 +104,296 @@ def test_failed_first_candidate_retries_sibling_and_batch_rechecks_result(
     assert replay.status == "proved"
     assert replay.kernel_checked is True
     assert replay.proof_nodes == result.certificate_nodes
+
+
+def test_persistent_prefix_executes_each_edge_once_with_fresh_branch_traces(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    real_surface = policy_search.run_surface
+    transitions: list[tuple[str, int, object]] = []
+
+    def observed_surface(owner, command, *, capabilities, record_trace):
+        transitions.append((command, len(owner.state.history), owner.trace))
+        assert record_trace is False
+        return real_surface(
+            owner,
+            command,
+            capabilities=capabilities,
+            record_trace=record_trace,
+        )
+
+    monkeypatch.setattr(policy_search, "run_surface", observed_surface)
+
+    def next_edge(goals: tuple[str, ...], limit: int) -> tuple[str, ...]:
+        del limit
+        state = goals[0]
+        if state.startswith("⊢ ∀"):
+            return ("intro n",)
+        if "∀" in state:
+            return ("intro m",)
+        return ("refl",)
+
+    result = policy_search.search(
+        "forall n. forall m. n = n",
+        FunctionPolicy(next_edge),
+        capabilities=_capabilities("intro", "refl"),
+        limits=_limits(),
+    )
+
+    assert result.status == "proof"
+    assert result.commands == ("intro n", "intro m", "refl")
+    assert result.candidates_executed == len(transitions) == 3
+    assert [(command, depth) for command, depth, _ in transitions] == [
+        ("intro n", 0),
+        ("intro m", 1),
+        ("refl", 2),
+    ]
+    assert len({id(trace) for _, _, trace in transitions}) == len(transitions)
+    assert all(trace.record_count == 0 for _, _, trace in transitions)
+
+
+def test_failed_tactical_cannot_modify_cached_parent_or_contaminate_sibling(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    real_surface = policy_search.run_surface
+    transitions: list[tuple[str, int, object]] = []
+
+    def observed_surface(owner, command, *, capabilities, record_trace):
+        transitions.append((command, len(owner.state.history), owner.trace))
+        return real_surface(
+            owner,
+            command,
+            capabilities=capabilities,
+            record_trace=record_trace,
+        )
+
+    monkeypatch.setattr(policy_search, "run_surface", observed_surface)
+    result = policy_search.search(
+        "forall n. n = n",
+        FunctionPolicy(
+            lambda goals, limit: (
+                ("intro n; left", "intro n")
+                if "∀" in goals[0]
+                else ("refl",)
+            )
+        ),
+        capabilities=_capabilities("intro", "left", "refl"),
+        limits=_limits(),
+    )
+
+    assert result.status == "proof"
+    assert result.commands == ("intro n", "refl")
+    assert result.candidates_executed == len(transitions) == 3
+    assert [(command, depth) for command, depth, _ in transitions] == [
+        ("intro n; left", 0),
+        ("intro n", 0),
+        ("refl", 1),
+    ]
+    assert transitions[0][2] is not transitions[1][2]
+    assert [item.kind for item in result.diagnostics] == ["tactic_error"]
+
+
+@pytest.mark.parametrize(
+    "corruption", ("target", "source", "mode", "authority", "commands", "goals")
+)
+def test_corrupted_cached_prefix_fails_closed_before_executing_next_edge(
+    monkeypatch: pytest.MonkeyPatch,
+    corruption: str,
+) -> None:
+    real_capture = policy_search._PrefixSnapshot.capture
+    capabilities = _capabilities("intro", "refl")
+    executed_commands: list[str] = []
+    real_surface = policy_search.run_surface
+
+    def corrupted_capture(cls, owner, *, commands, goals, capabilities):
+        del cls
+        snapshot = real_capture(
+            owner,
+            commands=commands,
+            goals=goals,
+            capabilities=capabilities,
+        )
+        if not commands:
+            return snapshot
+        if corruption == "target":
+            return replace(snapshot, target=parse_formula("0 = 0"))
+        if corruption == "source":
+            return replace(snapshot, theorem_source="0 = 0")
+        if corruption == "mode":
+            return replace(snapshot, classical=True)
+        if corruption == "authority":
+            return replace(
+                snapshot,
+                capabilities=SurfaceCapabilities(
+                    label="forged-prefix-authority",
+                    allowed_commands=frozenset({"intro", "refl"}),
+                    allowed_theorems=frozenset(),
+                ),
+            )
+        if corruption == "commands":
+            return replace(snapshot, commands=("intro forged",))
+        return replace(snapshot, goals=("⊢ 0 = 0",))
+
+    def observed_surface(owner, command, *, capabilities, record_trace):
+        executed_commands.append(command)
+        return real_surface(
+            owner,
+            command,
+            capabilities=capabilities,
+            record_trace=record_trace,
+        )
+
+    monkeypatch.setattr(
+        policy_search._PrefixSnapshot,
+        "capture",
+        classmethod(corrupted_capture),
+    )
+    monkeypatch.setattr(policy_search, "run_surface", observed_surface)
+    result = policy_search.search(
+        "forall n. n = n",
+        FunctionPolicy(
+            lambda goals, limit: ("intro n",) if "∀" in goals[0] else ("refl",)
+        ),
+        capabilities=capabilities,
+        limits=_limits(),
+    )
+
+    assert result.status == "exhausted"
+    assert result.commands == ()
+    assert result.certificate_nodes is None
+    assert executed_commands == ["intro n"]
+    assert result.candidates_executed == 2
+    assert [item.kind for item in result.diagnostics] == ["replay_error"]
+    assert "command 1" in result.diagnostics[0].message
+
+
+@pytest.mark.parametrize("corruption", ("target", "trace"))
+def test_successful_surface_cannot_replace_cached_branch_authority(
+    monkeypatch: pytest.MonkeyPatch,
+    corruption: str,
+) -> None:
+    real_surface = policy_search.run_surface
+
+    def corrupted_surface(owner, command, *, capabilities, record_trace):
+        next_owner = real_surface(
+            owner,
+            command,
+            capabilities=capabilities,
+            record_trace=record_trace,
+        )
+        if corruption == "target":
+            return replace(next_owner, original_target=parse_formula("0 = 1"))
+        return replace(
+            next_owner,
+            trace=policy_search.TraceLogger(session_id="forged-branch-trace"),
+        )
+
+    monkeypatch.setattr(policy_search, "run_surface", corrupted_surface)
+    result = policy_search.search(
+        "0 = 0",
+        FunctionPolicy(lambda goals, limit: ("refl",)),
+        capabilities=_capabilities("refl"),
+        limits=_limits(),
+    )
+
+    assert result.status == "exhausted"
+    assert result.commands == ()
+    assert result.certificate_nodes is None
+    assert [item.kind for item in result.diagnostics] == ["surface_error"]
+    assert "branch authority" in result.diagnostics[0].message
+
+
+@pytest.mark.parametrize("label", ("model-v1", "model-v2", "model-v3"))
+def test_frozen_model_surfaces_cannot_inherit_modern_compact_literal_authority(
+    label: str,
+) -> None:
+    capabilities = SurfaceCapabilities(
+        label=label,
+        allowed_commands=frozenset({"refl"}),
+        allowed_theorems=frozenset(),
+    )
+    assert policy_search.numeral_limit_for_capabilities(capabilities) == (
+        UNARY_NUMERAL_LIMIT
+    )
+
+    with pytest.raises(ValueError, match="257"):
+        policy_search.search(
+            "257 = 257",
+            FunctionPolicy(lambda goals, limit: ("refl",)),
+            capabilities=capabilities,
+            limits=_limits(),
+        )
+
+    result = policy_search.search(
+        "256 = 256",
+        FunctionPolicy(lambda goals, limit: ("refl",)),
+        capabilities=capabilities,
+        limits=_limits(),
+    )
+    assert result.proved is True
+
+
+def test_modern_policy_surface_accepts_compact_literals_up_to_its_current_limit() -> None:
+    capabilities = _capabilities("refl")
+    assert policy_search.numeral_limit_for_capabilities(capabilities) == MAX_NUMERAL
+
+    result = policy_search.search(
+        f"{MAX_NUMERAL} = {MAX_NUMERAL}",
+        FunctionPolicy(lambda goals, limit: ("refl",)),
+        capabilities=capabilities,
+        limits=_limits(),
+    )
+    assert result.proved is True
+    assert result.theorem == f"{MAX_NUMERAL} = {MAX_NUMERAL}"
+
+    with pytest.raises(ValueError, match=str(MAX_NUMERAL + 1)):
+        policy_search.search(
+            f"{MAX_NUMERAL + 1} = {MAX_NUMERAL + 1}",
+            FunctionPolicy(lambda goals, limit: ("refl",)),
+            capabilities=capabilities,
+            limits=_limits(),
+        )
+
+
+@pytest.mark.parametrize("label", ("model-v1", "model-v2", "model-v3"))
+def test_frozen_model_candidate_cannot_smuggle_newer_compact_witness(label: str) -> None:
+    capabilities = SurfaceCapabilities(
+        label=label,
+        allowed_commands=frozenset({"exists", "refl"}),
+        allowed_theorems=frozenset(),
+    )
+    result = policy_search.search(
+        "exists n. n = n",
+        FunctionPolicy(
+            lambda goals, limit: (
+                ("exists 257", "exists 5") if "∃" in goals[0] else ("refl",)
+            )
+        ),
+        capabilities=capabilities,
+        limits=_limits(),
+    )
+
+    assert result.proved is True
+    assert result.commands == ("exists 5", "refl")
+    assert result.candidates_executed == 2
+    assert [item.kind for item in result.diagnostics] == ["invalid_candidate"]
+    assert "257" in result.diagnostics[0].message
+
+
+def test_modern_policy_candidate_may_use_checked_compact_witness() -> None:
+    result = policy_search.search(
+        "exists n. n = n",
+        FunctionPolicy(
+            lambda goals, limit: (
+                ("exists 257",) if "∃" in goals[0] else ("refl",)
+            )
+        ),
+        capabilities=_capabilities("exists", "refl"),
+        limits=_limits(),
+    )
+
+    assert result.proved is True
+    assert result.commands == ("exists 257", "refl")
 
 
 def test_beam_keeps_a_sibling_and_backtracks_after_the_preferred_branch_dies() -> None:

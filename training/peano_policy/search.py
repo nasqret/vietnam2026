@@ -7,10 +7,12 @@ not inspect or construct proof terms itself: every edge is replayed through
 only after ``checked_surface_final`` checks the certificate against the
 independently retained original theorem.
 
-Search nodes contain inert command tuples rather than mutable sessions.  Each
-candidate edge is replayed from the root in a fresh ``ProofSession``.  Besides
-making failed siblings transactional, this avoids sharing a ``TraceLogger``
-or another branch-local owner across the frontier.
+Search nodes retain immutable, authority-bound proof-prefix snapshots rather
+than mutable sessions.  Each candidate restores its parent's persistent proof
+state into a fresh ``ProofSession`` with a fresh branch-local ``TraceLogger``
+and executes exactly one new public-surface edge.  Failed siblings therefore
+remain transactional without repeatedly replaying an already accepted prefix.
+The independent original-goal kernel finalization remains unchanged.
 """
 
 from __future__ import annotations
@@ -21,7 +23,7 @@ import json
 from typing import Literal, Protocol, runtime_checkable
 import unicodedata
 
-from peano_lab.engine.state import proof_size, start
+from peano_lab.engine.state import ProofState, proof_size, start
 from peano_lab.engine.tactics import (
     InvalidProof,
     TacticError,
@@ -35,9 +37,12 @@ from peano_lab.kernel.formulas import (
     parse_formula_with_names,
     pretty_formula,
 )
+from peano_lab.kernel.terms import UNARY_NUMERAL_LIMIT
 from peano_lab.ui.prove import (
     MAX_INPUT,
+    MAX_NUMERAL,
     ProofSession,
+    ReplayStep,
     SurfaceCapabilities,
     checked_surface_final,
     oversized_numeral,
@@ -47,6 +52,7 @@ from peano_lab.ui.prove import (
 
 MAX_SEARCH_DEPTH = 32
 MAX_DIAGNOSTIC_CHARS = 1_000
+FROZEN_POLICY_SURFACES = frozenset({"model-v1", "model-v2", "model-v3"})
 SearchStatus = Literal["proof", "exhausted", "limit"]
 
 
@@ -161,11 +167,102 @@ class SearchResult:
 
 
 @dataclass(frozen=True, slots=True)
+class _PrefixSnapshot:
+    """One immutable proof prefix, bound to its exact execution authority.
+
+    ``ProofState`` is persistent: its goals/history are tuples and its
+    substitution map is copied into a read-only mapping proxy.  Replay steps
+    and metavariable aliases are immutable tuples too.  In particular, this
+    snapshot never retains a ``ProofSession`` or its mutable ``TraceLogger``;
+    every edge receives a new branch-private logger upon restoration.
+    """
+
+    commands: tuple[str, ...]
+    goals: tuple[str, ...]
+    state: ProofState
+    meta_names: tuple[tuple[int, str], ...]
+    replay_steps: tuple[ReplayStep, ...]
+    target: Formula
+    names: tuple[str, ...]
+    theorem_source: str
+    classical: bool
+    capabilities: SurfaceCapabilities
+
+    @classmethod
+    def capture(
+        cls,
+        owner: ProofSession,
+        *,
+        commands: tuple[str, ...],
+        goals: tuple[str, ...],
+        capabilities: SurfaceCapabilities,
+    ) -> "_PrefixSnapshot":
+        if type(owner) is not ProofSession:
+            raise RuntimeError("proof-prefix owner is not an exact ProofSession")
+        if owner.trace.record_count:
+            raise RuntimeError("proof-prefix owner unexpectedly published trace records")
+        if owner.state.target != owner.original_target:
+            raise RuntimeError("proof-prefix state changed its original theorem")
+        if _canonical_goals(owner) != goals:
+            raise RuntimeError("proof-prefix state disagrees with its canonical goals")
+        return cls(
+            commands,
+            goals,
+            owner.state,
+            owner.meta_names,
+            owner.replay_steps,
+            owner.original_target,
+            owner.original_names,
+            owner.target_source,
+            owner.classical,
+            capabilities,
+        )
+
+    def restore(
+        self,
+        *,
+        commands: tuple[str, ...],
+        goals: tuple[str, ...],
+        target: Formula,
+        names: tuple[str, ...],
+        theorem_source: str,
+        classical: bool,
+        capabilities: SurfaceCapabilities,
+        replay_id: int,
+    ) -> ProofSession:
+        if (
+            self.commands != commands
+            or self.goals != goals
+            or self.target != target
+            or self.state.target != target
+            or self.names != names
+            or self.theorem_source != theorem_source
+            or self.classical != classical
+            or self.capabilities != capabilities
+        ):
+            raise RuntimeError("cached proof prefix disagrees with its execution authority")
+        owner = ProofSession(
+            state=self.state,
+            original_target=target,
+            original_names=names,
+            target_source=theorem_source,
+            classical=classical,
+            trace=TraceLogger(session_id=f"policy-search-replay-{replay_id}"),
+            meta_names=self.meta_names,
+            replay_steps=self.replay_steps,
+        )
+        if _canonical_goals(owner) != goals:
+            raise RuntimeError("cached proof prefix changed its canonical goals")
+        return owner
+
+
+@dataclass(frozen=True, slots=True)
 class _Node:
     commands: tuple[str, ...]
     goals: tuple[str, ...]
     state_sha256: str
     priority: tuple[object, ...]
+    prefix: _PrefixSnapshot
 
     @property
     def depth(self) -> int:
@@ -217,7 +314,23 @@ def _node_priority(
     )
 
 
-def _validate_candidate(value: object) -> tuple[str | None, str | None]:
+def numeral_limit_for_capabilities(capabilities: SurfaceCapabilities) -> int:
+    """Preserve frozen model literal profiles without limiting modern goals."""
+
+    if type(capabilities) is not SurfaceCapabilities:
+        raise TypeError("capabilities must be an exact SurfaceCapabilities value")
+    return (
+        UNARY_NUMERAL_LIMIT
+        if capabilities.label in FROZEN_POLICY_SURFACES
+        else MAX_NUMERAL
+    )
+
+
+def _validate_candidate(
+    value: object,
+    *,
+    numeral_limit: int = MAX_NUMERAL,
+) -> tuple[str | None, str | None]:
     if type(value) is not str:
         return None, "candidate is not tactic text"
     if not value:
@@ -233,7 +346,7 @@ def _validate_candidate(value: object) -> tuple[str | None, str | None]:
         for character in value
     ):
         return None, "candidate contains an unsafe control or format character"
-    oversized = oversized_numeral(value)
+    oversized = oversized_numeral(value, maximum=numeral_limit)
     if oversized is not None:
         return None, f"candidate contains resource-dangerous numeral {oversized}"
     head = value.split(maxsplit=1)[0]
@@ -286,17 +399,48 @@ def _replay(
     classical: bool,
     capabilities: SurfaceCapabilities,
     replay_id: int,
+    prefix: _PrefixSnapshot | None = None,
+    expected_goals: tuple[str, ...] | None = None,
 ) -> tuple[ProofSession | None, int | None, BaseException | None]:
-    """Replay one edge from the root; report the exact failing command index."""
+    """Extend a persistent prefix, preserving exact failing-command indices.
 
-    owner = _new_owner(
-        target,
-        names,
-        theorem_source,
-        classical=classical,
-        replay_id=replay_id,
-    )
-    for index, command in enumerate(commands):
+    The optional root-replay path remains available to repository diagnostics.
+    Production search always supplies its exact immutable parent snapshot and
+    executes only the candidate edge under a fresh branch-local trace owner.
+    """
+
+    if prefix is None:
+        owner = _new_owner(
+            target,
+            names,
+            theorem_source,
+            classical=classical,
+            replay_id=replay_id,
+        )
+        first_index = 0
+    else:
+        if not commands or expected_goals is None:
+            return None, 0, RuntimeError("cached proof prefix has no candidate edge")
+        try:
+            owner = prefix.restore(
+                commands=commands[:-1],
+                goals=expected_goals,
+                target=target,
+                names=names,
+                theorem_source=theorem_source,
+                classical=classical,
+                capabilities=capabilities,
+                replay_id=replay_id,
+            )
+        except Exception as exc:
+            # A corrupted non-root prefix is a previously accepted command,
+            # whereas a corrupted root has no earlier edge to name.
+            return None, max(len(commands) - 2, 0), exc
+        first_index = len(commands) - 1
+
+    branch_trace = owner.trace
+    for index in range(first_index, len(commands)):
+        command = commands[index]
         try:
             owner = run_surface(
                 owner,
@@ -304,6 +448,17 @@ def _replay(
                 capabilities=capabilities,
                 record_trace=False,
             )
+            if (
+                type(owner) is not ProofSession
+                or owner.original_target != target
+                or owner.state.target != target
+                or owner.original_names != names
+                or owner.target_source != theorem_source
+                or owner.classical != classical
+                or owner.trace is not branch_trace
+                or branch_trace.record_count
+            ):
+                raise RuntimeError("proof edge changed its theorem or branch authority")
         except Exception as exc:
             return None, index, exc
     return owner, None, None
@@ -336,13 +491,14 @@ def search(
         for character in theorem
     ):
         raise ValueError("theorem contains an unsafe control or format character")
-    oversized = oversized_numeral(theorem)
+    if type(capabilities) is not SurfaceCapabilities:
+        raise TypeError("capabilities must be an exact SurfaceCapabilities value")
+    numeral_limit = numeral_limit_for_capabilities(capabilities)
+    oversized = oversized_numeral(theorem, maximum=numeral_limit)
     if oversized is not None:
         raise ValueError(f"theorem contains resource-dangerous numeral {oversized}")
     if type(classical) is not bool:
         raise TypeError("classical must be a Boolean")
-    if type(capabilities) is not SurfaceCapabilities:
-        raise TypeError("capabilities must be an exact SurfaceCapabilities value")
     if type(limits) is not SearchLimits:
         raise TypeError("limits must be an exact SearchLimits value")
     if not isinstance(policy, CandidatePolicy):
@@ -370,7 +526,18 @@ def search(
     )
     root_goals = _canonical_goals(root_owner)
     root_key = state_sha256(root_goals)
-    root = _Node((), root_goals, root_key, (len(root_goals), 0, 0, 0, ()))
+    root = _Node(
+        (),
+        root_goals,
+        root_key,
+        (len(root_goals), 0, 0, 0, ()),
+        _PrefixSnapshot.capture(
+            root_owner,
+            commands=(),
+            goals=root_goals,
+            capabilities=capabilities,
+        ),
+    )
 
     frontier = (root,)
     # The digest is diagnostic only.  Deduplication compares the complete
@@ -463,7 +630,10 @@ def search(
             for proposal_rank, raw_command in enumerate(
                 proposed[: limits.candidates_per_state]
             ):
-                command, error = _validate_candidate(raw_command)
+                command, error = _validate_candidate(
+                    raw_command,
+                    numeral_limit=numeral_limit,
+                )
                 if command is None:
                     diagnostic(
                         "invalid_candidate",
@@ -493,6 +663,8 @@ def search(
                     classical=classical,
                     capabilities=capabilities,
                     replay_id=replay_id,
+                    prefix=node.prefix,
+                    expected_goals=node.goals,
                 )
                 if owner is None:
                     assert failed_index is not None and replay_error is not None
@@ -569,6 +741,12 @@ def search(
                         parent_rank=parent_rank,
                         commands=path,
                     ),
+                    _PrefixSnapshot.capture(
+                        owner,
+                        commands=path,
+                        goals=goals,
+                        capabilities=capabilities,
+                    ),
                 )
                 if goals in seen:
                     existing = next_nodes.get(goals)
@@ -630,11 +808,13 @@ def search(
 
 __all__ = [
     "MAX_SEARCH_DEPTH",
+    "FROZEN_POLICY_SURFACES",
     "CandidatePolicy",
     "SearchDiagnostic",
     "SearchLimits",
     "SearchResult",
     "SearchStatus",
+    "numeral_limit_for_capabilities",
     "search",
     "state_sha256",
 ]

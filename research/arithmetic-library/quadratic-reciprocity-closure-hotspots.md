@@ -4,6 +4,15 @@ Date: **2026-07-30**; dependency-hygiene seal refreshed **2026-08-03**
 
 Scope: exact graph rooted at `quadratic_reciprocity_combined`
 
+**2026-08-25 completion note.** The lower bound in this historical audit
+applies only to naive recursive dependency expansion. The genuine layered
+compiler subsequently proved the full root using **54,870** ordinary proof
+nodes, **35,052** proof objects, and depth **129**, all accepted by the
+unchanged empty-context kernel. An independently Lean-verified canonical
+557-node/1,787-edge proof bundle confirms the same theorem. See the
+[complete closure receipt](quadratic-reciprocity-closure-receipt.md) for the
+current graph identity, exact retained artifact, and reproducible checks.
+
 Graph SHA-256: `98a36450cfe1de29c20be67a1c5f65c8064e9f9eec5368ab769065f910008698`
 
 Candidate-source SHA-256: `23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1`

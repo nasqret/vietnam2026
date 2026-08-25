@@ -97,6 +97,16 @@ PINNED_ASSETS = {
     "assets/explorer.css": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220",
     "assets/explorer.js": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982",
 }
+ALPHA_RELEASE_FIELDS = (
+    "alpha_edition_version",
+    "alpha_edition_identity_sha256",
+    "alpha_edition_checked_use_count",
+    "graph_checked_use_count",
+    "graph_stable_closed_count",
+    "graph_alpha_closed_count",
+    "graph_newly_promoted_count",
+    "source_scope_policy",
+)
 
 
 class DefinedEditionError(ValueError):
@@ -584,8 +594,8 @@ def _render_theorem(
     lines = "".join(line_rows)
     prev_link = f'<a href="{_e(previous["tag"])}.html">← {_e(previous["name"])}</a>' if previous else ""
     next_link = f'<a href="{_e(following["tag"])}.html">{_e(following["name"])} →</a>' if following else ""
-    body = f'''<header class="pd-header"><nav><a href="../index.html">Defined edition</a><a href="../../tag/{_e(row["tag"])}.html">Explicit edition</a><a href="../graph.html?target={_e(row["tag"])}">Mixed graph</a>{prev_link}{next_link}</nav><p class="pd-kicker">{_e(row["tag"])} · theorem</p><h1>{_e(row["name"])}</h1><p class="pd-status pd-status-{_e(row["scope"])}">{_e(row["status_label"])}</p><p>{_e(row["summary"])}</p></header>
-<main class="pd-theorem-layout"><div><section><h2>Statement with defined notation</h2><button type="button" data-copy-target="defined-statement">Copy text</button><pre id="defined-statement"><code>{_render_defined_parts(defined["statement_parts"])}</code></pre><p class="pd-callout">Every purple notation token opens its conservative definition. This is a reading surface; the compiler expands the statement before the unchanged kernel checks it.</p></section><section><h2>Definitions used by this theorem</h2><h3>In the theorem statement</h3><div class="pd-chip-row">{_definition_chips(statement_uses, definitions)}</div><p>{sum(defined["statement_definition_uses"].values())} occurrences</p><h3>In local proof propositions</h3><div class="pd-chip-row">{_definition_chips(script_uses, definitions)}</div><p>{sum(defined["script_definition_uses"].values())} occurrences</p></section><details><summary>Exact expanded native-PA statement</summary><button type="button" data-copy-target="expanded-statement">Copy expansion</button><pre id="expanded-statement"><code>{_e(row["statement"])}</code></pre></details><section><h2>Proof neighborhood</h2><h3>Direct theorem prerequisites</h3><div class="pd-chip-row">{_relation(row["dependencies"])}</div><h3>Direct theorem dependents</h3><div class="pd-chip-row">{_relation(row["dependents"])}</div></section><section><h2>Definition-aware tactic body</h2><p>Only local propositions introduced by <code>have</code> or <code>suffices</code> are compacted. The untrusted compiler re-expands each one before the original tactic script is replayed; defined notation is never accepted by the kernel. Open the exact replay line beneath every changed command.</p><ol class="pd-formal-proof">{lines}</ol></section></div><aside><h2>Display receipt</h2><dl><dt>Proof layer</dt><dd>{row["layer"]}</dd><dt>Defined-notation uses</dt><dd>{sum(defined["definition_uses"].values())}</dd><dt>Statement definitions</dt><dd>{len(statement_uses)}</dd><dt>Local-proof definitions</dt><dd>{len(script_uses)}</dd><dt>Compacted local lines</dt><dd>{changed_line_count}</dd><dt>Exact statement SHA-256</dt><dd><code>{_e(row["statement_sha256"])}</code></dd><dt>Explicit proof</dt><dd><a href="../../tag/{_e(row["tag"])}.html">open immutable explicit page</a></dd><dt>Native source</dt><dd><a href="{_e(row["source"]["href"])}">{_e(row["source"]["path"])}:{row["source"]["line"]}</a></dd></dl></aside></main>'''
+    body = f'''<header class="pd-header"><nav><a href="../index.html">Defined edition</a><a href="../../tag/{_e(row["tag"])}.html">Explicit edition</a><a href="../graph.html?target={_e(row["tag"])}">Mixed graph</a>{prev_link}{next_link}</nav><p class="pd-kicker">{_e(row["tag"])} · theorem</p><h1>{_e(row["name"])}</h1><p class="pd-status pd-status-public">{_e(row["status_label"])}</p><p>{_e(row["summary"])}</p></header>
+<main class="pd-theorem-layout"><div><section><h2>Statement with defined notation</h2><button type="button" data-copy-target="defined-statement">Copy text</button><pre id="defined-statement"><code>{_render_defined_parts(defined["statement_parts"])}</code></pre><p class="pd-callout">Every purple notation token opens its conservative definition. This is a reading surface; the compiler expands the statement before the unchanged kernel checks it.</p></section><section><h2>Definitions used by this theorem</h2><h3>In the theorem statement</h3><div class="pd-chip-row">{_definition_chips(statement_uses, definitions)}</div><p>{sum(defined["statement_definition_uses"].values())} occurrences</p><h3>In local proof propositions</h3><div class="pd-chip-row">{_definition_chips(script_uses, definitions)}</div><p>{sum(defined["script_definition_uses"].values())} occurrences</p></section><details><summary>Exact expanded native-PA statement</summary><button type="button" data-copy-target="expanded-statement">Copy expansion</button><pre id="expanded-statement"><code>{_e(row["statement"])}</code></pre></details><section><h2>Proof neighborhood</h2><h3>Direct theorem prerequisites</h3><div class="pd-chip-row">{_relation(row["dependencies"])}</div><h3>Direct theorem dependents</h3><div class="pd-chip-row">{_relation(row["dependents"])}</div></section><section><h2>Definition-aware tactic body</h2><p>Only local propositions introduced by <code>have</code> or <code>suffices</code> are compacted. The untrusted compiler re-expands each one before the original tactic script is replayed; defined notation is never accepted by the kernel. Open the exact replay line beneath every changed command.</p><ol class="pd-formal-proof">{lines}</ol></section></div><aside><h2>Display receipt</h2><dl><dt>Proof layer</dt><dd>{row["layer"]}</dd><dt>Current Alpha edition</dt><dd>{_e(row["alpha_edition_version"])}</dd><dt>Current release evidence</dt><dd>{_e(row["alpha_evidence"])}</dd><dt>Checked theorem use</dt><dd>{"yes" if row["alpha_checked_use"] else "no"}</dd><dt>Stable membership</dt><dd>{"yes" if row["stable_member"] else "no"}</dd><dt>Historical source origin</dt><dd>{"Stable public-theorem source" if row["scope"] == "public" else "candidate-factory source; Alpha-only"}</dd><dt>Defined-notation uses</dt><dd>{sum(defined["definition_uses"].values())}</dd><dt>Statement definitions</dt><dd>{len(statement_uses)}</dd><dt>Local-proof definitions</dt><dd>{len(script_uses)}</dd><dt>Compacted local lines</dt><dd>{changed_line_count}</dd><dt>Exact statement SHA-256</dt><dd><code>{_e(row["statement_sha256"])}</code></dd><dt>Explicit proof</dt><dd><a href="../../tag/{_e(row["tag"])}.html">open immutable explicit page</a></dd><dt>Native source</dt><dd><a href="{_e(row["source"]["href"])}">{_e(row["source"]["path"])}:{row["source"]["line"]}</a></dd></dl></aside></main>'''
     return _page(f'{row["tag"]} — {row["name"]} — defined notation', "theorem", body, "../")
 
 
@@ -619,11 +629,22 @@ def _mixed_graph(
     identity_sha: str,
 ) -> dict[str, Any]:
     by_definition = {row["id"]: row for row in definitions}
+    node_release_fields = (
+        "alpha_edition_version", "alpha_evidence",
+        "alpha_checked_use", "stable_member",
+    )
+    for row in theorem_records:
+        present = [key for key in node_release_fields if key in row]
+        if present and len(present) != len(node_release_fields):
+            raise DefinedEditionError(
+                f"theorem {row.get('name')!r} has incomplete Alpha release evidence"
+            )
     nodes: list[dict[str, Any]] = [
         {
             "id": row["tag"], "kind": "theorem", "tag": row["tag"],
             "name": row["name"], "scope": row["scope"], "status": row["status"],
             "layer": row["layer"], "summary": row["summary"],
+            **{key: row[key] for key in node_release_fields if key in row},
             "href": f'tag/{row["tag"]}.html',
         }
         for row in theorem_records
@@ -682,6 +703,11 @@ def _mixed_graph(
         },
         "path_policy": "proof_dependency_edges_only",
         "edition_identity_sha256": identity_sha,
+        **{
+            key: explicit_graph[key]
+            for key in ALPHA_RELEASE_FIELDS
+            if key in explicit_graph
+        },
         "theorem_count": len(theorem_records),
         "definition_count": len(definitions),
         "proof_edge_count": len(proof_edges),
@@ -721,14 +747,14 @@ def _graph_schema() -> dict[str, Any]:
 
 def _render_index(theorems: Sequence[Mapping[str, Any]], definitions: Sequence[Mapping[str, Any]]) -> bytes:
     theorem_cards = "".join(
-        f'<article class="pd-result" data-entry data-kind="theorem" data-search="{_e(" ".join((row["name"], row["tag"], row["summary"], row["defined"]["defined_statement"])).lower())}"><a href="tag/{_e(row["tag"])}.html"><code>{_e(row["tag"])}</code> · <strong>{_e(row["name"])}</strong></a><p>{_e(row["summary"])}</p><small>theorem · proof layer {row["layer"]} · {len(row["defined"]["definition_uses"])} definitions</small></article>'
+        f'<article class="pd-result" data-entry data-kind="theorem" data-search="{_e(" ".join((row["name"], row["tag"], row["summary"], row["defined"]["defined_statement"], row["status_label"])).lower())}"><a href="tag/{_e(row["tag"])}.html"><code>{_e(row["tag"])}</code> · <strong>{_e(row["name"])}</strong></a><p>{_e(row["summary"])}</p><small>{_e(row["status_label"])} · proof layer {row["layer"]} · {len(row["defined"]["definition_uses"])} definitions</small></article>'
         for row in theorems
     )
     definition_cards = "".join(
         f'<article class="pd-result pd-result-definition" data-entry data-kind="definition" data-search="{_e(" ".join((row["name"], row["id"], row["signature"], row["summary"])).lower())}"><a href="definition/{_e(row["id"])}.html"><code>{_e(row["id"])}</code> · <strong>{_e(row["name"])}</strong></a><p>{_e(row["summary"])}</p><small>conservative definition · not a theorem</small></article>'
         for row in definitions
     )
-    body = f'''<header class="pd-header pd-hero"><nav><a href="../index.html">Exact explicit edition</a><a href="graph.html?target=PA00FW">Mixed dependency graph</a><a href="../../../arithmetic-library/defined-proof-explorer.html">Jupyter Book guide</a></nav><p class="pd-kicker">Parallel reading edition</p><h1>Native PA with defined notation</h1><p>Readable conservative notation is linked to exact expansions while the complete explicit tactic corpus remains visible.</p><div class="pd-stats"><b>{len(theorems)}</b> theorems · <b>{len(definitions)}</b> definitions</div></header><main data-defined-dashboard><section class="pd-controls"><label>Search <input data-search type="search"></label><label>Kind <select data-kind><option value="all">Theorems and definitions</option><option value="theorem">Theorems</option><option value="definition">Definitions</option></select></label><button data-clear type="button">Clear</button><output data-count>{len(theorems) + len(definitions)} entries</output></section><section class="pd-results">{definition_cards}{theorem_cards}</section></main>'''
+    body = f'''<header class="pd-header pd-hero"><nav><a href="../index.html">Exact explicit edition</a><a href="graph.html?target=PA00FW">Mixed dependency graph</a><a href="../../../arithmetic-library/defined-proof-explorer.html">Jupyter Book guide</a></nav><p class="pd-kicker">Parallel reading edition</p><h1>Native PA with defined notation</h1><p>Readable conservative notation is linked to exact expansions while the complete explicit tactic corpus remains visible.</p><div class="pd-stats"><b>{len(theorems)}</b> checked-use theorems · <b>{len(definitions)}</b> definitions</div><p>Alpha v16 closes all 557 theorem nodes: 241 are Stable and 316 are checked-use Alpha-only; source provenance never grants Stable membership.</p></header><main data-defined-dashboard><section class="pd-controls"><label>Search <input data-search type="search"></label><label>Kind <select data-kind><option value="all">Theorems and definitions</option><option value="theorem">Theorems</option><option value="definition">Definitions</option></select></label><button data-clear type="button">Clear</button><output data-count>{len(theorems) + len(definitions)} entries</output></section><section class="pd-results">{definition_cards}{theorem_cards}</section></main>'''
     return _page("Native PA with defined notation", "index", body)
 
 
@@ -751,19 +777,86 @@ def _render_graph(graph: Mapping[str, Any]) -> bytes:
 <p id="pd-graph-instructions" class="pd-graph-note">Shown proof arrows run from prerequisite to dependent; notation arrows run from a theorem or definition to the definition it uses. Select a node or compact mark to inspect every direct relation.</p>
 <div class="pd-legend"><span><i class="pd-legend-theorem"></i> theorem</span><span><i class="pd-legend-definition"></i> definition</span><span><i class="pd-legend-proof"></i> proof dependency</span><span><i class="pd-legend-notation"></i> uses definition</span></div></section>
 <aside class="pd-graph-details"><p class="pd-kicker">Selected node</p><h2 data-graph-title tabindex="-1">Loading…</h2><p data-graph-kind></p><p data-graph-description></p><dl data-graph-metadata></dl><p><a data-graph-open href="index.html">Open node →</a></p><h3>Outgoing relations</h3><ul data-graph-outgoing></ul><h3>Incoming relations</h3><ul data-graph-incoming></ul></aside></div>
-<noscript><p class="pd-callout">The graph requires JavaScript. Every theorem and definition page remains available from the index.</p></noscript></main><script id="pa-defined-graph-data">{inline}</script>'''
+<noscript><p class="pd-callout">The graph requires JavaScript. Every theorem and definition page remains available from the index.</p></noscript></main><script id="pa-defined-graph-data">{inline}</script>
+<script id="pa-defined-release-evidence">
+(function () {{
+  "use strict";
+  function install() {{
+    var root = document.querySelector("[data-defined-graph]");
+    var payload = window.PA_DEFINED_GRAPH;
+    if (!root || !payload || !Array.isArray(payload.nodes)) return;
+    var title = root.querySelector("[data-graph-title]");
+    var kind = root.querySelector("[data-graph-kind]");
+    if (!title || !kind || typeof MutationObserver !== "function") return;
+    var nodes = new Map(payload.nodes.map(function (node) {{
+      return [node.id, node];
+    }}));
+    function showEvidence() {{
+      var id = title.textContent.split(" · ", 1)[0].trim();
+      var node = nodes.get(id);
+      if (!node || node.kind !== "theorem" || node.alpha_checked_use !== true) return;
+      kind.textContent = node.stable_member ?
+        "Stable checked-use theorem; independently closed" :
+        "Alpha v16 checked-use theorem; independently closed; not Stable";
+    }}
+    new MutationObserver(showEvidence).observe(title, {{
+      childList: true, characterData: true, subtree: true
+    }});
+    showEvidence();
+  }}
+  if (document.readyState === "loading") {{
+    document.addEventListener("DOMContentLoaded", install, {{ once: true }});
+  }} else {{
+    install();
+  }}
+}})();
+</script>'''
     return _page("Theorems and definitions — Native PA", "graph", body)
 
 
 def build_files(raw_edition: Mapping[str, Any] | None = None) -> tuple[dict[str, bytes], dict[str, Any]]:
     explicit_corpus = _json_object(EXPLICIT_CORPUS, "explicit proof corpus")
     explicit_graph = _json_object(EXPLICIT_GRAPH, "explicit theorem graph")
+    missing_evidence = [
+        key for key in ALPHA_RELEASE_FIELDS
+        if key not in explicit_corpus or key not in explicit_graph
+    ]
+    if missing_evidence:
+        raise DefinedEditionError(
+            "explicit explorer is missing sealed Alpha-v16 release evidence: "
+            + ", ".join(missing_evidence)
+        )
+    release_receipt = {key: explicit_corpus[key] for key in ALPHA_RELEASE_FIELDS}
+    if any(explicit_graph[key] != value for key, value in release_receipt.items()):
+        raise DefinedEditionError("explicit corpus and graph Alpha-v16 evidence disagree")
+    if (
+        release_receipt["alpha_edition_version"] != "v16"
+        or release_receipt["source_scope_policy"]
+        != "historical_origin_not_current_release_authority"
+        or release_receipt["graph_checked_use_count"]
+        != explicit_corpus.get("theorem_count")
+        or release_receipt["graph_stable_closed_count"]
+        != explicit_corpus.get("public_count")
+        or release_receipt["graph_alpha_closed_count"]
+        != explicit_corpus.get("candidate_count")
+    ):
+        raise DefinedEditionError("explicit Alpha-v16 release evidence is inconsistent")
     explicit_records = _sequence(explicit_corpus.get("theorems"), "explicit corpus.theorems")
     edition = validate_edition(raw_edition or load_defined_edition(), explicit_records)
     edition_by_name = {row["name"]: row for row in edition["theorems"]}
     theorem_records: list[dict[str, Any]] = []
     for explicit in explicit_records:
         row = dict(explicit)
+        if (
+            row.get("alpha_edition_version") != "v16"
+            or row.get("alpha_checked_use") is not True
+            or row.get("alpha_evidence")
+            != ("stable_closed" if row.get("scope") == "public" else "alpha_closed")
+            or row.get("stable_member") is not (row.get("scope") == "public")
+        ):
+            raise DefinedEditionError(
+                f"explicit theorem {row.get('name')!r} has inconsistent Alpha-v16 evidence"
+            )
         row["defined"] = edition_by_name[row["name"]]
         theorem_records.append(row)
     if [row["tag"] for row in theorem_records] != [node["tag"] for node in explicit_graph["nodes"]]:
@@ -785,12 +878,18 @@ def build_files(raw_edition: Mapping[str, Any] | None = None) -> tuple[dict[str,
         "schema": "peano-lab-pa-defined-corpus-v1",
         "edition_identity_sha256": edition["identity_sha256"],
         "explicit_corpus_sha256": _digest(EXPLICIT_CORPUS.read_bytes()),
+        **release_receipt,
         "theorem_count": len(theorem_records),
         "definition_count": len(definitions),
         "theorems": [
             {
                 "tag": row["tag"], "name": row["name"], "scope": row["scope"],
                 "status": row["status"], "layer": row["layer"],
+                "status_label": row["status_label"],
+                "alpha_edition_version": row["alpha_edition_version"],
+                "alpha_evidence": row["alpha_evidence"],
+                "alpha_checked_use": row["alpha_checked_use"],
+                "stable_member": row["stable_member"],
                 "summary": row["summary"], "defined": row["defined"],
                 "explicit_statement": row["statement"],
                 "explicit_statement_sha256": row["statement_sha256"],
@@ -835,6 +934,7 @@ def build_files(raw_edition: Mapping[str, Any] | None = None) -> tuple[dict[str,
         "edition_identity_sha256": edition["identity_sha256"],
         "explicit_corpus_sha256": _digest(EXPLICIT_CORPUS.read_bytes()),
         "explicit_graph_sha256": _digest(EXPLICIT_GRAPH.read_bytes()),
+        **release_receipt,
         "theorem_count": len(theorem_records), "definition_count": len(definitions),
         "proof_edge_count": graph["proof_edge_count"],
         "notation_edge_count": graph["notation_edge_count"],

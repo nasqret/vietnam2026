@@ -52,13 +52,16 @@ badge.
 |---|---|
 | `public` | The theorem is in the current Peano Lab registry and its ordinary empty-context replay is the public path. |
 | `candidate_body_checked` | The dependency-curried tactic body has been independently kernel checked, but the closed dependency package is not publicly admitted. |
-| `pending_layered_closure` | The QR candidate additionally awaits the exact WMI layered compile/check, mutation, capacity, and deterministic-replay gates. |
+| `pending_layered_closure` | Historical sealed Alpha-v15 evidence for the QR root before its independently checked immutable Alpha-v16 promotion. |
+| `alpha_closed` | A complete actual empty-context proof has been independently checked and the theorem has explicit Alpha checked-use authority without Stable membership. |
 | `admitted` | Reserved for the future state after registry enrollment, release regeneration, and browser replay. |
 | `tombstone` | The stable tag is retained, but the former item is no longer live; the reason must be recorded. |
 
-In particular, `quadratic_reciprocity_combined` is not displayed as a public
-theorem before the WMI and release gates pass. A graph hash, source hash,
-dashboard page, or body receipt is provenance, never theorem authority.
+In particular, `quadratic_reciprocity_combined` is now displayed as
+Alpha-closed with genuine checked-use authority, not as a Stable/public
+theorem. Historical source scope remains `candidate`, while current v16
+evidence is a distinct explicitly identified field. A graph hash, source
+hash, dashboard page, or body receipt is provenance, never theorem authority.
 
 ## Canonical theorem record
 

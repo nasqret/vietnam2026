@@ -9,7 +9,7 @@ Five static targets on the faculty server (`bnaskrecki@lts-faculty.wmi.amu.edu.p
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | Quadratic Reciprocity and Bertrand proof families |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | eight proof families, the grand campaign atlas, and downloadable QR proof artifacts |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
 
@@ -28,10 +28,14 @@ targets; `make deploy` does not publish either Peano channel.
 make deploy-proofs
 ```
 
-This rebuilds both the exact and definition-aware editions of each proof
-family, stages them under `_deploy/proofs`, and publishes only the dedicated
-`~/public_html/proofs/` directory. Each family landing page recommends its
-linked-definition view while retaining the unchanged fully expanded PA proof.
+This rebuilds both exact and definition-aware proof editions, stages the
+quadratic-reciprocity, Bertrand, supplementary-law, Kummer, two-square,
+four-square, Lucas, and Pythagorean/Fermat-four families under `_deploy/proofs`,
+and publishes only the dedicated `~/public_html/proofs/` directory. It also
+publishes the 120-milestone constructive grand campaign and the complete
+independently checked 557-node quadratic-reciprocity proof artifact. Each
+family retains the unchanged fully expanded PA proof and its honest current
+release-evidence boundary.
 
 ## Step by step
 
@@ -89,7 +93,8 @@ bash scripts/verify_peano_delivery.sh \
 ```
 
 The verifier fails unless the page is byte-identical and `no-store`; the remote application
-manifest and all 34 worker/Python entries match local hashes; normal, `206`, and `304` versioned
+manifest and every worker, Python source, and packaged QR proof-artifact entry match local hashes;
+normal, `206`, and `304` versioned
 responses are immutable while HTML `200`/`304` stays `no-store`; negotiated WASM is Brotli/gzip with `Vary: Accept-Encoding`; `br;q=0` falls back to
 gzip; identity, ZIP, and WOFF2 are not encoded; the 404 is `no-store`; decoded WASM matches the
 pinned local hash; and curl's encoded `size_download` is below 3,000,000 bytes. Its final line
@@ -101,6 +106,13 @@ tree. Record a clean candidate commit before staging and do not change either `H
 until production is verified. `make deploy-peano-next` and `make deploy-peano` intentionally do not
 use remote `--delete`, because an older open page must retain its immutable worker and runtime
 through the release transition.
+
+If faculty hosting strips the `Cache-Control` headers declared in the deployed
+`.htaccess`, the staging verifier must fail and production promotion must stop.
+Restoring Apache header support or preventing an upstream proxy from removing
+those headers requires hosting-administrator action; missing cache guarantees
+must not be bypassed by weakening the verifier or publishing production
+directly.
 
 ## GitHub
 

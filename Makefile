@@ -22,7 +22,7 @@ PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
-override PEANOAPPID := a-526f19ff3b30
+override PEANOAPPID := a-a23474e356c4
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs deploy-site deploy-lab deploy-lab-next deploy-peano \
@@ -97,6 +97,10 @@ help:
 	@echo "  make peano-library-alpha-v15-check  independently verify Alpha v15 and its body-only admission"
 	@echo "  make peano-library-channels-v15  compatibility alias for the supplementary/two-square Alpha v15 build"
 	@echo "  make peano-library-channels-v15-check  compatibility alias for the supplementary/two-square Alpha v15 check"
+	@echo "  make peano-library-alpha-v16  seal the independently closed quadratic-reciprocity Alpha v16 evidence promotion"
+	@echo "  make peano-library-alpha-v16-check  independently verify all genuine QR proofs, immutable history, and 315 checked-use promotions"
+	@echo "  make peano-library-channels-v16  compatibility alias for the current Alpha v16 build"
+	@echo "  make peano-library-channels-v16-check  compatibility alias for the current Alpha v16 check"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
 	@echo "  make ha-constructive-frontier-check  replay ordered stages 1-6 in bounded isolated proof processes"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
@@ -467,6 +471,22 @@ peano-library-alpha-v15-check:
 	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
 		tests/test_library_editions_v15_admission.py
 
+.PHONY: peano-library-alpha-v16 peano-library-alpha-v16-check \
+	peano-library-channels-v16 peano-library-channels-v16-check
+
+peano-library-alpha-v16:
+	@# Decode and check all 557 actual intuitionistic proof bodies.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v16.py
+
+peano-library-alpha-v16-check:
+	@# Every gate checks real proof data while preserving isolated proof caches.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v16.py --check
+	PYTHONMALLOC=malloc python3 scripts/verify_peano_library_channels_v16.py
+	PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		scripts/test_verify_peano_library_channels_v16.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_library_editions_v16_admission.py
+
 peano-library-channels: peano-library-alpha
 
 peano-library-channels-check: peano-library-alpha-check
@@ -526,6 +546,10 @@ peano-library-channels-v14-check: peano-library-alpha-v14-check
 peano-library-channels-v15: peano-library-alpha-v15
 
 peano-library-channels-v15-check: peano-library-alpha-v15-check
+
+peano-library-channels-v16: peano-library-alpha-v16
+
+peano-library-channels-v16-check: peano-library-alpha-v16-check
 
 ha-number-theory-check:
 	python3 scripts/verify_ha_number_theory_campaign.py
@@ -747,8 +771,11 @@ deploy-site: stage
 	rsync -avz --delete $(STAGE)/ $(SERVER):$(SITE)/
 
 stage-proofs: book-proof-explorer book-constructive-frontier-explorer
+	@python3 scripts/sync_constructive_grand_campaign.py --check
 	rm -rf "$(STAGEPROOFS)"
 	mkdir -p "$(STAGEPROOFS)/assets"
+	mkdir -p "$(STAGEPROOFS)/grand-campaign"
+	mkdir -p "$(STAGEPROOFS)/artifacts"
 	mkdir -p "$(STAGEPROOFS)/quadratic-reciprocity/explorer"
 	mkdir -p "$(STAGEPROOFS)/bertrand-postulate/explorer"
 	cp deploy/proofs/index.html "$(STAGEPROOFS)/index.html"
@@ -759,6 +786,12 @@ stage-proofs: book-proof-explorer book-constructive-frontier-explorer
 	cp deploy/proofs/proofs.css "$(STAGEPROOFS)/assets/proofs.css"
 	cp deploy/proofs/proofs-og.png "$(STAGEPROOFS)/assets/proofs-og.png"
 	cp deploy/proofs/.htaccess "$(STAGEPROOFS)/.htaccess"
+	rsync -a --delete book/_static/constructive-grand-campaign/ \
+		"$(STAGEPROOFS)/grand-campaign/"
+	cp research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json \
+		"$(STAGEPROOFS)/artifacts/quadratic-reciprocity-proof-bundle-v1.json"
+	cp research/arithmetic-library/quadratic-reciprocity-closure-receipt.md \
+		"$(STAGEPROOFS)/artifacts/quadratic-reciprocity-closure-receipt.md"
 	rsync -a --delete --exclude '.DS_Store' \
 		book/_static/pa-proof-explorer/ \
 		"$(STAGEPROOFS)/quadratic-reciprocity/explorer/"
@@ -823,11 +856,13 @@ stage-peano:
 		{ echo "index.html APP_ROOT does not match PEANOAPPID" >&2; exit 1; }
 	@grep -Eq 'const BUILD="[^"]+";' peano-lab/index.html || \
 		{ echo "index.html has no human-facing BUILD" >&2; exit 1; }
-	rm -rf "$(STAGEPEANO)" && mkdir -p "$(STAGEPEANO)/releases/$(PEANOAPPID)"
+	rm -rf "$(STAGEPEANO)" && mkdir -p "$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts"
 	cp peano-lab/index.html "$(STAGEPEANO)/index.html"
 	cp peano-lab/.htaccess  "$(STAGEPEANO)/.htaccess"
 	cp peano-lab/worker.js "$(STAGEPEANO)/releases/$(PEANOAPPID)/worker.js"
 	cp peano-lab/APP_MANIFEST.sha256 "$(STAGEPEANO)/releases/$(PEANOAPPID)/APP_MANIFEST.sha256"
+	cp research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json"
 	rsync -a --delete --exclude '/tests/***' --exclude '__pycache__/' --exclude '.pytest_cache/' --include '*/' --include '*.py' --exclude '*' peano-lab/py/ "$(STAGEPEANO)/releases/$(PEANOAPPID)/py/"
 	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"
 	@echo "Staged Peano Lab in $(STAGEPEANO)"

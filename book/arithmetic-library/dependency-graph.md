@@ -10,9 +10,10 @@ as the target.
 These 557 nodes are exactly the reciprocity campaign slice: 241 Stable
 prerequisites and 316 Alpha-only specifications. The complete Stable catalog
 has 432 rows, of which 191 are outside this graph. Stable union this slice has
-748 distinct theorem names, while current canonical Alpha v2 has 902 and its
-sealed v1 parent has 885. Other Alpha layers such as K3B and K3C are separate
-until the unified Alpha explorer is generated. See {doc}`Alpha and
+748 distinct theorem names, while current canonical Alpha v16 has 1,673
+enrolled rows and 885 independently checked-use theorems. Other Alpha layers
+such as K3B, K3C, Bertrand, Lucas, and four squares are separate from this
+focused graph. See {doc}`Alpha and
 Stable library editions <library-editions>`.
 ```
 
@@ -131,25 +132,25 @@ exact dependency record.
 
 Node color and the details panel preserve the same status distinctions as the
 {doc}`proof explorer <proof-explorer>`. The live closure contains 241 Stable
-theorems and 316 Alpha-only specifications. Canonical Alpha evidence partitions
-those 316 rows into 314 body-checked-only rows, the Alpha-closed
-`mod_eq_add_cancel_left` overlap, and the pending root. The older QR corpus
-still labels that overlap `candidate_body_checked`; its HA empty-context
-receipt is the separate evidence that strengthens the canonical status.
+theorems and 316 Alpha-only specifications. Current Alpha v16 records all 316
+Alpha-only QR results as `alpha_closed`: the earlier
+`mod_eq_add_cancel_left` overlap was already closed, and the remaining 314
+historically body-only ancestors plus the formerly pending root were promoted
+only after their real complete proof data passed the unchanged kernel.
 `bounded_mod_inverse_unique` is the one exact-compatible
 Stable migration in this slice; its Alpha-source specification and owner
 remain recorded as provenance, but its reachable-graph scope is Stable.
-A `candidate_body_checked` node has an independently kernel-checked
-dependency-curried body, but is not thereby promoted to Stable. PA00FW is
-`pending_layered_closure`: its complete layered closed certificate still has
-to pass the WMI and Stable-promotion gates. The current graph receipt is
+The historical `candidate_body_checked` source labels record
+dependency-curried provenance and do not override the separately displayed
+current release evidence. PA00FW is now `alpha_closed` with genuine checked-use
+authority; it has **not** been promoted to Stable. The current graph receipt is
 `26017364ea943c4ed51a4a83f63ff0cd56b0de3686f0e0b458e7548ee84b1253`;
 the 557 nodes, 1,787 edges and 45 layers are unchanged.
 
-The embedded generated pages remain a campaign-oriented explorer, so they
-retain historical `public`/`candidate` wording and the current 241/316 badge
-split. Those labels describe the QR slice, not canonical closure evidence. A
-path, graph hash, or green body-check
+The embedded generated pages retain historical `public`/`candidate` source
+provenance and the 241/316 Stable/Alpha-only membership split, while their
+separate current Alpha-v16 evidence labels report the actual closed status.
+A path, graph hash, or green body-check
 badge supplies provenance, never an axiom or theorem authority.
 
 For the exact statements and numbered tactic scripts, use the

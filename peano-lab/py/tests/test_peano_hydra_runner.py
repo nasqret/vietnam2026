@@ -254,3 +254,41 @@ def test_any_fresh_replay_disagreement_fails_closed(
             limits=_limits(),
             label="forged-replay",
         )
+
+
+@pytest.mark.parametrize("label", ("model-v1", "model-v2", "model-v3"))
+def test_direct_hydra_run_rejects_compact_literals_for_frozen_model_profiles(
+    label: str,
+) -> None:
+    capabilities = SurfaceCapabilities(
+        label=label,
+        allowed_commands=frozenset({"refl"}),
+        allowed_theorems=frozenset(),
+    )
+    policy = _fixed_portfolio("refl", capabilities=capabilities)
+
+    with pytest.raises(ValueError, match="257"):
+        hydra_runner.run_hydra(
+            "257 = 257",
+            policy,
+            capabilities=capabilities,
+            limits=_limits(),
+        )
+    assert policy.records == ()
+
+
+def test_direct_hydra_run_accepts_modern_compact_literal_with_fresh_kernel_replay() -> None:
+    capabilities = _capabilities()
+    result = hydra_runner.run_hydra(
+        "1000000 = 1000000",
+        _fixed_portfolio("refl", capabilities=capabilities),
+        capabilities=capabilities,
+        limits=_limits(),
+        label="modern-compact-campaign",
+    )
+
+    assert result.proved is True
+    assert result.theorem == "1000000 = 1000000"
+    assert result.replay is not None
+    assert result.replay.kernel_checked is True
+    assert result.replay.theorem == result.theorem

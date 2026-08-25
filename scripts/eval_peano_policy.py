@@ -49,6 +49,7 @@ from peano_lab.kernel.formulas import (  # noqa: E402
     parse_formula_with_names,
     pretty_formula,
 )
+from peano_lab.kernel.terms import UNARY_NUMERAL_LIMIT  # noqa: E402
 from peano_lab.library.theorems import THEOREMS  # noqa: E402
 from peano_lab.ui.prove import (  # noqa: E402
     FULL_SURFACE_CAPABILITIES,
@@ -519,7 +520,9 @@ def _valid_command(command: object) -> tuple[str | None, str | None]:
     stripped = command.strip()
     if not stripped:
         return None, "policy output is blank"
-    oversized = oversized_numeral(stripped)
+    # Frozen policy epochs may not silently inherit the wider modern browser
+    # numeral surface after compact numerals are introduced.
+    oversized = oversized_numeral(stripped, maximum=UNARY_NUMERAL_LIMIT)
     if oversized is not None:
         return None, f"policy output contains resource-dangerous numeral {oversized}"
     return stripped, None

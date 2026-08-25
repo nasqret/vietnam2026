@@ -32,7 +32,8 @@ from peano_lab.kernel.formulas import (  # noqa: E402
     parse_formula_with_names,
     pretty_formula,
 )
-from peano_lab.ui.prove import MAX_INPUT, MAX_NUMERAL, oversized_numeral  # noqa: E402
+from peano_lab.kernel.terms import UNARY_NUMERAL_LIMIT  # noqa: E402
+from peano_lab.ui.prove import MAX_INPUT, oversized_numeral  # noqa: E402
 from training.peano_policy.contract import (  # noqa: E402
     MODEL_V3_HELD_OUT_POLICY_GOALS,
     attested_training_environment,
@@ -163,11 +164,13 @@ def _preflight_user_theorem(value: object) -> str:
         for character in value
     ):
         raise ValueError("theorem contains an unsafe control or format character")
-    oversized = oversized_numeral(value)
+    # Existing attested model epochs were trained with the historic unary
+    # numeral authority. A larger current interactive limit cannot widen them.
+    oversized = oversized_numeral(value, maximum=UNARY_NUMERAL_LIMIT)
     if oversized is not None:
         raise ValueError(
             f"theorem contains numeral {oversized} above the resource limit "
-            f"of {MAX_NUMERAL}"
+            f"of {UNARY_NUMERAL_LIMIT}"
         )
     recursion_markers = len(_FORMULA_RECURSION_MARKER.findall(value))
     if recursion_markers > MAX_USER_FORMULA_RECURSION_MARKERS:

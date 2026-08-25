@@ -79,7 +79,10 @@ from .panels import NL, collect_meta_ids, render_certificate, render_state
 # little more source room than the original tutorial-sized 4,000 characters.
 # This is a syntax/transport ceiling, independent of certificate resources.
 MAX_INPUT = 8_192
-MAX_NUMERAL = 256
+# Historic numerals up to 256 retain their exact unary AST. Larger literals are
+# compact binary double-and-add PA terms, so one million remains a small,
+# independently checkable expression rather than a million-node allocation.
+MAX_NUMERAL = 1_000_000
 MAX_SCRIPT_STEPS = 10_000
 MAX_SCRIPT_BYTES = 500_000
 MAX_SURFACE_TACTICAL_NODES = 128
@@ -303,13 +306,23 @@ def _lines(*rows: str) -> str:
     return NL.join(rows)
 
 
-def oversized_numeral(source: str) -> str | None:
-    """Find a resource-dangerous numeral without matching digits in names."""
+def oversized_numeral(
+    source: str,
+    *,
+    maximum: int = MAX_NUMERAL,
+) -> str | None:
+    """Find an oversized exact literal without matching digits in names.
+
+    Historical attested model epochs pass their frozen bound explicitly;
+    current browser and interactive surfaces retain the larger compact bound.
+    """
 
     if type(source) is not str:
         raise TypeError("numeral preflight expects text")
+    if type(maximum) is not int or maximum < 0:
+        raise ValueError("numeral preflight limit must be a non-negative integer")
     for match in _NUMERAL_LITERAL.finditer(source):
-        if int(match.group()) > MAX_NUMERAL:
+        if int(match.group()) > maximum:
             return match.group()
     return None
 

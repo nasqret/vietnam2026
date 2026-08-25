@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import replace
 from hashlib import sha256
 
 import pytest
@@ -12,6 +13,13 @@ from peano_lab.experimental.quadratic_reciprocity_layered import (
 )
 from peano_lab.kernel.proofs import EqRefl
 from peano_lab.kernel.terms import Zero
+from peano_lab.library.candidate_validation import (
+    CandidateBodyError,
+    replay_candidate_bodies,
+)
+from peano_lab.library.gauss_signed_half_candidate import (
+    make_gauss_signed_half_candidate_theorems,
+)
 from peano_lab.library.layered_replay import (
     LayeredReplayBundle,
     LayeredReplayNode,
@@ -25,7 +33,39 @@ from peano_lab.library.quadratic_reciprocity_stack_runtime import (
 from peano_lab.library.quadratic_residue_surface import (
     QUADRATIC_RECIPROCITY_COMBINED,
 )
-from peano_lab.library.theorems import _closed_formula
+from peano_lab.library.theorems import (
+    TheoremSpec,
+    _closed_formula,
+    _specs_by_name,
+)
+
+
+def _unused_dependency_curried_edges(
+    spec: TheoremSpec,
+    public: dict[str, TheoremSpec],
+) -> tuple[str, ...]:
+    """Detect edges whose false contract still permits the checked body.
+
+    Each replay leaves all dependencies as ordinary hypotheses; it neither
+    closes a dependency nor constructs the full quadratic-reciprocity proof.
+    This bounded audit distinguishes a genuinely live hypothesis from the
+    historical redundant edge that passed ordinary dependency-curried replay.
+    """
+
+    replay_candidate_bodies((spec,), core=public)
+    unused: list[str] = []
+    for dependency in spec.dependencies:
+        poisoned = dict(public)
+        poisoned[dependency] = replace(
+            public[dependency],
+            statement="0 = 1",
+        )
+        try:
+            replay_candidate_bodies((spec,), core=poisoned)
+        except CandidateBodyError:
+            continue
+        unused.append(dependency)
+    return tuple(unused)
 
 
 def test_blueprint_uses_exact_shared_557_node_45_layer_qr_stack() -> None:
@@ -74,3 +114,34 @@ def test_blueprint_provenance_hashes_are_not_bodies_or_authority() -> None:
     assert type(bundle) is LayeredReplayBundle
     assert len(bundle.nodes) == len(blueprint.names)
     assert all(type(node) is LayeredReplayNode for node in bundle.nodes)
+
+
+def test_previous_wmi_reflection_failure_has_only_live_dependency_edges() -> None:
+    blueprint = quadratic_reciprocity_layered_blueprint()
+    public = dict(_specs_by_name())
+    reflection = make_gauss_signed_half_candidate_theorems(TheoremSpec)[0]
+    expected = (
+        "add_assoc",
+        "add_comm",
+        "mul_succ_left",
+        "mul_zero_left",
+        "zero_add",
+        "add_right_cancel",
+    )
+
+    assert reflection.name == "odd_upper_remainder_reflection"
+    assert reflection.dependencies == expected
+    reflection_id = blueprint.names.index(reflection.name)
+    assert tuple(
+        blueprint.names[dependency]
+        for dependency in blueprint.dependencies[reflection_id]
+    ) == expected
+    assert _unused_dependency_curried_edges(reflection, public) == ()
+
+    historical_failure = replace(
+        reflection,
+        dependencies=expected + ("add_succ_left",),
+    )
+    assert _unused_dependency_curried_edges(historical_failure, public) == (
+        "add_succ_left",
+    )

@@ -22,6 +22,15 @@ increase the worst-case number of distinct proof objects admitted to a live
 session, and it leaves the depth boundary unchanged. Exact-boundary and
 one-past-boundary tests cover all three dimensions transactionally.
 
+The complete genuine quadratic-reciprocity root has since passed all three
+unchanged proof-envelope limits: **54,870 structural proof occurrences,
+35,052 distinct proof objects, and depth 129**. Its measured complete replay
+peaked at **843,087,872 bytes** under the explicit 1,536 MiB workstation guard.
+The separate canonical Lean-verified proof DAG contains all 557 real bodies and
+1,787 dependency edges. Earlier scaffold figures below remain useful
+historical capacity predictions, not substitutes for this actual
+[independently checked closure receipt](quadratic-reciprocity-closure-receipt.md).
+
 ## Reproducible evidence
 
 Run:

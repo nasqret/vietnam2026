@@ -2,10 +2,10 @@
 
 ## Recommendation
 
-Use a **layered `Cut` bundle** as the first quadratic-reciprocity closure
-experiment.  It compiles the complete modular theorem DAG to one ordinary
-Peano Lab `Proof` containing only existing constructors.  The existing kernel
-then decides the final judgment
+The **layered `Cut` bundle** strategy has now completed the genuine
+quadratic-reciprocity closure. It compiles the complete modular theorem DAG
+to one ordinary Peano Lab `Proof` containing only existing constructors. The
+unchanged existing kernel accepted the final judgment
 
 $$
 \operatorname{check}(\varnothing,\mathit{certificate},
@@ -16,10 +16,15 @@ No `ClosedRef`, theorem environment, trusted hash, cached receipt, or new
 checker judgment is required.  The contextual `Cut` rule is used exactly as
 it is today.
 
-The more general [closed-proof DAG](closed-proof-dag.md) remains a fallback
-design only if this ordinary certificate exceeds reviewed proof-object,
-formula, depth, memory, or Pyodide limits.  A new trusted bundle checker should
-not be introduced before the unchanged-kernel construction is measured.
+The actual accepted ordinary certificate has **54,870 structural proof nodes,
+35,052 proof objects, depth 129, and 252,961 annotation occurrences** across
+all 45 layers. A separate self-contained canonical proof DAG additionally
+retains all 557 real bodies and 1,787 dependencies; its independent Lean
+checker formally proves that acceptance implies an ordinary intuitionistic
+derivation of the exact root. This reusable transport checker adds no trusted
+proof rule and is not needed to justify the already accepted ordinary
+certificate. Exact provenance and memory measurements are in the
+[completed closure receipt](quadratic-reciprocity-closure-receipt.md).
 
 The implementation is deliberately neutral and untrusted:
 

@@ -183,10 +183,13 @@ modular units, small-modulus classifications, sign and half-range bridges,
 β-prefix swap/reindex, constructive finite pigeonhole, replacement balance,
 and exact swap-last product invariance. It is a checked campaign checkpoint,
 not yet a proof of quadratic reciprocity.
-The separate unregistered campaign sources now contain a dependency-curried
-kernel-checked body for the exact combined law, documented in the Jupyter Book.
-It is intentionally absent from this 432-theorem artifact until its recursive
-WMI closure, mutation, capacity, and receipt-pinned admission gates pass.
+The complete exact combined quadratic-reciprocity law is now independently
+closed and admitted for checked use in the separate immutable Alpha-v16
+channel documented below. Its complete ordinary empty-context certificate and
+self-contained 557-node constructive proof graph have passed the unchanged
+kernel, mutation, capacity, and independently compiled Lean verification
+gates. It intentionally remains absent from this unchanged 432-theorem Stable
+artifact: Alpha admission does not silently promote a theorem into Stable.
 The 23-entry selective M5 tranche is present at indices 409--431. It exposes
 the unrestricted generalized-CRT solvability criterion, relational-LCM
 solution classification, the correct zero/nonzero canonical boundary, and the
@@ -229,9 +232,10 @@ and its compiled
 [`PDF`](quadratic-reciprocity/pa00fg-gauss-eisenstein-data.pdf) give a
 standalone standard-mathematical restatement of Proof Explorer theorem
 `PA00FG`, `distinct_odd_primes_gauss_eisenstein_data_exists`. The document
-keeps the formal status visible: the native tactic body is checked relative
-to its declared dependencies, but the theorem is not yet a publicly admitted
-closed certificate. The canonical interactive source remains the Proof
+keeps its historical formal-status discussion visible. Since that document was
+written, the theorem and its complete quadratic-reciprocity dependency graph
+have been admitted as actual dependency-closed, kernel-checked Alpha-v16
+certificates; Stable remains unchanged. The canonical interactive source remains the Proof
 Explorer page at
 `book/_static/pa-proof-explorer/tag/PA00FG.html`.
 
@@ -925,4 +929,60 @@ python3 scripts/build_peano_library_channels_v12.py
 python3 scripts/build_peano_library_channels_v12.py --check
 python3 scripts/verify_peano_library_channels_v12.py
 make peano-library-alpha-v12-check
+```
+
+## Peano Alpha v16 — fully closed quadratic reciprocity (2026-08-25)
+
+Alpha-v13, Alpha-v14, and Alpha-v15 remain immutable historical releases:
+respectively 1,543 theorems after the four-square/Lucas additions, 1,556 after
+the Kummer additions, and 1,673 after the supplementary-law/two-square
+additions. Alpha v16 preserves all 1,673 Alpha-v15 theorem specifications,
+positions, sources, dependencies, origins, and memberships exactly. It admits
+no new theorem. Its only change is actual proof-authority promotion of the
+315 previously unchecked quadratic-reciprocity graph entries, including
+`quadratic_reciprocity_combined`.
+
+The current Alpha topology has 1,673 theorems, 5,615 dependency edges, and 53
+layers. Exactly 432 entries are `stable_closed`, 453 are `alpha_closed`, and
+788 are still `body_checked`; no `pending_layered_closure` remains. Thus 885
+Alpha entries have genuine dependency-closed checked-use authority, an
+increase of 315 over Alpha v15. The default Stable channel, its exact 432
+checked theorems, and all previously sealed artifacts remain unchanged.
+
+The immutable ordered-enrollment identity is
+`44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175`;
+the promoted edition identity is
+`3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10`;
+and the exact evidence root is
+`142d73d908bd86f52af9b6a1d39a5e11679d1db4f463d3e6f17d5c483f283ee4`.
+The four new sealed artifacts are:
+
+- [`catalog-v16.json`](peano-library/alpha/catalog-v16.json):
+  `58838161106b118b12f2a99c0de280ed223980dd92ec9b0f842358b9d5e43a09`;
+- [`metrics-v16.json`](peano-library/alpha/metrics-v16.json):
+  `da0b82e0a9c7c29c0b338d2bf7f7fd27e7843963a1a962a09ca9009eae6f0a7d`;
+- [`dependency-graph-v16.mmd`](peano-library/alpha/dependency-graph-v16.mmd):
+  `eb056011b0a46ad2cb17847aaaab99d4ab8246751e1639b78f3a3f59d92e0c28`;
+- [`channels-v16.json`](peano-library/channels-v16.json):
+  `833f08cbf42c41f7ed0feedf20bdaafcd52e7ddb171f62f68c44fc8d7741e403`.
+
+The accompanying actual constructive proof artifact is
+[`quadratic-reciprocity-proof-bundle-v1.json`](../research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json),
+SHA-256
+`3cd040d145f1004d07d277c66a3ffbcb355cd9c4b21938d79a6ec51b4258709c`.
+It contains 557 complete intuitionistic proof bodies, 1,787 exact dependency
+edges, and 41,722 structural body-proof nodes. Release generation and
+independent verification each call the unchanged original kernel on all 557
+real proofs; newly promoted theorem use additionally reconstructs and checks
+an ordinary empty-context certificate. The complete original-kernel QR root
+has 54,870 proof nodes, and an independently compiled Lean verifier accepts
+the same exact-root 557-node bundle. Digests document provenance and never
+replace actual kernel proof checks.
+
+Rebuild and independently verify the complete immutable release with:
+
+```bash
+make peano-library-alpha-v16
+make peano-library-alpha-v16-check
+python3 scripts/verify_peano_library_channels_v16.py
 ```

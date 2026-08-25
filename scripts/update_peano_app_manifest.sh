@@ -13,10 +13,15 @@ fi
 
 cd "$(dirname "$0")/.."
 APP=peano-lab
+QR_BUNDLE=research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json
 TMP_MANIFEST="$(mktemp)"
 trap 'rm -f "$TMP_MANIFEST"' EXIT
 
 python3 scripts/update_peano_worker_sources.py --check
+if [[ ! -f "$QR_BUNDLE" ]]; then
+  echo "Missing independently checked quadratic-reciprocity proof bundle: $QR_BUNDLE" >&2
+  exit 1
+fi
 
 (
   cd "$APP"
@@ -24,6 +29,8 @@ python3 scripts/update_peano_worker_sources.py --check
     shasum -a 256 worker.js
     find py -type f -name '*.py' ! -path 'py/tests/*' \
       -exec shasum -a 256 {} +
+    shasum -a 256 "../$QR_BUNDLE" |
+      awk '{print $1 "  proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json"}'
   } | LC_ALL=C sort -k2
 ) > "$TMP_MANIFEST"
 

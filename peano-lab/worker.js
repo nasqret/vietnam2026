@@ -42,10 +42,115 @@ const PY_FILES = [
   "py/peano_lab/kernel/subst.py",
   "py/peano_lab/kernel/terms.py",
   "py/peano_lab/library/__init__.py",
+  "py/peano_lab/library/alpha_enrollment.py",
+  "py/peano_lab/library/alpha_enrollment_v10.py",
+  "py/peano_lab/library/alpha_enrollment_v11.py",
+  "py/peano_lab/library/alpha_enrollment_v12.py",
+  "py/peano_lab/library/alpha_enrollment_v13.py",
+  "py/peano_lab/library/alpha_enrollment_v14.py",
+  "py/peano_lab/library/alpha_enrollment_v15.py",
+  "py/peano_lab/library/alpha_enrollment_v2.py",
+  "py/peano_lab/library/alpha_enrollment_v3.py",
+  "py/peano_lab/library/alpha_enrollment_v4.py",
+  "py/peano_lab/library/alpha_enrollment_v5.py",
+  "py/peano_lab/library/alpha_enrollment_v6.py",
+  "py/peano_lab/library/alpha_enrollment_v7.py",
+  "py/peano_lab/library/alpha_enrollment_v8.py",
+  "py/peano_lab/library/alpha_enrollment_v9.py",
+  "py/peano_lab/library/bertrand_b5_central_upper_candidate.py",
+  "py/peano_lab/library/bertrand_b5_contribution_split_candidate.py",
+  "py/peano_lab/library/bertrand_b5_order_quotient_candidate.py",
+  "py/peano_lab/library/bertrand_b5_range_boundaries_candidate.py",
+  "py/peano_lab/library/bertrand_b6_growth_candidate.py",
+  "py/peano_lab/library/bertrand_b6_main_inequality_candidate.py",
+  "py/peano_lab/library/bertrand_b7_eventual_candidate.py",
+  "py/peano_lab/library/bertrand_b8_covering_candidate.py",
+  "py/peano_lab/library/bertrand_b8_prime_certificates_candidate.py",
+  "py/peano_lab/library/bertrand_b8_small_candidate.py",
+  "py/peano_lab/library/bertrand_balanced_v1_successor_candidate.py",
+  "py/peano_lab/library/bertrand_bp01_candidate.py",
+  "py/peano_lab/library/bertrand_bp02_candidate.py",
+  "py/peano_lab/library/bertrand_ceil_sqrt_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_carry_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_factor_ranges_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_growth_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_lower_bound_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_lower_seed_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_prime_support_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_recurrence_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_square_tail_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_succ_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_upper_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_valuation_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_zero_candidate.py",
+  "py/peano_lab/library/bertrand_central_binom_zero_range_candidate.py",
+  "py/peano_lab/library/bertrand_choose_diagonal_candidate.py",
+  "py/peano_lab/library/bertrand_choose_factorial_bridge_candidate.py",
+  "py/peano_lab/library/bertrand_choose_factorial_support_candidate.py",
+  "py/peano_lab/library/bertrand_choose_foundation_candidate.py",
+  "py/peano_lab/library/bertrand_choose_laws_candidate.py",
+  "py/peano_lab/library/bertrand_choose_pascal_candidate.py",
+  "py/peano_lab/library/bertrand_choose_positive_candidate.py",
+  "py/peano_lab/library/bertrand_choose_recurrence_candidate.py",
+  "py/peano_lab/library/bertrand_choose_row_functional_candidate.py",
+  "py/peano_lab/library/bertrand_choose_symmetry_candidate.py",
+  "py/peano_lab/library/bertrand_choose_table_row_functional_candidate.py",
+  "py/peano_lab/library/bertrand_choose_weighted_vertical_candidate.py",
+  "py/peano_lab/library/bertrand_defined_edition.py",
+  "py/peano_lab/library/bertrand_factorial_legendre_candidate.py",
+  "py/peano_lab/library/bertrand_factorial_valuation_candidate.py",
+  "py/peano_lab/library/bertrand_floor_sqrt_total_candidate.py",
+  "py/peano_lab/library/bertrand_hj_all_s_candidate.py",
+  "py/peano_lab/library/bertrand_hj_base_thirty_two_candidate.py",
+  "py/peano_lab/library/bertrand_hj_base_window_candidate.py",
+  "py/peano_lab/library/bertrand_hj_transport_candidate.py",
+  "py/peano_lab/library/bertrand_initial_segment_constructor_candidate.py",
+  "py/peano_lab/library/bertrand_integer_envelope_candidate.py",
+  "py/peano_lab/library/bertrand_legendre_recurrence_candidate.py",
+  "py/peano_lab/library/bertrand_legendre_successor_candidate.py",
+  "py/peano_lab/library/bertrand_legendre_sum_candidate.py",
+  "py/peano_lab/library/bertrand_legendre_valuation_bridge_candidate.py",
+  "py/peano_lab/library/bertrand_power_bridge_candidate.py",
+  "py/peano_lab/library/bertrand_power_divisibility_candidate.py",
+  "py/peano_lab/library/bertrand_power_growth_candidate.py",
+  "py/peano_lab/library/bertrand_power_order_candidate.py",
+  "py/peano_lab/library/bertrand_power_seed_balanced_candidate.py",
+  "py/peano_lab/library/bertrand_power_total_candidate.py",
+  "py/peano_lab/library/bertrand_power_valuation_candidate.py",
+  "py/peano_lab/library/bertrand_power_valuation_laws_candidate.py",
+  "py/peano_lab/library/bertrand_prime_contribution_candidate.py",
+  "py/peano_lab/library/bertrand_prime_contribution_complete_candidate.py",
+  "py/peano_lab/library/bertrand_prime_interval_candidate.py",
+  "py/peano_lab/library/bertrand_primorial_choose_interval_candidate.py",
+  "py/peano_lab/library/bertrand_primorial_duplicate_free_candidate.py",
+  "py/peano_lab/library/bertrand_primorial_foundation_candidate.py",
+  "py/peano_lab/library/bertrand_primorial_four_power_candidate.py",
+  "py/peano_lab/library/bertrand_primorial_interval_candidate.py",
+  "py/peano_lab/library/bertrand_primorial_membership_candidate.py",
+  "py/peano_lab/library/bertrand_promotion.py",
+  "py/peano_lab/library/bertrand_quotient_budget_candidate.py",
+  "py/peano_lab/library/bertrand_threshold_base_candidate.py",
   "py/peano_lab/library/candidate_validation.py",
   "py/peano_lab/library/defined_edition.py",
   "py/peano_lab/library/defined_syntax.py",
   "py/peano_lab/library/distinct_primes_nondivisibility_candidate.py",
+  "py/peano_lab/library/editions.py",
+  "py/peano_lab/library/editions_v10.py",
+  "py/peano_lab/library/editions_v11.py",
+  "py/peano_lab/library/editions_v12.py",
+  "py/peano_lab/library/editions_v13.py",
+  "py/peano_lab/library/editions_v14.py",
+  "py/peano_lab/library/editions_v15.py",
+  "py/peano_lab/library/editions_v16.py",
+  "py/peano_lab/library/editions_v2.py",
+  "py/peano_lab/library/editions_v3.py",
+  "py/peano_lab/library/editions_v4.py",
+  "py/peano_lab/library/editions_v5.py",
+  "py/peano_lab/library/editions_v6.py",
+  "py/peano_lab/library/editions_v7.py",
+  "py/peano_lab/library/editions_v8.py",
+  "py/peano_lab/library/editions_v9.py",
   "py/peano_lab/library/eisenstein_division_threshold_candidate.py",
   "py/peano_lab/library/eisenstein_fubini_row_decomposition_candidate.py",
   "py/peano_lab/library/eisenstein_fubini_total_candidate.py",
@@ -79,6 +184,16 @@ const PY_FILES = [
   "py/peano_lab/library/fermat_residue_product_candidate.py",
   "py/peano_lab/library/fermat_residue_reindex_candidate.py",
   "py/peano_lab/library/fermat_scale_product_candidate.py",
+  "py/peano_lab/library/fermat_two_squares_brahmagupta_candidate.py",
+  "py/peano_lab/library/fermat_two_squares_candidate.py",
+  "py/peano_lab/library/fermat_two_squares_classification_candidate.py",
+  "py/peano_lab/library/fermat_two_squares_collision_norm_candidate.py",
+  "py/peano_lab/library/fermat_two_squares_factor_fold_candidate.py",
+  "py/peano_lab/library/fermat_two_squares_pairing_candidate.py",
+  "py/peano_lab/library/fermat_two_squares_pigeonhole_candidate.py",
+  "py/peano_lab/library/fermat_two_squares_prime_candidate.py",
+  "py/peano_lab/library/fermat_two_squares_residue_grid_candidate.py",
+  "py/peano_lab/library/fermat_two_squares_valuation_candidate.py",
   "py/peano_lab/library/finite_bitcount_complement_candidate.py",
   "py/peano_lab/library/finite_bitcount_theorems.py",
   "py/peano_lab/library/finite_congruence_theorems.py",
@@ -90,8 +205,11 @@ const PY_FILES = [
   "py/peano_lab/library/finite_permutation_theorems.py",
   "py/peano_lab/library/finite_pointwise_mul_product_candidate.py",
   "py/peano_lab/library/finite_pointwise_mul_recode_candidate.py",
+  "py/peano_lab/library/finite_prefix_collision_decision_candidate.py",
   "py/peano_lab/library/finite_prime_product_coprime_candidate.py",
+  "py/peano_lab/library/finite_product_order_candidate.py",
   "py/peano_lab/library/finite_product_permutation_theorems.py",
+  "py/peano_lab/library/finite_product_prefix_suffix_candidate.py",
   "py/peano_lab/library/finite_product_reindex_candidate.py",
   "py/peano_lab/library/finite_product_reindex_support.py",
   "py/peano_lab/library/finite_range_theorems.py",
@@ -102,6 +220,25 @@ const PY_FILES = [
   "py/peano_lab/library/finite_sum_reindex_candidate.py",
   "py/peano_lab/library/finite_sum_theorems.py",
   "py/peano_lab/library/finite_sum_transport_candidate.py",
+  "py/peano_lab/library/formula_dag.py",
+  "py/peano_lab/library/four_square_bounded_seed_candidate.py",
+  "py/peano_lab/library/four_square_branch_descent_candidate.py",
+  "py/peano_lab/library/four_square_conjugate_identity_candidate.py",
+  "py/peano_lab/library/four_square_cross_pigeonhole_candidate.py",
+  "py/peano_lab/library/four_square_descent_candidate.py",
+  "py/peano_lab/library/four_square_euler_candidate.py",
+  "py/peano_lab/library/four_square_frontier_promotion.py",
+  "py/peano_lab/library/four_square_identity_candidate.py",
+  "py/peano_lab/library/four_square_lagrange_bridge_candidate.py",
+  "py/peano_lab/library/four_square_lagrange_candidate.py",
+  "py/peano_lab/library/four_square_lagrange_final_candidate.py",
+  "py/peano_lab/library/four_square_parity_selection_candidate.py",
+  "py/peano_lab/library/four_square_residue_intersection_candidate.py",
+  "py/peano_lab/library/four_square_signed_block_negative_candidate.py",
+  "py/peano_lab/library/four_square_signed_cases_candidate.py",
+  "py/peano_lab/library/four_square_signed_orientation_candidate.py",
+  "py/peano_lab/library/four_square_signed_quaternion_candidate.py",
+  "py/peano_lab/library/frontier_promotion.py",
   "py/peano_lab/library/gauss_count_sum_parity_candidate.py",
   "py/peano_lab/library/gauss_eisenstein_data_candidate.py",
   "py/peano_lab/library/gauss_eisenstein_pointwise_candidate.py",
@@ -131,6 +268,7 @@ const PY_FILES = [
   "py/peano_lab/library/ha_cell_history_prefix_preservation_candidate.py",
   "py/peano_lab/library/ha_cell_list_equations_candidate.py",
   "py/peano_lab/library/ha_cell_list_extensional_candidate.py",
+  "py/peano_lab/library/ha_cell_list_interface_candidate.py",
   "py/peano_lab/library/ha_cell_list_length_bound_candidate.py",
   "py/peano_lab/library/ha_cell_list_length_functional_candidate.py",
   "py/peano_lab/library/ha_cell_list_length_total_candidate.py",
@@ -142,6 +280,9 @@ const PY_FILES = [
   "py/peano_lab/library/ha_cell_list_lookup_history_independent_candidate.py",
   "py/peano_lab/library/ha_cell_list_lookup_succ_candidate.py",
   "py/peano_lab/library/ha_cell_list_lookup_surface_candidate.py",
+  "py/peano_lab/library/ha_cell_list_membership_candidate.py",
+  "py/peano_lab/library/ha_cell_list_membership_surface_candidate.py",
+  "py/peano_lab/library/ha_cell_list_validity_candidate.py",
   "py/peano_lab/library/ha_generalized_crt_canonical_boundary_candidate.py",
   "py/peano_lab/library/ha_generalized_crt_classification_candidate.py",
   "py/peano_lab/library/ha_generalized_crt_congruence_candidate.py",
@@ -172,8 +313,17 @@ const PY_FILES = [
   "py/peano_lab/library/ha_signed_nat_scale_laws_candidate.py",
   "py/peano_lab/library/ha_signed_negate_candidate.py",
   "py/peano_lab/library/ha_signed_parity_candidate.py",
+  "py/peano_lab/library/kummer_carry_candidate.py",
+  "py/peano_lab/library/kummer_valuation_candidate.py",
   "py/peano_lab/library/layered_replay.py",
   "py/peano_lab/library/lean.py",
+  "py/peano_lab/library/lean_certified.py",
+  "py/peano_lab/library/lucas_block_digit_candidate.py",
+  "py/peano_lab/library/lucas_convolution_candidate.py",
+  "py/peano_lab/library/lucas_digit_candidate.py",
+  "py/peano_lab/library/lucas_low_digit_candidate.py",
+  "py/peano_lab/library/lucas_mixed_promotion.py",
+  "py/peano_lab/library/lucas_multidigit_candidate.py",
   "py/peano_lab/library/parity.py",
   "py/peano_lab/library/parity_mod_two_candidate.py",
   "py/peano_lab/library/parity_odd_division_candidate.py",
@@ -181,16 +331,22 @@ const PY_FILES = [
   "py/peano_lab/library/parity_sum_classification_candidate.py",
   "py/peano_lab/library/power_algebra_theorems.py",
   "py/peano_lab/library/power_congruence_theorems.py",
+  "py/peano_lab/library/proof_bundle.py",
+  "py/peano_lab/library/pythagorean_fermat_four_candidate.py",
+  "py/peano_lab/library/pythagorean_primitive_candidate.py",
   "py/peano_lab/library/qr_bounded_units.py",
   "py/peano_lab/library/qr_prime_units.py",
   "py/peano_lab/library/qr_small_moduli.py",
   "py/peano_lab/library/quadratic_reciprocity_candidate.py",
+  "py/peano_lab/library/quadratic_reciprocity_closure.py",
   "py/peano_lab/library/quadratic_reciprocity_conditional_candidate.py",
   "py/peano_lab/library/quadratic_reciprocity_parity_candidate.py",
   "py/peano_lab/library/quadratic_reciprocity_stack.py",
   "py/peano_lab/library/quadratic_reciprocity_stack_runtime.py",
   "py/peano_lab/library/quadratic_residue_surface.py",
   "py/peano_lab/library/quadratic_residue_theorems.py",
+  "py/peano_lab/library/quadratic_supplement_minus_one_candidate.py",
+  "py/peano_lab/library/quadratic_supplement_two_candidate.py",
   "py/peano_lab/library/signed_division_parity_bridge_candidate.py",
   "py/peano_lab/library/theorems.py",
   "py/peano_lab/library/wilson_endpoint_restoration_candidate.py",
@@ -222,14 +378,17 @@ const PY_FILES = [
 // the URL, rather than only a query string, because Pyodide constructs the
 // URLs for its own .wasm and standard-library files from indexURL.
 const VENDOR_ROOT = "../../vendor/v-85fb3352e49c/";
+const PROOF_ARTIFACT_FILES = [
+  "proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json",
+];
 
 let runLine = null;
 let runLineResult = null;
 let banner = null;
 let takeDownload = null;
 
-async function fetchPythonSources() {
-  return Promise.all(PY_FILES.map(async (relativePath) => {
+async function fetchRuntimeFiles(paths) {
+  return Promise.all(paths.map(async (relativePath) => {
     try {
       const response = await fetch(relativePath);
       if (!response.ok) {
@@ -250,6 +409,14 @@ async function fetchPythonSources() {
   }));
 }
 
+async function fetchPythonSources() {
+  return fetchRuntimeFiles(PY_FILES);
+}
+
+async function fetchProofArtifacts() {
+  return fetchRuntimeFiles(PROOF_ARTIFACT_FILES);
+}
+
 async function boot(build) {
   try {
     postMessage({ type: "boot", msg: "loading Python and prover sources (self-hosted)…" });
@@ -263,15 +430,22 @@ async function boot(build) {
     // deterministic in PY_FILES order rather than network-completion order.
     const pyodidePromise = loadPyodide({ indexURL: VENDOR_ROOT + "pyodide/" });
     const sourcesPromise = fetchPythonSources();
+    const artifactsPromise = fetchProofArtifacts();
     const pyodide = await pyodidePromise;
-    const sources = await sourcesPromise;
-    const failure = sources.find((entry) => !entry.ok);
+    const [sources, artifacts] = await Promise.all([sourcesPromise, artifactsPromise]);
+    const failure = sources.find((entry) => !entry.ok)
+      || artifacts.find((entry) => !entry.ok);
     if (failure) throw new Error(failure.message);
 
     postMessage({ type: "boot", msg: "mounting the Peano kernel and tactic engine…" });
     for (const entry of sources) {
       const relativePath = entry.relativePath;
       const destination = "/lab/" + relativePath.replace(/^py\//, "");
+      pyodide.FS.mkdirTree(destination.slice(0, destination.lastIndexOf("/")));
+      pyodide.FS.writeFile(destination, entry.source);
+    }
+    for (const entry of artifacts) {
+      const destination = "/lab/" + entry.relativePath;
       pyodide.FS.mkdirTree(destination.slice(0, destination.lastIndexOf("/")));
       pyodide.FS.writeFile(destination, entry.source);
     }

@@ -21,6 +21,14 @@ INDEX = (LAB / "index.html").read_text(encoding="utf-8")
 WORKER = (LAB / "worker.js").read_text(encoding="utf-8")
 HTACCESS = (LAB / ".htaccess").read_text(encoding="utf-8")
 APP_MANIFEST = LAB / "APP_MANIFEST.sha256"
+QR_BUNDLE_SOURCE = (
+    LAB.parent
+    / "research"
+    / "arithmetic-library"
+    / "artifacts"
+    / "quadratic-reciprocity-proof-bundle-v1.json"
+)
+QR_BUNDLE_RELEASE_PATH = "proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json"
 
 
 def test_shell_has_its_own_build_history_and_deep_link_contracts() -> None:
@@ -64,9 +72,14 @@ def test_application_release_is_content_addressed_and_complete() -> None:
         for path in (LAB / "py").rglob("*.py")
         if "tests" not in path.relative_to(LAB / "py").parts
     }
-    assert set(entries) == package_files | {"worker.js"}
+    assert set(entries) == package_files | {"worker.js", QR_BUNDLE_RELEASE_PATH}
     for relative_path, expected in entries.items():
-        actual = hashlib.sha256((LAB / relative_path).read_bytes()).hexdigest()
+        source = (
+            QR_BUNDLE_SOURCE
+            if relative_path == QR_BUNDLE_RELEASE_PATH
+            else LAB / relative_path
+        )
+        actual = hashlib.sha256(source.read_bytes()).hexdigest()
         assert actual == expected
 
     release = "a-" + hashlib.sha256(APP_MANIFEST.read_bytes()).hexdigest()[:12]
@@ -85,6 +98,8 @@ def test_worker_mounts_the_complete_python_surface() -> None:
     assert "driver.run_line_result(line)" in WORKER
     assert 'failed = result.failed === true' in WORKER
     assert "driver.banner()" in WORKER
+    assert f'"{QR_BUNDLE_RELEASE_PATH}"' in WORKER
+    assert "const artifactsPromise = fetchProofArtifacts()" in WORKER
 
 
 def test_worker_source_inventory_is_reproducible() -> None:

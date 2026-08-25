@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 import sys
 
+import pytest
+
 
 ROOT = Path(__file__).resolve().parents[3]
 COMMITTED_REPORT = (
@@ -23,6 +25,7 @@ from training.peano_hydra.pilot import (  # noqa: E402
     TEACHER_ORACLE_LABEL,
     run_teacher_oracle_pilot,
 )
+import training.peano_policy.search as policy_search  # noqa: E402
 
 
 def test_teacher_oracle_pilot_is_paired_checked_and_explicitly_not_capability() -> None:
@@ -106,3 +109,35 @@ def test_teacher_oracle_pilot_is_paired_checked_and_explicitly_not_capability() 
     assert report.json(indent=2, include_trace=True) + "\n" == (
         COMMITTED_REPORT.read_text(encoding="utf-8")
     )
+
+
+def test_teacher_oracle_search_executes_only_new_persistent_prefix_edges(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    real_surface = policy_search.run_surface
+    candidate_prefix_depths: list[int] = []
+
+    def observed_surface(owner, command, *, capabilities, record_trace):
+        candidate_prefix_depths.append(len(owner.state.history))
+        assert record_trace is False
+        return real_surface(
+            owner,
+            command,
+            capabilities=capabilities,
+            record_trace=record_trace,
+        )
+
+    monkeypatch.setattr(policy_search, "run_surface", observed_surface)
+    report = run_teacher_oracle_pilot()
+    expected_edges = sum(
+        lane.search.candidates_executed
+        for lane in (report.control, report.hybrid, report.mutation)
+    )
+
+    assert report.hybrid.proved is True
+    assert report.hybrid.replay is not None
+    assert report.hybrid.replay.kernel_checked is True
+    assert len(candidate_prefix_depths) == expected_edges == 39
+    legacy_root_replay_edges = sum(depth + 1 for depth in candidate_prefix_depths)
+    assert legacy_root_replay_edges == 240
+    assert legacy_root_replay_edges > 6 * expected_edges

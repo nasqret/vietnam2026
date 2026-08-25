@@ -96,7 +96,7 @@ def _usage() -> str:
         "  pa kb [topic]        PA/kernel knowledge cards (`kb` is an alias)",
         "  pa tutorial [name]   guided, ENTER-driven lessons",
         "  pa lib [name]        checked theorem statements + replay scripts",
-        "  pa lean <name>       Lean 4 statement/stub + exact Live Lean link",
+        "  pa lean <name>       complete independently checked Lean 4 theorem",
         "  script [download]    inspect/save the active or last checked replay",
         "  pa axioms            the six PA rule constants",
         "  pa eval <term>       evaluate a closed arithmetic term",
