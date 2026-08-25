@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT004D.html">← bezout_mod_right</a> <a href="BT004F.html">binary_crt →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT004E.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT004E&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT004D.html">← bezout_mod_right</a><a href="BT004F.html">binary_crt →</a></nav>
 <p class="pa-tag">BT004E</p><h1>mod_eq_predecessor_cancel</h1>
-<p class="pa-status-public">Stable · empty-context checked</p>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
 <p>The predecessor of a successor acts as minus one in balanced congruence.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by equality transport (3).</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT004F.html"><code>BT004F</code> binary_crt</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="4807c420e920967c"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> k</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="54b901c3ad5a690b"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="ec221be721d1c6ba"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> z</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="exists" data-line-id="3964a504c5216da9"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">exists</span> 0</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="exists" data-line-id="1ba9f6a294668843"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">exists</span> z</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="rewrite" data-line-id="4330fab273ccd2bc"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">rewrite</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA5</span></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="rewrite" data-line-id="bb5837bc12388903"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">rewrite</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA3</span></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="specialize" data-line-id="407c5e0214271511"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0005.html">mul_succ_left</a> k</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="specialize" data-line-id="7e0837c00a3e959b"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0005.html">mul_succ_left</a> z</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="rewrite" data-line-id="82a84c56aa4bc779"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">rewrite</span> <a class="pa-theorem-ref" href="BT0005.html">mul_succ_left</a></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="trans" data-line-id="a3c03736bd1449c1"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">trans</span> a + (z + k * z)</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="apply" data-line-id="e33f47297e4c0842"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0003.html">add_assoc</a></code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="congr" data-line-id="ea15f051265c2d9f"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">congr</span></code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="refl" data-line-id="605ce99d1deb0e7e"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="apply" data-line-id="1fc13a8c2fdf8b1b"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0002.html">add_comm</a></code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>154</dd>
 <dt>Layer</dt><dd>3</dd><dt>Lines</dt><dd>15</dd>
-<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
 <dt>Body proof nodes</dt><dd>n/a</dd>
 <dt>Statement SHA-256</dt><dd><code>ff9e6397219fcf402e7a0e46e5d1ce0cee284f43b12ebdd124e21082c0170db4</code></dd>
 <dt>Script SHA-256</dt><dd><code>0ae073a1f56464b5ea93c3d1997f7f807c2bbfbdbdd39da767ca280673a7e1a5</code></dd>

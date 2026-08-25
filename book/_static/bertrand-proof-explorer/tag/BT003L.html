@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT003K.html">← prime_divisor_exists_up_to</a> <a href="BT003M.html">prime_divisor_eq_one_or_self →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT003L.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT003L&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT003K.html">← prime_divisor_exists_up_to</a><a href="BT003M.html">prime_divisor_eq_one_or_self →</a></nav>
 <p class="pa-tag">BT003L</p><h1>prime_divisor_exists</h1>
-<p class="pa-status-public">Stable · empty-context checked</p>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
 <p>Every nonzero nonunit natural has a prime divisor.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by direct introduction and elimination.</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT0103.html"><code>BT0103</code> prime_contribution_cofactor_eq_one</a> <a class="pa-theorem-ref" href="BT0118.html"><code>BT0118</code> nonprime_has_small_prime_divisor_below_square</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="ec0f01fcccd3a3f5"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="38370a6132b7807a"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> hn0</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="73a4f6a7bbe466bd"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> hn1</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="50197be9ec567034"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT003K.html">prime_divisor_exists_up_to</a> n</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="21eafe92d38bb845"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT003K.html">prime_divisor_exists_up_to</a> n</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="apply" data-line-id="2a7a1fe7f61f8e48"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT003K.html">prime_divisor_exists_up_to</a></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="apply" data-line-id="29b4796f842a0fb6"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT000E.html">le_refl</a></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="exact" data-line-id="9567d0ca734dbe70"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">exact</span> hn0</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exact" data-line-id="90b2768c48f7c78b"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exact</span> hn1</code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>126</dd>
 <dt>Layer</dt><dd>9</dd><dt>Lines</dt><dd>9</dd>
-<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
 <dt>Body proof nodes</dt><dd>n/a</dd>
 <dt>Statement SHA-256</dt><dd><code>937e67f7de2efd5bec917e9d60536b0e155b0d27025d4f2a14985c147fbea4d2</code></dd>
 <dt>Script SHA-256</dt><dd><code>b8bbaf1129cae7bf2b9846799280e07b719673820b68e6249f3c1fe7ccc9c66e</code></dd>

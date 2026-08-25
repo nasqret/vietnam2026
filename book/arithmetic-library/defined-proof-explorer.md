@@ -10,8 +10,14 @@ the explicit theorem statements, tactic scripts, proof terms, or kernel.
 This is not a second release edition and not the whole Alpha library. It is the
 definition-aware view of the same 557-node QR slice: 241 Stable prerequisites
 and 316 Alpha-only specifications. All 557 QR nodes now carry independently
-closed current Alpha-v16 checked-use evidence; the complete Stable catalog
-still has 432 rows, and the complete current Alpha v16 catalog has 1,673.
+closed current Alpha-v19 checked-use evidence; the 316 Alpha-only QR results
+first received that authority in historical v16. Historical v17 separately
+closed both supplementary laws. Historical v18 additionally closed the Lucas,
+Kummer, Bertrand, four-square, and two-square flagship proof families; current
+v19 closes all remaining historical obligations and adds four new constructive
+campaign tranches. The complete Stable catalog still has 432 rows, and every
+one of the complete current Alpha-v19 catalog's 1,737 rows has checked-use
+authority.
 {doc}`K3B <cell-history-and-lookup>` and {doc}`K3C
 <list-validity-and-membership>` remain separate focused Alpha lenses. See
 {doc}`Alpha and Stable library editions <library-editions>` for the canonical
@@ -36,6 +42,12 @@ therefore neither an axiom nor a theorem nor a new predicate constant.
   </a>
   <a class="btn btn-outline-primary" href="../_static/pa-proof-explorer/index.html">
     Open the exact explicit edition
+  </a>
+  <a class="btn btn-outline-primary" href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F05">
+    See the reciprocity family in the research atlas
+  </a>
+  <a class="btn btn-outline-primary" href="../_static/constructive-grand-campaign/index.html?view=definition&amp;focus=Prime">
+    Explore shared mathematical definitions
   </a>
 </p>
 

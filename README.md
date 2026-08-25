@@ -9,6 +9,7 @@
 **Live Lambda Lab (runs in your browser):** <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda>
 **Live Peano Lab (kernel-checked PA proofs):** <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/>
 **Interactive proof explorers:** <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/>
+**Multiscale number-theory research atlas:** <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/grand-campaign/>
 **Author:** dr Bartosz Naskręcki — Faculty of Mathematics and Computer Science, Adam Mickiewicz University in Poznań · Centre for Trustworthy AI (CCAI), Warsaw University of Technology
 
 ---
@@ -71,11 +72,36 @@ with SHA-256
 `3cd040d145f1004d07d277c66a3ffbcb355cd9c4b21938d79a6ec51b4258709c`.
 [`scripts/export_peano_lean.py`](scripts/export_peano_lean.py) also translates
 individual checked Peano certificates directly into completed, independently
-compiler-checked Lean theorems. Immutable Alpha v16 promotes the 315 genuinely
-closed quadratic-reciprocity results, including the final root, without
-changing its 1,673 enrolled statements or the 432-theorem default Stable
-edition. Its 885 checked-use theorems remain separate from 788 body-only
-research entries; this release does not claim a new WMI receipt.
+compiler-checked Lean theorems. Its optional compact packages separate short,
+human-readable theorem modules from named, independently checked certificate
+modules while preserving exact constructive Peano definitions; the full
+standalone certificate remains available for audits. See the
+[readable certified Lean export guide](docs/LEAN_CERTIFIED_PRESENTATION.md).
+Historical immutable Alpha v16 first promoted the 315 genuinely closed
+quadratic-reciprocity results; Alpha v17 then closed both supplementary laws.
+Historical Alpha v18 subsequently closed strict Bertrand, multidigit Lucas,
+both Kummer endpoints, universal four squares, and the complete all-natural
+two-square criterion. Current immutable **Alpha v19** closes all **84**
+remaining historical obligations and adds **64** genuinely proved results:
+**44 Pythagorean forward-construction theorems, the exact prime two-square
+classification, nine complete linear-congruence theorems, and ten theorems
+proving infinitely many primes congruent to one modulo four**. All **1,737
+enrolled theorems have independently checked-use authority**: **432 Stable**
+and **1,305 Alpha-only**, with **zero body-only or pending entries** and
+**5,779 checked dependency edges**. The **432-theorem default Stable edition
+remains unchanged**. Both new complete campaign proof bundles and every
+historical flagship bundle are independently checked by the original
+intuitionistic kernel and the separately compiled Lean verifier.
+
+The [interactive constructive number-theory research atlas](book/_static/constructive-grand-campaign/index.html)
+organizes these proofs within **five mathematical domains**, **twelve
+families**, **120 major goals**, **16 reusable constructive tools**, **eight
+existing anchors**, and **107 shared mathematical terms**. Its five-level
+navigation connects the complete programme to individual campaigns, verified
+theorem roots, definition-aware proof graphs, exact shared notation
+dependencies, and the honest still-open research frontier. Actual proof
+prerequisites remain visibly separate from conservative display definitions,
+future planning vocabulary, and conceptual mathematical connections.
 
 The 432-entry native ladder—23 legacy, 212 foundation, 12 mod-five, 137
 quadratic-residue, and 48 strict-HA theorems—reaches the Fundamental Theorem of Arithmetic
@@ -114,8 +140,9 @@ closed its exact sign-free combined root, both through a complete ordinary
 unchanged-kernel certificate and through the independently Lean-verified
 557-node shared dependency DAG described above. The optimized combined body
 itself is `3/65/113/35` (dependencies/commands/nodes/depth). Public
-Alpha/Stable promotion and a fresh pinned WMI receipt remain separate release
-operations; the proof itself is complete. The catalog now
+Stable promotion, a fresh pinned WMI receipt, and remote publication remain
+separate operations; the complete proof already has checked-use authority in
+the opt-in Alpha release. The historical Stable catalog
 has 433 entries: 23 `checked_existing`, 409 `checked_m20`, no planned theorem,
 and one `blocked_by_language` conventional
 integer-coefficient Bézout interface. This is a local draft-PR checkpoint, not
@@ -272,9 +299,32 @@ empty-context certificate.
 The opt-in research channel keeps Stable as the default. Inspect its evidence
 without replaying every certificate using `pa lib alpha`; open the completed
 root with `pa lib alpha quadratic_reciprocity_combined`, or explicitly check
-one admitted theorem using `pa lib alpha check THEOREM`. Theorem export through
-`pa lean alpha THEOREM` independently replays its actual closed proof before
-translating it to Lean; body-only Alpha rows cannot be checked or exported.
+one bounded admitted theorem using `pa lib alpha check THEOREM`. The safe
+theorem-first `pa lean alpha THEOREM` preview and readable
+`pa proof alpha infinitely_many_primes_one_mod_four` proof strand inspect
+authenticated metadata without replaying large certificates. Explicit terminal
+exports and `--verify` perform the requested proof and independent Lean
+checks within their reviewed resource limits. Rebuild or verify the exact
+fully checked release with `make peano-library-alpha-v19` or
+`make peano-library-alpha-v19-check`.
+
+## Interactive Lean proof browser
+
+```bash
+make lean-browser
+```
+
+Open <http://127.0.0.1:8787/book/_static/pa-proof-explorer/graph.html?target=PA000F>, select
+a theorem, and choose **Build Lean proof** in its right-hand panel. Hydra
+reconstructs its checked dependency strand on demand, reports translation and
+Lean compilation progress, permits cancellation, and provides both Lean-source
+and complete-module ZIP downloads. Entirely readable, self-contained proofs
+within the official editor's share limits additionally open directly in Lean
+Live. Stable and opt-in Alpha checked-use theorems retain their distinct
+release boundaries. See the
+[readable proof-strand guide](docs/LEAN_PROOF_STRANDS.md). With the service
+running, `make lean-browser-check` independently exercises and verifies the
+complete live HTTP-to-Lean-Live workflow.
 
 ## License
 

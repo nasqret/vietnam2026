@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from urllib.parse import unquote
-
 import driver
 from peano_lab.library.lean import LIVE_LEAN_PREFIX
 from peano_lab.library.theorems import THEOREMS, get
@@ -73,27 +71,39 @@ def test_pa_lib_help_usage_and_unknown_name_are_final_text() -> None:
     )
 
 
-def test_pa_lean_exports_exact_code_and_live_link() -> None:
+def test_pa_lean_defaults_to_a_bounded_human_first_checked_presentation() -> None:
     session = driver.LabSession()
     output = session.run("pa lean mul_eq_zero")
+
+    assert "Lean 4 independently checked theorem — mul_eq_zero" in output
+    assert "Fresh independent empty-context Peano kernel replay: NOT RUN" in output
+    assert "Independent Lean compilation: NOT RUN" in output
+    assert "--format compact --package-dir" in output
+    assert "pa lean exact mul_eq_zero" in output
+    assert "pa lean full mul_eq_zero" in output
+    assert LIVE_LEAN_PREFIX not in output
+    assert len(output.encode("utf-8")) <= 15 * 1024
+    assert session.run("pa lean") == (
+        "Usage: pa lean <theorem>; list names with `pa lib`."
+    )
+    assert "No library theorem 'missing'" in session.run("pa lean missing")
+
+
+def test_pa_lean_full_explicitly_exports_exact_code_without_invalid_live_link() -> None:
+    session = driver.LabSession()
+    output = session.run("pa lean full mul_eq_zero")
     capstone = get("mul_eq_zero")
     assert capstone is not None
     exported = data_library.lean_export(capstone)
 
     assert exported.code in output
-    assert exported.live_url in output
-    assert exported.live_url.startswith(LIVE_LEAN_PREFIX)
-    assert unquote(exported.live_url.removeprefix(LIVE_LEAN_PREFIX)) == exported.code
+    assert LIVE_LEAN_PREFIX not in output
     assert "sorry" not in exported.code
     assert "import PeanoLab.Codec" in exported.code
     assert "PeanoLab.Artifact.check_sound" in exported.code
     assert "Independently replayed Peano dependencies: add_eq_zero_right" in exported.code
     assert "intro add_eq_zero_right" not in exported.code
     assert "complete constructive certificate" in output
-    assert session.run("pa lean") == (
-        "Usage: pa lean <theorem>; list names with `pa lib`."
-    )
-    assert "No library theorem 'missing'" in session.run("pa lean missing")
 
 
 def test_library_commands_cannot_bypass_a_live_proof_owner() -> None:

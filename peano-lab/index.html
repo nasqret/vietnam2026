@@ -29,7 +29,7 @@
 <body>
   <header>
     <div class="brand"><div class="glyph" aria-hidden="true">ℕ</div><div><h1>Peano Lab</h1><div class="sub">sound arithmetic proofs · no install · self-hosted</div></div></div>
-    <nav aria-label="Course navigation"><a href="/vietnam2026/">← Course</a><a href="/vietnam2026/book/peano/index.html">Read the chapter</a><a href="https://github.com/nasqret/vietnam2026/tree/peano-lab/peano-lab" target="_blank" rel="noopener">Source</a></nav>
+    <nav aria-label="Course and research navigation"><a href="/vietnam2026/">← Course</a><a href="/vietnam2026/book/peano/index.html">Read the chapter</a><a href="/proofs/?v=f1c3d3fba013">Proof library</a><a href="/proofs/grand-campaign/?v=f1c3d3fba013">Research atlas</a><a href="https://github.com/nasqret/vietnam2026/tree/agent/new-theorems-tranche-01/peano-lab" target="_blank" rel="noopener">Source</a></nav>
   </header>
   <noscript><p class="noscript">Peano Lab needs JavaScript to load the local Python runtime.</p></noscript>
   <main class="main">
@@ -68,6 +68,12 @@
         <button class="qbtn" id="paste-proof" type="button" disabled>paste multiline proof</button>
         <button class="qbtn" type="button" data-cmd="clear" disabled>clear</button>
       </div>
+      <div class="quick-row"><span class="lbl">research:</span>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha" disabled>Alpha: 1,737 proofs</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha infinitely_many_primes_one_mod_four" disabled>primes ≡ 1 mod 4</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha linear_congruence_solvable_iff_gcd_divides" disabled>linear congruences</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha prime_is_two_squares_iff_two_or_one_mod_four" disabled>prime two-square iff</button>
+      </div>
     </div>
     <dialog class="paste-dialog" id="paste-proof-dialog" aria-labelledby="paste-proof-title">
       <form class="paste-form" method="dialog">
@@ -90,8 +96,8 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-08-25a";
-    const APP_ROOT="releases/a-a23474e356c4/";
+    const BUILD="2026-08-25f";
+    const APP_ROOT="releases/a-9f6208c8dabe/";
     const MAX_INPUT=8192;
     const MAX_PASTE_CHARS=100000;
     const MAX_PASTE_LINES=256;

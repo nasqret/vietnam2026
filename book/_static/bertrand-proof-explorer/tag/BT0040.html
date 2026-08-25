@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT003Y.html">← beta_modulus_nonzero</a> <a href="BT0041.html">beta_at_exists →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT0040.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT0040&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT003Y.html">← beta_modulus_nonzero</a><a href="BT0041.html">beta_at_exists →</a></nav>
 <p class="pa-tag">BT0040</p><h1>beta_at_self_of_bound</h1>
-<p class="pa-status-public">Stable · empty-context checked</p>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
 <p>A value below a Gödel-beta modulus decodes to itself when used as the code.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by equality transport (2).</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT005E.html"><code>BT005E</code> beta_prefix_product_trace_exists</a> <a class="pa-theorem-ref" href="BT0089.html"><code>BT0089</code> beta_prefix_sum_trace_exists</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="52e7c55e86e18c2c"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="e8f5c5225655b346"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> i</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="c4ca70cadf48c92d"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> x</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="49120c3c03ae48b0"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> hx</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="split" data-line-id="32acc0b3b8f52657"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">split</span></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="exact" data-line-id="bfa1573daaa5d6b2"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">exact</span> hx</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="exists" data-line-id="fd2a5f190834e8bc"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">exists</span> 0</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="specialize" data-line-id="01696cd7b9bb6767"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0004.html">mul_zero_left</a> (S ((S i) * c))</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="rewrite" data-line-id="d2af0b1c72c7079b"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">rewrite</span> <a class="pa-theorem-ref" href="BT0004.html">mul_zero_left</a></code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="specialize" data-line-id="27b68af3419c1e8a"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0000.html">zero_add</a> x</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="rewrite" data-line-id="4f761561b87b8937"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">rewrite</span> <a class="pa-theorem-ref" href="BT0000.html">zero_add</a></code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="refl" data-line-id="35190bae63202af1"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">refl</span></code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>140</dd>
 <dt>Layer</dt><dd>1</dd><dt>Lines</dt><dd>12</dd>
-<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
 <dt>Body proof nodes</dt><dd>n/a</dd>
 <dt>Statement SHA-256</dt><dd><code>2d7d05bc900916fb1c5e23a402436d7e460ee6ad7ac1de57ba9cc1db76a9c095</code></dd>
 <dt>Script SHA-256</dt><dd><code>42ade538a0f250a192982c2b6b27223c6eedbafd661eaf9384d2c28c377765bd</code></dd>

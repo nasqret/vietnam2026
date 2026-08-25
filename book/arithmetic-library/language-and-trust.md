@@ -88,12 +88,17 @@ This is a reading layer, not a language extension. The compiler, registry,
 `PD` identifiers, hashes, pages, and notation edges are untrusted and cannot
 participate in a theorem dependency path. The current QR slice contains 241
 Stable rows and 316 Alpha-only rows. The historical campaign-local source
-labels remain separate from current immutable Alpha-v16 evidence: all 316
+labels remain separate from current immutable Alpha-v19 evidence: all 316
 Alpha-only QR rows, including the `PA00FW` root, are now `alpha_closed`
-because their complete actual proofs were independently checked. Compact
+because their complete actual proofs were independently checked in historical
+v16. Historical v17 independently closed the supplementary laws; historical
+v18 adds complete Lucas, Kummer, Bertrand, four-square, and two-square proof
+bundles. Current v19 additionally closes all remaining historical obligations
+and appends four wholly checked constructive theorem families. Compact
 notation itself grants neither theorem evidence nor Stable promotion. These
-figures describe the focused QR slice, not the complete current 1,673-row
-Alpha v16 catalog, which also contains other separately curated campaigns.
+figures describe the focused QR slice, not the complete current 1,737-row
+Alpha v19 catalog, every entry of which has checked-use authority; its Stable subset
+remains exactly 432 theorems.
 
 ## Relational definitions before functions
 

@@ -1,0 +1,163 @@
+# G012 — complete constructive linear-congruence solvability
+
+Status: **nine actual independently kernel-checked dependency-curried proof
+bodies**, using only previously Stable-closed external theorem dependencies.
+The exact positive-modulus, strictly bounded solvability iff required by grand
+campaign milestone G012 is proved. The zero-modulus boundary, a constructive
+decision procedure, and uniqueness of bounded solutions in the coprime case
+are separately proved. Candidate verification alone grants neither Stable
+membership nor Alpha checked-use authority; enrollment and dependency-closed
+admission require a separate reviewed release artifact.
+
+## Unchanged object language and conservative surfaces
+
+The trusted kernel still accepts only first-order intuitionistic arithmetic in
+
+```text
+{0, S, +, *, =}.
+```
+
+All readable relations are expanded before parsing and checking:
+
+```text
+Dvd(g,b)        := exists q. b = g*q
+
+Lt(x,m)         := exists h. h + S(x) = m
+
+ModEq(m,u,v)    := exists s t. u + m*s = v + m*t
+
+IsGCD(g,a,m)    :=
+  ((exists u. a = g*u) /\ (exists v. m = g*v))
+    /\ forall d.
+         (exists u. a = d*u)
+           -> (exists v. m = d*v)
+           -> exists w. g = d*w
+
+Coprime(a,m)    :=
+  forall d.
+    (exists u. a = d*u) -> (exists v. m = d*v) -> d = 1.
+```
+
+`IsGCD` is expanded by the existing audited hygienic canonical-gcd authoring
+surface. Balanced congruence is expanded by the existing parser-validated,
+binder-safe generalized-CRT authoring surface. There is no gcd function, `%`
+primitive, subtraction operation, CRT axiom, classical decision principle,
+new kernel rule, or external number-theoretic oracle.
+
+## Exact campaign endpoint
+
+The reviewed root is `linear_congruence_solvable_iff_gcd_divides`:
+
+```text
+forall a m b g.
+  IsGCD(g,a,m)
+    -> ~(m = 0)
+    -> (((exists x. Lt(x,m) /\ ModEq(m,a*x,b)) -> Dvd(g,b))
+          /\ (Dvd(g,b) -> exists x. Lt(x,m) /\ ModEq(m,a*x,b))).
+```
+
+The nonzero-modulus assumption is indispensable for a strictly bounded
+residue, and `Lt(x,m)` includes its actual constructive gap witness. The
+asserted iff is represented as a pair of intuitionistic implications. Its
+fully expanded statement has SHA-256
+
+```text
+808ae7b7b17bc3c2a027e76aff9d4f7d58157d50ce20ee50e323631b2b02296e.
+```
+
+Its actual dependency-curried certificate has 69 structural proof nodes,
+69 proof objects, and depth 28. No classical double-negation-elimination node
+occurs.
+
+## The constructive CRT reduction
+
+Instead of introducing subtraction or managing implicit negative Bézout
+coefficients, the proof reduces linear congruence to the already Stable-closed
+**binary** generalized CRT:
+
+```text
+a*x = b (mod m)
+
+if and only if some natural y satisfies
+
+y = 0 (mod a),
+y = b (mod m).
+```
+
+The binary-CRT compatibility condition is precisely
+
+```text
+0 = b (mod gcd(a,m)),
+```
+
+which is equivalent to the witnessed natural divisibility `gcd(a,m) | b`.
+A separate unchanged-kernel proof extracts an actual quotient from balanced
+zero congruence, even when the divisor is zero. Thus a CRT witness `y` comes
+with an actual natural `x` satisfying `y=a*x`, and the second CRT congruence
+immediately supplies the desired linear-congruence solution.
+
+For nonzero `m`, Stable canonical-remainder existence produces
+
+```text
+x = m*q + r,
+r < m.
+```
+
+Balanced congruence is preserved under multiplication by `a`, so `r` is the
+required strictly bounded solution. No finite-list CRT result is assumed:
+grand-campaign G011 remains a distinct open problem.
+
+## Exact nine-row proof ladder
+
+| Row | Exact theorem | Body nodes | Depth | Meaning |
+|---|---|---:|---:|---|
+| 1 | `linear_congruence_zero_residue_divides` | 38 | 22 | Balanced zero congruence gives a genuine quotient, including divisor zero. |
+| 2 | `linear_congruence_solution_forces_gcd_divisibility` | 38 | 22 | Every linear solution forces the relational gcd to divide its target. |
+| 3 | `linear_congruence_gcd_divisibility_constructs_solution` | 42 | 19 | Binary CRT constructs a solution at every natural modulus. |
+| 4 | `linear_congruence_all_moduli_solvable_iff_gcd_divides` | 58 | 23 | The unbounded solvability iff includes modulus zero. |
+| 5 | `linear_congruence_nonzero_modulus_bounded_constructor` | 67 | 29 | Canonical remainder yields an explicitly bounded witness. |
+| 6 | `linear_congruence_solvable_iff_gcd_divides` | 69 | 28 | Exact grand-campaign milestone G012. |
+| 7 | `linear_congruence_zero_modulus_exact_divisibility` | 57 | 20 | At modulus zero the problem is exactly `exists x. a*x=b`. |
+| 8 | `linear_congruence_certified_decision` | 36 | 19 | Produce a solution or a constructive impossibility certificate. |
+| 9 | `linear_congruence_coprime_bounded_solution_unique` | 48 | 24 | Coprimality makes the strictly bounded solution unique. |
+
+Every external dependency is already in the independently checked **Stable**
+edition. Internal dependencies always occur in strictly earlier rows. The
+maximum candidate-body size is 69 structural kernel nodes and maximum depth
+29. The exact ordered nine-name SHA-256 is
+
+```text
+385fb6bbf6fc423ffec7dfeee70740aae6b4796ec4138d5f8fac7028430333f5.
+```
+
+## Boundary and evidence discipline
+
+The all-modulus root has **no** hidden nonzero hypothesis:
+
+```text
+forall a m b g.
+  IsGCD(g,a,m)
+    -> (((exists x. ModEq(m,a*x,b)) -> Dvd(g,b))
+         /\ (Dvd(g,b) -> exists x. ModEq(m,a*x,b))).
+```
+
+When `m=0`, balanced congruence becomes ordinary equality. Consequently the
+separate zero-boundary theorem proves
+
+```text
+IsGCD(g,a,0)
+  -> ((exists x. a*x=b) <-> Dvd(g,b)).
+```
+
+In particular, `(a,m,b)=(0,0,0)` is solvable, while `(0,0,3)` is not. A
+strictly bounded residue below zero is never claimed. When `m` is nonzero
+and `Coprime(a,m)` holds, any two solutions below `m` are proved equal by
+Stable coprime modular cancellation and bounded-residue uniqueness.
+
+The implementation is
+[`linear_congruence_complete_candidate.py`](../../peano-lab/py/peano_lab/library/linear_congruence_complete_candidate.py).
+Its exact-formula, original-kernel, structural, dependency, false-conclusion,
+truncated-script, omitted-dependency, classical-rule-exclusion, and numerical
+boundary audit is
+[`test_linear_congruence_complete_candidate.py`](../../peano-lab/py/tests/test_linear_congruence_complete_candidate.py).
+The complete focused audit currently contains **54 passing tests**.

@@ -18,11 +18,15 @@ PEANO_POLICY_PILOT_DIR ?= data/peano-policy-pilot-v1
 PEANO_POLICY_ROWS ?= 10000
 PEANO_TRAIN_JOB ?= 217859
 PEANO_TRAIN_DASHBOARD_PORT ?= 8766
+PEANO_LEAN_BROWSER_HOST ?= 127.0.0.1
+PEANO_LEAN_BROWSER_PORT ?= 8787
+PEANO_LEAN_BROWSER_ARGS ?=
+PEANO_LEAN_BROWSER_CHECK_ARGS ?=
 # This path is a deletion target in `stage-peano`; command-line assignments
 # must not be able to widen it beyond the repository's dedicated stage tree.
 override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
-override PEANOAPPID := a-a23474e356c4
+override PEANOAPPID := a-9f6208c8dabe
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs deploy-site deploy-lab deploy-lab-next deploy-peano \
@@ -101,12 +105,26 @@ help:
 	@echo "  make peano-library-alpha-v16-check  independently verify all genuine QR proofs, immutable history, and 315 checked-use promotions"
 	@echo "  make peano-library-channels-v16  compatibility alias for the current Alpha v16 build"
 	@echo "  make peano-library-channels-v16-check  compatibility alias for the current Alpha v16 check"
+	@echo "  make peano-library-alpha-v17  seal both independently closed quadratic supplementary laws"
+	@echo "  make peano-library-alpha-v17-check  verify immutable history, all 438 actual proofs, and 31 checked-use promotions"
+	@echo "  make peano-library-channels-v17  compatibility alias for the historical Alpha v17 build"
+	@echo "  make peano-library-channels-v17-check  compatibility alias for the historical Alpha v17 check"
+	@echo "  make peano-library-alpha-v18  seal five completely proved constructive flagship campaigns"
+	@echo "  make peano-library-alpha-v18-check  verify all five actual proof bundles and 673 checked-use promotions"
+	@echo "  make peano-library-channels-v18  compatibility alias for the historical Alpha v18 build"
+	@echo "  make peano-library-channels-v18-check  compatibility alias for the historical Alpha v18 check"
+	@echo "  make peano-library-alpha-v19  seal the fully checked constructive number-theory campaign"
+	@echo "  make peano-library-alpha-v19-check  verify all 1,737 proofs, 84 closures, and 64 new results"
+	@echo "  make peano-library-channels-v19  compatibility alias for the current Alpha v19 build"
+	@echo "  make peano-library-channels-v19-check  compatibility alias for the current Alpha v19 check"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
 	@echo "  make ha-constructive-frontier-check  replay ordered stages 1-6 in bounded isolated proof processes"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
 	@echo "  make ha-k3b-list-lookup-check  run the Alpha K3B ListAt surface checks"
 	@echo "  make lab-serve    serve lab-lambda locally on :8001"
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
+	@echo "  make lean-browser  open the theorem graph and bounded Lean proof builder on :$(PEANO_LEAN_BROWSER_PORT)"
+	@echo "  make lean-browser-check  independently smoke-test the running Lean theorem browser"
 	@echo "  make peano-training-dashboard  observe WMI job $(PEANO_TRAIN_JOB) on :$(PEANO_TRAIN_DASHBOARD_PORT)"
 	@echo "  make peano-corpus reproduce the leakage-safe Peano train/val release"
 	@echo "  make peano-corpus-smoke  run the all-ladder M9 generation/export smoke"
@@ -487,6 +505,77 @@ peano-library-alpha-v16-check:
 	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
 		tests/test_library_editions_v16_admission.py
 
+.PHONY: peano-library-alpha-v17 peano-library-alpha-v17-check \
+	peano-library-channels-v17 peano-library-channels-v17-check
+
+peano-library-alpha-v17:
+	@# Decode and independently check all 438 ordinary constructive proof bodies.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v17.py
+
+peano-library-alpha-v17-check:
+	@# Isolated proof workers preserve unchanged node/object limits and bounded RSS.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v17.py --check
+	PYTHONMALLOC=malloc python3 scripts/verify_peano_library_channels_v17.py
+	PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		scripts/test_verify_peano_library_channels_v17.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_library_editions_v17_admission.py tests/test_alpha_v16_ui.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_supplementary_laws_closure.py \
+		-k 'not test_each_supplement_endpoint_has_actual_empty_context_kernel_proof'
+	../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+		research/arithmetic-library/artifacts/supplementary-laws-proof-bundle-v1.json
+
+.PHONY: peano-library-alpha-v18 peano-library-alpha-v18-check \
+	peano-library-channels-v18 peano-library-channels-v18-check
+
+peano-library-alpha-v18:
+	@# All five canonical artifacts are independently decoded and kernel checked.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v18.py
+
+peano-library-alpha-v18-check:
+	@# Isolate heavyweight proof caches while preserving every original hard cap.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v18.py --check
+	PYTHONMALLOC=malloc python3 scripts/verify_peano_library_channels_v18.py
+	PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		scripts/test_verify_peano_library_channels_v18.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_library_editions_v18_admission.py tests/test_alpha_v16_ui.py
+	../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+		research/arithmetic-library/artifacts/lucas-proof-bundle-v1.json
+	../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+		research/arithmetic-library/artifacts/kummer-proof-bundle-v1.json
+	../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+		research/arithmetic-library/artifacts/bertrand-proof-bundle-v1.json
+	../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+		research/arithmetic-library/artifacts/four-square-proof-bundle-v1.json
+	../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+		research/arithmetic-library/artifacts/two-square-proof-bundle-v1.json
+
+.PHONY: peano-library-alpha-v19 peano-library-alpha-v19-check \
+	peano-library-channels-v19 peano-library-channels-v19-check
+
+peano-library-alpha-v19:
+	@# Both exact artifacts independently recheck every unchanged-kernel body.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v19.py
+
+peano-library-alpha-v19-check:
+	@# Isolated workers preserve every historical proof and memory limit.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v19.py --check
+	PYTHONMALLOC=malloc python3 scripts/verify_peano_library_channels_v19.py
+	PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		scripts/test_verify_peano_library_channels_v19.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_library_editions_v19_admission.py tests/test_alpha_v16_ui.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_campaign_residual_closure.py \
+		tests/test_linear_congruence_complete_candidate.py \
+		tests/test_primes_one_mod_four_candidate.py
+	../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+		research/arithmetic-library/artifacts/alpha-v19-residual-proof-bundle-v1.json
+	../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+		research/arithmetic-library/artifacts/alpha-v19-campaign-frontier-proof-bundle-v1.json
+
 peano-library-channels: peano-library-alpha
 
 peano-library-channels-check: peano-library-alpha-check
@@ -550,6 +639,18 @@ peano-library-channels-v15-check: peano-library-alpha-v15-check
 peano-library-channels-v16: peano-library-alpha-v16
 
 peano-library-channels-v16-check: peano-library-alpha-v16-check
+
+peano-library-channels-v17: peano-library-alpha-v17
+
+peano-library-channels-v17-check: peano-library-alpha-v17-check
+
+peano-library-channels-v18: peano-library-alpha-v18
+
+peano-library-channels-v18-check: peano-library-alpha-v18-check
+
+peano-library-channels-v19: peano-library-alpha-v19
+
+peano-library-channels-v19-check: peano-library-alpha-v19-check
 
 ha-number-theory-check:
 	python3 scripts/verify_ha_number_theory_campaign.py
@@ -695,6 +796,18 @@ peano-serve: stage-peano
 	@echo "→ http://localhost:8002/  (Ctrl-C to stop)"
 	cd "$(STAGEPEANO)" && python3 -m http.server 8002
 
+.PHONY: lean-browser lean-browser-check
+lean-browser:
+	python3 scripts/serve_lean_strands.py \
+		--host "$(PEANO_LEAN_BROWSER_HOST)" \
+		--port "$(PEANO_LEAN_BROWSER_PORT)" \
+		$(PEANO_LEAN_BROWSER_ARGS)
+
+lean-browser-check:
+	python3 scripts/check_lean_browser.py \
+		--base-url "http://$(PEANO_LEAN_BROWSER_HOST):$(PEANO_LEAN_BROWSER_PORT)" \
+		$(PEANO_LEAN_BROWSER_CHECK_ARGS)
+
 peano-training-dashboard:
 	python3 scripts/serve_wmi_training_dashboard.py --job-id "$(PEANO_TRAIN_JOB)" --port "$(PEANO_TRAIN_DASHBOARD_PORT)"
 
@@ -792,6 +905,38 @@ stage-proofs: book-proof-explorer book-constructive-frontier-explorer
 		"$(STAGEPROOFS)/artifacts/quadratic-reciprocity-proof-bundle-v1.json"
 	cp research/arithmetic-library/quadratic-reciprocity-closure-receipt.md \
 		"$(STAGEPROOFS)/artifacts/quadratic-reciprocity-closure-receipt.md"
+	cp research/arithmetic-library/artifacts/supplementary-laws-proof-bundle-v1.json \
+		"$(STAGEPROOFS)/artifacts/supplementary-laws-proof-bundle-v1.json"
+	cp research/arithmetic-library/supplementary-laws-closure-receipt.md \
+		"$(STAGEPROOFS)/artifacts/supplementary-laws-closure-receipt.md"
+	cp research/arithmetic-library/artifacts/lucas-proof-bundle-v1.json \
+		"$(STAGEPROOFS)/artifacts/lucas-proof-bundle-v1.json"
+	cp research/arithmetic-library/lucas-complete-closure-receipt.md \
+		"$(STAGEPROOFS)/artifacts/lucas-complete-closure-receipt.md"
+	cp research/arithmetic-library/artifacts/kummer-proof-bundle-v1.json \
+		"$(STAGEPROOFS)/artifacts/kummer-proof-bundle-v1.json"
+	cp research/arithmetic-library/kummer-complete-closure-receipt.md \
+		"$(STAGEPROOFS)/artifacts/kummer-complete-closure-receipt.md"
+	cp research/arithmetic-library/artifacts/bertrand-proof-bundle-v1.json \
+		"$(STAGEPROOFS)/artifacts/bertrand-proof-bundle-v1.json"
+	cp research/arithmetic-library/bertrand-complete-closure-receipt.md \
+		"$(STAGEPROOFS)/artifacts/bertrand-complete-closure-receipt.md"
+	cp research/arithmetic-library/artifacts/four-square-proof-bundle-v1.json \
+		"$(STAGEPROOFS)/artifacts/four-square-proof-bundle-v1.json"
+	cp research/arithmetic-library/four-square-complete-closure-receipt.md \
+		"$(STAGEPROOFS)/artifacts/four-square-complete-closure-receipt.md"
+	cp research/arithmetic-library/artifacts/two-square-proof-bundle-v1.json \
+		"$(STAGEPROOFS)/artifacts/two-square-proof-bundle-v1.json"
+	cp research/arithmetic-library/two-square-complete-closure-receipt.md \
+		"$(STAGEPROOFS)/artifacts/two-square-complete-closure-receipt.md"
+	cp research/arithmetic-library/artifacts/alpha-v19-residual-proof-bundle-v1.json \
+		"$(STAGEPROOFS)/artifacts/alpha-v19-residual-proof-bundle-v1.json"
+	cp research/arithmetic-library/campaign-residual-closure-receipt.md \
+		"$(STAGEPROOFS)/artifacts/campaign-residual-closure-receipt.md"
+	cp research/arithmetic-library/artifacts/alpha-v19-campaign-frontier-proof-bundle-v1.json \
+		"$(STAGEPROOFS)/artifacts/alpha-v19-campaign-frontier-proof-bundle-v1.json"
+	cp research/arithmetic-library/alpha-v19-campaign-frontier-closure-receipt.md \
+		"$(STAGEPROOFS)/artifacts/alpha-v19-campaign-frontier-closure-receipt.md"
 	rsync -a --delete --exclude '.DS_Store' \
 		book/_static/pa-proof-explorer/ \
 		"$(STAGEPROOFS)/quadratic-reciprocity/explorer/"
@@ -863,6 +1008,22 @@ stage-peano:
 	cp peano-lab/APP_MANIFEST.sha256 "$(STAGEPEANO)/releases/$(PEANOAPPID)/APP_MANIFEST.sha256"
 	cp research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json \
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/supplementary-laws-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/supplementary-laws-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/lucas-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/lucas-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/kummer-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/kummer-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/bertrand-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/bertrand-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/four-square-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/four-square-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/two-square-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/two-square-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/alpha-v19-residual-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/alpha-v19-residual-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/alpha-v19-campaign-frontier-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/alpha-v19-campaign-frontier-proof-bundle-v1.json"
 	rsync -a --delete --exclude '/tests/***' --exclude '__pycache__/' --exclude '.pytest_cache/' --include '*/' --include '*.py' --exclude '*' peano-lab/py/ "$(STAGEPEANO)/releases/$(PEANOAPPID)/py/"
 	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"
 	@echo "Staged Peano Lab in $(STAGEPEANO)"

@@ -11,10 +11,12 @@ closure.
 :class: important
 The 557 generated pages contain **241 Stable prerequisites** and **316 Alpha-only
 specifications**. The complete Stable catalog has 432 theorems, so
-191 Stable rows lie outside this QR closure. The current canonical Alpha v16
-catalog has 1,673 rows, of which 885 have checked-use authority. Stable union
-this slice has only 748 distinct theorem names. K3B, K3C, Bertrand, Lucas,
-and four squares remain separate focused Alpha layers. Historical
+191 Stable rows lie outside this QR closure. The current canonical Alpha v19
+catalog has 1,737 rows, every one with independently checked-use authority.
+Stable union this slice has only 748 distinct theorem names. The separately
+closed Lucas, Kummer, Bertrand, four-square, two-square, linear-congruence,
+prime-progression, and Pythagorean families, along with K3B and K3C, remain
+outside this focused QR view. Historical
 `public`/`candidate` labels record source and Stable-versus-Alpha membership;
 a separate current evidence overlay marks all 316 Alpha-only QR results
 `alpha_closed` after their actual original-kernel proofs were checked.
@@ -24,7 +26,9 @@ a separate current evidence overlay marks all 316 Alpha-only QR results
 :class: note
 In particular, `quadratic_reciprocity_combined` has a complete independently
 checked empty-context certificate, a complete 557-node proof bundle, and
-current Alpha-v16 checked-use authority. It is **not** a Stable theorem. A
+current Alpha-v19 checked-use authority, first granted in historical v16.
+Historical v17 separately closed both supplementary laws. The QR endpoint is
+**not** a Stable theorem. A
 permanent tag, source hash, or green modular-body check is provenance—not an
 axiom and not Stable promotion. See {doc}`Alpha and Stable library editions
 <library-editions>` for the release lifecycle.
@@ -62,6 +66,9 @@ your mathematical route.
   </a>
   <a class="btn btn-outline-primary" href="../_static/pa-proof-explorer/tag/PA00FW.html">
     Jump to quadratic reciprocity · PA00FW
+  </a>
+  <a class="btn btn-outline-primary" href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F05">
+    Open reciprocity in the complete research atlas
   </a>
 </p>
 
@@ -103,7 +110,7 @@ difference between one readable route and all required premises explicit.
 The {doc}`theorem atlas <theorem-atlas>` is the complete 432-theorem Stable
 snapshot. The frozen QR explorer is exactly a 557-specification slice: 241 of
 its rows occur in Stable and 316 are Alpha-only. It omits 191 Stable theorems,
-and its 748-name union omits 137 other Alpha rows, so it must not be used as
+and its 748-name union omits 925 other Alpha rows, so it must not be used as
 the count for either complete edition. Exact
 QR-factory overlaps are compatible migrations, not implicit promotion by the
 explorer. Generated pages grant no entry to the Stable `pa lib` namespace.

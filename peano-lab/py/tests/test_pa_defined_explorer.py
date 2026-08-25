@@ -400,3 +400,53 @@ def test_manifest_is_byte_current_and_check_prune_are_deterministic(built, tmp_p
     generator._write(files, tmp_path)
     assert generator._check(files, tmp_path)
     assert not extra.exists()
+
+
+def test_all_defined_quadratic_reciprocity_nodes_link_the_global_campaign(built) -> None:
+    import build_pa_defined_explorer as generator
+
+    files, _manifest, _raw = built
+    revision = generator.CAMPAIGN_HTML_REVISION
+    for relative in ("index.html", "graph.html"):
+        page = files[relative].decode("utf-8")
+        assert f'href="../../../grand-campaign/?v={revision}"' in page
+        assert f'view=domain&amp;focus=D02&amp;v={revision}' in page
+        assert f'view=family&amp;focus=F05&amp;v={revision}' in page
+        assert f'view=goal&amp;focus=G043&amp;v={revision}' in page
+
+    corpus = json.loads(files["api/corpus.json"])
+    for theorem in corpus["theorems"]:
+        page = files[f'tag/{theorem["tag"]}.html'].decode("utf-8")
+        assert f'href="../../../../grand-campaign/?v={revision}"' in page
+        assert f'view=family&amp;focus=F05&amp;v={revision}' in page
+        assert f'view=goal&amp;focus=G043&amp;v={revision}' in page
+
+    for definition in corpus["definitions"]:
+        page = files[f'definition/{definition["id"]}.html'].decode("utf-8")
+        assert f'href="../../../../grand-campaign/?v={revision}"' in page
+        focus = generator.CAMPAIGN_DEFINITION_ALIASES.get(definition["name"])
+        if focus is not None:
+            assert f'view=definition&amp;focus={focus}&amp;v={revision}' in page
+
+
+def test_shared_campaign_definition_names_resolve_to_actual_blueprint_entries() -> None:
+    import build_pa_defined_explorer as generator
+
+    campaign = _load(
+        REPO / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
+    )
+    assert set(generator.CAMPAIGN_DEFINITION_ALIASES.values()).issubset(
+        campaign["definitions"]
+    )
+
+
+def test_campaign_navigation_revision_is_separate_from_pinned_javascript_asset() -> None:
+    import build_pa_defined_explorer as generator
+
+    catalog = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v19.json"
+    asset_revision = generator.PINNED_ASSETS["assets/explorer.js"][:12]
+
+    assert generator.CAMPAIGN_HTML_REVISION == sha256(catalog.read_bytes()).hexdigest()[:12]
+    assert generator.CAMPAIGN_HTML_REVISION == "f1c3d3fba013"
+    assert asset_revision == "1b95ce228950"
+    assert generator.CAMPAIGN_HTML_REVISION != asset_revision

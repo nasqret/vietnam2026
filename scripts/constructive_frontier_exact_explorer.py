@@ -16,7 +16,7 @@ from typing import Any
 
 
 _IDENTIFIER = re.compile(r"[A-Za-z_][A-Za-z0-9_']*")
-HTML_REVISION = "1b95ce228950"
+HTML_REVISION = "f1c3d3fba013"
 
 
 def _escape(value: object) -> str:
@@ -36,6 +36,24 @@ def _navigation_href(href: str, revision: str) -> str:
     return _escape(versioned)
 
 
+def _campaign_navigation(
+    corpus: Mapping[str, Any], *, prefix: str, revision: str
+) -> str:
+    """Link exact proof pages back to their family-scoped and global atlas."""
+
+    family_id = str(corpus["campaign_family_id"])
+    family_href = _navigation_href(
+        f"{prefix}grand-campaign/?view=family&focus={family_id}", revision
+    )
+    global_href = _navigation_href(f"{prefix}grand-campaign/", revision)
+    return (
+        f'<a data-campaign-link="family" href="{family_href}">'
+        "Campaign family</a>"
+        f'<a data-campaign-link="global" href="{global_href}">'
+        "Full campaign map</a>"
+    )
+
+
 def _layer(
     node: Mapping[str, Any],
     tags: Mapping[str, str],
@@ -51,6 +69,11 @@ def _candidate_label(node: Mapping[str, Any]) -> str:
     if node.get("enrolled_in_alpha"):
         edition = str(node.get("alpha_edition_version") or "Alpha")
         evidence = str(node.get("alpha_evidence") or "body_checked")
+        if node.get("alpha_checked_use"):
+            return (
+                f"Alpha {edition} independently verified · {evidence}; "
+                "checked-use authorized; not Stable"
+            )
         return f"Alpha {edition} enrolled · {evidence}; no checked-use authority"
     return "Dependency-curried candidate body; not Alpha-enrolled; no checked-use authority"
 
@@ -130,7 +153,8 @@ def render_exact_index(
             '<article class="pa-proof-result pa-status-candidate" '
             'data-pa-theorem '
             f'data-name="{_escape(name)}" data-tag="{_escape(tag)}" '
-            f'data-status="candidate" data-layer="{layer}" '
+            f'data-status="{"alpha_closed" if node.get("alpha_checked_use") else "candidate"}" '
+            f'data-layer="{layer}" '
             f'data-search="{_escape(searchable)}">'
             f'<a href="{_navigation_href(f"tag/{tag}.html", html_revision)}">'
             f'<code>{_escape(tag)}</code> · '
@@ -143,6 +167,22 @@ def render_exact_index(
     root = str(corpus["root_names"][-1])
     root_tag = tags[root]
     count = len(nodes)
+    checked_count = sum(bool(node.get("alpha_checked_use")) for node in nodes)
+    candidate_count = count - checked_count
+    status_options = (
+        f'<option value="alpha_closed">Alpha-closed checked-use ({checked_count})</option>'
+        if checked_count
+        else ""
+    ) + f'<option value="candidate">Body-checked candidates ({candidate_count})</option>'
+    boundary = (
+        f"Exactly {checked_count} displayed theorems have independently verified "
+        "Alpha checked-use authority; none is admitted to Stable. Body-only "
+        "enrollment never grants checked theorem use."
+        if checked_count
+        else "Every displayed theorem is a dependency-curried candidate body. "
+        "Alpha enrollment never grants checked theorem use, empty-context "
+        "closure, or Stable membership."
+    )
     layer_count = len(layer_numbers)
     layer_links = "".join(
         f'<a href="{_navigation_href(f"?layer={number}", html_revision)}">'
@@ -154,18 +194,21 @@ def render_exact_index(
     graph_href = _navigation_href(
         f"defined/graph.html?target={root_tag}", html_revision
     )
+    campaign_navigation = _campaign_navigation(
+        corpus, prefix="../../", revision=html_revision
+    )
     body = f"""<header class="pa-proof-header pa-hero">
-  <nav><a href="{family_href}">{_escape(family.title)}</a><a href="{defined_href}">Defined notation</a><a href="{graph_href}">Dependency graph</a></nav>
+  <nav><a href="{family_href}">{_escape(family.title)}</a><a href="{defined_href}">Defined notation</a><a href="{graph_href}">Dependency graph</a>{campaign_navigation}</nav>
   <h1>{_escape(family.title)} — Exact Proof Explorer</h1>
   <p>{_escape(family.description)}</p>
   <div class="pa-proof-stats"><b>{count}</b> theorem bodies · <b>{corpus['edge_count']}</b> proof edges · <b>{corpus['formal_line_count']}</b> tactic lines · <b>{layer_count}</b> layers</div>
   <p class="pa-status-candidate">{_escape(corpus['candidate_status'])}</p>
 </header>
 <main data-proof-dashboard data-pa-explorer-index>
-  <section class="pa-proof-controls"><label>Search <input data-proof-search data-pa-search type="search"></label><label>Status <select data-proof-status data-pa-status><option value="all">All</option><option value="candidate">Body-checked candidates ({count})</option></select></label><label>Layer <select data-proof-layer data-pa-layer><option value="all">All {layer_count} layers</option>{layer_options}</select></label><button data-proof-clear data-pa-clear type="button">Clear</button><output data-proof-count data-pa-count>{count} theorems</output></section>
+  <section class="pa-proof-controls"><label>Search <input data-proof-search data-pa-search type="search"></label><label>Status <select data-proof-status data-pa-status><option value="all">All</option>{status_options}</select></label><label>Layer <select data-proof-layer data-pa-layer><option value="all">All {layer_count} layers</option>{layer_options}</select></label><button data-proof-clear data-pa-clear type="button">Clear</button><output data-proof-count data-pa-count>{count} theorems</output></section>
   <section class="pa-layer-map">{layer_links}</section>
   <section class="pa-proof-results">{"".join(cards)}</section>
-  <p class="pa-callout">Every displayed theorem is a dependency-curried candidate body. Alpha enrollment never grants checked theorem use, empty-context closure, or Stable membership.</p>
+  <p class="pa-callout">{_escape(boundary)}</p>
 </main>"""
     return _page(
         family=family,
@@ -313,9 +356,25 @@ def render_exact_theorem(
         if node.get("enrolled_in_alpha")
         else "not enrolled"
     )
+    checked = bool(node.get("alpha_checked_use"))
+    authority = (
+        f"Alpha {node.get('alpha_edition_version')}; independently verified"
+        if checked
+        else "none"
+    )
+    proof_boundary = (
+        "This exact body belongs to a complete independently kernel-checked "
+        "constructive proof bundle and has Alpha checked-use authority; it "
+        "does not imply Stable membership."
+        if checked
+        else "This dependency-curried candidate body does not grant checked "
+        "theorem use or Stable membership."
+    )
     experiment = (
         '<p class="pa-callout">Historical empty-context replay experiment only; '
-        'no persisted certificate, checked-use authority, or Stable promotion.</p>'
+        'that experiment persisted no certificate and granted no release '
+        'authority. Current checked use follows separately sealed, independently '
+        'verified proof bundles; there is no Stable promotion.</p>'
         if node.get("experimental_closure_verified")
         else ""
     )
@@ -327,8 +386,11 @@ def render_exact_theorem(
     graph_href = _navigation_href(
         f"../defined/graph.html?target={tag}", html_revision
     )
+    campaign_navigation = _campaign_navigation(
+        corpus, prefix="../../../", revision=html_revision
+    )
     body = f"""<header class="pa-proof-header pa-theorem-heading">
-  <nav><a href="{explorer_href}">Explorer</a><a href="{defined_href}">Defined notation</a><a href="{graph_href}">Dependency graph</a>{previous_link}{following_link}</nav>
+  <nav><a href="{explorer_href}">Explorer</a><a href="{defined_href}">Defined notation</a><a href="{graph_href}">Dependency graph</a>{campaign_navigation}{previous_link}{following_link}</nav>
   <p class="pa-tag">{_escape(tag)}</p><h1>{_escape(name)}</h1>
   <p class="pa-status-candidate">{_escape(_candidate_label(node))}</p>
   <p>{_escape(node['summary'])}</p>
@@ -338,9 +400,9 @@ def render_exact_theorem(
     <section class="pa-statement"><h2>Exact expanded first-order arithmetic statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>{_escape(node['statement'])}</code></pre></section>
     <section class="pa-informal-proof" data-informal-kind="structural" data-informal-review="generated"><h2>Constructive proof overview</h2><p><strong>Generated structural guide</strong></p><p>{_escape(node['summary'])}</p><p>The unchanged tactic script uses {len(dependencies)} declared prerequisite{'s' if len(dependencies) != 1 else ''} and contains {len(lines)} exact native proof lines.</p><p>{_escape(corpus['candidate_status'])}</p>{experiment}</section>
     <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row">{_relation(dependencies, tags=tags, external=external, html_revision=html_revision)}</div><h3>Direct dependents</h3><div class="pa-chip-row">{_relation(dependents, tags=tags, external=external, html_revision=html_revision)}</div></section>
-    <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. This dependency-curried candidate body does not grant checked theorem use or Stable membership.</p><ol class="pa-formal-proof">{"".join(lines)}</ol></section>
+    <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. {_escape(proof_boundary)}</p><ol class="pa-formal-proof">{"".join(lines)}</ol></section>
   </div>
-  <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>{layer}</dd><dt>Tactic lines</dt><dd>{len(lines)}</dd><dt>Alpha evidence</dt><dd>{_escape(alpha_evidence)}</dd><dt>Checked-use authority</dt><dd>none</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>{_escape(node['statement_sha256'])}</code></dd><dt>Exact script SHA-256</dt><dd><code>{_escape(source.get('script_sha256', 'not recorded'))}</code></dd><dt>Source module</dt><dd><code>{_escape(source.get('source_module', node.get('source_module', 'not recorded')))}</code></dd><dt>Factory</dt><dd><code>{_escape(source.get('factory', node.get('factory', 'not recorded')))}</code></dd></dl></aside>
+  <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>{layer}</dd><dt>Tactic lines</dt><dd>{len(lines)}</dd><dt>Alpha evidence</dt><dd>{_escape(alpha_evidence)}</dd><dt>Checked-use authority</dt><dd>{_escape(authority)}</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>{_escape(node['statement_sha256'])}</code></dd><dt>Exact script SHA-256</dt><dd><code>{_escape(source.get('script_sha256', 'not recorded'))}</code></dd><dt>Source module</dt><dd><code>{_escape(source.get('source_module', node.get('source_module', 'not recorded')))}</code></dd><dt>Factory</dt><dd><code>{_escape(source.get('factory', node.get('factory', 'not recorded')))}</code></dd></dl></aside>
 </main>"""
     return _page(
         family=family,

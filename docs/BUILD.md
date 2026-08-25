@@ -35,6 +35,110 @@ lake env lean /tmp/check.lean     # → "'Artifacts.add_comm'' does not depend o
 The project pins `leanprover/lean4:v4.28.0-rc1` (the locally installed toolchain) and uses **no
 Mathlib**, so it builds in seconds. Current Lean stable is 4.32.0.
 
+## Readable certificate-backed Lean exports
+
+Generate a small, importable theorem together with its independently checked,
+separately named proof-certificate module:
+
+```bash
+python3 scripts/export_peano_lean.py add_comm \
+  --format compact --package-dir /private/tmp/peano-lean-addition --verify
+python3 scripts/export_peano_lean.py prime_unbounded --format pretty
+```
+
+The package contains a reusable `PeanoLab/Presentation.lean` notation module,
+content-addressed `Certificate.lean` and `Theorem.lean` modules, and a canonical
+`manifest.json`. Verification uses the existing Mathlib-free sibling checker,
+one bounded Lean worker, and no proof placeholders. The old self-contained
+single-file export remains available as `--format full`. See
+[`LEAN_CERTIFIED_PRESENTATION.md`](LEAN_CERTIFIED_PRESENTATION.md) for
+edition boundaries, proof bundles, source layouts, and large-proof limits.
+
+## Interactive theorem graph and Lean Live
+
+Start the theorem explorer and its bounded, independently checked proof builder
+from the repository root:
+
+```bash
+make lean-browser
+```
+
+Open the exact theorem graph at
+<http://127.0.0.1:8787/book/_static/pa-proof-explorer/graph.html?target=PA000F> or its
+definition-aware edition at
+<http://127.0.0.1:8787/book/_static/pa-proof-explorer/defined/graph.html?target=PA000F>.
+Select a theorem and choose **Build Lean proof** in the right-hand selected-node
+panel. The browser shows actual dependency translation and Lean compilation
+progress, permits cancellation, and offers the generated Lean source and
+complete named-module ZIP after successful independent verification.
+
+For an entirely readable strand whose self-contained source fits Lean Live's
+share limit, **Open in Lean Live** sends that exact source directly to the
+official editor. Certificate-backed strands and larger proof packages remain
+downloadable; Lean Live does not automatically contain the separate Peano Lab
+certificate-checker project. Conservative definitions are definitions, not new
+axioms, and verification never uses `sorry`.
+
+The service starts one proof worker, listens only on loopback by default, and
+requires an existing installed Lean companion/toolchain. Browser jobs default
+to a 1,024 MiB Lean memory ceiling and at most 256 dependency nodes. Choose
+another local port with `make lean-browser PEANO_LEAN_BROWSER_PORT=8890`. A network-accessible
+deployment additionally requires the explicit service `--public-host` switch;
+ordinary static site hosting cannot run the required compiler service. See
+[`LEAN_PROOF_STRANDS.md`](LEAN_PROOF_STRANDS.md),
+[`LEAN_SELECTOR_UI.md`](LEAN_SELECTOR_UI.md), and
+[`LEAN_LIVE_INTEGRATION.md`](LEAN_LIVE_INTEGRATION.md).
+
+With the browser service still running, validate the entire real proof workflow
+from another terminal:
+
+```bash
+make lean-browser-check
+```
+
+This checks the existing graph's interactive sidebar, compiles the complete
+three-theorem `add_comm` strand, independently checks its standalone source,
+compares the downloaded Lean file byte-for-byte against its Lean Live share,
+and validates the safe generated-module ZIP.
+
+The same controls are also injected into the Bertrand and six constructive
+campaign graphs. For a small, genuinely new Alpha-v19 result, open
+<http://127.0.0.1:8787/book/_static/constructive-frontier-explorer/pythagorean-fermat-four/explorer/defined/graph.html?target=PF0000>;
+the selected `pythagorean_double_product` theorem has a nine-node dependency
+strand and is correctly labeled **Alpha**, not Stable.
+
+## Fully checked constructive Alpha v19 release
+
+The opt-in Alpha-v19 edition contains **1,737 independently checked theorems**
+and **5,779 checked dependency edges**: **432 unchanged Stable** results and
+**1,305 Alpha-only** results, with **zero body-only or pending statements**.
+It closes **84** historical obligations and adds **64** checked Pythagorean,
+prime two-square, linear-congruence, and one-modulo-four prime theorems.
+Regenerate its canonical artifacts or run every release, mutation, and
+independent Lean bundle check with:
+
+```bash
+make peano-library-alpha-v19
+make peano-library-alpha-v19-check
+```
+
+Inspect the resulting theorem or its complete dependency outline without
+replaying a large certificate:
+
+```bash
+python3 scripts/export_peano_lean.py infinitely_many_primes_one_mod_four \
+  --edition alpha --format pretty
+python3 scripts/export_peano_lean.py infinitely_many_primes_one_mod_four \
+  --edition alpha --format outline
+```
+
+In the browser, `pa lib alpha` reports the checked inventory and
+`pa proof alpha infinitely_many_primes_one_mod_four` shows a bounded readable
+proof strand. Neither preview claims fresh kernel replay or independent Lean
+compilation; request an explicit bounded export and `--verify` for that audit.
+Stable remains the default, and the still-open primitive Pythagorean inverse
+and Fermat exponent-four strict descent are not asserted.
+
 ## The Lean FTA companion
 
 The full natural-number Fundamental Theorem of Arithmetic is a separate,

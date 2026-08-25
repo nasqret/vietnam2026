@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Build the replay-free interactive explorer for the full Bertrand proof.
 
-The Alpha-v12 catalog is the byte-frozen input.  This documentation builder
-selects the complete transitive dependency closure of ``bertrand_strict`` and
-never executes tactics or grants theorem authority.
+The Alpha-v12 catalog is the byte-frozen statement/script/provenance input.
+The independently sealed Alpha-v19 inventory supplies current release evidence
+for the exact same dependency closure, while Alpha v18 remains the historical
+proof-bearing release. This documentation builder never executes tactics,
+changes historical enrollment, or grants theorem authority.
 """
 
 from __future__ import annotations
@@ -20,6 +22,13 @@ from typing import Any
 
 
 REPO = Path(__file__).resolve().parents[1]
+PY_ROOT = REPO / "peano-lab" / "py"
+if str(PY_ROOT) not in sys.path:
+    sys.path.insert(0, str(PY_ROOT))
+
+from peano_lab.library import editions_v18 as proof_alpha  # noqa: E402
+from peano_lab.library import editions_v19 as current_alpha  # noqa: E402
+
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v12.json"
 OUTPUT = REPO / "book" / "_static" / "bertrand-proof-explorer"
 ASSET_SOURCE = REPO / "book" / "_static" / "pa-proof-explorer" / "assets"
@@ -32,6 +41,7 @@ GITHUB_ROOT = (
     "agent/new-theorems-tranche-01"
 )
 ROOT_NAME = "bertrand_strict"
+CAMPAIGN_HTML_REVISION = "f1c3d3fba013"
 ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXY"
 PA_AXIOMS = {f"PA{i}" for i in range(1, 7)}
 IDENT_RE = r"[A-Za-z_][A-Za-z0-9_']*"
@@ -44,13 +54,26 @@ EXPECTED = {
     "catalog_edge_count": 4302,
     "catalog_layer_count": 45,
     "closure_theorem_count": 544,
-    "closure_checked_count": 203,
-    "closure_candidate_count": 341,
+    "closure_checked_count": 544,
+    "closure_stable_count": 202,
+    "closure_alpha_closed_count": 342,
+    "source_closure_checked_count": 203,
+    "source_closure_body_only_count": 341,
     "closure_edge_count": 1917,
     "closure_layer_count": 45,
     "formal_line_count": 28410,
     "explicit_dependency_reference_count": 8786,
     "root_tag": "BT0127",
+    "alpha_edition_version": "v19",
+    "alpha_edition_identity_sha256": (
+        "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7"
+    ),
+    "alpha_edition_checked_use_count": 1737,
+    "proof_edition_version": "v18",
+    "proof_edition_identity_sha256": (
+        "f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66"
+    ),
+    "proof_edition_checked_use_count": 1589,
 }
 PINNED_ASSETS = {
     "explorer.css": (
@@ -189,6 +212,21 @@ def _page(title: str, page: str, body: str, prefix: str = "") -> bytes:
 """.encode("utf-8")
 
 
+def _campaign_navigation(prefix: str) -> str:
+    """Return deployed atlas links without changing any proof or evidence data."""
+
+    return (
+        f'<a href="{prefix}grand-campaign/?v={CAMPAIGN_HTML_REVISION}">'
+        "Grand campaign</a>"
+        f'<a href="{prefix}grand-campaign/?view=domain&amp;focus=D02'
+        f'&amp;v={CAMPAIGN_HTML_REVISION}">Research domain</a>'
+        f'<a href="{prefix}grand-campaign/?view=family&amp;focus=F03'
+        f'&amp;v={CAMPAIGN_HTML_REVISION}">Prime-distribution family</a>'
+        f'<a href="{prefix}grand-campaign/?view=goal&amp;focus=A02'
+        f'&amp;v={CAMPAIGN_HTML_REVISION}">Campaign milestone</a>'
+    )
+
+
 def _load_catalog() -> tuple[dict[str, Any], list[dict[str, Any]]]:
     payload = CATALOG.read_bytes()
     if _digest(payload) != EXPECTED["catalog_sha256"]:
@@ -235,6 +273,20 @@ def _records(
     catalog: dict[str, Any],
     closure: list[dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
+    if (
+        current_alpha.ALPHA_V19_IDENTITY_SHA256
+        != EXPECTED["alpha_edition_identity_sha256"]
+        or len(current_alpha.ALPHA_CHECKED_SPECS)
+        != EXPECTED["alpha_edition_checked_use_count"]
+    ):
+        raise ValueError("sealed Alpha-v19 Bertrand release evidence changed")
+    if (
+        proof_alpha.ALPHA_V18_IDENTITY_SHA256
+        != EXPECTED["proof_edition_identity_sha256"]
+        or len(proof_alpha.ALPHA_CHECKED_SPECS)
+        != EXPECTED["proof_edition_checked_use_count"]
+    ):
+        raise ValueError("historical Alpha-v18 Bertrand proof evidence changed")
     by_name = {row["name"]: row for row in closure}
     tags = {row["name"]: _tag(row) for row in closure}
     layers: dict[str, int] = {}
@@ -253,6 +305,43 @@ def _records(
     reference_counts: Counter[tuple[str, str]] = Counter()
     all_tactics = set()
     for source in closure:
+        release_entry = current_alpha.ALPHA_EDITION.by_name.get(source["name"])
+        if (
+            release_entry is None
+            or release_entry.spec.statement != source["statement"]
+            or tuple(release_entry.spec.script) != tuple(source["script"])
+            or tuple(release_entry.spec.dependencies)
+            != tuple(source["dependencies"])
+            or release_entry.enrollment_origin.value != source["enrollment_origin"]
+            or not release_entry.checked_use
+        ):
+            raise ValueError(
+                f"sealed Alpha-v19 theorem differs from frozen Bertrand source "
+                f"or lacks checked-use evidence: {source['name']!r}"
+            )
+        proof_entry = proof_alpha.ALPHA_EDITION.by_name.get(source["name"])
+        if (
+            proof_entry is None
+            or proof_entry.spec != release_entry.spec
+            or proof_entry.membership is not release_entry.membership
+            or proof_entry.evidence is not release_entry.evidence
+            or not proof_entry.checked_use
+        ):
+            raise ValueError(
+                f"historical Alpha-v18 proof-bearing theorem differs from "
+                f"current Alpha-v19 release: {source['name']!r}"
+            )
+        stable_member = release_entry.membership is current_alpha.Membership.STABLE
+        expected_evidence = (
+            current_alpha.EvidenceStatus.STABLE_CLOSED
+            if stable_member
+            else current_alpha.EvidenceStatus.ALPHA_CLOSED
+        )
+        if release_entry.evidence is not expected_evidence:
+            raise ValueError(
+                f"Bertrand theorem {source['name']!r} has inconsistent "
+                "sealed Alpha-v19 evidence and Stable membership"
+            )
         source_path = REPO / source["source"]["path"]
         if not source_path.is_file():
             raise ValueError(f"missing source for {source['name']}")
@@ -279,22 +368,25 @@ def _records(
                     "references": references,
                 }
             )
-        scope = "public" if source["checked_use"] else "candidate"
-        status_label = {
-            "stable_closed": "Stable · empty-context checked",
-            "alpha_closed": "Alpha checked-use · empty-context checked",
-            "body_checked": "Alpha body-checked · checked-use disabled",
-            "pending_layered_closure": "Alpha · layered closure pending",
-        }[source["evidence_status"]]
+        scope = "public" if stable_member else "candidate"
+        status_label = (
+            "Stable checked-use theorem · independently kernel verified"
+            if stable_member
+            else "Alpha v19 checked-use theorem · independently kernel and "
+            "Lean verified; not Stable"
+        )
         records.append(
             {
                 "tag": tags[source["name"]],
                 "name": source["name"],
                 "scope": scope,
-                "status": (
-                    "public" if source["checked_use"] else source["evidence_status"]
-                ),
+                "status": "public" if stable_member else "alpha_closed",
                 "status_label": status_label,
+                "alpha_edition_version": EXPECTED["alpha_edition_version"],
+                "proof_edition_version": EXPECTED["proof_edition_version"],
+                "alpha_evidence": release_entry.evidence.value,
+                "alpha_checked_use": release_entry.checked_use,
+                "stable_member": stable_member,
                 "layer": layers[source["name"]],
                 "summary": source["summary"],
                 "statement": source["statement"],
@@ -303,8 +395,11 @@ def _records(
                 "logical_spec_sha256": source["logical_spec_sha256"],
                 "enrollment_index": source["enrollment_index"],
                 "enrollment_origin": source["enrollment_origin"],
-                "evidence_status": source["evidence_status"],
-                "checked_use": source["checked_use"],
+                "evidence_status": release_entry.evidence.value,
+                "checked_use": release_entry.checked_use,
+                "source_edition_version": "v12",
+                "source_evidence_status": source["evidence_status"],
+                "source_checked_use": source["checked_use"],
                 "body_receipt": source.get("body_receipt"),
                 "source": source["source"],
                 "lines": lines,
@@ -353,6 +448,27 @@ def _records(
         "theorem_count": len(records),
         "public_count": sum(row["scope"] == "public" for row in records),
         "candidate_count": sum(row["scope"] == "candidate" for row in records),
+        "alpha_edition_version": EXPECTED["alpha_edition_version"],
+        "alpha_edition_identity_sha256": current_alpha.ALPHA_V19_IDENTITY_SHA256,
+        "alpha_edition_checked_use_count": len(current_alpha.ALPHA_CHECKED_SPECS),
+        "proof_edition_version": EXPECTED["proof_edition_version"],
+        "proof_edition_identity_sha256": proof_alpha.ALPHA_V18_IDENTITY_SHA256,
+        "proof_edition_checked_use_count": len(proof_alpha.ALPHA_CHECKED_SPECS),
+        "graph_checked_use_count": sum(row["alpha_checked_use"] for row in records),
+        "graph_stable_closed_count": sum(row["stable_member"] for row in records),
+        "graph_alpha_closed_count": sum(
+            row["alpha_evidence"] == "alpha_closed" for row in records
+        ),
+        "graph_newly_promoted_count": sum(
+            row["name"] in proof_alpha.FLAGSHIP_PROMOTED_NAMES
+            for row in records
+        ),
+        "source_scope_policy": "historical_origin_not_current_release_authority",
+        "source_edition_version": "v12",
+        "source_checked_use_count": sum(row["source_checked_use"] for row in records),
+        "source_body_checked_count": sum(
+            row["source_evidence_status"] == "body_checked" for row in records
+        ),
         "edge_count": len(edges),
         "layer_count": max(row["layer"] for row in records) + 1,
         "formal_line_count": sum(len(row["lines"]) for row in records),
@@ -363,14 +479,18 @@ def _records(
         "ordered_enrollment_root_sha256": catalog[
             "ordered_enrollment_root_sha256"
         ],
-        "edition_identity_sha256": catalog["edition_identity_sha256"],
+        "edition_identity_sha256": current_alpha.ALPHA_V19_IDENTITY_SHA256,
+        "source_edition_identity_sha256": catalog["edition_identity_sha256"],
         "root_name": ROOT_NAME,
         "root_tag": tags[ROOT_NAME],
     }
     actual = {
         "closure_theorem_count": receipt["theorem_count"],
-        "closure_checked_count": receipt["public_count"],
-        "closure_candidate_count": receipt["candidate_count"],
+        "closure_checked_count": receipt["graph_checked_use_count"],
+        "closure_stable_count": receipt["public_count"],
+        "closure_alpha_closed_count": receipt["candidate_count"],
+        "source_closure_checked_count": receipt["source_checked_use_count"],
+        "source_closure_body_only_count": receipt["source_body_checked_count"],
         "closure_edge_count": receipt["edge_count"],
         "closure_layer_count": receipt["layer_count"],
         "formal_line_count": receipt["formal_line_count"],
@@ -481,6 +601,12 @@ def _graph_payload(
                 "name": row["name"],
                 "scope": row["scope"],
                 "status": row["status"],
+                "alpha_edition_version": row["alpha_edition_version"],
+                "proof_edition_version": row["proof_edition_version"],
+                "alpha_evidence": row["alpha_evidence"],
+                "alpha_checked_use": row["alpha_checked_use"],
+                "stable_member": row["stable_member"],
+                "source_evidence_status": row["source_evidence_status"],
                 "layer": row["layer"],
                 "summary": row["summary"],
                 "href": f'../tag/{row["tag"]}.html',
@@ -525,27 +651,33 @@ data-search="{_escape(search)}"><a href="tag/{row["tag"]}.html">
         f'<a href="?layer={index}">{index}</a>'
         for index in range(receipt["layer_count"])
     )
+    atlas = _campaign_navigation("../../")
     body = f'''<header class="pa-proof-header pa-hero">
 <p><a href="../../arithmetic-library/bertrand-campaign.html">Jupyter Book</a></p>
 <h1>Bertrand Proof Explorer</h1>
 <p>The complete replay-free reading surface for the transitive dependency
 closure of <code>bertrand_strict</code>.</p>
-<div class="pa-proof-stats"><b>{receipt["theorem_count"]}</b> theorems ·
+<div class="pa-proof-stats"><b>{receipt["graph_checked_use_count"]}</b> checked-use theorems ·
 <b>{receipt["edge_count"]}</b> edges ·
 <b>{receipt["formal_line_count"]:,}</b> tactic lines ·
 <b>{receipt["layer_count"]}</b> layers</div>
+<p>Alpha v19 preserves the independently closed entire graph: {receipt["graph_stable_closed_count"]}
+Stable theorems and {receipt["graph_alpha_closed_count"]} Alpha-only theorems.
+The source-origin filter preserves release membership; Alpha-only checked use
+does not grant Stable membership.</p>
 <nav><a href="{graph_href}">
-Open the complete interactive proof map</a></nav></header>
+Open the complete interactive proof map</a>
+<a href="defined/index.html?v={CAMPAIGN_HTML_REVISION}">Definition-aware edition</a>{atlas}</nav></header>
 <main data-proof-dashboard data-pa-explorer-index>
 <section class="pa-proof-controls"><label>Search
-<input data-proof-search type="search"></label><label>Evidence
+<input data-proof-search type="search"></label><label>Release membership
 <select data-proof-status><option value="all">All</option>
-<option value="public">Checked-use ({receipt["public_count"]})</option>
-<option value="candidate">Body-checked ({receipt["candidate_count"]})</option>
+<option value="public">Stable checked-use ({receipt["public_count"]})</option>
+<option value="candidate">Alpha-only checked-use ({receipt["candidate_count"]})</option>
 </select></label><label>Layer <select data-proof-layer>
 <option value="all">All {receipt["layer_count"]} layers</option>{layers}</select>
 </label><button data-proof-clear type="button">Clear</button>
-<output data-proof-count>{receipt["theorem_count"]} theorems</output></section>
+<output data-proof-count>{receipt["graph_checked_use_count"]} checked-use theorems</output></section>
 <section class="pa-layer-map">{layer_links}</section>
 <section class="pa-proof-results">{''.join(cards)}</section></main>'''
     return _page("Bertrand Proof Explorer", "index", body)
@@ -554,6 +686,41 @@ Open the complete interactive proof map</a></nav></header>
 def _render_graph(graph: dict[str, Any]) -> bytes:
     data = _javascript_assignment("PA_PROOF_GRAPH", graph)
     root = graph["root_tag"]
+    atlas = _campaign_navigation("../../")
+    evidence_overlay = r'''<script id="pa-bertrand-release-evidence">
+(function () {
+  "use strict";
+  function install() {
+    var root = document.querySelector("[data-dependency-graph]");
+    var payload = window.PA_PROOF_GRAPH;
+    if (!root || !payload || !Array.isArray(payload.nodes)) return;
+    var title = root.querySelector("[data-graph-title]");
+    var status = root.querySelector("[data-graph-status]");
+    if (!title || !status || typeof MutationObserver !== "function") return;
+    var nodes = new Map(payload.nodes.map(function (node) {
+      return [node.tag, node];
+    }));
+    function showEvidence() {
+      var tag = title.textContent.split(" · ", 1)[0].trim();
+      var node = nodes.get(tag);
+      if (!node || node.alpha_checked_use !== true) return;
+      status.className = "pa-status-public";
+      status.textContent = node.stable_member ?
+        "Stable checked-use theorem; independently closed" :
+        "Alpha v19 checked-use theorem; independently kernel and Lean verified; not Stable";
+    }
+    new MutationObserver(showEvidence).observe(title, {
+      childList: true, characterData: true, subtree: true
+    });
+    showEvidence();
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", install, { once: true });
+  } else {
+    install();
+  }
+})();
+</script>'''
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -564,7 +731,9 @@ def _render_graph(graph: dict[str, Any]) -> bytes:
 <body class="pa-proof-site" data-page="graph">
 <header class="pa-proof-header pa-graph-heading"><nav aria-label="Proof Explorer">
 <a href="index.html">Theorem index</a>
+<a href="defined/graph.html?target={root}&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v={CAMPAIGN_HTML_REVISION}">Definition-aware graph</a>
 <a href="../../arithmetic-library/bertrand-campaign.html">Jupyter Book</a>
+{atlas}
 </nav><p class="pa-kicker">Interactive proof map</p>
 <h1>The complete Bertrand proof</h1>
 <p>Explore every dependency of <code>bertrand_strict</code>, from native
@@ -612,8 +781,8 @@ the exact statement and tactic body, drag to pan, and zoom with the controls.</p
 <div class="pa-graph-legend" aria-label="Graph legend">
 <span><i class="pa-legend-node pa-legend-selected"></i> target</span>
 <span><i class="pa-legend-node pa-legend-critical"></i> chosen chain</span>
-<span><i class="pa-legend-node pa-legend-public"></i> checked-use</span>
-<span><i class="pa-legend-node pa-legend-candidate"></i> body-checked</span>
+<span><i class="pa-legend-node pa-legend-public"></i> Stable checked-use theorem</span>
+<span><i class="pa-legend-node pa-legend-candidate"></i> Alpha-only checked-use theorem; not Stable</span>
 <span><i class="pa-legend-edge pa-legend-declared"></i> declared edge</span>
 </div></section>
 <aside class="pa-graph-details" aria-labelledby="graph-details-title">
@@ -629,7 +798,8 @@ data-graph-dependencies></ul><h3>Direct dependents</h3>
 <section class="pa-graph-path-fallback" aria-labelledby="graph-path-title">
 <p class="pa-eyebrow">Text alternative</p><h2 id="graph-path-title">
 Ordered premise chain</h2><p data-graph-path-note></p>
-<ol data-graph-path-list><li>Loading path…</li></ol></section></main></body></html>
+<ol data-graph-path-list><li>Loading path…</li></ol></section></main>
+{evidence_overlay}</body></html>
 '''.encode("utf-8")
 
 
@@ -681,8 +851,12 @@ def _render_theorem(
     )
     source_href = f'{GITHUB_ROOT}/{row["source"]["path"]}'
     receipt = row["body_receipt"] or {}
+    atlas = _campaign_navigation("../../../")
     body = f'''<header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> {previous_link} {following_link}</nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/{_escape(row["tag"])}.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target={_escape(row["tag"])}&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+{atlas}{previous_link}{following_link}</nav>
 <p class="pa-tag">{row["tag"]}</p><h1>{_escape(row["name"])}</h1>
 <p class="pa-status-{row["scope"]}">{_escape(row["status_label"])}</p>
 <p>{_escape(row["summary"])}</p></header>
@@ -699,13 +873,20 @@ The authored body proceeds by {_escape(guide)}.</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 {_relation(row["dependents"])}</div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof">{lines}</ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>{row["enrollment_index"]}</dd>
 <dt>Layer</dt><dd>{row["layer"]}</dd><dt>Lines</dt><dd>{len(row["lines"])}</dd>
-<dt>Evidence</dt><dd>{_escape(row["evidence_status"])}</dd>
+<dt>Current Alpha edition</dt><dd>{_escape(row["alpha_edition_version"])}</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>{_escape(row["proof_edition_version"])}</dd>
+<dt>Current release evidence</dt><dd>{_escape(row["alpha_evidence"])}</dd>
+<dt>Checked theorem use</dt><dd>{"yes" if row["alpha_checked_use"] else "no"}</dd>
+<dt>Stable membership</dt><dd>{"yes" if row["stable_member"] else "no"}</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>{_escape(row["source_evidence_status"])}</dd>
 <dt>Body proof nodes</dt><dd>{receipt.get('proof_nodes', 'n/a')}</dd>
 <dt>Statement SHA-256</dt><dd><code>{row["statement_sha256"]}</code></dd>
 <dt>Script SHA-256</dt><dd><code>{row["script_sha256"]}</code></dd>

@@ -36,19 +36,28 @@ has 1,085, and sealed Alpha v11 has 1,123. Historical Alpha v12 preserves the
 entire v11 ledger and appends 180 body-checked Bertrand rows in nine exact
 twenty-row microbatches. Alpha v13 adds the four-square and Lucas campaigns;
 v14 adds Kummer's carry theorem; v15 adds the supplementary laws and complete
-two-square classification. Current immutable Alpha v16 preserves all 1,673
-v15 statements while promoting exactly 315 independently proved
-quadratic-reciprocity results, including the final theorem, to checked use.
-Stable remains the unchanged default. See
+two-square classification. Historical Alpha v16 preserves all 1,673 v15
+statements while promoting exactly 315 independently proved
+quadratic-reciprocity results. Historical Alpha v17 independently promotes
+31 supplementary-law ancestors, including both exact modulo-four and
+modulo-eight endpoints. Historical Alpha v18 closes another 673 theorem proofs
+across Bertrand, Lucas, Kummer, Lagrange's four-square theorem, and the
+complete two-square classification. Current immutable Alpha v19 closes all
+84 remaining historical obligations and adds 64 fully checked theorems:
+Pythagorean forward construction, the exact prime two-square criterion,
+complete linear congruences, and infinitely many primes congruent to one
+modulo four. Every one of its 1,737 enrolled theorems is available for checked
+use. Stable remains
+the unchanged default. See
 {doc}`Alpha and Stable library editions
 <library-editions>` for the exact scopes and lifecycle.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>1,673</strong><span>Alpha v16 theorems</span></div>
-  <div><strong>885</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>1,241</strong><span>Alpha-only rows</span></div>
+  <div><strong>1,737</strong><span>Alpha v19 theorems</span></div>
+  <div><strong>1,737</strong><span>Alpha checked-use rows</span></div>
+  <div><strong>1,305</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -59,13 +68,14 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The current Alpha v16 graph has 1,673 theorems, 5,615 direct edges, and 53
-dependency layers. Its mixed evidence is intentional: 432 Stable-closed and
-453 Alpha-closed rows have actual checked-use authority, while 788 body-only
-rows remain visible without being treated as empty-context facts. No pending
-row remains. The historical Alpha v12 graph has 1,303 theorems, 4,302 direct
+The current Alpha v19 graph has 1,737 theorems, 5,779 direct edges, and 53
+dependency layers. Every theorem has actual checked-use authority: 432 are
+Stable-closed and 1,305 are Alpha-closed; no body-only or pending row remains.
+The historical Alpha v18 parent retains 1,673 theorems, 5,615 edges, and its
+then-current 84 body-only rows without retroactive alteration. The historical
+Alpha v12 graph has 1,303 theorems, 4,302 direct
 edges and its immutable evidence partition still includes 732 `body_checked`
-rows. Every Alpha v1--v15 parent remains sealed; Stable remains 432. The exact
+rows. Every Alpha v1--v18 parent remains sealed; Stable remains 432. The exact
 contract and opt-in API are on the {doc}`edition page
 <library-editions>`.
 
@@ -73,11 +83,12 @@ Historical Alpha v12 retains the Alpha-v11 B4 and B5-support tranches, then
 adds the dependency-closed B6 support and B5--BP02 completion chain. Its
 frozen partition was 432 `stable_closed`, 138 `alpha_closed`, 732
 `body_checked`, and one `pending_layered_closure`; checked use was 570. The
-current v16 partition is 432 `stable_closed`, 453 `alpha_closed`, 788
-`body_checked`, and zero pending rows. Only the completed
-quadratic-reciprocity closure was promoted; Bertrand, Lucas, four-square,
-Kummer, supplementary-law, and two-square body evidence has not acquired
-checked-use or Stable authority.
+current v19 partition is 432 `stable_closed`, 1,305 `alpha_closed`, zero
+`body_checked`, and zero pending rows. Quadratic reciprocity, both
+supplementary laws, strict Bertrand, multidigit Lucas, both Kummer endpoints,
+Lagrange's four-square theorem, and the all-natural two-square criterion all
+have independently checked Alpha authority. None of the Alpha-only flagship
+results has acquired Stable membership.
 
 ## The mathematical metro map
 
@@ -113,12 +124,17 @@ critical premise chains, start-to-target corridors, and complete transitive
 cones.
 The {doc}`complete Bertrand proof explorer <bertrand-proof-explorer>` applies
 the same interface to all 544 nodes in the final strict theorem's closure.
+The {doc}`constructive number-theory research atlas <grand-campaign-atlas>`
+connects all these proof families to five broader research domains, twelve
+mathematical families, 120 major goals, and their shared definition and
+dependency graphs.
 
 ## Choose your route
 
 | If you want to… | Begin here | Then move to… |
 |---|---|---|
 | understand the two release editions | {doc}`Alpha and Stable library editions <library-editions>` | canonical counts, checked-use boundary, promotion lifecycle, and graph legend |
+| navigate completed campaigns and the open research frontier | {doc}`Constructive number-theory research atlas <grand-campaign-atlas>` | five domains, twelve families, shared definitions, exact prerequisite paths, and 120 major goals |
 | understand the mathematics | {doc}`Guided route from zero to FTA <guided-tour>` | the focused theorem links inside each stage |
 | inspect every Stable proof | {doc}`Stable theorem atlas <theorem-atlas>` | exact statements, complete scripts, dependencies and dependents |
 | follow the Alpha QR slice line by line | {doc}`Alpha QR proof explorer <proof-explorer>` | permanent tags, linked lemma references, informal outlines and source receipts |

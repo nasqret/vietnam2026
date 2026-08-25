@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT0055.html">← le_scaled_nonzero</a> <a href="BT0057.html">beta_value_lt_scaled_base →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT0056.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT0056&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT0055.html">← le_scaled_nonzero</a><a href="BT0057.html">beta_value_lt_scaled_base →</a></nav>
 <p class="pa-tag">BT0056</p><h1>scaled_bounded_common_multiple</h1>
-<p class="pa-status-public">Stable · empty-context checked</p>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
 <p>A right multiple of a bounded common multiple remains such a common multiple.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by intermediate claims (1).</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT005D.html"><code>BT005D</code> beta_prefix_extend</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="4a64a864f855c31d"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> N</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="be869badaf2e2457"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> C</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="7c1477d93892864a"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> B</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="2f8c23c47105e209"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> hcm</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="927ceb8af21f4267"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> t</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="intro" data-line-id="e0b3727c84fb8bd0"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">intro</span> ht</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="have" data-line-id="dea8fd14477d3285"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">have</span> htC : exists q. C = S t * q</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="specialize" data-line-id="4b2b0e5dd47aad0d"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">specialize</span> hcm t</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="apply" data-line-id="a10d76e1b8d69397"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">apply</span> hcm</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="exact" data-line-id="21cbcacb2d679150"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">exact</span> ht</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="specialize" data-line-id="3566db7fc6934902"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT002A.html">multiple_mul_right</a> (S t)</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="specialize" data-line-id="99a216e00182d048"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT002A.html">multiple_mul_right</a> C</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="specialize" data-line-id="9e35938860f1b702"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT002A.html">multiple_mul_right</a> B</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="apply" data-line-id="064fa5d07572c659"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT002A.html">multiple_mul_right</a></code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="exact" data-line-id="424eea42010e41da"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">exact</span> htC</code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>181</dd>
 <dt>Layer</dt><dd>4</dd><dt>Lines</dt><dd>15</dd>
-<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
 <dt>Body proof nodes</dt><dd>n/a</dd>
 <dt>Statement SHA-256</dt><dd><code>a514ad09db5eae76cb17193a87016a905895f8450a3f9bb35dc77ef00b299945</code></dd>
 <dt>Script SHA-256</dt><dd><code>30e46685897270d9dd553f6747057d8233a62468cb9f872177527aba0a23ae0e</code></dd>

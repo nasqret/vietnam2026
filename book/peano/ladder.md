@@ -284,7 +284,19 @@ In the zero case, the right factor is zero.  In the successor case, PA6 changes 
 $n\cdot m+n=0$; the checked helper `add_eq_zero_right` extracts $n=0$.  The disjunction is therefore
 proved constructively—classical mode is not involved.
 
-`pa lean <name>` translates the exact closed formula to a theorem over Lean's `Nat`, comments the
-Peano Lab script beside it, and leaves one explicit `sorry` proof stub.  The accompanying Live Lean
-URL encodes exactly the displayed program.  This is a cross-checking invitation, never an alternate
-authority for Peano Lab's QED.
+`pa lean <name>` now displays the exact theorem over Lean's `Nat` in a short,
+definition-aware, theorem-first preview. It labels the original Peano script as
+Peano tactics and reports honestly that this fast view performs no new proof
+replay or Lean compilation. To independently check and reuse the real proof,
+generate its compact certificate package:
+
+```text
+python3 scripts/export_peano_lean.py mul_eq_zero --format compact \
+  --package-dir /private/tmp/peano-lean-mul-eq-zero --verify
+```
+
+The resulting short `Theorem.lean` imports a separately named
+`Certificate.lean`, where Lean checks the complete constructive certificate and
+applies the proved companion soundness theorem. Neither file uses `sorry`, a
+new project axiom, or an online editor as proof authority. The unchanged Peano
+kernel remains the sole authority for Peano Lab's original QED.

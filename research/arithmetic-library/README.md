@@ -12,8 +12,13 @@ arithmetic library. Start with:
   thirteen execution layers, proof/release gates, and audited prior art;
 - [`Grand campaign machine-readable DAG`](../../book/_static/constructive-grand-campaign/campaign.json)
   and its [interactive proof-campaign atlas](../../book/_static/constructive-grand-campaign/index.html):
-  the complete dependency-ordered theorem/tool/anchor graph with searchable
-  mathematical families, formal interfaces, and honest evidence labels;
+  five connected research domains, twelve mathematical families, 120 major
+  goals, 303 actual theorem/tool/anchor prerequisite edges, and 107 shared
+  mathematical terms; domain, family, goal, and definition drill-down links
+  directly to the completed proof explorers while distinguishing 32
+  definition-expansion edges and 312 statement-notation occurrences from
+  genuine proof dependencies and honestly identifying the open research
+  frontier;
 - [`Completed quadratic-reciprocity closure receipt`](quadratic-reciprocity-closure-receipt.md)
   and its [complete canonical self-contained proof bundle](artifacts/quadratic-reciprocity-proof-bundle-v1.json):
   the exact unchanged-kernel ordinary proof of the final reciprocity root,
@@ -120,6 +125,35 @@ arithmetic library. Start with:
   quadratic-reciprocity results, their complete independently checked
   557-node proof bundle, unchanged Stable/enrollment topology, and fail-closed
   checked-use authority;
+- [`Alpha v17 supplementary-law promotion RFC`](alpha-v17-supplementary-laws-promotion-rfc-v1.md)
+  and its [independent closure receipt](supplementary-laws-closure-receipt.md):
+  the immutable evidence-only promotion of exactly 31 actual supplementary-law
+  ancestors, both exact modulo-four/modulo-eight endpoints, their independently
+  Python-kernel- and Lean-checked 438-node constructive proof bundle, unchanged
+  Stable membership, and resumable proof-bearing microbatch checkpoints;
+- [`Alpha v18 five-flagship promotion RFC`](alpha-v18-flagship-promotion-rfc-v1.md):
+  the immutable evidence-only promotion of exactly 673 genuinely proved Lucas,
+  Kummer, Bertrand, four-square, and two-square ancestors, backed by five
+  separately original-kernel- and compiled-Lean-checked proof bundles;
+- [`Alpha v19 complete constructive-campaign RFC`](alpha-v19-constructive-campaign-rfc-v1.md),
+  its [`84-row residual closure receipt`](campaign-residual-closure-receipt.md),
+  and its [`64-theorem campaign-frontier receipt`](alpha-v19-campaign-frontier-closure-receipt.md):
+  all 1,737 exact current theorems independently closed, including the complete
+  K3C/auxiliary-Bertrand interface, 44 Pythagorean forward results, the exact
+  prime two-square equivalence, nine linear-congruence results, and ten
+  one-modulo-four prime results, backed by independently kernel- and
+  compiled-Lean-checked 475- and 545-node constructive proof bundles;
+- [`complete linear-congruence RFC`](linear-congruence-complete-rfc-v1.md)
+  and [`infinitely many one-modulo-four primes RFC`](primes-one-mod-four-rfc-v1.md):
+  exact constructive bounded-solution/zero-modulus/uniqueness interfaces and
+  prime witnesses extracted directly from `4*C*C+1`, without assuming the
+  separately open three-modulo-four prime infinitude theorem;
+- complete closure receipts and self-contained constructive proof bundles for
+  [`Lucas`](lucas-complete-closure-receipt.md),
+  [`both Kummer endpoints`](kummer-complete-closure-receipt.md),
+  [`strict Bertrand`](bertrand-complete-closure-receipt.md),
+  [`Lagrange's four-square theorem`](four-square-complete-closure-receipt.md),
+  and [`the all-natural two-square classification`](two-square-complete-closure-receipt.md);
 - [`bounded Lucas/Lagrange promotion RFC`](ha-frontier-promotion-rfc-v1.md):
   exact dependency slices, unchanged-kernel empty-context certificate
   construction, shared-premise layered Cuts, immutable workstation caps,
@@ -128,6 +162,10 @@ arithmetic library. Start with:
   unchanged-kernel contextual sharing across eleven body-only and five
   already-closed Stable rows, yielding an actual bounded empty-context proof
   of the formerly oversized final older Lucas prerequisite;
+- [`shared valuation-promotion RFC`](valuation-shared-promotion-rfc-v1.md):
+  constructive sharing of the 59,836-node Stable power-totality premise,
+  independently closing both exact valuation-existence roots in 65,708 and
+  65,727 nodes under all unchanged sixteen-body and proof-object limits;
 - [`bounded Lagrange promotion RFC`](four-square-frontier-promotion-rfc-v1.md):
   the exact 390-row four-square dependency slice, its 23 older and 196
   campaign body-only obligations, constructive dependency-ready layers,
@@ -824,12 +862,14 @@ closing the remaining 332 rows; a smaller dependency-closed batch need not
 wait for unrelated Alpha rows. WMI is down for the weekend, so no K3C cold
 receipt, whole-Alpha-v2 closure, or new promotion receipt is claimed here.
 
-## 2026-08-25 — current promoted Alpha v16 and unchanged Stable editions
+## 2026-08-25 — fully checked current Alpha v19 and unchanged Stable editions
 
 The preceding Alpha-v2 section is a historical checkpoint, not the current
 release pointer. Stable is still the official default at **432 theorems**.
-The newest Alpha edition is v16, containing the same **1,673 theorems** as
-its sealed v15 parent; every earlier version remains reproducible.
+The newest Alpha edition is v19, containing **1,737 independently checked
+theorems**: every one of its sealed Alpha-v18 parent's **1,673** statements,
+plus **64** newly proved campaign theorems. It has **zero body-only or pending
+rows**; every earlier sealed version remains reproducible.
 
 | Edition | Theorems | Direct edges | Layers | Checked use | New reviewed campaign |
 |---|---:|---:|---:|---:|---|
@@ -838,6 +878,9 @@ its sealed v15 parent; every earlier version remains reproducible.
 | Alpha v14 | 1,556 | 5,251 | 45 | 570 | Kummer carry theorem and carry-free corollary |
 | Alpha v15 | 1,673 | 5,615 | 53 | 570 | Both supplementary laws and full two-square classification |
 | Alpha v16 | 1,673 | 5,615 | 53 | 885 | 315 genuinely closed quadratic-reciprocity results |
+| Alpha v17 | 1,673 | 5,615 | 53 | 916 | 31 genuinely closed supplementary-law results and both complete endpoints |
+| Alpha v18 | 1,673 | 5,615 | 53 | 1,589 | 673 genuinely closed Lucas, Kummer, Bertrand, four-square, and two-square results |
+| Alpha v19 | 1,737 | 5,779 | 53 | 1,737 | All 84 residual obligations closed; 64 Pythagorean, prime-two-square, linear-congruence, and prime-progression results |
 
 Alpha v14 appends exactly thirteen `body_checked` Kummer rows. Alpha v15
 appends exactly 28 supplementary-law rows, including independently checked
@@ -851,14 +894,139 @@ its historical complete edition identity is
 
 Alpha v16 preserves that exact ordered-enrollment identity, all 1,673
 specifications, all 5,615 dependency edges, every historical artifact, and
-the unchanged default Stable release. Its current evidence ledger is **432
+the unchanged default Stable release. Its historical evidence ledger is **432
 stable_closed, 453 alpha_closed, 788 body_checked, and zero pending rows**.
 Exactly 314 previously body-only quadratic-reciprocity ancestors and the
 formerly pending root now have independently checked closed proofs and
-release-authorized checked use. The current complete edition identity is
+release-authorized checked use. Its complete historical edition identity is
 `3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10`.
 No Lucas, four-square, Kummer, supplementary-law, two-square, or Bertrand
 body-only theorem gains checked authority from this QR-only promotion.
+
+Alpha v17 preserves every Alpha-v16 enrollment position, statement, dependency,
+script, provenance record, release membership, historical artifact, and Stable
+theorem. The exact union of both supplementary-law dependency closures contains
+**437** theorem nodes: 226 Stable-closed, 180 already Alpha-closed, and precisely
+31 previously body-only rows. Their genuine proof artifact additionally includes
+one ordinary constructive conjunction root, for **438 actual proof bodies**,
+**1,429 dependency edges**, and **33,173 structural body-proof nodes**. Both the
+unchanged intuitionistic Python kernel and the independently compiled Lean
+proof-bundle verifier accept the complete artifact. The actual microbatches use
+16 and 15 bodies, respectively, and remain below the unchanged
+16-body/125,000-node/25,000-object caps.
+
+The two historically new Alpha-v17 checked-use endpoints are
+`quadratic_supplement_minus_one_complete` and
+`quadratic_supplement_two_complete`. The sealed historical Alpha-v17 evidence partition
+is **432 stable_closed, 484 alpha_closed, and 757 body_checked**, yielding
+**916** independently checked-use theorems without changing Stable. Its exact
+identity is
+`db2e6e5796169600d17cc54313e9306bac46fb680f914cb2a5a91d247bb746c4`;
+the self-contained supplementary proof artifact has SHA-256
+`79fc4717dbe570bf836cca5ec699492ff3995700ec25336a20d03cc57261054c`.
+No Lucas, four-square, Kummer, all-natural two-square, or Bertrand endpoint was
+promoted by that historical supplementary-only release.
+
+Historical Alpha v18 preserves that exact immutable 1,673-row parent, all statements,
+authored source scripts, names, dependencies, membership, enrollment positions,
+and Stable proof authority. Five independent complete constructive artifacts
+close the exact `lucas_theorem`, both `kummer_binomial_carry_bit_count` and
+`kummer_carry_free_iff_not_divides`, `bertrand_strict`,
+`four_square_lagrange`, and
+`two_square_iff_zero_or_even_three_mod_four_prime_valuations`. Their joint
+dependency slice has **1,113 distinct theorem nodes**. Precisely **673**
+previously body-only rows become `alpha_closed`: **74 Lucas, 73 Kummer, 241
+Bertrand, 196 four-square, and 89 two-square** under canonical first-artifact
+ownership.
+
+Its exact historical evidence partition is **432 stable_closed, 1,157
+alpha_closed, and 84 body_checked**, yielding **1,589** independently
+checked-use theorems and **5,366 checked-use dependency edges**. Its immutable
+evidence identity is
+`f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66`.
+The five canonical bundle node counts are **213 Lucas, 281 Kummer, 544
+Bertrand, 390 four-square, and 517 two-square**. Each entire graph is accepted
+both by the original intuitionistic kernel and by the independently compiled
+Lean proof-bundle verifier. At that sealed historical checkpoint, the
+remaining **17 K3C plus 67 auxiliary Bertrand** body-only rows did not yet
+have release checked-use authority.
+
+Current Alpha v19 preserves every exact Alpha-v18 theorem name, statement,
+authored script, dependency, enrollment position, membership, and provenance.
+Its first independently checked campaign bundle closes all **84** remaining
+body-only obligations, including the complete T09 prime-specific valuation
+interface `prime_power_valuation_exists` and
+`prime_power_valuation_functional`. The exact transitive closure contains
+**474 real theorems**, **1,412 actual dependency edges**, and **40** maximal
+endpoints; one unenrolled balanced conjunction yields an independently
+checked **475-node**, **1,452-edge** proof artifact with **38,688 structural
+body-proof nodes** and **4,176,537 canonical bytes**. Its SHA-256 is
+`e69112c5e3b8c21bc452ad35838474f2af2e297152ff73fbdc62bfd935ffdebb`.
+
+The second independently checked campaign bundle proves exactly **64** newly
+appended theorems: **44** Pythagorean forward-construction results,
+**one** exact prime two-square equivalence, **nine** complete
+linear-congruence results, and **ten** one-modulo-four prime results. Its
+five primary exact theorem endpoints are
+`pythagorean_primitive_euclidean_from_order`,
+`pythagorean_primitive_normal_form`,
+`prime_is_two_squares_iff_two_or_one_mod_four`,
+`linear_congruence_solvable_iff_gcd_divides`, and
+`infinitely_many_primes_one_mod_four`. The complete bundle has
+**545 actual proof bodies**, **1,650 dependency edges**, **34,020 structural
+body-proof nodes**, and **1,617,207 canonical bytes**. Its SHA-256 is
+`cf7947a944d54e9eb956fb153702b29c953100ece6cf05743162759b0fba9b17`.
+Both entire graphs are accepted independently by the unchanged original
+intuitionistic kernel and the separately compiled Lean verifier.
+
+The exact current evidence partition is **432 stable_closed, 1,305
+alpha_closed, zero body_checked, and zero pending rows**. All **1,737**
+enrolled theorem nodes and all **5,779** dependency edges therefore have
+independently checked-use authority; the unchanged **432-theorem Stable
+edition remains the default**. The exact release identities are:
+
+- Alpha-v19 checked edition identity:
+  `905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7`.
+- Alpha-v19 ordered enrollment identity:
+  `1295d6fc3da84646cb6bc8d5070627d42a6df33d673c44a2adfcd433edc41795`.
+- Alpha-v19 checked evidence root:
+  `627f651198360aa95b8efd085b98f694d88c883434309f6050a819bc249c90c4`.
+- Alpha-v19 canonical catalog SHA-256:
+  `f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b`.
+
+Reproduce and independently verify the entire current release using
+`make peano-library-alpha-v19` and `make peano-library-alpha-v19-check`.
+The bounded browser command
+`pa proof alpha infinitely_many_primes_one_mod_four` inspects its exact
+authored constructive proof without loading a giant certificate. Campaign
+goals **G012** (linear congruences), **G026** (infinitely many primes one
+modulo four), **G061** (exact prime two-square classification), the forward
+**A08** Pythagorean anchor, and the complete **T09** valuation interface now
+have independently checked-use authority. **G025** (infinitely many primes
+three modulo four), **G077** (the inverse primitive Pythagorean
+parametrization), and **G078** (unconditional Fermat exponent-four strict
+descent) remain genuinely open; none is inferred from a nearby checked
+forward direction.
+
+The exact strict Bertrand theorem also has an independently accepted
+**ordinary empty-context original-kernel certificate**, not merely a checked
+dependency graph. Existing conservative proof-body interning reduces the
+544-body artifact's **187,725 decoded proof objects to 31,694 shared body
+objects**. The final balanced layered certificate contains **201,285
+structural proof nodes, 45,254 distinct proof objects, proof depth 235, and
+combined envelope depth 244**. All 544 interned dependency-curried bodies and
+the exact final root are checked independently under every unchanged original
+kernel and replay resource limit.
+
+| Fully proved flagship | Proof nodes | Dependency edges | Bundle SHA-256 |
+|---|---:|---:|---|
+| Multidigit Lucas | 213 | 617 | `02b1eef360dce55f0156bda2029e64567b8b83b5d58833d6c4f8695ab8d41832` |
+| Both Kummer endpoints | 281 | 779 | `49fd86708fe5b289d0159526285e73b2aea008c26e0eb41ae8a053c970d4210e` |
+| Strict Bertrand | 544 | 1,917 | `84078d40d2df7b072938975191fb70c95731059ced716a12050df4376e2d4883` |
+| Universal four squares | 390 | 1,187 | `dd8374b95184f95f28a296aba6682f8177538650c3cc2f8d94a8db723c9982f0` |
+| Complete two squares | 517 | 1,599 | `f2e77dc6e8c87c715bf2c4f3325e999e7180a2c3ab0fa93f3e9a5006d3e1684e` |
+
+### Historical bounded promotion experiments, superseded by complete v18 closure
 
 Body enrollment, independently checked empty-context proof certificates,
 release-authorized checked use, and Stable promotion remain separate. Local
@@ -884,10 +1052,24 @@ rows/nodes/objects. The next reviewed shared profiles also genuinely close
 `lucas_choose_prefix_extend` in **30,854 nodes / 5,615 objects**,
 `lucas_choose_prefix_exists` in **30,916 nodes / 5,677 objects**, and
 `lucas_prime_row_interior_divisible` in **70,258 nodes / 11,011 objects**.
-Each is an actual unchanged-kernel empty-context proof under the original
-16-body/125,000-node/25,000-object limits. Therefore **33 of 44 Lucas
-campaign rows** now have genuine empty-context certificates; eleven campaign
-rows and checked-use promotion remain separate open gates.
+Each was an actual unchanged-kernel empty-context proof under the original
+16-body/125,000-node/25,000-object limits. At that intermediate checkpoint,
+**33 of 44 Lucas campaign rows** had genuine empty-context certificates and
+eleven remained open. The complete **213-node Alpha-v18 Lucas proof bundle**
+subsequently closed every reviewed dependency and the exact unrestricted root.
+
+The formerly oversized bounded valuation root
+`bounded_power_valuation_exists` required **125,454 structural nodes** when
+its independently closed search and zero-power premises were composed
+separately; the canonical `power_valuation_exists` successor required
+**125,470 nodes**. Both branches duplicated the same genuine **59,836-node**
+Stable `pow_exists` proof. A sealed fifteen-/sixteen-node layered-Cut graph now
+shares that premise once and produces actual original-kernel empty-context
+proofs of **65,708 nodes / 5,952 objects** and **65,727 nodes / 5,971 objects**,
+respectively. Both proofs remain below every unchanged
+16-body/125,000-node/25,000-object limit. Their later Alpha-v18 checked-use
+authority comes from the independent complete flagship proof bundles, not
+from this intermediate engineering experiment; neither theorem becomes Stable.
 
 The dedicated four-square promotion planner pins Lagrange's exact 390-row
 dependency slice. An independently checked sixteen-row parent microbatch
@@ -906,27 +1088,27 @@ second-layer batch recreates ten genuine prerequisite certificates in
 in **10,229 nodes / 6,322 objects**. The next sealed continuation reconstructs
 sixteen genuine predecessor certificates in **11,374 nodes / 7,149 objects**,
 then independently kernel-checks twelve additional campaign rows in **14,263
-nodes / 7,471 objects**. Therefore **80 of 196 Lagrange campaign rows** now
-have actual empty-context certificates. The remaining 116 campaign rows and
-flagship-wide closure remain open, without any change to sealed release
-authority.
+nodes / 7,471 objects**. Thus **80 of 196 Lagrange campaign rows** had actual
+empty-context certificates at that historical checkpoint. The subsequently
+completed **390-node Alpha-v18 four-square proof bundle** closes all campaign
+rows, all prerequisites, and the exact universal Lagrange theorem.
 
-Across both flagship slices, **all 53 older parent prerequisites now have
-genuine bounded closure candidates**. The next exact promotion frontier is
-the original 240-row Alpha-v13 append: 44 Lucas rows and 196 Lagrange rows;
-its first **33 Lucas rows and 80 Lagrange rows** now also have actual
-independently checked empty-context certificates. In total, **166 of the
-293 body-only obligations** across both exact flagship slices now have
-genuine closure candidates; **127** remain (11 Lucas and 116 Lagrange).
+Across both flagship slices, that intermediate experiment established genuine
+bounded candidates for **all 53 older parent prerequisites**, the first
+**33 Lucas rows**, and **80 Lagrange rows**: **166 of 293** then-body-only
+obligations, leaving **127** open at that checkpoint. The later complete
+Alpha-v18 promotion supersedes that partial tally: all reviewed Lucas and
+Lagrange flagship dependencies now have independently checked proof evidence
+and actual Alpha checked-use authority.
 
 Six offline interactive proof families now cover the supplementary laws,
 Kummer, two squares, four squares, Lucas, and the new Pythagorean/Fermat-four
-candidate campaign. The Pythagorean forward constructor is actually proved;
-its additional **27** independently checked candidate bodies prove the
+campaign. The Alpha-v19 Pythagorean forward constructor is actually admitted;
+its additional **27** independently checked theorem bodies prove the
 complete forward **primitive** Euclidean constructor and show that every
 primitive triple has opposite-parity legs, an odd hypotenuse, pairwise
 coprime coordinates, and a constructive normal form. The sixth campaign
-therefore contains **44** checked candidate bodies. The primitive inverse
-classification and Fermat strict-descent premise are not proved. No
-unconditional Fermat-four theorem, checked-use promotion, Stable promotion,
-or remote deployment is inferred.
+therefore contains **44** Alpha-closed checked-use theorems. The primitive
+inverse classification and Fermat strict-descent premise are not proved. No
+unconditional Fermat-four theorem, Stable promotion, or remote deployment is
+inferred from this separately authorized Alpha release.

@@ -221,15 +221,23 @@ The narrowness is the teaching instrument.  A student can follow PA4 from parser
 sitting.  Lean's scale makes serious formal mathematics possible; Peano Lab's scale makes the
 soundness boundary visible.
 
-The bridge is intentionally one-way and non-authoritative.  [`pa lean mul_eq_zero`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lean%20mul_eq_zero)
-translates the exact Peano formula to a Lean theorem over `Nat`, comments the source tactic script, and
-leaves one visible `sorry` stub.  The exporter in
+The bridge remains one-way and non-authoritative for Peano admission, but it
+now has two distinct surfaces.
+[`pa lean mul_eq_zero`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lean%20mul_eq_zero)
+shows a bounded mathematical preview without replaying a proof. An explicit
+`python3 scripts/export_peano_lean.py mul_eq_zero --format compact --package-dir /private/tmp/peano-lean-mul-eq-zero --verify`
+command independently compiles the complete certificate-backed Lean theorem.
+Its readable theorem imports the machine-oriented certificate module; the
+companion checks every constructor and derives the exact `Nat` proposition
+from its proved checker-soundness theorem. The certified path contains no
+`sorry`, new project axiom, or compiler-trusting shortcut. The older
 [`library/lean.py`](https://github.com/nasqret/vietnam2026/blob/peano-lab/peano-lab/py/peano_lab/library/lean.py)
-is a cross-checking convenience and remains non-authoritative: it leaves a visible proof stub.
-Separately, `peano-lab-lean` can decode and verify canonical Peano certificate artifacts and supplies
-the cross-system soundness theorem. Historical WMI job `211445` covers the cut-free format;
+statement-only helper still exists separately and intentionally retains its
+visible stub; it must not be confused with the certified exporter.
+
+Historical WMI job `211445` covers the cut-free format;
 Cut-aware v2 source
 [`ab966fd1`](https://github.com/nasqret/peano-lab-lean/commit/ab966fd1b8207b99eea0c9dc3d719c6e61ef73c2)
 passed pinned Lean 4.31/WMI job
 [`218358`](https://github.com/nasqret/peano-lab-lean/tree/8515336ab3b89ca6f0c8ab521d01745a220b5211/artifacts/wmi/218358).
-The stub exporter must not be confused with that independent certificate verifier.
+Independent Lean acceptance never changes the Peano admission authority.

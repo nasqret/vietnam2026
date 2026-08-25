@@ -204,6 +204,11 @@ zero.  Notice that no excluded middle is needed.  The entire twenty-entry M7 cor
 intuitionistic checker.
 
 Finally, [`pa lean mul_eq_zero`](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/?cmd=pa%20lean%20mul_eq_zero)
-exports this exact closed formula over Lean's `Nat`, with the Peano Lab script in comments and one
-deliberate `sorry`.  That is an invitation to cross-check the destination.  The authority for the
-Peano Lab theorem remains the closed certificate that its own small kernel accepted.
+shows a bounded, theorem-first view of the exact closed formula over Lean's
+`Nat`; the Peano tactic script is labeled separately. Its independently
+checkable Lean proof has no `sorry`: an explicit
+`python3 scripts/export_peano_lean.py mul_eq_zero --format compact --package-dir /private/tmp/peano-lean-mul-eq-zero --verify`
+command builds the readable theorem and its separately imported checked
+certificate. Previewing alone neither replays nor verifies the proof. The
+authority for the original Peano theorem remains the closed certificate that
+its own small kernel accepted.

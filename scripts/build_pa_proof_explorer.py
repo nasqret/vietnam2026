@@ -52,6 +52,7 @@ PINNED_UI_ASSETS = {
 # page and receipt byte-for-byte while allowing the three editions to share
 # one stable static URL.  Neither reserved subtree enters the 557-node graph.
 RESERVED_SUBTREES = {"defined", "k3b"}
+CAMPAIGN_HTML_REVISION = "f1c3d3fba013"
 
 EXPECTED = {
     "theorem_count": 557,
@@ -321,13 +322,29 @@ def _page(title: str, page: str, body: str, asset_prefix: str = "") -> bytes:
 """.encode()
 
 
+def _campaign_navigation(prefix: str) -> str:
+    """Link the immutable local proof presentation to its broader research atlas."""
+
+    return (
+        f'<a href="{prefix}grand-campaign/?v={CAMPAIGN_HTML_REVISION}">'
+        "Grand campaign</a>"
+        f'<a href="{prefix}grand-campaign/?view=domain&amp;focus=D02'
+        f'&amp;v={CAMPAIGN_HTML_REVISION}">Research domain</a>'
+        f'<a href="{prefix}grand-campaign/?view=family&amp;focus=F05'
+        f'&amp;v={CAMPAIGN_HTML_REVISION}">Reciprocity family</a>'
+        f'<a href="{prefix}grand-campaign/?view=goal&amp;focus=G043'
+        f'&amp;v={CAMPAIGN_HTML_REVISION}">Campaign milestone</a>'
+    )
+
+
 def _render_index(records: list[dict[str, Any]], stack: Any) -> bytes:
     layers = "".join(f'<option value="{n}">Layer {n}</option>' for n in range(EXPECTED["layer_count"]))
     cards = []
     for row in records:
         search = " ".join((row["name"], row["tag"], row["summary"], row["status"], *[item["name"] for item in row["dependencies"]])).lower()
         cards.append(f'''<article class="pa-proof-result pa-status-{row["scope"]}" data-pa-theorem data-name="{_e(row["name"])}" data-tag="{row["tag"]}" data-status="{row["scope"]}" data-layer="{row["layer"]}" data-search="{_e(search)}"><a href="tag/{row["tag"]}.html"><code>{row["tag"]}</code> · <strong>{_e(row["name"])}</strong></a><p>{_e(row["summary"])}</p><small>layer {row["layer"]} · {len(row["lines"])} lines · {row["status_label"]}</small></article>''')
-    body = f'''<header class="pa-proof-header pa-hero"><p><a href="../../arithmetic-library/quadratic-reciprocity.html">Jupyter Book</a></p><h1>Native PA Proof Explorer</h1><p>The complete replay-free reading surface for the exact quadratic-reciprocity dependency closure.</p><div class="pa-proof-stats"><b>557</b> checked-use theorems · <b>1,787</b> edges · <b>27,491</b> tactic lines · <b>45</b> layers</div><p>Alpha v16 independently closes the entire graph: 241 Stable theorems and 316 Alpha-only theorems. The source-origin filter preserves the historical 241/316 provenance partition; Alpha-only closure does not grant Stable membership.</p><nav><a href="foundations.html">PA language, axioms, and rules</a></nav></header>
+    atlas = _campaign_navigation("../../")
+    body = f'''<header class="pa-proof-header pa-hero"><p><a href="../../arithmetic-library/quadratic-reciprocity.html">Jupyter Book</a></p><h1>Native PA Proof Explorer</h1><p>The complete replay-free reading surface for the exact quadratic-reciprocity dependency closure.</p><div class="pa-proof-stats"><b>557</b> checked-use theorems · <b>1,787</b> edges · <b>27,491</b> tactic lines · <b>45</b> layers</div><p>Alpha v16 independently closes the entire graph: 241 Stable theorems and 316 Alpha-only theorems. The source-origin filter preserves the historical 241/316 provenance partition; Alpha-only closure does not grant Stable membership.</p><nav><a href="foundations.html">PA language, axioms, and rules</a><a href="defined/index.html?v={CAMPAIGN_HTML_REVISION}">Definition-aware edition</a><a href="graph.html?target=PA00FW&amp;view=prerequisites&amp;edges=focus&amp;v={CAMPAIGN_HTML_REVISION}">Complete proof graph</a>{atlas}</nav></header>
 <main data-proof-dashboard data-pa-explorer-index><section class="pa-proof-controls"><label>Search <input data-proof-search data-pa-search type="search"></label><label>Source origin <select data-proof-status data-pa-status><option value="all">All</option><option value="public">Stable source (241)</option><option value="candidate">Alpha-only candidate-factory source (316)</option></select></label><label>Layer <select data-proof-layer data-pa-layer><option value="all">All 45 layers</option>{layers}</select></label><button data-proof-clear data-pa-clear type="button">Clear</button><output data-proof-count data-pa-count>557 checked-use theorems</output></section><section class="pa-layer-map">{''.join(f'<a href="?layer={n}">{n}</a>' for n in range(45))}</section><section class="pa-proof-results">{"".join(cards)}</section></main>'''
     return _page("Native PA Proof Explorer", "index", body)
 
@@ -343,12 +360,14 @@ def _render_foundations(tactics: list[str]) -> bytes:
         for name in kernel_proofs.__all__
         if name != "Proof"
     )
-    body = f'''<header class="pa-proof-header pa-foundations-heading"><p><a href="index.html">← Proof Explorer</a></p><h1>Native PA foundations</h1><p>These are language and kernel facts, not extra number-theory lemmas; tactics are untrusted proof builders.</p></header><main><section class="pa-foundation-card" id="grammar-terms"><h2>Terms</h2><p>Terms are variables, <code>0</code>, <code>S t</code>, <code>t + u</code>, and <code>t * u</code>. Numerals are surface expansions.</p></section><section class="pa-foundation-card" id="grammar-formulas"><h2>Formulas</h2><p>Formulas use equality, bottom, implication, conjunction, disjunction, universal quantification, and existential quantification. Negation and ≤ are conservative surface expansions.</p><p>Read the <a href="../../peano/language-reference.html">full language reference</a>.</p></section><section class="pa-foundation-card"><h2>Arithmetic axioms PA1–PA6</h2>{''.join(axioms)}<article id="proof-induction"><h3>Induction</h3><p>Induction is checked for each concrete first-order motive.</p></article><article id="proof-cut"><h3>Cut</h3><p><code>Cut</code> shares a checked proof but is not an arithmetic axiom.</p></article><article id="proof-dne"><h3>DNE</h3><p><code>DNE</code> belongs only to separately labelled classical mode and is not authority for this QR stack.</p></article><p>Read <a href="../../peano/axioms-and-rules.html">axioms and proof rules in full</a>.</p></section><section class="pa-foundation-card"><h2>All native proof constructors</h2><ul>{constructors}</ul></section><section class="pa-foundation-card"><h2>Tactics occurring in this corpus</h2><ul>{tactic_rows}</ul></section></main>'''
+    atlas = _campaign_navigation("../../")
+    body = f'''<header class="pa-proof-header pa-foundations-heading"><nav><a href="index.html">← Proof Explorer</a>{atlas}</nav><h1>Native PA foundations</h1><p>These are language and kernel facts, not extra number-theory lemmas; tactics are untrusted proof builders.</p></header><main><section class="pa-foundation-card" id="grammar-terms"><h2>Terms</h2><p>Terms are variables, <code>0</code>, <code>S t</code>, <code>t + u</code>, and <code>t * u</code>. Numerals are surface expansions.</p></section><section class="pa-foundation-card" id="grammar-formulas"><h2>Formulas</h2><p>Formulas use equality, bottom, implication, conjunction, disjunction, universal quantification, and existential quantification. Negation and ≤ are conservative surface expansions.</p><p>Read the <a href="../../peano/language-reference.html">full language reference</a>.</p></section><section class="pa-foundation-card"><h2>Arithmetic axioms PA1–PA6</h2>{''.join(axioms)}<article id="proof-induction"><h3>Induction</h3><p>Induction is checked for each concrete first-order motive.</p></article><article id="proof-cut"><h3>Cut</h3><p><code>Cut</code> shares a checked proof but is not an arithmetic axiom.</p></article><article id="proof-dne"><h3>DNE</h3><p><code>DNE</code> belongs only to separately labelled classical mode and is not authority for this QR stack.</p></article><p>Read <a href="../../peano/axioms-and-rules.html">axioms and proof rules in full</a>.</p></section><section class="pa-foundation-card"><h2>All native proof constructors</h2><ul>{constructors}</ul></section><section class="pa-foundation-card"><h2>Tactics occurring in this corpus</h2><ul>{tactic_rows}</ul></section></main>'''
     return _page("Native PA foundations", "foundations", body)
 
 
 def _render_graph(graph: dict[str, Any]) -> bytes:
     inline_data = _javascript_assignment("PA_PROOF_GRAPH", graph)
+    atlas = _campaign_navigation("../../")
     return ('''<!doctype html>
 <html lang="en">
 <head>
@@ -364,7 +383,9 @@ def _render_graph(graph: dict[str, Any]) -> bytes:
     <nav aria-label="Proof Explorer">
       <a href="index.html">Theorem index</a>
       <a href="foundations.html">PA foundations</a>
+      <a href="defined/graph.html?target=PA00FW&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=''' + CAMPAIGN_HTML_REVISION + '''">Definition-aware graph</a>
       <a href="../../arithmetic-library/quadratic-reciprocity.html">Jupyter Book</a>
+      ''' + atlas + '''
     </nav>
     <p class="pa-kicker">Interactive proof map</p>
     <h1>Theorem dependency paths</h1>
@@ -526,7 +547,8 @@ def _render_theorem(row: dict[str, Any], previous: dict[str, Any] | None, follow
         if row["stable_member"]
         else "Alpha-v16 checked-use theorem is independently kernel-checked when replayed; it is not a Stable theorem"
     )
-    body = f'''<header class="pa-proof-header pa-theorem-heading"><nav><a href="../index.html">Explorer</a> · <a href="../foundations.html">Foundations</a> {prev_link} {next_link}</nav><p class="pa-tag">{row["tag"]}</p><h1>{_e(row["name"])}</h1><p class="pa-status-public">{_e(row["status_label"])}</p><p>{_e(row["summary"])}</p></header><main class="pa-theorem-layout"><div class="pa-proof-panel"><section class="pa-statement"><h2>Exact expanded PA statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>{_e(row["statement"])}</code></pre></section><section class="pa-informal-proof" data-informal-kind="{_e(row["informal"]["kind"])}" data-informal-review="{_e(row["informal"]["review"])}"><h2>{_e(row["informal"]["title"])}</h2><p><strong>{"Curated informal proof" if row["informal"]["review"] == "curated_reviewed" else "Generated structural guide"}</strong></p>{paragraphs}<h3>Referenced ingredients</h3><div class="pa-chip-row">{ingredients}</div></section><section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row">{relation(row["dependencies"])}</div><h3>Direct dependents</h3><div class="pa-chip-row">{relation(row["dependents"])}</div></section><section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Linked names are exact direct references. This {use_label}.</p><ol class="pa-formal-proof">{"".join(lines)}</ol></section></div><aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Layer</dt><dd>{row["layer"]}</dd><dt>Lines</dt><dd>{len(row["lines"])}</dd><dt>Current Alpha edition</dt><dd>{_e(row["alpha_edition_version"])}</dd><dt>Current release evidence</dt><dd>{_e(row["alpha_evidence"])}</dd><dt>Checked theorem use</dt><dd>{"yes" if row["alpha_checked_use"] else "no"}</dd><dt>Stable membership</dt><dd>{"yes" if row["stable_member"] else "no"}</dd><dt>Historical source origin</dt><dd>{_e(source_label)}</dd><dt>Specification SHA-256</dt><dd><code>{row["spec_sha256"]}</code></dd><dt>Source</dt><dd><a href="{_e(row["source"]["href"])}">{_e(row["source"]["path"])}:{row["source"]["line"]}</a> ({row["source"]["kind"]})</dd><dt>Source SHA-256</dt><dd><code>{row["source"]["sha256"]}</code></dd></dl></aside></main>'''
+    atlas = _campaign_navigation("../../../")
+    body = f'''<header class="pa-proof-header pa-theorem-heading"><nav><a href="../index.html">Explorer</a><a href="../foundations.html">Foundations</a><a href="../defined/tag/{_e(row["tag"])}.html">Definition-aware theorem</a><a href="../defined/graph.html?target={_e(row["tag"])}&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>{atlas}{prev_link}{next_link}</nav><p class="pa-tag">{row["tag"]}</p><h1>{_e(row["name"])}</h1><p class="pa-status-public">{_e(row["status_label"])}</p><p>{_e(row["summary"])}</p></header><main class="pa-theorem-layout"><div class="pa-proof-panel"><section class="pa-statement"><h2>Exact expanded PA statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>{_e(row["statement"])}</code></pre></section><section class="pa-informal-proof" data-informal-kind="{_e(row["informal"]["kind"])}" data-informal-review="{_e(row["informal"]["review"])}"><h2>{_e(row["informal"]["title"])}</h2><p><strong>{"Curated informal proof" if row["informal"]["review"] == "curated_reviewed" else "Generated structural guide"}</strong></p>{paragraphs}<h3>Referenced ingredients</h3><div class="pa-chip-row">{ingredients}</div></section><section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row">{relation(row["dependencies"])}</div><h3>Direct dependents</h3><div class="pa-chip-row">{relation(row["dependents"])}</div></section><section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Linked names are exact direct references. This {use_label}.</p><ol class="pa-formal-proof">{"".join(lines)}</ol></section></div><aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Layer</dt><dd>{row["layer"]}</dd><dt>Lines</dt><dd>{len(row["lines"])}</dd><dt>Current Alpha edition</dt><dd>{_e(row["alpha_edition_version"])}</dd><dt>Current release evidence</dt><dd>{_e(row["alpha_evidence"])}</dd><dt>Checked theorem use</dt><dd>{"yes" if row["alpha_checked_use"] else "no"}</dd><dt>Stable membership</dt><dd>{"yes" if row["stable_member"] else "no"}</dd><dt>Historical source origin</dt><dd>{_e(source_label)}</dd><dt>Specification SHA-256</dt><dd><code>{row["spec_sha256"]}</code></dd><dt>Source</dt><dd><a href="{_e(row["source"]["href"])}">{_e(row["source"]["path"])}:{row["source"]["line"]}</a> ({row["source"]["kind"]})</dd><dt>Source SHA-256</dt><dd><code>{row["source"]["sha256"]}</code></dd></dl></aside></main>'''
     return _page(f'{row["tag"]} — {row["name"]}', "theorem", body, "../")
 
 

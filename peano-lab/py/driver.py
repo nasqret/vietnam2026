@@ -97,6 +97,7 @@ def _usage() -> str:
         "  pa tutorial [name]   guided, ENTER-driven lessons",
         "  pa lib [name]        checked theorem statements + replay scripts",
         "  pa lean <name>       complete independently checked Lean 4 theorem",
+        "  pa proof <name>      bounded readable Peano-to-Lean proof strand",
         "  script [download]    inspect/save the active or last checked replay",
         "  pa axioms            the six PA rule constants",
         "  pa eval <term>       evaluate a closed arithmetic term",
@@ -214,6 +215,8 @@ class LabSession:
             return data_library.render_request("help")
         if topic == "lean":
             return "Usage: pa lean <theorem>; list names with `pa lib`."
+        if topic == "proof":
+            return "Usage: pa proof [alpha] <theorem>; list names with `pa lib`."
         if topic:
             return f"No help topic {args.strip()!r}. Type `help` or `pa help`."
         return _usage()
@@ -291,6 +294,9 @@ class LabSession:
 
     def pa_lean(self, args: str) -> str:
         return data_library.render_lean(args)
+
+    def pa_proof(self, args: str) -> str:
+        return data_library.render_proof(args)
 
     def pa_axioms(self, args: str) -> str:
         if args:

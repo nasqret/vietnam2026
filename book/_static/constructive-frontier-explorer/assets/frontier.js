@@ -1,5 +1,26 @@
 (() => {
   "use strict";
+  const mixedGraph = window.PA_DEFINED_GRAPH;
+  if (mixedGraph && typeof MutationObserver === "function") {
+    const graphTitle = document.querySelector("[data-graph-title]");
+    const graphKind = document.querySelector("[data-graph-kind]");
+    if (graphTitle && graphKind) {
+      const graphRows = new Map(mixedGraph.nodes.map(node => [node.id, node]));
+      const refreshGraphEvidence = () => {
+        const identifier = graphTitle.textContent.split(" · ")[0];
+        const row = graphRows.get(identifier);
+        if (row?.kind === "theorem" && row.alpha_checked_use) {
+          graphKind.textContent = `Alpha ${row.alpha_edition_version} checked-use theorem · independently verified; not Stable`;
+        }
+      };
+      new MutationObserver(refreshGraphEvidence).observe(graphTitle, {
+        childList: true,
+        characterData: true,
+        subtree: true,
+      });
+      refreshGraphEvidence();
+    }
+  }
   const dashboard = document.querySelector("[data-defined-dashboard]");
   if (dashboard) {
     const input = dashboard.querySelector("[data-search]");
@@ -95,8 +116,12 @@
     const dependencies = node.dependencies.map(dependency => {
       if (nodes.has(dependency)) {
         const target = nodes.get(dependency);
-        const channel = target.enrolled_in_alpha ? `Alpha ${target.alpha_edition_version} · body checked; first enrolled ${target.alpha_admission_version}` : "candidate · unenrolled";
-        const experiment = target.experimental_closure_verified ? " · independent replay experiment; not admitted" : "";
+        const channel = target.alpha_checked_use
+          ? `Alpha ${target.alpha_edition_version} · alpha_closed · checked-use authorized; first enrolled ${target.alpha_admission_version}`
+          : target.enrolled_in_alpha
+            ? `Alpha ${target.alpha_edition_version} · body checked; first enrolled ${target.alpha_admission_version}`
+            : "candidate · unenrolled";
+        const experiment = target.experimental_closure_verified ? " · historical replay experiment; current release authority stated separately" : "";
         return `<button class="frontier-chip internal" data-dependency="${escape(dependency)}" type="button">${escape(dependency)} · ${escape(channel)}${escape(experiment)}</button>`;
       }
       const evidence = external.get(dependency);
@@ -107,7 +132,7 @@
           : evidence?.enrolled_in_alpha
             ? `Alpha ${evidence.alpha_edition_version} · ${evidence.alpha_evidence} · not admitted`
             : "candidate · unenrolled";
-      const experiment = evidence?.experimental_closure_verified ? " · independent replay experiment; not admitted" : "";
+      const experiment = evidence?.experimental_closure_verified ? " · historical replay experiment; current release authority stated separately" : "";
       return `<button class="frontier-chip external" data-dependency="${escape(dependency)}" type="button" title="${escape(evidence?.evidence || "release-status-unattested")}">${escape(dependency)} · ${escape(channel)}${escape(experiment)}</button>`;
     }).join("");
     const provenance = node.sources.map(source => `<span class="frontier-chip ${source.selected ? "internal" : "external"}">${escape(source.source_module)} · ${source.selected ? "selected canonical source" : source.matches_selected_statement ? "matching alternate source" : "non-selected alternate statement"}</span>`).join("");
@@ -129,7 +154,7 @@
       ? `<p class="frontier-receipt">Exact AST equivalence verified · ${receipt.expanded_characters} → ${receipt.defined_characters} characters · defined SHA-256 ${escape(receipt.defined_source_sha256)}</p><p><small>Canonical expanded AST SHA-256 ${escape(receipt.canonical_expansion_sha256)}</small></p>`
       : `<p class="frontier-mode-note">This statement remains exact only: ${escape(defined.statement_status)}. No unverified equivalence is claimed.</p>`;
     const experiment = node.experimental_closure_verified
-      ? `<p class="frontier-experimental-note"><strong>Independent replay-verified experiment, not release evidence.</strong> Named microbatch ${escape(node.experimental_closure_microbatch)} previously checked an empty-context proof. No certificate is persisted; Alpha evidence remains body_checked, with no checked-use authority or Stable promotion.</p>`
+      ? `<p class="frontier-experimental-note"><strong>Historical replay-verified experiment, not release evidence.</strong> Named microbatch ${escape(node.experimental_closure_microbatch)} previously checked an empty-context proof without persisting a certificate or granting release authority. Current Alpha ${escape(node.alpha_edition_version)} checked-use authority comes only from a separately sealed, independently verified proof bundle; no Stable promotion.</p>`
       : "";
     const heading = readable ? "Readable conservative defined notation" : "Exact expanded first-order HA statement";
     const proofHeading = readable ? "Proof script with verified readable local propositions" : "Exact stored proof script";

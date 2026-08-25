@@ -19,6 +19,7 @@ GUIDE = BOOK / "arithmetic-library" / "guided-tour.md"
 K3B_CHAPTER = BOOK / "arithmetic-library" / "cell-history-and-lookup.md"
 K3B_SITE = BOOK / "_static" / "pa-proof-explorer" / "k3b"
 LIBRARY_EDITIONS = BOOK / "arithmetic-library" / "library-editions.md"
+GRAND_CAMPAIGN_CHAPTER = BOOK / "arithmetic-library" / "grand-campaign-atlas.md"
 BERTRAND_CAMPAIGN = BOOK / "arithmetic-library" / "bertrand-campaign.md"
 K3B_RECEIPT = (
     REPO
@@ -56,6 +57,7 @@ def test_arithmetic_dashboard_tour_atlas_and_dependency_chapters_are_ordered() -
     chapters = (
         "index",
         "library-editions",
+        "grand-campaign-atlas",
         "guided-tour",
         "theorem-atlas",
         "proof-explorer",
@@ -79,6 +81,55 @@ def test_arithmetic_dashboard_tour_atlas_and_dependency_chapters_are_ordered() -
         source = BOOK / "arithmetic-library" / f"{chapter}.md"
         assert source.is_file()
         assert source.read_text(encoding="utf-8").startswith("# ")
+
+
+def test_grand_campaign_book_chapter_connects_research_scales_honestly() -> None:
+    chapter = GRAND_CAMPAIGN_CHAPTER.read_text(encoding="utf-8")
+    index = (BOOK / "arithmetic-library" / "index.md").read_text(encoding="utf-8")
+    campaign = _load(
+        BOOK / "_static" / "constructive-grand-campaign" / "campaign.json"
+    )
+
+    assert campaign["meta"]["goal_count"] == 120
+    assert campaign["meta"]["tool_count"] == 16
+    assert campaign["meta"]["anchor_count"] == 8
+    assert len(campaign["families"]) == 12
+    assert len(campaign["definitions"]) == 107
+    assert sum(len(node["deps"]) for node in campaign["nodes"]) == 303
+
+    for exact in (
+        "**120 major mathematical goals**",
+        "**16 reusable constructive tools**",
+        "**8 established proof anchors**",
+        "**107 pieces of mathematical vocabulary**",
+        "**1,737 independently checked",
+        "**5,779 checked proof dependencies**",
+        "**32 definition-to-definition edges**",
+        "**312 milestone-to-term",
+        "A research map is not a proof certificate",
+        "future-facing entries remain planning vocabulary",
+    ):
+        assert exact in chapter
+
+    for domain in ("D01", "D02", "D03", "D04", "D05"):
+        assert f"?view=domain&focus={domain}" in chapter
+    for family in ("F02", "F03", "F04", "F05", "F07", "F08"):
+        assert f"?view=family&focus={family}" in chapter
+    for goal in (
+        "G012", "G025", "G026", "G043", "G045", "G047", "G048",
+        "G061", "G063", "G065", "G077", "G078", "G107", "G120",
+    ):
+        assert f"?view=goal&focus={goal}" in chapter
+
+    nodes = {node["id"]: node for node in campaign["nodes"]}
+    for open_goal in ("G025", "G045", "G047", "G048", "G063", "G065", "G078", "G107", "G120"):
+        assert nodes[open_goal]["status"] == "open"
+    assert nodes["G077"]["status"] == "existing_anchor_extension"
+    for closed_goal in ("G012", "G026", "G043", "G061"):
+        assert nodes[closed_goal]["status"] == "alpha_closed"
+
+    assert "<grand-campaign-atlas>" in index
+    assert 'title="Interactive multiscale constructive number-theory research atlas"' in chapter
 
 
 def test_alpha_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() -> None:
@@ -262,8 +313,11 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "**1,543** theorems",
         "**1,556** theorems",
         "**1,673** theorems",
+        "**1,737** theorems",
         "**570** theorems",
         "**885** theorems",
+        "**916** theorems",
+        "**1,589** theorems",
         "**2,641** edges / **45** layers",
         "**2,730** edges / **45** layers",
         "**2,891** edges / **45** layers",
@@ -275,6 +329,7 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "**3,482** edges / **45** layers",
         "**4,302** edges / **45** layers",
         "**5,615** edges / **53** layers",
+        "**5,779** edges / **53** layers",
         "432 Stable plus 453 Alpha-only rows",
         "432 Stable plus 491 Alpha-only rows",
         "432 Stable plus 533 Alpha-only rows",
@@ -298,12 +353,14 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "732 `body_checked`",
         "one `pending_layered_closure`",
         'edition("alpha").checked_specs',
-        "from peano_lab.library.editions_v16 import edition, entry, replay",
-        "# 1673",
-        "# 885",
+        "from peano_lab.library.editions_v19 import edition, entry, replay",
+        "# 1737",
         'entry("cell_list_extensional", edition="alpha")',
         'replay("signed_decode_nonnegative_constructor", edition="alpha")',
         'entry("quadratic_reciprocity_combined", edition="alpha")',
+        'entry("linear_congruence_solvable_iff_gcd_divides", edition="alpha")',
+        'entry("prime_is_two_squares_iff_two_or_one_mod_four", edition="alpha")',
+        'entry("infinitely_many_primes_one_mod_four", edition="alpha")',
         "95,253 proof nodes",
         "artifacts/peano-library/alpha/catalog-v1.json",
         "artifacts/peano-library/channels.json",
@@ -332,7 +389,15 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "artifacts/peano-library/alpha/dependency-graph-v12.mmd",
         "artifacts/peano-library/channels-v12.json",
         "artifacts/peano-library/channels-v16.json",
+        "artifacts/peano-library/channels-v17.json",
+        "artifacts/peano-library/channels-v18.json",
+        "artifacts/peano-library/channels-v19.json",
         "3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10",
+        "db2e6e5796169600d17cc54313e9306bac46fb680f914cb2a5a91d247bb746c4",
+        "f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66",
+        "1295d6fc3da84646cb6bc8d5070627d42a6df33d673c44a2adfcd433edc41795",
+        "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
+        "627f651198360aa95b8efd085b98f694d88c883434309f6050a819bc249c90c4",
         "aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c",
         "9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff",
         "a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2",
@@ -401,10 +466,10 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         assert exact in source
     for exact in (
         "<library-editions>",
-        "<strong>1,673</strong><span>Alpha v16 theorems</span>",
-        "<strong>885</strong><span>Alpha checked-use rows</span>",
-        "<strong>1,241</strong><span>Alpha-only rows</span>",
-        "1,673 theorems, 5,615 direct edges",
+        "<strong>1,737</strong><span>Alpha v19 theorems</span>",
+        "<strong>1,737</strong><span>Alpha checked-use rows</span>",
+        "<strong>1,305</strong><span>Alpha-only rows</span>",
+        "1,737 theorems, 5,779 direct edges",
         "1,303 theorems, 4,302 direct",
         "732 `body_checked`",
         "dependency-closed B6 support and B5--BP02 completion chain",

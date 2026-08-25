@@ -39,6 +39,7 @@ parts:
     chapters:
       - file: arithmetic-library/index
       - file: arithmetic-library/library-editions
+      - file: arithmetic-library/grand-campaign-atlas
       - file: arithmetic-library/guided-tour
       - file: arithmetic-library/theorem-atlas
       - file: arithmetic-library/proof-explorer

@@ -16,6 +16,9 @@ REPO = Path(__file__).resolve().parents[3]
 sys.path.insert(0, str(REPO / "peano-lab" / "py"))
 sys.path.insert(0, str(REPO / "scripts"))
 
+from peano_lab.library import editions_v18 as proof_alpha  # noqa: E402
+from peano_lab.library import editions_v19 as current_alpha  # noqa: E402
+
 EXPLICIT = REPO / "book" / "_static" / "bertrand-proof-explorer"
 DEFINED = EXPLICIT / "defined"
 QR_DEFINED = REPO / "book" / "_static" / "pa-proof-explorer" / "defined"
@@ -96,7 +99,7 @@ def test_campaign_registry_extends_without_mutating_quadratic_reciprocity() -> N
     assert qr_manifest["theorem_count"] == 557
     assert qr_manifest["definition_count"] == 40
     assert qr_manifest["aggregate_sha256"] == (
-        "ecd93b24879778b3b47f2a48b4b8b2015f6e75ae2b9db34b2c2c5021dad4369c"
+        "21cd7aba17b31296234c426c372b9de82ee82765cd88c467b80bcaa8da239583"
     )
 
 
@@ -200,6 +203,22 @@ def test_manifest_freezes_exact_bertrand_sources_and_complete_file_inventory(
     assert manifest["notation_edge_count"] == 1510
     assert manifest["formal_line_count"] == 28410
     assert manifest["generated_file_count"] == 1124
+    assert manifest["alpha_edition_version"] == "v19"
+    assert manifest["alpha_edition_identity_sha256"] == (
+        current_alpha.ALPHA_V19_IDENTITY_SHA256
+    )
+    assert manifest["alpha_edition_checked_use_count"] == 1737
+    assert manifest["proof_edition_version"] == "v18"
+    assert manifest["proof_edition_identity_sha256"] == (
+        proof_alpha.ALPHA_V18_IDENTITY_SHA256
+    )
+    assert manifest["proof_edition_checked_use_count"] == 1589
+    assert manifest["graph_checked_use_count"] == 544
+    assert manifest["graph_stable_closed_count"] == 202
+    assert manifest["graph_alpha_closed_count"] == 342
+    assert manifest["source_edition_version"] == "v12"
+    assert manifest["source_checked_use_count"] == 203
+    assert manifest["source_body_checked_count"] == 341
     assert manifest["explicit_corpus_sha256"] == _digest(
         (EXPLICIT / "api" / "corpus.json").read_bytes()
     )
@@ -287,8 +306,11 @@ def test_all_theorems_and_tactic_lines_preserve_immutable_explicit_sources(
     assert corpus["schema"] == "peano-lab-bertrand-defined-corpus-v1"
     assert corpus["theorem_count"] == len(corpus["theorems"]) == 544
     assert corpus["root_tag"] == ROOT_TAG
-    assert corpus["public_count"] == explicit["public_count"] == 203
-    assert corpus["candidate_count"] == explicit["candidate_count"] == 341
+    assert corpus["public_count"] == explicit["public_count"] == 202
+    assert corpus["candidate_count"] == explicit["candidate_count"] == 342
+    assert corpus["graph_checked_use_count"] == 544
+    assert corpus["graph_stable_closed_count"] == 202
+    assert corpus["graph_alpha_closed_count"] == 342
 
     for readable, exact in zip(corpus["theorems"], explicit["theorems"], strict=True):
         defined = readable["defined"]
@@ -296,6 +318,13 @@ def test_all_theorems_and_tactic_lines_preserve_immutable_explicit_sources(
         assert readable["name"] == exact["name"]
         assert readable["scope"] == exact["scope"]
         assert readable["status"] == exact["status"]
+        assert readable["alpha_edition_version"] == "v19"
+        assert readable["proof_edition_version"] == "v18"
+        assert readable["alpha_evidence"] == exact["alpha_evidence"]
+        assert readable["alpha_checked_use"] is True
+        assert readable["stable_member"] == exact["stable_member"]
+        assert readable["source_edition_version"] == "v12"
+        assert readable["source_evidence_status"] == exact["source_evidence_status"]
         assert readable["layer"] == exact["layer"]
         assert readable["dependencies"] == exact["dependencies"]
         assert readable["dependents"] == exact["dependents"]
@@ -398,6 +427,19 @@ def test_mixed_graph_keeps_proof_paths_distinct_from_notation_edges(
     assert graph["schema"] == "peano-lab-bertrand-defined-graph-v1"
     assert graph["root_tag"] == ROOT_TAG
     assert graph["path_policy"] == "proof_dependency_edges_only"
+    assert graph["alpha_edition_version"] == "v19"
+    assert graph["alpha_edition_identity_sha256"] == (
+        current_alpha.ALPHA_V19_IDENTITY_SHA256
+    )
+    assert graph["alpha_edition_checked_use_count"] == 1737
+    assert graph["proof_edition_version"] == "v18"
+    assert graph["proof_edition_identity_sha256"] == (
+        proof_alpha.ALPHA_V18_IDENTITY_SHA256
+    )
+    assert graph["proof_edition_checked_use_count"] == 1589
+    assert graph["graph_checked_use_count"] == 544
+    assert graph["graph_stable_closed_count"] == 202
+    assert graph["graph_alpha_closed_count"] == 342
     assert graph["proof_adjacency"] == explicit_graph["adjacency"]
     assert nodes_by_kind == {"theorem": 544, "definition": 28}
     assert edges_by_kind == {
@@ -473,6 +515,10 @@ def test_capstone_is_readable_preserves_the_exact_statement_and_proof_lines(
     page = (DEFINED / "tag" / f"{ROOT_TAG}.html").read_text(encoding="utf-8")
 
     assert capstone["name"] == "bertrand_strict"
+    assert capstone["alpha_evidence"] == "alpha_closed"
+    assert capstone["alpha_checked_use"] is True
+    assert capstone["stable_member"] is False
+    assert capstone["source_evidence_status"] == "body_checked"
     assert capstone["defined"]["defined_statement"] == (
         "∀ n. Lt(1,n) → ∃ x. Prime(x) ∧ (Lt(n,x) ∧ Lt(x,n + n))"
     )
@@ -485,6 +531,13 @@ def test_capstone_is_readable_preserves_the_exact_statement_and_proof_lines(
     assert 'id="proof-line-0014"' in page
     assert 'id="proof-line-0039"' in page
     assert "bertrand_bp02_candidate.py" in page
+    assert "Alpha v19 checked-use theorem" in page
+    assert "<dt>Current Alpha edition</dt><dd>v19</dd>" in page
+    assert "<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>" in page
+    assert "<dt>Current release evidence</dt><dd>alpha_closed</dd>" in page
+    assert "<dt>Checked theorem use</dt><dd>yes</dd>" in page
+    assert "<dt>Stable membership</dt><dd>no</dd>" in page
+    assert "<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>" in page
 
 
 def test_interactive_surface_defaults_to_the_capstone_and_local_pinned_assets() -> None:
@@ -495,6 +548,7 @@ def test_interactive_surface_defaults_to_the_capstone_and_local_pinned_assets() 
 
     assert "544" in index
     assert "28" in index
+    assert "202 Stable and 342 Alpha-only checked-use theorems" in index
     for name in (
         "Choose",
         "CentralBinom",
@@ -510,8 +564,42 @@ def test_interactive_surface_defaults_to_the_capstone_and_local_pinned_assets() 
     assert '<option value="selected" selected>Selected node only</option>' in graph
     assert '<option value="focus" selected>Focused: path + selected node</option>' in graph
     assert "Proof arrows and notation arrows are different relations" in graph
+    assert "pa-bertrand-defined-release-evidence" in graph
+    assert "Alpha v19 checked-use theorem; independently kernel and Lean verified; not Stable" in graph
 
     for relative, digest in shared.PINNED_ASSETS.items():
         payload = (DEFINED / relative).read_bytes()
         assert _digest(payload) == digest
         assert not re.search(rb"https?://", payload)
+
+
+def test_every_defined_bertrand_node_connects_to_its_global_research_context(
+    documents: dict[str, dict],
+) -> None:
+    import build_pa_defined_explorer as shared
+
+    revision = shared.CAMPAIGN_HTML_REVISION
+    for relative in ("index.html", "graph.html"):
+        page = (DEFINED / relative).read_text(encoding="utf-8")
+        assert f'href="../../../grand-campaign/?v={revision}"' in page
+        assert f'view=domain&amp;focus=D02&amp;v={revision}' in page
+        assert f'view=family&amp;focus=F03&amp;v={revision}' in page
+        assert f'view=goal&amp;focus=A02&amp;v={revision}' in page
+
+    corpus = documents["corpus"]
+    for theorem in corpus["theorems"]:
+        page = (DEFINED / "tag" / f'{theorem["tag"]}.html').read_text(
+            encoding="utf-8"
+        )
+        assert f'href="../../../../grand-campaign/?v={revision}"' in page
+        assert f'view=family&amp;focus=F03&amp;v={revision}' in page
+        assert f'view=goal&amp;focus=A02&amp;v={revision}' in page
+
+    for definition in corpus["definitions"]:
+        page = (DEFINED / "definition" / f'{definition["id"]}.html').read_text(
+            encoding="utf-8"
+        )
+        assert f'href="../../../../grand-campaign/?v={revision}"' in page
+        focus = shared.CAMPAIGN_DEFINITION_ALIASES.get(definition["name"])
+        if focus is not None:
+            assert f'view=definition&amp;focus={focus}&amp;v={revision}' in page

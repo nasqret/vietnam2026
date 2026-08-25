@@ -104,6 +104,7 @@ def test_real_public_theorems_export_complete_deterministic_certificates(name: s
     assert "PeanoLab.Artifact.check_sound accepted" in exported.code
     assert "    decide" in exported.code
     assert f"#print axioms «{name}»" in exported.code
+    assert exported.live_url == ""
     assert re.search(
         r"\bsorry\b|\bnative_decide\b|^\s*axiom\s+",
         exported.code,
@@ -210,6 +211,7 @@ def test_shared_checked_bundle_exports_a_complete_dense_lean_theorem() -> None:
     assert "dependencies := [0]" in exported.code
     assert "root := 1" in exported.code
     assert "sorry" not in exported.code
+    assert exported.live_url == ""
 
 
 def test_false_or_wrong_target_proof_bundles_cannot_become_lean_theorems() -> None:
@@ -390,6 +392,71 @@ def test_converter_cli_rejects_unknown_theorems_and_existing_output(tmp_path: Pa
     assert protected.returncode == 1
     assert "already exists" in protected.stderr
     assert existing.read_text(encoding="utf-8") == "preserve this user content\n"
+
+
+@pytest.mark.parametrize(
+    "name",
+    (
+        "linear_congruence_solvable_iff_gcd_divides",
+        "infinitely_many_primes_one_mod_four",
+        "prime_is_two_squares_iff_two_or_one_mod_four",
+        "pythagorean_primitive_normal_form",
+        "prime_power_valuation_exists",
+    ),
+)
+def test_converter_cli_recognizes_new_checked_alpha_v19_goals_without_proof_replay(
+    name: str,
+) -> None:
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-B",
+            str(ROOT / "scripts" / "export_peano_lean.py"),
+            name,
+            "--edition",
+            "alpha",
+            "--format",
+            "pretty",
+        ],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert name in result.stdout
+    assert "Preview only: no fresh kernel or Lean proof replay." in result.stderr
+    assert "Independent Lean compilation: PASSED" not in result.stdout + result.stderr
+
+
+def test_converter_cli_rejects_wrong_synthetic_bundle_for_named_alpha_v19_goal(
+    tmp_path: Path,
+) -> None:
+    artifact = tmp_path / "wrong-alpha-root.json"
+    artifact.write_text(
+        encode_proof_bundle(_shared_proof_bundle(), And(P, P)),
+        encoding="utf-8",
+    )
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-B",
+            str(ROOT / "scripts" / "export_peano_lean.py"),
+            "linear_congruence_solvable_iff_gcd_divides",
+            "--edition",
+            "alpha",
+            "--proof-bundle",
+            str(artifact),
+        ],
+        cwd=ROOT,
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+
+    assert result.returncode == 1
+    assert "target disagrees with the named public theorem" in result.stderr
 
 
 def test_converter_cli_translates_checked_bundle_without_registry_authority(

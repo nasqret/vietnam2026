@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT002D.html">← divisor_le_nonzero</a> <a href="BT002F.html">multiple_antisymm →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT002E.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT002E&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT002D.html">← divisor_le_nonzero</a><a href="BT002F.html">multiple_antisymm →</a></nav>
 <p class="pa-tag">BT002E</p><h1>divisor_one</h1>
-<p class="pa-status-public">Stable · empty-context checked</p>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
 <p>Every natural divisor of one equals one.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by case analysis (2), intermediate claims (1).</p></s
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT002X.html"><code>BT002X</code> coprime_one_right</a> <a class="pa-theorem-ref" href="BT002Y.html"><code>BT002Y</code> coprime_one_left</a> <a class="pa-theorem-ref" href="BT0031.html"><code>BT0031</code> is_gcd_one_to_coprime</a> <a class="pa-theorem-ref" href="BT004I.html"><code>BT004I</code> beta_modulus_coprime_base</a> <a class="pa-theorem-ref" href="BT00VB.html"><code>BT00VB</code> factorial_prime_le_of_divides</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="7666910c8a36dbf7"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> d</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="1876bfbbbd73e159"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="cases" data-line-id="c1fb51bee14ab8ab"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="8161377cf565762f"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0020.html">mul_eq_one_components</a> d</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="fb8ddd1065a08839"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0020.html">mul_eq_one_components</a> x</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="have" data-line-id="bb8195ec6b65bd06"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">have</span> parts : d = 1 /\ x = 1</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="apply" data-line-id="a16cba0d3ee32dd8"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0020.html">mul_eq_one_components</a></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="symm" data-line-id="8669a8313ea76c4e"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exact" data-line-id="b770607483484fa0"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exact</span> h_witness</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="cases" data-line-id="536323dd588989ab"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">cases</span> parts</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="exact" data-line-id="b289f770cfc96cc2"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">exact</span> parts_left</code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>84</dd>
 <dt>Layer</dt><dd>2</dd><dt>Lines</dt><dd>11</dd>
-<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
 <dt>Body proof nodes</dt><dd>n/a</dd>
 <dt>Statement SHA-256</dt><dd><code>1fe13b628abe4610ddc4c81d29f2daa0399dd69a81efbdc1547fbcf431482475</code></dd>
 <dt>Script SHA-256</dt><dd><code>9d653935c1c10a6e9f2eaeb1d696d999af4b431b1d5398435c2d49732579b086</code></dd>

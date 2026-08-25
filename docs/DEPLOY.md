@@ -37,6 +37,33 @@ independently checked 557-node quadratic-reciprocity proof artifact. Each
 family retains the unchanged fully expanded PA proof and its honest current
 release-evidence boundary.
 
+## Interactive Lean proof building
+
+The theorem-graph **Build Lean proof** action requires the bounded Python/Lean
+proof service; ordinary Apache-served static pages cannot execute Lean or run
+background build jobs. Start the complete local interactive workflow with:
+
+```bash
+make lean-browser
+```
+
+The current faculty host does not allow persistent daemons, so `make
+deploy-proofs` publishes static proof explorers only. A public interactive
+installation requires a host with the checked repository, its existing
+independently built `peano-lab-lean` sibling, a pinned installed Lean toolchain,
+and a persistent service or reverse proxy. Network binding is deliberately
+explicit:
+
+```bash
+python3 scripts/serve_lean_strands.py \
+  --host 0.0.0.0 --port 8787 --public-host
+```
+
+Place a TLS-terminating reverse proxy in front of that service and retain its
+single-worker, time, memory, request-size, and artifact-retention limits. The
+repository's owner has authorized the hosted proof-export capability; running
+the command or publishing a service remains an explicit deployment operation.
+
 ## Step by step
 
 ```bash

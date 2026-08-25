@@ -97,6 +97,27 @@ PINNED_ASSETS = {
     "assets/explorer.css": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220",
     "assets/explorer.js": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982",
 }
+# The page/navigation generation is keyed to the current Alpha-v19 catalog,
+# independently of the immutable content-addressed JavaScript asset digest.
+CAMPAIGN_HTML_REVISION = "f1c3d3fba013"
+CAMPAIGN_DEFINITION_ALIASES = {
+    "BetaAt": "Beta",
+    "Choose": "Binom",
+    "Coprime": "Coprime",
+    "DivRem": "DivRem",
+    "Dvd": "Dvd",
+    "Factorial": "Fact",
+    "FactorialValuation": "FactorialValuation",
+    "IsGCD": "Gcd",
+    "Le": "Le",
+    "LegendreSum": "LegendreSum",
+    "Lt": "Lt",
+    "Pow": "Pow",
+    "PowerValuation": "PowerValuation",
+    "Prime": "Prime",
+    "Product": "Prod",
+    "Sum": "Sum",
+}
 ALPHA_RELEASE_FIELDS = (
     "alpha_edition_version",
     "alpha_edition_identity_sha256",
@@ -111,6 +132,49 @@ ALPHA_RELEASE_FIELDS = (
 
 class DefinedEditionError(ValueError):
     """The notation adapter or explicit explorer violates the display contract."""
+
+
+def _campaign_href(prefix: str, view: str, focus: str) -> str:
+    """Return an HTML-safe deep link into the deployed multiscale campaign atlas."""
+
+    return (
+        f"{prefix}grand-campaign/?view={view}&amp;focus={focus}"
+        f"&amp;v={CAMPAIGN_HTML_REVISION}"
+    )
+
+
+def _campaign_navigation(
+    prefix: str,
+    *,
+    family: str,
+    goal: str,
+    family_label: str,
+    domain: str = "D02",
+) -> str:
+    """Connect every proof page to its exact family, domain, and programme."""
+
+    return (
+        f'<a href="{prefix}grand-campaign/?v={CAMPAIGN_HTML_REVISION}">'
+        "Grand campaign</a>"
+        f'<a href="{_campaign_href(prefix, "domain", domain)}">'
+        "Research domain</a>"
+        f'<a href="{_campaign_href(prefix, "family", family)}">'
+        f"{_e(family_label)} family</a>"
+        f'<a href="{_campaign_href(prefix, "goal", goal)}">'
+        "Campaign milestone</a>"
+    )
+
+
+def _campaign_definition_link(prefix: str, name: str) -> str:
+    """Cross-link reviewed local notation to its named global campaign concept."""
+
+    focus = CAMPAIGN_DEFINITION_ALIASES.get(name)
+    if focus is None:
+        return ""
+    return (
+        f'<a href="{_campaign_href(prefix, "definition", focus)}">'
+        f"Global {_e(focus)} definition</a>"
+    )
 
 
 def _digest(value: bytes | str) -> str:
@@ -594,7 +658,10 @@ def _render_theorem(
     lines = "".join(line_rows)
     prev_link = f'<a href="{_e(previous["tag"])}.html">← {_e(previous["name"])}</a>' if previous else ""
     next_link = f'<a href="{_e(following["tag"])}.html">{_e(following["name"])} →</a>' if following else ""
-    body = f'''<header class="pd-header"><nav><a href="../index.html">Defined edition</a><a href="../../tag/{_e(row["tag"])}.html">Explicit edition</a><a href="../graph.html?target={_e(row["tag"])}">Mixed graph</a>{prev_link}{next_link}</nav><p class="pd-kicker">{_e(row["tag"])} · theorem</p><h1>{_e(row["name"])}</h1><p class="pd-status pd-status-public">{_e(row["status_label"])}</p><p>{_e(row["summary"])}</p></header>
+    atlas = _campaign_navigation(
+        "../../../../", family="F05", goal="G043", family_label="Reciprocity"
+    )
+    body = f'''<header class="pd-header"><nav><a href="../index.html">Defined edition</a><a href="../../tag/{_e(row["tag"])}.html">Explicit edition</a><a href="../graph.html?target={_e(row["tag"])}">Mixed graph</a>{atlas}{prev_link}{next_link}</nav><p class="pd-kicker">{_e(row["tag"])} · theorem</p><h1>{_e(row["name"])}</h1><p class="pd-status pd-status-public">{_e(row["status_label"])}</p><p>{_e(row["summary"])}</p></header>
 <main class="pd-theorem-layout"><div><section><h2>Statement with defined notation</h2><button type="button" data-copy-target="defined-statement">Copy text</button><pre id="defined-statement"><code>{_render_defined_parts(defined["statement_parts"])}</code></pre><p class="pd-callout">Every purple notation token opens its conservative definition. This is a reading surface; the compiler expands the statement before the unchanged kernel checks it.</p></section><section><h2>Definitions used by this theorem</h2><h3>In the theorem statement</h3><div class="pd-chip-row">{_definition_chips(statement_uses, definitions)}</div><p>{sum(defined["statement_definition_uses"].values())} occurrences</p><h3>In local proof propositions</h3><div class="pd-chip-row">{_definition_chips(script_uses, definitions)}</div><p>{sum(defined["script_definition_uses"].values())} occurrences</p></section><details><summary>Exact expanded native-PA statement</summary><button type="button" data-copy-target="expanded-statement">Copy expansion</button><pre id="expanded-statement"><code>{_e(row["statement"])}</code></pre></details><section><h2>Proof neighborhood</h2><h3>Direct theorem prerequisites</h3><div class="pd-chip-row">{_relation(row["dependencies"])}</div><h3>Direct theorem dependents</h3><div class="pd-chip-row">{_relation(row["dependents"])}</div></section><section><h2>Definition-aware tactic body</h2><p>Only local propositions introduced by <code>have</code> or <code>suffices</code> are compacted. The untrusted compiler re-expands each one before the original tactic script is replayed; defined notation is never accepted by the kernel. Open the exact replay line beneath every changed command.</p><ol class="pd-formal-proof">{lines}</ol></section></div><aside><h2>Display receipt</h2><dl><dt>Proof layer</dt><dd>{row["layer"]}</dd><dt>Current Alpha edition</dt><dd>{_e(row["alpha_edition_version"])}</dd><dt>Current release evidence</dt><dd>{_e(row["alpha_evidence"])}</dd><dt>Checked theorem use</dt><dd>{"yes" if row["alpha_checked_use"] else "no"}</dd><dt>Stable membership</dt><dd>{"yes" if row["stable_member"] else "no"}</dd><dt>Historical source origin</dt><dd>{"Stable public-theorem source" if row["scope"] == "public" else "candidate-factory source; Alpha-only"}</dd><dt>Defined-notation uses</dt><dd>{sum(defined["definition_uses"].values())}</dd><dt>Statement definitions</dt><dd>{len(statement_uses)}</dd><dt>Local-proof definitions</dt><dd>{len(script_uses)}</dd><dt>Compacted local lines</dt><dd>{changed_line_count}</dd><dt>Exact statement SHA-256</dt><dd><code>{_e(row["statement_sha256"])}</code></dd><dt>Explicit proof</dt><dd><a href="../../tag/{_e(row["tag"])}.html">open immutable explicit page</a></dd><dt>Native source</dt><dd><a href="{_e(row["source"]["href"])}">{_e(row["source"]["path"])}:{row["source"]["line"]}</a></dd></dl></aside></main>'''
     return _page(f'{row["tag"]} — {row["name"]} — defined notation', "theorem", body, "../")
 
@@ -618,7 +685,13 @@ def _render_definition(
             for item in theorem_users
         ) or '<span class="pd-empty">none</span>'
     )
-    body = f'''<header class="pd-header pd-definition-header"><nav><a href="../index.html">Defined edition</a><a href="../graph.html?focus={_e(definition["id"])}">Mixed graph</a><a href="../../foundations.html">PA foundations</a></nav><p class="pd-kicker">{_e(definition["id"])} · conservative definition</p><h1>{_e(definition["name"])}</h1><p>{_e(definition["summary"])}</p></header><main class="pd-definition-page"><section><h2>Readable signature</h2><pre><code>{_e(definition["signature"])}</code></pre></section><section><h2>Exact expansion</h2><button type="button" data-copy-target="definition-expansion">Copy expansion</button><pre id="definition-expansion"><code>{_e(definition["expansion"])}</code></pre><p class="pd-callout">This node is notation, not a theorem, axiom, predicate constant, or kernel rule. The elaboration layer must expand it before proof checking.</p></section><section><h2>Definition neighborhood</h2><h3>Expands using</h3><div class="pd-chip-row">{_definition_chips(definition["dependencies"], definitions, "")}</div><h3>Used by definitions</h3><div class="pd-chip-row">{dependent_definitions}</div><h3>Used by theorem statements or local proof propositions</h3><div class="pd-chip-row">{used_theorems}</div></section><aside><h2>Definition receipt</h2><dl><dt>Expansion SHA-256</dt><dd><code>{_e(definition["expansion_sha256"])}</code></dd><dt>Source</dt><dd>{_e(source["path"])}:{source["line"]}</dd><dt>Source SHA-256</dt><dd><code>{_e(source["sha256"])}</code></dd></dl></aside></main>'''
+    atlas = _campaign_navigation(
+        "../../../../", family="F05", goal="G043", family_label="Reciprocity"
+    )
+    global_definition = _campaign_definition_link(
+        "../../../../", str(definition["name"])
+    )
+    body = f'''<header class="pd-header pd-definition-header"><nav><a href="../index.html">Defined edition</a><a href="../graph.html?focus={_e(definition["id"])}">Mixed graph</a><a href="../../foundations.html">PA foundations</a>{global_definition}{atlas}</nav><p class="pd-kicker">{_e(definition["id"])} · conservative definition</p><h1>{_e(definition["name"])}</h1><p>{_e(definition["summary"])}</p></header><main class="pd-definition-page"><section><h2>Readable signature</h2><pre><code>{_e(definition["signature"])}</code></pre></section><section><h2>Exact expansion</h2><button type="button" data-copy-target="definition-expansion">Copy expansion</button><pre id="definition-expansion"><code>{_e(definition["expansion"])}</code></pre><p class="pd-callout">This node is notation, not a theorem, axiom, predicate constant, or kernel rule. The elaboration layer must expand it before proof checking.</p></section><section><h2>Definition neighborhood</h2><h3>Expands using</h3><div class="pd-chip-row">{_definition_chips(definition["dependencies"], definitions, "")}</div><h3>Used by definitions</h3><div class="pd-chip-row">{dependent_definitions}</div><h3>Used by theorem statements or local proof propositions</h3><div class="pd-chip-row">{used_theorems}</div></section><aside><h2>Definition receipt</h2><dl><dt>Expansion SHA-256</dt><dd><code>{_e(definition["expansion_sha256"])}</code></dd><dt>Source</dt><dd>{_e(source["path"])}:{source["line"]}</dd><dt>Source SHA-256</dt><dd><code>{_e(source["sha256"])}</code></dd></dl></aside></main>'''
     return _page(f'{definition["id"]} — {definition["name"]}', "definition", body, "../")
 
 
@@ -754,14 +827,20 @@ def _render_index(theorems: Sequence[Mapping[str, Any]], definitions: Sequence[M
         f'<article class="pd-result pd-result-definition" data-entry data-kind="definition" data-search="{_e(" ".join((row["name"], row["id"], row["signature"], row["summary"])).lower())}"><a href="definition/{_e(row["id"])}.html"><code>{_e(row["id"])}</code> · <strong>{_e(row["name"])}</strong></a><p>{_e(row["summary"])}</p><small>conservative definition · not a theorem</small></article>'
         for row in definitions
     )
-    body = f'''<header class="pd-header pd-hero"><nav><a href="../index.html">Exact explicit edition</a><a href="graph.html?target=PA00FW">Mixed dependency graph</a><a href="../../../arithmetic-library/defined-proof-explorer.html">Jupyter Book guide</a></nav><p class="pd-kicker">Parallel reading edition</p><h1>Native PA with defined notation</h1><p>Readable conservative notation is linked to exact expansions while the complete explicit tactic corpus remains visible.</p><div class="pd-stats"><b>{len(theorems)}</b> checked-use theorems · <b>{len(definitions)}</b> definitions</div><p>Alpha v16 closes all 557 theorem nodes: 241 are Stable and 316 are checked-use Alpha-only; source provenance never grants Stable membership.</p></header><main data-defined-dashboard><section class="pd-controls"><label>Search <input data-search type="search"></label><label>Kind <select data-kind><option value="all">Theorems and definitions</option><option value="theorem">Theorems</option><option value="definition">Definitions</option></select></label><button data-clear type="button">Clear</button><output data-count>{len(theorems) + len(definitions)} entries</output></section><section class="pd-results">{definition_cards}{theorem_cards}</section></main>'''
+    atlas = _campaign_navigation(
+        "../../../", family="F05", goal="G043", family_label="Reciprocity"
+    )
+    body = f'''<header class="pd-header pd-hero"><nav><a href="../index.html">Exact explicit edition</a><a href="graph.html?target=PA00FW">Mixed dependency graph</a><a href="../../../arithmetic-library/defined-proof-explorer.html">Jupyter Book guide</a>{atlas}</nav><p class="pd-kicker">Parallel reading edition</p><h1>Native PA with defined notation</h1><p>Readable conservative notation is linked to exact expansions while the complete explicit tactic corpus remains visible.</p><div class="pd-stats"><b>{len(theorems)}</b> checked-use theorems · <b>{len(definitions)}</b> definitions</div><p>Alpha v16 closes all 557 theorem nodes: 241 are Stable and 316 are checked-use Alpha-only; source provenance never grants Stable membership.</p></header><main data-defined-dashboard><section class="pd-controls"><label>Search <input data-search type="search"></label><label>Kind <select data-kind><option value="all">Theorems and definitions</option><option value="theorem">Theorems</option><option value="definition">Definitions</option></select></label><button data-clear type="button">Clear</button><output data-count>{len(theorems) + len(definitions)} entries</output></section><section class="pd-results">{definition_cards}{theorem_cards}</section></main>'''
     return _page("Native PA with defined notation", "index", body)
 
 
 def _render_graph(graph: Mapping[str, Any]) -> bytes:
     inline = _javascript_assignment("PA_DEFINED_GRAPH", graph)
+    atlas = _campaign_navigation(
+        "../../../", family="F05", goal="G043", family_label="Reciprocity"
+    )
     body = f'''<header class="pd-header">
-<nav><a href="index.html">Defined edition</a><a href="../graph.html?target=PA00FW">Exact theorem graph</a><a href="../../../arithmetic-library/defined-proof-explorer.html">Jupyter Book guide</a></nav>
+<nav><a href="index.html">Defined edition</a><a href="../graph.html?target=PA00FW">Exact theorem graph</a><a href="../../../arithmetic-library/defined-proof-explorer.html">Jupyter Book guide</a>{atlas}</nav>
 <p class="pd-kicker">Typed mixed graph</p><h1>Theorems and conservative definitions</h1>
 <p>Proof arrows and notation arrows are intentionally different relations. Only theorem-proof arrows participate in premise paths.</p></header>
 <main class="pd-graph-page" data-defined-graph>

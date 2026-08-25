@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT000M.html">← mul_eq_zero</a> <a href="BT000R.html">nonzero_is_succ →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT000Q.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT000Q&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT000M.html">← mul_eq_zero</a><a href="BT000R.html">nonzero_is_succ →</a></nav>
 <p class="pa-tag">BT000Q</p><h1>zero_or_succ</h1>
-<p class="pa-status-public">Stable · empty-context checked</p>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
 <p>Every natural is either zero or the successor of a natural.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by structural induction (1).</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT001C.html"><code>BT001C</code> le_eq_or_lt</a> <a class="pa-theorem-ref" href="BT001O.html"><code>BT001O</code> division_remainder_succ</a> <a class="pa-theorem-ref" href="BT001P.html"><code>BT001P</code> division_remainder_exists</a> <a class="pa-theorem-ref" href="BT001U.html"><code>BT001U</code> division_remainder_unique</a> <a class="pa-theorem-ref" href="BT001W.html"><code>BT001W</code> multiple_has_zero_remainder</a> <a class="pa-theorem-ref" href="BT002F.html"><code>BT002F</code> multiple_antisymm</a> <a class="pa-theorem-ref" href="BT004M.html"><code>BT004M</code> bounded_common_multiple_step</a> <a class="pa-theorem-ref" href="BT006N.html"><code>BT006N</code> prime_three</a> <a class="pa-theorem-ref" href="BT00R1.html"><code>BT00R1</code> ceil_div_six_total</a> <a class="pa-theorem-ref" href="BT00RL.html"><code>BT00RL</code> prime_power_valuation_one_zero</a> <a class="pa-theorem-ref" href="BT00T2.html"><code>BT00T2</code> beta_pascal_zero_row_extend</a> <a class="pa-theorem-ref" href="BT00T4.html"><code>BT00T4</code> beta_pascal_row_step_extend</a> <a class="pa-theorem-ref" href="BT00T6.html"><code>BT00T6</code> beta_pascal_table_prefix_extend</a> <a class="pa-theorem-ref" href="BT00TT.html"><code>BT00TT</code> choose_weighted_vertical</a> <a class="pa-theorem-ref" href="BT00VV.html"><code>BT00VV</code> primorial_le_four_pow_bounded</a> <a class="pa-theorem-ref" href="BT00YA.html"><code>BT00YA</code> prime_square_tail_of_two_three_range</a> <a class="pa-theorem-ref" href="BT00YC.html"><code>BT00YC</code> double_quotient_carry_prefix_entries_zero</a> <a class="pa-theorem-ref" href="BT00YD.html"><code>BT00YD</code> central_binom_prime_valuation_zero_of_exact_double_quotients</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="induction" data-line-id="7c4444d61d938499"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">induction</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="left" data-line-id="d440daf1980a0d9b"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">left</span></code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="refl" data-line-id="477f22ee7480902d"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="right" data-line-id="9613600aa9705512"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">right</span></code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="exists" data-line-id="51c9bc3ed1e03c58"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">exists</span> n</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="refl" data-line-id="47138ce57ff0aebd"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">refl</span></code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>26</dd>
 <dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>6</dd>
-<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
 <dt>Body proof nodes</dt><dd>n/a</dd>
 <dt>Statement SHA-256</dt><dd><code>bf1c19bef4084f72c4802b8c142a9e877e7fea7b5a9d94dae0acc3ffba746ac5</code></dd>
 <dt>Script SHA-256</dt><dd><code>3b22fbe079b283b21a2ea674ac901c2ab0d18bd213d6551e06871b8bca474e41</code></dd>

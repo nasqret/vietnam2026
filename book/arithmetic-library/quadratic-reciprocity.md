@@ -1,18 +1,27 @@
 # The quadratic-reciprocity campaign
 
-Quadratic reciprocity is the next flagship theorem for the native arithmetic
+Quadratic reciprocity is a completed flagship theorem for the native arithmetic
 library. It is not being imported from Lean, assumed as an axiom, or encoded as
 a trusted Legendre-symbol function. The endpoint, all intermediate finite
 constructions, and the final certificate remain ordinary first-order PA.
 
 ![Dependency roadmap for the native quadratic-reciprocity proof](../_static/quadratic-reciprocity-roadmap.svg)
 
-```{admonition} Current immutable Alpha v16 status (2026-08-25)
+```{admonition} Current immutable Alpha v19 status (2026-08-25)
 :class: important
 All 316 Alpha-only QR specifications are now `alpha_closed` with genuine
 checked-use authority: one earlier QR/HA overlap was already closed, and
-immutable Alpha v16 promotes exactly 314 formerly body-only ancestors plus
-the formerly pending final root after checking their actual complete proofs.
+historical immutable Alpha v16 promotes exactly 314 formerly body-only
+ancestors plus the formerly pending final root after checking their actual
+complete proofs. Historical Alpha v17 preserves that entire promotion and
+independently closes both exact supplementary laws. Historical Alpha v18
+additionally closes five independently kernel- and Lean-verified flagship
+families: Lucas, Kummer, Bertrand, Lagrange's four squares, and Fermat's two
+squares. Current Alpha v19 independently closes every remaining historical
+obligation and adds 64 constructive Pythagorean, prime-two-square,
+linear-congruence, and 1-mod-4-prime theorems. Every entry of its immutable
+1,737-theorem ledger has checked-use authority; its Stable subset remains
+unchanged at 432.
 The full QR graph has 241 Stable prerequisites and 316 Alpha-closed
 theorems; none of those 316 has been promoted to Stable. Older phrases such as
 “body-green,” “unregistered,” “unadmitted,” or “private” below describe
@@ -58,8 +67,9 @@ proofs independently accepted by the unchanged original kernel. The combined
 ordinary certificate contains 54,870 structural proof nodes, 35,052 proof
 objects, and depth 129; a complete 557-node self-contained proof bundle is
 also independently accepted by the separately verified Lean companion.
-Immutable Alpha v16 grants these QR results checked use without making them
-Stable. The former recursively expanded closure remains a measured historical
+Immutable Alpha v16 first granted these QR results checked use, and current
+Alpha v19 preserves it without making them Stable. The former recursively
+expanded closure remains a measured historical
 baseline. Throughout historical portions of this chapter, “body-green” names
 the intermediate evidence level that preceded the final evidence promotion.
 
@@ -1811,10 +1821,16 @@ live QR partition is 241 public / 316 candidate and the remaining enrollment
 was historically described as 315 proper candidate ancestors plus the root.
 In the immutable historical Alpha-v15 ledger all 316 were enrolled: 314 were
 body-only, `mod_eq_add_cancel_left` was Alpha-closed through the HA receipt,
-and the root remained pending. Current Alpha v16 preserves every historical
+and the root remained pending. Historical Alpha v16 preserves every earlier
 artifact but promotes those 314 ancestors and their root after independently
 checking the complete genuine proof, so all 316 are now Alpha-closed and the
-root has checked-use authority without Stable membership. The separate
+root has checked-use authority without Stable membership. Historical Alpha v17
+retained that closure and independently closed both supplementary laws;
+historical Alpha v18 retained both earlier results while independently closing
+the Lucas, Kummer, Bertrand, four-square, and two-square flagship families;
+current Alpha v19 preserves those complete proofs while closing every residual
+obligation and adding four new constructive campaigns. The
+separate
 [`public-admission design`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-admission-path.md)
 specifies how to enroll that remaining order without an
 import cycle, recursive fallback, or theorem-name authority. The companion
@@ -1829,12 +1845,12 @@ non-ancestors.
 
 | Gate | Mathematical deliverable | Status |
 |---|---|---|
-| QR-0 | parity, modulo $4$, quadratic-residue decision | all graph prerequisites have independently checked Stable or Alpha-v16 closed proofs; historical body-only labels remain source provenance |
-| QR-1 | `Pow`, `Sum`, `Count`, ranges and finite folds | the complete dependency slice is closed and available for independently checked Alpha-v16 use |
-| QR-2 | modular units, bijections, Wilson, Fermat, Euler | the complete factorial, bounded-product, and representative-transport dependency slice is independently closed in immutable Alpha v16 |
+| QR-0 | parity, modulo $4$, quadratic-residue decision | all graph prerequisites have independently checked Stable or Alpha-v19 closed proofs; historical body-only labels remain source provenance |
+| QR-1 | `Pow`, `Sum`, `Count`, ranges and finite folds | the complete dependency slice is closed and available for independently checked Alpha-v19 use |
+| QR-2 | modular units, bijections, Wilson, Fermat, Euler | the complete factorial, bounded-product, and representative-transport dependency slice was first independently closed in immutable Alpha v16 and remains closed in v19 |
 | QR-3 | Gauss's lemma | bounded and arbitrary actual-`QRes`/count-parity equivalences are independently closed and included in the checked 557-node proof bundle |
 | QR-4 | Eisenstein identity and reciprocity | the exact combined endpoint has a 54,870-node unchanged-kernel empty-context proof; all 557 proof bodies also pass independent Lean verification and the root is `alpha_closed` |
-| QR-5 | supplementary laws and extensions | first and second supplements remain separately scoped after admission of the main graph |
+| QR-5 | supplementary laws and extensions | both exact supplementary endpoints and their complete 437-theorem dependency union are independently kernel- and Lean-verified; first admitted for Alpha-v17 checked use, they remain checked in v19 and are not Stable |
 
 Every gate ends with cold replay, false-target mutation tests, exact
 structural/identity metrics, browser replay, synchronized catalog entries,

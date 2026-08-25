@@ -3,19 +3,24 @@
 This explorer is the line-by-line reading room for the complete transitive
 dependency closure of `bertrand_strict`. It uses the same searchable theorem
 pages and layered graph controls as the quadratic-reciprocity explorer, but
-its input is the exact Alpha-v12 catalog rather than an independently curated
+its historical statement, script, and provenance input is the exact Alpha-v12
+catalog; independently sealed current Alpha-v19 evidence overlays that frozen
 campaign stack. A parallel definition-aware edition links 28 conservative
 definitions for primes, binomial coefficients, primorials, factorials,
 powers, valuations, and the other mathematical relations used by the proof.
 
-```{admonition} Complete proof, conservative release status
+```{admonition} Complete independently verified proof and release status
 :class: important
 The map contains all **544 theorem nodes**, **1,917 direct dependency edges**,
 **28,410 authored tactic lines**, and **45 layers** needed by the final strict
-Bertrand theorem. Of those nodes, 203 have checked-use evidence and 341 are
-Alpha `body_checked` rows. The focused endpoint suites independently
-kernel-check complete empty-context certificates; Alpha v12 still withholds
-checked-use from its new rows pending a later promotion review.
+Bertrand theorem. All 544 nodes now have independently verified Alpha-v19
+checked-use authority: 202 belong to unchanged Stable and 342 are Alpha-only
+`alpha_closed` theorems. The complete actual proof bundle is independently
+accepted by both the original intuitionistic kernel and the separately
+compiled Lean verifier. Historical Alpha v12 contained 203 checked-use rows
+and 341 `body_checked` rows in the same graph; those earlier labels remain
+provenance, not current release evidence. Alpha-only checked use does not
+grant Stable membership.
 ```
 
 Permanent explorer tags have the form `BTxxxx`. They are derived from the
@@ -44,6 +49,10 @@ renumber an existing page. The final endpoint is
   <a class="btn btn-outline-primary"
      href="../_static/bertrand-proof-explorer/tag/BT0127.html">
     Open the final strict theorem
+  </a>
+  <a class="btn btn-outline-primary"
+     href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F03">
+    Explore the surrounding prime-distribution campaign
   </a>
 </p>
 
@@ -99,18 +108,28 @@ the complete numbered tactic body. Browser Back and Forward retrace the route.
 
 ## What the map does and does not certify
 
-The builder reads the byte-frozen Alpha-v12 catalog and verifies the hash of
-every source file represented in the closure. It does not execute tactics,
-construct certificates, change enrollment, or grant proof authority. The
-graph is a navigable rendering of evidence established elsewhere:
+The builder reads the byte-frozen Alpha-v12 catalog, verifies the hash of every
+source file represented in the closure, and overlays the separately sealed
+current Alpha-v19 evidence ledger. It does not execute tactics, construct
+certificates, change enrollment, or grant proof authority. The graph is a
+navigable rendering of evidence established elsewhere:
 
 - candidate bodies were checked with their declared dependencies as
   hypotheses;
-- focused recursive-closure tests rebuilt and kernel-checked the final BP01
-  and BP02 empty-context certificates; and
-- Alpha v12 records reviewed provenance while continuing to reject checked
-  replay for its `body_checked` suffix.
+- the complete 544-node proof bundle independently checks every actual body
+  through the unchanged intuitionistic kernel and the compiled Lean verifier;
+- Historical Alpha v18 first granted checked theorem use to the exact complete
+  dependency
+  closure while preserving its 202/342 Stable-versus-Alpha-only membership;
+  current Alpha v19 preserves that evidence and closes all remaining auxiliary
+  Bertrand rows;
+  and
+- historical Alpha v12 preserves the original enrollment indices, authored
+  tactic lines, and its then-current 203-checked/341-body-only evidence split.
 
 For the mathematical narrative, see the {doc}`Bertrand campaign
-<bertrand-campaign>`. For the release distinction, see {doc}`Alpha and Stable
-library editions <library-editions>`.
+<bertrand-campaign>`. For its position among quadratic reciprocity, Lucas,
+Kummer, sums of squares, and future research goals, open the
+{doc}`constructive number-theory research atlas <grand-campaign-atlas>`.
+For the release distinction, see {doc}`Alpha and Stable library editions
+<library-editions>`.

@@ -5,15 +5,18 @@ tree and destinations without touching the faculty server.
 """
 
 from hashlib import sha256
+from html.parser import HTMLParser
+import json
 from pathlib import Path
 import subprocess
+from urllib.parse import parse_qs, urljoin, urlsplit
 
 import pytest
 
 
 ROOT = Path(__file__).resolve().parents[3]
 FRONTIER = ROOT / "book" / "_static" / "constructive-frontier-explorer"
-CANONICAL_HTML_REVISION = "1b95ce228950"
+CANONICAL_HTML_REVISION = "f1c3d3fba013"
 FRONTIER_FAMILIES = (
     "supplementary-laws",
     "kummer",
@@ -64,6 +67,18 @@ def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
     assert 'peano-lab/py/ "_deploy/peano-lab/releases/a-' in output
     assert "research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json" in output
     assert "/proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json" in output
+    for filename in (
+        "supplementary-laws-proof-bundle-v1.json",
+        "lucas-proof-bundle-v1.json",
+        "kummer-proof-bundle-v1.json",
+        "bertrand-proof-bundle-v1.json",
+        "four-square-proof-bundle-v1.json",
+        "two-square-proof-bundle-v1.json",
+        "alpha-v19-residual-proof-bundle-v1.json",
+        "alpha-v19-campaign-frontier-proof-bundle-v1.json",
+    ):
+        assert f"research/arithmetic-library/artifacts/{filename}" in output
+        assert f"/proof-artifacts/{filename}" in output
     assert 'peano-lab/vendor/ "_deploy/peano-lab/vendor/"' in output
     assert "bash scripts/verify_peano_vendor_manifest.sh" in output
     assert "bash scripts/update_peano_app_manifest.sh --check" in output
@@ -165,8 +180,18 @@ def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> Non
     assert '"_deploy/proofs/grand-campaign/"' in output
     assert '"_deploy/proofs/artifacts/quadratic-reciprocity-proof-bundle-v1.json"' in output
     assert '"_deploy/proofs/artifacts/quadratic-reciprocity-closure-receipt.md"' in output
-    assert 'href="grand-campaign/"' in page
+    assert f'href="grand-campaign/?v={CANONICAL_HTML_REVISION}"' in page
     assert 'href="artifacts/quadratic-reciprocity-proof-bundle-v1.json"' in page
+    for filename in (
+        "supplementary-laws-proof-bundle-v1.json",
+        "lucas-proof-bundle-v1.json",
+        "kummer-proof-bundle-v1.json",
+        "bertrand-proof-bundle-v1.json",
+        "four-square-proof-bundle-v1.json",
+        "two-square-proof-bundle-v1.json",
+    ):
+        assert f'"_deploy/proofs/artifacts/{filename}"' in output
+        assert f'href="artifacts/{filename}"' in page
 
 
 def test_proof_explorer_stage_installs_only_the_proof_site_cache_policy() -> None:
@@ -243,8 +268,9 @@ def test_frontier_family_page_matches_original_proof_family_layout(family: str) 
     assert f'&amp;v={CANONICAL_HTML_REVISION}"' in page
     assert 'href="explorer/defined/tag/' in page
     assert f'.html?v={CANONICAL_HTML_REVISION}"' in page
-    assert "dependency-curried kernel-checked candidate body" in page
-    assert "not admitted for checked use or Stable" in page
+    assert "dependency-curried kernel-checked theorem body" in page
+    assert "Independently verified Alpha v19 checked-use theorem family" in page
+    assert "not Stable" in page
     assert "frontier-hero" not in page
     assert "Independent closure experiments" not in page
     assert "<progress" not in page
@@ -377,7 +403,11 @@ def test_frontier_defined_library_restores_original_searchable_reading_surface(
     assert 'data-entry data-kind="theorem"' in page
     assert 'href="graph.html?target=' in page
     assert "conservative definition · not a theorem" in page
-    assert "no checked-use authority" in page
+    if family == "pythagorean-fermat-four":
+        assert "checked-use authorized; not Stable" in page
+        assert "no checked-use authority" not in page
+    else:
+        assert "no checked-use authority" in page
 
 
 def test_public_proof_hub_keeps_original_cards_without_experiment_progress() -> None:
@@ -386,13 +416,150 @@ def test_public_proof_hub_keeps_original_cards_without_experiment_progress() -> 
     assert '<header class="hero">' in page
     assert '<section class="family-grid" aria-label="Proof families">' in page
     assert f'href="assets/proofs.css?v={CANONICAL_HTML_REVISION}"' in page
-    assert 'href="quadratic-reciprocity/"' in page
-    assert 'href="bertrand-postulate/"' in page
+    assert f'href="quadratic-reciprocity/?v={CANONICAL_HTML_REVISION}"' in page
+    assert f'href="bertrand-postulate/?v={CANONICAL_HTML_REVISION}"' in page
     for family in FRONTIER_FAMILIES:
         assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
     assert "candidate-progress" not in page
     assert "33/44" not in page
     assert "80/196" not in page
+
+
+def test_public_proof_hub_links_every_family_to_the_multiscale_campaign() -> None:
+    page = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
+
+    assert f'href="grand-campaign/?v={CANONICAL_HTML_REVISION}"' in page
+    for family in ("F02", "F03", "F04", "F05", "F07", "F08"):
+        assert (
+            f'href="grand-campaign/?view=family&amp;focus={family}'
+            f'&amp;v={CANONICAL_HTML_REVISION}"'
+        ) in page
+    for milestone in ("A02", "A08", "G033", "G034", "G043", "G044", "G061", "G064"):
+        assert (
+            f'href="grand-campaign/?view=goal&amp;focus={milestone}'
+            f'&amp;v={CANONICAL_HTML_REVISION}"'
+        ) in page
+    assert "These are research targets, not claims of completed proofs" in page
+    assert "definition-to-definition arrows" in page
+
+
+@pytest.mark.parametrize(
+    ("landing", "family", "milestone", "root_tag"),
+    (
+        ("quadratic-reciprocity.html", "F05", "G043", "PA00FW"),
+        ("bertrand-postulate.html", "F03", "A02", "BT0127"),
+    ),
+)
+def test_flagship_landings_preserve_design_and_expose_all_research_scales(
+    landing: str, family: str, milestone: str, root_tag: str
+) -> None:
+    page = (ROOT / "deploy" / "proofs" / landing).read_text(encoding="utf-8")
+
+    assert '<header class="family-hero">' in page
+    assert '<section class="view-grid">' in page
+    assert f'view=family&amp;focus={family}&amp;v={CANONICAL_HTML_REVISION}' in page
+    assert f'view=goal&amp;focus={milestone}&amp;v={CANONICAL_HTML_REVISION}' in page
+    assert (
+        f'explorer/defined/graph.html?target={root_tag}'
+        '&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus'
+    ) in page
+    assert f'href="../?v={CANONICAL_HTML_REVISION}"' in page
+    assert f'href="explorer/defined/?v={CANONICAL_HTML_REVISION}"' in page
+    assert f'href="explorer/?v={CANONICAL_HTML_REVISION}"' in page
+    assert (
+        f'href="explorer/defined/tag/{root_tag}.html?'
+        f'v={CANONICAL_HTML_REVISION}"'
+    ) in page
+    assert f'&amp;v={CANONICAL_HTML_REVISION}"' in page
+    assert "Zoom between mathematical scales" in page
+
+
+def test_html_navigation_cache_revision_tracks_current_alpha_catalog_not_asset() -> None:
+    catalog = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v19.json"
+    asset = (
+        ROOT / "book" / "_static" / "pa-proof-explorer" / "defined" / "assets"
+        / "explorer.js"
+    )
+
+    assert sha256(catalog.read_bytes()).hexdigest()[:12] == CANONICAL_HTML_REVISION
+    assert sha256(asset.read_bytes()).hexdigest()[:12] == "1b95ce228950"
+    assert sha256(asset.read_bytes()).hexdigest()[:12] != CANONICAL_HTML_REVISION
+
+
+@pytest.mark.parametrize(
+    ("route", "source", "tag", "family", "milestone"),
+    (
+        (
+            "quadratic-reciprocity",
+            "pa-proof-explorer",
+            "PA00FW",
+            "F05",
+            "G043",
+        ),
+        ("bertrand-postulate", "bertrand-proof-explorer", "BT0127", "F03", "A02"),
+    ),
+)
+def test_flagship_campaign_links_resolve_after_deployment_at_every_depth(
+    route: str, source: str, tag: str, family: str, milestone: str
+) -> None:
+    class Anchors(HTMLParser):
+        def __init__(self) -> None:
+            super().__init__(convert_charrefs=True)
+            self.links: list[str] = []
+
+        def handle_starttag(self, element: str, attrs) -> None:
+            href = dict(attrs).get("href")
+            if element == "a" and href and "grand-campaign/" in href:
+                self.links.append(href)
+
+    campaign_path = (
+        ROOT / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
+    )
+    campaign = json.loads(campaign_path.read_text(encoding="utf-8"))
+    assert (campaign_path.parent / "index.html").is_file()
+    family_ids = {item["id"] for item in campaign["families"]}
+    goal_ids = {item["id"] for item in campaign["nodes"]}
+    root = ROOT / "book" / "_static" / source
+    relatives = (
+        "index.html",
+        "graph.html",
+        f"tag/{tag}.html",
+        "defined/index.html",
+        "defined/graph.html",
+        f"defined/tag/{tag}.html",
+        "defined/definition/PD0004.html",
+    )
+
+    for relative in relatives:
+        parser = Anchors()
+        parser.feed((root / relative).read_text(encoding="utf-8"))
+        assert parser.links, (source, relative)
+        views = set()
+        deployed_page = (
+            "https://bnaskrecki.faculty.wmi.amu.edu.pl"
+            f"/proofs/{route}/explorer/{relative}"
+        )
+        for href in parser.links:
+            target = urlsplit(urljoin(deployed_page, href))
+            assert target.path == "/proofs/grand-campaign/", (relative, href)
+            query = parse_qs(target.query)
+            assert query.get("v") == [CANONICAL_HTML_REVISION], (relative, href)
+            view = query.get("view", ["global"])[0]
+            focus = query.get("focus", [None])[0]
+            views.add(view)
+            if view == "family":
+                assert focus == family and focus in family_ids
+            elif view == "goal":
+                assert focus == milestone and focus in goal_ids
+            elif view == "domain":
+                assert focus == "D02"
+            elif view == "definition":
+                assert focus in campaign["definitions"]
+            else:
+                assert view == "global" and focus is None
+        assert {"global", "domain", "family", "goal"}.issubset(views)
+        if relative.endswith("definition/PD0004.html"):
+            assert "definition" in views
 
 
 def test_proof_explorer_deploy_paths_cannot_be_overridden() -> None:

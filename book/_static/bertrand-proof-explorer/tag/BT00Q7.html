@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT00Q6.html">← bounded_power_valuation_exists</a> <a href="BT00Q8.html">power_valuation_functional →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT00Q7.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT00Q7&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT00Q6.html">← bounded_power_valuation_exists</a><a href="BT00Q8.html">power_valuation_functional →</a></nav>
 <p class="pa-tag">BT00Q7</p><h1>power_valuation_exists</h1>
-<p class="pa-status-candidate">Alpha body-checked · checked-use disabled</p>
+<p class="pa-status-candidate">Alpha v19 checked-use theorem · independently kernel and Lean verified; not Stable</p>
 <p>The value itself supplies a canonical finite bound for power valuation.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by direct introduction and elimination.</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT00RM.html"><code>BT00RM</code> factorial_valuation_exists</a> <a class="pa-theorem-ref" href="BT00T1.html"><code>BT00T1</code> prime_factorial_valuation_eq_legendre_sum</a> <a class="pa-theorem-ref" href="BT00XM.html"><code>BT00XM</code> central_binom_factorial_valuation_balance</a> <a class="pa-theorem-ref" href="BT00YN.html"><code>BT00YN</code> prime_contribution_choice_exists</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="7c98847e1ed9eb68"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> p</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="8f76a4ba81c47239"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="specialize" data-line-id="68cdaa41f22527ea"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT00Q6.html">bounded_power_valuation_exists</a> p</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="5a03d782064ec926"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT00Q6.html">bounded_power_valuation_exists</a> a</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="73315d32488ca969"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT00Q6.html">bounded_power_valuation_exists</a> a</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="exact" data-line-id="bb13c982ebdd21f3"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">exact</span> <a class="pa-theorem-ref" href="BT00Q6.html">bounded_power_valuation_exists</a></code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>917</dd>
 <dt>Layer</dt><dd>23</dd><dt>Lines</dt><dd>6</dd>
-<dt>Evidence</dt><dd>body_checked</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>alpha_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>no</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>
 <dt>Body proof nodes</dt><dd>16</dd>
 <dt>Statement SHA-256</dt><dd><code>e1b175e27a5a13c926aa2215122a3a89d7a9d85fca190895f73279a3b993c306</code></dd>
 <dt>Script SHA-256</dt><dd><code>de7a4164f10b03ae0a388fc600054a3c4c84dbe56d9ac1dda044edcc8b6332cf</code></dd>

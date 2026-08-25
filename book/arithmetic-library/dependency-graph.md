@@ -10,10 +10,15 @@ as the target.
 These 557 nodes are exactly the reciprocity campaign slice: 241 Stable
 prerequisites and 316 Alpha-only specifications. The complete Stable catalog
 has 432 rows, of which 191 are outside this graph. Stable union this slice has
-748 distinct theorem names, while current canonical Alpha v16 has 1,673
-enrolled rows and 885 independently checked-use theorems. Other Alpha layers
-such as K3B, K3C, Bertrand, Lucas, and four squares are separate from this
-focused graph. See {doc}`Alpha and
+748 distinct theorem names, while current canonical Alpha v19 has 1,737
+enrolled rows, all independently checked for use. Historical Alpha v18 first
+closed the Lucas, Kummer, Bertrand, four-square, and two-square flagship
+families; Alpha v19 additionally closes all residual obligations and adds
+complete linear congruences, prime two-square classification, primes one
+modulo four, and Pythagorean forward construction. Those families and the
+K3B/K3C layers remain separate from this focused graph. Historical v16 first
+closed the QR slice; historical v17 first closed both supplementary laws.
+See {doc}`Alpha and
 Stable library editions <library-editions>`.
 ```
 
@@ -39,6 +44,9 @@ the kernel proof rules are documented separately in the
   </a>
   <a class="btn btn-outline-primary" href="../_static/pa-proof-explorer/tag/PA00FW.html">
     Open the PA00FW proof page
+  </a>
+  <a class="btn btn-outline-primary" href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F05">
+    Place reciprocity in the complete research atlas
   </a>
 </p>
 
@@ -132,7 +140,7 @@ exact dependency record.
 
 Node color and the details panel preserve the same status distinctions as the
 {doc}`proof explorer <proof-explorer>`. The live closure contains 241 Stable
-theorems and 316 Alpha-only specifications. Current Alpha v16 records all 316
+theorems and 316 Alpha-only specifications. Current Alpha v19 retains all 316
 Alpha-only QR results as `alpha_closed`: the earlier
 `mod_eq_add_cancel_left` overlap was already closed, and the remaining 314
 historically body-only ancestors plus the formerly pending root were promoted
@@ -149,7 +157,8 @@ the 557 nodes, 1,787 edges and 45 layers are unchanged.
 
 The embedded generated pages retain historical `public`/`candidate` source
 provenance and the 241/316 Stable/Alpha-only membership split, while their
-separate current Alpha-v16 evidence labels report the actual closed status.
+separate historical Alpha-v16 evidence labels report the QR closure that
+remains checked in current Alpha v19.
 A path, graph hash, or green body-check
 badge supplies provenance, never an axiom or theorem authority.
 
@@ -157,3 +166,7 @@ For the exact statements and numbered tactic scripts, use the
 {doc}`native PA proof explorer <proof-explorer>`. For the language and trust
 boundary, continue with {doc}`Language, notation, and trust
 <language-and-trust>`.
+For the relationship between this QR graph, the other completed proof
+families, shared mathematical definitions, and the open programme, continue
+with the {doc}`constructive number-theory research atlas
+<grand-campaign-atlas>`.

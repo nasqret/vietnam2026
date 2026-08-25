@@ -65,10 +65,23 @@ that size.
 Every checked library theorem has a genuine certificate-to-Lean translation:
 
 ```console
+python3 scripts/export_peano_lean.py add_comm --format compact --package-dir /private/tmp/peano-lean-addition --verify
+python3 scripts/export_peano_lean.py prime_unbounded --format pretty
 python3 scripts/export_peano_lean.py add_comm --output /private/tmp/add_comm.lean --verify
 python3 scripts/export_peano_lean.py mul_comm --output /private/tmp/mul_comm.lean --verify
 python3 scripts/export_peano_lean.py prime_unbounded --output /private/tmp/prime_unbounded.lean --verify
 ```
+
+The compact package places its readable mathematical statement in a short
+`PeanoLab/Generated/<TheoremName>_<digest>/Theorem.lean` and its complete,
+independently checked proof in the neighboring `Certificate.lean`. A shared
+`PeanoLab/Presentation.lean` supplies conservative witness-preserving
+definitions such as `Lt`, `Dvd`, and `Prime`; Lean checks their exact expansion
+against the original Peano statement. `pa lean <name>` defaults to this
+theorem-first bounded presentation, while `pa lean full <name>` retains the
+complete machine-generated audit view. The generated manifest records exact
+content identities without turning hashes or Python acceptance into axioms.
+See [`docs/LEAN_CERTIFIED_PRESENTATION.md`](../docs/LEAN_CERTIFIED_PRESENTATION.md).
 
 Complete canonical proof DAGs, including unregistered constructive research
 roots, can also become ordinary Lean theorem modules:
@@ -130,11 +143,35 @@ The exact 2,790,229-byte artifact has SHA-256
 The reusable guarded compiler is
 `peano_lab.library.quadratic_reciprocity_closure`; its complete audited
 receipt is `research/arithmetic-library/quadratic-reciprocity-closure-receipt.md`.
-The separately reviewed immutable Alpha-v16 evidence promotion admits exactly
-315 genuinely closed quadratic-reciprocity results while preserving every
-1,673-row enrollment, all earlier sealed editions, and the default 432-theorem
-Stable channel. Alpha now has 885 checked-use theorems and 788 body-only rows;
-body-only research evidence never supplies a closed theorem certificate.
+The historical immutable Alpha-v16 evidence promotion first admitted exactly
+315 genuinely closed quadratic-reciprocity results, and historical v17 added
+both complete supplementary laws. Historical **Alpha v18** then closed strict
+Bertrand, multidigit Lucas, both Kummer endpoints, Lagrange's four-square
+theorem, and the complete all-natural two-square classification. Current
+immutable **Alpha v19** preserves all **1,673** historical statements, closes
+their remaining **84** body-only obligations, and appends **64** independently
+proved results: **44** Pythagorean forward theorems, **one** exact prime
+two-square equivalence, **nine** complete linear-congruence theorems, and
+**ten** theorems culminating in infinitely many primes one modulo four.
+Every one of its **1,737 theorems** and **5,779 dependency edges** now has
+checked-use authority: **432 Stable**, **1,305 Alpha-only**, and **zero**
+unchecked or pending rows. The **432-theorem default Stable channel remains
+unchanged**. The new **475-node residual** and **545-node campaign-frontier**
+proof bundles, together with every historical flagship artifact, are accepted
+independently by the original constructive kernel and compiled Lean verifier.
+
+Reproduce the current release and its independent verification with:
+
+```console
+make peano-library-alpha-v19
+make peano-library-alpha-v19-check
+```
+
+The exact fully checked Alpha-v19 evidence identity is
+`905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7`.
+Primitive Pythagorean inverse classification and unconditional Fermat
+exponent-four descent remain open; the checked forward constructor does not
+silently assert either stronger claim.
 
 ## Browser startup and caching
 
@@ -192,23 +229,28 @@ pa lib alpha quadratic_reciprocity_combined
 pa lib alpha check quadratic_reciprocity_combined
 pa lean add_comm
 pa lean alpha quadratic_reciprocity_combined
+pa lib alpha linear_congruence_solvable_iff_gcd_divides
+pa lean alpha prime_is_two_squares_iff_two_or_one_mod_four
+pa proof alpha infinitely_many_primes_one_mod_four
 ```
 
 Bare `pa lib` is a lightweight inventory operation: it parses and
 pretty-prints every stored closed statement without replaying certificates.
-`pa lib <name>` still replays that one theorem before displaying its detailed
-check, and `pa lean <name>` likewise obtains the checked theorem on demand.
-Listing names therefore cannot grant theorem authority or accidentally launch
-a full-library replay.
+`pa lib <name>` still replays that one Stable theorem before displaying its
+detailed check. The default `pa lean <name>` view is now an authenticated,
+theorem-first preview; only its explicit `full` view or a requested terminal
+export constructs a certificate. Listing or safely previewing names cannot
+grant theorem authority or accidentally launch a full-library replay.
 
-The separate opt-in `pa lib alpha` inventory reports the immutable v16
-evidence partition without opening its proof artifact. An Alpha theorem card
-also remains a lightweight evidence inspection; only the explicit
-`pa lib alpha check <name>` and `pa lean alpha <name>` operations load and
-check its actual empty-context certificate. In particular, 788
-dependency-curried `body_checked` rows cannot be replayed or exported as
-closed theorems, and the ordinary `pa lib`, `use`, and restricted model
-authorities keep their unchanged Stable/public defaults.
+The separate opt-in `pa lib alpha` inventory reports the immutable v19
+partition of **1,737 checked entries** without opening a proof artifact. Alpha
+theorem cards, `pa lean alpha <name>`, and `pa proof alpha <name>` remain
+lightweight authenticated inspections. Explicit `pa lib alpha check <name>`
+and `pa lean alpha full <name>` replay only bounded roots; closures exceeding
+128 theorem entries are refused before certificate loading and redirected to
+the resource-bounded terminal exporter. No body-only Alpha-v19 entry exists,
+and ordinary `pa lib`, `use`, and restricted model authorities retain their
+unchanged Stable/public defaults.
 
 Checked library facts can also be composed inside an ordinary live proof:
 

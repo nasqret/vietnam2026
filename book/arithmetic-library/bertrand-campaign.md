@@ -15,15 +15,28 @@ $$
 \bigl(\operatorname{Prime}(p)\land n<p<2n\bigr).
 $$
 
-```{admonition} Current evidence boundary
+```{admonition} Current Alpha-v19 evidence and historical enrollment boundary
 :class: important
-Bertrand's postulate is **fully proved in the repository**. The focused BP01
-and BP02 audits kernel-check empty-context certificates for
-`bertrand_closed_upper` and `bertrand_strict`. Current Alpha v12 preserves the
-sealed 1,123-row Alpha-v11 parent and enrolls the complete 180-row dependency
-closure in nine exact twenty-row microbatches. Enrollment remains deliberately
-conservative: every v12 suffix row is `body_checked`, has no checked-use
-permission, and is unavailable through edition replay until a later promotion.
+Bertrand's postulate is **fully proved and admitted for independently checked
+Alpha use**. Historical immutable Alpha v18 first binds the exact
+**544-node, 1,917-edge**
+self-contained constructive proof bundle for `bertrand_strict`; every node in
+its complete dependency closure is checked by the original intuitionistic
+kernel and the independently compiled Lean verifier. Conservative proof-body
+sharing additionally produces an original-kernel-accepted ordinary
+empty-context strict-root certificate of 201,285 structural nodes and only
+45,254 distinct proof objects, below every unchanged replay limit. Both
+`bertrand_closed_upper` and `bertrand_strict` have actual `alpha_closed`
+checked-use authority. Stable remains the unchanged 432-theorem default.
+
+The Alpha-v12 numbers, body-only labels, and tranche receipts below are
+**historical first-enrollment checkpoints**. That sealed release preserved its
+1,123-row Alpha-v11 parent and appended the final 180 reviewed proof bodies in
+nine twenty-row microbatches without granting checked use. Historical Alpha
+v18 later closes every exact strict-root ancestor while retaining 67 auxiliary
+Bertrand rows outside that dependency slice as `body_checked`. Current Alpha
+v19 independently closes all 67 auxiliary rows as well: the entire historical
+Bertrand development now has checked-use authority, without Stable promotion.
 ```
 
 The binding statement, logic, validation, and release rules are frozen in
@@ -82,7 +95,7 @@ bounded_prime_interval_search(l,u)
 Consequently, the negative branch is explicit data. The proof never turns
 $\neg\neg\exists p$ into $\exists p$.
 
-## Current Alpha v12 layer
+## Current Alpha v12 layer (historical first-enrollment checkpoint)
 
 Alpha v12 is an additive child of the sealed 1,123-row Alpha v11 ledger. Alpha
 v8 remains the sealed Choose/central-binomial parent, v9 the sealed Primorial
@@ -108,8 +121,9 @@ v11 the sealed B4-capstone/B5-support parent.
 | Alpha-v11 duplicate-free / Choose interval / central upper / B4 / B5-support rows | 10 + 10 + 6 + 7 + 5 |
 | Alpha-v12 B6 support plus B5--BP02 completion rows | 43 + 137 |
 
-All 401 campaign additions are `body_checked`; checked use remains
-unchanged at 570. The current enrollment root is
+At the sealed Alpha-v12 checkpoint, all 401 campaign additions were
+`body_checked` and checked use remained unchanged at 570. Its historical
+enrollment root is
 `f763b9fc3717ad76c7e259d67c3beeadfdaca554bbaaeb3ecd2e55329edf937b`.
 The full edition identity is
 `bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061`.
@@ -119,7 +133,7 @@ The ordered-specification, membership, evidence, and channel-pointer roots are
 `de8a6a57b828c2b3893c6fb31f2611d5180f8de4d1002a21a681739616b761b5`,
 and
 `7ad0c942a2239532696f5d99ee1dc985e13302cf73b4637497b879871d05752c`.
-The deterministic channel pointer is
+The deterministic historical channel pointer is
 `artifacts/peano-library/channels-v12.json`; its catalog, metrics, and reduced
 graph are the matching `catalog-v12.json`, `metrics-v12.json`, and
 `dependency-graph-v12.mmd`.
@@ -190,8 +204,11 @@ rejected by the focused gate.
 
 Every direct dependency has a removal or Cut-mutation test, every displayed
 statement has an exact hash, and complete proof traversals find zero `DNE`.
-These local closures establish feasibility; the Alpha evidence remains
-body-only until the versioned two-process cold receipt is accepted.
+At the historical enrollment checkpoint these local closures established
+feasibility while their Alpha evidence remained body-only. Exact strict-root
+ancestors first acquired independently verified checked-use authority in
+historical Alpha v18; current Alpha v19 additionally closes every remaining
+auxiliary row.
 
 ### Factorial valuations (part of binding gate B2)
 
@@ -300,10 +317,12 @@ valuation exponent. They were authored in commits `bb24543` and `2f41a97`.
 
 All twenty-one rows were published in Alpha v6 by `5b189f0`. Their exact
 dependency-curried bodies replay in the intuitionistic kernel and mutations
-fail closed. Each nevertheless has evidence `body_checked`,
-`checked_use=false`, a null proof tag, and null empty-context closure metadata.
-The local closure measurements above are feasibility evidence and are not
-empty-context admission.
+fail closed. In the historical Alpha-v6 release, each had evidence
+`body_checked`, `checked_use=false`, a null proof tag, and null empty-context
+closure metadata. Those local closure measurements were then feasibility
+evidence, not empty-context admission; exact strict-root ancestors first
+closed in historical Alpha v18 and remain independently checked in current
+Alpha v19.
 
 ## Alpha v7 recurrence, equality, and $H/J$ layer
 
@@ -433,9 +452,12 @@ under an explicit no-Bertrand certificate, every prime divisor of the central
 binomial coefficient is constructively confined to the three live ranges used
 by the eventual five-range factorization.
 
-All thirty-eight rows remain body evidence only. Their source blocks bind to
+At the historical Alpha-v11 checkpoint, all thirty-eight rows carried body
+evidence only. Their source blocks bind to
 five subordinate RFCs and retain exact focused empty-context receipts, but
-Alpha enrollment itself grants no checked use and changes no Stable row.
+that historical Alpha enrollment itself granted no checked use and changed no
+Stable row. Exact strict-root ancestors were independently promoted later in
+historical Alpha v18; current Alpha v19 closes the remaining auxiliary rows.
 
 ## Alpha v12 complete Bertrand proof
 
@@ -452,9 +474,13 @@ bertrand_strict       : 1 < n  -> exists p, Prime(p) /\ n < p /\ p <  n+n
 ```
 
 The focused BP01 and BP02 suites independently rebuild their complete
-empty-context graphs and kernel-check the final certificates. Alpha v12 records
-the same exact source bodies and provenance as `body_checked` evidence only;
-it intentionally leaves checked-use and Stable unchanged.
+empty-context graphs and kernel-check the final certificates. Historical Alpha
+v12 recorded the same exact source bodies and provenance as `body_checked`
+evidence only and intentionally left checked-use and Stable unchanged. The
+later complete Alpha-v18 proof bundle independently closes every strict-root
+dependency and grants both exact endpoints checked-use authority. Current
+Alpha v19 preserves that bundle and independently closes all additional
+Bertrand rows; Stable membership remains unchanged.
 
 ## Dependency roadmap
 

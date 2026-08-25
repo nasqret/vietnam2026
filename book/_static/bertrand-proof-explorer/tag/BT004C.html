@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT0046.html">← dvd_to_mod_zero</a> <a href="BT004D.html">bezout_mod_right →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT004C.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT004C&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT0046.html">← dvd_to_mod_zero</a><a href="BT004D.html">bezout_mod_right →</a></nav>
 <p class="pa-tag">BT004C</p><h1>bezout_mod_left</h1>
-<p class="pa-status-public">Stable · empty-context checked</p>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
 <p>A balanced Bezout identity selects the right coefficient modulo the left modulus.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by direct introduction and elimination.</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT004F.html"><code>BT004F</code> binary_crt</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="c21bc239e54811c5"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> m</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="ff6ea2d41d101d66"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="13dd5905c88347aa"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> xp</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="3049a9d904a65512"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> yp</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="c7b65c9ff82dcaf4"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> xn</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="intro" data-line-id="6fcef135a8a26be6"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">intro</span> yn</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="intro" data-line-id="83b7778e96ec8373"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="exists" data-line-id="a4a0afc0699abcb0"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">exists</span> xp</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exists" data-line-id="fdb91f35180e1870"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exists</span> xn</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="trans" data-line-id="7689f8ec3723619c"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">trans</span> m * xp + n * yp</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="apply" data-line-id="c57db8b007ff2ddc"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0002.html">add_comm</a></code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="trans" data-line-id="720400fd7f26e174"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">trans</span> 1 + (m * xn + n * yn)</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="exact" data-line-id="276d5432658c3ba8"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">exact</span> h</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="trans" data-line-id="47138523aeea60f3"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">trans</span> 1 + (n * yn + m * xn)</code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="congr" data-line-id="18db95599c5502e9"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">congr</span></code></li><li class="pa-proof-line" id="proof-line-0016" data-line="16" data-tactic="refl" data-line-id="393573eb385f93f9"><a class="pa-line-number" href="#proof-line-0016">0016</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0017" data-line="17" data-tactic="apply" data-line-id="c86e7cb7abc795a7"><a class="pa-line-number" href="#proof-line-0017">0017</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0002.html">add_comm</a></code></li><li class="pa-proof-line" id="proof-line-0018" data-line="18" data-tactic="symm" data-line-id="e09359f5b3b47409"><a class="pa-line-number" href="#proof-line-0018">0018</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0019" data-line="19" data-tactic="apply" data-line-id="00d0ac8d7741e0c3"><a class="pa-line-number" href="#proof-line-0019">0019</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0003.html">add_assoc</a></code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>152</dd>
 <dt>Layer</dt><dd>2</dd><dt>Lines</dt><dd>19</dd>
-<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
 <dt>Body proof nodes</dt><dd>n/a</dd>
 <dt>Statement SHA-256</dt><dd><code>7c933e89b5e783e0fe57654937ee8202b8b0a917184b23463fccbda85de308b0</code></dd>
 <dt>Script SHA-256</dt><dd><code>671069595acda0bd92eab5e5c6be80775a4471d0374c93a9f93f7ef9335dc8cc</code></dd>

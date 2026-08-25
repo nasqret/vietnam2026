@@ -29,6 +29,23 @@ QR_BUNDLE_SOURCE = (
     / "quadratic-reciprocity-proof-bundle-v1.json"
 )
 QR_BUNDLE_RELEASE_PATH = "proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json"
+PROOF_BUNDLE_FILENAMES = (
+    "quadratic-reciprocity-proof-bundle-v1.json",
+    "supplementary-laws-proof-bundle-v1.json",
+    "lucas-proof-bundle-v1.json",
+    "kummer-proof-bundle-v1.json",
+    "bertrand-proof-bundle-v1.json",
+    "four-square-proof-bundle-v1.json",
+    "two-square-proof-bundle-v1.json",
+    "alpha-v19-residual-proof-bundle-v1.json",
+    "alpha-v19-campaign-frontier-proof-bundle-v1.json",
+)
+PROOF_BUNDLE_SOURCES = {
+    f"proof-artifacts/{filename}": (
+        LAB.parent / "research" / "arithmetic-library" / "artifacts" / filename
+    )
+    for filename in PROOF_BUNDLE_FILENAMES
+}
 
 
 def test_shell_has_its_own_build_history_and_deep_link_contracts() -> None:
@@ -72,13 +89,9 @@ def test_application_release_is_content_addressed_and_complete() -> None:
         for path in (LAB / "py").rglob("*.py")
         if "tests" not in path.relative_to(LAB / "py").parts
     }
-    assert set(entries) == package_files | {"worker.js", QR_BUNDLE_RELEASE_PATH}
+    assert set(entries) == package_files | {"worker.js"} | set(PROOF_BUNDLE_SOURCES)
     for relative_path, expected in entries.items():
-        source = (
-            QR_BUNDLE_SOURCE
-            if relative_path == QR_BUNDLE_RELEASE_PATH
-            else LAB / relative_path
-        )
+        source = PROOF_BUNDLE_SOURCES.get(relative_path, LAB / relative_path)
         actual = hashlib.sha256(source.read_bytes()).hexdigest()
         assert actual == expected
 
@@ -98,7 +111,8 @@ def test_worker_mounts_the_complete_python_surface() -> None:
     assert "driver.run_line_result(line)" in WORKER
     assert 'failed = result.failed === true' in WORKER
     assert "driver.banner()" in WORKER
-    assert f'"{QR_BUNDLE_RELEASE_PATH}"' in WORKER
+    for relative_path in PROOF_BUNDLE_SOURCES:
+        assert f'"{relative_path}"' in WORKER
     assert "const artifactsPromise = fetchProofArtifacts()" in WORKER
 
 
@@ -131,6 +145,20 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
         "pa prove forall n. 0 + n = n",
         "pa prove forall n m. S(n) + m = S(n + m)",
         "pa prove forall n m. n + m = m + n",
+    ):
+        assert f'data-cmd="{command}"' in INDEX
+
+
+def test_shell_connects_checked_alpha_research_to_multiscale_proof_atlas() -> None:
+    assert 'aria-label="Course and research navigation"' in INDEX
+    assert '<a href="/proofs/?v=f1c3d3fba013">Proof library</a>' in INDEX
+    assert '<a href="/proofs/grand-campaign/?v=f1c3d3fba013">Research atlas</a>' in INDEX
+    assert '<span class="lbl">research:</span>' in INDEX
+    for command in (
+        "pa lib alpha",
+        "pa lib alpha infinitely_many_primes_one_mod_four",
+        "pa lib alpha linear_congruence_solvable_iff_gcd_divides",
+        "pa lib alpha prime_is_two_squares_iff_two_or_one_mod_four",
     ):
         assert f'data-cmd="{command}"' in INDEX
 

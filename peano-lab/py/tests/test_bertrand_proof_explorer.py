@@ -10,12 +10,18 @@ import sys
 
 
 REPO = Path(__file__).resolve().parents[3]
+if str(REPO / "peano-lab" / "py") not in sys.path:
+    sys.path.insert(0, str(REPO / "peano-lab" / "py"))
+
+from peano_lab.library import editions_v18 as proof_alpha  # noqa: E402
+from peano_lab.library import editions_v19 as current_alpha  # noqa: E402
+
 EXPLORER = REPO / "book" / "_static" / "bertrand-proof-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v12.json"
 BUILDER = REPO / "scripts" / "build_bertrand_proof_explorer.py"
 BOOK_PAGE = REPO / "book" / "arithmetic-library" / "bertrand-proof-explorer.md"
 EXPECTED_AGGREGATE = (
-    "4c909e5c361e09e132de5124596c0663a6896859a72f2227a1127c779c1725a6"
+    "b721fbc48807d602b8edba15c2fc65877532b42abe9e6ee1e39e14d0275c1850"
 )
 EXPECTED_CATALOG_SHA256 = (
     "825909e057492de87ef08208451c3475396ca009179c513457b05b57f7e2f109"
@@ -73,8 +79,28 @@ def test_manifest_freezes_the_complete_strict_closure() -> None:
     assert _sha256(CATALOG) == EXPECTED_CATALOG_SHA256
     assert manifest["schema"] == "peano-lab-bertrand-proof-explorer-manifest-v1"
     assert manifest["theorem_count"] == 544
-    assert manifest["public_count"] == 203
-    assert manifest["candidate_count"] == 341
+    assert manifest["public_count"] == 202
+    assert manifest["candidate_count"] == 342
+    assert manifest["alpha_edition_version"] == "v19"
+    assert manifest["alpha_edition_identity_sha256"] == (
+        current_alpha.ALPHA_V19_IDENTITY_SHA256
+    )
+    assert manifest["alpha_edition_checked_use_count"] == 1737
+    assert manifest["proof_edition_version"] == "v18"
+    assert manifest["proof_edition_identity_sha256"] == (
+        proof_alpha.ALPHA_V18_IDENTITY_SHA256
+    )
+    assert manifest["proof_edition_checked_use_count"] == 1589
+    assert manifest["graph_checked_use_count"] == 544
+    assert manifest["graph_stable_closed_count"] == 202
+    assert manifest["graph_alpha_closed_count"] == 342
+    assert manifest["graph_newly_promoted_count"] == 330
+    assert manifest["source_scope_policy"] == (
+        "historical_origin_not_current_release_authority"
+    )
+    assert manifest["source_edition_version"] == "v12"
+    assert manifest["source_checked_use_count"] == 203
+    assert manifest["source_body_checked_count"] == 341
     assert manifest["edge_count"] == 1917
     assert manifest["layer_count"] == 45
     assert manifest["formal_line_count"] == 28410
@@ -91,6 +117,10 @@ def test_graph_is_the_full_dependency_closure() -> None:
     graph = _load(EXPLORER / "api" / "graph.json")
     tags = [node["tag"] for node in graph["nodes"]]
     assert len(tags) == len(set(tags)) == 544
+    assert graph["graph_checked_use_count"] == 544
+    assert graph["graph_stable_closed_count"] == 202
+    assert graph["graph_alpha_closed_count"] == 342
+    assert all(node["alpha_checked_use"] is True for node in graph["nodes"])
     assert graph["terminals"] == ["BT0127"]
     assert len(graph["adjacency"]["BT0127"]["ancestors"]) == 543
     assert len(graph["adjacency"]["BT0127"]["critical_root_path"]) == 45
@@ -109,7 +139,7 @@ def test_graph_is_the_full_dependency_closure() -> None:
     assert edge_pairs == adjacency_pairs
 
 
-def test_corpus_matches_alpha_v12_statements_scripts_and_indices() -> None:
+def test_corpus_preserves_v12_sources_and_overlays_actual_v19_evidence() -> None:
     catalog = _load(CATALOG)
     corpus = _load(EXPLORER / "api" / "corpus.json")
     catalog_by_name = {row["name"]: row for row in catalog["theorems"]}
@@ -119,11 +149,28 @@ def test_corpus_matches_alpha_v12_statements_scripts_and_indices() -> None:
         assert [line["text"] for line in row["lines"]] == source["script"]
         assert row["enrollment_index"] == source["enrollment_index"]
         assert row["tag"].startswith("BT")
-        assert row["checked_use"] == source["checked_use"]
+        current = current_alpha.ALPHA_EDITION.by_name[row["name"]]
+        assert row["checked_use"] is True
+        assert row["alpha_checked_use"] is True
+        assert row["proof_edition_version"] == "v18"
+        assert row["alpha_evidence"] == current.evidence.value
+        assert row["evidence_status"] == current.evidence.value
+        assert row["stable_member"] is (
+            current.membership is current_alpha.Membership.STABLE
+        )
+        assert row["scope"] == ("public" if row["stable_member"] else "candidate")
+        assert row["source_edition_version"] == "v12"
+        assert row["source_checked_use"] == source["checked_use"]
+        assert row["source_evidence_status"] == source["evidence_status"]
     root = next(row for row in corpus["theorems"] if row["name"] == "bertrand_strict")
     assert root["tag"] == "BT0127"
     assert root["enrollment_index"] == 1302
     assert root["scope"] == "candidate"
+    assert root["alpha_evidence"] == "alpha_closed"
+    assert root["alpha_checked_use"] is True
+    assert root["stable_member"] is False
+    assert root["source_evidence_status"] == "body_checked"
+    assert root["source_checked_use"] is False
 
 
 def test_every_explorer_page_and_alias_exists() -> None:
@@ -144,7 +191,13 @@ def test_interactive_surface_defaults_to_the_complete_map() -> None:
     assert '<option value="prerequisites" selected>' in graph_html
     assert "all 544 theorem" in graph_html
     assert "literal 1,917-edge graph" in graph_html
+    assert "pa-bertrand-release-evidence" in graph_html
+    assert "Alpha v19 checked-use theorem; independently kernel and Lean verified; not Stable" in graph_html
+    assert "body-checked</span>" not in graph_html
     assert "Open the complete interactive proof map" in index_html
+    assert "Stable checked-use (202)" in index_html
+    assert "Alpha-only checked-use (342)" in index_html
+    assert "Body-checked (341)" not in index_html
     assert "bertrand_strict" in index_html
     assert "BT0127" in index_html
     assert book_page.count("graph.html?view=prerequisites") == 3
@@ -158,6 +211,14 @@ def test_root_page_exposes_exact_endpoint_and_provenance() -> None:
     assert "1bb7045f9b033e6e6167b329525d4833f66baab67bb5e846c3f572adbbb7ec0c" in source
     assert "proof-line-0039" in source
     assert "bertrand_closed_upper" in source
+    assert "Alpha v19 checked-use theorem" in source
+    assert "<dt>Current Alpha edition</dt><dd>v19</dd>" in source
+    assert "<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>" in source
+    assert "historical Alpha-v18 proof bundle independently checks" in source
+    assert "<dt>Current release evidence</dt><dd>alpha_closed</dd>" in source
+    assert "<dt>Checked theorem use</dt><dd>yes</dd>" in source
+    assert "<dt>Stable membership</dt><dd>no</dd>" in source
+    assert "<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>" in source
 
 
 def test_explorer_contains_no_classical_tactic() -> None:
@@ -171,3 +232,23 @@ def test_explorer_contains_no_classical_tactic() -> None:
         command == "dne" or command.startswith("dne ")
         for command in commands
     )
+
+
+def test_every_bertrand_proof_page_links_its_definition_dag_and_research_atlas() -> None:
+    revision = "f1c3d3fba013"
+    for relative in ("index.html", "graph.html"):
+        page = (EXPLORER / relative).read_text(encoding="utf-8")
+        assert f'href="../../grand-campaign/?v={revision}"' in page
+        assert f'view=domain&amp;focus=D02&amp;v={revision}' in page
+        assert f'view=family&amp;focus=F03&amp;v={revision}' in page
+        assert f'view=goal&amp;focus=A02&amp;v={revision}' in page
+
+    corpus = _load(EXPLORER / "api" / "corpus.json")
+    for theorem in corpus["theorems"]:
+        tag = theorem["tag"]
+        page = (EXPLORER / "tag" / f"{tag}.html").read_text(encoding="utf-8")
+        assert f'href="../../../grand-campaign/?v={revision}"' in page
+        assert f'view=family&amp;focus=F03&amp;v={revision}' in page
+        assert f'view=goal&amp;focus=A02&amp;v={revision}' in page
+        assert f'href="../defined/tag/{tag}.html"' in page
+        assert f'href="../defined/graph.html?target={tag}&amp;view=neighborhood' in page

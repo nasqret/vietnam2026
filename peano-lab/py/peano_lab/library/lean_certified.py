@@ -5,6 +5,9 @@ PeanoLab.Codec companion. It reconstructs the exact target and certificate
 as Lean syntax, checks the certificate again inside Lean, and applies the
 companion's proved semantic soundness theorem. Neither Python's certificate
 acceptance nor a tactic script is treated as an axiom.
+
+The self-contained certificate format remains available for complete audits;
+human-facing presentation and reusable checked modules are layered separately.
 """
 
 from __future__ import annotations
@@ -48,7 +51,6 @@ from .lean import (
     _script_lines,
     _validate_theorem_name,
     formula_to_lean,
-    live_lean_url,
 )
 from .proof_bundle import (
     ProofBundle,
@@ -330,7 +332,11 @@ def export_checked_theorem(
         lines.extend((f"#print axioms «{name}»", ""))
     lines.append("end PeanoLab")
     code = "\n".join(lines)
-    return LeanExport(name, statement, code, live_lean_url(code))
+    # Certified modules import the local, independently verified companion.
+    # Live Lean cannot resolve that import, and percent-encoding a complete
+    # certificate can allocate multiple additional megabytes for no usable
+    # result. Statement-only exports retain their separate Live Lean link.
+    return LeanExport(name, statement, code, "")
 
 
 def export_checked_bundle_theorem(
@@ -439,7 +445,8 @@ def export_checked_bundle_theorem(
         lines.extend((f"#print axioms «{name}»", ""))
     lines.append("end PeanoLab")
     code = "\n".join(lines)
-    return LeanExport(name, statement, code, live_lean_url(code))
+    # Bundle proofs are local-only for the same reason as single certificates.
+    return LeanExport(name, statement, code, "")
 
 
 __all__ = [

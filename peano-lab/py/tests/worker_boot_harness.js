@@ -220,6 +220,14 @@ async function missingProofArtifactFailsBeforeAnyMount() {
   assert.ok(listedFiles.length > 20);
   assert.deepStrictEqual(listedProofArtifacts, [
     "proof-artifacts/quadratic-reciprocity-proof-bundle-v1.json",
+    "proof-artifacts/supplementary-laws-proof-bundle-v1.json",
+    "proof-artifacts/lucas-proof-bundle-v1.json",
+    "proof-artifacts/kummer-proof-bundle-v1.json",
+    "proof-artifacts/bertrand-proof-bundle-v1.json",
+    "proof-artifacts/four-square-proof-bundle-v1.json",
+    "proof-artifacts/two-square-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v19-residual-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v19-campaign-frontier-proof-bundle-v1.json",
   ]);
   await successfulBootIsConcurrentAndOrdered();
   await failureChoiceIsDeterministicAndAtomic();

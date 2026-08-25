@@ -840,3 +840,23 @@ def test_explorer_has_only_local_runtime_assets_and_no_html_injection_sinks() ->
         r'!document\.body\.classList\.contains\("pa-proof-site"\)\) return;',
         js[ready:first_install],
     )
+
+
+def test_every_quadratic_reciprocity_proof_page_navigates_all_campaign_scales() -> None:
+    revision = "f1c3d3fba013"
+    root_pages = ("index.html", "foundations.html", "graph.html")
+    for relative in root_pages:
+        page = (EXPLORER / relative).read_text(encoding="utf-8")
+        assert f'href="../../grand-campaign/?v={revision}"' in page
+        assert f'view=domain&amp;focus=D02&amp;v={revision}' in page
+        assert f'view=family&amp;focus=F05&amp;v={revision}' in page
+        assert f'view=goal&amp;focus=G043&amp;v={revision}' in page
+
+    for theorem in _records():
+        tag = theorem["tag"]
+        page = (EXPLORER / "tag" / f"{tag}.html").read_text(encoding="utf-8")
+        assert f'href="../../../grand-campaign/?v={revision}"' in page
+        assert f'view=family&amp;focus=F05&amp;v={revision}' in page
+        assert f'view=goal&amp;focus=G043&amp;v={revision}' in page
+        assert f'href="../defined/tag/{tag}.html"' in page
+        assert f'href="../defined/graph.html?target={tag}&amp;view=neighborhood' in page

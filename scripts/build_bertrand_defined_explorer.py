@@ -2,10 +2,13 @@
 """Build the conservative, definition-aware edition of the Bertrand proof.
 
 The immutable input is the already generated, complete 544-theorem Bertrand
-proof explorer.  Statements and the propositions of ``have``/``suffices``
-commands are compacted by a reviewed notation adapter, which verifies exact
-expanded-AST equivalence.  Neither this script nor its output checks proofs,
-changes theorem authority, or writes to the explicit explorer.
+proof explorer: frozen Alpha-v12 statements and scripts plus independently
+sealed current Alpha-v19 release evidence and the historical Alpha-v18
+proof-bearing release. Statements and the propositions of
+``have``/``suffices`` commands are compacted by a reviewed notation adapter,
+which verifies exact expanded-AST equivalence. Neither this script nor its
+output checks proofs, changes theorem authority, or writes to the explicit
+explorer.
 
 ``peano_lab.library.bertrand_defined_edition`` supplies the campaign-specific
 conservative definitions.  Its absence or an incomplete campaign registry is
@@ -48,15 +51,32 @@ EXPECTED = {
     "corpus_schema": "peano-lab-bertrand-proof-corpus-v1",
     "graph_schema": "peano-lab-bertrand-proof-graph-v1",
     "corpus_sha256": (
-        "dddbb6dbbc0d57611fb46c30711c335b430593740df830eb47e5c399e4239d9f"
+        "4361796ed5689c22cc85c37a0e6496b37800b9861c1bbab6738f1bc5d283d0b6"
     ),
     "graph_sha256": (
-        "ccca81cee158faaeb338f6abe2034193b39ea8403bddc248f98048f31b705ba7"
+        "ca323a38b0c6098759559c2c12ec5e4b96531f47a66087ab4556d3f5fbbf520d"
     ),
     "theorem_count": 544,
+    "stable_count": 202,
+    "alpha_closed_count": 342,
     "proof_edge_count": 1917,
     "formal_line_count": 28410,
+    "alpha_edition_version": "v19",
+    "alpha_edition_identity_sha256": (
+        "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7"
+    ),
+    "alpha_edition_checked_use_count": 1737,
+    "proof_edition_version": "v18",
+    "proof_edition_identity_sha256": (
+        "f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66"
+    ),
+    "proof_edition_checked_use_count": 1589,
 }
+PROOF_EDITION_FIELDS = (
+    "proof_edition_version",
+    "proof_edition_identity_sha256",
+    "proof_edition_checked_use_count",
+)
 
 DefinedEditionError = shared.DefinedEditionError
 REQUIRED_CAMPAIGN_DEFINITIONS = frozenset(
@@ -247,11 +267,54 @@ def _load_explicit() -> tuple[dict[str, Any], dict[str, Any], Sequence[Mapping[s
             raise DefinedEditionError("the immutable Bertrand proof-edge count changed")
         if document.get("formal_line_count") != EXPECTED["formal_line_count"]:
             raise DefinedEditionError("the immutable Bertrand proof-line count changed")
+        if (
+            document.get("alpha_edition_version")
+            != EXPECTED["alpha_edition_version"]
+            or document.get("alpha_edition_identity_sha256")
+            != EXPECTED["alpha_edition_identity_sha256"]
+            or document.get("alpha_edition_checked_use_count")
+            != EXPECTED["alpha_edition_checked_use_count"]
+            or any(document.get(key) != EXPECTED[key] for key in PROOF_EDITION_FIELDS)
+            or document.get("graph_checked_use_count")
+            != EXPECTED["theorem_count"]
+            or document.get("graph_stable_closed_count")
+            != EXPECTED["stable_count"]
+            or document.get("graph_alpha_closed_count")
+            != EXPECTED["alpha_closed_count"]
+            or document.get("public_count") != EXPECTED["stable_count"]
+            or document.get("candidate_count") != EXPECTED["alpha_closed_count"]
+            or document.get("source_scope_policy")
+            != "historical_origin_not_current_release_authority"
+            or document.get("source_edition_version") != "v12"
+            or document.get("source_checked_use_count") != 203
+            or document.get("source_body_checked_count") != 341
+        ):
+            raise DefinedEditionError(
+                "the explicit Bertrand explorer lost sealed Alpha-v19 evidence, "
+                "historical Alpha-v18 proof evidence, or Alpha-v12 provenance"
+            )
     rows = shared._sequence(corpus.get("theorems"), "explicit Bertrand corpus.theorems")
     if len(rows) != EXPECTED["theorem_count"]:
         raise DefinedEditionError("the immutable Bertrand theorem ledger is incomplete")
     if [row["tag"] for row in rows] != [node["tag"] for node in graph["nodes"]]:
         raise DefinedEditionError("explicit Bertrand corpus and graph theorem order disagree")
+    for row in rows:
+        expected_stable = row.get("scope") == "public"
+        if (
+            row.get("alpha_edition_version") != EXPECTED["alpha_edition_version"]
+            or row.get("proof_edition_version") != EXPECTED["proof_edition_version"]
+            or row.get("alpha_checked_use") is not True
+            or row.get("checked_use") is not True
+            or row.get("stable_member") is not expected_stable
+            or row.get("alpha_evidence")
+            != ("stable_closed" if expected_stable else "alpha_closed")
+            or row.get("evidence_status") != row.get("alpha_evidence")
+            or row.get("source_edition_version") != "v12"
+        ):
+            raise DefinedEditionError(
+                f"explicit Bertrand theorem {row.get('name')!r} has "
+                "inconsistent independently checked Alpha-v19 evidence"
+            )
     return corpus, graph, rows
 
 
@@ -380,8 +443,25 @@ def _render_theorem(
         if following
         else ""
     )
-    body = f'''<header class="pd-header"><nav><a href="../index.html">Defined Bertrand edition</a><a href="../../tag/{shared._e(row["tag"])}.html">Explicit edition</a><a href="../graph.html?target={shared._e(row["tag"])}">Mixed graph</a>{before}{after}</nav><p class="pd-kicker">{shared._e(row["tag"])} · Bertrand theorem</p><h1>{shared._e(row["name"])}</h1><p class="pd-status pd-status-{shared._e(row["scope"])}">{shared._e(row["status_label"])}</p><p>{shared._e(row["summary"])}</p></header>
+    atlas = shared._campaign_navigation(
+        "../../../../", family="F03", goal="A02", family_label="Prime-distribution"
+    )
+    body = f'''<header class="pd-header"><nav><a href="../index.html">Defined Bertrand edition</a><a href="../../tag/{shared._e(row["tag"])}.html">Explicit edition</a><a href="../graph.html?target={shared._e(row["tag"])}">Mixed graph</a>{atlas}{before}{after}</nav><p class="pd-kicker">{shared._e(row["tag"])} · Bertrand theorem</p><h1>{shared._e(row["name"])}</h1><p class="pd-status pd-status-{shared._e(row["scope"])}">{shared._e(row["status_label"])}</p><p>{shared._e(row["summary"])}</p></header>
 <main class="pd-theorem-layout"><div><section><h2>Statement with defined notation</h2><button type="button" data-copy-target="defined-statement">Copy text</button><pre id="defined-statement"><code>{_render_parts(defined["statement_parts"])}</code></pre><p class="pd-callout">Every purple notation token opens its conservative definition. Expanding the displayed statement recovers the exact first-order Peano-arithmetic formula checked by the unchanged kernel.</p></section><section><h2>Definitions used by this theorem</h2><h3>In the theorem statement</h3><div class="pd-chip-row">{shared._definition_chips(statement_uses, definitions)}</div><p>{sum(defined["statement_definition_uses"].values())} occurrences</p><h3>In local proof propositions</h3><div class="pd-chip-row">{shared._definition_chips(script_uses, definitions)}</div><p>{sum(defined["script_definition_uses"].values())} occurrences</p></section><details><summary>Exact expanded native-PA statement</summary><button type="button" data-copy-target="expanded-statement">Copy expansion</button><pre id="expanded-statement"><code>{shared._e(row["statement"])}</code></pre></details><section><h2>Proof neighborhood</h2><h3>Direct theorem prerequisites</h3><div class="pd-chip-row">{shared._relation(row["dependencies"])}</div><h3>Direct theorem dependents</h3><div class="pd-chip-row">{shared._relation(row["dependents"])}</div></section><section><h2>Definition-aware tactic body</h2><p>Only local propositions introduced by <code>have</code> or <code>suffices</code> are compacted. Every changed line has an exact-AST conservative-expansion receipt; the kernel still receives the immutable original tactic script.</p><ol class="pd-formal-proof">{"".join(line_rows)}</ol></section></div><aside><h2>Display receipt</h2><dl><dt>Proof layer</dt><dd>{row["layer"]}</dd><dt>Defined-notation uses</dt><dd>{sum(defined["definition_uses"].values())}</dd><dt>Statement definitions</dt><dd>{len(statement_uses)}</dd><dt>Local-proof definitions</dt><dd>{len(script_uses)}</dd><dt>Compacted local lines</dt><dd>{changed_count}</dd><dt>Exact statement SHA-256</dt><dd><code>{shared._e(row["statement_sha256"])}</code></dd><dt>Explicit proof</dt><dd><a href="../../tag/{shared._e(row["tag"])}.html">open immutable explicit page</a></dd><dt>Native source</dt><dd>{_source_link(row["source"])}</dd></dl></aside></main>'''
+    receipt_heading = "<aside><h2>Display receipt</h2><dl>"
+    if body.count(receipt_heading) != 1:
+        raise DefinedEditionError("Bertrand theorem display receipt changed")
+    body = body.replace(
+        receipt_heading,
+        receipt_heading
+        + f'<dt>Current Alpha edition</dt><dd>{shared._e(row["alpha_edition_version"])}</dd>'
+        + f'<dt>Proof-bearing Alpha edition</dt><dd>{shared._e(row["proof_edition_version"])}</dd>'
+        + f'<dt>Current release evidence</dt><dd>{shared._e(row["alpha_evidence"])}</dd>'
+        + f'<dt>Checked theorem use</dt><dd>{"yes" if row["alpha_checked_use"] else "no"}</dd>'
+        + f'<dt>Stable membership</dt><dd>{"yes" if row["stable_member"] else "no"}</dd>'
+        + f'<dt>Historical Alpha-v12 evidence</dt><dd>{shared._e(row["source_evidence_status"])}</dd>',
+        1,
+    )
     return shared._page(
         f'{row["tag"]} — {row["name"]} — defined Bertrand notation',
         "theorem",
@@ -407,7 +487,13 @@ def _render_definition(
         f'<code>{shared._e(item["tag"])}</code> {shared._e(item["name"])}</a>'
         for item in theorem_users
     ) or '<span class="pd-empty">none</span>'
-    body = f'''<header class="pd-header pd-definition-header"><nav><a href="../index.html">Defined Bertrand edition</a><a href="../graph.html?target={ROOT_TAG}&amp;focus={shared._e(definition["id"])}">Mixed graph</a><a href="../../index.html">Exact explicit proof</a></nav><p class="pd-kicker">{shared._e(definition["id"])} · conservative definition</p><h1>{shared._e(definition["name"])}</h1><p>{shared._e(definition["summary"])}</p></header><main class="pd-definition-page"><section><h2>Readable signature</h2><pre><code>{shared._e(definition["signature"])}</code></pre></section><section><h2>Exact expansion</h2><button type="button" data-copy-target="definition-expansion">Copy expansion</button><pre id="definition-expansion"><code>{shared._e(definition["expansion"])}</code></pre><p class="pd-callout">This node is conservative notation, not a theorem, new axiom, predicate constant, or kernel rule. Its expansion is checked for exact first-order AST equivalence.</p></section><section><h2>Definition neighborhood</h2><h3>Expands using</h3><div class="pd-chip-row">{shared._definition_chips(definition["dependencies"], definitions, "")}</div><h3>Used by definitions</h3><div class="pd-chip-row">{dependent_definitions}</div><h3>Used by theorem statements or local proof propositions</h3><div class="pd-chip-row">{used_theorems}</div></section><aside><h2>Definition receipt</h2><dl><dt>Expansion SHA-256</dt><dd><code>{shared._e(definition["expansion_sha256"])}</code></dd><dt>Source</dt><dd>{shared._e(source["path"])}:{source["line"]}</dd><dt>Source SHA-256</dt><dd><code>{shared._e(source["sha256"])}</code></dd></dl></aside></main>'''
+    atlas = shared._campaign_navigation(
+        "../../../../", family="F03", goal="A02", family_label="Prime-distribution"
+    )
+    global_definition = shared._campaign_definition_link(
+        "../../../../", str(definition["name"])
+    )
+    body = f'''<header class="pd-header pd-definition-header"><nav><a href="../index.html">Defined Bertrand edition</a><a href="../graph.html?target={ROOT_TAG}&amp;focus={shared._e(definition["id"])}">Mixed graph</a><a href="../../index.html">Exact explicit proof</a>{global_definition}{atlas}</nav><p class="pd-kicker">{shared._e(definition["id"])} · conservative definition</p><h1>{shared._e(definition["name"])}</h1><p>{shared._e(definition["summary"])}</p></header><main class="pd-definition-page"><section><h2>Readable signature</h2><pre><code>{shared._e(definition["signature"])}</code></pre></section><section><h2>Exact expansion</h2><button type="button" data-copy-target="definition-expansion">Copy expansion</button><pre id="definition-expansion"><code>{shared._e(definition["expansion"])}</code></pre><p class="pd-callout">This node is conservative notation, not a theorem, new axiom, predicate constant, or kernel rule. Its expansion is checked for exact first-order AST equivalence.</p></section><section><h2>Definition neighborhood</h2><h3>Expands using</h3><div class="pd-chip-row">{shared._definition_chips(definition["dependencies"], definitions, "")}</div><h3>Used by definitions</h3><div class="pd-chip-row">{dependent_definitions}</div><h3>Used by theorem statements or local proof propositions</h3><div class="pd-chip-row">{used_theorems}</div></section><aside><h2>Definition receipt</h2><dl><dt>Expansion SHA-256</dt><dd><code>{shared._e(definition["expansion_sha256"])}</code></dd><dt>Source</dt><dd>{shared._e(source["path"])}:{source["line"]}</dd><dt>Source SHA-256</dt><dd><code>{shared._e(source["sha256"])}</code></dd></dl></aside></main>'''
     return shared._page(
         f'{definition["id"]} — {definition["name"]} — Bertrand definition',
         "definition",
@@ -425,7 +511,7 @@ def _render_index(
         f'data-search="{shared._e(" ".join((row["name"], row["tag"], row["summary"], row["defined"]["defined_statement"])).lower())}">'
         f'<a href="tag/{shared._e(row["tag"])}.html"><code>{shared._e(row["tag"])}</code> · '
         f'<strong>{shared._e(row["name"])}</strong></a><p>{shared._e(row["summary"])}</p>'
-        f'<small>theorem · proof layer {row["layer"]} · '
+        f'<small>{shared._e(row["status_label"])} · proof layer {row["layer"]} · '
         f'{len(row["defined"]["definition_uses"])} definitions</small></article>'
         for row in theorems
     )
@@ -437,13 +523,52 @@ def _render_index(
         '<small>conservative definition · not a theorem</small></article>'
         for row in definitions
     )
-    body = f'''<header class="pd-header pd-hero"><nav><a href="../index.html">Exact explicit edition</a><a href="graph.html?target={ROOT_TAG}&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus">Mixed dependency graph</a><a href="tag/{ROOT_TAG}.html">Bertrand’s postulate</a></nav><p class="pd-kicker">Complete Bertrand proof · parallel reading edition</p><h1>Bertrand’s postulate with defined notation</h1><p>Explore every theorem in the complete native-PA proof together with genuine conservative definitions for binomial and central binomial coefficients, primorials, prime-power valuations, Legendre sums, factorials, and integer square-root bounds.</p><div class="pd-stats"><b>{len(theorems)}</b> theorems · <b>{len(definitions)}</b> definitions · <b>{EXPECTED["proof_edge_count"]}</b> proof edges</div></header><main data-defined-dashboard><section class="pd-controls"><label>Search <input data-search type="search"></label><label>Kind <select data-kind><option value="all">Theorems and definitions</option><option value="theorem">Theorems</option><option value="definition">Definitions</option></select></label><button data-clear type="button">Clear</button><output data-count>{len(theorems) + len(definitions)} entries</output></section><section class="pd-results">{definition_cards}{theorem_cards}</section></main>'''
+    atlas = shared._campaign_navigation(
+        "../../../", family="F03", goal="A02", family_label="Prime-distribution"
+    )
+    body = f'''<header class="pd-header pd-hero"><nav><a href="../index.html">Exact explicit edition</a><a href="graph.html?target={ROOT_TAG}&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus">Mixed dependency graph</a><a href="tag/{ROOT_TAG}.html">Bertrand’s postulate</a>{atlas}</nav><p class="pd-kicker">Complete Bertrand proof · parallel reading edition</p><h1>Bertrand’s postulate with defined notation</h1><p>Explore every theorem in the complete native-PA proof together with genuine conservative definitions for binomial and central binomial coefficients, primorials, prime-power valuations, Legendre sums, factorials, and integer square-root bounds.</p><div class="pd-stats"><b>{len(theorems)}</b> independently checked-use theorems · <b>{len(definitions)}</b> definitions · <b>{EXPECTED["proof_edge_count"]}</b> proof edges</div><p>Current Alpha v19 verifies all 544 theorem proofs: 202 Stable and 342 Alpha-only checked-use theorems; Alpha-only checked use does not imply Stable membership.</p></header><main data-defined-dashboard><section class="pd-controls"><label>Search <input data-search type="search"></label><label>Kind <select data-kind><option value="all">Theorems and definitions</option><option value="theorem">Theorems</option><option value="definition">Definitions</option></select></label><button data-clear type="button">Clear</button><output data-count>{len(theorems) + len(definitions)} entries</output></section><section class="pd-results">{definition_cards}{theorem_cards}</section></main>'''
     return shared._page("Bertrand’s postulate with defined notation", "index", body)
 
 
 def _render_graph(graph: Mapping[str, Any]) -> bytes:
     inline = shared._javascript_assignment("PA_DEFINED_GRAPH", graph)
-    body = f'''<header class="pd-header"><nav><a href="index.html">Defined Bertrand edition</a><a href="../graph.html?target={ROOT_TAG}">Exact theorem graph</a><a href="tag/{ROOT_TAG}.html">Bertrand’s postulate</a></nav><p class="pd-kicker">Complete Bertrand proof · typed mixed graph</p><h1>Bertrand theorems and conservative definitions</h1><p>Proof arrows and notation arrows are different relations. Only theorem-proof arrows participate in the exact prerequisite path to Bertrand’s postulate.</p></header><main class="pd-graph-page" data-defined-graph><form class="pd-graph-controls" data-graph-form><label>Target theorem <input data-graph-target list="pd-graph-theorems" value="{ROOT_TAG}" required></label><datalist id="pd-graph-theorems"></datalist><label>View <select data-graph-view><option value="critical">Critical theorem path</option><option value="prerequisites">Complete theorem prerequisite cone</option><option value="neighborhood" selected>Direct theorem neighborhood</option><option value="corpus">Entire theorem corpus</option></select></label><label>Definitions <select data-graph-definitions><option value="selected" selected>Selected node only</option><option value="off">Hide definitions</option><option value="visible">All visible theorem definitions (heavy)</option></select></label><label>Arrows <select data-graph-edges><option value="focus" selected>Focused: path + selected node</option><option value="none">Hide arrows</option><option value="all">All direct arrows (heavy)</option></select></label><button type="submit">Draw</button></form><p class="pd-graph-note">Sparse modes suppress visual objects only. Every exact proof and notation relation remains in the selected-node panel and graph data; large views use compact clickable marks.</p><div class="pd-graph-layout"><section><div class="pd-graph-toolbar"><p data-graph-summary aria-live="polite">Loading graph…</p><div><button type="button" data-graph-zoom="in" aria-label="Zoom in">+</button><button type="button" data-graph-zoom="out" aria-label="Zoom out">−</button><button type="button" data-graph-fit aria-label="Fit graph">Fit</button></div></div><div class="pd-graph-stage"><svg data-graph-svg tabindex="0" role="group" aria-labelledby="pd-graph-instructions"><text x="20" y="35">Loading…</text></svg></div><p id="pd-graph-instructions" class="pd-graph-note">Proof arrows run from prerequisite to dependent; notation arrows run from a theorem or definition to the definition it uses. Select any node to inspect every direct relation.</p><div class="pd-legend"><span><i class="pd-legend-theorem"></i> theorem</span><span><i class="pd-legend-definition"></i> definition</span><span><i class="pd-legend-proof"></i> proof dependency</span><span><i class="pd-legend-notation"></i> uses definition</span></div></section><aside class="pd-graph-details"><p class="pd-kicker">Selected node</p><h2 data-graph-title tabindex="-1">Loading…</h2><p data-graph-kind></p><p data-graph-description></p><dl data-graph-metadata></dl><p><a data-graph-open href="index.html">Open node →</a></p><h3>Outgoing relations</h3><ul data-graph-outgoing></ul><h3>Incoming relations</h3><ul data-graph-incoming></ul></aside></div><noscript><p class="pd-callout">The graph requires JavaScript. Every theorem and definition remains available from the index.</p></noscript></main><script id="pa-defined-graph-data">{inline}</script>'''
+    atlas = shared._campaign_navigation(
+        "../../../", family="F03", goal="A02", family_label="Prime-distribution"
+    )
+    evidence_overlay = r'''<script id="pa-bertrand-defined-release-evidence">
+(function () {
+  "use strict";
+  function install() {
+    var root = document.querySelector("[data-defined-graph]");
+    var payload = window.PA_DEFINED_GRAPH;
+    if (!root || !payload || !Array.isArray(payload.nodes)) return;
+    var title = root.querySelector("[data-graph-title]");
+    var kind = root.querySelector("[data-graph-kind]");
+    if (!title || !kind || typeof MutationObserver !== "function") return;
+    var nodes = new Map(payload.nodes.map(function (node) {
+      return [node.id, node];
+    }));
+    function showEvidence() {
+      var id = title.textContent.split(" · ", 1)[0].trim();
+      var node = nodes.get(id);
+      if (!node || node.kind !== "theorem" || node.alpha_checked_use !== true) return;
+      kind.textContent = node.stable_member ?
+        "Stable checked-use theorem; independently closed" :
+        "Alpha v19 checked-use theorem; independently kernel and Lean verified; not Stable";
+    }
+    new MutationObserver(showEvidence).observe(title, {
+      childList: true, characterData: true, subtree: true
+    });
+    showEvidence();
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", install, { once: true });
+  } else {
+    install();
+  }
+})();
+</script>'''
+    body = f'''<header class="pd-header"><nav><a href="index.html">Defined Bertrand edition</a><a href="../graph.html?target={ROOT_TAG}">Exact theorem graph</a><a href="tag/{ROOT_TAG}.html">Bertrand’s postulate</a>{atlas}</nav><p class="pd-kicker">Complete Bertrand proof · typed mixed graph</p><h1>Bertrand theorems and conservative definitions</h1><p>Proof arrows and notation arrows are different relations. Only theorem-proof arrows participate in the exact prerequisite path to Bertrand’s postulate.</p><p>Alpha v19 independently verifies all 544 proof nodes: 202 Stable and 342 Alpha-only checked-use theorems.</p></header><main class="pd-graph-page" data-defined-graph><form class="pd-graph-controls" data-graph-form><label>Target theorem <input data-graph-target list="pd-graph-theorems" value="{ROOT_TAG}" required></label><datalist id="pd-graph-theorems"></datalist><label>View <select data-graph-view><option value="critical">Critical theorem path</option><option value="prerequisites">Complete theorem prerequisite cone</option><option value="neighborhood" selected>Direct theorem neighborhood</option><option value="corpus">Entire theorem corpus</option></select></label><label>Definitions <select data-graph-definitions><option value="selected" selected>Selected node only</option><option value="off">Hide definitions</option><option value="visible">All visible theorem definitions (heavy)</option></select></label><label>Arrows <select data-graph-edges><option value="focus" selected>Focused: path + selected node</option><option value="none">Hide arrows</option><option value="all">All direct arrows (heavy)</option></select></label><button type="submit">Draw</button></form><p class="pd-graph-note">Sparse modes suppress visual objects only. Every exact proof and notation relation remains in the selected-node panel and graph data; large views use compact clickable marks.</p><div class="pd-graph-layout"><section><div class="pd-graph-toolbar"><p data-graph-summary aria-live="polite">Loading graph…</p><div><button type="button" data-graph-zoom="in" aria-label="Zoom in">+</button><button type="button" data-graph-zoom="out" aria-label="Zoom out">−</button><button type="button" data-graph-fit aria-label="Fit graph">Fit</button></div></div><div class="pd-graph-stage"><svg data-graph-svg tabindex="0" role="group" aria-labelledby="pd-graph-instructions"><text x="20" y="35">Loading…</text></svg></div><p id="pd-graph-instructions" class="pd-graph-note">Proof arrows run from prerequisite to dependent; notation arrows run from a theorem or definition to the definition it uses. Select any node to inspect every direct relation.</p><div class="pd-legend"><span><i class="pd-legend-theorem"></i> theorem</span><span><i class="pd-legend-definition"></i> definition</span><span><i class="pd-legend-proof"></i> proof dependency</span><span><i class="pd-legend-notation"></i> uses definition</span></div></section><aside class="pd-graph-details"><p class="pd-kicker">Selected node</p><h2 data-graph-title tabindex="-1">Loading…</h2><p data-graph-kind></p><p data-graph-description></p><dl data-graph-metadata></dl><p><a data-graph-open href="index.html">Open node →</a></p><h3>Outgoing relations</h3><ul data-graph-outgoing></ul><h3>Incoming relations</h3><ul data-graph-incoming></ul></aside></div><noscript><p class="pd-callout">The graph requires JavaScript. Every theorem and definition remains available from the index.</p></noscript></main><script id="pa-defined-graph-data">{inline}</script>{evidence_overlay}'''
     return shared._page("Bertrand theorems and definitions", "graph", body)
 
 
@@ -462,6 +587,13 @@ def _mixed_graph(
             "explicit_graph_sha256": EXPECTED["graph_sha256"],
             "catalog_sha256": explicit_graph["catalog_sha256"],
             "formal_line_count": explicit_graph["formal_line_count"],
+            **{key: explicit_graph[key] for key in PROOF_EDITION_FIELDS},
+            "source_edition_version": explicit_graph["source_edition_version"],
+            "source_edition_identity_sha256": (
+                explicit_graph["source_edition_identity_sha256"]
+            ),
+            "source_checked_use_count": explicit_graph["source_checked_use_count"],
+            "source_body_checked_count": explicit_graph["source_body_checked_count"],
         }
     )
     return graph
@@ -506,8 +638,19 @@ def build_files(
     corpus = {
         "schema": "peano-lab-bertrand-defined-corpus-v1",
         "edition_identity_sha256": edition["identity_sha256"],
+        **{
+            key: explicit_corpus[key]
+            for key in shared.ALPHA_RELEASE_FIELDS
+        },
+        **{key: explicit_corpus[key] for key in PROOF_EDITION_FIELDS},
         "explicit_corpus_sha256": EXPECTED["corpus_sha256"],
         "catalog_sha256": explicit_corpus["catalog_sha256"],
+        "source_edition_version": explicit_corpus["source_edition_version"],
+        "source_edition_identity_sha256": (
+            explicit_corpus["source_edition_identity_sha256"]
+        ),
+        "source_checked_use_count": explicit_corpus["source_checked_use_count"],
+        "source_body_checked_count": explicit_corpus["source_body_checked_count"],
         "root_name": ROOT_NAME,
         "root_tag": ROOT_TAG,
         "theorem_count": len(theorem_rows),
@@ -522,6 +665,15 @@ def build_files(
                 "name": row["name"],
                 "scope": row["scope"],
                 "status": row["status"],
+                "status_label": row["status_label"],
+                "alpha_edition_version": row["alpha_edition_version"],
+                "proof_edition_version": row["proof_edition_version"],
+                "alpha_evidence": row["alpha_evidence"],
+                "alpha_checked_use": row["alpha_checked_use"],
+                "stable_member": row["stable_member"],
+                "source_edition_version": row["source_edition_version"],
+                "source_evidence_status": row["source_evidence_status"],
+                "source_checked_use": row["source_checked_use"],
                 "layer": row["layer"],
                 "summary": row["summary"],
                 "defined": row["defined"],
@@ -575,9 +727,20 @@ def build_files(
     manifest = {
         "schema": "peano-lab-bertrand-defined-explorer-manifest-v1",
         "edition_identity_sha256": edition["identity_sha256"],
+        **{
+            key: explicit_corpus[key]
+            for key in shared.ALPHA_RELEASE_FIELDS
+        },
+        **{key: explicit_corpus[key] for key in PROOF_EDITION_FIELDS},
         "explicit_corpus_sha256": EXPECTED["corpus_sha256"],
         "explicit_graph_sha256": EXPECTED["graph_sha256"],
         "catalog_sha256": explicit_corpus["catalog_sha256"],
+        "source_edition_version": explicit_corpus["source_edition_version"],
+        "source_edition_identity_sha256": (
+            explicit_corpus["source_edition_identity_sha256"]
+        ),
+        "source_checked_use_count": explicit_corpus["source_checked_use_count"],
+        "source_body_checked_count": explicit_corpus["source_body_checked_count"],
         "root_name": ROOT_NAME,
         "root_tag": ROOT_TAG,
         "theorem_count": len(theorem_rows),

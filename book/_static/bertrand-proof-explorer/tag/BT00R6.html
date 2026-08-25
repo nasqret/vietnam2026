@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT00R5.html">← ceil_div_six_square_six_step</a> <a href="BT00R7.html">floor_sqrt_strict_upper_bound →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT00R6.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT00R6&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT00R5.html">← ceil_div_six_square_six_step</a><a href="BT00R7.html">floor_sqrt_strict_upper_bound →</a></nav>
 <p class="pa-tag">BT00R6</p><h1>floor_sqrt_lower_bound</h1>
-<p class="pa-status-candidate">Alpha body-checked · checked-use disabled</p>
+<p class="pa-status-candidate">Alpha v19 checked-use theorem · independently kernel and Lean verified; not Stable</p>
 <p>The floor-square graph projects its lower square bound.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by case analysis (1).</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT010D.html"><code>BT010D</code> floor_sqrt_three_mul_le_double</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="14992d6720e4e6f3"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> x</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="d285322e9baaf25b"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> s</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="fe26f6df2d1d4c4b"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="cases" data-line-id="733d7187d811a18e"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="exact" data-line-id="8e7d1e1a0563bb66"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">exact</span> h_left</code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>951</dd>
 <dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>5</dd>
-<dt>Evidence</dt><dd>body_checked</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>alpha_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>no</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>
 <dt>Body proof nodes</dt><dd>12</dd>
 <dt>Statement SHA-256</dt><dd><code>ebf1a61c69adc2d74bd22380b06c94ca4d9441b596b8d0c691bff222d82d959c</code></dd>
 <dt>Script SHA-256</dt><dd><code>0569b5fd77d2e38e2e22e60227ebe901d1efeafc4cf704a9400c07f781f84363</code></dd>

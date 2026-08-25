@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT00R6.html">← floor_sqrt_lower_bound</a> <a href="BT00R9.html">square_lt_successor_square →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT00R7.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT00R7&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT00R6.html">← floor_sqrt_lower_bound</a><a href="BT00R9.html">square_lt_successor_square →</a></nav>
 <p class="pa-tag">BT00R7</p><h1>floor_sqrt_strict_upper_bound</h1>
-<p class="pa-status-candidate">Alpha body-checked · checked-use disabled</p>
+<p class="pa-status-candidate">Alpha v19 checked-use theorem · independently kernel and Lean verified; not Stable</p>
 <p>The floor-square graph projects its strict successor-square bound.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by case analysis (1).</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT00X4.html"><code>BT00X4</code> bertrand_floor_power_product_le_h_from_total</a> <a class="pa-theorem-ref" href="BT010B.html"><code>BT010B</code> floor_sqrt_two_le_of_two_lt</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="5ee9aab21bc17913"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> x</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="63f541421a50b00a"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> s</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="5712e120cf4ae323"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="cases" data-line-id="abc71d874d78cdef"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="exact" data-line-id="211492435bea7812"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">exact</span> h_right</code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>952</dd>
 <dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>5</dd>
-<dt>Evidence</dt><dd>body_checked</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>alpha_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>no</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>
 <dt>Body proof nodes</dt><dd>12</dd>
 <dt>Statement SHA-256</dt><dd><code>df9fbd83265c098574a625eae9ecc7c93515d08743a606ab316ea541fb5316f2</code></dd>
 <dt>Script SHA-256</dt><dd><code>73603fe9dc6670bed9c799c1310d3fc8c46d77ccf3667babe627f036d59307a3</code></dd>

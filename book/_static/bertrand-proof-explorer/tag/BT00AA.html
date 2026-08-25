@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT009X.html">← pow_add</a> <a href="BT00AW.html">prime_is_succ_succ →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT00AA.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT00AA&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT009X.html">← pow_add</a><a href="BT00AW.html">prime_is_succ_succ →</a></nav>
 <p class="pa-tag">BT00AA</p><h1>finite_lt_succ_eq_or_lt</h1>
-<p class="pa-status-public">Stable · empty-context checked</p>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
 <p>A value below a successor is the predecessor or lies below it.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by intermediate claims (1).</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT00S0.html"><code>BT00S0</code> prime_power_quotient_prefix_exists</a> <a class="pa-theorem-ref" href="BT00SE.html"><code>BT00SE</code> eisenstein_initial_segment_prefix_extend</a> <a class="pa-theorem-ref" href="BT00T2.html"><code>BT00T2</code> beta_pascal_zero_row_extend</a> <a class="pa-theorem-ref" href="BT00T4.html"><code>BT00T4</code> beta_pascal_row_step_extend</a> <a class="pa-theorem-ref" href="BT00T6.html"><code>BT00T6</code> beta_pascal_table_prefix_extend</a> <a class="pa-theorem-ref" href="BT00U7.html"><code>BT00U7</code> primorial_factor_prefix_extend</a> <a class="pa-theorem-ref" href="BT00UR.html"><code>BT00UR</code> primorial_interval_factor_prefix_extend</a> <a class="pa-theorem-ref" href="BT00XW.html"><code>BT00XW</code> double_quotient_carry_prefix_extend</a> <a class="pa-theorem-ref" href="BT00YP.html"><code>BT00YP</code> prime_contribution_prefix_extend</a> <a class="pa-theorem-ref" href="BT010K.html"><code>BT010K</code> prime_contribution_interval_prefix_extend</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="ac164f7e4a366f9f"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="8a581b7d1ac6cd78"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> x</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="e92539f28a2748b3"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> hlt</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="have" data-line-id="112da6bd402600ae"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">have</span> hle : exists h. h + x = n</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="1cfa974339cdb4e6"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0017.html">le_of_succ_le_succ</a> x</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="specialize" data-line-id="204b54a78c910c36"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0017.html">le_of_succ_le_succ</a> n</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="apply" data-line-id="f30569ebc72bb613"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0017.html">le_of_succ_le_succ</a></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="exact" data-line-id="580afe81e87b66dc"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">exact</span> hlt</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="specialize" data-line-id="2cfb6e754b711943"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001C.html">le_eq_or_lt</a> x</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="specialize" data-line-id="d13b80ab9bcd1bec"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001C.html">le_eq_or_lt</a> n</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="apply" data-line-id="9b2d2cef90037310"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT001C.html">le_eq_or_lt</a></code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="exact" data-line-id="b7ccf0ef70d5cde0"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">exact</span> hle</code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>360</dd>
 <dt>Layer</dt><dd>2</dd><dt>Lines</dt><dd>12</dd>
-<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
 <dt>Body proof nodes</dt><dd>n/a</dd>
 <dt>Statement SHA-256</dt><dd><code>4829550fa55790a5ce617b99bbd357d27af724ca5316fbc0a5afef062fb3a1f6</code></dd>
 <dt>Script SHA-256</dt><dd><code>263f3965c02466c4cf720f8f4316211b502ec6fe60197cdf418d0a3b9cd6e8cd</code></dd>

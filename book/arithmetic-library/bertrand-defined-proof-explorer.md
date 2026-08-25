@@ -12,7 +12,11 @@ intervals readable.
 Each compact formula expands to exactly the original first-order PA formula.
 No definition introduces a kernel rule, axiom, predicate constant, theorem,
 or checked-use admission. The frozen Alpha-v12 catalog remains the sole source
-for theorem statements, tactic scripts, dependency evidence, and provenance.
+for theorem statements, tactic scripts, and historical enrollment provenance.
+Independently sealed current Alpha-v19 release evidence establishes checked
+use for all 544 actual theorem proofs: 202 Stable and 342 Alpha-only. The
+complete proof bundle is separately accepted by the unchanged intuitionistic
+kernel and compiled Lean verifier; Alpha-only membership is not Stable.
 ```
 
 <p>
@@ -31,6 +35,10 @@ for theorem statements, tactic scripts, dependency evidence, and provenance.
   <a class="btn btn-outline-primary"
      href="../_static/bertrand-proof-explorer/index.html">
     Inspect the exact fully expanded edition
+  </a>
+  <a class="btn btn-outline-primary"
+     href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F03">
+    Place Bertrand in the prime-distribution campaign
   </a>
 </p>
 
@@ -85,3 +93,6 @@ linked theorem to its exact certificate and source provenance.
 For the original frozen graph and release-evidence boundary, see the
 {doc}`complete Bertrand proof explorer <bertrand-proof-explorer>`. For the
 mathematical campaign, see {doc}`Bertrand's Postulate <bertrand-campaign>`.
+For its shared definitions, related prime-progressions results, and open
+research successors, see the {doc}`constructive number-theory research atlas
+<grand-campaign-atlas>`.

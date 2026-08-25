@@ -5,9 +5,12 @@
 <link rel="stylesheet" href="../assets/explorer.css">
 <script defer src="../assets/explorer.js"></script></head>
 <body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
-<a href="../index.html">Explorer</a> <a href="BT0005.html">← mul_succ_left</a> <a href="BT0007.html">mul_add →</a></nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT0006.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT0006&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT0005.html">← mul_succ_left</a><a href="BT0007.html">mul_add →</a></nav>
 <p class="pa-tag">BT0006</p><h1>mul_comm</h1>
-<p class="pa-status-public">Stable · empty-context checked</p>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
 <p>Multiplication is commutative.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -22,13 +25,20 @@ The authored body proceeds by structural induction (1).</p></section>
 <h3>Direct dependents</h3><div class="pa-chip-row">
 <a class="pa-theorem-ref" href="BT000B.html"><code>BT000B</code> add_mul</a> <a class="pa-theorem-ref" href="BT002B.html"><code>BT002B</code> multiple_mul_left</a> <a class="pa-theorem-ref" href="BT0036.html"><code>BT0036</code> balanced_combination_scale_right</a> <a class="pa-theorem-ref" href="BT003T.html"><code>BT003T</code> mod_eq_mul_left</a> <a class="pa-theorem-ref" href="BT003X.html"><code>BT003X</code> mod_eq_to_remainder_decomposition</a> <a class="pa-theorem-ref" href="BT0041.html"><code>BT0041</code> beta_at_exists</a> <a class="pa-theorem-ref" href="BT0042.html"><code>BT0042</code> beta_at_unique</a> <a class="pa-theorem-ref" href="BT004F.html"><code>BT004F</code> binary_crt</a> <a class="pa-theorem-ref" href="BT004I.html"><code>BT004I</code> beta_modulus_coprime_base</a> <a class="pa-theorem-ref" href="BT004K.html"><code>BT004K</code> beta_moduli_coprime_of_gap_dvd</a> <a class="pa-theorem-ref" href="BT004M.html"><code>BT004M</code> bounded_common_multiple_step</a> <a class="pa-theorem-ref" href="BT004V.html"><code>BT004V</code> right_factor_divides_product</a> <a class="pa-theorem-ref" href="BT0069.html"><code>BT0069</code> beta_factor_divides_product</a> <a class="pa-theorem-ref" href="BT00BG.html"><code>BT00BG</code> coprime_product_is_lcm</a> <a class="pa-theorem-ref" href="BT00QJ.html"><code>BT00QJ</code> mul_shuffle_four</a> <a class="pa-theorem-ref" href="BT00QU.html"><code>BT00QU</code> two_mul_eq_add_self</a> <a class="pa-theorem-ref" href="BT00QV.html"><code>BT00QV</code> pow_mul_base</a> <a class="pa-theorem-ref" href="BT00R4.html"><code>BT00R4</code> square_six_shift_identity</a> <a class="pa-theorem-ref" href="BT00RE.html"><code>BT00RE</code> three_mul_eq_two_mul_add_self</a> <a class="pa-theorem-ref" href="BT00TW.html"><code>BT00TW</code> factorial_weighted_product_combine</a> <a class="pa-theorem-ref" href="BT00TY.html"><code>BT00TY</code> mul_lt_mul_right_nonzero</a> <a class="pa-theorem-ref" href="BT00U0.html"><code>BT00U0</code> four_power_central_recurrence_step</a> <a class="pa-theorem-ref" href="BT00VK.html"><code>BT00VK</code> central_binom_strong_upper_step</a> <a class="pa-theorem-ref" href="BT00VP.html"><code>BT00VP</code> central_binom_odd_middle_le_four_pow</a> <a class="pa-theorem-ref" href="BT00VX.html"><code>BT00VX</code> central_binom_prime_divisor_le_double</a> <a class="pa-theorem-ref" href="BT00WC.html"><code>BT00WC</code> bertrand_scaled_budget_root_36</a> <a class="pa-theorem-ref" href="BT00WD.html"><code>BT00WD</code> bertrand_scaled_budget_root_37</a> <a class="pa-theorem-ref" href="BT00WU.html"><code>BT00WU</code> bertrand_h_root_37_from_total</a> <a class="pa-theorem-ref" href="BT00X4.html"><code>BT00X4</code> bertrand_floor_power_product_le_h_from_total</a> <a class="pa-theorem-ref" href="BT00X5.html"><code>BT00X5</code> bertrand_four_power_product_le_of_sum_from_total</a> <a class="pa-theorem-ref" href="BT0118.html"><code>BT0118</code> nonprime_has_small_prime_divisor_below_square</a> <a class="pa-theorem-ref" href="BT011C.html"><code>BT011C</code> scaled_remainder_lift</a> <a class="pa-theorem-ref" href="BT0122.html"><code>BT0122</code> bertrand_cover_three_hundred_seventeen_five_hundred_twenty_one</a> <a class="pa-theorem-ref" href="BT0123.html"><code>BT0123</code> bertrand_cutoff_lt_final_prime</a></div></section>
 <section><h2>Formal native tactic body</h2>
-<p>Dependencies are hypotheses of this body receipt. The focused endpoint
-audits separately check the complete empty-context certificates.</p>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v19 preserves that checked theorem use without
+changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="180ba3eac53aca20"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="induction" data-line-id="910dbdf452d1a661"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">induction</span> m</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="simp" data-line-id="d34fc7cde75f0f03"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">simp</span> [<a class="pa-theorem-ref" href="BT0004.html">mul_zero_left</a>]</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="simp" data-line-id="01bfb917a0af21d4"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">simp</span> [IH, <a class="pa-theorem-ref" href="BT0005.html">mul_succ_left</a>]</code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>6</dd>
 <dt>Layer</dt><dd>3</dd><dt>Lines</dt><dd>4</dd>
-<dt>Evidence</dt><dd>stable_closed</dd>
+<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
 <dt>Body proof nodes</dt><dd>n/a</dd>
 <dt>Statement SHA-256</dt><dd><code>b5277583d2ad3b537c2ccf0fecc33912b9ff69674ec9659cf8d70f58b691b65d</code></dd>
 <dt>Script SHA-256</dt><dd><code>6a444050814f777f19cfa5a3f65e3136491a300b685de3872f30490e34bb44b2</code></dd>
