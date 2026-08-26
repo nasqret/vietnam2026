@@ -1,0 +1,47 @@
+{
+  "adapter_manifest_sha256": "766b94e1645096840f79499b3b45465c7c29133d2583456e85567bdf5cc2b45f",
+  "cuda_initialized": false,
+  "epoch_sha256": "a96223a021edc556ed7620a87b4c00e5817ba169af4a1db093fa7a81847e082e",
+  "evaluation_sha256": "e86494b5cc7f67999adda8fcd43ebe8830c2d8a78349fdf295fed5abe226ad8c",
+  "independently_replayed_proofs": [
+    {
+      "commands": [
+        "norm_num"
+      ],
+      "goal": "closed_arithmetic_seven",
+      "lane": "trained",
+      "proof_nodes": 98
+    },
+    {
+      "commands": [
+        "exists 5",
+        "norm_num"
+      ],
+      "goal": "existential_subtraction_two",
+      "lane": "trained",
+      "proof_nodes": 29
+    },
+    {
+      "commands": [
+        "induction n",
+        "simp",
+        "simp [IH]"
+      ],
+      "goal": "double_right_zero",
+      "lane": "trained",
+      "proof_nodes": 21
+    }
+  ],
+  "metrics": {
+    "goal_count": 4,
+    "kernel_checked_proof_delta": 3,
+    "pretrained_kernel_checked_proofs": 0,
+    "pretrained_model_generate_calls": 4,
+    "research_claim_eligible": false,
+    "trained_kernel_checked_proofs": 3,
+    "trained_model_generate_calls": 22
+  },
+  "report_file_sha256": "87085bd544e7121cb1eb41255208c036e74139a4c2c459a69f20b141d60f2689",
+  "research_claim_eligible": false,
+  "status": "passed"
+}

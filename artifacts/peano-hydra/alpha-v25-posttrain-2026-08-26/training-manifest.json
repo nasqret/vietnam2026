@@ -1,0 +1,2295 @@
+{
+  "adapter": {
+    "files": {
+      "adapter/README.md": "e4c8e3ea343795c0bc7c902d380c62289a8baa427789644d2b483f28d1be3bfa",
+      "adapter/adapter_config.json": "1d07b5cf06ccf3739bba2f8fd83faee5c997eae461829d7e4385b6eceee55a98",
+      "adapter/adapter_model.safetensors": "8ec281b180009de3a5eac2edea36d3fcbdb09233adfa9ed563fd43c37418322d"
+    },
+    "root": "adapter",
+    "sha256": "0523d860792d2395d93741a1cf2fba485d69fd7f5c79cb3c6efef35747ab31f7"
+  },
+  "adapter_update": {
+    "changed_parameter_names": [
+      "base_model.model.model.layers.0.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.self_attn.v_proj.lora_B.default.weight"
+    ],
+    "changed_parameter_names_hash_payload_format": "json-list-of-sorted-unique-trainable-parameter-names-v1",
+    "changed_parameter_names_sha256": "9e7a1a3e4877983fbac83e3c07dae18c80e5717694994042789991ced9c57ba9",
+    "changed_parameter_tensors": 392,
+    "final_finite_parameter_tensors": 392,
+    "final_tensor_population_sha256": "671fcd73c316fd96e3899d0b358d8758e837dcb86d2bd97e3fb48aa13f7aa3de",
+    "format": "peano-policy-adapter-update-audit",
+    "initial_tensor_population_sha256": "c8161d3ecedbfd09d7e0453093b68f02aa78f24627207e59822624cfb8fb76b8",
+    "tensor_population_fingerprint_format": "sha256-canonical-json-sorted-name-dtype-shape-content-sha256-records-v1",
+    "trainable_parameter_names": [
+      "base_model.model.model.layers.0.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.0.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.0.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.1.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.1.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.10.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.10.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.11.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.11.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.12.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.12.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.13.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.13.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.14.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.14.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.15.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.15.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.16.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.16.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.17.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.17.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.18.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.18.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.19.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.19.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.2.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.2.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.20.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.20.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.21.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.21.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.22.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.22.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.23.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.23.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.24.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.24.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.25.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.25.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.26.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.26.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.27.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.27.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.3.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.3.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.4.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.4.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.5.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.5.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.6.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.6.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.7.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.7.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.8.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.8.self_attn.v_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.mlp.down_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.mlp.down_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.mlp.gate_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.mlp.gate_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.mlp.up_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.mlp.up_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.self_attn.k_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.self_attn.k_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.self_attn.o_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.self_attn.o_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.self_attn.q_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.self_attn.q_proj.lora_B.default.weight",
+      "base_model.model.model.layers.9.self_attn.v_proj.lora_A.default.weight",
+      "base_model.model.model.layers.9.self_attn.v_proj.lora_B.default.weight"
+    ],
+    "trainable_parameter_names_hash_payload_format": "json-list-of-sorted-unique-trainable-parameter-names-v1",
+    "trainable_parameter_names_sha256": "9e7a1a3e4877983fbac83e3c07dae18c80e5717694994042789991ced9c57ba9",
+    "trainable_parameter_tensors": 392,
+    "v": 1
+  },
+  "alpha_admitted": false,
+  "deployment": {
+    "job_script": {
+      "path": "slurm/peano_hydra_alpha_train.sbatch",
+      "sha256": "804705ca9711caf7367649097cf40f0760f5b2ccab781258fca875a7a1015720",
+      "status": "declared"
+    },
+    "mode": "slurm",
+    "modules": {
+      "loaded_modules": [
+        "GCCcore/14.3.0",
+        "binutils/2.44",
+        "GCC/14.3.0",
+        "numactl/2.0.19",
+        "XZ/5.8.1",
+        "libxml2/2.14.3",
+        "libpciaccess/0.18.1",
+        "hwloc/2.12.1",
+        "OpenSSL/3",
+        "libevent/2.1.12",
+        "json-c/0.17",
+        "libcxi/1.0.2-SHS-13.1.0",
+        "libfabric/2.3.1-SHS-13.1.0",
+        "PMIx/5.0.8",
+        "PRRTE/3.0.11",
+        "CUDA/12.9.1",
+        "OpenMPI/5.0.8",
+        "OpenBLAS/0.3.30",
+        "NVPL/25.5",
+        "FlexiBLAS/3.4.5",
+        "FFTW/3.3.10",
+        "FFTW.MPI/3.3.10",
+        "ScaLAPACK/2.2.2-fb",
+        "foss/2025b",
+        "ncurses/6.5",
+        "GMP/6.3.0",
+        "bzip2/1.0.8",
+        "libreadline/8.2",
+        "libtommath/1.3.0",
+        "Tcl/9.0.1",
+        "SQLite/3.50.1",
+        "libffi/3.5.1",
+        "Python/3.13.5",
+        "Z3/4.15.1",
+        "Clang/21.1.2-CUDA-12.9.1",
+        "magma/2.9.0-CUDA-12.9.1",
+        "cuDNN/9.10.1.4-CUDA-12.9.1",
+        "NCCL/2.27.7-CUDA-12.9.1",
+        "aws-ofi-nccl/1.16.3-CUDA-12.9.1",
+        "NASM/2.16.03",
+        "libjpeg-turbo/3.1.1",
+        "libpng/1.6.50",
+        "zlib/1.3.1",
+        "x264/20250831",
+        "LAME/3.100",
+        "x265/4.1",
+        "expat/2.7.1",
+        "Brotli/1.1.0",
+        "freetype/2.13.3",
+        "util-linux/2.41",
+        "fontconfig/2.17.0",
+        "xorg-macros/1.20.2",
+        "X11/20250608",
+        "FriBidi/1.0.16",
+        "SDL2/2.32.10",
+        "FFmpeg/7.1.2",
+        "libogg/1.3.6",
+        "FLAC/1.5.0",
+        "libvorbis/1.3.7",
+        "libopus/1.5.2",
+        "libsndfile/1.2.2",
+        "cuSPARSELt/0.8.1.1-CUDA-12.9.1",
+        "libaec/1.1.4",
+        "Perl/5.40.2",
+        "HDF5/1.14.6",
+        "ML-bundle/25.10"
+      ],
+      "requested": "ML-bundle/25.10",
+      "status": "loaded"
+    },
+    "source_sync": {
+      "git_commit": "a4ed24815925adffd45a5fe40423c2df2cf0a665",
+      "git_dirty": false,
+      "path": ".peano-source-provenance.tsv",
+      "sha256": "fd1780bfe2eee7afb2eaeb6c200714d64aac9beb80677b5d18328bcdf1134d6b",
+      "status": "synced",
+      "synced_at": "2026-08-26T20:23:39Z"
+    }
+  },
+  "edition_identity_sha256": "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28",
+  "epoch_sha256": "a96223a021edc556ed7620a87b4c00e5817ba169af4a1db093fa7a81847e082e",
+  "finite_gradient_audit": {
+    "custom_gradient_clip_max_norm": 1.0,
+    "expected_optimizer_boundaries": 222,
+    "first_optimizer_step": 1,
+    "format": "peano-policy-finite-gradient-audit",
+    "last_optimizer_step": 222,
+    "observed_optimizer_boundaries": 222,
+    "optimizer_steps_hash_payload_format": "json-list-of-consecutive-integers-one-through-final-step-v1",
+    "optimizer_steps_sha256": "1a50affa6d1fff48efb50c1f7d463199e869b6b1dee53611f6d15441c0a044da",
+    "post_clip_finite_optimizer_boundaries": 222,
+    "raw_finite_optimizer_boundaries": 222,
+    "records": [
+      {
+        "pre_clip_global_norm": 11.573115348815918,
+        "step": 1
+      },
+      {
+        "pre_clip_global_norm": 12.83232593536377,
+        "step": 2
+      },
+      {
+        "pre_clip_global_norm": 9.228020668029785,
+        "step": 3
+      },
+      {
+        "pre_clip_global_norm": 10.392891883850098,
+        "step": 4
+      },
+      {
+        "pre_clip_global_norm": 11.732062339782715,
+        "step": 5
+      },
+      {
+        "pre_clip_global_norm": 11.197003364562988,
+        "step": 6
+      },
+      {
+        "pre_clip_global_norm": 9.71455192565918,
+        "step": 7
+      },
+      {
+        "pre_clip_global_norm": 12.277107238769531,
+        "step": 8
+      },
+      {
+        "pre_clip_global_norm": 11.669351577758789,
+        "step": 9
+      },
+      {
+        "pre_clip_global_norm": 10.624283790588379,
+        "step": 10
+      },
+      {
+        "pre_clip_global_norm": 9.087078094482422,
+        "step": 11
+      },
+      {
+        "pre_clip_global_norm": 7.029699802398682,
+        "step": 12
+      },
+      {
+        "pre_clip_global_norm": 6.7567830085754395,
+        "step": 13
+      },
+      {
+        "pre_clip_global_norm": 6.789064884185791,
+        "step": 14
+      },
+      {
+        "pre_clip_global_norm": 6.103957653045654,
+        "step": 15
+      },
+      {
+        "pre_clip_global_norm": 6.0119829177856445,
+        "step": 16
+      },
+      {
+        "pre_clip_global_norm": 6.932621479034424,
+        "step": 17
+      },
+      {
+        "pre_clip_global_norm": 4.543533802032471,
+        "step": 18
+      },
+      {
+        "pre_clip_global_norm": 6.256401538848877,
+        "step": 19
+      },
+      {
+        "pre_clip_global_norm": 6.685664176940918,
+        "step": 20
+      },
+      {
+        "pre_clip_global_norm": 7.06327486038208,
+        "step": 21
+      },
+      {
+        "pre_clip_global_norm": 3.8022570610046387,
+        "step": 22
+      },
+      {
+        "pre_clip_global_norm": 4.924355983734131,
+        "step": 23
+      },
+      {
+        "pre_clip_global_norm": 7.220179080963135,
+        "step": 24
+      },
+      {
+        "pre_clip_global_norm": 7.95594596862793,
+        "step": 25
+      },
+      {
+        "pre_clip_global_norm": 5.033166408538818,
+        "step": 26
+      },
+      {
+        "pre_clip_global_norm": 3.6881086826324463,
+        "step": 27
+      },
+      {
+        "pre_clip_global_norm": 4.368957996368408,
+        "step": 28
+      },
+      {
+        "pre_clip_global_norm": 6.05820369720459,
+        "step": 29
+      },
+      {
+        "pre_clip_global_norm": 8.406316757202148,
+        "step": 30
+      },
+      {
+        "pre_clip_global_norm": 6.934564590454102,
+        "step": 31
+      },
+      {
+        "pre_clip_global_norm": 6.195862293243408,
+        "step": 32
+      },
+      {
+        "pre_clip_global_norm": 3.681295871734619,
+        "step": 33
+      },
+      {
+        "pre_clip_global_norm": 4.254121780395508,
+        "step": 34
+      },
+      {
+        "pre_clip_global_norm": 8.000825881958008,
+        "step": 35
+      },
+      {
+        "pre_clip_global_norm": 4.626087188720703,
+        "step": 36
+      },
+      {
+        "pre_clip_global_norm": 7.488235950469971,
+        "step": 37
+      },
+      {
+        "pre_clip_global_norm": 8.277636528015137,
+        "step": 38
+      },
+      {
+        "pre_clip_global_norm": 6.082193851470947,
+        "step": 39
+      },
+      {
+        "pre_clip_global_norm": 4.594888210296631,
+        "step": 40
+      },
+      {
+        "pre_clip_global_norm": 3.7512714862823486,
+        "step": 41
+      },
+      {
+        "pre_clip_global_norm": 5.41274881362915,
+        "step": 42
+      },
+      {
+        "pre_clip_global_norm": 5.473179817199707,
+        "step": 43
+      },
+      {
+        "pre_clip_global_norm": 4.550588607788086,
+        "step": 44
+      },
+      {
+        "pre_clip_global_norm": 5.39977502822876,
+        "step": 45
+      },
+      {
+        "pre_clip_global_norm": 2.7773447036743164,
+        "step": 46
+      },
+      {
+        "pre_clip_global_norm": 4.591628551483154,
+        "step": 47
+      },
+      {
+        "pre_clip_global_norm": 4.768552780151367,
+        "step": 48
+      },
+      {
+        "pre_clip_global_norm": 6.580718517303467,
+        "step": 49
+      },
+      {
+        "pre_clip_global_norm": 2.9584550857543945,
+        "step": 50
+      },
+      {
+        "pre_clip_global_norm": 4.515322208404541,
+        "step": 51
+      },
+      {
+        "pre_clip_global_norm": 3.9565632343292236,
+        "step": 52
+      },
+      {
+        "pre_clip_global_norm": 4.561503887176514,
+        "step": 53
+      },
+      {
+        "pre_clip_global_norm": 5.246942043304443,
+        "step": 54
+      },
+      {
+        "pre_clip_global_norm": 3.4504544734954834,
+        "step": 55
+      },
+      {
+        "pre_clip_global_norm": 5.013450622558594,
+        "step": 56
+      },
+      {
+        "pre_clip_global_norm": 4.8544392585754395,
+        "step": 57
+      },
+      {
+        "pre_clip_global_norm": 4.232824802398682,
+        "step": 58
+      },
+      {
+        "pre_clip_global_norm": 2.5583441257476807,
+        "step": 59
+      },
+      {
+        "pre_clip_global_norm": 5.920637607574463,
+        "step": 60
+      },
+      {
+        "pre_clip_global_norm": 4.499870300292969,
+        "step": 61
+      },
+      {
+        "pre_clip_global_norm": 3.7833220958709717,
+        "step": 62
+      },
+      {
+        "pre_clip_global_norm": 4.887685298919678,
+        "step": 63
+      },
+      {
+        "pre_clip_global_norm": 4.694000720977783,
+        "step": 64
+      },
+      {
+        "pre_clip_global_norm": 5.192271709442139,
+        "step": 65
+      },
+      {
+        "pre_clip_global_norm": 3.8230268955230713,
+        "step": 66
+      },
+      {
+        "pre_clip_global_norm": 6.182945728302002,
+        "step": 67
+      },
+      {
+        "pre_clip_global_norm": 4.124947547912598,
+        "step": 68
+      },
+      {
+        "pre_clip_global_norm": 4.4608845710754395,
+        "step": 69
+      },
+      {
+        "pre_clip_global_norm": 6.130019664764404,
+        "step": 70
+      },
+      {
+        "pre_clip_global_norm": 4.2007904052734375,
+        "step": 71
+      },
+      {
+        "pre_clip_global_norm": 4.213645935058594,
+        "step": 72
+      },
+      {
+        "pre_clip_global_norm": 3.7171790599823,
+        "step": 73
+      },
+      {
+        "pre_clip_global_norm": 5.419921398162842,
+        "step": 74
+      },
+      {
+        "pre_clip_global_norm": 2.905921220779419,
+        "step": 75
+      },
+      {
+        "pre_clip_global_norm": 7.067861080169678,
+        "step": 76
+      },
+      {
+        "pre_clip_global_norm": 4.985828876495361,
+        "step": 77
+      },
+      {
+        "pre_clip_global_norm": 5.095948696136475,
+        "step": 78
+      },
+      {
+        "pre_clip_global_norm": 3.9066519737243652,
+        "step": 79
+      },
+      {
+        "pre_clip_global_norm": 6.90248441696167,
+        "step": 80
+      },
+      {
+        "pre_clip_global_norm": 4.623514175415039,
+        "step": 81
+      },
+      {
+        "pre_clip_global_norm": 5.4893317222595215,
+        "step": 82
+      },
+      {
+        "pre_clip_global_norm": 2.3277087211608887,
+        "step": 83
+      },
+      {
+        "pre_clip_global_norm": 4.633928298950195,
+        "step": 84
+      },
+      {
+        "pre_clip_global_norm": 6.32652473449707,
+        "step": 85
+      },
+      {
+        "pre_clip_global_norm": 5.514359951019287,
+        "step": 86
+      },
+      {
+        "pre_clip_global_norm": 5.264502048492432,
+        "step": 87
+      },
+      {
+        "pre_clip_global_norm": 4.491648197174072,
+        "step": 88
+      },
+      {
+        "pre_clip_global_norm": 8.8279447555542,
+        "step": 89
+      },
+      {
+        "pre_clip_global_norm": 7.248969078063965,
+        "step": 90
+      },
+      {
+        "pre_clip_global_norm": 3.433835983276367,
+        "step": 91
+      },
+      {
+        "pre_clip_global_norm": 5.108425617218018,
+        "step": 92
+      },
+      {
+        "pre_clip_global_norm": 4.399105548858643,
+        "step": 93
+      },
+      {
+        "pre_clip_global_norm": 5.124175071716309,
+        "step": 94
+      },
+      {
+        "pre_clip_global_norm": 5.2479705810546875,
+        "step": 95
+      },
+      {
+        "pre_clip_global_norm": 6.02291202545166,
+        "step": 96
+      },
+      {
+        "pre_clip_global_norm": 5.434381484985352,
+        "step": 97
+      },
+      {
+        "pre_clip_global_norm": 4.790277004241943,
+        "step": 98
+      },
+      {
+        "pre_clip_global_norm": 3.8376786708831787,
+        "step": 99
+      },
+      {
+        "pre_clip_global_norm": 4.1810197830200195,
+        "step": 100
+      },
+      {
+        "pre_clip_global_norm": 4.371219635009766,
+        "step": 101
+      },
+      {
+        "pre_clip_global_norm": 6.561993598937988,
+        "step": 102
+      },
+      {
+        "pre_clip_global_norm": 3.1873013973236084,
+        "step": 103
+      },
+      {
+        "pre_clip_global_norm": 6.510401248931885,
+        "step": 104
+      },
+      {
+        "pre_clip_global_norm": 6.473464012145996,
+        "step": 105
+      },
+      {
+        "pre_clip_global_norm": 8.080606460571289,
+        "step": 106
+      },
+      {
+        "pre_clip_global_norm": 4.91494083404541,
+        "step": 107
+      },
+      {
+        "pre_clip_global_norm": 5.153771877288818,
+        "step": 108
+      },
+      {
+        "pre_clip_global_norm": 4.606616020202637,
+        "step": 109
+      },
+      {
+        "pre_clip_global_norm": 4.341637134552002,
+        "step": 110
+      },
+      {
+        "pre_clip_global_norm": 6.844738960266113,
+        "step": 111
+      },
+      {
+        "pre_clip_global_norm": 3.756524085998535,
+        "step": 112
+      },
+      {
+        "pre_clip_global_norm": 4.4367780685424805,
+        "step": 113
+      },
+      {
+        "pre_clip_global_norm": 3.6966404914855957,
+        "step": 114
+      },
+      {
+        "pre_clip_global_norm": 3.9388763904571533,
+        "step": 115
+      },
+      {
+        "pre_clip_global_norm": 6.352313995361328,
+        "step": 116
+      },
+      {
+        "pre_clip_global_norm": 2.947523832321167,
+        "step": 117
+      },
+      {
+        "pre_clip_global_norm": 4.463412761688232,
+        "step": 118
+      },
+      {
+        "pre_clip_global_norm": 4.921667098999023,
+        "step": 119
+      },
+      {
+        "pre_clip_global_norm": 5.289566993713379,
+        "step": 120
+      },
+      {
+        "pre_clip_global_norm": 3.1050894260406494,
+        "step": 121
+      },
+      {
+        "pre_clip_global_norm": 4.216658592224121,
+        "step": 122
+      },
+      {
+        "pre_clip_global_norm": 3.3516504764556885,
+        "step": 123
+      },
+      {
+        "pre_clip_global_norm": 5.325098991394043,
+        "step": 124
+      },
+      {
+        "pre_clip_global_norm": 4.675647258758545,
+        "step": 125
+      },
+      {
+        "pre_clip_global_norm": 3.9821531772613525,
+        "step": 126
+      },
+      {
+        "pre_clip_global_norm": 3.0951147079467773,
+        "step": 127
+      },
+      {
+        "pre_clip_global_norm": 3.476259708404541,
+        "step": 128
+      },
+      {
+        "pre_clip_global_norm": 6.648764133453369,
+        "step": 129
+      },
+      {
+        "pre_clip_global_norm": 4.296935081481934,
+        "step": 130
+      },
+      {
+        "pre_clip_global_norm": 4.44272518157959,
+        "step": 131
+      },
+      {
+        "pre_clip_global_norm": 4.993689060211182,
+        "step": 132
+      },
+      {
+        "pre_clip_global_norm": 6.623491287231445,
+        "step": 133
+      },
+      {
+        "pre_clip_global_norm": 5.493222236633301,
+        "step": 134
+      },
+      {
+        "pre_clip_global_norm": 3.734187602996826,
+        "step": 135
+      },
+      {
+        "pre_clip_global_norm": 4.404489040374756,
+        "step": 136
+      },
+      {
+        "pre_clip_global_norm": 4.3719611167907715,
+        "step": 137
+      },
+      {
+        "pre_clip_global_norm": 5.958545207977295,
+        "step": 138
+      },
+      {
+        "pre_clip_global_norm": 3.5442090034484863,
+        "step": 139
+      },
+      {
+        "pre_clip_global_norm": 3.89247727394104,
+        "step": 140
+      },
+      {
+        "pre_clip_global_norm": 3.9778196811676025,
+        "step": 141
+      },
+      {
+        "pre_clip_global_norm": 5.356144905090332,
+        "step": 142
+      },
+      {
+        "pre_clip_global_norm": 3.637129306793213,
+        "step": 143
+      },
+      {
+        "pre_clip_global_norm": 3.938034772872925,
+        "step": 144
+      },
+      {
+        "pre_clip_global_norm": 3.0864217281341553,
+        "step": 145
+      },
+      {
+        "pre_clip_global_norm": 3.800215005874634,
+        "step": 146
+      },
+      {
+        "pre_clip_global_norm": 6.049389362335205,
+        "step": 147
+      },
+      {
+        "pre_clip_global_norm": 3.997305393218994,
+        "step": 148
+      },
+      {
+        "pre_clip_global_norm": 4.135682582855225,
+        "step": 149
+      },
+      {
+        "pre_clip_global_norm": 5.4994282722473145,
+        "step": 150
+      },
+      {
+        "pre_clip_global_norm": 4.023852825164795,
+        "step": 151
+      },
+      {
+        "pre_clip_global_norm": 4.554687023162842,
+        "step": 152
+      },
+      {
+        "pre_clip_global_norm": 5.315052032470703,
+        "step": 153
+      },
+      {
+        "pre_clip_global_norm": 5.565768241882324,
+        "step": 154
+      },
+      {
+        "pre_clip_global_norm": 3.8738479614257812,
+        "step": 155
+      },
+      {
+        "pre_clip_global_norm": 6.79030179977417,
+        "step": 156
+      },
+      {
+        "pre_clip_global_norm": 4.5480475425720215,
+        "step": 157
+      },
+      {
+        "pre_clip_global_norm": 5.636326789855957,
+        "step": 158
+      },
+      {
+        "pre_clip_global_norm": 4.923051357269287,
+        "step": 159
+      },
+      {
+        "pre_clip_global_norm": 3.4979336261749268,
+        "step": 160
+      },
+      {
+        "pre_clip_global_norm": 4.081013202667236,
+        "step": 161
+      },
+      {
+        "pre_clip_global_norm": 3.956810235977173,
+        "step": 162
+      },
+      {
+        "pre_clip_global_norm": 4.381187438964844,
+        "step": 163
+      },
+      {
+        "pre_clip_global_norm": 4.387533664703369,
+        "step": 164
+      },
+      {
+        "pre_clip_global_norm": 5.529122352600098,
+        "step": 165
+      },
+      {
+        "pre_clip_global_norm": 3.780550956726074,
+        "step": 166
+      },
+      {
+        "pre_clip_global_norm": 3.5047926902770996,
+        "step": 167
+      },
+      {
+        "pre_clip_global_norm": 2.8310208320617676,
+        "step": 168
+      },
+      {
+        "pre_clip_global_norm": 4.30718994140625,
+        "step": 169
+      },
+      {
+        "pre_clip_global_norm": 5.851137638092041,
+        "step": 170
+      },
+      {
+        "pre_clip_global_norm": 4.854182720184326,
+        "step": 171
+      },
+      {
+        "pre_clip_global_norm": 4.65568733215332,
+        "step": 172
+      },
+      {
+        "pre_clip_global_norm": 5.725417137145996,
+        "step": 173
+      },
+      {
+        "pre_clip_global_norm": 5.05601167678833,
+        "step": 174
+      },
+      {
+        "pre_clip_global_norm": 4.4045281410217285,
+        "step": 175
+      },
+      {
+        "pre_clip_global_norm": 7.942091464996338,
+        "step": 176
+      },
+      {
+        "pre_clip_global_norm": 0.9584333300590515,
+        "step": 177
+      },
+      {
+        "pre_clip_global_norm": 3.928603410720825,
+        "step": 178
+      },
+      {
+        "pre_clip_global_norm": 5.931458473205566,
+        "step": 179
+      },
+      {
+        "pre_clip_global_norm": 4.096689224243164,
+        "step": 180
+      },
+      {
+        "pre_clip_global_norm": 5.305690288543701,
+        "step": 181
+      },
+      {
+        "pre_clip_global_norm": 4.536864280700684,
+        "step": 182
+      },
+      {
+        "pre_clip_global_norm": 5.907761096954346,
+        "step": 183
+      },
+      {
+        "pre_clip_global_norm": 5.856817722320557,
+        "step": 184
+      },
+      {
+        "pre_clip_global_norm": 3.0212316513061523,
+        "step": 185
+      },
+      {
+        "pre_clip_global_norm": 5.300899505615234,
+        "step": 186
+      },
+      {
+        "pre_clip_global_norm": 4.712696552276611,
+        "step": 187
+      },
+      {
+        "pre_clip_global_norm": 4.630763053894043,
+        "step": 188
+      },
+      {
+        "pre_clip_global_norm": 2.732224464416504,
+        "step": 189
+      },
+      {
+        "pre_clip_global_norm": 5.012783527374268,
+        "step": 190
+      },
+      {
+        "pre_clip_global_norm": 4.5963335037231445,
+        "step": 191
+      },
+      {
+        "pre_clip_global_norm": 3.083562135696411,
+        "step": 192
+      },
+      {
+        "pre_clip_global_norm": 4.115388870239258,
+        "step": 193
+      },
+      {
+        "pre_clip_global_norm": 5.411194324493408,
+        "step": 194
+      },
+      {
+        "pre_clip_global_norm": 4.018778324127197,
+        "step": 195
+      },
+      {
+        "pre_clip_global_norm": 4.080995559692383,
+        "step": 196
+      },
+      {
+        "pre_clip_global_norm": 3.5863497257232666,
+        "step": 197
+      },
+      {
+        "pre_clip_global_norm": 5.13746452331543,
+        "step": 198
+      },
+      {
+        "pre_clip_global_norm": 4.773286819458008,
+        "step": 199
+      },
+      {
+        "pre_clip_global_norm": 3.243180274963379,
+        "step": 200
+      },
+      {
+        "pre_clip_global_norm": 5.882537364959717,
+        "step": 201
+      },
+      {
+        "pre_clip_global_norm": 0.9807396531105042,
+        "step": 202
+      },
+      {
+        "pre_clip_global_norm": 3.4546875953674316,
+        "step": 203
+      },
+      {
+        "pre_clip_global_norm": 4.314207553863525,
+        "step": 204
+      },
+      {
+        "pre_clip_global_norm": 4.723587512969971,
+        "step": 205
+      },
+      {
+        "pre_clip_global_norm": 6.045186519622803,
+        "step": 206
+      },
+      {
+        "pre_clip_global_norm": 5.546563148498535,
+        "step": 207
+      },
+      {
+        "pre_clip_global_norm": 4.267733573913574,
+        "step": 208
+      },
+      {
+        "pre_clip_global_norm": 2.885159730911255,
+        "step": 209
+      },
+      {
+        "pre_clip_global_norm": 4.2754387855529785,
+        "step": 210
+      },
+      {
+        "pre_clip_global_norm": 3.746346950531006,
+        "step": 211
+      },
+      {
+        "pre_clip_global_norm": 3.4153199195861816,
+        "step": 212
+      },
+      {
+        "pre_clip_global_norm": 5.095390796661377,
+        "step": 213
+      },
+      {
+        "pre_clip_global_norm": 3.3249588012695312,
+        "step": 214
+      },
+      {
+        "pre_clip_global_norm": 1.9593628644943237,
+        "step": 215
+      },
+      {
+        "pre_clip_global_norm": 5.498640537261963,
+        "step": 216
+      },
+      {
+        "pre_clip_global_norm": 4.070890426635742,
+        "step": 217
+      },
+      {
+        "pre_clip_global_norm": 3.2736265659332275,
+        "step": 218
+      },
+      {
+        "pre_clip_global_norm": 2.1741185188293457,
+        "step": 219
+      },
+      {
+        "pre_clip_global_norm": 3.887664556503296,
+        "step": 220
+      },
+      {
+        "pre_clip_global_norm": 7.997213363647461,
+        "step": 221
+      },
+      {
+        "pre_clip_global_norm": 4.70661735534668,
+        "step": 222
+      }
+    ],
+    "records_hash_payload_format": "json-list-of-step-and-pre-clip-global-norm-records-v1",
+    "records_sha256": "d948b6ca29757398b9dfd562236fa1f650984bcc22b234ea3d43ae74de3ab2a6",
+    "trainable_parameter_names_hash_payload_format": "json-list-of-sorted-unique-trainable-parameter-names-v1",
+    "trainable_parameter_names_sha256": "9e7a1a3e4877983fbac83e3c07dae18c80e5717694994042789991ced9c57ba9",
+    "trainable_parameter_tensors": 392,
+    "v": 1
+  },
+  "held_out": {
+    "development_contamination_count": 0,
+    "development_lineages": [
+      "7e2292e1e552c020335872a2d4527950ed3deddd0986375afbbdf51699ea8070"
+    ],
+    "excluded_goal_names": [
+      "closed_arithmetic_seven",
+      "existential_subtraction_two",
+      "double_right_zero",
+      "consecutive_product_even"
+    ],
+    "excluded_goal_statement_sha256s": [
+      "a4d55ce8cc0ecc39b2ee17d962ec1200d1fade48e6ef5d8cd41ea86f78de8815",
+      "a2c54aad7d6b405ce29dcad548920a8394aea587a7ecdf7b20f9949e3e6bf1c8",
+      "5359d48c454a9d099f31d442c5dde4dcbaa5a00440de266d04fd5b6eca813d10",
+      "c19f186455a56eca86ff4b92eaf2e1a1ef017d37fe2b296fbe6f5d2120020137"
+    ],
+    "historical_v3_contract_sha256": "351f6257d79f7e4704eb02da128697da58ae1916e1e5a1bedb1a8e60ef18103d",
+    "matched_source_theorems": [
+      "triangular_product_even_hydra_candidate"
+    ],
+    "quarantine_rows": 13,
+    "quarantined_lineages": [
+      "5f46b17cc81e9478f3f362c356ac7d97cd943a1056656dbd74e81af57db3ad99"
+    ],
+    "training_contamination_count": 0,
+    "training_lineages": [
+      "1a7881809a75c418727412d5fcdceb69fb386ebd7f2d15370a1adb0db100a558",
+      "2f1d1b51cbed6258c0ebf972f811498e5702c4d7ef6473dff103aa9673027365",
+      "38634bc7704b5e7697554fbd6953a36488b24ab11cd5692779daa1623958a23a",
+      "63b95c040e387d612c095b04adcbd06db339e4874f1e7935eddeabaeecb00e5b",
+      "651236da77a650b2152b360bc3bef264db4fbc1b6df5044c2b64d5d865d742da",
+      "6db06a726561eb3257a80478fb573fc527f95974a0f0b233fc72d54ea5f9d6e7",
+      "760000c834602313d255b73d395eb9b91891790c8e6d3170ecf2b154fff093fd",
+      "77a258cea107408658b356fba8e2eb901dde83548645a5676c00ccce893bbb58",
+      "89c8ba6ae2d40701478371160e95437ce33861b431d0e5ff4830796b1c4f139b",
+      "955aa61c5abc1061221533bdb48926e23c948e6ea3dc961abac84b683da6809f",
+      "9641afb5e42f8de9c39e47ecd6fe7906c02f6ce6d269156c20476016790926df",
+      "9a0e8cecab8d2341eba38fdbbe2531eb2edc68492675696c6af3ce2f858a8cc2",
+      "aee7851f2a962bd7ab7da84b4db741700f494493a147d87fee26d2b2a0b4fe59",
+      "b99b3a321ac077b6680db26beffb1382efdfb83317f62cb4e2917a32a33be41b",
+      "cb7ac649e2eb0651f2531c694ae10c0a942075d1c0f9452ad76067091fadd708",
+      "cd0bc95fc51867b77cd32c21df36728a774d63a576fcc1d5f82d5084125b6c46",
+      "d9f50694333b5f52d119e701df070eef8508ea9728f13be7dfe200e5427f8e88"
+    ]
+  },
+  "historical_model_authority": {
+    "frozen_checked_theorem_count": 247,
+    "model": "Qwen3-1.7B historical model-v3 adapter",
+    "silently_expanded": false
+  },
+  "job": {
+    "deployment": {
+      "job_script": {
+        "path": "slurm/peano_hydra_alpha_train.sbatch",
+        "sha256": "804705ca9711caf7367649097cf40f0760f5b2ccab781258fca875a7a1015720",
+        "status": "declared"
+      },
+      "mode": "slurm",
+      "modules": {
+        "loaded_modules": [
+          "GCCcore/14.3.0",
+          "binutils/2.44",
+          "GCC/14.3.0",
+          "numactl/2.0.19",
+          "XZ/5.8.1",
+          "libxml2/2.14.3",
+          "libpciaccess/0.18.1",
+          "hwloc/2.12.1",
+          "OpenSSL/3",
+          "libevent/2.1.12",
+          "json-c/0.17",
+          "libcxi/1.0.2-SHS-13.1.0",
+          "libfabric/2.3.1-SHS-13.1.0",
+          "PMIx/5.0.8",
+          "PRRTE/3.0.11",
+          "CUDA/12.9.1",
+          "OpenMPI/5.0.8",
+          "OpenBLAS/0.3.30",
+          "NVPL/25.5",
+          "FlexiBLAS/3.4.5",
+          "FFTW/3.3.10",
+          "FFTW.MPI/3.3.10",
+          "ScaLAPACK/2.2.2-fb",
+          "foss/2025b",
+          "ncurses/6.5",
+          "GMP/6.3.0",
+          "bzip2/1.0.8",
+          "libreadline/8.2",
+          "libtommath/1.3.0",
+          "Tcl/9.0.1",
+          "SQLite/3.50.1",
+          "libffi/3.5.1",
+          "Python/3.13.5",
+          "Z3/4.15.1",
+          "Clang/21.1.2-CUDA-12.9.1",
+          "magma/2.9.0-CUDA-12.9.1",
+          "cuDNN/9.10.1.4-CUDA-12.9.1",
+          "NCCL/2.27.7-CUDA-12.9.1",
+          "aws-ofi-nccl/1.16.3-CUDA-12.9.1",
+          "NASM/2.16.03",
+          "libjpeg-turbo/3.1.1",
+          "libpng/1.6.50",
+          "zlib/1.3.1",
+          "x264/20250831",
+          "LAME/3.100",
+          "x265/4.1",
+          "expat/2.7.1",
+          "Brotli/1.1.0",
+          "freetype/2.13.3",
+          "util-linux/2.41",
+          "fontconfig/2.17.0",
+          "xorg-macros/1.20.2",
+          "X11/20250608",
+          "FriBidi/1.0.16",
+          "SDL2/2.32.10",
+          "FFmpeg/7.1.2",
+          "libogg/1.3.6",
+          "FLAC/1.5.0",
+          "libvorbis/1.3.7",
+          "libopus/1.5.2",
+          "libsndfile/1.2.2",
+          "cuSPARSELt/0.8.1.1-CUDA-12.9.1",
+          "libaec/1.1.4",
+          "Perl/5.40.2",
+          "HDF5/1.14.6",
+          "ML-bundle/25.10"
+        ],
+        "requested": "ML-bundle/25.10",
+        "status": "loaded"
+      },
+      "source_sync": {
+        "git_commit": "a4ed24815925adffd45a5fe40423c2df2cf0a665",
+        "git_dirty": false,
+        "path": ".peano-source-provenance.tsv",
+        "sha256": "fd1780bfe2eee7afb2eaeb6c200714d64aac9beb80677b5d18328bcdf1134d6b",
+        "status": "synced",
+        "synced_at": "2026-08-26T20:23:39Z"
+      }
+    },
+    "environment": {
+      "SLURM_CLUSTER_NAME": "helios",
+      "SLURM_JOB_ACCOUNT": "plgccaiautore2026-gpu-gh200",
+      "SLURM_JOB_NAME": "peano-hydra-alpha-train",
+      "SLURM_JOB_NODELIST": "x1002c0s0b1n0",
+      "SLURM_JOB_PARTITION": "plgrid-gpu-gh200",
+      "SLURM_SUBMIT_DIR": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+    },
+    "job_id": "21279969",
+    "ledger": {
+      "path": "logs/submissions.tsv",
+      "row_sha256": "9dcecb21abc85a9c57633b1621a886f2ef46e97c2b9f19f2c14f1f1a98d864e2"
+    },
+    "scheduler": "slurm",
+    "submission": {
+      "dependency_job_id": "21279955",
+      "git_commit": "a4ed24815925adffd45a5fe40423c2df2cf0a665",
+      "git_dirty": "false",
+      "job_id": "21279969",
+      "script": "slurm/peano_hydra_alpha_train.sbatch",
+      "script_sha256": "804705ca9711caf7367649097cf40f0760f5b2ccab781258fca875a7a1015720",
+      "sync_timestamp": "2026-08-26T20:23:39Z",
+      "timestamp": "2026-08-26T22:35:55+02:00",
+      "workdir": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training"
+    }
+  },
+  "metrics": {
+    "actual_optimizer_steps": 222,
+    "dev": {
+      "epoch": 1.0,
+      "eval_loss": 1.0614169836044312,
+      "eval_runtime": 1.1936,
+      "eval_samples_per_second": 10.053,
+      "eval_steps_per_second": 10.053
+    },
+    "development_rows": 12,
+    "expected_optimizer_steps": 222,
+    "train": {
+      "epoch": 1.0,
+      "total_flos": 4344393347850240.0,
+      "train_loss": 1.1128944105527423,
+      "train_runtime": 736.1345,
+      "train_samples_per_second": 2.409,
+      "train_steps_per_second": 0.302
+    },
+    "training_rows": 1773
+  },
+  "model": {
+    "model_id": "Qwen/Qwen3-1.7B-Base",
+    "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+  },
+  "model_trained": true,
+  "objective": {
+    "causal_shift": 1,
+    "format": "peano-completion-only-indexed-logits",
+    "ignore_index": -100,
+    "loss": {
+      "function": "cross_entropy",
+      "logits_dtype": "float32",
+      "reduction": "summed-token-loss/num-items-in-batch"
+    },
+    "projection": {
+      "model_argument": "logits_to_keep",
+      "positions": "union-of-nonignored-shifted-label-positions"
+    },
+    "supervision": "contiguous-completion-suffix-including-eos",
+    "task": "causal-next-token-completion-sft",
+    "v": 1
+  },
+  "open_research_gates": [
+    "H0 provider attestation and raw-call evidence",
+    "H1 reviewed sealed matched-compute benchmark",
+    "versioned structured macro protocol",
+    "independent external-provider audit"
+  ],
+  "output_directory_identity": {
+    "device": 3486015764,
+    "inode": 144120745511960815,
+    "mode": "0o700",
+    "parent": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/results/peano-hydra",
+    "parent_device": 3486015764,
+    "parent_inode": 144120745511960376,
+    "path": "/net/scratch/hscra/plgrid/plgnasqret/codex-control/projects/peano-lab-training/results/peano-hydra/qwen3-1.7b-alpha-v25-a96223a021ed"
+  },
+  "preparation": {
+    "directory": "_deploy/hydra-posttrain",
+    "files": {
+      "config.toml": {
+        "bytes": 988,
+        "sha256": "9ffb0ded550cc1588fe99369d83ee012479bc93b28275f89ddc472fcf2e8f815"
+      },
+      "dev.jsonl": {
+        "bytes": 36440,
+        "rows": 12,
+        "sha256": "9747ae4211d7c49ea069033856a0896bce52e4457a96156afe323f60c450c56c"
+      },
+      "discovery.jsonl": {
+        "bytes": 472,
+        "rows": 1,
+        "sha256": "2fb67717a140e89c86d15da7d7ffc8c8cd27ece65039a78e7fafa341fc48aa62"
+      },
+      "preferences.jsonl": {
+        "bytes": 1040,
+        "rows": 1,
+        "sha256": "5e97e0148718edd933a354fb71917cdca511cc0e43a809427ede06454c573a5b"
+      },
+      "quarantine.jsonl": {
+        "bytes": 511,
+        "rows": 1,
+        "sha256": "bc8eb0b3708166df1af3fdedb32c98704ec7aea9c1ff4a1c87c413f3432c8006"
+      },
+      "train.jsonl": {
+        "bytes": 6001333,
+        "rows": 1773,
+        "sha256": "022c30bac35a1e594f3fa244906affc41478235e0d22dd555d759094b5dd3d4a"
+      }
+    },
+    "manifest_sha256": "e88e268a85a8662a5624b47690583b58c0b7fed8e7300774cf36daf1f9269df0"
+  },
+  "preparation_manifest_sha256": "e88e268a85a8662a5624b47690583b58c0b7fed8e7300774cf36daf1f9269df0",
+  "requirements_verification": {
+    "packages": {
+      "accelerate": "1.8.1",
+      "certifi": "2025.7.14",
+      "charset-normalizer": "3.4.2",
+      "filelock": "3.18.0",
+      "fsspec": "2025.5.1",
+      "hf-xet": "1.1.5",
+      "huggingface-hub": "0.33.4",
+      "idna": "3.10",
+      "jinja2": "3.1.6",
+      "markupsafe": "3.0.2",
+      "mpmath": "1.3.0",
+      "networkx": "3.5",
+      "numpy": "2.3.1",
+      "packaging": "25.0",
+      "peft": "0.16.0",
+      "pip": "25.2",
+      "psutil": "7.0.0",
+      "pyyaml": "6.0.2",
+      "regex": "2024.11.6",
+      "requests": "2.32.4",
+      "safetensors": "0.5.3",
+      "setuptools": "80.9.0",
+      "sympy": "1.14.0",
+      "tokenizers": "0.21.2",
+      "torch": "2.9.1+cu129",
+      "tqdm": "4.67.1",
+      "transformers": "4.53.3",
+      "typing-extensions": "4.14.1",
+      "urllib3": "2.5.0"
+    },
+    "packages_sha256": "fa8c358e1ed277a404f9212313757cae040626f6653eae2e6b116ef2b605cfc1",
+    "requirements": {
+      "path": "training/peano_policy/requirements-helios.lock",
+      "sha256": "50315d5465ec6081517e1e3bb93096c3a990907020978a490295cde59a6c7871"
+    },
+    "schema": "peano-hydra-posttrain-runtime-lock-v1",
+    "status": "verified"
+  },
+  "research_claim_eligible": false,
+  "reviewed_definition_dag_sha256": "85e602b4b270745beb06d61acb01f1c650d5c537a5bc408a7c46f1e7deb72ccc",
+  "runtime": {
+    "accelerator": {
+      "bf16_supported": true,
+      "cuda_available": true,
+      "cuda_runtime": "12.9",
+      "cudnn": 91001,
+      "device_capability": [
+        9,
+        0
+      ],
+      "device_name": "NVIDIA GH200 120GB",
+      "torch": "2.9.1+cu129"
+    },
+    "hostname": "x1002c0s0b1n0",
+    "implementation": "CPython",
+    "machine": "aarch64",
+    "packages": {
+      "Jinja2": "3.1.6",
+      "MarkupSafe": "3.0.2",
+      "PyYAML": "6.0.2",
+      "accelerate": "1.8.1",
+      "certifi": "2025.7.14",
+      "charset-normalizer": "3.4.2",
+      "filelock": "3.18.0",
+      "fsspec": "2025.5.1",
+      "hf-xet": "1.1.5",
+      "huggingface-hub": "0.33.4",
+      "idna": "3.10",
+      "mpmath": "1.3.0",
+      "networkx": "3.5",
+      "numpy": "2.3.1",
+      "packaging": "25.0",
+      "peft": "0.16.0",
+      "pip": "25.2",
+      "psutil": "7.0.0",
+      "regex": "2024.11.6",
+      "requests": "2.32.4",
+      "safetensors": "0.5.3",
+      "setuptools": "80.9.0",
+      "sympy": "1.14.0",
+      "tokenizers": "0.21.2",
+      "tomli": null,
+      "torch": "2.9.1+cu129",
+      "tqdm": "4.67.1",
+      "transformers": "4.53.3",
+      "typing-extensions": "4.14.1",
+      "urllib3": "2.5.0"
+    },
+    "packages_sha256": "4697bd3e34632c5426ec98e021f626c914e2232d52ce542ec1bc4e9871c6bcb1",
+    "platform": "Linux-5.14.0-687.29.1.el9_8.aarch64+64k-aarch64-with-glibc2.34",
+    "python": "3.13.5",
+    "requirements": {
+      "path": "training/peano_policy/requirements-helios.lock",
+      "sha256": "50315d5465ec6081517e1e3bb93096c3a990907020978a490295cde59a6c7871"
+    }
+  },
+  "schema": "peano-hydra-posttrain-adapter-v1",
+  "sealed_benchmark": false,
+  "surface_label": "hydra-alpha-v25-3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28",
+  "theorem_dag_sha256": "867f13c6fe78e55e619eed76541174f8eff0b972a9f71ddf7d94fc1c504c5e13",
+  "token_exposure": {
+    "dev": {
+      "format": "peano-policy-token-exposure",
+      "max_length": 4096,
+      "order_sha256": "3fefa4772fbd68871b89478b5800a7a4d1aeae234040bfe18c1a3210da1fd0ee",
+      "record_sha256": "965bb1a98e6dcc00cf196f410b0983b5940df439fa2fe2604764dda1bb1354aa",
+      "role": "dev",
+      "rows": 12,
+      "sequence": {
+        "longest_example_id": "dev:9:2163a850efe9cf6659554db25ab4e954c3a05d2402d01a3dc0d4467d686c165b",
+        "maximum": 362,
+        "mean": 260.583,
+        "median": 268,
+        "minimum": 199,
+        "p95": 362,
+        "p99": 362,
+        "sum_squared": 852177,
+        "total": 3127
+      },
+      "supervision": {
+        "longest_example_id": "dev:7:7690b55052cdc05b1b1324dda2169558477e4c487a9864ba21ac85597f2bbc56",
+        "maximum": 15,
+        "mean": 5.417,
+        "median": 4,
+        "minimum": 3,
+        "p95": 15,
+        "p99": 15,
+        "total": 65
+      },
+      "tokenized_rows_sha256": "e65fb8b64a3f428e9dd723c1b5050729ccd9f07bf9a2ffddb719fdaa57152b6b",
+      "tokenizer": {
+        "class": "Qwen2TokenizerFast",
+        "eos_token_id": 151643,
+        "model_id": "Qwen/Qwen3-1.7B-Base",
+        "pad_token_id": 151643,
+        "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+        "vocab_size": 151669
+      },
+      "v": 1
+    },
+    "train": {
+      "format": "peano-policy-token-exposure",
+      "max_length": 4096,
+      "order_sha256": "ceeddc1d5d569f6adfbcd98ae8400b43462952162cc3911f4eb09e9d59f2e95f",
+      "record_sha256": "6dbc0d6ce75986b0087f08ef479b329656f34fd7f3c158ccc17ba992fd28db79",
+      "role": "train",
+      "rows": 1773,
+      "sequence": {
+        "longest_example_id": "train:314:15915f0826745d1f2994aa373c21a0f1d63d9f177cf1670f1cc13c31bcb6773a",
+        "maximum": 2101,
+        "mean": 286.215,
+        "median": 255,
+        "minimum": 181,
+        "p95": 440,
+        "p99": 761,
+        "sum_squared": 168118372,
+        "total": 507460
+      },
+      "supervision": {
+        "longest_example_id": "train:1404:ea9a63fab652a5eed0a803534b9b956a5382ffeb261b6738c7a1286f99acdf86",
+        "maximum": 152,
+        "mean": 5.274,
+        "median": 4,
+        "minimum": 2,
+        "p95": 11,
+        "p99": 20,
+        "total": 9350
+      },
+      "tokenized_rows_sha256": "007b7b065176deea59d4ded325caa33ea20b15484b8f06ee2caecb236f73845c",
+      "tokenizer": {
+        "class": "Qwen2TokenizerFast",
+        "eos_token_id": 151643,
+        "model_id": "Qwen/Qwen3-1.7B-Base",
+        "pad_token_id": 151643,
+        "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+        "vocab_size": 151669
+      },
+      "v": 1
+    }
+  },
+  "tokenizer": {
+    "files": {
+      "tokenizer/added_tokens.json": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+      "tokenizer/chat_template.jinja": "87a2728cb8dc9fe424d624542f6060ec05a1d285ebbec578bb078900e33396b5",
+      "tokenizer/merges.txt": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+      "tokenizer/special_tokens_map.json": "6676f091c8bc4d1b50146427cfde92073402866b87b6e39223227931b70083e9",
+      "tokenizer/tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "tokenizer/tokenizer_config.json": "67e5a0a11cd35f9c00ee52e0af4cdc0baa75fea0cb5fce7d1beb251b4621d15c",
+      "tokenizer/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+    },
+    "root": "tokenizer",
+    "sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e"
+  },
+  "trainer_runtime": {
+    "accelerator_backward_divisor": 1,
+    "configured_trainer_gradient_accumulation_steps": 8,
+    "device": {
+      "index": 0,
+      "type": "cuda"
+    },
+    "distributed_type": {
+      "name": "NO",
+      "value": "NO"
+    },
+    "dynamo_backend": {
+      "name": "NO",
+      "value": "NO"
+    },
+    "format": "peano-completion-only-trainer-runtime",
+    "manual_trainer_accumulation": true,
+    "mixed_precision": "bf16",
+    "num_processes": 1,
+    "plugins": {
+      "deepspeed": false,
+      "fsdp": false,
+      "tensor_parallel": false
+    },
+    "v": 1,
+    "visible_gpus": 1
+  },
+  "version": "v25"
+}

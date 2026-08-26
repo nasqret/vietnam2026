@@ -6,6 +6,13 @@ adapters can suggest candidate moves. A theorem is accepted only after the
 existing Peano kernel checks the original statement; `run_hydra` additionally
 replays every successful command sequence in a fresh traced session.
 
+The first Alpha-v25 Qwen run is now executed: **222 optimizer steps** on
+**1,773 training rows**, followed by an actual pretrained **0/4** versus
+trained **3/4** diagnostic comparison. All three learned proofs independently
+replay. The fixed symbolic control also scores **3/4**, so this is not an
+LLM-advantage result. See the
+[run report and replay instructions](../../artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md).
+
 ## One current product workflow
 
 Run the integrated local checks and prepare deterministic proof-development
@@ -95,7 +102,7 @@ held-out goals and quarantines a matching **entire lineage from both training
 and development**. In particular,
 `triangular_product_even_hydra_candidate` is the same formula as the held-out
 `consecutive_product_even`: its 13 rows cannot enter either model-facing
-split. The verified full-scale source yields **1,773 clean training rows**,
+split. The verified 192-route source yields **1,773 clean training rows**,
 **12 clean development rows**, and **13 quarantined rows** from its **1,798
 total rows**; preflight derives **222 bounded optimizer steps** without
 initializing CUDA. The older 279-row source therefore yields **261 training**, **5
@@ -120,15 +127,52 @@ Optional Helios execution is separated into
 `slurm/peano_hydra_alpha_train.sbatch` (**2-hour GH200**), and
 `slurm/peano_hydra_alpha_evaluate.sbatch` (**1-hour GH200**). Training and
 evaluation demand the exact clean-source `--afterok` predecessor; every stage
-requires a clean committed source and pinned offline model cache. Real
+requires clean committed source, and GPU stages require the pinned offline
+model cache. Real
 submission needs a separately authorized `--submit --confirm` operation.
 No local preparation or readiness command submits these jobs automatically.
+`bash scripts/helios_hydra_chain.sh --test-only` checks the three requests;
+its explicit `--submit --confirm PEANO-LAB-TRAINING` mode checks matching
+clean local/remote source and immediately queues the success-dependent chain.
+This avoids losing predecessor IDs under Helios's short controller retention.
 
 These reproducible development artifacts do not train a model, admit a
 theorem, assert semantic novelty or globally minimal proofs, or establish an
 LLM advantage. The single current development track is documented in
 [`docs/HYDRA_PRODUCT_ROADMAP.md`](../../docs/HYDRA_PRODUCT_ROADMAP.md) and
 [`docs/HYDRA_POST_TRAINING.md`](../../docs/HYDRA_POST_TRAINING.md).
+
+## Completed experiment and larger named preparation
+
+Helios jobs **21279955 → 21279969 → 21280018** completed preparation,
+training, and matched evaluation from clean commit `a4ed2481`. All **222**
+update boundaries had finite gradients; **392 trainable tensors** changed.
+Local kernel replay reproduced the model's three successful traces and their
+**98**, **29**, and **21 proof nodes** exactly, without importing Torch.
+The base rejected all 16 candidate sequences as malformed; the trained model
+emitted 88 valid candidate lines. Its improvement therefore measures use of
+the strict tactic interface, not broad mathematical superiority. Actual
+model calls were **4** versus **22**, despite identical search limits.
+`consecutive_product_even` remains unknown; the symbolic control is still
+as successful and proves `double_right_zero` more cheaply.
+
+The next corpus has already independently checked **460** routes, including
+**260 Alpha-only**, yielding **7,154 transitions** with **90 duplicates
+removed**. The separate `catalog-460` handoff under
+`_deploy/hydra-posttrain-next` has **7,129 training / 12 development / 13
+quarantined rows** and **892 planned optimizer steps**. It is **prepared,
+not trained**; the validation theorem has not grown with the training set.
+Use the [named-run preparation commands](../../docs/HYDRA_POST_TRAINING.md#completed-model-run-and-the-next-isolated-curriculum)
+to reproduce it without replacing the completed run.
+
+An explicit `--run-id` selects a distinct adapter name and, when no output
+directory is given, `_deploy/hydra-posttrain-<run-id>`. The publisher refuses
+to replace another preparation identity or changed manifest evidence; only
+byte-identical regeneration is allowed. Training and evaluation select a
+run through its authenticated `--preparation-dir`. The standard Slurm chain
+still selects the 192-route default; it does not implicitly consume a named
+local handoff. Broader lineage-clean development coverage and the stronger
+symbolic baseline come next, before another GPU comparison.
 
 ## Current executable evidence
 
@@ -259,10 +303,12 @@ resumption never manufactures historical search or comparison evidence.
 
 ## Model and evidence boundaries
 
-The existing trained Qwen3-1.7B adapter lives on WMI and is frozen to its
+The historical trained Qwen3-1.7B adapter lives on WMI and is frozen to its
 historical 247-theorem authority. Newer library theorems cannot silently enter
-that adapter's prompts or imports. A broader model-assisted campaign requires
-a newly reviewed library epoch and compatible model/provider authority.
+that adapter's prompts or imports. The new Helios adapter is separately
+attested to Alpha v25 and cannot silently inherit a later release either.
+A broader model-assisted campaign requires a reviewed library epoch and
+compatible model/provider authority.
 
 The exact historical surface labels `model-v1`, `model-v2`, and `model-v3`
 also retain their attested numeral bound of 256, both for theorem statements

@@ -1,0 +1,47 @@
+[run]
+name = "qwen3-1.7b-hydra-alpha-v25-a96223a021ed-catalog-460"
+seed = 20260826
+output_dir = "results/peano-hydra/qwen3-1.7b-alpha-v25-a96223a021ed-catalog-460"
+resume = "never"
+
+[model]
+model_id = "Qwen/Qwen3-1.7B-Base"
+revision = "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+dtype = "bfloat16"
+attn_implementation = "sdpa"
+trust_remote_code = false
+
+[data]
+train_path = "_deploy/hydra-posttrain-next/train.jsonl"
+eval_path = "_deploy/hydra-posttrain-next/dev.jsonl"
+max_length = 4096
+
+[lora]
+rank = 16
+alpha = 32
+dropout = 0.05
+target_modules = [
+  "q_proj", "k_proj", "v_proj", "o_proj",
+  "gate_proj", "up_proj", "down_proj",
+]
+
+[trainer]
+epochs = 1.0
+max_steps = -1
+per_device_train_batch_size = 1
+per_device_eval_batch_size = 1
+gradient_accumulation_steps = 8
+learning_rate = 0.0001
+weight_decay = 0.01
+warmup_ratio = 0.05
+logging_steps = 1
+eval_steps = 100000
+save_steps = 100000
+save_total_limit = 1
+gradient_checkpointing = true
+
+[generation]
+max_new_tokens = 256
+do_sample = false
+temperature = 1.0
+top_p = 1.0

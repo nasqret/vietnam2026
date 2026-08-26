@@ -6,6 +6,7 @@ from collections import defaultdict
 import hashlib
 import json
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 from types import SimpleNamespace
@@ -185,13 +186,14 @@ def preparation(
         }
         for row in quarantine
     )
+    config_raw, config = evaluation.posttraining_config(epoch, output=directory)
     payloads = {
         "train.jsonl": _jsonl(tuple(wrappers["train"])),
         "dev.jsonl": _jsonl(tuple(wrappers["dev"])),
         "preferences.jsonl": _jsonl(preferences),
         "discovery.jsonl": _jsonl(discovery),
         "quarantine.jsonl": _jsonl(tuple(quarantine)),
-        "config.toml": evaluation.posttraining_config(epoch, output=directory)[0],
+        "config.toml": config_raw,
     }
     files: dict[str, dict[str, object]] = {}
     for name, payload in payloads.items():
@@ -224,6 +226,7 @@ def preparation(
             "revision": evaluation.EXPECTED_BASE_MODEL_REVISION,
         },
         "files": files,
+        "training": {"adapter_output_dir": config.run.output_dir},
         "splits": splits,
         "held_out": {
             "historical_v3_contract_sha256": held_out_contract_sha256(PEANO_PROMPT_V3),
@@ -273,7 +276,9 @@ def _adapter(
     )
     # CPU-only fixtures exercise the actual trainer record format without
     # pretending that these deliberately fake weights came from model work.
-    _, config = evaluation.posttraining_config(plan.epoch, output=plan.preparation_directory)
+    _, config = evaluation.posttraining_config(
+        plan.epoch, output=plan.preparation_directory, run_id=preparation.get("run_id"),
+    )
     train_rows = preparation["splits"]["train"]["rows"]
     dev_rows = preparation["splits"]["dev"]["rows"]
     accumulation = config.trainer.gradient_accumulation_steps
@@ -388,6 +393,8 @@ def _adapter(
         "alpha_admitted": False,
         "sealed_benchmark": False,
     }
+    if "run_id" in preparation:
+        record["run_id"] = preparation["run_id"]
     if mutate:
         record.update(mutate)
     (root / "manifest.json").write_bytes(_canonical(record) + b"\n")
@@ -424,6 +431,61 @@ def test_matched_plan_binds_one_alpha_epoch_and_identical_base_and_budget(
     assert report["comparison"]["model_metrics"] is None
     assert trained["status"] == "unavailable"
     assert report["research_claim_eligible"] is False
+
+
+@pytest.mark.parametrize("run_id", [None, "catalog-460"])
+def test_adapter_autodiscovery_uses_the_authenticated_preparation_output(
+    preparation, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, run_id: str | None,
+) -> None:
+    directory, manifest, epoch = preparation
+    if run_id is not None:
+        manifest["run_id"] = run_id
+    config_raw, config = evaluation.posttraining_config(epoch, output=directory, run_id=run_id)
+    (directory / "config.toml").write_bytes(config_raw)
+    manifest["files"]["config.toml"] = {
+        "bytes": len(config_raw), "sha256": hashlib.sha256(config_raw).hexdigest(),
+    }
+    manifest["training"]["adapter_output_dir"] = config.run.output_dir
+    _rewrite_manifest(directory, manifest)
+    monkeypatch.setattr(evaluation, "REPOSITORY_ROOT", tmp_path)
+    lock = Path("training/peano_policy/requirements-helios.lock")
+    (tmp_path / lock).parent.mkdir(parents=True)
+    shutil.copyfile(ROOT / lock, tmp_path / lock)
+    if run_id is not None:
+        legacy = evaluation.posttraining_config(epoch, output=directory)[1]
+        legacy_path = tmp_path / legacy.run.output_dir
+        legacy_path.mkdir(parents=True)
+        (legacy_path / "manifest.json").write_text("do not load the original run", encoding="utf-8")
+
+    plan = build_matched_evaluation_plan(directory)
+    assert plan.trained_adapter is None
+    adapter = _adapter(tmp_path, plan)
+    expected = tmp_path / config.run.output_dir
+    expected.parent.mkdir(parents=True, exist_ok=True)
+    adapter.rename(expected)
+
+    discovered = build_matched_evaluation_plan(directory)
+    assert discovered.trained_adapter["manifest_path"] == str(expected / "manifest.json")
+    assert discovered.trained_adapter["training_evidence"]["training_rows"] == manifest["splits"]["train"]["rows"]
+
+
+@pytest.mark.parametrize("change", ["named-with-legacy-config", "unsafe-run-id", "empty-run-id", "wrong-output"])
+def test_preparation_cannot_redirect_adapter_discovery_without_exact_config(
+    preparation, change: str,
+) -> None:
+    directory, manifest, _ = preparation
+    if change == "wrong-output":
+        manifest["training"]["adapter_output_dir"] = "../../another-adapter"
+    else:
+        manifest["run_id"] = {
+            "named-with-legacy-config": "catalog-460",
+            "unsafe-run-id": "../escape",
+            "empty-run-id": None,
+        }[change]
+    _rewrite_manifest(directory, manifest)
+
+    with pytest.raises(HydraEvaluationError, match="configuration|run identity"):
+        build_matched_evaluation_plan(directory)
 
 
 def test_historical_alias_and_entire_teacher_lineage_are_quarantined(

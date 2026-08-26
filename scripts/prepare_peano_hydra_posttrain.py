@@ -42,8 +42,14 @@ def build_parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--output-dir",
         type=Path,
-        default=REPOSITORY_ROOT / "_deploy" / "hydra-posttrain",
+        default=None,
         metavar="PATH",
+        help="handoff directory (default: _deploy/hydra-posttrain, with -RUN_ID for named runs)",
+    )
+    parser.add_argument(
+        "--run-id",
+        metavar="LABEL",
+        help="optional safe label for a separate immutable adapter, e.g. catalog-460",
     )
     parser.add_argument(
         "--check",
@@ -56,7 +62,11 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     try:
-        prepared = prepare_posttraining(args.source_dir, args.output_dir)
+        output = args.output_dir
+        if output is None:
+            label = "hydra-posttrain" if args.run_id is None else f"hydra-posttrain-{args.run_id}"
+            output = REPOSITORY_ROOT / "_deploy" / label
+        prepared = prepare_posttraining(args.source_dir, output, run_id=args.run_id)
         destination = None if args.check else publish_preparation(prepared)
     except (HydraPosttrainError, OSError, TypeError, ValueError) as error:
         print(f"prepare-peano-hydra-posttrain: {' '.join(str(error).split())}", file=sys.stderr)
@@ -75,6 +85,10 @@ def main(argv: list[str] | None = None) -> int:
                 "model_trained": False,
                 "research_claim_eligible": False,
                 "output_dir": None if destination is None else str(destination),
+                **(
+                    {"run_id": args.run_id, "adapter_output_dir": prepared.config.run.output_dir}
+                    if args.run_id is not None else {}
+                ),
             },
             ensure_ascii=False,
             sort_keys=True,

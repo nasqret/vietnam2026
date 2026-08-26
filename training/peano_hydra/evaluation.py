@@ -35,6 +35,7 @@ from training.peano_hydra.policy import (
     PolicyHead,
 )
 from training.peano_hydra.posttrain import (
+    HydraPosttrainError,
     MAX_OPTIMIZER_STEPS,
     RUNTIME_LOCK_SCHEMA,
     _config as posttraining_config,
@@ -46,6 +47,7 @@ from training.peano_policy.contract import (
     held_out_contract_sha256,
     prompt_environment,
 )
+from training.peano_policy.config import ExperimentConfig
 from training.peano_policy.pretrained_baseline import (
     EXPECTED_BASE_MODEL_ID,
     EXPECTED_BASE_MODEL_REVISION,
@@ -732,14 +734,37 @@ class MatchedEvaluationPlan:
         return record
 
 
-def _default_adapter_manifest(epoch: HydraEpoch) -> Path:
-    return (
-        REPOSITORY_ROOT
-        / "results"
-        / "peano-hydra"
-        / f"qwen3-1.7b-alpha-{epoch.version}-{epoch.epoch_sha256[:12]}"
-        / "manifest.json"
-    )
+def _validated_preparation_config(
+    epoch: HydraEpoch,
+    directory: Path,
+    manifest: dict[str, object],
+) -> ExperimentConfig:
+    """Authenticate the optional run label and its exact adapter destination."""
+
+    try:
+        if "run_id" in manifest and manifest["run_id"] is None:
+            raise HydraPosttrainError("an explicit run-id cannot be empty")
+        config_raw, config = posttraining_config(
+            epoch, output=directory, run_id=manifest.get("run_id"),
+        )
+        descriptor = manifest["files"]["config.toml"]
+        training = manifest.get("training")
+        if (
+            descriptor.get("bytes") != len(config_raw)
+            or descriptor.get("sha256") != hashlib.sha256(config_raw).hexdigest()
+            or type(training) is not dict
+            or training.get("adapter_output_dir") != config.run.output_dir
+        ):
+            raise HydraEvaluationError(
+                "Alpha preparation changed its exact reviewed training configuration or adapter output"
+            )
+    except (KeyError, TypeError, HydraPosttrainError) as error:
+        raise HydraEvaluationError(f"invalid Alpha preparation run identity: {error}") from error
+    return config
+
+
+def _default_adapter_manifest(config: ExperimentConfig) -> Path:
+    return REPOSITORY_ROOT / config.run.output_dir / "manifest.json"
 
 
 def _adapter_path(value: Path) -> Path:
@@ -905,15 +930,7 @@ def _validated_training_evidence(
     """
 
     try:
-        config_raw, config = posttraining_config(epoch, output=preparation_directory)
-        descriptor = preparation_manifest["files"]["config.toml"]
-        if (
-            descriptor.get("bytes") != len(config_raw)
-            or descriptor.get("sha256") != hashlib.sha256(config_raw).hexdigest()
-        ):
-            raise HydraEvaluationError(
-                "trained Alpha evidence changed its exact reviewed training configuration"
-            )
+        config = _validated_preparation_config(epoch, preparation_directory, preparation_manifest)
         train_rows = preparation_manifest["splits"]["train"]["rows"]
         dev_rows = preparation_manifest["splits"]["dev"]["rows"]
         if (
@@ -980,7 +997,8 @@ def _validated_adapter(
     preparation_manifest_sha256: str,
     model: dict[str, str],
 ) -> dict[str, object] | None:
-    path = _default_adapter_manifest(epoch) if requested is None else _adapter_path(requested)
+    config = _validated_preparation_config(epoch, preparation_directory, preparation_manifest)
+    path = _default_adapter_manifest(config) if requested is None else _adapter_path(requested)
     if not path.exists():
         if requested is None:
             return None
@@ -1002,6 +1020,7 @@ def _validated_adapter(
         != epoch.reviewed_definition_dag_sha256
         or record.get("surface_label") != epoch.surface_label
         or record.get("preparation_manifest_sha256") != preparation_manifest_sha256
+        or record.get("run_id") != preparation_manifest.get("run_id")
         or type(preparation) is not dict
         or preparation.get("manifest_sha256") != preparation_manifest_sha256
         or preparation.get("files") != preparation_manifest.get("files")

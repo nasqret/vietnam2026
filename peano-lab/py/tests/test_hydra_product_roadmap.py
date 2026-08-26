@@ -9,6 +9,8 @@ needless peak memory; no release version is hardcoded.
 from __future__ import annotations
 
 import ast
+import csv
+import hashlib
 import json
 from pathlib import Path
 import re
@@ -332,7 +334,9 @@ def test_optimization_discovery_and_post_training_share_one_verified_epoch(
         "epoch.json", "sft.jsonl", "preferences.jsonl", "discovery.jsonl", "manifest.json"
     ):
         assert f"_deploy/hydra/{filename}" in roadmap
-    assert "teacher-oracle labels represent a\npreviously unknown mathematical theorem" in roadmap
+    assert "teacher-oracle labels represent a previously unknown mathematical theorem" in (
+        " ".join(roadmap.split())
+    )
     assert "until its ordinary\ndependency-closed Alpha-admission procedure succeeds" in roadmap
     assert "100,000 positive transitions from 20,000" in roadmap
 
@@ -906,6 +910,202 @@ def test_every_local_roadmap_document_link_resolves(
         path = (ROADMAP.parent / target.split("#", 1)[0]).resolve()
         assert path.is_relative_to(ROOT)
         assert path.is_file(), f"broken Hydra roadmap link: {target}"
+
+
+ALPHA_MODEL_RUN = (
+    ROOT / "artifacts" / "peano-hydra" / "alpha-v25-posttrain-2026-08-26"
+)
+
+
+def _run_receipt(filename: str) -> dict[str, object]:
+    return json.loads((ALPHA_MODEL_RUN / filename).read_text(encoding="utf-8"))
+
+
+def _file_sha256(filename: str) -> str:
+    return hashlib.sha256((ALPHA_MODEL_RUN / filename).read_bytes()).hexdigest()
+
+
+def test_archived_alpha_model_evidence_has_a_complete_checksum_inventory() -> None:
+    entries = {}
+    for line in (ALPHA_MODEL_RUN / "SHA256SUMS").read_text(encoding="utf-8").splitlines():
+        digest, filename = line.split("  ", 1)
+        assert filename not in entries
+        assert Path(filename).name == filename
+        assert re.fullmatch(r"[0-9a-f]{64}", digest)
+        assert _file_sha256(filename) == digest
+        entries[filename] = digest
+    assert set(entries) == {
+        path.name for path in ALPHA_MODEL_RUN.iterdir()
+        if path.is_file() and path.name != "SHA256SUMS"
+    }
+
+
+def test_archived_alpha_model_evidence_preserves_exact_executed_bytes() -> None:
+    assert _file_sha256("training-manifest.json") == (
+        "766b94e1645096840f79499b3b45465c7c29133d2583456e85567bdf5cc2b45f"
+    )
+    assert _file_sha256("matched-evaluation.json") == (
+        "87085bd544e7121cb1eb41255208c036e74139a4c2c459a69f20b141d60f2689"
+    )
+    assert _file_sha256("symbolic-control.json") == (
+        "80798392a002fdb7c0bae4abf9f68ad6e2e6d7817bc2b394f342f9fe74a899cb"
+    )
+    model = _run_receipt("training-manifest.json")
+    preparation = _run_receipt("preparation-manifest.json")
+    assert _file_sha256("preparation-manifest.json") == model[
+        "preparation_manifest_sha256"
+    ]
+    assert _file_sha256("preparation-config.toml") == preparation["files"][
+        "config.toml"
+    ]["sha256"]
+    assert _file_sha256("source-manifest.json") == preparation["source"][
+        "manifest_sha256"
+    ]
+    assert _file_sha256("source-provenance.tsv") == model["job"]["deployment"][
+        "source_sync"
+    ]["sha256"]
+    for filename in ("matched-evaluation.json", "symbolic-control.json"):
+        report = _run_receipt(filename)
+        digest = report.pop("evaluation_sha256")
+        canonical = json.dumps(
+            report, ensure_ascii=False, allow_nan=False, sort_keys=True,
+            separators=(",", ":"),
+        ).encode("utf-8")
+        assert hashlib.sha256(canonical).hexdigest() == digest
+
+
+def test_archived_alpha_model_scores_do_not_claim_a_symbolic_advantage() -> None:
+    report = _run_receipt("matched-evaluation.json")
+    model = _run_receipt("training-manifest.json")
+    control = _run_receipt("symbolic-control.json")
+    metrics = report["comparison"]["model_metrics"]
+    assert report["comparison"]["status"] == "executed"
+    assert metrics["pretrained_kernel_checked_proofs"] == 0
+    assert metrics["trained_kernel_checked_proofs"] == 3
+    assert metrics["pretrained_model_generate_calls"] == 4
+    assert metrics["trained_model_generate_calls"] == 22
+    assert metrics["research_claim_eligible"] is False
+    assert report["theorem_authority"]["allowed_theorems"] == []
+    assert control["symbolic_controls"]["kernel_checked_proofs"] == 3
+    assert all(row["model_calls"] == 0 for row in control["symbolic_controls"]["goals"])
+    assert control["comparison"]["status"] == "unmeasured"
+    assert control["comparison"]["model_metrics"] is None
+    assert model["model_trained"] is True
+    assert model["research_claim_eligible"] is False
+    assert model["sealed_benchmark"] is False
+    assert model["alpha_admitted"] is False
+    assert model["metrics"]["actual_optimizer_steps"] == 222
+    assert model["metrics"]["expected_optimizer_steps"] == 222
+    assert model["metrics"]["training_rows"] == 1773
+    assert model["metrics"]["development_rows"] == 12
+    audit = model["finite_gradient_audit"]
+    assert audit["observed_optimizer_boundaries"] == 222
+    assert audit["raw_finite_optimizer_boundaries"] == 222
+    assert audit["post_clip_finite_optimizer_boundaries"] == 222
+    assert len(audit["records"]) == 222
+    assert model["adapter_update"]["changed_parameter_tensors"] == 392
+    assert model["adapter_update"]["trainable_parameter_tensors"] == 392
+    lanes = report["comparison"]["lanes"]
+    assert sum(row["generation"]["malformed_sequences_rejected"]
+               for row in lanes["pretrained"]["goals"]) == 16
+    assert sum(row["generation"]["candidate_lines_returned"]
+               for row in lanes["pretrained"]["goals"]) == 0
+    assert sum(row["generation"]["candidate_lines_returned"]
+               for row in lanes["trained"]["goals"]) == 88
+    assert lanes["trained"]["goals"][-1]["status"] == "limit"
+
+
+def test_archived_alpha_model_replay_receipt_binds_original_proofs() -> None:
+    report = _run_receipt("matched-evaluation.json")
+    replay = _run_receipt("independent-replay.json")
+    assert replay["status"] == "passed"
+    assert replay["cuda_initialized"] is False
+    assert replay["report_file_sha256"] == _file_sha256("matched-evaluation.json")
+    assert replay["adapter_manifest_sha256"] == _file_sha256("training-manifest.json")
+    assert replay["evaluation_sha256"] == report["evaluation_sha256"]
+    assert replay["metrics"] == report["comparison"]["model_metrics"]
+    proofs = [row for row in report["comparison"]["lanes"]["trained"]["goals"]
+              if row["status"] == "proof"]
+    assert [row["proof_nodes"] for row in proofs] == [98, 29, 21]
+    for row, receipt in zip(proofs, replay["independently_replayed_proofs"], strict=True):
+        assert receipt["goal"] == row["goal"]
+        assert receipt["lane"] == "trained"
+        assert receipt["commands"] == row["evidence"]["search"]["commands"]
+        assert receipt["proof_nodes"] == row["proof_nodes"]
+        assert row["kernel_checked"] is True
+
+
+def test_archived_next_curriculum_is_isolated_and_not_a_trained_model() -> None:
+    original = _run_receipt("preparation-manifest.json")
+    source = _run_receipt("next-source-manifest.json")
+    preparation = _run_receipt("next-preparation-manifest.json")
+    preflight = _run_receipt("next-preflight.json")
+    assert "run_id" not in original
+    assert preparation["run_id"] == preflight["run_id"] == "catalog-460"
+    assert preparation["epoch_sha256"] == original["epoch_sha256"]
+    assert preparation["source"]["independently_replayed_catalog_routes"] == 460
+    assert preparation["source"]["manifest_sha256"] == _file_sha256(
+        "next-source-manifest.json"
+    )
+    assert preparation["files"]["config.toml"]["sha256"] == _file_sha256(
+        "next-preparation-config.toml"
+    )
+    assert source["transition_count"] == 7154
+    assert source["duplicate_transitions_removed"] == 90
+    assert preparation["files"]["train.jsonl"]["rows"] == 7129
+    assert preparation["files"]["dev.jsonl"]["rows"] == 12
+    assert preparation["files"]["dev.jsonl"] == original["files"]["dev.jsonl"]
+    assert preflight["quarantined_rows"] == 13
+    assert preflight["expected_optimizer_steps"] == 892
+    assert preflight["cuda_initialized"] is False
+    assert preflight["model_trained"] is False
+    assert preparation["model_trained"] is False
+    target = preparation["training"]["adapter_output_dir"]
+    assert target == preflight["adapter_output_dir"]
+    assert target.endswith("-catalog-460")
+    assert target != original["training"]["adapter_output_dir"]
+
+
+def test_archived_cluster_chain_records_only_owned_completed_jobs() -> None:
+    model = _run_receipt("training-manifest.json")
+    with (ALPHA_MODEL_RUN / "submissions.tsv").open(encoding="utf-8") as stream:
+        ledger = {row["job_id"]: row for row in csv.DictReader(stream, delimiter="\t")}
+    assert set(ledger) == {"21279542", "21279955", "21279969", "21280018"}
+    assert ledger["21279969"]["dependency_job_id"] == "21279955"
+    assert ledger["21280018"]["dependency_job_id"] == "21279969"
+    assert ledger["21279969"] == model["job"]["submission"]
+    assert all(row["git_commit"] == "a4ed24815925adffd45a5fe40423c2df2cf0a665"
+               and row["git_dirty"] == "false" for row in ledger.values())
+    with (ALPHA_MODEL_RUN / "scheduler-accounting.psv").open(encoding="utf-8") as stream:
+        accounting = list(csv.DictReader(stream, delimiter="|"))
+    assert {row["JobIDRaw"] for row in accounting if "." not in row["JobIDRaw"]} == set(ledger)
+    assert all(row["State"] == "COMPLETED" and row["ExitCode"] == "0:0"
+               for row in accounting)
+
+
+def test_completed_model_run_and_next_milestone_are_consistent_across_guides() -> None:
+    sources = (
+        ROADMAP, HYDRA_PLAN, PLAN_INDEX, ROOT / "README.md",
+        ROOT / "docs" / "HYDRA_POST_TRAINING.md",
+        ROOT / "training" / "peano_hydra" / "README.md",
+        ROOT / "book" / "peano" / "peano-hydra.md",
+        ALPHA_MODEL_RUN / "README.md",
+    )
+    for source in sources:
+        content = source.read_text(encoding="utf-8")
+        compact = " ".join(content.split())
+        for value in ("222", "0/4", "3/4", "460", "7,129", "H0", "H1"):
+            assert value in compact, (source, value)
+        assert "symbolic" in compact and "lineage-clean" in compact
+        assert "prepared, not trained" in compact.replace("**", "") or (
+            source == HYDRA_PLAN and "no second model training" in compact
+        )
+        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", content):
+            if "://" in target or target.startswith(("#", "mailto:")):
+                continue
+            path = (source.parent / target.split("#", 1)[0]).resolve()
+            assert path.is_relative_to(ROOT)
+            assert path.exists(), f"broken completed-run link in {source}: {target}"
 
 
 @pytest.mark.parametrize("filename", PRODUCT_NAVIGATION)

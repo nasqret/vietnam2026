@@ -53,10 +53,21 @@ Hydra product or its original-goal verifier boundary is absent.
       model-v3 evaluation as plumbing/launch smoke, not model capability or a
       publication-grade matched-compute result.
 
-The next engineering milestone is to scale the replay-verified Alpha-v25
-optimization/discovery curriculum and compare a newly trained epoch-compatible
-policy with its identical pretrained baseline. This product milestone is not
-an H1 benchmark seal, an H3 scale claim, or an H5 LLM-advantage result.
+- [x] Execute the first separately attested Alpha-v25 Qwen adapter on Helios:
+      **222 optimizer steps**, actual **0/4 pretrained → 3/4 trained**, and
+      fresh local replay of all three successful proofs. The fixed symbolic
+      control also proves **3/4**, so this is not an LLM-advantage result.
+- [x] Prepare the isolated `catalog-460` curriculum: **460 checked routes**,
+      **7,154 transitions**, and **7,129 clean training rows**; no second
+      model training or expanded validation benchmark is claimed.
+
+The next engineering milestone is broader lineage-clean development coverage
+and a stronger frozen symbolic baseline before comparing the prepared
+`catalog-460` policy. The required H0 contracts and independent H1 final-set
+ownership/sealing remain open. See the
+[completed run evidence](../artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md)
+and the single product roadmap; this product progress is not an H3 scale
+claim or an H5 matched-compute result.
 
 ## Non-negotiable contracts
 

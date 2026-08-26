@@ -61,6 +61,7 @@ rsync -az --delete-delay \
   --exclude='/.venv/' \
   --filter='protect /.venv-helios/***' \
   --exclude='/.venv-helios/***' \
+  --filter='protect /.cache/' \
   --filter='protect /.cache/huggingface/***' \
   --exclude='/.cache/huggingface/***' \
   --exclude='/node_modules/' \

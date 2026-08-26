@@ -1,0 +1,21 @@
+{
+  "adapter_output_dir": "results/peano-hydra/qwen3-1.7b-alpha-v25-a96223a021ed-catalog-460",
+  "cuda_initialized": false,
+  "development_rows": 12,
+  "edition_identity_sha256": "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28",
+  "epoch_sha256": "a96223a021edc556ed7620a87b4c00e5817ba169af4a1db093fa7a81847e082e",
+  "expected_optimizer_steps": 892,
+  "historical_model_authority_changed": false,
+  "model": {
+    "model_id": "Qwen/Qwen3-1.7B-Base",
+    "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+  },
+  "model_trained": false,
+  "quarantined_rows": 13,
+  "required_pythonhashseed": "20260826",
+  "research_claim_eligible": false,
+  "run_id": "catalog-460",
+  "schema": "peano-hydra-posttrain-preflight-v1",
+  "surface_label": "hydra-alpha-v25-3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28",
+  "training_rows": 7129
+}

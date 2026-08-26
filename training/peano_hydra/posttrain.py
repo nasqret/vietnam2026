@@ -125,6 +125,7 @@ MAX_TRAIN_SQUARED_TOKENS = 100_000_000_000
 MAX_DEV_SQUARED_TOKENS = 16_000_000_000
 MAX_OPTIMIZER_STEPS = 2_048
 _SHA256 = re.compile(r"[0-9a-f]{64}\Z")
+_RUN_ID = re.compile(r"[a-z0-9][a-z0-9_-]{0,63}\Z")
 
 
 class HydraPosttrainError(ValueError):
@@ -546,11 +547,24 @@ def _example(epoch: HydraEpoch, row: dict[str, object], *, split: str) -> dict[s
     }
 
 
+def _validate_run_id(run_id: str | None) -> str | None:
+    if run_id is not None and (
+        type(run_id) is not str or _RUN_ID.fullmatch(run_id) is None
+    ):
+        raise HydraPosttrainError(
+            "run-id must contain 1-64 lowercase letters, digits, hyphens, or underscores, "
+            "starting with a letter or digit"
+        )
+    return run_id
+
+
 def _config(
     epoch: HydraEpoch,
     *,
     output: Path,
+    run_id: str | None = None,
 ) -> tuple[bytes, ExperimentConfig]:
+    run_id = _validate_run_id(run_id)
     template_raw = _read(
         TEMPLATE_PATH,
         label="reviewed Alpha post-training configuration template",
@@ -564,6 +578,8 @@ def _config(
     ):
         raise HydraPosttrainError("the Alpha post-training template changed its pinned Qwen authority")
     suffix = f"{epoch.version}-{epoch.epoch_sha256[:12]}"
+    if run_id is not None:
+        suffix += f"-{run_id}"
     name = f"qwen3-1.7b-hydra-alpha-{suffix}"
     artifact_output = f"results/peano-hydra/qwen3-1.7b-alpha-{suffix}"
     train = _relative_or_absolute(output / "train.jsonl")
@@ -636,9 +652,12 @@ class PreparedPosttraining:
 def prepare_posttraining(
     source_directory: Path,
     output_directory: Path,
+    *,
+    run_id: str | None = None,
 ) -> PreparedPosttraining:
     """Build a checked, benchmark-free handoff without mutating the filesystem."""
 
+    run_id = _validate_run_id(run_id)
     source = verify_source(source_directory)
     output = output_directory.expanduser().absolute()
     if output == source.directory or output == REPOSITORY_ROOT:
@@ -719,7 +738,7 @@ def prepare_posttraining(
         }
         for record in source.curriculum.discoveries
     )
-    config_bytes, config = _config(source.epoch, output=output)
+    config_bytes, config = _config(source.epoch, output=output, run_id=run_id)
     payloads = {
         "train.jsonl": encode_jsonl(tuple(training)),
         "dev.jsonl": encode_jsonl(tuple(development)),
@@ -822,6 +841,10 @@ def prepare_posttraining(
         "sealed_benchmark": False,
         "open_research_gates": list(source.manifest["open_research_gates"]),
     }
+    # Omit the optional field entirely for the original epoch-only run: its
+    # already-published preparation and active adapter must retain exact bytes.
+    if run_id is not None:
+        manifest["run_id"] = run_id
     payloads["manifest.json"] = _pretty(manifest)
     return PreparedPosttraining(
         source,
@@ -855,6 +878,31 @@ def _write_atomic(path: Path, payload: bytes) -> None:
             temporary.unlink()
 
 
+def _preparation_run_identity(manifest: dict[str, object]) -> tuple[object, ...]:
+    """Read the immutable run destination without trusting malformed metadata."""
+
+    if manifest.get("schema") != PREPARATION_SCHEMA:
+        raise HydraPosttrainError("existing preparation manifest has an unsupported schema")
+    run_id = _validate_run_id(manifest.get("run_id"))
+    if "run_id" in manifest and run_id is None:
+        raise HydraPosttrainError("an explicit preparation run-id cannot be empty")
+    version = manifest.get("version")
+    digests = tuple(manifest.get(name) for name in (
+        "epoch_sha256", "edition_identity_sha256", "theorem_dag_sha256",
+        "reviewed_definition_dag_sha256",
+    ))
+    training = manifest.get("training")
+    if (
+        type(version) is not str or not version
+        or any(type(digest) is not str or _SHA256.fullmatch(digest) is None for digest in digests)
+        or type(training) is not dict
+        or type(training.get("adapter_output_dir")) is not str
+        or not training["adapter_output_dir"]
+    ):
+        raise HydraPosttrainError("existing preparation manifest has a malformed run identity")
+    return (version, *digests, run_id, training["adapter_output_dir"])
+
+
 def publish_preparation(prepared: PreparedPosttraining) -> Path:
     """Atomically publish only the exact bounded, benchmark-safe handoff."""
 
@@ -863,9 +911,34 @@ def publish_preparation(prepared: PreparedPosttraining) -> Path:
     output = prepared.output_directory
     if output.is_symlink() or (output.exists() and not output.is_dir()):
         raise HydraPosttrainError("post-training output must be one real dedicated directory")
-    output.mkdir(parents=True, exist_ok=True)
     if set(prepared.payloads) != set(OUTPUT_FILENAMES):
         raise HydraPosttrainError("post-training publication changed its exact artifact inventory")
+    incoming = _decode(prepared.payloads["manifest.json"], "prepared publication manifest")
+    incoming_identity = _preparation_run_identity(incoming)
+    if incoming != prepared.manifest:
+        raise HydraPosttrainError("prepared publication manifest changed before publication")
+    manifest_path = output / "manifest.json"
+    if manifest_path.exists() or manifest_path.is_symlink():
+        existing_raw = _read(manifest_path, label="existing preparation manifest")
+        existing = _decode(
+            existing_raw,
+            "existing preparation manifest",
+        )
+        if _preparation_run_identity(existing) != incoming_identity:
+            raise HydraPosttrainError(
+                "refusing to overwrite a preparation for a different run identity; "
+                "use a separate output directory"
+            )
+        if existing_raw != prepared.payloads["manifest.json"]:
+            raise HydraPosttrainError(
+                "existing preparation manifest differs from regenerated evidence; "
+                "use a new run-id and separate output directory"
+            )
+    elif any((output / name).exists() or (output / name).is_symlink() for name in OUTPUT_FILENAMES):
+        raise HydraPosttrainError(
+            "existing preparation artifacts have no manifest; use a separate output directory"
+        )
+    output.mkdir(parents=True, exist_ok=True)
     for filename in OUTPUT_FILENAMES:
         _write_atomic(output / filename, prepared.payloads[filename])
     published = load_config(output / "config.toml")
@@ -909,7 +982,10 @@ def load_preparation(directory: Path) -> PreparedPosttraining:
     source = manifest.get("source")
     if type(source) is not dict:
         raise HydraPosttrainError("Alpha post-training manifest has no independent source authority")
-    prepared = prepare_posttraining(_source_path(source.get("directory")), root)
+    prepared = prepare_posttraining(
+        _source_path(source.get("directory")), root,
+        run_id=manifest.get("run_id"),
+    )
     if manifest_raw != prepared.payloads["manifest.json"]:
         raise HydraPosttrainError("post-training manifest differs from independently replayed evidence")
     for filename in set(OUTPUT_FILENAMES) - {"manifest.json"}:
@@ -1018,6 +1094,7 @@ def preflight(directory: Path) -> dict[str, object]:
         "cuda_initialized": False,
         "historical_model_authority_changed": False,
         "research_claim_eligible": False,
+        **({"run_id": prepared.manifest["run_id"]} if "run_id" in prepared.manifest else {}),
     }
 
 
@@ -1470,6 +1547,8 @@ def execute(directory: Path) -> Path:
         "sealed_benchmark": False,
         "open_research_gates": prepared.manifest["open_research_gates"],
     }
+    if "run_id" in prepared.manifest:
+        manifest["run_id"] = prepared.manifest["run_id"]
     return write_manifest_noreplace(output / "manifest.json", manifest)
 
 

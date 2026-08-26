@@ -15,14 +15,22 @@ definitions** and **214 definition prerequisites**. Mathematical milestone
 and blueprint-notation views are separate non-authoritative planning
 projections.
 
-The one next product milestone is to scale replay-verified proof optimization,
-candidate discovery, and supervised/preference post-training from the same
-digest-bound Alpha-v25 theorem/definition epoch. Use `make hydra-check` and
-`make hydra-prepare`; do not silently widen Stable, admit a prospective v26
-candidate, or claim a research-grade model advantage before its independently
-sealed H0–H5 gates. The public same-origin theorem browsers and bounded Lean
-proof service are already implemented; their evidence and release identities
-remain distinct from future model-training claims.
+The first current-epoch model experiment is complete: **222 optimizer steps**,
+then **0/4 pretrained → 3/4 trained**, with all three model-generated proofs
+independently replayed locally. The separate symbolic control also proves
+**3/4**; this is interface-adaptation evidence, not an advantage over symbolic
+search. The [run report](artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md)
+preserves the executed evidence. The isolated `catalog-460` curriculum is
+prepared, not trained: **460 routes**, **7,154 transitions**, and **7,129
+training rows**, with its narrow 12-row development theorem unchanged.
+
+The one next product milestone is broader lineage-clean development coverage
+and a stronger frozen symbolic baseline before comparing that named policy.
+Use `make hydra-check`; do not silently widen Stable, admit a prospective v26
+candidate, or claim a research-grade model advantage before the required H0
+contracts, independently sealed H1 benchmark, and H5 evaluation are complete.
+The public same-origin theorem browsers and bounded Lean proof service are
+already implemented; their evidence and release identities remain separate.
 
 The long checkpoint narratives below are historical ledgers. Their old
 pending routes, scheduler jobs, release sizes, and deployment blockers record

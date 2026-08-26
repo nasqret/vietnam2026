@@ -9,13 +9,15 @@ DAG contains **120 reviewed definitions** and **214 reviewed definition
 edges**. Blueprint notation and open research milestones do not grant proof
 authority.
 
-Hydra already runs bounded, independently replayed proof search under an
-explicit complete-digest Alpha authority. Its one next product milestone is
-to scale checked proof optimization, candidate discovery, and
-supervised/preference post-training from that single frozen epoch. The older
-247-theorem Qwen adapter remains bound to its historical release. The full
-H0/H1 experiment gates are not complete, and no language-model advantage or
-new mathematical-discovery claim follows from the initial preparation run.
+Hydra runs bounded, independently replayed proof search under an explicit
+complete-digest Alpha authority. Its first Alpha-compatible Qwen run completed
+222 optimizer steps and improved the four-goal diagnostic from **0/4 to 3/4**;
+the separate symbolic control also proves **3/4**. The next product milestone
+is broader lineage-clean development coverage and a stronger frozen symbolic
+baseline before comparing the prepared `catalog-460` policy. The older
+247-theorem adapter remains bound to its historical release. The full H0/H1
+experiment gates are not complete, and no language-model advantage or new
+mathematical-discovery claim follows from this four-goal smoke.
 ```
 
 Peano Hydra is an experiment, not a new trust assumption. We want to combine a
@@ -374,6 +376,30 @@ prepared CUDA GPU, the pinned Qwen base revision, and explicit finite
 token/update limits. Unrun model lanes remain **unmeasured**; these bounded
 local artifacts are not a sealed final benchmark, an H3-scale corpus, or a
 claim that any model improves proof search.
+
+The separately authorized **2026-08-26 Alpha-v25 model run** has now completed
+on Helios. It trained the pinned Qwen base for **222 optimizer steps** on
+**1,773 checked training rows**, with 12 development rows and 13 quarantined
+rows kept out of training. Actual diagnostic performance was **0/4 for the
+pretrained base** and **3/4 for the new adapter**. All three learned proofs
+replayed locally through the Peano kernel, with 98, 29, and 21 proof nodes.
+
+The fixed symbolic control also proves **3/4** and produces the shorter
+`double_right_zero` proof. The base's candidate output was malformed, so the
+observed change demonstrates adaptation to Hydra's strict tactic interface,
+not general mathematical superiority. Equal search limits consumed four
+versus 22 actual model calls. The consecutive-product goal remains unknown;
+these four diagnostic goals do not establish a language-model advantage or
+close the separate H0/H1/H5 gates.
+
+A larger, separately named `catalog-460` run is **prepared, not trained**.
+It contains **460 checked routes**, **7,154 verified transitions**, and **7,129 clean training
+rows**. It has **not** trained another model, and its 12-row validation theorem
+is unchanged. The next milestone is broader lineage-clean development
+coverage and a stronger frozen symbolic baseline before another comparison.
+The repository's `artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md`
+contains the measured run report, exact evidence files, and no-GPU replay
+instructions; the single product roadmap remains authoritative for sequencing.
 
 ## Build the strongest baseline first
 

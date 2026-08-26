@@ -1,0 +1,264 @@
+{
+  "comparison": {
+    "model_metrics": null,
+    "reason": "no completed epoch-compatible trained Alpha adapter is available",
+    "research_claim_eligible": false,
+    "status": "unmeasured"
+  },
+  "development_only": true,
+  "edition_identity_sha256": "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28",
+  "environment": {
+    "capabilities": {
+      "allowed_commands": [
+        "apply",
+        "assumption",
+        "cases",
+        "compact_arith",
+        "congr",
+        "exact",
+        "exfalso",
+        "exists",
+        "forall_elim",
+        "have",
+        "induction",
+        "intro",
+        "left",
+        "norm_num",
+        "refl",
+        "rewrite",
+        "right",
+        "ring",
+        "simp",
+        "specialize",
+        "split",
+        "suffices",
+        "symm",
+        "trans",
+        "use"
+      ],
+      "allowed_theorems": [],
+      "label": "hydra-alpha-v25-3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
+    },
+    "classical": false,
+    "environment_sha256": "c114acca9b36bb777e45c9a5831b3bdda502299c36d2442c4773175e3a4570c2",
+    "surface": "hydra-alpha-v25-3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
+  },
+  "epoch_sha256": "a96223a021edc556ed7620a87b4c00e5817ba169af4a1db093fa7a81847e082e",
+  "evaluation_sha256": "20ad8aeeea374466b12a15cc44e06307dc86584b52fe968dd07cd27bca5a82af",
+  "goal_set_sha256": "f31cad36c1ca722d225edc924764a532bc2ff996edaedac1f3d8bd172212f134",
+  "goals": [
+    {
+      "frozen_catalog_aliases": [],
+      "name": "closed_arithmetic_seven",
+      "source": "0 * 0 + 3 + (0 * 1 + 1) + (3 + 0) = 7",
+      "statement": "0 · 0 + 3 + (0 · 1 + 1) + (3 + 0) = 7",
+      "statement_sha256": "a4d55ce8cc0ecc39b2ee17d962ec1200d1fade48e6ef5d8cd41ea86f78de8815"
+    },
+    {
+      "frozen_catalog_aliases": [],
+      "name": "existential_subtraction_two",
+      "source": "exists x. 7 = x + 2",
+      "statement": "∃ x. 7 = x + 2",
+      "statement_sha256": "a2c54aad7d6b405ce29dcad548920a8394aea587a7ecdf7b20f9949e3e6bf1c8"
+    },
+    {
+      "frozen_catalog_aliases": [],
+      "name": "double_right_zero",
+      "source": "forall n. (n + 0) + 0 = n",
+      "statement": "∀ x. x + 0 + 0 = x",
+      "statement_sha256": "5359d48c454a9d099f31d442c5dde4dcbaa5a00440de266d04fd5b6eca813d10"
+    },
+    {
+      "frozen_catalog_aliases": [],
+      "name": "consecutive_product_even",
+      "source": "forall n. exists x. n * (n + 1) = 2 * x",
+      "statement": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+      "statement_sha256": "c19f186455a56eca86ff4b92eaf2e1a1ef017d37fe2b296fbe6f5d2120020137"
+    }
+  ],
+  "held_out": {
+    "catalog_alias_count": 0,
+    "catalog_alias_lineages": [],
+    "development_contamination_count": 0,
+    "goal_count": 4,
+    "historical_v3_contract_sha256": "351f6257d79f7e4704eb02da128697da58ae1916e1e5a1bedb1a8e60ef18103d",
+    "matched_source_theorems": [
+      "triangular_product_even_hydra_candidate"
+    ],
+    "quarantine_rows": 13,
+    "quarantined_lineages": [
+      "5f46b17cc81e9478f3f362c356ac7d97cd943a1056656dbd74e81af57db3ad99"
+    ],
+    "split_lineages": {
+      "dev": [
+        "7e2292e1e552c020335872a2d4527950ed3deddd0986375afbbdf51699ea8070"
+      ],
+      "train": [
+        "1a7881809a75c418727412d5fcdceb69fb386ebd7f2d15370a1adb0db100a558",
+        "2f1d1b51cbed6258c0ebf972f811498e5702c4d7ef6473dff103aa9673027365",
+        "38634bc7704b5e7697554fbd6953a36488b24ab11cd5692779daa1623958a23a",
+        "63b95c040e387d612c095b04adcbd06db339e4874f1e7935eddeabaeecb00e5b",
+        "651236da77a650b2152b360bc3bef264db4fbc1b6df5044c2b64d5d865d742da",
+        "6db06a726561eb3257a80478fb573fc527f95974a0f0b233fc72d54ea5f9d6e7",
+        "760000c834602313d255b73d395eb9b91891790c8e6d3170ecf2b154fff093fd",
+        "77a258cea107408658b356fba8e2eb901dde83548645a5676c00ccce893bbb58",
+        "89c8ba6ae2d40701478371160e95437ce33861b431d0e5ff4830796b1c4f139b",
+        "955aa61c5abc1061221533bdb48926e23c948e6ea3dc961abac84b683da6809f",
+        "9641afb5e42f8de9c39e47ecd6fe7906c02f6ce6d269156c20476016790926df",
+        "9a0e8cecab8d2341eba38fdbbe2531eb2edc68492675696c6af3ce2f858a8cc2",
+        "aee7851f2a962bd7ab7da84b4db741700f494493a147d87fee26d2b2a0b4fe59",
+        "b99b3a321ac077b6680db26beffb1382efdfb83317f62cb4e2917a32a33be41b",
+        "cb7ac649e2eb0651f2531c694ae10c0a942075d1c0f9452ad76067091fadd708",
+        "cd0bc95fc51867b77cd32c21df36728a774d63a576fcc1d5f82d5084125b6c46",
+        "d9f50694333b5f52d119e701df070eef8508ea9728f13be7dfe200e5427f8e88"
+      ]
+    },
+    "training_contamination_count": 0
+  },
+  "lanes": {
+    "pretrained": {
+      "adapter_attached": false,
+      "environment_sha256": "c114acca9b36bb777e45c9a5831b3bdda502299c36d2442c4773175e3a4570c2",
+      "epoch_sha256": "a96223a021edc556ed7620a87b4c00e5817ba169af4a1db093fa7a81847e082e",
+      "goal_set_sha256": "f31cad36c1ca722d225edc924764a532bc2ff996edaedac1f3d8bd172212f134",
+      "matched_budget": {
+        "beam_width": 4,
+        "candidates_per_state": 4,
+        "goal_count": 4,
+        "max_depth": 16,
+        "max_model_calls": 32,
+        "max_model_calls_per_lane": 128,
+        "max_new_tokens": 64,
+        "max_states": 128,
+        "sampling": "deterministic batched candidate beam search",
+        "seed": 20260826
+      },
+      "model": {
+        "model_id": "Qwen/Qwen3-1.7B-Base",
+        "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+      },
+      "role": "pinned_pretrained_base",
+      "status": "not_executed",
+      "surface_label": "hydra-alpha-v25-3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28",
+      "theorem_authority": {
+        "allowed_theorem_count": 0,
+        "allowed_theorems": [],
+        "allowed_theorems_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "descendant_imports_allowed": false,
+        "held_out_alias_imports_allowed": false,
+        "promoted_bundle_imports_allowed": false
+      }
+    },
+    "trained": {
+      "adapter": null,
+      "adapter_attached": true,
+      "environment_sha256": "c114acca9b36bb777e45c9a5831b3bdda502299c36d2442c4773175e3a4570c2",
+      "epoch_sha256": "a96223a021edc556ed7620a87b4c00e5817ba169af4a1db093fa7a81847e082e",
+      "goal_set_sha256": "f31cad36c1ca722d225edc924764a532bc2ff996edaedac1f3d8bd172212f134",
+      "matched_budget": {
+        "beam_width": 4,
+        "candidates_per_state": 4,
+        "goal_count": 4,
+        "max_depth": 16,
+        "max_model_calls": 32,
+        "max_model_calls_per_lane": 128,
+        "max_new_tokens": 64,
+        "max_states": 128,
+        "sampling": "deterministic batched candidate beam search",
+        "seed": 20260826
+      },
+      "model": {
+        "model_id": "Qwen/Qwen3-1.7B-Base",
+        "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+      },
+      "role": "epoch_compatible_posttrained_lora",
+      "status": "unavailable",
+      "surface_label": "hydra-alpha-v25-3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28",
+      "theorem_authority": {
+        "allowed_theorem_count": 0,
+        "allowed_theorems": [],
+        "allowed_theorems_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "descendant_imports_allowed": false,
+        "held_out_alias_imports_allowed": false,
+        "promoted_bundle_imports_allowed": false
+      }
+    }
+  },
+  "matched_budget": {
+    "beam_width": 4,
+    "candidates_per_state": 4,
+    "goal_count": 4,
+    "max_depth": 16,
+    "max_model_calls": 32,
+    "max_model_calls_per_lane": 128,
+    "max_new_tokens": 64,
+    "max_states": 128,
+    "sampling": "deterministic batched candidate beam search",
+    "seed": 20260826
+  },
+  "model": {
+    "model_id": "Qwen/Qwen3-1.7B-Base",
+    "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+  },
+  "plan_sha256": "0e7d6cac39cb0c0fcbdead7c8aa09c6c73faf003fb2d6871e714fb14314a2c6f",
+  "preparation_manifest_sha256": "e88e268a85a8662a5624b47690583b58c0b7fed8e7300774cf36daf1f9269df0",
+  "research_claim_eligible": false,
+  "reviewed_definition_dag_sha256": "85e602b4b270745beb06d61acb01f1c650d5c537a5bc408a7c46f1e7deb72ccc",
+  "schema": "peano-hydra-posttrain-matched-evaluation-v1",
+  "sealed_benchmark": false,
+  "symbolic_controls": {
+    "goals": [
+      {
+        "goal": "closed_arithmetic_seven",
+        "kernel_checked": true,
+        "model_calls": 0,
+        "proof_nodes": 98,
+        "status": "proof",
+        "symbolic_state_expansions": 1,
+        "tactic_decisions": 1
+      },
+      {
+        "goal": "existential_subtraction_two",
+        "kernel_checked": true,
+        "model_calls": 0,
+        "proof_nodes": 29,
+        "status": "proof",
+        "symbolic_state_expansions": 2,
+        "tactic_decisions": 2
+      },
+      {
+        "goal": "double_right_zero",
+        "kernel_checked": true,
+        "model_calls": 0,
+        "proof_nodes": 10,
+        "status": "proof",
+        "symbolic_state_expansions": 1,
+        "tactic_decisions": 1
+      },
+      {
+        "goal": "consecutive_product_even",
+        "kernel_checked": false,
+        "model_calls": 0,
+        "proof_nodes": null,
+        "status": "exhausted",
+        "symbolic_state_expansions": 5,
+        "tactic_decisions": 0
+      }
+    ],
+    "kernel_checked_proofs": 3,
+    "model_generated": false,
+    "provider": "fixed-human-selected-symbolic-control-v1",
+    "research_claim_eligible": false,
+    "status": "executed"
+  },
+  "theorem_authority": {
+    "allowed_theorem_count": 0,
+    "allowed_theorems": [],
+    "allowed_theorems_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "descendant_imports_allowed": false,
+    "held_out_alias_imports_allowed": false,
+    "promoted_bundle_imports_allowed": false
+  },
+  "theorem_dag_sha256": "867f13c6fe78e55e619eed76541174f8eff0b972a9f71ddf7d94fc1c504c5e13",
+  "version": "v25"
+}

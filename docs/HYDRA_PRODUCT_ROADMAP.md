@@ -349,8 +349,8 @@ family and revision, frozen epoch, theorem/tactic authority, held-out goals,
 provider evidence, and search budgets. Missing adapter or provider evidence
 means **planned/not-run**, never fabricated model scores.
 
-An explicitly authorized Helios execution, if independently requested later,
-is split into three separately guarded Slurm jobs:
+An explicitly authorized Helios execution is split into three separately
+guarded Slurm jobs:
 
 - `slurm/peano_hydra_alpha_prepare.sbatch`: one **30-minute CPU** preparation
   and evidence-validation job.
@@ -360,40 +360,90 @@ is split into three separately guarded Slurm jobs:
   evaluation job; it requires `--afterok` on the exact clean-source training
   predecessor.
 
-Each job refuses a dirty or uncommitted source and requires the pinned
-offline model cache. Submission itself requires a separate explicit
+Each job refuses a dirty or uncommitted source. The GPU stages additionally
+require the pinned offline model cache. Submission itself requires a separate
+explicit
 `--submit --confirm` operation; no local readiness target submits a job,
 allocates a GPU, or claims that training has occurred.
 
 The initial replay-verified preparation run is intentionally small. It does
 not satisfy the H3 requirement of 100,000 positive transitions from 20,000
 checked proof roots, does not seal an H1 benchmark, and does not establish
-that Qwen improves proof search or that its teacher-oracle labels represent a
-previously unknown mathematical theorem. See
+an advantage over symbolic proof search or that its teacher-oracle labels
+represent a previously unknown mathematical theorem. See
 [`HYDRA_POST_TRAINING.md`](HYDRA_POST_TRAINING.md) for the executable data
 schema and training boundary.
 
+## Completed Alpha-compatible model experiment — 2026-08-26
+
+The first current-epoch model run is **executed and independently replayed**,
+not merely prepared. Clean source commit `a4ed2481` ran through Helios CPU
+preparation **21279955**, GH200 training **21279969**, and matched evaluation
+**21280018**; all three completed with exit code zero. The pinned
+`Qwen/Qwen3-1.7B-Base` adapter completed **222 optimizer steps**, with finite
+gradients at every update boundary and **392 changed trainable tensors**.
+The model consumed the **1,773 training / 12 development** split above;
+the **13 quarantined rows** never entered either model-facing split.
+
+Under the same four diagnostic goals, authority, and search limits:
+
+| Lane | Kernel-checked goals | Actual model generation calls |
+|---|---:|---:|
+| Identical pretrained base | **0/4** | **4** |
+| New Alpha-v25 adapter | **3/4** | **22** |
+| Separate fixed symbolic control | **3/4** | **0** |
+
+All three learned proofs replayed locally with exact saved traces and
+**98**, **29**, and **21 proof nodes**, without loading a model framework.
+The base model's 16 candidate sequences all failed the strict tactic-output
+format. This is evidence of improved use of Hydra's tactic interface, not
+broad mathematical superiority. Equal search limits also do not imply equal
+consumed compute. The trained `double_right_zero` route uses three decisions
+and 21 nodes; the symbolic control needs one decision and 10 nodes.
+`consecutive_product_even` remains **unknown** in all three lanes.
+
+The [readable run report and authenticated evidence](../artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md)
+include the model manifest, actual evaluation, separate symbolic control,
+scheduler receipts, and a no-GPU independent replay script. Neither the
+historical adapter nor a released theorem was modified. This four-goal smoke
+does **not** demonstrate an advantage over the symbolic control or close any
+publication-grade H0/H1/H5 gate.
+
+The next curriculum is also **prepared, not trained**: all **460** currently
+replay-safe catalog routes, including **260 Alpha-only** routes, yielded
+**7,154 verified transitions**, with **90 duplicates removed**. The isolated
+`catalog-460` handoff contains **7,129 training rows**, **12 development
+rows**, and **13 quarantined rows**; its CPU-only preflight derives **892
+optimizer steps**. It lives under `_deploy/hydra-posttrain-next`, targets a
+distinct adapter directory ending in `-catalog-460`, and cannot replace the
+completed experiment. The unchanged 12-row development set is still narrow;
+more training data alone is not a broader evaluation.
+
 ## The one next engineering milestone
 
-**Scale the replay-verified Alpha-v25 optimization/discovery curriculum under
-the explicit digest-bound Alpha authority, then train and compare a new
-epoch-compatible policy against its identical pretrained baseline.**
+**Establish a broader lineage-clean development benchmark and a stronger
+frozen symbolic baseline before comparing the prepared `catalog-460`
+policy.** The first Alpha-compatible training/evaluation milestone above is
+complete; repeating its four-goal smoke is not the next research milestone.
 
-Execute this milestone in order:
+Run `make hydra-check` at each change boundary and execute this milestone in
+order:
 
-1. Run `make hydra-check`, then `make hydra-scale` to freeze the exact
-   theorem/definition epoch and expand only bounded independently replayed
-   proof traces across both Stable and Alpha membership.
-2. Run `make hydra-posttrain-prepare`; quarantine complete held-out lineages
-   before creating separate training and development rows, and reject
-   contamination, unsafe prerequisites, or an empty clean split.
-3. Run `make hydra-posttrain-preflight` and `make hydra-eval-plan`; verify the
-   Alpha-compatible model family, exact source lineage, provider requirements,
-   identical goal/authority/budget plan, and every still-open research gate.
-4. Only when an authorized CUDA host and reviewed pinned model are available,
-   explicitly execute Alpha-v25-compatible supervised training; compare any
-   resulting attested adapter with the identical pretrained baseline without
-   interpreting symbolic controls as model evidence.
+1. Close the required H0 semantic/reference and structured-action contracts;
+   preserve the current original-goal kernel boundary and explicit Alpha
+   authority throughout.
+2. Expand development coverage beyond the four historical diagnostic goals
+   and single 12-row validation theorem. Split dependency components,
+   equivalents, families, descendants, and generated variants before exposing
+   any model to their rows. An independent owner must separately control and
+   seal the final H1 set; do not relabel a development set as sealed.
+3. Measure and freeze the stronger symbolic portfolio, including bounded
+   induction and witness search, then identify genuine unsolved frontiers.
+   Record resource consumption, not only nominally equal search limits.
+4. Review the prepared `catalog-460` run against that benchmark; explicitly
+   select its named preparation in the authorized training/evaluation jobs,
+   preserving the completed adapter. Compare pretrained, trained, and symbolic
+   lanes with the required ablations before any H5 claim.
 5. Admit newly discovered theorems only through the normal reviewed immutable
    Alpha-release procedure; regenerate every browser/Lean projection from the
    same newly sealed theorem and definition DAGs.

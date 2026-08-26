@@ -1,12 +1,14 @@
 # Hydra post-training and proof-development pipeline
 
 Hydra is an untrusted search and orchestration layer around the existing
-constructive Peano proof kernel. Its next product track is one bounded,
+constructive Peano proof kernel. Its product workflow is one bounded,
 digest-bound workflow: freeze the current independently checked Alpha theorem
 DAG and the separately reviewed conservative definition DAG, compare
 independently replayed proof routes, check candidate discoveries against their
 original statements, and export only kernel-verified transitions for future
-language-model post-training.
+language-model post-training. The first Alpha-v25 training/evaluation run has
+completed; its [measured results and independent replay](../artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md)
+are separate from the preparation-only commands below.
 
 Run the complete local development workflow from the repository root:
 
@@ -146,10 +148,11 @@ first-order formulas**, then quarantines every matching proof lineage from
 **both training and development**. Training-time evaluation, checkpoint
 selection, and model-facing validation cannot see a held-out proof either.
 
-The current full-scale **1,798-transition** source yields exactly **1,773
+The original 192-route **1,798-transition** source yields exactly **1,773
 clean training rows**, **12 clean development rows**, and **13 quarantined
 rows**. Its independent preflight derives **222 bounded optimizer steps**;
-this is a checked potential schedule, not executed optimization. The
+preflight itself does not execute them. The separately authorized 2026-08-26
+run completed all 222 steps. The
 reproducible older **279-transition** source yields exactly **261 training
 rows**, **5 development rows**, and **13 quarantined rows**. A
 16-transition default pilot has only one clean remaining lineage and fails
@@ -223,12 +226,67 @@ changed source bytes, held-out leakage, incompatible epoch, unbounded
 examples, or an existing result it cannot safely authenticate. It never
 retrofits the historical 247-theorem adapter with undeclared Alpha authority.
 
-A fair eventual evaluation compares the exact pretrained base with the new
+A matched evaluation compares the exact pretrained base with the new
 Alpha-trained adapter under identical theorem statements, frozen Alpha
 authority, allowed tactics/theorems, generation settings, search budgets, and
 authenticated provider evidence. Without the trained adapter and actual
 provider/model-call receipts the report is **planned/not-run**; deterministic
 symbolic controls prove the plumbing only and never become model scores.
+
+## Completed model run and the next isolated curriculum
+
+The 2026-08-26 GH200 run completed **222 optimizer steps** on the 192-route
+source, with finite gradients at every boundary and **392 changed trainable
+tensors**. The actual pretrained base proved **0/4** diagnostic goals; its
+new Alpha-v25 adapter proved **3/4**. A separate fixed symbolic control also
+proved **3/4**, so there is **no demonstrated advantage over the symbolic
+control**. All three successful model-generated proofs were independently
+replayed locally with exact traces and 98, 29, and 21 nodes.
+
+The base produced 16 malformed candidate sequences and no executable tactic
+line. The trained model produced 88 valid candidate lines across 22 generation
+calls; the base used four calls. These are equal search limits, not equal
+consumed compute, and the result measures adaptation to the strict tactic
+interface. The consecutive-product goal remains unknown. See the
+[complete run report](../artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md)
+for exact commands, files, scheduler receipts, and verification instructions.
+
+The larger next curriculum is **prepared, not trained** and has already
+been checked separately. Reproduce its **preparation only**, keeping the
+original experiment intact:
+
+```console
+python3 scripts/prepare_peano_hydra.py \
+  --output-dir _deploy/hydra-scale-next \
+  --include-graphs --catalog-all \
+  --catalog-limit 512 --catalog-max-decisions 32
+
+python3 scripts/prepare_peano_hydra_posttrain.py \
+  --source-dir _deploy/hydra-scale-next \
+  --output-dir _deploy/hydra-posttrain-next \
+  --run-id catalog-460
+
+python3 -m training.peano_hydra.posttrain \
+  --preflight --preparation-dir _deploy/hydra-posttrain-next
+```
+
+This checks **460 catalog routes**, including **260 Alpha-only**, and exports
+**7,154 transitions** after removing **90 duplicates**. Quarantine leaves
+**7,129 training rows**, **12 development rows**, and **13 excluded rows**;
+preflight derives **892 optimizer steps** without starting CUDA. No model
+has been trained from this larger preparation. Its single 12-row validation
+theorem is unchanged, so broader lineage-clean evaluation is the next gate.
+
+`--run-id` binds a distinct adapter path ending in `-catalog-460`. If an
+output directory is omitted, a named run defaults to
+`_deploy/hydra-posttrain-<run-id>`; the legacy unnamed default is unchanged.
+Publication refuses to replace a preparation with a different run identity
+or changed manifest evidence; only byte-identical regeneration is allowed.
+Use a fresh run ID and directory when the curriculum changes.
+Pass the selected directory explicitly via `--preparation-dir` for preflight,
+execution, and evaluation. The current standard Helios chain below reproduces
+the **192-route default**, not these alternate directories; a larger GPU run
+requires reviewed jobs that explicitly select the named preparation.
 
 ## Optional guarded Helios execution requires explicit authorization
 
@@ -244,9 +302,29 @@ The CPU job uses native `Python/3.11.5` on the x86-64 CPU partition and creates
 and rechecks the isolated Alpha source/handoff before any GPU allocation. It
 does not use the ARM-only `.venv-helios` environment reserved for GH200 jobs.
 The training job can be submitted only with `--afterok` on
-that exact successful preparation job. The evaluation job, in turn, requires
-`--afterok` on that exact successful training job and invokes actual models
-only through `--execute-models --trained-adapter`.
+that exact preparation job. The evaluation job, in turn, requires `--afterok`
+on that exact training job and invokes actual models only through
+`--execute-models --trained-adapter`. Queue the whole chain while its
+predecessors are still pending or running: Helios currently retains completed
+jobs in the controller for only 10 seconds. The scheduler starts each stage
+only after its predecessor succeeds; waiting for completion before submitting
+the successor can lose the dependency reference even though accounting still
+records a successful result.
+
+For a reviewed, committed checkout, use the guarded chain helper:
+
+```console
+bash scripts/helios_sync_project.sh
+bash scripts/helios_hydra_chain.sh --test-only
+bash scripts/helios_hydra_chain.sh --submit --confirm PEANO-LAB-TRAINING
+```
+
+The helper checks that the clean local commit matches the remote source,
+then queues all three stages immediately with their actual predecessor IDs.
+Its default is test-only. It never synchronizes source, cancels a job, or
+retries an uncertain submission automatically. If any submission fails, it
+prints the accepted IDs and marks a lost or malformed response as
+`unconfirmed`; inspect the submission ledger before retrying.
 
 Every stage independently refuses dirty or uncommitted source provenance.
 The GPU stages require the reviewed pinned offline model cache. Training
@@ -285,18 +363,18 @@ declare finite tactic and theorem allowlists. Every accepted candidate is
 replayed independently by the original kernel. An exhausted search is
 `unknown`, not a disproof.
 
-These artifacts are preparation evidence rather than a sealed benchmark.
-They do not establish optimal proof lengths, semantic mathematical novelty,
-model capability, or an LLM advantage; the experimental H0/H1 gates remain
-open until their separate reviewed protocols and evidence are complete.
+The preparation artifacts and completed four-goal model run are development
+evidence rather than a sealed benchmark. They do not establish optimal proof
+lengths, semantic mathematical novelty, broad model capability, or an LLM
+advantage; the experimental H0/H1 gates remain open until their separate
+reviewed protocols and evidence are complete.
 
-The intended next implementation remains a single line: collect more bounded
-independently checked proof routes under a freshly sealed epoch, expand this
-verified curriculum, post-train a separately attested model against that
-exact authority, and only then compare it with matched symbolic/model-free
-controls on an independently sealed unseen benchmark. Any future Alpha
-admission, public publication, or research claim remains its own reviewed
-operation.
+The next implementation remains a single line: complete the required H0
+contracts, broaden lineage-clean development coverage, freeze the stronger
+symbolic baseline, then compare the prepared `catalog-460` policy against
+that baseline and the identical pretrained model. The independently owned
+final benchmark, future Alpha admission, public publication, and research
+claims each retain their separate review gates.
 
 See the single active [Hydra product roadmap](HYDRA_PRODUCT_ROADMAP.md) for
 sequencing and the

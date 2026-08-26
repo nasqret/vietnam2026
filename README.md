@@ -327,6 +327,20 @@ Actual bounded BF16 LoRA training is separate and explicit:
 make hydra-posttrain-execute  # one prepared CUDA GPU and pinned Qwen weights
 ```
 
+The first Alpha-v25 run has now completed on Helios: **222 optimizer steps**,
+then **0/4 pretrained → 3/4 trained** on the four diagnostic goals. All three
+model-generated proofs independently replayed locally. The fixed symbolic
+control also solves **3/4**; no advantage over it is demonstrated, and the
+fourth goal remains unknown. The base model's failures were malformed tactic
+output, so this measures adaptation to Hydra's interface rather than broad
+mathematical superiority. Read the
+[experiment report and independently replayable evidence](artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md).
+
+The next isolated `catalog-460` curriculum is **prepared, not trained**:
+**460 checked routes**, **7,154 transitions**, and **7,129 clean training
+rows**. Broader lineage-clean evaluation and a stronger symbolic baseline
+are the next milestone; the H0/H1/H5 research gates remain open.
+
 The historical 247-theorem adapter remains untouched. The active next track
 and honest experimental gates are in the
 [single Hydra product roadmap](docs/HYDRA_PRODUCT_ROADMAP.md) and the

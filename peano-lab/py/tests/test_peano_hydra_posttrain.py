@@ -22,6 +22,7 @@ for import_root in (ROOT, SCRIPTS):
         sys.path.insert(0, str(import_root))
 
 import prepare_peano_hydra as prepare_script  # noqa: E402
+import prepare_peano_hydra_posttrain as posttrain_script  # noqa: E402
 from training.peano_hydra import posttrain  # noqa: E402
 from training.peano_hydra.epoch import freeze_epoch  # noqa: E402
 from training.peano_policy.config import load_config  # noqa: E402
@@ -255,6 +256,169 @@ def test_dynamic_training_output_is_fresh_and_complete_epoch_digest_is_bound(
     assert prepared.manifest["sealed_benchmark"] is False
 
 
+def test_optional_run_id_preserves_legacy_bytes_and_uses_a_fresh_adapter(
+    prepared_posttraining,
+    tmp_path: Path,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    original = prepared_posttraining
+    legacy = posttrain.prepare_posttraining(original.source.directory, original.output_directory)
+    assert legacy.payloads == original.payloads
+    assert "run_id" not in legacy.manifest
+
+    named = posttrain.prepare_posttraining(
+        original.source.directory, tmp_path / "named-preparation", run_id="catalog-460",
+    )
+    assert named.manifest["run_id"] == "catalog-460"
+    assert named.config.run.output_dir == legacy.config.run.output_dir + "-catalog-460"
+    assert named.config.run.name == legacy.config.run.name + "-catalog-460"
+    assert named.manifest["training"]["adapter_output_dir"] == named.config.run.output_dir
+    assert named.train_rows == original.train_rows
+    assert named.development_rows == original.development_rows
+    posttrain.publish_preparation(named)
+    assert posttrain.load_preparation(named.output_directory).payloads == named.payloads
+    assert posttrain.preflight(named.output_directory)["run_id"] == "catalog-460"
+
+    existing_adapter = tmp_path / "existing-adapter"
+    existing_adapter.mkdir()
+    monkeypatch.setattr(posttrain, "load_preparation", lambda directory: named)
+    monkeypatch.setattr(posttrain, "_source_path", lambda path: existing_adapter)
+    with pytest.raises(posttrain.HydraPosttrainError, match="fresh epoch-bound adapter"):
+        posttrain.preflight(named.output_directory)
+
+
+@pytest.mark.parametrize("run_id", ["", "../escape", "catalog/460", "/absolute", "bad.id", "bad id", "a" * 65, True])
+def test_run_id_rejects_unsafe_or_empty_labels_before_source_replay(
+    tmp_path: Path, monkeypatch: pytest.MonkeyPatch, run_id: object,
+) -> None:
+    monkeypatch.setattr(
+        posttrain, "verify_source", lambda directory: pytest.fail("invalid run-id reached source replay"),
+    )
+    with pytest.raises(posttrain.HydraPosttrainError, match="run-id must contain"):
+        posttrain.prepare_posttraining(tmp_path / "source", tmp_path / "output", run_id=run_id)
+
+
+def test_named_preparation_cannot_retarget_an_adapter_by_only_editing_its_run_id(
+    prepared_posttraining, tmp_path: Path,
+) -> None:
+    named = posttrain.prepare_posttraining(
+        prepared_posttraining.source.directory, tmp_path / "named", run_id="catalog-460",
+    )
+    posttrain.publish_preparation(named)
+    changed = dict(named.manifest)
+    changed["run_id"] = "another-run"
+    (named.output_directory / "manifest.json").write_bytes(posttrain._pretty(changed))
+
+    with pytest.raises(posttrain.HydraPosttrainError, match="independently replayed evidence"):
+        posttrain.load_preparation(named.output_directory)
+
+
+def test_cli_named_run_uses_a_separate_default_preparation_directory(
+    prepared_posttraining, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    monkeypatch.setattr(posttrain_script, "REPOSITORY_ROOT", tmp_path)
+    monkeypatch.setattr(posttrain, "verify_source", lambda directory: prepared_posttraining.source)
+    arguments = ["--source-dir", str(prepared_posttraining.source.directory)]
+    assert posttrain_script.main(arguments) == 0
+    legacy = tmp_path / "_deploy" / "hydra-posttrain"
+    before = {name: (legacy / name).read_bytes() for name in posttrain.OUTPUT_FILENAMES}
+    assert json.loads(capsys.readouterr().out)["output_dir"] == str(legacy)
+
+    assert posttrain_script.main([*arguments, "--run-id", "catalog-460"]) == 0
+
+    named = tmp_path / "_deploy" / "hydra-posttrain-catalog-460"
+    report = json.loads(capsys.readouterr().out)
+    assert report["output_dir"] == str(named)
+    assert _read_json(named / "manifest.json")["run_id"] == "catalog-460"
+    assert {name: (legacy / name).read_bytes() for name in before} == before
+
+
+@pytest.mark.parametrize("previous,current", [(None, "catalog-460"), ("catalog-460", None), ("catalog-460", "another-run")])
+def test_publication_refuses_cross_run_overwrite_before_changing_any_bytes(
+    prepared_posttraining, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    previous: str | None, current: str | None,
+) -> None:
+    monkeypatch.setattr(posttrain, "verify_source", lambda directory: prepared_posttraining.source)
+    original = posttrain.prepare_posttraining(
+        prepared_posttraining.source.directory, tmp_path / "handoff", run_id=previous,
+    )
+    posttrain.publish_preparation(original)
+    replacement = posttrain.prepare_posttraining(
+        original.source.directory, original.output_directory, run_id=current,
+    )
+
+    with pytest.raises(posttrain.HydraPosttrainError, match="different run identity"):
+        posttrain.publish_preparation(replacement)
+
+    assert {path.name: path.read_bytes() for path in original.output_directory.iterdir()} == original.payloads
+
+
+@pytest.mark.parametrize("run_id", [None, "catalog-460"])
+def test_same_run_deterministic_preparation_regeneration_remains_allowed(
+    prepared_posttraining, tmp_path: Path, monkeypatch: pytest.MonkeyPatch,
+    run_id: str | None,
+) -> None:
+    monkeypatch.setattr(posttrain, "verify_source", lambda directory: prepared_posttraining.source)
+    original = posttrain.prepare_posttraining(
+        prepared_posttraining.source.directory, tmp_path / "handoff", run_id=run_id,
+    )
+    posttrain.publish_preparation(original)
+    regenerated = posttrain.prepare_posttraining(
+        original.source.directory, original.output_directory, run_id=run_id,
+    )
+
+    assert posttrain.publish_preparation(regenerated) == original.output_directory
+    assert {path.name: path.read_bytes() for path in original.output_directory.iterdir()} == original.payloads
+
+
+@pytest.mark.parametrize("damage", ["json", "schema", "null-id", "missing-destination", "changed-epoch", "changed-corpus", "missing", "symlink"])
+def test_publication_does_not_repair_unidentifiable_existing_preparations(
+    prepared_posttraining, tmp_path: Path, monkeypatch: pytest.MonkeyPatch, damage: str,
+) -> None:
+    monkeypatch.setattr(posttrain, "verify_source", lambda directory: prepared_posttraining.source)
+    prepared = posttrain.prepare_posttraining(
+        prepared_posttraining.source.directory, tmp_path / "handoff", run_id="catalog-460",
+    )
+    posttrain.publish_preparation(prepared)
+    path = prepared.output_directory / "manifest.json"
+    document = _read_json(path)
+    if damage == "json":
+        path.write_bytes(b"{")
+    elif damage == "missing":
+        path.unlink()
+    elif damage == "symlink":
+        target = tmp_path / "other-manifest.json"
+        target.write_bytes(path.read_bytes())
+        path.unlink()
+        path.symlink_to(target)
+    else:
+        if damage == "schema":
+            document["schema"] = "another-schema"
+        elif damage == "null-id":
+            document["run_id"] = None
+        elif damage == "changed-epoch":
+            document["epoch_sha256"] = "0" * 64
+        elif damage == "changed-corpus":
+            document["source"]["manifest_sha256"] = "0" * 64
+        else:
+            document["training"].pop("adapter_output_dir")
+        path.write_bytes(posttrain._pretty(document))
+    before = {
+        name: (prepared.output_directory / name).read_bytes()
+        for name in posttrain.OUTPUT_FILENAMES if (prepared.output_directory / name).exists()
+    }
+
+    with pytest.raises(posttrain.HydraPosttrainError, match="manifest|run-id|run identity"):
+        posttrain.publish_preparation(prepared)
+
+    assert {name: (prepared.output_directory / name).read_bytes() for name in before} == before
+    if damage == "missing":
+        assert not path.exists()
+    if damage == "symlink":
+        assert path.is_symlink()
+
+
 def test_posttraining_reload_and_preflight_need_no_gpu_or_model_weights(
     prepared_posttraining,
 ) -> None:
@@ -300,9 +464,11 @@ def test_python_module_preflight_bootstraps_peano_without_pythonpath(
     assert report["cuda_initialized"] is False
 
 
+@pytest.mark.parametrize("run_id", [None, "catalog-460"])
 def test_prepare_check_mode_replays_exact_source_without_writing(
     prepared_posttraining,
     tmp_path: Path,
+    run_id: str | None,
 ) -> None:
     destination = tmp_path / "unpublished"
     result = subprocess.run(
@@ -314,6 +480,7 @@ def test_prepare_check_mode_replays_exact_source_without_writing(
             "--output-dir",
             str(destination),
             "--check",
+            *([] if run_id is None else ["--run-id", run_id]),
         ],
         cwd=ROOT,
         env={**os.environ, "PYTHONDONTWRITEBYTECODE": "1"},
@@ -323,7 +490,11 @@ def test_prepare_check_mode_replays_exact_source_without_writing(
     )
 
     assert result.returncode == 0, result.stderr
-    assert json.loads(result.stdout)["training_rows"] == 11
+    report = json.loads(result.stdout)
+    assert report["training_rows"] == 11
+    if run_id is not None:
+        assert report["run_id"] == run_id
+        assert report["adapter_output_dir"].endswith("-catalog-460")
     assert not destination.exists()
 
 
