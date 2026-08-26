@@ -121,7 +121,7 @@
           "const": true
         },
         "alpha_edition_version": {
-          "const": "v16"
+          "const": "v24"
         },
         "alpha_evidence": {
           "enum": [
@@ -246,7 +246,7 @@
       "$ref": "#/$defs/sha256"
     },
     "alpha_edition_version": {
-      "const": "v16"
+      "const": "v24"
     },
     "candidate_count": {
       "minimum": 0,
@@ -314,6 +314,16 @@
     "path_policy": {
       "$ref": "#/$defs/path_policy"
     },
+    "proof_edition_checked_use_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "proof_edition_identity_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "proof_edition_version": {
+      "const": "v16"
+    },
     "public_count": {
       "minimum": 0,
       "type": "integer"
@@ -349,6 +359,9 @@
     "alpha_edition_version",
     "alpha_edition_identity_sha256",
     "alpha_edition_checked_use_count",
+    "proof_edition_version",
+    "proof_edition_identity_sha256",
+    "proof_edition_checked_use_count",
     "graph_checked_use_count",
     "graph_stable_closed_count",
     "graph_alpha_closed_count",

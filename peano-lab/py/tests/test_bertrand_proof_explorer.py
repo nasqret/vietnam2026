@@ -14,14 +14,14 @@ if str(REPO / "peano-lab" / "py") not in sys.path:
     sys.path.insert(0, str(REPO / "peano-lab" / "py"))
 
 from peano_lab.library import editions_v18 as proof_alpha  # noqa: E402
-from peano_lab.library import editions_v19 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v24 as current_alpha  # noqa: E402
 
 EXPLORER = REPO / "book" / "_static" / "bertrand-proof-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v12.json"
 BUILDER = REPO / "scripts" / "build_bertrand_proof_explorer.py"
 BOOK_PAGE = REPO / "book" / "arithmetic-library" / "bertrand-proof-explorer.md"
 EXPECTED_AGGREGATE = (
-    "b721fbc48807d602b8edba15c2fc65877532b42abe9e6ee1e39e14d0275c1850"
+    "427b92390d72df2297a91d042524cb3a8d59d2e88c7f42249d628f3e8c26b70f"
 )
 EXPECTED_CATALOG_SHA256 = (
     "825909e057492de87ef08208451c3475396ca009179c513457b05b57f7e2f109"
@@ -81,11 +81,11 @@ def test_manifest_freezes_the_complete_strict_closure() -> None:
     assert manifest["theorem_count"] == 544
     assert manifest["public_count"] == 202
     assert manifest["candidate_count"] == 342
-    assert manifest["alpha_edition_version"] == "v19"
+    assert manifest["alpha_edition_version"] == "v24"
     assert manifest["alpha_edition_identity_sha256"] == (
-        current_alpha.ALPHA_V19_IDENTITY_SHA256
+        current_alpha.ALPHA_V24_IDENTITY_SHA256
     )
-    assert manifest["alpha_edition_checked_use_count"] == 1737
+    assert manifest["alpha_edition_checked_use_count"] == 2008
     assert manifest["proof_edition_version"] == "v18"
     assert manifest["proof_edition_identity_sha256"] == (
         proof_alpha.ALPHA_V18_IDENTITY_SHA256
@@ -139,7 +139,7 @@ def test_graph_is_the_full_dependency_closure() -> None:
     assert edge_pairs == adjacency_pairs
 
 
-def test_corpus_preserves_v12_sources_and_overlays_actual_v19_evidence() -> None:
+def test_corpus_preserves_v12_sources_and_overlays_actual_v24_evidence() -> None:
     catalog = _load(CATALOG)
     corpus = _load(EXPLORER / "api" / "corpus.json")
     catalog_by_name = {row["name"]: row for row in catalog["theorems"]}
@@ -192,7 +192,7 @@ def test_interactive_surface_defaults_to_the_complete_map() -> None:
     assert "all 544 theorem" in graph_html
     assert "literal 1,917-edge graph" in graph_html
     assert "pa-bertrand-release-evidence" in graph_html
-    assert "Alpha v19 checked-use theorem; independently kernel and Lean verified; not Stable" in graph_html
+    assert "Alpha v24 checked-use theorem; independently kernel and Lean verified; not Stable" in graph_html
     assert "body-checked</span>" not in graph_html
     assert "Open the complete interactive proof map" in index_html
     assert "Stable checked-use (202)" in index_html
@@ -211,8 +211,8 @@ def test_root_page_exposes_exact_endpoint_and_provenance() -> None:
     assert "1bb7045f9b033e6e6167b329525d4833f66baab67bb5e846c3f572adbbb7ec0c" in source
     assert "proof-line-0039" in source
     assert "bertrand_closed_upper" in source
-    assert "Alpha v19 checked-use theorem" in source
-    assert "<dt>Current Alpha edition</dt><dd>v19</dd>" in source
+    assert "Alpha v24 checked-use theorem" in source
+    assert "<dt>Current Alpha edition</dt><dd>v24</dd>" in source
     assert "<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>" in source
     assert "historical Alpha-v18 proof bundle independently checks" in source
     assert "<dt>Current release evidence</dt><dd>alpha_closed</dd>" in source
@@ -235,7 +235,11 @@ def test_explorer_contains_no_classical_tactic() -> None:
 
 
 def test_every_bertrand_proof_page_links_its_definition_dag_and_research_atlas() -> None:
-    revision = "f1c3d3fba013"
+    current_catalog = (
+        REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+    )
+    revision = _sha256(current_catalog)[:12]
+    assert revision == "94ac4d193cbf"
     for relative in ("index.html", "graph.html"):
         page = (EXPLORER / relative).read_text(encoding="utf-8")
         assert f'href="../../grand-campaign/?v={revision}"' in page

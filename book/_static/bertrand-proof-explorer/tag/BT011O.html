@@ -8,9 +8,9 @@
 <a href="../index.html">Explorer</a>
 <a href="../defined/tag/BT011O.html">Definition-aware theorem</a>
 <a href="../defined/graph.html?target=BT011O&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
-<a href="../../../grand-campaign/?v=f1c3d3fba013">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=f1c3d3fba013">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=f1c3d3fba013">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=f1c3d3fba013">Campaign milestone</a><a href="BT011N.html">← prime_five_hundred_twenty_one</a><a href="BT011P.html">bertrand_add_six_permute →</a></nav>
+<a href="../../../grand-campaign/?v=94ac4d193cbf">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=94ac4d193cbf">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=94ac4d193cbf">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=94ac4d193cbf">Campaign milestone</a><a href="BT011N.html">← prime_five_hundred_twenty_one</a><a href="BT011P.html">bertrand_add_six_permute →</a></nav>
 <p class="pa-tag">BT011O</p><h1>bertrand_add_swap_nested</h1>
-<p class="pa-status-candidate">Alpha v19 checked-use theorem · independently kernel and Lean verified; not Stable</p>
+<p class="pa-status-candidate">Alpha v24 checked-use theorem · independently kernel and Lean verified; not Stable</p>
 <p>Swap the first two addends under a fixed trailing addend.</p></header>
 <main class="pa-theorem-layout"><div class="pa-proof-panel">
 <section class="pa-statement"><h2>Exact expanded PA statement</h2>
@@ -27,13 +27,13 @@ The authored body proceeds by direct introduction and elimination.</p></section>
 <section><h2>Formal native tactic body</h2>
 <p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
 The complete historical Alpha-v18 proof bundle independently checks every
-dependency; current Alpha v19 preserves that checked theorem use without
+dependency; current Alpha v24 preserves that checked theorem use without
 changing Stable membership.</p>
 <ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="bb6df9db0b9463a4"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="6cd4cdd2d59944a2"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="dee1f8b46fbb0098"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="trans" data-line-id="32b5bc81070a3eb9"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">trans</span> (a + b) + c</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="symm" data-line-id="2de1740f3c489078"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="apply" data-line-id="bdce5b75cbba1cdb"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0003.html">add_assoc</a></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="trans" data-line-id="994837c21394018f"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">trans</span> (b + a) + c</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="congr" data-line-id="2d0d523b14cd54f4"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">congr</span></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="apply" data-line-id="0c4ddf2a36a8cd6e"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0002.html">add_comm</a></code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="refl" data-line-id="7b02d5b792d61244"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="apply" data-line-id="fd29cacbe018a273"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0003.html">add_assoc</a></code></li></ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
 <dl><dt>Enrollment index</dt><dd>1284</dd>
 <dt>Layer</dt><dd>2</dd><dt>Lines</dt><dd>11</dd>
-<dt>Current Alpha edition</dt><dd>v19</dd>
+<dt>Current Alpha edition</dt><dd>v24</dd>
 <dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
 <dt>Current release evidence</dt><dd>alpha_closed</dd>
 <dt>Checked theorem use</dt><dd>yes</dd>

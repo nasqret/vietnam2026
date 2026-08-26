@@ -29,7 +29,7 @@ _LEAN_IDENTIFIER = re.compile(r"[A-Za-z_][A-Za-z0-9_']*\Z")
 
 @dataclass(frozen=True, slots=True)
 class LeanExport:
-    """A rendered Lean theorem and the matching exact-source editor link."""
+    """A rendered Lean theorem; only a verified standalone proof has a Live link."""
 
     name: str
     statement: str
@@ -226,7 +226,10 @@ def export_theorem(
             "end PeanoLab",
         )
     )
-    return LeanExport(name, statement, code, live_lean_url(code))
+    # A statement-only scaffold deliberately contains `sorry`.  Never present
+    # it as an independently meaningful Lean Live proof; the checked readable
+    # proof-strand exporter is the only authority for those user-facing links.
+    return LeanExport(name, statement, code, "")
 
 
 __all__ = [

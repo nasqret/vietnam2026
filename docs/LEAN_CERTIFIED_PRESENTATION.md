@@ -202,13 +202,64 @@ python3 scripts/export_peano_lean.py quadratic_reciprocity_combined \
 
 Historical immutable Alpha v18 admitted multidigit Lucas, both Kummer
 endpoints, strict Bertrand, universal four squares, and the all-natural
-two-square classification. Current immutable **Alpha v19** additionally
+two-square classification. Historical immutable **Alpha v19** additionally
 closes its **84** remaining body-only obligations and adds **64** independently
 checked Pythagorean, prime-two-square, linear-congruence, and one-modulo-four
-prime results. All **1,737 enrolled statements now have checked-use
-authority**: **432 unchanged Stable** theorems and **1,305 Alpha-only**
-theorems, with no unchecked or pending rows. Its exact edition identity is
+prime results. Its exact historical edition identity is
 `905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7`.
+Historical immutable **Alpha v20** preserves all those exact rows and adds
+**39** independently proved polynomial, finite matrix-component, strict
+Bertrand-prime, and finite continued-fraction theorems. Its **1,776 checked
+statements** comprise **432 unchanged Stable** theorems and **1,344 Alpha-only**
+theorems, with no unchecked or pending rows. Its historical edition identity is
+`ee0f596150d8609ab302303ade44c4413290675398a1d6999a47b3ba046ac38b`.
+
+Historical immutable **Alpha v21** preserves every historical v20 row and adds
+**54** independently checked theorems: 23 arbitrary natural/signed
+matrix-product and determinant results, 15 Euclidean execution/halving
+results, and 16 binary modular-exponentiation results. All **1,830 enrolled
+statements have checked-use authority**: **432 unchanged Stable** and **1,398
+Alpha-only**, with no unchecked or pending rows. Its exact edition identity
+is `aee42cc37e4a4073eb4892e81e4f26d957b3b4b42675c1ed4e67c90dc89602e6`.
+Its complete 209-node advanced-layer proof artifact has been separately
+accepted by the unchanged intuitionistic kernel and the independently
+compiled Lean checker.
+
+Current immutable **Alpha v22** preserves all 1,830 historical v21 rows and
+adds **60** independently checked theorems: **21** total and unique
+first-order binary-length theorems, **20** genuine Euclidean gcd-invariant
+and terminal-state identification theorems, and **19** complete
+supplied-digit binary modular-execution and power-invariant theorems. All
+**1,890 enrolled statements have checked-use authority**: **432 unchanged
+Stable** and **1,458 Alpha-only**, with no unchecked or pending rows. Its
+exact edition identity is
+`2750384264856ad10910c1e9369746da886f4760d41e356bfc9e7f8f4563c7db`.
+The complete **240-node**, **597-edge** transport-layer proof artifact is
+independently accepted by both the original intuitionistic kernel and the
+compiled Lean checker. G101 remains open for its formal logarithmic bound;
+G102 remains open for arbitrary-exponent canonical digit construction and its
+formal logarithmic bound; T13 remains open for arbitrary determinants, rank,
+and lattices. Checked component export does not certify an unproved goal.
+
+For example, an actual newly enrolled v20 theorem can be automatically
+translated and independently typechecked using the existing bounded exporter:
+
+```bash
+python3 scripts/export_peano_lean.py signed_matrix_two_determinant_exists \
+  --edition alpha \
+  --format compact \
+  --package-dir /private/tmp/peano-lean-signed-determinant \
+  --verify \
+  --lean-project ../peano-lab-lean \
+  --max-memory-mib 768 \
+  --max-verify-seconds 60
+```
+
+The verified translated proposition is exactly
+`∀ a b c d : Nat, ∃ p n : Nat, p = a*d ∧ n = b*c`. The generated package
+records exact original-AST equivalence and a real certificate proof. Runtime
+verification does not silently upgrade conservative manifest-authority flags
+or grant Stable membership.
 
 An exact matching historical single-root flagship proof bundle can still be
 translated directly without reconstructing a second ordinary root certificate:
@@ -233,8 +284,12 @@ first-order statement, and independently checks every constructive dependency
 proof before generating Lean. No redundant full empty-context replay is
 needed. Kummer's shared artifact has a conjunction of its two endpoints as
 its root. Likewise, the **475-node Alpha-v19 residual artifact** ends at a
-balanced conjunction of 40 exact theorem roots, and the **545-node campaign
-artifact** ends at a balanced conjunction of 17 exact new roots. None of
+balanced conjunction of 40 exact theorem roots, the **545-node v19 campaign
+artifact** ends at a balanced conjunction of 17 exact new roots, and the
+**590-node v20 next-layer artifact** ends at a balanced conjunction of 12
+exact roots, the **209-node v21 advanced-layer artifact** ends at a balanced
+conjunction of 27 exact roots, and the **240-node v22 transport-layer
+artifact** ends at a balanced conjunction of 17 exact roots. None of
 those synthetic conjunctions is itself the statement of an individually named
 theorem. Therefore never pass a multi-root artifact as `--proof-bundle` for
 an individual Kummer, residual, or new campaign endpoint: the exporter
@@ -242,15 +297,30 @@ correctly rejects the mismatched target. Use its authenticated named-theorem
 path, a readable dependency strand, or a separately extracted exact matching
 rooted sub-bundle.
 
-Both complete Alpha-v19 proof DAGs can instead be audited directly with the
-existing independently compiled Lean verifier:
+The complete historical Alpha-v19/v20/v21 and current Alpha-v22 proof DAGs can instead
+be audited directly with the existing independently compiled Lean verifier:
 
 ```bash
 ../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
   research/arithmetic-library/artifacts/alpha-v19-residual-proof-bundle-v1.json
 ../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
   research/arithmetic-library/artifacts/alpha-v19-campaign-frontier-proof-bundle-v1.json
+../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+  research/arithmetic-library/artifacts/alpha-v20-next-layer-proof-bundle-v1.json
+../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+  research/arithmetic-library/artifacts/alpha-v21-advanced-layer-proof-bundle-v1.json
+../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+  research/arithmetic-library/artifacts/alpha-v22-transport-layer-proof-bundle-v1.json
 ```
+
+The historical v20 command independently returned
+`ACCEPT ... nodes=590 root=589` for the frozen 14,775,673-byte artifact.
+The historical v21 command independently returns
+`ACCEPT ... nodes=209 root=208` for the frozen 1,005,317-byte artifact with
+SHA-256 `65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0`.
+The current v22 command independently returns
+`ACCEPT ... nodes=240 root=239` for the frozen 1,099,541-byte artifact with
+SHA-256 `95e5f8a3baef113721d748f9d7071864b4bf9511737a27a1272d2695428fb938`.
 
 An independently supplied bundle for a theorem outside Stable is identified
 as external bundle evidence; it does not promote that theorem into Stable or

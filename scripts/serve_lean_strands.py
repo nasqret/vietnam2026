@@ -2,11 +2,13 @@
 """Serve bounded, independently verified Lean proof jobs and theorem explorers.
 
 The server is loopback-only unless an operator explicitly supplies
-``--public-host``.  Exactly one proof-generation subprocess may be active;
-the subprocess invokes the existing sealed-edition exporter and its real
-one-worker Lean verification.  Existing theorem-explorer HTML gains the
-shared selector assets only while it is served: frozen source pages are never
-rewritten.
+``--public-host``.  A separately hosted static theorem explorer may use the
+service only when its exact HTTPS origin is explicitly approved with
+``--public-origin`` and ``--allowed-origin``.  Exactly one proof-generation
+subprocess may be active; the subprocess invokes the existing sealed-edition
+exporter and its real one-worker Lean verification.  Existing theorem-explorer
+HTML gains the shared selector assets only while it is served: frozen source
+pages are never rewritten.
 """
 
 from __future__ import annotations
@@ -33,7 +35,7 @@ import tempfile
 import threading
 import time
 from typing import Any, Callable
-from urllib.parse import parse_qs, unquote, urlsplit
+from urllib.parse import parse_qs, quote, unquote, unquote_to_bytes, urlsplit
 import zipfile
 
 
@@ -42,12 +44,20 @@ EXPORTER = ROOT / "scripts" / "export_peano_lean.py"
 API_PREFIX = "/api/lean-strands"
 DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 8787
+DEFAULT_LIVE_URL_BYTES = 512 * 1024
+MAX_LIVE_URL_BYTES = 1024 * 1024
+DEFAULT_LIVE_SOURCE_BYTES = 1024 * 1024
+MAX_LIVE_SOURCE_BYTES = 4 * 1024 * 1024
+DEFAULT_STRAND_NODES = 1024
+MAX_ALLOWED_ORIGINS = 16
+MAX_FORWARDED_HOPS = 16
 JOB_SCHEMA = "peano-lean-strand-service-v1"
 LIVE_SCHEMA = "peano-lab-lean-live-v1"
 JOB_ID = re.compile(r"[0-9a-f]{32}\Z")
 THEOREM_NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_']{0,127}\Z")
 SAFE_MODULE = re.compile(r"[A-Za-z_][A-Za-z0-9_.]*\Z")
 SHA256 = re.compile(r"[0-9a-f]{64}\Z")
+LIVE_CODEZ = re.compile(r"(?:[A-Za-z0-9]|%2B|%2F)+\Z")
 STAGES = frozenset({"plan", "translate", "certificate", "package", "compile", "repair", "complete"})
 TERMINAL = frozenset({"completed", "failed", "cancelled"})
 SENSITIVE_SUFFIXES = frozenset(
@@ -69,6 +79,11 @@ EXPLORER_SEGMENTS = frozenset(
         "bertrand-proof-explorer",
         "constructive-frontier-explorer",
         "constructive-grand-campaign",
+        "constructive-next-layer-explorer",
+        "constructive-advanced-layer-explorer",
+        "constructive-transport-layer-explorer",
+        "constructive-milestone-closure-explorer",
+        "constructive-research-layer-explorer",
     }
 )
 
@@ -92,9 +107,10 @@ class JobRateLimitError(ServiceError):
 @dataclass(frozen=True, slots=True)
 class ServiceLimits:
     request_bytes: int = 16 * 1024
-    response_bytes: int = 256 * 1024
+    response_bytes: int = 3 * 1024 * 1024
     diagnostic_bytes: int = 64 * 1024
     event_line_bytes: int = 16 * 1024
+    live_metadata_bytes: int = 2 * 1024 * 1024
     html_bytes: int = 4 * 1024 * 1024
     static_bytes: int = 128 * 1024 * 1024
     package_bytes: int = 64 * 1024 * 1024
@@ -104,13 +120,14 @@ class ServiceLimits:
     memory_mib: int = 1_024
     verify_seconds: int = 180
     job_seconds: int = 240
-    strand_nodes: int = 256
+    strand_nodes: int = DEFAULT_STRAND_NODES
     strand_edges: int = 8_192
     strand_depth: int = 128
     proof_steps: int = 4_096
     proof_repairs: int = 16
     chunk_kib: int = 192
-    live_url_bytes: int = 8_192
+    live_url_bytes: int = DEFAULT_LIVE_URL_BYTES
+    live_source_bytes: int = DEFAULT_LIVE_SOURCE_BYTES
     concurrent_requests: int = 16
     mutations_per_minute: int = 30
 
@@ -149,6 +166,8 @@ class JobRecord:
     verification_marker: bool = False
     live_url: str | None = None
     live_status: str = "fallback_required"
+    live_encoding: str | None = None
+    live_source_sha256: str | None = None
     live_source_bytes: int = 0
     process: subprocess.Popen[str] | None = None
     cancel_requested: bool = False
@@ -185,6 +204,66 @@ def _bounded_integer(value: object, name: str, minimum: int, maximum: int) -> in
     if type(value) is not int or not minimum <= value <= maximum:
         raise ServiceError(f"{name} must be an integer between {minimum} and {maximum}")
     return value
+
+
+def _loopback_hostname(hostname: str) -> bool:
+    if hostname.lower() == "localhost":
+        return True
+    try:
+        return ipaddress.ip_address(hostname).is_loopback
+    except ValueError:
+        return False
+
+
+def _safe_origin(value: object, *, label: str) -> str:
+    """Canonicalize one exact HTTP(S) origin without paths or credentials."""
+
+    if (
+        type(value) is not str
+        or not value
+        or len(value) > 512
+        or any(character.isspace() for character in value)
+        or "," in value
+        or "\\" in value
+    ):
+        raise ServiceError(f"{label} must be one exact HTTP(S) origin")
+    try:
+        parsed = urlsplit(value)
+        hostname = parsed.hostname
+        port = parsed.port
+    except ValueError as error:
+        raise ServiceError(f"{label} must be one exact HTTP(S) origin") from error
+    if (
+        parsed.scheme not in {"http", "https"}
+        or not hostname
+        or parsed.username is not None
+        or parsed.password is not None
+        or parsed.path not in {"", "/"}
+        or parsed.query
+        or parsed.fragment
+        or port == 0
+    ):
+        raise ServiceError(f"{label} must be one exact HTTP(S) origin")
+    if parsed.scheme != "https" and not _loopback_hostname(hostname):
+        raise ServiceError(f"{label} must use HTTPS outside loopback")
+    return parsed.scheme + "://" + parsed.netloc.lower()
+
+
+def _safe_host_header(value: str) -> str | None:
+    if (
+        not value
+        or len(value) > 256
+        or any(character.isspace() for character in value)
+        or any(character in value for character in ",/\\@?#")
+    ):
+        return None
+    try:
+        parsed = urlsplit("//" + value)
+        if not parsed.hostname or parsed.port == 0 or parsed.username or parsed.password:
+            return None
+    except ValueError:
+        return None
+    return parsed.netloc.lower()
 
 
 def validate_request(payload: object, limits: ServiceLimits) -> JobRequest:
@@ -272,8 +351,8 @@ def validate_request(payload: object, limits: ServiceLimits) -> JobRequest:
     )
 
 
-def validate_live_url(value: object, *, maximum: int = 8_192) -> str | None:
-    """Permit only the exact bounded official Lean Live code-share endpoint."""
+def validate_live_url(value: object, *, maximum: int = DEFAULT_LIVE_URL_BYTES) -> str | None:
+    """Permit only exact bounded official inline Lean Live code/codez links."""
 
     if value is None:
         return None
@@ -289,13 +368,72 @@ def validate_live_url(value: object, *, maximum: int = 8_192) -> str | None:
         or parsed.netloc != "live.lean-lang.org"
         or parsed.path != "/"
         or parsed.query
-        or not parsed.fragment.startswith("code=")
-        or not parsed.fragment[5:]
         or parsed.username is not None
         or parsed.password is not None
     ):
         return None
+    if parsed.fragment.startswith("code="):
+        if not parsed.fragment[5:]:
+            return None
+    elif parsed.fragment.startswith("codez="):
+        if LIVE_CODEZ.fullmatch(parsed.fragment[6:]) is None:
+            return None
+    else:
+        return None
     return value
+
+
+def _decoded_live_source(url: str, *, maximum: int) -> tuple[bytes, str]:
+    """Decode bounded inline proof source; never fetch hosted/private content."""
+
+    fragment = urlsplit(url).fragment
+    if fragment.startswith("code="):
+        try:
+            decoded = unquote_to_bytes(fragment[5:])
+            decoded.decode("utf-8", errors="strict")
+        except (UnicodeError, ValueError) as error:
+            raise ServiceError("Lean Live code does not contain exact UTF-8 proof source") from error
+        encoding = "code"
+    elif fragment.startswith("codez="):
+        package_root = str(ROOT / "peano-lab" / "py")
+        if package_root not in sys.path:
+            sys.path.insert(0, package_root)
+        try:
+            from peano_lab.library.lean_proof_strand import decompress_lean_live_codez
+
+            encoded = fragment[6:]
+            if LIVE_CODEZ.fullmatch(encoded) is None:
+                raise ValueError("compressed proof does not use canonical escaped Base64")
+            compressed = unquote(encoded, errors="strict")
+            if quote(compressed, safe="") != encoded:
+                raise ValueError("compressed proof does not use canonical escaped Base64")
+            decoded = decompress_lean_live_codez(
+                compressed,
+                max_output_bytes=maximum,
+            ).encode("utf-8")
+        except (ImportError, UnicodeError, ValueError) as error:
+            raise ServiceError("Lean Live compressed code is not one bounded exact proof") from error
+        encoding = "codez"
+    else:
+        raise ServiceError("Lean Live source must be one approved inline proof fragment")
+    if len(decoded) > maximum:
+        raise ServiceError("Lean Live source exceeds its exact checked proof byte budget")
+    return decoded, encoding
+
+
+def _core_standalone_source(payload: bytes) -> None:
+    """Require literally zero imports, no added axioms, and no placeholders."""
+
+    try:
+        source = payload.decode("utf-8", errors="strict")
+    except UnicodeError as error:
+        raise ServiceError("standalone Lean proof is not exact UTF-8 source") from error
+    if re.search(r"(?m)^\s*import\b", source):
+        raise ServiceError("standalone Lean proof declares an explicit import; only import-free proofs are shareable")
+    if re.search(r"\b(?:sorry|sorryAx|native_decide)\b", source):
+        raise ServiceError("standalone Lean proof contains an unsafe unchecked placeholder")
+    if re.search(r"(?m)^\s*axiom\b", source):
+        raise ServiceError("standalone Lean proof declares an unaudited external axiom")
 
 
 class JobManager:
@@ -419,6 +557,7 @@ class JobManager:
             "download_urls": downloads,
             "live_url": job.live_url,
             "live_status": job.live_status,
+            "live_encoding": job.live_encoding,
             "live_compatible": job.live_status in {"ready", "oversized"},
             "standalone_lean": job.live_status in {"ready", "oversized"},
             "companion_required": job.live_status not in {"ready", "oversized"},
@@ -426,8 +565,13 @@ class JobManager:
                 "compatible": job.live_status in {"ready", "oversized"},
                 "url": job.live_url,
                 "status": job.live_status,
+                "share_encoding": job.live_encoding,
+                "source_sha256": job.live_source_sha256,
                 "source_bytes": job.live_source_bytes,
                 "local_source_verified": job.live_status in {"ready", "oversized"},
+                "self_contained": job.live_status in {"ready", "oversized"},
+                "core_imports": [],
+                "external_import_count": 0,
                 "remote_compilation": "not_run",
             },
             "lean_verified": job.lean_verified,
@@ -577,6 +721,10 @@ class JobManager:
             "--progress-json",
             "--live-lean-output",
             str(job.directory / "live.lean"),
+            "--max-live-url-bytes",
+            str(self.limits.live_url_bytes),
+            "--max-live-source-kib",
+            str(self.limits.live_source_bytes // 1024),
         ]
         if item.strict_readable:
             command.append("--strict-readable")
@@ -632,32 +780,68 @@ class JobManager:
         if not lean.is_file() or not sidecar.is_file():
             job.live_status = "fallback_required"
             job.live_url = None
+            job.live_encoding = None
+            job.live_source_sha256 = None
             return
-        if sidecar.stat().st_size > self.limits.event_line_bytes:
+        if sidecar.stat().st_size > self.limits.live_metadata_bytes:
             raise ServiceError("Lean Live metadata exceeds its reviewed size limit")
-        if lean.stat().st_size > self.limits.package_bytes:
+        if lean.stat().st_size > min(self.limits.package_bytes, self.limits.live_source_bytes):
             raise ServiceError("Lean Live source exceeds its reviewed size limit")
         try:
             metadata = json.loads(sidecar.read_text(encoding="utf-8"))
         except (OSError, TypeError, ValueError) as error:
             raise ServiceError("Lean Live metadata is not canonical JSON") from error
         actual = lean.read_bytes()
+        actual_digest = sha256(actual).hexdigest()
         if (
             type(metadata) is not dict
             or metadata.get("schema") != LIVE_SCHEMA
             or metadata.get("theorem") != job.request.theorem
             or metadata.get("edition") != job.request.edition
-            or metadata.get("source_sha256") != sha256(actual).hexdigest()
+            or type(metadata.get("source_sha256")) is not str
+            or not secrets.compare_digest(metadata["source_sha256"], actual_digest)
             or metadata.get("source_bytes") != len(actual)
             or metadata.get("local_source_verified") is not True
             or metadata.get("remote_compilation") != "not_run"
+            or metadata.get("self_contained") is not True
+            or metadata.get("core_imports") != []
+            or type(metadata.get("external_import_count")) is not int
+            or metadata.get("external_import_count") != 0
         ):
             raise ServiceError("Lean Live metadata does not authenticate its locally checked source")
+        if job.manifest is None or job.manifest.get("fallback_node_count") != 0:
+            raise ServiceError("Lean Live standalone source cannot contain companion-backed certificates")
+        _core_standalone_source(actual)
+        recorded_fallback = metadata.get("fallback_node_count", 0)
+        if type(recorded_fallback) is not int or recorded_fallback != 0:
+            raise ServiceError("Lean Live metadata includes a non-standalone certificate fallback")
         job.live_source_bytes = len(actual)
+        job.live_source_sha256 = actual_digest
+        declared = metadata.get("share_encoding")
+        if declared is not None and declared not in {"code", "codez"}:
+            raise ServiceError("Lean Live metadata has an unsupported inline proof encoding")
         shared = validate_live_url(
             metadata.get("share_url"),
             maximum=self.limits.live_url_bytes,
         )
+        if metadata.get("share_url") is not None and shared is None:
+            raise ServiceError("Lean Live metadata contains an unsafe or oversized official URL")
+        if shared is not None:
+            decoded, actual_encoding = _decoded_live_source(
+                shared,
+                maximum=len(actual),
+            )
+            if not secrets.compare_digest(sha256(decoded).hexdigest(), actual_digest):
+                raise ServiceError("Lean Live URL does not contain the exact locally compiled proof")
+            if declared is not None and declared != actual_encoding:
+                raise ServiceError("Lean Live metadata changed its exact inline source encoding")
+            if metadata.get("share_status") != "ready":
+                raise ServiceError("Lean Live ready URL contradicts its checked metadata status")
+            job.live_encoding = actual_encoding
+        else:
+            if metadata.get("share_status") != "oversized":
+                raise ServiceError("missing Lean Live URL contradicts its checked metadata status")
+            job.live_encoding = None
         job.live_url = shared
         job.live_status = "ready" if shared is not None else "oversized"
 
@@ -931,7 +1115,7 @@ class JobManager:
 
 
 class LeanStrandServer(ThreadingHTTPServer):
-    """Bounded-thread same-origin static and verified-proof HTTP service."""
+    """Bounded proof service with optional exact-origin HTTPS proxy access."""
 
     daemon_threads = True
     allow_reuse_address = True
@@ -943,6 +1127,10 @@ class LeanStrandServer(ThreadingHTTPServer):
         directory: Path,
         *,
         public_host: bool = False,
+        public_origin: str | None = None,
+        allowed_origins: tuple[str, ...] = (),
+        trust_proxy: bool = False,
+        api_only: bool = False,
     ) -> None:
         self.job_manager = manager
         self.static_directory = Path(directory).expanduser().resolve()
@@ -951,6 +1139,25 @@ class LeanStrandServer(ThreadingHTTPServer):
         if manager.storage.is_relative_to(self.static_directory):
             raise ServiceError("private proof-job storage must not lie beneath the public static root")
         self.public_host = public_host
+        self.public_origin = (
+            None if public_origin is None else _safe_origin(public_origin, label="public origin")
+        )
+        if allowed_origins and self.public_origin is None:
+            raise ServiceError("allowed origins require an explicitly configured public origin")
+        if len(allowed_origins) > MAX_ALLOWED_ORIGINS:
+            raise ServiceError("too many explicitly approved proof-browser origins")
+        selected = tuple(
+            dict.fromkeys(
+                _safe_origin(origin, label="allowed origin") for origin in allowed_origins
+            )
+        )
+        self.allowed_origins = selected
+        self.trust_proxy = trust_proxy
+        self.api_only = api_only
+        if trust_proxy and self.public_origin is None:
+            raise ServiceError("trusted reverse proxy requires an explicitly configured public origin")
+        if trust_proxy and not _loopback_hostname(address[0]):
+            raise ServiceError("trusted reverse proxy requires a loopback-only service listener")
         self._request_slots = threading.BoundedSemaphore(manager.limits.concurrent_requests)
         super().__init__(address, LeanStrandHandler)
 
@@ -994,9 +1201,35 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
         self.send_header("Cache-Control", "no-store, max-age=0")
         self.send_header("X-Content-Type-Options", "nosniff")
         self.send_header("Referrer-Policy", "same-origin")
-        self.send_header("Cross-Origin-Resource-Policy", "same-origin")
+        approved = self._cors_origin()
+        self.send_header(
+            "Cross-Origin-Resource-Policy", "cross-origin" if approved else "same-origin"
+        )
+        if approved is not None:
+            self._cors_headers(approved)
         if download is not None:
             self.send_header("Content-Disposition", f'attachment; filename="{download}"')
+
+    def _cors_origin(self) -> str | None:
+        """Return only an exact, explicitly approved cross-origin API caller."""
+
+        if self.server.public_origin is None or self._api_parts() is None:
+            return None
+        origin = self.headers.get("Origin")
+        if origin is None:
+            return None
+        try:
+            selected = _safe_origin(origin, label="request origin")
+        except ServiceError:
+            return None
+        if selected not in self.server.allowed_origins:
+            return None
+        return selected
+
+    def _cors_headers(self, origin: str) -> None:
+        self.send_header("Access-Control-Allow-Origin", origin)
+        self.send_header("Vary", "Origin")
+        self.send_header("Access-Control-Expose-Headers", "Content-Disposition, Content-Length")
 
     def _json(self, status: HTTPStatus, payload: object, *, head_only: bool = False) -> None:
         try:
@@ -1018,31 +1251,66 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
         if origin is None:
             return True
         try:
-            actual = urlsplit(origin)
-        except ValueError:
+            actual = _safe_origin(origin, label="request origin")
+        except ServiceError:
             return False
-        expected = self.headers.get("Host", "")
-        return (
-            actual.scheme in {"http", "https"}
-            and actual.netloc == expected
-            and not actual.username
-            and not actual.password
-            and not actual.query
-            and not actual.fragment
-        )
+        if self.server.public_origin is not None:
+            if actual == self.server.public_origin or actual in self.server.allowed_origins:
+                return True
+        expected = _safe_host_header(self.headers.get("Host", ""))
+        return expected is not None and urlsplit(actual).netloc == expected
 
     def _host_allowed(self) -> bool:
-        host = self.headers.get("Host", "")
-        if not host or len(host) > 256 or any(char.isspace() for char in host):
+        host = _safe_host_header(self.headers.get("Host", ""))
+        if host is None:
             return False
-        if self.server.public_host:
-            return True
         expected = {
             f"127.0.0.1:{self.server.server_port}",
             f"localhost:{self.server.server_port}",
             f"[::1]:{self.server.server_port}",
         }
-        return host in expected
+        public_host = (
+            None
+            if self.server.public_origin is None
+            else urlsplit(self.server.public_origin).netloc
+        )
+        if self.server.public_origin is not None:
+            if host not in expected and host != public_host:
+                return False
+        elif not self.server.public_host:
+            return host in expected
+        if not self.server.trust_proxy:
+            return True
+        if not _loopback_hostname(self.client_address[0]):
+            return False
+        forwarded_host = self.headers.get("X-Forwarded-Host")
+        forwarded_scheme = self.headers.get("X-Forwarded-Proto")
+        if forwarded_host is None and forwarded_scheme is None and host in expected:
+            return True
+        if forwarded_scheme != urlsplit(self.server.public_origin).scheme:
+            return False
+        if forwarded_host is not None and _safe_host_header(forwarded_host) != public_host:
+            return False
+        return host == public_host or forwarded_host is not None
+
+    def _client_identity(self) -> str:
+        """Trust forwarded client identity only on an explicit loopback proxy."""
+
+        direct = self.client_address[0]
+        if not self.server.trust_proxy or not _loopback_hostname(direct):
+            return direct
+        forwarded = self.headers.get("X-Forwarded-For")
+        if forwarded is None:
+            return direct
+        if len(forwarded) > 1024:
+            raise ServiceError("trusted proxy client chain exceeds its reviewed limit")
+        hops = [part.strip() for part in forwarded.split(",")]
+        if not hops or len(hops) > MAX_FORWARDED_HOPS or not hops[-1]:
+            raise ServiceError("trusted proxy supplied an invalid client address")
+        try:
+            return str(ipaddress.ip_address(hops[-1]))
+        except ValueError as error:
+            raise ServiceError("trusted proxy supplied an invalid client address") from error
 
     def _request_payload(self) -> object:
         if not self._same_origin():
@@ -1224,6 +1492,9 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
         self.send_header("Content-Type", "text/event-stream; charset=utf-8")
         self.send_header("Cache-Control", "no-store")
         self.send_header("X-Content-Type-Options", "nosniff")
+        approved = self._cors_origin()
+        if approved is not None:
+            self._cors_headers(approved)
         self.end_headers()
         revision = -1
         try:
@@ -1250,6 +1521,9 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
             return
         parsed = urlsplit(self.path)
         if parsed.path == "/":
+            if self.server.api_only:
+                self._failure(HTTPStatus.NOT_FOUND, "static proof-browser hosting is disabled")
+                return
             prefix = "/book" if (self.server.static_directory / "book/_static").is_dir() else ""
             location = f"{prefix}/_static/pa-proof-explorer/defined/graph.html?target=PA000F"
             self.send_response(HTTPStatus.FOUND)
@@ -1262,7 +1536,16 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
             return
         parts = self._api_parts()
         if parts is None:
+            if self.server.api_only:
+                self._failure(HTTPStatus.NOT_FOUND, "static proof-browser hosting is disabled")
+                return
             self._serve_static(head_only=head_only)
+            return
+        if not self._same_origin():
+            self._failure(HTTPStatus.FORBIDDEN, "unapproved proof-browser origin")
+            return
+        if parts in {("health",), ("healthz",)}:
+            self._json(HTTPStatus.OK, {"status": "ok", "schema": JOB_SCHEMA}, head_only=head_only)
             return
         if parts == ("config",):
             limits = self.server.job_manager.limits
@@ -1271,6 +1554,15 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
                 {
                     "schema": JOB_SCHEMA,
                     "public_host": self.server.public_host,
+                    "public_origin": self.server.public_origin,
+                    "allowed_origins": list(self.server.allowed_origins),
+                    "trusted_proxy": self.server.trust_proxy,
+                    "api_only": self.server.api_only,
+                    "api_root": (
+                        self.server.public_origin + API_PREFIX
+                        if self.server.public_origin is not None
+                        else API_PREFIX
+                    ),
                     "single_worker": True,
                     "max_concurrent_jobs": 1,
                     "independent_lean_verification": True,
@@ -1280,6 +1572,8 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
                     "max_strand_nodes": limits.strand_nodes,
                     "max_nodes": limits.strand_nodes,
                     "max_chunk_kib": limits.chunk_kib,
+                    "max_live_url_bytes": limits.live_url_bytes,
+                    "max_live_source_bytes": limits.live_source_bytes,
                 },
                 head_only=head_only,
             )
@@ -1308,6 +1602,33 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
     def do_HEAD(self) -> None:  # noqa: N802
         self._get(head_only=True)
 
+    def do_OPTIONS(self) -> None:  # noqa: N802
+        if not self._host_allowed():
+            self._failure(HTTPStatus.MISDIRECTED_REQUEST, "request Host is not permitted")
+            return
+        if self._api_parts() is None:
+            self._failure(HTTPStatus.NOT_FOUND, "unknown proof-service endpoint")
+            return
+        approved = self._cors_origin()
+        if approved is None:
+            self._failure(HTTPStatus.FORBIDDEN, "unapproved proof-browser origin")
+            return
+        method = self.headers.get("Access-Control-Request-Method", "").upper()
+        if method not in {"GET", "HEAD", "POST", "DELETE"}:
+            self._failure(HTTPStatus.FORBIDDEN, "unapproved cross-origin proof method")
+            return
+        requested = self.headers.get("Access-Control-Request-Headers", "")
+        headers = tuple(part.strip().lower() for part in requested.split(",") if part.strip())
+        if any(header not in {"accept", "content-type"} for header in headers):
+            self._failure(HTTPStatus.FORBIDDEN, "unapproved cross-origin proof header")
+            return
+        self.send_response(HTTPStatus.NO_CONTENT)
+        self._headers("text/plain; charset=utf-8", 0)
+        self.send_header("Access-Control-Allow-Methods", "GET, HEAD, POST, DELETE, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Accept, Content-Type")
+        self.send_header("Access-Control-Max-Age", "600")
+        self.end_headers()
+
     def do_POST(self) -> None:  # noqa: N802
         if not self._host_allowed():
             self._failure(HTTPStatus.MISDIRECTED_REQUEST, "request Host is not permitted")
@@ -1317,7 +1638,7 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
             return
         try:
             payload = self._request_payload()
-            self.server.job_manager.check_mutation_rate(self.client_address[0])
+            self.server.job_manager.check_mutation_rate(self._client_identity())
             snapshot = self.server.job_manager.submit(payload)
         except PermissionError as error:
             self._failure(HTTPStatus.FORBIDDEN, str(error))
@@ -1345,13 +1666,16 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
             self._failure(HTTPStatus.NOT_FOUND, "unknown proof-service endpoint")
             return
         try:
-            self.server.job_manager.check_mutation_rate(self.client_address[0])
+            self.server.job_manager.check_mutation_rate(self._client_identity())
             snapshot = self.server.job_manager.cancel(parts[1])
         except JobRateLimitError as error:
             self._failure(HTTPStatus.TOO_MANY_REQUESTS, str(error))
             return
         except JobNotFoundError as error:
             self._failure(HTTPStatus.NOT_FOUND, str(error))
+            return
+        except ServiceError as error:
+            self._failure(HTTPStatus.BAD_REQUEST, str(error))
             return
         self._json(HTTPStatus.OK, snapshot)
 
@@ -1368,11 +1692,7 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
 def _safe_bind_host(host: str, *, public_host: bool) -> str:
     if type(host) is not str or not host or any(char.isspace() for char in host):
         raise ServiceError("listen host must be nonempty safe text")
-    try:
-        loopback = ipaddress.ip_address(host).is_loopback
-    except ValueError:
-        loopback = host == "localhost"
-    if not loopback and not public_host:
+    if not _loopback_hostname(host) and not public_host:
         raise ServiceError("non-loopback exposure requires explicit --public-host")
     return host
 
@@ -1382,6 +1702,28 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--host", default=DEFAULT_HOST)
     parser.add_argument("--port", type=int, default=DEFAULT_PORT)
     parser.add_argument("--public-host", action="store_true")
+    parser.add_argument(
+        "--public-origin",
+        help="exact external HTTPS service origin behind an approved reverse proxy",
+    )
+    parser.add_argument(
+        "--allowed-origin",
+        "--allow-origin",
+        dest="allowed_origins",
+        action="append",
+        default=[],
+        help="exact HTTPS theorem-browser origin allowed to call this proof API",
+    )
+    parser.add_argument(
+        "--trust-proxy",
+        action="store_true",
+        help="trust HTTPS forwarding headers only from an explicit loopback reverse proxy",
+    )
+    parser.add_argument(
+        "--api-only",
+        action="store_true",
+        help="serve only bounded proof API and health endpoints; expose no static files",
+    )
     parser.add_argument("--directory", type=Path, default=ROOT)
     parser.add_argument("--storage", type=Path)
     parser.add_argument("--max-memory-mib", type=int, default=1_024)
@@ -1389,14 +1731,38 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--max-job-seconds", type=int, default=240)
     parser.add_argument("--job-ttl-seconds", type=int, default=900)
     parser.add_argument("--max-jobs", type=int, default=32)
-    parser.add_argument("--max-strand-nodes", type=int, default=256)
+    parser.add_argument("--max-strand-nodes", type=int, default=DEFAULT_STRAND_NODES)
     parser.add_argument("--max-chunk-kib", type=int, default=192)
+    parser.add_argument("--max-live-url-bytes", type=int, default=DEFAULT_LIVE_URL_BYTES)
+    parser.add_argument("--max-live-source-kib", type=int, default=DEFAULT_LIVE_SOURCE_BYTES // 1024)
+    parser.add_argument("--max-mutations-per-minute", type=int, default=30)
+    parser.add_argument("--max-concurrent-requests", type=int, default=16)
     return parser
 
 
 def build_server(argv: list[str] | None = None) -> LeanStrandServer:
     args = _parser().parse_args(argv)
     host = _safe_bind_host(args.host, public_host=args.public_host)
+    public_origin = (
+        None
+        if args.public_origin is None
+        else _safe_origin(args.public_origin, label="public origin")
+    )
+    if args.allowed_origins and public_origin is None:
+        raise ServiceError("allowed origins require an explicitly configured public origin")
+    if len(args.allowed_origins) > MAX_ALLOWED_ORIGINS:
+        raise ServiceError("too many explicitly approved proof-browser origins")
+    allowed_origins = tuple(
+        dict.fromkeys(
+            _safe_origin(origin, label="allowed origin") for origin in args.allowed_origins
+        )
+    )
+    if args.trust_proxy and (
+        public_origin is None or not _loopback_hostname(host)
+    ):
+        raise ServiceError(
+            "trusted reverse proxy requires a public origin and loopback-only listener"
+        )
     port = _bounded_integer(args.port, "port", 0, 65_535)
     memory = _bounded_integer(args.max_memory_mib, "max_memory_mib", 64, 4_096)
     verification = _bounded_integer(args.max_verify_seconds, "max_verify_seconds", 1, 900)
@@ -1405,6 +1771,24 @@ def build_server(argv: list[str] | None = None) -> LeanStrandServer:
     jobs = _bounded_integer(args.max_jobs, "max_jobs", 1, 256)
     nodes = _bounded_integer(args.max_strand_nodes, "max_strand_nodes", 1, 2_048)
     chunks = _bounded_integer(args.max_chunk_kib, "max_chunk_kib", 8, 1_024)
+    live_url = _bounded_integer(
+        args.max_live_url_bytes,
+        "max_live_url_bytes",
+        128,
+        MAX_LIVE_URL_BYTES,
+    )
+    live_source_kib = _bounded_integer(
+        args.max_live_source_kib,
+        "max_live_source_kib",
+        1,
+        MAX_LIVE_SOURCE_BYTES // 1024,
+    )
+    mutations = _bounded_integer(
+        args.max_mutations_per_minute, "max_mutations_per_minute", 1, 600
+    )
+    concurrent_requests = _bounded_integer(
+        args.max_concurrent_requests, "max_concurrent_requests", 1, 64
+    )
     storage = (
         args.storage
         if args.storage is not None
@@ -1420,6 +1804,10 @@ def build_server(argv: list[str] | None = None) -> LeanStrandServer:
             retained_jobs=jobs,
             strand_nodes=nodes,
             chunk_kib=chunks,
+            live_url_bytes=live_url,
+            live_source_bytes=live_source_kib * 1024,
+            mutations_per_minute=mutations,
+            concurrent_requests=concurrent_requests,
         ),
     )
     return LeanStrandServer(
@@ -1427,6 +1815,10 @@ def build_server(argv: list[str] | None = None) -> LeanStrandServer:
         manager,
         args.directory,
         public_host=args.public_host,
+        public_origin=public_origin,
+        allowed_origins=allowed_origins,
+        trust_proxy=args.trust_proxy,
+        api_only=args.api_only,
     )
 
 
@@ -1451,6 +1843,15 @@ def main(argv: list[str] | None = None) -> int:
     print(f"Verified proof-job API: {base}{API_PREFIX}/jobs")
     if server.public_host:
         print("PUBLIC HOST ENABLED: repository explorer and proof API are externally reachable.")
+    if server.public_origin is not None:
+        print(f"Approved public proof-service origin: {server.public_origin}")
+        print(f"Public verified proof-job API: {server.public_origin}{API_PREFIX}/jobs")
+    if server.allowed_origins:
+        print("Approved cross-origin proof browsers: " + ", ".join(server.allowed_origins))
+    if server.trust_proxy:
+        print("TRUSTED LOOPBACK HTTPS PROXY ENABLED: forwarding headers are validated.")
+    if server.api_only:
+        print("API-ONLY MODE: static repository and theorem pages are not exposed.")
     try:
         server.serve_forever(poll_interval=0.25)
     except KeyboardInterrupt:

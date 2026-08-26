@@ -20,7 +20,7 @@ It separates three facts which are easy to blur in an informal development:
 - its complete empty-context certificate may check while it remains isolated;
 - only an explicit promotion makes it a Stable theorem.
 
-```{admonition} Historical Alpha v2 and current Alpha v19 / Stable status
+```{admonition} Historical Alpha v2 and current Alpha v20 / Stable status
 :class: important
 The tables and dated checkpoints below preserve the campaign's historical
 `public`/`private` admission boundary. They are not the current library
@@ -35,13 +35,15 @@ and 570 checked-use rows. Historical Alpha v16 independently closed quadratic
 reciprocity, and historical v17 independently closed both supplementary laws.
 Historical Alpha v18 preserves those milestones and additionally closes five
 independently kernel- and Lean-verified flagship proof families: Lucas,
-Kummer, Bertrand, four squares, and two squares. Current Alpha v19 closes all
+Kummer, Bertrand, four squares, and two squares. Historical Alpha v19 closes all
 84 remaining historical body-only obligations and adds 64 independently proved
-constructive-frontier theorems. All 1,737 current Alpha specifications now
+constructive-frontier theorems. Current Alpha v20 preserves those exact rows
+and adds 39 independently proved polynomial, matrix-component,
+Bertrand-prime, and continued-fraction theorems. All 1,776 current Alpha specifications now
 have checked-use authority, and Stable remains unchanged at 432. The
 authoritative current counts and evidence states are in
 {doc}`Alpha and Stable library editions <library-editions>` and
-`artifacts/peano-library/channels-v19.json`; `channels-v2.json` remains an
+`artifacts/peano-library/channels-v20.json`; `channels-v2.json` remains an
 immutable historical pointer.
 ```
 

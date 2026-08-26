@@ -4,7 +4,7 @@ This explorer is the line-by-line reading room for the complete transitive
 dependency closure of `bertrand_strict`. It uses the same searchable theorem
 pages and layered graph controls as the quadratic-reciprocity explorer, but
 its historical statement, script, and provenance input is the exact Alpha-v12
-catalog; independently sealed current Alpha-v19 evidence overlays that frozen
+catalog; independently sealed current Alpha-v20 evidence overlays that frozen
 campaign stack. A parallel definition-aware edition links 28 conservative
 definitions for primes, binomial coefficients, primorials, factorials,
 powers, valuations, and the other mathematical relations used by the proof.
@@ -13,7 +13,7 @@ powers, valuations, and the other mathematical relations used by the proof.
 :class: important
 The map contains all **544 theorem nodes**, **1,917 direct dependency edges**,
 **28,410 authored tactic lines**, and **45 layers** needed by the final strict
-Bertrand theorem. All 544 nodes now have independently verified Alpha-v19
+Bertrand theorem. All 544 nodes now have independently verified Alpha-v20
 checked-use authority: 202 belong to unchanged Stable and 342 are Alpha-only
 `alpha_closed` theorems. The complete actual proof bundle is independently
 accepted by both the original intuitionistic kernel and the separately
@@ -110,7 +110,7 @@ the complete numbered tactic body. Browser Back and Forward retrace the route.
 
 The builder reads the byte-frozen Alpha-v12 catalog, verifies the hash of every
 source file represented in the closure, and overlays the separately sealed
-current Alpha-v19 evidence ledger. It does not execute tactics, construct
+current Alpha-v20 evidence ledger. It does not execute tactics, construct
 certificates, change enrollment, or grant proof authority. The graph is a
 navigable rendering of evidence established elsewhere:
 
@@ -121,8 +121,9 @@ navigable rendering of evidence established elsewhere:
 - Historical Alpha v18 first granted checked theorem use to the exact complete
   dependency
   closure while preserving its 202/342 Stable-versus-Alpha-only membership;
-  current Alpha v19 preserves that evidence and closes all remaining auxiliary
-  Bertrand rows;
+  historical Alpha v19 closes all remaining auxiliary Bertrand rows; current
+  Alpha v20 preserves that evidence and adds checked multiplicity-one prime
+  divisors and arbitrary finite Bertrand chains;
   and
 - historical Alpha v12 preserves the original enrollment indices, authored
   tactic lines, and its then-current 203-checked/341-body-only evidence split.

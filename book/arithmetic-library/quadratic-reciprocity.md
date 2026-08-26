@@ -7,7 +7,7 @@ constructions, and the final certificate remain ordinary first-order PA.
 
 ![Dependency roadmap for the native quadratic-reciprocity proof](../_static/quadratic-reciprocity-roadmap.svg)
 
-```{admonition} Current immutable Alpha v19 status (2026-08-25)
+```{admonition} Current immutable Alpha v20 status (2026-08-25)
 :class: important
 All 316 Alpha-only QR specifications are now `alpha_closed` with genuine
 checked-use authority: one earlier QR/HA overlap was already closed, and
@@ -17,10 +17,12 @@ complete proofs. Historical Alpha v17 preserves that entire promotion and
 independently closes both exact supplementary laws. Historical Alpha v18
 additionally closes five independently kernel- and Lean-verified flagship
 families: Lucas, Kummer, Bertrand, Lagrange's four squares, and Fermat's two
-squares. Current Alpha v19 independently closes every remaining historical
+squares. Historical Alpha v19 independently closes every remaining historical
 obligation and adds 64 constructive Pythagorean, prime-two-square,
-linear-congruence, and 1-mod-4-prime theorems. Every entry of its immutable
-1,737-theorem ledger has checked-use authority; its Stable subset remains
+linear-congruence, and 1-mod-4-prime theorems. Current Alpha v20 preserves all
+of that evidence and independently adds 39 polynomial, finite matrix-component,
+Bertrand-prime, and continued-fraction results. Every entry of its immutable
+1,776-theorem ledger has checked-use authority; its Stable subset remains
 unchanged at 432.
 The full QR graph has 241 Stable prerequisites and 316 Alpha-closed
 theorems; none of those 316 has been promoted to Stable. Older phrases such as
@@ -68,7 +70,7 @@ ordinary certificate contains 54,870 structural proof nodes, 35,052 proof
 objects, and depth 129; a complete 557-node self-contained proof bundle is
 also independently accepted by the separately verified Lean companion.
 Immutable Alpha v16 first granted these QR results checked use, and current
-Alpha v19 preserves it without making them Stable. The former recursively
+Alpha v20 preserves it without making them Stable. The former recursively
 expanded closure remains a measured historical
 baseline. Throughout historical portions of this chapter, “body-green” names
 the intermediate evidence level that preceded the final evidence promotion.
@@ -1828,8 +1830,9 @@ root has checked-use authority without Stable membership. Historical Alpha v17
 retained that closure and independently closed both supplementary laws;
 historical Alpha v18 retained both earlier results while independently closing
 the Lucas, Kummer, Bertrand, four-square, and two-square flagship families;
-current Alpha v19 preserves those complete proofs while closing every residual
-obligation and adding four new constructive campaigns. The
+historical Alpha v19 preserves those complete proofs while closing every residual
+obligation and adding four new constructive campaigns; current Alpha v20
+preserves all of them and adds four independently checked next-layer families. The
 separate
 [`public-admission design`](https://github.com/nasqret/vietnam2026/blob/33d70c32daa32a453cc6d8e76769398a9f4fe6ca/research/arithmetic-library/quadratic-reciprocity-admission-path.md)
 specifies how to enroll that remaining order without an

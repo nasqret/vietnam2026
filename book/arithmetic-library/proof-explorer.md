@@ -11,8 +11,8 @@ closure.
 :class: important
 The 557 generated pages contain **241 Stable prerequisites** and **316 Alpha-only
 specifications**. The complete Stable catalog has 432 theorems, so
-191 Stable rows lie outside this QR closure. The current canonical Alpha v19
-catalog has 1,737 rows, every one with independently checked-use authority.
+191 Stable rows lie outside this QR closure. The current canonical Alpha v20
+catalog has 1,776 rows, every one with independently checked-use authority.
 Stable union this slice has only 748 distinct theorem names. The separately
 closed Lucas, Kummer, Bertrand, four-square, two-square, linear-congruence,
 prime-progression, and Pythagorean families, along with K3B and K3C, remain
@@ -26,7 +26,7 @@ a separate current evidence overlay marks all 316 Alpha-only QR results
 :class: note
 In particular, `quadratic_reciprocity_combined` has a complete independently
 checked empty-context certificate, a complete 557-node proof bundle, and
-current Alpha-v19 checked-use authority, first granted in historical v16.
+current Alpha-v20 checked-use authority, first granted in historical v16.
 Historical v17 separately closed both supplementary laws. The QR endpoint is
 **not** a Stable theorem. A
 permanent tag, source hash, or green modular-body check is provenance—not an

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BD0001 — binary_digit_code_recode_exists — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="binary-digit-extraction"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=94ac4d193cbf">Definitions and proofs</a>
+       <a href="../../tag/BD0001.html?v=94ac4d193cbf">Exact original proof</a>
+       <a href="../graph.html?target=BD0001&amp;v=94ac4d193cbf">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=94ac4d193cbf">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=94ac4d193cbf">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=94ac4d193cbf">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G102" href="../../../../grand-campaign/?view=goal&amp;focus=G102&amp;v=94ac4d193cbf">G102 milestone</a></nav>
+  <p class="pd-tag">BD0001</p><h1>binary_digit_code_recode_exists</h1>
+  <p>Every genuine beta-coded prefix can be recoded while appending any exact last digit.</p><p class="pd-status">Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  
+  <p class="pd-callout">The exact G102 milestone is fully proved for every natural exponent and every modulus greater than one, including actual canonical digits, a beta-coded accumulator execution, modular-power correctness, and the formal bound k≤3·BitLen(e)+2. The unrelated lattice milestone T13 remains open.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ b. ∀ c. ∀ l. ∀ d. ∃ x. ∃ y. <a class="pd-definition-ref" data-definition="ND0001" href="../definition/ND0001.html?v=94ac4d193cbf">Beta(x,y,l,d)</a> ∧ (∀ z. ∀ n. <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=94ac4d193cbf">Lt(z,l)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="../definition/ND0001.html?v=94ac4d193cbf">Beta(b,c,z,n)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="../definition/ND0001.html?v=94ac4d193cbf">Beta(x,y,z,n)</a>)</code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0001.html?v=94ac4d193cbf">Beta(b,c,i,x) · 3</a><a class="pd-chip" href="../definition/PD0002.html?v=94ac4d193cbf">Lt(a,b) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">beta_prefix_extend · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall b c l d. (exists z e. ((((exists ff_h_bd_recode_terminal. ff_h_bd_recode_terminal + S (d) = S ((S (l)) * e)) /\ exists ff_q_bd_recode_terminal. z = ff_q_bd_recode_terminal * S ((S (l)) * e) + (d))) /\ (forall bd_index_recode_result bd_value_recode_result. (exists bd_gap_recode_result. bd_gap_recode_result + S bd_index_recode_result = l) -&gt; (((exists ff_h_bd_recode_result_old. ff_h_bd_recode_result_old + S (bd_value_recode_result) = S ((S (bd_index_recode_result)) * c)) /\ exists ff_q_bd_recode_result_old. b = ff_q_bd_recode_result_old * S ((S (bd_index_recode_result)) * c) + (bd_value_recode_result))) -&gt; (((exists ff_h_bd_recode_result_new. ff_h_bd_recode_result_new + S (bd_value_recode_result) = S ((S (bd_index_recode_result)) * e)) /\ exists ff_q_bd_recode_result_new. z = ff_q_bd_recode_result_new * S ((S (bd_index_recode_result)) * e) + (bd_value_recode_result))))))</code></pre></details>
+  <section><h2>Complete unchanged native tactic proof</h2>
+    <p>All 9 lines are the exact independently kernel-checked original script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro b</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro c</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro l</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro d</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>specialize beta_prefix_extend l</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>specialize beta_prefix_extend b</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>specialize beta_prefix_extend c</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>specialize beta_prefix_extend d</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>exact beta_prefix_extend</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v24 checked use</dd><dt>First admission</dt><dd>Alpha v23</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>574 / 617</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 617 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>22 / 14</dd>
+      <dt>Statement SHA-256</dt><dd><code>546cd2ae6d9385878e9e30eddf79d96dc3ed9b27f943cfc252aab78d6e4f2e7a</code></dd>
+      <dt>Script SHA-256</dt><dd><code>3ef1a1be431bc73d08363b3370209da00ebbfccbc155c4e4e3f99bf7a6113a5e</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11</code></dd>
+      <dt>Exact source module</dt><dd><code>peano-lab/py/peano_lab/library/binary_digit_extraction_candidate.py</code></dd></dl>
+</aside></main></body>
+</html>

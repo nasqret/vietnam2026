@@ -1,0 +1,699 @@
+{
+  "alpha_checked_use_node_count": 15,
+  "alpha_edition_version": "v24",
+  "alpha_first_enrolled_version": "v21",
+  "definition_topological_order": [
+    "PD0002",
+    "ND0018",
+    "ND0019",
+    "ND0001",
+    "ND0009",
+    "ND0010",
+    "PD0003",
+    "PD0006",
+    "ND0020"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "EC0001",
+      "target": "EC0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EC0005",
+      "target": "EC0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EC0004",
+      "target": "EC0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EC0007",
+      "target": "EC0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EC0008",
+      "target": "EC0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EC0009",
+      "target": "EC000F"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC0001",
+      "statement_occurrences": 1,
+      "target": "ND0018"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EC0002",
+      "statement_occurrences": 2,
+      "target": "ND0018"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EC0003",
+      "statement_occurrences": 2,
+      "target": "ND0018"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EC0004",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EC0005",
+      "statement_occurrences": 2,
+      "target": "ND0018"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EC0006",
+      "statement_occurrences": 2,
+      "target": "ND0018"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC0006",
+      "statement_occurrences": 1,
+      "target": "ND0019"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EC0007",
+      "statement_occurrences": 2,
+      "target": "ND0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC0008",
+      "statement_occurrences": 1,
+      "target": "ND0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC0009",
+      "statement_occurrences": 1,
+      "target": "ND0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC000A",
+      "statement_occurrences": 1,
+      "target": "ND0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC000B",
+      "statement_occurrences": 1,
+      "target": "ND0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC000B",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC000C",
+      "statement_occurrences": 1,
+      "target": "ND0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC000C",
+      "statement_occurrences": 1,
+      "target": "ND0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC000D",
+      "statement_occurrences": 1,
+      "target": "ND0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC000E",
+      "statement_occurrences": 1,
+      "target": "ND0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EC000F",
+      "statement_occurrences": 1,
+      "target": "ND0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0018",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0010",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0010",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0010",
+      "target": "ND0009"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0006",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0020",
+      "target": "ND0010"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0020",
+      "target": "PD0006"
+    }
+  ],
+  "family_slug": "euclidean-complexity",
+  "independent_lean_bundle_verified": true,
+  "milestone_caveat": "G101 was OPEN when this family was first admitted in Alpha v21. It is now CLOSED in Alpha v23: the actual anchored Euclidean history, terminal gcd, and exact bound steps≤2*BitLen(b)+1 are proved.",
+  "milestone_status": "alpha_closed",
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC0001.html?v=94ac4d193cbf",
+      "id": "EC0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclidean_division_step_exists",
+      "proof_bundle_node_id": 177,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A nonzero Euclidean divisor constructively yields an exact quotient and strictly smaller remainder."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC0002.html?v=94ac4d193cbf",
+      "id": "EC0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclidean_division_step_functional",
+      "proof_bundle_node_id": 178,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Two exact bounded Euclidean divisions of the same inputs have identical quotients and remainders."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC0003.html?v=94ac4d193cbf",
+      "id": "EC0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "euclidean_next_division_step_exists",
+      "proof_bundle_node_id": 179,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every nonterminal Euclidean remainder constructively admits the next genuine bounded division."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC0004.html?v=94ac4d193cbf",
+      "id": "EC0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclidean_add_right_preserves_lt",
+      "proof_bundle_node_id": 180,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Constructive strict natural order remains strict after adding the same right summand."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC0005.html?v=94ac4d193cbf",
+      "id": "EC0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclidean_two_step_quotient_nonzero",
+      "proof_bundle_node_id": 181,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "After one strict Euclidean decrease, the quotient of the next division cannot be zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC0006.html?v=94ac4d193cbf",
+      "id": "EC0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "euclidean_two_step_halving",
+      "proof_bundle_node_id": 182,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Any two consecutive genuine bounded Euclidean divisions strictly halve the starting divisor: twice the second remainder is smaller."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC0007.html?v=94ac4d193cbf",
+      "id": "EC0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclidean_trace_bound_weaken",
+      "proof_bundle_node_id": 183,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An already witnessed complete beta-coded history remains within the successor of its original linear step budget."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC0008.html?v=94ac4d193cbf",
+      "id": "EC0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "euclidean_trace_exists_up_to_linear",
+      "proof_bundle_node_id": 184,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Bounded natural induction constructs an authentic complete Euclidean beta-history using at most B divisions whenever the divisor is at most B."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC0009.html?v=94ac4d193cbf",
+      "id": "EC0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "euclidean_trace_exists_linear",
+      "proof_bundle_node_id": 185,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural input pair admits an actual terminating Euclidean beta-trace whose exact division count is at most its initial divisor."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC000A.html?v=94ac4d193cbf",
+      "id": "EC000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclidean_execution_zero_divisor",
+      "proof_bundle_node_id": 186,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The zero-divisor boundary has an actual zero-step beta-history and returns the dividend as its checked relational gcd."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC000B.html?v=94ac4d193cbf",
+      "id": "EC000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclidean_execution_gcd_correct",
+      "proof_bundle_node_id": 187,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every expanded Euclidean execution independently certifies its output against the original relational gcd specification."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC000C.html?v=94ac4d193cbf",
+      "id": "EC000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclidean_execution_trace_correct",
+      "proof_bundle_node_id": 188,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every expanded Euclidean execution contains an actual complete beta-coded history, not an abstract oracle or opaque trace predicate."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC000D.html?v=94ac4d193cbf",
+      "id": "EC000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclidean_execution_exists",
+      "proof_bundle_node_id": 189,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "All natural input pairs admit a fully expanded, beta-coded terminating Euclidean execution with a certified relational gcd output."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC000E.html?v=94ac4d193cbf",
+      "id": "EC000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclidean_nonzero_execution_exists",
+      "proof_bundle_node_id": 190,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every nonzero initial divisor, an actual certified Euclidean execution exists and makes at least one division."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/EC000F.html?v=94ac4d193cbf",
+      "id": "EC000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "euclidean_gcd_execution_linear_bound",
+      "proof_bundle_node_id": 191,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every pair has a complete actual beta-coded Euclidean execution, a genuinely certified gcd output, and the exact constructive linear bound steps <= initial divisor; the stronger BitLen bound remains open."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=94ac4d193cbf",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "EuclideanDivision",
+      "href": "definition/ND0018.html?v=94ac4d193cbf",
+      "id": "ND0018",
+      "kind": "definition",
+      "layer": 1,
+      "name": "EuclideanDivision",
+      "signature": "EuclideanDivision(a,b,q,r)",
+      "summary": "A genuine Euclidean division a=b*q+r with strictly bounded natural remainder r<b."
+    },
+    {
+      "global_definition": "EuclideanHalving",
+      "href": "definition/ND0019.html?v=94ac4d193cbf",
+      "id": "ND0019",
+      "kind": "definition",
+      "layer": 1,
+      "name": "EuclideanHalving",
+      "signature": "EuclideanHalving(b,r)",
+      "summary": "The exact constructive two-step Euclidean descent inequality r+r<b."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/ND0001.html?v=94ac4d193cbf",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "ListCell",
+      "href": "definition/ND0009.html?v=94ac4d193cbf",
+      "id": "ND0009",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ListCell",
+      "signature": "ListCell(s,q,t)",
+      "summary": "The exact tagged natural-number list cell containing quotient q and tail t."
+    },
+    {
+      "global_definition": "ContinuedFractionTrace",
+      "href": "definition/ND0010.html?v=94ac4d193cbf",
+      "id": "ND0010",
+      "kind": "definition",
+      "layer": 1,
+      "name": "ContinuedFractionTrace",
+      "signature": "ContinuedFractionTrace(a,b,s,u,v,ell)",
+      "summary": "A finite beta-coded reverse Euclidean history whose quotient list has forward continued-fraction order."
+    },
+    {
+      "global_definition": "Dvd",
+      "href": "definition/PD0003.html?v=94ac4d193cbf",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": "Gcd",
+      "href": "definition/PD0006.html?v=94ac4d193cbf",
+      "id": "PD0006",
+      "kind": "definition",
+      "layer": 1,
+      "name": "IsGCD",
+      "signature": "IsGCD(g,a,b)",
+      "summary": "g is a common divisor divisible by every common divisor."
+    },
+    {
+      "global_definition": "EuclideanExecution",
+      "href": "definition/ND0020.html?v=94ac4d193cbf",
+      "id": "ND0020",
+      "kind": "definition",
+      "layer": 2,
+      "name": "EuclideanExecution",
+      "signature": "EuclideanExecution(a,b,g,k)",
+      "summary": "A complete beta-coded Euclidean quotient history together with an independently witnessed relational gcd; terminal-state identification is not asserted."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "EC0001": {
+      "critical_root_path": [
+        "EC0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EC0003"
+      ]
+    },
+    "EC0002": {
+      "critical_root_path": [
+        "EC0002"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "EC0003": {
+      "critical_root_path": [
+        "EC0001",
+        "EC0003"
+      ],
+      "dependencies": [
+        "EC0001"
+      ],
+      "dependents": []
+    },
+    "EC0004": {
+      "critical_root_path": [
+        "EC0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EC0006"
+      ]
+    },
+    "EC0005": {
+      "critical_root_path": [
+        "EC0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EC0006"
+      ]
+    },
+    "EC0006": {
+      "critical_root_path": [
+        "EC0005",
+        "EC0006"
+      ],
+      "dependencies": [
+        "EC0005",
+        "EC0004"
+      ],
+      "dependents": []
+    },
+    "EC0007": {
+      "critical_root_path": [
+        "EC0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EC0008"
+      ]
+    },
+    "EC0008": {
+      "critical_root_path": [
+        "EC0007",
+        "EC0008"
+      ],
+      "dependencies": [
+        "EC0007"
+      ],
+      "dependents": [
+        "EC0009"
+      ]
+    },
+    "EC0009": {
+      "critical_root_path": [
+        "EC0007",
+        "EC0008",
+        "EC0009"
+      ],
+      "dependencies": [
+        "EC0008"
+      ],
+      "dependents": [
+        "EC000F"
+      ]
+    },
+    "EC000A": {
+      "critical_root_path": [
+        "EC000A"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "EC000B": {
+      "critical_root_path": [
+        "EC000B"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "EC000C": {
+      "critical_root_path": [
+        "EC000C"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "EC000D": {
+      "critical_root_path": [
+        "EC000D"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "EC000E": {
+      "critical_root_path": [
+        "EC000E"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "EC000F": {
+      "critical_root_path": [
+        "EC0007",
+        "EC0008",
+        "EC0009",
+        "EC000F"
+      ],
+      "dependencies": [
+        "EC0009"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "EC0006",
+    "EC000D",
+    "EC000F"
+  ],
+  "schema": "peano-lab-constructive-advanced-layer-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

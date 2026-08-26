@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from collections import Counter
+from dataclasses import fields
 from hashlib import sha256
 from html.parser import HTMLParser
 import html
@@ -11,7 +12,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
-from urllib.parse import unquote, urlsplit
+from urllib.parse import parse_qs, unquote, urljoin, urlsplit
 
 
 REPO = Path(__file__).resolve().parents[3]
@@ -20,7 +21,12 @@ sys.path.insert(0, str(PY_ROOT))
 sys.path.insert(0, str(REPO / "scripts"))
 EXPLORER = REPO / "book" / "_static" / "pa-proof-explorer"
 MANIFEST = EXPLORER / "manifest.json"
-CORPUS = EXPLORER / "api" / "corpus.json"
+IMMUTABLE_EVIDENCE_CORPUS = EXPLORER / "api" / "corpus.json"
+CORPUS = EXPLORER / "api" / "current-corpus.json"
+IMMUTABLE_EVIDENCE_CORPUS_SHA256 = (
+    "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a"
+)
+IMMUTABLE_EVIDENCE_CORPUS_BYTES = 17_229_311
 GRAPH = EXPLORER / "api" / "graph.json"
 GRAPH_SCHEMA = EXPLORER / "api" / "graph.schema.json"
 TAGS = REPO / "research" / "arithmetic-library" / "pa-proof-tags.json"
@@ -113,6 +119,67 @@ class _Assets(HTMLParser):
         elif tag in {"audio", "embed", "iframe", "img", "object", "script", "source", "video"}:
             if attributes.get("src"):
                 self.assets.append((tag, attributes["src"]))
+
+
+class _FoundationsGuide(HTMLParser):
+    """Collect semantic guide entries without coupling tests to HTML layout."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.ids: list[str] = []
+        self.links: list[str] = []
+        self.entries: list[dict] = []
+        self._entry: dict | None = None
+        self._inside_code = False
+
+    def handle_starttag(self, tag: str, attrs) -> None:
+        attributes = dict(attrs)
+        if attributes.get("id"):
+            self.ids.append(attributes["id"])
+        if tag == "article" and (
+            "data-constructor" in attributes or "data-tactic" in attributes
+        ):
+            assert self._entry is None, "native guide entries must not be nested"
+            self._entry = {
+                "attributes": attributes,
+                "text": [],
+                "code": [],
+                "links": [],
+            }
+            self.entries.append(self._entry)
+        if tag == "a" and attributes.get("href"):
+            self.links.append(attributes["href"])
+            if self._entry is not None:
+                self._entry["links"].append(attributes["href"])
+        if tag == "code" and self._entry is not None:
+            assert not self._inside_code
+            self._inside_code = True
+            self._entry["code"].append([])
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag == "code":
+            self._inside_code = False
+        elif tag == "article" and self._entry is not None:
+            self._entry = None
+
+    def handle_data(self, data: str) -> None:
+        if self._entry is None:
+            return
+        self._entry["text"].append(data)
+        if self._inside_code:
+            self._entry["code"][-1].append(data)
+
+
+def _foundations_guide() -> _FoundationsGuide:
+    parser = _FoundationsGuide()
+    parser.feed((EXPLORER / "foundations.html").read_text(encoding="utf-8"))
+    parser.close()
+    return parser
+
+
+def _normalized_guide_text(parts: str | list[str]) -> str:
+    source = parts if isinstance(parts, str) else " ".join(parts)
+    return " ".join(source.split())
 
 
 class _InformalSection(HTMLParser):
@@ -208,11 +275,78 @@ def test_generator_rejects_and_prunes_unmanifested_files(tmp_path, monkeypatch) 
     assert generator._check(files)
 
 
+def test_generator_preserves_and_authenticates_immutable_parent_evidence(
+    tmp_path, monkeypatch
+) -> None:
+    import build_pa_proof_explorer as generator
+
+    frozen_payload = b"catalog-bound historical corpus\n"
+    frozen = tmp_path / generator.IMMUTABLE_EVIDENCE_CORPUS_PATH
+    frozen.parent.mkdir(parents=True)
+    frozen.write_bytes(frozen_payload)
+    monkeypatch.setattr(generator, "OUTPUT", tmp_path)
+    monkeypatch.setattr(generator, "IMMUTABLE_EVIDENCE_CORPUS_BYTES", len(frozen_payload))
+    monkeypatch.setattr(
+        generator, "IMMUTABLE_EVIDENCE_CORPUS_SHA256", sha256(frozen_payload).hexdigest()
+    )
+    original_inode = frozen.stat().st_ino
+    original_timestamp = frozen.stat().st_mtime_ns
+    files = {
+        generator.IMMUTABLE_EVIDENCE_CORPUS_PATH: frozen_payload,
+        generator.CURRENT_CORPUS_PATH: b"current v24 view\n",
+        "manifest.json": b"{}\n",
+    }
+
+    generator._write(files)
+
+    assert frozen.read_bytes() == frozen_payload
+    assert frozen.stat().st_ino == original_inode
+    assert frozen.stat().st_mtime_ns == original_timestamp
+    assert (tmp_path / generator.CURRENT_CORPUS_PATH).read_bytes() == b"current v24 view\n"
+    assert generator._check(files)
+
+    malicious = dict(files)
+    malicious[generator.IMMUTABLE_EVIDENCE_CORPUS_PATH] = b"replacement\n"
+    try:
+        generator._write(malicious)
+    except ValueError as error:
+        assert "refusing to replace" in str(error)
+    else:
+        raise AssertionError("immutable parent evidence must never be replaceable")
+    assert frozen.read_bytes() == frozen_payload
+
+    frozen.write_bytes(b"tampered parent evidence\n")
+    try:
+        generator._write(files)
+    except ValueError as error:
+        assert "immutable Alpha-parent" in str(error)
+    else:
+        raise AssertionError("tampered immutable parent evidence must fail closed")
+
+
 def test_manifest_pins_the_exact_qr_closure_and_truthful_partition() -> None:
     from peano_lab.library import editions_v16 as alpha_v16
+    from peano_lab.library import editions_v24 as current_alpha
 
     manifest = _load(MANIFEST)
     records = _records()
+    immutable_bytes = IMMUTABLE_EVIDENCE_CORPUS.read_bytes()
+    immutable = _load(IMMUTABLE_EVIDENCE_CORPUS)
+    assert len(immutable_bytes) == IMMUTABLE_EVIDENCE_CORPUS_BYTES
+    assert sha256(immutable_bytes).hexdigest() == IMMUTABLE_EVIDENCE_CORPUS_SHA256
+    assert manifest["immutable_evidence_corpus_path"] == "api/corpus.json"
+    assert manifest["immutable_evidence_corpus_sha256"] == (
+        IMMUTABLE_EVIDENCE_CORPUS_SHA256
+    )
+    assert manifest["immutable_evidence_corpus_bytes"] == (
+        IMMUTABLE_EVIDENCE_CORPUS_BYTES
+    )
+    assert manifest["current_corpus_path"] == "api/current-corpus.json"
+    assert manifest["current_corpus_sha256"] == sha256(CORPUS.read_bytes()).hexdigest()
+    assert "alpha_edition_version" not in immutable
+    assert [row["name"] for row in immutable["theorems"]] == [
+        row["name"] for row in records
+    ]
     assert _metric(manifest, "theorem_count", "node_count") == THEOREM_COUNT
     assert _metric(manifest, "edge_count") == EDGE_COUNT
     assert _metric(manifest, "layer_count") == LAYER_COUNT
@@ -224,11 +358,16 @@ def test_manifest_pins_the_exact_qr_closure_and_truthful_partition() -> None:
     scopes = [row["scope"] for row in records]
     assert scopes.count("public") == PUBLIC_COUNT
     assert scopes.count("candidate") == CANDIDATE_COUNT
-    assert manifest["alpha_edition_version"] == "v16"
+    assert manifest["alpha_edition_version"] == "v24"
     assert manifest["alpha_edition_identity_sha256"] == (
+        current_alpha.ALPHA_V24_IDENTITY_SHA256
+    )
+    assert manifest["alpha_edition_checked_use_count"] == 2008
+    assert manifest["proof_edition_version"] == "v16"
+    assert manifest["proof_edition_identity_sha256"] == (
         alpha_v16.ALPHA_V16_IDENTITY_SHA256
     )
-    assert manifest["alpha_edition_checked_use_count"] == 885
+    assert manifest["proof_edition_checked_use_count"] == 885
     assert manifest["graph_checked_use_count"] == THEOREM_COUNT
     assert manifest["graph_stable_closed_count"] == PUBLIC_COUNT
     assert manifest["graph_alpha_closed_count"] == CANDIDATE_COUNT
@@ -244,7 +383,8 @@ def test_manifest_pins_the_exact_qr_closure_and_truthful_partition() -> None:
         ("candidate", "alpha_closed", False): CANDIDATE_COUNT,
     }
     assert all(row["alpha_checked_use"] is True for row in records)
-    assert all(row["alpha_edition_version"] == "v16" for row in records)
+    assert all(row["alpha_edition_version"] == "v24" for row in records)
+    assert all(row["proof_edition_version"] == "v16" for row in records)
     root = next(row for row in records if row["name"] == "quadratic_reciprocity_combined")
     assert root["scope"] == "candidate"
     assert root["status"] == "alpha_closed"
@@ -253,7 +393,9 @@ def test_manifest_pins_the_exact_qr_closure_and_truthful_partition() -> None:
     assert root["stable_member"] is False
     root_page = (EXPLORER / "tag" / f"{root['tag']}.html").read_text(encoding="utf-8")
     assert "pa-status-public" in root_page
-    assert "Alpha v16 checked-use theorem" in root_page
+    assert "Alpha v24 checked-use theorem" in root_page
+    assert "<dt>Current Alpha edition</dt><dd>v24</dd>" in root_page
+    assert "<dt>Proof-bearing Alpha edition</dt><dd>v16</dd>" in root_page
     assert "historical candidate-factory source; Alpha-only" in root_page
     assert "<dt>Stable membership</dt><dd>no</dd>" in root_page
     assert "pending layered closure" not in root_page
@@ -268,7 +410,7 @@ def test_graph_preserves_source_origin_and_publishes_independent_release_evidenc
 
     assert root["scope"] == "candidate"
     assert root["status"] == "alpha_closed"
-    assert root["alpha_edition_version"] == "v16"
+    assert root["alpha_edition_version"] == "v24"
     assert root["alpha_evidence"] == "alpha_closed"
     assert root["alpha_checked_use"] is True
     assert root["stable_member"] is False
@@ -283,7 +425,7 @@ def test_graph_preserves_source_origin_and_publishes_independent_release_evidenc
 
     graph_page = (EXPLORER / "graph.html").read_text(encoding="utf-8")
     assert 'id="pa-proof-release-evidence"' in graph_page
-    assert "Alpha v16 checked-use theorem; independently closed; not Stable" in graph_page
+    assert "Alpha v24 checked-use theorem; independently closed; not Stable" in graph_page
     assert "historical candidate-factory source" in graph_page
     assert "pending layered closure" not in graph_page
 
@@ -332,7 +474,7 @@ __SCRIPT__
 if (typeof ready !== "function") throw Error("DOMContentLoaded was not observed");
 ready();
 if (status.textContent !==
-    "Alpha v16 checked-use theorem; independently closed; not Stable") {
+    "Alpha v24 checked-use theorem; independently closed; not Stable") {
   throw Error("Alpha-only evidence was not shown: " + status.textContent);
 }
 if (status.className !== "pa-status-public") throw Error("checked-use style missing");
@@ -626,7 +768,8 @@ def test_graph_schema_and_inline_file_protocol_payload_are_exact_and_determinist
     manifest = _load(MANIFEST)
     manifest_files = {item["path"]: item for item in manifest["files"]}
     pinned = {
-        "graph.html", "api/graph.json", "api/graph.schema.json",
+        "graph.html", "api/corpus.json", "api/current-corpus.json",
+        "api/graph.json", "api/graph.schema.json",
         "assets/explorer.css", "assets/explorer.js",
     }
     assert pinned <= set(manifest_files)
@@ -781,6 +924,224 @@ def test_foundations_cover_native_grammar_axioms_tactics_and_all_constructors() 
         assert phrase in lower
 
 
+def test_foundations_explain_every_native_kernel_constructor() -> None:
+    from peano_lab.kernel import proofs
+
+    guide = _foundations_guide()
+    expected = tuple(name for name in proofs.__all__ if name != "Proof")
+    entries = {
+        entry["attributes"]["data-constructor"]: entry
+        for entry in guide.entries
+        if "data-constructor" in entry["attributes"]
+    }
+
+    assert len(expected) == 25
+    assert set(entries) == set(expected)
+    assert len(entries) == sum(
+        "data-constructor" in entry["attributes"] for entry in guide.entries
+    )
+    for name in expected:
+        entry = entries[name]
+        text = _normalized_guide_text(entry["text"])
+        field_names = ", ".join(
+            field.name for field in fields(getattr(proofs, name))
+        )
+        assert entry["attributes"]["id"] == f"constructor-{name.lower()}"
+        assert f"{name}({field_names})" in text
+        assert len(text.split()) >= 12, (name, text)
+        assert len(entry["code"]) >= 2, (name, entry["code"])
+        assert any(
+            urlsplit(href).path
+            in {
+                "/vietnam2026/book/peano/axioms-and-rules.html",
+                "/vietnam2026/book/peano/kernel.html",
+                "/vietnam2026/book/arithmetic-library/proof-sharing.html",
+            }
+            for href in entry["links"]
+        ), (name, entry["links"])
+
+    dne = _normalized_guide_text(entries["DNE"]["text"]).lower()
+    cut = _normalized_guide_text(entries["Cut"]["text"]).lower()
+    substitution = _normalized_guide_text(entries["EqSubst"]["text"]).lower()
+    induction = _normalized_guide_text(entries["Ind"]["text"]).lower()
+    assert "classical" in dne
+    assert "shar" in cut and ("axiom" in cut or "assumption" in cut)
+    assert "motive" in substitution and (
+        "transport" in substitution or "substitut" in substitution
+    )
+    assert "motive" in induction and "induction" in induction
+
+
+def test_foundations_document_all_native_tactics_tacticals_and_automation() -> None:
+    from peano_lab.ui.data_tactics import TACTIC_CARDS
+
+    guide = _foundations_guide()
+    cards = {card.name: card for card in TACTIC_CARDS}
+    entries = {
+        entry["attributes"]["data-tactic"]: entry
+        for entry in guide.entries
+        if "data-tactic" in entry["attributes"]
+    }
+    used_tactics = {
+        line["tactic"] for row in _records() for line in row["lines"]
+    }
+
+    assert len(cards) == 34
+    assert set(entries) == set(cards)
+    assert len(entries) == sum(
+        "data-tactic" in entry["attributes"] for entry in guide.entries
+    )
+    assert len(used_tactics) == 19
+    assert used_tactics <= set(cards)
+    assert Counter(card.kind for card in TACTIC_CARDS) == {
+        "primitive": 23,
+        "tactical": 6,
+        "automation": 5,
+    }
+
+    for name, card in cards.items():
+        entry = entries[name]
+        attributes = entry["attributes"]
+        expected_slug = {";": "then", "<|>": "orelse"}.get(name, name)
+        assert attributes["id"] == f"tactic-{expected_slug}"
+        assert attributes["data-tactic-kind"] == card.kind
+        assert attributes["data-corpus-used"] == str(name in used_tactics).lower()
+
+        text = _normalized_guide_text(entry["text"])
+        for value in (
+            card.syntax,
+            card.summary,
+            card.goal_effect,
+            card.certificate_effect,
+            card.example_theorem,
+            *card.example_commands,
+            *card.common_errors,
+        ):
+            assert _normalized_guide_text(value) in text, (name, value)
+        lower = text.lower()
+        assert "goal effect" in lower and "kernel evidence" in lower
+        assert entry["code"], name
+        assert any(
+            urlsplit(href).path.startswith("/vietnam2026/book/")
+            for href in entry["links"]
+        ), (name, entry["links"])
+        live_cards = [
+            href
+            for href in entry["links"]
+            if urlsplit(href).path == "/peano-lab/"
+        ]
+        assert len(live_cards) == 1, (name, live_cards)
+        assert parse_qs(urlsplit(live_cards[0]).query, strict_parsing=True) == {
+            "cmd": [f"pa tactic {name}"]
+        }
+
+
+def test_foundations_links_resolve_under_public_and_jupyter_book_mounts() -> None:
+    guide = _foundations_guide()
+    ids = set(guide.ids)
+    assert len(ids) == len(guide.ids), "foundation anchors must be unique"
+
+    public_book_root = "/vietnam2026/book/"
+    public_mount = (
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/"
+        "proofs/quadratic-reciprocity/explorer/foundations.html"
+    )
+    jupyter_book_mount = (
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/"
+        "vietnam2026/book/_static/pa-proof-explorer/foundations.html"
+    )
+    built_book = (REPO / "book" / "_build" / "html").resolve()
+    explorer_root = EXPLORER.resolve()
+    toc = (REPO / "book" / "_toc.yml").read_text(encoding="utf-8")
+    chapter_anchors: dict[Path, set[str]] = {}
+    chapters: set[str] = set()
+
+    for raw in guide.links:
+        parsed = urlsplit(raw)
+        assert parsed.scheme not in {"javascript", "data", "vbscript"}, raw
+        if not parsed.path and parsed.fragment:
+            assert unquote(parsed.fragment) in ids, raw
+            continue
+
+        if "/peano/" in parsed.path or "/arithmetic-library/" in parsed.path:
+            assert not parsed.scheme and not parsed.netloc, raw
+            assert parsed.path.startswith(public_book_root), raw
+
+        if not parsed.path.startswith(public_book_root):
+            if not parsed.scheme and not parsed.netloc and not parsed.path.startswith("/"):
+                target = (explorer_root / unquote(parsed.path)).resolve()
+                try:
+                    target.relative_to(explorer_root)
+                except ValueError:
+                    assert urlsplit(urljoin(public_mount, raw)).path == (
+                        "/proofs/grand-campaign/"
+                    ), raw
+                    target = (
+                        REPO / "book" / "_static" / "constructive-grand-campaign"
+                    )
+                if target.is_dir():
+                    target = target / "index.html"
+                assert target.is_file(), (raw, target)
+                if parsed.fragment:
+                    assert unquote(parsed.fragment) in set(
+                        ID_PATTERN.findall(target.read_text(encoding="utf-8"))
+                    ), raw
+            elif parsed.path.startswith("/peano-lab/"):
+                assert (REPO / "peano-lab" / "index.html").is_file(), raw
+            continue
+
+        relative = unquote(parsed.path.removeprefix(public_book_root))
+        source = REPO / "book" / Path(relative).with_suffix(".md")
+        assert source.is_file(), (raw, source)
+        target = (built_book / relative).resolve()
+        target.relative_to(built_book)
+        chapter = Path(relative).with_suffix("").as_posix()
+        assert re.search(
+            rf"^\s*-\s*file:\s*{re.escape(chapter)}\s*$", toc, re.MULTILINE
+        ), (raw, chapter)
+        chapters.add(relative)
+
+        if parsed.fragment:
+            available = chapter_anchors.get(target)
+            if available is None:
+                if target.is_file():
+                    available = set(
+                        ID_PATTERN.findall(target.read_text(encoding="utf-8"))
+                    )
+                else:
+                    markdown = source.read_text(encoding="utf-8")
+                    available = set(
+                        re.findall(
+                            r"^\(([^)\s]+)\)=\s*$", markdown, re.MULTILINE
+                        )
+                    )
+                    for heading in re.findall(
+                        r"^\s{0,3}#{1,6}\s+(.+?)\s*$", markdown, re.MULTILINE
+                    ):
+                        heading = re.sub(r"[`*_]", "", heading)
+                        available.add(
+                            re.sub(r"[^a-z0-9]+", "-", heading.lower()).strip("-")
+                        )
+                chapter_anchors[target] = available
+            assert unquote(parsed.fragment) in available, raw
+
+        assert urlsplit(urljoin(public_mount, raw)).path == parsed.path
+        assert urlsplit(urljoin(jupyter_book_mount, raw)).path == parsed.path
+        assert "/proofs/peano/" not in urljoin(public_mount, raw)
+
+    assert {
+        "peano/language-reference.html",
+        "peano/axioms-and-rules.html",
+        "peano/kernel.html",
+        "peano/tactics.html",
+        "peano/tacticals.html",
+        "peano/induction-ladder.html",
+        "peano/arithmetic-automation.html",
+        "arithmetic-library/language-and-trust.html",
+        "arithmetic-library/proof-sharing.html",
+    } <= chapters
+
+
 def test_explorer_has_only_local_runtime_assets_and_no_html_injection_sinks() -> None:
     pages = tuple(EXPLORER.glob("*.html")) + tuple((EXPLORER / "tag").glob("*.html"))
     assert len(pages) == THEOREM_COUNT + 3
@@ -843,7 +1204,7 @@ def test_explorer_has_only_local_runtime_assets_and_no_html_injection_sinks() ->
 
 
 def test_every_quadratic_reciprocity_proof_page_navigates_all_campaign_scales() -> None:
-    revision = "f1c3d3fba013"
+    revision = "94ac4d193cbf"
     root_pages = ("index.html", "foundations.html", "graph.html")
     for relative in root_pages:
         page = (EXPLORER / relative).read_text(encoding="utf-8")

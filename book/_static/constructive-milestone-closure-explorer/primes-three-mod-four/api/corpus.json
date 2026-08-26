@@ -1,0 +1,3404 @@
+{
+  "alpha_catalog_sha256": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1",
+  "alpha_checked_use_node_count": 18,
+  "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+  "alpha_edition_version": "v24",
+  "alpha_enrolled_node_count": 18,
+  "alpha_first_enrolled_version": "v23",
+  "alpha_proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+  "campaign_domain_id": "D02",
+  "campaign_family_id": "F03",
+  "campaign_goal_id": "G025",
+  "campaign_milestone_ids": [
+    "G025"
+  ],
+  "candidate_status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+  "definition_count": 11,
+  "definition_dependency_count": 9,
+  "definition_layer_count": 2,
+  "definition_topological_order": [
+    "PD0004",
+    "PD0012",
+    "PD0003",
+    "ND0044",
+    "ND0045",
+    "PD0002",
+    "PD0013",
+    "PD0028",
+    "PD0014",
+    "ND0001",
+    "PD0001"
+  ],
+  "definitions": [
+    {
+      "arity": 1,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1",
+      "expansion_sha256": "62f78d205c303365b156144e260330ee3fd0798bb85f15e76eb44215d7759979",
+      "global_argument_positions": [
+        0
+      ],
+      "global_definition": "Prime",
+      "id": "PD0004",
+      "kernel_signature_unchanged": true,
+      "name": "Prime",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "p"
+      ],
+      "reviewed_definition_id": "PD0004",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Prime(p)",
+      "summary": "p is nonunit and every factorization of p has a unit factor.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 1,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "exists h. n = 4 * h + 3",
+      "expansion_sha256": "3dc3e2db85d149a9a78eccdc9a32676607ecc006e51383fdac61e2d8eca666e5",
+      "global_argument_positions": [
+        0
+      ],
+      "global_definition": "Mod4Three",
+      "id": "PD0012",
+      "kernel_signature_unchanged": true,
+      "name": "Mod4Three",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "n"
+      ],
+      "reviewed_definition_id": "PD0012",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Mod4Three(n)",
+      "summary": "n is three modulo four by an explicit quotient.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 2,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "exists k. n = d * k",
+      "expansion_sha256": "c2dd3b8c5225573ac5be64c1384f9fbae32502810da654cee650ba6903f16e35",
+      "global_argument_positions": [
+        0,
+        1
+      ],
+      "global_definition": "Dvd",
+      "id": "PD0003",
+      "kernel_signature_unchanged": true,
+      "name": "Dvd",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "d",
+        "n"
+      ],
+      "reviewed_definition_id": "PD0003",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 2,
+      "dependencies": [
+        "PD0004",
+        "PD0012",
+        "PD0003"
+      ],
+      "dependency_names": [
+        "Prime",
+        "Mod4Three",
+        "Dvd"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "(((~(p = 1) /\\ forall frm_prime_left_ptmf_milestone_prime frm_prime_right_ptmf_milestone_prime. p = frm_prime_left_ptmf_milestone_prime * frm_prime_right_ptmf_milestone_prime -> frm_prime_left_ptmf_milestone_prime = 1 \\/ frm_prime_right_ptmf_milestone_prime = 1)) /\\ ((exists ff_residue_ptmf_milestone_residue. (p) = 4 * ff_residue_ptmf_milestone_residue + 3) /\\ (exists ff_quotient_ptmf_milestone_divides. (n) = (p) * ff_quotient_ptmf_milestone_divides)))",
+      "expansion_sha256": "3a02ca9b214544a23f330eb6134e7d5181beddfeda0b02e410d1f6ca9bb456fe",
+      "global_argument_positions": [
+        0,
+        1
+      ],
+      "global_definition": "PrimeThreeModFourDivisor",
+      "id": "ND0044",
+      "kernel_signature_unchanged": true,
+      "name": "PrimeThreeModFourDivisor",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "n",
+        "p"
+      ],
+      "reviewed_definition_id": "ND0044",
+      "reviewed_definition_route": "primes-three-mod-four",
+      "shared_definition_identity": "ND0044",
+      "signature": "PrimeThreeModFourDivisor(n,p)",
+      "summary": "An actual prime divisor of n together with a witnessed residue p=4q+3.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0003",
+        "PD0004",
+        "PD0012"
+      ]
+    },
+    {
+      "arity": 2,
+      "dependencies": [
+        "PD0012"
+      ],
+      "dependency_names": [
+        "Mod4Three"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "exists ff_predecessor_ptmf_milestone. (c = S ff_predecessor_ptmf_milestone /\\ n = 4 * ff_predecessor_ptmf_milestone + 3)",
+      "expansion_sha256": "3d73ba8b6c71cb306052cc5dfc319d1149ba753dc8e545c33ea027cca8aebe85",
+      "global_argument_positions": [
+        0,
+        1
+      ],
+      "global_definition": "EuclidThreeNumber",
+      "id": "ND0045",
+      "kernel_signature_unchanged": true,
+      "name": "EuclidThreeNumber",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "c",
+        "n"
+      ],
+      "reviewed_definition_id": "ND0045",
+      "reviewed_definition_route": "primes-three-mod-four",
+      "shared_definition_identity": "ND0045",
+      "signature": "EuclidThreeNumber(c,n)",
+      "summary": "The subtraction-free Euclidean number n=4d+3 with positive common multiple c=S d.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0012"
+      ]
+    },
+    {
+      "arity": 2,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "exists h. h + S a = b",
+      "expansion_sha256": "8245ec2119fd9d5b970a1d301ae58fa593733fff741593deb4858a5130b52cce",
+      "global_argument_positions": [
+        0,
+        1
+      ],
+      "global_definition": "Lt",
+      "id": "PD0002",
+      "kernel_signature_unchanged": true,
+      "name": "Lt",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "a",
+        "b"
+      ],
+      "reviewed_definition_id": "PD0002",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 4,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "((exists ff_h_defined_beta_at. ff_h_defined_beta_at + S (x) = S ((S (i)) * c)) /\\ exists ff_q_defined_beta_at. b = ff_q_defined_beta_at * S ((S (i)) * c) + (x))",
+      "expansion_sha256": "469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "global_definition": "Beta",
+      "id": "PD0013",
+      "kernel_signature_unchanged": true,
+      "name": "BetaAt",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "i",
+        "x"
+      ],
+      "reviewed_definition_id": "PD0013",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 3,
+      "dependencies": [
+        "PD0002",
+        "PD0004",
+        "PD0013"
+      ],
+      "dependency_names": [
+        "Lt",
+        "Prime",
+        "BetaAt"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "forall dp_i. (exists dp_gap. dp_gap + S dp_i = l) -> exists dp_p. ((((exists ff_h_defined_all_prime_entry. ff_h_defined_all_prime_entry + S (dp_p) = S ((S (dp_i)) * c)) /\\ exists ff_q_defined_all_prime_entry. b = ff_q_defined_all_prime_entry * S ((S (dp_i)) * c) + (dp_p))) /\\ (~(dp_p = 1) /\\ forall dp_a dp_d. dp_p = dp_a * dp_d -> dp_a = 1 \\/ dp_d = 1))",
+      "expansion_sha256": "a999e5d7d093942f0289ebbec57ce6df92180dfe1fd47d94c05199dff1c09a47",
+      "global_argument_positions": null,
+      "global_definition": null,
+      "id": "PD0028",
+      "kernel_signature_unchanged": true,
+      "name": "AllPrime",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "l"
+      ],
+      "reviewed_definition_id": null,
+      "reviewed_definition_route": null,
+      "shared_definition_identity": null,
+      "signature": "AllPrime(b,c,l)",
+      "summary": "Every decoded factor below l is prime.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0004",
+        "PD0013"
+      ]
+    },
+    {
+      "arity": 4,
+      "dependencies": [
+        "PD0002",
+        "PD0013"
+      ],
+      "dependency_names": [
+        "Lt",
+        "BetaAt"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "exists ff_u_defined_product ff_v_defined_product. ((((exists ff_h_defined_product_start. ff_h_defined_product_start + S (1) = S ((S (0)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_start. ff_u_defined_product = ff_q_defined_product_start * S ((S (0)) * ff_v_defined_product) + (1))) /\\ ((((exists ff_h_defined_product_terminal. ff_h_defined_product_terminal + S (z) = S ((S (l)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_terminal. ff_u_defined_product = ff_q_defined_product_terminal * S ((S (l)) * ff_v_defined_product) + (z))) /\\ forall ff_i_defined_product. (exists ff_lt_defined_product_bound. ff_lt_defined_product_bound + S ff_i_defined_product = l) -> exists ff_p_defined_product ff_r_defined_product ff_s_defined_product. ((((exists ff_h_defined_product_factor. ff_h_defined_product_factor + S (ff_p_defined_product) = S ((S (ff_i_defined_product)) * c)) /\\ exists ff_q_defined_product_factor. b = ff_q_defined_product_factor * S ((S (ff_i_defined_product)) * c) + (ff_p_defined_product))) /\\ ((((exists ff_h_defined_product_partial. ff_h_defined_product_partial + S (ff_r_defined_product) = S ((S (ff_i_defined_product)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_partial. ff_u_defined_product = ff_q_defined_product_partial * S ((S (ff_i_defined_product)) * ff_v_defined_product) + (ff_r_defined_product))) /\\ ((((exists ff_h_defined_product_successor. ff_h_defined_product_successor + S (ff_s_defined_product) = S ((S (S ff_i_defined_product)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_successor. ff_u_defined_product = ff_q_defined_product_successor * S ((S (S ff_i_defined_product)) * ff_v_defined_product) + (ff_s_defined_product))) /\\ ff_s_defined_product = ff_r_defined_product * ff_p_defined_product)))))",
+      "expansion_sha256": "f39381e906a4c89c28a06167c706e2e14937eaa40a879fc5658d85f9892c1653",
+      "global_argument_positions": null,
+      "global_definition": null,
+      "id": "PD0014",
+      "kernel_signature_unchanged": true,
+      "name": "Product",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "l",
+        "z"
+      ],
+      "reviewed_definition_id": null,
+      "reviewed_definition_route": null,
+      "shared_definition_identity": null,
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
+    },
+    {
+      "arity": 4,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "((exists ff_h_defined_beta_at. ff_h_defined_beta_at + S (x) = S ((S (i)) * c)) /\\ exists ff_q_defined_beta_at. b = ff_q_defined_beta_at * S ((S (i)) * c) + (x))",
+      "expansion_sha256": "469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "global_definition": "Beta",
+      "id": "ND0001",
+      "kernel_signature_unchanged": true,
+      "name": "Beta",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "i",
+        "x"
+      ],
+      "reviewed_definition_id": "PD0013",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": "ND0001",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 2,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "exists h. h + a = b",
+      "expansion_sha256": "41aa215143ee6830b61010c8a5f708440a429140bb4cad89663085337126eba0",
+      "global_argument_positions": [
+        0,
+        1
+      ],
+      "global_definition": "Le",
+      "id": "PD0001",
+      "kernel_signature_unchanged": true,
+      "name": "Le",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "a",
+        "b"
+      ],
+      "reviewed_definition_id": "PD0001",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    }
+  ],
+  "edge_count": 46,
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "TF0001",
+      "target": "TF0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0002",
+      "target": "TF0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0003",
+      "target": "TF0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0004",
+      "target": "TF0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0005",
+      "target": "TF0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0009",
+      "target": "TF000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000A",
+      "target": "TF000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000B",
+      "target": "TF000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0007",
+      "target": "TF000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000C",
+      "target": "TF000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0006",
+      "target": "TF000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0009",
+      "target": "TF000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000D",
+      "target": "TF000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000E",
+      "target": "TF0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0010",
+      "target": "TF0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000F",
+      "target": "TF0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0011",
+      "target": "TF0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF0001",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF0001",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0002",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF0002",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0003",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0003",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0003",
+      "statement_occurrences": 1,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0004",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0004",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0004",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0004",
+      "statement_occurrences": 1,
+      "target": "PD0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0005",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0005",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0005",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0005",
+      "statement_occurrences": 1,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0006",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0006",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0007",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0008",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0009",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF000A",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF000A",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF000B",
+      "statement_occurrences": 2,
+      "target": "ND0044"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF000C",
+      "statement_occurrences": 2,
+      "target": "ND0044"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF000C",
+      "statement_occurrences": 2,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF000D",
+      "statement_occurrences": 1,
+      "target": "ND0044"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF000D",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF000F",
+      "statement_occurrences": 1,
+      "target": "ND0044"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF0010",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0010",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0011",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF0011",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0011",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0012",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0012",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0012",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0044",
+      "target": "PD0004"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0044",
+      "target": "PD0012"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0044",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0045",
+      "target": "PD0012"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0028",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0028",
+      "target": "PD0004"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0028",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    }
+  ],
+  "external_dependencies": [
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_at_unique",
+      "statement_sha256": "eac0700b7c24aa059073c61ffdf1541dc02d23400571b003fe964b9df65f5afd"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_factor_divides_product",
+      "statement_sha256": "a97f917023d9ac99269ec43effedd133f268e94f91af4b3a65dd245bc123e635"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_product_succ_decompose",
+      "statement_sha256": "03469f0a2a01256aebd276b930955e026afe285ea8143da27e5d07d19f70c6a2"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_product_zero",
+      "statement_sha256": "311da073e3b279a1c8a11c70e0c320d5728c686f858c65882f380864943c904f"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_evidence": "alpha_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "alpha_closed",
+      "kind": "alpha-admitted-theorem",
+      "name": "bounded_common_multiple_contains_bounded_prime",
+      "statement_sha256": "d4286e1bb4ab261d27154f200aa9aa8bff6cc4e0589b7526a816ad6286eac98e"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "bounded_common_multiple_exists",
+      "statement_sha256": "ad3921906117ef267f82ff3e9be6d228c7872b98fccb582228c9d4a86866019f"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "divides_remainder",
+      "statement_sha256": "ec5e2b8144908b29c0624e773e8e524ae5d4d0cdc7497794d587712715cab00c"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "divisor_le_nonzero",
+      "statement_sha256": "464577cb5cb19a434e48707cb1fc5d8f8bafc3bf75bb1984d8105de7c0f689ee"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "divisor_one",
+      "statement_sha256": "1fe13b628abe4610ddc4c81d29f2daa0399dd69a81efbdc1547fbcf431482475"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "le_eq_or_lt",
+      "statement_sha256": "c62d7d9dd2e202f7ef167c085afae1c16f5ee96d7d8269234b68249f5038f72a"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "le_of_succ_le_succ",
+      "statement_sha256": "bfa8be55903d6a037b942f30e28a0606ad55956d00b47532ab2c1cadb87d9a2a"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "le_or_lt",
+      "statement_sha256": "8a03efb24e132c6a02cb9bc952656f9d39e68effdb3b27c76fb2a9a943f2e1a1"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "le_refl",
+      "statement_sha256": "4a63925d2370803a106dd819be4a0b5369ca4575fd36d6bcdb133020703a17fd"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "le_succ",
+      "statement_sha256": "3adee5fa95d2437f4677d9f9a0937c5b48a7fcebb3350403b5be969ed30c7c50"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "le_zero",
+      "statement_sha256": "f9c4e4faa5263ab84d5c6221a21f22a3a581de21585d30f87fe8e24fcb81faef"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "mul_one",
+      "statement_sha256": "1c5292d92762aae47f3833dd3c85aa1275122554525aae695a40d1380c74c24e"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "multiple_mul_left",
+      "statement_sha256": "d91b9eb2e5269ffcc8cd344f0c48e0da507153406cd991333ed0cc36327b9f40"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "nonzero_is_succ",
+      "statement_sha256": "6f5a7cfea0dc08516fe1b42bfd4dab65d7aadd8f4f19a72e27ebce2919640c38"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "prime_divides_decidable",
+      "statement_sha256": "948060bcd202ce2dee345ed78127b2219e4dbf7f1b10ac78c7dbb325b8fb3b5e"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "prime_factorization_existence",
+      "statement_sha256": "8c84cf902e277e4a3ff011bff49183e48d33847d640e199cc462f8fbb9267c6d"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_evidence": "alpha_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "alpha_closed",
+      "kind": "alpha-admitted-theorem",
+      "name": "prime_mod_four_good_or_three",
+      "statement_sha256": "d582c463a09abea0f93f0a17060b3474382df7c583a3937593131ad777b56b89"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "prime_nonzero",
+      "statement_sha256": "f74d3a446b0634b8019db1906e37846c34e3d71f60d5261139ed9ed69b465ed7"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_evidence": "alpha_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "alpha_closed",
+      "kind": "alpha-admitted-theorem",
+      "name": "prime_two_or_one_mod_four_is_sum_of_two_squares",
+      "statement_sha256": "17c7dd09ca15d3fc1aced5a5ff5c2472a8c92312c7b1cda31bf3ea18b17a6589"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_evidence": "alpha_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "alpha_closed",
+      "kind": "alpha-admitted-theorem",
+      "name": "three_mod_four_number_not_equal_represented",
+      "statement_sha256": "321cedda37198b0a14601ca1f5a004fb18c1f8d9d3f84f7796b7b2422010eb4f"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_evidence": "alpha_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "alpha_closed",
+      "kind": "alpha-admitted-theorem",
+      "name": "two_square_representation_multiplicatively_closed",
+      "statement_sha256": "8e82cb5f76a2148032c1bce4e4a3a5b2d763af8cd26dd91d09512a7ad11b6e9f"
+    }
+  ],
+  "external_dependency_count": 25,
+  "family_slug": "primes-three-mod-four",
+  "family_title": "Infinitely many primes three modulo four",
+  "formal_line_count": 467,
+  "independent_lean_bundle_verified": true,
+  "internal_edge_count": 17,
+  "layers": {
+    "beta_admissible_prime_factor_product_is_two_square": 2,
+    "beta_all_prime_entry_is_prime": 0,
+    "beta_two_square_prefix_drop_last": 0,
+    "beta_two_square_prefix_last_represented": 0,
+    "beta_two_square_represented_factor_product": 1,
+    "euclid_three_common_multiple_exclusion": 1,
+    "euclid_three_number_successor_balance": 0,
+    "euclid_three_prime_divisor_exceeds_bound": 2,
+    "euclid_three_progression_prime_exists": 5,
+    "infinitely_many_primes_three_mod_four": 6,
+    "positive_number_with_admissible_prime_divisors_is_two_square": 3,
+    "three_mod_four_good_prime_exclusive": 1,
+    "three_mod_four_prime_divisor_bounded_search": 3,
+    "three_mod_four_prime_divisor_decidable": 2,
+    "three_mod_four_prime_divisor_exists": 4,
+    "three_mod_four_progression_nonunit": 0,
+    "three_mod_four_progression_nonzero": 0,
+    "three_mod_four_progression_not_two_square": 0
+  },
+  "milestone_caveat": "The exact G025 progression-prime milestone is fully proved in unchanged constructive arithmetic; Mod4Three deliberately reuses its existing Quadratic Reciprocity definition PD0012. The much stronger full Dirichlet progression-prime milestone G030 remains open.",
+  "milestone_checked_use": true,
+  "milestone_status": "alpha_closed",
+  "node_count": 18,
+  "nodes": [
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 21,
+      "body_proof_nodes": 32,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ l. (∀ x. ∀ y. Lt(x,S l) → BetaAt(b,c,x,y) → ∃ z. ∃ n. y = z · z + n · n) → ∀ x. ∀ y. Lt(x,l) → BetaAt(b,c,x,y) → ∃ z. ∃ n. y = z · z + n · n",
+        "defined_statement_sha256": "ebc5c21eb45e916cc3abcbbda7ef20eb5c8b1374994fe143d1b158e6151494a7",
+        "definition_uses": {
+          "PD0002": 2,
+          "PD0013": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "4c6f56681a0ab5b4459d96116ed6bc7c4aad07c5ec2ba03ae8fd797d11caba51",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0002": 2,
+          "PD0013": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ l. (∀ x. ∀ y. "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(x,S l)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0013",
+            "kind": "definition",
+            "text": "BetaAt(b,c,x,y)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ z. ∃ n. y = z · z + n · n) → ∀ x. ∀ y. "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(x,l)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0013",
+            "kind": "definition",
+            "text": "BetaAt(b,c,x,y)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ z. ∃ n. y = z · z + n · n"
+          }
+        ]
+      },
+      "dependencies": [
+        "le_succ"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0001",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_two_square_prefix_drop_last",
+      "proof_bundle_node_id": 598,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro l",
+        "intro hprefix",
+        "intro i",
+        "intro a",
+        "intro hi",
+        "intro ha",
+        "specialize hprefix i",
+        "specialize hprefix a",
+        "apply hprefix",
+        "specialize le_succ (S i)",
+        "specialize le_succ l",
+        "apply le_succ",
+        "exact hi",
+        "exact ha"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "5fb5dbcb1e0ca49ccf2d80b7de2f76f4d8820aa61c395abc171d5619989f5894",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "4c6f56681a0ab5b4459d96116ed6bc7c4aad07c5ec2ba03ae8fd797d11caba51"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c l. (forall ftsf_index_drop_next ftsf_factor_drop_next. (exists ftsf_gap_drop_next_bound. ftsf_gap_drop_next_bound + S ftsf_index_drop_next = (S l)) -> (((exists ff_h_ftsf_drop_next_entry. ff_h_ftsf_drop_next_entry + S (ftsf_factor_drop_next) = S ((S (ftsf_index_drop_next)) * c)) /\\ exists ff_q_ftsf_drop_next_entry. b = ff_q_ftsf_drop_next_entry * S ((S (ftsf_index_drop_next)) * c) + (ftsf_factor_drop_next))) -> (exists ftsf_first_drop_next_representation ftsf_second_drop_next_representation. (ftsf_factor_drop_next) = ftsf_first_drop_next_representation * ftsf_first_drop_next_representation + ftsf_second_drop_next_representation * ftsf_second_drop_next_representation)) -> (forall ftsf_index_drop_old ftsf_factor_drop_old. (exists ftsf_gap_drop_old_bound. ftsf_gap_drop_old_bound + S ftsf_index_drop_old = (l)) -> (((exists ff_h_ftsf_drop_old_entry. ff_h_ftsf_drop_old_entry + S (ftsf_factor_drop_old) = S ((S (ftsf_index_drop_old)) * c)) /\\ exists ff_q_ftsf_drop_old_entry. b = ff_q_ftsf_drop_old_entry * S ((S (ftsf_index_drop_old)) * c) + (ftsf_factor_drop_old))) -> (exists ftsf_first_drop_old_representation ftsf_second_drop_old_representation. (ftsf_factor_drop_old) = ftsf_first_drop_old_representation * ftsf_first_drop_old_representation + ftsf_second_drop_old_representation * ftsf_second_drop_old_representation))",
+      "statement_sha256": "4c6f56681a0ab5b4459d96116ed6bc7c4aad07c5ec2ba03ae8fd797d11caba51",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "Restricting a successor-length prefix preserves every witnessed two-square factor representation."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 16,
+      "body_proof_nodes": 24,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ l. ∀ a. (∀ x. ∀ y. Lt(x,S l) → BetaAt(b,c,x,y) → ∃ z. ∃ n. y = z · z + n · n) → BetaAt(b,c,l,a) → ∃ x. ∃ y. a = x · x + y · y",
+        "defined_statement_sha256": "318c9f9611be6791456b99d94273cbe2c81af793c7a6643179dc4a32b4c864d6",
+        "definition_uses": {
+          "PD0002": 1,
+          "PD0013": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "80931105b1568bd4a027e0c0f67ebe5d695976917d2218f090f1ea87ae4f64a2",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0002": 1,
+          "PD0013": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ l. ∀ a. (∀ x. ∀ y. "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(x,S l)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0013",
+            "kind": "definition",
+            "text": "BetaAt(b,c,x,y)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ z. ∃ n. y = z · z + n · n) → "
+          },
+          {
+            "definition": "PD0013",
+            "kind": "definition",
+            "text": "BetaAt(b,c,l,a)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ x. ∃ y. a = x · x + y · y"
+          }
+        ]
+      },
+      "dependencies": [
+        "le_refl"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0002",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_two_square_prefix_last_represented",
+      "proof_bundle_node_id": 599,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro l",
+        "intro a",
+        "intro hprefix",
+        "intro hlast",
+        "specialize hprefix l",
+        "specialize hprefix a",
+        "apply hprefix",
+        "specialize le_refl (S l)",
+        "exact le_refl",
+        "exact hlast"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "ef2d9a37608fb1a9514c720d728beb59d7bf854209f1aaf80caacde84e1977f2",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "80931105b1568bd4a027e0c0f67ebe5d695976917d2218f090f1ea87ae4f64a2"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c l a. (forall ftsf_index_drop_next ftsf_factor_drop_next. (exists ftsf_gap_drop_next_bound. ftsf_gap_drop_next_bound + S ftsf_index_drop_next = (S l)) -> (((exists ff_h_ftsf_drop_next_entry. ff_h_ftsf_drop_next_entry + S (ftsf_factor_drop_next) = S ((S (ftsf_index_drop_next)) * c)) /\\ exists ff_q_ftsf_drop_next_entry. b = ff_q_ftsf_drop_next_entry * S ((S (ftsf_index_drop_next)) * c) + (ftsf_factor_drop_next))) -> (exists ftsf_first_drop_next_representation ftsf_second_drop_next_representation. (ftsf_factor_drop_next) = ftsf_first_drop_next_representation * ftsf_first_drop_next_representation + ftsf_second_drop_next_representation * ftsf_second_drop_next_representation)) -> (((exists ff_h_ftsf_last_entry. ff_h_ftsf_last_entry + S (a) = S ((S (l)) * c)) /\\ exists ff_q_ftsf_last_entry. b = ff_q_ftsf_last_entry * S ((S (l)) * c) + (a))) -> (exists ftsf_first_last_result ftsf_second_last_result. (a) = ftsf_first_last_result * ftsf_first_last_result + ftsf_second_last_result * ftsf_second_last_result)",
+      "statement_sha256": "80931105b1568bd4a027e0c0f67ebe5d695976917d2218f090f1ea87ae4f64a2",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "The final decoded factor of a represented successor prefix has its own explicit two-square witnesses."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 26,
+      "body_proof_nodes": 106,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ l. ∀ n. Product(b,c,l,n) → (∀ x. ∀ y. Lt(x,l) → BetaAt(b,c,x,y) → ∃ z. ∃ m. y = z · z + m · m) → ∃ x. ∃ y. n = x · x + y · y",
+        "defined_statement_sha256": "31f6fe6c44334f08a6abe6ef80474e0a9f3d4c6609d22a3650d27ea01f89b922",
+        "definition_uses": {
+          "PD0002": 1,
+          "PD0013": 1,
+          "PD0014": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "66d4cf4c158802e854386ea6f68e565c64d34c1e3e0be7185c3d95782c833929",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0002": 1,
+          "PD0013": 1,
+          "PD0014": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ l. ∀ n. "
+          },
+          {
+            "definition": "PD0014",
+            "kind": "definition",
+            "text": "Product(b,c,l,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → (∀ x. ∀ y. "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(x,l)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0013",
+            "kind": "definition",
+            "text": "BetaAt(b,c,x,y)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ z. ∃ m. y = z · z + m · m) → ∃ x. ∃ y. n = x · x + y · y"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_product_zero",
+        "beta_product_succ_decompose",
+        "beta_two_square_prefix_drop_last",
+        "beta_two_square_prefix_last_represented",
+        "two_square_representation_multiplicatively_closed"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0003",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_two_square_represented_factor_product",
+      "proof_bundle_node_id": 600,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro b",
+        "intro c",
+        "induction l",
+        "intro n",
+        "intro hproduct",
+        "intro hprefix",
+        "have hunit : n = 1",
+        "specialize beta_product_zero b",
+        "specialize beta_product_zero c",
+        "specialize beta_product_zero n",
+        "apply beta_product_zero",
+        "exact hproduct",
+        "exists 1",
+        "exists 0",
+        "rewrite hunit",
+        "norm_num",
+        "intro n",
+        "intro hproduct",
+        "intro hprefix",
+        "have hdecomposition : exists a r. ((((exists ff_h_ftsf_fold_last. ff_h_ftsf_fold_last + S (a) = S ((S (l)) * c)) /\\ exists ff_q_ftsf_fold_last. b = ff_q_ftsf_fold_last * S ((S (l)) * c) + (a))) /\\ ((exists ff_u_ftsf_fold_local ff_v_ftsf_fold_local. ((((exists ff_h_ftsf_fold_local_start. ff_h_ftsf_fold_local_start + S (1) = S ((S (0)) * ff_v_ftsf_fold_local)) /\\ exists ff_q_ftsf_fold_local_start. ff_u_ftsf_fold_local = ff_q_ftsf_fold_local_start * S ((S (0)) * ff_v_ftsf_fold_local) + (1))) /\\ ((((exists ff_h_ftsf_fold_local_terminal. ff_h_ftsf_fold_local_terminal + S (r) = S ((S (l)) * ff_v_ftsf_fold_local)) /\\ exists ff_q_ftsf_fold_local_terminal. ff_u_ftsf_fold_local = ff_q_ftsf_fold_local_terminal * S ((S (l)) * ff_v_ftsf_fold_local) + (r))) /\\ forall ff_i_ftsf_fold_local. (exists ff_lt_ftsf_fold_local_bound. ff_lt_ftsf_fold_local_bound + S ff_i_ftsf_fold_local = l) -> exists ff_p_ftsf_fold_local ff_r_ftsf_fold_local ff_s_ftsf_fold_local. ((((exists ff_h_ftsf_fold_local_factor. ff_h_ftsf_fold_local_factor + S (ff_p_ftsf_fold_local) = S ((S (ff_i_ftsf_fold_local)) * c)) /\\ exists ff_q_ftsf_fold_local_factor. b = ff_q_ftsf_fold_local_factor * S ((S (ff_i_ftsf_fold_local)) * c) + (ff_p_ftsf_fold_local))) /\\ ((((exists ff_h_ftsf_fold_local_partial. ff_h_ftsf_fold_local_partial + S (ff_r_ftsf_fold_local) = S ((S (ff_i_ftsf_fold_local)) * ff_v_ftsf_fold_local)) /\\ exists ff_q_ftsf_fold_local_partial. ff_u_ftsf_fold_local = ff_q_ftsf_fold_local_partial * S ((S (ff_i_ftsf_fold_local)) * ff_v_ftsf_fold_local) + (ff_r_ftsf_fold_local))) /\\ ((((exists ff_h_ftsf_fold_local_successor. ff_h_ftsf_fold_local_successor + S (ff_s_ftsf_fold_local) = S ((S (S ff_i_ftsf_fold_local)) * ff_v_ftsf_fold_local)) /\\ exists ff_q_ftsf_fold_local_successor. ff_u_ftsf_fold_local = ff_q_ftsf_fold_local_successor * S ((S (S ff_i_ftsf_fold_local)) * ff_v_ftsf_fold_local) + (ff_s_ftsf_fold_local))) /\\ ff_s_ftsf_fold_local = ff_r_ftsf_fold_local * ff_p_ftsf_fold_local)))))) /\\ n = r * a))",
+        "specialize beta_product_succ_decompose b",
+        "specialize beta_product_succ_decompose c",
+        "specialize beta_product_succ_decompose l",
+        "specialize beta_product_succ_decompose n",
+        "apply beta_product_succ_decompose",
+        "exact hproduct",
+        "cases hdecomposition",
+        "cases hdecomposition_witness",
+        "cases hdecomposition_witness_witness",
+        "cases hdecomposition_witness_witness_right",
+        "have hrestricted : forall ftsf_index_fold_local_prefix ftsf_factor_fold_local_prefix. (exists ftsf_gap_fold_local_prefix_bound. ftsf_gap_fold_local_prefix_bound + S ftsf_index_fold_local_prefix = (l)) -> (((exists ff_h_ftsf_fold_local_prefix_entry. ff_h_ftsf_fold_local_prefix_entry + S (ftsf_factor_fold_local_prefix) = S ((S (ftsf_index_fold_local_prefix)) * c)) /\\ exists ff_q_ftsf_fold_local_prefix_entry. b = ff_q_ftsf_fold_local_prefix_entry * S ((S (ftsf_index_fold_local_prefix)) * c) + (ftsf_factor_fold_local_prefix))) -> (exists ftsf_first_fold_local_prefix_representation ftsf_second_fold_local_prefix_representation. (ftsf_factor_fold_local_prefix) = ftsf_first_fold_local_prefix_representation * ftsf_first_fold_local_prefix_representation + ftsf_second_fold_local_prefix_representation * ftsf_second_fold_local_prefix_representation)",
+        "specialize beta_two_square_prefix_drop_last b",
+        "specialize beta_two_square_prefix_drop_last c",
+        "specialize beta_two_square_prefix_drop_last l",
+        "apply beta_two_square_prefix_drop_last",
+        "exact hprefix",
+        "have hpartial : exists ftsf_first_fold_partial ftsf_second_fold_partial. (x1) = ftsf_first_fold_partial * ftsf_first_fold_partial + ftsf_second_fold_partial * ftsf_second_fold_partial",
+        "specialize IH x1",
+        "apply IH",
+        "exact hdecomposition_witness_witness_right_left",
+        "exact hrestricted",
+        "have hlast : exists ftsf_first_fold_last_representation ftsf_second_fold_last_representation. (x) = ftsf_first_fold_last_representation * ftsf_first_fold_last_representation + ftsf_second_fold_last_representation * ftsf_second_fold_last_representation",
+        "specialize beta_two_square_prefix_last_represented b",
+        "specialize beta_two_square_prefix_last_represented c",
+        "specialize beta_two_square_prefix_last_represented l",
+        "specialize beta_two_square_prefix_last_represented x",
+        "apply beta_two_square_prefix_last_represented",
+        "exact hprefix",
+        "exact hdecomposition_witness_witness_left",
+        "rewrite hdecomposition_witness_witness_right_right",
+        "specialize two_square_representation_multiplicatively_closed x1",
+        "specialize two_square_representation_multiplicatively_closed x",
+        "apply two_square_representation_multiplicatively_closed",
+        "exact hpartial",
+        "exact hlast"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "b3832510950c7a985421d39ca17393be3d2959f98b0cc71f9c8ec21f8b288a82",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "66d4cf4c158802e854386ea6f68e565c64d34c1e3e0be7185c3d95782c833929"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c l n. (exists ff_u_ftsf_fold_product ff_v_ftsf_fold_product. ((((exists ff_h_ftsf_fold_product_start. ff_h_ftsf_fold_product_start + S (1) = S ((S (0)) * ff_v_ftsf_fold_product)) /\\ exists ff_q_ftsf_fold_product_start. ff_u_ftsf_fold_product = ff_q_ftsf_fold_product_start * S ((S (0)) * ff_v_ftsf_fold_product) + (1))) /\\ ((((exists ff_h_ftsf_fold_product_terminal. ff_h_ftsf_fold_product_terminal + S (n) = S ((S (l)) * ff_v_ftsf_fold_product)) /\\ exists ff_q_ftsf_fold_product_terminal. ff_u_ftsf_fold_product = ff_q_ftsf_fold_product_terminal * S ((S (l)) * ff_v_ftsf_fold_product) + (n))) /\\ forall ff_i_ftsf_fold_product. (exists ff_lt_ftsf_fold_product_bound. ff_lt_ftsf_fold_product_bound + S ff_i_ftsf_fold_product = l) -> exists ff_p_ftsf_fold_product ff_r_ftsf_fold_product ff_s_ftsf_fold_product. ((((exists ff_h_ftsf_fold_product_factor. ff_h_ftsf_fold_product_factor + S (ff_p_ftsf_fold_product) = S ((S (ff_i_ftsf_fold_product)) * c)) /\\ exists ff_q_ftsf_fold_product_factor. b = ff_q_ftsf_fold_product_factor * S ((S (ff_i_ftsf_fold_product)) * c) + (ff_p_ftsf_fold_product))) /\\ ((((exists ff_h_ftsf_fold_product_partial. ff_h_ftsf_fold_product_partial + S (ff_r_ftsf_fold_product) = S ((S (ff_i_ftsf_fold_product)) * ff_v_ftsf_fold_product)) /\\ exists ff_q_ftsf_fold_product_partial. ff_u_ftsf_fold_product = ff_q_ftsf_fold_product_partial * S ((S (ff_i_ftsf_fold_product)) * ff_v_ftsf_fold_product) + (ff_r_ftsf_fold_product))) /\\ ((((exists ff_h_ftsf_fold_product_successor. ff_h_ftsf_fold_product_successor + S (ff_s_ftsf_fold_product) = S ((S (S ff_i_ftsf_fold_product)) * ff_v_ftsf_fold_product)) /\\ exists ff_q_ftsf_fold_product_successor. ff_u_ftsf_fold_product = ff_q_ftsf_fold_product_successor * S ((S (S ff_i_ftsf_fold_product)) * ff_v_ftsf_fold_product) + (ff_s_ftsf_fold_product))) /\\ ff_s_ftsf_fold_product = ff_r_ftsf_fold_product * ff_p_ftsf_fold_product)))))) -> (forall ftsf_index_fold_prefix ftsf_factor_fold_prefix. (exists ftsf_gap_fold_prefix_bound. ftsf_gap_fold_prefix_bound + S ftsf_index_fold_prefix = (l)) -> (((exists ff_h_ftsf_fold_prefix_entry. ff_h_ftsf_fold_prefix_entry + S (ftsf_factor_fold_prefix) = S ((S (ftsf_index_fold_prefix)) * c)) /\\ exists ff_q_ftsf_fold_prefix_entry. b = ff_q_ftsf_fold_prefix_entry * S ((S (ftsf_index_fold_prefix)) * c) + (ftsf_factor_fold_prefix))) -> (exists ftsf_first_fold_prefix_representation ftsf_second_fold_prefix_representation. (ftsf_factor_fold_prefix) = ftsf_first_fold_prefix_representation * ftsf_first_fold_prefix_representation + ftsf_second_fold_prefix_representation * ftsf_second_fold_prefix_representation)) -> (exists ftsf_first_fold_result ftsf_second_fold_result. (n) = ftsf_first_fold_result * ftsf_first_fold_result + ftsf_second_fold_result * ftsf_second_fold_result)",
+      "statement_sha256": "66d4cf4c158802e854386ea6f68e565c64d34c1e3e0be7185c3d95782c833929",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "Induction on an arbitrary beta-coded product constructs a two-square representation from represented decoded factors."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 21,
+      "body_proof_nodes": 42,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ l. ∀ i. ∀ p. AllPrime(b,c,l) → Lt(i,l) → BetaAt(b,c,i,p) → Prime(p)",
+        "defined_statement_sha256": "28f7c9fb1c922b1209027232e7afd533e559cb9f5bb5d227face37a6ce641a1d",
+        "definition_uses": {
+          "PD0002": 1,
+          "PD0004": 1,
+          "PD0013": 1,
+          "PD0028": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "d62b71ab206b2ce20bbfc64b58ad7d0916baca7042b240e51c244337fb488410",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0002": 1,
+          "PD0004": 1,
+          "PD0013": 1,
+          "PD0028": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ l. ∀ i. ∀ p. "
+          },
+          {
+            "definition": "PD0028",
+            "kind": "definition",
+            "text": "AllPrime(b,c,l)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(i,l)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0013",
+            "kind": "definition",
+            "text": "BetaAt(b,c,i,p)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0004",
+            "kind": "definition",
+            "text": "Prime(p)"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_at_unique"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0004",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_all_prime_entry_is_prime",
+      "proof_bundle_node_id": 601,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro l",
+        "intro i",
+        "intro p",
+        "intro hall",
+        "intro hi",
+        "intro hp",
+        "specialize hall i",
+        "have hentry : exists a. ((((exists ff_h_ftsf_prime_local. ff_h_ftsf_prime_local + S (a) = S ((S (i)) * c)) /\\ exists ff_q_ftsf_prime_local. b = ff_q_ftsf_prime_local * S ((S (i)) * c) + (a))) /\\ ((~(a = 1) /\\ forall frm_prime_left_ftsf_prime_local frm_prime_right_ftsf_prime_local. a = frm_prime_left_ftsf_prime_local * frm_prime_right_ftsf_prime_local -> frm_prime_left_ftsf_prime_local = 1 \\/ frm_prime_right_ftsf_prime_local = 1)))",
+        "apply hall",
+        "exact hi",
+        "cases hentry",
+        "cases hentry_witness",
+        "have hequal : p = x",
+        "specialize beta_at_unique b",
+        "specialize beta_at_unique c",
+        "specialize beta_at_unique i",
+        "specialize beta_at_unique p",
+        "specialize beta_at_unique x",
+        "apply beta_at_unique",
+        "exact hp",
+        "exact hentry_witness_left",
+        "rewrite hequal",
+        "rewrite hequal",
+        "exact hentry_witness_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "e0d34e922bba7dff1a3ac9207ecb78c46f7bc3b76af2d1422e6e76a67d835157",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "d62b71ab206b2ce20bbfc64b58ad7d0916baca7042b240e51c244337fb488410"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c l i p. (forall ftsf_index_all_prime_source. (exists ftsf_gap_all_prime_source_bound. ftsf_gap_all_prime_source_bound + S ftsf_index_all_prime_source = (l)) -> exists ftsf_factor_all_prime_source. ((((exists ff_h_ftsf_all_prime_source_entry. ff_h_ftsf_all_prime_source_entry + S (ftsf_factor_all_prime_source) = S ((S (ftsf_index_all_prime_source)) * c)) /\\ exists ff_q_ftsf_all_prime_source_entry. b = ff_q_ftsf_all_prime_source_entry * S ((S (ftsf_index_all_prime_source)) * c) + (ftsf_factor_all_prime_source))) /\\ ((~(ftsf_factor_all_prime_source = 1) /\\ forall frm_prime_left_ftsf_all_prime_source_prime frm_prime_right_ftsf_all_prime_source_prime. ftsf_factor_all_prime_source = frm_prime_left_ftsf_all_prime_source_prime * frm_prime_right_ftsf_all_prime_source_prime -> frm_prime_left_ftsf_all_prime_source_prime = 1 \\/ frm_prime_right_ftsf_all_prime_source_prime = 1)))) -> (exists ftsf_gap_all_prime_entry. ftsf_gap_all_prime_entry + S i = (l)) -> (((exists ff_h_ftsf_selected_entry. ff_h_ftsf_selected_entry + S (p) = S ((S (i)) * c)) /\\ exists ff_q_ftsf_selected_entry. b = ff_q_ftsf_selected_entry * S ((S (i)) * c) + (p))) -> ((~(p = 1) /\\ forall frm_prime_left_ftsf_selected_prime frm_prime_right_ftsf_selected_prime. p = frm_prime_left_ftsf_selected_prime * frm_prime_right_ftsf_selected_prime -> frm_prime_left_ftsf_selected_prime = 1 \\/ frm_prime_right_ftsf_selected_prime = 1))",
+      "statement_sha256": "d62b71ab206b2ce20bbfc64b58ad7d0916baca7042b240e51c244337fb488410",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "Every concrete decoded entry in the canonical all-prime prefix is prime, by uniqueness of beta decoding."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 21,
+      "body_proof_nodes": 40,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ l. ∀ n. Product(b,c,l,n) → (∀ x. ∀ y. Lt(x,l) → BetaAt(b,c,x,y) → Prime(y) ∧ (y = 2 ∨ (∃ z. y = 4 · z + 1))) → ∃ x. ∃ y. n = x · x + y · y",
+        "defined_statement_sha256": "c403720cf9f891dbdb46a8f8455e2d26a2bfa1fab050fc20b36cd528d84dba17",
+        "definition_uses": {
+          "PD0002": 1,
+          "PD0004": 1,
+          "PD0013": 1,
+          "PD0014": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "be01957e2cef2d73ba750277fc2a9a91b07d96b4eec8daa995859b5900cab703",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0002": 1,
+          "PD0004": 1,
+          "PD0013": 1,
+          "PD0014": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ l. ∀ n. "
+          },
+          {
+            "definition": "PD0014",
+            "kind": "definition",
+            "text": "Product(b,c,l,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → (∀ x. ∀ y. "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(x,l)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0013",
+            "kind": "definition",
+            "text": "BetaAt(b,c,x,y)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0004",
+            "kind": "definition",
+            "text": "Prime(y)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ (y = 2 ∨ (∃ z. y = 4 · z + 1))) → ∃ x. ∃ y. n = x · x + y · y"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_two_square_represented_factor_product",
+        "prime_two_or_one_mod_four_is_sum_of_two_squares"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0005",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_admissible_prime_factor_product_is_two_square",
+      "proof_bundle_node_id": 602,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro l",
+        "intro n",
+        "intro hproduct",
+        "intro hadmissible",
+        "specialize beta_two_square_represented_factor_product b",
+        "specialize beta_two_square_represented_factor_product c",
+        "specialize beta_two_square_represented_factor_product l",
+        "specialize beta_two_square_represented_factor_product n",
+        "apply beta_two_square_represented_factor_product",
+        "exact hproduct",
+        "intro i",
+        "intro p",
+        "intro hi",
+        "intro hp",
+        "specialize hadmissible i",
+        "specialize hadmissible p",
+        "have hclass : ((~(p = 1) /\\ forall frm_prime_left_ftsf_admissible_local frm_prime_right_ftsf_admissible_local. p = frm_prime_left_ftsf_admissible_local * frm_prime_right_ftsf_admissible_local -> frm_prime_left_ftsf_admissible_local = 1 \\/ frm_prime_right_ftsf_admissible_local = 1)) /\\ (p = 2 \\/ exists t. p = 4 * t + 1)",
+        "apply hadmissible",
+        "exact hi",
+        "exact hp",
+        "cases hclass",
+        "specialize prime_two_or_one_mod_four_is_sum_of_two_squares p",
+        "apply prime_two_or_one_mod_four_is_sum_of_two_squares",
+        "exact hclass_left",
+        "exact hclass_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "83877c802507c5bd4b7c9d487ad5077ba70db2858f1003595d35e8f9b88a8a25",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "be01957e2cef2d73ba750277fc2a9a91b07d96b4eec8daa995859b5900cab703"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c l n. (exists ff_u_ftsf_admissible_product ff_v_ftsf_admissible_product. ((((exists ff_h_ftsf_admissible_product_start. ff_h_ftsf_admissible_product_start + S (1) = S ((S (0)) * ff_v_ftsf_admissible_product)) /\\ exists ff_q_ftsf_admissible_product_start. ff_u_ftsf_admissible_product = ff_q_ftsf_admissible_product_start * S ((S (0)) * ff_v_ftsf_admissible_product) + (1))) /\\ ((((exists ff_h_ftsf_admissible_product_terminal. ff_h_ftsf_admissible_product_terminal + S (n) = S ((S (l)) * ff_v_ftsf_admissible_product)) /\\ exists ff_q_ftsf_admissible_product_terminal. ff_u_ftsf_admissible_product = ff_q_ftsf_admissible_product_terminal * S ((S (l)) * ff_v_ftsf_admissible_product) + (n))) /\\ forall ff_i_ftsf_admissible_product. (exists ff_lt_ftsf_admissible_product_bound. ff_lt_ftsf_admissible_product_bound + S ff_i_ftsf_admissible_product = l) -> exists ff_p_ftsf_admissible_product ff_r_ftsf_admissible_product ff_s_ftsf_admissible_product. ((((exists ff_h_ftsf_admissible_product_factor. ff_h_ftsf_admissible_product_factor + S (ff_p_ftsf_admissible_product) = S ((S (ff_i_ftsf_admissible_product)) * c)) /\\ exists ff_q_ftsf_admissible_product_factor. b = ff_q_ftsf_admissible_product_factor * S ((S (ff_i_ftsf_admissible_product)) * c) + (ff_p_ftsf_admissible_product))) /\\ ((((exists ff_h_ftsf_admissible_product_partial. ff_h_ftsf_admissible_product_partial + S (ff_r_ftsf_admissible_product) = S ((S (ff_i_ftsf_admissible_product)) * ff_v_ftsf_admissible_product)) /\\ exists ff_q_ftsf_admissible_product_partial. ff_u_ftsf_admissible_product = ff_q_ftsf_admissible_product_partial * S ((S (ff_i_ftsf_admissible_product)) * ff_v_ftsf_admissible_product) + (ff_r_ftsf_admissible_product))) /\\ ((((exists ff_h_ftsf_admissible_product_successor. ff_h_ftsf_admissible_product_successor + S (ff_s_ftsf_admissible_product) = S ((S (S ff_i_ftsf_admissible_product)) * ff_v_ftsf_admissible_product)) /\\ exists ff_q_ftsf_admissible_product_successor. ff_u_ftsf_admissible_product = ff_q_ftsf_admissible_product_successor * S ((S (S ff_i_ftsf_admissible_product)) * ff_v_ftsf_admissible_product) + (ff_s_ftsf_admissible_product))) /\\ ff_s_ftsf_admissible_product = ff_r_ftsf_admissible_product * ff_p_ftsf_admissible_product)))))) -> (forall ftsf_index_admissible_source ftsf_factor_admissible_source. (exists ftsf_gap_admissible_source_bound. ftsf_gap_admissible_source_bound + S ftsf_index_admissible_source = (l)) -> (((exists ff_h_ftsf_admissible_source_entry. ff_h_ftsf_admissible_source_entry + S (ftsf_factor_admissible_source) = S ((S (ftsf_index_admissible_source)) * c)) /\\ exists ff_q_ftsf_admissible_source_entry. b = ff_q_ftsf_admissible_source_entry * S ((S (ftsf_index_admissible_source)) * c) + (ftsf_factor_admissible_source))) -> (((~(ftsf_factor_admissible_source = 1) /\\ forall frm_prime_left_ftsf_admissible_source_prime frm_prime_right_ftsf_admissible_source_prime. ftsf_factor_admissible_source = frm_prime_left_ftsf_admissible_source_prime * frm_prime_right_ftsf_admissible_source_prime -> frm_prime_left_ftsf_admissible_source_prime = 1 \\/ frm_prime_right_ftsf_admissible_source_prime = 1)) /\\ (ftsf_factor_admissible_source = 2 \\/ exists ftsf_residue_admissible_source. ftsf_factor_admissible_source = 4 * ftsf_residue_admissible_source + 1))) -> (exists ftsf_first_admissible_result ftsf_second_admissible_result. (n) = ftsf_first_admissible_result * ftsf_first_admissible_result + ftsf_second_admissible_result * ftsf_second_admissible_result)",
+      "statement_sha256": "be01957e2cef2d73ba750277fc2a9a91b07d96b4eec8daa995859b5900cab703",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "Any finite product whose decoded factors are prime two or prime one modulo four is constructively a sum of two squares."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 27,
+      "body_proof_nodes": 76,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ n. ¬n = 0 → (∀ x. Prime(x) → Dvd(x,n) → x = 2 ∨ (∃ y. x = 4 · y + 1)) → ∃ x. ∃ y. n = x · x + y · y",
+        "defined_statement_sha256": "0e1255ba5516e23d3a8b919218d3749dcce520344380ad5c6fba119ad2be7944",
+        "definition_uses": {
+          "PD0003": 1,
+          "PD0004": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "4f1877c55982623acfdc8c10d6244f00d0c97073e3701854c9f1243ce665fce1",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0003": 1,
+          "PD0004": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ n. ¬n = 0 → (∀ x. "
+          },
+          {
+            "definition": "PD0004",
+            "kind": "definition",
+            "text": "Prime(x)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0003",
+            "kind": "definition",
+            "text": "Dvd(x,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → x = 2 ∨ (∃ y. x = 4 · y + 1)) → ∃ x. ∃ y. n = x · x + y · y"
+          }
+        ]
+      },
+      "dependencies": [
+        "prime_factorization_existence",
+        "beta_all_prime_entry_is_prime",
+        "beta_factor_divides_product",
+        "beta_admissible_prime_factor_product_is_two_square"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0006",
+      "independent_lean_bundle_verified": true,
+      "name": "positive_number_with_admissible_prime_divisors_is_two_square",
+      "proof_bundle_node_id": 603,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro n",
+        "intro hnonzero",
+        "intro hdivisors",
+        "specialize prime_factorization_existence n",
+        "have hfactorization : exists l b c. ((exists ff_u_ftsf_canonical_product ff_v_ftsf_canonical_product. ((((exists ff_h_ftsf_canonical_product_start. ff_h_ftsf_canonical_product_start + S (1) = S ((S (0)) * ff_v_ftsf_canonical_product)) /\\ exists ff_q_ftsf_canonical_product_start. ff_u_ftsf_canonical_product = ff_q_ftsf_canonical_product_start * S ((S (0)) * ff_v_ftsf_canonical_product) + (1))) /\\ ((((exists ff_h_ftsf_canonical_product_terminal. ff_h_ftsf_canonical_product_terminal + S (n) = S ((S (l)) * ff_v_ftsf_canonical_product)) /\\ exists ff_q_ftsf_canonical_product_terminal. ff_u_ftsf_canonical_product = ff_q_ftsf_canonical_product_terminal * S ((S (l)) * ff_v_ftsf_canonical_product) + (n))) /\\ forall ff_i_ftsf_canonical_product. (exists ff_lt_ftsf_canonical_product_bound. ff_lt_ftsf_canonical_product_bound + S ff_i_ftsf_canonical_product = l) -> exists ff_p_ftsf_canonical_product ff_r_ftsf_canonical_product ff_s_ftsf_canonical_product. ((((exists ff_h_ftsf_canonical_product_factor. ff_h_ftsf_canonical_product_factor + S (ff_p_ftsf_canonical_product) = S ((S (ff_i_ftsf_canonical_product)) * c)) /\\ exists ff_q_ftsf_canonical_product_factor. b = ff_q_ftsf_canonical_product_factor * S ((S (ff_i_ftsf_canonical_product)) * c) + (ff_p_ftsf_canonical_product))) /\\ ((((exists ff_h_ftsf_canonical_product_partial. ff_h_ftsf_canonical_product_partial + S (ff_r_ftsf_canonical_product) = S ((S (ff_i_ftsf_canonical_product)) * ff_v_ftsf_canonical_product)) /\\ exists ff_q_ftsf_canonical_product_partial. ff_u_ftsf_canonical_product = ff_q_ftsf_canonical_product_partial * S ((S (ff_i_ftsf_canonical_product)) * ff_v_ftsf_canonical_product) + (ff_r_ftsf_canonical_product))) /\\ ((((exists ff_h_ftsf_canonical_product_successor. ff_h_ftsf_canonical_product_successor + S (ff_s_ftsf_canonical_product) = S ((S (S ff_i_ftsf_canonical_product)) * ff_v_ftsf_canonical_product)) /\\ exists ff_q_ftsf_canonical_product_successor. ff_u_ftsf_canonical_product = ff_q_ftsf_canonical_product_successor * S ((S (S ff_i_ftsf_canonical_product)) * ff_v_ftsf_canonical_product) + (ff_s_ftsf_canonical_product))) /\\ ff_s_ftsf_canonical_product = ff_r_ftsf_canonical_product * ff_p_ftsf_canonical_product)))))) /\\ ((forall ftsf_index_canonical_all_prime. (exists ftsf_gap_canonical_all_prime_bound. ftsf_gap_canonical_all_prime_bound + S ftsf_index_canonical_all_prime = (l)) -> exists ftsf_factor_canonical_all_prime. ((((exists ff_h_ftsf_canonical_all_prime_entry. ff_h_ftsf_canonical_all_prime_entry + S (ftsf_factor_canonical_all_prime) = S ((S (ftsf_index_canonical_all_prime)) * c)) /\\ exists ff_q_ftsf_canonical_all_prime_entry. b = ff_q_ftsf_canonical_all_prime_entry * S ((S (ftsf_index_canonical_all_prime)) * c) + (ftsf_factor_canonical_all_prime))) /\\ ((~(ftsf_factor_canonical_all_prime = 1) /\\ forall frm_prime_left_ftsf_canonical_all_prime_prime frm_prime_right_ftsf_canonical_all_prime_prime. ftsf_factor_canonical_all_prime = frm_prime_left_ftsf_canonical_all_prime_prime * frm_prime_right_ftsf_canonical_all_prime_prime -> frm_prime_left_ftsf_canonical_all_prime_prime = 1 \\/ frm_prime_right_ftsf_canonical_all_prime_prime = 1)))) /\\ (forall i. (exists ftsf_gap_canonical_sorted_bound. ftsf_gap_canonical_sorted_bound + S S i = (l)) -> exists p q. ((((exists ff_h_ftsf_canonical_sorted_left. ff_h_ftsf_canonical_sorted_left + S (p) = S ((S (i)) * c)) /\\ exists ff_q_ftsf_canonical_sorted_left. b = ff_q_ftsf_canonical_sorted_left * S ((S (i)) * c) + (p))) /\\ ((((exists ff_h_ftsf_canonical_sorted_right. ff_h_ftsf_canonical_sorted_right + S (q) = S ((S (S i)) * c)) /\\ exists ff_q_ftsf_canonical_sorted_right. b = ff_q_ftsf_canonical_sorted_right * S ((S (S i)) * c) + (q))) /\\ (exists h. h + p = q))))))",
+        "apply prime_factorization_existence",
+        "exact hnonzero",
+        "cases hfactorization",
+        "cases hfactorization_witness",
+        "cases hfactorization_witness_witness",
+        "cases hfactorization_witness_witness_witness",
+        "cases hfactorization_witness_witness_witness_right",
+        "specialize beta_admissible_prime_factor_product_is_two_square x1",
+        "specialize beta_admissible_prime_factor_product_is_two_square x2",
+        "specialize beta_admissible_prime_factor_product_is_two_square x",
+        "specialize beta_admissible_prime_factor_product_is_two_square n",
+        "apply beta_admissible_prime_factor_product_is_two_square",
+        "exact hfactorization_witness_witness_witness_left",
+        "intro i",
+        "intro p",
+        "intro hi",
+        "intro hp",
+        "have hprime : (~(p = 1) /\\ forall frm_prime_left_ftsf_canonical_local_prime frm_prime_right_ftsf_canonical_local_prime. p = frm_prime_left_ftsf_canonical_local_prime * frm_prime_right_ftsf_canonical_local_prime -> frm_prime_left_ftsf_canonical_local_prime = 1 \\/ frm_prime_right_ftsf_canonical_local_prime = 1)",
+        "specialize beta_all_prime_entry_is_prime x1",
+        "specialize beta_all_prime_entry_is_prime x2",
+        "specialize beta_all_prime_entry_is_prime x",
+        "specialize beta_all_prime_entry_is_prime i",
+        "specialize beta_all_prime_entry_is_prime p",
+        "apply beta_all_prime_entry_is_prime",
+        "exact hfactorization_witness_witness_witness_right_left",
+        "exact hi",
+        "exact hp",
+        "split",
+        "exact hprime",
+        "specialize hdivisors p",
+        "apply hdivisors",
+        "exact hprime",
+        "specialize beta_factor_divides_product x1",
+        "specialize beta_factor_divides_product x2",
+        "specialize beta_factor_divides_product x",
+        "specialize beta_factor_divides_product n",
+        "specialize beta_factor_divides_product i",
+        "specialize beta_factor_divides_product p",
+        "apply beta_factor_divides_product",
+        "exact hi",
+        "exact hp",
+        "exact hfactorization_witness_witness_witness_left"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "18256e1d932ebdc729dcda6707f7fc8d9a63dcb19f186acee37e6677c0da8bbd",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "4f1877c55982623acfdc8c10d6244f00d0c97073e3701854c9f1243ce665fce1"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall n. ~(n = 0) -> (forall ftsf_divisor_canonical_source. ((~(ftsf_divisor_canonical_source = 1) /\\ forall frm_prime_left_ftsf_canonical_source_prime frm_prime_right_ftsf_canonical_source_prime. ftsf_divisor_canonical_source = frm_prime_left_ftsf_canonical_source_prime * frm_prime_right_ftsf_canonical_source_prime -> frm_prime_left_ftsf_canonical_source_prime = 1 \\/ frm_prime_right_ftsf_canonical_source_prime = 1)) -> (exists ftsf_quotient_canonical_source. (n) = ftsf_divisor_canonical_source * ftsf_quotient_canonical_source) -> (ftsf_divisor_canonical_source = 2 \\/ exists ftsf_residue_canonical_source. ftsf_divisor_canonical_source = 4 * ftsf_residue_canonical_source + 1)) -> (exists ftsf_first_canonical_result ftsf_second_canonical_result. (n) = ftsf_first_canonical_result * ftsf_first_canonical_result + ftsf_second_canonical_result * ftsf_second_canonical_result)",
+      "statement_sha256": "4f1877c55982623acfdc8c10d6244f00d0c97073e3701854c9f1243ce665fce1",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "A positive natural number all of whose prime divisors are two or one modulo four has an explicitly constructed two-square representation via its canonical prime factorization."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 11,
+      "body_proof_nodes": 21,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ n. Mod4Three(n) → ¬n = 0",
+        "defined_statement_sha256": "0543ca02c440bb6f09d17a78f9e511ac05bbc10b92b8c4299d592fe3c50f2afd",
+        "definition_uses": {
+          "PD0012": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "d9f04dedbae02da066b397541d3421ac8a21630d103cc11dfed809c8a99be336",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0012": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ n. "
+          },
+          {
+            "definition": "PD0012",
+            "kind": "definition",
+            "text": "Mod4Three(n)"
+          },
+          {
+            "kind": "text",
+            "text": " → ¬n = 0"
+          }
+        ]
+      },
+      "dependencies": [],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0007",
+      "independent_lean_bundle_verified": true,
+      "name": "three_mod_four_progression_nonzero",
+      "proof_bundle_node_id": 604,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro n",
+        "intro hthree",
+        "intro hzero",
+        "cases hthree",
+        "rewrite hthree_witness at hzero",
+        "rewrite PA4 at hzero",
+        "apply PA1",
+        "exact hzero"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "46ae5ad14aafff8d84379c1ea9fbaa2adcb8dfde82970ee2f4ef4d80cd42c0de",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "d9f04dedbae02da066b397541d3421ac8a21630d103cc11dfed809c8a99be336"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall n. (exists ff_residue_ptmf_number. (n) = 4 * ff_residue_ptmf_number + 3) -> ~(n = 0)",
+      "statement_sha256": "d9f04dedbae02da066b397541d3421ac8a21630d103cc11dfed809c8a99be336",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "Every witnessed natural of the form 4k+3 is nonzero."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 11,
+      "body_proof_nodes": 23,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ n. Mod4Three(n) → ¬n = 1",
+        "defined_statement_sha256": "7449c8a25d104156736861d23646d68a36d24f85448ac0fe74b09b24bea84135",
+        "definition_uses": {
+          "PD0012": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "ceca0a0f89e4bff9a1b8d05084caf9aff8984ad72b04abc57bb609f6dcf6cc1e",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0012": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ n. "
+          },
+          {
+            "definition": "PD0012",
+            "kind": "definition",
+            "text": "Mod4Three(n)"
+          },
+          {
+            "kind": "text",
+            "text": " → ¬n = 1"
+          }
+        ]
+      },
+      "dependencies": [],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0008",
+      "independent_lean_bundle_verified": true,
+      "name": "three_mod_four_progression_nonunit",
+      "proof_bundle_node_id": 605,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro n",
+        "intro hthree",
+        "intro hone",
+        "cases hthree",
+        "rewrite hthree_witness at hone",
+        "rewrite PA4 at hone",
+        "have hzero : 4 * x + 2 = 0",
+        "apply PA2",
+        "exact hone",
+        "rewrite PA4 at hzero",
+        "apply PA1",
+        "exact hzero"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "0aeeea55cc42ede46ba40ce12215d9a47058980e4b6d43b6131a14cd455793ed",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "ceca0a0f89e4bff9a1b8d05084caf9aff8984ad72b04abc57bb609f6dcf6cc1e"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall n. (exists ff_residue_ptmf_number. (n) = 4 * ff_residue_ptmf_number + 3) -> ~(n = 1)",
+      "statement_sha256": "ceca0a0f89e4bff9a1b8d05084caf9aff8984ad72b04abc57bb609f6dcf6cc1e",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "Every witnessed natural of the form 4k+3 differs from the unit one."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 12,
+      "body_proof_nodes": 19,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ n. Mod4Three(n) → ¬(∃ x. ∃ y. n = x · x + y · y)",
+        "defined_statement_sha256": "cb696bbc44c3b078156d1f91165b7b2f74940e3d9c93cc9d6bf3305f2ed60398",
+        "definition_uses": {
+          "PD0012": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "7e9608bd2cd20fe9a0b50e0b30b3879cda0d408ccda3065692097431815c9b0b",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0012": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ n. "
+          },
+          {
+            "definition": "PD0012",
+            "kind": "definition",
+            "text": "Mod4Three(n)"
+          },
+          {
+            "kind": "text",
+            "text": " → ¬(∃ x. ∃ y. n = x · x + y · y)"
+          }
+        ]
+      },
+      "dependencies": [
+        "three_mod_four_number_not_equal_represented"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0009",
+      "independent_lean_bundle_verified": true,
+      "name": "three_mod_four_progression_not_two_square",
+      "proof_bundle_node_id": 606,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro n",
+        "intro hthree",
+        "intro hrepresented",
+        "specialize three_mod_four_number_not_equal_represented n",
+        "specialize three_mod_four_number_not_equal_represented n",
+        "apply three_mod_four_number_not_equal_represented",
+        "exact hthree",
+        "exact hrepresented",
+        "refl"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "bf94f1a0a8b5f2ab4844ac93795ac1cba1968bfec71124b5c97cdcb2367aa139",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "7e9608bd2cd20fe9a0b50e0b30b3879cda0d408ccda3065692097431815c9b0b"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall n. (exists ff_residue_ptmf_number. (n) = 4 * ff_residue_ptmf_number + 3) -> (exists ptmf_first_represented ptmf_second_represented. (n) = ptmf_first_represented * ptmf_first_represented + ptmf_second_represented * ptmf_second_represented) -> false",
+      "statement_sha256": "7e9608bd2cd20fe9a0b50e0b30b3879cda0d408ccda3065692097431815c9b0b",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "A witnessed three-modulo-four natural cannot have a two-square representation."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 14,
+      "body_proof_nodes": 23,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ p. Prime(p) → p = 2 ∨ (∃ x. p = 4 · x + 1) → ¬Mod4Three(p)",
+        "defined_statement_sha256": "dd0b28527e82035c2c1cdf595b5a3ff3fe206764b50b8f858a6db7e8457d93ad",
+        "definition_uses": {
+          "PD0004": 1,
+          "PD0012": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "8d9b67c3ee9c37067c6bdef4f7af46362904a6b1167d96a1b6dd796f9ace52a4",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0004": 1,
+          "PD0012": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ p. "
+          },
+          {
+            "definition": "PD0004",
+            "kind": "definition",
+            "text": "Prime(p)"
+          },
+          {
+            "kind": "text",
+            "text": " → p = 2 ∨ (∃ x. p = 4 · x + 1) → ¬"
+          },
+          {
+            "definition": "PD0012",
+            "kind": "definition",
+            "text": "Mod4Three(p)"
+          }
+        ]
+      },
+      "dependencies": [
+        "prime_two_or_one_mod_four_is_sum_of_two_squares",
+        "three_mod_four_progression_not_two_square"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF000A",
+      "independent_lean_bundle_verified": true,
+      "name": "three_mod_four_good_prime_exclusive",
+      "proof_bundle_node_id": 607,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro p",
+        "intro hprime",
+        "intro hgood",
+        "intro hthree",
+        "specialize three_mod_four_progression_not_two_square p",
+        "apply three_mod_four_progression_not_two_square",
+        "exact hthree",
+        "specialize prime_two_or_one_mod_four_is_sum_of_two_squares p",
+        "apply prime_two_or_one_mod_four_is_sum_of_two_squares",
+        "exact hprime",
+        "exact hgood"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "4592225a6b314bb640206ea01bbd8c98d87c7506a8e178a42fbdb9a78dfd89b8",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "8d9b67c3ee9c37067c6bdef4f7af46362904a6b1167d96a1b6dd796f9ace52a4"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall p. ((~(p = 1) /\\ forall frm_prime_left_ptmf_prime frm_prime_right_ptmf_prime. p = frm_prime_left_ptmf_prime * frm_prime_right_ptmf_prime -> frm_prime_left_ptmf_prime = 1 \\/ frm_prime_right_ptmf_prime = 1)) -> (p = 2 \\/ exists k. p = 4 * k + 1) -> (exists ff_residue_ptmf_prime. (p) = 4 * ff_residue_ptmf_prime + 3) -> false",
+      "statement_sha256": "8d9b67c3ee9c37067c6bdef4f7af46362904a6b1167d96a1b6dd796f9ace52a4",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "A prime equal to two or one modulo four cannot also be three modulo four."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 14,
+      "body_proof_nodes": 46,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ p. ∀ n. PrimeThreeModFourDivisor(n,p) ∨ ¬PrimeThreeModFourDivisor(n,p)",
+        "defined_statement_sha256": "ed379e2c7720b44b2942c92ea7225285bbb15bd05d90a9c3a211dfae7e623776",
+        "definition_uses": {
+          "ND0044": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "78cb480295bfbb6ab051a5a9836219a4aac959dd2b55c78768e920587c1f622d",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0044": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ p. ∀ n. "
+          },
+          {
+            "definition": "ND0044",
+            "kind": "definition",
+            "text": "PrimeThreeModFourDivisor(n,p)"
+          },
+          {
+            "kind": "text",
+            "text": " ∨ ¬"
+          },
+          {
+            "definition": "ND0044",
+            "kind": "definition",
+            "text": "PrimeThreeModFourDivisor(n,p)"
+          }
+        ]
+      },
+      "dependencies": [
+        "prime_divides_decidable",
+        "prime_mod_four_good_or_three",
+        "three_mod_four_good_prime_exclusive"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF000B",
+      "independent_lean_bundle_verified": true,
+      "name": "three_mod_four_prime_divisor_decidable",
+      "proof_bundle_node_id": 608,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro p",
+        "intro n",
+        "specialize prime_divides_decidable p",
+        "specialize prime_divides_decidable n",
+        "cases prime_divides_decidable",
+        "cases prime_divides_decidable_left",
+        "have hclass : (p = 2 \\/ exists k. p = 4 * k + 1) \\/ exists k. p = 4 * k + 3",
+        "specialize prime_mod_four_good_or_three p",
+        "apply prime_mod_four_good_or_three",
+        "exact prime_divides_decidable_left_left",
+        "cases hclass",
+        "right",
+        "intro hbad",
+        "cases hbad",
+        "cases hbad_right",
+        "specialize three_mod_four_good_prime_exclusive p",
+        "apply three_mod_four_good_prime_exclusive",
+        "exact prime_divides_decidable_left_left",
+        "exact hclass_left",
+        "exact hbad_right_left",
+        "left",
+        "split",
+        "exact prime_divides_decidable_left_left",
+        "split",
+        "exact hclass_right",
+        "exact prime_divides_decidable_left_right",
+        "right",
+        "intro hbad",
+        "cases hbad",
+        "cases hbad_right",
+        "apply prime_divides_decidable_right",
+        "split",
+        "exact hbad_left",
+        "exact hbad_right_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "5aaceb6dcf31a62ef0cbe3370fae9cf4063479c8f21695118f65b437f2f4075a",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "78cb480295bfbb6ab051a5a9836219a4aac959dd2b55c78768e920587c1f622d"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall p n. (((((~(p = 1) /\\ forall frm_prime_left_ptmf_source_prime frm_prime_right_ptmf_source_prime. p = frm_prime_left_ptmf_source_prime * frm_prime_right_ptmf_source_prime -> frm_prime_left_ptmf_source_prime = 1 \\/ frm_prime_right_ptmf_source_prime = 1)) /\\ ((exists ff_residue_ptmf_source_residue. (p) = 4 * ff_residue_ptmf_source_residue + 3) /\\ (exists ff_quotient_ptmf_source_divides. (n) = (p) * ff_quotient_ptmf_source_divides)))) \\/ ~((((~(p = 1) /\\ forall frm_prime_left_ptmf_source_prime frm_prime_right_ptmf_source_prime. p = frm_prime_left_ptmf_source_prime * frm_prime_right_ptmf_source_prime -> frm_prime_left_ptmf_source_prime = 1 \\/ frm_prime_right_ptmf_source_prime = 1)) /\\ ((exists ff_residue_ptmf_source_residue. (p) = 4 * ff_residue_ptmf_source_residue + 3) /\\ (exists ff_quotient_ptmf_source_divides. (n) = (p) * ff_quotient_ptmf_source_divides)))))",
+      "statement_sha256": "78cb480295bfbb6ab051a5a9836219a4aac959dd2b55c78768e920587c1f622d",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "For every candidate and dividend, actual three-mod-four prime divisibility is constructively decidable."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 25,
+      "body_proof_nodes": 92,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ B. ∀ n. (∀ x. Le(x,B) → ¬PrimeThreeModFourDivisor(n,x)) ∨ (∃ x. Le(x,B) ∧ PrimeThreeModFourDivisor(n,x))",
+        "defined_statement_sha256": "0d7aa540eadb4f1d994e9d308b7582a68373568e670b70837370d62da5a84ae8",
+        "definition_uses": {
+          "ND0044": 2,
+          "PD0001": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "bf745c28ef1dc187532e538fa2635704f72cdbf80c86d02547d2bf8f01d0025e",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0044": 2,
+          "PD0001": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ B. ∀ n. (∀ x. "
+          },
+          {
+            "definition": "PD0001",
+            "kind": "definition",
+            "text": "Le(x,B)"
+          },
+          {
+            "kind": "text",
+            "text": " → ¬"
+          },
+          {
+            "definition": "ND0044",
+            "kind": "definition",
+            "text": "PrimeThreeModFourDivisor(n,x)"
+          },
+          {
+            "kind": "text",
+            "text": ") ∨ (∃ x. "
+          },
+          {
+            "definition": "PD0001",
+            "kind": "definition",
+            "text": "Le(x,B)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ "
+          },
+          {
+            "definition": "ND0044",
+            "kind": "definition",
+            "text": "PrimeThreeModFourDivisor(n,x)"
+          },
+          {
+            "kind": "text",
+            "text": ")"
+          }
+        ]
+      },
+      "dependencies": [
+        "le_zero",
+        "prime_nonzero",
+        "three_mod_four_prime_divisor_decidable",
+        "le_refl",
+        "le_eq_or_lt",
+        "le_of_succ_le_succ",
+        "le_succ"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF000C",
+      "independent_lean_bundle_verified": true,
+      "name": "three_mod_four_prime_divisor_bounded_search",
+      "proof_bundle_node_id": 609,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "induction B",
+        "intro n",
+        "left",
+        "intro p",
+        "intro hbound",
+        "intro hbad",
+        "cases hbad",
+        "have hpzero : p = 0",
+        "specialize le_zero p",
+        "apply le_zero",
+        "exact hbound",
+        "specialize prime_nonzero p",
+        "apply prime_nonzero",
+        "exact hbad_left",
+        "exact hpzero",
+        "intro n",
+        "specialize three_mod_four_prime_divisor_decidable (S B)",
+        "specialize three_mod_four_prime_divisor_decidable n",
+        "cases three_mod_four_prime_divisor_decidable",
+        "right",
+        "exists S B",
+        "split",
+        "specialize le_refl (S B)",
+        "exact le_refl",
+        "exact three_mod_four_prime_divisor_decidable_left",
+        "specialize IH n",
+        "cases IH",
+        "left",
+        "intro p",
+        "intro hbound",
+        "intro hbad",
+        "have hsplit : p = S B \\/ exists h. h + S p = S B",
+        "specialize le_eq_or_lt p",
+        "specialize le_eq_or_lt (S B)",
+        "apply le_eq_or_lt",
+        "exact hbound",
+        "cases hsplit",
+        "cases hbad",
+        "cases hbad_right",
+        "rewrite hsplit_left at hbad_left",
+        "rewrite hsplit_left at hbad_left",
+        "rewrite hsplit_left at hbad_right_left",
+        "rewrite hsplit_left at hbad_right_right",
+        "apply three_mod_four_prime_divisor_decidable_right",
+        "split",
+        "exact hbad_left",
+        "split",
+        "exact hbad_right_left",
+        "exact hbad_right_right",
+        "specialize IH_left p",
+        "apply IH_left",
+        "specialize le_of_succ_le_succ p",
+        "specialize le_of_succ_le_succ B",
+        "apply le_of_succ_le_succ",
+        "exact hsplit_right",
+        "exact hbad",
+        "right",
+        "cases IH_right",
+        "cases IH_right_witness",
+        "exists x",
+        "split",
+        "specialize le_succ x",
+        "specialize le_succ B",
+        "apply le_succ",
+        "exact IH_right_witness_left",
+        "exact IH_right_witness_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "254058b4e63699b7ed135a3778e5e33e312cd261da3a39638311f1e83a9abc92",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "bf745c28ef1dc187532e538fa2635704f72cdbf80c86d02547d2bf8f01d0025e"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall B n. ((forall p. (exists ptmf_gap_search. ptmf_gap_search + p = B) -> ~((((~(p = 1) /\\ forall frm_prime_left_ptmf_source_prime frm_prime_right_ptmf_source_prime. p = frm_prime_left_ptmf_source_prime * frm_prime_right_ptmf_source_prime -> frm_prime_left_ptmf_source_prime = 1 \\/ frm_prime_right_ptmf_source_prime = 1)) /\\ ((exists ff_residue_ptmf_source_residue. (p) = 4 * ff_residue_ptmf_source_residue + 3) /\\ (exists ff_quotient_ptmf_source_divides. (n) = (p) * ff_quotient_ptmf_source_divides))))) \\/ (exists p. ((exists ptmf_gap_search. ptmf_gap_search + p = B) /\\ ((((~(p = 1) /\\ forall frm_prime_left_ptmf_source_prime frm_prime_right_ptmf_source_prime. p = frm_prime_left_ptmf_source_prime * frm_prime_right_ptmf_source_prime -> frm_prime_left_ptmf_source_prime = 1 \\/ frm_prime_right_ptmf_source_prime = 1)) /\\ ((exists ff_residue_ptmf_source_residue. (p) = 4 * ff_residue_ptmf_source_residue + 3) /\\ (exists ff_quotient_ptmf_source_divides. (n) = (p) * ff_quotient_ptmf_source_divides)))))))",
+      "statement_sha256": "bf745c28ef1dc187532e538fa2635704f72cdbf80c86d02547d2bf8f01d0025e",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "Finite induction either excludes every three-mod-four prime divisor up to the supplied bound or returns an actual bounded prime-divisor witness."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 26,
+      "body_proof_nodes": 66,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ n. Mod4Three(n) → ∃ x. PrimeThreeModFourDivisor(n,x)",
+        "defined_statement_sha256": "5177866aa37ecf131118631c35c05997f6858f1a2bbc5d067f25f718ea7cd9aa",
+        "definition_uses": {
+          "ND0044": 1,
+          "PD0012": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "6b5d6bcf3910d533b85b9e7e3f020da54ae1910114b1a8f83f0c39e4d3056985",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0044": 1,
+          "PD0012": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ n. "
+          },
+          {
+            "definition": "PD0012",
+            "kind": "definition",
+            "text": "Mod4Three(n)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ x. "
+          },
+          {
+            "definition": "ND0044",
+            "kind": "definition",
+            "text": "PrimeThreeModFourDivisor(n,x)"
+          }
+        ]
+      },
+      "dependencies": [
+        "three_mod_four_progression_nonzero",
+        "three_mod_four_prime_divisor_bounded_search",
+        "positive_number_with_admissible_prime_divisors_is_two_square",
+        "prime_mod_four_good_or_three",
+        "divisor_le_nonzero",
+        "three_mod_four_progression_not_two_square"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF000D",
+      "independent_lean_bundle_verified": true,
+      "name": "three_mod_four_prime_divisor_exists",
+      "proof_bundle_node_id": 610,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro n",
+        "intro hthree",
+        "have hnonzero : ~(n = 0)",
+        "intro hzero",
+        "specialize three_mod_four_progression_nonzero n",
+        "apply three_mod_four_progression_nonzero",
+        "exact hthree",
+        "exact hzero",
+        "specialize three_mod_four_prime_divisor_bounded_search n",
+        "specialize three_mod_four_prime_divisor_bounded_search n",
+        "cases three_mod_four_prime_divisor_bounded_search",
+        "exfalso",
+        "have hrepresented : exists ptmf_first_represented ptmf_second_represented. (n) = ptmf_first_represented * ptmf_first_represented + ptmf_second_represented * ptmf_second_represented",
+        "specialize positive_number_with_admissible_prime_divisors_is_two_square n",
+        "apply positive_number_with_admissible_prime_divisors_is_two_square",
+        "exact hnonzero",
+        "intro p",
+        "intro hprime",
+        "intro hdivides",
+        "have hclass : (p = 2 \\/ exists k. p = 4 * k + 1) \\/ exists k. p = 4 * k + 3",
+        "specialize prime_mod_four_good_or_three p",
+        "apply prime_mod_four_good_or_three",
+        "exact hprime",
+        "cases hclass",
+        "exact hclass_left",
+        "exfalso",
+        "specialize three_mod_four_prime_divisor_bounded_search_left p",
+        "apply three_mod_four_prime_divisor_bounded_search_left",
+        "specialize divisor_le_nonzero p",
+        "specialize divisor_le_nonzero n",
+        "apply divisor_le_nonzero",
+        "exact hnonzero",
+        "exact hdivides",
+        "split",
+        "exact hprime",
+        "split",
+        "exact hclass_right",
+        "exact hdivides",
+        "specialize three_mod_four_progression_not_two_square n",
+        "apply three_mod_four_progression_not_two_square",
+        "exact hthree",
+        "exact hrepresented",
+        "cases three_mod_four_prime_divisor_bounded_search_right",
+        "cases three_mod_four_prime_divisor_bounded_search_right_witness",
+        "exists x",
+        "exact three_mod_four_prime_divisor_bounded_search_right_witness_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "071f2a7122834e98dafe0e04b9e16838721574d7bbafa1d92c5e81c0e23af17c",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "6b5d6bcf3910d533b85b9e7e3f020da54ae1910114b1a8f83f0c39e4d3056985"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall n. (exists ff_residue_ptmf_number. (n) = 4 * ff_residue_ptmf_number + 3) -> exists p. ((((~(p = 1) /\\ forall frm_prime_left_ptmf_source_prime frm_prime_right_ptmf_source_prime. p = frm_prime_left_ptmf_source_prime * frm_prime_right_ptmf_source_prime -> frm_prime_left_ptmf_source_prime = 1 \\/ frm_prime_right_ptmf_source_prime = 1)) /\\ ((exists ff_residue_ptmf_source_residue. (p) = 4 * ff_residue_ptmf_source_residue + 3) /\\ (exists ff_quotient_ptmf_source_divides. (n) = (p) * ff_quotient_ptmf_source_divides))))",
+      "statement_sha256": "6b5d6bcf3910d533b85b9e7e3f020da54ae1910114b1a8f83f0c39e4d3056985",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "Every natural congruent to three modulo four has an actual prime divisor congruent to three modulo four, obtained by constructive finite search and beta-coded prime factorization."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 16,
+      "body_proof_nodes": 59,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ d. 4 · d + 3 + 1 = 4 · S d",
+        "defined_statement_sha256": "76469fcd09b7ef995800e2ececb861121ebef45b30d64a0294606956a191358f",
+        "definition_uses": {},
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "ca263b0e05a0e89034c49917dd72391f12608311f3e4681cc8d58447f6497de5",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {},
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ d. 4 · d + 3 + 1 = 4 · S d"
+          }
+        ]
+      },
+      "dependencies": [],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF000E",
+      "independent_lean_bundle_verified": true,
+      "name": "euclid_three_number_successor_balance",
+      "proof_bundle_node_id": 611,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro d",
+        "simp"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "52c1a72828d2dd9a5f6d14c16560f490d21d2c036f08eb794fd7b8b85a8197c1",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "ca263b0e05a0e89034c49917dd72391f12608311f3e4681cc8d58447f6497de5"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall d. (4 * d + 3) + 1 = 4 * S d",
+      "statement_sha256": "ca263b0e05a0e89034c49917dd72391f12608311f3e4681cc8d58447f6497de5",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "The subtraction-free Euclid number 4d+3 satisfies the exact identity (4d+3)+1=4(d+1)."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 7,
+      "body_proof_nodes": 10,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ d. ∃ p. PrimeThreeModFourDivisor(4 · d + 3,p)",
+        "defined_statement_sha256": "a8b2e8ba0969f32740f1bafe82a3a1a3350142bfb97d9eb18693506533587f45",
+        "definition_uses": {
+          "ND0044": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "a2bcbb4684372da3274ff4f55ff36ae47a7f6cd0b642965ee9a49eec95d4cc3c",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0044": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ d. ∃ p. "
+          },
+          {
+            "definition": "ND0044",
+            "kind": "definition",
+            "text": "PrimeThreeModFourDivisor(4 · d + 3,p)"
+          }
+        ]
+      },
+      "dependencies": [
+        "three_mod_four_prime_divisor_exists"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF000F",
+      "independent_lean_bundle_verified": true,
+      "name": "euclid_three_progression_prime_exists",
+      "proof_bundle_node_id": 612,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro d",
+        "specialize three_mod_four_prime_divisor_exists (4 * d + 3)",
+        "apply three_mod_four_prime_divisor_exists",
+        "exists d",
+        "refl"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "bd7c560f7480b9e43e6ad5e2bed8b0278ce37594031f1c241207dc7f713c0132",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "a2bcbb4684372da3274ff4f55ff36ae47a7f6cd0b642965ee9a49eec95d4cc3c"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall d. exists p. ((((~(p = 1) /\\ forall frm_prime_left_ptmf_euclid_prime frm_prime_right_ptmf_euclid_prime. p = frm_prime_left_ptmf_euclid_prime * frm_prime_right_ptmf_euclid_prime -> frm_prime_left_ptmf_euclid_prime = 1 \\/ frm_prime_right_ptmf_euclid_prime = 1)) /\\ ((exists ff_residue_ptmf_euclid_residue. (p) = 4 * ff_residue_ptmf_euclid_residue + 3) /\\ (exists ff_quotient_ptmf_euclid_divides. (4 * d + 3) = (p) * ff_quotient_ptmf_euclid_divides))))",
+      "statement_sha256": "a2bcbb4684372da3274ff4f55ff36ae47a7f6cd0b642965ee9a49eec95d4cc3c",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "Every actual subtraction-free Euclid number 4d+3 has a witnessed prime divisor congruent to three modulo four."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 23,
+      "body_proof_nodes": 44,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ c. ∀ d. ∀ p. c = S d → Prime(p) → Dvd(p,c) → ¬Dvd(p,4 · d + 3)",
+        "defined_statement_sha256": "9f7b3a07a74634d6e214b7f808dd10b132ad5590d41d3ac1889825fb69995df8",
+        "definition_uses": {
+          "PD0003": 2,
+          "PD0004": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "5b90eab0958749361594c9b5e89fad74e8d5a1525f389038473143e61b34381c",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0003": 2,
+          "PD0004": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ c. ∀ d. ∀ p. c = S d → "
+          },
+          {
+            "definition": "PD0004",
+            "kind": "definition",
+            "text": "Prime(p)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0003",
+            "kind": "definition",
+            "text": "Dvd(p,c)"
+          },
+          {
+            "kind": "text",
+            "text": " → ¬"
+          },
+          {
+            "definition": "PD0003",
+            "kind": "definition",
+            "text": "Dvd(p,4 · d + 3)"
+          }
+        ]
+      },
+      "dependencies": [
+        "multiple_mul_left",
+        "divides_remainder",
+        "mul_one",
+        "euclid_three_number_successor_balance",
+        "divisor_one"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0010",
+      "independent_lean_bundle_verified": true,
+      "name": "euclid_three_common_multiple_exclusion",
+      "proof_bundle_node_id": 613,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro c",
+        "intro d",
+        "intro p",
+        "intro hpredecessor",
+        "intro hprime",
+        "intro hcommon",
+        "intro heuclid",
+        "have hfour : exists q. 4 * c = p * q",
+        "specialize multiple_mul_left p",
+        "specialize multiple_mul_left c",
+        "specialize multiple_mul_left 4",
+        "apply multiple_mul_left",
+        "exact hcommon",
+        "have hone : exists q. 1 = p * q",
+        "specialize divides_remainder p",
+        "specialize divides_remainder (4 * c)",
+        "specialize divides_remainder (4 * d + 3)",
+        "specialize divides_remainder 1",
+        "specialize divides_remainder 1",
+        "apply divides_remainder",
+        "exact hfour",
+        "exact heuclid",
+        "rewrite hpredecessor",
+        "specialize mul_one (4 * d + 3)",
+        "rewrite mul_one",
+        "symm",
+        "specialize euclid_three_number_successor_balance d",
+        "exact euclid_three_number_successor_balance",
+        "have hunit : p = 1",
+        "specialize divisor_one p",
+        "apply divisor_one",
+        "exact hone",
+        "cases hprime",
+        "apply hprime_left",
+        "exact hunit"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "63696dcfb0dbe82f09596cd00cde5fd8dfb51d80855bb979687ab0dc81ea8961",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "5b90eab0958749361594c9b5e89fad74e8d5a1525f389038473143e61b34381c"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall c d p. c = S d -> ((~(p = 1) /\\ forall frm_prime_left_ptmf_prime frm_prime_right_ptmf_prime. p = frm_prime_left_ptmf_prime * frm_prime_right_ptmf_prime -> frm_prime_left_ptmf_prime = 1 \\/ frm_prime_right_ptmf_prime = 1)) -> (exists ff_quotient_ptmf_common. (c) = (p) * ff_quotient_ptmf_common) -> (exists ff_quotient_ptmf_euclid. (4 * d + 3) = (p) * ff_quotient_ptmf_euclid) -> false",
+      "statement_sha256": "5b90eab0958749361594c9b5e89fad74e8d5a1525f389038473143e61b34381c",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "No prime dividing a nonzero common multiple can also divide its subtraction-free Euclid number 4c−1."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 22,
+      "body_proof_nodes": 38,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ B. ∀ c. ∀ d. ∀ p. (∀ x. (∃ y. S x + S y = S B) → Dvd(S x,c)) → c = S d → Prime(p) → Dvd(p,4 · d + 3) → Lt(B,p)",
+        "defined_statement_sha256": "3e4416f283f998f8d33b765bce0c04171ccaa1aeccb21b9a6bce438cdba36dd0",
+        "definition_uses": {
+          "PD0002": 1,
+          "PD0003": 2,
+          "PD0004": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "34d1c3326204e6a72fa4a7115a8d500217275f498293ec78eb417ecab0b858af",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0002": 1,
+          "PD0003": 2,
+          "PD0004": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ B. ∀ c. ∀ d. ∀ p. (∀ x. (∃ y. S x + S y = S B) → "
+          },
+          {
+            "definition": "PD0003",
+            "kind": "definition",
+            "text": "Dvd(S x,c)"
+          },
+          {
+            "kind": "text",
+            "text": ") → c = S d → "
+          },
+          {
+            "definition": "PD0004",
+            "kind": "definition",
+            "text": "Prime(p)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0003",
+            "kind": "definition",
+            "text": "Dvd(p,4 · d + 3)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(B,p)"
+          }
+        ]
+      },
+      "dependencies": [
+        "le_or_lt",
+        "bounded_common_multiple_contains_bounded_prime",
+        "euclid_three_common_multiple_exclusion"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0011",
+      "independent_lean_bundle_verified": true,
+      "name": "euclid_three_prime_divisor_exceeds_bound",
+      "proof_bundle_node_id": 614,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro B",
+        "intro c",
+        "intro d",
+        "intro p",
+        "intro hcommon",
+        "intro hpredecessor",
+        "intro hprime",
+        "intro heuclid",
+        "specialize le_or_lt p",
+        "specialize le_or_lt B",
+        "cases le_or_lt",
+        "exfalso",
+        "have hdivides : exists q. c = p * q",
+        "specialize bounded_common_multiple_contains_bounded_prime B",
+        "specialize bounded_common_multiple_contains_bounded_prime c",
+        "specialize bounded_common_multiple_contains_bounded_prime p",
+        "apply bounded_common_multiple_contains_bounded_prime",
+        "exact hcommon",
+        "exact hprime",
+        "exact le_or_lt_left",
+        "specialize euclid_three_common_multiple_exclusion c",
+        "specialize euclid_three_common_multiple_exclusion d",
+        "specialize euclid_three_common_multiple_exclusion p",
+        "apply euclid_three_common_multiple_exclusion",
+        "exact hpredecessor",
+        "exact hprime",
+        "exact hdivides",
+        "exact heuclid",
+        "exact le_or_lt_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "4c62d77ea985932662e797ee23f0615c58ad120a64d56f4457128ecd1d6bc2d2",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "34d1c3326204e6a72fa4a7115a8d500217275f498293ec78eb417ecab0b858af"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall B c d p. (forall ptmf_predecessor_source. (exists ptmf_common_gap_source. S ptmf_predecessor_source + S ptmf_common_gap_source = S B) -> exists ptmf_common_quotient_source. c = S ptmf_predecessor_source * ptmf_common_quotient_source) -> c = S d -> ((~(p = 1) /\\ forall frm_prime_left_ptmf_prime frm_prime_right_ptmf_prime. p = frm_prime_left_ptmf_prime * frm_prime_right_ptmf_prime -> frm_prime_left_ptmf_prime = 1 \\/ frm_prime_right_ptmf_prime = 1)) -> (exists ff_quotient_ptmf_euclid. (4 * d + 3) = (p) * ff_quotient_ptmf_euclid) -> (exists gap. gap + S B = p)",
+      "statement_sha256": "34d1c3326204e6a72fa4a7115a8d500217275f498293ec78eb417ecab0b858af",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "Every prime divisor of the exact Euclid number 4c−1 lies strictly above the bound encoded by its nonzero common multiple c."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v23",
+      "body_proof_depth": 20,
+      "body_proof_nodes": 42,
+      "campaign_milestone": "G025",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ B. ∃ p. Prime(p) ∧ (Lt(B,p) ∧ Mod4Three(p))",
+        "defined_statement_sha256": "1015f658c2018dc22f672cf5e05b4f726614c35f2eb0ecd2dbd9f2139e59faba",
+        "definition_uses": {
+          "PD0002": 1,
+          "PD0004": 1,
+          "PD0012": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "3ddac628b2e37925ee3d7a4bd56319de5e173e9065cce6437cab775cc646620b",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0002": 1,
+          "PD0004": 1,
+          "PD0012": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ B. ∃ p. "
+          },
+          {
+            "definition": "PD0004",
+            "kind": "definition",
+            "text": "Prime(p)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ ("
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(B,p)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ "
+          },
+          {
+            "definition": "PD0012",
+            "kind": "definition",
+            "text": "Mod4Three(p)"
+          },
+          {
+            "kind": "text",
+            "text": ")"
+          }
+        ]
+      },
+      "dependencies": [
+        "bounded_common_multiple_exists",
+        "nonzero_is_succ",
+        "euclid_three_progression_prime_exists",
+        "euclid_three_prime_divisor_exceeds_bound"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_primes_three_mod_four_candidate_theorems",
+      "id": "TF0012",
+      "independent_lean_bundle_verified": true,
+      "name": "infinitely_many_primes_three_mod_four",
+      "proof_bundle_node_id": 615,
+      "proof_bundle_sha256": "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11",
+      "script": [
+        "intro B",
+        "specialize bounded_common_multiple_exists B",
+        "cases bounded_common_multiple_exists",
+        "cases bounded_common_multiple_exists_witness",
+        "have hpredecessor : exists d. x = S d",
+        "specialize nonzero_is_succ x",
+        "apply nonzero_is_succ",
+        "exact bounded_common_multiple_exists_witness_left",
+        "cases hpredecessor",
+        "specialize euclid_three_progression_prime_exists x1",
+        "cases euclid_three_progression_prime_exists",
+        "cases euclid_three_progression_prime_exists_witness",
+        "cases euclid_three_progression_prime_exists_witness_right",
+        "exists x2",
+        "split",
+        "exact euclid_three_progression_prime_exists_witness_left",
+        "split",
+        "specialize euclid_three_prime_divisor_exceeds_bound B",
+        "specialize euclid_three_prime_divisor_exceeds_bound x",
+        "specialize euclid_three_prime_divisor_exceeds_bound x1",
+        "specialize euclid_three_prime_divisor_exceeds_bound x2",
+        "apply euclid_three_prime_divisor_exceeds_bound",
+        "exact bounded_common_multiple_exists_witness_right",
+        "exact hpredecessor_witness",
+        "exact euclid_three_progression_prime_exists_witness_left",
+        "exact euclid_three_progression_prime_exists_witness_right_right",
+        "exact euclid_three_progression_prime_exists_witness_right_left"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+      "sources": [
+        {
+          "factory": "make_primes_three_mod_four_candidate_theorems",
+          "script_sha256": "54b1d4380bd71f12f52f769eaba43a00fa64284ab28bda238149004889ee9283",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py",
+          "statement_sha256": "3ddac628b2e37925ee3d7a4bd56319de5e173e9065cce6437cab775cc646620b"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall B. exists p. (((~(p = 1) /\\ forall frm_prime_left_ptmf_prime frm_prime_right_ptmf_prime. p = frm_prime_left_ptmf_prime * frm_prime_right_ptmf_prime -> frm_prime_left_ptmf_prime = 1 \\/ frm_prime_right_ptmf_prime = 1)) /\\ ((exists gap. gap + S B = p) /\\ (exists ff_residue_ptmf_prime. (p) = 4 * ff_residue_ptmf_prime + 3)))",
+      "statement_sha256": "3ddac628b2e37925ee3d7a4bd56319de5e173e9065cce6437cab775cc646620b",
+      "status": "Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable",
+      "summary": "For every natural bound, construct an actual strictly larger prime with an explicit residue witness p=4k+3."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "beta_admissible_prime_factor_product_is_two_square": {
+      "critical_root_path": [
+        "TF0001",
+        "TF0003",
+        "TF0005"
+      ],
+      "dependencies": [
+        "beta_two_square_represented_factor_product"
+      ],
+      "dependents": [
+        "positive_number_with_admissible_prime_divisors_is_two_square"
+      ]
+    },
+    "beta_all_prime_entry_is_prime": {
+      "critical_root_path": [
+        "TF0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "positive_number_with_admissible_prime_divisors_is_two_square"
+      ]
+    },
+    "beta_two_square_prefix_drop_last": {
+      "critical_root_path": [
+        "TF0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "beta_two_square_represented_factor_product"
+      ]
+    },
+    "beta_two_square_prefix_last_represented": {
+      "critical_root_path": [
+        "TF0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "beta_two_square_represented_factor_product"
+      ]
+    },
+    "beta_two_square_represented_factor_product": {
+      "critical_root_path": [
+        "TF0001",
+        "TF0003"
+      ],
+      "dependencies": [
+        "beta_two_square_prefix_drop_last",
+        "beta_two_square_prefix_last_represented"
+      ],
+      "dependents": [
+        "beta_admissible_prime_factor_product_is_two_square"
+      ]
+    },
+    "euclid_three_common_multiple_exclusion": {
+      "critical_root_path": [
+        "TF000E",
+        "TF0010"
+      ],
+      "dependencies": [
+        "euclid_three_number_successor_balance"
+      ],
+      "dependents": [
+        "euclid_three_prime_divisor_exceeds_bound"
+      ]
+    },
+    "euclid_three_number_successor_balance": {
+      "critical_root_path": [
+        "TF000E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "euclid_three_common_multiple_exclusion"
+      ]
+    },
+    "euclid_three_prime_divisor_exceeds_bound": {
+      "critical_root_path": [
+        "TF000E",
+        "TF0010",
+        "TF0011"
+      ],
+      "dependencies": [
+        "euclid_three_common_multiple_exclusion"
+      ],
+      "dependents": [
+        "infinitely_many_primes_three_mod_four"
+      ]
+    },
+    "euclid_three_progression_prime_exists": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A",
+        "TF000B",
+        "TF000C",
+        "TF000D",
+        "TF000F"
+      ],
+      "dependencies": [
+        "three_mod_four_prime_divisor_exists"
+      ],
+      "dependents": [
+        "infinitely_many_primes_three_mod_four"
+      ]
+    },
+    "infinitely_many_primes_three_mod_four": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A",
+        "TF000B",
+        "TF000C",
+        "TF000D",
+        "TF000F",
+        "TF0012"
+      ],
+      "dependencies": [
+        "euclid_three_progression_prime_exists",
+        "euclid_three_prime_divisor_exceeds_bound"
+      ],
+      "dependents": []
+    },
+    "positive_number_with_admissible_prime_divisors_is_two_square": {
+      "critical_root_path": [
+        "TF0001",
+        "TF0003",
+        "TF0005",
+        "TF0006"
+      ],
+      "dependencies": [
+        "beta_all_prime_entry_is_prime",
+        "beta_admissible_prime_factor_product_is_two_square"
+      ],
+      "dependents": [
+        "three_mod_four_prime_divisor_exists"
+      ]
+    },
+    "three_mod_four_good_prime_exclusive": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A"
+      ],
+      "dependencies": [
+        "three_mod_four_progression_not_two_square"
+      ],
+      "dependents": [
+        "three_mod_four_prime_divisor_decidable"
+      ]
+    },
+    "three_mod_four_prime_divisor_bounded_search": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A",
+        "TF000B",
+        "TF000C"
+      ],
+      "dependencies": [
+        "three_mod_four_prime_divisor_decidable"
+      ],
+      "dependents": [
+        "three_mod_four_prime_divisor_exists"
+      ]
+    },
+    "three_mod_four_prime_divisor_decidable": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A",
+        "TF000B"
+      ],
+      "dependencies": [
+        "three_mod_four_good_prime_exclusive"
+      ],
+      "dependents": [
+        "three_mod_four_prime_divisor_bounded_search"
+      ]
+    },
+    "three_mod_four_prime_divisor_exists": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A",
+        "TF000B",
+        "TF000C",
+        "TF000D"
+      ],
+      "dependencies": [
+        "three_mod_four_progression_nonzero",
+        "three_mod_four_prime_divisor_bounded_search",
+        "positive_number_with_admissible_prime_divisors_is_two_square",
+        "three_mod_four_progression_not_two_square"
+      ],
+      "dependents": [
+        "euclid_three_progression_prime_exists"
+      ]
+    },
+    "three_mod_four_progression_nonunit": {
+      "critical_root_path": [
+        "TF0008"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "three_mod_four_progression_nonzero": {
+      "critical_root_path": [
+        "TF0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "three_mod_four_prime_divisor_exists"
+      ]
+    },
+    "three_mod_four_progression_not_two_square": {
+      "critical_root_path": [
+        "TF0009"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "three_mod_four_good_prime_exclusive",
+        "three_mod_four_prime_divisor_exists"
+      ]
+    }
+  },
+  "proof_paths": {
+    "TF0001": [
+      "TF0001"
+    ],
+    "TF0002": [
+      "TF0002"
+    ],
+    "TF0003": [
+      "TF0001",
+      "TF0003"
+    ],
+    "TF0004": [
+      "TF0004"
+    ],
+    "TF0005": [
+      "TF0001",
+      "TF0003",
+      "TF0005"
+    ],
+    "TF0006": [
+      "TF0001",
+      "TF0003",
+      "TF0005",
+      "TF0006"
+    ],
+    "TF0007": [
+      "TF0007"
+    ],
+    "TF0008": [
+      "TF0008"
+    ],
+    "TF0009": [
+      "TF0009"
+    ],
+    "TF000A": [
+      "TF0009",
+      "TF000A"
+    ],
+    "TF000B": [
+      "TF0009",
+      "TF000A",
+      "TF000B"
+    ],
+    "TF000C": [
+      "TF0009",
+      "TF000A",
+      "TF000B",
+      "TF000C"
+    ],
+    "TF000D": [
+      "TF0009",
+      "TF000A",
+      "TF000B",
+      "TF000C",
+      "TF000D"
+    ],
+    "TF000E": [
+      "TF000E"
+    ],
+    "TF000F": [
+      "TF0009",
+      "TF000A",
+      "TF000B",
+      "TF000C",
+      "TF000D",
+      "TF000F"
+    ],
+    "TF0010": [
+      "TF000E",
+      "TF0010"
+    ],
+    "TF0011": [
+      "TF000E",
+      "TF0010",
+      "TF0011"
+    ],
+    "TF0012": [
+      "TF0009",
+      "TF000A",
+      "TF000B",
+      "TF000C",
+      "TF000D",
+      "TF000F",
+      "TF0012"
+    ]
+  },
+  "root_names": [
+    "positive_number_with_admissible_prime_divisors_is_two_square",
+    "three_mod_four_prime_divisor_exists",
+    "euclid_three_progression_prime_exists",
+    "euclid_three_prime_divisor_exceeds_bound",
+    "infinitely_many_primes_three_mod_four"
+  ],
+  "schema": "peano-lab-constructive-milestone-closure-explorer-v1",
+  "stable_admitted_node_count": 0,
+  "statement_definition_use_count": 36,
+  "tags": {
+    "beta_admissible_prime_factor_product_is_two_square": "TF0005",
+    "beta_all_prime_entry_is_prime": "TF0004",
+    "beta_two_square_prefix_drop_last": "TF0001",
+    "beta_two_square_prefix_last_represented": "TF0002",
+    "beta_two_square_represented_factor_product": "TF0003",
+    "euclid_three_common_multiple_exclusion": "TF0010",
+    "euclid_three_number_successor_balance": "TF000E",
+    "euclid_three_prime_divisor_exceeds_bound": "TF0011",
+    "euclid_three_progression_prime_exists": "TF000F",
+    "infinitely_many_primes_three_mod_four": "TF0012",
+    "positive_number_with_admissible_prime_divisors_is_two_square": "TF0006",
+    "three_mod_four_good_prime_exclusive": "TF000A",
+    "three_mod_four_prime_divisor_bounded_search": "TF000C",
+    "three_mod_four_prime_divisor_decidable": "TF000B",
+    "three_mod_four_prime_divisor_exists": "TF000D",
+    "three_mod_four_progression_nonunit": "TF0008",
+    "three_mod_four_progression_nonzero": "TF0007",
+    "three_mod_four_progression_not_two_square": "TF0009"
+  }
+}

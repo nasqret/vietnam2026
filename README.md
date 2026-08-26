@@ -81,27 +81,59 @@ Historical immutable Alpha v16 first promoted the 315 genuinely closed
 quadratic-reciprocity results; Alpha v17 then closed both supplementary laws.
 Historical Alpha v18 subsequently closed strict Bertrand, multidigit Lucas,
 both Kummer endpoints, universal four squares, and the complete all-natural
-two-square criterion. Current immutable **Alpha v19** closes all **84**
+two-square criterion. Historical immutable **Alpha v19** closes all **84**
 remaining historical obligations and adds **64** genuinely proved results:
 **44 Pythagorean forward-construction theorems, the exact prime two-square
 classification, nine complete linear-congruence theorems, and ten theorems
-proving infinitely many primes congruent to one modulo four**. All **1,737
-enrolled theorems have independently checked-use authority**: **432 Stable**
-and **1,305 Alpha-only**, with **zero body-only or pending entries** and
-**5,779 checked dependency edges**. The **432-theorem default Stable edition
-remains unchanged**. Both new complete campaign proof bundles and every
-historical flagship bundle are independently checked by the original
-intuitionistic kernel and the separately compiled Lean verifier.
+proving infinitely many primes congruent to one modulo four**. Historical
+immutable **Alpha v20** preserves every one of those 1,737 historical rows
+and adds **39 independently proved results**: **seven natural polynomial
+Horner theorems, ten finite matrix and dot-product components, thirteen
+strict Bertrand prime-window and prime-chain theorems, and nine finite
+continued-fraction theorems**. Historical immutable **Alpha v21** preserves that
+entire 1,776-row historical parent and adds **54 independently proved
+results**: **23 arbitrary natural/signed matrix-product and determinant
+theorems, 15 Euclidean execution and two-step-halving theorems, and 16 binary
+modular-exponentiation theorems**. Historical immutable **Alpha v22** preserves
+that complete 1,830-row parent and adds **60 independently proved results**:
+**21 total, functional, and unique first-order binary-length theorems, 20
+Euclidean gcd-invariant and terminal-state identification theorems, and 19
+complete supplied-digit binary modular execution/power-correctness
+theorems**. Current immutable **Alpha v23** preserves every one of those
+1,890 checked results and adds **59 independently proved theorems**: **17
+complete logarithmic Euclidean-GCD theorems, 24 canonical binary-digit and
+logarithmic modular-execution theorems, and 18 theorems proving infinitely
+many primes congruent to three modulo four**. All **1,949 enrolled theorems
+have independently checked-use authority**: **432 Stable** and **1,517
+Alpha-only**, with **zero body-only or pending entries** and **6,285 checked
+dependency edges**. The **432-theorem default Stable edition remains
+unchanged**. Every historical flagship bundle, the historical **590-node
+Alpha-v20 next-layer certificate**, the historical **209-node Alpha-v21
+advanced-layer certificate**, the historical **240-node Alpha-v22
+transport-layer certificate**, and the current **617-node Alpha-v23
+milestone-closure certificate** are independently checked by the original
+intuitionistic kernel and the separately compiled Lean verifier. Arbitrary
+natural and signed matrix multiplication, unique first-order `BitLen`, actual
+Euclidean terminal-state gcd identification with the exact
+`steps <= 2 * BitLen(b) + 1` bound, arbitrary-exponent canonical binary
+digits with actual power-correct execution and
+`operations <= 3 * BitLen(e) + 2`, and infinitude of primes three modulo four
+are proved. Arbitrary-dimensional determinants, rank/lattices, higher
+reciprocity laws, three squares, and Fermat exponent-four descent remain
+genuinely open.
 
 The [interactive constructive number-theory research atlas](book/_static/constructive-grand-campaign/index.html)
 organizes these proofs within **five mathematical domains**, **twelve
 families**, **120 major goals**, **16 reusable constructive tools**, **eight
-existing anchors**, and **107 shared mathematical terms**. Its five-level
+existing anchors**, and **152 shared mathematical terms**. Its five-level
 navigation connects the complete programme to individual campaigns, verified
 theorem roots, definition-aware proof graphs, exact shared notation
 dependencies, and the honest still-open research frontier. Actual proof
 prerequisites remain visibly separate from conservative display definitions,
-future planning vocabulary, and conceptual mathematical connections.
+future planning vocabulary, and conceptual mathematical connections. The
+shared registry contains **97 hygienically checked conservative definitions**,
+**159 actual definition prerequisites**, and **61 signature-verified links**
+from blueprint vocabulary into the local proof explorers.
 
 The 432-entry native ladder—23 legacy, 212 foundation, 12 mod-five, 137
 quadratic-residue, and 48 strict-HA theorems—reaches the Fundamental Theorem of Arithmetic
@@ -305,8 +337,9 @@ theorem-first `pa lean alpha THEOREM` preview and readable
 authenticated metadata without replaying large certificates. Explicit terminal
 exports and `--verify` perform the requested proof and independent Lean
 checks within their reviewed resource limits. Rebuild or verify the exact
-fully checked release with `make peano-library-alpha-v19` or
-`make peano-library-alpha-v19-check`.
+fully checked release with `make peano-library-alpha-v21` or
+`make peano-library-alpha-v21-check`; the historical v20 targets remain
+available for their unchanged parent snapshot.
 
 ## Interactive Lean proof browser
 
@@ -318,13 +351,34 @@ Open <http://127.0.0.1:8787/book/_static/pa-proof-explorer/graph.html?target=PA0
 a theorem, and choose **Build Lean proof** in its right-hand panel. Hydra
 reconstructs its checked dependency strand on demand, reports translation and
 Lean compilation progress, permits cancellation, and provides both Lean-source
-and complete-module ZIP downloads. Entirely readable, self-contained proofs
-within the official editor's share limits additionally open directly in Lean
-Live. Stable and opt-in Alpha checked-use theorems retain their distinct
+and complete-module ZIP downloads. Every offered Lean Live proof is
+independently compiled, entirely self-contained, free of Mathlib/private
+imports/placeholders, contains no import statements at all, and is shared
+using the shorter documented plain or
+compressed editor link. Stable and opt-in Alpha checked-use theorems retain their distinct
 release boundaries. See the
-[readable proof-strand guide](docs/LEAN_PROOF_STRANDS.md). With the service
-running, `make lean-browser-check` independently exercises and verifies the
-complete live HTTP-to-Lean-Live workflow.
+[readable proof-strand guide](docs/LEAN_PROOF_STRANDS.md). The standalone
+`make lean-browser-check` command starts a temporary local service when needed
+and independently verifies the complete HTTP-to-Lean-Live workflow.
+
+To publish the same interactive proof experience on the existing faculty
+website, deploy the explorer controls and isolated same-origin PHP gateway,
+then start the managed loopback-only SSH proof tunnel:
+
+```bash
+make deploy-lean-public
+make lean-public-start
+make lean-public-check
+```
+
+The faculty server receives neither a Lean installation nor the private
+companion project: its narrowly scoped gateway forwards reviewed proof jobs to
+the existing bounded, independently checked worker. The public theorem graphs
+retain progress, cancellation, verified `.lean`/ZIP downloads, and genuinely
+self-contained Lean Live links. Use `make lean-public-status` to inspect the
+service and `make lean-public-stop` to disconnect it. The foreground
+`make lean-public` workflow also remains available. See the
+[public Lean hosting guide](docs/PUBLIC_LEAN_SERVICE.md).
 
 ## License
 

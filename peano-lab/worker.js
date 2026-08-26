@@ -51,6 +51,11 @@ const PY_FILES = [
   "py/peano_lab/library/alpha_enrollment_v15.py",
   "py/peano_lab/library/alpha_enrollment_v19.py",
   "py/peano_lab/library/alpha_enrollment_v2.py",
+  "py/peano_lab/library/alpha_enrollment_v20.py",
+  "py/peano_lab/library/alpha_enrollment_v21.py",
+  "py/peano_lab/library/alpha_enrollment_v22.py",
+  "py/peano_lab/library/alpha_enrollment_v23.py",
+  "py/peano_lab/library/alpha_enrollment_v24.py",
   "py/peano_lab/library/alpha_enrollment_v3.py",
   "py/peano_lab/library/alpha_enrollment_v4.py",
   "py/peano_lab/library/alpha_enrollment_v5.py",
@@ -121,6 +126,7 @@ const PY_FILES = [
   "py/peano_lab/library/bertrand_power_total_candidate.py",
   "py/peano_lab/library/bertrand_power_valuation_candidate.py",
   "py/peano_lab/library/bertrand_power_valuation_laws_candidate.py",
+  "py/peano_lab/library/bertrand_prime_campaign_candidate.py",
   "py/peano_lab/library/bertrand_prime_contribution_candidate.py",
   "py/peano_lab/library/bertrand_prime_contribution_complete_candidate.py",
   "py/peano_lab/library/bertrand_prime_interval_candidate.py",
@@ -133,9 +139,19 @@ const PY_FILES = [
   "py/peano_lab/library/bertrand_promotion.py",
   "py/peano_lab/library/bertrand_quotient_budget_candidate.py",
   "py/peano_lab/library/bertrand_threshold_base_candidate.py",
+  "py/peano_lab/library/binary_digit_extraction_candidate.py",
+  "py/peano_lab/library/binary_length_candidate.py",
+  "py/peano_lab/library/binary_modular_execution_candidate.py",
+  "py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+  "py/peano_lab/library/campaign_advanced_layer_closure.py",
   "py/peano_lab/library/campaign_frontier_closure.py",
+  "py/peano_lab/library/campaign_milestone_closure.py",
+  "py/peano_lab/library/campaign_next_layer_closure.py",
+  "py/peano_lab/library/campaign_research_layer_closure.py",
   "py/peano_lab/library/campaign_residual_closure.py",
+  "py/peano_lab/library/campaign_transport_layer_closure.py",
   "py/peano_lab/library/candidate_validation.py",
+  "py/peano_lab/library/continued_fraction_candidate.py",
   "py/peano_lab/library/defined_edition.py",
   "py/peano_lab/library/defined_syntax.py",
   "py/peano_lab/library/distinct_primes_nondivisibility_candidate.py",
@@ -151,6 +167,11 @@ const PY_FILES = [
   "py/peano_lab/library/editions_v18.py",
   "py/peano_lab/library/editions_v19.py",
   "py/peano_lab/library/editions_v2.py",
+  "py/peano_lab/library/editions_v20.py",
+  "py/peano_lab/library/editions_v21.py",
+  "py/peano_lab/library/editions_v22.py",
+  "py/peano_lab/library/editions_v23.py",
+  "py/peano_lab/library/editions_v24.py",
   "py/peano_lab/library/editions_v3.py",
   "py/peano_lab/library/editions_v4.py",
   "py/peano_lab/library/editions_v5.py",
@@ -175,6 +196,9 @@ const PY_FILES = [
   "py/peano_lab/library/eisenstein_transposed_column_candidate.py",
   "py/peano_lab/library/eisenstein_transposed_column_count_candidate.py",
   "py/peano_lab/library/eisenstein_transposed_outer_cell_candidate.py",
+  "py/peano_lab/library/euclidean_complexity_candidate.py",
+  "py/peano_lab/library/euclidean_gcd_transport_candidate.py",
+  "py/peano_lab/library/euclidean_logarithmic_bound_candidate.py",
   "py/peano_lab/library/euler_criterion_arbitrary_candidate.py",
   "py/peano_lab/library/euler_criterion_bounded_candidate.py",
   "py/peano_lab/library/euler_criterion_residue_candidate.py",
@@ -266,6 +290,7 @@ const PY_FILES = [
   "py/peano_lab/library/gauss_signed_half_candidate.py",
   "py/peano_lab/library/gauss_signed_pointwise_product_candidate.py",
   "py/peano_lab/library/gauss_signed_prefix_candidate.py",
+  "py/peano_lab/library/generalized_crt_fold_candidate.py",
   "py/peano_lab/library/ha_canonical_congruence_candidate.py",
   "py/peano_lab/library/ha_canonical_gcd_candidate.py",
   "py/peano_lab/library/ha_canonical_gcd_edges_candidate.py",
@@ -338,14 +363,20 @@ const PY_FILES = [
   "py/peano_lab/library/lucas_low_digit_candidate.py",
   "py/peano_lab/library/lucas_mixed_promotion.py",
   "py/peano_lab/library/lucas_multidigit_candidate.py",
+  "py/peano_lab/library/matrix_coded_product_candidate.py",
+  "py/peano_lab/library/matrix_determinant_minors_candidate.py",
+  "py/peano_lab/library/matrix_dot_product_candidate.py",
   "py/peano_lab/library/parity.py",
   "py/peano_lab/library/parity_mod_two_candidate.py",
   "py/peano_lab/library/parity_odd_division_candidate.py",
   "py/peano_lab/library/parity_odd_half_mod_four_candidate.py",
   "py/peano_lab/library/parity_sum_classification_candidate.py",
+  "py/peano_lab/library/polynomial_hensel_candidate.py",
+  "py/peano_lab/library/polynomial_horner_candidate.py",
   "py/peano_lab/library/power_algebra_theorems.py",
   "py/peano_lab/library/power_congruence_theorems.py",
   "py/peano_lab/library/primes_one_mod_four_candidate.py",
+  "py/peano_lab/library/primes_three_mod_four_candidate.py",
   "py/peano_lab/library/proof_bundle.py",
   "py/peano_lab/library/pythagorean_fermat_four_candidate.py",
   "py/peano_lab/library/pythagorean_primitive_candidate.py",
@@ -406,6 +437,11 @@ const PROOF_ARTIFACT_FILES = [
   "proof-artifacts/two-square-proof-bundle-v1.json",
   "proof-artifacts/alpha-v19-residual-proof-bundle-v1.json",
   "proof-artifacts/alpha-v19-campaign-frontier-proof-bundle-v1.json",
+  "proof-artifacts/alpha-v20-next-layer-proof-bundle-v1.json",
+  "proof-artifacts/alpha-v21-advanced-layer-proof-bundle-v1.json",
+  "proof-artifacts/alpha-v22-transport-layer-proof-bundle-v1.json",
+  "proof-artifacts/alpha-v23-milestone-closure-proof-bundle-v1.json",
+  "proof-artifacts/alpha-v24-research-layer-proof-bundle-v1.json",
 ];
 
 let runLine = null;
@@ -440,7 +476,28 @@ async function fetchPythonSources() {
 }
 
 async function fetchProofArtifacts() {
-  return fetchRuntimeFiles(PROOF_ARTIFACT_FILES);
+  // Start all requests alongside Pyodide, but retain only their response
+  // headers. Complete proof bundles are consumed one at a time below; reading
+  // them all into UTF-16 strings here multiplied peak browser memory use.
+  return Promise.all(PROOF_ARTIFACT_FILES.map(async (relativePath) => {
+    try {
+      const response = await fetch(relativePath);
+      if (!response.ok) {
+        return {
+          relativePath,
+          ok: false,
+          message: "could not load " + relativePath + " (" + response.status + ")",
+        };
+      }
+      return { relativePath, ok: true, response };
+    } catch (_error) {
+      return {
+        relativePath,
+        ok: false,
+        message: "could not load " + relativePath + " (network error)",
+      };
+    }
+  }));
 }
 
 async function boot(build) {
@@ -473,7 +530,15 @@ async function boot(build) {
     for (const entry of artifacts) {
       const destination = "/lab/" + entry.relativePath;
       pyodide.FS.mkdirTree(destination.slice(0, destination.lastIndexOf("/")));
-      pyodide.FS.writeFile(destination, entry.source);
+      let body;
+      try {
+        const response = entry.response;
+        entry.response = null;
+        body = new Uint8Array(await response.arrayBuffer());
+      } catch (_error) {
+        throw new Error("could not load " + entry.relativePath + " (response body error)");
+      }
+      pyodide.FS.writeFile(destination, body);
     }
 
     pyodide.runPython("import sys; sys.path.insert(0, '/lab')");

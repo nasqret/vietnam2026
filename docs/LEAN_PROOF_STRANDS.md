@@ -12,11 +12,42 @@ new theorem. An exported strand becomes an independently Lean-checked artifact
 only when its generated modules are actually compiled successfully.
 
 The commands below are implemented and tested in the local Peano driver. The
-repository owner has explicitly authorized adding an interactive hosted-capable
-Lean-export interface, including Alpha proof artifacts. The service nevertheless
-binds only to the local machine by default; public network binding is an
-explicit operator choice, and adding this capability does not itself deploy a
-service or publish a release.
+public faculty explorer now uses the same checked service through an isolated
+same-origin PHP gateway, an owner-only shared-home mailbox outside
+`public_html`, and a faculty-loopback SSH reverse tunnel. The Python
+worker and Lean compiler still bind only to the operator's local machine; no
+persistent daemon, private companion, or repository checkout runs on faculty
+hosting. Publishing the proof website and starting the tunnel remain explicit
+operator actions.
+
+## Publish the complete interactive proof builder
+
+From the repository root:
+
+```bash
+make deploy-proofs
+make lean-public
+```
+
+The first command publishes every exact and definition-aware campaign explorer,
+its shared selected-theorem controls, and the isolated PHP API gateway. Keep
+the second command running while public visitors build proofs: it starts or
+reuses the existing bounded local Lean worker and opens a remote-loopback-only
+SSH tunnel to the faculty gateway.
+
+Open the public theorem graph at
+<https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/quadratic-reciprocity/explorer/defined/graph.html?target=PA000F>,
+select a checked theorem, and choose **Build Lean proof**. Progress, compiler
+verification, source/ZIP downloads, and genuinely self-contained Lean Live
+handoff use the same evidence checks as the local browser. A separate terminal
+can independently check the complete deployed path:
+
+```bash
+make lean-public-check
+```
+
+When the tunnel is stopped, the public gateway reports that the checked proof
+worker is offline; it never substitutes an unverified proof.
 
 ## Build a proof directly from the theorem browser
 
@@ -38,15 +69,30 @@ definition-aware graph at
    verification through the progress display. Cancel at any time.
 4. Download the generated Lean source or the complete independently checked
    module-and-manifest ZIP after a successful build.
-5. When the entire strand has readable Lean proofs and fits the official
-   editor's share limits, choose **Open in Lean Live** to inspect and compile
-   its exact self-contained source.
+5. When the entire strand has readable Lean proofs, choose **Open in Lean
+   Live** to inspect and compile its exact self-contained source. Hydra uses
+   Lean Live's exact unpadded Base64 compression format whenever it produces a
+   shorter safe link; its reserved characters are canonically percent-escaped
+   before the link is authenticated.
+
+Campaign-scale jobs default to 1,024 named theorem nodes, 1 MiB of standalone
+Lean source, and a 512 KiB fully escaped Lean Live URL. These node limits cover
+every current Alpha-v22 dependency tree; the largest contains 557 theorems.
+The service still runs just one independently bounded 1,024 MiB Lean worker,
+and excessive source size, link size, verification time, or genuine proof
+fallbacks never produce an unauthenticated Lean Live link.
 
 Selecting a conservative definition does not start a theorem proof. Alpha-only
 nodes explicitly use the checked Alpha edition; Stable nodes remain Stable.
-Lean Live is offered only for self-contained readable strands that need no
-unavailable companion imports. Complete packages, including transparent checked
-certificate fallbacks, remain available through the ZIP export.
+Every offered Lean Live proof has already been independently compiled locally
+and contains every named prerequisite in dependency order. It has **no import
+statements whatsoever**: no Mathlib, no `PeanoLab` module, no private checker,
+and no separate Lean tactic-module import. Exact-source decoding,
+the recorded source hash, zero fallback nodes, zero external imports, and the
+absence of `sorry` are all checked before the link appears. Statement-only
+legacy scaffolds containing placeholders never receive a Lean Live link.
+Complete packages, including any honest remaining checked certificate
+fallbacks, remain available through the ZIP export.
 
 Both links intentionally start with the small three-theorem `add_comm` strand,
 not a heavyweight quadratic-reciprocity root. Selecting a theorem does not
@@ -57,16 +103,20 @@ The six modern constructive campaign graphs use the identical selector. For
 example, the checked Alpha-v19 theorem `pythagorean_double_product` has just
 nine named prerequisite nodes and can be selected at
 <http://127.0.0.1:8787/book/_static/constructive-frontier-explorer/pythagorean-fermat-four/explorer/defined/graph.html?target=PF0000>.
-It keeps its explicit **Alpha** badge; exporting it never promotes the theorem
-into the 432-entry Stable edition.
+Its entire nine-theorem strand now reconstructs as ordinary readable Lean
+proofs, with no certificate fallback and a genuinely self-contained Lean Live
+source. It keeps its explicit **Alpha** badge; exporting it never promotes the
+theorem into the 432-entry Stable edition.
 
 To reproduce the complete real HTTP, independent Lean, standalone-source, Lean
-Live, and generated-package checks in another terminal while the browser
-service is running:
+Live, and generated-package checks with one command:
 
 ```bash
 make lean-browser-check
 ```
+
+The checker reuses an existing local service or starts and cleans up a
+temporary loopback-only service automatically.
 
 ## Start with an interactive proof
 
@@ -117,7 +167,7 @@ proof step is a separate, explicit export operation.
 
 ## Review large Alpha theorems without a system crash
 
-Alpha v19 currently has 1,737 checked-use theorems, including the following
+Alpha v22 currently has 1,890 checked-use theorems, including the following
 independently established mathematical roots:
 
 ```text
@@ -127,6 +177,20 @@ pa proof alpha bertrand_strict
 pa proof alpha four_square_lagrange
 pa proof alpha doubled_square_plus_one_nonzero
 pa proof alpha linear_congruence_solvable_iff_gcd_divides
+pa proof alpha beta_horner_eval_exists
+pa proof alpha beta_dot_product_exists_unique
+pa proof alpha iterated_bertrand_prime_chain_exists
+pa proof alpha continued_fraction_positive_exists
+pa proof alpha beta_matrix_product_exists
+pa proof alpha beta_signed_matrix_product_exists
+pa proof alpha euclidean_two_step_halving
+pa proof alpha euclidean_gcd_execution_linear_bound
+pa proof alpha binary_modular_exponentiation_result_exists_unique
+pa proof alpha binary_length_exists_unique
+pa proof alpha euclidean_execution_terminal_identified
+pa proof alpha euclidean_anchored_execution_linear_bound
+pa proof alpha binary_modular_execution_power_correct
+pa proof alpha binary_modular_execution_result_exists_unique
 ```
 
 For a root with a very large prerequisite graph, the browser still shows the
@@ -308,7 +372,7 @@ modules it actually verifies. A source path, dependency hash, release label,
 proof outline, authored script, or generated manifest is useful provenance but
 is not itself a proof.
 
-Stable remains a 432-theorem public release. Alpha v19 contains additional
+Stable remains a 432-theorem public release. Alpha v22 contains additional
 checked-use theorems, but viewing or exporting an Alpha strand does not promote
 it into Stable. No strand export authorizes publication, model training,
 external deployment, protected FINAL evaluation, or any other release action.

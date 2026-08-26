@@ -99,23 +99,31 @@ def test_export_is_namespaced_documented_and_contains_only_a_proof_stub() -> Non
         "end PeanoLab"
     )
     assert exported.code.count("sorry") == 1
+    assert exported.live_url == ""
 
 
-def test_live_link_url_encodes_exactly_the_displayed_code() -> None:
+def test_unproved_legacy_scaffolds_never_expose_a_lean_live_link() -> None:
     exported = export_theorem(
         "zero_add",
         parse_formula("forall n. 0 + n = n"),
         "induction n\nsimp [IH]",
     )
 
-    assert exported.live_url.startswith(LIVE_LEAN_PREFIX)
-    assert unquote(exported.live_url.removeprefix(LIVE_LEAN_PREFIX)) == exported.code
-    assert live_lean_url(exported.code) == exported.live_url
+    assert exported.live_url == ""
+    assert "sorry" in exported.code
     assert export_theorem(
         "zero_add",
         parse_formula("forall n. 0 + n = n"),
         "induction n\nsimp [IH]",
     ) == exported
+
+
+def test_low_level_live_url_encodes_an_exact_completed_source() -> None:
+    source = "theorem checked : True := True.intro\n"
+    url = live_lean_url(source)
+
+    assert url.startswith(LIVE_LEAN_PREFIX)
+    assert unquote(url.removeprefix(LIVE_LEAN_PREFIX)) == source
 
 
 def test_dependency_metadata_is_distinct_from_the_authored_body() -> None:

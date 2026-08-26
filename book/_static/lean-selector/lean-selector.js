@@ -6,10 +6,12 @@
   var document = global.document;
   var NAME = /^[A-Za-z][A-Za-z0-9_]{0,199}$/;
   var JOB = /^[A-Za-z0-9][A-Za-z0-9_-]{0,127}$/;
+  var SHA = /^[0-9a-f]{64}$/;
+  var CODEZ = /^(?:[A-Za-z0-9]|%2B|%2F)+$/;
   var POLL_MILLISECONDS = 750;
   var REQUEST_MILLISECONDS = 20000;
-  var LIVE_MAX_BYTES = 8192;
-  var DEFAULT_MAX_NODES = 256;
+  var LIVE_MAX_BYTES = 1048576;
+  var DEFAULT_MAX_NODES = 1024;
   var PANEL_SELECTOR = ".pa-graph-details, .pd-graph-details, .pa-proof-sidebar, .pd-theorem-layout > aside, [data-lean-selector-host]";
   var instances = new WeakMap();
   var refreshQueued = false;
@@ -46,7 +48,14 @@
       var parsed = new URL(candidate);
       if (parsed.protocol !== "https:" || parsed.hostname !== "live.lean-lang.org" ||
           parsed.port || parsed.username || parsed.password || parsed.pathname !== "/" ||
-          parsed.search || parsed.hash.indexOf("#code=") !== 0 || parsed.hash.length <= 6) {
+          parsed.search) {
+        return null;
+      }
+      if (parsed.hash.indexOf("#code=") === 0) {
+        if (parsed.hash.length <= 6) return null;
+      } else if (parsed.hash.indexOf("#codez=") === 0) {
+        if (!CODEZ.test(parsed.hash.slice(7))) return null;
+      } else {
         return null;
       }
       return parsed.href;
@@ -133,14 +142,27 @@
       var zip = safeDownload(downloads.zip, instance.jobId, "zip");
       var liveStatus = snapshot.live_status ||
         (snapshot.lean_live && snapshot.lean_live.status) || "unavailable";
+      var receipt = snapshot.lean_live && typeof snapshot.lean_live === "object" ?
+        snapshot.lean_live : null;
+      var fallbackCount = snapshot.manifest &&
+        Number.isSafeInteger(snapshot.manifest.fallback_node_count) ?
+        snapshot.manifest.fallback_node_count : null;
       var mixed = snapshot.companion_required === true || liveStatus === "fallback_required" ||
-        !!(snapshot.manifest && Number(snapshot.manifest.fallback_node_count) > 0);
+        (fallbackCount !== null && fallbackCount > 0);
+      var standalone = !mixed && snapshot.standalone_lean === true && receipt &&
+        receipt.local_source_verified === true && fallbackCount === 0 &&
+        receipt.self_contained === true && receipt.external_import_count === 0 &&
+        Array.isArray(receipt.core_imports) && receipt.core_imports.length === 0 &&
+        SHA.test(String(receipt.source_sha256 || ""));
       if (mixed) {
         instance.status.textContent = "Independently Lean-verified. This certificate-backed proof requires the configured Lean companion project.";
+        instance.assurance.textContent = "Lean Live is unavailable because at least one proof step needs its separate checked companion.";
       } else if (liveStatus === "oversized") {
-        instance.status.textContent = "Independently Lean-verified. Standalone Lean source is available for download, but exceeds Lean Live's share limit.";
+        instance.status.textContent = "Independently Lean-verified. Standalone Lean source is available for download, but even its compact link exceeds Lean Live's share limit.";
+        instance.assurance.textContent = "The exact checked proof remains available as a standalone .lean download.";
       } else {
         instance.status.textContent = "Independently Lean-verified: the compiler accepted this selected theorem and its proof strand.";
+        instance.assurance.textContent = "Checking the exact standalone proof receipt for Lean Live…";
       }
       if (lean) {
         instance.lean.href = lean;
@@ -154,9 +176,18 @@
       }
       var live = snapshot.live_url || (snapshot.lean_live && snapshot.lean_live.url);
       live = safeLiveUrl(live);
-      if (live && !mixed && snapshot.live_compatible !== false) {
+      var actualEncoding = live && live.indexOf("/#codez=") !== -1 ? "codez" : "code";
+      var declaredEncoding = snapshot.live_encoding || (receipt && receipt.share_encoding);
+      if (live && standalone && liveStatus === "ready" &&
+          snapshot.live_compatible === true && declaredEncoding === actualEncoding) {
         instance.live.href = live;
         instance.live.hidden = false;
+        instance.status.textContent = "Ready for Lean Live: the exact self-contained proof was independently compiled locally.";
+        instance.assurance.textContent = actualEncoding === "codez" ?
+          "No imports · self-contained · locally compiled · no Mathlib/external libraries · compact exact proof." :
+          "No imports · self-contained · locally compiled · no Mathlib/external libraries.";
+      } else if (!mixed && liveStatus !== "oversized" && !standalone) {
+        instance.assurance.textContent = "Lean Live stays unavailable until a complete standalone local verification receipt is present.";
       }
     } else if (state === "cancelled" || state === "canceled") {
       instance.status.textContent = "Proof construction cancelled.";
@@ -255,6 +286,7 @@
     instance.build.disabled = true;
     instance.cancel.hidden = false;
     instance.status.textContent = "Submitting the selected checked theorem…";
+    instance.assurance.textContent = "Reconstructing the complete named proof; Lean Live unlocks only after local compilation.";
     instance.stage.textContent = "queued";
     instance.counter.textContent = "0%";
     instance.progress.hidden = false;
@@ -355,8 +387,9 @@
     var edition = panel.getAttribute("data-lean-edition") ||
       (metadata["Stable membership"] === "yes" ? "stable" : "alpha");
     var stableMembership = metadata["Stable membership"] === "yes";
+    var alphaAuthority = /^Alpha v[0-9]+ checked use$/.test(metadata.Authority || "");
     var checkedUse = metadata["Checked theorem use"] === "yes" ||
-      panel.getAttribute("data-lean-eligible") === "true";
+      panel.getAttribute("data-lean-eligible") === "true" || alphaAuthority;
     return {
       theorem: String(theorem).trim(),
       edition: edition,
@@ -385,8 +418,8 @@
 
     var card = make("section", "peano-lean-selector");
     card.setAttribute("aria-label", "Independent Lean proof for " + descriptor.theorem);
-    var kicker = make("p", "pls-kicker", "Independent proof export");
-    var title = make("h3", "pls-title", "Build a Lean proof");
+    var kicker = make("p", "pls-kicker", "Lean Live · independently verified");
+    var title = make("h3", "pls-title", "Build a self-contained Lean proof");
     var theorem = make("p", "pls-theorem", descriptor.theorem);
     var badge = make("span", "pls-edition", descriptor.edition === "stable" ? "Stable" : "Alpha");
     theorem.appendChild(badge);
@@ -408,6 +441,10 @@
     var status = make("p", "pls-status", statusMessage);
     status.setAttribute("role", "status");
     status.setAttribute("aria-live", "polite");
+    var assurance = make(
+      "p", "pls-assurance",
+      "Build this theorem to verify its complete proof locally and unlock an exact Lean Live link."
+    );
     var controls = make("div", "pls-controls");
     var build = button("Build Lean proof", "pls-build");
     var stop = button("Cancel", "pls-cancel");
@@ -418,14 +455,15 @@
     var downloads = make("div", "pls-downloads");
     var lean = make("a", "pls-link", "Download .lean");
     var archive = make("a", "pls-link", "Verified Lean package (.zip)");
-    var live = make("a", "pls-link pls-live", "Open in Lean Live");
+    var live = make("a", "pls-link pls-live", "Open verified self-contained proof in Lean Live ↗");
     live.target = "_blank";
     live.rel = "noopener noreferrer";
+    live.setAttribute("aria-label", "Open the exact independently verified standalone proof in Lean Live");
     [lean, archive, live].forEach(function (link) {
       link.hidden = true;
       downloads.appendChild(link);
     });
-    [kicker, title, theorem, stage, progress, counter, controls, status, downloads]
+    [kicker, title, theorem, stage, progress, counter, controls, status, assurance, downloads]
       .forEach(function (element) { card.appendChild(element); });
     panel.appendChild(card);
     var instance = {
@@ -445,6 +483,7 @@
       stage: stage,
       counter: counter,
       status: status,
+      assurance: assurance,
       lean: lean,
       archive: archive,
       live: live

@@ -222,16 +222,50 @@ def _rewrite_command(
     if equation in axioms:
         used_axioms.add(equation)
     direction = "← " if reverse else ""
-    command = f"rw [{direction}{reference}]"
+    if target is not None:
+        _safe_identifier(target, "rewritten hypothesis")
+    suffix = "" if target is None else f" at {target}"
+    if equation == "PA4":
+        # Nat.add_succ is definitional in Lean. Its rewrite matcher can first
+        # reduce nested additions, silently consuming several distinct Peano
+        # occurrences and making the next authored rewrite impossible. `change`
+        # asks Lean to kernel-check the *exact* independently computed successor
+        # proof state instead, preserving every original occurrence transition.
+        expected = after.target if target is None else _hypothesis(after, target)
+        commands = (
+            "change " + _formula_to_lean(expected, after.variables, 0) + suffix,
+        )
+    else:
+        # Peano rewrites exactly one occurrence and deliberately leaves its
+        # goal open. Lean `rw` rewrites every occurrence and then attempts
+        # `rfl`; explicit first-occurrence `rewrite` preserves both contracts.
+        command = f"rewrite (occs := .pos [1]) [{direction}{reference}]" + suffix
+        if equation in axioms:
+            commands = (command,)
+        else:
+            prior = before.target if target is None else _hypothesis(before, target)
+            exact_prior = _formula_to_lean(prior, before.variables, 0)
+            if _goal_formula(prior, before.variables) == exact_prior:
+                commands = (command,)
+            else:
+                # A local conservative alias can compact several independently
+                # authored occurrences into one Lean argument. Anchor both ends
+                # to authenticated expanded states only when readable notation
+                # actually differs; ordinary arithmetic stays concise.
+                expected = after.target if target is None else _hypothesis(after, target)
+                commands = (
+                    "change " + exact_prior + suffix,
+                    command,
+                    "change " + _formula_to_lean(expected, after.variables, 0) + suffix,
+                )
     if target is None:
-        return (command,)
-    _safe_identifier(target, "rewritten hypothesis")
+        return commands
     fresh = _fresh_context_names(before, after)
     preserved = next((name for name in fresh if name.startswith(target + "_before")), None)
     if preserved is not None:
         _safe_identifier(preserved, "preserved hypothesis")
-        return (f"have {preserved} := {target}", command + f" at {target}")
-    return (command + f" at {target}",)
+        return (f"have {preserved} := {target}", *commands)
+    return commands
 
 
 def _simp_command(
@@ -346,11 +380,19 @@ def _translate_command(
             raise ReconstructionError("congruence requires an exact equality goal")
         left, right = before.target.left, before.target.right
         if type(left) is Succ and type(right) is Succ:
-            commands = ("apply congrArg Nat.succ",)
+            if produced != 1:
+                raise ReconstructionError("successor congruence must preserve its exact obligation")
+            commands = ("refine congrArg Nat.succ ?_",)
         elif type(left) is Add and type(right) is Add:
-            commands = ("apply congrArg₂ Nat.add",)
+            if produced != 2:
+                raise ReconstructionError("addition congruence must preserve both exact obligations")
+            # `congrArg₂` is not in Lean core.  The primitive `congr` and
+            # unary `congrArg` expose exactly the two authored subgoals.
+            commands = ("refine congr (congrArg Nat.add ?_) ?_",)
         elif type(left) is Mul and type(right) is Mul:
-            commands = ("apply congrArg₂ Nat.mul",)
+            if produced != 2:
+                raise ReconstructionError("multiplication congruence must preserve both exact obligations")
+            commands = ("refine congr (congrArg Nat.mul ?_) ?_",)
         else:
             raise ReconstructionError("unsupported congruence constructor")
     elif tactic == "rewrite":

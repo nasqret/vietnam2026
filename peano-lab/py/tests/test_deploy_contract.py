@@ -16,7 +16,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[3]
 FRONTIER = ROOT / "book" / "_static" / "constructive-frontier-explorer"
-CANONICAL_HTML_REVISION = "f1c3d3fba013"
+CANONICAL_HTML_REVISION = "94ac4d193cbf"
 FRONTIER_FAMILIES = (
     "supplementary-laws",
     "kummer",
@@ -33,6 +33,32 @@ FRONTIER_TAG_PREFIXES = {
     "lucas": "LU",
     "pythagorean-fermat-four": "PF",
 }
+NEXT_LAYER_FAMILIES = (
+    "polynomial-horner",
+    "matrix-dot-product",
+    "bertrand-prime-chains",
+    "continued-fractions",
+)
+ADVANCED_LAYER_FAMILIES = (
+    "matrix-coded-products",
+    "euclidean-complexity",
+    "binary-modular-exponentiation",
+)
+TRANSPORT_LAYER_FAMILIES = (
+    "binary-length",
+    "euclidean-gcd-transport",
+    "binary-modular-execution",
+)
+MILESTONE_CLOSURE_FAMILIES = (
+    "euclidean-logarithmic-bound",
+    "binary-digit-extraction",
+    "primes-three-mod-four",
+)
+RESEARCH_LAYER_FAMILIES = (
+    "matrix-determinant-minors",
+    "polynomial-hensel",
+    "generalized-crt-fold",
+)
 CANONICAL_FRONTIER_ASSETS = (
     ("defined-explorer.css", "defined/assets/explorer.css"),
     ("defined-explorer.js", "defined/assets/explorer.js"),
@@ -76,6 +102,11 @@ def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
         "two-square-proof-bundle-v1.json",
         "alpha-v19-residual-proof-bundle-v1.json",
         "alpha-v19-campaign-frontier-proof-bundle-v1.json",
+        "alpha-v20-next-layer-proof-bundle-v1.json",
+        "alpha-v21-advanced-layer-proof-bundle-v1.json",
+        "alpha-v22-transport-layer-proof-bundle-v1.json",
+        "alpha-v23-milestone-closure-proof-bundle-v1.json",
+        "alpha-v24-research-layer-proof-bundle-v1.json",
     ):
         assert f"research/arithmetic-library/artifacts/{filename}" in output
         assert f"/proof-artifacts/{filename}" in output
@@ -164,9 +195,33 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
     output = _dry_run("stage-proofs")
 
     assert "python3 scripts/build_constructive_frontier_explorer.py" in output
+    assert "python3 scripts/build_constructive_next_layer_explorer.py" in output
+    assert "python3 scripts/build_constructive_transport_layer_explorer.py" in output
+    assert "python3 scripts/build_constructive_milestone_closure_explorer.py" in output
+    assert "python3 scripts/build_constructive_research_layer_explorer.py" in output
     assert "book/_static/constructive-frontier-explorer/assets/" in output
+    assert "book/_static/constructive-next-layer-explorer/assets/" in output
+    assert "book/_static/constructive-advanced-layer-explorer/assets/" in output
+    assert "book/_static/constructive-transport-layer-explorer/assets/" in output
+    assert "book/_static/constructive-milestone-closure-explorer/assets/" in output
+    assert "book/_static/constructive-research-layer-explorer/assets/" in output
     for family in FRONTIER_FAMILIES:
         assert f"book/_static/constructive-frontier-explorer/{family}/" in output
+        assert f'"_deploy/proofs/{family}/"' in output
+    for family in NEXT_LAYER_FAMILIES:
+        assert f"book/_static/constructive-next-layer-explorer/{family}/" in output
+        assert f'"_deploy/proofs/{family}/"' in output
+    for family in ADVANCED_LAYER_FAMILIES:
+        assert f"book/_static/constructive-advanced-layer-explorer/{family}/" in output
+        assert f'"_deploy/proofs/{family}/"' in output
+    for family in TRANSPORT_LAYER_FAMILIES:
+        assert f"book/_static/constructive-transport-layer-explorer/{family}/" in output
+        assert f'"_deploy/proofs/{family}/"' in output
+    for family in MILESTONE_CLOSURE_FAMILIES:
+        assert f"book/_static/constructive-milestone-closure-explorer/{family}/" in output
+        assert f'"_deploy/proofs/{family}/"' in output
+    for family in RESEARCH_LAYER_FAMILIES:
+        assert f"book/_static/constructive-research-layer-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
 
@@ -189,6 +244,11 @@ def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> Non
         "bertrand-proof-bundle-v1.json",
         "four-square-proof-bundle-v1.json",
         "two-square-proof-bundle-v1.json",
+        "alpha-v20-next-layer-proof-bundle-v1.json",
+        "alpha-v21-advanced-layer-proof-bundle-v1.json",
+        "alpha-v22-transport-layer-proof-bundle-v1.json",
+        "alpha-v23-milestone-closure-proof-bundle-v1.json",
+        "alpha-v24-research-layer-proof-bundle-v1.json",
     ):
         assert f'"_deploy/proofs/artifacts/{filename}"' in output
         assert f'href="artifacts/{filename}"' in page
@@ -269,11 +329,150 @@ def test_frontier_family_page_matches_original_proof_family_layout(family: str) 
     assert 'href="explorer/defined/tag/' in page
     assert f'.html?v={CANONICAL_HTML_REVISION}"' in page
     assert "dependency-curried kernel-checked theorem body" in page
-    assert "Independently verified Alpha v19 checked-use theorem family" in page
+    assert "Independently verified Alpha v24 checked-use theorem family" in page
     assert "not Stable" in page
     assert "frontier-hero" not in page
     assert "Independent closure experiments" not in page
     assert "<progress" not in page
+
+
+@pytest.mark.parametrize("family", TRANSPORT_LAYER_FAMILIES)
+def test_transport_family_page_uses_the_exact_quadratic_reciprocity_design(
+    family: str,
+) -> None:
+    root = ROOT / "book" / "_static" / "constructive-transport-layer-explorer"
+    page = (root / family / "index.html").read_text(encoding="utf-8")
+    original = (ROOT / "deploy" / "proofs" / "quadratic-reciprocity.html").read_text(
+        encoding="utf-8"
+    )
+
+    shared_landmarks = (
+        '<header class="family-hero">',
+        '<div class="shell">',
+        '<nav class="crumbs">',
+        '<p class="formula">',
+        '<p class="lede">',
+        '<div class="hero-actions">',
+        '<main class="shell family-main">',
+        '<section class="view-grid">',
+        '<article class="view-card featured">',
+        '<section class="release-note">',
+    )
+    for landmark in shared_landmarks:
+        assert landmark in original
+        assert landmark in page
+
+    assert f'<body class="family-page {family}-page">' in page
+    assert page.count('<article class="view-card') == 3
+    assert f'href="../assets/proofs.css?v={CANONICAL_HTML_REVISION}"' in page
+    assert f'href="explorer/defined/?v={CANONICAL_HTML_REVISION}"' in page
+    assert f'href="explorer/?v={CANONICAL_HTML_REVISION}"' in page
+    assert 'href="explorer/defined/graph.html?target=' in page
+    assert "&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus" in page
+    assert "&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus" in page
+    assert "first admitted v22" in page
+    assert "Independently verified Alpha v24 checked-use theorem family" in page
+    assert "independently accept all 240 bundle nodes" in page
+    assert "not Stable" in page
+    assert 'class="proof-home' not in page
+    assert 'class="proof-hero"' not in page
+    assert 'class="proof-card"' not in page
+
+
+@pytest.mark.parametrize(
+    ("family", "generation", "first_admitted", "bundle_nodes"),
+    tuple(
+        (family, "constructive-next-layer-explorer", "v20", 590)
+        for family in NEXT_LAYER_FAMILIES
+    )
+    + tuple(
+        (family, "constructive-advanced-layer-explorer", "v21", 209)
+        for family in ADVANCED_LAYER_FAMILIES
+    ),
+)
+def test_historical_intermediate_pages_also_share_the_canonical_family_design(
+    family: str, generation: str, first_admitted: str, bundle_nodes: int
+) -> None:
+    page = (ROOT / "book" / "_static" / generation / family / "index.html").read_text(
+        encoding="utf-8"
+    )
+
+    assert f'<body class="family-page {family}-page">' in page
+    assert '<header class="family-hero">' in page
+    assert '<nav class="crumbs">' in page
+    assert '<main class="shell family-main">' in page
+    assert '<section class="view-grid">' in page
+    assert page.count('<article class="view-card') == 3
+    assert f'href="../assets/proofs.css?v={CANONICAL_HTML_REVISION}"' in page
+    assert f"first admitted {first_admitted}" in page
+    assert "Independently verified Alpha v24 checked-use theorem family" in page
+    assert f"independently accept all {bundle_nodes} bundle nodes" in page
+    assert 'class="proof-hero"' not in page
+    assert 'class="proof-card"' not in page
+
+
+@pytest.mark.parametrize(
+    ("family", "root_tag"),
+    (
+        ("euclidean-logarithmic-bound", "EL0010"),
+        ("binary-digit-extraction", "BD0018"),
+        ("primes-three-mod-four", "TF0012"),
+    ),
+)
+def test_closed_milestone_page_uses_the_exact_quadratic_reciprocity_design(
+    family: str, root_tag: str
+) -> None:
+    root = ROOT / "book" / "_static" / "constructive-milestone-closure-explorer"
+    page = (root / family / "index.html").read_text(encoding="utf-8")
+    original = (ROOT / "deploy" / "proofs" / "quadratic-reciprocity.html").read_text(
+        encoding="utf-8"
+    )
+
+    for landmark in (
+        '<header class="family-hero">',
+        '<div class="shell">',
+        '<nav class="crumbs">',
+        '<p class="formula">',
+        '<p class="lede">',
+        '<div class="hero-actions">',
+        '<main class="shell family-main">',
+        '<section class="view-grid">',
+        '<article class="view-card featured">',
+        '<section class="release-note">',
+    ):
+        assert landmark in original
+        assert landmark in page
+
+    assert f'<body class="family-page {family}-page">' in page
+    assert page.count('<article class="view-card') == 3
+    assert f'href="../assets/proofs.css?v={CANONICAL_HTML_REVISION}"' in page
+    assert f'href="explorer/defined/?v={CANONICAL_HTML_REVISION}"' in page
+    assert f'href="explorer/?v={CANONICAL_HTML_REVISION}"' in page
+    assert f"explorer/defined/tag/{root_tag}.html" in page
+    assert "&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus" in page
+    assert "&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus" in page
+    assert "first admitted v23" in page
+    assert "Independently verified Alpha v24 checked-use theorem family" in page
+    assert "independently accept all 617 bundle nodes" in page
+    assert "not Stable" in page
+    assert 'class="proof-hero"' not in page
+
+
+def test_quadratic_reciprocity_explorer_skill_is_versioned_and_reuses_real_template() -> None:
+    skill = ROOT / "skills" / "constructive-proof-explorer"
+    entrypoint = (skill / "SKILL.md").read_text(encoding="utf-8")
+    reference = (skill / "references" / "quadratic-reciprocity-model.md").read_text(
+        encoding="utf-8"
+    )
+    interface = (skill / "agents" / "openai.yaml").read_text(encoding="utf-8")
+
+    assert "name: constructive-proof-explorer" in entrypoint
+    assert "references/quadratic-reciprocity-model.md" in entrypoint
+    assert "scripts/constructive_proof_explorer_template.py" in reference
+    assert "deploy/proofs/quadratic-reciprocity.html" in reference
+    assert "render_canonical_family_landing" in reference
+    assert "$constructive-proof-explorer" in interface
+    assert (ROOT / "scripts" / "constructive_proof_explorer_template.py").is_file()
 
 
 @pytest.mark.parametrize("family", FRONTIER_FAMILIES)
@@ -420,6 +619,19 @@ def test_public_proof_hub_keeps_original_cards_without_experiment_progress() -> 
     assert f'href="bertrand-postulate/?v={CANONICAL_HTML_REVISION}"' in page
     for family in FRONTIER_FAMILIES:
         assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
+    for family in NEXT_LAYER_FAMILIES:
+        assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
+    for family in ADVANCED_LAYER_FAMILIES:
+        assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
+    for family in TRANSPORT_LAYER_FAMILIES:
+        assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
+    for family in MILESTONE_CLOSURE_FAMILIES:
+        assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
+    for family in RESEARCH_LAYER_FAMILIES:
+        assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
+    assert "All 2,008 theorems have checked-use authority" in page
+    assert "432-theorem Stable edition remains unchanged" in page
+    assert "arbitrary signed multiplication is now proved" in page
     assert "candidate-progress" not in page
     assert "33/44" not in page
     assert "80/196" not in page
@@ -429,12 +641,15 @@ def test_public_proof_hub_links_every_family_to_the_multiscale_campaign() -> Non
     page = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
 
     assert f'href="grand-campaign/?v={CANONICAL_HTML_REVISION}"' in page
-    for family in ("F02", "F03", "F04", "F05", "F07", "F08"):
+    for family in ("F02", "F03", "F04", "F05", "F07", "F08", "F11", "F12"):
         assert (
             f'href="grand-campaign/?view=family&amp;focus={family}'
             f'&amp;v={CANONICAL_HTML_REVISION}"'
         ) in page
-    for milestone in ("A02", "A08", "G033", "G034", "G043", "G044", "G061", "G064"):
+    for milestone in (
+        "A02", "A08", "T12", "T13", "G023", "G024", "G025", "G033", "G034",
+        "G043", "G044", "G061", "G064", "G071", "G101", "G102",
+    ):
         assert (
             f'href="grand-campaign/?view=goal&amp;focus={milestone}'
             f'&amp;v={CANONICAL_HTML_REVISION}"'
@@ -475,7 +690,7 @@ def test_flagship_landings_preserve_design_and_expose_all_research_scales(
 
 
 def test_html_navigation_cache_revision_tracks_current_alpha_catalog_not_asset() -> None:
-    catalog = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v19.json"
+    catalog = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
     asset = (
         ROOT / "book" / "_static" / "pa-proof-explorer" / "defined" / "assets"
         / "explorer.js"
@@ -520,6 +735,10 @@ def test_flagship_campaign_links_resolve_after_deployment_at_every_depth(
     family_ids = {item["id"] for item in campaign["families"]}
     goal_ids = {item["id"] for item in campaign["nodes"]}
     root = ROOT / "book" / "_static" / source
+    manifest = json.loads((root / "manifest.json").read_text(encoding="utf-8"))
+    edition = manifest["alpha_edition_version"]
+    catalog = ROOT / "artifacts" / "peano-library" / "alpha" / f"catalog-{edition}.json"
+    source_html_revision = sha256(catalog.read_bytes()).hexdigest()[:12]
     relatives = (
         "index.html",
         "graph.html",
@@ -543,7 +762,7 @@ def test_flagship_campaign_links_resolve_after_deployment_at_every_depth(
             target = urlsplit(urljoin(deployed_page, href))
             assert target.path == "/proofs/grand-campaign/", (relative, href)
             query = parse_qs(target.query)
-            assert query.get("v") == [CANONICAL_HTML_REVISION], (relative, href)
+            assert query.get("v") == [source_html_revision], (relative, href)
             view = query.get("view", ["global"])[0]
             focus = query.get("focus", [None])[0]
             views.add(view)

@@ -35,11 +35,22 @@ the evidence of 315 genuinely closed quadratic-reciprocity theorems.
 Historical Alpha v17 additionally promotes precisely 31 independently proved
 supplementary-law ancestors, including both original endpoints. Historical
 Alpha v18 promotes precisely 673 newly proved Lucas, Kummer, Bertrand,
-four-square, and two-square ancestors. Current Alpha v19 preserves all 1,673
+four-square, and two-square ancestors. Historical Alpha v19 preserves all 1,673
 v18 statements, independently closes its remaining 84 body-only obligations,
 and appends 64 genuinely proved Pythagorean, prime-two-square,
-linear-congruence, and 1-mod-4-prime results. All 1,737 current Alpha rows
-have checked-use authority; no body-only or pending entry remains. Stable is
+linear-congruence, and 1-mod-4-prime results. Historical Alpha v20 preserves every
+one of those 1,737 exact rows and independently adds 39 beta-coded polynomial,
+finite-matrix-component, Bertrand-prime, and continued-fraction theorems.
+Historical Alpha v21 preserves every one of those 1,776 exact rows and
+independently adds 54 arbitrary natural/signed matrix-product, Euclidean
+execution/halving, and binary modular-exponentiation theorems. Historical Alpha
+v22 preserves all 1,830 exact v21 rows and independently adds 60 total and
+functional binary-length, Euclidean-gcd-transport, and supplied-digit binary
+execution theorems. Current Alpha v23 preserves all 1,890 exact v22 rows and
+independently adds 59 complete logarithmic Euclidean-GCD, canonical binary
+digit/execution, and 3-mod-4-prime-infinitude theorems. All 1,949 current
+Alpha rows have checked-use authority;
+no body-only or pending entry remains. Stable is
 still
 the unchanged 432-theorem default; the initial Stable prefix is a historical
 fact about these channels, not the permanent promotion rule.
@@ -65,15 +76,27 @@ fact about these channels, not the permanent promotion rule.
 | Sealed Alpha v16 catalog | **1,673** theorems | unchanged enrollment; exactly 315 closed QR evidence promotions |
 | Sealed Alpha v17 catalog | **1,673** theorems | unchanged enrollment; 31 additional closed supplementary-law promotions |
 | Sealed Alpha v18 catalog | **1,673** theorems | unchanged enrollment; 673 additional closed five-campaign flagship promotions |
-| Current Alpha v19 catalog | **1,737** theorems | all 84 historical obligations closed and 64 genuinely proved constructive results appended |
+| Sealed Alpha v19 catalog | **1,737** theorems | all 84 historical obligations closed and 64 genuinely proved constructive results appended |
+| Sealed Alpha v20 catalog | **1,776** theorems | all 1,737 historical rows preserved and 39 independently checked next-layer results appended |
+| Sealed Alpha v21 catalog | **1,830** theorems | all 1,776 historical rows preserved and 54 independently checked advanced-layer results appended |
+| Sealed Alpha v22 catalog | **1,890** theorems | all 1,830 historical rows preserved and 60 independently checked transport-layer results appended |
+| Current Alpha v23 catalog | **1,949** theorems | all 1,890 historical rows preserved and 59 independently checked complete G101, G102, and G025 results appended |
 | Historical Alpha v12--v15 checked-use subset | **570** theorems | 432 `stable_closed` plus 138 `alpha_closed` rows |
 | Historical Alpha v16 checked-use subset | **885** theorems | 432 `stable_closed` plus 453 `alpha_closed` rows |
 | Historical Alpha v17 checked-use subset | **916** theorems | 432 `stable_closed` plus 484 `alpha_closed` rows |
 | Historical Alpha v18 checked-use subset | **1,589** theorems | 432 `stable_closed` plus 1,157 `alpha_closed` rows |
-| Current Alpha v19 checked-use subset | **1,737** theorems | 432 `stable_closed` plus 1,305 `alpha_closed` rows; zero unchecked entries |
+| Historical Alpha v19 checked-use subset | **1,737** theorems | 432 `stable_closed` plus 1,305 `alpha_closed` rows; zero unchecked entries |
+| Historical Alpha v20 checked-use subset | **1,776** theorems | 432 `stable_closed` plus 1,344 `alpha_closed` rows; zero unchecked entries |
+| Historical Alpha v21 checked-use subset | **1,830** theorems | 432 `stable_closed` plus 1,398 `alpha_closed` rows; zero unchecked entries |
+| Historical Alpha v22 checked-use subset | **1,890** theorems | 432 `stable_closed` plus 1,458 `alpha_closed` rows; zero unchecked entries |
+| Current Alpha v23 checked-use subset | **1,949** theorems | 432 `stable_closed` plus 1,517 `alpha_closed` rows; zero unchecked entries |
 | Historical Alpha v12 proof graph | **4,302** edges / **45** layers | exact direct dependencies for all 1,303 enrolled rows |
 | Historical Alpha v18 proof graph | **5,615** edges / **53** layers | exact direct dependencies for its 1,673 enrolled rows |
-| Current Alpha v19 proof graph | **5,779** edges / **53** layers | every direct dependency of all 1,737 enrolled rows independently checked |
+| Historical Alpha v19 proof graph | **5,779** edges / **53** layers | every direct dependency of all 1,737 historical rows independently checked |
+| Historical Alpha v20 proof graph | **5,882** edges / **53** layers | every direct dependency of all 1,776 historical rows independently checked |
+| Historical Alpha v21 proof graph | **5,986** edges / **53** layers | every direct dependency of all 1,830 historical rows independently checked |
+| Historical Alpha v22 proof graph | **6,128** edges / **53** layers | every direct dependency of all 1,890 historical rows independently checked |
+| Current Alpha v23 proof graph | **6,285** edges / **53** layers | every direct dependency of all 1,949 enrolled rows independently checked |
 | Quadratic-reciprocity Alpha slice | **557** specifications | 241 Stable prerequisites and 316 Alpha-only specifications |
 | Stable $\cup$ QR slice | **748** distinct theorem names | 432 Stable plus the 316 QR Alpha-only rows |
 | K3B focused map | **41** nodes | 12 Stable prerequisites, 22 Alpha-only theorem/support nodes, and 7 conservative definitions |
@@ -282,30 +305,101 @@ BP01, and BP02 tranche RFCs. The full dependency-closed candidate proof ends
 in `bertrand_closed_upper` and `bertrand_strict`.
 
 The 557-row focused QR slice omits 191 Stable theorems; its union with all
-Stable rows has **748** distinct names, leaving 989 other current Alpha v19
+Stable rows has **748** distinct names, leaving 1,201 other current Alpha v23
 entries outside that union. Likewise, the 41-node K3B map is a deliberately
 curated visual lens, not a competing catalog. The current authoritative
-channel pointer is `artifacts/peano-library/channels-v19.json`; it links the
-immutable Alpha v19 catalog, metrics, and graph, while the pre-existing Stable
+channel pointer is `artifacts/peano-library/channels-v23.json`; it links the
+immutable Alpha v23 catalog, metrics, and graph, while the pre-existing Stable
 artifact remains `artifacts/peano-library/catalog-v1.json`. The historical
-`artifacts/peano-library/channels-v12.json` pointer and every Alpha v1--v18
+`artifacts/peano-library/channels-v12.json` pointer and every Alpha v1--v22
 artifact remain sealed parents. The historical v18 enrollment identity is
 `44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175`;
 its promoted-evidence identity is
 `f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66`.
 Its immutable channel pointer remains
-`artifacts/peano-library/channels-v18.json`. The current v19 enrollment
+`artifacts/peano-library/channels-v18.json`. The historical v19 enrollment
 identity is
 `1295d6fc3da84646cb6bc8d5070627d42a6df33d673c44a2adfcd433edc41795`;
 its edition identity is
 `905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7`,
-and its exact evidence root is
+and its historical exact evidence root is
 `627f651198360aa95b8efd085b98f694d88c883434309f6050a819bc249c90c4`.
-The current evidence ledger is 432 `stable_closed`, 1,305 `alpha_closed`,
-zero `body_checked`, and zero pending rows; all 1,737 permit checked use.
-The five historical flagship promotions and two new v19 closure bundles bind
+Its immutable parent-channel pointer remains
+`artifacts/peano-library/channels-v19.json`.
+The historical v20 enrollment identity is
+`947e12db1db93decddd87b833067acf774a37fcb7d89de117010d53baf00065c`;
+its edition identity is
+`ee0f596150d8609ab302303ade44c4413290675398a1d6999a47b3ba046ac38b`,
+and its exact evidence root is
+`fd76c648de26cd8a451244441fac8f423fb4fec8e7feac1c789404dafcda1563`.
+Its immutable parent-channel pointer remains
+`artifacts/peano-library/channels-v20.json`. The historical v21 enrollment
+identity is
+`ad2616d7656438ee2084f5ea404df3dad2106a99c6819fd174fd8c3ed6bb4c98`;
+its edition identity is
+`aee42cc37e4a4073eb4892e81e4f26d957b3b4b42675c1ed4e67c90dc89602e6`;
+its checked evidence root is
+`9d217af3e7f77f8beb436f627a44f1a29cda54bb08a4e666899803aa97ccb91b`;
+and its historical canonical catalog SHA-256 is
+`84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1`.
+Its immutable parent-channel pointer remains
+`artifacts/peano-library/channels-v21.json`. The historical v22 enrollment
+identity is
+`431f7300f9190f6fdc35ef84212e93701f2bb565b7e32c1624b7ae0c89cfc5ea`;
+its edition identity is
+`2750384264856ad10910c1e9369746da886f4760d41e356bfc9e7f8f4563c7db`;
+its checked evidence root is
+`897ac1893550881538cf74274d0d48e15450125776f31be4edc10de0b1d05ef6`;
+and its historical canonical catalog SHA-256 is
+`fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22`.
+Its immutable parent-channel pointer remains
+`artifacts/peano-library/channels-v22.json`. The current v23 enrollment
+identity is
+`f5d94af7a11c642d7076a195e2e795e7b84c61a6de1a6b074708669b2dac1648`;
+its edition identity is
+`02059eef420eb96abd48c41bf62049a3cc69f025b00bed9dc3466e7eb2294a85`;
+its checked evidence root is
+`e9c00544bdad559342da3ed5a0d1e26ef1576a0eecd9f580ec1fc98a2eb941cf`;
+and its canonical catalog SHA-256 is
+`818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2`.
+The current evidence ledger is 432 `stable_closed`, 1,517 `alpha_closed`,
+zero `body_checked`, and zero pending rows; all 1,949 permit checked use.
+The five historical flagship promotions and two historical v19 closure bundles bind
 actual proof data accepted independently by the unchanged Python kernel and
-compiled Lean verifier. The supplementary-law historical parent remains
+compiled Lean verifier. The historical v20 next-layer proof bundle independently checks
+590 complete dependency-curried proof bodies in the original kernel and is
+separately accepted by the independently compiled Lean verifier; its 39
+new rows are grouped as seven polynomial Horner, ten matrix/dot-product, 13
+Bertrand-prime, and nine continued-fraction results. The full arbitrary
+matrix/lattice milestone remained open despite those ten checked components.
+The historical v21 advanced-layer bundle independently checks **209** complete
+ordinary proof bodies and **491** dependency edges in both the unchanged
+intuitionistic kernel and the separately compiled Lean verifier. Its exact
+**54** new rows comprise **23** arbitrary natural/signed matrix-product
+results, **15** Euclidean execution/halving results, and **16** binary
+modular-exponentiation prerequisites. T13 remains open despite **33** checked
+matrix components: arbitrary-dimensional determinants, rank, and lattices
+are not proved. The historical v22 transport-layer bundle independently checks
+**240** complete ordinary proof bodies, **597** dependency edges, and
+**11,848** structural proof nodes in both the original intuitionistic kernel
+and the separately compiled Lean verifier. Its exact **60** new rows comprise
+**21** total/functional/unique binary-length proofs, **20** Euclidean
+gcd-invariant and actual terminal-state proofs, and **19** complete
+supplied-digit binary execution and modular-power-invariant proofs. Its exact
+**1,099,541-byte** artifact has SHA-256
+`95e5f8a3baef113721d748f9d7071864b4bf9511737a27a1272d2695428fb938`.
+The current v23 milestone-closure bundle independently checks **617** complete
+ordinary proof bodies, **1,871** dependency edges, and **39,161** structural
+proof nodes in both the original intuitionistic kernel and the separately
+compiled Lean verifier. Its **59** new rows comprise **17** complete
+Euclidean logarithmic-bound proofs, **24** arbitrary-exponent canonical
+binary-digit and modular-execution proofs, and **18** proofs of prime
+infinitude in the residue class three modulo four. Its exact
+**2,518,315-byte** artifact has SHA-256
+`cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11`.
+G101, G102, and G025 are completely closed; T13's arbitrary-dimensional
+determinant, rank, and lattice requirements remain open.
+The supplementary-law historical parent remains
 independently reproducible at
 `artifacts/peano-library/channels-v17.json`, with evidence identity
 `db2e6e5796169600d17cc54313e9306bac46fb680f914cb2a5a91d247bb746c4`;
@@ -320,7 +414,7 @@ campaign slice, and the {doc}`K3B CellHistory/ListAt chapter
 <cell-history-and-lookup>` is an Alpha layer with its own sealed receipt. The
 {doc}`K3C validity and membership chapter <list-validity-and-membership>`
 documents the additive layer's historical body-checked boundary; all seventeen
-entries are independently closed in current Alpha v19.
+entries are independently closed in current Alpha v23.
 The {doc}`Bertrand campaign chapter <bertrand-campaign>` documents the
 additive layers, including the completed body proofs of finite Legendre
 recurrence, factorial--Legendre equality, compact $H/J$ transport,
@@ -346,7 +440,7 @@ Bertrand row could instead be **Alpha-only** and only **body checked**, meaning
 its declared dependencies remained hypotheses in that particular receipt.
 That historical distinction remains important, but all seventeen K3C entries
 and all 67 formerly auxiliary Bertrand rows now have independently checked
-empty-context authority in Alpha v19. None has acquired Stable membership.
+empty-context authority in Alpha v23. None has acquired Stable membership.
 The twenty-one Alpha-v3 Bertrand rows, forty-two Alpha-v4 Round-2 rows,
 seven Alpha-v5 `FactorialVal` rows, twenty-one Alpha-v6 rows, twenty-four
 Alpha-v7 rows, thirty-eight Alpha-v8 rows, twenty-one Alpha-v9 rows, nine
@@ -354,7 +448,7 @@ Alpha-v10 rows, thirty-eight Alpha-v11 rows, and 180 Alpha-v12 rows were all
 initially enrolled with body-only evidence in their respective **historical
 sealed editions**. Historical Alpha v18 independently closed every theorem in
 the exact **544-node strict Bertrand dependency slice**, including its exact
-valuation, binomial, primorial, and prime-interval prerequisites. Current
+valuation, binomial, primorial, and prime-interval prerequisites. Historical
 Alpha v19 additionally closes all **67 auxiliary Bertrand rows outside that
 slice** and all **17 K3C rows**: all **84** former unchecked entries now have
 actual proof evidence.
@@ -368,7 +462,7 @@ body, and the three compact six-step $H/J$ transport bodies are complete.
 At the sealed Alpha-v7 checkpoint these were body-evidence claims: none of
 the twenty-four rows had then been promoted, and Bertrand's postulate was
 still open. Historical Alpha v18 subsequently closes all strict-root ancestors
-and the final exact theorem; current Alpha v19 also closes the remaining
+and the final exact theorem; historical Alpha v19 also closes the remaining
 auxiliary rows.
 
 Alpha v8 adds the constructive recurrence-defined `Choose` foundation,
@@ -379,7 +473,7 @@ the weighted vertical and factorial bridges; and the exact lower bound
 additions were `body_checked` and unavailable through checked replay; the
 primorial and no-prime upper bounds, large-input contradiction, finite
 coverage, and Bertrand endpoints were then open. Exact strict-root ancestors
-are closed in current Alpha v19, as are the remaining auxiliary rows.
+are closed in current Alpha v23, as are the remaining auxiliary rows.
 
 Alpha v9 adds the conservative inclusive `Primorial` relation and its
 existence, functionality, zero, successor-decomposition, and positivity laws;
@@ -389,7 +483,7 @@ monotonicity. At historical Alpha v9 all twenty-one additions were
 `body_checked`, unavailable through checked replay, and unpromoted. Filtered
 interval splitting, duplicate-free external prime-product comparison,
 `primorial_le_four_pow`, and downstream Bertrand gates were then open; the
-strict-root closure remains independently checked in current Alpha v19.
+strict-root closure remains independently checked in current Alpha v23.
 
 Alpha v10 pins the reviewed generic Product prefix/suffix split, then adds an
 offset selector-product relation with totality and functionality, entry
@@ -398,7 +492,7 @@ transport and shift, prefix restriction, and an exact decomposition of
 Alpha v10 all nine additions were `body_checked` and unavailable through
 checked replay; duplicate-free external-product comparison,
 `primorial_le_four_pow`, and downstream Bertrand gates were then open. The
-strict-root closure remains independently checked in current Alpha v19.
+strict-root closure remains independently checked in current Alpha v23.
 
 Alpha v11 enrolls the complete dependency-closed post-v10 chain: the
 duplicate-free filtered-product comparison, Primorial interval divisibility
@@ -409,7 +503,7 @@ additions were `body_checked` and unavailable through checked replay. B4 was
 then closed at candidate/body-evidence level, while the five-range upper
 bound, B7 contradiction, finite coverage, and final endpoints remained open.
 All exact strict-root ancestors and auxiliary rows are independently checked in
-current Alpha v19.
+current Alpha v23.
 
 Alpha v12 enrolls the complete dependency-closed post-v11 proof. Its first
 forty-three rows add the reviewed B6 base, growth, main inequality, and finite
@@ -421,7 +515,7 @@ checked replay. The historical Alpha-v18 release first supplies a complete
 independent
 544-node original-kernel and compiled-Lean proof, together with an actual
 ordinary empty-context strict-root certificate, and grants both endpoints
-checked-use authority. Current Alpha v19 preserves that proof and closes all
+checked-use authority. Historical Alpha v19 preserves that proof and closes all
 remaining auxiliary rows. Stable promotion remains a separate future
 operation.
 
@@ -440,11 +534,11 @@ evidence is `stable_closed` or `alpha_closed`; a `body_checked` or
 `pending_layered_closure` request fails closed.
 
 ```python
-from peano_lab.library.editions_v19 import edition, entry, replay
+from peano_lab.library.editions_v23 import edition, entry, replay
 
 len(edition("stable").specs)          # 432
-len(edition("alpha").specs)           # 1737
-len(edition("alpha").checked_specs)   # 1737
+len(edition("alpha").specs)           # 1949
+len(edition("alpha").checked_specs)   # 1949
 
 entry("cell_list_extensional", edition="alpha")
 replay("signed_decode_nonnegative_constructor", edition="alpha")
@@ -459,6 +553,25 @@ entry("two_square_iff_zero_or_even_three_mod_four_prime_valuations", edition="al
 entry("linear_congruence_solvable_iff_gcd_divides", edition="alpha")
 entry("prime_is_two_squares_iff_two_or_one_mod_four", edition="alpha")
 entry("infinitely_many_primes_one_mod_four", edition="alpha")
+entry("beta_horner_eval_exists", edition="alpha")
+entry("beta_dot_product_exists_unique", edition="alpha")
+entry("central_binom_prime_divisor_multiplicity_one_exists", edition="alpha")
+entry("iterated_bertrand_prime_chain_exists", edition="alpha")
+entry("continued_fraction_positive_exists", edition="alpha")
+entry("beta_matrix_product_exists", edition="alpha")
+entry("beta_signed_matrix_product_exists", edition="alpha")
+entry("signed_matrix_three_full_determinant_exists", edition="alpha")
+entry("euclidean_two_step_halving", edition="alpha")
+entry("euclidean_gcd_execution_linear_bound", edition="alpha")
+entry("binary_modular_exponentiation_result_exists_unique", edition="alpha")
+entry("binary_length_exists_unique", edition="alpha")
+entry("euclidean_execution_terminal_identified", edition="alpha")
+entry("euclidean_anchored_execution_linear_bound", edition="alpha")
+entry("binary_modular_execution_power_correct", edition="alpha")
+entry("binary_modular_execution_result_exists_unique", edition="alpha")
+entry("euclidean_gcd_execution_logarithmic_bound", edition="alpha")
+entry("binary_modular_execution_logarithmic_bound", edition="alpha")
+entry("infinitely_many_primes_three_mod_four", edition="alpha")
 ```
 
 The ordinary Stable API is unchanged and remains the default. Alpha replay

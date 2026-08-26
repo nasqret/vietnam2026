@@ -63,6 +63,10 @@ from the repository root:
 make lean-browser
 ```
 
+If an older `make lean-browser` process is already running, stop it with
+`Ctrl-C` and start the command again so the service loads the current standalone
+proof exporter and verification rules.
+
 Open the exact theorem graph at
 <http://127.0.0.1:8787/book/_static/pa-proof-explorer/graph.html?target=PA000F> or its
 definition-aware edition at
@@ -72,16 +76,37 @@ panel. The browser shows actual dependency translation and Lean compilation
 progress, permits cancellation, and offers the generated Lean source and
 complete named-module ZIP after successful independent verification.
 
-For an entirely readable strand whose self-contained source fits Lean Live's
-share limit, **Open in Lean Live** sends that exact source directly to the
-official editor. Certificate-backed strands and larger proof packages remain
-downloadable; Lean Live does not automatically contain the separate Peano Lab
-certificate-checker project. Conservative definitions are definitions, not new
-axioms, and verification never uses `sorry`.
+For every reconstructible readable strand, Hydra generates one complete
+self-contained proof, independently compiles it locally, and chooses the
+shorter documented Lean Live `#code` or compressed `#codez` link. **Open in
+Lean Live** receives exactly the verified source: all named dependency proofs,
+only the definitions actually used, no Mathlib, no Peano Lab companion
+imports, **no import statements whatsoever**, no `sorry`, and no additional
+axioms. Lean's default prelude supplies the core language and tactics. The
+service verifies the share decodes byte-for-byte to the checked source before
+displaying it. A proof that still requires a checked certificate fallback or
+remains oversized even after compression is downloadable but is never
+misrepresented as independently runnable in Lean Live.
+
+Compressed `#codez` links use Lean Live's actual unpadded LZ-String **Base64**
+codec, with reserved `+` and `/` characters escaped as `%2B` and `%2F`. The
+visually similar URL-safe LZ-String alphabet is incompatible with Lean Live and
+must never be substituted: it silently changes proof text whenever its `-`
+symbol occurs. Both Hydra's browser and its acceptance checker verify the
+canonical escaped Base64 fragment against the exact compiled Lean source.
 
 The service starts one proof worker, listens only on loopback by default, and
 requires an existing installed Lean companion/toolchain. Browser jobs default
-to a 1,024 MiB Lean memory ceiling and at most 256 dependency nodes. Choose
+to a 1,024 MiB Lean memory ceiling, at most 1,024 dependency nodes, a 1 MiB
+standalone proof-source limit, and a 512 KiB compressed Lean Live link limit.
+All 1,890 historical Alpha-v22 theorems have dependency closures below the
+node ceiling; their largest historical closure contains 557 named theorems.
+The 59 additional Alpha-v23 results also lie below that ceiling: their
+complete joint dependency certificate contains 616 named theorem nodes.
+Extremely
+large proofs may still exceed the separately enforced source, URL, or compiler
+time limits and remain available through the checked local proof package.
+Choose
 another local port with `make lean-browser PEANO_LEAN_BROWSER_PORT=8890`. A network-accessible
 deployment additionally requires the explicit service `--public-host` switch;
 ordinary static site hosting cannot run the required compiler service. See
@@ -89,38 +114,104 @@ ordinary static site hosting cannot run the required compiler service. See
 [`LEAN_SELECTOR_UI.md`](LEAN_SELECTOR_UI.md), and
 [`LEAN_LIVE_INTEGRATION.md`](LEAN_LIVE_INTEGRATION.md).
 
-With the browser service still running, validate the entire real proof workflow
-from another terminal:
+Validate the entire real proof workflow with one command:
 
 ```bash
 make lean-browser-check
 ```
+
+If the local service is not already running, the checker automatically starts a
+temporary loopback-only browser service and shuts it down when the check
+finishes. An existing service is reused and left running. Pass
+`PEANO_LEAN_BROWSER_CHECK_ARGS=--require-running` to disable automatic startup.
 
 This checks the existing graph's interactive sidebar, compiles the complete
 three-theorem `add_comm` strand, independently checks its standalone source,
 compares the downloaded Lean file byte-for-byte against its Lean Live share,
 and validates the safe generated-module ZIP.
 
+To exercise the much larger prime-inverse Alpha campaign example explicitly:
+
+```bash
+make lean-browser-check \
+  PEANO_LEAN_BROWSER_CHECK_ARGS="--theorem prime_inverse_prefix_fixed_cases --edition alpha"
+```
+
+A substantially larger campaign proof is also independently verified and
+shareable: `prime_choose_unused_nonendpoint_orbit` has 159 theorem nodes and
+generates 398,596 bytes of standalone Lean source with a 129,151-byte Lean Live
+link. Check that complete proof on a free local port with:
+
+```bash
+make lean-browser-check \
+  PEANO_LEAN_BROWSER_PORT=8902 \
+  PEANO_LEAN_BROWSER_CHECK_ARGS="--theorem prime_choose_unused_nonendpoint_orbit --edition alpha"
+```
+
+For unusually large self-contained proofs, the browser accepts an explicit
+4 MiB source and 1 MiB compressed-link policy while retaining a single bounded
+Lean compiler:
+
+```bash
+make lean-browser \
+  PEANO_LEAN_BROWSER_ARGS="--max-live-source-kib 4096 --max-live-url-bytes 1048576"
+```
+
 The same controls are also injected into the Bertrand and six constructive
 campaign graphs. For a small, genuinely new Alpha-v19 result, open
 <http://127.0.0.1:8787/book/_static/constructive-frontier-explorer/pythagorean-fermat-four/explorer/defined/graph.html?target=PF0000>;
 the selected `pythagorean_double_product` theorem has a nine-node dependency
-strand and is correctly labeled **Alpha**, not Stable.
+strand, is correctly labeled **Alpha**, not Stable, and has a fully readable,
+import-free, independently checked Lean Live proof with no certificate
+fallback.
 
-## Fully checked constructive Alpha v19 release
+## Fully checked constructive Alpha v23 release
 
-The opt-in Alpha-v19 edition contains **1,737 independently checked theorems**
-and **5,779 checked dependency edges**: **432 unchanged Stable** results and
-**1,305 Alpha-only** results, with **zero body-only or pending statements**.
-It closes **84** historical obligations and adds **64** checked Pythagorean,
-prime two-square, linear-congruence, and one-modulo-four prime theorems.
-Regenerate its canonical artifacts or run every release, mutation, and
-independent Lean bundle check with:
+The opt-in Alpha-v23 edition contains **1,949 independently checked theorems**
+and **6,285 checked dependency edges**: **432 unchanged Stable** results and
+**1,517 Alpha-only** results, with **zero body-only or pending statements**.
+Its historical Alpha-v19 ancestor closed **84** historical obligations and
+added **64** checked Pythagorean, prime two-square, linear-congruence, and
+one-modulo-four prime theorems. Historical Alpha v20 independently adds **39**
+polynomial Horner, finite matrix-component, strict Bertrand-prime, and finite
+continued-fraction theorems. Historical Alpha v21 preserves its complete
+1,776-theorem v20 parent and adds **54** checked results: **23** arbitrary
+natural/signed matrix-product theorems, **15** Euclidean execution/halving
+theorems, and **16** binary modular-exponentiation theorems. Historical Alpha v22
+preserves all 1,830 historical v21 entries and adds **60** genuinely checked
+results: **21** total, functional, and unique binary-length theorems, **20**
+Euclidean gcd-invariant/terminal-state identification theorems, and **19**
+complete supplied-digit binary modular execution/power-correctness theorems.
+Its historical **240-node**, **597-edge**, **1,099,541-byte** proof bundle is
+independently accepted by both the original intuitionistic kernel and the
+separately compiled Lean verifier; SHA-256 is
+`95e5f8a3baef113721d748f9d7071864b4bf9511737a27a1272d2695428fb938`.
+
+Current Alpha v23 preserves every historical v22 theorem and adds **59**
+checked results: **17** complete logarithmic Euclidean-GCD proofs, **24**
+canonical arbitrary-exponent binary-digit/execution proofs, and **18** proofs
+of infinitely many primes congruent to three modulo four. Its complete
+**617-node**, **1,871-edge**, **2,518,315-byte** proof bundle is independently
+accepted by both unchanged checkers; SHA-256 is
+`cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11`.
+
+Actual Euclidean terminal-state gcd identification with
+`steps <= 2 * BitLen(b) + 1`, canonical digits and genuine modular execution
+with `operations <= 3 * BitLen(e) + 2`, and infinitely many primes three
+modulo four are **proved**. Arbitrary-dimensional determinants, rank, and
+lattices remain open. Regenerate the current
+artifacts or run every release,
+mutation, and independent Lean bundle check with:
 
 ```bash
-make peano-library-alpha-v19
-make peano-library-alpha-v19-check
+make peano-library-alpha-v23
+make peano-library-alpha-v23-check
 ```
+
+The historical immutable parents remain reproducible with
+`make peano-library-alpha-v20-check` and
+`make peano-library-alpha-v21-check`, and
+`make peano-library-alpha-v22-check`.
 
 Inspect the resulting theorem or its complete dependency outline without
 replaying a large certificate:
@@ -130,6 +221,11 @@ python3 scripts/export_peano_lean.py infinitely_many_primes_one_mod_four \
   --edition alpha --format pretty
 python3 scripts/export_peano_lean.py infinitely_many_primes_one_mod_four \
   --edition alpha --format outline
+python3 scripts/export_peano_lean.py signed_matrix_two_determinant_exists \
+  --edition alpha --format compact \
+  --package-dir /private/tmp/peano-lean-signed-determinant \
+  --verify --lean-project ../peano-lab-lean \
+  --max-memory-mib 768 --max-verify-seconds 60
 ```
 
 In the browser, `pa lib alpha` reports the checked inventory and
@@ -137,7 +233,9 @@ In the browser, `pa lib alpha` reports the checked inventory and
 proof strand. Neither preview claims fresh kernel replay or independent Lean
 compilation; request an explicit bounded export and `--verify` for that audit.
 Stable remains the default, and the still-open primitive Pythagorean inverse
-and Fermat exponent-four strict descent are not asserted.
+and Fermat exponent-four strict descent are not asserted. The complete
+arbitrary matrix-and-lattice milestone likewise remains open despite 33
+independently checked finite matrix and arbitrary-product components.
 
 ## The Lean FTA companion
 

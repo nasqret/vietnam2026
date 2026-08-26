@@ -5,6 +5,20 @@
 Full architecture (read it FIRST — it is binding): **`docs/PEANO_LAB_DESIGN.md`**.
 Priorities: soundness → clarity → pedagogy → extensibility → efficiency. Python, clean code.
 
+**Current constructive-library checkpoint:** immutable Alpha v23 contains
+**1,949 independently checked theorems**, **6,285 actual proof-dependency
+edges**, and **53 dependency layers**; Stable remains the unchanged
+432-theorem default. Its 59 newest first-order proofs close three exact grand
+campaign milestones: G101 (17 logarithmic Euclidean-GCD theorems, including
+`steps <= 2 * BitLen(b) + 1`), G102 (24 canonical arbitrary-exponent binary
+digit/execution theorems, including
+`operations <= 3 * BitLen(e) + 2`), and G025 (18 theorems proving infinitely
+many primes congruent to three modulo four). The shared notation DAG contains
+152 blueprint terms and 97 independently reviewed conservative definitions.
+Arbitrary-dimensional determinants, rank, and lattices remain genuinely open
+under T13; neither notation nor host computation substitutes for unchanged
+original-kernel proof checking or independent Lean verification.
+
 **House rules for the implementing model (Codex):**
 - The kernel (`peano_lab/kernel/`) is the trusted base: small, dependency-free, no imports from
   engine/ui. `checker.py` target ≤ ~300 lines. Every QED must pass the independent checker

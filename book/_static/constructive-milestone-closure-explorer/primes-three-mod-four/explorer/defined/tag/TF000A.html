@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TF000A — three_mod_four_good_prime_exclusive — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="primes-three-mod-four"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=94ac4d193cbf">Definitions and proofs</a>
+       <a href="../../tag/TF000A.html?v=94ac4d193cbf">Exact original proof</a>
+       <a href="../graph.html?target=TF000A&amp;v=94ac4d193cbf">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=94ac4d193cbf">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=94ac4d193cbf">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F03&amp;v=94ac4d193cbf">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G025" href="../../../../grand-campaign/?view=goal&amp;focus=G025&amp;v=94ac4d193cbf">G025 milestone</a></nav>
+  <p class="pd-tag">TF000A</p><h1>three_mod_four_good_prime_exclusive</h1>
+  <p>A prime equal to two or one modulo four cannot also be three modulo four.</p><p class="pd-status">Alpha v24 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  
+  <p class="pd-callout">The exact G025 progression-prime milestone is fully proved in unchanged constructive arithmetic; Mod4Three deliberately reuses its existing Quadratic Reciprocity definition PD0012. The much stronger full Dirichlet progression-prime milestone G030 remains open.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ p. <a class="pd-definition-ref" data-definition="PD0004" href="../definition/PD0004.html?v=94ac4d193cbf">Prime(p)</a> → p = 2 ∨ (∃ x. p = 4 · x + 1) → ¬<a class="pd-definition-ref" data-definition="PD0012" href="../definition/PD0012.html?v=94ac4d193cbf">Mod4Three(p)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0004.html?v=94ac4d193cbf">Prime(p) · 1</a><a class="pd-chip" href="../definition/PD0012.html?v=94ac4d193cbf">Mod4Three(n) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">prime_two_or_one_mod_four_is_sum_of_two_squares · checked external prerequisite</span><a class="pd-chip" href="TF0009.html?v=94ac4d193cbf">three_mod_four_progression_not_two_square</a></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall p. ((~(p = 1) /\ forall frm_prime_left_ptmf_prime frm_prime_right_ptmf_prime. p = frm_prime_left_ptmf_prime * frm_prime_right_ptmf_prime -&gt; frm_prime_left_ptmf_prime = 1 \/ frm_prime_right_ptmf_prime = 1)) -&gt; (p = 2 \/ exists k. p = 4 * k + 1) -&gt; (exists ff_residue_ptmf_prime. (p) = 4 * ff_residue_ptmf_prime + 3) -&gt; false</code></pre></details>
+  <section><h2>Complete unchanged native tactic proof</h2>
+    <p>All 11 lines are the exact independently kernel-checked original script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro p</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro hprime</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro hgood</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro hthree</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>specialize <a class="pd-theorem-ref" href="TF0009.html?v=94ac4d193cbf">three_mod_four_progression_not_two_square</a> p</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>apply <a class="pd-theorem-ref" href="TF0009.html?v=94ac4d193cbf">three_mod_four_progression_not_two_square</a></code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>exact hthree</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>specialize prime_two_or_one_mod_four_is_sum_of_two_squares p</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>apply prime_two_or_one_mod_four_is_sum_of_two_squares</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>exact hprime</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>exact hgood</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v24 checked use</dd><dt>First admission</dt><dd>Alpha v23</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>607 / 617</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 617 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>23 / 14</dd>
+      <dt>Statement SHA-256</dt><dd><code>8d9b67c3ee9c37067c6bdef4f7af46362904a6b1167d96a1b6dd796f9ace52a4</code></dd>
+      <dt>Script SHA-256</dt><dd><code>4592225a6b314bb640206ea01bbd8c98d87c7506a8e178a42fbdb9a78dfd89b8</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11</code></dd>
+      <dt>Exact source module</dt><dd><code>peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py</code></dd></dl>
+</aside></main></body>
+</html>

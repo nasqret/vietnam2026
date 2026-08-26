@@ -141,7 +141,7 @@ def test_local_have_and_suffices_keep_their_actual_proof_branch_structure() -> N
     assert " := by\n    have is_lcm_zero_right_before" in have_result.lean_body
     assert "\n  have is_lcm_symm_before :=" in have_result.lean_body
     assert "suffices hswap : m * n = n * m by" in suffices_result.lean_body
-    assert "    rw [hswap]" in suffices_result.lean_body
+    assert "    rewrite (occs := .pos [1]) [hswap]" in suffices_result.lean_body
 
 
 def test_specialization_preserves_the_old_hypothesis_and_parenthesizes_terms() -> None:
@@ -160,7 +160,7 @@ def test_arithmetic_axioms_are_core_lean_theorems_not_new_axioms() -> None:
     assert pa1.used_axioms == ("PA1",)
     assert "apply Nat.succ.inj" in pa2.lean_body
     assert pa2.used_axioms == ("PA2",)
-    assert "rw [Nat.mul_zero]" in rewrite.lean_body
+    assert "rewrite (occs := .pos [1]) [Nat.mul_zero]" in rewrite.lean_body
     assert rewrite.used_axioms == ("PA5",)
 
 
@@ -191,7 +191,7 @@ def test_rewrite_direction_and_local_hypothesis_history_are_preserved() -> None:
 
     assert result.status == "translated"
     assert "have hbb_before := hbb" in result.lean_body
-    assert "rw [← hab] at hbb" in result.lean_body
+    assert "rewrite (occs := .pos [1]) [← hab] at hbb" in result.lean_body
 
 
 def test_small_closed_norm_num_becomes_kernel_checked_decision() -> None:

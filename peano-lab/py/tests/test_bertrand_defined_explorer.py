@@ -17,7 +17,7 @@ sys.path.insert(0, str(REPO / "peano-lab" / "py"))
 sys.path.insert(0, str(REPO / "scripts"))
 
 from peano_lab.library import editions_v18 as proof_alpha  # noqa: E402
-from peano_lab.library import editions_v19 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v24 as current_alpha  # noqa: E402
 
 EXPLICIT = REPO / "book" / "_static" / "bertrand-proof-explorer"
 DEFINED = EXPLICIT / "defined"
@@ -98,8 +98,14 @@ def test_campaign_registry_extends_without_mutating_quadratic_reciprocity() -> N
     qr_manifest = _load(QR_DEFINED / "manifest.json")
     assert qr_manifest["theorem_count"] == 557
     assert qr_manifest["definition_count"] == 40
-    assert qr_manifest["aggregate_sha256"] == (
-        "21cd7aba17b31296234c426c372b9de82ee82765cd88c467b80bcaa8da239583"
+    assert qr_manifest["edition_identity_sha256"] == (
+        "9b7c7928ddd3e1930fb5eca6e6b6c4b5ce6978633f6f187525d8813c90f3ddd6"
+    )
+    assert qr_manifest["aggregate_sha256"] == _digest(
+        "\n".join(
+            f'{entry["path"]}\0{entry["sha256"]}'
+            for entry in qr_manifest["files"]
+        )
     )
 
 
@@ -189,6 +195,28 @@ def test_generator_rejects_missing_campaign_adapter(monkeypatch) -> None:
         generator._adapter()
 
 
+def test_current_bertrand_navigation_preserves_immutable_shared_qr_revision() -> None:
+    import build_bertrand_defined_explorer as generator
+    import build_pa_defined_explorer as shared
+
+    historical_revision = shared.CAMPAIGN_HTML_REVISION
+    historical_navigation = shared._campaign_navigation(
+        "../../../", family="F03", goal="A02", family_label="Prime-distribution"
+    )
+    current_navigation = generator._current_campaign_links(historical_navigation)
+
+    assert historical_revision == "94ac4d193cbf"
+    assert generator.CAMPAIGN_HTML_REVISION == "94ac4d193cbf"
+    assert f"v={historical_revision}" in historical_navigation
+    assert current_navigation == historical_navigation
+    assert current_navigation.count(f"v={generator.CAMPAIGN_HTML_REVISION}") == 4
+    assert shared.CAMPAIGN_HTML_REVISION == historical_revision
+    assert generator._current_campaign_links("") == ""
+
+    with pytest.raises(generator.DefinedEditionError, match="lost its sealed revision"):
+        generator._current_campaign_links('<a href="../../../grand-campaign/">stale</a>')
+
+
 def test_manifest_freezes_exact_bertrand_sources_and_complete_file_inventory(
     documents: dict[str, dict]
 ) -> None:
@@ -203,11 +231,11 @@ def test_manifest_freezes_exact_bertrand_sources_and_complete_file_inventory(
     assert manifest["notation_edge_count"] == 1510
     assert manifest["formal_line_count"] == 28410
     assert manifest["generated_file_count"] == 1124
-    assert manifest["alpha_edition_version"] == "v19"
+    assert manifest["alpha_edition_version"] == "v24"
     assert manifest["alpha_edition_identity_sha256"] == (
-        current_alpha.ALPHA_V19_IDENTITY_SHA256
+        current_alpha.ALPHA_V24_IDENTITY_SHA256
     )
-    assert manifest["alpha_edition_checked_use_count"] == 1737
+    assert manifest["alpha_edition_checked_use_count"] == 2008
     assert manifest["proof_edition_version"] == "v18"
     assert manifest["proof_edition_identity_sha256"] == (
         proof_alpha.ALPHA_V18_IDENTITY_SHA256
@@ -318,7 +346,7 @@ def test_all_theorems_and_tactic_lines_preserve_immutable_explicit_sources(
         assert readable["name"] == exact["name"]
         assert readable["scope"] == exact["scope"]
         assert readable["status"] == exact["status"]
-        assert readable["alpha_edition_version"] == "v19"
+        assert readable["alpha_edition_version"] == "v24"
         assert readable["proof_edition_version"] == "v18"
         assert readable["alpha_evidence"] == exact["alpha_evidence"]
         assert readable["alpha_checked_use"] is True
@@ -427,11 +455,11 @@ def test_mixed_graph_keeps_proof_paths_distinct_from_notation_edges(
     assert graph["schema"] == "peano-lab-bertrand-defined-graph-v1"
     assert graph["root_tag"] == ROOT_TAG
     assert graph["path_policy"] == "proof_dependency_edges_only"
-    assert graph["alpha_edition_version"] == "v19"
+    assert graph["alpha_edition_version"] == "v24"
     assert graph["alpha_edition_identity_sha256"] == (
-        current_alpha.ALPHA_V19_IDENTITY_SHA256
+        current_alpha.ALPHA_V24_IDENTITY_SHA256
     )
-    assert graph["alpha_edition_checked_use_count"] == 1737
+    assert graph["alpha_edition_checked_use_count"] == 2008
     assert graph["proof_edition_version"] == "v18"
     assert graph["proof_edition_identity_sha256"] == (
         proof_alpha.ALPHA_V18_IDENTITY_SHA256
@@ -484,6 +512,44 @@ def test_mixed_graph_keeps_proof_paths_distinct_from_notation_edges(
             assert edge["target"].startswith("PD")
 
 
+def test_bertrand_definition_graph_exposes_dependency_first_layers(
+    documents: dict[str, dict],
+) -> None:
+    graph = documents["graph"]
+    corpus = documents["corpus"]
+    definitions = {row["id"]: row for row in corpus["definitions"]}
+    graph_nodes = {
+        row["id"]: row
+        for row in graph["nodes"]
+        if row["kind"] == "definition"
+    }
+
+    assert graph["definition_count"] == 28
+    assert graph["definition_edge_count"] == 42
+    assert graph["definition_layer_count"] == 7
+    assert graph["theorem_definition_edge_count"] == 1468
+    assert graph["definition_topological_order"] == list(definitions)
+    preceding: set[str] = set()
+    for identifier in graph["definition_topological_order"]:
+        row = definitions[identifier]
+        node = graph_nodes[identifier]
+        assert set(row["dependencies"]) <= preceding
+        assert node["definition_layer"] == max(
+            (
+                graph_nodes[dependency]["definition_layer"] + 1
+                for dependency in row["dependencies"]
+            ),
+            default=0,
+        )
+        assert set(node["transitive_definition_dependencies"]) <= preceding
+        page = (DEFINED / "definition" / f"{identifier}.html").read_text(
+            encoding="utf-8"
+        )
+        assert "Dependency-first definition layer" in page
+        assert "Transitive conservative prerequisites" in page
+        preceding.add(identifier)
+
+
 def test_every_theorem_and_selected_definition_has_linked_reading_pages(
     documents: dict[str, dict]
 ) -> None:
@@ -531,8 +597,8 @@ def test_capstone_is_readable_preserves_the_exact_statement_and_proof_lines(
     assert 'id="proof-line-0014"' in page
     assert 'id="proof-line-0039"' in page
     assert "bertrand_bp02_candidate.py" in page
-    assert "Alpha v19 checked-use theorem" in page
-    assert "<dt>Current Alpha edition</dt><dd>v19</dd>" in page
+    assert "Alpha v24 checked-use theorem" in page
+    assert "<dt>Current Alpha edition</dt><dd>v24</dd>" in page
     assert "<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>" in page
     assert "<dt>Current release evidence</dt><dd>alpha_closed</dd>" in page
     assert "<dt>Checked theorem use</dt><dd>yes</dd>" in page
@@ -565,7 +631,7 @@ def test_interactive_surface_defaults_to_the_capstone_and_local_pinned_assets() 
     assert '<option value="focus" selected>Focused: path + selected node</option>' in graph
     assert "Proof arrows and notation arrows are different relations" in graph
     assert "pa-bertrand-defined-release-evidence" in graph
-    assert "Alpha v19 checked-use theorem; independently kernel and Lean verified; not Stable" in graph
+    assert "Alpha v24 checked-use theorem; independently kernel and Lean verified; not Stable" in graph
 
     for relative, digest in shared.PINNED_ASSETS.items():
         payload = (DEFINED / relative).read_bytes()
@@ -576,9 +642,15 @@ def test_interactive_surface_defaults_to_the_capstone_and_local_pinned_assets() 
 def test_every_defined_bertrand_node_connects_to_its_global_research_context(
     documents: dict[str, dict],
 ) -> None:
+    import build_bertrand_defined_explorer as generator
     import build_pa_defined_explorer as shared
 
-    revision = shared.CAMPAIGN_HTML_REVISION
+    current_catalog = (
+        REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+    )
+    revision = _digest(current_catalog.read_bytes())[:12]
+    assert revision == generator.CAMPAIGN_HTML_REVISION == "94ac4d193cbf"
+    assert shared.CAMPAIGN_HTML_REVISION == "94ac4d193cbf"
     for relative in ("index.html", "graph.html"):
         page = (DEFINED / relative).read_text(encoding="utf-8")
         assert f'href="../../../grand-campaign/?v={revision}"' in page

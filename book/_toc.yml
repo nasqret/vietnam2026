@@ -40,6 +40,9 @@ parts:
       - file: arithmetic-library/index
       - file: arithmetic-library/library-editions
       - file: arithmetic-library/grand-campaign-atlas
+      - file: arithmetic-library/next-layer-campaign
+      - file: arithmetic-library/advanced-layer-campaign
+      - file: arithmetic-library/transport-layer-campaign
       - file: arithmetic-library/guided-tour
       - file: arithmetic-library/theorem-atlas
       - file: arithmetic-library/proof-explorer

@@ -1,9 +1,41 @@
 {
-  "alpha_edition_checked_use_count": 1737,
-  "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-  "alpha_edition_version": "v19",
+  "alpha_edition_checked_use_count": 2008,
+  "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+  "alpha_edition_version": "v24",
   "catalog_sha256": "825909e057492de87ef08208451c3475396ca009179c513457b05b57f7e2f109",
   "definition_count": 28,
+  "definition_edge_count": 42,
+  "definition_layer_count": 7,
+  "definition_topological_order": [
+    "PD0001",
+    "PD0002",
+    "PD0003",
+    "PD0004",
+    "PD0005",
+    "PD0006",
+    "PD0007",
+    "PD0008",
+    "PD0013",
+    "PD0014",
+    "PD0015",
+    "PD0016",
+    "PD0017",
+    "PD0018",
+    "PD0019",
+    "PD0020",
+    "PD0023",
+    "PD0041",
+    "PD0042",
+    "PD0043",
+    "PD0044",
+    "PD0045",
+    "PD0046",
+    "PD0048",
+    "PD0049",
+    "PD0050",
+    "PD0051",
+    "PD0052"
+  ],
   "edges": [
     {
       "body_reference": true,
@@ -25422,7 +25454,7 @@
     }
   ],
   "edition_identity_sha256": "251dd5de0d79ae986371a8a9205850e04ca8ac48eec0f35389c23c6d0bdec400",
-  "explicit_graph_sha256": "ca323a38b0c6098759559c2c12ec5e4b96531f47a66087ab4556d3f5fbbf520d",
+  "explicit_graph_sha256": "16c770413273563838394a331e9fc059a2993fe2cb3dd623d0caa102d2241a02",
   "formal_line_count": 28410,
   "graph_alpha_closed_count": 342,
   "graph_checked_use_count": 544,
@@ -25431,7 +25463,7 @@
   "nodes": [
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0000.html",
       "id": "BT0000",
@@ -25446,7 +25478,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0001.html",
       "id": "BT0001",
@@ -25461,7 +25493,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0002.html",
       "id": "BT0002",
@@ -25476,7 +25508,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0003.html",
       "id": "BT0003",
@@ -25491,7 +25523,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0004.html",
       "id": "BT0004",
@@ -25506,7 +25538,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0005.html",
       "id": "BT0005",
@@ -25521,7 +25553,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0006.html",
       "id": "BT0006",
@@ -25536,7 +25568,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0007.html",
       "id": "BT0007",
@@ -25551,7 +25583,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0008.html",
       "id": "BT0008",
@@ -25566,7 +25598,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0009.html",
       "id": "BT0009",
@@ -25581,7 +25613,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000A.html",
       "id": "BT000A",
@@ -25596,7 +25628,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000B.html",
       "id": "BT000B",
@@ -25611,7 +25643,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000C.html",
       "id": "BT000C",
@@ -25626,7 +25658,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000D.html",
       "id": "BT000D",
@@ -25641,7 +25673,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000E.html",
       "id": "BT000E",
@@ -25656,7 +25688,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000F.html",
       "id": "BT000F",
@@ -25671,7 +25703,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000G.html",
       "id": "BT000G",
@@ -25686,7 +25718,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000H.html",
       "id": "BT000H",
@@ -25701,7 +25733,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000I.html",
       "id": "BT000I",
@@ -25716,7 +25748,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000J.html",
       "id": "BT000J",
@@ -25731,7 +25763,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000K.html",
       "id": "BT000K",
@@ -25746,7 +25778,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000L.html",
       "id": "BT000L",
@@ -25761,7 +25793,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000M.html",
       "id": "BT000M",
@@ -25776,7 +25808,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000Q.html",
       "id": "BT000Q",
@@ -25791,7 +25823,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000R.html",
       "id": "BT000R",
@@ -25806,7 +25838,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000S.html",
       "id": "BT000S",
@@ -25821,7 +25853,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000T.html",
       "id": "BT000T",
@@ -25836,7 +25868,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000U.html",
       "id": "BT000U",
@@ -25851,7 +25883,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000V.html",
       "id": "BT000V",
@@ -25866,7 +25898,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000W.html",
       "id": "BT000W",
@@ -25881,7 +25913,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000X.html",
       "id": "BT000X",
@@ -25896,7 +25928,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT000Y.html",
       "id": "BT000Y",
@@ -25911,7 +25943,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0010.html",
       "id": "BT0010",
@@ -25926,7 +25958,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0011.html",
       "id": "BT0011",
@@ -25941,7 +25973,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0012.html",
       "id": "BT0012",
@@ -25956,7 +25988,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0013.html",
       "id": "BT0013",
@@ -25971,7 +26003,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0014.html",
       "id": "BT0014",
@@ -25986,7 +26018,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0015.html",
       "id": "BT0015",
@@ -26001,7 +26033,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0016.html",
       "id": "BT0016",
@@ -26016,7 +26048,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0017.html",
       "id": "BT0017",
@@ -26031,7 +26063,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0018.html",
       "id": "BT0018",
@@ -26046,7 +26078,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0019.html",
       "id": "BT0019",
@@ -26061,7 +26093,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001B.html",
       "id": "BT001B",
@@ -26076,7 +26108,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001C.html",
       "id": "BT001C",
@@ -26091,7 +26123,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001D.html",
       "id": "BT001D",
@@ -26106,7 +26138,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001E.html",
       "id": "BT001E",
@@ -26121,7 +26153,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001F.html",
       "id": "BT001F",
@@ -26136,7 +26168,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001G.html",
       "id": "BT001G",
@@ -26151,7 +26183,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001H.html",
       "id": "BT001H",
@@ -26166,7 +26198,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001I.html",
       "id": "BT001I",
@@ -26181,7 +26213,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001J.html",
       "id": "BT001J",
@@ -26196,7 +26228,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001K.html",
       "id": "BT001K",
@@ -26211,7 +26243,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001L.html",
       "id": "BT001L",
@@ -26226,7 +26258,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001M.html",
       "id": "BT001M",
@@ -26241,7 +26273,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001N.html",
       "id": "BT001N",
@@ -26256,7 +26288,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001O.html",
       "id": "BT001O",
@@ -26271,7 +26303,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001P.html",
       "id": "BT001P",
@@ -26286,7 +26318,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001R.html",
       "id": "BT001R",
@@ -26301,7 +26333,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001S.html",
       "id": "BT001S",
@@ -26316,7 +26348,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001U.html",
       "id": "BT001U",
@@ -26331,7 +26363,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001V.html",
       "id": "BT001V",
@@ -26346,7 +26378,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001W.html",
       "id": "BT001W",
@@ -26361,7 +26393,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT001X.html",
       "id": "BT001X",
@@ -26376,7 +26408,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0020.html",
       "id": "BT0020",
@@ -26391,7 +26423,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0021.html",
       "id": "BT0021",
@@ -26406,7 +26438,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0022.html",
       "id": "BT0022",
@@ -26421,7 +26453,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0024.html",
       "id": "BT0024",
@@ -26436,7 +26468,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0025.html",
       "id": "BT0025",
@@ -26451,7 +26483,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0026.html",
       "id": "BT0026",
@@ -26466,7 +26498,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0027.html",
       "id": "BT0027",
@@ -26481,7 +26513,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0028.html",
       "id": "BT0028",
@@ -26496,7 +26528,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002A.html",
       "id": "BT002A",
@@ -26511,7 +26543,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002B.html",
       "id": "BT002B",
@@ -26526,7 +26558,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002C.html",
       "id": "BT002C",
@@ -26541,7 +26573,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002D.html",
       "id": "BT002D",
@@ -26556,7 +26588,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002E.html",
       "id": "BT002E",
@@ -26571,7 +26603,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002F.html",
       "id": "BT002F",
@@ -26586,7 +26618,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002G.html",
       "id": "BT002G",
@@ -26601,7 +26633,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002H.html",
       "id": "BT002H",
@@ -26616,7 +26648,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002I.html",
       "id": "BT002I",
@@ -26631,7 +26663,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002L.html",
       "id": "BT002L",
@@ -26646,7 +26678,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002S.html",
       "id": "BT002S",
@@ -26661,7 +26693,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002U.html",
       "id": "BT002U",
@@ -26676,7 +26708,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002V.html",
       "id": "BT002V",
@@ -26691,7 +26723,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002W.html",
       "id": "BT002W",
@@ -26706,7 +26738,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002X.html",
       "id": "BT002X",
@@ -26721,7 +26753,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT002Y.html",
       "id": "BT002Y",
@@ -26736,7 +26768,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0031.html",
       "id": "BT0031",
@@ -26751,7 +26783,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0032.html",
       "id": "BT0032",
@@ -26766,7 +26798,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0033.html",
       "id": "BT0033",
@@ -26781,7 +26813,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0034.html",
       "id": "BT0034",
@@ -26796,7 +26828,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0035.html",
       "id": "BT0035",
@@ -26811,7 +26843,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0036.html",
       "id": "BT0036",
@@ -26826,7 +26858,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0037.html",
       "id": "BT0037",
@@ -26841,7 +26873,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0038.html",
       "id": "BT0038",
@@ -26856,7 +26888,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0039.html",
       "id": "BT0039",
@@ -26871,7 +26903,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003A.html",
       "id": "BT003A",
@@ -26886,7 +26918,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003B.html",
       "id": "BT003B",
@@ -26901,7 +26933,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003C.html",
       "id": "BT003C",
@@ -26916,7 +26948,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003D.html",
       "id": "BT003D",
@@ -26931,7 +26963,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003E.html",
       "id": "BT003E",
@@ -26946,7 +26978,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003F.html",
       "id": "BT003F",
@@ -26961,7 +26993,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003G.html",
       "id": "BT003G",
@@ -26976,7 +27008,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003H.html",
       "id": "BT003H",
@@ -26991,7 +27023,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003J.html",
       "id": "BT003J",
@@ -27006,7 +27038,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003K.html",
       "id": "BT003K",
@@ -27021,7 +27053,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003L.html",
       "id": "BT003L",
@@ -27036,7 +27068,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003M.html",
       "id": "BT003M",
@@ -27051,7 +27083,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003N.html",
       "id": "BT003N",
@@ -27066,7 +27098,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003O.html",
       "id": "BT003O",
@@ -27081,7 +27113,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003Q.html",
       "id": "BT003Q",
@@ -27096,7 +27128,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003R.html",
       "id": "BT003R",
@@ -27111,7 +27143,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003S.html",
       "id": "BT003S",
@@ -27126,7 +27158,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003T.html",
       "id": "BT003T",
@@ -27141,7 +27173,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003W.html",
       "id": "BT003W",
@@ -27156,7 +27188,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003X.html",
       "id": "BT003X",
@@ -27171,7 +27203,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT003Y.html",
       "id": "BT003Y",
@@ -27186,7 +27218,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0040.html",
       "id": "BT0040",
@@ -27201,7 +27233,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0041.html",
       "id": "BT0041",
@@ -27216,7 +27248,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0042.html",
       "id": "BT0042",
@@ -27231,7 +27263,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0045.html",
       "id": "BT0045",
@@ -27246,7 +27278,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0046.html",
       "id": "BT0046",
@@ -27261,7 +27293,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004C.html",
       "id": "BT004C",
@@ -27276,7 +27308,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004D.html",
       "id": "BT004D",
@@ -27291,7 +27323,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004E.html",
       "id": "BT004E",
@@ -27306,7 +27338,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004F.html",
       "id": "BT004F",
@@ -27321,7 +27353,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004I.html",
       "id": "BT004I",
@@ -27336,7 +27368,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004J.html",
       "id": "BT004J",
@@ -27351,7 +27383,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004K.html",
       "id": "BT004K",
@@ -27366,7 +27398,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004M.html",
       "id": "BT004M",
@@ -27381,7 +27413,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004N.html",
       "id": "BT004N",
@@ -27396,7 +27428,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004O.html",
       "id": "BT004O",
@@ -27411,7 +27443,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004P.html",
       "id": "BT004P",
@@ -27426,7 +27458,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004R.html",
       "id": "BT004R",
@@ -27441,7 +27473,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004S.html",
       "id": "BT004S",
@@ -27456,7 +27488,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004T.html",
       "id": "BT004T",
@@ -27471,7 +27503,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004U.html",
       "id": "BT004U",
@@ -27486,7 +27518,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT004V.html",
       "id": "BT004V",
@@ -27501,7 +27533,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0053.html",
       "id": "BT0053",
@@ -27516,7 +27548,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0054.html",
       "id": "BT0054",
@@ -27531,7 +27563,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0055.html",
       "id": "BT0055",
@@ -27546,7 +27578,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0056.html",
       "id": "BT0056",
@@ -27561,7 +27593,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0057.html",
       "id": "BT0057",
@@ -27576,7 +27608,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0058.html",
       "id": "BT0058",
@@ -27591,7 +27623,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0059.html",
       "id": "BT0059",
@@ -27606,7 +27638,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005A.html",
       "id": "BT005A",
@@ -27621,7 +27653,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005B.html",
       "id": "BT005B",
@@ -27636,7 +27668,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005C.html",
       "id": "BT005C",
@@ -27651,7 +27683,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005D.html",
       "id": "BT005D",
@@ -27666,7 +27698,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005E.html",
       "id": "BT005E",
@@ -27681,7 +27713,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005F.html",
       "id": "BT005F",
@@ -27696,7 +27728,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005G.html",
       "id": "BT005G",
@@ -27711,7 +27743,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005I.html",
       "id": "BT005I",
@@ -27726,7 +27758,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005J.html",
       "id": "BT005J",
@@ -27741,7 +27773,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005K.html",
       "id": "BT005K",
@@ -27756,7 +27788,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT005L.html",
       "id": "BT005L",
@@ -27771,7 +27803,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0069.html",
       "id": "BT0069",
@@ -27786,7 +27818,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT006N.html",
       "id": "BT006N",
@@ -27801,7 +27833,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0072.html",
       "id": "BT0072",
@@ -27816,7 +27848,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT007U.html",
       "id": "BT007U",
@@ -27831,7 +27863,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT007V.html",
       "id": "BT007V",
@@ -27846,7 +27878,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT007W.html",
       "id": "BT007W",
@@ -27861,7 +27893,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT007X.html",
       "id": "BT007X",
@@ -27876,7 +27908,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT007Y.html",
       "id": "BT007Y",
@@ -27891,7 +27923,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0080.html",
       "id": "BT0080",
@@ -27906,7 +27938,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0081.html",
       "id": "BT0081",
@@ -27921,7 +27953,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0082.html",
       "id": "BT0082",
@@ -27936,7 +27968,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0083.html",
       "id": "BT0083",
@@ -27951,7 +27983,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0084.html",
       "id": "BT0084",
@@ -27966,7 +27998,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0085.html",
       "id": "BT0085",
@@ -27981,7 +28013,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0086.html",
       "id": "BT0086",
@@ -27996,7 +28028,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0087.html",
       "id": "BT0087",
@@ -28011,7 +28043,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0088.html",
       "id": "BT0088",
@@ -28026,7 +28058,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0089.html",
       "id": "BT0089",
@@ -28041,7 +28073,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008A.html",
       "id": "BT008A",
@@ -28056,7 +28088,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008B.html",
       "id": "BT008B",
@@ -28071,7 +28103,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008C.html",
       "id": "BT008C",
@@ -28086,7 +28118,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008E.html",
       "id": "BT008E",
@@ -28101,7 +28133,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008F.html",
       "id": "BT008F",
@@ -28116,7 +28148,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008J.html",
       "id": "BT008J",
@@ -28131,7 +28163,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008K.html",
       "id": "BT008K",
@@ -28146,7 +28178,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008L.html",
       "id": "BT008L",
@@ -28161,7 +28193,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008N.html",
       "id": "BT008N",
@@ -28176,7 +28208,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008O.html",
       "id": "BT008O",
@@ -28191,7 +28223,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008P.html",
       "id": "BT008P",
@@ -28206,7 +28238,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008Q.html",
       "id": "BT008Q",
@@ -28221,7 +28253,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008R.html",
       "id": "BT008R",
@@ -28236,7 +28268,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008S.html",
       "id": "BT008S",
@@ -28251,7 +28283,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT008Y.html",
       "id": "BT008Y",
@@ -28266,7 +28298,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0090.html",
       "id": "BT0090",
@@ -28281,7 +28313,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0091.html",
       "id": "BT0091",
@@ -28296,7 +28328,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0092.html",
       "id": "BT0092",
@@ -28311,7 +28343,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0093.html",
       "id": "BT0093",
@@ -28326,7 +28358,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0094.html",
       "id": "BT0094",
@@ -28341,7 +28373,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0095.html",
       "id": "BT0095",
@@ -28356,7 +28388,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT0097.html",
       "id": "BT0097",
@@ -28371,7 +28403,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT009V.html",
       "id": "BT009V",
@@ -28386,7 +28418,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT009W.html",
       "id": "BT009W",
@@ -28401,7 +28433,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT009X.html",
       "id": "BT009X",
@@ -28416,7 +28448,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT00AA.html",
       "id": "BT00AA",
@@ -28431,7 +28463,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT00AW.html",
       "id": "BT00AW",
@@ -28446,7 +28478,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "href": "tag/BT00BG.html",
       "id": "BT00BG",
@@ -28461,7 +28493,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00DH.html",
       "id": "BT00DH",
@@ -28476,7 +28508,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00I9.html",
       "id": "BT00I9",
@@ -28491,7 +28523,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00JA.html",
       "id": "BT00JA",
@@ -28506,7 +28538,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00JB.html",
       "id": "BT00JB",
@@ -28521,7 +28553,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00JC.html",
       "id": "BT00JC",
@@ -28536,7 +28568,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00JD.html",
       "id": "BT00JD",
@@ -28551,7 +28583,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00JE.html",
       "id": "BT00JE",
@@ -28566,7 +28598,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00K5.html",
       "id": "BT00K5",
@@ -28581,7 +28613,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00MY.html",
       "id": "BT00MY",
@@ -28596,7 +28628,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00PR.html",
       "id": "BT00PR",
@@ -28611,7 +28643,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00PS.html",
       "id": "BT00PS",
@@ -28626,7 +28658,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00PV.html",
       "id": "BT00PV",
@@ -28641,7 +28673,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00PW.html",
       "id": "BT00PW",
@@ -28656,7 +28688,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00PX.html",
       "id": "BT00PX",
@@ -28671,7 +28703,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00PY.html",
       "id": "BT00PY",
@@ -28686,7 +28718,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Q0.html",
       "id": "BT00Q0",
@@ -28701,7 +28733,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Q1.html",
       "id": "BT00Q1",
@@ -28716,7 +28748,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Q3.html",
       "id": "BT00Q3",
@@ -28731,7 +28763,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Q4.html",
       "id": "BT00Q4",
@@ -28746,7 +28778,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Q5.html",
       "id": "BT00Q5",
@@ -28761,7 +28793,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Q6.html",
       "id": "BT00Q6",
@@ -28776,7 +28808,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Q7.html",
       "id": "BT00Q7",
@@ -28791,7 +28823,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Q8.html",
       "id": "BT00Q8",
@@ -28806,7 +28838,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Q9.html",
       "id": "BT00Q9",
@@ -28821,7 +28853,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QA.html",
       "id": "BT00QA",
@@ -28836,7 +28868,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QD.html",
       "id": "BT00QD",
@@ -28851,7 +28883,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QE.html",
       "id": "BT00QE",
@@ -28866,7 +28898,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QF.html",
       "id": "BT00QF",
@@ -28881,7 +28913,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QG.html",
       "id": "BT00QG",
@@ -28896,7 +28928,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QH.html",
       "id": "BT00QH",
@@ -28911,7 +28943,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QI.html",
       "id": "BT00QI",
@@ -28926,7 +28958,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QJ.html",
       "id": "BT00QJ",
@@ -28941,7 +28973,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QK.html",
       "id": "BT00QK",
@@ -28956,7 +28988,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QL.html",
       "id": "BT00QL",
@@ -28971,7 +29003,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QM.html",
       "id": "BT00QM",
@@ -28986,7 +29018,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QN.html",
       "id": "BT00QN",
@@ -29001,7 +29033,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QO.html",
       "id": "BT00QO",
@@ -29016,7 +29048,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QP.html",
       "id": "BT00QP",
@@ -29031,7 +29063,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QQ.html",
       "id": "BT00QQ",
@@ -29046,7 +29078,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QR.html",
       "id": "BT00QR",
@@ -29061,7 +29093,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QS.html",
       "id": "BT00QS",
@@ -29076,7 +29108,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QT.html",
       "id": "BT00QT",
@@ -29091,7 +29123,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QU.html",
       "id": "BT00QU",
@@ -29106,7 +29138,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QV.html",
       "id": "BT00QV",
@@ -29121,7 +29153,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00QW.html",
       "id": "BT00QW",
@@ -29136,7 +29168,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00R0.html",
       "id": "BT00R0",
@@ -29151,7 +29183,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00R1.html",
       "id": "BT00R1",
@@ -29166,7 +29198,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00R2.html",
       "id": "BT00R2",
@@ -29181,7 +29213,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00R4.html",
       "id": "BT00R4",
@@ -29196,7 +29228,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00R5.html",
       "id": "BT00R5",
@@ -29211,7 +29243,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00R6.html",
       "id": "BT00R6",
@@ -29226,7 +29258,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00R7.html",
       "id": "BT00R7",
@@ -29241,7 +29273,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00R9.html",
       "id": "BT00R9",
@@ -29256,7 +29288,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RA.html",
       "id": "BT00RA",
@@ -29271,7 +29303,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RC.html",
       "id": "BT00RC",
@@ -29286,7 +29318,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RD.html",
       "id": "BT00RD",
@@ -29301,7 +29333,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RE.html",
       "id": "BT00RE",
@@ -29316,7 +29348,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RF.html",
       "id": "BT00RF",
@@ -29331,7 +29363,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RG.html",
       "id": "BT00RG",
@@ -29346,7 +29378,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RH.html",
       "id": "BT00RH",
@@ -29361,7 +29393,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RI.html",
       "id": "BT00RI",
@@ -29376,7 +29408,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RJ.html",
       "id": "BT00RJ",
@@ -29391,7 +29423,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RK.html",
       "id": "BT00RK",
@@ -29406,7 +29438,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RL.html",
       "id": "BT00RL",
@@ -29421,7 +29453,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RM.html",
       "id": "BT00RM",
@@ -29436,7 +29468,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RO.html",
       "id": "BT00RO",
@@ -29451,7 +29483,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00RP.html",
       "id": "BT00RP",
@@ -29466,7 +29498,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00S0.html",
       "id": "BT00S0",
@@ -29481,7 +29513,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00S1.html",
       "id": "BT00S1",
@@ -29496,7 +29528,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00S2.html",
       "id": "BT00S2",
@@ -29511,7 +29543,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00S3.html",
       "id": "BT00S3",
@@ -29526,7 +29558,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00S4.html",
       "id": "BT00S4",
@@ -29541,7 +29573,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00S5.html",
       "id": "BT00S5",
@@ -29556,7 +29588,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SA.html",
       "id": "BT00SA",
@@ -29571,7 +29603,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SB.html",
       "id": "BT00SB",
@@ -29586,7 +29618,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SC.html",
       "id": "BT00SC",
@@ -29601,7 +29633,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SD.html",
       "id": "BT00SD",
@@ -29616,7 +29648,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SE.html",
       "id": "BT00SE",
@@ -29631,7 +29663,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SF.html",
       "id": "BT00SF",
@@ -29646,7 +29678,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SG.html",
       "id": "BT00SG",
@@ -29661,7 +29693,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SH.html",
       "id": "BT00SH",
@@ -29676,7 +29708,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SI.html",
       "id": "BT00SI",
@@ -29691,7 +29723,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SJ.html",
       "id": "BT00SJ",
@@ -29706,7 +29738,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SK.html",
       "id": "BT00SK",
@@ -29721,7 +29753,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SL.html",
       "id": "BT00SL",
@@ -29736,7 +29768,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SM.html",
       "id": "BT00SM",
@@ -29751,7 +29783,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SN.html",
       "id": "BT00SN",
@@ -29766,7 +29798,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SO.html",
       "id": "BT00SO",
@@ -29781,7 +29813,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SR.html",
       "id": "BT00SR",
@@ -29796,7 +29828,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SS.html",
       "id": "BT00SS",
@@ -29811,7 +29843,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00ST.html",
       "id": "BT00ST",
@@ -29826,7 +29858,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SU.html",
       "id": "BT00SU",
@@ -29841,7 +29873,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SV.html",
       "id": "BT00SV",
@@ -29856,7 +29888,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SW.html",
       "id": "BT00SW",
@@ -29871,7 +29903,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SX.html",
       "id": "BT00SX",
@@ -29886,7 +29918,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00SY.html",
       "id": "BT00SY",
@@ -29901,7 +29933,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00T0.html",
       "id": "BT00T0",
@@ -29916,7 +29948,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00T1.html",
       "id": "BT00T1",
@@ -29931,7 +29963,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00T2.html",
       "id": "BT00T2",
@@ -29946,7 +29978,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00T3.html",
       "id": "BT00T3",
@@ -29961,7 +29993,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00T4.html",
       "id": "BT00T4",
@@ -29976,7 +30008,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00T5.html",
       "id": "BT00T5",
@@ -29991,7 +30023,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00T6.html",
       "id": "BT00T6",
@@ -30006,7 +30038,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00T7.html",
       "id": "BT00T7",
@@ -30021,7 +30053,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00T8.html",
       "id": "BT00T8",
@@ -30036,7 +30068,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00T9.html",
       "id": "BT00T9",
@@ -30051,7 +30083,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TA.html",
       "id": "BT00TA",
@@ -30066,7 +30098,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TB.html",
       "id": "BT00TB",
@@ -30081,7 +30113,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TC.html",
       "id": "BT00TC",
@@ -30096,7 +30128,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TD.html",
       "id": "BT00TD",
@@ -30111,7 +30143,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TE.html",
       "id": "BT00TE",
@@ -30126,7 +30158,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TF.html",
       "id": "BT00TF",
@@ -30141,7 +30173,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TG.html",
       "id": "BT00TG",
@@ -30156,7 +30188,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TH.html",
       "id": "BT00TH",
@@ -30171,7 +30203,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TI.html",
       "id": "BT00TI",
@@ -30186,7 +30218,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TJ.html",
       "id": "BT00TJ",
@@ -30201,7 +30233,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TK.html",
       "id": "BT00TK",
@@ -30216,7 +30248,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TL.html",
       "id": "BT00TL",
@@ -30231,7 +30263,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TM.html",
       "id": "BT00TM",
@@ -30246,7 +30278,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TN.html",
       "id": "BT00TN",
@@ -30261,7 +30293,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TP.html",
       "id": "BT00TP",
@@ -30276,7 +30308,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TQ.html",
       "id": "BT00TQ",
@@ -30291,7 +30323,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TR.html",
       "id": "BT00TR",
@@ -30306,7 +30338,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TS.html",
       "id": "BT00TS",
@@ -30321,7 +30353,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TT.html",
       "id": "BT00TT",
@@ -30336,7 +30368,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TU.html",
       "id": "BT00TU",
@@ -30351,7 +30383,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TV.html",
       "id": "BT00TV",
@@ -30366,7 +30398,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TW.html",
       "id": "BT00TW",
@@ -30381,7 +30413,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TX.html",
       "id": "BT00TX",
@@ -30396,7 +30428,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00TY.html",
       "id": "BT00TY",
@@ -30411,7 +30443,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00U0.html",
       "id": "BT00U0",
@@ -30426,7 +30458,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00U1.html",
       "id": "BT00U1",
@@ -30441,7 +30473,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00U2.html",
       "id": "BT00U2",
@@ -30456,7 +30488,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00U3.html",
       "id": "BT00U3",
@@ -30471,7 +30503,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00U4.html",
       "id": "BT00U4",
@@ -30486,7 +30518,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00U5.html",
       "id": "BT00U5",
@@ -30501,7 +30533,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00U6.html",
       "id": "BT00U6",
@@ -30516,7 +30548,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00U7.html",
       "id": "BT00U7",
@@ -30531,7 +30563,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00U8.html",
       "id": "BT00U8",
@@ -30546,7 +30578,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00UA.html",
       "id": "BT00UA",
@@ -30561,7 +30593,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00UC.html",
       "id": "BT00UC",
@@ -30576,7 +30608,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00UD.html",
       "id": "BT00UD",
@@ -30591,7 +30623,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00UE.html",
       "id": "BT00UE",
@@ -30606,7 +30638,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00UF.html",
       "id": "BT00UF",
@@ -30621,7 +30653,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00UQ.html",
       "id": "BT00UQ",
@@ -30636,7 +30668,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00UR.html",
       "id": "BT00UR",
@@ -30651,7 +30683,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00US.html",
       "id": "BT00US",
@@ -30666,7 +30698,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00UW.html",
       "id": "BT00UW",
@@ -30681,7 +30713,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00UX.html",
       "id": "BT00UX",
@@ -30696,7 +30728,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00UY.html",
       "id": "BT00UY",
@@ -30711,7 +30743,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VA.html",
       "id": "BT00VA",
@@ -30726,7 +30758,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VB.html",
       "id": "BT00VB",
@@ -30741,7 +30773,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VC.html",
       "id": "BT00VC",
@@ -30756,7 +30788,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VD.html",
       "id": "BT00VD",
@@ -30771,7 +30803,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VE.html",
       "id": "BT00VE",
@@ -30786,7 +30818,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VF.html",
       "id": "BT00VF",
@@ -30801,7 +30833,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VG.html",
       "id": "BT00VG",
@@ -30816,7 +30848,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VH.html",
       "id": "BT00VH",
@@ -30831,7 +30863,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VI.html",
       "id": "BT00VI",
@@ -30846,7 +30878,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VJ.html",
       "id": "BT00VJ",
@@ -30861,7 +30893,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VK.html",
       "id": "BT00VK",
@@ -30876,7 +30908,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VL.html",
       "id": "BT00VL",
@@ -30891,7 +30923,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VM.html",
       "id": "BT00VM",
@@ -30906,7 +30938,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VN.html",
       "id": "BT00VN",
@@ -30921,7 +30953,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VO.html",
       "id": "BT00VO",
@@ -30936,7 +30968,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VP.html",
       "id": "BT00VP",
@@ -30951,7 +30983,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VQ.html",
       "id": "BT00VQ",
@@ -30966,7 +30998,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VR.html",
       "id": "BT00VR",
@@ -30981,7 +31013,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VS.html",
       "id": "BT00VS",
@@ -30996,7 +31028,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VT.html",
       "id": "BT00VT",
@@ -31011,7 +31043,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VU.html",
       "id": "BT00VU",
@@ -31026,7 +31058,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VV.html",
       "id": "BT00VV",
@@ -31041,7 +31073,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VW.html",
       "id": "BT00VW",
@@ -31056,7 +31088,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VX.html",
       "id": "BT00VX",
@@ -31071,7 +31103,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00VY.html",
       "id": "BT00VY",
@@ -31086,7 +31118,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00W0.html",
       "id": "BT00W0",
@@ -31101,7 +31133,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00W2.html",
       "id": "BT00W2",
@@ -31116,7 +31148,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00W3.html",
       "id": "BT00W3",
@@ -31131,7 +31163,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00W4.html",
       "id": "BT00W4",
@@ -31146,7 +31178,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00W5.html",
       "id": "BT00W5",
@@ -31161,7 +31193,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00W6.html",
       "id": "BT00W6",
@@ -31176,7 +31208,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00W7.html",
       "id": "BT00W7",
@@ -31191,7 +31223,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00W8.html",
       "id": "BT00W8",
@@ -31206,7 +31238,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00W9.html",
       "id": "BT00W9",
@@ -31221,7 +31253,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WA.html",
       "id": "BT00WA",
@@ -31236,7 +31268,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WB.html",
       "id": "BT00WB",
@@ -31251,7 +31283,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WC.html",
       "id": "BT00WC",
@@ -31266,7 +31298,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WD.html",
       "id": "BT00WD",
@@ -31281,7 +31313,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WE.html",
       "id": "BT00WE",
@@ -31296,7 +31328,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WF.html",
       "id": "BT00WF",
@@ -31311,7 +31343,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WG.html",
       "id": "BT00WG",
@@ -31326,7 +31358,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WH.html",
       "id": "BT00WH",
@@ -31341,7 +31373,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WI.html",
       "id": "BT00WI",
@@ -31356,7 +31388,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WJ.html",
       "id": "BT00WJ",
@@ -31371,7 +31403,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WK.html",
       "id": "BT00WK",
@@ -31386,7 +31418,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WL.html",
       "id": "BT00WL",
@@ -31401,7 +31433,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WM.html",
       "id": "BT00WM",
@@ -31416,7 +31448,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WN.html",
       "id": "BT00WN",
@@ -31431,7 +31463,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WO.html",
       "id": "BT00WO",
@@ -31446,7 +31478,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WP.html",
       "id": "BT00WP",
@@ -31461,7 +31493,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WQ.html",
       "id": "BT00WQ",
@@ -31476,7 +31508,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WR.html",
       "id": "BT00WR",
@@ -31491,7 +31523,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WS.html",
       "id": "BT00WS",
@@ -31506,7 +31538,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WT.html",
       "id": "BT00WT",
@@ -31521,7 +31553,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WU.html",
       "id": "BT00WU",
@@ -31536,7 +31568,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WV.html",
       "id": "BT00WV",
@@ -31551,7 +31583,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WW.html",
       "id": "BT00WW",
@@ -31566,7 +31598,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WX.html",
       "id": "BT00WX",
@@ -31581,7 +31613,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00WY.html",
       "id": "BT00WY",
@@ -31596,7 +31628,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00X0.html",
       "id": "BT00X0",
@@ -31611,7 +31643,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00X1.html",
       "id": "BT00X1",
@@ -31626,7 +31658,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00X2.html",
       "id": "BT00X2",
@@ -31641,7 +31673,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00X3.html",
       "id": "BT00X3",
@@ -31656,7 +31688,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00X4.html",
       "id": "BT00X4",
@@ -31671,7 +31703,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00X5.html",
       "id": "BT00X5",
@@ -31686,7 +31718,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00X6.html",
       "id": "BT00X6",
@@ -31701,7 +31733,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00X7.html",
       "id": "BT00X7",
@@ -31716,7 +31748,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00X8.html",
       "id": "BT00X8",
@@ -31731,7 +31763,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00X9.html",
       "id": "BT00X9",
@@ -31746,7 +31778,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XA.html",
       "id": "BT00XA",
@@ -31761,7 +31793,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XB.html",
       "id": "BT00XB",
@@ -31776,7 +31808,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XC.html",
       "id": "BT00XC",
@@ -31791,7 +31823,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XF.html",
       "id": "BT00XF",
@@ -31806,7 +31838,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XG.html",
       "id": "BT00XG",
@@ -31821,7 +31853,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XJ.html",
       "id": "BT00XJ",
@@ -31836,7 +31868,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XK.html",
       "id": "BT00XK",
@@ -31851,7 +31883,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XL.html",
       "id": "BT00XL",
@@ -31866,7 +31898,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XM.html",
       "id": "BT00XM",
@@ -31881,7 +31913,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XN.html",
       "id": "BT00XN",
@@ -31896,7 +31928,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XO.html",
       "id": "BT00XO",
@@ -31911,7 +31943,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XP.html",
       "id": "BT00XP",
@@ -31926,7 +31958,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XQ.html",
       "id": "BT00XQ",
@@ -31941,7 +31973,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XR.html",
       "id": "BT00XR",
@@ -31956,7 +31988,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XV.html",
       "id": "BT00XV",
@@ -31971,7 +32003,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XW.html",
       "id": "BT00XW",
@@ -31986,7 +32018,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XX.html",
       "id": "BT00XX",
@@ -32001,7 +32033,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00XY.html",
       "id": "BT00XY",
@@ -32016,7 +32048,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Y0.html",
       "id": "BT00Y0",
@@ -32031,7 +32063,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Y1.html",
       "id": "BT00Y1",
@@ -32046,7 +32078,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Y2.html",
       "id": "BT00Y2",
@@ -32061,7 +32093,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Y3.html",
       "id": "BT00Y3",
@@ -32076,7 +32108,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Y4.html",
       "id": "BT00Y4",
@@ -32091,7 +32123,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Y5.html",
       "id": "BT00Y5",
@@ -32106,7 +32138,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Y6.html",
       "id": "BT00Y6",
@@ -32121,7 +32153,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Y7.html",
       "id": "BT00Y7",
@@ -32136,7 +32168,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Y8.html",
       "id": "BT00Y8",
@@ -32151,7 +32183,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00Y9.html",
       "id": "BT00Y9",
@@ -32166,7 +32198,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YA.html",
       "id": "BT00YA",
@@ -32181,7 +32213,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YB.html",
       "id": "BT00YB",
@@ -32196,7 +32228,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YC.html",
       "id": "BT00YC",
@@ -32211,7 +32243,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YD.html",
       "id": "BT00YD",
@@ -32226,7 +32258,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YE.html",
       "id": "BT00YE",
@@ -32241,7 +32273,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YF.html",
       "id": "BT00YF",
@@ -32256,7 +32288,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YG.html",
       "id": "BT00YG",
@@ -32271,7 +32303,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YH.html",
       "id": "BT00YH",
@@ -32286,7 +32318,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YI.html",
       "id": "BT00YI",
@@ -32301,7 +32333,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YJ.html",
       "id": "BT00YJ",
@@ -32316,7 +32348,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YK.html",
       "id": "BT00YK",
@@ -32331,7 +32363,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YL.html",
       "id": "BT00YL",
@@ -32346,7 +32378,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YM.html",
       "id": "BT00YM",
@@ -32361,7 +32393,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YN.html",
       "id": "BT00YN",
@@ -32376,7 +32408,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YO.html",
       "id": "BT00YO",
@@ -32391,7 +32423,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YP.html",
       "id": "BT00YP",
@@ -32406,7 +32438,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YQ.html",
       "id": "BT00YQ",
@@ -32421,7 +32453,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YS.html",
       "id": "BT00YS",
@@ -32436,7 +32468,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YU.html",
       "id": "BT00YU",
@@ -32451,7 +32483,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YV.html",
       "id": "BT00YV",
@@ -32466,7 +32498,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YW.html",
       "id": "BT00YW",
@@ -32481,7 +32513,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YX.html",
       "id": "BT00YX",
@@ -32496,7 +32528,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT00YY.html",
       "id": "BT00YY",
@@ -32511,7 +32543,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0100.html",
       "id": "BT0100",
@@ -32526,7 +32558,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0101.html",
       "id": "BT0101",
@@ -32541,7 +32573,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0102.html",
       "id": "BT0102",
@@ -32556,7 +32588,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0103.html",
       "id": "BT0103",
@@ -32571,7 +32603,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0104.html",
       "id": "BT0104",
@@ -32586,7 +32618,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0105.html",
       "id": "BT0105",
@@ -32601,7 +32633,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0106.html",
       "id": "BT0106",
@@ -32616,7 +32648,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0107.html",
       "id": "BT0107",
@@ -32631,7 +32663,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0108.html",
       "id": "BT0108",
@@ -32646,7 +32678,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010A.html",
       "id": "BT010A",
@@ -32661,7 +32693,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010B.html",
       "id": "BT010B",
@@ -32676,7 +32708,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010C.html",
       "id": "BT010C",
@@ -32691,7 +32723,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010D.html",
       "id": "BT010D",
@@ -32706,7 +32738,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010E.html",
       "id": "BT010E",
@@ -32721,7 +32753,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010F.html",
       "id": "BT010F",
@@ -32736,7 +32768,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010G.html",
       "id": "BT010G",
@@ -32751,7 +32783,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010H.html",
       "id": "BT010H",
@@ -32766,7 +32798,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010I.html",
       "id": "BT010I",
@@ -32781,7 +32813,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010J.html",
       "id": "BT010J",
@@ -32796,7 +32828,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010K.html",
       "id": "BT010K",
@@ -32811,7 +32843,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010L.html",
       "id": "BT010L",
@@ -32826,7 +32858,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010P.html",
       "id": "BT010P",
@@ -32841,7 +32873,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010Q.html",
       "id": "BT010Q",
@@ -32856,7 +32888,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010R.html",
       "id": "BT010R",
@@ -32871,7 +32903,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010S.html",
       "id": "BT010S",
@@ -32886,7 +32918,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010U.html",
       "id": "BT010U",
@@ -32901,7 +32933,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010V.html",
       "id": "BT010V",
@@ -32916,7 +32948,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010W.html",
       "id": "BT010W",
@@ -32931,7 +32963,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010X.html",
       "id": "BT010X",
@@ -32946,7 +32978,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT010Y.html",
       "id": "BT010Y",
@@ -32961,7 +32993,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0110.html",
       "id": "BT0110",
@@ -32976,7 +33008,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0111.html",
       "id": "BT0111",
@@ -32991,7 +33023,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0112.html",
       "id": "BT0112",
@@ -33006,7 +33038,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0113.html",
       "id": "BT0113",
@@ -33021,7 +33053,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0114.html",
       "id": "BT0114",
@@ -33036,7 +33068,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0115.html",
       "id": "BT0115",
@@ -33051,7 +33083,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0116.html",
       "id": "BT0116",
@@ -33066,7 +33098,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0117.html",
       "id": "BT0117",
@@ -33081,7 +33113,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0118.html",
       "id": "BT0118",
@@ -33096,7 +33128,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0119.html",
       "id": "BT0119",
@@ -33111,7 +33143,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011A.html",
       "id": "BT011A",
@@ -33126,7 +33158,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011B.html",
       "id": "BT011B",
@@ -33141,7 +33173,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011C.html",
       "id": "BT011C",
@@ -33156,7 +33188,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011E.html",
       "id": "BT011E",
@@ -33171,7 +33203,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011F.html",
       "id": "BT011F",
@@ -33186,7 +33218,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011G.html",
       "id": "BT011G",
@@ -33201,7 +33233,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011H.html",
       "id": "BT011H",
@@ -33216,7 +33248,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011I.html",
       "id": "BT011I",
@@ -33231,7 +33263,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011J.html",
       "id": "BT011J",
@@ -33246,7 +33278,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011K.html",
       "id": "BT011K",
@@ -33261,7 +33293,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011L.html",
       "id": "BT011L",
@@ -33276,7 +33308,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011M.html",
       "id": "BT011M",
@@ -33291,7 +33323,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011N.html",
       "id": "BT011N",
@@ -33306,7 +33338,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011O.html",
       "id": "BT011O",
@@ -33321,7 +33353,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011P.html",
       "id": "BT011P",
@@ -33336,7 +33368,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011Q.html",
       "id": "BT011Q",
@@ -33351,7 +33383,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011R.html",
       "id": "BT011R",
@@ -33366,7 +33398,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011S.html",
       "id": "BT011S",
@@ -33381,7 +33413,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011T.html",
       "id": "BT011T",
@@ -33396,7 +33428,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011U.html",
       "id": "BT011U",
@@ -33411,7 +33443,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011V.html",
       "id": "BT011V",
@@ -33426,7 +33458,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011W.html",
       "id": "BT011W",
@@ -33441,7 +33473,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011X.html",
       "id": "BT011X",
@@ -33456,7 +33488,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT011Y.html",
       "id": "BT011Y",
@@ -33471,7 +33503,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0120.html",
       "id": "BT0120",
@@ -33486,7 +33518,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0121.html",
       "id": "BT0121",
@@ -33501,7 +33533,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0122.html",
       "id": "BT0122",
@@ -33516,7 +33548,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0123.html",
       "id": "BT0123",
@@ -33531,7 +33563,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0124.html",
       "id": "BT0124",
@@ -33546,7 +33578,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0125.html",
       "id": "BT0125",
@@ -33561,7 +33593,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0126.html",
       "id": "BT0126",
@@ -33576,7 +33608,7 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "href": "tag/BT0127.html",
       "id": "BT0127",
@@ -33590,228 +33622,395 @@
       "tag": "BT0127"
     },
     {
+      "definition_layer": 0,
       "href": "definition/PD0001.html",
       "id": "PD0001",
       "kind": "definition",
       "name": "Le",
       "signature": "Le(a,b)",
-      "summary": "Witness-defined non-strict order on natural numbers."
+      "summary": "Witness-defined non-strict order on natural numbers.",
+      "transitive_definition_dependencies": []
     },
     {
+      "definition_layer": 0,
       "href": "definition/PD0002.html",
       "id": "PD0002",
       "kind": "definition",
       "name": "Lt",
       "signature": "Lt(a,b)",
-      "summary": "Witness-defined strict order on natural numbers."
+      "summary": "Witness-defined strict order on natural numbers.",
+      "transitive_definition_dependencies": []
     },
     {
+      "definition_layer": 0,
       "href": "definition/PD0003.html",
       "id": "PD0003",
       "kind": "definition",
       "name": "Dvd",
       "signature": "Dvd(d,n)",
-      "summary": "The natural number d divides n."
+      "summary": "The natural number d divides n.",
+      "transitive_definition_dependencies": []
     },
     {
+      "definition_layer": 0,
       "href": "definition/PD0004.html",
       "id": "PD0004",
       "kind": "definition",
       "name": "Prime",
       "signature": "Prime(p)",
-      "summary": "p is nonunit and every factorization of p has a unit factor."
+      "summary": "p is nonunit and every factorization of p has a unit factor.",
+      "transitive_definition_dependencies": []
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0005.html",
       "id": "PD0005",
       "kind": "definition",
       "name": "Coprime",
       "signature": "Coprime(a,b)",
-      "summary": "Every common divisor of a and b is one."
+      "summary": "Every common divisor of a and b is one.",
+      "transitive_definition_dependencies": [
+        "PD0003"
+      ]
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0006.html",
       "id": "PD0006",
       "kind": "definition",
       "name": "IsGCD",
       "signature": "IsGCD(g,a,b)",
-      "summary": "g is a common divisor divisible by every common divisor."
+      "summary": "g is a common divisor divisible by every common divisor.",
+      "transitive_definition_dependencies": [
+        "PD0003"
+      ]
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0007.html",
       "id": "PD0007",
       "kind": "definition",
       "name": "DivRem",
       "signature": "DivRem(n,d,q,r)",
-      "summary": "q and r are a quotient and a strict remainder for n by d."
+      "summary": "q and r are a quotient and a strict remainder for n by d.",
+      "transitive_definition_dependencies": [
+        "PD0002"
+      ]
     },
     {
+      "definition_layer": 0,
       "href": "definition/PD0008.html",
       "id": "PD0008",
       "kind": "definition",
       "name": "ModEq",
       "signature": "ModEq(m,a,b)",
-      "summary": "Balanced-natural congruence modulo m."
+      "summary": "Balanced-natural congruence modulo m.",
+      "transitive_definition_dependencies": []
     },
     {
+      "definition_layer": 0,
       "href": "definition/PD0013.html",
       "id": "PD0013",
       "kind": "definition",
       "name": "BetaAt",
       "signature": "BetaAt(b,c,i,x)",
-      "summary": "x is the bounded beta-decoded value at index i."
+      "summary": "x is the bounded beta-decoded value at index i.",
+      "transitive_definition_dependencies": []
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0014.html",
       "id": "PD0014",
       "kind": "definition",
       "name": "Product",
       "signature": "Product(b,c,l,z)",
-      "summary": "z is the product of a beta-coded prefix of length l."
+      "summary": "z is the product of a beta-coded prefix of length l.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0015.html",
       "id": "PD0015",
       "kind": "definition",
       "name": "Sum",
       "signature": "Sum(b,c,l,z)",
-      "summary": "z is the sum of a beta-coded prefix of length l."
+      "summary": "z is the sum of a beta-coded prefix of length l.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0016.html",
       "id": "PD0016",
       "kind": "definition",
       "name": "AllBits",
       "signature": "AllBits(b,c,l)",
-      "summary": "Every decoded entry below l is zero or one."
+      "summary": "Every decoded entry below l is zero or one.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
+      "definition_layer": 2,
       "href": "definition/PD0017.html",
       "id": "PD0017",
       "kind": "definition",
       "name": "BitCount",
       "signature": "BitCount(b,c,l,z)",
-      "summary": "z is the sum of a beta-coded all-bit prefix."
+      "summary": "z is the sum of a beta-coded all-bit prefix.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0013",
+        "PD0015",
+        "PD0016"
+      ]
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0018.html",
       "id": "PD0018",
       "kind": "definition",
       "name": "Range",
       "signature": "Range(b,c,a,l)",
-      "summary": "The decoded prefix is a,a+1,...,a+l-1."
+      "summary": "The decoded prefix is a,a+1,...,a+l-1.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0019.html",
       "id": "PD0019",
       "kind": "definition",
       "name": "Repeat",
       "signature": "Repeat(b,c,a,l)",
-      "summary": "The decoded prefix repeats a for l positions."
+      "summary": "The decoded prefix repeats a for l positions.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
+      "definition_layer": 2,
       "href": "definition/PD0020.html",
       "id": "PD0020",
       "kind": "definition",
       "name": "Pow",
       "signature": "Pow(a,e,z)",
-      "summary": "z is the relational e-th power of a."
+      "summary": "z is the relational e-th power of a.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0013",
+        "PD0014",
+        "PD0019"
+      ]
     },
     {
+      "definition_layer": 2,
       "href": "definition/PD0023.html",
       "id": "PD0023",
       "kind": "definition",
       "name": "Factorial",
       "signature": "Factorial(n,z)",
-      "summary": "z is the relational factorial of n."
+      "summary": "z is the relational factorial of n.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0013",
+        "PD0014",
+        "PD0018"
+      ]
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0041.html",
       "id": "PD0041",
       "kind": "definition",
       "name": "Choose",
       "signature": "Choose(n,k,z)",
-      "summary": "z is the recurrence-defined binomial coefficient of row n and column k."
+      "summary": "z is the recurrence-defined binomial coefficient of row n and column k.",
+      "transitive_definition_dependencies": [
+        "PD0001",
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
+      "definition_layer": 2,
       "href": "definition/PD0042.html",
       "id": "PD0042",
       "kind": "definition",
       "name": "CentralBinom",
       "signature": "CentralBinom(n,z)",
-      "summary": "z is the central binomial coefficient Choose(2n,n)."
+      "summary": "z is the central binomial coefficient Choose(2n,n).",
+      "transitive_definition_dependencies": [
+        "PD0001",
+        "PD0002",
+        "PD0013",
+        "PD0041"
+      ]
     },
     {
+      "definition_layer": 2,
       "href": "definition/PD0043.html",
       "id": "PD0043",
       "kind": "definition",
       "name": "Primorial",
       "signature": "Primorial(n,z)",
-      "summary": "z is the finite product of the primes at most n."
+      "summary": "z is the finite product of the primes at most n.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0004",
+        "PD0013",
+        "PD0014"
+      ]
     },
     {
+      "definition_layer": 3,
       "href": "definition/PD0044.html",
       "id": "PD0044",
       "kind": "definition",
       "name": "PowerDivides",
       "signature": "PowerDivides(p,e,n)",
-      "summary": "The relational power p to exponent e divides n."
+      "summary": "The relational power p to exponent e divides n.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0003",
+        "PD0013",
+        "PD0014",
+        "PD0019",
+        "PD0020"
+      ]
     },
     {
+      "definition_layer": 4,
       "href": "definition/PD0045.html",
       "id": "PD0045",
       "kind": "definition",
       "name": "BoundedPowerValuation",
       "signature": "BoundedPowerValuation(p,n,b,e)",
-      "summary": "e is the greatest exponent at most b for which p to that exponent divides n."
+      "summary": "e is the greatest exponent at most b for which p to that exponent divides n.",
+      "transitive_definition_dependencies": [
+        "PD0001",
+        "PD0002",
+        "PD0003",
+        "PD0013",
+        "PD0014",
+        "PD0019",
+        "PD0020",
+        "PD0044"
+      ]
     },
     {
+      "definition_layer": 5,
       "href": "definition/PD0046.html",
       "id": "PD0046",
       "kind": "definition",
       "name": "PowerValuation",
       "signature": "PowerValuation(p,n,e)",
-      "summary": "e is the canonical bounded p-adic power valuation of n."
+      "summary": "e is the canonical bounded p-adic power valuation of n.",
+      "transitive_definition_dependencies": [
+        "PD0001",
+        "PD0002",
+        "PD0003",
+        "PD0013",
+        "PD0014",
+        "PD0019",
+        "PD0020",
+        "PD0044",
+        "PD0045"
+      ]
     },
     {
+      "definition_layer": 6,
       "href": "definition/PD0048.html",
       "id": "PD0048",
       "kind": "definition",
       "name": "FactorialValuation",
       "signature": "FactorialValuation(p,n,e)",
-      "summary": "e is the bounded p-adic valuation of the factorial n!."
+      "summary": "e is the bounded p-adic valuation of the factorial n!.",
+      "transitive_definition_dependencies": [
+        "PD0001",
+        "PD0002",
+        "PD0003",
+        "PD0013",
+        "PD0014",
+        "PD0018",
+        "PD0019",
+        "PD0020",
+        "PD0023",
+        "PD0044",
+        "PD0045",
+        "PD0046"
+      ]
     },
     {
+      "definition_layer": 3,
       "href": "definition/PD0049.html",
       "id": "PD0049",
       "kind": "definition",
       "name": "PowerQuotPrefix",
       "signature": "PowerQuotPrefix(p,n,b,c,l)",
-      "summary": "The beta-coded prefix stores the quotients of n by the first l positive powers of p."
+      "summary": "The beta-coded prefix stores the quotients of n by the first l positive powers of p.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0007",
+        "PD0013",
+        "PD0014",
+        "PD0019",
+        "PD0020"
+      ]
     },
     {
+      "definition_layer": 4,
       "href": "definition/PD0050.html",
       "id": "PD0050",
       "kind": "definition",
       "name": "LegendreSum",
       "signature": "LegendreSum(p,n,e)",
-      "summary": "e is the finite Legendre sum of the quotients of n by positive powers of p."
+      "summary": "e is the finite Legendre sum of the quotients of n by positive powers of p.",
+      "transitive_definition_dependencies": [
+        "PD0002",
+        "PD0007",
+        "PD0013",
+        "PD0014",
+        "PD0015",
+        "PD0019",
+        "PD0020",
+        "PD0049"
+      ]
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0051.html",
       "id": "PD0051",
       "kind": "definition",
       "name": "FloorSqrt",
       "signature": "FloorSqrt(n,s)",
-      "summary": "s is the integer floor square root: s² ≤ n < (s+1)²."
+      "summary": "s is the integer floor square root: s² ≤ n < (s+1)².",
+      "transitive_definition_dependencies": [
+        "PD0001",
+        "PD0002"
+      ]
     },
     {
+      "definition_layer": 1,
       "href": "definition/PD0052.html",
       "id": "PD0052",
       "kind": "definition",
       "name": "CeilDivSix",
       "signature": "CeilDivSix(n,q)",
-      "summary": "q is the ceiling of n divided by six."
+      "summary": "q is the ceiling of n divided by six.",
+      "transitive_definition_dependencies": [
+        "PD0001",
+        "PD0002"
+      ]
     }
   ],
   "notation_adjacency": {
@@ -125743,5 +125942,6 @@
   "source_edition_identity_sha256": "bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061",
   "source_edition_version": "v12",
   "source_scope_policy": "historical_origin_not_current_release_authority",
-  "theorem_count": 544
+  "theorem_count": 544,
+  "theorem_definition_edge_count": 1468
 }

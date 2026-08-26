@@ -1,0 +1,466 @@
+{
+  "alpha_checked_use_node_count": 10,
+  "alpha_edition_version": "v24",
+  "alpha_first_enrolled_version": "v20",
+  "definition_topological_order": [
+    "ND0001",
+    "PD0002",
+    "PD0013",
+    "PD0015",
+    "ND0003",
+    "ND0004",
+    "ND0005"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "MD0001",
+      "target": "MD0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MD0002",
+      "target": "MD0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MD0004",
+      "target": "MD0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MD0005",
+      "target": "MD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MD0001",
+      "statement_occurrences": 1,
+      "target": "ND0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD0002",
+      "statement_occurrences": 2,
+      "target": "ND0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD0003",
+      "statement_occurrences": 2,
+      "target": "ND0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MD0004",
+      "statement_occurrences": 1,
+      "target": "ND0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD0005",
+      "statement_occurrences": 2,
+      "target": "ND0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD0006",
+      "statement_occurrences": 2,
+      "target": "ND0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MD0007",
+      "statement_occurrences": 1,
+      "target": "ND0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD0008",
+      "statement_occurrences": 2,
+      "target": "ND0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MD0009",
+      "statement_occurrences": 1,
+      "target": "ND0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD000A",
+      "statement_occurrences": 2,
+      "target": "ND0005"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0003",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "PD0015"
+    }
+  ],
+  "family_slug": "matrix-dot-product",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/MD0001.html?v=94ac4d193cbf",
+      "id": "MD0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_matrix_cell_exists",
+      "proof_bundle_node_id": 557,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every requested finite matrix coordinate has a witnessed beta-decoded entry."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/MD0002.html?v=94ac4d193cbf",
+      "id": "MD0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_matrix_cell_functional",
+      "proof_bundle_node_id": 558,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The decoded natural value of every flattened matrix cell is unique."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/MD0003.html?v=94ac4d193cbf",
+      "id": "MD0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_matrix_cell_exists_unique",
+      "proof_bundle_node_id": 559,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every finite beta-coded matrix entry has exactly one actual value."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/MD0004.html?v=94ac4d193cbf",
+      "id": "MD0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_dot_product_exists",
+      "proof_bundle_node_id": 560,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Two arbitrary finite coded vectors have an exactly witnessed dot product."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/MD0005.html?v=94ac4d193cbf",
+      "id": "MD0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_dot_product_functional",
+      "proof_bundle_node_id": 561,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The exact finite dot-product value is independent of its coding witness."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/MD0006.html?v=94ac4d193cbf",
+      "id": "MD0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_dot_product_exists_unique",
+      "proof_bundle_node_id": 562,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every pair of coded finite vectors has exactly one natural dot product."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/MD0007.html?v=94ac4d193cbf",
+      "id": "MD0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_dot_product_empty",
+      "proof_bundle_node_id": 563,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The exact dot product of two empty finite vectors is zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/MD0008.html?v=94ac4d193cbf",
+      "id": "MD0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_dot_product_commutative",
+      "proof_bundle_node_id": 564,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Finite natural dot products are constructively symmetric."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/MD0009.html?v=94ac4d193cbf",
+      "id": "MD0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_matrix_two_determinant_exists",
+      "proof_bundle_node_id": 565,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural 2-by-2 matrix has an exact signed-pair determinant witness."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/MD000A.html?v=94ac4d193cbf",
+      "id": "MD000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_matrix_two_determinant_functional",
+      "proof_bundle_node_id": 566,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The positive/negative natural components of a 2-by-2 determinant are unique."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/ND0001.html?v=94ac4d193cbf",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=94ac4d193cbf",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/PD0013.html?v=94ac4d193cbf",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0015.html?v=94ac4d193cbf",
+      "id": "PD0015",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Sum",
+      "signature": "Sum(b,c,l,z)",
+      "summary": "z is the sum of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": "MatrixAt",
+      "href": "definition/ND0003.html?v=94ac4d193cbf",
+      "id": "ND0003",
+      "kind": "definition",
+      "layer": 1,
+      "name": "MatrixAt",
+      "signature": "MatrixAt(b,c,w,i,j,z)",
+      "summary": "The exact natural matrix entry stored at flattened beta index i*w+j."
+    },
+    {
+      "global_definition": "DotProduct",
+      "href": "definition/ND0004.html?v=94ac4d193cbf",
+      "id": "ND0004",
+      "kind": "definition",
+      "layer": 2,
+      "name": "DotProduct",
+      "signature": "DotProduct(b,c,d,e,ell,z)",
+      "summary": "The witnessed sum of the pointwise products of two beta-coded natural vectors."
+    },
+    {
+      "global_definition": "SignedDet2",
+      "href": "definition/ND0005.html?v=94ac4d193cbf",
+      "id": "ND0005",
+      "kind": "definition",
+      "layer": 0,
+      "name": "SignedDet2",
+      "signature": "SignedDet2(a,b,c,d,p,n)",
+      "summary": "The exact positive and negative natural components p=ad and n=bc of a signed 2×2 determinant."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "MD0001": {
+      "critical_root_path": [
+        "MD0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MD0003"
+      ]
+    },
+    "MD0002": {
+      "critical_root_path": [
+        "MD0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MD0003"
+      ]
+    },
+    "MD0003": {
+      "critical_root_path": [
+        "MD0001",
+        "MD0003"
+      ],
+      "dependencies": [
+        "MD0001",
+        "MD0002"
+      ],
+      "dependents": []
+    },
+    "MD0004": {
+      "critical_root_path": [
+        "MD0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MD0006"
+      ]
+    },
+    "MD0005": {
+      "critical_root_path": [
+        "MD0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MD0006"
+      ]
+    },
+    "MD0006": {
+      "critical_root_path": [
+        "MD0004",
+        "MD0006"
+      ],
+      "dependencies": [
+        "MD0004",
+        "MD0005"
+      ],
+      "dependents": []
+    },
+    "MD0007": {
+      "critical_root_path": [
+        "MD0007"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "MD0008": {
+      "critical_root_path": [
+        "MD0008"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "MD0009": {
+      "critical_root_path": [
+        "MD0009"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "MD000A": {
+      "critical_root_path": [
+        "MD000A"
+      ],
+      "dependencies": [],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "MD0003",
+    "MD000A",
+    "MD0006"
+  ],
+  "schema": "peano-lab-constructive-next-layer-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

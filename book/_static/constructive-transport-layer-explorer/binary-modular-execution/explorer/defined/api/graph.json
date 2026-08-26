@@ -1,0 +1,1309 @@
+{
+  "alpha_checked_use_node_count": 19,
+  "alpha_edition_version": "v24",
+  "alpha_first_enrolled_version": "v22",
+  "definition_topological_order": [
+    "ND0001",
+    "PD0002",
+    "ND0034",
+    "PD0008",
+    "ND0023",
+    "ND0026",
+    "ND0035",
+    "ND0036",
+    "ND0002",
+    "PD0013",
+    "PD0014",
+    "PD0019",
+    "PD0020",
+    "ND0027",
+    "ND0037",
+    "ND0021",
+    "ND0022",
+    "ND0028",
+    "PD0001",
+    "ND0030"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "BE0007",
+      "target": "BE0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE0008",
+      "target": "BE0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE0004",
+      "target": "BE000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE0002",
+      "target": "BE000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE0003",
+      "target": "BE000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE000A",
+      "target": "BE000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE000B",
+      "target": "BE000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE000D",
+      "target": "BE0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE0006",
+      "target": "BE0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE000E",
+      "target": "BE0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE0005",
+      "target": "BE0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE000F",
+      "target": "BE0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE0009",
+      "target": "BE0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE000C",
+      "target": "BE0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE0010",
+      "target": "BE0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE0010",
+      "target": "BE0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE000C",
+      "target": "BE0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BE0012",
+      "target": "BE0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0001",
+      "statement_occurrences": 1,
+      "target": "ND0034"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BE0002",
+      "statement_occurrences": 2,
+      "target": "ND0034"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0003",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0003",
+      "statement_occurrences": 1,
+      "target": "ND0034"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0004",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0005",
+      "statement_occurrences": 1,
+      "target": "ND0026"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0006",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0006",
+      "statement_occurrences": 1,
+      "target": "ND0027"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0007",
+      "statement_occurrences": 1,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BE0007",
+      "statement_occurrences": 2,
+      "target": "ND0027"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0008",
+      "statement_occurrences": 1,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BE0008",
+      "statement_occurrences": 2,
+      "target": "ND0027"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0009",
+      "statement_occurrences": 1,
+      "target": "ND0022"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0009",
+      "statement_occurrences": 1,
+      "target": "ND0026"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BE0009",
+      "statement_occurrences": 2,
+      "target": "ND0027"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000A",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000A",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BE000A",
+      "statement_occurrences": 2,
+      "target": "ND0035"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000B",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000B",
+      "statement_occurrences": 1,
+      "target": "ND0034"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000B",
+      "statement_occurrences": 1,
+      "target": "ND0035"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000C",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000C",
+      "statement_occurrences": 1,
+      "target": "ND0034"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000C",
+      "statement_occurrences": 1,
+      "target": "ND0036"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000D",
+      "statement_occurrences": 1,
+      "target": "ND0036"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000E",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000E",
+      "statement_occurrences": 1,
+      "target": "ND0026"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BE000E",
+      "statement_occurrences": 2,
+      "target": "ND0036"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE000F",
+      "statement_occurrences": 1,
+      "target": "ND0022"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0010",
+      "statement_occurrences": 1,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0010",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0010",
+      "statement_occurrences": 1,
+      "target": "ND0027"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0010",
+      "statement_occurrences": 1,
+      "target": "ND0036"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0011",
+      "statement_occurrences": 1,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0011",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0011",
+      "statement_occurrences": 1,
+      "target": "ND0027"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0011",
+      "statement_occurrences": 1,
+      "target": "ND0034"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0011",
+      "statement_occurrences": 1,
+      "target": "ND0036"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0012",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BE0012",
+      "statement_occurrences": 2,
+      "target": "ND0036"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0013",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BE0013",
+      "statement_occurrences": 1,
+      "target": "ND0034"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BE0013",
+      "statement_occurrences": 2,
+      "target": "ND0036"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0034",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0034",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0023",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0023",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0026",
+      "target": "ND0023"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0035",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0035",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0035",
+      "target": "ND0026"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0036",
+      "target": "ND0035"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0036",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0002",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0002",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0019"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0027",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0027",
+      "target": "ND0023"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0037",
+      "target": "ND0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0037",
+      "target": "ND0027"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0021",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0028",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0030",
+      "target": "ND0028"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0030",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0030",
+      "target": "PD0002"
+    }
+  ],
+  "family_slug": "binary-modular-execution",
+  "independent_lean_bundle_verified": true,
+  "milestone_caveat": "G102 was OPEN at this family's Alpha-v22 first admission: complete execution was proved only for a supplied valid beta-coded digit prefix. G102 is now CLOSED in Alpha v23 for every arbitrary exponent, with actual canonical digits and operations≤3*BitLen(e)+2.",
+  "milestone_status": "alpha_closed",
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0001.html?v=94ac4d193cbf",
+      "id": "BE0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_digit_prefix_empty",
+      "proof_bundle_node_id": 220,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every empty beta-coded prefix is constructively a valid binary digit sequence."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0002.html?v=94ac4d193cbf",
+      "id": "BE0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_digit_prefix_restrict",
+      "proof_bundle_node_id": 221,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every valid successor-length binary digit prefix has a valid predecessor prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0003.html?v=94ac4d193cbf",
+      "id": "BE0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_digit_prefix_terminal_bit",
+      "proof_bundle_node_id": 222,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every nonempty valid beta-coded binary prefix has a genuine final zero-or-one digit."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0004.html?v=94ac4d193cbf",
+      "id": "BE0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_execution_initial_state",
+      "proof_bundle_node_id": 223,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "There is a real beta code whose initial square-and-multiply accumulator is one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0005.html?v=94ac4d193cbf",
+      "id": "BE0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_execution_step_digit",
+      "proof_bundle_node_id": 224,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual modular square-and-multiply transition explicitly carries a binary digit."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0006.html?v=94ac4d193cbf",
+      "id": "BE0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_execution_power_zero",
+      "proof_bundle_node_id": 225,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every guarded modulus, the actual initial accumulator one is the canonical zeroth power."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0007.html?v=94ac4d193cbf",
+      "id": "BE0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_execution_even_power_invariant",
+      "proof_bundle_node_id": 226,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "One exact binary zero transition preserves the witnessed canonical power invariant."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0008.html?v=94ac4d193cbf",
+      "id": "BE0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_execution_odd_power_invariant",
+      "proof_bundle_node_id": 227,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "One exact binary one transition preserves the witnessed canonical power invariant."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0009.html?v=94ac4d193cbf",
+      "id": "BE0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "binary_execution_step_power_invariant",
+      "proof_bundle_node_id": 228,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual zero-or-one modular transition preserves the matching binary-prefix power."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE000A.html?v=94ac4d193cbf",
+      "id": "BE000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_execution_prefix_extend",
+      "proof_bundle_node_id": 229,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Append one genuine beta-coded binary digit and canonical modular transition while preserving every previous execution state."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE000B.html?v=94ac4d193cbf",
+      "id": "BE000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "binary_execution_prefix_exists",
+      "proof_bundle_node_id": 230,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Natural induction constructs a complete genuine beta-coded square-and-multiply trace for every supplied valid finite binary digit prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE000C.html?v=94ac4d193cbf",
+      "id": "BE000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_modular_execution_exists",
+      "proof_bundle_node_id": 231,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every guarded valid coded binary digit prefix has a genuine witnessed modular execution and decoded terminal result."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE000D.html?v=94ac4d193cbf",
+      "id": "BE000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_modular_execution_empty",
+      "proof_bundle_node_id": 232,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The terminal accumulator of any actual empty binary execution is exactly one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE000E.html?v=94ac4d193cbf",
+      "id": "BE000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_modular_execution_successor_decompose",
+      "proof_bundle_node_id": 233,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every nonempty actual binary execution decomposes into its exact valid predecessor and final modular transition."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE000F.html?v=94ac4d193cbf",
+      "id": "BE000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_execution_horner_digit_split",
+      "proof_bundle_node_id": 234,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A valid final Horner digit yields the exact exponent decomposition e=2h+d."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0010.html?v=94ac4d193cbf",
+      "id": "BE0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_modular_execution_power_correct",
+      "proof_bundle_node_id": 235,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every genuine coded square-and-multiply execution is the canonical modular power of the exact base-two Horner exponent represented by its digit prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0011.html?v=94ac4d193cbf",
+      "id": "BE0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "binary_modular_execution_horner_exists",
+      "proof_bundle_node_id": 236,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every valid beta-coded binary prefix has a witnessed Horner exponent, complete actual modular execution, and independently proved canonical power invariant."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0012.html?v=94ac4d193cbf",
+      "id": "BE0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "binary_modular_execution_result_functional",
+      "proof_bundle_node_id": 237,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Any two complete actual coded square-and-multiply executions of the same guarded binary prefix have identical terminal residues."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BE0013.html?v=94ac4d193cbf",
+      "id": "BE0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "binary_modular_execution_result_exists_unique",
+      "proof_bundle_node_id": 238,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every supplied valid beta-coded binary prefix has exactly one genuine guarded square-and-multiply execution result."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/ND0001.html?v=94ac4d193cbf",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=94ac4d193cbf",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "BinaryDigitPrefix",
+      "href": "definition/ND0034.html?v=94ac4d193cbf",
+      "id": "ND0034",
+      "kind": "definition",
+      "layer": 1,
+      "name": "BinaryDigitPrefix",
+      "signature": "BinaryDigitPrefix(d,s,n)",
+      "summary": "Every genuinely beta-decoded entry of a bounded finite prefix is zero or one."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0008.html?v=94ac4d193cbf",
+      "id": "PD0008",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ModEq",
+      "signature": "ModEq(m,a,b)",
+      "summary": "Balanced-natural congruence modulo m."
+    },
+    {
+      "global_definition": "CanonicalModularResidue",
+      "href": "definition/ND0023.html?v=94ac4d193cbf",
+      "id": "ND0023",
+      "kind": "definition",
+      "layer": 1,
+      "name": "CanonicalModularResidue",
+      "signature": "CanonicalModularResidue(m,a,r)",
+      "summary": "A strictly bounded canonical natural residue r<m together with exact balanced congruence to a modulo m."
+    },
+    {
+      "global_definition": "BinaryModularStep",
+      "href": "definition/ND0026.html?v=94ac4d193cbf",
+      "id": "ND0026",
+      "kind": "definition",
+      "layer": 2,
+      "name": "BinaryModularStep",
+      "signature": "BinaryModularStep(m,u,a,b,r)",
+      "summary": "One exact binary square or square-and-multiply transition with a genuinely canonical reduced output."
+    },
+    {
+      "global_definition": "BinaryExecutionTrace",
+      "href": "definition/ND0035.html?v=94ac4d193cbf",
+      "id": "ND0035",
+      "kind": "definition",
+      "layer": 3,
+      "name": "BinaryExecutionTrace",
+      "signature": "BinaryExecutionTrace(d,s,a,m,n,h,t)",
+      "summary": "A complete beta-coded accumulator history starting at one and preserving the checked square-and-multiply transition at every digit."
+    },
+    {
+      "global_definition": "BinaryModularExecution",
+      "href": "definition/ND0036.html?v=94ac4d193cbf",
+      "id": "ND0036",
+      "kind": "definition",
+      "layer": 4,
+      "name": "BinaryModularExecution",
+      "signature": "BinaryModularExecution(d,s,a,m,n,r)",
+      "summary": "An actual beta-coded repeated-squaring trace together with its decoded terminal accumulator."
+    },
+    {
+      "global_definition": "Horner",
+      "href": "definition/ND0002.html?v=94ac4d193cbf",
+      "id": "ND0002",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Horner",
+      "signature": "Horner(b,c,x,ell,z)",
+      "summary": "A complete beta-coded natural-polynomial Horner trace with an explicitly witnessed terminal value."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/PD0013.html?v=94ac4d193cbf",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0014.html?v=94ac4d193cbf",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0019.html?v=94ac4d193cbf",
+      "id": "PD0019",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Repeat",
+      "signature": "Repeat(b,c,a,l)",
+      "summary": "The decoded prefix repeats a for l positions."
+    },
+    {
+      "global_definition": "Pow",
+      "href": "definition/PD0020.html?v=94ac4d193cbf",
+      "id": "PD0020",
+      "kind": "definition",
+      "layer": 2,
+      "name": "Pow",
+      "signature": "Pow(a,e,z)",
+      "summary": "z is the relational e-th power of a."
+    },
+    {
+      "global_definition": "BinaryModularPower",
+      "href": "definition/ND0027.html?v=94ac4d193cbf",
+      "id": "ND0027",
+      "kind": "definition",
+      "layer": 3,
+      "name": "BinaryModularPower",
+      "signature": "BinaryModularPower(a,e,m,r)",
+      "summary": "The exact canonical natural residue of the existing beta-coded exponentiation relation Pow(a,e,z)."
+    },
+    {
+      "global_definition": "BinaryExecutionPowerInvariant",
+      "href": "definition/ND0037.html?v=94ac4d193cbf",
+      "id": "ND0037",
+      "kind": "definition",
+      "layer": 4,
+      "name": "BinaryExecutionPowerInvariant",
+      "signature": "BinaryExecutionPowerInvariant(d,s,a,m,n,r)",
+      "summary": "The beta-coded digit prefix evaluated by base-two Horner together with its unique canonical modular power."
+    },
+    {
+      "global_definition": "BinaryModulus",
+      "href": "definition/ND0021.html?v=94ac4d193cbf",
+      "id": "ND0021",
+      "kind": "definition",
+      "layer": 1,
+      "name": "BinaryModulus",
+      "signature": "BinaryModulus(m)",
+      "summary": "The exact constructive nontrivial-modulus guard 1<m."
+    },
+    {
+      "global_definition": "BinaryExponentSplit",
+      "href": "definition/ND0022.html?v=94ac4d193cbf",
+      "id": "ND0022",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BinaryExponentSplit",
+      "signature": "BinaryExponentSplit(e,h,b)",
+      "summary": "The exact binary decomposition e=2*h+b with an explicit b=0 or b=1 witness."
+    },
+    {
+      "global_definition": "PowTwo",
+      "href": "definition/ND0028.html?v=94ac4d193cbf",
+      "id": "ND0028",
+      "kind": "definition",
+      "layer": 3,
+      "name": "PowTwo",
+      "signature": "PowTwo(e,p)",
+      "summary": "The exact existing constructive exponentiation relation Pow(2,e,p)."
+    },
+    {
+      "global_definition": "Le",
+      "href": "definition/PD0001.html?v=94ac4d193cbf",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": "BitLen",
+      "href": "definition/ND0030.html?v=94ac4d193cbf",
+      "id": "ND0030",
+      "kind": "definition",
+      "layer": 4,
+      "name": "BitLen",
+      "signature": "BitLen(n,ell)",
+      "summary": "The unique binary length, with BitLen(0,1) and positive bounds 2^(ell-1)≤n<2^ell."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "BE0001": {
+      "critical_root_path": [
+        "BE0001"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "BE0002": {
+      "critical_root_path": [
+        "BE0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE000B"
+      ]
+    },
+    "BE0003": {
+      "critical_root_path": [
+        "BE0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE000B"
+      ]
+    },
+    "BE0004": {
+      "critical_root_path": [
+        "BE0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE000B"
+      ]
+    },
+    "BE0005": {
+      "critical_root_path": [
+        "BE0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE0010"
+      ]
+    },
+    "BE0006": {
+      "critical_root_path": [
+        "BE0006"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE0010"
+      ]
+    },
+    "BE0007": {
+      "critical_root_path": [
+        "BE0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE0009"
+      ]
+    },
+    "BE0008": {
+      "critical_root_path": [
+        "BE0008"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE0009"
+      ]
+    },
+    "BE0009": {
+      "critical_root_path": [
+        "BE0007",
+        "BE0009"
+      ],
+      "dependencies": [
+        "BE0007",
+        "BE0008"
+      ],
+      "dependents": [
+        "BE0010"
+      ]
+    },
+    "BE000A": {
+      "critical_root_path": [
+        "BE000A"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE000B"
+      ]
+    },
+    "BE000B": {
+      "critical_root_path": [
+        "BE0004",
+        "BE000B"
+      ],
+      "dependencies": [
+        "BE0004",
+        "BE0002",
+        "BE0003",
+        "BE000A"
+      ],
+      "dependents": [
+        "BE000C"
+      ]
+    },
+    "BE000C": {
+      "critical_root_path": [
+        "BE0004",
+        "BE000B",
+        "BE000C"
+      ],
+      "dependencies": [
+        "BE000B"
+      ],
+      "dependents": [
+        "BE0011",
+        "BE0013"
+      ]
+    },
+    "BE000D": {
+      "critical_root_path": [
+        "BE000D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE0010"
+      ]
+    },
+    "BE000E": {
+      "critical_root_path": [
+        "BE000E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE0010"
+      ]
+    },
+    "BE000F": {
+      "critical_root_path": [
+        "BE000F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BE0010"
+      ]
+    },
+    "BE0010": {
+      "critical_root_path": [
+        "BE0007",
+        "BE0009",
+        "BE0010"
+      ],
+      "dependencies": [
+        "BE000D",
+        "BE0006",
+        "BE000E",
+        "BE0005",
+        "BE000F",
+        "BE0009"
+      ],
+      "dependents": [
+        "BE0011",
+        "BE0012"
+      ]
+    },
+    "BE0011": {
+      "critical_root_path": [
+        "BE0004",
+        "BE000B",
+        "BE000C",
+        "BE0011"
+      ],
+      "dependencies": [
+        "BE000C",
+        "BE0010"
+      ],
+      "dependents": []
+    },
+    "BE0012": {
+      "critical_root_path": [
+        "BE0007",
+        "BE0009",
+        "BE0010",
+        "BE0012"
+      ],
+      "dependencies": [
+        "BE0010"
+      ],
+      "dependents": [
+        "BE0013"
+      ]
+    },
+    "BE0013": {
+      "critical_root_path": [
+        "BE0007",
+        "BE0009",
+        "BE0010",
+        "BE0012",
+        "BE0013"
+      ],
+      "dependencies": [
+        "BE000C",
+        "BE0012"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "BE000B",
+    "BE000C",
+    "BE0010",
+    "BE0011",
+    "BE0013"
+  ],
+  "schema": "peano-lab-constructive-transport-layer-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

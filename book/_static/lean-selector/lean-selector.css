@@ -57,6 +57,12 @@
   min-height: 1.1rem;
   font-size: .75rem;
 }
+.peano-lean-selector .pls-assurance {
+  margin: .35rem 0 .7rem;
+  color: color-mix(in srgb, currentColor 75%, var(--pls-accent));
+  font-size: .72rem;
+  line-height: 1.45;
+}
 .peano-lean-selector .pls-controls,
 .peano-lean-selector .pls-downloads {
   display: flex;
@@ -84,6 +90,25 @@
   font-size: .76rem;
   text-decoration-thickness: .08em;
   text-underline-offset: .16em;
+}
+.peano-lean-selector .pls-live {
+  order: -1;
+  flex-basis: 100%;
+  box-sizing: border-box;
+  margin-bottom: .15rem;
+  padding: .58rem .72rem;
+  border: 1px solid var(--pls-accent);
+  border-radius: .4rem;
+  background: var(--pls-accent);
+  color: white;
+  font-size: .8rem;
+  font-weight: 650;
+  text-align: center;
+  text-decoration: none;
+}
+.peano-lean-selector .pls-live:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
 }
 @media (prefers-reduced-motion: reduce) {
   .peano-lean-selector *,

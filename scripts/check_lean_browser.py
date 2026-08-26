@@ -4,15 +4,21 @@
 from __future__ import annotations
 
 import argparse
+from functools import lru_cache
 from hashlib import sha256
 import io
 import json
-from pathlib import PurePosixPath
+import os
+from pathlib import Path, PurePosixPath
 import re
+import ssl
+import subprocess
 import sys
+import tempfile
 import time
+from typing import BinaryIO
 from urllib.error import HTTPError, URLError
-from urllib.parse import unquote, urljoin, urlsplit
+from urllib.parse import quote, unquote, urljoin, urlsplit
 from urllib.request import Request, urlopen
 import zipfile
 
@@ -20,17 +26,54 @@ import zipfile
 DEFAULT_BASE_URL = "http://127.0.0.1:8787"
 API_ROOT = "/api/lean-strands"
 MAX_HTML_BYTES = 4 * 1024 * 1024
-MAX_JSON_BYTES = 512 * 1024
+MAX_JSON_BYTES = 3 * 1024 * 1024
 MAX_SOURCE_BYTES = 4 * 1024 * 1024
 MAX_ARCHIVE_BYTES = 64 * 1024 * 1024
 MAX_ARCHIVE_FILES = 4_096
-MAX_LIVE_URL_BYTES = 8_192
+MAX_LIVE_URL_BYTES = 1024 * 1024
 JOB_ID = re.compile(r"[0-9a-f]{32}\Z")
 THEOREM = re.compile(r"[A-Za-z][A-Za-z0-9_]{0,127}\Z")
+SERVER_STARTUP_SECONDS = 15.0
 
 
 class BrowserCheckError(ValueError):
     """The live browser service did not establish its claimed proof workflow."""
+
+
+@lru_cache(maxsize=1)
+def _verified_tls_context() -> ssl.SSLContext | None:
+    """Use installed certifi only when Python has no configured CA trust store."""
+
+    paths = ssl.get_default_verify_paths()
+    if (
+        paths.cafile is not None
+        or paths.capath is not None
+        or os.environ.get(paths.openssl_cafile_env)
+        or os.environ.get(paths.openssl_capath_env)
+    ):
+        return None
+    try:
+        default = ssl.create_default_context()
+    except (OSError, ssl.SSLError):
+        return None
+    if default.cert_store_stats().get("x509_ca", 0) > 0:
+        return None
+    try:
+        import certifi
+
+        bundle = certifi.where()
+        if type(bundle) is not str or not Path(bundle).is_file():
+            return None
+        selected = ssl.create_default_context(cafile=bundle)
+    except (ImportError, OSError, ssl.SSLError, ValueError):
+        return None
+    if (
+        selected.verify_mode != ssl.CERT_REQUIRED
+        or selected.check_hostname is not True
+        or selected.cert_store_stats().get("x509_ca", 0) < 1
+    ):
+        return None
+    return selected
 
 
 def _base_url(value: str) -> str:
@@ -75,16 +118,57 @@ def _request(
     *,
     method: str = "GET",
     payload: dict[str, object] | None = None,
+    origin: str | None = None,
+    additional_headers: dict[str, str] | None = None,
+    require_cors: bool = False,
     maximum: int,
 ) -> bytes:
     data = None
     headers = {"Accept": "application/json, text/html, text/plain, application/zip"}
+    if origin is not None:
+        headers["Origin"] = origin
+    if additional_headers is not None:
+        headers.update(additional_headers)
     if payload is not None:
         data = json.dumps(payload, separators=(",", ":")).encode("utf-8")
         headers["Content-Type"] = "application/json"
     request = Request(url, data=data, headers=headers, method=method)
     try:
-        with urlopen(request, timeout=20) as response:
+        selected = _verified_tls_context() if urlsplit(url).scheme == "https" else None
+        options = {"timeout": 20}
+        if selected is not None:
+            options["context"] = selected
+        with urlopen(request, **options) as response:
+            if require_cors:
+                if origin is None or response.headers.get("Access-Control-Allow-Origin") != origin:
+                    raise BrowserCheckError(
+                        "the proof service did not approve the exact public theorem-browser origin"
+                    )
+                if response.headers.get("Access-Control-Allow-Credentials", "").lower() == "true":
+                    raise BrowserCheckError("the public proof service unexpectedly accepts credentials")
+                if method == "OPTIONS":
+                    approved = {
+                        item.strip().upper()
+                        for item in response.headers.get("Access-Control-Allow-Methods", "").split(",")
+                    }
+                    selected = headers.get("Access-Control-Request-Method", "").upper()
+                    if selected not in approved:
+                        raise BrowserCheckError(
+                            "the proof service rejected its required cross-origin browser method"
+                        )
+                    requested = {
+                        item.strip().lower()
+                        for item in headers.get("Access-Control-Request-Headers", "").split(",")
+                        if item.strip()
+                    }
+                    available = {
+                        item.strip().lower()
+                        for item in response.headers.get("Access-Control-Allow-Headers", "").split(",")
+                    }
+                    if not requested.issubset(available):
+                        raise BrowserCheckError(
+                            "the proof service rejected its required cross-origin browser headers"
+                        )
             advertised = response.headers.get("Content-Length")
             if advertised is not None and (
                 not advertised.isdecimal() or int(advertised) > maximum
@@ -111,12 +195,90 @@ def _json_response(content: bytes) -> dict[str, object]:
     return value
 
 
+def _local_service_target(base: str) -> tuple[str, int] | None:
+    """Allow an automatically managed service only on safe local HTTP origins."""
+
+    parsed = urlsplit(base)
+    if parsed.scheme != "http" or parsed.hostname not in {"127.0.0.1", "localhost"}:
+        return None
+    try:
+        port = parsed.port or 80
+    except ValueError as error:
+        raise BrowserCheckError("the local browser port is not valid") from error
+    if not 1 <= port <= 65_535:
+        raise BrowserCheckError("the local browser port is not valid")
+    return parsed.hostname, port
+
+
+def _stop_local_service(process: subprocess.Popen[bytes], log: BinaryIO) -> None:
+    """Stop only the exact temporary loopback server created by this checker."""
+
+    try:
+        if process.poll() is None:
+            process.terminate()
+            try:
+                process.wait(timeout=5)
+            except subprocess.TimeoutExpired:
+                process.kill()
+                process.wait(timeout=5)
+    finally:
+        log.close()
+
+
+def _start_local_service(base: str) -> tuple[subprocess.Popen[bytes], BinaryIO]:
+    """Start the checked repository service without exposing a public listener."""
+
+    target = _local_service_target(base)
+    if target is None:
+        raise BrowserCheckError("automatic browser startup is limited to local HTTP")
+    host, port = target
+    service = Path(__file__).resolve().with_name("serve_lean_strands.py")
+    if service.is_symlink() or not service.is_file():
+        raise BrowserCheckError("the local theorem-browser service script is unavailable")
+    log = tempfile.TemporaryFile(mode="w+b")
+    try:
+        process = subprocess.Popen(
+            [sys.executable, "-B", str(service), "--host", host, "--port", str(port)],
+            cwd=str(service.parent.parent),
+            stdin=subprocess.DEVNULL,
+            stdout=log,
+            stderr=log,
+        )
+    except OSError as error:
+        log.close()
+        raise BrowserCheckError(f"could not start the local theorem browser: {error}") from error
+
+    deadline = time.monotonic() + SERVER_STARTUP_SECONDS
+    while time.monotonic() < deadline:
+        if process.poll() is not None:
+            log.seek(0)
+            detail = log.read(4_096).decode("utf-8", errors="replace").strip()
+            log.close()
+            raise BrowserCheckError(
+                "the temporary local theorem browser exited before startup"
+                + (f": {detail}" if detail else "")
+            )
+        try:
+            health = _json_response(
+                _request(_same_origin(base, "/health"), maximum=MAX_JSON_BYTES)
+            )
+        except BrowserCheckError:
+            time.sleep(0.1)
+            continue
+        if health.get("status") == "ok":
+            return process, log
+        _stop_local_service(process, log)
+        raise BrowserCheckError("the temporary local theorem browser failed its health check")
+
+    _stop_local_service(process, log)
+    raise BrowserCheckError("the temporary local theorem browser exceeded its startup deadline")
+
+
 def _check_live_url(url: object, source: bytes) -> None:
     if type(url) is not str or len(url.encode("utf-8")) > MAX_LIVE_URL_BYTES:
         raise BrowserCheckError("Lean Live did not receive a bounded share URL")
     try:
         parsed = urlsplit(url)
-        decoded = unquote(parsed.fragment.removeprefix("code="), errors="strict")
     except (UnicodeError, ValueError) as error:
         raise BrowserCheckError("Lean Live received an invalid source share") from error
     if (
@@ -124,12 +286,33 @@ def _check_live_url(url: object, source: bytes) -> None:
         or parsed.netloc != "live.lean-lang.org"
         or parsed.path not in {"", "/"}
         or parsed.query
-        or not parsed.fragment.startswith("code=")
-        or decoded.encode("utf-8") != source
     ):
         raise BrowserCheckError("Lean Live does not contain the exact downloaded proof")
+    try:
+        if parsed.fragment.startswith("code="):
+            decoded = unquote(parsed.fragment[5:], errors="strict")
+        elif parsed.fragment.startswith("codez="):
+            encoded = parsed.fragment[6:]
+            compressed = unquote(encoded, errors="strict")
+            if quote(compressed, safe="") != encoded:
+                raise ValueError("Lean Live compressed payload is not canonical Base64 URL text")
+            python_root = str(Path(__file__).resolve().parents[1] / "peano-lab" / "py")
+            if python_root not in sys.path:
+                sys.path.insert(0, python_root)
+            from peano_lab.library.lean_proof_strand import decompress_lean_live_codez
+
+            decoded = decompress_lean_live_codez(
+                compressed,
+                max_output_bytes=max(1, min(len(source), MAX_SOURCE_BYTES)),
+            )
+        else:
+            raise BrowserCheckError("Lean Live must contain an approved inline proof fragment")
+    except (ImportError, UnicodeError, ValueError) as error:
+        raise BrowserCheckError("Lean Live received an invalid source share") from error
+    if decoded.encode("utf-8") != source:
+        raise BrowserCheckError("Lean Live does not contain the exact downloaded proof")
     if (
-        re.search(r"(?m)^\s*import\s+(?!Lean(?:\.Elab\.Tactic)?\s*$)", decoded)
+        re.search(r"(?m)^\s*import\b", decoded)
         or re.search(r"\b(?:sorry|sorryAx|native_decide)\b", decoded)
         or re.search(r"(?m)^\s*axiom\b", decoded)
     ):
@@ -204,9 +387,26 @@ def _check_archive(payload: bytes, theorem: str) -> tuple[int, int]:
 def _parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--base-url", default=DEFAULT_BASE_URL)
+    parser.add_argument(
+        "--site-url",
+        help="public HTTPS theorem-browser origin when checking deployed proof pages",
+    )
+    parser.add_argument(
+        "--graph-path",
+        help="same-origin graph path; defaults to the local or deployed theorem explorer",
+    )
+    parser.add_argument(
+        "--selector-path",
+        help="same-origin selector JavaScript path; defaults to the local or deployed asset",
+    )
     parser.add_argument("--theorem", default="add_comm")
     parser.add_argument("--edition", choices=("stable", "alpha"), default="stable")
     parser.add_argument("--timeout", type=int, default=240)
+    parser.add_argument(
+        "--require-running",
+        action="store_true",
+        help="fail instead of temporarily starting a missing local browser service",
+    )
     parser.add_argument(
         "--allow-non-live",
         action="store_true",
@@ -219,16 +419,62 @@ def main(argv: list[str] | None = None) -> int:
     options = _parser().parse_args(argv)
     job_url: str | None = None
     terminal = False
+    managed_service: subprocess.Popen[bytes] | None = None
+    service_log: BinaryIO | None = None
     try:
         base = _base_url(options.base_url)
+        site = base if options.site_url is None else _base_url(options.site_url)
+        cross_origin = site != base
+        graph_path = options.graph_path or (
+            "/proofs/quadratic-reciprocity/explorer/graph.html?target=PA000G"
+            if options.site_url is not None
+            else "/book/_static/pa-proof-explorer/graph.html?target=PA000F"
+        )
+        selector_path = options.selector_path or (
+            "/proofs/assets/lean-selector.js"
+            if options.site_url is not None
+            else "/book/_static/lean-selector/lean-selector.js"
+        )
+
+        def api_request(
+            url: str,
+            *,
+            method: str = "GET",
+            payload: dict[str, object] | None = None,
+            maximum: int,
+        ) -> bytes:
+            return _request(
+                url,
+                method=method,
+                payload=payload,
+                origin=site if cross_origin else None,
+                require_cors=cross_origin,
+                maximum=maximum,
+            )
+
         if THEOREM.fullmatch(options.theorem) is None:
             raise BrowserCheckError("the theorem name is not a bounded safe identifier")
         if not 5 <= options.timeout <= 1_200:
             raise BrowserCheckError("the smoke-test timeout must be between 5 and 1,200 seconds")
 
-        configuration = _json_response(
-            _request(_same_origin(base, API_ROOT + "/config"), maximum=MAX_JSON_BYTES)
-        )
+        configuration_url = _same_origin(base, API_ROOT + "/config")
+        try:
+            configuration = _json_response(
+                api_request(configuration_url, maximum=MAX_JSON_BYTES)
+            )
+        except BrowserCheckError as error:
+            if (
+                options.require_running
+                or _local_service_target(base) is None
+                or not str(error).startswith("could not reach the theorem browser:")
+            ):
+                raise
+            print("No local theorem browser is running; starting a temporary loopback service…", flush=True)
+            managed_service, service_log = _start_local_service(base)
+            print("✓ Temporary local theorem browser is ready", flush=True)
+            configuration = _json_response(
+                api_request(configuration_url, maximum=MAX_JSON_BYTES)
+            )
         if (
             configuration.get("single_worker") is not True
             or configuration.get("independent_lean_verification") is not True
@@ -240,15 +486,33 @@ def main(argv: list[str] | None = None) -> int:
             + " MiB",
             flush=True,
         )
+        if cross_origin:
+            configured = configuration.get("allowed_origins")
+            if type(configured) is not list or site not in configured:
+                raise BrowserCheckError(
+                    "the external Lean backend does not explicitly approve the public browser"
+                )
+            _request(
+                _same_origin(base, API_ROOT + "/jobs"),
+                method="OPTIONS",
+                origin=site,
+                additional_headers={
+                    "Access-Control-Request-Method": "POST",
+                    "Access-Control-Request-Headers": "content-type",
+                },
+                require_cors=True,
+                maximum=MAX_JSON_BYTES,
+            )
+            print("✓ External HTTPS Lean backend approves only its configured browser origin", flush=True)
 
         graph = _request(
-            _same_origin(base, "/book/_static/pa-proof-explorer/graph.html?target=PA000F"),
+            _same_origin(site, graph_path),
             maximum=MAX_HTML_BYTES,
         )
         if b"lean-selector.js" not in graph or b"lean-selector.css" not in graph:
             raise BrowserCheckError("the selected-theorem browser controls were not installed")
         selector = _request(
-            _same_origin(base, "/book/_static/lean-selector/lean-selector.js"),
+            _same_origin(site, selector_path),
             maximum=MAX_SOURCE_BYTES,
         )
         if b"PeanoLeanSelector" not in selector:
@@ -256,7 +520,7 @@ def main(argv: list[str] | None = None) -> int:
         print("✓ Existing theorem graph includes its interactive Lean sidebar", flush=True)
 
         created = _json_response(
-            _request(
+            api_request(
                 _same_origin(base, API_ROOT + "/jobs"),
                 method="POST",
                 payload={"theorem": options.theorem, "edition": options.edition},
@@ -286,7 +550,7 @@ def main(argv: list[str] | None = None) -> int:
             if time.monotonic() >= deadline:
                 raise BrowserCheckError("the checked browser proof exceeded its requested timeout")
             time.sleep(0.5)
-            snapshot = _json_response(_request(job_url, maximum=MAX_JSON_BYTES))
+            snapshot = _json_response(api_request(job_url, maximum=MAX_JSON_BYTES))
 
         if snapshot.get("status") != "completed" or snapshot.get("lean_verified") is not True:
             detail = snapshot.get("error") or snapshot.get("diagnostics") or snapshot.get("status")
@@ -307,19 +571,36 @@ def main(argv: list[str] | None = None) -> int:
         downloads = snapshot.get("downloads")
         if type(downloads) is not dict:
             raise BrowserCheckError("the checked theorem has no safe download links")
-        source = _request(_same_origin(base, downloads.get("lean")), maximum=MAX_SOURCE_BYTES)
+        source = api_request(_same_origin(base, downloads.get("lean")), maximum=MAX_SOURCE_BYTES)
         live_url = snapshot.get("live_url")
         if live_url is not None:
+            receipt = snapshot.get("lean_live")
+            encoding = "codez" if "#codez=" in live_url else "code"
+            if (
+                type(receipt) is not dict
+                or receipt.get("local_source_verified") is not True
+                or receipt.get("self_contained") is not True
+                or receipt.get("core_imports") != []
+                or receipt.get("external_import_count") != 0
+                or receipt.get("source_sha256") != sha256(source).hexdigest()
+                or receipt.get("share_encoding") != encoding
+                or manifest.get("fallback_node_count") != 0
+            ):
+                raise BrowserCheckError(
+                    "Lean Live lacks an authenticated, locally compiled, import-free proof receipt"
+                )
             _check_live_url(live_url, source)
+            displayed_encoding = "compressed" if encoding == "codez" else "uncompressed"
             print(
-                f"✓ Exact standalone proof opens in Lean Live "
-                f"({len(source):,} source bytes, {len(live_url.encode('utf-8')):,} URL bytes)",
+                f"✓ Exact import-free standalone proof opens in Lean Live "
+                f"({len(source):,} source bytes, "
+                f"{len(live_url.encode('utf-8')):,} {displayed_encoding} URL bytes)",
                 flush=True,
             )
         elif not options.allow_non_live:
             raise BrowserCheckError("the selected theorem did not produce a directly usable Lean Live share")
 
-        payload = _request(
+        payload = api_request(
             _same_origin(base, downloads.get("zip")),
             maximum=MAX_ARCHIVE_BYTES,
         )
@@ -337,9 +618,12 @@ def main(argv: list[str] | None = None) -> int:
     finally:
         if job_url is not None and not terminal:
             try:
-                _request(job_url, method="DELETE", maximum=MAX_JSON_BYTES)
+                api_request(job_url, method="DELETE", maximum=MAX_JSON_BYTES)
             except BrowserCheckError:
                 pass
+        if managed_service is not None and service_log is not None:
+            _stop_local_service(managed_service, service_log)
+            print("✓ Temporary local theorem browser stopped", flush=True)
 
 
 if __name__ == "__main__":

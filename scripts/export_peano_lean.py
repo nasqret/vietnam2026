@@ -41,6 +41,9 @@ MAX_PACKAGE_MANIFEST_BYTES = 8 * 1024 * 1024
 MAX_PACKAGE_PRESENTATIONS = 4_096
 MAX_PACKAGE_MODULE_BYTES = 64 * 1024 * 1024
 MAX_STRAND_TERMINAL_BYTES = 64 * 1024
+DEFAULT_LIVE_URL_BYTES = 512 * 1024
+MAX_LIVE_URL_BYTES = 1024 * 1024
+MAX_PROGRESS_INLINE_URL_BYTES = 8 * 1024
 MAX_LEAN_FAILURE_DIAGNOSTIC_BYTES = 128 * 1024
 LEAN_VERIFIER_SOURCE_MEMORY_AMPLIFICATION = 2_048
 _PACKAGE_TOKEN = re.compile(r"[A-Za-z][A-Za-z0-9_]*\Z")
@@ -226,8 +229,8 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument(
         "--max-live-url-bytes",
         type=int,
-        default=8_192,
-        help="maximum exact UTF-8 bytes of a Lean Live share URL (default: 8192)",
+        default=DEFAULT_LIVE_URL_BYTES,
+        help="maximum exact UTF-8 bytes of a Lean Live share URL (default: 524288)",
     )
     parser.add_argument(
         "--max-live-source-kib",
@@ -265,6 +268,17 @@ def _emit_cli_progress(
     callback = _progress_callback(args)
     if callback is None:
         return
+    live_url = metadata.get("live_url")
+    if type(live_url) is str:
+        encoded_url = live_url.encode("utf-8")
+        if len(encoded_url) > MAX_PROGRESS_INLINE_URL_BYTES:
+            metadata = {
+                **metadata,
+                "live_url": None,
+                "live_url_omitted": True,
+                "live_url_bytes": len(encoded_url),
+                "live_url_sha256": sha256(encoded_url).hexdigest(),
+            }
     callback(
         {
             "kind": "lean_strand_progress",
@@ -1364,17 +1378,17 @@ def _load_selected_specification(args: argparse.Namespace) -> tuple[object | Non
     if args.edition == "stable":
         return get(args.theorem), None
 
-    from peano_lab.library import editions_v19
+    from peano_lab.library import editions_v24
 
-    item = editions_v19.entry(args.theorem, edition="alpha")
+    item = editions_v24.entry(args.theorem, edition="alpha")
     if item is None:
-        return None, editions_v19
+        return None, editions_v24
     if not item.checked_use:
         raise ValueError(
             f"Alpha theorem {args.theorem!r} has evidence {item.evidence.value!r}; "
             "a complete export requires independently checked-use authority"
         )
-    return item.spec, editions_v19
+    return item.spec, editions_v24
 
 
 def _repairable_strand_nodes(
@@ -1590,7 +1604,14 @@ def _write_live_output(
             file=sys.stderr,
         )
     else:
-        print(f"Lean Live share URL: {live.url}", file=sys.stderr)
+        if args.progress_json and live.url_bytes > MAX_PROGRESS_INLINE_URL_BYTES:
+            print(
+                f"Lean Live share URL: {live.url_bytes:,} bytes; "
+                f"the exact authenticated URL is recorded in {receipt}.",
+                file=sys.stderr,
+            )
+        else:
+            print(f"Lean Live share URL: {live.url}", file=sys.stderr)
     return live, live.url_status
 
 
@@ -1621,8 +1642,10 @@ def _export_proof_strand(args: argparse.Namespace) -> int:
         raise ValueError("proof-strand repair bound must be between 0 and 256")
     if not 8 <= args.max_chunk_kib <= 65_536:
         raise ValueError("proof-strand chunk bound must be between 8 and 65536 KiB")
-    if not 128 <= args.max_live_url_bytes <= 16_384:
-        raise ValueError("Lean Live URL bound must be between 128 and 16384 bytes")
+    if not 128 <= args.max_live_url_bytes <= MAX_LIVE_URL_BYTES:
+        raise ValueError(
+            f"Lean Live URL bound must be between 128 and {MAX_LIVE_URL_BYTES} bytes"
+        )
     if not 1 <= args.max_live_source_kib <= 65_536:
         raise ValueError("Lean Live source bound must be between 1 and 65536 KiB")
 
@@ -1726,6 +1749,7 @@ def _export_proof_strand(args: argparse.Namespace) -> int:
             total=plan.node_count,
             theorem=plan.root,
             live_url=live.url,
+            share_encoding=live.manifest["share_encoding"],
             live_status=live.url_status,
             remote_compilation="not_run",
             local_source_verified=args.verify,
@@ -1781,6 +1805,7 @@ def _export_proof_strand(args: argparse.Namespace) -> int:
             total=plan.node_count,
             theorem=plan.root,
             live_url=None if live is None else live.url,
+            share_encoding=None if live is None else live.manifest["share_encoding"],
             live_status=live_status,
             remote_compilation="not_run",
             local_source_verified=bool(live is not None and args.verify),
@@ -1811,6 +1836,7 @@ def _export_proof_strand(args: argparse.Namespace) -> int:
         total=plan.node_count,
         theorem=plan.root,
         live_url=None if live is None else live.url,
+        share_encoding=None if live is None else live.manifest["share_encoding"],
         live_status=live_status,
         remote_compilation="not_run",
         local_source_verified=bool(live is not None and args.verify),

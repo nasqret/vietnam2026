@@ -33,13 +33,14 @@ def test_shared_selector_only_uses_explicit_checked_same_origin_jobs() -> None:
     assert "alpha_checked_use" in source
     assert "node.kind === \"definition\"" in source
     assert "node.alpha_checked_use === true" in source
+    assert "/^Alpha v[0-9]+ checked use$/" in source
     assert "snapshot.lean_verified !== true" in source
     assert "stable_member === true" in source
     assert "credentials = \"same-origin\"" in source
     assert "live.lean-lang.org" in source
-    assert "LIVE_MAX_BYTES = 8192" in source
+    assert "LIVE_MAX_BYTES = 1048576" in source
     assert "POLL_MILLISECONDS = 750" in source
-    assert "DEFAULT_MAX_NODES = 256" in source
+    assert "DEFAULT_MAX_NODES = 1024" in source
     assert "MutationObserver" in source
     assert "data-graph-title" in source
     assert "method: \"POST\"" in source
@@ -67,7 +68,7 @@ def test_operator_guide_describes_exact_job_protocol_and_trust_boundary() -> Non
     assert "format=lean" in guide
     assert "format=zip" in guide
     assert "Lean Live" in guide
-    assert "8,192-byte" in guide
+    assert "524,288-byte" in guide
     assert "private project" in guide
     assert "lean_verified: true" in guide
     assert "unchanged Peano kernel" in guide

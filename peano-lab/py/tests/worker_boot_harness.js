@@ -62,6 +62,7 @@ async function successfulBootIsConcurrentAndOrdered() {
   const events = [];
   const messages = [];
   const writes = [];
+  const proofBodyReads = [];
   const runtime = deferred();
   const requests = new Map();
 
@@ -95,10 +96,19 @@ async function successfulBootIsConcurrentAndOrdered() {
     requests.get(relativePath).resolve({
       ok: true,
       status: 200,
-      text: async () => "source:" + relativePath,
+      text: async () => {
+        assert.strictEqual(relativePath.startsWith("proof-artifacts/"), false);
+        return "source:" + relativePath;
+      },
+      arrayBuffer: async () => {
+        proofBodyReads.push(relativePath);
+        return Uint8Array.from(Buffer.from("source:" + relativePath)).buffer;
+      },
     });
   }
-  for (let attempt = 0; attempt < 5; attempt += 1) await tick();
+  for (let attempt = 0; attempt < listedProofArtifacts.length + 5; attempt += 1) {
+    await tick();
+  }
 
   assert.deepStrictEqual(
     writes.map(([path]) => path),
@@ -108,9 +118,14 @@ async function successfulBootIsConcurrentAndOrdered() {
     ],
   );
   assert.deepStrictEqual(
-    writes.map(([, source]) => source),
-    allRuntimeFiles.map((path) => "source:" + path),
+    writes.slice(0, listedFiles.length).map(([, source]) => source),
+    listedFiles.map((path) => "source:" + path),
   );
+  assert.deepStrictEqual(
+    writes.slice(listedFiles.length).map(([, source]) => Buffer.from(source).toString("utf8")),
+    listedProofArtifacts.map((path) => "source:" + path),
+  );
+  assert.deepStrictEqual(proofBodyReads, listedProofArtifacts);
   assert.strictEqual(messages.filter((message) => message.type === "ready").length, 1);
   assert.strictEqual(messages.some((message) => message.type === "error"), false);
 
@@ -228,6 +243,11 @@ async function missingProofArtifactFailsBeforeAnyMount() {
     "proof-artifacts/two-square-proof-bundle-v1.json",
     "proof-artifacts/alpha-v19-residual-proof-bundle-v1.json",
     "proof-artifacts/alpha-v19-campaign-frontier-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v20-next-layer-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v21-advanced-layer-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v22-transport-layer-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v23-milestone-closure-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v24-research-layer-proof-bundle-v1.json",
   ]);
   await successfulBootIsConcurrentAndOrdered();
   await failureChoiceIsDeterministicAndAtomic();

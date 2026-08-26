@@ -50,6 +50,47 @@ def test_parser_recognizes_on_demand_proof_styles(exporter, style: str) -> None:
     assert exporter._parser().parse_args(["zero_add", "--format", style]).format == style
 
 
+def test_campaign_live_cli_defaults_and_hard_url_bound(
+    exporter,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    options = exporter._parser().parse_args(["zero_add", "--format", "outline"])
+    assert options.max_live_url_bytes == 512 * 1024
+    assert options.max_live_source_kib == 1024
+    assert exporter.main(
+        ["zero_add", "--format", "outline", "--max-live-url-bytes", "1048577"]
+    ) == 1
+    assert "between 128 and 1048576" in capsys.readouterr().err
+
+
+def test_campaign_progress_keeps_large_authenticated_share_out_of_event_lines(
+    exporter,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    options = exporter._parser().parse_args(
+        ["zero_add", "--format", "strand", "--progress-json"]
+    )
+    url = "https://live.lean-lang.org/#codez=" + "A" * (33 * 1024)
+    exporter._emit_cli_progress(
+        options,
+        stage="complete",
+        completed=557,
+        total=557,
+        theorem="zero_add",
+        live_url=url,
+        live_status="ready",
+    )
+
+    event_line = capsys.readouterr().err.strip()
+    assert len(event_line.encode("utf-8")) < 16 * 1024
+    event = json.loads(event_line)
+    assert event["live_status"] == "ready"
+    assert event["live_url"] is None
+    assert event["live_url_omitted"] is True
+    assert event["live_url_bytes"] == len(url.encode("utf-8"))
+    assert event["live_url_sha256"] == sha256(url.encode("utf-8")).hexdigest()
+
+
 def test_outline_never_replays_a_closed_stable_or_alpha_proof(
     exporter,
     monkeypatch: pytest.MonkeyPatch,
@@ -175,13 +216,13 @@ def test_dependency_limit_stops_before_recursive_certificate_replay(
         "infinitely_many_primes_one_mod_four",
     ),
 )
-def test_newly_checked_current_alpha_v19_theorems_have_replay_free_strands(
+def test_historical_alpha_theorems_have_replay_free_current_v24_strands(
     name: str,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v19
+    from peano_lab.library import editions_v19, editions_v23, editions_v24
 
     monkeypatch.setattr(
         editions_v19,
@@ -193,12 +234,87 @@ def test_newly_checked_current_alpha_v19_theorems_have_replay_free_strands(
         "_checked_campaign_bundle",
         lambda *_args, **_kwargs: pytest.fail("a current Alpha outline loaded a proof bundle"),
     )
+    monkeypatch.setattr(
+        editions_v23,
+        "replay",
+        lambda *_args, **_kwargs: pytest.fail("an Alpha-v23 outline replayed its proof"),
+    )
+    monkeypatch.setattr(
+        editions_v23,
+        "checked_milestone_closure_bundle",
+        lambda *_args, **_kwargs: pytest.fail("an Alpha-v23 outline loaded a proof bundle"),
+    )
+    monkeypatch.setattr(
+        editions_v24,
+        "replay",
+        lambda *_args, **_kwargs: pytest.fail("an Alpha-v24 outline replayed its proof"),
+    )
+    monkeypatch.setattr(
+        editions_v24,
+        "checked_research_layer_bundle",
+        lambda *_args, **_kwargs: pytest.fail("an Alpha-v24 outline loaded a proof bundle"),
+    )
 
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v19" in captured.out
+    assert "v24" in captured.out
     assert "no fresh Peano proof replay" in captured.err
+
+
+@pytest.mark.parametrize(
+    "name",
+    (
+        "beta_signed_matrix_minor_exists",
+        "beta_horner_derivative_exists_unique",
+        "crt_pairwise_coprime_prefix_canonical_exists_unique",
+    ),
+)
+def test_current_v24_frontier_outline_never_loads_actual_proof_artifacts(
+    name: str,
+    exporter,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    from peano_lab.library import editions_v24
+
+    def forbidden(*_args: object, **_kwargs: object) -> None:
+        pytest.fail("an Alpha-v24 metadata-only outline loaded an actual proof")
+
+    monkeypatch.setattr(editions_v24, "replay", forbidden)
+    monkeypatch.setattr(editions_v24, "_checked_research_layer_bundle", forbidden)
+
+    assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
+    captured = capsys.readouterr()
+    assert name in captured.out
+    assert "v24" in captured.out
+    assert "no fresh Peano proof replay" in captured.err
+
+
+def test_current_v24_full_export_rejects_unavailable_actual_research_proof(
+    exporter,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    from peano_lab.library import editions_v24
+
+    def unavailable() -> None:
+        raise editions_v24.EditionV24ReplayError(
+            "actual Alpha-v24 proof bytes are unavailable"
+        )
+
+    editions_v24.replay.cache_clear()
+    monkeypatch.setattr(editions_v24, "_checked_research_layer_bundle", unavailable)
+
+    assert (
+        exporter.main(
+            ["matrix_skip_index_exists", "--edition", "alpha", "--format", "full"]
+        )
+        == 1
+    )
+    captured = capsys.readouterr()
+    assert "actual Alpha-v24 proof bytes are unavailable" in captured.err
+    assert "theorem «matrix_skip_index_exists»" not in captured.out
 
 
 def test_unknown_theorem_is_never_rebranded_as_a_checked_strand() -> None:

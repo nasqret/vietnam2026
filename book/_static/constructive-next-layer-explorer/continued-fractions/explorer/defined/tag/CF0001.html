@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CF0001 — continued_fraction_initial_state_exists — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="continued-fractions"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=94ac4d193cbf">Definitions and proofs</a>
+       <a href="../../tag/CF0001.html?v=94ac4d193cbf">Exact original proof</a>
+       <a href="../graph.html?target=CF0001&amp;v=94ac4d193cbf">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=94ac4d193cbf">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D03&amp;v=94ac4d193cbf">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F08&amp;v=94ac4d193cbf">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G071" href="../../../../grand-campaign/?view=goal&amp;focus=G071&amp;v=94ac4d193cbf">G071 milestone</a></nav>
+  <p class="pd-tag">CF0001</p><h1>continued_fraction_initial_state_exists</h1>
+  <p>Every natural initializes an actual beta-coded terminal Euclidean state (a,0,nil).</p><p class="pd-status">Alpha v24 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ a. ∃ z. ∃ c. <a class="pd-definition-ref" data-definition="ND0001" href="../definition/ND0001.html?v=94ac4d193cbf">Beta(z,c,0,(a + ((0 + 0) · S (0 + 0) + (0 + 0))) · S (a + ((0 + 0) · S (0 + 0) + (0 + 0))) + ((0 + 0) · S (0 + 0) + (0 + 0) + ((0 + 0) · S (0 + 0) + (0 + 0))))</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0001.html?v=94ac4d193cbf">Beta(b,c,i,x) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">beta_prefix_extend · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall a. exists z c. (((exists ff_h_cf_initial_exists_state. ff_h_cf_initial_exists_state + S (((a) + (((0) + (0)) * S ((0) + (0)) + ((0) + (0)))) * S ((a) + (((0) + (0)) * S ((0) + (0)) + ((0) + (0)))) + ((((0) + (0)) * S ((0) + (0)) + ((0) + (0))) + (((0) + (0)) * S ((0) + (0)) + ((0) + (0))))) = S ((S (0)) * c)) /\ exists ff_q_cf_initial_exists_state. z = ff_q_cf_initial_exists_state * S ((S (0)) * c) + (((a) + (((0) + (0)) * S ((0) + (0)) + ((0) + (0)))) * S ((a) + (((0) + (0)) * S ((0) + (0)) + ((0) + (0)))) + ((((0) + (0)) * S ((0) + (0)) + ((0) + (0))) + (((0) + (0)) * S ((0) + (0)) + ((0) + (0)))))))</code></pre></details>
+  <section><h2>Complete unchanged native tactic proof</h2>
+    <p>All 11 lines are the exact independently kernel-checked original script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro a</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>specialize beta_prefix_extend 0</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>specialize beta_prefix_extend 0</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>specialize beta_prefix_extend 0</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>specialize beta_prefix_extend (((a) + (((0) + (0)) * S ((0) + (0)) + ((0) + (0)))) * S ((a) + (((0) + (0)) * S ((0) + (0)) + ((0) + (0)))) + ((((0) + (0)) * S ((0) + (0)) + ((0) + (0))) + (((0) + (0)) * S ((0) + (0)) + ((0) + (0)))))</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>cases beta_prefix_extend</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>cases beta_prefix_extend_witness</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>cases beta_prefix_extend_witness_witness</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>exists x</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>exists x1</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>exact beta_prefix_extend_witness_witness_left</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v24 checked use</dd><dt>First admission</dt><dd>Alpha v20</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>580 / 590</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 590 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>33 / 19</dd>
+      <dt>Statement SHA-256</dt><dd><code>938f2d128e6e48c962d03d5b0be355179b1c57875b8c5eb1c594bea640bf977b</code></dd>
+      <dt>Script SHA-256</dt><dd><code>54aadc07419189f791a5c3be32de54d97744ca5d062b942f4e58c8e68e558d12</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069</code></dd>
+      <dt>Exact source module</dt><dd><code>peano-lab/py/peano_lab/library/continued_fraction_candidate.py</code></dd></dl>
+</aside></main></body>
+</html>

@@ -13,17 +13,22 @@ arithmetic library. Start with:
 - [`Grand campaign machine-readable DAG`](../../book/_static/constructive-grand-campaign/campaign.json)
   and its [interactive proof-campaign atlas](../../book/_static/constructive-grand-campaign/index.html):
   five connected research domains, twelve mathematical families, 120 major
-  goals, 303 actual theorem/tool/anchor prerequisite edges, and 107 shared
+  goals, 303 actual theorem/tool/anchor prerequisite edges, and 164 shared
   mathematical terms; domain, family, goal, and definition drill-down links
-  directly to the completed proof explorers while distinguishing 32
-  definition-expansion edges and 312 statement-notation occurrences from
-  genuine proof dependencies and honestly identifying the open research
-  frontier;
+  directly to the completed proof explorers while distinguishing 135
+  definition-expansion edges, 311 lexical statement-notation occurrences,
+  and 68 explicitly typed notation links from genuine proof dependencies;
+  the shared registry independently audits 109 conservative definitions,
+  186 genuine definition prerequisites, and 73 signature-compatible links
+  while honestly identifying the open research frontier;
 - [`Completed quadratic-reciprocity closure receipt`](quadratic-reciprocity-closure-receipt.md)
   and its [complete canonical self-contained proof bundle](artifacts/quadratic-reciprocity-proof-bundle-v1.json):
   the exact unchanged-kernel ordinary proof of the final reciprocity root,
   all 557 genuine theorem bodies and 1,787 dependencies, and independent
-  compiled-Lean verification of the same exact constructive theorem;
+  compiled-Lean verification of the same exact constructive theorem; its
+  historically catalog-bound `api/corpus.json` remains byte-frozen, while a
+  separate `api/current-corpus.json` provides modern Alpha-v24 presentation
+  metadata without rewriting historical proof evidence;
 - [`ha-number-theory-campaign.json`](ha-number-theory-campaign.json): the
   executable K0--K6/M1--M5 layer status, dependency, and validation-gate
   manifest;
@@ -138,11 +143,70 @@ arithmetic library. Start with:
 - [`Alpha v19 complete constructive-campaign RFC`](alpha-v19-constructive-campaign-rfc-v1.md),
   its [`84-row residual closure receipt`](campaign-residual-closure-receipt.md),
   and its [`64-theorem campaign-frontier receipt`](alpha-v19-campaign-frontier-closure-receipt.md):
-  all 1,737 exact current theorems independently closed, including the complete
+  all 1,737 exact historical Alpha-v19 theorems independently closed, including the complete
   K3C/auxiliary-Bertrand interface, 44 Pythagorean forward results, the exact
   prime two-square equivalence, nine linear-congruence results, and ten
   one-modulo-four prime results, backed by independently kernel- and
   compiled-Lean-checked 475- and 545-node constructive proof bundles;
+- [`Alpha v20 next-layer admission RFC`](alpha-v20-next-layer-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v20-next-layer-closure-receipt.md),
+  and its [independently kernel- and Lean-verified 590-node proof bundle](artifacts/alpha-v20-next-layer-proof-bundle-v1.json):
+  39 genuinely checked new theorem proofs in four campaigns, giving historical
+  Alpha v20 a total of 1,776 checked-use theorems without changing Stable;
+- [`Alpha v21 advanced-layer admission RFC`](alpha-v21-advanced-layer-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v21-advanced-layer-closure-receipt.md),
+  and its [independently kernel- and Lean-verified 209-node proof bundle](artifacts/alpha-v21-advanced-layer-proof-bundle-v1.json):
+  54 genuinely checked new theorem proofs in three campaigns, giving historical
+  Alpha v21 a total of 1,830 checked-use theorems without changing Stable;
+- [`Alpha v22 transport-layer admission RFC`](alpha-v22-transport-layer-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v22-transport-layer-closure-receipt.md),
+  and its [independently kernel- and Lean-verified 240-node proof bundle](artifacts/alpha-v22-transport-layer-proof-bundle-v1.json):
+  60 genuinely checked new theorem proofs in three campaigns, giving historical
+  Alpha v22 a total of 1,890 checked-use theorems without changing Stable;
+- [`Alpha v23 milestone-closure admission RFC`](alpha-v23-milestone-closure-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v23-milestone-closure-receipt.md),
+  and its [independently kernel- and Lean-verified 617-node proof bundle](artifacts/alpha-v23-milestone-closure-proof-bundle-v1.json):
+  59 genuinely checked new theorem proofs in three campaigns, giving historical
+  Alpha v23 a total of 1,949 checked-use theorems without changing Stable;
+- [`Alpha v24 constructive research-layer admission RFC`](alpha-v24-research-layer-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v24-research-layer-receipt.md),
+  and its [independently kernel- and Lean-verified 203-node proof bundle](artifacts/alpha-v24-research-layer-proof-bundle-v1.json):
+  17 arbitrary signed matrix-minor/four-dimensional determinant proofs,
+  15 exact simultaneous formal-derivative proofs, and 27 finite-CRT/
+  universal-property-LCM proofs, giving current Alpha v24 a total of 2,008
+  independently checked-use theorems without changing Stable;
+- the [arbitrary signed matrix-minor RFC](matrix-determinant-minors-rfc-v1.md),
+  [exact formal polynomial-derivative RFC](polynomial-hensel-rfc-v1.md), and
+  [finite constructive CRT and arbitrary-list LCM RFC](generalized-crt-fold-rfc-v1.md):
+  precise independently proved components that leave full T13 determinant/
+  rank/lattice, G095 simple-root Hensel lifting, and G011 non-coprime
+  finite-list CRT milestones honestly open;
+- the [Euclidean logarithmic-bound RFC](euclidean-logarithmic-bound-rfc-v1.md),
+  [canonical binary-digit extraction RFC](binary-digit-extraction-rfc-v1.md),
+  and [infinitely many three-modulo-four primes RFC](primes-three-mod-four-rfc-v1.md):
+  17+24+18 exact original-kernel proofs that completely close G101, G102,
+  and G025, including both formal logarithmic bounds;
+- the [first-order binary-length RFC](binary-length-rfc-v1.md),
+  [Euclidean gcd-transport RFC](euclidean-gcd-transport-rfc-v1.md), and
+  [beta-coded binary modular execution RFC](binary-modular-execution-rfc-v1.md):
+  21+20+19 exact original-kernel proofs of total unique `BitLen`, terminal
+  Euclidean gcd identification, and complete power-correct supplied-digit
+  execution, providing the historical prerequisites for both subsequently
+  proved formal logarithmic bounds;
+- the [arbitrary natural/signed coded matrix-product RFC](matrix-coded-product-rfc-v1.md),
+  [Euclidean execution and complexity RFC](euclidean-complexity-rfc-v1.md),
+  and [binary modular-exponentiation RFC](binary-modular-exponentiation-rfc-v1.md):
+  23+15+16 exact first-order original-kernel proofs, honest open
+  determinant/rank/lattice boundaries, historical logarithmic-complexity
+  prerequisites,
+  capped executable witnesses, and a single audited shared definition DAG;
+- the [polynomial Horner RFC](polynomial-horner-rfc-v1.md),
+  [finite matrix and dot-product RFC](matrix-dot-product-rfc-v1.md),
+  [strict Bertrand prime-window and prime-chain RFC](bertrand-prime-campaign-next-layer-rfc-v1.md),
+  and [finite continued-fraction RFC](continued-fraction-rfc-v1.md):
+  exact first-order theorem statements, hygienic beta-coded relations,
+  genuine dependency ordering, executable constructive witnesses, and the
+  explicitly still-open full matrix-and-lattice milestone;
 - [`complete linear-congruence RFC`](linear-congruence-complete-rfc-v1.md)
   and [`infinitely many one-modulo-four primes RFC`](primes-one-mod-four-rfc-v1.md):
   exact constructive bounded-solution/zero-modulus/uniqueness interfaces and
@@ -862,14 +926,18 @@ closing the remaining 332 rows; a smaller dependency-closed batch need not
 wait for unrelated Alpha rows. WMI is down for the weekend, so no K3C cold
 receipt, whole-Alpha-v2 closure, or new promotion receipt is claimed here.
 
-## 2026-08-25 — fully checked current Alpha v19 and unchanged Stable editions
+## 2026-08-26 — fully checked current Alpha v24 and unchanged Stable editions
 
 The preceding Alpha-v2 section is a historical checkpoint, not the current
 release pointer. Stable is still the official default at **432 theorems**.
-The newest Alpha edition is v19, containing **1,737 independently checked
-theorems**: every one of its sealed Alpha-v18 parent's **1,673** statements,
-plus **64** newly proved campaign theorems. It has **zero body-only or pending
-rows**; every earlier sealed version remains reproducible.
+The newest Alpha edition is v24, containing **2,008 independently checked
+theorems**: every one of its sealed Alpha-v23 parent's **1,949** statements,
+plus **59** newly proved arbitrary-dimensional signed cofactor-minor,
+four-dimensional determinant, simultaneous formal-polynomial-derivative,
+finite Chinese-remainder, and universal-property arbitrary-list-LCM theorems.
+It has
+**zero body-only or pending rows**; every earlier sealed version remains
+reproducible.
 
 | Edition | Theorems | Direct edges | Layers | Checked use | New reviewed campaign |
 |---|---:|---:|---:|---:|---|
@@ -881,6 +949,11 @@ rows**; every earlier sealed version remains reproducible.
 | Alpha v17 | 1,673 | 5,615 | 53 | 916 | 31 genuinely closed supplementary-law results and both complete endpoints |
 | Alpha v18 | 1,673 | 5,615 | 53 | 1,589 | 673 genuinely closed Lucas, Kummer, Bertrand, four-square, and two-square results |
 | Alpha v19 | 1,737 | 5,779 | 53 | 1,737 | All 84 residual obligations closed; 64 Pythagorean, prime-two-square, linear-congruence, and prime-progression results |
+| Alpha v20 | 1,776 | 5,882 | 53 | 1,776 | 39 independently checked polynomial Horner, finite matrix-component, Bertrand-prime, and continued-fraction results |
+| Alpha v21 | 1,830 | 5,986 | 53 | 1,830 | 54 independently checked arbitrary matrix-product, Euclidean execution/halving, and binary modular-exponentiation results |
+| Alpha v22 | 1,890 | 6,128 | 53 | 1,890 | 60 independently checked binary-length, Euclidean terminal-gcd transport, and actual supplied-digit binary-execution results |
+| Alpha v23 | 1,949 | 6,285 | 53 | 1,949 | 59 independently checked complete logarithmic Euclidean-GCD, canonical binary-digit/execution, and three-modulo-four-prime-infinitude results |
+| Alpha v24 | 2,008 | 6,423 | 53 | 2,008 | 17 arbitrary signed matrix-minor/determinant, 15 exact formal-derivative, and 27 finite CRT/arbitrary-list-LCM results |
 
 Alpha v14 appends exactly thirteen `body_checked` Kummer rows. Alpha v15
 appends exactly 28 supplementary-law rows, including independently checked
@@ -951,7 +1024,7 @@ Lean proof-bundle verifier. At that sealed historical checkpoint, the
 remaining **17 K3C plus 67 auxiliary Bertrand** body-only rows did not yet
 have release checked-use authority.
 
-Current Alpha v19 preserves every exact Alpha-v18 theorem name, statement,
+Historical Alpha v19 preserves every exact Alpha-v18 theorem name, statement,
 authored script, dependency, enrollment position, membership, and provenance.
 Its first independently checked campaign bundle closes all **84** remaining
 body-only obligations, including the complete T09 prime-specific valuation
@@ -979,11 +1052,12 @@ body-proof nodes**, and **1,617,207 canonical bytes**. Its SHA-256 is
 Both entire graphs are accepted independently by the unchanged original
 intuitionistic kernel and the separately compiled Lean verifier.
 
-The exact current evidence partition is **432 stable_closed, 1,305
+The exact historical v19 evidence partition is **432 stable_closed, 1,305
 alpha_closed, zero body_checked, and zero pending rows**. All **1,737**
-enrolled theorem nodes and all **5,779** dependency edges therefore have
-independently checked-use authority; the unchanged **432-theorem Stable
-edition remains the default**. The exact release identities are:
+historical theorem nodes and all **5,779** historical dependency edges
+therefore have independently checked-use authority. The unchanged
+**432-theorem Stable edition remains the default**. The historical v19
+release identities are:
 
 - Alpha-v19 checked edition identity:
   `905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7`.
@@ -994,16 +1068,155 @@ edition remains the default**. The exact release identities are:
 - Alpha-v19 canonical catalog SHA-256:
   `f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b`.
 
+Historical Alpha v20 preserves that entire frozen parent and appends exactly
+**seven polynomial Horner, ten finite matrix/dot-product, thirteen Bertrand
+prime-window/chain, and nine finite continued-fraction theorems**. Its
+complete self-contained proof bundle has **590 independently checked proof
+nodes**, **2,045 dependency edges**, **190,533 structural proof nodes**, and
+SHA-256 `1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069`.
+Both the unchanged original intuitionistic kernel and the independently
+compiled Lean verifier accept the exact certificate. Its exact historical
+partition is **432 stable_closed, 1,344 alpha_closed, zero body_checked, and
+zero pending rows**, so all **1,776 theorem nodes** and **5,882 actual
+dependency edges** have checked-use authority.
+
+- Alpha-v20 checked edition identity:
+  `ee0f596150d8609ab302303ade44c4413290675398a1d6999a47b3ba046ac38b`.
+- Alpha-v20 ordered enrollment identity:
+  `947e12db1db93decddd87b833067acf774a37fcb7d89de117010d53baf00065c`.
+- Alpha-v20 checked evidence root:
+  `fd76c648de26cd8a451244441fac8f423fb4fec8e7feac1c789404dafcda1563`.
+- Alpha-v20 canonical catalog SHA-256:
+  `8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce`.
+
+Historical Alpha v21 preserves every exact historical v20 row and appends
+**23 arbitrary natural/signed matrix-product and determinant theorems, 15
+Euclidean execution/halving theorems, and 16 binary modular-exponentiation
+theorems**. Its self-contained proof artifact has **208 exact theorem nodes
+plus one synthetic conjunction**, **491 dependency edges**, **10,304 actual
+body-proof nodes**, **27 maximal roots**, **1,005,317 canonical bytes**, and
+SHA-256 `65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0`.
+Every one of its **209 proof bodies** is independently checked by the
+unchanged intuitionistic kernel; the separately compiled Lean verifier also
+accepts the exact artifact. Its exact historical partition is **432
+stable_closed, 1,398 alpha_closed, zero body_checked, and zero pending rows**,
+so all **1,830 theorem nodes** and **5,986 actual dependency edges** have
+genuine checked-use authority.
+
+- Alpha-v21 checked edition identity:
+  `aee42cc37e4a4073eb4892e81e4f26d957b3b4b42675c1ed4e67c90dc89602e6`.
+- Alpha-v21 ordered enrollment identity:
+  `ad2616d7656438ee2084f5ea404df3dad2106a99c6819fd174fd8c3ed6bb4c98`.
+- Alpha-v21 checked evidence root:
+  `9d217af3e7f77f8beb436f627a44f1a29cda54bb08a4e666899803aa97ccb91b`.
+- Alpha-v21 canonical catalog SHA-256:
+  `84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1`.
+
+Historical Alpha v22 preserves every exact historical v21 row and appends
+**21 total/functional/unique binary-length theorems, 20 Euclidean
+gcd-invariant and actual terminal-state identification theorems, and 19
+complete supplied-digit binary modular execution/power-correctness
+theorems**. Its self-contained proof artifact has **239 exact theorem nodes
+plus one synthetic conjunction**, **597 dependency edges**, **11,848 actual
+body-proof nodes**, **17 maximal roots**, **1,099,541 canonical bytes**, and
+SHA-256 `95e5f8a3baef113721d748f9d7071864b4bf9511737a27a1272d2695428fb938`.
+Every one of its **240 proof bodies** is independently checked by the
+unchanged intuitionistic kernel; the separately compiled Lean verifier also
+accepts the exact artifact. Its historical partition is **432 stable_closed,
+1,458 alpha_closed, zero body_checked, and zero pending rows**, so all
+**1,890 theorem nodes** and **6,128 actual dependency edges** have genuine
+checked-use authority.
+
+- Alpha-v22 checked edition identity:
+  `2750384264856ad10910c1e9369746da886f4760d41e356bfc9e7f8f4563c7db`.
+- Alpha-v22 ordered enrollment identity:
+  `431f7300f9190f6fdc35ef84212e93701f2bb565b7e32c1624b7ae0c89cfc5ea`.
+- Alpha-v22 checked evidence root:
+  `897ac1893550881538cf74274d0d48e15450125776f31be4edc10de0b1d05ef6`.
+- Alpha-v22 canonical catalog SHA-256:
+  `fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22`.
+
+Historical Alpha v23 preserves every exact historical v22 row and appends
+**17 complete Euclidean logarithmic-bound theorems, 24 canonical arbitrary-
+exponent binary-digit/modular-execution theorems, and 18 theorems proving
+infinitely many primes congruent to three modulo four**. Its self-contained
+proof artifact has **616 exact theorem nodes plus one synthetic conjunction**,
+**1,871 dependency edges**, **39,161 actual body-proof nodes**, and
+**2,518,315 canonical bytes**, with SHA-256
+`cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11`.
+Every one of its **617 proof bodies** is independently checked by the
+unchanged intuitionistic kernel and accepted by the separately compiled Lean
+verifier. Its historical partition is **432 stable_closed, 1,517 alpha_closed,
+zero body_checked, and zero pending rows**, so all **1,949 theorem nodes** and
+**6,285 actual dependency edges** have genuine checked-use authority.
+
+- Alpha-v23 checked edition identity:
+  `02059eef420eb96abd48c41bf62049a3cc69f025b00bed9dc3466e7eb2294a85`.
+- Alpha-v23 ordered enrollment identity:
+  `f5d94af7a11c642d7076a195e2e795e7b84c61a6de1a6b074708669b2dac1648`.
+- Alpha-v23 checked evidence root:
+  `e9c00544bdad559342da3ed5a0d1e26ef1576a0eecd9f580ec1fc98a2eb941cf`.
+- Alpha-v23 canonical catalog SHA-256:
+  `818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2`.
+
+Current Alpha v24 preserves every exact historical v23 row and appends
+**17 arbitrary-dimensional natural/signed cofactor-minor and signed 4×4
+determinant theorems, 15 exact simultaneous formal-polynomial-derivative
+theorems, and 27 finite pairwise-coprime CRT/arbitrary-list-LCM theorems**.
+Its compact self-contained proof artifact has **202 exact theorem nodes plus
+one synthetic conjunction**, **502 dependency edges**, **11,065 actual
+body-proof nodes**, **18 maximal roots**, and **738,923 canonical bytes**,
+with SHA-256
+`627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9`.
+Every one of its **203 proof bodies** is independently checked by the unchanged
+intuitionistic kernel and accepted by the separately compiled Lean verifier.
+The current partition is **432 stable_closed, 1,576 alpha_closed, zero
+body_checked, and zero pending rows**, so all **2,008 theorem nodes** and
+**6,423 actual dependency edges** have genuine checked-use authority.
+
+- Alpha-v24 checked edition identity:
+  `1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b`.
+- Alpha-v24 ordered enrollment identity:
+  `7463b938ffb87fe85eea6cd0e40c10ac73c799087ca1c408a070fcbe2687d4e1`.
+- Alpha-v24 checked evidence root:
+  `2516501a609a5bd46114a53e20bbdd7c9f79bc801f7d3148be38dcd48f4ce3e0`.
+- Alpha-v24 canonical catalog SHA-256:
+  `94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1`.
+
+The full T13 arbitrary-dimensional determinant/rank/lattice target, G095
+prime-power simple-root Hensel lift, and G011 arbitrary compatible non-coprime
+finite-list CRT remain **open**. Only their exact separately stated matrix,
+formal-derivative, arbitrary-list-LCM, and pairwise-coprime finite-CRT
+components have checked-use authority.
+
 Reproduce and independently verify the entire current release using
-`make peano-library-alpha-v19` and `make peano-library-alpha-v19-check`.
+`make peano-library-alpha-v24` and `make peano-library-alpha-v24-check`.
+The sealed historical v19, v20, v21, v22, and v23 releases remain independently reproducible
+with their corresponding versioned targets.
 The bounded browser command
 `pa proof alpha infinitely_many_primes_one_mod_four` inspects its exact
 authored constructive proof without loading a giant certificate. Campaign
 goals **G012** (linear congruences), **G026** (infinitely many primes one
 modulo four), **G061** (exact prime two-square classification), the forward
 **A08** Pythagorean anchor, and the complete **T09** valuation interface now
-have independently checked-use authority. **G025** (infinitely many primes
-three modulo four), **G077** (the inverse primitive Pythagorean
+have independently checked-use authority. Alpha v20 also closes **T12**
+(beta-coded natural polynomial evaluation), **G023** (multiplicity-one
+central-binomial prime divisors), **G024** (arbitrary finite strict Bertrand
+prime chains), and **G071** (finite continued fractions). Historical Alpha v21
+additionally proves arbitrary finite natural/signed matrix multiplication,
+genuine signed two-/three-dimensional determinants, Euclidean execution with
+an independent gcd and linear bound, two-step remainder halving, and unique
+canonical modular powers with functional binary transitions. Historical Alpha v22
+additionally proves total functional unique first-order `BitLen`, exact
+Euclidean terminal-state identification with its relational gcd, and complete
+power-correct beta-coded square-and-multiply execution with unique result for
+every supplied valid digit prefix. Historical Alpha v23 closes **G101** with
+actual terminal gcd and the exact `steps <= 2 * BitLen(b) + 1` bound,
+**G102** with arbitrary-exponent canonical digits, actual modular execution,
+and `operations <= 3 * BitLen(e) + 2`, and **G025** with prime witnesses
+congruent to three modulo four above every prescribed bound. **T13** remains
+open despite **33** checked components: arbitrary-dimensional determinants,
+rank, and lattices are unproved. **G077** (the inverse primitive Pythagorean
 parametrization), and **G078** (unconditional Fermat exponent-four strict
 descent) remain genuinely open; none is inferred from a nearby checked
 forward direction.

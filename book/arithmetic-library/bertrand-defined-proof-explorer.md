@@ -13,7 +13,7 @@ Each compact formula expands to exactly the original first-order PA formula.
 No definition introduces a kernel rule, axiom, predicate constant, theorem,
 or checked-use admission. The frozen Alpha-v12 catalog remains the sole source
 for theorem statements, tactic scripts, and historical enrollment provenance.
-Independently sealed current Alpha-v19 release evidence establishes checked
+Independently sealed current Alpha-v20 release evidence establishes checked
 use for all 544 actual theorem proofs: 202 Stable and 342 Alpha-only. The
 complete proof bundle is separately accepted by the unchanged intuitionistic
 kernel and compiled Lean verifier; Alpha-only membership is not Stable.

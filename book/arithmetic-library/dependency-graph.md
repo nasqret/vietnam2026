@@ -10,12 +10,14 @@ as the target.
 These 557 nodes are exactly the reciprocity campaign slice: 241 Stable
 prerequisites and 316 Alpha-only specifications. The complete Stable catalog
 has 432 rows, of which 191 are outside this graph. Stable union this slice has
-748 distinct theorem names, while current canonical Alpha v19 has 1,737
+748 distinct theorem names, while current canonical Alpha v20 has 1,776
 enrolled rows, all independently checked for use. Historical Alpha v18 first
 closed the Lucas, Kummer, Bertrand, four-square, and two-square flagship
-families; Alpha v19 additionally closes all residual obligations and adds
+families; historical Alpha v19 additionally closes all residual obligations and adds
 complete linear congruences, prime two-square classification, primes one
-modulo four, and Pythagorean forward construction. Those families and the
+modulo four, and Pythagorean forward construction. Current Alpha v20 adds
+checked polynomial evaluation, finite matrix components, stronger Bertrand
+prime constructions, and finite continued fractions. Those families and the
 K3B/K3C layers remain separate from this focused graph. Historical v16 first
 closed the QR slice; historical v17 first closed both supplementary laws.
 See {doc}`Alpha and
@@ -140,7 +142,7 @@ exact dependency record.
 
 Node color and the details panel preserve the same status distinctions as the
 {doc}`proof explorer <proof-explorer>`. The live closure contains 241 Stable
-theorems and 316 Alpha-only specifications. Current Alpha v19 retains all 316
+theorems and 316 Alpha-only specifications. Current Alpha v20 retains all 316
 Alpha-only QR results as `alpha_closed`: the earlier
 `mod_eq_add_cancel_left` overlap was already closed, and the remaining 314
 historically body-only ancestors plus the formerly pending root were promoted
@@ -158,7 +160,7 @@ the 557 nodes, 1,787 edges and 45 layers are unchanged.
 The embedded generated pages retain historical `public`/`candidate` source
 provenance and the 241/316 Stable/Alpha-only membership split, while their
 separate historical Alpha-v16 evidence labels report the QR closure that
-remains checked in current Alpha v19.
+remains checked in current Alpha v20.
 A path, graph hash, or green body-check
 badge supplies provenance, never an axiom or theorem authority.
 

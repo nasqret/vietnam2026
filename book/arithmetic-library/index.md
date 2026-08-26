@@ -42,22 +42,37 @@ quadratic-reciprocity results. Historical Alpha v17 independently promotes
 31 supplementary-law ancestors, including both exact modulo-four and
 modulo-eight endpoints. Historical Alpha v18 closes another 673 theorem proofs
 across Bertrand, Lucas, Kummer, Lagrange's four-square theorem, and the
-complete two-square classification. Current immutable Alpha v19 closes all
+complete two-square classification. Historical immutable Alpha v19 closes all
 84 remaining historical obligations and adds 64 fully checked theorems:
 Pythagorean forward construction, the exact prime two-square criterion,
 complete linear congruences, and infinitely many primes congruent to one
-modulo four. Every one of its 1,737 enrolled theorems is available for checked
-use. Stable remains
-the unchanged default. See
+modulo four. Historical immutable Alpha v20 preserves all 1,737 historical
+theorems and adds 39 independently checked results: beta-coded polynomial
+Horner evaluation, finite matrix and dot-product components, strict Bertrand
+prime chains and multiplicity-one divisors, and finite continued fractions.
+Historical immutable Alpha v21 preserves every one of those 1,776 checked
+rows and adds 54 more: 23 arbitrary natural/signed matrix-product and
+determinant results, 15 Euclidean execution/halving results, and 16 binary
+modular-power results. Historical immutable Alpha v22 preserves that complete
+1,830-theorem parent and adds 60 genuine original-kernel proofs: 21 total and
+functional binary-length results, 20 Euclidean gcd-invariant and terminal-state
+results, and 19 complete supplied-digit binary modular execution results.
+Current immutable Alpha v23 preserves all 1,890 historical v22 rows and adds
+59 independently checked theorems: 17 complete logarithmic Euclidean-GCD
+proofs, 24 canonical binary-digit and logarithmic modular-execution proofs,
+and 18 proofs establishing infinitely many primes congruent to three modulo
+four. Every one of its 1,949 enrolled theorems is available for checked use.
+Arbitrary-dimensional determinants, rank, and lattices remain open; Stable
+remains the unchanged default. See
 {doc}`Alpha and Stable library editions
 <library-editions>` for the exact scopes and lifecycle.
 ```
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>1,737</strong><span>Alpha v19 theorems</span></div>
-  <div><strong>1,737</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>1,305</strong><span>Alpha-only rows</span></div>
+  <div><strong>1,949</strong><span>Alpha v23 theorems</span></div>
+  <div><strong>1,949</strong><span>Alpha checked-use rows</span></div>
+  <div><strong>1,517</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -68,14 +83,19 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The current Alpha v19 graph has 1,737 theorems, 5,779 direct edges, and 53
+The current Alpha v23 graph has 1,949 theorems, 6,285 direct edges, and 53
 dependency layers. Every theorem has actual checked-use authority: 432 are
-Stable-closed and 1,305 are Alpha-closed; no body-only or pending row remains.
-The historical Alpha v18 parent retains 1,673 theorems, 5,615 edges, and its
+Stable-closed and 1,517 are Alpha-closed; no body-only or pending row remains.
+The historical Alpha v22 parent retains 1,890 checked theorems and 6,128
+edges.
+The historical Alpha v21 parent retains 1,830 checked theorems and 5,986
+edges; historical Alpha v20 retains 1,776 checked theorems and 5,882 edges;
+historical Alpha v19 retains 1,737 checked theorems and 5,779 edges.
+Historical Alpha v18 retains 1,673 theorems, 5,615 edges, and its
 then-current 84 body-only rows without retroactive alteration. The historical
 Alpha v12 graph has 1,303 theorems, 4,302 direct
 edges and its immutable evidence partition still includes 732 `body_checked`
-rows. Every Alpha v1--v18 parent remains sealed; Stable remains 432. The exact
+rows. Every Alpha v1--v22 parent remains sealed; Stable remains 432. The exact
 contract and opt-in API are on the {doc}`edition page
 <library-editions>`.
 
@@ -83,7 +103,7 @@ Historical Alpha v12 retains the Alpha-v11 B4 and B5-support tranches, then
 adds the dependency-closed B6 support and B5--BP02 completion chain. Its
 frozen partition was 432 `stable_closed`, 138 `alpha_closed`, 732
 `body_checked`, and one `pending_layered_closure`; checked use was 570. The
-current v19 partition is 432 `stable_closed`, 1,305 `alpha_closed`, zero
+current v23 partition is 432 `stable_closed`, 1,517 `alpha_closed`, zero
 `body_checked`, and zero pending rows. Quadratic reciprocity, both
 supplementary laws, strict Bertrand, multidigit Lucas, both Kummer endpoints,
 Lagrange's four-square theorem, and the all-natural two-square criterion all
@@ -128,6 +148,15 @@ The {doc}`constructive number-theory research atlas <grand-campaign-atlas>`
 connects all these proof families to five broader research domains, twelve
 mathematical families, 120 major goals, and their shared definition and
 dependency graphs.
+The {doc}`next constructive proof layer <next-layer-campaign>` gives the
+exact historical v20 family scopes, checked roots, reusable definitions, proof
+certificate, and still-open boundaries. The {doc}`preceding advanced
+constructive campaigns <advanced-layer-campaign>` explains the three historical
+v21 proof families, shared global/local definition DAG, independently
+Lean-checked certificate, and their exact historical mathematical gaps. The
+{doc}`binary and Euclidean transport layer <transport-layer-campaign>` adds
+genuine unique first-order binary lengths, a proof that actual Euclidean
+executions terminate at their gcd, and beta-coded repeated-squaring histories.
 
 ## Choose your route
 
@@ -135,6 +164,9 @@ dependency graphs.
 |---|---|---|
 | understand the two release editions | {doc}`Alpha and Stable library editions <library-editions>` | canonical counts, checked-use boundary, promotion lifecycle, and graph legend |
 | navigate completed campaigns and the open research frontier | {doc}`Constructive number-theory research atlas <grand-campaign-atlas>` | five domains, twelve families, shared definitions, exact prerequisite paths, and 120 major goals |
+| inspect object-language binary length and exact algorithm execution | {doc}`Binary and Euclidean transport campaigns <transport-layer-campaign>` | unique first-order `BitLen`, terminal-state gcd proofs, and coded square-and-multiply traces |
+| inspect the preceding advanced layer and its remaining boundaries | {doc}`Three advanced constructive campaigns <advanced-layer-campaign>` | arbitrary signed matrix products, Euclidean execution/halving, and binary modular exponentiation |
+| inspect the sealed preceding checked layer | {doc}`Four next-layer constructive campaigns <next-layer-campaign>` | polynomial Horner traces, finite matrix components, Bertrand prime chains, and continued fractions |
 | understand the mathematics | {doc}`Guided route from zero to FTA <guided-tour>` | the focused theorem links inside each stage |
 | inspect every Stable proof | {doc}`Stable theorem atlas <theorem-atlas>` | exact statements, complete scripts, dependencies and dependents |
 | follow the Alpha QR slice line by line | {doc}`Alpha QR proof explorer <proof-explorer>` | permanent tags, linked lemma references, informal outlines and source receipts |

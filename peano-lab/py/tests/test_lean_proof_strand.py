@@ -9,7 +9,13 @@ from types import SimpleNamespace
 
 import pytest
 
-from peano_lab.library import editions_v18, editions_v19
+from peano_lab.library import (
+    editions_v18,
+    editions_v19,
+    editions_v20,
+    editions_v23,
+    editions_v24,
+)
 from peano_lab.library.defined_syntax import DEFINITIONS_BY_NAME
 from peano_lab.library.lean_presentation import _NOTATION_CODE
 from peano_lab.library.lean_proof_reconstruction import LeanProofReconstruction
@@ -61,12 +67,15 @@ def test_planning_never_replays_stable_or_alpha_theorems(monkeypatch) -> None:
     monkeypatch.setattr(theorems, "replay", forbidden)
     monkeypatch.setattr(editions_v18, "replay", forbidden)
     monkeypatch.setattr(editions_v19, "replay", forbidden)
+    monkeypatch.setattr(editions_v20, "replay", forbidden)
+    monkeypatch.setattr(editions_v23, "replay", forbidden)
+    monkeypatch.setattr(editions_v24, "replay", forbidden)
     assert plan_proof_strand("add_comm").node_count == 3
     alpha = plan_proof_strand(
         "distinct_primes_left_not_divide_right",
         edition="alpha",
     )
-    assert alpha.edition_version == "v19"
+    assert alpha.edition_version == "v24"
     assert alpha.root_node.evidence == "alpha_closed"
 
 
@@ -148,7 +157,7 @@ def test_historically_body_only_theorem_is_now_checked_in_current_alpha() -> Non
     name = editions_v19.RESIDUAL_PROMOTED_NAMES[0]
     assert not editions_v18.ALPHA_EDITION.by_name[name].checked_use
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v19"
+    assert plan.edition_version == "v24"
     assert plan.root_node.evidence == "alpha_closed"
     assert plan.root_node.name == name
 
@@ -170,7 +179,61 @@ def test_new_v19_frontier_theorem_has_metadata_only_checked_strand(
     )
     assert name not in editions_v18.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v19"
+    assert plan.edition_version == "v24"
+    assert plan.root_node.name == name
+    assert plan.root_node.evidence == "alpha_closed"
+
+
+def test_new_v20_frontier_theorem_has_metadata_only_checked_strand(monkeypatch) -> None:
+    def forbidden(*args, **kwargs):
+        raise AssertionError("new Alpha-v20 proof planning must never load proof artifacts")
+
+    monkeypatch.setattr(editions_v20, "replay", forbidden)
+    monkeypatch.setattr(editions_v20, "checked_next_layer_bundle", forbidden)
+    monkeypatch.setattr(editions_v23, "replay", forbidden)
+    monkeypatch.setattr(editions_v23, "checked_milestone_closure_bundle", forbidden)
+    monkeypatch.setattr(editions_v24, "replay", forbidden)
+    monkeypatch.setattr(editions_v24, "checked_research_layer_bundle", forbidden)
+    name = "signed_matrix_two_determinant_exists"
+    assert name not in editions_v19.ALPHA_EDITION.by_name
+    plan = plan_proof_strand(name, edition="alpha")
+    assert plan.edition_version == "v24"
+    assert plan.root_node.name == name
+    assert plan.root_node.evidence == "alpha_closed"
+
+
+@pytest.mark.parametrize(
+    "name",
+    (
+        "euclidean_two_step_halving",
+        "binary_modular_exponentiation_result_exists_unique",
+        "binary_length_exists_unique",
+        "euclidean_anchored_execution_linear_bound",
+        "binary_modular_execution_result_exists_unique",
+        "euclidean_gcd_execution_logarithmic_exists",
+        "binary_exponent_digit_prefix_exists",
+        "binary_modular_execution_logarithmic_bound",
+        "infinitely_many_primes_three_mod_four",
+        "beta_signed_matrix_minor_exists",
+        "signed_matrix_four_full_determinant_exists",
+        "beta_horner_derivative_exists_unique",
+        "crt_prefix_lcm_exists_unique",
+        "crt_pairwise_coprime_prefix_canonical_exists_unique",
+    ),
+)
+def test_v24_and_historical_frontier_theorems_have_metadata_only_checked_strands(
+    monkeypatch, name: str
+) -> None:
+    def forbidden(*args, **kwargs):
+        raise AssertionError("new Alpha-v24 proof planning must never load proof artifacts")
+
+    monkeypatch.setattr(editions_v23, "replay", forbidden)
+    monkeypatch.setattr(editions_v23, "checked_milestone_closure_bundle", forbidden)
+    monkeypatch.setattr(editions_v24, "replay", forbidden)
+    monkeypatch.setattr(editions_v24, "checked_research_layer_bundle", forbidden)
+    assert name not in editions_v20.ALPHA_EDITION.by_name
+    plan = plan_proof_strand(name, edition="alpha")
+    assert plan.edition_version == "v24"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -321,6 +384,46 @@ def test_generated_addition_strand_contains_real_readable_proofs(
     assert "native_decide" not in addition_package.code
     assert "axiom " not in addition_package.code
     assert "_checked_local_body_" not in addition_package.code
+
+
+@pytest.mark.parametrize(
+    ("name", "compact_alias"),
+    (
+        ("division_remainder_exists", "DivRem"),
+        ("inverse_prefix_entry_sound", "InversePrefix"),
+        ("gcd_balanced_bezout_exists_up_to", "IsGCD"),
+    ),
+)
+def test_alias_rich_declaration_uses_exact_definitional_reconstruction_bridge(
+    name: str,
+    compact_alias: str,
+) -> None:
+    from peano_lab.library.lean_presentation import readable_formula
+
+    plan = plan_proof_strand(name, edition="alpha")
+    package = build_proof_strand(plan, strict_readable=True)
+    formula = _closed_formula(plan.root_node.statement)
+    reconstructed_statement = readable_formula(
+        formula,
+        source_statement=plan.root_node.statement,
+    )
+
+    assert package.manifest["fallback_node_count"] == 0
+    assert compact_alias in plan.root_node.readable_statement
+    assert reconstructed_statement != plan.root_node.readable_statement
+    assert (
+        f"theorem «{name}» : {plan.root_node.readable_statement} := by\n"
+        f"  change {reconstructed_statement}\n"
+    ) in package.code
+    assert package.manifest["nodes"][-1]["proof_status"] == "readable_lean"
+    assert "_checked_local_body_" not in package.code
+
+
+def test_equivalent_existing_declaration_needs_no_definitional_bridge(
+    addition_package,
+) -> None:
+    assert "theorem «add_comm»" in addition_package.code
+    assert "\n  change " not in addition_package.code
 
 
 def test_generated_strand_includes_all_forty_conservative_definitions(

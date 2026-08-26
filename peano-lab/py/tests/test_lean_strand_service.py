@@ -8,6 +8,7 @@ private companion source.
 from __future__ import annotations
 
 from collections import deque
+from functools import lru_cache
 from hashlib import sha256
 import io
 import json
@@ -17,6 +18,7 @@ import sys
 import threading
 import time
 from urllib.error import HTTPError
+from urllib.parse import quote
 from urllib.request import HTTPRedirectHandler, Request, build_opener, urlopen
 import zipfile
 
@@ -34,7 +36,16 @@ if str(PY_ROOT) not in sys.path:
 import serve_lean_strands as service  # noqa: E402
 
 
-LIVE_URL = "https://live.lean-lang.org/#code=theorem%20example%20%3A%20True%20%3A%3D%20True.intro"
+LIVE_SOURCE = "theorem add_comm : True := by trivial\n"
+LIVE_URL = "https://live.lean-lang.org/#code=" + quote(LIVE_SOURCE, safe="")
+
+
+@lru_cache(maxsize=1)
+def campaign_source() -> str:
+    return LIVE_SOURCE + "".join(
+        "-- " + sha256(str(index).encode("ascii")).hexdigest() + "\n"
+        for index in range(3_500)
+    )
 
 
 class FakeProcess:
@@ -88,7 +99,7 @@ class FakeExporter:
         notation = package / "PeanoLab/Presentation.lean"
         notation.parent.mkdir(parents=True, exist_ok=True)
         notation.write_text("def readable : Nat := 0\n", encoding="utf-8")
-        fallback = self.mode == "fallback"
+        fallback = self.mode in {"fallback", "mixed_live"}
         entry = {
             "schema": "peano-lab-lean-proof-strand-v1",
             "name": theorem,
@@ -116,10 +127,40 @@ class FakeExporter:
         individual = package / "strand-manifests" / "AddComm_test.json"
         individual.parent.mkdir(parents=True)
         individual.write_text(json.dumps(entry), encoding="utf-8")
-        if not fallback and self.mode not in {"failed", "missing_live"}:
-            content = "import Lean.Elab.Tactic\ntheorem add_comm : True := by trivial\n"
+        if (not fallback or self.mode == "mixed_live") and self.mode not in {"failed", "missing_live"}:
+            content = campaign_source() if self.mode == "campaign_codez" else LIVE_SOURCE
+            if self.mode == "private_import":
+                content = "import PeanoLab.Codec\ntheorem x : True := by trivial\n"
+            elif self.mode == "mathlib_import":
+                content = "import Mathlib\ntheorem x : True := by trivial\n"
+            elif self.mode == "core_import":
+                content = "import Lean.Elab.Tactic\ntheorem x : True := by trivial\n"
+            elif self.mode == "sorry_proof":
+                content = "theorem x : True := by sorry\n"
+            elif self.mode == "new_axiom":
+                content = "axiom invented : False\n"
             live.write_text(content, encoding="utf-8")
-            share = None if self.mode == "oversized" else LIVE_URL
+            share = (
+                None
+                if self.mode == "oversized"
+                else "https://live.lean-lang.org/#code=" + quote(content, safe="")
+            )
+            encoding = "code"
+            if self.mode in {"codez", "campaign_codez", "codez_forged", "codez_bomb"}:
+                from peano_lab.library.lean_proof_strand import compress_lean_live_codez
+
+                compressed_source = content
+                if self.mode == "codez_forged":
+                    compressed_source = "theorem forged : True := by trivial\n"
+                elif self.mode == "codez_bomb":
+                    compressed_source = "x" * 5_000
+                share = (
+                    "https://live.lean-lang.org/#codez="
+                    + quote(compress_lean_live_codez(compressed_source), safe="")
+                )
+                encoding = "codez"
+            if self.mode == "forged_live_source":
+                share = "https://live.lean-lang.org/#code=" + quote("theorem forged : True := by trivial", safe="")
             if self.mode == "unsafe_live_url":
                 share = "https://live.lean-lang.org.evil.example/#code=steal"
             metadata = {
@@ -130,10 +171,25 @@ class FakeExporter:
                 "source_bytes": len(content.encode("utf-8")),
                 "share_url": share,
                 "share_status": "oversized" if share is None else "ready",
+                "share_encoding": None if share is None else encoding,
                 "share_url_bytes": 0 if share is None else len(share),
+                "fallback_node_count": 1 if self.mode == "sidecar_fallback" else 0,
                 "local_source_verified": self.mode != "unverified_live",
+                "self_contained": self.mode != "not_self_contained",
+                "core_imports": (
+                    ["Mathlib"]
+                    if self.mode == "declared_external_import"
+                    else []
+                ),
+                "external_import_count": 1 if self.mode == "external_import_count" else 0,
                 "remote_compilation": "not_run",
             }
+            if self.mode == "wrong_encoding":
+                metadata["share_encoding"] = "codez"
+            elif self.mode == "unsupported_encoding":
+                metadata["share_encoding"] = "url"
+            elif self.mode == "wrong_share_status":
+                metadata["share_status"] = "oversized"
             live.with_suffix(".json").write_text(json.dumps(metadata), encoding="utf-8")
         progress = json.dumps(
             {
@@ -198,6 +254,12 @@ def static_root(tmp_path: Path) -> Path:
     for graph in (
         root / "book/_static/pa-proof-explorer/defined/graph.html",
         root / "book/_static/some-new-frontier/graph.html",
+        root / "book/_static/constructive-next-layer-explorer/continued-fractions/explorer/defined/tag/CF0002.html",
+        root / "book/_static/constructive-advanced-layer-explorer/binary-exponentiation/explorer/defined/tag/AL0002.html",
+        root / "book/_static/constructive-transport-layer-explorer/euclidean-gcd/explorer/defined/tag/TL0002.html",
+        root / "book/_static/constructive-milestone-closure-explorer/prime-routes/explorer/defined/tag/MC0002.html",
+        root / "book/_static/constructive-research-layer-explorer/polynomial-hensel/explorer/defined/tag/RL0002.html",
+        root / "book/_static/unreviewed-campaign/defined/tag/FAKE0002.html",
     ):
         graph.parent.mkdir(parents=True)
         graph.write_text("<html><head><title>Proof</title></head><body>proof</body></html>", encoding="utf-8")
@@ -211,6 +273,28 @@ def http_server(
     static_root: Path,
 ) -> tuple[str, service.LeanStrandServer]:
     server = service.LeanStrandServer(("127.0.0.1", 0), manager, static_root)
+    worker = threading.Thread(target=server.serve_forever, kwargs={"poll_interval": 0.01}, daemon=True)
+    worker.start()
+    try:
+        yield f"http://127.0.0.1:{server.server_port}", server
+    finally:
+        server.shutdown()
+        server.server_close()
+        worker.join(timeout=2.0)
+
+
+@pytest.fixture()
+def public_http_server(
+    manager: service.JobManager,
+    static_root: Path,
+) -> tuple[str, service.LeanStrandServer]:
+    server = service.LeanStrandServer(
+        ("127.0.0.1", 0),
+        manager,
+        static_root,
+        public_origin="https://lean.example.test",
+        allowed_origins=("https://faculty.example.test",),
+    )
     worker = threading.Thread(target=server.serve_forever, kwargs={"poll_interval": 0.01}, daemon=True)
     worker.start()
     try:
@@ -255,9 +339,28 @@ def submit_http(base: str, *, theorem: str = "add_comm", edition: str = "stable"
 def test_service_defaults_are_memory_safe_and_single_worker() -> None:
     limits = service.ServiceLimits()
     assert limits.memory_mib == 1_024
-    assert limits.strand_nodes == 256
+    assert limits.strand_nodes == 1_024
     assert limits.verify_seconds == 180
     assert limits.retained_jobs == 32
+    assert limits.live_url_bytes == 512 * 1024
+    assert limits.live_source_bytes == 1024 * 1024
+    assert limits.response_bytes == 3 * 1024 * 1024
+    assert limits.live_metadata_bytes == 2 * 1024 * 1024
+    assert limits.event_line_bytes == 16 * 1024
+
+
+def test_campaign_transport_limits_match_the_independent_proof_codec() -> None:
+    from peano_lab.library.lean_proof_strand import (
+        DEFAULT_LIVE_SOURCE_BYTES,
+        DEFAULT_LIVE_URL_BYTES,
+        MAX_LIVE_CODEC_SOURCE_BYTES,
+        MAX_LIVE_URL_BYTES,
+    )
+
+    assert service.DEFAULT_LIVE_URL_BYTES == DEFAULT_LIVE_URL_BYTES
+    assert service.MAX_LIVE_URL_BYTES == MAX_LIVE_URL_BYTES
+    assert service.DEFAULT_LIVE_SOURCE_BYTES == DEFAULT_LIVE_SOURCE_BYTES
+    assert service.MAX_LIVE_SOURCE_BYTES == MAX_LIVE_CODEC_SOURCE_BYTES
 
 
 def test_live_sidecar_schema_matches_real_exporter_contract_not_only_mock() -> None:
@@ -267,17 +370,49 @@ def test_live_sidecar_schema_matches_real_exporter_contract_not_only_mock() -> N
     assert service.LIVE_SCHEMA == "peano-lab-lean-live-v1"
 
 
+def test_compact_live_decoder_matches_real_codec_contract() -> None:
+    from peano_lab.library.lean_proof_strand import compress_lean_live_codez
+
+    compressed = compress_lean_live_codez(LIVE_SOURCE)
+    url = "https://live.lean-lang.org/#codez=" + quote(compressed, safe="")
+    actual, encoding = service._decoded_live_source(url, maximum=len(LIVE_SOURCE.encode("utf-8")))
+    assert actual == LIVE_SOURCE.encode("utf-8")
+    assert encoding == "codez"
+
+
+@pytest.mark.parametrize(
+    ("source", "payload"),
+    (
+        ("nnnnnnnnnnnnnnnn13", "HY1%2FAjAzEA"),
+        ("qqqqqqqqqqqqqqqqqq16", "I41%2BgjAbEA"),
+    ),
+)
+def test_compact_live_decoder_matches_official_escaped_base64(
+    source: str,
+    payload: str,
+) -> None:
+    url = "https://live.lean-lang.org/#codez=" + payload
+    actual, encoding = service._decoded_live_source(
+        url,
+        maximum=len(source.encode("utf-8")),
+    )
+
+    assert service.validate_live_url(url) == url
+    assert actual == source.encode("utf-8")
+    assert encoding == "codez"
+
+
 def test_validated_requests_cannot_expand_operator_resource_caps() -> None:
     limits = service.ServiceLimits()
     selected = service.validate_request({"theorem": "alpha_proof'", "edition": "alpha"}, limits)
     assert selected.theorem == "alpha_proof'"
     assert selected.edition == "alpha"
     assert selected.memory_mib == 1_024
-    assert selected.strand_nodes == 256
+    assert selected.strand_nodes == 1_024
     with pytest.raises(service.ServiceError, match="max_memory_mib"):
         service.validate_request({"theorem": "ok", "max_memory_mib": 1_025}, limits)
     with pytest.raises(service.ServiceError, match="max_strand_nodes"):
-        service.validate_request({"theorem": "ok", "max_strand_nodes": 257}, limits)
+        service.validate_request({"theorem": "ok", "max_strand_nodes": 1_025}, limits)
 
 
 @pytest.mark.parametrize(
@@ -308,16 +443,47 @@ def test_request_validation_rejects_untrusted_shape_and_flags(payload: object) -
         "https://live.lean-lang.org/private#code=theorem",
         "https://live.lean-lang.org/?token=x#code=theorem",
         "https://live.lean-lang.org/#other=theorem",
+        "https://live.lean-lang.org/#url=https%3A%2F%2Fevil.invalid%2Fproof.lean",
+        "https://live.lean-lang.org/#codez=",
+        "https://live.lean-lang.org/#codez=bad%20payload",
+        "https://live.lean-lang.org/#codez=HY1-AjAzEA",
+        "https://live.lean-lang.org/#codez=HY1/AjAzEA",
+        "https://live.lean-lang.org/#codez=HY1%2fAjAzEA",
+        "https://live.lean-lang.org/#codez=HY1%252FAjAzEA",
+        "https://live.lean-lang.org/#codez=I41+gjAbEA",
+        "https://live.lean-lang.org/#codez=I41%2bgjAbEA",
+        "https://live.lean-lang.org/#codez=BYUwNmD2Q%3D",
+        "https://live.lean-lang.org/#codez=invalid$dollar",
+        "https://live.lean-lang.org/#codez=bad/payload",
+        "https://live.lean-lang.org/#codez=bad_payload",
+        "https://live.lean-lang.org/#codez=bad=padding",
         "javascript:alert(1)",
-        "https://live.lean-lang.org/#code=" + "x" * 8_193,
     ],
 )
 def test_only_exact_bounded_official_lean_live_host_is_accepted(url: str) -> None:
     assert service.validate_live_url(url) is None
 
 
+def test_campaign_live_links_keep_the_exact_operator_byte_ceiling() -> None:
+    prefix = "https://live.lean-lang.org/#codez="
+    supported = prefix + "A" * (33 * 1024)
+    oversized = prefix + "A" * service.DEFAULT_LIVE_URL_BYTES
+
+    assert service.validate_live_url(supported) == supported
+    assert service.validate_live_url(oversized) is None
+
+
 def test_exact_official_lean_live_host_is_accepted() -> None:
     assert service.validate_live_url(LIVE_URL) == LIVE_URL
+    assert service.validate_live_url("https://live.lean-lang.org/#codez=BYUwNmD2Q") == (
+        "https://live.lean-lang.org/#codez=BYUwNmD2Q"
+    )
+    assert service.validate_live_url("https://live.lean-lang.org/#codez=HY1%2FAjAzEA") == (
+        "https://live.lean-lang.org/#codez=HY1%2FAjAzEA"
+    )
+    assert service.validate_live_url("https://live.lean-lang.org/#codez=I41%2BgjAbEA") == (
+        "https://live.lean-lang.org/#codez=I41%2BgjAbEA"
+    )
 
 
 def test_public_bind_requires_explicit_operator_opt_in() -> None:
@@ -341,13 +507,21 @@ def test_manager_runs_only_the_bounded_verified_export_command(
     assert terminal["standalone_lean"] is True
     assert terminal["companion_required"] is False
     assert terminal["live_url"] == LIVE_URL
+    assert terminal["live_encoding"] == "code"
+    assert terminal["lean_live"]["share_encoding"] == "code"
+    assert terminal["lean_live"]["source_sha256"] == sha256(LIVE_SOURCE.encode("utf-8")).hexdigest()
+    assert terminal["lean_live"]["self_contained"] is True
+    assert terminal["lean_live"]["core_imports"] == []
+    assert terminal["lean_live"]["external_import_count"] == 0
     assert terminal["lean_live"]["local_source_verified"] is True
     command = fake_exporter.calls[0]
     assert "--verify" in command
     assert "--progress-json" in command
     assert "--live-lean-output" in command
     assert FakeExporter._value(command, "--max-memory-mib") == "1024"
-    assert FakeExporter._value(command, "--max-strand-nodes") == "256"
+    assert FakeExporter._value(command, "--max-strand-nodes") == "1024"
+    assert FakeExporter._value(command, "--max-live-url-bytes") == "524288"
+    assert FakeExporter._value(command, "--max-live-source-kib") == "1024"
 
 
 @pytest.mark.parametrize(
@@ -357,6 +531,23 @@ def test_manager_runs_only_the_bounded_verified_export_command(
         ("unverified", "independent Lean compilation receipt"),
         ("wrong_theorem", "selected theorem"),
         ("unverified_live", "locally checked source"),
+        ("not_self_contained", "locally checked source"),
+        ("declared_external_import", "locally checked source"),
+        ("external_import_count", "locally checked source"),
+        ("unsafe_live_url", "unsafe or oversized official URL"),
+        ("forged_live_source", "exact locally compiled proof"),
+        ("codez_forged", "exact locally compiled proof"),
+        ("codez_bomb", "bounded exact proof"),
+        ("wrong_encoding", "exact inline source encoding"),
+        ("unsupported_encoding", "unsupported inline proof encoding"),
+        ("wrong_share_status", "contradicts its checked metadata status"),
+        ("mixed_live", "companion-backed certificates"),
+        ("sidecar_fallback", "non-standalone certificate fallback"),
+        ("private_import", "explicit import"),
+        ("mathlib_import", "explicit import"),
+        ("core_import", "explicit import"),
+        ("sorry_proof", "unsafe unchecked placeholder"),
+        ("new_axiom", "unaudited external axiom"),
     ],
 )
 def test_success_requires_matching_manifest_and_actual_compiler_receipt(
@@ -402,13 +593,68 @@ def test_oversized_live_url_retains_locally_verified_standalone_source(tmp_path:
     assert selected.name == "live.lean"
 
 
+def test_compact_exact_live_link_authenticates_the_same_locally_checked_source(tmp_path: Path) -> None:
+    manager = service.JobManager(tmp_path / "jobs", popen=FakeExporter(mode="codez"))
+    job = manager.submit({"theorem": "add_comm"})
+    terminal = await_terminal(manager, job["job_id"])
+    assert terminal["status"] == "completed"
+    assert terminal["lean_verified"] is True
+    assert terminal["live_status"] == "ready"
+    assert terminal["live_encoding"] == "codez"
+    assert terminal["lean_live"]["share_encoding"] == "codez"
+    assert terminal["lean_live"]["local_source_verified"] is True
+    assert str(terminal["live_url"]).startswith("https://live.lean-lang.org/#codez=")
+    decoded, encoding = service._decoded_live_source(
+        str(terminal["live_url"]),
+        maximum=len(LIVE_SOURCE.encode("utf-8")),
+    )
+    assert encoding == "codez"
+    assert decoded == (manager.storage / str(job["job_id"]) / "live.lean").read_bytes()
+
+
+def test_campaign_live_link_authenticates_large_source_and_snapshot(tmp_path: Path) -> None:
+    manager = service.JobManager(tmp_path / "jobs", popen=FakeExporter(mode="campaign_codez"))
+    job = manager.submit({"theorem": "add_comm"})
+    terminal = await_terminal(manager, job["job_id"])
+
+    assert terminal["status"] == "completed"
+    assert terminal["lean_verified"] is True
+    assert terminal["live_status"] == "ready"
+    source = campaign_source().encode("utf-8")
+    assert len(source) > 200 * 1024
+    url = str(terminal["live_url"])
+    assert 128 * 1024 < len(url.encode("utf-8")) < manager.limits.live_url_bytes
+    assert terminal["lean_live"]["url"] == url
+    sidecar = manager.storage / str(job["job_id"]) / "live.json"
+    assert sidecar.stat().st_size > manager.limits.event_line_bytes
+    response = service._bounded_json(terminal, maximum=manager.limits.response_bytes)
+    assert 256 * 1024 < len(response) < manager.limits.response_bytes
+    decoded, encoding = service._decoded_live_source(url, maximum=len(source))
+    assert encoding == "codez"
+    assert decoded == source
+    assert terminal["lean_live"]["source_sha256"] == sha256(source).hexdigest()
+
+
+def test_campaign_live_source_cannot_exceed_the_operator_bound(tmp_path: Path) -> None:
+    manager = service.JobManager(
+        tmp_path / "jobs",
+        limits=service.ServiceLimits(live_source_bytes=128 * 1024),
+        popen=FakeExporter(mode="campaign_codez"),
+    )
+    job = manager.submit({"theorem": "add_comm"})
+    terminal = await_terminal(manager, job["job_id"])
+
+    assert terminal["status"] == "failed"
+    assert "source exceeds its reviewed size limit" in str(terminal["error"])
+
+
 def test_untrusted_exporter_cannot_publish_a_spoofed_live_share(tmp_path: Path) -> None:
     manager = service.JobManager(tmp_path / "jobs", popen=FakeExporter(mode="unsafe_live_url"))
     job = manager.submit({"theorem": "add_comm"})
     terminal = await_terminal(manager, job["job_id"])
-    assert terminal["status"] == "completed"
+    assert terminal["status"] == "failed"
+    assert "unsafe or oversized official URL" in str(terminal["error"])
     assert terminal["live_url"] is None
-    assert terminal["live_status"] == "oversized"
 
 
 def test_generated_only_zip_is_deterministic_and_never_exports_private_companion(
@@ -522,8 +768,175 @@ def test_http_health_and_conservative_config(http_server: tuple[str, service.Lea
     assert status == 200
     assert selected["single_worker"] is True
     assert selected["max_concurrent_jobs"] == 1
-    assert selected["max_nodes"] == 256
+    assert selected["max_nodes"] == 1_024
+    assert selected["max_live_url_bytes"] == 512 * 1024
+    assert selected["max_live_source_bytes"] == 1024 * 1024
     assert selected["memory_mib"] == 1_024
+    assert selected["public_origin"] is None
+    assert selected["allowed_origins"] == []
+    assert selected["trusted_proxy"] is False
+    assert selected["api_only"] is False
+    assert selected["api_root"] == service.API_PREFIX
+    status, content, _ = request(base, service.API_PREFIX + "/health")
+    assert status == 200
+    assert json.loads(content)["status"] == "ok"
+
+
+def test_public_service_advertises_only_its_exact_approved_browser(
+    public_http_server: tuple[str, service.LeanStrandServer],
+) -> None:
+    base, _ = public_http_server
+    status, content, headers = request(
+        base,
+        service.API_PREFIX + "/config",
+        headers={"Origin": "https://faculty.example.test"},
+    )
+
+    assert status == 200
+    selected = json.loads(content)
+    assert selected["public_origin"] == "https://lean.example.test"
+    assert selected["allowed_origins"] == ["https://faculty.example.test"]
+    assert selected["api_root"] == "https://lean.example.test/api/lean-strands"
+    assert selected["single_worker"] is True
+    assert headers["Access-Control-Allow-Origin"] == "https://faculty.example.test"
+    assert headers["Vary"] == "Origin"
+    assert "Access-Control-Allow-Credentials" not in headers
+
+
+@pytest.mark.parametrize("method", ["POST", "DELETE"])
+def test_public_service_approves_bounded_exact_origin_browser_preflight(
+    public_http_server: tuple[str, service.LeanStrandServer],
+    method: str,
+) -> None:
+    base, _ = public_http_server
+    status, content, headers = request(
+        base,
+        service.API_PREFIX + "/jobs",
+        method="OPTIONS",
+        headers={
+            "Origin": "https://faculty.example.test",
+            "Access-Control-Request-Method": method,
+            "Access-Control-Request-Headers": "content-type",
+        },
+    )
+
+    assert status == 204
+    assert content == b""
+    assert headers["Access-Control-Allow-Origin"] == "https://faculty.example.test"
+    assert method in headers["Access-Control-Allow-Methods"]
+    assert "Content-Type" in headers["Access-Control-Allow-Headers"]
+    assert headers["Access-Control-Max-Age"] == "600"
+    assert "Access-Control-Allow-Credentials" not in headers
+
+
+@pytest.mark.parametrize(
+    ("origin", "method", "request_headers"),
+    [
+        ("https://evil.example.test", "POST", "content-type"),
+        ("https://faculty.example.test.evil.invalid", "POST", "content-type"),
+        ("null", "POST", "content-type"),
+        ("https://faculty.example.test", "PUT", "content-type"),
+        ("https://faculty.example.test", "POST", "authorization"),
+        ("https://faculty.example.test", "POST", "content-type, x-csrf-token"),
+    ],
+)
+def test_public_service_rejects_unapproved_cross_origin_preflight(
+    public_http_server: tuple[str, service.LeanStrandServer],
+    origin: str,
+    method: str,
+    request_headers: str,
+) -> None:
+    base, _ = public_http_server
+    status, _, headers = request(
+        base,
+        service.API_PREFIX + "/jobs",
+        method="OPTIONS",
+        headers={
+            "Origin": origin,
+            "Access-Control-Request-Method": method,
+            "Access-Control-Request-Headers": request_headers,
+        },
+    )
+
+    assert status == 403
+    if origin != "https://faculty.example.test":
+        assert "Access-Control-Allow-Origin" not in headers
+
+
+def test_public_service_runs_only_approved_cross_origin_proof_workflow(
+    public_http_server: tuple[str, service.LeanStrandServer],
+) -> None:
+    base, server = public_http_server
+    approved = {"Origin": "https://faculty.example.test"}
+    status, content, headers = request(
+        base,
+        service.API_PREFIX + "/jobs",
+        method="POST",
+        payload={"theorem": "add_comm", "edition": "stable"},
+        headers=approved,
+    )
+
+    assert status == 202
+    assert headers["Access-Control-Allow-Origin"] == approved["Origin"]
+    submitted = json.loads(content)
+    completed = await_terminal(server.job_manager, submitted["job_id"])
+    assert completed["lean_verified"] is True
+    for path in (
+        submitted["status_url"],
+        submitted["status_url"] + "/events",
+        completed["downloads"]["lean"],
+        completed["downloads"]["zip"],
+    ):
+        status, _, headers = request(base, str(path), headers=approved)
+        assert status == 200
+        assert headers["Access-Control-Allow-Origin"] == approved["Origin"]
+
+    status, _, headers = request(
+        base,
+        str(submitted["status_url"]),
+        method="DELETE",
+        headers=approved,
+    )
+    assert status == 200
+    assert headers["Access-Control-Allow-Origin"] == approved["Origin"]
+
+
+def test_public_service_rejects_unapproved_origin_and_spoofed_public_host(
+    public_http_server: tuple[str, service.LeanStrandServer],
+) -> None:
+    base, _ = public_http_server
+    status, _, headers = request(
+        base,
+        service.API_PREFIX + "/config",
+        headers={"Origin": "https://evil.example.test"},
+    )
+    assert status == 403
+    assert "Access-Control-Allow-Origin" not in headers
+    assert request(base, "/health", headers={"Host": "evil.example.test"})[0] == 421
+
+
+def test_http_campaign_snapshot_preserves_the_entire_authenticated_live_url(
+    http_server: tuple[str, service.LeanStrandServer],
+    fake_exporter: FakeExporter,
+) -> None:
+    base, server = http_server
+    fake_exporter.mode = "campaign_codez"
+    job = submit_http(base)
+    terminal = await_terminal(server.job_manager, str(job["job_id"]))
+    assert terminal["status"] == "completed"
+
+    status, content, _headers = request(
+        base,
+        service.API_PREFIX + "/jobs/" + str(job["job_id"]),
+    )
+
+    assert status == 200
+    assert 256 * 1024 < len(content) < server.job_manager.limits.response_bytes
+    received = json.loads(content)
+    assert received["live_url"] == received["lean_live"]["url"]
+    assert len(received["live_url"].encode("utf-8")) > 128 * 1024
+    assert received["lean_live"]["source_bytes"] > 200 * 1024
+    assert received["lean_live"]["local_source_verified"] is True
 
 
 def test_http_root_redirects_to_small_add_comm_graph(
@@ -547,6 +960,11 @@ def test_http_root_redirects_to_small_add_comm_graph(
     [
         "/book/_static/pa-proof-explorer/defined/graph.html",
         "/book/_static/some-new-frontier/graph.html",
+        "/book/_static/constructive-next-layer-explorer/continued-fractions/explorer/defined/tag/CF0002.html",
+        "/book/_static/constructive-advanced-layer-explorer/binary-exponentiation/explorer/defined/tag/AL0002.html",
+        "/book/_static/constructive-transport-layer-explorer/euclidean-gcd/explorer/defined/tag/TL0002.html",
+        "/book/_static/constructive-milestone-closure-explorer/prime-routes/explorer/defined/tag/MC0002.html",
+        "/book/_static/constructive-research-layer-explorer/polynomial-hensel/explorer/defined/tag/RL0002.html",
     ],
 )
 def test_every_existing_graph_is_enhanced_only_while_served(
@@ -568,6 +986,20 @@ def test_every_existing_graph_is_enhanced_only_while_served(
     assert head_headers["Content-Length"] == headers["Content-Length"]
 
 
+def test_unreviewed_individual_campaign_pages_are_not_implicitly_enhanced(
+    http_server: tuple[str, service.LeanStrandServer],
+) -> None:
+    base, _ = http_server
+    status, content, _headers = request(
+        base,
+        "/book/_static/unreviewed-campaign/defined/tag/FAKE0002.html",
+    )
+
+    assert status == 200
+    assert b"lean-selector.js" not in content
+    assert b"lean-selector.css" not in content
+
+
 def test_http_full_mocked_job_progress_and_safe_downloads(
     http_server: tuple[str, service.LeanStrandServer],
 ) -> None:
@@ -583,7 +1015,8 @@ def test_http_full_mocked_job_progress_and_safe_downloads(
     assert snapshot["live_url"] == LIVE_URL
     status, lean, headers = request(base, snapshot["downloads"]["lean"])
     assert status == 200
-    assert lean.startswith(b"import Lean.Elab.Tactic")
+    assert lean.startswith(b"theorem add_comm")
+    assert b"import " not in lean
     assert 'filename="readable-standalone.lean"' in headers["Content-Disposition"]
     status, bundle, headers = request(base, snapshot["downloads"]["zip"])
     assert status == 200
@@ -727,3 +1160,135 @@ def test_ephemeral_port_and_safe_override_are_supported(tmp_path: Path) -> None:
         assert server.job_manager.limits.memory_mib == 512
     finally:
         server.server_close()
+
+
+@pytest.mark.parametrize(
+    "value",
+    [
+        "http://public.example.test",
+        "https://user:secret@public.example.test",
+        "https://public.example.test/private",
+        "https://public.example.test?token=private",
+        "https://public.example.test#fragment",
+        "https://public.example.test:99999",
+        "https://public.example.test,https://evil.example.test",
+        "*",
+        "null",
+    ],
+)
+def test_public_origins_must_be_exact_https_without_secrets(value: str) -> None:
+    with pytest.raises(service.ServiceError):
+        service._safe_origin(value, label="public origin")
+
+
+def test_exact_loopback_http_origins_remain_available_for_bounded_tests() -> None:
+    assert service._safe_origin("http://127.0.0.1:8787/", label="origin") == "http://127.0.0.1:8787"
+    assert service._safe_origin("https://FACULTY.example.test", label="origin") == "https://faculty.example.test"
+
+
+def test_cli_rejects_unsafe_public_exposure_before_creating_a_listener(tmp_path: Path) -> None:
+    public = tmp_path / "public"
+    public.mkdir()
+    options = ["--directory", str(public), "--storage", str(tmp_path / "jobs")]
+
+    with pytest.raises(service.ServiceError, match="allowed origins require"):
+        service.build_server(options + ["--allowed-origin", "https://faculty.example.test"])
+    with pytest.raises(service.ServiceError, match="must use HTTPS"):
+        service.build_server(options + ["--public-origin", "http://lean.example.test"])
+    with pytest.raises(service.ServiceError, match="loopback-only"):
+        service.build_server(
+            options
+            + [
+                "--host", "0.0.0.0", "--public-host", "--trust-proxy",
+                "--public-origin", "https://lean.example.test",
+            ]
+        )
+    assert not (tmp_path / "jobs").exists()
+
+
+def test_api_only_public_mode_does_not_publish_repository_files(tmp_path: Path) -> None:
+    public = tmp_path / "public"
+    public.mkdir()
+    (public / "proof.html").write_text("sensitive draft", encoding="utf-8")
+    server = service.build_server(
+        [
+            "--port", "0",
+            "--directory", str(public),
+            "--storage", str(tmp_path / "jobs"),
+            "--public-origin", "https://lean.example.test",
+            "--allowed-origin", "https://faculty.example.test",
+            "--api-only",
+            "--max-mutations-per-minute", "7",
+            "--max-concurrent-requests", "4",
+        ]
+    )
+    worker = threading.Thread(target=server.serve_forever, kwargs={"poll_interval": 0.01}, daemon=True)
+    worker.start()
+    base = f"http://127.0.0.1:{server.server_port}"
+    try:
+        assert request(base, "/")[0] == 404
+        assert request(base, "/proof.html")[0] == 404
+        assert request(base, "/health")[0] == 200
+        status, content, _ = request(base, service.API_PREFIX + "/config")
+        assert status == 200
+        assert json.loads(content)["api_only"] is True
+        assert server.job_manager.limits.mutations_per_minute == 7
+        assert server.job_manager.limits.concurrent_requests == 4
+    finally:
+        server.shutdown()
+        server.server_close()
+        worker.join(timeout=2.0)
+
+
+def test_trusted_loopback_proxy_pins_https_host_and_client_rate_bucket(
+    manager: service.JobManager,
+    static_root: Path,
+) -> None:
+    server = service.LeanStrandServer(
+        ("127.0.0.1", 0),
+        manager,
+        static_root,
+        public_origin="https://lean.example.test",
+        allowed_origins=("https://faculty.example.test",),
+        trust_proxy=True,
+    )
+    worker = threading.Thread(target=server.serve_forever, kwargs={"poll_interval": 0.01}, daemon=True)
+    worker.start()
+    base = f"http://127.0.0.1:{server.server_port}"
+    approved = {
+        "Host": "lean.example.test",
+        "X-Forwarded-Host": "lean.example.test",
+        "X-Forwarded-Proto": "https",
+        "X-Forwarded-For": "192.0.2.9, 198.51.100.24",
+        "Origin": "https://faculty.example.test",
+    }
+    try:
+        status, content, headers = request(
+            base,
+            service.API_PREFIX + "/jobs",
+            method="POST",
+            payload={"theorem": "add_comm"},
+            headers=approved,
+        )
+        assert status == 202
+        assert headers["Access-Control-Allow-Origin"] == approved["Origin"]
+        await_terminal(manager, json.loads(content)["job_id"])
+        assert "198.51.100.24" in manager._mutation_windows
+        assert "192.0.2.9" not in manager._mutation_windows
+
+        insecure = dict(approved, **{"X-Forwarded-Proto": "http"})
+        assert request(base, service.API_PREFIX + "/config", headers=insecure)[0] == 421
+        forged = dict(approved, **{"X-Forwarded-Host": "evil.example.test"})
+        assert request(base, service.API_PREFIX + "/config", headers=forged)[0] == 421
+        invalid_client = dict(approved, **{"X-Forwarded-For": "not-an-ip"})
+        assert request(
+            base,
+            service.API_PREFIX + "/jobs",
+            method="POST",
+            payload={"theorem": "add_comm"},
+            headers=invalid_client,
+        )[0] == 400
+    finally:
+        server.shutdown()
+        server.server_close()
+        worker.join(timeout=2.0)

@@ -29,7 +29,7 @@
 <body>
   <header>
     <div class="brand"><div class="glyph" aria-hidden="true">ℕ</div><div><h1>Peano Lab</h1><div class="sub">sound arithmetic proofs · no install · self-hosted</div></div></div>
-    <nav aria-label="Course and research navigation"><a href="/vietnam2026/">← Course</a><a href="/vietnam2026/book/peano/index.html">Read the chapter</a><a href="/proofs/?v=f1c3d3fba013">Proof library</a><a href="/proofs/grand-campaign/?v=f1c3d3fba013">Research atlas</a><a href="https://github.com/nasqret/vietnam2026/tree/agent/new-theorems-tranche-01/peano-lab" target="_blank" rel="noopener">Source</a></nav>
+    <nav aria-label="Course and research navigation"><a href="/vietnam2026/">← Course</a><a href="/vietnam2026/book/peano/index.html">Read the chapter</a><a href="/proofs/?v=94ac4d193cbf">Proof library</a><a href="/proofs/grand-campaign/?v=94ac4d193cbf">Research atlas</a><a href="https://github.com/nasqret/vietnam2026/tree/agent/new-theorems-tranche-01/peano-lab" target="_blank" rel="noopener">Source</a></nav>
   </header>
   <noscript><p class="noscript">Peano Lab needs JavaScript to load the local Python runtime.</p></noscript>
   <main class="main">
@@ -69,10 +69,21 @@
         <button class="qbtn" type="button" data-cmd="clear" disabled>clear</button>
       </div>
       <div class="quick-row"><span class="lbl">research:</span>
-        <button class="qbtn" type="button" data-cmd="pa lib alpha" disabled>Alpha: 1,737 proofs</button>
-        <button class="qbtn" type="button" data-cmd="pa lib alpha infinitely_many_primes_one_mod_four" disabled>primes ≡ 1 mod 4</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha" disabled>Alpha: 2,008 proofs</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha beta_signed_matrix_minor_exists" disabled>signed matrix minors</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha beta_horner_derivative_exists_unique" disabled>polynomial derivatives</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha crt_pairwise_coprime_prefix_canonical_exists_unique" disabled>finite Chinese remainders</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha infinitely_many_primes_one_mod_four" disabled>primes 1 mod 4</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha infinitely_many_primes_three_mod_four" disabled>primes 3 mod 4</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha euclidean_gcd_execution_logarithmic_bound" disabled>logarithmic Euclid</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha binary_modular_execution_logarithmic_bound" disabled>binary modular execution</button>
         <button class="qbtn" type="button" data-cmd="pa lib alpha linear_congruence_solvable_iff_gcd_divides" disabled>linear congruences</button>
-        <button class="qbtn" type="button" data-cmd="pa lib alpha prime_is_two_squares_iff_two_or_one_mod_four" disabled>prime two-square iff</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha prime_is_two_squares_iff_two_or_one_mod_four" disabled>prime two squares</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha beta_horner_eval_exists" disabled>polynomial Horner</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha beta_dot_product_exists_unique" disabled>finite matrix dot product</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha central_binom_prime_divisor_multiplicity_one_exists" disabled>binomial prime windows</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha iterated_bertrand_prime_chain_exists" disabled>Bertrand prime chains</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha continued_fraction_positive_exists" disabled>continued fractions</button>
       </div>
     </div>
     <dialog class="paste-dialog" id="paste-proof-dialog" aria-labelledby="paste-proof-title">
@@ -96,8 +107,8 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-08-25f";
-    const APP_ROOT="releases/a-9f6208c8dabe/";
+    const BUILD="2026-08-26d";
+    const APP_ROOT="releases/a-105fd471df5d/";
     const MAX_INPUT=8192;
     const MAX_PASTE_CHARS=100000;
     const MAX_PASTE_LINES=256;

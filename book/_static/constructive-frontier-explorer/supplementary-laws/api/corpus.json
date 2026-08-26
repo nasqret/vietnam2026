@@ -1,13 +1,15 @@
 {
   "admitted_to_alpha": true,
   "admitted_to_stable": false,
+  "alpha_catalog_sha256": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1",
   "alpha_checked_use_node_count": 28,
   "alpha_checked_use_root_names": [
     "quadratic_supplement_minus_one_complete",
     "quadratic_supplement_two_complete"
   ],
-  "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-  "alpha_edition_version": "v19",
+  "alpha_edition_checked_use_count": 2008,
+  "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+  "alpha_edition_version": "v24",
   "alpha_enrolled_node_count": 28,
   "alpha_enrolled_root_names": [
     "quadratic_supplement_minus_one_complete",
@@ -21,6 +23,31 @@
   "defined_tactic_proposition_count": 15,
   "definition_count": 22,
   "definition_dependency_count": 17,
+  "definition_layer_count": 3,
+  "definition_topological_order": [
+    "PD0004",
+    "PD0010",
+    "PD0009",
+    "PD0011",
+    "PD0012",
+    "PD0008",
+    "PD0021",
+    "PD0002",
+    "PD0022",
+    "PD0013",
+    "PD0015",
+    "PD0016",
+    "PD0017",
+    "CF0006",
+    "CF0007",
+    "CF0008",
+    "CF0009",
+    "PD0001",
+    "PD0018",
+    "PD0014",
+    "PD0019",
+    "PD0020"
+  ],
   "definitions": [
     {
       "dependencies": [],
@@ -33,7 +60,9 @@
         "p"
       ],
       "summary": "p is nonunit and every factorization of p has a unit factor.",
-      "template_sha256": "62f78d205c303365b156144e260330ee3fd0798bb85f15e76eb44215d7759979"
+      "template_sha256": "62f78d205c303365b156144e260330ee3fd0798bb85f15e76eb44215d7759979",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [],
@@ -46,7 +75,9 @@
         "n"
       ],
       "summary": "n has an odd decomposition.",
-      "template_sha256": "f71a3bedae19546049db82c8f93c51c51582ded86e243fb0228d81d38b89245c"
+      "template_sha256": "f71a3bedae19546049db82c8f93c51c51582ded86e243fb0228d81d38b89245c",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [],
@@ -59,7 +90,9 @@
         "n"
       ],
       "summary": "n has an even decomposition.",
-      "template_sha256": "7853348966f8c83ffc49fc916de2dbbe9b929bc5476531b11f9b867ce104459d"
+      "template_sha256": "7853348966f8c83ffc49fc916de2dbbe9b929bc5476531b11f9b867ce104459d",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [],
@@ -72,7 +105,9 @@
         "n"
       ],
       "summary": "n is one modulo four by an explicit quotient.",
-      "template_sha256": "5540e22b264dbea40f40cf44989c6def2180eaf4a73951aac4f096e79ddac70e"
+      "template_sha256": "5540e22b264dbea40f40cf44989c6def2180eaf4a73951aac4f096e79ddac70e",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [],
@@ -85,7 +120,9 @@
         "n"
       ],
       "summary": "n is three modulo four by an explicit quotient.",
-      "template_sha256": "3dc3e2db85d149a9a78eccdc9a32676607ecc006e51383fdac61e2d8eca666e5"
+      "template_sha256": "3dc3e2db85d149a9a78eccdc9a32676607ecc006e51383fdac61e2d8eca666e5",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [],
@@ -100,7 +137,9 @@
         "b"
       ],
       "summary": "Balanced-natural congruence modulo m.",
-      "template_sha256": "14b22c6894ec6a5f7d1a8a1cb62865dc5effcb102a2fdae0d7b9a87820a44fb6"
+      "template_sha256": "14b22c6894ec6a5f7d1a8a1cb62865dc5effcb102a2fdae0d7b9a87820a44fb6",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [
@@ -118,7 +157,11 @@
         "a"
       ],
       "summary": "a has a square root modulo m.",
-      "template_sha256": "e272443fa880570bd29f01bba5a3f2bf90c8475a2eb2f92ce659ce165916c8db"
+      "template_sha256": "e272443fa880570bd29f01bba5a3f2bf90c8475a2eb2f92ce659ce165916c8db",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0008"
+      ]
     },
     {
       "dependencies": [],
@@ -132,7 +175,9 @@
         "b"
       ],
       "summary": "Witness-defined strict order on natural numbers.",
-      "template_sha256": "8245ec2119fd9d5b970a1d301ae58fa593733fff741593deb4858a5130b52cce"
+      "template_sha256": "8245ec2119fd9d5b970a1d301ae58fa593733fff741593deb4858a5130b52cce",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [
@@ -152,7 +197,12 @@
         "a"
       ],
       "summary": "a has a square root strictly below m modulo m.",
-      "template_sha256": "79e3865f2deb90983cae603dda840c50d16f6af08c0a7ec1a9305d46c19c0a33"
+      "template_sha256": "79e3865f2deb90983cae603dda840c50d16f6af08c0a7ec1a9305d46c19c0a33",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0008"
+      ]
     },
     {
       "dependencies": [],
@@ -168,7 +218,9 @@
         "x"
       ],
       "summary": "x is the bounded beta-decoded value at index i.",
-      "template_sha256": "469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9"
+      "template_sha256": "469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [
@@ -190,7 +242,12 @@
         "z"
       ],
       "summary": "z is the sum of a beta-coded prefix of length l.",
-      "template_sha256": "e77d758e2118ffddffef0040007a3fa468938ddf33f66035b1ea59a3308db937"
+      "template_sha256": "e77d758e2118ffddffef0040007a3fa468938ddf33f66035b1ea59a3308db937",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
       "dependencies": [
@@ -211,7 +268,12 @@
         "l"
       ],
       "summary": "Every decoded entry below l is zero or one.",
-      "template_sha256": "b60eb28cba4afd3fac9a7841d7ce6d497239d61672dd6c249b240665651d5602"
+      "template_sha256": "b60eb28cba4afd3fac9a7841d7ce6d497239d61672dd6c249b240665651d5602",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
       "dependencies": [
@@ -233,7 +295,14 @@
         "z"
       ],
       "summary": "z is the sum of a beta-coded all-bit prefix.",
-      "template_sha256": "b94a6fdb971a8d551c0bc09ef2676d106fb3e5c4bf37e3877289b2ac6f97c266"
+      "template_sha256": "b94a6fdb971a8d551c0bc09ef2676d106fb3e5c4bf37e3877289b2ac6f97c266",
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013",
+        "PD0015",
+        "PD0016"
+      ]
     },
     {
       "dependencies": [],
@@ -246,7 +315,9 @@
         "p"
       ],
       "summary": "p is one modulo eight with a witnessed quotient.",
-      "template_sha256": "60a52f497f03fca7c077c65b71647ceb4a10feb210493141f63a06b1c81bd3b2"
+      "template_sha256": "60a52f497f03fca7c077c65b71647ceb4a10feb210493141f63a06b1c81bd3b2",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [],
@@ -259,7 +330,9 @@
         "p"
       ],
       "summary": "p is three modulo eight with a witnessed quotient.",
-      "template_sha256": "2e3dc0bf51d4483951db59fcd9a4dc8878e85c7912e010018929158aa141d395"
+      "template_sha256": "2e3dc0bf51d4483951db59fcd9a4dc8878e85c7912e010018929158aa141d395",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [],
@@ -272,7 +345,9 @@
         "p"
       ],
       "summary": "p is five modulo eight with a witnessed quotient.",
-      "template_sha256": "64f2c1a662cc6202ba1293934fc25d63645b194ba913ac234ff8f6c4142d3931"
+      "template_sha256": "64f2c1a662cc6202ba1293934fc25d63645b194ba913ac234ff8f6c4142d3931",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [],
@@ -285,7 +360,9 @@
         "p"
       ],
       "summary": "p is seven modulo eight with a witnessed quotient.",
-      "template_sha256": "48695bd21dd83a1ffff1123b64d580963f97e43e9b6e13322cb18a9f250e05e7"
+      "template_sha256": "48695bd21dd83a1ffff1123b64d580963f97e43e9b6e13322cb18a9f250e05e7",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [],
@@ -299,7 +376,9 @@
         "b"
       ],
       "summary": "Witness-defined non-strict order on natural numbers.",
-      "template_sha256": "41aa215143ee6830b61010c8a5f708440a429140bb4cad89663085337126eba0"
+      "template_sha256": "41aa215143ee6830b61010c8a5f708440a429140bb4cad89663085337126eba0",
+      "topological_layer": 0,
+      "transitive_dependencies": []
     },
     {
       "dependencies": [
@@ -321,7 +400,12 @@
         "l"
       ],
       "summary": "The decoded prefix is a,a+1,...,a+l-1.",
-      "template_sha256": "b04a3e6b152775815605b45421d89e1e346757c9a1c7cb86290c98e5a42f18b9"
+      "template_sha256": "b04a3e6b152775815605b45421d89e1e346757c9a1c7cb86290c98e5a42f18b9",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
       "dependencies": [
@@ -343,7 +427,12 @@
         "z"
       ],
       "summary": "z is the product of a beta-coded prefix of length l.",
-      "template_sha256": "f39381e906a4c89c28a06167c706e2e14937eaa40a879fc5658d85f9892c1653"
+      "template_sha256": "f39381e906a4c89c28a06167c706e2e14937eaa40a879fc5658d85f9892c1653",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
       "dependencies": [
@@ -365,7 +454,12 @@
         "l"
       ],
       "summary": "The decoded prefix repeats a for l positions.",
-      "template_sha256": "5ddd6737391a6ae01b8d7fad7a817a96233301d196787fc9c22d602290da819d"
+      "template_sha256": "5ddd6737391a6ae01b8d7fad7a817a96233301d196787fc9c22d602290da819d",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
     },
     {
       "dependencies": [
@@ -386,7 +480,14 @@
         "z"
       ],
       "summary": "z is the relational e-th power of a.",
-      "template_sha256": "7bf8dc5933e3f5226c6d1c81ba902c46bb7688d42f73313aa8d8deeda0b2ba81"
+      "template_sha256": "7bf8dc5933e3f5226c6d1c81ba902c46bb7688d42f73313aa8d8deeda0b2ba81",
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013",
+        "PD0014",
+        "PD0019"
+      ]
     }
   ],
   "description": "Follow the complete constructive modulo-four and modulo-eight residue classifications.",
@@ -397,7 +498,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -413,7 +514,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -429,7 +530,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -445,7 +546,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -461,7 +562,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -477,7 +578,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -493,7 +594,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -509,7 +610,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -525,7 +626,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -541,7 +642,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -557,7 +658,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -573,7 +674,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -589,7 +690,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -605,7 +706,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -621,7 +722,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -637,7 +738,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -653,7 +754,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -669,7 +770,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -685,7 +786,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -701,7 +802,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -717,7 +818,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -733,7 +834,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -749,7 +850,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -765,7 +866,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -781,7 +882,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -797,7 +898,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -813,7 +914,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -829,7 +930,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -845,7 +946,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -861,7 +962,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -877,7 +978,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -893,7 +994,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -909,7 +1010,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -925,7 +1026,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -941,7 +1042,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -957,7 +1058,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -973,7 +1074,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -989,7 +1090,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1005,7 +1106,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1021,7 +1122,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1037,7 +1138,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1053,7 +1154,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1069,7 +1170,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1085,7 +1186,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1101,7 +1202,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1117,7 +1218,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1133,7 +1234,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1149,7 +1250,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1165,7 +1266,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1181,7 +1282,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1197,7 +1298,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1213,7 +1314,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1229,7 +1330,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1245,7 +1346,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1261,7 +1362,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1277,7 +1378,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1293,7 +1394,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1309,7 +1410,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1325,7 +1426,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1341,7 +1442,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1357,7 +1458,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1373,7 +1474,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1389,7 +1490,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1405,7 +1506,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1421,7 +1522,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1437,7 +1538,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1453,7 +1554,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1469,7 +1570,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1485,7 +1586,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1501,7 +1602,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1517,7 +1618,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1533,7 +1634,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1549,7 +1650,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1565,7 +1666,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1581,7 +1682,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1597,7 +1698,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1613,7 +1714,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1629,7 +1730,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1645,7 +1746,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1661,7 +1762,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1677,7 +1778,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1693,7 +1794,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1709,7 +1810,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1725,7 +1826,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1741,7 +1842,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1757,7 +1858,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1773,7 +1874,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1789,7 +1890,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1805,7 +1906,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1821,7 +1922,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1837,7 +1938,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1853,7 +1954,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1869,7 +1970,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -1885,7 +1986,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1901,7 +2002,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1917,7 +2018,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1933,7 +2034,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1949,7 +2050,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1965,7 +2066,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -1981,7 +2082,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": "v15",
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2007,7 +2108,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2023,7 +2124,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2039,7 +2140,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2055,7 +2156,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2071,7 +2172,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2087,7 +2188,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2103,7 +2204,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2119,7 +2220,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2135,7 +2236,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2151,7 +2252,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2167,7 +2268,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2183,7 +2284,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2199,7 +2300,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2215,7 +2316,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2231,7 +2332,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2247,7 +2348,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2263,7 +2364,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2279,7 +2380,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2295,7 +2396,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2311,7 +2412,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2327,7 +2428,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2343,7 +2444,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2359,7 +2460,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2375,7 +2476,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2391,7 +2492,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2407,7 +2508,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2423,7 +2524,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2439,7 +2540,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2455,7 +2556,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2471,7 +2572,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2487,7 +2588,7 @@
       "admitted_to_stable": false,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "enrolled_in_alpha": true,
       "evidence": "alpha_closed",
@@ -2503,7 +2604,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2519,7 +2620,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2535,7 +2636,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2551,7 +2652,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2567,7 +2668,7 @@
       "admitted_to_stable": true,
       "alpha_admission_version": null,
       "alpha_checked_use": true,
-      "alpha_edition_version": "v19",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "stable_closed",
       "enrolled_in_alpha": true,
       "evidence": "stable_closed",
@@ -2582,6 +2683,10 @@
   "external_dependency_count": 36,
   "formal_line_count": 1382,
   "formula": "(−1|p) = (−1)^((p−1)/2) · (2|p) = (−1)^((p²−1)/8)",
+  "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+  "historical_alpha_edition_checked_use_count": 1737,
+  "historical_alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
+  "historical_alpha_edition_version": "v19",
   "internal_edge_count": 32,
   "node_count": 30,
   "nodes": [
@@ -2591,8 +2696,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -2822,7 +2927,7 @@
       ],
       "statement": "forall p a n h A. p = S n -> ((~(p = 1) /\\ forall esi_prime_left_ecb_prime esi_prime_right_ecb_prime. p = esi_prime_left_ecb_prime * esi_prime_right_ecb_prime -> esi_prime_left_ecb_prime = 1 \\/ esi_prime_right_ecb_prime = 1)) -> ~(a = 0) -> (exists wpo_gap_ecb_a_lt_p. wpo_gap_ecb_a_lt_p + S (a) = p) -> n = h + h -> (exists ff_b_ecb_power ff_c_ecb_power. ((forall ff_i_ecb_power_repeat. (exists ff_lt_ecb_power_repeat_bound. ff_lt_ecb_power_repeat_bound + S ff_i_ecb_power_repeat = h) -> (((exists ff_h_ecb_power_repeat_decoded. ff_h_ecb_power_repeat_decoded + S (a) = S ((S (ff_i_ecb_power_repeat)) * ff_c_ecb_power)) /\\ exists ff_q_ecb_power_repeat_decoded. ff_b_ecb_power = ff_q_ecb_power_repeat_decoded * S ((S (ff_i_ecb_power_repeat)) * ff_c_ecb_power) + (a)))) /\\ (exists ff_u_ecb_power_product ff_v_ecb_power_product. ((((exists ff_h_ecb_power_product_start. ff_h_ecb_power_product_start + S (1) = S ((S (0)) * ff_v_ecb_power_product)) /\\ exists ff_q_ecb_power_product_start. ff_u_ecb_power_product = ff_q_ecb_power_product_start * S ((S (0)) * ff_v_ecb_power_product) + (1))) /\\ ((((exists ff_h_ecb_power_product_terminal. ff_h_ecb_power_product_terminal + S (A) = S ((S (h)) * ff_v_ecb_power_product)) /\\ exists ff_q_ecb_power_product_terminal. ff_u_ecb_power_product = ff_q_ecb_power_product_terminal * S ((S (h)) * ff_v_ecb_power_product) + (A))) /\\ forall ff_i_ecb_power_product. (exists ff_lt_ecb_power_product_bound. ff_lt_ecb_power_product_bound + S ff_i_ecb_power_product = h) -> exists ff_p_ecb_power_product ff_r_ecb_power_product ff_s_ecb_power_product. ((((exists ff_h_ecb_power_product_factor. ff_h_ecb_power_product_factor + S (ff_p_ecb_power_product) = S ((S (ff_i_ecb_power_product)) * ff_c_ecb_power)) /\\ exists ff_q_ecb_power_product_factor. ff_b_ecb_power = ff_q_ecb_power_product_factor * S ((S (ff_i_ecb_power_product)) * ff_c_ecb_power) + (ff_p_ecb_power_product))) /\\ ((((exists ff_h_ecb_power_product_partial. ff_h_ecb_power_product_partial + S (ff_r_ecb_power_product) = S ((S (ff_i_ecb_power_product)) * ff_v_ecb_power_product)) /\\ exists ff_q_ecb_power_product_partial. ff_u_ecb_power_product = ff_q_ecb_power_product_partial * S ((S (ff_i_ecb_power_product)) * ff_v_ecb_power_product) + (ff_r_ecb_power_product))) /\\ ((((exists ff_h_ecb_power_product_successor. ff_h_ecb_power_product_successor + S (ff_s_ecb_power_product) = S ((S (S ff_i_ecb_power_product)) * ff_v_ecb_power_product)) /\\ exists ff_q_ecb_power_product_successor. ff_u_ecb_power_product = ff_q_ecb_power_product_successor * S ((S (S ff_i_ecb_power_product)) * ff_v_ecb_power_product) + (ff_s_ecb_power_product))) /\\ ff_s_ecb_power_product = ff_r_ecb_power_product * ff_p_ecb_power_product)))))))) -> (((((exists qr_x_ecb_qres. exists qr_u_ecb_qres qr_v_ecb_qres. qr_x_ecb_qres * qr_x_ecb_qres + p * qr_u_ecb_qres = a + p * qr_v_ecb_qres) -> (exists wpp_mod_left_ecb_mod_one wpp_mod_right_ecb_mod_one. (A) + p * wpp_mod_left_ecb_mod_one = (1) + p * wpp_mod_right_ecb_mod_one)) /\\ ((exists wpp_mod_left_ecb_mod_one wpp_mod_right_ecb_mod_one. (A) + p * wpp_mod_left_ecb_mod_one = (1) + p * wpp_mod_right_ecb_mod_one) -> (exists qr_x_ecb_qres. exists qr_u_ecb_qres qr_v_ecb_qres. qr_x_ecb_qres * qr_x_ecb_qres + p * qr_u_ecb_qres = a + p * qr_v_ecb_qres)))) /\\ (((~(exists qr_x_ecb_qres. exists qr_u_ecb_qres qr_v_ecb_qres. qr_x_ecb_qres * qr_x_ecb_qres + p * qr_u_ecb_qres = a + p * qr_v_ecb_qres) -> (exists wpp_mod_left_ecb_mod_predecessor wpp_mod_right_ecb_mod_predecessor. (A) + p * wpp_mod_left_ecb_mod_predecessor = (n) + p * wpp_mod_right_ecb_mod_predecessor)) /\\ ((exists wpp_mod_left_ecb_mod_predecessor wpp_mod_right_ecb_mod_predecessor. (A) + p * wpp_mod_left_ecb_mod_predecessor = (n) + p * wpp_mod_right_ecb_mod_predecessor) -> ~(exists qr_x_ecb_qres. exists qr_u_ecb_qres qr_v_ecb_qres. qr_x_ecb_qres * qr_x_ecb_qres + p * qr_u_ecb_qres = a + p * qr_v_ecb_qres)))))",
       "statement_sha256": "54c35c149ef7b63ffbfe7e2264bf443bae295345eb66e221df6638e61f6f3b60",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "Complete bounded Euler criterion, including both residue and nonresidue equivalences."
     },
     {
@@ -2831,8 +2936,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -2915,7 +3020,7 @@
       ],
       "statement": "forall p n. p = S n -> ((~(p = 1) /\\ forall frm_prime_left_qsm_prime frm_prime_right_qsm_prime. p = frm_prime_left_qsm_prime * frm_prime_right_qsm_prime -> frm_prime_left_qsm_prime = 1 \\/ frm_prime_right_qsm_prime = 1)) -> ~(n = 0)",
       "statement_sha256": "981f890dda85857cd047906cf398fcc9e195cc8c9f3642d89810a0bc24136cc0",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "The predecessor of a prime cannot be zero."
     },
     {
@@ -2924,8 +3029,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -3007,7 +3112,7 @@
       ],
       "statement": "forall p n h. p = S n -> p = 2 * h + 1 -> n = h + h",
       "statement_sha256": "34a72fd5c00ef7946258390cd8c35d58cc3ec74049f23875f1d6ba705350bc9c",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "An odd successor has predecessor equal to twice its odd half."
     },
     {
@@ -3016,8 +3121,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -3320,7 +3425,7 @@
       ],
       "statement": "forall p n h. p = S n -> ((~(p = 1) /\\ forall frm_prime_left_qsm_prime frm_prime_right_qsm_prime. p = frm_prime_left_qsm_prime * frm_prime_right_qsm_prime -> frm_prime_left_qsm_prime = 1 \\/ frm_prime_right_qsm_prime = 1)) -> n = h + h -> ((((((exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor) -> (exists qsm_even_half. h = 2 * qsm_even_half)) /\\ ((exists qsm_even_half. h = 2 * qsm_even_half) -> (exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)))) /\\ ((((~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)) -> (exists qsm_odd_half. h = 2 * qsm_odd_half + 1)) /\\ ((exists qsm_odd_half. h = 2 * qsm_odd_half + 1) -> (~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)))))))",
       "statement_sha256": "bda266c91596a44668d02dffceb0bdce7c900a46463f6d47c0d0b9561ea52aba",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "For an odd prime, its predecessor is a quadratic residue exactly when the prime's half is even, and a nonresidue exactly when that half is odd."
     },
     {
@@ -3329,8 +3434,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -3630,7 +3735,7 @@
       ],
       "statement": "forall p n. p = S n -> ((~(p = 1) /\\ forall frm_prime_left_qsm_prime frm_prime_right_qsm_prime. p = frm_prime_left_qsm_prime * frm_prime_right_qsm_prime -> frm_prime_left_qsm_prime = 1 \\/ frm_prime_right_qsm_prime = 1)) -> (exists qsm_odd_modulus. p = 2 * qsm_odd_modulus + 1) -> ((((exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor) -> (exists qsm_four_one_modulus. p = 4 * qsm_four_one_modulus + 1)) /\\ ((exists qsm_four_one_modulus. p = 4 * qsm_four_one_modulus + 1) -> (exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor))))",
       "statement_sha256": "6c421211493d2f15a974fd7828e2bfdae80d4391cf65413efbf9e83c98e10c9d",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "The first supplementary law: minus one is a quadratic residue modulo an odd prime exactly when that prime is one modulo four."
     },
     {
@@ -3639,8 +3744,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -3942,7 +4047,7 @@
       ],
       "statement": "forall p n. p = S n -> ((~(p = 1) /\\ forall frm_prime_left_qsm_prime frm_prime_right_qsm_prime. p = frm_prime_left_qsm_prime * frm_prime_right_qsm_prime -> frm_prime_left_qsm_prime = 1 \\/ frm_prime_right_qsm_prime = 1)) -> (exists qsm_odd_modulus. p = 2 * qsm_odd_modulus + 1) -> ((((~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)) -> (exists qsm_four_three_modulus. p = 4 * qsm_four_three_modulus + 3)) /\\ ((exists qsm_four_three_modulus. p = 4 * qsm_four_three_modulus + 3) -> (~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)))))",
       "statement_sha256": "c99890cd3fa32b6fe2f6bb79ec3a0f773530a49e0288ce17f0b249a78f7b8b06",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "The first supplementary law's complementary branch: minus one is a nonresidue exactly for odd primes that are three modulo four."
     },
     {
@@ -3951,8 +4056,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -4155,7 +4260,7 @@
       ],
       "statement": "forall p n. p = S n -> ((~(p = 1) /\\ forall frm_prime_left_qsm_prime frm_prime_right_qsm_prime. p = frm_prime_left_qsm_prime * frm_prime_right_qsm_prime -> frm_prime_left_qsm_prime = 1 \\/ frm_prime_right_qsm_prime = 1)) -> (exists qsm_odd_modulus. p = 2 * qsm_odd_modulus + 1) -> (((((exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor) -> (exists qsm_four_one_modulus. p = 4 * qsm_four_one_modulus + 1)) /\\ ((exists qsm_four_one_modulus. p = 4 * qsm_four_one_modulus + 1) -> (exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)))) /\\ ((((~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor)) -> (exists qsm_four_three_modulus. p = 4 * qsm_four_three_modulus + 3)) /\\ ((exists qsm_four_three_modulus. p = 4 * qsm_four_three_modulus + 3) -> (~(exists qr_x_qsm_predecessor. exists qr_u_qsm_predecessor qr_v_qsm_predecessor. qr_x_qsm_predecessor * qr_x_qsm_predecessor + p * qr_u_qsm_predecessor = n + p * qr_v_qsm_predecessor))))))",
       "statement_sha256": "7ea81062b843e7fff4939ffce5b6fa14a87312619f7f49e3abd5993bfa02134e",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "Complete constructive first supplementary law, including both the one-modulo-four residue and three-modulo-four nonresidue cases."
     },
     {
@@ -4164,8 +4269,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -4697,7 +4802,7 @@
       ],
       "statement": "forall p h a b c. p = 2 * h + 1 -> ((~(p = 1) /\\ forall esi_prime_left_glb_prime esi_prime_right_glb_prime. p = esi_prime_left_glb_prime * esi_prime_right_glb_prime -> esi_prime_left_glb_prime = 1 \\/ esi_prime_right_glb_prime = 1)) -> (exists wpo_gap_glb_a_positive. wpo_gap_glb_a_positive + S (0) = a) -> (exists wpo_gap_glb_a_lt_p. wpo_gap_glb_a_lt_p + S (a) = p) -> (forall gsp_range_index_glb_half_range. (exists gsp_lt_gap_glb_half_range_range_bound. gsp_lt_gap_glb_half_range_range_bound + S gsp_range_index_glb_half_range = h) -> (((exists gsp_beta_height_glb_half_range_range_entry. gsp_beta_height_glb_half_range_range_entry + S (1 + gsp_range_index_glb_half_range) = S ((S (gsp_range_index_glb_half_range)) * c)) /\\ exists gsp_beta_quotient_glb_half_range_range_entry. b = gsp_beta_quotient_glb_half_range_range_entry * S ((S (gsp_range_index_glb_half_range)) * c) + (1 + gsp_range_index_glb_half_range)))) -> (exists e. ((exists mb mc sb sc. ((forall gsp_index_glb_signed_prefix. (exists gsp_lt_gap_glb_signed_prefix_index_bound. gsp_lt_gap_glb_signed_prefix_index_bound + S gsp_index_glb_signed_prefix = h) -> (exists gsp_value_glb_signed_prefix_entry gsp_magnitude_glb_signed_prefix_entry gsp_sign_glb_signed_prefix_entry. (((exists ff_h_gsp_glb_signed_prefix_entry_source. ff_h_gsp_glb_signed_prefix_entry_source + S (gsp_value_glb_signed_prefix_entry) = S ((S (gsp_index_glb_signed_prefix)) * c)) /\\ exists ff_q_gsp_glb_signed_prefix_entry_source. b = ff_q_gsp_glb_signed_prefix_entry_source * S ((S (gsp_index_glb_signed_prefix)) * c) + (gsp_value_glb_signed_prefix_entry))) /\\ ((((exists ff_h_gsp_glb_signed_prefix_entry_magnitude. ff_h_gsp_glb_signed_prefix_entry_magnitude + S (gsp_magnitude_glb_signed_prefix_entry) = S ((S (gsp_index_glb_signed_prefix)) * mc)) /\\ exists ff_q_gsp_glb_signed_prefix_entry_magnitude. mb = ff_q_gsp_glb_signed_prefix_entry_magnitude * S ((S (gsp_index_glb_signed_prefix)) * mc) + (gsp_magnitude_glb_signed_prefix_entry))) /\\ ((((exists ff_h_gsp_glb_signed_prefix_entry_sign. ff_h_gsp_glb_signed_prefix_entry_sign + S (gsp_sign_glb_signed_prefix_entry) = S ((S (gsp_index_glb_signed_prefix)) * sc)) /\\ exists ff_q_gsp_glb_signed_prefix_entry_sign. sb = ff_q_gsp_glb_signed_prefix_entry_sign * S ((S (gsp_index_glb_signed_prefix)) * sc) + (gsp_sign_glb_signed_prefix_entry))) /\\ ((exists gsp_lt_gap_glb_signed_prefix_entry_positive. gsp_lt_gap_glb_signed_prefix_entry_positive + S 0 = gsp_magnitude_glb_signed_prefix_entry) /\\ ((exists gsp_le_gap_glb_signed_prefix_entry_bounded. gsp_le_gap_glb_signed_prefix_entry_bounded + gsp_magnitude_glb_signed_prefix_entry = h) /\\ ((gsp_sign_glb_signed_prefix_entry = 0 \\/ gsp_sign_glb_signed_prefix_entry = 1) /\\ (((gsp_sign_glb_signed_prefix_entry = 0 /\\ (exists gsp_mod_left_glb_signed_prefix_entry_lower gsp_mod_right_glb_signed_prefix_entry_lower. (a * gsp_value_glb_signed_prefix_entry) + p * gsp_mod_left_glb_signed_prefix_entry_lower = (gsp_magnitude_glb_signed_prefix_entry) + p * gsp_mod_right_glb_signed_prefix_entry_lower)) \\/ (gsp_sign_glb_signed_prefix_entry = 1 /\\ (exists gsp_mod_left_glb_signed_prefix_entry_reflected gsp_mod_right_glb_signed_prefix_entry_reflected. (a * gsp_value_glb_signed_prefix_entry) + p * gsp_mod_left_glb_signed_prefix_entry_reflected = ((2 * h) * gsp_magnitude_glb_signed_prefix_entry) + p * gsp_mod_right_glb_signed_prefix_entry_reflected))))))))))) /\\ (((exists ff_u_glb_count_sum ff_v_glb_count_sum. ((((exists ff_h_glb_count_sum_start. ff_h_glb_count_sum_start + S (0) = S ((S (0)) * ff_v_glb_count_sum)) /\\ exists ff_q_glb_count_sum_start. ff_u_glb_count_sum = ff_q_glb_count_sum_start * S ((S (0)) * ff_v_glb_count_sum) + (0))) /\\ ((((exists ff_h_glb_count_sum_terminal. ff_h_glb_count_sum_terminal + S (e) = S ((S (h)) * ff_v_glb_count_sum)) /\\ exists ff_q_glb_count_sum_terminal. ff_u_glb_count_sum = ff_q_glb_count_sum_terminal * S ((S (h)) * ff_v_glb_count_sum) + (e))) /\\ forall ff_i_glb_count_sum. (exists ff_lt_glb_count_sum_bound. ff_lt_glb_count_sum_bound + S ff_i_glb_count_sum = h) -> exists ff_a_glb_count_sum ff_r_glb_count_sum ff_s_glb_count_sum. ((((exists ff_h_glb_count_sum_summand. ff_h_glb_count_sum_summand + S (ff_a_glb_count_sum) = S ((S (ff_i_glb_count_sum)) * sc)) /\\ exists ff_q_glb_count_sum_summand. sb = ff_q_glb_count_sum_summand * S ((S (ff_i_glb_count_sum)) * sc) + (ff_a_glb_count_sum))) /\\ ((((exists ff_h_glb_count_sum_partial. ff_h_glb_count_sum_partial + S (ff_r_glb_count_sum) = S ((S (ff_i_glb_count_sum)) * ff_v_glb_count_sum)) /\\ exists ff_q_glb_count_sum_partial. ff_u_glb_count_sum = ff_q_glb_count_sum_partial * S ((S (ff_i_glb_count_sum)) * ff_v_glb_count_sum) + (ff_r_glb_count_sum))) /\\ ((((exists ff_h_glb_count_sum_successor. ff_h_glb_count_sum_successor + S (ff_s_glb_count_sum) = S ((S (S ff_i_glb_count_sum)) * ff_v_glb_count_sum)) /\\ exists ff_q_glb_count_sum_successor. ff_u_glb_count_sum = ff_q_glb_count_sum_successor * S ((S (S ff_i_glb_count_sum)) * ff_v_glb_count_sum) + (ff_s_glb_count_sum))) /\\ ff_s_glb_count_sum = ff_r_glb_count_sum + ff_a_glb_count_sum)))))) /\\ (forall ff_i_glb_count_bits. (exists ff_lt_glb_count_bits_bound. ff_lt_glb_count_bits_bound + S ff_i_glb_count_bits = h) -> exists ff_bit_glb_count_bits. ((((exists ff_h_glb_count_bits_decoded. ff_h_glb_count_bits_decoded + S (ff_bit_glb_count_bits) = S ((S (ff_i_glb_count_bits)) * sc)) /\\ exists ff_q_glb_count_bits_decoded. sb = ff_q_glb_count_bits_decoded * S ((S (ff_i_glb_count_bits)) * sc) + (ff_bit_glb_count_bits))) /\\ (ff_bit_glb_count_bits = 0 \\/ ff_bit_glb_count_bits = 1))))))) /\\ (((((exists qr_x_glb_qres. exists qr_u_glb_qres qr_v_glb_qres. qr_x_glb_qres * qr_x_glb_qres + p * qr_u_glb_qres = a + p * qr_v_glb_qres) -> (exists gs_even_glb_even. e = 2 * gs_even_glb_even)) /\\ ((exists gs_even_glb_even. e = 2 * gs_even_glb_even) -> (exists qr_x_glb_qres. exists qr_u_glb_qres qr_v_glb_qres. qr_x_glb_qres * qr_x_glb_qres + p * qr_u_glb_qres = a + p * qr_v_glb_qres)))) /\\ (((~(exists qr_x_glb_qres. exists qr_u_glb_qres qr_v_glb_qres. qr_x_glb_qres * qr_x_glb_qres + p * qr_u_glb_qres = a + p * qr_v_glb_qres) -> (exists gs_odd_glb_odd. e = 2 * gs_odd_glb_odd + 1)) /\\ ((exists gs_odd_glb_odd. e = 2 * gs_odd_glb_odd + 1) -> ~(exists qr_x_glb_qres. exists qr_u_glb_qres qr_v_glb_qres. qr_x_glb_qres * qr_x_glb_qres + p * qr_u_glb_qres = a + p * qr_v_glb_qres)))))))",
       "statement_sha256": "30f9a62162c2d1fe6e589ba3a5b5e5653bf5e527ab5b86a29ae394c448893b39",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "A canonical Gauss reflection count is even exactly for residues and odd exactly for nonresidues."
     },
     {
@@ -4706,8 +4811,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -4769,7 +4874,7 @@
       ],
       "statement": "forall a. 8 * a = 2 * (4 * a)",
       "statement_sha256": "e855597bfd7ffd5055cad7152ca8f8cc2e9fbb34a97f054f0e53698a730f1df1",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "Multiplication by eight is twice multiplication by four."
     },
     {
@@ -4992,8 +5097,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -5100,7 +5205,7 @@
       ],
       "statement": "forall p a r b s. p = 8 * a + r -> (exists u. u + S r = 8) -> p = 8 * b + s -> (exists v. v + S s = 8) -> r = s",
       "statement_sha256": "a28a40170b35f9dd532b0be43b88fbd59ba196554d2791a8fa1933f42ed59568",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "Two bounded decompositions modulo eight have the same remainder."
     },
     {
@@ -5109,8 +5214,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -5270,7 +5375,7 @@
       ],
       "statement": "forall p. (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> false",
       "statement_sha256": "f2bda38ce48a9c7235a1101a54372e135379f3ff4e6588060a47fee368bfd758",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "The favorable modulo-eight classes one and seven cannot equal the unfavorable classes three and five."
     },
     {
@@ -5279,8 +5384,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -5428,7 +5533,7 @@
       ],
       "statement": "forall p h e. p = 2 * h + 1 -> (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape))) -> (exists qst_even_count. e = 2 * qst_even_count) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))",
       "statement_sha256": "49010a6533f273d3a2ea04025dcbf1e51239346a1a766bc7a0bb1c556b9ae2c5",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "An even doubling reflection count forces the prime to be one or seven modulo eight."
     },
     {
@@ -5437,8 +5542,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -5586,7 +5691,7 @@
       ],
       "statement": "forall p h e. p = 2 * h + 1 -> (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape))) -> (exists qst_odd_count. e = 2 * qst_odd_count + 1) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))",
       "statement_sha256": "9221fcaef856417aef75584dff9989e894bd85c39ec0e6086503cdab7d0063a7",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "An odd doubling reflection count forces the prime to be three or five modulo eight."
     },
     {
@@ -5595,8 +5700,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -5768,7 +5873,7 @@
       ],
       "statement": "forall p h e. p = 2 * h + 1 -> (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape))) -> ((((((exists qst_even_count. e = 2 * qst_even_count) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))) /\\ ((((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (exists qst_even_count. e = 2 * qst_even_count)))) /\\ ((((exists qst_odd_count. e = 2 * qst_odd_count + 1) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))) /\\ ((((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> (exists qst_odd_count. e = 2 * qst_odd_count + 1))))))",
       "statement_sha256": "6e9c3f633796505c9621006d86680f2f93cf701e8ab59ac702a30b9e85d55f9c",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "For the exact doubling reflection-count shape, evenness is equivalent to classes one/seven and oddness to three/five."
     },
     {
@@ -5777,8 +5882,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -5918,7 +6023,7 @@
       ],
       "statement": "forall h k x. (((h = 2 * k) \\/ (h = 2 * k + 1))) -> (exists qst_le_floor. qst_le_floor + (x) = (k)) -> (exists qst_le_doubled. qst_le_doubled + (2 * x) = (h))",
       "statement_sha256": "f04c55cb31fcec06595f360bc5fe09e4078d5cb063827165a92455231575298b",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "A source at most the odd-half floor has doubled value at most the half."
     },
     {
@@ -5927,8 +6032,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -6028,7 +6133,7 @@
       ],
       "statement": "forall h k x. (((h = 2 * k) \\/ (h = 2 * k + 1))) -> (exists qst_lt_floor. qst_lt_floor + S (k) = (x)) -> (exists qst_lt_doubled. qst_lt_doubled + S (h) = (2 * x))",
       "statement_sha256": "42bdee2de2f17c442bf5083337ded23ba4ce4aec60b55d87eb73a623ddd1bd96",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "A source strictly above the odd-half floor doubles beyond the half."
     },
     {
@@ -6037,8 +6142,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -6181,7 +6286,7 @@
       ],
       "statement": "forall p h x. p = 2 * h + 1 -> (exists qst_le_source. qst_le_source + (x) = (h)) -> (exists qst_lt_canonical. qst_lt_canonical + S (2 * x) = (p))",
       "statement_sha256": "0ae0029bd0c6412bd8577fbb5a18fa9d40ec6253bdd23341851f6400d5117e2a",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "Doubling a value in the canonical half range never wraps modulo the odd modulus."
     },
     {
@@ -6190,8 +6295,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -6329,7 +6434,7 @@
       ],
       "statement": "forall p h x m. p = 2 * h + 1 -> (exists qst_le_magnitude. qst_le_magnitude + (m) = (h)) -> 2 * x + m = p -> (exists qst_lt_doubled. qst_lt_doubled + S (h) = (2 * x))",
       "statement_sha256": "b5e1411d4f6027c6456e11b14e209922194b018709b2edb5bfc839d13fb8e015",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "An exact reflected doubled value necessarily lies above the odd half."
     },
     {
@@ -6338,8 +6443,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -6876,7 +6981,7 @@
       ],
       "statement": "forall p h a b c mb mc sb sc ib ic k. p = 2 * h + 1 -> a = 2 -> ((h = 2 * k) \\/ (h = 2 * k + 1)) -> (forall gsp_range_index_qst_goal_half. (exists gsp_lt_gap_qst_goal_half_range_bound. gsp_lt_gap_qst_goal_half_range_bound + S gsp_range_index_qst_goal_half = h) -> (((exists gsp_beta_height_qst_goal_half_range_entry. gsp_beta_height_qst_goal_half_range_entry + S (1 + gsp_range_index_qst_goal_half) = S ((S (gsp_range_index_qst_goal_half)) * c)) /\\ exists gsp_beta_quotient_qst_goal_half_range_entry. b = gsp_beta_quotient_qst_goal_half_range_entry * S ((S (gsp_range_index_qst_goal_half)) * c) + (1 + gsp_range_index_qst_goal_half)))) -> (forall gsp_index_qst_goal_signed. (exists gsp_lt_gap_qst_goal_signed_index_bound. gsp_lt_gap_qst_goal_signed_index_bound + S gsp_index_qst_goal_signed = h) -> (exists gsp_value_qst_goal_signed_entry gsp_magnitude_qst_goal_signed_entry gsp_sign_qst_goal_signed_entry. (((exists ff_h_gsp_qst_goal_signed_entry_source. ff_h_gsp_qst_goal_signed_entry_source + S (gsp_value_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * c)) /\\ exists ff_q_gsp_qst_goal_signed_entry_source. b = ff_q_gsp_qst_goal_signed_entry_source * S ((S (gsp_index_qst_goal_signed)) * c) + (gsp_value_qst_goal_signed_entry))) /\\ ((((exists ff_h_gsp_qst_goal_signed_entry_magnitude. ff_h_gsp_qst_goal_signed_entry_magnitude + S (gsp_magnitude_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * mc)) /\\ exists ff_q_gsp_qst_goal_signed_entry_magnitude. mb = ff_q_gsp_qst_goal_signed_entry_magnitude * S ((S (gsp_index_qst_goal_signed)) * mc) + (gsp_magnitude_qst_goal_signed_entry))) /\\ ((((exists ff_h_gsp_qst_goal_signed_entry_sign. ff_h_gsp_qst_goal_signed_entry_sign + S (gsp_sign_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * sc)) /\\ exists ff_q_gsp_qst_goal_signed_entry_sign. sb = ff_q_gsp_qst_goal_signed_entry_sign * S ((S (gsp_index_qst_goal_signed)) * sc) + (gsp_sign_qst_goal_signed_entry))) /\\ ((exists gsp_lt_gap_qst_goal_signed_entry_positive. gsp_lt_gap_qst_goal_signed_entry_positive + S 0 = gsp_magnitude_qst_goal_signed_entry) /\\ ((exists gsp_le_gap_qst_goal_signed_entry_bounded. gsp_le_gap_qst_goal_signed_entry_bounded + gsp_magnitude_qst_goal_signed_entry = h) /\\ ((gsp_sign_qst_goal_signed_entry = 0 \\/ gsp_sign_qst_goal_signed_entry = 1) /\\ (((gsp_sign_qst_goal_signed_entry = 0 /\\ (exists gsp_mod_left_qst_goal_signed_entry_lower gsp_mod_right_qst_goal_signed_entry_lower. (a * gsp_value_qst_goal_signed_entry) + p * gsp_mod_left_qst_goal_signed_entry_lower = (gsp_magnitude_qst_goal_signed_entry) + p * gsp_mod_right_qst_goal_signed_entry_lower)) \\/ (gsp_sign_qst_goal_signed_entry = 1 /\\ (exists gsp_mod_left_qst_goal_signed_entry_reflected gsp_mod_right_qst_goal_signed_entry_reflected. (a * gsp_value_qst_goal_signed_entry) + p * gsp_mod_left_qst_goal_signed_entry_reflected = ((2 * h) * gsp_magnitude_qst_goal_signed_entry) + p * gsp_mod_right_qst_goal_signed_entry_reflected))))))))))) -> (forall eis_index_qst_goal_initial. (exists eis_lt_gap_qst_goal_initial_bound. eis_lt_gap_qst_goal_initial_bound + S (eis_index_qst_goal_initial) = h) -> exists eis_bit_qst_goal_initial. ((((exists ff_h_eis_qst_goal_initial_decoded. ff_h_eis_qst_goal_initial_decoded + S (eis_bit_qst_goal_initial) = S ((S (eis_index_qst_goal_initial)) * ic)) /\\ exists ff_q_eis_qst_goal_initial_decoded. ib = ff_q_eis_qst_goal_initial_decoded * S ((S (eis_index_qst_goal_initial)) * ic) + (eis_bit_qst_goal_initial))) /\\ (((eis_bit_qst_goal_initial = 1 /\\ (exists eis_le_gap_qst_goal_initial_choice_inside. eis_le_gap_qst_goal_initial_choice_inside + (S eis_index_qst_goal_initial) = k)) \\/ (eis_bit_qst_goal_initial = 0 /\\ (exists eis_lt_gap_qst_goal_initial_choice_outside. eis_lt_gap_qst_goal_initial_choice_outside + S (k) = S eis_index_qst_goal_initial)))))) -> (forall i s t. (exists qst_complement_gap_goal. qst_complement_gap_goal + S i = h) -> (((exists ff_h_qst_goal_sign. ff_h_qst_goal_sign + S (s) = S ((S (i)) * sc)) /\\ exists ff_q_qst_goal_sign. sb = ff_q_qst_goal_sign * S ((S (i)) * sc) + (s))) -> (((exists ff_h_qst_goal_indicator. ff_h_qst_goal_indicator + S (t) = S ((S (i)) * ic)) /\\ exists ff_q_qst_goal_indicator. ib = ff_q_qst_goal_indicator * S ((S (i)) * ic) + (t))) -> ((s = 0 /\\ t = 1) \\/ (s = 1 /\\ t = 0)))",
       "statement_sha256": "4e82078fb10ab261cc9516669ba89357c4c4335a20f074465a5e069cc207bd5b",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "For multiplication by two, every actual Gauss sign bit is exactly complementary to the floor-half initial-segment bit."
     },
     {
@@ -6885,8 +6990,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -6984,7 +7089,7 @@
       ],
       "statement": "forall h k. (((h = 2 * k) \\/ (h = 2 * k + 1))) -> exists gap. gap + k = h",
       "statement_sha256": "f058225358138197ec1d136234b807bee2a64a55bee8cfdcd589a341653a9c58",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "A natural half in either doubled decomposition is at most the full length."
     },
     {
@@ -6993,8 +7098,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -7271,7 +7376,7 @@
       ],
       "statement": "forall h k sb sc ib ic e. (((h = 2 * k) \\/ (h = 2 * k + 1))) -> (forall eis_index_qst_initial_prefix. (exists eis_lt_gap_qst_initial_prefix_bound. eis_lt_gap_qst_initial_prefix_bound + S (eis_index_qst_initial_prefix) = h) -> exists eis_bit_qst_initial_prefix. ((((exists ff_h_eis_qst_initial_prefix_decoded. ff_h_eis_qst_initial_prefix_decoded + S (eis_bit_qst_initial_prefix) = S ((S (eis_index_qst_initial_prefix)) * ic)) /\\ exists ff_q_eis_qst_initial_prefix_decoded. ib = ff_q_eis_qst_initial_prefix_decoded * S ((S (eis_index_qst_initial_prefix)) * ic) + (eis_bit_qst_initial_prefix))) /\\ (((eis_bit_qst_initial_prefix = 1 /\\ (exists eis_le_gap_qst_initial_prefix_choice_inside. eis_le_gap_qst_initial_prefix_choice_inside + (S eis_index_qst_initial_prefix) = k)) \\/ (eis_bit_qst_initial_prefix = 0 /\\ (exists eis_lt_gap_qst_initial_prefix_choice_outside. eis_lt_gap_qst_initial_prefix_choice_outside + S (k) = S eis_index_qst_initial_prefix)))))) -> (((exists ff_u_qst_sign_count_sum ff_v_qst_sign_count_sum. ((((exists ff_h_qst_sign_count_sum_start. ff_h_qst_sign_count_sum_start + S (0) = S ((S (0)) * ff_v_qst_sign_count_sum)) /\\ exists ff_q_qst_sign_count_sum_start. ff_u_qst_sign_count_sum = ff_q_qst_sign_count_sum_start * S ((S (0)) * ff_v_qst_sign_count_sum) + (0))) /\\ ((((exists ff_h_qst_sign_count_sum_terminal. ff_h_qst_sign_count_sum_terminal + S (e) = S ((S (h)) * ff_v_qst_sign_count_sum)) /\\ exists ff_q_qst_sign_count_sum_terminal. ff_u_qst_sign_count_sum = ff_q_qst_sign_count_sum_terminal * S ((S (h)) * ff_v_qst_sign_count_sum) + (e))) /\\ forall ff_i_qst_sign_count_sum. (exists ff_lt_qst_sign_count_sum_bound. ff_lt_qst_sign_count_sum_bound + S ff_i_qst_sign_count_sum = h) -> exists ff_a_qst_sign_count_sum ff_r_qst_sign_count_sum ff_s_qst_sign_count_sum. ((((exists ff_h_qst_sign_count_sum_summand. ff_h_qst_sign_count_sum_summand + S (ff_a_qst_sign_count_sum) = S ((S (ff_i_qst_sign_count_sum)) * sc)) /\\ exists ff_q_qst_sign_count_sum_summand. sb = ff_q_qst_sign_count_sum_summand * S ((S (ff_i_qst_sign_count_sum)) * sc) + (ff_a_qst_sign_count_sum))) /\\ ((((exists ff_h_qst_sign_count_sum_partial. ff_h_qst_sign_count_sum_partial + S (ff_r_qst_sign_count_sum) = S ((S (ff_i_qst_sign_count_sum)) * ff_v_qst_sign_count_sum)) /\\ exists ff_q_qst_sign_count_sum_partial. ff_u_qst_sign_count_sum = ff_q_qst_sign_count_sum_partial * S ((S (ff_i_qst_sign_count_sum)) * ff_v_qst_sign_count_sum) + (ff_r_qst_sign_count_sum))) /\\ ((((exists ff_h_qst_sign_count_sum_successor. ff_h_qst_sign_count_sum_successor + S (ff_s_qst_sign_count_sum) = S ((S (S ff_i_qst_sign_count_sum)) * ff_v_qst_sign_count_sum)) /\\ exists ff_q_qst_sign_count_sum_successor. ff_u_qst_sign_count_sum = ff_q_qst_sign_count_sum_successor * S ((S (S ff_i_qst_sign_count_sum)) * ff_v_qst_sign_count_sum) + (ff_s_qst_sign_count_sum))) /\\ ff_s_qst_sign_count_sum = ff_r_qst_sign_count_sum + ff_a_qst_sign_count_sum)))))) /\\ (forall ff_i_qst_sign_count_bits. (exists ff_lt_qst_sign_count_bits_bound. ff_lt_qst_sign_count_bits_bound + S ff_i_qst_sign_count_bits = h) -> exists ff_bit_qst_sign_count_bits. ((((exists ff_h_qst_sign_count_bits_decoded. ff_h_qst_sign_count_bits_decoded + S (ff_bit_qst_sign_count_bits) = S ((S (ff_i_qst_sign_count_bits)) * sc)) /\\ exists ff_q_qst_sign_count_bits_decoded. sb = ff_q_qst_sign_count_bits_decoded * S ((S (ff_i_qst_sign_count_bits)) * sc) + (ff_bit_qst_sign_count_bits))) /\\ (ff_bit_qst_sign_count_bits = 0 \\/ ff_bit_qst_sign_count_bits = 1))))) -> (forall i s t. (exists qst_complement_gap_count. qst_complement_gap_count + S i = h) -> (((exists ff_h_qst_count_sign. ff_h_qst_count_sign + S (s) = S ((S (i)) * sc)) /\\ exists ff_q_qst_count_sign. sb = ff_q_qst_count_sign * S ((S (i)) * sc) + (s))) -> (((exists ff_h_qst_count_indicator. ff_h_qst_count_indicator + S (t) = S ((S (i)) * ic)) /\\ exists ff_q_qst_count_indicator. ib = ff_q_qst_count_indicator * S ((S (i)) * ic) + (t))) -> ((s = 0 /\\ t = 1) \\/ (s = 1 /\\ t = 0))) -> (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape)))",
       "statement_sha256": "f7a938a7db1dcd6e211ac6460407b36e194cd9e752b65f18e152b3706404e9a3",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "The existing initial-segment count and complementary BitCount theorems prove the exact doubling reflection-count shape once pointwise complementarity of the actual signs is supplied."
     },
     {
@@ -7280,8 +7385,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -7607,7 +7712,7 @@
       ],
       "statement": "forall p h a b c mb mc sb sc e. p = 2 * h + 1 -> a = 2 -> (forall gsp_range_index_qst_goal_half. (exists gsp_lt_gap_qst_goal_half_range_bound. gsp_lt_gap_qst_goal_half_range_bound + S gsp_range_index_qst_goal_half = h) -> (((exists gsp_beta_height_qst_goal_half_range_entry. gsp_beta_height_qst_goal_half_range_entry + S (1 + gsp_range_index_qst_goal_half) = S ((S (gsp_range_index_qst_goal_half)) * c)) /\\ exists gsp_beta_quotient_qst_goal_half_range_entry. b = gsp_beta_quotient_qst_goal_half_range_entry * S ((S (gsp_range_index_qst_goal_half)) * c) + (1 + gsp_range_index_qst_goal_half)))) -> (forall gsp_index_qst_goal_signed. (exists gsp_lt_gap_qst_goal_signed_index_bound. gsp_lt_gap_qst_goal_signed_index_bound + S gsp_index_qst_goal_signed = h) -> (exists gsp_value_qst_goal_signed_entry gsp_magnitude_qst_goal_signed_entry gsp_sign_qst_goal_signed_entry. (((exists ff_h_gsp_qst_goal_signed_entry_source. ff_h_gsp_qst_goal_signed_entry_source + S (gsp_value_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * c)) /\\ exists ff_q_gsp_qst_goal_signed_entry_source. b = ff_q_gsp_qst_goal_signed_entry_source * S ((S (gsp_index_qst_goal_signed)) * c) + (gsp_value_qst_goal_signed_entry))) /\\ ((((exists ff_h_gsp_qst_goal_signed_entry_magnitude. ff_h_gsp_qst_goal_signed_entry_magnitude + S (gsp_magnitude_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * mc)) /\\ exists ff_q_gsp_qst_goal_signed_entry_magnitude. mb = ff_q_gsp_qst_goal_signed_entry_magnitude * S ((S (gsp_index_qst_goal_signed)) * mc) + (gsp_magnitude_qst_goal_signed_entry))) /\\ ((((exists ff_h_gsp_qst_goal_signed_entry_sign. ff_h_gsp_qst_goal_signed_entry_sign + S (gsp_sign_qst_goal_signed_entry) = S ((S (gsp_index_qst_goal_signed)) * sc)) /\\ exists ff_q_gsp_qst_goal_signed_entry_sign. sb = ff_q_gsp_qst_goal_signed_entry_sign * S ((S (gsp_index_qst_goal_signed)) * sc) + (gsp_sign_qst_goal_signed_entry))) /\\ ((exists gsp_lt_gap_qst_goal_signed_entry_positive. gsp_lt_gap_qst_goal_signed_entry_positive + S 0 = gsp_magnitude_qst_goal_signed_entry) /\\ ((exists gsp_le_gap_qst_goal_signed_entry_bounded. gsp_le_gap_qst_goal_signed_entry_bounded + gsp_magnitude_qst_goal_signed_entry = h) /\\ ((gsp_sign_qst_goal_signed_entry = 0 \\/ gsp_sign_qst_goal_signed_entry = 1) /\\ (((gsp_sign_qst_goal_signed_entry = 0 /\\ (exists gsp_mod_left_qst_goal_signed_entry_lower gsp_mod_right_qst_goal_signed_entry_lower. (a * gsp_value_qst_goal_signed_entry) + p * gsp_mod_left_qst_goal_signed_entry_lower = (gsp_magnitude_qst_goal_signed_entry) + p * gsp_mod_right_qst_goal_signed_entry_lower)) \\/ (gsp_sign_qst_goal_signed_entry = 1 /\\ (exists gsp_mod_left_qst_goal_signed_entry_reflected gsp_mod_right_qst_goal_signed_entry_reflected. (a * gsp_value_qst_goal_signed_entry) + p * gsp_mod_left_qst_goal_signed_entry_reflected = ((2 * h) * gsp_magnitude_qst_goal_signed_entry) + p * gsp_mod_right_qst_goal_signed_entry_reflected))))))))))) -> (((exists ff_u_qst_goal_count_sum ff_v_qst_goal_count_sum. ((((exists ff_h_qst_goal_count_sum_start. ff_h_qst_goal_count_sum_start + S (0) = S ((S (0)) * ff_v_qst_goal_count_sum)) /\\ exists ff_q_qst_goal_count_sum_start. ff_u_qst_goal_count_sum = ff_q_qst_goal_count_sum_start * S ((S (0)) * ff_v_qst_goal_count_sum) + (0))) /\\ ((((exists ff_h_qst_goal_count_sum_terminal. ff_h_qst_goal_count_sum_terminal + S (e) = S ((S (h)) * ff_v_qst_goal_count_sum)) /\\ exists ff_q_qst_goal_count_sum_terminal. ff_u_qst_goal_count_sum = ff_q_qst_goal_count_sum_terminal * S ((S (h)) * ff_v_qst_goal_count_sum) + (e))) /\\ forall ff_i_qst_goal_count_sum. (exists ff_lt_qst_goal_count_sum_bound. ff_lt_qst_goal_count_sum_bound + S ff_i_qst_goal_count_sum = h) -> exists ff_a_qst_goal_count_sum ff_r_qst_goal_count_sum ff_s_qst_goal_count_sum. ((((exists ff_h_qst_goal_count_sum_summand. ff_h_qst_goal_count_sum_summand + S (ff_a_qst_goal_count_sum) = S ((S (ff_i_qst_goal_count_sum)) * sc)) /\\ exists ff_q_qst_goal_count_sum_summand. sb = ff_q_qst_goal_count_sum_summand * S ((S (ff_i_qst_goal_count_sum)) * sc) + (ff_a_qst_goal_count_sum))) /\\ ((((exists ff_h_qst_goal_count_sum_partial. ff_h_qst_goal_count_sum_partial + S (ff_r_qst_goal_count_sum) = S ((S (ff_i_qst_goal_count_sum)) * ff_v_qst_goal_count_sum)) /\\ exists ff_q_qst_goal_count_sum_partial. ff_u_qst_goal_count_sum = ff_q_qst_goal_count_sum_partial * S ((S (ff_i_qst_goal_count_sum)) * ff_v_qst_goal_count_sum) + (ff_r_qst_goal_count_sum))) /\\ ((((exists ff_h_qst_goal_count_sum_successor. ff_h_qst_goal_count_sum_successor + S (ff_s_qst_goal_count_sum) = S ((S (S ff_i_qst_goal_count_sum)) * ff_v_qst_goal_count_sum)) /\\ exists ff_q_qst_goal_count_sum_successor. ff_u_qst_goal_count_sum = ff_q_qst_goal_count_sum_successor * S ((S (S ff_i_qst_goal_count_sum)) * ff_v_qst_goal_count_sum) + (ff_s_qst_goal_count_sum))) /\\ ff_s_qst_goal_count_sum = ff_r_qst_goal_count_sum + ff_a_qst_goal_count_sum)))))) /\\ (forall ff_i_qst_goal_count_bits. (exists ff_lt_qst_goal_count_bits_bound. ff_lt_qst_goal_count_bits_bound + S ff_i_qst_goal_count_bits = h) -> exists ff_bit_qst_goal_count_bits. ((((exists ff_h_qst_goal_count_bits_decoded. ff_h_qst_goal_count_bits_decoded + S (ff_bit_qst_goal_count_bits) = S ((S (ff_i_qst_goal_count_bits)) * sc)) /\\ exists ff_q_qst_goal_count_bits_decoded. sb = ff_q_qst_goal_count_bits_decoded * S ((S (ff_i_qst_goal_count_bits)) * sc) + (ff_bit_qst_goal_count_bits))) /\\ (ff_bit_qst_goal_count_bits = 0 \\/ ff_bit_qst_goal_count_bits = 1))))) -> (((h = 2 * e) \\/ (exists qst_count_half_goal. h = 2 * qst_count_half_goal + 1 /\\ e = S qst_count_half_goal)))",
       "statement_sha256": "8681aaac3169a14ae1dae90e15bf11ed5fed927cfd16cee2b4bed91326c796bd",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "The beta-coded Gauss reflection count for multiplication by two has exactly the explicit ceiling-half shape."
     },
     {
@@ -7616,8 +7721,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -7937,7 +8042,7 @@
       ],
       "statement": "forall p h e. p = 2 * h + 1 -> ((~(p = 1) /\\ forall frm_prime_left_qst_prime frm_prime_right_qst_prime. p = frm_prime_left_qst_prime * frm_prime_right_qst_prime -> frm_prime_left_qst_prime = 1 \\/ frm_prime_right_qst_prime = 1)) -> (((h = 2 * e) \\/ (exists qst_count_half_shape. h = 2 * qst_count_half_shape + 1 /\\ e = S qst_count_half_shape))) -> ((((((exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two) -> (exists qst_even_count. e = 2 * qst_even_count)) /\\ ((exists qst_even_count. e = 2 * qst_even_count) -> (exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))) /\\ ((((~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)) -> (exists qst_odd_count. e = 2 * qst_odd_count + 1)) /\\ ((exists qst_odd_count. e = 2 * qst_odd_count + 1) -> (~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two))))))) -> ((((((exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))) /\\ ((((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))) /\\ ((((~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))) /\\ ((((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> (~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))))))",
       "statement_sha256": "65abe8256615b1b0e6d5a71c4074c9c44d8d450957edf30cda4f59b253db2471",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "The exact second supplementary law follows constructively once the existing Gauss reflection count is identified with the explicit doubling-count shape."
     },
     {
@@ -7946,8 +8051,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -8056,7 +8161,7 @@
       ],
       "statement": "forall p h. p = 2 * h + 1 -> ((~(p = 1) /\\ forall frm_prime_left_qst_bounded_prime frm_prime_right_qst_bounded_prime. p = frm_prime_left_qst_bounded_prime * frm_prime_right_qst_bounded_prime -> frm_prime_left_qst_bounded_prime = 1 \\/ frm_prime_right_qst_bounded_prime = 1)) -> exists gap. gap + S 2 = p",
       "statement_sha256": "9a4579fcc57264c4bc27677ef42c2a28e2e983fef86cddd901c2029c185600a6",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "Every prime admitting an odd decomposition is strictly greater than two."
     },
     {
@@ -8065,8 +8170,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -8332,7 +8437,7 @@
       ],
       "statement": "forall p h a. p = 2 * h + 1 -> ((~(p = 1) /\\ forall frm_prime_left_qst_half_prime frm_prime_right_qst_half_prime. p = frm_prime_left_qst_half_prime * frm_prime_right_qst_half_prime -> frm_prime_left_qst_half_prime = 1 \\/ frm_prime_right_qst_half_prime = 1)) -> a = 2 -> ((((((exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))) /\\ ((((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))) /\\ ((((~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))) /\\ ((((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> (~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))))))",
       "statement_sha256": "62eb85561c5000ec0ac4d9dd2a16d743f1358de99cfd9eb05b0cead67a01167d",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "Complete constructive second supplementary law for an explicitly decomposed odd prime, with no unproved count-shape hypothesis."
     },
     {
@@ -8341,8 +8446,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -8540,7 +8645,7 @@
       ],
       "statement": "forall p. ((~(p = 1) /\\ forall frm_prime_left_qst_endpoint_prime frm_prime_right_qst_endpoint_prime. p = frm_prime_left_qst_endpoint_prime * frm_prime_right_qst_endpoint_prime -> frm_prime_left_qst_endpoint_prime = 1 \\/ frm_prime_right_qst_endpoint_prime = 1)) -> (exists qst_odd_modulus. p = 2 * qst_odd_modulus + 1) -> ((((exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))) /\\ ((((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two))))",
       "statement_sha256": "df55b1cd3398dc6bf064dc8957ea318ad311b99ebf1b3ecffb804b463c1df532",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "The second supplementary law: two is a quadratic residue modulo an odd prime exactly in classes one and seven modulo eight."
     },
     {
@@ -8549,8 +8654,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [
@@ -8748,7 +8853,7 @@
       ],
       "statement": "forall p. ((~(p = 1) /\\ forall frm_prime_left_qst_endpoint_prime frm_prime_right_qst_endpoint_prime. p = frm_prime_left_qst_endpoint_prime * frm_prime_right_qst_endpoint_prime -> frm_prime_left_qst_endpoint_prime = 1 \\/ frm_prime_right_qst_endpoint_prime = 1)) -> (exists qst_odd_modulus. p = 2 * qst_odd_modulus + 1) -> ((((~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))) /\\ ((((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> (~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))))",
       "statement_sha256": "dd9b0415da856a4198e7eb027d2c055549bc34588378d301a952748eaeb80877",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "The complementary second supplementary law: two is a nonresidue exactly in classes three and five modulo eight."
     },
     {
@@ -8757,8 +8862,8 @@
       "alpha_admission_version": "v15",
       "alpha_campaign": "supplementary",
       "alpha_checked_use": true,
-      "alpha_edition_identity_sha256": "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7",
-      "alpha_edition_version": "v19",
+      "alpha_edition_identity_sha256": "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b",
+      "alpha_edition_version": "v24",
       "alpha_evidence": "alpha_closed",
       "defined": {
         "defined_script_lines": [],
@@ -8905,16 +9010,20 @@
       ],
       "statement": "forall p. ((~(p = 1) /\\ forall frm_prime_left_qst_endpoint_prime frm_prime_right_qst_endpoint_prime. p = frm_prime_left_qst_endpoint_prime * frm_prime_right_qst_endpoint_prime -> frm_prime_left_qst_endpoint_prime = 1 \\/ frm_prime_right_qst_endpoint_prime = 1)) -> (exists qst_odd_modulus. p = 2 * qst_odd_modulus + 1) -> ((((((exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two) -> (((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7)))) /\\ ((((exists qst_mod_eight_modulus_one. p = 8 * qst_mod_eight_modulus_one + 1) \\/ (exists qst_mod_eight_modulus_seven. p = 8 * qst_mod_eight_modulus_seven + 7))) -> (exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))) /\\ ((((~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)) -> (((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5)))) /\\ ((((exists qst_mod_eight_modulus_three. p = 8 * qst_mod_eight_modulus_three + 3) \\/ (exists qst_mod_eight_modulus_five. p = 8 * qst_mod_eight_modulus_five + 5))) -> (~(exists qst_root_two. exists qst_mod_left_two qst_mod_right_two. qst_root_two * qst_root_two + p * qst_mod_left_two = 2 + p * qst_mod_right_two)))))))",
       "statement_sha256": "146a886f8f3a54d358321b54faf68a591362016e86139bd487a5496c7af74034",
-      "status": "Alpha v19 checked-use · independently kernel and Lean verified; not Stable",
+      "status": "Alpha v24 checked-use · independently kernel and Lean verified; not Stable",
       "summary": "Complete constructive second supplementary law: the quadratic residue status of two is classified exactly by the four odd classes modulo eight."
     }
   ],
+  "parent_alpha_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce",
+  "parent_alpha_edition_checked_use_count": 1776,
+  "parent_alpha_edition_identity_sha256": "ee0f596150d8609ab302303ade44c4413290675398a1d6999a47b3ba046ac38b",
+  "parent_alpha_edition_version": "v20",
   "root_names": [
     "quadratic_supplement_minus_one_complete",
     "quadratic_supplement_two_complete"
   ],
   "schema": "peano-lab-constructive-frontier-family-v1",
-  "scope": "Both complete supplementary-law endpoints and all 28 displayed bounded Euler-criterion, Gauss-lemma, modulo-four, and modulo-eight prerequisites were first enrolled in Alpha v15 and are independently kernel- and Lean-verified Alpha v19 checked-use theorems; none is admitted to Stable.",
+  "scope": "Both complete supplementary-law endpoints and all 28 displayed bounded Euler-criterion, Gauss-lemma, modulo-four, and modulo-eight prerequisites were first enrolled in Alpha v15 and are independently kernel- and Lean-verified Alpha v24 checked-use theorems; none is admitted to Stable.",
   "slug": "supplementary-laws",
   "title": "Quadratic Supplementary Laws"
 }

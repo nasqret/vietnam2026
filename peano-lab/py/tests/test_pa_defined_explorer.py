@@ -21,6 +21,8 @@ sys.path.insert(0, str(REPO / "scripts"))
 
 DEFINED = REPO / "book" / "_static" / "pa-proof-explorer" / "defined"
 EXPLICIT = REPO / "book" / "_static" / "pa-proof-explorer"
+IMMUTABLE_EVIDENCE_CORPUS = EXPLICIT / "api" / "corpus.json"
+CURRENT_EXPLICIT_CORPUS = EXPLICIT / "api" / "current-corpus.json"
 THEOREM_COUNT = 557
 DEFINITION_COUNT = 40
 PD_PATTERN = re.compile(r"^PD[0-9A-Y]{4}$")
@@ -59,7 +61,7 @@ def test_adapter_validation_covers_exact_corpus_and_rejects_script_drift(built) 
     import build_pa_defined_explorer as generator
 
     _files, _manifest, raw = built
-    explicit = _load(EXPLICIT / "api" / "corpus.json")["theorems"]
+    explicit = _load(CURRENT_EXPLICIT_CORPUS)["theorems"]
     normalized = generator.validate_edition(raw, explicit)
     assert len(normalized["theorems"]) == THEOREM_COUNT
     assert len(normalized["definitions"]) == DEFINITION_COUNT
@@ -76,6 +78,25 @@ def test_adapter_validation_covers_exact_corpus_and_rejects_script_drift(built) 
     ] = "0" * 64
     with pytest.raises(generator.DefinedEditionError, match="explicit tactic command"):
         generator.validate_edition(corrupted, explicit)
+
+
+def test_defined_generator_rejects_changed_historical_or_current_corpus(
+    tmp_path, monkeypatch
+) -> None:
+    import build_pa_defined_explorer as generator
+
+    damaged_historical = tmp_path / "historical.json"
+    damaged_historical.write_bytes(b"mutated catalog-bound parent evidence")
+    monkeypatch.setattr(generator, "IMMUTABLE_EVIDENCE_CORPUS", damaged_historical)
+    with pytest.raises(generator.DefinedEditionError, match="immutable Alpha-parent"):
+        generator.build_files()
+
+    monkeypatch.setattr(generator, "IMMUTABLE_EVIDENCE_CORPUS", IMMUTABLE_EVIDENCE_CORPUS)
+    damaged_current = tmp_path / "current.json"
+    damaged_current.write_bytes(b"mutated Alpha-v24 reading corpus")
+    monkeypatch.setattr(generator, "EXPLICIT_CORPUS", damaged_current)
+    with pytest.raises(generator.DefinedEditionError, match="current Alpha-v24 explicit"):
+        generator.build_files()
 
 
 def test_generated_pages_cover_all_theorems_and_definitions(built) -> None:
@@ -99,23 +120,44 @@ def test_generated_pages_cover_all_theorems_and_definitions(built) -> None:
         assert "not a theorem, axiom, predicate constant, or kernel rule" in page
 
 
-def test_defined_edition_preserves_exact_alpha_v16_checked_use_evidence(built) -> None:
+def test_defined_edition_preserves_current_v24_and_historical_v16_evidence(built) -> None:
+    import build_pa_defined_explorer as generator
+
     files, manifest, _raw = built
     corpus = json.loads(files["api/corpus.json"])
     graph = json.loads(files["api/graph.json"])
-    explicit = _load(EXPLICIT / "api" / "corpus.json")
+    explicit = _load(CURRENT_EXPLICIT_CORPUS)
     rows = {row["name"]: row for row in corpus["theorems"]}
     graph_nodes = {
         row["name"]: row for row in graph["nodes"] if row["kind"] == "theorem"
     }
     root = rows["quadratic_reciprocity_combined"]
 
+    for receipt in (corpus, manifest):
+        assert receipt["explicit_corpus_path"] == "api/current-corpus.json"
+        assert receipt["explicit_corpus_sha256"] == (
+            generator.EXPECTED_CURRENT_EXPLICIT_CORPUS_SHA256
+        )
+        assert receipt["immutable_evidence_corpus_path"] == "api/corpus.json"
+        assert receipt["immutable_evidence_corpus_sha256"] == (
+            generator.IMMUTABLE_EVIDENCE_CORPUS_SHA256
+        )
+        assert receipt["immutable_evidence_corpus_bytes"] == 17_229_311
+    assert sha256(IMMUTABLE_EVIDENCE_CORPUS.read_bytes()).hexdigest() == (
+        generator.IMMUTABLE_EVIDENCE_CORPUS_SHA256
+    )
+
     for receipt in (corpus, graph, manifest):
-        assert receipt["alpha_edition_version"] == "v16"
+        assert receipt["alpha_edition_version"] == "v24"
         assert receipt["alpha_edition_identity_sha256"] == (
             explicit["alpha_edition_identity_sha256"]
         )
-        assert receipt["alpha_edition_checked_use_count"] == 885
+        assert receipt["alpha_edition_checked_use_count"] == 2008
+        assert receipt["proof_edition_version"] == "v16"
+        assert receipt["proof_edition_checked_use_count"] == 885
+        assert receipt["proof_edition_identity_sha256"] == (
+            explicit["proof_edition_identity_sha256"]
+        )
         assert receipt["graph_checked_use_count"] == THEOREM_COUNT
         assert receipt["graph_stable_closed_count"] == 241
         assert receipt["graph_alpha_closed_count"] == 316
@@ -129,13 +171,15 @@ def test_defined_edition_preserves_exact_alpha_v16_checked_use_evidence(built) -
     assert graph_nodes[root["name"]]["stable_member"] is False
 
     page = files[f'tag/{root["tag"]}.html'].decode("utf-8")
-    assert "Alpha v16 checked-use theorem" in page
+    assert "Alpha v24 checked-use theorem" in page
+    assert "<dt>Current Alpha edition</dt><dd>v24</dd>" in page
+    assert "<dt>Proof-bearing Alpha edition</dt><dd>v16</dd>" in page
     assert "candidate-factory source; Alpha-only" in page
     assert "<dt>Stable membership</dt><dd>no</dd>" in page
     assert "pending layered closure" not in page
     graph_page = files["graph.html"].decode("utf-8")
     assert 'id="pa-defined-release-evidence"' in graph_page
-    assert "Alpha v16 checked-use theorem; independently closed; not Stable" in graph_page
+    assert "Alpha v24 checked-use theorem; independently closed; not Stable" in graph_page
 
 
 def test_defined_graph_release_overlay_preserves_definition_labels(built) -> None:
@@ -183,7 +227,7 @@ global.MutationObserver = class {
 };
 __SCRIPT__
 if (kind.textContent !==
-    "Alpha v16 checked-use theorem; independently closed; not Stable") {
+    "Alpha v24 checked-use theorem; independently closed; not Stable") {
   throw Error("Alpha-only defined graph evidence missing: " + kind.textContent);
 }
 title.textContent = stableNode.id + " · " + stableNode.name;
@@ -245,6 +289,54 @@ def test_mixed_graph_has_typed_edges_and_theorem_only_paths(built) -> None:
     assert "proof_adjacency" in critical
     assert "notation" not in critical
     assert 'svgElement("polygon"' in script
+
+
+def test_quadratic_definition_graph_exposes_dependency_first_layers(built) -> None:
+    files, _manifest, _raw = built
+    graph = json.loads(files["api/graph.json"])
+    corpus = json.loads(files["api/corpus.json"])
+    definitions = {row["id"]: row for row in corpus["definitions"]}
+    graph_nodes = {
+        row["id"]: row
+        for row in graph["nodes"]
+        if row["kind"] == "definition"
+    }
+
+    assert graph["definition_count"] == 40
+    assert graph["definition_edge_count"] == 58
+    assert graph["definition_layer_count"] == 5
+    assert graph["theorem_definition_edge_count"] == 1667
+    assert graph["notation_edge_count"] == (
+        graph["definition_edge_count"] + graph["theorem_definition_edge_count"]
+    )
+    assert graph["definition_topological_order"] == list(definitions)
+    preceding: set[str] = set()
+    for identifier in graph["definition_topological_order"]:
+        row = definitions[identifier]
+        node = graph_nodes[identifier]
+        assert set(row["dependencies"]) <= preceding
+        assert node["definition_layer"] == max(
+            (
+                graph_nodes[dependency]["definition_layer"] + 1
+                for dependency in row["dependencies"]
+            ),
+            default=0,
+        )
+        assert set(node["transitive_definition_dependencies"]) <= preceding
+        page = files[f"definition/{identifier}.html"].decode("utf-8")
+        assert "Dependency-first definition layer" in page
+        assert "Transitive conservative prerequisites" in page
+        preceding.add(identifier)
+
+
+def test_incompatible_sum_and_product_do_not_link_false_global_definitions(
+    built,
+) -> None:
+    files, _manifest, _raw = built
+
+    for identifier, blueprint in (("PD0014", "Prod"), ("PD0015", "Sum")):
+        page = files[f"definition/{identifier}.html"].decode("utf-8")
+        assert f"view=definition&amp;focus={blueprint}" not in page
 
 
 def test_mixed_graph_ui_defaults_to_selected_definitions_and_focused_arrows(built) -> None:
@@ -337,7 +429,7 @@ def test_compacted_have_or_suffices_lines_link_definition_and_reveal_exact_line(
     corpus = json.loads(files["api/corpus.json"])
     explicit_by_tag = {
         row["tag"]: row
-        for row in _load(EXPLICIT / "api" / "corpus.json")["theorems"]
+        for row in _load(CURRENT_EXPLICIT_CORPUS)["theorems"]
     }
     changed = None
     for theorem in corpus["theorems"]:
@@ -443,10 +535,10 @@ def test_shared_campaign_definition_names_resolve_to_actual_blueprint_entries() 
 def test_campaign_navigation_revision_is_separate_from_pinned_javascript_asset() -> None:
     import build_pa_defined_explorer as generator
 
-    catalog = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v19.json"
+    catalog = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
     asset_revision = generator.PINNED_ASSETS["assets/explorer.js"][:12]
 
     assert generator.CAMPAIGN_HTML_REVISION == sha256(catalog.read_bytes()).hexdigest()[:12]
-    assert generator.CAMPAIGN_HTML_REVISION == "f1c3d3fba013"
+    assert generator.CAMPAIGN_HTML_REVISION == "94ac4d193cbf"
     assert asset_revision == "1b95ce228950"
     assert generator.CAMPAIGN_HTML_REVISION != asset_revision

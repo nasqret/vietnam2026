@@ -1,0 +1,1069 @@
+{
+  "alpha_checked_use_node_count": 21,
+  "alpha_edition_version": "v24",
+  "alpha_first_enrolled_version": "v22",
+  "definition_topological_order": [
+    "PD0002",
+    "PD0013",
+    "PD0014",
+    "PD0019",
+    "PD0020",
+    "ND0028",
+    "ND0022",
+    "ND0029",
+    "PD0001",
+    "ND0030"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "BL0001",
+      "target": "BL0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0002",
+      "target": "BL0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0003",
+      "target": "BL0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0008",
+      "target": "BL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0009",
+      "target": "BL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0005",
+      "target": "BL000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL000A",
+      "target": "BL000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL000B",
+      "target": "BL000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0005",
+      "target": "BL000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0007",
+      "target": "BL000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0009",
+      "target": "BL000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL000E",
+      "target": "BL0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0005",
+      "target": "BL0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL000A",
+      "target": "BL0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL000D",
+      "target": "BL0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0010",
+      "target": "BL0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL000F",
+      "target": "BL0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0012",
+      "target": "BL0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL000B",
+      "target": "BL0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0011",
+      "target": "BL0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0013",
+      "target": "BL0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0008",
+      "target": "BL0015"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL0005",
+      "target": "BL0015"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BL000A",
+      "target": "BL0015"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL0001",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL0002",
+      "statement_occurrences": 1,
+      "target": "ND0022"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL0003",
+      "statement_occurrences": 2,
+      "target": "ND0022"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL0004",
+      "statement_occurrences": 2,
+      "target": "ND0022"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL0005",
+      "statement_occurrences": 1,
+      "target": "ND0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL0006",
+      "statement_occurrences": 2,
+      "target": "ND0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL0007",
+      "statement_occurrences": 1,
+      "target": "ND0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL0008",
+      "statement_occurrences": 1,
+      "target": "ND0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL0009",
+      "statement_occurrences": 2,
+      "target": "ND0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL000A",
+      "statement_occurrences": 2,
+      "target": "ND0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL000A",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL000B",
+      "statement_occurrences": 2,
+      "target": "ND0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL000B",
+      "statement_occurrences": 2,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL000C",
+      "statement_occurrences": 2,
+      "target": "ND0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL000C",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL000D",
+      "statement_occurrences": 1,
+      "target": "ND0030"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL000E",
+      "statement_occurrences": 1,
+      "target": "ND0030"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL000F",
+      "statement_occurrences": 1,
+      "target": "ND0030"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL0010",
+      "statement_occurrences": 2,
+      "target": "ND0030"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL0011",
+      "statement_occurrences": 1,
+      "target": "ND0030"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL0012",
+      "statement_occurrences": 1,
+      "target": "ND0030"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL0013",
+      "statement_occurrences": 2,
+      "target": "ND0030"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BL0014",
+      "statement_occurrences": 2,
+      "target": "ND0030"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL0015",
+      "statement_occurrences": 1,
+      "target": "ND0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BL0015",
+      "statement_occurrences": 1,
+      "target": "ND0030"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0019"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0028",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0029",
+      "target": "ND0022"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0030",
+      "target": "ND0028"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0030",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0030",
+      "target": "PD0002"
+    }
+  ],
+  "family_slug": "binary-length",
+  "independent_lean_bundle_verified": true,
+  "milestone_caveat": "G101 and G102 were OPEN when these BitLen foundations were first admitted in Alpha v22. Both are now CLOSED in Alpha v23: complete canonical exponent digits and both exact logarithmic execution bounds are proved.",
+  "milestone_status": "alpha_closed",
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0001.html?v=94ac4d193cbf",
+      "id": "BL0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_length_digit_bounded",
+      "proof_bundle_node_id": 179,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every witnessed binary digit is strictly below two."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0002.html?v=94ac4d193cbf",
+      "id": "BL0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_length_digit_split_exists",
+      "proof_bundle_node_id": 180,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural number has an exact binary quotient and zero-or-one digit."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0003.html?v=94ac4d193cbf",
+      "id": "BL0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "binary_length_digit_split_functional",
+      "proof_bundle_node_id": 181,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Binary division by two has a unique quotient and unique digit."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0004.html?v=94ac4d193cbf",
+      "id": "BL0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_length_digit_split_exists_unique",
+      "proof_bundle_node_id": 182,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural has exactly one fully witnessed binary quotient/digit pair."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0005.html?v=94ac4d193cbf",
+      "id": "BL0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_power_two_exists",
+      "proof_bundle_node_id": 183,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural exponent has a witnessed beta-coded power of two."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0006.html?v=94ac4d193cbf",
+      "id": "BL0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_power_two_functional",
+      "proof_bundle_node_id": 184,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The relational power of two is functional at every exponent."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0007.html?v=94ac4d193cbf",
+      "id": "BL0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_power_two_zero_value",
+      "proof_bundle_node_id": 185,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The beta-coded zeroth power of two is exactly one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0008.html?v=94ac4d193cbf",
+      "id": "BL0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_power_two_nonzero",
+      "proof_bundle_node_id": 186,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every beta-coded power of two is constructively nonzero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0009.html?v=94ac4d193cbf",
+      "id": "BL0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_power_two_successor_double",
+      "proof_bundle_node_id": 187,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A successor power of two is exactly the sum of two predecessor powers."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL000A.html?v=94ac4d193cbf",
+      "id": "BL000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "binary_power_two_strict_growth",
+      "proof_bundle_node_id": 188,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Successive beta-coded powers of two grow strictly."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL000B.html?v=94ac4d193cbf",
+      "id": "BL000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_power_two_exponent_monotone",
+      "proof_bundle_node_id": 189,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The relational powers of two preserve non-strict exponent ordering."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL000C.html?v=94ac4d193cbf",
+      "id": "BL000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_power_two_exponent_strict",
+      "proof_bundle_node_id": 190,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Strictly ordered exponents have strictly ordered powers of two."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL000D.html?v=94ac4d193cbf",
+      "id": "BL000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_length_zero",
+      "proof_bundle_node_id": 191,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The blueprint convention gives zero exactly one displayed binary digit."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL000E.html?v=94ac4d193cbf",
+      "id": "BL000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "binary_length_one",
+      "proof_bundle_node_id": 192,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The positive integer one has exactly one binary digit."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL000F.html?v=94ac4d193cbf",
+      "id": "BL000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_length_zero_input_value",
+      "proof_bundle_node_id": 193,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Any binary-length witness for zero is necessarily one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0010.html?v=94ac4d193cbf",
+      "id": "BL0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_length_successor_step",
+      "proof_bundle_node_id": 194,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A binary-length witness for n constructively produces one for S n."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0011.html?v=94ac4d193cbf",
+      "id": "BL0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "binary_length_exists",
+      "proof_bundle_node_id": 195,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural number has a constructively witnessed canonical bit length."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0012.html?v=94ac4d193cbf",
+      "id": "BL0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "binary_length_zero_input_general",
+      "proof_bundle_node_id": 196,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Any canonical bit-length witness at an input equal to zero is one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0013.html?v=94ac4d193cbf",
+      "id": "BL0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_length_functional",
+      "proof_bundle_node_id": 197,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Two complete constructive binary-length witnesses for one input agree."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0014.html?v=94ac4d193cbf",
+      "id": "BL0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "binary_length_exists_unique",
+      "proof_bundle_node_id": 198,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural has exactly one canonical blueprint-compatible bit length."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v22",
+      "href": "tag/BL0015.html?v=94ac4d193cbf",
+      "id": "BL0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_length_power_exact",
+      "proof_bundle_node_id": 199,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The exact beta-coded power 2^e has canonical binary length e+1."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=94ac4d193cbf",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/PD0013.html?v=94ac4d193cbf",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0014.html?v=94ac4d193cbf",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0019.html?v=94ac4d193cbf",
+      "id": "PD0019",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Repeat",
+      "signature": "Repeat(b,c,a,l)",
+      "summary": "The decoded prefix repeats a for l positions."
+    },
+    {
+      "global_definition": "Pow",
+      "href": "definition/PD0020.html?v=94ac4d193cbf",
+      "id": "PD0020",
+      "kind": "definition",
+      "layer": 2,
+      "name": "Pow",
+      "signature": "Pow(a,e,z)",
+      "summary": "z is the relational e-th power of a."
+    },
+    {
+      "global_definition": "PowTwo",
+      "href": "definition/ND0028.html?v=94ac4d193cbf",
+      "id": "ND0028",
+      "kind": "definition",
+      "layer": 3,
+      "name": "PowTwo",
+      "signature": "PowTwo(e,p)",
+      "summary": "The exact existing constructive exponentiation relation Pow(2,e,p)."
+    },
+    {
+      "global_definition": "BinaryExponentSplit",
+      "href": "definition/ND0022.html?v=94ac4d193cbf",
+      "id": "ND0022",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BinaryExponentSplit",
+      "signature": "BinaryExponentSplit(e,h,b)",
+      "summary": "The exact binary decomposition e=2*h+b with an explicit b=0 or b=1 witness."
+    },
+    {
+      "global_definition": "BinaryDigit",
+      "href": "definition/ND0029.html?v=94ac4d193cbf",
+      "id": "ND0029",
+      "kind": "definition",
+      "layer": 1,
+      "name": "BinaryDigit",
+      "signature": "BinaryDigit(n,h,b)",
+      "summary": "An exact binary digit split n=2h+b, with b explicitly zero or one."
+    },
+    {
+      "global_definition": "Le",
+      "href": "definition/PD0001.html?v=94ac4d193cbf",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": "BitLen",
+      "href": "definition/ND0030.html?v=94ac4d193cbf",
+      "id": "ND0030",
+      "kind": "definition",
+      "layer": 4,
+      "name": "BitLen",
+      "signature": "BitLen(n,ell)",
+      "summary": "The unique binary length, with BitLen(0,1) and positive bounds 2^(ell-1)≤n<2^ell."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "BL0001": {
+      "critical_root_path": [
+        "BL0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BL0003"
+      ]
+    },
+    "BL0002": {
+      "critical_root_path": [
+        "BL0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BL0004"
+      ]
+    },
+    "BL0003": {
+      "critical_root_path": [
+        "BL0001",
+        "BL0003"
+      ],
+      "dependencies": [
+        "BL0001"
+      ],
+      "dependents": [
+        "BL0004"
+      ]
+    },
+    "BL0004": {
+      "critical_root_path": [
+        "BL0001",
+        "BL0003",
+        "BL0004"
+      ],
+      "dependencies": [
+        "BL0002",
+        "BL0003"
+      ],
+      "dependents": []
+    },
+    "BL0005": {
+      "critical_root_path": [
+        "BL0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BL000C",
+        "BL000E",
+        "BL0010",
+        "BL0015"
+      ]
+    },
+    "BL0006": {
+      "critical_root_path": [
+        "BL0006"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "BL0007": {
+      "critical_root_path": [
+        "BL0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BL000E"
+      ]
+    },
+    "BL0008": {
+      "critical_root_path": [
+        "BL0008"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BL000A",
+        "BL0015"
+      ]
+    },
+    "BL0009": {
+      "critical_root_path": [
+        "BL0009"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BL000A",
+        "BL000E"
+      ]
+    },
+    "BL000A": {
+      "critical_root_path": [
+        "BL0008",
+        "BL000A"
+      ],
+      "dependencies": [
+        "BL0008",
+        "BL0009"
+      ],
+      "dependents": [
+        "BL000C",
+        "BL0010",
+        "BL0015"
+      ]
+    },
+    "BL000B": {
+      "critical_root_path": [
+        "BL000B"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BL000C",
+        "BL0013"
+      ]
+    },
+    "BL000C": {
+      "critical_root_path": [
+        "BL0008",
+        "BL000A",
+        "BL000C"
+      ],
+      "dependencies": [
+        "BL0005",
+        "BL000A",
+        "BL000B"
+      ],
+      "dependents": []
+    },
+    "BL000D": {
+      "critical_root_path": [
+        "BL000D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BL0011"
+      ]
+    },
+    "BL000E": {
+      "critical_root_path": [
+        "BL0005",
+        "BL000E"
+      ],
+      "dependencies": [
+        "BL0005",
+        "BL0007",
+        "BL0009"
+      ],
+      "dependents": [
+        "BL0010"
+      ]
+    },
+    "BL000F": {
+      "critical_root_path": [
+        "BL000F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BL0012"
+      ]
+    },
+    "BL0010": {
+      "critical_root_path": [
+        "BL0005",
+        "BL000E",
+        "BL0010"
+      ],
+      "dependencies": [
+        "BL000E",
+        "BL0005",
+        "BL000A"
+      ],
+      "dependents": [
+        "BL0011"
+      ]
+    },
+    "BL0011": {
+      "critical_root_path": [
+        "BL0005",
+        "BL000E",
+        "BL0010",
+        "BL0011"
+      ],
+      "dependencies": [
+        "BL000D",
+        "BL0010"
+      ],
+      "dependents": [
+        "BL0014"
+      ]
+    },
+    "BL0012": {
+      "critical_root_path": [
+        "BL000F",
+        "BL0012"
+      ],
+      "dependencies": [
+        "BL000F"
+      ],
+      "dependents": [
+        "BL0013"
+      ]
+    },
+    "BL0013": {
+      "critical_root_path": [
+        "BL000F",
+        "BL0012",
+        "BL0013"
+      ],
+      "dependencies": [
+        "BL0012",
+        "BL000B"
+      ],
+      "dependents": [
+        "BL0014"
+      ]
+    },
+    "BL0014": {
+      "critical_root_path": [
+        "BL0005",
+        "BL000E",
+        "BL0010",
+        "BL0011",
+        "BL0014"
+      ],
+      "dependencies": [
+        "BL0011",
+        "BL0013"
+      ],
+      "dependents": []
+    },
+    "BL0015": {
+      "critical_root_path": [
+        "BL0008",
+        "BL000A",
+        "BL0015"
+      ],
+      "dependencies": [
+        "BL0008",
+        "BL0005",
+        "BL000A"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "BL0011",
+    "BL0013",
+    "BL0015",
+    "BL0014"
+  ],
+  "schema": "peano-lab-constructive-transport-layer-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

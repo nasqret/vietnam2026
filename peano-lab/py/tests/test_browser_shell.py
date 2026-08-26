@@ -39,6 +39,11 @@ PROOF_BUNDLE_FILENAMES = (
     "two-square-proof-bundle-v1.json",
     "alpha-v19-residual-proof-bundle-v1.json",
     "alpha-v19-campaign-frontier-proof-bundle-v1.json",
+    "alpha-v20-next-layer-proof-bundle-v1.json",
+    "alpha-v21-advanced-layer-proof-bundle-v1.json",
+    "alpha-v22-transport-layer-proof-bundle-v1.json",
+    "alpha-v23-milestone-closure-proof-bundle-v1.json",
+    "alpha-v24-research-layer-proof-bundle-v1.json",
 )
 PROOF_BUNDLE_SOURCES = {
     f"proof-artifacts/{filename}": (
@@ -114,6 +119,9 @@ def test_worker_mounts_the_complete_python_surface() -> None:
     for relative_path in PROOF_BUNDLE_SOURCES:
         assert f'"{relative_path}"' in WORKER
     assert "const artifactsPromise = fetchProofArtifacts()" in WORKER
+    assert "return { relativePath, ok: true, response };" in WORKER
+    assert "new Uint8Array(await response.arrayBuffer())" in WORKER
+    assert "entry.response = null;" in WORKER
 
 
 def test_worker_source_inventory_is_reproducible() -> None:
@@ -151,14 +159,26 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
 
 def test_shell_connects_checked_alpha_research_to_multiscale_proof_atlas() -> None:
     assert 'aria-label="Course and research navigation"' in INDEX
-    assert '<a href="/proofs/?v=f1c3d3fba013">Proof library</a>' in INDEX
-    assert '<a href="/proofs/grand-campaign/?v=f1c3d3fba013">Research atlas</a>' in INDEX
+    assert '<a href="/proofs/?v=94ac4d193cbf">Proof library</a>' in INDEX
+    assert '<a href="/proofs/grand-campaign/?v=94ac4d193cbf">Research atlas</a>' in INDEX
+    assert "Alpha: 2,008 proofs" in INDEX
     assert '<span class="lbl">research:</span>' in INDEX
     for command in (
         "pa lib alpha",
+        "pa lib alpha beta_signed_matrix_minor_exists",
+        "pa lib alpha beta_horner_derivative_exists_unique",
+        "pa lib alpha crt_pairwise_coprime_prefix_canonical_exists_unique",
         "pa lib alpha infinitely_many_primes_one_mod_four",
+        "pa lib alpha infinitely_many_primes_three_mod_four",
+        "pa lib alpha euclidean_gcd_execution_logarithmic_bound",
+        "pa lib alpha binary_modular_execution_logarithmic_bound",
         "pa lib alpha linear_congruence_solvable_iff_gcd_divides",
         "pa lib alpha prime_is_two_squares_iff_two_or_one_mod_four",
+        "pa lib alpha beta_horner_eval_exists",
+        "pa lib alpha beta_dot_product_exists_unique",
+        "pa lib alpha central_binom_prime_divisor_multiplicity_one_exists",
+        "pa lib alpha iterated_bertrand_prime_chain_exists",
+        "pa lib alpha continued_fraction_positive_exists",
     ):
         assert f'data-cmd="{command}"' in INDEX
 

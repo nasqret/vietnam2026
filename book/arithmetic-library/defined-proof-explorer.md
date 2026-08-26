@@ -10,13 +10,15 @@ the explicit theorem statements, tactic scripts, proof terms, or kernel.
 This is not a second release edition and not the whole Alpha library. It is the
 definition-aware view of the same 557-node QR slice: 241 Stable prerequisites
 and 316 Alpha-only specifications. All 557 QR nodes now carry independently
-closed current Alpha-v19 checked-use evidence; the 316 Alpha-only QR results
+closed current Alpha-v20 checked-use evidence; the 316 Alpha-only QR results
 first received that authority in historical v16. Historical v17 separately
 closed both supplementary laws. Historical v18 additionally closed the Lucas,
-Kummer, Bertrand, four-square, and two-square flagship proof families; current
-v19 closes all remaining historical obligations and adds four new constructive
-campaign tranches. The complete Stable catalog still has 432 rows, and every
-one of the complete current Alpha-v19 catalog's 1,737 rows has checked-use
+Kummer, Bertrand, four-square, and two-square flagship proof families;
+historical v19 closes all remaining obligations and adds four constructive
+campaign tranches; current v20 adds four further independently checked
+polynomial, finite matrix-component, Bertrand-prime, and continued-fraction
+families. The complete Stable catalog still has 432 rows, and every one of the
+complete current Alpha-v20 catalog's 1,776 rows has checked-use
 authority.
 {doc}`K3B <cell-history-and-lookup>` and {doc}`K3C
 <list-validity-and-membership>` remain separate focused Alpha lenses. See

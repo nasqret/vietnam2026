@@ -1,6 +1,7 @@
 # Deploying
 
-Five static targets on the faculty server (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
+Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
+(`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
 **no persistent daemons** — which is why the lab is fully client-side):
 
 | URL | Server path | Contents |
@@ -9,7 +10,8 @@ Five static targets on the faculty server (`bnaskrecki@lts-faculty.wmi.amu.edu.p
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | eight proof families, the grand campaign atlas, and downloadable QR proof artifacts |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | all 24 checked proof families, the grand campaign atlas, proof artifacts, and public Lean selectors |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
 
@@ -28,41 +30,91 @@ targets; `make deploy` does not publish either Peano channel.
 make deploy-proofs
 ```
 
-This rebuilds both exact and definition-aware proof editions, stages the
-quadratic-reciprocity, Bertrand, supplementary-law, Kummer, two-square,
-four-square, Lucas, and Pythagorean/Fermat-four families under `_deploy/proofs`,
-and publishes only the dedicated `~/public_html/proofs/` directory. It also
-publishes the 120-milestone constructive grand campaign and the complete
-independently checked 557-node quadratic-reciprocity proof artifact. Each
-family retains the unchanged fully expanded PA proof and its honest current
-release-evidence boundary.
+This rebuilds both exact and definition-aware proof editions, stages all 24
+quadratic-reciprocity, Bertrand, constructive-frontier, next-layer,
+advanced-layer, transport-layer, milestone-closure, and research-layer families under
+`_deploy/proofs`, and installs their shared public **Build Lean proof** controls.
+It separately publishes the narrow two-file PHP gateway under
+`~/public_html/api/lean-strands/`; neither publication target can be widened by
+overriding its Make variable. The proof site also publishes the grand campaign
+atlas and exact checked proof artifacts through current Alpha v24. Each family
+retains its unchanged proof evidence, Stable/Alpha distinction, and original
+explorer assets.
 
 ## Interactive Lean proof building
 
-The theorem-graph **Build Lean proof** action requires the bounded Python/Lean
-proof service; ordinary Apache-served static pages cannot execute Lean or run
-background build jobs. Start the complete local interactive workflow with:
+The theorem-graph **Build Lean proof** action needs the bounded Python/Lean
+proof service. Faculty Apache cannot run persistent daemons, but its existing
+PHP support can forward the exact same-origin API through a faculty-loopback
+SSH reverse tunnel. Start the complete public workflow in two steps:
+
+```bash
+# Publish all explorer controls and their isolated same-origin PHP gateway.
+make deploy-proofs
+
+# Keep this command running on the checked local repository.
+make lean-public
+
+# From another terminal, independently exercise the real deployed workflow.
+make lean-public-check
+```
+
+For a managed background connection, use `make deploy-lean-public`, followed by
+`make lean-public-start`. Inspect its authenticated public/local configuration
+with `make lean-public-status`, and disconnect only its owned worker and tunnel
+with `make lean-public-stop`.
+
+The faculty web host and faculty SSH login host are separate machines, but they
+share the account owner's private home directory. The foreground
+`make lean-public` command starts or safely reuses the ordinary checked Lean
+service on `127.0.0.1:8787`. Its attached SSH session opens only this exact
+remote forward and runs a small foreground mailbox broker:
+
+```bash
+ssh -T \
+  -o BatchMode=yes \
+  -o ExitOnForwardFailure=yes \
+  -o ServerAliveInterval=30 \
+  -o ServerAliveCountMax=3 \
+  -R 127.0.0.1:18787:127.0.0.1:8787 \
+  lts-faculty.wmi.amu.edu.pl \
+  'python3 -u ~/.hydra-lean-mailbox/broker.py \
+    --directory ~/.hydra-lean-mailbox --upstream-port 18787'
+```
+
+The faculty-side port is loopback-only: it is unreachable from the public
+Internet. PHP places bounded requests in `~/.hydra-lean-mailbox`, outside
+`public_html`, with owner-only `0700` directory and `0600` file permissions.
+The foreground broker atomically claims each request, sends it through the
+loopback tunnel, and publishes one size-bounded, SHA-256-authenticated
+response. No remote daemon remains when the SSH session ends.
+
+The gateway accepts only its exact faculty hostname, same-origin JSON job
+mutations, and bounded opaque job routes. It cannot browse the repository,
+select an arbitrary upstream host, forward credentials, or weaken the existing
+one-worker, memory, time, request-size, source-size, and artifact-retention
+limits. The private Lean companion and compiler remain on the operator's
+machine. Stop the foreground command with Ctrl-C to close both the broker and
+public tunnel; an already-running independent local service is not terminated.
+
+Visitors can open any checked Stable or Alpha theorem, build its complete
+dependency-ordered proof, follow actual progress, download verified `.lean` or
+ZIP output, and open a self-contained Lean Live proof when its exact
+import-free source was independently compiled. Definitions and unchecked
+theorems remain ineligible. If the tunnel is not running, the PHP gateway
+returns an honest HTTP 503 instead of claiming a proof was verified.
+
+The existing local-only experience remains available without publication:
 
 ```bash
 make lean-browser
+make lean-browser-check
 ```
 
-The current faculty host does not allow persistent daemons, so `make
-deploy-proofs` publishes static proof explorers only. A public interactive
-installation requires a host with the checked repository, its existing
-independently built `peano-lab-lean` sibling, a pinned installed Lean toolchain,
-and a persistent service or reverse proxy. Network binding is deliberately
-explicit:
-
-```bash
-python3 scripts/serve_lean_strands.py \
-  --host 0.0.0.0 --port 8787 --public-host
-```
-
-Place a TLS-terminating reverse proxy in front of that service and retain its
-single-worker, time, memory, request-size, and artifact-retention limits. The
-repository's owner has authorized the hosted proof-export capability; running
-the command or publishing a service remains an explicit deployment operation.
+The published browser deliberately sends proof jobs only to its own faculty
+origin. The existing PHP gateway and private SSH tunnel need no additional
+host, and no theorem payload or generated proof is sent to a third-party
+service.
 
 ## Step by step
 

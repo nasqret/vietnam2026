@@ -117,10 +117,32 @@ function response(payload, status = 200) {
 
 function browser(options = {}) {
   const panel = new Element("aside");
-  panel.className = options.defined ? "pd-graph-details" : "pa-graph-details";
-  const title = panel.appendChild(new Element("h2"));
-  title.setAttribute("data-graph-title", "");
-  title.textContent = options.title || "PA000F · add_comm";
+  const individual = options.individual === true;
+  panel.className = individual ? "pd-proof-sidebar pd-trust-panel" :
+    options.defined ? "pd-graph-details" : "pa-graph-details";
+  let title = null;
+  if (!individual) {
+    title = panel.appendChild(new Element("h2"));
+    title.setAttribute("data-graph-title", "");
+    title.textContent = options.title || "PA000F · add_comm";
+  } else {
+    const entries = options.metadata || {
+      Authority: "Alpha v20 checked use",
+      "Stable membership": "none",
+    };
+    const description = panel.appendChild(new Element("dl"));
+    Object.entries(entries).forEach(([name, value]) => {
+      const term = description.appendChild(new Element("dt"));
+      term.textContent = name;
+      const detail = description.appendChild(new Element("dd"));
+      detail.textContent = value;
+    });
+    if (options.eligible !== undefined) {
+      panel.setAttribute("data-lean-eligible", String(options.eligible));
+    }
+  }
+  const heading = new Element("h1");
+  heading.textContent = options.theorem || "continued_fraction_empty_trace";
 
   const timers = new Map();
   const observers = [];
@@ -133,7 +155,7 @@ function browser(options = {}) {
     createElement: (tag) => new Element(tag),
     querySelector(selector) {
       if (selector === "meta[name='peano-lean-strand-api']") return null;
-      if (selector === "header h1") return null;
+      if (selector === "header h1") return individual ? heading : null;
       return this.body.querySelector(selector);
     },
     querySelectorAll(selector) {
@@ -256,6 +278,30 @@ function snapshot(theorem, edition, id, status, extra = {}) {
   }, extra);
 }
 
+function standaloneReceipt(encoding = "code", overrides = {}) {
+  return Object.assign({
+    lean_verified: true,
+    standalone_lean: true,
+    companion_required: false,
+    live_compatible: true,
+    live_status: "ready",
+    live_encoding: encoding,
+    manifest: { fallback_node_count: 0 },
+    lean_live: {
+      status: "ready",
+      compatible: true,
+      share_encoding: encoding,
+      source_sha256: "a".repeat(64),
+      source_bytes: 80,
+      local_source_verified: true,
+      self_contained: true,
+      core_imports: [],
+      external_import_count: 0,
+      remote_compilation: "not_run",
+    },
+  }, overrides);
+}
+
 async function stableProofBuildProgressDownloadsAndLive() {
   const env = browser();
   const card = env.panel.querySelector(".peano-lean-selector");
@@ -264,6 +310,7 @@ async function stableProofBuildProgressDownloadsAndLive() {
   assert.match(card.textContent, /Stable/);
   assert.match(card.querySelector(".pls-build").textContent, /^Build Lean proof$/);
   assert.match(card.querySelector(".pls-status").textContent, /one bounded proof worker only when clicked/);
+  assert.match(card.querySelector(".pls-assurance").textContent, /verify its complete proof locally/);
   assert.strictEqual(env.observers[0].target, env.title, "progress mutations never retrigger selection observation");
   assert.strictEqual(env.calls.length, 0, "loading a graph must not start any proof job");
 
@@ -285,22 +332,21 @@ async function stableProofBuildProgressDownloadsAndLive() {
   assert.match(card.querySelector(".pls-counter").textContent, /2 \/ 3.*67%/);
   assert.strictEqual(card.querySelector(".pls-progress").value, 67);
 
-  env.responses.push(response(snapshot("add_comm", "stable", "job-one", "completed", {
-    lean_verified: true,
-    live_status: "ready",
+  env.responses.push(response(snapshot("add_comm", "stable", "job-one", "completed", standaloneReceipt("code", {
     progress: { current: 3, total: 3, percent: 100 },
     downloads: {
       lean: "/api/lean-strands/jobs/job-one/download?format=lean",
       zip: "/api/lean-strands/jobs/job-one/download?format=zip",
     },
-    live_compatible: true,
     live_url: "https://live.lean-lang.org/#code=theorem%20ok",
-  })));
+  }))));
   await env.runTimer(750);
   assert.strictEqual(card.querySelector(".pls-progress").value, 100);
   assert.strictEqual(card.querySelector(".pls-link").hidden, false);
   assert.strictEqual(card.querySelector(".pls-live").hidden, false);
-  assert.match(card.querySelector(".pls-status").textContent, /Independently Lean-verified/);
+  assert.match(card.querySelector(".pls-status").textContent, /exact self-contained proof was independently compiled locally/);
+  assert.match(card.querySelector(".pls-live").textContent, /Open verified self-contained proof in Lean Live/);
+  assert.match(card.querySelector(".pls-assurance").textContent, /No imports · self-contained · locally compiled · no Mathlib\/external libraries/);
   assert.match(card.textContent, /Verified Lean package/);
   assert.strictEqual(card.querySelector(".pls-live").target, "_blank");
   assert.strictEqual(card.querySelector(".pls-build").disabled, false);
@@ -351,6 +397,71 @@ async function alphaAndUncheckedDefinitionsAreTruthful() {
   assert.strictEqual(denied.querySelector(".pls-build").disabled, true,
     "missing Alpha checked-use evidence fails closed");
 }
+
+async function individualCampaignPagesRequireExactCheckedAlphaAuthority() {
+  for (const version of ["20", "21"]) {
+    const env = browser({
+      individual: true,
+      theorem: "continued_fraction_empty_trace",
+      metadata: {
+        Authority: `Alpha v${version} checked use`,
+        "Stable membership": "none",
+      },
+    });
+    const card = env.panel.querySelector(".peano-lean-selector");
+    assert.ok(card, "individual checked campaign theorem receives controls");
+    assert.match(card.textContent, /continued_fraction_empty_trace/);
+    assert.match(card.textContent, /Alpha/);
+    assert.strictEqual(card.querySelector(".pls-build").disabled, false);
+    assert.strictEqual(env.calls.length, 0, "theorem-page enhancement never starts a proof automatically");
+    env.responses.push(response(snapshot(
+      "continued_fraction_empty_trace", "alpha", "individual-" + version, "queued",
+    ), 202));
+    card.querySelector(".pls-build").click();
+    await env.settle();
+    assert.deepStrictEqual(JSON.parse(env.calls[0].request.body), {
+      theorem: "continued_fraction_empty_trace", edition: "alpha",
+    });
+  }
+
+  for (const authority of [
+    "Alpha v20 unchecked use",
+    "Alpha v20 checked-use",
+    "alpha v20 checked use",
+    "Alpha v20 checked use; unverified",
+    "Alpha v20 checked use and Stable",
+    "Alpha v checked use",
+    "checked use",
+    "",
+  ]) {
+    const env = browser({
+      individual: true,
+      metadata: { Authority: authority, "Stable membership": "none" },
+    });
+    const card = env.panel.querySelector(".peano-lean-selector");
+    assert.ok(card, "unverified theorem still explains its disabled controls");
+    assert.strictEqual(card.querySelector(".pls-build").disabled, true, authority);
+    card.querySelector(".pls-build").click();
+    assert.strictEqual(env.calls.length, 0, "unverified metadata cannot start a job");
+  }
+
+  const explicitlyDenied = browser({ individual: true, eligible: false });
+  assert.strictEqual(
+    explicitlyDenied.panel.querySelector(".pls-build").disabled,
+    true,
+    "an explicit eligibility denial overrides even exact checked Alpha authority",
+  );
+
+  const stable = browser({
+    individual: true,
+    theorem: "add_comm",
+    metadata: { Authority: "unreviewed", "Stable membership": "yes" },
+  });
+  const stableCard = stable.panel.querySelector(".peano-lean-selector");
+  assert.match(stableCard.textContent, /Stable/);
+  assert.strictEqual(stableCard.querySelector(".pls-build").disabled, false);
+}
+
 
 async function cancellationAndTheoremSwitchStopTheExactJob() {
   const env = browser();
@@ -407,6 +518,11 @@ async function externalUrlsAndOversizedLiveLinksAreNeverTrusted() {
   const env = browser();
   const api = env.sandbox.PeanoLeanSelector;
   assert.ok(api.safeLiveUrl("https://live.lean-lang.org/#code=theorem%20x"));
+  assert.ok(api.safeLiveUrl("https://live.lean-lang.org/#codez=BYUwNmD2Q"));
+  assert.ok(api.safeLiveUrl("https://live.lean-lang.org/#codez=HY1%2FAjAzEA"));
+  assert.ok(api.safeLiveUrl("https://live.lean-lang.org/#codez=I41%2BgjAbEA"));
+  assert.ok(api.safeLiveUrl("https://live.lean-lang.org/#codez=" + "A".repeat(33 * 1024)));
+  assert.ok(api.safeLiveUrl("https://live.lean-lang.org/#codez=" + "A".repeat(200 * 1024)));
   for (const candidate of [
     null,
     "http://live.lean-lang.org/#code=x",
@@ -415,10 +531,29 @@ async function externalUrlsAndOversizedLiveLinksAreNeverTrusted() {
     "https://live.lean-lang.org/?x=1#code=x",
     "https://user@live.lean-lang.org/#code=x",
     "https://live.lean-lang.org/#url=https%3A%2F%2Fexample.invalid",
-    "https://live.lean-lang.org/#code=" + "x".repeat(9000),
+    "https://live.lean-lang.org/#codez=",
+    "https://live.lean-lang.org/#codez=invalid%20space",
+    "https://live.lean-lang.org/#codez=HY1-AjAzEA",
+    "https://live.lean-lang.org/#codez=HY1/AjAzEA",
+    "https://live.lean-lang.org/#codez=HY1%2fAjAzEA",
+    "https://live.lean-lang.org/#codez=HY1%252FAjAzEA",
+    "https://live.lean-lang.org/#codez=I41+gjAbEA",
+    "https://live.lean-lang.org/#codez=I41%2bgjAbEA",
+    "https://live.lean-lang.org/#codez=invalid$dollar",
+    "https://live.lean-lang.org/#codez=invalid_padding",
+    "https://live.lean-lang.org/#codez=invalid/slash",
+    "https://live.lean-lang.org/#codez=invalid=padding",
   ]) {
     assert.strictEqual(api.safeLiveUrl(candidate), null, String(candidate));
   }
+  assert.strictEqual(
+    api.safeLiveUrl("https://live.lean-lang.org/#code=" + "x".repeat(1024 * 1024)),
+    null,
+  );
+  assert.strictEqual(
+    api.safeLiveUrl("https://live.lean-lang.org/#codez=" + "x".repeat(1024 * 1024)),
+    null,
+  );
 
   const card = env.panel.querySelector(".peano-lean-selector");
   env.responses.push(response(snapshot("add_comm", "stable", "safe-1", "queued"), 202));
@@ -449,8 +584,7 @@ async function largeDefaultSelectionDoesNotRunAutomatically() {
   const card = env.panel.querySelector(".peano-lean-selector");
   assert.ok(card);
   assert.match(card.textContent, /quadratic_reciprocity_combined/);
-  assert.match(card.querySelector(".pls-status").textContent, /557 recorded theorem nodes/);
-  assert.match(card.querySelector(".pls-status").textContent, /256-node default service limit/);
+  assert.doesNotMatch(card.querySelector(".pls-status").textContent, /exceed the .* default service limit/);
   assert.strictEqual(env.calls.length, 0);
 }
 
@@ -473,13 +607,18 @@ async function verifiedStandaloneAndCompanionStatusesRemainHonest() {
   oversized.responses.push(response(snapshot("add_comm", "stable", "large-1", "queued"), 202));
   card.querySelector(".pls-build").click();
   await oversized.settle();
-  oversized.responses.push(response(snapshot("add_comm", "stable", "large-1", "completed", {
-    lean_verified: true,
-    lean_live: { status: "oversized", compatible: true, url: null },
+  oversized.responses.push(response(snapshot("add_comm", "stable", "large-1", "completed", standaloneReceipt(null, {
+    live_status: "oversized",
+    lean_live: {
+      status: "oversized", compatible: true, url: null, local_source_verified: true,
+      source_sha256: "a".repeat(64), source_bytes: 80, share_encoding: null,
+      self_contained: true, core_imports: [], external_import_count: 0,
+    },
     downloads: { lean: "/api/lean-strands/jobs/large-1/download?format=lean" },
-  })));
+  }))));
   await oversized.runTimer(750);
   assert.match(card.querySelector(".pls-status").textContent, /Standalone Lean source.*exceeds Lean Live/);
+  assert.match(card.querySelector(".pls-assurance").textContent, /exact checked proof remains available/);
   assert.strictEqual(card.querySelector(".pls-link").hidden, false);
   assert.strictEqual(card.querySelector(".pls-live").hidden, true);
 
@@ -488,13 +627,11 @@ async function verifiedStandaloneAndCompanionStatusesRemainHonest() {
   fallback.responses.push(response(snapshot("add_comm", "stable", "mixed-1", "queued"), 202));
   card.querySelector(".pls-build").click();
   await fallback.settle();
-  fallback.responses.push(response(snapshot("add_comm", "stable", "mixed-1", "completed", {
-    lean_verified: true,
+  fallback.responses.push(response(snapshot("add_comm", "stable", "mixed-1", "completed", standaloneReceipt("code", {
     manifest: { fallback_node_count: 2 },
     downloads: { lean: "/api/lean-strands/jobs/mixed-1/download?format=lean" },
-    live_compatible: true,
     live_url: "https://live.lean-lang.org/#code=fake",
-  })));
+  }))));
   await fallback.runTimer(750);
   assert.match(card.querySelector(".pls-status").textContent, /certificate-backed proof requires the configured Lean companion/);
   assert.match(card.querySelector(".pls-link").textContent, /companion-backed/);
@@ -502,14 +639,109 @@ async function verifiedStandaloneAndCompanionStatusesRemainHonest() {
     "certificate-dependent proofs cannot be represented as standalone Lean Live links");
 }
 
+async function compactVerifiedLiveProofIsProminentAndExact() {
+  const env = browser();
+  const card = env.panel.querySelector(".peano-lean-selector");
+  env.responses.push(response(snapshot("add_comm", "stable", "compact-1", "queued"), 202));
+  card.querySelector(".pls-build").click();
+  await env.settle();
+  env.responses.push(response(snapshot("add_comm", "stable", "compact-1", "completed", standaloneReceipt("codez", {
+    downloads: {
+      lean: "/api/lean-strands/jobs/compact-1/download?format=lean",
+      zip: "/api/lean-strands/jobs/compact-1/download?format=zip",
+    },
+    live_url: "https://live.lean-lang.org/#codez=BYUwNmD2Q",
+  }))));
+  await env.runTimer(750);
+  const live = card.querySelector(".pls-live");
+  assert.strictEqual(live.hidden, false);
+  assert.strictEqual(live.href, "https://live.lean-lang.org/#codez=BYUwNmD2Q");
+  assert.match(live.textContent, /Open verified self-contained proof in Lean Live/);
+  assert.match(card.querySelector(".pls-assurance").textContent,
+    /No imports · self-contained · locally compiled · no Mathlib\/external libraries · compact exact proof/);
+}
+
+async function campaignVerifiedLiveProofRemainsVisibleAndExact() {
+  const env = browser();
+  const card = env.panel.querySelector(".peano-lean-selector");
+  const url = "https://live.lean-lang.org/#codez=" + "A".repeat(180 * 1024);
+  env.responses.push(response(snapshot("add_comm", "stable", "campaign-1", "queued"), 202));
+  card.querySelector(".pls-build").click();
+  await env.settle();
+  env.responses.push(response(snapshot("add_comm", "stable", "campaign-1", "completed",
+    standaloneReceipt("codez", {
+      downloads: {
+        lean: "/api/lean-strands/jobs/campaign-1/download?format=lean",
+        zip: "/api/lean-strands/jobs/campaign-1/download?format=zip",
+      },
+      live_url: url,
+    }))));
+  await env.runTimer(750);
+
+  const live = card.querySelector(".pls-live");
+  assert.strictEqual(live.hidden, false);
+  assert.strictEqual(live.href, url);
+  assert.match(card.querySelector(".pls-status").textContent, /Ready for Lean Live/);
+}
+
+
+async function liveLinksRequireEveryIndependentStandaloneReceipt() {
+  const scenarios = [
+    ["missing local compiler receipt", standaloneReceipt("code", {
+      lean_live: { source_sha256: "a".repeat(64), share_encoding: "code", local_source_verified: false },
+    })],
+    ["missing exact source SHA", standaloneReceipt("code", {
+      lean_live: { source_sha256: "invalid", share_encoding: "code", local_source_verified: true },
+    })],
+    ["not independently standalone", standaloneReceipt("code", { standalone_lean: false })],
+    ["missing zero-fallback manifest", standaloneReceipt("code", { manifest: {} })],
+    ["not self-contained", standaloneReceipt("code", {
+      lean_live: {
+        source_sha256: "a".repeat(64), share_encoding: "code", local_source_verified: true,
+        self_contained: false, core_imports: [], external_import_count: 0,
+      },
+    })],
+    ["external library declared", standaloneReceipt("code", {
+      lean_live: {
+        source_sha256: "a".repeat(64), share_encoding: "code", local_source_verified: true,
+        self_contained: true, core_imports: ["Mathlib"], external_import_count: 1,
+      },
+    })],
+    ["even a Lean core import is rejected", standaloneReceipt("code", {
+      lean_live: {
+        source_sha256: "a".repeat(64), share_encoding: "code", local_source_verified: true,
+        self_contained: true, core_imports: ["Lean.Elab.Tactic"], external_import_count: 0,
+      },
+    })],
+    ["mismatched compressed encoding", standaloneReceipt("codez")],
+    ["service denied compatibility", standaloneReceipt("code", { live_compatible: false })],
+    ["status is not ready", standaloneReceipt("code", { live_status: "fallback_required" })],
+  ];
+  for (const [label, fields] of scenarios) {
+    const env = browser();
+    const card = env.panel.querySelector(".peano-lean-selector");
+    env.responses.push(response(snapshot("add_comm", "stable", "secure-1", "queued"), 202));
+    card.querySelector(".pls-build").click();
+    await env.settle();
+    fields.live_url = "https://live.lean-lang.org/#code=theorem%20ok";
+    env.responses.push(response(snapshot("add_comm", "stable", "secure-1", "completed", fields)));
+    await env.runTimer(750);
+    assert.strictEqual(card.querySelector(".pls-live").hidden, true, label);
+  }
+}
+
 (async function () {
   await stableProofBuildProgressDownloadsAndLive();
   await alphaAndUncheckedDefinitionsAreTruthful();
+  await individualCampaignPagesRequireExactCheckedAlphaAuthority();
   await cancellationAndTheoremSwitchStopTheExactJob();
   await serviceErrorsAndMismatchedJobsFailClosed();
   await externalUrlsAndOversizedLiveLinksAreNeverTrusted();
   await largeDefaultSelectionDoesNotRunAutomatically();
   await verifiedStandaloneAndCompanionStatusesRemainHonest();
+  await compactVerifiedLiveProofIsProminentAndExact();
+  await campaignVerifiedLiveProofRemainsVisibleAndExact();
+  await liveLinksRequireEveryIndependentStandaloneReceipt();
   process.stdout.write("Lean theorem selector browser interactions passed.\n");
 }()).catch(function (error) {
   console.error(error.stack || String(error));

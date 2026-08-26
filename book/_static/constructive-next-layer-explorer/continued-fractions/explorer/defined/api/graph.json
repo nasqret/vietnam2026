@@ -1,0 +1,489 @@
+{
+  "alpha_checked_use_node_count": 9,
+  "alpha_edition_version": "v24",
+  "alpha_first_enrolled_version": "v20",
+  "definition_topological_order": [
+    "ND0001",
+    "PD0002",
+    "ND0009",
+    "ND0010",
+    "ND0011"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "CF0001",
+      "target": "CF0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CF0002",
+      "target": "CF0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CF0003",
+      "target": "CF0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CF0004",
+      "target": "CF0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CF0005",
+      "target": "CF0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CF0006",
+      "target": "CF0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CF0004",
+      "target": "CF0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CF0007",
+      "target": "CF0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CF0008",
+      "target": "CF0009"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0001",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0002",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0002",
+      "statement_occurrences": 1,
+      "target": "ND0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0003",
+      "statement_occurrences": 1,
+      "target": "ND0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0004",
+      "statement_occurrences": 1,
+      "target": "ND0009"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CF0004",
+      "statement_occurrences": 2,
+      "target": "ND0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0004",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0005",
+      "statement_occurrences": 1,
+      "target": "ND0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0006",
+      "statement_occurrences": 1,
+      "target": "ND0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0007",
+      "statement_occurrences": 1,
+      "target": "ND0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0008",
+      "statement_occurrences": 1,
+      "target": "ND0011"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CF0009",
+      "statement_occurrences": 1,
+      "target": "ND0011"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0010",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0010",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0010",
+      "target": "ND0009"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0011",
+      "target": "ND0010"
+    }
+  ],
+  "family_slug": "continued-fractions",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/CF0001.html?v=94ac4d193cbf",
+      "id": "CF0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "continued_fraction_initial_state_exists",
+      "proof_bundle_node_id": 580,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural initializes an actual beta-coded terminal Euclidean state (a,0,nil)."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/CF0002.html?v=94ac4d193cbf",
+      "id": "CF0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "continued_fraction_empty_trace",
+      "proof_bundle_node_id": 581,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The zero-divisor Euclidean base case has exactly the empty quotient list and no transitions."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/CF0003.html?v=94ac4d193cbf",
+      "id": "CF0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "continued_fraction_empty_trace_exists",
+      "proof_bundle_node_id": 582,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every dividend, a fully witnessed empty reverse Euclidean history exists at divisor zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/CF0004.html?v=94ac4d193cbf",
+      "id": "CF0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "continued_fraction_trace_extend",
+      "proof_bundle_node_id": 583,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A strict Euclidean division prepends its quotient and extends one beta-coded history without changing any earlier state."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/CF0005.html?v=94ac4d193cbf",
+      "id": "CF0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "continued_fraction_trace_exists_up_to",
+      "proof_bundle_node_id": 584,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Bounded natural induction terminates Euclid at zero and builds a complete forward quotient list for every divisor below its bound."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/CF0006.html?v=94ac4d193cbf",
+      "id": "CF0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "continued_fraction_trace_exists",
+      "proof_bundle_node_id": 585,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every pair of natural numbers, including zero-input boundaries, has a finite completely witnessed Euclidean quotient trace."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/CF0007.html?v=94ac4d193cbf",
+      "id": "CF0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "continued_fraction_nonzero_divisor_exists",
+      "proof_bundle_node_id": 586,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every nonzero divisor produces a strictly positive trace length and a genuinely nonempty forward quotient list."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/CF0008.html?v=94ac4d193cbf",
+      "id": "CF0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "continued_fraction_positive_nonempty_exists",
+      "proof_bundle_node_id": 587,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every positive rational input has a complete simple continued fraction whose exact cell-coded quotient list is nonempty."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v24",
+      "alpha_first_enrolled_version": "v20",
+      "href": "tag/CF0009.html?v=94ac4d193cbf",
+      "id": "CF0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "continued_fraction_positive_exists",
+      "proof_bundle_node_id": 588,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "G071: every pair of strictly positive naturals admits its complete witnessed finite simple continued-fraction quotient list."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/ND0001.html?v=94ac4d193cbf",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=94ac4d193cbf",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "ListCell",
+      "href": "definition/ND0009.html?v=94ac4d193cbf",
+      "id": "ND0009",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ListCell",
+      "signature": "ListCell(s,q,t)",
+      "summary": "The exact tagged natural-number list cell containing quotient q and tail t."
+    },
+    {
+      "global_definition": "ContinuedFractionTrace",
+      "href": "definition/ND0010.html?v=94ac4d193cbf",
+      "id": "ND0010",
+      "kind": "definition",
+      "layer": 1,
+      "name": "ContinuedFractionTrace",
+      "signature": "ContinuedFractionTrace(a,b,s,u,v,ell)",
+      "summary": "A finite beta-coded reverse Euclidean history whose quotient list has forward continued-fraction order."
+    },
+    {
+      "global_definition": "ContinuedFraction",
+      "href": "definition/ND0011.html?v=94ac4d193cbf",
+      "id": "ND0011",
+      "kind": "definition",
+      "layer": 2,
+      "name": "ContinuedFraction",
+      "signature": "ContinuedFraction(a,b,s)",
+      "summary": "Positive natural inputs together with a witnessed nonempty complete simple continued fraction."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "CF0001": {
+      "critical_root_path": [
+        "CF0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CF0003"
+      ]
+    },
+    "CF0002": {
+      "critical_root_path": [
+        "CF0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CF0003"
+      ]
+    },
+    "CF0003": {
+      "critical_root_path": [
+        "CF0001",
+        "CF0003"
+      ],
+      "dependencies": [
+        "CF0001",
+        "CF0002"
+      ],
+      "dependents": [
+        "CF0005"
+      ]
+    },
+    "CF0004": {
+      "critical_root_path": [
+        "CF0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CF0005",
+        "CF0007"
+      ]
+    },
+    "CF0005": {
+      "critical_root_path": [
+        "CF0001",
+        "CF0003",
+        "CF0005"
+      ],
+      "dependencies": [
+        "CF0003",
+        "CF0004"
+      ],
+      "dependents": [
+        "CF0006"
+      ]
+    },
+    "CF0006": {
+      "critical_root_path": [
+        "CF0001",
+        "CF0003",
+        "CF0005",
+        "CF0006"
+      ],
+      "dependencies": [
+        "CF0005"
+      ],
+      "dependents": [
+        "CF0007"
+      ]
+    },
+    "CF0007": {
+      "critical_root_path": [
+        "CF0001",
+        "CF0003",
+        "CF0005",
+        "CF0006",
+        "CF0007"
+      ],
+      "dependencies": [
+        "CF0006",
+        "CF0004"
+      ],
+      "dependents": [
+        "CF0008"
+      ]
+    },
+    "CF0008": {
+      "critical_root_path": [
+        "CF0001",
+        "CF0003",
+        "CF0005",
+        "CF0006",
+        "CF0007",
+        "CF0008"
+      ],
+      "dependencies": [
+        "CF0007"
+      ],
+      "dependents": [
+        "CF0009"
+      ]
+    },
+    "CF0009": {
+      "critical_root_path": [
+        "CF0001",
+        "CF0003",
+        "CF0005",
+        "CF0006",
+        "CF0007",
+        "CF0008",
+        "CF0009"
+      ],
+      "dependencies": [
+        "CF0008"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "CF0008",
+    "CF0009"
+  ],
+  "schema": "peano-lab-constructive-next-layer-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

@@ -15,7 +15,7 @@ $$
 \bigl(\operatorname{Prime}(p)\land n<p<2n\bigr).
 $$
 
-```{admonition} Current Alpha-v19 evidence and historical enrollment boundary
+```{admonition} Current Alpha-v20 evidence and historical enrollment boundary
 :class: important
 Bertrand's postulate is **fully proved and admitted for independently checked
 Alpha use**. Historical immutable Alpha v18 first binds the exact
@@ -34,9 +34,13 @@ The Alpha-v12 numbers, body-only labels, and tranche receipts below are
 1,123-row Alpha-v11 parent and appended the final 180 reviewed proof bodies in
 nine twenty-row microbatches without granting checked use. Historical Alpha
 v18 later closes every exact strict-root ancestor while retaining 67 auxiliary
-Bertrand rows outside that dependency slice as `body_checked`. Current Alpha
-v19 independently closes all 67 auxiliary rows as well: the entire historical
-Bertrand development now has checked-use authority, without Stable promotion.
+Bertrand rows outside that dependency slice as `body_checked`. Historical Alpha
+v19 independently closes all 67 auxiliary rows as well. Current Alpha v20
+preserves the complete development and adds thirteen genuinely checked
+Bertrand extensions, including multiplicity-one central-binomial prime
+divisors and arbitrary finite strict Bertrand-prime chains. The entire
+historical development and these exact extensions have checked-use authority,
+without Stable promotion.
 ```
 
 The binding statement, logic, validation, and release rules are frozen in
@@ -207,8 +211,8 @@ statement has an exact hash, and complete proof traversals find zero `DNE`.
 At the historical enrollment checkpoint these local closures established
 feasibility while their Alpha evidence remained body-only. Exact strict-root
 ancestors first acquired independently verified checked-use authority in
-historical Alpha v18; current Alpha v19 additionally closes every remaining
-auxiliary row.
+historical Alpha v18; historical Alpha v19 additionally closes every remaining
+auxiliary row, and current Alpha v20 preserves all their checked-use evidence.
 
 ### Factorial valuations (part of binding gate B2)
 
@@ -457,7 +461,8 @@ evidence only. Their source blocks bind to
 five subordinate RFCs and retain exact focused empty-context receipts, but
 that historical Alpha enrollment itself granted no checked use and changed no
 Stable row. Exact strict-root ancestors were independently promoted later in
-historical Alpha v18; current Alpha v19 closes the remaining auxiliary rows.
+historical Alpha v18; historical Alpha v19 closes the remaining auxiliary rows,
+and current Alpha v20 preserves their complete proof evidence.
 
 ## Alpha v12 complete Bertrand proof
 

@@ -85,14 +85,18 @@ DEFAULT_PREVIEW_BYTES = 15_360
 DEFAULT_MAX_MODULE_BYTES = 64 * 1024 * 1024
 DEFAULT_CHUNK_BYTES = 192 * 1024
 DEFAULT_LIVE_SOURCE_BYTES = 1_048_576
-DEFAULT_LIVE_URL_BYTES = 8_192
-MAX_LIVE_URL_BYTES = 16_384
+DEFAULT_LIVE_URL_BYTES = 512 * 1024
+MAX_LIVE_URL_BYTES = 1_048_576
+MAX_LIVE_CODEC_SOURCE_BYTES = 4 * 1_048_576
 LIVE_EXPORT_SCHEMA = "peano-lab-lean-live-v1"
 
 _DEFINITION_NAMES = frozenset(definition.name for definition in DEFINITIONS)
 _SOURCE_PREFIX = "peano-lab/py/peano_lab/library/"
 _LIBRARY = Path(__file__).resolve().parent
 _SAFE_MODULE_NAME = re.compile(r"[A-Za-z_][A-Za-z0-9_]*\.py\Z")
+_LIVE_LZ_ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
+_LIVE_LZ_INDEX = {character: index for index, character in enumerate(_LIVE_LZ_ALPHABET)}
+_LIVE_LZ_PAYLOAD = re.compile(r"[A-Za-z0-9+/]+\Z")
 
 
 class ProofStrandError(ValueError):
@@ -258,15 +262,15 @@ def _positive_limit(name: str, value: object, maximum: int) -> int:
 
 
 def _edition_view(edition: str) -> tuple[Any, str]:
-    """Import only the current sealed, artifact-free Alpha-v19 inventory."""
+    """Import only the current sealed, artifact-free Alpha-v24 inventory."""
 
     if type(edition) is not str or edition not in {"stable", "alpha"}:
         raise ProofStrandError("edition must be exactly 'stable' or 'alpha'")
-    from . import editions_v19
+    from . import editions_v24
 
     if edition == "stable":
-        return editions_v19.STABLE_EDITION, "stable"
-    return editions_v19.ALPHA_EDITION, "v19"
+        return editions_v24.STABLE_EDITION, "stable"
+    return editions_v24.ALPHA_EDITION, "v24"
 
 
 @lru_cache(maxsize=512)
@@ -1183,8 +1187,20 @@ def build_proof_strand(
         if result.status == "translated":
             if type(result.lean_body) is not str or not result.lean_body.startswith("by\n"):
                 raise ProofStrandError("readable proof reconstruction returned unsafe Lean")
+            lean_body = result.lean_body
+            if result.lean_statement != node.readable_statement:
+                # The strand exposes all reviewed conservative aliases, while
+                # reconstruction may safely use only its smaller alias set or
+                # the exact expanded formula. Preserve the compact declaration
+                # and make Lean itself check their definitional equivalence
+                # before executing the authored target-specific tactic body.
+                lean_body = (
+                    "by\n"
+                    f"  change {result.lean_statement}\n"
+                    + result.lean_body.removeprefix("by\n")
+                )
             node_lines.append(
-                f"theorem «{node.name}» : {node.readable_statement} := {result.lean_body}"
+                f"theorem «{node.name}» : {node.readable_statement} := {lean_body}"
             )
             proof_status = "readable_lean"
             used_dependencies = tuple(result.used_dependencies)
@@ -1483,6 +1499,218 @@ def _live_foundations(required: set[str]) -> list[str]:
     return selected
 
 
+def compress_lean_live_codez(
+    source: str,
+    *,
+    max_input_bytes: int = DEFAULT_LIVE_SOURCE_BYTES,
+) -> str:
+    """Implement Lean Live's official unpadded LZString.compressToBase64 codec."""
+
+    limit = _positive_limit("max_input_bytes", max_input_bytes, MAX_LIVE_CODEC_SOURCE_BYTES)
+    if type(source) is not str:
+        raise ProofStrandError("Lean Live compression requires exact Unicode source text")
+    try:
+        payload = source.encode("utf-8")
+        utf16 = source.encode("utf-16-le")
+    except UnicodeError as error:
+        raise ProofStrandError("Lean Live source contains invalid Unicode surrogate data") from error
+    if len(payload) > limit:
+        raise ProofStrandLimitError("Lean Live compression exceeds its exact source byte limit")
+    units = [chr(utf16[index] | (utf16[index + 1] << 8)) for index in range(0, len(utf16), 2)]
+    dictionary: dict[str, int] = {}
+    pending: set[str] = set()
+    next_code = 3
+    enlarge_in = 2
+    code_bits = 2
+    output: list[str] = []
+    accumulated = 0
+    position = 0
+
+    def write_bits(value: int, count: int) -> None:
+        nonlocal accumulated, position
+        for _ in range(count):
+            accumulated = (accumulated << 1) | (value & 1)
+            if position == 5:
+                output.append(_LIVE_LZ_ALPHABET[accumulated])
+                accumulated = 0
+                position = 0
+            else:
+                position += 1
+            value >>= 1
+
+    def consume_dictionary_slot() -> None:
+        nonlocal enlarge_in, code_bits
+        enlarge_in -= 1
+        if enlarge_in == 0:
+            enlarge_in = 1 << code_bits
+            code_bits += 1
+
+    def emit(word: str) -> None:
+        if word in pending:
+            value = ord(word[0])
+            write_bits(0 if value < 256 else 1, code_bits)
+            write_bits(value, 8 if value < 256 else 16)
+            consume_dictionary_slot()
+            pending.remove(word)
+        else:
+            write_bits(dictionary[word], code_bits)
+        consume_dictionary_slot()
+
+    current = ""
+    for unit in units:
+        if unit not in dictionary:
+            dictionary[unit] = next_code
+            next_code += 1
+            pending.add(unit)
+        candidate = current + unit
+        if candidate in dictionary:
+            current = candidate
+            continue
+        emit(current)
+        dictionary[candidate] = next_code
+        next_code += 1
+        current = unit
+    if current:
+        emit(current)
+    write_bits(2, code_bits)
+    while True:
+        accumulated <<= 1
+        if position == 5:
+            output.append(_LIVE_LZ_ALPHABET[accumulated])
+            break
+        position += 1
+    return "".join(output)
+
+
+def decompress_lean_live_codez(
+    compressed: str,
+    *,
+    max_output_bytes: int = DEFAULT_LIVE_SOURCE_BYTES,
+) -> str:
+    """Decode one canonical bounded official Lean Live codez fragment exactly."""
+
+    limit = _positive_limit("max_output_bytes", max_output_bytes, MAX_LIVE_CODEC_SOURCE_BYTES)
+    if (
+        type(compressed) is not str
+        or not compressed
+        or len(compressed) > MAX_LIVE_URL_BYTES
+        or _LIVE_LZ_PAYLOAD.fullmatch(compressed) is None
+    ):
+        raise ProofStrandError("Lean Live compressed payload has a noncanonical unpadded Base64 alphabet")
+    values = [_LIVE_LZ_INDEX[character] for character in compressed]
+    offset = 0
+
+    def read_bits(count: int) -> int:
+        nonlocal offset
+        value = 0
+        for index in range(count):
+            if offset >= 6 * len(values):
+                raise ProofStrandError("Lean Live compressed payload is truncated")
+            group, position = divmod(offset, 6)
+            value |= ((values[group] >> (5 - position)) & 1) << index
+            offset += 1
+        return value
+
+    first = read_bits(2)
+    if first == 2:
+        decoded = ""
+    elif first not in {0, 1}:
+        raise ProofStrandError("Lean Live compressed stream has an invalid first literal")
+    else:
+        initial = chr(read_bits(8 if first == 0 else 16))
+        dictionary: list[str | None] = [None, None, None, initial]
+        previous = initial
+        entries = [initial]
+        emitted_units = 1
+        remaining_slots = 4
+        code_bits = 3
+        while True:
+            code = read_bits(code_bits)
+            if code in {0, 1}:
+                dictionary.append(chr(read_bits(8 if code == 0 else 16)))
+                code = len(dictionary) - 1
+                remaining_slots -= 1
+            elif code == 2:
+                break
+            if remaining_slots == 0:
+                remaining_slots = 1 << code_bits
+                code_bits += 1
+            if code < len(dictionary) and dictionary[code] is not None:
+                entry = dictionary[code]
+                assert entry is not None
+            elif code == len(dictionary):
+                entry = previous + previous[0]
+            else:
+                raise ProofStrandError("Lean Live compressed stream references an invalid phrase")
+            emitted_units += len(entry)
+            if emitted_units > limit:
+                raise ProofStrandLimitError("Lean Live decompression exceeds its exact output byte limit")
+            entries.append(entry)
+            dictionary.append(previous + entry[0])
+            # A literal and its adjoining phrase can each consume a slot for
+            # one emitted UTF-16 unit. The UTF-8 byte limit also bounds units.
+            if len(dictionary) > 2 * limit + 4:
+                raise ProofStrandLimitError("Lean Live decompression exceeds its phrase limit")
+            remaining_slots -= 1
+            previous = entry
+            if remaining_slots == 0:
+                remaining_slots = 1 << code_bits
+                code_bits += 1
+        units = "".join(entries)
+        raw = bytearray()
+        for unit in units:
+            value = ord(unit)
+            raw.extend((value & 255, value >> 8))
+        try:
+            decoded = raw.decode("utf-16-le")
+            utf8 = decoded.encode("utf-8")
+        except UnicodeError as error:
+            raise ProofStrandError("Lean Live compressed source has invalid UTF-16 surrogates") from error
+        if len(utf8) > limit:
+            raise ProofStrandLimitError("Lean Live decompression exceeds its exact output byte limit")
+    if compress_lean_live_codez(decoded, max_input_bytes=limit) != compressed:
+        raise ProofStrandError("Lean Live compressed payload has noncanonical trailing data")
+    return decoded
+
+
+def select_live_share_url(
+    source: str,
+    *,
+    max_url_bytes: int = DEFAULT_LIVE_URL_BYTES,
+    max_source_bytes: int = DEFAULT_LIVE_SOURCE_BYTES,
+) -> tuple[str | None, str | None, int]:
+    """Select the shortest exact official code/codez URL within hard bounds."""
+
+    url_limit = _positive_limit("max_url_bytes", max_url_bytes, MAX_LIVE_URL_BYTES)
+    source_limit = _positive_limit(
+        "max_source_bytes",
+        max_source_bytes,
+        MAX_LIVE_CODEC_SOURCE_BYTES,
+    )
+    if type(source) is not str:
+        raise ProofStrandError("Lean Live share source must be exact Unicode text")
+    try:
+        actual_bytes = len(source.encode("utf-8"))
+    except UnicodeError as error:
+        raise ProofStrandError("Lean Live share source contains invalid Unicode") from error
+    if actual_bytes > source_limit:
+        raise ProofStrandLimitError("Lean Live share source exceeds its reviewed byte limit")
+    direct = live_lean_url(source)
+    compressed = (
+        "https://live.lean-lang.org/#codez="
+        + quote(
+            compress_lean_live_codez(source, max_input_bytes=source_limit),
+            safe="",
+        )
+    )
+    candidates = ((direct, "code"), (compressed, "codez"))
+    candidate, encoding = min(candidates, key=lambda item: len(item[0].encode("utf-8")))
+    encoded_bytes = len(candidate.encode("utf-8"))
+    if encoded_bytes > url_limit:
+        return None, None, encoded_bytes
+    return candidate, encoding, encoded_bytes
+
+
 def build_live_export(
     plan: ProofStrandPlan,
     package: ProofStrandPackage,
@@ -1503,7 +1731,6 @@ def build_live_export(
     rows = [
         "-- Standalone constructive Peano proof; remote Lean compilation has not run.",
         f"-- Root: {plan.root}; {plan.node_count} exact named theorem(s).",
-        "import Lean.Elab.Tactic",
         "",
         "set_option maxRecDepth 4096",
         "set_option maxHeartbeats 800000",
@@ -1527,17 +1754,19 @@ def build_live_export(
     if len(payload) > source_limit:
         raise ProofStrandLimitError("standalone Lean Live source exceeds its byte bound")
     if (
-        re.search(r"(?m)^\s*import\s+(?!Lean\.Elab\.Tactic\s*$)", source)
+        re.search(r"(?m)^\s*import\b", source)
         or re.search(r"\b(?:sorry|sorryAx|native_decide)\b", source)
         or re.search(r"(?m)^\s*axiom\b", source)
         or "PeanoLab.Codec" in source
         or "PeanoLab.Artifact" in source
     ):
         raise ProofStrandError("standalone Lean Live source contains an unavailable or unsafe dependency")
-    candidate = live_lean_url(source)
-    encoded_bytes = len(candidate.encode("utf-8"))
-    shareable = encoded_bytes <= url_limit
-    url = candidate if shareable else None
+    url, encoding, encoded_bytes = select_live_share_url(
+        source,
+        max_url_bytes=url_limit,
+        max_source_bytes=min(source_limit, MAX_LIVE_CODEC_SOURCE_BYTES),
+    )
+    shareable = url is not None
     status = "ready" if shareable else "oversized"
     receipt: dict[str, Any] = {
         "schema": LIVE_EXPORT_SCHEMA,
@@ -1546,7 +1775,11 @@ def build_live_export(
         "edition_version": plan.edition_version,
         "source_sha256": _digest_bytes(payload),
         "source_bytes": len(payload),
+        "self_contained": True,
+        "core_imports": [],
+        "external_import_count": 0,
         "share_url": url,
+        "share_encoding": encoding,
         "share_status": status,
         "share_url_bytes": encoded_bytes,
         "share_url_max_bytes": url_limit,
@@ -1611,6 +1844,8 @@ __all__ = [
     "DEFAULT_CHUNK_BYTES",
     "DEFAULT_LIVE_SOURCE_BYTES",
     "DEFAULT_LIVE_URL_BYTES",
+    "MAX_LIVE_URL_BYTES",
+    "MAX_LIVE_CODEC_SOURCE_BYTES",
     "LIVE_EXPORT_SCHEMA",
     "ProofStrandError",
     "ProofStrandLimitError",
@@ -1623,6 +1858,9 @@ __all__ = [
     "plan_proof_strand",
     "preview_proof_strand",
     "build_proof_strand",
+    "compress_lean_live_codez",
+    "decompress_lean_live_codez",
+    "select_live_share_url",
     "build_live_export",
     "live_hosted_url",
 ]
