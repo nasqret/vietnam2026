@@ -63,6 +63,8 @@ PRODUCT_NAVIGATION = tuple(
             "PEANO_LAB_DESIGN.md",
             "PEANO_HYDRA_DESIGN.md",
             "HYDRA_POST_TRAINING.md",
+            "HYDRA_DEVELOPMENT_PROTOCOL.md",
+            "HYDRA_DEVELOPMENT_EVALUATION.md",
         )
     )
 )
@@ -629,7 +631,7 @@ def test_alpha_handoff_quarantines_canonical_heldouts_from_train_and_development
         assert "261" in compact
         assert "5" in compact
         assert "1,773" in compact
-        assert "12 clean development" in compact
+        assert re.search(r"\b12 (?:clean )?development", compact)
         assert "222 bounded optimizer steps" in compact
         assert "13 quarantined" in compact
         assert "train.jsonl" in compact and "dev.jsonl" in compact
@@ -895,7 +897,8 @@ def test_public_hydra_chapter_explains_existing_qr_and_real_preparation_outputs(
         "epoch.json", "sft.jsonl", "preferences.jsonl", "discovery.jsonl", "manifest.json"
     ):
         assert f"_deploy/hydra/{filename}" in chapter
-    assert "not-yet-completed H0.3 protocol" in chapter
+    assert "bounded native DEV version is now implemented" in chapter
+    assert "full H0.3 target remains open" in chapter
     assert "do not claim semantic mathematical novelty" in chapter or (
         "without\nclaiming semantic mathematical novelty" in chapter
     )
@@ -1096,7 +1099,8 @@ def test_completed_model_run_and_next_milestone_are_consistent_across_guides() -
         compact = " ".join(content.split())
         for value in ("222", "0/4", "3/4", "460", "7,129", "H0", "H1"):
             assert value in compact, (source, value)
-        assert "symbolic" in compact and "lineage-clean" in compact
+        assert "symbolic" in compact
+        assert "lineage-clean" in compact or "lineage separation" in compact
         assert "prepared, not trained" in compact.replace("**", "") or (
             source == HYDRA_PLAN and "no second model training" in compact
         )
@@ -1106,6 +1110,275 @@ def test_completed_model_run_and_next_milestone_are_consistent_across_guides() -
             path = (source.parent / target.split("#", 1)[0]).resolve()
             assert path.is_relative_to(ROOT)
             assert path.exists(), f"broken completed-run link in {source}: {target}"
+
+
+DEVELOPMENT_RUN = ROOT / "artifacts" / "peano-hydra" / "development-2026-08-27"
+
+
+def _development_digest(value: object) -> str:
+    raw = json.dumps(value, ensure_ascii=False, allow_nan=False, sort_keys=True,
+                     separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(raw).hexdigest()
+
+
+@pytest.fixture(scope="module")
+def development_evidence() -> tuple[dict, dict, list[dict]]:
+    plan = json.loads((DEVELOPMENT_RUN / "plan.json").read_text(encoding="utf-8"))
+    report = json.loads((DEVELOPMENT_RUN / "report.json").read_text(encoding="utf-8"))
+    assert len(report["rows"]) == 136
+    assert [item["path"] for item in report["rows"]] == [
+        f"row-{i:03d}.json" for i in range(136)
+    ]
+    rows = []
+    for entry in [report["plan"], *report["rows"]]:
+        raw = (DEVELOPMENT_RUN / entry["path"]).read_bytes()
+        assert len(raw) == entry["bytes"]
+        assert hashlib.sha256(raw).hexdigest() == entry["sha256"]
+        if entry["path"] != "plan.json":
+            assert len(raw) <= 1024 * 1024
+            rows.append(json.loads(raw))
+    return plan, report, rows
+
+
+def test_archived_native_development_evidence_has_complete_checksums() -> None:
+    entries = {}
+    for line in (DEVELOPMENT_RUN / "SHA256SUMS").read_text(encoding="utf-8").splitlines():
+        digest, filename = line.split("  ", 1)
+        assert filename not in entries
+        assert Path(filename).name == filename
+        assert re.fullmatch(r"[0-9a-f]{64}", digest)
+        assert hashlib.sha256((DEVELOPMENT_RUN / filename).read_bytes()).hexdigest() == digest
+        entries[filename] = digest
+    assert len(entries) == 140
+    assert set(entries) == {
+        path.name for path in DEVELOPMENT_RUN.iterdir()
+        if path.is_file() and path.name != "SHA256SUMS"
+    }
+
+
+def test_native_development_run_preserves_frozen_source_and_claim_boundaries(
+    development_evidence: tuple[dict, dict, list[dict]],
+) -> None:
+    plan, report, _ = development_evidence
+    assert plan["source"]["git_commit"] == "7f0bdd62526849cc8ace838da88aa7d53b2c3a4b"
+    assert plan["source"]["git_dirty"] is False
+    assert plan["source"]["files_sha256"] == _development_digest(plan["source"]["files"])
+    assert report["report_sha256"] == (
+        "1005e18509c5dddd1036e405c3904db2a89a0e6c9e01dc9a2ea6c9a0d910a513"
+    )
+    for record, key in ((plan, "plan_sha256"), (report, "report_sha256"),
+                        (plan["benchmark"], "manifest_sha256")):
+        unsigned = dict(record)
+        assert unsigned.pop(key) == _development_digest(unsigned)
+        assert record["development_only"] is True
+        assert record["sealed_benchmark"] is False
+        assert record["research_claim_eligible"] is False
+    assert plan["model_comparison_performed"] is report["model_comparison_performed"] is False
+    assert plan["negative_result_authority"] is False
+    assert report["status"] == "completed"
+    assert report["plan_sha256"] == plan["plan_sha256"]
+    assert report["profile_sha256"] == plan["profile"]["profile_sha256"]
+    assert report["benchmark_sha256"] == plan["benchmark"]["manifest_sha256"]
+    assert plan["environment"]["surface"] == "hydra-development-no-imports-v1"
+    assert plan["environment"]["classical"] is False
+    assert plan["environment"]["capabilities"]["allowed_theorems"] == []
+    assert plan["parallel_workers"] == 1
+    assert plan["reserved_worker_runs"] == 136
+    assert plan["reserved_worker_wall_seconds"] == 680
+    assert plan["limits"] == {
+        "wall_seconds": 5, "cpu_seconds": 3, "rss_bytes": 1024**3,
+        "max_depth": 16, "beam_width": 4, "candidates_per_state": 8,
+        "max_states": 128, "max_proposals": 128,
+    }
+
+
+def test_native_development_lineages_block_both_existing_preparations(
+    development_evidence: tuple[dict, dict, list[dict]],
+) -> None:
+    plan, _, _ = development_evidence
+    benchmark = plan["benchmark"]
+    assert benchmark["expanded_goal_count"] == 64
+    assert benchmark["historical_goal_count"] == 4
+    assert benchmark["declared_family_count"] == 8
+    assert benchmark["declared_connected_component_count"] == 1
+    assert len(benchmark["components"]) == 1
+    assert len(benchmark["components"][0]["catalog_members"]) == 2048
+    aliases = benchmark["catalog_alias_audit"]
+    assert aliases["checked_theorems"] == 1340
+    assert aliases["unresolved_theorem_count"] == 740
+    assert aliases["unresolved_theorems_and_descendants_masked"] is True
+    assert benchmark["semantic_equivalence_complete"] is False
+    for goal in benchmark["goals"]:
+        assert goal["allowed_theorems"] == goal["retrieval_allowed_theorems"] == []
+        assert len(goal["masked_theorems"]) == 2061
+        assert goal["independent_of_other_family_seeds"] is False
+    assert len(plan["preparation_audits"]) == 2
+    for entry, run_id, train_rows, train_roots in zip(
+        plan["preparation_audits"], (None, "catalog-460"), (1773, 7129), (175, 436)
+    ):
+        audit = entry["audit"]
+        unsigned = dict(audit)
+        assert unsigned.pop("audit_sha256") == _development_digest(unsigned)
+        assert audit["preparation_run_id"] == run_id
+        assert audit["status"] == "blocked"
+        assert audit["blocked_family_count"] == 8
+        assert audit["safe_under_declared_relations_family_count"] == 0
+        assert audit["eligible_for_unseen_model_comparison"] is False
+        assert audit["semantic_equivalence_complete"] is False
+        assert audit["training_corpus_independently_replayed_in_this_audit"] is False
+        assert audit["exposed_rows"] == {"train": train_rows, "dev": 12}
+        assert len(audit["components"]) == 1
+        assert len(audit["components"][0]["exposure"]["train"]["catalog_roots"]) == train_roots
+        assert all(family["status"] == "blocked" for family in audit["families"])
+
+
+def test_native_development_rows_bind_original_goals_authority_and_budgets(
+    development_evidence: tuple[dict, dict, list[dict]],
+) -> None:
+    plan, _, rows = development_evidence
+    goals = {goal["id"]: goal for goal in plan["benchmark"]["goals"]}
+    expected = {(lane, goal_id) for lane in ("closure", "portfolio") for goal_id in goals}
+    assert {(row["lane"], row["goal"]["id"]) for row in rows} == expected
+    for row in rows:
+        assert row["goal"] == {key: goals[row["goal"]["id"]][key]
+                               for key in ("id", "source", "canonical")}
+        assert row["limits"] == plan["limits"]
+        assert row["environment"] == plan["environment"]
+        assert row["profile_sha256"] == plan["profile"]["profile_sha256"]
+        assert row["epoch_sha256"] == plan["benchmark"]["epoch_sha256"]
+        assert row["source_files_sha256"] == plan["source"]["files_sha256"]
+        assert row["model_calls"] == row["solver_calls"] == 0
+        assert row["kernel_checked"] is (row["status"] == "proved")
+        assert row["resources"]["cpu_instructions"] is None
+        assert row["resources"]["energy_joules"] is None
+        if row["evidence"] is not None:
+            assert row["config"] == plan["lanes"][row["lane"]]
+            assert row["evidence"]["limits"] == {
+                "max_depth": 16, "beam_width": 4, "candidates_per_state": 8,
+                "max_model_calls": 128, "max_states": 128,
+            }
+            assert row["workload"]["model_calls"] == row["workload"]["solver_calls"] == 0
+            assert row["workload"]["protocol_rejections"] == 0
+
+
+def test_native_development_measured_results_keep_historical_cohort_separate(
+    development_evidence: tuple[dict, dict, list[dict]],
+) -> None:
+    plan, report, rows = development_evidence
+    cohorts = {goal["id"]: goal["cohort"] for goal in plan["benchmark"]["goals"]}
+    for lane, expanded, historical in (("closure", 16, 2), ("portfolio", 48, 3)):
+        for cohort, total, proved in (("expanded", 64, expanded), ("historical", 4, historical)):
+            selected = [row for row in rows if row["lane"] == lane
+                        and cohorts[row["goal"]["id"]] == cohort]
+            assert len(selected) == total
+            assert sum(row["kernel_checked"] for row in selected) == proved
+            assert report["metrics"][lane]["cohorts"][cohort] == {
+                "goals": total, "proved": proved, "unknown": total - proved,
+            }
+        for family in ("inductive_arithmetic", "existential_composition"):
+            selected = [row for row in rows if row["lane"] == lane
+                        and row["goal"]["id"].startswith(f"dev_{family}_")]
+            assert len(selected) == 8 and all(row["status"] == "unknown" for row in selected)
+    assert sum(row["kernel_checked"] for row in rows) == 69
+    assert len({row["goal"]["id"] for row in rows if row["kernel_checked"]}) == 51
+    for row in rows:
+        if row["kernel_checked"]:
+            assert row["evidence"]["replay"]["kernel_checked"] is True
+            assert row["evidence"]["replay"]["goals"] == []
+            assert row["evidence"]["replay"]["trace"]
+
+
+def test_native_development_cpu_limited_unknowns_never_acquire_missing_measurements(
+    development_evidence: tuple[dict, dict, list[dict]],
+) -> None:
+    _, report, rows = development_evidence
+    interrupted = [row for row in rows if row["evidence"] is None]
+    assert {row["goal"]["id"] for row in interrupted} == {
+        *(f"dev_inductive_arithmetic_{seed:02d}" for seed in range(3, 8)),
+        "dev_existential_composition_07",
+    }
+    assert len(interrupted) == 6
+    for row in interrupted:
+        assert row["lane"] == "portfolio"
+        assert row["status"] == "unknown" and row["kernel_checked"] is False
+        assert row["reason"] == "worker_exit" and row["worker_returncode"] == -24
+        assert row["diagnostic"] == ""
+        assert row["action_records"] is row["workload"] is None
+        for field in ("worker_cpu_seconds", "worker_wall_seconds", "peak_rss_bytes"):
+            assert row["resources"][field] is None
+        assert row["resources"]["parent_wall_seconds"] > 3
+    for lane, missing in (("closure", 0), ("portfolio", 6)):
+        metric = report["metrics"][lane]
+        lane_rows = [row for row in rows if row["lane"] == lane]
+        completed = [row for row in lane_rows if row["evidence"] is not None]
+        assert metric["unavailable_worker_resource_rows"] == metric["worker_failures"] == missing
+        assert metric["recorded_worker_cpu_seconds"] == pytest.approx(sum(
+            row["resources"]["worker_cpu_seconds"] for row in completed
+        ))
+        assert metric["parent_wall_seconds"] == pytest.approx(sum(
+            row["resources"]["parent_wall_seconds"] for row in lane_rows
+        ))
+        assert metric["max_recorded_peak_rss_bytes"] == max(
+            row["resources"]["peak_rss_bytes"] for row in completed
+        )
+
+
+def test_native_development_independent_verification_receipt_matches_complete_records(
+    development_evidence: tuple[dict, dict, list[dict]],
+) -> None:
+    _, report, rows = development_evidence
+    receipt = json.loads((DEVELOPMENT_RUN / "verification.json").read_text(encoding="utf-8"))
+    assert receipt == {
+        "status": "passed", "report_sha256": report["report_sha256"],
+        "independently_replayed_proofs": 69,
+        "deterministically_verified_policy_rows": 130,
+        "model_calls": 0, "solver_calls": 0, "research_claim_eligible": False,
+    }
+    assert receipt["independently_replayed_proofs"] == sum(row["kernel_checked"] for row in rows)
+    assert receipt["deterministically_verified_policy_rows"] == sum(
+        row["evidence"] is not None for row in rows
+    )
+
+
+def test_completed_native_development_status_and_next_gate_are_consistent() -> None:
+    sources = (
+        ROADMAP, HYDRA_PLAN, PLAN_INDEX, ROOT / "README.md",
+        ROOT / "docs" / "HYDRA_POST_TRAINING.md",
+        ROOT / "docs" / "HYDRA_DEVELOPMENT_EVALUATION.md",
+        ROOT / "training" / "peano_hydra" / "README.md",
+        ROOT / "book" / "peano" / "peano-hydra.md", DEVELOPMENT_RUN / "README.md",
+    )
+    for source in sources:
+        content = source.read_text(encoding="utf-8")
+        compact = " ".join(content.split()).replace("**", "")
+        for value in ("16/64", "48/64", "2/4", "3/4", "69", "130", "H0", "TRAIN/DEV"):
+            assert value in compact, (source, value)
+        assert "unknown" in compact and "semantic/reference" in compact
+        assert "blocked for unseen-model comparison" in compact
+        for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", content):
+            if "://" in target or target.startswith(("#", "mailto:")):
+                continue
+            path = (source.parent / target.split("#", 1)[0]).resolve()
+            assert path.is_relative_to(ROOT) and path.exists(), (source, target)
+
+
+def test_public_hydra_chapter_links_do_not_escape_the_published_book_root() -> None:
+    source = ROOT / "book" / "peano" / "peano-hydra.md"
+    prefix = "https://github.com/nasqret/vietnam2026/blob/peano-lab/"
+    destinations = set()
+    for target in re.findall(r"\[[^\]]+\]\(([^)]+)\)", source.read_text(encoding="utf-8")):
+        if target.startswith(prefix):
+            relative = target.removeprefix(prefix).split("#", 1)[0]
+            path = (ROOT / relative).resolve()
+            assert path.is_relative_to(ROOT) and path.is_file(), target
+            destinations.add(relative)
+        elif "://" not in target and not target.startswith(("#", "mailto:")):
+            path = (source.parent / target.split("#", 1)[0]).resolve()
+            assert path.is_relative_to(ROOT / "book") and path.is_file(), target
+    assert {
+        "docs/HYDRA_DEVELOPMENT_PROTOCOL.md", "docs/HYDRA_DEVELOPMENT_EVALUATION.md",
+        "artifacts/peano-hydra/development-2026-08-27/README.md",
+    } <= destinations
 
 
 @pytest.mark.parametrize("filename", PRODUCT_NAVIGATION)

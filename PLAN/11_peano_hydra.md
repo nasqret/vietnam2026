@@ -58,16 +58,34 @@ Hydra product or its original-goal verifier boundary is absent.
       fresh local replay of all three successful proofs. The fixed symbolic
       control also proves **3/4**, so this is not an LLM-advantage result.
 - [x] Prepare the isolated `catalog-460` curriculum: **460 checked routes**,
-      **7,154 transitions**, and **7,129 clean training rows**; no second
-      model training or expanded validation benchmark is claimed.
+      **7,154 transitions**, and **7,129 training rows** after the historical
+      held-out quarantine; no second
+      model training is claimed. It remains **prepared, not trained**.
+- [x] Implement the bounded native seven-action development profile with
+      deterministic compilation, capability/state receipts, and atomic
+      failure; keep the full H0 research gate open.
+- [x] Freeze and execute 64 expanded DEV goals: closure **16/64**, symbolic
+      portfolio **48/64**. Keep the four historical controls separate
+      (**2/4** versus **3/4**). Independently replay all **69** successful
+      certificates and regenerate all **130** completed policy records;
+      six CPU-limited workers remain unknown.
+- [x] Audit both existing preparations against declared DEV lineage: **8/8
+      families blocked for unseen-model comparison** in each. The eight
+      families join one declared lineage component with 2,048 catalog
+      theorems, exposing 175 original-run
+      training roots and 436 `catalog-460` roots. All 16 induction and
+      composed-witness DEV variants remain unsolved under the recorded limits.
 
-The next engineering milestone is broader lineage-clean development coverage
-and a stronger frozen symbolic baseline before comparing the prepared
-`catalog-460` policy. The required H0 contracts and independent H1 final-set
-ownership/sealing remain open. See the
+The next engineering milestone is reviewed model-facing TRAIN/DEV lineage
+separation and the required H0 semantic/reference checks before any further
+GPU comparison. The broader baseline is measured, but it is not a lineage-clean
+model benchmark. Do not train `catalog-460` and relabel these diagnostics as
+unseen. Independent H1 final-set ownership/sealing remains open. See the
 [completed run evidence](../artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md)
-and the single product roadmap; this product progress is not an H3 scale
-claim or an H5 matched-compute result.
+and [native development evidence](../artifacts/peano-hydra/development-2026-08-27/README.md)
+and the single product roadmap; this product progress is not an H3 scale claim
+or an H5 matched-compute result. The new native-only authority is narrower
+than the earlier Alpha model run; no model comparison occurred here.
 
 ## Non-negotiable contracts
 
@@ -95,6 +113,12 @@ claim or an H5 matched-compute result.
 
 ### H0.1 Freeze the claimable fragment
 
+The [source-bound native development profile](../docs/HYDRA_DEVELOPMENT_PROTOCOL.md)
+now fixes a bounded closed constructive grammar, normalization, arithmetic
+axioms, induction policy, and implementation hashes for the DEV artifacts.
+The broader reviewed conformance/reference and solver contracts below remain
+open; this implementation makes no negative-decision claim.
+
 - [ ] Write the exact term/formula grammar, binding/substitution rules,
       intuitionistic proof calculus, arithmetic axioms, and induction policy.
 - [ ] State which formulas, if any, belong to a decidable subfragment and give
@@ -121,14 +145,17 @@ claim or an H5 matched-compute result.
 
 ### H0.3 Freeze the macro protocol
 
-- [ ] Specify canonical typed encodings for `Use`, `Cut`, `Witness`, `Induct`,
-      `Rewrite`, `Split`, and bounded `Dispatch`.
-- [ ] Compile each action deterministically to existing public Peano commands
-      and/or an untrusted bounded solver call.
-- [ ] Verify that failure leaves proof state and history byte-for-byte
+- [x] Implement bounded native-v1 typed encodings for `Use`, `Cut`, `Witness`,
+      `Induct`, `Rewrite`, `Split`, and native-only bounded `Dispatch`.
+- [x] Compile those native actions deterministically to existing public Peano
+      commands, without widening theorem/tactic capabilities.
+- [x] Verify that native action failure leaves proof state and history
       unchanged.
-- [ ] Reject unknown versions, hidden commands, out-of-profile formulas,
-      unavailable lemmas, and solver claims without reconstruction.
+- [x] Reject unknown native versions, hidden commands, out-of-profile formulas,
+      unavailable lemmas, and unsupported external-solver dispatches.
+- [ ] Review and complete the wider structured protocol, including explicit
+      induction motives and any external-solver transcript/reconstruction
+      contract; the development subset is not full H0.3 acceptance.
 - [ ] Log raw proposals, parsing, compilation, state transitions, solver
       transcripts, and replay outcome in a canonical trace.
 
@@ -159,6 +186,12 @@ sound theorem prover and continue without a decision claim.
       this campaign's training, retrieval, imports, or evaluation.
 
 ### H1.2 Build lineage before rows
+
+The native DEV manifest now joins declared families, seeds, shared derivations,
+canonical aliases, catalog anchors, and dependencies before outcomes. Its
+conservative audit blocks all eight families for both existing preparations;
+it does not establish the clean model-facing split or semantic-equivalence
+completeness required below.
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
       reformulated problems.
@@ -404,6 +437,10 @@ have been measured.
 - [x] The checked `surface-macro-v0` teacher-oracle pilot is deliberately
       narrower than the complete structured H0.3 macro protocol; raw provider
       attestations and genuine critical-frontier evidence remain open.
+- [x] The separate bounded seven-action native DEV protocol, audited 64-goal
+      generator, and frozen 16/64-versus-48/64 symbolic result are implemented
+      and independently checked. Both existing preparations fail the
+      unseen-family audit; this is not a sealed model benchmark.
 - [ ] **H0 is not complete:** semantic/reference conformance, the full
       structured-macro protocol, and publication-grade evidence are missing.
 - [ ] **H1 is not complete:** no independently owned final benchmark is

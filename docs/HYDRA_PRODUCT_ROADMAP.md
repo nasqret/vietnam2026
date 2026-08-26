@@ -111,6 +111,15 @@ and its own independent evaluation.
 - Checked traces support three outputs from the same epoch: proof-optimization
   examples, proof-discovery candidates, and replay-verified
   supervised/preference training records.
+- A source-bound native development profile provides seven typed actions,
+  deterministic compilation, capability/state receipts, and transactional
+  failure without changing the trusted kernel.
+- A fresh-process, resource-bounded symbolic evaluation covers 64 generated
+  development goals and four separately reported historical controls. Its
+  complete evidence includes independently regenerated proposal records and
+  freshly replayed successful proofs.
+- Conservative dependency/family exposure audits block an unseen-model claim
+  when a prepared training corpus intersects the declared DEV component.
 - All campaign theorem browsers reuse the established proof-explorer design
   and expose the same bounded Lean-strand workflow across **27 proof
   families**, **29 canonical theorem graphs**, and **3,937 eligible staged
@@ -127,6 +136,8 @@ make hydra-check
 make hydra-prepare
 make hydra-scale
 make hydra-posttrain-ready
+make hydra-dev-plan
+make hydra-dev-verify
 python3 scripts/eval_peano_hydra.py --compact
 make lean-public-status
 ```
@@ -419,34 +430,82 @@ distinct adapter directory ending in `-catalog-460`, and cannot replace the
 completed experiment. The unchanged 12-row development set is still narrow;
 more training data alone is not a broader evaluation.
 
+## Completed native development evaluation — 2026-08-27
+
+Clean source `7f0bdd62` froze a bounded native profile and seven typed actions
+(`Use`, `Cut`, `Witness`, `Induct`, `Rewrite`, `Split`, `Dispatch`), then ran
+the stronger state-aware symbolic portfolio against its closure-only ablation:
+
+| Cohort | Closure only | Symbolic portfolio |
+|---|---:|---:|
+| 64 expanded development goals | **16/64** proved | **48/64** proved |
+| Four historical diagnostics, separate cohort | **2/4** proved | **3/4** proved |
+
+All **69 successful certificates** freshly kernel-replayed, and the deterministic
+proposal/typed-action records of **130 completed workers** independently
+matched their declared policies. Six portfolio workers hit the three-second
+CPU guard and remain **unknown**, with unavailable resource measurements left
+null. The expanded portfolio solves six of eight families; **all 16 inductive
+arithmetic and composed-witness variants remain unknown**, as does the
+historical consecutive-product goal. Induction proposals are implemented;
+successful coverage of these induction benchmarks is not claimed.
+
+The experiment ran **136 sequential fresh workers** with five wall seconds,
+three CPU seconds, and a 1 GiB memory guard per worker. The macOS RSS guard is
+sampled, not an instantaneous hard cap. Actual model/solver calls and theorem
+imports/retrieval were all **zero**. Its narrower
+`hydra-development-no-imports-v1` authority differs from the previous model
+run; this is a comparison of two symbolic configurations, not a new model
+score or a claim that the older control regressed. Resource observations are
+recorded, not hardware-attested; killed-worker CPU/RSS totals are unavailable.
+
+The audit also found the critical next constraint: all **eight families join
+one connected component with 2,048 catalog theorems**. Both preparations expose
+that component: **175 training roots** in the original run and **436** in the
+prepared `catalog-460` run. Thus **8/8 families are blocked for unseen-model
+comparison** in each preparation. The bounded canonicalizer checked 1,340
+catalog statements; 740 unresolved statements and their descendants are
+conservatively masked. These 64 generated variants are not 64 independent
+lineages, and this is not a complete semantic-equivalence audit.
+
+See the [readable result and portable evidence](../artifacts/peano-hydra/development-2026-08-27/README.md),
+[development runner guide](HYDRA_DEVELOPMENT_EVALUATION.md), and
+[typed action/profile contract](HYDRA_DEVELOPMENT_PROTOCOL.md). No new model
+was trained, no theorem was admitted, and neither earlier preparation nor
+adapter was changed. The bounded native contract is implemented; full H0
+semantic/reference conformance and publication-grade solver protocols remain
+open.
+
 ## The one next engineering milestone
 
-**Establish a broader lineage-clean development benchmark and a stronger
-frozen symbolic baseline before comparing the prepared `catalog-460`
-policy.** The first Alpha-compatible training/evaluation milestone above is
-complete; repeating its four-goal smoke is not the next research milestone.
+**Establish reviewed model-facing TRAIN/DEV lineage separation and the required
+H0 semantic/reference checks before another GPU comparison.** The broader
+symbolic DEV run is now measured and frozen, but its exposure audit did not
+establish a lineage-clean model benchmark. Do not train the prepared
+`catalog-460` corpus and relabel these diagnostics as unseen.
 
 Run `make hydra-check` at each change boundary and execute this milestone in
 order:
 
-1. Close the required H0 semantic/reference and structured-action contracts;
-   preserve the current original-goal kernel boundary and explicit Alpha
-   authority throughout.
-2. Expand development coverage beyond the four historical diagnostic goals
-   and single 12-row validation theorem. Split dependency components,
-   equivalents, families, descendants, and generated variants before exposing
-   any model to their rows. An independent owner must separately control and
-   seal the final H1 set; do not relabel a development set as sealed.
-3. Measure and freeze the stronger symbolic portfolio, including bounded
-   induction and witness search, then identify genuine unsolved frontiers.
-   Record resource consumption, not only nominally equal search limits.
-4. Review the prepared `catalog-460` run against that benchmark; explicitly
-   select its named preparation in the authorized training/evaluation jobs,
-   preserving the completed adapter. Compare pretrained, trained, and symbolic
-   lanes with the required ablations before any H5 claim.
-5. Admit newly discovered theorems only through the normal reviewed immutable
-   Alpha-release procedure; regenerate every browser/Lean projection from the
-   same newly sealed theorem and definition DAGs.
+1. Complete the required semantic/reference conformance and cold-replay
+   evidence around the implemented native profile. Review any wider action
+   or solver protocol before extending it; preserve original-goal checking.
+2. Review the declared dependency components before preparing model-facing
+   rows. Author or reserve genuinely disjoint lineages under that reviewed
+   contract; do not weaken masks or split the exposed giant component merely
+   to obtain a favorable score. Existing preparations remain historical.
+3. Produce an authenticated new split manifest, exposure audit, and frozen
+   symbolic results with explicit authority and measured resource boundaries.
+   Keep the current 16-goal induction/composed-witness frontier as public DEV
+   engineering evidence, not a hidden test. An independent owner must
+   separately control and seal the final H1 set.
+
+The exit artifact is one reviewed split/reference evidence bundle authorizing
+the next named preparation. Only after that gate should an explicitly
+authorized model run compare pretrained, trained, and symbolic lanes with
+the required ablations. Newly discovered theorems still require ordinary
+reviewed immutable Alpha admission, followed by browser/Lean projections from
+the same sealed theorem and definition DAGs.
 
 The mathematical queue remains dependency-first: unrestricted-dimensional
 determinants/rank (**T13**), unrestricted simple-root Hensel lifting
@@ -460,8 +519,8 @@ The production proof-search boundary can be useful before the separate
 publication-grade experiment is complete. The full frozen structured macro
 protocol, independent semantic/reference conformance campaign, final-set
 ownership and sealing, model raw-call/provider attestation, sufficiently large
-lineage-clean curriculum, strong frozen symbolic portfolio, and matched-compute
-causal evaluation still require their recorded H0–H5 gates.
+lineage-clean curriculum, publication-grade multi-budget symbolic evaluation,
+and matched-compute causal evaluation still require their recorded H0–H5 gates.
 
 **H0 is not complete. H1 is not complete. No H5 claim is available. No
 language-model advantage has been demonstrated.** A teacher-oracle pilot,

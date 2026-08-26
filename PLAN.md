@@ -24,8 +24,29 @@ preserves the executed evidence. The isolated `catalog-460` curriculum is
 prepared, not trained: **460 routes**, **7,154 transitions**, and **7,129
 training rows**, with its narrow 12-row development theorem unchanged.
 
-The one next product milestone is broader lineage-clean development coverage
-and a stronger frozen symbolic baseline before comparing that named policy.
+The model-free DEV stage has now measured **16/64 closure** versus **48/64
+generic symbolic portfolio** successes. Its four historical goals are
+separate (**2/4** versus **3/4**); these narrower native-only lanes are not
+authority-matched to the old Alpha model/control run. Independent verification
+checked **130 completed policy rows** and freshly replayed **69 positive
+proofs**. Six portfolio workers hit the three-CPU-second guard and remain
+unknown. There were no model/solver calls, imports, or retrieval. The
+[DEV guide](docs/HYDRA_DEVELOPMENT_EVALUATION.md) and
+[archived evidence](artifacts/peano-hydra/development-2026-08-27/README.md)
+record the measured result.
+
+All eight generated families join one declared lineage component with **2,048
+catalog members**. Both the original preparation's **175 exposed training
+roots** and `catalog-460`'s **436** intersect that component: all eight families
+are **blocked for unseen-model comparison**. The 64 goals are not 64 independent
+lineages. The native typed
+seven-action DEV protocol is implemented; the full H0.3/reference/conformance
+target remains incomplete.
+
+The one next product milestone is **reviewed model-facing TRAIN/DEV lineage
+separation together with the required H0 semantic/reference checks, before
+any further GPU comparison**. Do not train `catalog-460` and relabel these
+DEV goals as unseen. The historical 247-theorem adapter remains unchanged.
 Use `make hydra-check`; do not silently widen Stable, admit a prospective v26
 candidate, or claim a research-grade model advantage before the required H0
 contracts, independently sealed H1 benchmark, and H5 evaluation are complete.
@@ -351,9 +372,13 @@ and remains in the current catalog; any genuinely new future mathematics
 requires a separately sealed later epoch.
 
 The existing four-goal Qwen result is retained only as a historical launch
-regression, not evidence for the H0–H5 experiment. The full structured macro
-protocol, semantic/reference campaign, independently held sealed benchmark,
-sufficiently scaled verified curriculum, and matched-compute model result are
+regression, not evidence for the H0–H5 experiment. The bounded native DEV
+profile and typed `Use`/`Cut`/`Witness`/`Induct`/`Rewrite`/`Split`/`Dispatch`
+compiler now exist, including transactional execution and state/authority
+receipts. Their model-free evaluation is development evidence, not a sealed
+comparison: all eight generated families overlap existing training exposure.
+The full H0.3 protocol, semantic/reference campaign, independently held sealed
+benchmark, sufficiently scaled verified curriculum, and matched-compute model result are
 not complete. A useful production implementation therefore does not imply an
 LLM-advantage claim. See
 [`docs/HYDRA_PRODUCT_ROADMAP.md`](docs/HYDRA_PRODUCT_ROADMAP.md),

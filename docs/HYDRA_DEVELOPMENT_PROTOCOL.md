@@ -108,3 +108,8 @@ and authority failures, receipt bindings, and partial-prefix rollback for
 both local and imported multi-step `Use`. This is not the independently
 implemented reference/conformance suite or the twice-cold full-library replay
 required by [the normative design](PEANO_HYDRA_DESIGN.md).
+
+The [development evaluation guide](HYDRA_DEVELOPMENT_EVALUATION.md) shows the
+measured symbolic run and blocked training-exposure audit. The
+[single product roadmap](HYDRA_PRODUCT_ROADMAP.md) sets the next review gate;
+the native action implementation does not authorize a new model comparison.

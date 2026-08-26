@@ -275,7 +275,9 @@ This checks **460 catalog routes**, including **260 Alpha-only**, and exports
 **7,129 training rows**, **12 development rows**, and **13 excluded rows**;
 preflight derives **892 optimizer steps** without starting CUDA. No model
 has been trained from this larger preparation. Its single 12-row validation
-theorem is unchanged, so broader lineage-clean evaluation is the next gate.
+theorem is unchanged. The broader DEV exposure audit below blocks an unseen
+comparison with either preparation; a reviewed lineage-clean split remains
+the next gate.
 
 `--run-id` binds a distinct adapter path ending in `-catalog-460`. If an
 output directory is omitted, a named run defaults to
@@ -287,6 +289,39 @@ Pass the selected directory explicitly via `--preparation-dir` for preflight,
 execution, and evaluation. The current standard Helios chain below reproduces
 the **192-route default**, not these alternate directories; a larger GPU run
 requires reviewed jobs that explicitly select the named preparation.
+
+## Completed model-free development evaluation
+
+The 2026-08-27 native symbolic run is now measured: **16/64** expanded goals
+for closure only and **48/64** for the state-aware portfolio. The four historical
+controls are a separate cohort (**2/4** and **3/4**). All **69 successful proof
+certificates** independently kernel-replayed; all **130 completed workers'**
+policy and typed-action records independently matched. Six workers hit the
+three-second CPU limit and remain unknown. None of the 16 expanded induction
+or composed-witness goals was solved under the frozen limits.
+
+The [development guide](HYDRA_DEVELOPMENT_EVALUATION.md) documents the seven
+typed native actions, reproducible commands, resource guards, and the
+[portable evidence bundle](../artifacts/peano-hydra/development-2026-08-27/README.md).
+This run used no models, imports, retrieval, or external solvers. Its native-only
+authority is narrower than the earlier Alpha model experiment, so these are
+not new model scores or an authority-matched comparison with that experiment.
+
+Most importantly, the eight declared families join **one declared lineage component
+with 2,048 catalog theorems**. Both existing preparations expose it: **175
+training theorem roots** in the original preparation and **436** in
+`catalog-460`. **8/8 families are blocked for unseen-model comparison** in
+both audits. The original handoff's historically clean four-goal quarantine
+does not establish separation for this newly expanded component audit.
+The 740 statements outside bounded canonicalization are conservatively masked,
+not assumed clean; semantic-equivalence completeness is not claimed.
+
+Preserve both preparations and the completed adapter. The next step is a
+reviewed model-facing TRAIN/DEV lineage separation and required H0
+semantic/reference evidence, before preparing a new named model run. Do not
+silently remove dependency edges, train the existing `catalog-460` corpus, or
+advertise these public DEV variants as unseen. Independent H1 final-set
+ownership/sealing and the H5 comparison remain separate open gates.
 
 ## Optional guarded Helios execution requires explicit authorization
 
@@ -369,12 +404,13 @@ lengths, semantic mathematical novelty, broad model capability, or an LLM
 advantage; the experimental H0/H1 gates remain open until their separate
 reviewed protocols and evidence are complete.
 
-The next implementation remains a single line: complete the required H0
-contracts, broaden lineage-clean development coverage, freeze the stronger
-symbolic baseline, then compare the prepared `catalog-460` policy against
-that baseline and the identical pretrained model. The independently owned
-final benchmark, future Alpha admission, public publication, and research
-claims each retain their separate review gates.
+The next implementation remains a single line: reviewed model-facing
+TRAIN/DEV lineage separation plus the required H0 semantic/reference checks,
+then a newly authenticated preparation and explicitly authorized model
+comparison. The symbolic DEV baseline is now measured; the existing
+`catalog-460` preparation does not pass its unseen-family audit. The
+independently owned final benchmark, future Alpha admission, public
+publication, and research claims each retain their separate review gates.
 
 See the single active [Hydra product roadmap](HYDRA_PRODUCT_ROADMAP.md) for
 sequencing and the

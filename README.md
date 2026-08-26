@@ -337,9 +337,30 @@ mathematical superiority. Read the
 [experiment report and independently replayable evidence](artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md).
 
 The next isolated `catalog-460` curriculum is **prepared, not trained**:
-**460 checked routes**, **7,154 transitions**, and **7,129 clean training
-rows**. Broader lineage-clean evaluation and a stronger symbolic baseline
-are the next milestone; the H0/H1/H5 research gates remain open.
+**460 checked routes**, **7,154 transitions**, and **7,129 training rows**
+after the original historical-goal quarantine. Its 12-row development set
+has not expanded with the training set.
+
+The new **model-free DEV run** measures broader native search: closure solves
+**16/64** generated goals and the generic symbolic portfolio **48/64**.
+The four historical diagnostics are reported separately: **2/4** versus
+**3/4**, with consecutive-product evenness still unknown. Independent
+verification replayed **69 positive proofs** and checked **130 completed
+policy rows**; six portfolio workers reached the three-CPU-second guard and
+remain unknown. There were no model calls, external solvers, imports, or
+retrieval. This narrower authority is not comparable with the old Alpha
+model/control scores. See the [DEV guide](docs/HYDRA_DEVELOPMENT_EVALUATION.md)
+and [archived results](artifacts/peano-hydra/development-2026-08-27/README.md).
+
+The lineage audit joins all eight generated families into **one component
+with 2,048 catalog members**. All eight families are **blocked for unseen-model
+comparison** with both existing preparations; 64 goals are not 64 independent
+lineages. The bounded native
+seven-action DEV protocol is implemented, but full H0.3 and H0/H1/H5
+acceptance remain open. **The single next milestone is reviewed model-facing
+TRAIN/DEV lineage separation together with the required H0 semantic/reference
+checks, before any further GPU comparison.** Do not train `catalog-460` and
+present these DEV goals as unseen.
 
 The historical 247-theorem adapter remains untouched. The active next track
 and honest experimental gates are in the

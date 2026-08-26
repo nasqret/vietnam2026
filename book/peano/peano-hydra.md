@@ -12,12 +12,19 @@ authority.
 Hydra runs bounded, independently replayed proof search under an explicit
 complete-digest Alpha authority. Its first Alpha-compatible Qwen run completed
 222 optimizer steps and improved the four-goal diagnostic from **0/4 to 3/4**;
-the separate symbolic control also proves **3/4**. The next product milestone
-is broader lineage-clean development coverage and a stronger frozen symbolic
-baseline before comparing the prepared `catalog-460` policy. The older
-247-theorem adapter remains bound to its historical release. The full H0/H1
-experiment gates are not complete, and no language-model advantage or new
-mathematical-discovery claim follows from this four-goal smoke.
+the separate symbolic control also proves **3/4**. All three learned proofs
+independently replayed. The subsequent native-only DEV run solves **16/64**
+with closure and **48/64** with a generic symbolic portfolio; its four
+historical diagnostics are separate (**2/4** versus **3/4**). The new lanes
+have narrower authority and must not be compared with the old Alpha scores.
+
+All eight DEV families overlap existing training exposure. The next single
+milestone is reviewed model-facing **TRAIN/DEV lineage separation together
+with the required H0 semantic/reference checks, before any further GPU
+comparison**. The `catalog-460` corpus is prepared, not trained, and must not
+be paired with these goals as an unseen evaluation. The older 247-theorem
+adapter is unchanged; H0/H1/H5 and the full H0.3 protocol remain open.
+No language-model advantage or new mathematical-discovery claim follows.
 ```
 
 Peano Hydra is an experiment, not a new trust assumption. We want to combine a
@@ -73,6 +80,8 @@ not a decider.
 ## One authority, many fallible explorers
 
 Hydra deliberately has many ways to be clever and one way to be right.
+The diagram is the research target. The completed DEV evaluation uses only
+native symbolic branches, with no model or external-solver calls.
 
 ```text
 original goal -> deterministic symbolic closure -> certificate -> kernel
@@ -116,7 +125,7 @@ uninteresting. Symbolic code is excellent when the next move follows from a
 dense local calculation. Language models are most plausible where search must
 make a sparse semantic choice.
 
-Hydra therefore runs cheap deterministic closure until it reaches a fixed
+The target design runs cheap deterministic closure until it reaches a fixed
 point. The **critical frontier** is a stalled state at which there is no
 uniquely justified cheap continuation within the current bounds. Examples are:
 
@@ -127,8 +136,9 @@ uniquely justified cheap continuation within the current bounds. Examples are:
 - retrieving a small premise bundle from hundreds of theorems; or
 - deciding which bounded solver should explore which subgoal.
 
-Only then is the generative model called. After one valid high-level choice,
-symbolic closure resumes. This leads to the testable decomposition
+Only then would the generative model be called. After one valid high-level
+choice, symbolic closure would resume. This is the testable target decomposition,
+not a model-routing result established by the current native DEV run:
 
 \[
   \text{proof search}
@@ -155,27 +165,50 @@ Split(kind)
 Dispatch(solver, premises, bounds)
 ```
 
-In the target, not-yet-completed H0.3 protocol, each action will have one
-canonical serialization and compile deterministically to
-existing Peano Lab commands. For example, `Witness(t)` becomes the public
-`exists t` action; a `Cut` becomes ordinary `have` or `suffices`. `Dispatch`
-starts a bounded untrusted search and may return hints or a reconstructable
-derivation, but never closes a goal merely because a solver printed “theorem.”
+The **bounded native DEV version is now implemented** in
+`training.peano_hydra.protocol`; it is distinct from the still-incomplete full
+H0.3 target. Each exact JSON record carries integer `v: 1`, an `op` from the
+seven tags above, and only its declared fields. For example, in a context
+containing `n`:
 
-Compilation and execution are transactional. If parsing, specialization,
-rewriting, or reconstruction fails, the proof state and undo history remain
-exactly unchanged. The trace retains the raw model text, parsed action,
-compiled commands, intermediate states, solver transcript, resource use, and
-kernel result. This makes it possible to distinguish model failure, interface
-failure, search failure, and certificate failure.
+```json
+{"v": 1, "op": "Witness", "term": "n + 0"}
+```
 
-The first executable plumbing test uses a deliberately smaller compatibility
+This compiles to `exists n + 0`. `Cut` becomes ordinary `have` or `suffices`;
+`Use` may import a permitted checked theorem, specialize it, and apply it.
+Its caller must provide finite tactic/theorem authority. Unknown fields,
+hidden programs, unsafe names, unavailable references, and out-of-profile
+terms or formulas are rejected.
+
+The development profile records the closed intuitionistic arithmetic grammar,
+binders, PA axioms, source identities, and explicit admission/resource limits.
+`Induct` currently requires an existing context variable and `motive: "goal"`;
+arbitrary explicit motives are not supported. `Dispatch` is one bounded
+native `refl`, `assumption`, `simp`, `norm_num`, or `compact_arith` call.
+It has no external-solver status or trust shortcut. See the
+[complete DEV action guide](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_DEVELOPMENT_PROTOCOL.md).
+
+`execute_action` submits the generated commands as one public transaction.
+If a later specialization fails after a successful prefix, the supplied proof
+state, undo history, and replay program remain unchanged; the append-only
+trace records the failed attempt. Receipts bind the action, complete observed
+state, finite authority, and profile. They are not QED certificates: every
+positive still needs original-goal kernel replay.
+
+The **full H0.3 target remains open**. It additionally requires the complete
+model/solver attestation and trace contract—raw proposal text, parsing,
+intermediate states, solver transcripts, resource use, and replay outcome—plus
+the required semantic/reference/conformance work and review. The native DEV
+implementation is usable now without claiming that entire gate is complete.
+
+The first executable plumbing test retains its deliberately smaller compatibility
 format: one complete public Peano line with a structural head. It accepts such
 actions as `have`, `induction`, `exists`, `cases`, and `rewrite`, while
 rejecting `simp`, `ring`, `compact_arith`, tactical wrappers, session commands,
-and multiline scripts. This is enough to test the trust boundary and the
-symbolic/model hand-off. It is not yet the structured version-1 action schema
-above, and it is not training evidence. Recorded teacher routes require a
+and multiline scripts. This unchanged `surface-macro-v0` format tests the trust
+boundary and symbolic/model hand-off; it is separate from the new typed DEV
+schema and is not training evidence. Recorded teacher routes require a
 complete kernel-checked QED by default; an open trace can enter only through an
 explicit partial-evidence option and never becomes a positive proof label.
 
@@ -365,7 +398,7 @@ metadata, and chooses a distinct clean theorem component for validation.
 The historical 247-theorem adapter and its authority are never reused as an
 Alpha-trained model.
 
-`make hydra-posttrain-ready` prepares this clean Alpha-authorized corpus,
+`make hydra-posttrain-ready` prepares this historically quarantined Alpha-authorized corpus,
 verifies the bounded Qwen training contract without allocating model weights,
 constructs an honest matched pretrained/trained evaluation plan, and runs a
 bounded model-free symbolic control. That control independently proves three
@@ -393,13 +426,48 @@ these four diagnostic goals do not establish a language-model advantage or
 close the separate H0/H1/H5 gates.
 
 A larger, separately named `catalog-460` run is **prepared, not trained**.
-It contains **460 checked routes**, **7,154 verified transitions**, and **7,129 clean training
-rows**. It has **not** trained another model, and its 12-row validation theorem
-is unchanged. The next milestone is broader lineage-clean development
-coverage and a stronger frozen symbolic baseline before another comparison.
+It contains **460 checked routes**, **7,154 verified transitions**, and **7,129 training
+rows** after the original historical-goal quarantine. It has **not** trained
+another model, and its 12-row validation theorem is unchanged. It is not
+lineage-clean relative to the new DEV cohort described below.
 The repository's `artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md`
 contains the measured run report, exact evidence files, and no-GPU replay
 instructions; the single product roadmap remains authoritative for sequencing.
+
+### The measured native development stage
+
+The model-free run `_deploy/hydra-development-v1` expands eight declared
+families into 64 goals, without supplied proof scripts or teacher routes.
+Closure proves **16/64**; the generic state-aware portfolio, which adds
+logical structure, bounded witnesses, and induction candidates, proves
+**48/64**. The historical four-goal cohort is kept separate: **2/4 closure**
+and **3/4 portfolio**, with consecutive-product evenness still unknown.
+There are no model calls, external solvers, theorem imports, or retrieval.
+The narrower native authority is not matched to the old Alpha model run,
+so its historical scores are neither a model advantage nor a regression
+against that older symbolic control.
+
+Independent verification checked **130 completed policy rows** and freshly
+kernel-replayed **69 positive proofs**: 18 closure and 51 portfolio. Six
+portfolio workers hit the three-CPU-second guard (`SIGXCPU`) and remain
+unknown. Their resource counters stay unavailable, not zero; measured
+completed-worker resources are not whole-run CPU or peak-memory totals.
+The [DEV evaluation guide](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_DEVELOPMENT_EVALUATION.md) explains
+the commands and guards, and the
+[archived report](https://github.com/nasqret/vietnam2026/blob/peano-lab/artifacts/peano-hydra/development-2026-08-27/README.md)
+preserves the actual evidence.
+
+The lineage result is as important as the proof count. All eight families
+join **one declared lineage component containing 2,048 catalog members**. Every
+family is blocked for unseen-model comparison by both the original
+preparation's **175 exposed training roots** and `catalog-460`'s **436**.
+The 64 goals are not 64 independent lineages. This is useful public DEV
+coverage, not a sealed H1 benchmark.
+
+The one next milestone is **reviewed model-facing TRAIN/DEV lineage separation
+together with the required H0 semantic/reference checks, before any further
+GPU comparison**. Training `catalog-460` and then calling these goals unseen
+would not satisfy that milestone.
 
 ## Build the strongest baseline first
 
@@ -527,6 +595,9 @@ none gets a vote on truth.
 - [Peano Hydra binding design](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_HYDRA_DESIGN.md)
 - [Hydra product roadmap](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_PRODUCT_ROADMAP.md)
 - [Hydra post-training pipeline](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_POST_TRAINING.md)
+- [Bounded native DEV protocol](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_DEVELOPMENT_PROTOCOL.md)
+- [Model-free DEV evaluation guide](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_DEVELOPMENT_EVALUATION.md)
+- [Measured DEV evidence](https://github.com/nasqret/vietnam2026/blob/peano-lab/artifacts/peano-hydra/development-2026-08-27/README.md)
 - [Training a Peano policy](training-a-peano-policy.md)
 - [AlphaGeometry](https://www.nature.com/articles/s41586-023-06747-5)
 - [AlphaProof](https://www.nature.com/articles/s41586-025-09833-y)

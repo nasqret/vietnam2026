@@ -1,6 +1,6 @@
 # Hydra development evaluation: broader goals, visible boundaries
 
-This is the next model-free engineering stage after the
+This is the completed bounded model-free engineering stage after the
 [first Alpha-v25 model experiment](../artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md).
 It compares a deterministic closure component with a state-aware symbolic
 portfolio, audits existing training exposure, and retains independently
@@ -33,6 +33,36 @@ The [frozen development profile and typed actions](HYDRA_DEVELOPMENT_PROTOCOL.md
 binds the grammar, constructive trust boundary, native action transport,
 limits, and implementation hashes. The original surface-macro-v0 runner and
 previous model/preparation manifests remain unchanged.
+
+## Measured run — 2026-08-27
+
+The [archived experiment](../artifacts/peano-hydra/development-2026-08-27/README.md)
+ran from clean source `7f0bdd62` with its full plan frozen before outcomes:
+
+| Cohort | Closure only | Symbolic portfolio |
+|---|---:|---:|
+| Expanded goals | **16/64** proved | **48/64** proved |
+| Historical diagnostics, separate | **2/4** proved | **3/4** proved |
+
+Independent verification passed for **69 successful proof certificates** and
+the deterministic policy/typed-action records of **130 completed workers**.
+Six of the 136 workers hit the three-second CPU guard and remain unknown,
+with unavailable CPU/RSS measurements left null. Both eight-goal families —
+inductive arithmetic and existential composition — remain entirely unsolved
+under these limits. Implementing their candidate generators is not the same
+as solving those benchmarks.
+
+The exposure audit is deliberately unfavorable: all eight families join one
+component containing **2,048 catalog theorems**. The original preparation
+exposes **175 training roots** in that component; `catalog-460` exposes
+**436**. Therefore **8/8 families are blocked for unseen-model comparison**
+in both preparations. Of 2,080 catalog statements, 1,340 fit bounded
+canonicalization; the remaining 740 and their descendants are masked, not
+declared clean. This does not alter either training corpus or model.
+
+The next milestone is reviewed model-facing TRAIN/DEV lineage separation and
+the required H0 semantic/reference checks, not another training run on the
+exposed component. These useful public diagnostics do not close H0/H1/H2/H5.
 
 ## Run it safely
 
@@ -136,6 +166,19 @@ The complete saved traces must match.
 It never starts a model or rewrites the recorded run. `plan.json` alone is
 only planning/partial-run evidence; only a completed `report.json` contains
 the final table.
+
+The archived run can be verified directly without the original preparations:
+
+```console
+python3 scripts/eval_peano_hydra_development.py \
+  --verify artifacts/peano-hydra/development-2026-08-27
+```
+
+The recorded implementation hashes must match. The preparation audit receipts
+are authenticated as part of the frozen plan; repeating those exposure audits
+requires the original preparations. Physical resource measurements and killed
+worker exits are historical observations, not independently hardware-attested
+measurements.
 
 ## What remains open
 

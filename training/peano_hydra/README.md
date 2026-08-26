@@ -13,6 +13,14 @@ replay. The fixed symbolic control also scores **3/4**, so this is not an
 LLM-advantage result. See the
 [run report and replay instructions](../../artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md).
 
+The subsequent model-free DEV stage measures **16/64 closure** versus **48/64
+generic symbolic portfolio** successes. Its separate historical cohort is
+**2/4** versus **3/4**. These native-only lanes have narrower authority than
+the old Alpha run; the scores are not evidence of model advantage or a
+regression against its symbolic control. See the
+[DEV guide](../../docs/HYDRA_DEVELOPMENT_EVALUATION.md) and
+[archived results](../../artifacts/peano-hydra/development-2026-08-27/README.md).
+
 ## One current product workflow
 
 Run the integrated local checks and prepare deterministic proof-development
@@ -84,7 +92,7 @@ evidence**. The displayed command actually checks **192 routes**, including
 **40 duplicates removed**. The earlier 33-route example remains **279
 verified transitions** with **2 duplicates removed**.
 
-The next handoff is separate from proof-curriculum generation:
+The existing post-training handoff is separate from proof-curriculum generation:
 
 ```console
 make hydra-posttrain-prepare
@@ -102,9 +110,9 @@ held-out goals and quarantines a matching **entire lineage from both training
 and development**. In particular,
 `triangular_product_even_hydra_candidate` is the same formula as the held-out
 `consecutive_product_even`: its 13 rows cannot enter either model-facing
-split. The verified 192-route source yields **1,773 clean training rows**,
-**12 clean development rows**, and **13 quarantined rows** from its **1,798
-total rows**; preflight derives **222 bounded optimizer steps** without
+split. Relative to that original quarantine, the verified 192-route source
+yields **1,773 training rows**, **12 development rows**, and **13 quarantined
+rows** from its **1,798 total rows**; preflight derives **222 bounded optimizer steps** without
 initializing CUDA. The older 279-row source therefore yields **261 training**, **5
 development**, and **13 quarantined rows**. The isolated quarantine receipt
 has no proof statement, prompt, completion, tactic, or trace. The default
@@ -171,10 +179,50 @@ to replace another preparation identity or changed manifest evidence; only
 byte-identical regeneration is allowed. Training and evaluation select a
 run through its authenticated `--preparation-dir`. The standard Slurm chain
 still selects the 192-route default; it does not implicitly consume a named
-local handoff. Broader lineage-clean development coverage and the stronger
-symbolic baseline come next, before another GPU comparison.
+local handoff. Neither preparation is an unseen training counterpart to the
+new DEV goals: the exposure audit below blocks both.
 
-## Current executable evidence
+## Model-free development evidence
+
+The completed `_deploy/hydra-development-v1` run uses the bounded native
+`hydra-development-no-imports-v1` authority. It makes **zero model/solver
+calls, theorem imports, and retrieval requests**. The Alpha-v25 epoch is
+bound separately for catalog/lineage metadata, not granted as worker import
+authority.
+
+| Cohort | Closure | Generic symbolic portfolio |
+| --- | --- | --- |
+| 64 expanded DEV goals | 16/64 | 48/64 |
+| Four historical diagnostics, separate | 2/4 | 3/4 |
+
+Independent verification checked the deterministic proposals in **130
+completed worker rows** and freshly kernel-replayed **69 positive proofs**
+(18 closure, 51 portfolio). Six of the 136 workers, all in the portfolio,
+exited at the **three-CPU-second guard** (`SIGXCPU`); they remain unknown,
+not failures of the mathematical statement. Their unavailable resource
+counters stay null, so completed-worker measurements are not whole-run CPU
+or peak-memory totals. The hard consecutive-product goal remains unknown.
+
+The eight declared families all join **one declared lineage component with 2,048
+catalog members**. The original preparation's **175 exposed training roots**
+and `catalog-460`'s **436** intersect that component: all eight families are
+**blocked for unseen-model comparison**. These 64 goals are not 64 independent
+lineages. The
+[DEV guide](../../docs/HYDRA_DEVELOPMENT_EVALUATION.md) explains planning,
+bounded execution, and independent verification; the
+[archive](../../artifacts/peano-hydra/development-2026-08-27/README.md) preserves
+the measured evidence.
+
+The [native DEV protocol](../../docs/HYDRA_DEVELOPMENT_PROTOCOL.md) now
+implements typed `Use`, `Cut`, `Witness`, `Induct`, `Rewrite`, `Split`, and
+`Dispatch`, with source-bound limits and atomic public-tactic execution.
+This does not close the full H0.3 protocol or its reference/conformance gates.
+The **single next milestone** is reviewed model-facing **TRAIN/DEV lineage
+separation together with the required H0 semantic/reference checks, before
+any further GPU comparison**. Do not train `catalog-460` and label this DEV
+cohort unseen. The historical 247-theorem adapter remains unchanged.
+
+## Historical teacher-oracle regression
 
 Run the provider-neutral teacher-oracle regression from the repository root:
 
