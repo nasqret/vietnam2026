@@ -1,5 +1,9 @@
 # Readable, independently checked Peano-to-Lean theorems
 
+The current shared Alpha-v25 product boundary and next Hydra engineering
+milestone are summarized in
+[`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md).
+
 Peano Lab's Lean exporter has two audiences. Mathematicians need a short
 theorem, useful names, ordinary number-theoretic concepts, and a quick way to
 reuse the result. Independent proof auditors additionally need the complete
@@ -225,7 +229,7 @@ Its complete 209-node advanced-layer proof artifact has been separately
 accepted by the unchanged intuitionistic kernel and the independently
 compiled Lean checker.
 
-Current immutable **Alpha v22** preserves all 1,830 historical v21 rows and
+Historical immutable **Alpha v22** preserves all 1,830 historical v21 rows and
 adds **60** independently checked theorems: **21** total and unique
 first-order binary-length theorems, **20** genuine Euclidean gcd-invariant
 and terminal-state identification theorems, and **19** complete
@@ -236,10 +240,46 @@ exact edition identity is
 `2750384264856ad10910c1e9369746da886f4760d41e356bfc9e7f8f4563c7db`.
 The complete **240-node**, **597-edge** transport-layer proof artifact is
 independently accepted by both the original intuitionistic kernel and the
-compiled Lean checker. G101 remains open for its formal logarithmic bound;
-G102 remains open for arbitrary-exponent canonical digit construction and its
-formal logarithmic bound; T13 remains open for arbitrary determinants, rank,
-and lattices. Checked component export does not certify an unproved goal.
+compiled Lean checker. At that historical v22 checkpoint, G101 and G102
+remained open for their formal logarithmic bounds.
+
+Historical immutable **Alpha v23** then adds **59** independently checked
+theorems: **17** exact logarithmic Euclidean-GCD results, **24** canonical
+arbitrary-exponent digit/execution results, and **18** constructive
+three-modulo-four prime-infinitude results. All **1,949** enrolled statements
+have checked-use authority; its independently checked **617-node**,
+**1,871-edge** proof artifact has SHA-256
+`cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11`.
+Consequently G101, G102, and G025 are genuinely proved, not open.
+
+Historical immutable **Alpha v24** preserves that complete v23 catalog and adds
+**59** independently checked theorems: **17** arbitrary signed cofactor-minor
+and four-dimensional determinant results, **15** exact natural Horner/formal
+derivative results, and **27** pairwise-coprime finite-CRT/arbitrary-list-LCM
+results. All **2,008 enrolled statements have checked-use authority**:
+**432 unchanged Stable** and **1,576 Alpha-only**, with **6,423 actual proof
+edges** and no unchecked or pending rows. Its edition identity is
+`1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b`.
+Its **203-node**, **502-edge**, **738,923-byte** research-layer proof artifact
+has SHA-256
+`627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9`
+and is independently accepted by the unchanged original kernel and Lean
+checker.
+
+Current immutable **Alpha v25** preserves every historical v24 proof and adds
+**72** independently checked theorems: **29** signed cofactor and alternating
+fold results, **19** exact Taylor/formal-derivative and qualified one-step
+Hensel results, and **24** noncoprime CRT compatibility/gcd-LCM results. All
+**2,080 enrolled statements have checked-use authority**: **432 unchanged
+Stable** and **1,648 Alpha-only**, with **6,633 actual proof edges** and no
+unchecked or pending rows. Its exact edition identity is
+`3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28`.
+Its **302-node**, **820-edge**, **1,041,166-byte** breakthrough-layer proof
+artifact has SHA-256
+`d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a`
+and is independently accepted by the unchanged original kernel and Lean
+checker. The stronger T13, G095, and G011 milestones remain open: checked
+component export never certifies an unproved broader goal.
 
 For example, an actual newly enrolled v20 theorem can be automatically
 translated and independently typechecked using the existing bounded exporter:
@@ -289,7 +329,12 @@ artifact** ends at a balanced conjunction of 17 exact new roots, and the
 **590-node v20 next-layer artifact** ends at a balanced conjunction of 12
 exact roots, the **209-node v21 advanced-layer artifact** ends at a balanced
 conjunction of 27 exact roots, and the **240-node v22 transport-layer
-artifact** ends at a balanced conjunction of 17 exact roots. None of
+artifact** ends at a balanced conjunction of 17 exact roots, the
+**617-node v23 milestone-closure artifact** closes its historical tranche,
+the **203-node v24 research-layer artifact** contains its historical three
+partial-frontier campaigns, and the **302-node v25 breakthrough-layer
+artifact** advances all three without closing their stronger milestone
+statements. None of
 those synthetic conjunctions is itself the statement of an individually named
 theorem. Therefore never pass a multi-root artifact as `--proof-bundle` for
 an individual Kummer, residual, or new campaign endpoint: the exporter
@@ -297,8 +342,9 @@ correctly rejects the mismatched target. Use its authenticated named-theorem
 path, a readable dependency strand, or a separately extracted exact matching
 rooted sub-bundle.
 
-The complete historical Alpha-v19/v20/v21 and current Alpha-v22 proof DAGs can instead
-be audited directly with the existing independently compiled Lean verifier:
+The complete historical Alpha-v19/v20/v21/v22/v23/v24 and current Alpha-v25 proof
+DAGs can instead be audited directly with the existing independently compiled
+Lean verifier:
 
 ```bash
 ../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
@@ -311,6 +357,12 @@ be audited directly with the existing independently compiled Lean verifier:
   research/arithmetic-library/artifacts/alpha-v21-advanced-layer-proof-bundle-v1.json
 ../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
   research/arithmetic-library/artifacts/alpha-v22-transport-layer-proof-bundle-v1.json
+../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+  research/arithmetic-library/artifacts/alpha-v23-milestone-closure-proof-bundle-v1.json
+../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+  research/arithmetic-library/artifacts/alpha-v24-research-layer-proof-bundle-v1.json
+../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+  research/arithmetic-library/artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json
 ```
 
 The historical v20 command independently returned
@@ -318,9 +370,15 @@ The historical v20 command independently returned
 The historical v21 command independently returns
 `ACCEPT ... nodes=209 root=208` for the frozen 1,005,317-byte artifact with
 SHA-256 `65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0`.
-The current v22 command independently returns
+The historical v22 command independently returns
 `ACCEPT ... nodes=240 root=239` for the frozen 1,099,541-byte artifact with
 SHA-256 `95e5f8a3baef113721d748f9d7071864b4bf9511737a27a1272d2695428fb938`.
+The historical v24 receipt independently binds the 738,923-byte research artifact
+to 203 checked theorem-bundle nodes, root 202, and SHA-256
+`627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9`.
+The current v25 receipt independently binds the 1,041,166-byte breakthrough
+artifact to 302 checked theorem-bundle nodes, root 301, and SHA-256
+`d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a`.
 
 An independently supplied bundle for a theorem outside Stable is identified
 as external bundle evidence; it does not promote that theorem into Stable or

@@ -16,21 +16,66 @@ The binding architecture and claim rules are in
 numbered 11 because [`PLAN/10_arithmetic_library.md`](10_arithmetic_library.md)
 already owns module 10.
 
+The single active engineering roadmap is
+[`docs/HYDRA_PRODUCT_ROADMAP.md`](../docs/HYDRA_PRODUCT_ROADMAP.md).
+This file retains the stricter publication-grade H0–H6 experiment as an honest
+acceptance ledger; unchecked experiment gates do not mean the implemented
+Hydra product or its original-goal verifier boundary is absent.
+
+## Current executable product baseline
+
+- [x] Preserve the unchanged original Peano kernel and independently replay
+      each successful Hydra search against the original theorem.
+- [x] Provide identified symbolic, structural-macro, and control heads with
+      exact capability bindings, fixed quotas, and auditable proposal ledgers.
+- [x] Run bounded dependency-first campaigns with deterministic results,
+      explicit global resource reservations, and replay-verified restart
+      checkpoints.
+- [x] Freeze the exact immutable Alpha v25 theorem DAG: **2,080 independently
+      checked theorems**, **6,633 actual proof-dependency edges**, and
+      **53 layers**; preserve the unchanged **432-theorem Stable default**.
+- [x] Bind the one reviewed global conservative-definition DAG: **120
+      definitions** and **214 reviewed definition-dependency edges**; keep
+      the **179-name, 165-edge blueprint** and **144-node, 303-edge milestone
+      graph** strictly non-authoritative.
+- [x] Allow checked Alpha-only lemma reuse solely through an explicit finite,
+      digest-bound `hydra-alpha-v25-` authority; never widen default Stable
+      sessions or silently attach the historical 247-theorem model adapter to
+      the current Alpha library.
+- [x] Prepare independently replayed optimization, discovery, and supervised
+      or preference-training evidence from that one frozen epoch.
+- [x] Preserve the independently checked, same-design campaign browsers and
+      on-demand Lean proof strands; offer Lean Live only for independently
+      compiled, import-free standalone proofs.
+- [x] Provide the single reproducible entry points `make hydra-check` and
+      `make hydra-prepare`.
+- [x] Classify the existing teacher-oracle pilot and historical four-goal
+      model-v3 evaluation as plumbing/launch smoke, not model capability or a
+      publication-grade matched-compute result.
+
+The next engineering milestone is to scale the replay-verified Alpha-v25
+optimization/discovery curriculum and compare a newly trained epoch-compatible
+policy with its identical pretrained baseline. This product milestone is not
+an H1 benchmark seal, an H3 scale claim, or an H5 LLM-advantage result.
+
 ## Non-negotiable contracts
 
-- [ ] Preserve the Peano Lab trust boundary: every scored QED independently
+- [x] Preserve the Peano Lab trust boundary: every accepted product QED independently
       kernel-checks against the original target; all search and ML components
       remain untrusted.
 - [ ] Freeze and hash the exact language/semantics profile. Do not call full HA
       decidable; do not call the restricted system a decider without sound
       negative evidence.
-- [ ] Freeze an ordered library epoch before building the benchmark. Later
-      library growth cannot enter an active campaign.
+- [x] Freeze the ordered Alpha-v25 product-preparation epoch and reviewed
+      definition DAG; later library growth cannot silently widen that
+      authority. The separate independently sealed H1 benchmark remains open.
 - [ ] Split by mathematical lineage and dependency component before expanding
       traces. Mask targets, equivalents, families, seeds, scripts,
       descendants, and dependent retrieval entries.
-- [ ] Retain complete provenance, model/solver calls, resource accounting,
-      certificates, and replay results needed to rebuild every table.
+- [x] Retain product-level capability bindings, proposal ledgers, explicit
+      search/resource budgets, checked certificates, and independent replay.
+- [ ] Add publication-grade raw model/solver calls, provider attestations,
+      resource accounting, and every field needed to rebuild an H5 table.
 - [ ] Keep the final set under an independent evaluation owner and unlock it
       once, only after all systems and budgets are frozen.
 - [ ] Record failed gates and negative results. Never tune on the sealed test.
@@ -60,7 +105,7 @@ already owns module 10.
       and compare every in-scope result.
 - [ ] Mutate proof constructors, binders, substitutions, translations,
       induction instances, and negative witnesses; require rejection.
-- [ ] Re-run kernel import-boundary, original-goal, and transactional-history
+- [x] Re-run kernel import-boundary, original-goal, and transactional-history
       tests.
 
 ### H0.3 Freeze the macro protocol
@@ -80,7 +125,7 @@ already owns module 10.
 
 - [ ] Two identical 100%-green cold replays of the frozen library.
 - [ ] All conformance/reference checks agree and all required mutations fail.
-- [ ] No kernel dependency on engine, UI, ML, or external solver code.
+- [x] No kernel dependency on engine, UI, ML, or external solver code.
 - [ ] Exact fragment and claim boundary reviewed before benchmark generation.
 
 **No-go:** any false acceptance, unresolved semantics, or unsupported negative
@@ -91,8 +136,10 @@ sound theorem prover and continue without a decision claim.
 
 ### H1.1 Freeze `L0`
 
-- [ ] Snapshot the complete checked public catalog available at freeze time
-      (at least the current 247-theorem runtime).
+- [x] Snapshot the complete checked current Alpha-v25 product-preparation
+      catalog: **2,080 theorems**, with the unchanged **432-theorem Stable
+      default**. The historical **247-theorem model-v3 authority** remains a
+      separate immutable baseline, not the current library size.
 - [ ] For each theorem bind name, canonical statement, ordered dependencies,
       source/script/certificate hashes, node count, depth, declaration order,
       and language profile.
@@ -290,52 +337,65 @@ Required controls:
       admissible wording.
 - [ ] Publish/merge only at an authorized milestone boundary.
 
-## Quadratic-reciprocity expansion track
+## Future Alpha growth and frozen-epoch discipline
 
-This is future library growth, not part of `L0` unless completed before H1.
+Quadratic reciprocity is not future library growth: its original exact proof
+was independently closed in historical Alpha v16 and remains checked in the
+current Alpha v25 catalog. Later campaigns independently established many
+further roots. Do not describe any of those historical proofs as unfinished.
 
-- [ ] Define a separate epoch for the required residue, primality, and
-      reciprocity statements.
-- [ ] Deposit candidate evaluation statements before any proof scripts,
-      traces, or teacher sketches are created.
-- [ ] Give the complete development one lineage family with explicit
-      sub-lineages and dependency edges.
-- [ ] When reciprocity is a target, mask its definitions introduced solely for
-      the route, intermediate lemmas, generated variants, equivalent/stronger
-      statements, scripts, traces, teacher material, descendants, and
-      dependent retrieval records.
-- [ ] Re-run H1 with a new library epoch and new sealed benchmark. Never append
-      the tranche to an already opened campaign.
+Genuine future growth follows one reviewed product path:
 
-## Planned schedule
+- [ ] Propose new target statements before proof scripts, traces, or teacher
+      sketches enter the corresponding evaluation lineage.
+- [ ] Reuse only the explicitly admitted earlier theorem DAG and reviewed
+      definition DAG under a fixed digest-bound authority.
+- [ ] Independently replay every candidate against its exact original goal;
+      admit it only through an ordinary dependency-closed immutable Alpha
+      release, never by editing a prior epoch.
+- [ ] Derive the next campaign browser, Lean strand, and Hydra training
+      projection from that same newly sealed theorem/definition identity.
+- [ ] Start any subsequent H1 research comparison with a new independently
+      sealed epoch and benchmark; never append new theorems to an already
+      opened experiment.
 
-The realistic end-to-end campaign is four to six months. A first H0–H4 DEV
-prototype is expected to take eight to ten weeks if the fragment and benchmark
-work begin before GPU training.
+## Ordered research schedule after product preparation
 
-| Weeks | Work | Exit artifact |
+These are dependency-ordered experimental stages, not promises that the
+currently useful production product has no implementation. Calendar estimates
+are intentionally omitted until actual replay costs and compute availability
+have been measured.
+
+| Order | Work | Exit artifact |
 |---:|---|---|
-| 1–2 | H0 semantics, macro schema, reference checks | reviewed profile and conformance report |
-| 2–4 | H1 epoch, lineage graph, sealed benchmark | `L0` root and independent deposit |
-| 3–7 | H2 symbolic portfolio and adapters | frozen `S` baseline |
-| 5–8 | H3 checked macro corpus | deterministic replayed release |
-| 7–10 | H4 model ladder and ablations | frozen `S+R` and candidate `H` |
-| 11 | H5 one-shot evaluation | closed evidence bundle |
-| 12–16+ | H6 replication, analysis, release | reproducible report and artifacts |
+| 1 | H0 semantics, structured macro schema, reference checks | reviewed profile and conformance report |
+| 2 | H1 independently frozen experiment epoch, lineage graph, sealed benchmark | `L0` root and independent deposit |
+| 3 | H2 symbolic portfolio and validity-preserving adapters | frozen `S` baseline |
+| 4 | H3 sufficiently large checked macro corpus | deterministic replayed release |
+| 5 | H4 epoch-compatible model ladder and ablations | frozen `S+R` and candidate `H` |
+| 6 | H5 one-shot matched-compute evaluation | closed evidence bundle |
+| 7 | H6 replication, analysis, authorized release | reproducible report and artifacts |
 
 ## Current status
 
 - [x] Binding design and campaign gates documented.
 - [x] Historical model-v3 four-goal result classified as a regression smoke,
       not campaign evidence.
-- [x] Current 247-theorem library identified as the minimum candidate `L0`;
-      exact H1 freeze is still pending.
-- [x] A pre-H0 `surface-macro-v0` portfolio/replay bootstrap exists for
-      teacher-oracle plumbing. It is deliberately narrower than the structured
-      H0.3 macro protocol and does not complete H0. All its rows are
-      comparison-ineligible until raw-call/resource evidence, provider
-      attestations, and genuine critical-frontier detection exist.
-- [ ] H0 has not passed its semantic, conformance, structured-macro, or
-      evidence gates.
-- [ ] No H1 benchmark is sealed and no H5 claim is available; experimental
-      scaffolds or earlier policy checkpoints do not change that status.
+- [x] Immutable current Alpha v25 contains **2,080** independently checked
+      theorems; Stable remains **432**, and the old **247-theorem** Qwen
+      authority remains historical and separately frozen.
+- [x] Current Hydra includes identified candidate portfolios, bounded
+      dependency scheduling, independently checked restart/replay, explicit
+      digest-bound Alpha authority, and one reviewed theorem/definition epoch.
+- [x] Initial optimization/discovery/post-training preparation independently
+      replays its positive proof roots. Its current pilot is not the large H3
+      curriculum and never establishes a model advantage.
+- [x] The checked `surface-macro-v0` teacher-oracle pilot is deliberately
+      narrower than the complete structured H0.3 macro protocol; raw provider
+      attestations and genuine critical-frontier evidence remain open.
+- [ ] **H0 is not complete:** semantic/reference conformance, the full
+      structured-macro protocol, and publication-grade evidence are missing.
+- [ ] **H1 is not complete:** no independently owned final benchmark is
+      sealed, regardless of the useful product-preparation epoch.
+- [ ] **No H5 claim is available:** no language-model advantage has been
+      demonstrated under the binding matched-compute experiment.

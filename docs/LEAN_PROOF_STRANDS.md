@@ -1,5 +1,9 @@
 # Readable proof strands: from Peano arithmetic to Lean
 
+For the shared Alpha-v25 theorem/definition DAG and Hydra's unified next
+engineering milestone, see
+[`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md).
+
 A proof strand tells the complete mathematical story behind a theorem: its
 axiomatic foundations, its named intermediate lemmas, their authored proof
 steps, and the final root theorem. Peano Lab can expose that story either as a
@@ -77,7 +81,8 @@ definition-aware graph at
 
 Campaign-scale jobs default to 1,024 named theorem nodes, 1 MiB of standalone
 Lean source, and a 512 KiB fully escaped Lean Live URL. These node limits cover
-every current Alpha-v22 dependency tree; the largest contains 557 theorems.
+all current checked Alpha-v25 dependency trees; the largest is the
+557-theorem quadratic-reciprocity closure.
 The service still runs just one independently bounded 1,024 MiB Lean worker,
 and excessive source size, link size, verification time, or genuine proof
 fallbacks never produce an unauthenticated Lean Live link.
@@ -99,7 +104,8 @@ not a heavyweight quadratic-reciprocity root. Selecting a theorem does not
 start proof replay; only the explicit build button starts the single bounded
 Lean worker.
 
-The six modern constructive campaign graphs use the identical selector. For
+All historical and current constructive campaign graphs use the identical
+selector. For
 example, the checked Alpha-v19 theorem `pythagorean_double_product` has just
 nine named prerequisite nodes and can be selected at
 <http://127.0.0.1:8787/book/_static/constructive-frontier-explorer/pythagorean-fermat-four/explorer/defined/graph.html?target=PF0000>.
@@ -167,8 +173,9 @@ proof step is a separate, explicit export operation.
 
 ## Review large Alpha theorems without a system crash
 
-Alpha v22 currently has 1,890 checked-use theorems, including the following
-independently established mathematical roots:
+Alpha v25 currently has 2,080 checked-use theorems and 6,633 actual
+proof-dependency edges, including the following independently established
+mathematical roots:
 
 ```text
 pa proof alpha quadratic_reciprocity_combined
@@ -191,6 +198,15 @@ pa proof alpha euclidean_execution_terminal_identified
 pa proof alpha euclidean_anchored_execution_linear_bound
 pa proof alpha binary_modular_execution_power_correct
 pa proof alpha binary_modular_execution_result_exists_unique
+pa proof alpha euclidean_gcd_execution_logarithmic_bound
+pa proof alpha binary_modular_execution_logarithmic_bound
+pa proof alpha infinitely_many_primes_three_mod_four
+pa proof alpha beta_signed_matrix_minor_exists
+pa proof alpha beta_horner_derivative_exists_unique
+pa proof alpha crt_pairwise_coprime_prefix_canonical_exists_unique
+pa proof alpha signed_matrix_cofactor_family_and_fold_exists
+pa proof alpha beta_horner_hensel_lift_exists
+pa proof alpha crt_merge_compatible_prefix_canonical_exists_unique
 ```
 
 For a root with a very large prerequisite graph, the browser still shows the
@@ -372,7 +388,7 @@ modules it actually verifies. A source path, dependency hash, release label,
 proof outline, authored script, or generated manifest is useful provenance but
 is not itself a proof.
 
-Stable remains a 432-theorem public release. Alpha v22 contains additional
+Stable remains a 432-theorem public release. Alpha v25 contains 1,648 additional
 checked-use theorems, but viewing or exporting an Alpha strand does not promote
 it into Stable. No strand export authorizes publication, model training,
 external deployment, protected FINAL evaluation, or any other release action.

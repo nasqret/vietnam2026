@@ -6,10 +6,19 @@ replays all current entries, discharges dependency assumptions through embedded 
 Cuts, and asks the independent kernel to check the resulting closed certificate against the
 original statement.
 
-The current local candidate runtime contains 384 unique checked entries: the
-original 23-entry base and 361 post-baseline entries, including 137 checked
-quadratic-residue campaign certificates. Those infrastructure certificates do
-not themselves admit the reciprocity law. The upstream
+The current independently checked **Alpha v25** release contains **2,080
+theorems** and **6,633 actual proof-dependency edges**; the ordinary public
+surface retains its unchanged **432-theorem Stable default**. Quadratic
+reciprocity was independently closed in historical Alpha v16 and remains
+checked in the current release. The complete current theorem/definition
+architecture and single next engineering milestone are described in the
+[Hydra product roadmap](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_PRODUCT_ROADMAP.md).
+
+The historical local candidate runtime described below contained **384**
+unique checked entries: the original 23-entry base and 361 post-baseline
+entries, including 137 checked quadratic-residue campaign certificates. At
+that historical checkpoint those infrastructure certificates did not yet
+admit the reciprocity law. The upstream
 26-record catalog ends at the fourth-power modulo-five capstone. Its first
 reconciliation with the 51-entry M20 branch exposed fourteen coincident
 post-core records once and produced the historical 63-entry snapshot.

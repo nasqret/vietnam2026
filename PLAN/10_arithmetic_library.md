@@ -1,5 +1,15 @@
 # Foundational arithmetic library — L2/L3 plan
 
+**Historical foundational ledger.** This document preserves the original
+arithmetic-library implementation routes, checked receipts, and the unchanged
+432-theorem Stable foundation. The current broader release is independently
+checked **Alpha v25** with **2,080 theorems**. Historical unchecked alternative
+routes do not override later completed theorem evidence or constitute the
+active product backlog. Current mathematical status is in
+[`14_constructive_number_theory_grand_campaign.md`](14_constructive_number_theory_grand_campaign.md);
+the single active engineering path is
+[`docs/HYDRA_PRODUCT_ROADMAP.md`](../docs/HYDRA_PRODUCT_ROADMAP.md).
+
 ## Objective
 
 Build a versioned, dependency-ordered, independently checked arithmetic

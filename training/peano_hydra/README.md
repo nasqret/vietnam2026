@@ -6,6 +6,56 @@ adapters can suggest candidate moves. A theorem is accepted only after the
 existing Peano kernel checks the original statement; `run_hydra` additionally
 replays every successful command sequence in a fresh traced session.
 
+## One current product workflow
+
+Run the integrated local checks and prepare deterministic proof-development
+artifacts from the repository root:
+
+```console
+make hydra-check
+make hydra-prepare
+```
+
+`training.peano_hydra.epoch.freeze_epoch()` selects the current Alpha release
+from the canonical campaign, authenticates its exact sealed theorem catalog,
+checks the immutable 432-theorem Stable parent, and separately authenticates
+the hygienically reviewed conservative definition DAG. Proof dependencies,
+definition dependencies, milestone-planning edges, and display-notation edges
+remain different evidence types. A new prospective source file or partially
+generated release never enlarges the active epoch.
+
+The default Peano surface remains Stable-only. Explicit Alpha access requires
+the complete label `hydra-alpha-vN-<64-hex-edition-identity>` together with
+finite tactic and theorem allowlists; every imported theorem is independently
+replayed against its exact original formula. A proof-improvement route can
+import only strict earlier checked theorems, never the target or a descendant.
+
+`training.peano_hydra.development` compares bounded independently checked
+routes and checks unadmitted candidate discoveries. The demonstration
+shortens a checked `zero_add` proof from five public tactic decisions to three
+and independently reconstructs the reviewed 13-decision, 180-node triangular
+evenness teacher route. `training.peano_hydra.curriculum` then exports only
+complete-QED transitions and separately checked shorter-route preferences:
+
+```text
+_deploy/hydra/epoch.json
+_deploy/hydra/sft.jsonl
+_deploy/hydra/preferences.jsonl
+_deploy/hydra/discovery.jsonl
+_deploy/hydra/manifest.json
+```
+
+Use `python3 scripts/prepare_peano_hydra.py --catalog-limit 32` to extend the
+same verified curriculum with bounded, independently replayed checked-catalog
+proofs, or repeat `--catalog-theorem NAME` for explicit Stable/Alpha targets.
+Each target receives only its strict earlier direct proof prerequisites.
+
+These reproducible development artifacts do not train a model, admit a
+theorem, assert semantic novelty or globally minimal proofs, or establish an
+LLM advantage. The single current development track is documented in
+[`docs/HYDRA_PRODUCT_ROADMAP.md`](../../docs/HYDRA_PRODUCT_ROADMAP.md) and
+[`docs/HYDRA_POST_TRAINING.md`](../../docs/HYDRA_POST_TRAINING.md).
+
 ## Current executable evidence
 
 Run the provider-neutral teacher-oracle regression from the repository root:

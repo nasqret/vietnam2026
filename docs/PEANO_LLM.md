@@ -2,10 +2,19 @@
 
 > **Historical M9 contract.** This document describes the original trace
 > release and evaluator that intentionally stopped before model training.  The
-> active M19 headless runner, replay-compiled policy rows, fixed `model-v1`
+> subsequent M19 headless runner, replay-compiled policy rows, fixed `model-v1`
 > authority, pinned sub-10B training experiment, and evaluator v4 are specified
-> in [`PEANO_TRAINING.md`](PEANO_TRAINING.md).  Where the two differ, the M19
-> protocol is current; the raw binding trace format remains version 1.
+> in [`PEANO_TRAINING.md`](PEANO_TRAINING.md). Where the two differ, the M19
+> protocol governs that historical model experiment; the raw binding trace
+> format remains version 1.
+
+The current broader product uses immutable **Alpha v25**, with **2,080
+independently checked theorems** and an unchanged **432-theorem Stable
+default**. The historical 247-theorem model-v3 authority is never widened
+automatically. For the one active verifier-backed proof-optimization,
+discovery, and post-training sequence, see
+[`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md) and
+[`HYDRA_POST_TRAINING.md`](HYDRA_POST_TRAINING.md).
 
 Peano Lab M9 prepared data and a reproducible evaluation boundary for a later
 small tactic model. It did **not** train, download, serve, or call a model. That

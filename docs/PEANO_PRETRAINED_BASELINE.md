@@ -1,5 +1,14 @@
 # Model-v3 pretrained-base comparison
 
+**Historical frozen comparison.** This control is valid only for its exact
+247-theorem model-v3 authority and four-goal launch smoke. The current
+mathematical release, **Alpha v25**, has **2,080 independently checked
+theorems** and an unchanged **432-theorem Stable default**; those later
+theorems cannot retroactively enter the old pretrained or LoRA model. The
+next separately frozen comparison belongs to the
+[`Hydra product roadmap`](HYDRA_PRODUCT_ROADMAP.md) and
+[`post-training pipeline`](HYDRA_POST_TRAINING.md).
+
 The model-v3 experiment has a separate pretrained-base control. It answers a
 narrow causal question: under the same prompt, theorem library, frozen goals,
 decoder, and kernel-guided search budget, what can pinned

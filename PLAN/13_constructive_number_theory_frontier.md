@@ -2,6 +2,18 @@
 
 Approved: 2026-08-23.
 
+**Historical transition roadmap.** The v12/v15 starting points, then-pending
+quadratic reciprocity, supplementary-law work, flagship transitions, and old
+route-specific unchecked boxes below are an immutable planning history, not
+the current product backlog. Quadratic reciprocity was independently closed in
+Alpha v16; subsequent sealed releases added the supplementary laws and other
+flagships. The current **Alpha v25** catalog has **2,080 independently checked
+theorems** and the unchanged **432-theorem Stable default**. Current open
+mathematical milestones are classified in
+[`14_constructive_number_theory_grand_campaign.md`](14_constructive_number_theory_grand_campaign.md),
+and the single next engineering step is defined by the
+[`Hydra product roadmap`](../docs/HYDRA_PRODUCT_ROADMAP.md).
+
 This roadmap is the dependency-ordered continuation of
 [`12_ha_number_theory_campaign.md`](12_ha_number_theory_campaign.md) after the
 constructive Bertrand campaign. The foundational dossier remains
@@ -332,7 +344,7 @@ remains open.
   audits now provide additional focused release coverage.
   Stable remains at 432 rows, the historical sealed Alpha v12 remains
   byte-for-byte at 1,303 rows, and exactly 570 Alpha specifications permit
-  checked theorem uses in both the historical v12 and current v13 views.
+  checked theorem uses in both the historical v12 and then-current v13 views.
 - Run `make ha-constructive-frontier-check` to replay the focused campaigns
   serially in bounded, independent Python processes.
 

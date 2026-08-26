@@ -6,6 +6,12 @@
 
 **Parent architecture:** [`docs/PEANO_LAB_DESIGN.md`](PEANO_LAB_DESIGN.md)
 
+**Current product roadmap:**
+[`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md). That roadmap records
+the implemented Alpha-v25 product and its single next development milestone;
+this document remains the binding, not-yet-completed H0–H6 experimental claim
+protocol. A working verifier-backed product does not imply an H5 model result.
+
 Peano Hydra is a falsifiable experiment in neuro-symbolic theorem proving for
 the Peano Lab object language. It asks whether an LLM can make a
 proof-producing symbolic prover better under matched resources. It is not a
@@ -89,8 +95,12 @@ result. A timeout or exhausted search is `unknown`, never negative evidence.
 
 Hydra does not evaluate against a moving theorem library. H1 freezes an
 ordered epoch `L0`, initially the complete independently checked public
-catalog available at campaign start (at least the current 247 theorem
-entries). Its content root MUST commit to, for every entry:
+catalog available at campaign start. The current product-preparation baseline
+is immutable Alpha v25: 2,080 independently checked theorems and an unchanged
+432-theorem Stable default. The older 247-theorem model-v3 authority is a
+separately frozen historical training baseline, not the current library. An
+H1 research epoch additionally requires its own independently sealed benchmark.
+Its content root MUST commit to, for every entry:
 
 - stable name and canonical statement;
 - ordered direct dependencies;
@@ -299,12 +309,15 @@ NOT be positive labels. Duplicate and near-duplicate accounting is by canonical
 state/action and lineage, not textual spelling. Every row carries its source
 class, theorem lineage, library prefix, capability profile, and replay root.
 
-### 4.2 Quadratic-reciprocity growth rule
+### 4.2 Existing reciprocity and future-epoch lineage rule
 
-Quadratic reciprocity is a valuable future stress domain, but it is not in the
-current 247-theorem library. Any new definitions, residue theory, Legendre-like
-encoding, reciprocity lemmas, or capstone proofs added after `L0` belong to a
-later library epoch. They MUST NOT silently enlarge the active Hydra campaign.
+Quadratic reciprocity is already independently proved: its exact root first
+closed in historical Alpha v16 and remains checked in the current Alpha-v25
+catalog. It was absent from the older separately frozen 247-theorem model-v3
+authority, but that historical training boundary does not make the present
+theorem unproved or novel. New definitions, residue theory, genuinely stronger
+reciprocity statements, or other proofs added after `L0` belong to a later
+library epoch. They MUST NOT silently enlarge an active Hydra campaign.
 
 If quadratic reciprocity or a reformulation becomes an evaluation target, the
 entire development lineage is masked: definitions introduced solely for that

@@ -1,5 +1,13 @@
 # Peano Lab Training Observatory
 
+This observatory reports the explicitly selected historical WMI model-v3 run;
+it does not silently upgrade that run's 247-theorem authority to the current
+**Alpha v25** release with **2,080 independently checked theorems** and its
+unchanged **432-theorem Stable default**. The next digest-bound Hydra
+proof-optimization/discovery/post-training workflow is documented in the
+[`Hydra product roadmap`](HYDRA_PRODUCT_ROADMAP.md) and
+[`post-training pipeline`](HYDRA_POST_TRAINING.md).
+
 The Training Observatory is a small, read-only browser dashboard for one Peano policy training
 allocation on the WMI A100 cluster. It shows scheduler state, optimizer progress, measured step
 time and ETA, recovery publications, bounded direct log tails, run provenance, GPU telemetry, and

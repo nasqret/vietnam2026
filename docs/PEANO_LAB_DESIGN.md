@@ -9,6 +9,14 @@ Python throughout; clean code over clever code.
 This document is the architecture the implementation must follow. The task breakdown with
 milestones and acceptance criteria lives in `PLAN/09_peano_lab.md`.
 
+**Current product boundary:** immutable Alpha v25 contains **2,080
+independently checked theorems** and **6,633 proof-dependency edges**; the
+ordinary public tactic surface retains its unchanged **432-theorem Stable
+default**. Hydra may import a checked Alpha lemma only under an explicitly
+requested complete-edition-digest authority and finite theorem allowlist. The
+one current engineering path is
+[`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md).
+
 ---
 
 ## 0. Plan review — decisions taken (and why)
@@ -536,8 +544,10 @@ reports a success only after the same owner-and-kernel path closes a frozen held
    sibling checker reconstructs and checks every proof constructor before its formally proved
    soundness theorem supplies the result; no proof placeholder, theorem-name trust, or
    compiler-reflection axiom is introduced. Explicit `pa lean alpha <thm>` applies the same
-   independently checked conversion only to closed theorems admitted by immutable Alpha v16;
-   body-only rows fail closed and the default Stable/public surface remains unchanged.
+   independently checked conversion only to closed theorems admitted by the explicitly
+   selected immutable Alpha release, currently Alpha v25. Quadratic reciprocity first
+   acquired that authority in historical Alpha v16; body-only rows and unsealed candidates
+   still fail closed, and the default Stable/public surface remains unchanged.
 
 ## 6. The theorem ladder (acceptance ladder for the whole project)
 

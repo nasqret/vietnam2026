@@ -1,5 +1,16 @@
 # Peano Lab post-training experiment — M19 research protocol
 
+**Historical model-v1/v2/v3 evidence, not the current Hydra epoch.** The
+247-theorem model-v3 adapter and every smaller catalog count below remain
+frozen to their original experimental authority. The current mathematical
+release is **Alpha v25** with **2,080 independently checked theorems**, while
+the ordinary public surface remains the unchanged **432-theorem Stable
+default**. None of those additional Alpha facts may enter the old model
+silently. The active next-generation verifier-backed optimization, discovery,
+and post-training workflow is specified in
+[`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md) and
+[`HYDRA_POST_TRAINING.md`](HYDRA_POST_TRAINING.md).
+
 **Status:** binding experiment protocol with the historical accepted WMI model-v1 result, the
 model-v2 design stage, and the model-v3 successor recorded through 2026-08-02. Model-v3 binds
 the complete 247-theorem ladder and the immutable corpus seal at content SHA-256

@@ -1,5 +1,11 @@
 # Deploying
 
+The single current proof-product authority and development sequence are in
+[`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md). The supported public
+Lean route is the same-origin proof gateway; deployment commands below remain
+explicit, separately authorized operations, not automatic Hydra-preparation
+steps.
+
 Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
 **no persistent daemons** — which is why the lab is fully client-side):

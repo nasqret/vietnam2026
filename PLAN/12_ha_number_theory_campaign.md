@@ -1,5 +1,16 @@
 # Strict HA number-theory campaign — L2/L3 plan
 
+**Historical release ledger.** This document preserves the exact original
+v1–v12 admission checkpoints, their historical checked-use counts, and all
+sealed evidence. The current checked release is **Alpha v25** with **2,080
+theorems** and an unchanged **432-theorem Stable default**. Phrases such as
+"current" inside a dated historical section refer only to that section's
+release date; they never downgrade later independently checked Alpha
+authority. Current mathematical evidence is tracked in
+[`14_constructive_number_theory_grand_campaign.md`](14_constructive_number_theory_grand_campaign.md),
+and the one active product direction is
+[`docs/HYDRA_PRODUCT_ROADMAP.md`](../docs/HYDRA_PRODUCT_ROADMAP.md).
+
 ## Objective and controlling blueprint
 
 Build a cumulative library of elementary number theory whose public authority
@@ -894,7 +905,7 @@ second release if the independent list substrate is not ready.  Quadratic
 reciprocity, FTA, or any beta-coded result already present in the repository
 does not waive these canonical-interface gates.
 
-## 2026-08-09 — current additive Alpha v2 / Stable release pipeline
+## 2026-08-09 — then-current additive Alpha v2 / Stable release pipeline
 
 The campaign now uses two cumulative editions rather than leaving reviewed
 work outside a library until final admission:
@@ -923,7 +934,7 @@ Current sealed topology:
 |---|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v1 (sealed parent) | 885 | 2,641 | 45 | 570 |
-| Alpha v2 (current) | 902 | 2,674 | 45 | 570 |
+| Alpha v2 (historical checkpoint) | 902 | 2,674 | 45 | 570 |
 
 Alpha v2 contains 470 Alpha-only rows. Its evidence split is 432
 `stable_closed`, 138 `alpha_closed`, 331 `body_checked`, and one
@@ -1002,7 +1013,7 @@ Alpha v3 is an additive child of the sealed Alpha v2 channel:
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v1 (sealed) | 885 | 2,641 | 45 | 570 |
 | Alpha v2 (sealed) | 902 | 2,674 | 45 | 570 |
-| Alpha v3 (current) | 923 | 2,730 | 45 | 570 |
+| Alpha v3 (historical checkpoint) | 923 | 2,730 | 45 | 570 |
 
 The exact first 902 entries are preserved. Indices 902--922 add 21 Bertrand
 rows: four quantitative order facts, four constructive interval-search facts,
@@ -1043,7 +1054,7 @@ then a two-fresh-process cold closure receipt before any evidence upgrade.
 
 ## 2026-08-09 — Bertrand Round 2 and additive Alpha v4
 
-Alpha v4 is now the current cumulative building edition. It preserves the
+Alpha v4 was the then-current cumulative building edition. It preserves the
 exact 923-row Alpha v3 ledger and appends 42 dependency-topological Bertrand
 rows at indices 923--964:
 
@@ -1062,7 +1073,7 @@ Current exact topology:
 |---|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v3 (sealed parent) | 923 | 2,730 | 45 | 570 |
-| Alpha v4 (current) | 965 | 2,891 | 45 | 570 |
+| Alpha v4 (historical checkpoint) | 965 | 2,891 | 45 | 570 |
 
 Membership is 432 Stable plus 533 Alpha-only rows. Evidence is 432
 `stable_closed`, 138 `alpha_closed`, 394 `body_checked`, and one
@@ -1102,7 +1113,7 @@ unchanged.
 
 ## 2026-08-09 — Alpha v5 and the next Bertrand proof front
 
-Alpha v5 is now the current cumulative building edition. It preserves the
+Alpha v5 was the then-current cumulative building edition. It preserves the
 exact 965-row Alpha-v4 ledger and enrolls the seven `FactorialVal` rows from
 `05cb3ff` at indices 965--971. Commit `85625d6` publishes the runtime and
 artifact family.
@@ -1111,7 +1122,7 @@ artifact family.
 |---|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v4 (sealed parent) | 965 | 2,891 | 45 | 570 |
-| Alpha v5 (current) | 972 | 2,912 | 45 | 570 |
+| Alpha v5 (historical checkpoint) | 972 | 2,912 | 45 | 570 |
 
 Alpha v5 has 432 Stable and 540 Alpha-only rows. Its evidence partition is
 432 `stable_closed`, 138 `alpha_closed`, 401 `body_checked`, and one
@@ -1163,7 +1174,7 @@ relational-power + 3 Legendre-valuation bridge.
 |---|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v5 (sealed parent) | 972 | 2,912 | 45 | 570 |
-| Alpha v6 (current) | 993 | 2,977 | 45 | 570 |
+| Alpha v6 (historical checkpoint) | 993 | 2,977 | 45 | 570 |
 
 Alpha v6 has 432 Stable and 561 Alpha-only rows. Evidence is 432
 `stable_closed`, 138 `alpha_closed`, 422 `body_checked`, and one
@@ -1233,7 +1244,7 @@ factorial--Legendre agreement.
 |---|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v6 (sealed parent) | 993 | 2,977 | 45 | 570 |
-| Alpha v7 (current) | 1,017 | 3,072 | 45 | 570 |
+| Alpha v7 (historical checkpoint) | 1,017 | 3,072 | 45 | 570 |
 
 Alpha v7 has 432 Stable and 585 Alpha-only rows. Evidence is 432
 `stable_closed`, 138 `alpha_closed`, 446 `body_checked`, and one
@@ -1296,7 +1307,7 @@ lower-bound rows across nine source blocks. The binding control document is
 |---|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v7 (sealed parent) | 1,017 | 3,072 | 45 | 570 |
-| Alpha v8 (current) | 1,055 | 3,224 | 45 | 570 |
+| Alpha v8 (historical checkpoint) | 1,055 | 3,224 | 45 | 570 |
 
 Alpha v8 has 432 Stable and 623 Alpha-only rows. Evidence is exactly 432
 `stable_closed`, 138 `alpha_closed`, 484 `body_checked`, and one
@@ -1364,7 +1375,7 @@ and
 |---|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v8 (sealed parent) | 1,055 | 3,224 | 45 | 570 |
-| Alpha v9 (current) | 1,076 | 3,276 | 45 | 570 |
+| Alpha v9 (historical checkpoint) | 1,076 | 3,276 | 45 | 570 |
 
 Alpha v9 has 432 Stable and 644 Alpha-only rows. Evidence is exactly 432
 `stable_closed`, 138 `alpha_closed`, 505 `body_checked`, and one
@@ -1431,7 +1442,7 @@ Product provider remains excluded. The binding control document is the
 |---|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v9 (sealed parent) | 1,076 | 3,276 | 45 | 570 |
-| Alpha v10 (current) | 1,085 | 3,306 | 45 | 570 |
+| Alpha v10 (historical checkpoint) | 1,085 | 3,306 | 45 | 570 |
 
 Alpha v10 has 432 Stable and 653 Alpha-only rows. Evidence is exactly 432
 `stable_closed`, 138 `alpha_closed`, 514 `body_checked`, and one
@@ -1495,7 +1506,7 @@ Primorial fourth-power capstone, and five B5 prime-divisor support rows.
 |---|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v10 (sealed parent) | 1,085 | 3,306 | 45 | 570 |
-| Alpha v11 (current) | 1,123 | 3,482 | 45 | 570 |
+| Alpha v11 (historical checkpoint) | 1,123 | 3,482 | 45 | 570 |
 
 Alpha v11 has 432 Stable and 691 Alpha-only rows. Evidence is exactly 432
 `stable_closed`, 138 `alpha_closed`, 552 `body_checked`, and one
@@ -1559,7 +1570,7 @@ BP02.
 |---|---:|---:|---:|---:|
 | Stable | 432 | 1,185 | 22 | 432 |
 | Alpha v11 (sealed parent) | 1,123 | 3,482 | 45 | 570 |
-| Alpha v12 (current) | 1,303 | 4,302 | 45 | 570 |
+| Alpha v12 (historical checkpoint) | 1,303 | 4,302 | 45 | 570 |
 
 Alpha v12 has 432 Stable and 871 Alpha-only rows. Evidence is exactly 432
 `stable_closed`, 138 `alpha_closed`, 732 `body_checked`, and one

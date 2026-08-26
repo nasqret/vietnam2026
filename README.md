@@ -99,40 +99,54 @@ that complete 1,830-row parent and adds **60 independently proved results**:
 **21 total, functional, and unique first-order binary-length theorems, 20
 Euclidean gcd-invariant and terminal-state identification theorems, and 19
 complete supplied-digit binary modular execution/power-correctness
-theorems**. Current immutable **Alpha v23** preserves every one of those
+theorems**. Historical immutable **Alpha v23** preserves every one of those
 1,890 checked results and adds **59 independently proved theorems**: **17
 complete logarithmic Euclidean-GCD theorems, 24 canonical binary-digit and
 logarithmic modular-execution theorems, and 18 theorems proving infinitely
-many primes congruent to three modulo four**. All **1,949 enrolled theorems
-have independently checked-use authority**: **432 Stable** and **1,517
-Alpha-only**, with **zero body-only or pending entries** and **6,285 checked
-dependency edges**. The **432-theorem default Stable edition remains
+many primes congruent to three modulo four**. Historical immutable
+**Alpha v24** preserves that complete 1,949-theorem parent and adds **59
+independently proved results**: **17 signed-matrix/minor theorems, 15 exact
+natural-polynomial formal-derivative theorems, and 27 finite-list CRT/LCM
+theorems**. Current immutable **Alpha v25** preserves all 2,008 independently
+checked predecessor results and adds **72 genuinely proved theorems**: **29
+signed-cofactor and alternating-fold theorems, 19 exact Taylor and one-step
+Hensel-lifting theorems, and 24 non-coprime CRT-compatibility and gcd/LCM
+lattice theorems**. All **2,080 enrolled theorems have independently checked-use
+authority**: **432 Stable** and **1,648 Alpha-only**, with **zero body-only or
+pending entries**, **6,633 checked dependency edges**, and **53 dependency
+layers**. The **432-theorem default Stable edition remains
 unchanged**. Every historical flagship bundle, the historical **590-node
 Alpha-v20 next-layer certificate**, the historical **209-node Alpha-v21
 advanced-layer certificate**, the historical **240-node Alpha-v22
-transport-layer certificate**, and the current **617-node Alpha-v23
-milestone-closure certificate** are independently checked by the original
+transport-layer certificate**, the historical **617-node Alpha-v23
+milestone-closure certificate**, the historical **203-node Alpha-v24
+research-layer certificate**, and the current **302-node Alpha-v25
+breakthrough-layer certificate** are independently checked by the original
 intuitionistic kernel and the separately compiled Lean verifier. Arbitrary
 natural and signed matrix multiplication, unique first-order `BitLen`, actual
 Euclidean terminal-state gcd identification with the exact
 `steps <= 2 * BitLen(b) + 1` bound, arbitrary-exponent canonical binary
 digits with actual power-correct execution and
 `operations <= 3 * BitLen(e) + 2`, and infinitude of primes three modulo four
-are proved. Arbitrary-dimensional determinants, rank/lattices, higher
-reciprocity laws, three squares, and Fermat exponent-four descent remain
-genuinely open.
+are proved. Exact signed first-row cofactor families, quadratic Taylor
+remainders, constructive one-step Hensel lifts, and canonical non-coprime CRT
+under exact merge compatibility are also proved. The stronger unrestricted
+matrix/lattice milestone **T13**, unrestricted prime-power Hensel milestone
+**G095**, and fully pairwise-compatible finite CRT milestone **G011** remain
+genuinely **OPEN**, as do higher reciprocity laws, three squares, and Fermat
+exponent-four descent.
 
 The [interactive constructive number-theory research atlas](book/_static/constructive-grand-campaign/index.html)
 organizes these proofs within **five mathematical domains**, **twelve
 families**, **120 major goals**, **16 reusable constructive tools**, **eight
-existing anchors**, and **152 shared mathematical terms**. Its five-level
+existing anchors**, and **179 shared mathematical terms**. Its five-level
 navigation connects the complete programme to individual campaigns, verified
 theorem roots, definition-aware proof graphs, exact shared notation
 dependencies, and the honest still-open research frontier. Actual proof
 prerequisites remain visibly separate from conservative display definitions,
 future planning vocabulary, and conceptual mathematical connections. The
-shared registry contains **97 hygienically checked conservative definitions**,
-**159 actual definition prerequisites**, and **61 signature-verified links**
+shared registry contains **120 hygienically checked conservative definitions**,
+**214 actual definition prerequisites**, and **88 signature-verified links**
 from blueprint vocabulary into the local proof explorers.
 
 The 432-entry native ladder—23 legacy, 212 foundation, 12 mod-five, 137
@@ -261,6 +275,42 @@ narrow launch smoke. Base weight shards were not content-hashed before and
 after loading, complete raw generation/extraction/search-edge transcripts are
 absent, and four goals cannot establish bit-for-bit base identity, a causal or
 statistical training effect, broad PA ability, or induction capability.
+
+---
+
+## Hydra: one verified proof-development workflow
+
+Hydra is the untrusted proof-search, proof-optimization, proof-discovery, and
+post-training layer of the same Peano product. It never introduces a second
+kernel, a parallel theorem collection, or a parallel definition registry.
+Every accepted route is freshly replayed against its original closed theorem
+through the unchanged independent kernel.
+
+The canonical product has exactly two growing mathematical graphs: the sealed
+**2,080-theorem, 6,633-edge checked theorem DAG**, and the independent
+**120-definition, 214-edge reviewed conservative definition DAG**. Research
+milestones, browser notation references, and blueprint vocabulary remain
+separate planning/presentation evidence. The ordinary tactic surface remains
+Stable-only; checked Alpha use requires an exact full-digest edition identity
+and finite explicit theorem/tactic authority. The historical Qwen3-1.7B
+adapter keeps its immutable 247-theorem training environment.
+
+Run the integrated local product checks and deterministic development-data
+preparation with:
+
+```console
+make hydra-check
+make hydra-prepare
+```
+
+The preparation workflow writes checked proof-state transitions,
+independently verified shorter-route preferences, unadmitted checked
+discovery receipts, and exact epoch/file identities into `_deploy/hydra/`.
+It never trains or deploys a model, promotes a theorem, asserts global tactic
+optimality or semantic novelty, or claims an LLM advantage. The active next
+track and honest experimental gates are in the
+[single Hydra product roadmap](docs/HYDRA_PRODUCT_ROADMAP.md) and the
+[verified post-training guide](docs/HYDRA_POST_TRAINING.md).
 
 ---
 

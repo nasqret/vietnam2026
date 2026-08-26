@@ -1,5 +1,8 @@
 # Independently readable Lean proof coverage
 
+For the current Alpha-v25 release boundary and overall Hydra development path,
+see [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md).
+
 Hydra translates each original Peano tactic into ordinary Lean proof code and
 requires the unchanged Lean kernel to compile the exact theorem. The generated
 standalone Lean Live proof includes its actual named prerequisite proofs and no
@@ -37,7 +40,7 @@ Five exact proof-state correspondences materially extend this coverage:
   grows by only about 2.3%.
 
 Actual bounded independent Lean compilation confirmed the historical Alpha-v19
-theorem, still present in the current Alpha-v21 edition,
+theorem, still present in the current Alpha-v25 edition,
 `pythagorean_double_product` as nine named readable proofs, nine dependency
 edges, and 44 original tactic decisions, with zero certificate fallbacks.
 The complete generated standalone sources for that theorem, Stable `add_comm`,
@@ -76,7 +79,8 @@ compiles as a complete six-theorem standalone proof. Its 6,575-byte Lean
 source and 3,792-byte verified Lean Live link include the repaired
 `division_remainder_exists` dependency and no certificate fallback.
 
-The originally blocked current Alpha-v21 campaign theorem
+The originally blocked historical Alpha-v21 campaign theorem, retained in the
+current Alpha-v25 edition,
 `prime_inverse_prefix_fixed_cases` now passes the complete browser-service
 acceptance test with **66 named theorem nodes, 130 dependency edges, 1,483
 original tactic decisions, and zero certificate fallbacks**. Its exact
@@ -101,11 +105,13 @@ Both real campaign links were additionally decoded with upstream JavaScript
 `lz-string` 1.5.0; each decoded source matched its locally compiled standalone
 file and authenticated SHA-256 exactly.
 
-The current sealed Alpha-v21 catalog contains **1,830 checked theorems** and
-**5,986 checked dependency edges**. All
-current transitive dependency trees fit the browser's default 1,024-theorem
-node budget; the largest has 557 nodes. Eighty-two roots exceed the former
-256-node limit and nine exceed 512 nodes. These are graph-coverage counts,
+The current sealed Alpha-v25 catalog contains **2,080 checked theorems** and
+**6,633 checked dependency edges**. Current transitive dependency trees fit
+the browser's default 1,024-theorem node budget. The largest current closure
+has 557 nodes; **90** roots exceed the former 256-node limit, **9** exceed
+512 nodes, and **none** exceed 1,024 nodes. A historical Alpha-v21 graph audit
+instead counted 1,830 theorems, 5,986 edges, and 82 roots above 256 nodes; those
+measurements remain explicitly historical. These are graph-coverage counts,
 **not** a claim that every root has a completely reconstructed standalone Lean
 proof: deeper campaign strands can still contain explicit certificate-backed
 nodes, and very large sources can exceed their separate reviewed byte limit.

@@ -1,5 +1,8 @@
 # Independent Lean Live inspection
 
+For the shared current theorem/definition DAG and Hydra's next development
+milestone, see [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md).
+
 Hydra can turn a complete, already generated, **readable-only named proof
 strand** into one standalone Lean 4 source file. The source contains every
 named prerequisite in dependency order, exactly the conservative definitions
@@ -176,9 +179,11 @@ does not fabricate a standalone file or share link.
 ## Campaign-scale theorem proofs
 
 The browser defaults to at most 1,024 named prerequisite theorems, 1 MiB of
-standalone source, and a 512 KiB exact Lean Live URL. Current Alpha v21 contains
-1,830 checked theorems; all of their dependency closures fit the node budget,
-including the largest current closure of 557 named theorems. Raising the node
+standalone source, and a 512 KiB exact Lean Live URL. Current Alpha v25 contains
+2,080 checked theorems and 6,633 proof-dependency edges; their dependency
+closures all fit the node budget. The largest is the 557-theorem
+quadratic-reciprocity closure; 90 closures exceed 256 nodes, nine exceed 512,
+and none exceed 1,024. Raising the node
 budget does not start any proof automatically: a selected theorem is compiled
 only after a human explicitly clicks **Build Lean proof**, and the service
 still permits just one bounded Lean worker.

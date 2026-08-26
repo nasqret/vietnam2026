@@ -1,5 +1,14 @@
 # Public, independently checked Lean proofs
 
+For Hydra's single product roadmap and current Alpha-v25 theorem/definition
+authority, see [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md).
+The public selector reads the same **2,080-theorem**, **6,633-edge** checked
+Alpha v25 release and unchanged **432-theorem Stable default** as every other
+campaign browser. Its **27 proof families**, **29 canonical theorem-graph
+surfaces**, and **3,937 eligible staged graph/theorem pages** share one
+same-origin proof action; all **764 checked Alpha exact-edition theorem
+pages** require both their original independent checked-use receipts.
+
 The published theorem explorers can build a selected Peano theorem, reconstruct
 its complete named dependency strand, independently compile the generated Lean
 code, report progress, download its proof, and open every genuinely standalone
@@ -85,6 +94,24 @@ make lean-public-stop
 `make lean-public` session and reports that the background manager does not
 own it; existing operator processes are never silently terminated.
 
+### Restart after updating local Python code
+
+An existing Lean service does not automatically reload upgraded Python
+modules. At an operator-selected maintenance time, restart a manager-owned
+service explicitly:
+
+```bash
+make lean-public-stop
+make lean-public-start
+make lean-public-status
+```
+
+If the local service was started manually with `make lean-browser`, stop it
+in its owning terminal and rerun that command there. Never automatically stop
+someone else's service or interrupt an active public SSH tunnel; coordinate
+any maintenance interruption with its operator. Restarting a local process
+does not deploy content or change the supported same-origin public route.
+
 The public proof action is live while the trusted machine, foreground mailbox
 broker, and SSH tunnel are running. If the tunnel is offline, the public gateway
 responds with a clear
@@ -115,4 +142,6 @@ it. The public website's existing static proof pages remain available.
 
 The published selector is intentionally same-origin only: proof jobs and
 downloads remain on the existing faculty HTTPS site and its owner-controlled
-private SSH tunnel.
+private SSH tunnel. An external HTTPS proof-service origin is not a supported
+public browser path, even if a lower-level backend or staging option can be
+configured independently.

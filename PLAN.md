@@ -4,6 +4,32 @@ The plan is multi-level. **L0** fixes the goals; **L1** lists the work modules (
 [`PLAN/`](PLAN/)); **L2/L3** live inside those files as concrete tasks with acceptance criteria.
 Narrative progress is in [`JOURNAL.md`](JOURNAL.md); durable facts in [`MEMORY.md`](MEMORY.md).
 
+## Current product state and single active next step
+
+The single active engineering roadmap is
+[`docs/HYDRA_PRODUCT_ROADMAP.md`](docs/HYDRA_PRODUCT_ROADMAP.md). The current
+independently checked release is **Alpha v25**: **2,080 theorems**, **6,633
+actual theorem-proof edges**, and an unchanged **432-theorem Stable default**.
+The one authoritative conservative-definition DAG has **120 reviewed
+definitions** and **214 definition prerequisites**. Mathematical milestone
+and blueprint-notation views are separate non-authoritative planning
+projections.
+
+The one next product milestone is to scale replay-verified proof optimization,
+candidate discovery, and supervised/preference post-training from the same
+digest-bound Alpha-v25 theorem/definition epoch. Use `make hydra-check` and
+`make hydra-prepare`; do not silently widen Stable, admit a prospective v26
+candidate, or claim a research-grade model advantage before its independently
+sealed H0–H5 gates. The public same-origin theorem browsers and bounded Lean
+proof service are already implemented; their evidence and release identities
+remain distinct from future model-training claims.
+
+The long checkpoint narratives below are historical ledgers. Their old
+pending routes, scheduler jobs, release sizes, and deployment blockers record
+what was true at that checkpoint; they are not the current product backlog.
+For current mathematical status, use
+[`PLAN/14_constructive_number_theory_grand_campaign.md`](PLAN/14_constructive_number_theory_grand_campaign.md).
+
 ## L0 — Goals
 
 > See [`PLAN/00_goals.md`](PLAN/00_goals.md)
@@ -29,6 +55,8 @@ mathematics — with every idea presented **informally (runnable) and formally (
 | Native quadratic reciprocity | [`PLAN/11_quadratic_reciprocity.md`](PLAN/11_quadratic_reciprocity.md) | Parity and finite folds → Euler/Gauss/Eisenstein → a checked reciprocity certificate. |
 | Peano Hydra | [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md) | Falsifiable neuro-symbolic campaign: frozen fragment/library/benchmark → strong symbolic baseline → sparse LLM guidance → matched-compute evaluation. |
 | Strict HA number theory | [`PLAN/12_ha_number_theory_campaign.md`](PLAN/12_ha_number_theory_campaign.md) | Canonical remainder/gcd/data interfaces → modular inverses and CRT → cumulative strict-HA releases. |
+| Historical constructive frontier | [`PLAN/13_constructive_number_theory_frontier.md`](PLAN/13_constructive_number_theory_frontier.md) | Archived v12-onward frontier transition; historical first-admission evidence, not the current execution queue. |
+| Grand constructive campaign | [`PLAN/14_constructive_number_theory_grand_campaign.md`](PLAN/14_constructive_number_theory_grand_campaign.md) | Current Alpha-v25 theorem/definition evidence, 120 mathematical milestones, and honest dependency-first open targets. |
 
 ## L2 / L3
 
@@ -36,7 +64,7 @@ Each `PLAN/*.md` file spells out **objectives**, **subtasks**, and **acceptance 
 checkboxes; keep them current as work lands. The through-line and prerequisite graph from the research
 synthesis are the backbone the book and vault follow.
 
-## Active Peano Lab milestone
+## Historical Peano Lab milestone ledger
 
 M19 adds a compact headless adapter and a kernel-guided post-training experiment without changing
 the prover's trust boundary. The JSONL runner reuses the production parser, surface tactics,
@@ -141,11 +169,13 @@ ordinary trained-report replay correctly continues to reject its incomplete
 historical nested environment. This is a narrow launch smoke, not bit-for-bit
 base identity, a statistical or causal comparison, broad PA ability, or
 induction capability. See
-[`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). M18 remains the latest staged
-browser milestone; production remains untouched behind the M14 cache-header
-blocker.
+[`PLAN/09_peano_lab.md`](PLAN/09_peano_lab.md). At this archived M19
+checkpoint, M18 was the latest staged browser milestone and an earlier M14
+cache-header concern still blocked publication. Those are historical facts,
+not current deployment blockers: the current campaign browsers and bounded
+same-origin Lean proof service were subsequently implemented.
 
-## Parallel foundational arithmetic and quadratic-reciprocity milestones
+## Historical foundational arithmetic and reciprocity checkpoint
 
 M20 generalizes the theorem ladder into a structured arithmetic corpus. The
 current 432 checked runtime entries comprise 23 legacy theorems, 212
@@ -280,14 +310,16 @@ depth witness. The Book endpoint is
 `book/arithmetic-library/dependency-graph.md`, and the static explorer opens at
 `book/_static/pa-proof-explorer/graph.html?target=PA00FW` with the exact proof
 page one click away. This completes the static dependency-path presentation;
-the generator owns all 1,123 files under a pinned aggregate, and the full
-local Book build/integrity check is green. `PA00FW` remains pending layered
-closure: WMI job `187187` failed at gate 5 on one redundant dependency, and
-replacement job `210714` failed at gate 15 after a second direct-edge mutation
-still checked. Neither fail-closed dependency-minimality result is a QR result;
-attached-browser validation also remains a publication gate.
+the generator owned all 1,123 files under a pinned aggregate, and the full
+local Book build/integrity check was green. At that archived checkpoint,
+`PA00FW` was pending layered closure: WMI job `187187` failed at gate 5 on
+one redundant dependency, and replacement job `210714` failed at gate 15 after
+a second direct-edge mutation still checked. Those historical fail-closed
+dependency-minimality results were not proofs. The exact quadratic-reciprocity
+root was subsequently independently closed in Alpha v16 and remains checked
+in current Alpha v25; the earlier abandoned route is not an active blocker.
 
-## Parallel Peano Hydra campaign
+## Current Hydra product and separate experimental campaign
 
 H0–H6 now define a binding neuro-symbolic experiment rather than another model
 demo. The kernel remains the sole theorem authority; native search,
@@ -302,12 +334,21 @@ gates. H5 is a one-shot `S` versus `S+R` versus full-Hydra comparison at
 matched time, compute, energy, and cost; a failed preregistered gate is reported
 as no demonstrated LLM advantage. H6 requires independent reproduction.
 
-The existing four-goal Qwen result is retained only as a launch regression,
-not evidence for the campaign. Any later quadratic-reciprocity development
-belongs to a new library epoch and, if used for evaluation, requires
-whole-lineage masking. A pre-H0 provider-neutral portfolio/replay bootstrap and
-teacher-oracle plumbing artifact now exist, but no completed H0 semantic or
-structured-macro gate, sealed benchmark, Hydra training, or headline result
-exists yet. See
+The working product already provides identified symbolic/macro/control heads,
+independent original-goal replay, bounded dependency-aware scheduling and
+restart, explicit full-digest Alpha-v25 authority, a frozen shared
+theorem/definition epoch, and initial replay-verified optimization, candidate
+discovery, and post-training records. Quadratic reciprocity is already proved
+and remains in the current catalog; any genuinely new future mathematics
+requires a separately sealed later epoch.
+
+The existing four-goal Qwen result is retained only as a historical launch
+regression, not evidence for the H0–H5 experiment. The full structured macro
+protocol, semantic/reference campaign, independently held sealed benchmark,
+sufficiently scaled verified curriculum, and matched-compute model result are
+not complete. A useful production implementation therefore does not imply an
+LLM-advantage claim. See
+[`docs/HYDRA_PRODUCT_ROADMAP.md`](docs/HYDRA_PRODUCT_ROADMAP.md),
+[`docs/HYDRA_POST_TRAINING.md`](docs/HYDRA_POST_TRAINING.md),
 [`docs/PEANO_HYDRA_DESIGN.md`](docs/PEANO_HYDRA_DESIGN.md) and
 [`PLAN/11_peano_hydra.md`](PLAN/11_peano_hydra.md).

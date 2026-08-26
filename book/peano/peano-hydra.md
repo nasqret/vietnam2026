@@ -1,5 +1,23 @@
 # Peano Hydra: where symbolic search should end and learned search begin
 
+```{admonition} Current verified product baseline
+:class: important
+The current immutable Alpha v25 release contains **2,080 independently
+checked theorems**, **6,633 real theorem-proof dependency edges**, and an
+unchanged **432-theorem Stable default**. The separate conservative-definition
+DAG contains **120 reviewed definitions** and **214 reviewed definition
+edges**. Blueprint notation and open research milestones do not grant proof
+authority.
+
+Hydra already runs bounded, independently replayed proof search under an
+explicit complete-digest Alpha authority. Its one next product milestone is
+to scale checked proof optimization, candidate discovery, and
+supervised/preference post-training from that single frozen epoch. The older
+247-theorem Qwen adapter remains bound to its historical release. The full
+H0/H1 experiment gates are not complete, and no language-model advantage or
+new mathematical-discovery claim follows from the initial preparation run.
+```
+
 Peano Hydra is an experiment, not a new trust assumption. We want to combine a
 proof-producing arithmetic prover with a small language model and ask a narrow,
 measurable question:
@@ -17,7 +35,10 @@ The campaign's normative protocol is
 [the binding design](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_HYDRA_DESIGN.md), and the executable
 milestone gates are in
 [the campaign plan](https://github.com/nasqret/vietnam2026/blob/peano-lab/PLAN/11_peano_hydra.md). This chapter explains
-why those rules exist.
+why those rules exist. The single current implementation sequence is the
+[Hydra product roadmap](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_PRODUCT_ROADMAP.md),
+with the verified data boundary in the
+[post-training pipeline](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_POST_TRAINING.md).
 
 ## First correct the logical claim
 
@@ -132,7 +153,8 @@ Split(kind)
 Dispatch(solver, premises, bounds)
 ```
 
-Each action has one canonical serialization and compiles deterministically to
+In the target, not-yet-completed H0.3 protocol, each action will have one
+canonical serialization and compile deterministically to
 existing Peano Lab commands. For example, `Witness(t)` becomes the public
 `exists t` action; a `Cut` becomes ordinary `have` or `suffices`. `Dispatch`
 starts a bounded untrusted search and may return hints or a reconstructable
@@ -157,10 +179,18 @@ explicit partial-evidence option and never becomes a positive proof label.
 
 ## Why the library must have epochs
 
-The source-bound model-v3 training epoch contains 247 independently checked
-runtime theorems, including a constructive, conservatively encoded Fundamental
-Theorem of Arithmetic. It is a powerful training source. It is not a fair test
-of whether a model can prove the same theorems after reading their proofs.
+The historical source-bound model-v3 training epoch contains 247 independently
+checked runtime theorems, including a constructive, conservatively encoded
+Fundamental Theorem of Arithmetic. The current separately sealed Alpha v25
+release instead contains 2,080 independently checked theorems and its
+conservative-definition registry contains 120 reviewed nodes. The old adapter
+cannot silently inherit that larger authority. Hydra gains current Alpha
+access only under the exact complete-digest surface label and an explicitly
+finite theorem allowlist; the ordinary public proof surface remains the
+unchanged 432-theorem Stable default.
+
+Either epoch can be a useful training source. Neither is a fair test of whether
+a model can prove the same theorems after reading their proofs.
 
 At the start of a campaign we freeze an ordered epoch $L_0$. Its content root
 commits to each theorem's canonical statement, dependencies, source and script,
@@ -198,25 +228,30 @@ This is stricter than matching statement strings. It should be. A theorem
 prover that retrieves a disguised copy of the target is demonstrating lookup,
 not discovery.
 
-## Quadratic reciprocity as a sealed experiment
+## Reciprocity is existing proof evidence, not a new discovery
 
 Quadratic reciprocity is a demanding stress test because its formal development
 requires a long dependency chain and several useful choices of representation.
-The current 384-theorem library contains 137 checked reciprocity-infrastructure
-certificates, but the reciprocity law itself is not admitted.
+At a much older 384-theorem historical checkpoint, the library contained 137
+checked reciprocity-infrastructure certificates without an admitted
+reciprocity endpoint. That is no longer the current state: the exact
+`quadratic_reciprocity_combined` theorem was independently closed in Alpha v16,
+its complete original proof graph has 557 checked theorem nodes, and it
+remains checked in current Alpha v25.
 
-For a reciprocity endpoint $Q$ to serve as a test, we must deposit its statement
-before its proof enters the library. We then mask
+Consequently the existing endpoint cannot honestly count as a novel Alpha-v25
+discovery. To use a genuinely future stronger statement $Q$ as an experimental
+test, we must deposit it before its proof enters the library. We then mask
 the whole $Q$ lineage: definitions introduced only for the route,
 residue-theory lemmas, generated variants, equivalent formulations, authored
 scripts, teacher sketches, stronger consequences, and retrieval records whose
 proofs use them. The split must use lineage IDs and the dependency graph,
 not theorem names.
 
-If instead we first publish the complete development, it becomes excellent
-training data for the *next* questions, but it can no longer be clean headline
-evidence for proving quadratic reciprocity itself. Both choices are useful;
-they answer different questions.
+The already published development is excellent training data for the *next*
+questions, but it can no longer be clean headline evidence for discovering
+quadratic reciprocity itself. Existing-theorem optimization and genuinely
+future-theorem discovery are different evidence categories.
 
 ## The teacher experiment is only an interface test
 
@@ -280,6 +315,42 @@ token and latency measurements, or a campaign provider attestation, and the
 critical-state allowlist is copied from the teacher route rather than detected
 as a symbolic fixed point. Clean execution therefore means “the plumbing ran
 as specified,” not “this row may enter a model comparison.”
+
+### One verified Alpha-v25 preparation workflow
+
+The production-development entry points are:
+
+```console
+make hydra-check
+make hydra-prepare
+```
+
+The first command checks the shared execution and DAG contracts. The second
+freezes the exact current theorem/definition epoch and writes:
+
+```text
+_deploy/hydra/epoch.json
+_deploy/hydra/sft.jsonl
+_deploy/hydra/preferences.jsonl
+_deploy/hydra/discovery.jsonl
+_deploy/hydra/manifest.json
+```
+
+Supervised rows come only from complete original-goal kernel-checked proofs.
+Preference rows compare independently replayed routes for the same theorem and
+exact authority. Discovery rows label checked candidate attempts without
+claiming semantic mathematical novelty or automatically admitting a theorem.
+The current candidate collision test excludes only an identical original
+statement SHA-256; it does not decide equivalence under renaming, conservative
+definitions, or mathematical reformulation. Route optimization likewise
+selects the best observed checked path by tactic count, proof nodes, expanded
+states, and an exact-command tie-breaker; it does not prove global
+proof-length optimality.
+Later Alpha releases still require their ordinary dependency-closed review.
+
+These bounded local artifacts are development evidence, not a sealed final
+benchmark or an H3-scale training corpus. They neither train Qwen by
+themselves nor claim that any model improves proof search.
 
 ## Build the strongest baseline first
 
@@ -384,11 +455,10 @@ The campaign proceeds in order:
 | H5 | Does the LLM win once, fairly? | one-shot sealed matched-compute comparison |
 | H6 | Can another group reproduce it? | source, environments, raw traces, certificates, tables, review |
 
-H0–H4 should take roughly eight to ten weeks for a serious prototype. The full
-campaign, including benchmark authorship, independent evaluation, replication,
-and release, is more realistically four to six months. GPU training is not the
-first step; it is one guarded step after semantics, leakage control, and a
-strong baseline exist.
+These are ordered evidence gates, not promised calendar dates. GPU training
+follows checked epoch preparation, independent replay, leakage control, and a
+strong baseline; the useful current Hydra product does not by itself complete
+the separate H0/H1 research gates.
 
 ## What would be novel
 
@@ -406,6 +476,8 @@ none gets a vote on truth.
 
 - [Peano Lab binding design](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_LAB_DESIGN.md)
 - [Peano Hydra binding design](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/PEANO_HYDRA_DESIGN.md)
+- [Hydra product roadmap](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_PRODUCT_ROADMAP.md)
+- [Hydra post-training pipeline](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_POST_TRAINING.md)
 - [Training a Peano policy](training-a-peano-policy.md)
 - [AlphaGeometry](https://www.nature.com/articles/s41586-023-06747-5)
 - [AlphaProof](https://www.nature.com/articles/s41586-025-09833-y)

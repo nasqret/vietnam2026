@@ -5,19 +5,29 @@
 Full architecture (read it FIRST — it is binding): **`docs/PEANO_LAB_DESIGN.md`**.
 Priorities: soundness → clarity → pedagogy → extensibility → efficiency. Python, clean code.
 
-**Current constructive-library checkpoint:** immutable Alpha v23 contains
-**1,949 independently checked theorems**, **6,285 actual proof-dependency
+**Current constructive-library checkpoint:** immutable Alpha v25 contains
+**2,080 independently checked theorems**, **6,633 actual proof-dependency
 edges**, and **53 dependency layers**; Stable remains the unchanged
-432-theorem default. Its 59 newest first-order proofs close three exact grand
-campaign milestones: G101 (17 logarithmic Euclidean-GCD theorems, including
-`steps <= 2 * BitLen(b) + 1`), G102 (24 canonical arbitrary-exponent binary
-digit/execution theorems, including
-`operations <= 3 * BitLen(e) + 2`), and G025 (18 theorems proving infinitely
-many primes congruent to three modulo four). The shared notation DAG contains
-152 blueprint terms and 97 independently reviewed conservative definitions.
-Arbitrary-dimensional determinants, rank, and lattices remain genuinely open
-under T13; neither notation nor host computation substitutes for unchanged
-original-kernel proof checking or independent Lean verification.
+432-theorem default. The 72 newest first-order proofs establish 29 signed
+cofactor/alternating-fold components, 19 exact Taylor/formal-derivative and
+qualified one-step Hensel components, and 24 noncoprime CRT compatibility
+and gcd-LCM lattice components. Historical Alpha v24 remains immutable with
+2,008 independently checked theorems; historical v23 still independently
+closes G101, G102, and G025. The one authoritative conservative definition
+DAG contains **120 independently reviewed definitions** and **214
+definition-dependency edges**. The separate non-authoritative blueprint
+projection contains **179 notation names** and **165 conceptual edges**.
+The stronger T13, G095, and G011 milestones remain genuinely open; neither
+notation nor host computation substitutes for unchanged original-kernel proof
+checking or independent Lean verification.
+
+**Active product path:**
+[`docs/HYDRA_PRODUCT_ROADMAP.md`](../docs/HYDRA_PRODUCT_ROADMAP.md) is the
+single current engineering roadmap. The milestones below remain an honest
+historical implementation ledger. In particular, M7's early statement-only
+Lean teaching export has been superseded by independently compiled production
+proof strands, and M9's original data-only restriction was superseded by the
+explicitly reviewed M19 post-training experiment.
 
 **House rules for the implementing model (Codex):**
 - The kernel (`peano_lab/kernel/`) is the trusted base: small, dependency-free, no imports from
@@ -128,8 +138,9 @@ original-kernel proof checking or independent Lean verification.
 ### M7 — The theorem library + ladder regression
 - [x] `library/theorems.py`: the full ladder (design §6) as named, scripted proofs replayed in
       CI (`tests/test_ladder.py`); `pa lib` browses them with statements + tactic scripts.
-- [x] `pa lean <thm>`: export statement (+ proof stub) as Lean 4 `theorem` over `Nat` with a
-      Live Lean link, for cross-checking.
+- [x] Historical M7 `pa lean <thm>` teaching export: a Lean 4 statement plus an explicitly
+      labeled proof stub; the current production browser instead exports independently checked
+      full proof strands and never offers a stub as a verified Lean Live proof.
 - **Acceptance:** ladder complete through the `n·m = 0 → n = 0 ∨ m = 0` capstone, all
   kernel-checked in CI.
 - **Verified:** 20 closed scripted entries (15 binding rungs + 5 named helpers) replay and check
@@ -155,7 +166,8 @@ original-kernel proof checking or independent Lean verification.
       (commuted/renamed instances) to grow the corpus; document generation provenance.
 - [x] A short `docs/PEANO_LLM.md`: target model size, tokenization notes (canonical printer =
       the tokenizer's friend), eval protocol (held-out ladder theorems, pass@k with the kernel
-      as judge). **No training in this repo** — data + protocol only.
+  as judge). **M9 itself was data + protocol only**; the later reviewed M19 milestone
+  explicitly introduced bounded post-training in this repository.
 - **Acceptance:** ≥ 10k clean trace records exportable; eval harness runs against a dummy
   policy (random tactic) end-to-end with the kernel as judge.
 - **Verified:** the all-ladder acceptance superset generated 13,417 transitions in 1,636 sessions

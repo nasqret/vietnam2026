@@ -169,6 +169,8 @@ help:
 	@echo "  make peano-policy-pilot  build the checked M19 pilot policy dataset"
 	@echo "  make peano-policy-v2-data  build+attest $(PEANO_POLICY_ROWS) model-v2 policy rows"
 	@echo "  make peano-policy-data   compatibility alias for peano-policy-v2-data"
+	@echo "  make hydra-check  verify the canonical DAGs, Hydra product contracts, and checked development pipeline"
+	@echo "  make hydra-prepare  export deterministic verified proof-optimization/discovery post-training artifacts"
 	@echo "  make peano-eval   run the deterministic kernel-judged random baseline"
 	@echo "  make stage        assemble _deploy/vietnam2026 (landing + book + slides)"
 	@echo "  make deploy-site  rsync the site to $(SITE)"
@@ -1147,6 +1149,39 @@ peano-policy-v2-data:
 
 peano-eval:
 	$(PEANO_CORPUS_PYTHON) scripts/eval_peano_policy.py --k 8 --max-steps 16 --seed 20260727
+
+.PHONY: hydra-check hydra-prepare
+
+# A future source file or unfinished Alpha campaign never expands Hydra
+# authority: both the synchronized product DAG gate and epoch freeze bind the
+# exact current sealed release before any checked search or training export.
+hydra-check:
+	python3 scripts/sync_constructive_grand_campaign.py --check --json
+	python3 scripts/update_peano_worker_sources.py --check
+	bash scripts/update_peano_app_manifest.sh --check
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q -p no:cacheprovider --tb=line \
+		tests/test_browser_shell.py \
+		tests/test_constructive_campaign_dag.py \
+		tests/test_constructive_definition_graph.py \
+		tests/test_constructive_next_layer_public_site.py \
+		tests/test_constructive_breakthrough_layer_explorer.py \
+		tests/test_constructive_breakthrough_publication_v25.py \
+		tests/test_deploy_contract.py \
+		tests/test_hydra_product_roadmap.py \
+		tests/test_lean_selector_ui.py \
+		tests/test_lean_strand_service.py \
+		tests/test_public_lean_selector.py \
+		tests/test_peano_hydra_policy.py \
+		tests/test_peano_hydra_runner.py \
+		tests/test_peano_hydra_scheduler.py \
+		tests/test_peano_hydra_pilot.py \
+		tests/test_peano_hydra_epoch.py \
+		tests/test_peano_hydra_development.py
+	PYTHONMALLOC=malloc python3 scripts/prepare_peano_hydra.py --check
+
+hydra-prepare:
+	PYTHONMALLOC=malloc python3 scripts/prepare_peano_hydra.py \
+		--output-dir "_deploy/hydra" --include-graphs
 
 stage: book
 	rm -rf $(STAGE) && mkdir -p $(STAGE)

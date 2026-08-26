@@ -1,5 +1,16 @@
 # Training a Peano policy without trusting it
 
+The experiment below preserves its historical model-v1/v2/v3 receipts and
+exact **247-theorem model-v3 authority**. The current independently checked
+**Alpha v25** library instead contains **2,080 theorems** and **6,633 real
+proof-dependency edges**, with an unchanged **432-theorem Stable default**.
+Its newer theorems do not silently enter the old adapter. The single current
+development path is explained in
+[Peano Hydra](peano-hydra.md), the
+[Hydra product roadmap](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_PRODUCT_ROADMAP.md),
+and the
+[verified post-training pipeline](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_POST_TRAINING.md).
+
 Can a small language model learn to help with Peano Lab proofs?  Yes—but the interesting part is
 not merely fine-tuning a decoder on tactic strings.  The interesting part is arranging the
 experiment so that a useful model can never become a source of mathematical authority, and so
@@ -18,7 +29,7 @@ The local execution, prompt, training-runtime, evaluation, provenance, and guard
 are implemented. Historical model-v1 WMI training produced a deliberately narrow result: 0/4
 frozen goals at pass@4 and one checked direct-witness proof among eight samples. Model-v2 remains
 an auditable design stage. Model-v3 supersedes it with the frozen first-247
-declaration-order prefix of the current 384-theorem checked ladder,
+declaration-order prefix of the then-current 384-theorem checked ladder,
 leakage-safe predecessor-prefix trajectories, a whole-session root-balanced synthetic curriculum,
 indexed completion loss, an immutable corpus seal, and a native 32,768-token no-truncation gate.
 
@@ -823,7 +834,7 @@ and all 247 authored QEDs. Browser build `2026-07-29k`, application
 
 For training, the historical frozen first-247 declaration-order prefix is
 registered as the distinct content-addressed `model-v3` authority inside the
-current 384-theorem native runtime, not as a silent extension of model-v1 or
+then-current historical 384-theorem native runtime, not as a silent extension of model-v1 or
 model-v2. The prompt
 exposes bounded retrieved lemma names and canonical statements, and the library corpus contains
 downstream `use` and authored proof trajectories. Once an exact capstone theorem is importable,

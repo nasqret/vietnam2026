@@ -1,5 +1,18 @@
 # M21–M25 — Native quadratic reciprocity
 
+**Historical route and evidence ledger.** The exact theorem
+`quadratic_reciprocity_combined` was independently closed in immutable
+**Alpha v16** and remains checked in the current **Alpha v25**
+2,080-theorem release. Its 557-node original dependency proof and independent
+Lean evidence are complete. The old unchecked scheduler jobs, abandoned proof
+routes, pending badges, and proposed admission experiments below describe
+historical checkpoints; they are not current obstacles to quadratic
+reciprocity. Preserve their dated receipts without confusing them with the
+current mathematical frontier in
+[`14_constructive_number_theory_grand_campaign.md`](14_constructive_number_theory_grand_campaign.md)
+or the single active
+[`Hydra product roadmap`](../docs/HYDRA_PRODUCT_ROADMAP.md).
+
 ## Objective
 
 Produce a closed, independently kernel-checked proof of quadratic reciprocity

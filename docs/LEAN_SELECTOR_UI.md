@@ -1,5 +1,10 @@
 # Build a Lean proof from the selected theorem
 
+For the current shared Alpha-v25 theorem/definition DAG and Hydra product
+direction, see [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md).
+The current release has **2,080 checked theorems**, **6,633 proof-dependency
+edges**, and an unchanged **432-theorem Stable default**.
+
 The PA and defined-notation proof explorers expose a **Build Lean proof** card in
 the selected-theorem panel. The card remains idle until a human deliberately
 starts a proof job. It follows the exact theorem currently selected in the
@@ -39,11 +44,25 @@ Pythagorean/Fermat-four constructive-frontier graphs. They also enhance both
 the graph and individual checked-theorem pages in the Alpha-v20
 `constructive-next-layer-explorer` and Alpha-v21
 `constructive-advanced-layer-explorer`, the Alpha-v22
-`constructive-transport-layer-explorer`, and the current Alpha-v23
-`constructive-milestone-closure-explorer`, and the newest Alpha-v24
-`constructive-research-layer-explorer`. Individual campaign pages are enabled
+`constructive-transport-layer-explorer`, the historical Alpha-v23
+`constructive-milestone-closure-explorer`, the historical Alpha-v24
+`constructive-research-layer-explorer`, and the current Alpha-v25
+`constructive-breakthrough-layer-explorer`. Individual campaign pages are enabled
 only when their authority receipt is exactly `Alpha v<number> checked use`;
 unchecked or embellished receipt text cannot grant proof-building authority.
+Across the current sealed release this yields **27 public proof families**,
+**29 canonical theorem-graph surfaces**, and **3,937 eligible staged
+graph/theorem pages**. The **764 checked Alpha exact-edition theorem pages**
+use the same build action as definition-aware pages only when both original
+sidebar receipts are present together:
+
+```text
+Checked-use authority: Alpha vN; independently verified
+Alpha evidence: alpha_closed
+```
+
+An isolated, malformed, unchecked, or merely `body_checked` receipt never
+enables an Alpha proof job.
 For a small Alpha v19
 example, select `PF0000` (`pythagorean_double_product`) in the last graph;
 `PA000F` (`add_comm`) is the corresponding small Stable example.
@@ -58,10 +77,10 @@ assets remain unchanged. Advanced integrations
 may use `window.PeanoLeanSelector.mount(panel, {theorem, edition, eligible})`.
 The optional service prefix comes from
 `window.PEANO_LEAN_STRAND_API` or a
-`<meta name="peano-lean-strand-api" content="...">` element. Same-origin
-`/api/lean-strands` is the safe default. An explicitly configured HTTPS service
-origin is accepted only when its bounded backend approves the exact faculty
-origin without allowing cookies or other credentials.
+`<meta name="peano-lean-strand-api" content="...">` element. The only
+supported production route is the exact same-origin `/api/lean-strands`
+gateway. Explicitly configured cross-origin HTTPS proof services are rejected;
+there is no second public deployment architecture or credential-sharing path.
 
 On faculty hosting the default same-origin API is a tiny PHP gateway. The web
 and SSH servers share an owner-only `0700` mailbox outside `public_html`; an
@@ -96,7 +115,8 @@ GET    /api/lean-strands/jobs/<job_id>/download?format=zip
 
 The client polls bounded job snapshots approximately every 750 milliseconds.
 It accepts download URLs only from the exact selected job and its authenticated
-same-origin gateway or explicitly configured HTTPS proof-service origin.
+same-origin proof gateway; an external proof-service origin cannot authorize a
+job or download.
 Lean Live links must use exactly one of the official inline forms
 `https://live.lean-lang.org/#code=...` or
 `https://live.lean-lang.org/#codez=...`. The latter uses Lean Live's actual
@@ -114,7 +134,7 @@ matching encoding, the exact official host, and a successful independent
 package compilation. The successful action is labeled
 **No imports · self-contained · locally compiled · no Mathlib/external libraries**.
 
-The default 1,024-node campaign budget covers the current checked Alpha-v24
+The default 1,024-node campaign budget covers the current checked Alpha-v25
 campaign dependency trees, including the 557-node quadratic-reciprocity closure.
 Operators
 can opt in to a 1,048,576-byte escaped URL and 4 MiB decoded proof source using

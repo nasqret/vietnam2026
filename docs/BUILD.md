@@ -1,5 +1,9 @@
 # Building the course materials
 
+For the current shared theorem/definition DAG, Hydra proof-search direction,
+and post-training readiness, see
+[`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md).
+
 ## Prerequisites
 
 - Python 3.10+ (`pip install -r requirements.txt`) for the knowledge book.
@@ -32,8 +36,9 @@ lake build                        # builds Artifacts.lean, sorry-free
 printf 'import Artifacts\nopen Artifacts\n#print axioms add_comm'"'"'\n' > /tmp/check.lean
 lake env lean /tmp/check.lean     # → "'Artifacts.add_comm'' does not depend on any axioms"
 ```
-The project pins `leanprover/lean4:v4.28.0-rc1` (the locally installed toolchain) and uses **no
-Mathlib**, so it builds in seconds. Current Lean stable is 4.32.0.
+The project pins `leanprover/lean4:v4.28.0-rc1` and uses **no Mathlib**, so it
+builds in seconds. Reproducibility follows the pinned toolchain rather than an
+unstable claim about whichever upstream release is newest.
 
 ## Readable certificate-backed Lean exports
 
@@ -157,20 +162,22 @@ make lean-browser \
   PEANO_LEAN_BROWSER_ARGS="--max-live-source-kib 4096 --max-live-url-bytes 1048576"
 ```
 
-The same controls are also injected into the Bertrand and six constructive
-campaign graphs. For a small, genuinely new Alpha-v19 result, open
+The same controls are also injected into the Bertrand and all historical and
+current constructive-campaign graphs. For a small, genuinely new Alpha-v19
+result, open
 <http://127.0.0.1:8787/book/_static/constructive-frontier-explorer/pythagorean-fermat-four/explorer/defined/graph.html?target=PF0000>;
 the selected `pythagorean_double_product` theorem has a nine-node dependency
 strand, is correctly labeled **Alpha**, not Stable, and has a fully readable,
 import-free, independently checked Lean Live proof with no certificate
 fallback.
 
-## Fully checked constructive Alpha v23 release
+## Fully checked constructive Alpha v25 release
 
-The opt-in Alpha-v23 edition contains **1,949 independently checked theorems**
-and **6,285 checked dependency edges**: **432 unchanged Stable** results and
-**1,517 Alpha-only** results, with **zero body-only or pending statements**.
-Its historical Alpha-v19 ancestor closed **84** historical obligations and
+The opt-in current Alpha-v25 edition contains **2,080 independently checked
+theorems** and **6,633 checked dependency edges**: **432 unchanged Stable**
+results and **1,648 Alpha-only** results, with **zero body-only or pending
+statements**. Its historical Alpha-v19 ancestor closed **84** historical
+obligations and
 added **64** checked Pythagorean, prime two-square, linear-congruence, and
 one-modulo-four prime theorems. Historical Alpha v20 independently adds **39**
 polynomial Horner, finite matrix-component, strict Bertrand-prime, and finite
@@ -187,7 +194,7 @@ independently accepted by both the original intuitionistic kernel and the
 separately compiled Lean verifier; SHA-256 is
 `95e5f8a3baef113721d748f9d7071864b4bf9511737a27a1272d2695428fb938`.
 
-Current Alpha v23 preserves every historical v22 theorem and adds **59**
+Historical Alpha v23 preserves every historical v22 theorem and adds **59**
 checked results: **17** complete logarithmic Euclidean-GCD proofs, **24**
 canonical arbitrary-exponent binary-digit/execution proofs, and **18** proofs
 of infinitely many primes congruent to three modulo four. Its complete
@@ -195,23 +202,48 @@ of infinitely many primes congruent to three modulo four. Its complete
 accepted by both unchanged checkers; SHA-256 is
 `cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11`.
 
+Historical Alpha v24 preserves all **1,949** historical v23 theorems and adds
+**59** newly checked results: **17** arbitrary signed cofactor-minor and
+four-dimensional determinant theorems, **15** exact coupled Horner and formal
+derivative theorems, and **27** finite pairwise-coprime CRT/arbitrary-list-LCM
+theorems. Its complete **203-node**, **502-edge**, **738,923-byte** proof
+bundle is independently accepted by the unchanged original kernel and Lean
+verifier; SHA-256 is
+`627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9`.
+
+Current Alpha v25 preserves all **2,008** historical v24 theorems and adds
+**72** newly checked results: **29** signed cofactor/alternating-fold
+theorems, **19** exact Taylor/formal-derivative and qualified one-step Hensel
+theorems, and **24** noncoprime CRT compatibility/gcd-LCM lattice theorems.
+Its complete **302-node**, **820-edge**, **1,041,166-byte** proof bundle is
+independently accepted by the unchanged original kernel and Lean verifier;
+SHA-256 is
+`d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a`.
+
 Actual Euclidean terminal-state gcd identification with
 `steps <= 2 * BitLen(b) + 1`, canonical digits and genuine modular execution
 with `operations <= 3 * BitLen(e) + 2`, and infinitely many primes three
-modulo four are **proved**. Arbitrary-dimensional determinants, rank, and
-lattices remain open. Regenerate the current
-artifacts or run every release,
+modulo four were **proved in historical v23**. Historical Alpha v24 additionally
+proves signed minors, exact natural formal derivatives, and pairwise-coprime
+finite CRT. Current v25 proves exact alternating cofactor folds, formal Taylor
+correction with qualified one-step Hensel lifting, and exact compatible
+noncoprime CRT merges. Unrestricted-dimensional determinants/rank/lattices,
+unrestricted prime-power Hensel lifting, and the full arbitrary
+pairwise-compatible noncoprime-list CRT milestone remain open. Regenerate the
+current artifacts or run every release,
 mutation, and independent Lean bundle check with:
 
 ```bash
-make peano-library-alpha-v23
-make peano-library-alpha-v23-check
+make peano-library-alpha-v25
+make peano-library-alpha-v25-check
 ```
 
 The historical immutable parents remain reproducible with
 `make peano-library-alpha-v20-check` and
 `make peano-library-alpha-v21-check`, and
-`make peano-library-alpha-v22-check`.
+`make peano-library-alpha-v22-check`, and
+`make peano-library-alpha-v23-check`, and
+`make peano-library-alpha-v24-check`.
 
 Inspect the resulting theorem or its complete dependency outline without
 replaying a large certificate:
@@ -235,7 +267,9 @@ compilation; request an explicit bounded export and `--verify` for that audit.
 Stable remains the default, and the still-open primitive Pythagorean inverse
 and Fermat exponent-four strict descent are not asserted. The complete
 arbitrary matrix-and-lattice milestone likewise remains open despite 33
-independently checked finite matrix and arbitrary-product components.
+independently checked finite matrix and arbitrary-product components in
+historical v21, **50 checked components in historical v24**, and **79 checked
+components in current v25**.
 
 ## The Lean FTA companion
 
