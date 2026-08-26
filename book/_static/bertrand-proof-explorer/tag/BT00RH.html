@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT00RH — canonical_double_triple_remainder_complement_budget</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT00RH.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT00RH&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT00RG.html">← double_triple_remainder_complement_budget</a><a href="BT00RI.html">floor_ceil_complement_budget →</a></nav>
+<p class="pa-tag">BT00RH</p><h1>canonical_double_triple_remainder_complement_budget</h1>
+<p class="pa-status-candidate">Alpha v25 checked-use theorem · independently kernel and Lean verified; not Stable</p>
+<p>Canonical remainder data yields and preserves the complement budget.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n q r. (((2 * (n) = 3 * (q) + (r)) /\ exists bqb_remainder_gap_canonical_source. bqb_remainder_gap_canonical_source + S (r) = 3)) -&gt; exists c. (((((q) + (c) = (n)) /\ exists bqb_budget_gap_canonical_result. bqb_budget_gap_canonical_result + 2 * (n) = 6 * (c))) /\ exists bqb_remainder_gap_canonical_preserved. bqb_remainder_gap_canonical_preserved + S r = 3)</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Canonical remainder data yields and preserves the complement budget.</p><p>Direct prerequisites:
+double_triple_remainder_complement_budget.
+The authored body proceeds by case analysis (2), intermediate claims (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT00RG.html"><code>BT00RG</code> double_triple_remainder_complement_budget</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00RJ.html"><code>BT00RJ</code> floor_ceil_division_budget</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="e6b823d09905f755"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="8998540cf7fac30b"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> q</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="3cb52c121560eb32"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> r</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="f1ddcaf6e0a30987"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> hcanonical</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="cases" data-line-id="86185f42a2e23e28"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">cases</span> hcanonical</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="have" data-line-id="ac95ae4c94afc54d"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">have</span> hbase : exists c. ((((q) + (c) = (n)) /\ exists bqb_budget_gap_canonical_base. bqb_budget_gap_canonical_base + 2 * (n) = 6 * (c)))</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="specialize" data-line-id="6cb1a7bbe10e0a6c"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT00RG.html">double_triple_remainder_complement_budget</a> n</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="specialize" data-line-id="b2276bc21b6e9b3b"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT00RG.html">double_triple_remainder_complement_budget</a> q</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="specialize" data-line-id="a45a5ba0d7492c59"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT00RG.html">double_triple_remainder_complement_budget</a> r</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="apply" data-line-id="3eb77a480dc53767"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT00RG.html">double_triple_remainder_complement_budget</a></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="exact" data-line-id="f285a16cee75ed81"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">exact</span> hcanonical_left</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="cases" data-line-id="63aea694bab4e1dc"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">cases</span> hbase</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="exists" data-line-id="f76b413d2f936b4f"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">exists</span> x</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="split" data-line-id="1c6377a7d774e51a"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">split</span></code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="exact" data-line-id="3d34c545700648ee"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">exact</span> hbase_witness</code></li><li class="pa-proof-line" id="proof-line-0016" data-line="16" data-tactic="exact" data-line-id="65654b1c289a1e46"><a class="pa-line-number" href="#proof-line-0016">0016</a><code><span class="pa-tactic-ref">exact</span> hcanonical_right</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>962</dd>
+<dt>Layer</dt><dd>7</dd><dt>Lines</dt><dd>16</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>alpha_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>no</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>18</dd>
+<dt>Statement SHA-256</dt><dd><code>dc24b2fb213a7604f3725f1ea6eb7e15c230930d50719fcaa4e45fe1ec691c66</code></dd>
+<dt>Script SHA-256</dt><dd><code>8b07107bdd0d13e1e8398bfb290d5d0aa28303314846d77ebef788aac3bc6fb1</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_quotient_budget_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_quotient_budget_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>78dbb7c472eb10861bbe39ec150f1499198a43c5f3687781c2e104e96516f225</code></dd>
+</dl></aside></main></body></html>

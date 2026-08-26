@@ -1,0 +1,130 @@
+{
+  "arbitrary_probes": [
+    {
+      "attempts": 16,
+      "k": 16,
+      "max_steps": 24,
+      "proved": false,
+      "report_path": "qwen3-1.7b-wmi-parity-k16.json",
+      "report_sha256": "7c3744b882e5bfd50285002ec0d8dc8ec60dbfa937aa6f33d6d49e29bbffae3b",
+      "request_id": "b45efb7dc6f6778e8c7496ef2a90fba5b57d10522683bce0c9083602d3b124e9",
+      "statement": "∀ x. ∃ y. x · (x + 1) = 2 · y",
+      "status_counts": {
+        "failing": 16,
+        "invalid": 0,
+        "limit": 0,
+        "proof": 0
+      }
+    },
+    {
+      "attempts": 8,
+      "dataset_exact_formula_occurrences": 0,
+      "k": 8,
+      "max_steps": 8,
+      "proof_nodes": 7,
+      "proof_path": "qwen3-1.7b-wmi-easy-witness.pa",
+      "proof_sample": 6,
+      "proof_sha256": "a990cac4494fb3516b665231bc82a1077c0e110fbcf17266a3c10089e8c457f2",
+      "proved": true,
+      "report_path": "qwen3-1.7b-wmi-easy-witness-k8.json",
+      "report_sha256": "acb8afe61bb04687817515bc708ec9fda304b60d1c8ab29782ab073a8a9be97e",
+      "request_id": "fdcf65e021a21aa897b95818bc29679f69273ad56c0a2bda501835d5df0ecbe6",
+      "statement": "∀ x. ∃ y. (x + 17) · 19 + 23 + y = (x + 17) · 19 + 23",
+      "status_counts": {
+        "failing": 5,
+        "invalid": 0,
+        "limit": 2,
+        "proof": 1
+      }
+    }
+  ],
+  "curriculum_audit": {
+    "allowed_foundation_lemma_use_rows": 0,
+    "existential_context_free_states_labeled_exists": 513,
+    "existential_context_free_states_total": 513,
+    "ih_states": 0,
+    "missing_tactic_heads": [
+      "assumption",
+      "exfalso",
+      "forall_elim",
+      "have",
+      "induction",
+      "simp",
+      "specialize",
+      "suffices",
+      "use"
+    ],
+    "represented_tactic_heads": [
+      "apply",
+      "cases",
+      "compact_arith",
+      "congr",
+      "exact",
+      "exists",
+      "intro",
+      "left",
+      "norm_num",
+      "refl",
+      "rewrite",
+      "right",
+      "ring",
+      "split",
+      "symm",
+      "trans"
+    ],
+    "source_proof_max_steps": 7,
+    "source_proof_mean_steps": 3.97,
+    "train_split_rows": 8149
+  },
+  "causal_attribution": "pending_pretrained_base_baseline",
+  "dataset_sha256": "1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd",
+  "date": "2026-07-28",
+  "format": "peano-policy-wmi-smoke-summary",
+  "held_out": {
+    "attempts": 16,
+    "goal_count": 4,
+    "goal_set_sha256": "7099c0a4df7e6f9a8a011124207967c5676871819a42e78e2787c62cd3bc4194",
+    "k": 4,
+    "max_steps": 16,
+    "pass_at_k": 0.0,
+    "proved_goals": 0,
+    "reference_model_v1_steps": {
+      "le_antisymm": 10,
+      "le_total": 23,
+      "le_trans": 10,
+      "mul_eq_zero": 13
+    },
+    "report_path": "qwen3-1.7b-wmi-heldout-k4.json",
+    "report_sha256": "dd513ad2045f090ba3927c9a6d3e491abebea7d3671339f30400f23c7a9fd2ad",
+    "status_counts": {
+      "failing": 16,
+      "invalid": 0,
+      "limit": 0,
+      "proof": 0
+    }
+  },
+  "jobs": {
+    "easy_witness_probe": "171430",
+    "held_out_evaluation": "171423",
+    "parity_probe": "171428",
+    "preparation": "171414",
+    "training": "171421"
+  },
+  "source_commit": "0c84fc326343e75a1ae41c73d0dce44a1b69a5ec",
+  "training": {
+    "adapter_sha256": "ff1875424728fca1de3c273b61d0645a4ec77c22239ec0a511c2ea6de79b0177",
+    "eval_examples": 256,
+    "examples_seen": 1600,
+    "final_epoch": 0.78125,
+    "job_elapsed": "00:11:40",
+    "manifest_path": "qwen3-1.7b-wmi-training-manifest.json",
+    "manifest_sha256": "ad16e60d6d7141d4bb1ccee0ff6d8c9141d0e47be702c732e81b7f668dc1d759",
+    "optimizer_steps": 100,
+    "train_examples": 2048,
+    "train_loss": 0.7830078494548798,
+    "trainer_runtime_seconds": 246.3813,
+    "validation_loss": 0.13615185022354126
+  },
+  "v": 1,
+  "verdict": "The adapter produced one checked success in a represented template but failed the induction, order, and parity probes; attribution to fine-tuning awaits a pretrained-base baseline."
+}

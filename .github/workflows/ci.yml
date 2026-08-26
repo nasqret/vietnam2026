@@ -2,7 +2,7 @@ name: build
 
 on:
   push:
-    branches: [main]
+    branches: [main, peano-lab]
   pull_request:
   workflow_dispatch:
 
@@ -46,6 +46,24 @@ jobs:
           if grep -q sorryAx /tmp/out.txt; then echo "FAIL: sorryAx present"; exit 1; fi
           grep -q "does not depend on any axioms" /tmp/out.txt
 
+  lean-fta:
+    name: Lean FTA companion (sorry-free, audited axioms)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install elan (Lean toolchain manager)
+        run: |
+          curl -sSf https://elan.lean-lang.org/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+      - name: Resolve pinned Mathlib and build FTA
+        working-directory: artifacts/lean-fta
+        run: |
+          lake update
+          lake exe cache get
+          lake build
+      - name: Reject admissions and audit exact standard axioms
+        run: python3 scripts/verify_lean_fta.py
+
   lab-engine:
     name: Lambda Lab engine regression suite
     runs-on: ubuntu-latest
@@ -57,6 +75,50 @@ jobs:
       - name: Run the semantic regression / property suite
         working-directory: lab-lambda/py
         run: python -m unittest discover -s tests -v
+
+  peano-lab-shards:
+    name: Peano Lab shard ${{ matrix.shard }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Paired-evaluation provenance re-hashes source blobs at its pinned
+          # historical producer commit; a depth-1 checkout cannot supply them.
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install pytest
+        run: python -m pip install pytest
+      - name: Run Peano Lab shard ${{ matrix.shard }}
+        working-directory: peano-lab/py
+        run: >-
+          python ci_shard.py
+          --count 8
+          --index ${{ matrix.shard }}
+          --
+          -q
+          --durations=20
+
+  peano-lab:
+    name: Peano Lab kernel, engine, UI, and browser contracts
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: peano-lab-shards
+    steps:
+      - name: Require every Peano Lab shard
+        env:
+          SHARD_RESULT: ${{ needs.peano-lab-shards.result }}
+        run: |
+          if [ "$SHARD_RESULT" != "success" ]; then
+            echo "One or more Peano Lab shards failed: $SHARD_RESULT"
+            exit 1
+          fi
 
   rocq:
     name: Rocq artifacts (statements 1–5, incl. √2)

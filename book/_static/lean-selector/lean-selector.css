@@ -1,0 +1,120 @@
+/* Scoped theorem-selected Lean construction; safe when Jupyter Book auto-loads CSS. */
+.peano-lean-selector {
+  --pls-accent: #2563eb;
+  --pls-border: color-mix(in srgb, currentColor 17%, transparent);
+  margin-top: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--pls-border);
+  border-radius: .65rem;
+  background: color-mix(in srgb, Canvas 94%, var(--pls-accent));
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+.peano-lean-selector .pls-kicker {
+  margin: 0 0 .35rem;
+  color: var(--pls-accent);
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.peano-lean-selector .pls-title {
+  margin: 0 0 .5rem;
+  font-size: 1rem;
+}
+.peano-lean-selector .pls-theorem {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+  align-items: center;
+  overflow-wrap: anywhere;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: .77rem;
+}
+.peano-lean-selector .pls-edition {
+  padding: .12rem .4rem;
+  border-radius: 99rem;
+  color: var(--pls-accent);
+  background: color-mix(in srgb, var(--pls-accent) 12%, transparent);
+  font-family: ui-sans-serif, system-ui, sans-serif;
+  font-size: .68rem;
+}
+.peano-lean-selector .pls-stage {
+  margin-bottom: .3rem;
+  font-size: .74rem;
+  text-transform: capitalize;
+}
+.peano-lean-selector .pls-progress {
+  display: block;
+  width: 100%;
+  height: .55rem;
+  accent-color: var(--pls-accent);
+}
+.peano-lean-selector [hidden] {
+  display: none !important;
+}
+.peano-lean-selector .pls-counter,
+.peano-lean-selector .pls-status {
+  min-height: 1.1rem;
+  font-size: .75rem;
+}
+.peano-lean-selector .pls-assurance {
+  margin: .35rem 0 .7rem;
+  color: color-mix(in srgb, currentColor 75%, var(--pls-accent));
+  font-size: .72rem;
+  line-height: 1.45;
+}
+.peano-lean-selector .pls-controls,
+.peano-lean-selector .pls-downloads {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .45rem;
+}
+.peano-lean-selector .pls-controls button {
+  padding: .43rem .7rem;
+  border: 1px solid var(--pls-accent);
+  border-radius: .35rem;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+.peano-lean-selector .pls-build {
+  background: var(--pls-accent) !important;
+  color: white !important;
+}
+.peano-lean-selector .pls-controls button:disabled {
+  cursor: not-allowed;
+  opacity: .55;
+}
+.peano-lean-selector .pls-link {
+  color: var(--pls-accent);
+  font-size: .76rem;
+  text-decoration-thickness: .08em;
+  text-underline-offset: .16em;
+}
+.peano-lean-selector .pls-live {
+  order: -1;
+  flex-basis: 100%;
+  box-sizing: border-box;
+  margin-bottom: .15rem;
+  padding: .58rem .72rem;
+  border: 1px solid var(--pls-accent);
+  border-radius: .4rem;
+  background: var(--pls-accent);
+  color: white;
+  font-size: .8rem;
+  font-weight: 650;
+  text-align: center;
+  text-decoration: none;
+}
+.peano-lean-selector .pls-live:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .peano-lean-selector *,
+  .peano-lean-selector *::before,
+  .peano-lean-selector *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0013 — le_add_right</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT0013.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT0013&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT0012.html">← le_add_left</a><a href="BT0014.html">add_le_add_right →</a></nav>
+<p class="pa-tag">BT0013</p><h1>le_add_right</h1>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
+<p>Adding on the right produces an explicit order witness.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a b. exists k. k + a = a + b</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Adding on the right produces an explicit order witness.</p><p>Direct prerequisites:
+add_comm.
+The authored body proceeds by direct introduction and elimination.</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0002.html"><code>BT0002</code> add_comm</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0057.html"><code>BT0057</code> beta_value_lt_scaled_base</a> <a class="pa-theorem-ref" href="BT00RG.html"><code>BT00RG</code> double_triple_remainder_complement_budget</a> <a class="pa-theorem-ref" href="BT00UX.html"><code>BT00UX</code> primorial_factor_prefix_restrict_add</a> <a class="pa-theorem-ref" href="BT00VV.html"><code>BT00VV</code> primorial_le_four_pow_bounded</a> <a class="pa-theorem-ref" href="BT00X1.html"><code>BT00X1</code> six_block_window_decomposition_above_thirty_two</a> <a class="pa-theorem-ref" href="BT00X2.html"><code>BT00X2</code> bertrand_hj_six_block_iterate_from_total</a> <a class="pa-theorem-ref" href="BT00X4.html"><code>BT00X4</code> bertrand_floor_power_product_le_h_from_total</a> <a class="pa-theorem-ref" href="BT00Y5.html"><code>BT00Y5</code> central_binom_prime_power_contribution_le_double</a> <a class="pa-theorem-ref" href="BT010H.html"><code>BT010H</code> division_quotient_le_dividend</a> <a class="pa-theorem-ref" href="BT010Q.html"><code>BT010Q</code> prime_contribution_prefix_restrict_add</a> <a class="pa-theorem-ref" href="BT010V.html"><code>BT010V</code> no_bertrand_small_contribution_choice_le_double</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="e67561b7b27ad72c"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="43219ad4cb934352"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="exists" data-line-id="13438330bde04172"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">exists</span> b</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="apply" data-line-id="61bff6530b00f5f6"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0002.html">add_comm</a></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>38</dd>
+<dt>Layer</dt><dd>2</dd><dt>Lines</dt><dd>4</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>43a00a7148437b96f81a2d4d1cd1b75d9c6a2c188249e6bf50becde7ec03c021</code></dd>
+<dt>Script SHA-256</dt><dd><code>dd5dd39690a5a372e9fe3c3ab65f59c3aba9e3370a065bdf1bc5b813ba55dffd</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

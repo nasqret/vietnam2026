@@ -1,0 +1,899 @@
+{
+  "$defs": {
+    "artifact": {
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "type": "object"
+    },
+    "coldPass": {
+      "additionalProperties": false,
+      "properties": {
+        "worker_payload": {
+          "$ref": "#/$defs/workerPayload"
+        },
+        "worker_payload_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "worker_payload",
+        "worker_payload_sha256"
+      ],
+      "type": "object"
+    },
+    "commit": {
+      "pattern": "^[0-9a-f]{40}$",
+      "type": "string"
+    },
+    "deterministicReceipt": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "execution": {
+                "properties": {
+                  "mode": {
+                    "const": "local-diagnostic"
+                  }
+                },
+                "required": [
+                  "mode"
+                ]
+              }
+            },
+            "required": [
+              "execution"
+            ]
+          },
+          "then": {
+            "properties": {
+              "requested_resources": {
+                "type": "null"
+              },
+              "source_provenance": {
+                "properties": {
+                  "declared_upload": {
+                    "type": "null"
+                  }
+                }
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "requested_resources": {
+                "$ref": "#/$defs/resources"
+              },
+              "source_provenance": {
+                "properties": {
+                  "declared_upload": {
+                    "$ref": "#/$defs/declaredUpload"
+                  }
+                }
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "environment": {
+          "$ref": "#/$defs/environment"
+        },
+        "execution": {
+          "$ref": "#/$defs/execution"
+        },
+        "parent": {
+          "$ref": "#/$defs/parent"
+        },
+        "report_schema": {
+          "$ref": "#/$defs/artifact"
+        },
+        "requested_resources": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/resources"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "results": {
+          "$ref": "#/$defs/results"
+        },
+        "selected_theorems": {
+          "$ref": "#/$defs/targetList"
+        },
+        "source_provenance": {
+          "$ref": "#/$defs/sourceProvenance"
+        },
+        "target_graph_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "target_surface_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "environment",
+        "execution",
+        "parent",
+        "report_schema",
+        "requested_resources",
+        "results",
+        "selected_theorems",
+        "source_provenance",
+        "target_graph_sha256",
+        "target_surface_sha256"
+      ],
+      "type": "object"
+    },
+    "environment": {
+      "additionalProperties": false,
+      "properties": {
+        "python_executable": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "python_implementation": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "python_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "pythonhashseed": {
+          "const": "20260809"
+        }
+      },
+      "required": [
+        "python_executable",
+        "python_implementation",
+        "python_version",
+        "pythonhashseed"
+      ],
+      "type": "object"
+    },
+    "execution": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/localExecution"
+        },
+        {
+          "$ref": "#/$defs/wmiExecution"
+        }
+      ]
+    },
+    "localExecution": {
+      "additionalProperties": false,
+      "properties": {
+        "admission_eligible": {
+          "const": false
+        },
+        "host": {
+          "$ref": "#/$defs/safeString"
+        },
+        "mode": {
+          "const": "local-diagnostic"
+        },
+        "observed_allocation": {
+          "type": "null"
+        },
+        "proof_execution": {
+          "const": "native-two-fresh-processes"
+        },
+        "scheduler": {
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "none"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "type": "object"
+        },
+        "synthetic": {
+          "const": false
+        }
+      },
+      "required": [
+        "admission_eligible",
+        "host",
+        "mode",
+        "observed_allocation",
+        "proof_execution",
+        "scheduler",
+        "synthetic"
+      ],
+      "type": "object"
+    },
+    "observedAllocation": {
+      "additionalProperties": false,
+      "properties": {
+        "cpus_per_task": {
+          "const": 1
+        },
+        "memory_mib": {
+          "const": 32768
+        },
+        "node_list": {
+          "$ref": "#/$defs/safeString"
+        },
+        "nodes": {
+          "const": 1
+        },
+        "ntasks": {
+          "const": 1
+        },
+        "partition": {
+          "const": "cpu_idle"
+        }
+      },
+      "required": [
+        "cpus_per_task",
+        "memory_mib",
+        "node_list",
+        "nodes",
+        "ntasks",
+        "partition"
+      ],
+      "type": "object"
+    },
+    "safeString": {
+      "maxLength": 1000,
+      "minLength": 1,
+      "pattern": "^[^\\u0000-\\u001f\\u007f]+$",
+      "type": "string"
+    },
+    "wmiExecution": {
+      "additionalProperties": false,
+      "properties": {
+        "admission_eligible": {
+          "const": true
+        },
+        "host": {
+          "$ref": "#/$defs/safeString"
+        },
+        "mode": {
+          "const": "wmi-slurm"
+        },
+        "observed_allocation": {
+          "$ref": "#/$defs/observedAllocation"
+        },
+        "proof_execution": {
+          "const": "native-two-fresh-processes"
+        },
+        "scheduler": {
+          "additionalProperties": false,
+          "properties": {
+            "cluster": {
+              "$ref": "#/$defs/safeString"
+            },
+            "job_id": {
+              "pattern": "^[1-9][0-9]*$",
+              "type": "string"
+            },
+            "job_name": {
+              "const": "peano-bertrand-v3"
+            },
+            "kind": {
+              "const": "slurm"
+            },
+            "submit_dir_matches_repository": {
+              "const": true
+            }
+          },
+          "required": [
+            "cluster",
+            "job_id",
+            "job_name",
+            "kind",
+            "submit_dir_matches_repository"
+          ],
+          "type": "object"
+        },
+        "synthetic": {
+          "const": false
+        }
+      },
+      "required": [
+        "admission_eligible",
+        "host",
+        "mode",
+        "observed_allocation",
+        "proof_execution",
+        "scheduler",
+        "synthetic"
+      ],
+      "type": "object"
+    },
+    "parent": {
+      "additionalProperties": false,
+      "properties": {
+        "alpha_v3_artifacts": {
+          "additionalProperties": false,
+          "properties": {
+            "catalog": {
+              "$ref": "#/$defs/artifact"
+            },
+            "channels": {
+              "$ref": "#/$defs/artifact"
+            },
+            "dependency_graph": {
+              "$ref": "#/$defs/artifact"
+            },
+            "metrics": {
+              "$ref": "#/$defs/artifact"
+            }
+          },
+          "required": [
+            "catalog",
+            "channels",
+            "dependency_graph",
+            "metrics"
+          ],
+          "type": "object"
+        },
+        "alpha_v3_evidence_root_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "alpha_v3_membership_root_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "alpha_v3_ordered_spec_root_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "alpha_v3_runtime": {
+          "additionalProperties": false,
+          "properties": {
+            "checked_use_count": {
+              "const": 570
+            },
+            "edge_count": {
+              "const": 2730
+            },
+            "enrollment_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "identity_sha256": {
+              "$ref": "#/$defs/sha256"
+            },
+            "layer_count": {
+              "const": 45
+            },
+            "theorem_count": {
+              "const": 923
+            }
+          },
+          "required": [
+            "checked_use_count",
+            "edge_count",
+            "enrollment_sha256",
+            "identity_sha256",
+            "layer_count",
+            "theorem_count"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "alpha_v3_artifacts",
+        "alpha_v3_evidence_root_sha256",
+        "alpha_v3_membership_root_sha256",
+        "alpha_v3_ordered_spec_root_sha256",
+        "alpha_v3_runtime"
+      ],
+      "type": "object"
+    },
+    "process": {
+      "additionalProperties": false,
+      "properties": {
+        "parent_pid": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "pid": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "process_nonce": {
+          "pattern": "^[0-9a-f]{32}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "parent_pid",
+        "pid",
+        "process_nonce"
+      ],
+      "type": "object"
+    },
+    "declaredUpload": {
+      "additionalProperties": false,
+      "properties": {
+        "local_commit": {
+          "$ref": "#/$defs/commit"
+        },
+        "local_dirty": {
+          "const": false
+        },
+        "payload_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "local_commit",
+        "local_dirty",
+        "payload_sha256"
+      ],
+      "type": "object"
+    },
+    "observedGitRepository": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "const": "git"
+        },
+        "clean": {
+          "type": "boolean"
+        },
+        "head": {
+          "$ref": "#/$defs/commit"
+        },
+        "status_entries": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "status_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "top_level_matches_repository": {
+          "const": true
+        }
+      },
+      "required": [
+        "availability",
+        "clean",
+        "head",
+        "status_entries",
+        "status_sha256",
+        "top_level_matches_repository"
+      ],
+      "type": "object"
+    },
+    "observedPayloadRepository": {
+      "additionalProperties": false,
+      "properties": {
+        "availability": {
+          "const": "payload_without_git"
+        }
+      },
+      "required": [
+        "availability"
+      ],
+      "type": "object"
+    },
+    "observedRepository": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/observedGitRepository"
+        },
+        {
+          "$ref": "#/$defs/observedPayloadRepository"
+        }
+      ]
+    },
+    "sourceProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "declared_upload": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/declaredUpload"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observed_repository": {
+          "$ref": "#/$defs/observedRepository"
+        }
+      },
+      "required": [
+        "declared_upload",
+        "observed_repository"
+      ],
+      "type": "object"
+    },
+    "resources": {
+      "additionalProperties": false,
+      "properties": {
+        "cpus_per_task": {
+          "const": 1
+        },
+        "memory_mib": {
+          "const": 32768
+        },
+        "nodes": {
+          "const": 1
+        },
+        "ntasks": {
+          "const": 1
+        },
+        "partition": {
+          "const": "cpu_idle"
+        },
+        "time_limit": {
+          "const": "06:00:00"
+        },
+        "time_limit_seconds": {
+          "const": 21600
+        }
+      },
+      "required": [
+        "cpus_per_task",
+        "memory_mib",
+        "nodes",
+        "ntasks",
+        "partition",
+        "time_limit",
+        "time_limit_seconds"
+      ],
+      "type": "object"
+    },
+    "result": {
+      "additionalProperties": false,
+      "properties": {
+        "cuts": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "dependency_closure_count": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "dependency_closure_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "direct_dependencies": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "dne_objects": {
+          "const": 0
+        },
+        "proof_dag_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "proof_depth": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "proof_edges": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "proof_nodes": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "proof_objects": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "reused_objects": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "script_commands": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "script_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_path": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "source_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "statement_characters": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "statement_sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      },
+      "required": [
+        "cuts",
+        "dependency_closure_count",
+        "dependency_closure_sha256",
+        "direct_dependencies",
+        "dne_objects",
+        "proof_dag_sha256",
+        "proof_depth",
+        "proof_edges",
+        "proof_nodes",
+        "proof_objects",
+        "reused_objects",
+        "script_commands",
+        "script_sha256",
+        "source_path",
+        "source_sha256",
+        "statement_characters",
+        "statement_sha256"
+      ],
+      "type": "object"
+    },
+    "results": {
+      "additionalProperties": {
+        "$ref": "#/$defs/result"
+      },
+      "maxProperties": 21,
+      "minProperties": 1,
+      "propertyNames": {
+        "enum": [
+          "prime_strictly_above_decidable",
+          "bounded_prime_interval_search",
+          "prime_interval_exclusion_refutes_witness",
+          "bounded_prime_interval_decidable",
+          "mul_le_mul",
+          "le_mul_of_one_le_right",
+          "le_mul_of_one_le_left",
+          "pow_base_monotone",
+          "one_le_pow",
+          "pow_nonzero_of_one_le",
+          "pow_exponent_monotone",
+          "power_divides_decidable",
+          "power_divides_zero",
+          "bounded_power_valuation_search",
+          "bounded_power_valuation_exists",
+          "power_valuation_exists",
+          "power_valuation_functional",
+          "power_valuation_power_divides",
+          "power_valuation_dominates",
+          "prime_power_valuation_exists",
+          "prime_power_valuation_functional"
+        ]
+      },
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "targetList": {
+      "items": {
+        "enum": [
+          "prime_strictly_above_decidable",
+          "bounded_prime_interval_search",
+          "prime_interval_exclusion_refutes_witness",
+          "bounded_prime_interval_decidable",
+          "mul_le_mul",
+          "le_mul_of_one_le_right",
+          "le_mul_of_one_le_left",
+          "pow_base_monotone",
+          "one_le_pow",
+          "pow_nonzero_of_one_le",
+          "pow_exponent_monotone",
+          "power_divides_decidable",
+          "power_divides_zero",
+          "bounded_power_valuation_search",
+          "bounded_power_valuation_exists",
+          "power_valuation_exists",
+          "power_valuation_functional",
+          "power_valuation_power_divides",
+          "power_valuation_dominates",
+          "prime_power_valuation_exists",
+          "prime_power_valuation_functional"
+        ]
+      },
+      "maxItems": 21,
+      "minItems": 1,
+      "type": "array",
+      "uniqueItems": true
+    },
+    "workerPayload": {
+      "additionalProperties": false,
+      "properties": {
+        "format": {
+          "const": "peano-bertrand-alpha-v3-cold-worker-v2"
+        },
+        "pass_index": {
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "process": {
+          "$ref": "#/$defs/process"
+        },
+        "receipt": {
+          "$ref": "#/$defs/deterministicReceipt"
+        },
+        "schema_version": {
+          "const": 2
+        },
+        "status": {
+          "const": "passed"
+        }
+      },
+      "required": [
+        "format",
+        "pass_index",
+        "process",
+        "receipt",
+        "schema_version",
+        "status"
+      ],
+      "type": "object"
+    }
+  },
+  "$id": "peano-bertrand-alpha-v3-cold-closure-v2",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "execution": {
+            "properties": {
+              "mode": {
+                "const": "local-diagnostic"
+              }
+            },
+            "required": [
+              "mode"
+            ]
+          }
+        },
+        "required": [
+          "execution"
+        ]
+      },
+      "then": {
+        "properties": {
+          "admission_eligible": {
+            "const": false
+          },
+          "requested_resources": {
+            "type": "null"
+          },
+          "source_provenance": {
+            "properties": {
+              "declared_upload": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "admission_eligible": {
+            "const": true
+          },
+          "requested_resources": {
+            "$ref": "#/$defs/resources"
+          },
+          "source_provenance": {
+            "properties": {
+              "declared_upload": {
+                "$ref": "#/$defs/declaredUpload"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "admission_eligible": {
+      "type": "boolean"
+    },
+    "cold_passes": {
+      "items": {
+        "$ref": "#/$defs/coldPass"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "deterministic_across_passes": {
+      "const": true
+    },
+    "environment": {
+      "$ref": "#/$defs/environment"
+    },
+    "execution": {
+      "$ref": "#/$defs/execution"
+    },
+    "format": {
+          "const": "peano-bertrand-alpha-v3-cold-closure-v2"
+    },
+    "parent": {
+      "$ref": "#/$defs/parent"
+    },
+    "passes": {
+      "const": 2
+    },
+    "report_schema": {
+      "$ref": "#/$defs/artifact"
+    },
+    "requested_resources": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/resources"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "results": {
+      "$ref": "#/$defs/results"
+    },
+    "schema_version": {
+      "const": 2
+    },
+    "selected_theorems": {
+      "$ref": "#/$defs/targetList"
+    },
+    "source_provenance": {
+      "$ref": "#/$defs/sourceProvenance"
+    },
+    "status": {
+      "const": "passed"
+    },
+    "target_graph_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "target_surface_sha256": {
+      "$ref": "#/$defs/sha256"
+    }
+  },
+  "required": [
+    "admission_eligible",
+    "cold_passes",
+    "deterministic_across_passes",
+    "environment",
+    "execution",
+    "format",
+    "parent",
+    "passes",
+    "report_schema",
+    "requested_resources",
+    "results",
+    "schema_version",
+    "selected_theorems",
+    "source_provenance",
+    "status",
+    "target_graph_sha256",
+    "target_surface_sha256"
+  ],
+  "title": "peano-bertrand-alpha-v3-cold-closure-v2",
+  "type": "object"
+}

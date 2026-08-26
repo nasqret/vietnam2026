@@ -17,6 +17,53 @@ parts:
       - file: cookbook/puzzles
       - file: cookbook/curiosities
       - file: cookbook/showcase
+  - caption: "Building Peano Lab"
+    chapters:
+      - file: peano/index
+      - file: peano/why-pa
+      - file: peano/kernel
+      - file: peano/language-reference
+      - file: peano/axioms-and-rules
+      - file: peano/tactics
+      - file: peano/tacticals
+      - file: peano/induction-ladder
+      - file: peano/arithmetic-automation
+      - file: peano/compact-arith
+      - file: peano/limits
+      - file: peano/training-a-peano-policy
+      - file: peano/peano-hydra
+      - file: peano/tutorials
+      - file: peano/ladder
+      - file: peano/diary
+  - caption: "Foundational arithmetic library"
+    chapters:
+      - file: arithmetic-library/index
+      - file: arithmetic-library/library-editions
+      - file: arithmetic-library/grand-campaign-atlas
+      - file: arithmetic-library/next-layer-campaign
+      - file: arithmetic-library/advanced-layer-campaign
+      - file: arithmetic-library/transport-layer-campaign
+      - file: arithmetic-library/guided-tour
+      - file: arithmetic-library/theorem-atlas
+      - file: arithmetic-library/proof-explorer
+      - file: arithmetic-library/defined-proof-explorer
+      - file: arithmetic-library/curation
+      - file: arithmetic-library/dependency-graph
+      - file: arithmetic-library/language-and-trust
+      - file: arithmetic-library/proof-sharing
+      - file: arithmetic-library/dependency-ladder
+      - file: arithmetic-library/divisibility-and-congruence
+      - file: arithmetic-library/gcd-and-bezout
+      - file: arithmetic-library/strict-ha-campaign
+      - file: arithmetic-library/cell-history-and-lookup
+      - file: arithmetic-library/list-validity-and-membership
+      - file: arithmetic-library/primes-and-factorization
+      - file: arithmetic-library/quadratic-reciprocity
+      - file: arithmetic-library/bertrand-campaign
+      - file: arithmetic-library/bertrand-proof-explorer
+      - file: arithmetic-library/bertrand-defined-proof-explorer
+      - file: arithmetic-library/source-audit
+      - file: arithmetic-library/using-the-library
   - caption: "Appendix"
     chapters:
       - file: appendix/cheatsheet

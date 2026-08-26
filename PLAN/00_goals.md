@@ -36,3 +36,11 @@ what a proof is; they have (mostly) never written one a machine checks.
 - [x] Book builds clean; all six lecture chapters (+ cookbook, appendix) readable end-to-end.
 - [x] At least one shared statement is proved in all four provers (Lean/Agda/Rocq kernel-checked in CI; Mizar syntax-faithful — kernel check pending, no local toolchain).
 - [x] Everything is on GitHub (`nasqret/vietnam2026`) with a reproducible build (CI: 5 green jobs).
+
+## Phase 2 (branch `peano-lab`) — the Peano Lab
+
+- [ ] A lightweight, sound, readable theorem prover for Peano arithmetic in the browser —
+      kernel + tactics + tacticals + induction + simp — built to teach how provers are built.
+      Design: `docs/PEANO_LAB_DESIGN.md` · tasks: `PLAN/09_peano_lab.md` · new book part
+      "Building Peano Lab" · landing-page card → `/peano-lab/` · long-run: a proof-trace corpus
+      for post-training a small LLM prover.

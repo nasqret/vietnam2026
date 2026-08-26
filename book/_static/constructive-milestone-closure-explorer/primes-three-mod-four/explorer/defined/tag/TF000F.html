@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TF000F — euclid_three_progression_prime_exists — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="primes-three-mod-four"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
+       <a href="../../tag/TF000F.html?v=75fa146ac19b">Exact original proof</a>
+       <a href="../graph.html?target=TF000F&amp;v=75fa146ac19b">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G025" href="../../../../grand-campaign/?view=goal&amp;focus=G025&amp;v=75fa146ac19b">G025 milestone</a></nav>
+  <p class="pd-tag">TF000F</p><h1>euclid_three_progression_prime_exists</h1>
+  <p>Every actual subtraction-free Euclid number 4d+3 has a witnessed prime divisor congruent to three modulo four.</p><p class="pd-status">Alpha v25 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  
+  <p class="pd-callout">The exact G025 progression-prime milestone is fully proved in unchanged constructive arithmetic; Mod4Three deliberately reuses its existing Quadratic Reciprocity definition PD0012. The much stronger full Dirichlet progression-prime milestone G030 remains open.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ d. ∃ p. <a class="pd-definition-ref" data-definition="ND0044" href="../definition/ND0044.html?v=75fa146ac19b">PrimeThreeModFourDivisor(4 · d + 3,p)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0044.html?v=75fa146ac19b">PrimeThreeModFourDivisor(n,p) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip" href="TF000D.html?v=75fa146ac19b">three_mod_four_prime_divisor_exists</a></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall d. exists p. ((((~(p = 1) /\ forall frm_prime_left_ptmf_euclid_prime frm_prime_right_ptmf_euclid_prime. p = frm_prime_left_ptmf_euclid_prime * frm_prime_right_ptmf_euclid_prime -&gt; frm_prime_left_ptmf_euclid_prime = 1 \/ frm_prime_right_ptmf_euclid_prime = 1)) /\ ((exists ff_residue_ptmf_euclid_residue. (p) = 4 * ff_residue_ptmf_euclid_residue + 3) /\ (exists ff_quotient_ptmf_euclid_divides. (4 * d + 3) = (p) * ff_quotient_ptmf_euclid_divides))))</code></pre></details>
+  <section><h2>Complete unchanged native tactic proof</h2>
+    <p>All 5 lines are the exact independently kernel-checked original script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro d</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>specialize <a class="pd-theorem-ref" href="TF000D.html?v=75fa146ac19b">three_mod_four_prime_divisor_exists</a> (4 * d + 3)</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>apply <a class="pd-theorem-ref" href="TF000D.html?v=75fa146ac19b">three_mod_four_prime_divisor_exists</a></code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>exists d</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>refl</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v25 checked use</dd><dt>First admission</dt><dd>Alpha v23</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>612 / 617</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 617 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>10 / 7</dd>
+      <dt>Statement SHA-256</dt><dd><code>a2bcbb4684372da3274ff4f55ff36ae47a7f6cd0b642965ee9a49eec95d4cc3c</code></dd>
+      <dt>Script SHA-256</dt><dd><code>bd7c560f7480b9e43e6ad5e2bed8b0278ce37594031f1c241207dc7f713c0132</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11</code></dd>
+      <dt>Exact source module</dt><dd><code>peano-lab/py/peano_lab/library/primes_three_mod_four_candidate.py</code></dd></dl>
+</aside></main></body>
+</html>

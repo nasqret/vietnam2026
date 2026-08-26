@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT00QD — prime_two_le</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT00QD.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT00QD&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT00QA.html">← power_valuation_dominates</a><a href="BT00QE.html">succ_le_mul_of_two_le_right →</a></nav>
+<p class="pa-tag">BT00QD</p><h1>prime_two_le</h1>
+<p class="pa-status-candidate">Alpha v25 checked-use theorem · independently kernel and Lean verified; not Stable</p>
+<p>Every prime is at least two in witness-defined order.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall p. ((~(p = 1) /\ forall frm_prime_left_bpvl_prime frm_prime_right_bpvl_prime. p = frm_prime_left_bpvl_prime * frm_prime_right_bpvl_prime -&gt; frm_prime_left_bpvl_prime = 1 \/ frm_prime_right_bpvl_prime = 1)) -&gt; (exists bpvl_gap_prime_two. bpvl_gap_prime_two + (2) = (p))</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every prime is at least two in witness-defined order.</p><p>Direct prerequisites:
+prime_is_succ_succ.
+The authored body proceeds by case analysis (1), intermediate claims (1), equality transport (3).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT00AW.html"><code>BT00AW</code> prime_is_succ_succ</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00QF.html"><code>BT00QF</code> prime_power_exponent_le</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="4dc76bb7865003ac"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> p</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="f8791eae1ea725ae"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> hp</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="have" data-line-id="592f72d454392471"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">have</span> hshape : exists k. p = S (S k)</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="7e0a96872f65817a"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT00AW.html">prime_is_succ_succ</a> p</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="apply" data-line-id="e1c20e1c1f41b347"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT00AW.html">prime_is_succ_succ</a></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="exact" data-line-id="1abe53badc9b8e0c"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">exact</span> hp</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="cases" data-line-id="412a9b72d654d0c2"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">cases</span> hshape</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="exists" data-line-id="96db8fc3036115db"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">exists</span> x</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="trans" data-line-id="07014d2a8a720fa6"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">trans</span> S (S x)</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="rewrite" data-line-id="e28ee8e662683207"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">rewrite</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA4</span></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="rewrite" data-line-id="c72aa6d9c38aa1f0"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">rewrite</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA4</span></code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="rewrite" data-line-id="5221fe9cac782a81"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">rewrite</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA3</span></code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="refl" data-line-id="3872f7d95971854f"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="symm" data-line-id="21d198f5b4a5226a"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="exact" data-line-id="6df678c928446483"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">exact</span> hshape_witness</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>923</dd>
+<dt>Layer</dt><dd>3</dd><dt>Lines</dt><dd>15</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>alpha_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>no</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>27</dd>
+<dt>Statement SHA-256</dt><dd><code>1b3c7c140e6ce0e53d771c6580a3b8cf081835013d994878a22e5de1d1a04e7c</code></dd>
+<dt>Script SHA-256</dt><dd><code>3c9e57f0bcfa156e36681907a8991edbf10eaecab4bf4242ad171182d591b1a8</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_power_valuation_laws_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>7b95e4f2a16df3866cb3e01f17d1b455000706454a1a241948957c4548a0a17f</code></dd>
+</dl></aside></main></body></html>

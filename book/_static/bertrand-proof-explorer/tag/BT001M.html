@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT001M — mul_le_mul_right</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT001M.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT001M&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT001L.html">← mul_le_mul_left</a><a href="BT001N.html">mul_lt_mul_succ_left_nonzero →</a></nav>
+<p class="pa-tag">BT001M</p><h1>mul_le_mul_right</h1>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
+<p>Right multiplication preserves the witness-defined order.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a b c. (exists k. k + a = b) -&gt; exists r. r + a * c = b * c</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Right multiplication preserves the witness-defined order.</p><p>Direct prerequisites:
+add_mul.
+The authored body proceeds by case analysis (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT000B.html"><code>BT000B</code> add_mul</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0055.html"><code>BT0055</code> le_scaled_nonzero</a> <a class="pa-theorem-ref" href="BT00PV.html"><code>BT00PV</code> mul_le_mul</a> <a class="pa-theorem-ref" href="BT00PX.html"><code>BT00PX</code> le_mul_of_one_le_left</a> <a class="pa-theorem-ref" href="BT00R9.html"><code>BT00R9</code> square_lt_successor_square</a> <a class="pa-theorem-ref" href="BT00RC.html"><code>BT00RC</code> floor_sqrt_monotone</a> <a class="pa-theorem-ref" href="BT00RG.html"><code>BT00RG</code> double_triple_remainder_complement_budget</a> <a class="pa-theorem-ref" href="BT00TY.html"><code>BT00TY</code> mul_lt_mul_right_nonzero</a> <a class="pa-theorem-ref" href="BT00VK.html"><code>BT00VK</code> central_binom_strong_upper_step</a> <a class="pa-theorem-ref" href="BT00X6.html"><code>BT00X6</code> bertrand_main_inequality_factorized_from_total</a> <a class="pa-theorem-ref" href="BT00YH.html"><code>BT00YH</code> floor_sqrt_above_root_power_two_strict</a> <a class="pa-theorem-ref" href="BT010C.html"><code>BT010C</code> three_mul_le_square_of_three_le</a> <a class="pa-theorem-ref" href="BT0117.html"><code>BT0117</code> factor_pair_has_small_member_below_square</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="37d106121c522f68"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="fb79e10359ffa69a"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="a2074a95f8e09248"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="aad33e1ee971baf0"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="cases" data-line-id="98bf9d5b2b3abcd0"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="exists" data-line-id="3c8a36aeff58c319"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">exists</span> x * c</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="trans" data-line-id="ae41602695d24d68"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">trans</span> (x + a) * c</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="symm" data-line-id="77ad7be618b6824b"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="apply" data-line-id="186b6b4045f24a09"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT000B.html">add_mul</a></code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="congr" data-line-id="62cce5c7dfc3535b"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">congr</span></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="exact" data-line-id="f3196c6cc1626e5c"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">exact</span> h_witness</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="refl" data-line-id="c9e6cd901437d1bd"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">refl</span></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>57</dd>
+<dt>Layer</dt><dd>5</dd><dt>Lines</dt><dd>12</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>fa09ddd51c91e615765e8594cb62e9e029397032fb979207ca6a4f5ffaca5d89</code></dd>
+<dt>Script SHA-256</dt><dd><code>02b95afaf0dec8137e47324f778eba8b636269edfd54eeddc80823da098b5e81</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

@@ -6,6 +6,15 @@ venv/
 env/
 *.egg-info/
 .ipynb_checkpoints/
+.venv-helios/
+.cache/huggingface/
+
+# Peano policy runs keep manifests/reports selectively; never stage weights,
+# optimizer checkpoints, or scheduler streams by accident.
+results/peano-policy/
+checkpoints/
+logs/*.out
+logs/*.err
 
 # ── JupyterBook / Sphinx build ─────────────────────────
 book/_build/
@@ -16,6 +25,7 @@ _build/
 artifacts/lean/**/.lake/
 artifacts/lean/**/lake-packages/
 artifacts/lean/**/build/
+artifacts/lean-fta/.lake/
 *.olean
 
 # ── Agda ───────────────────────────────────────────────
@@ -32,6 +42,8 @@ artifacts/rocq/**/.*.aux
 # ── Browser lab (vendored/built assets) ────────────────
 lab-lambda/vendor/
 lab-lambda/_dist/
+peano-lab/vendor/
+peano-lab/_dist/
 
 # ── Node (only used for tooling, not committed) ────────
 node_modules/
@@ -46,6 +58,12 @@ Thumbs.db
 # ── Local-only notes ───────────────────────────────────
 scratch/
 *.local.md
+
+# Local generated reports and one-off debugging scratch. Reviewed deliverables
+# belong under artifacts/ instead of these working directories.
+output/
+tmp/
+peano-lab/py/debug_candidate.py
 
 # Claude Code local settings
 .claude/
@@ -64,3 +82,6 @@ src/*.zip
 
 # raw source assets (originals; optimized copies live in assets/)
 /src/
+
+# local preview symlink tree (make serve)
+_preview/

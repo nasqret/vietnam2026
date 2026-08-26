@@ -1,0 +1,468 @@
+{
+  "adapter": {
+    "files": {
+      "adapter/README.md": "e4c8e3ea343795c0bc7c902d380c62289a8baa427789644d2b483f28d1be3bfa",
+      "adapter/adapter_config.json": "2c6cf8bade4251c8404271ec12ee8791516d078c0a1e1a33fc522115adc610b7",
+      "adapter/adapter_model.safetensors": "67391285d82efe16970e8c2c627febe2524ce52d07be2a9eda138bbf1424ce44"
+    },
+    "root": "adapter",
+    "sha256": "ff1875424728fca1de3c273b61d0645a4ec77c22239ec0a511c2ea6de79b0177"
+  },
+  "base_model": {
+    "config_sha256": "a325c9f27de176887b8ca7f68d21714247f9c8106e8c120219789338da9a5dcd",
+    "id": "Qwen/Qwen3-1.7B-Base",
+    "requested_revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1",
+    "resolved_snapshot_hash": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+  },
+  "generation": {
+    "do_sample": false,
+    "max_new_tokens": 64,
+    "temperature": 1.0,
+    "top_p": 1.0
+  },
+  "inputs": {
+    "config": {
+      "path": "/work/bnaskrecki/peano-lab-training/training/peano_policy/configs/qwen3_1_7b_wmi_smoke.toml",
+      "sha256": "0e387a18d6ab3c395a9c81b7b6fbf79fc992de5833b51a912a21be40bdcda243"
+    },
+    "dataset_attestation": {
+      "attestor": {
+        "runtime": {
+          "implementation": "CPython",
+          "python": "3.12.12"
+        },
+        "sources": {
+          "training/peano_policy/__init__.py": {
+            "sha256": "c6db6b0c167a7b8e92646d91e81a77561dc51ee99c5a48d9a999a78e9d4f5db8"
+          },
+          "training/peano_policy/attest.py": {
+            "sha256": "fd27192edbf148b23f9512220971b77946e17416303167f83cd137077f4cc99c"
+          },
+          "training/peano_policy/config.py": {
+            "sha256": "69dac8c3fd9925baae1fde4ea50f64acb6e9966638a308a49a2660070417acd2"
+          },
+          "training/peano_policy/contract.py": {
+            "sha256": "dbb325137c7acecde53537d34b5f048b8656d482bb7e8b590753a8db34f97b59"
+          },
+          "training/peano_policy/data.py": {
+            "sha256": "22917b556b3be64ea8eccf806ad20150fb0cb6d1ba0b37b9127bd16279b83f3f"
+          },
+          "training/peano_policy/generate.py": {
+            "sha256": "a77be93649a2840dbefbe88a56105c9fb253f4a4ce0ab60ffa7be1a3b12d4fcc"
+          },
+          "training/peano_policy/manifest.py": {
+            "sha256": "9d0ccd0d82302a6e6476cb496f1861cf53f4f66504f33f708f89cfc6ad64fbcf"
+          },
+          "training/peano_policy/prompt.py": {
+            "sha256": "f9057f7a085b52a30bcc771f729c20c8b6ff73b1285b425365f9d0b108c22eb9"
+          },
+          "training/peano_policy/runtime.py": {
+            "sha256": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc"
+          },
+          "training/peano_policy/smoke.py": {
+            "sha256": "8e5764d1cf250a63d10b6261a0818c12049d79e967de66cc94aad7d38ef371be"
+          },
+          "training/peano_policy/train.py": {
+            "sha256": "418d3aeb250dfe1a30b5d423a54b47b2b4daa806fea0d9f0036763f924d64e15"
+          }
+        },
+        "sources_sha256": "4dcccc43b883325467f44a8ae815fd2ce19e617522e3f7566b3d7caa3bba0ef2"
+      },
+      "compiler": {
+        "runtime": {
+          "implementation": "cpython",
+          "python": "3.10.0"
+        },
+        "source_count": 34,
+        "sources_sha256": "6b02a16cc9f97178f1eb29437edb6ac162357d921a54ab3d58fc3d5fc21e5e5d"
+      },
+      "dataset_sha256": "1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd",
+      "environment": {
+        "capabilities": {
+          "allowed_commands": [
+            "apply",
+            "assumption",
+            "cases",
+            "compact_arith",
+            "congr",
+            "exact",
+            "exfalso",
+            "exists",
+            "forall_elim",
+            "have",
+            "induction",
+            "intro",
+            "left",
+            "norm_num",
+            "refl",
+            "rewrite",
+            "right",
+            "ring",
+            "simp",
+            "specialize",
+            "split",
+            "suffices",
+            "symm",
+            "trans",
+            "use"
+          ],
+          "allowed_theorems": [
+            "add_assoc",
+            "add_eq_zero_right",
+            "add_succ_left",
+            "antisymm_from_witnesses",
+            "drop_add_prefix_from_fixed",
+            "no_succ_add_fixed",
+            "zero_add"
+          ],
+          "label": "model-v1"
+        },
+        "classical": false,
+        "environment_sha256": "ea753147079f48c14e9bd197051264a1ab29868a0bac84bd13c420baf1b63e1f",
+        "surface": "model-v1"
+      },
+      "format": "peano-policy-dataset-attestation",
+      "held_out_contamination": 0,
+      "held_out_contract": {
+        "goals": [
+          {
+            "name": "le_trans",
+            "statement": "∀ x. ∀ y. ∀ z. x ≤ y → y ≤ z → x ≤ z"
+          },
+          {
+            "name": "le_antisymm",
+            "statement": "∀ x. ∀ y. x ≤ y → y ≤ x → x = y"
+          },
+          {
+            "name": "le_total",
+            "statement": "∀ x. ∀ y. x ≤ y ∨ y ≤ x"
+          },
+          {
+            "name": "mul_eq_zero",
+            "statement": "∀ x. ∀ y. x · y = 0 → x = 0 ∨ y = 0"
+          }
+        ],
+        "v": 1
+      },
+      "held_out_contract_sha256": "37aa8242ce437997cb88a31479e7a1ce42d60bd9a40b7a1ddb4b6f991fefb16f",
+      "independent_replay": true,
+      "manifest_sha256": "faffe83d36d218be08455fa87315594bb2e3a964ca0a63b5a94c356f3c1f0403",
+      "source_artifacts": {
+        "metadata": "bf199b46f5c269d1d602772e4a9eae4ddb2e2d79d02a3d4b36ce2c650ec04e66",
+        "traces": [
+          "edaee016b532ae1ed670024c1b1b9c73d3ed3154dda2018526a9ac17b57ff6db"
+        ]
+      },
+      "splits": {
+        "test": {
+          "rows": 925,
+          "sha256": "7960edcf3d69a821eb87ebc8e7bf5dd3f965a9de0971d4031ed28121da2745e3"
+        },
+        "train": {
+          "rows": 8149,
+          "sha256": "60a58aff0a5ff8a6305fe345a45d7c3b1028f5975ce7468fbd549a3ed815e379"
+        },
+        "val": {
+          "rows": 926,
+          "sha256": "799d7e6f5b8f10ce978532d3e125e43af84dd215f2efae73fde5cd7de853fb3b"
+        }
+      },
+      "v": 1
+    },
+    "deployment": {
+      "job_script": {
+        "file_sha256": "7cc6c0506d6838449ee45a0ae11604716cc77644819f75474b43327977507780",
+        "path": "slurm/peano_wmi_train_qwen3_1_7b.sbatch",
+        "sha256": "29e7a63305b015ce92ced45e04186acc77cc64fbb072632ac4b402137c12fa6d",
+        "status": "declared",
+        "support_script": {
+          "path": "scripts/wmi_job_environment.sh",
+          "sha256": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+          "sourced_sha256": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+          "status": "declared"
+        }
+      },
+      "mode": "slurm",
+      "modules": {
+        "loaded_modules": [
+          "anaconda/2025.12-1"
+        ],
+        "requested": "anaconda/2025.12-1",
+        "status": "loaded"
+      },
+      "runtime_declaration": {
+        "backend": "wmi",
+        "base_environment": "pytorch-gpu",
+        "base_manifest": {
+          "path": "training/peano_policy/wmi-base-v1.json",
+          "sha256": "67311313504c3f67dc12cbe6018812720ff4d925ad656961dcc4d9816306941a"
+        },
+        "requirements": {
+          "path": "training/peano_policy/requirements-wmi-overlay.lock",
+          "sha256": "6bcc1633302b2df72a1374e5c5e93f05b483bbb276541551cc471c83c5d3b82d"
+        }
+      },
+      "source_sync": {
+        "git_commit": "0c84fc326343e75a1ae41c73d0dce44a1b69a5ec",
+        "git_dirty": false,
+        "path": ".peano-source-provenance.tsv",
+        "sha256": "a51aef2749754edab5f419f2656ccdc89b2b4ff9db42c040820417503b95d8a3",
+        "status": "synced",
+        "synced_at": "2026-07-28T07:19:12Z"
+      },
+      "support_script": {
+        "path": "scripts/wmi_job_environment.sh",
+        "sha256": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+        "sourced_sha256": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+        "status": "declared"
+      }
+    },
+    "eval_data": {
+      "path": "data/peano-policy-v1/val.jsonl",
+      "sha256": "799d7e6f5b8f10ce978532d3e125e43af84dd215f2efae73fde5cd7de853fb3b"
+    },
+    "eval_dataset_manifest": {
+      "path": "/work/bnaskrecki/peano-lab-training/data/peano-policy-v1/manifest.json",
+      "sha256": "faffe83d36d218be08455fa87315594bb2e3a964ca0a63b5a94c356f3c1f0403"
+    },
+    "run_identity": {
+      "path": "/work/bnaskrecki/peano-lab-training/results/peano-policy/qwen3-1.7b-lora-wmi-smoke/run-identity.json",
+      "sha256": "2fdace564f722c6659400ac3ef5247cba542cdf3026631e6f227e26669dc13e5"
+    },
+    "source": {
+      "files": {
+        "README.md": "cf975013df7141cbc9c6447768a664a959b6c422a806d72534bd512f048faa91",
+        "__init__.py": "c6db6b0c167a7b8e92646d91e81a77561dc51ee99c5a48d9a999a78e9d4f5db8",
+        "attest.py": "fd27192edbf148b23f9512220971b77946e17416303167f83cd137077f4cc99c",
+        "config.py": "69dac8c3fd9925baae1fde4ea50f64acb6e9966638a308a49a2660070417acd2",
+        "configs/pythagoras_4b_pilot.toml": "c2cb3fc5d192f018782c689d7838b59fd68180d0ee262535bc8b828606fe4486",
+        "configs/qwen3_1_7b_smoke.toml": "30632a57dd0021c43326d386d4432cba38aaef73d80a0d628412475ad614a726",
+        "configs/qwen3_1_7b_wmi_smoke.toml": "0e387a18d6ab3c395a9c81b7b6fbf79fc992de5833b51a912a21be40bdcda243",
+        "configs/qwen3_4b_pilot.toml": "0a0e5fb25dd7a42e2cf25c08733ff272b940bb8c49535940116c0f15c6b800a1",
+        "contract.py": "dbb325137c7acecde53537d34b5f048b8656d482bb7e8b590753a8db34f97b59",
+        "data.py": "22917b556b3be64ea8eccf806ad20150fb0cb6d1ba0b37b9127bd16279b83f3f",
+        "generate.py": "a77be93649a2840dbefbe88a56105c9fb253f4a4ce0ab60ffa7be1a3b12d4fcc",
+        "manifest.py": "9d0ccd0d82302a6e6476cb496f1861cf53f4f66504f33f708f89cfc6ad64fbcf",
+        "prompt.py": "f9057f7a085b52a30bcc771f729c20c8b6ff73b1285b425365f9d0b108c22eb9",
+        "requirements-helios.lock": "50315d5465ec6081517e1e3bb93096c3a990907020978a490295cde59a6c7871",
+        "requirements-wmi-overlay.lock": "6bcc1633302b2df72a1374e5c5e93f05b483bbb276541551cc471c83c5d3b82d",
+        "runtime.py": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc",
+        "smoke.py": "8e5764d1cf250a63d10b6261a0818c12049d79e967de66cc94aad7d38ef371be",
+        "train.py": "418d3aeb250dfe1a30b5d423a54b47b2b4daa806fea0d9f0036763f924d64e15",
+        "wmi-base-v1.json": "67311313504c3f67dc12cbe6018812720ff4d925ad656961dcc4d9816306941a"
+      },
+      "sha256": "125261dd5b25610bd1e83631e515cbf39122d640d0525365ed272d418dd10b96"
+    },
+    "train_data": {
+      "path": "data/peano-policy-v1/train.jsonl",
+      "sha256": "60a58aff0a5ff8a6305fe345a45d7c3b1028f5975ce7468fbd549a3ed815e379"
+    },
+    "train_dataset_manifest": {
+      "path": "/work/bnaskrecki/peano-lab-training/data/peano-policy-v1/manifest.json",
+      "sha256": "faffe83d36d218be08455fa87315594bb2e3a964ca0a63b5a94c356f3c1f0403"
+    }
+  },
+  "metrics": {
+    "eval": {
+      "epoch": 0.78125,
+      "eval_loss": 0.13615185022354126,
+      "eval_runtime": 7.788,
+      "eval_samples_per_second": 32.871,
+      "eval_steps_per_second": 16.435
+    },
+    "eval_examples": 256,
+    "train": {
+      "epoch": 0.78125,
+      "total_flos": 3634934558097408.0,
+      "train_loss": 0.7830078494548798,
+      "train_runtime": 246.3813,
+      "train_samples_per_second": 6.494,
+      "train_steps_per_second": 0.406
+    },
+    "train_examples": 2048
+  },
+  "prompt_contract_sha256": "fe690b53a0b69466573f3f4e2fd60d50378ab2ebdf018f1365eaa8580e396c3f",
+  "prompt_version": 1,
+  "run": {
+    "max_eval_samples": 256,
+    "max_train_samples": 2048,
+    "name": "qwen3-1.7b-peano-lora-wmi-smoke",
+    "output_dir": "results/peano-policy/qwen3-1.7b-lora-wmi-smoke",
+    "resume": "never",
+    "seed": 20260728
+  },
+  "runtime": {
+    "accelerate": "1.8.1",
+    "attention": "sdpa",
+    "dtype": "bfloat16",
+    "environment": {
+      "accelerator": {
+        "bf16_supported": true,
+        "cuda_available": true,
+        "cuda_runtime": "12.4",
+        "cudnn": 90100,
+        "device_capability": [
+          8,
+          0
+        ],
+        "device_name": "NVIDIA A100-SXM4-80GB",
+        "nvidia_driver": "610.43.02",
+        "torch": "2.5.1",
+        "total_memory": 85119205376
+      },
+      "base_manifest": {
+        "path": "training/peano_policy/wmi-base-v1.json",
+        "sha256": "67311313504c3f67dc12cbe6018812720ff4d925ad656961dcc4d9816306941a"
+      },
+      "hostname": "g3n1.cluster.wmi.amu.edu.pl",
+      "implementation": "CPython",
+      "machine": "x86_64",
+      "packages": {
+        "Jinja2": "3.1.6",
+        "MarkupSafe": "3.0.3",
+        "PyYAML": "6.0.3",
+        "accelerate": "1.8.1",
+        "certifi": "2025.11.12",
+        "charset-normalizer": "3.4.4",
+        "filelock": "3.20.1",
+        "fsspec": "2025.5.1",
+        "hf-xet": "1.1.5",
+        "huggingface-hub": "0.33.4",
+        "idna": "3.11",
+        "mpmath": "1.3.0",
+        "networkx": "3.6.1",
+        "numpy": "2.3.5",
+        "packaging": "25.0",
+        "peft": "0.16.0",
+        "pip": "25.2",
+        "psutil": "7.1.3",
+        "regex": "2024.11.6",
+        "requests": "2.32.5",
+        "safetensors": "0.5.3",
+        "setuptools": "80.9.0",
+        "sympy": "1.13.1",
+        "tokenizers": "0.21.2",
+        "tomli": "2.3.0",
+        "torch": "2.5.1",
+        "torchaudio": "2.5.1",
+        "torchvision": "0.20.1",
+        "tqdm": "4.67.1",
+        "transformers": "4.53.3",
+        "triton": "3.1.0",
+        "typing-extensions": "4.15.0",
+        "urllib3": "2.6.2"
+      },
+      "packages_sha256": "8e292635432f34603d55dee8bc4475ae94172e1be456fd7a111fbe91d371385b",
+      "platform": "Linux-6.8.0-134-generic-x86_64-with-glibc2.35",
+      "python": "3.12.12",
+      "requirements": {
+        "path": "training/peano_policy/requirements-wmi-overlay.lock",
+        "sha256": "6bcc1633302b2df72a1374e5c5e93f05b483bbb276541551cc471c83c5d3b82d"
+      }
+    },
+    "job": {
+      "deployment": {
+        "job_script": {
+          "file_sha256": "7cc6c0506d6838449ee45a0ae11604716cc77644819f75474b43327977507780",
+          "path": "slurm/peano_wmi_train_qwen3_1_7b.sbatch",
+          "sha256": "29e7a63305b015ce92ced45e04186acc77cc64fbb072632ac4b402137c12fa6d",
+          "status": "declared",
+          "support_script": {
+            "path": "scripts/wmi_job_environment.sh",
+            "sha256": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+            "sourced_sha256": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+            "status": "declared"
+          }
+        },
+        "mode": "slurm",
+        "modules": {
+          "loaded_modules": [
+            "anaconda/2025.12-1"
+          ],
+          "requested": "anaconda/2025.12-1",
+          "status": "loaded"
+        },
+        "runtime_declaration": {
+          "backend": "wmi",
+          "base_environment": "pytorch-gpu",
+          "base_manifest": {
+            "path": "training/peano_policy/wmi-base-v1.json",
+            "sha256": "67311313504c3f67dc12cbe6018812720ff4d925ad656961dcc4d9816306941a"
+          },
+          "requirements": {
+            "path": "training/peano_policy/requirements-wmi-overlay.lock",
+            "sha256": "6bcc1633302b2df72a1374e5c5e93f05b483bbb276541551cc471c83c5d3b82d"
+          }
+        },
+        "source_sync": {
+          "git_commit": "0c84fc326343e75a1ae41c73d0dce44a1b69a5ec",
+          "git_dirty": false,
+          "path": ".peano-source-provenance.tsv",
+          "sha256": "a51aef2749754edab5f419f2656ccdc89b2b4ff9db42c040820417503b95d8a3",
+          "status": "synced",
+          "synced_at": "2026-07-28T07:19:12Z"
+        },
+        "support_script": {
+          "path": "scripts/wmi_job_environment.sh",
+          "sha256": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+          "sourced_sha256": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+          "status": "declared"
+        }
+      },
+      "environment": {
+        "SLURM_CLUSTER_NAME": "cluster",
+        "SLURM_JOB_ACCOUNT": "bnaskrecki",
+        "SLURM_JOB_CONSTRAINTS": null,
+        "SLURM_JOB_GRES": null,
+        "SLURM_JOB_NAME": "peano-wmi-qwen17",
+        "SLURM_JOB_NODELIST": "g3n1",
+        "SLURM_JOB_PARTITION": "gpu_csi",
+        "SLURM_SUBMIT_DIR": "/work/bnaskrecki/peano-lab-training"
+      },
+      "job_id": "171421",
+      "ledger": {
+        "path": "logs/submissions.tsv",
+        "row_sha256": "79b31e68b5deb3c4ad9b043fcec60c5fd8960d30b4da323d9ff56201405c1309"
+      },
+      "scheduler": "slurm",
+      "submission": {
+        "dependency_job_id": "171414",
+        "git_commit": "0c84fc326343e75a1ae41c73d0dce44a1b69a5ec",
+        "git_dirty": "false",
+        "job_id": "171421",
+        "script": "slurm/peano_wmi_train_qwen3_1_7b.sbatch",
+        "script_sha256": "29e7a63305b015ce92ced45e04186acc77cc64fbb072632ac4b402137c12fa6d",
+        "sync_timestamp": "2026-07-28T07:19:12Z",
+        "timestamp": "2026-07-28T09:29:05+02:00",
+        "workdir": "/work/bnaskrecki/peano-lab-training"
+      }
+    },
+    "peft": "0.16.0",
+    "resume": {
+      "checkpoint": null,
+      "checkpoint_sha256": null,
+      "global_step": null,
+      "trainer_value": false
+    },
+    "torch": "2.5.1",
+    "transformers": "4.53.3"
+  },
+  "tokenizer": {
+    "artifacts": {
+      "files": {
+        "tokenizer/added_tokens.json": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+        "tokenizer/chat_template.jinja": "87a2728cb8dc9fe424d624542f6060ec05a1d285ebbec578bb078900e33396b5",
+        "tokenizer/merges.txt": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+        "tokenizer/special_tokens_map.json": "6676f091c8bc4d1b50146427cfde92073402866b87b6e39223227931b70083e9",
+        "tokenizer/tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+        "tokenizer/tokenizer_config.json": "67e5a0a11cd35f9c00ee52e0af4cdc0baa75fea0cb5fce7d1beb251b4621d15c",
+        "tokenizer/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+      },
+      "root": "tokenizer",
+      "sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e"
+    },
+    "identity_sha256": "8582a45bba2100c7c7ac18ac25a64d81ccec6ed03717d1d74a6a1868dc11155d",
+    "resolved_snapshot_hash": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+  },
+  "v": 1
+}

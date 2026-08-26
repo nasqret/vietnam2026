@@ -1,0 +1,773 @@
+{
+  "alpha_edition_version": "v25",
+  "alpha_first_enrolled_version": "v20",
+  "catalog_sha256": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e",
+  "checked_use_count": 39,
+  "edition_identity_sha256": "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28",
+  "families": [
+    {
+      "campaign": "polynomial_horner",
+      "definition_count": 3,
+      "domain": "D04",
+      "family": "F10",
+      "milestones": [
+        "T12"
+      ],
+      "root_tags": {
+        "beta_horner_eval_exists": "PH0002",
+        "beta_horner_eval_exists_unique": "PH0005",
+        "beta_horner_eval_successor_decompose": "PH0007"
+      },
+      "slug": "polynomial-horner",
+      "theorem_count": 7
+    },
+    {
+      "campaign": "matrix_dot_product",
+      "definition_count": 7,
+      "domain": "D05",
+      "family": "F12",
+      "milestones": [
+        "T13"
+      ],
+      "root_tags": {
+        "beta_dot_product_exists_unique": "MD0006",
+        "beta_matrix_cell_exists_unique": "MD0003",
+        "signed_matrix_two_determinant_functional": "MD000A"
+      },
+      "slug": "matrix-dot-product",
+      "theorem_count": 10
+    },
+    {
+      "campaign": "bertrand_prime",
+      "definition_count": 15,
+      "domain": "D02",
+      "family": "F03",
+      "milestones": [
+        "G023",
+        "G024"
+      ],
+      "root_tags": {
+        "central_binom_prime_divisor_multiplicity_one_exists": "BP0007",
+        "iterated_bertrand_prime_chain_exists": "BP000D"
+      },
+      "slug": "bertrand-prime-chains",
+      "theorem_count": 13
+    },
+    {
+      "campaign": "continued_fraction",
+      "definition_count": 5,
+      "domain": "D03",
+      "family": "F08",
+      "milestones": [
+        "G071"
+      ],
+      "root_tags": {
+        "continued_fraction_positive_exists": "CF0009",
+        "continued_fraction_positive_nonempty_exists": "CF0008"
+      },
+      "slug": "continued-fractions",
+      "theorem_count": 9
+    }
+  ],
+  "file_count": 138,
+  "files": [
+    {
+      "bytes": 15951,
+      "path": "assets/defined-explorer.css",
+      "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220"
+    },
+    {
+      "bytes": 29840,
+      "path": "assets/defined-explorer.js",
+      "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"
+    },
+    {
+      "bytes": 30856,
+      "path": "assets/exact-explorer.css",
+      "sha256": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc"
+    },
+    {
+      "bytes": 42701,
+      "path": "assets/exact-explorer.js",
+      "sha256": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606"
+    },
+    {
+      "bytes": 8341,
+      "path": "assets/proofs.css",
+      "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285"
+    },
+    {
+      "bytes": 299939,
+      "path": "bertrand-prime-chains/api/corpus.json",
+      "sha256": "44080bdfa2a30e3e27bcd2e4fefad0e9a537c7f8a402f1b6403c4f8ba1af80b7"
+    },
+    {
+      "bytes": 26660,
+      "path": "bertrand-prime-chains/explorer/defined/api/graph.json",
+      "sha256": "1a27553f24a02f1cd54f0a2cc0fa93bb3d44044ca154a316cc56b76ea057385d"
+    },
+    {
+      "bytes": 4137,
+      "path": "bertrand-prime-chains/explorer/defined/definition/ND0001.html",
+      "sha256": "6b0d62cc8900fa4e5431a9498815e3fe7a5e7adbf5c4b1b0758be92fadd6b3a3"
+    },
+    {
+      "bytes": 3673,
+      "path": "bertrand-prime-chains/explorer/defined/definition/ND0006.html",
+      "sha256": "e7960881204c1f32979c7d15b6cf97d1c43742ffc3fd938588335749d8e08a58"
+    },
+    {
+      "bytes": 11662,
+      "path": "bertrand-prime-chains/explorer/defined/definition/ND0007.html",
+      "sha256": "d7285a9baba52f49c23dfce391bf0596707046390e69c9fee409c8843c35145e"
+    },
+    {
+      "bytes": 5384,
+      "path": "bertrand-prime-chains/explorer/defined/definition/ND0008.html",
+      "sha256": "7d7c693d734b272d35ebabe255a5871d1c1721776c8fdb5f040632be674e62dd"
+    },
+    {
+      "bytes": 3616,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0001.html",
+      "sha256": "281e9eba657206dc651515e63bd10108531ec2c364c2c23cff45e5d194b70901"
+    },
+    {
+      "bytes": 4279,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0002.html",
+      "sha256": "eb0d99f5c8d1a78b56eb91d7fc5c15f4e9a3e7a0fd26663bf29a6d7d179b48c5"
+    },
+    {
+      "bytes": 3000,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0003.html",
+      "sha256": "5b859cb1ae5c47567d5aaaf4f5d3a90b0f818b858f56968a6f1cb00315fce8ec"
+    },
+    {
+      "bytes": 3773,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0004.html",
+      "sha256": "18f8af3a88451e39c09ebe2bfe663d505b7145e2d2fc5117834302c0191458ea"
+    },
+    {
+      "bytes": 3194,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0013.html",
+      "sha256": "537d4375f0227d8ca4de3754325c74c486da78a03648086fc9bc4805b4bde11b"
+    },
+    {
+      "bytes": 4738,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0014.html",
+      "sha256": "eae9af0b66a522548393eea474e0409d4990e7503121940a4cdfb918e94fb7e0"
+    },
+    {
+      "bytes": 3304,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0019.html",
+      "sha256": "0253244f9e5146bec75178fc8ab30e6cc47f1614d26e2949d14ca68d777cf117"
+    },
+    {
+      "bytes": 5704,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0020.html",
+      "sha256": "6aee96f4fae7a341277b8b1c33647d9b6990abab84e8714b33caec64fd227e48"
+    },
+    {
+      "bytes": 7658,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0044.html",
+      "sha256": "8851d4446b6dd0909fdd6e90b691450079c371d9ca4ca7cd0d6ca17069823cfb"
+    },
+    {
+      "bytes": 15585,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0045.html",
+      "sha256": "f38348adec0f4f0a703bab213d17a37896a97f53ce9ea66f25d133d1407eeb25"
+    },
+    {
+      "bytes": 14957,
+      "path": "bertrand-prime-chains/explorer/defined/definition/PD0046.html",
+      "sha256": "c2e6ff4086003fce30590f43eb7180f5d7c525ab00502eaf2d30e872a6a267ed"
+    },
+    {
+      "bytes": 23573,
+      "path": "bertrand-prime-chains/explorer/defined/graph.html",
+      "sha256": "99f760ce25f3b4f1304c2460ee1f1aed1eba95add63f1ba3de134122292bbba3"
+    },
+    {
+      "bytes": 17242,
+      "path": "bertrand-prime-chains/explorer/defined/index.html",
+      "sha256": "057ed3758aee259eeb58612b6fff26872bf0f06ad3b8c295b2050bcf4be5f5fc"
+    },
+    {
+      "bytes": 17437,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP0001.html",
+      "sha256": "4d251e1999aefe1e9b6566d7a6d8b97aa8d4fe1685dee63bf42f376dbb9021f3"
+    },
+    {
+      "bytes": 10546,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP0002.html",
+      "sha256": "ef212189d863cbc07c08845db1dc1b262d7908b512b2299e4efb0494239761a4"
+    },
+    {
+      "bytes": 31983,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP0003.html",
+      "sha256": "af5cd11c0af9d85e17bfd7d96e20a2cbecd944b7c20a7fbb64ce7d4a136f605c"
+    },
+    {
+      "bytes": 28275,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP0004.html",
+      "sha256": "99cc9650114196e65d2c2a3dedaa14ac2db76d7085d74f275620258b7b015be9"
+    },
+    {
+      "bytes": 29216,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP0005.html",
+      "sha256": "2d9e46270e7f58a9e4d4e88c788fcc2c5171c5a300fb91146a4aa284c6cc57e3"
+    },
+    {
+      "bytes": 37887,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP0006.html",
+      "sha256": "a7ef906205f551121d24464fad0d2f3440673fb2390401e96e1e66d4fe39156f"
+    },
+    {
+      "bytes": 35202,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP0007.html",
+      "sha256": "cd0f4fde1be044dd83df4469be3031b749cff4a9870fc921bcb8ada1da6b0d23"
+    },
+    {
+      "bytes": 5418,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP0008.html",
+      "sha256": "33d49525e83f8c9808ef2621388a2a2a0adc90bad7d55738b8dc372a36c04dcf"
+    },
+    {
+      "bytes": 8421,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP0009.html",
+      "sha256": "815fedf861d05044765a6e2e72902f34326a3232805ff173bcd100a8f81f31ec"
+    },
+    {
+      "bytes": 6120,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP000A.html",
+      "sha256": "76a04cf9f1c53bff9d8936c08e56c6035f04925939777d07c45d77cf95b24028"
+    },
+    {
+      "bytes": 22039,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP000B.html",
+      "sha256": "9a044fab217eb27f6a9082a22c8c8dab8c9999dfb4aa0f0e0924b07a4b063b7e"
+    },
+    {
+      "bytes": 19882,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP000C.html",
+      "sha256": "f0ba88bddb28d1519147fa55a4208902dffdb85d2e6f4de96a07a2ad389c54ac"
+    },
+    {
+      "bytes": 9877,
+      "path": "bertrand-prime-chains/explorer/defined/tag/BP000D.html",
+      "sha256": "3ac6916221f02db425f270411228baf4970452c135b821b4665ce915de538f96"
+    },
+    {
+      "bytes": 13786,
+      "path": "bertrand-prime-chains/explorer/index.html",
+      "sha256": "f88b49693a528f80169de0848bbc493ae3f37a5d4744ca823444c6e6d937e2c6"
+    },
+    {
+      "bytes": 17686,
+      "path": "bertrand-prime-chains/explorer/tag/BP0001.html",
+      "sha256": "7a3bab27e454ad8aa100b4d3c16017ecabbf30021c2f4993bea46d15ef086e2c"
+    },
+    {
+      "bytes": 16606,
+      "path": "bertrand-prime-chains/explorer/tag/BP0002.html",
+      "sha256": "55c0a4f1e599a923c30bc2a2fa0a527379c748bf86c3854a844a9c63c6d4c826"
+    },
+    {
+      "bytes": 35267,
+      "path": "bertrand-prime-chains/explorer/tag/BP0003.html",
+      "sha256": "870126bac2752df624274ba2a20c0be0690be6c97e4697429b9e7163963bb20b"
+    },
+    {
+      "bytes": 30446,
+      "path": "bertrand-prime-chains/explorer/tag/BP0004.html",
+      "sha256": "8f6e01851446e508acc852b75b83680ca57a477877390b73e50a536e5b762400"
+    },
+    {
+      "bytes": 31407,
+      "path": "bertrand-prime-chains/explorer/tag/BP0005.html",
+      "sha256": "c6ad9a1b666bbe4c92bf73982c6ed022d31beda40eb4a2c17858b0930ccf1dbb"
+    },
+    {
+      "bytes": 40723,
+      "path": "bertrand-prime-chains/explorer/tag/BP0006.html",
+      "sha256": "8a0735ec8ead4c792592973ed2071225cba5c58d39a9258e0ca8495673e6e700"
+    },
+    {
+      "bytes": 36220,
+      "path": "bertrand-prime-chains/explorer/tag/BP0007.html",
+      "sha256": "184e00b7fba45942c8e9eb4890805a360cdc154fdc7f77ea8027a512d9eb9d4f"
+    },
+    {
+      "bytes": 7283,
+      "path": "bertrand-prime-chains/explorer/tag/BP0008.html",
+      "sha256": "88adc19569fb344ce328b69df80d3955b7c99883bf25eaa9f844b7ae15fd214a"
+    },
+    {
+      "bytes": 11103,
+      "path": "bertrand-prime-chains/explorer/tag/BP0009.html",
+      "sha256": "9f3a6ad94ef68282cde8f14840e0dc3855fb1be97e9b6ff05c04507de5bd191d"
+    },
+    {
+      "bytes": 7703,
+      "path": "bertrand-prime-chains/explorer/tag/BP000A.html",
+      "sha256": "92d44265281fe2ae07b504fc0bea884025fd3b30ac8538b1844916e59d373c5a"
+    },
+    {
+      "bytes": 32140,
+      "path": "bertrand-prime-chains/explorer/tag/BP000B.html",
+      "sha256": "78c9e7cb424a2ef6f11f9e76ddf21d6ed313fa1680404a933a274a304c720637"
+    },
+    {
+      "bytes": 26069,
+      "path": "bertrand-prime-chains/explorer/tag/BP000C.html",
+      "sha256": "755bfec9e50238ce565daabd5e392119b7f00d71e571a1a2aee00ccdf88af51f"
+    },
+    {
+      "bytes": 11527,
+      "path": "bertrand-prime-chains/explorer/tag/BP000D.html",
+      "sha256": "129fa69612d3fdb6d37e2a572c8637a4e964fc2d350d1309b6da64dce4bc4b49"
+    },
+    {
+      "bytes": 6315,
+      "path": "bertrand-prime-chains/index.html",
+      "sha256": "c1c80302547a14d55f84d6cdb94bbc0433d1bc56f835432f2bf2da0c56ff1ca9"
+    },
+    {
+      "bytes": 179049,
+      "path": "continued-fractions/api/corpus.json",
+      "sha256": "13068be17854bb54e585c050c747cb124b4e344ab8e4f98de001ec2c3891ccfe"
+    },
+    {
+      "bytes": 13098,
+      "path": "continued-fractions/explorer/defined/api/graph.json",
+      "sha256": "5be7b37f54882ead6fadaebef1885e4bab14fc157d9a908a0a9a763e9ab75182"
+    },
+    {
+      "bytes": 3187,
+      "path": "continued-fractions/explorer/defined/definition/ND0001.html",
+      "sha256": "a7f514e05d36d09bf53d65bc508659aaa46b3b79e8c6ca2cd9135d167abd243e"
+    },
+    {
+      "bytes": 2954,
+      "path": "continued-fractions/explorer/defined/definition/ND0009.html",
+      "sha256": "af735067af80a0171a2040729df73ddfb935411a3f0ca80518ec663c2c7bc56f"
+    },
+    {
+      "bytes": 8537,
+      "path": "continued-fractions/explorer/defined/definition/ND0010.html",
+      "sha256": "027a93edc67b9cec1b35dc3230664e2c64269e83083d2a39b331b532f51c7a2e"
+    },
+    {
+      "bytes": 9270,
+      "path": "continued-fractions/explorer/defined/definition/ND0011.html",
+      "sha256": "df11c713d6ade6c2847a40a6197c5b711a9f4b28676ec5b376083de2705fb710"
+    },
+    {
+      "bytes": 2867,
+      "path": "continued-fractions/explorer/defined/definition/PD0002.html",
+      "sha256": "8d106030bb7e6ea6b71f808f9b123d3ed6eedbe70419bf3af5a337c6b64ca151"
+    },
+    {
+      "bytes": 13693,
+      "path": "continued-fractions/explorer/defined/graph.html",
+      "sha256": "bb243124b52d639a83b24235b44695cb8f2ebaaefa3abfa6fbac35606008d95c"
+    },
+    {
+      "bytes": 11145,
+      "path": "continued-fractions/explorer/defined/index.html",
+      "sha256": "548ee10d497bc320e543d22ce9a2cbc72320dc864514d5aa6f6a6eaceba2c414"
+    },
+    {
+      "bytes": 6192,
+      "path": "continued-fractions/explorer/defined/tag/CF0001.html",
+      "sha256": "5280f786cf280759b138d3643cccc7d4279838fc82f436f9ced14b5ab04aed68"
+    },
+    {
+      "bytes": 10996,
+      "path": "continued-fractions/explorer/defined/tag/CF0002.html",
+      "sha256": "54370fc6768649554655f10f8bf6fdee82943f2b1966d220ef47db32574bfd61"
+    },
+    {
+      "bytes": 9595,
+      "path": "continued-fractions/explorer/defined/tag/CF0003.html",
+      "sha256": "51f8ac897ea9b1aff53da5bd8f30ab582cd5d5768d07f00f94e9eeeab48e9242"
+    },
+    {
+      "bytes": 35477,
+      "path": "continued-fractions/explorer/defined/tag/CF0004.html",
+      "sha256": "2ed0da3ff96ec31ca1966149c3aa30aef5dacc3b0ad4c4f27c042408e46b8665"
+    },
+    {
+      "bytes": 48734,
+      "path": "continued-fractions/explorer/defined/tag/CF0005.html",
+      "sha256": "c0a0735ff4f517f715189a2e9ddba9dba0ecf4a503c4cfe5fa44c9173f2af796"
+    },
+    {
+      "bytes": 14982,
+      "path": "continued-fractions/explorer/defined/tag/CF0006.html",
+      "sha256": "85c3f1ff03c28e38a9919090d7a626e7132bac3230877c772532c710160107fe"
+    },
+    {
+      "bytes": 29484,
+      "path": "continued-fractions/explorer/defined/tag/CF0007.html",
+      "sha256": "76a2dd8e6ccbd1cc818921cec2c101ada90b844017af7c3674d12f822313d060"
+    },
+    {
+      "bytes": 22715,
+      "path": "continued-fractions/explorer/defined/tag/CF0008.html",
+      "sha256": "34fa6d3620d300371734bf36b1b82a0696a58bbd99fd3b5c531115eb6f9a161a"
+    },
+    {
+      "bytes": 20858,
+      "path": "continued-fractions/explorer/defined/tag/CF0009.html",
+      "sha256": "e5a8d33de6483c6b5a13832e26679a903dd32dfeed9fcd12bb8534ef1298e4c3"
+    },
+    {
+      "bytes": 11058,
+      "path": "continued-fractions/explorer/index.html",
+      "sha256": "489aaa91700c3f1e3043265e7cf5c436911483b04eb7f402d36ec2dea2aad042"
+    },
+    {
+      "bytes": 7820,
+      "path": "continued-fractions/explorer/tag/CF0001.html",
+      "sha256": "51bc9f2002ffab86054ecf188aba0e4ddb765a04ffcbdd1f7f8850addacf4409"
+    },
+    {
+      "bytes": 12713,
+      "path": "continued-fractions/explorer/tag/CF0002.html",
+      "sha256": "90d024dad26dbd347b9d6c312aa2aa0df54fcc693a93193072d290380a225973"
+    },
+    {
+      "bytes": 10828,
+      "path": "continued-fractions/explorer/tag/CF0003.html",
+      "sha256": "af003389d025433364fb04aa3c2c26f7ea4e8529447aca821f5fde5fc2ac304d"
+    },
+    {
+      "bytes": 51625,
+      "path": "continued-fractions/explorer/tag/CF0004.html",
+      "sha256": "a84cadd622bdeebe0c23be18f3a11650690af5f69ac067f6aa09dc133f12c37b"
+    },
+    {
+      "bytes": 60955,
+      "path": "continued-fractions/explorer/tag/CF0005.html",
+      "sha256": "8cd8211f727d0d6b400f6217dccf12cfa7c747045fcedc25b771ea2d63de6239"
+    },
+    {
+      "bytes": 16694,
+      "path": "continued-fractions/explorer/tag/CF0006.html",
+      "sha256": "b4ee98f9613229a1cb1a39c047b2b6df6ed973a0f366067ffadff65a0fc473f2"
+    },
+    {
+      "bytes": 35804,
+      "path": "continued-fractions/explorer/tag/CF0007.html",
+      "sha256": "8b2426bee1ccc45b4587a4f1d0ad36a885ae4feb3cbfc830f77937e2bab60fcc"
+    },
+    {
+      "bytes": 27621,
+      "path": "continued-fractions/explorer/tag/CF0008.html",
+      "sha256": "dac2698ae1f221c54849ebeefb474fd1a4a6a7b1999f439245cff7a5a8504adc"
+    },
+    {
+      "bytes": 22615,
+      "path": "continued-fractions/explorer/tag/CF0009.html",
+      "sha256": "28bc772b8792dbd01c4bf70de67ee7450148a416477ef9b86de0b8c30f1d462f"
+    },
+    {
+      "bytes": 6114,
+      "path": "continued-fractions/index.html",
+      "sha256": "d31098f1d88a690762a4c85a864a18ed2749bffba73e212d3344f659d4f7b98e"
+    },
+    {
+      "bytes": 2748,
+      "path": "index.html",
+      "sha256": "b5e43888b103d3877cc54c4dd7efc6d23fec213363b61085b1dacb10c98ae8ae"
+    },
+    {
+      "bytes": 89028,
+      "path": "matrix-dot-product/api/corpus.json",
+      "sha256": "a1f9051c3d9b147cb880846d276f893b95058c6bd5b120f68fe0cca7d8eb4a36"
+    },
+    {
+      "bytes": 12619,
+      "path": "matrix-dot-product/explorer/defined/api/graph.json",
+      "sha256": "28efd148b2be3e714b08ebfce0823cd6ec72babc32414aea9041fbdc4cde4874"
+    },
+    {
+      "bytes": 3101,
+      "path": "matrix-dot-product/explorer/defined/definition/ND0001.html",
+      "sha256": "97e2b10d85ba0f78784791c42dd33bc81087e59b555f5801ce5d296cf7d9dba2"
+    },
+    {
+      "bytes": 3235,
+      "path": "matrix-dot-product/explorer/defined/definition/ND0003.html",
+      "sha256": "62ff4712359d644227ad9b2141ae2621eb3beb0818a6a96cb2a4762dd8b71db7"
+    },
+    {
+      "bytes": 6914,
+      "path": "matrix-dot-product/explorer/defined/definition/ND0004.html",
+      "sha256": "3b88349e9c2b77cef430a2c2a38aa319da5933a3647470faf391686f97fe0fc3"
+    },
+    {
+      "bytes": 3033,
+      "path": "matrix-dot-product/explorer/defined/definition/ND0005.html",
+      "sha256": "6b0e32e9280fd3268ad6668936a09ef9a9aa36467fae606171a88219f954290d"
+    },
+    {
+      "bytes": 2884,
+      "path": "matrix-dot-product/explorer/defined/definition/PD0002.html",
+      "sha256": "537843427fa87223f612daffd4c5f6ed758ce7d791839095885ca445f7fd9846"
+    },
+    {
+      "bytes": 2960,
+      "path": "matrix-dot-product/explorer/defined/definition/PD0013.html",
+      "sha256": "ed0089dfea3c08072c2e36818be2365f96cc031f445da89cb2da2a6a73945586"
+    },
+    {
+      "bytes": 4441,
+      "path": "matrix-dot-product/explorer/defined/definition/PD0015.html",
+      "sha256": "263aa5d8f0efc3b0f87d30f36c3a64c5d1ff2e84e6460e8f4e58bd4d09eebadd"
+    },
+    {
+      "bytes": 13415,
+      "path": "matrix-dot-product/explorer/defined/graph.html",
+      "sha256": "c9bf2247e3404be56ec1b439ec498d09dd924821b38eb3da76e12e5a680d80a4"
+    },
+    {
+      "bytes": 11441,
+      "path": "matrix-dot-product/explorer/defined/index.html",
+      "sha256": "9c4df9e525493fbaa7f30e0248220fb5c66426c3ac989ee995d92c22a7b4b60f"
+    },
+    {
+      "bytes": 5223,
+      "path": "matrix-dot-product/explorer/defined/tag/MD0001.html",
+      "sha256": "11bffa76242e6091f3032bf75a92c1ed7c140e0bd1ffad6abd732cdbc6efb85f"
+    },
+    {
+      "bytes": 6563,
+      "path": "matrix-dot-product/explorer/defined/tag/MD0002.html",
+      "sha256": "cbd61305799179e4f39d5837e8de443632638dab184a8e5d7ae369eccce8e31a"
+    },
+    {
+      "bytes": 9004,
+      "path": "matrix-dot-product/explorer/defined/tag/MD0003.html",
+      "sha256": "3e4f316c18a43a5bac52ee4d9f35429cd37f2899a986fb86dd2b1b23b32364aa"
+    },
+    {
+      "bytes": 10296,
+      "path": "matrix-dot-product/explorer/defined/tag/MD0004.html",
+      "sha256": "1a8f57a60e467c580811a638892092fecd911d3f4da46078149252609e61cd5a"
+    },
+    {
+      "bytes": 23905,
+      "path": "matrix-dot-product/explorer/defined/tag/MD0005.html",
+      "sha256": "b69cf380acbce8f907e706761afa6f060fe28c352e2203278a5d11465e1ac731"
+    },
+    {
+      "bytes": 15129,
+      "path": "matrix-dot-product/explorer/defined/tag/MD0006.html",
+      "sha256": "19c136e097fd0d2fb303fbb83aec95332a33273fcee2dc022739bd15bfea8dee"
+    },
+    {
+      "bytes": 8925,
+      "path": "matrix-dot-product/explorer/defined/tag/MD0007.html",
+      "sha256": "0ddc770041c7a78daca1ccd4df681b68a21da21967c6edc9c603cf244247083f"
+    },
+    {
+      "bytes": 15401,
+      "path": "matrix-dot-product/explorer/defined/tag/MD0008.html",
+      "sha256": "24cfd8c2ab5b80dd36380d0f1b64e26b345c6e21d250969b31953e4688f05a1a"
+    },
+    {
+      "bytes": 4971,
+      "path": "matrix-dot-product/explorer/defined/tag/MD0009.html",
+      "sha256": "107ffd5d75619552e1dc411553e4fefbbca8e49b8e7c226cbb70bdef7bc59a69"
+    },
+    {
+      "bytes": 6683,
+      "path": "matrix-dot-product/explorer/defined/tag/MD000A.html",
+      "sha256": "3c5c25f8d95872b618503d4ef70521631318249eaeb273c961a4068e1af90d2e"
+    },
+    {
+      "bytes": 10085,
+      "path": "matrix-dot-product/explorer/index.html",
+      "sha256": "b7f09080292576d34443c11fa246ed7ed38e327cd4dd00aff594a1e91f549d3a"
+    },
+    {
+      "bytes": 6491,
+      "path": "matrix-dot-product/explorer/tag/MD0001.html",
+      "sha256": "85dd6cc7d6cadde8441ddf2b53264ae42a0dfbb27f2b6a045bb2bdb221614088"
+    },
+    {
+      "bytes": 8717,
+      "path": "matrix-dot-product/explorer/tag/MD0002.html",
+      "sha256": "6c60652a5e4c8a994d9946161d8c446ae4313ab407e7088a40c4c5e2f57e12f2"
+    },
+    {
+      "bytes": 11838,
+      "path": "matrix-dot-product/explorer/tag/MD0003.html",
+      "sha256": "cccd4fd23dc7043d9b0b8c09678b550f05c2f7e5af8e17f3cd9893362b395fb8"
+    },
+    {
+      "bytes": 13438,
+      "path": "matrix-dot-product/explorer/tag/MD0004.html",
+      "sha256": "92a0632983803e88813923c6136763c60f55157de4fe7a2ee9f838703a4d8984"
+    },
+    {
+      "bytes": 34295,
+      "path": "matrix-dot-product/explorer/tag/MD0005.html",
+      "sha256": "8f16d377cb430d98da3c19e931c5815f245feb85bc0ab072e70ade9b73055524"
+    },
+    {
+      "bytes": 17947,
+      "path": "matrix-dot-product/explorer/tag/MD0006.html",
+      "sha256": "4c132ec141d8a5ace3f5c54976cbebaf77d543d65a1b36ce94568b803bf0fe5b"
+    },
+    {
+      "bytes": 10709,
+      "path": "matrix-dot-product/explorer/tag/MD0007.html",
+      "sha256": "5b12d98108764266bf8cad5fedc1ed2823a2a5738111817f470da1f6e55c1b12"
+    },
+    {
+      "bytes": 19576,
+      "path": "matrix-dot-product/explorer/tag/MD0008.html",
+      "sha256": "5642f7077bbbf54f117954f8e6e841c384875964d09269aea96f1847de638e11"
+    },
+    {
+      "bytes": 5975,
+      "path": "matrix-dot-product/explorer/tag/MD0009.html",
+      "sha256": "09457c0d675cc4c8fb026fedee5a3020f59419e48e612dbfd9f4d890d465c58d"
+    },
+    {
+      "bytes": 8774,
+      "path": "matrix-dot-product/explorer/tag/MD000A.html",
+      "sha256": "d91e060ffd7242ffc3f10b546ba85c4e8431d096e6ff8519ed97fec9d9a8b02e"
+    },
+    {
+      "bytes": 6280,
+      "path": "matrix-dot-product/index.html",
+      "sha256": "55e167ac5f5c24a8c5916de6409e3140165817a921589dc72f03b7256d819fc6"
+    },
+    {
+      "bytes": 88306,
+      "path": "polynomial-horner/api/corpus.json",
+      "sha256": "6176a2cf6c2979ad914587aba280ba0d8fceec8c3ceb2c886dec4cd69c26bb36"
+    },
+    {
+      "bytes": 8950,
+      "path": "polynomial-horner/explorer/defined/api/graph.json",
+      "sha256": "3c19e44936871fb4c2966af4fc3aa980f2c4f18b94b80393b4bf877cf738a495"
+    },
+    {
+      "bytes": 3264,
+      "path": "polynomial-horner/explorer/defined/definition/ND0001.html",
+      "sha256": "c6bbe1191ff9e25426469a5f8c33eb4101ff11331fb7b5c9c5b27c90369cd647"
+    },
+    {
+      "bytes": 5407,
+      "path": "polynomial-horner/explorer/defined/definition/ND0002.html",
+      "sha256": "fc1792122f755c7a4dcb821e4d6278c9c0b3af1f4ca222c5f0cfa3426837acbf"
+    },
+    {
+      "bytes": 2946,
+      "path": "polynomial-horner/explorer/defined/definition/PD0002.html",
+      "sha256": "2f272ae72f3ae2790e8f11ab02c0356edcfd3d020d6090ff8540b1551dde575d"
+    },
+    {
+      "bytes": 10671,
+      "path": "polynomial-horner/explorer/defined/graph.html",
+      "sha256": "c601baee104b40202cc418991ac0fbc8eab3258cccc7563202b2018ad3fcfd7f"
+    },
+    {
+      "bytes": 7930,
+      "path": "polynomial-horner/explorer/defined/index.html",
+      "sha256": "0bd51da6019871a78015fd6de87d1a23fb961b739bb502a4fef7cd02c3a3d126"
+    },
+    {
+      "bytes": 28758,
+      "path": "polynomial-horner/explorer/defined/tag/PH0001.html",
+      "sha256": "97eb104137591771a4ecf3310d590f2267f95ed2fec3c943af22ce2bf3fa84be"
+    },
+    {
+      "bytes": 11869,
+      "path": "polynomial-horner/explorer/defined/tag/PH0002.html",
+      "sha256": "f17117b70f98d7eddf93173de6425476f68fc899070717b54c29def48b5daf21"
+    },
+    {
+      "bytes": 34847,
+      "path": "polynomial-horner/explorer/defined/tag/PH0003.html",
+      "sha256": "edc367663850261ffdd459196e5e71a62c9f4bc63251282e805fdce4891bb27c"
+    },
+    {
+      "bytes": 12314,
+      "path": "polynomial-horner/explorer/defined/tag/PH0004.html",
+      "sha256": "51f95526d41f7a895de89884110a7c616c5abbf2df8fbe32b29cafa7aab9a2bd"
+    },
+    {
+      "bytes": 12243,
+      "path": "polynomial-horner/explorer/defined/tag/PH0005.html",
+      "sha256": "0a72dff3537a8df3820f47bb5a063e8dfc68366679f6a9a7a42464a8746f1b50"
+    },
+    {
+      "bytes": 7792,
+      "path": "polynomial-horner/explorer/defined/tag/PH0006.html",
+      "sha256": "4a95556a2fefd0de4add4847f361d3e1cec269757b175a61e60c29d9161578b2"
+    },
+    {
+      "bytes": 16096,
+      "path": "polynomial-horner/explorer/defined/tag/PH0007.html",
+      "sha256": "59b86a3eddb16d9487adafea1d610697a8d640bbd07f8359b4fd9d8e9c0305b5"
+    },
+    {
+      "bytes": 8163,
+      "path": "polynomial-horner/explorer/index.html",
+      "sha256": "d682f0c4ad69eac0ca8a14ac671ab44e895d773cc605de5abd2c62407d79c932"
+    },
+    {
+      "bytes": 46335,
+      "path": "polynomial-horner/explorer/tag/PH0001.html",
+      "sha256": "9f8270c053a90164b9ccce460c70ef4dc63c5cc260e5a87f0c80467ffb04d03e"
+    },
+    {
+      "bytes": 15459,
+      "path": "polynomial-horner/explorer/tag/PH0002.html",
+      "sha256": "35f7294b7f379e85b768e25deadc5fcc2b7b664ece4300b3faa2964329f6b1bc"
+    },
+    {
+      "bytes": 53746,
+      "path": "polynomial-horner/explorer/tag/PH0003.html",
+      "sha256": "1b5ddcfa3cdd331b302f49b2bd8b0ed023381bbf2bb01062fdb3ccf4fc9f8a0f"
+    },
+    {
+      "bytes": 15284,
+      "path": "polynomial-horner/explorer/tag/PH0004.html",
+      "sha256": "030ff3a65f5b103f86af3a1b3b2257d6a348b82883c46825fdcb623743e51d37"
+    },
+    {
+      "bytes": 14938,
+      "path": "polynomial-horner/explorer/tag/PH0005.html",
+      "sha256": "d629fc6471dadc11a1418e6af06b32949af0802ea25d1d9b09d692662b4273ee"
+    },
+    {
+      "bytes": 10225,
+      "path": "polynomial-horner/explorer/tag/PH0006.html",
+      "sha256": "d86e848e911c57cf8b6ad4e43c4c155917b263f195a7b3598ef1dfec177c12a4"
+    },
+    {
+      "bytes": 22366,
+      "path": "polynomial-horner/explorer/tag/PH0007.html",
+      "sha256": "0bea85d61aac4f4a7e57033b09348defdb9e2bb80b5ff3de42300ed22b4c088c"
+    },
+    {
+      "bytes": 6012,
+      "path": "polynomial-horner/index.html",
+      "sha256": "21695fbc9d3a24f99886d88edef9652653b9486fba2f5730f7ae238be19a700a"
+    }
+  ],
+  "first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce",
+  "html_revision": "75fa146ac19b",
+  "independent_lean_bundle_verified": true,
+  "inventory_sha256": "27b4d5df0cbee647e05f6bebf90be7f02b08ad339a03b97706212ae7debabfc4",
+  "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+  "schema": "peano-lab-constructive-next-layer-explorer-v1-manifest",
+  "stable_count": 0,
+  "theorem_count": 39
+}

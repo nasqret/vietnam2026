@@ -1,0 +1,26 @@
+{
+  "certificate_representation": "python-dataclass-repr-with-cut-v2",
+  "live_use_limits": {
+    "proof_depth": 256,
+    "proof_nodes": 500000,
+    "proof_objects": 100000
+  },
+  "maximum_cut_nodes": 2184,
+  "maximum_distinct_proof_objects": 8701,
+  "maximum_proof_depth": 99,
+  "maximum_proof_nodes": 73767,
+  "ordered_root_sha256": "4d02dc439d53533e8992a471b26ee34059fb6001f822041e42c56b2cc0a7a079",
+  "schema": "peano-library-metrics-v3",
+  "theorem_count": 432,
+  "theorems_by_layer": {
+    "foundational_extension": 212,
+    "ha_number_theory_campaign": 48,
+    "legacy_core": 23,
+    "published_mod5_unique": 12,
+    "quadratic_residue_foundation": 137
+  },
+  "theorems_with_cut_nodes": 373,
+  "total_cut_nodes": 57692,
+  "total_distinct_proof_objects": 468010,
+  "total_proof_nodes": 1982360
+}

@@ -1,0 +1,1404 @@
+# Foundational arithmetic research corpus
+
+This directory is the planning and provenance source for Peano Lab's general
+arithmetic library. Start with:
+
+- [`ha-number-theory-formalization-campaign-blueprint.md`](ha-number-theory-formalization-campaign-blueprint.md):
+  the byte-frozen controlling blueprint for the strict-HA number-theory
+  campaign;
+- [`Grand constructive number-theory campaign`](../../PLAN/14_constructive_number_theory_grand_campaign.md):
+  the 120-milestone, twelve-family research atlas, exact constructive theorem
+  contracts, sixteen shared tools, eight evidence-qualified existing roots,
+  thirteen execution layers, proof/release gates, and audited prior art;
+- [`Grand campaign machine-readable DAG`](../../book/_static/constructive-grand-campaign/campaign.json)
+  and its [interactive proof-campaign atlas](../../book/_static/constructive-grand-campaign/index.html):
+  five connected research domains, twelve mathematical families, 120 major
+  goals, 303 actual theorem/tool/anchor prerequisite edges, and 179 shared
+  mathematical terms; domain, family, goal, and definition drill-down links
+  directly to the completed proof explorers while distinguishing 165
+  definition-expansion edges, 311 lexical statement-notation occurrences,
+  and 84 explicitly typed notation links from genuine proof dependencies;
+  the shared registry independently audits 120 conservative definitions,
+  214 genuine definition prerequisites, and 88 signature-compatible links
+  while honestly identifying the open research frontier;
+- [`Completed quadratic-reciprocity closure receipt`](quadratic-reciprocity-closure-receipt.md)
+  and its [complete canonical self-contained proof bundle](artifacts/quadratic-reciprocity-proof-bundle-v1.json):
+  the exact unchanged-kernel ordinary proof of the final reciprocity root,
+  all 557 genuine theorem bodies and 1,787 dependencies, and independent
+  compiled-Lean verification of the same exact constructive theorem; its
+  historically catalog-bound `api/corpus.json` remains byte-frozen, while a
+  separate `api/current-corpus.json` provides modern Alpha-v25 presentation
+  metadata without rewriting historical proof evidence;
+- [`ha-number-theory-campaign.json`](ha-number-theory-campaign.json): the
+  executable K0--K6/M1--M5 layer status, dependency, and validation-gate
+  manifest;
+- [`ha-definition-representation-freeze-v1.md`](ha-definition-representation-freeze-v1.md)
+  and its [machine companion](ha-definition-representation-freeze-v1.json):
+  the first exact definition boundary, including the K3 quarantine on using
+  beta/CRT coding as foundational list infrastructure;
+- [`ha-canonical-signed-natural-rfc-v1.md`](ha-canonical-signed-natural-rfc-v1.md):
+  the selected parity-interleaved canonical signed-natural representation,
+  eight exact expanded predicates, dependency prohibitions, and proof DAG;
+- [`ha-canonical-gcd-lcm-rfc-v1.md`](ha-canonical-gcd-lcm-rfc-v1.md):
+  the literal-safe relational LCM interface, canonical gcd edge laws, and the
+  checked constructive route through LCM totality and the gcd--LCM product;
+- [`ha-generalized-crt-rfc-v1.md`](ha-generalized-crt-rfc-v1.md): the
+  constructive 29-row reviewed generalized-CRT stack, its exact selective
+  23-row public closure, and the six retained private convenience rows;
+- [`ha-canonical-pair-cell-rfc-v1.md`](ha-canonical-pair-cell-rfc-v1.md):
+  the selected doubled-Cantor pair and successor-tagged cell definitions,
+  injectivity ladder, and the explicit blocker on pretending that pairing
+  alone supplies a uniform arbitrary-length list relation;
+- [`ha-cell-history-rfc-v1.md`](ha-cell-history-rfc-v1.md): the post-K4/M3
+  reverse beta-coded cell-history definitions and quarantined ten-obligation
+  list-length ladder;
+- [`ha-cell-list-lookup-rfc-v1.md`](ha-cell-list-lookup-rfc-v1.md): the
+  surface-frozen outer-head `ListAt` relation, its extensional ten-deliverable
+  ladder, and the prefix-preservation obligation that precedes lookup proofs;
+- [`ha-cell-list-validity-membership-rfc-v1.md`](ha-cell-list-validity-membership-rfc-v1.md):
+  the additive K3C `CellListValid`/`ListMember` interface, exact seventeen-row
+  Alpha v2 append, body-evidence boundary, and next append/restriction gate;
+- [`ha-bertrand-postulate-campaign-rfc-v1.md`](ha-bertrand-postulate-campaign-rfc-v1.md):
+  the base native Bertrand campaign contract, including both exact
+  endpoints, constructive bounded-search semantics, the integerized
+  Erdős--Tochiori route, B0--B8 gates, evidence/promotion rules, and the
+  source/prior-art ledger;
+- [`ha-bertrand-postulate-campaign-rfc-v2.md`](ha-bertrand-postulate-campaign-rfc-v2.md):
+  the binding factorized-threshold amendment, freezing `16 * 32` as the
+  native carrier for the mathematical cutoff 512, retaining public `n + n`
+  surfaces, and requiring checked transport to internal `2 * n` helpers;
+- [`Choose/CentralBinom tranche RFC`](ha-bertrand-choose-central-binomial-tranche-rfc-v1.md):
+  the exact 24+14 Alpha-v8 enrollment order for the reviewed
+  recurrence-defined `Choose`, `CentralBinom`, factorial/weighted bridge, and
+  strict central lower-bound bodies, with body-only evidence and promotion
+  boundaries frozen;
+- [`Primorial foundation tranche RFC`](ha-bertrand-primorial-foundation-tranche-rfc-v1.md):
+  the exact ten-row first Alpha-v9 microbatch defining the conservative
+  selector, factor-prefix, and inclusive `Primorial` relation together with
+  totality, functionality, decomposition, and positivity;
+- [`Primorial membership tranche RFC`](ha-bertrand-primorial-membership-tranche-rfc-v1.md):
+  the exact eleven-row second Alpha-v9 microbatch proving prime divisibility
+  membership and Primorial divisibility, positive-quotient, and monotonicity
+  laws, while leaving interval splitting and the final bound open;
+- [`Primorial interval-split tranche RFC`](ha-bertrand-primorial-interval-split-tranche-rfc-v1.md):
+  the exact 1+8 Alpha-v10 append pinning the reviewed Product split and
+  proving offset selector-product totality, functionality, transport, and
+  exact Primorial prefix/interval decomposition, while leaving the final
+  product bound open;
+- [`Primorial duplicate-free tranche RFC`](ha-bertrand-primorial-duplicate-free-tranche-rfc-v1.md)
+  and [`Primorial/Choose interval tranche RFC`](ha-bertrand-primorial-choose-interval-tranche-rfc-v1.md):
+  the first 20-row Alpha-v11 microbatch proving duplicate-free product
+  comparison and connecting Primorial intervals to factorial and Choose
+  divisibility;
+- [`Central-binomial upper tranche RFC`](ha-bertrand-central-binomial-upper-tranche-rfc-v1.md),
+  [`Primorial four-power tranche RFC`](ha-bertrand-primorial-four-power-tranche-rfc-v1.md),
+  and [`central prime-support tranche RFC`](ha-bertrand-central-prime-support-tranche-rfc-v1.md):
+  the second 18-row Alpha-v11 microbatch closing the public B4
+  `primorial_le_four_pow` bound and beginning B5's prime-divisor range and
+  valuation support;
+- [`B6 release tranche RFC`](ha-bertrand-b6-release-tranche-rfc-v1.md):
+  the 43-row prerequisite closure for the reviewed main inequality and finite
+  product order support used by Alpha v12;
+- the eleven `ha-bertrand-b5-*-tranche-rfc-v1.md` controls, followed by the
+  [`B7 eventual RFC`](ha-bertrand-b7-eventual-tranche-rfc-v1.md),
+  [`B8 prime-certificate RFC`](ha-bertrand-b8-prime-certificates-tranche-rfc-v1.md),
+  [`B8 covering RFC`](ha-bertrand-b8-covering-tranche-rfc-v1.md),
+  [`B8 small-range RFC`](ha-bertrand-b8-small-range-tranche-rfc-v1.md),
+  [`BP01 RFC`](ha-bertrand-bp01-tranche-rfc-v1.md), and
+  [`BP02 RFC`](ha-bertrand-bp02-tranche-rfc-v1.md): the reviewed completion
+  chain through `bertrand_closed_upper` and `bertrand_strict`, published as
+  the 180-row Alpha-v12 append;
+- [`Bertrand promotion RFC`](ha-bertrand-promotion-rfc-v1.md): the exact
+  542-/544-node dependency-closed capstone slices, the 339-/341-row
+  body-evidence gap, eight cross-campaign QR prerequisites, and the
+  fail-closed proof-checking preflight for a future immutable release;
+- [`Alpha v13 frontier admission RFC`](alpha-v13-frontier-admission-rfc-v1.md):
+  the exact additive 196-row Lagrange and 44-row Lucas dependency closures,
+  their sealed 1,303-row Alpha-v12 parent, 240 body-only Alpha enrollments,
+  unchanged Stable/checked-use authority, and independently verifiable
+  provenance, topology, root, and artifact receipts;
+- [`Alpha v14 Kummer admission RFC`](alpha-v14-kummer-admission-rfc-v1.md):
+  the exact additive thirteen-row closure of Kummer's binomial carry theorem
+  and its carry-free corollary, preserving the sealed Alpha-v13 parent and
+  unchanged checked-use/Stable authority;
+- [`Alpha v15 supplementary/two-square admission RFC`](alpha-v15-frontier-admission-rfc-v1.md):
+  the exact 117-row closure of both supplementary laws and the complete
+  all-natural two-square classification, including authentic bounded
+  Euler-criterion and Gauss-lemma prerequisites;
+- [`Alpha v16 quadratic-reciprocity promotion RFC`](alpha-v16-quadratic-reciprocity-promotion-rfc-v1.md):
+  the immutable evidence-only promotion of exactly 315 genuinely closed
+  quadratic-reciprocity results, their complete independently checked
+  557-node proof bundle, unchanged Stable/enrollment topology, and fail-closed
+  checked-use authority;
+- [`Alpha v17 supplementary-law promotion RFC`](alpha-v17-supplementary-laws-promotion-rfc-v1.md)
+  and its [independent closure receipt](supplementary-laws-closure-receipt.md):
+  the immutable evidence-only promotion of exactly 31 actual supplementary-law
+  ancestors, both exact modulo-four/modulo-eight endpoints, their independently
+  Python-kernel- and Lean-checked 438-node constructive proof bundle, unchanged
+  Stable membership, and resumable proof-bearing microbatch checkpoints;
+- [`Alpha v18 five-flagship promotion RFC`](alpha-v18-flagship-promotion-rfc-v1.md):
+  the immutable evidence-only promotion of exactly 673 genuinely proved Lucas,
+  Kummer, Bertrand, four-square, and two-square ancestors, backed by five
+  separately original-kernel- and compiled-Lean-checked proof bundles;
+- [`Alpha v19 complete constructive-campaign RFC`](alpha-v19-constructive-campaign-rfc-v1.md),
+  its [`84-row residual closure receipt`](campaign-residual-closure-receipt.md),
+  and its [`64-theorem campaign-frontier receipt`](alpha-v19-campaign-frontier-closure-receipt.md):
+  all 1,737 exact historical Alpha-v19 theorems independently closed, including the complete
+  K3C/auxiliary-Bertrand interface, 44 Pythagorean forward results, the exact
+  prime two-square equivalence, nine linear-congruence results, and ten
+  one-modulo-four prime results, backed by independently kernel- and
+  compiled-Lean-checked 475- and 545-node constructive proof bundles;
+- [`Alpha v20 next-layer admission RFC`](alpha-v20-next-layer-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v20-next-layer-closure-receipt.md),
+  and its [independently kernel- and Lean-verified 590-node proof bundle](artifacts/alpha-v20-next-layer-proof-bundle-v1.json):
+  39 genuinely checked new theorem proofs in four campaigns, giving historical
+  Alpha v20 a total of 1,776 checked-use theorems without changing Stable;
+- [`Alpha v21 advanced-layer admission RFC`](alpha-v21-advanced-layer-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v21-advanced-layer-closure-receipt.md),
+  and its [independently kernel- and Lean-verified 209-node proof bundle](artifacts/alpha-v21-advanced-layer-proof-bundle-v1.json):
+  54 genuinely checked new theorem proofs in three campaigns, giving historical
+  Alpha v21 a total of 1,830 checked-use theorems without changing Stable;
+- [`Alpha v22 transport-layer admission RFC`](alpha-v22-transport-layer-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v22-transport-layer-closure-receipt.md),
+  and its [independently kernel- and Lean-verified 240-node proof bundle](artifacts/alpha-v22-transport-layer-proof-bundle-v1.json):
+  60 genuinely checked new theorem proofs in three campaigns, giving historical
+  Alpha v22 a total of 1,890 checked-use theorems without changing Stable;
+- [`Alpha v23 milestone-closure admission RFC`](alpha-v23-milestone-closure-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v23-milestone-closure-receipt.md),
+  and its [independently kernel- and Lean-verified 617-node proof bundle](artifacts/alpha-v23-milestone-closure-proof-bundle-v1.json):
+  59 genuinely checked new theorem proofs in three campaigns, giving historical
+  Alpha v23 a total of 1,949 checked-use theorems without changing Stable;
+- [`Alpha v24 constructive research-layer admission RFC`](alpha-v24-research-layer-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v24-research-layer-receipt.md),
+  and its [independently kernel- and Lean-verified 203-node proof bundle](artifacts/alpha-v24-research-layer-proof-bundle-v1.json):
+  17 arbitrary signed matrix-minor/four-dimensional determinant proofs,
+  15 exact simultaneous formal-derivative proofs, and 27 finite-CRT/
+  universal-property-LCM proofs, giving historical Alpha v24 a total of 2,008
+  independently checked-use theorems without changing Stable;
+- [`Alpha v25 constructive breakthrough-layer admission RFC`](alpha-v25-breakthrough-layer-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v25-breakthrough-layer-receipt.md),
+  and its [independently kernel- and Lean-verified 302-node proof bundle](artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json):
+  29 complete genuine signed cofactor-minor-family and arbitrary alternating
+  Laplace-fold proofs, 19 exact witnessed quadratic Taylor-remainder and
+  actual one-step Hensel-lift proofs, and 24 non-coprime constructive
+  CRT-compatibility/canonical-solution proofs, giving current Alpha v25 a total
+  of 2,080 independently checked-use theorems without changing Stable;
+- the [complete signed cofactor-family RFC](matrix-cofactor-expansion-rfc-v1.md),
+  [quadratic Taylor-remainder and genuine Hensel-lift RFC](polynomial-taylor-hensel-rfc-v1.md),
+  and [non-coprime finite CRT-compatibility RFC](generalized-crt-compatibility-rfc-v1.md):
+  72 exact independently proved constructive advances and eleven additive
+  hygienic definitions `ND0058`–`ND0068`; the stronger full T13 determinant/
+  rank/lattice, G095 prime-power Hensel uniqueness, and G011 arbitrary
+  pairwise-compatible non-coprime finite-list milestones remain honestly open;
+- the [arbitrary signed matrix-minor RFC](matrix-determinant-minors-rfc-v1.md),
+  [exact formal polynomial-derivative RFC](polynomial-hensel-rfc-v1.md), and
+  [finite constructive CRT and arbitrary-list LCM RFC](generalized-crt-fold-rfc-v1.md):
+  precise independently proved components that leave full T13 determinant/
+  rank/lattice, G095 simple-root Hensel lifting, and G011 non-coprime
+  finite-list CRT milestones honestly open;
+- the [Euclidean logarithmic-bound RFC](euclidean-logarithmic-bound-rfc-v1.md),
+  [canonical binary-digit extraction RFC](binary-digit-extraction-rfc-v1.md),
+  and [infinitely many three-modulo-four primes RFC](primes-three-mod-four-rfc-v1.md):
+  17+24+18 exact original-kernel proofs that completely close G101, G102,
+  and G025, including both formal logarithmic bounds;
+- the [first-order binary-length RFC](binary-length-rfc-v1.md),
+  [Euclidean gcd-transport RFC](euclidean-gcd-transport-rfc-v1.md), and
+  [beta-coded binary modular execution RFC](binary-modular-execution-rfc-v1.md):
+  21+20+19 exact original-kernel proofs of total unique `BitLen`, terminal
+  Euclidean gcd identification, and complete power-correct supplied-digit
+  execution, providing the historical prerequisites for both subsequently
+  proved formal logarithmic bounds;
+- the [arbitrary natural/signed coded matrix-product RFC](matrix-coded-product-rfc-v1.md),
+  [Euclidean execution and complexity RFC](euclidean-complexity-rfc-v1.md),
+  and [binary modular-exponentiation RFC](binary-modular-exponentiation-rfc-v1.md):
+  23+15+16 exact first-order original-kernel proofs, honest open
+  determinant/rank/lattice boundaries, historical logarithmic-complexity
+  prerequisites,
+  capped executable witnesses, and a single audited shared definition DAG;
+- the [polynomial Horner RFC](polynomial-horner-rfc-v1.md),
+  [finite matrix and dot-product RFC](matrix-dot-product-rfc-v1.md),
+  [strict Bertrand prime-window and prime-chain RFC](bertrand-prime-campaign-next-layer-rfc-v1.md),
+  and [finite continued-fraction RFC](continued-fraction-rfc-v1.md):
+  exact first-order theorem statements, hygienic beta-coded relations,
+  genuine dependency ordering, executable constructive witnesses, and the
+  explicitly still-open full matrix-and-lattice milestone;
+- [`complete linear-congruence RFC`](linear-congruence-complete-rfc-v1.md)
+  and [`infinitely many one-modulo-four primes RFC`](primes-one-mod-four-rfc-v1.md):
+  exact constructive bounded-solution/zero-modulus/uniqueness interfaces and
+  prime witnesses extracted directly from `4*C*C+1`, without assuming the
+  separately open three-modulo-four prime infinitude theorem;
+- complete closure receipts and self-contained constructive proof bundles for
+  [`Lucas`](lucas-complete-closure-receipt.md),
+  [`both Kummer endpoints`](kummer-complete-closure-receipt.md),
+  [`strict Bertrand`](bertrand-complete-closure-receipt.md),
+  [`Lagrange's four-square theorem`](four-square-complete-closure-receipt.md),
+  and [`the all-natural two-square classification`](two-square-complete-closure-receipt.md);
+- [`bounded Lucas/Lagrange promotion RFC`](ha-frontier-promotion-rfc-v1.md):
+  exact dependency slices, unchanged-kernel empty-context certificate
+  construction, shared-premise layered Cuts, immutable workstation caps,
+  and the distinction between real proof certificates and release authority;
+- [`mixed Stable/Lucas promotion RFC`](lucas-mixed-promotion-rfc-v1.md):
+  unchanged-kernel contextual sharing across eleven body-only and five
+  already-closed Stable rows, yielding an actual bounded empty-context proof
+  of the formerly oversized final older Lucas prerequisite;
+- [`shared valuation-promotion RFC`](valuation-shared-promotion-rfc-v1.md):
+  constructive sharing of the 59,836-node Stable power-totality premise,
+  independently closing both exact valuation-existence roots in 65,708 and
+  65,727 nodes under all unchanged sixteen-body and proof-object limits;
+- [`bounded Lagrange promotion RFC`](four-square-frontier-promotion-rfc-v1.md):
+  the exact 390-row four-square dependency slice, its 23 older and 196
+  campaign body-only obligations, constructive dependency-ready layers,
+  bounded actual parent proofs, and unchanged release authority;
+- [`Bounded Lucas/Lagrange frontier-promotion RFC`](ha-frontier-promotion-rfc-v1.md):
+  exact sealed dependency slices, independently kernel-checked empty-context
+  certificates, bounded shared-layer cuts, and the unchanged release-authority
+  boundary for the Lucas and four-square flagships;
+- [`Pythagorean/Fermat-four foundations RFC`](pythagorean-fermat-four-rfc-v1.md):
+  the checked constructive Euclidean forward parametrization,
+  primitive-leg symmetry, and conditional descent bridges, with the missing
+  primitive inverse and Fermat strict-descent constructor stated explicitly;
+- [`primitive Pythagorean constructor RFC`](pythagorean-primitive-rfc-v1.md):
+  the complete forward primitive Euclidean parametrization from ordered,
+  coprime, opposite-parity parameters, odd hypotenuses, and pairwise
+  coprimality, without claiming the still-open inverse classification;
+- [`quadratic supplementary laws RFC`](ha-quadratic-supplementary-laws-rfc-v1.md):
+  complete constructive proofs of both supplementary laws, including the
+  exact beta-coded Gauss reflection-count identification and separate
+  positive/nonresidue branches;
+- [`Kummer theorem campaign RFC`](ha-kummer-theorem-campaign-rfc-v1.md): the
+  general three-prefix carry target, exact arbitrary-input Legendre valuation
+  balance, checked complete Kummer proof body, carry-free/nondivisibility
+  corollary, and remaining admission gates;
+- [`Fermat two-square foundations RFC`](fermat-two-squares-foundations-rfc-v1.md):
+  constructive square-class obstructions, canonical roots of `-1`, divisible
+  two-square norms, and the initial prerequisites for the completed prime proof;
+- [`Fermat square-root grid/pigeonhole RFC`](fermat-two-squares-pigeonhole-rfc-v1.md):
+  sharp prime floor-square norm bounds, oversized-grid witnesses, constructive
+  rectangular noninjectivity, and the subsequent witnessed-residue-grid bridge;
+- [`finite-prefix collision decision RFC`](finite-prefix-collision-decision-rfc-v1.md):
+  constructive collision-or-injectivity decisions and actual witnessed
+  rectangular/square-root-grid pigeonhole collisions;
+- [`Fermat affine residue-grid RFC`](fermat-two-squares-residue-grid-rfc-v1.md):
+  a genuinely beta-coded square-root-sized modular affine grid, its witnessed
+  collision, and the resulting exact balanced congruence;
+- [`Fermat collision-to-norm RFC`](fermat-two-squares-collision-norm-rfc-v1.md):
+  exact signed affine-congruence transport, all four witnessed
+  absolute-difference branches, divisible two-square norms, and row bounds;
+- [`Fermat prime two-square theorem RFC`](fermat-two-squares-prime-rfc-v1.md):
+  the complete constructive proof that every prime congruent to one modulo
+  four has an explicitly witnessed representation as a sum of two squares;
+- [`Fermat two-square classification foundations RFC`](fermat-two-squares-classification-rfc-v1.md):
+  explicit multiplicative composition, complete classification of
+  representable primes, and the obstruction proving that a prime congruent
+  to three modulo four dividing a two-square norm divides both coordinates;
+- [`Fermat two-square valuation RFC`](fermat-two-squares-valuation-rfc-v1.md):
+  exact prime valuations of nonzero squares, extraction of a represented
+  prime-square quotient, strictly decreasing constructive descent, and the
+  complete even-valuation necessity direction for nonzero two-square norms;
+- [`Fermat two-square factor-fold RFC`](fermat-two-squares-factor-fold-rfc-v1.md):
+  constructive beta-coded product assembly, adjacent equal-prime pairing,
+  grouped square-block synthesis, and the canonical good-prime FTA theorem;
+- [`Fermat two-square pairing RFC`](fermat-two-squares-pairing-rfc-v1.md):
+  distinct-prime valuation, witnessed prime-square divisibility from even
+  positive valuation, the complete canonical adjacent-equal-factor pairing
+  step, and bounded constructive descent proving the complete nonzero and
+  zero-inclusive two-square iff classification;
+- [`Brahmagupta two-square multiplication RFC`](fermat-two-squares-brahmagupta-rfc-v1.md):
+  the complete constructive identity with explicit absolute-difference
+  witnesses and closure of represented integers under multiplication;
+- [`four-square identity foundations RFC`](four-square-identity-foundations-rfc-v1.md):
+  conservative signed quaternion coordinates, natural absolute magnitudes,
+  exact four-coordinate square transport, an exact two-column Euler
+  subclass, and the shared foundations of the completed full Euler identity;
+- [`Euler four-square cancellation RFC`](four-square-euler-rfc-v1.md):
+  all twelve quaternion cross-term cancellations, complete certified global
+  subtraction-free regrouping, the unconditional eight-variable identity,
+  explicit four-coordinate witnesses, and full multiplicative closure;
+- [`Lagrange four-square prime-reduction RFC`](four-square-lagrange-rfc-v1.md):
+  explicit small witnesses, all primes equal to two or one modulo four,
+  complete bounded prime-factor descent, and the exact prime-family
+  reduction subsequently discharged by the complete Lagrange tranche;
+- [`Four-square cross-prefix pigeonhole RFC`](four-square-cross-pigeonhole-rfc-v1.md):
+  actual beta-coded interleaving and constructive witnessed intersection of
+  any two bounded injective half-prefixes overflowing their finite codomain;
+- [`Four-square residue-intersection RFC`](four-square-residue-intersection-rfc-v1.md):
+  injectivity of odd-prime half-square residues, genuine beta-coded square
+  remainder prefixes, complementary bounded injective residue families, and
+  unconditional explicitly witnessed modular seeds for every prime;
+- [`Four-square bounded-prime-seed RFC`](four-square-bounded-seed-rfc-v1.md):
+  witnessed half-range square coordinates, sharp prime-square norm bounds,
+  and prime modular seeds retaining the essential multiplier invariant `k < p`;
+- [`Four-square multiplier descent RFC`](four-square-descent-rfc-v1.md):
+  exact quaternion quotients, centered signed remainders, strictly decreasing
+  prime-multiple witnesses, and constructive strong multiplier induction;
+- [`Four-square signed-quaternion RFC`](four-square-signed-quaternion-rfc-v1.md):
+  all sixteen centered sign patterns, signed-square congruence, witnessed
+  centered-norm quotients, and absolute modular divisibility;
+- [`Four-square negative-signed-block RFC`](four-square-signed-block-negative-rfc-v1.md):
+  fully negative conjugate blocks and the complementary three-negative
+  ordinary Hamilton orientation;
+- [`Four-square signed-orientation RFC`](four-square-signed-orientation-rfc-v1.md):
+  exact quotient representations from four witnessed divisible
+  signed-quaternion coordinate magnitudes;
+- [`Four-square signed-case RFC`](four-square-signed-cases-rfc-v1.md):
+  constructive orientation of all sixteen centered-quaternion sign choices;
+- [`Four-square strict-descent bridge RFC`](four-square-lagrange-bridge-rfc-v1.md):
+  the actual unconditional prime modular seeds remove the complete seed
+  premise, with separate sharp bounded-multiplier induction preserving the
+  constructive descent invariant `0 < k < p`;
+- [`Four-square parity-selection RFC`](four-square-parity-selection-rfc-v1.md):
+  constructive same-parity coordinate selection and the even-multiplier
+  four-square halving interface;
+- [`Four-square branch-descent RFC`](four-square-branch-descent-rfc-v1.md):
+  constructive multiplier parity splitting, unconditional even halving, and
+  the odd signed-quaternion representation subsequently proved for every
+  one of its sixteen possible sign configurations;
+- [`Four-square conjugate-identity RFC`](four-square-conjugate-identity-rfc-v1.md):
+  subtraction-free signed-conjugate quaternion blocks and their exact
+  four-square norm identity;
+- [`Four-square Lagrange final-composition RFC`](four-square-lagrange-final-rfc-v1.md):
+  bounded prime seeds, even/odd multiplier descent, signed quaternion
+  representation, and the complete unconditional theorem that every natural
+  number has four explicitly witnessed square coordinates;
+- [`Lucas digit foundations RFC`](lucas-digit-foundations-rfc-v1.md): the
+  complete one-digit carry/divisibility classifications, unique base-prime
+  digit extraction, genuine beta-coded digit prefixes, coherent two-digit
+  reconstruction, the complete sparse prime Pascal row, and reusable base
+  cases for the completed multi-digit congruence;
+- [`Lucas prime-block convolution RFC`](lucas-convolution-rfc-v1.md):
+  exact constructive modular Pascal transport, complete prime-row interior
+  vanishing, and both unrestricted low- and high-column prime-shift
+  congruences;
+- [`Lucas arbitrary-upper-quotient low-digit RFC`](lucas-low-digit-rfc-v1.md):
+  arbitrary iteration of the prime-row shift and the complete Lucas product
+  congruence whenever the lower natural has one base-prime digit;
+- [`Lucas full prime-block digit RFC`](lucas-block-digit-rfc-v1.md): the
+  complete unconditional quotient-times-digit Lucas congruence for arbitrary
+  upper and lower quotients, including out-of-range and both zero boundaries;
+- [`Lucas multidigit quotient-chain RFC`](lucas-multidigit-rfc-v1.md):
+  arbitrary-length coherent beta-coded quotient/digit traces, prime-base
+  totality, exact initial-value recovery, witnessed successor steps, and
+  the complete unconditional arbitrary-length multidigit Lucas theorem with
+  terminating chains and actual digitwise coefficient/product witnesses;
+- [`../../PLAN/12_ha_number_theory_campaign.md`](../../PLAN/12_ha_number_theory_campaign.md):
+  the repository execution plan and first canonical-interface tranche;
+- [`../../PLAN/13_constructive_number_theory_frontier.md`](../../PLAN/13_constructive_number_theory_frontier.md):
+  the approved post-Bertrand execution order: close reciprocity and release
+  existing evidence, prove full Kummer, construct the two-square
+  classification, develop four-square/Fermat descent, then extend to
+  primitive roots, Lucas, Pell, and cyclotomic arithmetic.
+
+## Historical additive Alpha v13: completed Lagrange and Lucas body enrollment
+
+This section records the immutable Alpha-v13 checkpoint. The current Alpha
+v15 release and unchanged Stable boundary are documented below.
+
+Alpha v13 appends exactly 240 dependency-topologically ordered, independently
+kernel-checked proof bodies to the unchanged sealed 1,303-entry Alpha-v12
+parent: 196 entries in the completed Lagrange four-square closure and 44
+entries in the completed arbitrary-length Lucas closure. Eighteen of the
+four-square closure rows are shared two-square prerequisites; this does not
+enroll the full two-square classification. Exactly 224 of the 464 then-current
+frontier candidate rows remain outside Alpha v13.
+
+The complete 1,543-entry Alpha-v13 ledger has 432 `stable_closed`, 138
+`alpha_closed`, 972 `body_checked`, and one `pending_layered_closure` entry.
+Its sealed graph contains 5,189 dependency edges across 45 layers. Stable
+remains its exact object-identical 432-entry release; the only entries
+permitted for checked theorem use are the same 570 independently closed
+Stable/Alpha theorems already available in Alpha v12. All 240 new entries are
+`ALPHA_ONLY` and `BODY_CHECKED`, with `checked_use = false`. Fifty-three
+unchecked Alpha-v12 parent ancestors block any inferred empty-context closure
+or checked-use authority for the two new flagships.
+
+The enrolled roots retain their exact first-order statement receipts:
+
+- `four_square_lagrange`: every natural is a sum of four witnessed natural
+  squares; SHA-256
+  `fb653494c208dd59fac181164286a628866e3f7ca467e2a04314b9cb1f3c29a5`.
+- `lucas_theorem`: the complete constructive multidigit binomial congruence
+  with witnessed terminating base-prime digit streams; SHA-256
+  `396e47df462c415ea6ea8e29c7506bfb1dc7077a96e768295b1949256d9b0564`.
+
+The sealed Alpha-v13 ordered enrollment identity is
+`6b223edfe6a2e02dc09576671f4fc5f5a41aaf4156f829164222dd3e494da22f`; its
+complete edition identity is
+`a010e0ee5dece0d3325e8ec084c1f8769ef8e9ca47e2de891d344e54c1b439d1`.
+The complete construction, boundary, and exact provenance are specified in
+the [Alpha v13 frontier admission RFC](alpha-v13-frontier-admission-rfc-v1.md).
+
+Run `make peano-library-alpha-v13` to regenerate the four versioned Alpha-v13
+artifacts. Run `make peano-library-alpha-v13-check` to execute the deterministic
+builder check, the independent artifact verifier, a fail-closed release
+tampering suite, and the focused release admission suite as separate bounded
+Python processes. The compatibility
+aliases are `make peano-library-channels-v13` and
+`make peano-library-channels-v13-check`. These additive commands never change
+Alpha v1–v12, the sealed Stable edition, or the historical QR/Stable proof
+authority boundary.
+
+Run `make ha-constructive-frontier-check` for the isolated, resource-bounded
+post-Bertrand frontier audits. Each focused suite runs in its own Python
+process to prevent proof-certificate caches from accumulating across stages;
+compact tracebacks also prevent deep formula-rendering memory explosions;
+successful body checks never modify sealed Alpha or Stable evidence.
+
+Run `make book-constructive-frontier-explorer` to regenerate the six
+definition-aware, evidence-honest interactive maps for supplementary laws,
+Kummer, two squares, four squares, Lucas, and Pythagorean/Fermat-four
+candidates. Each map includes a verified
+Exact/Defined notation switch, exact expansion-equivalence receipts, linked
+definitions, numerical witnesses, and zoom/focus/print controls.
+`make stage-proofs` assembles them beside the existing quadratic-reciprocity
+and Bertrand explorers under the local `_deploy/proofs` tree; publishing
+remains a separate remote action.
+
+Run `make ha-number-theory-check` from the repository root for the fast
+campaign-manifest, 45-row definition-freeze validation with 44 distinct public
+theorem replays, candidate-body, and empty-context receipt checks. The campaign
+evidence now comprises 95 public references, 121 isolated candidates, and 169
+exact receipts across 27 candidate modules and 36 focused test paths. The
+candidates comprise three canonical-gcd package rows, 74 strict-K3
+signed parity, decoder, code-extensionality, balance-normalization, negation,
+addition, complete D06 multiplication-algebra, D07 natural-scale, and D08
+Bezout-bridge rows, 22 strict-K3 doubled-Cantor pair and successor-tagged-cell
+rows, one K4 signed-gcd client, five canonical-gcd edge rows, ten residual
+relational-LCM convenience rows, and six generalized-CRT convenience rows. The D06
+closure ends with the four-row
+[`SignedMul` associativity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
+and seven-row
+[`SignedMul` distributivity candidate](../../peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py),
+audited respectively by their
+[`associativity`](../../peano-lab/py/tests/test_ha_signed_mul_associative_candidate.py)
+and
+[`distributivity`](../../peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py)
+focused tests. D07 then adds the five-row
+[`SignedNatScale` core](../../peano-lab/py/peano_lab/library/ha_signed_nat_scale_candidate.py)
+and five-row
+[`zero/one/composition tranche`](../../peano-lab/py/peano_lab/library/ha_signed_nat_scale_laws_candidate.py),
+audited by the focused
+[`core`](../../peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py) and
+[`law`](../../peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py)
+tests. The direct D07 equation is `scale*ip+on = scale*inn+op`; sequential
+graphs compose in inner-then-outer order to the graph at `outer*inner`.
+This direct helper route avoids making D07 an alias for D06 multiplication by
+the encoded natural `2*scale`, which would burden every Bezout coefficient
+with an unnecessary signed-coercion dependency. The core 65-row signed-stack
+digest is
+`511aa0ba4a6dac1a22f52db740f539c675307b5b77b6b1a7d9ef2e00dd8a5331`;
+the complete 70-row digest is
+`81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
+The four-row
+[`SignedBezout` bridge](../../peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py)
+and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_signed_bezout_candidate.py)
+then normalize legacy four-natural balanced coefficients into canonical
+signed codes and recover the raw witnesses in the opposite direction. The
+complete 74-row signed-stack digest is
+`b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
+The strict K3 evidence comprises 96 rows across 21 candidate modules: the
+74-row signed stack and the 22-row pair/cell constructor, shell, injectivity,
+functionality, and strict-descent core.
+
+The `HA-K3B-CELLHISTORY-1` checkpoint freezes reverse `CellHistory` and
+existential `CellListLen` after K4/M3. WMI job `219203` checked empty-context
+certificates for all eight theorem rows twice, deterministically. Exact closed
+receipts `(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)` are:
+`cell_history_nil = (155,18,155,154,0,2,a3038bd67616f11f8e97727c98f03af09aacde863a70637d9575e2ff9d337ff8)`,
+`cell_history_extend = (29352,81,4651,4879,229,241,370de792b2c3fed8b3d36f90147c426b846d15578cac8c66520a59df81750c78)`,
+`cell_history_succ_elim = (1245,60,772,810,39,27,e8aee67cfef618fde3b08d48dffb4a6b31cdd22a578e38206d4e5a20a96c338c)`,
+`cell_list_zero_iff_nil = (1309,60,880,916,37,26,f7fdef58a28a86bd70b133bf839f6b49526817e020da6c698b85b3cd369f2f73)`,
+`cell_list_succ_iff_cell = (30648,83,4761,4992,232,246,a64ad8e5095d50afe10b47b1036ad9b680ab82462b41beb115d23956f9fa5699)`,
+`cell_list_length_functional = (34732,85,5700,5976,277,299,5dd0e4b8f585990ec826ba5ef02960cb6817f0aec5edcb86c9bb1e22d44c5a6c)`,
+`cell_list_length_le_code = (31002,84,4891,5129,239,257,50fe47364958e1a506315935796e517f41ddd947a1792fcdb134956ba05290a9)`, and
+`cell_list_length_total = (29569,84,4848,5078,231,246,2d6063d54e16c0f093aab270329bdd4ca5a7c02aa68b528c2c7c771945ccba17)`.
+Every certificate has zero DNE. The
+[`closure report`](../../artifacts/peano-library/ha-k3b-cell-history-closure-219203.json)
+has SHA-256
+`6ef49fcb5edb2b1c5478ff592c97dc9af56ed2f79ec03308c5ebf341833b825c`;
+job `219203` completed `0:0` on `c3n1` in `00:04:46` with
+`MaxRSS=82428K`. Gates G1--G6 and G7's quarantine/closure portion pass, but
+public admission was deliberately not performed. All eight rows remain
+private, unregistered, unadmitted `closed_checked_candidate` evidence.
+Strict K3 remains 96 rows across 21 modules, while the unchanged campaign JSON
+remains 95 public references, 121 private candidates, and 169 receipts. Run
+the separate lightweight gate with `make ha-k3b-cell-history-check`.
+
+The follow-on `HA-K3B-LISTAT-1` checkpoint began by freezing the hygienic
+`ListAt(z,i,a)` surface and proof architecture. Its outer-head index
+uses `j + S i = l` with witness order `l b c j t u`; the full expansion has
+3,331 characters, 54 formula constructors, 210 PA AST nodes, and SHA-256
+`b83d91b6ec8e6b83fe637e1533c72beef54c7e7a4b41f1518bce8785cc9f11ce`.
+Seven focused tests cover hygiene and nil through three-cell models. The first
+support theorem, `cell_history_extend_preserves_prefix`, now has a
+dependency-curried kernel-checked body: `(5,99,139,37,139,138,0)` in order
+`(dependencies,commands,nodes,depth,objects,edges,reused)`. Four additional
+tests pin its 3,799-character statement, exact dependency closure, mutations,
+zero-DNE body, and concrete recoding boundary. That initial body gate did not
+claim empty-context closure or a lookup equation. WMI job `219209` then closed
+the support theorem twice from the empty context at
+`(29369,81,4668,4896,229,241,7fd7734ab34d90a869c637e76e138db692ba21d4f2bbec41af9817c38ef36498)`.
+The sealed [receipt](../../artifacts/peano-library/ha-k3b-listat-prefix-closure-219209.json)
+has SHA-256
+`0d51baf93121da4071d0bb3ebd2b4a2818a7658fa92510fd707620bc2dba6560`.
+It remains private and unadmitted; no public lookup theorem is claimed. Run
+the separate lightweight gate with `make ha-k3b-list-lookup-check`.
+
+The dependency-free [`list_at_domain` projection](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_domain_candidate.py)
+is a checked private body. Its
+statement has 5,903 characters and SHA-256
+`065291362205b70ef41fff597d1d8762bff06ce7d3a5bead5dbcd8b97ea8a240`;
+its Cut-free/DNE-free certificate has 39 nodes at depth 23. WMI job `219217`
+reproduced it in two cold passes; it remains private and unadmitted.
+
+The [`list_at_head_iff` outer-head equation](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_head_candidate.py)
+is another validated private body; its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_head_candidate.py)
+pins the surface, proof receipt, mutation, and standard models. Its expanded
+12,530-character statement has SHA-256
+`9f0b3e7496f79b7cc6f4833edc14431dd614081b6f02b2d384aa80c521e2f8ed`,
+and its dependency-curried body receipt is `(4,119,265,36,255,264,10)` in
+`(dependencies,commands,nodes,depth,objects,edges,reused)` order. The four
+direct dependencies are `cell_history_succ_elim`,
+`cell_history_extend_preserves_prefix`, `beta_at_unique`, and `le_refl`.
+Two beta-uniqueness applications identify the terminal code and predecessor
+tail, avoiding `cell_tail_functional`. WMI job `219217` subsequently
+cold-closed this row twice; it remains unregistered, unadmitted, and nonpublic.
+
+The [`list_at_succ_iff` successor equation](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_succ_candidate.py)
+is also a validated private body. Its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_succ_candidate.py)
+pins the successor shift, a false no-shift mutation, and two distinct-head
+models. Its expanded 14,716-character statement has
+SHA-256
+`004ef041acbcfbaaeda594f5f47fbea75ac6f8df87ca8bcf49774cfcbc3a978c`,
+and its exact body receipt is `(3,124,198,38,196,197,2)`. The direct
+dependencies, in order, are `cell_history_succ_elim`,
+`cell_history_extend_preserves_prefix`, and `add_comm`. The proof uses the
+same history witnesses in the forward implication and preserves both selected
+edge endpoints in the reverse implication, so the provisional rung-4/PA2
+route is unnecessary. WMI job `219217` subsequently cold-closed T05 twice;
+registration, admission, and a public theorem remain absent.
+
+The private [`list_at_external_bound`](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_external_bound_candidate.py)
+body and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_external_bound_candidate.py)
+have statement receipt
+`(7481,a86efefaf31c9bfce0cd146f6aab932f22962b688fdc7f6bc4dd0beeb40bc9f8)`
+and proof receipt `(2,23,28,17,28,27,0)`. Its direct dependencies are
+`list_at_domain` and `cell_list_length_functional`: the latter proves the
+declared length equals the lookup's hidden length, so the projected additive
+bound rewrites to the declared one.
+
+The private [`list_at_exists`](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_exists_candidate.py)
+body and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_exists_candidate.py)
+have statement receipt
+`(6883,aeb4f15d9a96492b096f869e9361db6a31bce9a59041b1dd9f87fe221df2278c)`
+and proof receipt `(1,45,60,26,60,59,0)`. Its sole direct dependency is
+`add_comm`. The proof turns `j+S i=l` into the universal history edge bound
+`i+S j=l` with PA4 and commutativity, then returns the edge's constructively
+supplied head. Both T06 and T07 have zero DNE and were cold-closed twice by
+job `219217`; neither is registered, admitted, or public.
+
+The private [`list_at_functional`](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_functional_candidate.py)
+body and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_functional_candidate.py)
+have statement receipt
+`(8895,1eba38bb47901319d41e681ed77f218b437e4d2ff1d55f519fff82e7dc8f2361)`
+and proof receipt `(3,95,119,40,119,118,0)`. Its direct dependencies are
+`list_at_head_iff`, `list_at_succ_iff`, and joint `cell_functional`.
+Generalized induction uses the joint theorem's head projection at zero and
+tail projection in the successor branch.
+
+The private [`list_at_history_independent`](../../peano-lab/py/peano_lab/library/ha_cell_list_lookup_history_independent_candidate.py)
+body and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_lookup_history_independent_candidate.py)
+have statement receipt
+`(7581,d0a1ac158e6e0552a8e762b69b602da0157183c832ec0cf4c270586dffcc914d)`
+and proof receipt `(2,92,171,38,171,170,0)`. Its exact dependencies are
+`list_at_functional` and `add_comm`: it selects the same edge in the second
+history and compares the resulting client-level lookups, without T07,
+`beta_at_unique`, or raw beta-code equality. Both T08 and T09 have zero DNE
+and were cold-closed twice by job `219217`; neither is registered, admitted,
+or public.
+
+The private [`cell_list_extensional`](../../peano-lab/py/peano_lab/library/ha_cell_list_extensional_candidate.py)
+body and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_cell_list_extensional_candidate.py)
+have statement receipt
+`(15451,7033fcdf4c96a866e9d9e0b8381efbbd7b48ab060bcc4adad695ead30ff19831)`,
+PA AST receipt `(707 total nodes,192 formula nodes)`, and proof receipt
+`(4,152,386,50,369,385,17)`. Its exact direct dependencies are
+`cell_list_zero_iff_nil`, `cell_list_succ_iff_cell`, `list_at_head_iff`, and
+`list_at_succ_iff`. Induction on the shared length handles nil at zero; at a
+successor it compares outer heads, transports the pointwise bound to
+successor indices, recursively identifies the tails, then performs two head
+and four tail rewrites in exact D06. The body has zero DNE.
+
+All ten ladder deliverables now have checked surface/body evidence (T01 is the
+frozen definition surface; T02--T10 are theorem bodies). WMI job `219217`
+cold-closed the full 17-target history/lookup stack twice with deterministic
+receipts and zero DNE throughout. In tuple order
+`(nodes,depth,objects,edges,reused,Cuts,proof DAG SHA-256)`, the new lookup
+receipts are:
+
+- T03 `list_at_domain = (39,23,39,38,0,0,09c7d6d2bb9d7cd09597285eae31355cf76b8bc54d7c370f8c9507ca0377a701)`;
+- T04 `list_at_head_iff = (32025,83,4982,5225,244,248,52bb6c215c7123e58374d23935490c71eccd3a8704de193612dacb57dd33cba7)`;
+- T05 `list_at_succ_iff = (30885,83,4923,5157,235,247,908364a06285830d2cc6b53919b4399203b12d08c89b9bb98de3cdd4efa5b8fa)`;
+- T06 `list_at_external_bound = (34799,87,5767,6043,277,301,7c49ab5ac74468bf1537d510be4d0837bc97d2432727a3c25f00c80026a38663)`;
+- T07 `list_at_exists = (133,26,127,132,6,3,6778f7b507370cb1bcd95d2bd90b0fbaea317f5ac262565152dc5eabf759698c)`;
+- T08 `list_at_functional = (65579,85,5851,6140,290,296,00fc80f2b18c79f8e45a41682651c32c0fbe8b34bc39c8ca2186067c184d0a4a)`;
+- T09 `list_at_history_independent = (65823,86,6022,6312,291,298,8868aaef643ffe84c4b5fb885d2f16c7b4872f071ce5de92149369d60c3dc20b)`;
+- T10 `cell_list_extensional = (95253,87,5888,6162,275,266,8558cf1c4c39c0d0d8b363e7304a6c5732cee0593548a4137d1407de58f479ec)`.
+
+The authoritative 10,550-byte
+[`report`](../../artifacts/peano-library/ha-k3b-listat-full-closure-219217.json)
+has SHA-256
+`c79184bee17a7c053287b3b98dcda74cf00498137499ef62122b9c6d15ec40b8`.
+Job `219217` completed `0:0` in `00:15:25` with `MaxRSS=54,496 KiB`, binding
+clean commit `cb6fcbcc6b51e0b9290e02ed1a16d8b034145b8e` to payload SHA-256
+`78e0c3d04b98ba1788edce0cd227dae3f7fe36f391a3a80b962da632a1970835`.
+All 17 targets remain private, unregistered, and unadmitted: no public theorem,
+catalog, snapshot, or campaign-accounting action has occurred.
+
+The K4
+[`signed-gcd client`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
+and its
+[`focused audit`](../../peano-lab/py/tests/test_ha_signed_bezout_gcd_candidate.py)
+compose public relational-gcd/Bezout existence with D08; their closure is
+explicitly division-bearing and leaves the 74-row signed-stack digest unchanged. The
+five-row
+[`canonical-gcd edge tranche`](../../peano-lab/py/peano_lab/library/ha_canonical_gcd_edges_candidate.py),
+17-row
+[`relational-LCM tranche`](../../peano-lab/py/peano_lab/library/ha_relational_lcm_candidate.py),
+and nine-row
+[`gcd--LCM totality bridge`](../../peano-lab/py/peano_lab/library/ha_lcm_totality_bridge_candidate.py)
+are frozen together in
+[`HA-K4-GCD-LCM-1`](ha-canonical-gcd-lcm-rfc-v1.md). Their focused audits pin
+literal hygiene, dependency order, statement/script hashes, two cold closures,
+and false mutations. The bridge now proves compatible gcd/LCM existence,
+relational LCM totality, unique LCM value, and the arbitrary gcd--LCM product
+identity. This is a K4 route and does not change the strict K3 evidence.
+The later selective admission enrolls exactly LCM rows L01--L07 and all bridge
+rows A--I, preserving their original receipts.
+
+The public registry now has 432 entries and 95 campaign public references.
+The research catalog has 433 entries, including 409 at `checked_m20`; the
+definition freeze remains 45 API rows over 44 distinct public theorems. The
+private K4 remainder is exactly 19 rows: three canonical-gcd package rows,
+five canonical-gcd edge rows, ten LCM convenience rows, and the signed-gcd
+client. Passing a candidate gate still never enrolls those rows.
+
+The reviewed generalized-CRT stack begins with the
+[`congruence foundation`](../../peano-lab/py/peano_lab/library/ha_generalized_crt_congruence_candidate.py)
+and continues through nonzero and zero-boundary sufficiency, relational-LCM
+classification, the honest canonical boundary, and constructive decision.
+The selective admission enrolls the exact 23-row dependency closure of
+`generalized_binary_crt_solvable_iff`,
+`generalized_binary_crt_canonical_boundary`, and
+`generalized_binary_crt_total_decision` at public indices 409--431. Its focused
+audits contain zero `DNE`. Six convenience rows remain closed and private:
+the reused `mod_eq_add_cancel_left`, right cancellation, nonzero unscaling,
+right-factor nonzeroness, packaged nonzero gcd cofactors, and the redundant
+nonzero-only solvability iff.
+
+The current runtime contains 432 checked entries. The factorization tranche
+is fully synchronized. The exact native β-coded endpoints are checked
+from the empty context:
+
+| Endpoint | Nodes | Depth | Cuts |
+|---|---:|---:|---:|
+| `prime_factorization_existence` | 43,973 | 98 | 1,328 |
+| `prime_factorization_uniqueness` | 29,789 | 82 | 854 |
+| `fundamental_theorem_of_arithmetic` | 73,767 | 99 | 2,184 |
+
+The exact FTA certificate has SHA-256
+`fd978f59bf3b0aa7b6c9ec1bc92ab5e7bbf949c25309173e098bd8f3b8de0958`.
+It passes the full prove/use/exact/QED route under the current
+500,000-occurrence, 100,000-object, depth-256 cap. The certificate uses only
+PA1–PA6 and induction, contains no
+DNE, and has passed dependency, hypothesis, PA-rule, and semantic mutation
+audits.
+
+The constructive prime endpoint is checked as well. `prime_unbounded` takes a
+nonzero common multiple through the supplied bound, chooses a prime divisor of
+its successor, and proves it cannot lie at or below the bound: otherwise it
+would divide both consecutive numbers and hence one. Its exact certificate is
+4,595 nodes/depth 82/146 Cuts with SHA-256
+`8a44fb2d207c2a41684de6d6630674f3f3b951cd036f733b3dd493321099d37b`.
+It uses PA1–PA6 only, contains no DNE, and passes exact dependency, PA,
+hypothesis, and live-use audits.
+
+This is a native PA result in the selected conservative encoding, not a claim
+that Peano Lab has gained primitive lists. Factors and prefix products are
+Gödel-β coded; uniqueness proves equal lengths and equality of every decoded
+bounded entry. It deliberately does not equate raw codes, because distinct
+codes may represent the same finite prefix. Runtime/catalog synchronization is
+complete.
+
+The 137-entry quadratic-reciprocity public checkpoint remains intact, followed
+by the nine public canonical remainder/congruence/modular-inverse interfaces
+from strict-HA tranche 01, the 16 public K4 gcd/LCM interfaces, and the 23 public
+M5 generalized-CRT interfaces. The reciprocity
+checkpoint: parity and modulo-four facts, constructive quadratic-residue
+decision, constant and interval prefixes, relational powers, β-coded finite
+sums, constructive finite permutation completeness, replacement balance, and
+exact swap-last product invariance. Beyond that admitted checkpoint, the exact
+quadratic-reciprocity route is now body-green through arbitrary Euler and
+Gauss, the signed-count/floor-sum parity bridge, native Eisenstein Fubini,
+`Q+U=h*k`, both QRes truth cases, and the optimized combined endpoint. The
+complete exact endpoint is now proved: the original unchanged intuitionistic
+kernel accepts its ordinary empty-context layered certificate with 54,870
+structural proof nodes, 35,052 proof objects, and depth 129. The independent
+compiled Lean verifier also accepts the separately retained complete
+557-theorem canonical dependency bundle. The exact
+557-spec/1,787-edge graph has 45 layers, 241 public nodes, 316 candidate nodes,
+and 191,648 theorem occurrences under
+naive recursive expansion; a rigorous 731,423-node lower bound rules out only
+that naive compiler, not the successful 54,870-node layered construction.
+The complete proof is distinct from public Alpha/Stable promotion, browser
+deployment, and a fresh pinned WMI receipt, none of which is implied by local
+closure. Its precise evidence and independently verifiable canonical artifact
+appear in the completed closure receipt linked above.
+
+- [`catalog.json`](catalog.json): the dependency-ordered theorem and planning
+  register, including exact Peano statements, source IDs, blockers, and the
+  factorization integration tranche;
+- [`source-register.json`](source-register.json): pinned revisions, licenses,
+  resources, and reuse modes;
+- [`finite-factorization-encoding.md`](finite-factorization-encoding.md): the
+  selected conservative Gödel-β factor-sequence and prefix-product design,
+  its checked decoded-value, recoding, product, canonical-factorization, and
+  exact FTA endpoints;
+- [`product-permutation-invariance.md`](product-permutation-invariance.md):
+  the active conservative statement, fixed-last/simultaneous-swap induction
+  architecture, and admission gates for general β-coded product reindexing;
+- [`fermat-wilson-next-tranche.md`](fermat-wilson-next-tranche.md): the exact
+  Fermat-first residue-product ladder, the separate Wilson involution gate,
+  and their roles in the Euler/Gauss/Eisenstein route to reciprocity;
+- [`pair-order-encoding.md`](pair-order-encoding.md): the nine-candidate
+  constructive two-entry extension layer for Wilson inverse orbits, its
+  reusable generic core, the corrected fifteen-candidate bounded-state and
+  terminal-coverage follow-on, paired-history iteration, successor lift,
+  product-one endpoint, canonical nonendpoint product transport, endpoint
+  restoration, and the body-green exact Wilson congruence;
+- [`euler-scaled-inverse.md`](euler-scaled-inverse.md): the ten-candidate
+  bounded scaled-inverse relation, functionality, involution, fixed-point
+  characterization, full beta-prefix/extensional layers, the generic adjacent-
+  target product fold, both branches and the arbitrary-unit packaging of
+  Euler's criterion, and the representation-correct shifted one-orbit
+  PairOrder entrance;
+- [`gauss-signed-prefix-design.md`](gauss-signed-prefix-design.md): the
+  isolated two-code signed-half prefix representation, seven-candidate body
+  ladder, focused WMI audit, and exact magnitude-permutation boundary;
+- [`gauss-magnitude-permutation.md`](gauss-magnitude-permutation.md): the
+  eleven-candidate magnitude range/injectivity/predecessor-permutation
+  endpoint, its focused WMI design, body-valid sign/pointwise recodings, and
+  the composed constructive cancellation at the heart of Gauss's lemma;
+- [`eisenstein-division-prefix.md`](eisenstein-division-prefix.md): the native
+  beta-coded quotient/remainder prefix relation, exact scaled sources,
+  constructive cell orientation, nested semantic row/rectangle counts, and
+  the quotient threshold, sound distinct-prime remainder-nonzero layer and
+  odd-half quotient bound, exact initial-segment `BitCount` ladder, generic
+  pointwise beta-sum transport, row-count identification, native nested
+  transpose/Fubini, the exact two-orientation quotient identity, and terminal
+  parity cancellation;
+- [`quadratic-reciprocity-surface.md`](quadratic-reciprocity-surface.md): the
+  frozen code-free theorem formulas, representation choices, complete
+  independently checked Gauss--Eisenstein reciprocity root, and explicit
+  unpromoted release boundary;
+- [`finite-fold-surface.md`](finite-fold-surface.md): the reusable native
+  `Pow`, `Sum`, `Count`, range, permutation, and product interfaces underlying
+  the reciprocity proof;
+- [`quadratic-reciprocity-capacity.md`](quadratic-reciprocity-capacity.md):
+  structural/object/depth policy, FTA baseline, historical naive QR lower
+  bound, and the actual accepted 54,870-node layered root;
+- [`quadratic-reciprocity-closure-hotspots.md`](quadratic-reciprocity-closure-hotspots.md):
+  the exact recursive-closure recurrence, hotspot audit, and rigorous
+  731,423-node lower bound against the 500,000-node policy;
+- [`layered-cut-bundle.md`](layered-cut-bundle.md): the preferred unchanged-
+  kernel compiler, now independently accepted on the full real root using
+  45 balanced conjunction packages, ordinary Cuts, and short existing
+  conjunction projections so every modular body appears once;
+- [`quadratic-reciprocity-admission-path.md`](quadratic-reciprocity-admission-path.md):
+  the post-WMI public migration design, including the injection-based registry
+  refactor, exact 316-ancestor-plus-root enrollment, replay strategy, catalog,
+  UI, and Pyodide gates;
+- [`quadratic-reciprocity-test-migration.md`](quadratic-reciprocity-test-migration.md):
+  the exact `rg` audit of candidate tests that assume non-registration, the
+  317-enrolled/29-omitted partition, and the safe modular-body/public-replay
+  migration recipe;
+- [`pa-proof-explorer.md`](pa-proof-explorer.md): the Stacks-style permanent
+  tag policy, LeanBlueprint-style dependency/status model, tactic-line linking
+  rules, informal-proof overlay, foundations atlas, and deterministic release
+  gates for the 557-node QR proof explorer;
+- [`curation-policy.md`](curation-policy.md): the conservative P0/P1/P2
+  definition tiers, relation API matrix, paired-edition identity gates, and
+  release checklist for the next native library edition;
+- [`closed-proof-dag.md`](closed-proof-dag.md): the explicitly secondary
+  bundle-checker design, retained only if the ordinary layered certificate
+  fails a measured resource or browser gate;
+- [`wmi-qr-replay.md`](wmi-qr-replay.md): content-addressed WMI replay policy,
+  Slurm provenance, resource receipts, and the evidence required before an
+  isolated quadratic-reciprocity candidate may enter the public registry;
+- [`gcd-bezout-roadmap.md`](gcd-bezout-roadmap.md): the checked relational API,
+  Euclidean-invariance ladder, simultaneous bounded gcd/Bézout construction,
+  Gauss cancellation, Euclid's lemma, and the constructive factor-search and
+  prime-divisor milestone;
+- [`proof-sharing-design.md`](proof-sharing-design.md): the reviewed
+  self-contained Cut rule, trust boundary, structural integration, and honest
+  erasure limitation;
+- [`foundational-sources.md`](foundational-sources.md): clean-room workflow and
+  the cross-source dependency architecture;
+- [`nng4-map.md`](nng4-map.md): complete Natural Number Game 4 coverage and
+  exclusions;
+- [`math2001-map.md`](math2001-map.md): Macbeth curriculum mapping and
+  reference-only boundary;
+- [`illustrated-number-theory-map.md`](illustrated-number-theory-map.md):
+  Weissman notebook/application roadmap and GPL boundary.
+
+Validate the strict JSON, source links, DAG order, current-language formulas,
+and exact checked-runtime coverage with:
+
+```bash
+python3 scripts/verify_arithmetic_knowledge_base.py
+```
+
+The catalog is not theorem authority. Only entries whose replayed,
+self-contained certificates pass Peano Lab's independent kernel from the empty
+context appear as checked. Dependency Cuts embed complete proof branches and
+never grant names or hashes authority. Planned and
+language-blocked nodes make the roadmap precise without overstating the
+current implementation. The catalog separately binds one checked Lean FTA
+companion; that conventional list theorem remains independent of the native
+β-coded certificate and never supplies Peano theorem authority. The catalog
+has no remaining planned entry. Conventional integer-coefficient Bézout is not
+available in the natural-only term language, while the checked balanced
+four-natural relation supplies the native replacement.
+
+## 2026-08-09 — historical additive Alpha v2 and Stable editions
+
+The arithmetic library now has two explicit cumulative editions. **Stable**
+is the official checked library and remains the default. **Alpha** is the
+building library: every reviewed incorporated layer appears there immediately,
+with membership recorded independently of its proof evidence. Stable is a
+subset of Alpha; Alpha membership alone never grants a closed theorem fact.
+Stable v1 remains sealed at 432 rows. Alpha v1 remains sealed at 885 rows;
+Alpha v2 preserves those entries exactly and appends the seventeen K3C rows
+at indices 885--901. The current 432 Stable rows form Alpha's initial prefix
+only. Future
+promotion publishes a versioned channel index and preserves a keyed exact
+subset: Alpha enrollment order and origin/provenance remain immutable, while
+Stable keeps its own append-only dependency-topological release order.
+
+| Edition | Theorems | Direct edges | Layers | Alpha-only | Checked use |
+|---|---:|---:|---:|---:|---:|
+| Stable | 432 | 1,185 | 22 | 0 | 432 |
+| Alpha v1 (sealed parent) | 885 | 2,641 | 45 | 453 | 570 |
+| Alpha v2 (current) | 902 | 2,674 | 45 | 470 | 570 |
+
+Alpha v2's evidence ledger contains 432 `stable_closed`, 138 `alpha_closed`,
+331 `body_checked`, and one `pending_layered_closure` row. Consequently, 332
+of the 902 specifications still lack whole-library empty-context closure and
+are not legal checked-use facts. The origin counts are 432 Stable, 316 QR,
+120 strict-HA, 17 K3B, and 17 K3C. The v2 ordered-enrollment root is
+`00f1a70a0911c44acd6b784f2b121b2c351ae626a0f18bb08b5a829496ad40fe`;
+the full edition identity is
+`aadf99c0e411fcefe34285c8396ff0652f590e6990f0d55c3e6c7b728f9b43a4`.
+
+The code-owned runtime API is
+[`peano_lab.library.editions_v2`](../../peano-lab/py/peano_lab/library/editions_v2.py):
+`edition("stable" | "alpha")`, `entry(...)`, and
+`replay(..., edition=...)`. Stable remains the default; Alpha replay rejects
+`body_checked` and `pending_layered_closure` rows. Deterministic publication
+state is recorded by
+[`artifacts/peano-library/channels-v2.json`](../../artifacts/peano-library/channels-v2.json),
+the unchanged
+[`Stable catalog`](../../artifacts/peano-library/catalog-v1.json), and the
+linked Alpha v2 catalog, metrics, and dependency graph. The v1 channel pointer
+and Alpha v1 artifacts remain sealed rather than being rewritten.
+
+All seventeen K3C rows are `body_checked`: local audits validate their
+expanded statements, exact dependency-curried tactic bodies, dependency
+liveness, and fail-closed mutations. They do not enter checked use until a
+repeated isolated WMI empty-context closure receipt is available. The K3B
+rows described as private in their dated checkpoint sections are now
+Alpha-only `alpha_closed`; they have not been promoted to Stable.
+
+This section supersedes status, not history. Older dated paragraphs that call
+K3/HA/K3B or QR rows private, unregistered, or outside the public snapshot
+describe the Stable boundary at those checkpoints. Reviewed enrolled rows now
+have Alpha membership, but none is thereby promoted to Stable. The 717
+reachability-redundant declared links and the transitive-reduction graph are a
+display/structural review surface only; they do not establish that tactic
+bodies can omit those hypotheses and make no proof-semantic minimality claim.
+
+Promotion is still pending. Every proposed dependency-closed batch needs a
+fresh isolated WMI run plus resource, determinism, mutation,
+dependency-liveness, and identity gates. Promoting all of Alpha would require
+closing the remaining 332 rows; a smaller dependency-closed batch need not
+wait for unrelated Alpha rows. WMI is down for the weekend, so no K3C cold
+receipt, whole-Alpha-v2 closure, or new promotion receipt is claimed here.
+
+## 2026-08-26 — fully checked current Alpha v25 and unchanged Stable editions
+
+The preceding Alpha-v2 section is a historical checkpoint, not the current
+release pointer. Stable is still the official default at **432 theorems**.
+The newest Alpha edition is v25, containing **2,080 independently checked
+theorems**: every one of its sealed Alpha-v24 parent's **2,008** statements,
+plus **72** newly proved complete genuine signed cofactor-minor-family,
+arbitrary signed alternating-fold, witnessed quadratic Taylor-remainder,
+actual one-step Hensel-lift, and non-coprime finite CRT-compatibility
+theorems.
+It has
+**zero body-only or pending rows**; every earlier sealed version remains
+reproducible.
+
+| Edition | Theorems | Direct edges | Layers | Checked use | New reviewed campaign |
+|---|---:|---:|---:|---:|---|
+| Stable | 432 | 1,185 | 22 | 432 | Official unchanged edition |
+| Alpha v13 | 1,543 | 5,189 | 45 | 570 | Lagrange four-square and multidigit Lucas |
+| Alpha v14 | 1,556 | 5,251 | 45 | 570 | Kummer carry theorem and carry-free corollary |
+| Alpha v15 | 1,673 | 5,615 | 53 | 570 | Both supplementary laws and full two-square classification |
+| Alpha v16 | 1,673 | 5,615 | 53 | 885 | 315 genuinely closed quadratic-reciprocity results |
+| Alpha v17 | 1,673 | 5,615 | 53 | 916 | 31 genuinely closed supplementary-law results and both complete endpoints |
+| Alpha v18 | 1,673 | 5,615 | 53 | 1,589 | 673 genuinely closed Lucas, Kummer, Bertrand, four-square, and two-square results |
+| Alpha v19 | 1,737 | 5,779 | 53 | 1,737 | All 84 residual obligations closed; 64 Pythagorean, prime-two-square, linear-congruence, and prime-progression results |
+| Alpha v20 | 1,776 | 5,882 | 53 | 1,776 | 39 independently checked polynomial Horner, finite matrix-component, Bertrand-prime, and continued-fraction results |
+| Alpha v21 | 1,830 | 5,986 | 53 | 1,830 | 54 independently checked arbitrary matrix-product, Euclidean execution/halving, and binary modular-exponentiation results |
+| Alpha v22 | 1,890 | 6,128 | 53 | 1,890 | 60 independently checked binary-length, Euclidean terminal-gcd transport, and actual supplied-digit binary-execution results |
+| Alpha v23 | 1,949 | 6,285 | 53 | 1,949 | 59 independently checked complete logarithmic Euclidean-GCD, canonical binary-digit/execution, and three-modulo-four-prime-infinitude results |
+| Alpha v24 | 2,008 | 6,423 | 53 | 2,008 | 17 arbitrary signed matrix-minor/determinant, 15 exact formal-derivative, and 27 finite CRT/arbitrary-list-LCM results |
+| Alpha v25 | 2,080 | 6,633 | 53 | 2,080 | 29 complete cofactor-minor-family/Laplace-fold, 19 witnessed Taylor/actual Hensel-lift, and 24 non-coprime CRT-compatibility results |
+
+Alpha v14 appends exactly thirteen `body_checked` Kummer rows. Alpha v15
+appends exactly 28 supplementary-law rows, including independently checked
+bounded Euler and Gauss prerequisites, and 89 additional two-square rows.
+The immutable historical v15 evidence ledger is **432 stable_closed, 138 alpha_closed,
+1,102 body_checked, and one pending_layered_closure**. Its ordered-enrollment
+identity is
+`44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175`;
+its historical complete edition identity is
+`2f1a097ac0b6821c74cd4da088c396d3b9960ffd43e169f22b4778d5871adc66`.
+
+Alpha v16 preserves that exact ordered-enrollment identity, all 1,673
+specifications, all 5,615 dependency edges, every historical artifact, and
+the unchanged default Stable release. Its historical evidence ledger is **432
+stable_closed, 453 alpha_closed, 788 body_checked, and zero pending rows**.
+Exactly 314 previously body-only quadratic-reciprocity ancestors and the
+formerly pending root now have independently checked closed proofs and
+release-authorized checked use. Its complete historical edition identity is
+`3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10`.
+No Lucas, four-square, Kummer, supplementary-law, two-square, or Bertrand
+body-only theorem gains checked authority from this QR-only promotion.
+
+Alpha v17 preserves every Alpha-v16 enrollment position, statement, dependency,
+script, provenance record, release membership, historical artifact, and Stable
+theorem. The exact union of both supplementary-law dependency closures contains
+**437** theorem nodes: 226 Stable-closed, 180 already Alpha-closed, and precisely
+31 previously body-only rows. Their genuine proof artifact additionally includes
+one ordinary constructive conjunction root, for **438 actual proof bodies**,
+**1,429 dependency edges**, and **33,173 structural body-proof nodes**. Both the
+unchanged intuitionistic Python kernel and the independently compiled Lean
+proof-bundle verifier accept the complete artifact. The actual microbatches use
+16 and 15 bodies, respectively, and remain below the unchanged
+16-body/125,000-node/25,000-object caps.
+
+The two historically new Alpha-v17 checked-use endpoints are
+`quadratic_supplement_minus_one_complete` and
+`quadratic_supplement_two_complete`. The sealed historical Alpha-v17 evidence partition
+is **432 stable_closed, 484 alpha_closed, and 757 body_checked**, yielding
+**916** independently checked-use theorems without changing Stable. Its exact
+identity is
+`db2e6e5796169600d17cc54313e9306bac46fb680f914cb2a5a91d247bb746c4`;
+the self-contained supplementary proof artifact has SHA-256
+`79fc4717dbe570bf836cca5ec699492ff3995700ec25336a20d03cc57261054c`.
+No Lucas, four-square, Kummer, all-natural two-square, or Bertrand endpoint was
+promoted by that historical supplementary-only release.
+
+Historical Alpha v18 preserves that exact immutable 1,673-row parent, all statements,
+authored source scripts, names, dependencies, membership, enrollment positions,
+and Stable proof authority. Five independent complete constructive artifacts
+close the exact `lucas_theorem`, both `kummer_binomial_carry_bit_count` and
+`kummer_carry_free_iff_not_divides`, `bertrand_strict`,
+`four_square_lagrange`, and
+`two_square_iff_zero_or_even_three_mod_four_prime_valuations`. Their joint
+dependency slice has **1,113 distinct theorem nodes**. Precisely **673**
+previously body-only rows become `alpha_closed`: **74 Lucas, 73 Kummer, 241
+Bertrand, 196 four-square, and 89 two-square** under canonical first-artifact
+ownership.
+
+Its exact historical evidence partition is **432 stable_closed, 1,157
+alpha_closed, and 84 body_checked**, yielding **1,589** independently
+checked-use theorems and **5,366 checked-use dependency edges**. Its immutable
+evidence identity is
+`f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66`.
+The five canonical bundle node counts are **213 Lucas, 281 Kummer, 544
+Bertrand, 390 four-square, and 517 two-square**. Each entire graph is accepted
+both by the original intuitionistic kernel and by the independently compiled
+Lean proof-bundle verifier. At that sealed historical checkpoint, the
+remaining **17 K3C plus 67 auxiliary Bertrand** body-only rows did not yet
+have release checked-use authority.
+
+Historical Alpha v19 preserves every exact Alpha-v18 theorem name, statement,
+authored script, dependency, enrollment position, membership, and provenance.
+Its first independently checked campaign bundle closes all **84** remaining
+body-only obligations, including the complete T09 prime-specific valuation
+interface `prime_power_valuation_exists` and
+`prime_power_valuation_functional`. The exact transitive closure contains
+**474 real theorems**, **1,412 actual dependency edges**, and **40** maximal
+endpoints; one unenrolled balanced conjunction yields an independently
+checked **475-node**, **1,452-edge** proof artifact with **38,688 structural
+body-proof nodes** and **4,176,537 canonical bytes**. Its SHA-256 is
+`e69112c5e3b8c21bc452ad35838474f2af2e297152ff73fbdc62bfd935ffdebb`.
+
+The second independently checked campaign bundle proves exactly **64** newly
+appended theorems: **44** Pythagorean forward-construction results,
+**one** exact prime two-square equivalence, **nine** complete
+linear-congruence results, and **ten** one-modulo-four prime results. Its
+five primary exact theorem endpoints are
+`pythagorean_primitive_euclidean_from_order`,
+`pythagorean_primitive_normal_form`,
+`prime_is_two_squares_iff_two_or_one_mod_four`,
+`linear_congruence_solvable_iff_gcd_divides`, and
+`infinitely_many_primes_one_mod_four`. The complete bundle has
+**545 actual proof bodies**, **1,650 dependency edges**, **34,020 structural
+body-proof nodes**, and **1,617,207 canonical bytes**. Its SHA-256 is
+`cf7947a944d54e9eb956fb153702b29c953100ece6cf05743162759b0fba9b17`.
+Both entire graphs are accepted independently by the unchanged original
+intuitionistic kernel and the separately compiled Lean verifier.
+
+The exact historical v19 evidence partition is **432 stable_closed, 1,305
+alpha_closed, zero body_checked, and zero pending rows**. All **1,737**
+historical theorem nodes and all **5,779** historical dependency edges
+therefore have independently checked-use authority. The unchanged
+**432-theorem Stable edition remains the default**. The historical v19
+release identities are:
+
+- Alpha-v19 checked edition identity:
+  `905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7`.
+- Alpha-v19 ordered enrollment identity:
+  `1295d6fc3da84646cb6bc8d5070627d42a6df33d673c44a2adfcd433edc41795`.
+- Alpha-v19 checked evidence root:
+  `627f651198360aa95b8efd085b98f694d88c883434309f6050a819bc249c90c4`.
+- Alpha-v19 canonical catalog SHA-256:
+  `f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b`.
+
+Historical Alpha v20 preserves that entire frozen parent and appends exactly
+**seven polynomial Horner, ten finite matrix/dot-product, thirteen Bertrand
+prime-window/chain, and nine finite continued-fraction theorems**. Its
+complete self-contained proof bundle has **590 independently checked proof
+nodes**, **2,045 dependency edges**, **190,533 structural proof nodes**, and
+SHA-256 `1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069`.
+Both the unchanged original intuitionistic kernel and the independently
+compiled Lean verifier accept the exact certificate. Its exact historical
+partition is **432 stable_closed, 1,344 alpha_closed, zero body_checked, and
+zero pending rows**, so all **1,776 theorem nodes** and **5,882 actual
+dependency edges** have checked-use authority.
+
+- Alpha-v20 checked edition identity:
+  `ee0f596150d8609ab302303ade44c4413290675398a1d6999a47b3ba046ac38b`.
+- Alpha-v20 ordered enrollment identity:
+  `947e12db1db93decddd87b833067acf774a37fcb7d89de117010d53baf00065c`.
+- Alpha-v20 checked evidence root:
+  `fd76c648de26cd8a451244441fac8f423fb4fec8e7feac1c789404dafcda1563`.
+- Alpha-v20 canonical catalog SHA-256:
+  `8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce`.
+
+Historical Alpha v21 preserves every exact historical v20 row and appends
+**23 arbitrary natural/signed matrix-product and determinant theorems, 15
+Euclidean execution/halving theorems, and 16 binary modular-exponentiation
+theorems**. Its self-contained proof artifact has **208 exact theorem nodes
+plus one synthetic conjunction**, **491 dependency edges**, **10,304 actual
+body-proof nodes**, **27 maximal roots**, **1,005,317 canonical bytes**, and
+SHA-256 `65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0`.
+Every one of its **209 proof bodies** is independently checked by the
+unchanged intuitionistic kernel; the separately compiled Lean verifier also
+accepts the exact artifact. Its exact historical partition is **432
+stable_closed, 1,398 alpha_closed, zero body_checked, and zero pending rows**,
+so all **1,830 theorem nodes** and **5,986 actual dependency edges** have
+genuine checked-use authority.
+
+- Alpha-v21 checked edition identity:
+  `aee42cc37e4a4073eb4892e81e4f26d957b3b4b42675c1ed4e67c90dc89602e6`.
+- Alpha-v21 ordered enrollment identity:
+  `ad2616d7656438ee2084f5ea404df3dad2106a99c6819fd174fd8c3ed6bb4c98`.
+- Alpha-v21 checked evidence root:
+  `9d217af3e7f77f8beb436f627a44f1a29cda54bb08a4e666899803aa97ccb91b`.
+- Alpha-v21 canonical catalog SHA-256:
+  `84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1`.
+
+Historical Alpha v22 preserves every exact historical v21 row and appends
+**21 total/functional/unique binary-length theorems, 20 Euclidean
+gcd-invariant and actual terminal-state identification theorems, and 19
+complete supplied-digit binary modular execution/power-correctness
+theorems**. Its self-contained proof artifact has **239 exact theorem nodes
+plus one synthetic conjunction**, **597 dependency edges**, **11,848 actual
+body-proof nodes**, **17 maximal roots**, **1,099,541 canonical bytes**, and
+SHA-256 `95e5f8a3baef113721d748f9d7071864b4bf9511737a27a1272d2695428fb938`.
+Every one of its **240 proof bodies** is independently checked by the
+unchanged intuitionistic kernel; the separately compiled Lean verifier also
+accepts the exact artifact. Its historical partition is **432 stable_closed,
+1,458 alpha_closed, zero body_checked, and zero pending rows**, so all
+**1,890 theorem nodes** and **6,128 actual dependency edges** have genuine
+checked-use authority.
+
+- Alpha-v22 checked edition identity:
+  `2750384264856ad10910c1e9369746da886f4760d41e356bfc9e7f8f4563c7db`.
+- Alpha-v22 ordered enrollment identity:
+  `431f7300f9190f6fdc35ef84212e93701f2bb565b7e32c1624b7ae0c89cfc5ea`.
+- Alpha-v22 checked evidence root:
+  `897ac1893550881538cf74274d0d48e15450125776f31be4edc10de0b1d05ef6`.
+- Alpha-v22 canonical catalog SHA-256:
+  `fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22`.
+
+Historical Alpha v23 preserves every exact historical v22 row and appends
+**17 complete Euclidean logarithmic-bound theorems, 24 canonical arbitrary-
+exponent binary-digit/modular-execution theorems, and 18 theorems proving
+infinitely many primes congruent to three modulo four**. Its self-contained
+proof artifact has **616 exact theorem nodes plus one synthetic conjunction**,
+**1,871 dependency edges**, **39,161 actual body-proof nodes**, and
+**2,518,315 canonical bytes**, with SHA-256
+`cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11`.
+Every one of its **617 proof bodies** is independently checked by the
+unchanged intuitionistic kernel and accepted by the separately compiled Lean
+verifier. Its historical partition is **432 stable_closed, 1,517 alpha_closed,
+zero body_checked, and zero pending rows**, so all **1,949 theorem nodes** and
+**6,285 actual dependency edges** have genuine checked-use authority.
+
+- Alpha-v23 checked edition identity:
+  `02059eef420eb96abd48c41bf62049a3cc69f025b00bed9dc3466e7eb2294a85`.
+- Alpha-v23 ordered enrollment identity:
+  `f5d94af7a11c642d7076a195e2e795e7b84c61a6de1a6b074708669b2dac1648`.
+- Alpha-v23 checked evidence root:
+  `e9c00544bdad559342da3ed5a0d1e26ef1576a0eecd9f580ec1fc98a2eb941cf`.
+- Alpha-v23 canonical catalog SHA-256:
+  `818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2`.
+
+Historical Alpha v24 preserves every exact historical v23 row and appends
+**17 arbitrary-dimensional natural/signed cofactor-minor and signed 4×4
+determinant theorems, 15 exact simultaneous formal-polynomial-derivative
+theorems, and 27 finite pairwise-coprime CRT/arbitrary-list-LCM theorems**.
+Its compact self-contained proof artifact has **202 exact theorem nodes plus
+one synthetic conjunction**, **502 dependency edges**, **11,065 actual
+body-proof nodes**, **18 maximal roots**, and **738,923 canonical bytes**,
+with SHA-256
+`627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9`.
+Every one of its **203 proof bodies** is independently checked by the unchanged
+intuitionistic kernel and accepted by the separately compiled Lean verifier.
+Its historical partition is **432 stable_closed, 1,576 alpha_closed, zero
+body_checked, and zero pending rows**, so all **2,008 theorem nodes** and
+**6,423 actual dependency edges** have genuine checked-use authority.
+
+- Alpha-v24 checked edition identity:
+  `1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b`.
+- Alpha-v24 ordered enrollment identity:
+  `7463b938ffb87fe85eea6cd0e40c10ac73c799087ca1c408a070fcbe2687d4e1`.
+- Alpha-v24 checked evidence root:
+  `2516501a609a5bd46114a53e20bbdd7c9f79bc801f7d3148be38dcd48f4ce3e0`.
+- Alpha-v24 canonical catalog SHA-256:
+  `94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1`.
+
+Current Alpha v25 preserves every exact immutable historical v24 row and
+appends **29 complete signed first-row cofactor-minor-family/arbitrary
+alternating Laplace-fold theorems, 19 exact witnessed quadratic
+Taylor-remainder/actual one-step Hensel-lift theorems, and 24 genuinely
+non-coprime finite CRT compatibility/gcd-LCM/canonical-solution theorems**.
+The self-contained proof artifact has **301 exact theorem nodes plus one
+synthetic conjunction**, **820 genuine dependency edges**, **16,947 actual
+body-proof nodes**, **29 maximal roots**, and **1,041,166 canonical bytes**,
+with SHA-256
+`d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a`.
+Every one of its **302 proof bodies** is independently checked by the
+unchanged intuitionistic kernel and accepted by the separately compiled Lean
+verifier. The exact current partition is **432 stable_closed, 1,648
+alpha_closed, zero body_checked, and zero pending rows**, so all **2,080
+theorem nodes** and **6,633 actual dependency edges** have genuine
+checked-use authority.
+
+- Alpha-v25 checked edition identity:
+  `3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28`.
+- Alpha-v25 ordered enrollment identity:
+  `f724872707cdcf401f35cb69680e1bbec86d626c4bf56e6d41f01a3724e2be81`.
+- Alpha-v25 checked evidence root:
+  `193ee636570fa9f7b69344dbebc6c7e53de8bebda01bcb86687f01a50ec19674`.
+- Alpha-v25 canonical catalog SHA-256:
+  `75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e`.
+
+The additive reviewed definition registry preserves every historical object
+and adds exactly `ND0058`–`ND0068`: seven genuine signed minor-record/
+cofactor-family/alternating-fold relations, two exact Taylor/Hensel relations,
+and two finite CRT compatibility predicates. Across the 120-milestone atlas,
+the complete definition DAG has **179 research-blueprint definitions** and
+**165 blueprint expansion edges**, while the independently reviewed
+conservative first-order registry has **120 definitions** and **214
+definition prerequisites**. Exactly **88** blueprint names share a checked
+signature/AST identity, including the explicit four-argument `BetaSum` alias;
+the incompatible three-argument generic `Sum` remains visible and receives no
+checked-definition authority.
+
+The three strongest checked components are
+`signed_matrix_cofactor_family_and_fold_exists` (bundle node 257; statement
+SHA-256 `1f013b934c7540f73e135257094d612345f43f3163b5ee7280dbe97f4f142d2a`),
+`beta_horner_hensel_lift_exists` (node 276; SHA-256
+`9cfc4633ea27c492b0deb35a56fe44b25b8dbf50d56fb27f29285f74b6c58a8b`),
+and `crt_merge_compatible_prefix_canonical_exists_unique` (node 288; SHA-256
+`9e3d68192e707b5953b2fd3c9e4716e9fe90317f63be49734bbed00e3492b927`).
+The genuinely pairwise-compatible dominating-last non-coprime case is
+additionally checked as
+`crt_pairwise_compatible_dominating_last_canonical_exists_unique`
+(SHA-256 `f249f7835eb127e8d5f15e74b3d4344d5d98503d8b01394d608bf2e677823fb0`).
+
+The full T13 arbitrary-dimensional determinant/rank/lattice target, G095
+prime-power simple-root Hensel uniqueness theorem, and G011 arbitrary
+pairwise-compatible non-coprime finite-list CRT remain **open**. T13 still
+lacks the proof connecting supplied cofactor values with recursively evaluated
+minor determinants. G095 has an actual one-step divisibility lift but still
+lacks the unrestricted canonical lifted representative and uniqueness. G011
+solves every exactly merge-compatible non-coprime system and the
+pairwise-compatible dominating-last case but lacks the general
+pairwise-to-successive-merge gcd/LCM bridge. Nearby checked components never
+close these stronger exact blueprint milestones.
+
+Reproduce and independently verify the entire current release using
+`make peano-library-alpha-v25` and `make peano-library-alpha-v25-check`.
+The sealed historical v19, v20, v21, v22, v23, and v24 releases remain independently reproducible
+with their corresponding versioned targets.
+The bounded browser command
+`pa proof alpha infinitely_many_primes_one_mod_four` inspects its exact
+authored constructive proof without loading a giant certificate. Campaign
+goals **G012** (linear congruences), **G026** (infinitely many primes one
+modulo four), **G061** (exact prime two-square classification), the forward
+**A08** Pythagorean anchor, and the complete **T09** valuation interface now
+have independently checked-use authority. Alpha v20 also closes **T12**
+(beta-coded natural polynomial evaluation), **G023** (multiplicity-one
+central-binomial prime divisors), **G024** (arbitrary finite strict Bertrand
+prime chains), and **G071** (finite continued fractions). Historical Alpha v21
+additionally proves arbitrary finite natural/signed matrix multiplication,
+genuine signed two-/three-dimensional determinants, Euclidean execution with
+an independent gcd and linear bound, two-step remainder halving, and unique
+canonical modular powers with functional binary transitions. Historical Alpha v22
+additionally proves total functional unique first-order `BitLen`, exact
+Euclidean terminal-state identification with its relational gcd, and complete
+power-correct beta-coded square-and-multiply execution with unique result for
+every supplied valid digit prefix. Historical Alpha v23 closes **G101** with
+actual terminal gcd and the exact `steps <= 2 * BitLen(b) + 1` bound,
+**G102** with arbitrary-exponent canonical digits, actual modular execution,
+and `operations <= 3 * BitLen(e) + 2`, and **G025** with prime witnesses
+congruent to three modulo four above every prescribed bound. Historical Alpha
+v24 adds arbitrary signed minors, exact signed four-dimensional determinants,
+formal derivatives, arbitrary-list LCM, and complete pairwise-coprime finite
+CRT. Current Alpha v25 adds complete genuine cofactor families and uniquely
+valued alternating folds, actual quadratic Taylor witnesses and one-step
+Hensel lifts, and genuinely non-coprime merge-compatible canonical CRT.
+**T13** remains open: arbitrary-dimensional recursive determinants, rank,
+and lattices are unproved. **G077** (the inverse primitive Pythagorean
+parametrization), and **G078** (unconditional Fermat exponent-four strict
+descent) remain genuinely open; none is inferred from a nearby checked
+forward direction.
+
+The exact strict Bertrand theorem also has an independently accepted
+**ordinary empty-context original-kernel certificate**, not merely a checked
+dependency graph. Existing conservative proof-body interning reduces the
+544-body artifact's **187,725 decoded proof objects to 31,694 shared body
+objects**. The final balanced layered certificate contains **201,285
+structural proof nodes, 45,254 distinct proof objects, proof depth 235, and
+combined envelope depth 244**. All 544 interned dependency-curried bodies and
+the exact final root are checked independently under every unchanged original
+kernel and replay resource limit.
+
+| Fully proved flagship | Proof nodes | Dependency edges | Bundle SHA-256 |
+|---|---:|---:|---|
+| Multidigit Lucas | 213 | 617 | `02b1eef360dce55f0156bda2029e64567b8b83b5d58833d6c4f8695ab8d41832` |
+| Both Kummer endpoints | 281 | 779 | `49fd86708fe5b289d0159526285e73b2aea008c26e0eb41ae8a053c970d4210e` |
+| Strict Bertrand | 544 | 1,917 | `84078d40d2df7b072938975191fb70c95731059ced716a12050df4376e2d4883` |
+| Universal four squares | 390 | 1,187 | `dd8374b95184f95f28a296aba6682f8177538650c3cc2f8d94a8db723c9982f0` |
+| Complete two squares | 517 | 1,599 | `f2e77dc6e8c87c715bf2c4f3325e999e7180a2c3ab0fa93f3e9a5006d3e1684e` |
+
+### Historical bounded promotion experiments, superseded by complete v18 closure
+
+Body enrollment, independently checked empty-context proof certificates,
+release-authorized checked use, and Stable promotion remain separate. Local
+bounded promotion experiments can produce genuine closed certificates without
+changing the sealed release or granting checked-use authority. In particular,
+the reviewed layered-Cut constructor shares the previously duplicated
+`choose_exists` premise and closes `choose_factorial_bridge` in **109,841
+structural nodes and 9,535 proof objects**, below the unchanged 125,000-node
+and 25,000-object limits; this does not itself promote the row.
+The final older Lucas prerequisite, `choose_prime_divides_between`, has a
+measured **166,823-node** leaf total in the pending-only sixteen-body shared
+package. A separate reviewed mixed package contextualizes **eleven body-only
+rows and five already-closed Stable rows**, still counting all sixteen against
+the original cap. Its actual Stable leaf budget drops to **42,391 nodes and
+10,413 proof objects** by sharing the common beta-prefix infrastructure.
+The unchanged kernel genuinely accepts the resulting empty-context proof under
+the original 125,000-node/25,000-object limits: **all 30 older Lucas
+prerequisites now have actual independent closure candidates**. A subsequent
+independently kernel-checked sixteen-row campaign microbatch closes the first
+sixteen campaign rows. Three further separate batches close another fourteen:
+**7/78,442/12,147**, **6/75,700/10,698**, and **1/62,671/5,546**
+rows/nodes/objects. The next reviewed shared profiles also genuinely close
+`lucas_choose_prefix_extend` in **30,854 nodes / 5,615 objects**,
+`lucas_choose_prefix_exists` in **30,916 nodes / 5,677 objects**, and
+`lucas_prime_row_interior_divisible` in **70,258 nodes / 11,011 objects**.
+Each was an actual unchanged-kernel empty-context proof under the original
+16-body/125,000-node/25,000-object limits. At that intermediate checkpoint,
+**33 of 44 Lucas campaign rows** had genuine empty-context certificates and
+eleven remained open. The complete **213-node Alpha-v18 Lucas proof bundle**
+subsequently closed every reviewed dependency and the exact unrestricted root.
+
+The formerly oversized bounded valuation root
+`bounded_power_valuation_exists` required **125,454 structural nodes** when
+its independently closed search and zero-power premises were composed
+separately; the canonical `power_valuation_exists` successor required
+**125,470 nodes**. Both branches duplicated the same genuine **59,836-node**
+Stable `pow_exists` proof. A sealed fifteen-/sixteen-node layered-Cut graph now
+shares that premise once and produces actual original-kernel empty-context
+proofs of **65,708 nodes / 5,952 objects** and **65,727 nodes / 5,971 objects**,
+respectively. Both proofs remain below every unchanged
+16-body/125,000-node/25,000-object limit. Their later Alpha-v18 checked-use
+authority comes from the independent complete flagship proof bundles, not
+from this intermediate engineering experiment; neither theorem becomes Stable.
+
+The dedicated four-square promotion planner pins Lagrange's exact 390-row
+dependency slice. An independently checked sixteen-row parent microbatch
+uses only **18,008 structural nodes and 8,869 proof objects**; together with
+two previously checked rows, it closes eighteen older Lagrange prerequisites.
+The remaining five beta-prefix parents now also have genuine independently
+checked singleton certificates of **30,906, 31,467, 29,185, 29,317, and
+30,106 structural nodes**, respectively. Therefore **all 23 older Lagrange
+prerequisites are independently closable** under the original policy. Four
+further genuinely checked campaign microbatches close **52 of 196 Lagrange
+campaign rows**. Their exact row/node/object counts are **16/1,232/1,125**,
+**16/4,552/3,664**, **16/10,261/5,964**, and **4/77,161/12,811**;
+every batch independently respects the original proof envelope. A further
+second-layer batch recreates ten genuine prerequisite certificates in
+**2,973 nodes / 2,114 objects**, then closes another sixteen campaign rows
+in **10,229 nodes / 6,322 objects**. The next sealed continuation reconstructs
+sixteen genuine predecessor certificates in **11,374 nodes / 7,149 objects**,
+then independently kernel-checks twelve additional campaign rows in **14,263
+nodes / 7,471 objects**. Thus **80 of 196 Lagrange campaign rows** had actual
+empty-context certificates at that historical checkpoint. The subsequently
+completed **390-node Alpha-v18 four-square proof bundle** closes all campaign
+rows, all prerequisites, and the exact universal Lagrange theorem.
+
+Across both flagship slices, that intermediate experiment established genuine
+bounded candidates for **all 53 older parent prerequisites**, the first
+**33 Lucas rows**, and **80 Lagrange rows**: **166 of 293** then-body-only
+obligations, leaving **127** open at that checkpoint. The later complete
+Alpha-v18 promotion supersedes that partial tally: all reviewed Lucas and
+Lagrange flagship dependencies now have independently checked proof evidence
+and actual Alpha checked-use authority.
+
+Six offline interactive proof families now cover the supplementary laws,
+Kummer, two squares, four squares, Lucas, and the new Pythagorean/Fermat-four
+campaign. The Alpha-v19 Pythagorean forward constructor is actually admitted;
+its additional **27** independently checked theorem bodies prove the
+complete forward **primitive** Euclidean constructor and show that every
+primitive triple has opposite-parity legs, an odd hypotenuse, pairwise
+coprime coordinates, and a constructive normal form. The sixth campaign
+therefore contains **44** Alpha-closed checked-use theorems. The primitive
+inverse classification and Fermat strict-descent premise are not proved. No
+unconditional Fermat-four theorem, Stable promotion, or remote deployment is
+inferred from this separately authorized Alpha release.

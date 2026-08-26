@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT002B — multiple_mul_left</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT002B.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT002B&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT002A.html">← multiple_mul_right</a><a href="BT002C.html">multiple_trans →</a></nav>
+<p class="pa-tag">BT002B</p><h1>multiple_mul_left</h1>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
+<p>A left multiple of a multiple remains a multiple.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a n m. (exists q. n = a * q) -&gt; exists s. m * n = a * s</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>A left multiple of a multiple remains a multiple.</p><p>Direct prerequisites:
+mul_comm, multiple_mul_right.
+The authored body proceeds by equality transport (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0006.html"><code>BT0006</code> mul_comm</a> <a class="pa-theorem-ref" href="BT002A.html"><code>BT002A</code> multiple_mul_right</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0101.html"><code>BT0101</code> prime_contribution_selected_successor_divides</a> <a class="pa-theorem-ref" href="BT0102.html"><code>BT0102</code> prime_contribution_cofactor_prime_contradiction</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="d12c7fa3fee3a1c0"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="02b1891c179fe894"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="81133d7d54cb72b2"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> m</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="f0973e07116d6786"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> hn</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="suffices" data-line-id="9e1ee9774ab3f5d6"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">suffices</span> hswap : m * n = n * m</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="rewrite" data-line-id="f93d14aedbf2c201"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">rewrite</span> hswap</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="apply" data-line-id="15fe73a6686caa67"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT002A.html">multiple_mul_right</a></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="exact" data-line-id="3a377fc996057440"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">exact</span> hn</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="apply" data-line-id="09bae8434fb091f8"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0006.html">mul_comm</a></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>81</dd>
+<dt>Layer</dt><dd>4</dd><dt>Lines</dt><dd>9</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>d91b9eb2e5269ffcc8cd344f0c48e0da507153406cd991333ed0cc36327b9f40</code></dd>
+<dt>Script SHA-256</dt><dd><code>4b679bdeb0a9901628518c75ba34df5b0327e256371a0ea34c2c67693e7d2a83</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

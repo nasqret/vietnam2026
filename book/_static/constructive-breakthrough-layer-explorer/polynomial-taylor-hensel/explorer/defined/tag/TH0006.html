@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TH0006 — hensel_add_swap_nested — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="polynomial-taylor-hensel"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
+       <a href="../../tag/TH0006.html?v=75fa146ac19b">Exact original proof</a>
+       <a href="../graph.html?target=TH0006&amp;v=75fa146ac19b">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G095" href="../../../../grand-campaign/?view=goal&amp;focus=G095&amp;v=75fa146ac19b">G095 milestone</a></nav>
+  <p class="pd-tag">TH0006</p><h1>hensel_add_swap_nested</h1>
+  <p>Two adjacent natural summands can be swapped inside a right-associated finite sum.</p><p class="pd-status">Alpha v25 checked-use · first admitted v25 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+
+  <p class="pd-callout">G095 remains OPEN. The exact arbitrary-polynomial quadratic Taylor remainder, unique bounded modular correction and actual one-step Hensel divisibility lift are independently proved. Canonical unrestricted-input root representatives, uniqueness of lifted roots and the full prime-power lifting theorem are not proved.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ a. ∀ b. ∀ c. a + (b + c) = b + (a + c)</code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">add_assoc · checked external prerequisite</span><span class="pd-chip pd-external">add_comm · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall a b c. a + (b + c) = b + (a + c)</code></pre></details>
+  <section><h2>Complete unchanged native tactic proof</h2>
+    <p>All 11 lines are the exact independently kernel-checked original script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro a</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro b</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro c</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>trans (a + b) + c</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>symm</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>apply add_assoc</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>trans (b + a) + c</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>congr</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>apply add_comm</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>refl</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>apply add_assoc</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v25 checked use</dd><dt>First admission</dt><dd>Alpha v25</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>263 / 302</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 302 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>21 / 11</dd>
+      <dt>Statement SHA-256</dt><dd><code>3e4f0e2202c60e8ecc760a871829c50f8abcd7a571f593126d1137fd0424a0e7</code></dd>
+      <dt>Script SHA-256</dt><dd><code>caed952a86a51132139f8bc890c2ec20afc4d77ff4399b8e4751f89d3ef8119f</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a</code></dd>
+      <dt>Exact source module</dt><dd><code>peano-lab/py/peano_lab/library/polynomial_taylor_hensel_candidate.py</code></dd></dl>
+</aside></main></body>
+</html>

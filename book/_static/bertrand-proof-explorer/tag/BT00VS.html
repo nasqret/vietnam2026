@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT00VS — odd_positive_prefix_predecessor_bound</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT00VS.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT00VS&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT00VR.html">← double_half_predecessor_data</a><a href="BT00VT.html">central_binom_nonzero_strong_upper →</a></nav>
+<p class="pa-tag">BT00VS</p><h1>odd_positive_prefix_predecessor_bound</h1>
+<p class="pa-status-candidate">Alpha v25 checked-use theorem · independently kernel and Lean verified; not Stable</p>
+<p>The positive prefix half of an odd successor is smaller.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n k. S n = 2 * k + 1 -&gt; (exists h. k = S h) -&gt; (exists bcf_le_gap_boppb_result. bcf_le_gap_boppb_result + (S k) = n)</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>The positive prefix half of an odd successor is smaller.</p><p>Direct prerequisites:
+two_mul_eq_add_self, add_succ_left.
+The authored body proceeds by structural induction (1), case analysis (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT00QU.html"><code>BT00QU</code> two_mul_eq_add_self</a> <a class="pa-theorem-ref" href="BT0001.html"><code>BT0001</code> add_succ_left</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00VV.html"><code>BT00VV</code> primorial_le_four_pow_bounded</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="2e1336de31b77a78"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="induction" data-line-id="13e59b67e1eb37e6"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">induction</span> k</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="30b2b6f721b7a742"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> heq</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="9cf4c9e75bb9370b"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> hpositive</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="cases" data-line-id="45afd2d1fe1a0c70"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">cases</span> hpositive</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="exfalso" data-line-id="52a6e8b44f2f426e"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">exfalso</span></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="apply" data-line-id="023c02af082e8465"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA1</span></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="symm" data-line-id="2dd111a7d70596e4"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exact" data-line-id="ec2ff094c2e799c5"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exact</span> hpositive_witness</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="intro" data-line-id="1aff44021e23b13a"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">intro</span> heq</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="intro" data-line-id="aaa3fd4a22d19c17"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">intro</span> hpositive</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="exists" data-line-id="2c6b8aef1d83a09d"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">exists</span> k</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="apply" data-line-id="eb20657458efad00"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA2</span></code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="trans" data-line-id="ac3bccd9bd1c48b0"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">trans</span> 2 * S k + 1</code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="simp" data-line-id="03cf440692b46ae8"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">simp</span> [<a class="pa-theorem-ref" href="BT00QU.html">two_mul_eq_add_self</a>, <a class="pa-theorem-ref" href="BT0001.html">add_succ_left</a>]</code></li><li class="pa-proof-line" id="proof-line-0016" data-line="16" data-tactic="symm" data-line-id="9196dc8631337f0a"><a class="pa-line-number" href="#proof-line-0016">0016</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0017" data-line="17" data-tactic="exact" data-line-id="824267b6ffee422c"><a class="pa-line-number" href="#proof-line-0017">0017</a><code><span class="pa-tactic-ref">exact</span> heq</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>1113</dd>
+<dt>Layer</dt><dd>5</dd><dt>Lines</dt><dd>17</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>alpha_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>no</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>69</dd>
+<dt>Statement SHA-256</dt><dd><code>b320d11f3fc6d029e70028b73c5d47e842f91b10561dc24c21f49033a8bdee5f</code></dd>
+<dt>Script SHA-256</dt><dd><code>ca0e26ca0acf2196dac7070d987b804c8c89fb8574af4d7600ffb570ee245825</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_primorial_four_power_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_primorial_four_power_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>86c0bfa4e5840c35d0ea6a0bf443dedd159c298b21ee6345d1cdc0d5c6ede2f3</code></dd>
+</dl></aside></main></body></html>

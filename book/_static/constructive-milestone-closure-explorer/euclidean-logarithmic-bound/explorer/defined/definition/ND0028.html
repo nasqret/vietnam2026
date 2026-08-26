@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0028 — PowTwo(e,p) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="euclidean-logarithmic-bound"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
+       <a href="../graph.html?v=75fa146ac19b">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=PowTwo&amp;v=75fa146ac19b">Global definition: PowTwo</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G101" href="../../../../grand-campaign/?view=goal&amp;focus=G101&amp;v=75fa146ac19b">G101 milestone</a></nav>
+  <p class="pd-tag">ND0028</p><h1>PowTwo(e,p)</h1>
+  <p>The exact existing constructive exponentiation relation Pow(2,e,p).</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Hygienic expanded first-order definition</h2>
+    <pre><code>exists pa_b_bl_transport pa_c_bl_transport. ((forall pa_i_bl_transport_repeat. (exists pa_lt_bl_transport_repeat_bound. pa_lt_bl_transport_repeat_bound + S pa_i_bl_transport_repeat = e) -&gt; (((exists pa_h_bl_transport_repeat_decoded. pa_h_bl_transport_repeat_decoded + S (2) = S ((S (pa_i_bl_transport_repeat)) * pa_c_bl_transport)) /\ exists pa_q_bl_transport_repeat_decoded. pa_b_bl_transport = pa_q_bl_transport_repeat_decoded * S ((S (pa_i_bl_transport_repeat)) * pa_c_bl_transport) + (2)))) /\ (exists pa_u_bl_transport_product pa_v_bl_transport_product. ((((exists pa_h_bl_transport_product_start. pa_h_bl_transport_product_start + S (1) = S ((S (0)) * pa_v_bl_transport_product)) /\ exists pa_q_bl_transport_product_start. pa_u_bl_transport_product = pa_q_bl_transport_product_start * S ((S (0)) * pa_v_bl_transport_product) + (1))) /\ ((((exists pa_h_bl_transport_product_terminal. pa_h_bl_transport_product_terminal + S (p) = S ((S (e)) * pa_v_bl_transport_product)) /\ exists pa_q_bl_transport_product_terminal. pa_u_bl_transport_product = pa_q_bl_transport_product_terminal * S ((S (e)) * pa_v_bl_transport_product) + (p))) /\ forall pa_i_bl_transport_product. (exists pa_lt_bl_transport_product_bound. pa_lt_bl_transport_product_bound + S pa_i_bl_transport_product = e) -&gt; exists pa_p_bl_transport_product pa_r_bl_transport_product pa_s_bl_transport_product. ((((exists pa_h_bl_transport_product_factor. pa_h_bl_transport_product_factor + S (pa_p_bl_transport_product) = S ((S (pa_i_bl_transport_product)) * pa_c_bl_transport)) /\ exists pa_q_bl_transport_product_factor. pa_b_bl_transport = pa_q_bl_transport_product_factor * S ((S (pa_i_bl_transport_product)) * pa_c_bl_transport) + (pa_p_bl_transport_product))) /\ ((((exists pa_h_bl_transport_product_partial. pa_h_bl_transport_product_partial + S (pa_r_bl_transport_product) = S ((S (pa_i_bl_transport_product)) * pa_v_bl_transport_product)) /\ exists pa_q_bl_transport_product_partial. pa_u_bl_transport_product = pa_q_bl_transport_product_partial * S ((S (pa_i_bl_transport_product)) * pa_v_bl_transport_product) + (pa_r_bl_transport_product))) /\ ((((exists pa_h_bl_transport_product_successor. pa_h_bl_transport_product_successor + S (pa_s_bl_transport_product) = S ((S (S pa_i_bl_transport_product)) * pa_v_bl_transport_product)) /\ exists pa_q_bl_transport_product_successor. pa_u_bl_transport_product = pa_q_bl_transport_product_successor * S ((S (S pa_i_bl_transport_product)) * pa_v_bl_transport_product) + (pa_s_bl_transport_product))) /\ pa_s_bl_transport_product = pa_r_bl_transport_product * pa_p_bl_transport_product)))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0020.html?v=75fa146ac19b">Pow(a,e,z)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0030.html?v=75fa146ac19b">BitLen(n,ell)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/EL000A.html?v=75fa146ac19b">EL000A · euclidean_log_zero_below_power</a><a class="pd-chip" href="../tag/EL000B.html?v=75fa146ac19b">EL000B · euclidean_log_power_zero_divisor</a><a class="pd-chip" href="../tag/EL000C.html?v=75fa146ac19b">EL000C · euclidean_log_trace_below_power</a><a class="pd-chip" href="../tag/EL000D.html?v=75fa146ac19b">EL000D · euclidean_log_binary_length_upper_power</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>2</dd>
+  <dt>Topological notation layer</dt><dd>3</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0028.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>25c621e42d9363777853c7779bf06948571e8c1f072a8b6743d03fe6adb43033</code></dd>
+</dl></aside></main></body>
+</html>

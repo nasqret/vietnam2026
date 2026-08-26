@@ -1,0 +1,1113 @@
+# RFC HA-K3-SIGNED-1: canonical signed naturals by parity interleaving
+
+**Status:** representation frozen; decoder, code-extensionality,
+balance-normalization, negation, addition, multiplication, natural-scale, and
+Bezout-bridge candidate tranches are closed but not publicly admitted
+**Scope:** HA3 signed coefficients and the signed-integer component of K3  
+**Object language:** first-order HA over \(\{0,S,+,\times,=\}\)  
+**Controlling documents:**
+[`ha-number-theory-formalization-campaign-blueprint.md`](ha-number-theory-formalization-campaign-blueprint.md)
+and
+[`ha-definition-representation-freeze-v1.md`](ha-definition-representation-freeze-v1.md)
+
+This RFC selects a natural-number representation for signed integers and
+freezes its intended base-language relations. It does not itself register a
+parser definition, introduce a kernel symbol, provide a certificate, or admit
+a theorem. Current implementation and evidence status is recorded in
+`ha-number-theory-campaign.json`; the RFC identifiers and theorem names below
+remain the normative design obligations. Source inventory anchors must still
+pass the campaign's dependency and replay audits before use.
+
+The words **must**, **must not**, **should**, and **may** are normative within
+this RFC.
+
+## 1. Decision
+
+Use a **parity-interleaved code with normalized sign-magnitude semantics**:
+
+\[
+\begin{array}{c|ccccc}
+\text{integer} & 0 & -1 & +1 & -2 & +2 \\
+\hline
+\text{code}    & 0 &  1 &  2 &  3 &  4
+\end{array}
+\]
+
+More generally,
+
+\[
+\operatorname{enc}(p)=2p\quad(p\in\mathbb N),\qquad
+\operatorname{enc}(-(k+1))=2k+1.
+\]
+
+Thus even codes are nonnegative and odd codes are strictly negative. The
+semantic decoder returns a pair \((p,n)\) denoting \(p-n\), constrained so
+that at least one component is zero. The negative branch returns a successor
+magnitude, so negative zero has no representation.
+
+This is the selected representation, not merely a provisional tie-break. It
+is justified by four properties specific to the current campaign:
+
+1. every natural is a valid code, so validity is not a partial side
+   condition carried through later theorems;
+2. zero has exactly one code and negative zero cannot be constructed;
+3. decoding uses constructive parity decomposition and elementary
+   cancellation only;
+4. the code does not depend on the still-unfrozen pair/list representation,
+   division, CRT, `BetaAt`, or `Product`.
+
+The choice is therefore storage by parity and semantics by normalized
+sign-magnitude. It satisfies the campaign's sign-magnitude requirement
+without placing a pair container inside every signed value.
+
+## 2. Alternatives considered
+
+### 2.1 Pair-coded sign-magnitude
+
+A conventional alternative stores a pair \((s,m)\), where \(s\in\{0,1\}\),
+and imposes
+
+\[
+s=1\Longrightarrow m>0.
+\]
+
+One sign denotes \(+m\), the other denotes \(-m\), and the displayed
+constraint removes negative zero.
+
+This representation is mathematically sound and visually direct. It was not
+selected for the first signed layer because:
+
+- it cannot be frozen as a natural code until the independent K3 pair codec
+  and its projection theorems are frozen;
+- most naturals are invalid unless the pair codec, sign-bit restriction, and
+  zero convention are all carried as premises;
+- signed equality inherits pair validity and projection dependencies; and
+- HA3 needs signed Bezout coefficients before K3 lists and finite maps are
+  otherwise needed.
+
+Pair-coded sign-magnitude remains a possible interoperability format after
+the pair layer closes. Any conversion theorem must show literal agreement
+with the parity code's decoded value; it must not create a second canonical
+equality for signed integers.
+
+### 2.2 Parity/interleaving
+
+Parity interleaving stores the sign in the low-order parity class and the
+magnitude in the half. It has no invalid codes. Its cost is that encoded
+addition and multiplication are graph relations rather than the ambient
+natural `+` and `*`, and numeric order on codes is unrelated to signed order.
+
+Those costs are acceptable. The campaign already requires conservative
+operation graphs, and no theorem may silently use natural order on signed
+codes. In return, signed coding can be developed directly from K0--K2.
+
+### 2.3 Unnormalized pairs of naturals
+
+The existing balanced convention treats \((p,n)\) as \(p-n\). It is an
+excellent proof interface but not a canonical data representation: for every
+\(t\), \((p+t,n+t)\) denotes the same integer. It remains the bridge format
+for existing Bezout witnesses, not the identity of a signed object.
+
+## 3. Normative boundary conventions
+
+- The carrier of signed codes is all of \(\mathbb N\).
+- Code `0` is signed zero.
+- Code `1` is negative one; code `2` is positive one.
+- `2 * p` decodes to \((p,0)\).
+- `2 * k + 1` decodes to \((0,S(k))\).
+- There is no constructor for a negative magnitude of zero.
+- Equality of represented signed integers is literal equality of their
+  natural codes. No quotient equality and no separate `SignedEq` predicate
+  are introduced.
+- Natural coercion is the graph equation `code = 2 * n`.
+- Natural order on codes has no signed mathematical meaning.
+- Signed operations are relations until totality and functionality have
+  object-level HA certificates. A host function may be an oracle or
+  elaborator convenience, never the trusted meaning of an operation.
+- All formulas must expand before reaching the unchanged kernel.
+
+The first five decoder values are fixed regression fixtures:
+
+| Code | Positive part | Negative part | Meaning |
+|---:|---:|---:|---:|
+| 0 | 0 | 0 | 0 |
+| 1 | 0 | 1 | -1 |
+| 2 | 1 | 0 | +1 |
+| 3 | 0 | 2 | -2 |
+| 4 | 2 | 0 | +2 |
+
+## 4. Exact base-language definitions
+
+The names in this section are design labels for prospective hygienic surface
+macros. The text in each `text` block is the normative template. It contains
+only the existing term and formula grammar; nested defined-predicate calls
+are intentionally absent. Parenthesization is normative because the current
+parser associates repeated conjunctions to the left unless told otherwise.
+
+Numerals remain parser notation and elaborate to successors of zero. In
+particular, `1` is `S 0` and `2` is `S (S 0)`.
+
+### 4.1 `SignedDecode(code,pos,neg)`
+
+Stable RFC identifier: `HA-K3-SIGNED-D01`.
+
+```text
+(code = 2 * pos /\ neg = 0) \/ exists half. ((code = 2 * half + 1 /\ pos = 0) /\ neg = S half)
+```
+
+This is the only primitive semantic decoder. It means that `code` denotes
+the formal difference `pos-neg`, with normalized parts.
+
+### 4.2 `SignedValid(code)`
+
+Stable RFC identifier: `HA-K3-SIGNED-D02`.
+
+```text
+exists pos neg. ((code = 2 * pos /\ neg = 0) \/ exists half. ((code = 2 * half + 1 /\ pos = 0) /\ neg = S half))
+```
+
+This relation is retained for uniform K3 APIs even though its intended
+totality theorem says every natural satisfies it.
+
+### 4.3 `SignedBalance(code,left,right)`
+
+Stable RFC identifier: `HA-K3-SIGNED-D03`.
+
+```text
+exists pos neg. (((code = 2 * pos /\ neg = 0) \/ exists half. ((code = 2 * half + 1 /\ pos = 0) /\ neg = S half)) /\ left + neg = right + pos)
+```
+
+`SignedBalance(code,left,right)` says that the canonical code represents the
+possibly unnormalized formal difference `left-right`. It is the normalization
+boundary between four-natural balanced arithmetic and canonical signed data.
+
+### 4.4 `SignedNegate(input,output)`
+
+Stable RFC identifier: `HA-K3-SIGNED-D04`.
+
+```text
+exists pos neg. (((input = 2 * pos /\ neg = 0) \/ exists input_half. ((input = 2 * input_half + 1 /\ pos = 0) /\ neg = S input_half)) /\ ((output = 2 * neg /\ pos = 0) \/ exists output_half. ((output = 2 * output_half + 1 /\ neg = 0) /\ pos = S output_half)))
+```
+
+The output decoder swaps the normalized positive and negative parts. This
+also fixes `SignedNegate(0,0)`.
+
+### 4.5 `SignedAdd(left,right,output)`
+
+Stable RFC identifier: `HA-K3-SIGNED-D05`.
+
+```text
+exists lp ln rp rn op on. (((left = 2 * lp /\ ln = 0) \/ exists left_half. ((left = 2 * left_half + 1 /\ lp = 0) /\ ln = S left_half)) /\ (((right = 2 * rp /\ rn = 0) \/ exists right_half. ((right = 2 * right_half + 1 /\ rp = 0) /\ rn = S right_half)) /\ (((output = 2 * op /\ on = 0) \/ exists output_half. ((output = 2 * output_half + 1 /\ op = 0) /\ on = S output_half)) /\ (lp + rp) + on = (ln + rn) + op)))
+```
+
+The final equation is the subtraction-free expansion of
+
+\[
+(l_p-l_n)+(r_p-r_n)=o_p-o_n.
+\]
+
+### 4.6 `SignedMul(left,right,output)`
+
+Stable RFC identifier: `HA-K3-SIGNED-D06`.
+
+```text
+exists lp ln rp rn op on. (((left = 2 * lp /\ ln = 0) \/ exists left_half. ((left = 2 * left_half + 1 /\ lp = 0) /\ ln = S left_half)) /\ (((right = 2 * rp /\ rn = 0) \/ exists right_half. ((right = 2 * right_half + 1 /\ rp = 0) /\ rn = S right_half)) /\ (((output = 2 * op /\ on = 0) \/ exists output_half. ((output = 2 * output_half + 1 /\ op = 0) /\ on = S output_half)) /\ (lp * rp + ln * rn) + on = (lp * rn + ln * rp) + op)))
+```
+
+The positive product contribution is `lp*rp + ln*rn`; the negative
+contribution is `lp*rn + ln*rp`.
+
+### 4.7 `SignedNatScale(scale,input,output)`
+
+Stable RFC identifier: `HA-K3-SIGNED-D07`.
+
+```text
+exists ip inn op on. (((input = 2 * ip /\ inn = 0) \/ exists input_half. ((input = 2 * input_half + 1 /\ ip = 0) /\ inn = S input_half)) /\ (((output = 2 * op /\ on = 0) \/ exists output_half. ((output = 2 * output_half + 1 /\ op = 0) /\ on = S output_half)) /\ scale * ip + on = scale * inn + op))
+```
+
+This direct graph is the preferred interface for multiplying a signed
+coefficient by a natural. It avoids coercing the natural to a signed code in
+the common Bezout path.
+
+### 4.8 `SignedBezout(result,a,b,x,y)`
+
+Stable RFC identifier: `HA-K3-SIGNED-D08`.
+
+```text
+exists xp xn yp yn. (((x = 2 * xp /\ xn = 0) \/ exists x_half. ((x = 2 * x_half + 1 /\ xp = 0) /\ xn = S x_half)) /\ (((y = 2 * yp /\ yn = 0) \/ exists y_half. ((y = 2 * y_half + 1 /\ yp = 0) /\ yn = S y_half)) /\ a * xp + b * yp = result + (a * xn + b * yn)))
+```
+
+This relation means \(aX+bY=\mathit{result}\), where `x` and `y` are the
+canonical codes of \(X\) and \(Y\). The coefficients satisfying a Bezout
+identity are generally not unique. Therefore `SignedBezout` has no
+functionality obligation in `(x,y)`. Canonical representation of each
+coefficient must not be confused with canonical selection of a coefficient
+pair.
+
+### 4.9 Template identity receipts
+
+Each digest is SHA-256 of the UTF-8 bytes between the corresponding
+`text` fences, excluding the fence-newline on either side.
+
+| RFC identifier | SHA-256 |
+|---|---|
+| `HA-K3-SIGNED-D01` | `06d5b4bd0034d03439b5976b70074a836ca1598b4c32794d50f1f95691ed7922` |
+| `HA-K3-SIGNED-D02` | `19c754659652d9158c1ac26e86cabc3ddeab385412d4e485861ffffdc9de977a` |
+| `HA-K3-SIGNED-D03` | `8cf2a9b1678dfe5b774a01adf746df046b2056e1ae620c8b0de89c741b7e4997` |
+| `HA-K3-SIGNED-D04` | `67086486e367deed66d5dc66e2f7de5ec7aa280c542086aefd4be8e2330f1f11` |
+| `HA-K3-SIGNED-D05` | `29eaf592586c3bc9ec951b09b17d08c184284950f1997a3c109a048a8e610629` |
+| `HA-K3-SIGNED-D06` | `9b5a4a168cea119713e6892e590344fffd91c3abea6d349255edee0dcbe1af27` |
+| `HA-K3-SIGNED-D07` | `ea3c130a4f8fe5f1a9d18cdbfbc5017175801db23d2e8ac66e6429fdfa1dfa6a` |
+| `HA-K3-SIGNED-D08` | `385bb4059c37669d69b2b069e59fb8ff32d6b48f097df79673cc193359ccfb78` |
+
+These are representation receipts only. They are not formula theorem hashes
+or certificate hashes.
+
+## 5. Definitions deliberately deferred
+
+The first freeze does not introduce signed order, subtraction, absolute
+value, division, quotient, remainder, powers, or a general signed polynomial
+evaluator. They can be added after the core ring graph is accepted.
+
+In particular:
+
+- subtraction should be derived from `SignedNegate` and `SignedAdd`;
+- absolute value should expose a natural output graph from `SignedDecode`;
+- signed order should be defined by a subtraction-free cross-sum comparison,
+  then related to code constructors;
+- lists of signed integers should store the natural code chosen here; signed
+  coding must not depend on the list codec in return.
+
+No operation may be defined by natural arithmetic directly on the codes. For
+example, natural addition of codes does not implement signed addition.
+
+## 6. Required theorem ladder
+
+The following is the normative dependency order. None of these rows is a
+proof-status assertion.
+
+```text
+K0/K1 equality, addition, multiplication, order, induction
+  |
+  +--> parity_cases
+  +--> K1-only even/odd separation
+  +--> doubling and successor cancellation
+  |
+  v
+SignedDecode constructors, totality, functionality, normality
+  |
+  +--> SignedBalance totality and unique code
+  |       |
+  |       +--> SignedAdd totality/functionality
+  |       +--> SignedMul totality/functionality
+  |       +--> SignedNatScale totality/functionality
+  |
+  +--> SignedNegate totality/functionality
+  |
+  v
+balanced-pair normalization
+  |
+  v
+BalancedBezout <--> existence of SignedBezout codes
+  |
+  v
+relational gcd + signed coefficient packaging
+```
+
+### 6.1 Pre-decoder arithmetic dependencies
+
+The intended source inventory anchors are `parity_cases`,
+`odd_half_unique`,
+`mul_left_cancel_nonzero`, `add_left_cancel`, `add_right_cancel`,
+`succ_injective`, `lt_trichotomy`, `eq_decidable`, and the ordinary additive
+and multiplicative algebra API.
+
+The current source implementation of `even_odd_exclusive_pointwise` names
+`division_remainder_unique` as a dependency. That route is forbidden here:
+K3 depends on K0--K2, while division belongs to K4. Before the decoder can be
+accepted, the campaign must supply and audit a K1-only separation lemma of
+the shape
+
+```text
+forall n even_half odd_half. n = 2 * even_half -> n = 2 * odd_half + 1 -> false
+```
+
+using induction/order/cancellation but not division. The dependency audit
+must be transitive. Renaming the existing theorem or hiding the K4 edge
+behind a cut would not satisfy this requirement.
+
+The other small prerequisite wrapper is:
+
+```text
+even_half_unique:
+forall n a b. n = 2 * a -> n = 2 * b -> a = b
+```
+
+It should depend only on nonzero multiplication cancellation and the numeral
+fact `~(2 = 0)`.
+
+### 6.2 Decoder obligations
+
+The minimum decoder API is:
+
+1. `signed_decode_nonnegative_constructor`:
+   `forall p. SignedDecode(2*p,p,0)`;
+2. `signed_decode_negative_constructor`:
+   `forall k. SignedDecode(2*k+1,0,S k)`;
+3. `signed_decode_total`:
+   `forall code. exists pos neg. SignedDecode(code,pos,neg)`;
+4. `signed_decode_functional`: two decodings of one code have equal positive
+   and negative parts;
+5. `signed_decode_normal`: decoding implies `pos = 0 \/ neg = 0`;
+6. `signed_decode_zero_iff`: decoding to `(0,0)` is equivalent to `code = 0`;
+7. `signed_valid_all`: `forall code. SignedValid(code)`;
+8. `signed_code_eq_iff_balance`: for decoded `x` and `y`, literal code
+   equality is equivalent to `xp + yn = xn + yp`;
+9. `signed_eq_decidable`: literal equality of signed codes is decidable.
+
+The biconditionals above must be stored as a conjunction of the two
+intuitionistically valid implications; the base grammar has no primitive
+`iff`.
+
+### 6.3 Balanced-pair normalization obligations
+
+The central constructor theorem is:
+
+```text
+signed_balance_total:
+forall left right. exists code. SignedBalance(code,left,right)
+```
+
+Its intended constructive split is the three-way natural comparison of
+`left` and `right`:
+
+- equality produces code `0`;
+- `left < right` supplies `right = left + S gap` and produces code
+  `2*gap+1`;
+- `right < left` supplies `left = right + S gap` and produces code
+  `2*S(gap)`.
+
+Required companion theorems are:
+
+- `signed_balance_functional`: the code for a fixed balanced pair is unique;
+- `signed_decode_to_balance`: a decoder witness gives the corresponding
+  balanced witness;
+- `signed_balance_extensional`: cross-sum-equivalent balanced pairs produce
+  the same code;
+- `signed_balance_zero_iff`: the balanced code is zero exactly when
+  `left = right`.
+
+No least-witness principle or unbounded excluded-middle principle is part of
+this route. The source entry named `lt_trichotomy` is the intended comparison
+anchor and must pass the same replay and transitive-dependency audit as every
+other imported theorem.
+
+#### 6.3.1 Closed candidate checkpoint
+
+The representation-level normalization obligations are now implemented as
+closed, nonpublic candidates. In dependency order they are:
+
+```text
+signed_balance_total
+signed_decode_to_balance
+signed_balance_equations_cross_sum
+signed_balance_extensional
+signed_balance_functional
+signed_balance_zero_iff
+```
+
+The separate decoded-code bridge closes in both directions and is packaged as
+`signed_code_eq_iff_balance`. Thus literal equality of two decoded canonical
+codes is now connected constructively to the subtraction-free cross sum
+
+```text
+xp + yn = xn + yp.
+```
+
+All nine new certificates check from the empty context, contain no `DNE`, and
+their transitive dependency closures contain no division, remainder, CRT, or
+beta-coded theorem. They remain outside the public registry. The next
+topological obligation is `SignedNegate`, not addition or multiplication.
+
+### 6.4 Arithmetic graph obligations
+
+Each of `SignedNegate`, `SignedAdd`, `SignedMul`, and `SignedNatScale` must
+receive:
+
+- an object-level totality theorem;
+- an object-level output-functionality theorem;
+- a decoder/specification theorem in both directions;
+- constructor boundary tests for zero, positive one, and negative one; and
+- a transitive dependency receipt showing only K0--K2 and earlier signed
+  rows.
+
+The first arithmetic acceptance gate additionally requires:
+
+- negation fixes zero and is involutive;
+- addition has zero as identity, is commutative and associative, and adding
+  a value to its negation yields zero;
+- multiplication has zero and one laws, is commutative and associative, and
+  distributes over addition;
+- natural scaling by zero and one has the expected results and composes with
+  natural multiplication;
+- literal output equality, not a newly postulated equivalence relation, is
+  used in every law.
+
+These laws may be proved through decoded balanced equations. They must not be
+implemented as trusted arithmetic on host integers.
+
+#### 6.4.1 Closed negation checkpoint
+
+The first arithmetic graph is now closed at candidate status. Its eight rows
+are, in dependency order:
+
+```text
+signed_decode_swap_exists
+signed_negate_of_swapped_decode
+signed_negate_to_swapped_decode
+signed_negate_total
+signed_negate_functional
+signed_negate_zero
+signed_negate_symmetric
+signed_negate_involutive
+```
+
+The proof follows D04 literally: decode the input pair and decode the output
+with its two parts swapped. It does not use host subtraction or depend on
+`SignedBalance`. The largest certificate is the involution theorem at 1,199
+structural nodes and depth 35. All eight certificates close from the empty
+context without `DNE`, division, remainder, CRT, or beta-coded dependencies,
+and remain outside the public registry. `SignedAdd` is the next arithmetic
+graph obligation.
+
+#### 6.4.2 Closed addition-core checkpoint
+
+The exact D05 graph now has a five-row closed candidate core, in dependency
+order:
+
+```text
+signed_add_of_decoded_equation
+signed_add_to_decoded_equation
+signed_add_decoded_iff_equation
+signed_add_total
+signed_add_functional
+```
+
+The introduction row packages three decoder witnesses and the contribution
+equation
+
+```text
+(lp + rp) + on = (ln + rn) + op.
+```
+
+The elimination row uses decoder functionality to recover that same equation
+from any D05 witness. Totality decodes both inputs, normalizes their positive
+and negative contribution sums with `SignedBalance`, and packages the
+normalized output. Functionality transports two output witnesses to a common
+balanced pair and applies `signed_balance_functional`.
+
+The five empty-context certificates have respectively 26, 823, 956, 411, and
+1,754 structural nodes, with depths 23, 35, 39, 27, and 38. Their exact
+certificate hashes and statements are pinned in the campaign manifest and
+focused test. The 31-theorem signed-stack digest is
+`11f41d395be9597892e2d5577ff80b54d04a61a57c81e50d02bc335c7e6012da`.
+The transitive closure contains no `DNE`, division, remainder, CRT, or
+beta-coded theorem and does not use `SignedNegate`.
+
+This closes only the total functional graph and its decoded specification.
+The zero identities, commutativity, associativity, and inverse law remain
+separate proof obligations. No algebraic law and no public admission is
+claimed by this checkpoint.
+
+#### 6.4.3 Closed elementary addition laws
+
+The next five closed candidates establish the inexpensive graph laws:
+
+```text
+signed_add_commutative
+signed_add_zero_left
+signed_add_zero_right
+signed_add_negate_right_zero
+signed_add_negate_left_zero
+```
+
+Commutativity swaps the two decoder pairs and commutes the positive and
+negative contribution sums. Left zero decodes the input once, reuses that
+decoder for the output, and supplies the explicit canonical zero decoder;
+right zero follows by graph commutativity. The inverse laws destruct the D04
+negation graph, whose output decoder swaps the source parts, and construct the
+D05 zero-output graph. Neither inverse proof uses host subtraction.
+
+The five certificates contain respectively 139, 266, 427, 145, and 299
+structural nodes, at depths 38, 25, 40, 24, and 40. Two cold replays agree on
+the complete 36-theorem signed-stack digest
+`a5fdad35078f386ccb42fd6e17f942f83f504aaaf748c40259b68a2798ab28c7`.
+Their exact transitive dependency union consists only of `add_comm`,
+`add_succ_left`, `zero_add`, `parity_cases`, decoder totality, the D05
+introduction theorem, and earlier laws in this five-row tranche. It reaches no
+division, remainder, CRT, beta, classical, or DNE theorem.
+
+The private literal-zero expanders used by these statements are regression
+checked for alpha-identity with D05 instantiated at the corresponding zero
+slot; they add no surface or kernel primitive. Associativity is still open and
+will use a separately reviewed cross-sum composition helper. Therefore the
+full addition-law acceptance gate remains open, and all 36 signed results
+remain nonpublic.
+
+#### 6.4.4 Closed associativity checkpoint
+
+Associativity closes through three separately reusable candidates:
+
+```text
+add_cross_sum_chain
+signed_add_equations_associate
+signed_add_associative
+```
+
+The first is a general subtraction-free cancellation principle:
+
+```text
+a + x = b + y -> y + c = x + d -> a + c = b + d.
+```
+
+The second composes the three D05 contribution equations for `a+b`,
+`(a+b)+c`, and `b+c`. It uses a proved four-summand shuffle and the cross-sum
+chain twice to derive the equation for `a+(b+c)`. The graph theorem then uses
+the D05 elimination bridge to align decoder witnesses, applies the equation
+associator, and reconstructs the target graph through the D05 introduction
+bridge.
+
+Their empty-context certificates contain respectively 315, 703, and 1,695
+structural nodes at depths 29, 35, and 47, with 7, 13, and 30 Cuts. The full
+39-theorem signed-stack digest is
+`39ac0f7083ed54d2762289c7417b57a21c6dc97971b57efe2649ecb1cb7ec895`.
+The focused oracle exhausts the generic helper over `4^6` natural tuples, the
+equation associator over `3^12` tuples, and signed graph associativity over all
+`17^3` bounded code triples.
+
+Independent replay confirms the exact D05 witness map and a transitive closure
+with no division, remainder, CRT, beta, classical, or DNE dependency. Thus the
+RFC's totality, functionality, zero, commutativity, inverse, and associativity
+requirements for `SignedAdd` are now closed at candidate status. Nothing in
+this section grants public admission. `SignedMul` is the next signed-operation
+graph.
+
+#### 6.4.5 Closed multiplication-core checkpoint
+
+The exact D06 graph now has the same five-row candidate interface as D05:
+
+```text
+signed_mul_of_decoded_equation
+signed_mul_to_decoded_equation
+signed_mul_decoded_iff_equation
+signed_mul_total
+signed_mul_functional
+```
+
+The decoded product equation is
+
+```text
+(lp * rp + ln * rn) + on = (lp * rn + ln * rp) + op.
+```
+
+Introduction packages the three decoders and this equation. Elimination uses
+decoder functionality; each input component is rewritten twice because it
+occurs in two monomials. Totality normalizes the positive and negative product
+contributions with `signed_balance_total`, and functionality reduces two
+outputs to a common `SignedBalance` problem. No multiplication algebra law is
+needed for these five graph results.
+
+The empty-context certificates contain respectively 26, 877, 1,010, 411, and
+1,808 structural nodes at depths 23, 39, 41, 27, and 40. Two cold replays agree
+on the complete 44-theorem signed-stack digest
+`2230cd2b67196ccec58ab5259052b08f9ef3f43275ef0b717fc35cf581cd0f6c`.
+The bounded oracle checks the unique canonical output for all `17 * 17` input
+pairs and distinguishes signed multiplication from raw multiplication of the
+parity codes.
+
+All five results remain nonpublic. At this core checkpoint, the D06 zero, one,
+commutative, associative, and distributive laws were separate gates; Sections
+6.4.6 and 6.4.7 close them at candidate status. Section 6.4.8 closes D07
+natural scaling; Section 6.5 closes the D08 signed-Bezout bridge at candidate
+status.
+
+#### 6.4.6 Closed elementary multiplication laws
+
+The next five candidates close the inexpensive D06 graph laws:
+
+```text
+signed_mul_commutative
+signed_mul_zero_left
+signed_mul_zero_right
+signed_mul_one_left
+signed_mul_one_right
+```
+
+The identity code in the last two statements is `2`, because D01 decodes
+`2` as the pair `(1,0)`. Code `1` decodes as `(0,1)` and therefore represents
+negative one. The exact graph statements are `SignedMul(0,a,0)`,
+`SignedMul(a,0,0)`, `SignedMul(2,a,a)`, and `SignedMul(a,2,a)`.
+
+Commutativity swaps the two decoder pairs, commutes the four products, and
+uses one additive commutation for the two negative cross terms. Left zero and
+left one decode the arbitrary input once, supply reviewed literal decoders
+for codes `0` and `2`, and invoke the D06 introduction bridge. The right laws
+then follow graphwise from their left counterparts and commutativity. The
+private literal expanders are alpha-checked against D06 instantiated at the
+corresponding slots; they add no parser or kernel primitive.
+
+The five empty-context certificates contain respectively 376, 209, 607, 347,
+and 745 structural nodes at depths 41, 25, 43, 25, and 43, with 8, 4, 14, 10,
+and 18 Cuts. Two cold replays agree on the complete 49-theorem signed-stack
+digest
+`be074dfe1b79e3f27b2d48851c64f58360ee86fc3776ae681c451d38f67d25b2`.
+
+The bounded oracle checks commutativity, both zero laws, and both unit laws on
+all pairs of the first 33 parity-interleaved codes. Mutation tests explicitly
+distinguish raw natural code multiplication from signed multiplication:
+natural `1 * 1 = 1`, while the signed product of code `1` with itself has code
+`2`. The exact transitive closure uses no division, remainder, CRT, beta,
+classical theorem, DNE, or SignedAdd law. All five results remain nonpublic;
+the next checkpoint closes D06 associativity and distributivity.
+
+#### 6.4.7 Closed multiplication associativity and distributivity
+
+The remaining D06 algebra closes in two isolated, linked tranches. The
+four-row
+[`ha_signed_mul_associative_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_mul_associative_candidate.py)
+contains:
+
+```text
+signed_pair_mul_cross_transport
+signed_pair_mul_components_associate
+signed_mul_equations_associate
+signed_mul_associative
+```
+
+The first helper transports a subtraction-free equality of decoded signed
+pairs through multiplication on either side. The second proves both raw
+positive/negative component identities required to reassociate a product.
+The decoded-equation row composes those facts with `add_cross_sum_chain`, and
+the graph theorem aligns decoder witnesses through the D06 elimination and
+introduction bridges. Its exact graph orientation is
+
+```text
+SignedMul(a,b,ab) -> SignedMul(ab,c,abc) ->
+SignedMul(b,c,bc) -> SignedMul(a,bc,abc).
+```
+
+The seven-row
+[`ha_signed_mul_distributive_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_mul_distributive_candidate.py)
+contains:
+
+```text
+add_shuffle_middle
+add_cross_sum_pairwise
+signed_mul_distributive_component
+add_balance_outputs_compose
+signed_mul_left_cross_sum_distributes
+signed_mul_left_distributive
+signed_mul_right_distributive
+```
+
+This ladder first shuffles and composes balanced natural sums, distributes
+one raw positive/negative product component, reuses the associativity
+tranche's two-sided pair-multiplication transport, and then transports the
+decoded equations through the exact D05 and D06 graphs. The endpoint
+orientations are
+
+```text
+SignedAdd(b,c,bc) -> SignedMul(a,b,ab) -> SignedMul(a,c,ac) ->
+SignedMul(a,bc,out) -> SignedAdd(ab,ac,out)
+
+SignedAdd(b,c,bc) -> SignedMul(b,a,ba) -> SignedMul(c,a,ca) ->
+SignedMul(bc,a,out) -> SignedAdd(ba,ca,out).
+```
+
+The right law is obtained by three checked applications of graph
+commutativity followed by the left law; it does not duplicate the decoded
+calculation. The focused
+[`associativity audit`](../../peano-lab/py/tests/test_ha_signed_mul_associative_candidate.py)
+and
+[`distributivity audit`](../../peano-lab/py/tests/test_ha_signed_mul_distributive_candidate.py)
+pin every statement, dependency, dependency-curried body, false mutation,
+empty-context closure, and bounded semantic oracle. The closed associativity
+endpoint has 3,196 structural nodes at depth 47 and 47 Cuts. The left and
+right distributivity endpoints have respectively 3,297 nodes at depth 58
+with 49 Cuts and 3,717 nodes at depth 60 with 53 Cuts.
+
+Two cold closures agree on the complete 60-theorem signed-stack digest
+`7befb7ae830b866a606e47f674730959e76599ded863aadd9868b850bcb190cd`.
+The 11 rows in this checkpoint raise the campaign to 60 signed candidates,
+63 total candidates, and 72 theorem receipts. Their dependency closures are
+intuitionistic and reach no division, remainder, CRT, beta, classical, or DNE
+theorem. Thus the complete D06 elementary signed algebra is closed at
+candidate status. The public registry remains 393 entries, the definition
+freeze remains 45 API rows over 44 distinct public theorems, and the catalog
+remains 394 entries; no theorem in this checkpoint is admitted. The next
+section closes D07 natural scaling.
+
+#### 6.4.8 Closed natural-scale graph and laws
+
+The exact D07 graph has a five-row closed candidate core, in dependency
+order, in
+[`ha_signed_nat_scale_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_nat_scale_candidate.py):
+
+```text
+signed_nat_scale_of_decoded_equation
+signed_nat_scale_to_decoded_equation
+signed_nat_scale_decoded_iff_equation
+signed_nat_scale_total
+signed_nat_scale_functional
+```
+
+For fixed decoders
+
+```text
+SignedDecode(input,ip,inn)
+SignedDecode(output,op,on),
+```
+
+the introduction and elimination rows identify the D07 graph exactly with
+
+```text
+scale * ip + on = scale * inn + op.
+```
+
+The iff row packages those directions. Totality decodes the input, normalizes
+the pair `(scale*ip,scale*inn)` with `SignedBalance`, and returns its canonical
+code. Functionality reduces two output graphs to that same balanced pair and
+uses literal-code functionality; it introduces no separate signed equality.
+The exact empty-context receipts are:
+
+| Candidate | Nodes | Depth | Cuts | Certificate SHA-256 |
+|---|---:|---:|---:|---|
+| `signed_nat_scale_of_decoded_equation` | 19 | 17 | 0 | `348988d2b7802c5c319975a537c568f51b55b894890638b1465bc7c8617eb918` |
+| `signed_nat_scale_to_decoded_equation` | 785 | 28 | 14 | `66ef87988a3703a713a4ce0a16e235228df640be182c22d51d01f082ca5df1bd` |
+| `signed_nat_scale_decoded_iff_equation` | 888 | 31 | 16 | `1b96a56388461895781783b29c091b55a61f562b198a93c8c1a7449049ec1e6a` |
+| `signed_nat_scale_total` | 431 | 39 | 8 | `e1ee2921a7e967369bd70cd70564ef340ad643926c15c62dba394ae535e76947` |
+| `signed_nat_scale_functional` | 1,698 | 36 | 34 | `59f948b0d2c8335cd3cd0098fb4acec9f895d8db2f930393d4dad33375ee2727` |
+
+The five-row law/helper tranche in
+[`ha_signed_nat_scale_laws_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_nat_scale_laws_candidate.py)
+then closes, in exact dependency order:
+
+```text
+mul_cross_sum_left
+signed_nat_scale_equations_compose
+signed_nat_scale_zero
+signed_nat_scale_one
+signed_nat_scale_compose
+```
+
+`mul_cross_sum_left` proves that left multiplication preserves a balanced
+cross-sum. `signed_nat_scale_equations_compose` applies that transport to the
+inner scaling equation, chains it with the outer equation, and reassociates
+natural multiplication. This direct helper yields the graph composition law
+
+```text
+SignedNatScale(inner,input,middle) ->
+SignedNatScale(outer,middle,output) ->
+SignedNatScale(outer*inner,input,output).
+```
+
+The boundary graphs are exactly `SignedNatScale(0,input,0)` and
+`SignedNatScale(1,input,input)`. Thus zero sends every canonical signed value
+to its unique zero code, one preserves the literal input code, and sequential
+scaling agrees with the product of the natural scales. The exact receipts for
+this second tranche are:
+
+| Candidate | Nodes | Depth | Cuts | Certificate SHA-256 |
+|---|---:|---:|---:|---|
+| `mul_cross_sum_left` | 98 | 17 | 2 | `ffa3381d8208858dee25aba6f2f96ddfe2252f7c4c45d724a84f29f043e42586` |
+| `signed_nat_scale_equations_compose` | 575 | 32 | 13 | `064add40a96584356d47ca6a5455d16273403d23648ea64de5c5b3c5dc37a76b` |
+| `signed_nat_scale_zero` | 183 | 21 | 4 | `0e24789df5c82b513e59f376f03758a8d8f5e8ab03869d7e54fde7b7118e63af` |
+| `signed_nat_scale_one` | 257 | 21 | 7 | `90f005fdc0330354282b2dfec0105558dbc4533f1ef6436bdc070ed3a8789c4b` |
+| `signed_nat_scale_compose` | 1,453 | 34 | 30 | `7548acf6871b7db3db4ba2cdaf89b9544e2d641c881a9f27e47dc4c77448b49e` |
+
+The direct D07 graph was deliberately retained instead of defining natural
+scaling as the D06 alias `SignedMul(2*scale,input,output)`. Although such an
+equivalence can be proved later, using it as the definition would add an
+avoidable signed-coercion and D06 dependency to every natural coefficient in
+the Bezout path, while hiding the simple decoded equation that the D08 bridge
+actually needs. Direct equation composition proves the required algebra with
+a smaller and more transparent dependency surface.
+
+The focused
+[`core audit`](../../peano-lab/py/tests/test_ha_signed_nat_scale_candidate.py)
+and
+[`law audit`](../../peano-lab/py/tests/test_ha_signed_nat_scale_laws_candidate.py)
+pin exact statements, ordered dependencies, bodies, false mutations,
+empty-context closures, and bounded semantic oracles. The five core rows close
+the 65-row signed stack with digest
+`511aa0ba4a6dac1a22f52db740f539c675307b5b77b6b1a7d9ef2e00dd8a5331`.
+All ten D07 rows close the 70-row stack with digest
+`81a18daf55e564c11dee83ce7465bc91876109a5e6bc092f75e0f31f46e27d8d`.
+Their transitive closures are intuitionistic and reach no division,
+remainder, CRT, beta, classical, or DNE theorem.
+
+This checkpoint raises the campaign to 70 signed candidates, 73 total
+candidates, and 82 theorem receipts, across 15 K3 candidate modules and 17
+focused evidence tests. The public registry remains 393 entries with 56
+public references, the definition freeze remains 45 API rows over 44 distinct
+public theorems, and the catalog remains 394 entries. Nothing in D07 is
+admitted. The D08 `SignedBezout` bridge is next.
+
+### 6.5 Bezout bridge obligations
+
+The existing expanded balanced relation is
+
+```text
+exists xp yp xn yn. a * xp + b * yp = result + (a * xn + b * yn)
+```
+
+The required forward bridge has the shape:
+
+```text
+forall result a b.
+  (exists xp yp xn yn.
+     a * xp + b * yp = result + (a * xn + b * yn)) ->
+  exists x y. SignedBezout(result,a,b,x,y)
+```
+
+The proof obligation normalizes `(xp,xn)` and `(yp,yn)` separately with
+`SignedBalance`, then transports the displayed equation by additive and
+multiplicative algebra.
+
+The required reverse bridge has the shape:
+
+```text
+forall result a b x y.
+  SignedBezout(result,a,b,x,y) ->
+  exists xp yp xn yn.
+    a * xp + b * yp = result + (a * xn + b * yn)
+```
+
+After both directions close, a packaged equivalence may be exposed as
+`balanced_bezout_iff_signed_bezout_exists`. The proposed client theorem
+`gcd_signed_bezout_exists` may then combine the bridge with relational gcd
+and balanced-Bezout existence. It may assert existence of codes `x,y`; it
+must not assert uniqueness of Bezout coefficients.
+
+The observed source names `gcd_balanced_bezout_exists`,
+`coprime_balanced_bezout`, and `balanced_bezout_euclid_step` are possible
+later dependency anchors, subject to the normal campaign replay and closure
+checks. This RFC makes no fresh claim about their status.
+
+#### 6.5.1 Closed candidate checkpoint
+
+The D08 bridge is now implemented in
+[`ha_signed_bezout_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_candidate.py)
+and independently pinned by
+[`test_ha_signed_bezout_candidate.py`](../../peano-lab/py/tests/test_ha_signed_bezout_candidate.py).
+Its four rows are, in dependency order:
+
+```text
+balanced_bezout_equation_transport
+balanced_bezout_to_signed_bezout
+signed_bezout_to_balanced_bezout
+balanced_bezout_iff_signed_bezout_exists
+```
+
+The algebraic helper is the exact 11-variable formula
+
+```text
+forall result a b xp yp xn yn xcp xcn ycp ycn.
+  xp + xcn = xn + xcp ->
+  yp + ycn = yn + ycp ->
+  a * xp + b * yp = result + (a * xn + b * yn) ->
+  a * xcp + b * ycp = result + (a * xcn + b * ycn)
+```
+
+The forward proof normalizes the two raw coefficient pairs independently and
+then applies this helper. It carefully reorders the legacy balanced witnesses
+`xp,yp,xn,yn` into the decoder order `xp,xn,yp,yn`. The reverse proof merely
+exposes the decoder witnesses in the legacy order. This proves equivalence of
+existence, not functionality of `(x,y)`: for example, both canonical pairs
+encoding `(-1,+1)` and `(+2,-1)` satisfy `2X+3Y=1`.
+
+| Candidate | Nodes | Depth | Cuts | Certificate SHA-256 |
+|---|---:|---:|---:|---|
+| `balanced_bezout_equation_transport` | 943 | 34 | 20 | `9e3f3b984b0c9bdd42e7747f5660541364bb5bee3655b95b9242e5ed3305e4cc` |
+| `balanced_bezout_to_signed_bezout` | 1,241 | 39 | 24 | `f39a790749e8da2b6d6c36f3639e2b81ecdd1b5db892a543a7ece18941978923` |
+| `signed_bezout_to_balanced_bezout` | 35 | 23 | 0 | `f0fb3fa8d5f09c69d22721164468227765bab34b6f1eadb8d67593bfeb81fa28` |
+| `balanced_bezout_iff_signed_bezout_exists` | 1,326 | 40 | 26 | `1bc7e28457b07b7aaf37b48aea0f3f86b58035797aeca50a022c73409f6eae1d` |
+
+Two cold closures agree on the 74-row signed-stack digest
+`b7949148236ab243830a2bfebd80ddafeb31a63c5e70ace1c032de8bd2415f15`.
+The focused audit exhausts 2,185 satisfying helper premises, 5,736 raw
+normalization witnesses, and 1,600 bounded direct graph cases, including
+zero-coefficient and nonuniqueness examples. The transitive closure reaches
+no division, remainder, CRT, beta, classical, or DNE theorem.
+
+This raises the isolated campaign to 74 signed candidates, 77 candidates in
+total, and 86 theorem receipts, across 16 K3 candidate modules and 18 focused
+tests. The public registry remains 393 entries with 56 public references, the
+definition freeze remains 45 API rows over 44 distinct public theorems, and
+the catalog remains 394 entries. No D08 theorem is admitted. The proposed
+`gcd_signed_bezout_exists` is a separate K4 client rather than a strict-K3
+row because the public gcd route reaches division.
+
+#### 6.5.2 Closed K4 gcd client
+
+The isolated
+[`ha_signed_bezout_gcd_candidate.py`](../../peano-lab/py/peano_lab/library/ha_signed_bezout_gcd_candidate.py)
+now combines public `gcd_balanced_bezout_exists` with the D08 forward bridge:
+
+```text
+forall a b. exists d x y. IsGCD(d,a,b) /\ SignedBezout(d,a,b,x,y)
+```
+
+Both readable predicates are fully expanded before parsing. Its certificate
+has 3,535 nodes, depth 48, 1,734 distinct objects, 1,824 edges, 91 reused
+references, and 74 Cuts, with SHA-256
+`4edeb4ffc7de0b9aa0a870d2125f7640f2447a7358ba454abba3db003f9044a3`.
+Unlike D08, its audited closure intentionally includes the public Euclidean
+division chain. It is therefore recorded under K4 with an explicit dependency
+on K3; it is not appended to the 74-row strict-K3 signed stack. The full
+campaign now has 78 candidates and 87 receipts across 18 candidate modules
+and 19 focused tests. The public boundary remains unchanged, and this K4 row
+is not admitted.
+
+## 7. Primitive-recursive and conservativity argument to be certified
+
+At the design level, the selected operations are primitive recursive:
+
+1. decode a code by parity and halving;
+2. interpret the result as one nonzero magnitude at most;
+3. perform natural additions and multiplications on positive and negative
+   contributions;
+4. normalize the resulting pair by natural comparison;
+5. interleave the normalized sign and magnitude again.
+
+This paragraph is a design argument, not an HA proof. Conservative admission
+requires ordinary certificates for each totality and functionality theorem,
+plus a checked expansion showing that every surface call becomes the exact
+base formula in Section 4. No host `int`, subtraction, quotient, remainder,
+bit operation, or pattern match enters the kernel.
+
+## 8. Forbidden dependencies
+
+The signed foundation must have neither direct nor transitive dependencies
+on:
+
+- `BetaAt`, `Product`, beta-prefix construction, or beta-coded folds;
+- binary, finite, or generalized CRT;
+- pair/list/map coding that is not already independently accepted;
+- division or remainder merely to decide parity;
+- classical `DNE`, excluded middle for arbitrary formulas, Markov's
+  principle, choice, or quotient types;
+- host integer correctness treated as a theorem.
+
+Natural equality and order decision theorems are allowed only through their
+explicit constructive HA certificates.
+
+## 9. Staged acceptance tests
+
+Passing an earlier stage does not imply public admission.
+
+### Stage A — static representation lint
+
+- Parse every Section 4 template in its exact parameter context with the
+  ordinary base formula parser.
+- Assert that the resulting AST uses only the frozen K0 constructors.
+- Reject unknown/free variables and binder capture under adversarial actual
+  arguments.
+- Recompute and compare the UTF-8 template hashes in Section 4.9; a
+  whitespace or parenthesization change requires a new freeze revision.
+- Scan direct and transitive dependency metadata for every forbidden name in
+  Section 8.
+- Assert that no prospective definition calls another surface definition;
+  the stored template itself must already be base-language text.
+
+### Stage B — finite semantic oracle tests
+
+Use bounded host evaluation only as an untrusted regression oracle.
+
+- Check unique decoding for a documented initial interval.
+- Pin the five fixtures in Section 3.
+- Check that every sampled code has exactly one decoded pair.
+- Check that `(0,0)` decodes only from code `0`.
+- Check sampled `SignedBalance`, negation, addition, multiplication, and
+  natural scaling against host integers.
+- Include mixed-sign cancellation and zero-heavy cases.
+
+These tests detect statement mistakes; they are not certificates.
+
+### Stage C — dependency-curried candidate proofs
+
+- Author the prerequisite parity-separation and even-half uniqueness bodies
+  first.
+- Replay each decoder theorem against explicit dependency hypotheses.
+- Proceed in topological order through balance, negation, addition,
+  multiplication, scaling, and the two Bezout bridges.
+- Use the default intuitionistic checker and assert that no `DNE` node occurs.
+- Reject nearby false mutations, including wrong decodings of codes `0`, `1`,
+  and `2`, nonunique decoder parts, an incorrect signed sum, and a claimed
+  negative-zero constructor.
+
+Candidate-body success is not an admission receipt.
+
+### Stage D — empty-context closure
+
+- Close every candidate from the empty context with self-contained `Cut`
+  sharing only.
+- Run two cold deterministic passes.
+- Record structural nodes, depth, distinct objects, edges, reused objects,
+  cuts, and the content-stable certificate digest.
+- Assert exact theorem statement hashes and the absence of external theorem
+  authority in the final certificate.
+- Re-run the transitive K0--K2 dependency audit on the closure recipe.
+
+### Stage E — representation mutation audit
+
+- Swap the parity orientation in one constructor and require downstream
+  fixture failure.
+- Permit an odd code with zero negative magnitude and require the
+  no-negative-zero tests to fail.
+- Remove one decoder branch and require totality closure to fail.
+- Remove normalization from one arithmetic output and require functionality
+  or canonical equality to fail.
+- Replace literal code equality with unnormalized pair equality and require
+  the extensional-equality tests to detect the drift.
+
+### Stage F — deliberate public admission
+
+Only after review of Stages A--E may the registry, definition freeze,
+campaign manifest, catalog, book, vault, and explorer be changed. Admission
+must include:
+
+- exact definition records and hashes;
+- theorem dependency and induction footprints;
+- empty-context certificate receipts;
+- human proofs explaining normalization and constructive case splits;
+- generated-artifact checks; and
+- a clean build from an empty cache.
+
+### Stage G — independent/heavy validation
+
+Replay the accepted roots with the independent checker or the campaign's
+approved second-check route. Run resource, corruption, browser-memory, and
+large closure checks on WMI when local gates have passed. Archive the exact
+payload and environment receipts.
+
+## 10. Exit criteria
+
+The HA3/K3 signed-code gate is closed only when all of the following hold:
+
+- the eight templates in Section 4 are registered or explicitly reduced to
+  a smaller reviewed subset with the same semantics;
+- decoding is total and functional for every natural code;
+- no-negative-zero and literal canonical equality are certified;
+- balance normalization is total and has a unique code;
+- negate, add, multiply, and natural-scale graphs are total and functional;
+- the minimum arithmetic laws in Section 6.4 are certified;
+- both balanced-Bezout conversion directions are certified;
+- the full dependency closure is K0--K2-only and contains no forbidden K3
+  foundation; and
+- all public-admission and independent validation receipts are recorded.
+
+Until those conditions hold, the exact formulas in this RFC are a reviewed
+design target only. In particular, this document must not be cited as a
+proof that signed integers, signed arithmetic, or signed Bezout coefficients
+have been admitted to the native HA library.

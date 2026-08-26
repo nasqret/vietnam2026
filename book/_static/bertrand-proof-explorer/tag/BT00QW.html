@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT00QW — pow_two_base_two_value_four</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT00QW.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT00QW&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT00QV.html">← pow_mul_base</a><a href="BT00R0.html">ceil_div_six_shift →</a></nav>
+<p class="pa-tag">BT00QW</p><h1>pow_two_base_two_value_four</h1>
+<p class="pa-status-candidate">Alpha v25 checked-use theorem · independently kernel and Lean verified; not Stable</p>
+<p>The relational square of two has the concrete value four.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall x. (exists pa_b_bie_two_two pa_c_bie_two_two. ((forall pa_i_bie_two_two_repeat. (exists pa_lt_bie_two_two_repeat_bound. pa_lt_bie_two_two_repeat_bound + S pa_i_bie_two_two_repeat = 2) -&gt; (((exists pa_h_bie_two_two_repeat_decoded. pa_h_bie_two_two_repeat_decoded + S (2) = S ((S (pa_i_bie_two_two_repeat)) * pa_c_bie_two_two)) /\ exists pa_q_bie_two_two_repeat_decoded. pa_b_bie_two_two = pa_q_bie_two_two_repeat_decoded * S ((S (pa_i_bie_two_two_repeat)) * pa_c_bie_two_two) + (2)))) /\ (exists pa_u_bie_two_two_product pa_v_bie_two_two_product. ((((exists pa_h_bie_two_two_product_start. pa_h_bie_two_two_product_start + S (1) = S ((S (0)) * pa_v_bie_two_two_product)) /\ exists pa_q_bie_two_two_product_start. pa_u_bie_two_two_product = pa_q_bie_two_two_product_start * S ((S (0)) * pa_v_bie_two_two_product) + (1))) /\ ((((exists pa_h_bie_two_two_product_terminal. pa_h_bie_two_two_product_terminal + S (x) = S ((S (2)) * pa_v_bie_two_two_product)) /\ exists pa_q_bie_two_two_product_terminal. pa_u_bie_two_two_product = pa_q_bie_two_two_product_terminal * S ((S (2)) * pa_v_bie_two_two_product) + (x))) /\ forall pa_i_bie_two_two_product. (exists pa_lt_bie_two_two_product_bound. pa_lt_bie_two_two_product_bound + S pa_i_bie_two_two_product = 2) -&gt; exists pa_p_bie_two_two_product pa_r_bie_two_two_product pa_s_bie_two_two_product. ((((exists pa_h_bie_two_two_product_factor. pa_h_bie_two_two_product_factor + S (pa_p_bie_two_two_product) = S ((S (pa_i_bie_two_two_product)) * pa_c_bie_two_two)) /\ exists pa_q_bie_two_two_product_factor. pa_b_bie_two_two = pa_q_bie_two_two_product_factor * S ((S (pa_i_bie_two_two_product)) * pa_c_bie_two_two) + (pa_p_bie_two_two_product))) /\ ((((exists pa_h_bie_two_two_product_partial. pa_h_bie_two_two_product_partial + S (pa_r_bie_two_two_product) = S ((S (pa_i_bie_two_two_product)) * pa_v_bie_two_two_product)) /\ exists pa_q_bie_two_two_product_partial. pa_u_bie_two_two_product = pa_q_bie_two_two_product_partial * S ((S (pa_i_bie_two_two_product)) * pa_v_bie_two_two_product) + (pa_r_bie_two_two_product))) /\ ((((exists pa_h_bie_two_two_product_successor. pa_h_bie_two_two_product_successor + S (pa_s_bie_two_two_product) = S ((S (S pa_i_bie_two_two_product)) * pa_v_bie_two_two_product)) /\ exists pa_q_bie_two_two_product_successor. pa_u_bie_two_two_product = pa_q_bie_two_two_product_successor * S ((S (S pa_i_bie_two_two_product)) * pa_v_bie_two_two_product) + (pa_s_bie_two_two_product))) /\ pa_s_bie_two_two_product = pa_r_bie_two_two_product * pa_p_bie_two_two_product)))))))) -&gt; x = 4</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>The relational square of two has the concrete value four.</p><p>Direct prerequisites:
+pow_two.
+The authored body proceeds by intermediate claims (1), closed numeral normalization (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT009W.html"><code>BT009W</code> pow_two</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00SO.html"><code>BT00SO</code> pow_two_seed_bundle_from_total</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="877b8f6da31b3d2b"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> x</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="3e56b52d8af8737d"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> hx</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="have" data-line-id="85f849c8bdd63b82"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">have</span> hxx : x = 2 * 2</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="ca0d481394649be2"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT009W.html">pow_two</a> 2</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="3ad7524b91931a24"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT009W.html">pow_two</a> 2</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="specialize" data-line-id="43ddb82b006aae1e"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT009W.html">pow_two</a> x</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="apply" data-line-id="03e0aed6317de6bb"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT009W.html">pow_two</a></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="refl" data-line-id="bdf662ec3731b3a4"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exact" data-line-id="00c4eae84535da5d"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exact</span> hx</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="trans" data-line-id="48232c42e1c0e977"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">trans</span> 2 * 2</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="exact" data-line-id="bcb56b84bcd1dc1e"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">exact</span> hxx</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="norm_num" data-line-id="069627037c2ca00e"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">norm_num</span></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>942</dd>
+<dt>Layer</dt><dd>12</dd><dt>Lines</dt><dd>12</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>alpha_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>no</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>65</dd>
+<dt>Statement SHA-256</dt><dd><code>921031a46f247977e3f2db871e8cfd927bde5d667c179331a4ab3901825ba9e3</code></dd>
+<dt>Script SHA-256</dt><dd><code>e2728f0e499a9dc13147763213899efa475614b35b67d15da54bac93d9943a51</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_integer_envelope_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_integer_envelope_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>8f0967c2680f4f2e9c8c693df6f405a60a61decd8dd1cb52c2ca1b611b4fdfc1</code></dd>
+</dl></aside></main></body></html>

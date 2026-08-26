@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="650" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+  <title id="title">Native quadratic reciprocity dependency roadmap</title>
+  <desc id="desc">A dependency flow from the checked arithmetic library through dependency-curried body-green parity, finite folds, Euler criterion, Gauss lemma, Eisenstein counting, and exact quadratic-reciprocity endpoints awaiting layered WMI closure and admission.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0" stop-color="#f8fafc"/>
+      <stop offset="1" stop-color="#eef2ff"/>
+    </linearGradient>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="#475569"/>
+    </marker>
+    <style>
+      .title{font:700 28px system-ui,sans-serif;fill:#0f172a}
+      .subtitle{font:400 15px system-ui,sans-serif;fill:#475569}
+      .box{stroke-width:2;rx:16;ry:16}
+      .done{fill:#ecfdf5;stroke:#059669}
+      .active{fill:#eff6ff;stroke:#2563eb}
+      .future{fill:#fff7ed;stroke:#ea580c}
+      .capstone{fill:#faf5ff;stroke:#9333ea;stroke-width:3}
+      .label{font:700 17px system-ui,sans-serif;fill:#0f172a;text-anchor:middle}
+      .small{font:400 13px system-ui,sans-serif;fill:#334155;text-anchor:middle}
+      .edge{stroke:#475569;stroke-width:2.2;fill:none;marker-end:url(#arrow)}
+      .key{font:600 13px system-ui,sans-serif;fill:#334155}
+    </style>
+  </defs>
+  <rect width="1200" height="650" fill="url(#bg)" rx="24"/>
+  <text x="600" y="44" class="title" text-anchor="middle">Quadratic Reciprocity in Native PA</text>
+  <text x="600" y="70" class="subtitle" text-anchor="middle">Every box expands to 0, S, +, ·, equality, logic, and induction</text>
+
+  <rect x="55" y="112" width="250" height="82" class="box done"/>
+  <text x="180" y="143" class="label">Existing arithmetic spine</text>
+  <text x="180" y="168" class="small">division · Bézout · Euclid</text>
+  <text x="180" y="186" class="small">β sequences · finite products</text>
+
+  <rect x="350" y="112" width="210" height="82" class="box done"/>
+  <text x="455" y="143" class="label">Parity &amp; mod 4</text>
+  <text x="455" y="168" class="small">even/odd · unique halves</text>
+  <text x="455" y="186" class="small">odd = 1 or 3 mod 4</text>
+
+  <rect x="605" y="112" width="250" height="82" class="box done"/>
+  <text x="730" y="143" class="label">Quadratic-residue API</text>
+  <text x="730" y="168" class="small">bounded roots · decision</text>
+  <text x="730" y="186" class="small">prime inverses · cancellation</text>
+
+  <rect x="900" y="112" width="245" height="82" class="box done"/>
+  <text x="1022" y="143" class="label">Finite folds</text>
+  <text x="1022" y="168" class="small">Pow · Sum · Count · Range</text>
+  <text x="1022" y="186" class="small">β-coded trace relations</text>
+
+  <path d="M305 153 H340" class="edge"/>
+  <path d="M560 153 H595" class="edge"/>
+  <path d="M855 153 H890" class="edge"/>
+
+  <rect x="120" y="270" width="260" height="82" class="box active"/>
+  <text x="250" y="301" class="label">Finite residue systems</text>
+  <text x="250" y="326" class="small">product and exact Sum permutations</text>
+  <text x="250" y="344" class="small">dependency-curried bodies green</text>
+
+  <rect x="470" y="270" width="260" height="82" class="box active"/>
+  <text x="600" y="301" class="label">Wilson · Fermat · Euler</text>
+  <text x="600" y="326" class="small">bounded and arbitrary Euler green</text>
+  <text x="600" y="344" class="small">body-green; final layered replay pending</text>
+
+  <rect x="820" y="270" width="260" height="82" class="box active"/>
+  <text x="950" y="301" class="label">Gauss lemma</text>
+  <text x="950" y="326" class="small">QRes ↔ even reflection count</text>
+  <text x="950" y="344" class="small">bounded + arbitrary bodies green</text>
+
+  <path d="M730 194 C720 230 450 225 365 267" class="edge"/>
+  <path d="M1022 194 C1005 236 760 225 715 267" class="edge"/>
+  <path d="M380 311 H460" class="edge"/>
+  <path d="M730 311 H810" class="edge"/>
+
+  <rect x="250" y="430" width="300" height="82" class="box active"/>
+  <text x="400" y="461" class="label">Eisenstein lattice identity</text>
+  <text x="400" y="486" class="small">nested Fubini · Q + U = h·k</text>
+  <text x="400" y="504" class="small">Gauss counts aligned modulo 2</text>
+
+  <rect x="650" y="430" width="300" height="82" class="box capstone"/>
+  <text x="800" y="461" class="label">Exact QR bodies green</text>
+  <text x="800" y="486" class="small">same status if one prime is 1 mod 4</text>
+  <text x="800" y="504" class="small">opposite if both 3 mod 4 · admission pending</text>
+
+  <path d="M950 352 C940 400 540 390 515 427" class="edge"/>
+  <path d="M550 471 H640" class="edge"/>
+
+  <rect x="320" y="570" width="18" height="18" class="done"/>
+  <text x="347" y="584" class="key">checked</text>
+  <rect x="480" y="570" width="18" height="18" class="active"/>
+  <text x="507" y="584" class="key">dependency-curried body-green</text>
+  <rect x="760" y="570" width="18" height="18" class="capstone"/>
+  <text x="787" y="584" class="key">exact surface; WMI admission pending</text>
+</svg>

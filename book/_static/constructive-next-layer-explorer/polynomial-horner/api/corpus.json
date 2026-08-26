@@ -1,0 +1,1651 @@
+{
+  "alpha_catalog_sha256": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e",
+  "alpha_checked_use_node_count": 7,
+  "alpha_edition_identity_sha256": "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28",
+  "alpha_edition_version": "v25",
+  "alpha_enrolled_node_count": 7,
+  "alpha_first_enrolled_version": "v20",
+  "alpha_first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce",
+  "alpha_proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+  "campaign_domain_id": "D04",
+  "campaign_family_id": "F10",
+  "campaign_goal_id": "T12",
+  "campaign_milestone_ids": [
+    "T12"
+  ],
+  "candidate_status": "Alpha v25 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+  "definition_count": 3,
+  "definition_dependency_count": 2,
+  "definition_layer_count": 2,
+  "definition_topological_order": [
+    "ND0001",
+    "PD0002",
+    "ND0002"
+  ],
+  "definitions": [
+    {
+      "arity": 4,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "((exists ff_h_defined_beta_at. ff_h_defined_beta_at + S (x) = S ((S (i)) * c)) /\\ exists ff_q_defined_beta_at. b = ff_q_defined_beta_at * S ((S (i)) * c) + (x))",
+      "expansion_sha256": "469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "global_definition": "Beta",
+      "id": "ND0001",
+      "kernel_signature_unchanged": true,
+      "name": "Beta",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "i",
+        "x"
+      ],
+      "reviewed_definition_id": "PD0013",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": "ND0001",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 2,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "exists h. h + S a = b",
+      "expansion_sha256": "8245ec2119fd9d5b970a1d301ae58fa593733fff741593deb4858a5130b52cce",
+      "global_argument_positions": [
+        0,
+        1
+      ],
+      "global_definition": "Lt",
+      "id": "PD0002",
+      "kernel_signature_unchanged": true,
+      "name": "Lt",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "a",
+        "b"
+      ],
+      "reviewed_definition_id": "PD0002",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "ND0001",
+        "PD0002"
+      ],
+      "dependency_names": [
+        "Beta",
+        "Lt"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "exists ff_u_ph_explorer ff_v_ph_explorer. ((((exists fs_h_ph_explorer_body_start. fs_h_ph_explorer_body_start + S (0) = S ((S (0)) * ff_v_ph_explorer)) /\\ exists fs_q_ph_explorer_body_start. ff_u_ph_explorer = fs_q_ph_explorer_body_start * S ((S (0)) * ff_v_ph_explorer) + (0))) /\\ ((((exists fs_h_ph_explorer_body_terminal. fs_h_ph_explorer_body_terminal + S (z) = S ((S (ell)) * ff_v_ph_explorer)) /\\ exists fs_q_ph_explorer_body_terminal. ff_u_ph_explorer = fs_q_ph_explorer_body_terminal * S ((S (ell)) * ff_v_ph_explorer) + (z))) /\\ forall ff_i_ph_explorer_body_steps. (exists ph_bound_explorer_body_steps. ph_bound_explorer_body_steps + S ff_i_ph_explorer_body_steps = ell) -> exists ff_coefficient_ph_explorer_body_steps ff_previous_ph_explorer_body_steps ff_current_ph_explorer_body_steps. ((((exists fs_h_ph_explorer_body_steps_coefficient. fs_h_ph_explorer_body_steps_coefficient + S (ff_coefficient_ph_explorer_body_steps) = S ((S (ff_i_ph_explorer_body_steps)) * c)) /\\ exists fs_q_ph_explorer_body_steps_coefficient. b = fs_q_ph_explorer_body_steps_coefficient * S ((S (ff_i_ph_explorer_body_steps)) * c) + (ff_coefficient_ph_explorer_body_steps))) /\\ ((((exists fs_h_ph_explorer_body_steps_before. fs_h_ph_explorer_body_steps_before + S (ff_previous_ph_explorer_body_steps) = S ((S (ff_i_ph_explorer_body_steps)) * ff_v_ph_explorer)) /\\ exists fs_q_ph_explorer_body_steps_before. ff_u_ph_explorer = fs_q_ph_explorer_body_steps_before * S ((S (ff_i_ph_explorer_body_steps)) * ff_v_ph_explorer) + (ff_previous_ph_explorer_body_steps))) /\\ ((((exists fs_h_ph_explorer_body_steps_after. fs_h_ph_explorer_body_steps_after + S (ff_current_ph_explorer_body_steps) = S ((S (S ff_i_ph_explorer_body_steps)) * ff_v_ph_explorer)) /\\ exists fs_q_ph_explorer_body_steps_after. ff_u_ph_explorer = fs_q_ph_explorer_body_steps_after * S ((S (S ff_i_ph_explorer_body_steps)) * ff_v_ph_explorer) + (ff_current_ph_explorer_body_steps))) /\\ ff_current_ph_explorer_body_steps = ff_previous_ph_explorer_body_steps * x + ff_coefficient_ph_explorer_body_steps)))))",
+      "expansion_sha256": "1f4cf31d3e64612c38c291a200aa8513e48aa617b2206607986f4d3fe0990096",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "global_definition": "Horner",
+      "id": "ND0002",
+      "kernel_signature_unchanged": true,
+      "name": "Horner",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "x",
+        "ell",
+        "z"
+      ],
+      "reviewed_definition_id": "ND0002",
+      "reviewed_definition_route": "polynomial-horner",
+      "shared_definition_identity": "ND0002",
+      "signature": "Horner(b,c,x,ell,z)",
+      "summary": "A complete beta-coded natural-polynomial Horner trace with an explicitly witnessed terminal value.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "ND0001",
+        "PD0002"
+      ]
+    }
+  ],
+  "edge_count": 25,
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "PH0001",
+      "target": "PH0002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "PH0003",
+      "target": "PH0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "PH0002",
+      "target": "PH0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "PH0004",
+      "target": "PH0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 4,
+      "source": "PH0001",
+      "statement_occurrences": 4,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "PH0001",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "PH0002",
+      "statement_occurrences": 1,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 10,
+      "source": "PH0003",
+      "statement_occurrences": 10,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "PH0003",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "PH0004",
+      "statement_occurrences": 2,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "PH0005",
+      "statement_occurrences": 2,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "PH0006",
+      "statement_occurrences": 1,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "PH0007",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "PH0007",
+      "statement_occurrences": 2,
+      "target": "ND0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0002",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0002",
+      "target": "PD0002"
+    }
+  ],
+  "external_dependencies": [
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "add_congr",
+      "statement_sha256": "8313d9a8e59db84e5f4224d1c0cb0dd21e689e5b3619ce9b00eb1008c8d157da"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "add_eq_zero_right",
+      "statement_sha256": "80f155113c1ed6af4126e1411c83c3c95b9f90b28aca748e5f8c2d4bd31fad9d"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_at_exists",
+      "statement_sha256": "acd7a937d6ec7c3c4d6214357bdfcdf3a975ccd71f7e14a540a1690d5e9b1773"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_at_self_of_bound",
+      "statement_sha256": "2d7d05bc900916fb1c5e23a402436d7e460ee6ad7ac1de57ba9cc1db76a9c095"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_at_unique",
+      "statement_sha256": "eac0700b7c24aa059073c61ffdf1541dc02d23400571b003fe964b9df65f5afd"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_prefix_extend",
+      "statement_sha256": "292c7a2a1abbf591e9a3cfd77ad0533f12761f691460fca7a20f413c6f66a1e0"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "le_eq_or_lt",
+      "statement_sha256": "c62d7d9dd2e202f7ef167c085afae1c16f5ee96d7d8269234b68249f5038f72a"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "le_of_succ_le_succ",
+      "statement_sha256": "bfa8be55903d6a037b942f30e28a0606ad55956d00b47532ab2c1cadb87d9a2a"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "le_refl",
+      "statement_sha256": "4a63925d2370803a106dd819be4a0b5369ca4575fd36d6bcdb133020703a17fd"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "le_succ",
+      "statement_sha256": "3adee5fa95d2437f4677d9f9a0937c5b48a7fcebb3350403b5be969ed30c7c50"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "mul_congr",
+      "statement_sha256": "c9cf495764c79a9296e9287e7fafb835e2e77ea855c9d2e670776df5f000f813"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "one_mul",
+      "statement_sha256": "a3fba3e972fc2ec6f5a274a8d21550e1081cf5f1581eda98922616aa20cda490"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "succ_le_succ",
+      "statement_sha256": "97c872aaa1b7fe31e8728e6f814edf1e967b5a4009d1e7716d52d4c136ac0a06"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "succ_ne_zero",
+      "statement_sha256": "38711df11e3d8fa1d5014115f8bcef8fbbaf89b5cdab99a80006dc2eb96b952e"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "zero_le",
+      "statement_sha256": "d3cad8d0d0ea07e339bdb8eb3b864e3511e648763977ff6882e77d60c984aa01"
+    }
+  ],
+  "external_dependency_count": 15,
+  "family_slug": "polynomial-horner",
+  "family_title": "Constructive polynomial evaluation",
+  "formal_line_count": 441,
+  "independent_lean_bundle_verified": true,
+  "internal_edge_count": 4,
+  "layers": {
+    "beta_horner_eval_empty": 0,
+    "beta_horner_eval_exists": 1,
+    "beta_horner_eval_exists_unique": 2,
+    "beta_horner_eval_functional": 1,
+    "beta_horner_eval_successor_decompose": 0,
+    "beta_horner_trace_functional": 0,
+    "beta_prefix_horner_trace_exists": 0
+  },
+  "node_count": 7,
+  "nodes": [
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 44,
+      "body_proof_nodes": 183,
+      "campaign_milestone": "T12",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ t. ∀ l. ∃ ff_u_ph_root_trace. ∃ ff_v_ph_root_trace. Beta(ff_u_ph_root_trace,ff_v_ph_root_trace,0,0) ∧ (∀ x. Lt(x,l) → ∃ y. ∃ z. ∃ n. Beta(b,c,x,y) ∧ (Beta(ff_u_ph_root_trace,ff_v_ph_root_trace,x,z) ∧ (Beta(ff_u_ph_root_trace,ff_v_ph_root_trace,S x,n) ∧ n = z · t + y)))",
+        "defined_statement_sha256": "edcff8944aa185c92ac6a587d6e1a67ad893a1b9e9366b186c01a67413af5d21",
+        "definition_uses": {
+          "ND0001": 4,
+          "PD0002": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "f91fceba39c775a44acf2367fdc5eae5767a390d0730043caebc48132d315f5f",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0001": 4,
+          "PD0002": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ t. ∀ l. ∃ ff_u_ph_root_trace. ∃ ff_v_ph_root_trace. "
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(ff_u_ph_root_trace,ff_v_ph_root_trace,0,0)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ (∀ x. "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(x,l)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ y. ∃ z. ∃ n. "
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(b,c,x,y)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ ("
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(ff_u_ph_root_trace,ff_v_ph_root_trace,x,z)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ ("
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(ff_u_ph_root_trace,ff_v_ph_root_trace,S x,n)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ n = z · t + y)))"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_at_self_of_bound",
+        "add_eq_zero_right",
+        "succ_ne_zero",
+        "beta_at_exists",
+        "beta_prefix_extend",
+        "zero_le",
+        "succ_le_succ",
+        "le_refl",
+        "le_of_succ_le_succ",
+        "le_eq_or_lt",
+        "one_mul"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_polynomial_horner_candidate_theorems",
+      "id": "PH0001",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_prefix_horner_trace_exists",
+      "proof_bundle_node_id": 550,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro t",
+        "induction l",
+        "exists 0",
+        "exists 1",
+        "split",
+        "specialize beta_at_self_of_bound 1",
+        "specialize beta_at_self_of_bound 0",
+        "specialize beta_at_self_of_bound 0",
+        "apply beta_at_self_of_bound",
+        "specialize one_mul 1",
+        "rewrite one_mul",
+        "specialize succ_le_succ 0",
+        "specialize succ_le_succ (S 0)",
+        "apply succ_le_succ",
+        "specialize zero_le (S 0)",
+        "exact zero_le",
+        "intro i",
+        "intro hi",
+        "exfalso",
+        "cases hi",
+        "have hsi0 : S i = 0",
+        "specialize add_eq_zero_right x",
+        "specialize add_eq_zero_right (S i)",
+        "apply add_eq_zero_right",
+        "exact hi_witness",
+        "specialize succ_ne_zero i",
+        "apply succ_ne_zero",
+        "exact hsi0",
+        "have htrace : exists ff_u_ph_induction ff_v_ph_induction. ((((exists fs_h_ph_induction_start. fs_h_ph_induction_start + S (0) = S ((S (0)) * ff_v_ph_induction)) /\\ exists fs_q_ph_induction_start. ff_u_ph_induction = fs_q_ph_induction_start * S ((S (0)) * ff_v_ph_induction) + (0))) /\\ forall ff_i_ph_induction_steps. (exists ph_bound_induction_steps. ph_bound_induction_steps + S ff_i_ph_induction_steps = l) -> exists ff_coefficient_ph_induction_steps ff_previous_ph_induction_steps ff_current_ph_induction_steps. ((((exists fs_h_ph_induction_steps_coefficient. fs_h_ph_induction_steps_coefficient + S (ff_coefficient_ph_induction_steps) = S ((S (ff_i_ph_induction_steps)) * c)) /\\ exists fs_q_ph_induction_steps_coefficient. b = fs_q_ph_induction_steps_coefficient * S ((S (ff_i_ph_induction_steps)) * c) + (ff_coefficient_ph_induction_steps))) /\\ ((((exists fs_h_ph_induction_steps_before. fs_h_ph_induction_steps_before + S (ff_previous_ph_induction_steps) = S ((S (ff_i_ph_induction_steps)) * ff_v_ph_induction)) /\\ exists fs_q_ph_induction_steps_before. ff_u_ph_induction = fs_q_ph_induction_steps_before * S ((S (ff_i_ph_induction_steps)) * ff_v_ph_induction) + (ff_previous_ph_induction_steps))) /\\ ((((exists fs_h_ph_induction_steps_after. fs_h_ph_induction_steps_after + S (ff_current_ph_induction_steps) = S ((S (S ff_i_ph_induction_steps)) * ff_v_ph_induction)) /\\ exists fs_q_ph_induction_steps_after. ff_u_ph_induction = fs_q_ph_induction_steps_after * S ((S (S ff_i_ph_induction_steps)) * ff_v_ph_induction) + (ff_current_ph_induction_steps))) /\\ ff_current_ph_induction_steps = ff_previous_ph_induction_steps * t + ff_coefficient_ph_induction_steps))))",
+        "apply IH",
+        "cases htrace",
+        "cases htrace_witness",
+        "cases htrace_witness_witness",
+        "have hfactor : exists p. ((exists fs_h_trace_factor. fs_h_trace_factor + S (p) = S ((S (l)) * c)) /\\ exists fs_q_trace_factor. b = fs_q_trace_factor * S ((S (l)) * c) + (p))",
+        "specialize beta_at_exists b",
+        "specialize beta_at_exists c",
+        "specialize beta_at_exists l",
+        "exact beta_at_exists",
+        "cases hfactor",
+        "have hlast : exists r. ((exists fs_h_trace_last. fs_h_trace_last + S (r) = S ((S (l)) * x1)) /\\ exists fs_q_trace_last. x = fs_q_trace_last * S ((S (l)) * x1) + (r))",
+        "specialize beta_at_exists x",
+        "specialize beta_at_exists x1",
+        "specialize beta_at_exists l",
+        "exact beta_at_exists",
+        "cases hlast",
+        "have hext : exists z v. ((((exists fs_h_trace_extension. fs_h_trace_extension + S (x3 * t + x2) = S ((S (S l)) * v)) /\\ exists fs_q_trace_extension. z = fs_q_trace_extension * S ((S (S l)) * v) + (x3 * t + x2))) /\\ forall i a. (exists h. h + S i = S l) -> (((exists fs_h_trace_old. fs_h_trace_old + S (a) = S ((S (i)) * x1)) /\\ exists fs_q_trace_old. x = fs_q_trace_old * S ((S (i)) * x1) + (a))) -> (((exists fs_h_trace_new. fs_h_trace_new + S (a) = S ((S (i)) * v)) /\\ exists fs_q_trace_new. z = fs_q_trace_new * S ((S (i)) * v) + (a))))",
+        "specialize beta_prefix_extend (S l)",
+        "specialize beta_prefix_extend x",
+        "specialize beta_prefix_extend x1",
+        "specialize beta_prefix_extend (x3 * t + x2)",
+        "exact beta_prefix_extend",
+        "cases hext",
+        "cases hext_witness",
+        "cases hext_witness_witness",
+        "exists x4",
+        "exists x5",
+        "split",
+        "specialize hext_witness_witness_right 0",
+        "specialize hext_witness_witness_right 0",
+        "apply hext_witness_witness_right",
+        "have h0 : exists h. h + S 0 = S l",
+        "have hzero : exists h. h + 0 = l",
+        "specialize zero_le l",
+        "exact zero_le",
+        "specialize succ_le_succ 0",
+        "specialize succ_le_succ l",
+        "apply succ_le_succ",
+        "exact hzero",
+        "exact h0",
+        "exact htrace_witness_witness_left",
+        "intro i",
+        "intro hi",
+        "have hil : exists h. h + i = l",
+        "specialize le_of_succ_le_succ i",
+        "specialize le_of_succ_le_succ l",
+        "apply le_of_succ_le_succ",
+        "exact hi",
+        "have hsplit : i = l \\/ exists h. h + S i = l",
+        "specialize le_eq_or_lt i",
+        "specialize le_eq_or_lt l",
+        "apply le_eq_or_lt",
+        "exact hil",
+        "cases hsplit",
+        "exists x2",
+        "exists x3",
+        "exists x3 * t + x2",
+        "split",
+        "rewrite hsplit_left",
+        "rewrite hsplit_left",
+        "exact hfactor_witness",
+        "split",
+        "rewrite hsplit_left",
+        "rewrite hsplit_left",
+        "specialize hext_witness_witness_right l",
+        "specialize hext_witness_witness_right x3",
+        "apply hext_witness_witness_right",
+        "specialize le_refl (S l)",
+        "exact le_refl",
+        "exact hlast_witness",
+        "split",
+        "rewrite hsplit_left",
+        "rewrite hsplit_left",
+        "exact hext_witness_witness_left",
+        "refl",
+        "have hold : exists p r s. ((((exists fs_h_ph_hold_coefficient. fs_h_ph_hold_coefficient + S (p) = S ((S (i)) * c)) /\\ exists fs_q_ph_hold_coefficient. b = fs_q_ph_hold_coefficient * S ((S (i)) * c) + (p))) /\\ ((((exists fs_h_ph_hold_previous. fs_h_ph_hold_previous + S (r) = S ((S (i)) * x1)) /\\ exists fs_q_ph_hold_previous. x = fs_q_ph_hold_previous * S ((S (i)) * x1) + (r))) /\\ ((((exists fs_h_ph_hold_current. fs_h_ph_hold_current + S (s) = S ((S (S i)) * x1)) /\\ exists fs_q_ph_hold_current. x = fs_q_ph_hold_current * S ((S (S i)) * x1) + (s))) /\\ s = r * t + p)))",
+        "specialize htrace_witness_witness_right i",
+        "apply htrace_witness_witness_right",
+        "exact hsplit_right",
+        "cases hold",
+        "cases hold_witness",
+        "cases hold_witness_witness",
+        "cases hold_witness_witness_witness",
+        "cases hold_witness_witness_witness_right",
+        "cases hold_witness_witness_witness_right_right",
+        "exists x6",
+        "exists x7",
+        "exists x8",
+        "split",
+        "exact hold_witness_witness_witness_left",
+        "split",
+        "specialize hext_witness_witness_right i",
+        "specialize hext_witness_witness_right x7",
+        "apply hext_witness_witness_right",
+        "exact hi",
+        "exact hold_witness_witness_witness_right_left",
+        "split",
+        "specialize hext_witness_witness_right (S i)",
+        "specialize hext_witness_witness_right x8",
+        "apply hext_witness_witness_right",
+        "specialize succ_le_succ (S i)",
+        "specialize succ_le_succ l",
+        "apply succ_le_succ",
+        "exact hsplit_right",
+        "exact hold_witness_witness_witness_right_right_left",
+        "exact hold_witness_witness_witness_right_right_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+      "sources": [
+        {
+          "factory": "make_polynomial_horner_candidate_theorems",
+          "script_sha256": "cc6f7b41003c73d017193ba4009d1ec49860486bbb4ad569fe5c6e38d9da7381",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+          "statement_sha256": "f91fceba39c775a44acf2367fdc5eae5767a390d0730043caebc48132d315f5f"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c t l. exists ff_u_ph_root_trace ff_v_ph_root_trace. ((((exists fs_h_ph_root_trace_start. fs_h_ph_root_trace_start + S (0) = S ((S (0)) * ff_v_ph_root_trace)) /\\ exists fs_q_ph_root_trace_start. ff_u_ph_root_trace = fs_q_ph_root_trace_start * S ((S (0)) * ff_v_ph_root_trace) + (0))) /\\ forall ff_i_ph_root_trace_steps. (exists ph_bound_root_trace_steps. ph_bound_root_trace_steps + S ff_i_ph_root_trace_steps = l) -> exists ff_coefficient_ph_root_trace_steps ff_previous_ph_root_trace_steps ff_current_ph_root_trace_steps. ((((exists fs_h_ph_root_trace_steps_coefficient. fs_h_ph_root_trace_steps_coefficient + S (ff_coefficient_ph_root_trace_steps) = S ((S (ff_i_ph_root_trace_steps)) * c)) /\\ exists fs_q_ph_root_trace_steps_coefficient. b = fs_q_ph_root_trace_steps_coefficient * S ((S (ff_i_ph_root_trace_steps)) * c) + (ff_coefficient_ph_root_trace_steps))) /\\ ((((exists fs_h_ph_root_trace_steps_before. fs_h_ph_root_trace_steps_before + S (ff_previous_ph_root_trace_steps) = S ((S (ff_i_ph_root_trace_steps)) * ff_v_ph_root_trace)) /\\ exists fs_q_ph_root_trace_steps_before. ff_u_ph_root_trace = fs_q_ph_root_trace_steps_before * S ((S (ff_i_ph_root_trace_steps)) * ff_v_ph_root_trace) + (ff_previous_ph_root_trace_steps))) /\\ ((((exists fs_h_ph_root_trace_steps_after. fs_h_ph_root_trace_steps_after + S (ff_current_ph_root_trace_steps) = S ((S (S ff_i_ph_root_trace_steps)) * ff_v_ph_root_trace)) /\\ exists fs_q_ph_root_trace_steps_after. ff_u_ph_root_trace = fs_q_ph_root_trace_steps_after * S ((S (S ff_i_ph_root_trace_steps)) * ff_v_ph_root_trace) + (ff_current_ph_root_trace_steps))) /\\ ff_current_ph_root_trace_steps = ff_previous_ph_root_trace_steps * t + ff_coefficient_ph_root_trace_steps))))",
+      "statement_sha256": "f91fceba39c775a44acf2367fdc5eae5767a390d0730043caebc48132d315f5f",
+      "status": "Alpha v25 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "Every beta-coded coefficient prefix has a complete constructive Horner trace."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 16,
+      "body_proof_nodes": 29,
+      "campaign_milestone": "T12",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ t. ∀ l. ∃ n. Horner(b,c,t,l,n)",
+        "defined_statement_sha256": "e8e0ea0579aedc70b5925ff44ce66b9559d10ed960e5a091ed53ad82c621e86e",
+        "definition_uses": {
+          "ND0002": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "bd1fa1601bd14a7dd6e769eb49bb646326d12f9a26d206c89eea1c7de54ac7d3",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0002": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ t. ∀ l. ∃ n. "
+          },
+          {
+            "definition": "ND0002",
+            "kind": "definition",
+            "text": "Horner(b,c,t,l,n)"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_prefix_horner_trace_exists",
+        "beta_at_exists"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_polynomial_horner_candidate_theorems",
+      "id": "PH0002",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_horner_eval_exists",
+      "proof_bundle_node_id": 551,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro t",
+        "intro l",
+        "have htrace : exists ff_u_ph_exists_trace ff_v_ph_exists_trace. ((((exists fs_h_ph_exists_trace_start. fs_h_ph_exists_trace_start + S (0) = S ((S (0)) * ff_v_ph_exists_trace)) /\\ exists fs_q_ph_exists_trace_start. ff_u_ph_exists_trace = fs_q_ph_exists_trace_start * S ((S (0)) * ff_v_ph_exists_trace) + (0))) /\\ forall ff_i_ph_exists_trace_steps. (exists ph_bound_exists_trace_steps. ph_bound_exists_trace_steps + S ff_i_ph_exists_trace_steps = l) -> exists ff_coefficient_ph_exists_trace_steps ff_previous_ph_exists_trace_steps ff_current_ph_exists_trace_steps. ((((exists fs_h_ph_exists_trace_steps_coefficient. fs_h_ph_exists_trace_steps_coefficient + S (ff_coefficient_ph_exists_trace_steps) = S ((S (ff_i_ph_exists_trace_steps)) * c)) /\\ exists fs_q_ph_exists_trace_steps_coefficient. b = fs_q_ph_exists_trace_steps_coefficient * S ((S (ff_i_ph_exists_trace_steps)) * c) + (ff_coefficient_ph_exists_trace_steps))) /\\ ((((exists fs_h_ph_exists_trace_steps_before. fs_h_ph_exists_trace_steps_before + S (ff_previous_ph_exists_trace_steps) = S ((S (ff_i_ph_exists_trace_steps)) * ff_v_ph_exists_trace)) /\\ exists fs_q_ph_exists_trace_steps_before. ff_u_ph_exists_trace = fs_q_ph_exists_trace_steps_before * S ((S (ff_i_ph_exists_trace_steps)) * ff_v_ph_exists_trace) + (ff_previous_ph_exists_trace_steps))) /\\ ((((exists fs_h_ph_exists_trace_steps_after. fs_h_ph_exists_trace_steps_after + S (ff_current_ph_exists_trace_steps) = S ((S (S ff_i_ph_exists_trace_steps)) * ff_v_ph_exists_trace)) /\\ exists fs_q_ph_exists_trace_steps_after. ff_u_ph_exists_trace = fs_q_ph_exists_trace_steps_after * S ((S (S ff_i_ph_exists_trace_steps)) * ff_v_ph_exists_trace) + (ff_current_ph_exists_trace_steps))) /\\ ff_current_ph_exists_trace_steps = ff_previous_ph_exists_trace_steps * t + ff_coefficient_ph_exists_trace_steps))))",
+        "specialize beta_prefix_horner_trace_exists b",
+        "specialize beta_prefix_horner_trace_exists c",
+        "specialize beta_prefix_horner_trace_exists t",
+        "specialize beta_prefix_horner_trace_exists l",
+        "exact beta_prefix_horner_trace_exists",
+        "cases htrace",
+        "cases htrace_witness",
+        "cases htrace_witness_witness",
+        "have hterminal : exists n. ((exists fs_h_sum_terminal. fs_h_sum_terminal + S (n) = S ((S (l)) * x1)) /\\ exists fs_q_sum_terminal. x = fs_q_sum_terminal * S ((S (l)) * x1) + (n))",
+        "specialize beta_at_exists x",
+        "specialize beta_at_exists x1",
+        "specialize beta_at_exists l",
+        "exact beta_at_exists",
+        "cases hterminal",
+        "exists x2",
+        "exists x",
+        "exists x1",
+        "split",
+        "exact htrace_witness_witness_left",
+        "split",
+        "exact hterminal_witness",
+        "exact htrace_witness_witness_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+      "sources": [
+        {
+          "factory": "make_polynomial_horner_candidate_theorems",
+          "script_sha256": "7992c17b5107f490d69c8ae28f5fdbf2f12041475759417409dbabbd37c8fa9e",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+          "statement_sha256": "bd1fa1601bd14a7dd6e769eb49bb646326d12f9a26d206c89eea1c7de54ac7d3"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c t l. exists n. (exists ff_u_ph_root_value ff_v_ph_root_value. ((((exists fs_h_ph_root_value_body_start. fs_h_ph_root_value_body_start + S (0) = S ((S (0)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_start. ff_u_ph_root_value = fs_q_ph_root_value_body_start * S ((S (0)) * ff_v_ph_root_value) + (0))) /\\ ((((exists fs_h_ph_root_value_body_terminal. fs_h_ph_root_value_body_terminal + S (n) = S ((S (l)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_terminal. ff_u_ph_root_value = fs_q_ph_root_value_body_terminal * S ((S (l)) * ff_v_ph_root_value) + (n))) /\\ forall ff_i_ph_root_value_body_steps. (exists ph_bound_root_value_body_steps. ph_bound_root_value_body_steps + S ff_i_ph_root_value_body_steps = l) -> exists ff_coefficient_ph_root_value_body_steps ff_previous_ph_root_value_body_steps ff_current_ph_root_value_body_steps. ((((exists fs_h_ph_root_value_body_steps_coefficient. fs_h_ph_root_value_body_steps_coefficient + S (ff_coefficient_ph_root_value_body_steps) = S ((S (ff_i_ph_root_value_body_steps)) * c)) /\\ exists fs_q_ph_root_value_body_steps_coefficient. b = fs_q_ph_root_value_body_steps_coefficient * S ((S (ff_i_ph_root_value_body_steps)) * c) + (ff_coefficient_ph_root_value_body_steps))) /\\ ((((exists fs_h_ph_root_value_body_steps_before. fs_h_ph_root_value_body_steps_before + S (ff_previous_ph_root_value_body_steps) = S ((S (ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_steps_before. ff_u_ph_root_value = fs_q_ph_root_value_body_steps_before * S ((S (ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value) + (ff_previous_ph_root_value_body_steps))) /\\ ((((exists fs_h_ph_root_value_body_steps_after. fs_h_ph_root_value_body_steps_after + S (ff_current_ph_root_value_body_steps) = S ((S (S ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_steps_after. ff_u_ph_root_value = fs_q_ph_root_value_body_steps_after * S ((S (S ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value) + (ff_current_ph_root_value_body_steps))) /\\ ff_current_ph_root_value_body_steps = ff_previous_ph_root_value_body_steps * t + ff_coefficient_ph_root_value_body_steps))))))",
+      "statement_sha256": "bd1fa1601bd14a7dd6e769eb49bb646326d12f9a26d206c89eea1c7de54ac7d3",
+      "status": "Alpha v25 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "Every coded natural polynomial has an actual witnessed Horner evaluation."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 43,
+      "body_proof_nodes": 197,
+      "campaign_milestone": "T12",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ t. ∀ l. ∀ n. ∀ u. ∀ v. ∀ m. ∀ w. ∀ d. Beta(u,v,0,0) ∧ (Beta(u,v,l,n) ∧ (∀ x. Lt(x,l) → ∃ y. ∃ z. ∃ k. Beta(b,c,x,y) ∧ (Beta(u,v,x,z) ∧ (Beta(u,v,S x,k) ∧ k = z · t + y)))) → Beta(w,d,0,0) ∧ (Beta(w,d,l,m) ∧ (∀ x. Lt(x,l) → ∃ y. ∃ z. ∃ k. Beta(b,c,x,y) ∧ (Beta(w,d,x,z) ∧ (Beta(w,d,S x,k) ∧ k = z · t + y)))) → n = m",
+        "defined_statement_sha256": "79e8447334e6d3e82c555e05a9306e3fab9bc746bcf83785dbc65962a872f39d",
+        "definition_uses": {
+          "ND0001": 10,
+          "PD0002": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "8aa74d7f29e22bd960a68c38f350e3dfcc546c934f91354b03a260186fdac3fd",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0001": 10,
+          "PD0002": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ t. ∀ l. ∀ n. ∀ u. ∀ v. ∀ m. ∀ w. ∀ d. "
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(u,v,0,0)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ ("
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(u,v,l,n)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ (∀ x. "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(x,l)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ y. ∃ z. ∃ k. "
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(b,c,x,y)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ ("
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(u,v,x,z)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ ("
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(u,v,S x,k)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ k = z · t + y)))) → "
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(w,d,0,0)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ ("
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(w,d,l,m)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ (∀ x. "
+          },
+          {
+            "definition": "PD0002",
+            "kind": "definition",
+            "text": "Lt(x,l)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ y. ∃ z. ∃ k. "
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(b,c,x,y)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ ("
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(w,d,x,z)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ ("
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(w,d,S x,k)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ k = z · t + y)))) → n = m"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_at_unique",
+        "le_refl",
+        "le_succ",
+        "add_congr",
+        "mul_congr"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_polynomial_horner_candidate_theorems",
+      "id": "PH0003",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_horner_trace_functional",
+      "proof_bundle_node_id": 552,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro t",
+        "induction l",
+        "intro n",
+        "intro u",
+        "intro v",
+        "intro m",
+        "intro w",
+        "intro d",
+        "intro h1",
+        "intro h2",
+        "cases h1",
+        "cases h1_right",
+        "cases h2",
+        "cases h2_right",
+        "have hn : n = 0",
+        "specialize beta_at_unique u",
+        "specialize beta_at_unique v",
+        "specialize beta_at_unique 0",
+        "specialize beta_at_unique n",
+        "specialize beta_at_unique 0",
+        "apply beta_at_unique",
+        "exact h1_right_left",
+        "exact h1_left",
+        "have hm : m = 0",
+        "specialize beta_at_unique w",
+        "specialize beta_at_unique d",
+        "specialize beta_at_unique 0",
+        "specialize beta_at_unique m",
+        "specialize beta_at_unique 0",
+        "apply beta_at_unique",
+        "exact h2_right_left",
+        "exact h2_left",
+        "trans 0",
+        "exact hn",
+        "symm",
+        "exact hm",
+        "intro n",
+        "intro u",
+        "intro v",
+        "intro m",
+        "intro w",
+        "intro d",
+        "intro h1",
+        "intro h2",
+        "cases h1",
+        "cases h1_right",
+        "cases h2",
+        "cases h2_right",
+        "have hstep1 : exists a r s. ((((exists fs_h_functional_step1_factor. fs_h_functional_step1_factor + S (a) = S ((S (l)) * c)) /\\ exists fs_q_functional_step1_factor. b = fs_q_functional_step1_factor * S ((S (l)) * c) + (a))) /\\ ((((exists fs_h_functional_step1_partial. fs_h_functional_step1_partial + S (r) = S ((S (l)) * v)) /\\ exists fs_q_functional_step1_partial. u = fs_q_functional_step1_partial * S ((S (l)) * v) + (r))) /\\ ((((exists fs_h_functional_step1_successor. fs_h_functional_step1_successor + S (s) = S ((S (S l)) * v)) /\\ exists fs_q_functional_step1_successor. u = fs_q_functional_step1_successor * S ((S (S l)) * v) + (s))) /\\ s = r * t + a)))",
+        "specialize h1_right_right l",
+        "apply h1_right_right",
+        "specialize le_refl (S l)",
+        "exact le_refl",
+        "cases hstep1",
+        "cases hstep1_witness",
+        "cases hstep1_witness_witness",
+        "cases hstep1_witness_witness_witness",
+        "cases hstep1_witness_witness_witness_right",
+        "cases hstep1_witness_witness_witness_right_right",
+        "have hstep2 : exists a r s. ((((exists fs_h_functional_step2_factor. fs_h_functional_step2_factor + S (a) = S ((S (l)) * c)) /\\ exists fs_q_functional_step2_factor. b = fs_q_functional_step2_factor * S ((S (l)) * c) + (a))) /\\ ((((exists fs_h_functional_step2_partial. fs_h_functional_step2_partial + S (r) = S ((S (l)) * d)) /\\ exists fs_q_functional_step2_partial. w = fs_q_functional_step2_partial * S ((S (l)) * d) + (r))) /\\ ((((exists fs_h_functional_step2_successor. fs_h_functional_step2_successor + S (s) = S ((S (S l)) * d)) /\\ exists fs_q_functional_step2_successor. w = fs_q_functional_step2_successor * S ((S (S l)) * d) + (s))) /\\ s = r * t + a)))",
+        "specialize h2_right_right l",
+        "apply h2_right_right",
+        "specialize le_refl (S l)",
+        "exact le_refl",
+        "cases hstep2",
+        "cases hstep2_witness",
+        "cases hstep2_witness_witness",
+        "cases hstep2_witness_witness_witness",
+        "cases hstep2_witness_witness_witness_right",
+        "cases hstep2_witness_witness_witness_right_right",
+        "have hn : n = x2",
+        "specialize beta_at_unique u",
+        "specialize beta_at_unique v",
+        "specialize beta_at_unique (S l)",
+        "specialize beta_at_unique n",
+        "specialize beta_at_unique x2",
+        "apply beta_at_unique",
+        "exact h1_right_left",
+        "exact hstep1_witness_witness_witness_right_right_left",
+        "have hm : m = x5",
+        "specialize beta_at_unique w",
+        "specialize beta_at_unique d",
+        "specialize beta_at_unique (S l)",
+        "specialize beta_at_unique m",
+        "specialize beta_at_unique x5",
+        "apply beta_at_unique",
+        "exact h2_right_left",
+        "exact hstep2_witness_witness_witness_right_right_left",
+        "have ha : x = x3",
+        "specialize beta_at_unique b",
+        "specialize beta_at_unique c",
+        "specialize beta_at_unique l",
+        "specialize beta_at_unique x",
+        "specialize beta_at_unique x3",
+        "apply beta_at_unique",
+        "exact hstep1_witness_witness_witness_left",
+        "exact hstep2_witness_witness_witness_left",
+        "have hsum1 : ((((exists fs_h_ph_prefix_left_start. fs_h_ph_prefix_left_start + S (0) = S ((S (0)) * v)) /\\ exists fs_q_ph_prefix_left_start. u = fs_q_ph_prefix_left_start * S ((S (0)) * v) + (0))) /\\ ((((exists fs_h_ph_prefix_left_terminal. fs_h_ph_prefix_left_terminal + S (x1) = S ((S (l)) * v)) /\\ exists fs_q_ph_prefix_left_terminal. u = fs_q_ph_prefix_left_terminal * S ((S (l)) * v) + (x1))) /\\ forall ff_i_ph_prefix_left_steps. (exists ph_bound_prefix_left_steps. ph_bound_prefix_left_steps + S ff_i_ph_prefix_left_steps = l) -> exists ff_coefficient_ph_prefix_left_steps ff_previous_ph_prefix_left_steps ff_current_ph_prefix_left_steps. ((((exists fs_h_ph_prefix_left_steps_coefficient. fs_h_ph_prefix_left_steps_coefficient + S (ff_coefficient_ph_prefix_left_steps) = S ((S (ff_i_ph_prefix_left_steps)) * c)) /\\ exists fs_q_ph_prefix_left_steps_coefficient. b = fs_q_ph_prefix_left_steps_coefficient * S ((S (ff_i_ph_prefix_left_steps)) * c) + (ff_coefficient_ph_prefix_left_steps))) /\\ ((((exists fs_h_ph_prefix_left_steps_before. fs_h_ph_prefix_left_steps_before + S (ff_previous_ph_prefix_left_steps) = S ((S (ff_i_ph_prefix_left_steps)) * v)) /\\ exists fs_q_ph_prefix_left_steps_before. u = fs_q_ph_prefix_left_steps_before * S ((S (ff_i_ph_prefix_left_steps)) * v) + (ff_previous_ph_prefix_left_steps))) /\\ ((((exists fs_h_ph_prefix_left_steps_after. fs_h_ph_prefix_left_steps_after + S (ff_current_ph_prefix_left_steps) = S ((S (S ff_i_ph_prefix_left_steps)) * v)) /\\ exists fs_q_ph_prefix_left_steps_after. u = fs_q_ph_prefix_left_steps_after * S ((S (S ff_i_ph_prefix_left_steps)) * v) + (ff_current_ph_prefix_left_steps))) /\\ ff_current_ph_prefix_left_steps = ff_previous_ph_prefix_left_steps * t + ff_coefficient_ph_prefix_left_steps)))))",
+        "split",
+        "exact h1_left",
+        "split",
+        "exact hstep1_witness_witness_witness_right_left",
+        "intro i",
+        "intro hi",
+        "specialize h1_right_right i",
+        "apply h1_right_right",
+        "specialize le_succ (S i)",
+        "specialize le_succ l",
+        "apply le_succ",
+        "exact hi",
+        "have hsum2 : ((((exists fs_h_ph_prefix_right_start. fs_h_ph_prefix_right_start + S (0) = S ((S (0)) * d)) /\\ exists fs_q_ph_prefix_right_start. w = fs_q_ph_prefix_right_start * S ((S (0)) * d) + (0))) /\\ ((((exists fs_h_ph_prefix_right_terminal. fs_h_ph_prefix_right_terminal + S (x4) = S ((S (l)) * d)) /\\ exists fs_q_ph_prefix_right_terminal. w = fs_q_ph_prefix_right_terminal * S ((S (l)) * d) + (x4))) /\\ forall ff_i_ph_prefix_right_steps. (exists ph_bound_prefix_right_steps. ph_bound_prefix_right_steps + S ff_i_ph_prefix_right_steps = l) -> exists ff_coefficient_ph_prefix_right_steps ff_previous_ph_prefix_right_steps ff_current_ph_prefix_right_steps. ((((exists fs_h_ph_prefix_right_steps_coefficient. fs_h_ph_prefix_right_steps_coefficient + S (ff_coefficient_ph_prefix_right_steps) = S ((S (ff_i_ph_prefix_right_steps)) * c)) /\\ exists fs_q_ph_prefix_right_steps_coefficient. b = fs_q_ph_prefix_right_steps_coefficient * S ((S (ff_i_ph_prefix_right_steps)) * c) + (ff_coefficient_ph_prefix_right_steps))) /\\ ((((exists fs_h_ph_prefix_right_steps_before. fs_h_ph_prefix_right_steps_before + S (ff_previous_ph_prefix_right_steps) = S ((S (ff_i_ph_prefix_right_steps)) * d)) /\\ exists fs_q_ph_prefix_right_steps_before. w = fs_q_ph_prefix_right_steps_before * S ((S (ff_i_ph_prefix_right_steps)) * d) + (ff_previous_ph_prefix_right_steps))) /\\ ((((exists fs_h_ph_prefix_right_steps_after. fs_h_ph_prefix_right_steps_after + S (ff_current_ph_prefix_right_steps) = S ((S (S ff_i_ph_prefix_right_steps)) * d)) /\\ exists fs_q_ph_prefix_right_steps_after. w = fs_q_ph_prefix_right_steps_after * S ((S (S ff_i_ph_prefix_right_steps)) * d) + (ff_current_ph_prefix_right_steps))) /\\ ff_current_ph_prefix_right_steps = ff_previous_ph_prefix_right_steps * t + ff_coefficient_ph_prefix_right_steps)))))",
+        "split",
+        "exact h2_left",
+        "split",
+        "exact hstep2_witness_witness_witness_right_left",
+        "intro i",
+        "intro hi",
+        "specialize h2_right_right i",
+        "apply h2_right_right",
+        "specialize le_succ (S i)",
+        "specialize le_succ l",
+        "apply le_succ",
+        "exact hi",
+        "have hprev : x1 = x4",
+        "specialize IH x1",
+        "specialize IH u",
+        "specialize IH v",
+        "specialize IH x4",
+        "specialize IH w",
+        "specialize IH d",
+        "apply IH",
+        "exact hsum1",
+        "exact hsum2",
+        "have hadd : x1 * t + x = x4 * t + x3",
+        "specialize add_congr (x1 * t)",
+        "specialize add_congr (x4 * t)",
+        "specialize add_congr x",
+        "specialize add_congr x3",
+        "apply add_congr",
+        "specialize mul_congr x1",
+        "specialize mul_congr x4",
+        "specialize mul_congr t",
+        "specialize mul_congr t",
+        "apply mul_congr",
+        "exact hprev",
+        "refl",
+        "exact ha",
+        "trans x2",
+        "exact hn",
+        "trans x1 * t + x",
+        "exact hstep1_witness_witness_witness_right_right_right",
+        "trans x4 * t + x3",
+        "exact hadd",
+        "trans x5",
+        "symm",
+        "exact hstep2_witness_witness_witness_right_right_right",
+        "symm",
+        "exact hm"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+      "sources": [
+        {
+          "factory": "make_polynomial_horner_candidate_theorems",
+          "script_sha256": "082f832372a4c91aa49605ebaaad1a96c02db51a2c4f682817044152d04fe756",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+          "statement_sha256": "8aa74d7f29e22bd960a68c38f350e3dfcc546c934f91354b03a260186fdac3fd"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c t l n u v m w d. (((((exists fs_h_ph_left_start. fs_h_ph_left_start + S (0) = S ((S (0)) * v)) /\\ exists fs_q_ph_left_start. u = fs_q_ph_left_start * S ((S (0)) * v) + (0))) /\\ ((((exists fs_h_ph_left_terminal. fs_h_ph_left_terminal + S (n) = S ((S (l)) * v)) /\\ exists fs_q_ph_left_terminal. u = fs_q_ph_left_terminal * S ((S (l)) * v) + (n))) /\\ forall ff_i_ph_left_steps. (exists ph_bound_left_steps. ph_bound_left_steps + S ff_i_ph_left_steps = l) -> exists ff_coefficient_ph_left_steps ff_previous_ph_left_steps ff_current_ph_left_steps. ((((exists fs_h_ph_left_steps_coefficient. fs_h_ph_left_steps_coefficient + S (ff_coefficient_ph_left_steps) = S ((S (ff_i_ph_left_steps)) * c)) /\\ exists fs_q_ph_left_steps_coefficient. b = fs_q_ph_left_steps_coefficient * S ((S (ff_i_ph_left_steps)) * c) + (ff_coefficient_ph_left_steps))) /\\ ((((exists fs_h_ph_left_steps_before. fs_h_ph_left_steps_before + S (ff_previous_ph_left_steps) = S ((S (ff_i_ph_left_steps)) * v)) /\\ exists fs_q_ph_left_steps_before. u = fs_q_ph_left_steps_before * S ((S (ff_i_ph_left_steps)) * v) + (ff_previous_ph_left_steps))) /\\ ((((exists fs_h_ph_left_steps_after. fs_h_ph_left_steps_after + S (ff_current_ph_left_steps) = S ((S (S ff_i_ph_left_steps)) * v)) /\\ exists fs_q_ph_left_steps_after. u = fs_q_ph_left_steps_after * S ((S (S ff_i_ph_left_steps)) * v) + (ff_current_ph_left_steps))) /\\ ff_current_ph_left_steps = ff_previous_ph_left_steps * t + ff_coefficient_ph_left_steps)))))) -> (((((exists fs_h_ph_right_start. fs_h_ph_right_start + S (0) = S ((S (0)) * d)) /\\ exists fs_q_ph_right_start. w = fs_q_ph_right_start * S ((S (0)) * d) + (0))) /\\ ((((exists fs_h_ph_right_terminal. fs_h_ph_right_terminal + S (m) = S ((S (l)) * d)) /\\ exists fs_q_ph_right_terminal. w = fs_q_ph_right_terminal * S ((S (l)) * d) + (m))) /\\ forall ff_i_ph_right_steps. (exists ph_bound_right_steps. ph_bound_right_steps + S ff_i_ph_right_steps = l) -> exists ff_coefficient_ph_right_steps ff_previous_ph_right_steps ff_current_ph_right_steps. ((((exists fs_h_ph_right_steps_coefficient. fs_h_ph_right_steps_coefficient + S (ff_coefficient_ph_right_steps) = S ((S (ff_i_ph_right_steps)) * c)) /\\ exists fs_q_ph_right_steps_coefficient. b = fs_q_ph_right_steps_coefficient * S ((S (ff_i_ph_right_steps)) * c) + (ff_coefficient_ph_right_steps))) /\\ ((((exists fs_h_ph_right_steps_before. fs_h_ph_right_steps_before + S (ff_previous_ph_right_steps) = S ((S (ff_i_ph_right_steps)) * d)) /\\ exists fs_q_ph_right_steps_before. w = fs_q_ph_right_steps_before * S ((S (ff_i_ph_right_steps)) * d) + (ff_previous_ph_right_steps))) /\\ ((((exists fs_h_ph_right_steps_after. fs_h_ph_right_steps_after + S (ff_current_ph_right_steps) = S ((S (S ff_i_ph_right_steps)) * d)) /\\ exists fs_q_ph_right_steps_after. w = fs_q_ph_right_steps_after * S ((S (S ff_i_ph_right_steps)) * d) + (ff_current_ph_right_steps))) /\\ ff_current_ph_right_steps = ff_previous_ph_right_steps * t + ff_coefficient_ph_right_steps)))))) -> n = m",
+      "statement_sha256": "8aa74d7f29e22bd960a68c38f350e3dfcc546c934f91354b03a260186fdac3fd",
+      "status": "Alpha v25 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "Any two complete Horner traces over the same polynomial have equal values."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 36,
+      "body_proof_nodes": 62,
+      "campaign_milestone": "T12",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ t. ∀ l. ∀ n. ∀ m. Horner(b,c,t,l,n) → Horner(b,c,t,l,m) → n = m",
+        "defined_statement_sha256": "361ed7d5b791d68a2dc967c910bb5073b52bd3dff9d0ea69573a00201767342f",
+        "definition_uses": {
+          "ND0002": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "b4aba527e588657826225e544ae64074c95885ee81ba22e16675a1ca270e5062",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0002": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ t. ∀ l. ∀ n. ∀ m. "
+          },
+          {
+            "definition": "ND0002",
+            "kind": "definition",
+            "text": "Horner(b,c,t,l,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "ND0002",
+            "kind": "definition",
+            "text": "Horner(b,c,t,l,m)"
+          },
+          {
+            "kind": "text",
+            "text": " → n = m"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_horner_trace_functional"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_polynomial_horner_candidate_theorems",
+      "id": "PH0004",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_horner_eval_functional",
+      "proof_bundle_node_id": 553,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro t",
+        "intro l",
+        "intro n",
+        "intro m",
+        "intro hn",
+        "intro hm",
+        "cases hn",
+        "cases hn_witness",
+        "cases hm",
+        "cases hm_witness",
+        "specialize beta_horner_trace_functional b",
+        "specialize beta_horner_trace_functional c",
+        "specialize beta_horner_trace_functional t",
+        "specialize beta_horner_trace_functional l",
+        "specialize beta_horner_trace_functional n",
+        "specialize beta_horner_trace_functional x",
+        "specialize beta_horner_trace_functional x1",
+        "specialize beta_horner_trace_functional m",
+        "specialize beta_horner_trace_functional x2",
+        "specialize beta_horner_trace_functional x3",
+        "apply beta_horner_trace_functional",
+        "exact hn_witness_witness",
+        "exact hm_witness_witness"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+      "sources": [
+        {
+          "factory": "make_polynomial_horner_candidate_theorems",
+          "script_sha256": "5a409dcffb3da6092241db68fde4fce8bf559291d2e462ccfe44e545d411785a",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+          "statement_sha256": "b4aba527e588657826225e544ae64074c95885ee81ba22e16675a1ca270e5062"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c t l n m. (exists ff_u_ph_root_value ff_v_ph_root_value. ((((exists fs_h_ph_root_value_body_start. fs_h_ph_root_value_body_start + S (0) = S ((S (0)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_start. ff_u_ph_root_value = fs_q_ph_root_value_body_start * S ((S (0)) * ff_v_ph_root_value) + (0))) /\\ ((((exists fs_h_ph_root_value_body_terminal. fs_h_ph_root_value_body_terminal + S (n) = S ((S (l)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_terminal. ff_u_ph_root_value = fs_q_ph_root_value_body_terminal * S ((S (l)) * ff_v_ph_root_value) + (n))) /\\ forall ff_i_ph_root_value_body_steps. (exists ph_bound_root_value_body_steps. ph_bound_root_value_body_steps + S ff_i_ph_root_value_body_steps = l) -> exists ff_coefficient_ph_root_value_body_steps ff_previous_ph_root_value_body_steps ff_current_ph_root_value_body_steps. ((((exists fs_h_ph_root_value_body_steps_coefficient. fs_h_ph_root_value_body_steps_coefficient + S (ff_coefficient_ph_root_value_body_steps) = S ((S (ff_i_ph_root_value_body_steps)) * c)) /\\ exists fs_q_ph_root_value_body_steps_coefficient. b = fs_q_ph_root_value_body_steps_coefficient * S ((S (ff_i_ph_root_value_body_steps)) * c) + (ff_coefficient_ph_root_value_body_steps))) /\\ ((((exists fs_h_ph_root_value_body_steps_before. fs_h_ph_root_value_body_steps_before + S (ff_previous_ph_root_value_body_steps) = S ((S (ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_steps_before. ff_u_ph_root_value = fs_q_ph_root_value_body_steps_before * S ((S (ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value) + (ff_previous_ph_root_value_body_steps))) /\\ ((((exists fs_h_ph_root_value_body_steps_after. fs_h_ph_root_value_body_steps_after + S (ff_current_ph_root_value_body_steps) = S ((S (S ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_steps_after. ff_u_ph_root_value = fs_q_ph_root_value_body_steps_after * S ((S (S ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value) + (ff_current_ph_root_value_body_steps))) /\\ ff_current_ph_root_value_body_steps = ff_previous_ph_root_value_body_steps * t + ff_coefficient_ph_root_value_body_steps)))))) -> (exists ff_u_ph_root_other ff_v_ph_root_other. ((((exists fs_h_ph_root_other_body_start. fs_h_ph_root_other_body_start + S (0) = S ((S (0)) * ff_v_ph_root_other)) /\\ exists fs_q_ph_root_other_body_start. ff_u_ph_root_other = fs_q_ph_root_other_body_start * S ((S (0)) * ff_v_ph_root_other) + (0))) /\\ ((((exists fs_h_ph_root_other_body_terminal. fs_h_ph_root_other_body_terminal + S (m) = S ((S (l)) * ff_v_ph_root_other)) /\\ exists fs_q_ph_root_other_body_terminal. ff_u_ph_root_other = fs_q_ph_root_other_body_terminal * S ((S (l)) * ff_v_ph_root_other) + (m))) /\\ forall ff_i_ph_root_other_body_steps. (exists ph_bound_root_other_body_steps. ph_bound_root_other_body_steps + S ff_i_ph_root_other_body_steps = l) -> exists ff_coefficient_ph_root_other_body_steps ff_previous_ph_root_other_body_steps ff_current_ph_root_other_body_steps. ((((exists fs_h_ph_root_other_body_steps_coefficient. fs_h_ph_root_other_body_steps_coefficient + S (ff_coefficient_ph_root_other_body_steps) = S ((S (ff_i_ph_root_other_body_steps)) * c)) /\\ exists fs_q_ph_root_other_body_steps_coefficient. b = fs_q_ph_root_other_body_steps_coefficient * S ((S (ff_i_ph_root_other_body_steps)) * c) + (ff_coefficient_ph_root_other_body_steps))) /\\ ((((exists fs_h_ph_root_other_body_steps_before. fs_h_ph_root_other_body_steps_before + S (ff_previous_ph_root_other_body_steps) = S ((S (ff_i_ph_root_other_body_steps)) * ff_v_ph_root_other)) /\\ exists fs_q_ph_root_other_body_steps_before. ff_u_ph_root_other = fs_q_ph_root_other_body_steps_before * S ((S (ff_i_ph_root_other_body_steps)) * ff_v_ph_root_other) + (ff_previous_ph_root_other_body_steps))) /\\ ((((exists fs_h_ph_root_other_body_steps_after. fs_h_ph_root_other_body_steps_after + S (ff_current_ph_root_other_body_steps) = S ((S (S ff_i_ph_root_other_body_steps)) * ff_v_ph_root_other)) /\\ exists fs_q_ph_root_other_body_steps_after. ff_u_ph_root_other = fs_q_ph_root_other_body_steps_after * S ((S (S ff_i_ph_root_other_body_steps)) * ff_v_ph_root_other) + (ff_current_ph_root_other_body_steps))) /\\ ff_current_ph_root_other_body_steps = ff_previous_ph_root_other_body_steps * t + ff_coefficient_ph_root_other_body_steps)))))) -> n = m",
+      "statement_sha256": "b4aba527e588657826225e544ae64074c95885ee81ba22e16675a1ca270e5062",
+      "status": "Alpha v25 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "The beta-coded polynomial-evaluation relation is functional."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 34,
+      "body_proof_nodes": 58,
+      "campaign_milestone": "T12",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ t. ∀ l. ∃ n. Horner(b,c,t,l,n) ∧ (∀ x. Horner(b,c,t,l,x) → n = x)",
+        "defined_statement_sha256": "c50096f81cabc753c8e800e9b98f885c34b9d20d0461167e80af008a8edca9e2",
+        "definition_uses": {
+          "ND0002": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "dc33419fc070f5dec724e8402427979ad42fab806e6f541c0bf741c7ba3e2828",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0002": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ t. ∀ l. ∃ n. "
+          },
+          {
+            "definition": "ND0002",
+            "kind": "definition",
+            "text": "Horner(b,c,t,l,n)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ (∀ x. "
+          },
+          {
+            "definition": "ND0002",
+            "kind": "definition",
+            "text": "Horner(b,c,t,l,x)"
+          },
+          {
+            "kind": "text",
+            "text": " → n = x)"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_horner_eval_exists",
+        "beta_horner_eval_functional"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_polynomial_horner_candidate_theorems",
+      "id": "PH0005",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_horner_eval_exists_unique",
+      "proof_bundle_node_id": 554,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro t",
+        "intro l",
+        "specialize beta_horner_eval_exists b",
+        "specialize beta_horner_eval_exists c",
+        "specialize beta_horner_eval_exists t",
+        "specialize beta_horner_eval_exists l",
+        "cases beta_horner_eval_exists",
+        "exists x",
+        "split",
+        "exact beta_horner_eval_exists_witness",
+        "intro m",
+        "intro hm",
+        "specialize beta_horner_eval_functional b",
+        "specialize beta_horner_eval_functional c",
+        "specialize beta_horner_eval_functional t",
+        "specialize beta_horner_eval_functional l",
+        "specialize beta_horner_eval_functional x",
+        "specialize beta_horner_eval_functional m",
+        "apply beta_horner_eval_functional",
+        "exact beta_horner_eval_exists_witness",
+        "exact hm"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+      "sources": [
+        {
+          "factory": "make_polynomial_horner_candidate_theorems",
+          "script_sha256": "315680c5091fc76e23591dd297d24720d903e31de7606606f0f2ccc363fdeb62",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+          "statement_sha256": "dc33419fc070f5dec724e8402427979ad42fab806e6f541c0bf741c7ba3e2828"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c t l. exists n. ((exists ff_u_ph_root_value ff_v_ph_root_value. ((((exists fs_h_ph_root_value_body_start. fs_h_ph_root_value_body_start + S (0) = S ((S (0)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_start. ff_u_ph_root_value = fs_q_ph_root_value_body_start * S ((S (0)) * ff_v_ph_root_value) + (0))) /\\ ((((exists fs_h_ph_root_value_body_terminal. fs_h_ph_root_value_body_terminal + S (n) = S ((S (l)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_terminal. ff_u_ph_root_value = fs_q_ph_root_value_body_terminal * S ((S (l)) * ff_v_ph_root_value) + (n))) /\\ forall ff_i_ph_root_value_body_steps. (exists ph_bound_root_value_body_steps. ph_bound_root_value_body_steps + S ff_i_ph_root_value_body_steps = l) -> exists ff_coefficient_ph_root_value_body_steps ff_previous_ph_root_value_body_steps ff_current_ph_root_value_body_steps. ((((exists fs_h_ph_root_value_body_steps_coefficient. fs_h_ph_root_value_body_steps_coefficient + S (ff_coefficient_ph_root_value_body_steps) = S ((S (ff_i_ph_root_value_body_steps)) * c)) /\\ exists fs_q_ph_root_value_body_steps_coefficient. b = fs_q_ph_root_value_body_steps_coefficient * S ((S (ff_i_ph_root_value_body_steps)) * c) + (ff_coefficient_ph_root_value_body_steps))) /\\ ((((exists fs_h_ph_root_value_body_steps_before. fs_h_ph_root_value_body_steps_before + S (ff_previous_ph_root_value_body_steps) = S ((S (ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_steps_before. ff_u_ph_root_value = fs_q_ph_root_value_body_steps_before * S ((S (ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value) + (ff_previous_ph_root_value_body_steps))) /\\ ((((exists fs_h_ph_root_value_body_steps_after. fs_h_ph_root_value_body_steps_after + S (ff_current_ph_root_value_body_steps) = S ((S (S ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value)) /\\ exists fs_q_ph_root_value_body_steps_after. ff_u_ph_root_value = fs_q_ph_root_value_body_steps_after * S ((S (S ff_i_ph_root_value_body_steps)) * ff_v_ph_root_value) + (ff_current_ph_root_value_body_steps))) /\\ ff_current_ph_root_value_body_steps = ff_previous_ph_root_value_body_steps * t + ff_coefficient_ph_root_value_body_steps)))))) /\\ forall m. (exists ff_u_ph_root_other ff_v_ph_root_other. ((((exists fs_h_ph_root_other_body_start. fs_h_ph_root_other_body_start + S (0) = S ((S (0)) * ff_v_ph_root_other)) /\\ exists fs_q_ph_root_other_body_start. ff_u_ph_root_other = fs_q_ph_root_other_body_start * S ((S (0)) * ff_v_ph_root_other) + (0))) /\\ ((((exists fs_h_ph_root_other_body_terminal. fs_h_ph_root_other_body_terminal + S (m) = S ((S (l)) * ff_v_ph_root_other)) /\\ exists fs_q_ph_root_other_body_terminal. ff_u_ph_root_other = fs_q_ph_root_other_body_terminal * S ((S (l)) * ff_v_ph_root_other) + (m))) /\\ forall ff_i_ph_root_other_body_steps. (exists ph_bound_root_other_body_steps. ph_bound_root_other_body_steps + S ff_i_ph_root_other_body_steps = l) -> exists ff_coefficient_ph_root_other_body_steps ff_previous_ph_root_other_body_steps ff_current_ph_root_other_body_steps. ((((exists fs_h_ph_root_other_body_steps_coefficient. fs_h_ph_root_other_body_steps_coefficient + S (ff_coefficient_ph_root_other_body_steps) = S ((S (ff_i_ph_root_other_body_steps)) * c)) /\\ exists fs_q_ph_root_other_body_steps_coefficient. b = fs_q_ph_root_other_body_steps_coefficient * S ((S (ff_i_ph_root_other_body_steps)) * c) + (ff_coefficient_ph_root_other_body_steps))) /\\ ((((exists fs_h_ph_root_other_body_steps_before. fs_h_ph_root_other_body_steps_before + S (ff_previous_ph_root_other_body_steps) = S ((S (ff_i_ph_root_other_body_steps)) * ff_v_ph_root_other)) /\\ exists fs_q_ph_root_other_body_steps_before. ff_u_ph_root_other = fs_q_ph_root_other_body_steps_before * S ((S (ff_i_ph_root_other_body_steps)) * ff_v_ph_root_other) + (ff_previous_ph_root_other_body_steps))) /\\ ((((exists fs_h_ph_root_other_body_steps_after. fs_h_ph_root_other_body_steps_after + S (ff_current_ph_root_other_body_steps) = S ((S (S ff_i_ph_root_other_body_steps)) * ff_v_ph_root_other)) /\\ exists fs_q_ph_root_other_body_steps_after. ff_u_ph_root_other = fs_q_ph_root_other_body_steps_after * S ((S (S ff_i_ph_root_other_body_steps)) * ff_v_ph_root_other) + (ff_current_ph_root_other_body_steps))) /\\ ff_current_ph_root_other_body_steps = ff_previous_ph_root_other_body_steps * t + ff_coefficient_ph_root_other_body_steps)))))) -> n = m)",
+      "statement_sha256": "dc33419fc070f5dec724e8402427979ad42fab806e6f541c0bf741c7ba3e2828",
+      "status": "Alpha v25 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "Every coded natural polynomial has exactly one witnessed evaluation."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 29,
+      "body_proof_nodes": 51,
+      "campaign_milestone": "T12",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ t. ∀ n. Horner(b,c,t,0,n) → n = 0",
+        "defined_statement_sha256": "9cb6df6f4d62cefe10911f15c9d77080a6274f69a02c08aa8b13bec76a557e9f",
+        "definition_uses": {
+          "ND0002": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "ade4e8cda97412983e3c0491d316d62ee4e5a85f04d0578a13fc387377c900c0",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0002": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ t. ∀ n. "
+          },
+          {
+            "definition": "ND0002",
+            "kind": "definition",
+            "text": "Horner(b,c,t,0,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → n = 0"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_at_unique"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_polynomial_horner_candidate_theorems",
+      "id": "PH0006",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_horner_eval_empty",
+      "proof_bundle_node_id": 555,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro t",
+        "intro n",
+        "intro hsum",
+        "cases hsum",
+        "cases hsum_witness",
+        "cases hsum_witness_witness",
+        "cases hsum_witness_witness_right",
+        "specialize beta_at_unique x",
+        "specialize beta_at_unique x1",
+        "specialize beta_at_unique 0",
+        "specialize beta_at_unique n",
+        "specialize beta_at_unique 0",
+        "apply beta_at_unique",
+        "exact hsum_witness_witness_right_left",
+        "exact hsum_witness_witness_left"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+      "sources": [
+        {
+          "factory": "make_polynomial_horner_candidate_theorems",
+          "script_sha256": "f59c9cdaddf56e378edd566f91d11ebaace19e704a5f796eff3ec69b3479b4ba",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+          "statement_sha256": "ade4e8cda97412983e3c0491d316d62ee4e5a85f04d0578a13fc387377c900c0"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c t n. (exists ff_u_ph_zero ff_v_ph_zero. ((((exists fs_h_ph_zero_body_start. fs_h_ph_zero_body_start + S (0) = S ((S (0)) * ff_v_ph_zero)) /\\ exists fs_q_ph_zero_body_start. ff_u_ph_zero = fs_q_ph_zero_body_start * S ((S (0)) * ff_v_ph_zero) + (0))) /\\ ((((exists fs_h_ph_zero_body_terminal. fs_h_ph_zero_body_terminal + S (n) = S ((S (0)) * ff_v_ph_zero)) /\\ exists fs_q_ph_zero_body_terminal. ff_u_ph_zero = fs_q_ph_zero_body_terminal * S ((S (0)) * ff_v_ph_zero) + (n))) /\\ forall ff_i_ph_zero_body_steps. (exists ph_bound_zero_body_steps. ph_bound_zero_body_steps + S ff_i_ph_zero_body_steps = 0) -> exists ff_coefficient_ph_zero_body_steps ff_previous_ph_zero_body_steps ff_current_ph_zero_body_steps. ((((exists fs_h_ph_zero_body_steps_coefficient. fs_h_ph_zero_body_steps_coefficient + S (ff_coefficient_ph_zero_body_steps) = S ((S (ff_i_ph_zero_body_steps)) * c)) /\\ exists fs_q_ph_zero_body_steps_coefficient. b = fs_q_ph_zero_body_steps_coefficient * S ((S (ff_i_ph_zero_body_steps)) * c) + (ff_coefficient_ph_zero_body_steps))) /\\ ((((exists fs_h_ph_zero_body_steps_before. fs_h_ph_zero_body_steps_before + S (ff_previous_ph_zero_body_steps) = S ((S (ff_i_ph_zero_body_steps)) * ff_v_ph_zero)) /\\ exists fs_q_ph_zero_body_steps_before. ff_u_ph_zero = fs_q_ph_zero_body_steps_before * S ((S (ff_i_ph_zero_body_steps)) * ff_v_ph_zero) + (ff_previous_ph_zero_body_steps))) /\\ ((((exists fs_h_ph_zero_body_steps_after. fs_h_ph_zero_body_steps_after + S (ff_current_ph_zero_body_steps) = S ((S (S ff_i_ph_zero_body_steps)) * ff_v_ph_zero)) /\\ exists fs_q_ph_zero_body_steps_after. ff_u_ph_zero = fs_q_ph_zero_body_steps_after * S ((S (S ff_i_ph_zero_body_steps)) * ff_v_ph_zero) + (ff_current_ph_zero_body_steps))) /\\ ff_current_ph_zero_body_steps = ff_previous_ph_zero_body_steps * t + ff_coefficient_ph_zero_body_steps)))))) -> n = 0",
+      "statement_sha256": "ade4e8cda97412983e3c0491d316d62ee4e5a85f04d0578a13fc387377c900c0",
+      "status": "Alpha v25 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "The empty polynomial's exact constructive Horner value is zero."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 29,
+      "body_proof_nodes": 72,
+      "campaign_milestone": "T12",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ t. ∀ l. ∀ n. Horner(b,c,t,S l,n) → ∃ x. ∃ y. Beta(b,c,l,x) ∧ (Horner(b,c,t,l,y) ∧ n = y · t + x)",
+        "defined_statement_sha256": "fb9f60c6485599a3692654f01585f71abd0ed78a903496513fe3c0d24076451b",
+        "definition_uses": {
+          "ND0001": 1,
+          "ND0002": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "7b429b8d533dea0ef39b123ad3431ff060b75a581b48b5b18f5b0d7f28e35f48",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0001": 1,
+          "ND0002": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ t. ∀ l. ∀ n. "
+          },
+          {
+            "definition": "ND0002",
+            "kind": "definition",
+            "text": "Horner(b,c,t,S l,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ x. ∃ y. "
+          },
+          {
+            "definition": "ND0001",
+            "kind": "definition",
+            "text": "Beta(b,c,l,x)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ ("
+          },
+          {
+            "definition": "ND0002",
+            "kind": "definition",
+            "text": "Horner(b,c,t,l,y)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ n = y · t + x)"
+          }
+        ]
+      },
+      "dependencies": [
+        "le_refl",
+        "le_succ",
+        "beta_at_unique"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_polynomial_horner_candidate_theorems",
+      "id": "PH0007",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_horner_eval_successor_decompose",
+      "proof_bundle_node_id": 556,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro t",
+        "intro l",
+        "intro n",
+        "intro hsum",
+        "cases hsum",
+        "cases hsum_witness",
+        "cases hsum_witness_witness",
+        "cases hsum_witness_witness_right",
+        "have hstep : exists a r s. ((((exists fs_h_decomp_factor. fs_h_decomp_factor + S (a) = S ((S (l)) * c)) /\\ exists fs_q_decomp_factor. b = fs_q_decomp_factor * S ((S (l)) * c) + (a))) /\\ ((((exists fs_h_decomp_partial. fs_h_decomp_partial + S (r) = S ((S (l)) * x1)) /\\ exists fs_q_decomp_partial. x = fs_q_decomp_partial * S ((S (l)) * x1) + (r))) /\\ ((((exists fs_h_decomp_successor. fs_h_decomp_successor + S (s) = S ((S (S l)) * x1)) /\\ exists fs_q_decomp_successor. x = fs_q_decomp_successor * S ((S (S l)) * x1) + (s))) /\\ s = r * t + a)))",
+        "specialize hsum_witness_witness_right_right l",
+        "apply hsum_witness_witness_right_right",
+        "specialize le_refl (S l)",
+        "exact le_refl",
+        "cases hstep",
+        "cases hstep_witness",
+        "cases hstep_witness_witness",
+        "cases hstep_witness_witness_witness",
+        "cases hstep_witness_witness_witness_right",
+        "cases hstep_witness_witness_witness_right_right",
+        "have hn : n = x4",
+        "specialize beta_at_unique x",
+        "specialize beta_at_unique x1",
+        "specialize beta_at_unique (S l)",
+        "specialize beta_at_unique n",
+        "specialize beta_at_unique x4",
+        "apply beta_at_unique",
+        "exact hsum_witness_witness_right_left",
+        "exact hstep_witness_witness_witness_right_right_left",
+        "exists x2",
+        "exists x3",
+        "split",
+        "exact hstep_witness_witness_witness_left",
+        "split",
+        "exists x",
+        "exists x1",
+        "split",
+        "exact hsum_witness_witness_left",
+        "split",
+        "exact hstep_witness_witness_witness_right_left",
+        "intro i",
+        "intro hi",
+        "specialize hsum_witness_witness_right_right i",
+        "apply hsum_witness_witness_right_right",
+        "specialize le_succ (S i)",
+        "specialize le_succ l",
+        "apply le_succ",
+        "exact hi",
+        "trans x4",
+        "exact hn",
+        "exact hstep_witness_witness_witness_right_right_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+      "sources": [
+        {
+          "factory": "make_polynomial_horner_candidate_theorems",
+          "script_sha256": "bbd3cdced0dbe0f28fd967d68d49be347ea6c189af163814fed8e5f761450fc9",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/polynomial_horner_candidate.py",
+          "statement_sha256": "7b429b8d533dea0ef39b123ad3431ff060b75a581b48b5b18f5b0d7f28e35f48"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c t l n. (exists ff_u_ph_successor ff_v_ph_successor. ((((exists fs_h_ph_successor_body_start. fs_h_ph_successor_body_start + S (0) = S ((S (0)) * ff_v_ph_successor)) /\\ exists fs_q_ph_successor_body_start. ff_u_ph_successor = fs_q_ph_successor_body_start * S ((S (0)) * ff_v_ph_successor) + (0))) /\\ ((((exists fs_h_ph_successor_body_terminal. fs_h_ph_successor_body_terminal + S (n) = S ((S (S l)) * ff_v_ph_successor)) /\\ exists fs_q_ph_successor_body_terminal. ff_u_ph_successor = fs_q_ph_successor_body_terminal * S ((S (S l)) * ff_v_ph_successor) + (n))) /\\ forall ff_i_ph_successor_body_steps. (exists ph_bound_successor_body_steps. ph_bound_successor_body_steps + S ff_i_ph_successor_body_steps = S l) -> exists ff_coefficient_ph_successor_body_steps ff_previous_ph_successor_body_steps ff_current_ph_successor_body_steps. ((((exists fs_h_ph_successor_body_steps_coefficient. fs_h_ph_successor_body_steps_coefficient + S (ff_coefficient_ph_successor_body_steps) = S ((S (ff_i_ph_successor_body_steps)) * c)) /\\ exists fs_q_ph_successor_body_steps_coefficient. b = fs_q_ph_successor_body_steps_coefficient * S ((S (ff_i_ph_successor_body_steps)) * c) + (ff_coefficient_ph_successor_body_steps))) /\\ ((((exists fs_h_ph_successor_body_steps_before. fs_h_ph_successor_body_steps_before + S (ff_previous_ph_successor_body_steps) = S ((S (ff_i_ph_successor_body_steps)) * ff_v_ph_successor)) /\\ exists fs_q_ph_successor_body_steps_before. ff_u_ph_successor = fs_q_ph_successor_body_steps_before * S ((S (ff_i_ph_successor_body_steps)) * ff_v_ph_successor) + (ff_previous_ph_successor_body_steps))) /\\ ((((exists fs_h_ph_successor_body_steps_after. fs_h_ph_successor_body_steps_after + S (ff_current_ph_successor_body_steps) = S ((S (S ff_i_ph_successor_body_steps)) * ff_v_ph_successor)) /\\ exists fs_q_ph_successor_body_steps_after. ff_u_ph_successor = fs_q_ph_successor_body_steps_after * S ((S (S ff_i_ph_successor_body_steps)) * ff_v_ph_successor) + (ff_current_ph_successor_body_steps))) /\\ ff_current_ph_successor_body_steps = ff_previous_ph_successor_body_steps * t + ff_coefficient_ph_successor_body_steps)))))) -> exists a r. ((((exists fs_h_ph_final_coefficient. fs_h_ph_final_coefficient + S (a) = S ((S (l)) * c)) /\\ exists fs_q_ph_final_coefficient. b = fs_q_ph_final_coefficient * S ((S (l)) * c) + (a))) /\\ ((exists ff_u_ph_prefix ff_v_ph_prefix. ((((exists fs_h_ph_prefix_body_start. fs_h_ph_prefix_body_start + S (0) = S ((S (0)) * ff_v_ph_prefix)) /\\ exists fs_q_ph_prefix_body_start. ff_u_ph_prefix = fs_q_ph_prefix_body_start * S ((S (0)) * ff_v_ph_prefix) + (0))) /\\ ((((exists fs_h_ph_prefix_body_terminal. fs_h_ph_prefix_body_terminal + S (r) = S ((S (l)) * ff_v_ph_prefix)) /\\ exists fs_q_ph_prefix_body_terminal. ff_u_ph_prefix = fs_q_ph_prefix_body_terminal * S ((S (l)) * ff_v_ph_prefix) + (r))) /\\ forall ff_i_ph_prefix_body_steps. (exists ph_bound_prefix_body_steps. ph_bound_prefix_body_steps + S ff_i_ph_prefix_body_steps = l) -> exists ff_coefficient_ph_prefix_body_steps ff_previous_ph_prefix_body_steps ff_current_ph_prefix_body_steps. ((((exists fs_h_ph_prefix_body_steps_coefficient. fs_h_ph_prefix_body_steps_coefficient + S (ff_coefficient_ph_prefix_body_steps) = S ((S (ff_i_ph_prefix_body_steps)) * c)) /\\ exists fs_q_ph_prefix_body_steps_coefficient. b = fs_q_ph_prefix_body_steps_coefficient * S ((S (ff_i_ph_prefix_body_steps)) * c) + (ff_coefficient_ph_prefix_body_steps))) /\\ ((((exists fs_h_ph_prefix_body_steps_before. fs_h_ph_prefix_body_steps_before + S (ff_previous_ph_prefix_body_steps) = S ((S (ff_i_ph_prefix_body_steps)) * ff_v_ph_prefix)) /\\ exists fs_q_ph_prefix_body_steps_before. ff_u_ph_prefix = fs_q_ph_prefix_body_steps_before * S ((S (ff_i_ph_prefix_body_steps)) * ff_v_ph_prefix) + (ff_previous_ph_prefix_body_steps))) /\\ ((((exists fs_h_ph_prefix_body_steps_after. fs_h_ph_prefix_body_steps_after + S (ff_current_ph_prefix_body_steps) = S ((S (S ff_i_ph_prefix_body_steps)) * ff_v_ph_prefix)) /\\ exists fs_q_ph_prefix_body_steps_after. ff_u_ph_prefix = fs_q_ph_prefix_body_steps_after * S ((S (S ff_i_ph_prefix_body_steps)) * ff_v_ph_prefix) + (ff_current_ph_prefix_body_steps))) /\\ ff_current_ph_prefix_body_steps = ff_previous_ph_prefix_body_steps * t + ff_coefficient_ph_prefix_body_steps)))))) /\\ n = r * t + a))",
+      "statement_sha256": "7b429b8d533dea0ef39b123ad3431ff060b75a581b48b5b18f5b0d7f28e35f48",
+      "status": "Alpha v25 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "A nonempty polynomial splits into its evaluated prefix and final coefficient."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "beta_horner_eval_empty": {
+      "critical_root_path": [
+        "PH0006"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "beta_horner_eval_exists": {
+      "critical_root_path": [
+        "PH0001",
+        "PH0002"
+      ],
+      "dependencies": [
+        "beta_prefix_horner_trace_exists"
+      ],
+      "dependents": [
+        "beta_horner_eval_exists_unique"
+      ]
+    },
+    "beta_horner_eval_exists_unique": {
+      "critical_root_path": [
+        "PH0001",
+        "PH0002",
+        "PH0005"
+      ],
+      "dependencies": [
+        "beta_horner_eval_exists",
+        "beta_horner_eval_functional"
+      ],
+      "dependents": []
+    },
+    "beta_horner_eval_functional": {
+      "critical_root_path": [
+        "PH0003",
+        "PH0004"
+      ],
+      "dependencies": [
+        "beta_horner_trace_functional"
+      ],
+      "dependents": [
+        "beta_horner_eval_exists_unique"
+      ]
+    },
+    "beta_horner_eval_successor_decompose": {
+      "critical_root_path": [
+        "PH0007"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "beta_horner_trace_functional": {
+      "critical_root_path": [
+        "PH0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "beta_horner_eval_functional"
+      ]
+    },
+    "beta_prefix_horner_trace_exists": {
+      "critical_root_path": [
+        "PH0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "beta_horner_eval_exists"
+      ]
+    }
+  },
+  "proof_paths": {
+    "PH0001": [
+      "PH0001"
+    ],
+    "PH0002": [
+      "PH0001",
+      "PH0002"
+    ],
+    "PH0003": [
+      "PH0003"
+    ],
+    "PH0004": [
+      "PH0003",
+      "PH0004"
+    ],
+    "PH0005": [
+      "PH0001",
+      "PH0002",
+      "PH0005"
+    ],
+    "PH0006": [
+      "PH0006"
+    ],
+    "PH0007": [
+      "PH0007"
+    ]
+  },
+  "root_names": [
+    "beta_horner_eval_exists_unique",
+    "beta_horner_eval_successor_decompose",
+    "beta_horner_eval_exists"
+  ],
+  "schema": "peano-lab-constructive-next-layer-explorer-v1",
+  "stable_admitted_node_count": 0,
+  "statement_definition_use_count": 10,
+  "tags": {
+    "beta_horner_eval_empty": "PH0006",
+    "beta_horner_eval_exists": "PH0002",
+    "beta_horner_eval_exists_unique": "PH0005",
+    "beta_horner_eval_functional": "PH0004",
+    "beta_horner_eval_successor_decompose": "PH0007",
+    "beta_horner_trace_functional": "PH0003",
+    "beta_prefix_horner_trace_exists": "PH0001"
+  }
+}

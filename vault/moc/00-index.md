@@ -17,7 +17,13 @@ tags: [moc, index]
 - [[curry-howard]] · [[beta-reduction]] · [[s-combinator]] · [[four-foundations]] · [[autoformalization]]
 
 ## Tools
-- [[lambda-lab]] · [[lean]] · [[mathlib]] · [[agda]] · [[mizar]]
+- [[lambda-lab]] · [[peano-lab]] · [[lean]] · [[mathlib]] · [[agda]] · [[mizar]]
+
+## Building Peano Lab
+- [[peano-lab-moc|Peano Lab MOC]] · [[trusted-kernel]] · [[proof-certificate]] · [[self-contained-proof-sharing]] · [[theorem-ladder]] · [[pa-proof-explorer]] · [[kernel-guided-policy-training]] · [[peano-hydra]]
+
+## Foundational arithmetic
+- [[arithmetic-library-moc|Arithmetic library MOC]] · [[quadratic-reciprocity-moc|Quadratic reciprocity MOC]] · [[divisibility]] · [[arithmetic-congruence]] · [[gcd-and-coprimality]] · [[prime-number]] · [[fundamental-theorem-of-arithmetic]]
 
 ---
 Book: https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026/book  ·  Lab: /lab-lambda  ·  Repo: github.com/nasqret/vietnam2026

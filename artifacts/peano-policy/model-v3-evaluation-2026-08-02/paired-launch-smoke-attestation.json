@@ -1,0 +1,210 @@
+{
+  "attestation_authority": {
+    "all_inputs_checked_before_and_after": true,
+    "sources": {
+      "files": {
+        "scripts/attest_peano_v3_paired_evaluation.py": "82bcf92f395321a39b2705f670cba0368367317a957c2103ce01314fffeab4e0",
+        "training/peano_policy/paired_evaluation_attestation.py": "4dae42e1efdae58f49bd79143cea52903f1659bc79fd64322eac44e604020e06",
+        "training/peano_policy/runtime.py": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc"
+      },
+      "sha256": "de009d065fa1d9aa2b804b9f522dd066c2a93641943ee69c2d0d1aa8fc3d9995"
+    },
+    "tool_sources_checked_before_and_after": true
+  },
+  "attestation_sha256": "9b33b4e488f14e38fc7c5a122410d53e9e1123409dcccafdc73e0a8ab1a14bae",
+  "claim_scope": {
+    "allowed_interpretation": "under the byte-pinned declared producer records and shared smoke conditions, the trained run solved 3 of 4 goals and the pretrained comparison solved 0 of 4",
+    "bit_for_bit_base_weight_identity_attested": false,
+    "broad_theorem_proving_capability_claim": false,
+    "causal_training_effect_claim": false,
+    "induction_capability_claim": false,
+    "scope": "one frozen four-goal paired launch smoke at k=1",
+    "simultaneous_job_execution_claim": false,
+    "statistical_capability_claim": false
+  },
+  "format": "peano-policy-v3-paired-launch-smoke-attestation",
+  "inputs": {
+    "pretrained_attestation": {
+      "bytes": 24314,
+      "canonical_record_sha256": "2821965b030054d84739107f9d8ce80551c5c1b285573be4dbdd1023125f1734",
+      "path": "/Users/bnaskrecki/codex/peano/_deploy/peano-policy-v3/artifacts/peano-policy/model-v3-evaluation-2026-08-02/pretrained-base-replay.json",
+      "sha256": "05fe9d657842808bd69c25fd3ec47a1ca2942a8b26b6b028f30fa202b7341453"
+    },
+    "pretrained_report": {
+      "bytes": 96702,
+      "canonical_record_sha256": "04ea8a7f2c76827c91e709bb2cadffb12954caa6d05702d4702803b176280a3a",
+      "path": "/Users/bnaskrecki/codex/peano/_deploy/peano-policy-v3/artifacts/peano-policy/model-v3-evaluation-2026-08-02/pretrained-base-report.json",
+      "sha256": "410be8f224d2dac6d28c4e0f55f125e95d5bc1f725b9c20851b00c15394d97b9"
+    },
+    "trained_attestation": {
+      "bytes": 24869,
+      "canonical_record_sha256": "cc27c6c5b4e17dd3f35bba632ae673035846a69cc407db1f0cccbc9a74de53b1",
+      "path": "/Users/bnaskrecki/codex/peano/_deploy/peano-policy-v3/artifacts/peano-policy/model-v3-evaluation-2026-08-02/trained-compatibility-replay.json",
+      "sha256": "feacfdb85b5080a9c304903221b4540a19ec27b0eee5d5b0727f34880102cd02"
+    },
+    "trained_report": {
+      "bytes": 85121,
+      "canonical_record_sha256": "fee88f56e5a1cb88b2cf0ce00b713f2ea63eeacb1a0c1c507fdf19a5d250835b",
+      "path": "/Users/bnaskrecki/codex/peano/_deploy/peano-policy-v3/artifacts/peano-policy/model-v3-evaluation-2026-08-02/trained-report.json",
+      "sha256": "f134f8c2d8c173e2ebcee0ebd3b8dfbc59805619bd7e79706c11e51732e0956c"
+    },
+    "training_manifest": {
+      "bytes": 1631246,
+      "canonical_record_sha256": "07a92c4e1440d71cedf63bc4ba22c7ade686350b0b009235524f1a77383d698c",
+      "path": "/Users/bnaskrecki/codex/peano/_deploy/peano-policy-v3/artifacts/peano-policy/model-v3-evaluation-2026-08-02/training-manifest.json",
+      "sha256": "caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569"
+    }
+  },
+  "observed_result": {
+    "denominator": 4,
+    "k": 1,
+    "metric": "observed_solve_fraction_at_k_1",
+    "pretrained_comparison": {
+      "proof_claims": 0,
+      "solve_fraction": 0.0,
+      "solved": 0
+    },
+    "trained": {
+      "kernel_replayed_proofs": 3,
+      "solve_fraction": 0.75,
+      "solved": 3
+    },
+    "trained_minus_pretrained_solve_fraction": 0.75,
+    "trained_minus_pretrained_solved": 3
+  },
+  "pairing": {
+    "authority": {
+      "base_model": {
+        "config_sha256": "a325c9f27de176887b8ca7f68d21714247f9c8106e8c120219789338da9a5dcd",
+        "id": "Qwen/Qwen3-1.7B-Base",
+        "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+      },
+      "comparison_adapter": {
+        "root": "adapter",
+        "sha256": "db428e3c891166e43c1c71df7902e6fb579959f19c300cafe7ae8dcfe2dd2a70"
+      },
+      "environment_record_sha256": "db88dcc6d47c270566bb8a6218f3238bc9be8e03db9f8d14147b9fa6639f7279",
+      "environment_sha256": "72372974368a4a2b66cba42fa48baae47e24bf811a8b2dd030027ea3b7f16363",
+      "held_out_contract_sha256": "351f6257d79f7e4704eb02da128697da58ae1916e1e5a1bedb1a8e60ef18103d",
+      "prompt_contract_sha256": "c01ed3c8188cda44f798b01f449c9b07b7df6ccb00d75606ab01d1177a24d229",
+      "prompt_version": 3,
+      "run_name": "qwen3-1.7b-peano-lora-v3-library",
+      "training_manifest_sha256": "caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569"
+    },
+    "benchmark": {
+      "goal_set_sha256": "198beaf753c0abab3151b4913ca9da63094ab6f28807e949e651e629336470d5",
+      "goals": [
+        {
+          "name": "closed_arithmetic_seven",
+          "statement": "0 · 0 + 3 + (0 · 1 + 1) + (3 + 0) = 7"
+        },
+        {
+          "name": "existential_subtraction_two",
+          "statement": "∃ x. 7 = x + 2"
+        },
+        {
+          "name": "double_right_zero",
+          "statement": "∀ x. x + 0 + 0 = x"
+        },
+        {
+          "name": "consecutive_product_even",
+          "statement": "∀ x. ∃ y. x · (x + 1) = 2 · y"
+        }
+      ],
+      "k": 1,
+      "search_limits": {
+        "beam_width": 16,
+        "candidates_per_state": 8,
+        "max_depth": 32,
+        "max_model_calls": 512,
+        "max_states": 4096
+      },
+      "seed": 20260728
+    },
+    "same_goals_seed_search_limits": true,
+    "source_and_jobs_cross_bound": true,
+    "training_manifest_and_provenance_cross_bound": true
+  },
+  "producer_attribution": {
+    "basis": "byte-pinned-historical-producer-source-job-records",
+    "historical_sources": {
+      "all_declared_source_blobs_verified_with_git_cat_file": true,
+      "all_overlap_digests_agree": true,
+      "commit": "4d44609ee32d5d28726c082ef7b5649c0a1107a6",
+      "historical_script_blobs_verified": 3,
+      "historical_scripts": {
+        "pretrained_slurm": {
+          "path": "slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch",
+          "sha256": "9c7f7c4bfeba8108c92d2a0d4647780a4358103477fe2861708c6cdc0e4f0331"
+        },
+        "shared_support": {
+          "path": "scripts/wmi_job_environment.sh",
+          "sha256": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da"
+        },
+        "trained_slurm": {
+          "path": "slurm/peano_wmi_eval_qwen3_1_7b_v3.sbatch",
+          "sha256": "c6bc66e908f5825e8747b6dc88333a67697254a769a741cf4f0325ad4d02c078"
+        }
+      },
+      "maps": {
+        "pretrained_evaluation": 62,
+        "pretrained_semantic": 36,
+        "trained_evaluation": 61,
+        "trained_semantic": 36
+      },
+      "overlapping_source_paths": 61,
+      "unique_source_blobs_verified": 62
+    },
+    "model_output_transcripts_present_in_reports": false,
+    "paired_layer_kernel_replay_count": 0,
+    "paired_layer_replayed_raw_model_outputs": false,
+    "pretrained_evaluation_job_id": "218172",
+    "pretrained_job_record_sha256": "5c9498dc8e9c323d2fbd3a405513a72b860a5f91dbaa7642025969b77f9590a9",
+    "producer_attestation_self_hashes_verified": true,
+    "producer_input_cross_links_verified": true,
+    "reason_raw_outputs_not_replayed": "the immutable reports do not contain complete raw model-output transcripts",
+    "source_commit": "4d44609ee32d5d28726c082ef7b5649c0a1107a6",
+    "trained_certificates_kernel_replayed_by_consumed_attestation": 3,
+    "trained_evaluation_job_id": "218171",
+    "trained_job_record_sha256": "c2ce8249b1fb2bbd3fecfe727a3b92f275838b7ae01f02ee30c09cc6311e84ba",
+    "training_job_id": "217859"
+  },
+  "result": "paired_launch_smoke_admitted",
+  "status": "passed",
+  "trained_proofs": [
+    {
+      "commands": [
+        "norm_num"
+      ],
+      "goal_index": 0,
+      "kernel_replayed": true,
+      "name": "closed_arithmetic_seven",
+      "proof_nodes": 98,
+      "statement": "0 · 0 + 3 + (0 · 1 + 1) + (3 + 0) = 7"
+    },
+    {
+      "commands": [
+        "exists 5",
+        "norm_num"
+      ],
+      "goal_index": 1,
+      "kernel_replayed": true,
+      "name": "existential_subtraction_two",
+      "proof_nodes": 29,
+      "statement": "∃ x. 7 = x + 2"
+    },
+    {
+      "commands": [
+        "intro n",
+        "rewrite PA3",
+        "simp"
+      ],
+      "goal_index": 2,
+      "kernel_replayed": true,
+      "name": "double_right_zero",
+      "proof_nodes": 10,
+      "statement": "∀ x. x + 0 + 0 = x"
+    }
+  ],
+  "v": 1
+}

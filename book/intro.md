@@ -6,7 +6,34 @@
 Poznań · Centre for Trustworthy AI (CCAI), Warsaw University of Technology.
 [Landing page](https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026) ·
 [Lambda Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda) ·
+[Peano Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/) ·
 [Source](https://github.com/nasqret/vietnam2026)
+```
+
+```{admonition} New: Peano Lab is live
+:class: important
+[Peano Lab](https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/) is a little Lean for Peano
+arithmetic: real tactics generate explicit certificates and a separate kernel checks every QED.
+The six-part {doc}`construction story <peano/index>` explains how the kernel, tactics, tacticals,
+induction and checked theorem ladder fit together.
+```
+
+```{admonition} New: explore the native arithmetic library
+:class: seealso
+The {doc}`foundational arithmetic dashboard <arithmetic-library/index>` now
+opens a {doc}`guided route <arithmetic-library/guided-tour>` from equality and
+division through GCD, Bézout, Euclid, Gödel-β finite products and the native
+Fundamental Theorem of Arithmetic. The
+{doc}`interactive theorem atlas <arithmetic-library/theorem-atlas>` embeds the
+exact statements and complete authored proofs for all 384 checked theorems,
+with searchable prerequisite and dependent links. The new
+{doc}`native PA proof explorer <arithmetic-library/proof-explorer>` adds
+permanent theorem tags, line-addressable tactic scripts, informal proof
+outlines, and the complete 557-node quadratic-reciprocity dependency route
+without confusing body-checked candidates with public admission. Its
+{doc}`interactive dependency graph <arithmetic-library/dependency-graph>` lets
+you draw individual premise chains or inspect a theorem's complete dependency
+cone.
 ```
 
 This is the **knowledge book** of the course — the text-friendly notes, with the mathematics, the code,

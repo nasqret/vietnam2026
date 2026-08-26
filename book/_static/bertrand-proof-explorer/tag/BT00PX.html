@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT00PX — le_mul_of_one_le_left</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT00PX.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT00PX&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT00PW.html">← le_mul_of_one_le_right</a><a href="BT00PY.html">pow_base_monotone →</a></nav>
+<p class="pa-tag">BT00PX</p><h1>le_mul_of_one_le_left</h1>
+<p class="pa-status-candidate">Alpha v25 checked-use theorem · independently kernel and Lean verified; not Stable</p>
+<p>A factor at least one makes left multiplication extensive.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a b. (exists bpo_gap_left_factor. bpo_gap_left_factor + (1) = (a)) -&gt; (exists bpo_gap_left_result. bpo_gap_left_result + (b) = (a * b))</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>A factor at least one makes left multiplication extensive.</p><p>Direct prerequisites:
+mul_le_mul_right, one_mul.
+The authored body proceeds by intermediate claims (1), equality transport (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT001M.html"><code>BT001M</code> mul_le_mul_right</a> <a class="pa-theorem-ref" href="BT0009.html"><code>BT0009</code> one_mul</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT010H.html"><code>BT010H</code> division_quotient_le_dividend</a> <a class="pa-theorem-ref" href="BT0111.html"><code>BT0111</code> no_bertrand_middle_contribution_interval_le_four_pow</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="2a9b7666140a7ac8"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="cc7414a474d258b9"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="18625b0a19fc3670"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> ha</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="have" data-line-id="96a64b74c477fe8b"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">have</span> hscaled : exists k. k + 1 * b = a * b</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="9301092dab0e1d04"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001M.html">mul_le_mul_right</a> 1</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="specialize" data-line-id="614d677847ac85a5"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001M.html">mul_le_mul_right</a> a</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="specialize" data-line-id="f9aa41e230ee3ea9"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT001M.html">mul_le_mul_right</a> b</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="apply" data-line-id="94b6bd7f10624384"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT001M.html">mul_le_mul_right</a></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exact" data-line-id="c2b39992ce0fa1b6"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exact</span> ha</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="specialize" data-line-id="85abbfb5847b31f3"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0009.html">one_mul</a> b</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="rewrite" data-line-id="1a3a753f6dc3e355"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">rewrite</span> <a class="pa-theorem-ref" href="BT0009.html">one_mul</a> at hscaled</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="exact" data-line-id="84c1968a9625a6e3"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">exact</span> hscaled</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>908</dd>
+<dt>Layer</dt><dd>6</dd><dt>Lines</dt><dd>12</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>alpha_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>no</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>14</dd>
+<dt>Statement SHA-256</dt><dd><code>44ee6ef882e766c5ffab36f55ea4a0a89cbc07077adcd3deb902a853dbcd6511</code></dd>
+<dt>Script SHA-256</dt><dd><code>75e4b9e89dda2434eb386fe8b9c7e9853500036baf579370fc0c5ceb9fe14e79</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_power_order_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_power_order_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>50b07e3b40b81966a37bc07cbb44b93498a86efa76aabcbb4af94b17c1eb17e6</code></dd>
+</dl></aside></main></body></html>

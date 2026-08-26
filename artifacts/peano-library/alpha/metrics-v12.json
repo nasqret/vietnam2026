@@ -1,0 +1,5564 @@
+{
+  "catalog_path": "artifacts/peano-library/alpha/catalog-v12.json",
+  "catalog_sha256": "825909e057492de87ef08208451c3475396ca009179c513457b05b57f7e2f109",
+  "channel": "alpha",
+  "checked_closure_metrics": {
+    "certificate_digest_kinds": {
+      "content-proof-dag-sha256": 138,
+      "python-dataclass-repr-sha256": 432
+    },
+    "maximum_cut_nodes": 2184,
+    "maximum_proof_depth": 99,
+    "maximum_proof_edges": 9077,
+    "maximum_proof_nodes": 95253,
+    "maximum_proof_objects": 8701,
+    "metric_bearing_theorem_count": 570,
+    "missing_empty_context_metric_count": 733,
+    "total_cut_nodes": 62924,
+    "total_proof_edges": 616222,
+    "total_proof_nodes": 2588925,
+    "total_proof_objects": 588164,
+    "total_reused_objects": 28628
+  },
+  "checked_use_count": 570,
+  "dependency_graph": {
+    "declared_edge_count": 4302,
+    "dependency_free_theorem_count": 111,
+    "layer_count": 45,
+    "maximum_direct_dependency_count": 27,
+    "maximum_transitive_dependency_count": 556,
+    "reachability_reduction_scope": "Display-only transitive reduction; this is not proof-semantic or global dependency minimality.",
+    "reachability_redundant_direct_dependencies": [
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "division_remainder_exists"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "positive_quotient_gap_impossible"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "positive_quotient_gap_impossible"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "division_remainder_unique"
+      },
+      {
+        "dependency": "add_left_cancel",
+        "theorem": "division_remainder_unique"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "add_eq_zero_components"
+      },
+      {
+        "dependency": "mul_eq_zero",
+        "theorem": "mul_left_cancel_nonzero"
+      },
+      {
+        "dependency": "mul_zero_left",
+        "theorem": "multiple_antisymm"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "factor_difference"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "divides_linear_step"
+      },
+      {
+        "dependency": "one_mul",
+        "theorem": "coprime_to_is_gcd_one"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "balanced_bezout_euclid_step"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "balanced_bezout_euclid_step"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "balanced_bezout_euclid_step"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "gcd_balanced_bezout_exists_up_to"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "balanced_combination_scale_right"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "common_divisor_divides_balanced_result"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "common_divisor_divides_balanced_result"
+      },
+      {
+        "dependency": "multiple_refl",
+        "theorem": "gauss_coprime_cancel"
+      },
+      {
+        "dependency": "eq_decidable",
+        "theorem": "multiple_decidable"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "factor_search_up_to"
+      },
+      {
+        "dependency": "eq_decidable",
+        "theorem": "factor_search_up_to"
+      },
+      {
+        "dependency": "eq_decidable",
+        "theorem": "prime_decidable"
+      },
+      {
+        "dependency": "mul_zero_left",
+        "theorem": "prime_divisor_exists_up_to"
+      },
+      {
+        "dependency": "le_zero",
+        "theorem": "prime_divisor_exists_up_to"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "prime_divisor_exists_up_to"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "prime_divisor_exists"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "mod_eq_trans"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "mod_eq_add"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "mod_eq_mul_left"
+      },
+      {
+        "dependency": "mod_eq_mul_right",
+        "theorem": "mod_eq_mul"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "remainder_decomposition_to_mod_eq"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "mod_eq_bounded_unique"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "mod_eq_to_remainder_decomposition"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "add_residue"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "add_residue_lift"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "square_decomp"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "square_decomp"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "square_decomp"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "mod_eq_predecessor_cancel"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "mod_eq_predecessor_cancel"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "binary_crt"
+      },
+      {
+        "dependency": "mul_one",
+        "theorem": "binary_crt"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "binary_crt"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "binary_crt"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "binary_crt"
+      },
+      {
+        "dependency": "beta_modulus_nonzero",
+        "theorem": "binary_crt_beta_pair"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "common_divisor_beta_moduli_divides_gap_times_c"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "common_divisor_beta_moduli_divides_gap_times_c"
+      },
+      {
+        "dependency": "multiple_refl",
+        "theorem": "beta_moduli_coprime_of_gap_dvd"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "beta_moduli_coprime_of_gap_dvd"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "bounded_common_multiple_exists"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "beta_moduli_coprime_of_lt_bounded_common_multiple"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "binary_crt_fold_step"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "beta_accumulated_product_step"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "beta_accumulated_product_step"
+      },
+      {
+        "dependency": "beta_modulus_nonzero",
+        "theorem": "beta_crt_prefix_congruence_step"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_crt_prefix_congruence_step"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "beta_crt_prefix_congruence_step"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "beta_crt_prefix_congruence_step"
+      },
+      {
+        "dependency": "beta_modulus_nonzero",
+        "theorem": "bounded_beta_crt_prefix_invariant"
+      },
+      {
+        "dependency": "le_zero",
+        "theorem": "bounded_beta_crt_prefix_invariant"
+      },
+      {
+        "dependency": "multiple_refl",
+        "theorem": "bounded_beta_crt_prefix_invariant"
+      },
+      {
+        "dependency": "beta_moduli_coprime_of_lt_bounded_common_multiple",
+        "theorem": "bounded_beta_crt_prefix_invariant"
+      },
+      {
+        "dependency": "le_succ_self",
+        "theorem": "bounded_beta_crt_prefix_invariant"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bounded_beta_crt_prefix_invariant"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "bounded_beta_crt_for_existing_code"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "prime_unbounded"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "prime_unbounded"
+      },
+      {
+        "dependency": "mul_one",
+        "theorem": "prime_unbounded"
+      },
+      {
+        "dependency": "le_add_left",
+        "theorem": "new_value_lt_scaled_base"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "beta_exclusive_accumulated_product_step"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "beta_exclusive_accumulated_product_step"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "beta_exclusive_accumulated_product_step"
+      },
+      {
+        "dependency": "beta_modulus_nonzero",
+        "theorem": "beta_exclusive_recode_congruence_step"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_exclusive_recode_congruence_step"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "beta_exclusive_recode_congruence_step"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "beta_exclusive_recode_congruence_step"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "bounded_beta_exclusive_recode_invariant"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "bounded_beta_exclusive_recode_invariant"
+      },
+      {
+        "dependency": "le_succ_self",
+        "theorem": "bounded_beta_exclusive_recode_invariant"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bounded_beta_exclusive_recode_invariant"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_prefix_extend"
+      },
+      {
+        "dependency": "beta_modulus_nonzero",
+        "theorem": "beta_prefix_extend"
+      },
+      {
+        "dependency": "binary_crt_fold_step",
+        "theorem": "beta_prefix_extend"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_prefix_product_trace_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_prefix_product_trace_exists"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_prefix_product_trace_exists"
+      },
+      {
+        "dependency": "succ_le_succ",
+        "theorem": "beta_prefix_product_trace_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_prefix_product_trace_exists"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "beta_prefix_product_trace_exists"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "beta_prefix_product_trace_exists"
+      },
+      {
+        "dependency": "one_mul",
+        "theorem": "beta_prefix_product_trace_exists"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_product_exists"
+      },
+      {
+        "dependency": "succ_le_succ",
+        "theorem": "beta_product_succ_append"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_succ_append"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "beta_product_succ_append"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "beta_product_succ_append"
+      },
+      {
+        "dependency": "succ_le_succ",
+        "theorem": "beta_factor_prefix_product_append"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_factor_prefix_product_append"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "beta_factor_prefix_product_append"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "beta_factor_prefix_product_append"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_prefix_extend_sorted_succ"
+      },
+      {
+        "dependency": "one_mul",
+        "theorem": "beta_canonical_append_empty"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_canonical_append_succ"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "greatest_prime_divisor_search"
+      },
+      {
+        "dependency": "le_zero",
+        "theorem": "greatest_prime_divisor_search"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "greatest_prime_divisor_search"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "greatest_prime_divisor_search"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "greatest_prime_divisor_search"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "greatest_prime_divisor_search"
+      },
+      {
+        "dependency": "divisor_le_nonzero",
+        "theorem": "greatest_prime_divisor_exists"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "greatest_prime_divisor_descent"
+      },
+      {
+        "dependency": "proper_factor_lt",
+        "theorem": "greatest_prime_divisor_descent"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_factor_divides_product"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "beta_factor_divides_product"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "beta_canonical_append_general"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_canonical_append_general"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_canonical_last_factor_bound"
+      },
+      {
+        "dependency": "le_zero",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "eq_decidable",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "one_mul",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "prime_factorization_exists_up_to"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "prime_factorization_existence"
+      },
+      {
+        "dependency": "divisor_one",
+        "theorem": "beta_prime_divisor_product_member"
+      },
+      {
+        "dependency": "prime_divisor_eq_one_or_self",
+        "theorem": "beta_prime_divisor_product_member"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_prime_divisor_product_member"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_prime_divisor_product_member"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_prime_divisor_product_member"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sorted_factor_le_last"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_nonempty_all_prime_product_ne_one"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_all_prime_product_one_iff_length_zero"
+      },
+      {
+        "dependency": "all_prime_succ_elim_last",
+        "theorem": "beta_canonical_last_factors_equal"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_canonical_last_factors_equal"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_canonical_last_factors_equal"
+      },
+      {
+        "dependency": "beta_product_succ_decompose",
+        "theorem": "beta_canonical_product_cancel_last"
+      },
+      {
+        "dependency": "all_prime_succ_elim_last",
+        "theorem": "beta_canonical_product_cancel_last"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_canonical_product_cancel_last"
+      },
+      {
+        "dependency": "all_prime_succ_elim_prefix",
+        "theorem": "beta_canonical_product_cancel_last"
+      },
+      {
+        "dependency": "sorted_succ_elim_prefix",
+        "theorem": "beta_canonical_product_cancel_last"
+      },
+      {
+        "dependency": "beta_product_zero",
+        "theorem": "prime_factorization_uniqueness_by_length"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_factorization_uniqueness_by_length"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_factorization_uniqueness_by_length"
+      },
+      {
+        "dependency": "beta_nonempty_all_prime_product_ne_one",
+        "theorem": "prime_factorization_uniqueness_by_length"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "prime_factorization_uniqueness_by_length"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "prime_factorization_uniqueness_by_length"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "prime_factorization_uniqueness_by_length"
+      },
+      {
+        "dependency": "mul_zero_left",
+        "theorem": "prime_three"
+      },
+      {
+        "dependency": "prime_divisor_eq_one_or_self",
+        "theorem": "two_prime_product_uniqueness"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "two_prime_product_uniqueness"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "mod5_square_residue_one"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "mod5_square_residue_one"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "mod5_square_residue_two"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "mod5_square_residue_two"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "mod5_square_residue_two"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "mod5_fourth_power_residue_one"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "mod5_fourth_power_residue_two"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "mod5_fourth_power_residue_three"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "mod5_fourth_power_residue_four"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "mod5_fourth_power_one"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "even_add_odd"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "odd_add_odd"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "odd_add_odd"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "odd_mul_odd"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "odd_mul_odd"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "odd_mul_odd"
+      },
+      {
+        "dependency": "add_right_cancel",
+        "theorem": "odd_half_unique"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "odd_mod4_cases"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "mod4_three_is_odd"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "mod_eq_decidable_nonzero"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "quadratic_residue_search_up_to"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "quadratic_residue_search_up_to"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "quadratic_residue_bounded_equiv"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "quadratic_residue_bounded_equiv"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "beta_repeat_succ_extend"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "beta_repeat_succ_extend"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "pow_successor_decompose"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "pow_successor_decompose"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "beta_range_succ_extend"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "beta_range_succ_extend"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_prefix_sum_trace_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_prefix_sum_trace_exists"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_prefix_sum_trace_exists"
+      },
+      {
+        "dependency": "succ_le_succ",
+        "theorem": "beta_prefix_sum_trace_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_prefix_sum_trace_exists"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "beta_prefix_sum_trace_exists"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "beta_prefix_sum_trace_exists"
+      },
+      {
+        "dependency": "one_mul",
+        "theorem": "beta_prefix_sum_trace_exists"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_sum_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_product_pointwise_mod_congruent"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_pointwise_mod_congruent"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_sum_pointwise_mod_congruent"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sum_pointwise_mod_congruent"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "bit_count_succ_decompose"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "bit_count_bounded"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bit_count_bounded"
+      },
+      {
+        "dependency": "prime_divisor_eq_one_or_self",
+        "theorem": "distinct_primes_coprime"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "coprime_balanced_mod_inverse"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "coprime_mod_inverse"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "coprime_mod_inverse"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "coprime_mod_inverse"
+      },
+      {
+        "dependency": "mod_eq_mul_right",
+        "theorem": "mod_eq_cancel_coprime"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "mod_eq_cancel_coprime"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "mod_eq_cancel_coprime"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "mod_eq_cancel_coprime"
+      },
+      {
+        "dependency": "mul_one",
+        "theorem": "mod_eq_cancel_coprime"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "factorial_succ_decompose"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "factorial_succ_decompose"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "factorial_succ_decompose"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "factorial_succ_decompose"
+      },
+      {
+        "dependency": "pow_successor_decompose",
+        "theorem": "pow_mod_congruent"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "lt_five_cases"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "lt_five_cases"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "lt_seven_cases"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "lt_seven_cases"
+      },
+      {
+        "dependency": "pow_successor_decompose",
+        "theorem": "pow_two_from_one_successor"
+      },
+      {
+        "dependency": "pow_zero",
+        "theorem": "pow_mul_exp"
+      },
+      {
+        "dependency": "pow_successor_decompose",
+        "theorem": "pow_mul_exp"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "predecessor_square_mod_one"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "predecessor_square_mod_one"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "predecessor_square_mod_one"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "predecessor_square_mod_one"
+      },
+      {
+        "dependency": "odd_not_even",
+        "theorem": "pow_predecessor_parity_mod"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "pow_predecessor_parity_mod"
+      },
+      {
+        "dependency": "add_left_cancel",
+        "theorem": "beta_range_injective"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "beta_half_range_entry_bounds"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "beta_half_range_entry_bounds"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "beta_half_range_entry_bounds"
+      },
+      {
+        "dependency": "mul_zero_left",
+        "theorem": "beta_half_range_entry_bounds"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "beta_half_range_entry_bounds"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_prefix_replace_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_prefix_replace_exists"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_prefix_replace_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_prefix_replace_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_prefix_swap_last_from_entries"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_prefix_swap_last_from_entries"
+      },
+      {
+        "dependency": "lt_irrefl_expanded",
+        "theorem": "beta_prefix_swap_last_from_entries"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_prefix_swap_last_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "finite_contains_decidable"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "finite_last_is_top_from_prefix_surjective"
+      },
+      {
+        "dependency": "finite_bounded_last_succ",
+        "theorem": "finite_bounded_injective_surjective"
+      },
+      {
+        "dependency": "finite_bounded_prefix_without_top",
+        "theorem": "finite_bounded_injective_surjective"
+      },
+      {
+        "dependency": "finite_injective_prefix_succ",
+        "theorem": "finite_bounded_injective_surjective"
+      },
+      {
+        "dependency": "finite_surjective_succ_from_prefix",
+        "theorem": "finite_bounded_injective_surjective"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "finite_bounded_injective_surjective"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "finite_bounded_injective_surjective"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "finite_bounded_injective_surjective"
+      },
+      {
+        "dependency": "lt_irrefl_expanded",
+        "theorem": "finite_bounded_injective_surjective"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_product_replace_balance"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "beta_product_replace_balance"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_product_replace_balance"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_replace_balance"
+      },
+      {
+        "dependency": "beta_product_succ_decompose",
+        "theorem": "beta_product_swap_last_invariant"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_product_swap_last_invariant"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_product_swap_last_invariant"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_swap_last_invariant"
+      },
+      {
+        "dependency": "lt_irrefl_expanded",
+        "theorem": "beta_product_swap_last_invariant"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "finite_fixed_last_prefix_bounded"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_reindex_alignment_swap_last"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "prime_bounded_nonzero_mod_inverse"
+      },
+      {
+        "dependency": "division_remainder_exists",
+        "theorem": "prime_bounded_nonzero_mod_inverse"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "prime_bounded_nonzero_mod_inverse"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "prime_bounded_nonzero_mod_inverse"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_bounded_nonzero_mod_inverse"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "canonical_remainders_characterize_mod_eq"
+      },
+      {
+        "dependency": "mod_eq_mul_right",
+        "theorem": "bounded_mod_inverse_unique"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "bounded_mod_inverse_unique"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "bounded_mod_inverse_unique"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "coprime_bounded_mod_inverse"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "coprime_bounded_mod_inverse"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "mod_inverse_implies_coprime"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "coprime_product_is_lcm"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "coprime_product_is_lcm"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "balanced_bezout_cancel_gcd"
+      },
+      {
+        "dependency": "gcd_balanced_bezout_exists",
+        "theorem": "gcd_lcm_compatible_exists"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "gcd_lcm_compatible_exists"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "gcd_lcm_compatible_exists"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "mod_eq_scale"
+      },
+      {
+        "dependency": "division_remainder_exists",
+        "theorem": "mod_eq_common_remainder_decomposition"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "mod_eq_common_remainder_decomposition"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "mod_eq_common_remainder_decomposition"
+      },
+      {
+        "dependency": "mod_eq_refl",
+        "theorem": "crt_scaled_common_remainder_lift"
+      },
+      {
+        "dependency": "mod_eq_add",
+        "theorem": "crt_scaled_common_remainder_lift"
+      },
+      {
+        "dependency": "mul_zero_left",
+        "theorem": "generalized_binary_crt_sufficient_nonzero"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "mod_eq_ordered_gap_multiple"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "mod_eq_ordered_gap_multiple"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "mod_eq_lcm_merge"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "crt_solution_class_iff_lcm"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "crt_solution_canonical_remainder_nonzero"
+      },
+      {
+        "dependency": "remainder_decomposition_to_mod_eq",
+        "theorem": "crt_solution_canonical_remainder_nonzero"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "crt_solution_canonical_remainder_nonzero"
+      },
+      {
+        "dependency": "eq_decidable",
+        "theorem": "generalized_binary_crt_canonical_boundary"
+      },
+      {
+        "dependency": "eq_decidable",
+        "theorem": "mod_eq_decidable"
+      },
+      {
+        "dependency": "distinct_primes_left_not_divide_right",
+        "theorem": "distinct_primes_mutually_nondivisible"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "odd_upper_remainder_reflection"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "odd_upper_remainder_reflection"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "odd_upper_remainder_reflection"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "gauss_pointwise_signed_half_representative"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "gauss_pointwise_signed_half_representative"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "gauss_pointwise_signed_half_representative"
+      },
+      {
+        "dependency": "division_remainder_exists",
+        "theorem": "gauss_half_range_signed_choices"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "gauss_half_range_signed_choices"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "gauss_signed_half_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "gauss_signed_half_prefix_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "gauss_signed_half_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "gauss_signed_half_prefix_exists"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "prime_scaled_same_target_unique"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "prime_scaled_same_target_unique"
+      },
+      {
+        "dependency": "mod_eq_add",
+        "theorem": "gauss_mixed_sign_scaled_source_impossible"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "gauss_mixed_sign_scaled_source_impossible"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "gauss_mixed_sign_scaled_source_impossible"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "gauss_mixed_sign_scaled_source_impossible"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "gauss_mixed_sign_scaled_source_impossible"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "gauss_mixed_sign_scaled_source_impossible"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "gauss_signed_half_magnitude_injective"
+      },
+      {
+        "dependency": "beta_range_entry_eq",
+        "theorem": "gauss_signed_half_magnitude_injective"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "gauss_signed_half_magnitude_injective"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "gauss_signed_half_magnitude_injective"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "gauss_signed_half_magnitude_injective"
+      },
+      {
+        "dependency": "mul_zero_left",
+        "theorem": "gauss_signed_half_magnitude_injective"
+      },
+      {
+        "dependency": "lt_of_le_of_lt",
+        "theorem": "gauss_signed_half_magnitude_injective"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "gauss_signed_half_magnitude_injective"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_magnitude_predecessor_recode_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_magnitude_predecessor_recode_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_magnitude_predecessor_recode_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_magnitude_predecessor_recode_exists"
+      },
+      {
+        "dependency": "nonzero_is_succ",
+        "theorem": "beta_magnitude_predecessor_recode_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_magnitude_predecessor_recode_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_sign_factor_prefix_extend"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_sign_factor_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_sign_factor_prefix_exists"
+      },
+      {
+        "dependency": "beta_product_zero",
+        "theorem": "beta_sign_factor_product_power"
+      },
+      {
+        "dependency": "beta_product_succ_decompose",
+        "theorem": "beta_sign_factor_product_power"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_sign_factor_product_power"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sign_factor_product_power"
+      },
+      {
+        "dependency": "beta_product_exists",
+        "theorem": "beta_sign_factor_product_power_exists"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_pointwise_mul_prefix_extend"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_pointwise_mul_prefix_extend"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_pointwise_mul_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_pointwise_mul_prefix_exists"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_pointwise_mul_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_pointwise_mul_exact"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "beta_product_pointwise_mul_exact"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "gauss_signed_pointwise_mul_scale_mod"
+      },
+      {
+        "dependency": "beta_product_zero",
+        "theorem": "beta_product_pointwise_scale_mod"
+      },
+      {
+        "dependency": "beta_product_succ_decompose",
+        "theorem": "beta_product_pointwise_scale_mod"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_product_pointwise_scale_mod"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_pointwise_scale_mod"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "beta_product_pointwise_scale_mod"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "beta_product_pointwise_scale_mod"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "gauss_predecessor_half_range_aligned"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "gauss_predecessor_half_range_aligned"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "gauss_predecessor_half_range_aligned"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_product_reindex_fixed_last"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_reindex_fixed_last"
+      },
+      {
+        "dependency": "finite_lt_succ_eq_or_lt",
+        "theorem": "beta_product_permutation_invariant"
+      },
+      {
+        "dependency": "finite_injective_prefix_succ",
+        "theorem": "beta_product_permutation_invariant"
+      },
+      {
+        "dependency": "beta_prefix_swap_last_from_entries",
+        "theorem": "beta_product_permutation_invariant"
+      },
+      {
+        "dependency": "finite_swap_last_bounded",
+        "theorem": "beta_product_permutation_invariant"
+      },
+      {
+        "dependency": "finite_swap_last_injective",
+        "theorem": "beta_product_permutation_invariant"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_product_permutation_invariant"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_product_permutation_invariant"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_permutation_invariant"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_product_permutation_invariant"
+      },
+      {
+        "dependency": "beta_magnitude_predecessor_recode_bounded",
+        "theorem": "gauss_magnitude_product_eq_half_range"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_product_pointwise_coprime"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_pointwise_coprime"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "gauss_signed_products_cancel_mod"
+      },
+      {
+        "dependency": "gauss_signed_half_magnitude_range",
+        "theorem": "gauss_lemma_power_congruence_exists"
+      },
+      {
+        "dependency": "beta_product_exists",
+        "theorem": "gauss_lemma_power_congruence_exists"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "gauss_lemma_power_congruence_exists"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "nondivisor_canonical_remainder_exists"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "mod_eq_zero_to_dvd_nonzero"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_mul_index_map_exists_up_to"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_mul_index_map_exists_up_to"
+      },
+      {
+        "dependency": "lt_to_le",
+        "theorem": "prime_mul_index_map_exists_up_to"
+      },
+      {
+        "dependency": "succ_le_succ",
+        "theorem": "prime_mul_index_map_exists_up_to"
+      },
+      {
+        "dependency": "division_remainder_exists",
+        "theorem": "prime_mul_index_map_exists_up_to"
+      },
+      {
+        "dependency": "nonzero_is_succ",
+        "theorem": "prime_mul_index_map_exists_up_to"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "prime_mul_index_map_exists_up_to"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "prime_mul_index_map_exists_up_to"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_successor_lift_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_successor_lift_exists"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_successor_lift_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_successor_lift_exists"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "prime_mul_index_map_injective"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "prime_mul_index_map_injective"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "beta_range_one_entry_eq_succ"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "beta_range_one_entry_eq_succ"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_successor_range_reindex_aligned"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_successor_range_scale_mod"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "prime_mul_residue_reindex_exists"
+      },
+      {
+        "dependency": "beta_product_exists",
+        "theorem": "prime_mul_residue_product_balance"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "fermat_predecessor_exponent_mod_one"
+      },
+      {
+        "dependency": "mod_eq_cancel_coprime",
+        "theorem": "fermat_predecessor_exponent_mod_one"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "fermat_predecessor_exponent_mod_one"
+      },
+      {
+        "dependency": "mul_one",
+        "theorem": "fermat_predecessor_exponent_mod_one"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "quadratic_residue_half_power_mod_one"
+      },
+      {
+        "dependency": "multiple_mul_right",
+        "theorem": "quadratic_residue_half_power_mod_one"
+      },
+      {
+        "dependency": "dvd_to_mod_zero",
+        "theorem": "quadratic_residue_half_power_mod_one"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "quadratic_residue_half_power_mod_one"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "quadratic_residue_half_power_mod_one"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "quadratic_residue_half_power_mod_one"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "scaled_inverse_from_unit_inverse"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "scaled_inverse_from_unit_inverse"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "prime_scaled_inverse_exists"
+      },
+      {
+        "dependency": "division_remainder_exists",
+        "theorem": "prime_scaled_inverse_exists"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "prime_scaled_inverse_exists"
+      },
+      {
+        "dependency": "remainder_decomposition_to_mod_eq",
+        "theorem": "prime_scaled_inverse_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_scaled_inverse_prefix_extend"
+      },
+      {
+        "dependency": "succ_le_succ",
+        "theorem": "prime_scaled_inverse_prefix_extend"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_scaled_inverse_prefix_exists_bounded"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_scaled_inverse_prefix_exists_bounded"
+      },
+      {
+        "dependency": "lt_to_le",
+        "theorem": "prime_scaled_inverse_prefix_exists_bounded"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "prime_scaled_inverse_prefix_exists"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "euler_pair_iteration_previous_balance"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "euler_pair_iteration_step_short"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "finite_covers_into_or_omits"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "finite_covers_into_or_omits"
+      },
+      {
+        "dependency": "finite_lt_succ_eq_or_lt",
+        "theorem": "finite_covers_into_or_omits"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "finite_covers_into_or_omits"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "finite_covers_into_or_omits"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "finite_inverse_choice_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "finite_inverse_choice_prefix_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "finite_inverse_choice_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "finite_inverse_choice_prefix_exists"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "finite_short_cover_impossible"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "finite_short_cover_impossible"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "finite_short_cover_impossible"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "finite_short_cover_impossible"
+      },
+      {
+        "dependency": "lt_irrefl_expanded",
+        "theorem": "finite_short_cover_impossible"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "prime_scaled_inverse_unique"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "prime_scaled_inverse_unique"
+      },
+      {
+        "dependency": "scaled_inverse_prefix_entry_sound",
+        "theorem": "scaled_inverse_prefix_involutive"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_prefix_append_two_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_prefix_append_two_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_prefix_append_two_scaled_orbit_closed"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "pair_index_left_below_double"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "pair_index_right_below_double"
+      },
+      {
+        "dependency": "beta_product_zero",
+        "theorem": "beta_adjacent_target_pairs_product_power"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_adjacent_target_pairs_product_power"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_adjacent_target_pairs_product_power"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "beta_adjacent_target_pairs_product_power"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "beta_adjacent_target_pairs_product_power"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "scaled_pair_order_successor_lift_product_is_factorial"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "scaled_pair_order_successor_lift_product_is_factorial"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "scaled_pair_order_successor_lift_product_is_factorial"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "prime_two_or_terminal_odd_shape"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "prime_two_or_terminal_odd_shape"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "prime_two_or_terminal_odd_shape"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "prime_two_or_terminal_odd_shape"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_inverse_index_exists"
+      },
+      {
+        "dependency": "nonzero_is_succ",
+        "theorem": "prime_inverse_index_exists"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "prime_inverse_index_exists"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_inverse_prefix_exists_bounded"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_inverse_prefix_exists_bounded"
+      },
+      {
+        "dependency": "lt_to_le",
+        "theorem": "prime_inverse_prefix_exists_bounded"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "prime_inverse_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "finite_prefix_choose_unused_nonendpoint"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "finite_prefix_choose_unused_nonendpoint"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "prime_bounded_square_one_cases"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "prime_bounded_square_one_cases"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "prime_bounded_square_one_cases"
+      },
+      {
+        "dependency": "factor_difference",
+        "theorem": "prime_bounded_square_one_cases"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "prime_bounded_square_one_cases"
+      },
+      {
+        "dependency": "succ_injective",
+        "theorem": "prime_inverse_prefix_fixed_cases"
+      },
+      {
+        "dependency": "one_mul",
+        "theorem": "inverse_prefix_zero_fixed"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "inverse_prefix_last_fixed"
+      },
+      {
+        "dependency": "succ_injective",
+        "theorem": "prime_inverse_prefix_nonendpoint_mate"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "prime_inverse_prefix_nonendpoint_mate"
+      },
+      {
+        "dependency": "prime_inverse_prefix_nonendpoint_not_fixed",
+        "theorem": "prime_choose_unused_nonendpoint_orbit"
+      },
+      {
+        "dependency": "inverse_prefix_involutive",
+        "theorem": "prime_choose_unused_nonendpoint_orbit"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_prefix_append_two_orbit_closed"
+      },
+      {
+        "dependency": "beta_prefix_append_two_exists",
+        "theorem": "prime_pair_order_choose_append"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "prime_pair_order_paired_terminal_state_exists"
+      },
+      {
+        "dependency": "one_le_of_ne_zero",
+        "theorem": "finite_bounded_nonendpoint_injective_coverage"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "finite_bounded_nonendpoint_injective_coverage"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "finite_bounded_nonendpoint_injective_coverage"
+      },
+      {
+        "dependency": "nonzero_is_succ",
+        "theorem": "finite_bounded_nonendpoint_injective_coverage"
+      },
+      {
+        "dependency": "beta_magnitude_predecessor_recode_reflect",
+        "theorem": "finite_bounded_nonendpoint_injective_coverage"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_adjacent_unit_pairs_product_one"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_adjacent_unit_pairs_product_one"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "beta_adjacent_unit_pairs_product_one"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "beta_adjacent_unit_pairs_product_one"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "pair_order_predecessor_range_two_successor_lift_aligned"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "pair_order_predecessor_range_two_successor_lift_aligned"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "pair_order_predecessor_range_two_successor_lift_aligned"
+      },
+      {
+        "dependency": "beta_magnitude_predecessor_recode_bounded",
+        "theorem": "pair_order_terminal_successor_product_eq_range_two"
+      },
+      {
+        "dependency": "beta_magnitude_predecessor_recode_exists",
+        "theorem": "prime_wilson_terminal_product_package_exists"
+      },
+      {
+        "dependency": "beta_product_exists",
+        "theorem": "prime_wilson_terminal_product_package_exists"
+      },
+      {
+        "dependency": "beta_product_zero",
+        "theorem": "beta_range_two_product_is_factorial_succ"
+      },
+      {
+        "dependency": "beta_product_succ_decompose",
+        "theorem": "beta_range_two_product_is_factorial_succ"
+      },
+      {
+        "dependency": "beta_range_entry_eq",
+        "theorem": "beta_range_two_product_is_factorial_succ"
+      },
+      {
+        "dependency": "factorial_succ_decompose",
+        "theorem": "beta_range_two_product_is_factorial_succ"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_range_two_product_is_factorial_succ"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_range_two_product_is_factorial_succ"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "beta_range_two_product_is_factorial_succ"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "beta_range_two_product_is_factorial_succ"
+      },
+      {
+        "dependency": "mul_congr",
+        "theorem": "beta_range_two_product_is_factorial_succ"
+      },
+      {
+        "dependency": "factorial_succ_decompose",
+        "theorem": "beta_range_two_product_restore_last"
+      },
+      {
+        "dependency": "factorial_functional",
+        "theorem": "beta_range_two_product_restore_last"
+      },
+      {
+        "dependency": "mul_congr",
+        "theorem": "beta_range_two_product_restore_last"
+      },
+      {
+        "dependency": "succ_injective",
+        "theorem": "prime_factorial_wilson_congruence"
+      },
+      {
+        "dependency": "factorial_one_value",
+        "theorem": "prime_factorial_wilson_congruence"
+      },
+      {
+        "dependency": "mod_eq_refl",
+        "theorem": "prime_factorial_wilson_congruence"
+      },
+      {
+        "dependency": "beta_successor_lift_exists",
+        "theorem": "scaled_pair_order_terminal_power_mod_predecessor"
+      },
+      {
+        "dependency": "beta_product_exists",
+        "theorem": "scaled_pair_order_terminal_power_mod_predecessor"
+      },
+      {
+        "dependency": "factorial_exists",
+        "theorem": "scaled_pair_order_terminal_power_mod_predecessor"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "scaled_pair_order_terminal_power_mod_predecessor"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "scaled_pair_order_terminal_power_mod_predecessor"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "bounded_euler_criterion_dichotomy"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "bounded_euler_criterion_dichotomy"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "bounded_euler_criterion_dichotomy"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "bounded_euler_criterion_dichotomy"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "double_predecessor_ne_one"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "odd_prime_one_not_mod_predecessor"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "bounded_euler_criterion_residue_iff"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "bounded_euler_criterion_residue_iff"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "arbitrary_euler_criterion_residue_iff"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "arbitrary_euler_criterion_residue_iff"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "arbitrary_euler_criterion_residue_iff"
+      },
+      {
+        "dependency": "bounded_euler_criterion_dichotomy",
+        "theorem": "bounded_euler_criterion_nonresidue_iff"
+      },
+      {
+        "dependency": "odd_prime_one_not_mod_predecessor",
+        "theorem": "bounded_euler_criterion_nonresidue_iff"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "bounded_euler_criterion_nonresidue_iff"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "bounded_euler_criterion_nonresidue_iff"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "arbitrary_euler_criterion_nonresidue_iff"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "arbitrary_euler_criterion_nonresidue_iff"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "arbitrary_euler_criterion_nonresidue_iff"
+      },
+      {
+        "dependency": "parity_cases",
+        "theorem": "arbitrary_gauss_lemma_complete"
+      },
+      {
+        "dependency": "odd_prime_one_not_mod_predecessor",
+        "theorem": "arbitrary_gauss_lemma_complete"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "arbitrary_gauss_lemma_complete"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "arbitrary_gauss_lemma_complete"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "arbitrary_gauss_lemma_complete"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "arbitrary_gauss_lemma_complete"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_division_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_division_prefix_exists"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_division_prefix_exists"
+      },
+      {
+        "dependency": "division_remainder_exists",
+        "theorem": "beta_division_prefix_exists"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "odd_half_strictly_below_modulus"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "odd_half_strictly_below_modulus"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "odd_half_strictly_below_modulus"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "odd_half_positive_complement_exists"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "odd_half_positive_complement_exists"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "odd_half_positive_complement_exists"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "odd_half_positive_complement_exists"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "predecessor_multiple_mod_complement"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "predecessor_multiple_mod_complement"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "canonical_remainder_from_mod"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "odd_signed_division_branch_exact"
+      },
+      {
+        "dependency": "parity_cases",
+        "theorem": "odd_product_division_mod_two"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "odd_reflected_remainder_mod_two"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "odd_reflected_remainder_mod_two"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "odd_reflected_remainder_mod_two"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "odd_reflected_remainder_mod_two"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "signed_remainder_sum_mod_two"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "odd_scaled_division_signed_mod_two"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_sum_pointwise_mod_three_add"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sum_pointwise_mod_three_add"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "beta_sum_pointwise_mod_three_add"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "beta_sum_pointwise_mod_three_add"
+      },
+      {
+        "dependency": "add_permute_outer",
+        "theorem": "beta_sum_pointwise_mod_three_add"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_magnitude_predecessor_recode_aligned_half_range"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "beta_magnitude_predecessor_recode_aligned_half_range"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "beta_magnitude_predecessor_recode_aligned_half_range"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_sum_replace_balance"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "beta_sum_replace_balance"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "beta_sum_replace_balance"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_sum_replace_balance"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sum_replace_balance"
+      },
+      {
+        "dependency": "beta_sum_succ_decompose",
+        "theorem": "beta_sum_swap_last_invariant"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_sum_swap_last_invariant"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_sum_swap_last_invariant"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sum_swap_last_invariant"
+      },
+      {
+        "dependency": "lt_irrefl_expanded",
+        "theorem": "beta_sum_swap_last_invariant"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_sum_reindex_fixed_last"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sum_reindex_fixed_last"
+      },
+      {
+        "dependency": "finite_lt_succ_eq_or_lt",
+        "theorem": "beta_sum_permutation_invariant"
+      },
+      {
+        "dependency": "finite_injective_prefix_succ",
+        "theorem": "beta_sum_permutation_invariant"
+      },
+      {
+        "dependency": "beta_prefix_swap_last_from_entries",
+        "theorem": "beta_sum_permutation_invariant"
+      },
+      {
+        "dependency": "finite_swap_last_bounded",
+        "theorem": "beta_sum_permutation_invariant"
+      },
+      {
+        "dependency": "finite_swap_last_injective",
+        "theorem": "beta_sum_permutation_invariant"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_sum_permutation_invariant"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_sum_permutation_invariant"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sum_permutation_invariant"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_sum_permutation_invariant"
+      },
+      {
+        "dependency": "gauss_signed_half_magnitude_range",
+        "theorem": "gauss_signed_half_magnitude_sum_equals_half_sum"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "mod_two_cancel_middle"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "mod_two_cancel_middle"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "mod_two_zero_sum_to_congruent"
+      },
+      {
+        "dependency": "beta_sum_exists",
+        "theorem": "gauss_eisenstein_sign_count_mod_quotient_sum"
+      },
+      {
+        "dependency": "beta_range_exists",
+        "theorem": "odd_prime_gauss_eisenstein_orientation_data_exists"
+      },
+      {
+        "dependency": "mod_eq_symm",
+        "theorem": "odd_prime_gauss_eisenstein_orientation_data_exists"
+      },
+      {
+        "dependency": "prime_divisor_eq_one_or_self",
+        "theorem": "distinct_odd_prime_half_products_ne"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "distinct_odd_prime_half_cell_oriented"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "eisenstein_row_indicator_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "eisenstein_row_indicator_prefix_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "eisenstein_row_indicator_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "eisenstein_row_indicator_prefix_exists"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "eisenstein_rectangle_row_count_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "eisenstein_rectangle_row_count_prefix_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "eisenstein_rectangle_row_count_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "eisenstein_rectangle_row_count_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "distinct_odd_prime_half_row_count_prefix_exists"
+      },
+      {
+        "dependency": "beta_sum_exists",
+        "theorem": "distinct_odd_prime_half_rectangle_total_exists"
+      },
+      {
+        "dependency": "prime_divisor_eq_one_or_self",
+        "theorem": "distinct_primes_bounded_scaled_remainder_nonzero"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "odd_half_cross_product_gap"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "odd_half_cross_product_gap"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "odd_half_cross_product_gap"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "odd_half_cross_product_gap"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "odd_half_cross_product_gap"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "nonzero_remainder_division_positive_multiple_threshold"
+      },
+      {
+        "dependency": "le_or_lt",
+        "theorem": "eisenstein_row_indicator_prefix_to_initial_segment"
+      },
+      {
+        "dependency": "all_bits_prefix_succ",
+        "theorem": "beta_all_one_bit_count_exact"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_all_one_bit_count_exact"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_all_one_bit_count_exact"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_all_one_bit_count_exact"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "eisenstein_initial_segment_bit_count_functional"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "eisenstein_initial_segment_bit_count_functional"
+      },
+      {
+        "dependency": "bit_count_zero",
+        "theorem": "eisenstein_initial_segment_bit_count_functional"
+      },
+      {
+        "dependency": "bit_count_succ_decompose",
+        "theorem": "eisenstein_initial_segment_bit_count_functional"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "distinct_odd_prime_row_bit_count_equals_decoded_quotient"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "distinct_odd_prime_row_bit_count_equals_decoded_quotient"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "distinct_odd_prime_row_bit_count_equals_decoded_quotient"
+      },
+      {
+        "dependency": "beta_sum_functional",
+        "theorem": "distinct_odd_prime_quotient_sum_equals_rectangle_total"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "eisenstein_transposed_column_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "eisenstein_transposed_column_prefix_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "eisenstein_transposed_column_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "eisenstein_transposed_column_prefix_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "eisenstein_transposed_column_pointwise_complement"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "complementary_bit_counts_add_length"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "complementary_bit_counts_add_length"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "complementary_bit_counts_add_length"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "eisenstein_transposed_column_count_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "eisenstein_transposed_column_count_prefix_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "eisenstein_transposed_column_count_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "eisenstein_transposed_column_count_prefix_exists"
+      },
+      {
+        "dependency": "beta_sum_exists",
+        "theorem": "eisenstein_transposed_column_count_total_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_repeat_sum_exact"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_repeat_sum_exact"
+      },
+      {
+        "dependency": "mul_zero_left",
+        "theorem": "beta_repeat_sum_exact"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "beta_repeat_sum_exact"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "eisenstein_transposed_column_count_decoded_partition"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_sum_pointwise_add"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sum_pointwise_add"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "beta_sum_pointwise_add"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "beta_sum_pointwise_add"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "eisenstein_zero_width_rectangle_sum_zero"
+      },
+      {
+        "dependency": "mul_zero_left",
+        "theorem": "eisenstein_zero_width_rectangle_sum_zero"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "eisenstein_successor_row_split_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "eisenstein_successor_row_split_prefix_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "eisenstein_successor_row_split_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "eisenstein_successor_row_split_prefix_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "eisenstein_transposed_column_decoded_choice"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "eisenstein_fubini_column_count_prefix_retarget_predecessor"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "eisenstein_successor_terminal_bit_matches_last_column"
+      },
+      {
+        "dependency": "beta_sum_zero",
+        "theorem": "eisenstein_fubini_universal"
+      },
+      {
+        "dependency": "beta_sum_exists",
+        "theorem": "eisenstein_fubini_universal"
+      },
+      {
+        "dependency": "beta_sum_succ_decompose",
+        "theorem": "eisenstein_fubini_universal"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "eisenstein_fubini_universal"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "eisenstein_fubini_universal"
+      },
+      {
+        "dependency": "beta_sum_exists",
+        "theorem": "distinct_odd_prime_eisenstein_quotient_sum_identity"
+      },
+      {
+        "dependency": "four_mul_eq_double_double",
+        "theorem": "odd_half_even_iff_mod4_one"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "mod_two_one_to_odd"
+      },
+      {
+        "dependency": "mod_eq_trans",
+        "theorem": "mod_two_preserves_parity"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "odd_half_of_mod4_three_exact"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "odd_half_odd_iff_mod4_three"
+      },
+      {
+        "dependency": "four_mul_eq_double_double",
+        "theorem": "odd_half_odd_iff_mod4_three"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "signed_decoded_balance_implies_code_eq"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "signed_decoded_balance_implies_code_eq"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "signed_balance_functional"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "signed_negate_functional"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "signed_add_zero_left"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "add_cross_sum_chain"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "signed_add_equations_associate"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "signed_add_equations_associate"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "signed_mul_commutative"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "signed_pair_mul_cross_transport"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "signed_pair_mul_cross_transport"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "signed_pair_mul_components_associate"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "signed_pair_mul_components_associate"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "signed_mul_equations_associate"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "add_shuffle_middle"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "add_balance_outputs_compose"
+      },
+      {
+        "dependency": "add_cross_sum_chain",
+        "theorem": "signed_mul_left_distributive"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "balanced_bezout_equation_transport"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "dt_shell_successor"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "dt_shell_successor"
+      },
+      {
+        "dependency": "add_le_add_left",
+        "theorem": "pair_code_below_next_shell"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "double_add_injective"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "double_add_injective"
+      },
+      {
+        "dependency": "add_right_cancel",
+        "theorem": "pair_code_injective"
+      },
+      {
+        "dependency": "multiple_refl",
+        "theorem": "is_lcm_refl"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "mod_eq_add_cancel_right"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "mod_eq_unscale_nonzero"
+      },
+      {
+        "dependency": "factor_nonzero_left",
+        "theorem": "is_gcd_nonzero_coprime_quotients"
+      },
+      {
+        "dependency": "succ_le_succ",
+        "theorem": "cell_history_extend"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "cell_history_extend"
+      },
+      {
+        "dependency": "succ_le_succ",
+        "theorem": "cell_history_extend_preserves_prefix"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "cell_history_extend_preserves_prefix"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "cell_list_length_functional"
+      },
+      {
+        "dependency": "zero_le",
+        "theorem": "cell_list_length_le_code"
+      },
+      {
+        "dependency": "succ_le_succ",
+        "theorem": "cell_list_length_le_code"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "cell_list_length_le_code"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "list_at_head_iff"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "list_at_head_iff"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "list_at_succ_iff"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "list_at_history_independent"
+      },
+      {
+        "dependency": "cell_list_zero_iff_nil",
+        "theorem": "list_member_nil_false"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "list_member_nil_false"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "list_member_nil_false"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "prime_strictly_above_decidable"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "bounded_prime_interval_search"
+      },
+      {
+        "dependency": "le_zero",
+        "theorem": "bounded_prime_interval_search"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "bounded_prime_interval_search"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "bounded_prime_interval_search"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "bounded_prime_interval_search"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "bounded_prime_interval_search"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "pow_base_monotone"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "one_le_pow"
+      },
+      {
+        "dependency": "le_mul_of_one_le_right",
+        "theorem": "pow_exponent_monotone"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "pow_exponent_monotone"
+      },
+      {
+        "dependency": "le_zero",
+        "theorem": "bounded_power_valuation_search"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "bounded_power_valuation_search"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "bounded_power_valuation_search"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "bounded_power_valuation_search"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "bounded_power_valuation_search"
+      },
+      {
+        "dependency": "zero_le",
+        "theorem": "bounded_power_valuation_exists"
+      },
+      {
+        "dependency": "pow_successor_decompose",
+        "theorem": "prime_power_exponent_le"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "prime_power_exponent_le"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_power_exponent_le"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_power_divides_exponent_le_value"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "power_valuation_successor_not_divides"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "power_divides_exponent_antitone"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "power_divides_exponent_antitone"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "power_divides_successor_of_cofactor"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "power_valuation_mul_successor_not_divides"
+      },
+      {
+        "dependency": "mul_ne_zero",
+        "theorem": "power_valuation_mul_lower"
+      },
+      {
+        "dependency": "power_valuation_power_divides",
+        "theorem": "power_valuation_mul_upper"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "pow_mul_base"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "pow_two_twelve_eq_pow_four_six"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "bertrand_guard_six_step_transport"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_guard_six_step_transport"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "bertrand_guard_six_step_transport"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "bertrand_guard_six_step_transport"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_guard_six_step_transport"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_guard_six_step_transport"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "bertrand_guard_six_step_transport"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "ceil_div_six_shift"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "ceil_div_six_shift"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "ceil_div_six_total"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "ceil_div_six_total"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "ceil_div_six_total"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "square_six_shift_identity"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "square_six_shift_identity"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "square_six_shift_identity"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "floor_sqrt_functional"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "floor_sqrt_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "floor_sqrt_monotone"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "mul_le_cancel_left_nonzero"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "double_triple_remainder_complement_budget"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "double_triple_remainder_complement_budget"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "double_triple_remainder_complement_budget"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "double_triple_remainder_complement_budget"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "floor_ceil_complement_budget"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "prime_power_valuation_one_zero"
+      },
+      {
+        "dependency": "factorial_succ_decompose",
+        "theorem": "prime_factorial_valuation_succ"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_factorial_valuation_succ"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "floor_sqrt_threshold_sixty_four"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "forty_two_successor_le_square_of_sixty_four_le"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "ceil_square_seven_successor_lower"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "ceil_square_seven_successor_lower"
+      },
+      {
+        "dependency": "le_add_right",
+        "theorem": "bertrand_base_residue_linear_bounds"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_power_quotient_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_power_quotient_prefix_exists"
+      },
+      {
+        "dependency": "one_le_of_ne_zero",
+        "theorem": "prime_power_quotient_prefix_exists"
+      },
+      {
+        "dependency": "division_remainder_exists",
+        "theorem": "prime_power_quotient_prefix_exists"
+      },
+      {
+        "dependency": "beta_prefix_extend",
+        "theorem": "prime_power_quotient_prefix_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "power_quotient_prefix_transport"
+      },
+      {
+        "dependency": "division_remainder_unique",
+        "theorem": "power_quotient_prefix_transport"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "pow_one_twenty_eight_twelve_eq_pow_four_forty_two"
+      },
+      {
+        "dependency": "pow_two_two_exact",
+        "theorem": "pow_one_twenty_eight_twelve_eq_pow_four_forty_two"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "bertrand_guard_base_residue"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_guard_base_residue"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "bertrand_guard_base_residue"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "prime_power_quotient_tail_zero"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "eisenstein_initial_segment_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "eisenstein_initial_segment_prefix_exists"
+      },
+      {
+        "dependency": "division_remainder_unique",
+        "theorem": "division_successor_quotient_by_bit"
+      },
+      {
+        "dependency": "pow_functional",
+        "theorem": "power_quotient_successor_pointwise_add"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "power_quotient_successor_pointwise_add"
+      },
+      {
+        "dependency": "pow_zero",
+        "theorem": "pow_mul_exp_from_total"
+      },
+      {
+        "dependency": "pow_successor_decompose",
+        "theorem": "pow_mul_exp_from_total"
+      },
+      {
+        "dependency": "le_mul_of_one_le_right",
+        "theorem": "pow_exponent_monotone_from_total"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "pow_exponent_monotone_from_total"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "pow_one_twenty_eight_double_eq_pow_four_seven_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_hj_base_window_from_total"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_sum_succ_last_zero"
+      },
+      {
+        "dependency": "division_remainder_unique",
+        "theorem": "prime_power_quotient_prefix_last_zero"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "prime_power_quotient_prefix_last_zero"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "legendre_sum_zero_extended_prefix"
+      },
+      {
+        "dependency": "two_mul_eq_add_self",
+        "theorem": "bertrand_h_six_step_transport_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_h_six_step_transport_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "bertrand_h_six_step_transport_from_total"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "bertrand_h_six_step_transport_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_h_six_step_transport_from_total"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_h_six_step_transport_from_total"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "bertrand_h_six_step_transport_from_total"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "bertrand_h_six_step_transport_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_j_six_step_transport_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "bertrand_j_six_step_transport_from_total"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "bertrand_j_six_step_transport_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_j_six_step_transport_from_total"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_j_six_step_transport_from_total"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "bertrand_j_six_step_transport_from_total"
+      },
+      {
+        "dependency": "power_valuation_exists",
+        "theorem": "prime_factorial_valuation_eq_legendre_sum"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "beta_pascal_zero_row_extend"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_pascal_zero_row_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_pascal_zero_row_exists"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "beta_pascal_row_step_extend"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "beta_pascal_row_step_extend"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_pascal_row_step_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_pascal_row_step_exists"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "beta_pascal_table_prefix_extend"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_pascal_table_prefix_extend"
+      },
+      {
+        "dependency": "lt_to_le",
+        "theorem": "beta_pascal_table_prefix_extend"
+      },
+      {
+        "dependency": "beta_prefix_extend",
+        "theorem": "beta_pascal_table_prefix_extend"
+      },
+      {
+        "dependency": "finite_lt_succ_eq_or_lt",
+        "theorem": "beta_pascal_table_prefix_extend"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "beta_pascal_table_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_pascal_table_prefix_exists"
+      },
+      {
+        "dependency": "beta_at_exists",
+        "theorem": "choose_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_pascal_table_row_pointwise_functional"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "beta_pascal_table_row_pointwise_functional"
+      },
+      {
+        "dependency": "succ_injective",
+        "theorem": "beta_pascal_table_row_pointwise_functional"
+      },
+      {
+        "dependency": "lt_to_le",
+        "theorem": "beta_pascal_table_row_pointwise_functional"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "choose_self"
+      },
+      {
+        "dependency": "lt_to_le",
+        "theorem": "choose_succ_succ_of_lt"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "choose_succ_succ"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "choose_succ_succ"
+      },
+      {
+        "dependency": "succ_le_succ",
+        "theorem": "choose_succ_succ"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "choose_symmetry"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "choose_symmetry"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "choose_symmetry"
+      },
+      {
+        "dependency": "le_zero",
+        "theorem": "choose_positive"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "choose_positive"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "choose_positive"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "central_binom_succ_double_middle"
+      },
+      {
+        "dependency": "choose_exists",
+        "theorem": "central_binom_succ_double_middle"
+      },
+      {
+        "dependency": "choose_succ_succ",
+        "theorem": "central_binom_succ_double_middle"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "choose_weighted_vertical"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "choose_weighted_vertical"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "choose_weighted_vertical"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "choose_weighted_vertical"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "choose_weighted_vertical"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "choose_weighted_vertical"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "central_binom_succ_recurrence"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "central_binom_succ_recurrence"
+      },
+      {
+        "dependency": "mul_one",
+        "theorem": "choose_factorial_bridge"
+      },
+      {
+        "dependency": "choose_exists",
+        "theorem": "choose_factorial_bridge"
+      },
+      {
+        "dependency": "choose_self_of_eq",
+        "theorem": "choose_factorial_bridge"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "mul_lt_mul_right_nonzero"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "four_power_central_recurrence_step"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "four_power_central_recurrence_step"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "four_power_central_recurrence_step"
+      },
+      {
+        "dependency": "add_mul",
+        "theorem": "four_power_central_recurrence_step"
+      },
+      {
+        "dependency": "pow_successor_decompose",
+        "theorem": "pow_four_four_exact"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "four_pow_central_seed_package"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "four_pow_lt_mul_central_binom"
+      },
+      {
+        "dependency": "pow_successor_decompose",
+        "theorem": "four_pow_lt_mul_central_binom"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "primorial_factor_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "primorial_factor_prefix_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "primorial_succ_decompose"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "primorial_succ_decompose"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "primorial_succ_decompose"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "primorial_positive"
+      },
+      {
+        "dependency": "divisor_one",
+        "theorem": "primorial_prime_le_of_divides"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "primorial_prime_le_of_divides"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "primorial_prime_le_of_divides"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "primorial_add_length_divides"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "primorial_add_length_divides"
+      },
+      {
+        "dependency": "primorial_functional",
+        "theorem": "primorial_add_length_divides"
+      },
+      {
+        "dependency": "multiple_refl",
+        "theorem": "primorial_add_length_divides"
+      },
+      {
+        "dependency": "multiple_trans",
+        "theorem": "primorial_add_length_divides"
+      },
+      {
+        "dependency": "primorial_index_eq_transport",
+        "theorem": "primorial_le_divides"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "primorial_le_positive_quotient"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_product_prefix_suffix_split"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_prefix_suffix_split"
+      },
+      {
+        "dependency": "mul_one",
+        "theorem": "beta_product_prefix_suffix_split"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "beta_product_prefix_suffix_split"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "primorial_interval_factor_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "primorial_interval_factor_prefix_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_distinct_prime_product_coprime_last"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_distinct_prime_product_coprime_last"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_distinct_prime_product_coprime_last"
+      },
+      {
+        "dependency": "beta_product_zero",
+        "theorem": "beta_distinct_prime_product_divides_common_multiple"
+      },
+      {
+        "dependency": "beta_product_succ_decompose",
+        "theorem": "beta_distinct_prime_product_divides_common_multiple"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_distinct_prime_product_divides_common_multiple"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_distinct_prime_product_divides_common_multiple"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_bounded_prime_prefix_divides_primorial_pointwise"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "factorial_prime_divides_of_le"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "factorial_prime_divides_of_le"
+      },
+      {
+        "dependency": "divisor_one",
+        "theorem": "factorial_prime_le_of_divides"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "factorial_prime_le_of_divides"
+      },
+      {
+        "dependency": "euclid_prime_dvd_product",
+        "theorem": "choose_prime_divides_between"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "choose_prime_divides_between"
+      },
+      {
+        "dependency": "beta_product_zero",
+        "theorem": "beta_pairwise_coprime_product_divides_common_multiple"
+      },
+      {
+        "dependency": "beta_product_succ_decompose",
+        "theorem": "beta_pairwise_coprime_product_divides_common_multiple"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_pairwise_coprime_product_divides_common_multiple"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_pairwise_coprime_product_divides_common_multiple"
+      },
+      {
+        "dependency": "add_left_cancel",
+        "theorem": "primorial_interval_pairwise_coprime"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "primorial_interval_divides_choose_between"
+      },
+      {
+        "dependency": "one_multiple",
+        "theorem": "primorial_interval_divides_choose_between"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "primorial_even_interval_divides_central"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "primorial_odd_interval_divides_middle"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "primorial_odd_interval_divides_middle"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "primorial_odd_interval_divides_middle"
+      },
+      {
+        "dependency": "divisor_le_nonzero",
+        "theorem": "primorial_even_interval_le_central"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "primorial_odd_interval_le_middle"
+      },
+      {
+        "dependency": "divisor_le_nonzero",
+        "theorem": "primorial_odd_interval_le_middle"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "central_binom_strong_upper_step"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "central_binom_strong_upper_step"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "central_binom_strong_upper_step"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "central_binom_strong_upper_step"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "central_binom_strong_upper_step"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "central_binom_recurrence_double_bundle"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "central_binom_recurrence_double_bundle"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "central_binom_strong_upper_of_laws"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "central_binom_odd_middle_le_four_pow"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "central_binom_odd_middle_le_four_pow"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "central_binom_odd_middle_le_four_pow"
+      },
+      {
+        "dependency": "two_mul_eq_add_self",
+        "theorem": "central_binom_odd_middle_le_four_pow"
+      },
+      {
+        "dependency": "mul_le_cancel_left_nonzero",
+        "theorem": "central_binom_odd_middle_le_four_pow"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "double_half_predecessor_data"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "odd_positive_prefix_predecessor_bound"
+      },
+      {
+        "dependency": "central_binom_exists",
+        "theorem": "primorial_four_power_support_package"
+      },
+      {
+        "dependency": "choose_exists",
+        "theorem": "primorial_four_power_support_package"
+      },
+      {
+        "dependency": "le_zero",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "le_of_succ_le_succ",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "le_add_right",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "two_mul_eq_add_self",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "pow_zero",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "primorial_zero",
+        "theorem": "primorial_le_four_pow_bounded"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "primorial_le_four_pow"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "central_binom_prime_divisor_le_double"
+      },
+      {
+        "dependency": "multiple_trans",
+        "theorem": "central_binom_prime_divisor_le_double"
+      },
+      {
+        "dependency": "le_total",
+        "theorem": "no_bertrand_central_prime_divisor_le"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "no_bertrand_central_prime_divisor_le"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "no_bertrand_central_prime_divisor_le"
+      },
+      {
+        "dependency": "one_le_of_ne_zero",
+        "theorem": "power_valuation_nonzero_exponent_divides_base"
+      },
+      {
+        "dependency": "le_zero",
+        "theorem": "prime_divisor_power_valuation_nonzero"
+      },
+      {
+        "dependency": "le_total",
+        "theorem": "no_bertrand_central_prime_divisor_ranges"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "no_bertrand_central_prime_divisor_ranges"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "no_bertrand_central_prime_divisor_ranges"
+      },
+      {
+        "dependency": "pow_functional",
+        "theorem": "pow_three_five_le_pow_four_four_from_total"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "pow_three_five_le_pow_four_four_from_total"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "pow_three_five_le_pow_four_four_from_total"
+      },
+      {
+        "dependency": "pow_two",
+        "theorem": "pow_eleven_two_le_pow_two_seven_from_total"
+      },
+      {
+        "dependency": "pow_successor_compose_from_total",
+        "theorem": "pow_eleven_two_le_pow_two_seven_from_total"
+      },
+      {
+        "dependency": "pow_functional",
+        "theorem": "pow_eleven_two_le_pow_two_seven_from_total"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "pow_eleven_two_le_pow_two_seven_from_total"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "pow_eleven_two_le_pow_two_seven_from_total"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "pow_eleven_two_le_pow_two_seven_from_total"
+      },
+      {
+        "dependency": "pow_mul_exp_from_total",
+        "theorem": "pow_six_ten_le_pow_four_thirteen_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "pow_six_ten_le_pow_four_thirteen_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "pow_six_ten_le_pow_four_thirteen_from_total"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "pow_six_ten_le_pow_four_thirteen_from_total"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "linear_square_budget"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "linear_square_budget"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "linear_square_budget"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_scaled_budget_root_32"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_scaled_budget_root_32"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "bertrand_scaled_budget_root_32"
+      },
+      {
+        "dependency": "add_mul",
+        "theorem": "bertrand_scaled_budget_root_33"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_scaled_budget_root_33"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_scaled_budget_root_33"
+      },
+      {
+        "dependency": "add_mul",
+        "theorem": "bertrand_scaled_budget_root_34"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_scaled_budget_root_34"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_scaled_budget_root_34"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_scaled_budget_root_35"
+      },
+      {
+        "dependency": "add_mul",
+        "theorem": "bertrand_scaled_budget_root_35"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_scaled_budget_root_35"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_scaled_budget_root_36"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "bertrand_scaled_budget_root_36"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "bertrand_scaled_budget_root_36"
+      },
+      {
+        "dependency": "add_mul",
+        "theorem": "bertrand_scaled_budget_root_36"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_scaled_budget_root_36"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "bertrand_scaled_budget_root_36"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_scaled_budget_root_37"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "bertrand_scaled_budget_root_37"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "bertrand_scaled_budget_root_37"
+      },
+      {
+        "dependency": "add_mul",
+        "theorem": "bertrand_scaled_budget_root_37"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_scaled_budget_root_37"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "bertrand_scaled_budget_root_37"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "ceil_div_six_budget_of_scaled_le"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "pow_six_six_le_pow_four_eight_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "pow_six_six_le_pow_four_eight_from_total"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "pow_six_six_le_pow_four_eight_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "pow_six_four_le_pow_four_six_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "pow_six_four_le_pow_four_six_from_total"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "pow_six_four_le_pow_four_six_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "pow_three_five_block_plus_one_le_pow_four_four_block_plus_one_from_total"
+      },
+      {
+        "dependency": "pow_base_monotone",
+        "theorem": "pow_three_five_block_plus_one_le_pow_four_four_block_plus_one_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "pow_three_five_block_plus_one_le_pow_four_four_block_plus_one_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "pow_two_successor_double_le_pow_four_successor_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "pow_two_successor_double_le_pow_four_successor_from_total"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "pow_two_successor_double_le_pow_four_successor_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "pow_eleven_double_block_le_pow_four_odd_from_total"
+      },
+      {
+        "dependency": "pow_block_bound_from_total",
+        "theorem": "pow_six_ten_block_le_pow_four_thirteen_block_from_total"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "pow_thirty_six_double_block_eq_pow_six_four_block_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_h_root_32_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "bertrand_h_root_32_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_h_root_32_from_total"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_h_root_32_from_total"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "bertrand_h_root_32_from_total"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_h_root_32_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_h_root_33_from_total"
+      },
+      {
+        "dependency": "pow_base_monotone",
+        "theorem": "bertrand_h_root_33_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "bertrand_h_root_33_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_h_root_33_from_total"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_h_root_33_from_total"
+      },
+      {
+        "dependency": "add_mul",
+        "theorem": "bertrand_h_root_33_from_total"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_h_root_33_from_total"
+      },
+      {
+        "dependency": "pow_base_monotone",
+        "theorem": "bertrand_h_root_34_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_h_root_34_from_total"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "bertrand_h_root_34_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_h_root_35_from_total"
+      },
+      {
+        "dependency": "pow_base_monotone",
+        "theorem": "bertrand_h_root_35_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "bertrand_h_root_35_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_h_root_35_from_total"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_h_root_35_from_total"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "bertrand_h_root_35_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_h_root_36_from_total"
+      },
+      {
+        "dependency": "pow_base_monotone",
+        "theorem": "bertrand_h_root_36_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "bertrand_h_root_36_from_total"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "bertrand_h_root_36_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_h_root_36_from_total"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_h_root_36_from_total"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "bertrand_h_root_36_from_total"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_h_root_36_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_h_root_37_from_total"
+      },
+      {
+        "dependency": "pow_base_monotone",
+        "theorem": "bertrand_h_root_37_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "bertrand_h_root_37_from_total"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "bertrand_h_root_37_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_h_root_37_from_total"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "bertrand_h_root_37_from_total"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "bertrand_h_root_37_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_j_base_thirty_two_window_from_total"
+      },
+      {
+        "dependency": "pow_base_monotone",
+        "theorem": "bertrand_j_base_thirty_two_window_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "bertrand_j_base_thirty_two_window_from_total"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "bertrand_j_base_thirty_two_window_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_j_base_thirty_two_window_from_total"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "floor_sqrt_factorized_threshold_thirty_two"
+      },
+      {
+        "dependency": "mul_le_mul_left",
+        "theorem": "floor_sqrt_factorized_threshold_thirty_two"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "six_block_window_decomposition_above_thirty_two"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "six_block_window_decomposition_above_thirty_two"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_hj_six_block_iterate_from_total"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_hj_six_block_iterate_from_total"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_hj_six_block_iterate_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_floor_power_product_le_h_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_floor_power_product_le_h_from_total"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "bertrand_floor_power_product_le_h_from_total"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "bertrand_floor_power_product_le_h_from_total"
+      },
+      {
+        "dependency": "pow_add",
+        "theorem": "bertrand_four_power_product_le_of_sum_from_total"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "bertrand_four_power_product_le_of_sum_from_total"
+      },
+      {
+        "dependency": "ceil_div_six_total",
+        "theorem": "bertrand_main_inequality_factorized_from_total"
+      },
+      {
+        "dependency": "mul_le_mul_right",
+        "theorem": "bertrand_main_inequality_factorized_from_total"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_main_inequality_factorized_from_total"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "bertrand_main_inequality_factorized"
+      },
+      {
+        "dependency": "two_mul_eq_add_self",
+        "theorem": "bertrand_main_inequality_nat"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_product_pointwise_le"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_pointwise_le"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "add_lt_add"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "add_lt_cancel_left"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_sum_pointwise_le"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sum_pointwise_le"
+      },
+      {
+        "dependency": "beta_repeat_entry_eq",
+        "theorem": "beta_sum_uniform_le_mul"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "division_zero_quotient_of_lt"
+      },
+      {
+        "dependency": "add_shuffle_middle",
+        "theorem": "division_double_quotient_bit"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "division_double_quotient_bit"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "division_double_quotient_bit"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "division_double_quotient_bit"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "pow_le_pow_of_exponent_le"
+      },
+      {
+        "dependency": "le_mul_of_one_le_right",
+        "theorem": "pow_le_pow_of_exponent_le"
+      },
+      {
+        "dependency": "mul_ne_zero",
+        "theorem": "central_binom_factorial_valuation_balance"
+      },
+      {
+        "dependency": "factorial_valuation_exists",
+        "theorem": "central_binom_legendre_valuation_balance"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "power_quotient_prefix_sum_extend_zero"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "power_quotient_prefix_sum_extend_zero"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "power_quotient_prefix_sum_extend_zero"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "power_quotient_double_pointwise_upper"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_sum_pointwise_double_succ_le"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sum_pointwise_double_succ_le"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "beta_sum_pointwise_double_succ_le"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "beta_sum_pointwise_double_succ_le"
+      },
+      {
+        "dependency": "prime_legendre_sum_exists",
+        "theorem": "central_binom_prime_valuation_le_double"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "central_binom_prime_valuation_le_double"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "double_quotient_carry_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "double_quotient_carry_prefix_exists"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "double_quotient_carry_prefix_exists"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "double_quotient_carry_prefix_exists"
+      },
+      {
+        "dependency": "bit_count_zero",
+        "theorem": "bit_count_positive_last_one"
+      },
+      {
+        "dependency": "bit_count_succ_decompose",
+        "theorem": "bit_count_positive_last_one"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "bit_count_positive_last_one"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "bit_count_positive_last_one"
+      },
+      {
+        "dependency": "beta_sum_zero",
+        "theorem": "beta_sum_double_carry_exact"
+      },
+      {
+        "dependency": "beta_sum_succ_decompose",
+        "theorem": "beta_sum_double_carry_exact"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "beta_sum_double_carry_exact"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_sum_double_carry_exact"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "beta_sum_double_carry_exact"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "beta_sum_double_carry_exact"
+      },
+      {
+        "dependency": "prime_legendre_sum_exists",
+        "theorem": "central_binom_carry_bit_count"
+      },
+      {
+        "dependency": "bit_count_exists",
+        "theorem": "central_binom_carry_bit_count"
+      },
+      {
+        "dependency": "add_left_cancel",
+        "theorem": "central_binom_carry_bit_count"
+      },
+      {
+        "dependency": "pow_zero",
+        "theorem": "central_binom_prime_power_contribution_le_double"
+      },
+      {
+        "dependency": "le_add_right",
+        "theorem": "central_binom_prime_power_contribution_le_double"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "central_binom_prime_power_contribution_le_double"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "central_binom_prime_power_contribution_le_double"
+      },
+      {
+        "dependency": "one_le_of_ne_zero",
+        "theorem": "central_binom_prime_power_contribution_le_double"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "central_binom_prime_power_contribution_le_double"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "central_binom_prime_square_tail_exponent_not_two_le"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "central_binom_prime_square_tail_exponent_not_two_le"
+      },
+      {
+        "dependency": "one_le_of_ne_zero",
+        "theorem": "central_binom_prime_square_tail_exponent_not_two_le"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "central_binom_prime_square_tail_exponent_not_two_le"
+      },
+      {
+        "dependency": "le_or_lt",
+        "theorem": "central_binom_prime_square_tail_valuation_le_one"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "division_quotient_one_of_bounds"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "division_quotient_two_of_bounds"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "prime_square_tail_of_two_three_range"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_square_tail_of_two_three_range"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "division_first_two_of_two_three_range"
+      },
+      {
+        "dependency": "add_lt_cancel_left",
+        "theorem": "division_first_two_of_two_three_range"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "double_quotient_carry_prefix_entries_zero"
+      },
+      {
+        "dependency": "division_remainder_unique",
+        "theorem": "double_quotient_carry_prefix_entries_zero"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "double_quotient_carry_prefix_entries_zero"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "double_quotient_carry_prefix_entries_zero"
+      },
+      {
+        "dependency": "lt_irrefl_expanded",
+        "theorem": "double_quotient_carry_prefix_entries_zero"
+      },
+      {
+        "dependency": "zero_or_succ",
+        "theorem": "central_binom_prime_valuation_zero_of_exact_double_quotients"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "central_binom_prime_valuation_zero_of_exact_double_quotients"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "central_binom_prime_valuation_zero_two_thirds_range"
+      },
+      {
+        "dependency": "prime_nonzero",
+        "theorem": "central_binom_prime_valuation_zero_two_thirds_range"
+      },
+      {
+        "dependency": "one_le_of_ne_zero",
+        "theorem": "central_binom_prime_valuation_zero_two_thirds_range"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "floor_sqrt_above_root_power_two_strict"
+      },
+      {
+        "dependency": "lt_to_le",
+        "theorem": "central_binom_prime_above_floor_sqrt_valuation_le_one"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "central_binom_prime_above_floor_sqrt_valuation_le_one"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "central_binom_prime_above_floor_sqrt_valuation_le_one"
+      },
+      {
+        "dependency": "one_le_of_ne_zero",
+        "theorem": "no_bertrand_central_nonzero_valuation_factor_ranges"
+      },
+      {
+        "dependency": "le_antisymm",
+        "theorem": "no_bertrand_central_nonzero_valuation_factor_ranges"
+      },
+      {
+        "dependency": "lt_to_le",
+        "theorem": "no_bertrand_central_nonzero_contribution_factor_ranges"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "no_bertrand_central_nonzero_contribution_factor_ranges"
+      },
+      {
+        "dependency": "central_binom_prime_power_contribution_le_double",
+        "theorem": "no_bertrand_central_nonzero_contribution_factor_ranges"
+      },
+      {
+        "dependency": "pow_one",
+        "theorem": "no_bertrand_central_nonzero_contribution_factor_ranges"
+      },
+      {
+        "dependency": "eq_decidable",
+        "theorem": "no_bertrand_central_prime_contribution_ranges"
+      },
+      {
+        "dependency": "pow_zero",
+        "theorem": "no_bertrand_central_prime_contribution_ranges"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "prime_contribution_choice_exists"
+      },
+      {
+        "dependency": "beta_prefix_extend",
+        "theorem": "prime_contribution_prefix_extend"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_contribution_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_contribution_prefix_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "prime_contribution_prefix_transport_entry"
+      },
+      {
+        "dependency": "beta_product_exists",
+        "theorem": "prime_contribution_product_exists"
+      },
+      {
+        "dependency": "beta_product_transport_prefix",
+        "theorem": "prime_contribution_product_functional"
+      },
+      {
+        "dependency": "beta_product_functional",
+        "theorem": "prime_contribution_product_functional"
+      },
+      {
+        "dependency": "pow_zero",
+        "theorem": "coprime_powers"
+      },
+      {
+        "dependency": "pow_successor_decompose",
+        "theorem": "coprime_powers"
+      },
+      {
+        "dependency": "coprime_mul_left",
+        "theorem": "coprime_powers"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "prime_contribution_prefix_pairwise_coprime"
+      },
+      {
+        "dependency": "coprime_one_left",
+        "theorem": "prime_contribution_prefix_pairwise_coprime"
+      },
+      {
+        "dependency": "coprime_one_right",
+        "theorem": "prime_contribution_prefix_pairwise_coprime"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "prime_contribution_product_divides"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "prime_contribution_selected_successor_divides"
+      },
+      {
+        "dependency": "prime_is_succ_succ",
+        "theorem": "prime_contribution_cofactor_prime_contradiction"
+      },
+      {
+        "dependency": "multiple_mul_left",
+        "theorem": "prime_contribution_cofactor_prime_contradiction"
+      },
+      {
+        "dependency": "eq_decidable",
+        "theorem": "prime_contribution_cofactor_eq_one"
+      },
+      {
+        "dependency": "mul_one",
+        "theorem": "prime_contribution_reverse_divides"
+      },
+      {
+        "dependency": "prime_contribution_product_divides",
+        "theorem": "prime_contribution_product_eq"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "no_bertrand_central_contribution_prefix_ranges"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "floor_sqrt_two_le_of_two_lt"
+      },
+      {
+        "dependency": "two_lt_double_lower_six",
+        "theorem": "floor_sqrt_three_mul_le_double"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "floor_sqrt_three_mul_le_double"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "floor_sqrt_three_mul_le_double"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "floor_sqrt_third_quotient_gap_exists"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "third_quotient_double_gap_exists"
+      },
+      {
+        "dependency": "beta_prefix_extend",
+        "theorem": "prime_contribution_interval_prefix_extend"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_contribution_interval_prefix_exists"
+      },
+      {
+        "dependency": "succ_ne_zero",
+        "theorem": "prime_contribution_interval_prefix_exists"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "prime_contribution_interval_prefix_transport_entry"
+      },
+      {
+        "dependency": "beta_product_exists",
+        "theorem": "prime_contribution_interval_exists"
+      },
+      {
+        "dependency": "beta_product_transport_prefix",
+        "theorem": "prime_contribution_interval_functional"
+      },
+      {
+        "dependency": "beta_product_functional",
+        "theorem": "prime_contribution_interval_functional"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "prime_contribution_interval_prefix_shift"
+      },
+      {
+        "dependency": "le_succ",
+        "theorem": "beta_product_all_one_exact"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "beta_product_all_one_exact"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "no_bertrand_small_contribution_choice_le_double"
+      },
+      {
+        "dependency": "lt_to_le",
+        "theorem": "no_bertrand_small_contribution_choice_le_double"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "no_bertrand_small_contribution_choice_le_double"
+      },
+      {
+        "dependency": "le_add_right",
+        "theorem": "no_bertrand_small_contribution_choice_le_double"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "no_bertrand_middle_contribution_choice_le_selector"
+      },
+      {
+        "dependency": "le_refl",
+        "theorem": "no_bertrand_middle_contribution_choice_le_selector"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "no_bertrand_high_contribution_choice_eq_one"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "no_bertrand_high_contribution_choice_eq_one"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "no_bertrand_small_contribution_product_le_power"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "no_bertrand_middle_contribution_interval_le_primorial_interval"
+      },
+      {
+        "dependency": "add_le_add_left",
+        "theorem": "no_bertrand_middle_contribution_interval_le_primorial_interval"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "no_bertrand_middle_contribution_interval_le_primorial_interval"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "no_bertrand_middle_contribution_interval_le_four_pow"
+      },
+      {
+        "dependency": "primorial_index_eq_transport",
+        "theorem": "no_bertrand_middle_contribution_interval_le_four_pow"
+      },
+      {
+        "dependency": "primorial_prefix_interval_split",
+        "theorem": "no_bertrand_middle_contribution_interval_le_four_pow"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "no_bertrand_high_contribution_interval_eq_one"
+      },
+      {
+        "dependency": "beta_at_unique",
+        "theorem": "no_bertrand_high_contribution_interval_eq_one"
+      },
+      {
+        "dependency": "mul_one",
+        "theorem": "central_binom_factorization_small"
+      },
+      {
+        "dependency": "mul_le_mul",
+        "theorem": "central_binom_le_of_no_bertrand_prime"
+      },
+      {
+        "dependency": "le_mul_of_one_le_right",
+        "theorem": "bertrand_eventually_closed_upper"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "bertrand_eventually_closed_upper"
+      },
+      {
+        "dependency": "lt_of_lt_of_le",
+        "theorem": "bertrand_eventually_closed_upper"
+      },
+      {
+        "dependency": "division_remainder_exists",
+        "theorem": "bertrand_eventually_closed_upper"
+      },
+      {
+        "dependency": "central_binom_exists",
+        "theorem": "bertrand_eventually_closed_upper"
+      },
+      {
+        "dependency": "pow_exists",
+        "theorem": "bertrand_eventually_closed_upper"
+      },
+      {
+        "dependency": "mul_le_mul_left",
+        "theorem": "bertrand_eventually_closed_upper"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "bertrand_eventually_closed_upper"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "bertrand_eventually_closed_upper"
+      },
+      {
+        "dependency": "prime_or_composite",
+        "theorem": "nonprime_has_small_prime_divisor_below_square"
+      },
+      {
+        "dependency": "mul_zero_left",
+        "theorem": "nonprime_has_small_prime_divisor_below_square"
+      },
+      {
+        "dependency": "divisor_le_nonzero",
+        "theorem": "nonprime_has_small_prime_divisor_below_square"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "nonprime_has_small_prime_divisor_below_square"
+      },
+      {
+        "dependency": "multiple_trans",
+        "theorem": "nonprime_has_small_prime_divisor_below_square"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "nonprime_has_small_prime_divisor_below_square"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "scaled_remainder_lift"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "scaled_remainder_lift"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "add_remainder_lift"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_five"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "prime_five"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_seven"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "prime_seven"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_thirteen"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "prime_thirteen"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_twenty_three"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "prime_twenty_three"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_forty_three"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "prime_forty_three"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_eighty_three"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "prime_eighty_three"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "prime_eighty_three"
+      },
+      {
+        "dependency": "mul_succ_left",
+        "theorem": "prime_eighty_three"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_eighty_three"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "prime_eighty_three"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_one_hundred_sixty_three"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "prime_one_hundred_sixty_three"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "prime_one_hundred_sixty_three"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_one_hundred_sixty_three"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "prime_one_hundred_sixty_three"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_three_hundred_seventeen"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "prime_three_hundred_seventeen"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "prime_three_hundred_seventeen"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_three_hundred_seventeen"
+      },
+      {
+        "dependency": "lt_not_le",
+        "theorem": "prime_three_hundred_seventeen"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "prime_five_hundred_twenty_one"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "prime_five_hundred_twenty_one"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "prime_five_hundred_twenty_one"
+      },
+      {
+        "dependency": "add_mul",
+        "theorem": "prime_five_hundred_twenty_one"
+      },
+      {
+        "dependency": "mul_assoc",
+        "theorem": "prime_five_hundred_twenty_one"
+      },
+      {
+        "dependency": "le_trans",
+        "theorem": "prime_five_hundred_twenty_one"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_add_six_permute"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_cover_eighty_three_one_hundred_sixty_three"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "bertrand_cover_eighty_three_one_hundred_sixty_three"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_cover_one_hundred_sixty_three_three_hundred_seventeen"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_cover_one_hundred_sixty_three_three_hundred_seventeen"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "bertrand_cover_one_hundred_sixty_three_three_hundred_seventeen"
+      },
+      {
+        "dependency": "bertrand_add_swap_nested",
+        "theorem": "bertrand_cover_one_hundred_sixty_three_three_hundred_seventeen"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_cover_three_hundred_seventeen_five_hundred_twenty_one"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "bertrand_cover_three_hundred_seventeen_five_hundred_twenty_one"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_cover_three_hundred_seventeen_five_hundred_twenty_one"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "bertrand_cover_three_hundred_seventeen_five_hundred_twenty_one"
+      },
+      {
+        "dependency": "add_succ_left",
+        "theorem": "bertrand_cutoff_lt_final_prime"
+      },
+      {
+        "dependency": "mul_add",
+        "theorem": "bertrand_cutoff_lt_final_prime"
+      },
+      {
+        "dependency": "mul_comm",
+        "theorem": "bertrand_cutoff_lt_final_prime"
+      },
+      {
+        "dependency": "add_assoc",
+        "theorem": "bertrand_cutoff_lt_final_prime"
+      },
+      {
+        "dependency": "add_comm",
+        "theorem": "bertrand_cutoff_lt_final_prime"
+      },
+      {
+        "dependency": "nonzero_is_succ",
+        "theorem": "bertrand_small_closed_upper"
+      },
+      {
+        "dependency": "le_or_lt",
+        "theorem": "bertrand_small_closed_upper"
+      },
+      {
+        "dependency": "le_or_lt",
+        "theorem": "bertrand_closed_upper"
+      },
+      {
+        "dependency": "zero_add",
+        "theorem": "bertrand_upper_endpoint_factorization"
+      },
+      {
+        "dependency": "add_eq_zero_right",
+        "theorem": "bertrand_strict"
+      },
+      {
+        "dependency": "le_eq_or_lt",
+        "theorem": "bertrand_strict"
+      }
+    ],
+    "reachability_redundant_direct_dependency_count": 1291,
+    "reachability_redundant_direct_dependency_count_by_enrollment_origin": {
+      "bertrand": 520,
+      "bertrand_b0_interval": 7,
+      "bertrand_b1_power_growth": 3,
+      "bertrand_b1_power_order": 1,
+      "bertrand_b2_bounded_valuation": 6,
+      "bertrand_b2_valuation_laws": 5,
+      "bertrand_b2_valuation_multiplication": 6,
+      "bertrand_b6_ceil_sqrt": 9,
+      "bertrand_b6_floor_sqrt_total": 2,
+      "bertrand_b6_integer_envelope": 9,
+      "bertrand_b6_quotient_budget": 6,
+      "ha": 28,
+      "k3b": 12,
+      "k3c": 3,
+      "qr": 374,
+      "stable": 300
+    },
+    "reachability_redundant_direct_dependency_sha256": "431e30800854fc41848c286866c22c2f95b7a8a4410ddfe3e36c769a5ecfdfde",
+    "theorems_by_depth": {
+      "0": 111,
+      "1": 63,
+      "10": 41,
+      "11": 35,
+      "12": 42,
+      "13": 25,
+      "14": 19,
+      "15": 13,
+      "16": 7,
+      "17": 38,
+      "18": 34,
+      "19": 34,
+      "2": 82,
+      "20": 38,
+      "21": 31,
+      "22": 23,
+      "23": 20,
+      "24": 17,
+      "25": 13,
+      "26": 12,
+      "27": 9,
+      "28": 6,
+      "29": 5,
+      "3": 84,
+      "30": 3,
+      "31": 3,
+      "32": 3,
+      "33": 3,
+      "34": 2,
+      "35": 2,
+      "36": 2,
+      "37": 2,
+      "38": 6,
+      "39": 4,
+      "4": 75,
+      "40": 3,
+      "41": 2,
+      "42": 2,
+      "43": 2,
+      "44": 2,
+      "5": 57,
+      "6": 103,
+      "7": 109,
+      "8": 75,
+      "9": 41
+    },
+    "transitive_reduction_edge_count": 3011,
+    "transitive_reduction_edge_sha256": "df6466992fb659003da944b6b9f73465a4899c2c5b2c5f31819f3ab05700b7e7",
+    "transitive_reduction_preserves_reachability": true
+  },
+  "dependency_graph_path": "artifacts/peano-library/alpha/dependency-graph-v12.mmd",
+  "dependency_graph_sha256": "583d18473200097997fa6b8ef0b57ebef9da95f136555d97b24220f1abb356b8",
+  "edition_identity_sha256": "bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061",
+  "evidence_counts": {
+    "alpha_closed": 138,
+    "body_checked": 732,
+    "pending_layered_closure": 1,
+    "stable_closed": 432
+  },
+  "ordered_enrollment_root_sha256": "f763b9fc3717ad76c7e259d67c3beeadfdaca554bbaaeb3ecd2e55329edf937b",
+  "ordered_spec_root_sha256": "362da94c3c5e788f296f315b86b5d63534c1567ce00911dbb27227a66ab50e28",
+  "parent_alpha_v1": {
+    "artifact_sha256": "ae751f4617b47b7c7871d802b87ae5b9bb9a77c931c283532547a2038d36000a",
+    "ordered_enrollment_root_sha256": "7371461aa930071f00007f766f899cef88c4126a5ddf576f93d79e336bc65c49",
+    "path": "artifacts/peano-library/alpha/catalog-v1.json",
+    "schema": "peano-library-alpha-snapshot-v1",
+    "theorem_count": 885
+  },
+  "parent_alpha_v10": {
+    "artifacts": {
+      "catalog": {
+        "path": "artifacts/peano-library/alpha/catalog-v10.json",
+        "sha256": "46bd50c19b694470542f53f1ef7f61d1ee8fab1f08ad5573ca3534da29053dc3"
+      },
+      "channels": {
+        "path": "artifacts/peano-library/channels-v10.json",
+        "sha256": "644fb72833d66f30b2194a5d493935f31bae716edb4c76afcb8c6e272399eca2"
+      },
+      "dependency_graph": {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v10.mmd",
+        "sha256": "fdee73e6ea045c90afb7c024e8a209fbea8b03189538611c93678e4fa923aa76"
+      },
+      "metrics": {
+        "path": "artifacts/peano-library/alpha/metrics-v10.json",
+        "sha256": "63044f59aeb6fd84fbe57e26f8358676e679e15ef7456f1823db68bc255703de"
+      }
+    },
+    "edition_identity_sha256": "1e4376021508ac6913770ac18eca8c1406c7b298d7e381f994510c6854baa98d",
+    "ordered_enrollment_root_sha256": "c016d13d555f31c0fabf61e236f9012ac60bf50e2e66210d398d7bc049672b4f",
+    "schema": "peano-library-alpha-snapshot-v10",
+    "theorem_count": 1085
+  },
+  "parent_alpha_v11": {
+    "artifacts": {
+      "catalog": {
+        "path": "artifacts/peano-library/alpha/catalog-v11.json",
+        "sha256": "d992c4aeb37829838cefd668679c513c5d45f6304f9842dcbe825bb25563182c"
+      },
+      "channels": {
+        "path": "artifacts/peano-library/channels-v11.json",
+        "sha256": "039712b6a1db739738f49b5cec20afdc0582ffae477bc43c52f96c00687b066f"
+      },
+      "dependency_graph": {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v11.mmd",
+        "sha256": "c020f3207b0408cf446200b2c91f0767874c50466eebda830c3faeeef08aeae1"
+      },
+      "metrics": {
+        "path": "artifacts/peano-library/alpha/metrics-v11.json",
+        "sha256": "92cb654431a1b631cede3a0957993b41b8ad0fb0a0175d1587413dbf54c14300"
+      }
+    },
+    "edition_identity_sha256": "46d07832b0c630b9ce1da1d6e639687347cd737774b2b88b923bc5f477b9ddc3",
+    "ordered_enrollment_root_sha256": "c9f6f4015e8e3e5aaeee803706113c85098551276ea3eb01039ade7bd97b1a36",
+    "schema": "peano-library-alpha-snapshot-v11",
+    "theorem_count": 1123
+  },
+  "parent_alpha_v2": {
+    "artifacts": {
+      "catalog": {
+        "path": "artifacts/peano-library/alpha/catalog-v2.json",
+        "sha256": "90ac4942df043e59ade7a62a87627ef3b29d9b1d7d251c8fa6aadefe77590bd7"
+      },
+      "channels": {
+        "path": "artifacts/peano-library/channels-v2.json",
+        "sha256": "c2af6774ea7c787532d79a5f8fd41087ae5f31a0e828e25571adaed2853aa968"
+      },
+      "dependency_graph": {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v2.mmd",
+        "sha256": "01ca3e6b58e55cfefd4a0df3f8ce229f5382c26a02f4960ceb7773205c9177a3"
+      },
+      "metrics": {
+        "path": "artifacts/peano-library/alpha/metrics-v2.json",
+        "sha256": "85907aea9e6fece33c8f4d0d40d167945f3118190654a32423dc815df8fc69eb"
+      }
+    },
+    "edition_identity_sha256": "aadf99c0e411fcefe34285c8396ff0652f590e6990f0d55c3e6c7b728f9b43a4",
+    "ordered_enrollment_root_sha256": "00f1a70a0911c44acd6b784f2b121b2c351ae626a0f18bb08b5a829496ad40fe",
+    "schema": "peano-library-alpha-snapshot-v2",
+    "theorem_count": 902
+  },
+  "parent_alpha_v3": {
+    "artifacts": {
+      "catalog": {
+        "path": "artifacts/peano-library/alpha/catalog-v3.json",
+        "sha256": "1cd6b31379737efb3d889318e1c40beffcc14f77432a1b18cb74e80a5d29d199"
+      },
+      "channels": {
+        "path": "artifacts/peano-library/channels-v3.json",
+        "sha256": "cd1618b8056abd22348dfac70d8a1686eecd5c6f875319c803d487c414f656ab"
+      },
+      "dependency_graph": {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v3.mmd",
+        "sha256": "180ff8ddeccc9fafbc3607aa10b0587cbe2144cf4943621df52c2da5f26dbec7"
+      },
+      "metrics": {
+        "path": "artifacts/peano-library/alpha/metrics-v3.json",
+        "sha256": "50f5a2dab17fffa6b2ad0e936138bc197297caf066218e4054f8bc8b0e5ccd73"
+      }
+    },
+    "edition_identity_sha256": "e20eefac839fb2bcd3e696989c091a5f6837de04824f94e1073723851a471a2f",
+    "ordered_enrollment_root_sha256": "4507736cde37301ecf3369540d6cc686de860b07b101f2afb60f850f86aeebd4",
+    "schema": "peano-library-alpha-snapshot-v3",
+    "theorem_count": 923
+  },
+  "parent_alpha_v4": {
+    "artifacts": {
+      "catalog": {
+        "path": "artifacts/peano-library/alpha/catalog-v4.json",
+        "sha256": "16e2b99de69487e7439521b25ee070b208d6a7436df48f60801d5628a3678f1a"
+      },
+      "channels": {
+        "path": "artifacts/peano-library/channels-v4.json",
+        "sha256": "cf3cdc6ead4d616b15bcf28b84fca586bc5df84b30125c807fb36a74985bdb76"
+      },
+      "dependency_graph": {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v4.mmd",
+        "sha256": "9dc4c9531418b3de3def3c827a6b5fac54b12f78661d5a6860c84c08f748d28c"
+      },
+      "metrics": {
+        "path": "artifacts/peano-library/alpha/metrics-v4.json",
+        "sha256": "bec61a932dbcf92715dcaac7440687e7310b8f380f5578746999c3007e1d6dac"
+      }
+    },
+    "edition_identity_sha256": "e0324009614f755f2251a5b27d29587b0c43015385a78d567b328776b92239a5",
+    "ordered_enrollment_root_sha256": "e4c83174c1800c135d0fe9ac03b5cdfcc5f11e5517f871b3f198586973a20c31",
+    "schema": "peano-library-alpha-snapshot-v4",
+    "theorem_count": 965
+  },
+  "parent_alpha_v5": {
+    "artifacts": {
+      "catalog": {
+        "path": "artifacts/peano-library/alpha/catalog-v5.json",
+        "sha256": "94efc0f7022f31677619e842f7d6f1d0d0f8959efc54cd64cf346c3b5e8c4892"
+      },
+      "channels": {
+        "path": "artifacts/peano-library/channels-v5.json",
+        "sha256": "946682733744d6969e89059df9165cc2782510101d4ee43a6a861aa7570a3f31"
+      },
+      "dependency_graph": {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v5.mmd",
+        "sha256": "4e8f1ea73b3ecfd51cf80d216dfc9171dabbe12f38d9c8392185ea1c610112ab"
+      },
+      "metrics": {
+        "path": "artifacts/peano-library/alpha/metrics-v5.json",
+        "sha256": "b560373c8cb4879f47e46083d5b9925cd29ebee1af4856cfc93e74017555acc2"
+      }
+    },
+    "edition_identity_sha256": "bccf7d8fc01dbcd1cd2efd9d5d8e5189d80b79cfb7e5e30df999d270a9fd13af",
+    "ordered_enrollment_root_sha256": "46e1a08c6bc18bbc057aa7541420580b43aec75d5f30af500ba3ce12bec09473",
+    "schema": "peano-library-alpha-snapshot-v5",
+    "theorem_count": 972
+  },
+  "parent_alpha_v6": {
+    "artifacts": {
+      "catalog": {
+        "path": "artifacts/peano-library/alpha/catalog-v6.json",
+        "sha256": "c72d6e1234aa6521b0c524720cd64912f7e9b0bc58f31b6964bbb1a99c5a071d"
+      },
+      "channels": {
+        "path": "artifacts/peano-library/channels-v6.json",
+        "sha256": "6ef8bb93b2e24bdfe45389ca9417b6333ce83ae249ee49a957959a6b3471b86c"
+      },
+      "dependency_graph": {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v6.mmd",
+        "sha256": "532c2482a3b1c371026bd80b1b7297faffc4a1b1ee3e53031e499f1611b3ae16"
+      },
+      "metrics": {
+        "path": "artifacts/peano-library/alpha/metrics-v6.json",
+        "sha256": "f2a6c22b9fe50581a4cfe8d3b1b494fa274d26d0b51b60e92735650a09391be7"
+      }
+    },
+    "edition_identity_sha256": "7e46b80c4799e51da32cedf21a130274200fa14b21e0fec3b42f74d1523ab23b",
+    "ordered_enrollment_root_sha256": "dc25a3dc0ab7346f9188eee1262700b40bb09efdacfa849f3a27475ed870b5a7",
+    "schema": "peano-library-alpha-snapshot-v6",
+    "theorem_count": 993
+  },
+  "parent_alpha_v7": {
+    "artifacts": {
+      "catalog": {
+        "path": "artifacts/peano-library/alpha/catalog-v7.json",
+        "sha256": "7676fc944b695d02a3aec05b428c012933258cb6cd9b465599318e690e0f6df4"
+      },
+      "channels": {
+        "path": "artifacts/peano-library/channels-v7.json",
+        "sha256": "fe9c11ec8a622eb759053a42ee6acb7c2bcb1d454fe0dc5fa4b729a07ffbbd30"
+      },
+      "dependency_graph": {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v7.mmd",
+        "sha256": "85a53bd719e227a31d5cff15fc25ff66abaa82d498030f5a918a7c40271abc9e"
+      },
+      "metrics": {
+        "path": "artifacts/peano-library/alpha/metrics-v7.json",
+        "sha256": "c40f18bda0ec8feb9294cf445d08b51daf868e46b3931daf55bad91413d39e0d"
+      }
+    },
+    "edition_identity_sha256": "9afc0f00c01ce2c82f77f59ec674f0273462c31f8238943ec879e757111cc5ff",
+    "ordered_enrollment_root_sha256": "aaabe990d13d46b29e5f7c20f928e6ce3353c05ccf8dec51041243a7cd79534c",
+    "schema": "peano-library-alpha-snapshot-v7",
+    "theorem_count": 1017
+  },
+  "parent_alpha_v8": {
+    "artifacts": {
+      "catalog": {
+        "path": "artifacts/peano-library/alpha/catalog-v8.json",
+        "sha256": "c06c5fde7b84b4a8524dd408a2b046d06c7a88ccb5814877b7ccfec0d20b1370"
+      },
+      "channels": {
+        "path": "artifacts/peano-library/channels-v8.json",
+        "sha256": "dec01b10ee9359b1f7057187725016d343bfb7f3176d8779c85da7f26983234d"
+      },
+      "dependency_graph": {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v8.mmd",
+        "sha256": "ff194534f1efd56dd771237b6a44279a705309df21c1fa319b6669f3e1cab008"
+      },
+      "metrics": {
+        "path": "artifacts/peano-library/alpha/metrics-v8.json",
+        "sha256": "90c14911ef50391dd9fd99865a83a6e0886911253504096a30e497d30c1a6813"
+      }
+    },
+    "edition_identity_sha256": "2101b7b384ec9791c41d07d8115123d6842729615a0084ce87cead619bc8c123",
+    "ordered_enrollment_root_sha256": "a01b0224be070b09551c6ef7b50f9c32688448f48465b80ca97a23c01effd5c2",
+    "schema": "peano-library-alpha-snapshot-v8",
+    "theorem_count": 1055
+  },
+  "parent_alpha_v9": {
+    "artifacts": {
+      "catalog": {
+        "path": "artifacts/peano-library/alpha/catalog-v9.json",
+        "sha256": "74ab887e9eef3e3fc583b103f392f4e06125cb14a561765373677eb57f830eda"
+      },
+      "channels": {
+        "path": "artifacts/peano-library/channels-v9.json",
+        "sha256": "77fd0ba0ad1ba461432384c3330041a3dfc641dc84121982eb08456ee2de9a34"
+      },
+      "dependency_graph": {
+        "path": "artifacts/peano-library/alpha/dependency-graph-v9.mmd",
+        "sha256": "03b803080cd082642adeb2a89b62ab369c7e69aca4c4dfe90b327ef94c389ab9"
+      },
+      "metrics": {
+        "path": "artifacts/peano-library/alpha/metrics-v9.json",
+        "sha256": "7397959a4dad4e1d42e6a108156c84666b4cd4f95e07e573d1fcf402f83c2d65"
+      }
+    },
+    "edition_identity_sha256": "b74d7479d749500dbbd737f7cf5e7ea97a7998f8079233ed87b11c84823e2f80",
+    "ordered_enrollment_root_sha256": "fe862a0c9d0c47f05ae6740cbc95c67e9b984a715397e18078c11d44f709046f",
+    "schema": "peano-library-alpha-snapshot-v9",
+    "theorem_count": 1076
+  },
+  "promotion_gates": {
+    "canonical_topology": {
+      "declared_edge_count": 4302,
+      "status": "passed",
+      "theorem_count": 1303
+    },
+    "dependency_link_analysis": {
+      "policy": "Every reachability-redundant direct link must be reviewed before promotion. It need not be removed when the tactic body uses it directly; this gate makes no proof-semantic or global-minimality claim.",
+      "reachability_redundant_direct_dependency_count": 1291,
+      "status": "review_required"
+    },
+    "full_alpha_empty_context_compilation": {
+      "checked": 570,
+      "missing": 733,
+      "policy": "The missing closures block promotion of Alpha as one whole edition. Stable may still accept a selected dependency-closed batch after fresh isolated closure and kernel checks for that batch and its complete dependency closure.",
+      "required": 1303,
+      "status": "blocked"
+    },
+    "source_integrity": {
+      "source_bound_theorem_count": 1303,
+      "status": "passed"
+    }
+  },
+  "promotion_model": {
+    "alpha_order": "frozen_canonical_enrollment_ledger",
+    "current_v1_layout": "The 432 legacy Stable rows happen to be the current prefix; this is a v1 seal, not a permanent membership-origin axiom.",
+    "immutable_across_promotion": [
+      "canonical_alpha_position",
+      "enrollment_origin",
+      "logical_specification",
+      "primary_source",
+      "provenance"
+    ],
+    "new_snapshot_required": true,
+    "stable_relation": "keyed exact subset of Alpha with its own append-only, dependency-topological release order"
+  },
+  "schema": "peano-library-alpha-metrics-v12",
+  "theorem_count": 1303
+}

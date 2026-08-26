@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT001B — lt_irrefl_expanded</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT001B.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT001B&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT0019.html">← lt_to_le</a><a href="BT001C.html">le_eq_or_lt →</a></nav>
+<p class="pa-tag">BT001B</p><h1>lt_irrefl_expanded</h1>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
+<p>No natural is strictly below itself, with strict order fully expanded.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n. ~(exists k. k + S n = n)</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>No natural is strictly below itself, with strict order fully expanded.</p><p>Direct prerequisites:
+add_succ_left, no_succ_add_fixed.
+The authored body proceeds by case analysis (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0001.html"><code>BT0001</code> add_succ_left</a> <a class="pa-theorem-ref" href="BT000G.html"><code>BT000G</code> no_succ_add_fixed</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0059.html"><code>BT0059</code> beta_exclusive_accumulated_product_step</a> <a class="pa-theorem-ref" href="BT00R2.html"><code>BT00R2</code> ceil_div_six_functional</a> <a class="pa-theorem-ref" href="BT00RF.html"><code>BT00RF</code> ceil_div_six_le_of_upper</a> <a class="pa-theorem-ref" href="BT00TG.html"><code>BT00TG</code> choose_self</a> <a class="pa-theorem-ref" href="BT00VD.html"><code>BT00VD</code> beta_pairwise_coprime_product_divides_common_multiple</a> <a class="pa-theorem-ref" href="BT00YC.html"><code>BT00YC</code> double_quotient_carry_prefix_entries_zero</a> <a class="pa-theorem-ref" href="BT010B.html"><code>BT010B</code> floor_sqrt_two_le_of_two_lt</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="5ecb71b52e0b4694"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="5d44176a4f11138f"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="cases" data-line-id="50dac94abdefd367"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="0b85738eda619dfd"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT000G.html">no_succ_add_fixed</a> x</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="080c2f71c74171e6"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT000G.html">no_succ_add_fixed</a> n</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="apply" data-line-id="1fa66c7b5bdf327d"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT000G.html">no_succ_add_fixed</a></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="trans" data-line-id="ed12ffefd6b1c109"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">trans</span> x + S n</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="trans" data-line-id="368500160787d563"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">trans</span> S (x + n)</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="apply" data-line-id="17af3cad1287a92f"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0001.html">add_succ_left</a></code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="symm" data-line-id="a6145bb7bc5020d6"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="apply" data-line-id="77fa3316755c7074"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-axiom-ref" title="Peano arithmetic axiom">PA4</span></code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="exact" data-line-id="9e70cf48d0b13bf4"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">exact</span> h_witness</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>46</dd>
+<dt>Layer</dt><dd>1</dd><dt>Lines</dt><dd>12</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>36419ca17cc6063a3e08e29301a4d45b5e6bd4736202b70c0163315dab03f752</code></dd>
+<dt>Script SHA-256</dt><dd><code>5b23eb57c9a69711b28d706e5cf888028079f862dd219a997bc8898e4a0479a5</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

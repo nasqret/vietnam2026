@@ -1,0 +1,4 @@
+interface:
+  display_name: "Constructive Proof Explorer"
+  short_description: "Build canonical mathematical proof explorers"
+  default_prompt: "Use $constructive-proof-explorer to create a new proof campaign matching the Quadratic Reciprocity explorer."

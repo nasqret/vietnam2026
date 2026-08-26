@@ -1,0 +1,144 @@
+{
+  "attestor": {
+    "runtime": {
+      "implementation": "CPython",
+      "python": "3.10.0"
+    },
+    "sources": {
+      "training/peano_policy/__init__.py": {
+        "sha256": "c6db6b0c167a7b8e92646d91e81a77561dc51ee99c5a48d9a999a78e9d4f5db8"
+      },
+      "training/peano_policy/attest.py": {
+        "sha256": "fd27192edbf148b23f9512220971b77946e17416303167f83cd137077f4cc99c"
+      },
+      "training/peano_policy/config.py": {
+        "sha256": "69dac8c3fd9925baae1fde4ea50f64acb6e9966638a308a49a2660070417acd2"
+      },
+      "training/peano_policy/contract.py": {
+        "sha256": "dbb325137c7acecde53537d34b5f048b8656d482bb7e8b590753a8db34f97b59"
+      },
+      "training/peano_policy/data.py": {
+        "sha256": "22917b556b3be64ea8eccf806ad20150fb0cb6d1ba0b37b9127bd16279b83f3f"
+      },
+      "training/peano_policy/generate.py": {
+        "sha256": "a77be93649a2840dbefbe88a56105c9fb253f4a4ce0ab60ffa7be1a3b12d4fcc"
+      },
+      "training/peano_policy/manifest.py": {
+        "sha256": "9d0ccd0d82302a6e6476cb496f1861cf53f4f66504f33f708f89cfc6ad64fbcf"
+      },
+      "training/peano_policy/prompt.py": {
+        "sha256": "f9057f7a085b52a30bcc771f729c20c8b6ff73b1285b425365f9d0b108c22eb9"
+      },
+      "training/peano_policy/runtime.py": {
+        "sha256": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc"
+      },
+      "training/peano_policy/smoke.py": {
+        "sha256": "8e5764d1cf250a63d10b6261a0818c12049d79e967de66cc94aad7d38ef371be"
+      },
+      "training/peano_policy/train.py": {
+        "sha256": "418d3aeb250dfe1a30b5d423a54b47b2b4daa806fea0d9f0036763f924d64e15"
+      }
+    },
+    "sources_sha256": "4dcccc43b883325467f44a8ae815fd2ce19e617522e3f7566b3d7caa3bba0ef2"
+  },
+  "compiler": {
+    "runtime": {
+      "implementation": "cpython",
+      "python": "3.10.0"
+    },
+    "source_count": 34,
+    "sources_sha256": "6b02a16cc9f97178f1eb29437edb6ac162357d921a54ab3d58fc3d5fc21e5e5d"
+  },
+  "dataset_sha256": "1fa98caa2e0528d39c1b9003c4ee153dfbe633cb1ee4505e8f5b28eb837465dd",
+  "environment": {
+    "capabilities": {
+      "allowed_commands": [
+        "apply",
+        "assumption",
+        "cases",
+        "compact_arith",
+        "congr",
+        "exact",
+        "exfalso",
+        "exists",
+        "forall_elim",
+        "have",
+        "induction",
+        "intro",
+        "left",
+        "norm_num",
+        "refl",
+        "rewrite",
+        "right",
+        "ring",
+        "simp",
+        "specialize",
+        "split",
+        "suffices",
+        "symm",
+        "trans",
+        "use"
+      ],
+      "allowed_theorems": [
+        "add_assoc",
+        "add_eq_zero_right",
+        "add_succ_left",
+        "antisymm_from_witnesses",
+        "drop_add_prefix_from_fixed",
+        "no_succ_add_fixed",
+        "zero_add"
+      ],
+      "label": "model-v1"
+    },
+    "classical": false,
+    "environment_sha256": "ea753147079f48c14e9bd197051264a1ab29868a0bac84bd13c420baf1b63e1f",
+    "surface": "model-v1"
+  },
+  "format": "peano-policy-dataset-attestation",
+  "held_out_contamination": 0,
+  "held_out_contract": {
+    "goals": [
+      {
+        "name": "le_trans",
+        "statement": "∀ x. ∀ y. ∀ z. x ≤ y → y ≤ z → x ≤ z"
+      },
+      {
+        "name": "le_antisymm",
+        "statement": "∀ x. ∀ y. x ≤ y → y ≤ x → x = y"
+      },
+      {
+        "name": "le_total",
+        "statement": "∀ x. ∀ y. x ≤ y ∨ y ≤ x"
+      },
+      {
+        "name": "mul_eq_zero",
+        "statement": "∀ x. ∀ y. x · y = 0 → x = 0 ∨ y = 0"
+      }
+    ],
+    "v": 1
+  },
+  "held_out_contract_sha256": "37aa8242ce437997cb88a31479e7a1ce42d60bd9a40b7a1ddb4b6f991fefb16f",
+  "independent_replay": true,
+  "manifest_sha256": "faffe83d36d218be08455fa87315594bb2e3a964ca0a63b5a94c356f3c1f0403",
+  "source_artifacts": {
+    "metadata": "bf199b46f5c269d1d602772e4a9eae4ddb2e2d79d02a3d4b36ce2c650ec04e66",
+    "traces": [
+      "edaee016b532ae1ed670024c1b1b9c73d3ed3154dda2018526a9ac17b57ff6db"
+    ]
+  },
+  "splits": {
+    "test": {
+      "rows": 925,
+      "sha256": "7960edcf3d69a821eb87ebc8e7bf5dd3f965a9de0971d4031ed28121da2745e3"
+    },
+    "train": {
+      "rows": 8149,
+      "sha256": "60a58aff0a5ff8a6305fe345a45d7c3b1028f5975ce7468fbd549a3ed815e379"
+    },
+    "val": {
+      "rows": 926,
+      "sha256": "799d7e6f5b8f10ce978532d3e125e43af84dd215f2efae73fde5cd7de853fb3b"
+    }
+  },
+  "v": 1
+}

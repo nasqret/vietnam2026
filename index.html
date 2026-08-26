@@ -192,6 +192,22 @@
     .stat .src { font-size: 0.72rem; color: var(--text-light); margin-top: 0.5rem; }
     .note-updating { font-size: 0.8rem; color: var(--amber); margin-top: 1rem; }
 
+    /* ===== Peano Lab release ===== */
+    .peano-release { padding: 2.8rem 0; }
+    .peano-release-panel {
+      display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2rem; align-items: center;
+      padding: 1.6rem 1.8rem; border: 1px solid color-mix(in srgb, var(--verified) 42%, var(--border));
+      border-radius: var(--radius); background: var(--verified-soft); box-shadow: var(--card-shadow);
+    }
+    .peano-release-panel h2 { color: var(--heading); font-size: clamp(1.35rem, 3vw, 1.85rem); line-height: 1.2; }
+    .peano-release-panel p { color: var(--text); max-width: 72ch; margin-top: 0.55rem; }
+    .peano-release-links { display: flex; flex-wrap: wrap; gap: 0.7rem; }
+    .peano-release-links .btn { white-space: nowrap; }
+    .peano-release-links .btn-ghost { color: var(--heading); border-color: var(--verified); background: var(--surface); }
+    @media (max-width: 760px) {
+      .peano-release-panel { grid-template-columns: 1fr; gap: 1.2rem; }
+    }
+
     /* ===== Resources ===== */
     .res-grid { margin-top: 2.2rem; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
     .res {
@@ -240,6 +256,7 @@
       <div class="cta">
         <a class="btn btn-primary" href="#lectures">Explore the six lectures ↓</a>
         <a class="btn btn-verified" href="/lab-lambda" target="_blank" rel="noopener">▷ Open the Lambda Lab</a>
+        <a class="btn btn-verified" href="/peano-lab/" target="_blank" rel="noopener">▷ Open Peano Lab</a>
         <a class="btn btn-ghost" href="https://github.com/nasqret/vietnam2026" target="_blank" rel="noopener">GitHub</a>
         <a class="btn btn-ghost" href="https://viasm.edu.vn/en/hdkh/Mini-Course_AIATPM" target="_blank" rel="noopener">VIASM page ↗</a>
       </div>
@@ -373,6 +390,27 @@
     </div>
   </section>
 
+  <!-- ===================== PEANO LAB RELEASE ===================== -->
+  <section class="peano-release" aria-labelledby="peano-release-title">
+    <div class="wrap">
+      <div class="peano-release-panel">
+        <div>
+          <div class="eyebrow">Now live · checked in the browser</div>
+          <h2 id="peano-release-title">Peano Lab: build proofs, then distrust them</h2>
+          <p>A little Lean for Peano arithmetic is now live. Its untrusted tactics produce explicit
+            certificates; a separate 234-line kernel rechecks every QED against the theorem you
+            originally stated. Explore real induction, rewriting, checked <span class="mono">ring</span>
+            and <span class="mono">norm_num</span> automation, then climb a twenty-three-entry
+            theorem library through the zero-product theorem.</p>
+        </div>
+        <div class="peano-release-links">
+          <a class="btn btn-verified" href="/peano-lab/" target="_blank" rel="noopener">Open the lab ↗</a>
+          <a class="btn btn-ghost" href="book/peano/index.html">Read how it was built</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- ===================== RESOURCES ===================== -->
   <section id="resources">
     <div class="wrap">
@@ -382,6 +420,7 @@
         <a class="res" href="book/"><div class="ico">📖</div><div><h4>Knowledge book</h4><p>The full text-friendly notes — mathematics, runnable code, and links. The "learning data" of the course, built with JupyterBook.</p></div></a>
         <a class="res" href="/lab-lambda/" target="_blank"><div class="ico">🐊</div><div><h4>Lambda Lab</h4><p>A full λ-calculus laboratory <em>in your browser</em>: step-highlighted reductions, an <strong>interactive Curry–Howard prover</strong>, type inference &amp; inhabitation, twelve guided tutorials, quizzes, Alligator Eggs — no install.</p></div></a>
         <a class="res" href="book/cookbook/index.html"><div class="ico">🍳</div><div><h4>The Lambda Lab cookbook</h4><p><strong>New:</strong> a 19,000-word verified playground — Fibonacci without recursion, Ackermann in one line, a terminating Y-combinator factorial, the Ω that grows, puzzle ladders with hidden solutions. Every output produced by the real engine.</p></div></a>
+        <a class="res" href="/peano-lab/" target="_blank" rel="noopener"><div class="ico">🔢</div><div><h4>Peano Lab <em>— live</em></h4><p>A little Lean for <strong>Peano arithmetic</strong>: an independent kernel, real tactics (<span class="mono">rewrite</span>, <span class="mono">induction</span>, <span class="mono">simp</span>, <span class="mono">ring</span>, <span class="mono">norm_num</span>), checked tutorials, and a twenty-three-entry theorem ladder — all in the browser.</p></div></a>
         <a class="res" href="slides/"><div class="ico">🖥️</div><div><h4>Slides</h4><p>One reveal.js deck per lecture, to follow along live and revisit afterwards.</p></div></a>
         <a class="res" href="https://github.com/nasqret/vietnam2026/tree/main/artifacts" target="_blank" rel="noopener"><div class="ico">✓</div><div><h4>Formal artifacts</h4><p>The same theorems proved in Lean, Agda, Rocq and Mizar — four foundations, one Rosetta stone.</p></div></a>
         <a class="res" href="https://github.com/nasqret/vietnam2026" target="_blank"><div class="ico">⌥</div><div><h4>Source on GitHub</h4><p>Everything is open: book, lab, vault, artifacts, and a reproducible build. <span class="mono">nasqret/vietnam2026</span>.</p></div></a>
@@ -399,7 +438,8 @@
       <div>
         <a href="https://bnaskrecki.faculty.wmi.amu.edu.pl/">Home</a> ·
         <a href="https://github.com/nasqret/vietnam2026">GitHub</a> ·
-        <a href="/lab-lambda">Lambda Lab</a>
+        <a href="/lab-lambda">Lambda Lab</a> ·
+        <a href="/peano-lab/">Peano Lab</a>
       </div>
     </div>
   </footer>

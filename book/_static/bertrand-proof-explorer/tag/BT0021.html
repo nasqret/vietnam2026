@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0021 — mul_ne_zero</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT0021.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT0021&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT0020.html">← mul_eq_one_components</a><a href="BT0022.html">mul_left_cancel_nonzero →</a></nav>
+<p class="pa-tag">BT0021</p><h1>mul_ne_zero</h1>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
+<p>A product of two nonzero naturals is nonzero.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a b. ~(a = 0) -&gt; ~(b = 0) -&gt; ~(a * b = 0)</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>A product of two nonzero naturals is nonzero.</p><p>Direct prerequisites:
+mul_eq_zero.
+The authored body proceeds by case analysis (1), intermediate claims (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT000M.html"><code>BT000M</code> mul_eq_zero</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0022.html"><code>BT0022</code> mul_left_cancel_nonzero</a> <a class="pa-theorem-ref" href="BT0059.html"><code>BT0059</code> beta_exclusive_accumulated_product_step</a> <a class="pa-theorem-ref" href="BT00QR.html"><code>BT00QR</code> power_valuation_mul_lower</a> <a class="pa-theorem-ref" href="BT00RK.html"><code>BT00RK</code> factorial_nonzero</a> <a class="pa-theorem-ref" href="BT00XM.html"><code>BT00XM</code> central_binom_factorial_valuation_balance</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="fb23b2b3cdea583a"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="3c70dd068dee76e5"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="fac899dc0b2ff03a"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> ha</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="bbf62688f105f0fe"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> hb</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="f3cc991dddcceb22"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> hab</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="specialize" data-line-id="0198c2e1dc6dac4c"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT000M.html">mul_eq_zero</a> a</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="specialize" data-line-id="6f762c44e5f643e4"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT000M.html">mul_eq_zero</a> b</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="have" data-line-id="cca58d1d55639ca5"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">have</span> hz : a = 0 \/ b = 0</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="apply" data-line-id="8d7fffe305f9d5bb"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT000M.html">mul_eq_zero</a></code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="exact" data-line-id="36a2dd44ed28d655"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">exact</span> hab</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="cases" data-line-id="3eb1c4f57f192e7d"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">cases</span> hz</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="apply" data-line-id="9c195b46abd4dd4b"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">apply</span> ha</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="exact" data-line-id="4dc8fe1a74ae92e2"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">exact</span> hz_left</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="apply" data-line-id="4e157226b3f8255b"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">apply</span> hb</code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="exact" data-line-id="4f5fea9a83e3b1ac"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">exact</span> hz_right</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>71</dd>
+<dt>Layer</dt><dd>2</dd><dt>Lines</dt><dd>15</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>6735bc30f9bc8b28c3d07715c40ff48104313bf5ef4356b2f67502aebe9ac675</code></dd>
+<dt>Script SHA-256</dt><dd><code>4b09ce79b0f9f3441f67e7a3c8b2ac9e446b34a3a88bc9e66ccd8149d3e18fa9</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

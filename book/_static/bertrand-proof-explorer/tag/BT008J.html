@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT008J — all_bits_prefix_succ</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT008J.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT008J&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT008F.html">← beta_sum_succ_decompose</a><a href="BT008K.html">all_bits_last_succ →</a></nav>
+<p class="pa-tag">BT008J</p><h1>all_bits_prefix_succ</h1>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
+<p>Dropping the final entry preserves the all-bits invariant.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall b c l sl. sl = S l -&gt; (forall ff_i_successor. (exists ff_lt_successor_bound. ff_lt_successor_bound + S ff_i_successor = sl) -&gt; exists ff_bit_successor. ((((exists ff_h_successor_decoded. ff_h_successor_decoded + S (ff_bit_successor) = S ((S (ff_i_successor)) * c)) /\ exists ff_q_successor_decoded. b = ff_q_successor_decoded * S ((S (ff_i_successor)) * c) + (ff_bit_successor))) /\ (ff_bit_successor = 0 \/ ff_bit_successor = 1))) -&gt; (forall ff_i_prefix. (exists ff_lt_prefix_bound. ff_lt_prefix_bound + S ff_i_prefix = l) -&gt; exists ff_bit_prefix. ((((exists ff_h_prefix_decoded. ff_h_prefix_decoded + S (ff_bit_prefix) = S ((S (ff_i_prefix)) * c)) /\ exists ff_q_prefix_decoded. b = ff_q_prefix_decoded * S ((S (ff_i_prefix)) * c) + (ff_bit_prefix))) /\ (ff_bit_prefix = 0 \/ ff_bit_prefix = 1)))</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Dropping the final entry preserves the all-bits invariant.</p><p>Direct prerequisites:
+le_succ.
+The authored body proceeds by equality transport (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0018.html"><code>BT0018</code> le_succ</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT008O.html"><code>BT008O</code> bit_count_succ_decompose</a> <a class="pa-theorem-ref" href="BT00JC.html"><code>BT00JC</code> beta_all_one_bit_count_exact</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="4435c703c25ccf38"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="fbe8e6b103a58782"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="7c21b7793057a567"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> l</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="cdaa7b255207b0d5"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> sl</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="e053ef5cbf116600"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> hsl</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="intro" data-line-id="053d308dbf868dc8"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">intro</span> hbits</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="rewrite" data-line-id="e9e5a11cd34cbb7f"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">rewrite</span> hsl at hbits</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="intro" data-line-id="672b438085f4531c"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">intro</span> i</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="intro" data-line-id="3543374a4e05fc3a"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">intro</span> hi</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="specialize" data-line-id="66ce559188d26193"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">specialize</span> hbits i</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="apply" data-line-id="d99646e82475049d"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">apply</span> hbits</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="specialize" data-line-id="c4f1bd6b415b411a"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0018.html">le_succ</a> (S i)</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="specialize" data-line-id="6c282102517c8159"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT0018.html">le_succ</a> l</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="apply" data-line-id="14d63dbd65b8f020"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT0018.html">le_succ</a></code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="exact" data-line-id="286525bac0985d3b"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">exact</span> hi</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>299</dd>
+<dt>Layer</dt><dd>2</dd><dt>Lines</dt><dd>15</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>f0af7646adcc9c604da1a8b66db69cd5c4533e6b717a4bd530f6c70d0e9fa0c7</code></dd>
+<dt>Script SHA-256</dt><dd><code>110a3ca95c2f9f73aa5347bc87f93b37b6c8116d801fbba42f19c6a062c2cd7f</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

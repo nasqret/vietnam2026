@@ -1,0 +1,1613 @@
+{
+  "alpha_checked_use_node_count": 27,
+  "alpha_edition_version": "v25",
+  "alpha_first_enrolled_version": "v24",
+  "definition_topological_order": [
+    "ND0001",
+    "PD0002",
+    "PD0003",
+    "ND0056",
+    "PD0008",
+    "ND0055",
+    "ND0057",
+    "PD0005",
+    "ND0054",
+    "ND0053",
+    "PD0006",
+    "PD0001"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "CR0002",
+      "target": "CR000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0003",
+      "target": "CR000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR000B",
+      "target": "CR000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR000E",
+      "target": "CR0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR000D",
+      "target": "CR0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR000F",
+      "target": "CR0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR000C",
+      "target": "CR0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR000D",
+      "target": "CR0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0009",
+      "target": "CR0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0005",
+      "target": "CR0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0002",
+      "target": "CR0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0004",
+      "target": "CR0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR000A",
+      "target": "CR0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0003",
+      "target": "CR0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0012",
+      "target": "CR0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0008",
+      "target": "CR0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0014",
+      "target": "CR0016"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0016",
+      "target": "CR0017"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0017",
+      "target": "CR0018"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0015",
+      "target": "CR0018"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0015",
+      "target": "CR0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0017",
+      "target": "CR001A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR000A",
+      "target": "CR001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR000C",
+      "target": "CR001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0013",
+      "target": "CR001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR0019",
+      "target": "CR001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "CR001A",
+      "target": "CR001B"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0001",
+      "statement_occurrences": 1,
+      "target": "ND0053"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0002",
+      "statement_occurrences": 2,
+      "target": "ND0053"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0003",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0003",
+      "statement_occurrences": 1,
+      "target": "ND0053"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0004",
+      "statement_occurrences": 2,
+      "target": "ND0054"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0005",
+      "statement_occurrences": 1,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0006",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0007",
+      "statement_occurrences": 2,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0007",
+      "statement_occurrences": 1,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0007",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0008",
+      "statement_occurrences": 2,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0008",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0008",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0009",
+      "statement_occurrences": 2,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0009",
+      "statement_occurrences": 1,
+      "target": "ND0054"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0009",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0009",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 5,
+      "source": "CR000A",
+      "statement_occurrences": 5,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR000A",
+      "statement_occurrences": 1,
+      "target": "ND0053"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR000A",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 6,
+      "source": "CR000B",
+      "statement_occurrences": 6,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR000B",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR000B",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 5,
+      "source": "CR000C",
+      "statement_occurrences": 5,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR000C",
+      "statement_occurrences": 1,
+      "target": "ND0054"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR000C",
+      "statement_occurrences": 1,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR000C",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR000D",
+      "statement_occurrences": 2,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR000E",
+      "statement_occurrences": 1,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR000F",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR000F",
+      "statement_occurrences": 2,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 5,
+      "source": "CR000F",
+      "statement_occurrences": 5,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0010",
+      "statement_occurrences": 2,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0011",
+      "statement_occurrences": 1,
+      "target": "ND0054"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0011",
+      "statement_occurrences": 2,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 6,
+      "source": "CR0012",
+      "statement_occurrences": 6,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0012",
+      "statement_occurrences": 1,
+      "target": "ND0054"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0012",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0012",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0013",
+      "statement_occurrences": 1,
+      "target": "ND0053"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0013",
+      "statement_occurrences": 1,
+      "target": "ND0054"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0013",
+      "statement_occurrences": 1,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0014",
+      "statement_occurrences": 2,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0014",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0014",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0014",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0015",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0015",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0015",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0015",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0015",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0016",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0016",
+      "statement_occurrences": 1,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0016",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0017",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0017",
+      "statement_occurrences": 1,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0017",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "CR0018",
+      "statement_occurrences": 3,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0018",
+      "statement_occurrences": 1,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR0018",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0019",
+      "statement_occurrences": 1,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0019",
+      "statement_occurrences": 1,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR0019",
+      "statement_occurrences": 1,
+      "target": "ND0057"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR001A",
+      "statement_occurrences": 2,
+      "target": "ND0057"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR001B",
+      "statement_occurrences": 1,
+      "target": "ND0053"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "CR001B",
+      "statement_occurrences": 1,
+      "target": "ND0054"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "CR001B",
+      "statement_occurrences": 2,
+      "target": "ND0057"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0056",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0056",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0056",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0055",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0055",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0055",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0057",
+      "target": "ND0056"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0057",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0057",
+      "target": "ND0055"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0005",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0054",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0054",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0054",
+      "target": "PD0005"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0053",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0053",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0006",
+      "target": "PD0003"
+    }
+  ],
+  "family_slug": "generalized-crt-fold",
+  "independent_lean_bundle_verified": true,
+  "milestone_caveat": "G011 remains OPEN. Arbitrary finite positive noncoprime systems are solved under the exact predecessor-LCM merge invariant, and pairwise-compatible systems are solved when their final modulus dominates predecessors. Deriving the merge invariant from unrestricted pairwise gcd compatibility remains open.",
+  "milestone_checked_use": false,
+  "milestone_partial_checked_use": true,
+  "milestone_status": "open",
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0001.html?v=75fa146ac19b",
+      "id": "CR0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_positive_moduli_prefix_empty",
+      "proof_bundle_node_id": 175,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An empty decoded modulus prefix has no zero-valued member."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0002.html?v=75fa146ac19b",
+      "id": "CR0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_positive_moduli_prefix_drop_last",
+      "proof_bundle_node_id": 176,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Positivity of a successor-length modulus list restricts to its predecessor prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0003.html?v=75fa146ac19b",
+      "id": "CR0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_positive_moduli_prefix_last_nonzero",
+      "proof_bundle_node_id": 177,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The final decoded modulus of a positive successor list is nonzero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0004.html?v=75fa146ac19b",
+      "id": "CR0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_pairwise_coprime_prefix_drop_last",
+      "proof_bundle_node_id": 178,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Pairwise coprimality of decoded moduli restricts to every predecessor prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0005.html?v=75fa146ac19b",
+      "id": "CR0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_solution_empty",
+      "proof_bundle_node_id": 179,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural number solves the empty simultaneous-congruence system."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0006.html?v=75fa146ac19b",
+      "id": "CR0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_solution_drop_last",
+      "proof_bundle_node_id": 180,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A solution of a successor list remains a solution of the predecessor prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0007.html?v=75fa146ac19b",
+      "id": "CR0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_solution_last",
+      "proof_bundle_node_id": 181,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The last residue/modulus pair of a solved successor list satisfies its actual congruence."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0008.html?v=75fa146ac19b",
+      "id": "CR0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_solution_successor_intro",
+      "proof_bundle_node_id": 182,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A solved predecessor prefix extends exactly when the actual last decoded congruence holds."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0009.html?v=75fa146ac19b",
+      "id": "CR0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_pairwise_coprime_prefix_last",
+      "proof_bundle_node_id": 183,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The last decoded modulus is coprime to every actual earlier modulus in a pairwise-coprime list."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR000A.html?v=75fa146ac19b",
+      "id": "CR000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "crt_positive_moduli_prefix_product_nonzero",
+      "proof_bundle_node_id": 184,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A genuine beta-coded product of an arbitrary positive finite modulus list is nonzero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR000B.html?v=75fa146ac19b",
+      "id": "CR000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_product_common_multiple",
+      "proof_bundle_node_id": 185,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual finite beta-product is a common multiple of every decoded modulus."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR000C.html?v=75fa146ac19b",
+      "id": "CR000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "crt_pairwise_coprime_prefix_product_is_lcm",
+      "proof_bundle_node_id": 186,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For pairwise-coprime decoded moduli the actual finite product is exactly their universal-property lcm."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR000D.html?v=75fa146ac19b",
+      "id": "CR000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_lcm_unique",
+      "proof_bundle_node_id": 187,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The universal-property lcm of any decoded finite modulus prefix is unique whenever it exists."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR000E.html?v=75fa146ac19b",
+      "id": "CR000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_lcm_empty",
+      "proof_bundle_node_id": 188,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The universal-property lcm of the empty decoded modulus list is exactly one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR000F.html?v=75fa146ac19b",
+      "id": "CR000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_lcm_successor_intro",
+      "proof_bundle_node_id": 189,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Binary relational lcm extends the exact universal-property lcm of any finite decoded modulus prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0010.html?v=75fa146ac19b",
+      "id": "CR0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "crt_prefix_lcm_exists_unique",
+      "proof_bundle_node_id": 190,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every arbitrary finite decoded modulus list, including noncoprime and zero entries, has a unique exact lcm."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0011.html?v=75fa146ac19b",
+      "id": "CR0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "crt_pairwise_coprime_prefix_lcm_exists_unique",
+      "proof_bundle_node_id": 191,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every arbitrary finite pairwise-coprime modulus list has a unique relational lcm."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0012.html?v=75fa146ac19b",
+      "id": "CR0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "crt_pairwise_coprime_prefix_product_coprime_last",
+      "proof_bundle_node_id": 192,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual predecessor product is coprime to the final modulus of any pairwise-coprime list."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0013.html?v=75fa146ac19b",
+      "id": "CR0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "crt_pairwise_coprime_prefix_solution_exists",
+      "proof_bundle_node_id": 193,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every arbitrary finite beta-coded list of positive pairwise-coprime moduli has an actual simultaneous CRT solution."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0014.html?v=75fa146ac19b",
+      "id": "CR0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_solutions_pointwise_congruent",
+      "proof_bundle_node_id": 194,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Two simultaneous solutions are congruent modulo every actually decoded list modulus."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0015.html?v=75fa146ac19b",
+      "id": "CR0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_solution_transport_common_multiple",
+      "proof_bundle_node_id": 195,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Congruence modulo any common multiple transports an actual simultaneous-list solution."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0016.html?v=75fa146ac19b",
+      "id": "CR0016",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "crt_prefix_ordered_solutions_gap_multiple",
+      "proof_bundle_node_id": 196,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every finite list, the directed gap between two solutions is divisible by its universal-property lcm."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0017.html?v=75fa146ac19b",
+      "id": "CR0017",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "crt_prefix_solutions_congruent_lcm",
+      "proof_bundle_node_id": 197,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For arbitrary decoded lists, every two simultaneous solutions are congruent modulo the exact list lcm."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0018.html?v=75fa146ac19b",
+      "id": "CR0018",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "crt_prefix_solution_class_iff_lcm",
+      "proof_bundle_node_id": 198,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The complete solution class of any finite system is exactly one congruence class modulo its list lcm."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR0019.html?v=75fa146ac19b",
+      "id": "CR0019",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "crt_prefix_solution_canonical_remainder",
+      "proof_bundle_node_id": 199,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every existing finite-list solution has an actual canonical representative strictly below its nonzero list lcm."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR001A.html?v=75fa146ac19b",
+      "id": "CR001A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "crt_canonical_prefix_solution_unique",
+      "proof_bundle_node_id": 200,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The strictly bounded canonical representative of any finite decoded CRT system is unique."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/CR001B.html?v=75fa146ac19b",
+      "id": "CR001B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "crt_pairwise_coprime_prefix_canonical_exists_unique",
+      "proof_bundle_node_id": 201,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every arbitrary finite list of positive pairwise-coprime moduli has its exact lcm and a unique actual bounded CRT solution."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/ND0001.html?v=75fa146ac19b",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=75fa146ac19b",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "Dvd",
+      "href": "definition/PD0003.html?v=75fa146ac19b",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": "CRTPrefixLCM",
+      "href": "definition/ND0056.html?v=75fa146ac19b",
+      "id": "ND0056",
+      "kind": "definition",
+      "layer": 1,
+      "name": "CRTPrefixLCM",
+      "signature": "CRTPrefixLCM(b,c,l,M)",
+      "summary": "The exact beta-prefix least common multiple, specified by divisibility and its universal leastness property."
+    },
+    {
+      "global_definition": "ModEq",
+      "href": "definition/PD0008.html?v=75fa146ac19b",
+      "id": "PD0008",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ModEq",
+      "signature": "ModEq(m,a,b)",
+      "summary": "Balanced-natural congruence modulo m."
+    },
+    {
+      "global_definition": "CRTPrefixSolution",
+      "href": "definition/ND0055.html?v=75fa146ac19b",
+      "id": "ND0055",
+      "kind": "definition",
+      "layer": 1,
+      "name": "CRTPrefixSolution",
+      "signature": "CRTPrefixSolution(r,s,b,c,l,x)",
+      "summary": "One actual simultaneous solution to every beta-coded finite residue/modulus pair."
+    },
+    {
+      "global_definition": "CRTCanonicalPrefixSolution",
+      "href": "definition/ND0057.html?v=75fa146ac19b",
+      "id": "ND0057",
+      "kind": "definition",
+      "layer": 2,
+      "name": "CRTCanonicalPrefixSolution",
+      "signature": "CRTCanonicalPrefixSolution(r,s,b,c,l,x,M)",
+      "summary": "A genuine simultaneous finite CRT solution in the unique half-open range below its actual prefix LCM."
+    },
+    {
+      "global_definition": "Coprime",
+      "href": "definition/PD0005.html?v=75fa146ac19b",
+      "id": "PD0005",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Coprime",
+      "signature": "Coprime(a,b)",
+      "summary": "Every common divisor of a and b is one."
+    },
+    {
+      "global_definition": "CRTPairwiseCoprimePrefix",
+      "href": "definition/ND0054.html?v=75fa146ac19b",
+      "id": "ND0054",
+      "kind": "definition",
+      "layer": 2,
+      "name": "CRTPairwiseCoprimePrefix",
+      "signature": "CRTPairwiseCoprimePrefix(b,c,l)",
+      "summary": "Exact pairwise coprimality of every pair of distinct positions in a beta-coded modulus prefix."
+    },
+    {
+      "global_definition": "CRTPositiveModuliPrefix",
+      "href": "definition/ND0053.html?v=75fa146ac19b",
+      "id": "ND0053",
+      "kind": "definition",
+      "layer": 1,
+      "name": "CRTPositiveModuliPrefix",
+      "signature": "CRTPositiveModuliPrefix(b,c,l)",
+      "summary": "A bounded beta-coded finite prefix consisting entirely of genuinely positive moduli."
+    },
+    {
+      "global_definition": "Gcd",
+      "href": "definition/PD0006.html?v=75fa146ac19b",
+      "id": "PD0006",
+      "kind": "definition",
+      "layer": 1,
+      "name": "IsGCD",
+      "signature": "IsGCD(g,a,b)",
+      "summary": "g is a common divisor divisible by every common divisor."
+    },
+    {
+      "global_definition": "Le",
+      "href": "definition/PD0001.html?v=75fa146ac19b",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "CR0001": {
+      "critical_root_path": [
+        "CR0001"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "CR0002": {
+      "critical_root_path": [
+        "CR0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR000A",
+        "CR0013"
+      ]
+    },
+    "CR0003": {
+      "critical_root_path": [
+        "CR0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR000A",
+        "CR0013"
+      ]
+    },
+    "CR0004": {
+      "critical_root_path": [
+        "CR0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR0013"
+      ]
+    },
+    "CR0005": {
+      "critical_root_path": [
+        "CR0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR0013"
+      ]
+    },
+    "CR0006": {
+      "critical_root_path": [
+        "CR0006"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "CR0007": {
+      "critical_root_path": [
+        "CR0007"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "CR0008": {
+      "critical_root_path": [
+        "CR0008"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR0013"
+      ]
+    },
+    "CR0009": {
+      "critical_root_path": [
+        "CR0009"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR0012"
+      ]
+    },
+    "CR000A": {
+      "critical_root_path": [
+        "CR0002",
+        "CR000A"
+      ],
+      "dependencies": [
+        "CR0002",
+        "CR0003"
+      ],
+      "dependents": [
+        "CR0013",
+        "CR001B"
+      ]
+    },
+    "CR000B": {
+      "critical_root_path": [
+        "CR000B"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR000C"
+      ]
+    },
+    "CR000C": {
+      "critical_root_path": [
+        "CR000B",
+        "CR000C"
+      ],
+      "dependencies": [
+        "CR000B"
+      ],
+      "dependents": [
+        "CR0011",
+        "CR001B"
+      ]
+    },
+    "CR000D": {
+      "critical_root_path": [
+        "CR000D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR0010",
+        "CR0011"
+      ]
+    },
+    "CR000E": {
+      "critical_root_path": [
+        "CR000E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR0010"
+      ]
+    },
+    "CR000F": {
+      "critical_root_path": [
+        "CR000F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR0010"
+      ]
+    },
+    "CR0010": {
+      "critical_root_path": [
+        "CR000E",
+        "CR0010"
+      ],
+      "dependencies": [
+        "CR000E",
+        "CR000D",
+        "CR000F"
+      ],
+      "dependents": []
+    },
+    "CR0011": {
+      "critical_root_path": [
+        "CR000B",
+        "CR000C",
+        "CR0011"
+      ],
+      "dependencies": [
+        "CR000C",
+        "CR000D"
+      ],
+      "dependents": []
+    },
+    "CR0012": {
+      "critical_root_path": [
+        "CR0009",
+        "CR0012"
+      ],
+      "dependencies": [
+        "CR0009"
+      ],
+      "dependents": [
+        "CR0013"
+      ]
+    },
+    "CR0013": {
+      "critical_root_path": [
+        "CR0002",
+        "CR000A",
+        "CR0013"
+      ],
+      "dependencies": [
+        "CR0005",
+        "CR0002",
+        "CR0004",
+        "CR000A",
+        "CR0003",
+        "CR0012",
+        "CR0008"
+      ],
+      "dependents": [
+        "CR001B"
+      ]
+    },
+    "CR0014": {
+      "critical_root_path": [
+        "CR0014"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR0016"
+      ]
+    },
+    "CR0015": {
+      "critical_root_path": [
+        "CR0015"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "CR0018",
+        "CR0019"
+      ]
+    },
+    "CR0016": {
+      "critical_root_path": [
+        "CR0014",
+        "CR0016"
+      ],
+      "dependencies": [
+        "CR0014"
+      ],
+      "dependents": [
+        "CR0017"
+      ]
+    },
+    "CR0017": {
+      "critical_root_path": [
+        "CR0014",
+        "CR0016",
+        "CR0017"
+      ],
+      "dependencies": [
+        "CR0016"
+      ],
+      "dependents": [
+        "CR0018",
+        "CR001A"
+      ]
+    },
+    "CR0018": {
+      "critical_root_path": [
+        "CR0014",
+        "CR0016",
+        "CR0017",
+        "CR0018"
+      ],
+      "dependencies": [
+        "CR0017",
+        "CR0015"
+      ],
+      "dependents": []
+    },
+    "CR0019": {
+      "critical_root_path": [
+        "CR0015",
+        "CR0019"
+      ],
+      "dependencies": [
+        "CR0015"
+      ],
+      "dependents": [
+        "CR001B"
+      ]
+    },
+    "CR001A": {
+      "critical_root_path": [
+        "CR0014",
+        "CR0016",
+        "CR0017",
+        "CR001A"
+      ],
+      "dependencies": [
+        "CR0017"
+      ],
+      "dependents": [
+        "CR001B"
+      ]
+    },
+    "CR001B": {
+      "critical_root_path": [
+        "CR0014",
+        "CR0016",
+        "CR0017",
+        "CR001A",
+        "CR001B"
+      ],
+      "dependencies": [
+        "CR000A",
+        "CR000C",
+        "CR0013",
+        "CR0019",
+        "CR001A"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "CR0010",
+    "CR0013",
+    "CR0018",
+    "CR001B"
+  ],
+  "schema": "peano-lab-constructive-research-layer-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

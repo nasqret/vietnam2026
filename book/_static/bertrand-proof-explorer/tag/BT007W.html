@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT007W — beta_repeat_exists</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT007W.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT007W&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT007V.html">← beta_repeat_succ_extend</a><a href="BT007X.html">beta_repeat_entry_eq →</a></nav>
+<p class="pa-tag">BT007W</p><h1>beta_repeat_exists</h1>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
+<p>Every value and length admit a beta-coded constant prefix.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall a l. exists b c. (forall ff_i_r. (exists ff_lt_r_bound. ff_lt_r_bound + S ff_i_r = l) -&gt; (((exists ff_h_r_decoded. ff_h_r_decoded + S (a) = S ((S (ff_i_r)) * c)) /\ exists ff_q_r_decoded. b = ff_q_r_decoded * S ((S (ff_i_r)) * c) + (a))))</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every value and length admit a beta-coded constant prefix.</p><p>Direct prerequisites:
+beta_repeat_empty, beta_repeat_succ_extend.
+The authored body proceeds by structural induction (1), case analysis (2).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT007U.html"><code>BT007U</code> beta_repeat_empty</a> <a class="pa-theorem-ref" href="BT007V.html"><code>BT007V</code> beta_repeat_succ_extend</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0080.html"><code>BT0080</code> pow_exists</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="c1d060ec84d265c8"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="induction" data-line-id="11c33fb0f8f30b04"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">induction</span> l</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="exists" data-line-id="1ec779ed78dfd43f"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">exists</span> 0</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="exists" data-line-id="eb44dcaf76a90a7f"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">exists</span> 0</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="specialize" data-line-id="95f204db28db6568"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT007U.html">beta_repeat_empty</a> 0</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="specialize" data-line-id="ca1e68f402f94f25"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT007U.html">beta_repeat_empty</a> 0</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="specialize" data-line-id="02acfde93f7a30ef"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT007U.html">beta_repeat_empty</a> a</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="specialize" data-line-id="c1e2497d11febf42"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT007U.html">beta_repeat_empty</a> 0</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="apply" data-line-id="4fd3a0afd3f0c37d"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT007U.html">beta_repeat_empty</a></code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="refl" data-line-id="bfdddbbaf6428652"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="cases" data-line-id="3b2e44063bd3f1e3"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">cases</span> IH</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="cases" data-line-id="3472168aac38b026"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">cases</span> IH_witness</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="specialize" data-line-id="51031db3effef202"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT007V.html">beta_repeat_succ_extend</a> x</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="specialize" data-line-id="b861efe1cbd21079"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT007V.html">beta_repeat_succ_extend</a> x1</code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="specialize" data-line-id="e7bfd9e19629d91c"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT007V.html">beta_repeat_succ_extend</a> a</code></li><li class="pa-proof-line" id="proof-line-0016" data-line="16" data-tactic="specialize" data-line-id="075770327d098fb1"><a class="pa-line-number" href="#proof-line-0016">0016</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT007V.html">beta_repeat_succ_extend</a> l</code></li><li class="pa-proof-line" id="proof-line-0017" data-line="17" data-tactic="specialize" data-line-id="be50d1aef06cb3cd"><a class="pa-line-number" href="#proof-line-0017">0017</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT007V.html">beta_repeat_succ_extend</a> (S l)</code></li><li class="pa-proof-line" id="proof-line-0018" data-line="18" data-tactic="apply" data-line-id="7a868147e9c7b7aa"><a class="pa-line-number" href="#proof-line-0018">0018</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="BT007V.html">beta_repeat_succ_extend</a></code></li><li class="pa-proof-line" id="proof-line-0019" data-line="19" data-tactic="refl" data-line-id="23f908507fe79e03"><a class="pa-line-number" href="#proof-line-0019">0019</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0020" data-line="20" data-tactic="exact" data-line-id="3f7ae2d6ae66cadb"><a class="pa-line-number" href="#proof-line-0020">0020</a><code><span class="pa-tactic-ref">exact</span> IH_witness_witness</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>277</dd>
+<dt>Layer</dt><dd>18</dd><dt>Lines</dt><dd>20</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>9ab591572e48818c23c1accbf4f53decd14eef661b0bd6895ebf7e41bb392b3f</code></dd>
+<dt>Script SHA-256</dt><dd><code>0c9cf569c2cd6f4806c1865d3655822219eee2d1c08ec636b87ba82ecdb96dfb</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

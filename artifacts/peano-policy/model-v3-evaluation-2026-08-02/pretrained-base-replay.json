@@ -1,0 +1,404 @@
+{
+  "admission": {
+    "base_weight_shards_content_attested": false,
+    "canonical_trained_replay_unchanged": true,
+    "completed_training_manifest_cross_bound": true,
+    "deployment_and_job_validated": true,
+    "full_comparison_authority_validated": true,
+    "historical_sources_validated": true,
+    "original_report_edited": false,
+    "profile": "wmi-pretrained-base-job-218172-v1",
+    "scope": "one immutable pretrained-base control report",
+    "unattached_base_identity_and_provenance_validated": true,
+    "zero_proof_claims_validated": true
+  },
+  "admission_authority": {
+    "current_context_checked_before_and_after": true,
+    "input_checked_before_and_after": true,
+    "sources": {
+      "files": {
+        "scripts/eval_pretrained_peano_policy.py": "0be8c2d3d2bc567fe2d2a2670b51a887063d5cd1087d73d0bb5fa7b49645b2af",
+        "scripts/replay_peano_v3_pretrained_baseline.py": "3231fd5149c99bb22a3ed1ca619379f27841aaf104f16c0a19c7098773c20971",
+        "scripts/wmi_job_environment.sh": "410cecfc9a2f007d7ad43058d9172605de0c4f23fae43e4e83e6629420bae2da",
+        "slurm/peano_wmi_eval_pretrained_qwen3_1_7b_v3.sbatch": "9c7f7c4bfeba8108c92d2a0d4647780a4358103477fe2861708c6cdc0e4f0331",
+        "training/peano_policy/adapter_admission.py": "aed71f4e8e7c12fb3e0ceb153a0b913c63bfad45e89637423bdfe3f3701a35bb",
+        "training/peano_policy/contract.py": "5246d0fa68914ba9570c482f603c473c8585fee775c5fa07c79010ae89964d15",
+        "training/peano_policy/evaluation_replay.py": "2807a22e35db6566672b6948d2f10a98eeebbc12d700613633a1d8b2cccb79eb",
+        "training/peano_policy/manifest.py": "bba71f3c242288328231d5cd2cada2aa6768d974aaf70cb3520239caf01c8491",
+        "training/peano_policy/pretrained_baseline.py": "614df5a88cd4bdbea9d232c6e34da13ca03583116ff652600bd0a76936e3d622",
+        "training/peano_policy/pretrained_baseline_replay.py": "280183f99dfa9d902e7b7807cf65f2768d63e64e912287cd581770013f881358",
+        "training/peano_policy/prompt.py": "60cdd380961875a4b49a24bdf60bb1d05f889ae0930c8e68ff50c6c3ea76b96e",
+        "training/peano_policy/runtime.py": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc",
+        "training/peano_policy/training_evidence.py": "9a2ac2530e9dcc74ccd28c456aaaf38bd6a162fbc5037ea4512ffd3106978fb1"
+      },
+      "sha256": "15416bc22f916eee0df712716d56a6b7189cdb4e9a09ba77fb78c7491b88cbb3"
+    },
+    "tool_sources_checked_before_and_after": true,
+    "training_manifest_checked_before_and_after": true
+  },
+  "attestation_sha256": "056519bc3598a390526fdf9054aa38090d499f7f837af0a2ace7af8caaa560e7",
+  "benchmark": {
+    "goal_count": 4,
+    "goals": [
+      {
+        "name": "closed_arithmetic_seven",
+        "statement": "0 · 0 + 3 + (0 · 1 + 1) + (3 + 0) = 7"
+      },
+      {
+        "name": "existential_subtraction_two",
+        "statement": "∃ x. 7 = x + 2"
+      },
+      {
+        "name": "double_right_zero",
+        "statement": "∀ x. x + 0 + 0 = x"
+      },
+      {
+        "name": "consecutive_product_even",
+        "statement": "∀ x. ∃ y. x · (x + 1) = 2 · y"
+      }
+    ],
+    "search_limits": {
+      "beam_width": 16,
+      "candidates_per_state": 8,
+      "max_depth": 32,
+      "max_model_calls": 512,
+      "max_states": 4096
+    }
+  },
+  "evaluation": {
+    "environment_sha256": "72372974368a4a2b66cba42fa48baae47e24bf811a8b2dd030027ea3b7f16363",
+    "evaluator_v": 4,
+    "goal_set_sha256": "198beaf753c0abab3151b4913ca9da63094ab6f28807e949e651e629336470d5",
+    "job_id": "218172",
+    "job_record_sha256": "5c9498dc8e9c323d2fbd3a405513a72b860a5f91dbaa7642025969b77f9590a9",
+    "mode": "kernel-guided-search",
+    "source_commit": "4d44609ee32d5d28726c082ef7b5649c0a1107a6",
+    "sources": {
+      "files": {
+        "peano-lab/py/peano_lab/__init__.py": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a",
+        "peano-lab/py/peano_lab/batch.py": "362d0c502058836fd4793acb068938fc419ed49e39cc5dd7880fd312d65459ef",
+        "peano-lab/py/peano_lab/engine/__init__.py": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b",
+        "peano-lab/py/peano_lab/engine/compact_arith.py": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0",
+        "peano-lab/py/peano_lab/engine/decide.py": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a",
+        "peano-lab/py/peano_lab/engine/induction.py": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f",
+        "peano-lab/py/peano_lab/engine/norm_num.py": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1",
+        "peano-lab/py/peano_lab/engine/proof_reduction.py": "c551eadef0c5f42cd260333cb2c6449ef402328bfce144aee222403112979572",
+        "peano-lab/py/peano_lab/engine/rewrite.py": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f",
+        "peano-lab/py/peano_lab/engine/ring.py": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e",
+        "peano-lab/py/peano_lab/engine/search.py": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415",
+        "peano-lab/py/peano_lab/engine/state.py": "219266095c3afd959852ebd2c5fb8efbf6e276941a7352905e05dd17ce03be18",
+        "peano-lab/py/peano_lab/engine/tacticals.py": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6",
+        "peano-lab/py/peano_lab/engine/tactics.py": "c4a57b21e464a23bb9ee5ca7f9908f15f9de5fb149d966df24417463173ad946",
+        "peano-lab/py/peano_lab/engine/trace.py": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7",
+        "peano-lab/py/peano_lab/kernel/__init__.py": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84",
+        "peano-lab/py/peano_lab/kernel/checker.py": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe",
+        "peano-lab/py/peano_lab/kernel/formulas.py": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645",
+        "peano-lab/py/peano_lab/kernel/proofs.py": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2",
+        "peano-lab/py/peano_lab/kernel/subst.py": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3",
+        "peano-lab/py/peano_lab/kernel/terms.py": "8f08e5843c92a68d2a4802615dc9417f7ca5c9bc3584660b8271028da6e0b94a",
+        "peano-lab/py/peano_lab/library/__init__.py": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5",
+        "peano-lab/py/peano_lab/library/lean.py": "7ff129acb1ec8852e3cb1ab2ffe799d21a61535e28dfe16c5319c1d3ee20b167",
+        "peano-lab/py/peano_lab/library/theorems.py": "295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868",
+        "peano-lab/py/peano_lab/ui/__init__.py": "211051584d7c5e4f3c58c01a666d8cc17c315c3755d7f2f9b2e850507985a852",
+        "peano-lab/py/peano_lab/ui/data_kb.py": "fd584f2cb3e25b76a49cad6ecfe586228b91e635ddd24e6cc962b73fea23076b",
+        "peano-lab/py/peano_lab/ui/data_library.py": "0bd04394d49bb3702050bc4f94f27fc027bca6630a4810ba20862f5ce62d9933",
+        "peano-lab/py/peano_lab/ui/data_tactics.py": "926c4f288b497dbaf9c229aaf8e9ada5446f2f1820b2b1aa5a3a6c926dcf8894",
+        "peano-lab/py/peano_lab/ui/data_tutorials.py": "82dd98de6bd2b25fa8c73db1c9e79dacea83fe411444de4fc04acad731b7c7f1",
+        "peano-lab/py/peano_lab/ui/panels.py": "bee8e54534f0d84e4df9ec35f5ccff998c69f8761099063ce69e62c1b628aa86",
+        "peano-lab/py/peano_lab/ui/prove.py": "b7803ef36f8064aac18e8d8e14e18b0306e7a66e9aae1511609f11f7a7ac37c0",
+        "peano-lab/py/peano_lab/ui/tutorial.py": "b1778f574975cdff47faea8d3c2e7319b53d064a2c539f417c7d9380ab761824",
+        "scripts/eval_peano_policy.py": "0d46da46d9d90ce69796f6a18963ddd3a256417f1a610dfcb900792e32a26e07",
+        "scripts/eval_pretrained_peano_policy.py": "0be8c2d3d2bc567fe2d2a2670b51a887063d5cd1087d73d0bb5fa7b49645b2af",
+        "scripts/eval_trained_peano_policy.py": "92321430951273aa5c2e4baf6b358d01ec6d0770bda71fc1f0ab5b78bf1598e6",
+        "scripts/peano_policy_proof_request.py": "f3f99896c275dd3ce50d7f7e51a698c2e5b4157e641be9275dfa10128fd36f52",
+        "training/peano_policy/__init__.py": "c967a544a9d66ba049c6a674659f8fbb414e6f95de27c9082018d4b6f20be4f4",
+        "training/peano_policy/adapter_admission.py": "aed71f4e8e7c12fb3e0ceb153a0b913c63bfad45e89637423bdfe3f3701a35bb",
+        "training/peano_policy/attest.py": "78f80b8c4ba3195e647f1bf851f3be464d562b749e48cd3e35e51c63a4ed4faa",
+        "training/peano_policy/budget.py": "99055dc793831f8ef97b78865e0d56e61c2e676aab9570d44468eedb3f65a77b",
+        "training/peano_policy/config.py": "7cc7cd31a33000c5d09d90e8943c896b34b4dc289643feec90b483a442da5080",
+        "training/peano_policy/contract.py": "5246d0fa68914ba9570c482f603c473c8585fee775c5fa07c79010ae89964d15",
+        "training/peano_policy/corpus_eligibility.py": "723bbb623c5ee831f0ae3ace08a0bcb1a20be1fb86d09e2fe702a5082af21f23",
+        "training/peano_policy/corpus_seal.py": "751a759bc7916a72b26f03b8c32502cc802de78565ec149b1136f9c1562711d7",
+        "training/peano_policy/curriculum.py": "56f32800682234a985aee8b9b155a777af959a168cf1770296c9090d303af27c",
+        "training/peano_policy/data.py": "2fa121ec9a81451a0644ba506d607b385f2d45f40ee94e5f2af9c49598ca1dc2",
+        "training/peano_policy/evaluation_replay.py": "2807a22e35db6566672b6948d2f10a98eeebbc12d700613633a1d8b2cccb79eb",
+        "training/peano_policy/generate.py": "4e982564c1e2e39d0e1ad69d9cfa463dd89056732d00c800cf75d2a5655b688a",
+        "training/peano_policy/library_identity.py": "26fb0813bab95fa41b46711a2e8d250c940f197877d9fc6c22fe11b91da8297f",
+        "training/peano_policy/library_identity_v3.py": "2ccbb22c5b0007a9bab6bb577f8817af724495e2ad6265bc80ca8ab2b54b7272",
+        "training/peano_policy/manifest.py": "bba71f3c242288328231d5cd2cada2aa6768d974aaf70cb3520239caf01c8491",
+        "training/peano_policy/objective.py": "7c1e00afc15e053b0d06f3a5c800191b3eb3b05bff1b097a32683992e038f3a8",
+        "training/peano_policy/pretrained_baseline.py": "614df5a88cd4bdbea9d232c6e34da13ca03583116ff652600bd0a76936e3d622",
+        "training/peano_policy/prompt.py": "60cdd380961875a4b49a24bdf60bb1d05f889ae0930c8e68ff50c6c3ea76b96e",
+        "training/peano_policy/recovery.py": "4ce0f1043a378b694b44c0c5b6e2c9a76a23e9d9b11213b2c009e62917e04748",
+        "training/peano_policy/runtime.py": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc",
+        "training/peano_policy/search.py": "a3127fab3625d814fd2021e062a6daea7f610fcd640728d9097b3cd7057be309",
+        "training/peano_policy/selection.py": "59621fdb7765fc67dba52268af48f834dfb806672a049f5fd7169475f2ac76ad",
+        "training/peano_policy/smoke.py": "6fa1afd5330bc0ebc6800d9b722cf6f1f2073444bd1a2398f61deca8d5a775e6",
+        "training/peano_policy/token_audit.py": "6a3fbd6ecd0f8a0379ca248fdc3d0cb7f86e5b80faca57608887178a1668d9fd",
+        "training/peano_policy/train.py": "aa08c62601e0f1ab4e2f9f8b4fc941423b6ad60fe0ca5c4d1193dc52abb2ef11",
+        "training/peano_policy/training_evidence.py": "9a2ac2530e9dcc74ccd28c456aaaf38bd6a162fbc5037ea4512ffd3106978fb1"
+      },
+      "sha256": "10faf2ba3cf612f34de9d3a660dff28f70e6e275ba21fa0bfdf66d373b17f6f0"
+    },
+    "training_job_id": "217859"
+  },
+  "format": "peano-policy-v3-pretrained-baseline-replay",
+  "input": {
+    "evaluation_report": {
+      "bytes": 96702,
+      "canonical_record_sha256": "04ea8a7f2c76827c91e709bb2cadffb12954caa6d05702d4702803b176280a3a",
+      "path": "/Users/bnaskrecki/codex/peano/_deploy/peano-policy-v3/artifacts/peano-policy/model-v3-evaluation-2026-08-02/pretrained-base-report.json",
+      "sha256": "410be8f224d2dac6d28c4e0f55f125e95d5bc1f725b9c20851b00c15394d97b9"
+    },
+    "training_manifest": {
+      "bytes": 1631246,
+      "path": "/Users/bnaskrecki/codex/peano/_deploy/peano-policy-v3/artifacts/peano-policy/model-v3-evaluation-2026-08-02/training-manifest.json",
+      "sha256": "caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569"
+    }
+  },
+  "pretrained_base": {
+    "adapter_attached": false,
+    "base_model": {
+      "config_sha256": "a325c9f27de176887b8ca7f68d21714247f9c8106e8c120219789338da9a5dcd",
+      "id": "Qwen/Qwen3-1.7B-Base",
+      "revision": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+    },
+    "base_weight_attestation_limitation": "HF revision, configuration digest, completed-manifest identity, and no-PEFT provenance are validated; pretrained base-model weight-shard bytes were not independently hashed before and after evaluation",
+    "base_weight_shards_content_attested": false,
+    "comparison_adapter": {
+      "root": "adapter",
+      "sha256": "db428e3c891166e43c1c71df7902e6fb579959f19c300cafe7ae8dcfe2dd2a70"
+    },
+    "comparison_authority_sha256": "4b543b7f8ab7b6f36ca9384e57b7236f5960201d3d4c4f41b06b14c390318e9c",
+    "completed_training_binding": {
+      "actual_optimizer_steps": 649,
+      "adapter": {
+        "files": {
+          "adapter/README.md": "e4c8e3ea343795c0bc7c902d380c62289a8baa427789644d2b483f28d1be3bfa",
+          "adapter/adapter_config.json": "0415c2d50b3717c5287bced0d835f8001f61185252df017b9e9435a470bf71fb",
+          "adapter/adapter_model.safetensors": "3fc38bbfb07c32fe0d198cd97427f5920e215a4f895858561b321b3916dbbfe3"
+        },
+        "root": "adapter",
+        "sha256": "db428e3c891166e43c1c71df7902e6fb579959f19c300cafe7ae8dcfe2dd2a70"
+      },
+      "dataset_sha256": "2e236384ecb6e7b15ccf986abab53fcfd4ec47fc97c7e00f5cc736dbbb4f224e",
+      "expected_optimizer_steps": 649,
+      "run_name": "qwen3-1.7b-peano-lora-v3-library",
+      "tokenizer": {
+        "artifacts": {
+          "files": {
+            "tokenizer/added_tokens.json": "c0284b582e14987fbd3d5a2cb2bd139084371ed9acbae488829a1c900833c680",
+            "tokenizer/chat_template.jinja": "87a2728cb8dc9fe424d624542f6060ec05a1d285ebbec578bb078900e33396b5",
+            "tokenizer/merges.txt": "8831e4f1a044471340f7c0a83d7bd71306a5b867e95fd870f74d0c5308a904d5",
+            "tokenizer/special_tokens_map.json": "6676f091c8bc4d1b50146427cfde92073402866b87b6e39223227931b70083e9",
+            "tokenizer/tokenizer.json": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+            "tokenizer/tokenizer_config.json": "67e5a0a11cd35f9c00ee52e0af4cdc0baa75fea0cb5fce7d1beb251b4621d15c",
+            "tokenizer/vocab.json": "ca10d7e9fb3ed18575dd1e277a2579c16d108e32f27439684afa0e10b1440910"
+          },
+          "root": "tokenizer",
+          "sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e"
+        },
+        "identity_sha256": "8582a45bba2100c7c7ac18ac25a64d81ccec6ed03717d1d74a6a1868dc11155d",
+        "resolved_snapshot_hash": "ea980cb0a6c2ae4b936e82123acc929f1cec04c1"
+      },
+      "training_job_id": "217859"
+    },
+    "policy_kind": "peano-policy-pretrained-base-v1",
+    "tokenizer": {
+      "root": "tokenizer",
+      "sha256": "2c5206dc7dda009d1a466348530a56c21f68d68057115142b2cd121838cf3f5e"
+    },
+    "training_manifest_sha256": "caa5569c98ed9ea048d413301b803c39011957d1c97307e5b109846989e18569",
+    "weights_kind": "pretrained-base-no-peft"
+  },
+  "proofs": [],
+  "replay_authority": {
+    "job": {
+      "deployment": {
+        "job_script": {
+          "status": "not-declared"
+        },
+        "mode": "local",
+        "modules": {
+          "status": "not-loaded"
+        },
+        "source_sync": {
+          "status": "not-synced"
+        }
+      },
+      "scheduler": "none"
+    },
+    "runtime": {
+      "hostname": "MacBook-Pro-Bartosz-2",
+      "implementation": "CPython",
+      "machine": "arm64",
+      "packages": {
+        "Jinja2": "3.1.6",
+        "MarkupSafe": "2.1.5",
+        "PyYAML": "6.0.2",
+        "accelerate": null,
+        "certifi": "2024.2.2",
+        "charset-normalizer": "3.3.2",
+        "filelock": "3.19.1",
+        "fsspec": "2025.7.0",
+        "hf-xet": null,
+        "huggingface-hub": null,
+        "idna": "3.6",
+        "mpmath": "1.3.0",
+        "networkx": "3.4.2",
+        "numpy": "1.26.4",
+        "packaging": "24.0",
+        "peft": null,
+        "pip": "25.2",
+        "psutil": "7.0.0",
+        "regex": null,
+        "requests": "2.31.0",
+        "safetensors": null,
+        "setuptools": "57.4.0",
+        "sympy": "1.14.0",
+        "tokenizers": null,
+        "tomli": "2.2.1",
+        "torch": "2.8.0",
+        "tqdm": "4.67.3",
+        "transformers": null,
+        "typing-extensions": "4.15.0",
+        "urllib3": "2.2.1"
+      },
+      "packages_sha256": "6d57fdee94234d9313687ee447ebc34c6244c4e5c44129638af46911b69c0d96",
+      "platform": "macOS-15.6.1-arm64-arm-64bit",
+      "python": "3.10.0",
+      "requirements": {
+        "path": "training/peano_policy/requirements-helios.lock",
+        "sha256": "50315d5465ec6081517e1e3bb93096c3a990907020978a490295cde59a6c7871"
+      }
+    },
+    "source_commit": "4d44609ee32d5d28726c082ef7b5649c0a1107a6",
+    "sources": {
+      "files": {
+        "peano-lab/py/peano_lab/__init__.py": "3ec676b9d149f999cbdd15012c9e3a131428602718aa4695b9b4f9542beb3d9a",
+        "peano-lab/py/peano_lab/batch.py": "362d0c502058836fd4793acb068938fc419ed49e39cc5dd7880fd312d65459ef",
+        "peano-lab/py/peano_lab/engine/__init__.py": "1fbd27721e00e873b4b6839508b63889e6ba8a4a51165b11e042c05270d1308b",
+        "peano-lab/py/peano_lab/engine/compact_arith.py": "8e9d6330e7594e54a7b7917d9b95c5335a3bba2b38ce16c7d6c458c5c38d8fc0",
+        "peano-lab/py/peano_lab/engine/decide.py": "07044458d92b68781d95091fabbe0fbc4a476c58f3821e0c806553e0813c2e0a",
+        "peano-lab/py/peano_lab/engine/induction.py": "4bb1db5f3b944e1f9a0ebe388ab76970aae055bf4d1171d896fbb0323172545f",
+        "peano-lab/py/peano_lab/engine/norm_num.py": "79d9ebe369348779aca6c7f12932a1204756a13d631ebd69f2612de082ab13b1",
+        "peano-lab/py/peano_lab/engine/proof_reduction.py": "c551eadef0c5f42cd260333cb2c6449ef402328bfce144aee222403112979572",
+        "peano-lab/py/peano_lab/engine/rewrite.py": "05f0b5fe8d46910d9cc2b1604d96756aa68e42339ca90afc094d60bfce48aa5f",
+        "peano-lab/py/peano_lab/engine/ring.py": "7ba5c4b4085725677ba984afa8a50cee8061ce9ba333b644993ecff5fd5f249e",
+        "peano-lab/py/peano_lab/engine/search.py": "935d50ce4ad81e9a0a0483e8b52c61be93049ead02f8f0971ad58b6f9326e415",
+        "peano-lab/py/peano_lab/engine/state.py": "219266095c3afd959852ebd2c5fb8efbf6e276941a7352905e05dd17ce03be18",
+        "peano-lab/py/peano_lab/engine/tacticals.py": "9285da2f6bc3ebebaa6c341b5dc94dd9282c6886b78ec8b8beebd58dc68536d6",
+        "peano-lab/py/peano_lab/engine/tactics.py": "c4a57b21e464a23bb9ee5ca7f9908f15f9de5fb149d966df24417463173ad946",
+        "peano-lab/py/peano_lab/engine/trace.py": "d9a7b2aa789fefd8d0da8d6ce6b6ae37b925f92a3e611e0809b02cd5e9173df7",
+        "peano-lab/py/peano_lab/kernel/__init__.py": "e4d6cd30f2468de77d6e02fb71bf84394ff8330d264602bb9398df1ad194bc84",
+        "peano-lab/py/peano_lab/kernel/checker.py": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe",
+        "peano-lab/py/peano_lab/kernel/formulas.py": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645",
+        "peano-lab/py/peano_lab/kernel/proofs.py": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2",
+        "peano-lab/py/peano_lab/kernel/subst.py": "0c685d14aa8494141181b79f25f72699da044526054a80a689e2d5af519226b3",
+        "peano-lab/py/peano_lab/kernel/terms.py": "8f08e5843c92a68d2a4802615dc9417f7ca5c9bc3584660b8271028da6e0b94a",
+        "peano-lab/py/peano_lab/library/__init__.py": "70035fa65aafe8bed7a7b1538b0f4fdbf895ca1d5ddeef3625b9fdb9fb4e77e5",
+        "peano-lab/py/peano_lab/library/lean.py": "7ff129acb1ec8852e3cb1ab2ffe799d21a61535e28dfe16c5319c1d3ee20b167",
+        "peano-lab/py/peano_lab/library/theorems.py": "295ca3b65970324e7d2ed51b57dc4510227b0abbc2d35b68a809dbde26aba868",
+        "peano-lab/py/peano_lab/ui/__init__.py": "211051584d7c5e4f3c58c01a666d8cc17c315c3755d7f2f9b2e850507985a852",
+        "peano-lab/py/peano_lab/ui/data_kb.py": "fd584f2cb3e25b76a49cad6ecfe586228b91e635ddd24e6cc962b73fea23076b",
+        "peano-lab/py/peano_lab/ui/data_library.py": "0bd04394d49bb3702050bc4f94f27fc027bca6630a4810ba20862f5ce62d9933",
+        "peano-lab/py/peano_lab/ui/data_tactics.py": "926c4f288b497dbaf9c229aaf8e9ada5446f2f1820b2b1aa5a3a6c926dcf8894",
+        "peano-lab/py/peano_lab/ui/data_tutorials.py": "82dd98de6bd2b25fa8c73db1c9e79dacea83fe411444de4fc04acad731b7c7f1",
+        "peano-lab/py/peano_lab/ui/panels.py": "bee8e54534f0d84e4df9ec35f5ccff998c69f8761099063ce69e62c1b628aa86",
+        "peano-lab/py/peano_lab/ui/prove.py": "b7803ef36f8064aac18e8d8e14e18b0306e7a66e9aae1511609f11f7a7ac37c0",
+        "peano-lab/py/peano_lab/ui/tutorial.py": "b1778f574975cdff47faea8d3c2e7319b53d064a2c539f417c7d9380ab761824",
+        "scripts/eval_peano_policy.py": "0d46da46d9d90ce69796f6a18963ddd3a256417f1a610dfcb900792e32a26e07",
+        "scripts/eval_trained_peano_policy.py": "92321430951273aa5c2e4baf6b358d01ec6d0770bda71fc1f0ab5b78bf1598e6",
+        "scripts/replay_peano_v3_evaluation.py": "ce478626e33faeb75c07a02d7884f7da51694f6077401e739896126f4db79e42",
+        "training/peano_policy/contract.py": "5246d0fa68914ba9570c482f603c473c8585fee775c5fa07c79010ae89964d15",
+        "training/peano_policy/evaluation_replay.py": "2807a22e35db6566672b6948d2f10a98eeebbc12d700613633a1d8b2cccb79eb",
+        "training/peano_policy/manifest.py": "bba71f3c242288328231d5cd2cada2aa6768d974aaf70cb3520239caf01c8491",
+        "training/peano_policy/prompt.py": "60cdd380961875a4b49a24bdf60bb1d05f889ae0930c8e68ff50c6c3ea76b96e",
+        "training/peano_policy/runtime.py": "db7294f34234fbb78723ebd10d92536c14cd90606c0131367023b8459e44cbcc"
+      },
+      "sha256": "567206434eea5f514ecfb1e76c8cf8e1578ee1c9f8936f4c6fbc7ad3ceb1becd"
+    }
+  },
+  "search_accounting": {
+    "accounting_schema_projection": {
+      "purpose": "translate the separately validated baseline policy and deployment provenance into the unchanged trained-report validator schema",
+      "transformed_fields": [
+        "policy",
+        "policy_identity.name",
+        "policy_identity.base_policy",
+        "policy_identity.base_policy.provenance.evaluation.training_job_binding",
+        "policy_identity.base_policy.provenance.evaluation.job.deployment.job_script",
+        "policy_identity.base_policy.provenance.evaluation.job.submission.script",
+        "policy_identity.base_policy.provenance.evaluation.job.submission.script_sha256",
+        "policy_identity.base_policy.provenance.evaluation.job.ledger.row_sha256",
+        "pretrained_base_comparison (removed after separate validation)"
+      ]
+    },
+    "actual": {
+      "candidate_lines_returned": 0,
+      "candidate_sequences_requested": 32,
+      "candidate_sequences_returned": 32,
+      "candidates_executed": 0,
+      "frontier_peak_per_goal": 1,
+      "malformed_sequences_rejected": 32,
+      "model_generate_calls": 4,
+      "states_discovered": 4,
+      "states_expanded": 4
+    },
+    "canonical_validator_reused": true,
+    "goals": [
+      {
+        "candidate_sequences_returned": 8,
+        "candidates_executed": 0,
+        "malformed_sequences_rejected": 8,
+        "model_generate_calls": 1,
+        "name": "closed_arithmetic_seven",
+        "states_discovered": 1,
+        "status": "exhausted"
+      },
+      {
+        "candidate_sequences_returned": 8,
+        "candidates_executed": 0,
+        "malformed_sequences_rejected": 8,
+        "model_generate_calls": 1,
+        "name": "existential_subtraction_two",
+        "states_discovered": 1,
+        "status": "exhausted"
+      },
+      {
+        "candidate_sequences_returned": 8,
+        "candidates_executed": 0,
+        "malformed_sequences_rejected": 8,
+        "model_generate_calls": 1,
+        "name": "double_right_zero",
+        "states_discovered": 1,
+        "status": "exhausted"
+      },
+      {
+        "candidate_sequences_returned": 8,
+        "candidates_executed": 0,
+        "malformed_sequences_rejected": 8,
+        "model_generate_calls": 1,
+        "name": "consecutive_product_even",
+        "states_discovered": 1,
+        "status": "exhausted"
+      }
+    ],
+    "search_and_goal_payload_unmodified": true
+  },
+  "status": "passed",
+  "summary": {
+    "attempts": 4,
+    "claimed_proofs": 0,
+    "kernel_replayed_proofs": 0,
+    "pass@k": 0.0,
+    "proved_goals": 0,
+    "status_counts": {
+      "failing": 4,
+      "invalid": 0,
+      "limit": 0,
+      "proof": 0
+    }
+  },
+  "v": 1
+}

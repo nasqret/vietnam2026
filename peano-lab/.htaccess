@@ -1,0 +1,60 @@
+# Ensure HTTPS behind the faculty TLS-terminating reverse proxy.
+# Loop-safe: redirect only when the proxy says the original request used HTTP.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP:X-Forwarded-Proto} =http
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+</IfModule>
+
+# WebAssembly needs its correct MIME type for streaming compilation. The font
+# declaration keeps the shared, self-hosted WOFF2 files portable across Apache
+# configurations.
+<IfModule mod_mime.c>
+  AddType application/wasm .wasm
+  AddType font/woff2 .woff2
+</IfModule>
+
+# Compress source-like responses and the large WebAssembly runtime.  ZIP and
+# WOFF2 are intentionally absent: recompressing already-compressed data wastes
+# server CPU.  Prefer Brotli when the module and client both support it;
+# otherwise use gzip without ever stacking the two encodings.
+<IfModule mod_filter.c>
+  <IfModule mod_brotli.c>
+    <If "req('Accept-Encoding') =~ m#(^|,)[[:space:]]*br[[:space:]]*(;[[:space:]]*q[[:space:]]*=[[:space:]]*(?!0(\.0*)?[[:space:]]*(,|$))[0-9.]+)?[[:space:]]*(,|$)#i">
+      AddOutputFilterByType BROTLI_COMPRESS application/wasm application/javascript application/json text/css text/html text/javascript text/plain text/x-python
+    </If>
+    <ElseIf "req('Accept-Encoding') =~ m#(^|,)[[:space:]]*gzip[[:space:]]*(;[[:space:]]*q[[:space:]]*=[[:space:]]*(?!0(\.0*)?[[:space:]]*(,|$))[0-9.]+)?[[:space:]]*(,|$)#i">
+      <IfModule mod_deflate.c>
+        AddOutputFilterByType DEFLATE application/wasm application/javascript application/json text/css text/html text/javascript text/plain text/x-python
+      </IfModule>
+    </ElseIf>
+  </IfModule>
+
+  <IfModule !mod_brotli.c>
+    <IfModule mod_deflate.c>
+      <If "req('Accept-Encoding') =~ m#(^|,)[[:space:]]*gzip[[:space:]]*(;[[:space:]]*q[[:space:]]*=[[:space:]]*(?!0(\.0*)?[[:space:]]*(,|$))[0-9.]+)?[[:space:]]*(,|$)#i">
+        AddOutputFilterByType DEFLATE application/wasm application/javascript application/json text/css text/html text/javascript text/plain text/x-python
+      </If>
+    </IfModule>
+  </IfModule>
+</IfModule>
+
+# The page itself is never stored, so a newly promoted BUILD is visible.
+# Content-addressed application releases and vendor paths are safe for
+# immutable caching; every other successful response must revalidate.
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-cache" "expr=%{REQUEST_STATUS} >= 200 && %{REQUEST_STATUS} <= 299"
+  Header set Cache-Control "public, max-age=31536000, immutable" "expr=%{REQUEST_STATUS} >= 200 && %{REQUEST_STATUS} <= 299 && ((%{REQUEST_URI} =~ m#/releases/a-[0-9a-f]{12,64}/#) || (%{REQUEST_URI} =~ m#/vendor/v-[0-9a-f]{12,64}/#))"
+  Header always set Cache-Control "no-cache" "expr=%{REQUEST_STATUS} == 304"
+  Header always set Cache-Control "public, max-age=31536000, immutable" "expr=%{REQUEST_STATUS} == 304 && ((%{REQUEST_URI} =~ m#/releases/a-[0-9a-f]{12,64}/#) || (%{REQUEST_URI} =~ m#/vendor/v-[0-9a-f]{12,64}/#))"
+  Header always set Cache-Control "no-store" "expr=%{REQUEST_STATUS} >= 400"
+
+  <Files "index.html">
+    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
+    Header set Pragma "no-cache"
+    Header set Expires "0"
+    Header always set Cache-Control "no-store, no-cache, must-revalidate, max-age=0" "expr=%{REQUEST_STATUS} == 304"
+    Header always set Pragma "no-cache" "expr=%{REQUEST_STATUS} == 304"
+    Header always set Expires "0" "expr=%{REQUEST_STATUS} == 304"
+  </Files>
+</IfModule>

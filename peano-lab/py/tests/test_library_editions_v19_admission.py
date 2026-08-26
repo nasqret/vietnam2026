@@ -1,0 +1,385 @@
+"""Immutable, complete, fail-closed admission of the constructive Alpha v19."""
+
+from __future__ import annotations
+
+from collections import Counter
+from dataclasses import replace
+from hashlib import sha256
+from pathlib import Path
+import subprocess
+import sys
+
+import pytest
+
+from peano_lab.kernel.checker import check
+from peano_lab.kernel.formulas import And, Bot, Eq, Exists, Forall, Imp
+from peano_lab.kernel.proofs import EqRefl
+from peano_lab.kernel.terms import Zero
+from peano_lab.library import editions_v18 as v18
+from peano_lab.library import editions_v19 as v19
+from peano_lab.library.alpha_enrollment_v19 import (
+    FRONTIER_V19_EXPECTED_NAMES_SHA256,
+    LINEAR_CONGRUENCE_ROOT_NAME,
+    PRIMES_ONE_MOD_FOUR_ROOT_NAME,
+    PRIME_TWO_SQUARE_ROOT_NAME,
+    PYTHAGOREAN_V19_ROOT_NAMES,
+    FrontierV19Campaign,
+    alpha_v19_enrollment,
+)
+from peano_lab.library.theorems import _closed_formula
+
+
+REPOSITORY = Path(__file__).resolve().parents[3]
+ARTIFACTS = REPOSITORY / "research/arithmetic-library/artifacts"
+PARENT_ARTIFACT_SHA256 = {
+    "artifacts/peano-library/alpha/catalog-v18.json": (
+        "cfbaeaf5d89be609d09aa2b84c9d102297a45b7b6aeeea6efcd32b1b328e62b2"
+    ),
+    "artifacts/peano-library/alpha/metrics-v18.json": (
+        "da634d4995fa83296ec7458bd7aad0f1da40b39f3ed0be583c3dc01a3d498a77"
+    ),
+    "artifacts/peano-library/alpha/dependency-graph-v18.mmd": (
+        "5729b4818862bc880f01c30ece70025e6dc25c3bf47d472ebf9dcac3de3d4f69"
+    ),
+    "artifacts/peano-library/channels-v18.json": (
+        "1d9c81c2d8a1ed9f1fb28af8b2e05e9cd130789daa10367f5ef2ef3a27b505d8"
+    ),
+}
+EXPECTED_ROOT_STATEMENT_SHA256 = {
+    "pythagorean_primitive_euclidean_from_order": (
+        "7b71efd8961214c09eacc96a84603d56f5658d850a3f31256df3e00255a48e90"
+    ),
+    "pythagorean_primitive_normal_form": (
+        "0e58024c289803991f5b0536889cea380c59940c3b351eebe2e57298db872bac"
+    ),
+    "prime_is_two_squares_iff_two_or_one_mod_four": (
+        "84184c6c9fccba3457f8db4cb5716f0e75e85fa2749f1db6471f902cbbe415d7"
+    ),
+    "linear_congruence_solvable_iff_gcd_divides": (
+        "808ae7b7b17bc3c2a027e76aff9d4f7d58157d50ce20ee50e323631b2b02296e"
+    ),
+    "infinitely_many_primes_one_mod_four": (
+        "eb4e068b6bb3a271118a6e6aaea03ddd9d0fc10317f38bc4697b0a46dd9ac1be"
+    ),
+}
+FIRST_CAMPAIGN_THEOREM = {
+    "residual": v19.RESIDUAL_PROMOTED_NAMES[0],
+    "frontier": v19.FRONTIER_NEW_NAMES[0],
+}
+
+
+def test_import_seals_inventory_without_loading_actual_proof_providers() -> None:
+    result = subprocess.run(
+        [
+            sys.executable,
+            "-c",
+            (
+                "import sys; "
+                "from peano_lab.library import editions_v19 as v; "
+                "assert 'peano_lab.library.campaign_residual_closure' not in sys.modules; "
+                "assert 'peano_lab.library.campaign_frontier_closure' not in sys.modules; "
+                "assert len(v.ALPHA_CHECKED_SPECS) == 1737"
+            ),
+        ],
+        cwd=REPOSITORY / "peano-lab/py",
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert result.stdout == ""
+
+
+def test_complete_historical_alpha_v18_and_stable_snapshots_stay_immutable() -> None:
+    assert len(v18.ALPHA_ENTRIES) == 1_673
+    assert len(v18.ALPHA_CHECKED_SPECS) == 1_589
+    assert len(v19.ALPHA_ENTRIES) == 1_737
+    assert tuple(item.spec for item in v19.ALPHA_ENTRIES[:1_673]) == v18.ALPHA_SPECS
+    assert v19.STABLE_EDITION is v18.STABLE_EDITION
+    assert v19.STABLE_ENTRIES is v18.STABLE_ENTRIES
+    assert v19.STABLE_SPECS is v18.STABLE_SPECS
+    assert v19.STABLE_RELEASE_ORDER is v18.STABLE_RELEASE_ORDER
+    assert len(v19.STABLE_SPECS) == 432
+    assert v18.ALPHA_V18_IDENTITY_SHA256 == (
+        "f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66"
+    )
+    assert v18.ALPHA_V18_ENROLLMENT_SHA256 == (
+        "44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175"
+    )
+    for filename, digest in PARENT_ARTIFACT_SHA256.items():
+        assert sha256((REPOSITORY / filename).read_bytes()).hexdigest() == digest
+
+
+def test_exactly_84_body_only_parent_rows_gain_checked_use_and_nothing_else_changes() -> None:
+    promoted = frozenset(v19.RESIDUAL_PROMOTED_NAMES)
+    assert promoted == frozenset(
+        item.spec.name for item in v18.ALPHA_ENTRIES if not item.checked_use
+    )
+    assert len(promoted) == 84
+    assert sha256("\n".join(v19.RESIDUAL_PROMOTED_NAMES).encode()).hexdigest() == (
+        "0fd3159925c12b2e7249edb5d536f3be600e466e5a6695350a22c38e81d4f69e"
+    )
+    for older, newer in zip(v18.ALPHA_ENTRIES, v19.ALPHA_ENTRIES[:1_673], strict=True):
+        if older.spec.name in promoted:
+            assert older.evidence is v18.EvidenceStatus.BODY_CHECKED
+            assert older.membership is v18.Membership.ALPHA_ONLY
+            assert not older.checked_use
+            assert newer == replace(older, evidence=v19.EvidenceStatus.ALPHA_CLOSED)
+            assert newer.checked_use
+        else:
+            assert newer is older
+
+
+def test_exact_64_new_frontier_rows_are_additive_and_dependency_ordered() -> None:
+    enrollment = alpha_v19_enrollment()
+    new = v19.ALPHA_ENTRIES[1_673:]
+    assert len(new) == len(enrollment.frontier_specs) == 64
+    assert tuple(row.spec for row in new) == enrollment.frontier_specs
+    assert tuple(row.spec.name for row in new) == v19.FRONTIER_NEW_NAMES
+    assert sha256("\n".join(v19.FRONTIER_NEW_NAMES).encode()).hexdigest() == (
+        FRONTIER_V19_EXPECTED_NAMES_SHA256
+    )
+    assert Counter(
+        campaign.value for campaign in enrollment.campaign_by_name.values()
+    ) == {
+        "pythagorean": 44,
+        "prime_two_square": 1,
+        "linear_congruence": 9,
+        "primes_one_mod_four": 10,
+    }
+    available = set(v18.ALPHA_EDITION.by_name)
+    for row in new:
+        assert row.spec.name not in v18.ALPHA_EDITION.by_name
+        assert row.evidence is v19.EvidenceStatus.ALPHA_CLOSED
+        assert row.membership is v19.Membership.ALPHA_ONLY
+        assert row.checked_use
+        assert set(row.spec.dependencies) <= available
+        assert row.source_module == enrollment.source_by_name[row.spec.name]
+        available.add(row.spec.name)
+
+
+def test_complete_checked_partition_graph_and_immutable_identities_are_exact() -> None:
+    assert Counter(item.evidence.value for item in v19.ALPHA_ENTRIES) == {
+        "stable_closed": 432,
+        "alpha_closed": 1_305,
+    }
+    assert len(v19.ALPHA_CHECKED_SPECS) == 1_737
+    assert not tuple(item for item in v19.ALPHA_ENTRIES if not item.checked_use)
+    assert (v19.ALPHA_EDITION.edge_count, v19.ALPHA_EDITION.layer_count) == (
+        5_779,
+        53,
+    )
+    assert sum(len(item.dependencies) for item in v19.ALPHA_CHECKED_SPECS) == 5_779
+    checked = {item.name for item in v19.ALPHA_CHECKED_SPECS}
+    assert all(set(item.dependencies) <= checked for item in v19.ALPHA_CHECKED_SPECS)
+    assert v19.ALPHA_V19_ENROLLMENT_SHA256 == (
+        "1295d6fc3da84646cb6bc8d5070627d42a6df33d673c44a2adfcd433edc41795"
+    )
+    assert v19.ALPHA_V19_IDENTITY_SHA256 == (
+        "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7"
+    )
+
+
+def test_pythagorean_anchor_is_honestly_checked_without_claiming_inverse_or_descent() -> None:
+    enrollment = alpha_v19_enrollment()
+    for name in PYTHAGOREAN_V19_ROOT_NAMES:
+        item = v19.entry(name, edition="alpha")
+        assert item is not None and item.checked_use
+        assert v19.entry(name, edition="stable") is None
+        assert enrollment.campaign_by_name[name] is FrontierV19Campaign.PYTHAGOREAN
+    names = set(v19.FRONTIER_NEW_NAMES)
+    assert "pythagorean_primitive_inverse_constructor" not in names
+    assert "fermat_four_strict_descent" not in names
+    assert "fermat_four_unconditional" not in names
+
+
+@pytest.mark.parametrize("name", tuple(EXPECTED_ROOT_STATEMENT_SHA256))
+def test_all_five_major_roots_have_exact_frozen_constructive_formulas(name: str) -> None:
+    before = v18.entry(name, edition="alpha")
+    after = v19.entry(name, edition="alpha")
+    assert before is None
+    assert after is not None
+    assert after.checked_use
+    assert after.evidence is v19.EvidenceStatus.ALPHA_CLOSED
+    assert sha256(after.spec.statement.encode()).hexdigest() == (
+        EXPECTED_ROOT_STATEMENT_SHA256[name]
+    )
+    assert v19.entry(name, edition="stable") is None
+    assert v19.edition() is v18.STABLE_EDITION
+
+
+def test_linear_congruence_root_retains_nonzero_modulus_and_bounded_witness() -> None:
+    root = v19.entry(LINEAR_CONGRUENCE_ROOT_NAME, edition="alpha")
+    assert root is not None
+    formula = _closed_formula(root.spec.statement)
+    for _ in range(4):
+        assert isinstance(formula, Forall)
+        formula = formula.body
+    assert isinstance(formula, Imp)
+    positive = formula.consequent
+    assert isinstance(positive, Imp)
+    assert isinstance(positive.antecedent, Imp)
+    assert isinstance(positive.antecedent.antecedent, Eq)
+    assert isinstance(positive.antecedent.consequent, Bot)
+    assert isinstance(positive.consequent, And)
+    bounded = positive.consequent.left.antecedent
+    assert isinstance(bounded, Exists)
+    assert isinstance(bounded.body, And)
+    assert isinstance(bounded.body.left, Exists)
+
+
+def test_one_mod_four_prime_root_constructs_an_unbounded_genuine_prime_witness() -> None:
+    root = v19.entry(PRIMES_ONE_MOD_FOUR_ROOT_NAME, edition="alpha")
+    assert root is not None
+    formula = _closed_formula(root.spec.statement)
+    assert isinstance(formula, Forall)
+    assert isinstance(formula.body, Exists)
+    assert isinstance(formula.body.body, And)
+    payload = formula.body.body.right
+    assert isinstance(payload, And)
+    assert isinstance(payload.left, Exists)  # Actual strict-order gap.
+    assert isinstance(payload.right, Exists)  # Actual p = 4*k + 1 witness.
+    assert "S B = p" in root.spec.statement
+    assert "4 *" in root.spec.statement
+
+
+def test_t09_exact_prime_valuation_interface_is_now_completely_checked() -> None:
+    names = (
+        "prime_power_valuation_exists",
+        "prime_power_valuation_functional",
+        "power_valuation_exact_cofactor",
+        "prime_power_valuation_mul",
+    )
+    assert all(v19.entry(name, edition="alpha").checked_use for name in names)
+    assert not v18.entry(names[0], edition="alpha").checked_use
+    assert not v18.entry(names[1], edition="alpha").checked_use
+
+
+@pytest.mark.parametrize("label", v19.CAMPAIGN_BUNDLE_LABELS)
+def test_each_campaign_bundle_checks_every_original_kernel_body(label: str) -> None:
+    bundle, receipt, positions, module = v19.checked_campaign_bundle(label)
+    expected = (
+        v19.RESIDUAL_PROMOTED_NAMES if label == "residual" else v19.FRONTIER_NEW_NAMES
+    )
+    prefix = "RESIDUAL" if label == "residual" else "FRONTIER"
+    assert set(expected) <= set(positions)
+    assert len(bundle.nodes) == receipt.node_count == receipt.kernel_calls
+    assert receipt.total_body_nodes == getattr(
+        module, f"EXPECTED_{prefix}_BUNDLE_BODY_PROOF_NODES"
+    )
+    if label == "residual":
+        assert (receipt.node_count, receipt.dependency_edges, receipt.total_body_nodes) == (
+            475,
+            1_452,
+            38_688,
+        )
+        assert bundle.root == 474
+        assert bundle.root not in positions.values()
+        assert len(positions) == 474
+    else:
+        assert len(positions) == receipt.node_count - 1
+        assert bundle.root not in positions.values()
+        assert all(name in positions for name in EXPECTED_ROOT_STATEMENT_SHA256)
+    for name in expected:
+        position = positions[name]
+        assert bundle.nodes[position].target == _closed_formula(
+            v19.ALPHA_EDITION.by_name[name].spec.statement
+        )
+
+
+@pytest.mark.parametrize("label", v19.CAMPAIGN_BUNDLE_LABELS)
+def test_one_newly_checked_theorem_per_bundle_replays_in_original_kernel(label: str) -> None:
+    name = FIRST_CAMPAIGN_THEOREM[label]
+    actual = v19.replay(name, edition="alpha")
+    assert actual.spec is v19.ALPHA_EDITION.by_name[name].spec
+    assert check((), actual.certificate, actual.formula)
+
+
+def test_campaign_replay_uses_only_unchanged_conservative_proof_sharing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    name = FIRST_CAMPAIGN_THEOREM["residual"]
+    original = v19.intern_layered_replay_bodies
+    observed: list[tuple[int, int, object]] = []
+
+    def audited(bundle, target, *, limits):
+        observed.append((bundle.root, len(bundle.nodes), limits))
+        return original(bundle, target, limits=limits)
+
+    monkeypatch.setattr(v19, "intern_layered_replay_bodies", audited)
+    v19.replay.cache_clear()
+    actual = v19.replay(name, edition="alpha")
+    assert len(observed) == 1
+    assert observed[0][2] is v19.DEFAULT_LAYERED_REPLAY_LIMITS
+    assert check((), actual.certificate, actual.formula)
+
+
+def test_forged_or_rejected_interned_campaign_bodies_fail_closed(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    name = FIRST_CAMPAIGN_THEOREM["residual"]
+    original = v19.intern_layered_replay_bodies
+
+    monkeypatch.setattr(v19, "intern_layered_replay_bodies", lambda *a, **k: None)
+    v19.replay.cache_clear()
+    with pytest.raises(v19.EditionV19ReplayError, match="unchanged proof-sharing limits"):
+        v19.replay(name, edition="alpha")
+
+    def forged(bundle, target, *, limits):
+        interned = original(bundle, target, limits=limits)
+        first = replace(interned.nodes[0], body=EqRefl(Zero()))
+        return replace(interned, nodes=(first, *interned.nodes[1:]))
+
+    monkeypatch.setattr(v19, "intern_layered_replay_bodies", forged)
+    v19.replay.cache_clear()
+    with pytest.raises(v19.EditionV19ReplayError, match="rejected an interned"):
+        v19.replay(name, edition="alpha")
+    v19.replay.cache_clear()
+
+
+@pytest.mark.parametrize("label", v19.CAMPAIGN_BUNDLE_LABELS)
+def test_missing_actual_campaign_artifact_fails_closed(label: str, tmp_path: Path) -> None:
+    name = FIRST_CAMPAIGN_THEOREM[label]
+    v19.set_campaign_bundle_source(label, tmp_path / f"missing-{label}.json")
+    try:
+        assert v19.entry(name, edition="alpha").checked_use
+        with pytest.raises(v19.EditionV19ReplayError, match="unavailable"):
+            v19.replay(name, edition="alpha")
+    finally:
+        v19.set_campaign_bundle_source(label, None)
+
+
+@pytest.mark.parametrize("label", v19.CAMPAIGN_BUNDLE_LABELS)
+def test_mutated_actual_campaign_artifact_fails_closed(label: str, tmp_path: Path) -> None:
+    name = FIRST_CAMPAIGN_THEOREM[label]
+    source = ARTIFACTS / v19.CAMPAIGN_ARTIFACT_FILENAMES[label]
+    original = source.read_bytes()
+    mutated = tmp_path / f"mutated-{label}.json"
+    mutated.write_bytes(original[:-1] + (b" " if original[-1:] != b" " else b"x"))
+    v19.set_campaign_bundle_source(label, mutated)
+    try:
+        with pytest.raises(v19.EditionV19ReplayError, match="frozen genuine provenance"):
+            v19.replay(name, edition="alpha")
+    finally:
+        v19.set_campaign_bundle_source(label, None)
+
+
+def test_previously_checked_alpha_and_default_stable_replay_are_delegated() -> None:
+    old_alpha = "prime_mod_four_trichotomy"
+    assert v19.replay(old_alpha, edition="alpha") is v18.replay(old_alpha, edition="alpha")
+    stable = v18.STABLE_RELEASE_ORDER[0]
+    assert v19.replay(stable) is v18.replay(stable)
+    assert v19.edition() is v18.STABLE_EDITION
+    assert v19.entry(PRIME_TWO_SQUARE_ROOT_NAME) is None
+
+
+@pytest.mark.parametrize("invalid", (None, "", "bertrand", 12, ("residual",)))
+def test_unknown_or_noncanonical_campaign_family_is_rejected(invalid) -> None:
+    with pytest.raises(v19.EditionV19ReplayError, match="unknown Alpha-v19 proof family"):
+        v19.checked_campaign_bundle(invalid)
+
+
+def test_nonfilesystem_proof_source_and_unknown_edition_are_rejected() -> None:
+    with pytest.raises(v19.EditionV19ReplayError, match="filesystem path"):
+        v19.set_campaign_bundle_source("residual", object())
+    with pytest.raises(v19.EditionV19Error, match="unknown theorem-library"):
+        v19.edition("unsafe")

@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BL0002 — binary_length_digit_split_exists — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="binary-length"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
+       <a href="../../tag/BL0002.html?v=75fa146ac19b">Exact original proof</a>
+       <a href="../graph.html?target=BL0002&amp;v=75fa146ac19b">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G102" href="../../../../grand-campaign/?view=goal&amp;focus=G102&amp;v=75fa146ac19b">G102 milestone</a></nav>
+  <p class="pd-tag">BL0002</p><h1>binary_length_digit_split_exists</h1>
+  <p>Every natural number has an exact binary quotient and zero-or-one digit.</p><p class="pd-status">Alpha v25 checked-use · first admitted v22 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  
+  <p class="pd-callout">G101 and G102 were OPEN when these BitLen foundations were first admitted in Alpha v22. Both are now CLOSED in Alpha v23: complete canonical exponent digits and both exact logarithmic execution bounds are proved.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ n. ∃ h. ∃ b. <a class="pd-definition-ref" data-definition="ND0022" href="../definition/ND0022.html?v=75fa146ac19b">BinaryExponentSplit(n,h,b)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0022.html?v=75fa146ac19b">BinaryExponentSplit(e,h,b) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">binary_exponent_split_exists · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall n. exists h b. ((((b = 0) \/ (b = 1)) /\ n = (h + h) + b))</code></pre></details>
+  <section><h2>Complete unchanged native tactic proof</h2>
+    <p>All 3 lines are the exact independently kernel-checked original script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro n</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>specialize binary_exponent_split_exists n</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>exact binary_exponent_split_exists</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v25 checked use</dd><dt>First admission</dt><dd>Alpha v22</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>180 / 240</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 240 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>7 / 5</dd>
+      <dt>Statement SHA-256</dt><dd><code>54236d305719d1eb2c1c61ebc67e069f8c9ef621367fd05b7af11df2a72d8902</code></dd>
+      <dt>Script SHA-256</dt><dd><code>fe607519b0970611da8494539c696d66775a26b70745dfe0d2ab6faa5983a126</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>95e5f8a3baef113721d748f9d7071864b4bf9511737a27a1272d2695428fb938</code></dd>
+      <dt>Exact source module</dt><dd><code>peano-lab/py/peano_lab/library/binary_length_candidate.py</code></dd></dl>
+</aside></main></body>
+</html>

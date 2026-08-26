@@ -1,0 +1,475 @@
+{
+  "schema": "peano-lab-ha-definition-representation-freeze-v1",
+  "version": 1,
+  "freeze_date": "2026-08-03",
+  "title": "HA number-theory campaign definition and representation freeze v1",
+  "authority": "planning-and-audit-only; this manifest grants no parser, kernel, definition, or theorem authority",
+  "baseline": {
+    "repository_commit": "d9d6e739e7c452ddf2cc9013d8772dfb185ff44f",
+    "repository_branch": "agent/new-theorems-tranche-01",
+    "controlling_spec_path": "research/arithmetic-library/ha-number-theory-formalization-campaign-blueprint.md",
+    "controlling_spec_sha256": "8fd25fc3e68259e1a16c935d35dacccefa20a473cdec35f8771cb1d5d806f205",
+    "defined_syntax_registry_id": "peano-lab.defined-predicates",
+    "defined_syntax_registry_version": 2,
+    "defined_syntax_registry_sha256": "924c8bc220f23ce772b72991b8234c3499be7698dc086d90509d39760a1ed0fe",
+    "defined_syntax_source_sha256": "86b3ee6dc17043553e730372ac0d9af884a3fb85ebe6a30813318871145fe903",
+    "definition_inventory_path": "research/arithmetic-library/pa-proof-definitions.json",
+    "definition_inventory_sha256": "42039d5dc923f1eb4a23c11adcef05b9b6a6d393cca695801375f1d67476f7cb"
+  },
+  "classification_vocabulary": {
+    "frozen-compatible": "The exact current expansion is accepted as the campaign relation; API completeness is recorded separately.",
+    "bridge-required": "The exact current expansion remains conservative and usable, but a checked theorem must connect it to the campaign's preferred canonical presentation.",
+    "legacy-late": "The relation remains usable after its dependencies, but it is quarantined from the foundational K3 data representation because its construction route would be circular with CRT."
+  },
+  "kernel": {
+    "classification": "frozen-compatible",
+    "object_theory": "first-order intuitionistic arithmetic",
+    "sorts": ["natural_number"],
+    "term_constructors": ["Var", "Zero", "Succ", "Add", "Mul"],
+    "formula_constructors": ["Eq", "Bot", "Imp", "And", "Or", "Forall", "Exists"],
+    "variable_representation": "de_bruijn_indices",
+    "campaign_checker_entrypoint": "peano_lab.kernel.checker.check",
+    "campaign_checker_dne_policy": "reject",
+    "separate_classical_entrypoint": "peano_lab.kernel.checker.check_classical",
+    "classical_only_certificate_node": "DNE",
+    "intuitionistic_certificate_nodes": [
+      "Hyp",
+      "ImpIntro",
+      "ImpElim",
+      "Cut",
+      "AndIntro",
+      "AndElimL",
+      "AndElimR",
+      "OrIntroL",
+      "OrIntroR",
+      "OrElim",
+      "BotElim",
+      "ForallIntro",
+      "ForallElim",
+      "ExistsIntro",
+      "ExistsElim",
+      "EqRefl",
+      "EqSym",
+      "EqTrans",
+      "CongS",
+      "CongAdd",
+      "CongMul",
+      "EqSubst",
+      "Axiom",
+      "Ind"
+    ],
+    "arithmetic_axioms": {
+      "PA1": "forall x. ~(S x = 0)",
+      "PA2": "forall x y. S x = S y -> x = y",
+      "PA3": "forall x. x + 0 = x",
+      "PA4": "forall x y. x + S y = S (x + y)",
+      "PA5": "forall x. x * 0 = 0",
+      "PA6": "forall x y. x * S y = x * y + x"
+    },
+    "induction": "Ind stores one concrete object-language motive and checks its zero instance and universally quantified successor step before inferring its universal closure.",
+    "cut": "Cut checks its lemma in the surrounding context once and checks its body under that proposition; it is proof sharing, not an arithmetic axiom.",
+    "definition_nodes_in_kernel": false,
+    "sources": [
+      {
+        "path": "peano-lab/py/peano_lab/kernel/terms.py",
+        "sha256": "e44a937d0660651f08fa57b7ff867c608ff134ac01b48c588206d641132f3185"
+      },
+      {
+        "path": "peano-lab/py/peano_lab/kernel/formulas.py",
+        "sha256": "b449bf50c7c8f6a93ff0dea067d9cfb048b3033f4e761e61c71d55e4f9a57645"
+      },
+      {
+        "path": "peano-lab/py/peano_lab/kernel/proofs.py",
+        "sha256": "1ff7c055e64f784b45f00488b00fe945a57e4d872e520382da779d1d775f28f2"
+      },
+      {
+        "path": "peano-lab/py/peano_lab/kernel/checker.py",
+        "sha256": "d7dfb9c256214695b9b7c427afb3b22291b9659b15defb16c57751b536a02ebe"
+      },
+      {
+        "path": "peano-lab/py/peano_lab/kernel/subst.py"
+      }
+    ]
+  },
+  "definition_boundary": {
+    "surface_parser": "peano_lab.library.defined_syntax",
+    "expansion_contract": "Every recognized call is hygienically instantiated from a parsed de Bruijn template and returns an ordinary core Formula before tactic elaboration and kernel checking.",
+    "ordinary_parser_accepts_definition_calls": false,
+    "kernel_accepts_definition_calls": false,
+    "macro_receipt_implies_api_theorem": false,
+    "api_authority": "Only separately replayed object-level theorem certificates establish introduction, elimination, functionality, decidability, transport, or bridge properties.",
+    "sources": [
+      "peano-lab/py/peano_lab/library/defined_syntax.py",
+      "peano-lab/py/peano_lab/library/defined_edition.py",
+      "research/arithmetic-library/pa-proof-definitions.json",
+      "research/arithmetic-library/catalog.json"
+    ]
+  },
+  "definitions": [
+    {
+      "stable_id": "PD0001",
+      "name": "Le",
+      "parameters": ["a", "b"],
+      "registry_class": "primary",
+      "campaign_classification": "frozen-compatible",
+      "exact_expanded_template": "exists h. h + a = b",
+      "template_source_sha256": "41aa215143ee6830b61010c8a5f708440a429140bb4cad89663085337126eba0",
+      "conceptual_dependencies": [],
+      "reason": "This is the campaign's witness-defined non-strict order and is also the expansion of the <= parser surface.",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:Le",
+        "peano-lab/py/peano_lab/kernel/formulas.py:_FormulaParser._atom",
+        "research/arithmetic-library/catalog.json:object_language.surface_sugar"
+      ],
+      "proved_api": [
+        {"name": "le_refl", "status": "public_checked"},
+        {"name": "le_trans", "status": "public_checked"},
+        {"name": "le_antisymm", "status": "public_checked"},
+        {"name": "le_total", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": []
+    },
+    {
+      "stable_id": "PD0002",
+      "name": "Lt",
+      "parameters": ["a", "b"],
+      "registry_class": "primary",
+      "campaign_classification": "frozen-compatible",
+      "exact_expanded_template": "exists h. h + S a = b",
+      "template_source_sha256": "8245ec2119fd9d5b970a1d301ae58fa593733fff741593deb4858a5130b52cce",
+      "conceptual_dependencies": [],
+      "reason": "This is the strict witness order used by current bounded arithmetic and by the campaign's canonical bounds.",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:Lt",
+        "peano-lab/py/peano_lab/library/finite_fold_surface.py:_lt"
+      ],
+      "proved_api": [
+        {"name": "lt_to_le", "status": "public_checked"},
+        {"name": "lt_irrefl_expanded", "status": "public_checked"},
+        {"name": "lt_trans", "status": "public_checked"},
+        {"name": "lt_trichotomy", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": []
+    },
+    {
+      "stable_id": "PD0003",
+      "name": "Dvd",
+      "parameters": ["d", "n"],
+      "registry_class": "primary",
+      "campaign_classification": "frozen-compatible",
+      "exact_expanded_template": "exists k. n = d * k",
+      "template_source_sha256": "c2dd3b8c5225573ac5be64c1384f9fbae32502810da654cee650ba6903f16e35",
+      "conceptual_dependencies": [],
+      "reason": "This is exactly the campaign's base-language divisibility template.",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:Dvd",
+        "research/arithmetic-library/catalog.json:expanded_predicate_conventions.divides",
+        "peano-lab/py/peano_lab/library/theorems.py"
+      ],
+      "proved_api": [
+        {"name": "multiple_refl", "status": "public_checked"},
+        {"name": "multiple_trans", "status": "public_checked"},
+        {"name": "divisor_le_nonzero", "status": "public_checked"},
+        {"name": "multiple_decidable", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": []
+    },
+    {
+      "stable_id": "PD0007",
+      "name": "DivRem",
+      "parameters": ["n", "d", "q", "r"],
+      "registry_class": "primary",
+      "campaign_classification": "frozen-compatible",
+      "exact_expanded_template": "n = d * q + r /\\ exists h. h + S r = d",
+      "template_source_sha256": "16c8dd61da6b99cec76efc87e4597c37f5f3a82e6ff4c9f6271b1ccf8bd869cd",
+      "conceptual_dependencies": ["Lt"],
+      "reason": "The relation directly states the canonical quotient/remainder equation and strict remainder bound; totality requires a nonzero divisor and functionality is a theorem.",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:DivRem",
+        "research/arithmetic-library/catalog.json:expanded_predicate_conventions.div_rem",
+        "peano-lab/py/peano_lab/library/theorems.py"
+      ],
+      "proved_api": [
+        {"name": "division_remainder_exists", "status": "public_checked"},
+        {"name": "division_remainder_unique", "status": "public_checked"},
+        {"name": "zero_remainder_implies_multiple", "status": "public_checked"},
+        {"name": "multiple_has_zero_remainder", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": []
+    },
+    {
+      "stable_id": "PD0006",
+      "name": "IsGCD",
+      "parameters": ["g", "a", "b"],
+      "registry_class": "primary",
+      "campaign_classification": "frozen-compatible",
+      "exact_expanded_template": "((exists x. a = g * x) /\\ (exists y. b = g * y)) /\\ forall d. (exists u. a = d * u) -> (exists v. b = d * v) -> exists w. g = d * w",
+      "template_source_sha256": "f939d788bfda63669504d5cfac3c849cc58d5870d3c9b99a0fa69f6c14306497",
+      "conceptual_dependencies": ["Dvd"],
+      "reason": "The greatest-common-divisor relation has a unique natural output and requires no primitive gcd function in the core language.",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:IsGCD",
+        "research/arithmetic-library/catalog.json:expanded_predicate_conventions.is_gcd",
+        "peano-lab/py/peano_lab/library/theorems.py"
+      ],
+      "proved_api": [
+        {"name": "gcd_exists_relational", "status": "public_checked"},
+        {"name": "is_gcd_unique", "status": "public_checked"},
+        {"name": "is_gcd_euclid_forward", "status": "public_checked"},
+        {"name": "is_gcd_euclid_backward", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": []
+    },
+    {
+      "stable_id": "PD0005",
+      "name": "Coprime",
+      "parameters": ["a", "b"],
+      "registry_class": "primary",
+      "campaign_classification": "frozen-compatible",
+      "exact_expanded_template": "forall d. (exists x. a = d * x) -> (exists y. b = d * y) -> d = 1",
+      "template_source_sha256": "9309813a1797d5b48ddd1596997e568cefb9260ed22f0486c4675d6a70b58f8b",
+      "conceptual_dependencies": ["Dvd"],
+      "reason": "The common-divisor definition is constructive and already has checked bridges to IsGCD(1,a,b).",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:Coprime",
+        "research/arithmetic-library/catalog.json:expanded_predicate_conventions.coprime",
+        "peano-lab/py/peano_lab/library/theorems.py"
+      ],
+      "proved_api": [
+        {"name": "coprime_symm", "status": "public_checked"},
+        {"name": "coprime_to_is_gcd_one", "status": "public_checked"},
+        {"name": "is_gcd_one_to_coprime", "status": "public_checked"},
+        {"name": "coprime_balanced_bezout", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": []
+    },
+    {
+      "stable_id": "PD0008",
+      "name": "ModEq",
+      "parameters": ["m", "a", "b"],
+      "registry_class": "primary",
+      "campaign_classification": "bridge-required",
+      "exact_expanded_template": "exists u v. a + m * u = b + m * v",
+      "template_source_sha256": "14b22c6894ec6a5f7d1a8a1cb62865dc5effcb102a2fdae0d7b9a87820a44fb6",
+      "conceptual_dependencies": [],
+      "reason": "This is the campaign's allowed subtraction-free congruence relation, but the preferred post-division presentation is equality of canonical remainders.",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:ModEq",
+        "peano-lab/py/peano_lab/library/quadratic_residue_surface.py:congruent_mod",
+        "research/arithmetic-library/catalog.json:expanded_predicate_conventions.congruent_mod",
+        "peano-lab/py/peano_lab/library/theorems.py"
+      ],
+      "proved_api": [
+        {"name": "mod_eq_refl", "status": "public_checked"},
+        {"name": "mod_eq_symm", "status": "public_checked"},
+        {"name": "mod_eq_trans", "status": "public_checked"},
+        {"name": "mod_eq_bounded_unique", "status": "public_checked"},
+        {"name": "remainder_decomposition_to_mod_eq", "status": "public_checked"},
+        {"name": "mod_eq_to_remainder_decomposition", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": [
+        {
+          "proposed_name": "mod_eq_iff_equal_canonical_remainders",
+          "status": "required_not_yet_claimed",
+          "statement_shape": "If DivRem(a,m,qa,ra) and DivRem(b,m,qb,rb), then ModEq(m,a,b) iff ra = rb; no separate m != 0 premise is needed because either strict remainder bound rules out m = 0.",
+          "available_components": [
+            "division_remainder_exists",
+            "division_remainder_unique",
+            "remainder_decomposition_to_mod_eq",
+            "mod_eq_to_remainder_decomposition",
+            "mod_eq_bounded_unique"
+          ]
+        }
+      ]
+    },
+    {
+      "stable_id": "PD0004",
+      "name": "Prime",
+      "parameters": ["p"],
+      "registry_class": "primary",
+      "campaign_classification": "bridge-required",
+      "exact_expanded_template": "~(p = 1) /\\ forall a b. p = a * b -> a = 1 \\/ b = 1",
+      "template_source_sha256": "62f78d205c303365b156144e260330ee3fd0798bb85f15e76eb44215d7759979",
+      "conceptual_dependencies": [],
+      "reason": "The current factor-pair definition is constructive, but the campaign freezes its public canonical presentation as p > 1 plus a bounded divisor characterization.",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:Prime",
+        "research/arithmetic-library/catalog.json:expanded_predicate_conventions.prime",
+        "peano-lab/py/peano_lab/library/theorems.py"
+      ],
+      "proved_api": [
+        {"name": "prime_nonzero", "status": "public_checked"},
+        {"name": "prime_is_succ_succ", "status": "public_checked"},
+        {"name": "prime_divisor_eq_one_or_self", "status": "public_checked"},
+        {"name": "prime_decidable", "status": "public_checked"},
+        {"name": "prime_divisor_exists", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": [
+        {
+          "proposed_name": "prime_factor_pair_iff_bounded_divisor",
+          "status": "required_not_yet_claimed",
+          "statement_shape": "Prime(p) iff Lt(1,p) and every d with Le(d,p) and Dvd(d,p) satisfies d = 1 or d = p.",
+          "available_components": [
+            "prime_nonzero",
+            "prime_is_succ_succ",
+            "prime_divisor_eq_one_or_self",
+            "divisor_le_nonzero"
+          ]
+        }
+      ]
+    },
+    {
+      "stable_id": "PA-COMPOSITE-BALANCED-BEZOUT-v1",
+      "name": "BalancedBezout",
+      "parameters": ["d", "a", "b"],
+      "registry_class": "adjacent",
+      "campaign_classification": "bridge-required",
+      "exact_expanded_template": "exists xp yp xn yn. a * xp + b * yp = d + (a * xn + b * yn)",
+      "template_source_sha256": "5c4d84b9ac6627892b127a51510e9dd98c963f859d97524b51f034f3debc27ca",
+      "conceptual_dependencies": [],
+      "reason": "Four natural witnesses avoid subtraction and already support checked Bezout arithmetic, but they are not a canonical signed-integer code with a no-negative-zero invariant.",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:BalancedBezout",
+        "peano-lab/py/peano_lab/library/theorems.py",
+        "research/arithmetic-library/gcd-bezout-roadmap.md"
+      ],
+      "proved_api": [
+        {"name": "gcd_balanced_bezout_exists", "status": "public_checked"},
+        {"name": "coprime_balanced_bezout", "status": "public_checked"},
+        {"name": "balanced_bezout_euclid_step", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": [
+        {
+          "proposed_name": "balanced_bezout_to_signed_coefficients",
+          "status": "blocked_until_non_crt_signed_code_freeze",
+          "statement_shape": "BalancedBezout witnesses decode to signed coefficients X,Y satisfying a*X+b*Y=d."
+        },
+        {
+          "proposed_name": "signed_coefficients_to_balanced_bezout",
+          "status": "blocked_until_non_crt_signed_code_freeze",
+          "statement_shape": "Canonical signed coefficients X,Y satisfying a*X+b*Y=d produce four natural BalancedBezout witnesses."
+        }
+      ]
+    },
+    {
+      "stable_id": "PD0013",
+      "name": "BetaAt",
+      "parameters": ["b", "c", "i", "x"],
+      "registry_class": "primary",
+      "campaign_classification": "legacy-late",
+      "exact_expanded_template": "((exists ff_h_defined_beta_at. ff_h_defined_beta_at + S (x) = S ((S (i)) * c)) /\\ exists ff_q_defined_beta_at. b = ff_q_defined_beta_at * S ((S (i)) * c) + (x))",
+      "template_source_sha256": "469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9",
+      "conceptual_dependencies": [],
+      "reason": "The decoded value is a canonical remainder, but arbitrary finite-prefix construction uses pairwise-coprime beta moduli and CRT; the campaign forbids that route as the first K3 list representation.",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:BetaAt",
+        "peano-lab/py/peano_lab/library/finite_fold_surface.py:beta_at",
+        "peano-lab/py/peano_lab/library/theorems.py"
+      ],
+      "proved_api": [
+        {"name": "beta_at_exists", "status": "public_checked"},
+        {"name": "beta_at_unique", "status": "public_checked"},
+        {"name": "beta_at_exists_unique", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": [
+        {
+          "proposed_name": "canonical_list_to_beta_prefix",
+          "status": "late_after_k3_and_crt",
+          "statement_shape": "Every valid canonical explicit-length list has a beta prefix with extensionally equal entries."
+        },
+        {
+          "proposed_name": "beta_prefix_to_canonical_list",
+          "status": "late_after_k3",
+          "statement_shape": "Every bounded beta prefix decodes to a valid canonical explicit-length list with extensionally equal entries."
+        }
+      ]
+    },
+    {
+      "stable_id": "PD0014",
+      "name": "Product",
+      "parameters": ["b", "c", "l", "z"],
+      "registry_class": "primary",
+      "campaign_classification": "legacy-late",
+      "exact_expanded_template": "exists ff_u_defined_product ff_v_defined_product. ((((exists ff_h_defined_product_start. ff_h_defined_product_start + S (1) = S ((S (0)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_start. ff_u_defined_product = ff_q_defined_product_start * S ((S (0)) * ff_v_defined_product) + (1))) /\\ ((((exists ff_h_defined_product_terminal. ff_h_defined_product_terminal + S (z) = S ((S (l)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_terminal. ff_u_defined_product = ff_q_defined_product_terminal * S ((S (l)) * ff_v_defined_product) + (z))) /\\ forall ff_i_defined_product. (exists ff_lt_defined_product_bound. ff_lt_defined_product_bound + S ff_i_defined_product = l) -> exists ff_p_defined_product ff_r_defined_product ff_s_defined_product. ((((exists ff_h_defined_product_factor. ff_h_defined_product_factor + S (ff_p_defined_product) = S ((S (ff_i_defined_product)) * c)) /\\ exists ff_q_defined_product_factor. b = ff_q_defined_product_factor * S ((S (ff_i_defined_product)) * c) + (ff_p_defined_product))) /\\ ((((exists ff_h_defined_product_partial. ff_h_defined_product_partial + S (ff_r_defined_product) = S ((S (ff_i_defined_product)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_partial. ff_u_defined_product = ff_q_defined_product_partial * S ((S (ff_i_defined_product)) * ff_v_defined_product) + (ff_r_defined_product))) /\\ ((((exists ff_h_defined_product_successor. ff_h_defined_product_successor + S (ff_s_defined_product) = S ((S (S ff_i_defined_product)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_successor. ff_u_defined_product = ff_q_defined_product_successor * S ((S (S ff_i_defined_product)) * ff_v_defined_product) + (ff_s_defined_product))) /\\ ff_s_defined_product = ff_r_defined_product * ff_p_defined_product)))))",
+      "template_source_sha256": "f39381e906a4c89c28a06167c706e2e14937eaa40a879fc5658d85f9892c1653",
+      "conceptual_dependencies": ["Lt", "BetaAt"],
+      "reason": "The relation is an exact beta-coded prefix-product trace. Because it depends on beta coding, it cannot serve as the campaign's foundational K6 product over the new non-CRT list representation.",
+      "sources": [
+        "peano-lab/py/peano_lab/library/defined_syntax.py:Product",
+        "peano-lab/py/peano_lab/library/finite_fold_surface.py:product_relation",
+        "peano-lab/py/peano_lab/library/theorems.py"
+      ],
+      "proved_api": [
+        {"name": "beta_product_exists", "status": "public_checked"},
+        {"name": "beta_product_functional", "status": "public_checked"},
+        {"name": "beta_product_exists_unique", "status": "public_checked"},
+        {"name": "beta_product_succ_decompose", "status": "public_checked"}
+      ],
+      "required_bridge_theorems": [
+        {
+          "proposed_name": "canonical_list_product_iff_beta_product",
+          "status": "late_after_k3_k6_and_crt",
+          "statement_shape": "For extensionally equal canonical-list and beta-prefix entries, their checked finite products are equal."
+        }
+      ]
+    }
+  ],
+  "k3_quarantine": {
+    "policy": "The foundational pair/list/signed-integer layer must be primitive-recursive and independent of CRT.",
+    "forbidden_foundational_relations": ["BetaAt", "Product"],
+    "forbidden_foundational_theorem_families": [
+      "bounded_beta_moduli_pairwise_coprime_exists",
+      "bounded_beta_crt_for_existing_code",
+      "beta_prefix_product_trace_exists",
+      "beta-coded permutation and finite-map families"
+    ],
+    "allowed_uses_before_k3_release": [
+      "regression tests for the already checked library",
+      "legacy QR theorem replay",
+      "comparison oracle for later representation bridges"
+    ],
+    "required_foundational_order": [
+      "primitive_recursive_pair_or_cell_code",
+      "explicit_length_canonical_list_code",
+      "list_validity_and_functional_decoding",
+      "finite_functions_and_list_folds",
+      "binary_crt",
+      "finite_crt",
+      "optional_beta_interoperability"
+    ]
+  },
+  "next_representation_obligations": [
+    {
+      "id": "K3.PAIR",
+      "status": "unfrozen",
+      "requirement": "Choose a primitive-recursive pair/cell code not defined through CRT and prove constructor correctness plus functional projections."
+    },
+    {
+      "id": "K3.LIST",
+      "status": "blocked_by_K3.PAIR",
+      "requirement": "Choose an explicit-length canonical nested-cell list code and prove validity, decoding functionality, constructors, decidable represented equality, and preservation by operations."
+    },
+    {
+      "id": "K3.SIGNED",
+      "status": "unfrozen",
+      "requirement": "Choose canonical sign-magnitude or parity coding with no negative zero and prove arithmetic specifications needed for Bezout coefficients."
+    },
+    {
+      "id": "K6.LIST_PRODUCT",
+      "status": "blocked_by_K3.LIST",
+      "requirement": "Define a product graph over canonical lists and prove totality, functionality, empty/successor equations, transport, and concatenation."
+    }
+  ],
+  "validation": {
+    "json_parse_command": "python3 -m json.tool research/arithmetic-library/ha-definition-representation-freeze-v1.json >/dev/null",
+    "runtime_comparison": "Load ALL_DEFINITIONS from peano_lab.library.defined_syntax; for each manifest definition compare stable_id, parameters, exact_expanded_template, and SHA-256 of that UTF-8 template.",
+    "theorem_name_comparison": "Every proved_api name must occur in peano_lab.library.theorems.THEOREMS.",
+    "selected_api_replay": {
+      "date": "2026-08-03",
+      "checker": "peano_lab.kernel.checker.check",
+      "scope": "44 distinct theorem names referenced by the 45 proved_api rows",
+      "result": "pass"
+    },
+    "full_library_replay_not_performed_in_this_freeze_audit": true
+  }
+}

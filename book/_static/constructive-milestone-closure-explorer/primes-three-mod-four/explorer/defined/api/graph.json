@@ -1,0 +1,1054 @@
+{
+  "alpha_checked_use_node_count": 18,
+  "alpha_edition_version": "v25",
+  "alpha_first_enrolled_version": "v23",
+  "definition_topological_order": [
+    "PD0004",
+    "PD0012",
+    "PD0003",
+    "ND0044",
+    "ND0045",
+    "PD0002",
+    "PD0013",
+    "PD0028",
+    "PD0014",
+    "ND0001",
+    "PD0001"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "TF0001",
+      "target": "TF0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0002",
+      "target": "TF0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0003",
+      "target": "TF0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0004",
+      "target": "TF0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0005",
+      "target": "TF0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0009",
+      "target": "TF000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000A",
+      "target": "TF000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000B",
+      "target": "TF000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0007",
+      "target": "TF000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000C",
+      "target": "TF000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0006",
+      "target": "TF000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0009",
+      "target": "TF000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000D",
+      "target": "TF000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000E",
+      "target": "TF0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0010",
+      "target": "TF0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF000F",
+      "target": "TF0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "TF0011",
+      "target": "TF0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF0001",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF0001",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0002",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF0002",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0003",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0003",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0003",
+      "statement_occurrences": 1,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0004",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0004",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0004",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0004",
+      "statement_occurrences": 1,
+      "target": "PD0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0005",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0005",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0005",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0005",
+      "statement_occurrences": 1,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0006",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0006",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0007",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0008",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0009",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF000A",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF000A",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF000B",
+      "statement_occurrences": 2,
+      "target": "ND0044"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF000C",
+      "statement_occurrences": 2,
+      "target": "ND0044"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF000C",
+      "statement_occurrences": 2,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF000D",
+      "statement_occurrences": 1,
+      "target": "ND0044"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF000D",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF000F",
+      "statement_occurrences": 1,
+      "target": "ND0044"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF0010",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0010",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0011",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "TF0011",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0011",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0012",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0012",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "TF0012",
+      "statement_occurrences": 1,
+      "target": "PD0012"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0044",
+      "target": "PD0004"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0044",
+      "target": "PD0012"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0044",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0045",
+      "target": "PD0012"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0028",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0028",
+      "target": "PD0004"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0028",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    }
+  ],
+  "family_slug": "primes-three-mod-four",
+  "independent_lean_bundle_verified": true,
+  "milestone_caveat": "The exact G025 progression-prime milestone is fully proved in unchanged constructive arithmetic; Mod4Three deliberately reuses its existing Quadratic Reciprocity definition PD0012. The much stronger full Dirichlet progression-prime milestone G030 remains open.",
+  "milestone_checked_use": true,
+  "milestone_status": "alpha_closed",
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0001.html?v=75fa146ac19b",
+      "id": "TF0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_two_square_prefix_drop_last",
+      "proof_bundle_node_id": 598,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Restricting a successor-length prefix preserves every witnessed two-square factor representation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0002.html?v=75fa146ac19b",
+      "id": "TF0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_two_square_prefix_last_represented",
+      "proof_bundle_node_id": 599,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The final decoded factor of a represented successor prefix has its own explicit two-square witnesses."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0003.html?v=75fa146ac19b",
+      "id": "TF0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_two_square_represented_factor_product",
+      "proof_bundle_node_id": 600,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Induction on an arbitrary beta-coded product constructs a two-square representation from represented decoded factors."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0004.html?v=75fa146ac19b",
+      "id": "TF0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_all_prime_entry_is_prime",
+      "proof_bundle_node_id": 601,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every concrete decoded entry in the canonical all-prime prefix is prime, by uniqueness of beta decoding."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0005.html?v=75fa146ac19b",
+      "id": "TF0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "beta_admissible_prime_factor_product_is_two_square",
+      "proof_bundle_node_id": 602,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Any finite product whose decoded factors are prime two or prime one modulo four is constructively a sum of two squares."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0006.html?v=75fa146ac19b",
+      "id": "TF0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "positive_number_with_admissible_prime_divisors_is_two_square",
+      "proof_bundle_node_id": 603,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A positive natural number all of whose prime divisors are two or one modulo four has an explicitly constructed two-square representation via its canonical prime factorization."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0007.html?v=75fa146ac19b",
+      "id": "TF0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "three_mod_four_progression_nonzero",
+      "proof_bundle_node_id": 604,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every witnessed natural of the form 4k+3 is nonzero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0008.html?v=75fa146ac19b",
+      "id": "TF0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "three_mod_four_progression_nonunit",
+      "proof_bundle_node_id": 605,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every witnessed natural of the form 4k+3 differs from the unit one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0009.html?v=75fa146ac19b",
+      "id": "TF0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "three_mod_four_progression_not_two_square",
+      "proof_bundle_node_id": 606,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A witnessed three-modulo-four natural cannot have a two-square representation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF000A.html?v=75fa146ac19b",
+      "id": "TF000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "three_mod_four_good_prime_exclusive",
+      "proof_bundle_node_id": 607,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A prime equal to two or one modulo four cannot also be three modulo four."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF000B.html?v=75fa146ac19b",
+      "id": "TF000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "three_mod_four_prime_divisor_decidable",
+      "proof_bundle_node_id": 608,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every candidate and dividend, actual three-mod-four prime divisibility is constructively decidable."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF000C.html?v=75fa146ac19b",
+      "id": "TF000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "three_mod_four_prime_divisor_bounded_search",
+      "proof_bundle_node_id": 609,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Finite induction either excludes every three-mod-four prime divisor up to the supplied bound or returns an actual bounded prime-divisor witness."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF000D.html?v=75fa146ac19b",
+      "id": "TF000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "three_mod_four_prime_divisor_exists",
+      "proof_bundle_node_id": 610,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural congruent to three modulo four has an actual prime divisor congruent to three modulo four, obtained by constructive finite search and beta-coded prime factorization."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF000E.html?v=75fa146ac19b",
+      "id": "TF000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euclid_three_number_successor_balance",
+      "proof_bundle_node_id": 611,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The subtraction-free Euclid number 4d+3 satisfies the exact identity (4d+3)+1=4(d+1)."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF000F.html?v=75fa146ac19b",
+      "id": "TF000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "euclid_three_progression_prime_exists",
+      "proof_bundle_node_id": 612,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual subtraction-free Euclid number 4d+3 has a witnessed prime divisor congruent to three modulo four."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0010.html?v=75fa146ac19b",
+      "id": "TF0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "euclid_three_common_multiple_exclusion",
+      "proof_bundle_node_id": 613,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "No prime dividing a nonzero common multiple can also divide its subtraction-free Euclid number 4c−1."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0011.html?v=75fa146ac19b",
+      "id": "TF0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "euclid_three_prime_divisor_exceeds_bound",
+      "proof_bundle_node_id": 614,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every prime divisor of the exact Euclid number 4c−1 lies strictly above the bound encoded by its nonzero common multiple c."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v25",
+      "alpha_first_enrolled_version": "v23",
+      "href": "tag/TF0012.html?v=75fa146ac19b",
+      "id": "TF0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "infinitely_many_primes_three_mod_four",
+      "proof_bundle_node_id": 615,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every natural bound, construct an actual strictly larger prime with an explicit residue witness p=4k+3."
+    },
+    {
+      "global_definition": "Prime",
+      "href": "definition/PD0004.html?v=75fa146ac19b",
+      "id": "PD0004",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Prime",
+      "signature": "Prime(p)",
+      "summary": "p is nonunit and every factorization of p has a unit factor."
+    },
+    {
+      "global_definition": "Mod4Three",
+      "href": "definition/PD0012.html?v=75fa146ac19b",
+      "id": "PD0012",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Mod4Three",
+      "signature": "Mod4Three(n)",
+      "summary": "n is three modulo four by an explicit quotient."
+    },
+    {
+      "global_definition": "Dvd",
+      "href": "definition/PD0003.html?v=75fa146ac19b",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": "PrimeThreeModFourDivisor",
+      "href": "definition/ND0044.html?v=75fa146ac19b",
+      "id": "ND0044",
+      "kind": "definition",
+      "layer": 1,
+      "name": "PrimeThreeModFourDivisor",
+      "signature": "PrimeThreeModFourDivisor(n,p)",
+      "summary": "An actual prime divisor of n together with a witnessed residue p=4q+3."
+    },
+    {
+      "global_definition": "EuclidThreeNumber",
+      "href": "definition/ND0045.html?v=75fa146ac19b",
+      "id": "ND0045",
+      "kind": "definition",
+      "layer": 1,
+      "name": "EuclidThreeNumber",
+      "signature": "EuclidThreeNumber(c,n)",
+      "summary": "The subtraction-free Euclidean number n=4d+3 with positive common multiple c=S d."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=75fa146ac19b",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/PD0013.html?v=75fa146ac19b",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0028.html?v=75fa146ac19b",
+      "id": "PD0028",
+      "kind": "definition",
+      "layer": 1,
+      "name": "AllPrime",
+      "signature": "AllPrime(b,c,l)",
+      "summary": "Every decoded factor below l is prime."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0014.html?v=75fa146ac19b",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/ND0001.html?v=75fa146ac19b",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "Le",
+      "href": "definition/PD0001.html?v=75fa146ac19b",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "TF0001": {
+      "critical_root_path": [
+        "TF0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "TF0003"
+      ]
+    },
+    "TF0002": {
+      "critical_root_path": [
+        "TF0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "TF0003"
+      ]
+    },
+    "TF0003": {
+      "critical_root_path": [
+        "TF0001",
+        "TF0003"
+      ],
+      "dependencies": [
+        "TF0001",
+        "TF0002"
+      ],
+      "dependents": [
+        "TF0005"
+      ]
+    },
+    "TF0004": {
+      "critical_root_path": [
+        "TF0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "TF0006"
+      ]
+    },
+    "TF0005": {
+      "critical_root_path": [
+        "TF0001",
+        "TF0003",
+        "TF0005"
+      ],
+      "dependencies": [
+        "TF0003"
+      ],
+      "dependents": [
+        "TF0006"
+      ]
+    },
+    "TF0006": {
+      "critical_root_path": [
+        "TF0001",
+        "TF0003",
+        "TF0005",
+        "TF0006"
+      ],
+      "dependencies": [
+        "TF0004",
+        "TF0005"
+      ],
+      "dependents": [
+        "TF000D"
+      ]
+    },
+    "TF0007": {
+      "critical_root_path": [
+        "TF0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "TF000D"
+      ]
+    },
+    "TF0008": {
+      "critical_root_path": [
+        "TF0008"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "TF0009": {
+      "critical_root_path": [
+        "TF0009"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "TF000A",
+        "TF000D"
+      ]
+    },
+    "TF000A": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A"
+      ],
+      "dependencies": [
+        "TF0009"
+      ],
+      "dependents": [
+        "TF000B"
+      ]
+    },
+    "TF000B": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A",
+        "TF000B"
+      ],
+      "dependencies": [
+        "TF000A"
+      ],
+      "dependents": [
+        "TF000C"
+      ]
+    },
+    "TF000C": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A",
+        "TF000B",
+        "TF000C"
+      ],
+      "dependencies": [
+        "TF000B"
+      ],
+      "dependents": [
+        "TF000D"
+      ]
+    },
+    "TF000D": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A",
+        "TF000B",
+        "TF000C",
+        "TF000D"
+      ],
+      "dependencies": [
+        "TF0007",
+        "TF000C",
+        "TF0006",
+        "TF0009"
+      ],
+      "dependents": [
+        "TF000F"
+      ]
+    },
+    "TF000E": {
+      "critical_root_path": [
+        "TF000E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "TF0010"
+      ]
+    },
+    "TF000F": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A",
+        "TF000B",
+        "TF000C",
+        "TF000D",
+        "TF000F"
+      ],
+      "dependencies": [
+        "TF000D"
+      ],
+      "dependents": [
+        "TF0012"
+      ]
+    },
+    "TF0010": {
+      "critical_root_path": [
+        "TF000E",
+        "TF0010"
+      ],
+      "dependencies": [
+        "TF000E"
+      ],
+      "dependents": [
+        "TF0011"
+      ]
+    },
+    "TF0011": {
+      "critical_root_path": [
+        "TF000E",
+        "TF0010",
+        "TF0011"
+      ],
+      "dependencies": [
+        "TF0010"
+      ],
+      "dependents": [
+        "TF0012"
+      ]
+    },
+    "TF0012": {
+      "critical_root_path": [
+        "TF0009",
+        "TF000A",
+        "TF000B",
+        "TF000C",
+        "TF000D",
+        "TF000F",
+        "TF0012"
+      ],
+      "dependencies": [
+        "TF000F",
+        "TF0011"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "TF0006",
+    "TF000D",
+    "TF000F",
+    "TF0011",
+    "TF0012"
+  ],
+  "schema": "peano-lab-constructive-milestone-closure-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

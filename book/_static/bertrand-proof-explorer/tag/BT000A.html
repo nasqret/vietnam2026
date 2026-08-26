@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT000A — mul_one</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT000A.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT000A&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT0009.html">← one_mul</a><a href="BT000B.html">add_mul →</a></nav>
+<p class="pa-tag">BT000A</p><h1>mul_one</h1>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
+<p>One is a right identity for multiplication.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall n. n * 1 = n</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>One is a right identity for multiplication.</p><p>Direct prerequisites:
+zero_add.
+The authored body proceeds by direct introduction and elimination.</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT0000.html"><code>BT0000</code> zero_add</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0028.html"><code>BT0028</code> multiple_refl</a> <a class="pa-theorem-ref" href="BT002F.html"><code>BT002F</code> multiple_antisymm</a> <a class="pa-theorem-ref" href="BT003J.html"><code>BT003J</code> proper_factor_lt</a> <a class="pa-theorem-ref" href="BT003M.html"><code>BT003M</code> prime_divisor_eq_one_or_self</a> <a class="pa-theorem-ref" href="BT004F.html"><code>BT004F</code> binary_crt</a> <a class="pa-theorem-ref" href="BT009X.html"><code>BT009X</code> pow_add</a> <a class="pa-theorem-ref" href="BT00PW.html"><code>BT00PW</code> le_mul_of_one_le_right</a> <a class="pa-theorem-ref" href="BT00QE.html"><code>BT00QE</code> succ_le_mul_of_two_le_right</a> <a class="pa-theorem-ref" href="BT00QU.html"><code>BT00QU</code> two_mul_eq_add_self</a> <a class="pa-theorem-ref" href="BT00QV.html"><code>BT00QV</code> pow_mul_base</a> <a class="pa-theorem-ref" href="BT00TX.html"><code>BT00TX</code> choose_factorial_bridge</a> <a class="pa-theorem-ref" href="BT00UQ.html"><code>BT00UQ</code> beta_product_prefix_suffix_split</a> <a class="pa-theorem-ref" href="BT00Y8.html"><code>BT00Y8</code> division_quotient_one_of_bounds</a> <a class="pa-theorem-ref" href="BT00Y9.html"><code>BT00Y9</code> division_quotient_two_of_bounds</a> <a class="pa-theorem-ref" href="BT00YA.html"><code>BT00YA</code> prime_square_tail_of_two_three_range</a> <a class="pa-theorem-ref" href="BT0104.html"><code>BT0104</code> prime_contribution_reverse_divides</a> <a class="pa-theorem-ref" href="BT010U.html"><code>BT010U</code> beta_product_all_one_exact</a> <a class="pa-theorem-ref" href="BT0113.html"><code>BT0113</code> central_binom_factorization_small</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="9ddb9fb3cc241e56"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="simp" data-line-id="d66709daecd162fb"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">simp</span> [<a class="pa-theorem-ref" href="BT0000.html">zero_add</a>]</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>10</dd>
+<dt>Layer</dt><dd>1</dd><dt>Lines</dt><dd>2</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>1c5292d92762aae47f3833dd3c85aa1275122554525aae695a40d1380c74c24e</code></dd>
+<dt>Script SHA-256</dt><dd><code>b43d8686fed6d197e22cd56941d120910ab15607d792f83f6b7239e00053331b</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>

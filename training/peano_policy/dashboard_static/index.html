@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark">
+  <title>Peano Lab · Training Observatory</title>
+  <meta name="description" content="A read-only live observatory for Peano Lab Qwen policy training on WMI.">
+  <link rel="stylesheet" href="/dashboard.css">
+</head>
+<body>
+  <a class="skip-link" href="#dashboard-main">Skip to training status</a>
+  <header class="site-header">
+    <div class="brand">
+      <div class="brand-glyph" aria-hidden="true">ℕ</div>
+      <div>
+        <p class="eyebrow">Peano Lab</p>
+        <h1>Training Observatory</h1>
+      </div>
+    </div>
+    <div class="header-actions">
+      <div class="connection-pill" id="connection-pill" role="status" aria-live="polite">
+        <span class="status-dot is-connecting" id="connection-dot" aria-hidden="true"></span>
+        <span id="connection-label">Connecting to WMI…</span>
+      </div>
+      <button class="icon-button" id="refresh-button" type="button" aria-label="Refresh training status">
+        <span aria-hidden="true">↻</span><span>Refresh</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="dashboard-main" class="dashboard-shell">
+    <section class="hero panel" aria-labelledby="run-title">
+      <div class="hero-copy">
+        <div class="run-kicker">
+          <span class="model-chip" id="model-chip">Awaiting model identity</span>
+          <span class="phase-chip" id="phase-chip">initializing</span>
+        </div>
+        <h2 id="run-title">Kernel-guided PA policy training</h2>
+        <p id="run-subtitle">Read-only run observation · independent kernel evaluation follows admitted training</p>
+      </div>
+      <div class="hero-meta" aria-label="Scheduler identity">
+        <span>job <strong id="job-id">—</strong></span>
+        <span>node / reason <strong id="job-node">—</strong></span>
+        <span id="job-state">UNKNOWN</span>
+      </div>
+      <div class="progress-head">
+        <div>
+          <span class="progress-number" id="progress-number">— / —</span>
+          <span class="progress-percent" id="progress-percent">awaiting</span>
+        </div>
+        <span class="progress-caption" id="progress-caption">Waiting for the first optimizer boundary</span>
+      </div>
+      <progress id="optimizer-progress" max="1" value="0" aria-label="Optimizer progress">awaiting</progress>
+      <div class="phase-rail" aria-label="Run phases">
+        <div class="phase-step is-active" data-phase="optimizer"><span>1</span><strong>Optimize</strong><small>audited schedule</small></div>
+        <div class="phase-step" data-phase="save"><span>2</span><strong>Save</strong><small>adapter + tokenizer</small></div>
+        <div class="phase-step" data-phase="evaluation"><span>3</span><strong>Evaluate</strong><small>sealed rows</small></div>
+        <div class="phase-step" data-phase="verification"><span>4</span><strong>Verify</strong><small>manifest + reload</small></div>
+      </div>
+    </section>
+
+    <section class="metric-grid" aria-label="Live training metrics">
+      <article class="metric-card panel">
+        <span class="metric-label">Latest training loss</span>
+        <strong class="metric-value" id="metric-loss">awaiting</strong>
+        <span class="metric-detail" id="metric-loss-detail">Production-loss evidence has not loaded yet</span>
+      </article>
+      <article class="metric-card panel">
+        <span class="metric-label">Optimizer step time</span>
+        <strong class="metric-value" id="metric-step-time">—</strong>
+        <span class="metric-detail">rolling tqdm estimate</span>
+      </article>
+      <article class="metric-card panel">
+        <span class="metric-label">Optimizer ETA</span>
+        <strong class="metric-value" id="metric-eta">—</strong>
+        <span class="metric-detail" id="metric-eta-detail">evaluation follows</span>
+      </article>
+      <article class="metric-card panel">
+        <span class="metric-label">Learning rate</span>
+        <strong class="metric-value" id="metric-lr">awaiting</strong>
+        <span class="metric-detail">reported with loss records</span>
+      </article>
+      <article class="metric-card panel">
+        <span class="metric-label">Recovery evidence</span>
+        <strong class="metric-value" id="metric-snapshots">awaiting</strong>
+        <span class="metric-detail" id="metric-snapshot-detail">recovery plan not loaded</span>
+      </article>
+    </section>
+
+    <section class="analysis-grid">
+      <article class="chart-card panel" aria-labelledby="loss-chart-title">
+        <div class="panel-heading">
+          <div>
+            <p class="eyebrow">Optimization</p>
+            <h2 id="loss-chart-title">Training loss</h2>
+          </div>
+          <span class="chart-legend"><span aria-hidden="true"></span>completion-only loss</span>
+        </div>
+        <div class="chart-wrap">
+          <svg id="loss-chart" viewBox="0 0 760 260" role="img" aria-labelledby="loss-chart-title loss-chart-description"></svg>
+          <p class="chart-empty" id="chart-empty">No exact production-loss records are available yet. The chart will backfill when evidence arrives.</p>
+        </div>
+        <p id="loss-chart-description" class="panel-note">The current one-shot trainer writes exact loss history into its terminal evidence. No value is inferred from progress.</p>
+        <details class="data-table-wrap">
+          <summary>Accessible loss data</summary>
+          <table>
+            <thead><tr><th scope="col">Step</th><th scope="col">Loss</th><th scope="col">Learning rate</th></tr></thead>
+            <tbody id="loss-table-body"></tbody>
+          </table>
+        </details>
+      </article>
+
+      <aside class="identity-card panel" aria-labelledby="identity-title">
+        <div class="panel-heading">
+          <div><p class="eyebrow" id="identity-eyebrow">Run evidence</p><h2 id="identity-title">Run identity</h2></div>
+          <span class="seal-mark" id="seal-mark" title="Awaiting run identity data">awaiting</span>
+        </div>
+        <dl class="fact-list">
+          <div><dt>Model</dt><dd id="fact-model">awaiting identity</dd></div>
+          <div><dt>Adapter</dt><dd id="fact-adapter">awaiting configuration</dd></div>
+          <div><dt>Hardware</dt><dd id="fact-hardware">awaiting allocation</dd></div>
+          <div><dt>GPU load</dt><dd id="fact-gpu-load">awaiting telemetry</dd></div>
+          <div><dt>Runtime</dt><dd id="fact-runtime">—</dd></div>
+          <div><dt>Examples</dt><dd id="fact-examples">awaiting schedule</dd></div>
+          <div><dt>Train tokens</dt><dd id="fact-tokens">—</dd></div>
+          <div><dt>Accumulation</dt><dd id="fact-accumulation">—</dd></div>
+          <div><dt>Preparation</dt><dd id="fact-preparation">—</dd></div>
+          <div><dt>Source</dt><dd><code id="fact-source">—</code></dd></div>
+        </dl>
+        <div class="trust-note">
+          <strong>Soundness boundary</strong>
+          <p>The model proposes tactics. Only independently kernel-checked proofs count as solved.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="detail-grid">
+      <article class="sample-card panel" aria-labelledby="sample-title">
+        <div class="panel-heading">
+          <div><p class="eyebrow" id="sample-eyebrow">Corpus evidence</p><h2 id="sample-title">What the model sees</h2></div>
+          <div class="sample-nav" aria-label="Corpus sample controls">
+            <button id="sample-previous" class="small-button" type="button" aria-label="Previous corpus example" disabled>←</button>
+            <span id="sample-position">0 / 0</span>
+            <button id="sample-next" class="small-button" type="button" aria-label="Next corpus example" disabled>→</button>
+          </div>
+        </div>
+        <p class="panel-note" id="sample-note">Representative reported examples—not the exact shuffled microbatch. Accumulation details will appear with the run schedule.</p>
+        <div class="sample-meta">
+          <span id="sample-theorem">Waiting for corpus preview…</span>
+          <span id="sample-family">—</span>
+        </div>
+        <div class="proof-surface">
+          <div><span class="surface-label">Statement</span><code id="sample-formula">—</code></div>
+          <div><span class="surface-label">Focused state</span><pre id="sample-state">—</pre></div>
+          <div><span class="surface-label">Available library preview</span><ul id="sample-library"><li>—</li></ul></div>
+        </div>
+        <button id="reveal-target" class="target-button" type="button" aria-expanded="false" aria-controls="target-answer" disabled>Reveal supervised next tactic</button>
+        <div class="target-answer" id="target-answer" hidden><span>Target</span><code id="sample-completion">—</code></div>
+      </article>
+
+      <aside class="recovery-card panel" aria-labelledby="recovery-title">
+        <div class="panel-heading">
+          <div><p class="eyebrow">Durable partial evidence</p><h2 id="recovery-title">Recovery timeline</h2></div>
+        </div>
+        <ol class="snapshot-list" id="snapshot-list"><li><span>—</span><strong>awaiting schedule</strong></li></ol>
+        <div class="recovery-explainer">
+          <strong>Adapter-only, intentionally non-resumable</strong>
+          <p>Snapshots preserve useful LoRA weights after interruption. They contain no optimizer state and are not final trained models.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="log-card panel" aria-labelledby="log-title">
+      <div class="panel-heading log-heading">
+        <div><p class="eyebrow">Direct WMI read</p><h2 id="log-title">Live Slurm log</h2></div>
+        <div class="log-actions">
+          <div class="segmented" role="group" aria-label="Log stream">
+            <button type="button" class="is-selected" data-log-stream="combined" aria-pressed="true">Both (grouped)</button>
+            <button type="button" data-log-stream="stderr" aria-pressed="false">Progress</button>
+            <button type="button" data-log-stream="stdout" aria-pressed="false">Events</button>
+          </div>
+          <button class="small-button text-button" id="pause-log" type="button" aria-pressed="false">Pause scroll</button>
+          <button class="small-button text-button" id="copy-log" type="button">Copy</button>
+        </div>
+      </div>
+      <pre id="live-log" tabindex="0" aria-label="Recent WMI training log lines">Connecting to the read-only WMI collector…</pre>
+    </section>
+
+    <footer class="dashboard-footer">
+      <span id="freshness-label">No snapshot received yet</span>
+      <span>Local read-only view · SSH stays in the Python collector</span>
+    </footer>
+  </main>
+
+  <script src="/dashboard.js" defer></script>
+</body>
+</html>

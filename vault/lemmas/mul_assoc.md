@@ -1,0 +1,68 @@
+---
+title: "Lemma: mul_assoc"
+tags: [peano-arithmetic, checked-lemma, dependency-dag]
+---
+
+# `mul_assoc`
+
+Multiplication is associative.
+
+## Closed Peano statement
+
+```text
+forall n m k. (n * m) * k = n * (m * k)
+```
+
+## Dependencies
+
+- [[mul_add]]
+
+## Checked dependents
+
+- [[multiple_mul_right]]
+- [[multiple_trans]]
+- [[multiple_antisymm]]
+- [[divides_remainder]]
+- [[divides_linear_step]]
+- [[balanced_bezout_euclid_step]]
+- [[balanced_combination_scale_right]]
+- [[common_divisor_divides_balanced_result]]
+- [[mod_eq_mul_right]]
+- [[square_decomp]]
+- [[binary_crt]]
+- [[mod_eq_of_mod_eq_multiple]]
+- [[fourth_power_regroup]]
+- [[mod5_square_residue_one]]
+- [[mod5_square_residue_two]]
+- [[mod5_fourth_power_residue_one]]
+- [[mod5_fourth_power_residue_two]]
+- [[mod5_fourth_power_residue_three]]
+- [[mod5_fourth_power_residue_four]]
+- [[mod5_fourth_power_one]]
+- [[even_mul_left]]
+- [[mul_double_right]]
+- [[four_mul_eq_double_double]]
+- [[coprime_mod_inverse]]
+- [[mod_eq_cancel_coprime]]
+- [[pow_add]]
+- [[beta_product_replace_balance]]
+- [[bounded_mod_inverse_unique]]
+- [[coprime_product_is_lcm]]
+- [[is_lcm_scale_nonzero]]
+- [[balanced_bezout_cancel_gcd]]
+- [[gcd_lcm_compatible_exists]]
+- [[mod_eq_scale]]
+- [[is_gcd_quotients_coprime_nonzero]]
+
+## Verification record
+
+- Independently checked from the empty context.
+- Certificate: **116 nodes**, depth **17**.
+- Authored script length: **5 commands**.
+- Runtime card: `pa lib mul_assoc`.
+- Book route: *The dependency ladder* in the foundational arithmetic part.
+
+## Related
+
+[[arithmetic-library-moc]] · [[theorem-ladder]] · [[proof-certificate]] ·
+[[checked-theorem-reuse]]

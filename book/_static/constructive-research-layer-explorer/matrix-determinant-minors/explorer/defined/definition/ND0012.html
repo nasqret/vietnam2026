@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0012 — MatrixAffineSlice(b,c,s,d,u,v,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="matrix-determinant-minors"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
+       <a href="../graph.html?v=75fa146ac19b">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=MatrixAffineSlice&amp;v=75fa146ac19b">Global definition: MatrixAffineSlice</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=75fa146ac19b">T13 milestone</a></nav>
+  <p class="pd-tag">ND0012</p><h1>MatrixAffineSlice(b,c,s,d,u,v,l)</h1>
+  <p>A complete beta-coded affine matrix slice whose exact target entry at i equals the source entry at s+d*i.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Hygienic expanded first-order definition</h2>
+    <pre><code>forall ff_index_mcp_advanced ff_source_mcp_advanced ff_target_mcp_advanced. (exists mcp_gap_advanced_bound. mcp_gap_advanced_bound + S (ff_index_mcp_advanced) = (l)) -&gt; (((exists fs_h_mcp_advanced_source. fs_h_mcp_advanced_source + S (ff_source_mcp_advanced) = S ((S ((s) + (d) * ff_index_mcp_advanced)) * c)) /\ exists fs_q_mcp_advanced_source. b = fs_q_mcp_advanced_source * S ((S ((s) + (d) * ff_index_mcp_advanced)) * c) + (ff_source_mcp_advanced))) -&gt; (((exists fs_h_mcp_advanced_target. fs_h_mcp_advanced_target + S (ff_target_mcp_advanced) = S ((S (ff_index_mcp_advanced)) * v)) /\ exists fs_q_mcp_advanced_target. u = fs_q_mcp_advanced_target * S ((S (ff_index_mcp_advanced)) * v) + (ff_target_mcp_advanced))) -&gt; ff_target_mcp_advanced = ff_source_mcp_advanced</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0001.html?v=75fa146ac19b">Beta(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=75fa146ac19b">Lt(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0013.html?v=75fa146ac19b">MatrixProductCell(lb,lc,rb,rc,w,v,i,j,n)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><span class="pd-empty">none directly; see definition consumers</span></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>7</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0012.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>dd3ea73d282ff3f1db0ec767711aa056d173afbf60a105e8fcdd8f8041f0fbfb</code></dd>
+</dl></aside></main></body>
+</html>

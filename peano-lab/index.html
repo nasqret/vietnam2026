@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peano Lab — sound arithmetic proofs in the browser · VIASM 2026</title>
+  <meta name="description" content="A lightweight, readable theorem prover for Peano arithmetic: a small trusted kernel, interactive tactics, induction, automation, and kernel-checked QEDs, all running locally in your browser.">
+  <link rel="stylesheet" href="vendor/v-85fb3352e49c/fonts/fonts.css">
+  <link rel="stylesheet" href="vendor/v-85fb3352e49c/xterm/xterm.css">
+  <style>
+    :root{--bg:#07131b;--panel:#0e202b;--terminal:#061016;--border:#214052;--cyan:#38bdf8;--cyan-2:#7dd3fc;--emerald:#34d399;--amber:#fbbf24;--text:#e6f1f5;--muted:#94aebd;--danger:#fca5a5;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Inter',system-ui,sans-serif;background:radial-gradient(1000px 520px at 85% -10%,#123f4f 0%,transparent 58%),linear-gradient(160deg,#07131b 0%,#0b1d29 100%);color:var(--text);min-height:100vh;display:flex;flex-direction:column;}
+    a{color:var(--cyan);text-decoration:none;}a:hover{text-decoration:underline;}a:focus-visible,.qbtn:focus-visible,.stopbtn:focus-visible,.paste-dialog button:focus-visible,.paste-dialog textarea:focus-visible{outline:3px solid var(--cyan-2);outline-offset:3px;}
+    header{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding:1rem 1.4rem;border-bottom:1px solid var(--border);}
+    .brand{display:flex;align-items:center;gap:.7rem}.brand .glyph{font-family:'JetBrains Mono',monospace;font-weight:700;font-size:1.25rem;color:#06202a;background:var(--cyan);width:2.45rem;height:2.45rem;border-radius:9px;display:grid;place-items:center}.brand h1{font-size:1.05rem;font-weight:700}.brand .sub{font-size:.75rem;color:var(--muted)}
+    header nav{display:flex;gap:1.2rem;font-size:.85rem;font-weight:600;align-items:center}.main{flex:1;display:flex;flex-direction:column;max-width:1180px;width:100%;margin:0 auto;padding:1.2rem 1.4rem 2rem;}
+    .statusrow{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.7rem}.status{font-size:.82rem;color:var(--muted);display:flex;align-items:center;gap:.6rem;min-height:1.3rem}.spinner{width:.8rem;height:.8rem;border:2px solid var(--border);border-top-color:var(--cyan);border-radius:50%;animation:spin .8s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.dot-ok{width:.6rem;height:.6rem;border-radius:50%;background:var(--emerald);box-shadow:0 0 8px var(--emerald)}.fail{color:var(--danger)}
+    .stopbtn{font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;color:#2a0d0d;background:var(--amber);border:none;border-radius:7px;padding:.35rem .8rem;cursor:pointer;transition:opacity .12s}.stopbtn:disabled{opacity:.35;cursor:not-allowed}.stopbtn:hover:not(:disabled){filter:brightness(1.08)}
+    #term-wrap{background:var(--terminal);border:1px solid var(--border);border-radius:12px;padding:.8rem;box-shadow:0 10px 40px rgba(0,0,0,.45);min-height:63vh}.term-bar{display:flex;gap:.45rem;padding:.1rem .3rem .7rem}.term-bar span{width:.7rem;height:.7rem;border-radius:50%}.b-r{background:#ff5f57}.b-y{background:#febc2e}.b-g{background:#28c840}#terminal{width:100%;height:61vh;}
+    .proof-map{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem;margin-top:.85rem}.proof-card{background:rgba(14,32,43,.72);border:1px solid var(--border);border-radius:9px;padding:.65rem .75rem;min-height:4rem}.proof-card strong{display:block;font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.04em;color:var(--cyan-2);margin-bottom:.25rem}.proof-card span{display:block;font-size:.76rem;color:var(--muted);line-height:1.4}
+    .quick{margin-top:1rem;display:flex;flex-direction:column;gap:.55rem}.quick-row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}.quick .lbl{font-size:.76rem;color:var(--muted);width:4.7rem;flex:0 0 auto}.qbtn{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--cyan-2);background:rgba(56,189,248,.08);border:1px solid rgba(56,189,248,.3);border-radius:7px;padding:.34rem .62rem;cursor:pointer;transition:background .12s,transform .12s}.qbtn:hover:not(:disabled){background:rgba(56,189,248,.18);transform:translateY(-1px)}.qbtn:disabled{cursor:not-allowed;opacity:.48}
+    .paste-dialog{width:min(52rem,calc(100vw - 2rem));max-height:calc(100vh - 2rem);margin:auto;color:var(--text);background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:0;box-shadow:0 18px 70px rgba(0,0,0,.65)}.paste-dialog::backdrop{background:rgba(2,8,12,.78)}.paste-form{display:flex;flex-direction:column;gap:.8rem;padding:1rem}.paste-form h2{font-size:1rem;color:var(--cyan-2)}.paste-form p{font-size:.8rem;line-height:1.5;color:var(--muted)}.paste-form label{font-size:.8rem;font-weight:700;color:var(--text)}.paste-form textarea{width:100%;min-height:18rem;resize:vertical;font-family:'JetBrains Mono',monospace;font-size:.8rem;line-height:1.45;color:var(--text);background:var(--terminal);border:1px solid var(--border);border-radius:8px;padding:.75rem}.paste-actions{display:flex;justify-content:flex-end;gap:.55rem}.paste-actions button{font-family:'Inter',sans-serif;font-size:.8rem;font-weight:700;border-radius:7px;padding:.42rem .8rem;cursor:pointer}.paste-cancel{color:var(--text);background:transparent;border:1px solid var(--border)}.paste-run{color:#05202b;background:var(--cyan);border:1px solid var(--cyan)}.paste-error{min-height:1.2rem;color:var(--danger)!important}
+    .info{margin-top:1.35rem;font-size:.84rem;color:var(--muted);line-height:1.65;max-width:88ch}.info code{font-family:'JetBrains Mono',monospace;background:var(--terminal);border:1px solid var(--border);border-radius:5px;padding:.05rem .35rem;color:var(--cyan-2);font-size:.85em}.law{color:var(--text);font-weight:700}
+    footer{border-top:1px solid var(--border);padding:1rem 1.4rem;font-size:.78rem;color:var(--muted);text-align:center}.noscript{padding:1rem;color:var(--danger);text-align:center}
+    @media(max-width:760px){#terminal{height:55vh}.proof-map{grid-template-columns:1fr}.quick .lbl{width:100%}.brand .sub{display:none}}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand"><div class="glyph" aria-hidden="true">ℕ</div><div><h1>Peano Lab</h1><div class="sub">sound arithmetic proofs · no install · self-hosted</div></div></div>
+    <nav aria-label="Course and research navigation"><a href="/vietnam2026/">← Course</a><a href="/vietnam2026/book/peano/index.html">Read the chapter</a><a href="/proofs/?v=75fa146ac19b">Proof library</a><a href="/proofs/grand-campaign/?v=75fa146ac19b">Research atlas</a><a href="https://github.com/nasqret/vietnam2026/tree/agent/new-theorems-tranche-01/peano-lab" target="_blank" rel="noopener">Source</a></nav>
+  </header>
+  <noscript><p class="noscript">Peano Lab needs JavaScript to load the local Python runtime.</p></noscript>
+  <main class="main">
+    <div class="statusrow">
+      <div class="status" id="status" role="status" aria-live="polite"><span class="spinner" aria-hidden="true"></span><span>starting…</span></div>
+      <button class="stopbtn" id="stop" type="button" disabled aria-label="Stop the running proof command" aria-keyshortcuts="Escape Control+C">■ Stop</button>
+    </div>
+    <div id="term-wrap">
+      <div class="term-bar" aria-hidden="true"><span class="b-r"></span><span class="b-y"></span><span class="b-g"></span></div>
+      <div id="terminal" role="application" aria-label="Peano Lab proof terminal" aria-describedby="terminal-help"></div>
+    </div>
+    <section class="proof-map" aria-label="How to read an interactive proof state">
+      <div class="proof-card"><strong>GOALS</strong><span>The focused obligation comes first; every remaining goal must also be closed.</span></div>
+      <div class="proof-card"><strong>CONTEXT</strong><span>Variables and hypotheses available to the focused goal, newest first.</span></div>
+      <div class="proof-card"><strong>CERTIFICATE</strong><span>Tactics fill a proof term; <code>qed</code> asks the independent kernel to check it.</span></div>
+    </section>
+    <div class="quick" id="quick" aria-label="Example Peano Lab commands">
+      <div class="quick-row"><span class="lbl">start:</span>
+        <button class="qbtn" type="button" data-cmd="pa help" disabled>pa help</button>
+        <button class="qbtn" type="button" data-cmd="pa axioms" disabled>pa axioms</button>
+        <button class="qbtn" type="button" data-cmd="pa tactic induction" disabled>tactic induction</button>
+        <button class="qbtn" type="button" data-cmd="pa kb de-bruijn-criterion" disabled>KB: trusted kernel</button>
+        <button class="qbtn" type="button" data-cmd="pa tutorial add_comm" disabled>tutorial add_comm</button>
+        <button class="qbtn" type="button" data-cmd="pa tutorial norm_num" disabled>tutorial norm_num</button>
+        <button class="qbtn" type="button" data-cmd="pa lib mul_eq_zero" disabled>library capstone</button>
+        <button class="qbtn" type="button" data-cmd="pa lean add_comm" disabled>Lean: add_comm</button>
+        <button class="qbtn" type="button" data-cmd="pa eval 2 + 3" disabled>eval 2 + 3</button>
+        <button class="qbtn" type="button" data-cmd="pa simp S(S(0)) + 0" disabled>simp 2 + 0</button>
+      </div>
+      <div class="quick-row"><span class="lbl">prove:</span>
+        <button class="qbtn" type="button" data-cmd="pa prove 2 * 3 = 6" disabled>2 · 3 = 6</button>
+        <button class="qbtn" type="button" data-cmd="pa prove forall n. 0 + n = n" disabled>0 + n = n</button>
+        <button class="qbtn" type="button" data-cmd="pa prove forall n m. S(n) + m = S(n + m)" disabled>add_succ_left</button>
+        <button class="qbtn" type="button" data-cmd="pa prove forall n m. n + m = m + n" disabled>add_comm</button>
+        <button class="qbtn" type="button" data-cmd="pa prove forall n. n &lt;= n" disabled>le_refl</button>
+        <button class="qbtn" id="paste-proof" type="button" disabled>paste multiline proof</button>
+        <button class="qbtn" type="button" data-cmd="clear" disabled>clear</button>
+      </div>
+      <div class="quick-row"><span class="lbl">research:</span>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha" disabled>Alpha: 2,080 proofs</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha signed_matrix_cofactor_family_and_fold_exists" disabled>cofactor expansions</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha beta_horner_hensel_lift_exists" disabled>one-step Hensel lifts</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha crt_merge_compatible_prefix_canonical_exists_unique" disabled>noncoprime Chinese remainders</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha beta_signed_matrix_minor_exists" disabled>signed matrix minors</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha beta_horner_derivative_exists_unique" disabled>polynomial derivatives</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha crt_pairwise_coprime_prefix_canonical_exists_unique" disabled>finite Chinese remainders</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha infinitely_many_primes_one_mod_four" disabled>primes 1 mod 4</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha infinitely_many_primes_three_mod_four" disabled>primes 3 mod 4</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha euclidean_gcd_execution_logarithmic_bound" disabled>logarithmic Euclid</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha binary_modular_execution_logarithmic_bound" disabled>binary modular execution</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha linear_congruence_solvable_iff_gcd_divides" disabled>linear congruences</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha prime_is_two_squares_iff_two_or_one_mod_four" disabled>prime two squares</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha beta_horner_eval_exists" disabled>polynomial Horner</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha beta_dot_product_exists_unique" disabled>finite matrix dot product</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha central_binom_prime_divisor_multiplicity_one_exists" disabled>binomial prime windows</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha iterated_bertrand_prime_chain_exists" disabled>Bertrand prime chains</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha continued_fraction_positive_exists" disabled>continued fractions</button>
+      </div>
+    </div>
+    <dialog class="paste-dialog" id="paste-proof-dialog" aria-labelledby="paste-proof-title">
+      <form class="paste-form" method="dialog">
+        <h2 id="paste-proof-title">Paste a complete Peano Lab proof</h2>
+        <p>Paste one command per line, beginning with <code>pa prove …</code> and ending with <code>qed</code>. Blank lines are ignored. Commands run in order and stop at the first failed line; the successful prefix remains available to inspect or undo.</p>
+        <label for="paste-proof-input">Complete proof script</label>
+        <textarea id="paste-proof-input" maxlength="100000" spellcheck="false" autocomplete="off" aria-describedby="paste-proof-rules paste-proof-error" placeholder="pa prove forall n. n = n&#10;intro n&#10;refl&#10;qed"></textarea>
+        <p id="paste-proof-rules">Limit: 256 nonblank commands, 100,000 characters total, and 8,192 characters per command. Pasting never authorizes a file download.</p>
+        <p class="paste-error" id="paste-proof-error" role="alert" aria-live="polite"></p>
+        <div class="paste-actions"><button class="paste-cancel" value="cancel">Cancel</button><button class="paste-run" id="run-pasted-proof" type="button">Run proof</button></div>
+      </form>
+    </dialog>
+    <p class="info" id="terminal-help">The complete prover runs locally in a <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API" target="_blank" rel="noopener">Web Worker</a>, using a self-hosted Python runtime, so a long search never freezes this page and <strong>Stop</strong> can terminate it. Every executable asset is served from this site (no CDN), and commands are not sent elsewhere; a <code>?cmd=</code> deep link is part of the URL and can appear in server logs. The <span class="law">tactic layer is never trusted</span>: every <code>qed</code> checks the finished certificate against the original theorem in the small kernel. Paste a complete multiline proof directly at an empty prompt or use <strong>paste multiline proof</strong>. <code>script</code> previews the current replay; type <code>script download</code> directly to save it. <code>↑/↓</code> history · <code>TAB</code> completion.</p>
+  </main>
+  <footer>Peano Lab · VIASM mini-course “An Introduction to Automatic Theorem Proving in Mathematics”, Hanoi 2026 · © Bartosz Naskręcki · <a href="/vietnam2026/">course home</a></footer>
+  <script src="vendor/v-85fb3352e49c/xterm/xterm.js"></script>
+  <script src="vendor/v-85fb3352e49c/xterm/addon-fit.js"></script>
+  <script src="vendor/v-85fb3352e49c/xterm/addon-web-links.js"></script>
+  <script src="vendor/v-85fb3352e49c/xterm/addon-unicode11.js"></script>
+  <script>
+  (function(){
+    "use strict";
+    const BUILD="2026-08-26e";
+    const APP_ROOT="releases/a-a4f746a1cd35/";
+    const MAX_INPUT=8192;
+    const MAX_PASTE_CHARS=100000;
+    const MAX_PASTE_LINES=256;
+    const MAX_SCRIPT_DOWNLOAD=500000;
+    const PROMPT="\x1b[96mpa>\x1b[0m ";
+    const HISTORY_KEY="peanoLabHistory";
+    const statusEl=document.getElementById("status");
+    const quickEl=document.getElementById("quick");
+    const stopBtn=document.getElementById("stop");
+    const pasteBtn=document.getElementById("paste-proof");
+    const pasteDialog=document.getElementById("paste-proof-dialog");
+    const pasteInput=document.getElementById("paste-proof-input");
+    const pasteError=document.getElementById("paste-proof-error");
+    const runPasteBtn=document.getElementById("run-pasted-proof");
+
+    function setQuickEnabled(on){quickEl.querySelectorAll("button").forEach(function(button){button.disabled=!on;});}
+    function setStop(on){stopBtn.disabled=!on;}
+    function setStatus(kind,message){
+      statusEl.replaceChildren();
+      const marker=document.createElement("span");marker.setAttribute("aria-hidden","true");
+      if(kind==="loading")marker.className="spinner";
+      else if(kind==="ready")marker.className="dot-ok";
+      else{marker.className="fail";marker.textContent="✗";}
+      const label=document.createElement("span");if(kind==="fail")label.className="fail";label.textContent=message;
+      statusEl.append(marker,label);
+    }
+    if(!window.Terminal||!window.Worker){setStatus("fail","failed to start: this browser lacks Web Worker or terminal support");return;}
+
+    const term=new Terminal({fontFamily:"'JetBrains Mono', monospace",fontSize:14,lineHeight:1.08,cursorBlink:true,convertEol:false,scrollback:5000,screenReaderMode:true,theme:{background:"#061016",foreground:"#e6f1f5",cursor:"#38bdf8",selectionBackground:"#16465a",black:"#061016",red:"#fca5a5",green:"#6ee7b7",yellow:"#fcd34d",blue:"#7dd3fc",magenta:"#c4b5fd",cyan:"#67e8f9",white:"#e6f1f5",brightBlack:"#668393",brightRed:"#f87171",brightGreen:"#34d399",brightYellow:"#fbbf24",brightBlue:"#38bdf8",brightMagenta:"#a78bfa",brightCyan:"#22d3ee",brightWhite:"#f8fafc"}});
+    term.open(document.getElementById("terminal"));
+    let fitAddon=null;try{if(window.FitAddon){fitAddon=new FitAddon.FitAddon();term.loadAddon(fitAddon);fitAddon.fit();}}catch(_error){}
+    try{if(window.WebLinksAddon)term.loadAddon(new WebLinksAddon.WebLinksAddon());}catch(_error){}
+    try{if(window.Unicode11Addon){term.loadAddon(new Unicode11Addon.Unicode11Addon());term.unicode.activeVersion="11";}}catch(_error){}
+    window.addEventListener("resize",function(){try{if(fitAddon)fitAddon.fit();}catch(_error){}});
+    if(term.element){
+      term.element.addEventListener("paste",handleTerminalPaste,true);
+    }
+
+    function loadHistory(){try{const value=JSON.parse(localStorage.getItem(HISTORY_KEY)||"[]");if(Array.isArray(value))return value.filter(function(item){return typeof item==="string";}).map(sanitizeCommand).slice(-200);}catch(_error){}return [];}
+    function saveHistory(){try{localStorage.setItem(HISTORY_KEY,JSON.stringify(history.slice(-200)));}catch(_error){}}
+
+    let buffer="",cursor=0,history=loadHistory(),historyIndex=history.length,busy=true;
+    const COMMANDS=["abort","about","axioms","classical","clear","cls","compact_arith?","eval","help","hint","kb","lib","pa","prove","qed","script","simp","tactic","tutorial","undo"];
+    const PA_SUBCOMMANDS=["axioms","eval","help","kb","lean","lib","prove","simp","tactic","tutorial"];
+    const TACTICS=["all_goals","apply","assumption","auto","cases","compact_arith","congr","exact","exfalso","exists","first","focus","forall_elim","have","induction","intro","left","norm_num","refl","repeat","rewrite","right","ring","simp","specialize","split","suffices","symm","trans","use"];
+    const ROOT_COMPLETIONS=Array.from(new Set(COMMANDS.concat(TACTICS)));
+    function completionCandidates(prefix){
+      const words=prefix.trimStart().split(/\s+/);
+      if(words.length<=1)return ROOT_COMPLETIONS;
+      if(words[0].toLowerCase()==="pa"&&words.length===2)return PA_SUBCOMMANDS;
+      if((words[0].toLowerCase()==="tactic")||(words[0].toLowerCase()==="pa"&&words[1]&&words[1].toLowerCase()==="tactic"))return TACTICS;
+      return [];
+    }
+    function complete(){
+      const upto=buffer.slice(0,cursor);const token=(upto.match(/[^\s()]*$/)||[""])[0];if(!token)return;
+      const candidates=completionCandidates(upto);const key=token.toLowerCase();const hits=candidates.filter(function(word){return word.indexOf(key)===0;});if(hits.length===0)return;
+      let suffix="";
+      if(hits.length===1)suffix=hits[0].slice(key.length)+" ";
+      else{const common=hits.reduce(function(a,b){let index=0;while(index<a.length&&a[index]===b[index])index++;return a.slice(0,index);});suffix=common.slice(key.length);}
+      if(suffix){buffer=buffer.slice(0,cursor-token.length)+token.toLowerCase()+suffix+buffer.slice(cursor);cursor+=suffix.length;redraw();}
+      else{term.write("\r\n\x1b[2m  "+hits.join("  ")+"\x1b[0m\r\n");redraw();}
+    }
+
+    let worker=null,banner="",requestId=0,generation=0,initialRan=false;const pending=new Map();
+    function writeOutput(value){if(value!==undefined&&value!==null&&String(value)!=="")term.write(String(value).replace(/\r?\n/g,"\r\n"));}
+    function prompt(){buffer="";cursor=0;historyIndex=history.length;term.write("\r\n"+PROMPT);}
+    function redraw(){term.write("\r\x1b[K"+PROMPT+buffer);const back=buffer.length-cursor;if(back>0)term.write("\x1b["+back+"D");}
+    function clearTerminal(){term.write("\x1b[2J\x1b[3J\x1b[H");writeOutput(banner);prompt();}
+    function runInWorker(line){return new Promise(function(resolve){const id=++requestId;pending.set(id,resolve);worker.postMessage({type:"run",id:id,line:line});});}
+
+    function unwrapBracketedPaste(source){
+      let text=String(source);
+      if(text.startsWith("\x1b[200~"))text=text.slice(6);
+      if(text.endsWith("\x1b[201~"))text=text.slice(0,-6);
+      return text;
+    }
+    function preparePastedProof(source){
+      if(typeof source!=="string")return {commands:[],error:"the pasted proof is not text"};
+      const unwrapped=unwrapBracketedPaste(source);
+      if(unwrapped.length>MAX_PASTE_CHARS)return {commands:[],error:"the pasted proof exceeds 100,000 characters"};
+      const normalized=unwrapped.replace(/\r\n?/g,"\n");
+      const controls=/[\p{Cc}\p{Cf}\p{Cs}\p{Zl}\p{Zp}]/u;
+      const commands=[];
+      const lines=normalized.split("\n");
+      for(let index=0;index<lines.length;index++){
+        const raw=lines[index];
+        const text=raw.trim();
+        const line=index+1;
+        if(!text)continue;
+        if(controls.test(raw))return {commands:[],error:"source line "+line+" contains an unsafe control or format character"};
+        if(text.length>MAX_INPUT)return {commands:[],error:"source line "+line+" exceeds "+MAX_INPUT.toLocaleString("en-US")+" characters"};
+        commands.push({line:line,text:text});
+        if(commands.length>MAX_PASTE_LINES)return {commands:[],error:"the pasted proof exceeds 256 nonblank commands"};
+      }
+      if(!commands.length)return {commands:[],error:"the pasted proof contains no commands"};
+      if(!commands[0].text.startsWith("pa prove "))return {commands:[],error:"source line "+commands[0].line+" must start with `pa prove `"};
+      for(let index=1;index<commands.length;index++){
+        const command=commands[index];
+        if(/^pa\s+prove(?:\s|$)/i.test(command.text))return {commands:[],error:"source line "+command.line+" starts a second proof"};
+        if(["abort","quit","exit","q","undo","?","t",":t","tactics","help","hint"].includes(command.text)||/^script(?:\s|$)/.test(command.text))return {commands:[],error:"source line "+command.line+" is an inspection, rollback, abort, or download command rather than a replay step"};
+        if(["qed","done","finish"].includes(command.text)&&index!==commands.length-1)return {commands:[],error:"source line "+command.line+" closes the proof before the final command"};
+      }
+      if(commands[commands.length-1].text!=="qed")return {commands:[],error:"source line "+commands[commands.length-1].line+" must be the final command `qed`"};
+      return {commands:commands,error:""};
+    }
+    function looksLikeMultilinePaste(data){
+      const text=unwrapBracketedPaste(data);
+      return text.length>1&&/[\r\n]/.test(text);
+    }
+    function handleTerminalPaste(event){
+      if(busy||!event.clipboardData)return;
+      const text=event.clipboardData.getData("text/plain");
+      if(!looksLikeMultilinePaste(text))return;
+      event.preventDefault();event.stopImmediatePropagation();beginPastedProof(text,false);
+    }
+    async function executePastedCommands(commands,run,observe,stillActive){
+      for(const command of commands){
+        if(!stillActive())return {completed:false,stoppedLine:command.line,interrupted:true};
+        let result;
+        try{result=await run(command);}catch(error){result={out:"\x1b[91m"+String(error)+"\x1b[0m",failed:true,download:null};}
+        if(!stillActive())return {completed:false,stoppedLine:command.line,interrupted:true};
+        if(!result||typeof result.failed!=="boolean")result={out:"\x1b[91mInvalid proof-worker response.\x1b[0m",failed:true,download:null};
+        observe(command,result);
+        if(result.failed)return {completed:false,stoppedLine:command.line,interrupted:false};
+      }
+      return {completed:true,stoppedLine:null,interrupted:false};
+    }
+
+    function validateProofDownload(text){
+      if(typeof text!=="string"||!text.endsWith("\n"))return "missing newline-terminated proof text";
+      if(text.length>MAX_SCRIPT_DOWNLOAD)return "proof text exceeds the browser download limit";
+      const body=text.slice(0,-1);if(!body||body.includes("\r"))return "proof text is not LF-only";
+      const lines=body.split("\n");if(lines.some(function(line){return !line;}))return "proof text contains a blank command";
+      if(!lines[0].startsWith("pa prove "))return "proof text does not start with `pa prove`";
+      const controls=/[\p{Cc}\p{Cf}\p{Cs}\p{Zl}\p{Zp}]/u;
+      if(lines.some(function(line){return controls.test(line);}))return "proof text contains an unsafe control or format character";
+      const qed=lines.reduce(function(found,line,index){if(line==="qed")found.push(index);return found;},[]);
+      if(qed.length>1||(qed.length===1&&qed[0]!==lines.length-1))return "`qed` must occur at most once, as the final command";
+      return "";
+    }
+    function downloadProofScript(text){
+      const invalid=validateProofDownload(text);if(invalid)return invalid;
+      const blob=new Blob([text],{type:"text/plain;charset=utf-8"});
+      if(blob.size>MAX_SCRIPT_DOWNLOAD)return "proof bytes exceed the browser download limit";
+      const url=URL.createObjectURL(blob);const link=document.createElement("a");
+      try{link.href=url;link.download="peano-lab-proof.pa";link.hidden=true;document.body.appendChild(link);link.click();}
+      finally{link.remove();setTimeout(function(){URL.revokeObjectURL(url);},0);}
+      return "";
+    }
+
+    async function submit(allowDownload){
+      const line=buffer;term.write("\r\n");const trimmed=line.trim();
+      if(trimmed){history.push(line);saveHistory();}
+      if(trimmed.toLowerCase()==="clear"||trimmed.toLowerCase()==="cls"){clearTerminal();return;}
+      busy=true;setQuickEnabled(false);setStop(true);const activeGeneration=generation;
+      let output="";let result=null;
+      try{result=await runInWorker(line);output=result&&result.out!==undefined?result.out:"";}catch(error){if(activeGeneration===generation)term.write("\x1b[91m"+String(error)+"\x1b[0m");}
+      if(activeGeneration!==generation)return;
+      if(allowDownload===true&&trimmed==="script download"&&result&&result.download!==null&&result.download!==undefined){const error=downloadProofScript(result.download);if(error)output+=(output?"\n":"")+"Download rejected: "+error+".";}
+      writeOutput(output);busy=false;setQuickEnabled(true);setStop(false);prompt();
+    }
+    function showPasteError(message,inDialog){
+      if(inDialog){pasteError.textContent=message;return;}
+      term.write("\r\n\x1b[91mPasted proof rejected: "+message+".\x1b[0m\r\n");redraw();term.focus();
+    }
+    async function runPreparedPaste(commands){
+      term.write("\r\x1b[K\x1b[2m  running pasted proof: "+commands.length+" commands (Stop/Esc/Ctrl+C interrupts)\x1b[0m\r\n");
+      buffer="";cursor=0;historyIndex=history.length;
+      busy=true;setQuickEnabled(false);setStop(true);const activeGeneration=generation;
+      term.focus();
+      setStatus("loading","running pasted proof…");
+      const outcome=await executePastedCommands(
+        commands,
+        async function(command){
+          history.push(command.text);saveHistory();historyIndex=history.length;
+          term.write(PROMPT+command.text+"\r\n");
+          return runInWorker(command.text);
+        },
+        function(command,result){
+          if(result.failed||command.text==="qed")writeOutput(result.out);else term.write("\x1b[2m  ok\x1b[0m");
+          term.write("\r\n");
+        },
+        function(){return activeGeneration===generation;}
+      );
+      if(activeGeneration!==generation||outcome.interrupted)return;
+      if(outcome.completed){
+        term.write("\x1b[92m  pasted proof complete — independent kernel QED accepted.\x1b[0m");
+        setStatus("ready","ready — pasted proof checked · build "+BUILD);
+      }else{
+        term.write("\x1b[91m  pasted proof stopped at source line "+outcome.stoppedLine+".\x1b[0m\r\n\x1b[2m  Earlier successful lines remain; inspect the goal or use undo.\x1b[0m");
+        setStatus("ready","ready — pasted proof stopped at line "+outcome.stoppedLine);
+      }
+      busy=false;setQuickEnabled(true);setStop(false);prompt();term.focus();
+    }
+    function beginPastedProof(source,inDialog){
+      if(busy){showPasteError("the proof engine is busy",inDialog);return false;}
+      const prepared=preparePastedProof(source);
+      const error=prepared.error||(buffer.length?"finish or clear the current prompt before pasting a proof":"");
+      if(error){showPasteError(error,inDialog);return false;}
+      pasteError.textContent="";
+      if(pasteDialog.open)pasteDialog.close();
+      runPreparedPaste(prepared.commands);
+      return true;
+    }
+    function openPasteDialog(){
+      if(busy)return;
+      pasteError.textContent="";pasteInput.value="";
+      if(typeof pasteDialog.showModal==="function")pasteDialog.showModal();else pasteDialog.setAttribute("open","");
+      pasteInput.focus();
+    }
+    function handlePasteInput(event){
+      if(!event.clipboardData)return;
+      const inserted=event.clipboardData.getData("text/plain");
+      const start=pasteInput.selectionStart||0;const end=pasteInput.selectionEnd||0;
+      if(pasteInput.value.length-(end-start)+inserted.length<=MAX_PASTE_CHARS)return;
+      event.preventDefault();pasteError.textContent="the pasted proof exceeds 100,000 characters";
+    }
+    function restorePasteFocus(){if(busy)term.focus();else pasteBtn.focus();}
+    function sanitizeCommand(command){
+      return String(command||"")
+        .replace(/[\x00-\x1f\x7f-\x9f]/g," ")
+        .slice(0,MAX_INPUT);
+    }
+    function injectCommand(command){if(busy||!worker)return;buffer=sanitizeCommand(command);cursor=buffer.length;redraw();submit(false);term.focus();}
+    quickEl.addEventListener("click",function(event){const button=event.target.closest(".qbtn");if(!button)return;if(button===pasteBtn){openPasteDialog();return;}injectCommand(button.getAttribute("data-cmd"));});
+    runPasteBtn.addEventListener("click",function(){beginPastedProof(pasteInput.value,true);});
+    pasteInput.addEventListener("paste",handlePasteInput);
+    pasteDialog.addEventListener("close",restorePasteFocus);
+
+    function stopWorker(){
+      if(!worker)return;
+      worker.terminate();pending.forEach(function(resolve){resolve({out:"",failed:true,download:null});});pending.clear();
+      busy=true;setQuickEnabled(false);setStop(false);
+      term.write("\r\n\x1b[93m  ^ interrupted — restarting; the in-memory proof is discarded…\x1b[0m\r\n");
+      setStatus("loading","restarting…");startWorker();
+    }
+    stopBtn.addEventListener("click",stopWorker);
+    if(term.attachCustomKeyEventHandler){
+      term.attachCustomKeyEventHandler(function(event){
+        const cancel=event.key==="Escape"||(event.ctrlKey&&event.key.toLowerCase()==="c");
+        if(busy&&cancel){stopWorker();return false;}
+        return true;
+      });
+    }
+
+    term.onData(function(data){
+      if(busy)return;
+      if(looksLikeMultilinePaste(data)){beginPastedProof(data,false);return;}
+      switch(data){
+        case "\r":submit(true);return;
+        case "\x7f":case "\b":if(cursor>0){buffer=buffer.slice(0,cursor-1)+buffer.slice(cursor);cursor--;redraw();}return;
+        case "\x1b[A":if(history.length&&historyIndex>0){historyIndex--;buffer=history[historyIndex];cursor=buffer.length;redraw();}return;
+        case "\x1b[B":if(historyIndex<history.length-1){historyIndex++;buffer=history[historyIndex];cursor=buffer.length;redraw();}else{historyIndex=history.length;buffer="";cursor=0;redraw();}return;
+        case "\x1b[C":if(cursor<buffer.length){cursor++;term.write("\x1b[C");}return;
+        case "\x1b[D":if(cursor>0){cursor--;term.write("\x1b[D");}return;
+        case "\x1b[H":case "\x1b[1~":case "\x01":cursor=0;redraw();return;
+        case "\x1b[F":case "\x1b[4~":case "\x05":cursor=buffer.length;redraw();return;
+        case "\x1b[3~":if(cursor<buffer.length){buffer=buffer.slice(0,cursor)+buffer.slice(cursor+1);redraw();}return;
+        case "\t":complete();return;
+        case "\x03":term.write("^C");prompt();return;
+        case "\x0c":clearTerminal();return;
+        default:
+          if(data.startsWith("\x1b"))return;
+          const clean=data.replace(/[\r\n]+/g," ").replace(/[\x00-\x08\x0b\x0c\x0e-\x1f\x7f-\x9f]/g,"");
+          const accepted=clean.slice(0,Math.max(0,MAX_INPUT-buffer.length));
+          if(accepted){buffer=buffer.slice(0,cursor)+accepted+buffer.slice(cursor);cursor+=accepted.length;redraw();}
+      }
+    });
+
+    function onReady(bannerText){
+      banner=bannerText||"";term.write("\x1b[2J\x1b[H");writeOutput(banner);
+      busy=false;setQuickEnabled(true);setStop(false);setStatus("ready","ready — kernel-checked PA · Web Worker · build "+BUILD);
+      prompt();term.focus();
+      const initial=new URLSearchParams(location.search).get("cmd");if(initial&&!initialRan){initialRan=true;injectCommand(initial);}
+    }
+    function startWorker(){
+      generation++;worker=new Worker(APP_ROOT+"worker.js");
+      function failWorker(message){
+        generation++;
+        if(worker){worker.terminate();worker=null;}
+        pending.forEach(function(resolve){resolve({out:"",failed:true,download:null});});pending.clear();
+        busy=true;setQuickEnabled(false);setStop(false);
+        setStatus("fail",message);
+        writeOutput("\r\n\x1b[91m  The lab stopped unexpectedly. Reload to retry.\x1b[0m\r\n");
+      }
+      worker.onmessage=function(event){
+        const message=event.data||{};
+        if(message.type==="boot"){setStatus("loading",message.msg);return;}
+        if(message.type==="ready"){onReady(message.banner);return;}
+        if(message.type==="error"){failWorker("failed to start: "+message.msg);return;}
+        if(message.type==="result"){const resolve=pending.get(message.id);if(resolve){pending.delete(message.id);resolve(message);}return;}
+      };
+      worker.onerror=function(error){failWorker("worker error: "+((error&&error.message)?error.message:"unknown"));};
+      worker.postMessage({type:"init",build:BUILD});
+    }
+
+    writeOutput("\x1b[2m  booting the Peano kernel (worker)…\x1b[0m\r\n");setStatus("loading","starting worker…");startWorker();
+  })();
+  </script>
+</body>
+</html>

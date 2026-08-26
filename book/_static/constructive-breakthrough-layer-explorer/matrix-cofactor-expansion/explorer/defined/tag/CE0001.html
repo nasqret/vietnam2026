@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CE0001 — matrix_minor_four_code_exists — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="matrix-cofactor-expansion"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
+       <a href="../../tag/CE0001.html?v=75fa146ac19b">Exact original proof</a>
+       <a href="../graph.html?target=CE0001&amp;v=75fa146ac19b">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=75fa146ac19b">T13 milestone</a></nav>
+  <p class="pd-tag">CE0001</p><h1>matrix_minor_four_code_exists</h1>
+  <p>Four arbitrary natural minor-code components have one exact nested doubled-Cantor record.</p><p class="pd-status">Alpha v25 checked-use · first admitted v25 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">T13 remains open: this proof is an independently checked finite matrix/dot-product component, not a proof of the full matrix-ring or Cayley–Hamilton milestone.</p>
+  <p class="pd-callout">T13 remains OPEN. Every genuine signed first-row minor and the unique arbitrary alternating fold of the actual matrix row are independently proved. Supplied cofactor values have not been linked to recursively evaluated minor determinants; unrestricted determinants, matrix rank and lattices are not proved.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ up. ∀ us. ∀ un. ∀ ut. ∃ z. <a class="pd-definition-ref" data-definition="ND0058" href="../definition/ND0058.html?v=75fa146ac19b">MatrixMinorFourCode(z,up,us,un,ut)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0058.html?v=75fa146ac19b">MatrixMinorFourCode(z,up,us,un,ut) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall up us un ut. exists z. z = ((((up) + (us)) * S ((up) + (us)) + ((us) + (us))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut)))) * S ((((up) + (us)) * S ((up) + (us)) + ((us) + (us))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut)))) + ((((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut))))</code></pre></details>
+  <section><h2>Complete unchanged native tactic proof</h2>
+    <p>All 6 lines are the exact independently kernel-checked original script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro up</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro us</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro un</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro ut</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>exists ((((up) + (us)) * S ((up) + (us)) + ((us) + (us))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut)))) * S ((((up) + (us)) * S ((up) + (us)) + ((us) + (us))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut)))) + ((((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut))))</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>refl</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v25 checked use</dd><dt>First admission</dt><dd>Alpha v25</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>229 / 302</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 302 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>6 / 6</dd>
+      <dt>Statement SHA-256</dt><dd><code>37c8736dcf0096cb9de3bd6f79712743f33b7d7054c507925584034b97ec5dac</code></dd>
+      <dt>Script SHA-256</dt><dd><code>eb6a77e268d1c73f34cef8f9353313125a94d0c2d7da06698c400afc36232b20</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a</code></dd>
+      <dt>Exact source module</dt><dd><code>peano-lab/py/peano_lab/library/matrix_cofactor_expansion_candidate.py</code></dd></dl>
+</aside></main></body>
+</html>

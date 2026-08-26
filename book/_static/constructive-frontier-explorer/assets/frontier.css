@@ -1,0 +1,678 @@
+:root{color-scheme:light dark;--ink:#162137;--muted:#617089;--paper:#f5f7fc;--surface:#ffffff;--line:#dce2ef;--violet:#6249ca;--teal:#087f78;--gold:#d18a12;--status:#845400;--status-bg:#fff3d5}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.frontier-hero{padding:2.8rem max(calc((100vw - 1250px)/2),5vw) 3rem;color:#fff;background:radial-gradient(circle at 85% 20%,#35337f,transparent 38%),linear-gradient(135deg,#101a31,#202345)}.frontier-back{color:#cbd9f0;text-decoration:none}.frontier-kicker{margin:2rem 0 .4rem;color:#91e6d8;font-size:.75rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase}.frontier-hero h1{margin:.1rem 0 .55rem;font:600 clamp(2rem,5vw,4.2rem)/1.05 Georgia,serif;letter-spacing:-.04em}.frontier-formula{font:600 clamp(1rem,2vw,1.4rem)/1.4 ui-monospace,SFMono-Regular,monospace;color:#a1ebde}.frontier-description,.frontier-scope{max-width:920px;color:#ccd6e8}.frontier-status{display:inline-block;max-width:920px;margin:.45rem 0;padding:.7rem 1rem;border:1px solid #f3d187;border-radius:12px;background:var(--status-bg);color:var(--status);font-size:.87rem;font-weight:750}.frontier-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;max-width:900px;margin:1.7rem 0 0}.frontier-stats div{padding:.7rem .9rem;border:1px solid #ffffff25;border-radius:12px;background:#ffffff0a}.frontier-stats dt{font-size:1.18rem;font-weight:800}.frontier-stats dd{margin:0;color:#cad3e5;font-size:.74rem}.frontier-main{width:min(1350px,calc(100% - 2rem));margin:1.5rem auto 4rem}.frontier-graph-section,.frontier-detail,.frontier-example,.frontier-definitions,.frontier-boundary{margin-bottom:1.25rem;padding:1.2rem;border:1px solid var(--line);border-radius:16px;background:var(--surface);box-shadow:0 8px 30px #1720330b}.frontier-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:1rem}.frontier-toolbar h2,.frontier-detail h2,.frontier-example h2,.frontier-definitions h2,.frontier-boundary h2{margin:.15rem 0;font:600 1.35rem Georgia,serif}.frontier-toolbar label,.frontier-example label{display:grid;gap:.2rem;color:var(--muted);font-size:.75rem}.frontier-toolbar span{color:var(--muted);font-size:.76rem}.frontier-toolbar input,.frontier-example input{min-height:36px;padding:.4rem .6rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink)}.frontier-graph-scroll{overflow:auto;max-height:840px;margin-top:.8rem;border:1px solid var(--line);border-radius:12px;background:linear-gradient(90deg,#f7f9ff 1px,transparent 1px),linear-gradient(#f7f9ff 1px,transparent 1px);background-size:30px 30px}.frontier-svg{display:block;overflow:visible}.frontier-edge{fill:none;stroke:#b3bfd5;stroke-opacity:.62;stroke-width:1.2}.frontier-column-label{fill:var(--muted);font:600 11px ui-sans-serif,system-ui}.frontier-node{cursor:pointer}.frontier-node rect{fill:#f8faff;stroke:#cbd6e8;stroke-width:1}.frontier-node text{fill:#28354d;font:600 10px ui-monospace,monospace}.frontier-node .frontier-node-meta{fill:#697991;font:400 9px ui-sans-serif,system-ui}.frontier-root rect{fill:#fff4d8;stroke:#d18a12;stroke-width:1.3}.frontier-node.selected rect,.frontier-node:focus rect{stroke:var(--violet);stroke-width:2}.frontier-node.dimmed,.frontier-edge.dimmed{opacity:.12}.frontier-detail pre,.frontier-definition pre{max-height:280px;overflow:auto;padding:.8rem;border:1px solid var(--line);border-radius:8px;background:#f7f9ff;white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 ui-monospace,monospace}.frontier-dependency-list{display:flex;flex-wrap:wrap;gap:.45rem}.frontier-chip{padding:.25rem .55rem;border:1px solid var(--line);border-radius:999px;font:11px ui-monospace,monospace}.frontier-chip.internal{color:var(--teal);cursor:pointer}.frontier-chip.external{color:var(--muted)}.frontier-example form{display:flex;flex-wrap:wrap;gap:.8rem;align-items:end}.frontier-example input{width:130px}.frontier-example button{min-height:38px;padding:.5rem .9rem;border:0;border-radius:9px;background:var(--violet);color:#fff;font-weight:700}.frontier-example output{display:block;min-height:35px;margin-top:1rem;color:var(--teal);font:600 14px ui-monospace,monospace;white-space:pre-wrap}.frontier-definition{margin:.65rem 0;padding:.7rem .8rem;border:1px solid var(--line);border-radius:10px}.frontier-definition summary{cursor:pointer}.frontier-definition code,.frontier-detail code{font:12px ui-monospace,monospace;color:var(--violet)}.frontier-definition small,.frontier-detail small{color:var(--muted);overflow-wrap:anywhere}.frontier-boundary strong{color:var(--status)}@media(prefers-color-scheme:dark){:root{--ink:#e5eaf4;--muted:#aab6ca;--paper:#0b1020;--surface:#141b2e;--line:#303c54;--violet:#aa99fb;--teal:#75d4c6;--status:#ffe0a0;--status-bg:#493616}.frontier-graph-scroll{background:#11182a}.frontier-node rect{fill:#202b42;stroke:#394864}.frontier-node text{fill:#e1e8f6}.frontier-root rect{fill:#4b391a;stroke:#e7ba56}.frontier-detail pre,.frontier-definition pre{background:#0e1525}.frontier-example button{color:#17142b}.frontier-status{border-color:#8a6627}}@media(max-width:700px){.frontier-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.frontier-toolbar{align-items:stretch}.frontier-main{width:calc(100% - 1rem)}.frontier-hero{padding-inline:1rem}.frontier-example input{width:98px}}
+.frontier-reading-note{max-width:950px;margin:1rem 0 0;color:#b9e7dc;font-size:.78rem}.frontier-view-controls,.frontier-map-controls{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem}.frontier-view-controls button,.frontier-map-controls button{min-height:34px;padding:.38rem .7rem;border:1px solid var(--line);border-radius:8px;background:var(--surface);color:var(--ink);cursor:pointer;font-size:.76rem}.frontier-view-controls button[aria-pressed="true"],.frontier-map-controls button[aria-pressed="true"]{border-color:var(--violet);background:#6249ca18;color:var(--violet);font-weight:700}.frontier-map-controls{margin-top:.85rem}.frontier-map-controls output{min-width:42px;text-align:center;color:var(--muted);font-size:.74rem}.frontier-definition-link{padding:0;border:0;background:none;color:var(--violet);font:inherit;text-decoration:underline;text-decoration-style:dotted;cursor:pointer}.frontier-definition-link:hover,.frontier-definition-link:focus{text-decoration-style:solid}.frontier-receipt{display:flex;flex-wrap:wrap;gap:.4rem;margin:.55rem 0;color:var(--teal);font-size:.74rem}.frontier-mode-note{color:var(--muted);font-size:.8rem}.frontier-definition:target{border-color:var(--violet)}@media print{body{background:#fff;color:#111}.frontier-hero{padding:1rem;color:#111;background:#fff}.frontier-back,.frontier-toolbar label,.frontier-view-controls,.frontier-map-controls,.frontier-example{display:none!important}.frontier-main{width:100%;margin:0}.frontier-graph-section,.frontier-detail,.frontier-definitions,.frontier-boundary{break-inside:avoid-page;border-color:#ddd;box-shadow:none}.frontier-graph-scroll{overflow:visible;max-height:none;border:0}.frontier-svg{width:100%!important;height:auto!important}.frontier-detail pre{max-height:none}.frontier-status{color:#111;background:#fff;border-color:#777}.frontier-definition-link{color:#222}}.frontier-experimental{margin-bottom:1.25rem;padding:1.2rem;border:1px solid #0a887a52;border-radius:16px;background:var(--surface);box-shadow:0 8px 30px #1720330b}.frontier-experimental h2{margin:.15rem 0;font:600 1.35rem Georgia,serif}.frontier-experimental-disclaimer{max-width:960px;color:var(--muted);font-size:.85rem}.frontier-experimental-card{margin-top:.8rem;padding:.85rem 1rem;border:1px solid #0a887a45;border-radius:12px}.frontier-experimental-card h3{margin:0 0 .55rem;color:var(--teal);font-size:.96rem}.frontier-experimental-card progress{width:min(420px,100%);height:11px;accent-color:var(--teal)}.frontier-experimental-card p{margin:.5rem 0 0;color:var(--muted);font-size:.8rem}.frontier-experiment-verified rect{stroke:#087f78!important;stroke-width:1.8!important}.frontier-experimental-note{margin:.75rem 0;padding:.7rem .85rem;border:1px solid #0a887a52;border-radius:10px;color:var(--teal);font-size:.78rem}@media(prefers-color-scheme:dark){.frontier-experiment-verified rect{stroke:#75d4c6!important}}@media print{.frontier-experimental{break-inside:avoid-page;border-color:#777;box-shadow:none}.frontier-experiment-verified rect{stroke:#333!important;stroke-dasharray:4 2}}
+/* Definition-aware PA Proof Explorer. Every selector is microsite-scoped. */
+
+body.pa-defined-proof-site {
+  color-scheme: light dark;
+  --pd-bg: #f4f0f7;
+  --pd-paper: #fffdfd;
+  --pd-paper-alt: #f8f4fa;
+  --pd-ink: #27212d;
+  --pd-muted: #706778;
+  --pd-border: #d7ccdd;
+  --pd-rule: #aa9db3;
+  --pd-link: #365e91;
+  --pd-link-visited: #74518a;
+  --pd-accent: #713a83;
+  --pd-accent-soft: #eee0f3;
+  --pd-definition: #783f90;
+  --pd-definition-soft: #f0e2f6;
+  --pd-public: #176b45;
+  --pd-candidate: #8a5a00;
+  --pd-code: #f1eaf4;
+  --pd-target: #ffeaa1;
+  --pd-serif: Georgia, "Times New Roman", serif;
+  --pd-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --pd-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  --pd-shadow: 0 0.55rem 1.7rem rgba(57, 35, 67, 0.1);
+  min-height: 100vh;
+  margin: 0;
+  background: var(--pd-bg);
+  color: var(--pd-ink);
+  font-family: var(--pd-serif);
+  line-height: 1.6;
+}
+
+body.pa-defined-proof-site,
+body.pa-defined-proof-site * {
+  box-sizing: border-box;
+}
+
+body.pa-defined-proof-site a {
+  color: var(--pd-link);
+  text-decoration-thickness: 0.08em;
+  text-underline-offset: 0.15em;
+}
+
+body.pa-defined-proof-site a:visited {
+  color: var(--pd-link-visited);
+}
+
+body.pa-defined-proof-site a:focus-visible,
+body.pa-defined-proof-site button:focus-visible,
+body.pa-defined-proof-site input:focus-visible,
+body.pa-defined-proof-site select:focus-visible,
+body.pa-defined-proof-site summary:focus-visible,
+body.pa-defined-proof-site [tabindex]:focus-visible {
+  outline: 0.2rem solid var(--pd-accent);
+  outline-offset: 0.14rem;
+}
+
+body.pa-defined-proof-site code,
+body.pa-defined-proof-site pre,
+body.pa-defined-proof-site .pd-kicker,
+body.pa-defined-proof-site .pd-line-number {
+  font-family: var(--pd-mono);
+}
+
+body.pa-defined-proof-site code {
+  overflow-wrap: anywhere;
+}
+
+body.pa-defined-proof-site .pd-header {
+  padding: clamp(1.2rem, 3vw, 2.4rem);
+  border-bottom: 0.3rem solid var(--pd-accent);
+  background: var(--pd-paper);
+  box-shadow: 0 0.2rem 0.8rem rgba(40, 27, 45, 0.08);
+  font-family: var(--pd-sans);
+}
+
+body.pa-defined-proof-site .pd-header > * {
+  width: min(100%, 92rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+body.pa-defined-proof-site .pd-header nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 1rem;
+  margin-bottom: 1.1rem;
+}
+
+body.pa-defined-proof-site .pd-header h1 {
+  max-width: 68rem;
+  margin-top: 0.15rem;
+  margin-bottom: 0.45rem;
+  font-family: var(--pd-serif);
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1.08;
+}
+
+body.pa-defined-proof-site .pd-header p {
+  max-width: 68rem;
+}
+
+body.pa-defined-proof-site .pd-kicker {
+  margin-bottom: 0.2rem;
+  color: var(--pd-definition);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+body.pa-defined-proof-site .pd-definition-header {
+  border-bottom-color: var(--pd-definition);
+  background: linear-gradient(125deg, var(--pd-paper), var(--pd-definition-soft));
+}
+
+body.pa-defined-proof-site main {
+  width: min(calc(100% - 2rem), 92rem);
+  margin: 1.4rem auto 3rem;
+}
+
+body.pa-defined-proof-site section,
+body.pa-defined-proof-site details,
+body.pa-defined-proof-site aside {
+  border: 1px solid var(--pd-border);
+  border-radius: 0.5rem;
+  background: var(--pd-paper);
+  box-shadow: var(--pd-shadow);
+}
+
+body.pa-defined-proof-site section,
+body.pa-defined-proof-site aside,
+body.pa-defined-proof-site details[open] {
+  padding: 1rem 1.15rem;
+}
+
+body.pa-defined-proof-site section + section,
+body.pa-defined-proof-site section + details,
+body.pa-defined-proof-site details + section {
+  margin-top: 1rem;
+}
+
+body.pa-defined-proof-site h2,
+body.pa-defined-proof-site h3,
+body.pa-defined-proof-site label,
+body.pa-defined-proof-site button,
+body.pa-defined-proof-site input,
+body.pa-defined-proof-site select,
+body.pa-defined-proof-site output,
+body.pa-defined-proof-site small,
+body.pa-defined-proof-site summary {
+  font-family: var(--pd-sans);
+}
+
+body.pa-defined-proof-site h2 {
+  margin-top: 0;
+  font-size: 1.35rem;
+}
+
+body.pa-defined-proof-site h3 {
+  margin-bottom: 0.45rem;
+  font-size: 1rem;
+}
+
+body.pa-defined-proof-site pre {
+  overflow: auto;
+  padding: 0.9rem;
+  border: 1px solid var(--pd-border);
+  border-radius: 0.34rem;
+  background: var(--pd-code);
+  white-space: pre-wrap;
+}
+
+body.pa-defined-proof-site button,
+body.pa-defined-proof-site input,
+body.pa-defined-proof-site select {
+  min-height: 2.35rem;
+  border: 1px solid var(--pd-rule);
+  border-radius: 0.32rem;
+  background: var(--pd-paper);
+  color: var(--pd-ink);
+  font: inherit;
+}
+
+body.pa-defined-proof-site button {
+  padding: 0.42rem 0.8rem;
+  cursor: pointer;
+}
+
+body.pa-defined-proof-site input,
+body.pa-defined-proof-site select {
+  padding: 0.38rem 0.55rem;
+}
+
+body.pa-defined-proof-site .pd-callout {
+  padding: 0.75rem 0.9rem;
+  border-left: 0.3rem solid var(--pd-definition);
+  background: var(--pd-definition-soft);
+  font-family: var(--pd-sans);
+  font-size: 0.9rem;
+}
+
+body.pa-defined-proof-site .pd-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem 1.3rem;
+  font-family: var(--pd-sans);
+}
+
+body.pa-defined-proof-site .pd-controls,
+body.pa-defined-proof-site .pd-graph-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  align-items: end;
+  margin-bottom: 1rem;
+}
+
+body.pa-defined-proof-site .pd-controls label,
+body.pa-defined-proof-site .pd-graph-controls label {
+  display: grid;
+  gap: 0.22rem;
+}
+
+body.pa-defined-proof-site .pd-controls label:first-child,
+body.pa-defined-proof-site .pd-graph-controls label:first-child {
+  flex: 1 1 20rem;
+}
+
+body.pa-defined-proof-site .pd-graph-note {
+  margin: 0.45rem 0 0.85rem;
+  color: var(--pd-muted);
+  font-family: var(--pd-sans);
+  font-size: 0.82rem;
+}
+
+body.pa-defined-proof-site .pd-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  gap: 0.85rem;
+}
+
+body.pa-defined-proof-site .pd-result {
+  margin: 0;
+  padding: 0.9rem 1rem;
+  border-left: 0.3rem solid var(--pd-public);
+}
+
+body.pa-defined-proof-site .pd-result-definition {
+  border-left-color: var(--pd-definition);
+  background: linear-gradient(135deg, var(--pd-paper), var(--pd-definition-soft));
+}
+
+body.pa-defined-proof-site .pd-result[hidden] {
+  display: none;
+}
+
+body.pa-defined-proof-site .pd-result p {
+  margin: 0.45rem 0;
+}
+
+body.pa-defined-proof-site .pd-result small {
+  color: var(--pd-muted);
+}
+
+body.pa-defined-proof-site .pd-status {
+  display: inline-block;
+  width: auto;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  background: var(--pd-definition-soft);
+  color: var(--pd-accent);
+  font-family: var(--pd-sans);
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+body.pa-defined-proof-site .pd-status-public {
+  color: var(--pd-public);
+}
+
+body.pa-defined-proof-site .pd-status-candidate {
+  color: var(--pd-candidate);
+}
+
+body.pa-defined-proof-site .pd-theorem-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(16rem, 23rem);
+  gap: 1.2rem;
+  align-items: start;
+}
+
+body.pa-defined-proof-site .pd-theorem-layout > aside {
+  position: sticky;
+  top: 1rem;
+}
+
+body.pa-defined-proof-site .pd-definition-page {
+  display: grid;
+  gap: 1rem;
+}
+
+body.pa-defined-proof-site .pd-definition-page > aside {
+  border-left: 0.32rem solid var(--pd-definition);
+}
+
+body.pa-defined-proof-site dl {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.8fr) minmax(0, 1.2fr);
+  gap: 0.35rem 0.75rem;
+}
+
+body.pa-defined-proof-site dt {
+  color: var(--pd-muted);
+  font-family: var(--pd-sans);
+}
+
+body.pa-defined-proof-site dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+body.pa-defined-proof-site .pd-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.42rem;
+}
+
+body.pa-defined-proof-site .pd-chip {
+  display: inline-block;
+  padding: 0.25rem 0.52rem;
+  border: 1px solid var(--pd-border);
+  border-radius: 999px;
+  background: var(--pd-paper-alt);
+  font-family: var(--pd-sans);
+  font-size: 0.78rem;
+}
+
+body.pa-defined-proof-site .pd-definition-chip,
+body.pa-defined-proof-site .pd-definition-ref {
+  border-color: color-mix(in srgb, var(--pd-definition) 48%, var(--pd-border));
+  background: var(--pd-definition-soft);
+  color: var(--pd-definition);
+  font-weight: 750;
+}
+
+body.pa-defined-proof-site .pd-definition-ref {
+  padding: 0.04rem 0.14rem;
+  border-bottom: 0.14rem solid currentColor;
+  border-radius: 0.2rem;
+  text-decoration: none;
+}
+
+body.pa-defined-proof-site .pd-empty {
+  color: var(--pd-muted);
+  font-style: italic;
+}
+
+body.pa-defined-proof-site .pd-formal-proof {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: proof-line;
+}
+
+body.pa-defined-proof-site .pd-proof-line {
+  display: grid;
+  grid-template-columns: 4.4rem minmax(0, 1fr);
+  gap: 0.7rem;
+  padding: 0.28rem 0.45rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--pd-border) 55%, transparent);
+  scroll-margin-top: 2rem;
+}
+
+body.pa-defined-proof-site .pd-proof-line:target,
+body.pa-defined-proof-site .pd-proof-line.pd-line-target {
+  background: var(--pd-target);
+}
+
+body.pa-defined-proof-site .pd-proof-line-defined {
+  border-left: 0.22rem solid var(--pd-definition);
+  background: color-mix(in srgb, var(--pd-definition-soft) 62%, var(--pd-paper));
+}
+
+body.pa-defined-proof-site .pd-defined-command {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+body.pa-defined-proof-site .pd-exact-line {
+  grid-column: 2;
+  margin: 0.2rem 0 0.35rem;
+  padding: 0.35rem 0.55rem;
+  border-left: 0.18rem solid var(--pd-rule);
+  color: var(--pd-muted);
+  font-size: 0.86rem;
+}
+
+body.pa-defined-proof-site .pd-exact-line summary {
+  cursor: pointer;
+  color: var(--pd-accent);
+  font-weight: 700;
+}
+
+body.pa-defined-proof-site .pd-exact-line code {
+  display: block;
+  margin-top: 0.38rem;
+  color: var(--pd-ink);
+  overflow-wrap: anywhere;
+}
+
+body.pa-defined-proof-site .pd-line-number {
+  color: var(--pd-muted);
+  font-size: 0.78rem;
+  text-decoration: none;
+}
+
+body.pa-defined-proof-site .pd-tactic-ref {
+  color: var(--pd-accent);
+  font-weight: 750;
+}
+
+body.pa-defined-proof-site .pd-graph-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(17rem, 24rem);
+  gap: 1rem;
+  align-items: start;
+}
+
+body.pa-defined-proof-site .pd-graph-toolbar {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.7rem;
+  align-items: center;
+  padding: 0.7rem;
+  border: 1px solid var(--pd-border);
+  border-bottom: 0;
+  background: var(--pd-paper);
+  font-family: var(--pd-sans);
+}
+
+body.pa-defined-proof-site .pd-graph-toolbar > div {
+  display: flex;
+  gap: 0.35rem;
+}
+
+body.pa-defined-proof-site .pd-graph-stage {
+  height: clamp(30rem, 66vh, 48rem);
+  overflow: hidden;
+  border: 1px solid var(--pd-border);
+  background-color: var(--pd-paper-alt);
+  background-image:
+    linear-gradient(color-mix(in srgb, var(--pd-border) 35%, transparent) 1px, transparent 1px),
+    linear-gradient(90deg, color-mix(in srgb, var(--pd-border) 35%, transparent) 1px, transparent 1px);
+  background-size: 1.2rem 1.2rem;
+}
+
+body.pa-defined-proof-site .pd-graph-stage svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+body.pa-defined-proof-site .pd-graph-stage.pd-panning svg {
+  cursor: grabbing;
+}
+
+body.pa-defined-proof-site .pd-graph-details {
+  position: sticky;
+  top: 1rem;
+  font-family: var(--pd-sans);
+}
+
+body.pa-defined-proof-site .pd-graph-details ul {
+  padding-left: 1.2rem;
+}
+
+body.pa-defined-proof-site .pd-graph-layer-label {
+  fill: var(--pd-muted);
+  font-family: var(--pd-sans);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+body.pa-defined-proof-site .pd-graph-edge {
+  fill: none;
+  stroke: var(--pd-rule);
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+}
+
+body.pa-defined-proof-site .pd-graph-edge-proof-path {
+  stroke: var(--pd-accent);
+  stroke-width: 3;
+}
+
+body.pa-defined-proof-site .pd-graph-edge-declared {
+  stroke-dasharray: 7 5;
+}
+
+body.pa-defined-proof-site .pd-graph-edge-notation {
+  stroke: var(--pd-definition);
+  stroke-width: 1.8;
+  stroke-dasharray: 3 4;
+}
+
+body.pa-defined-proof-site #pd-proof-arrow path {
+  fill: var(--pd-rule);
+}
+
+body.pa-defined-proof-site #pd-notation-arrow path {
+  fill: var(--pd-definition);
+}
+
+body.pa-defined-proof-site .pd-graph-node {
+  cursor: pointer;
+  font-family: var(--pd-sans);
+}
+
+body.pa-defined-proof-site .pd-graph-node > rect,
+body.pa-defined-proof-site .pd-graph-node > polygon {
+  fill: var(--pd-paper);
+  stroke: var(--pd-rule);
+  stroke-width: 1.6;
+  vector-effect: non-scaling-stroke;
+}
+
+body.pa-defined-proof-site .pd-graph-node-theorem.pd-scope-public > rect {
+  stroke: var(--pd-public);
+}
+
+body.pa-defined-proof-site .pd-graph-node-theorem.pd-scope-candidate > rect {
+  stroke: var(--pd-candidate);
+}
+
+body.pa-defined-proof-site .pd-graph-node-definition > polygon {
+  fill: var(--pd-definition-soft);
+  stroke: var(--pd-definition);
+  stroke-width: 2.2;
+}
+
+body.pa-defined-proof-site .pd-graph-node-path > rect {
+  stroke: var(--pd-accent);
+  stroke-width: 2.8;
+}
+
+body.pa-defined-proof-site .pd-graph-node-selected > rect,
+body.pa-defined-proof-site .pd-graph-node-selected > polygon {
+  fill: var(--pd-target);
+  stroke: var(--pd-accent);
+  stroke-width: 4;
+}
+
+body.pa-defined-proof-site .pd-graph-node:hover > rect,
+body.pa-defined-proof-site .pd-graph-node:hover > polygon,
+body.pa-defined-proof-site .pd-graph-node:focus > rect,
+body.pa-defined-proof-site .pd-graph-node:focus > polygon {
+  filter: drop-shadow(0 3px 5px rgba(54, 28, 62, 0.2));
+  stroke-width: 3.4;
+}
+
+body.pa-defined-proof-site .pd-graph-node:focus {
+  outline: none;
+}
+
+body.pa-defined-proof-site .pd-node-id {
+  fill: var(--pd-ink);
+  font-family: var(--pd-mono);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+body.pa-defined-proof-site .pd-graph-node-compact .pd-node-id {
+  font-size: 8px;
+  letter-spacing: 0.04em;
+}
+
+body.pa-defined-proof-site .pd-node-name {
+  fill: var(--pd-muted);
+  font-size: 10px;
+  font-weight: 600;
+}
+
+body.pa-defined-proof-site .pd-node-open {
+  fill: var(--pd-link);
+  font-size: 17px;
+  font-weight: 800;
+}
+
+body.pa-defined-proof-site .pd-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem 1rem;
+  margin-top: 0.65rem;
+  color: var(--pd-muted);
+  font-family: var(--pd-sans);
+  font-size: 0.75rem;
+}
+
+body.pa-defined-proof-site .pd-legend span {
+  display: inline-flex;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+body.pa-defined-proof-site .pd-legend i {
+  display: inline-block;
+  width: 1.25rem;
+  height: 0.82rem;
+}
+
+body.pa-defined-proof-site .pd-legend-theorem {
+  border: 2px solid var(--pd-public);
+  border-radius: 0.18rem;
+  background: var(--pd-paper);
+}
+
+body.pa-defined-proof-site .pd-legend-definition {
+  clip-path: polygon(18% 0, 82% 0, 100% 50%, 82% 100%, 18% 100%, 0 50%);
+  border: 0;
+  background: var(--pd-definition);
+}
+
+body.pa-defined-proof-site .pd-legend-proof,
+body.pa-defined-proof-site .pd-legend-notation {
+  height: 0;
+  border-top: 2px solid var(--pd-rule);
+}
+
+body.pa-defined-proof-site .pd-legend-notation {
+  border-top: 2px dashed var(--pd-definition);
+}
+
+@media (max-width: 880px) {
+  body.pa-defined-proof-site .pd-theorem-layout,
+  body.pa-defined-proof-site .pd-graph-layout {
+    grid-template-columns: 1fr;
+  }
+
+  body.pa-defined-proof-site .pd-theorem-layout > aside,
+  body.pa-defined-proof-site .pd-graph-details {
+    position: static;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.pa-defined-proof-site {
+    scroll-behavior: auto;
+  }
+}
+
+@media print {
+  body.pa-defined-proof-site {
+    background: white;
+    color: black;
+  }
+
+  body.pa-defined-proof-site .pd-controls,
+  body.pa-defined-proof-site .pd-graph-controls,
+  body.pa-defined-proof-site .pd-graph-toolbar,
+  body.pa-defined-proof-site button {
+    display: none;
+  }
+
+  body.pa-defined-proof-site section,
+  body.pa-defined-proof-site details,
+  body.pa-defined-proof-site aside {
+    box-shadow: none;
+  }
+}

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT0053 — beta_value_le_code</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html">Explorer</a>
+<a href="../defined/tag/BT0053.html">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT0053&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=75fa146ac19b">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=75fa146ac19b">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=75fa146ac19b">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=75fa146ac19b">Campaign milestone</a><a href="BT004V.html">← right_factor_divides_product</a><a href="BT0054.html">base_le_beta_modulus →</a></nav>
+<p class="pa-tag">BT0053</p><h1>beta_value_le_code</h1>
+<p class="pa-status-public">Stable checked-use theorem · independently kernel verified</p>
+<p>Every decoded beta value is at most its code.</p></header>
+<main class="pa-theorem-layout"><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall b c i x. ((exists h. h + S x = S ((S i) * c)) /\ exists q. b = q * S ((S i) * c) + x) -&gt; exists h. h + x = b</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every decoded beta value is at most its code.</p><p>Direct prerequisites:
+none.
+The authored body proceeds by case analysis (2).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row">none</div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT0057.html"><code>BT0057</code> beta_value_lt_scaled_base</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="447f5be2fa3cf189"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="42c6cc123bc2349a"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="146aace2801341f2"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> i</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="9bdb451562a9345d"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> x</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="38f72ce785a6806b"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> hat</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="cases" data-line-id="7401995c3aaaecdf"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">cases</span> hat</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="cases" data-line-id="d6a7f07f75329e4f"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">cases</span> hat_right</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="exists" data-line-id="bf73738774e03c27"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">exists</span> x1 * S ((S i) * c)</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="symm" data-line-id="fceffb13dd809bca"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="exact" data-line-id="60f615b7e65e50b8"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">exact</span> hat_right_witness</code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>178</dd>
+<dt>Layer</dt><dd>0</dd><dt>Lines</dt><dd>10</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>stable_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>yes</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>stable_closed</dd>
+<dt>Body proof nodes</dt><dd>n/a</dd>
+<dt>Statement SHA-256</dt><dd><code>a0b0b9cc668ff0d5345e4b2e41b08ac66b3210e536258d53f95b88337c01876c</code></dd>
+<dt>Script SHA-256</dt><dd><code>195ad6bcc1e26a1d0308c9203dda4b0c0c98cc9a0702ae5bb2c14ffb80c5e876</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/theorems.py">
+peano-lab/py/peano_lab/library/theorems.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919</code></dd>
+</dl></aside></main></body></html>
