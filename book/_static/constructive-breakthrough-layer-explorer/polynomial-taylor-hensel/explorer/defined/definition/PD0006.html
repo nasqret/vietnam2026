@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PD0006 — IsGCD(g,a,b) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="polynomial-taylor-hensel"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
+       <a href="../graph.html?v=75fa146ac19b">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=Gcd&amp;v=75fa146ac19b">Global definition: Gcd</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G095" href="../../../../grand-campaign/?view=goal&amp;focus=G095&amp;v=75fa146ac19b">G095 milestone</a></nav>
+  <p class="pd-tag">PD0006</p><h1>IsGCD(g,a,b)</h1>
+  <p>g is a common divisor divisible by every common divisor.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Hygienic expanded first-order definition</h2>
+    <pre><code>((exists x. a = g * x) /\ (exists y. b = g * y)) /\ forall d. (exists u. a = d * u) -&gt; (exists v. b = d * v) -&gt; exists w. g = d * w</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0003.html?v=75fa146ac19b">Dvd(d,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><span class="pd-empty">none directly; see definition consumers</span></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>3</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>1</dd>
+  <dt>Origin</dt><dd>reviewed-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity PD0006.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>f939d788bfda63669504d5cfac3c849cc58d5870d3c9b99a0fa69f6c14306497</code></dd>
+</dl></aside></main></body>
+</html>

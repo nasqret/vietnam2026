@@ -29,7 +29,7 @@
 <body>
   <header>
     <div class="brand"><div class="glyph" aria-hidden="true">ℕ</div><div><h1>Peano Lab</h1><div class="sub">sound arithmetic proofs · no install · self-hosted</div></div></div>
-    <nav aria-label="Course and research navigation"><a href="/vietnam2026/">← Course</a><a href="/vietnam2026/book/peano/index.html">Read the chapter</a><a href="/proofs/?v=94ac4d193cbf">Proof library</a><a href="/proofs/grand-campaign/?v=94ac4d193cbf">Research atlas</a><a href="https://github.com/nasqret/vietnam2026/tree/agent/new-theorems-tranche-01/peano-lab" target="_blank" rel="noopener">Source</a></nav>
+    <nav aria-label="Course and research navigation"><a href="/vietnam2026/">← Course</a><a href="/vietnam2026/book/peano/index.html">Read the chapter</a><a href="/proofs/?v=75fa146ac19b">Proof library</a><a href="/proofs/grand-campaign/?v=75fa146ac19b">Research atlas</a><a href="https://github.com/nasqret/vietnam2026/tree/agent/new-theorems-tranche-01/peano-lab" target="_blank" rel="noopener">Source</a></nav>
   </header>
   <noscript><p class="noscript">Peano Lab needs JavaScript to load the local Python runtime.</p></noscript>
   <main class="main">
@@ -69,7 +69,10 @@
         <button class="qbtn" type="button" data-cmd="clear" disabled>clear</button>
       </div>
       <div class="quick-row"><span class="lbl">research:</span>
-        <button class="qbtn" type="button" data-cmd="pa lib alpha" disabled>Alpha: 2,008 proofs</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha" disabled>Alpha: 2,080 proofs</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha signed_matrix_cofactor_family_and_fold_exists" disabled>cofactor expansions</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha beta_horner_hensel_lift_exists" disabled>one-step Hensel lifts</button>
+        <button class="qbtn" type="button" data-cmd="pa lib alpha crt_merge_compatible_prefix_canonical_exists_unique" disabled>noncoprime Chinese remainders</button>
         <button class="qbtn" type="button" data-cmd="pa lib alpha beta_signed_matrix_minor_exists" disabled>signed matrix minors</button>
         <button class="qbtn" type="button" data-cmd="pa lib alpha beta_horner_derivative_exists_unique" disabled>polynomial derivatives</button>
         <button class="qbtn" type="button" data-cmd="pa lib alpha crt_pairwise_coprime_prefix_canonical_exists_unique" disabled>finite Chinese remainders</button>
@@ -107,8 +110,8 @@
   <script>
   (function(){
     "use strict";
-    const BUILD="2026-08-26d";
-    const APP_ROOT="releases/a-105fd471df5d/";
+    const BUILD="2026-08-26e";
+    const APP_ROOT="releases/a-a4f746a1cd35/";
     const MAX_INPUT=8192;
     const MAX_PASTE_CHARS=100000;
     const MAX_PASTE_LINES=256;

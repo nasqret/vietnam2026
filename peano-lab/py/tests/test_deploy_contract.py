@@ -16,7 +16,17 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[3]
 FRONTIER = ROOT / "book" / "_static" / "constructive-frontier-explorer"
-CANONICAL_HTML_REVISION = "94ac4d193cbf"
+CURRENT_CAMPAIGN = json.loads(
+    (ROOT / "book" / "_static" / "constructive-grand-campaign" / "campaign.json").read_bytes()
+)
+CURRENT_ALPHA_VERSION = CURRENT_CAMPAIGN["meta"]["current_alpha_version"]
+CURRENT_ALPHA_CHANNEL = json.loads(
+    (ROOT / "artifacts" / "peano-library" / f"channels-{CURRENT_ALPHA_VERSION}.json").read_bytes()
+)["channels"]["alpha"]
+CURRENT_ALPHA_CATALOG = (
+    ROOT / "artifacts" / "peano-library" / "alpha" / f"catalog-{CURRENT_ALPHA_VERSION}.json"
+)
+CANONICAL_HTML_REVISION = CURRENT_ALPHA_CHANNEL["artifact_sha256"][:12]
 FRONTIER_FAMILIES = (
     "supplementary-laws",
     "kummer",
@@ -59,6 +69,11 @@ RESEARCH_LAYER_FAMILIES = (
     "polynomial-hensel",
     "generalized-crt-fold",
 )
+BREAKTHROUGH_LAYER_FAMILIES = (
+    "matrix-cofactor-expansion",
+    "polynomial-taylor-hensel",
+    "generalized-crt-compatibility",
+)
 CANONICAL_FRONTIER_ASSETS = (
     ("defined-explorer.css", "defined/assets/explorer.css"),
     ("defined-explorer.js", "defined/assets/explorer.js"),
@@ -81,6 +96,49 @@ def _dry_run(target: str) -> str:
 def _versioned_frontier_asset(filename: str, prefix: str) -> str:
     digest = sha256((FRONTIER / "assets" / filename).read_bytes()).hexdigest()[:12]
     return f"{prefix}/{filename}?v={digest}"
+
+
+def test_every_constructive_manifest_and_family_follow_the_actual_sealed_alpha_release() -> None:
+    release = CURRENT_CAMPAIGN["ambitious_boundaries"][
+        f"alpha_{CURRENT_ALPHA_VERSION}_edition"
+    ]
+    catalog_digest = sha256(CURRENT_ALPHA_CATALOG.read_bytes()).hexdigest()
+    manifests = tuple(
+        sorted((ROOT / "book" / "_static").glob("constructive-*-explorer/manifest.json"))
+    )
+    routes: set[str] = set()
+
+    assert release["role"] == "current_immutable_release"
+    assert release["catalog_sha256"] == CURRENT_ALPHA_CHANNEL["artifact_sha256"] == catalog_digest
+    assert release["identity_sha256"] == CURRENT_ALPHA_CHANNEL["edition_identity_sha256"]
+    assert release["theorem_count"] == CURRENT_ALPHA_CHANNEL["theorem_count"]
+    for path in manifests:
+        manifest = json.loads(path.read_bytes())
+        assert manifest["alpha_edition_version"] == CURRENT_ALPHA_VERSION, path
+        assert manifest.get("catalog_sha256", manifest.get("alpha_catalog_sha256")) == catalog_digest, path
+        assert manifest.get(
+            "edition_identity_sha256", manifest.get("alpha_edition_identity_sha256")
+        ) == CURRENT_ALPHA_CHANNEL["edition_identity_sha256"], path
+        for family in manifest["families"]:
+            slug = family["slug"]
+            assert slug not in routes, f"duplicate constructive campaign route: {slug}"
+            assert family.get("alpha_checked_use_node_count", family.get("theorem_count", 0)) > 0
+            assert (path.parent / slug / "explorer" / "defined" / "graph.html").is_file()
+            routes.add(slug)
+
+    known_routes = (
+        set(FRONTIER_FAMILIES)
+        | set(NEXT_LAYER_FAMILIES)
+        | set(ADVANCED_LAYER_FAMILIES)
+        | set(TRANSPORT_LAYER_FAMILIES)
+        | set(MILESTONE_CLOSURE_FAMILIES)
+        | set(RESEARCH_LAYER_FAMILIES)
+        | set(BREAKTHROUGH_LAYER_FAMILIES)
+    )
+    assert known_routes <= routes
+    assert len(routes) >= 25
+    hub = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
+    assert all(f'href="{slug}/?v={CANONICAL_HTML_REVISION}"' in hub for slug in routes)
 
 
 def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
@@ -107,6 +165,7 @@ def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
         "alpha-v22-transport-layer-proof-bundle-v1.json",
         "alpha-v23-milestone-closure-proof-bundle-v1.json",
         "alpha-v24-research-layer-proof-bundle-v1.json",
+        "alpha-v25-breakthrough-layer-proof-bundle-v1.json",
     ):
         assert f"research/arithmetic-library/artifacts/{filename}" in output
         assert f"/proof-artifacts/{filename}" in output
@@ -199,12 +258,14 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
     assert "python3 scripts/build_constructive_transport_layer_explorer.py" in output
     assert "python3 scripts/build_constructive_milestone_closure_explorer.py" in output
     assert "python3 scripts/build_constructive_research_layer_explorer.py" in output
+    assert "python3 scripts/build_constructive_breakthrough_layer_explorer.py" in output
     assert "book/_static/constructive-frontier-explorer/assets/" in output
     assert "book/_static/constructive-next-layer-explorer/assets/" in output
     assert "book/_static/constructive-advanced-layer-explorer/assets/" in output
     assert "book/_static/constructive-transport-layer-explorer/assets/" in output
     assert "book/_static/constructive-milestone-closure-explorer/assets/" in output
     assert "book/_static/constructive-research-layer-explorer/assets/" in output
+    assert "book/_static/constructive-breakthrough-layer-explorer/assets/" in output
     for family in FRONTIER_FAMILIES:
         assert f"book/_static/constructive-frontier-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
@@ -222,6 +283,9 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
         assert f'"_deploy/proofs/{family}/"' in output
     for family in RESEARCH_LAYER_FAMILIES:
         assert f"book/_static/constructive-research-layer-explorer/{family}/" in output
+        assert f'"_deploy/proofs/{family}/"' in output
+    for family in BREAKTHROUGH_LAYER_FAMILIES:
+        assert f"book/_static/constructive-breakthrough-layer-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
 
@@ -249,6 +313,7 @@ def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> Non
         "alpha-v22-transport-layer-proof-bundle-v1.json",
         "alpha-v23-milestone-closure-proof-bundle-v1.json",
         "alpha-v24-research-layer-proof-bundle-v1.json",
+        "alpha-v25-breakthrough-layer-proof-bundle-v1.json",
     ):
         assert f'"_deploy/proofs/artifacts/{filename}"' in output
         assert f'href="artifacts/{filename}"' in page
@@ -329,7 +394,7 @@ def test_frontier_family_page_matches_original_proof_family_layout(family: str) 
     assert 'href="explorer/defined/tag/' in page
     assert f'.html?v={CANONICAL_HTML_REVISION}"' in page
     assert "dependency-curried kernel-checked theorem body" in page
-    assert "Independently verified Alpha v24 checked-use theorem family" in page
+    assert f"Independently verified Alpha {CURRENT_ALPHA_VERSION} checked-use theorem family" in page
     assert "not Stable" in page
     assert "frontier-hero" not in page
     assert "Independent closure experiments" not in page
@@ -371,7 +436,7 @@ def test_transport_family_page_uses_the_exact_quadratic_reciprocity_design(
     assert "&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus" in page
     assert "&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus" in page
     assert "first admitted v22" in page
-    assert "Independently verified Alpha v24 checked-use theorem family" in page
+    assert f"Independently verified Alpha {CURRENT_ALPHA_VERSION} checked-use theorem family" in page
     assert "independently accept all 240 bundle nodes" in page
     assert "not Stable" in page
     assert 'class="proof-home' not in page
@@ -405,7 +470,7 @@ def test_historical_intermediate_pages_also_share_the_canonical_family_design(
     assert page.count('<article class="view-card') == 3
     assert f'href="../assets/proofs.css?v={CANONICAL_HTML_REVISION}"' in page
     assert f"first admitted {first_admitted}" in page
-    assert "Independently verified Alpha v24 checked-use theorem family" in page
+    assert f"Independently verified Alpha {CURRENT_ALPHA_VERSION} checked-use theorem family" in page
     assert f"independently accept all {bundle_nodes} bundle nodes" in page
     assert 'class="proof-hero"' not in page
     assert 'class="proof-card"' not in page
@@ -452,7 +517,7 @@ def test_closed_milestone_page_uses_the_exact_quadratic_reciprocity_design(
     assert "&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus" in page
     assert "&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus" in page
     assert "first admitted v23" in page
-    assert "Independently verified Alpha v24 checked-use theorem family" in page
+    assert f"Independently verified Alpha {CURRENT_ALPHA_VERSION} checked-use theorem family" in page
     assert "independently accept all 617 bundle nodes" in page
     assert "not Stable" in page
     assert 'class="proof-hero"' not in page
@@ -629,8 +694,10 @@ def test_public_proof_hub_keeps_original_cards_without_experiment_progress() -> 
         assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
     for family in RESEARCH_LAYER_FAMILIES:
         assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
-    assert "All 2,008 theorems have checked-use authority" in page
-    assert "432-theorem Stable edition remains unchanged" in page
+    for family in BREAKTHROUGH_LAYER_FAMILIES:
+        assert f'href="{family}/?v={CANONICAL_HTML_REVISION}"' in page
+    assert f"All {CURRENT_ALPHA_CHANNEL['theorem_count']:,} theorems have checked-use authority" in page
+    assert "432 unchanged Stable theorems" in page
     assert "arbitrary signed multiplication is now proved" in page
     assert "candidate-progress" not in page
     assert "33/44" not in page
@@ -690,7 +757,7 @@ def test_flagship_landings_preserve_design_and_expose_all_research_scales(
 
 
 def test_html_navigation_cache_revision_tracks_current_alpha_catalog_not_asset() -> None:
-    catalog = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+    catalog = CURRENT_ALPHA_CATALOG
     asset = (
         ROOT / "book" / "_static" / "pa-proof-explorer" / "defined" / "assets"
         / "explorer.js"

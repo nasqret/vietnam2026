@@ -33,7 +33,7 @@ from peano_lab.kernel.checker import axiom_formula  # noqa: E402
 from peano_lab.kernel.formulas import pretty_formula  # noqa: E402
 from peano_lab.kernel import proofs as kernel_proofs  # noqa: E402
 from peano_lab.library import editions_v16 as alpha_v16  # noqa: E402
-from peano_lab.library import editions_v24 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v25 as current_alpha  # noqa: E402
 from peano_lab.library.quadratic_reciprocity_stack_runtime import (  # noqa: E402
     quadratic_reciprocity_stack,
 )
@@ -41,7 +41,7 @@ from peano_lab.ui.data_tactics import TACTIC_CARDS  # noqa: E402
 
 
 OUTPUT = REPO / "book" / "_static" / "pa-proof-explorer"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
 IMMUTABLE_EVIDENCE_CORPUS_PATH = "api/corpus.json"
 CURRENT_CORPUS_PATH = "api/current-corpus.json"
 IMMUTABLE_EVIDENCE_CORPUS_SHA256 = (
@@ -80,11 +80,11 @@ EXPECTED = {
     "source_sha256": "23fd18aaff26e2c6b428949c35ab3658252c9a4c6fd3b4825a6ccd547f454db1",
 }
 EXPECTED_ALPHA_EVIDENCE = {
-    "alpha_edition_version": "v24",
+    "alpha_edition_version": "v25",
     "alpha_edition_identity_sha256": (
-        "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b"
+        "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
     ),
-    "alpha_edition_checked_use_count": 2008,
+    "alpha_edition_checked_use_count": 2080,
     "proof_edition_version": "v16",
     "proof_edition_identity_sha256": (
         "3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10"
@@ -378,7 +378,7 @@ def _render_index(records: list[dict[str, Any]], stack: Any) -> bytes:
         search = " ".join((row["name"], row["tag"], row["summary"], row["status"], *[item["name"] for item in row["dependencies"]])).lower()
         cards.append(f'''<article class="pa-proof-result pa-status-{row["scope"]}" data-pa-theorem data-name="{_e(row["name"])}" data-tag="{row["tag"]}" data-status="{row["scope"]}" data-layer="{row["layer"]}" data-search="{_e(search)}"><a href="tag/{row["tag"]}.html"><code>{row["tag"]}</code> · <strong>{_e(row["name"])}</strong></a><p>{_e(row["summary"])}</p><small>layer {row["layer"]} · {len(row["lines"])} lines · {row["status_label"]}</small></article>''')
     atlas = _campaign_navigation("../../")
-    body = f'''<header class="pa-proof-header pa-hero"><p><a href="../../arithmetic-library/quadratic-reciprocity.html">Jupyter Book</a></p><h1>Native PA Proof Explorer</h1><p>The complete replay-free reading surface for the exact quadratic-reciprocity dependency closure.</p><div class="pa-proof-stats"><b>557</b> checked-use theorems · <b>1,787</b> edges · <b>27,491</b> tactic lines · <b>45</b> layers</div><p>Current Alpha v24 independently verifies all 557 graph theorems among 2008 checked release theorems: 241 Stable and 316 Alpha-only. The historical Alpha-v16 proof-bearing release and the original 241/316 source partition remain immutable; Alpha-only closure does not grant Stable membership.</p><nav><a href="foundations.html">PA language, axioms, and rules</a><a href="defined/index.html?v={CAMPAIGN_HTML_REVISION}">Definition-aware edition</a><a href="graph.html?target=PA00FW&amp;view=prerequisites&amp;edges=focus&amp;v={CAMPAIGN_HTML_REVISION}">Complete proof graph</a>{atlas}</nav></header>
+    body = f'''<header class="pa-proof-header pa-hero"><p><a href="../../arithmetic-library/quadratic-reciprocity.html">Jupyter Book</a></p><h1>Native PA Proof Explorer</h1><p>The complete replay-free reading surface for the exact quadratic-reciprocity dependency closure.</p><div class="pa-proof-stats"><b>557</b> checked-use theorems · <b>1,787</b> edges · <b>27,491</b> tactic lines · <b>45</b> layers</div><p>Current Alpha v25 independently verifies all 557 graph theorems among 2080 checked release theorems: 241 Stable and 316 Alpha-only. The historical Alpha-v16 proof-bearing release and the original 241/316 source partition remain immutable; Alpha-only closure does not grant Stable membership.</p><nav><a href="foundations.html">PA language, axioms, and rules</a><a href="defined/index.html?v={CAMPAIGN_HTML_REVISION}">Definition-aware edition</a><a href="graph.html?target=PA00FW&amp;view=prerequisites&amp;edges=focus&amp;v={CAMPAIGN_HTML_REVISION}">Complete proof graph</a>{atlas}</nav></header>
 <main data-proof-dashboard data-pa-explorer-index><section class="pa-proof-controls"><label>Search <input data-proof-search data-pa-search type="search"></label><label>Source origin <select data-proof-status data-pa-status><option value="all">All</option><option value="public">Stable source (241)</option><option value="candidate">Alpha-only candidate-factory source (316)</option></select></label><label>Layer <select data-proof-layer data-pa-layer><option value="all">All 45 layers</option>{layers}</select></label><button data-proof-clear data-pa-clear type="button">Clear</button><output data-proof-count data-pa-count>557 checked-use theorems</output></section><section class="pa-layer-map">{''.join(f'<a href="?layer={n}">{n}</a>' for n in range(45))}</section><section class="pa-proof-results">{"".join(cards)}</section></main>'''
     return _page("Native PA Proof Explorer", "index", body)
 
@@ -862,7 +862,7 @@ def _render_graph(graph: dict[str, Any]) -> bytes:
         status.className = "pa-status-public";
         status.textContent = node.stable_member ?
           "Stable checked-use theorem; independently closed" :
-          "Alpha v24 checked-use theorem; independently closed; not Stable";
+          "Alpha v25 checked-use theorem; independently closed; not Stable";
       }
       new MutationObserver(showEvidence).observe(title, {
         childList: true, characterData: true, subtree: true
@@ -901,7 +901,7 @@ def _render_theorem(row: dict[str, Any], previous: dict[str, Any] | None, follow
     use_label = (
         "Stable checked-use theorem is independently kernel-checked when replayed"
         if row["stable_member"]
-        else "Alpha-v24 checked-use theorem is independently kernel-checked when replayed; it is not a Stable theorem"
+        else "Alpha-v25 checked-use theorem is independently kernel-checked when replayed; it is not a Stable theorem"
     )
     atlas = _campaign_navigation("../../../")
     body = f'''<header class="pa-proof-header pa-theorem-heading"><nav><a href="../index.html">Explorer</a><a href="../foundations.html">Foundations</a><a href="../defined/tag/{_e(row["tag"])}.html">Definition-aware theorem</a><a href="../defined/graph.html?target={_e(row["tag"])}&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus">Theorem and definition graph</a>{atlas}{prev_link}{next_link}</nav><p class="pa-tag">{row["tag"]}</p><h1>{_e(row["name"])}</h1><p class="pa-status-public">{_e(row["status_label"])}</p><p>{_e(row["summary"])}</p></header><main class="pa-theorem-layout"><div class="pa-proof-panel"><section class="pa-statement"><h2>Exact expanded PA statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>{_e(row["statement"])}</code></pre></section><section class="pa-informal-proof" data-informal-kind="{_e(row["informal"]["kind"])}" data-informal-review="{_e(row["informal"]["review"])}"><h2>{_e(row["informal"]["title"])}</h2><p><strong>{"Curated informal proof" if row["informal"]["review"] == "curated_reviewed" else "Generated structural guide"}</strong></p>{paragraphs}<h3>Referenced ingredients</h3><div class="pa-chip-row">{ingredients}</div></section><section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row">{relation(row["dependencies"])}</div><h3>Direct dependents</h3><div class="pa-chip-row">{relation(row["dependents"])}</div></section><section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Linked names are exact direct references. This {use_label}.</p><ol class="pa-formal-proof">{"".join(lines)}</ol></section></div><aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Layer</dt><dd>{row["layer"]}</dd><dt>Lines</dt><dd>{len(row["lines"])}</dd><dt>Current Alpha edition</dt><dd>{_e(row["alpha_edition_version"])}</dd><dt>Proof-bearing Alpha edition</dt><dd>{_e(row["proof_edition_version"])}</dd><dt>Current release evidence</dt><dd>{_e(row["alpha_evidence"])}</dd><dt>Checked theorem use</dt><dd>{"yes" if row["alpha_checked_use"] else "no"}</dd><dt>Stable membership</dt><dd>{"yes" if row["stable_member"] else "no"}</dd><dt>Historical source origin</dt><dd>{_e(source_label)}</dd><dt>Specification SHA-256</dt><dd><code>{row["spec_sha256"]}</code></dd><dt>Source</dt><dd><a href="{_e(row["source"]["href"])}">{_e(row["source"]["path"])}:{row["source"]["line"]}</a> ({row["source"]["kind"]})</dd><dt>Source SHA-256</dt><dd><code>{row["source"]["sha256"]}</code></dd></dl></aside></main>'''
@@ -1097,7 +1097,7 @@ def _dependency_graph_schema() -> dict[str, Any]:
             "explicit_dependency_reference_count": {"type": "integer", "minimum": 0},
             "graph_sha256": {"$ref": "#/$defs/sha256"},
             "source_sha256": {"$ref": "#/$defs/sha256"},
-            "alpha_edition_version": {"const": "v24"},
+            "alpha_edition_version": {"const": "v25"},
             "alpha_edition_identity_sha256": {"$ref": "#/$defs/sha256"},
             "alpha_edition_checked_use_count": {"type": "integer", "minimum": 0},
             "proof_edition_version": {"const": "v16"},
@@ -1183,7 +1183,7 @@ def _dependency_graph_schema() -> dict[str, Any]:
                     "layer": {"type": "integer", "minimum": 0},
                     "summary": {"type": "string", "minLength": 1},
                     "href": {"type": "string", "pattern": r"^\.\./tag/PA[0-9A-Y]{4}\.html$"},
-                    "alpha_edition_version": {"const": "v24"},
+                    "alpha_edition_version": {"const": "v25"},
                     "alpha_evidence": {"enum": ["stable_closed", "alpha_closed"]},
                     "alpha_checked_use": {"const": True},
                     "stable_member": {"type": "boolean"},
@@ -1273,7 +1273,7 @@ def build() -> tuple[dict[str, bytes], dict[str, Any]]:
         release_entry = current_alpha.ALPHA_EDITION.by_name.get(spec.name)
         if release_entry is None or release_entry.spec != spec:
             raise ValueError(
-                f"QR proof explorer theorem {spec.name!r} differs from sealed Alpha v24"
+                f"QR proof explorer theorem {spec.name!r} differs from sealed Alpha v25"
             )
         proof_entry = alpha_v16.ALPHA_EDITION.by_name.get(spec.name)
         if (
@@ -1300,7 +1300,7 @@ def build() -> tuple[dict[str, bytes], dict[str, Any]]:
         ):
             raise ValueError(
                 f"QR proof explorer theorem {spec.name!r} has unexpected "
-                "Alpha-v24 evidence, membership, or checked-use authority"
+                "Alpha-v25 evidence, membership, or checked-use authority"
             )
         evidence_counts[release_entry.evidence.value] += 1
         counts: Counter[str] = Counter()
@@ -1365,9 +1365,9 @@ def build() -> tuple[dict[str, bytes], dict[str, Any]]:
             "status_label": (
                 "Stable checked-use theorem · independently closed"
                 if stable_member
-                else "Alpha v24 checked-use theorem · independently closed; not Stable"
+                else "Alpha v25 checked-use theorem · independently closed; not Stable"
             ),
-            "alpha_edition_version": "v24",
+            "alpha_edition_version": "v25",
             "proof_edition_version": "v16",
             "alpha_evidence": release_entry.evidence.value,
             "alpha_checked_use": release_entry.checked_use,
@@ -1413,8 +1413,8 @@ def build() -> tuple[dict[str, bytes], dict[str, Any]]:
     if actual != EXPECTED:
         raise ValueError(f"QR proof explorer receipt changed: {actual!r}")
     evidence_receipt = {
-        "alpha_edition_version": "v24",
-        "alpha_edition_identity_sha256": current_alpha.ALPHA_V24_IDENTITY_SHA256,
+        "alpha_edition_version": "v25",
+        "alpha_edition_identity_sha256": current_alpha.ALPHA_V25_IDENTITY_SHA256,
         "alpha_edition_checked_use_count": len(current_alpha.ALPHA_CHECKED_SPECS),
         "proof_edition_version": "v16",
         "proof_edition_identity_sha256": alpha_v16.ALPHA_V16_IDENTITY_SHA256,
@@ -1427,7 +1427,7 @@ def build() -> tuple[dict[str, bytes], dict[str, Any]]:
     }
     if evidence_receipt != EXPECTED_ALPHA_EVIDENCE:
         raise ValueError(
-            f"QR proof explorer Alpha-v24/v16 evidence receipt changed: {evidence_receipt!r}"
+            f"QR proof explorer Alpha-v25/v16 evidence receipt changed: {evidence_receipt!r}"
         )
     receipt = {**actual, **evidence_receipt}
     corpus = {

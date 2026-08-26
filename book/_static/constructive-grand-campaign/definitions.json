@@ -5,8 +5,8 @@
     "notation_edges": "definition and milestone notation references only; never theorem-proof dependencies",
     "reviewed_matches": "only the separately linked conservative registry expansion is independently parsed and checked; the blueprint expansion itself remains uncertified"
   },
-  "campaign_snapshot_sha256": "426ceb6ec476c7411aaac919edbfec7bc587cb8e812a8ad395966392110b7838",
-  "compatible_reviewed_match_count": 73,
+  "campaign_snapshot_sha256": "0a6f402ad9070ae35e805b35384557ae42d89bef90116c54b1c5c94f03862c82",
+  "compatible_reviewed_match_count": 88,
   "compatible_reviewed_matches": [
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -104,6 +104,33 @@
         "c",
         "i",
         "x"
+      ],
+      "route": "quadratic-reciprocity"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "BetaSum",
+      "blueprint_parameters": [
+        "b",
+        "c",
+        "l",
+        "z"
+      ],
+      "kind": "explicit-alias",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed_expansion_sha256": "e77d758e2118ffddffef0040007a3fa468938ddf33f66035b1ea59a3308db937",
+      "reviewed_id": "PD0015",
+      "reviewed_name": "Sum",
+      "reviewed_parameters": [
+        "b",
+        "c",
+        "l",
+        "z"
       ],
       "route": "quadratic-reciprocity"
     },
@@ -643,6 +670,66 @@
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "CRTMergeCompatiblePrefix",
+      "blueprint_parameters": [
+        "r",
+        "s",
+        "b",
+        "c",
+        "l"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewed_expansion_sha256": "85df3d30f084d3d6e6eb269d6e44cde4bde8efcd44cbc1a58eb0c8b1ee4e3b7d",
+      "reviewed_id": "ND0068",
+      "reviewed_name": "CRTMergeCompatiblePrefix",
+      "reviewed_parameters": [
+        "r",
+        "s",
+        "b",
+        "c",
+        "l"
+      ],
+      "route": "generalized-crt-compatibility"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "CRTPairwiseCompatiblePrefix",
+      "blueprint_parameters": [
+        "r",
+        "s",
+        "b",
+        "c",
+        "l"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewed_expansion_sha256": "eeb5386caff3f8241697024a76886809ded26d9d2dabd84b24b32dffc79fe3a4",
+      "reviewed_id": "ND0067",
+      "reviewed_name": "CRTPairwiseCompatiblePrefix",
+      "reviewed_parameters": [
+        "r",
+        "s",
+        "b",
+        "c",
+        "l"
+      ],
+      "route": "generalized-crt-compatibility"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
       "blueprint_name": "CRTPairwiseCoprimePrefix",
       "blueprint_parameters": [
         "b",
@@ -1168,6 +1255,24 @@
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "Even",
+      "blueprint_parameters": [
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0
+      ],
+      "reviewed_expansion_sha256": "7853348966f8c83ffc49fc916de2dbbe9b929bc5476531b11f9b867ce104459d",
+      "reviewed_id": "PD0009",
+      "reviewed_name": "Even",
+      "reviewed_parameters": [
+        "n"
+      ],
+      "route": "quadratic-reciprocity"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
       "blueprint_name": "Fact",
       "blueprint_parameters": [
         "n",
@@ -1234,6 +1339,33 @@
         "b"
       ],
       "route": "quadratic-reciprocity"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "HenselCorrection",
+      "blueprint_parameters": [
+        "d",
+        "p",
+        "q",
+        "t"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed_expansion_sha256": "c6de2649c016afa054876da946655dc9ced5898668ff80f367447b2d3d1597e3",
+      "reviewed_id": "ND0066",
+      "reviewed_name": "HenselCorrection",
+      "reviewed_parameters": [
+        "d",
+        "p",
+        "q",
+        "t"
+      ],
+      "route": "polynomial-taylor-hensel"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -1366,6 +1498,48 @@
         "e"
       ],
       "route": "polynomial-hensel"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "HornerTaylorRemainder",
+      "blueprint_parameters": [
+        "b",
+        "c",
+        "x",
+        "h",
+        "l",
+        "n",
+        "d",
+        "y",
+        "q"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "reviewed_expansion_sha256": "e6ed889e7cf76a0bc75a97eeb0b4782e47ddddc86c32d5a9bbe93e1c77feb373",
+      "reviewed_id": "ND0065",
+      "reviewed_name": "HornerTaylorRemainder",
+      "reviewed_parameters": [
+        "b",
+        "c",
+        "x",
+        "h",
+        "l",
+        "n",
+        "d",
+        "y",
+        "q"
+      ],
+      "route": "polynomial-taylor-hensel"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -1564,6 +1738,36 @@
         "z"
       ],
       "route": "matrix-determinant-minors"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "MatrixMinorFourCode",
+      "blueprint_parameters": [
+        "z",
+        "up",
+        "us",
+        "un",
+        "ut"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewed_expansion_sha256": "53f1d359f551e0a2f96fea18a088efe5cec1dd9ef957fd1106b44ee6052aa5ff",
+      "reviewed_id": "ND0058",
+      "reviewed_name": "MatrixMinorFourCode",
+      "reviewed_parameters": [
+        "z",
+        "up",
+        "us",
+        "un",
+        "ut"
+      ],
+      "route": "matrix-cofactor-expansion"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -1771,6 +1975,48 @@
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "ModEq",
+      "blueprint_parameters": [
+        "m",
+        "a",
+        "b"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "14b22c6894ec6a5f7d1a8a1cb62865dc5effcb102a2fdae0d7b9a87820a44fb6",
+      "reviewed_id": "PD0008",
+      "reviewed_name": "ModEq",
+      "reviewed_parameters": [
+        "m",
+        "a",
+        "b"
+      ],
+      "route": "quadratic-reciprocity"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "Odd",
+      "blueprint_parameters": [
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0
+      ],
+      "reviewed_expansion_sha256": "f71a3bedae19546049db82c8f93c51c51582ded86e243fb0228d81d38b89245c",
+      "reviewed_id": "PD0010",
+      "reviewed_name": "Odd",
+      "reviewed_parameters": [
+        "n"
+      ],
+      "route": "quadratic-reciprocity"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
       "blueprint_name": "Pow",
       "blueprint_parameters": [
         "a",
@@ -1900,6 +2146,183 @@
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedAlternatingCofactorFold",
+      "blueprint_parameters": [
+        "ab",
+        "ac",
+        "db",
+        "dc",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "l",
+        "p",
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "reviewed_expansion_sha256": "b1f9c53656a4487de03606848e4fa81d0cefe26ae20c538152e19326b1ab63e7",
+      "reviewed_id": "ND0063",
+      "reviewed_name": "SignedAlternatingCofactorFold",
+      "reviewed_parameters": [
+        "ab",
+        "ac",
+        "db",
+        "dc",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "l",
+        "p",
+        "n"
+      ],
+      "route": "matrix-cofactor-expansion"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedAlternatingCofactorTerm",
+      "blueprint_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "i",
+        "p",
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "reviewed_expansion_sha256": "c202b0bc1d7b216067de52e3bb8cc819451f481b3aaf5dadb99efd640804f3bd",
+      "reviewed_id": "ND0061",
+      "reviewed_name": "SignedAlternatingCofactorTerm",
+      "reviewed_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "i",
+        "p",
+        "n"
+      ],
+      "route": "matrix-cofactor-expansion"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedAlternatingProductPrefix",
+      "blueprint_parameters": [
+        "ab",
+        "ac",
+        "db",
+        "dc",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "ub",
+        "uc",
+        "vb",
+        "vc",
+        "l"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "reviewed_expansion_sha256": "76fafd74f57de662747a4ce9020a1973c2452c087358d0a4c238c17d45163b2a",
+      "reviewed_id": "ND0062",
+      "reviewed_name": "SignedAlternatingProductPrefix",
+      "reviewed_parameters": [
+        "ab",
+        "ac",
+        "db",
+        "dc",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "ub",
+        "uc",
+        "vb",
+        "vc",
+        "l"
+      ],
+      "route": "matrix-cofactor-expansion"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedCofactorMinorPrefix",
+      "blueprint_parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "b",
+        "c",
+        "l"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed_expansion_sha256": "c0ae58581147cba99f56c558de61486f3bcdc1441b811d05d6938849efd69c8a",
+      "reviewed_id": "ND0060",
+      "reviewed_name": "SignedCofactorMinorPrefix",
+      "reviewed_parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "b",
+        "c",
+        "l"
+      ],
+      "route": "matrix-cofactor-expansion"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
       "blueprint_name": "SignedDet2",
       "blueprint_parameters": [
         "a",
@@ -1978,6 +2401,54 @@
         "n"
       ],
       "route": "matrix-coded-products"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedFirstRowCofactorFold",
+      "blueprint_parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "p",
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "reviewed_expansion_sha256": "ebdc006a7f9bdddf840528d34fe128c2d9d6bebfe1b93803c87e5bfcd93907f2",
+      "reviewed_id": "ND0064",
+      "reviewed_name": "SignedFirstRowCofactorFold",
+      "reviewed_parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "p",
+        "n"
+      ],
+      "route": "matrix-cofactor-expansion"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -2089,11 +2560,47 @@
         "nc"
       ],
       "route": "matrix-coded-products"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedMinorRecord",
+      "blueprint_parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "j",
+        "z"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "reviewed_expansion_sha256": "0f1141286f3f0da181315e89ae04b8d3fbf2c6fd55a9815dc664035042111f34",
+      "reviewed_id": "ND0059",
+      "reviewed_name": "SignedMinorRecord",
+      "reviewed_parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "j",
+        "z"
+      ],
+      "route": "matrix-cofactor-expansion"
     }
   ],
-  "declared_notation_edge_count": 68,
-  "definition_count": 164,
-  "definition_edge_count": 135,
+  "declared_notation_edge_count": 84,
+  "definition_count": 179,
+  "definition_edge_count": 165,
   "definition_edges": [
     {
       "kind": "definition_uses_definition",
@@ -2103,6 +2610,16 @@
     {
       "kind": "definition_uses_definition",
       "source": "AllBits",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "BetaSum",
+      "target": "Beta"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "BetaSum",
       "target": "Lt"
     },
     {
@@ -2237,6 +2754,16 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "HenselCorrection",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "HenselCorrection",
+      "target": "ModEq"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "HilbertProduct",
       "target": "HilbertBit"
     },
@@ -2304,6 +2831,16 @@
       "kind": "definition_uses_definition",
       "source": "Prime",
       "target": "Dvd"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedAlternatingCofactorTerm",
+      "target": "Even"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedAlternatingCofactorTerm",
+      "target": "Odd"
     },
     {
       "kind": "definition_uses_definition",
@@ -2384,6 +2921,56 @@
       "kind": "definition_uses_definition",
       "source": "CRTCanonicalPrefixSolution",
       "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "CRTMergeCompatiblePrefix",
+      "target": "Beta"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "CRTMergeCompatiblePrefix",
+      "target": "CRTPrefixLCM"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "CRTMergeCompatiblePrefix",
+      "target": "CRTPrefixSolution"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "CRTMergeCompatiblePrefix",
+      "target": "Gcd"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "CRTMergeCompatiblePrefix",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "CRTMergeCompatiblePrefix",
+      "target": "ModEq"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "CRTPairwiseCompatiblePrefix",
+      "target": "Beta"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "CRTPairwiseCompatiblePrefix",
+      "target": "Gcd"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "CRTPairwiseCompatiblePrefix",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "CRTPairwiseCompatiblePrefix",
+      "target": "ModEq"
     },
     {
       "kind": "definition_uses_definition",
@@ -2532,6 +3119,21 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "SignedAlternatingProductPrefix",
+      "target": "Beta"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedAlternatingProductPrefix",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedAlternatingProductPrefix",
+      "target": "SignedAlternatingCofactorTerm"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "SignedDotProduct",
       "target": "DotProduct"
     },
@@ -2657,6 +3259,16 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "HornerTaylorRemainder",
+      "target": "Horner"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "HornerTaylorRemainder",
+      "target": "HornerDerivative"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "JacobiBit",
       "target": "Coprime"
     },
@@ -2707,6 +3319,16 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "SignedAlternatingCofactorFold",
+      "target": "BetaSum"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedAlternatingCofactorFold",
+      "target": "SignedAlternatingProductPrefix"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "BinaryModularExecution",
       "target": "Beta"
     },
@@ -2742,6 +3364,16 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "SignedFirstRowCofactorFold",
+      "target": "MatrixAffineSlice"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedFirstRowCofactorFold",
+      "target": "SignedAlternatingCofactorFold"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "SignedMatrixMinor",
       "target": "MatrixMinorPrefix"
     },
@@ -2769,6 +3401,31 @@
       "kind": "definition_uses_definition",
       "source": "BinaryCompleteModularExecution",
       "target": "BinaryModularPower"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedMinorRecord",
+      "target": "MatrixMinorFourCode"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedMinorRecord",
+      "target": "SignedMatrixMinor"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedCofactorMinorPrefix",
+      "target": "Beta"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedCofactorMinorPrefix",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedCofactorMinorPrefix",
+      "target": "SignedMinorRecord"
     }
   ],
   "definitions": [
@@ -2855,9 +3512,12 @@
       "dependents": [
         "AllBits",
         "BertrandChain",
+        "BetaSum",
         "BinaryDigitPrefix",
         "BinaryExecutionTrace",
         "BinaryModularExecution",
+        "CRTMergeCompatiblePrefix",
+        "CRTPairwiseCompatiblePrefix",
         "CRTPairwiseCoprimePrefix",
         "CRTPositiveModuliPrefix",
         "CRTPrefixLCM",
@@ -2873,7 +3533,9 @@
         "MatrixMinorCell",
         "MatrixMinorPrefix",
         "MatrixPointwiseAdd",
-        "MatrixProductPrefix"
+        "MatrixProductPrefix",
+        "SignedAlternatingProductPrefix",
+        "SignedCofactorMinorPrefix"
       ],
       "expansion": "∃ q. b=q*(1+(i+1)*c)+x ∧ x<1+(i+1)*c",
       "expansion_sha256": "c3e15d841d511ffc825713cd0c703f9a6c95e99cfaa77f93d8a5bf0af88e725d",
@@ -2923,6 +3585,7 @@
       "transitive_dependents": [
         "AllBits",
         "BertrandChain",
+        "BetaSum",
         "BinaryCanonicalExponentDigitCode",
         "BinaryCompleteModularExecution",
         "BinaryDigitPrefix",
@@ -2933,6 +3596,8 @@
         "BinaryModularExecution",
         "BitCount",
         "CRTCanonicalPrefixSolution",
+        "CRTMergeCompatiblePrefix",
+        "CRTPairwiseCompatiblePrefix",
         "CRTPairwiseCoprimePrefix",
         "CRTPositiveModuliPrefix",
         "CRTPrefixLCM",
@@ -2949,6 +3614,7 @@
         "HornerDerivative",
         "HornerDerivativeOnly",
         "HornerDerivativeTrace",
+        "HornerTaylorRemainder",
         "MatrixAffineSlice",
         "MatrixAt",
         "MatrixMinorCell",
@@ -2956,9 +3622,14 @@
         "MatrixPointwiseAdd",
         "MatrixProductCell",
         "MatrixProductPrefix",
+        "SignedAlternatingCofactorFold",
+        "SignedAlternatingProductPrefix",
+        "SignedCofactorMinorPrefix",
         "SignedDotProduct",
+        "SignedFirstRowCofactorFold",
         "SignedMatrixMinor",
-        "SignedMatrixProduct"
+        "SignedMatrixProduct",
+        "SignedMinorRecord"
       ]
     },
     {
@@ -3532,6 +4203,8 @@
         "BertrandChain",
         "BertrandWindow",
         "CRTCanonicalPrefixSolution",
+        "CRTMergeCompatiblePrefix",
+        "CRTPairwiseCompatiblePrefix",
         "CRTPairwiseCoprimePrefix",
         "CRTPrefixLCM",
         "Coprime",
@@ -3679,6 +4352,51 @@
       "topological_layer": 0,
       "transitive_dependencies": [],
       "transitive_dependents": []
+    },
+    {
+      "arity": 1,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [],
+      "dependents": [
+        "SignedAlternatingCofactorTerm"
+      ],
+      "expansion": "∃ k. n=2*k",
+      "expansion_sha256": "fc239c1faa43f8440ea3be33307931d31321cb9c6ba41c33c1bfd52da5b8206e",
+      "meaning": "A witnessed exact even natural, shared with the historical checked parity definition.",
+      "milestone_users": [
+        "T13"
+      ],
+      "name": "Even",
+      "parameters": [
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "Even",
+        "blueprint_parameters": [
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0
+        ],
+        "reviewed_expansion_sha256": "7853348966f8c83ffc49fc916de2dbbe9b929bc5476531b11f9b867ce104459d",
+        "reviewed_id": "PD0009",
+        "reviewed_name": "Even",
+        "reviewed_parameters": [
+          "n"
+        ],
+        "route": "quadratic-reciprocity"
+      },
+      "topological_layer": 0,
+      "transitive_dependencies": [],
+      "transitive_dependents": [
+        "SignedAlternatingCofactorFold",
+        "SignedAlternatingCofactorTerm",
+        "SignedAlternatingProductPrefix",
+        "SignedFirstRowCofactorFold"
+      ]
     },
     {
       "arity": 5,
@@ -4017,7 +4735,9 @@
         "MatrixMinorCell",
         "MatrixMinorPrefix",
         "MatrixSkipIndex",
-        "SignedMatrixMinor"
+        "SignedCofactorMinorPrefix",
+        "SignedMatrixMinor",
+        "SignedMinorRecord"
       ]
     },
     {
@@ -4173,10 +4893,13 @@
         "AllBits",
         "BertrandChain",
         "BertrandWindow",
+        "BetaSum",
         "BinaryDigitPrefix",
         "BinaryExecutionTrace",
         "BinaryModulus",
         "CRTCanonicalPrefixSolution",
+        "CRTMergeCompatiblePrefix",
+        "CRTPairwiseCompatiblePrefix",
         "CRTPairwiseCoprimePrefix",
         "CRTPositiveModuliPrefix",
         "CRTPrefixLCM",
@@ -4186,13 +4909,16 @@
         "DotProduct",
         "EuclideanDivision",
         "EuclideanHalving",
+        "HenselCorrection",
         "Horner",
         "HornerDerivativeTrace",
         "MatrixAffineSlice",
         "MatrixMinorPrefix",
         "MatrixPointwiseAdd",
         "MatrixProductPrefix",
-        "MatrixSkipIndex"
+        "MatrixSkipIndex",
+        "SignedAlternatingProductPrefix",
+        "SignedCofactorMinorPrefix"
       ],
       "expansion": "∃ t. a+S(t)=b",
       "expansion_sha256": "76abe51a879b4d88fe5a59c99f5c6ac4bae7d381fcfc662497e616155e35d947",
@@ -4231,6 +4957,7 @@
         "AllBits",
         "BertrandChain",
         "BertrandWindow",
+        "BetaSum",
         "BinaryCanonicalExponentDigitCode",
         "BinaryCompleteModularExecution",
         "BinaryDigitPrefix",
@@ -4244,6 +4971,8 @@
         "BinaryModulus",
         "BitCount",
         "CRTCanonicalPrefixSolution",
+        "CRTMergeCompatiblePrefix",
+        "CRTPairwiseCompatiblePrefix",
         "CRTPairwiseCoprimePrefix",
         "CRTPositiveModuliPrefix",
         "CRTPrefixLCM",
@@ -4258,10 +4987,12 @@
         "EuclideanHalving",
         "EuclideanLogarithmicExecution",
         "Eval",
+        "HenselCorrection",
         "Horner",
         "HornerDerivative",
         "HornerDerivativeOnly",
         "HornerDerivativeTrace",
+        "HornerTaylorRemainder",
         "MatrixAffineSlice",
         "MatrixMinorCell",
         "MatrixMinorPrefix",
@@ -4269,9 +5000,73 @@
         "MatrixProductCell",
         "MatrixProductPrefix",
         "MatrixSkipIndex",
+        "SignedAlternatingCofactorFold",
+        "SignedAlternatingProductPrefix",
+        "SignedCofactorMinorPrefix",
         "SignedDotProduct",
+        "SignedFirstRowCofactorFold",
         "SignedMatrixMinor",
-        "SignedMatrixProduct"
+        "SignedMatrixProduct",
+        "SignedMinorRecord"
+      ]
+    },
+    {
+      "arity": 5,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [],
+      "dependents": [
+        "SignedMinorRecord"
+      ],
+      "expansion": "z=((up+us)*(up+us+1)+2*us+(un+ut)*(un+ut+1)+2*ut)*(((up+us)*(up+us+1)+2*us+(un+ut)*(un+ut+1)+2*ut)+1)+2*((un+ut)*(un+ut+1)+2*ut)",
+      "expansion_sha256": "66fb1e3078c1c85d7ac875aae17f91ff8fc131e8a2e4f40bb78e7549ade03190",
+      "meaning": "The exact nested doubled-Cantor code of the four actual beta parameters describing one signed matrix minor.",
+      "milestone_users": [
+        "T13"
+      ],
+      "name": "MatrixMinorFourCode",
+      "parameters": [
+        "z",
+        "up",
+        "us",
+        "un",
+        "ut"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "MatrixMinorFourCode",
+        "blueprint_parameters": [
+          "z",
+          "up",
+          "us",
+          "un",
+          "ut"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "reviewed_expansion_sha256": "53f1d359f551e0a2f96fea18a088efe5cec1dd9ef957fd1106b44ee6052aa5ff",
+        "reviewed_id": "ND0058",
+        "reviewed_name": "MatrixMinorFourCode",
+        "reviewed_parameters": [
+          "z",
+          "up",
+          "us",
+          "un",
+          "ut"
+        ],
+        "route": "matrix-cofactor-expansion"
+      },
+      "topological_layer": 0,
+      "transitive_dependencies": [],
+      "transitive_dependents": [
+        "SignedCofactorMinorPrefix",
+        "SignedMinorRecord"
       ]
     },
     {
@@ -4420,6 +5215,61 @@
       "arity": 3,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [],
+      "dependents": [
+        "CRTMergeCompatiblePrefix",
+        "CRTPairwiseCompatiblePrefix",
+        "HenselCorrection"
+      ],
+      "expansion": "∃ u v. a+m*u=b+m*v",
+      "expansion_sha256": "bdcc29379226ab90bffa74cdf8023e56de0008b3be94bc048b2a61e33466121c",
+      "meaning": "Balanced witnessed congruence for any natural modulus, including the exact-equality zero-modulus case.",
+      "milestone_users": [
+        "G011",
+        "G095"
+      ],
+      "name": "ModEq",
+      "parameters": [
+        "m",
+        "a",
+        "b"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "ModEq",
+        "blueprint_parameters": [
+          "m",
+          "a",
+          "b"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "14b22c6894ec6a5f7d1a8a1cb62865dc5effcb102a2fdae0d7b9a87820a44fb6",
+        "reviewed_id": "PD0008",
+        "reviewed_name": "ModEq",
+        "reviewed_parameters": [
+          "m",
+          "a",
+          "b"
+        ],
+        "route": "quadratic-reciprocity"
+      },
+      "topological_layer": 0,
+      "transitive_dependencies": [],
+      "transitive_dependents": [
+        "CRTMergeCompatiblePrefix",
+        "CRTPairwiseCompatiblePrefix",
+        "HenselCorrection"
+      ]
+    },
+    {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [],
       "dependents": [],
       "expansion": "parts is a finite nonnegative list summing to n and z is its iterated binomial product",
       "expansion_sha256": "e5e52a34fe2a9868e23bb1c3b277faee59b09d5b09e97d1c9d44c1f8c404aa4a",
@@ -4439,6 +5289,51 @@
       "topological_layer": 0,
       "transitive_dependencies": [],
       "transitive_dependents": []
+    },
+    {
+      "arity": 1,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [],
+      "dependents": [
+        "SignedAlternatingCofactorTerm"
+      ],
+      "expansion": "∃ k. n=2*k+1",
+      "expansion_sha256": "b2eadcb466235d935f3bd57710b6b2ab63a24bd3a47651009a45b194a3d0c5c0",
+      "meaning": "A witnessed exact odd natural, shared with the historical checked parity definition.",
+      "milestone_users": [
+        "T13"
+      ],
+      "name": "Odd",
+      "parameters": [
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "Odd",
+        "blueprint_parameters": [
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0
+        ],
+        "reviewed_expansion_sha256": "f71a3bedae19546049db82c8f93c51c51582ded86e243fb0228d81d38b89245c",
+        "reviewed_id": "PD0010",
+        "reviewed_name": "Odd",
+        "reviewed_parameters": [
+          "n"
+        ],
+        "route": "quadratic-reciprocity"
+      },
+      "topological_layer": 0,
+      "transitive_dependencies": [],
+      "transitive_dependents": [
+        "SignedAlternatingCofactorFold",
+        "SignedAlternatingCofactorTerm",
+        "SignedAlternatingProductPrefix",
+        "SignedFirstRowCofactorFold"
+      ]
     },
     {
       "arity": 3,
@@ -5467,6 +6362,67 @@
       ]
     },
     {
+      "arity": 4,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Beta",
+        "Lt"
+      ],
+      "dependents": [
+        "SignedAlternatingCofactorFold"
+      ],
+      "expansion": "∃u v. Beta(u,v,0,0) ∧ Beta(u,v,l,z) ∧ ∀i. Lt(i,l) → ∃a x y. Beta(b,c,i,a) ∧ Beta(u,v,i,x) ∧ Beta(u,v,S(i),y) ∧ y=x+a",
+      "expansion_sha256": "19096159acc6397a1a3fc2f4c4735e69428d20e27fbb68d1794769786fcfd1c6",
+      "meaning": "The exact four-argument checked beta-prefix sum, kept distinct from the three-argument generic research-planning Sum relation.",
+      "milestone_users": [
+        "T13"
+      ],
+      "name": "BetaSum",
+      "parameters": [
+        "b",
+        "c",
+        "l",
+        "z"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "BetaSum",
+        "blueprint_parameters": [
+          "b",
+          "c",
+          "l",
+          "z"
+        ],
+        "kind": "explicit-alias",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "reviewed_expansion_sha256": "e77d758e2118ffddffef0040007a3fa468938ddf33f66035b1ea59a3308db937",
+        "reviewed_id": "PD0015",
+        "reviewed_name": "Sum",
+        "reviewed_parameters": [
+          "b",
+          "c",
+          "l",
+          "z"
+        ],
+        "route": "quadratic-reciprocity"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "Beta",
+        "Lt"
+      ],
+      "transitive_dependents": [
+        "SignedAlternatingCofactorFold",
+        "SignedFirstRowCofactorFold"
+      ]
+    },
+    {
       "arity": 3,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -5793,7 +6749,8 @@
         "Lt"
       ],
       "dependents": [
-        "CRTCanonicalPrefixSolution"
+        "CRTCanonicalPrefixSolution",
+        "CRTMergeCompatiblePrefix"
       ],
       "expansion": "(∀i m. Lt(i,l) → Beta(b,c,i,m) → Dvd(m,M)) ∧ (∀N. (∀i m. Lt(i,l) → Beta(b,c,i,m) → Dvd(m,N)) → Dvd(M,N))",
       "expansion_sha256": "cb2bee847ae6e472d6027839547ade7bbeddc8e2863dbf46fb49b425546f3e02",
@@ -5843,7 +6800,8 @@
         "Lt"
       ],
       "transitive_dependents": [
-        "CRTCanonicalPrefixSolution"
+        "CRTCanonicalPrefixSolution",
+        "CRTMergeCompatiblePrefix"
       ]
     },
     {
@@ -5854,7 +6812,8 @@
         "Lt"
       ],
       "dependents": [
-        "CRTCanonicalPrefixSolution"
+        "CRTCanonicalPrefixSolution",
+        "CRTMergeCompatiblePrefix"
       ],
       "expansion": "∀i a m. Lt(i,l) → Beta(r,s,i,a) → Beta(b,c,i,m) → ∃q h. x+m*q=a+m*h",
       "expansion_sha256": "04ea7ce1c3247d9ed828f6ccf2ff50154b928c5f70151647816cc3fbe44ae6c2",
@@ -5911,7 +6870,8 @@
         "Lt"
       ],
       "transitive_dependents": [
-        "CRTCanonicalPrefixSolution"
+        "CRTCanonicalPrefixSolution",
+        "CRTMergeCompatiblePrefix"
       ]
     },
     {
@@ -6393,6 +7353,8 @@
         "Dvd"
       ],
       "dependents": [
+        "CRTMergeCompatiblePrefix",
+        "CRTPairwiseCompatiblePrefix",
         "Coprime",
         "EuclideanAnchoredExecution",
         "EuclideanExecution"
@@ -6443,6 +7405,8 @@
         "Dvd"
       ],
       "transitive_dependents": [
+        "CRTMergeCompatiblePrefix",
+        "CRTPairwiseCompatiblePrefix",
         "CRTPairwiseCoprimePrefix",
         "Coprime",
         "EuclideanAnchoredExecution",
@@ -6453,6 +7417,62 @@
         "PrimitiveRoot",
         "PrimitiveTriple"
       ]
+    },
+    {
+      "arity": 4,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Lt",
+        "ModEq"
+      ],
+      "dependents": [],
+      "expansion": "Lt(t,p) ∧ ModEq(p,q+d*t,0)",
+      "expansion_sha256": "1519a6ac3b7c6e84aa74a5b404b04a16f0479755bfb4976c35d310ffbf3f6444",
+      "meaning": "A canonical bounded correction digit making the derivative-weighted residual vanish modulo its actual modulus.",
+      "milestone_users": [
+        "G095"
+      ],
+      "name": "HenselCorrection",
+      "parameters": [
+        "d",
+        "p",
+        "q",
+        "t"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "HenselCorrection",
+        "blueprint_parameters": [
+          "d",
+          "p",
+          "q",
+          "t"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "reviewed_expansion_sha256": "c6de2649c016afa054876da946655dc9ced5898668ff80f367447b2d3d1597e3",
+        "reviewed_id": "ND0066",
+        "reviewed_name": "HenselCorrection",
+        "reviewed_parameters": [
+          "d",
+          "p",
+          "q",
+          "t"
+        ],
+        "route": "polynomial-taylor-hensel"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "Lt",
+        "ModEq"
+      ],
+      "transitive_dependents": []
     },
     {
       "arity": 3,
@@ -6492,7 +7512,8 @@
         "BinaryExecutionPowerInvariant",
         "BinaryExponentDigitCode",
         "Eval",
-        "HornerDerivative"
+        "HornerDerivative",
+        "HornerTaylorRemainder"
       ],
       "expansion": "∃u v. Beta(u,v,0,0) ∧ Beta(u,v,ell,z) ∧ ∀i. Lt(i,ell) → ∃a r s. Beta(b,c,i,a) ∧ Beta(u,v,i,r) ∧ Beta(u,v,i+1,s) ∧ s=r*x+a",
       "expansion_sha256": "941a7b111328aef72d1aaf87e2098cff1b41e716583ef849636681b13ad22d3b",
@@ -6552,7 +7573,8 @@
         "BinaryExponentDigitCode",
         "Eval",
         "HornerDerivative",
-        "HornerDerivativeOnly"
+        "HornerDerivativeOnly",
+        "HornerTaylorRemainder"
       ]
     },
     {
@@ -6629,7 +7651,8 @@
       ],
       "transitive_dependents": [
         "HornerDerivative",
-        "HornerDerivativeOnly"
+        "HornerDerivativeOnly",
+        "HornerTaylorRemainder"
       ]
     },
     {
@@ -6640,7 +7663,8 @@
         "Lt"
       ],
       "dependents": [
-        "MatrixProductCell"
+        "MatrixProductCell",
+        "SignedFirstRowCofactorFold"
       ],
       "expansion": "∀i. Lt(i,l) → ∃x. Beta(b,c,s+d*i,x) ∧ Beta(u,v,i,x)",
       "expansion_sha256": "e0b7f67eee5dd42d47382a8e2d2a11cf2683477852c4f1858698e78cf360a47b",
@@ -6703,6 +7727,7 @@
       "transitive_dependents": [
         "MatrixProductCell",
         "MatrixProductPrefix",
+        "SignedFirstRowCofactorFold",
         "SignedMatrixProduct"
       ]
     },
@@ -6895,7 +7920,9 @@
       "transitive_dependents": [
         "MatrixMinorCell",
         "MatrixMinorPrefix",
-        "SignedMatrixMinor"
+        "SignedCofactorMinorPrefix",
+        "SignedMatrixMinor",
+        "SignedMinorRecord"
       ]
     },
     {
@@ -7079,6 +8106,80 @@
         "TeichLift",
         "Val",
         "WeierstrassCertificate"
+      ]
+    },
+    {
+      "arity": 7,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Even",
+        "Odd"
+      ],
+      "dependents": [
+        "SignedAlternatingProductPrefix"
+      ],
+      "expansion": "(Even(i) ∧ p=ap*bp+an*bn ∧ n=ap*bn+an*bp) ∨ (Odd(i) ∧ p=ap*bn+an*bp ∧ n=ap*bp+an*bn)",
+      "expansion_sha256": "2f9d829f1309a23e8371f149573c950f8d15c2e206daf0efad878f42442a3b45",
+      "meaning": "The exact subtraction-free positive and negative components of the signed product multiplied by the parity sign (-1)^i.",
+      "milestone_users": [
+        "T13"
+      ],
+      "name": "SignedAlternatingCofactorTerm",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "i",
+        "p",
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedAlternatingCofactorTerm",
+        "blueprint_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "i",
+          "p",
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "reviewed_expansion_sha256": "c202b0bc1d7b216067de52e3bb8cc819451f481b3aaf5dadb99efd640804f3bd",
+        "reviewed_id": "ND0061",
+        "reviewed_name": "SignedAlternatingCofactorTerm",
+        "reviewed_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "i",
+          "p",
+          "n"
+        ],
+        "route": "matrix-cofactor-expansion"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "Even",
+        "Odd"
+      ],
+      "transitive_dependents": [
+        "SignedAlternatingCofactorFold",
+        "SignedAlternatingProductPrefix",
+        "SignedFirstRowCofactorFold"
       ]
     },
     {
@@ -7629,6 +8730,140 @@
       "transitive_dependents": []
     },
     {
+      "arity": 5,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Beta",
+        "CRTPrefixLCM",
+        "CRTPrefixSolution",
+        "Gcd",
+        "Lt",
+        "ModEq"
+      ],
+      "dependents": [],
+      "expansion": "∀i x M a n g. Lt(i,l) → CRTPrefixLCM(b,c,i,M) → CRTPrefixSolution(r,s,b,c,i,x) → Beta(r,s,i,a) → Beta(b,c,i,n) → Gcd(M,n,g) → ModEq(g,x,a)",
+      "expansion_sha256": "cc1d7047533f1f85699b6c68430a8718b6d34567d0f9ca67269336edc26bbf92",
+      "meaning": "Every next actual congruence is compatible with every actual predecessor solution modulo the gcd of its modulus and the universal-property predecessor LCM.",
+      "milestone_users": [
+        "G011"
+      ],
+      "name": "CRTMergeCompatiblePrefix",
+      "parameters": [
+        "r",
+        "s",
+        "b",
+        "c",
+        "l"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "CRTMergeCompatiblePrefix",
+        "blueprint_parameters": [
+          "r",
+          "s",
+          "b",
+          "c",
+          "l"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "reviewed_expansion_sha256": "85df3d30f084d3d6e6eb269d6e44cde4bde8efcd44cbc1a58eb0c8b1ee4e3b7d",
+        "reviewed_id": "ND0068",
+        "reviewed_name": "CRTMergeCompatiblePrefix",
+        "reviewed_parameters": [
+          "r",
+          "s",
+          "b",
+          "c",
+          "l"
+        ],
+        "route": "generalized-crt-compatibility"
+      },
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "Beta",
+        "CRTPrefixLCM",
+        "CRTPrefixSolution",
+        "Dvd",
+        "Gcd",
+        "Lt",
+        "ModEq"
+      ],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 5,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Beta",
+        "Gcd",
+        "Lt",
+        "ModEq"
+      ],
+      "dependents": [],
+      "expansion": "∀i j a d m n g. Lt(i,l) → Lt(j,l) → Beta(r,s,i,a) → Beta(r,s,j,d) → Beta(b,c,i,m) → Beta(b,c,j,n) → Gcd(m,n,g) → ModEq(g,a,d)",
+      "expansion_sha256": "96e5c35172e25ce58d8f46cdf4eb9bd43bddec96c004d67079a456aeaa496969",
+      "meaning": "Every actual pair of beta-coded residues is congruent modulo the relational gcd of its actual possibly non-coprime or zero moduli.",
+      "milestone_users": [
+        "G011"
+      ],
+      "name": "CRTPairwiseCompatiblePrefix",
+      "parameters": [
+        "r",
+        "s",
+        "b",
+        "c",
+        "l"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "CRTPairwiseCompatiblePrefix",
+        "blueprint_parameters": [
+          "r",
+          "s",
+          "b",
+          "c",
+          "l"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "reviewed_expansion_sha256": "eeb5386caff3f8241697024a76886809ded26d9d2dabd84b24b32dffc79fe3a4",
+        "reviewed_id": "ND0067",
+        "reviewed_name": "CRTPairwiseCompatiblePrefix",
+        "reviewed_parameters": [
+          "r",
+          "s",
+          "b",
+          "c",
+          "l"
+        ],
+        "route": "generalized-crt-compatibility"
+      },
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "Beta",
+        "Dvd",
+        "Gcd",
+        "Lt",
+        "ModEq"
+      ],
+      "transitive_dependents": []
+    },
+    {
       "arity": 2,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -8034,7 +9269,8 @@
         "HornerDerivativeTrace"
       ],
       "dependents": [
-        "HornerDerivativeOnly"
+        "HornerDerivativeOnly",
+        "HornerTaylorRemainder"
       ],
       "expansion": "∃u v d e. HornerDerivativeTrace(b,c,t,l,u,v,d,e) ∧ Beta(u,v,l,n) ∧ Beta(d,e,l,z) ∧ Horner(b,c,t,l,n)",
       "expansion_sha256": "0bdc8d23cb03ed681beab18df860f7ade3d082de58fe07e6b1a38ff207185454",
@@ -8093,7 +9329,8 @@
         "Lt"
       ],
       "transitive_dependents": [
-        "HornerDerivativeOnly"
+        "HornerDerivativeOnly",
+        "HornerTaylorRemainder"
       ]
     },
     {
@@ -8199,7 +9436,9 @@
       ],
       "transitive_dependents": [
         "MatrixMinorPrefix",
-        "SignedMatrixMinor"
+        "SignedCofactorMinorPrefix",
+        "SignedMatrixMinor",
+        "SignedMinorRecord"
       ]
     },
     {
@@ -8395,6 +9634,107 @@
         "Prime"
       ],
       "transitive_dependents": []
+    },
+    {
+      "arity": 13,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Beta",
+        "Lt",
+        "SignedAlternatingCofactorTerm"
+      ],
+      "dependents": [
+        "SignedAlternatingCofactorFold"
+      ],
+      "expansion": "∀i ap an bp bn p n. Lt(i,l) → Beta(ab,ac,i,ap) → Beta(db,dc,i,an) → Beta(eb,ec,i,bp) → Beta(fb,fc,i,bn) → Beta(ub,uc,i,p) → Beta(vb,vc,i,n) → SignedAlternatingCofactorTerm(ap,an,bp,bn,i,p,n)",
+      "expansion_sha256": "f28460440de75e1871dc2a840db9f85c8e9e180864c03a3a6f9c26d78779d4af",
+      "meaning": "Two complete beta-coded output streams containing every actual parity-correct signed cofactor-product component.",
+      "milestone_users": [
+        "T13"
+      ],
+      "name": "SignedAlternatingProductPrefix",
+      "parameters": [
+        "ab",
+        "ac",
+        "db",
+        "dc",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "ub",
+        "uc",
+        "vb",
+        "vc",
+        "l"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedAlternatingProductPrefix",
+        "blueprint_parameters": [
+          "ab",
+          "ac",
+          "db",
+          "dc",
+          "eb",
+          "ec",
+          "fb",
+          "fc",
+          "ub",
+          "uc",
+          "vb",
+          "vc",
+          "l"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "reviewed_expansion_sha256": "76fafd74f57de662747a4ce9020a1973c2452c087358d0a4c238c17d45163b2a",
+        "reviewed_id": "ND0062",
+        "reviewed_name": "SignedAlternatingProductPrefix",
+        "reviewed_parameters": [
+          "ab",
+          "ac",
+          "db",
+          "dc",
+          "eb",
+          "ec",
+          "fb",
+          "fc",
+          "ub",
+          "uc",
+          "vb",
+          "vc",
+          "l"
+        ],
+        "route": "matrix-cofactor-expansion"
+      },
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "Beta",
+        "Even",
+        "Lt",
+        "Odd",
+        "SignedAlternatingCofactorTerm"
+      ],
+      "transitive_dependents": [
+        "SignedAlternatingCofactorFold",
+        "SignedFirstRowCofactorFold"
+      ]
     },
     {
       "arity": 11,
@@ -9132,6 +10472,85 @@
       "transitive_dependents": []
     },
     {
+      "arity": 9,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Horner",
+        "HornerDerivative"
+      ],
+      "dependents": [],
+      "expansion": "HornerDerivative(b,c,x,l,n,d) ∧ Horner(b,c,x+h,l,y) ∧ y=n+h*d+h*h*q",
+      "expansion_sha256": "b45699aa285cff6162eaf9a4d0615676b6d6c0504b823aa5823daa2048089ad0",
+      "meaning": "An exact witnessed subtraction-free quadratic Taylor remainder for a beta-coded natural polynomial, its checked formal derivative, and a shifted evaluation.",
+      "milestone_users": [
+        "G095"
+      ],
+      "name": "HornerTaylorRemainder",
+      "parameters": [
+        "b",
+        "c",
+        "x",
+        "h",
+        "l",
+        "n",
+        "d",
+        "y",
+        "q"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "HornerTaylorRemainder",
+        "blueprint_parameters": [
+          "b",
+          "c",
+          "x",
+          "h",
+          "l",
+          "n",
+          "d",
+          "y",
+          "q"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "reviewed_expansion_sha256": "e6ed889e7cf76a0bc75a97eeb0b4782e47ddddc86c32d5a9bbe93e1c77feb373",
+        "reviewed_id": "ND0065",
+        "reviewed_name": "HornerTaylorRemainder",
+        "reviewed_parameters": [
+          "b",
+          "c",
+          "x",
+          "h",
+          "l",
+          "n",
+          "d",
+          "y",
+          "q"
+        ],
+        "route": "polynomial-taylor-hensel"
+      },
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "Beta",
+        "Horner",
+        "HornerDerivative",
+        "HornerDerivativeTrace",
+        "Lt"
+      ],
+      "transitive_dependents": []
+    },
+    {
       "arity": 3,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -9241,7 +10660,9 @@
         "MatrixSkipIndex"
       ],
       "transitive_dependents": [
-        "SignedMatrixMinor"
+        "SignedCofactorMinorPrefix",
+        "SignedMatrixMinor",
+        "SignedMinorRecord"
       ]
     },
     {
@@ -9455,6 +10876,99 @@
       "transitive_dependents": []
     },
     {
+      "arity": 11,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "BetaSum",
+        "SignedAlternatingProductPrefix"
+      ],
+      "dependents": [
+        "SignedFirstRowCofactorFold"
+      ],
+      "expansion": "∃ub uc vb vc. SignedAlternatingProductPrefix(ab,ac,db,dc,eb,ec,fb,fc,ub,uc,vb,vc,l) ∧ BetaSum(ub,uc,l,p) ∧ BetaSum(vb,vc,l,n)",
+      "expansion_sha256": "f3b10717001a0efa87e7eaa7ef55090662a2b70831451e0b6c71eeef71fed0e2",
+      "meaning": "The exact arbitrary-length subtraction-free positive/negative sum of every parity-correct signed cofactor product.",
+      "milestone_users": [
+        "T13"
+      ],
+      "name": "SignedAlternatingCofactorFold",
+      "parameters": [
+        "ab",
+        "ac",
+        "db",
+        "dc",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "l",
+        "p",
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedAlternatingCofactorFold",
+        "blueprint_parameters": [
+          "ab",
+          "ac",
+          "db",
+          "dc",
+          "eb",
+          "ec",
+          "fb",
+          "fc",
+          "l",
+          "p",
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "reviewed_expansion_sha256": "b1f9c53656a4487de03606848e4fa81d0cefe26ae20c538152e19326b1ab63e7",
+        "reviewed_id": "ND0063",
+        "reviewed_name": "SignedAlternatingCofactorFold",
+        "reviewed_parameters": [
+          "ab",
+          "ac",
+          "db",
+          "dc",
+          "eb",
+          "ec",
+          "fb",
+          "fc",
+          "l",
+          "p",
+          "n"
+        ],
+        "route": "matrix-cofactor-expansion"
+      },
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "Beta",
+        "BetaSum",
+        "Even",
+        "Lt",
+        "Odd",
+        "SignedAlternatingCofactorTerm",
+        "SignedAlternatingProductPrefix"
+      ],
+      "transitive_dependents": [
+        "SignedFirstRowCofactorFold"
+      ]
+    },
+    {
       "arity": 6,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -9664,12 +11178,105 @@
       "transitive_dependents": []
     },
     {
+      "arity": 11,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "MatrixAffineSlice",
+        "SignedAlternatingCofactorFold"
+      ],
+      "dependents": [],
+      "expansion": "∃ab ac db dc. MatrixAffineSlice(pb,pc,0,1,ab,ac,S(q)) ∧ MatrixAffineSlice(nb,nc,0,1,db,dc,S(q)) ∧ SignedAlternatingCofactorFold(ab,ac,db,dc,eb,ec,fb,fc,S(q),p,n)",
+      "expansion_sha256": "67ea52bb78af7e2d98eb674eece366195ed56aa1d11a7accd23703883455ceb7",
+      "meaning": "An exact arbitrary-dimensional signed alternating cofactor fold using the actual decoded positive and negative first row of the input matrix.",
+      "milestone_users": [
+        "T13"
+      ],
+      "name": "SignedFirstRowCofactorFold",
+      "parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "p",
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedFirstRowCofactorFold",
+        "blueprint_parameters": [
+          "pb",
+          "pc",
+          "nb",
+          "nc",
+          "q",
+          "eb",
+          "ec",
+          "fb",
+          "fc",
+          "p",
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "reviewed_expansion_sha256": "ebdc006a7f9bdddf840528d34fe128c2d9d6bebfe1b93803c87e5bfcd93907f2",
+        "reviewed_id": "ND0064",
+        "reviewed_name": "SignedFirstRowCofactorFold",
+        "reviewed_parameters": [
+          "pb",
+          "pc",
+          "nb",
+          "nc",
+          "q",
+          "eb",
+          "ec",
+          "fb",
+          "fc",
+          "p",
+          "n"
+        ],
+        "route": "matrix-cofactor-expansion"
+      },
+      "topological_layer": 4,
+      "transitive_dependencies": [
+        "Beta",
+        "BetaSum",
+        "Even",
+        "Lt",
+        "MatrixAffineSlice",
+        "Odd",
+        "SignedAlternatingCofactorFold",
+        "SignedAlternatingCofactorTerm",
+        "SignedAlternatingProductPrefix"
+      ],
+      "transitive_dependents": []
+    },
+    {
       "arity": 12,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
         "MatrixMinorPrefix"
       ],
-      "dependents": [],
+      "dependents": [
+        "SignedMinorRecord"
+      ],
       "expansion": "MatrixMinorPrefix(pb,pc,w,r,d,up,us,q,q*q) ∧ MatrixMinorPrefix(nb,nc,w,r,d,un,ut,q,q*q)",
       "expansion_sha256": "2ee7f5ec679e6eecac63f8256587878a87977f13ab969f2a84b06be351f4abf6",
       "meaning": "An exact arbitrary-dimensional signed matrix minor with independently coded positive and negative components.",
@@ -9752,7 +11359,10 @@
         "MatrixMinorPrefix",
         "MatrixSkipIndex"
       ],
-      "transitive_dependents": []
+      "transitive_dependents": [
+        "SignedCofactorMinorPrefix",
+        "SignedMinorRecord"
+      ]
     },
     {
       "arity": 15,
@@ -9940,10 +11550,168 @@
         "PowTwo"
       ],
       "transitive_dependents": []
+    },
+    {
+      "arity": 7,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "MatrixMinorFourCode",
+        "SignedMatrixMinor"
+      ],
+      "dependents": [
+        "SignedCofactorMinorPrefix"
+      ],
+      "expansion": "∃up us un ut. MatrixMinorFourCode(z,up,us,un,ut) ∧ SignedMatrixMinor(pb,pc,nb,nc,S(q),0,j,q,up,us,un,ut)",
+      "expansion_sha256": "132ad507f6b8a1fdc819ab0c620f18304b062e11293fc75c152597eb074a35fa",
+      "meaning": "An injectively packed record of the genuine signed q-by-q minor obtained by deleting the first row and exact column j.",
+      "milestone_users": [
+        "T13"
+      ],
+      "name": "SignedMinorRecord",
+      "parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "j",
+        "z"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedMinorRecord",
+        "blueprint_parameters": [
+          "pb",
+          "pc",
+          "nb",
+          "nc",
+          "q",
+          "j",
+          "z"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "reviewed_expansion_sha256": "0f1141286f3f0da181315e89ae04b8d3fbf2c6fd55a9815dc664035042111f34",
+        "reviewed_id": "ND0059",
+        "reviewed_name": "SignedMinorRecord",
+        "reviewed_parameters": [
+          "pb",
+          "pc",
+          "nb",
+          "nc",
+          "q",
+          "j",
+          "z"
+        ],
+        "route": "matrix-cofactor-expansion"
+      },
+      "topological_layer": 5,
+      "transitive_dependencies": [
+        "Beta",
+        "Le",
+        "Lt",
+        "MatrixMinorCell",
+        "MatrixMinorFourCode",
+        "MatrixMinorPrefix",
+        "MatrixSkipIndex",
+        "SignedMatrixMinor"
+      ],
+      "transitive_dependents": [
+        "SignedCofactorMinorPrefix"
+      ]
+    },
+    {
+      "arity": 8,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Beta",
+        "Lt",
+        "SignedMinorRecord"
+      ],
+      "dependents": [],
+      "expansion": "∀j. Lt(j,l) → ∃z. Beta(b,c,j,z) ∧ SignedMinorRecord(pb,pc,nb,nc,q,j,z)",
+      "expansion_sha256": "e48d73419574f2e9040d44c8085e230aad6954cad29e9928f1418ff6dcd18f38",
+      "meaning": "A complete beta-coded finite prefix of exact injectively packed first-row signed cofactor minors.",
+      "milestone_users": [
+        "T13"
+      ],
+      "name": "SignedCofactorMinorPrefix",
+      "parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "b",
+        "c",
+        "l"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedCofactorMinorPrefix",
+        "blueprint_parameters": [
+          "pb",
+          "pc",
+          "nb",
+          "nc",
+          "q",
+          "b",
+          "c",
+          "l"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "reviewed_expansion_sha256": "c0ae58581147cba99f56c558de61486f3bcdc1441b811d05d6938849efd69c8a",
+        "reviewed_id": "ND0060",
+        "reviewed_name": "SignedCofactorMinorPrefix",
+        "reviewed_parameters": [
+          "pb",
+          "pc",
+          "nb",
+          "nc",
+          "q",
+          "b",
+          "c",
+          "l"
+        ],
+        "route": "matrix-cofactor-expansion"
+      },
+      "topological_layer": 6,
+      "transitive_dependencies": [
+        "Beta",
+        "Le",
+        "Lt",
+        "MatrixMinorCell",
+        "MatrixMinorFourCode",
+        "MatrixMinorPrefix",
+        "MatrixSkipIndex",
+        "SignedMatrixMinor",
+        "SignedMinorRecord"
+      ],
+      "transitive_dependents": []
     }
   ],
-  "exact_name_reviewed_match_count": 69,
-  "explicit_alias_reviewed_match_count": 4,
+  "exact_name_reviewed_match_count": 83,
+  "explicit_alias_reviewed_match_count": 5,
   "incompatible_reviewed_match_count": 2,
   "incompatible_reviewed_matches": [
     {
@@ -10019,6 +11787,7 @@
         "ENorm",
         "Eisenstein",
         "EllipticCertificate",
+        "Even",
         "Execution",
         "Fact",
         "FifteenTest",
@@ -10036,10 +11805,13 @@
         "LocalRepresentation",
         "LogBracket",
         "Lt",
+        "MatrixMinorFourCode",
         "Mobius",
         "Mod",
         "Mod4Three",
+        "ModEq",
         "Multinom",
+        "Odd",
         "Order",
         "Permutation",
         "PocklingtonCertificate",
@@ -10082,6 +11854,7 @@
     {
       "definitions": [
         "AllBits",
+        "BetaSum",
         "BinaryDigit",
         "BinaryDigitPrefix",
         "BinaryDoubledPower",
@@ -10099,6 +11872,7 @@
         "EuclideanHalving",
         "EuclideanStateAt",
         "Gcd",
+        "HenselCorrection",
         "HilbertProduct",
         "Horner",
         "HornerDerivativeTrace",
@@ -10108,6 +11882,7 @@
         "MatrixSkipIndex",
         "PowTwo",
         "Prime",
+        "SignedAlternatingCofactorTerm",
         "Squarefree",
         "Unit",
         "WeakMW"
@@ -10124,6 +11899,8 @@
         "BitCount",
         "BitLen",
         "CRTCanonicalPrefixSolution",
+        "CRTMergeCompatiblePrefix",
+        "CRTPairwiseCompatiblePrefix",
         "Coprime",
         "ECCount",
         "EuclideanAnchoredExecution",
@@ -10140,6 +11917,7 @@
         "PrimeThreeModFourDivisor",
         "PrimitiveRootModulus",
         "QuadBit",
+        "SignedAlternatingProductPrefix",
         "SignedDotProduct",
         "SimpleLift",
         "TeichLift",
@@ -10158,12 +11936,14 @@
         "CRTPairwiseCoprimePrefix",
         "EuclideanLogarithmicExecution",
         "HornerDerivativeOnly",
+        "HornerTaylorRemainder",
         "JacobiBit",
         "MatrixMinorPrefix",
         "MatrixProductPrefix",
         "Phi",
         "PowerValuation",
-        "PrimitiveTriple"
+        "PrimitiveTriple",
+        "SignedAlternatingCofactorFold"
       ],
       "number": 3
     },
@@ -10173,6 +11953,7 @@
         "FactorialValuation",
         "PowerValuationOne",
         "PrimitiveRoot",
+        "SignedFirstRowCofactorFold",
         "SignedMatrixMinor",
         "SignedMatrixProduct"
       ],
@@ -10180,12 +11961,19 @@
     },
     {
       "definitions": [
-        "BinaryCompleteModularExecution"
+        "BinaryCompleteModularExecution",
+        "SignedMinorRecord"
       ],
       "number": 5
+    },
+    {
+      "definitions": [
+        "SignedCofactorMinorPrefix"
+      ],
+      "number": 6
     }
   ],
-  "milestone_usage_edge_count": 379,
+  "milestone_usage_edge_count": 395,
   "milestone_usage_edges": [
     {
       "kind": "statement_uses_definition",
@@ -10336,6 +12124,56 @@
       "kind": "declared_notation",
       "source": "T13",
       "target": "SignedMatrixMinor"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "T13",
+      "target": "MatrixMinorFourCode"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "T13",
+      "target": "SignedMinorRecord"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "T13",
+      "target": "SignedCofactorMinorPrefix"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "T13",
+      "target": "SignedAlternatingCofactorTerm"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "T13",
+      "target": "SignedAlternatingProductPrefix"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "T13",
+      "target": "SignedAlternatingCofactorFold"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "T13",
+      "target": "SignedFirstRowCofactorFold"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "T13",
+      "target": "BetaSum"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "T13",
+      "target": "Even"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "T13",
+      "target": "Odd"
     },
     {
       "kind": "statement_uses_definition",
@@ -10576,6 +12414,21 @@
       "kind": "declared_notation",
       "source": "G011",
       "target": "CRTCanonicalPrefixSolution"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G011",
+      "target": "CRTPairwiseCompatiblePrefix"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G011",
+      "target": "CRTMergeCompatiblePrefix"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G011",
+      "target": "ModEq"
     },
     {
       "kind": "statement_uses_definition",
@@ -11623,6 +13476,21 @@
       "target": "HornerDerivativeOnly"
     },
     {
+      "kind": "declared_notation",
+      "source": "G095",
+      "target": "HornerTaylorRemainder"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G095",
+      "target": "HenselCorrection"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G095",
+      "target": "ModEq"
+    },
+    {
       "kind": "statement_uses_definition",
       "source": "G096",
       "target": "AllRootLifts"
@@ -12083,8 +13951,8 @@
       "target": "WeakMW"
     }
   ],
-  "reviewed_definition_count": 109,
-  "reviewed_definition_edge_count": 186,
+  "reviewed_definition_count": 120,
+  "reviewed_definition_edge_count": 214,
   "reviewed_definitions": [
     {
       "arity": 4,
@@ -12193,6 +14061,22 @@
         "b"
       ],
       "route": "quadratic-reciprocity",
+      "topological_layer": 0
+    },
+    {
+      "arity": 5,
+      "dependencies": [],
+      "expansion_sha256": "53f1d359f551e0a2f96fea18a088efe5cec1dd9ef957fd1106b44ee6052aa5ff",
+      "id": "ND0058",
+      "name": "MatrixMinorFourCode",
+      "parameters": [
+        "z",
+        "up",
+        "us",
+        "un",
+        "ut"
+      ],
+      "route": "matrix-cofactor-expansion",
       "topological_layer": 0
     },
     {
@@ -12699,6 +14583,24 @@
       "topological_layer": 1
     },
     {
+      "arity": 4,
+      "dependencies": [
+        "Lt",
+        "ModEq"
+      ],
+      "expansion_sha256": "c6de2649c016afa054876da946655dc9ced5898668ff80f367447b2d3d1597e3",
+      "id": "ND0066",
+      "name": "HenselCorrection",
+      "parameters": [
+        "d",
+        "p",
+        "q",
+        "t"
+      ],
+      "route": "polynomial-taylor-hensel",
+      "topological_layer": 1
+    },
+    {
       "arity": 5,
       "dependencies": [
         "Beta",
@@ -12915,6 +14817,27 @@
       "topological_layer": 1
     },
     {
+      "arity": 7,
+      "dependencies": [
+        "Even",
+        "Odd"
+      ],
+      "expansion_sha256": "c202b0bc1d7b216067de52e3bb8cc819451f481b3aaf5dadb99efd640804f3bd",
+      "id": "ND0061",
+      "name": "SignedAlternatingCofactorTerm",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "i",
+        "p",
+        "n"
+      ],
+      "route": "matrix-cofactor-expansion",
+      "topological_layer": 1
+    },
+    {
       "arity": 3,
       "dependencies": [
         "Le",
@@ -13107,6 +15030,50 @@
         "M"
       ],
       "route": "generalized-crt-fold",
+      "topological_layer": 2
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "Lt",
+        "Beta",
+        "CRTPrefixLCM",
+        "CRTPrefixSolution",
+        "IsGCD",
+        "ModEq"
+      ],
+      "expansion_sha256": "85df3d30f084d3d6e6eb269d6e44cde4bde8efcd44cbc1a58eb0c8b1ee4e3b7d",
+      "id": "ND0068",
+      "name": "CRTMergeCompatiblePrefix",
+      "parameters": [
+        "r",
+        "s",
+        "b",
+        "c",
+        "l"
+      ],
+      "route": "generalized-crt-compatibility",
+      "topological_layer": 2
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "Beta",
+        "Lt",
+        "IsGCD",
+        "ModEq"
+      ],
+      "expansion_sha256": "eeb5386caff3f8241697024a76886809ded26d9d2dabd84b24b32dffc79fe3a4",
+      "id": "ND0067",
+      "name": "CRTPairwiseCompatiblePrefix",
+      "parameters": [
+        "r",
+        "s",
+        "b",
+        "c",
+        "l"
+      ],
+      "route": "generalized-crt-compatibility",
       "topological_layer": 2
     },
     {
@@ -13404,6 +15371,34 @@
       "topological_layer": 2
     },
     {
+      "arity": 13,
+      "dependencies": [
+        "Beta",
+        "Lt",
+        "SignedAlternatingCofactorTerm"
+      ],
+      "expansion_sha256": "76fafd74f57de662747a4ce9020a1973c2452c087358d0a4c238c17d45163b2a",
+      "id": "ND0062",
+      "name": "SignedAlternatingProductPrefix",
+      "parameters": [
+        "ab",
+        "ac",
+        "db",
+        "dc",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "ub",
+        "uc",
+        "vb",
+        "vc",
+        "l"
+      ],
+      "route": "matrix-cofactor-expansion",
+      "topological_layer": 2
+    },
+    {
       "arity": 5,
       "dependencies": [
         "Pow"
@@ -13657,6 +15652,31 @@
     {
       "arity": 11,
       "dependencies": [
+        "SignedAlternatingProductPrefix",
+        "Sum"
+      ],
+      "expansion_sha256": "b1f9c53656a4487de03606848e4fa81d0cefe26ae20c538152e19326b1ab63e7",
+      "id": "ND0063",
+      "name": "SignedAlternatingCofactorFold",
+      "parameters": [
+        "ab",
+        "ac",
+        "db",
+        "dc",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "l",
+        "p",
+        "n"
+      ],
+      "route": "matrix-cofactor-expansion",
+      "topological_layer": 3
+    },
+    {
+      "arity": 11,
+      "dependencies": [
         "DotProduct"
       ],
       "expansion_sha256": "2e16777bbacfe38439d7aed05af2fe3ab87c4c711cf4c66f42066c9ad2d5bd03",
@@ -13772,6 +15792,29 @@
       "topological_layer": 4
     },
     {
+      "arity": 9,
+      "dependencies": [
+        "HornerDerivative",
+        "Horner"
+      ],
+      "expansion_sha256": "e6ed889e7cf76a0bc75a97eeb0b4782e47ddddc86c32d5a9bbe93e1c77feb373",
+      "id": "ND0065",
+      "name": "HornerTaylorRemainder",
+      "parameters": [
+        "b",
+        "c",
+        "x",
+        "h",
+        "l",
+        "n",
+        "d",
+        "y",
+        "q"
+      ],
+      "route": "polynomial-taylor-hensel",
+      "topological_layer": 4
+    },
+    {
       "arity": 3,
       "dependencies": [
         "Sum",
@@ -13831,6 +15874,31 @@
         "k"
       ],
       "route": "quadratic-reciprocity",
+      "topological_layer": 4
+    },
+    {
+      "arity": 11,
+      "dependencies": [
+        "MatrixAffineSlice",
+        "SignedAlternatingCofactorFold"
+      ],
+      "expansion_sha256": "ebdc006a7f9bdddf840528d34fe128c2d9d6bebfe1b93803c87e5bfcd93907f2",
+      "id": "ND0064",
+      "name": "SignedFirstRowCofactorFold",
+      "parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "eb",
+        "ec",
+        "fb",
+        "fc",
+        "p",
+        "n"
+      ],
+      "route": "matrix-cofactor-expansion",
       "topological_layer": 4
     },
     {
@@ -13944,6 +16012,27 @@
     {
       "arity": 7,
       "dependencies": [
+        "MatrixMinorFourCode",
+        "SignedMatrixMinor"
+      ],
+      "expansion_sha256": "0f1141286f3f0da181315e89ae04b8d3fbf2c6fd55a9815dc664035042111f34",
+      "id": "ND0059",
+      "name": "SignedMinorRecord",
+      "parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "j",
+        "z"
+      ],
+      "route": "matrix-cofactor-expansion",
+      "topological_layer": 5
+    },
+    {
+      "arity": 7,
+      "dependencies": [
         "BinaryCanonicalExponentDigitCode",
         "BinaryModularExecution",
         "BinaryModularPower"
@@ -14011,11 +16100,34 @@
       ],
       "route": "bertrand-postulate",
       "topological_layer": 6
+    },
+    {
+      "arity": 8,
+      "dependencies": [
+        "Beta",
+        "Lt",
+        "SignedMinorRecord"
+      ],
+      "expansion_sha256": "c0ae58581147cba99f56c558de61486f3bcdc1441b811d05d6938849efd69c8a",
+      "id": "ND0060",
+      "name": "SignedCofactorMinorPrefix",
+      "parameters": [
+        "pb",
+        "pc",
+        "nb",
+        "nc",
+        "q",
+        "b",
+        "c",
+        "l"
+      ],
+      "route": "matrix-cofactor-expansion",
+      "topological_layer": 6
     }
   ],
   "schema": "constructive-number-theory-definition-dag-v1",
   "statement_usage_edge_count": 311,
-  "topological_layer_count": 6,
+  "topological_layer_count": 7,
   "topological_order": [
     "ArithmeticProgression",
     "ArithmeticTable",
@@ -14044,6 +16156,7 @@
     "ENorm",
     "Eisenstein",
     "EllipticCertificate",
+    "Even",
     "Execution",
     "Fact",
     "FifteenTest",
@@ -14061,10 +16174,13 @@
     "LocalRepresentation",
     "LogBracket",
     "Lt",
+    "MatrixMinorFourCode",
     "Mobius",
     "Mod",
     "Mod4Three",
+    "ModEq",
     "Multinom",
+    "Odd",
     "Order",
     "Permutation",
     "PocklingtonCertificate",
@@ -14102,6 +16218,7 @@
     "WeilPairing",
     "ZeroSubsequence",
     "AllBits",
+    "BetaSum",
     "BinaryDigit",
     "BinaryDigitPrefix",
     "BinaryDoubledPower",
@@ -14119,6 +16236,7 @@
     "EuclideanHalving",
     "EuclideanStateAt",
     "Gcd",
+    "HenselCorrection",
     "HilbertProduct",
     "Horner",
     "HornerDerivativeTrace",
@@ -14128,6 +16246,7 @@
     "MatrixSkipIndex",
     "PowTwo",
     "Prime",
+    "SignedAlternatingCofactorTerm",
     "Squarefree",
     "Unit",
     "WeakMW",
@@ -14139,6 +16258,8 @@
     "BitCount",
     "BitLen",
     "CRTCanonicalPrefixSolution",
+    "CRTMergeCompatiblePrefix",
+    "CRTPairwiseCompatiblePrefix",
     "Coprime",
     "ECCount",
     "EuclideanAnchoredExecution",
@@ -14155,6 +16276,7 @@
     "PrimeThreeModFourDivisor",
     "PrimitiveRootModulus",
     "QuadBit",
+    "SignedAlternatingProductPrefix",
     "SignedDotProduct",
     "SimpleLift",
     "TeichLift",
@@ -14168,18 +16290,23 @@
     "CRTPairwiseCoprimePrefix",
     "EuclideanLogarithmicExecution",
     "HornerDerivativeOnly",
+    "HornerTaylorRemainder",
     "JacobiBit",
     "MatrixMinorPrefix",
     "MatrixProductPrefix",
     "Phi",
     "PowerValuation",
     "PrimitiveTriple",
+    "SignedAlternatingCofactorFold",
     "BinaryModularExecution",
     "FactorialValuation",
     "PowerValuationOne",
     "PrimitiveRoot",
+    "SignedFirstRowCofactorFold",
     "SignedMatrixMinor",
     "SignedMatrixProduct",
-    "BinaryCompleteModularExecution"
+    "BinaryCompleteModularExecution",
+    "SignedMinorRecord",
+    "SignedCofactorMinorPrefix"
   ]
 }

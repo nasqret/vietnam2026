@@ -73,19 +73,16 @@ SENSITIVE_NAMES = frozenset(
         "config.json", "settings.json", "service-account.json", "package.json",
     }
 )
-EXPLORER_SEGMENTS = frozenset(
-    {
-        "pa-proof-explorer",
-        "bertrand-proof-explorer",
-        "constructive-frontier-explorer",
-        "constructive-grand-campaign",
-        "constructive-next-layer-explorer",
-        "constructive-advanced-layer-explorer",
-        "constructive-transport-layer-explorer",
-        "constructive-milestone-closure-explorer",
-        "constructive-research-layer-explorer",
-    }
+LEGACY_EXPLORER_SEGMENTS = frozenset(
+    {"pa-proof-explorer", "bertrand-proof-explorer", "constructive-grand-campaign"}
 )
+CONSTRUCTIVE_EXPLORER_SEGMENT = re.compile(r"constructive-[a-z][a-z0-9-]*-explorer\Z")
+CONSTRUCTIVE_FAMILY_SLUG = re.compile(r"[a-z][a-z0-9-]{0,127}\Z")
+CONSTRUCTIVE_RELEASE_VERSION = re.compile(r"v[1-9][0-9]{0,3}\Z")
+MAX_EXPLORER_MANIFEST_BYTES = 2 * 1024 * 1024
+MAX_EXPLORER_CAMPAIGN_BYTES = 8 * 1024 * 1024
+MAX_EXPLORER_CATALOG_BYTES = 64 * 1024 * 1024
+MAX_EXPLORER_FAMILIES = 512
 
 
 class ServiceError(ValueError):
@@ -1159,7 +1156,214 @@ class LeanStrandServer(ThreadingHTTPServer):
         if trust_proxy and not _loopback_hostname(address[0]):
             raise ServiceError("trusted reverse proxy requires a loopback-only service listener")
         self._request_slots = threading.BoundedSemaphore(manager.limits.concurrent_requests)
+        self._constructive_authority_lock = threading.RLock()
+        self._constructive_release_cache: dict[tuple[object, ...], tuple[str, str, str]] = {}
+        self._constructive_manifest_cache: dict[tuple[object, ...], frozenset[str]] = {}
         super().__init__(address, LeanStrandHandler)
+
+    @staticmethod
+    def _reviewed_json(path: Path, *, maximum: int, owner: int) -> tuple[dict[str, Any], os.stat_result]:
+        if path.is_symlink() or not path.is_file():
+            raise ServiceError("reviewed constructive explorer artifact is unavailable")
+        information = path.stat()
+        if information.st_uid != owner or information.st_size > maximum:
+            raise ServiceError("reviewed constructive explorer artifact has unsafe owner or size")
+        payload = path.read_bytes()
+        if len(payload) > maximum:
+            raise ServiceError("reviewed constructive explorer artifact exceeds its bounded size")
+
+        def strict_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+            result: dict[str, Any] = {}
+            for key, value in pairs:
+                if key in result:
+                    raise ServiceError("reviewed constructive explorer artifact repeats a JSON field")
+                result[key] = value
+            return result
+
+        def reject_constant(value: str) -> None:
+            raise ServiceError(f"reviewed constructive explorer artifact contains {value!r}")
+
+        document = json.loads(
+            payload.decode("utf-8"),
+            object_pairs_hook=strict_object,
+            parse_constant=reject_constant,
+        )
+        if type(document) is not dict:
+            raise ServiceError("reviewed constructive explorer artifact is not a JSON object")
+        return document, information
+
+    @staticmethod
+    def _fingerprint(path: Path, information: os.stat_result) -> tuple[object, ...]:
+        return (
+            str(path),
+            information.st_dev,
+            information.st_ino,
+            information.st_size,
+            information.st_mtime_ns,
+            information.st_uid,
+        )
+
+    def _current_constructive_release(self, static_root: Path, *, owner: int) -> tuple[str, str, str]:
+        campaign_path = static_root / "constructive-grand-campaign" / "campaign.json"
+        campaign, campaign_info = self._reviewed_json(
+            campaign_path,
+            maximum=MAX_EXPLORER_CAMPAIGN_BYTES,
+            owner=owner,
+        )
+        if campaign.get("schema") != "constructive-grand-campaign-v1":
+            raise ServiceError("constructive proof browser has no reviewed campaign schema")
+        metadata = campaign.get("meta")
+        if type(metadata) is not dict:
+            raise ServiceError("constructive proof browser has no reviewed release metadata")
+        version = metadata.get("current_alpha_version")
+        if type(version) is not str or CONSTRUCTIVE_RELEASE_VERSION.fullmatch(version) is None:
+            raise ServiceError("constructive proof browser has no safe current Alpha release")
+        boundaries = campaign.get("ambitious_boundaries")
+        release = boundaries.get(f"alpha_{version}_edition") if type(boundaries) is dict else None
+        if type(release) is not dict or release.get("role") != "current_immutable_release":
+            raise ServiceError("constructive proof browser has no current immutable Alpha release")
+        digest = release.get("catalog_sha256")
+        identity = release.get("identity_sha256")
+        count = release.get("theorem_count")
+        if (
+            type(digest) is not str
+            or SHA256.fullmatch(digest) is None
+            or type(identity) is not str
+            or SHA256.fullmatch(identity) is None
+            or type(count) is not int
+            or count < 1
+            or release.get("checked_use_count") != count
+            or metadata.get("current_alpha_checked_use_count") != count
+        ):
+            raise ServiceError("constructive proof browser has no complete checked-use release")
+
+        roots = tuple(dict.fromkeys((self.static_directory, ROOT)))
+        for repository in roots:
+            channel_path = repository / "artifacts" / "peano-library" / f"channels-{version}.json"
+            catalog_path = repository / "artifacts" / "peano-library" / "alpha" / f"catalog-{version}.json"
+            if channel_path.is_file() and catalog_path.is_file():
+                break
+        else:
+            raise ServiceError("constructive proof browser cannot find its sealed release channel")
+        if catalog_path.is_symlink() or not catalog_path.is_file():
+            raise ServiceError("constructive proof browser catalog is not an ordinary sealed artifact")
+        catalog_info = catalog_path.stat()
+        if catalog_info.st_uid != owner or catalog_info.st_size > MAX_EXPLORER_CATALOG_BYTES:
+            raise ServiceError("constructive proof browser catalog has unsafe owner or size")
+        channels, channel_info = self._reviewed_json(
+            channel_path,
+            maximum=MAX_EXPLORER_CAMPAIGN_BYTES,
+            owner=owner,
+        )
+        key = (
+            self._fingerprint(campaign_path, campaign_info),
+            self._fingerprint(channel_path, channel_info),
+            self._fingerprint(catalog_path, catalog_info),
+        )
+        with self._constructive_authority_lock:
+            cached = self._constructive_release_cache.get(key)
+            if cached is not None:
+                return cached
+            if channels.get("schema") != f"peano-library-channels-{version}":
+                raise ServiceError("constructive proof browser has a stale release channel")
+            channel_map = channels.get("channels")
+            channel = channel_map.get("alpha") if type(channel_map) is dict else None
+            expected_path = f"artifacts/peano-library/alpha/catalog-{version}.json"
+            if (
+                type(channel) is not dict
+                or channel.get("artifact_path") != expected_path
+                or channel.get("artifact_sha256") != digest
+                or channel.get("edition_identity_sha256") != identity
+                or channel.get("theorem_count") != count
+                or channel.get("checked_use_count") != count
+            ):
+                raise ServiceError("constructive proof browser channel disagrees with its current release")
+            actual = sha256()
+            observed = 0
+            with catalog_path.open("rb") as stream:
+                while chunk := stream.read(1024 * 1024):
+                    observed += len(chunk)
+                    if observed > MAX_EXPLORER_CATALOG_BYTES:
+                        raise ServiceError("constructive proof browser catalog exceeds its safe size")
+                    actual.update(chunk)
+            if actual.hexdigest() != digest:
+                raise ServiceError("constructive proof browser catalog differs from its sealed digest")
+            result = (version, digest, identity)
+            if len(self._constructive_release_cache) >= 16:
+                self._constructive_release_cache.clear()
+            self._constructive_release_cache[key] = result
+            return result
+
+    def reviewed_constructive_family(self, directory: Path, slug: str) -> bool:
+        """Authorize one real family only under the current sealed checked release."""
+
+        try:
+            if (
+                not isinstance(directory, Path)
+                or directory.is_symlink()
+                or not directory.is_dir()
+                or not directory.resolve().is_relative_to(self.static_directory)
+                or CONSTRUCTIVE_EXPLORER_SEGMENT.fullmatch(directory.name) is None
+                or type(slug) is not str
+                or CONSTRUCTIVE_FAMILY_SLUG.fullmatch(slug) is None
+            ):
+                return False
+            owner = directory.stat().st_uid
+            static_root = directory.parent
+            if static_root.name != "_static" or static_root.stat().st_uid != owner:
+                return False
+            version, digest, identity = self._current_constructive_release(static_root, owner=owner)
+            manifest_path = directory / "manifest.json"
+            manifest, information = self._reviewed_json(
+                manifest_path,
+                maximum=MAX_EXPLORER_MANIFEST_BYTES,
+                owner=owner,
+            )
+            key = (self._fingerprint(manifest_path, information), version, digest, identity)
+            with self._constructive_authority_lock:
+                families = self._constructive_manifest_cache.get(key)
+                if families is None:
+                    expected_schema = f"peano-lab-{directory.name}-v1"
+                    if (
+                        manifest.get("schema") not in {expected_schema, expected_schema + "-manifest"}
+                        or manifest.get("alpha_edition_version") != version
+                        or (manifest.get("catalog_sha256") or manifest.get("alpha_catalog_sha256"))
+                        != digest
+                        or (
+                            manifest.get("edition_identity_sha256")
+                            or manifest.get("alpha_edition_identity_sha256")
+                        )
+                        != identity
+                    ):
+                        return False
+                    entries = manifest.get("families")
+                    if type(entries) is not list or not 1 <= len(entries) <= MAX_EXPLORER_FAMILIES:
+                        return False
+                    names: set[str] = set()
+                    for family in entries:
+                        if type(family) is not dict:
+                            return False
+                        name = family.get("slug")
+                        if (
+                            type(name) is not str
+                            or CONSTRUCTIVE_FAMILY_SLUG.fullmatch(name) is None
+                            or name in names
+                        ):
+                            return False
+                        checked = family.get("alpha_checked_use_node_count", family.get("theorem_count"))
+                        if type(checked) is not int or checked < 1:
+                            return False
+                        family_version = family.get("alpha_edition_version")
+                        if family_version is not None and family_version != version:
+                            return False
+                        names.add(name)
+                    families = frozenset(names)
+                    if len(self._constructive_manifest_cache) >= 64:
+                        self._constructive_manifest_cache.clear()
+                    self._constructive_manifest_cache[key] = families
+                return slug in families
+        except (OSError, UnicodeError, ValueError, ServiceError, RecursionError):
+            return False
 
     def process_request(self, request: Any, client_address: Any) -> None:
         if not self._request_slots.acquire(blocking=False):
@@ -1392,15 +1596,54 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
                 return "/" + relative.as_posix()
         return None
 
+    def _reviewed_constructive_request(self, path: Path, parts: tuple[str, ...]) -> bool:
+        candidates = [
+            (index, part)
+            for index, part in enumerate(parts)
+            if part.startswith("constructive-") and part.endswith("-explorer")
+        ]
+        if len(candidates) != 1:
+            return False
+        index, segment = candidates[0]
+        if (
+            index == 0
+            or parts[index - 1] != "_static"
+            or CONSTRUCTIVE_EXPLORER_SEGMENT.fullmatch(segment) is None
+        ):
+            return False
+        trailing = parts[index + 1 :]
+        if len(trailing) < 3:
+            return False
+        slug, suffix = trailing[0], trailing[1:]
+        reviewed_shapes = {
+            ("explorer", "graph.html"),
+            ("explorer", "defined", "graph.html"),
+            ("explorer", "tag", path.name),
+            ("explorer", "defined", "tag", path.name),
+        }
+        if suffix not in reviewed_shapes:
+            return False
+        directory = self.server.static_directory.joinpath(*parts[: index + 1])
+        return self.server.reviewed_constructive_family(directory, slug)
+
     def _inject_selector(self, path: Path, parts: tuple[str, ...]) -> bytes | None:
         if (
             path.suffix.lower() != ".html"
-            or not (
-                (path.name == "graph.html" and "_static" in parts)
-                or EXPLORER_SEGMENTS.intersection(parts)
-            )
             or path.stat().st_size > self.server.job_manager.limits.html_bytes
         ):
+            return None
+        constructive = any(
+            part.startswith("constructive-") and part.endswith("-explorer")
+            for part in parts
+        )
+        if constructive:
+            eligible = self._reviewed_constructive_request(path, parts)
+        else:
+            eligible = (
+                (path.name == "graph.html" and "_static" in parts)
+                or bool(LEGACY_EXPLORER_SEGMENTS.intersection(parts))
+            )
+        if not eligible:
             return None
         prefix = self._asset_prefix()
         if prefix is None:

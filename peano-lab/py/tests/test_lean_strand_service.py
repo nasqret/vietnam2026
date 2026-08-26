@@ -251,6 +251,88 @@ def static_root(tmp_path: Path) -> Path:
     selector.mkdir(parents=True)
     (selector / "lean-selector.js").write_text("console.log('selector');\n", encoding="utf-8")
     (selector / "lean-selector.css").write_text(".selector { display: block; }\n", encoding="utf-8")
+    version = "v24"
+    identity = "b" * 64
+    catalog = root / "artifacts" / "peano-library" / "alpha" / f"catalog-{version}.json"
+    catalog.parent.mkdir(parents=True)
+    catalog.write_bytes(
+        json.dumps(
+            {
+                "schema": f"peano-library-alpha-snapshot-{version}",
+                "theorem_count": 1,
+                "checked_use_count": 1,
+            },
+            sort_keys=True,
+        ).encode("utf-8")
+    )
+    digest = sha256(catalog.read_bytes()).hexdigest()
+    channel = root / "artifacts" / "peano-library" / f"channels-{version}.json"
+    channel.write_text(
+        json.dumps(
+            {
+                "schema": f"peano-library-channels-{version}",
+                "channels": {
+                    "alpha": {
+                        "artifact_path": (
+                            f"artifacts/peano-library/alpha/catalog-{version}.json"
+                        ),
+                        "artifact_sha256": digest,
+                        "edition_identity_sha256": identity,
+                        "theorem_count": 1,
+                        "checked_use_count": 1,
+                    }
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    campaign = root / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
+    campaign.parent.mkdir(parents=True)
+    campaign.write_text(
+        json.dumps(
+            {
+                "schema": "constructive-grand-campaign-v1",
+                "meta": {
+                    "current_alpha_version": version,
+                    "current_alpha_checked_use_count": 1,
+                },
+                "ambitious_boundaries": {
+                    f"alpha_{version}_edition": {
+                        "role": "current_immutable_release",
+                        "catalog_sha256": digest,
+                        "identity_sha256": identity,
+                        "theorem_count": 1,
+                        "checked_use_count": 1,
+                    }
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    reviewed = {
+        "constructive-next-layer-explorer": "continued-fractions",
+        "constructive-advanced-layer-explorer": "binary-exponentiation",
+        "constructive-transport-layer-explorer": "euclidean-gcd",
+        "constructive-milestone-closure-explorer": "prime-routes",
+        "constructive-research-layer-explorer": "polynomial-hensel",
+        "constructive-breakthrough-layer-explorer": "matrix-cofactor-expansion",
+        "constructive-verified-future-explorer": "next-checked-frontier",
+    }
+    for segment, slug in reviewed.items():
+        directory = root / "book" / "_static" / segment
+        directory.mkdir(parents=True)
+        (directory / "manifest.json").write_text(
+            json.dumps(
+                {
+                    "schema": f"peano-lab-{segment}-v1-manifest",
+                    "alpha_edition_version": version,
+                    "catalog_sha256": digest,
+                    "edition_identity_sha256": identity,
+                    "families": [{"slug": slug, "theorem_count": 1}],
+                }
+            ),
+            encoding="utf-8",
+        )
     for graph in (
         root / "book/_static/pa-proof-explorer/defined/graph.html",
         root / "book/_static/some-new-frontier/graph.html",
@@ -259,9 +341,13 @@ def static_root(tmp_path: Path) -> Path:
         root / "book/_static/constructive-transport-layer-explorer/euclidean-gcd/explorer/defined/tag/TL0002.html",
         root / "book/_static/constructive-milestone-closure-explorer/prime-routes/explorer/defined/tag/MC0002.html",
         root / "book/_static/constructive-research-layer-explorer/polynomial-hensel/explorer/defined/tag/RL0002.html",
+        root / "book/_static/constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/explorer/defined/tag/CE0002.html",
+        root / "book/_static/constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/explorer/tag/CE0002.html",
+        root / "book/_static/constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/explorer/defined/graph.html",
+        root / "book/_static/constructive-verified-future-explorer/next-checked-frontier/explorer/defined/tag/FU0002.html",
         root / "book/_static/unreviewed-campaign/defined/tag/FAKE0002.html",
     ):
-        graph.parent.mkdir(parents=True)
+        graph.parent.mkdir(parents=True, exist_ok=True)
         graph.write_text("<html><head><title>Proof</title></head><body>proof</body></html>", encoding="utf-8")
     (root / "public.txt").write_text("public\n", encoding="utf-8")
     return root
@@ -965,6 +1051,10 @@ def test_http_root_redirects_to_small_add_comm_graph(
         "/book/_static/constructive-transport-layer-explorer/euclidean-gcd/explorer/defined/tag/TL0002.html",
         "/book/_static/constructive-milestone-closure-explorer/prime-routes/explorer/defined/tag/MC0002.html",
         "/book/_static/constructive-research-layer-explorer/polynomial-hensel/explorer/defined/tag/RL0002.html",
+        "/book/_static/constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/explorer/defined/tag/CE0002.html",
+        "/book/_static/constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/explorer/tag/CE0002.html",
+        "/book/_static/constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/explorer/defined/graph.html",
+        "/book/_static/constructive-verified-future-explorer/next-checked-frontier/explorer/defined/tag/FU0002.html",
     ],
 )
 def test_every_existing_graph_is_enhanced_only_while_served(
@@ -998,6 +1088,150 @@ def test_unreviewed_individual_campaign_pages_are_not_implicitly_enhanced(
     assert status == 200
     assert b"lean-selector.js" not in content
     assert b"lean-selector.css" not in content
+
+
+@pytest.mark.parametrize(
+    "tampering",
+    (
+        "missing_manifest",
+        "stale_version",
+        "wrong_schema",
+        "wrong_catalog",
+        "wrong_identity",
+        "unknown_family",
+        "zero_checked_theorems",
+        "bool_checked_theorems",
+        "duplicate_family",
+        "unsafe_family_slug",
+        "duplicate_json_field",
+        "nonfinite_json_number",
+        "manifest_symlink",
+        "missing_campaign",
+        "unsealed_future_release",
+        "missing_channel",
+        "corrupt_catalog",
+    ),
+)
+def test_constructive_detail_controls_require_an_actual_current_sealed_family(
+    http_server: tuple[str, service.LeanStrandServer],
+    static_root: Path,
+    tampering: str,
+) -> None:
+    base, _ = http_server
+    directory = static_root / "book/_static/constructive-breakthrough-layer-explorer"
+    manifest_path = directory / "manifest.json"
+    campaign_path = static_root / "book/_static/constructive-grand-campaign/campaign.json"
+    channel_path = static_root / "artifacts/peano-library/channels-v24.json"
+    catalog_path = static_root / "artifacts/peano-library/alpha/catalog-v24.json"
+    manifest = json.loads(manifest_path.read_bytes())
+
+    if tampering == "missing_manifest":
+        manifest_path.rename(directory / "manifest-unreviewed.json")
+    elif tampering == "stale_version":
+        manifest["alpha_edition_version"] = "v25"
+    elif tampering == "wrong_schema":
+        manifest["schema"] = "peano-lab-constructive-evil-explorer-v1-manifest"
+    elif tampering == "wrong_catalog":
+        manifest["catalog_sha256"] = "0" * 64
+    elif tampering == "wrong_identity":
+        manifest["edition_identity_sha256"] = "0" * 64
+    elif tampering == "unknown_family":
+        manifest["families"][0]["slug"] = "another-family"
+    elif tampering == "zero_checked_theorems":
+        manifest["families"][0]["theorem_count"] = 0
+    elif tampering == "bool_checked_theorems":
+        manifest["families"][0]["theorem_count"] = True
+    elif tampering == "duplicate_family":
+        manifest["families"].append(dict(manifest["families"][0]))
+    elif tampering == "unsafe_family_slug":
+        manifest["families"][0]["slug"] = "../matrix-cofactor-expansion"
+    elif tampering == "duplicate_json_field":
+        manifest_path.write_text('{"schema":"first","schema":"second"}', encoding="utf-8")
+    elif tampering == "nonfinite_json_number":
+        manifest_path.write_text('{"schema":NaN}', encoding="utf-8")
+    elif tampering == "manifest_symlink":
+        original = directory / "manifest-original.json"
+        manifest_path.rename(original)
+        manifest_path.symlink_to(original)
+    elif tampering == "missing_campaign":
+        campaign_path.rename(campaign_path.with_name("campaign-unreviewed.json"))
+    elif tampering == "unsealed_future_release":
+        campaign = json.loads(campaign_path.read_bytes())
+        campaign["meta"]["current_alpha_version"] = "v25"
+        campaign["ambitious_boundaries"]["alpha_v25_edition"] = dict(
+            campaign["ambitious_boundaries"]["alpha_v24_edition"]
+        )
+        campaign_path.write_text(json.dumps(campaign), encoding="utf-8")
+        manifest["alpha_edition_version"] = "v25"
+    elif tampering == "missing_channel":
+        channel_path.rename(channel_path.with_name("channels-v24-unreviewed.json"))
+    elif tampering == "corrupt_catalog":
+        catalog_path.write_bytes(catalog_path.read_bytes() + b" ")
+
+    if tampering not in {
+        "missing_manifest",
+        "duplicate_json_field",
+        "nonfinite_json_number",
+        "manifest_symlink",
+    }:
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+
+    status, content, _ = request(
+        base,
+        "/book/_static/constructive-breakthrough-layer-explorer/"
+        "matrix-cofactor-expansion/explorer/defined/tag/CE0002.html",
+    )
+
+    assert status == 200
+    assert b"lean-selector.js" not in content
+    assert b"lean-selector.css" not in content
+
+
+@pytest.mark.parametrize(
+    "suffix",
+    (
+        "constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/defined/tag/FAKE.html",
+        "constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/explorer/extra/tag/FAKE.html",
+        "constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/explorer/defined/definition/FAKE.html",
+        "constructive-Breakthrough-layer-explorer/matrix-cofactor-expansion/explorer/defined/tag/FAKE.html",
+        "constructive-breakthrough_layer-explorer/matrix-cofactor-expansion/explorer/defined/tag/FAKE.html",
+    ),
+)
+def test_constructive_controls_require_exact_owner_controlled_theorem_paths(
+    http_server: tuple[str, service.LeanStrandServer],
+    static_root: Path,
+    suffix: str,
+) -> None:
+    base, _ = http_server
+    page = static_root / "book" / "_static" / suffix
+    page.parent.mkdir(parents=True, exist_ok=True)
+    page.write_text("<html><head></head><body>proof</body></html>", encoding="utf-8")
+
+    status, content, _ = request(base, "/book/_static/" + suffix)
+
+    assert status == 200
+    assert b"lean-selector.js" not in content
+
+
+def test_constructive_release_cache_cannot_preserve_tampered_catalog_authority(
+    http_server: tuple[str, service.LeanStrandServer],
+    static_root: Path,
+) -> None:
+    base, _ = http_server
+    path = (
+        "/book/_static/constructive-breakthrough-layer-explorer/"
+        "matrix-cofactor-expansion/explorer/defined/tag/CE0002.html"
+    )
+    status, reviewed, _ = request(base, path)
+    assert status == 200
+    assert b"lean-selector.js" in reviewed
+
+    catalog = static_root / "artifacts/peano-library/alpha/catalog-v24.json"
+    catalog.write_bytes(catalog.read_bytes() + b" ")
+    status, unreviewed, _ = request(base, path)
+
+    assert status == 200
+    assert b"lean-selector.js" not in unreviewed
 
 
 def test_http_full_mocked_job_progress_and_safe_downloads(

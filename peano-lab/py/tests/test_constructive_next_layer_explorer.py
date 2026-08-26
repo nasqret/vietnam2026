@@ -1,8 +1,8 @@
-"""Fail-closed audit of four historical Alpha-v20 / current Alpha-v24 explorers.
+"""Fail-closed audit of four historical Alpha-v20 / current Alpha-v25 explorers.
 
 These documentation tests never decode, construct, replay, or check a proof
 bundle. Original admission remains solely with the immutable Alpha-v20 proof;
-the explorer additionally authenticates current Alpha-v24 checked authority.
+the explorer additionally authenticates current Alpha-v25 checked authority.
 """
 
 from __future__ import annotations
@@ -73,7 +73,7 @@ def test_manifest_is_bound_to_current_v24_and_immutable_v20_first_admission(
     ).hexdigest()
     assert manifest["html_revision"] == sha256(actual_catalog).hexdigest()[:12]
     assert manifest["edition_identity_sha256"] == inputs["current_edition_identity_sha256"]
-    assert manifest["alpha_edition_version"] == "v24"
+    assert manifest["alpha_edition_version"] == "v25"
     assert manifest["alpha_first_enrolled_version"] == "v20"
     assert manifest["proof_bundle_sha256"] == inputs["bundle"]["artifact_sha256"]
     assert manifest["independent_lean_bundle_verified"] is True
@@ -116,7 +116,7 @@ def test_historical_v20_family_landing_reuses_quadratic_reciprocity_structure(
     assert 'class="proof-hero"' not in source
     assert source.count('<article class="view-card') == 3
     assert f'href="../assets/proofs.css?v={revision}"' in source
-    assert "Alpha v24 checked-use theorem family" in source
+    assert "Alpha v25 checked-use theorem family" in source
     assert "first admitted v20" in source
     assert "independently accept all 590 bundle nodes" in source
     assert corpus["alpha_proof_bundle_sha256"] in source
@@ -141,7 +141,7 @@ def test_family_boundaries_and_exact_checked_release_rows(
     assert corpus["campaign_domain_id"] == domain
     assert corpus["campaign_family_id"] == family
     assert tuple(corpus["campaign_milestone_ids"]) == milestones
-    assert corpus["alpha_edition_version"] == "v24"
+    assert corpus["alpha_edition_version"] == "v25"
     assert corpus["alpha_first_enrolled_version"] == "v20"
     assert corpus["alpha_proof_bundle_sha256"] == inputs["bundle"]["artifact_sha256"]
     assert corpus["independent_lean_bundle_verified"] is True
@@ -158,7 +158,7 @@ def test_family_boundaries_and_exact_checked_release_rows(
         assert node["body_proof_depth"] == closure["body_proof_depth"]
         assert node["sources"][0]["script_sha256"] == original["script_sha256"]
         assert node["alpha_checked_use"] is True
-        assert node["alpha_edition_version"] == "v24"
+        assert node["alpha_edition_version"] == "v25"
         assert node["alpha_first_enrolled_version"] == "v20"
         assert node["independent_lean_bundle_verified"] is True
         assert node["stable_member"] is False
@@ -294,14 +294,15 @@ def test_all_eight_blueprint_matches_share_exact_global_nd_registry_identity(
         assert NEXT_LAYER_DEFINITIONS_BY_NAME[name] is explorer._definition_specs()[name]
 
 
-def test_four_argument_sum_never_claims_incompatible_global_sum(
+def test_four_argument_sum_uses_exact_beta_sum_not_incompatible_global_sum(
     corpora: dict[str, dict[str, Any]], inputs: dict[str, Any]
 ) -> None:
     matrix = {row["name"]: row for row in corpora["matrix-dot-product"]["definitions"]}
     assert matrix["Sum"]["arity"] == 4
     assert len(inputs["blueprint"]["Sum"]["parameters"]) == 3
-    assert matrix["Sum"]["global_definition"] is None
-    assert matrix["Sum"]["global_argument_positions"] is None
+    assert matrix["Sum"]["global_definition"] == "BetaSum"
+    assert matrix["Sum"]["global_argument_positions"] == [0, 1, 2, 3]
+    assert len(inputs["blueprint"]["BetaSum"]["parameters"]) == 4
 
 
 @pytest.mark.parametrize("slug", tuple(EXPECTED))
@@ -439,7 +440,7 @@ def test_all_theorem_definition_graph_and_atlas_pages_are_navigable(
 
     graph = generated[f"{slug}/explorer/defined/graph.html"].decode()
     assert "window.PA_DEFINED_GRAPH=" in graph
-    assert "Alpha v24 checked-use theorem" in graph
+    assert "Alpha v25 checked-use theorem" in graph
     assert "first admitted v20" in graph
     assert "independently kernel and Lean verified" in graph
     assert "proof_dependency" in graph

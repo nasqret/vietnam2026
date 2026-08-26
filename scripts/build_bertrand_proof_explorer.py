@@ -2,7 +2,7 @@
 """Build the replay-free interactive explorer for the full Bertrand proof.
 
 The Alpha-v12 catalog is the byte-frozen statement/script/provenance input.
-The independently sealed Alpha-v24 inventory supplies current release evidence
+The independently sealed Alpha-v25 inventory supplies current release evidence
 for the exact same dependency closure, while Alpha v18 remains the historical
 proof-bearing release. This documentation builder never executes tactics,
 changes historical enrollment, or grants theorem authority.
@@ -27,10 +27,10 @@ if str(PY_ROOT) not in sys.path:
     sys.path.insert(0, str(PY_ROOT))
 
 from peano_lab.library import editions_v18 as proof_alpha  # noqa: E402
-from peano_lab.library import editions_v24 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v25 as current_alpha  # noqa: E402
 
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v12.json"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
 OUTPUT = REPO / "book" / "_static" / "bertrand-proof-explorer"
 ASSET_SOURCE = REPO / "book" / "_static" / "pa-proof-explorer" / "assets"
 # The definition-aware edition is an independently generated, conservative
@@ -65,11 +65,11 @@ EXPECTED = {
     "formal_line_count": 28410,
     "explicit_dependency_reference_count": 8786,
     "root_tag": "BT0127",
-    "alpha_edition_version": "v24",
+    "alpha_edition_version": "v25",
     "alpha_edition_identity_sha256": (
-        "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b"
+        "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
     ),
-    "alpha_edition_checked_use_count": 2008,
+    "alpha_edition_checked_use_count": 2080,
     "proof_edition_version": "v18",
     "proof_edition_identity_sha256": (
         "f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66"
@@ -275,12 +275,12 @@ def _records(
     closure: list[dict[str, Any]],
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], dict[str, Any]]:
     if (
-        current_alpha.ALPHA_V24_IDENTITY_SHA256
+        current_alpha.ALPHA_V25_IDENTITY_SHA256
         != EXPECTED["alpha_edition_identity_sha256"]
         or len(current_alpha.ALPHA_CHECKED_SPECS)
         != EXPECTED["alpha_edition_checked_use_count"]
     ):
-        raise ValueError("sealed Alpha-v24 Bertrand release evidence changed")
+        raise ValueError("sealed Alpha-v25 Bertrand release evidence changed")
     if (
         proof_alpha.ALPHA_V18_IDENTITY_SHA256
         != EXPECTED["proof_edition_identity_sha256"]
@@ -317,7 +317,7 @@ def _records(
             or not release_entry.checked_use
         ):
             raise ValueError(
-                f"sealed Alpha-v24 theorem differs from frozen Bertrand source "
+                f"sealed Alpha-v25 theorem differs from frozen Bertrand source "
                 f"or lacks checked-use evidence: {source['name']!r}"
             )
         proof_entry = proof_alpha.ALPHA_EDITION.by_name.get(source["name"])
@@ -330,7 +330,7 @@ def _records(
         ):
             raise ValueError(
                 f"historical Alpha-v18 proof-bearing theorem differs from "
-                f"current Alpha-v24 release: {source['name']!r}"
+                f"current Alpha-v25 release: {source['name']!r}"
             )
         stable_member = release_entry.membership is current_alpha.Membership.STABLE
         expected_evidence = (
@@ -341,7 +341,7 @@ def _records(
         if release_entry.evidence is not expected_evidence:
             raise ValueError(
                 f"Bertrand theorem {source['name']!r} has inconsistent "
-                "sealed Alpha-v24 evidence and Stable membership"
+                "sealed Alpha-v25 evidence and Stable membership"
             )
         source_path = REPO / source["source"]["path"]
         if not source_path.is_file():
@@ -373,7 +373,7 @@ def _records(
         status_label = (
             "Stable checked-use theorem · independently kernel verified"
             if stable_member
-            else "Alpha v24 checked-use theorem · independently kernel and "
+            else "Alpha v25 checked-use theorem · independently kernel and "
             "Lean verified; not Stable"
         )
         records.append(
@@ -450,7 +450,7 @@ def _records(
         "public_count": sum(row["scope"] == "public" for row in records),
         "candidate_count": sum(row["scope"] == "candidate" for row in records),
         "alpha_edition_version": EXPECTED["alpha_edition_version"],
-        "alpha_edition_identity_sha256": current_alpha.ALPHA_V24_IDENTITY_SHA256,
+        "alpha_edition_identity_sha256": current_alpha.ALPHA_V25_IDENTITY_SHA256,
         "alpha_edition_checked_use_count": len(current_alpha.ALPHA_CHECKED_SPECS),
         "proof_edition_version": EXPECTED["proof_edition_version"],
         "proof_edition_identity_sha256": proof_alpha.ALPHA_V18_IDENTITY_SHA256,
@@ -480,7 +480,7 @@ def _records(
         "ordered_enrollment_root_sha256": catalog[
             "ordered_enrollment_root_sha256"
         ],
-        "edition_identity_sha256": current_alpha.ALPHA_V24_IDENTITY_SHA256,
+        "edition_identity_sha256": current_alpha.ALPHA_V25_IDENTITY_SHA256,
         "source_edition_identity_sha256": catalog["edition_identity_sha256"],
         "root_name": ROOT_NAME,
         "root_tag": tags[ROOT_NAME],
@@ -662,7 +662,7 @@ closure of <code>bertrand_strict</code>.</p>
 <b>{receipt["edge_count"]}</b> edges ·
 <b>{receipt["formal_line_count"]:,}</b> tactic lines ·
 <b>{receipt["layer_count"]}</b> layers</div>
-<p>Alpha v24 preserves the independently closed entire graph: {receipt["graph_stable_closed_count"]}
+<p>Alpha v25 preserves the independently closed entire graph: {receipt["graph_stable_closed_count"]}
 Stable theorems and {receipt["graph_alpha_closed_count"]} Alpha-only theorems.
 The immutable current release contains {receipt["alpha_edition_checked_use_count"]}
 independently checked-use theorems overall.
@@ -710,7 +710,7 @@ def _render_graph(graph: dict[str, Any]) -> bytes:
       status.className = "pa-status-public";
       status.textContent = node.stable_member ?
         "Stable checked-use theorem; independently closed" :
-        "Alpha v24 checked-use theorem; independently kernel and Lean verified; not Stable";
+        "Alpha v25 checked-use theorem; independently kernel and Lean verified; not Stable";
     }
     new MutationObserver(showEvidence).observe(title, {
       childList: true, characterData: true, subtree: true
@@ -878,7 +878,7 @@ The authored body proceeds by {_escape(guide)}.</p></section>
 <section><h2>Formal native tactic body</h2>
 <p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
 The complete historical Alpha-v18 proof bundle independently checks every
-dependency; current Alpha v24 preserves that checked theorem use without
+dependency; current Alpha v25 preserves that checked theorem use without
 changing Stable membership.</p>
 <ol class="pa-formal-proof">{lines}</ol></section></div>
 <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>

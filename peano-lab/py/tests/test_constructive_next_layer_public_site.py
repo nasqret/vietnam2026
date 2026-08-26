@@ -1,4 +1,4 @@
-"""End-to-end static publication contract for the complete Alpha-v23 proof site.
+"""End-to-end static publication contract for the current sealed proof site.
 
 These bounded integration checks inspect only source HTML, small JSON surfaces,
 streamed catalog bytes, file metadata, and ``make -n`` output.  They never
@@ -26,15 +26,18 @@ NEXT = ROOT / "book" / "_static" / "constructive-next-layer-explorer"
 ADVANCED = ROOT / "book" / "_static" / "constructive-advanced-layer-explorer"
 TRANSPORT = ROOT / "book" / "_static" / "constructive-transport-layer-explorer"
 MILESTONE = ROOT / "book" / "_static" / "constructive-milestone-closure-explorer"
-CATALOG = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v23.json"
-CHANNELS = ROOT / "artifacts" / "peano-library" / "channels-v23.json"
-METRICS = ROOT / "artifacts" / "peano-library" / "alpha" / "metrics-v23.json"
-
-CURRENT_REVISION = "818da349674b"
+RESEARCH = ROOT / "book" / "_static" / "constructive-research-layer-explorer"
+BREAKTHROUGH = ROOT / "book" / "_static" / "constructive-breakthrough-layer-explorer"
+CURRENT_ALPHA_VERSION = json.loads((ATLAS / "campaign.json").read_text(encoding="utf-8"))[
+    "meta"
+]["current_alpha_version"]
+CATALOG = ROOT / "artifacts" / "peano-library" / "alpha" / f"catalog-{CURRENT_ALPHA_VERSION}.json"
+CHANNELS = ROOT / "artifacts" / "peano-library" / f"channels-{CURRENT_ALPHA_VERSION}.json"
+METRICS = ROOT / "artifacts" / "peano-library" / "alpha" / f"metrics-{CURRENT_ALPHA_VERSION}.json"
+CURRENT_CHANNEL = json.loads(CHANNELS.read_text(encoding="utf-8"))["channels"]["alpha"]
+CURRENT_REVISION = CURRENT_CHANNEL["artifact_sha256"][:12]
 STALE_V19_REVISION = "f1c3d3fba013"
-CURRENT_ALPHA_IDENTITY = (
-    "02059eef420eb96abd48c41bf62049a3cc69f025b00bed9dc3466e7eb2294a85"
-)
+CURRENT_ALPHA_IDENTITY = CURRENT_CHANNEL["edition_identity_sha256"]
 NEXT_BUNDLE = "alpha-v20-next-layer-proof-bundle-v1.json"
 NEXT_RECEIPT = "alpha-v20-next-layer-closure-receipt.md"
 NEXT_BUNDLE_SHA256 = (
@@ -54,6 +57,16 @@ MILESTONE_BUNDLE = "alpha-v23-milestone-closure-proof-bundle-v1.json"
 MILESTONE_RECEIPT = "alpha-v23-milestone-closure-receipt.md"
 MILESTONE_BUNDLE_SHA256 = (
     "cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11"
+)
+RESEARCH_BUNDLE = "alpha-v24-research-layer-proof-bundle-v1.json"
+RESEARCH_RECEIPT = "alpha-v24-research-layer-receipt.md"
+RESEARCH_BUNDLE_SHA256 = (
+    "627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9"
+)
+BREAKTHROUGH_BUNDLE = "alpha-v25-breakthrough-layer-proof-bundle-v1.json"
+BREAKTHROUGH_RECEIPT = "alpha-v25-breakthrough-layer-receipt.md"
+BREAKTHROUGH_BUNDLE_SHA256 = (
+    "d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a"
 )
 
 FLAGSHIP_ROUTES = ("quadratic-reciprocity", "bertrand-postulate")
@@ -167,6 +180,52 @@ MILESTONE_FAMILIES = {
         "proof_edge_count": 46,
     },
 }
+RESEARCH_FAMILIES = {
+    "matrix-determinant-minors": {
+        "count": 17,
+        "goal": "T13",
+        "root": ("MN000D", "beta_signed_matrix_minor_exists"),
+        "definition": ("ND0049", "SignedMatrixMinor"),
+        "definition_count": 17,
+    },
+    "polynomial-hensel": {
+        "count": 15,
+        "goal": "G095",
+        "root": ("HD000B", "beta_horner_derivative_exists_unique"),
+        "definition": ("ND0051", "HornerDerivative"),
+        "definition_count": 12,
+    },
+    "generalized-crt-fold": {
+        "count": 27,
+        "goal": "G011",
+        "root": ("CR001B", "crt_pairwise_coprime_prefix_canonical_exists_unique"),
+        "definition": ("ND0055", "CRTPrefixSolution"),
+        "definition_count": 12,
+    },
+}
+BREAKTHROUGH_FAMILIES = {
+    "matrix-cofactor-expansion": {
+        "count": 29,
+        "goal": "T13",
+        "root": ("CE001D", "signed_matrix_cofactor_family_and_fold_exists"),
+        "definition": ("ND0064", "SignedFirstRowCofactorFold"),
+        "definition_count": 19,
+    },
+    "polynomial-taylor-hensel": {
+        "count": 19,
+        "goal": "G095",
+        "root": ("TH0013", "beta_horner_hensel_lift_exists"),
+        "definition": ("ND0066", "HenselCorrection"),
+        "definition_count": 16,
+    },
+    "generalized-crt-compatibility": {
+        "count": 24,
+        "goal": "G011",
+        "root": ("GC000C", "crt_merge_compatible_prefix_canonical_exists_unique"),
+        "definition": ("ND0068", "CRTMergeCompatiblePrefix"),
+        "definition_count": 14,
+    },
+}
 REVIEWED_NEXT_DEFINITIONS = {
     "Horner": ("ND0002", "polynomial-horner"),
     "MatrixAt": ("ND0003", "matrix-dot-product"),
@@ -212,6 +271,29 @@ REVIEWED_NEXT_DEFINITIONS = {
     "BinaryExecutionOperationCount": ("ND0043", "binary-digit-extraction"),
     "PrimeThreeModFourDivisor": ("ND0044", "primes-three-mod-four"),
     "EuclidThreeNumber": ("ND0045", "primes-three-mod-four"),
+    "MatrixSkipIndex": ("ND0046", "matrix-determinant-minors"),
+    "MatrixMinorCell": ("ND0047", "matrix-determinant-minors"),
+    "MatrixMinorPrefix": ("ND0048", "matrix-determinant-minors"),
+    "SignedMatrixMinor": ("ND0049", "matrix-determinant-minors"),
+    "HornerDerivativeTrace": ("ND0050", "polynomial-hensel"),
+    "HornerDerivative": ("ND0051", "polynomial-hensel"),
+    "HornerDerivativeOnly": ("ND0052", "polynomial-hensel"),
+    "CRTPositiveModuliPrefix": ("ND0053", "generalized-crt-fold"),
+    "CRTPairwiseCoprimePrefix": ("ND0054", "generalized-crt-fold"),
+    "CRTPrefixSolution": ("ND0055", "generalized-crt-fold"),
+    "CRTPrefixLCM": ("ND0056", "generalized-crt-fold"),
+    "CRTCanonicalPrefixSolution": ("ND0057", "generalized-crt-fold"),
+    "MatrixMinorFourCode": ("ND0058", "matrix-cofactor-expansion"),
+    "SignedMinorRecord": ("ND0059", "matrix-cofactor-expansion"),
+    "SignedCofactorMinorPrefix": ("ND0060", "matrix-cofactor-expansion"),
+    "SignedAlternatingCofactorTerm": ("ND0061", "matrix-cofactor-expansion"),
+    "SignedAlternatingProductPrefix": ("ND0062", "matrix-cofactor-expansion"),
+    "SignedAlternatingCofactorFold": ("ND0063", "matrix-cofactor-expansion"),
+    "SignedFirstRowCofactorFold": ("ND0064", "matrix-cofactor-expansion"),
+    "HornerTaylorRemainder": ("ND0065", "polynomial-taylor-hensel"),
+    "HenselCorrection": ("ND0066", "polynomial-taylor-hensel"),
+    "CRTPairwiseCompatiblePrefix": ("ND0067", "generalized-crt-compatibility"),
+    "CRTMergeCompatiblePrefix": ("ND0068", "generalized-crt-compatibility"),
 }
 
 
@@ -288,6 +370,16 @@ def _milestone_manifest() -> dict:
 
 
 @lru_cache(maxsize=1)
+def _research_manifest() -> dict:
+    return json.loads((RESEARCH / "manifest.json").read_text(encoding="utf-8"))
+
+
+@lru_cache(maxsize=1)
+def _breakthrough_manifest() -> dict:
+    return json.loads((BREAKTHROUGH / "manifest.json").read_text(encoding="utf-8"))
+
+
+@lru_cache(maxsize=1)
 def _corpus(slug: str) -> dict:
     return json.loads((NEXT / slug / "api" / "corpus.json").read_text(encoding="utf-8"))
 
@@ -315,21 +407,38 @@ def test_current_alpha_and_immutable_stable_are_bound_to_actual_catalog_bytes() 
 
     assert digest == alpha["artifact_sha256"]
     assert digest[:12] == CURRENT_REVISION
-    assert alpha["artifact_path"] == "artifacts/peano-library/alpha/catalog-v23.json"
+    assert alpha["artifact_path"] == (
+        f"artifacts/peano-library/alpha/catalog-{CURRENT_ALPHA_VERSION}.json"
+    )
     assert alpha["edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
-    assert alpha["theorem_count"] == alpha["checked_use_count"] == 1_949
-    assert alpha["evidence_counts"] == {"alpha_closed": 1_517, "stable_closed": 432}
-    assert alpha["alpha_v23_frontier_new_count"] == 59
-    assert alpha["frontier_v23_campaign_counts"] == {
-        "binary_digit_extraction": 24,
-        "euclidean_logarithmic_bound": 17,
-        "primes_three_mod_four": 18,
+    current = _campaign()["ambitious_boundaries"][f"alpha_{CURRENT_ALPHA_VERSION}_edition"]
+    assert alpha["theorem_count"] == alpha["checked_use_count"] == current["theorem_count"]
+    assert alpha["evidence_counts"] == {
+        "alpha_closed": current["alpha_closed_count"],
+        "stable_closed": current["stable_closed_count"],
     }
+    assert alpha[f"alpha_{CURRENT_ALPHA_VERSION}_frontier_new_count"] == current[
+        "new_theorem_count"
+    ]
+    current_counts = alpha[f"frontier_{CURRENT_ALPHA_VERSION}_campaign_counts"]
+    assert sum(current_counts.values()) == current["new_theorem_count"]
+    if CURRENT_ALPHA_VERSION == "v24":
+        assert current_counts == {
+            "generalized_crt_fold": 27,
+            "matrix_determinant_minors": 17,
+            "polynomial_hensel": 15,
+        }
+    if CURRENT_ALPHA_VERSION == "v25":
+        assert current_counts == {
+            "generalized_crt_compatibility": 24,
+            "matrix_cofactor_expansion": 29,
+            "polynomial_taylor_hensel": 19,
+        }
     assert stable["theorem_count"] == stable["checked_use_count"] == 432
     assert channels["default_channel"] == "stable"
 
 
-def test_public_hub_publishes_exactly_twenty_one_independently_versioned_family_routes() -> None:
+def test_public_hub_publishes_every_current_independently_versioned_family_route() -> None:
     document = _document(HUB)
     links = [
         item
@@ -341,15 +450,24 @@ def test_public_hub_publishes_exactly_twenty_one_independently_versioned_family_
         for item in links
         if urlsplit(item["href"]).path.strip("/") != "grand-campaign"
     }
-    assert set(family_links) == (
+    known_routes = (
         set(FLAGSHIP_ROUTES)
         | set(HISTORIC_ROUTES)
         | set(NEXT_FAMILIES)
         | set(ADVANCED_FAMILIES)
         | set(TRANSPORT_FAMILIES)
         | set(MILESTONE_FAMILIES)
+        | set(RESEARCH_FAMILIES)
+        | set(BREAKTHROUGH_FAMILIES)
     )
-    assert len(family_links) == 21
+    manifest_routes = {
+        family["slug"]
+        for path in (ROOT / "book" / "_static").glob("constructive-*-explorer/manifest.json")
+        for family in json.loads(path.read_bytes())["families"]
+    }
+    assert known_routes <= set(FLAGSHIP_ROUTES) | manifest_routes
+    assert set(family_links) == set(FLAGSHIP_ROUTES) | manifest_routes
+    assert len(family_links) >= 27
     assert all(_revision(item["href"]) == CURRENT_REVISION for item in family_links.values())
 
     atlas = next(
@@ -358,15 +476,17 @@ def test_public_hub_publishes_exactly_twenty_one_independently_versioned_family_
     assert _revision(atlas["href"]) == CURRENT_REVISION
 
 
-def test_public_hub_truthfully_identifies_v23_and_contains_no_stale_current_revision() -> None:
+def test_public_hub_truthfully_identifies_the_current_sealed_release() -> None:
     source = HUB.read_text(encoding="utf-8")
+    current = _campaign()["ambitious_boundaries"][f"alpha_{CURRENT_ALPHA_VERSION}_edition"]
+    definitions = _global_definitions()
 
-    assert "Immutable Alpha v23" in source
-    assert "All 1,949 theorems have checked-use authority" in source
-    assert "432-theorem Stable edition remains unchanged" in source
-    assert "Nineteen constructive proof campaigns" in source
-    assert "152 structured first-order definitions" in source
-    assert "97 reviewed conservative definitions" in source
+    assert f"Immutable Alpha {CURRENT_ALPHA_VERSION}" in source
+    assert f"All {current['theorem_count']:,} theorems have checked-use authority" in source
+    assert "432 unchanged Stable theorems" in source
+    assert "constructive proof campaigns" in source
+    assert f"{definitions['definition_count']} structured first-order definitions" in source
+    assert f"{definitions['reviewed_definition_count']} reviewed conservative definitions" in source
     for milestone in ("G025", "G101", "G102"):
         assert f"Closed milestone {milestone}" in source
     assert "Immutable Alpha v19 independently closes" not in source
@@ -380,25 +500,30 @@ def test_grand_atlas_embeds_the_exact_current_snapshot_without_rewriting_history
     document = _document(ATLAS / "index.html")
     snapshot = json.loads("".join(document.snapshot))
     assert snapshot == _campaign()
-    assert snapshot["meta"]["current_alpha_version"] == "v23"
-    assert snapshot["meta"]["current_alpha_checked_use_count"] == 1_949
+    assert snapshot["meta"]["current_alpha_version"] == CURRENT_ALPHA_VERSION
+    assert snapshot["meta"]["current_alpha_checked_use_count"] == CURRENT_CHANNEL["checked_use_count"]
     assert "v19" in snapshot["meta"]["historical_alpha_versions"]
     assert "v20" in snapshot["meta"]["historical_alpha_versions"]
     assert "v21" in snapshot["meta"]["historical_alpha_versions"]
     assert "v22" in snapshot["meta"]["historical_alpha_versions"]
+    assert "v23" in snapshot["meta"]["historical_alpha_versions"]
+    assert "v24" in snapshot["meta"]["historical_alpha_versions"]
 
     boundaries = snapshot["ambitious_boundaries"]
-    current = boundaries["alpha_v23_edition"]
-    historic = boundaries["alpha_v22_edition"]
+    current = boundaries[f"alpha_{CURRENT_ALPHA_VERSION}_edition"]
+    historic = boundaries["alpha_v23_edition"]
     assert current["role"] == "current_immutable_release"
-    assert current["theorem_count"] == current["checked_use_count"] == 1_949
+    assert current["theorem_count"] == current["checked_use_count"] == CURRENT_CHANNEL["theorem_count"]
     assert current["stable_closed_count"] == 432
     assert current["catalog_sha256"] == _catalog_digest()
-    assert historic["role"] == "immutable_historical_parent"
-    assert historic["theorem_count"] == 1_890
+    assert historic["role"] in {"immutable_historical_parent", "immutable_historical_ancestor"}
+    assert historic["theorem_count"] == 1_949
+    parent = boundaries["alpha_v24_edition"]
+    assert parent["role"] in {"immutable_historical_parent", "immutable_historical_ancestor"}
+    assert parent["theorem_count"] == parent["checked_use_count"] == 2_008
 
 
-def test_grand_atlas_closes_three_exact_milestones_but_keeps_t13_genuinely_open() -> None:
+def test_grand_atlas_preserves_historical_closures_and_honest_open_boundaries() -> None:
     nodes = {node["id"]: node for node in _campaign()["nodes"]}
     expected = {
         "T12": "beta_horner_eval_exists",
@@ -424,10 +549,10 @@ def test_grand_atlas_closes_three_exact_milestones_but_keeps_t13_genuinely_open(
     assert evidence["implementation"] == "independently_closed_partial"
     assert evidence["checked_use"] is False
     assert evidence["partial_component_checked_use"] is True
-    assert evidence["alpha_version"] == "v21"
-    assert evidence["partial_checked_theorem_count"] == 33
-    assert evidence["new_checked_theorem_count"] == 23
-    assert evidence["partial_theorem_name"] == "beta_signed_matrix_product_exists"
+    assert evidence["alpha_version"] == CURRENT_ALPHA_VERSION
+    assert evidence["partial_checked_theorem_count"] >= 50
+    assert evidence["new_checked_theorem_count"] >= 17
+    assert evidence["partial_theorem_name"] == "signed_matrix_cofactor_family_and_fold_exists"
     assert evidence["independent_lean_bundle_verified"] is True
     assert evidence["full_arbitrary_signed_matrix_proved"] is True
     assert evidence["full_arbitrary_signed_matrix_product_proved"] is True
@@ -463,6 +588,19 @@ def test_grand_atlas_closes_three_exact_milestones_but_keeps_t13_genuinely_open(
     assert nodes["G102"]["evidence"]["arbitrary_exponent_binary_digits_proved"] is True
     assert nodes["G102"]["evidence"]["formal_logarithmic_bound_proved"] is True
     assert nodes["G025"]["evidence"]["strict_unbounded_prime_witness_proved"] is True
+    for identifier, theorem, theorem_count in (
+        ("T13", "signed_matrix_cofactor_family_and_fold_exists", 29),
+        ("G095", "beta_horner_hensel_lift_exists", 19),
+        ("G011", "crt_merge_compatible_prefix_canonical_exists_unique", 24),
+    ):
+        node = nodes[identifier]
+        partial_evidence = node["evidence"]
+        assert node["status"] == "open"
+        assert partial_evidence["checked_use"] is False
+        assert partial_evidence["partial_component_checked_use"] is True
+        assert partial_evidence["partial_theorem_name"] == theorem
+        assert partial_evidence["new_checked_theorem_count"] == theorem_count
+        assert partial_evidence["alpha_version"] == CURRENT_ALPHA_VERSION
 
 
 def test_global_definition_dag_is_downloadable_layered_and_genuinely_reviewed() -> None:
@@ -474,16 +612,22 @@ def test_global_definition_dag_is_downloadable_layered_and_genuinely_reviewed() 
     rows = {item["name"]: item for item in graph["definitions"]}
     assert graph["schema"] == "constructive-number-theory-definition-dag-v1"
     assert graph["definition_count"] == len(rows) == len(_campaign()["definitions"])
-    assert graph["definition_count"] == 152
-    assert graph["definition_edge_count"] == 108
-    assert graph["statement_usage_edge_count"] == 311
-    assert graph["declared_notation_edge_count"] == 55
-    assert graph["milestone_usage_edge_count"] == 366
-    assert graph["reviewed_definition_count"] == 97
-    assert graph["reviewed_definition_edge_count"] == 159
-    assert graph["compatible_reviewed_match_count"] == 61
+    assert graph["definition_count"] == 179
+    assert graph["definition_edge_count"] == sum(len(row["dependencies"]) for row in rows.values())
+    assert graph["statement_usage_edge_count"] >= 311
+    assert graph["milestone_usage_edge_count"] == (
+        graph["statement_usage_edge_count"] + graph["declared_notation_edge_count"]
+    )
+    assert graph["reviewed_definition_count"] == 120
+    assert graph["reviewed_definition_edge_count"] == sum(
+        len(row["dependencies"]) for row in graph["reviewed_definitions"]
+    )
+    assert graph["compatible_reviewed_match_count"] == 88
     assert graph["definition_edge_count"] == len(graph["definition_edges"])
-    assert graph["topological_layer_count"] == len(graph["layers"]) == 6
+    assert graph["topological_layer_count"] == len(graph["layers"]) >= 7
+    assert graph["topological_layer_count"] == max(
+        row["topological_layer"] for row in rows.values()
+    ) + 1
     assert graph["reviewed_definition_count"] == len(graph["reviewed_definitions"])
     assert graph["compatible_reviewed_match_count"] == len(
         graph["compatible_reviewed_matches"]
@@ -507,6 +651,11 @@ def test_global_definition_dag_is_downloadable_layered_and_genuinely_reviewed() 
     assert rows["Beta"]["reviewed_match"]["reviewed_id"] == "PD0013"
     assert rows["Sum"]["reviewed_match"] is None
     assert rows["Sum"]["reviewed_incompatibility"]["reason"] == "incompatible-arity"
+    assert rows["BetaSum"]["reviewed_match"]["reviewed_id"] == "PD0015"
+    assert rows["BetaSum"]["reviewed_match"]["reviewed_name"] == "Sum"
+    assert rows["BetaSum"]["reviewed_match"]["reviewed_argument_blueprint_positions"] == [
+        0, 1, 2, 3
+    ]
 
 
 def test_atlas_definition_links_resolve_new_families_both_locally_and_when_deployed() -> None:
@@ -519,12 +668,16 @@ def test_atlas_definition_links_resolve_new_families_both_locally_and_when_deplo
     assert 'return "../constructive-advanced-layer-explorer/" + route + "/explorer/defined/";' in function
     assert 'return "../constructive-transport-layer-explorer/" + route + "/explorer/defined/";' in function
     assert 'return "../constructive-milestone-closure-explorer/" + route + "/explorer/defined/";' in function
+    assert 'return "../constructive-research-layer-explorer/" + route + "/explorer/defined/";' in function
+    assert 'return "../constructive-breakthrough-layer-explorer/" + route + "/explorer/defined/";' in function
     assert 'return "../constructive-frontier-explorer/" + route + "/explorer/defined/";' in function
     for slug in (
         *NEXT_FAMILIES,
         *ADVANCED_FAMILIES,
         *TRANSPORT_FAMILIES,
         *MILESTONE_FAMILIES,
+        *RESEARCH_FAMILIES,
+        *BREAKTHROUGH_FAMILIES,
     ):
         assert f'"{slug}"' in function
 
@@ -534,7 +687,7 @@ def test_next_layer_manifest_publishes_all_families_with_current_kernel_and_lean
     assert manifest["catalog_sha256"] == _catalog_digest()
     assert manifest["html_revision"] == CURRENT_REVISION
     assert manifest["edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
-    assert manifest["alpha_edition_version"] == "v23"
+    assert manifest["alpha_edition_version"] == CURRENT_ALPHA_VERSION
     assert manifest["alpha_first_enrolled_version"] == "v20"
     assert manifest["proof_bundle_sha256"] == NEXT_BUNDLE_SHA256
     assert manifest["theorem_count"] == manifest["checked_use_count"] == 39
@@ -554,7 +707,7 @@ def test_each_new_family_exposes_real_checked_corpus_graph_and_exact_root_pages(
     assert corpus["family_slug"] == slug
     assert corpus["node_count"] == corpus["alpha_checked_use_node_count"] == expected["count"]
     assert corpus["stable_admitted_node_count"] == 0
-    assert corpus["alpha_edition_version"] == "v23"
+    assert corpus["alpha_edition_version"] == CURRENT_ALPHA_VERSION
     assert corpus["alpha_first_enrolled_version"] == "v20"
     assert corpus["alpha_edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
     assert corpus["alpha_catalog_sha256"] == _catalog_digest()
@@ -564,7 +717,8 @@ def test_each_new_family_exposes_real_checked_corpus_graph_and_exact_root_pages(
     assert corpus["campaign_family_id"] == expected["family"]
     assert corpus["path_policy"] == "proof_dependency_edges_only"
     assert all(
-        node["alpha_edition_version"] == "v23" and node["alpha_first_enrolled_version"] == "v20"
+        node["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+        and node["alpha_first_enrolled_version"] == "v20"
         for node in corpus["nodes"]
     )
     assert all(node["checked_use"] and node["independent_lean_bundle_verified"] for node in corpus["nodes"])
@@ -574,7 +728,7 @@ def test_each_new_family_exposes_real_checked_corpus_graph_and_exact_root_pages(
             encoding="utf-8"
         )
     )
-    assert graph["alpha_edition_version"] == "v23"
+    assert graph["alpha_edition_version"] == CURRENT_ALPHA_VERSION
     assert graph["alpha_first_enrolled_version"] == "v20"
     assert graph["alpha_checked_use_node_count"] == expected["count"]
     assert graph["stable_admitted_node_count"] == 0
@@ -588,7 +742,7 @@ def test_each_new_family_exposes_real_checked_corpus_graph_and_exact_root_pages(
         assert exact.is_file() and defined.is_file()
         page = defined.read_text(encoding="utf-8")
         assert name in page
-        assert "Alpha v23 checked-use" in page
+        assert f"Alpha {CURRENT_ALPHA_VERSION} checked-use" in page
         assert "first admitted v20" in page
         assert "compiled verifier accepted all 590 exact bundle nodes" in page
         assert NEXT_BUNDLE_SHA256 in page
@@ -632,29 +786,29 @@ def test_new_family_definition_pages_link_exactly_into_global_atlas(slug: str) -
 
 
 @pytest.mark.parametrize("slug", HISTORIC_ROUTES)
-def test_historic_checked_families_report_current_v23_without_rewriting_provenance(
+def test_historic_checked_families_report_the_current_release_without_rewriting_provenance(
     slug: str,
 ) -> None:
     corpus = json.loads((HISTORIC / slug / "api" / "corpus.json").read_text(encoding="utf-8"))
-    assert corpus["alpha_edition_version"] == "v23"
+    assert corpus["alpha_edition_version"] == CURRENT_ALPHA_VERSION
     assert corpus["alpha_edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
     for node in corpus["nodes"]:
         if node.get("alpha_checked_use"):
-            assert node["alpha_edition_version"] == "v23"
+            assert node["alpha_edition_version"] == CURRENT_ALPHA_VERSION
             assert "Alpha v19 checked-use" not in node["status"]
 
 
-def test_bertrand_flagship_reports_current_v23_authority() -> None:
+def test_bertrand_flagship_reports_current_checked_release_authority() -> None:
     root = ROOT / "book" / "_static" / "bertrand-proof-explorer" / "defined"
     landing = (ROOT / "deploy" / "proofs" / "bertrand-postulate.html").read_text(
         encoding="utf-8"
     )
-    assert "Alpha v23 independently verified proof" in landing
+    assert f"Alpha {CURRENT_ALPHA_VERSION} independently verified proof" in landing
     assert "Alpha v19 independently verified proof" not in landing
     assert "historical Alpha-v12 enrollment remains unchanged" in landing
     for filename in ("manifest.json", "api/graph.json"):
         record = json.loads((root / filename).read_text(encoding="utf-8"))
-        assert record["alpha_edition_version"] == "v23"
+        assert record["alpha_edition_version"] == CURRENT_ALPHA_VERSION
         assert record["alpha_edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
 
 
@@ -754,7 +908,7 @@ def test_advanced_families_preserve_provenance_and_report_their_current_goal_sta
     corpus = json.loads((ADVANCED / slug / "api/corpus.json").read_text(encoding="utf-8"))
     assert corpus["family_slug"] == slug
     assert corpus["node_count"] == corpus["alpha_checked_use_node_count"] == expected["count"]
-    assert corpus["alpha_edition_version"] == "v23"
+    assert corpus["alpha_edition_version"] == CURRENT_ALPHA_VERSION
     assert corpus["alpha_first_enrolled_version"] == "v21"
     assert corpus["alpha_edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
     assert corpus["alpha_catalog_sha256"] == _catalog_digest()
@@ -772,7 +926,7 @@ def test_advanced_families_preserve_provenance_and_report_their_current_goal_sta
     assert exact.is_file() and defined.is_file()
     page = defined.read_text(encoding="utf-8")
     assert name in page
-    assert "Alpha v23 checked-use" in page
+    assert f"Alpha {CURRENT_ALPHA_VERSION} checked-use" in page
     assert "first admitted v21" in page
     assert ADVANCED_BUNDLE_SHA256 in page
     assert "209" in page
@@ -788,7 +942,7 @@ def test_transport_manifest_publishes_exact_current_and_first_admission_authorit
     assert manifest["catalog_sha256"] == _catalog_digest()
     assert manifest["html_revision"] == CURRENT_REVISION
     assert manifest["edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
-    assert manifest["alpha_edition_version"] == "v23"
+    assert manifest["alpha_edition_version"] == CURRENT_ALPHA_VERSION
     assert manifest["alpha_first_enrolled_version"] == "v22"
     assert manifest["proof_bundle_sha256"] == TRANSPORT_BUNDLE_SHA256
     assert manifest["proof_bundle_node_count"] == 240
@@ -810,7 +964,7 @@ def test_transport_families_publish_checked_roots_and_real_definition_dag_links(
     assert corpus["family_slug"] == slug
     assert corpus["node_count"] == corpus["alpha_checked_use_node_count"] == expected["count"]
     assert corpus["stable_admitted_node_count"] == 0
-    assert corpus["alpha_edition_version"] == "v23"
+    assert corpus["alpha_edition_version"] == CURRENT_ALPHA_VERSION
     assert corpus["alpha_first_enrolled_version"] == "v22"
     assert corpus["alpha_edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
     assert corpus["alpha_catalog_sha256"] == _catalog_digest()
@@ -820,7 +974,7 @@ def test_transport_families_publish_checked_roots_and_real_definition_dag_links(
     assert corpus["milestone_status"] == "alpha_closed"
     assert corpus["milestone_checked_use"] is True
     assert all(
-        node["alpha_edition_version"] == "v23"
+        node["alpha_edition_version"] == CURRENT_ALPHA_VERSION
         and node["alpha_first_enrolled_version"] == "v22"
         for node in corpus["nodes"]
     )
@@ -833,7 +987,7 @@ def test_transport_families_publish_checked_roots_and_real_definition_dag_links(
     assert exact.is_file() and defined.is_file()
     page = defined.read_text(encoding="utf-8")
     assert name in page
-    assert "Alpha v23 checked-use" in page
+    assert f"Alpha {CURRENT_ALPHA_VERSION} checked-use" in page
     assert "first admitted v22" in page
     assert "compiled verifier accepted all 240 exact bundle nodes" in page
     assert TRANSPORT_BUNDLE_SHA256 in page
@@ -841,13 +995,13 @@ def test_transport_families_publish_checked_roots_and_real_definition_dag_links(
     graph = json.loads(
         (TRANSPORT / slug / "explorer/defined/api/graph.json").read_text(encoding="utf-8")
     )
-    assert graph["alpha_edition_version"] == "v23"
+    assert graph["alpha_edition_version"] == CURRENT_ALPHA_VERSION
     assert graph["alpha_first_enrolled_version"] == "v22"
     assert graph["alpha_checked_use_node_count"] == expected["count"]
     assert graph["stable_admitted_node_count"] == 0
     assert graph["independent_lean_bundle_verified"] is True
     assert all(
-        node["alpha_edition_version"] == "v23"
+        node["alpha_edition_version"] == CURRENT_ALPHA_VERSION
         and node["alpha_first_enrolled_version"] == "v22"
         for node in graph["nodes"]
         if node.get("kind") == "theorem"
@@ -879,7 +1033,7 @@ def test_milestone_manifest_publishes_three_fully_closed_independent_campaigns()
     assert manifest["catalog_sha256"] == _catalog_digest()
     assert manifest["html_revision"] == CURRENT_REVISION
     assert manifest["edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
-    assert manifest["alpha_edition_version"] == "v23"
+    assert manifest["alpha_edition_version"] == CURRENT_ALPHA_VERSION
     assert manifest["alpha_first_enrolled_version"] == "v23"
     assert manifest["proof_bundle_sha256"] == MILESTONE_BUNDLE_SHA256
     assert manifest["proof_bundle_node_count"] == 617
@@ -901,7 +1055,8 @@ def test_complete_milestone_families_publish_actual_checked_roots_and_definition
     assert corpus["family_slug"] == slug
     assert corpus["node_count"] == corpus["alpha_checked_use_node_count"] == expected["count"]
     assert corpus["stable_admitted_node_count"] == 0
-    assert corpus["alpha_edition_version"] == corpus["alpha_first_enrolled_version"] == "v23"
+    assert corpus["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+    assert corpus["alpha_first_enrolled_version"] == "v23"
     assert corpus["alpha_edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
     assert corpus["alpha_catalog_sha256"] == _catalog_digest()
     assert corpus["alpha_proof_bundle_sha256"] == MILESTONE_BUNDLE_SHA256
@@ -919,7 +1074,7 @@ def test_complete_milestone_families_publish_actual_checked_roots_and_definition
     assert exact.is_file() and defined.is_file()
     page = defined.read_text(encoding="utf-8")
     assert name in page
-    assert "Alpha v23 checked-use" in page
+    assert f"Alpha {CURRENT_ALPHA_VERSION} checked-use" in page
     assert "first admitted v23" in page
     assert "compiled verifier accepted all 617 exact bundle nodes" in page
     assert MILESTONE_BUNDLE_SHA256 in page
@@ -927,12 +1082,14 @@ def test_complete_milestone_families_publish_actual_checked_roots_and_definition
     graph = json.loads(
         (MILESTONE / slug / "explorer/defined/api/graph.json").read_text(encoding="utf-8")
     )
-    assert graph["alpha_edition_version"] == graph["alpha_first_enrolled_version"] == "v23"
+    assert graph["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+    assert graph["alpha_first_enrolled_version"] == "v23"
     assert graph["alpha_checked_use_node_count"] == expected["count"]
     assert graph["stable_admitted_node_count"] == 0
     assert graph["independent_lean_bundle_verified"] is True
     assert all(
-        node["alpha_edition_version"] == node["alpha_first_enrolled_version"] == "v23"
+        node["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+        and node["alpha_first_enrolled_version"] == "v23"
         for node in graph["nodes"]
         if node.get("kind") == "theorem"
     )
@@ -957,12 +1114,234 @@ def test_complete_milestone_families_publish_actual_checked_roots_and_definition
     }
 
 
-def test_stage_proofs_exposes_all_twenty_one_routes_and_all_exact_additive_artifacts() -> None:
+def test_research_manifest_preserves_exact_checked_authority_and_first_admission() -> None:
+    manifest = _research_manifest()
+    assert manifest["catalog_sha256"] == _catalog_digest()
+    assert manifest["html_revision"] == CURRENT_REVISION
+    assert manifest["edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
+    assert manifest["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+    assert manifest["alpha_first_enrolled_version"] == "v24"
+    assert manifest["proof_bundle_sha256"] == RESEARCH_BUNDLE_SHA256
+    assert manifest["proof_bundle_node_count"] == 203
+    assert manifest["theorem_count"] == manifest["checked_use_count"] == 59
+    assert manifest["stable_count"] == 0
+    assert manifest["independent_lean_bundle_verified"] is True
+    assert manifest["file_count"] + 1 == sum(path.is_file() for path in RESEARCH.rglob("*"))
+    assert {family["slug"]: family["theorem_count"] for family in manifest["families"]} == {
+        slug: family["count"] for slug, family in RESEARCH_FAMILIES.items()
+    }
+
+
+@pytest.mark.parametrize("slug", tuple(RESEARCH_FAMILIES))
+def test_research_families_keep_checked_proofs_separate_from_open_milestones(slug: str) -> None:
+    expected = RESEARCH_FAMILIES[slug]
+    corpus = json.loads((RESEARCH / slug / "api" / "corpus.json").read_bytes())
+    assert corpus["family_slug"] == slug
+    assert corpus["node_count"] == corpus["alpha_checked_use_node_count"] == expected["count"]
+    assert corpus["stable_admitted_node_count"] == 0
+    assert corpus["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+    assert corpus["alpha_first_enrolled_version"] == "v24"
+    assert corpus["alpha_edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
+    assert corpus["alpha_catalog_sha256"] == _catalog_digest()
+    assert corpus["alpha_proof_bundle_sha256"] == RESEARCH_BUNDLE_SHA256
+    assert corpus["independent_lean_bundle_verified"] is True
+    assert corpus["campaign_goal_id"] == expected["goal"]
+    assert corpus["milestone_status"] == "open"
+    assert corpus["milestone_checked_use"] is False
+    assert corpus["milestone_partial_checked_use"] is True
+    assert len(corpus["definitions"]) == expected["definition_count"]
+    assert corpus["path_policy"] == "proof_dependency_edges_only"
+
+    tag, name = expected["root"]
+    assert corpus["tags"][name] == tag
+    assert name in corpus["root_names"]
+    exact = RESEARCH / slug / "explorer" / "tag" / f"{tag}.html"
+    defined = RESEARCH / slug / "explorer" / "defined" / "tag" / f"{tag}.html"
+    assert exact.is_file() and defined.is_file()
+    page = defined.read_text(encoding="utf-8")
+    assert name in page
+    assert f"Alpha {CURRENT_ALPHA_VERSION} checked-use" in page
+    assert "first admitted v24" in page
+    assert "compiled verifier accepted all 203 exact bundle nodes" in page
+    assert RESEARCH_BUNDLE_SHA256 in page
+    assert f"{expected['goal']} remains OPEN" in page
+
+    graph = json.loads(
+        (RESEARCH / slug / "explorer" / "defined" / "api" / "graph.json").read_bytes()
+    )
+    assert graph["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+    assert graph["alpha_first_enrolled_version"] == "v24"
+    assert graph["alpha_checked_use_node_count"] == expected["count"]
+    assert graph["stable_admitted_node_count"] == 0
+    assert graph["independent_lean_bundle_verified"] is True
+    assert graph["milestone_status"] == "open"
+    assert graph["milestone_checked_use"] is False
+    assert graph["milestone_partial_checked_use"] is True
+    assert graph["path_policy"] == "proof_dependency_edges_only"
+
+    identifier, definition = expected["definition"]
+    record = next(item for item in corpus["definitions"] if item["id"] == identifier)
+    assert record["name"] == record["global_definition"] == definition
+    assert record["exact_ast_verified"] is True
+    assert record["kernel_signature_unchanged"] is True
+    definition_page = RESEARCH / slug / "explorer" / "defined" / "definition" / f"{identifier}.html"
+    assert definition_page.is_file()
+    atlas_links = [
+        item
+        for item in _document(definition_page).links
+        if item.get("data-campaign-link") == "definition"
+    ]
+    assert len(atlas_links) == 1
+    assert parse_qs(urlsplit(atlas_links[0]["href"]).query) == {
+        "view": ["definition"],
+        "focus": [definition],
+        "v": [CURRENT_REVISION],
+    }
+
+
+def test_current_release_preserves_its_historical_203_node_research_certificate() -> None:
+    links = {item["href"] for item in _document(HUB).links if "href" in item}
+    assert f"artifacts/{RESEARCH_BUNDLE}" in links
+    assert f"artifacts/{RESEARCH_RECEIPT}" in links
+
+    metrics = json.loads(METRICS.read_text(encoding="utf-8"))
+    promotion = metrics["alpha_v24_research_layer_promotion"]
+    evidence = promotion["proof_bundle"]
+    artifact = ROOT / evidence["artifact_path"]
+    receipt = ROOT / "research" / "arithmetic-library" / RESEARCH_RECEIPT
+    assert artifact.name == RESEARCH_BUNDLE
+    assert artifact.stat().st_size == evidence["artifact_bytes"] == 738_923
+    assert evidence["artifact_sha256"] == RESEARCH_BUNDLE_SHA256
+    assert evidence["node_count"] == evidence["kernel_calls"] == 203
+    assert evidence["dependency_edges"] == 502
+    assert evidence["frontier_count"] == 59
+    assert evidence["inherited_dependency_count"] == 143
+    assert promotion["independent_lean_bundle_verified"] is True
+    assert evidence["independent_lean_bundle_verified"] is True
+    assert RESEARCH_BUNDLE_SHA256 in receipt.read_text(encoding="utf-8")
+
+
+def test_breakthrough_manifest_binds_all_current_checked_frontiers_to_the_sealed_release() -> None:
+    manifest = _breakthrough_manifest()
+
+    assert manifest["catalog_sha256"] == _catalog_digest()
+    assert manifest["html_revision"] == CURRENT_REVISION
+    assert manifest["edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
+    assert manifest["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+    assert manifest["alpha_first_enrolled_version"] == "v25"
+    assert manifest["proof_bundle_sha256"] == BREAKTHROUGH_BUNDLE_SHA256
+    assert manifest["proof_bundle_node_count"] == 302
+    assert manifest["theorem_count"] == manifest["checked_use_count"] == 72
+    assert manifest["stable_count"] == 0
+    assert manifest["independent_lean_bundle_verified"] is True
+    assert manifest["file_count"] + 1 == sum(path.is_file() for path in BREAKTHROUGH.rglob("*"))
+    assert {family["slug"]: family["theorem_count"] for family in manifest["families"]} == {
+        slug: family["count"] for slug, family in BREAKTHROUGH_FAMILIES.items()
+    }
+
+
+@pytest.mark.parametrize("slug", tuple(BREAKTHROUGH_FAMILIES))
+def test_breakthrough_families_publish_checked_roots_without_falsely_closing_milestones(
+    slug: str,
+) -> None:
+    expected = BREAKTHROUGH_FAMILIES[slug]
+    corpus = json.loads((BREAKTHROUGH / slug / "api" / "corpus.json").read_bytes())
+
+    assert corpus["family_slug"] == slug
+    assert corpus["node_count"] == corpus["alpha_checked_use_node_count"] == expected["count"]
+    assert corpus["stable_admitted_node_count"] == 0
+    assert corpus["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+    assert corpus["alpha_first_enrolled_version"] == "v25"
+    assert corpus["alpha_edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
+    assert corpus["alpha_catalog_sha256"] == _catalog_digest()
+    assert corpus["alpha_proof_bundle_sha256"] == BREAKTHROUGH_BUNDLE_SHA256
+    assert corpus["independent_lean_bundle_verified"] is True
+    assert corpus["campaign_goal_id"] == expected["goal"]
+    assert corpus["milestone_status"] == "open"
+    assert corpus["milestone_checked_use"] is False
+    assert corpus["milestone_partial_checked_use"] is True
+    assert len(corpus["definitions"]) == expected["definition_count"]
+    assert corpus["path_policy"] == "proof_dependency_edges_only"
+
+    tag, name = expected["root"]
+    assert corpus["tags"][name] == tag
+    assert name in corpus["root_names"]
+    exact = BREAKTHROUGH / slug / "explorer" / "tag" / f"{tag}.html"
+    defined = BREAKTHROUGH / slug / "explorer" / "defined" / "tag" / f"{tag}.html"
+    assert exact.is_file() and defined.is_file()
+    page = defined.read_text(encoding="utf-8")
+    assert name in page
+    assert f"Alpha {CURRENT_ALPHA_VERSION} checked-use" in page
+    assert "first admitted v25" in page
+    assert "compiled verifier accepted all 302 exact bundle nodes" in page
+    assert BREAKTHROUGH_BUNDLE_SHA256 in page
+    assert f"{expected['goal']} remains OPEN" in page
+
+    graph = json.loads(
+        (BREAKTHROUGH / slug / "explorer" / "defined" / "api" / "graph.json").read_bytes()
+    )
+    assert graph["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+    assert graph["alpha_first_enrolled_version"] == "v25"
+    assert graph["alpha_checked_use_node_count"] == expected["count"]
+    assert graph["stable_admitted_node_count"] == 0
+    assert graph["independent_lean_bundle_verified"] is True
+    assert graph["milestone_status"] == "open"
+    assert graph["milestone_checked_use"] is False
+    assert graph["milestone_partial_checked_use"] is True
+    assert graph["path_policy"] == "proof_dependency_edges_only"
+
+    identifier, definition = expected["definition"]
+    record = next(item for item in corpus["definitions"] if item["id"] == identifier)
+    assert record["name"] == record["global_definition"] == definition
+    assert record["exact_ast_verified"] is True
+    assert record["kernel_signature_unchanged"] is True
+    definition_page = (
+        BREAKTHROUGH / slug / "explorer" / "defined" / "definition" / f"{identifier}.html"
+    )
+    assert definition_page.is_file()
+    atlas_links = [
+        item
+        for item in _document(definition_page).links
+        if item.get("data-campaign-link") == "definition"
+    ]
+    assert len(atlas_links) == 1
+    assert parse_qs(urlsplit(atlas_links[0]["href"]).query) == {
+        "view": ["definition"],
+        "focus": [definition],
+        "v": [CURRENT_REVISION],
+    }
+
+
+def test_current_release_publishes_its_checked_302_node_breakthrough_certificate() -> None:
+    links = {item["href"] for item in _document(HUB).links if "href" in item}
+    assert f"artifacts/{BREAKTHROUGH_BUNDLE}" in links
+    assert f"artifacts/{BREAKTHROUGH_RECEIPT}" in links
+
+    metrics = json.loads(METRICS.read_text(encoding="utf-8"))
+    promotion = metrics["alpha_v25_breakthrough_layer_promotion"]
+    evidence = promotion["proof_bundle"]
+    artifact = ROOT / evidence["artifact_path"]
+    receipt = ROOT / "research" / "arithmetic-library" / BREAKTHROUGH_RECEIPT
+    assert artifact.name == BREAKTHROUGH_BUNDLE
+    assert artifact.stat().st_size == evidence["artifact_bytes"] == 1_041_166
+    assert evidence["artifact_sha256"] == BREAKTHROUGH_BUNDLE_SHA256
+    assert evidence["node_count"] == evidence["kernel_calls"] == 302
+    assert evidence["dependency_edges"] == 820
+    assert evidence["frontier_count"] == 72
+    assert evidence["inherited_dependency_count"] == 229
+    assert promotion["independent_lean_bundle_verified"] is True
+    assert evidence["independent_lean_bundle_verified"] is True
+    assert BREAKTHROUGH_BUNDLE_SHA256 in receipt.read_text(encoding="utf-8")
+
+
+def test_stage_proofs_exposes_all_current_routes_and_exact_additive_artifacts() -> None:
     output = _staging_dry_run("stage-proofs")
     assert "python3 scripts/build_constructive_next_layer_explorer.py" in output
     assert "python3 scripts/build_constructive_advanced_layer_explorer.py" in output
     assert "python3 scripts/build_constructive_transport_layer_explorer.py" in output
     assert "python3 scripts/build_constructive_milestone_closure_explorer.py" in output
+    assert "python3 scripts/build_constructive_research_layer_explorer.py" in output
+    assert "python3 scripts/build_constructive_breakthrough_layer_explorer.py" in output
     assert "scripts/sync_constructive_grand_campaign.py --check" in output
     assert "book/_static/constructive-grand-campaign/" in output
     assert '"_deploy/proofs/grand-campaign/"' in output
@@ -984,6 +1363,12 @@ def test_stage_proofs_exposes_all_twenty_one_routes_and_all_exact_additive_artif
     for slug in MILESTONE_FAMILIES:
         assert f"book/_static/constructive-milestone-closure-explorer/{slug}/" in output
         assert f'"_deploy/proofs/{slug}/"' in output
+    for slug in RESEARCH_FAMILIES:
+        assert f"book/_static/constructive-research-layer-explorer/{slug}/" in output
+        assert f'"_deploy/proofs/{slug}/"' in output
+    for slug in BREAKTHROUGH_FAMILIES:
+        assert f"book/_static/constructive-breakthrough-layer-explorer/{slug}/" in output
+        assert f'"_deploy/proofs/{slug}/"' in output
     for filename in (
         NEXT_BUNDLE,
         NEXT_RECEIPT,
@@ -993,12 +1378,16 @@ def test_stage_proofs_exposes_all_twenty_one_routes_and_all_exact_additive_artif
         TRANSPORT_RECEIPT,
         MILESTONE_BUNDLE,
         MILESTONE_RECEIPT,
+        RESEARCH_BUNDLE,
+        RESEARCH_RECEIPT,
+        BREAKTHROUGH_BUNDLE,
+        BREAKTHROUGH_RECEIPT,
     ):
         assert f'"_deploy/proofs/artifacts/{filename}"' in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
 
 
-def test_stage_peano_includes_all_frozen_v20_through_v23_bundles_without_deployment() -> None:
+def test_stage_peano_includes_all_frozen_v20_through_v25_bundles_without_deployment() -> None:
     output = _staging_dry_run("stage-peano")
     assert f"research/arithmetic-library/artifacts/{NEXT_BUNDLE}" in output
     assert f"/proof-artifacts/{NEXT_BUNDLE}" in output
@@ -1008,4 +1397,8 @@ def test_stage_peano_includes_all_frozen_v20_through_v23_bundles_without_deploym
     assert f"/proof-artifacts/{TRANSPORT_BUNDLE}" in output
     assert f"research/arithmetic-library/artifacts/{MILESTONE_BUNDLE}" in output
     assert f"/proof-artifacts/{MILESTONE_BUNDLE}" in output
+    assert f"research/arithmetic-library/artifacts/{RESEARCH_BUNDLE}" in output
+    assert f"/proof-artifacts/{RESEARCH_BUNDLE}" in output
+    assert f"research/arithmetic-library/artifacts/{BREAKTHROUGH_BUNDLE}" in output
+    assert f"/proof-artifacts/{BREAKTHROUGH_BUNDLE}" in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output

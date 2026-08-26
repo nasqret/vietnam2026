@@ -17,6 +17,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, replace
 from hashlib import sha256
+from importlib import import_module
 import re
 from time import monotonic
 import unicodedata
@@ -88,6 +89,7 @@ MAX_SCRIPT_BYTES = 500_000
 MAX_SURFACE_TACTICAL_NODES = 128
 _NUMERAL_LITERAL = re.compile(r"(?<![\w'#])\d+", re.UNICODE)
 _SURFACE_LABEL_TOKEN = re.compile(r"[A-Za-z0-9][A-Za-z0-9._-]*\Z", re.ASCII)
+_HYDRA_ALPHA_SURFACE = re.compile(r"hydra-alpha-v([1-9][0-9]{0,3})-([0-9a-f]{64})\Z")
 KEY_SESSION = "pa.prove.session"
 KEY_LAST_SCRIPT = "pa.prove.last-script"
 KEY_PENDING_DOWNLOAD = "pa.prove.pending-download"
@@ -123,6 +125,26 @@ SURFACE_COMMAND_NAMES = frozenset(TACTIC_NAMES) | {
 SURFACE_THEOREM_NAMES = frozenset(spec.name for spec in THEOREMS)
 
 
+def _hydra_alpha_edition(label: str):
+    """Resolve only an explicit, exact-identity, sealed checked Alpha edition."""
+
+    if not label.startswith("hydra-alpha-"):
+        return None
+    matched = _HYDRA_ALPHA_SURFACE.fullmatch(label)
+    if matched is None:
+        raise ValueError("Hydra Alpha authority needs its exact version and 64-digit edition identity")
+    version, identity = matched.groups()
+    try:
+        edition = import_module(f"peano_lab.library.editions_v{version}")
+    except (ImportError, ValueError) as error:
+        raise ValueError(f"Hydra Alpha v{version} is not an available sealed edition") from error
+    actual = getattr(edition, f"ALPHA_V{version}_IDENTITY_SHA256", None)
+    inventory = getattr(edition, "ALPHA_EDITION", None)
+    if actual != identity or inventory is None or getattr(inventory, "identity_sha256", None) != identity:
+        raise ValueError("Hydra Alpha authority does not match its exact sealed edition identity")
+    return edition
+
+
 class ScriptExportError(ValueError):
     """A live session cannot be represented as one safe replay file."""
 
@@ -154,6 +176,11 @@ class SurfaceCapabilities:
                 "a surface-capability label must be one safe non-space token "
                 "using ASCII letters, digits, '.', '_', or '-'"
             )
+        alpha_edition = _hydra_alpha_edition(self.label)
+        if alpha_edition is not None and (
+            self.allowed_commands is None or self.allowed_theorems is None
+        ):
+            raise ValueError("Hydra Alpha authority requires finite tactic and theorem allowlists")
         for field in ("allowed_commands", "allowed_theorems"):
             value = getattr(self, field)
             if value is None:
@@ -176,11 +203,16 @@ class SurfaceCapabilities:
                     f"{field} must contain only safe non-space name tokens"
                 )
             object.__setattr__(self, field, names)
-            known = (
-                SURFACE_COMMAND_NAMES
-                if field == "allowed_commands"
-                else SURFACE_THEOREM_NAMES
-            )
+            if field == "allowed_commands":
+                known = SURFACE_COMMAND_NAMES
+            elif alpha_edition is None:
+                known = SURFACE_THEOREM_NAMES
+            else:
+                known = frozenset(
+                    name
+                    for name, item in alpha_edition.ALPHA_EDITION.by_name.items()
+                    if item.checked_use
+                )
             unknown = sorted(names - known)
             if unknown:
                 raise ValueError(
@@ -870,15 +902,34 @@ def _use_theorem(
 ) -> ProofState:
     theorem_name, requested_alias = _use_args(args)
     capabilities.require_theorem(theorem_name)
-    spec = get_theorem(theorem_name)
-    if spec is None:
-        raise TacticError(
-            f"no checked library theorem {theorem_name!r}; list names with `pa lib`."
-        )
-    try:
-        theorem = replay(spec.name)
-    except LibraryError as exc:
-        raise TacticError(f"library theorem replay failed: {exc}.") from None
+    alpha_edition = _hydra_alpha_edition(capabilities.label)
+    if alpha_edition is None:
+        spec = get_theorem(theorem_name)
+        if spec is None:
+            raise TacticError(
+                f"no checked library theorem {theorem_name!r}; list names with `pa lib`."
+            )
+        try:
+            theorem = replay(spec.name)
+        except LibraryError as exc:
+            raise TacticError(f"library theorem replay failed: {exc}.") from None
+    else:
+        item = alpha_edition.ALPHA_EDITION.by_name.get(theorem_name)
+        if item is None or item.checked_use is not True:
+            raise TacticError(f"no independently checked Alpha theorem {theorem_name!r}.")
+        spec = item.spec
+        try:
+            theorem = alpha_edition.replay(spec.name, edition="alpha")
+        except (LibraryError, OSError, ValueError) as exc:
+            raise TacticError(f"Alpha theorem replay failed: {exc}.") from None
+        if theorem.spec.name != spec.name or theorem.spec.statement != spec.statement:
+            raise TacticError("Alpha theorem replay changed its requested checked statement.")
+        try:
+            expected_formula, free_names = parse_formula_with_names(spec.statement)
+        except (ParseError, RecursionError, TypeError, ValueError) as exc:
+            raise TacticError(f"Alpha theorem has an invalid checked statement: {exc}.") from None
+        if free_names or theorem.formula != expected_formula:
+            raise TacticError("Alpha theorem replay changed its original closed formula.")
     alias = requested_alias or spec.name
     return use_checked(state, alias, theorem.formula, theorem.certificate)
 

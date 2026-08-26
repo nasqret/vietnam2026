@@ -88,9 +88,10 @@ def test_manifest_authenticates_current_channels_parent_catalog_kernel_and_lean(
     generated: dict[str, bytes], inputs: dict,
 ) -> None:
     manifest = json.loads(generated["manifest.json"])
-    digest = sha256(explorer.CATALOG.read_bytes()).hexdigest()
+    digest = sha256(explorer.CURRENT_CATALOG.read_bytes()).hexdigest()
     assert manifest["schema"] == "peano-lab-constructive-research-layer-explorer-v1-manifest"
-    assert manifest["alpha_edition_version"] == manifest["alpha_first_enrolled_version"] == "v24"
+    assert manifest["alpha_edition_version"] == "v25"
+    assert manifest["alpha_first_enrolled_version"] == "v24"
     assert manifest["catalog_sha256"] == digest
     assert manifest["html_revision"] == digest[:12]
     assert manifest["edition_identity_sha256"] == inputs["catalog"]["edition_identity_sha256"]
@@ -154,7 +155,7 @@ def test_every_research_branch_uses_the_exact_canonical_qr_landing_structure(
     assert f'href="explorer/defined/?v={revision}"' in source
     assert f'href="explorer/?v={revision}"' in source
     assert "first admitted v24" in source
-    assert "Alpha v24 checked-use theorem family" in source
+    assert "Alpha v25 checked-use theorem family" in source
     assert "independently accept all 203 bundle nodes" in source
     assert f"{family.milestones[-1]} remains OPEN" in source
     assert corpus["alpha_proof_bundle_sha256"] in source
@@ -219,7 +220,8 @@ def test_fully_verified_theorem_families_do_not_falsely_close_broader_milestones
         assert node["proof_bundle_node_id"] == closure["bundle_node_id"]
         assert node["proof_bundle_sha256"] == closure["certificate_sha256"]
         assert node["body_proof_nodes"] == closure["body_proof_nodes"]
-        assert node["alpha_edition_version"] == node["alpha_first_enrolled_version"] == "v24"
+        assert node["alpha_edition_version"] == "v25"
+        assert node["alpha_first_enrolled_version"] == "v24"
         assert node["alpha_checked_use"]
         assert node["independent_lean_bundle_verified"]
         assert not node["stable_member"]
@@ -328,7 +330,8 @@ def test_proof_dependencies_notation_usage_and_definition_dags_remain_separate(
 ) -> None:
     corpus = corpora[slug]
     graph = json.loads(generated[f"{slug}/explorer/defined/api/graph.json"])
-    assert graph["alpha_edition_version"] == graph["alpha_first_enrolled_version"] == "v24"
+    assert graph["alpha_edition_version"] == "v25"
+    assert graph["alpha_first_enrolled_version"] == "v24"
     assert graph["milestone_status"] == "open"
     assert not graph["milestone_checked_use"]
     assert graph["milestone_partial_checked_use"]
@@ -359,7 +362,7 @@ def test_major_root_pages_display_complete_tactics_exact_evidence_and_open_scope
     exact = generated[f"{slug}/explorer/tag/{tag}.html"].decode()
     defined = generated[f"{slug}/explorer/defined/tag/{tag}.html"].decode()
     assert theorem in exact and theorem in defined
-    assert "Alpha v24" in defined
+    assert "Alpha v25" in defined
     assert "/ 203</dd>" in defined
     assert "all 203 exact bundle nodes" in defined
     assert "Actual proof prerequisites" in defined
@@ -399,7 +402,7 @@ def test_canonical_renderer_fails_closed_for_unsafe_or_unsupported_families(
     with pytest.raises(ProofExplorerTemplateError):
         render_canonical_family_landing(
             family, corpora["matrix-determinant-minors"], revision=inputs["revision"],
-            current_alpha_version="v24", first_admitted_version="v24",
+            current_alpha_version="v25", first_admitted_version="v24",
             bundle_node_count=203,
         )
 

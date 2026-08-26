@@ -26,6 +26,12 @@ from constructive_advanced_layer_definitions import (  # noqa: E402
     ADVANCED_LAYER_REGISTRIES,
     ALL_CONSTRUCTIVE_DEFINITIONS_BY_NAME,
 )
+from constructive_breakthrough_layer_definitions import (  # noqa: E402
+    ALL_CONSTRUCTIVE_DEFINITIONS_BY_NAME as ALL_BREAKTHROUGH_DEFINITIONS_BY_NAME,
+    BREAKTHROUGH_LAYER_DEFINITIONS,
+    BREAKTHROUGH_LAYER_DEFINITIONS_BY_NAME,
+    BREAKTHROUGH_LAYER_REGISTRIES,
+)
 from constructive_next_layer_definitions import (  # noqa: E402
     NEXT_LAYER_DEFINITIONS,
     NEXT_LAYER_DEFINITIONS_BY_NAME,
@@ -108,16 +114,16 @@ def test_blueprint_and_checked_definition_inventory_remain_separate(
         expected_lexical_usage + expected_declared_usage
     )
     assert graph["topological_layer_count"] >= 5
-    assert graph["definition_count"] == 164
-    assert graph["reviewed_definition_count"] == len(ALL_RESEARCH_DEFINITIONS_BY_NAME) == 109
+    assert graph["definition_count"] == 179
+    assert graph["reviewed_definition_count"] == len(ALL_BREAKTHROUGH_DEFINITIONS_BY_NAME) == 120
     assert graph["reviewed_definition_edge_count"] == sum(
         len(definition.conceptual_dependencies)
-        for definition in ALL_RESEARCH_DEFINITIONS_BY_NAME.values()
+        for definition in ALL_BREAKTHROUGH_DEFINITIONS_BY_NAME.values()
     )
-    assert graph["reviewed_definition_edge_count"] == 186
-    assert graph["compatible_reviewed_match_count"] == 73
-    assert graph["exact_name_reviewed_match_count"] == 69
-    assert graph["explicit_alias_reviewed_match_count"] == 4
+    assert graph["reviewed_definition_edge_count"] == 214
+    assert graph["compatible_reviewed_match_count"] == 88
+    assert graph["exact_name_reviewed_match_count"] == 83
+    assert graph["explicit_alias_reviewed_match_count"] == 5
     assert graph["incompatible_reviewed_match_count"] == 2
     assert "never theorem-proof dependencies" in graph["authority_policy"][
         "notation_edges"
@@ -297,6 +303,77 @@ def test_research_layer_preserves_all_historical_identities_and_adds_exact_hygie
             assert parse_formula_in_context(item.template_source, list(item.parameters)) == (
                 item.template_formula
             )
+
+
+def test_breakthrough_registry_is_additive_hygienic_and_identity_preserving(
+    graph: dict,
+) -> None:
+    reviewed = {row["name"]: row for row in graph["reviewed_definitions"]}
+    assert len(BREAKTHROUGH_LAYER_DEFINITIONS) == 11
+    assert len(ALL_BREAKTHROUGH_DEFINITIONS_BY_NAME) == 120
+    assert tuple(item.stable_id for item in BREAKTHROUGH_LAYER_DEFINITIONS) == tuple(
+        f"ND{index:04d}" for index in range(58, 69)
+    )
+    assert [route for route, _ in BREAKTHROUGH_LAYER_REGISTRIES] == [
+        "matrix-cofactor-expansion",
+        "polynomial-taylor-hensel",
+        "generalized-crt-compatibility",
+    ]
+    assert [len(group) for _, group in BREAKTHROUGH_LAYER_REGISTRIES] == [7, 2, 2]
+    for name, item in ALL_RESEARCH_DEFINITIONS_BY_NAME.items():
+        assert ALL_BREAKTHROUGH_DEFINITIONS_BY_NAME[name] is item
+    for route, group in BREAKTHROUGH_LAYER_REGISTRIES:
+        for item in group:
+            assert BREAKTHROUGH_LAYER_DEFINITIONS_BY_NAME[item.name] is item
+            assert ALL_BREAKTHROUGH_DEFINITIONS_BY_NAME[item.name] is item
+            row = reviewed[item.name]
+            assert row["id"] == item.stable_id
+            assert row["route"] == route
+            assert row["parameters"] == list(item.parameters)
+            assert row["dependencies"] == list(item.conceptual_dependencies)
+            assert row["expansion_sha256"] == sha256(item.template_source.encode()).hexdigest()
+            assert parse_formula_in_context(item.template_source, list(item.parameters)) == (
+                item.template_formula
+            )
+
+
+@pytest.mark.parametrize(
+    ("name", "identifier", "route", "arity", "dependencies"),
+    (
+        ("MatrixMinorFourCode", "ND0058", "matrix-cofactor-expansion", 5, ()),
+        ("SignedMinorRecord", "ND0059", "matrix-cofactor-expansion", 7, ("MatrixMinorFourCode", "SignedMatrixMinor")),
+        ("SignedCofactorMinorPrefix", "ND0060", "matrix-cofactor-expansion", 8, ("Beta", "Lt", "SignedMinorRecord")),
+        ("SignedAlternatingCofactorTerm", "ND0061", "matrix-cofactor-expansion", 7, ("Even", "Odd")),
+        ("SignedAlternatingProductPrefix", "ND0062", "matrix-cofactor-expansion", 13, ("Beta", "Lt", "SignedAlternatingCofactorTerm")),
+        ("SignedAlternatingCofactorFold", "ND0063", "matrix-cofactor-expansion", 11, ("SignedAlternatingProductPrefix", "Sum")),
+        ("SignedFirstRowCofactorFold", "ND0064", "matrix-cofactor-expansion", 11, ("MatrixAffineSlice", "SignedAlternatingCofactorFold")),
+        ("HornerTaylorRemainder", "ND0065", "polynomial-taylor-hensel", 9, ("HornerDerivative", "Horner")),
+        ("HenselCorrection", "ND0066", "polynomial-taylor-hensel", 4, ("Lt", "ModEq")),
+        ("CRTPairwiseCompatiblePrefix", "ND0067", "generalized-crt-compatibility", 5, ("Beta", "Lt", "IsGCD", "ModEq")),
+        ("CRTMergeCompatiblePrefix", "ND0068", "generalized-crt-compatibility", 5, ("Lt", "Beta", "CRTPrefixLCM", "CRTPrefixSolution", "IsGCD", "ModEq")),
+    ),
+)
+def test_all_breakthrough_blueprint_names_share_exact_reviewed_identities(
+    graph: dict,
+    name: str,
+    identifier: str,
+    route: str,
+    arity: int,
+    dependencies: tuple[str, ...],
+) -> None:
+    match = next(
+        row for row in graph["compatible_reviewed_matches"]
+        if row["blueprint_name"] == name
+    )
+    reviewed = next(row for row in graph["reviewed_definitions"] if row["name"] == name)
+    blueprint = next(row for row in graph["definitions"] if row["name"] == name)
+    assert match["reviewed_name"] == name
+    assert match["reviewed_id"] == identifier
+    assert match["route"] == route
+    assert match["kind"] == "exact-name"
+    assert reviewed["arity"] == arity
+    assert tuple(reviewed["dependencies"]) == dependencies
+    assert blueprint["reviewed_match"] == match
 
 
 @pytest.mark.parametrize(
@@ -609,6 +686,7 @@ def test_milestone_usage_edges_are_never_theorem_proof_dependencies(
     ("blueprint", "reviewed", "identifier", "positions"),
     (
         ("Beta", "BetaAt", "PD0013", [0, 1, 2, 3]),
+        ("BetaSum", "Sum", "PD0015", [0, 1, 2, 3]),
         ("Binom", "Choose", "PD0041", [0, 1, 2]),
         ("Fact", "Factorial", "PD0023", [0, 1]),
         ("Gcd", "IsGCD", "PD0006", [2, 0, 1]),

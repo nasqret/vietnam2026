@@ -8,18 +8,18 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="binary-modular-execution"><header class="pd-header pd-definition-heading">
-  <nav><a href="../?v=94ac4d193cbf">Definitions and proofs</a>
-       <a href="../graph.html?v=94ac4d193cbf">Interactive dependency graph</a>
-       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=BinaryModularStep&amp;v=94ac4d193cbf">Global definition: BinaryModularStep</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=94ac4d193cbf">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=94ac4d193cbf">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=94ac4d193cbf">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G102" href="../../../../grand-campaign/?view=goal&amp;focus=G102&amp;v=94ac4d193cbf">G102 milestone</a></nav>
+  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
+       <a href="../graph.html?v=75fa146ac19b">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=BinaryModularStep&amp;v=75fa146ac19b">Global definition: BinaryModularStep</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G102" href="../../../../grand-campaign/?view=goal&amp;focus=G102&amp;v=75fa146ac19b">G102 milestone</a></nav>
   <p class="pd-tag">ND0026</p><h1>BinaryModularStep(m,u,a,b,r)</h1>
   <p>One exact binary square or square-and-multiply transition with a genuinely canonical reduced output.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
 </header><main class="pd-theorem-layout"><div class="pd-proof-panel">
   <section><h2>Hygienic expanded first-order definition</h2>
     <pre><code>(((b = 0) /\ (((exists ff_gap_binary_advanced_square. ff_gap_binary_advanced_square + S (r) = m) /\ (exists ff_left_binary_advanced_square_congruence ff_right_binary_advanced_square_congruence. (u * u) + m * ff_left_binary_advanced_square_congruence = (r) + m * ff_right_binary_advanced_square_congruence)))) \/ ((b = 1) /\ (((exists ff_gap_binary_advanced_multiply. ff_gap_binary_advanced_multiply + S (r) = m) /\ (exists ff_left_binary_advanced_multiply_congruence ff_right_binary_advanced_multiply_congruence. ((u * u) * a) + m * ff_left_binary_advanced_multiply_congruence = (r) + m * ff_right_binary_advanced_multiply_congruence)))))</code></pre>
     <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></section>
-  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0023.html?v=94ac4d193cbf">CanonicalModularResidue(m,a,r)</a></div></section>
-  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0035.html?v=94ac4d193cbf">BinaryExecutionTrace(d,s,a,m,n,h,t)</a></div></section>
-  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/BE0005.html?v=94ac4d193cbf">BE0005 · binary_execution_step_digit</a><a class="pd-chip" href="../tag/BE0009.html?v=94ac4d193cbf">BE0009 · binary_execution_step_power_invariant</a><a class="pd-chip" href="../tag/BE000E.html?v=94ac4d193cbf">BE000E · binary_modular_execution_successor_decompose</a></div></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0023.html?v=75fa146ac19b">CanonicalModularResidue(m,a,r)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0035.html?v=75fa146ac19b">BinaryExecutionTrace(d,s,a,m,n,h,t)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/BE0005.html?v=75fa146ac19b">BE0005 · binary_execution_step_digit</a><a class="pd-chip" href="../tag/BE0009.html?v=75fa146ac19b">BE0009 · binary_execution_step_power_invariant</a><a class="pd-chip" href="../tag/BE000E.html?v=75fa146ac19b">BE000E · binary_modular_execution_successor_decompose</a></div></section>
 </div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
   <dt>Arity</dt><dd>5</dd>
   <dt>Topological notation layer</dt><dd>2</dd>

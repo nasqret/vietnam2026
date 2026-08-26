@@ -1,9 +1,9 @@
-"""Bounded, read-only end-to-end audit of the public Alpha-v24 research layer.
+"""Audit immutable Alpha-v24 research admission under current Alpha-v25 authority.
 
 No test regenerates a snapshot, stages a website, starts a browser/server, or
 replays a proof.  In particular, the historically sealed Quadratic Reciprocity
-corpus is evidence in *both* the immutable v23 parent and its v24 child: its
-v23 bytes and edition label must never be silently replaced by current labels.
+corpus is evidence in the immutable v23, v24, and v25 catalogs: its historical
+bytes must never be silently replaced by the separate current reading surface.
 """
 
 from __future__ import annotations
@@ -25,8 +25,10 @@ from peano_lab.library.proof_bundle import decode_formula
 ROOT = Path(__file__).resolve().parents[3]
 STATIC = ROOT / "book" / "_static"
 CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+CURRENT_CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
 PARENT_CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v23.json"
 CHANNELS_PATH = ROOT / "artifacts" / "peano-library" / "channels-v24.json"
+CURRENT_CHANNELS_PATH = ROOT / "artifacts" / "peano-library" / "channels-v25.json"
 CAMPAIGN_PATH = STATIC / "constructive-grand-campaign" / "campaign.json"
 DEFINITION_GRAPH_PATH = STATIC / "constructive-grand-campaign" / "definitions.json"
 BUNDLE_NAME = "alpha-v24-research-layer-proof-bundle-v1.json"
@@ -35,17 +37,28 @@ QR_CORPUS_PATH = STATIC / "pa-proof-explorer" / "api" / "corpus.json"
 QR_CURRENT_CORPUS_PATH = STATIC / "pa-proof-explorer" / "api" / "current-corpus.json"
 BERTRAND_CORPUS_PATH = STATIC / "bertrand-proof-explorer" / "api" / "corpus.json"
 
-ALPHA_VERSION = "v24"
-ALPHA_COUNT = 2_008
+ALPHA_VERSION = "v25"
+ALPHA_COUNT = 2_080
+FIRST_ADMISSION_VERSION = "v24"
+FIRST_ADMISSION_COUNT = 2_008
 STABLE_COUNT = 432
 PARENT_COUNT = 1_949
 NEW_THEOREM_COUNT = 59
-ALPHA_IDENTITY = "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b"
+ALPHA_IDENTITY = "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
+FIRST_ADMISSION_IDENTITY = (
+    "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b"
+)
 PARENT_IDENTITY = "02059eef420eb96abd48c41bf62049a3cc69f025b00bed9dc3466e7eb2294a85"
-CATALOG_SHA256 = "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+CATALOG_SHA256 = "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+FIRST_ADMISSION_CATALOG_SHA256 = (
+    "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+)
 PARENT_CATALOG_SHA256 = "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
 HTML_REVISION = CATALOG_SHA256[:12]
 BUNDLE_SHA256 = "627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9"
+CURRENT_BUNDLE_SHA256 = (
+    "d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a"
+)
 QR_CORPUS_SHA256 = "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a"
 
 LAYER_FAMILIES: tuple[tuple[str, tuple[str, ...]], ...] = (
@@ -78,6 +91,14 @@ LAYER_FAMILIES: tuple[tuple[str, tuple[str, ...]], ...] = (
     (
         "constructive-research-layer-explorer",
         ("matrix-determinant-minors", "polynomial-hensel", "generalized-crt-fold"),
+    ),
+    (
+        "constructive-breakthrough-layer-explorer",
+        (
+            "matrix-cofactor-expansion",
+            "polynomial-taylor-hensel",
+            "generalized-crt-compatibility",
+        ),
     ),
 )
 ALL_FAMILIES = tuple(
@@ -124,16 +145,34 @@ RESEARCH_ROOTS = (
         "polynomial-hensel", "G095", "beta_horner_derivative_exists_unique",
         "171b5939376bfb9e9ec9469d3addd98e27584931fa7994dccb4b372c4d9a693f",
         170, "HD000B", "HornerDerivative", "full_simple_root_hensel_lift_proved",
-        "Hensel lift have not been proved",
+        "canonical prime-power representative",
     ),
     _RootEvidence(
         "generalized-crt-fold", "G011",
         "crt_pairwise_coprime_prefix_canonical_exists_unique",
         "6d3913cdbd73b6a2662e31aea220a19ab75f0d1995e3fadf0c583c58d270e01f",
         201, "CR001B", "CRTPrefixLCM", "full_generalized_crt_proved",
-        "noncoprime pairwise gcd-compatible lists",
+        "unrestricted pairwise gcd compatibility",
     ),
 )
+
+CURRENT_MILESTONE_ROOTS = {
+    "T13": (
+        "signed_matrix_cofactor_family_and_fold_exists",
+        "1f013b934c7540f73e135257094d612345f43f3163b5ee7280dbe97f4f142d2a",
+        257,
+    ),
+    "G095": (
+        "beta_horner_hensel_lift_exists",
+        "9cfc4633ea27c492b0deb35a56fe44b25b8dbf50d56fb27f29285f74b6c58a8b",
+        276,
+    ),
+    "G011": (
+        "crt_merge_compatible_prefix_canonical_exists_unique",
+        "9e3d68192e707b5953b2fd3c9e4716e9fe90317f63be49734bbed00e3492b927",
+        288,
+    ),
+}
 
 CANONICAL_QR_MARKERS = (
     '<header class="family-hero">',
@@ -219,14 +258,17 @@ def bundle_record() -> list:
 
 def test_sealed_v24_catalog_channels_parent_and_exact_additive_counts(catalog: dict) -> None:
     channels = _json(CHANNELS_PATH)
+    current_catalog = _json(CURRENT_CATALOG_PATH)
+    current_channels = _json(CURRENT_CHANNELS_PATH)
     parent = _json(PARENT_CATALOG_PATH)
-    assert _digest(CATALOG_PATH) == CATALOG_SHA256
+    assert _digest(CATALOG_PATH) == FIRST_ADMISSION_CATALOG_SHA256
+    assert _digest(CURRENT_CATALOG_PATH) == CATALOG_SHA256
     assert _digest(PARENT_CATALOG_PATH) == PARENT_CATALOG_SHA256
     assert catalog["schema"] == "peano-library-alpha-snapshot-v24"
-    assert catalog["theorem_count"] == catalog["checked_use_count"] == ALPHA_COUNT
-    assert len(catalog["theorems"]) == ALPHA_COUNT
+    assert catalog["theorem_count"] == catalog["checked_use_count"] == FIRST_ADMISSION_COUNT
+    assert len(catalog["theorems"]) == FIRST_ADMISSION_COUNT
     assert catalog["stable_count"] == STABLE_COUNT
-    assert catalog["edition_identity_sha256"] == ALPHA_IDENTITY
+    assert catalog["edition_identity_sha256"] == FIRST_ADMISSION_IDENTITY
     assert catalog["parent_alpha_v23"]["theorem_count"] == PARENT_COUNT
     assert catalog["parent_alpha_v23"]["edition_identity_sha256"] == PARENT_IDENTITY
     assert parent["theorem_count"] == parent["checked_use_count"] == PARENT_COUNT
@@ -234,7 +276,7 @@ def test_sealed_v24_catalog_channels_parent_and_exact_additive_counts(catalog: d
 
     promotion = catalog["alpha_v24_research_layer_promotion"]
     assert promotion["checked_use_before"] == PARENT_COUNT
-    assert promotion["checked_use_after"] == ALPHA_COUNT
+    assert promotion["checked_use_after"] == FIRST_ADMISSION_COUNT
     assert promotion["frontier_new_count"] == NEW_THEOREM_COUNT
     assert promotion["remaining_body_checked_count"] == 0
     assert promotion["campaign_counts"] == {
@@ -248,10 +290,23 @@ def test_sealed_v24_catalog_channels_parent_and_exact_additive_counts(catalog: d
     assert channels["channels"]["stable"]["theorem_count"] == STABLE_COUNT
     assert channels["channels"]["stable"]["checked_use_count"] == STABLE_COUNT
     alpha = channels["channels"]["alpha"]
-    assert alpha["theorem_count"] == alpha["checked_use_count"] == ALPHA_COUNT
+    assert alpha["theorem_count"] == alpha["checked_use_count"] == FIRST_ADMISSION_COUNT
     assert alpha["alpha_v24_frontier_new_count"] == NEW_THEOREM_COUNT
-    assert alpha["edition_identity_sha256"] == ALPHA_IDENTITY
-    assert alpha["artifact_sha256"] == CATALOG_SHA256
+    assert alpha["edition_identity_sha256"] == FIRST_ADMISSION_IDENTITY
+    assert alpha["artifact_sha256"] == FIRST_ADMISSION_CATALOG_SHA256
+
+    assert current_catalog["schema"] == "peano-library-alpha-snapshot-v25"
+    assert current_catalog["theorem_count"] == current_catalog["checked_use_count"] == ALPHA_COUNT
+    assert current_catalog["edition_identity_sha256"] == ALPHA_IDENTITY
+    assert current_catalog["parent_alpha_v24"]["edition_identity_sha256"] == (
+        FIRST_ADMISSION_IDENTITY
+    )
+    assert current_catalog["parent_alpha_v24"]["artifacts"]["catalog"]["sha256"] == (
+        FIRST_ADMISSION_CATALOG_SHA256
+    )
+    assert current_channels["schema"] == "peano-library-channels-v25"
+    assert current_channels["channels"]["alpha"]["artifact_sha256"] == CATALOG_SHA256
+    assert current_channels["channels"]["alpha"]["theorem_count"] == ALPHA_COUNT
 
 
 def test_exact_v24_bundle_envelope_is_bounded_without_replaying_proofs(
@@ -318,12 +373,12 @@ def test_global_campaign_and_conservative_definition_dag_are_exact_and_current(
     assert campaign["schema"] == "constructive-grand-campaign-v1"
     assert campaign["meta"]["current_alpha_version"] == ALPHA_VERSION
     assert campaign["meta"]["current_alpha_checked_use_count"] == ALPHA_COUNT
-    assert len(campaign["definitions"]) == 164
+    assert len(campaign["definitions"]) == 179
     assert len(campaign["nodes"]) == 144
-    assert definition_graph["definition_count"] == 164
-    assert definition_graph["reviewed_definition_count"] == 109
-    assert definition_graph["compatible_reviewed_match_count"] == 73
-    assert definition_graph["reviewed_definition_edge_count"] == 186
+    assert definition_graph["definition_count"] == 179
+    assert definition_graph["reviewed_definition_count"] == 120
+    assert definition_graph["compatible_reviewed_match_count"] == 88
+    assert definition_graph["reviewed_definition_edge_count"] == 214
 
     canonical_campaign = json.dumps(
         campaign, ensure_ascii=False, allow_nan=False, separators=(",", ":"), sort_keys=True
@@ -348,6 +403,7 @@ def test_partially_proved_major_milestones_stay_honestly_open(
 ) -> None:
     node = next(item for item in campaign["nodes"] if item["id"] == root.milestone)
     evidence = node["evidence"]
+    current_name, current_digest, current_node = CURRENT_MILESTONE_ROOTS[root.milestone]
     assert node["status"] == "open"
     assert evidence["implementation"] == "independently_closed_partial"
     assert evidence["alpha_version"] == ALPHA_VERSION
@@ -355,10 +411,11 @@ def test_partially_proved_major_milestones_stay_honestly_open(
     assert evidence["partial_component_checked_use"]
     assert not evidence["checked_use"]
     assert not evidence["stable_member"]
-    assert evidence["partial_theorem_name"] == root.name
-    assert evidence["partial_theorem_statement_sha256"] == root.statement_sha256
-    assert evidence["bundle_node_id"] == root.node_id
-    assert evidence["bundle_sha256"] == BUNDLE_SHA256
+    assert evidence["partial_theorem_name"] == current_name
+    assert evidence["partial_theorem_statement_sha256"] == current_digest
+    assert evidence["bundle_node_id"] == current_node
+    assert evidence["bundle_sha256"] == CURRENT_BUNDLE_SHA256
+    assert evidence["bundle_nodes"] == 302
     assert evidence["independent_lean_bundle_verified"]
     assert evidence[root.full_scope_flag] is False
     assert root.definition in node["definition_refs"]
@@ -381,16 +438,16 @@ def test_all_six_published_layer_manifests_authorize_current_v24(
         assert manifest["html_revision"] == HTML_REVISION
 
 
-def test_public_hub_has_exactly_22_campaign_cards_and_both_original_anchors() -> None:
+def test_public_hub_has_exactly_25_campaign_cards_and_both_original_anchors() -> None:
     source = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
     parser = _HubMarkup()
     parser.feed(source)
 
     anchors = [card for card in parser.cards if "candidate-card" not in card["classes"]]
     campaigns = [card for card in parser.cards if "candidate-card" in card["classes"]]
-    assert len(parser.cards) == 24
+    assert len(parser.cards) == 27
     assert len(anchors) == 2
-    assert len(campaigns) == len(ALL_FAMILIES) == 22
+    assert len(campaigns) == len(ALL_FAMILIES) == 25
     assert {next(iter(card["classes"] - {"family-card"})) for card in anchors} == {
         "qr-card", "bertrand-card"
     }
@@ -406,11 +463,11 @@ def test_public_hub_has_exactly_22_campaign_cards_and_both_original_anchors() ->
     for slug in slugs | {"quadratic-reciprocity", "bertrand-postulate"}:
         assert f'href="{slug}/?v={HTML_REVISION}"' in source
 
-    assert "Alpha v24" in source
-    assert "2,008 theorems" in source
-    assert "432-theorem Stable edition remains unchanged" in source
-    assert "164 structured first-order definitions" in source
-    assert "109 reviewed conservative definitions" in source
+    assert "Alpha v25" in source
+    assert "2,080 theorems" in source
+    assert "432 unchanged Stable theorems" in source
+    assert "179 structured first-order definitions" in source
+    assert "120 reviewed conservative definitions" in source
     assert BUNDLE_NAME in source
 
     for root in RESEARCH_ROOTS:
@@ -439,7 +496,7 @@ def test_every_campaign_retains_original_qr_design_definition_graph_and_v24_auth
     assert f'href="explorer/?v={HTML_REVISION}"' in landing
     assert "explorer/defined/graph.html?" in landing
     assert f"v={HTML_REVISION}" in landing
-    assert "Alpha v24" in landing
+    assert "Alpha v25" in landing
     assert "not Stable" in landing
 
     for path in (
@@ -642,6 +699,6 @@ def test_browser_app_worker_manifest_release_id_and_new_roots_are_consistent() -
 
     app_page = (app / "index.html").read_text(encoding="utf-8")
     assert f'const APP_ROOT="releases/{app_id}/";' in app_page
-    assert "Alpha: 2,008 proofs" in app_page
+    assert "Alpha: 2,080 proofs" in app_page
     for root in RESEARCH_ROOTS:
         assert f'data-cmd="pa lib alpha {root.name}"' in app_page

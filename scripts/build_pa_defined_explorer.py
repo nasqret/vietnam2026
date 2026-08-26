@@ -91,16 +91,16 @@ EXPLICIT_CORPUS = EXPLICIT / "api" / "current-corpus.json"
 EXPLICIT_GRAPH = EXPLICIT / "api" / "graph.json"
 OUTPUT = EXPLICIT / "defined"
 ASSET_SOURCE = OUTPUT / "assets"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
 IMMUTABLE_EVIDENCE_CORPUS_SHA256 = (
     "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a"
 )
 IMMUTABLE_EVIDENCE_CORPUS_BYTES = 17_229_311
 EXPECTED_CURRENT_EXPLICIT_CORPUS_SHA256 = (
-    "581b3aa4db5cdbb6efade3dede2ad8c06e7a244819912fcdf1ce0720195d8fc5"
+    "e9b3365e0c8495060436cf1ed147665e7012ad76d6ab6a2430a1b843ae0d31a9"
 )
 EXPECTED_ALPHA_EDITION_IDENTITY_SHA256 = (
-    "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b"
+    "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
 )
 EXPECTED_PROOF_EDITION_IDENTITY_SHA256 = (
     "3a683daf384e1712222012e4a4929732a9ec73c87fb5acb8a69446e2bcad5f10"
@@ -114,7 +114,7 @@ PINNED_ASSETS = {
     "assets/explorer.css": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220",
     "assets/explorer.js": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982",
 }
-# The page/navigation generation is keyed to the current Alpha-v24 catalog,
+# The page/navigation generation is keyed to the current Alpha-v25 catalog,
 # independently of the immutable content-addressed JavaScript asset digest.
 CAMPAIGN_HTML_REVISION = sha256(CURRENT_CATALOG.read_bytes()).hexdigest()[:12]
 CAMPAIGN_DEFINITION_ALIASES = {
@@ -948,7 +948,7 @@ def _render_index(theorems: Sequence[Mapping[str, Any]], definitions: Sequence[M
     atlas = _campaign_navigation(
         "../../../", family="F05", goal="G043", family_label="Reciprocity"
     )
-    body = f'''<header class="pd-header pd-hero"><nav><a href="../index.html">Exact explicit edition</a><a href="graph.html?target=PA00FW">Mixed dependency graph</a><a href="../../../arithmetic-library/defined-proof-explorer.html">Jupyter Book guide</a>{atlas}</nav><p class="pd-kicker">Parallel reading edition</p><h1>Native PA with defined notation</h1><p>Readable conservative notation is linked to exact expansions while the complete explicit tactic corpus remains visible.</p><div class="pd-stats"><b>{len(theorems)}</b> checked-use theorems · <b>{len(definitions)}</b> definitions</div><p>Current Alpha v24 verifies all 557 theorem nodes among 2008 checked release theorems: 241 are Stable and 316 are checked-use Alpha-only. The historical Alpha-v16 proof-bearing release remains immutable; source provenance never grants Stable membership.</p></header><main data-defined-dashboard><section class="pd-controls"><label>Search <input data-search type="search"></label><label>Kind <select data-kind><option value="all">Theorems and definitions</option><option value="theorem">Theorems</option><option value="definition">Definitions</option></select></label><button data-clear type="button">Clear</button><output data-count>{len(theorems) + len(definitions)} entries</output></section><section class="pd-results">{definition_cards}{theorem_cards}</section></main>'''
+    body = f'''<header class="pd-header pd-hero"><nav><a href="../index.html">Exact explicit edition</a><a href="graph.html?target=PA00FW">Mixed dependency graph</a><a href="../../../arithmetic-library/defined-proof-explorer.html">Jupyter Book guide</a>{atlas}</nav><p class="pd-kicker">Parallel reading edition</p><h1>Native PA with defined notation</h1><p>Readable conservative notation is linked to exact expansions while the complete explicit tactic corpus remains visible.</p><div class="pd-stats"><b>{len(theorems)}</b> checked-use theorems · <b>{len(definitions)}</b> definitions</div><p>Current Alpha v25 verifies all 557 theorem nodes among 2080 checked release theorems: 241 are Stable and 316 are checked-use Alpha-only. The historical Alpha-v16 proof-bearing release remains immutable; source provenance never grants Stable membership.</p></header><main data-defined-dashboard><section class="pd-controls"><label>Search <input data-search type="search"></label><label>Kind <select data-kind><option value="all">Theorems and definitions</option><option value="theorem">Theorems</option><option value="definition">Definitions</option></select></label><button data-clear type="button">Clear</button><output data-count>{len(theorems) + len(definitions)} entries</output></section><section class="pd-results">{definition_cards}{theorem_cards}</section></main>'''
     return _page("Native PA with defined notation", "index", body)
 
 
@@ -994,7 +994,7 @@ def _render_graph(graph: Mapping[str, Any]) -> bytes:
       if (!node || node.kind !== "theorem" || node.alpha_checked_use !== true) return;
       kind.textContent = node.stable_member ?
         "Stable checked-use theorem; independently closed" :
-        "Alpha v24 checked-use theorem; independently closed; not Stable";
+        "Alpha v25 checked-use theorem; independently closed; not Stable";
     }}
     new MutationObserver(showEvidence).observe(title, {{
       childList: true, characterData: true, subtree: true
@@ -1020,7 +1020,7 @@ def build_files(raw_edition: Mapping[str, Any] | None = None) -> tuple[dict[str,
         raise DefinedEditionError("immutable Alpha-parent quadratic-reciprocity corpus changed")
     current_corpus_sha256 = _digest(EXPLICIT_CORPUS.read_bytes())
     if current_corpus_sha256 != EXPECTED_CURRENT_EXPLICIT_CORPUS_SHA256:
-        raise DefinedEditionError("current Alpha-v24 explicit quadratic-reciprocity corpus changed")
+        raise DefinedEditionError("current Alpha-v25 explicit quadratic-reciprocity corpus changed")
     explicit_corpus = _json_object(EXPLICIT_CORPUS, "explicit proof corpus")
     explicit_graph = _json_object(EXPLICIT_GRAPH, "explicit theorem graph")
     missing_evidence = [
@@ -1029,18 +1029,18 @@ def build_files(raw_edition: Mapping[str, Any] | None = None) -> tuple[dict[str,
     ]
     if missing_evidence:
         raise DefinedEditionError(
-            "explicit explorer is missing sealed Alpha-v24/v16 release evidence: "
+            "explicit explorer is missing sealed Alpha-v25/v16 release evidence: "
             + ", ".join(missing_evidence)
         )
     release_receipt = {key: explicit_corpus[key] for key in ALPHA_RELEASE_FIELDS}
     if any(explicit_graph[key] != value for key, value in release_receipt.items()):
-        raise DefinedEditionError("explicit corpus and graph Alpha-v24/v16 evidence disagree")
+        raise DefinedEditionError("explicit corpus and graph Alpha-v25/v16 evidence disagree")
     if (
         explicit_corpus.get("schema") != "peano-lab-pa-proof-corpus-v1"
-        or release_receipt["alpha_edition_version"] != "v24"
+        or release_receipt["alpha_edition_version"] != "v25"
         or release_receipt["alpha_edition_identity_sha256"]
         != EXPECTED_ALPHA_EDITION_IDENTITY_SHA256
-        or release_receipt["alpha_edition_checked_use_count"] != 2008
+        or release_receipt["alpha_edition_checked_use_count"] != 2080
         or release_receipt["proof_edition_version"] != "v16"
         or release_receipt["proof_edition_identity_sha256"]
         != EXPECTED_PROOF_EDITION_IDENTITY_SHA256
@@ -1056,7 +1056,7 @@ def build_files(raw_edition: Mapping[str, Any] | None = None) -> tuple[dict[str,
         or release_receipt["graph_alpha_closed_count"]
         != explicit_corpus.get("candidate_count")
     ):
-        raise DefinedEditionError("explicit Alpha-v24/v16 release evidence is inconsistent")
+        raise DefinedEditionError("explicit Alpha-v25/v16 release evidence is inconsistent")
     explicit_records = _sequence(explicit_corpus.get("theorems"), "explicit corpus.theorems")
     edition = validate_edition(raw_edition or load_defined_edition(), explicit_records)
     edition_by_name = {row["name"]: row for row in edition["theorems"]}
@@ -1064,7 +1064,7 @@ def build_files(raw_edition: Mapping[str, Any] | None = None) -> tuple[dict[str,
     for explicit in explicit_records:
         row = dict(explicit)
         if (
-            row.get("alpha_edition_version") != "v24"
+            row.get("alpha_edition_version") != "v25"
             or row.get("proof_edition_version") != "v16"
             or row.get("alpha_checked_use") is not True
             or row.get("alpha_evidence")
@@ -1072,7 +1072,7 @@ def build_files(raw_edition: Mapping[str, Any] | None = None) -> tuple[dict[str,
             or row.get("stable_member") is not (row.get("scope") == "public")
         ):
             raise DefinedEditionError(
-                f"explicit theorem {row.get('name')!r} has inconsistent Alpha-v24/v16 evidence"
+                f"explicit theorem {row.get('name')!r} has inconsistent Alpha-v25/v16 evidence"
             )
         row["defined"] = edition_by_name[row["name"]]
         theorem_records.append(row)

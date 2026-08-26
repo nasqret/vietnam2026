@@ -248,6 +248,7 @@ async function missingProofArtifactFailsBeforeAnyMount() {
     "proof-artifacts/alpha-v22-transport-layer-proof-bundle-v1.json",
     "proof-artifacts/alpha-v23-milestone-closure-proof-bundle-v1.json",
     "proof-artifacts/alpha-v24-research-layer-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json",
   ]);
   await successfulBootIsConcurrentAndOrdered();
   await failureChoiceIsDeterministicAndAtomic();

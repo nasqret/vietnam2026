@@ -31,7 +31,7 @@ PEANO_LEAN_PUBLIC_ARGS ?=
 override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override STAGELEANAPI := _deploy/lean-api
-override PEANOAPPID := a-105fd471df5d
+override PEANOAPPID := a-a4f746a1cd35
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs stage-lean-api deploy-site deploy-lab deploy-lab-next deploy-peano \
@@ -145,6 +145,10 @@ help:
 	@echo "  make peano-library-alpha-v24-check  verify every Alpha-v24 proof, immutable parent, and Lean certificate"
 	@echo "  make peano-library-channels-v24  compatibility alias for the current Alpha-v24 build"
 	@echo "  make peano-library-channels-v24-check  compatibility alias for the current Alpha-v24 check"
+	@echo "  make peano-library-alpha-v25  seal the additive cofactor, Taylor, and CRT-compatibility breakthrough layer"
+	@echo "  make peano-library-alpha-v25-check  independently verify every Alpha-v25 proof, definition DAG, and Lean certificate"
+	@echo "  make peano-library-channels-v25  compatibility alias for the current Alpha-v25 build"
+	@echo "  make peano-library-channels-v25-check  compatibility alias for the current Alpha-v25 check"
 	@echo "  make ha-number-theory-check  validate strict-HA admission, gcd, and signed normalization tranches"
 	@echo "  make ha-constructive-frontier-check  replay ordered stages 1-6 in bounded isolated proof processes"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
@@ -219,6 +223,11 @@ book-constructive-milestone-closure-explorer:
 
 book-constructive-research-layer-explorer:
 	python3 scripts/build_constructive_research_layer_explorer.py
+
+.PHONY: book-constructive-breakthrough-layer-explorer
+
+book-constructive-breakthrough-layer-explorer:
+	python3 scripts/build_constructive_breakthrough_layer_explorer.py
 
 book: book-atlas book-proof-explorer
 	rm -rf book/_build   # full rebuild: incremental Sphinx leaves stale sidebars after TOC changes
@@ -765,6 +774,40 @@ peano-library-alpha-v24-check:
 	../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
 		research/arithmetic-library/artifacts/alpha-v24-research-layer-proof-bundle-v1.json
 
+.PHONY: peano-library-alpha-v25 peano-library-alpha-v25-check \
+	peano-library-channels-v25 peano-library-channels-v25-check
+
+peano-library-alpha-v25:
+	@# Admission requires exact unchanged-kernel and independently compiled Lean proofs.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v25.py
+
+peano-library-alpha-v25-check:
+	@# Isolate bounded theorem replays to avoid cross-campaign memory retention.
+	PYTHONMALLOC=malloc python3 scripts/build_peano_library_channels_v25.py --check
+	PYTHONMALLOC=malloc python3 scripts/verify_peano_library_channels_v25.py
+	PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		scripts/test_verify_peano_library_channels_v25.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_library_editions_v25_admission.py \
+		tests/test_campaign_breakthrough_layer_closure.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_matrix_cofactor_expansion_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_polynomial_taylor_hensel_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_generalized_crt_compatibility_candidate.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line \
+		tests/test_constructive_grand_campaign.py \
+		tests/test_constructive_campaign_dag.py \
+		tests/test_constructive_definition_graph.py \
+		tests/test_constructive_breakthrough_layer_explorer.py \
+		tests/test_constructive_breakthrough_publication_v25.py
+	python3 scripts/sync_constructive_grand_campaign.py --check
+	python3 scripts/update_peano_worker_sources.py --check
+	bash scripts/update_peano_app_manifest.sh --check
+	../peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify \
+		research/arithmetic-library/artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json
+
 peano-library-channels: peano-library-alpha
 
 peano-library-channels-check: peano-library-alpha-check
@@ -860,6 +903,10 @@ peano-library-channels-v23-check: peano-library-alpha-v23-check
 peano-library-channels-v24: peano-library-alpha-v24
 
 peano-library-channels-v24-check: peano-library-alpha-v24-check
+
+peano-library-channels-v25: peano-library-alpha-v25
+
+peano-library-channels-v25-check: peano-library-alpha-v25-check
 
 ha-number-theory-check:
 	python3 scripts/verify_ha_number_theory_campaign.py
@@ -1113,7 +1160,7 @@ stage: book
 deploy-site: stage
 	rsync -avz --delete $(STAGE)/ $(SERVER):$(SITE)/
 
-stage-proofs: book-proof-explorer book-constructive-frontier-explorer book-constructive-next-layer-explorer book-constructive-advanced-layer-explorer book-constructive-transport-layer-explorer book-constructive-milestone-closure-explorer book-constructive-research-layer-explorer
+stage-proofs: book-proof-explorer book-constructive-frontier-explorer book-constructive-next-layer-explorer book-constructive-advanced-layer-explorer book-constructive-transport-layer-explorer book-constructive-milestone-closure-explorer book-constructive-research-layer-explorer book-constructive-breakthrough-layer-explorer
 	@test "$$(shasum -a 256 book/_static/pa-proof-explorer/api/corpus.json | cut -d' ' -f1)" = \
 		"ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a" || \
 		{ echo "Immutable Alpha parent quadratic-reciprocity evidence corpus changed" >&2; exit 1; }
@@ -1190,6 +1237,10 @@ stage-proofs: book-proof-explorer book-constructive-frontier-explorer book-const
 		"$(STAGEPROOFS)/artifacts/alpha-v24-research-layer-proof-bundle-v1.json"
 	cp research/arithmetic-library/alpha-v24-research-layer-receipt.md \
 		"$(STAGEPROOFS)/artifacts/alpha-v24-research-layer-receipt.md"
+	cp research/arithmetic-library/artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json \
+		"$(STAGEPROOFS)/artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json"
+	cp research/arithmetic-library/alpha-v25-breakthrough-layer-receipt.md \
+		"$(STAGEPROOFS)/artifacts/alpha-v25-breakthrough-layer-receipt.md"
 	rsync -a --delete --exclude '.DS_Store' \
 		book/_static/pa-proof-explorer/ \
 		"$(STAGEPROOFS)/quadratic-reciprocity/explorer/"
@@ -1207,6 +1258,8 @@ stage-proofs: book-proof-explorer book-constructive-frontier-explorer book-const
 		"$(STAGEPROOFS)/assets/"
 	rsync -a book/_static/constructive-research-layer-explorer/assets/ \
 		"$(STAGEPROOFS)/assets/"
+	rsync -a book/_static/constructive-breakthrough-layer-explorer/assets/ \
+		"$(STAGEPROOFS)/assets/"
 	mkdir -p "$(STAGEPROOFS)/supplementary-laws" \
 		"$(STAGEPROOFS)/kummer" "$(STAGEPROOFS)/two-squares" \
 		"$(STAGEPROOFS)/four-squares" "$(STAGEPROOFS)/lucas" \
@@ -1222,7 +1275,10 @@ stage-proofs: book-proof-explorer book-constructive-frontier-explorer book-const
 		"$(STAGEPROOFS)/primes-three-mod-four" \
 		"$(STAGEPROOFS)/matrix-determinant-minors" \
 		"$(STAGEPROOFS)/polynomial-hensel" \
-		"$(STAGEPROOFS)/generalized-crt-fold"
+		"$(STAGEPROOFS)/generalized-crt-fold" \
+		"$(STAGEPROOFS)/matrix-cofactor-expansion" \
+		"$(STAGEPROOFS)/polynomial-taylor-hensel" \
+		"$(STAGEPROOFS)/generalized-crt-compatibility"
 	rsync -a --delete book/_static/constructive-frontier-explorer/supplementary-laws/ \
 		"$(STAGEPROOFS)/supplementary-laws/"
 	rsync -a --delete book/_static/constructive-frontier-explorer/kummer/ \
@@ -1267,6 +1323,12 @@ stage-proofs: book-proof-explorer book-constructive-frontier-explorer book-const
 		"$(STAGEPROOFS)/polynomial-hensel/"
 	rsync -a --delete book/_static/constructive-research-layer-explorer/generalized-crt-fold/ \
 		"$(STAGEPROOFS)/generalized-crt-fold/"
+	rsync -a --delete book/_static/constructive-breakthrough-layer-explorer/matrix-cofactor-expansion/ \
+		"$(STAGEPROOFS)/matrix-cofactor-expansion/"
+	rsync -a --delete book/_static/constructive-breakthrough-layer-explorer/polynomial-taylor-hensel/ \
+		"$(STAGEPROOFS)/polynomial-taylor-hensel/"
+	rsync -a --delete book/_static/constructive-breakthrough-layer-explorer/generalized-crt-compatibility/ \
+		"$(STAGEPROOFS)/generalized-crt-compatibility/"
 	python3 scripts/stage_public_lean_selector.py \
 		--root "$(STAGEPROOFS)" \
 		--api-url "$(PEANO_LEAN_PUBLIC_API)"
@@ -1362,6 +1424,8 @@ stage-peano:
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/alpha-v23-milestone-closure-proof-bundle-v1.json"
 	cp research/arithmetic-library/artifacts/alpha-v24-research-layer-proof-bundle-v1.json \
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/alpha-v24-research-layer-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json"
 	rsync -a --delete --exclude '/tests/***' --exclude '__pycache__/' --exclude '.pytest_cache/' --include '*/' --include '*.py' --exclude '*' peano-lab/py/ "$(STAGEPEANO)/releases/$(PEANOAPPID)/py/"
 	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"
 	@echo "Staged Peano Lab in $(STAGEPEANO)"

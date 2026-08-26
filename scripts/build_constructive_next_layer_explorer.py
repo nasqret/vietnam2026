@@ -64,7 +64,7 @@ from peano_lab.kernel.terms import (  # noqa: E402
     _pretty_term,
 )
 from peano_lab.library import editions_v20 as v20  # noqa: E402
-from peano_lab.library import editions_v24 as v24  # noqa: E402
+from peano_lab.library import editions_v25 as v25  # noqa: E402
 from peano_lab.library.alpha_enrollment_v20 import (  # noqa: E402
     EXPECTED_CAMPAIGN_COUNTS,
     FRONTIER_V20_EXPECTED_COUNT,
@@ -89,8 +89,8 @@ from peano_lab.library.defined_syntax import (  # noqa: E402
 
 OUTPUT = REPO / "book" / "_static" / "constructive-next-layer-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v20.json"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
-CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v24.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
+CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v25.json"
 CAMPAIGN = REPO / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
 GLOBAL_DEFINITIONS = CAMPAIGN.with_name("definitions.json")
 EXPECTED_ALPHA_COUNT = 1_776
@@ -99,7 +99,7 @@ EXPECTED_BUNDLE_NODE_COUNT = 590
 MAX_DEFINED_EXPANSION_NODES = 1_000_000
 SCHEMA = "peano-lab-constructive-next-layer-explorer-v1"
 STATUS = (
-    "Alpha v24 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable"
+    "Alpha v25 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable"
 )
 ASSET_SOURCES = {
     "defined-explorer.css": REPO / "book" / "_static" / "pa-proof-explorer" / "defined" / "assets" / "explorer.css",
@@ -143,12 +143,12 @@ class Family:
             return (
                 "The broader T13 milestone remains OPEN: these ten historical verified "
                 "matrix and dot-product components are now supplemented by complete "
-                "arbitrary signed matrix multiplication and exact signed minors in Alpha v24; arbitrary-dimensional "
+                "arbitrary signed matrix multiplication and exact signed minors in Alpha v25; arbitrary-dimensional "
                 "determinants, rank, and lattices remain open."
             )
         return (
             "Every displayed theorem was first admitted in Alpha v20, remains "
-            "independently kernel- and Lean-verified for current Alpha v24 checked "
+            "independently kernel- and Lean-verified for current Alpha v25 checked "
             "use, and has not been promoted to Stable."
         )
 
@@ -569,18 +569,18 @@ def _load_inputs() -> dict[str, Any]:
     current = channels.get("channels", {}).get("alpha", {})
     current_digest = _file_digest(CURRENT_CATALOG)
     if (
-        channels.get("schema") != "peano-library-channels-v24"
+        channels.get("schema") != "peano-library-channels-v25"
         or channels.get("default_channel") != "stable"
-        or channels.get("parent_channels_v23", {}).get("path")
-        != "artifacts/peano-library/channels-v23.json"
-        or current.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v24.json"
+        or channels.get("parent_channels_v24", {}).get("path")
+        != "artifacts/peano-library/channels-v24.json"
+        or current.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v25.json"
         or current.get("artifact_sha256") != current_digest
-        or current.get("theorem_count") != v24.EXPECTED_ALPHA_V24_COUNT
-        or current.get("checked_use_count") != v24.EXPECTED_ALPHA_V24_CHECKED_USE_COUNT
-        or current.get("edition_identity_sha256") != v24.ALPHA_V24_IDENTITY_SHA256
+        or current.get("theorem_count") != v25.EXPECTED_ALPHA_V25_COUNT
+        or current.get("checked_use_count") != v25.EXPECTED_ALPHA_V25_CHECKED_USE_COUNT
+        or current.get("edition_identity_sha256") != v25.ALPHA_V25_IDENTITY_SHA256
         or current.get("parent_alpha_v20_sha256") != _digest(raw_catalog)
     ):
-        raise NextLayerExplorerError("the current immutable Alpha-v24 child release changed")
+        raise NextLayerExplorerError("the current immutable Alpha-v25 child release changed")
 
     entries = catalog.get("theorems")
     if not isinstance(entries, list) or len(entries) != EXPECTED_ALPHA_COUNT:
@@ -620,27 +620,29 @@ def _load_inputs() -> dict[str, Any]:
         evidence = milestone.get("evidence") if isinstance(milestone, dict) else None
         partial = goal == "T13"
         if partial:
-            from peano_lab.library.campaign_research_layer_closure import (
-                EXPECTED_RESEARCH_LAYER_BUNDLE_NODE_COUNT,
-                EXPECTED_RESEARCH_LAYER_BUNDLE_SHA256,
-                research_layer_plan,
+            from peano_lab.library.campaign_breakthrough_layer_closure import (
+                EXPECTED_BREAKTHROUGH_LAYER_BUNDLE_NODE_COUNT,
+                EXPECTED_BREAKTHROUGH_LAYER_BUNDLE_SHA256,
+                breakthrough_layer_plan,
             )
 
-            current_root = v24.entry("beta_signed_matrix_minor_exists", edition="alpha")
+            current_root = v25.entry(
+                "signed_matrix_cofactor_family_and_fold_exists", edition="alpha"
+            )
             positions = {
-                row.name: row.node_id for row in research_layer_plan().rows
+                row.name: row.node_id for row in breakthrough_layer_plan().rows
             }
             if (
                 theorem is None
                 or current_root is None
                 or not isinstance(evidence, dict)
-                or evidence.get("alpha_version") != "v24"
+                or evidence.get("alpha_version") != "v25"
                 or evidence.get("independent_lean_bundle_verified") is not True
                 or evidence.get("partial_theorem_name") != current_root.spec.name
                 or evidence.get("partial_theorem_statement_sha256")
                 != _digest(current_root.spec.statement)
-                or evidence.get("bundle_sha256") != EXPECTED_RESEARCH_LAYER_BUNDLE_SHA256
-                or evidence.get("bundle_nodes") != EXPECTED_RESEARCH_LAYER_BUNDLE_NODE_COUNT
+                or evidence.get("bundle_sha256") != EXPECTED_BREAKTHROUGH_LAYER_BUNDLE_SHA256
+                or evidence.get("bundle_nodes") != EXPECTED_BREAKTHROUGH_LAYER_BUNDLE_NODE_COUNT
                 or evidence.get("bundle_node_id") != positions[current_root.spec.name]
                 or milestone.get("status") != "open"
                 or evidence.get("checked_use") is not False
@@ -653,7 +655,7 @@ def _load_inputs() -> dict[str, Any]:
                 or evidence.get("full_lattice_substrate_proved") is not False
             ):
                 raise NextLayerExplorerError(
-                    "T13 lost its independently verified Alpha-v24 signed-minor "
+                    "T13 lost its independently verified Alpha-v25 signed-minor "
                     "progress or falsely claimed full closure"
                 )
             continue
@@ -694,7 +696,7 @@ def _load_inputs() -> dict[str, Any]:
         "catalog": catalog,
         "catalog_sha256": current_digest,
         "historical_catalog_sha256": _digest(raw_catalog),
-        "current_edition_identity_sha256": v24.ALPHA_V24_IDENTITY_SHA256,
+        "current_edition_identity_sha256": v25.ALPHA_V25_IDENTITY_SHA256,
         "revision": current_digest[:12],
         "bundle": bundle,
         "by_name": by_name,
@@ -939,7 +941,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
             "enrolled_in_alpha": True,
             "alpha_evidence": "alpha_closed",
             "alpha_checked_use": True,
-            "alpha_edition_version": "v24",
+            "alpha_edition_version": "v25",
             "alpha_first_enrolled_version": "v20",
             "stable_member": False,
             "admitted_to_alpha": True,
@@ -1043,7 +1045,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
         "statement_definition_use_count": len(usage_edges),
         "formal_line_count": sum(len(node["script"]) for node in nodes),
         "candidate_status": STATUS,
-        "alpha_edition_version": "v24",
+        "alpha_edition_version": "v25",
         "alpha_first_enrolled_version": "v20",
         "alpha_edition_identity_sha256": inputs["current_edition_identity_sha256"],
         "alpha_catalog_sha256": inputs["catalog_sha256"],
@@ -1147,7 +1149,7 @@ def _family_landing(
         family,
         corpus,
         revision=revision,
-        current_alpha_version="v24",
+        current_alpha_version="v25",
         first_admitted_version="v20",
         bundle_node_count=EXPECTED_BUNDLE_NODE_COUNT,
     )
@@ -1300,7 +1302,7 @@ def _defined_theorem(
     <p>All {len(node['script'])} lines are the exact independently kernel-checked original script.</p>
     <ol class="pd-formal-proof">{proof_lines}</ol></section>
 </div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
-  <dl><dt>Authority</dt><dd>Alpha v24 checked use</dd><dt>First admission</dt><dd>Alpha v20</dd><dt>Stable membership</dt><dd>none</dd>
+  <dl><dt>Authority</dt><dd>Alpha v25 checked use</dd><dt>First admission</dt><dd>Alpha v20</dd><dt>Stable membership</dt><dd>none</dd>
       <dt>Proof-bundle node</dt><dd>{node['proof_bundle_node_id']} / {EXPECTED_BUNDLE_NODE_COUNT}</dd>
       <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
       <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 590 exact bundle nodes</dd>
@@ -1393,7 +1395,7 @@ def _graph_payload(
             "layer": corpus["layers"][node["name"]],
             "href": _versioned(f"tag/{corpus['tags'][node['name']]}.html", revision),
             "alpha_checked_use": True,
-            "alpha_edition_version": "v24",
+            "alpha_edition_version": "v25",
             "alpha_first_enrolled_version": "v20",
             "independent_lean_bundle_verified": True,
             "stable_member": False,
@@ -1430,7 +1432,7 @@ def _graph_payload(
         "proof_adjacency": adjacency,
         "root_ids": [corpus["tags"][name] for name in family.roots],
         "path_policy": "proof_dependency_edges_only",
-        "alpha_edition_version": "v24",
+        "alpha_edition_version": "v25",
         "alpha_first_enrolled_version": "v20",
         "independent_lean_bundle_verified": True,
         "alpha_checked_use_node_count": corpus["node_count"],
@@ -1458,7 +1460,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var id = String(title.textContent || "").split(" · ")[0];
     var row = (window.PA_DEFINED_GRAPH.nodes || []).find(function (node) { return node.id === id; });
     if (row && row.kind === "theorem" && row.alpha_checked_use) {
-      kind.textContent = "Alpha v24 checked-use theorem — first admitted v20; independently kernel and Lean verified; not Stable";
+      kind.textContent = "Alpha v25 checked-use theorem — first admitted v20; independently kernel and Lean verified; not Stable";
     }
   }
   new MutationObserver(label).observe(title, { childList: true, characterData: true, subtree: true });
@@ -1507,13 +1509,13 @@ def _top_index(corpora: Sequence[tuple[Family, Mapping[str, Any]]], *, revision:
         for family, corpus in corpora
     )
     body = f"""<main class="proof-home proof-library-home"><header class="proof-hero">
- <p class="eyebrow">ALPHA v24 · CHECKED-USE · HISTORICAL v20 FIRST ADMISSION</p>
+ <p class="eyebrow">ALPHA v25 · CHECKED-USE · HISTORICAL v20 FIRST ADMISSION</p>
  <h1>Four independently checked number-theory campaigns</h1>
  <p>Thirty-nine completed intuitionistic Heyting-arithmetic proofs independently accepted by both the original kernel and the compiled Lean verifier, exposed with their exact original scripts, genuine proof DAGs, and hygienic conservative definition hierarchies.</p>
  <nav><a href="{_versioned('../', revision)}">Proof library</a>
  <a href="{_versioned('../grand-campaign/', revision)}">Full number-theory campaign atlas</a></nav>
  </header><section class="proof-grid">{entries}</section>
- <p>All displayed theorems were first independently admitted in Alpha v20 and retain checked-use authority in the current Alpha v24 release; Stable remains a separate immutable release.</p></main>"""
+ <p>All displayed theorems were first independently admitted in Alpha v20 and retain checked-use authority in the current Alpha v25 release; Stable remains a separate immutable release.</p></main>"""
     return _document(FAMILIES[0], title="Constructive Next-Layer Proof Library", body=body,
                      prefix="", defined=False)
 
@@ -1595,7 +1597,7 @@ def build_files() -> dict[str, bytes]:
         "first_enrollment_catalog_sha256": inputs["historical_catalog_sha256"],
         "html_revision": revision,
         "edition_identity_sha256": inputs["current_edition_identity_sha256"],
-        "alpha_edition_version": "v24",
+        "alpha_edition_version": "v25",
         "alpha_first_enrolled_version": "v20",
         "proof_bundle_sha256": inputs["bundle"]["artifact_sha256"],
         "independent_lean_bundle_verified": True,

@@ -216,13 +216,13 @@ def test_dependency_limit_stops_before_recursive_certificate_replay(
         "infinitely_many_primes_one_mod_four",
     ),
 )
-def test_historical_alpha_theorems_have_replay_free_current_v24_strands(
+def test_historical_alpha_theorems_have_replay_free_current_v25_strands(
     name: str,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v19, editions_v23, editions_v24
+    from peano_lab.library import editions_v19, editions_v23, editions_v24, editions_v25
 
     monkeypatch.setattr(
         editions_v19,
@@ -254,11 +254,21 @@ def test_historical_alpha_theorems_have_replay_free_current_v24_strands(
         "checked_research_layer_bundle",
         lambda *_args, **_kwargs: pytest.fail("an Alpha-v24 outline loaded a proof bundle"),
     )
+    monkeypatch.setattr(
+        editions_v25,
+        "replay",
+        lambda *_args, **_kwargs: pytest.fail("an Alpha-v25 outline replayed its proof"),
+    )
+    monkeypatch.setattr(
+        editions_v25,
+        "checked_breakthrough_layer_bundle",
+        lambda *_args, **_kwargs: pytest.fail("an Alpha-v25 outline loaded a proof bundle"),
+    )
 
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v24" in captured.out
+    assert "v25" in captured.out
     assert "no fresh Peano proof replay" in captured.err
 
 
@@ -268,53 +278,56 @@ def test_historical_alpha_theorems_have_replay_free_current_v24_strands(
         "beta_signed_matrix_minor_exists",
         "beta_horner_derivative_exists_unique",
         "crt_pairwise_coprime_prefix_canonical_exists_unique",
+        "signed_matrix_cofactor_family_and_fold_exists",
+        "beta_horner_hensel_lift_exists",
+        "crt_merge_compatible_prefix_canonical_exists_unique",
     ),
 )
-def test_current_v24_frontier_outline_never_loads_actual_proof_artifacts(
+def test_current_v25_frontier_outline_never_loads_actual_proof_artifacts(
     name: str,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v24
+    from peano_lab.library import editions_v25
 
     def forbidden(*_args: object, **_kwargs: object) -> None:
-        pytest.fail("an Alpha-v24 metadata-only outline loaded an actual proof")
+        pytest.fail("an Alpha-v25 metadata-only outline loaded an actual proof")
 
-    monkeypatch.setattr(editions_v24, "replay", forbidden)
-    monkeypatch.setattr(editions_v24, "_checked_research_layer_bundle", forbidden)
+    monkeypatch.setattr(editions_v25, "replay", forbidden)
+    monkeypatch.setattr(editions_v25, "_checked_breakthrough_layer_bundle", forbidden)
 
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v24" in captured.out
+    assert "v25" in captured.out
     assert "no fresh Peano proof replay" in captured.err
 
 
-def test_current_v24_full_export_rejects_unavailable_actual_research_proof(
+def test_current_v25_full_export_rejects_unavailable_actual_breakthrough_proof(
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v24
+    from peano_lab.library import editions_v25
 
     def unavailable() -> None:
-        raise editions_v24.EditionV24ReplayError(
-            "actual Alpha-v24 proof bytes are unavailable"
+        raise editions_v25.EditionV25ReplayError(
+            "actual Alpha-v25 proof bytes are unavailable"
         )
 
-    editions_v24.replay.cache_clear()
-    monkeypatch.setattr(editions_v24, "_checked_research_layer_bundle", unavailable)
+    editions_v25.replay.cache_clear()
+    monkeypatch.setattr(editions_v25, "_checked_breakthrough_layer_bundle", unavailable)
 
     assert (
         exporter.main(
-            ["matrix_skip_index_exists", "--edition", "alpha", "--format", "full"]
+            ["crt_mod_one_universal", "--edition", "alpha", "--format", "full"]
         )
         == 1
     )
     captured = capsys.readouterr()
-    assert "actual Alpha-v24 proof bytes are unavailable" in captured.err
-    assert "theorem «matrix_skip_index_exists»" not in captured.out
+    assert "actual Alpha-v25 proof bytes are unavailable" in captured.err
+    assert "theorem «crt_mod_one_universal»" not in captured.out
 
 
 def test_unknown_theorem_is_never_rebranded_as_a_checked_strand() -> None:

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import subprocess
 
@@ -34,6 +35,8 @@ def test_shared_selector_only_uses_explicit_checked_same_origin_jobs() -> None:
     assert "node.kind === \"definition\"" in source
     assert "node.alpha_checked_use === true" in source
     assert "/^Alpha v[0-9]+ checked use$/" in source
+    assert "/^Alpha v[0-9]+; independently verified$/" in source
+    assert 'metadata["Alpha evidence"] === "alpha_closed"' in source
     assert "snapshot.lean_verified !== true" in source
     assert "stable_member === true" in source
     assert "credentials = \"same-origin\"" in source
@@ -75,7 +78,7 @@ def test_operator_guide_describes_exact_job_protocol_and_trust_boundary() -> Non
     assert "do not need regeneration" in guide
 
 
-def test_shared_assets_cover_all_ten_existing_theorem_graph_surfaces() -> None:
+def test_shared_selector_covers_every_current_and_future_campaign_graph_surface() -> None:
     static = ROOT / "book" / "_static"
     primary = (
         static / "pa-proof-explorer" / "graph.html",
@@ -83,27 +86,116 @@ def test_shared_assets_cover_all_ten_existing_theorem_graph_surfaces() -> None:
         static / "bertrand-proof-explorer" / "graph.html",
         static / "bertrand-proof-explorer" / "defined" / "graph.html",
     )
-    frontier = tuple(
-        static
-        / "constructive-frontier-explorer"
-        / family
-        / "explorer"
-        / "defined"
-        / "graph.html"
-        for family in (
-            "kummer",
-            "lucas",
-            "two-squares",
-            "four-squares",
-            "supplementary-laws",
-            "pythagorean-fermat-four",
-        )
-    )
+    manifests = tuple(sorted(static.glob("constructive-*-explorer/manifest.json")))
+    assert len(manifests) >= 6
+    campaign_graphs: list[Path] = []
+    slugs: set[str] = set()
+    for manifest_path in manifests:
+        manifest = json.loads(manifest_path.read_bytes())
+        for family in manifest["families"]:
+            slug = family["slug"]
+            assert slug not in slugs, f"duplicate canonical campaign route: {slug}"
+            slugs.add(slug)
+            branch = manifest_path.parent / slug
+            graph = branch / "explorer" / "defined" / "graph.html"
+            campaign_graphs.append(graph)
+            for path in (
+                branch / "index.html",
+                branch / "api" / "corpus.json",
+                branch / "explorer" / "index.html",
+                branch / "explorer" / "defined" / "index.html",
+                graph,
+                branch / "explorer" / "defined" / "api" / "graph.json",
+            ):
+                assert path.is_file(), f"incomplete canonical campaign browser surface: {path}"
 
-    assert len(primary + frontier) == 10
-    for graph in primary + frontier:
+    # Two original flagships each have exact + defined graphs.  Every remaining
+    # family has the shared mixed theorem/definition graph plus both editions.
+    assert len(slugs) >= 22
+    assert len(primary + tuple(campaign_graphs)) >= 26
+    for graph in primary + tuple(campaign_graphs):
         assert graph.is_file(), graph
 
     source = SCRIPT.read_text(encoding="utf-8")
     assert "global.PA_PROOF_GRAPH" in source
     assert "global.PA_DEFINED_GRAPH" in source
+
+
+def test_every_campaign_mixed_graph_keeps_proof_and_definition_edges_separate() -> None:
+    static = ROOT / "book" / "_static"
+    for manifest_path in sorted(static.glob("constructive-*-explorer/manifest.json")):
+        manifest = json.loads(manifest_path.read_bytes())
+        for family in manifest["families"]:
+            path = (
+                manifest_path.parent
+                / family["slug"]
+                / "explorer"
+                / "defined"
+                / "api"
+                / "graph.json"
+            )
+            graph = json.loads(path.read_bytes())
+            assert graph["path_policy"] == "proof_dependency_edges_only", path
+            theorem_ids = {row["id"] for row in graph["nodes"] if row["kind"] == "theorem"}
+            definition_ids = {
+                row["id"] for row in graph["nodes"] if row["kind"] == "definition"
+            }
+            assert theorem_ids.isdisjoint(definition_ids), path
+            for edge in graph["edges"]:
+                kind = edge["kind"]
+                assert kind in {
+                    "proof_dependency", "uses_definition", "definition_uses_definition"
+                }, path
+                if kind == "proof_dependency":
+                    assert edge["source"] in theorem_ids and edge["target"] in theorem_ids, path
+                elif kind == "uses_definition":
+                    assert edge["source"] in theorem_ids and edge["target"] in definition_ids, path
+                else:
+                    assert edge["source"] in definition_ids and edge["target"] in definition_ids, path
+            for identifier, adjacency in graph.get("proof_adjacency", {}).items():
+                assert identifier in theorem_ids, path
+                assert set(adjacency.get("dependencies", ())) <= theorem_ids, path
+                assert set(adjacency.get("dependents", ())) <= theorem_ids, path
+                assert set(adjacency.get("critical_root_path", ())) <= theorem_ids, path
+
+
+def test_every_checked_campaign_has_matching_exact_and_defined_lean_theorem_pages() -> None:
+    static = ROOT / "book" / "_static"
+    audited_families = 0
+    for manifest_path in sorted(static.glob("constructive-*-explorer/manifest.json")):
+        manifest = json.loads(manifest_path.read_bytes())
+        for family in manifest["families"]:
+            branch = manifest_path.parent / family["slug"]
+            graph = json.loads(
+                (branch / "explorer" / "defined" / "api" / "graph.json").read_bytes()
+            )
+            checked = [
+                row
+                for row in graph["nodes"]
+                if row["kind"] == "theorem" and row.get("alpha_checked_use") is True
+            ]
+            assert checked, f"campaign has no real checked theorem: {family['slug']}"
+            # Pick the smallest authenticated theorem page to keep this complete
+            # cross-family smoke test bounded even for enormous expanded proofs.
+            selected = min(
+                checked,
+                key=lambda row: (
+                    branch / "explorer" / "tag" / f"{row['id']}.html"
+                ).stat().st_size,
+            )
+            tag = selected["id"]
+            exact = branch / "explorer" / "tag" / f"{tag}.html"
+            defined = branch / "explorer" / "defined" / "tag" / f"{tag}.html"
+            assert exact.is_file(), exact
+            assert defined.is_file(), defined
+            source = exact.read_text(encoding="utf-8")
+            assert 'class="pa-proof-sidebar' in source, exact
+            assert "<dt>Alpha evidence</dt><dd>alpha_closed</dd>" in source, exact
+            version = graph["alpha_edition_version"]
+            assert (
+                f"<dt>Checked-use authority</dt><dd>Alpha {version}; independently verified</dd>"
+            ) in source, exact
+            assert "grand-campaign/" in source, exact
+            audited_families += 1
+
+    assert audited_families >= 22

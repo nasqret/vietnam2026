@@ -10,7 +10,7 @@ Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | all 24 checked proof families, the grand campaign atlas, proof artifacts, and public Lean selectors |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | all 27 checked proof families, the grand campaign atlas, proof artifacts, and public Lean selectors |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
@@ -30,16 +30,25 @@ targets; `make deploy` does not publish either Peano channel.
 make deploy-proofs
 ```
 
-This rebuilds both exact and definition-aware proof editions, stages all 24
+This rebuilds both exact and definition-aware proof editions, stages all 27
 quadratic-reciprocity, Bertrand, constructive-frontier, next-layer,
-advanced-layer, transport-layer, milestone-closure, and research-layer families under
-`_deploy/proofs`, and installs their shared public **Build Lean proof** controls.
+advanced-layer, transport-layer, milestone-closure, research-layer, and
+breakthrough-layer families under `_deploy/proofs`, and installs their shared
+public **Build Lean proof** controls. The three new canonical
+Quadratic-Reciprocity-style routes are `/proofs/matrix-cofactor-expansion/`,
+`/proofs/polynomial-taylor-hensel/`, and
+`/proofs/generalized-crt-compatibility/`.
 It separately publishes the narrow two-file PHP gateway under
 `~/public_html/api/lean-strands/`; neither publication target can be widened by
 overriding its Make variable. The proof site also publishes the grand campaign
-atlas and exact checked proof artifacts through current Alpha v24. Each family
-retains its unchanged proof evidence, Stable/Alpha distinction, and original
-explorer assets.
+atlas and exact checked proof artifacts through current Alpha v25: 2,080
+independently checked theorems, including 432 unchanged Stable and 1,648
+Alpha-only theorems, 6,633 proof-dependency edges, 179 blueprint definitions,
+and 120 reviewed conservative definitions. Its 302-node breakthrough proof
+bundle is independently accepted by the original intuitionistic kernel and
+the compiled Lean verifier. Each family retains its unchanged proof evidence,
+Stable/Alpha distinction, first-admission history, original explorer assets,
+and honest open boundaries for T13, G095, and G011.
 
 ## Interactive Lean proof building
 

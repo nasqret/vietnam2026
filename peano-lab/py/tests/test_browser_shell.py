@@ -44,6 +44,7 @@ PROOF_BUNDLE_FILENAMES = (
     "alpha-v22-transport-layer-proof-bundle-v1.json",
     "alpha-v23-milestone-closure-proof-bundle-v1.json",
     "alpha-v24-research-layer-proof-bundle-v1.json",
+    "alpha-v25-breakthrough-layer-proof-bundle-v1.json",
 )
 PROOF_BUNDLE_SOURCES = {
     f"proof-artifacts/{filename}": (
@@ -159,12 +160,15 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
 
 def test_shell_connects_checked_alpha_research_to_multiscale_proof_atlas() -> None:
     assert 'aria-label="Course and research navigation"' in INDEX
-    assert '<a href="/proofs/?v=94ac4d193cbf">Proof library</a>' in INDEX
-    assert '<a href="/proofs/grand-campaign/?v=94ac4d193cbf">Research atlas</a>' in INDEX
-    assert "Alpha: 2,008 proofs" in INDEX
+    assert '<a href="/proofs/?v=75fa146ac19b">Proof library</a>' in INDEX
+    assert '<a href="/proofs/grand-campaign/?v=75fa146ac19b">Research atlas</a>' in INDEX
+    assert "Alpha: 2,080 proofs" in INDEX
     assert '<span class="lbl">research:</span>' in INDEX
     for command in (
         "pa lib alpha",
+        "pa lib alpha signed_matrix_cofactor_family_and_fold_exists",
+        "pa lib alpha beta_horner_hensel_lift_exists",
+        "pa lib alpha crt_merge_compatible_prefix_canonical_exists_unique",
         "pa lib alpha beta_signed_matrix_minor_exists",
         "pa lib alpha beta_horner_derivative_exists_unique",
         "pa lib alpha crt_pairwise_coprime_prefix_canonical_exists_unique",

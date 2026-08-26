@@ -121,7 +121,7 @@
           "const": true
         },
         "alpha_edition_version": {
-          "const": "v24"
+          "const": "v25"
         },
         "alpha_evidence": {
           "enum": [
@@ -246,7 +246,7 @@
       "$ref": "#/$defs/sha256"
     },
     "alpha_edition_version": {
-      "const": "v24"
+      "const": "v25"
     },
     "candidate_count": {
       "minimum": 0,

@@ -15,6 +15,7 @@ from peano_lab.library import (
     editions_v20,
     editions_v23,
     editions_v24,
+    editions_v25,
 )
 from peano_lab.library.defined_syntax import DEFINITIONS_BY_NAME
 from peano_lab.library.lean_presentation import _NOTATION_CODE
@@ -70,12 +71,13 @@ def test_planning_never_replays_stable_or_alpha_theorems(monkeypatch) -> None:
     monkeypatch.setattr(editions_v20, "replay", forbidden)
     monkeypatch.setattr(editions_v23, "replay", forbidden)
     monkeypatch.setattr(editions_v24, "replay", forbidden)
+    monkeypatch.setattr(editions_v25, "replay", forbidden)
     assert plan_proof_strand("add_comm").node_count == 3
     alpha = plan_proof_strand(
         "distinct_primes_left_not_divide_right",
         edition="alpha",
     )
-    assert alpha.edition_version == "v24"
+    assert alpha.edition_version == "v25"
     assert alpha.root_node.evidence == "alpha_closed"
 
 
@@ -157,7 +159,7 @@ def test_historically_body_only_theorem_is_now_checked_in_current_alpha() -> Non
     name = editions_v19.RESIDUAL_PROMOTED_NAMES[0]
     assert not editions_v18.ALPHA_EDITION.by_name[name].checked_use
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v24"
+    assert plan.edition_version == "v25"
     assert plan.root_node.evidence == "alpha_closed"
     assert plan.root_node.name == name
 
@@ -179,7 +181,7 @@ def test_new_v19_frontier_theorem_has_metadata_only_checked_strand(
     )
     assert name not in editions_v18.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v24"
+    assert plan.edition_version == "v25"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -194,10 +196,12 @@ def test_new_v20_frontier_theorem_has_metadata_only_checked_strand(monkeypatch) 
     monkeypatch.setattr(editions_v23, "checked_milestone_closure_bundle", forbidden)
     monkeypatch.setattr(editions_v24, "replay", forbidden)
     monkeypatch.setattr(editions_v24, "checked_research_layer_bundle", forbidden)
+    monkeypatch.setattr(editions_v25, "replay", forbidden)
+    monkeypatch.setattr(editions_v25, "checked_breakthrough_layer_bundle", forbidden)
     name = "signed_matrix_two_determinant_exists"
     assert name not in editions_v19.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v24"
+    assert plan.edition_version == "v25"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -219,21 +223,27 @@ def test_new_v20_frontier_theorem_has_metadata_only_checked_strand(monkeypatch) 
         "beta_horner_derivative_exists_unique",
         "crt_prefix_lcm_exists_unique",
         "crt_pairwise_coprime_prefix_canonical_exists_unique",
+        "signed_matrix_cofactor_family_and_fold_exists",
+        "beta_horner_hensel_lift_exists",
+        "crt_merge_compatible_prefix_canonical_exists_unique",
+        "crt_pairwise_compatible_dominating_last_canonical_exists_unique",
     ),
 )
-def test_v24_and_historical_frontier_theorems_have_metadata_only_checked_strands(
+def test_v25_and_historical_frontier_theorems_have_metadata_only_checked_strands(
     monkeypatch, name: str
 ) -> None:
     def forbidden(*args, **kwargs):
-        raise AssertionError("new Alpha-v24 proof planning must never load proof artifacts")
+        raise AssertionError("new Alpha-v25 proof planning must never load proof artifacts")
 
     monkeypatch.setattr(editions_v23, "replay", forbidden)
     monkeypatch.setattr(editions_v23, "checked_milestone_closure_bundle", forbidden)
     monkeypatch.setattr(editions_v24, "replay", forbidden)
     monkeypatch.setattr(editions_v24, "checked_research_layer_bundle", forbidden)
+    monkeypatch.setattr(editions_v25, "replay", forbidden)
+    monkeypatch.setattr(editions_v25, "checked_breakthrough_layer_bundle", forbidden)
     assert name not in editions_v20.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v24"
+    assert plan.edition_version == "v25"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 

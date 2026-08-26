@@ -5,7 +5,7 @@ from __future__ import annotations
 import driver
 import pytest
 from peano_lab.library import editions_v16 as historical_alpha
-from peano_lab.library import editions_v24 as alpha
+from peano_lab.library import editions_v25 as alpha
 from peano_lab.library.alpha_enrollment_v19 import (
     LINEAR_CONGRUENCE_ROOT_NAME,
     PRIME_TWO_SQUARE_ROOT_NAME,
@@ -42,13 +42,13 @@ def test_alpha_index_reports_exact_current_evidence_without_proof_replay(
 
     output = driver.LabSession().run("pa lib alpha")
 
-    assert "immutable Alpha v24" in output
-    assert "Enrolled statements: 2,008" in output
+    assert "immutable Alpha v25" in output
+    assert "Enrolled statements: 2,080" in output
     assert "Stable closed: 432" in output
-    assert "Alpha closed: 1,576" in output
+    assert "Alpha closed: 1,648" in output
     assert "Dependency-curried body only: 0" in output
     assert "Pending closure: 0" in output
-    assert "Available for independently checked use: 2,008" in output
+    assert "Available for independently checked use: 2,080" in output
     assert "Previously promoted quadratic-reciprocity results: 315" in output
     assert "Previously promoted supplementary-law results: 31" in output
     assert "Previously promoted five-campaign flagship results: 673" in output
@@ -58,8 +58,9 @@ def test_alpha_index_reports_exact_current_evidence_without_proof_replay(
     assert "Previously added Alpha v21 campaign results: 54" in output
     assert "Previously added Alpha v22 campaign results: 60" in output
     assert "Previously added Alpha v23 campaign results: 59" in output
-    assert "New constructive campaign results: 59" in output
-    assert alpha.ALPHA_V24_IDENTITY_SHA256 in output
+    assert "Previously added Alpha v24 campaign results: 59" in output
+    assert "New constructive campaign results: 72" in output
+    assert alpha.ALPHA_V25_IDENTITY_SHA256 in output
 
 
 def test_alpha_root_evidence_card_is_cheap_and_never_claims_stable_membership(
@@ -87,7 +88,7 @@ def test_alpha_supplementary_roots_have_checked_cards_without_replaying(monkeypa
     monkeypatch.setattr(alpha, "replay", forbidden_replay)
     session = driver.LabSession()
 
-    for name in alpha.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES:
+    for name in alpha.v24.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES:
         output = session.run(f"pa lib alpha {name}")
         assert "Release evidence: alpha_closed" in output
         assert "Release membership: alpha_only" in output
@@ -102,7 +103,7 @@ def test_all_six_flagship_roots_have_checked_cards_without_replaying(monkeypatch
     monkeypatch.setattr(alpha, "replay", forbidden_replay)
     session = driver.LabSession()
 
-    for name in alpha.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES:
+    for name in alpha.v24.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES:
         output = session.run(f"pa lib alpha {name}")
         assert "Release evidence: alpha_closed" in output
         assert "Release membership: alpha_only" in output
@@ -112,7 +113,7 @@ def test_all_six_flagship_roots_have_checked_cards_without_replaying(monkeypatch
 
 def test_all_historical_body_only_theorems_now_have_checked_cards(monkeypatch) -> None:
     historical = next(
-        item for item in alpha.v23.v22.v21.v19.v18.ALPHA_ENTRIES if not item.checked_use
+        item for item in alpha.v24.v23.v22.v21.v19.v18.ALPHA_ENTRIES if not item.checked_use
     )
 
     def forbidden_replay(*_args, **_kwargs):
@@ -126,9 +127,9 @@ def test_all_historical_body_only_theorems_now_have_checked_cards(monkeypatch) -
 
     assert "Release evidence: alpha_closed" in inspection
     assert "Checked-use authority: YES" in inspection
-    assert "Release edition: Alpha v24." in preview
+    assert "Release edition: Alpha v25." in preview
     assert "Fresh independent empty-context Peano kernel replay: NOT RUN" in preview
-    assert historical.evidence is alpha.v23.v22.v21.v19.v18.EvidenceStatus.BODY_CHECKED
+    assert historical.evidence is alpha.v24.v23.v22.v21.v19.v18.EvidenceStatus.BODY_CHECKED
     assert not historical.checked_use
 
 
@@ -161,6 +162,10 @@ def test_all_historical_body_only_theorems_now_have_checked_cards(monkeypatch) -
         "beta_horner_derivative_exists_unique",
         "crt_prefix_lcm_exists_unique",
         "crt_pairwise_coprime_prefix_canonical_exists_unique",
+        "signed_matrix_cofactor_family_and_fold_exists",
+        "beta_horner_hensel_lift_exists",
+        "crt_merge_compatible_prefix_canonical_exists_unique",
+        "crt_pairwise_compatible_dominating_last_canonical_exists_unique",
     ),
 )
 def test_new_campaign_goals_and_complete_valuation_have_checked_cards_without_replay(
@@ -174,7 +179,7 @@ def test_new_campaign_goals_and_complete_valuation_have_checked_cards_without_re
 
     output = driver.LabSession().run(f"pa lib alpha {name}")
 
-    assert f"{name} — Alpha v24 theorem evidence" in output
+    assert f"{name} — Alpha v25 theorem evidence" in output
     assert "Release evidence: alpha_closed" in output
     assert "Release membership: alpha_only" in output
     assert "Checked-use authority: YES" in output
@@ -207,6 +212,9 @@ def test_new_campaign_goals_and_complete_valuation_have_checked_cards_without_re
         "beta_signed_matrix_minor_exists",
         "beta_horner_derivative_exists_unique",
         "crt_pairwise_coprime_prefix_canonical_exists_unique",
+        "signed_matrix_cofactor_family_and_fold_exists",
+        "beta_horner_hensel_lift_exists",
+        "crt_merge_compatible_prefix_canonical_exists_unique",
     ),
 )
 def test_new_campaign_lean_previews_are_bounded_and_never_use_synthetic_bundle_targets(
@@ -217,12 +225,12 @@ def test_new_campaign_lean_previews_are_bounded_and_never_use_synthetic_bundle_t
         raise AssertionError("safe campaign previews must not open or reconstruct proofs")
 
     monkeypatch.setattr(alpha, "replay", forbidden)
-    monkeypatch.setattr(alpha, "_checked_research_layer_bundle", forbidden)
+    monkeypatch.setattr(alpha, "_checked_breakthrough_layer_bundle", forbidden)
 
     output = driver.LabSession().run(f"pa lean alpha {name}")
 
     assert f"Lean 4 independently checked theorem — {name}" in output
-    assert "Release edition: Alpha v24." in output
+    assert "Release edition: Alpha v25." in output
     assert "Fresh independent empty-context Peano kernel replay: NOT RUN" in output
     assert "--edition alpha --format compact" in output
     assert "--proof-bundle" not in output
@@ -274,8 +282,8 @@ def test_alpha_explicit_verification_checks_actual_empty_context_certificate() -
     "name",
     (
         QR_ROOT_NAME,
-        *alpha.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES,
-        *alpha.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES,
+        *alpha.v24.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES,
+        *alpha.v24.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES,
         PRIMES_ONE_MOD_FOUR_ROOT_NAME,
         PRIME_TWO_SQUARE_ROOT_NAME,
     ),
@@ -364,6 +372,6 @@ def test_alpha_commands_do_not_change_default_public_library() -> None:
 def test_alpha_unknown_theorems_fail_without_changing_surface() -> None:
     session = driver.LabSession()
 
-    assert "No Alpha v24 theorem 'missing'" in session.run("pa lib alpha missing")
-    assert "No Alpha v24 theorem 'missing'" in session.run("pa lean alpha missing")
+    assert "No Alpha v25 theorem 'missing'" in session.run("pa lib alpha missing")
+    assert "No Alpha v25 theorem 'missing'" in session.run("pa lean alpha missing")
     assert session.run("pa lib alpha check") == "Usage: pa lib alpha check <theorem>."

@@ -8,24 +8,24 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="binary-digit-extraction"><header class="pd-header pd-definition-heading">
-  <nav><a href="../?v=94ac4d193cbf">Definitions and proofs</a>
-       <a href="../graph.html?v=94ac4d193cbf">Interactive dependency graph</a>
-       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=94ac4d193cbf">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=94ac4d193cbf">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=94ac4d193cbf">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G102" href="../../../../grand-campaign/?view=goal&amp;focus=G102&amp;v=94ac4d193cbf">G102 milestone</a></nav>
+  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
+       <a href="../graph.html?v=75fa146ac19b">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=BetaSum&amp;v=75fa146ac19b">Global definition: BetaSum</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G102" href="../../../../grand-campaign/?view=goal&amp;focus=G102&amp;v=75fa146ac19b">G102 milestone</a></nav>
   <p class="pd-tag">PD0015</p><h1>Sum(b,c,l,z)</h1>
   <p>z is the sum of a beta-coded prefix of length l.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
 </header><main class="pd-theorem-layout"><div class="pd-proof-panel">
   <section><h2>Hygienic expanded first-order definition</h2>
     <pre><code>exists ff_u_defined_sum ff_v_defined_sum. ((((exists ff_h_defined_sum_start. ff_h_defined_sum_start + S (0) = S ((S (0)) * ff_v_defined_sum)) /\ exists ff_q_defined_sum_start. ff_u_defined_sum = ff_q_defined_sum_start * S ((S (0)) * ff_v_defined_sum) + (0))) /\ ((((exists ff_h_defined_sum_terminal. ff_h_defined_sum_terminal + S (z) = S ((S (l)) * ff_v_defined_sum)) /\ exists ff_q_defined_sum_terminal. ff_u_defined_sum = ff_q_defined_sum_terminal * S ((S (l)) * ff_v_defined_sum) + (z))) /\ forall ff_i_defined_sum. (exists ff_lt_defined_sum_bound. ff_lt_defined_sum_bound + S ff_i_defined_sum = l) -&gt; exists ff_a_defined_sum ff_r_defined_sum ff_s_defined_sum. ((((exists ff_h_defined_sum_summand. ff_h_defined_sum_summand + S (ff_a_defined_sum) = S ((S (ff_i_defined_sum)) * c)) /\ exists ff_q_defined_sum_summand. b = ff_q_defined_sum_summand * S ((S (ff_i_defined_sum)) * c) + (ff_a_defined_sum))) /\ ((((exists ff_h_defined_sum_partial. ff_h_defined_sum_partial + S (ff_r_defined_sum) = S ((S (ff_i_defined_sum)) * ff_v_defined_sum)) /\ exists ff_q_defined_sum_partial. ff_u_defined_sum = ff_q_defined_sum_partial * S ((S (ff_i_defined_sum)) * ff_v_defined_sum) + (ff_r_defined_sum))) /\ ((((exists ff_h_defined_sum_successor. ff_h_defined_sum_successor + S (ff_s_defined_sum) = S ((S (S ff_i_defined_sum)) * ff_v_defined_sum)) /\ exists ff_q_defined_sum_successor. ff_u_defined_sum = ff_q_defined_sum_successor * S ((S (S ff_i_defined_sum)) * ff_v_defined_sum) + (ff_s_defined_sum))) /\ ff_s_defined_sum = ff_r_defined_sum + ff_a_defined_sum)))))</code></pre>
     <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></section>
-  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=94ac4d193cbf">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=94ac4d193cbf">BetaAt(b,c,i,x)</a></div></section>
-  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0017.html?v=94ac4d193cbf">BitCount(b,c,l,z)</a></div></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=75fa146ac19b">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=75fa146ac19b">BetaAt(b,c,i,x)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0017.html?v=75fa146ac19b">BitCount(b,c,l,z)</a></div></section>
   <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><span class="pd-empty">none directly; see definition consumers</span></div></section>
 </div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
   <dt>Arity</dt><dd>4</dd>
   <dt>Topological notation layer</dt><dd>1</dd>
   <dt>Transitive prerequisites</dt><dd>2</dd>
   <dt>Origin</dt><dd>reviewed-conservative-definition</dd>
-  <dt>Reviewed identity</dt><dd>Family-local hygienic display abbreviation.</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity PD0015.</dd>
   <dt>Expanded formula SHA-256</dt><dd><code>e77d758e2118ffddffef0040007a3fa468938ddf33f66035b1ea59a3308db937</code></dd>
 </dl></aside></main></body>
 </html>

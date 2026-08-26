@@ -195,11 +195,18 @@ def stage_public_lean_selector(
             raise PublicSelectorError(f"public proof HTML exceeds its safe overlay bound: {relative}")
         original = path.read_bytes()
         if not any(marker in original for marker in markers):
-            continue
+            raise PublicSelectorError(
+                "public theorem graph/detail page lacks a supported reviewed proof panel: "
+                f"{relative}"
+            )
         candidates += 1
         marker = f'{PUBLIC_ASSETS}/lean-selector.js'.encode("ascii")
         if marker in original:
-            if check and insertion not in original:
+            if original.count(marker) != 1:
+                raise PublicSelectorError(
+                    f"public theorem page repeats its Lean proof selector: {relative}"
+                )
+            if insertion not in original:
                 raise PublicSelectorError(f"staged Lean selector configuration is stale: {relative}")
             unchanged += 1
             continue
@@ -212,6 +219,8 @@ def stage_public_lean_selector(
         path.write_bytes(updated)
         injected += 1
 
+    if candidates == 0:
+        raise PublicSelectorError("public proof staging contains no checked theorem graph/detail pages")
     return StageResult(candidates, injected, unchanged, copied)
 
 

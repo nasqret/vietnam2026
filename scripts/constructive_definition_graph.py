@@ -32,6 +32,7 @@ from peano_lab.library.bertrand_defined_edition import (  # noqa: E402
 )
 from peano_lab.library.defined_syntax import DEFINITIONS, DefinitionSpec  # noqa: E402
 from constructive_advanced_layer_definitions import ADVANCED_LAYER_REGISTRIES  # noqa: E402
+from constructive_breakthrough_layer_definitions import BREAKTHROUGH_LAYER_REGISTRIES  # noqa: E402
 from constructive_milestone_closure_definitions import MILESTONE_CLOSURE_REGISTRIES  # noqa: E402
 from constructive_next_layer_definitions import NEXT_LAYER_REGISTRIES  # noqa: E402
 from constructive_research_layer_definitions import RESEARCH_LAYER_REGISTRIES  # noqa: E402
@@ -47,6 +48,7 @@ TOKENS = re.compile(r"[A-Za-z][A-Za-z0-9_]*")
 # argument.  Thus IsGCD(g,a,b) is Gcd(a,b,g) with permutation [2,0,1].
 REVIEWED_BLUEPRINT_ALIASES: dict[str, tuple[str, tuple[int, ...] | None]] = {
     "Beta": ("BetaAt", (0, 1, 2, 3)),
+    "BetaSum": ("Sum", (0, 1, 2, 3)),
     "Binom": ("Choose", (0, 1, 2)),
     "Fact": ("Factorial", (0, 1)),
     "Gcd": ("IsGCD", (2, 0, 1)),
@@ -65,6 +67,7 @@ DEFAULT_REGISTRIES: tuple[tuple[str, tuple[DefinitionSpec, ...]], ...] = (
     + TRANSPORT_LAYER_REGISTRIES
     + MILESTONE_CLOSURE_REGISTRIES
     + RESEARCH_LAYER_REGISTRIES
+    + BREAKTHROUGH_LAYER_REGISTRIES
 )
 
 

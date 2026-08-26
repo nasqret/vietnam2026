@@ -181,6 +181,78 @@ def test_check_mode_rejects_missing_staged_selector_assets(
         public_selector.stage_public_lean_selector(proof_stage, check=True)
 
 
+@pytest.mark.parametrize(
+    "relative",
+    (
+        "new-alpha-v24-family/explorer/graph.html",
+        "new-alpha-v24-family/explorer/tag/V240001.html",
+        "new-alpha-v24-family/explorer/defined/graph.html",
+        "new-alpha-v24-family/explorer/defined/tag/V240001.html",
+    ),
+)
+def test_new_campaign_cannot_silently_ship_an_unsupported_lean_proof_panel(
+    public_selector: ModuleType,
+    proof_stage: Path,
+    relative: str,
+) -> None:
+    destination = proof_stage / relative
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(
+        "<!doctype html><html><head><title>Campaign</title></head>"
+        "<body><aside>Unwired proof stub</aside></body></html>\n",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(public_selector.PublicSelectorError, match="supported reviewed proof panel"):
+        public_selector.stage_public_lean_selector(proof_stage)
+
+
+def test_public_site_cannot_ship_without_any_checked_theorem_surface(
+    public_selector: ModuleType,
+    tmp_path: Path,
+) -> None:
+    root = tmp_path / "proofs"
+    root.mkdir()
+    (root / "index.html").write_text(
+        "<!doctype html><html><head></head><body>Campaigns</body></html>",
+        encoding="utf-8",
+    )
+
+    with pytest.raises(public_selector.PublicSelectorError, match="no checked theorem"):
+        public_selector.stage_public_lean_selector(root)
+
+
+def test_changed_public_backend_configuration_cannot_be_silently_ignored(
+    public_selector: ModuleType,
+    proof_stage: Path,
+) -> None:
+    public_selector.stage_public_lean_selector(proof_stage)
+
+    with pytest.raises(public_selector.PublicSelectorError, match="configuration is stale"):
+        public_selector.stage_public_lean_selector(
+            proof_stage,
+            api_url="https://lean.example.org/api/lean-strands",
+        )
+
+
+def test_duplicate_selector_cannot_create_competing_campaign_proof_interfaces(
+    public_selector: ModuleType,
+    proof_stage: Path,
+) -> None:
+    public_selector.stage_public_lean_selector(proof_stage)
+    graph = proof_stage / "quadratic-reciprocity" / "explorer" / "graph.html"
+    graph.write_text(
+        graph.read_text(encoding="utf-8").replace(
+            "</head>",
+            '<script defer src="/proofs/assets/lean-selector.js"></script></head>',
+        ),
+        encoding="utf-8",
+    )
+
+    with pytest.raises(public_selector.PublicSelectorError, match="repeats its Lean proof selector"):
+        public_selector.stage_public_lean_selector(proof_stage, check=True)
+
+
 def test_makefile_cli_contract_is_supported_without_modifying_source_snapshots(
     proof_stage: Path,
 ) -> None:

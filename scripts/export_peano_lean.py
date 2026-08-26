@@ -1378,17 +1378,17 @@ def _load_selected_specification(args: argparse.Namespace) -> tuple[object | Non
     if args.edition == "stable":
         return get(args.theorem), None
 
-    from peano_lab.library import editions_v24
+    from peano_lab.library import editions_v25
 
-    item = editions_v24.entry(args.theorem, edition="alpha")
+    item = editions_v25.entry(args.theorem, edition="alpha")
     if item is None:
-        return None, editions_v24
+        return None, editions_v25
     if not item.checked_use:
         raise ValueError(
             f"Alpha theorem {args.theorem!r} has evidence {item.evidence.value!r}; "
             "a complete export requires independently checked-use authority"
         )
-    return item.spec, editions_v24
+    return item.spec, editions_v25
 
 
 def _repairable_strand_nodes(

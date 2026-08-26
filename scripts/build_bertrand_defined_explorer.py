@@ -3,7 +3,7 @@
 
 The immutable input is the already generated, complete 544-theorem Bertrand
 proof explorer: frozen Alpha-v12 statements and scripts plus independently
-sealed current Alpha-v24 release evidence and the historical Alpha-v18
+sealed current Alpha-v25 release evidence and the historical Alpha-v18
 proof-bearing release. Statements and the propositions of
 ``have``/``suffices`` commands are compacted by a reviewed notation adapter,
 which verifies exact expanded-AST equivalence. Neither this script nor its
@@ -39,7 +39,7 @@ EXPLICIT_CORPUS = EXPLICIT / "api" / "corpus.json"
 EXPLICIT_GRAPH = EXPLICIT / "api" / "graph.json"
 OUTPUT = EXPLICIT / "defined"
 ASSET_SOURCE = REPO / "book" / "_static" / "pa-proof-explorer" / "defined"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
 CAMPAIGN_HTML_REVISION = shared._digest(CURRENT_CATALOG.read_bytes())[:12]
 CAMPAIGN_ADAPTER = "peano_lab.library.bertrand_defined_edition"
 ROOT_NAME = "bertrand_strict"
@@ -53,21 +53,21 @@ EXPECTED = {
     "corpus_schema": "peano-lab-bertrand-proof-corpus-v1",
     "graph_schema": "peano-lab-bertrand-proof-graph-v1",
     "corpus_sha256": (
-        "187c8ec98f28760d0ec320ace637fc55f133d71fad26a1551e51d0c7692ada26"
+        "50d1f69e62745b8a39d1980abf38d75dec587a90f64c5664ce446a0e8aea8651"
     ),
     "graph_sha256": (
-        "16c770413273563838394a331e9fc059a2993fe2cb3dd623d0caa102d2241a02"
+        "e606e65a5a9dcd58939e77c80d532b13c27a840ac8d52f8e2a00655c6e8b1a57"
     ),
     "theorem_count": 544,
     "stable_count": 202,
     "alpha_closed_count": 342,
     "proof_edge_count": 1917,
     "formal_line_count": 28410,
-    "alpha_edition_version": "v24",
+    "alpha_edition_version": "v25",
     "alpha_edition_identity_sha256": (
-        "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b"
+        "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
     ),
-    "alpha_edition_checked_use_count": 2008,
+    "alpha_edition_checked_use_count": 2080,
     "proof_edition_version": "v18",
     "proof_edition_identity_sha256": (
         "f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66"
@@ -305,7 +305,7 @@ def _load_explicit() -> tuple[dict[str, Any], dict[str, Any], Sequence[Mapping[s
             or document.get("source_body_checked_count") != 341
         ):
             raise DefinedEditionError(
-                "the explicit Bertrand explorer lost sealed Alpha-v24 evidence, "
+                "the explicit Bertrand explorer lost sealed Alpha-v25 evidence, "
                 "historical Alpha-v18 proof evidence, or Alpha-v12 provenance"
             )
     rows = shared._sequence(corpus.get("theorems"), "explicit Bertrand corpus.theorems")
@@ -328,7 +328,7 @@ def _load_explicit() -> tuple[dict[str, Any], dict[str, Any], Sequence[Mapping[s
         ):
             raise DefinedEditionError(
                 f"explicit Bertrand theorem {row.get('name')!r} has "
-                "inconsistent independently checked Alpha-v24 evidence"
+                "inconsistent independently checked Alpha-v25 evidence"
             )
     return corpus, graph, rows
 
@@ -587,7 +587,7 @@ def _render_graph(graph: Mapping[str, Any]) -> bytes:
       if (!node || node.kind !== "theorem" || node.alpha_checked_use !== true) return;
       kind.textContent = node.stable_member ?
         "Stable checked-use theorem; independently closed" :
-        "Alpha v24 checked-use theorem; independently kernel and Lean verified; not Stable";
+        "Alpha v25 checked-use theorem; independently kernel and Lean verified; not Stable";
     }
     new MutationObserver(showEvidence).observe(title, {
       childList: true, characterData: true, subtree: true

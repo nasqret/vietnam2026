@@ -463,6 +463,60 @@ async function individualCampaignPagesRequireExactCheckedAlphaAuthority() {
 }
 
 
+async function exactCampaignTheoremPagesShareTheSameCheckedLeanControls() {
+  for (const version of ["19", "20", "21", "22", "23", "24", "25"]) {
+    const theorem = version === "24" ?
+      "matrix_skip_index_avoids_removed" : "continued_fraction_empty_trace";
+    const env = browser({
+      individual: true,
+      theorem,
+      metadata: {
+        "Alpha evidence": "alpha_closed",
+        "Checked-use authority": `Alpha v${version}; independently verified`,
+        "Stable membership": "none",
+      },
+    });
+    const card = env.panel.querySelector(".peano-lean-selector");
+    assert.ok(card, "the canonical exact campaign theorem receives Lean controls");
+    assert.match(card.textContent, /Alpha/);
+    assert.strictEqual(card.querySelector(".pls-build").disabled, false, version);
+    env.responses.push(response(snapshot(theorem, "alpha", "exact-" + version, "queued"), 202));
+    card.querySelector(".pls-build").click();
+    await env.settle();
+    assert.deepStrictEqual(JSON.parse(env.calls[0].request.body), {
+      theorem, edition: "alpha",
+    });
+  }
+
+  for (const [authority, evidence] of [
+    ["Alpha v24; independently verified", "not enrolled"],
+    ["Alpha v24; independently verified", "body_checked"],
+    ["Alpha v24; independently verified", "pending_layered_closure"],
+    ["Alpha v24; independently verified", ""],
+    ["Alpha v24; unverified", "alpha_closed"],
+    ["Alpha v24 independently verified", "alpha_closed"],
+    ["alpha v24; independently verified", "alpha_closed"],
+    ["Alpha v24; independently verified; promoted to Stable", "alpha_closed"],
+    ["Alpha v; independently verified", "alpha_closed"],
+    ["none", "alpha_closed"],
+  ]) {
+    const env = browser({
+      individual: true,
+      metadata: {
+        "Alpha evidence": evidence,
+        "Checked-use authority": authority,
+        "Stable membership": "none",
+      },
+    });
+    const card = env.panel.querySelector(".peano-lean-selector");
+    assert.strictEqual(card.querySelector(".pls-build").disabled, true,
+      `unreviewed exact-page pair ${JSON.stringify([authority, evidence])}`);
+    card.querySelector(".pls-build").click();
+    assert.strictEqual(env.calls.length, 0);
+  }
+}
+
+
 async function cancellationAndTheoremSwitchStopTheExactJob() {
   const env = browser();
   let card = env.panel.querySelector(".peano-lean-selector");
@@ -734,6 +788,7 @@ async function liveLinksRequireEveryIndependentStandaloneReceipt() {
   await stableProofBuildProgressDownloadsAndLive();
   await alphaAndUncheckedDefinitionsAreTruthful();
   await individualCampaignPagesRequireExactCheckedAlphaAuthority();
+  await exactCampaignTheoremPagesShareTheSameCheckedLeanControls();
   await cancellationAndTheoremSwitchStopTheExactJob();
   await serviceErrorsAndMismatchedJobsFailClosed();
   await externalUrlsAndOversizedLiveLinksAreNeverTrusted();

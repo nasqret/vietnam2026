@@ -93,9 +93,9 @@ def test_defined_generator_rejects_changed_historical_or_current_corpus(
 
     monkeypatch.setattr(generator, "IMMUTABLE_EVIDENCE_CORPUS", IMMUTABLE_EVIDENCE_CORPUS)
     damaged_current = tmp_path / "current.json"
-    damaged_current.write_bytes(b"mutated Alpha-v24 reading corpus")
+    damaged_current.write_bytes(b"mutated Alpha-v25 reading corpus")
     monkeypatch.setattr(generator, "EXPLICIT_CORPUS", damaged_current)
-    with pytest.raises(generator.DefinedEditionError, match="current Alpha-v24 explicit"):
+    with pytest.raises(generator.DefinedEditionError, match="current Alpha-v25 explicit"):
         generator.build_files()
 
 
@@ -148,11 +148,11 @@ def test_defined_edition_preserves_current_v24_and_historical_v16_evidence(built
     )
 
     for receipt in (corpus, graph, manifest):
-        assert receipt["alpha_edition_version"] == "v24"
+        assert receipt["alpha_edition_version"] == "v25"
         assert receipt["alpha_edition_identity_sha256"] == (
             explicit["alpha_edition_identity_sha256"]
         )
-        assert receipt["alpha_edition_checked_use_count"] == 2008
+        assert receipt["alpha_edition_checked_use_count"] == 2080
         assert receipt["proof_edition_version"] == "v16"
         assert receipt["proof_edition_checked_use_count"] == 885
         assert receipt["proof_edition_identity_sha256"] == (
@@ -171,15 +171,15 @@ def test_defined_edition_preserves_current_v24_and_historical_v16_evidence(built
     assert graph_nodes[root["name"]]["stable_member"] is False
 
     page = files[f'tag/{root["tag"]}.html'].decode("utf-8")
-    assert "Alpha v24 checked-use theorem" in page
-    assert "<dt>Current Alpha edition</dt><dd>v24</dd>" in page
+    assert "Alpha v25 checked-use theorem" in page
+    assert "<dt>Current Alpha edition</dt><dd>v25</dd>" in page
     assert "<dt>Proof-bearing Alpha edition</dt><dd>v16</dd>" in page
     assert "candidate-factory source; Alpha-only" in page
     assert "<dt>Stable membership</dt><dd>no</dd>" in page
     assert "pending layered closure" not in page
     graph_page = files["graph.html"].decode("utf-8")
     assert 'id="pa-defined-release-evidence"' in graph_page
-    assert "Alpha v24 checked-use theorem; independently closed; not Stable" in graph_page
+    assert "Alpha v25 checked-use theorem; independently closed; not Stable" in graph_page
 
 
 def test_defined_graph_release_overlay_preserves_definition_labels(built) -> None:
@@ -227,7 +227,7 @@ global.MutationObserver = class {
 };
 __SCRIPT__
 if (kind.textContent !==
-    "Alpha v24 checked-use theorem; independently closed; not Stable") {
+    "Alpha v25 checked-use theorem; independently closed; not Stable") {
   throw Error("Alpha-only defined graph evidence missing: " + kind.textContent);
 }
 title.textContent = stableNode.id + " · " + stableNode.name;
@@ -535,10 +535,10 @@ def test_shared_campaign_definition_names_resolve_to_actual_blueprint_entries() 
 def test_campaign_navigation_revision_is_separate_from_pinned_javascript_asset() -> None:
     import build_pa_defined_explorer as generator
 
-    catalog = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+    catalog = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
     asset_revision = generator.PINNED_ASSETS["assets/explorer.js"][:12]
 
     assert generator.CAMPAIGN_HTML_REVISION == sha256(catalog.read_bytes()).hexdigest()[:12]
-    assert generator.CAMPAIGN_HTML_REVISION == "94ac4d193cbf"
+    assert generator.CAMPAIGN_HTML_REVISION == "75fa146ac19b"
     assert asset_revision == "1b95ce228950"
     assert generator.CAMPAIGN_HTML_REVISION != asset_revision

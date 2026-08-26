@@ -293,7 +293,7 @@ def test_generator_preserves_and_authenticates_immutable_parent_evidence(
     original_timestamp = frozen.stat().st_mtime_ns
     files = {
         generator.IMMUTABLE_EVIDENCE_CORPUS_PATH: frozen_payload,
-        generator.CURRENT_CORPUS_PATH: b"current v24 view\n",
+        generator.CURRENT_CORPUS_PATH: b"current v25 view\n",
         "manifest.json": b"{}\n",
     }
 
@@ -302,7 +302,7 @@ def test_generator_preserves_and_authenticates_immutable_parent_evidence(
     assert frozen.read_bytes() == frozen_payload
     assert frozen.stat().st_ino == original_inode
     assert frozen.stat().st_mtime_ns == original_timestamp
-    assert (tmp_path / generator.CURRENT_CORPUS_PATH).read_bytes() == b"current v24 view\n"
+    assert (tmp_path / generator.CURRENT_CORPUS_PATH).read_bytes() == b"current v25 view\n"
     assert generator._check(files)
 
     malicious = dict(files)
@@ -326,7 +326,7 @@ def test_generator_preserves_and_authenticates_immutable_parent_evidence(
 
 def test_manifest_pins_the_exact_qr_closure_and_truthful_partition() -> None:
     from peano_lab.library import editions_v16 as alpha_v16
-    from peano_lab.library import editions_v24 as current_alpha
+    from peano_lab.library import editions_v25 as current_alpha
 
     manifest = _load(MANIFEST)
     records = _records()
@@ -358,11 +358,11 @@ def test_manifest_pins_the_exact_qr_closure_and_truthful_partition() -> None:
     scopes = [row["scope"] for row in records]
     assert scopes.count("public") == PUBLIC_COUNT
     assert scopes.count("candidate") == CANDIDATE_COUNT
-    assert manifest["alpha_edition_version"] == "v24"
+    assert manifest["alpha_edition_version"] == "v25"
     assert manifest["alpha_edition_identity_sha256"] == (
-        current_alpha.ALPHA_V24_IDENTITY_SHA256
+        current_alpha.ALPHA_V25_IDENTITY_SHA256
     )
-    assert manifest["alpha_edition_checked_use_count"] == 2008
+    assert manifest["alpha_edition_checked_use_count"] == 2080
     assert manifest["proof_edition_version"] == "v16"
     assert manifest["proof_edition_identity_sha256"] == (
         alpha_v16.ALPHA_V16_IDENTITY_SHA256
@@ -383,7 +383,7 @@ def test_manifest_pins_the_exact_qr_closure_and_truthful_partition() -> None:
         ("candidate", "alpha_closed", False): CANDIDATE_COUNT,
     }
     assert all(row["alpha_checked_use"] is True for row in records)
-    assert all(row["alpha_edition_version"] == "v24" for row in records)
+    assert all(row["alpha_edition_version"] == "v25" for row in records)
     assert all(row["proof_edition_version"] == "v16" for row in records)
     root = next(row for row in records if row["name"] == "quadratic_reciprocity_combined")
     assert root["scope"] == "candidate"
@@ -393,8 +393,8 @@ def test_manifest_pins_the_exact_qr_closure_and_truthful_partition() -> None:
     assert root["stable_member"] is False
     root_page = (EXPLORER / "tag" / f"{root['tag']}.html").read_text(encoding="utf-8")
     assert "pa-status-public" in root_page
-    assert "Alpha v24 checked-use theorem" in root_page
-    assert "<dt>Current Alpha edition</dt><dd>v24</dd>" in root_page
+    assert "Alpha v25 checked-use theorem" in root_page
+    assert "<dt>Current Alpha edition</dt><dd>v25</dd>" in root_page
     assert "<dt>Proof-bearing Alpha edition</dt><dd>v16</dd>" in root_page
     assert "historical candidate-factory source; Alpha-only" in root_page
     assert "<dt>Stable membership</dt><dd>no</dd>" in root_page
@@ -410,7 +410,7 @@ def test_graph_preserves_source_origin_and_publishes_independent_release_evidenc
 
     assert root["scope"] == "candidate"
     assert root["status"] == "alpha_closed"
-    assert root["alpha_edition_version"] == "v24"
+    assert root["alpha_edition_version"] == "v25"
     assert root["alpha_evidence"] == "alpha_closed"
     assert root["alpha_checked_use"] is True
     assert root["stable_member"] is False
@@ -425,7 +425,7 @@ def test_graph_preserves_source_origin_and_publishes_independent_release_evidenc
 
     graph_page = (EXPLORER / "graph.html").read_text(encoding="utf-8")
     assert 'id="pa-proof-release-evidence"' in graph_page
-    assert "Alpha v24 checked-use theorem; independently closed; not Stable" in graph_page
+    assert "Alpha v25 checked-use theorem; independently closed; not Stable" in graph_page
     assert "historical candidate-factory source" in graph_page
     assert "pending layered closure" not in graph_page
 
@@ -474,7 +474,7 @@ __SCRIPT__
 if (typeof ready !== "function") throw Error("DOMContentLoaded was not observed");
 ready();
 if (status.textContent !==
-    "Alpha v24 checked-use theorem; independently closed; not Stable") {
+    "Alpha v25 checked-use theorem; independently closed; not Stable") {
   throw Error("Alpha-only evidence was not shown: " + status.textContent);
 }
 if (status.className !== "pa-status-public") throw Error("checked-use style missing");
@@ -1204,7 +1204,7 @@ def test_explorer_has_only_local_runtime_assets_and_no_html_injection_sinks() ->
 
 
 def test_every_quadratic_reciprocity_proof_page_navigates_all_campaign_scales() -> None:
-    revision = "94ac4d193cbf"
+    revision = "75fa146ac19b"
     root_pages = ("index.html", "foundations.html", "graph.html")
     for relative in root_pages:
         page = (EXPLORER / relative).read_text(encoding="utf-8")

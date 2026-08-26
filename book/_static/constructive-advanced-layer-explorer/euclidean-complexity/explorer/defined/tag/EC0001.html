@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="euclidean-complexity"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=94ac4d193cbf">Definitions and proofs</a>
-       <a href="../../tag/EC0001.html?v=94ac4d193cbf">Exact original proof</a>
-       <a href="../graph.html?target=EC0001&amp;v=94ac4d193cbf">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=94ac4d193cbf">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=94ac4d193cbf">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=94ac4d193cbf">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G101" href="../../../../grand-campaign/?view=goal&amp;focus=G101&amp;v=94ac4d193cbf">G101 milestone</a></nav>
+  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
+       <a href="../../tag/EC0001.html?v=75fa146ac19b">Exact original proof</a>
+       <a href="../graph.html?target=EC0001&amp;v=75fa146ac19b">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G101" href="../../../../grand-campaign/?view=goal&amp;focus=G101&amp;v=75fa146ac19b">G101 milestone</a></nav>
   <p class="pd-tag">EC0001</p><h1>euclidean_division_step_exists</h1>
-  <p>A nonzero Euclidean divisor constructively yields an exact quotient and strictly smaller remainder.</p><p class="pd-status">Alpha v24 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable</p>
+  <p>A nonzero Euclidean divisor constructively yields an exact quotient and strictly smaller remainder.</p><p class="pd-status">Alpha v25 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   
   <p class="pd-callout">G101 was OPEN when this family was first admitted in Alpha v21. It is now CLOSED in Alpha v23: the actual anchored Euclidean history, terminal gcd, and exact bound steps≤2*BitLen(b)+1 are proved.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ a. ∀ b. ¬b = 0 → ∃ x. ∃ y. <a class="pd-definition-ref" data-definition="ND0018" href="../definition/ND0018.html?v=94ac4d193cbf">EuclideanDivision(a,b,x,y)</a></code></pre>
+    <pre><code>∀ a. ∀ b. ¬b = 0 → ∃ x. ∃ y. <a class="pd-definition-ref" data-definition="ND0018" href="../definition/ND0018.html?v=75fa146ac19b">EuclideanDivision(a,b,x,y)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0018.html?v=94ac4d193cbf">EuclideanDivision(a,b,q,r) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0018.html?v=75fa146ac19b">EuclideanDivision(a,b,q,r) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">division_remainder_exists · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall a b. ~(b = 0) -&gt; exists q r. ((a = b * q + r /\ (exists ff_lt_ec_first_division. ff_lt_ec_first_division + S r = b)))</code></pre></details>
@@ -28,7 +28,7 @@
     <p>All 7 lines are the exact independently kernel-checked original script.</p>
     <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro a</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro b</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro hb</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>specialize division_remainder_exists b</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>specialize division_remainder_exists a</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>apply division_remainder_exists</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>exact hb</code></li></ol></section>
 </div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
-  <dl><dt>Authority</dt><dd>Alpha v24 checked use</dd><dt>First admission</dt><dd>Alpha v21</dd><dt>Stable membership</dt><dd>none</dd>
+  <dl><dt>Authority</dt><dd>Alpha v25 checked use</dd><dt>First admission</dt><dd>Alpha v21</dd><dt>Stable membership</dt><dd>none</dd>
       <dt>Proof-bundle node</dt><dd>177 / 209</dd>
       <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
       <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 209 exact bundle nodes</dd>

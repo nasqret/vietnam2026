@@ -2,7 +2,7 @@
 """Build six offline, evidence-honest constructive frontier proof explorers.
 
 The generator reads exact dependency-curried candidate factories, the sealed
-Alpha-v24 release, and existing conservative definition templates. It preserves
+Alpha-v25 release, and existing conservative definition templates. It preserves
 the original v13/v14/v15 enrollment origins while distinguishing independently
 proved Alpha-closed flagships from genuinely unenrolled candidate bodies. The
 display artifact itself never confers Alpha or Stable theorem authority.
@@ -43,7 +43,7 @@ from peano_lab.library import editions_v17 as v17  # noqa: E402
 from peano_lab.library import editions_v19 as v19  # noqa: E402
 from peano_lab.library import editions_v20 as v20  # noqa: E402
 from peano_lab.library import editions_v23 as v23  # noqa: E402
-from peano_lab.library import editions_v24 as v24  # noqa: E402
+from peano_lab.library import editions_v25 as v25  # noqa: E402
 from peano_lab.library.alpha_enrollment_v19 import alpha_v19_enrollment  # noqa: E402
 from peano_lab.library.alpha_enrollment_v23 import alpha_v23_enrollment  # noqa: E402
 from peano_lab.library import four_square_frontier_promotion as four_square_closure  # noqa: E402
@@ -71,18 +71,18 @@ from peano_lab.library.theorems import TheoremSpec, _specs_by_name  # noqa: E402
 
 OUTPUT = REPO / "book" / "_static" / "constructive-frontier-explorer"
 CURRENT_ALPHA_CATALOG = (
-    REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+    REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
 )
 HISTORICAL_ALPHA_CATALOG = (
     REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v19.json"
 )
 EXPECTED_CURRENT_ALPHA_IDENTITY = (
-    "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b"
+    "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
 )
 EXPECTED_CURRENT_ALPHA_CATALOG_SHA256 = (
-    "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+    "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
 )
-EXPECTED_CURRENT_ALPHA_CHECKED_COUNT = 2008
+EXPECTED_CURRENT_ALPHA_CHECKED_COUNT = 2080
 EXPECTED_HISTORICAL_ALPHA_IDENTITY = (
     "905189c32e13b3ec8b19ecad30fe51353eb0b66a9eb065ddae542c80746d3ea7"
 )
@@ -126,11 +126,11 @@ UNENROLLED_CANDIDATE_STATUS = (
     "not enrolled in Alpha or Stable"
 )
 ALPHA_BODY_STATUS = (
-    "Alpha v24 enrolled · body_checked; "
+    "Alpha v25 enrolled · body_checked; "
     "not admitted for checked use or Stable"
 )
 ALPHA_CLOSED_STATUS = (
-    "Alpha v24 checked-use · independently kernel and Lean verified; not Stable"
+    "Alpha v25 checked-use · independently kernel and Lean verified; not Stable"
 )
 EXPERIMENTAL_CLOSURE_STATUS = (
     "historical independently replay-verified empty-context experiment; "
@@ -138,7 +138,7 @@ EXPERIMENTAL_CLOSURE_STATUS = (
     "authority; current checked use follows separately sealed proof bundles; "
     "no Stable promotion"
 )
-ALPHA_EDITION_VERSION = "v24"
+ALPHA_EDITION_VERSION = "v25"
 HISTORICAL_ALPHA_EDITION_VERSION = "v19"
 CANONICAL_HTML_REVISION = sha256(CURRENT_ALPHA_CATALOG.read_bytes()).hexdigest()[:12]
 MANIFEST_SCHEMA = "peano-lab-constructive-frontier-explorer-v1"
@@ -172,7 +172,7 @@ FAMILIES = (
         kicker="Residues of −1 and 2",
         formula="(−1|p) = (−1)^((p−1)/2) · (2|p) = (−1)^((p²−1)/8)",
         description="Follow the complete constructive modulo-four and modulo-eight residue classifications.",
-        scope="Both complete supplementary-law endpoints and all 28 displayed bounded Euler-criterion, Gauss-lemma, modulo-four, and modulo-eight prerequisites were first enrolled in Alpha v15 and are independently kernel- and Lean-verified Alpha v24 checked-use theorems; none is admitted to Stable.",
+        scope="Both complete supplementary-law endpoints and all 28 displayed bounded Euler-criterion, Gauss-lemma, modulo-four, and modulo-eight prerequisites were first enrolled in Alpha v15 and are independently kernel- and Lean-verified Alpha v25 checked-use theorems; none is admitted to Stable.",
         roots=("quadratic_supplement_minus_one_complete", "quadratic_supplement_two_complete"),
         factories=(
             ("euler_criterion_bounded_candidate", "make_euler_criterion_bounded_candidate_theorems"),
@@ -193,7 +193,7 @@ FAMILIES = (
         kicker="Binomial valuations",
         formula="vₚ (a+b choose a) = number of base-p carries in a+b",
         description="Inspect the constructive bridge from Legendre valuations to explicitly counted addition carries.",
-        scope="The exact binomial-carry endpoint, its carry-free corollary, and their minimal prerequisite closure were first enrolled in Alpha v14 as body_checked and are now independently kernel- and Lean-verified Alpha v24 checked-use theorems; none is admitted to Stable.",
+        scope="The exact binomial-carry endpoint, its carry-free corollary, and their minimal prerequisite closure were first enrolled in Alpha v14 as body_checked and are now independently kernel- and Lean-verified Alpha v25 checked-use theorems; none is admitted to Stable.",
         roots=("kummer_binomial_carry_bit_count", "kummer_carry_free_iff_not_divides"),
         factories=(
             ("kummer_valuation_candidate", "make_kummer_valuation_candidate_theorems"),
@@ -209,7 +209,7 @@ FAMILIES = (
         kicker="Prime representations and constructive classification",
         formula="n = x²+y² ⇔ n = 0 or every p ≡ 3 (mod 4) has even vₚ(n)",
         description="Explore the complete constructive all-natural two-square classification: prime representations, multiplication, valuation necessity, strictly decreasing sufficiency, and the explicit zero boundary.",
-        scope="The complete all-natural iff, its nonzero specialization, Brahmagupta–Fibonacci multiplication, and explicit constructive witnesses were first enrolled in Alpha v15 as body_checked; Alpha v24 preserves their independently closed full prerequisite cone and the exact prime two-square if-and-only-if theorem first admitted in Alpha v19, including six displayed represented-factor helpers first admitted in Alpha v23, without Stable admission.",
+        scope="The complete all-natural iff, its nonzero specialization, Brahmagupta–Fibonacci multiplication, and explicit constructive witnesses were first enrolled in Alpha v15 as body_checked; Alpha v25 preserves their independently closed full prerequisite cone and the exact prime two-square if-and-only-if theorem first admitted in Alpha v19, including six displayed represented-factor helpers first admitted in Alpha v23, without Stable admission.",
         roots=(
             "prime_mod_four_one_is_sum_of_two_squares",
             "brahmagupta_fibonacci_two_square_identity",
@@ -249,7 +249,7 @@ FAMILIES = (
         kicker="Complete constructive universal representation",
         formula="∀ n ∈ ℕ. ∃ a,b,c,d. n = a² + b² + c² + d²",
         description="Explore the complete constructive proof that every natural number is a sum of four squares: both Euler quaternion identities, actual bounded prime seeds, all sixteen signed orientations, strict multiplier descent, and explicit prime-factor witnesses.",
-        scope="The complete universal Lagrange four-square theorem, representation of every prime, complete eight-variable Euler identity and signed-conjugate identity, explicit multiplicative closure, constructive modular seeds for every prime, all sixteen signed centered orientations, and bounded strict prime-multiple descent were first enrolled in Alpha v13 as body_checked; the universal endpoint and its exact prerequisite closure are now independently kernel- and Lean-verified Alpha v24 checked-use theorems, without Stable admission.",
+        scope="The complete universal Lagrange four-square theorem, representation of every prime, complete eight-variable Euler identity and signed-conjugate identity, explicit multiplicative closure, constructive modular seeds for every prime, all sixteen signed centered orientations, and bounded strict prime-multiple descent were first enrolled in Alpha v13 as body_checked; the universal endpoint and its exact prerequisite closure are now independently kernel- and Lean-verified Alpha v25 checked-use theorems, without Stable admission.",
         roots=(
             "quaternion_coordinate_square_balance_total",
             "quaternion_coordinate_absolute_total",
@@ -340,7 +340,7 @@ FAMILIES = (
         kicker="Complete constructive base-p digitwise congruence",
         formula="n = Σ nᵢpⁱ · k = Σ kᵢpⁱ · (n choose k) ≡ ∏ (nᵢ choose kᵢ) (mod p)",
         description="Explore the complete unconditional constructive multidigit Lucas congruence, genuinely terminating beta-coded digit chains, exact prime-block Pascal identities, coefficient streams, and witnessed digitwise products.",
-        scope="The complete arbitrary-length multidigit Lucas congruence, terminating beta-coded quotient/digit chains, actual coefficient/product witnesses, and unrestricted prime-block one-step identity were first enrolled in Alpha v13 as body_checked; the multidigit endpoint and its exact prerequisite closure are now independently kernel- and Lean-verified Alpha v24 checked-use theorems, without Stable admission.",
+        scope="The complete arbitrary-length multidigit Lucas congruence, terminating beta-coded quotient/digit chains, actual coefficient/product witnesses, and unrestricted prime-block one-step identity were first enrolled in Alpha v13 as body_checked; the multidigit endpoint and its exact prerequisite closure are now independently kernel- and Lean-verified Alpha v25 checked-use theorems, without Stable admission.",
         roots=(
             "lucas_digit_carry_iff_prime_divides",
             "lucas_digit_no_carry_iff_not_divides",
@@ -385,7 +385,7 @@ FAMILIES = (
         kicker="Complete forward primitive parametrization and an explicit open descent obligation",
         formula="x²+y²=z² · gcd(x,y)=1 · conditional descent: x⁴+y⁴≠z²",
         description="Construct exact primitive Euclidean Pythagorean triples, inspect the opposite-parity, odd-hypotenuse, pairwise-coprime normal form of every primitive triple, and isolate the one still-unproved strict-descent premise behind Fermat’s exponent-four theorem.",
-        scope="Euclid’s complete forward primitive Pythagorean constructor from ordered coprime opposite-parity parameters, witnessed square differences, the opposite-parity/odd-hypotenuse/pairwise-coprime normal form of every primitive triple, and conditional bounded-descent bridges first admitted by Alpha v19 are independently kernel- and Lean-verified Alpha v24 checked-use theorems. The primitive inverse classification and the Fermat strict-descent premise remain unproved; none of these Alpha-only results is admitted to Stable.",
+        scope="Euclid’s complete forward primitive Pythagorean constructor from ordered coprime opposite-parity parameters, witnessed square differences, the opposite-parity/odd-hypotenuse/pairwise-coprime normal form of every primitive triple, and conditional bounded-descent bridges first admitted by Alpha v19 are independently kernel- and Lean-verified Alpha v25 checked-use theorems. The primitive inverse classification and the Fermat strict-descent premise remain unproved; none of these Alpha-only results is admitted to Stable.",
         roots=(
             "pythagorean_euclidean_identity",
             "pythagorean_euclidean_from_order",
@@ -898,7 +898,7 @@ def _verified_experimental_names(
         parent = v19.ALPHA_EDITION.by_name.get(name)
         previous = v20.ALPHA_EDITION.by_name.get(name)
         immediate_parent = v23.ALPHA_EDITION.by_name.get(name)
-        current = v24.ALPHA_EDITION.by_name.get(name)
+        current = v25.ALPHA_EDITION.by_name.get(name)
         if (
             old is None
             or historical is None
@@ -916,7 +916,7 @@ def _verified_experimental_names(
             or parent.evidence is not v19.EvidenceStatus.ALPHA_CLOSED
             or previous.evidence is not v20.EvidenceStatus.ALPHA_CLOSED
             or immediate_parent.evidence is not v23.EvidenceStatus.ALPHA_CLOSED
-            or current.evidence is not v24.EvidenceStatus.ALPHA_CLOSED
+            or current.evidence is not v25.EvidenceStatus.ALPHA_CLOSED
             or old.checked_use
             or historical.checked_use
             or not parent.checked_use
@@ -926,7 +926,7 @@ def _verified_experimental_names(
         ):
             raise ValueError(
                 f"{source} does not match the historical body-only entry "
-                f"and independently checked Alpha-v19/v20/v23/v24 theorem {name!r}"
+                f"and independently checked Alpha-v19/v20/v23/v25 theorem {name!r}"
             )
     return names
 
@@ -1219,7 +1219,7 @@ def _family_nodes(
 ) -> tuple[dict[str, Any], ...]:
     rows: list[dict[str, Any]] = []
     selected: dict[str, dict[str, Any]] = {}
-    alpha_entries = v24.ALPHA_EDITION.by_name
+    alpha_entries = v25.ALPHA_EDITION.by_name
     alpha_campaigns = _alpha_frontier_campaigns()
     alpha_admission_versions = _alpha_admission_versions()
     experiments = (
@@ -1263,16 +1263,16 @@ def _family_nodes(
                     or tuple(alpha_entry.spec.script) != tuple(item.script)
                 ):
                     raise ValueError(
-                        f"candidate {item.name!r} differs from its sealed Alpha-v24 entry"
+                        f"candidate {item.name!r} differs from its sealed Alpha-v25 entry"
                     )
                 if (
-                    alpha_entry.evidence is not v24.EvidenceStatus.ALPHA_CLOSED
+                    alpha_entry.evidence is not v25.EvidenceStatus.ALPHA_CLOSED
                     or not alpha_entry.checked_use
                     or alpha_campaign is None
                     or item.name not in alpha_admission_versions
                 ):
                     raise ValueError(
-                        f"candidate {item.name!r} has unexpected Alpha-v24 evidence"
+                        f"candidate {item.name!r} has unexpected Alpha-v25 evidence"
                     )
             if experimental_closure is not None and (
                 alpha_entry is None
@@ -1317,7 +1317,7 @@ def _family_nodes(
                     else None
                 ),
                 "alpha_edition_identity_sha256": (
-                    v24.ALPHA_V24_IDENTITY_SHA256 if alpha_entry is not None else None
+                    v25.ALPHA_V25_IDENTITY_SHA256 if alpha_entry is not None else None
                 ),
                 "alpha_campaign": (
                     alpha_campaign.value if alpha_campaign is not None else None
@@ -1353,21 +1353,21 @@ def _family_nodes(
 
 
 def _release_metadata() -> dict[str, Any]:
-    """Bind current v24 authority while preserving every v19/v20/v23 parent."""
+    """Bind current v25 authority while preserving every v19/v20/v23 parent."""
 
     if (
-        v24.ALPHA_V24_IDENTITY_SHA256 != EXPECTED_CURRENT_ALPHA_IDENTITY
-        or len(v24.ALPHA_CHECKED_SPECS) != EXPECTED_CURRENT_ALPHA_CHECKED_COUNT
+        v25.ALPHA_V25_IDENTITY_SHA256 != EXPECTED_CURRENT_ALPHA_IDENTITY
+        or len(v25.ALPHA_CHECKED_SPECS) != EXPECTED_CURRENT_ALPHA_CHECKED_COUNT
         or _digest(CURRENT_ALPHA_CATALOG.read_bytes())
         != EXPECTED_CURRENT_ALPHA_CATALOG_SHA256
         or CANONICAL_HTML_REVISION
         != EXPECTED_CURRENT_ALPHA_CATALOG_SHA256[:12]
     ):
-        raise ValueError("sealed Alpha-v24 constructive frontier release evidence changed")
+        raise ValueError("sealed Alpha-v25 constructive frontier release evidence changed")
     current_catalog = json.loads(CURRENT_ALPHA_CATALOG.read_bytes())
     immediate_parent = current_catalog.get("parent_alpha_v23")
     if (
-        current_catalog.get("schema") != "peano-library-alpha-snapshot-v24"
+        current_catalog.get("schema") != "peano-library-alpha-snapshot-v25"
         or current_catalog.get("theorem_count") != EXPECTED_CURRENT_ALPHA_CHECKED_COUNT
         or current_catalog.get("checked_use_count") != EXPECTED_CURRENT_ALPHA_CHECKED_COUNT
         or current_catalog.get("edition_identity_sha256") != EXPECTED_CURRENT_ALPHA_IDENTITY
@@ -1376,7 +1376,7 @@ def _release_metadata() -> dict[str, Any]:
         or immediate_parent.get("theorem_count") != len(v23.ALPHA_CHECKED_SPECS)
         or immediate_parent.get("edition_identity_sha256") != v23.ALPHA_V23_IDENTITY_SHA256
     ):
-        raise ValueError("sealed Alpha-v24 lost its immutable Alpha-v23 flagship parent")
+        raise ValueError("sealed Alpha-v25 lost its immutable Alpha-v23 flagship parent")
     if (
         v20.ALPHA_V20_IDENTITY_SHA256
         != "ee0f596150d8609ab302303ade44c4413290675398a1d6999a47b3ba046ac38b"
@@ -1391,8 +1391,8 @@ def _release_metadata() -> dict[str, Any]:
         raise ValueError("immutable Alpha-v19 constructive frontier provenance changed")
     return {
         "alpha_edition_version": ALPHA_EDITION_VERSION,
-        "alpha_edition_identity_sha256": v24.ALPHA_V24_IDENTITY_SHA256,
-        "alpha_edition_checked_use_count": len(v24.ALPHA_CHECKED_SPECS),
+        "alpha_edition_identity_sha256": v25.ALPHA_V25_IDENTITY_SHA256,
+        "alpha_edition_checked_use_count": len(v25.ALPHA_CHECKED_SPECS),
         "alpha_catalog_sha256": EXPECTED_CURRENT_ALPHA_CATALOG_SHA256,
         "parent_alpha_edition_version": "v20",
         "parent_alpha_edition_identity_sha256": v20.ALPHA_V20_IDENTITY_SHA256,
@@ -1427,7 +1427,7 @@ def build_corpora() -> dict[str, dict[str, Any]]:
         node["name"]: slug for slug, nodes in candidates.items() for node in nodes
     }
     public = _specs_by_name()
-    alpha_entries = v24.ALPHA_EDITION.by_name
+    alpha_entries = v25.ALPHA_EDITION.by_name
     alpha_admission_versions = _alpha_admission_versions()
     corpora: dict[str, dict[str, Any]] = {}
     for family in FAMILIES:
@@ -1468,17 +1468,17 @@ def build_corpora() -> dict[str, dict[str, Any]]:
                     admitted_stable = False
                 elif alpha_entry is not None:
                     evidence = alpha_entry.evidence.value
-                    if alpha_entry.evidence is v24.EvidenceStatus.STABLE_CLOSED:
+                    if alpha_entry.evidence is v25.EvidenceStatus.STABLE_CLOSED:
                         kind = "stable-admitted-theorem"
                         origin = "sealed-stable-edition"
                         admitted_alpha = True
                         admitted_stable = True
-                    elif alpha_entry.evidence is v24.EvidenceStatus.ALPHA_CLOSED:
+                    elif alpha_entry.evidence is v25.EvidenceStatus.ALPHA_CLOSED:
                         kind = "alpha-admitted-theorem"
                         origin = "sealed-alpha-edition"
                         admitted_alpha = True
                         admitted_stable = False
-                    elif alpha_entry.evidence is v24.EvidenceStatus.BODY_CHECKED:
+                    elif alpha_entry.evidence is v25.EvidenceStatus.BODY_CHECKED:
                         kind = "alpha-enrolled-candidate-not-admitted"
                         origin = "sealed-alpha-body-only"
                         admitted_alpha = False
@@ -1691,7 +1691,7 @@ def build_corpora() -> dict[str, dict[str, Any]]:
         if node["alpha_checked_use"]
     }
     expected_checked_names = expected_alpha_names
-    current_checked_names = {spec.name for spec in v24.ALPHA_CHECKED_SPECS}
+    current_checked_names = {spec.name for spec in v25.ALPHA_CHECKED_SPECS}
     if (
         len(expected_checked_names) != 421
         or checked_names != expected_checked_names
@@ -1699,7 +1699,7 @@ def build_corpora() -> dict[str, dict[str, Any]]:
     ):
         raise ValueError(
             "constructive explorers changed the exact 421 independently verified "
-            "Alpha-v24 historical, prime two-square, Pythagorean, and "
+            "Alpha-v25 historical, prime two-square, Pythagorean, and "
             "represented-factor theorem rows"
         )
     return corpora

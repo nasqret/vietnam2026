@@ -13,13 +13,13 @@ arithmetic library. Start with:
 - [`Grand campaign machine-readable DAG`](../../book/_static/constructive-grand-campaign/campaign.json)
   and its [interactive proof-campaign atlas](../../book/_static/constructive-grand-campaign/index.html):
   five connected research domains, twelve mathematical families, 120 major
-  goals, 303 actual theorem/tool/anchor prerequisite edges, and 164 shared
+  goals, 303 actual theorem/tool/anchor prerequisite edges, and 179 shared
   mathematical terms; domain, family, goal, and definition drill-down links
-  directly to the completed proof explorers while distinguishing 135
+  directly to the completed proof explorers while distinguishing 165
   definition-expansion edges, 311 lexical statement-notation occurrences,
-  and 68 explicitly typed notation links from genuine proof dependencies;
-  the shared registry independently audits 109 conservative definitions,
-  186 genuine definition prerequisites, and 73 signature-compatible links
+  and 84 explicitly typed notation links from genuine proof dependencies;
+  the shared registry independently audits 120 conservative definitions,
+  214 genuine definition prerequisites, and 88 signature-compatible links
   while honestly identifying the open research frontier;
 - [`Completed quadratic-reciprocity closure receipt`](quadratic-reciprocity-closure-receipt.md)
   and its [complete canonical self-contained proof bundle](artifacts/quadratic-reciprocity-proof-bundle-v1.json):
@@ -27,7 +27,7 @@ arithmetic library. Start with:
   all 557 genuine theorem bodies and 1,787 dependencies, and independent
   compiled-Lean verification of the same exact constructive theorem; its
   historically catalog-bound `api/corpus.json` remains byte-frozen, while a
-  separate `api/current-corpus.json` provides modern Alpha-v24 presentation
+  separate `api/current-corpus.json` provides modern Alpha-v25 presentation
   metadata without rewriting historical proof evidence;
 - [`ha-number-theory-campaign.json`](ha-number-theory-campaign.json): the
   executable K0--K6/M1--M5 layer status, dependency, and validation-gate
@@ -173,8 +173,23 @@ arithmetic library. Start with:
   and its [independently kernel- and Lean-verified 203-node proof bundle](artifacts/alpha-v24-research-layer-proof-bundle-v1.json):
   17 arbitrary signed matrix-minor/four-dimensional determinant proofs,
   15 exact simultaneous formal-derivative proofs, and 27 finite-CRT/
-  universal-property-LCM proofs, giving current Alpha v24 a total of 2,008
+  universal-property-LCM proofs, giving historical Alpha v24 a total of 2,008
   independently checked-use theorems without changing Stable;
+- [`Alpha v25 constructive breakthrough-layer admission RFC`](alpha-v25-breakthrough-layer-rfc-v1.md),
+  its [complete original-kernel closure receipt](alpha-v25-breakthrough-layer-receipt.md),
+  and its [independently kernel- and Lean-verified 302-node proof bundle](artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json):
+  29 complete genuine signed cofactor-minor-family and arbitrary alternating
+  Laplace-fold proofs, 19 exact witnessed quadratic Taylor-remainder and
+  actual one-step Hensel-lift proofs, and 24 non-coprime constructive
+  CRT-compatibility/canonical-solution proofs, giving current Alpha v25 a total
+  of 2,080 independently checked-use theorems without changing Stable;
+- the [complete signed cofactor-family RFC](matrix-cofactor-expansion-rfc-v1.md),
+  [quadratic Taylor-remainder and genuine Hensel-lift RFC](polynomial-taylor-hensel-rfc-v1.md),
+  and [non-coprime finite CRT-compatibility RFC](generalized-crt-compatibility-rfc-v1.md):
+  72 exact independently proved constructive advances and eleven additive
+  hygienic definitions `ND0058`–`ND0068`; the stronger full T13 determinant/
+  rank/lattice, G095 prime-power Hensel uniqueness, and G011 arbitrary
+  pairwise-compatible non-coprime finite-list milestones remain honestly open;
 - the [arbitrary signed matrix-minor RFC](matrix-determinant-minors-rfc-v1.md),
   [exact formal polynomial-derivative RFC](polynomial-hensel-rfc-v1.md), and
   [finite constructive CRT and arbitrary-list LCM RFC](generalized-crt-fold-rfc-v1.md):
@@ -926,15 +941,16 @@ closing the remaining 332 rows; a smaller dependency-closed batch need not
 wait for unrelated Alpha rows. WMI is down for the weekend, so no K3C cold
 receipt, whole-Alpha-v2 closure, or new promotion receipt is claimed here.
 
-## 2026-08-26 — fully checked current Alpha v24 and unchanged Stable editions
+## 2026-08-26 — fully checked current Alpha v25 and unchanged Stable editions
 
 The preceding Alpha-v2 section is a historical checkpoint, not the current
 release pointer. Stable is still the official default at **432 theorems**.
-The newest Alpha edition is v24, containing **2,008 independently checked
-theorems**: every one of its sealed Alpha-v23 parent's **1,949** statements,
-plus **59** newly proved arbitrary-dimensional signed cofactor-minor,
-four-dimensional determinant, simultaneous formal-polynomial-derivative,
-finite Chinese-remainder, and universal-property arbitrary-list-LCM theorems.
+The newest Alpha edition is v25, containing **2,080 independently checked
+theorems**: every one of its sealed Alpha-v24 parent's **2,008** statements,
+plus **72** newly proved complete genuine signed cofactor-minor-family,
+arbitrary signed alternating-fold, witnessed quadratic Taylor-remainder,
+actual one-step Hensel-lift, and non-coprime finite CRT-compatibility
+theorems.
 It has
 **zero body-only or pending rows**; every earlier sealed version remains
 reproducible.
@@ -954,6 +970,7 @@ reproducible.
 | Alpha v22 | 1,890 | 6,128 | 53 | 1,890 | 60 independently checked binary-length, Euclidean terminal-gcd transport, and actual supplied-digit binary-execution results |
 | Alpha v23 | 1,949 | 6,285 | 53 | 1,949 | 59 independently checked complete logarithmic Euclidean-GCD, canonical binary-digit/execution, and three-modulo-four-prime-infinitude results |
 | Alpha v24 | 2,008 | 6,423 | 53 | 2,008 | 17 arbitrary signed matrix-minor/determinant, 15 exact formal-derivative, and 27 finite CRT/arbitrary-list-LCM results |
+| Alpha v25 | 2,080 | 6,633 | 53 | 2,080 | 29 complete cofactor-minor-family/Laplace-fold, 19 witnessed Taylor/actual Hensel-lift, and 24 non-coprime CRT-compatibility results |
 
 Alpha v14 appends exactly thirteen `body_checked` Kummer rows. Alpha v15
 appends exactly 28 supplementary-law rows, including independently checked
@@ -1159,7 +1176,7 @@ zero body_checked, and zero pending rows**, so all **1,949 theorem nodes** and
 - Alpha-v23 canonical catalog SHA-256:
   `818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2`.
 
-Current Alpha v24 preserves every exact historical v23 row and appends
+Historical Alpha v24 preserves every exact historical v23 row and appends
 **17 arbitrary-dimensional natural/signed cofactor-minor and signed 4×4
 determinant theorems, 15 exact simultaneous formal-polynomial-derivative
 theorems, and 27 finite pairwise-coprime CRT/arbitrary-list-LCM theorems**.
@@ -1170,7 +1187,7 @@ with SHA-256
 `627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9`.
 Every one of its **203 proof bodies** is independently checked by the unchanged
 intuitionistic kernel and accepted by the separately compiled Lean verifier.
-The current partition is **432 stable_closed, 1,576 alpha_closed, zero
+Its historical partition is **432 stable_closed, 1,576 alpha_closed, zero
 body_checked, and zero pending rows**, so all **2,008 theorem nodes** and
 **6,423 actual dependency edges** have genuine checked-use authority.
 
@@ -1183,15 +1200,70 @@ body_checked, and zero pending rows**, so all **2,008 theorem nodes** and
 - Alpha-v24 canonical catalog SHA-256:
   `94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1`.
 
+Current Alpha v25 preserves every exact immutable historical v24 row and
+appends **29 complete signed first-row cofactor-minor-family/arbitrary
+alternating Laplace-fold theorems, 19 exact witnessed quadratic
+Taylor-remainder/actual one-step Hensel-lift theorems, and 24 genuinely
+non-coprime finite CRT compatibility/gcd-LCM/canonical-solution theorems**.
+The self-contained proof artifact has **301 exact theorem nodes plus one
+synthetic conjunction**, **820 genuine dependency edges**, **16,947 actual
+body-proof nodes**, **29 maximal roots**, and **1,041,166 canonical bytes**,
+with SHA-256
+`d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a`.
+Every one of its **302 proof bodies** is independently checked by the
+unchanged intuitionistic kernel and accepted by the separately compiled Lean
+verifier. The exact current partition is **432 stable_closed, 1,648
+alpha_closed, zero body_checked, and zero pending rows**, so all **2,080
+theorem nodes** and **6,633 actual dependency edges** have genuine
+checked-use authority.
+
+- Alpha-v25 checked edition identity:
+  `3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28`.
+- Alpha-v25 ordered enrollment identity:
+  `f724872707cdcf401f35cb69680e1bbec86d626c4bf56e6d41f01a3724e2be81`.
+- Alpha-v25 checked evidence root:
+  `193ee636570fa9f7b69344dbebc6c7e53de8bebda01bcb86687f01a50ec19674`.
+- Alpha-v25 canonical catalog SHA-256:
+  `75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e`.
+
+The additive reviewed definition registry preserves every historical object
+and adds exactly `ND0058`–`ND0068`: seven genuine signed minor-record/
+cofactor-family/alternating-fold relations, two exact Taylor/Hensel relations,
+and two finite CRT compatibility predicates. Across the 120-milestone atlas,
+the complete definition DAG has **179 research-blueprint definitions** and
+**165 blueprint expansion edges**, while the independently reviewed
+conservative first-order registry has **120 definitions** and **214
+definition prerequisites**. Exactly **88** blueprint names share a checked
+signature/AST identity, including the explicit four-argument `BetaSum` alias;
+the incompatible three-argument generic `Sum` remains visible and receives no
+checked-definition authority.
+
+The three strongest checked components are
+`signed_matrix_cofactor_family_and_fold_exists` (bundle node 257; statement
+SHA-256 `1f013b934c7540f73e135257094d612345f43f3163b5ee7280dbe97f4f142d2a`),
+`beta_horner_hensel_lift_exists` (node 276; SHA-256
+`9cfc4633ea27c492b0deb35a56fe44b25b8dbf50d56fb27f29285f74b6c58a8b`),
+and `crt_merge_compatible_prefix_canonical_exists_unique` (node 288; SHA-256
+`9e3d68192e707b5953b2fd3c9e4716e9fe90317f63be49734bbed00e3492b927`).
+The genuinely pairwise-compatible dominating-last non-coprime case is
+additionally checked as
+`crt_pairwise_compatible_dominating_last_canonical_exists_unique`
+(SHA-256 `f249f7835eb127e8d5f15e74b3d4344d5d98503d8b01394d608bf2e677823fb0`).
+
 The full T13 arbitrary-dimensional determinant/rank/lattice target, G095
-prime-power simple-root Hensel lift, and G011 arbitrary compatible non-coprime
-finite-list CRT remain **open**. Only their exact separately stated matrix,
-formal-derivative, arbitrary-list-LCM, and pairwise-coprime finite-CRT
-components have checked-use authority.
+prime-power simple-root Hensel uniqueness theorem, and G011 arbitrary
+pairwise-compatible non-coprime finite-list CRT remain **open**. T13 still
+lacks the proof connecting supplied cofactor values with recursively evaluated
+minor determinants. G095 has an actual one-step divisibility lift but still
+lacks the unrestricted canonical lifted representative and uniqueness. G011
+solves every exactly merge-compatible non-coprime system and the
+pairwise-compatible dominating-last case but lacks the general
+pairwise-to-successive-merge gcd/LCM bridge. Nearby checked components never
+close these stronger exact blueprint milestones.
 
 Reproduce and independently verify the entire current release using
-`make peano-library-alpha-v24` and `make peano-library-alpha-v24-check`.
-The sealed historical v19, v20, v21, v22, and v23 releases remain independently reproducible
+`make peano-library-alpha-v25` and `make peano-library-alpha-v25-check`.
+The sealed historical v19, v20, v21, v22, v23, and v24 releases remain independently reproducible
 with their corresponding versioned targets.
 The bounded browser command
 `pa proof alpha infinitely_many_primes_one_mod_four` inspects its exact
@@ -1214,9 +1286,14 @@ every supplied valid digit prefix. Historical Alpha v23 closes **G101** with
 actual terminal gcd and the exact `steps <= 2 * BitLen(b) + 1` bound,
 **G102** with arbitrary-exponent canonical digits, actual modular execution,
 and `operations <= 3 * BitLen(e) + 2`, and **G025** with prime witnesses
-congruent to three modulo four above every prescribed bound. **T13** remains
-open despite **33** checked components: arbitrary-dimensional determinants,
-rank, and lattices are unproved. **G077** (the inverse primitive Pythagorean
+congruent to three modulo four above every prescribed bound. Historical Alpha
+v24 adds arbitrary signed minors, exact signed four-dimensional determinants,
+formal derivatives, arbitrary-list LCM, and complete pairwise-coprime finite
+CRT. Current Alpha v25 adds complete genuine cofactor families and uniquely
+valued alternating folds, actual quadratic Taylor witnesses and one-step
+Hensel lifts, and genuinely non-coprime merge-compatible canonical CRT.
+**T13** remains open: arbitrary-dimensional recursive determinants, rank,
+and lattices are unproved. **G077** (the inverse primitive Pythagorean
 parametrization), and **G078** (unconditional Fermat exponent-four strict
 descent) remain genuinely open; none is inferred from a nearby checked
 forward direction.

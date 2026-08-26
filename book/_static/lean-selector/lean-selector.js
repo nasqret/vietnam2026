@@ -388,8 +388,12 @@
       (metadata["Stable membership"] === "yes" ? "stable" : "alpha");
     var stableMembership = metadata["Stable membership"] === "yes";
     var alphaAuthority = /^Alpha v[0-9]+ checked use$/.test(metadata.Authority || "");
+    var canonicalExactAuthority =
+      /^Alpha v[0-9]+; independently verified$/.test(metadata["Checked-use authority"] || "") &&
+      metadata["Alpha evidence"] === "alpha_closed";
     var checkedUse = metadata["Checked theorem use"] === "yes" ||
-      panel.getAttribute("data-lean-eligible") === "true" || alphaAuthority;
+      panel.getAttribute("data-lean-eligible") === "true" || alphaAuthority ||
+      canonicalExactAuthority;
     return {
       theorem: String(theorem).trim(),
       edition: edition,

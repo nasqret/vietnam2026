@@ -6,7 +6,7 @@ import driver
 import pytest
 
 from peano_lab.library import editions_v19 as historical_alpha
-from peano_lab.library import editions_v24 as alpha
+from peano_lab.library import editions_v25 as alpha
 from peano_lab.library import lean_proof_strand
 from peano_lab.library.lean import LIVE_LEAN_PREFIX
 from peano_lab.library.theorems import get
@@ -93,7 +93,7 @@ def test_alpha_proof_strand_routes_preserve_explicit_release_authority(
 ) -> None:
     output = driver.LabSession().run(command)
 
-    assert "Release edition: Alpha v24." in output
+    assert "Release edition: Alpha v25." in output
     assert "Release membership: stable." in output
     assert "--edition alpha --format strand" in output
     assert "Independent Lean compilation: NOT RUN" in output
@@ -106,7 +106,7 @@ def test_checked_alpha_only_strand_does_not_claim_stable_membership() -> None:
 
     assert "Authenticated release evidence: alpha_closed." in output
     assert "Release membership: alpha_only." in output
-    assert "Release edition: Alpha v24." in output
+    assert "Release edition: Alpha v25." in output
     assert "--edition alpha --format strand" in output
 
 
@@ -117,7 +117,7 @@ def test_checked_alpha_only_strand_does_not_claim_stable_membership() -> None:
         "linear_congruence_solvable_iff_gcd_divides",
     ),
 )
-def test_historical_alpha_v19_frontier_root_has_current_v24_bounded_preview(
+def test_historical_alpha_v19_frontier_root_has_current_v25_bounded_preview(
     monkeypatch: pytest.MonkeyPatch,
     name: str,
 ) -> None:
@@ -134,7 +134,7 @@ def test_historical_alpha_v19_frontier_root_has_current_v24_bounded_preview(
     output = driver.LabSession().run(f"pa proof alpha {name}")
 
     assert output.startswith(f"Readable Peano-to-Lean proof strand — {name}")
-    assert "Release edition: Alpha v24." in output
+    assert "Release edition: Alpha v25." in output
     assert "Authenticated release evidence: alpha_closed." in output
     assert "Release membership: alpha_only." in output
     assert "Fresh Peano proof replay: NOT RUN" in output
@@ -143,7 +143,7 @@ def test_historical_alpha_v19_frontier_root_has_current_v24_bounded_preview(
     assert len(output.encode("utf-8")) <= 15 * 1024
 
 
-def test_historical_body_only_theorem_has_current_alpha_v24_checked_preview() -> None:
+def test_historical_body_only_theorem_has_current_alpha_v25_checked_preview() -> None:
     name = "cell_list_valid_nil"
     historical = historical_alpha.v18.entry(name, edition="alpha")
     current = alpha.entry(name, edition="alpha")
@@ -152,7 +152,7 @@ def test_historical_body_only_theorem_has_current_alpha_v24_checked_preview() ->
 
     output = driver.LabSession().run(f"pa proof alpha {name}")
 
-    assert "Release edition: Alpha v24." in output
+    assert "Release edition: Alpha v25." in output
     assert "Authenticated release evidence: alpha_closed." in output
     assert "Checked-use authority: YES." in output
     assert "Fresh Peano proof replay: NOT RUN" in output
@@ -209,6 +209,10 @@ def test_large_stable_strand_shows_root_proof_without_planning_full_closure(
         "binary_modular_execution_logarithmic_bound",
         "infinitely_many_primes_three_mod_four",
         "crt_pairwise_coprime_prefix_canonical_exists_unique",
+        "signed_matrix_cofactor_family_and_fold_exists",
+        "beta_horner_hensel_lift_exists",
+        "crt_merge_compatible_prefix_canonical_exists_unique",
+        "crt_pairwise_compatible_dominating_last_canonical_exists_unique",
     ),
 )
 def test_flagship_alpha_strand_shows_root_without_loading_full_certificate(
@@ -222,7 +226,7 @@ def test_flagship_alpha_strand_shows_root_without_loading_full_certificate(
         raise AssertionError("Alpha flagship root viewing must not load its proof artifact")
 
     monkeypatch.setattr(alpha, "replay", forbidden)
-    monkeypatch.setattr(alpha, "_checked_research_layer_bundle", forbidden)
+    monkeypatch.setattr(alpha, "_checked_breakthrough_layer_bundle", forbidden)
     monkeypatch.setattr(data_library, "export_checked_theorem", forbidden)
     monkeypatch.setattr(lean_proof_strand, "plan_proof_strand", forbidden)
     monkeypatch.setattr(lean_proof_strand, "build_proof_strand", forbidden)
@@ -288,7 +292,7 @@ def test_large_unicode_outline_cannot_exhaust_browser_output_budget(
         ("pa proof help", "Usage: pa proof [alpha] <theorem>"),
         ("pa proof alpha", "Usage: pa proof alpha <theorem>"),
         ("pa proof missing", "No library theorem 'missing'"),
-        ("pa proof alpha missing", "No Alpha v24 theorem 'missing'"),
+        ("pa proof alpha missing", "No Alpha v25 theorem 'missing'"),
         ("pa proof zero_add trailing", "Usage: pa proof [alpha] <theorem>"),
         ("pa lean strand", "Usage: pa lean strand <theorem>"),
     ),

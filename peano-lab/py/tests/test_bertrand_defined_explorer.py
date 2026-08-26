@@ -17,7 +17,7 @@ sys.path.insert(0, str(REPO / "peano-lab" / "py"))
 sys.path.insert(0, str(REPO / "scripts"))
 
 from peano_lab.library import editions_v18 as proof_alpha  # noqa: E402
-from peano_lab.library import editions_v24 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v25 as current_alpha  # noqa: E402
 
 EXPLICIT = REPO / "book" / "_static" / "bertrand-proof-explorer"
 DEFINED = EXPLICIT / "defined"
@@ -205,8 +205,8 @@ def test_current_bertrand_navigation_preserves_immutable_shared_qr_revision() ->
     )
     current_navigation = generator._current_campaign_links(historical_navigation)
 
-    assert historical_revision == "94ac4d193cbf"
-    assert generator.CAMPAIGN_HTML_REVISION == "94ac4d193cbf"
+    assert historical_revision == "75fa146ac19b"
+    assert generator.CAMPAIGN_HTML_REVISION == "75fa146ac19b"
     assert f"v={historical_revision}" in historical_navigation
     assert current_navigation == historical_navigation
     assert current_navigation.count(f"v={generator.CAMPAIGN_HTML_REVISION}") == 4
@@ -231,11 +231,11 @@ def test_manifest_freezes_exact_bertrand_sources_and_complete_file_inventory(
     assert manifest["notation_edge_count"] == 1510
     assert manifest["formal_line_count"] == 28410
     assert manifest["generated_file_count"] == 1124
-    assert manifest["alpha_edition_version"] == "v24"
+    assert manifest["alpha_edition_version"] == "v25"
     assert manifest["alpha_edition_identity_sha256"] == (
-        current_alpha.ALPHA_V24_IDENTITY_SHA256
+        current_alpha.ALPHA_V25_IDENTITY_SHA256
     )
-    assert manifest["alpha_edition_checked_use_count"] == 2008
+    assert manifest["alpha_edition_checked_use_count"] == 2080
     assert manifest["proof_edition_version"] == "v18"
     assert manifest["proof_edition_identity_sha256"] == (
         proof_alpha.ALPHA_V18_IDENTITY_SHA256
@@ -346,7 +346,7 @@ def test_all_theorems_and_tactic_lines_preserve_immutable_explicit_sources(
         assert readable["name"] == exact["name"]
         assert readable["scope"] == exact["scope"]
         assert readable["status"] == exact["status"]
-        assert readable["alpha_edition_version"] == "v24"
+        assert readable["alpha_edition_version"] == "v25"
         assert readable["proof_edition_version"] == "v18"
         assert readable["alpha_evidence"] == exact["alpha_evidence"]
         assert readable["alpha_checked_use"] is True
@@ -455,11 +455,11 @@ def test_mixed_graph_keeps_proof_paths_distinct_from_notation_edges(
     assert graph["schema"] == "peano-lab-bertrand-defined-graph-v1"
     assert graph["root_tag"] == ROOT_TAG
     assert graph["path_policy"] == "proof_dependency_edges_only"
-    assert graph["alpha_edition_version"] == "v24"
+    assert graph["alpha_edition_version"] == "v25"
     assert graph["alpha_edition_identity_sha256"] == (
-        current_alpha.ALPHA_V24_IDENTITY_SHA256
+        current_alpha.ALPHA_V25_IDENTITY_SHA256
     )
-    assert graph["alpha_edition_checked_use_count"] == 2008
+    assert graph["alpha_edition_checked_use_count"] == 2080
     assert graph["proof_edition_version"] == "v18"
     assert graph["proof_edition_identity_sha256"] == (
         proof_alpha.ALPHA_V18_IDENTITY_SHA256
@@ -597,8 +597,8 @@ def test_capstone_is_readable_preserves_the_exact_statement_and_proof_lines(
     assert 'id="proof-line-0014"' in page
     assert 'id="proof-line-0039"' in page
     assert "bertrand_bp02_candidate.py" in page
-    assert "Alpha v24 checked-use theorem" in page
-    assert "<dt>Current Alpha edition</dt><dd>v24</dd>" in page
+    assert "Alpha v25 checked-use theorem" in page
+    assert "<dt>Current Alpha edition</dt><dd>v25</dd>" in page
     assert "<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>" in page
     assert "<dt>Current release evidence</dt><dd>alpha_closed</dd>" in page
     assert "<dt>Checked theorem use</dt><dd>yes</dd>" in page
@@ -631,7 +631,7 @@ def test_interactive_surface_defaults_to_the_capstone_and_local_pinned_assets() 
     assert '<option value="focus" selected>Focused: path + selected node</option>' in graph
     assert "Proof arrows and notation arrows are different relations" in graph
     assert "pa-bertrand-defined-release-evidence" in graph
-    assert "Alpha v24 checked-use theorem; independently kernel and Lean verified; not Stable" in graph
+    assert "Alpha v25 checked-use theorem; independently kernel and Lean verified; not Stable" in graph
 
     for relative, digest in shared.PINNED_ASSETS.items():
         payload = (DEFINED / relative).read_bytes()
@@ -646,11 +646,11 @@ def test_every_defined_bertrand_node_connects_to_its_global_research_context(
     import build_pa_defined_explorer as shared
 
     current_catalog = (
-        REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
+        REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
     )
     revision = _digest(current_catalog.read_bytes())[:12]
-    assert revision == generator.CAMPAIGN_HTML_REVISION == "94ac4d193cbf"
-    assert shared.CAMPAIGN_HTML_REVISION == "94ac4d193cbf"
+    assert revision == generator.CAMPAIGN_HTML_REVISION == "75fa146ac19b"
+    assert shared.CAMPAIGN_HTML_REVISION == "75fa146ac19b"
     for relative in ("index.html", "graph.html"):
         page = (DEFINED / relative).read_text(encoding="utf-8")
         assert f'href="../../../grand-campaign/?v={revision}"' in page
