@@ -130,6 +130,54 @@ elif [ "$(sed -n '1p' "$manifest")" != "$(printf '%b' "$header")" ]; then
 fi
 [ -w "$manifest" ] || { printf 'submission manifest is not writable: %s\n' "$manifest" >&2; exit 1; }
 
+# Alpha GPU jobs must depend on their exact reviewed predecessor from the same
+# clean source, project, sync epoch, and immutable script—not an arbitrary
+# successful Slurm allocation owned by the same account.
+expected_predecessor="$(peano_helios_expected_predecessor "$job_script" || true)"
+if [ -n "$expected_predecessor" ]; then
+  if [ "$git_dirty" != false ]; then
+    printf '%s\n' 'Hydra GPU submission requires an explicitly clean source' >&2
+    exit 1
+  fi
+  if [ ! -f "$expected_predecessor" ] || [ -L "$expected_predecessor" ]; then
+    printf 'missing regular Hydra predecessor script: %s\n' "$expected_predecessor" >&2
+    exit 1
+  fi
+  if command -v sha256sum >/dev/null 2>&1; then
+    predecessor_hash="$(sha256sum "$expected_predecessor" | awk '{print $1}')"
+  else
+    predecessor_hash="$(shasum -a 256 "$expected_predecessor" | awk '{print $1}')"
+  fi
+  if ! predecessor_record="$(
+    awk -F '\t' -v wanted="$afterok" '
+      NR > 1 && $2 == wanted {
+        count += 1
+        row = $3 "\t" $5 "\t" $6 "\t" $7 "\t" $8 "\t" $9
+      }
+      END {
+        if (count != 1) exit 1
+        print row
+      }
+    ' "$manifest"
+  )"; then
+    printf 'Hydra predecessor has no unique submission record: %s\n' "$afterok" >&2
+    exit 1
+  fi
+  IFS=$'\t' read -r predecessor_script predecessor_workdir predecessor_commit \
+    predecessor_dirty predecessor_synced predecessor_recorded_hash predecessor_extra \
+    <<< "$predecessor_record"
+  if [ "$predecessor_script" != "$expected_predecessor" ] || \
+     [ "$predecessor_workdir" != "$repo_root" ] || \
+     [ "$predecessor_commit" != "$commit" ] || \
+     [ "$predecessor_dirty" != false ] || \
+     [ "$predecessor_synced" != "$sync_timestamp" ] || \
+     [ "$predecessor_recorded_hash" != "$predecessor_hash" ] || \
+     [ -n "${predecessor_extra:-}" ]; then
+    printf '%s\n' 'Hydra predecessor is not the exact same-source reviewed job' >&2
+    exit 1
+  fi
+fi
+
 sbatch_args=(--parsable)
 [ -z "$afterok" ] || sbatch_args+=("--dependency=afterok:$afterok")
 submission="$(sbatch "${sbatch_args[@]}" "$job_script")"

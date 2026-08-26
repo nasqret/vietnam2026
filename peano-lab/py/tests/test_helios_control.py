@@ -54,6 +54,11 @@ def test_cluster_identity_and_fixed_project_root() -> None:
 def test_sync_preserves_expensive_outputs() -> None:
     sync = _text(SCRIPTS / "helios_sync_project.sh")
     assert "--delete-delay" in sync
+    # A linked checkout stores .git as a file, not a directory.
+    assert "--exclude='/.git'" in sync
+    assert "--exclude='/.git/'" not in sync
+    assert "--exclude='__pycache__/'" in sync
+    assert "refusing to change source used by active Peano jobs" in sync
     assert "protect /checkpoints/***" in sync
     assert "protect /results/***" in sync
     assert "protect /logs/***" in sync

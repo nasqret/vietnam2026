@@ -12,6 +12,7 @@ env/
 # Peano policy runs keep manifests/reports selectively; never stage weights,
 # optimizer checkpoints, or scheduler streams by accident.
 results/peano-policy/
+results/peano-hydra/
 checkpoints/
 logs/*.out
 logs/*.err

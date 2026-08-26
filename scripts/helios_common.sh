@@ -31,8 +31,24 @@ peano_helios_requires_dependency() {
     slurm/peano_train_qwen3_1_7b.sbatch|\
     slurm/peano_eval_qwen3_1_7b.sbatch|\
     slurm/peano_train_qwen3_1_7b_v2.sbatch|\
-    slurm/peano_eval_qwen3_1_7b_v2.sbatch)
+    slurm/peano_eval_qwen3_1_7b_v2.sbatch|\
+    slurm/peano_hydra_alpha_train.sbatch|\
+    slurm/peano_hydra_alpha_evaluate.sbatch)
       return 0
+      ;;
+    *)
+      return 1
+      ;;
+  esac
+}
+
+peano_helios_expected_predecessor() {
+  case "$1" in
+    slurm/peano_hydra_alpha_train.sbatch)
+      printf '%s\n' slurm/peano_hydra_alpha_prepare.sbatch
+      ;;
+    slurm/peano_hydra_alpha_evaluate.sbatch)
+      printf '%s\n' slurm/peano_hydra_alpha_train.sbatch
       ;;
     *)
       return 1

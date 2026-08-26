@@ -323,6 +323,7 @@ The production-development entry points are:
 ```console
 make hydra-check
 make hydra-prepare
+make hydra-posttrain-ready
 ```
 
 The first command checks the shared execution and DAG contracts. The second
@@ -348,9 +349,31 @@ states, and an exact-command tie-breaker; it does not prove global
 proof-length optimality.
 Later Alpha releases still require their ordinary dependency-closed review.
 
-These bounded local artifacts are development evidence, not a sealed final
-benchmark or an H3-scale training corpus. They neither train Qwen by
-themselves nor claim that any model improves proof search.
+The broader bounded sampler has independently checked **192** proof routes,
+including **91 Alpha-only** routes, and emitted **1,798** verified tactic
+transitions. It inspects transitive prerequisites before replay so a compact
+tactic script cannot silently trigger an enormous historical campaign proof.
+
+The teacher-oracle discovery also illustrates why exact statement-string
+checks are insufficient: its canonical proposition is the historical
+`consecutive_product_even` held-out evaluation goal under another name. The
+Alpha post-training handoff therefore quarantines that **entire lineage**
+outside both training and validation, retains only sanitized exclusion
+metadata, and chooses a distinct clean theorem component for validation.
+The historical 247-theorem adapter and its authority are never reused as an
+Alpha-trained model.
+
+`make hydra-posttrain-ready` prepares this clean Alpha-authorized corpus,
+verifies the bounded Qwen training contract without allocating model weights,
+constructs an honest matched pretrained/trained evaluation plan, and runs a
+bounded model-free symbolic control. That control independently proves three
+of the four frozen historical goals without importing any theorem; the
+consecutive-product induction goal remains honestly `unknown`. Real training
+requires the separately requested `make hydra-posttrain-execute`, a
+prepared CUDA GPU, the pinned Qwen base revision, and explicit finite
+token/update limits. Unrun model lanes remain **unmeasured**; these bounded
+local artifacts are not a sealed final benchmark, an H3-scale corpus, or a
+claim that any model improves proof search.
 
 ## Build the strongest baseline first
 

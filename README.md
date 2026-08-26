@@ -301,14 +301,34 @@ preparation with:
 ```console
 make hydra-check
 make hydra-prepare
+make hydra-posttrain-ready
 ```
 
 The preparation workflow writes checked proof-state transitions,
 independently verified shorter-route preferences, unadmitted checked
 discovery receipts, and exact epoch/file identities into `_deploy/hydra/`.
-It never trains or deploys a model, promotes a theorem, asserts global tactic
-optimality or semantic novelty, or claims an LLM advantage. The active next
-track and honest experimental gates are in the
+The complete `hydra-posttrain-ready` workflow independently replays a bounded
+mixture of Stable and Alpha proofs, quarantines every historical held-out
+theorem and its complete lineage from **both** training and validation,
+prepares a fresh Alpha-authorized Qwen corpus, and verifies a matched
+pretrained/trained evaluation plan. A demonstrated safe run checks **192
+theorems**, including **91 Alpha-only results**, and produces **1,798
+independently checked tactic transitions**. Dependency-closure profiling
+prevents short-looking imports from loading large flagship proof bundles.
+Its separate bounded symbolic control independently proves **three of four**
+historical benchmark goals; the induction-heavy fourth remains honestly
+`unknown`, and no unrun model receives an invented score.
+
+Preparation never trains or deploys a model, promotes a theorem, asserts
+global tactic optimality or semantic novelty, or claims an LLM advantage.
+Actual bounded BF16 LoRA training is separate and explicit:
+
+```console
+make hydra-posttrain-execute  # one prepared CUDA GPU and pinned Qwen weights
+```
+
+The historical 247-theorem adapter remains untouched. The active next track
+and honest experimental gates are in the
 [single Hydra product roadmap](docs/HYDRA_PRODUCT_ROADMAP.md) and the
 [verified post-training guide](docs/HYDRA_POST_TRAINING.md).
 

@@ -12,6 +12,55 @@ and post-training readiness, see
   vendored under `lab-lambda/vendor/` (refresh them with `scripts/fetch_vendor.sh`), so it runs with
   no network access after the first load.
 
+## Verified Hydra model-development workflow
+
+Run the integrated product checks and prepare the complete bounded,
+Alpha-authorized post-training handoff from the repository root:
+
+```bash
+make hydra-check
+make hydra-posttrain-ready
+```
+
+The readiness command independently replays a deterministic mixture of Stable
+and Alpha proofs, freezes the distinct theorem and reviewed-definition DAGs,
+quarantines historical held-out theorem lineages from **both** training and
+validation, verifies an immutable pinned Qwen3-1.7B Base training contract,
+and generates a matched pretrained/trained evaluation plan. The default
+bounded sampling run checks **192 proof routes**, including **91 Alpha-only
+theorems**, and produces **1,798 verified tactic transitions** before
+held-out quarantine. No GPU, model weights, public service, or remote
+scheduler job is started by readiness checks.
+
+Individual operations remain explicit:
+
+```bash
+make hydra-scale
+make hydra-posttrain-prepare
+make hydra-posttrain-preflight
+make hydra-eval-plan
+make hydra-eval-control
+```
+
+The model-free control independently closes three of the four frozen
+historical goals. It performs no model inference, imports no theorem, and
+leaves the harder consecutive-product induction goal honestly `unknown`.
+
+Actual bounded BF16 LoRA training is deliberately separate and requires an
+existing prepared single-GPU CUDA environment with the exact pinned Qwen
+weights:
+
+```bash
+make hydra-posttrain-execute
+```
+
+The historical 247-theorem adapter is never silently widened or modified.
+Source synchronization and WMI job submission retain their existing clean
+commit, explicit-confirmation, scheduler, and provenance guards; no readiness
+command bypasses those controls. See
+[`HYDRA_POST_TRAINING.md`](HYDRA_POST_TRAINING.md) for authority identities,
+lineage quarantine, file formats, and still-open experimental claim gates.
+
 ## The knowledge book (JupyterBook 1.x)
 
 ```bash

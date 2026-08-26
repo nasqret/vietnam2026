@@ -125,12 +125,15 @@ The reproducible entry points are:
 ```console
 make hydra-check
 make hydra-prepare
+make hydra-scale
+make hydra-posttrain-ready
 python3 scripts/eval_peano_hydra.py --compact
 make lean-public-status
 ```
 
-`hydra-check` validates the shared Hydra contracts. `hydra-prepare` freezes
-the reviewed current epoch and produces the bounded, verifier-backed initial
+`hydra-check` validates the shared Hydra contracts. The original
+`make hydra-prepare` freezes the reviewed current epoch and produces the
+bounded, verifier-backed initial
 training/discovery evidence through
 [`scripts/prepare_peano_hydra.py`](../scripts/prepare_peano_hydra.py). Its
 local disposable output is:
@@ -159,7 +162,8 @@ python3 scripts/prepare_peano_hydra.py \
 route imports only its exact strict earlier checked prerequisites under the
 finite full-digest Alpha allowlist, replays its original source proof, and
 independently rechecks the newly produced original-goal proof. At most 128
-additional theorem routes are accepted, each subject to the reviewed
+additional theorem routes were accepted by the earlier prefix-only collector;
+the current reviewed limit is **512 additional theorem routes**, each subject to the
 32-decision ceiling. The default preparation currently produces **16 verified
 supervised transitions** and **one checked preference pair**; these are a
 working pilot, not a large-corpus claim.
@@ -169,6 +173,46 @@ above independently checks **33 catalog routes**, exports **279 verified
 supervised transitions**, and removes **2 identical transitions**. These are
 reproducible bounded preparation counts, not model-training or benchmark
 results.
+
+The new whole-catalog mode audits all **2,080** frozen Alpha-v25 theorems and
+records distinct eligibility stages instead of treating every short script as
+safe to import:
+
+- **978 decision-eligible routes:** **723 Alpha-only** and **255 Stable**
+  satisfy the complete 32-decision direct-import-plus-script bound.
+- **818 statement-safe routes:** **564 Alpha-only** and **254 Stable** also
+  fit the 4,096-byte theorem-statement limit.
+- **460 import-replay-safe routes:** **260 Alpha-only** and **200 Stable**
+  additionally have bounded, immutable **Stable-only prerequisite closures**.
+
+Automatic whole-catalog selection rejects an Alpha prerequisite before replay
+and bounds each Stable prerequisite closure to **256 tactic decisions** and
+**8,192 statement bytes**. The complete run reserves no more than **512
+routes**, **8,192 tactic decisions**, **512 KiB of retained evidence per
+route**, or **24 MiB of aggregate retained route evidence**. Failed attempts
+consume their reservation; a skipped route remains classified, not silently
+counted as proved. These are deliberate memory-safety boundaries, not claims
+that excluded Alpha theorems are unprovable.
+
+Reproduce the larger checked development run with:
+
+```console
+python3 scripts/prepare_peano_hydra.py \
+  --output-dir _deploy/hydra \
+  --include-graphs \
+  --catalog-all \
+  --catalog-limit 192 \
+  --catalog-max-decisions 16
+```
+
+This exact Alpha-v25 example independently checks **192 catalog routes**,
+including **91 Alpha-only routes**, exports **1,798 verified supervised
+transitions**, retains **one checked preference pair** and **one checked
+candidate receipt**, and removes **40 duplicate transitions**. The older
+**33-route / 279-transition / 2-duplicate** prefix result remains valid
+historical evidence; neither collection demonstrates model training or a
+measured language-model advantage. `make hydra-scale` selects this same
+192-route, 16-decision configuration by default.
 
 Recorded routes first match the entire exact proof state. Their narrowly
 scoped fallback alpha-normalizes only engine-generated `?tN` metavariables in
@@ -260,6 +304,67 @@ completions instead of merging them. Record the exact number removed as
 `duplicate_transitions_removed` in the manifest. Separate epochs, proof
 lineages, states, actions, or authorities never collapse into one example.
 
+Before any model sees a prompt, the Alpha-specific handoff additionally
+canonicalizes all four historical model-v3 held-out formulas and quarantines
+their **entire proof lineage from both training and development**. In
+particular, `triangular_product_even_hydra_candidate` is exactly the
+alpha-renamed held-out `consecutive_product_even`; a different theorem name
+or source spelling does not make it eligible. The quarantine receipt records
+only theorem names, lineage and statement digests, row counts, and exclusion
+reasons; it never contains a proof, tactic, prompt, completion, or model
+input. Preferences and discovery receipts also remain provenance, not model
+inputs. For the historical **279-transition** source, this produces **261
+training rows**, **5 development rows**, and **13 quarantined rows**.
+For the actual complete **1,798-transition** whole-catalog run, the checked
+handoff produces **1,773 clean training rows**, **12 clean development
+rows**, and **13 quarantined rows**. Its model-free preflight derives exactly
+**222 bounded optimizer steps** without loading model weights or starting
+CUDA.
+
+Prepare and inspect the separate Alpha-compatible Qwen handoff locally:
+
+```console
+make hydra-scale
+make hydra-posttrain-prepare
+make hydra-posttrain-preflight
+make hydra-eval-plan
+make hydra-eval-control
+```
+
+`make hydra-posttrain-ready` performs the same ordered scale, handoff,
+preflight, and matched-evaluation planning stages, then runs
+`--check --symbolic-controls` without starting a model. The genuine fixed
+symbolic control independently proves **3 of 4 historical goals** with
+**98**, **29**, and **10 proof nodes**, respectively; the induction-dependent
+`consecutive_product_even` remains **unknown**. Every control uses **zero
+theorem imports** and **zero model calls**. These controls demonstrate
+checked model-free plumbing, never pretrained or post-trained model scores.
+A default 16-transition
+teacher pilot has no second clean lineage after held-out quarantine and is
+correctly rejected rather than fabricating a development split. The model
+runner consumes only `train.jsonl` and `dev.jsonl`; it updates weights only
+through the separately requested `--execute` mode on a verified CUDA host.
+A matched pretrained-versus-Alpha-trained evaluation must bind the same model
+family and revision, frozen epoch, theorem/tactic authority, held-out goals,
+provider evidence, and search budgets. Missing adapter or provider evidence
+means **planned/not-run**, never fabricated model scores.
+
+An explicitly authorized Helios execution, if independently requested later,
+is split into three separately guarded Slurm jobs:
+
+- `slurm/peano_hydra_alpha_prepare.sbatch`: one **30-minute CPU** preparation
+  and evidence-validation job.
+- `slurm/peano_hydra_alpha_train.sbatch`: one **2-hour GH200** training job;
+  it requires `--afterok` on the exact clean-source preparation predecessor.
+- `slurm/peano_hydra_alpha_evaluate.sbatch`: one **1-hour GH200** matched
+  evaluation job; it requires `--afterok` on the exact clean-source training
+  predecessor.
+
+Each job refuses a dirty or uncommitted source and requires the pinned
+offline model cache. Submission itself requires a separate explicit
+`--submit --confirm` operation; no local readiness target submits a job,
+allocates a GPU, or claims that training has occurred.
+
 The initial replay-verified preparation run is intentionally small. It does
 not satisfy the H3 requirement of 100,000 positive transitions from 20,000
 checked proof roots, does not seal an H1 benchmark, and does not establish
@@ -276,15 +381,19 @@ epoch-compatible policy against its identical pretrained baseline.**
 
 Execute this milestone in order:
 
-1. Run `make hydra-check` and freeze the exact theorem/definition epoch with
-   `make hydra-prepare`.
-2. Expand only complete, independently replayed proof traces and same-goal
-   optimization pairs; record genuine novel candidates separately.
-3. Split by lineage and proof dependency before creating training/DEV rows;
-   measure coverage and reject leakage or over-length examples.
-4. Train an explicitly Alpha-v25-compatible supervised policy, optionally add
-   verifier-backed preference optimization, and compare it with the identical
-   pretrained model at fixed resource budgets.
+1. Run `make hydra-check`, then `make hydra-scale` to freeze the exact
+   theorem/definition epoch and expand only bounded independently replayed
+   proof traces across both Stable and Alpha membership.
+2. Run `make hydra-posttrain-prepare`; quarantine complete held-out lineages
+   before creating separate training and development rows, and reject
+   contamination, unsafe prerequisites, or an empty clean split.
+3. Run `make hydra-posttrain-preflight` and `make hydra-eval-plan`; verify the
+   Alpha-compatible model family, exact source lineage, provider requirements,
+   identical goal/authority/budget plan, and every still-open research gate.
+4. Only when an authorized CUDA host and reviewed pinned model are available,
+   explicitly execute Alpha-v25-compatible supervised training; compare any
+   resulting attested adapter with the identical pretrained baseline without
+   interpreting symbolic controls as model evidence.
 5. Admit newly discovered theorems only through the normal reviewed immutable
    Alpha-release procedure; regenerate every browser/Lean projection from the
    same newly sealed theorem and definition DAGs.

@@ -23,6 +23,12 @@ sync_timestamp="$(date -u '+%Y-%m-%dT%H:%M:%SZ')"
 remote_output="$(ssh -o BatchMode=yes -o ConnectTimeout=15 "$ssh_target" 'bash -l -s' <<'REMOTE'
 set -euo pipefail
 project_root="${SCRATCH:?SCRATCH is not defined}/codex-control/projects/peano-lab-training"
+active_project_jobs="$(squeue -h -u "$USER" -o '%i|%Z' | awk -F '|' -v root="$project_root" \
+  '$2 == root || index($2, root "/") == 1 { print $1 }')"
+if [ -n "$active_project_jobs" ]; then
+  printf 'refusing to change source used by active Peano jobs: %s\n' "$active_project_jobs" >&2
+  exit 1
+fi
 mkdir -p -- "$project_root"/{logs,results,tmp,data,checkpoints}
 printf '%s\n' "$project_root"
 REMOTE
@@ -42,13 +48,25 @@ if [[ "$remote_path" == *[[:space:]]* || "$remote_path" == *".."* ]]; then
 fi
 
 rsync -az --delete-delay \
-  --exclude='/.git/' \
+  --exclude='/.git' \
+  --exclude='/.claude-octopus/' \
+  --exclude='/.claude/' \
+  --exclude='/.codex/' \
+  --exclude='/.agents/' \
+  --exclude='__pycache__/' \
+  --exclude='.pytest_cache/' \
+  --exclude='*.pyc' \
+  --exclude='*.pyo' \
+  --exclude='*.swp' \
   --exclude='/.venv/' \
   --filter='protect /.venv-helios/***' \
   --exclude='/.venv-helios/***' \
   --filter='protect /.cache/huggingface/***' \
   --exclude='/.cache/huggingface/***' \
   --exclude='/node_modules/' \
+  --exclude='/lab-lambda/vendor/' \
+  --exclude='/peano-lab/vendor/' \
+  --exclude='/artifacts/lean/**/.lake/' \
   --exclude='/book/_build/' \
   --exclude='/_deploy/' \
   --exclude='/.DS_Store' \

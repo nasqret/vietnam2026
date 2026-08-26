@@ -14,6 +14,8 @@ artifacts from the repository root:
 ```console
 make hydra-check
 make hydra-prepare
+make hydra-scale
+make hydra-posttrain-ready
 ```
 
 `training.peano_hydra.epoch.freeze_epoch()` selects the current Alpha release
@@ -49,6 +51,78 @@ Use `python3 scripts/prepare_peano_hydra.py --catalog-limit 32` to extend the
 same verified curriculum with bounded, independently replayed checked-catalog
 proofs, or repeat `--catalog-theorem NAME` for explicit Stable/Alpha targets.
 Each target receives only its strict earlier direct proof prerequisites.
+
+Use `--catalog-all` to census the entire immutable Alpha-v25 DAG and sample
+both checked Stable and Alpha-only routes without losing memory bounds:
+
+```console
+python3 scripts/prepare_peano_hydra.py \
+  --output-dir _deploy/hydra \
+  --include-graphs \
+  --catalog-all \
+  --catalog-limit 192 \
+  --catalog-max-decisions 16
+```
+
+The full catalog contains **978 decision-eligible routes** (**723 Alpha-only**
+and **255 Stable**), **818 statement-safe routes** (**564 Alpha-only** and
+**254 Stable**), and **460 replay-safe routes** (**260 Alpha-only** and
+**200 Stable**). Whole-catalog selection accepts at most **512 routes** and
+only bounded **Stable-only prerequisite closures**; its other explicit limits
+are **32 decisions per route**, **256 prerequisite tactic decisions**, **4,096
+statement bytes**, **8,192 prerequisite statement bytes**, **8,192 whole-run
+tactic decisions**, **512 KiB evidence per route**, and **24 MiB total retained
+evidence**. The displayed command actually checks **192 routes**, including
+**91 Alpha-only routes**, and yields **1,798 supervised transitions** with
+**40 duplicates removed**. The earlier 33-route example remains **279
+verified transitions** with **2 duplicates removed**.
+
+The next handoff is separate from proof-curriculum generation:
+
+```console
+make hydra-posttrain-prepare
+make hydra-posttrain-preflight
+make hydra-eval-plan
+make hydra-eval-control
+```
+
+`make hydra-posttrain-ready` first generates the scaled source and then runs
+the preparation, preflight, and `--check --symbolic-controls` stages; it
+never starts CUDA or submits a job. The runner reads only
+`_deploy/hydra-posttrain/train.jsonl`
+and `_deploy/hydra-posttrain/dev.jsonl`. It canonicalizes all four historical
+held-out goals and quarantines a matching **entire lineage from both training
+and development**. In particular,
+`triangular_product_even_hydra_candidate` is the same formula as the held-out
+`consecutive_product_even`: its 13 rows cannot enter either model-facing
+split. The verified full-scale source yields **1,773 clean training rows**,
+**12 clean development rows**, and **13 quarantined rows** from its **1,798
+total rows**; preflight derives **222 bounded optimizer steps** without
+initializing CUDA. The older 279-row source therefore yields **261 training**, **5
+development**, and **13 quarantined rows**. The isolated quarantine receipt
+has no proof statement, prompt, completion, tactic, or trace. The default
+16-row pilot correctly fails because only one clean lineage remains.
+
+`--preflight` and evaluation `--check` do not train a model or invent a
+pretrained-versus-trained result. Actual CUDA training requires the separately
+requested `make hydra-posttrain-execute`, which sets `PYTHONHASHSEED=20260826`
+before starting the interpreter and invokes the runner's explicit `--execute`
+mode. Missing adapter/provider evidence
+leaves the matched evaluation **planned/not-run**; H0 and H1 remain open.
+
+The actual `make hydra-eval-control` result is **3 of 4 checked goals**:
+the first three require **98**, **29**, and **10 proof nodes**; the fourth,
+induction-dependent goal remains **unknown**. All lanes use **zero theorem
+imports** and **zero model calls**, so none is language-model evidence.
+
+Optional Helios execution is separated into
+`slurm/peano_hydra_alpha_prepare.sbatch` (**30-minute CPU**),
+`slurm/peano_hydra_alpha_train.sbatch` (**2-hour GH200**), and
+`slurm/peano_hydra_alpha_evaluate.sbatch` (**1-hour GH200**). Training and
+evaluation demand the exact clean-source `--afterok` predecessor; every stage
+requires a clean committed source and pinned offline model cache. Real
+submission needs a separately authorized `--submit --confirm` operation.
+No local preparation or readiness command submits these jobs automatically.
 
 These reproducible development artifacts do not train a model, admit a
 theorem, assert semantic novelty or globally minimal proofs, or establish an

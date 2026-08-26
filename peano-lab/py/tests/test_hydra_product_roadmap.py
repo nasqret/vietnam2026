@@ -536,11 +536,242 @@ def test_catalog_scaleout_preserves_explicit_checked_authority_and_bounds(
         for flag in ("--catalog-limit", "--catalog-theorem"):
             assert flag in guide
             assert flag in implementation
-    assert "128\nadditional theorem routes" in roadmap
+    assert "**512 additional theorem routes**" in roadmap
     assert "32-decision ceiling" in roadmap
     assert "freshly" in roadmap or "independently rechecks" in roadmap
     assert "a\nworking pilot, not a large-corpus claim" in roadmap
     assert '"duplicate_transitions_removed": curriculum.duplicate_transitions_removed' in implementation
+
+
+def test_whole_catalog_guides_report_real_census_and_fail_closed_memory_bounds(
+    documentation: dict[str, str],
+) -> None:
+    source_path = ROOT / "scripts" / "prepare_peano_hydra.py"
+    source = source_path.read_text(encoding="utf-8")
+    constants = {
+        target.id: statement.value.value
+        for statement in ast.parse(source).body
+        if isinstance(statement, ast.Assign)
+        and isinstance(statement.value, ast.Constant)
+        and type(statement.value.value) is int
+        for target in statement.targets
+        if isinstance(target, ast.Name)
+    }
+
+    assert constants["MAX_ADDITIONAL_CATALOG_THEOREMS"] == 512
+    assert constants["MAX_CATALOG_ROUTE_DECISIONS"] == 32
+    assert constants["MAX_CATALOG_TOTAL_TACTICS"] == 8_192
+    assert constants["MAX_CATALOG_STATEMENT_BYTES"] == 4_096
+    assert constants["MAX_CATALOG_DEPENDENCY_CLOSURE_TACTICS"] == 256
+    assert constants["MAX_CATALOG_DEPENDENCY_CLOSURE_STATEMENT_BYTES"] == 8_192
+    assert '"automatic_prerequisite_membership": "stable_only"' in source
+
+    guides = (
+        documentation["roadmap"],
+        (ROOT / "docs" / "HYDRA_POST_TRAINING.md").read_text(encoding="utf-8"),
+        (ROOT / "training" / "peano_hydra" / "README.md").read_text(
+            encoding="utf-8"
+        ),
+    )
+    for guide in guides:
+        compact = " ".join(guide.split())
+        for value in (
+            "978",
+            "723 Alpha-only",
+            "255 Stable",
+            "818",
+            "564 Alpha-only",
+            "254 Stable",
+            "460",
+            "260 Alpha-only",
+            "200 Stable",
+        ):
+            assert value in compact
+        for value in (
+            "512",
+            "256",
+            "4,096",
+            "8,192",
+            "512 KiB",
+            "24 MiB",
+            "Stable-only",
+            "--catalog-all",
+            "--catalog-limit 192",
+            "--catalog-max-decisions 16",
+            "192",
+            "91 Alpha-only",
+            "1,798",
+            "40",
+        ):
+            assert value in compact
+        assert "279" in compact and "33" in compact
+
+
+def test_alpha_handoff_quarantines_canonical_heldouts_from_train_and_development(
+    documentation: dict[str, str],
+) -> None:
+    guides = (
+        documentation["roadmap"],
+        (ROOT / "docs" / "HYDRA_POST_TRAINING.md").read_text(encoding="utf-8"),
+        (ROOT / "training" / "peano_hydra" / "README.md").read_text(
+            encoding="utf-8"
+        ),
+    )
+    for guide in guides:
+        compact = " ".join(guide.split())
+        assert "triangular_product_even_hydra_candidate" in compact
+        assert "consecutive_product_even" in compact
+        assert "both training and development" in compact
+        assert "261" in compact
+        assert "5" in compact
+        assert "1,773" in compact
+        assert "12 clean development" in compact
+        assert "222 bounded optimizer steps" in compact
+        assert "13 quarantined" in compact
+        assert "train.jsonl" in compact and "dev.jsonl" in compact
+        assert "prompt" in compact
+        assert "planned/not-run" in compact
+        assert "--execute" in compact
+
+    operations = guides[1]
+    for goal in (
+        "closed_arithmetic_seven",
+        "existential_subtraction_two",
+        "double_right_zero",
+        "consecutive_product_even",
+    ):
+        assert goal in operations
+    assert "`quarantine.jsonl`" in operations
+    assert "no proof\nstatement, tactic, trace, prompt, or completion" in operations
+    assert "16-transition default pilot" in operations
+    assert "research_claim_eligible: false" in operations
+    assert "sealed_benchmark: false" in operations
+
+
+def test_symbolic_evaluation_is_real_but_never_a_language_model_result(
+    documentation: dict[str, str],
+) -> None:
+    guides = (
+        documentation["roadmap"],
+        (ROOT / "docs" / "HYDRA_POST_TRAINING.md").read_text(encoding="utf-8"),
+        (ROOT / "training" / "peano_hydra" / "README.md").read_text(
+            encoding="utf-8"
+        ),
+    )
+    for guide in guides:
+        compact = " ".join(guide.split())
+        assert "make hydra-eval-control" in compact
+        assert "--check --symbolic-controls" in compact
+        assert "3 of 4" in compact
+        for value in ("98", "29", "10"):
+            assert value in compact
+        assert "unknown" in compact
+        assert "zero theorem imports" in compact
+        assert "zero model calls" in compact
+
+
+def test_alpha_training_make_targets_keep_gpu_execution_explicit_and_separate() -> None:
+    makefile = (ROOT / "Makefile").read_text(encoding="utf-8")
+    targets = (
+        "hydra-scale",
+        "hydra-posttrain-prepare",
+        "hydra-posttrain-preflight",
+        "hydra-eval-plan",
+        "hydra-eval-control",
+        "hydra-posttrain-ready",
+        "hydra-posttrain-execute",
+    )
+
+    def stanza(name: str) -> tuple[str, str]:
+        target = re.search(
+            rf"^{re.escape(name)}:(?P<dependencies>[^\n]*)$",
+            makefile,
+            flags=re.MULTILINE,
+        )
+        assert target is not None, name
+        remainder = makefile[target.end() :]
+        next_target = re.search(r"^[A-Za-z][A-Za-z0-9_-]*:", remainder, re.MULTILINE)
+        body = remainder if next_target is None else remainder[: next_target.start()]
+        return target.group("dependencies"), body
+
+    for target in targets:
+        assert re.search(
+            rf'^\s*@echo "\s+make {re.escape(target)}\b',
+            makefile,
+            flags=re.MULTILINE,
+        ), target
+        stanza(target)
+
+    dependencies, ready = stanza("hydra-posttrain-ready")
+    assert "hydra-scale" in dependencies.split()
+    assert "prepare_peano_hydra_posttrain.py" in ready
+    assert "training.peano_hydra.posttrain" in ready
+    assert "--preflight" in ready
+    assert "eval_peano_hydra_posttrain.py" in ready
+    assert "--check" in ready
+    assert "--symbolic-controls" in ready
+
+    _, control = stanza("hydra-eval-control")
+    assert "--check --symbolic-controls" in control
+
+    for target in targets[:-1]:
+        _, body = stanza(target)
+        assert "--execute" not in body, target
+        assert "hydra-posttrain-execute" not in body, target
+        for unsafe in ("ssh ", "rsync ", "git push", "deploy-proofs"):
+            assert unsafe not in body, (target, unsafe)
+
+    _, execute = stanza("hydra-posttrain-execute")
+    assert "--execute" in execute
+    assert "--preparation-dir" in execute
+
+
+def test_optional_helios_training_chain_is_clean_offline_and_dependency_guarded(
+    documentation: dict[str, str],
+) -> None:
+    prepare_path = ROOT / "slurm" / "peano_hydra_alpha_prepare.sbatch"
+    train_path = ROOT / "slurm" / "peano_hydra_alpha_train.sbatch"
+    evaluate_path = ROOT / "slurm" / "peano_hydra_alpha_evaluate.sbatch"
+    prepare = prepare_path.read_text(encoding="utf-8")
+    train = train_path.read_text(encoding="utf-8")
+    evaluate = evaluate_path.read_text(encoding="utf-8")
+    common = (ROOT / "scripts" / "helios_common.sh").read_text(encoding="utf-8")
+    submit = (ROOT / "scripts" / "helios_submit_job.sh").read_text(encoding="utf-8")
+
+    assert "#SBATCH --account=plgccaiautore2026-cpu" in prepare
+    assert "#SBATCH --time=00:30:00" in prepare
+    assert "--execute" not in prepare
+    for source in (train, evaluate):
+        assert "#SBATCH --account=plgccaiautore2026-gpu-gh200" in source
+        assert "#SBATCH --gres=gpu:1" in source
+    assert "#SBATCH --time=02:00:00" in train
+    assert "#SBATCH --time=01:00:00" in evaluate
+    assert "--execute --preparation-dir" in train
+    assert "--execute-models --trained-adapter" in evaluate
+    for source in (prepare, train, evaluate):
+        assert "requires an explicitly clean committed source" in source
+        assert "HF_HUB_OFFLINE=1" in source
+        assert "TRANSFORMERS_OFFLINE=1" in source
+
+    assert "peano_helios_expected_predecessor" in common
+    assert "slurm/peano_hydra_alpha_prepare.sbatch" in common
+    assert "slurm/peano_hydra_alpha_train.sbatch" in common
+    assert "slurm/peano_hydra_alpha_evaluate.sbatch" in common
+    assert "training and evaluation submissions require --afterok JOB_ID" in submit
+    assert "--submit --confirm" in submit
+
+    for guide in (
+        documentation["roadmap"],
+        (ROOT / "docs" / "HYDRA_POST_TRAINING.md").read_text(encoding="utf-8"),
+        (ROOT / "training" / "peano_hydra" / "README.md").read_text(
+            encoding="utf-8"
+        ),
+    ):
+        compact = " ".join(guide.split())
+        for path in (prepare_path, train_path, evaluate_path):
+            assert path.relative_to(ROOT).as_posix() in compact
+        assert "--afterok" in compact
+        assert "--submit" in compact and "--confirm" in compact
 
 
 def test_recorded_routes_normalize_only_engine_metavariables_after_exact_match(

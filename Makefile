@@ -17,6 +17,8 @@ PEANO_CORPUS_PYTHON ?= python3
 PEANO_POLICY_DIR ?= data/peano-policy-v2
 PEANO_POLICY_PILOT_DIR ?= data/peano-policy-pilot-v1
 PEANO_POLICY_ROWS ?= 10000
+HYDRA_CATALOG_LIMIT ?= 192
+HYDRA_CATALOG_MAX_DECISIONS ?= 16
 PEANO_TRAIN_JOB ?= 217859
 PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 PEANO_LEAN_BROWSER_HOST ?= 127.0.0.1
@@ -174,6 +176,13 @@ help:
 	@echo "  make peano-policy-data   compatibility alias for peano-policy-v2-data"
 	@echo "  make hydra-check  verify the canonical DAGs, Hydra product contracts, and checked development pipeline"
 	@echo "  make hydra-prepare  export deterministic verified proof-optimization/discovery post-training artifacts"
+	@echo "  make hydra-scale  replay a bounded, mixed Stable/Alpha theorem curriculum"
+	@echo "  make hydra-posttrain-prepare  build heldout-clean Alpha model training/validation artifacts"
+	@echo "  make hydra-posttrain-preflight  verify the Alpha-authorized Qwen training contract without loading a model"
+	@echo "  make hydra-eval-plan  verify a matched pretrained/trained evaluation without fabricating model results"
+	@echo "  make hydra-eval-control  independently run the bounded model-free symbolic benchmark control"
+	@echo "  make hydra-posttrain-ready  build and verify the complete bounded Alpha model-development pipeline"
+	@echo "  make hydra-posttrain-execute  explicitly run bounded Alpha LoRA training on one prepared CUDA GPU"
 	@echo "  make peano-eval   run the deterministic kernel-judged random baseline"
 	@echo "  make stage        assemble _deploy/vietnam2026 (landing + book + slides)"
 	@echo "  make deploy-site  rsync the site to $(SITE)"
@@ -1158,7 +1167,9 @@ peano-policy-v2-data:
 peano-eval:
 	$(PEANO_CORPUS_PYTHON) scripts/eval_peano_policy.py --k 8 --max-steps 16 --seed 20260727
 
-.PHONY: hydra-check hydra-prepare
+.PHONY: hydra-check hydra-prepare hydra-scale hydra-posttrain-prepare \
+	hydra-posttrain-preflight hydra-eval-plan hydra-eval-control hydra-posttrain-ready \
+	hydra-posttrain-execute
 
 # A future source file or unfinished Alpha campaign never expands Hydra
 # authority: both the synchronized product DAG gate and epoch freeze bind the
@@ -1184,12 +1195,54 @@ hydra-check:
 		tests/test_peano_hydra_scheduler.py \
 		tests/test_peano_hydra_pilot.py \
 		tests/test_peano_hydra_epoch.py \
-		tests/test_peano_hydra_development.py
+		tests/test_peano_hydra_development.py \
+		tests/test_peano_hydra_posttrain.py \
+		tests/test_peano_hydra_evaluation.py \
+		tests/test_peano_hydra_cluster.py \
+		tests/test_helios_control.py
 	PYTHONMALLOC=malloc python3 scripts/prepare_peano_hydra.py --check
 
 hydra-prepare:
 	PYTHONMALLOC=malloc python3 scripts/prepare_peano_hydra.py \
 		--output-dir "_deploy/hydra" --include-graphs
+
+hydra-scale:
+	PYTHONMALLOC=malloc python3 scripts/prepare_peano_hydra.py \
+		--output-dir "_deploy/hydra" --include-graphs \
+		--catalog-all --catalog-limit "$(HYDRA_CATALOG_LIMIT)" \
+		--catalog-max-decisions "$(HYDRA_CATALOG_MAX_DECISIONS)"
+
+hydra-posttrain-prepare:
+	PYTHONMALLOC=malloc python3 scripts/prepare_peano_hydra_posttrain.py \
+		--source-dir "_deploy/hydra" --output-dir "_deploy/hydra-posttrain"
+
+hydra-posttrain-preflight:
+	PYTHONMALLOC=malloc python3 -m training.peano_hydra.posttrain \
+		--preflight --preparation-dir "_deploy/hydra-posttrain"
+
+hydra-eval-plan:
+	PYTHONMALLOC=malloc python3 scripts/eval_peano_hydra_posttrain.py \
+		--preparation-dir "_deploy/hydra-posttrain" --check
+
+hydra-eval-control:
+	PYTHONMALLOC=malloc python3 scripts/eval_peano_hydra_posttrain.py \
+		--preparation-dir "_deploy/hydra-posttrain" --check --symbolic-controls
+
+hydra-posttrain-ready: hydra-scale
+	PYTHONMALLOC=malloc python3 scripts/prepare_peano_hydra_posttrain.py \
+		--source-dir "_deploy/hydra" --output-dir "_deploy/hydra-posttrain"
+	PYTHONMALLOC=malloc python3 -m training.peano_hydra.posttrain \
+		--preflight --preparation-dir "_deploy/hydra-posttrain"
+	PYTHONMALLOC=malloc python3 scripts/eval_peano_hydra_posttrain.py \
+		--preparation-dir "_deploy/hydra-posttrain" --check --symbolic-controls
+
+# Training is deliberately separate from all preparation and check targets.
+# The runner refuses execution without the verified Alpha handoff, one CUDA
+# GPU, pinned Qwen weights, and explicitly bounded rows/tokens/update steps.
+hydra-posttrain-execute:
+	PYTHONHASHSEED=20260826 PYTHONMALLOC=malloc python3 \
+		-m training.peano_hydra.posttrain \
+		--execute --preparation-dir "_deploy/hydra-posttrain"
 
 stage: book
 	rm -rf $(STAGE) && mkdir -p $(STAGE)

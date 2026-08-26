@@ -13,6 +13,8 @@ Run the complete local development workflow from the repository root:
 ```console
 make hydra-check
 make hydra-prepare
+make hydra-scale
+make hydra-posttrain-ready
 ```
 
 The preparation command writes its deterministic, development-only epoch,
@@ -53,13 +55,45 @@ python3 scripts/prepare_peano_hydra.py \
   --catalog-theorem crt_product_witness
 ```
 
-`--catalog-limit` independently replays up to 128 bounded authored proofs
+`--catalog-limit` independently replays up to **512** bounded authored proofs
 from the current checked theorem DAG. Repeat `--catalog-theorem NAME` to
 select particular checked Stable or Alpha results. Every selected theorem
 receives exactly its strict earlier direct prerequisites, a fresh bounded
 Hydra policy, a newly checked source replay, and a second original-goal kernel
 replay. Routes above the current 32-decision search ceiling fail explicitly;
 the command never silently truncates a proof or widens theorem authority.
+
+For wider coverage, scan the entire frozen catalog while explicitly bounding
+the number and size of routes:
+
+```console
+python3 scripts/prepare_peano_hydra.py \
+  --output-dir _deploy/hydra \
+  --include-graphs \
+  --catalog-all \
+  --catalog-limit 192 \
+  --catalog-max-decisions 16
+```
+
+The complete Alpha-v25 census distinguishes **978 decision-eligible routes**
+(**723 Alpha-only**, **255 Stable**), **818 statement-safe routes**
+(**564 Alpha-only**, **254 Stable**), and **460 import-replay-safe routes**
+(**260 Alpha-only**, **200 Stable**). Short tactic scripts alone are not
+sufficient: automatic selection permits only memory-safe **Stable-only
+prerequisite closures** of at most **256 tactic decisions** and **8,192
+statement bytes**. It rejects expensive or Alpha-only prerequisites before
+replay, bounds theorem statements to **4,096 bytes**, and enforces a
+whole-run maximum of **512 routes**, **8,192 tactic decisions**, **512 KiB
+retained evidence per route**, and **24 MiB aggregate retained evidence**.
+Every excluded theorem receives an explicit reason; exclusion is not a
+negative mathematical result.
+
+The displayed 192-route, 16-decision command independently checks **192
+catalog routes**, including **91 Alpha-only routes**, emits **1,798 verified
+supervised transitions**, retains **one preference pair** and **one discovery
+receipt**, and removes **40 duplicate transitions**. `make hydra-scale` uses
+these same bounded defaults. These are verified corpus measurements, not a
+claim that a language model has been trained or has solved these theorems.
 
 The recorded-script policy first looks up the complete exact proof state. If
 that state differs only because the engine compacted its internal `?tN`
@@ -91,6 +125,143 @@ catalog routes**, emits **279 verified supervised transitions**, and reports
 **2 duplicate transitions removed**. The built-in default remains a
 **16-transition**, one-preference development pilot; neither run trains a
 model, admits a theorem, or establishes a research claim.
+
+## Quarantine frozen benchmark lineages before any model exposure
+
+The historical model-v3 held-out contract remains binding even though the new
+training surface is Alpha v25. Its four canonical goals are:
+
+```text
+closed_arithmetic_seven
+existential_subtraction_two
+double_right_zero
+consecutive_product_even
+```
+
+The checked teacher example `triangular_product_even_hydra_candidate` is the
+same canonical formula as `consecutive_product_even`; changing bound-variable
+names or relabeling it as a discovery cannot turn it into training data.
+The post-training handoff therefore matches theorem names **and canonical
+first-order formulas**, then quarantines every matching proof lineage from
+**both training and development**. Training-time evaluation, checkpoint
+selection, and model-facing validation cannot see a held-out proof either.
+
+The current full-scale **1,798-transition** source yields exactly **1,773
+clean training rows**, **12 clean development rows**, and **13 quarantined
+rows**. Its independent preflight derives **222 bounded optimizer steps**;
+this is a checked potential schedule, not executed optimization. The
+reproducible older **279-transition** source yields exactly **261 training
+rows**, **5 development rows**, and **13 quarantined rows**. A
+16-transition default pilot has only one clean remaining lineage and fails
+closed because it cannot supply an independent clean development split.
+
+The handoff's `quarantine.jsonl` contains only a theorem name, lineage digest,
+statement digest, excluded-row count, and reason. It contains **no proof
+statement, tactic, trace, prompt, or completion**. `preferences.jsonl` and
+`discovery.jsonl` remain separately identified provenance; the supervised
+training runner reads **only** `train.jsonl` and `dev.jsonl`.
+
+## Prepare an Alpha-specific model handoff without starting training
+
+After scaling the verified source, produce a separate bounded handoff:
+
+```console
+python3 scripts/prepare_peano_hydra_posttrain.py \
+  --source-dir _deploy/hydra \
+  --output-dir _deploy/hydra-posttrain
+
+python3 -m training.peano_hydra.posttrain \
+  --preflight \
+  --preparation-dir _deploy/hydra-posttrain
+
+python3 scripts/eval_peano_hydra_posttrain.py \
+  --preparation-dir _deploy/hydra-posttrain \
+  --check
+
+python3 scripts/eval_peano_hydra_posttrain.py \
+  --preparation-dir _deploy/hydra-posttrain \
+  --check --symbolic-controls
+```
+
+The equivalent individual targets are `make hydra-posttrain-prepare`,
+`make hydra-posttrain-preflight`, `make hydra-eval-plan`, and
+`make hydra-eval-control`;
+`make hydra-posttrain-ready` first scales the source and then performs all
+three preparation checks followed by the model-free symbolic control in the
+required order. Adding `--check` to the preparation script verifies its
+evidence without publishing a handoff.
+
+The independently replayed fixed symbolic control currently proves **3 of 4
+held-out goals**: `closed_arithmetic_seven` uses **98 proof nodes**,
+`existential_subtraction_two` uses **29 proof nodes**, and
+`double_right_zero` uses **10 proof nodes**. The induction-dependent
+`consecutive_product_even` remains **unknown**, not disproved. All four runs
+have **zero theorem imports** and **zero model calls**. They are never
+reported as pretrained or Alpha-trained inference results.
+
+The post-training manifest binds the exact Alpha epoch and edition, both
+mathematical DAG hashes, source file hashes, canonical benchmark contract,
+separate clean lineage splits, and the pinned
+`Qwen/Qwen3-1.7B-Base` model revision. Its preparation status remains
+`model_trained: false`, `research_claim_eligible: false`,
+`sealed_benchmark: false`, and `alpha_admitted: false`. Neither preflight nor
+the evaluation plan loads model weights, schedules a remote job, trains a
+model, admits a theorem, or deploys a website.
+
+Actual GPU training is a separately authorized operation:
+
+```console
+PYTHONHASHSEED=20260826 python3 -m training.peano_hydra.posttrain \
+  --execute \
+  --preparation-dir _deploy/hydra-posttrain
+```
+
+The hash seed must be set before the Python interpreter starts; the Makefile
+and scheduled job entry points set it automatically. The executor must reject
+a missing CUDA device, unavailable pinned weights,
+changed source bytes, held-out leakage, incompatible epoch, unbounded
+examples, or an existing result it cannot safely authenticate. It never
+retrofits the historical 247-theorem adapter with undeclared Alpha authority.
+
+A fair eventual evaluation compares the exact pretrained base with the new
+Alpha-trained adapter under identical theorem statements, frozen Alpha
+authority, allowed tactics/theorems, generation settings, search budgets, and
+authenticated provider evidence. Without the trained adapter and actual
+provider/model-call receipts the report is **planned/not-run**; deterministic
+symbolic controls prove the plumbing only and never become model scores.
+
+## Optional guarded Helios execution requires explicit authorization
+
+The prepared cluster chain has three separate, resource-bounded jobs:
+
+```text
+slurm/peano_hydra_alpha_prepare.sbatch    CPU, 30 minutes
+slurm/peano_hydra_alpha_train.sbatch      one GH200, 2 hours
+slurm/peano_hydra_alpha_evaluate.sbatch   one GH200, 1 hour
+```
+
+The CPU job uses native `Python/3.11.5` on the x86-64 CPU partition and creates
+and rechecks the isolated Alpha source/handoff before any GPU allocation. It
+does not use the ARM-only `.venv-helios` environment reserved for GH200 jobs.
+The training job can be submitted only with `--afterok` on
+that exact successful preparation job. The evaluation job, in turn, requires
+`--afterok` on that exact successful training job and invokes actual models
+only through `--execute-models --trained-adapter`.
+
+Every stage independently refuses dirty or uncommitted source provenance.
+The GPU stages require the reviewed pinned offline model cache. Training
+verifies the installed package versions against the selected site lock before
+loading weights and records the runtime, source commit, and scheduler ledger
+entry with the completed adapter. A real Slurm submission
+additionally requires both `--submit` and the independently checked
+`--confirm` authorization. `make hydra-posttrain-ready`, preflight, symbolic
+controls, and this documentation **do not submit any job, start training, or
+allocate a GPU**.
+
+Source synchronization refuses to run while jobs use the Peano project. It
+preserves the installed GPU environment, cached model weights, historical
+results, logs, and browser vendor assets, and excludes local Git metadata
+(including linked-worktree pointer files), agent state, and Python caches.
 
 The built-in optimization independently checks a five-tactic `zero_add` route
 and a three-tactic route to the same original theorem. It records the two
