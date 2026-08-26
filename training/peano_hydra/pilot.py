@@ -429,12 +429,20 @@ def _policies(
     return control, hybrid, tuple(sorted(macro_heads)), macro_states
 
 
+def load_checked_teacher_artifact(
+    artifact_path: Path = DEFAULT_ARTIFACT,
+) -> CheckedScriptArtifact:
+    """Return the exact independently replayed, never model-generated teacher route."""
+
+    return _checked_artifact(artifact_path)
+
+
 def run_teacher_oracle_pilot(
     artifact_path: Path = DEFAULT_ARTIFACT,
 ) -> TeacherOraclePilotReport:
     """Run the exact symbolic-only and teacher-macro paired pilot."""
 
-    artifact = _checked_artifact(artifact_path)
+    artifact = load_checked_teacher_artifact(artifact_path)
     control_policy, hybrid_policy, macro_heads, macro_states = _policies(artifact)
     control = run_hydra(
         artifact.theorem_source,
@@ -484,11 +492,13 @@ __all__ = [
     "DEFAULT_ARTIFACT_PROOF_NODES",
     "DEFAULT_ARTIFACT_SHA256",
     "PILOT_CAPABILITIES",
+    "PILOT_COMMANDS",
     "PILOT_LIMITS",
     "PILOT_VERSION",
     "MUTATED_THEOREM",
     "TEACHER_ORACLE_LABEL",
     "TeacherOraclePilotError",
     "TeacherOraclePilotReport",
+    "load_checked_teacher_artifact",
     "run_teacher_oracle_pilot",
 ]
