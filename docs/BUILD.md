@@ -332,5 +332,6 @@ cd lab-lambda/py && python3 -m pytest tests/ -q      # the full engine suite
 make book      # build the book
 make lean      # build + axiom-check Lean
 make lean-fta  # build + exact-axiom-check full FTA companion
-make lab-serve # preview the lab
+make serve     # preview the whole site locally
+make lab-serve # preview just the lab
 ```

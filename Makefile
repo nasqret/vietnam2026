@@ -38,6 +38,8 @@ override PEANOAPPID := a-a4f746a1cd35
 	deploy-peano-next deploy-proofs deploy-lean-api lean-public lean-public-check \
 	deploy clean
 
+.PHONY: serve
+
 help:
 	@echo "Targets:"
 	@echo "  make book         build the JupyterBook (book/_build/html)"
@@ -153,7 +155,8 @@ help:
 	@echo "  make ha-constructive-frontier-check  replay ordered stages 1-6 in bounded isolated proof processes"
 	@echo "  make ha-k3b-cell-history-check  run the lightweight Alpha K3B RFC/body checks"
 	@echo "  make ha-k3b-list-lookup-check  run the Alpha K3B ListAt surface checks"
-	@echo "  make lab-serve    serve lab-lambda locally on :8001"
+	@echo "  make serve        serve the whole site locally on :8000 (landing + book + slides + labs)"
+	@echo "  make lab-serve    serve lab-lambda alone on :8001"
 	@echo "  make peano-serve serve the staged Peano Lab locally on :8002"
 	@echo "  make lean-browser  open the theorem graph and bounded Lean proof builder on :$(PEANO_LEAN_BROWSER_PORT)"
 	@echo "  make lean-browser-check  independently smoke-test the running Lean theorem browser"
@@ -1045,6 +1048,11 @@ ha-k3b-list-lookup-check:
 		tests/test_ha_cell_list_lookup_functional_candidate.py \
 		tests/test_ha_cell_list_lookup_history_independent_candidate.py \
 		tests/test_ha_cell_list_extensional_candidate.py
+
+# Full local preview: landing page at /, with /lab-lambda/ resolving like on the
+# server (symlink tree in _preview/, so edits are live). Needs `make book` once.
+serve:
+	python3 scripts/serve_local.py
 
 lab-serve:
 	@echo "→ http://localhost:8001/  (Ctrl-C to stop)"
