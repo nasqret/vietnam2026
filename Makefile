@@ -19,6 +19,7 @@ PEANO_POLICY_PILOT_DIR ?= data/peano-policy-pilot-v1
 PEANO_POLICY_ROWS ?= 10000
 HYDRA_CATALOG_LIMIT ?= 192
 HYDRA_CATALOG_MAX_DECISIONS ?= 16
+HYDRA_DEV_DIR ?= _deploy/hydra-development-v1
 PEANO_TRAIN_JOB ?= 217859
 PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 PEANO_LEAN_BROWSER_HOST ?= 127.0.0.1
@@ -181,6 +182,9 @@ help:
 	@echo "  make hydra-posttrain-preflight  verify the Alpha-authorized Qwen training contract without loading a model"
 	@echo "  make hydra-eval-plan  verify a matched pretrained/trained evaluation without fabricating model results"
 	@echo "  make hydra-eval-control  independently run the bounded model-free symbolic benchmark control"
+	@echo "  make hydra-dev-plan  inspect the broader lineage-audited symbolic development experiment"
+	@echo "  make hydra-dev-evaluate  explicitly run isolated bounded CPU development searches"
+	@echo "  make hydra-dev-verify  independently replay every retained development proof"
 	@echo "  make hydra-posttrain-ready  build and verify the complete bounded Alpha model-development pipeline"
 	@echo "  make hydra-posttrain-execute  explicitly run bounded Alpha LoRA training on one prepared CUDA GPU"
 	@echo "  make peano-eval   run the deterministic kernel-judged random baseline"
@@ -1169,7 +1173,7 @@ peano-eval:
 
 .PHONY: hydra-check hydra-prepare hydra-scale hydra-posttrain-prepare \
 	hydra-posttrain-preflight hydra-eval-plan hydra-eval-control hydra-posttrain-ready \
-	hydra-posttrain-execute
+	hydra-posttrain-execute hydra-dev-plan hydra-dev-evaluate hydra-dev-verify
 
 # A future source file or unfinished Alpha campaign never expands Hydra
 # authority: both the synchronized product DAG gate and epoch freeze bind the
@@ -1199,6 +1203,10 @@ hydra-check:
 		tests/test_peano_hydra_posttrain.py \
 		tests/test_peano_hydra_evaluation.py \
 		tests/test_peano_hydra_cluster.py \
+		tests/test_peano_hydra_protocol.py \
+		tests/test_peano_hydra_benchmark.py \
+		tests/test_peano_hydra_symbolic.py \
+		tests/test_peano_hydra_frontier.py \
 		tests/test_helios_control.py
 	PYTHONMALLOC=malloc python3 scripts/prepare_peano_hydra.py --check
 
@@ -1235,6 +1243,19 @@ hydra-posttrain-ready: hydra-scale
 		--preflight --preparation-dir "_deploy/hydra-posttrain"
 	PYTHONMALLOC=malloc python3 scripts/eval_peano_hydra_posttrain.py \
 		--preparation-dir "_deploy/hydra-posttrain" --check --symbolic-controls
+
+# These are model-free public development diagnostics, never a sealed test.
+# Reusing an existing output is refused; select a fresh HYDRA_DEV_DIR.
+hydra-dev-plan:
+	PYTHONMALLOC=malloc python3 scripts/eval_peano_hydra_development.py --plan
+
+hydra-dev-evaluate:
+	PYTHONMALLOC=malloc python3 scripts/eval_peano_hydra_development.py \
+		--run --output-dir "$(HYDRA_DEV_DIR)"
+
+hydra-dev-verify:
+	PYTHONMALLOC=malloc python3 scripts/eval_peano_hydra_development.py \
+		--verify "$(HYDRA_DEV_DIR)"
 
 # Training is deliberately separate from all preparation and check targets.
 # The runner refuses execution without the verified Alpha handoff, one CUDA
