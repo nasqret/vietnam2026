@@ -339,7 +339,7 @@ def test_resealed_header_cannot_promote_or_hide_open_gates(field, value):
 def _validation_plan(monkeypatch, tmp_path):
     plan = _plan()
     plan.update(schema=r.SCHEMA, status="planned", source={}, development_directory="development",
-                development_plan_sha256="d" * 64, preparation_directories=[str(tmp_path / "preparation")],
+                development_plan_sha256="d" * 64, preparation_directories=["preparation"],
                 allocation_input=None, lineage_review={}, reference={}, reference_project=str(tmp_path),
                 conformance={"case_count": 0}, parallel_workers=1, native_limits=r.NATIVE_LIMITS.to_dict(),
                 reserved_reference_processes=len(r.MODULES) + 1, model_calls=0, solver_calls=0, data_written=False,
@@ -357,6 +357,21 @@ def _validation_plan(monkeypatch, tmp_path):
     monkeypatch.setattr(r, "build_conformance_cases", lambda: ())
     monkeypatch.setattr(r, "conformance_manifest", lambda cases, epoch_sha256: deepcopy(frozen_cases))
     return plan
+
+
+def test_repository_relative_preparations_remain_valid_from_another_cwd(monkeypatch, tmp_path):
+    plan = _validation_plan(monkeypatch, tmp_path)
+    outside = tmp_path / "another-working-directory"
+    outside.mkdir()
+    monkeypatch.chdir(outside)
+    original = {"plan_sha256": plan["development_plan_sha256"], "benchmark": {}, "source": {},
+                "preparation_audits": [{"preparation_directory": "preparation", "audit": {}}]}
+    monkeypatch.setattr(r, "_development", lambda path: original)
+    def review_lineages(epoch, **kwargs):
+        assert kwargs["preparation_dirs"] == (tmp_path / "preparation",)
+        return {}
+    monkeypatch.setattr(r, "build_lineage_review", review_lineages)
+    r.validate_plan(plan)
 
 
 @pytest.mark.parametrize("field,value", [

@@ -142,9 +142,8 @@ def build_review_plan(
         raise HydraReviewError("whole cold-stage wall budget must lie in [30,3600] seconds")
     original = _development(development_directory)
     epoch = freeze_epoch()
-    preparation_dirs = tuple(Path(entry["preparation_directory"]) for entry in original["preparation_audits"])
-    for path in preparation_dirs:
-        _relative(path)
+    preparation_labels = [_relative(Path(entry["preparation_directory"])) for entry in original["preparation_audits"]]
+    preparation_dirs = tuple(ROOT / label for label in preparation_labels)
     lineage = build_lineage_review(
         epoch, benchmark=original["benchmark"],
         audit_receipts=tuple(entry["audit"] for entry in original["preparation_audits"]),
@@ -159,7 +158,7 @@ def build_review_plan(
         "schema": SCHEMA, "status": "planned", "source": source_identity(),
         "profile": development_profile(), "epoch_sha256": epoch.epoch_sha256,
         "development_directory": _relative(development_directory), "development_plan_sha256": original["plan_sha256"],
-        "preparation_directories": [str(path) for path in preparation_dirs],
+        "preparation_directories": preparation_labels,
         "allocation_input": allocations, "lineage_review": lineage,
         "reference": reference, "reference_project": str(reference_project.resolve()),
         "conformance": conformance, "cold_plan": cold_plan, "cold_selection": selection,
@@ -203,7 +202,7 @@ def validate_plan(plan: dict[str, object], *, live_audits: bool = True) -> None:
         or not 1 <= len(plan["preparation_directories"]) <= 8):
         raise HydraReviewError("review development inputs are not canonical repository-local paths")
     for path in plan["preparation_directories"]:
-        if type(path) is not str or str((ROOT / _relative(Path(path))).resolve()) != path:
+        if type(path) is not str or _relative(Path(path)) != path:
             raise HydraReviewError("review preparation inputs are not exact repository-local paths")
     epoch = freeze_epoch()
     cases = build_conformance_cases()
@@ -218,12 +217,12 @@ def validate_plan(plan: dict[str, object], *, live_audits: bool = True) -> None:
     if live_audits:
         original = _development(ROOT / plan["development_directory"])
         if (original["plan_sha256"] != plan["development_plan_sha256"]
-            or plan["preparation_directories"] != [entry["preparation_directory"] for entry in original["preparation_audits"]]):
+            or plan["preparation_directories"] != [_relative(Path(entry["preparation_directory"])) for entry in original["preparation_audits"]]):
             raise HydraReviewError("review changed its original development/preparation inputs")
         reviewed = build_lineage_review(
             epoch, benchmark=original["benchmark"],
             audit_receipts=tuple(entry["audit"] for entry in original["preparation_audits"]),
-            preparation_dirs=tuple(Path(path) for path in plan["preparation_directories"]),
+            preparation_dirs=tuple(ROOT / path for path in plan["preparation_directories"]),
             allocations=plan["allocation_input"], original_source=original["source"],
         )
         if not _same(reviewed, plan["lineage_review"]):
