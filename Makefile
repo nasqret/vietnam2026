@@ -20,6 +20,12 @@ PEANO_POLICY_ROWS ?= 10000
 HYDRA_CATALOG_LIMIT ?= 192
 HYDRA_CATALOG_MAX_DECISIONS ?= 16
 HYDRA_DEV_DIR ?= _deploy/hydra-development-v1
+HYDRA_REVIEW_DIR ?= _deploy/hydra-reference-review-v1
+HYDRA_REVIEW_LEAN ?=
+HYDRA_REVIEW_REFERENCE_PROJECT ?= ../peano-lab-lean
+HYDRA_REVIEW_COLD_SCOPE ?= sample
+HYDRA_REVIEW_COLD_BATCH_SIZE ?= 1
+HYDRA_REVIEW_COLD_WALL_BUDGET ?= 900
 PEANO_TRAIN_JOB ?= 217859
 PEANO_TRAIN_DASHBOARD_PORT ?= 8766
 PEANO_LEAN_BROWSER_HOST ?= 127.0.0.1
@@ -185,6 +191,9 @@ help:
 	@echo "  make hydra-dev-plan  inspect the broader lineage-audited symbolic development experiment"
 	@echo "  make hydra-dev-evaluate  explicitly run isolated bounded CPU development searches"
 	@echo "  make hydra-dev-verify  independently replay every retained development proof"
+	@echo "  make hydra-review-plan  inspect reference/lineage review evidence; requires HYDRA_REVIEW_LEAN=/installed/bin/lean"
+	@echo "  make hydra-review-run  run bounded reference and cold-sample checks with the explicitly selected Lean binary"
+	@echo "  make hydra-review-verify  independently recheck the frozen evidence in HYDRA_REVIEW_DIR"
 	@echo "  make hydra-posttrain-ready  build and verify the complete bounded Alpha model-development pipeline"
 	@echo "  make hydra-posttrain-execute  explicitly run bounded Alpha LoRA training on one prepared CUDA GPU"
 	@echo "  make peano-eval   run the deterministic kernel-judged random baseline"
@@ -1173,7 +1182,8 @@ peano-eval:
 
 .PHONY: hydra-check hydra-prepare hydra-scale hydra-posttrain-prepare \
 	hydra-posttrain-preflight hydra-eval-plan hydra-eval-control hydra-posttrain-ready \
-	hydra-posttrain-execute hydra-dev-plan hydra-dev-evaluate hydra-dev-verify
+	hydra-posttrain-execute hydra-dev-plan hydra-dev-evaluate hydra-dev-verify \
+	hydra-review-plan hydra-review-run hydra-review-verify
 
 # A future source file or unfinished Alpha campaign never expands Hydra
 # authority: both the synchronized product DAG gate and epoch freeze bind the
@@ -1207,6 +1217,13 @@ hydra-check:
 		tests/test_peano_hydra_benchmark.py \
 		tests/test_peano_hydra_symbolic.py \
 		tests/test_peano_hydra_frontier.py \
+		tests/test_peano_hydra_cold_replay.py \
+		tests/test_peano_hydra_conformance.py \
+		tests/test_peano_hydra_lineage_review.py \
+		tests/test_peano_hydra_reference.py \
+		tests/test_peano_hydra_review_runtime.py \
+		tests/test_peano_hydra_review_sources.py \
+		tests/test_peano_hydra_review.py \
 		tests/test_helios_control.py
 	PYTHONMALLOC=malloc python3 scripts/prepare_peano_hydra.py --check
 
@@ -1256,6 +1273,32 @@ hydra-dev-evaluate:
 hydra-dev-verify:
 	PYTHONMALLOC=malloc python3 scripts/eval_peano_hydra_development.py \
 		--verify "$(HYDRA_DEV_DIR)"
+
+# These targets prepare review evidence; they never grant human approval or
+# train a model. The checker requires a real installed binary (not an elan
+# shim), and execution refuses to reuse an existing HYDRA_REVIEW_DIR.
+hydra-review-plan:
+	$(if $(strip $(HYDRA_REVIEW_LEAN)),,$(error Set HYDRA_REVIEW_LEAN=/absolute/path/to/installed/lean; no compiler is inferred or installed))
+	PYTHONMALLOC=malloc python3 scripts/check_peano_hydra_review.py \
+		--plan --reference-project "$(HYDRA_REVIEW_REFERENCE_PROJECT)" \
+		--lean-binary "$(HYDRA_REVIEW_LEAN)" \
+		--cold-scope "$(HYDRA_REVIEW_COLD_SCOPE)" \
+		--cold-batch-size "$(HYDRA_REVIEW_COLD_BATCH_SIZE)" \
+		--cold-wall-budget "$(HYDRA_REVIEW_COLD_WALL_BUDGET)"
+
+hydra-review-run:
+	$(if $(strip $(HYDRA_REVIEW_LEAN)),,$(error Set HYDRA_REVIEW_LEAN=/absolute/path/to/installed/lean; no compiler is inferred or installed))
+	PYTHONMALLOC=malloc python3 scripts/check_peano_hydra_review.py \
+		--run --output-dir "$(HYDRA_REVIEW_DIR)" \
+		--reference-project "$(HYDRA_REVIEW_REFERENCE_PROJECT)" \
+		--lean-binary "$(HYDRA_REVIEW_LEAN)" \
+		--cold-scope "$(HYDRA_REVIEW_COLD_SCOPE)" \
+		--cold-batch-size "$(HYDRA_REVIEW_COLD_BATCH_SIZE)" \
+		--cold-wall-budget "$(HYDRA_REVIEW_COLD_WALL_BUDGET)"
+
+hydra-review-verify:
+	PYTHONMALLOC=malloc python3 scripts/check_peano_hydra_review.py \
+		--verify "$(HYDRA_REVIEW_DIR)"
 
 # Training is deliberately separate from all preparation and check targets.
 # The runner refuses execution without the verified Alpha handoff, one CUDA
