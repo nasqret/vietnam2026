@@ -10,6 +10,7 @@ from pathlib import Path
 import re
 import subprocess
 import sys
+from urllib.parse import parse_qs, urlsplit
 
 
 REPO = Path(__file__).resolve().parents[3]
@@ -55,6 +56,76 @@ def _load(path: Path) -> dict:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
+def _assert_current_definition_counts(definitions: dict) -> None:
+    expected = {
+        "definition_count": 290,
+        "definition_edge_count": 406,
+        "statement_usage_edge_count": 313,
+        "declared_notation_edge_count": 213,
+        "milestone_usage_edge_count": 526,
+        "reviewed_definition_count": 198,
+        "reviewed_definition_edge_count": 388,
+        "compatible_reviewed_match_count": 201,
+        "exact_name_reviewed_match_count": 196,
+        "explicit_alias_reviewed_match_count": 5,
+        "incompatible_reviewed_match_count": 2,
+    }
+    assert {key: definitions[key] for key in expected} == expected
+
+
+def _assert_closed_matrix_and_algorithm_scopes(nodes: dict) -> None:
+    for identifier in ("T13", "G101", "G102"):
+        assert nodes[identifier]["status"] == "alpha_closed"
+        assert nodes[identifier]["evidence"]["full_empty_context_closure"] is True
+        assert nodes[identifier]["evidence"]["independent_lean_bundle_verified"] is True
+        assert nodes[identifier]["evidence"]["stable_member"] is False
+    matrix = nodes["T13"]["evidence"]
+    for claim in ("full_arbitrary_determinant_proved", "full_arbitrary_signed_matrix_product_proved",
+                  "full_rank_substrate_proved", "integer_column_span_zero_add_neg_proved"):
+        assert matrix[claim] is True
+    for claim in ("determinant_multiplicativity_proved", "lattice_index_formula_proved",
+                  "independent_basis_theorem_proved", "normal_form_or_reduction_proved"):
+        assert matrix[claim] is False
+    euclidean = nodes["G101"]["evidence"]
+    assert euclidean["terminal_state_identified_with_gcd_proved"] is True
+    assert euclidean["formal_bit_length_unique_proved"] is True
+    assert euclidean["formal_logarithmic_bound_proved"] is True
+    binary = nodes["G102"]["evidence"]
+    for claim in ("formal_complete_binary_execution_proved", "formal_execution_power_correct_proved",
+                  "arbitrary_exponent_binary_digits_proved", "formal_logarithmic_bound_proved"):
+        assert binary[claim] is True
+
+
+def test_atlas_query_links_are_real_html_anchors_with_valid_destinations() -> None:
+    campaign = _load(BOOK / "_static/constructive-grand-campaign/campaign.json")
+    atlas = (BOOK / "_static/constructive-grand-campaign/index.html").read_text(encoding="utf-8")
+    domains = re.search(r"var ATLAS_DOMAINS = \[(.*?)\n      \];", atlas, flags=re.S)
+    assert domains is not None
+    valid = {
+        "goal": {row["id"] for row in campaign["nodes"]},
+        "family": {row["id"] for row in campaign["families"]},
+        "domain": set(re.findall(r'id: "(D[0-9]{2})"', domains.group(1))),
+        "definition": set(campaign["definitions"]),
+    }
+    checked = 0
+    for chapter in (GRAND_CAMPAIGN_CHAPTER, NEXT_LAYER_CHAPTER, TRANSPORT_LAYER_CHAPTER):
+        source = chapter.read_text(encoding="utf-8")
+        # MyST resolves a relative Markdown query as part of a file name.
+        # Real HTML anchors preserve the query without suppressing warnings.
+        assert not re.search(r"\]\(\.\./_static/[^)\s]*\?", source)
+        for href in re.findall(r'<a\b[^>]*\bhref="([^"]*constructive-grand-campaign/[^"]*)"', source):
+            destination = urlsplit(html.unescape(href))
+            local = (chapter.parent / destination.path).resolve()
+            assert local.is_relative_to(BOOK.resolve()) and local.is_file()
+            query = parse_qs(destination.query, strict_parsing=True) if destination.query else {}
+            if "view" in query:
+                assert len(query["view"]) == len(query.get("focus", ())) == 1
+                assert query["view"][0] in valid
+                assert query["focus"][0] in valid[query["view"][0]]
+            checked += 1
+    assert checked >= 35
+
+
 def test_arithmetic_dashboard_tour_atlas_and_dependency_chapters_are_ordered() -> None:
     toc = (BOOK / "_toc.yml").read_text(encoding="utf-8")
     chapters = (
@@ -90,7 +161,7 @@ def test_arithmetic_dashboard_tour_atlas_and_dependency_chapters_are_ordered() -
 
 
 def test_grand_campaign_book_chapter_connects_research_scales_honestly() -> None:
-    chapter = GRAND_CAMPAIGN_CHAPTER.read_text(encoding="utf-8")
+    chapter = html.unescape(GRAND_CAMPAIGN_CHAPTER.read_text(encoding="utf-8"))
     index = (BOOK / "arithmetic-library" / "index.md").read_text(encoding="utf-8")
     campaign = _load(
         BOOK / "_static" / "constructive-grand-campaign" / "campaign.json"
@@ -100,25 +171,25 @@ def test_grand_campaign_book_chapter_connects_research_scales_honestly() -> None
     assert campaign["meta"]["tool_count"] == 16
     assert campaign["meta"]["anchor_count"] == 8
     assert len(campaign["families"]) == 12
-    assert campaign["meta"]["current_alpha_version"] == "v22"
-    assert campaign["meta"]["current_alpha_checked_use_count"] == 1890
-    assert len(campaign["definitions"]) == 141
-    assert sum(len(node["deps"]) for node in campaign["nodes"]) == 303
+    assert campaign["meta"]["current_alpha_version"] == "v27"
+    assert campaign["meta"]["current_alpha_checked_use_count"] == 2560
+    assert len(campaign["definitions"]) == 290
+    assert sum(len(node["deps"]) for node in campaign["nodes"]) == 308
 
     for exact in (
         "**120 major mathematical goals**",
         "**16 reusable constructive tools**",
         "**8 established proof anchors**",
-        "**141 pieces of mathematical vocabulary**",
-        "**1,890 independently checked",
-        "**6,128 checked proof dependencies**",
-        "**88 definition-to-definition edges**",
-        "**311 statement-lexical",
-        "**41 separately typed, explicitly declared",
-        "**352 milestone-to-notation edges**",
-        "**89 genuinely shared conservative registry definitions**",
-        "**142 reviewed dependency edges**",
-        "**fifty signature-compatible links**",
+        "**290 pieces of mathematical vocabulary**",
+        "**2,560 independently checked",
+        "**8,196 checked proof dependencies**",
+        "**406 definition-to-definition edges**",
+        "**313 statement-lexical",
+        "**213 separately typed, explicitly declared",
+        "**526 milestone-to-notation edges**",
+        "**198 genuinely shared conservative registry definitions**",
+        "**388 reviewed dependency edges**",
+        "**201 signature-compatible links**",
         "A research map is not a proof certificate",
         "future-facing entries remain planning vocabulary",
     ):
@@ -136,28 +207,11 @@ def test_grand_campaign_book_chapter_connects_research_scales_honestly() -> None
         assert f"?view=goal&focus={goal}" in chapter
 
     nodes = {node["id"]: node for node in campaign["nodes"]}
-    for open_goal in ("G025", "G045", "G047", "G048", "G063", "G065", "G078", "G107", "G120"):
+    for open_goal in ("G045", "G047", "G048", "G063", "G065", "G120", "G006", "G072", "G091"):
         assert nodes[open_goal]["status"] == "open"
-    assert nodes["G077"]["status"] == "existing_anchor_extension"
-    assert nodes["T13"]["status"] == "open"
-    assert nodes["T13"]["evidence"]["partial_checked_theorem_count"] == 33
-    assert nodes["T13"]["evidence"]["full_arbitrary_signed_matrix_product_proved"] is True
-    assert nodes["T13"]["evidence"]["full_arbitrary_determinant_proved"] is False
-    assert nodes["G101"]["status"] == nodes["G102"]["status"] == "open"
-    assert nodes["G101"]["evidence"]["partial_checked_theorem_count"] == 20
-    assert nodes["G101"]["evidence"]["shared_binary_length_checked_theorem_count"] == 21
-    assert nodes["G101"]["evidence"]["historical_euclidean_checked_theorem_count"] == 15
-    assert nodes["G101"]["evidence"]["terminal_state_identified_with_gcd_proved"] is True
-    assert nodes["G101"]["evidence"]["formal_bit_length_unique_proved"] is True
-    assert nodes["G101"]["evidence"]["formal_logarithmic_bound_proved"] is False
-    assert nodes["G102"]["evidence"]["partial_checked_theorem_count"] == 19
-    assert nodes["G102"]["evidence"]["shared_binary_length_checked_theorem_count"] == 21
-    assert nodes["G102"]["evidence"]["historical_binary_power_checked_theorem_count"] == 16
-    assert nodes["G102"]["evidence"]["formal_complete_binary_execution_proved"] is True
-    assert nodes["G102"]["evidence"]["formal_execution_power_correct_proved"] is True
-    assert nodes["G102"]["evidence"]["arbitrary_exponent_binary_digits_proved"] is False
-    assert nodes["G102"]["evidence"]["formal_logarithmic_bound_proved"] is False
-    for closed_goal in ("T12", "G012", "G023", "G024", "G026", "G043", "G061", "G071"):
+    _assert_closed_matrix_and_algorithm_scopes(nodes)
+    for closed_goal in ("T12", "G011", "G012", "G023", "G024", "G025", "G026", "G027", "G035",
+                        "G043", "G051", "G061", "G071", "G077", "G078", "G095", "G107"):
         assert nodes[closed_goal]["status"] == "alpha_closed"
 
     assert "<grand-campaign-atlas>" in index
@@ -187,24 +241,14 @@ def test_next_layer_book_chapter_matches_exact_checked_release_and_open_boundary
         "bertrand_prime": 13,
         "continued_fraction": 9,
     }
-    assert definitions["definition_count"] == 141
-    assert definitions["definition_edge_count"] == 88
-    assert definitions["statement_usage_edge_count"] == 311
-    assert definitions["declared_notation_edge_count"] == 41
-    assert definitions["milestone_usage_edge_count"] == 352
-    assert definitions["reviewed_definition_count"] == 89
-    assert definitions["reviewed_definition_edge_count"] == 142
-    assert definitions["compatible_reviewed_match_count"] == 50
-    assert definitions["exact_name_reviewed_match_count"] == 46
-    assert definitions["explicit_alias_reviewed_match_count"] == 4
-    assert definitions["incompatible_reviewed_match_count"] == 2
+    _assert_current_definition_counts(definitions)
 
     for exact in (
         "**39 new independently checked theorems**",
         "**1,776 checked-use entries**",
         "**5,882 actual theorem",
         "T13 is not closed",
-        "milestone remains explicitly **open**",
+        "milestone remained\nexplicitly **open**",
         "**132 mathematical definitions**",
         "**71 definition-to-definition prerequisites**",
         "**311 actual lexical theorem-to-notation uses**",
@@ -285,8 +329,8 @@ def test_advanced_layer_book_chapter_binds_exact_v21_proofs_definitions_and_open
         "**1,398\nAlpha-only theorems**",
         "**33 independently available components**",
         "T13 remains open",
-        "**G101 remains open**",
-        "**G102 remains open**",
+        "**G101 is completely closed**",
+        "**G102 is completely closed**",
         "**132 blueprint vocabulary entries**",
         "**71\nblueprint definition dependencies**",
         "**79 independently\nexpansion-audited definitions**",
@@ -337,20 +381,7 @@ def test_advanced_layer_book_chapter_binds_exact_v21_proofs_definitions_and_open
     assert len([item for item in by_id if "ND0012" <= item <= "ND0027"]) == 16
 
     nodes = {node["id"]: node for node in campaign["nodes"]}
-    assert nodes["T13"]["status"] == "open"
-    assert nodes["T13"]["evidence"]["partial_checked_theorem_count"] == 33
-    assert nodes["T13"]["evidence"]["full_arbitrary_signed_matrix_product_proved"]
-    assert not nodes["T13"]["evidence"]["full_arbitrary_determinant_proved"]
-    assert nodes["G101"]["status"] == "open"
-    assert nodes["G101"]["evidence"]["terminal_state_identified_with_gcd_proved"]
-    assert nodes["G101"]["evidence"]["formal_bit_length_unique_proved"]
-    assert not nodes["G101"]["evidence"]["formal_logarithmic_bound_proved"]
-    assert nodes["G102"]["status"] == "open"
-    assert nodes["G102"]["evidence"]["executable_beta_coded_trace_verified"]
-    assert nodes["G102"]["evidence"]["formal_complete_binary_execution_proved"]
-    assert nodes["G102"]["evidence"]["formal_execution_power_correct_proved"]
-    assert not nodes["G102"]["evidence"]["arbitrary_exponent_binary_digits_proved"]
-    assert not nodes["G102"]["evidence"]["formal_logarithmic_bound_proved"]
+    _assert_closed_matrix_and_algorithm_scopes(nodes)
 
     for goal in ("T13", "G101", "G102", "G051", "G095", "G027", "G035", "G107"):
         assert goal in chapter
@@ -410,7 +441,7 @@ def test_transport_layer_book_chapter_binds_exact_v22_proofs_definitions_and_hon
         "**89 reviewed conservative",
         "**142 exact reviewed definition edges**",
         "**50 compatible",
-        "**46 exact names**",
+        "**57 exact\nnames**",
         "**four explicitly reviewed",
         "**239 real theorem",
         "**597 exact proof edges**",
@@ -444,20 +475,7 @@ def test_transport_layer_book_chapter_binds_exact_v22_proofs_definitions_and_hon
     ):
         assert name in chapter
 
-    assert (
-        definitions["definition_count"],
-        definitions["definition_edge_count"],
-        definitions["statement_usage_edge_count"],
-        definitions["declared_notation_edge_count"],
-        definitions["milestone_usage_edge_count"],
-    ) == (141, 88, 311, 41, 352)
-    assert (
-        definitions["reviewed_definition_count"],
-        definitions["reviewed_definition_edge_count"],
-        definitions["compatible_reviewed_match_count"],
-        definitions["exact_name_reviewed_match_count"],
-        definitions["explicit_alias_reviewed_match_count"],
-    ) == (89, 142, 50, 46, 4)
+    _assert_current_definition_counts(definitions)
     by_id = {item["id"]: item for item in definitions["reviewed_definitions"]}
     for identifier in (f"ND{index:04d}" for index in range(28, 38)):
         definition = by_id[identifier]
@@ -471,18 +489,7 @@ def test_transport_layer_book_chapter_binds_exact_v22_proofs_definitions_and_hon
     ]
 
     nodes = {node["id"]: node for node in campaign["nodes"]}
-    euclidean = nodes["G101"]
-    binary = nodes["G102"]
-    matrix = nodes["T13"]
-    assert euclidean["status"] == binary["status"] == matrix["status"] == "open"
-    assert euclidean["evidence"]["terminal_state_identified_with_gcd_proved"]
-    assert euclidean["evidence"]["formal_bit_length_unique_proved"]
-    assert not euclidean["evidence"]["formal_logarithmic_bound_proved"]
-    assert binary["evidence"]["formal_complete_binary_execution_proved"]
-    assert binary["evidence"]["formal_execution_power_correct_proved"]
-    assert not binary["evidence"]["arbitrary_exponent_binary_digits_proved"]
-    assert not binary["evidence"]["formal_logarithmic_bound_proved"]
-    assert not matrix["evidence"]["full_arbitrary_determinant_proved"]
+    _assert_closed_matrix_and_algorithm_scopes(nodes)
 
 
 def test_alpha_k3b_book_chapter_and_sparse_graph_match_the_sealed_receipt() -> None:
@@ -712,8 +719,8 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "732 `body_checked`",
         "one `pending_layered_closure`",
         'edition("alpha").checked_specs',
-        "from peano_lab.library.editions_v22 import edition, entry, replay",
-        "# 1890",
+        "from peano_lab.library.editions_v27 import edition, entry, replay",
+        "# 2560",
         'entry("cell_list_extensional", edition="alpha")',
         'replay("signed_decode_nonnegative_constructor", edition="alpha")',
         'entry("quadratic_reciprocity_combined", edition="alpha")',
@@ -856,10 +863,10 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         assert exact in source
     for exact in (
         "<library-editions>",
-        "<strong>1,890</strong><span>Alpha v22 theorems</span>",
-        "<strong>1,890</strong><span>Alpha checked-use rows</span>",
-        "<strong>1,458</strong><span>Alpha-only rows</span>",
-        "1,890 theorems, 6,128 direct edges",
+        "<strong>2,560</strong><span>Alpha v27 theorems</span>",
+        "<strong>2,560</strong><span>Alpha checked-use rows</span>",
+        "<strong>2,128</strong><span>Alpha-only rows</span>",
+        "2,560 theorems, 8,196 direct edges",
         "1,303 theorems, 4,302 direct",
         "732 `body_checked`",
         "dependency-closed B6 support and B5--BP02 completion chain",

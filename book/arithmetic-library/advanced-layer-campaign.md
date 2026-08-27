@@ -17,7 +17,7 @@ immutable **Alpha v23** retains that entire 1,890-theorem ledger and adds
 **59 independently checked proofs**: 17 completing G101's logarithmic
 Euclidean bound, 24 completing G102's canonical digit extraction and exact
 binary execution bound, and 18 proving G025's infinitude of primes three
-modulo four. All **1,949 current entries** have checked-use authority.
+modulo four. All **1,949 historical v23 entries** have checked-use authority.
 
 | Campaign | New checked theorems | Genuine mathematical progress | Definition-aware proof explorer |
 |---|---:|---|---|
@@ -59,12 +59,12 @@ two-by-two and three-by-three cofactor-expansion determinant pairs; the latter
 is
 [`signed_matrix_three_full_determinant_exists` (`MC0016`)](../_static/constructive-advanced-layer-explorer/matrix-coded-products/explorer/defined/tag/MC0016.html).
 
-```{admonition} T13 remains open
+```{admonition} Historical v21 boundary: T13 remains open
 :class: important
 Arbitrary-dimensional signed matrix multiplication is proved. An
 arbitrary-dimensional determinant, matrix rank, integer-lattice bases, and
-lattice operations are **not** proved. Consequently the complete T13
-matrix-and-lattice milestone remains **open**, despite its 33 checked
+lattice operations were **not** proved in v21. At that checkpoint the T13
+matrix-and-lattice milestone remained **open**, despite its 33 checked
 components; its checked multiplication theorem must not be mislabeled as a
 proof of the stronger milestone.
 ```
@@ -178,7 +178,7 @@ objects, not merely coincidentally identical display strings.
 The historical v22 registry preserved every one of these identities and
 extended it to **141 blueprint terms**, **89 reviewed conservative
 definitions**, **142 reviewed definition edges**, and **50 compatible
-blueprint matches**. Current v23 further extends the same graph to **152
+blueprint matches**. Historical v23 further extended the same graph to **152
 blueprint terms**, **97 reviewed conservative definitions**, **159 reviewed
 definition edges**, and **61 compatible blueprint matches**: 57 exact names
 and four preserved explicit aliases.
@@ -213,7 +213,7 @@ Evidence SHA-256: 9d217af3e7f77f8beb436f627a44f1a29cda54bb08a4e666899803aa97ccb9
 
 At the historical v21 checkpoint, eight openly stated milestones had
 completely checked direct prerequisites: **T13, G101, G102, G051, G095,
-G027, G035, and G107**. Subsequent v22 and v23 make the following progress:
+G027, G035, and G107**. Subsequent v22 through v27 made the following progress:
 
 1. **Proved in v22:** formalize total, functional, uniquely witnessed
    first-order `BitLen` and the exact binary digit/power foundations.
@@ -223,11 +223,16 @@ G027, G035, and G107**. Subsequent v22 and v23 make the following progress:
 3. **Completed in v23:** construct canonical binary digits for every exponent,
    verify the actual beta-coded square-and-multiply execution, and prove the
    exact `3 * BitLen(e) + 2` bound, closing G102.
-4. Develop finite signed minors and arbitrary-dimensional determinant
-   recurrences before rank witnesses, lattice bases, and the full T13 target.
-5. Reuse the resulting machinery for Cauchy–Davenport (G051), simple-root
-   Hensel lifting (G095), effective Chebyshev bounds (G027), multinomial
-   carries (G035), and certified Cornacchia traces (G107).
+4. **Completed in v27:** arbitrary signed determinant recurrences, actual
+   rectangular rank, representation invariance, and integer-span/lattice data
+   close the exact T13 substrate. Lattice-index and basis/reduction results
+   remain distinct stronger targets.
+5. **Completed in v27:** actual finite-set Cauchy–Davenport (G051), full
+   signed-polynomial simple-root lifting (G095), explicit Chebyshev bounds
+   (G027), multinomial carries (G035), and first-stop Cornacchia (G107).
+
+Current Alpha v27 contains 2,560 checked theorems. Its stronger future goals
+are not marked complete merely because these exact substrates are available.
 
 Each new layer requires actual first-order theorem statements, hygienic
 conservative definitions, adversarial boundary tests, complete

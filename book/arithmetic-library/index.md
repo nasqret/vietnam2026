@@ -57,11 +57,14 @@ modular-power results. Historical immutable Alpha v22 preserves that complete
 1,830-theorem parent and adds 60 genuine original-kernel proofs: 21 total and
 functional binary-length results, 20 Euclidean gcd-invariant and terminal-state
 results, and 19 complete supplied-digit binary modular execution results.
-Current immutable Alpha v23 preserves all 1,890 historical v22 rows and adds
+Historical immutable Alpha v23 preserves all 1,890 historical v22 rows and adds
 59 independently checked theorems: 17 complete logarithmic Euclidean-GCD
 proofs, 24 canonical binary-digit and logarithmic modular-execution proofs,
 and 18 proofs establishing infinitely many primes congruent to three modulo
-four. Every one of its 1,949 enrolled theorems is available for checked use.
+four. Every one of its 1,949 enrolled theorems remains available for checked use.
+Current Alpha v27 preserves every historical row and expands the library to
+2,560 checked theorems, with the full first- and second-wave milestones
+independently accepted by the original HA kernel and compiled Lean verifier.
 Arbitrary-dimensional determinants, rank, and lattices remain open; Stable
 remains the unchanged default. See
 {doc}`Alpha and Stable library editions
@@ -70,9 +73,9 @@ remains the unchanged default. See
 
 <div class="pa-dashboard-metrics" aria-label="Alpha and Stable arithmetic library metrics">
   <div><strong>432</strong><span>Stable theorems</span></div>
-  <div><strong>1,949</strong><span>Alpha v23 theorems</span></div>
-  <div><strong>1,949</strong><span>Alpha checked-use rows</span></div>
-  <div><strong>1,517</strong><span>Alpha-only rows</span></div>
+  <div><strong>2,560</strong><span>Alpha v27 theorems</span></div>
+  <div><strong>2,560</strong><span>Alpha checked-use rows</span></div>
+  <div><strong>2,128</strong><span>Alpha-only rows</span></div>
 </div>
 
 The generated Stable snapshot has ordered root
@@ -83,9 +86,9 @@ grant proof authority. Its graph has **1,185** direct dependency edges; the
 Book exposes **432** theorem cards, while the synchronized vault contains
 **531** notes and **5,377** resolved links.
 
-The current Alpha v23 graph has 1,949 theorems, 6,285 direct edges, and 53
+The current Alpha v27 graph has 2,560 theorems, 8,196 direct edges, and 53
 dependency layers. Every theorem has actual checked-use authority: 432 are
-Stable-closed and 1,517 are Alpha-closed; no body-only or pending row remains.
+Stable-closed and 2,128 are Alpha-closed; no body-only or pending row remains.
 The historical Alpha v22 parent retains 1,890 checked theorems and 6,128
 edges.
 The historical Alpha v21 parent retains 1,830 checked theorems and 5,986
@@ -95,7 +98,7 @@ Historical Alpha v18 retains 1,673 theorems, 5,615 edges, and its
 then-current 84 body-only rows without retroactive alteration. The historical
 Alpha v12 graph has 1,303 theorems, 4,302 direct
 edges and its immutable evidence partition still includes 732 `body_checked`
-rows. Every Alpha v1--v22 parent remains sealed; Stable remains 432. The exact
+rows. Every Alpha v1--v26 parent remains sealed; Stable remains 432. The exact
 contract and opt-in API are on the {doc}`edition page
 <library-editions>`.
 
@@ -103,7 +106,7 @@ Historical Alpha v12 retains the Alpha-v11 B4 and B5-support tranches, then
 adds the dependency-closed B6 support and B5--BP02 completion chain. Its
 frozen partition was 432 `stable_closed`, 138 `alpha_closed`, 732
 `body_checked`, and one `pending_layered_closure`; checked use was 570. The
-current v23 partition is 432 `stable_closed`, 1,517 `alpha_closed`, zero
+current v27 partition is 432 `stable_closed`, 2,128 `alpha_closed`, zero
 `body_checked`, and zero pending rows. Quadratic reciprocity, both
 supplementary laws, strict Bertrand, multidigit Lucas, both Kummer endpoints,
 Lagrange's four-square theorem, and the all-natural two-square criterion all

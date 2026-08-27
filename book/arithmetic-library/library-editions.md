@@ -21,6 +21,13 @@ release membership; it does not silently replace the mathematics.
 
 ## What is canonical today
 
+Current **Alpha v27** contains **2,560 independently checked theorems**,
+**8,196 actual proof-dependency edges**, and **53 layers**. Stable remains
+**432**; the **2,128 Alpha-only** rows remain opt-in. Historical Alpha v24
+has 2,008 rows, v25 has 2,080, and v26 has 2,138. The last two waves add
+58 first-wave and 422 second-wave proofs, with exact original-kernel and
+independently compiled Lean evidence. Broader roadmap goals remain open.
+
 The repository now has canonical machine-readable artifacts for both
 editions. Stable v1 remains sealed at 432 rows, Alpha v1 remains sealed at 885
 rows, Alpha v2 remains sealed at 902 rows, and Alpha v3 remains sealed at 923
@@ -46,9 +53,9 @@ independently adds 54 arbitrary natural/signed matrix-product, Euclidean
 execution/halving, and binary modular-exponentiation theorems. Historical Alpha
 v22 preserves all 1,830 exact v21 rows and independently adds 60 total and
 functional binary-length, Euclidean-gcd-transport, and supplied-digit binary
-execution theorems. Current Alpha v23 preserves all 1,890 exact v22 rows and
+execution theorems. Historical Alpha v23 preserves all 1,890 exact v22 rows and
 independently adds 59 complete logarithmic Euclidean-GCD, canonical binary
-digit/execution, and 3-mod-4-prime-infinitude theorems. All 1,949 current
+digit/execution, and 3-mod-4-prime-infinitude theorems. All 1,949 historical v23
 Alpha rows have checked-use authority;
 no body-only or pending entry remains. Stable is
 still
@@ -80,7 +87,7 @@ fact about these channels, not the permanent promotion rule.
 | Sealed Alpha v20 catalog | **1,776** theorems | all 1,737 historical rows preserved and 39 independently checked next-layer results appended |
 | Sealed Alpha v21 catalog | **1,830** theorems | all 1,776 historical rows preserved and 54 independently checked advanced-layer results appended |
 | Sealed Alpha v22 catalog | **1,890** theorems | all 1,830 historical rows preserved and 60 independently checked transport-layer results appended |
-| Current Alpha v23 catalog | **1,949** theorems | all 1,890 historical rows preserved and 59 independently checked complete G101, G102, and G025 results appended |
+| Historical Alpha v23 catalog | **1,949** theorems | all 1,890 historical rows preserved and 59 independently checked complete G101, G102, and G025 results appended |
 | Historical Alpha v12--v15 checked-use subset | **570** theorems | 432 `stable_closed` plus 138 `alpha_closed` rows |
 | Historical Alpha v16 checked-use subset | **885** theorems | 432 `stable_closed` plus 453 `alpha_closed` rows |
 | Historical Alpha v17 checked-use subset | **916** theorems | 432 `stable_closed` plus 484 `alpha_closed` rows |
@@ -89,14 +96,14 @@ fact about these channels, not the permanent promotion rule.
 | Historical Alpha v20 checked-use subset | **1,776** theorems | 432 `stable_closed` plus 1,344 `alpha_closed` rows; zero unchecked entries |
 | Historical Alpha v21 checked-use subset | **1,830** theorems | 432 `stable_closed` plus 1,398 `alpha_closed` rows; zero unchecked entries |
 | Historical Alpha v22 checked-use subset | **1,890** theorems | 432 `stable_closed` plus 1,458 `alpha_closed` rows; zero unchecked entries |
-| Current Alpha v23 checked-use subset | **1,949** theorems | 432 `stable_closed` plus 1,517 `alpha_closed` rows; zero unchecked entries |
+| Historical Alpha v23 checked-use subset | **1,949** theorems | 432 `stable_closed` plus 1,517 `alpha_closed` rows; zero unchecked entries |
 | Historical Alpha v12 proof graph | **4,302** edges / **45** layers | exact direct dependencies for all 1,303 enrolled rows |
 | Historical Alpha v18 proof graph | **5,615** edges / **53** layers | exact direct dependencies for its 1,673 enrolled rows |
 | Historical Alpha v19 proof graph | **5,779** edges / **53** layers | every direct dependency of all 1,737 historical rows independently checked |
 | Historical Alpha v20 proof graph | **5,882** edges / **53** layers | every direct dependency of all 1,776 historical rows independently checked |
 | Historical Alpha v21 proof graph | **5,986** edges / **53** layers | every direct dependency of all 1,830 historical rows independently checked |
 | Historical Alpha v22 proof graph | **6,128** edges / **53** layers | every direct dependency of all 1,890 historical rows independently checked |
-| Current Alpha v23 proof graph | **6,285** edges / **53** layers | every direct dependency of all 1,949 enrolled rows independently checked |
+| Historical Alpha v23 proof graph | **6,285** edges / **53** layers | every direct dependency of all 1,949 enrolled rows independently checked |
 | Quadratic-reciprocity Alpha slice | **557** specifications | 241 Stable prerequisites and 316 Alpha-only specifications |
 | Stable $\cup$ QR slice | **748** distinct theorem names | 432 Stable plus the 316 QR Alpha-only rows |
 | K3B focused map | **41** nodes | 12 Stable prerequisites, 22 Alpha-only theorem/support nodes, and 7 conservative definitions |
@@ -305,11 +312,11 @@ BP01, and BP02 tranche RFCs. The full dependency-closed candidate proof ends
 in `bertrand_closed_upper` and `bertrand_strict`.
 
 The 557-row focused QR slice omits 191 Stable theorems; its union with all
-Stable rows has **748** distinct names, leaving 1,201 other current Alpha v23
+Stable rows has **748** distinct names, leaving 1,812 other current Alpha v27
 entries outside that union. Likewise, the 41-node K3B map is a deliberately
 curated visual lens, not a competing catalog. The current authoritative
-channel pointer is `artifacts/peano-library/channels-v23.json`; it links the
-immutable Alpha v23 catalog, metrics, and graph, while the pre-existing Stable
+channel pointer is `artifacts/peano-library/channels-v27.json`; it links the
+immutable Alpha v27 catalog, metrics, and graph, while the pre-existing Stable
 artifact remains `artifacts/peano-library/catalog-v1.json`. The historical
 `artifacts/peano-library/channels-v12.json` pointer and every Alpha v1--v22
 artifact remain sealed parents. The historical v18 enrollment identity is
@@ -353,7 +360,7 @@ its checked evidence root is
 and its historical canonical catalog SHA-256 is
 `fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22`.
 Its immutable parent-channel pointer remains
-`artifacts/peano-library/channels-v22.json`. The current v23 enrollment
+`artifacts/peano-library/channels-v22.json`. The historical v23 enrollment
 identity is
 `f5d94af7a11c642d7076a195e2e795e7b84c61a6de1a6b074708669b2dac1648`;
 its edition identity is
@@ -362,8 +369,8 @@ its checked evidence root is
 `e9c00544bdad559342da3ed5a0d1e26ef1576a0eecd9f580ec1fc98a2eb941cf`;
 and its canonical catalog SHA-256 is
 `818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2`.
-The current evidence ledger is 432 `stable_closed`, 1,517 `alpha_closed`,
-zero `body_checked`, and zero pending rows; all 1,949 permit checked use.
+The current evidence ledger is 432 `stable_closed`, 2,128 `alpha_closed`,
+zero `body_checked`, and zero pending rows; all 2,560 permit checked use.
 The five historical flagship promotions and two historical v19 closure bundles bind
 actual proof data accepted independently by the unchanged Python kernel and
 compiled Lean verifier. The historical v20 next-layer proof bundle independently checks
@@ -377,9 +384,10 @@ ordinary proof bodies and **491** dependency edges in both the unchanged
 intuitionistic kernel and the separately compiled Lean verifier. Its exact
 **54** new rows comprise **23** arbitrary natural/signed matrix-product
 results, **15** Euclidean execution/halving results, and **16** binary
-modular-exponentiation prerequisites. T13 remains open despite **33** checked
-matrix components: arbitrary-dimensional determinants, rank, and lattices
-are not proved. The historical v22 transport-layer bundle independently checks
+modular-exponentiation prerequisites. At that historical v21 boundary, T13
+remained open despite **33** checked matrix components: arbitrary-dimensional
+determinants, rank, and lattice data were not yet proved. The historical v22
+transport-layer bundle independently checks
 **240** complete ordinary proof bodies, **597** dependency edges, and
 **11,848** structural proof nodes in both the original intuitionistic kernel
 and the separately compiled Lean verifier. Its exact **60** new rows comprise
@@ -388,7 +396,7 @@ gcd-invariant and actual terminal-state proofs, and **19** complete
 supplied-digit binary execution and modular-power-invariant proofs. Its exact
 **1,099,541-byte** artifact has SHA-256
 `95e5f8a3baef113721d748f9d7071864b4bf9511737a27a1272d2695428fb938`.
-The current v23 milestone-closure bundle independently checks **617** complete
+The historical v23 milestone-closure bundle independently checks **617** complete
 ordinary proof bodies, **1,871** dependency edges, and **39,161** structural
 proof nodes in both the original intuitionistic kernel and the separately
 compiled Lean verifier. Its **59** new rows comprise **17** complete
@@ -397,8 +405,10 @@ binary-digit and modular-execution proofs, and **18** proofs of prime
 infinitude in the residue class three modulo four. Its exact
 **2,518,315-byte** artifact has SHA-256
 `cc0051da2cac31e382c79223999d448a1119f62aa448f1c7f68a6b9c3edf9d11`.
-G101, G102, and G025 are completely closed; T13's arbitrary-dimensional
-determinant, rank, and lattice requirements remain open.
+G101, G102, and G025 were completely closed in v23; T13's arbitrary-dimensional
+determinant, rank, and lattice-data requirements remained open then. The exact
+finite T13 substrate is now closed in v27, without asserting determinant
+multiplicativity, lattice index, independent bases, or normal forms.
 The supplementary-law historical parent remains
 independently reproducible at
 `artifacts/peano-library/channels-v17.json`, with evidence identity
@@ -414,7 +424,7 @@ campaign slice, and the {doc}`K3B CellHistory/ListAt chapter
 <cell-history-and-lookup>` is an Alpha layer with its own sealed receipt. The
 {doc}`K3C validity and membership chapter <list-validity-and-membership>`
 documents the additive layer's historical body-checked boundary; all seventeen
-entries are independently closed in current Alpha v23.
+entries are independently closed in historical Alpha v23.
 The {doc}`Bertrand campaign chapter <bertrand-campaign>` documents the
 additive layers, including the completed body proofs of finite Legendre
 recurrence, factorial--Legendre equality, compact $H/J$ transport,
@@ -473,7 +483,7 @@ the weighted vertical and factorial bridges; and the exact lower bound
 additions were `body_checked` and unavailable through checked replay; the
 primorial and no-prime upper bounds, large-input contradiction, finite
 coverage, and Bertrand endpoints were then open. Exact strict-root ancestors
-are closed in current Alpha v23, as are the remaining auxiliary rows.
+are closed in historical Alpha v23, as are the remaining auxiliary rows.
 
 Alpha v9 adds the conservative inclusive `Primorial` relation and its
 existence, functionality, zero, successor-decomposition, and positivity laws;
@@ -483,7 +493,7 @@ monotonicity. At historical Alpha v9 all twenty-one additions were
 `body_checked`, unavailable through checked replay, and unpromoted. Filtered
 interval splitting, duplicate-free external prime-product comparison,
 `primorial_le_four_pow`, and downstream Bertrand gates were then open; the
-strict-root closure remains independently checked in current Alpha v23.
+strict-root closure remains independently checked in historical Alpha v23.
 
 Alpha v10 pins the reviewed generic Product prefix/suffix split, then adds an
 offset selector-product relation with totality and functionality, entry
@@ -492,7 +502,7 @@ transport and shift, prefix restriction, and an exact decomposition of
 Alpha v10 all nine additions were `body_checked` and unavailable through
 checked replay; duplicate-free external-product comparison,
 `primorial_le_four_pow`, and downstream Bertrand gates were then open. The
-strict-root closure remains independently checked in current Alpha v23.
+strict-root closure remains independently checked in historical Alpha v23.
 
 Alpha v11 enrolls the complete dependency-closed post-v10 chain: the
 duplicate-free filtered-product comparison, Primorial interval divisibility
@@ -503,7 +513,7 @@ additions were `body_checked` and unavailable through checked replay. B4 was
 then closed at candidate/body-evidence level, while the five-range upper
 bound, B7 contradiction, finite coverage, and final endpoints remained open.
 All exact strict-root ancestors and auxiliary rows are independently checked in
-current Alpha v23.
+historical Alpha v23.
 
 Alpha v12 enrolls the complete dependency-closed post-v11 proof. Its first
 forty-three rows add the reviewed B6 base, growth, main inequality, and finite
@@ -534,11 +544,11 @@ evidence is `stable_closed` or `alpha_closed`; a `body_checked` or
 `pending_layered_closure` request fails closed.
 
 ```python
-from peano_lab.library.editions_v23 import edition, entry, replay
+from peano_lab.library.editions_v27 import edition, entry, replay
 
 len(edition("stable").specs)          # 432
-len(edition("alpha").specs)           # 1949
-len(edition("alpha").checked_specs)   # 1949
+len(edition("alpha").specs)           # 2560
+len(edition("alpha").checked_specs)   # 2560
 
 entry("cell_list_extensional", edition="alpha")
 replay("signed_decode_nonnegative_constructor", edition="alpha")

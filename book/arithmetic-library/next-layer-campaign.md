@@ -11,12 +11,15 @@ and adds 54 further checked results; see
 Historical **Alpha v22** in turn preserves all 1,830 v21 theorems and adds 60
 genuinely checked binary-length, Euclidean-gcd, and coded binary-execution
 proofs; see {doc}`Binary and Euclidean transport <transport-layer-campaign>`.
-Current **Alpha v23** preserves all 1,890 historical v22 theorems and adds
+Historical **Alpha v23** preserves all 1,890 historical v22 theorems and adds
 59 independently checked results that completely prove logarithmic Euclidean
 GCD (G101), canonical arbitrary-exponent binary modular execution (G102), and
 infinitely many primes congruent to three modulo four (G025).
 Statements below about the exact v20 release remain historically precise;
-T13's present boundary still excludes arbitrary determinants, rank, and lattices.
+Current Alpha v27 closes T13's exact determinant/rank/integer-span substrate,
+and G011, G095, G035, G027, G051, and G107. Stronger determinant
+multiplicativity, lattice-index, independent-basis, and reduction theorems
+remain separate open goals.
 
 The four additions are deliberately organized by genuine prerequisites:
 
@@ -66,14 +69,17 @@ functionality of the signed two-by-two determinant. The reusable root is
 `beta_dot_product_exists_unique`, tag
 [`MD0006`](../_static/constructive-next-layer-explorer/matrix-dot-product/explorer/defined/tag/MD0006.html).
 
-```{admonition} T13 is not closed
+```{admonition} Historical v20/v21 boundary: T13 is not closed
 :class: important
 At this historical v20 checkpoint, no theorem yet established arbitrary signed
 matrix multiplication. Historical Alpha v21 additionally proves that exact
 arbitrary signed multiplication theorem, signed dot products, and genuine
 signed two-/three-by-three determinants, bringing T13 to 33 checked
-components. Determinants in arbitrary dimension, rank, and lattices remain
-unproved, so the stronger T13 milestone remains explicitly **open**.
+components. At those historical checkpoints, determinants in arbitrary
+dimension, rank, and lattice data were unproved: the milestone remained
+explicitly **open**. Alpha v27 subsequently closes the exact finite
+substrate with 182 new proofs; lattice-index, basis, and reduction theorems
+are not included in that closure.
 ```
 
 ## G023 and G024: strict constructive Bertrand extensions
@@ -167,7 +173,7 @@ Historical Alpha v21 further introduced the sixteen conservatively checked
 `ND0012`–`ND0027` matrix-product, Euclidean-execution, and binary-modular
 definitions; the original eleven identities and their first-enrollment
 provenance remain unchanged. Historical Alpha v22 additionally introduces
-`ND0028`–`ND0037`; current Alpha v23 adds `ND0038`–`ND0045`, bringing the
+`ND0028`–`ND0037`; historical Alpha v23 added `ND0038`–`ND0045`, bringing the
 genuine shared registry to **97 conservative definitions**, **159 reviewed
 prerequisite edges**, and **61 signature-compatible blueprint matches**
 across **152 campaign terms**.
@@ -175,11 +181,11 @@ across **152 campaign terms**.
 Explore the shared
 [complete definition DAG](../_static/constructive-grand-campaign/definitions.json)
 or move directly between
-[T12](../_static/constructive-grand-campaign/index.html?view=goal&focus=T12),
-[open T13](../_static/constructive-grand-campaign/index.html?view=goal&focus=T13),
-[G023](../_static/constructive-grand-campaign/index.html?view=goal&focus=G023),
-[G024](../_static/constructive-grand-campaign/index.html?view=goal&focus=G024),
-and [G071](../_static/constructive-grand-campaign/index.html?view=goal&focus=G071).
+<a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=T12">T12</a>,
+<a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=T13">T13: closed finite substrate</a>,
+<a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G023">G023</a>,
+<a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G024">G024</a>,
+and <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G071">G071</a>.
 
 ## Independent proof certificate and immutable release
 
@@ -204,6 +210,6 @@ Edition SHA-256: ee0f596150d8609ab302303ade44c4413290675398a1d6999a47b3ba046ac38
 
 The historical Alpha-v19 parent, the sealed Alpha-v20, Alpha-v21, and
 Alpha-v22 snapshots, and the Stable edition are unchanged. Current channels
-are `artifacts/peano-library/channels-v23.json`. Hashes
+are `artifacts/peano-library/channels-v27.json`. Hashes
 identify sealed artifacts; only independent checking by the original kernel
 grants the new theorem rows their Alpha checked-use authority.

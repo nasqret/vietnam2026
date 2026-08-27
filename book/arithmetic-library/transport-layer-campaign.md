@@ -10,7 +10,7 @@ and every historical theorem remain unchanged. Its mathematical purpose is
 to replace externally computed algorithm intuitions with actual arithmetic
 relations and independently checked induction proofs.
 
-Current immutable **Alpha v23** preserves this complete 1,890-row historical
+Historical immutable **Alpha v23** preserves this complete 1,890-row historical
 snapshot and adds **59 independently checked theorems**, closing all of G101,
 G102, and G025. Its **1,949 checked-use rows** include 432 unchanged Stable
 results and 1,517 Alpha-only results. The v22 definitions and proofs below
@@ -143,15 +143,15 @@ uses**, and **41 separately declared notation references**: **352 total
 milestone-to-notation edges** across five dependency-first layers.
 Its expansion-checked registry contained **89 reviewed conservative
 definitions**, **142 exact reviewed definition edges**, and **50 compatible
-blueprint matches**. Current Alpha v23 extends the same graph to **152
+blueprint matches**. Historical Alpha v23 extended the same graph to **152
 blueprint terms**, **97 reviewed definitions**, **159 exact reviewed
 definition edges**, and **61 compatible blueprint matches**: **57 exact
 names** and **four explicitly reviewed aliases**. All preceding
 `ND0001`–`ND0037` objects retain their identities and
 unchanged expanded formulas. Inspect the exact
 [global definition dependency DAG](../_static/constructive-grand-campaign/definitions.json),
-the [completely closed G101 milestone](../_static/constructive-grand-campaign/index.html?view=goal&focus=G101),
-or the [completely closed G102 milestone](../_static/constructive-grand-campaign/index.html?view=goal&focus=G102).
+the <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G101">completely closed G101 milestone</a>,
+or the <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G102">completely closed G102 milestone</a>.
 
 ## Honest remaining obligations
 
@@ -161,13 +161,16 @@ or the [completely closed G102 milestone](../_static/constructive-grand-campaign
   canonical digit encoding and the exact formal logarithmic execution bound.
 - **G025:** completely proved in Alpha v23, establishing infinitely many
   primes congruent to three modulo four.
-- **T13:** arbitrary-dimensional determinants, rank, and lattice foundations
-  remain open despite fully proved arbitrary signed matrix multiplication.
+- **T13:** Alpha v27 closes arbitrary-dimensional recursive determinants,
+  rectangular rank, integer-span closure, and positive determinant data.
+  Determinant multiplicativity, lattice index, independent bases, and
+  lattice-reduction theorems remain separate open goals.
 
 Thus historical v22 supplied actual object-language binary length, actual
 terminal gcd transport, and actual supplied-digit execution histories, while
-current v23 genuinely closes their full algorithmic milestones and proves a
-new prime-distribution theorem. The stronger T13 boundary remains open.
+historical v23 genuinely closed their full algorithmic milestones and proves a
+new prime-distribution theorem. Alpha v27 later closed T13's exact finite
+substrate without claiming its stronger lattice successors.
 
 ## Independent proof certificate
 
@@ -189,9 +192,9 @@ Catalog SHA-256: fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae2
 Enrollment SHA-256: 431f7300f9190f6fdc35ef84212e93701f2bb565b7e32c1624b7ae0c89cfc5ea
 Edition SHA-256: 2750384264856ad10910c1e9369746da886f4760d41e356bfc9e7f8f4563c7db
 
-Current v23 channels: artifacts/peano-library/channels-v23.json
-Current catalog SHA-256: 818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2
-Current enrollment SHA-256: f5d94af7a11c642d7076a195e2e795e7b84c61a6de1a6b074708669b2dac1648
+Historical v23 channels: artifacts/peano-library/channels-v23.json
+Historical v23 catalog SHA-256: 818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2
+Historical v23 enrollment SHA-256: f5d94af7a11c642d7076a195e2e795e7b84c61a6de1a6b074708669b2dac1648
 Current edition SHA-256: 02059eef420eb96abd48c41bf62049a3cc69f025b00bed9dc3466e7eb2294a85
 ```
 
