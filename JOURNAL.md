@@ -5504,3 +5504,40 @@ The test driver uses that installed compiler and the already-built companion
 libraries read-only, with the original per-proof memory limits and one thread.
 No companion source, build cache, historical proof evidence, or CI gate was
 modified to hide the other failures.
+
+### 2026-08-28 — complete Gaussian closure and additive Alpha-v30 admission
+
+G082 now has a complete self-contained 453-node proof bundle: 180 new and
+272 inherited theorem bodies, one conjunction packaging node, 1,448 edges,
+39,423 body-node occurrences and 6,143,166 bytes. Its SHA-256 is
+`e0e10f11c5b12b411843054000a77be22ede7db53602814f9532e3e7c8daa270`.
+Every node passed the original HA kernel, and the independently compiled
+Lean 4.28.0 verifier accepted the exact final canonical bytes. The receipt
+records the actual binary provenance without claiming a local 4.31 build.
+
+The native v30 replay also produces a genuine ordinary empty-context proof
+of `gaussian_unique_prime_factorization`, with 52,094 proof occurrences,
+35,123 distinct objects, depth 118 and 2,215,215 annotation occurrences.
+Untrusted proof assembly hoists closed conditional bodies outside irrelevant
+layer contexts and discharges every premise with existing implication/cut
+rules. No kernel, mathematical source, canonical bundle, or resource limit
+was changed. The provider path passed in 52.729 seconds at 588,709,888 peak
+resident bytes; native edition replay plus a second complete kernel check
+passed in 96.306 seconds at 1,021,362,176 bytes. A separate peer review found
+no logical, context, authority or resource-accounting defect.
+
+All 227 final provider/admission regressions passed: 123 closure and 104
+admission tests, including adversarial syntax, wrong premises, missing or
+forged artifact data, exact historical provenance, repository-free browser
+loading, and every unchanged graph/candidate resource guard. They ran in
+20 serial fresh bounded windows with no skips or expected failures.
+
+The resulting Alpha v30 registry contains 3,222 checked entries and 10,588
+actual dependency edges across 53 layers. All 3,042 v29 entries remain the
+same immutable objects, and Stable remains the identical default 432.
+Together v29 and v30 add 458 theorems and 51 conservative definitions for
+the five requested priority goals and their shared tools. Sorted primary
+Gaussian representatives, prime classification and Eisenstein factorization
+remain separate open milestones. Current atlas/UI publication and the
+proof-only remote deployment are the remaining integration steps; this
+admission checkpoint does not imply a production Peano promotion.
