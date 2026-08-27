@@ -220,11 +220,66 @@ def test_full_history_source_and_exact_companion_are_actual_siblings() -> None:
     main, companion = checkouts
     assert "fetch-depth: 0\n" in main
     assert "path: vietnam2026\n" in main
+    assert "persist-credentials: false\n" in main
     assert "repository: nasqret/peano-lab-lean\n" in companion
     assert f"ref: {COMPANION_COMMIT}\n" in companion
     assert "path: peano-lab-lean\n" in companion
     assert "persist-credentials: false\n" in companion
     assert "ref: main" not in companion
+
+
+def test_companion_uses_only_its_dedicated_ssh_key_with_strict_host_verification() -> None:
+    step = _step("Check out the independently verified Lean companion")
+    assert "ssh-key: ${{ secrets.PEANO_LEAN_READONLY_DEPLOY_KEY }}\n" in step
+    assert "ssh-strict: true\n" in step
+    assert "persist-credentials: false\n" in step
+    assert re.search(r"(?m)^\s+token:", step) is None
+    assert "ssh-known-hosts:" not in step  # checkout includes GitHub's pinned host key
+    assert "StrictHostKeyChecking=no" not in step
+
+
+def test_companion_key_is_not_exposed_to_builds_or_untrusted_fork_events() -> None:
+    workflow = WORKFLOW.read_text(encoding="utf-8")
+    job = _job("peano-lab-shards")
+    assert "    permissions:\n      contents: read\n" in job
+    before_steps = job.split("    steps:\n", 1)[0]
+    assert "PEANO_LEAN_READONLY_DEPLOY_KEY" not in before_steps
+    assert "pull_request_target" not in workflow
+    assert "  pull_request:\n" in workflow
+    assert workflow.count("${{ secrets.PEANO_LEAN_READONLY_DEPLOY_KEY }}") == 2
+    for step in _steps():
+        if "PEANO_LEAN_READONLY_DEPLOY_KEY" in step:
+            assert step.startswith((
+                "name: Require the read-only companion deploy key\n",
+                "name: Check out the independently verified Lean companion\n",
+            ))
+    names = [part.splitlines()[0] for part in _steps()]
+    assert names.index("name: Require the read-only companion deploy key") < names.index(
+        "name: Check out the independently verified Lean companion"
+    )
+
+
+@pytest.mark.parametrize("value", (None, "", "synthetic-multiline-key\nnot-a-credential"))
+def test_missing_companion_key_fails_closed_without_printing_key_material(value: str | None) -> None:
+    step = _step("Require the read-only companion deploy key")
+    assert "PEANO_LEAN_READONLY_DEPLOY_KEY: ${{ secrets.PEANO_LEAN_READONLY_DEPLOY_KEY }}\n" in step
+    script = textwrap.dedent(step.split("        run: |\n", 1)[1])
+    environment = dict(os.environ)
+    environment.pop("PEANO_LEAN_READONLY_DEPLOY_KEY", None)
+    if value is not None:
+        environment["PEANO_LEAN_READONLY_DEPLOY_KEY"] = value
+    result = subprocess.run(
+        ["bash", "-e", "-c", script], env=environment,
+        capture_output=True, text=True, timeout=10, check=False,
+    )
+    assert result.returncode == (0 if value else 1)
+    assert result.stdout == ""
+    if value:
+        assert result.stderr == ""
+        assert value not in result.stdout + result.stderr
+    else:
+        assert "requires PEANO_LEAN_READONLY_DEPLOY_KEY" in result.stderr
+        assert "Fork PRs receive no repository secret" in result.stderr
 
 
 def test_companion_source_and_declared_toolchain_are_checked_before_build() -> None:

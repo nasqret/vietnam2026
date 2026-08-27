@@ -219,3 +219,28 @@ directly.
 The repository `nasqret/vietnam2026` is the source of record. Push the current
 milestone branch; merging it to `main` is a milestone-owner decision. GitHub
 Pages may optionally mirror the built book.
+
+### Read-only Lean companion access in CI
+
+The Peano shards check out the private `nasqret/peano-lab-lean` repository at
+the exact pinned commit, using the dedicated Actions secret
+`PEANO_LEAN_READONLY_DEPLOY_KEY`. Its matching repository deploy key must have
+**read-only** access to that companion only. Neither repository needs a
+visibility change, a personal account token in Actions, or write access.
+
+The private key is provided only to the presence check and companion checkout;
+it is not a job-wide environment variable. SSH host verification remains
+strict, and both checkouts disable credential persistence. The ordinary
+Actions token is restricted to `contents: read`. Never print key contents,
+store a key in Git, reuse the operator's faculty SSH key, or expose this secret
+through `pull_request_target` or another privileged fork workflow.
+
+Fork pull requests intentionally receive no repository secret, so this gate
+fails closed with an explanatory message. Run the full private-companion
+suite from a reviewed trusted branch. Removing this one repository deploy key
+revokes companion access; deleting its one Actions secret removes the CI copy.
+Rotation must preserve the exact source/toolchain pins and proof checks.
+
+Peano production promotion can be deferred while this CI setup and proof
+development continue. That does not waive the cache-header delivery gate and
+does not prevent publishing the separately checked static proof website.

@@ -79,6 +79,8 @@ jobs:
   peano-lab-shards:
     name: Peano Lab shard ${{ matrix.shard }}
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     timeout-minutes: 90
     strategy:
       fail-fast: false
@@ -94,12 +96,24 @@ jobs:
           # historical producer commit; a depth-1 checkout cannot supply them.
           fetch-depth: 0
           path: vietnam2026
+          persist-credentials: false
+      - name: Require the read-only companion deploy key
+        env:
+          PEANO_LEAN_READONLY_DEPLOY_KEY: ${{ secrets.PEANO_LEAN_READONLY_DEPLOY_KEY }}
+        run: |
+          if [ -z "${PEANO_LEAN_READONLY_DEPLOY_KEY:-}" ]; then
+            echo "The private Lean companion requires PEANO_LEAN_READONLY_DEPLOY_KEY." >&2
+            echo "Fork PRs receive no repository secret; use a reviewed trusted branch for this gate." >&2
+            exit 1
+          fi
       - name: Check out the independently verified Lean companion
         uses: actions/checkout@v4
         with:
           repository: nasqret/peano-lab-lean
           ref: d2903c8bd507b7e4458b1249f840a4e274befdbf
           path: peano-lab-lean
+          ssh-key: ${{ secrets.PEANO_LEAN_READONLY_DEPLOY_KEY }}
+          ssh-strict: true
           persist-credentials: false
       - uses: actions/setup-python@v5
         with:

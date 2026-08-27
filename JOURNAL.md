@@ -5316,3 +5316,29 @@ internal lemmas and exceptional cases recorded in PLAN/14. A stale G095 prose
 sentence was corrected to match its actual v27 completion. All 81 affected
 atlas/book tests pass. This receipt and planning correction do not change the
 deployed proof bytes. Unrelated in-progress Hydra work remains untouched.
+
+## 2026-08-27 — Authorized read-only CI access and the next five goals
+
+The owner authorized a dedicated read-only deploy key for the private Lean
+companion and an encrypted Actions secret in `vietnam2026`. A new Ed25519 key
+was created for this purpose alone; the GitHub deploy-key metadata confirms
+`read_only=true`. The matching `PEANO_LEAN_READONLY_DEPLOY_KEY` secret was
+installed without printing its value, reusing an account/faculty key, granting
+write access, or changing either repository's visibility.
+
+The workflow retains the exact companion commit/toolchain pins and all eight
+full proof-test shards. The normal Actions token is now `contents: read`, both
+checkouts disable credential persistence, and companion SSH host verification
+is strict. Only the presence check and companion checkout receive the new key;
+missing secrets fail closed, including on fork pull requests. No privileged
+fork workflow was introduced. All 35 focused CI environment/security tests
+pass locally. An actual remote checkout/build remains to be observed after
+this configuration is pushed.
+
+Peano production promotion is deferred, not waived: the unchanged cache-header
+gate still applies. Independent proof development and static proof-site
+publication can continue. G072, G006, and G010 are being developed with shared
+finite-factor/counting substrates, followed by G036 and G082. The first G072
+audit identified the genuine initial `0/1` convergent for positive rationals
+below one; the new recurrence definition will admit a zero numerator and
+retain a positive denominator, without modifying sealed v28 evidence.
