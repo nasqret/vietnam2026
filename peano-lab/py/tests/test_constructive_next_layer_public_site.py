@@ -7,6 +7,7 @@ decode, reconstruct, replay, or kernel-check historical proof bundles.
 
 from __future__ import annotations
 
+from collections import Counter
 from functools import lru_cache
 from hashlib import sha256
 from html.parser import HTMLParser
@@ -28,6 +29,8 @@ TRANSPORT = ROOT / "book" / "_static" / "constructive-transport-layer-explorer"
 MILESTONE = ROOT / "book" / "_static" / "constructive-milestone-closure-explorer"
 RESEARCH = ROOT / "book" / "_static" / "constructive-research-layer-explorer"
 BREAKTHROUGH = ROOT / "book" / "_static" / "constructive-breakthrough-layer-explorer"
+SECOND_WAVE = ROOT / "book/_static/constructive-second-wave-explorer-v28"
+LOWER_LAYER = ROOT / "book/_static/constructive-lower-layer-explorer"
 CURRENT_ALPHA_VERSION = json.loads((ATLAS / "campaign.json").read_text(encoding="utf-8"))[
     "meta"
 ]["current_alpha_version"]
@@ -38,6 +41,26 @@ CURRENT_CHANNEL = json.loads(CHANNELS.read_text(encoding="utf-8"))["channels"]["
 CURRENT_REVISION = CURRENT_CHANNEL["artifact_sha256"][:12]
 STALE_V19_REVISION = "f1c3d3fba013"
 CURRENT_ALPHA_IDENTITY = CURRENT_CHANNEL["edition_identity_sha256"]
+SEALED_FLAGSHIP_VERSION = "v25"
+SEALED_FLAGSHIP_IDENTITY = "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
+SECOND_WAVE_BUNDLE_SHA256 = "c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d"
+SECOND_WAVE_ROUTES = {
+    "integer-linear-algebra", "hensel-lifting", "generalized-crt", "multinomial-kummer",
+    "prime-count-chebyshev", "cornacchia", "cauchy-davenport",
+}
+LOWER_LAYER_ROUTES = {
+    "arithmetic-foundations", "prime-enumeration", "gaussian-integers", "eisenstein-integers",
+}
+SECOND_WAVE_COMPLETIONS = {
+    "T13": ("integer-linear-algebra", "rectangular_matrix_rank_exists_unique"),
+    "G095": ("hensel-lifting", "integer_polynomial_prime_simple_root_lifts_all_positive_powers"),
+    "G011": ("generalized-crt", "crt_pairwise_compatible_prefix_normalized_exists_unique"),
+}
+HISTORICAL_PARTIAL_EVIDENCE_SHA256 = {
+    "T13": "fc99bbaa05e917570f1ee7e36ed365d8bed5bc656362ce5a7255fa0eebaa7c1b",
+    "G095": "1b1b57bb84b49c6e4ecff1b3eec11426dec337cef0c674a7eb184ea15346326e",
+    "G011": "f6f21bb21a20a4c464720e1c9df11d492faae71690c2c9bfaec425bf7787c5be",
+}
 NEXT_BUNDLE = "alpha-v20-next-layer-proof-bundle-v1.json"
 NEXT_RECEIPT = "alpha-v20-next-layer-closure-receipt.md"
 NEXT_BUNDLE_SHA256 = (
@@ -330,7 +353,7 @@ def _document(path: Path) -> _Document:
 
 @lru_cache(maxsize=1)
 def _catalog_digest() -> str:
-    """Stream the 25 MiB catalog; never parse it or touch a proof bundle."""
+    """Stream the current catalog; never parse it or touch a proof bundle."""
 
     digest = sha256()
     with CATALOG.open("rb") as source:
@@ -399,12 +422,28 @@ def _revision(href: str) -> str | None:
     return parse_qs(urlsplit(href).query).get("v", [None])[0]
 
 
+def _assert_separate_second_wave_completion(record: dict, goal: str) -> None:
+    """A historical partial chapter links to a distinct, completed v27 proof."""
+
+    route, theorem = SECOND_WAVE_COMPLETIONS[goal]
+    assert record["milestone_status"] == "alpha_closed"
+    assert record["milestone_checked_use"] is True
+    assert "milestone_partial_checked_use" not in record
+    assert record["milestone_full_proof_slug"] == route
+    assert record["milestone_full_theorem_name"] == theorem
+    assert record["milestone_caveat"].startswith("Historical partial components only:")
+    assert theorem not in {node["name"] for node in record["nodes"]}
+
+
 def test_current_alpha_and_immutable_stable_are_bound_to_actual_catalog_bytes() -> None:
     channels = _channels()
     alpha = channels["channels"]["alpha"]
     stable = channels["channels"]["stable"]
     digest = _catalog_digest()
 
+    assert CURRENT_ALPHA_VERSION == "v28"
+    assert digest == "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+    assert CURRENT_ALPHA_IDENTITY == "4936d155e8d2a39409a4e83beb4ac5cb2481948d8b6eeecf1c7571161786646b"
     assert digest == alpha["artifact_sha256"]
     assert digest[:12] == CURRENT_REVISION
     assert alpha["artifact_path"] == (
@@ -422,18 +461,32 @@ def test_current_alpha_and_immutable_stable_are_bound_to_actual_catalog_bytes() 
     ]
     current_counts = alpha[f"frontier_{CURRENT_ALPHA_VERSION}_campaign_counts"]
     assert sum(current_counts.values()) == current["new_theorem_count"]
-    if CURRENT_ALPHA_VERSION == "v24":
-        assert current_counts == {
+    assert current["theorem_count"] == 2764
+    assert current["new_theorem_count"] == 204
+    assert current["dependency_edge_count"] == current["checked_dependency_edge_count"] == 8984
+    assert current["layer_count"] == 53
+    assert current_counts == {
+        "foundations": 28, "prime_enumeration": 18,
+        "gaussian_euclidean": 93, "eisenstein_euclidean": 65,
+    }
+    historical_campaign_counts = {
+        "v24": {
             "generalized_crt_fold": 27,
             "matrix_determinant_minors": 17,
             "polynomial_hensel": 15,
-        }
-    if CURRENT_ALPHA_VERSION == "v25":
-        assert current_counts == {
+        },
+        "v25": {
             "generalized_crt_compatibility": 24,
             "matrix_cofactor_expansion": 29,
             "polynomial_taylor_hensel": 19,
-        }
+        },
+    }
+    for version, expected in historical_campaign_counts.items():
+        historical = json.loads((ROOT / f"artifacts/peano-library/channels-{version}.json").read_bytes())
+        historic_alpha = historical["channels"]["alpha"]
+        assert historic_alpha[f"frontier_{version}_campaign_counts"] == expected
+        assert historic_alpha[f"alpha_{version}_frontier_new_count"] == sum(expected.values())
+        assert historical["channels"]["stable"] == stable
     assert stable["theorem_count"] == stable["checked_use_count"] == 432
     assert channels["default_channel"] == "stable"
 
@@ -459,15 +512,21 @@ def test_public_hub_publishes_every_current_independently_versioned_family_route
         | set(MILESTONE_FAMILIES)
         | set(RESEARCH_FAMILIES)
         | set(BREAKTHROUGH_FAMILIES)
+        | SECOND_WAVE_ROUTES
+        | LOWER_LAYER_ROUTES
     )
-    manifest_routes = {
-        family["slug"]
-        for path in (ROOT / "book" / "_static").glob("constructive-*-explorer/manifest.json")
-        for family in json.loads(path.read_bytes())["families"]
-    }
-    assert known_routes <= set(FLAGSHIP_ROUTES) | manifest_routes
+    manifest_routes = set()
+    for package in (
+        HISTORIC, NEXT, ADVANCED, TRANSPORT, MILESTONE, RESEARCH, BREAKTHROUGH,
+        SECOND_WAVE, LOWER_LAYER,
+    ):
+        manifest = json.loads((package / "manifest.json").read_bytes())
+        assert manifest["alpha_edition_version"] == CURRENT_ALPHA_VERSION
+        assert manifest.get("catalog_sha256", manifest.get("alpha_catalog_sha256")) == _catalog_digest()
+        manifest_routes.update(family["slug"] for family in manifest["families"])
+    assert known_routes == set(FLAGSHIP_ROUTES) | manifest_routes
     assert set(family_links) == set(FLAGSHIP_ROUTES) | manifest_routes
-    assert len(family_links) >= 27
+    assert len(family_links) == 38
     assert all(_revision(item["href"]) == CURRENT_REVISION for item in family_links.values())
 
     atlas = next(
@@ -508,6 +567,13 @@ def test_grand_atlas_embeds_the_exact_current_snapshot_without_rewriting_history
     assert "v22" in snapshot["meta"]["historical_alpha_versions"]
     assert "v23" in snapshot["meta"]["historical_alpha_versions"]
     assert "v24" in snapshot["meta"]["historical_alpha_versions"]
+    assert "v25" in snapshot["meta"]["historical_alpha_versions"]
+    assert "v26" in snapshot["meta"]["historical_alpha_versions"]
+    assert "v27" in snapshot["meta"]["historical_alpha_versions"]
+    assert Counter(node["status"] for node in snapshot["nodes"] if node["kind"] == "goal") == {
+        "open": 83, "alpha_closed": 36, "stable_closed": 1,
+    }
+    assert sum(len(node["deps"]) for node in snapshot["nodes"]) == 309
 
     boundaries = snapshot["ambitious_boundaries"]
     current = boundaries[f"alpha_{CURRENT_ALPHA_VERSION}_edition"]
@@ -521,6 +587,9 @@ def test_grand_atlas_embeds_the_exact_current_snapshot_without_rewriting_history
     parent = boundaries["alpha_v24_edition"]
     assert parent["role"] in {"immutable_historical_parent", "immutable_historical_ancestor"}
     assert parent["theorem_count"] == parent["checked_use_count"] == 2_008
+    immediate_parent = boundaries["alpha_v27_edition"]
+    assert immediate_parent["role"] == "historical_immutable_release"
+    assert immediate_parent["theorem_count"] == immediate_parent["checked_use_count"] == 2560
 
 
 def test_grand_atlas_preserves_historical_closures_and_honest_open_boundaries() -> None:
@@ -544,12 +613,12 @@ def test_grand_atlas_preserves_historical_closures_and_honest_open_boundaries() 
         assert evidence["independent_lean_bundle_verified"] is True
 
     partial = nodes["T13"]
-    evidence = partial["evidence"]
-    assert partial["status"] == "open"
+    evidence = partial["historical_partial_evidence"]
+    assert partial["status"] == "alpha_closed"
     assert evidence["implementation"] == "independently_closed_partial"
     assert evidence["checked_use"] is False
     assert evidence["partial_component_checked_use"] is True
-    assert evidence["alpha_version"] == CURRENT_ALPHA_VERSION
+    assert evidence["alpha_version"] == "v25"
     assert evidence["partial_checked_theorem_count"] >= 50
     assert evidence["new_checked_theorem_count"] >= 17
     assert evidence["partial_theorem_name"] == "signed_matrix_cofactor_family_and_fold_exists"
@@ -558,9 +627,10 @@ def test_grand_atlas_preserves_historical_closures_and_honest_open_boundaries() 
     assert evidence["full_arbitrary_signed_matrix_product_proved"] is True
     assert evidence["full_arbitrary_determinant_proved"] is False
     assert evidence["full_lattice_substrate_proved"] is False
-    assert "T13 milestone remains OPEN" in (
-        NEXT / "matrix-dot-product" / "index.html"
-    ).read_text(encoding="utf-8")
+    matrix_page = (NEXT / "matrix-dot-product" / "index.html").read_text(encoding="utf-8")
+    assert "T13 milestone remains OPEN" not in matrix_page
+    assert "Historical partial components only" in matrix_page
+    assert "Full T13 proof · Alpha v27" in matrix_page
     for identifier, expected_count, expected_edges, expected_name in (
         ("G101", 17, 48, "euclidean_gcd_execution_logarithmic_bound"),
         ("G102", 24, 63, "binary_modular_execution_logarithmic_bound"),
@@ -594,13 +664,62 @@ def test_grand_atlas_preserves_historical_closures_and_honest_open_boundaries() 
         ("G011", "crt_merge_compatible_prefix_canonical_exists_unique", 24),
     ):
         node = nodes[identifier]
-        partial_evidence = node["evidence"]
-        assert node["status"] == "open"
+        partial_evidence = node["historical_partial_evidence"]
+        assert node["status"] == "alpha_closed"
         assert partial_evidence["checked_use"] is False
         assert partial_evidence["partial_component_checked_use"] is True
         assert partial_evidence["partial_theorem_name"] == theorem
         assert partial_evidence["new_checked_theorem_count"] == theorem_count
-        assert partial_evidence["alpha_version"] == CURRENT_ALPHA_VERSION
+        assert partial_evidence["alpha_version"] == "v25"
+        assert partial_evidence["bundle_nodes"] == 302
+        assert partial_evidence["bundle_sha256"] == BREAKTHROUGH_BUNDLE_SHA256
+        historical_bytes = (json.dumps(
+            partial_evidence, ensure_ascii=False, sort_keys=True, separators=(",", ":")
+        ) + "\n").encode("utf-8")
+        assert sha256(historical_bytes).hexdigest() == HISTORICAL_PARTIAL_EVIDENCE_SHA256[identifier]
+
+        complete = node["evidence"]
+        route, root = SECOND_WAVE_COMPLETIONS[identifier]
+        assert complete["implementation"] == "independently_closed"
+        assert complete["alpha_version"] == "v27"
+        assert complete["checked_use"] is True
+        assert complete["alpha_enrolled"] is True
+        assert complete["stable_member"] is False
+        assert complete["full_empty_context_closure"] is True
+        assert complete["independent_lean_bundle_verified"] is True
+        assert complete["theorem_name"] == root
+        assert complete["route"] == route + "/"
+        assert complete["bundle_nodes"] == 1224
+        assert complete["bundle_dependencies"] == 3999
+        assert complete["bundle_sha256"] == SECOND_WAVE_BUNDLE_SHA256
+        assert "partial_component_checked_use" not in complete
+        assert "partial_theorem_name" not in complete
+        assert complete["theorem_name"] != partial_evidence["partial_theorem_name"]
+
+    matrix = nodes["T13"]["evidence"]
+    for flag in (
+        "full_arbitrary_determinant_proved", "full_rank_substrate_proved",
+        "full_lattice_substrate_proved", "positive_absolute_determinant_data_proved",
+        "nonzero_determinant_implies_full_rank_proved", "integer_column_span_zero_add_neg_proved",
+    ):
+        assert matrix[flag] is True
+    for flag in (
+        "lattice_index_formula_proved", "normal_form_or_reduction_proved",
+        "independent_basis_theorem_proved", "determinant_multiplicativity_proved",
+    ):
+        assert matrix[flag] is False
+    for flag in (
+        "full_simple_root_hensel_lift_proved", "signed_integer_polynomials_proved",
+        "unrestricted_input_canonical_prime_power_lift_proved", "arbitrary_prime_power_iteration_proved",
+        "derivative_nonzero_implies_unit_proved", "lifted_root_uniqueness_proved",
+    ):
+        assert nodes["G095"]["evidence"][flag] is True
+    for flag in (
+        "full_generalized_crt_proved", "arbitrary_pairwise_compatibility_implies_merge_compatibility_proved",
+        "general_compatible_non_coprime_fold_proved", "normalized_unique_solution_proved",
+        "zero_moduli_and_empty_list_included",
+    ):
+        assert nodes["G011"]["evidence"][flag] is True
 
 
 def test_global_definition_dag_is_downloadable_layered_and_genuinely_reviewed() -> None:
@@ -612,19 +731,25 @@ def test_global_definition_dag_is_downloadable_layered_and_genuinely_reviewed() 
     rows = {item["name"]: item for item in graph["definitions"]}
     assert graph["schema"] == "constructive-number-theory-definition-dag-v1"
     assert graph["definition_count"] == len(rows) == len(_campaign()["definitions"])
-    assert graph["definition_count"] == 179
-    assert graph["definition_edge_count"] == sum(len(row["dependencies"]) for row in rows.values())
-    assert graph["statement_usage_edge_count"] >= 311
+    assert graph["definition_count"] == 323
+    assert graph["definition_edge_count"] == sum(len(row["dependencies"]) for row in rows.values()) == 459
+    assert graph["statement_usage_edge_count"] == 317
+    assert graph["declared_notation_edge_count"] == 231
     assert graph["milestone_usage_edge_count"] == (
         graph["statement_usage_edge_count"] + graph["declared_notation_edge_count"]
     )
-    assert graph["reviewed_definition_count"] == 120
+    assert graph["milestone_usage_edge_count"] == 548
+    assert graph["reviewed_definition_count"] == 233
     assert graph["reviewed_definition_edge_count"] == sum(
         len(row["dependencies"]) for row in graph["reviewed_definitions"]
-    )
-    assert graph["compatible_reviewed_match_count"] == 88
+    ) == 441
+    assert graph["compatible_reviewed_match_count"] == 236
+    assert graph["exact_name_reviewed_match_count"] == 231
+    assert graph["explicit_alias_reviewed_match_count"] == 5
+    assert graph["incompatible_reviewed_match_count"] == 2
     assert graph["definition_edge_count"] == len(graph["definition_edges"])
     assert graph["topological_layer_count"] == len(graph["layers"]) >= 7
+    assert graph["topological_layer_count"] == 13
     assert graph["topological_layer_count"] == max(
         row["topological_layer"] for row in rows.values()
     ) + 1
@@ -651,6 +776,8 @@ def test_global_definition_dag_is_downloadable_layered_and_genuinely_reviewed() 
     assert rows["Beta"]["reviewed_match"]["reviewed_id"] == "PD0013"
     assert rows["Sum"]["reviewed_match"] is None
     assert rows["Sum"]["reviewed_incompatibility"]["reason"] == "incompatible-arity"
+    assert rows["Prod"]["reviewed_match"] is None
+    assert rows["Prod"]["reviewed_incompatibility"]["reason"] == "incompatible-arity"
     assert rows["BetaSum"]["reviewed_match"]["reviewed_id"] == "PD0015"
     assert rows["BetaSum"]["reviewed_match"]["reviewed_name"] == "Sum"
     assert rows["BetaSum"]["reviewed_match"]["reviewed_argument_blueprint_positions"] == [
@@ -670,6 +797,8 @@ def test_atlas_definition_links_resolve_new_families_both_locally_and_when_deplo
     assert 'return "../constructive-milestone-closure-explorer/" + route + "/explorer/defined/";' in function
     assert 'return "../constructive-research-layer-explorer/" + route + "/explorer/defined/";' in function
     assert 'return "../constructive-breakthrough-layer-explorer/" + route + "/explorer/defined/";' in function
+    assert 'return "../constructive-second-wave-explorer-v28/" + route + "/explorer/defined/";' in function
+    assert 'return "../constructive-lower-layer-explorer/" + route + "/explorer/defined/";' in function
     assert 'return "../constructive-frontier-explorer/" + route + "/explorer/defined/";' in function
     for slug in (
         *NEXT_FAMILIES,
@@ -678,6 +807,8 @@ def test_atlas_definition_links_resolve_new_families_both_locally_and_when_deplo
         *MILESTONE_FAMILIES,
         *RESEARCH_FAMILIES,
         *BREAKTHROUGH_FAMILIES,
+        *SECOND_WAVE_ROUTES,
+        *LOWER_LAYER_ROUTES,
     ):
         assert f'"{slug}"' in function
 
@@ -808,8 +939,8 @@ def test_bertrand_flagship_reports_current_checked_release_authority() -> None:
     assert "historical Alpha-v12 enrollment remains unchanged" in landing
     for filename in ("manifest.json", "api/graph.json"):
         record = json.loads((root / filename).read_text(encoding="utf-8"))
-        assert record["alpha_edition_version"] == CURRENT_ALPHA_VERSION
-        assert record["alpha_edition_identity_sha256"] == CURRENT_ALPHA_IDENTITY
+        assert record["alpha_edition_version"] == SEALED_FLAGSHIP_VERSION
+        assert record["alpha_edition_identity_sha256"] == SEALED_FLAGSHIP_IDENTITY
 
 
 def test_public_hub_and_release_metrics_preserve_historical_590_node_certificate_and_receipt() -> None:
@@ -915,9 +1046,11 @@ def test_advanced_families_preserve_provenance_and_report_their_current_goal_sta
     assert corpus["alpha_proof_bundle_sha256"] == ADVANCED_BUNDLE_SHA256
     assert corpus["independent_lean_bundle_verified"] is True
     assert corpus["campaign_goal_id"] == expected["goal"]
-    expected_status = "open" if expected["goal"] == "T13" else "alpha_closed"
-    assert corpus["milestone_status"] == expected_status
-    assert corpus["milestone_checked_use"] is (expected["goal"] != "T13")
+    assert corpus["milestone_status"] == "alpha_closed"
+    assert corpus["milestone_checked_use"] is True
+    if expected["goal"] == "T13":
+        _assert_separate_second_wave_completion(corpus, "T13")
+        assert "lattice index and normal forms are outside that scope" in corpus["milestone_caveat"]
     tag, name = expected["root"]
     assert corpus["tags"][name] == tag
     assert name in corpus["root_names"]
@@ -1133,7 +1266,7 @@ def test_research_manifest_preserves_exact_checked_authority_and_first_admission
 
 
 @pytest.mark.parametrize("slug", tuple(RESEARCH_FAMILIES))
-def test_research_families_keep_checked_proofs_separate_from_open_milestones(slug: str) -> None:
+def test_research_families_keep_historical_components_separate_from_completed_milestones(slug: str) -> None:
     expected = RESEARCH_FAMILIES[slug]
     corpus = json.loads((RESEARCH / slug / "api" / "corpus.json").read_bytes())
     assert corpus["family_slug"] == slug
@@ -1146,9 +1279,7 @@ def test_research_families_keep_checked_proofs_separate_from_open_milestones(slu
     assert corpus["alpha_proof_bundle_sha256"] == RESEARCH_BUNDLE_SHA256
     assert corpus["independent_lean_bundle_verified"] is True
     assert corpus["campaign_goal_id"] == expected["goal"]
-    assert corpus["milestone_status"] == "open"
-    assert corpus["milestone_checked_use"] is False
-    assert corpus["milestone_partial_checked_use"] is True
+    _assert_separate_second_wave_completion(corpus, expected["goal"])
     assert len(corpus["definitions"]) == expected["definition_count"]
     assert corpus["path_policy"] == "proof_dependency_edges_only"
 
@@ -1164,7 +1295,8 @@ def test_research_families_keep_checked_proofs_separate_from_open_milestones(slu
     assert "first admitted v24" in page
     assert "compiled verifier accepted all 203 exact bundle nodes" in page
     assert RESEARCH_BUNDLE_SHA256 in page
-    assert f"{expected['goal']} remains OPEN" in page
+    assert f"{expected['goal']} remains OPEN" not in page
+    assert f"Full {expected['goal']} proof · Alpha v27" in page
 
     graph = json.loads(
         (RESEARCH / slug / "explorer" / "defined" / "api" / "graph.json").read_bytes()
@@ -1174,9 +1306,7 @@ def test_research_families_keep_checked_proofs_separate_from_open_milestones(slu
     assert graph["alpha_checked_use_node_count"] == expected["count"]
     assert graph["stable_admitted_node_count"] == 0
     assert graph["independent_lean_bundle_verified"] is True
-    assert graph["milestone_status"] == "open"
-    assert graph["milestone_checked_use"] is False
-    assert graph["milestone_partial_checked_use"] is True
+    _assert_separate_second_wave_completion(graph, expected["goal"])
     assert graph["path_policy"] == "proof_dependency_edges_only"
 
     identifier, definition = expected["definition"]
@@ -1241,7 +1371,7 @@ def test_breakthrough_manifest_binds_all_current_checked_frontiers_to_the_sealed
 
 
 @pytest.mark.parametrize("slug", tuple(BREAKTHROUGH_FAMILIES))
-def test_breakthrough_families_publish_checked_roots_without_falsely_closing_milestones(
+def test_breakthrough_families_publish_old_roots_and_separate_actual_milestone_closures(
     slug: str,
 ) -> None:
     expected = BREAKTHROUGH_FAMILIES[slug]
@@ -1257,9 +1387,7 @@ def test_breakthrough_families_publish_checked_roots_without_falsely_closing_mil
     assert corpus["alpha_proof_bundle_sha256"] == BREAKTHROUGH_BUNDLE_SHA256
     assert corpus["independent_lean_bundle_verified"] is True
     assert corpus["campaign_goal_id"] == expected["goal"]
-    assert corpus["milestone_status"] == "open"
-    assert corpus["milestone_checked_use"] is False
-    assert corpus["milestone_partial_checked_use"] is True
+    _assert_separate_second_wave_completion(corpus, expected["goal"])
     assert len(corpus["definitions"]) == expected["definition_count"]
     assert corpus["path_policy"] == "proof_dependency_edges_only"
 
@@ -1275,7 +1403,8 @@ def test_breakthrough_families_publish_checked_roots_without_falsely_closing_mil
     assert "first admitted v25" in page
     assert "compiled verifier accepted all 302 exact bundle nodes" in page
     assert BREAKTHROUGH_BUNDLE_SHA256 in page
-    assert f"{expected['goal']} remains OPEN" in page
+    assert f"{expected['goal']} remains OPEN" not in page
+    assert f"Full {expected['goal']} proof · Alpha v27" in page
 
     graph = json.loads(
         (BREAKTHROUGH / slug / "explorer" / "defined" / "api" / "graph.json").read_bytes()
@@ -1285,9 +1414,7 @@ def test_breakthrough_families_publish_checked_roots_without_falsely_closing_mil
     assert graph["alpha_checked_use_node_count"] == expected["count"]
     assert graph["stable_admitted_node_count"] == 0
     assert graph["independent_lean_bundle_verified"] is True
-    assert graph["milestone_status"] == "open"
-    assert graph["milestone_checked_use"] is False
-    assert graph["milestone_partial_checked_use"] is True
+    _assert_separate_second_wave_completion(graph, expected["goal"])
     assert graph["path_policy"] == "proof_dependency_edges_only"
 
     identifier, definition = expected["definition"]
@@ -1342,6 +1469,8 @@ def test_stage_proofs_exposes_all_current_routes_and_exact_additive_artifacts() 
     assert "python3 scripts/build_constructive_milestone_closure_explorer.py" in output
     assert "python3 scripts/build_constructive_research_layer_explorer.py" in output
     assert "python3 scripts/build_constructive_breakthrough_layer_explorer.py" in output
+    assert "python3 scripts/upgrade_constructive_second_wave_publication_v28.py" in output
+    assert "python3 scripts/build_constructive_lower_layer_explorer.py" in output
     assert "scripts/sync_constructive_grand_campaign.py --check" in output
     assert "book/_static/constructive-grand-campaign/" in output
     assert '"_deploy/proofs/grand-campaign/"' in output
@@ -1369,6 +1498,12 @@ def test_stage_proofs_exposes_all_current_routes_and_exact_additive_artifacts() 
     for slug in BREAKTHROUGH_FAMILIES:
         assert f"book/_static/constructive-breakthrough-layer-explorer/{slug}/" in output
         assert f'"_deploy/proofs/{slug}/"' in output
+    for slug in SECOND_WAVE_ROUTES:
+        assert f"book/_static/constructive-second-wave-explorer-v28/{slug}/" in output
+        assert f'"_deploy/proofs/{slug}/"' in output
+    for slug in LOWER_LAYER_ROUTES:
+        assert f"book/_static/constructive-lower-layer-explorer/{slug}/" in output
+        assert f'"_deploy/proofs/{slug}/"' in output
     for filename in (
         NEXT_BUNDLE,
         NEXT_RECEIPT,
@@ -1382,12 +1517,18 @@ def test_stage_proofs_exposes_all_current_routes_and_exact_additive_artifacts() 
         RESEARCH_RECEIPT,
         BREAKTHROUGH_BUNDLE,
         BREAKTHROUGH_RECEIPT,
+        "alpha-v26-first-wave-proof-bundle-v1.json",
+        "alpha-v26-first-wave-receipt.md",
+        "alpha-v27-second-wave-proof-bundle-v1.json",
+        "alpha-v27-second-wave-receipt.md",
+        "alpha-v28-lower-layer-proof-bundle-v1.json",
+        "alpha-v28-lower-layer-receipt.md",
     ):
         assert f'"_deploy/proofs/artifacts/{filename}"' in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
 
 
-def test_stage_peano_includes_all_frozen_v20_through_v25_bundles_without_deployment() -> None:
+def test_stage_peano_includes_all_frozen_v20_through_v28_bundles_without_deployment() -> None:
     output = _staging_dry_run("stage-peano")
     assert f"research/arithmetic-library/artifacts/{NEXT_BUNDLE}" in output
     assert f"/proof-artifacts/{NEXT_BUNDLE}" in output
@@ -1401,4 +1542,11 @@ def test_stage_peano_includes_all_frozen_v20_through_v25_bundles_without_deploym
     assert f"/proof-artifacts/{RESEARCH_BUNDLE}" in output
     assert f"research/arithmetic-library/artifacts/{BREAKTHROUGH_BUNDLE}" in output
     assert f"/proof-artifacts/{BREAKTHROUGH_BUNDLE}" in output
+    for bundle in (
+        "alpha-v26-first-wave-proof-bundle-v1.json",
+        "alpha-v27-second-wave-proof-bundle-v1.json",
+        "alpha-v28-lower-layer-proof-bundle-v1.json",
+    ):
+        assert f"research/arithmetic-library/artifacts/{bundle}" in output
+        assert f"/proof-artifacts/{bundle}" in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output

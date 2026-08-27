@@ -90,13 +90,13 @@ def corpora(generated: dict[str, bytes]) -> dict[str, dict]:
     }
 
 
-def test_manifest_binds_current_v27_to_independently_verified_first_admission_v22(
+def test_manifest_binds_current_v28_to_independently_verified_first_admission_v22(
     generated: dict[str, bytes], inputs: dict
 ) -> None:
     manifest = json.loads(generated["manifest.json"])
     digest = sha256(explorer.CURRENT_CATALOG.read_bytes()).hexdigest()
     assert manifest["schema"] == "peano-lab-constructive-transport-layer-explorer-v1-manifest"
-    assert manifest["alpha_edition_version"] == "v27"
+    assert manifest["alpha_edition_version"] == "v28"
     assert manifest["alpha_first_enrolled_version"] == "v22"
     assert manifest["catalog_sha256"] == digest
     assert manifest["first_enrollment_catalog_sha256"] == sha256(
@@ -114,7 +114,7 @@ def test_manifest_binds_current_v27_to_independently_verified_first_admission_v2
         slug: info[0] for slug, info in EXPECTED.items()
     }
     for family in manifest["families"]:
-        assert family["alpha_edition_version"] == "v27"
+        assert family["alpha_edition_version"] == "v28"
         assert family["alpha_first_enrolled_version"] == "v22"
     for item in manifest["files"]:
         payload = generated[item["path"]]
@@ -227,7 +227,7 @@ def test_canonical_family_renderer_rejects_unsafe_or_unverified_family_contracts
             family,
             corpora["binary-length"],
             revision=corpora["binary-length"]["alpha_catalog_sha256"][:12],
-            current_alpha_version="v27",
+            current_alpha_version="v28",
             first_admitted_version="v22",
             bundle_node_count=240,
         )
@@ -253,7 +253,7 @@ def test_canonical_family_renderer_never_accepts_forged_evidence(
             explorer.FAMILIES[0],
             corpus,
             revision=corpora["binary-length"]["alpha_catalog_sha256"][:12],
-            current_alpha_version="v27",
+            current_alpha_version="v28",
             first_admitted_version="v22",
             bundle_node_count=240,
         )
@@ -275,7 +275,7 @@ def test_family_boundaries_exact_release_rows_and_honest_open_milestones(
     assert corpus["campaign_milestone_ids"] == list(milestones)
     assert corpus["milestone_status"] == "alpha_closed"
     assert corpus["milestone_checked_use"] is True
-    assert corpus["alpha_edition_version"] == "v27"
+    assert corpus["alpha_edition_version"] == "v28"
     assert corpus["alpha_first_enrolled_version"] == "v22"
     assert corpus["alpha_proof_bundle_sha256"] == inputs["bundle"]["artifact_sha256"]
     assert corpus["independent_lean_bundle_verified"] is True
@@ -292,7 +292,7 @@ def test_family_boundaries_exact_release_rows_and_honest_open_milestones(
         assert node["body_proof_depth"] == closure["body_proof_depth"]
         assert node["sources"][0]["script_sha256"] == sealed["script_sha256"]
         assert node["alpha_checked_use"] is True
-        assert node["alpha_edition_version"] == "v27"
+        assert node["alpha_edition_version"] == "v28"
         assert node["alpha_first_enrolled_version"] == "v22"
         assert node["independent_lean_bundle_verified"] is True
         assert node["stable_member"] is False
@@ -443,7 +443,7 @@ def test_proof_definition_and_notation_arrows_are_separate_and_acyclic(
 ) -> None:
     corpus = corpora[slug]
     graph = json.loads(generated[f"{slug}/explorer/defined/api/graph.json"])
-    assert graph["alpha_edition_version"] == "v27"
+    assert graph["alpha_edition_version"] == "v28"
     assert graph["alpha_first_enrolled_version"] == "v22"
     assert graph["milestone_status"] == "alpha_closed"
     assert graph["path_policy"] == "proof_dependency_edges_only"
@@ -452,7 +452,7 @@ def test_proof_definition_and_notation_arrows_are_separate_and_acyclic(
     assert tags.isdisjoint(definitions)
     for node in graph["nodes"]:
         if node["kind"] == "theorem":
-            assert node["alpha_edition_version"] == "v27"
+            assert node["alpha_edition_version"] == "v28"
             assert node["alpha_first_enrolled_version"] == "v22"
     for edge in graph["edges"]:
         if edge["kind"] == "proof_dependency":
@@ -506,7 +506,7 @@ def test_every_major_root_has_exact_and_definition_aware_complete_proof_pages(
     defined = generated[f"{slug}/explorer/defined/tag/{tag}.html"].decode()
     assert theorem in exact
     assert theorem in defined
-    assert "Alpha v27" in defined
+    assert "Alpha v28" in defined
     assert "/ 240</dd>" in defined
     assert "all 240 exact bundle nodes" in defined
     assert "Actual proof prerequisites" in defined
@@ -514,7 +514,7 @@ def test_every_major_root_has_exact_and_definition_aware_complete_proof_pages(
 
 
 @pytest.mark.parametrize("slug", tuple(EXPECTED))
-def test_current_v27_authority_preserves_v23_closure_and_v22_first_admission(
+def test_current_v28_authority_preserves_v23_closure_and_v22_first_admission(
     slug: str, corpora: dict[str, dict], generated: dict[str, bytes],
 ) -> None:
     corpus = corpora[slug]

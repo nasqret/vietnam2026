@@ -16,7 +16,7 @@ Historical **Alpha v23** preserves all 1,890 historical v22 theorems and adds
 GCD (G101), canonical arbitrary-exponent binary modular execution (G102), and
 infinitely many primes congruent to three modulo four (G025).
 Statements below about the exact v20 release remain historically precise;
-Current Alpha v27 closes T13's exact determinant/rank/integer-span substrate,
+Historical Alpha v27 closes T13's exact determinant/rank/integer-span substrate,
 and G011, G095, G035, G027, G051, and G107. Stronger determinant
 multiplicativity, lattice-index, independent-basis, and reduction theorems
 remain separate open goals.
@@ -210,6 +210,6 @@ Edition SHA-256: ee0f596150d8609ab302303ade44c4413290675398a1d6999a47b3ba046ac38
 
 The historical Alpha-v19 parent, the sealed Alpha-v20, Alpha-v21, and
 Alpha-v22 snapshots, and the Stable edition are unchanged. Current channels
-are `artifacts/peano-library/channels-v27.json`. Hashes
+are `artifacts/peano-library/channels-v28.json`. Hashes
 identify sealed artifacts; only independent checking by the original kernel
 grants the new theorem rows their Alpha checked-use authority.

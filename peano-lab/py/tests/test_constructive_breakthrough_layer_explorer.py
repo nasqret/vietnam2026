@@ -93,13 +93,13 @@ def corpora(generated: dict[str, bytes]) -> dict[str, dict]:
     return {slug: json.loads(generated[f"{slug}/api/corpus.json"]) for slug in EXPECTED}
 
 
-def test_manifest_authenticates_current_v27_historical_v25_bundle_kernel_and_lean(
+def test_manifest_authenticates_current_v28_historical_v25_bundle_kernel_and_lean(
     generated: dict[str, bytes], inputs: dict,
 ) -> None:
     manifest = json.loads(generated["manifest.json"])
     digest = sha256(explorer.CURRENT_CATALOG.read_bytes()).hexdigest()
     assert manifest["schema"] == "peano-lab-constructive-breakthrough-layer-explorer-v1-manifest"
-    assert manifest["alpha_edition_version"] == "v27"
+    assert manifest["alpha_edition_version"] == "v28"
     assert manifest["alpha_first_enrolled_version"] == "v25"
     assert manifest["catalog_sha256"] == digest
     assert manifest["first_enrollment_catalog_sha256"] == (
@@ -170,7 +170,7 @@ def test_every_breakthrough_uses_exact_canonical_qr_landing_hierarchy(
     assert f'href="explorer/defined/?v={revision}"' in source
     assert f'href="explorer/?v={revision}"' in source
     assert "first admitted v25" in source
-    assert "Alpha v27 checked-use theorem family" in source
+    assert "Alpha v28 checked-use theorem family" in source
     assert "independently accept all 302 bundle nodes" in source
     assert "Historical partial components only" in source
     assert corpus["alpha_proof_bundle_sha256"] in source
@@ -244,7 +244,7 @@ def test_independently_proved_results_never_close_stronger_unproved_goals(
         assert node["proof_bundle_node_id"] == closure["bundle_node_id"]
         assert node["proof_bundle_sha256"] == closure["certificate_sha256"]
         assert node["body_proof_nodes"] == closure["body_proof_nodes"]
-        assert node["alpha_edition_version"] == "v27"
+        assert node["alpha_edition_version"] == "v28"
         assert node["alpha_first_enrolled_version"] == "v25"
         assert node["alpha_checked_use"]
         assert node["independent_lean_bundle_verified"]
@@ -372,7 +372,7 @@ def test_proof_notation_and_definition_edges_remain_independent(
 ) -> None:
     corpus = corpora[slug]
     graph = json.loads(generated[f"{slug}/explorer/defined/api/graph.json"])
-    assert graph["alpha_edition_version"] == "v27"
+    assert graph["alpha_edition_version"] == "v28"
     assert graph["alpha_first_enrolled_version"] == "v25"
     assert graph["milestone_status"] == "alpha_closed"
     assert graph["milestone_checked_use"]
@@ -404,7 +404,7 @@ def test_major_root_pages_expose_complete_tactics_exact_proofs_and_historical_sc
     exact = generated[f"{slug}/explorer/tag/{tag}.html"].decode()
     defined = generated[f"{slug}/explorer/defined/tag/{tag}.html"].decode()
     assert theorem in exact and theorem in defined
-    assert "Alpha v27" in defined
+    assert "Alpha v28" in defined
     assert "/ 302</dd>" in defined
     assert "all 302 exact bundle nodes" in defined
     assert "Actual proof prerequisites" in defined
@@ -445,7 +445,7 @@ def test_canonical_renderer_fails_closed_for_unsafe_or_unsupported_families(
     with pytest.raises(ProofExplorerTemplateError):
         render_canonical_family_landing(
             family, corpora["matrix-cofactor-expansion"], revision=inputs["revision"],
-            current_alpha_version="v27", first_admitted_version="v25",
+            current_alpha_version="v28", first_admitted_version="v25",
             bundle_node_count=302,
         )
 
@@ -496,24 +496,24 @@ def test_corrupt_v25_rows_and_original_kernel_receipts_fail_closed(
         )
 
 
-def test_current_v27_preserves_exact_historical_admission_and_separate_stable(
+def test_current_v28_preserves_exact_historical_admission_and_separate_stable(
     inputs: dict, corpora: dict[str, dict],
 ) -> None:
     current = inputs["catalog"]
     historical = inputs["first_admission_catalog"]
-    assert current["schema"] == "peano-library-alpha-snapshot-v27"
-    assert current["theorem_count"] == current["checked_use_count"] == explorer.current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+    assert current["schema"] == "peano-library-alpha-snapshot-v28"
+    assert current["theorem_count"] == current["checked_use_count"] == explorer.current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
     assert current["stable_count"] == 432
     assert historical["schema"] == "peano-library-alpha-snapshot-v25"
     assert current["theorems"][:historical["theorem_count"]] == historical["theorems"]
     assert inputs["first_admission_catalog_sha256"] == sha256(
         explorer.CATALOG.read_bytes()
     ).hexdigest()
-    from constructive_second_wave_definition_graph import build_definition_graph
+    from constructive_lower_layer_definition_graph import build_definition_graph
 
     assert inputs["global_graph"] == build_definition_graph(inputs["campaign"])
     for corpus in corpora.values():
-        assert corpus["alpha_edition_version"] == "v27"
+        assert corpus["alpha_edition_version"] == "v28"
         assert corpus["alpha_first_enrolled_version"] == "v25"
         assert corpus["alpha_first_enrollment_catalog_sha256"] == (
             inputs["first_admission_catalog_sha256"]
@@ -552,8 +552,8 @@ def test_current_v27_preserves_exact_historical_admission_and_separate_stable(
         ("catalog", ("theorems", 0, "script"), ["forged"]),
         ("channels", ("schema",), "peano-library-channels-v25"),
         ("channels", ("default_channel",), "alpha"),
-        ("channels", ("parent_channels_v26", "path"), "artifacts/peano-library/channels-v24.json"),
-        ("channels", ("parent_channels_v26", "sha256"), "0" * 64),
+        ("channels", ("parent_channels_v27", "path"), "artifacts/peano-library/channels-v24.json"),
+        ("channels", ("parent_channels_v27", "sha256"), "0" * 64),
         ("channels", ("channels", "alpha", "artifact_path"), "artifacts/peano-library/alpha/catalog-v25.json"),
         ("channels", ("channels", "alpha", "artifact_sha256"), "0" * 64),
         ("channels", ("channels", "alpha", "theorem_count"), 2080),
@@ -599,7 +599,7 @@ def test_current_authority_corruption_fails_closed_even_with_rehashed_pointer(
         return read_bytes(path)
 
     monkeypatch.setattr(Path, "read_bytes", mutated_read_bytes)
-    with pytest.raises(explorer.BreakthroughLayerExplorerError, match="Alpha-v27"):
+    with pytest.raises(explorer.BreakthroughLayerExplorerError, match="Alpha-v28"):
         explorer._load_inputs()
 
 

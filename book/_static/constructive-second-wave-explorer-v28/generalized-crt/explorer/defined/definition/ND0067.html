@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0067 — CRTPairwiseCompatiblePrefix(r,s,b,c,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="generalized-crt"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
+       <a href="../graph.html?v=897410581b66">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=CRTPairwiseCompatiblePrefix&amp;v=897410581b66">Global definition: CRTPairwiseCompatiblePrefix</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F02&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G011" href="../../../../grand-campaign/?view=goal&amp;focus=G011&amp;v=897410581b66">G011 milestone</a></nav>
+  <p class="pd-tag">ND0067</p><h1>CRTPairwiseCompatiblePrefix(r,s,b,c,l)</h1>
+  <p>Every pair of finite beta-coded residue/modulus entries agrees modulo its genuinely witnessed greatest common divisor.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ gcomp_left_index_breakthrough. ∀ gcomp_right_index_breakthrough. ∀ gcomp_left_residue_breakthrough. ∀ gcomp_right_residue_breakthrough. ∀ gcomp_left_modulus_breakthrough. ∀ gcomp_right_modulus_breakthrough. ∀ gcomp_pair_gcd_breakthrough. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=897410581b66">Lt(gcomp_left_index_breakthrough,l)</a> → <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=897410581b66">Lt(gcomp_right_index_breakthrough,l)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=897410581b66">Beta(r,s,gcomp_left_index_breakthrough,gcomp_left_residue_breakthrough)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=897410581b66">Beta(r,s,gcomp_right_index_breakthrough,gcomp_right_residue_breakthrough)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=897410581b66">Beta(b,c,gcomp_left_index_breakthrough,gcomp_left_modulus_breakthrough)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=897410581b66">Beta(b,c,gcomp_right_index_breakthrough,gcomp_right_modulus_breakthrough)</a> → <a class="pd-definition-ref" data-definition="PD0006" href="PD0006.html?v=897410581b66">IsGCD(gcomp_pair_gcd_breakthrough,gcomp_left_modulus_breakthrough,gcomp_right_modulus_breakthrough)</a> → <a class="pd-definition-ref" data-definition="PD0008" href="PD0008.html?v=897410581b66">ModEq(gcomp_pair_gcd_breakthrough,gcomp_left_residue_breakthrough,gcomp_right_residue_breakthrough)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall gcomp_left_index_breakthrough gcomp_right_index_breakthrough gcomp_left_residue_breakthrough gcomp_right_residue_breakthrough gcomp_left_modulus_breakthrough gcomp_right_modulus_breakthrough gcomp_pair_gcd_breakthrough. (exists ff_lt_gcrt_breakthrough_left_bound. ff_lt_gcrt_breakthrough_left_bound + S gcomp_left_index_breakthrough = l) -&gt; (exists ff_lt_gcrt_breakthrough_right_bound. ff_lt_gcrt_breakthrough_right_bound + S gcomp_right_index_breakthrough = l) -&gt; (((exists ff_h_gcrt_breakthrough_left_residue. ff_h_gcrt_breakthrough_left_residue + S (gcomp_left_residue_breakthrough) = S ((S (gcomp_left_index_breakthrough)) * s)) /\ exists ff_q_gcrt_breakthrough_left_residue. r = ff_q_gcrt_breakthrough_left_residue * S ((S (gcomp_left_index_breakthrough)) * s) + (gcomp_left_residue_breakthrough))) -&gt; (((exists ff_h_gcrt_breakthrough_right_residue. ff_h_gcrt_breakthrough_right_residue + S (gcomp_right_residue_breakthrough) = S ((S (gcomp_right_index_breakthrough)) * s)) /\ exists ff_q_gcrt_breakthrough_right_residue. r = ff_q_gcrt_breakthrough_right_residue * S ((S (gcomp_right_index_breakthrough)) * s) + (gcomp_right_residue_breakthrough))) -&gt; (((exists ff_h_gcrt_breakthrough_left_modulus. ff_h_gcrt_breakthrough_left_modulus + S (gcomp_left_modulus_breakthrough) = S ((S (gcomp_left_index_breakthrough)) * c)) /\ exists ff_q_gcrt_breakthrough_left_modulus. b = ff_q_gcrt_breakthrough_left_modulus * S ((S (gcomp_left_index_breakthrough)) * c) + (gcomp_left_modulus_breakthrough))) -&gt; (((exists ff_h_gcrt_breakthrough_right_modulus. ff_h_gcrt_breakthrough_right_modulus + S (gcomp_right_modulus_breakthrough) = S ((S (gcomp_right_index_breakthrough)) * c)) /\ exists ff_q_gcrt_breakthrough_right_modulus. b = ff_q_gcrt_breakthrough_right_modulus * S ((S (gcomp_right_index_breakthrough)) * c) + (gcomp_right_modulus_breakthrough))) -&gt; ((((exists hag_left_factor_gcomp_breakthrough_gcd. gcomp_left_modulus_breakthrough = gcomp_pair_gcd_breakthrough * hag_left_factor_gcomp_breakthrough_gcd) /\ (exists hag_right_factor_gcomp_breakthrough_gcd. gcomp_right_modulus_breakthrough = gcomp_pair_gcd_breakthrough * hag_right_factor_gcomp_breakthrough_gcd)) /\ forall hag_divisor_gcomp_breakthrough_gcd. (exists hag_common_left_gcomp_breakthrough_gcd. gcomp_left_modulus_breakthrough = hag_divisor_gcomp_breakthrough_gcd * hag_common_left_gcomp_breakthrough_gcd) -&gt; (exists hag_common_right_gcomp_breakthrough_gcd. gcomp_right_modulus_breakthrough = hag_divisor_gcomp_breakthrough_gcd * hag_common_right_gcomp_breakthrough_gcd) -&gt; exists hag_greatest_factor_gcomp_breakthrough_gcd. gcomp_pair_gcd_breakthrough = hag_divisor_gcomp_breakthrough_gcd * hag_greatest_factor_gcomp_breakthrough_gcd)) -&gt; (exists hgcrt_mod_left_gcrt_breakthrough_result hgcrt_mod_right_gcrt_breakthrough_result. gcomp_left_residue_breakthrough + gcomp_pair_gcd_breakthrough * hgcrt_mod_left_gcrt_breakthrough_result = gcomp_right_residue_breakthrough + gcomp_pair_gcd_breakthrough * hgcrt_mod_right_gcrt_breakthrough_result)</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0001.html?v=897410581b66">Beta(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=897410581b66">Lt(a,b)</a><a class="pd-chip" href="PD0006.html?v=897410581b66">IsGCD(g,a,b)</a><a class="pd-chip" href="PD0008.html?v=897410581b66">ModEq(m,a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/FC000C.html?v=897410581b66">FC000C · crt_pairwise_compatible_prefix_induces_gcd_congruences</a><a class="pd-chip" href="../tag/FC000D.html?v=897410581b66">FC000D · crt_pairwise_compatible_prefix_implies_merge_compatible</a><a class="pd-chip" href="../tag/FC000E.html?v=897410581b66">FC000E · crt_pairwise_compatible_prefix_solution_exists</a><a class="pd-chip" href="../tag/FC000F.html?v=897410581b66">FC000F · crt_pairwise_compatible_prefix_canonical_exists_unique</a><a class="pd-chip" href="../tag/FC0013.html?v=897410581b66">FC0013 · crt_pairwise_compatible_prefix_normalized_exists_unique</a><a class="pd-chip" href="../tag/FC0014.html?v=897410581b66">FC0014 · crt_pairwise_compatible_prefix_solvable_iff</a><a class="pd-chip" href="../tag/FC0015.html?v=897410581b66">FC0015 · crt_pairwise_compatible_prefix_merge_iff</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>5</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0067.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>eeb5386caff3f8241697024a76886809ded26d9d2dabd84b24b32dffc79fe3a4</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v28/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

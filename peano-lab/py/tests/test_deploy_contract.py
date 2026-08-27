@@ -84,6 +84,9 @@ SECOND_WAVE_FAMILIES = (
     "cornacchia",
     "cauchy-davenport",
 )
+LOWER_LAYER_FAMILIES = (
+    "arithmetic-foundations", "prime-enumeration", "gaussian-integers", "eisenstein-integers",
+)
 CANONICAL_FRONTIER_ASSETS = (
     ("defined-explorer.css", "defined/assets/explorer.css"),
     ("defined-explorer.js", "defined/assets/explorer.js"),
@@ -113,9 +116,17 @@ def test_every_constructive_manifest_and_family_follow_the_actual_sealed_alpha_r
         f"alpha_{CURRENT_ALPHA_VERSION}_edition"
     ]
     catalog_digest = sha256(CURRENT_ALPHA_CATALOG.read_bytes()).hexdigest()
-    manifests = tuple(
-        sorted((ROOT / "book" / "_static").glob("constructive-*-explorer/manifest.json"))
-    )
+    static = ROOT / "book" / "_static"
+    historical_manifest = static / "constructive-second-wave-explorer/manifest.json"
+    historical = json.loads(historical_manifest.read_bytes())
+    assert historical["alpha_edition_version"] == historical["alpha_first_enrolled_version"] == "v27"
+    assert historical["catalog_sha256"] == "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+    # Historical v27 output remains frozen. The separately tested successor
+    # is the current source staged at the same public family URLs.
+    manifests = tuple(sorted(
+        [path for path in static.glob("constructive-*-explorer/manifest.json") if path != historical_manifest]
+        + [static / "constructive-second-wave-explorer-v28/manifest.json"]
+    ))
     routes: set[str] = set()
 
     assert release["role"] == "current_immutable_release"
@@ -145,9 +156,10 @@ def test_every_constructive_manifest_and_family_follow_the_actual_sealed_alpha_r
         | set(RESEARCH_LAYER_FAMILIES)
         | set(BREAKTHROUGH_LAYER_FAMILIES)
         | set(SECOND_WAVE_FAMILIES)
+        | set(LOWER_LAYER_FAMILIES)
     )
     assert known_routes <= routes
-    assert len(routes) >= 32
+    assert len(routes) == 36
     hub = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
     assert all(f'href="{slug}/?v={CANONICAL_HTML_REVISION}"' in hub for slug in routes)
 
@@ -179,6 +191,7 @@ def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
         "alpha-v25-breakthrough-layer-proof-bundle-v1.json",
         "alpha-v26-first-wave-proof-bundle-v1.json",
         "alpha-v27-second-wave-proof-bundle-v1.json",
+        "alpha-v28-lower-layer-proof-bundle-v1.json",
     ):
         assert f"research/arithmetic-library/artifacts/{filename}" in output
         assert f"/proof-artifacts/{filename}" in output
@@ -272,7 +285,8 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
     assert "python3 scripts/build_constructive_milestone_closure_explorer.py" in output
     assert "python3 scripts/build_constructive_research_layer_explorer.py" in output
     assert "python3 scripts/build_constructive_breakthrough_layer_explorer.py" in output
-    assert "python3 scripts/build_constructive_second_wave_explorer.py" in output
+    assert "python3 scripts/upgrade_constructive_second_wave_publication_v28.py" in output
+    assert "python3 scripts/build_constructive_lower_layer_explorer.py" in output
     assert "book/_static/constructive-frontier-explorer/assets/" in output
     assert "book/_static/constructive-next-layer-explorer/assets/" in output
     assert "book/_static/constructive-advanced-layer-explorer/assets/" in output
@@ -280,7 +294,8 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
     assert "book/_static/constructive-milestone-closure-explorer/assets/" in output
     assert "book/_static/constructive-research-layer-explorer/assets/" in output
     assert "book/_static/constructive-breakthrough-layer-explorer/assets/" in output
-    assert "book/_static/constructive-second-wave-explorer/assets/" in output
+    assert "book/_static/constructive-second-wave-explorer-v28/assets/" in output
+    assert "book/_static/constructive-lower-layer-explorer/assets/" in output
     for family in FRONTIER_FAMILIES:
         assert f"book/_static/constructive-frontier-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
@@ -303,7 +318,10 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
         assert f"book/_static/constructive-breakthrough-layer-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
     for family in SECOND_WAVE_FAMILIES:
-        assert f"book/_static/constructive-second-wave-explorer/{family}/" in output
+        assert f"book/_static/constructive-second-wave-explorer-v28/{family}/" in output
+        assert f'"_deploy/proofs/{family}/"' in output
+    for family in LOWER_LAYER_FAMILIES:
+        assert f"book/_static/constructive-lower-layer-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
 
@@ -335,7 +353,7 @@ def test_v27_check_replays_every_actual_source_suite_serially_and_both_verifiers
     assert "tests/test_constructive_definition_graph.py" in output
     assert "tests/test_constructive_grand_campaign.py" in output
     assert "tests/test_constructive_second_wave_explorer.py" in output
-    assert "scripts/build_constructive_second_wave_explorer.py --check" in output
+    assert "scripts/upgrade_constructive_second_wave_publication_v28.py --check-historical" in output
     assert "bash scripts/update_peano_app_manifest.sh --check" in output
     assert "peano_lab_bundle_verify" in output
     assert "artifacts/alpha-v27-second-wave-proof-bundle-v1.json" in output
@@ -348,8 +366,48 @@ def test_v27_channel_aliases_and_canonical_explorer_build_do_not_deploy() -> Non
     assert _dry_run("peano-library-alpha-v27-check") == _dry_run("peano-library-channels-v27-check")
     assert "scripts/build_peano_library_channels_v27.py" in build
     canonical = _dry_run("book-constructive-second-wave-explorer")
-    assert canonical.strip() == "python3 scripts/build_constructive_second_wave_explorer.py"
+    assert canonical.strip() == "python3 scripts/upgrade_constructive_second_wave_publication_v28.py --check-historical"
     assert "rsync" not in build + canonical
+
+
+def test_v28_checks_each_math_suite_in_isolation_and_keeps_all_independent_gates() -> None:
+    output = _dry_run("peano-library-alpha-v28-check")
+    source = (ROOT / "peano-lab/py/peano_lab/library/campaign_lower_layer_closure.py").read_text()
+    assignment = next(node for node in ast.parse(source).body if isinstance(node, ast.Assign)
+                      and any(isinstance(target, ast.Name) and target.id == "FACTORIES" for target in node.targets))
+    modules = tuple(ast.literal_eval(call.args[1]) for call in assignment.value.elts)
+    assert len(modules) == len(set(modules)) == 6
+    loop = output.split("for suite in", 1)[1].split("done", 1)[0]
+    assert 'python3 -m pytest -q --tb=line "tests/test_${suite}.py"' in loop and "|| exit $?" in loop
+    assert all(module in loop for module in modules)
+    for gate in (
+        "scripts/build_peano_library_channels_v28.py --check",
+        "scripts/verify_peano_library_channels_v28.py --verify-roots",
+        "scripts/test_verify_peano_library_channels_v28.py",
+        "tests/test_library_editions_v28_admission.py", "tests/test_campaign_lower_layer_closure.py",
+        "tests/test_constructive_lower_layer_definitions.py", "tests/test_constructive_lower_layer_explorer.py",
+        "tests/test_constructive_second_wave_publication_v28.py", "tests/test_constructive_second_wave_explorer.py",
+        "tests/test_alpha_v28_ui.py", "tests/test_book_arithmetic_part.py",
+        "scripts/extend_constructive_lower_layer_campaign.py --check",
+        "scripts/build_constructive_lower_layer_explorer.py --check",
+        "scripts/upgrade_constructive_second_wave_publication_v28.py --check-historical",
+        "scripts/upgrade_constructive_second_wave_publication_v28.py --check",
+        "bash scripts/update_peano_app_manifest.sh --check", "peano_lab_bundle_verify",
+        "artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+    ):
+        assert gate in output
+    assert output == _dry_run("peano-library-channels-v28-check")
+    assert "lts-faculty.wmi.amu.edu.pl:" not in output
+
+
+def test_v28_build_and_current_publication_targets_never_deploy_implicitly() -> None:
+    build = _dry_run("peano-library-alpha-v28")
+    assert build == _dry_run("peano-library-channels-v28")
+    publication = _dry_run("book-constructive-second-wave-current-explorer")
+    lower = _dry_run("book-constructive-lower-layer-explorer")
+    assert publication.strip() == "python3 scripts/upgrade_constructive_second_wave_publication_v28.py"
+    assert lower.strip() == "python3 scripts/build_constructive_lower_layer_explorer.py"
+    assert "rsync" not in build + publication + lower
 
 
 def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> None:
@@ -378,6 +436,7 @@ def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> Non
         "alpha-v25-breakthrough-layer-proof-bundle-v1.json",
         "alpha-v26-first-wave-proof-bundle-v1.json",
         "alpha-v27-second-wave-proof-bundle-v1.json",
+        "alpha-v28-lower-layer-proof-bundle-v1.json",
     ):
         assert f'"_deploy/proofs/artifacts/{filename}"' in output
         assert f'href="artifacts/{filename}"' in page
@@ -385,6 +444,8 @@ def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> Non
     assert 'href="artifacts/alpha-v26-first-wave-receipt.md"' in page
     assert '"_deploy/proofs/artifacts/alpha-v27-second-wave-receipt.md"' in output
     assert 'href="artifacts/alpha-v27-second-wave-receipt.md"' in page
+    assert '"_deploy/proofs/artifacts/alpha-v28-lower-layer-receipt.md"' in output
+    assert 'href="artifacts/alpha-v28-lower-layer-receipt.md"' in page
 
 
 def test_proof_explorer_stage_installs_only_the_proof_site_cache_policy() -> None:

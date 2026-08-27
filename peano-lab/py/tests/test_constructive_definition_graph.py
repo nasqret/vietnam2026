@@ -20,8 +20,8 @@ if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
 import constructive_definition_graph as definitions  # noqa: E402
-import constructive_second_wave_definition_graph as current_definitions  # noqa: E402
-from constructive_second_wave_definitions import (  # noqa: E402
+import constructive_lower_layer_definition_graph as current_definitions  # noqa: E402
+from constructive_lower_layer_definitions import (  # noqa: E402
     ALL_CONSTRUCTIVE_DEFINITIONS_BY_NAME as ALL_CURRENT_DEFINITIONS_BY_NAME,
 )
 from constructive_advanced_layer_definitions import (  # noqa: E402
@@ -119,15 +119,15 @@ def test_blueprint_and_checked_definition_inventory_remain_separate(
         expected_lexical_usage + expected_declared_usage
     )
     assert graph["topological_layer_count"] >= 5
-    assert graph["definition_count"] == 290
-    assert graph["reviewed_definition_count"] == len(ALL_CURRENT_DEFINITIONS_BY_NAME) == 198
+    assert graph["definition_count"] == 323
+    assert graph["reviewed_definition_count"] == len(ALL_CURRENT_DEFINITIONS_BY_NAME) == 233
     assert graph["reviewed_definition_edge_count"] == sum(
         len(definition.conceptual_dependencies)
         for definition in ALL_CURRENT_DEFINITIONS_BY_NAME.values()
     )
-    assert graph["reviewed_definition_edge_count"] == 388
-    assert graph["compatible_reviewed_match_count"] == 201
-    assert graph["exact_name_reviewed_match_count"] == 196
+    assert graph["reviewed_definition_edge_count"] == 441
+    assert graph["compatible_reviewed_match_count"] == 236
+    assert graph["exact_name_reviewed_match_count"] == 231
     assert graph["explicit_alias_reviewed_match_count"] == 5
     assert graph["incompatible_reviewed_match_count"] == 2
     assert "never theorem-proof dependencies" in graph["authority_policy"][

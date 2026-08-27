@@ -231,7 +231,7 @@ G027, G035, and G107**. Subsequent v22 through v27 made the following progress:
    signed-polynomial simple-root lifting (G095), explicit Chebyshev bounds
    (G027), multinomial carries (G035), and first-stop Cornacchia (G107).
 
-Current Alpha v27 contains 2,560 checked theorems. Its stronger future goals
+Current Alpha v28 contains 2,764 checked theorems. Its stronger future goals
 are not marked complete merely because these exact substrates are available.
 
 Each new layer requires actual first-order theorem statements, hygienic

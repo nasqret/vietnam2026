@@ -1,6 +1,6 @@
 {
   "alpha_checked_use_node_count": 17,
-  "alpha_edition_version": "v27",
+  "alpha_edition_version": "v28",
   "alpha_first_enrolled_version": "v23",
   "definition_topological_order": [
     "ND0001",
@@ -491,9 +491,9 @@
   "nodes": [
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0001.html?v=481a9a378e54",
+      "href": "tag/EL0001.html?v=897410581b66",
       "id": "EL0001",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -506,9 +506,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0002.html?v=481a9a378e54",
+      "href": "tag/EL0002.html?v=897410581b66",
       "id": "EL0002",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -521,9 +521,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0003.html?v=481a9a378e54",
+      "href": "tag/EL0003.html?v=897410581b66",
       "id": "EL0003",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -536,9 +536,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0004.html?v=481a9a378e54",
+      "href": "tag/EL0004.html?v=897410581b66",
       "id": "EL0004",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -551,9 +551,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0005.html?v=481a9a378e54",
+      "href": "tag/EL0005.html?v=897410581b66",
       "id": "EL0005",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -566,9 +566,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0006.html?v=481a9a378e54",
+      "href": "tag/EL0006.html?v=897410581b66",
       "id": "EL0006",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -581,9 +581,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0007.html?v=481a9a378e54",
+      "href": "tag/EL0007.html?v=897410581b66",
       "id": "EL0007",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -596,9 +596,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0008.html?v=481a9a378e54",
+      "href": "tag/EL0008.html?v=897410581b66",
       "id": "EL0008",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -611,9 +611,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0009.html?v=481a9a378e54",
+      "href": "tag/EL0009.html?v=897410581b66",
       "id": "EL0009",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -626,9 +626,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL000A.html?v=481a9a378e54",
+      "href": "tag/EL000A.html?v=897410581b66",
       "id": "EL000A",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -641,9 +641,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL000B.html?v=481a9a378e54",
+      "href": "tag/EL000B.html?v=897410581b66",
       "id": "EL000B",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -656,9 +656,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL000C.html?v=481a9a378e54",
+      "href": "tag/EL000C.html?v=897410581b66",
       "id": "EL000C",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -671,9 +671,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL000D.html?v=481a9a378e54",
+      "href": "tag/EL000D.html?v=897410581b66",
       "id": "EL000D",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -686,9 +686,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL000E.html?v=481a9a378e54",
+      "href": "tag/EL000E.html?v=897410581b66",
       "id": "EL000E",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -701,9 +701,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL000F.html?v=481a9a378e54",
+      "href": "tag/EL000F.html?v=897410581b66",
       "id": "EL000F",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -716,9 +716,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0010.html?v=481a9a378e54",
+      "href": "tag/EL0010.html?v=897410581b66",
       "id": "EL0010",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -731,9 +731,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v23",
-      "href": "tag/EL0011.html?v=481a9a378e54",
+      "href": "tag/EL0011.html?v=897410581b66",
       "id": "EL0011",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -746,7 +746,7 @@
     },
     {
       "global_definition": "Beta",
-      "href": "definition/ND0001.html?v=481a9a378e54",
+      "href": "definition/ND0001.html?v=897410581b66",
       "id": "ND0001",
       "kind": "definition",
       "layer": 0,
@@ -756,7 +756,7 @@
     },
     {
       "global_definition": "Lt",
-      "href": "definition/PD0002.html?v=481a9a378e54",
+      "href": "definition/PD0002.html?v=897410581b66",
       "id": "PD0002",
       "kind": "definition",
       "layer": 0,
@@ -766,7 +766,7 @@
     },
     {
       "global_definition": "ListCell",
-      "href": "definition/ND0009.html?v=481a9a378e54",
+      "href": "definition/ND0009.html?v=897410581b66",
       "id": "ND0009",
       "kind": "definition",
       "layer": 0,
@@ -776,7 +776,7 @@
     },
     {
       "global_definition": "ContinuedFractionTrace",
-      "href": "definition/ND0010.html?v=481a9a378e54",
+      "href": "definition/ND0010.html?v=897410581b66",
       "id": "ND0010",
       "kind": "definition",
       "layer": 1,
@@ -786,7 +786,7 @@
     },
     {
       "global_definition": "Le",
-      "href": "definition/PD0001.html?v=481a9a378e54",
+      "href": "definition/PD0001.html?v=897410581b66",
       "id": "PD0001",
       "kind": "definition",
       "layer": 0,
@@ -796,7 +796,7 @@
     },
     {
       "global_definition": "EuclideanBoundedTrace",
-      "href": "definition/ND0038.html?v=481a9a378e54",
+      "href": "definition/ND0038.html?v=897410581b66",
       "id": "ND0038",
       "kind": "definition",
       "layer": 2,
@@ -806,7 +806,7 @@
     },
     {
       "global_definition": "Beta",
-      "href": "definition/PD0013.html?v=481a9a378e54",
+      "href": "definition/PD0013.html?v=897410581b66",
       "id": "PD0013",
       "kind": "definition",
       "layer": 0,
@@ -816,7 +816,7 @@
     },
     {
       "global_definition": "Product",
-      "href": "definition/PD0014.html?v=481a9a378e54",
+      "href": "definition/PD0014.html?v=897410581b66",
       "id": "PD0014",
       "kind": "definition",
       "layer": 1,
@@ -826,7 +826,7 @@
     },
     {
       "global_definition": "Repeat",
-      "href": "definition/PD0019.html?v=481a9a378e54",
+      "href": "definition/PD0019.html?v=897410581b66",
       "id": "PD0019",
       "kind": "definition",
       "layer": 1,
@@ -836,7 +836,7 @@
     },
     {
       "global_definition": "Pow",
-      "href": "definition/PD0020.html?v=481a9a378e54",
+      "href": "definition/PD0020.html?v=897410581b66",
       "id": "PD0020",
       "kind": "definition",
       "layer": 2,
@@ -846,7 +846,7 @@
     },
     {
       "global_definition": "PowTwo",
-      "href": "definition/ND0028.html?v=481a9a378e54",
+      "href": "definition/ND0028.html?v=897410581b66",
       "id": "ND0028",
       "kind": "definition",
       "layer": 3,
@@ -856,7 +856,7 @@
     },
     {
       "global_definition": "BitLen",
-      "href": "definition/ND0030.html?v=481a9a378e54",
+      "href": "definition/ND0030.html?v=897410581b66",
       "id": "ND0030",
       "kind": "definition",
       "layer": 4,
@@ -866,7 +866,7 @@
     },
     {
       "global_definition": "EuclideanStateAt",
-      "href": "definition/ND0032.html?v=481a9a378e54",
+      "href": "definition/ND0032.html?v=897410581b66",
       "id": "ND0032",
       "kind": "definition",
       "layer": 1,
@@ -876,7 +876,7 @@
     },
     {
       "global_definition": "Dvd",
-      "href": "definition/PD0003.html?v=481a9a378e54",
+      "href": "definition/PD0003.html?v=897410581b66",
       "id": "PD0003",
       "kind": "definition",
       "layer": 0,
@@ -886,7 +886,7 @@
     },
     {
       "global_definition": "Gcd",
-      "href": "definition/PD0006.html?v=481a9a378e54",
+      "href": "definition/PD0006.html?v=897410581b66",
       "id": "PD0006",
       "kind": "definition",
       "layer": 1,
@@ -896,7 +896,7 @@
     },
     {
       "global_definition": "EuclideanAnchoredExecution",
-      "href": "definition/ND0033.html?v=481a9a378e54",
+      "href": "definition/ND0033.html?v=897410581b66",
       "id": "ND0033",
       "kind": "definition",
       "layer": 2,
@@ -906,7 +906,7 @@
     },
     {
       "global_definition": "EuclideanLogarithmicExecution",
-      "href": "definition/ND0039.html?v=481a9a378e54",
+      "href": "definition/ND0039.html?v=897410581b66",
       "id": "ND0039",
       "kind": "definition",
       "layer": 5,
@@ -916,7 +916,7 @@
     },
     {
       "global_definition": "EuclideanDivision",
-      "href": "definition/ND0018.html?v=481a9a378e54",
+      "href": "definition/ND0018.html?v=897410581b66",
       "id": "ND0018",
       "kind": "definition",
       "layer": 1,
@@ -926,7 +926,7 @@
     },
     {
       "global_definition": "EuclideanHalving",
-      "href": "definition/ND0019.html?v=481a9a378e54",
+      "href": "definition/ND0019.html?v=897410581b66",
       "id": "ND0019",
       "kind": "definition",
       "layer": 1,

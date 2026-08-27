@@ -47,6 +47,7 @@ PROOF_BUNDLE_FILENAMES = (
     "alpha-v25-breakthrough-layer-proof-bundle-v1.json",
     "alpha-v26-first-wave-proof-bundle-v1.json",
     "alpha-v27-second-wave-proof-bundle-v1.json",
+    "alpha-v28-lower-layer-proof-bundle-v1.json",
 )
 PROOF_BUNDLE_SOURCES = {
     f"proof-artifacts/{filename}": (
@@ -162,12 +163,17 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
 
 def test_shell_connects_checked_alpha_research_to_multiscale_proof_atlas() -> None:
     assert 'aria-label="Course and research navigation"' in INDEX
-    assert '<a href="/proofs/?v=481a9a378e54">Proof library</a>' in INDEX
-    assert '<a href="/proofs/grand-campaign/?v=481a9a378e54">Research atlas</a>' in INDEX
-    assert "Alpha: 2,560 proofs" in INDEX
+    assert '<a href="/proofs/?v=897410581b66">Proof library</a>' in INDEX
+    assert '<a href="/proofs/grand-campaign/?v=897410581b66">Research atlas</a>' in INDEX
+    assert "Alpha: 2,764 proofs" in INDEX
     assert '<span class="lbl">research:</span>' in INDEX
     for command in (
         "pa lib alpha",
+        "pa lib alpha foundation_division_exists_unique",
+        "pa lib alpha prime_factorization_exists_unique_up_to_permutation",
+        "pa lib alpha gaussian_euclidean_division_exists",
+        "pa lib alpha eisenstein_euclidean_division_exists",
+        "pa lib alpha first_primes_list_exists",
         "pa lib alpha signed_recursive_determinant_exists_unique",
         "pa lib alpha rectangular_matrix_rank_exists_unique",
         "pa lib alpha integer_polynomial_prime_simple_root_lifts_all_positive_powers",

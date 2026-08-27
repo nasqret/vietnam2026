@@ -16,7 +16,7 @@ Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | all 27 checked proof families, the grand campaign atlas, proof artifacts, and public Lean selectors |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | all 38 checked proof families, the grand campaign atlas, proof artifacts, and public Lean selectors |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
@@ -36,25 +36,31 @@ targets; `make deploy` does not publish either Peano channel.
 make deploy-proofs
 ```
 
-This rebuilds both exact and definition-aware proof editions, stages all 27
+This rebuilds both exact and definition-aware proof editions, stages all 38
 quadratic-reciprocity, Bertrand, constructive-frontier, next-layer,
 advanced-layer, transport-layer, milestone-closure, research-layer, and
-breakthrough-layer families under `_deploy/proofs`, and installs their shared
-public **Build Lean proof** controls. The three new canonical
-Quadratic-Reciprocity-style routes are `/proofs/matrix-cofactor-expansion/`,
-`/proofs/polynomial-taylor-hensel/`, and
-`/proofs/generalized-crt-compatibility/`.
+breakthrough-layer, second-wave, and lower-layer families under `_deploy/proofs`,
+and installs their shared public **Build Lean proof** controls. The four new
+canonical Quadratic-Reciprocity-style routes are `/proofs/arithmetic-foundations/`,
+`/proofs/prime-enumeration/`, `/proofs/gaussian-integers/`, and
+`/proofs/eisenstein-integers/`. The seven original v27 explorer snapshots
+remain byte-for-byte historical artifacts; their additive current publication
+is generated under `constructive-second-wave-explorer-v28` and maps to the
+same public family URLs.
 It separately publishes the narrow two-file PHP gateway under
 `~/public_html/api/lean-strands/`; neither publication target can be widened by
 overriding its Make variable. The proof site also publishes the grand campaign
-atlas and exact checked proof artifacts through current Alpha v25: 2,080
-independently checked theorems, including 432 unchanged Stable and 1,648
-Alpha-only theorems, 6,633 proof-dependency edges, 179 blueprint definitions,
-and 120 reviewed conservative definitions. Its 302-node breakthrough proof
+atlas and exact checked proof artifacts through current Alpha v28: 2,764
+independently checked theorems, including 432 unchanged Stable and 2,332
+Alpha-only theorems, 8,984 proof-dependency edges, 323 blueprint definitions,
+and 233 reviewed conservative definitions. Its 862-node lower-layer proof
 bundle is independently accepted by the original intuitionistic kernel and
 the compiled Lean verifier. Each family retains its unchanged proof evidence,
-Stable/Alpha distinction, first-admission history, original explorer assets,
-and honest open boundaries for T13, G095, and G011.
+Stable/Alpha distinction, first-admission history, and original explorer assets.
+G001–G005, G021–G022, G081, and G084 are complete at their exact recorded scope;
+Gaussian/Eisenstein unique factorization and prime classification remain open.
+The earlier v27 finite T13, Hensel G095, and generalized CRT G011 contracts
+remain closed without claiming stronger lattice or p-adic completion results.
 
 ## Interactive Lean proof building
 

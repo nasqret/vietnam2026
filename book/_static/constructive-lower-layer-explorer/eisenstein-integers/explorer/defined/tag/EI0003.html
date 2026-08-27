@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EI0003 — eisenstein_natural_norm_exists — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="eisenstein-integers"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
+       <a href="../../tag/EI0003.html?v=897410581b66">Exact original proof</a>
+       <a href="../graph.html?target=EI0003&amp;v=897410581b66">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G084" href="../../../../grand-campaign/?view=goal&amp;focus=G084&amp;v=897410581b66">G084 milestone</a></nav>
+  <p class="pd-tag">EI0003</p><h1>eisenstein_natural_norm_exists</h1>
+  <p>Every pair of natural coordinates has an actual natural Eisenstein norm, constructed by a decidable order comparison.</p><p class="pd-status">Alpha v28 checked-use · first admitted v28 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">A floor quotient in the fundamental parallelogram already gives the required strict norm decrease; global nearest-point optimality is not asserted. The shared carrier is identical to the Gaussian carrier, but the multiplication law and norm are different. Eisenstein gcd, factorization, and prime classification remain separate targets.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ a. ∀ b. ∃ n. a · a + b · b = a · b + n</code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">le_total · checked external prerequisite</span><span class="pd-chip pd-external">add_mul · checked external prerequisite</span><span class="pd-chip pd-external">mul_add · checked external prerequisite</span><span class="pd-chip pd-external">mul_assoc · checked external prerequisite</span><span class="pd-chip pd-external">add_assoc · checked external prerequisite</span><span class="pd-chip pd-external">add_comm · checked external prerequisite</span><span class="pd-chip pd-external">mul_comm · checked external prerequisite</span><span class="pd-chip pd-external">four_square_add_swap_right_tail · checked external prerequisite</span><a class="pd-chip pd-external" href="../../../../gaussian-integers/explorer/defined/tag/GI0001.html?v=897410581b66">natural_mul_swap_right_tail · checked external prerequisite</a></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall a b. exists n. ((((a) * (a)) + ((b) * (b))) = (((a) * (b)) + (n)))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 17 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro a</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro b</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>specialize le_total a</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>specialize le_total b</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>cases le_total</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>cases le_total_left</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>exists a * a + a * x + x * x</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>rewrite &lt;- le_total_left_witness</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>rewrite &lt;- le_total_left_witness</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>rewrite &lt;- le_total_left_witness</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>simp [add_mul, mul_add, mul_assoc, add_assoc, add_comm, mul_comm, four_square_add_swap_right_tail, natural_mul_swap_right_tail]</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>cases le_total_right</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>exists b * b + b * x + x * x</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>rewrite &lt;- le_total_right_witness</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>rewrite &lt;- le_total_right_witness</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>rewrite &lt;- le_total_right_witness</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>simp [add_mul, mul_add, mul_assoc, add_assoc, add_comm, mul_comm, four_square_add_swap_right_tail, natural_mul_swap_right_tail]</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v28 checked use</dd><dt>First admission</dt><dd>Alpha v28</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>780 / 862</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 862 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>250 / 45</dd>
+      <dt>Statement SHA-256</dt><dd><code>b8917b757526dc3fa120b903142544b49939b007a517e8b6f70d82996fe6c15d</code></dd>
+      <dt>Script SHA-256</dt><dd><code>69740a203350af211211aa3e3c4b217b17f73960cd915ad318806cef612a541b</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.eisenstein_euclidean_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

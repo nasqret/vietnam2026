@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0095 — PrimeCount(x,z) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-count-chebyshev"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
+       <a href="../graph.html?v=897410581b66">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=PrimeCount&amp;v=897410581b66">Global definition: PrimeCount</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F03&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G027" href="../../../../grand-campaign/?view=goal&amp;focus=G027&amp;v=897410581b66">G027 milestone</a></nav>
+  <p class="pd-tag">ND0095</p><h1>PrimeCount(x,z)</h1>
+  <p>The actual finite sum of the complete primality mask through N: exactly the number of primes at most N.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ pc_code_secondwave. ∃ pc_scale_secondwave. <a class="pd-definition-ref" data-definition="ND0094" href="ND0094.html?v=897410581b66">PrimeBitPrefix(pc_code_secondwave,pc_scale_secondwave,x)</a> ∧ <a class="pd-definition-ref" data-definition="PD0015" href="PD0015.html?v=897410581b66">Sum(pc_code_secondwave,pc_scale_secondwave,x,z)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists pc_code_secondwave pc_scale_secondwave. (forall pc_index_secondwave_mask. (exists pc_lt_secondwave_mask_bound. pc_lt_secondwave_mask_bound + S (pc_index_secondwave_mask) = (x)) -&gt; exists pc_bit_secondwave_mask. (((exists fs_h_pc_secondwave_mask_entry. fs_h_pc_secondwave_mask_entry + S (pc_bit_secondwave_mask) = S ((S (pc_index_secondwave_mask)) * pc_scale_secondwave)) /\ exists fs_q_pc_secondwave_mask_entry. pc_code_secondwave = fs_q_pc_secondwave_mask_entry * S ((S (pc_index_secondwave_mask)) * pc_scale_secondwave) + (pc_bit_secondwave_mask))) /\ (((((~(S (pc_index_secondwave_mask) = 1) /\ forall bpr_left_pc_secondwave_mask_choice_prime bpr_right_pc_secondwave_mask_choice_prime. S (pc_index_secondwave_mask) = bpr_left_pc_secondwave_mask_choice_prime * bpr_right_pc_secondwave_mask_choice_prime -&gt; bpr_left_pc_secondwave_mask_choice_prime = 1 \/ bpr_right_pc_secondwave_mask_choice_prime = 1)) /\ pc_bit_secondwave_mask = 1) \/ (~((~(S (pc_index_secondwave_mask) = 1) /\ forall bpr_left_pc_secondwave_mask_choice_prime bpr_right_pc_secondwave_mask_choice_prime. S (pc_index_secondwave_mask) = bpr_left_pc_secondwave_mask_choice_prime * bpr_right_pc_secondwave_mask_choice_prime -&gt; bpr_left_pc_secondwave_mask_choice_prime = 1 \/ bpr_right_pc_secondwave_mask_choice_prime = 1)) /\ pc_bit_secondwave_mask = 0)))) /\ (exists fs_u_pc_secondwave_sum fs_v_pc_secondwave_sum. ((((exists fs_h_pc_secondwave_sum_body_start. fs_h_pc_secondwave_sum_body_start + S (0) = S ((S (0)) * fs_v_pc_secondwave_sum)) /\ exists fs_q_pc_secondwave_sum_body_start. fs_u_pc_secondwave_sum = fs_q_pc_secondwave_sum_body_start * S ((S (0)) * fs_v_pc_secondwave_sum) + (0))) /\ ((((exists fs_h_pc_secondwave_sum_body_terminal. fs_h_pc_secondwave_sum_body_terminal + S (z) = S ((S (x)) * fs_v_pc_secondwave_sum)) /\ exists fs_q_pc_secondwave_sum_body_terminal. fs_u_pc_secondwave_sum = fs_q_pc_secondwave_sum_body_terminal * S ((S (x)) * fs_v_pc_secondwave_sum) + (z))) /\ forall fs_i_pc_secondwave_sum_body_steps. (exists fs_lt_pc_secondwave_sum_body_steps_bound. fs_lt_pc_secondwave_sum_body_steps_bound + S fs_i_pc_secondwave_sum_body_steps = x) -&gt; exists fs_a_pc_secondwave_sum_body_steps fs_r_pc_secondwave_sum_body_steps fs_s_pc_secondwave_sum_body_steps. ((((exists fs_h_pc_secondwave_sum_body_steps_summand. fs_h_pc_secondwave_sum_body_steps_summand + S (fs_a_pc_secondwave_sum_body_steps) = S ((S (fs_i_pc_secondwave_sum_body_steps)) * pc_scale_secondwave)) /\ exists fs_q_pc_secondwave_sum_body_steps_summand. pc_code_secondwave = fs_q_pc_secondwave_sum_body_steps_summand * S ((S (fs_i_pc_secondwave_sum_body_steps)) * pc_scale_secondwave) + (fs_a_pc_secondwave_sum_body_steps))) /\ ((((exists fs_h_pc_secondwave_sum_body_steps_partial. fs_h_pc_secondwave_sum_body_steps_partial + S (fs_r_pc_secondwave_sum_body_steps) = S ((S (fs_i_pc_secondwave_sum_body_steps)) * fs_v_pc_secondwave_sum)) /\ exists fs_q_pc_secondwave_sum_body_steps_partial. fs_u_pc_secondwave_sum = fs_q_pc_secondwave_sum_body_steps_partial * S ((S (fs_i_pc_secondwave_sum_body_steps)) * fs_v_pc_secondwave_sum) + (fs_r_pc_secondwave_sum_body_steps))) /\ ((((exists fs_h_pc_secondwave_sum_body_steps_successor. fs_h_pc_secondwave_sum_body_steps_successor + S (fs_s_pc_secondwave_sum_body_steps) = S ((S (S fs_i_pc_secondwave_sum_body_steps)) * fs_v_pc_secondwave_sum)) /\ exists fs_q_pc_secondwave_sum_body_steps_successor. fs_u_pc_secondwave_sum = fs_q_pc_secondwave_sum_body_steps_successor * S ((S (S fs_i_pc_secondwave_sum_body_steps)) * fs_v_pc_secondwave_sum) + (fs_s_pc_secondwave_sum_body_steps))) /\ fs_s_pc_secondwave_sum_body_steps = fs_r_pc_secondwave_sum_body_steps + fs_a_pc_secondwave_sum_body_steps))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0094.html?v=897410581b66">PrimeBitPrefix(b,c,l)</a><a class="pd-chip" href="PD0015.html?v=897410581b66">Sum(b,c,l,z)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PC0008.html?v=897410581b66">PC0008 · prime_count_exists</a><a class="pd-chip" href="../tag/PC0009.html?v=897410581b66">PC0009 · prime_count_bounded</a><a class="pd-chip" href="../tag/PC000B.html?v=897410581b66">PC000B · prime_count_positive_above_one</a><a class="pd-chip" href="../tag/PC001F.html?v=897410581b66">PC001F · central_binom_prime_count_power_bound</a><a class="pd-chip" href="../tag/PC002A.html?v=897410581b66">PC002A · prime_count_chebyshev_upper</a><a class="pd-chip" href="../tag/PC002E.html?v=897410581b66">PC002E · central_binom_prime_count_exponent_bound</a><a class="pd-chip" href="../tag/PC002F.html?v=897410581b66">PC002F · prime_count_chebyshev_lower_large</a><a class="pd-chip" href="../tag/PC0030.html?v=897410581b66">PC0030 · prime_count_chebyshev_lower</a><a class="pd-chip" href="../tag/PC0031.html?v=897410581b66">PC0031 · prime_count_chebyshev_bounds</a><a class="pd-chip" href="../tag/PC0034.html?v=897410581b66">PC0034 · prime_count_functional</a><a class="pd-chip" href="../tag/PC0035.html?v=897410581b66">PC0035 · prime_count_zero</a><a class="pd-chip" href="../tag/PC0036.html?v=897410581b66">PC0036 · prime_count_one</a><a class="pd-chip" href="../tag/PC0037.html?v=897410581b66">PC0037 · prime_count_exists_unique</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>2</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0095.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>1d864c885ea15bdd35d0ae64d9e6c4588bfb6f11dac2a48a0651fc8f9dc7b1de</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v28/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

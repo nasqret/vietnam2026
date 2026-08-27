@@ -1,4 +1,4 @@
-"""Current Alpha-v27 explorers preserve three frozen Alpha-v21 proof campaigns."""
+"""Current Alpha-v28 explorers preserve three frozen Alpha-v21 proof campaigns."""
 
 from __future__ import annotations
 
@@ -71,7 +71,7 @@ def corpora(generated: dict[str, bytes]) -> dict[str, dict]:
     }
 
 
-def test_manifest_binds_current_v27_and_independently_verified_first_admission_v21(
+def test_manifest_binds_current_v28_and_independently_verified_first_admission_v21(
     generated: dict[str, bytes], inputs: dict
 ) -> None:
     manifest = json.loads(generated["manifest.json"])
@@ -82,7 +82,7 @@ def test_manifest_binds_current_v27_and_independently_verified_first_admission_v
     assert manifest["first_enrollment_catalog_sha256"] == historical_digest
     assert manifest["html_revision"] == digest[:12]
     assert manifest["edition_identity_sha256"] == inputs["current_edition_identity_sha256"]
-    assert manifest["alpha_edition_version"] == "v27"
+    assert manifest["alpha_edition_version"] == "v28"
     assert manifest["alpha_first_enrolled_version"] == "v21"
     assert manifest["proof_bundle_sha256"] == inputs["bundle"]["artifact_sha256"]
     assert manifest["proof_bundle_node_count"] == 209
@@ -136,7 +136,7 @@ def test_historical_v21_family_landing_reuses_quadratic_reciprocity_structure(
     assert 'class="proof-hero"' not in source
     assert source.count('<article class="view-card') == 3
     assert f'href="../assets/proofs.css?v={revision}"' in source
-    assert "Alpha v27 checked-use theorem family" in source
+    assert "Alpha v28 checked-use theorem family" in source
     assert "first admitted v21" in source
     assert "independently accept all 209 bundle nodes" in source
     assert corpus["alpha_proof_bundle_sha256"] in source
@@ -165,7 +165,7 @@ def test_family_boundaries_exact_release_rows_and_separate_full_milestones(
     if milestone == "T13":
         assert corpus["historical_component_only"] is True
         assert corpus["historical_milestone_status"] == "open"
-    assert corpus["alpha_edition_version"] == "v27"
+    assert corpus["alpha_edition_version"] == "v28"
     assert corpus["alpha_first_enrolled_version"] == "v21"
     assert corpus["alpha_first_enrollment_catalog_sha256"] == inputs[
         "historical_catalog_sha256"
@@ -185,7 +185,7 @@ def test_family_boundaries_exact_release_rows_and_separate_full_milestones(
         assert node["body_proof_depth"] == closure["body_proof_depth"]
         assert node["sources"][0]["script_sha256"] == sealed["script_sha256"]
         assert node["alpha_checked_use"] is True
-        assert node["alpha_edition_version"] == "v27"
+        assert node["alpha_edition_version"] == "v28"
         assert node["alpha_first_enrolled_version"] == "v21"
         assert node["independent_lean_bundle_verified"] is True
         assert node["stable_member"] is False
@@ -335,7 +335,7 @@ def test_proof_definition_and_notation_arrows_are_separate_and_acyclic(
 ) -> None:
     corpus = corpora[slug]
     graph = json.loads(generated[f"{slug}/explorer/defined/api/graph.json"])
-    assert graph["alpha_edition_version"] == "v27"
+    assert graph["alpha_edition_version"] == "v28"
     assert graph["alpha_first_enrolled_version"] == "v21"
     assert graph["milestone_status"] == corpus["milestone_status"]
     assert graph["path_policy"] == "proof_dependency_edges_only"
@@ -392,7 +392,7 @@ def test_every_major_root_has_exact_and_definition_aware_complete_proof_pages(
     defined = generated[f"{slug}/explorer/defined/tag/{tag}.html"].decode()
     assert theorem in exact
     assert theorem in defined
-    assert "Alpha v27" in defined
+    assert "Alpha v28" in defined
     assert "Alpha v21" in defined
     assert "/ 209</dd>" in defined
     assert "all 209 exact bundle nodes" in defined

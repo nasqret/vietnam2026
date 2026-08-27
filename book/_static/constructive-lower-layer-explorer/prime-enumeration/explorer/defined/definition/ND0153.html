@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0153 — InitialPrimeChain(b,c,k) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-enumeration"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
+       <a href="../graph.html?v=897410581b66">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=InitialPrimeChain&amp;v=897410581b66">Global definition: InitialPrimeChain</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F03&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G021" href="../../../../grand-campaign/?view=goal&amp;focus=G021&amp;v=897410581b66">G021 milestone</a><a data-campaign-link="goal" data-campaign-goal="G022" href="../../../../grand-campaign/?view=goal&amp;focus=G022&amp;v=897410581b66">G022 milestone</a></nav>
+  <p class="pd-tag">ND0153</p><h1>InitialPrimeChain(b,c,k)</h1>
+  <p>A beta code starting at two and containing k actual least-prime transitions, hence k+1 consecutive primes.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=897410581b66">BetaAt(b,c,0,2)</a> ∧ (∀ x. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=897410581b66">Lt(x,k)</a> → ∃ y. ∃ z. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=897410581b66">BetaAt(b,c,x,y)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=897410581b66">BetaAt(b,c,S x,z)</a> ∧ <a class="pd-definition-ref" data-definition="ND0152" href="ND0152.html?v=897410581b66">NextPrime(y,z)</a>))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>(((exists fs_h_pen_lowerlayer_initial. fs_h_pen_lowerlayer_initial + S (2) = S ((S (0)) * c)) /\ exists fs_q_pen_lowerlayer_initial. b = fs_q_pen_lowerlayer_initial * S ((S (0)) * c) + (2))) /\ forall pen_index_lowerlayer. (exists pc_lt_pen_lowerlayer_bound. pc_lt_pen_lowerlayer_bound + S (pen_index_lowerlayer) = (k)) -&gt; exists pen_previous_lowerlayer pen_following_lowerlayer. (((exists fs_h_pen_lowerlayer_previous. fs_h_pen_lowerlayer_previous + S (pen_previous_lowerlayer) = S ((S (pen_index_lowerlayer)) * c)) /\ exists fs_q_pen_lowerlayer_previous. b = fs_q_pen_lowerlayer_previous * S ((S (pen_index_lowerlayer)) * c) + (pen_previous_lowerlayer))) /\ ((((exists fs_h_pen_lowerlayer_following. fs_h_pen_lowerlayer_following + S (pen_following_lowerlayer) = S ((S (S pen_index_lowerlayer)) * c)) /\ exists fs_q_pen_lowerlayer_following. b = fs_q_pen_lowerlayer_following * S ((S (S pen_index_lowerlayer)) * c) + (pen_following_lowerlayer))) /\ (((~(pen_following_lowerlayer = 1) /\ forall bpr_left_pc_pen_lowerlayer_next_prime bpr_right_pc_pen_lowerlayer_next_prime. pen_following_lowerlayer = bpr_left_pc_pen_lowerlayer_next_prime * bpr_right_pc_pen_lowerlayer_next_prime -&gt; bpr_left_pc_pen_lowerlayer_next_prime = 1 \/ bpr_right_pc_pen_lowerlayer_next_prime = 1)) /\ ((exists pc_lt_pen_lowerlayer_next_greater. pc_lt_pen_lowerlayer_next_greater + S (pen_previous_lowerlayer) = (pen_following_lowerlayer)) /\ forall pen_comparison_lowerlayer_next. ((~(pen_comparison_lowerlayer_next = 1) /\ forall bpr_left_pc_pen_lowerlayer_next_comparison bpr_right_pc_pen_lowerlayer_next_comparison. pen_comparison_lowerlayer_next = bpr_left_pc_pen_lowerlayer_next_comparison * bpr_right_pc_pen_lowerlayer_next_comparison -&gt; bpr_left_pc_pen_lowerlayer_next_comparison = 1 \/ bpr_right_pc_pen_lowerlayer_next_comparison = 1)) -&gt; (exists pc_lt_pen_lowerlayer_next_above. pc_lt_pen_lowerlayer_next_above + S (pen_previous_lowerlayer) = (pen_comparison_lowerlayer_next)) -&gt; (exists pc_le_pen_lowerlayer_next_minimal. pc_le_pen_lowerlayer_next_minimal + (pen_following_lowerlayer) = (pen_comparison_lowerlayer_next)))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0013.html?v=897410581b66">BetaAt(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=897410581b66">Lt(a,b)</a><a class="pd-chip" href="ND0152.html?v=897410581b66">NextPrime(a,p)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0154.html?v=897410581b66">InitialPrimeList(b,c,k)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PE0007.html?v=897410581b66">PE0007 · initial_prime_chain_singleton_exists</a><a class="pd-chip" href="../tag/PE0008.html?v=897410581b66">PE0008 · initial_prime_chain_prefix_extend</a><a class="pd-chip" href="../tag/PE0009.html?v=897410581b66">PE0009 · initial_prime_chain_prefix_restrict</a><a class="pd-chip" href="../tag/PE000A.html?v=897410581b66">PE000A · initial_prime_chain_terminal_is_prime</a><a class="pd-chip" href="../tag/PE000B.html?v=897410581b66">PE000B · initial_prime_chain_bounded_exists</a><a class="pd-chip" href="../tag/PE000C.html?v=897410581b66">PE000C · first_primes_double_exponential_bound</a><a class="pd-chip" href="../tag/PE000D.html?v=897410581b66">PE000D · initial_prime_chain_strict_order</a><a class="pd-chip" href="../tag/PE000E.html?v=897410581b66">PE000E · initial_prime_chain_exhausts_primes</a><a class="pd-chip" href="../tag/PE000F.html?v=897410581b66">PE000F · prime_list_nonempty_chain</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>3</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0153.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>6f077247129ae6b335d635853bff4be00ef03184a278e1d23ce4c4bf209a855f</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

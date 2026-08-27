@@ -8,7 +8,7 @@ from functools import lru_cache
 from hashlib import sha256
 from html.parser import HTMLParser
 import json
-from math import comb, isqrt
+from math import comb, isfinite, isqrt
 from pathlib import Path
 import subprocess
 import sys
@@ -39,7 +39,8 @@ from peano_lab.library import editions_v20 as v20  # noqa: E402
 from peano_lab.library import editions_v23 as v23  # noqa: E402
 from peano_lab.library import editions_v25 as v25  # noqa: E402
 from peano_lab.library import editions_v26 as v26  # noqa: E402
-from peano_lab.library import editions_v27 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v28 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v27 as v27  # noqa: E402
 from peano_lab.library.alpha_enrollment_v19 import alpha_v19_enrollment  # noqa: E402
 from peano_lab.library import four_square_frontier_promotion as four_square_closure  # noqa: E402
 from peano_lab.library import lucas_mixed_promotion as lucas_closure  # noqa: E402
@@ -414,24 +415,30 @@ def test_frontier_inventory_is_deterministic_complete_and_evidence_honest(
     assert manifest["family_count"] == 6
     assert tuple(row["slug"] for row in manifest["families"]) == EXPECTED_FAMILIES
     assert manifest["candidate_status"] == generator.CANDIDATE_STATUS
-    assert manifest["alpha_edition_version"] == "v27"
+    assert manifest["alpha_edition_version"] == "v28"
     assert manifest["alpha_edition_identity_sha256"] == (
-        current_alpha.ALPHA_V27_IDENTITY_SHA256
+        current_alpha.ALPHA_V28_IDENTITY_SHA256
     )
-    assert manifest["alpha_edition_checked_use_count"] == current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+    assert manifest["alpha_edition_checked_use_count"] == current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
     assert manifest["alpha_catalog_sha256"] == generator.EXPECTED_CURRENT_ALPHA_CATALOG_SHA256
-    assert manifest["parent_alpha_edition_version"] == "v26"
+    assert manifest["parent_alpha_edition_version"] == "v27"
     assert manifest["parent_alpha_edition_identity_sha256"] == (
-        v26.ALPHA_V26_IDENTITY_SHA256
+        v27.ALPHA_V27_IDENTITY_SHA256
     )
-    assert manifest["parent_alpha_edition_checked_use_count"] == 2138
+    assert manifest["parent_alpha_edition_checked_use_count"] == 2560
     assert manifest["parent_alpha_catalog_sha256"] == (
+        "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+    )
+    assert manifest["previous_parent_alpha_edition_version"] == "v26"
+    assert manifest["previous_parent_alpha_edition_identity_sha256"] == v26.ALPHA_V26_IDENTITY_SHA256
+    assert manifest["previous_parent_alpha_edition_checked_use_count"] == 2138
+    assert manifest["previous_parent_alpha_catalog_sha256"] == (
         "969c261f924060552dda393427b4fbc51515b9d4e69daa17f5e9f1691b5ab534"
     )
-    assert manifest["previous_parent_alpha_edition_version"] == "v25"
-    assert manifest["previous_parent_alpha_edition_identity_sha256"] == v25.ALPHA_V25_IDENTITY_SHA256
-    assert manifest["previous_parent_alpha_edition_checked_use_count"] == 2080
-    assert manifest["previous_parent_alpha_catalog_sha256"] == (
+    assert manifest["earlier_parent_alpha_edition_version"] == "v25"
+    assert manifest["earlier_parent_alpha_edition_identity_sha256"] == v25.ALPHA_V25_IDENTITY_SHA256
+    assert manifest["earlier_parent_alpha_edition_checked_use_count"] == 2080
+    assert manifest["earlier_parent_alpha_catalog_sha256"] == (
         "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
     )
     assert manifest["historical_alpha_edition_version"] == "v19"
@@ -470,7 +477,7 @@ def test_navigation_revision_follows_alpha_catalog_not_immutable_asset_bytes(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
     files, _manifest = generated
-    catalog = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
+    catalog = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v28.json"
     historical = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v19.json"
     alpha_revision = sha256(catalog.read_bytes()).hexdigest()[:12]
     canonical_script_revision = sha256(
@@ -506,11 +513,11 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
 
     assert corpus["slug"] == slug
     assert corpus["candidate_status"] == generator.CANDIDATE_STATUS
-    assert corpus["alpha_edition_version"] == "v27"
+    assert corpus["alpha_edition_version"] == "v28"
     assert corpus["alpha_edition_identity_sha256"] == (
-        current_alpha.ALPHA_V27_IDENTITY_SHA256
+        current_alpha.ALPHA_V28_IDENTITY_SHA256
     )
-    assert corpus["alpha_edition_checked_use_count"] == current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+    assert corpus["alpha_edition_checked_use_count"] == current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
     assert corpus["historical_alpha_edition_version"] == "v19"
     assert corpus["historical_alpha_edition_identity_sha256"] == (
         v19.ALPHA_V19_IDENTITY_SHA256
@@ -585,12 +592,12 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
                 else generator.ALPHA_BODY_STATUS
             )
             assert node["alpha_evidence"] == alpha_entry.evidence.value
-            assert node["alpha_edition_version"] == "v27"
+            assert node["alpha_edition_version"] == "v28"
             assert node["alpha_admission_version"] in {
                 "v13", "v14", "v15", "v19", "v23", "v26"
             }
             assert node["alpha_edition_identity_sha256"] == (
-                current_alpha.ALPHA_V27_IDENTITY_SHA256
+                current_alpha.ALPHA_V28_IDENTITY_SHA256
             )
             assert node["alpha_campaign"] in {
                 "four_square",
@@ -1307,58 +1314,21 @@ def test_canonical_explorer_assets_are_byte_identical_to_original_pa_interfaces(
     )
 
 
-@pytest.mark.parametrize(
-    ("focus", "expected_href", "expected_label", "expected_title"),
-    (
-        (
-            "PA0001",
-            "tag/PA0001.html",
-            "Open theorem →",
-            "PA0001 · Fixture theorem",
-        ),
-        (
-            "PD0001",
-            "definition/PD0001.html",
-            "Open definition →",
-            "PD0001 · Fixture definition",
-        ),
-    ),
-)
-def test_canonical_graph_updates_sidebar_despite_getter_only_svg_href(
+def _canonical_graph_runtime(
+    payload: dict[str, object],
+    target: str,
     focus: str,
-    expected_href: str,
-    expected_label: str,
-    expected_title: str,
-) -> None:
-    """Run the actual shared graph against Firefox-style SVG anchor properties."""
+    *,
+    complete_family: bool = False,
+) -> dict[str, object]:
+    """Execute the unchanged browser asset; pass real payloads through stdin."""
 
-    payload = {
-        "nodes": [
-            {
-                "id": "PA0001",
-                "kind": "theorem",
-                "name": "Fixture theorem",
-                "summary": "A theorem with an SVG graph link.",
-                "href": "tag/PA0001.html",
-                "layer": 0,
-                "scope": "candidate",
-            },
-            {
-                "id": "PD0001",
-                "kind": "definition",
-                "name": "Fixture definition",
-                "summary": "A conservative definition.",
-                "href": "definition/PD0001.html",
-            },
-        ],
-        "edges": [],
-        "proof_adjacency": {},
-    }
     harness = (
-        f"const payload = {json.dumps(payload)};\n"
-        f"const selectedFocus = {json.dumps(focus)};\n"
-        + r"""
+        r"""
+const {payload, selectedTarget, selectedFocus, completeFamily} =
+  JSON.parse(require("node:fs").readFileSync(0, "utf8"));
 const svgAnchors = [];
+let currentAddress = "";
 
 class Element {
   constructor(name, namespace = "html") {
@@ -1454,16 +1424,23 @@ global.document = {
 global.window = {
   PA_DEFINED_GRAPH: payload,
   location: {
-    href: "https://proofs.example/graph.html?target=PA0001&focus=" + selectedFocus,
+    href: "https://proofs.example/graph.html?target=" + selectedTarget +
+      "&focus=" + selectedFocus +
+      (completeFamily ? "&view=corpus&definitions=selected&edges=all" : ""),
     hash: ""
   },
-  history: {replaceState() {}},
+  history: {replaceState(_state, _title, address) { currentAddress = String(address); }},
   requestAnimationFrame(callback) { callback(); },
   addEventListener() {}
 };
 """
         + generator.DEFINED_EXPLORER_SCRIPT.read_text()
         + r"""
+function descendants(element) {
+  return [element].concat((element.children || []).flatMap(descendants));
+}
+const rendered = descendants(svg);
+const renderedNodes = rendered.filter(element => element.dataset && element.dataset.graphNode);
 const svgHref = Object.getOwnPropertyDescriptor(svgAnchors[0], "href");
 process.stdout.write(JSON.stringify({
   sidebarHref: sidebarAnchor.attributes.href,
@@ -1473,15 +1450,83 @@ process.stdout.write(JSON.stringify({
   svgAnchorCount: svgAnchors.length,
   firstSvgHref: svgAnchors[0].href.baseVal,
   svgHrefIsGetterOnly: typeof svgHref.get === "function" && svgHref.set === undefined,
+  allSvgHrefsAreGetterOnly: svgAnchors.every(element => {
+    const property = Object.getOwnPropertyDescriptor(element, "href");
+    return typeof property.get === "function" && property.set === undefined;
+  }),
+  renderedNodeIds: renderedNodes.map(element => element.dataset.graphNode),
+  selectedNodeIds: renderedNodes.filter(element =>
+    element.attributes.class.split(" ").includes("pd-graph-node-selected")
+  ).map(element => element.dataset.graphNode),
+  renderedArrowCount: rendered.filter(element => element.name === "path" &&
+    String(element.attributes.class || "").split(" ").includes("pd-graph-edge")
+  ).length,
+  currentAddress: currentAddress,
+  viewport: svg.attributes.viewBox,
   viewportRendered: svg.attributes.viewBox !== undefined
 }));
 """
     )
-    result = json.loads(
+    return json.loads(
         subprocess.run(
-            ["node", "-e", harness], check=True, text=True, capture_output=True
+            ["node", "-e", harness],
+            input=json.dumps({
+                "payload": payload, "selectedTarget": target,
+                "selectedFocus": focus, "completeFamily": complete_family,
+            }),
+            check=True, text=True, capture_output=True, timeout=20,
         ).stdout
     )
+
+
+@pytest.mark.parametrize(
+    ("focus", "expected_href", "expected_label", "expected_title"),
+    (
+        (
+            "PA0001",
+            "tag/PA0001.html",
+            "Open theorem →",
+            "PA0001 · Fixture theorem",
+        ),
+        (
+            "PD0001",
+            "definition/PD0001.html",
+            "Open definition →",
+            "PD0001 · Fixture definition",
+        ),
+    ),
+)
+def test_canonical_graph_updates_sidebar_despite_getter_only_svg_href(
+    focus: str,
+    expected_href: str,
+    expected_label: str,
+    expected_title: str,
+) -> None:
+    """Keep both original Firefox-style SVG regression fixtures unchanged."""
+
+    payload = {
+        "nodes": [
+            {
+                "id": "PA0001",
+                "kind": "theorem",
+                "name": "Fixture theorem",
+                "summary": "A theorem with an SVG graph link.",
+                "href": "tag/PA0001.html",
+                "layer": 0,
+                "scope": "candidate",
+            },
+            {
+                "id": "PD0001",
+                "kind": "definition",
+                "name": "Fixture definition",
+                "summary": "A conservative definition.",
+                "href": "definition/PD0001.html",
+            },
+        ],
+        "edges": [],
+        "proof_adjacency": {},
+    }
+    result = _canonical_graph_runtime(payload, "PA0001", focus)
 
     assert result["sidebarHref"] == expected_href
     assert result["sidebarLabel"] == expected_label
@@ -1491,6 +1536,165 @@ process.stdout.write(JSON.stringify({
     assert result["firstSvgHref"] == "tag/PA0001.html"
     assert result["svgHrefIsGetterOnly"] is True
     assert result["viewportRendered"] is True
+
+
+@pytest.mark.parametrize("focus_kind", ("theorem", "definition"))
+@pytest.mark.parametrize(
+    (
+        "slug", "theorem_count", "definition_count", "declared_edge_count", "typed_edge_counts",
+        "root_id", "root_name", "definition_id", "definition_name",
+    ),
+    (
+        (
+            "arithmetic-foundations", 27, 22, 85, (30, 87, 28),
+            "AF001A", "prime_factor_lists_permutation_exists",
+            "ND0151", "PrimeFactorListPermutation",
+        ),
+        (
+            "prime-enumeration", 19, 11, 75, (18, 62, 14),
+            "PE000C", "first_primes_double_exponential_bound",
+            "ND0154", "InitialPrimeList",
+        ),
+        (
+            "gaussian-integers", 93, 21, 320, (117, 106, 25),
+            "GI005D", "gaussian_euclidean_division_exists",
+            "ND0168", "GEuclideanDivision",
+        ),
+        (
+            "eisenstein-integers", 65, 17, 308, (72, 79, 17),
+            "EI0041", "eisenstein_euclidean_division_exists",
+            "ND0174", "EEuclideanDivision",
+        ),
+    ),
+)
+def test_actual_lower_layer_graphs_render_root_and_definition_focus_with_getter_only_svg_href(
+    slug: str,
+    theorem_count: int,
+    definition_count: int,
+    declared_edge_count: int,
+    typed_edge_counts: tuple[int, int, int],
+    root_id: str,
+    root_name: str,
+    definition_id: str,
+    definition_name: str,
+    focus_kind: str,
+) -> None:
+    """Exercise all four actual publication payloads, not substitute fixtures."""
+
+    package = REPO / "book/_static/constructive-lower-layer-explorer"
+    family = package / slug
+    page = family / "explorer/defined/graph.html"
+    source = page.read_text(encoding="utf-8")
+    corpus = json.loads((family / "api/corpus.json").read_bytes())
+    asset = (package / "assets/defined-explorer.js").read_bytes()
+    assert asset == generator.DEFINED_EXPLORER_SCRIPT.read_bytes()
+    assert f'src="../../../assets/defined-explorer.js?v={sha256(asset).hexdigest()[:12]}"' in source
+
+    marker = "window.PA_DEFINED_GRAPH="
+    assert source.count(marker) == 1
+    serialized = source.split(marker, 1)[1].split("</script>", 1)[0]
+    payload, end = json.JSONDecoder().raw_decode(serialized)
+    assert serialized[end:].strip() == ";"
+    assert payload["schema"] == "peano-lab-constructive-lower-layer-explorer-v1-graph"
+    assert payload["family_slug"] == corpus["family_slug"] == slug
+    assert payload["alpha_edition_version"] == corpus["alpha_edition_version"] == "v28"
+    assert payload["alpha_first_enrolled_version"] == "v28"
+    assert corpus["alpha_catalog_sha256"] == generator.EXPECTED_CURRENT_ALPHA_CATALOG_SHA256
+    assert payload["independent_lean_bundle_verified"] is True
+    assert payload["path_policy"] == "proof_dependency_edges_only"
+    assert payload["stable_admitted_node_count"] == 0
+
+    by_id = {node["id"]: node for node in payload["nodes"]}
+    theorems = [node for node in payload["nodes"] if node["kind"] == "theorem"]
+    definitions = [node for node in payload["nodes"] if node["kind"] == "definition"]
+    assert len(theorems) == corpus["node_count"] == theorem_count
+    assert payload["alpha_checked_use_node_count"] == theorem_count
+    assert len(definitions) == corpus["definition_count"] == definition_count
+    assert len(by_id) == len(payload["nodes"]) == theorem_count + definition_count
+    assert payload["edges"] == corpus["edges"]
+    assert len(payload["edges"]) == sum(typed_edge_counts)
+    assert Counter(edge["kind"] for edge in payload["edges"]) == {
+        "proof_dependency": typed_edge_counts[0],
+        "uses_definition": typed_edge_counts[1],
+        "definition_uses_definition": typed_edge_counts[2],
+    }
+    # All declared proof prerequisites include external rows. They must never
+    # be confused with the three typed, internal display-edge categories.
+    assert corpus["edge_count"] == declared_edge_count == sum(
+        len(node["dependencies"]) for node in corpus["nodes"]
+    )
+    assert corpus["internal_edge_count"] == typed_edge_counts[0]
+    assert corpus["definition_dependency_count"] == typed_edge_counts[2]
+    assert {node["name"] for node in theorems} == {node["name"] for node in corpus["nodes"]}
+    assert {node["id"] for node in definitions} == {node["id"] for node in corpus["definitions"]}
+    assert root_id in payload["root_ids"]
+    assert corpus["tags"][root_name] == root_id
+    assert by_id[root_id]["name"] == root_name
+    assert by_id[root_id]["kind"] == "theorem"
+    assert by_id[definition_id]["name"] == definition_name
+    assert by_id[definition_id]["kind"] == "definition"
+
+    for node in theorems:
+        assert node["alpha_checked_use"] is True
+        assert node["independent_lean_bundle_verified"] is True
+        assert node["alpha_first_enrolled_version"] == "v28"
+        assert node["stable_member"] is False
+    for node in payload["nodes"]:
+        target = urlsplit(node["href"])
+        assert not target.scheme and not target.netloc
+        assert parse_qs(target.query) == {"v": [generator.CANONICAL_HTML_REVISION]}
+        destination = (page.parent / target.path).resolve()
+        assert destination.is_relative_to(family.resolve())
+        assert destination.is_file()
+    for edge in payload["edges"]:
+        assert edge["source"] in by_id and edge["target"] in by_id
+        if edge["kind"] == "proof_dependency":
+            assert by_id[edge["source"]]["kind"] == by_id[edge["target"]]["kind"] == "theorem"
+        else:
+            assert edge["kind"] in {"uses_definition", "definition_uses_definition"}
+            assert by_id[edge["target"]]["kind"] == "definition"
+
+    focus = root_id if focus_kind == "theorem" else definition_id
+    expected_ids = {node["id"] for node in theorems} | {focus}
+    pending = [focus]
+    while pending:
+        current = pending.pop()
+        for edge in payload["edges"]:
+            if edge["kind"] != "proof_dependency" and edge["source"] == current:
+                child = edge["target"]
+                if child not in expected_ids:
+                    expected_ids.add(child)
+                    pending.append(child)
+    expected_arrows = sum(
+        edge["source"] in expected_ids and edge["target"] in expected_ids
+        for edge in payload["edges"]
+    )
+    result = _canonical_graph_runtime(payload, root_id, focus, complete_family=True)
+
+    assert result["sidebarHref"] == by_id[focus]["href"]
+    assert result["sidebarLabel"] == ("Open theorem →" if focus_kind == "theorem" else "Open definition →")
+    assert result["title"] == f"{focus} · {by_id[focus]['name']}"
+    assert result["summary"] == (
+        f"{theorem_count} theorem nodes · {len(expected_ids) - theorem_count} definition nodes · "
+        f"{expected_arrows} of {expected_arrows} direct typed arrows shown. "
+        "Proof paths ignore notation edges."
+    )
+    assert set(result["renderedNodeIds"]) == expected_ids
+    assert len(result["renderedNodeIds"]) == result["svgAnchorCount"] == len(expected_ids)
+    assert result["selectedNodeIds"] == [focus]
+    assert result["renderedArrowCount"] == expected_arrows
+    assert result["firstSvgHref"] == theorems[0]["href"]
+    assert result["svgHrefIsGetterOnly"] is True
+    assert result["allSvgHrefsAreGetterOnly"] is True
+    assert result["viewportRendered"] is True
+    viewport = [float(value) for value in result["viewport"].split()]
+    assert len(viewport) == 4 and all(isfinite(value) for value in viewport)
+    assert viewport[2] > 0 and viewport[3] > 0
+    address = parse_qs(urlsplit(result["currentAddress"]).query)
+    assert address == {
+        "target": [root_id], "focus": [focus], "view": ["corpus"],
+        "definitions": ["selected"], "edges": ["all"],
+    }
 
 
 def test_every_generated_document_navigation_bypasses_proxy_html_caches(
@@ -1762,11 +1966,11 @@ def test_four_square_and_multidigit_lucas_have_independent_checked_authority(
     assert "all sixteen signed centered orientations" in four["scope"]
     assert "bounded strict prime-multiple descent" in four["scope"]
     assert "first enrolled in Alpha v13 as body_checked" in four["scope"]
-    assert "Alpha v27 checked-use theorems" in four["scope"]
+    assert "Alpha v28 checked-use theorems" in four["scope"]
     assert "without Stable admission" in four["scope"]
     assert "complete arbitrary-length multidigit Lucas congruence" in lucas["scope"]
     assert "first enrolled in Alpha v13 as body_checked" in lucas["scope"]
-    assert "Alpha v27 checked-use theorems" in lucas["scope"]
+    assert "Alpha v28 checked-use theorems" in lucas["scope"]
     assert "without Stable admission" in lucas["scope"]
     assert "kernel-checked universal theorem is available in the proof map" in files[
         "assets/frontier.js"
@@ -2032,7 +2236,7 @@ def test_two_square_surface_identifies_the_complete_zero_inclusive_iff(
     )
     assert "complete all-natural iff" in corpus["scope"]
     assert "first enrolled in Alpha v15 as body_checked" in corpus["scope"]
-    assert "Alpha v27 preserves their independently closed" in corpus["scope"]
+    assert "Alpha v28 preserves their independently closed" in corpus["scope"]
     assert "first admitted in Alpha v19" in corpus["scope"]
     assert "without Stable admission" in corpus["scope"]
     assert endpoint["enrolled_in_alpha"] is True
@@ -2062,7 +2266,7 @@ def test_two_square_factor_helpers_honestly_record_first_alpha_v23_admission(
     )
     for node in rows.values():
         assert node["alpha_evidence"] == "alpha_closed"
-        assert node["alpha_edition_version"] == "v27"
+        assert node["alpha_edition_version"] == "v28"
         assert node["alpha_admission_version"] == "v23"
         assert node["alpha_campaign"] == "primes_three_mod_four"
         assert node["alpha_checked_use"] is True
@@ -2082,7 +2286,7 @@ def test_supplementary_explorer_includes_exact_euler_and_gauss_prerequisites(
         "quadratic_supplement_two_complete",
     ]
     assert "first enrolled in Alpha v15" in corpus["scope"]
-    assert "Alpha v27 checked-use" in corpus["scope"]
+    assert "Alpha v28 checked-use" in corpus["scope"]
     for name in (
         "bounded_euler_criterion_complete",
         "bounded_gauss_lemma_complete",
@@ -2117,13 +2321,13 @@ def test_supplementary_exact_defined_and_graph_views_show_real_alpha_closure(
     assert all(row["alpha_checked_use"] is True for row in checked.values())
     assert all(row["admitted_to_alpha"] is True for row in checked.values())
     assert all(row["admitted_to_stable"] is False for row in nodes.values())
-    assert manifest["alpha_edition_identity_sha256"] == current_alpha.ALPHA_V27_IDENTITY_SHA256
+    assert manifest["alpha_edition_identity_sha256"] == current_alpha.ALPHA_V28_IDENTITY_SHA256
     assert "Alpha-closed checked-use (28)" in files[
         "supplementary-laws/explorer/index.html"
     ].decode()
     graph_page = files["supplementary-laws/explorer/defined/graph.html"].decode()
     assert "28 independently verified alpha_closed checked-use theorems" in graph_page
-    assert "Alpha v27 enrolls exactly 28 of 28 displayed bodies as body_checked" not in graph_page
+    assert "Alpha v28 enrolls exactly 28 of 28 displayed bodies as body_checked" not in graph_page
     assert "checked-use theorem · independently verified; not Stable" in files[
         "assets/frontier.js"
     ].decode()
@@ -2132,7 +2336,7 @@ def test_supplementary_exact_defined_and_graph_views_show_real_alpha_closure(
         exact = files[f"supplementary-laws/explorer/tag/{tag}.html"].decode()
         defined = files[f"supplementary-laws/explorer/defined/tag/{tag}.html"].decode()
         assert "checked-use authorized; not Stable" in exact
-        assert "Alpha v27; independently verified" in exact
+        assert "Alpha v28; independently verified" in exact
         assert "alpha_closed; checked-use authorized; not Stable" in defined
         assert "body_checked; no checked-use authority" not in defined
 
@@ -2168,7 +2372,7 @@ def test_every_flagship_view_reports_real_v24_proof_bundle_authority(
     assert corpus["alpha_checked_use_node_count"] == expected_count
     assert corpus["alpha_enrolled_node_count"] == expected_count
     assert corpus["alpha_edition_identity_sha256"] == (
-        current_alpha.ALPHA_V27_IDENTITY_SHA256
+        current_alpha.ALPHA_V28_IDENTITY_SHA256
     )
     assert root_node["alpha_evidence"] == "alpha_closed"
     assert root_node["alpha_checked_use"] is True
@@ -2184,7 +2388,7 @@ def test_every_flagship_view_reports_real_v24_proof_bundle_authority(
     graph = files[f"{slug}/explorer/defined/graph.html"].decode()
 
     assert f"Alpha-closed checked-use ({expected_count})" in exact_index
-    assert "Alpha v27; independently verified" in exact_theorem
+    assert "Alpha v28; independently verified" in exact_theorem
     assert "checked-use authorized; not Stable" in exact_theorem
     assert "alpha_closed; checked-use authorized; not Stable" in defined_theorem
     assert "body_checked; no checked-use authority" not in defined_theorem
@@ -2238,7 +2442,7 @@ def test_frontier_preserves_each_flagships_original_enrollment_release(
         node = next(
             row for row in _corpus(files, slug)["nodes"] if row["name"] == name
         )
-        assert node["alpha_edition_version"] == "v27"
+        assert node["alpha_edition_version"] == "v28"
         assert node["alpha_admission_version"] == version
         assert node["alpha_checked_use"] is True
 
@@ -2253,7 +2457,7 @@ def test_pythagorean_campaign_exposes_complete_inverse_and_unconditional_descent
     assert corpus["node_count"] == 102
     assert corpus["alpha_enrolled_node_count"] == 102
     assert corpus["alpha_checked_use_node_count"] == 102
-    assert "Alpha v27" in corpus["scope"]
+    assert "Alpha v28" in corpus["scope"]
     assert "full inverse" in corpus["scope"].lower()
     assert "unconditional" in corpus["scope"].lower()
     assert "remain unproved" not in corpus["scope"]
@@ -2617,24 +2821,24 @@ def test_duplicate_factories_preserve_deterministic_first_source_and_provenance(
         "missing_campaign",
     ),
 )
-def test_alpha_v27_frontier_evidence_and_identity_mutations_are_rejected(
+def test_alpha_v28_frontier_evidence_and_identity_mutations_are_rejected(
     monkeypatch: pytest.MonkeyPatch, mutation: str,
 ) -> None:
     family = next(item for item in generator.FAMILIES if item.slug == "four-squares")
     root = "four_square_lagrange"
     alpha_entries = dict(current_alpha.ALPHA_EDITION.by_name)
     entry = alpha_entries[root]
-    message = "unexpected Alpha-v27 evidence"
+    message = "unexpected Alpha-v28 evidence"
 
     if mutation == "statement":
         entry = replace(entry, spec=replace(entry.spec, statement=entry.spec.statement + " "))
-        message = "sealed Alpha-v27 entry"
+        message = "sealed Alpha-v28 entry"
     elif mutation == "dependencies":
         entry = replace(entry, spec=replace(entry.spec, dependencies=entry.spec.dependencies[:-1]))
-        message = "sealed Alpha-v27 entry"
+        message = "sealed Alpha-v28 entry"
     elif mutation == "script":
         entry = replace(entry, spec=replace(entry.spec, script=entry.spec.script[:-1]))
-        message = "sealed Alpha-v27 entry"
+        message = "sealed Alpha-v28 entry"
     elif mutation == "body_evidence":
         entry = replace(entry, evidence=v13.EvidenceStatus.BODY_CHECKED)
     elif mutation == "pending_evidence":
@@ -2684,7 +2888,9 @@ def test_frontier_generation_never_mutates_sealed_release_authority() -> None:
         len(v25.ALPHA_CHECKED_SPECS),
         v26.ALPHA_V26_IDENTITY_SHA256,
         len(v26.ALPHA_CHECKED_SPECS),
-        current_alpha.ALPHA_V27_IDENTITY_SHA256,
+        v27.ALPHA_V27_IDENTITY_SHA256,
+        len(v27.ALPHA_CHECKED_SPECS),
+        current_alpha.ALPHA_V28_IDENTITY_SHA256,
         len(current_alpha.ALPHA_CHECKED_SPECS),
     )
 
@@ -2715,7 +2921,9 @@ def test_frontier_generation_never_mutates_sealed_release_authority() -> None:
         len(v25.ALPHA_CHECKED_SPECS),
         v26.ALPHA_V26_IDENTITY_SHA256,
         len(v26.ALPHA_CHECKED_SPECS),
-        current_alpha.ALPHA_V27_IDENTITY_SHA256,
+        v27.ALPHA_V27_IDENTITY_SHA256,
+        len(v27.ALPHA_CHECKED_SPECS),
+        current_alpha.ALPHA_V28_IDENTITY_SHA256,
         len(current_alpha.ALPHA_CHECKED_SPECS),
     )
 
@@ -2745,7 +2953,7 @@ def test_repository_proof_hub_labels_all_six_candidate_families() -> None:
     assert "Alpha v14 enrolled · body_checked; no checked-use authority" not in hub
     assert "Alpha v15 enrolled · body_checked; no checked-use authority" not in hub
     assert "Fermat descent remains conditional" not in hub
-    assert "Alpha v27" in hub
+    assert "Alpha v28" in hub
     assert "Independent replay experiment:" not in hub
     assert "80/196" not in hub
     assert "33/44" not in hub

@@ -21,12 +21,18 @@ release membership; it does not silently replace the mathematics.
 
 ## What is canonical today
 
-Current **Alpha v27** contains **2,560 independently checked theorems**,
-**8,196 actual proof-dependency edges**, and **53 layers**. Stable remains
-**432**; the **2,128 Alpha-only** rows remain opt-in. Historical Alpha v24
-has 2,008 rows, v25 has 2,080, and v26 has 2,138. The last two waves add
-58 first-wave and 422 second-wave proofs, with exact original-kernel and
-independently compiled Lean evidence. Broader roadmap goals remain open.
+Current **Alpha v28** contains **2,764 independently checked theorems**,
+**8,984 actual proof-dependency edges**, and **53 layers**. Stable remains
+**432**; the **2,332 Alpha-only** rows remain opt-in. Historical Alpha v24
+has 2,008 rows, v25 has 2,080, v26 has 2,138, and v27 has 2,560.
+Following 58 first-wave and 422 second-wave proofs, v28 adds **204 genuine
+lower-layer proofs**. Its complete **862-node** dependency certificate is
+accepted by both the original intuitionistic kernel and independently
+compiled Lean verifier. The nine exact milestones G001–G005, G021–G022,
+G081, and G084 are now closed; Gaussian/Eisenstein unique factorization and
+prime classification remain open. The four new explorers share 35 new
+conservative definitions with the atlas; no additional axioms or kernel
+primitives are introduced.
 
 The repository now has canonical machine-readable artifacts for both
 editions. Stable v1 remains sealed at 432 rows, Alpha v1 remains sealed at 885
@@ -312,13 +318,13 @@ BP01, and BP02 tranche RFCs. The full dependency-closed candidate proof ends
 in `bertrand_closed_upper` and `bertrand_strict`.
 
 The 557-row focused QR slice omits 191 Stable theorems; its union with all
-Stable rows has **748** distinct names, leaving 1,812 other current Alpha v27
+Stable rows has **748** distinct names, leaving 2,016 other current Alpha v28
 entries outside that union. Likewise, the 41-node K3B map is a deliberately
 curated visual lens, not a competing catalog. The current authoritative
-channel pointer is `artifacts/peano-library/channels-v27.json`; it links the
-immutable Alpha v27 catalog, metrics, and graph, while the pre-existing Stable
+channel pointer is `artifacts/peano-library/channels-v28.json`; it links the
+immutable Alpha v28 catalog, metrics, and graph, while the pre-existing Stable
 artifact remains `artifacts/peano-library/catalog-v1.json`. The historical
-`artifacts/peano-library/channels-v12.json` pointer and every Alpha v1--v22
+`artifacts/peano-library/channels-v12.json` pointer and every Alpha v1--v27
 artifact remain sealed parents. The historical v18 enrollment identity is
 `44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175`;
 its promoted-evidence identity is
@@ -369,8 +375,8 @@ its checked evidence root is
 `e9c00544bdad559342da3ed5a0d1e26ef1576a0eecd9f580ec1fc98a2eb941cf`;
 and its canonical catalog SHA-256 is
 `818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2`.
-The current evidence ledger is 432 `stable_closed`, 2,128 `alpha_closed`,
-zero `body_checked`, and zero pending rows; all 2,560 permit checked use.
+The current evidence ledger is 432 `stable_closed`, 2,332 `alpha_closed`,
+zero `body_checked`, and zero pending rows; all 2,764 permit checked use.
 The five historical flagship promotions and two historical v19 closure bundles bind
 actual proof data accepted independently by the unchanged Python kernel and
 compiled Lean verifier. The historical v20 next-layer proof bundle independently checks
@@ -544,11 +550,11 @@ evidence is `stable_closed` or `alpha_closed`; a `body_checked` or
 `pending_layered_closure` request fails closed.
 
 ```python
-from peano_lab.library.editions_v27 import edition, entry, replay
+from peano_lab.library.editions_v28 import edition, entry, replay
 
 len(edition("stable").specs)          # 432
-len(edition("alpha").specs)           # 2560
-len(edition("alpha").checked_specs)   # 2560
+len(edition("alpha").specs)           # 2764
+len(edition("alpha").checked_specs)   # 2764
 
 entry("cell_list_extensional", edition="alpha")
 replay("signed_decode_nonnegative_constructor", edition="alpha")
@@ -582,6 +588,10 @@ entry("binary_modular_execution_result_exists_unique", edition="alpha")
 entry("euclidean_gcd_execution_logarithmic_bound", edition="alpha")
 entry("binary_modular_execution_logarithmic_bound", edition="alpha")
 entry("infinitely_many_primes_three_mod_four", edition="alpha")
+entry("prime_factorization_exists_unique_up_to_permutation", edition="alpha")
+entry("first_primes_double_exponential_bound", edition="alpha")
+entry("gaussian_euclidean_division_exists", edition="alpha")
+entry("eisenstein_euclidean_division_exists", edition="alpha")
 ```
 
 The ordinary Stable API is unchanged and remains the default. Alpha replay

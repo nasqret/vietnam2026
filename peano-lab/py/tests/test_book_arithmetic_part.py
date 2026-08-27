@@ -21,6 +21,7 @@ K3B_CHAPTER = BOOK / "arithmetic-library" / "cell-history-and-lookup.md"
 K3B_SITE = BOOK / "_static" / "pa-proof-explorer" / "k3b"
 LIBRARY_EDITIONS = BOOK / "arithmetic-library" / "library-editions.md"
 GRAND_CAMPAIGN_CHAPTER = BOOK / "arithmetic-library" / "grand-campaign-atlas.md"
+LOWER_LAYER_CHAPTER = BOOK / "arithmetic-library" / "lower-layer-campaign.md"
 NEXT_LAYER_CHAPTER = BOOK / "arithmetic-library" / "next-layer-campaign.md"
 ADVANCED_LAYER_CHAPTER = BOOK / "arithmetic-library" / "advanced-layer-campaign.md"
 TRANSPORT_LAYER_CHAPTER = BOOK / "arithmetic-library" / "transport-layer-campaign.md"
@@ -58,15 +59,15 @@ def _load(path: Path) -> dict:
 
 def _assert_current_definition_counts(definitions: dict) -> None:
     expected = {
-        "definition_count": 290,
-        "definition_edge_count": 406,
-        "statement_usage_edge_count": 313,
-        "declared_notation_edge_count": 213,
-        "milestone_usage_edge_count": 526,
-        "reviewed_definition_count": 198,
-        "reviewed_definition_edge_count": 388,
-        "compatible_reviewed_match_count": 201,
-        "exact_name_reviewed_match_count": 196,
+        "definition_count": 323,
+        "definition_edge_count": 459,
+        "statement_usage_edge_count": 317,
+        "declared_notation_edge_count": 231,
+        "milestone_usage_edge_count": 548,
+        "reviewed_definition_count": 233,
+        "reviewed_definition_edge_count": 441,
+        "compatible_reviewed_match_count": 236,
+        "exact_name_reviewed_match_count": 231,
         "explicit_alias_reviewed_match_count": 5,
         "incompatible_reviewed_match_count": 2,
     }
@@ -132,6 +133,7 @@ def test_arithmetic_dashboard_tour_atlas_and_dependency_chapters_are_ordered() -
         "index",
         "library-editions",
         "grand-campaign-atlas",
+        "lower-layer-campaign",
         "next-layer-campaign",
         "advanced-layer-campaign",
         "transport-layer-campaign",
@@ -171,25 +173,25 @@ def test_grand_campaign_book_chapter_connects_research_scales_honestly() -> None
     assert campaign["meta"]["tool_count"] == 16
     assert campaign["meta"]["anchor_count"] == 8
     assert len(campaign["families"]) == 12
-    assert campaign["meta"]["current_alpha_version"] == "v27"
-    assert campaign["meta"]["current_alpha_checked_use_count"] == 2560
-    assert len(campaign["definitions"]) == 290
-    assert sum(len(node["deps"]) for node in campaign["nodes"]) == 308
+    assert campaign["meta"]["current_alpha_version"] == "v28"
+    assert campaign["meta"]["current_alpha_checked_use_count"] == 2764
+    assert len(campaign["definitions"]) == 323
+    assert sum(len(node["deps"]) for node in campaign["nodes"]) == 309
 
     for exact in (
         "**120 major mathematical goals**",
         "**16 reusable constructive tools**",
         "**8 established proof anchors**",
-        "**290 pieces of mathematical vocabulary**",
-        "**2,560 independently checked",
-        "**8,196 checked proof dependencies**",
-        "**406 definition-to-definition edges**",
-        "**313 statement-lexical",
-        "**213 separately typed, explicitly declared",
-        "**526 milestone-to-notation edges**",
-        "**198 genuinely shared conservative registry definitions**",
-        "**388 reviewed dependency edges**",
-        "**201 signature-compatible links**",
+        "**323 pieces of mathematical vocabulary**",
+        "**2,764 independently checked",
+        "**8,984 checked proof dependencies**",
+        "**459 definition-to-definition edges**",
+        "**317 statement-lexical",
+        "**231 separately typed, explicitly declared",
+        "**548 milestone-to-notation edges**",
+        "**233 genuinely shared conservative registry definitions**",
+        "**441 reviewed dependency edges**",
+        "**236 signature-compatible links**",
         "A research map is not a proof certificate",
         "future-facing entries remain planning vocabulary",
     ):
@@ -210,15 +212,55 @@ def test_grand_campaign_book_chapter_connects_research_scales_honestly() -> None
     for open_goal in ("G045", "G047", "G048", "G063", "G065", "G120", "G006", "G072", "G091"):
         assert nodes[open_goal]["status"] == "open"
     _assert_closed_matrix_and_algorithm_scopes(nodes)
-    for closed_goal in ("T12", "G011", "G012", "G023", "G024", "G025", "G026", "G027", "G035",
+    for closed_goal in ("G001", "G002", "G003", "G004", "G005", "G021", "G022", "G081", "G084",
+                        "T12", "G011", "G012", "G023", "G024", "G025", "G026", "G027", "G035",
                         "G043", "G051", "G061", "G071", "G077", "G078", "G095", "G107"):
         assert nodes[closed_goal]["status"] == "alpha_closed"
 
     assert "<grand-campaign-atlas>" in index
+    assert "<lower-layer-campaign>" in index
     assert "<next-layer-campaign>" in index
     assert "<advanced-layer-campaign>" in index
     assert "<transport-layer-campaign>" in index
     assert 'title="Interactive multiscale constructive number-theory research atlas"' in chapter
+
+
+def test_lower_layer_chapter_matches_actual_closed_targets_and_preserves_stronger_open_goals() -> None:
+    chapter = LOWER_LAYER_CHAPTER.read_text(encoding="utf-8")
+    campaign = _load(BOOK / "_static/constructive-grand-campaign/campaign.json")
+    catalog = _load(REPO / "artifacts/peano-library/alpha/catalog-v28.json")
+    nodes = {node["id"]: node for node in campaign["nodes"]}
+    promotion = catalog["alpha_v28_lower_layer_promotion"]
+    assert promotion["frontier_new_count"] == 204
+    assert promotion["independent_lean_bundle_verified"] is True
+    bundle = promotion["proof_bundle"]
+    assert bundle["node_count"] == 862
+    assert bundle["dependency_edges"] == 3090
+    assert bundle["body_proof_nodes"] == 230464
+    artifact = (REPO / bundle["artifact_path"]).read_bytes()
+    assert len(artifact) == 18977050
+    assert hashlib.sha256(artifact).hexdigest() == "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1"
+    for slug, count in (("arithmetic-foundations", 27), ("prime-enumeration", 19),
+                        ("gaussian-integers", 93), ("eisenstein-integers", 65)):
+        corpus_path = BOOK / "_static/constructive-lower-layer-explorer" / slug / "api/corpus.json"
+        corpus = _load(corpus_path)
+        assert len(corpus["nodes"]) == count
+        assert f"/{slug}/index.html) | {count} |" in chapter
+    for exact in ("**204 independently checked theorems**", "**2,764 checked-use theorems**",
+                  "**8,984 genuine", "**2,332 Alpha-only**", "**862 proof nodes**",
+                  "**3,090 dependency", "**230,464 structural body-proof occurrences**",
+                  "**18,977,050 bytes**", "**1,412 passing tests**",
+                  "**ND0142–ND0176**", "**233 reviewed conservative", "**441 reviewed",
+                  "Neither list is required to be sorted", "globally least prime",
+                  "does **not** assert globally nearest-point optimality"):
+        assert exact in chapter
+    for identifier in ("G001", "G002", "G003", "G004", "G005", "G021", "G022", "G081", "G084"):
+        assert nodes[identifier]["status"] == "alpha_closed"
+        assert nodes[identifier]["evidence"]["checked_use"] is True
+        assert nodes[identifier]["evidence"]["stable_member"] is False
+    for identifier in ("G082", "G083", "G085", "G086", "G091"):
+        assert nodes[identifier]["status"] == "open"
+    assert "G082, G083," in chapter and "G085, and G086 remain open" in chapter
 
 
 def test_next_layer_book_chapter_matches_exact_checked_release_and_open_boundary() -> None:
@@ -719,8 +761,8 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         "732 `body_checked`",
         "one `pending_layered_closure`",
         'edition("alpha").checked_specs',
-        "from peano_lab.library.editions_v27 import edition, entry, replay",
-        "# 2560",
+        "from peano_lab.library.editions_v28 import edition, entry, replay",
+        "# 2764",
         'entry("cell_list_extensional", edition="alpha")',
         'replay("signed_decode_nonnegative_constructor", edition="alpha")',
         'entry("quadratic_reciprocity_combined", edition="alpha")',
@@ -863,10 +905,10 @@ def test_alpha_and_stable_book_page_records_the_canonical_channel_contract() -> 
         assert exact in source
     for exact in (
         "<library-editions>",
-        "<strong>2,560</strong><span>Alpha v27 theorems</span>",
-        "<strong>2,560</strong><span>Alpha checked-use rows</span>",
-        "<strong>2,128</strong><span>Alpha-only rows</span>",
-        "2,560 theorems, 8,196 direct edges",
+        "<strong>2,764</strong><span>Alpha v28 theorems</span>",
+        "<strong>2,764</strong><span>Alpha checked-use rows</span>",
+        "<strong>2,332</strong><span>Alpha-only rows</span>",
+        "2,764 theorems, 8,984 direct edges",
         "1,303 theorems, 4,302 direct",
         "732 `body_checked`",
         "dependency-closed B6 support and B5--BP02 completion chain",

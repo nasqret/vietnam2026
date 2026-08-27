@@ -5,19 +5,22 @@
 Full architecture (read it FIRST — it is binding): **`docs/PEANO_LAB_DESIGN.md`**.
 Priorities: soundness → clarity → pedagogy → extensibility → efficiency. Python, clean code.
 
-**Current constructive-library checkpoint:** immutable Alpha v25 contains
-**2,080 independently checked theorems**, **6,633 actual proof-dependency
+**Current constructive-library checkpoint:** immutable Alpha v28 contains
+**2,764 independently checked theorems**, **8,984 actual proof-dependency
 edges**, and **53 dependency layers**; Stable remains the unchanged
-432-theorem default. The 72 newest first-order proofs establish 29 signed
-cofactor/alternating-fold components, 19 exact Taylor/formal-derivative and
-qualified one-step Hensel components, and 24 noncoprime CRT compatibility
-and gcd-LCM lattice components. Historical Alpha v24 remains immutable with
-2,008 independently checked theorems; historical v23 still independently
-closes G101, G102, and G025. The one authoritative conservative definition
-DAG contains **120 independently reviewed definitions** and **214
+432-theorem default. The **204** newest first-order proofs close the exact
+G001–G005 arithmetic/factorization interfaces, G021–G022 unboundedness and
+complete prime enumeration, and G081/G084 Gaussian/Eisenstein Euclidean
+division. Their complete **862-node** certificate is accepted by both the
+unchanged HA kernel and separately compiled Lean verifier. Historical Alpha
+v27 remains immutable with 2,560 checked theorems and its seven completed
+second-wave contracts. All earlier editions and the exact first-admission
+records remain preserved. The conservative definition
+DAG contains **233 independently reviewed definitions** and **441
 definition-dependency edges**. The separate non-authoritative blueprint
-projection contains **179 notation names** and **165 conceptual edges**.
-The stronger T13, G095, and G011 milestones remain genuinely open; neither
+projection contains **323 notation names** and **459 conceptual edges**.
+Gaussian/Eisenstein unique factorization and prime classification, stronger
+lattice results, higher reciprocity, and representation counts remain open; neither
 notation nor host computation substitutes for unchanged original-kernel proof
 checking or independent Lean verification.
 

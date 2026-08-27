@@ -1,11 +1,11 @@
-"""Audit immutable Alpha-v24 admission under current Alpha-v27 publication.
+"""Audit immutable Alpha-v24 admission under current Alpha-v28 publication.
 
 No test regenerates a snapshot, stages a website, starts a browser/server, or
 replays a proof.  In particular, the historically sealed Quadratic Reciprocity
 corpus is evidence in the immutable v23 through v27 catalogs: its historical
 bytes must never be silently replaced by the separate current reading surface.
 The QR/Bertrand reading snapshots retain their sealed v25 authority metadata;
-the constructive campaign publishers use v27 without changing first admission.
+the constructive campaign publishers use v28 without changing first admission.
 """
 
 from __future__ import annotations
@@ -31,11 +31,11 @@ if str(ROOT / "scripts") not in sys.path:
 STATIC = ROOT / "book" / "_static"
 CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
 SEALED_V25_CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
-CURRENT_CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
+CURRENT_CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v28.json"
 PARENT_CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v23.json"
 CHANNELS_PATH = ROOT / "artifacts" / "peano-library" / "channels-v24.json"
 SEALED_V25_CHANNELS_PATH = ROOT / "artifacts" / "peano-library" / "channels-v25.json"
-CURRENT_CHANNELS_PATH = ROOT / "artifacts" / "peano-library" / "channels-v27.json"
+CURRENT_CHANNELS_PATH = ROOT / "artifacts" / "peano-library" / "channels-v28.json"
 CAMPAIGN_PATH = STATIC / "constructive-grand-campaign" / "campaign.json"
 DEFINITION_GRAPH_PATH = STATIC / "constructive-grand-campaign" / "definitions.json"
 BUNDLE_NAME = "alpha-v24-research-layer-proof-bundle-v1.json"
@@ -61,10 +61,10 @@ FIRST_ADMISSION_CATALOG_SHA256 = (
     "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
 )
 PARENT_CATALOG_SHA256 = "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
-ACTIVE_ATLAS_VERSION = "v27"
-ACTIVE_ATLAS_COUNT = 2_560
-ACTIVE_ATLAS_IDENTITY = "5c5935ed524b63827068cba37da222fc78b458de6c5af2e07cf572bb9fab7d05"
-ACTIVE_ATLAS_CATALOG_SHA256 = "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+ACTIVE_ATLAS_VERSION = "v28"
+ACTIVE_ATLAS_COUNT = 2_764
+ACTIVE_ATLAS_IDENTITY = "4936d155e8d2a39409a4e83beb4ac5cb2481948d8b6eeecf1c7571161786646b"
+ACTIVE_ATLAS_CATALOG_SHA256 = "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
 ACTIVE_ATLAS_HTML_REVISION = ACTIVE_ATLAS_CATALOG_SHA256[:12]
 BUNDLE_SHA256 = "627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9"
 HISTORICAL_V25_BUNDLE_SHA256 = (
@@ -342,7 +342,7 @@ def test_sealed_v24_catalog_channels_parent_and_exact_additive_counts(catalog: d
     assert sealed_v25_channels["channels"]["alpha"]["artifact_sha256"] == SEALED_V25_CATALOG_SHA256
     assert sealed_v25_channels["channels"]["alpha"]["theorem_count"] == SEALED_V25_COUNT
 
-    assert current_catalog["schema"] == "peano-library-alpha-snapshot-v27"
+    assert current_catalog["schema"] == "peano-library-alpha-snapshot-v28"
     assert current_catalog["theorem_count"] == current_catalog["checked_use_count"] == ACTIVE_ATLAS_COUNT
     assert current_catalog["stable_count"] == STABLE_COUNT
     assert current_catalog["edition_identity_sha256"] == ACTIVE_ATLAS_IDENTITY
@@ -351,7 +351,7 @@ def test_sealed_v24_catalog_channels_parent_and_exact_additive_counts(catalog: d
     assert current_catalog["parent_alpha_v25"]["artifacts"]["catalog"]["sha256"] == (
         SEALED_V25_CATALOG_SHA256
     )
-    assert current_channels["schema"] == "peano-library-channels-v27"
+    assert current_channels["schema"] == "peano-library-channels-v28"
     assert current_channels["channels"]["alpha"]["artifact_sha256"] == ACTIVE_ATLAS_CATALOG_SHA256
     assert current_channels["channels"]["alpha"]["theorem_count"] == ACTIVE_ATLAS_COUNT
     assert current_channels["channels"]["stable"]["theorem_count"] == STABLE_COUNT
@@ -421,7 +421,7 @@ def test_global_campaign_and_conservative_definition_dag_are_exact_and_current(
     assert campaign["schema"] == "constructive-grand-campaign-v1"
     assert campaign["meta"]["current_alpha_version"] == ACTIVE_ATLAS_VERSION
     assert campaign["meta"]["current_alpha_checked_use_count"] == ACTIVE_ATLAS_COUNT
-    from constructive_second_wave_definition_graph import build_definition_graph
+    from constructive_lower_layer_definition_graph import build_definition_graph
 
     assert len(campaign["nodes"]) == 144
     assert definition_graph == build_definition_graph(campaign)
@@ -475,7 +475,9 @@ def test_new_full_milestones_keep_their_exact_historical_partial_receipts(
     assert complete["bundle_node_id"] == actual["empty_context_closure"]["bundle_node_id"]
     assert complete["bundle_sha256"] == SECOND_WAVE_BUNDLE_SHA256
     assert complete["bundle_nodes"] == 1224
-    assert complete["alpha_version"] == ACTIVE_ATLAS_VERSION
+    # Current presentation is v28; the independent full proof was first
+    # admitted in v27, and its original closure receipt must remain exact.
+    assert complete["alpha_version"] == "v27"
     assert complete["checked_use"] is True
     assert complete["independent_lean_bundle_verified"] is True
     assert complete[root.full_scope_flag] is True
@@ -483,7 +485,7 @@ def test_new_full_milestones_keep_their_exact_historical_partial_receipts(
 
 
 @pytest.mark.parametrize("layer,expected_families", LAYER_FAMILIES)
-def test_all_published_layer_manifests_authorize_current_v27(
+def test_all_published_layer_manifests_authorize_current_v28(
     layer: str, expected_families: tuple[str, ...],
 ) -> None:
     manifest = _json(STATIC / layer / "manifest.json")
@@ -503,22 +505,25 @@ def test_all_published_layer_manifests_authorize_current_v27(
         assert manifest["first_enrollment_catalog_sha256"] == _digest(first_admission_catalog)
 
 
-def test_public_hub_has_all_32_campaign_cards_and_both_original_anchors() -> None:
+def test_public_hub_has_all_36_campaign_cards_and_both_original_anchors() -> None:
     source = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
     parser = _HubMarkup()
     parser.feed(source)
 
     anchors = [card for card in parser.cards if "candidate-card" not in card["classes"]]
     campaigns = [card for card in parser.cards if "candidate-card" in card["classes"]]
-    assert len(parser.cards) == 34
+    assert len(parser.cards) == 38
     assert len(anchors) == 2
     assert len(ALL_FAMILIES) == 25
-    assert len(campaigns) == len(ALL_FAMILIES) + len(SECOND_WAVE_SLUGS) == 32
+    lower_layer = {
+        "arithmetic-foundations", "prime-enumeration", "gaussian-integers", "eisenstein-integers",
+    }
+    assert len(campaigns) == len(ALL_FAMILIES) + len(SECOND_WAVE_SLUGS) + len(lower_layer) == 36
     assert {next(iter(card["classes"] - {"family-card"})) for card in anchors} == {
         "qr-card", "bertrand-card"
     }
 
-    slugs = {slug for _, slug in ALL_FAMILIES} | SECOND_WAVE_SLUGS
+    slugs = {slug for _, slug in ALL_FAMILIES} | SECOND_WAVE_SLUGS | lower_layer
     linked_slugs = {
         link["href"].split("/?", 1)[0]
         for card in campaigns
@@ -529,8 +534,8 @@ def test_public_hub_has_all_32_campaign_cards_and_both_original_anchors() -> Non
     for slug in slugs | {"quadratic-reciprocity", "bertrand-postulate"}:
         assert f'href="{slug}/?v={ACTIVE_ATLAS_HTML_REVISION}"' in source
 
-    assert "Alpha v27" in source
-    assert "2,560 theorems" in source
+    assert "Alpha v28" in source
+    assert f"{ACTIVE_ATLAS_COUNT:,} theorems" in source
     assert "432 unchanged Stable theorems" in source
     definitions = _json(DEFINITION_GRAPH_PATH)
     assert f'{definitions["definition_count"]} structured first-order definitions' in source
@@ -547,7 +552,7 @@ def test_public_hub_has_all_32_campaign_cards_and_both_original_anchors() -> Non
 
 
 @pytest.mark.parametrize("layer,slug", ALL_FAMILIES, ids=[slug for _, slug in ALL_FAMILIES])
-def test_every_campaign_retains_original_qr_design_definition_graph_and_v27_authority(
+def test_every_campaign_retains_original_qr_design_definition_graph_and_v28_authority(
     layer: str, slug: str,
 ) -> None:
     revision = ACTIVE_ATLAS_HTML_REVISION
@@ -780,6 +785,6 @@ def test_browser_app_worker_manifest_release_id_and_new_roots_are_consistent() -
 
     app_page = (app / "index.html").read_text(encoding="utf-8")
     assert f'const APP_ROOT="releases/{app_id}/";' in app_page
-    assert "Alpha: 2,560 proofs" in app_page
+    assert f"Alpha: {ACTIVE_ATLAS_COUNT:,} proofs" in app_page
     for root in RESEARCH_ROOTS:
         assert f'data-cmd="pa lib alpha {root.name}"' in app_page

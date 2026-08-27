@@ -5,8 +5,8 @@
     "notation_edges": "definition and milestone notation references only; never theorem-proof dependencies",
     "reviewed_matches": "only the separately linked conservative registry expansion is independently parsed and checked; the blueprint expansion itself remains uncertified"
   },
-  "campaign_snapshot_sha256": "2763a29c28b5633285d5d878f4addd4395f4b4cf13b3fcb41921b9ec349c00a9",
-  "compatible_reviewed_match_count": 201,
+  "campaign_snapshot_sha256": "274b12003919029ab8a4c8056bc87479f66835d787787c8b88b699386c2774d8",
+  "compatible_reviewed_match_count": 236,
   "compatible_reviewed_matches": [
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -1996,6 +1996,261 @@
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "EDivRem",
+      "blueprint_parameters": [
+        "a",
+        "b",
+        "q",
+        "r"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed_expansion_sha256": "24663427580086c3aff819f901f04fd9f41cefc0fba8be0cebe901573c15c9b2",
+      "reviewed_id": "ND0173",
+      "reviewed_name": "EDivRem",
+      "reviewed_parameters": [
+        "a",
+        "b",
+        "q",
+        "r"
+      ],
+      "route": "eisenstein-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "EEuclideanDivision",
+      "blueprint_parameters": [
+        "a",
+        "b",
+        "q",
+        "r",
+        "U",
+        "V"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "reviewed_expansion_sha256": "1dead94762e2e02fb7554dd52000f5f754a352f58b5366fbf07423ac4e5c160a",
+      "reviewed_id": "ND0174",
+      "reviewed_name": "EEuclideanDivision",
+      "reviewed_parameters": [
+        "a",
+        "b",
+        "q",
+        "r",
+        "U",
+        "V"
+      ],
+      "route": "eisenstein-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "EMul",
+      "blueprint_parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "79481871eafd751574ee648c69015cd15cbb8917513e4d04bda63e8d1585cc00",
+      "reviewed_id": "ND0172",
+      "reviewed_name": "EMul",
+      "reviewed_parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "route": "eisenstein-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "ENorm",
+      "blueprint_parameters": [
+        "z",
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1
+      ],
+      "reviewed_expansion_sha256": "5f956fea815b9f8e65f510fd1e395a0cfff3cf4c30ea49b487589dfa796f7220",
+      "reviewed_id": "ND0171",
+      "reviewed_name": "ENorm",
+      "reviewed_parameters": [
+        "z",
+        "n"
+      ],
+      "route": "eisenstein-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "EisensteinCoordinateNorm",
+      "blueprint_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewed_expansion_sha256": "0a88193521136fb5e343ba5e8657934f2e7264d8ce92e2943d075a479cccb7ed",
+      "reviewed_id": "ND0169",
+      "reviewed_name": "EisensteinCoordinateNorm",
+      "reviewed_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "n"
+      ],
+      "route": "eisenstein-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "EisensteinCoordinateProduct",
+      "blueprint_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "rp",
+        "rn",
+        "sp",
+        "sn"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "reviewed_expansion_sha256": "56f2519e4bc7386d6f1f7bd73146aa14773f1927faf425703e456255830031c6",
+      "reviewed_id": "ND0170",
+      "reviewed_name": "EisensteinCoordinateProduct",
+      "reviewed_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "rp",
+        "rn",
+        "sp",
+        "sn"
+      ],
+      "route": "eisenstein-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "EisensteinSignedDivisionRemainder",
+      "blueprint_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "qp",
+        "qn",
+        "up",
+        "un",
+        "rp",
+        "rn",
+        "sp",
+        "sn",
+        "U",
+        "V"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "reviewed_expansion_sha256": "fe243720d84d80e392fec6f0d08d8f545d60b4e4c93f7dd9b829f0bb5f7c7faf",
+      "reviewed_id": "ND0176",
+      "reviewed_name": "EisensteinSignedDivisionRemainder",
+      "reviewed_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "qp",
+        "qn",
+        "up",
+        "un",
+        "rp",
+        "rn",
+        "sp",
+        "sn",
+        "U",
+        "V"
+      ],
+      "route": "eisenstein-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
       "blueprint_name": "EuclidParameters",
       "blueprint_parameters": [
         "a",
@@ -2323,6 +2578,42 @@
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "FactorListMatching",
+      "blueprint_parameters": [
+        "b",
+        "c",
+        "d",
+        "e",
+        "u",
+        "v",
+        "l"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "reviewed_expansion_sha256": "57e3ed09ff60013ddb1dabbbbfb873a853db2800f0ad4b1ed2aa42701dfb03bb",
+      "reviewed_id": "ND0150",
+      "reviewed_name": "FactorListMatching",
+      "reviewed_parameters": [
+        "b",
+        "c",
+        "d",
+        "e",
+        "u",
+        "v",
+        "l"
+      ],
+      "route": "arithmetic-foundations"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
       "blueprint_name": "Factorial",
       "blueprint_parameters": [
         "n",
@@ -2449,6 +2740,210 @@
         "s"
       ],
       "route": "bertrand-postulate"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "GDivRem",
+      "blueprint_parameters": [
+        "a",
+        "b",
+        "q",
+        "r"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed_expansion_sha256": "d94a9d142cf509cf056bf0e2714e609dfced1585af59e5f3e3c46cee76c35bb1",
+      "reviewed_id": "ND0167",
+      "reviewed_name": "GDivRem",
+      "reviewed_parameters": [
+        "a",
+        "b",
+        "q",
+        "r"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "GEuclideanDivision",
+      "blueprint_parameters": [
+        "a",
+        "b",
+        "q",
+        "r",
+        "U",
+        "V"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "reviewed_expansion_sha256": "12dce37f08a88924b65a45227ea6b70b62dbac8a244dafe6d894b2138946f23a",
+      "reviewed_id": "ND0168",
+      "reviewed_name": "GEuclideanDivision",
+      "reviewed_parameters": [
+        "a",
+        "b",
+        "q",
+        "r",
+        "U",
+        "V"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "GMul",
+      "blueprint_parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "cd81b5bfb8488611f58067d5f381f5b47f52510dca10d59f78e0751392c38367",
+      "reviewed_id": "ND0166",
+      "reviewed_name": "GMul",
+      "reviewed_parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "GNorm",
+      "blueprint_parameters": [
+        "z",
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1
+      ],
+      "reviewed_expansion_sha256": "d7afb2e66a7a3ce20fbf300f74238ca242bc498d7d9cd28e6746702ffb972445",
+      "reviewed_id": "ND0164",
+      "reviewed_name": "GNorm",
+      "reviewed_parameters": [
+        "z",
+        "n"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "GaussianSignedDivisionRemainder",
+      "blueprint_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "qp",
+        "qn",
+        "up",
+        "un",
+        "rp",
+        "rn",
+        "sp",
+        "sn",
+        "U",
+        "V"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "reviewed_expansion_sha256": "8e23f52099e27793a673697f357450f4b7465acad6989d554be88cc144d5ebfe",
+      "reviewed_id": "ND0163",
+      "reviewed_name": "GaussianSignedDivisionRemainder",
+      "reviewed_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "qp",
+        "qn",
+        "up",
+        "un",
+        "rp",
+        "rn",
+        "sp",
+        "sn",
+        "U",
+        "V"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "GaussianSignedNorm",
+      "blueprint_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "N"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewed_expansion_sha256": "150d4e1bd0957f9123c6e3191543e0ee738f3c0029f46e48cd9bd54aad5dff89",
+      "reviewed_id": "ND0158",
+      "reviewed_name": "GaussianSignedNorm",
+      "reviewed_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "N"
+      ],
+      "route": "gaussian-integers"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -2767,6 +3262,54 @@
         "l"
       ],
       "route": "integer-linear-algebra"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "InitialPrimeChain",
+      "blueprint_parameters": [
+        "b",
+        "c",
+        "k"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "6f077247129ae6b335d635853bff4be00ef03184a278e1d23ce4c4bf209a855f",
+      "reviewed_id": "ND0153",
+      "reviewed_name": "InitialPrimeChain",
+      "reviewed_parameters": [
+        "b",
+        "c",
+        "k"
+      ],
+      "route": "prime-enumeration"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "InitialPrimeList",
+      "blueprint_parameters": [
+        "b",
+        "c",
+        "k"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "e6c71e52f5ac4986d9b4c48459b82cb086c3f4d60f268a8aef7c7d0256ed1df9",
+      "reviewed_id": "ND0154",
+      "reviewed_name": "InitialPrimeList",
+      "reviewed_parameters": [
+        "b",
+        "c",
+        "k"
+      ],
+      "route": "prime-enumeration"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -4081,6 +4624,27 @@
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "NextPrime",
+      "blueprint_parameters": [
+        "a",
+        "p"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1
+      ],
+      "reviewed_expansion_sha256": "964367d85994baf9339758cc05f0d2e10ee3acee39aba4c569aeebfe0c510b50",
+      "reviewed_id": "ND0152",
+      "reviewed_name": "NextPrime",
+      "reviewed_parameters": [
+        "a",
+        "p"
+      ],
+      "route": "prime-enumeration"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
       "blueprint_name": "NonzeroMatrixMinor",
       "blueprint_parameters": [
         "pb",
@@ -4201,6 +4765,30 @@
         "n"
       ],
       "route": "pythagorean-fermat-four"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "PermutationPrefix",
+      "blueprint_parameters": [
+        "b",
+        "c",
+        "l"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "4145090a616c423da718870c305d9d2c207fc0111a74c2e543158ef031c699fb",
+      "reviewed_id": "ND0148",
+      "reviewed_name": "PermutationPrefix",
+      "reviewed_parameters": [
+        "b",
+        "c",
+        "l"
+      ],
+      "route": "arithmetic-foundations"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -4441,6 +5029,72 @@
         "z"
       ],
       "route": "prime-count-chebyshev"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "PrimeFactorList",
+      "blueprint_parameters": [
+        "n",
+        "b",
+        "c",
+        "l"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed_expansion_sha256": "724a46d2cbfdc1382eeea6157df27626ab8d7cd5fe30d4cc09103290603276c5",
+      "reviewed_id": "ND0149",
+      "reviewed_name": "PrimeFactorList",
+      "reviewed_parameters": [
+        "n",
+        "b",
+        "c",
+        "l"
+      ],
+      "route": "arithmetic-foundations"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "PrimeFactorListPermutation",
+      "blueprint_parameters": [
+        "b",
+        "c",
+        "l",
+        "d",
+        "e",
+        "m",
+        "u",
+        "v"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed_expansion_sha256": "b95c09a9f16389b001fdebc556023428b7ac1a27fcb8a8e069100b95cb4edba0",
+      "reviewed_id": "ND0151",
+      "reviewed_name": "PrimeFactorListPermutation",
+      "reviewed_parameters": [
+        "b",
+        "c",
+        "l",
+        "d",
+        "e",
+        "m",
+        "u",
+        "v"
+      ],
+      "route": "arithmetic-foundations"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -4744,6 +5398,45 @@
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "RoundedSignedDivision",
+      "blueprint_parameters": [
+        "p",
+        "n",
+        "N",
+        "qp",
+        "qn",
+        "ep",
+        "en",
+        "t"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "reviewed_expansion_sha256": "516742567d5780545dd807f65413e6600b6dde562b4e827b79574cbfac8ab0f2",
+      "reviewed_id": "ND0162",
+      "reviewed_name": "RoundedSignedDivision",
+      "reviewed_parameters": [
+        "p",
+        "n",
+        "N",
+        "qp",
+        "qn",
+        "ep",
+        "en",
+        "t"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
       "blueprint_name": "ScaledFixedPoint",
       "blueprint_parameters": [
         "m",
@@ -4855,6 +5548,30 @@
         "k"
       ],
       "route": "quadratic-reciprocity"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedAdd",
+      "blueprint_parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "96bbbcabe876881ee3272ccc86aa55fe9bd8dfc90ffb4043cb0fc9a2dbf59fad",
+      "reviewed_id": "ND0144",
+      "reviewed_name": "SignedAdd",
+      "reviewed_parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "route": "arithmetic-foundations"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -4996,6 +5713,87 @@
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedBalance",
+      "blueprint_parameters": [
+        "z",
+        "p",
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "f6ebf61b71a55e09c12c51c7653ba92cb1e70afc3bc7918b0af6f71657961327",
+      "reviewed_id": "ND0143",
+      "reviewed_name": "SignedBalance",
+      "reviewed_parameters": [
+        "z",
+        "p",
+        "n"
+      ],
+      "route": "arithmetic-foundations"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedBezout",
+      "blueprint_parameters": [
+        "g",
+        "a",
+        "b",
+        "u",
+        "v"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewed_expansion_sha256": "27327519d0bc44212cbd93376c820fd937701b5995b769c5072ec2a26a23b1c7",
+      "reviewed_id": "ND0147",
+      "reviewed_name": "SignedBezout",
+      "reviewed_parameters": [
+        "g",
+        "a",
+        "b",
+        "u",
+        "v"
+      ],
+      "route": "arithmetic-foundations"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedCodeFloor",
+      "blueprint_parameters": [
+        "a",
+        "m",
+        "q",
+        "r"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "reviewed_expansion_sha256": "e36a7df877be390d31dd7271fab249a453800cc4ebd829a57389186c5f9b525d",
+      "reviewed_id": "ND0156",
+      "reviewed_name": "SignedCodeFloor",
+      "reviewed_parameters": [
+        "a",
+        "m",
+        "q",
+        "r"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
       "blueprint_name": "SignedCofactorMinorPrefix",
       "blueprint_parameters": [
         "pb",
@@ -5032,6 +5830,30 @@
         "l"
       ],
       "route": "matrix-cofactor-expansion"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedDecode",
+      "blueprint_parameters": [
+        "z",
+        "p",
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "1674b231e352aa00e88ed892ac5dcbe49dc4de442fe440ffb30bcc4cb4ac3ae6",
+      "reviewed_id": "ND0142",
+      "reviewed_name": "SignedDecode",
+      "reviewed_parameters": [
+        "z",
+        "p",
+        "n"
+      ],
+      "route": "arithmetic-foundations"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -5323,6 +6145,30 @@
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedDifferenceSquare",
+      "blueprint_parameters": [
+        "p",
+        "n",
+        "s"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "747d061c8dc5bc4b70dc2664441a3a0983b4b5d0e8d16440d0a3e37cf85fa933",
+      "reviewed_id": "ND0157",
+      "reviewed_name": "SignedDifferenceSquare",
+      "reviewed_parameters": [
+        "p",
+        "n",
+        "s"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
       "blueprint_name": "SignedDotProduct",
       "blueprint_parameters": [
         "ab",
@@ -5458,6 +6304,39 @@
         "n"
       ],
       "route": "matrix-cofactor-expansion"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedFloor",
+      "blueprint_parameters": [
+        "p",
+        "n",
+        "m",
+        "q",
+        "t",
+        "r"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "reviewed_expansion_sha256": "8a0b0be19abe00a43f167e316e962473a8a139d2e103bdf0baf1f198c3e4e9a6",
+      "reviewed_id": "ND0155",
+      "reviewed_name": "SignedFloor",
+      "reviewed_parameters": [
+        "p",
+        "n",
+        "m",
+        "q",
+        "t",
+        "r"
+      ],
+      "route": "gaussian-integers"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -5728,6 +6607,51 @@
         "z"
       ],
       "route": "matrix-cofactor-expansion"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedMul",
+      "blueprint_parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "ea9c672cbfa97d76f980f41420a4cf7b0b6fc186e6b331fc68b38616369caec6",
+      "reviewed_id": "ND0145",
+      "reviewed_name": "SignedMul",
+      "reviewed_parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "route": "arithmetic-foundations"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "SignedNegate",
+      "blueprint_parameters": [
+        "a",
+        "b"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1
+      ],
+      "reviewed_expansion_sha256": "5bf5d7f027aa55b036979be920fe6e2d0fc4779d01742abc3773cf08dfed9874",
+      "reviewed_id": "ND0146",
+      "reviewed_name": "SignedNegate",
+      "reviewed_parameters": [
+        "a",
+        "b"
+      ],
+      "route": "arithmetic-foundations"
     },
     {
       "blueprint_expansion_is_kernel_checked": false,
@@ -6154,11 +7078,143 @@
         "a"
       ],
       "route": "quadratic-reciprocity"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "WeightedSignedNormThree",
+      "blueprint_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "n"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewed_expansion_sha256": "9292b03df98beb47510d881cc08f4500a2e40769c7fa69d8670d20ce32304efe",
+      "reviewed_id": "ND0175",
+      "reviewed_name": "WeightedSignedNormThree",
+      "reviewed_parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "n"
+      ],
+      "route": "eisenstein-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "ZPairAdd",
+      "blueprint_parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2
+      ],
+      "reviewed_expansion_sha256": "9a6577e14b1ce809587d9fac52285e9dd6d98170e3b435116ed48f5a140e3ea8",
+      "reviewed_id": "ND0165",
+      "reviewed_name": "ZPairAdd",
+      "reviewed_parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "ZPairDecode",
+      "blueprint_parameters": [
+        "z",
+        "ap",
+        "an",
+        "bp",
+        "bn"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewed_expansion_sha256": "5f39a4d396eba3cd332d0485bf7e62a7e4db10b2d6c0498d318e4ec957a02867",
+      "reviewed_id": "ND0159",
+      "reviewed_name": "ZPairDecode",
+      "reviewed_parameters": [
+        "z",
+        "ap",
+        "an",
+        "bp",
+        "bn"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "ZPairRep",
+      "blueprint_parameters": [
+        "z",
+        "ap",
+        "an",
+        "bp",
+        "bn"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "reviewed_expansion_sha256": "484f8588e2d9b5e92fda7c8fda43f480f34dcfae16a7ad0137fc32cd8cf8eeb8",
+      "reviewed_id": "ND0161",
+      "reviewed_name": "ZPairRep",
+      "reviewed_parameters": [
+        "z",
+        "ap",
+        "an",
+        "bp",
+        "bn"
+      ],
+      "route": "gaussian-integers"
+    },
+    {
+      "blueprint_expansion_is_kernel_checked": false,
+      "blueprint_name": "ZPairValid",
+      "blueprint_parameters": [
+        "z"
+      ],
+      "kind": "exact-name",
+      "reviewed_argument_blueprint_positions": [
+        0
+      ],
+      "reviewed_expansion_sha256": "c8afae24be45ec748565850d52a98c496cec734a90d8bacb5c80eabb293448ab",
+      "reviewed_id": "ND0160",
+      "reviewed_name": "ZPairValid",
+      "reviewed_parameters": [
+        "z"
+      ],
+      "route": "gaussian-integers"
     }
   ],
-  "declared_notation_edge_count": 213,
-  "definition_count": 290,
-  "definition_edge_count": 406,
+  "declared_notation_edge_count": 231,
+  "definition_count": 323,
+  "definition_edge_count": 459,
   "definition_edges": [
     {
       "kind": "definition_uses_definition",
@@ -6407,6 +7463,16 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "EisensteinSignedDivisionRemainder",
+      "target": "EisensteinCoordinateNorm"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "EisensteinSignedDivisionRemainder",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "EuclidThreeNumber",
       "target": "Mod4Three"
     },
@@ -6432,6 +7498,16 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "FactorListMatching",
+      "target": "BetaAt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "FactorListMatching",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "FiniteMatrixSelector",
       "target": "BetaAt"
     },
@@ -6449,6 +7525,11 @@
       "kind": "definition_uses_definition",
       "source": "FloorSqrt",
       "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "GaussianSignedNorm",
+      "target": "SignedDifferenceSquare"
     },
     {
       "kind": "definition_uses_definition",
@@ -6747,6 +7828,21 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "RoundedSignedDivision",
+      "target": "Le"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "RoundedSignedDivision",
+      "target": "SignedDifferenceSquare"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedAdd",
+      "target": "SignedDecode"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "SignedAlternatingCofactorTerm",
       "target": "Even"
     },
@@ -6754,6 +7850,16 @@
       "kind": "definition_uses_definition",
       "source": "SignedAlternatingCofactorTerm",
       "target": "Odd"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedBalance",
+      "target": "SignedDecode"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedBezout",
+      "target": "SignedDecode"
     },
     {
       "kind": "definition_uses_definition",
@@ -6782,6 +7888,11 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "SignedFloor",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "SignedMatrixPrefixEquality",
       "target": "BetaAt"
     },
@@ -6789,6 +7900,16 @@
       "kind": "definition_uses_definition",
       "source": "SignedMatrixPrefixEquality",
       "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedMul",
+      "target": "SignedDecode"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedNegate",
+      "target": "SignedDecode"
     },
     {
       "kind": "definition_uses_definition",
@@ -6869,6 +7990,16 @@
       "kind": "definition_uses_definition",
       "source": "WeakMW",
       "target": "SelmerWitness"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "WeightedSignedNormThree",
+      "target": "SignedDifferenceSquare"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ZPairDecode",
+      "target": "SignedDecode"
     },
     {
       "kind": "definition_uses_definition",
@@ -7177,6 +8308,16 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "GaussianSignedDivisionRemainder",
+      "target": "GaussianSignedNorm"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "GaussianSignedDivisionRemainder",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "HornerDerivative",
       "target": "Beta"
     },
@@ -7322,6 +8463,36 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "NextPrime",
+      "target": "Le"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "NextPrime",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "NextPrime",
+      "target": "Prime"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PermutationPrefix",
+      "target": "BoundedPrefix"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PermutationPrefix",
+      "target": "InjectivePrefix"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PermutationPrefix",
+      "target": "SurjectivePrefix"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "PrimeBitPrefix",
       "target": "BetaAt"
     },
@@ -7427,6 +8598,16 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "SignedCodeFloor",
+      "target": "SignedDecode"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "SignedCodeFloor",
+      "target": "SignedFloor"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "SignedDotProduct",
       "target": "DotProduct"
     },
@@ -7469,6 +8650,16 @@
       "kind": "definition_uses_definition",
       "source": "WeierstrassCertificate",
       "target": "Prime"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ZPairRep",
+      "target": "SignedBalance"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ZPairValid",
+      "target": "ZPairDecode"
     },
     {
       "kind": "definition_uses_definition",
@@ -7637,6 +8828,21 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "EMul",
+      "target": "ZPairRep"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ENorm",
+      "target": "EisensteinCoordinateNorm"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ENorm",
+      "target": "ZPairRep"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "EuclidParameters",
       "target": "Coprime"
     },
@@ -7682,6 +8888,21 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "GMul",
+      "target": "ZPairRep"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "GNorm",
+      "target": "GaussianSignedNorm"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "GNorm",
+      "target": "ZPairRep"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "HornerDerivativeOnly",
       "target": "HornerDerivative"
     },
@@ -7694,6 +8915,21 @@
       "kind": "definition_uses_definition",
       "source": "HornerTaylorRemainder",
       "target": "HornerDerivative"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "InitialPrimeChain",
+      "target": "BetaAt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "InitialPrimeChain",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "InitialPrimeChain",
+      "target": "NextPrime"
     },
     {
       "kind": "definition_uses_definition",
@@ -7772,6 +9008,26 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "PrimeFactorList",
+      "target": "AllPrime"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PrimeFactorList",
+      "target": "Product"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PrimeFactorListPermutation",
+      "target": "FactorListMatching"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PrimeFactorListPermutation",
+      "target": "PermutationPrefix"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "PrimePowerValuation",
       "target": "BoundedPowerValuation"
     },
@@ -7842,6 +9098,11 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "ZPairAdd",
+      "target": "ZPairRep"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "BinaryModularExecution",
       "target": "Beta"
     },
@@ -7862,6 +9123,16 @@
     },
     {
       "kind": "definition_uses_definition",
+      "source": "EDivRem",
+      "target": "EMul"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "EDivRem",
+      "target": "ZPairAdd"
+    },
+    {
+      "kind": "definition_uses_definition",
       "source": "FactorialValuation",
       "target": "Fact"
     },
@@ -7869,6 +9140,21 @@
       "kind": "definition_uses_definition",
       "source": "FactorialValuation",
       "target": "PowerValuation"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "GDivRem",
+      "target": "GMul"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "GDivRem",
+      "target": "ZPairAdd"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "InitialPrimeList",
+      "target": "InitialPrimeChain"
     },
     {
       "kind": "definition_uses_definition",
@@ -8004,6 +9290,41 @@
       "kind": "definition_uses_definition",
       "source": "CarryCountMany",
       "target": "MultinomialCarryPrefix"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "EEuclideanDivision",
+      "target": "EDivRem"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "EEuclideanDivision",
+      "target": "ENorm"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "EEuclideanDivision",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "GEuclideanDivision",
+      "target": "GDivRem"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "GEuclideanDivision",
+      "target": "GNorm"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "GEuclideanDivision",
+      "target": "Lt"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "GEuclideanDivision",
+      "target": "ZPairValid"
     },
     {
       "kind": "definition_uses_definition",
@@ -8260,7 +9581,6 @@
       "milestone_users": [
         "T04",
         "T16",
-        "G022",
         "G024",
         "G119"
       ],
@@ -8449,9 +9769,11 @@
         "ContainsPrefix",
         "CornacchiaStateAt",
         "DivisionPrefix",
+        "FactorListMatching",
         "FiniteMatrixSelector",
         "HornerCoefficientBlend",
         "IdentityMatrixSelector",
+        "InitialPrimeChain",
         "InjectivePrefix",
         "IntegerVectorAdd",
         "IntegerVectorEqual",
@@ -8489,6 +9811,7 @@
       "milestone_users": [
         "T13",
         "G011",
+        "G022",
         "G027",
         "G035",
         "G051",
@@ -8552,10 +9875,13 @@
         "CornacchiaTrace",
         "CornacchiaTransitionAt",
         "DivisionPrefix",
+        "FactorListMatching",
         "Factorial",
         "FiniteMatrixSelector",
         "HornerCoefficientBlend",
         "IdentityMatrixSelector",
+        "InitialPrimeChain",
+        "InitialPrimeList",
         "InjectivePrefix",
         "IntegerColumnSpan",
         "IntegerMatrixEntrywiseEqual",
@@ -8579,9 +9905,12 @@
         "MultinomialCarryPrefix",
         "NonzeroMatrixMinor",
         "NonzeroSelectedMinor",
+        "PermutationPrefix",
         "PositiveDeterminantMatrixData",
         "PowerQuotPrefix",
         "PrimeBitPrefix",
+        "PrimeFactorList",
+        "PrimeFactorListPermutation",
         "Primorial",
         "Product",
         "Range",
@@ -9211,15 +10540,19 @@
         "FiniteField",
         "GaussBit",
         "Gcd",
+        "InitialPrimeChain",
+        "InitialPrimeList",
         "Irred",
         "IsGCD",
         "JacobiBit",
+        "NextPrime",
         "Phi",
         "PowerDivides",
         "PowerValuation",
         "PowerValuationOne",
         "Prime",
         "PrimeBitPrefix",
+        "PrimeFactorList",
         "PrimePowerValuation",
         "PrimeThreeModFourDivisor",
         "PrimitiveFermatFourCounterexample",
@@ -9286,29 +10619,6 @@
       "transitive_dependents": []
     },
     {
-      "arity": 2,
-      "authority": "blueprint-vocabulary-only",
-      "dependencies": [],
-      "dependents": [],
-      "expansion": "z=(a,b) and n=a²-a*b+b² in signed-code arithmetic",
-      "expansion_sha256": "b402faaa8eab94202e1690d6e72e153562e5442cbc552694886975b7cf6ea6b6",
-      "meaning": "Eisenstein norm.",
-      "milestone_users": [
-        "G084",
-        "G086"
-      ],
-      "name": "ENorm",
-      "parameters": [
-        "z",
-        "n"
-      ],
-      "reviewed_incompatibility": null,
-      "reviewed_match": null,
-      "topological_layer": 0,
-      "transitive_dependencies": [],
-      "transitive_dependents": []
-    },
-    {
       "arity": 1,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [],
@@ -9318,7 +10628,6 @@
       "meaning": "A signed-pair Eisenstein integer.",
       "milestone_users": [
         "G047",
-        "G084",
         "G085",
         "G086"
       ],
@@ -9328,6 +10637,145 @@
       ],
       "reviewed_incompatibility": null,
       "reviewed_match": null,
+      "topological_layer": 0,
+      "transitive_dependencies": [],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 5,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [],
+      "dependents": [
+        "ENorm",
+        "EisensteinSignedDivisionRemainder"
+      ],
+      "expansion": "ap · ap + an · an + (bp · bp + bn · bn) + (ap · bn + an · bp) = ap · an + an · ap + (bp · bn + bn · bp) + (ap · bp + an · bn) + n",
+      "expansion_sha256": "3580b6be1cf19fc516e0d3bdc5afaecc7263621c4b67b616c5825e81fdf47599",
+      "meaning": "The genuine Eisenstein coordinate norm (ap−an)²−(ap−an)(bp−bn)+(bp−bn)², as a balanced natural equation.",
+      "milestone_users": [],
+      "name": "EisensteinCoordinateNorm",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "EisensteinCoordinateNorm",
+        "blueprint_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "reviewed_expansion_sha256": "0a88193521136fb5e343ba5e8657934f2e7264d8ce92e2943d075a479cccb7ed",
+        "reviewed_id": "ND0169",
+        "reviewed_name": "EisensteinCoordinateNorm",
+        "reviewed_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "n"
+        ],
+        "route": "eisenstein-integers"
+      },
+      "topological_layer": 0,
+      "transitive_dependencies": [],
+      "transitive_dependents": [
+        "EEuclideanDivision",
+        "ENorm",
+        "EisensteinSignedDivisionRemainder"
+      ]
+    },
+    {
+      "arity": 12,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [],
+      "dependents": [],
+      "expansion": "ap · cp + an · cn + (bp · dn + bn · dp) + rn = rp + (ap · cn + an · cp + (bp · dp + bn · dn)) ∧ ap · dp + an · dn + (bp · cp + bn · cn) + (bp · dn + bn · dp) + sn = sp + (ap · dn + an · dp + (bp · cn + bn · cp) + (bp · dp + bn · dn))",
+      "expansion_sha256": "4b0c08ecfc2b03b18612a2e26fba79786547307255613deb9af4bb7b0a0b617d",
+      "meaning": "The actual signed-coordinate product (a+bω)(c+dω)=(ac−bd)+(ad+bc−bd)ω, where ω²+ω+1=0; this is not Gaussian multiplication.",
+      "milestone_users": [],
+      "name": "EisensteinCoordinateProduct",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "rp",
+        "rn",
+        "sp",
+        "sn"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "EisensteinCoordinateProduct",
+        "blueprint_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "cp",
+          "cn",
+          "dp",
+          "dn",
+          "rp",
+          "rn",
+          "sp",
+          "sn"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "reviewed_expansion_sha256": "56f2519e4bc7386d6f1f7bd73146aa14773f1927faf425703e456255830031c6",
+        "reviewed_id": "ND0170",
+        "reviewed_name": "EisensteinCoordinateProduct",
+        "reviewed_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "cp",
+          "cn",
+          "dp",
+          "dn",
+          "rp",
+          "rn",
+          "sp",
+          "sn"
+        ],
+        "route": "eisenstein-integers"
+      },
       "topological_layer": 0,
       "transitive_dependencies": [],
       "transitive_dependents": []
@@ -9587,29 +11035,6 @@
       "transitive_dependents": []
     },
     {
-      "arity": 2,
-      "authority": "blueprint-vocabulary-only",
-      "dependencies": [],
-      "dependents": [],
-      "expansion": "z=(a,b) and n=a²+b² in signed-code arithmetic",
-      "expansion_sha256": "4eaac55add4ba5b51381c22d2310ad38044e857e47e2fde09dd0a84692fd29d3",
-      "meaning": "Gaussian norm.",
-      "milestone_users": [
-        "G081",
-        "G083"
-      ],
-      "name": "GNorm",
-      "parameters": [
-        "z",
-        "n"
-      ],
-      "reviewed_incompatibility": null,
-      "reviewed_match": null,
-      "topological_layer": 0,
-      "transitive_dependencies": [],
-      "transitive_dependents": []
-    },
-    {
       "arity": 1,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [],
@@ -9619,7 +11044,6 @@
       "meaning": "A signed-pair Gaussian integer.",
       "milestone_users": [
         "G048",
-        "G081",
         "G082",
         "G083"
       ],
@@ -9766,7 +11190,9 @@
         "EuclideanLogarithmicExecution",
         "FloorSqrt",
         "MatrixSkipIndex",
+        "NextPrime",
         "RectangularMatrixRank",
+        "RoundedSignedDivision",
         "Sorted"
       ],
       "expansion": "∃ t. a+t=b",
@@ -9824,16 +11250,20 @@
         "EuclideanBoundedTrace",
         "EuclideanLogarithmicExecution",
         "FloorSqrt",
+        "InitialPrimeChain",
+        "InitialPrimeList",
         "MatrixMinorCell",
         "MatrixMinorPrefix",
         "MatrixSkipIndex",
         "Multinomial",
         "MultinomialBinomialPrefix",
+        "NextPrime",
         "NonzeroMatrixMinor",
         "NonzeroSelectedMinor",
         "PositiveDeterminantMatrixData",
         "PrimePowerValuation",
         "RectangularMatrixRank",
+        "RoundedSignedDivision",
         "SignedCofactorMinorPrefix",
         "SignedDeterminantChildPrefix",
         "SignedDeterminantHistory",
@@ -10033,17 +11463,23 @@
         "CornacchiaTransitionAt",
         "DivisionPrefix",
         "DotProduct",
+        "EEuclideanDivision",
+        "EisensteinSignedDivisionRemainder",
         "EuclidParameters",
         "EuclidParametrization",
         "EuclideanDivision",
         "EuclideanHalving",
+        "FactorListMatching",
         "FiniteMatrixSelector",
         "FloorSqrt",
+        "GEuclideanDivision",
+        "GaussianSignedDivisionRemainder",
         "HenselCorrection",
         "Horner",
         "HornerCoefficientBlend",
         "HornerDerivativeTrace",
         "IdentityMatrixSelector",
+        "InitialPrimeChain",
         "InjectivePrefix",
         "IntegerVectorAdd",
         "IntegerVectorEqual",
@@ -10066,6 +11502,7 @@
         "ModularTranslationBoundary",
         "MultinomialBinomialPrefix",
         "MultinomialCarryPrefix",
+        "NextPrime",
         "PowerQuotPrefix",
         "PrimeBitPrefix",
         "Primorial",
@@ -10081,6 +11518,7 @@
         "SignedDeterminantChildPrefix",
         "SignedDeterminantHistory",
         "SignedEvaluatedCofactors",
+        "SignedFloor",
         "SignedMatrixPrefixEquality",
         "SignedRecursiveDeterminant",
         "SignedSelectedSubmatrix",
@@ -10096,6 +11534,8 @@
       "milestone_users": [
         "T13",
         "G011",
+        "G021",
+        "G022",
         "G027",
         "G035",
         "G051",
@@ -10184,6 +11624,8 @@
         "CornacchiaTransitionAt",
         "DivisionPrefix",
         "DotProduct",
+        "EEuclideanDivision",
+        "EisensteinSignedDivisionRemainder",
         "EuclidParameters",
         "EuclidParametrization",
         "EuclideanAnchoredExecution",
@@ -10193,10 +11635,13 @@
         "EuclideanHalving",
         "EuclideanLogarithmicExecution",
         "Eval",
+        "FactorListMatching",
         "Factorial",
         "FermatFourStrictDescent",
         "FiniteMatrixSelector",
         "FloorSqrt",
+        "GEuclideanDivision",
+        "GaussianSignedDivisionRemainder",
         "HenselCorrection",
         "Horner",
         "HornerCoefficientBlend",
@@ -10206,6 +11651,8 @@
         "HornerRootModulo",
         "HornerTaylorRemainder",
         "IdentityMatrixSelector",
+        "InitialPrimeChain",
+        "InitialPrimeList",
         "InjectivePrefix",
         "IntegerColumnSpan",
         "IntegerMatrixEntrywiseEqual",
@@ -10235,11 +11682,15 @@
         "Multinomial",
         "MultinomialBinomialPrefix",
         "MultinomialCarryPrefix",
+        "NextPrime",
         "NonzeroMatrixMinor",
         "NonzeroSelectedMinor",
+        "PermutationPrefix",
         "PositiveDeterminantMatrixData",
         "PowerQuotPrefix",
         "PrimeBitPrefix",
+        "PrimeFactorList",
+        "PrimeFactorListPermutation",
         "Primorial",
         "Product",
         "Range",
@@ -10251,6 +11702,7 @@
         "ScaledInversePrefix",
         "SignedAlternatingCofactorFold",
         "SignedAlternatingProductPrefix",
+        "SignedCodeFloor",
         "SignedCofactorMinorPrefix",
         "SignedDerivativeUnit",
         "SignedDeterminantChildPrefix",
@@ -10259,6 +11711,7 @@
         "SignedDotProduct",
         "SignedEvaluatedCofactors",
         "SignedFirstRowCofactorFold",
+        "SignedFloor",
         "SignedHornerRoot",
         "SignedHornerValueDerivative",
         "SignedMatrixMinor",
@@ -10737,9 +12190,7 @@
       "expansion": "w is a coded bijection matching all list entries",
       "expansion_sha256": "3c6e6d545c09ecfe2bcae047db2900614317ad0e7ef9c50d32ae33491e251d4b",
       "meaning": "Witnessed equality up to finite permutation.",
-      "milestone_users": [
-        "G005"
-      ],
+      "milestone_users": [],
       "name": "Permutation",
       "parameters": [
         "s",
@@ -11083,9 +12534,7 @@
       "expansion": "s lists exactly k increasing primes and omits no smaller prime",
       "expansion_sha256": "f75c6b9b940de8c129d2e4c862260a280be1e0f95e961ebd973287d7b92a1deb",
       "meaning": "The first k primes.",
-      "milestone_users": [
-        "G022"
-      ],
+      "milestone_users": [],
       "name": "PrimeList",
       "parameters": [
         "s",
@@ -11485,6 +12934,77 @@
       "transitive_dependents": []
     },
     {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [],
+      "dependents": [
+        "SignedAdd",
+        "SignedBalance",
+        "SignedBezout",
+        "SignedCodeFloor",
+        "SignedMul",
+        "SignedNegate",
+        "ZPairDecode"
+      ],
+      "expansion": "z = 2 · p ∧ n = 0 ∨ (∃ x. z = 2 · x + 1 ∧ p = 0 ∧ n = S x)",
+      "expansion_sha256": "b867042386fbe034fcfbd08061672ae988bb5a5fa3c73188ee977440c02cd62f",
+      "meaning": "The original canonical integer code: even 2p denotes p, and odd 2k+1 denotes −(k+1). The decoded positive and negative parts are normalized.",
+      "milestone_users": [],
+      "name": "SignedDecode",
+      "parameters": [
+        "z",
+        "p",
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedDecode",
+        "blueprint_parameters": [
+          "z",
+          "p",
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "1674b231e352aa00e88ed892ac5dcbe49dc4de442fe440ffb30bcc4cb4ac3ae6",
+        "reviewed_id": "ND0142",
+        "reviewed_name": "SignedDecode",
+        "reviewed_parameters": [
+          "z",
+          "p",
+          "n"
+        ],
+        "route": "arithmetic-foundations"
+      },
+      "topological_layer": 0,
+      "transitive_dependencies": [],
+      "transitive_dependents": [
+        "EDivRem",
+        "EEuclideanDivision",
+        "EMul",
+        "ENorm",
+        "GDivRem",
+        "GEuclideanDivision",
+        "GMul",
+        "GNorm",
+        "SignedAdd",
+        "SignedBalance",
+        "SignedBezout",
+        "SignedCodeFloor",
+        "SignedMul",
+        "SignedNegate",
+        "ZPairAdd",
+        "ZPairDecode",
+        "ZPairRep",
+        "ZPairValid"
+      ]
+    },
+    {
       "arity": 6,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [],
@@ -11620,6 +13140,61 @@
         "SignedEvaluatedCofactors",
         "SignedRecursiveDeterminant",
         "SignedSelectedDeterminant"
+      ]
+    },
+    {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [],
+      "dependents": [
+        "GaussianSignedNorm",
+        "RoundedSignedDivision",
+        "WeightedSignedNormThree"
+      ],
+      "expansion": "p · p + n · n = s + (p · n + n · p)",
+      "expansion_sha256": "2dcc52b8990f033647dbbcf9b527a48501c0ecb977b84656cfd8f62ed26194a4",
+      "meaning": "The natural value s of the integer square (p−n)², expressed as a subtraction-free balanced equality.",
+      "milestone_users": [],
+      "name": "SignedDifferenceSquare",
+      "parameters": [
+        "p",
+        "n",
+        "s"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedDifferenceSquare",
+        "blueprint_parameters": [
+          "p",
+          "n",
+          "s"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "747d061c8dc5bc4b70dc2664441a3a0983b4b5d0e8d16440d0a3e37cf85fa933",
+        "reviewed_id": "ND0157",
+        "reviewed_name": "SignedDifferenceSquare",
+        "reviewed_parameters": [
+          "p",
+          "n",
+          "s"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 0,
+      "transitive_dependencies": [],
+      "transitive_dependents": [
+        "GEuclideanDivision",
+        "GNorm",
+        "GaussianSignedDivisionRemainder",
+        "GaussianSignedNorm",
+        "RoundedSignedDivision",
+        "WeightedSignedNormThree"
       ]
     },
     {
@@ -12557,7 +14132,9 @@
         "BetaAt",
         "Lt"
       ],
-      "dependents": [],
+      "dependents": [
+        "PermutationPrefix"
+      ],
       "expansion": "∀ fp_i_defined_bounded_prefix. Lt(fp_i_defined_bounded_prefix,l) → ∃ x. BetaAt(b,c,fp_i_defined_bounded_prefix,x) ∧ Lt(x,l)",
       "expansion_sha256": "1f9600e5a12f72c04be528ab00d94d3bfead7cc138a9d7fd1a7e3f310832f7e4",
       "meaning": "Every decoded entry below l is itself below l.",
@@ -12598,7 +14175,10 @@
         "BetaAt",
         "Lt"
       ],
-      "transitive_dependents": []
+      "transitive_dependents": [
+        "PermutationPrefix",
+        "PrimeFactorListPermutation"
+      ]
     },
     {
       "arity": 2,
@@ -13479,6 +15059,116 @@
       ]
     },
     {
+      "arity": 18,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "EisensteinCoordinateNorm",
+        "Lt"
+      ],
+      "dependents": [],
+      "expansion": "cp · qp + cn · qn + (dp · un + dn · up) + rp + an = ap + (cp · qn + cn · qp + (dp · up + dn · un) + rn) ∧ cp · up + cn · un + (dp · qp + dn · qn) + (dp · un + dn · up) + sp + bn = bp + (cp · un + cn · up + (dp · qn + dn · qp) + (dp · up + dn · un) + sn) ∧ (EisensteinCoordinateNorm(rp,rn,sp,sn,U) ∧ (EisensteinCoordinateNorm(cp,cn,dp,dn,V) ∧ Lt(U,V)))",
+      "expansion_sha256": "3f88f1dcf14a3c2002b88e0180aaf9221e87f60484f5fe43057635802ae6a681",
+      "meaning": "The genuine signed-coordinate Eisenstein equation A=B·Q+R, actual coordinate norms U=N(R), V=N(B), and strict decrease U<V.",
+      "milestone_users": [],
+      "name": "EisensteinSignedDivisionRemainder",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "qp",
+        "qn",
+        "up",
+        "un",
+        "rp",
+        "rn",
+        "sp",
+        "sn",
+        "U",
+        "V"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "EisensteinSignedDivisionRemainder",
+        "blueprint_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "cp",
+          "cn",
+          "dp",
+          "dn",
+          "qp",
+          "qn",
+          "up",
+          "un",
+          "rp",
+          "rn",
+          "sp",
+          "sn",
+          "U",
+          "V"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "reviewed_expansion_sha256": "fe243720d84d80e392fec6f0d08d8f545d60b4e4c93f7dd9b829f0bb5f7c7faf",
+        "reviewed_id": "ND0176",
+        "reviewed_name": "EisensteinSignedDivisionRemainder",
+        "reviewed_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "cp",
+          "cn",
+          "dp",
+          "dn",
+          "qp",
+          "qn",
+          "up",
+          "un",
+          "rp",
+          "rn",
+          "sp",
+          "sn",
+          "U",
+          "V"
+        ],
+        "route": "eisenstein-integers"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "EisensteinCoordinateNorm",
+        "Lt"
+      ],
+      "transitive_dependents": []
+    },
+    {
       "arity": 2,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -13742,6 +15432,76 @@
       ]
     },
     {
+      "arity": 7,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "BetaAt",
+        "Lt"
+      ],
+      "dependents": [
+        "PrimeFactorListPermutation"
+      ],
+      "expansion": "∀ pfp_i_lowerlayer. ∀ pfp_j_lowerlayer. ∀ pfp_a_lowerlayer. Lt(pfp_i_lowerlayer,l) → BetaAt(u,v,pfp_i_lowerlayer,pfp_j_lowerlayer) → BetaAt(b,c,pfp_i_lowerlayer,pfp_a_lowerlayer) → BetaAt(d,e,pfp_j_lowerlayer,pfp_a_lowerlayer)",
+      "expansion_sha256": "48bb9410b013a900968f17477e02c62bf29663d86a183cf968a651c9f81d4bde",
+      "meaning": "Each actual source factor equals the factor at the index decoded from its image under the witnessed map.",
+      "milestone_users": [],
+      "name": "FactorListMatching",
+      "parameters": [
+        "b",
+        "c",
+        "d",
+        "e",
+        "u",
+        "v",
+        "l"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "FactorListMatching",
+        "blueprint_parameters": [
+          "b",
+          "c",
+          "d",
+          "e",
+          "u",
+          "v",
+          "l"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "reviewed_expansion_sha256": "57e3ed09ff60013ddb1dabbbbfb873a853db2800f0ad4b1ed2aa42701dfb03bb",
+        "reviewed_id": "ND0150",
+        "reviewed_name": "FactorListMatching",
+        "reviewed_parameters": [
+          "b",
+          "c",
+          "d",
+          "e",
+          "u",
+          "v",
+          "l"
+        ],
+        "route": "arithmetic-foundations"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "BetaAt",
+        "Lt"
+      ],
+      "transitive_dependents": [
+        "PrimeFactorListPermutation"
+      ]
+    },
+    {
       "arity": 4,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -13852,6 +15612,69 @@
       "transitive_dependents": []
     },
     {
+      "arity": 5,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "SignedDifferenceSquare"
+      ],
+      "dependents": [
+        "GNorm",
+        "GaussianSignedDivisionRemainder"
+      ],
+      "expansion": "∃ ge_real_square_lowerlayer. ∃ ge_imaginary_square_lowerlayer. SignedDifferenceSquare(ap,an,ge_real_square_lowerlayer) ∧ (SignedDifferenceSquare(bp,bn,ge_imaginary_square_lowerlayer) ∧ N = ge_real_square_lowerlayer + ge_imaginary_square_lowerlayer)",
+      "expansion_sha256": "18f9d78f8af5e99946b50812c69fea192211d08ba0406312d71f52ea056c863e",
+      "meaning": "The actual sum (ap−an)²+(bp−bn)² of two witnessed signed-coordinate squares.",
+      "milestone_users": [],
+      "name": "GaussianSignedNorm",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "N"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "GaussianSignedNorm",
+        "blueprint_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "N"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "reviewed_expansion_sha256": "150d4e1bd0957f9123c6e3191543e0ee738f3c0029f46e48cd9bd54aad5dff89",
+        "reviewed_id": "ND0158",
+        "reviewed_name": "GaussianSignedNorm",
+        "reviewed_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "N"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "SignedDifferenceSquare"
+      ],
+      "transitive_dependents": [
+        "GEuclideanDivision",
+        "GNorm",
+        "GaussianSignedDivisionRemainder"
+      ]
+    },
+    {
       "arity": 3,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -13869,7 +15692,6 @@
       "meaning": "Canonical greatest common divisor.",
       "milestone_users": [
         "T07",
-        "G002",
         "G012",
         "G019",
         "G101"
@@ -14309,7 +16131,9 @@
         "BetaAt",
         "Lt"
       ],
-      "dependents": [],
+      "dependents": [
+        "PermutationPrefix"
+      ],
       "expansion": "∀ fp_i_defined_injective_prefix. ∀ fp_j_defined_injective_prefix. ∀ fp_value_defined_injective_prefix. Lt(fp_i_defined_injective_prefix,l) → Lt(fp_j_defined_injective_prefix,l) → BetaAt(b,c,fp_i_defined_injective_prefix,fp_value_defined_injective_prefix) → BetaAt(b,c,fp_j_defined_injective_prefix,fp_value_defined_injective_prefix) → fp_i_defined_injective_prefix = fp_j_defined_injective_prefix",
       "expansion_sha256": "bf790f23086a6c34d253452a8c56b5ddb4e044e4c40f07219d5a5f367cc4e5dc",
       "meaning": "Equal decoded values below l have equal indices.",
@@ -14350,7 +16174,10 @@
         "BetaAt",
         "Lt"
       ],
-      "transitive_dependents": []
+      "transitive_dependents": [
+        "PermutationPrefix",
+        "PrimeFactorListPermutation"
+      ]
     },
     {
       "arity": 13,
@@ -14602,6 +16429,7 @@
       "expansion_sha256": "bb436c33a0854967fd25aacdf473b691f2daea9ebaacef0442112d3307ecccf0",
       "meaning": "g is a common divisor divisible by every common divisor.",
       "milestone_users": [
+        "G002",
         "G011"
       ],
       "name": "IsGCD",
@@ -15390,6 +17218,7 @@
       "expansion_sha256": "96aa38d4bd34c29b36a0d745614252575b63617bc54fcc54b5a162f196024ff8",
       "meaning": "The exact constructive power-of-two graph.",
       "milestone_users": [
+        "G022",
         "G027",
         "G101",
         "G102"
@@ -15576,6 +17405,7 @@
         "FiniteField",
         "GaussBit",
         "Irred",
+        "NextPrime",
         "PrimeBitPrefix",
         "PrimePowerValuation",
         "PrimeThreeModFourDivisor",
@@ -15687,10 +17517,14 @@
         "Factorization",
         "FiniteField",
         "GaussBit",
+        "InitialPrimeChain",
+        "InitialPrimeList",
         "Irred",
+        "NextPrime",
         "PowerValuation",
         "PowerValuationOne",
         "PrimeBitPrefix",
+        "PrimeFactorList",
         "PrimePowerValuation",
         "PrimeThreeModFourDivisor",
         "PrimitiveRootModulus",
@@ -15712,6 +17546,7 @@
       "dependents": [
         "Factorial",
         "Multinomial",
+        "PrimeFactorList",
         "Primorial"
       ],
       "expansion": "∃ ff_u_defined_product. ∃ ff_v_defined_product. BetaAt(ff_u_defined_product,ff_v_defined_product,0,1) ∧ (BetaAt(ff_u_defined_product,ff_v_defined_product,l,z) ∧ (∀ x. Lt(x,l) → ∃ y. ∃ n. ∃ m. BetaAt(b,c,x,y) ∧ (BetaAt(ff_u_defined_product,ff_v_defined_product,x,n) ∧ (BetaAt(ff_u_defined_product,ff_v_defined_product,S x,m) ∧ m = n · y))))",
@@ -15765,6 +17600,7 @@
       "transitive_dependents": [
         "Factorial",
         "Multinomial",
+        "PrimeFactorList",
         "Primorial"
       ]
     },
@@ -15929,6 +17765,124 @@
       "transitive_dependents": []
     },
     {
+      "arity": 8,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Le",
+        "SignedDifferenceSquare"
+      ],
+      "dependents": [],
+      "expansion": "p + N · qn + en = n + N · qp + ep ∧ (SignedDifferenceSquare(ep,en,t · t) ∧ Le(t + t,N))",
+      "expansion_sha256": "91834fe741b7858dfad7a381aa02663346e06980a819e7b0de1a054e42aeb53b",
+      "meaning": "A genuine signed quotient and signed error represent p−n=N·(qp−qn)+(ep−en), with absolute error t and 2t≤N.",
+      "milestone_users": [],
+      "name": "RoundedSignedDivision",
+      "parameters": [
+        "p",
+        "n",
+        "N",
+        "qp",
+        "qn",
+        "ep",
+        "en",
+        "t"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "RoundedSignedDivision",
+        "blueprint_parameters": [
+          "p",
+          "n",
+          "N",
+          "qp",
+          "qn",
+          "ep",
+          "en",
+          "t"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "reviewed_expansion_sha256": "516742567d5780545dd807f65413e6600b6dde562b4e827b79574cbfac8ab0f2",
+        "reviewed_id": "ND0162",
+        "reviewed_name": "RoundedSignedDivision",
+        "reviewed_parameters": [
+          "p",
+          "n",
+          "N",
+          "qp",
+          "qn",
+          "ep",
+          "en",
+          "t"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "Le",
+        "SignedDifferenceSquare"
+      ],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "dependents": [],
+      "expansion": "∃ sa_lp_lowerlayer. ∃ sa_ln_lowerlayer. ∃ sa_rp_lowerlayer. ∃ sa_rn_lowerlayer. ∃ sa_op_lowerlayer. ∃ sa_on_lowerlayer. SignedDecode(a,sa_lp_lowerlayer,sa_ln_lowerlayer) ∧ (SignedDecode(b,sa_rp_lowerlayer,sa_rn_lowerlayer) ∧ (SignedDecode(c,sa_op_lowerlayer,sa_on_lowerlayer) ∧ sa_lp_lowerlayer + sa_rp_lowerlayer + sa_on_lowerlayer = sa_ln_lowerlayer + sa_rn_lowerlayer + sa_op_lowerlayer))",
+      "expansion_sha256": "dc3548d4ffaf0095ef76dba03d763975c7113587c497651509a61e16d3780e54",
+      "meaning": "Actual addition of original canonical signed codes, witnessed by their decoders and balanced equality.",
+      "milestone_users": [],
+      "name": "SignedAdd",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedAdd",
+        "blueprint_parameters": [
+          "a",
+          "b",
+          "c"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "96bbbcabe876881ee3272ccc86aa55fe9bd8dfc90ffb4043cb0fc9a2dbf59fad",
+        "reviewed_id": "ND0144",
+        "reviewed_name": "SignedAdd",
+        "reviewed_parameters": [
+          "a",
+          "b",
+          "c"
+        ],
+        "route": "arithmetic-foundations"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "SignedDecode"
+      ],
+      "transitive_dependents": []
+    },
+    {
       "arity": 7,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -16012,6 +17966,125 @@
         "SignedRecursiveDeterminant",
         "SignedSelectedDeterminant"
       ]
+    },
+    {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "dependents": [
+        "ZPairRep"
+      ],
+      "expansion": "∃ sb_pos_lowerlayer. ∃ sb_neg_lowerlayer. SignedDecode(z,sb_pos_lowerlayer,sb_neg_lowerlayer) ∧ p + sb_neg_lowerlayer = n + sb_pos_lowerlayer",
+      "expansion_sha256": "ce76db8373028b4a63794564b29cef2e816cfea32ecee72a259f7ed270902510",
+      "meaning": "The original canonical code z represents the integer difference p−n; these supplied components need not be normalized.",
+      "milestone_users": [],
+      "name": "SignedBalance",
+      "parameters": [
+        "z",
+        "p",
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedBalance",
+        "blueprint_parameters": [
+          "z",
+          "p",
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "f6ebf61b71a55e09c12c51c7653ba92cb1e70afc3bc7918b0af6f71657961327",
+        "reviewed_id": "ND0143",
+        "reviewed_name": "SignedBalance",
+        "reviewed_parameters": [
+          "z",
+          "p",
+          "n"
+        ],
+        "route": "arithmetic-foundations"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "SignedDecode"
+      ],
+      "transitive_dependents": [
+        "EDivRem",
+        "EEuclideanDivision",
+        "EMul",
+        "ENorm",
+        "GDivRem",
+        "GEuclideanDivision",
+        "GMul",
+        "GNorm",
+        "ZPairAdd",
+        "ZPairRep"
+      ]
+    },
+    {
+      "arity": 5,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "dependents": [],
+      "expansion": "∃ sbz_xp_lowerlayer. ∃ sbz_xn_lowerlayer. ∃ sbz_yp_lowerlayer. ∃ sbz_yn_lowerlayer. SignedDecode(u,sbz_xp_lowerlayer,sbz_xn_lowerlayer) ∧ (SignedDecode(v,sbz_yp_lowerlayer,sbz_yn_lowerlayer) ∧ a · sbz_xp_lowerlayer + b · sbz_yp_lowerlayer = g + (a · sbz_xn_lowerlayer + b · sbz_yn_lowerlayer))",
+      "expansion_sha256": "4e1da3ffaee7ad0fa63539130561c1c4d0984825e9b647c6ad95aa6744f0fd31",
+      "meaning": "The original signed coefficient codes u and v witness a·u+b·v=g by actual decoded balanced arithmetic.",
+      "milestone_users": [
+        "G002"
+      ],
+      "name": "SignedBezout",
+      "parameters": [
+        "g",
+        "a",
+        "b",
+        "u",
+        "v"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedBezout",
+        "blueprint_parameters": [
+          "g",
+          "a",
+          "b",
+          "u",
+          "v"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "reviewed_expansion_sha256": "27327519d0bc44212cbd93376c820fd937701b5995b769c5072ec2a26a23b1c7",
+        "reviewed_id": "ND0147",
+        "reviewed_name": "SignedBezout",
+        "reviewed_parameters": [
+          "g",
+          "a",
+          "b",
+          "u",
+          "v"
+        ],
+        "route": "arithmetic-foundations"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "SignedDecode"
+      ],
+      "transitive_dependents": []
     },
     {
       "arity": 3,
@@ -16221,6 +18294,70 @@
       ]
     },
     {
+      "arity": 6,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Lt"
+      ],
+      "dependents": [
+        "SignedCodeFloor"
+      ],
+      "expansion": "p + m · t = n + m · q + r ∧ Lt(r,m)",
+      "expansion_sha256": "1a1688049cf2a81ac45208b7fa98e2b157386367d95b7d6d4b7710e29ca48346",
+      "meaning": "The genuine signed floor equation (p−n)=m·(q−t)+r and strict natural remainder bound r<m.",
+      "milestone_users": [],
+      "name": "SignedFloor",
+      "parameters": [
+        "p",
+        "n",
+        "m",
+        "q",
+        "t",
+        "r"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedFloor",
+        "blueprint_parameters": [
+          "p",
+          "n",
+          "m",
+          "q",
+          "t",
+          "r"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "reviewed_expansion_sha256": "8a0b0be19abe00a43f167e316e962473a8a139d2e103bdf0baf1f198c3e4e9a6",
+        "reviewed_id": "ND0155",
+        "reviewed_name": "SignedFloor",
+        "reviewed_parameters": [
+          "p",
+          "n",
+          "m",
+          "q",
+          "t",
+          "r"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "Lt"
+      ],
+      "transitive_dependents": [
+        "SignedCodeFloor"
+      ]
+    },
+    {
       "arity": 9,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -16293,6 +18430,98 @@
       "transitive_dependencies": [
         "BetaAt",
         "Lt"
+      ],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "dependents": [],
+      "expansion": "∃ sm_lp_lowerlayer. ∃ sm_ln_lowerlayer. ∃ sm_rp_lowerlayer. ∃ sm_rn_lowerlayer. ∃ sm_op_lowerlayer. ∃ sm_on_lowerlayer. SignedDecode(a,sm_lp_lowerlayer,sm_ln_lowerlayer) ∧ (SignedDecode(b,sm_rp_lowerlayer,sm_rn_lowerlayer) ∧ (SignedDecode(c,sm_op_lowerlayer,sm_on_lowerlayer) ∧ sm_lp_lowerlayer · sm_rp_lowerlayer + sm_ln_lowerlayer · sm_rn_lowerlayer + sm_on_lowerlayer = sm_lp_lowerlayer · sm_rn_lowerlayer + sm_ln_lowerlayer · sm_rp_lowerlayer + sm_op_lowerlayer))",
+      "expansion_sha256": "ecde243b490db5cc67d94d9e34b518933debe1d587c139352cd54bd5209eb68d",
+      "meaning": "Actual multiplication of original canonical signed codes; opposite-sign products remain on the negative side of the balance.",
+      "milestone_users": [],
+      "name": "SignedMul",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedMul",
+        "blueprint_parameters": [
+          "a",
+          "b",
+          "c"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "ea9c672cbfa97d76f980f41420a4cf7b0b6fc186e6b331fc68b38616369caec6",
+        "reviewed_id": "ND0145",
+        "reviewed_name": "SignedMul",
+        "reviewed_parameters": [
+          "a",
+          "b",
+          "c"
+        ],
+        "route": "arithmetic-foundations"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "SignedDecode"
+      ],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 2,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "dependents": [],
+      "expansion": "∃ sn_pos_lowerlayer. ∃ sn_neg_lowerlayer. SignedDecode(a,sn_pos_lowerlayer,sn_neg_lowerlayer) ∧ SignedDecode(b,sn_neg_lowerlayer,sn_pos_lowerlayer)",
+      "expansion_sha256": "635f503246cd698b0c2f2e9736b87bd0305ee5bed0bea4251e3e75d443e12dfe",
+      "meaning": "Canonical signed negation swaps the positive and negative decoded parts.",
+      "milestone_users": [],
+      "name": "SignedNegate",
+      "parameters": [
+        "a",
+        "b"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedNegate",
+        "blueprint_parameters": [
+          "a",
+          "b"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1
+        ],
+        "reviewed_expansion_sha256": "5bf5d7f027aa55b036979be920fe6e2d0fc4779d01742abc3773cf08dfed9874",
+        "reviewed_id": "ND0146",
+        "reviewed_name": "SignedNegate",
+        "reviewed_parameters": [
+          "a",
+          "b"
+        ],
+        "route": "arithmetic-foundations"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "SignedDecode"
       ],
       "transitive_dependents": []
     },
@@ -16597,7 +18826,9 @@
         "BetaAt",
         "Lt"
       ],
-      "dependents": [],
+      "dependents": [
+        "PermutationPrefix"
+      ],
       "expansion": "∀ fp_value_defined_surjective_prefix. Lt(fp_value_defined_surjective_prefix,l) → ∃ x. Lt(x,l) ∧ BetaAt(b,c,x,fp_value_defined_surjective_prefix)",
       "expansion_sha256": "71fb5ce6d0164c5f27b86bb93a3567aa980d8cc5908b9c132af3a7d0603e3319",
       "meaning": "Every value below l occurs at an index below l.",
@@ -16638,7 +18869,10 @@
         "BetaAt",
         "Lt"
       ],
-      "transitive_dependents": []
+      "transitive_dependents": [
+        "PermutationPrefix",
+        "PrimeFactorListPermutation"
+      ]
     },
     {
       "arity": 4,
@@ -16805,6 +19039,123 @@
       "transitive_dependents": []
     },
     {
+      "arity": 5,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "SignedDifferenceSquare"
+      ],
+      "dependents": [],
+      "expansion": "∃ ee_real_square_lowerlayer. ∃ ee_imag_square_lowerlayer. SignedDifferenceSquare(ap,an,ee_real_square_lowerlayer) ∧ (SignedDifferenceSquare(bp,bn,ee_imag_square_lowerlayer) ∧ n = ee_real_square_lowerlayer + 3 · ee_imag_square_lowerlayer)",
+      "expansion_sha256": "effa110c5553db3488dcb984ba7fce21bf375674d4a234fa8714b76734459dff",
+      "meaning": "The witnessed sum (ap−an)²+3(bp−bn)². It supports the proved identity 4N(a+bω)=(2a−b)²+3b², not a new norm axiom.",
+      "milestone_users": [],
+      "name": "WeightedSignedNormThree",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "WeightedSignedNormThree",
+        "blueprint_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "reviewed_expansion_sha256": "9292b03df98beb47510d881cc08f4500a2e40769c7fa69d8670d20ce32304efe",
+        "reviewed_id": "ND0175",
+        "reviewed_name": "WeightedSignedNormThree",
+        "reviewed_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "n"
+        ],
+        "route": "eisenstein-integers"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "SignedDifferenceSquare"
+      ],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 5,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "dependents": [
+        "ZPairValid"
+      ],
+      "expansion": "∃ ge_real_code_lowerlayer. ∃ ge_imaginary_code_lowerlayer. z = (ge_real_code_lowerlayer + ge_imaginary_code_lowerlayer) · S (ge_real_code_lowerlayer + ge_imaginary_code_lowerlayer) + (ge_imaginary_code_lowerlayer + ge_imaginary_code_lowerlayer) ∧ (SignedDecode(ge_real_code_lowerlayer,ap,an) ∧ SignedDecode(ge_imaginary_code_lowerlayer,bp,bn))",
+      "expansion_sha256": "41d4ad2f42f6824ba98a34f1345fdc54b208c13424e7a7397614b2bfb5fb3c4d",
+      "meaning": "The shared injective code of two original canonical signed integers, with their normalized coordinate decoders. Both quadratic integer rings use this same carrier.",
+      "milestone_users": [],
+      "name": "ZPairDecode",
+      "parameters": [
+        "z",
+        "ap",
+        "an",
+        "bp",
+        "bn"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "ZPairDecode",
+        "blueprint_parameters": [
+          "z",
+          "ap",
+          "an",
+          "bp",
+          "bn"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "reviewed_expansion_sha256": "5f39a4d396eba3cd332d0485bf7e62a7e4db10b2d6c0498d318e4ec957a02867",
+        "reviewed_id": "ND0159",
+        "reviewed_name": "ZPairDecode",
+        "reviewed_parameters": [
+          "z",
+          "ap",
+          "an",
+          "bp",
+          "bn"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "SignedDecode"
+      ],
+      "transitive_dependents": [
+        "GEuclideanDivision",
+        "ZPairValid"
+      ]
+    },
+    {
       "arity": 3,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -16812,7 +19163,9 @@
         "Lt",
         "Prime"
       ],
-      "dependents": [],
+      "dependents": [
+        "PrimeFactorList"
+      ],
       "expansion": "∀ dp_i. Lt(dp_i,l) → ∃ x. BetaAt(b,c,dp_i,x) ∧ Prime(x)",
       "expansion_sha256": "1b11d871189f33e1d122edb91ca332924fdcf7a3c3d2011073884659920a14bd",
       "meaning": "Every decoded factor below l is prime.",
@@ -16855,7 +19208,9 @@
         "Lt",
         "Prime"
       ],
-      "transitive_dependents": []
+      "transitive_dependents": [
+        "PrimeFactorList"
+      ]
     },
     {
       "arity": 5,
@@ -18261,8 +20616,6 @@
       "expansion_sha256": "dab4d878263b29382ffb86640015d04a0086b2aacd065feff6977752654ad8d4",
       "meaning": "Finite prime factorization.",
       "milestone_users": [
-        "G004",
-        "G005",
         "G006"
       ],
       "name": "Factorization",
@@ -18368,6 +20721,117 @@
       "transitive_dependencies": [
         "Dvd",
         "Prime"
+      ],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 18,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "GaussianSignedNorm",
+        "Lt"
+      ],
+      "dependents": [],
+      "expansion": "cp · qp + cn · qn + (dp · un + dn · up) + rp + an = ap + (cp · qn + cn · qp + (dp · up + dn · un) + rn) ∧ cp · up + cn · un + (dp · qp + dn · qn) + sp + bn = bp + (cp · un + cn · up + (dp · qn + dn · qp) + sn) ∧ (GaussianSignedNorm(rp,rn,sp,sn,U) ∧ (GaussianSignedNorm(cp,cn,dp,dn,V) ∧ Lt(U,V)))",
+      "expansion_sha256": "d27c9fa5410e49f20f1b5ac9c0f714ec59255d00538209a94ee06f6edcf84e8e",
+      "meaning": "The actual Gaussian coordinate equation A=B·Q+R, the two genuine squared norms U=N(R), V=N(B), and strict decrease U<V.",
+      "milestone_users": [],
+      "name": "GaussianSignedDivisionRemainder",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "qp",
+        "qn",
+        "up",
+        "un",
+        "rp",
+        "rn",
+        "sp",
+        "sn",
+        "U",
+        "V"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "GaussianSignedDivisionRemainder",
+        "blueprint_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "cp",
+          "cn",
+          "dp",
+          "dn",
+          "qp",
+          "qn",
+          "up",
+          "un",
+          "rp",
+          "rn",
+          "sp",
+          "sn",
+          "U",
+          "V"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "reviewed_expansion_sha256": "8e23f52099e27793a673697f357450f4b7465acad6989d554be88cc144d5ebfe",
+        "reviewed_id": "ND0163",
+        "reviewed_name": "GaussianSignedDivisionRemainder",
+        "reviewed_parameters": [
+          "ap",
+          "an",
+          "bp",
+          "bn",
+          "cp",
+          "cn",
+          "dp",
+          "dn",
+          "qp",
+          "qn",
+          "up",
+          "un",
+          "rp",
+          "rn",
+          "sp",
+          "sn",
+          "U",
+          "V"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "GaussianSignedNorm",
+        "Lt",
+        "SignedDifferenceSquare"
       ],
       "transitive_dependents": []
     },
@@ -19236,6 +21700,118 @@
       ]
     },
     {
+      "arity": 2,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "Le",
+        "Lt",
+        "Prime"
+      ],
+      "dependents": [
+        "InitialPrimeChain"
+      ],
+      "expansion": "Prime(p) ∧ (Lt(a,p) ∧ (∀ x. Prime(x) → Lt(a,x) → Le(p,x)))",
+      "expansion_sha256": "6951135826c2ed6a3a3b380db8546e767b894a50bcbf87a69c12e4e1b5de52a9",
+      "meaning": "The actual least prime strictly above a. Global minimality excludes a sparse subsequence of primes.",
+      "milestone_users": [],
+      "name": "NextPrime",
+      "parameters": [
+        "a",
+        "p"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "NextPrime",
+        "blueprint_parameters": [
+          "a",
+          "p"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1
+        ],
+        "reviewed_expansion_sha256": "964367d85994baf9339758cc05f0d2e10ee3acee39aba4c569aeebfe0c510b50",
+        "reviewed_id": "ND0152",
+        "reviewed_name": "NextPrime",
+        "reviewed_parameters": [
+          "a",
+          "p"
+        ],
+        "route": "prime-enumeration"
+      },
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "Dvd",
+        "Le",
+        "Lt",
+        "Prime"
+      ],
+      "transitive_dependents": [
+        "InitialPrimeChain",
+        "InitialPrimeList"
+      ]
+    },
+    {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "BoundedPrefix",
+        "InjectivePrefix",
+        "SurjectivePrefix"
+      ],
+      "dependents": [
+        "PrimeFactorListPermutation"
+      ],
+      "expansion": "BoundedPrefix(b,c,l) ∧ (InjectivePrefix(b,c,l) ∧ SurjectivePrefix(b,c,l))",
+      "expansion_sha256": "b4d81d2605b128f4d9ff4b2dface2b4169b61bf018c00395ce54ac5ade31dff4",
+      "meaning": "An actual beta-coded bijection of the finite index interval [0,l), including all bounds, injectivity, and surjectivity.",
+      "milestone_users": [],
+      "name": "PermutationPrefix",
+      "parameters": [
+        "b",
+        "c",
+        "l"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "PermutationPrefix",
+        "blueprint_parameters": [
+          "b",
+          "c",
+          "l"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "4145090a616c423da718870c305d9d2c207fc0111a74c2e543158ef031c699fb",
+        "reviewed_id": "ND0148",
+        "reviewed_name": "PermutationPrefix",
+        "reviewed_parameters": [
+          "b",
+          "c",
+          "l"
+        ],
+        "route": "arithmetic-foundations"
+      },
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "BetaAt",
+        "BoundedPrefix",
+        "InjectivePrefix",
+        "Lt",
+        "SurjectivePrefix"
+      ],
+      "transitive_dependents": [
+        "PrimeFactorListPermutation"
+      ]
+    },
+    {
       "arity": 3,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -19678,6 +22254,61 @@
       ]
     },
     {
+      "arity": 4,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "SignedDecode",
+        "SignedFloor"
+      ],
+      "dependents": [],
+      "expansion": "∃ sif_positive_lowerlayer. ∃ sif_negative_lowerlayer. ∃ sif_quotient_positive_lowerlayer. ∃ sif_quotient_negative_lowerlayer. SignedDecode(a,sif_positive_lowerlayer,sif_negative_lowerlayer) ∧ (SignedDecode(q,sif_quotient_positive_lowerlayer,sif_quotient_negative_lowerlayer) ∧ SignedFloor(sif_positive_lowerlayer,sif_negative_lowerlayer,m,sif_quotient_positive_lowerlayer,sif_quotient_negative_lowerlayer,r))",
+      "expansion_sha256": "8996f90c1f9aa69ec459eb5dd394d42f0afdcfcbbc4f00f8bca5352fa10f4f64",
+      "meaning": "Actual canonical signed input and quotient codes satisfy the very same floor equation with remainder r<m.",
+      "milestone_users": [],
+      "name": "SignedCodeFloor",
+      "parameters": [
+        "a",
+        "m",
+        "q",
+        "r"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "SignedCodeFloor",
+        "blueprint_parameters": [
+          "a",
+          "m",
+          "q",
+          "r"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "reviewed_expansion_sha256": "e36a7df877be390d31dd7271fab249a453800cc4ebd829a57389186c5f9b525d",
+        "reviewed_id": "ND0156",
+        "reviewed_name": "SignedCodeFloor",
+        "reviewed_parameters": [
+          "a",
+          "m",
+          "q",
+          "r"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "Lt",
+        "SignedDecode",
+        "SignedFloor"
+      ],
+      "transitive_dependents": []
+    },
+    {
       "arity": 11,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -19962,6 +22593,127 @@
         "Prime"
       ],
       "transitive_dependents": []
+    },
+    {
+      "arity": 5,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "SignedBalance"
+      ],
+      "dependents": [
+        "EMul",
+        "ENorm",
+        "GMul",
+        "GNorm",
+        "ZPairAdd"
+      ],
+      "expansion": "∃ ge_representation_real_code_lowerlayer. ∃ ge_representation_imaginary_code_lowerlayer. z = (ge_representation_real_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) · S (ge_representation_real_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) + (ge_representation_imaginary_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) ∧ (SignedBalance(ge_representation_real_code_lowerlayer,ap,an) ∧ SignedBalance(ge_representation_imaginary_code_lowerlayer,bp,bn))",
+      "expansion_sha256": "9bfca2534cc23e0911967e586a7001554ee8c17b9cb39c97cb15d9fb0e5f2761",
+      "meaning": "The shared pair code represents the two supplied signed differences, with arbitrary nonnormalized representatives allowed.",
+      "milestone_users": [],
+      "name": "ZPairRep",
+      "parameters": [
+        "z",
+        "ap",
+        "an",
+        "bp",
+        "bn"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "ZPairRep",
+        "blueprint_parameters": [
+          "z",
+          "ap",
+          "an",
+          "bp",
+          "bn"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4
+        ],
+        "reviewed_expansion_sha256": "484f8588e2d9b5e92fda7c8fda43f480f34dcfae16a7ad0137fc32cd8cf8eeb8",
+        "reviewed_id": "ND0161",
+        "reviewed_name": "ZPairRep",
+        "reviewed_parameters": [
+          "z",
+          "ap",
+          "an",
+          "bp",
+          "bn"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "SignedBalance",
+        "SignedDecode"
+      ],
+      "transitive_dependents": [
+        "EDivRem",
+        "EEuclideanDivision",
+        "EMul",
+        "ENorm",
+        "GDivRem",
+        "GEuclideanDivision",
+        "GMul",
+        "GNorm",
+        "ZPairAdd"
+      ]
+    },
+    {
+      "arity": 1,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "ZPairDecode"
+      ],
+      "dependents": [
+        "GEuclideanDivision"
+      ],
+      "expansion": "∃ ge_real_positive_lowerlayer. ∃ ge_real_negative_lowerlayer. ∃ ge_imaginary_positive_lowerlayer. ∃ ge_imaginary_negative_lowerlayer. ZPairDecode(z,ge_real_positive_lowerlayer,ge_real_negative_lowerlayer,ge_imaginary_positive_lowerlayer,ge_imaginary_negative_lowerlayer)",
+      "expansion_sha256": "067f1b90efdf012c321d2f80f08e02a56be350411bbe53591a8506b607cfc3e7",
+      "meaning": "The natural z actually encodes a pair of signed integers; not every natural is assumed to be a valid pair code.",
+      "milestone_users": [
+        "G081",
+        "G084"
+      ],
+      "name": "ZPairValid",
+      "parameters": [
+        "z"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "ZPairValid",
+        "blueprint_parameters": [
+          "z"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0
+        ],
+        "reviewed_expansion_sha256": "c8afae24be45ec748565850d52a98c496cec734a90d8bacb5c80eabb293448ab",
+        "reviewed_id": "ND0160",
+        "reviewed_name": "ZPairValid",
+        "reviewed_parameters": [
+          "z"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "SignedDecode",
+        "ZPairDecode"
+      ],
+      "transitive_dependents": [
+        "GEuclideanDivision"
+      ]
     },
     {
       "arity": 4,
@@ -20797,6 +23549,115 @@
       "transitive_dependents": []
     },
     {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "ZPairRep"
+      ],
+      "dependents": [
+        "EDivRem"
+      ],
+      "expansion": "∃ ee_first_rp_lowerlayer. ∃ ee_first_rn_lowerlayer. ∃ ee_first_ip_lowerlayer. ∃ ee_first_in_lowerlayer. ∃ ee_second_rp_lowerlayer. ∃ ee_second_rn_lowerlayer. ∃ ee_second_ip_lowerlayer. ∃ ee_second_in_lowerlayer. ZPairRep(a,ee_first_rp_lowerlayer,ee_first_rn_lowerlayer,ee_first_ip_lowerlayer,ee_first_in_lowerlayer) ∧ (ZPairRep(b,ee_second_rp_lowerlayer,ee_second_rn_lowerlayer,ee_second_ip_lowerlayer,ee_second_in_lowerlayer) ∧ ZPairRep(c,ee_first_rp_lowerlayer · ee_second_rp_lowerlayer + ee_first_rn_lowerlayer · ee_second_rn_lowerlayer + (ee_first_ip_lowerlayer · ee_second_in_lowerlayer + ee_first_in_lowerlayer · ee_second_ip_lowerlayer),ee_first_rp_lowerlayer · ee_second_rn_lowerlayer + ee_first_rn_lowerlayer · ee_second_rp_lowerlayer + (ee_first_ip_lowerlayer · ee_second_ip_lowerlayer + ee_first_in_lowerlayer · ee_second_in_lowerlayer),ee_first_rp_lowerlayer · ee_second_ip_lowerlayer + ee_first_rn_lowerlayer · ee_second_in_lowerlayer + (ee_first_ip_lowerlayer · ee_second_rp_lowerlayer + ee_first_in_lowerlayer · ee_second_rn_lowerlayer) + (ee_first_ip_lowerlayer · ee_second_in_lowerlayer + ee_first_in_lowerlayer · ee_second_ip_lowerlayer),ee_first_rp_lowerlayer · ee_second_in_lowerlayer + ee_first_rn_lowerlayer · ee_second_ip_lowerlayer + (ee_first_ip_lowerlayer · ee_second_rn_lowerlayer + ee_first_in_lowerlayer · ee_second_rp_lowerlayer) + (ee_first_ip_lowerlayer · ee_second_ip_lowerlayer + ee_first_in_lowerlayer · ee_second_in_lowerlayer)))",
+      "expansion_sha256": "29feac8c066971b2825eaf34d45fde0ddefae8e05201dd6d1f39bacd52525522",
+      "meaning": "Actual multiplication in the Eisenstein ring, using the shared signed-pair carrier and the law ω²+ω+1=0.",
+      "milestone_users": [],
+      "name": "EMul",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "EMul",
+        "blueprint_parameters": [
+          "a",
+          "b",
+          "c"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "79481871eafd751574ee648c69015cd15cbb8917513e4d04bda63e8d1585cc00",
+        "reviewed_id": "ND0172",
+        "reviewed_name": "EMul",
+        "reviewed_parameters": [
+          "a",
+          "b",
+          "c"
+        ],
+        "route": "eisenstein-integers"
+      },
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "SignedBalance",
+        "SignedDecode",
+        "ZPairRep"
+      ],
+      "transitive_dependents": [
+        "EDivRem",
+        "EEuclideanDivision"
+      ]
+    },
+    {
+      "arity": 2,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "EisensteinCoordinateNorm",
+        "ZPairRep"
+      ],
+      "dependents": [
+        "EEuclideanDivision"
+      ],
+      "expansion": "∃ ee_norm_rp_lowerlayer. ∃ ee_norm_rn_lowerlayer. ∃ ee_norm_ip_lowerlayer. ∃ ee_norm_in_lowerlayer. ZPairRep(z,ee_norm_rp_lowerlayer,ee_norm_rn_lowerlayer,ee_norm_ip_lowerlayer,ee_norm_in_lowerlayer) ∧ EisensteinCoordinateNorm(ee_norm_rp_lowerlayer,ee_norm_rn_lowerlayer,ee_norm_ip_lowerlayer,ee_norm_in_lowerlayer,n)",
+      "expansion_sha256": "91d3400bc0e82e59656d841fe673b94e331bee67826d63e4239d25353f0644db",
+      "meaning": "The actual norm a²−ab+b² of the shared canonical pair code representing the Eisenstein integer a+bω.",
+      "milestone_users": [
+        "G086"
+      ],
+      "name": "ENorm",
+      "parameters": [
+        "z",
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "ENorm",
+        "blueprint_parameters": [
+          "z",
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1
+        ],
+        "reviewed_expansion_sha256": "5f956fea815b9f8e65f510fd1e395a0cfff3cf4c30ea49b487589dfa796f7220",
+        "reviewed_id": "ND0171",
+        "reviewed_name": "ENorm",
+        "reviewed_parameters": [
+          "z",
+          "n"
+        ],
+        "route": "eisenstein-integers"
+      },
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "EisensteinCoordinateNorm",
+        "SignedBalance",
+        "SignedDecode",
+        "ZPairRep"
+      ],
+      "transitive_dependents": [
+        "EEuclideanDivision"
+      ]
+    },
+    {
       "arity": 5,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -20992,6 +23853,116 @@
       "transitive_dependents": []
     },
     {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "ZPairRep"
+      ],
+      "dependents": [
+        "GDivRem"
+      ],
+      "expansion": "∃ ge_first_rp_lowerlayer. ∃ ge_first_rn_lowerlayer. ∃ ge_first_ip_lowerlayer. ∃ ge_first_in_lowerlayer. ∃ ge_second_rp_lowerlayer. ∃ ge_second_rn_lowerlayer. ∃ ge_second_ip_lowerlayer. ∃ ge_second_in_lowerlayer. ZPairRep(a,ge_first_rp_lowerlayer,ge_first_rn_lowerlayer,ge_first_ip_lowerlayer,ge_first_in_lowerlayer) ∧ (ZPairRep(b,ge_second_rp_lowerlayer,ge_second_rn_lowerlayer,ge_second_ip_lowerlayer,ge_second_in_lowerlayer) ∧ ZPairRep(c,ge_first_rp_lowerlayer · ge_second_rp_lowerlayer + ge_first_rn_lowerlayer · ge_second_rn_lowerlayer + (ge_first_ip_lowerlayer · ge_second_in_lowerlayer + ge_first_in_lowerlayer · ge_second_ip_lowerlayer),ge_first_rp_lowerlayer · ge_second_rn_lowerlayer + ge_first_rn_lowerlayer · ge_second_rp_lowerlayer + (ge_first_ip_lowerlayer · ge_second_ip_lowerlayer + ge_first_in_lowerlayer · ge_second_in_lowerlayer),ge_first_rp_lowerlayer · ge_second_ip_lowerlayer + ge_first_rn_lowerlayer · ge_second_in_lowerlayer + (ge_first_ip_lowerlayer · ge_second_rp_lowerlayer + ge_first_in_lowerlayer · ge_second_rn_lowerlayer),ge_first_rp_lowerlayer · ge_second_in_lowerlayer + ge_first_rn_lowerlayer · ge_second_ip_lowerlayer + (ge_first_ip_lowerlayer · ge_second_rn_lowerlayer + ge_first_in_lowerlayer · ge_second_rp_lowerlayer)))",
+      "expansion_sha256": "3406c42449f0d92bcf0e3ee413a43fc412efe411eabf60f26f832be5f76db126",
+      "meaning": "Actual Gaussian multiplication: (a+bi)(c+di)=(ac−bd)+(ad+bc)i, with canonical pair-code outputs.",
+      "milestone_users": [],
+      "name": "GMul",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "GMul",
+        "blueprint_parameters": [
+          "a",
+          "b",
+          "c"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "cd81b5bfb8488611f58067d5f381f5b47f52510dca10d59f78e0751392c38367",
+        "reviewed_id": "ND0166",
+        "reviewed_name": "GMul",
+        "reviewed_parameters": [
+          "a",
+          "b",
+          "c"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "SignedBalance",
+        "SignedDecode",
+        "ZPairRep"
+      ],
+      "transitive_dependents": [
+        "GDivRem",
+        "GEuclideanDivision"
+      ]
+    },
+    {
+      "arity": 2,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "GaussianSignedNorm",
+        "ZPairRep"
+      ],
+      "dependents": [
+        "GEuclideanDivision"
+      ],
+      "expansion": "∃ ge_norm_rp_lowerlayer. ∃ ge_norm_rn_lowerlayer. ∃ ge_norm_ip_lowerlayer. ∃ ge_norm_in_lowerlayer. ZPairRep(z,ge_norm_rp_lowerlayer,ge_norm_rn_lowerlayer,ge_norm_ip_lowerlayer,ge_norm_in_lowerlayer) ∧ GaussianSignedNorm(ge_norm_rp_lowerlayer,ge_norm_rn_lowerlayer,ge_norm_ip_lowerlayer,ge_norm_in_lowerlayer,n)",
+      "expansion_sha256": "7c403aae576f21663f524b3d3ba7a31902b7fc25c4c3f345aa5c8527c282ba28",
+      "meaning": "The actual norm a²+b² of the shared canonical pair code representing the Gaussian integer a+bi.",
+      "milestone_users": [
+        "G083"
+      ],
+      "name": "GNorm",
+      "parameters": [
+        "z",
+        "n"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "GNorm",
+        "blueprint_parameters": [
+          "z",
+          "n"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1
+        ],
+        "reviewed_expansion_sha256": "d7afb2e66a7a3ce20fbf300f74238ca242bc498d7d9cd28e6746702ffb972445",
+        "reviewed_id": "ND0164",
+        "reviewed_name": "GNorm",
+        "reviewed_parameters": [
+          "z",
+          "n"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "GaussianSignedNorm",
+        "SignedBalance",
+        "SignedDecode",
+        "SignedDifferenceSquare",
+        "ZPairRep"
+      ],
+      "transitive_dependents": [
+        "GEuclideanDivision"
+      ]
+    },
+    {
       "arity": 5,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -21127,6 +24098,65 @@
         "Lt"
       ],
       "transitive_dependents": []
+    },
+    {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "BetaAt",
+        "Lt",
+        "NextPrime"
+      ],
+      "dependents": [
+        "InitialPrimeList"
+      ],
+      "expansion": "BetaAt(b,c,0,2) ∧ (∀ x. Lt(x,k) → ∃ y. ∃ z. BetaAt(b,c,x,y) ∧ (BetaAt(b,c,S x,z) ∧ NextPrime(y,z)))",
+      "expansion_sha256": "1d75e7b42a3127e36dd110212e5c9d127a38af70cc51c60957421cbb1fb2b5f9",
+      "meaning": "A beta code starting at two and containing k actual least-prime transitions, hence k+1 consecutive primes.",
+      "milestone_users": [],
+      "name": "InitialPrimeChain",
+      "parameters": [
+        "b",
+        "c",
+        "k"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "InitialPrimeChain",
+        "blueprint_parameters": [
+          "b",
+          "c",
+          "k"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "6f077247129ae6b335d635853bff4be00ef03184a278e1d23ce4c4bf209a855f",
+        "reviewed_id": "ND0153",
+        "reviewed_name": "InitialPrimeChain",
+        "reviewed_parameters": [
+          "b",
+          "c",
+          "k"
+        ],
+        "route": "prime-enumeration"
+      },
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "BetaAt",
+        "Dvd",
+        "Le",
+        "Lt",
+        "NextPrime",
+        "Prime"
+      ],
+      "transitive_dependents": [
+        "InitialPrimeList"
+      ]
     },
     {
       "arity": 5,
@@ -21565,6 +24595,144 @@
         "FactorialValuation",
         "PowerValuationOne"
       ]
+    },
+    {
+      "arity": 4,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "AllPrime",
+        "Product"
+      ],
+      "dependents": [],
+      "expansion": "¬n = 0 ∧ (Product(b,c,l,n) ∧ AllPrime(b,c,l))",
+      "expansion_sha256": "ba6be4ce00f47dbd8d38865b6681c15de36c5d59975eefe362f1e809e76c1288",
+      "meaning": "A positive number n, an actual length-l beta product equal to n, and prime entries. No sortedness or supplied canonicalization is required.",
+      "milestone_users": [
+        "G004",
+        "G005"
+      ],
+      "name": "PrimeFactorList",
+      "parameters": [
+        "n",
+        "b",
+        "c",
+        "l"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "PrimeFactorList",
+        "blueprint_parameters": [
+          "n",
+          "b",
+          "c",
+          "l"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "reviewed_expansion_sha256": "724a46d2cbfdc1382eeea6157df27626ab8d7cd5fe30d4cc09103290603276c5",
+        "reviewed_id": "ND0149",
+        "reviewed_name": "PrimeFactorList",
+        "reviewed_parameters": [
+          "n",
+          "b",
+          "c",
+          "l"
+        ],
+        "route": "arithmetic-foundations"
+      },
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "AllPrime",
+        "BetaAt",
+        "Dvd",
+        "Lt",
+        "Prime",
+        "Product"
+      ],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 8,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "FactorListMatching",
+        "PermutationPrefix"
+      ],
+      "dependents": [],
+      "expansion": "l = m ∧ (PermutationPrefix(u,v,l) ∧ FactorListMatching(b,c,d,e,u,v,l))",
+      "expansion_sha256": "f952d6457e758a564e7389fee8ba98b10b5b3bf3906a76bac348bebc7258c7e2",
+      "meaning": "Equal list lengths and an actual bounded, injective, surjective beta index map matching all source and target prime occurrences, including repetitions.",
+      "milestone_users": [
+        "G005"
+      ],
+      "name": "PrimeFactorListPermutation",
+      "parameters": [
+        "b",
+        "c",
+        "l",
+        "d",
+        "e",
+        "m",
+        "u",
+        "v"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "PrimeFactorListPermutation",
+        "blueprint_parameters": [
+          "b",
+          "c",
+          "l",
+          "d",
+          "e",
+          "m",
+          "u",
+          "v"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "reviewed_expansion_sha256": "b95c09a9f16389b001fdebc556023428b7ac1a27fcb8a8e069100b95cb4edba0",
+        "reviewed_id": "ND0151",
+        "reviewed_name": "PrimeFactorListPermutation",
+        "reviewed_parameters": [
+          "b",
+          "c",
+          "l",
+          "d",
+          "e",
+          "m",
+          "u",
+          "v"
+        ],
+        "route": "arithmetic-foundations"
+      },
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "BetaAt",
+        "BoundedPrefix",
+        "FactorListMatching",
+        "InjectivePrefix",
+        "Lt",
+        "PermutationPrefix",
+        "SurjectivePrefix"
+      ],
+      "transitive_dependents": []
     },
     {
       "arity": 3,
@@ -22062,6 +25230,64 @@
       "transitive_dependents": []
     },
     {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "ZPairRep"
+      ],
+      "dependents": [
+        "EDivRem",
+        "GDivRem"
+      ],
+      "expansion": "∃ ge_first_rp_lowerlayer. ∃ ge_first_rn_lowerlayer. ∃ ge_first_ip_lowerlayer. ∃ ge_first_in_lowerlayer. ∃ ge_second_rp_lowerlayer. ∃ ge_second_rn_lowerlayer. ∃ ge_second_ip_lowerlayer. ∃ ge_second_in_lowerlayer. ZPairRep(a,ge_first_rp_lowerlayer,ge_first_rn_lowerlayer,ge_first_ip_lowerlayer,ge_first_in_lowerlayer) ∧ (ZPairRep(b,ge_second_rp_lowerlayer,ge_second_rn_lowerlayer,ge_second_ip_lowerlayer,ge_second_in_lowerlayer) ∧ ZPairRep(c,ge_first_rp_lowerlayer + ge_second_rp_lowerlayer,ge_first_rn_lowerlayer + ge_second_rn_lowerlayer,ge_first_ip_lowerlayer + ge_second_ip_lowerlayer,ge_first_in_lowerlayer + ge_second_in_lowerlayer))",
+      "expansion_sha256": "2ae70499019acf5120f606d83933a1bdddb99ef9da5d07ccd544dba892247358",
+      "meaning": "Actual coordinatewise integer addition in the shared signed-pair carrier. Both quadratic integer rings use this identical additive relation.",
+      "milestone_users": [],
+      "name": "ZPairAdd",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "ZPairAdd",
+        "blueprint_parameters": [
+          "a",
+          "b",
+          "c"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "9a6577e14b1ce809587d9fac52285e9dd6d98170e3b435116ed48f5a140e3ea8",
+        "reviewed_id": "ND0165",
+        "reviewed_name": "ZPairAdd",
+        "reviewed_parameters": [
+          "a",
+          "b",
+          "c"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "SignedBalance",
+        "SignedDecode",
+        "ZPairRep"
+      ],
+      "transitive_dependents": [
+        "EDivRem",
+        "EEuclideanDivision",
+        "GDivRem",
+        "GEuclideanDivision"
+      ]
+    },
+    {
       "arity": 6,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -22208,6 +25434,67 @@
       "transitive_dependents": []
     },
     {
+      "arity": 4,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "EMul",
+        "ZPairAdd"
+      ],
+      "dependents": [
+        "EEuclideanDivision"
+      ],
+      "expansion": "∃ ee_division_product_lowerlayer. EMul(b,q,ee_division_product_lowerlayer) ∧ ZPairAdd(ee_division_product_lowerlayer,r,a)",
+      "expansion_sha256": "7098048dddecde0b050b704368d80bdf7d629e6c2f310dc6785f28d1791560f4",
+      "meaning": "The genuine canonical Eisenstein equation a=bq+r, witnessed by the Eisenstein multiplication graph and the very same shared pair addition as for Gaussian integers.",
+      "milestone_users": [],
+      "name": "EDivRem",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "EDivRem",
+        "blueprint_parameters": [
+          "a",
+          "b",
+          "q",
+          "r"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "reviewed_expansion_sha256": "24663427580086c3aff819f901f04fd9f41cefc0fba8be0cebe901573c15c9b2",
+        "reviewed_id": "ND0173",
+        "reviewed_name": "EDivRem",
+        "reviewed_parameters": [
+          "a",
+          "b",
+          "q",
+          "r"
+        ],
+        "route": "eisenstein-integers"
+      },
+      "topological_layer": 4,
+      "transitive_dependencies": [
+        "EMul",
+        "SignedBalance",
+        "SignedDecode",
+        "ZPairAdd",
+        "ZPairRep"
+      ],
+      "transitive_dependents": [
+        "EEuclideanDivision"
+      ]
+    },
+    {
       "arity": 3,
       "authority": "blueprint-vocabulary-only",
       "dependencies": [
@@ -22259,6 +25546,123 @@
         "PowerValuation",
         "Prime",
         "Val"
+      ],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 4,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "GMul",
+        "ZPairAdd"
+      ],
+      "dependents": [
+        "GEuclideanDivision"
+      ],
+      "expansion": "∃ ge_division_product_lowerlayer. GMul(b,q,ge_division_product_lowerlayer) ∧ ZPairAdd(ge_division_product_lowerlayer,r,a)",
+      "expansion_sha256": "83a07dcd263b73b345fae3cbf1cbad2c5142f581681ca1d1832d3cd06222aa75",
+      "meaning": "The exact canonical-code equation a=bq+r, using an actual Gaussian product code and the shared addition graph. No norm bound is included here.",
+      "milestone_users": [],
+      "name": "GDivRem",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "GDivRem",
+        "blueprint_parameters": [
+          "a",
+          "b",
+          "q",
+          "r"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "reviewed_expansion_sha256": "d94a9d142cf509cf056bf0e2714e609dfced1585af59e5f3e3c46cee76c35bb1",
+        "reviewed_id": "ND0167",
+        "reviewed_name": "GDivRem",
+        "reviewed_parameters": [
+          "a",
+          "b",
+          "q",
+          "r"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 4,
+      "transitive_dependencies": [
+        "GMul",
+        "SignedBalance",
+        "SignedDecode",
+        "ZPairAdd",
+        "ZPairRep"
+      ],
+      "transitive_dependents": [
+        "GEuclideanDivision"
+      ]
+    },
+    {
+      "arity": 3,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "InitialPrimeChain"
+      ],
+      "dependents": [],
+      "expansion": "k = 0 ∨ (∃ x. k = S x ∧ InitialPrimeChain(b,c,x))",
+      "expansion_sha256": "e2a521f94832ed02150f298bcfb3797b156c60e1224046c102d3d49ecf07c5b1",
+      "meaning": "Exactly the first k primes in increasing order, omitting no smaller prime; k=0 is the genuine empty list.",
+      "milestone_users": [
+        "G022"
+      ],
+      "name": "InitialPrimeList",
+      "parameters": [
+        "b",
+        "c",
+        "k"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "InitialPrimeList",
+        "blueprint_parameters": [
+          "b",
+          "c",
+          "k"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2
+        ],
+        "reviewed_expansion_sha256": "e6c71e52f5ac4986d9b4c48459b82cb086c3f4d60f268a8aef7c7d0256ed1df9",
+        "reviewed_id": "ND0154",
+        "reviewed_name": "InitialPrimeList",
+        "reviewed_parameters": [
+          "b",
+          "c",
+          "k"
+        ],
+        "route": "prime-enumeration"
+      },
+      "topological_layer": 4,
+      "transitive_dependencies": [
+        "BetaAt",
+        "Dvd",
+        "InitialPrimeChain",
+        "Le",
+        "Lt",
+        "NextPrime",
+        "Prime"
       ],
       "transitive_dependents": []
     },
@@ -23169,6 +26573,154 @@
         "MultinomialCarryPrefix",
         "Pow",
         "PowerQuotPrefix"
+      ],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 6,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "EDivRem",
+        "ENorm",
+        "Lt"
+      ],
+      "dependents": [],
+      "expansion": "EDivRem(a,b,q,r) ∧ (ENorm(r,U) ∧ (ENorm(b,V) ∧ Lt(U,V)))",
+      "expansion_sha256": "2be351a6a8cdd547f908f9d8ed8829a2b0a7ac5e50d09a59b5908cc3aa90b55b",
+      "meaning": "Actual Eisenstein quotient and remainder codes satisfy a=bq+r and have genuine norms U=N(r), V=N(b) with strict decrease U<V. The norm and operation witnesses imply valid pair codes.",
+      "milestone_users": [
+        "G084"
+      ],
+      "name": "EEuclideanDivision",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r",
+        "U",
+        "V"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "EEuclideanDivision",
+        "blueprint_parameters": [
+          "a",
+          "b",
+          "q",
+          "r",
+          "U",
+          "V"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "reviewed_expansion_sha256": "1dead94762e2e02fb7554dd52000f5f754a352f58b5366fbf07423ac4e5c160a",
+        "reviewed_id": "ND0174",
+        "reviewed_name": "EEuclideanDivision",
+        "reviewed_parameters": [
+          "a",
+          "b",
+          "q",
+          "r",
+          "U",
+          "V"
+        ],
+        "route": "eisenstein-integers"
+      },
+      "topological_layer": 5,
+      "transitive_dependencies": [
+        "EDivRem",
+        "EMul",
+        "ENorm",
+        "EisensteinCoordinateNorm",
+        "Lt",
+        "SignedBalance",
+        "SignedDecode",
+        "ZPairAdd",
+        "ZPairRep"
+      ],
+      "transitive_dependents": []
+    },
+    {
+      "arity": 6,
+      "authority": "blueprint-vocabulary-only",
+      "dependencies": [
+        "GDivRem",
+        "GNorm",
+        "Lt",
+        "ZPairValid"
+      ],
+      "dependents": [],
+      "expansion": "ZPairValid(q) ∧ (ZPairValid(r) ∧ (GDivRem(a,b,q,r) ∧ (GNorm(r,U) ∧ (GNorm(b,V) ∧ Lt(U,V)))))",
+      "expansion_sha256": "2205763e2ddfa9e785934eb3cfbc4020aed5ce0712fc7ecf87e66e7e253fcfd5",
+      "meaning": "Valid quotient and remainder codes satisfy the genuine Gaussian equation a=bq+r and have actual norms U=N(r), V=N(b) with U<V.",
+      "milestone_users": [
+        "G081"
+      ],
+      "name": "GEuclideanDivision",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r",
+        "U",
+        "V"
+      ],
+      "reviewed_incompatibility": null,
+      "reviewed_match": {
+        "blueprint_expansion_is_kernel_checked": false,
+        "blueprint_name": "GEuclideanDivision",
+        "blueprint_parameters": [
+          "a",
+          "b",
+          "q",
+          "r",
+          "U",
+          "V"
+        ],
+        "kind": "exact-name",
+        "reviewed_argument_blueprint_positions": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "reviewed_expansion_sha256": "12dce37f08a88924b65a45227ea6b70b62dbac8a244dafe6d894b2138946f23a",
+        "reviewed_id": "ND0168",
+        "reviewed_name": "GEuclideanDivision",
+        "reviewed_parameters": [
+          "a",
+          "b",
+          "q",
+          "r",
+          "U",
+          "V"
+        ],
+        "route": "gaussian-integers"
+      },
+      "topological_layer": 5,
+      "transitive_dependencies": [
+        "GDivRem",
+        "GMul",
+        "GNorm",
+        "GaussianSignedNorm",
+        "Lt",
+        "SignedBalance",
+        "SignedDecode",
+        "SignedDifferenceSquare",
+        "ZPairAdd",
+        "ZPairDecode",
+        "ZPairRep",
+        "ZPairValid"
       ],
       "transitive_dependents": []
     },
@@ -24695,7 +28247,7 @@
       "transitive_dependents": []
     }
   ],
-  "exact_name_reviewed_match_count": 196,
+  "exact_name_reviewed_match_count": 231,
   "explicit_alias_reviewed_match_count": 5,
   "incompatible_reviewed_match_count": 2,
   "incompatible_reviewed_matches": [
@@ -24770,8 +28322,9 @@
         "Dvd",
         "ECAdd",
         "ECPoint",
-        "ENorm",
         "Eisenstein",
+        "EisensteinCoordinateNorm",
+        "EisensteinCoordinateProduct",
         "EllipticCertificate",
         "Even",
         "Execution",
@@ -24779,7 +28332,6 @@
         "FermatFourCounterexample",
         "FifteenTest",
         "FiniteSet",
-        "GNorm",
         "Gaussian",
         "HilbertBit",
         "IntMatrix",
@@ -24828,8 +28380,10 @@
         "SelmerWitness",
         "Seq",
         "SetSum",
+        "SignedDecode",
         "SignedDet2",
         "SignedDeterminantNodeCode",
+        "SignedDifferenceSquare",
         "SquarefreeDecomposition",
         "Sum",
         "SymmetricPolytope",
@@ -24870,13 +28424,16 @@
         "CornacchiaStateAt",
         "DivisionPrefix",
         "DotProduct",
+        "EisensteinSignedDivisionRemainder",
         "EuclidThreeNumber",
         "EuclideanCommonDivisor",
         "EuclideanDivision",
         "EuclideanHalving",
         "EuclideanStateAt",
+        "FactorListMatching",
         "FiniteMatrixSelector",
         "FloorSqrt",
+        "GaussianSignedNorm",
         "Gcd",
         "HenselCorrection",
         "HilbertProduct",
@@ -24908,11 +28465,18 @@
         "QRes",
         "Range",
         "Repeat",
+        "RoundedSignedDivision",
+        "SignedAdd",
         "SignedAlternatingCofactorTerm",
+        "SignedBalance",
+        "SignedBezout",
         "SignedDerivativeNonzero",
         "SignedDerivativeUnit",
         "SignedDeterminantNodeAt",
+        "SignedFloor",
         "SignedMatrixPrefixEquality",
+        "SignedMul",
+        "SignedNegate",
         "SignedSelectedSubmatrix",
         "SmallerFermatFourCounterexample",
         "Sorted",
@@ -24922,7 +28486,9 @@
         "UniformBetaPrefixBox",
         "Unit",
         "UnitResidue",
-        "WeakMW"
+        "WeakMW",
+        "WeightedSignedNormThree",
+        "ZPairDecode"
       ],
       "number": 1
     },
@@ -24957,6 +28523,7 @@
         "FermatFourStrictDescent",
         "FiniteField",
         "GaussBit",
+        "GaussianSignedDivisionRemainder",
         "HornerDerivative",
         "HornerRootModulo",
         "IntegerMatrixEntrywiseEqual",
@@ -24969,6 +28536,8 @@
         "ModularSetSum",
         "ModularTranslationBoundary",
         "MultinomialBinomialPrefix",
+        "NextPrime",
+        "PermutationPrefix",
         "PrimeBitPrefix",
         "PrimeThreeModFourDivisor",
         "PrimitiveRootModulus",
@@ -24977,12 +28546,15 @@
         "ScaledFixedPoint",
         "ScaledInverse",
         "SignedAlternatingProductPrefix",
+        "SignedCodeFloor",
         "SignedDotProduct",
         "SignedHornerRoot",
         "SimpleLift",
         "TeichLift",
         "Val",
-        "WeierstrassCertificate"
+        "WeierstrassCertificate",
+        "ZPairRep",
+        "ZPairValid"
       ],
       "number": 2
     },
@@ -25000,11 +28572,16 @@
         "CanonicalSignedHornerLift",
         "CornacchiaEuclideanRun",
         "CornacchiaStateInvariant",
+        "EMul",
+        "ENorm",
         "EuclidParameters",
         "EuclidParametrization",
         "EuclideanLogarithmicExecution",
+        "GMul",
+        "GNorm",
         "HornerDerivativeOnly",
         "HornerTaylorRemainder",
+        "InitialPrimeChain",
         "InversePrefix",
         "JacobiBit",
         "MatrixMinorPrefix",
@@ -25012,13 +28589,16 @@
         "Multinomial",
         "Phi",
         "PowerValuation",
+        "PrimeFactorList",
+        "PrimeFactorListPermutation",
         "PrimePowerValuation",
         "PrimitiveFermatFourCounterexample",
         "PrimitivePythagorean",
         "ScaledInverseIndex",
         "SignedAlternatingCofactorFold",
         "SignedHornerValueDerivative",
-        "SimpleHornerRoot"
+        "SimpleHornerRoot",
+        "ZPairAdd"
       ],
       "number": 3
     },
@@ -25026,7 +28606,10 @@
       "definitions": [
         "BinaryModularExecution",
         "CornacchiaTrace",
+        "EDivRem",
         "FactorialValuation",
+        "GDivRem",
+        "InitialPrimeList",
         "MultinomialCarryPrefix",
         "PowerValuationOne",
         "PrimitiveRoot",
@@ -25044,6 +28627,8 @@
       "definitions": [
         "BinaryCompleteModularExecution",
         "CarryCountMany",
+        "EEuclideanDivision",
+        "GEuclideanDivision",
         "IntegerMatrixVectorProduct",
         "SignedDeterminantChildPrefix",
         "SignedMinorRecord"
@@ -25099,7 +28684,7 @@
       "number": 12
     }
   ],
-  "milestone_usage_edge_count": 526,
+  "milestone_usage_edge_count": 548,
   "milestone_usage_edges": [
     {
       "kind": "statement_uses_definition",
@@ -25542,9 +29127,29 @@
       "target": "DivRem"
     },
     {
+      "kind": "declared_notation",
+      "source": "G001",
+      "target": "DivRem"
+    },
+    {
       "kind": "statement_uses_definition",
       "source": "G002",
-      "target": "Gcd"
+      "target": "IsGCD"
+    },
+    {
+      "kind": "statement_uses_definition",
+      "source": "G002",
+      "target": "SignedBezout"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G002",
+      "target": "SignedBezout"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G002",
+      "target": "IsGCD"
     },
     {
       "kind": "statement_uses_definition",
@@ -25557,19 +29162,44 @@
       "target": "Dvd"
     },
     {
+      "kind": "declared_notation",
+      "source": "G003",
+      "target": "Dvd"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G003",
+      "target": "Coprime"
+    },
+    {
       "kind": "statement_uses_definition",
       "source": "G004",
-      "target": "Factorization"
+      "target": "PrimeFactorList"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G004",
+      "target": "PrimeFactorList"
     },
     {
       "kind": "statement_uses_definition",
       "source": "G005",
-      "target": "Factorization"
+      "target": "PrimeFactorList"
     },
     {
       "kind": "statement_uses_definition",
       "source": "G005",
-      "target": "Permutation"
+      "target": "PrimeFactorListPermutation"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G005",
+      "target": "PrimeFactorList"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G005",
+      "target": "PrimeFactorListPermutation"
     },
     {
       "kind": "statement_uses_definition",
@@ -25834,17 +29464,62 @@
     {
       "kind": "statement_uses_definition",
       "source": "G021",
+      "target": "Lt"
+    },
+    {
+      "kind": "statement_uses_definition",
+      "source": "G021",
       "target": "Prime"
     },
     {
-      "kind": "statement_uses_definition",
-      "source": "G022",
-      "target": "At"
+      "kind": "declared_notation",
+      "source": "G021",
+      "target": "Prime"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G021",
+      "target": "Lt"
     },
     {
       "kind": "statement_uses_definition",
       "source": "G022",
-      "target": "PrimeList"
+      "target": "BetaAt"
+    },
+    {
+      "kind": "statement_uses_definition",
+      "source": "G022",
+      "target": "InitialPrimeList"
+    },
+    {
+      "kind": "statement_uses_definition",
+      "source": "G022",
+      "target": "Lt"
+    },
+    {
+      "kind": "statement_uses_definition",
+      "source": "G022",
+      "target": "PowTwo"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G022",
+      "target": "Lt"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G022",
+      "target": "BetaAt"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G022",
+      "target": "InitialPrimeList"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G022",
+      "target": "PowTwo"
     },
     {
       "kind": "statement_uses_definition",
@@ -26909,12 +30584,22 @@
     {
       "kind": "statement_uses_definition",
       "source": "G081",
-      "target": "GNorm"
+      "target": "GEuclideanDivision"
     },
     {
       "kind": "statement_uses_definition",
       "source": "G081",
-      "target": "Gaussian"
+      "target": "ZPairValid"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G081",
+      "target": "ZPairValid"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G081",
+      "target": "GEuclideanDivision"
     },
     {
       "kind": "statement_uses_definition",
@@ -26954,12 +30639,22 @@
     {
       "kind": "statement_uses_definition",
       "source": "G084",
-      "target": "ENorm"
+      "target": "EEuclideanDivision"
     },
     {
       "kind": "statement_uses_definition",
       "source": "G084",
-      "target": "Eisenstein"
+      "target": "ZPairValid"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G084",
+      "target": "EEuclideanDivision"
+    },
+    {
+      "kind": "declared_notation",
+      "source": "G084",
+      "target": "ZPairValid"
     },
     {
       "kind": "statement_uses_definition",
@@ -27732,8 +31427,8 @@
       "target": "WeakMW"
     }
   ],
-  "reviewed_definition_count": 198,
-  "reviewed_definition_edge_count": 388,
+  "reviewed_definition_count": 233,
+  "reviewed_definition_edge_count": 441,
   "reviewed_definitions": [
     {
       "arity": 4,
@@ -27790,6 +31485,45 @@
         "n"
       ],
       "route": "quadratic-reciprocity",
+      "topological_layer": 0
+    },
+    {
+      "arity": 5,
+      "dependencies": [],
+      "expansion_sha256": "0a88193521136fb5e343ba5e8657934f2e7264d8ce92e2943d075a479cccb7ed",
+      "id": "ND0169",
+      "name": "EisensteinCoordinateNorm",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "n"
+      ],
+      "route": "eisenstein-integers",
+      "topological_layer": 0
+    },
+    {
+      "arity": 12,
+      "dependencies": [],
+      "expansion_sha256": "56f2519e4bc7386d6f1f7bd73146aa14773f1927faf425703e456255830031c6",
+      "id": "ND0170",
+      "name": "EisensteinCoordinateProduct",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "rp",
+        "rn",
+        "sp",
+        "sn"
+      ],
+      "route": "eisenstein-integers",
       "topological_layer": 0
     },
     {
@@ -27951,6 +31685,20 @@
       "topological_layer": 0
     },
     {
+      "arity": 3,
+      "dependencies": [],
+      "expansion_sha256": "1674b231e352aa00e88ed892ac5dcbe49dc4de442fe440ffb30bcc4cb4ac3ae6",
+      "id": "ND0142",
+      "name": "SignedDecode",
+      "parameters": [
+        "z",
+        "p",
+        "n"
+      ],
+      "route": "arithmetic-foundations",
+      "topological_layer": 0
+    },
+    {
       "arity": 6,
       "dependencies": [],
       "expansion_sha256": "3ac99120c5c42d6d54c7109dae21f9f5ff27f2a82854100ddf07ad7e6c5201dd",
@@ -27984,6 +31732,20 @@
         "n"
       ],
       "route": "integer-linear-algebra",
+      "topological_layer": 0
+    },
+    {
+      "arity": 3,
+      "dependencies": [],
+      "expansion_sha256": "747d061c8dc5bc4b70dc2664441a3a0983b4b5d0e8d16440d0a3e37cf85fa933",
+      "id": "ND0157",
+      "name": "SignedDifferenceSquare",
+      "parameters": [
+        "p",
+        "n",
+        "s"
+      ],
+      "route": "gaussian-integers",
       "topological_layer": 0
     },
     {
@@ -28465,6 +32227,38 @@
       "topological_layer": 1
     },
     {
+      "arity": 18,
+      "dependencies": [
+        "EisensteinCoordinateNorm",
+        "Lt"
+      ],
+      "expansion_sha256": "fe243720d84d80e392fec6f0d08d8f545d60b4e4c93f7dd9b829f0bb5f7c7faf",
+      "id": "ND0176",
+      "name": "EisensteinSignedDivisionRemainder",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "qp",
+        "qn",
+        "up",
+        "un",
+        "rp",
+        "rn",
+        "sp",
+        "sn",
+        "U",
+        "V"
+      ],
+      "route": "eisenstein-integers",
+      "topological_layer": 1
+    },
+    {
       "arity": 2,
       "dependencies": [
         "Mod4Three"
@@ -28547,6 +32341,27 @@
       "topological_layer": 1
     },
     {
+      "arity": 7,
+      "dependencies": [
+        "Lt",
+        "BetaAt"
+      ],
+      "expansion_sha256": "57e3ed09ff60013ddb1dabbbbfb873a853db2800f0ad4b1ed2aa42701dfb03bb",
+      "id": "ND0150",
+      "name": "FactorListMatching",
+      "parameters": [
+        "b",
+        "c",
+        "d",
+        "e",
+        "u",
+        "v",
+        "l"
+      ],
+      "route": "arithmetic-foundations",
+      "topological_layer": 1
+    },
+    {
       "arity": 0,
       "dependencies": [
         "FermatFourCounterexample",
@@ -28591,6 +32406,24 @@
         "s"
       ],
       "route": "bertrand-postulate",
+      "topological_layer": 1
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "SignedDifferenceSquare"
+      ],
+      "expansion_sha256": "150d4e1bd0957f9123c6e3191543e0ee738f3c0029f46e48cd9bd54aad5dff89",
+      "id": "ND0158",
+      "name": "GaussianSignedNorm",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "N"
+      ],
+      "route": "gaussian-integers",
       "topological_layer": 1
     },
     {
@@ -28974,6 +32807,23 @@
     {
       "arity": 2,
       "dependencies": [
+        "Prime",
+        "Lt",
+        "Le"
+      ],
+      "expansion_sha256": "964367d85994baf9339758cc05f0d2e10ee3acee39aba4c569aeebfe0c510b50",
+      "id": "ND0152",
+      "name": "NextPrime",
+      "parameters": [
+        "a",
+        "p"
+      ],
+      "route": "prime-enumeration",
+      "topological_layer": 1
+    },
+    {
+      "arity": 2,
+      "dependencies": [
         "Even",
         "Odd"
       ],
@@ -29092,6 +32942,44 @@
       "topological_layer": 1
     },
     {
+      "arity": 8,
+      "dependencies": [
+        "SignedDifferenceSquare",
+        "Le"
+      ],
+      "expansion_sha256": "516742567d5780545dd807f65413e6600b6dde562b4e827b79574cbfac8ab0f2",
+      "id": "ND0162",
+      "name": "RoundedSignedDivision",
+      "parameters": [
+        "p",
+        "n",
+        "N",
+        "qp",
+        "qn",
+        "ep",
+        "en",
+        "t"
+      ],
+      "route": "gaussian-integers",
+      "topological_layer": 1
+    },
+    {
+      "arity": 3,
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "expansion_sha256": "96bbbcabe876881ee3272ccc86aa55fe9bd8dfc90ffb4043cb0fc9a2dbf59fad",
+      "id": "ND0144",
+      "name": "SignedAdd",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "route": "arithmetic-foundations",
+      "topological_layer": 1
+    },
+    {
       "arity": 7,
       "dependencies": [
         "Even",
@@ -29110,6 +32998,40 @@
         "n"
       ],
       "route": "matrix-cofactor-expansion",
+      "topological_layer": 1
+    },
+    {
+      "arity": 3,
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "expansion_sha256": "f6ebf61b71a55e09c12c51c7653ba92cb1e70afc3bc7918b0af6f71657961327",
+      "id": "ND0143",
+      "name": "SignedBalance",
+      "parameters": [
+        "z",
+        "p",
+        "n"
+      ],
+      "route": "arithmetic-foundations",
+      "topological_layer": 1
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "expansion_sha256": "27327519d0bc44212cbd93376c820fd937701b5995b769c5072ec2a26a23b1c7",
+      "id": "ND0147",
+      "name": "SignedBezout",
+      "parameters": [
+        "g",
+        "a",
+        "b",
+        "u",
+        "v"
+      ],
+      "route": "arithmetic-foundations",
       "topological_layer": 1
     },
     {
@@ -29170,6 +33092,25 @@
       "topological_layer": 1
     },
     {
+      "arity": 6,
+      "dependencies": [
+        "Lt"
+      ],
+      "expansion_sha256": "8a0b0be19abe00a43f167e316e962473a8a139d2e103bdf0baf1f198c3e4e9a6",
+      "id": "ND0155",
+      "name": "SignedFloor",
+      "parameters": [
+        "p",
+        "n",
+        "m",
+        "q",
+        "t",
+        "r"
+      ],
+      "route": "gaussian-integers",
+      "topological_layer": 1
+    },
+    {
       "arity": 9,
       "dependencies": [
         "BetaAt",
@@ -29190,6 +33131,37 @@
         "d"
       ],
       "route": "integer-linear-algebra",
+      "topological_layer": 1
+    },
+    {
+      "arity": 3,
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "expansion_sha256": "ea9c672cbfa97d76f980f41420a4cf7b0b6fc186e6b331fc68b38616369caec6",
+      "id": "ND0145",
+      "name": "SignedMul",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "route": "arithmetic-foundations",
+      "topological_layer": 1
+    },
+    {
+      "arity": 2,
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "expansion_sha256": "5bf5d7f027aa55b036979be920fe6e2d0fc4779d01742abc3773cf08dfed9874",
+      "id": "ND0146",
+      "name": "SignedNegate",
+      "parameters": [
+        "a",
+        "b"
+      ],
+      "route": "arithmetic-foundations",
       "topological_layer": 1
     },
     {
@@ -29338,6 +33310,42 @@
         "a"
       ],
       "route": "quadratic-reciprocity",
+      "topological_layer": 1
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "SignedDifferenceSquare"
+      ],
+      "expansion_sha256": "9292b03df98beb47510d881cc08f4500a2e40769c7fa69d8670d20ce32304efe",
+      "id": "ND0175",
+      "name": "WeightedSignedNormThree",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "n"
+      ],
+      "route": "eisenstein-integers",
+      "topological_layer": 1
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "SignedDecode"
+      ],
+      "expansion_sha256": "5f39a4d396eba3cd332d0485bf7e62a7e4db10b2d6c0498d318e4ec957a02867",
+      "id": "ND0159",
+      "name": "ZPairDecode",
+      "parameters": [
+        "z",
+        "ap",
+        "an",
+        "bp",
+        "bn"
+      ],
+      "route": "gaussian-integers",
       "topological_layer": 1
     },
     {
@@ -29781,6 +33789,38 @@
       "topological_layer": 2
     },
     {
+      "arity": 18,
+      "dependencies": [
+        "GaussianSignedNorm",
+        "Lt"
+      ],
+      "expansion_sha256": "8e23f52099e27793a673697f357450f4b7465acad6989d554be88cc144d5ebfe",
+      "id": "ND0163",
+      "name": "GaussianSignedDivisionRemainder",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "qp",
+        "qn",
+        "up",
+        "un",
+        "rp",
+        "rn",
+        "sp",
+        "sn",
+        "U",
+        "V"
+      ],
+      "route": "gaussian-integers",
+      "topological_layer": 2
+    },
+    {
       "arity": 8,
       "dependencies": [
         "Beta",
@@ -29819,6 +33859,24 @@
         "m"
       ],
       "route": "hensel-lifting",
+      "topological_layer": 2
+    },
+    {
+      "arity": 3,
+      "dependencies": [
+        "BetaAt",
+        "Lt",
+        "NextPrime"
+      ],
+      "expansion_sha256": "6f077247129ae6b335d635853bff4be00ef03184a278e1d23ce4c4bf209a855f",
+      "id": "ND0153",
+      "name": "InitialPrimeChain",
+      "parameters": [
+        "b",
+        "c",
+        "k"
+      ],
+      "route": "prime-enumeration",
       "topological_layer": 2
     },
     {
@@ -30002,6 +34060,24 @@
     {
       "arity": 3,
       "dependencies": [
+        "BoundedPrefix",
+        "InjectivePrefix",
+        "SurjectivePrefix"
+      ],
+      "expansion_sha256": "4145090a616c423da718870c305d9d2c207fc0111a74c2e543158ef031c699fb",
+      "id": "ND0148",
+      "name": "PermutationPrefix",
+      "parameters": [
+        "b",
+        "c",
+        "l"
+      ],
+      "route": "arithmetic-foundations",
+      "topological_layer": 2
+    },
+    {
+      "arity": 3,
+      "dependencies": [
         "Product",
         "Repeat"
       ],
@@ -30030,6 +34106,24 @@
         "z"
       ],
       "route": "prime-count-chebyshev",
+      "topological_layer": 2
+    },
+    {
+      "arity": 4,
+      "dependencies": [
+        "Product",
+        "AllPrime"
+      ],
+      "expansion_sha256": "724a46d2cbfdc1382eeea6157df27626ab8d7cd5fe30d4cc09103290603276c5",
+      "id": "ND0149",
+      "name": "PrimeFactorList",
+      "parameters": [
+        "n",
+        "b",
+        "c",
+        "l"
+      ],
+      "route": "arithmetic-foundations",
       "topological_layer": 2
     },
     {
@@ -30147,6 +34241,24 @@
       "topological_layer": 2
     },
     {
+      "arity": 4,
+      "dependencies": [
+        "SignedDecode",
+        "SignedFloor"
+      ],
+      "expansion_sha256": "e36a7df877be390d31dd7271fab249a453800cc4ebd829a57389186c5f9b525d",
+      "id": "ND0156",
+      "name": "SignedCodeFloor",
+      "parameters": [
+        "a",
+        "m",
+        "q",
+        "r"
+      ],
+      "route": "gaussian-integers",
+      "topological_layer": 2
+    },
+    {
       "arity": 7,
       "dependencies": [
         "Horner",
@@ -30165,6 +34277,38 @@
         "m"
       ],
       "route": "hensel-lifting",
+      "topological_layer": 2
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "SignedBalance"
+      ],
+      "expansion_sha256": "484f8588e2d9b5e92fda7c8fda43f480f34dcfae16a7ad0137fc32cd8cf8eeb8",
+      "id": "ND0161",
+      "name": "ZPairRep",
+      "parameters": [
+        "z",
+        "ap",
+        "an",
+        "bp",
+        "bn"
+      ],
+      "route": "gaussian-integers",
+      "topological_layer": 2
+    },
+    {
+      "arity": 1,
+      "dependencies": [
+        "ZPairDecode"
+      ],
+      "expansion_sha256": "c8afae24be45ec748565850d52a98c496cec734a90d8bacb5c80eabb293448ab",
+      "id": "ND0160",
+      "name": "ZPairValid",
+      "parameters": [
+        "z"
+      ],
+      "route": "gaussian-integers",
       "topological_layer": 2
     },
     {
@@ -30332,6 +34476,70 @@
       "topological_layer": 3
     },
     {
+      "arity": 3,
+      "dependencies": [
+        "ZPairRep"
+      ],
+      "expansion_sha256": "79481871eafd751574ee648c69015cd15cbb8917513e4d04bda63e8d1585cc00",
+      "id": "ND0172",
+      "name": "EMul",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "route": "eisenstein-integers",
+      "topological_layer": 3
+    },
+    {
+      "arity": 2,
+      "dependencies": [
+        "ZPairRep",
+        "EisensteinCoordinateNorm"
+      ],
+      "expansion_sha256": "5f956fea815b9f8e65f510fd1e395a0cfff3cf4c30ea49b487589dfa796f7220",
+      "id": "ND0171",
+      "name": "ENorm",
+      "parameters": [
+        "z",
+        "n"
+      ],
+      "route": "eisenstein-integers",
+      "topological_layer": 3
+    },
+    {
+      "arity": 3,
+      "dependencies": [
+        "ZPairRep"
+      ],
+      "expansion_sha256": "cd81b5bfb8488611f58067d5f381f5b47f52510dca10d59f78e0751392c38367",
+      "id": "ND0166",
+      "name": "GMul",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "route": "gaussian-integers",
+      "topological_layer": 3
+    },
+    {
+      "arity": 2,
+      "dependencies": [
+        "ZPairRep",
+        "GaussianSignedNorm"
+      ],
+      "expansion_sha256": "d7afb2e66a7a3ce20fbf300f74238ca242bc498d7d9cd28e6746702ffb972445",
+      "id": "ND0164",
+      "name": "GNorm",
+      "parameters": [
+        "z",
+        "n"
+      ],
+      "route": "gaussian-integers",
+      "topological_layer": 3
+    },
+    {
       "arity": 6,
       "dependencies": [
         "HornerDerivativeTrace",
@@ -30349,6 +34557,22 @@
         "z"
       ],
       "route": "polynomial-hensel",
+      "topological_layer": 3
+    },
+    {
+      "arity": 3,
+      "dependencies": [
+        "InitialPrimeChain"
+      ],
+      "expansion_sha256": "e6c71e52f5ac4986d9b4c48459b82cb086c3f4d60f268a8aef7c7d0256ed1df9",
+      "id": "ND0154",
+      "name": "InitialPrimeList",
+      "parameters": [
+        "b",
+        "c",
+        "k"
+      ],
+      "route": "prime-enumeration",
       "topological_layer": 3
     },
     {
@@ -30491,6 +34715,28 @@
       "topological_layer": 3
     },
     {
+      "arity": 8,
+      "dependencies": [
+        "PermutationPrefix",
+        "FactorListMatching"
+      ],
+      "expansion_sha256": "b95c09a9f16389b001fdebc556023428b7ac1a27fcb8a8e069100b95cb4edba0",
+      "id": "ND0151",
+      "name": "PrimeFactorListPermutation",
+      "parameters": [
+        "b",
+        "c",
+        "l",
+        "d",
+        "e",
+        "m",
+        "u",
+        "v"
+      ],
+      "route": "arithmetic-foundations",
+      "topological_layer": 3
+    },
+    {
       "arity": 3,
       "dependencies": [
         "PrimitivePythagorean"
@@ -30572,6 +34818,22 @@
         "n"
       ],
       "route": "matrix-coded-products",
+      "topological_layer": 3
+    },
+    {
+      "arity": 3,
+      "dependencies": [
+        "ZPairRep"
+      ],
+      "expansion_sha256": "9a6577e14b1ce809587d9fac52285e9dd6d98170e3b435116ed48f5a140e3ea8",
+      "id": "ND0165",
+      "name": "ZPairAdd",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "route": "gaussian-integers",
       "topological_layer": 3
     },
     {
@@ -30687,6 +34949,42 @@
         "l"
       ],
       "route": "cornacchia",
+      "topological_layer": 4
+    },
+    {
+      "arity": 4,
+      "dependencies": [
+        "EMul",
+        "ZPairAdd"
+      ],
+      "expansion_sha256": "24663427580086c3aff819f901f04fd9f41cefc0fba8be0cebe901573c15c9b2",
+      "id": "ND0173",
+      "name": "EDivRem",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r"
+      ],
+      "route": "eisenstein-integers",
+      "topological_layer": 4
+    },
+    {
+      "arity": 4,
+      "dependencies": [
+        "GMul",
+        "ZPairAdd"
+      ],
+      "expansion_sha256": "d94a9d142cf509cf056bf0e2714e609dfced1585af59e5f3e3c46cee76c35bb1",
+      "id": "ND0167",
+      "name": "GDivRem",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r"
+      ],
+      "route": "gaussian-integers",
       "topological_layer": 4
     },
     {
@@ -30905,6 +35203,27 @@
       "topological_layer": 5
     },
     {
+      "arity": 6,
+      "dependencies": [
+        "EDivRem",
+        "ENorm",
+        "Lt"
+      ],
+      "expansion_sha256": "1dead94762e2e02fb7554dd52000f5f754a352f58b5366fbf07423ac4e5c160a",
+      "id": "ND0174",
+      "name": "EEuclideanDivision",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r",
+        "U",
+        "V"
+      ],
+      "route": "eisenstein-integers",
+      "topological_layer": 5
+    },
+    {
       "arity": 5,
       "dependencies": [
         "BitLen",
@@ -30922,6 +35241,28 @@
         "k"
       ],
       "route": "euclidean-logarithmic-bound",
+      "topological_layer": 5
+    },
+    {
+      "arity": 6,
+      "dependencies": [
+        "ZPairValid",
+        "GDivRem",
+        "GNorm",
+        "Lt"
+      ],
+      "expansion_sha256": "12dce37f08a88924b65a45227ea6b70b62dbac8a244dafe6d894b2138946f23a",
+      "id": "ND0168",
+      "name": "GEuclideanDivision",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r",
+        "U",
+        "V"
+      ],
+      "route": "gaussian-integers",
       "topological_layer": 5
     },
     {
@@ -31518,7 +35859,7 @@
     }
   ],
   "schema": "constructive-number-theory-definition-dag-v1",
-  "statement_usage_edge_count": 313,
+  "statement_usage_edge_count": 317,
   "topological_layer_count": 13,
   "topological_order": [
     "ArithmeticProgression",
@@ -31546,8 +35887,9 @@
     "Dvd",
     "ECAdd",
     "ECPoint",
-    "ENorm",
     "Eisenstein",
+    "EisensteinCoordinateNorm",
+    "EisensteinCoordinateProduct",
     "EllipticCertificate",
     "Even",
     "Execution",
@@ -31555,7 +35897,6 @@
     "FermatFourCounterexample",
     "FifteenTest",
     "FiniteSet",
-    "GNorm",
     "Gaussian",
     "HilbertBit",
     "IntMatrix",
@@ -31604,8 +35945,10 @@
     "SelmerWitness",
     "Seq",
     "SetSum",
+    "SignedDecode",
     "SignedDet2",
     "SignedDeterminantNodeCode",
+    "SignedDifferenceSquare",
     "SquarefreeDecomposition",
     "Sum",
     "SymmetricPolytope",
@@ -31641,13 +35984,16 @@
     "CornacchiaStateAt",
     "DivisionPrefix",
     "DotProduct",
+    "EisensteinSignedDivisionRemainder",
     "EuclidThreeNumber",
     "EuclideanCommonDivisor",
     "EuclideanDivision",
     "EuclideanHalving",
     "EuclideanStateAt",
+    "FactorListMatching",
     "FiniteMatrixSelector",
     "FloorSqrt",
+    "GaussianSignedNorm",
     "Gcd",
     "HenselCorrection",
     "HilbertProduct",
@@ -31679,11 +36025,18 @@
     "QRes",
     "Range",
     "Repeat",
+    "RoundedSignedDivision",
+    "SignedAdd",
     "SignedAlternatingCofactorTerm",
+    "SignedBalance",
+    "SignedBezout",
     "SignedDerivativeNonzero",
     "SignedDerivativeUnit",
     "SignedDeterminantNodeAt",
+    "SignedFloor",
     "SignedMatrixPrefixEquality",
+    "SignedMul",
+    "SignedNegate",
     "SignedSelectedSubmatrix",
     "SmallerFermatFourCounterexample",
     "Sorted",
@@ -31694,6 +36047,8 @@
     "Unit",
     "UnitResidue",
     "WeakMW",
+    "WeightedSignedNormThree",
+    "ZPairDecode",
     "AllPrime",
     "AllRootLifts",
     "BertrandWindow",
@@ -31723,6 +36078,7 @@
     "FermatFourStrictDescent",
     "FiniteField",
     "GaussBit",
+    "GaussianSignedDivisionRemainder",
     "HornerDerivative",
     "HornerRootModulo",
     "IntegerMatrixEntrywiseEqual",
@@ -31735,6 +36091,8 @@
     "ModularSetSum",
     "ModularTranslationBoundary",
     "MultinomialBinomialPrefix",
+    "NextPrime",
+    "PermutationPrefix",
     "PrimeBitPrefix",
     "PrimeThreeModFourDivisor",
     "PrimitiveRootModulus",
@@ -31743,12 +36101,15 @@
     "ScaledFixedPoint",
     "ScaledInverse",
     "SignedAlternatingProductPrefix",
+    "SignedCodeFloor",
     "SignedDotProduct",
     "SignedHornerRoot",
     "SimpleLift",
     "TeichLift",
     "Val",
     "WeierstrassCertificate",
+    "ZPairRep",
+    "ZPairValid",
     "BertrandChain",
     "BetaValuationPrefix",
     "BinaryCanonicalExponentDigitCode",
@@ -31761,11 +36122,16 @@
     "CanonicalSignedHornerLift",
     "CornacchiaEuclideanRun",
     "CornacchiaStateInvariant",
+    "EMul",
+    "ENorm",
     "EuclidParameters",
     "EuclidParametrization",
     "EuclideanLogarithmicExecution",
+    "GMul",
+    "GNorm",
     "HornerDerivativeOnly",
     "HornerTaylorRemainder",
+    "InitialPrimeChain",
     "InversePrefix",
     "JacobiBit",
     "MatrixMinorPrefix",
@@ -31773,6 +36139,8 @@
     "Multinomial",
     "Phi",
     "PowerValuation",
+    "PrimeFactorList",
+    "PrimeFactorListPermutation",
     "PrimePowerValuation",
     "PrimitiveFermatFourCounterexample",
     "PrimitivePythagorean",
@@ -31780,9 +36148,13 @@
     "SignedAlternatingCofactorFold",
     "SignedHornerValueDerivative",
     "SimpleHornerRoot",
+    "ZPairAdd",
     "BinaryModularExecution",
     "CornacchiaTrace",
+    "EDivRem",
     "FactorialValuation",
+    "GDivRem",
+    "InitialPrimeList",
     "MultinomialCarryPrefix",
     "PowerValuationOne",
     "PrimitiveRoot",
@@ -31795,6 +36167,8 @@
     "SignedSimpleHornerRoot",
     "BinaryCompleteModularExecution",
     "CarryCountMany",
+    "EEuclideanDivision",
+    "GEuclideanDivision",
     "IntegerMatrixVectorProduct",
     "SignedDeterminantChildPrefix",
     "SignedMinorRecord",

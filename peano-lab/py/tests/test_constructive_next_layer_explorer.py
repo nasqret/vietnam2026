@@ -1,8 +1,8 @@
-"""Fail-closed audit of four historical Alpha-v20 / current Alpha-v27 explorers.
+"""Fail-closed audit of four historical Alpha-v20 / current Alpha-v28 explorers.
 
 These documentation tests never decode, construct, replay, or check a proof
 bundle. Original admission remains solely with the immutable Alpha-v20 proof;
-the explorer additionally authenticates current Alpha-v27 checked authority.
+the explorer additionally authenticates current Alpha-v28 checked authority.
 """
 
 from __future__ import annotations
@@ -14,6 +14,7 @@ from hashlib import sha256
 import html
 from html.parser import HTMLParser
 import importlib
+from io import BytesIO
 import json
 from pathlib import Path
 import subprocess
@@ -63,7 +64,7 @@ def corpora(generated: dict[str, bytes]) -> dict[str, dict[str, Any]]:
     }
 
 
-def test_manifest_is_bound_to_current_v27_and_immutable_v20_first_admission(
+def test_manifest_is_bound_to_current_v28_and_immutable_v20_first_admission(
     generated: dict[str, bytes], inputs: dict[str, Any]
 ) -> None:
     manifest = json.loads(generated["manifest.json"])
@@ -74,7 +75,7 @@ def test_manifest_is_bound_to_current_v27_and_immutable_v20_first_admission(
     ).hexdigest()
     assert manifest["html_revision"] == sha256(actual_catalog).hexdigest()[:12]
     assert manifest["edition_identity_sha256"] == inputs["current_edition_identity_sha256"]
-    assert manifest["alpha_edition_version"] == "v27"
+    assert manifest["alpha_edition_version"] == "v28"
     assert manifest["alpha_first_enrolled_version"] == "v20"
     assert manifest["proof_bundle_sha256"] == inputs["bundle"]["artifact_sha256"]
     assert manifest["independent_lean_bundle_verified"] is True
@@ -117,7 +118,7 @@ def test_historical_v20_family_landing_reuses_quadratic_reciprocity_structure(
     assert 'class="proof-hero"' not in source
     assert source.count('<article class="view-card') == 3
     assert f'href="../assets/proofs.css?v={revision}"' in source
-    assert "Alpha v27 checked-use theorem family" in source
+    assert "Alpha v28 checked-use theorem family" in source
     assert "first admitted v20" in source
     assert "independently accept all 590 bundle nodes" in source
     assert corpus["alpha_proof_bundle_sha256"] in source
@@ -142,7 +143,7 @@ def test_family_boundaries_and_exact_checked_release_rows(
     assert corpus["campaign_domain_id"] == domain
     assert corpus["campaign_family_id"] == family
     assert tuple(corpus["campaign_milestone_ids"]) == milestones
-    assert corpus["alpha_edition_version"] == "v27"
+    assert corpus["alpha_edition_version"] == "v28"
     assert corpus["alpha_first_enrolled_version"] == "v20"
     assert corpus["alpha_proof_bundle_sha256"] == inputs["bundle"]["artifact_sha256"]
     assert corpus["independent_lean_bundle_verified"] is True
@@ -159,7 +160,7 @@ def test_family_boundaries_and_exact_checked_release_rows(
         assert node["body_proof_depth"] == closure["body_proof_depth"]
         assert node["sources"][0]["script_sha256"] == original["script_sha256"]
         assert node["alpha_checked_use"] is True
-        assert node["alpha_edition_version"] == "v27"
+        assert node["alpha_edition_version"] == "v28"
         assert node["alpha_first_enrolled_version"] == "v20"
         assert node["independent_lean_bundle_verified"] is True
         assert node["stable_member"] is False
@@ -441,7 +442,7 @@ def test_all_theorem_definition_graph_and_atlas_pages_are_navigable(
 
     graph = generated[f"{slug}/explorer/defined/graph.html"].decode()
     assert "window.PA_DEFINED_GRAPH=" in graph
-    assert "Alpha v27 checked-use theorem" in graph
+    assert "Alpha v28 checked-use theorem" in graph
     assert "first admitted v20" in graph
     assert "independently kernel and Lean verified" in graph
     assert "proof_dependency" in graph
@@ -742,7 +743,7 @@ def test_current_atlas_accepts_only_the_exact_additive_graph(mutation: str) -> N
     graph = json.loads(explorer.GLOBAL_DEFINITIONS.read_text())
     explorer._audit_current_atlas(campaign, graph)
     # Current checked-use authority does not relabel historical first admission.
-    assert explorer.CURRENT_CATALOG.name == "catalog-v27.json"
+    assert explorer.CURRENT_CATALOG.name == "catalog-v28.json"
     assert explorer.CATALOG.name == "catalog-v20.json"
     if mutation == "version":
         campaign["meta"]["current_alpha_version"] = "v25"
@@ -771,7 +772,7 @@ CURRENT_RELEASE_PUBLISHERS = (
 
 
 @pytest.mark.parametrize(("module_name", "error_name", "first_version"), CURRENT_RELEASE_PUBLISHERS)
-def test_current_v27_publishers_preserve_the_full_first_admission_catalog(
+def test_current_v28_publishers_preserve_the_full_first_admission_catalog(
     module_name: str, error_name: str, first_version: str
 ) -> None:
     publisher = importlib.import_module(module_name)
@@ -779,19 +780,19 @@ def test_current_v27_publishers_preserve_the_full_first_admission_catalog(
     channels = json.loads(publisher.CURRENT_CHANNELS.read_text())
     current = inputs["current_catalog"]
     assert publisher.CATALOG.name == f"catalog-{first_version}.json"
-    assert publisher.CURRENT_CATALOG.name == "catalog-v27.json"
-    assert publisher.CURRENT_CHANNELS.name == "channels-v27.json"
-    assert current["schema"] == "peano-library-alpha-snapshot-v27"
+    assert publisher.CURRENT_CATALOG.name == "catalog-v28.json"
+    assert publisher.CURRENT_CHANNELS.name == "channels-v28.json"
+    assert current["schema"] == "peano-library-alpha-snapshot-v28"
     assert current["theorem_count"] == current["checked_use_count"] == (
-        publisher.current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        publisher.current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
     )
     assert current["stable_count"] == 432
     assert current["theorems"][:publisher.EXPECTED_ALPHA_COUNT] == inputs["catalog"]["theorems"]
     assert inputs["catalog"]["schema"] == f"peano-library-alpha-snapshot-{first_version}"
-    assert channels["parent_channels_v26"] == {
-        "path": "artifacts/peano-library/channels-v26.json",
+    assert channels["parent_channels_v27"] == {
+        "path": "artifacts/peano-library/channels-v27.json",
         "sha256": sha256(
-            (ROOT / "artifacts/peano-library/channels-v26.json").read_bytes()
+            (ROOT / "artifacts/peano-library/channels-v27.json").read_bytes()
         ).hexdigest(),
     }
     for spec in inputs["enrollment"].frontier_specs:
@@ -823,9 +824,9 @@ def test_current_publishers_reject_mutated_release_or_historical_proof_rows(
     if mutation == "channels_schema":
         channels["schema"] = "peano-library-channels-v25"
     elif mutation == "parent_path":
-        channels["parent_channels_v26"]["path"] = "artifacts/peano-library/channels-v24.json"
+        channels["parent_channels_v27"]["path"] = "artifacts/peano-library/channels-v24.json"
     elif mutation == "parent_digest":
-        channels["parent_channels_v26"]["sha256"] = "0" * 64
+        channels["parent_channels_v27"]["sha256"] = "0" * 64
     elif mutation == "catalog_schema":
         catalog["schema"] = f"peano-library-alpha-snapshot-{first_version}"
     elif mutation == "theorem_count":
@@ -868,52 +869,99 @@ def test_current_publishers_reject_mutated_release_or_historical_proof_rows(
     monkeypatch.setattr(Path, "read_bytes", read_bytes)
     monkeypatch.setattr(Path, "read_text", read_text)
     monkeypatch.setattr(publisher, "_file_digest", file_digest)
-    with pytest.raises(getattr(publisher, error_name), match="current immutable Alpha-v27"):
+    with pytest.raises(getattr(publisher, error_name), match="current immutable Alpha-v28"):
         publisher._load_inputs()
 
 
-def test_v27_retains_exact_v26_objects_all_old_receipts_and_channel_ancestry(inputs: dict) -> None:
+def test_v28_retains_exact_v27_v26_objects_all_old_receipts_and_channel_ancestry(inputs: dict) -> None:
     catalog = inputs["current_catalog"]
     channels = json.loads(explorer.CURRENT_CHANNELS.read_bytes())
     parent = json.loads((ROOT / "artifacts/peano-library/alpha/catalog-v26.json").read_bytes())
     parent_channels = json.loads((ROOT / "artifacts/peano-library/channels-v26.json").read_bytes())
+    second_wave = json.loads((ROOT / "artifacts/peano-library/alpha/catalog-v27.json").read_bytes())
+    second_wave_channels = json.loads((ROOT / "artifacts/peano-library/channels-v27.json").read_bytes())
     older_channels = json.loads((ROOT / "artifacts/peano-library/channels-v25.json").read_bytes())
     explorer._audit_current_parent(catalog, channels)
     assert catalog["theorems"][:2138] == parent["theorems"]
+    assert catalog["theorems"][:2560] == second_wave["theorems"]
     assert all(
         current is historical
         for current, historical in zip(explorer.current_alpha.ALPHA_ENTRIES, explorer.v26.ALPHA_ENTRIES)
     )
     assert channels["channels"]["stable"] == parent_channels["channels"]["stable"]
+    assert channels["channels"]["stable"] == second_wave_channels["channels"]["stable"]
+    assert all(
+        current is historical
+        for current, historical in zip(explorer.current_alpha.ALPHA_ENTRIES, explorer.v27.ALPHA_ENTRIES)
+    )
     assert parent_channels["channels"]["stable"] == older_channels["channels"]["stable"]
     for key, value in parent.items():
         if key.startswith("parent_alpha_") or key.endswith("_promotion"):
             assert catalog[key] == value
+    for key, value in second_wave.items():
+        if key.startswith("parent_alpha_") or key.endswith("_promotion"):
+            assert catalog[key] == value
 
 
-@pytest.mark.parametrize("mutation", ("v26_catalog", "v26_channels", "v25_channels", "object_identity"))
+@pytest.mark.parametrize("mutation", (
+    "v27_catalog", "v27_channels", "v27_dependency_graph", "v27_metrics",
+    "v26_catalog", "v26_channels", "v25_channels", "object_identity", "v27_object_identity",
+))
 def test_current_parent_audit_rejects_changes_beneath_the_new_channel(
     inputs: dict, mutation: str, monkeypatch: pytest.MonkeyPatch,
 ) -> None:
     catalog = inputs["current_catalog"]
     channels = json.loads(explorer.CURRENT_CHANNELS.read_bytes())
-    if mutation == "object_identity":
+    if mutation in ("object_identity", "v27_object_identity"):
         entries = list(explorer.current_alpha.ALPHA_ENTRIES)
-        entries[0] = replace(entries[0])
-        assert entries[0] == explorer.v26.ALPHA_ENTRIES[0]
-        assert entries[0] is not explorer.v26.ALPHA_ENTRIES[0]
+        index = 2138 if mutation == "v27_object_identity" else 0
+        entries[index] = replace(entries[index])
+        assert entries[index] == explorer.v27.ALPHA_ENTRIES[index]
+        assert entries[index] is not explorer.v27.ALPHA_ENTRIES[index]
         monkeypatch.setattr(explorer.current_alpha, "ALPHA_ENTRIES", tuple(entries))
     else:
         path = ROOT / {
+            "v27_catalog": "artifacts/peano-library/alpha/catalog-v27.json",
+            "v27_channels": "artifacts/peano-library/channels-v27.json",
+            "v27_dependency_graph": "artifacts/peano-library/alpha/dependency-graph-v27.mmd",
+            "v27_metrics": "artifacts/peano-library/alpha/metrics-v27.json",
             "v26_catalog": "artifacts/peano-library/alpha/catalog-v26.json",
             "v26_channels": "artifacts/peano-library/channels-v26.json",
             "v25_channels": "artifacts/peano-library/channels-v25.json",
         }[mutation]
-        read_bytes = Path.read_bytes
-        monkeypatch.setattr(
-            Path, "read_bytes", lambda current: b"{}\n" if current == path else read_bytes(current)
-        )
+        if mutation in ("v27_dependency_graph", "v27_metrics"):
+            # These artifacts are authenticated by the streaming hash reader,
+            # so alter its actual byte stream rather than an unused read API.
+            open_path = Path.open
+            monkeypatch.setattr(
+                Path, "open", lambda current, *args, **kwargs:
+                BytesIO(b"{}\n") if current == path else open_path(current, *args, **kwargs),
+            )
+        else:
+            read_bytes = Path.read_bytes
+            monkeypatch.setattr(
+                Path, "read_bytes", lambda current: b"{}\n" if current == path else read_bytes(current)
+            )
     with pytest.raises(explorer.NextLayerExplorerError, match="v26/v25 ancestry"):
+        explorer._audit_current_parent(catalog, channels)
+
+
+@pytest.mark.parametrize("field", ("schema", "count", "identity", "enrollment", "catalog", "channels", "dependency_graph", "metrics", "extra"))
+def test_current_parent_rejects_any_forged_v27_parent_record(inputs: dict, field: str) -> None:
+    catalog = deepcopy(inputs["current_catalog"])
+    channels = json.loads(explorer.CURRENT_CHANNELS.read_bytes())
+    parent = catalog["parent_alpha_v27"]
+    if field == "schema":
+        parent["schema"] = "peano-library-alpha-snapshot-v26"
+    elif field == "count":
+        parent["theorem_count"] -= 1
+    elif field in ("identity", "enrollment"):
+        parent["edition_identity_sha256" if field == "identity" else "ordered_enrollment_root_sha256"] = "0" * 64
+    elif field == "extra":
+        parent["unchecked_parent_override"] = True
+    else:
+        parent["artifacts"][field]["sha256"] = "0" * 64
+    with pytest.raises(explorer.NextLayerExplorerError, match="v27/v26/v25 ancestry"):
         explorer._audit_current_parent(catalog, channels)
 
 

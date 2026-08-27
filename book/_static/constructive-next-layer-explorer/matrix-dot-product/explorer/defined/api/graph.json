@@ -1,6 +1,6 @@
 {
   "alpha_checked_use_node_count": 10,
-  "alpha_edition_version": "v27",
+  "alpha_edition_version": "v28",
   "alpha_first_enrolled_version": "v20",
   "definition_topological_order": [
     "ND0001",
@@ -155,9 +155,9 @@
   "nodes": [
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v20",
-      "href": "tag/MD0001.html?v=481a9a378e54",
+      "href": "tag/MD0001.html?v=897410581b66",
       "id": "MD0001",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -170,9 +170,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v20",
-      "href": "tag/MD0002.html?v=481a9a378e54",
+      "href": "tag/MD0002.html?v=897410581b66",
       "id": "MD0002",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -185,9 +185,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v20",
-      "href": "tag/MD0003.html?v=481a9a378e54",
+      "href": "tag/MD0003.html?v=897410581b66",
       "id": "MD0003",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -200,9 +200,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v20",
-      "href": "tag/MD0004.html?v=481a9a378e54",
+      "href": "tag/MD0004.html?v=897410581b66",
       "id": "MD0004",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -215,9 +215,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v20",
-      "href": "tag/MD0005.html?v=481a9a378e54",
+      "href": "tag/MD0005.html?v=897410581b66",
       "id": "MD0005",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -230,9 +230,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v20",
-      "href": "tag/MD0006.html?v=481a9a378e54",
+      "href": "tag/MD0006.html?v=897410581b66",
       "id": "MD0006",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -245,9 +245,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v20",
-      "href": "tag/MD0007.html?v=481a9a378e54",
+      "href": "tag/MD0007.html?v=897410581b66",
       "id": "MD0007",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -260,9 +260,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v20",
-      "href": "tag/MD0008.html?v=481a9a378e54",
+      "href": "tag/MD0008.html?v=897410581b66",
       "id": "MD0008",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -275,9 +275,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v20",
-      "href": "tag/MD0009.html?v=481a9a378e54",
+      "href": "tag/MD0009.html?v=897410581b66",
       "id": "MD0009",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -290,9 +290,9 @@
     },
     {
       "alpha_checked_use": true,
-      "alpha_edition_version": "v27",
+      "alpha_edition_version": "v28",
       "alpha_first_enrolled_version": "v20",
-      "href": "tag/MD000A.html?v=481a9a378e54",
+      "href": "tag/MD000A.html?v=897410581b66",
       "id": "MD000A",
       "independent_lean_bundle_verified": true,
       "kind": "theorem",
@@ -305,7 +305,7 @@
     },
     {
       "global_definition": "Beta",
-      "href": "definition/ND0001.html?v=481a9a378e54",
+      "href": "definition/ND0001.html?v=897410581b66",
       "id": "ND0001",
       "kind": "definition",
       "layer": 0,
@@ -315,7 +315,7 @@
     },
     {
       "global_definition": "Lt",
-      "href": "definition/PD0002.html?v=481a9a378e54",
+      "href": "definition/PD0002.html?v=897410581b66",
       "id": "PD0002",
       "kind": "definition",
       "layer": 0,
@@ -325,7 +325,7 @@
     },
     {
       "global_definition": "Beta",
-      "href": "definition/PD0013.html?v=481a9a378e54",
+      "href": "definition/PD0013.html?v=897410581b66",
       "id": "PD0013",
       "kind": "definition",
       "layer": 0,
@@ -335,7 +335,7 @@
     },
     {
       "global_definition": "BetaSum",
-      "href": "definition/PD0015.html?v=481a9a378e54",
+      "href": "definition/PD0015.html?v=897410581b66",
       "id": "PD0015",
       "kind": "definition",
       "layer": 1,
@@ -345,7 +345,7 @@
     },
     {
       "global_definition": "MatrixAt",
-      "href": "definition/ND0003.html?v=481a9a378e54",
+      "href": "definition/ND0003.html?v=897410581b66",
       "id": "ND0003",
       "kind": "definition",
       "layer": 1,
@@ -355,7 +355,7 @@
     },
     {
       "global_definition": "DotProduct",
-      "href": "definition/ND0004.html?v=481a9a378e54",
+      "href": "definition/ND0004.html?v=897410581b66",
       "id": "ND0004",
       "kind": "definition",
       "layer": 2,
@@ -365,7 +365,7 @@
     },
     {
       "global_definition": "SignedDet2",
-      "href": "definition/ND0005.html?v=481a9a378e54",
+      "href": "definition/ND0005.html?v=897410581b66",
       "id": "ND0005",
       "kind": "definition",
       "layer": 0,

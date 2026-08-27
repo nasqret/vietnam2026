@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Publish historical Alpha-v25 breakthroughs under current Alpha-v27 authority.
+"""Publish historical Alpha-v25 breakthroughs under current Alpha-v28 authority.
 
 All displayed formulas, scripts, dependencies, definition DAGs and closure
 receipts retain their immutable v25 first-admission catalog, its v24 parent,
 and the independently compiled-Lean-verified original-kernel bundle.  The
-current v27 release must preserve those exact rows and checked-use authority.
+current v28 release must preserve those exact rows and checked-use authority.
 The stronger milestones T13, G095 and G011 are now closed by separate v27
 second-wave proofs; these v25 chapters retain their original partial scope.
 """
@@ -63,7 +63,7 @@ from constructive_transport_layer_definitions import (  # noqa: E402
 )
 from peano_lab.library import editions_v24 as v24  # noqa: E402
 from peano_lab.library import editions_v25 as v25  # noqa: E402
-from peano_lab.library import editions_v27 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v28 as current_alpha  # noqa: E402
 from peano_lab.library.alpha_enrollment_v25 import (  # noqa: E402
     EXPECTED_CAMPAIGN_COUNTS,
     FRONTIER_V25_EXPECTED_COUNT,
@@ -81,8 +81,8 @@ from peano_lab.library.defined_syntax import DefinitionSpec  # noqa: E402
 OUTPUT = REPO / "book" / "_static" / "constructive-breakthrough-layer-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
 PARENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
-CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v27.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v28.json"
+CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v28.json"
 CAMPAIGN = REPO / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
 GLOBAL_DEFINITIONS = CAMPAIGN.with_name("definitions.json")
 EXPECTED_STABLE_COUNT = 432
@@ -94,7 +94,7 @@ EXPECTED_BUNDLE_PATH = (
 )
 SCHEMA = "peano-lab-constructive-breakthrough-layer-explorer-v1"
 STATUS = (
-    "Alpha v27 checked-use · first admitted v25 · "
+    "Alpha v28 checked-use · first admitted v25 · "
     "independently kernel and Lean verified; not Stable"
 )
 ASSET_SOURCES = original.ASSET_SOURCES
@@ -379,7 +379,7 @@ def _load_inputs() -> dict[str, Any]:
     current_raw_catalog = CURRENT_CATALOG.read_bytes()
     current_catalog = json.loads(current_raw_catalog)
     channels = json.loads(CHANNELS.read_bytes())
-    parent_channels_raw = CHANNELS.with_name("channels-v26.json").read_bytes()
+    parent_channels_raw = CHANNELS.with_name("channels-v27.json").read_bytes()
     parent_channels = json.loads(parent_channels_raw)
     expected_counts = {
         campaign.value: count for campaign, count in EXPECTED_CAMPAIGN_COUNTS.items()
@@ -400,31 +400,31 @@ def _load_inputs() -> dict[str, Any]:
     original._audit_current_parent(current_catalog, channels, error_type=BreakthroughLayerExplorerError)
     current_parent = current_catalog.get("parent_alpha_v25", {})
     if (
-        channels.get("schema") != "peano-library-channels-v27"
+        channels.get("schema") != "peano-library-channels-v28"
         or channels.get("default_channel") != "stable"
-        or channels.get("parent_channels_v26", {}).get("path")
-        != "artifacts/peano-library/channels-v26.json"
-        or channels.get("parent_channels_v26", {}).get("sha256")
+        or channels.get("parent_channels_v27", {}).get("path")
+        != "artifacts/peano-library/channels-v27.json"
+        or channels.get("parent_channels_v27", {}).get("sha256")
         != _digest(parent_channels_raw)
         or channels.get("channels", {}).get("stable")
         != parent_channels.get("channels", {}).get("stable")
-        or channel.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v27.json"
+        or channel.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v28.json"
         or channel.get("artifact_sha256") != _digest(current_raw_catalog)
         or channel.get("parent_alpha_v25_sha256") != _digest(raw_catalog)
-        or channel.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
-        or channel.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
-        or channel.get("edition_identity_sha256") != current_alpha.ALPHA_V27_IDENTITY_SHA256
+        or channel.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V28_COUNT
+        or channel.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
+        or channel.get("edition_identity_sha256") != current_alpha.ALPHA_V28_IDENTITY_SHA256
         or channel.get("ordered_enrollment_root_sha256")
-        != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
-        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v27"
-        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        != current_alpha.ALPHA_V28_ENROLLMENT_SHA256
+        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v28"
+        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V28_COUNT
         or current_catalog.get("checked_use_count")
-        != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        != current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
         or current_catalog.get("stable_count") != EXPECTED_STABLE_COUNT
         or current_catalog.get("edition_identity_sha256")
-        != current_alpha.ALPHA_V27_IDENTITY_SHA256
+        != current_alpha.ALPHA_V28_IDENTITY_SHA256
         or current_catalog.get("ordered_enrollment_root_sha256")
-        != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        != current_alpha.ALPHA_V28_ENROLLMENT_SHA256
         or not isinstance(current_parent, dict)
         or current_parent.get("schema") != "peano-library-alpha-snapshot-v25"
         or current_parent.get("theorem_count") != v25.EXPECTED_ALPHA_V25_COUNT
@@ -437,7 +437,7 @@ def _load_inputs() -> dict[str, Any]:
             "sha256": _digest(raw_catalog),
         }
         or not isinstance(current_catalog.get("theorems"), list)
-        or len(current_catalog["theorems"]) != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or len(current_catalog["theorems"]) != current_alpha.EXPECTED_ALPHA_V28_COUNT
         or current_catalog["theorems"][:v25.EXPECTED_ALPHA_V25_COUNT]
         != catalog.get("theorems")
         or tuple(current_alpha.ALPHA_ENTRIES[:v25.EXPECTED_ALPHA_V25_COUNT])
@@ -448,7 +448,7 @@ def _load_inputs() -> dict[str, Any]:
         )
     ):
         raise BreakthroughLayerExplorerError(
-            "the current Alpha-v27 channel changed its sealed historical Alpha-v25 admission"
+            "the current Alpha-v28 channel changed its sealed historical Alpha-v25 admission"
         )
     parent = catalog.get("parent_alpha_v24")
     if (
@@ -575,10 +575,10 @@ _inherited_family_corpus = FunctionType(
 
 def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
     corpus = _inherited_family_corpus(family, inputs)
-    corpus["alpha_edition_version"] = "v27"
+    corpus["alpha_edition_version"] = "v28"
     corpus["alpha_first_enrolled_version"] = "v25"
     for node in corpus["nodes"]:
-        node["alpha_edition_version"] = "v27"
+        node["alpha_edition_version"] = "v28"
         node["alpha_first_enrolled_version"] = "v25"
     return corpus
 
@@ -586,13 +586,13 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
 def _graph_payload(family: Family, corpus: Mapping[str, Any], *, revision: str) -> dict[str, Any]:
     graph = original._graph_payload(family, corpus, revision=revision)
     graph["schema"] = f"{SCHEMA}-graph"
-    graph["alpha_edition_version"] = "v27"
+    graph["alpha_edition_version"] = "v28"
     graph["alpha_first_enrolled_version"] = "v25"
     graph.update(original._completed_milestone_metadata(family.milestones[-1]))
     graph["milestone_caveat"] = family.caveat
     for node in graph["nodes"]:
         if node["kind"] == "theorem":
-            node["alpha_edition_version"] = "v27"
+            node["alpha_edition_version"] = "v28"
             node["alpha_first_enrolled_version"] = "v25"
     return graph
 
@@ -628,13 +628,13 @@ def _top_index(
         for family, corpus in corpora
     )
     body = f"""<main class="proof-home proof-library-home"><header class="proof-hero">
- <p class="eyebrow">ALPHA v27 · HISTORICAL v25 INDEPENDENTLY VERIFIED CONSTRUCTIVE BREAKTHROUGHS</p>
+ <p class="eyebrow">ALPHA v28 · HISTORICAL v25 INDEPENDENTLY VERIFIED CONSTRUCTIVE BREAKTHROUGHS</p>
  <h1>Complete cofactor families, genuine Hensel lifts, and noncoprime CRT</h1>
  <p>Independently original-kernel- and Lean-verified historical advances, linked to the separate second-wave proofs that now complete their broader milestones.</p>
  <nav><a href="{_versioned('../', revision)}">Proof library</a>
  <a href="{_versioned('../grand-campaign/', revision)}">Complete number-theory campaign atlas</a></nav>
  </header><section class="proof-grid">{entries}</section>
- <p>Each displayed theorem first admitted in historical Alpha v25 retains current Alpha-v27 checked-use authority. These old components retain their partial scope; the separate second-wave branches now close T13, G095 and G011. Stable remains an unchanged separate edition.</p></main>"""
+ <p>Each displayed theorem first admitted in historical Alpha v25 retains current Alpha-v28 checked-use authority. These old components retain their partial scope; the separate second-wave branches now close T13, G095 and G011. Stable remains an unchanged separate edition.</p></main>"""
     return original._document(
         FAMILIES[0], title="Three Constructive Number-Theory Breakthroughs",
         body=body, prefix="", defined=False,
@@ -666,7 +666,7 @@ def build_files() -> dict[str, bytes]:
         prefix = family.slug
         files[f"{prefix}/index.html"] = render_canonical_family_landing(
             family, corpus, revision=revision,
-            current_alpha_version="v27", first_admitted_version="v25",
+            current_alpha_version="v28", first_admitted_version="v25",
             bundle_node_count=EXPECTED_BREAKTHROUGH_LAYER_BUNDLE_NODE_COUNT,
         )
         files[f"{prefix}/api/corpus.json"] = _json(corpus)
@@ -724,7 +724,7 @@ def build_files() -> dict[str, bytes]:
     ]
     manifest = {
         "schema": f"{SCHEMA}-manifest",
-        "alpha_edition_version": "v27",
+        "alpha_edition_version": "v28",
         "alpha_first_enrolled_version": "v25",
         "catalog_sha256": inputs["catalog_sha256"],
         "first_enrollment_catalog_sha256": inputs["first_admission_catalog_sha256"],
@@ -740,7 +740,7 @@ def build_files() -> dict[str, bytes]:
             {
                 "slug": family.slug,
                 "campaign": family.campaign.value,
-                "alpha_edition_version": "v27",
+                "alpha_edition_version": "v28",
                 "alpha_first_enrolled_version": "v25",
                 "domain": family.domain,
                 "family": family.family_id,

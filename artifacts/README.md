@@ -4,6 +4,38 @@ These directories prove the *same* small statements in four proof assistants, so
 **see** how different foundations do the same job. The pedagogical payload is the comparison,
 not the theorems.
 
+## Current constructive arithmetic release — Alpha v28 (2026-08-27)
+
+The current arithmetic channel is
+[`channels-v28.json`](peano-library/channels-v28.json): **2,764 independently
+checked theorems**, **8,984 actual dependency edges**, and **53 layers**.
+Stable remains the unchanged default **432**; the other **2,332** theorems
+are Alpha-only. All earlier channel files and their evidence records remain
+immutable. Dated Alpha sections below describe their historical checkpoints,
+not the current checked-use counts.
+
+The latest additive tranche supplies **204 new proofs** closing the exact
+G001–G005 arithmetic/factorization interfaces, G021–G022 initial-prime
+constructions, and G081/G084 Gaussian and Eisenstein Euclidean division.
+The full [862-node certificate](../research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json)
+is accepted by the unchanged HA kernel and independent compiled Lean verifier;
+its SHA-256 is
+`e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1`.
+The [verification receipt](../research/arithmetic-library/alpha-v28-lower-layer-receipt.md)
+and [admission RFC](../research/arithmetic-library/alpha-v28-lower-layer-rfc-v1.md)
+state the exact hypotheses, source pins, and honest open successors.
+
+Canonical artifacts are the [catalogue](peano-library/alpha/catalog-v28.json),
+[metrics](peano-library/alpha/metrics-v28.json), and
+[dependency DAG](peano-library/alpha/dependency-graph-v28.mmd).
+Reproduce the independent release checks with
+`make peano-library-alpha-v28-check`. The
+[lower-layer proof explorers](../book/_static/constructive-lower-layer-explorer/index.html)
+reuse the established Quadratic Reciprocity interface and 35 new hygienic
+definitions, extending the shared registry to 233 definitions and 441
+definition edges. G082/G083/G085/G086 factorization and prime-classification
+targets remain open; neither notation nor a graph grants proof authority.
+
 | Prover | Foundation | Proof style | Standard library | Status here |
 |--------|-----------|-------------|------------------|-------------|
 | **[Lean 4](lean/)** | Calculus of Inductive Constructions (CIC) | tactic + term | Mathlib | ✅ kernel-checked locally, `sorry`-free, **no axioms** |

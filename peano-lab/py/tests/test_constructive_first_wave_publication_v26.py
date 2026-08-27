@@ -13,7 +13,7 @@ import pytest
 from peano_lab.kernel.formulas import parse_formula_in_context
 from peano_lab.library import editions_v25 as parent
 from peano_lab.library import editions_v26 as first_admission
-from peano_lab.library import editions_v27 as current
+from peano_lab.library import editions_v28 as current
 from peano_lab.library.alpha_enrollment_v26 import ROOT_STATEMENT_SHA256, alpha_v26_enrollment
 from peano_lab.library.pythagorean_fermat_four_candidate import make_pythagorean_fermat_four_candidate_theorems
 from peano_lab.library.pythagorean_primitive_candidate import make_pythagorean_primitive_candidate_theorems
@@ -35,10 +35,10 @@ from constructive_first_wave_definitions import (  # noqa: E402
 ATLAS = ROOT / "book/_static/constructive-grand-campaign"
 EXPLORER = ROOT / "book/_static/constructive-frontier-explorer/pythagorean-fermat-four"
 CATALOG = ROOT / "artifacts/peano-library/alpha/catalog-v26.json"
-CURRENT_CATALOG = ROOT / "artifacts/peano-library/alpha/catalog-v27.json"
+CURRENT_CATALOG = ROOT / "artifacts/peano-library/alpha/catalog-v28.json"
 PARENT_CATALOG = ROOT / "artifacts/peano-library/alpha/catalog-v25.json"
 CATALOG_SHA256 = "969c261f924060552dda393427b4fbc51515b9d4e69daa17f5e9f1691b5ab534"
-CURRENT_CATALOG_SHA256 = "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+CURRENT_CATALOG_SHA256 = "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
 PARENT_SHA256 = "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
 BUNDLE_SHA256 = "59afca707b33b68df907c941683e335492f7de12ee3888219339c5dfce8ec4fc"
 
@@ -121,7 +121,7 @@ def test_existing_forty_four_pythagorean_tags_are_preserved_before_the_new_appen
         assert published["statement"] == old.statement
         assert published["dependencies"] == list(old.dependencies)
         assert published["script"] == list(old.script)
-    assert graph["alpha_edition_version"] == corpus["alpha_edition_version"] == "v27"
+    assert graph["alpha_edition_version"] == corpus["alpha_edition_version"] == "v28"
     assert corpus["alpha_catalog_sha256"] == graph["alpha_catalog_sha256"] == CURRENT_CATALOG_SHA256
 
 
@@ -153,7 +153,7 @@ def test_first_wave_registry_shares_existing_definitions_and_preserves_historica
     assert {definition.name: definition.stable_id for definition in FIRST_WAVE_DEFINITIONS} == DEFINITION_IDENTITIES
     reviewed = {row["name"]: row for row in surfaces["definitions"]["reviewed_definitions"]}
     local = {row["name"]: row for row in surfaces["corpus"]["definitions"]}
-    from constructive_second_wave_definition_graph import build_definition_graph
+    from constructive_lower_layer_definition_graph import build_definition_graph
 
     assert surfaces["definitions"] == build_definition_graph(surfaces["campaign"])
     for definition in FIRST_WAVE_DEFINITIONS:

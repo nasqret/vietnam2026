@@ -1,8 +1,9 @@
 # The Grand Constructive Number-Theory Campaign
 
 Planning baseline: 2026-08-26; updated 2026-08-27; current immutable evidence
-baseline: Alpha v27. The first execution wave in §7.1 and the seven named
-second-wave targets in §7.2 are complete. The broader research directions
+baseline: Alpha v28. The first execution wave in §7.1, the seven named
+second-wave targets in §7.2, and the nine exact lower-layer contracts in
+§7.2a are complete. The broader research directions
 listed after those targets remain separate, unfinished work.
 
 > **Mission.** Build a broad, spectacular, mathematically coherent library of
@@ -25,11 +26,14 @@ its browsable interactive graph is
 The proposed inventory has **120 major theorem milestones**, grouped into
 **12 families of 10**, supported by **16 reusable proof-engineering tools**
 and **8 existing proof anchors**. Thus its machine-readable research graph
-contains **144 named vertices** and **308 explicit prerequisite edges**
+contains **144 named vertices** and **309 explicit prerequisite edges**
 (303 at the historical v26 boundary). At that v26 boundary the 120 milestones
 split into **92 genuinely open research objectives** and **28 existing/revisited constructive foundations or proof
 anchors**. The six newly closed numbered goals reduce the open goal count to
-**86**; T13 is additionally closed as a reusable tool. Some milestones deliberately revisit existing
+**86** at v27; T13 is additionally closed as a reusable tool. V28 records six
+previously classified foundations with explicit checked endpoint evidence and
+closes three more open goals, leaving **83 open goals**, **36 Alpha-closed
+goals**, and **one Stable-closed goal**. Some milestones deliberately revisit existing
 mathematical roots to require genuine independent closure, stronger variants,
 or correct release promotion; they must not be advertised as 120 previously
 unknown or presently unproved mathematical statements. A goal in this
@@ -45,7 +49,21 @@ established merely by writing a plan.
 
 ## 1. Current position: substantial mathematics, honest evidence boundaries
 
-The current local release baseline is **Alpha v27**: **2,560** checked-use
+The current local release baseline is **Alpha v28**: **2,764** checked-use
+theorems, comprising the unchanged **432** Stable entries and **2,332**
+Alpha-only entries, with **8,984** actual theorem-dependency edges. Its
+**204** new bodies close the exact G001–G005, G021–G022, G081, and G084
+contracts. The complete lower-layer artifact has **862** nodes (861 actual
+theorem bodies and one packaging node), **3,090** dependency edges, and
+**230,464** structural body-proof occurrences. Both the original HA checker
+and independently compiled Lean verifier accept it. The atlas has **323
+blueprint** terms, **233 hygienically** reviewed conservative definitions,
+**441 reviewed** prerequisite edges, and **236 compatible** blueprint links.
+The [lower-layer receipt](../research/arithmetic-library/alpha-v28-lower-layer-receipt.md)
+records the exact interfaces and exclusions. These mathematical artifacts
+and remote publication are separate release operations.
+
+The historical second-wave baseline is **Alpha v27**: **2,560** checked-use
 theorems, comprising the unchanged **432** Stable entries and **2,128**
 Alpha-only entries, with **8,196** actual theorem-dependency edges. It adds
 **422** independently checked theorem bodies closing the seven named targets
@@ -53,7 +71,7 @@ Alpha-only entries, with **8,196** actual theorem-dependency edges. It adds
 artifact contains **1,224** nodes (1,223 actual theorem bodies and one packaging
 root), **3,999** dependency edges and **103,215** body-proof nodes. Both the
 ordinary intuitionistic HA kernel and the compiled independent Lean verifier
-accept those exact bytes. The definition atlas now has **290 blueprint**
+accept those exact bytes. Its historical definition atlas has **290 blueprint**
 terms and **198 hygienically** reviewed conservative definitions, with
 **388 reviewed** prerequisite edges and **201 compatible** blueprint links.
 The [second-wave receipt](../research/arithmetic-library/alpha-v27-second-wave-receipt.md)
@@ -72,7 +90,7 @@ bounded conservative expansion checks. Historical Alpha v23 still completely
 closes **G101, G102, and G025**. At that historical v26 boundary, the stronger
 **T13, G095, and G011** targets were still open; v27 now closes the exact
 second-wave contracts described below. The historical **2,138-theorem** v26
-ledger and the current additive v27 ledger have actual checked-use authority:
+ledger and the current additive v28 ledger have actual checked-use authority:
 
 | Evidence or edition | Count | Meaning |
 |---|---:|---|
@@ -87,17 +105,19 @@ ledger and the current additive v27 ledger have actual checked-use authority:
 | Historical Alpha v24 ancestor | 2,008 | All 1,949 historical v23 entries plus 59 exact independently checked matrix-minor, formal-derivative, and finite-CRT entries. |
 | Historical Alpha v25 parent | 2,080 | All 2,008 historical v24 entries plus 72 exact independently checked cofactor-fold, Taylor/Hensel, and noncoprime-CRT entries. |
 | Historical Alpha v26 parent | 2,138 | All 2,080 immutable v25 entries plus 58 exact independently checked square-factor, primitive-inverse, and Fermat-four entries. |
-| Current Alpha v27 total | 2,560 | All 2,138 immutable v26 entries plus 422 exact independently checked second-wave entries. |
+| Historical Alpha v27 parent | 2,560 | All 2,138 immutable v26 entries plus 422 exact independently checked second-wave entries. |
+| Current Alpha v28 total | 2,764 | All 2,560 immutable v27 entries plus 204 exact independently checked lower-layer entries. |
 | `stable_closed` in Alpha | 432 | Stable entries mirrored into Alpha. |
 | Historical v22 Alpha-only partition | 1,458 | Exactly `432 + 1,458 = 1,890` independently checked historical v22 theorems. |
 | Historical v23 Alpha-only partition | 1,517 | Exactly `432 + 1,517 = 1,949` independently checked historical v23 theorems. |
 | Historical v24 Alpha-only partition | 1,576 | Exactly `432 + 1,576 = 2,008` independently checked historical v24 theorems. |
 | Historical v25 Alpha-only partition | 1,648 | Exactly `432 + 1,648 = 2,080` independently checked historical v25 theorems. |
 | Historical v26 Alpha-only partition | 1,706 | Independently closed Alpha-only entries through the complete positive primitive classification and unconditional Fermat-four theorem. |
-| `alpha_closed` | 2,128 | Independently closed Alpha-only entries, including all seven named second-wave targets. |
+| Historical v27 Alpha-only partition | 2,128 | Independently closed Alpha-only entries through all seven named second-wave targets. |
+| `alpha_closed` | 2,332 | Independently closed Alpha-only entries, including the nine exact lower-layer targets. |
 | `body_checked` | 0 | Every enrolled theorem is independently closed; no merely dependency-curried body is advertised as checked use. |
 | `pending_layered_closure` | 0 | All admitted roots have complete reviewed constructive evidence. |
-| Checked-use authority | 2,560 | Exactly `432 + 2,128`; every enrolled theorem is genuinely available. |
+| Checked-use authority | 2,764 | Exactly `432 + 2,332`; every enrolled theorem is genuinely available. |
 | Historical v19 body promotions | 84 | Every previously body-only v18 row, including both prime-specific valuation wrappers. |
 | Historical v19 new entries | 64 | Pythagorean forward construction 44, prime two-square iff 1, complete linear congruences 9, and infinitely many `1 mod 4` primes 10. |
 | Historical v20 new entries | 39 | Natural Horner evaluation 7, finite matrix components 10, strict Bertrand-prime extensions 13, and finite continued fractions 9. |
@@ -107,11 +127,14 @@ ledger and the current additive v27 ledger have actual checked-use authority:
 | Historical v24 new entries | 59 | Arbitrary signed cofactor minors and 4×4 determinants 17, exact simultaneous formal derivatives 15, and finite CRT/arbitrary-list LCM 27. |
 | Historical v25 new entries | 72 | Signed cofactor/alternating-fold results 29, exact Taylor/formal-derivative and qualified one-step Hensel results 19, and noncoprime CRT compatibility/gcd-LCM results 24. |
 | Historical v26 new entries | 58 | Coprime square-factor extraction 9, positive primitive inverse/classification 23, and unconditional Fermat-four descent and zero-boundary classification 26. |
-| Current v27 new entries | 422 | Integer linear algebra 182, signed Hensel lifting 40, generalized CRT 24, multinomial Kummer 19, Chebyshev bounds 55, Cornacchia 30, and Cauchy–Davenport 72. |
+| Historical v27 new entries | 422 | Integer linear algebra 182, signed Hensel lifting 40, generalized CRT 24, multinomial Kummer 19, Chebyshev bounds 55, Cornacchia 30, and Cauchy–Davenport 72. |
+| Current v28 new entries | 204 | Authoring groups: foundations 28, prime enumeration 18, Gaussian division 93 (including five signed-floor foundations), Eisenstein division 65. |
 | Historical v23 checked dependency graph | 6,285 edges | All 1,949 immutable historical v23 theorem proofs remain checked. |
 | Historical v24 checked dependency graph | 6,423 edges | All 2,008 immutable historical v24 theorem proofs remain checked. |
 | Historical v25 checked dependency graph | 6,633 edges | All 2,080 immutable historical v25 theorem proofs remain checked. |
-| Current checked dependency graph | 6,851 edges | All 2,138 theorem proofs are checked; the graph retains 53 dependency-first layers. |
+| Historical v26 checked dependency graph | 6,851 edges | All 2,138 historical theorem proofs are checked. |
+| Historical v27 checked dependency graph | 8,196 edges | All 2,560 historical theorem proofs are checked. |
+| Current checked dependency graph | 8,984 edges | All 2,764 theorem proofs are checked; the graph retains 53 dependency-first layers. |
 
 The historical sealed **Alpha v19** parent remains immutable and auditable:
 its 1,737 entries contain 432 `stable_closed`, 1,305 `alpha_closed`, and no
@@ -630,14 +653,25 @@ strengthenings, never rediscovered as open theorems.
 
 1. **G001 - Euclidean division existence and uniqueness.**
    `d > 0 -> exists! q r. n = d*q+r /\ r < d`.
+   Exact interface `foundation_division_exists_unique` is Alpha-closed in v28.
 2. **G002 - Canonical gcd with witnessed signed Bezout coefficients.**
    `exists g u v. GCD(a,b,g) /\ SignedLinearCombination(u,a,v,b,g)`.
+   Exact signed coefficients and the canonical gcd are constructed in
+   `foundation_signed_bezout_canonical_gcd`, including `(0,0)`; Alpha-closed in v28.
 3. **G003 - Euclid's coprime-product lemma.**
    `Coprime(a,b) -> Dvd(a,b*c) -> Dvd(a,c)`.
-4. **G004 - Effective canonical prime-factorization existence.**
-   `n > 0 -> exists F. CanonicalPrimeFactorization(n,F)`.
-5. **G005 - Literal uniqueness of canonical prime factorization.**
-   `CanonicalPF(n,F) /\ CanonicalPF(n,G) -> F = G`.
+   Exact interface `foundation_coprime_product_divisor` is Alpha-closed in v28.
+4. **G004 - Effective prime-factor-list existence.**
+   `n != 0 -> exists b c l. PrimeFactorList(n,b,c,l)`.
+   Alpha-closed in v28. This matches the frozen machine-readable factorization
+   target; the old prose's stronger canonical-code wording was not its formula.
+   The empty product represents one. No sorting premise is needed.
+5. **G005 - Unordered prime factorization is unique up to a witnessed permutation.**
+   `PrimeFactorList(n,b,c,l) /\ PrimeFactorList(n,d,e,m)
+      -> exists u v. PrimeFactorListPermutation(b,c,l,d,e,m,u,v)`.
+   Alpha-closed in v28 with actual bounded, injective, surjective matching
+   indices, including repeated factors. This is the original JSON permutation
+   target, not literal equality of arbitrary natural list codes.
 6. **G006 - Euler's totient product formula.**
    `n > 0 -> Phi(n)*ProductDistinctPrimes(n)
        = n*ProductDistinctPrimePredecessors(n)`.
@@ -711,8 +745,13 @@ explicitly constructive witness theorem, not an immediate corollary.
 
 1. **G021 - Euclid's witnessed infinitude of primes.**
    `forall B. exists p. Prime(p) /\ B < p`.
+   Exact interface `foundation_primes_above_every_bound` is Alpha-closed in v28.
 2. **G022 - Effective upper bounds for the `k`-th prime.**
-   `k > 0 -> exists p. NthPrime(k,p) /\ p <= ExplicitPrimeBound(k)`.
+   `k != 0 -> exists b c j p e B. k=S j /\ InitialPrimeList(b,c,k)
+      /\ BetaAt(b,c,j,p) /\ PowTwo(k,e) /\ PowTwo(e,B) /\ p<B`.
+   Alpha-closed in v28. The actual first `k` primes omit no smaller prime;
+   both powers are constructed. Its actual Bertrand prerequisite places
+   G022 in layer 6, with the old planned layer 5 retained as history.
 3. **G023 - Constructive binomial-window prime extraction.**
    `n > 1 -> exists p z. Prime(p) /\ n < p /\ p < n+n
       /\ Binom(n+n,n,z) /\ Val(p,z,1)`.
@@ -1003,7 +1042,10 @@ units, associates, norms, primary representatives, ramification, and ideals
 must be definitions with verified HA graphs.
 
 1. **G081 - Gaussian Euclidean division.**
-   `Gaussian(b)!=0 -> exists q r. a=b*q+r /\ Norm(r)<Norm(b)`.
+   `ZPairValid(a) -> ZPairValid(b) -> b!=0
+      -> exists q r U V. GEuclideanDivision(a,b,q,r,U,V)`.
+   Alpha-closed in v28: the actual quotient, remainder, and multiplicative
+   norm witnesses are constructed from valid inputs alone.
 2. **G082 - Gaussian unique factorization.**
    Every nonzero Gaussian integer has a canonical prime factorization unique
    up to the explicitly normalized units.
@@ -1011,7 +1053,11 @@ must be definitions with verified HA graphs.
    Rational primes `2`, `1 mod 4`, and `3 mod 4` are respectively ramified,
    split, and inert, with witnessed factors in the split case.
 4. **G084 - Eisenstein Euclidean division.**
-   `Eisenstein(b)!=0 -> exists q r. a=b*q+r /\ Norm(r)<Norm(b)`.
+   `ZPairValid(a) -> ZPairValid(b) -> b!=0
+      -> exists q r U V. EEuclideanDivision(a,b,q,r,U,V)`.
+   Alpha-closed in v28 using a fundamental-parallelogram floor quotient.
+   Global nearest-point optimality is not claimed. The signed-pair carrier
+   and addition are shared with G081; multiplication and norm are distinct.
 5. **G085 - Eisenstein unique factorization.**
    Every nonzero Eisenstein integer has a canonical factorization up to its
    six normalized units.
@@ -1389,8 +1435,8 @@ vertex count, while the objective count tracks only the 120 theorem goals.
 | 2 | 5 | 1 | G001 |
 | 3 | 8 | 4 | G002, G021, G031, G071 |
 | 4 | 8 | 6 | G003, G004, G012, G013, G101 |
-| 5 | 13 | 9 | G005, G011, G022, G025, G032 |
-| 6 | 11 | 9 | G006, G023, G024, G034, G042 |
+| 5 | 12 | 8 | G005, G011, G025, G032 |
+| 6 | 12 | 10 | G006, G022, G023, G024, G034, G042 |
 | 7 | 17 | 16 | G007, G010, G014, G026, G033 |
 | 8 | 21 | 21 | G008, G015, G027, G035, G045 |
 | 9 | 16 | 16 | G009, G016, G037, G046, G057 |
@@ -1684,6 +1730,44 @@ subresults listed above**; this release does not silently close them:
   primitive Pythagorean and Fermat-four campaigns where relevant;
 - Gaussian integer Euclidean division and norm factorization;
 - constructive prime-generation families with genuinely elementary proofs.
+
+### 7.2a Lower-layer saturation: nine exact contracts complete in Alpha v28
+
+All 204 new mathematical bodies are independently checked. The six source
+suites pass 1,412 tests; the full combined certificate is accepted by both
+unchanged verifiers. The four canonical public families present 27 arithmetic
+foundations, 19 prime-enumeration proofs, 93 Gaussian proofs, and 65 Eisenstein
+proofs. Moving the existing prime-unboundedness interface between presentation
+families changes neither its authoring provenance nor its theorem identity.
+
+The shared registry adds precisely ND0142–ND0176. Historical formula objects,
+first-admission evidence, Stable membership, and v27 explorer bytes remain
+unchanged. The [current proof maps](../book/_static/constructive-lower-layer-explorer/index.html)
+and [book chapter](../book/arithmetic-library/lower-layer-campaign.md) expose
+the witnesses and the actual mixed definition/proof DAG. Reproduce the release
+with `make peano-library-alpha-v28-check`.
+
+The next lower-layer dispatch priorities are:
+
+1. **Arithmetic functions (G006 then G007/G010):** reuse actual prime-factor lists for totient
+   products, finite divisor sums, Möbius inversion, and squarefree/perfect-power
+   witnesses. Build each missing arithmetic-function graph explicitly.
+2. **Quadratic ring factorization (G082/G085 before G083/G086):** turn the proved norm-decreasing divisions
+   into actual Euclidean traces, gcd/Bézout, factor extraction, and unique
+   factorization; only then prove the rational-prime classification bridges.
+3. **Finite-field foundations (G091/G093):** use finite polynomial operations and verified prime-field
+   arithmetic to construct prime-power fields and characteristic-aware
+   squarefree decomposition. Irreducibility and Frobenius hypotheses must be
+   proved, not supplied as unlabelled oracles.
+4. **Local arithmetic and approximation (G036/G045/G072):** complete exact valuation-lifting, Jacobi reciprocity,
+   and continued-fraction best-approximation contracts with all exceptional
+   and boundary cases retained.
+
+The current exact ready frontier has sixteen entries. Readiness means only
+that its displayed direct prerequisites are checked; it does not certify
+missing internal lemmas or make stronger lattice/LLL infrastructure available.
+Gaussian/Eisenstein unique factorization and prime classification remain open,
+as do higher reciprocity and representation-counting summits.
 
 ### 7.3 Third execution wave: breadth with shared finite machinery
 

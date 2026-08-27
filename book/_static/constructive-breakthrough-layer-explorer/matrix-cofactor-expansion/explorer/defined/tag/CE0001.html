@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="matrix-cofactor-expansion"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
-       <a href="../../tag/CE0001.html?v=481a9a378e54">Exact original proof</a>
-       <a href="../graph.html?target=CE0001&amp;v=481a9a378e54">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=481a9a378e54">T13 milestone</a></nav>
+  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
+       <a href="../../tag/CE0001.html?v=897410581b66">Exact original proof</a>
+       <a href="../graph.html?target=CE0001&amp;v=897410581b66">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=897410581b66">T13 milestone</a></nav>
   <p class="pd-tag">CE0001</p><h1>matrix_minor_four_code_exists</h1>
-  <p>Four arbitrary natural minor-code components have one exact nested doubled-Cantor record.</p><p class="pd-status">Alpha v27 checked-use · first admitted v25 · independently kernel and Lean verified; not Stable</p>
+  <p>Four arbitrary natural minor-code components have one exact nested doubled-Cantor record.</p><p class="pd-status">Alpha v28 checked-use · first admitted v25 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
-  <p class="pd-callout">Historical partial components only: this chapter proves genuine signed first-row minors and unique alternating folds, with supplied cofactor values. T13 is now closed in the separate Alpha-v27 integer-linear-algebra branch with actual arbitrary determinant data, rank, and integer column spans; lattice index and normal forms are not claimed. <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=481a9a378e54">Full T13 proof · Alpha v27</a></p>
+  <p class="pd-callout">Historical partial components only: this chapter proves genuine signed first-row minors and unique alternating folds, with supplied cofactor values. T13 is now closed in the separate Alpha-v27 integer-linear-algebra branch with actual arbitrary determinant data, rank, and integer column spans; lattice index and normal forms are not claimed. <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=897410581b66">Full T13 proof · Alpha v27</a></p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ up. ∀ us. ∀ un. ∀ ut. ∃ z. <a class="pd-definition-ref" data-definition="ND0058" href="../definition/ND0058.html?v=481a9a378e54">MatrixMinorFourCode(z,up,us,un,ut)</a></code></pre>
+    <pre><code>∀ up. ∀ us. ∀ un. ∀ ut. ∃ z. <a class="pd-definition-ref" data-definition="ND0058" href="../definition/ND0058.html?v=897410581b66">MatrixMinorFourCode(z,up,us,un,ut)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0058.html?v=481a9a378e54">MatrixMinorFourCode(z,up,us,un,ut) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0058.html?v=897410581b66">MatrixMinorFourCode(z,up,us,un,ut) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall up us un ut. exists z. z = ((((up) + (us)) * S ((up) + (us)) + ((us) + (us))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut)))) * S ((((up) + (us)) * S ((up) + (us)) + ((us) + (us))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut)))) + ((((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut))))</code></pre></details>
@@ -28,7 +28,7 @@
     <p>All 6 lines are the exact independently kernel-checked original script.</p>
     <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro up</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro us</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro un</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro ut</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>exists ((((up) + (us)) * S ((up) + (us)) + ((us) + (us))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut)))) * S ((((up) + (us)) * S ((up) + (us)) + ((us) + (us))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut)))) + ((((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut))) + (((un) + (ut)) * S ((un) + (ut)) + ((ut) + (ut))))</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>refl</code></li></ol></section>
 </div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
-  <dl><dt>Authority</dt><dd>Alpha v27 checked use</dd><dt>First admission</dt><dd>Alpha v25</dd><dt>Stable membership</dt><dd>none</dd>
+  <dl><dt>Authority</dt><dd>Alpha v28 checked use</dd><dt>First admission</dt><dd>Alpha v25</dd><dt>Stable membership</dt><dd>none</dd>
       <dt>Proof-bundle node</dt><dd>229 / 302</dd>
       <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
       <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 302 exact bundle nodes</dd>

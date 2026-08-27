@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>AF0005 — factor_permutation_below_zero_impossible — Exact Proof</title>
+  <link rel="stylesheet" href="../../../assets/exact-explorer.css?v=6dd0cf105c49">
+  <script defer src="../../../assets/exact-explorer.js?v=98f11fff5d34"></script>
+</head>
+<body class="pa-proof-site" data-page="theorem" data-family="arithmetic-foundations"><header class="pa-proof-header pa-theorem-heading">
+  <nav><a href="../index.html?v=897410581b66">Explorer</a><a href="../defined/tag/AF0005.html?v=897410581b66">Defined notation</a><a href="../defined/graph.html?target=AF0005&amp;v=897410581b66">Dependency graph</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F01&amp;v=897410581b66">Campaign family</a><a data-campaign-link="global" href="../../../grand-campaign/?v=897410581b66">Full campaign map</a><a href="AF0004.html?v=897410581b66">← foundation_prime_factor_list_exists</a><a href="AF0006.html?v=897410581b66">factor_permutation_prefix_reflect →</a><a data-campaign-link="global" href="../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F01&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G001" href="../../../grand-campaign/?view=goal&amp;focus=G001&amp;v=897410581b66">G001 milestone</a><a data-campaign-link="goal" data-campaign-goal="G002" href="../../../grand-campaign/?view=goal&amp;focus=G002&amp;v=897410581b66">G002 milestone</a><a data-campaign-link="goal" data-campaign-goal="G003" href="../../../grand-campaign/?view=goal&amp;focus=G003&amp;v=897410581b66">G003 milestone</a><a data-campaign-link="goal" data-campaign-goal="G004" href="../../../grand-campaign/?view=goal&amp;focus=G004&amp;v=897410581b66">G004 milestone</a><a data-campaign-link="goal" data-campaign-goal="G005" href="../../../grand-campaign/?view=goal&amp;focus=G005&amp;v=897410581b66">G005 milestone</a></nav>
+  <p class="pa-tag">AF0005</p><h1>factor_permutation_below_zero_impossible</h1>
+  <p class="pa-status-candidate">Alpha v28 independently verified · alpha_closed; checked-use authorized; not Stable</p>
+  <p>There is no natural index below zero; empty list and permutation contracts are genuinely vacuous.</p>
+</header>
+<main class="pa-theorem-layout">
+  <div class="pa-proof-panel">
+    <section class="pa-statement"><h2>Exact expanded first-order arithmetic statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>forall i. (exists pfp_gap_empty. pfp_gap_empty + S (i) = (0)) -&gt; false</code></pre></section>
+    <section class="pa-informal-proof" data-informal-kind="structural" data-informal-review="generated"><h2>Constructive proof overview</h2><p><strong>Generated structural guide</strong></p><p>There is no natural index below zero; empty list and permutation contracts are genuinely vacuous.</p><p>The unchanged tactic script uses 1 declared prerequisite and contains 6 exact native proof lines.</p><p>Alpha v28 checked-use · first admitted v28 · independently kernel and Lean verified; not Stable</p></section>
+    <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row"><span class="pa-external-dependency" data-external-name="le_zero" data-evidence="stable_closed"><code>le_zero</code> <small>Stable theorem; checked-use authorized</small></span></div><h3>Direct dependents</h3><div class="pa-chip-row"><a class="pa-theorem-ref" href="AF000D.html?v=897410581b66"><code>AF000D</code> factor_permutation_empty_matching</a> <a class="pa-theorem-ref" href="AF0019.html?v=897410581b66"><code>AF0019</code> prime_factor_lists_matching_by_length</a></div></section>
+    <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. This exact body belongs to a complete independently kernel-checked constructive proof bundle and has Alpha checked-use authority; it does not imply Stable membership.</p><ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="450daa9511dc1416"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> i</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="151e48aa2dbb103c"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> hi</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="apply" data-line-id="33115abebf473154"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">apply</span> PA1</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="17d96779c4250b85"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <span class="pa-external-ref">le_zero</span> (S i)</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="apply" data-line-id="00f3c86b9490d3b4"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-external-ref">le_zero</span></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="exact" data-line-id="69a1def24d83e06b"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">exact</span> hi</code></li></ol></section>
+  </div>
+  <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>0</dd><dt>Tactic lines</dt><dd>6</dd><dt>Alpha evidence</dt><dd>alpha_closed</dd><dt>Checked-use authority</dt><dd>Alpha v28; independently verified</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>428642bc43c859af24a624ea749108442792aa41e6bc19fb3106c59e81ece9ca</code></dd><dt>Exact script SHA-256</dt><dd><code>8dab2cc8643fe6ea70df288b0e9957b6bf48cc6ce6bd9924cfe520d43826877e</code></dd><dt>Source module</dt><dd><code>peano_lab.library.prime_factorization_permutation_candidate</code></dd><dt>Factory</dt><dd><code>make_prime_factorization_permutation_candidate_theorems</code></dd></dl></aside>
+</main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

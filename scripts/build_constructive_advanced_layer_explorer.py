@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish checked Alpha-v21 families under current immutable Alpha-v27 authority.
+"""Publish checked Alpha-v21 families under current immutable Alpha-v28 authority.
 
 This is an evidence-reading static documentation generator, never a theorem
 provider.  The sealed Alpha-v21 catalog must authenticate a complete
@@ -56,7 +56,7 @@ from constructive_breakthrough_layer_definitions import (  # noqa: E402
 )
 from peano_lab.library import editions_v20 as v20  # noqa: E402
 from peano_lab.library import editions_v21 as v21  # noqa: E402
-from peano_lab.library import editions_v27 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v28 as current_alpha  # noqa: E402
 from peano_lab.library.alpha_enrollment_v21 import (  # noqa: E402
     EXPECTED_CAMPAIGN_COUNTS,
     FRONTIER_V21_EXPECTED_COUNT,
@@ -82,8 +82,8 @@ from peano_lab.library.campaign_breakthrough_layer_closure import (  # noqa: E40
 OUTPUT = REPO / "book" / "_static" / "constructive-advanced-layer-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v21.json"
 PARENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v20.json"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
-CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v27.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v28.json"
+CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v28.json"
 CAMPAIGN = REPO / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
 GLOBAL_DEFINITIONS = CAMPAIGN.with_name("definitions.json")
 EXPECTED_ALPHA_COUNT = 1_830
@@ -94,7 +94,7 @@ EXPECTED_BUNDLE_PATH = (
 )
 SCHEMA = "peano-lab-constructive-advanced-layer-explorer-v1"
 STATUS = (
-    "Alpha v27 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable"
+    "Alpha v28 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable"
 )
 ASSET_SOURCES = original.ASSET_SOURCES
 PINNED_ASSETS = original.PINNED_ASSETS
@@ -405,30 +405,30 @@ def _load_inputs() -> dict[str, Any]:
     current_catalog = json.loads(CURRENT_CATALOG.read_bytes())
     original._audit_current_parent(current_catalog, channels, error_type=AdvancedLayerExplorerError)
     if (
-        channels.get("schema") != "peano-library-channels-v27"
+        channels.get("schema") != "peano-library-channels-v28"
         or channels.get("default_channel") != "stable"
-        or channels.get("parent_channels_v26", {}).get("path")
-        != "artifacts/peano-library/channels-v26.json"
-        or channels.get("parent_channels_v26", {}).get("sha256")
-        != _file_digest(CURRENT_CHANNELS.with_name("channels-v26.json"))
-        or current.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v27.json"
+        or channels.get("parent_channels_v27", {}).get("path")
+        != "artifacts/peano-library/channels-v27.json"
+        or channels.get("parent_channels_v27", {}).get("sha256")
+        != _file_digest(CURRENT_CHANNELS.with_name("channels-v27.json"))
+        or current.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v28.json"
         or current.get("artifact_sha256") != current_digest
-        or current.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or current.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V28_COUNT
         or current.get("checked_use_count")
-        != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        != current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
         or current.get("edition_identity_sha256")
-        != current_alpha.ALPHA_V27_IDENTITY_SHA256
+        != current_alpha.ALPHA_V28_IDENTITY_SHA256
         or current.get("ordered_enrollment_root_sha256")
-        != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        != current_alpha.ALPHA_V28_ENROLLMENT_SHA256
         or current.get("parent_alpha_v21_sha256") != _digest(raw_catalog)
-        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v27"
-        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
-        or current_catalog.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v28"
+        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V28_COUNT
+        or current_catalog.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
         or current_catalog.get("stable_count") != EXPECTED_STABLE_COUNT
-        or current_catalog.get("edition_identity_sha256") != current_alpha.ALPHA_V27_IDENTITY_SHA256
-        or current_catalog.get("ordered_enrollment_root_sha256") != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        or current_catalog.get("edition_identity_sha256") != current_alpha.ALPHA_V28_IDENTITY_SHA256
+        or current_catalog.get("ordered_enrollment_root_sha256") != current_alpha.ALPHA_V28_ENROLLMENT_SHA256
         or not isinstance(current_catalog.get("theorems"), list)
-        or len(current_catalog["theorems"]) != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or len(current_catalog["theorems"]) != current_alpha.EXPECTED_ALPHA_V28_COUNT
         or current_catalog["theorems"][:EXPECTED_ALPHA_COUNT] != catalog.get("theorems")
         or tuple(current_alpha.ALPHA_ENTRIES[:EXPECTED_ALPHA_COUNT]) != v21.ALPHA_ENTRIES
         or any(
@@ -437,7 +437,7 @@ def _load_inputs() -> dict[str, Any]:
         )
     ):
         raise AdvancedLayerExplorerError(
-            "the current immutable Alpha-v27 release changed its exact Alpha-v21 first admission"
+            "the current immutable Alpha-v28 release changed its exact Alpha-v21 first admission"
         )
 
     entries = catalog.get("theorems")
@@ -528,14 +528,14 @@ def _load_inputs() -> dict[str, Any]:
         current_row = current_alpha.entry(spec.name, edition="alpha")
         if current_row is None or current_row.spec != spec or not current_row.checked_use:
             raise AdvancedLayerExplorerError(
-                f"Alpha-v27 lost the exact historically proved Alpha-v21 theorem {spec.name!r}"
+                f"Alpha-v28 lost the exact historically proved Alpha-v21 theorem {spec.name!r}"
             )
     return {
         "catalog": catalog,
         "current_catalog": current_catalog,
         "catalog_sha256": current_digest,
         "historical_catalog_sha256": _digest(raw_catalog),
-        "current_edition_identity_sha256": current_alpha.ALPHA_V27_IDENTITY_SHA256,
+        "current_edition_identity_sha256": current_alpha.ALPHA_V28_IDENTITY_SHA256,
         "revision": current_digest[:12],
         "bundle": bundle,
         "by_name": by_name,
@@ -721,7 +721,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
             "enrolled_in_alpha": True,
             "alpha_evidence": "alpha_closed",
             "alpha_checked_use": True,
-            "alpha_edition_version": "v27",
+            "alpha_edition_version": "v28",
             "alpha_first_enrolled_version": "v21",
             "stable_member": False,
             "admitted_to_alpha": True,
@@ -833,7 +833,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
         "statement_definition_use_count": len(usage_edges),
         "formal_line_count": sum(len(node["script"]) for node in nodes),
         "candidate_status": STATUS,
-        "alpha_edition_version": "v27",
+        "alpha_edition_version": "v28",
         "alpha_first_enrolled_version": "v21",
         "alpha_edition_identity_sha256": inputs["current_edition_identity_sha256"],
         "alpha_catalog_sha256": inputs["catalog_sha256"],
@@ -856,13 +856,13 @@ def _graph_payload(
 ) -> dict[str, Any]:
     graph = original._graph_payload(family, corpus, revision=revision)
     graph["schema"] = f"{SCHEMA}-graph"
-    graph["alpha_edition_version"] = "v27"
+    graph["alpha_edition_version"] = "v28"
     graph["alpha_first_enrolled_version"] = "v21"
     graph["milestone_status"] = corpus["milestone_status"]
     graph["milestone_caveat"] = family.caveat
     for node in graph["nodes"]:
         if node["kind"] == "theorem":
-            node["alpha_edition_version"] = "v27"
+            node["alpha_edition_version"] = "v28"
             node["alpha_first_enrolled_version"] = "v21"
     return graph
 
@@ -904,13 +904,13 @@ def _top_index(
         for family, corpus in corpora
     )
     body = f"""<main class="proof-home proof-library-home"><header class="proof-hero">
- <p class="eyebrow">ALPHA v27 · HISTORICAL v21 CONSTRUCTIVE ADVANCED LAYER</p>
+ <p class="eyebrow">ALPHA v28 · HISTORICAL v21 CONSTRUCTIVE ADVANCED LAYER</p>
  <h1>Three independently checked constructive research campaigns</h1>
  <p>Fifty-four completed intuitionistic Heyting-arithmetic proofs independently accepted by both the original kernel and the compiled Lean verifier, exposed with their exact original scripts, genuine proof DAGs and shared hygienic conservative definitions.</p>
  <nav><a href="{_versioned('../', revision)}">Proof library</a>
  <a href="{_versioned('../grand-campaign/', revision)}">Full number-theory campaign atlas</a></nav>
  </header><section class="proof-grid">{entries}</section>
- <p>Every displayed theorem was independently first admitted in Alpha v21 and retains Alpha-v27 checked-use authority; Stable remains separate. G101 and G102 were fully closed in Alpha v23. Historical T13 components retain their original scope; the separate Alpha-v27 integer-linear-algebra branch now closes its determinant/rank/integer-span substrate.</p></main>"""
+ <p>Every displayed theorem was independently first admitted in Alpha v21 and retains Alpha-v28 checked-use authority; Stable remains separate. G101 and G102 were fully closed in Alpha v23. Historical T13 components retain their original scope; the separate Alpha-v27 integer-linear-algebra branch now closes its determinant/rank/integer-span substrate.</p></main>"""
     return original._document(
         FAMILIES[0],
         title="Constructive Advanced-Layer Proof Library",
@@ -941,7 +941,7 @@ def build_files() -> dict[str, bytes]:
             family,
             corpus,
             revision=revision,
-            current_alpha_version="v27",
+            current_alpha_version="v28",
             first_admitted_version="v21",
             bundle_node_count=EXPECTED_BUNDLE_NODE_COUNT,
         )
@@ -1007,7 +1007,7 @@ def build_files() -> dict[str, bytes]:
         "first_enrollment_catalog_sha256": inputs["historical_catalog_sha256"],
         "html_revision": revision,
         "edition_identity_sha256": inputs["current_edition_identity_sha256"],
-        "alpha_edition_version": "v27",
+        "alpha_edition_version": "v28",
         "alpha_first_enrolled_version": "v21",
         "proof_bundle_sha256": inputs["bundle"]["artifact_sha256"],
         "proof_bundle_node_count": EXPECTED_BUNDLE_NODE_COUNT,

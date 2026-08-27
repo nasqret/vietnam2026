@@ -2710,3 +2710,34 @@ surface-macro-v0 row explicitly ineligible. The current ledger sees extracted
 tactic lines, not raw decoder text and resource records, while its state gate
 comes from the teacher transcript rather than an independently detected
 symbolic fixed point. These are now recorded requirements, not hidden debts.
+
+## 2026-08-27 — Saturate foundations without changing proof authority
+
+The lower-layer campaign now has 204 new constructive proofs: exact arithmetic
+interfaces, unordered factorization with an actual finite permutation, complete
+initial prime lists with witnessed bounds, and Gaussian/Eisenstein Euclidean
+division. The original HA checker and the independent compiled Lean verifier
+both accept the complete 862-node certificate. Six focused mathematical suites
+pass 1,412 tests. Neither kernel rules nor proof-size limits were weakened.
+
+The two quadratic rings deliberately share their canonical signed-pair carrier
+and addition definition. Their different multiplication laws and norms remain
+separate conservative objects. Thirty-five new hygienic definition identities
+extend the old registry; all old identities remain the same objects. Three
+edge types distinguish actual theorem prerequisites, theorem uses of notation,
+and definition dependencies. Only genuine proof edges enter proof paths.
+
+The exact first-prime bound uses Bertrand, so its atlas node moves after the
+real prerequisite. The old planned layer and dependencies remain recorded as
+history. Euclidean division does not close either ring's unique-factorization
+or prime-classification goals. The Eisenstein construction needs only a floor
+quotient in its fundamental parallelogram, not a nearest-point optimality claim.
+
+Sealed v27 presentation sources stay unchanged. A hash-authenticated archive
+preserves the exact old atlas bytes for their original reproducibility tests;
+an additive v28 publication supplies current navigation without rewriting
+first-admission evidence. The four new explorers reuse the original Quadratic
+Reciprocity assets and reading layout. Alpha is now 2,764 checked theorems;
+Stable remains the unchanged, default 432. Proof-site publication and Peano
+production admission remain separate: missing faculty cache headers must not
+be worked around by weakening the documented production gate.

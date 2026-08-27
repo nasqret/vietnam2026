@@ -19,12 +19,12 @@ SCRIPTS = ROOT / "scripts"
 if str(SCRIPTS) not in sys.path:
     sys.path.insert(0, str(SCRIPTS))
 
-import constructive_second_wave_definition_graph as definition_graph
+import constructive_lower_layer_definition_graph as definition_graph
 from peano_lab.library.theorems import TheoremSpec
 
 
 HUB = ROOT / "deploy/proofs/index.html"
-CATALOG = ROOT / "artifacts/peano-library/alpha/catalog-v27.json"
+CATALOG = ROOT / "artifacts/peano-library/alpha/catalog-v28.json"
 FIRST_ADMISSION_CATALOG = ROOT / "artifacts/peano-library/alpha/catalog-v26.json"
 FAMILY = ROOT / "book/_static/constructive-frontier-explorer/pythagorean-fermat-four"
 ROOT_TAGS = {
@@ -41,6 +41,12 @@ SECOND_WAVE_FAMILIES = {
     "prime-count-chebyshev": ("chebyshev", 55, "G027"),
     "cornacchia": ("cornacchia", 30, "G107"),
     "cauchy-davenport": ("cauchy_davenport", 72, "G051"),
+}
+LOWER_LAYER_FAMILIES = {
+    "arithmetic-foundations": (27, ("G001", "G002", "G003", "G004", "G005")),
+    "prime-enumeration": (19, ("G021", "G022")),
+    "gaussian-integers": (93, ("G081",)),
+    "eisenstein-integers": (65, ("G084",)),
 }
 
 
@@ -70,13 +76,13 @@ def test_current_hub_authority_matches_sealed_catalog_and_actual_definition_dag(
     assert f"{graph['reviewed_definition_count']} reviewed conservative definitions" in page
     assert f"{graph['reviewed_definition_edge_count']} audited definition prerequisites" in page
     assert f"{graph['compatible_reviewed_match_count']} signature-compatible definition links" in page
-    assert "Immutable Alpha v27" in page
+    assert "Immutable Alpha v28" in page
     assert "2,138 theorems have checked-use authority" not in page
 
 
 def test_established_hub_structure_and_every_family_route_are_preserved(surface) -> None:
     page, cards, revision = surface
-    assert len(cards) == 34
+    assert len(cards) == 38
     assert '<header class="hero">' in page
     assert '<section class="family-grid" aria-label="Proof families">' in page
     assert '<section class="family-grid frontier-grid"' in page
@@ -90,7 +96,7 @@ def test_established_hub_structure_and_every_family_route_are_preserved(surface)
             continue
         assert parse_qs(target.query).get("v") == [revision], href
     assert "Alpha v26 checked" not in page
-    assert "all 34 proof families" in page
+    assert "all 38 proof families" in page
 
 
 def test_unrelated_historical_family_counts_do_not_change(surface) -> None:
@@ -200,7 +206,7 @@ def test_second_wave_cards_have_exact_new_counts_and_closed_milestone_routes(sur
     promotion = catalog["alpha_v27_second_wave_promotion"]
     assert promotion["campaign_counts"][campaign] == count
     card = cards[slug]
-    assert f"Alpha v27 checked use · {count} independently proved theorems" in card
+    assert f"Alpha v28 checked use · {count} independently proved theorems" in card
     assert "independently kernel and Lean verified; not Stable" in card
     assert f'href="{slug}/?v={revision}"' in card
     assert f'href="grand-campaign/?view=goal&amp;focus={milestone}&amp;v={revision}"' in card
@@ -237,3 +243,39 @@ def test_v27_bundle_and_receipt_bind_all_actual_second_wave_proofs(surface) -> N
     assert bundle[0] == "peano-lab-bundle-v1"
     assert len(bundle[3]) == 1224
     assert "kernel- and Lean-verified 1,224-node proof certificate" in page
+
+
+@pytest.mark.parametrize("slug", tuple(LOWER_LAYER_FAMILIES))
+def test_lower_layer_cards_bind_actual_new_theorems_and_exact_milestone_evidence(surface, slug: str) -> None:
+    page, cards, revision = surface
+    count, goals = LOWER_LAYER_FAMILIES[slug]
+    card = cards[slug]
+    corpus = json.loads((ROOT / "book/_static/constructive-lower-layer-explorer" / slug / "api/corpus.json").read_text())
+    assert len(corpus["nodes"]) == count
+    assert f"Alpha v28 checked use · {count} independently proved theorems" in card
+    assert "independently kernel and Lean verified; not Stable" in card
+    assert f'href="{slug}/?v={revision}"' in card
+    for identifier in goals:
+        assert f'focus={identifier}&amp;v={revision}' in page
+    assert "Five established arithmetic interfaces and prime unboundedness" not in page
+
+
+def test_lower_layer_cards_preserve_mathematical_scope_and_historical_snapshots(surface) -> None:
+    page, cards, _revision = surface
+    assert "No sorting or supplied canonicalization is assumed" in cards["arithmetic-foundations"]
+    assert "empty prime factor list represents one" in cards["arithmetic-foundations"]
+    assert "This is not a sparse Bertrand chain" in cards["prime-enumeration"]
+    assert "Both power witnesses and the complete prime list are constructed" in cards["prime-enumeration"]
+    assert "Gaussian gcd, factorization, and prime classification are not claimed" in cards["gaussian-integers"]
+    assert "global nearest-point optimality is not asserted" in cards["eisenstein-integers"]
+    catalog = json.loads(CATALOG.read_text())
+    promotion = catalog["alpha_v28_lower_layer_promotion"]
+    assert promotion["frontier_new_count"] == sum(count for count, _ in LOWER_LAYER_FAMILIES.values()) == 204
+    assert promotion["independent_lean_bundle_verified"] is True
+    documents = {row["path"]: row for row in catalog["evidence_documents"]}
+    for path in (ROOT / "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+                 ROOT / "research/arithmetic-library/alpha-v28-lower-layer-receipt.md"):
+        assert sha256(path.read_bytes()).hexdigest() == documents[path.relative_to(ROOT).as_posix()]["sha256"]
+        assert f'href="artifacts/{path.name}"' in page
+    assert "kernel- and Lean-verified 862-node proof certificate" in page
+    assert "all 38 proof families preserve the same canonical reading surfaces" in page

@@ -3,9 +3,9 @@
 The completed proofs are not isolated exhibits. They form the beginning of a
 single dependency-aware research programme: **120 major mathematical goals**,
 **16 reusable constructive tools**, **8 established proof anchors**, and
-**290 pieces of mathematical vocabulary** distributed across twelve families.
-The current sealed Alpha v27 library supplies **2,560 independently checked
-theorems** and **8,196 checked proof dependencies**; the atlas explains how
+**323 pieces of mathematical vocabulary** distributed across twelve families.
+The current sealed Alpha v28 library supplies **2,764 independently checked
+theorems** and **8,984 checked proof dependencies**; the atlas explains how
 these existing results support the much larger, still honestly open programme.
 
 ```{admonition} A research map is not a proof certificate
@@ -72,6 +72,10 @@ programme rather than disconnected databases.
 
 | Concrete campaign | Family position | Existing proof explorer |
 |---|---|---|
+| Arithmetic and unordered prime factorization | G001–G005: exact interfaces and witnessed finite permutations | [27-theorem foundation explorer](../_static/constructive-lower-layer-explorer/arithmetic-foundations/index.html) |
+| Actual first primes and effective bounds | G021–G022: unboundedness and complete initial lists | [19-theorem prime-enumeration explorer](../_static/constructive-lower-layer-explorer/prime-enumeration/index.html) |
+| Gaussian Euclidean division | G081: actual quotient, remainder, and strict norm decrease | [93-theorem Gaussian explorer](../_static/constructive-lower-layer-explorer/gaussian-integers/index.html) |
+| Eisenstein Euclidean division | G084: actual floor construction and strict norm decrease | [65-theorem Eisenstein explorer](../_static/constructive-lower-layer-explorer/eisenstein-integers/index.html) |
 | Quadratic reciprocity and supplementary laws | <a href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F05">F05: reciprocity</a> · <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G043">G043: proved quadratic reciprocity</a> | [557-theorem definition-aware QR proof](../_static/pa-proof-explorer/defined/index.html) |
 | Bertrand and prime progressions | <a href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F03">F03: prime distribution</a> · <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G026">G026: proved 1-mod-4 infinitude</a> · <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G025">G025: proved 3-mod-4 infinitude</a> | [544-theorem definition-aware Bertrand proof](../_static/bertrand-proof-explorer/defined/index.html) · [18-theorem 3-mod-4 prime proof](../_static/constructive-milestone-closure-explorer/primes-three-mod-four/index.html) |
 | Lucas and Kummer | <a href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F04">F04: binomial and valuation arithmetic</a> | [Lucas proof](../_static/constructive-frontier-explorer/lucas/index.html) · [Kummer proof](../_static/constructive-frontier-explorer/kummer/index.html) |
@@ -79,19 +83,19 @@ programme rather than disconnected databases.
 | Pythagorean construction and Fermat descent | <a href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F08">F08: Diophantine equations</a> · <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=A08">A08: proved forward constructor</a> | [Pythagorean/Fermat-four proof explorer](../_static/constructive-frontier-explorer/pythagorean-fermat-four/index.html) |
 | Complete linear congruences | <a href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F02">F02: congruences and orders</a> · <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G012">G012: proved solvability criterion</a> | <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G012">The exact checked Alpha library</a> |
 | Constructive polynomial evaluation | <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=T12">T12: proved natural Horner evaluation</a> | [Seven-theorem polynomial Horner explorer](../_static/constructive-next-layer-explorer/polynomial-horner/index.html) |
-| Arbitrary signed determinants, rectangular rank, and integer spans | <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=T13">T13: exact substrate closed in v27</a> | [182 new integer-linear-algebra theorems](../_static/constructive-second-wave-explorer/integer-linear-algebra/index.html) |
+| Arbitrary signed determinants, rectangular rank, and integer spans | <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=T13">T13: exact substrate closed in v27</a> | [182 new integer-linear-algebra theorems](../_static/constructive-second-wave-explorer-v28/integer-linear-algebra/index.html) |
 | Arbitrary natural and signed matrix products | <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=T13">T13: historical multiplication prerequisites</a> | [Twenty-three independently checked coded-product theorems](../_static/constructive-advanced-layer-explorer/matrix-coded-products/index.html) |
 | Euclidean execution, terminal gcd, and exact logarithmic complexity | <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G101">G101: closed; actual terminal gcd and steps ≤ 2 · BitLen(b) + 1</a> | [17-theorem complete logarithmic Euclidean-GCD proof](../_static/constructive-milestone-closure-explorer/euclidean-logarithmic-bound/index.html) · {doc}`Twenty historical terminal-gcd transport proofs <transport-layer-campaign>` |
 | Canonical arbitrary-exponent digits and actual binary modular execution | <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G102">G102: closed; operations ≤ 3 · BitLen(e) + 2</a> | [24-theorem complete canonical-digit/execution proof](../_static/constructive-milestone-closure-explorer/binary-digit-extraction/index.html) · {doc}`Nineteen historical binary-execution proofs <transport-layer-campaign>` |
 | Exact object-language binary length | <a href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F11">F11: verified number-theoretic algorithms</a> · <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G101">G101: shared total and unique BitLen foundation</a> | {doc}`Twenty-one total, functional, and unique binary-length proofs <transport-layer-campaign>` |
 | Stronger Bertrand prime constructions | <a href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F03">F03: prime distribution</a> · <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G023">G023: exact valuation one</a> · <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G024">G024: arbitrary finite prime chains</a> | [Thirteen-theorem Bertrand prime-chain explorer](../_static/constructive-next-layer-explorer/bertrand-prime-chains/index.html) |
 | Finite continued fractions | <a href="../_static/constructive-grand-campaign/index.html?view=family&amp;focus=F08">F08: Diophantine equations</a> · <a href="../_static/constructive-grand-campaign/index.html?view=goal&amp;focus=G071">G071: proved finite continued fractions</a> | [Nine-theorem continued-fraction explorer](../_static/constructive-next-layer-explorer/continued-fractions/index.html) |
-| Arbitrary finite compatible CRT systems | G011: closed, including empty systems and zero moduli | [Generalized CRT](../_static/constructive-second-wave-explorer/generalized-crt/index.html) |
-| Signed-polynomial simple-root lifting | G095: closed at every positive prime power | [Hensel lifting](../_static/constructive-second-wave-explorer/hensel-lifting/index.html) |
-| Multinomial carry valuations | G035: actual sequential base-prime carries | [Multinomial Kummer](../_static/constructive-second-wave-explorer/multinomial-kummer/index.html) |
-| Effective prime-count bounds | G027: explicit constant-eight inequalities | [Chebyshev bounds](../_static/constructive-second-wave-explorer/prime-count-chebyshev/index.html) |
-| Prime two-square construction by Euclidean stopping | G107: actual first-stop trace | [Cornacchia](../_static/constructive-second-wave-explorer/cornacchia/index.html) |
-| Sharp prime-field sumset bound | G051: actual finite sets, cardinalities, and sumset | [Cauchy–Davenport](../_static/constructive-second-wave-explorer/cauchy-davenport/index.html) |
+| Arbitrary finite compatible CRT systems | G011: closed, including empty systems and zero moduli | [Generalized CRT](../_static/constructive-second-wave-explorer-v28/generalized-crt/index.html) |
+| Signed-polynomial simple-root lifting | G095: closed at every positive prime power | [Hensel lifting](../_static/constructive-second-wave-explorer-v28/hensel-lifting/index.html) |
+| Multinomial carry valuations | G035: actual sequential base-prime carries | [Multinomial Kummer](../_static/constructive-second-wave-explorer-v28/multinomial-kummer/index.html) |
+| Effective prime-count bounds | G027: explicit constant-eight inequalities | [Chebyshev bounds](../_static/constructive-second-wave-explorer-v28/prime-count-chebyshev/index.html) |
+| Prime two-square construction by Euclidean stopping | G107: actual first-stop trace | [Cornacchia](../_static/constructive-second-wave-explorer-v28/cornacchia/index.html) |
+| Sharp prime-field sumset bound | G051: actual finite sets, cardinalities, and sumset | [Cauchy–Davenport](../_static/constructive-second-wave-explorer-v28/cauchy-davenport/index.html) |
 
 Each definition-aware proof graph retains its own exact theorem prerequisites
 and distinguishes them visually from theorem-to-definition and
@@ -100,11 +104,11 @@ conservative registry, of which 38 names occur; Bertrand uses 28 conservative
 definitions. Their compact formulas expand back to the original native
 first-order statements before any kernel replay.
 
-The larger atlas also derives a vocabulary graph from all **290 campaign
-terms**: **406 definition-to-definition edges**, **313 statement-lexical
-milestone-to-term occurrences**, and **213 separately typed, explicitly declared
+The larger atlas also derives a vocabulary graph from all **323 campaign
+terms**: **459 definition-to-definition edges**, **317 statement-lexical
+milestone-to-term occurrences**, and **231 separately typed, explicitly declared
 notation references** connect reusable mathematical language across the
-programme. Together these form **526 milestone-to-notation edges**.
+programme. Together these form **548 milestone-to-notation edges**.
 Historical v22 contained 88 definition-to-definition edges and 41 explicitly
 declared references before the new milestone-closure notation was independently
 reviewed.
@@ -115,22 +119,23 @@ expansion-checked registries in an existing proof explorer.
 
 The complete derived artifact is
 [`definitions.json`](../_static/constructive-grand-campaign/definitions.json).
-It sorts all 290 vocabulary terms into **thirteen dependency-first notation
+It sorts all 323 vocabulary terms into **thirteen dependency-first notation
 layers**, records every direct and transitive definition prerequisite, maps
 each term to the campaign statements that actually mention it, and separately
-audits the **198 genuinely shared conservative registry definitions** and their
-**388 reviewed dependency edges**. These include all eleven exact, hygienically
+audits the **233 genuinely shared conservative registry definitions** and their
+**441 reviewed dependency edges**. These include all eleven exact, hygienically
 expanded historical Alpha-v20 definition objects under permanent
 `ND0001`–`ND0011` identities, sixteen historical Alpha-v21 identities
 `ND0012`–`ND0027`, ten historical Alpha-v22 identities `ND0028`–`ND0037`,
 eight historical Alpha-v23 identities `ND0038`–`ND0045`, and the additive
-v24–v27 definitions through `ND0141`;
+v24–v27 definitions through `ND0141`, followed by the 35 new v28 identities
+`ND0142`–`ND0176`;
 the atlas and theorem-family explorers use the very same
 immutable first-order formula objects. Notation layers and notation edges never
 become theorem premises.
 
-Exactly **201 signature-compatible links** connect blueprint vocabulary
-to real, expansion-checked reading definitions: 196 share their exact names,
+Exactly **236 signature-compatible links** connect blueprint vocabulary
+to real, expansion-checked reading definitions: 231 share their exact names,
 and five use explicitly recorded aliases. In particular,
 `Beta(b,c,i,x)` corresponds to `BetaAt(b,c,i,x)`, `Binom(n,k,z)` to
 `Choose(n,k,z)`, `Fact(n,z)` to `Factorial(n,z)`, and `BetaSum(b,c,l,z)` to
@@ -215,6 +220,13 @@ Their `definition_refs` fields supply separately typed display links without
 pretending that expanded proof syntax already contains those surface names.
 
 ## A practical research workflow
+
+The {doc}`new lower-layer campaign <lower-layer-campaign>` explains the exact
+G001–G005, G021–G022, G081, and G084 endpoints and the 35 new shared
+definitions. Gaussian and Eisenstein division deliberately share one
+signed-pair carrier and addition relation while keeping their different
+norms and multiplication laws explicit. G082/G085 unique factorization and
+G083/G086 prime classification remain open successors.
 
 For a number theorist, a useful path through the database is:
 

@@ -246,7 +246,7 @@ def test_dependency_graph_is_closed_and_strictly_layered() -> None:
 
     levels = {node["layer"] for node in payload["nodes"]}
     assert levels == set(range(13))
-    assert sum(len(node["deps"]) for node in payload["nodes"]) == 308
+    assert sum(len(node["deps"]) for node in payload["nodes"]) == 309
 
 
 def test_goal_status_and_layer_census_remain_honest_and_exact() -> None:
@@ -255,20 +255,19 @@ def test_goal_status_and_layer_census_remain_honest_and_exact() -> None:
     statuses = Counter(node["status"] for node in goals)
     assert statuses == Counter(
         {
-            "open": 86,
-            "existing_foundation": 6,
+            "open": 83,
             "stable_closed": 1,
-            "alpha_closed": 27,
+            "alpha_closed": 36,
         }
     )
 
     layer_vertices = Counter(node["layer"] for node in payload["nodes"])
     assert [layer_vertices[level] for level in range(13)] == [
-        3, 4, 5, 8, 8, 13, 11, 17, 21, 16, 18, 11, 9
+        3, 4, 5, 8, 8, 12, 12, 17, 21, 16, 18, 11, 9
     ]
     layer_goals = Counter(node["layer"] for node in goals)
     assert [layer_goals[level] for level in range(13)] == [
-        0, 0, 1, 4, 6, 9, 9, 16, 21, 16, 18, 11, 9
+        0, 0, 1, 4, 6, 8, 10, 16, 21, 16, 18, 11, 9
     ]
 
 
@@ -725,10 +724,10 @@ def test_v23_completed_milestones_bind_exact_original_kernel_objects_and_atlas_r
     assert corpus["milestone_checked_use"] is True
     assert theorem_name in corpus["root_names"]
     assert corpus["node_count"] == count
-    assert corpus["alpha_edition_version"] == "v27"
+    assert corpus["alpha_edition_version"] == "v28"
     assert corpus["alpha_first_enrolled_version"] == "v23"
-    assert corpus["alpha_catalog_sha256"] == campaign()["ambitious_boundaries"]["alpha_v27_edition"]["catalog_sha256"]
-    assert corpus["alpha_edition_identity_sha256"] == "5c5935ed524b63827068cba37da222fc78b458de6c5af2e07cf572bb9fab7d05"
+    assert corpus["alpha_catalog_sha256"] == campaign()["ambitious_boundaries"]["alpha_v28_edition"]["catalog_sha256"]
+    assert corpus["alpha_edition_identity_sha256"] == campaign()["ambitious_boundaries"]["alpha_v28_edition"]["identity_sha256"]
     assert corpus["alpha_proof_bundle_sha256"] == MILESTONE_CLOSURE_BUNDLE_IDENTITY
 
 
@@ -1010,7 +1009,7 @@ def test_every_new_checked_anchor_binds_exact_frozen_bundle_and_catalog_nodes(
         assert closure["bundle_dependency_edge_count"] == evidence["bundle_dependencies"]
 
 
-def test_current_v27_release_preserves_v15_through_v26_evidence_and_stable() -> None:
+def test_current_v28_release_preserves_v15_through_v27_evidence_and_stable() -> None:
     payload = campaign()
     boundaries = payload["ambitious_boundaries"]
     ancestor = boundaries["alpha_v15_edition"]
@@ -1038,11 +1037,11 @@ def test_current_v27_release_preserves_v15_through_v26_evidence_and_stable() -> 
     breakthrough_layer = boundaries["breakthrough_layer_evidence_transition"]
     first_wave = boundaries["first_wave_evidence_transition"]
 
-    assert payload["meta"]["current_alpha_version"] == "v27"
+    assert payload["meta"]["current_alpha_version"] == "v28"
     assert payload["meta"]["historical_alpha_versions"] == [
-        "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25", "v26"
+        "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25", "v26", "v27"
     ]
-    assert payload["meta"]["current_alpha_checked_use_count"] == 2_560
+    assert payload["meta"]["current_alpha_checked_use_count"] == 2_764
     assert boundaries["stable_edition"] == {
         "theorem_count": 432,
         "checked_use_count": 432,
@@ -1989,7 +1988,7 @@ def test_versioned_campaign_sources_distinguish_current_and_historical_channels(
     )
 
 
-def test_campaign_release_evidence_matches_all_thirteen_immutable_channel_artifacts() -> None:
+def test_campaign_release_evidence_matches_all_fourteen_immutable_channel_artifacts() -> None:
     payload = campaign()
     boundaries = payload["ambitious_boundaries"]
     versions = {
@@ -1999,7 +1998,7 @@ def test_campaign_release_evidence_matches_all_thirteen_immutable_channel_artifa
             )
         )
         for version in (
-            "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25", "v26", "v27"
+            "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25", "v26", "v27", "v28"
         )
     }
     historical_channels = versions["v15"]
@@ -2149,14 +2148,14 @@ def test_second_wave_closed_milestones_bind_actual_full_theorem_roots(identifier
     assert evidence["full_empty_context_closure"] is evidence["independent_lean_bundle_verified"] is evidence["checked_use"] is True
     assert evidence["stable_member"] is False
     assert {"S58", "S59", "S60", "S61"} <= set(node["references"])
-    page = REPO / "book/_static/constructive-second-wave-explorer" / evidence["route"] / "explorer/defined/tag" / (evidence["proof_tag"] + ".html")
+    page = REPO / "book/_static/constructive-second-wave-explorer-v28" / evidence["route"] / "explorer/defined/tag" / (evidence["proof_tag"] + ".html")
     assert page.is_file() and name.encode() in page.read_bytes()
 
 
-def test_second_wave_current_release_is_additive_and_does_not_close_broader_roadmap():
+def test_historical_second_wave_release_is_preserved_and_does_not_close_broader_roadmap():
     payload = campaign()
     current = payload["ambitious_boundaries"]["alpha_v27_edition"]
-    assert current["role"] == "current_immutable_release"
+    assert current["role"] == "historical_immutable_release"
     assert current["theorem_count"] == current["checked_use_count"] == 2560
     assert current["stable_closed_count"] == 432 and current["alpha_closed_count"] == 2128
     assert current["dependency_edge_count"] == current["checked_dependency_edge_count"] == 8196
@@ -2168,7 +2167,8 @@ def test_second_wave_current_release_is_additive_and_does_not_close_broader_road
     assert set(transition["named_targets_complete"]) == {"T13", "G011", "G095", "G035", "G027", "G051", "G107"}
     assert transition["broader_roadmap_bullets_automatically_closed"] is False
     nodes = {node["id"]: node for node in payload["nodes"]}
-    assert all(nodes[name]["status"] == "open" for name in ("G039", "G052", "G081", "G084", "G109", "G115"))
+    assert all(nodes[name]["status"] == "open" for name in ("G039", "G052", "G082", "G085", "G109", "G115"))
+    assert all(nodes[name]["status"] == "alpha_closed" for name in ("G081", "G084"))
 
 
 def test_strict_heyting_signature_and_conservative_definitions_are_explicit() -> None:
@@ -2424,7 +2424,7 @@ ATLAS_DOMAIN_FAMILIES = {
 }
 
 EXPECTED_CROSS_DOMAIN_PROOF_EDGES = {
-    ("D01", "D02"): 29,
+    ("D01", "D02"): 30,
     ("D01", "D03"): 20,
     ("D01", "D04"): 22,
     ("D01", "D05"): 4,
@@ -2437,7 +2437,6 @@ EXPECTED_CROSS_DOMAIN_PROOF_EDGES = {
     ("D04", "D02"): 4,
     ("D04", "D03"): 5,
     ("D04", "D05"): 6,
-    ("D05", "D02"): 2,
     ("D05", "D03"): 3,
     ("D05", "D04"): 2,
 }
@@ -2465,8 +2464,8 @@ def test_multiscale_domains_partition_all_families_and_count_real_proof_edges() 
         if domain(nodes[dependency]) != domain(node)
     )
     assert dict(actual) == EXPECTED_CROSS_DOMAIN_PROOF_EDGES
-    assert sum(actual.values()) == 117
-    assert len(actual) == 16
+    assert sum(actual.values()) == 116
+    assert len(actual) == 15
 
     explorer = EXPLORER.read_text(encoding="utf-8")
     assert 'var ATLAS_DOMAINS = [' in explorer
@@ -2482,11 +2481,11 @@ def test_blueprint_definition_dag_is_separate_acyclic_and_lexically_exact() -> N
     artifact = json.loads(
         (CAMPAIGN.parent / "definitions.json").read_text(encoding="utf-8")
     )
-    assert len(definitions) == artifact["definition_count"] == 290
-    assert artifact["reviewed_definition_count"] == 198
-    assert artifact["reviewed_definition_edge_count"] == 388
-    assert artifact["compatible_reviewed_match_count"] == 201
-    assert artifact["exact_name_reviewed_match_count"] == 196
+    assert len(definitions) == artifact["definition_count"] == 323
+    assert artifact["reviewed_definition_count"] == 233
+    assert artifact["reviewed_definition_edge_count"] == 441
+    assert artifact["compatible_reviewed_match_count"] == 236
+    assert artifact["exact_name_reviewed_match_count"] == 231
     assert artifact["explicit_alias_reviewed_match_count"] == 5
     assert artifact["incompatible_reviewed_match_count"] == 2
 
@@ -2507,12 +2506,12 @@ def test_blueprint_definition_dag_is_separate_acyclic_and_lexically_exact() -> N
     }
     assert sum(map(len, notation_edges.values())) == (
         artifact["definition_edge_count"]
-    ) == 406
+    ) == 459
     assert sum(map(len, statement_edges.values())) == (
         artifact["statement_usage_edge_count"]
-    ) == 313
-    assert artifact["declared_notation_edge_count"] == 213
-    assert artifact["milestone_usage_edge_count"] == 526
+    ) == 317
+    assert artifact["declared_notation_edge_count"] == 231
+    assert artifact["milestone_usage_edge_count"] == 548
     assert notation_edges["PowerValuation"] == {"Val"}
     assert notation_edges["Val"] == {"Prime", "Dvd"}
     assert notation_edges["Prime"] == {"Dvd"}
@@ -2688,7 +2687,8 @@ def test_ready_frontier_never_treats_unverified_foundations_as_checked() -> None
         and all(nodes[dependency]["status"] in checked for dependency in node["deps"])
     }
     assert ready == {
-        "G039", "G052", "G081", "G084", "G109", "G115",
+        "G006", "G007", "G010", "G036", "G039", "G045", "G052", "G068",
+        "G072", "G082", "G085", "G087", "G091", "G093", "G109", "G115",
     }
     blueprint = BLUEPRINT.read_text(encoding="utf-8")
     scheduled = re.findall(
@@ -2712,7 +2712,8 @@ def test_ready_frontier_never_treats_unverified_foundations_as_checked() -> None
     assert nodes["T13"]["historical_partial_evidence"]["partial_component_checked_use"] is True
     assert nodes["T13"]["historical_partial_evidence"]["checked_use"] is False
     assert nodes["T13"]["evidence"]["checked_use"] is True
-    assert nodes["G002"]["status"] == "existing_foundation"
+    assert nodes["G002"]["status"] == "alpha_closed"
+    assert nodes["G002"]["historical_foundation_classification"] == "existing_foundation"
     assert all(
         nodes[identifier]["status"] == "alpha_closed"
         for identifier in ("G025", "G101", "G102")
@@ -2833,7 +2834,7 @@ def test_checked_definition_cross_links_resolve_to_actual_explorer_pages() -> No
     # Preserve all 99 earlier hand-pinned aliases, then independently derive
     # the newly exposed canonical names from the actual reviewed registries.
     assert len(expected) == 99
-    from constructive_second_wave_definition_graph import DEFAULT_REGISTRIES, REVIEWED_BLUEPRINT_ALIASES
+    from constructive_lower_layer_definition_graph import DEFAULT_REGISTRIES, REVIEWED_BLUEPRINT_ALIASES
 
     blueprint_definitions = campaign()["definitions"]
     for route, group in DEFAULT_REGISTRIES:
@@ -2914,7 +2915,12 @@ def test_checked_definition_cross_links_resolve_to_actual_explorer_pages() -> No
             "multinomial-kummer", "prime-count-chebyshev", "cornacchia", "cauchy-davenport",
         }:
             destination = (
-                REPO / "book/_static/constructive-second-wave-explorer"
+                REPO / "book/_static/constructive-second-wave-explorer-v28"
+                / route / "explorer/defined/definition" / f"{identifier}.html"
+            )
+        elif route in {"arithmetic-foundations", "prime-enumeration", "gaussian-integers", "eisenstein-integers"}:
+            destination = (
+                REPO / "book/_static/constructive-lower-layer-explorer"
                 / route / "explorer/defined/definition" / f"{identifier}.html"
             )
         elif route == "pythagorean-fermat-four":
@@ -2928,7 +2934,7 @@ def test_checked_definition_cross_links_resolve_to_actual_explorer_pages() -> No
                 / route / "explorer" / "defined" / "definition" / f"{identifier}.html"
             )
         assert destination.is_file()
-    assert len(expected) == 201
+    assert len(expected) == 236
     assert set(matches) == set(expected)
     assert matches["Gcd"]["reviewed_argument_blueprint_positions"] == [2, 0, 1]
     assert {row["blueprint_name"] for row in artifact["incompatible_reviewed_matches"]} == {

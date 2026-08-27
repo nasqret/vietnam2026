@@ -407,10 +407,34 @@
       "parent_enrollment_sha256": "cdf2cd0adfef8f1becd6f1f62d4d1d5d7a1891838e16b52a4d1cdaca98c496f2",
       "pending_layered_closure_count": 0,
       "promoted_origin": "independently_kernel_and_lean_checked_exact_second_wave_targets",
-      "role": "current_immutable_release",
+      "role": "historical_immutable_release",
       "stable_closed_count": 432,
       "stable_unchanged": true,
       "theorem_count": 2560
+    },
+    "alpha_v28_edition": {
+      "alpha_closed_count": 2332,
+      "body_checked_count": 0,
+      "catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9",
+      "checked_dependency_edge_count": 8984,
+      "checked_use_count": 2764,
+      "checked_use_promotion_count": 204,
+      "dependency_edge_count": 8984,
+      "enrollment_sha256": "75c80dffb8899dbf6f97a561322e630679d9df58416309e5c439746e96466fce",
+      "evidence_root_sha256": "55cfb073329c71b5ac0ac9e9d8b795a8ec270355b24c4899a9eda05f554d5712",
+      "frontier_new_names_sha256": "7882fe1fbcd64ee23668f62dcc45aa4a946a562c7da2fd5dba3b30612bccc402",
+      "historical_v27_unchanged": true,
+      "identity_sha256": "4936d155e8d2a39409a4e83beb4ac5cb2481948d8b6eeecf1c7571161786646b",
+      "independent_lean_bundle_verified": true,
+      "layer_count": 53,
+      "new_theorem_count": 204,
+      "parent_enrollment_sha256": "20866c3865baec2bc6cee3c8e54bcb2f55e95a7b1a7fc85c103e3c9b055ecf4e",
+      "pending_layered_closure_count": 0,
+      "promoted_origin": "independently_kernel_and_lean_checked_exact_lower_layer_targets",
+      "role": "current_immutable_release",
+      "stable_closed_count": 432,
+      "stable_unchanged": true,
+      "theorem_count": 2764
     },
     "body_checked_and_pending_roots_are_not_checked_use": true,
     "breakthrough_layer_evidence_transition": {
@@ -629,6 +653,45 @@
       "theorem_node_count": 544
     },
     "higher_reciprocity": "All ramified and infinite-place corrections are explicit; no invalid uncorrected symmetry.",
+    "lower_layer_evidence_transition": {
+      "authoring_campaign_counts": {
+        "eisenstein_euclidean": 65,
+        "foundations": 28,
+        "gaussian_euclidean": 93,
+        "prime_enumeration": 18
+      },
+      "body_proof_nodes": 230464,
+      "broader_roadmap_bullets_automatically_closed": false,
+      "bundle_bytes": 18977050,
+      "bundle_node_count": 862,
+      "bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+      "current_v28_theorem_count": 2764,
+      "dependency_edge_count": 3090,
+      "historical_v27_unchanged": true,
+      "independent_lean_bundle_verified": true,
+      "named_targets_complete": [
+        "G001",
+        "G002",
+        "G003",
+        "G004",
+        "G005",
+        "G021",
+        "G022",
+        "G081",
+        "G084"
+      ],
+      "new_theorem_count": 204,
+      "original_kernel_call_count": 862,
+      "parent_v27_theorem_count": 2560,
+      "presentation_family_counts": {
+        "arithmetic-foundations": 27,
+        "eisenstein-integers": 65,
+        "gaussian-integers": 93,
+        "prime-enumeration": 19
+      },
+      "presentation_origin_distinction": "The existing prime-unboundedness wrapper is authored under foundations and displayed with prime enumeration; no theorem is duplicated or re-admitted.",
+      "stable_unchanged": true
+    },
     "milestone_closure_evidence_transition": {
       "body_proof_nodes": 39161,
       "bundle_bytes": 2518315,
@@ -1992,13 +2055,56 @@
         "P"
       ]
     },
+    "EDivRem": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ee_division_product_lowerlayer. EMul(b,q,ee_division_product_lowerlayer) ∧ ZPairAdd(ee_division_product_lowerlayer,r,a)",
+      "meaning": "The genuine canonical Eisenstein equation a=bq+r, witnessed by the Eisenstein multiplication graph and the very same shared pair addition as for Gaussian integers.",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r"
+      ],
+      "reviewed_definition_id": "ND0173",
+      "reviewed_expansion_sha256": "24663427580086c3aff819f901f04fd9f41cefc0fba8be0cebe901573c15c9b2"
+    },
+    "EEuclideanDivision": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "EDivRem(a,b,q,r) ∧ (ENorm(r,U) ∧ (ENorm(b,V) ∧ Lt(U,V)))",
+      "meaning": "Actual Eisenstein quotient and remainder codes satisfy a=bq+r and have genuine norms U=N(r), V=N(b) with strict decrease U<V. The norm and operation witnesses imply valid pair codes.",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r",
+        "U",
+        "V"
+      ],
+      "reviewed_definition_id": "ND0174",
+      "reviewed_expansion_sha256": "1dead94762e2e02fb7554dd52000f5f754a352f58b5366fbf07423ac4e5c160a"
+    },
+    "EMul": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ee_first_rp_lowerlayer. ∃ ee_first_rn_lowerlayer. ∃ ee_first_ip_lowerlayer. ∃ ee_first_in_lowerlayer. ∃ ee_second_rp_lowerlayer. ∃ ee_second_rn_lowerlayer. ∃ ee_second_ip_lowerlayer. ∃ ee_second_in_lowerlayer. ZPairRep(a,ee_first_rp_lowerlayer,ee_first_rn_lowerlayer,ee_first_ip_lowerlayer,ee_first_in_lowerlayer) ∧ (ZPairRep(b,ee_second_rp_lowerlayer,ee_second_rn_lowerlayer,ee_second_ip_lowerlayer,ee_second_in_lowerlayer) ∧ ZPairRep(c,ee_first_rp_lowerlayer · ee_second_rp_lowerlayer + ee_first_rn_lowerlayer · ee_second_rn_lowerlayer + (ee_first_ip_lowerlayer · ee_second_in_lowerlayer + ee_first_in_lowerlayer · ee_second_ip_lowerlayer),ee_first_rp_lowerlayer · ee_second_rn_lowerlayer + ee_first_rn_lowerlayer · ee_second_rp_lowerlayer + (ee_first_ip_lowerlayer · ee_second_ip_lowerlayer + ee_first_in_lowerlayer · ee_second_in_lowerlayer),ee_first_rp_lowerlayer · ee_second_ip_lowerlayer + ee_first_rn_lowerlayer · ee_second_in_lowerlayer + (ee_first_ip_lowerlayer · ee_second_rp_lowerlayer + ee_first_in_lowerlayer · ee_second_rn_lowerlayer) + (ee_first_ip_lowerlayer · ee_second_in_lowerlayer + ee_first_in_lowerlayer · ee_second_ip_lowerlayer),ee_first_rp_lowerlayer · ee_second_in_lowerlayer + ee_first_rn_lowerlayer · ee_second_ip_lowerlayer + (ee_first_ip_lowerlayer · ee_second_rn_lowerlayer + ee_first_in_lowerlayer · ee_second_rp_lowerlayer) + (ee_first_ip_lowerlayer · ee_second_ip_lowerlayer + ee_first_in_lowerlayer · ee_second_in_lowerlayer)))",
+      "meaning": "Actual multiplication in the Eisenstein ring, using the shared signed-pair carrier and the law ω²+ω+1=0.",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reviewed_definition_id": "ND0172",
+      "reviewed_expansion_sha256": "79481871eafd751574ee648c69015cd15cbb8917513e4d04bda63e8d1585cc00"
+    },
     "ENorm": {
-      "expansion": "z=(a,b) and n=a²-a*b+b² in signed-code arithmetic",
-      "meaning": "Eisenstein norm.",
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ee_norm_rp_lowerlayer. ∃ ee_norm_rn_lowerlayer. ∃ ee_norm_ip_lowerlayer. ∃ ee_norm_in_lowerlayer. ZPairRep(z,ee_norm_rp_lowerlayer,ee_norm_rn_lowerlayer,ee_norm_ip_lowerlayer,ee_norm_in_lowerlayer) ∧ EisensteinCoordinateNorm(ee_norm_rp_lowerlayer,ee_norm_rn_lowerlayer,ee_norm_ip_lowerlayer,ee_norm_in_lowerlayer,n)",
+      "meaning": "The actual norm a²−ab+b² of the shared canonical pair code representing the Eisenstein integer a+bω.",
       "parameters": [
         "z",
         "n"
-      ]
+      ],
+      "reviewed_definition_id": "ND0171",
+      "reviewed_expansion_sha256": "5f956fea815b9f8e65f510fd1e395a0cfff3cf4c30ea49b487589dfa796f7220"
     },
     "Eisenstein": {
       "expansion": "z codes normalized signed integers a,b representing a+b*omega",
@@ -2006,6 +2112,68 @@
       "parameters": [
         "z"
       ]
+    },
+    "EisensteinCoordinateNorm": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "ap · ap + an · an + (bp · bp + bn · bn) + (ap · bn + an · bp) = ap · an + an · ap + (bp · bn + bn · bp) + (ap · bp + an · bn) + n",
+      "meaning": "The genuine Eisenstein coordinate norm (ap−an)²−(ap−an)(bp−bn)+(bp−bn)², as a balanced natural equation.",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "n"
+      ],
+      "reviewed_definition_id": "ND0169",
+      "reviewed_expansion_sha256": "0a88193521136fb5e343ba5e8657934f2e7264d8ce92e2943d075a479cccb7ed"
+    },
+    "EisensteinCoordinateProduct": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "ap · cp + an · cn + (bp · dn + bn · dp) + rn = rp + (ap · cn + an · cp + (bp · dp + bn · dn)) ∧ ap · dp + an · dn + (bp · cp + bn · cn) + (bp · dn + bn · dp) + sn = sp + (ap · dn + an · dp + (bp · cn + bn · cp) + (bp · dp + bn · dn))",
+      "meaning": "The actual signed-coordinate product (a+bω)(c+dω)=(ac−bd)+(ad+bc−bd)ω, where ω²+ω+1=0; this is not Gaussian multiplication.",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "rp",
+        "rn",
+        "sp",
+        "sn"
+      ],
+      "reviewed_definition_id": "ND0170",
+      "reviewed_expansion_sha256": "56f2519e4bc7386d6f1f7bd73146aa14773f1927faf425703e456255830031c6"
+    },
+    "EisensteinSignedDivisionRemainder": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "cp · qp + cn · qn + (dp · un + dn · up) + rp + an = ap + (cp · qn + cn · qp + (dp · up + dn · un) + rn) ∧ cp · up + cn · un + (dp · qp + dn · qn) + (dp · un + dn · up) + sp + bn = bp + (cp · un + cn · up + (dp · qn + dn · qp) + (dp · up + dn · un) + sn) ∧ (EisensteinCoordinateNorm(rp,rn,sp,sn,U) ∧ (EisensteinCoordinateNorm(cp,cn,dp,dn,V) ∧ Lt(U,V)))",
+      "meaning": "The genuine signed-coordinate Eisenstein equation A=B·Q+R, actual coordinate norms U=N(R), V=N(B), and strict decrease U<V.",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "qp",
+        "qn",
+        "up",
+        "un",
+        "rp",
+        "rn",
+        "sp",
+        "sn",
+        "U",
+        "V"
+      ],
+      "reviewed_definition_id": "ND0176",
+      "reviewed_expansion_sha256": "fe243720d84d80e392fec6f0d08d8f545d60b4e4c93f7dd9b829f0bb5f7c7faf"
     },
     "EllipticCertificate": {
       "expansion": "c supplies nonsingular curve checks, a certified large prime order factor, suitable point witnesses, and recursive smaller-prime certificates",
@@ -2158,6 +2326,22 @@
         "z"
       ]
     },
+    "FactorListMatching": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∀ pfp_i_lowerlayer. ∀ pfp_j_lowerlayer. ∀ pfp_a_lowerlayer. Lt(pfp_i_lowerlayer,l) → BetaAt(u,v,pfp_i_lowerlayer,pfp_j_lowerlayer) → BetaAt(b,c,pfp_i_lowerlayer,pfp_a_lowerlayer) → BetaAt(d,e,pfp_j_lowerlayer,pfp_a_lowerlayer)",
+      "meaning": "Each actual source factor equals the factor at the index decoded from its image under the witnessed map.",
+      "parameters": [
+        "b",
+        "c",
+        "d",
+        "e",
+        "u",
+        "v",
+        "l"
+      ],
+      "reviewed_definition_id": "ND0150",
+      "reviewed_expansion_sha256": "57e3ed09ff60013ddb1dabbbbfb873a853db2800f0ad4b1ed2aa42701dfb03bb"
+    },
     "Factorial": {
       "exact_defined_expansion_equivalence_checked": true,
       "expansion": "∃ ff_b_defined_factorial. ∃ ff_c_defined_factorial. Range(ff_b_defined_factorial,ff_c_defined_factorial,1,n) ∧ Product(ff_b_defined_factorial,ff_c_defined_factorial,n,z)",
@@ -2250,13 +2434,56 @@
       "reviewed_definition_id": "PD0051",
       "reviewed_expansion_sha256": "60d19f48168039fe515c016b1fa33b59e1029d2809e2332cf618fb0fbeff4505"
     },
+    "GDivRem": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ge_division_product_lowerlayer. GMul(b,q,ge_division_product_lowerlayer) ∧ ZPairAdd(ge_division_product_lowerlayer,r,a)",
+      "meaning": "The exact canonical-code equation a=bq+r, using an actual Gaussian product code and the shared addition graph. No norm bound is included here.",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r"
+      ],
+      "reviewed_definition_id": "ND0167",
+      "reviewed_expansion_sha256": "d94a9d142cf509cf056bf0e2714e609dfced1585af59e5f3e3c46cee76c35bb1"
+    },
+    "GEuclideanDivision": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "ZPairValid(q) ∧ (ZPairValid(r) ∧ (GDivRem(a,b,q,r) ∧ (GNorm(r,U) ∧ (GNorm(b,V) ∧ Lt(U,V)))))",
+      "meaning": "Valid quotient and remainder codes satisfy the genuine Gaussian equation a=bq+r and have actual norms U=N(r), V=N(b) with U<V.",
+      "parameters": [
+        "a",
+        "b",
+        "q",
+        "r",
+        "U",
+        "V"
+      ],
+      "reviewed_definition_id": "ND0168",
+      "reviewed_expansion_sha256": "12dce37f08a88924b65a45227ea6b70b62dbac8a244dafe6d894b2138946f23a"
+    },
+    "GMul": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ge_first_rp_lowerlayer. ∃ ge_first_rn_lowerlayer. ∃ ge_first_ip_lowerlayer. ∃ ge_first_in_lowerlayer. ∃ ge_second_rp_lowerlayer. ∃ ge_second_rn_lowerlayer. ∃ ge_second_ip_lowerlayer. ∃ ge_second_in_lowerlayer. ZPairRep(a,ge_first_rp_lowerlayer,ge_first_rn_lowerlayer,ge_first_ip_lowerlayer,ge_first_in_lowerlayer) ∧ (ZPairRep(b,ge_second_rp_lowerlayer,ge_second_rn_lowerlayer,ge_second_ip_lowerlayer,ge_second_in_lowerlayer) ∧ ZPairRep(c,ge_first_rp_lowerlayer · ge_second_rp_lowerlayer + ge_first_rn_lowerlayer · ge_second_rn_lowerlayer + (ge_first_ip_lowerlayer · ge_second_in_lowerlayer + ge_first_in_lowerlayer · ge_second_ip_lowerlayer),ge_first_rp_lowerlayer · ge_second_rn_lowerlayer + ge_first_rn_lowerlayer · ge_second_rp_lowerlayer + (ge_first_ip_lowerlayer · ge_second_ip_lowerlayer + ge_first_in_lowerlayer · ge_second_in_lowerlayer),ge_first_rp_lowerlayer · ge_second_ip_lowerlayer + ge_first_rn_lowerlayer · ge_second_in_lowerlayer + (ge_first_ip_lowerlayer · ge_second_rp_lowerlayer + ge_first_in_lowerlayer · ge_second_rn_lowerlayer),ge_first_rp_lowerlayer · ge_second_in_lowerlayer + ge_first_rn_lowerlayer · ge_second_ip_lowerlayer + (ge_first_ip_lowerlayer · ge_second_rn_lowerlayer + ge_first_in_lowerlayer · ge_second_rp_lowerlayer)))",
+      "meaning": "Actual Gaussian multiplication: (a+bi)(c+di)=(ac−bd)+(ad+bc)i, with canonical pair-code outputs.",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reviewed_definition_id": "ND0166",
+      "reviewed_expansion_sha256": "cd81b5bfb8488611f58067d5f381f5b47f52510dca10d59f78e0751392c38367"
+    },
     "GNorm": {
-      "expansion": "z=(a,b) and n=a²+b² in signed-code arithmetic",
-      "meaning": "Gaussian norm.",
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ge_norm_rp_lowerlayer. ∃ ge_norm_rn_lowerlayer. ∃ ge_norm_ip_lowerlayer. ∃ ge_norm_in_lowerlayer. ZPairRep(z,ge_norm_rp_lowerlayer,ge_norm_rn_lowerlayer,ge_norm_ip_lowerlayer,ge_norm_in_lowerlayer) ∧ GaussianSignedNorm(ge_norm_rp_lowerlayer,ge_norm_rn_lowerlayer,ge_norm_ip_lowerlayer,ge_norm_in_lowerlayer,n)",
+      "meaning": "The actual norm a²+b² of the shared canonical pair code representing the Gaussian integer a+bi.",
       "parameters": [
         "z",
         "n"
-      ]
+      ],
+      "reviewed_definition_id": "ND0164",
+      "reviewed_expansion_sha256": "d7afb2e66a7a3ce20fbf300f74238ca242bc498d7d9cd28e6746702ffb972445"
     },
     "GaussBit": {
       "expansion": "Prime(p),p>2,p∤a and s is the parity of the finite least-residue negative-representative count",
@@ -2273,6 +2500,47 @@
       "parameters": [
         "z"
       ]
+    },
+    "GaussianSignedDivisionRemainder": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "cp · qp + cn · qn + (dp · un + dn · up) + rp + an = ap + (cp · qn + cn · qp + (dp · up + dn · un) + rn) ∧ cp · up + cn · un + (dp · qp + dn · qn) + sp + bn = bp + (cp · un + cn · up + (dp · qn + dn · qp) + sn) ∧ (GaussianSignedNorm(rp,rn,sp,sn,U) ∧ (GaussianSignedNorm(cp,cn,dp,dn,V) ∧ Lt(U,V)))",
+      "meaning": "The actual Gaussian coordinate equation A=B·Q+R, the two genuine squared norms U=N(R), V=N(B), and strict decrease U<V.",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "cp",
+        "cn",
+        "dp",
+        "dn",
+        "qp",
+        "qn",
+        "up",
+        "un",
+        "rp",
+        "rn",
+        "sp",
+        "sn",
+        "U",
+        "V"
+      ],
+      "reviewed_definition_id": "ND0163",
+      "reviewed_expansion_sha256": "8e23f52099e27793a673697f357450f4b7465acad6989d554be88cc144d5ebfe"
+    },
+    "GaussianSignedNorm": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ge_real_square_lowerlayer. ∃ ge_imaginary_square_lowerlayer. SignedDifferenceSquare(ap,an,ge_real_square_lowerlayer) ∧ (SignedDifferenceSquare(bp,bn,ge_imaginary_square_lowerlayer) ∧ N = ge_real_square_lowerlayer + ge_imaginary_square_lowerlayer)",
+      "meaning": "The actual sum (ap−an)²+(bp−bn)² of two witnessed signed-coordinate squares.",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "N"
+      ],
+      "reviewed_definition_id": "ND0158",
+      "reviewed_expansion_sha256": "150d4e1bd0957f9123c6e3191543e0ee738f3c0029f46e48cd9bd54aad5dff89"
     },
     "Gcd": {
       "expansion": "Dvd(g,a) ∧ Dvd(g,b) ∧ ∀ d. Dvd(d,a) ∧ Dvd(d,b) → Dvd(d,g)",
@@ -2417,6 +2685,30 @@
       ],
       "reviewed_definition_id": "ND0141",
       "reviewed_expansion_sha256": "fa657eed71b82e5b0cc99af4622c2cee814ae688de2eddd4e25aea9d9d5789bf"
+    },
+    "InitialPrimeChain": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "BetaAt(b,c,0,2) ∧ (∀ x. Lt(x,k) → ∃ y. ∃ z. BetaAt(b,c,x,y) ∧ (BetaAt(b,c,S x,z) ∧ NextPrime(y,z)))",
+      "meaning": "A beta code starting at two and containing k actual least-prime transitions, hence k+1 consecutive primes.",
+      "parameters": [
+        "b",
+        "c",
+        "k"
+      ],
+      "reviewed_definition_id": "ND0153",
+      "reviewed_expansion_sha256": "6f077247129ae6b335d635853bff4be00ef03184a278e1d23ce4c4bf209a855f"
+    },
+    "InitialPrimeList": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "k = 0 ∨ (∃ x. k = S x ∧ InitialPrimeChain(b,c,x))",
+      "meaning": "Exactly the first k primes in increasing order, omitting no smaller prime; k=0 is the genuine empty list.",
+      "parameters": [
+        "b",
+        "c",
+        "k"
+      ],
+      "reviewed_definition_id": "ND0154",
+      "reviewed_expansion_sha256": "e6c71e52f5ac4986d9b4c48459b82cb086c3f4d60f268a8aef7c7d0256ed1df9"
     },
     "InjectivePrefix": {
       "exact_defined_expansion_equivalence_checked": true,
@@ -3064,6 +3356,17 @@
       "reviewed_definition_id": "ND0092",
       "reviewed_expansion_sha256": "63b5eb5d47d638414f5041b5be3d54b5f428af8f9c1123b8f1a0794d199b888d"
     },
+    "NextPrime": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "Prime(p) ∧ (Lt(a,p) ∧ (∀ x. Prime(x) → Lt(a,x) → Le(p,x)))",
+      "meaning": "The actual least prime strictly above a. Global minimality excludes a sparse subsequence of primes.",
+      "parameters": [
+        "a",
+        "p"
+      ],
+      "reviewed_definition_id": "ND0152",
+      "reviewed_expansion_sha256": "964367d85994baf9339758cc05f0d2e10ee3acee39aba4c569aeebfe0c510b50"
+    },
     "NonzeroMatrixMinor": {
       "exact_defined_expansion_equivalence_checked": true,
       "expansion": "∃ mdr_rb_secondwave. ∃ mdr_rc_secondwave. ∃ mdr_cb_secondwave. ∃ mdr_cc_secondwave. NonzeroSelectedMinor(pb,pc,nb,nc,r,w,q,mdr_rb_secondwave,mdr_rc_secondwave,mdr_cb_secondwave,mdr_cc_secondwave)",
@@ -3132,6 +3435,18 @@
         "t",
         "w"
       ]
+    },
+    "PermutationPrefix": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "BoundedPrefix(b,c,l) ∧ (InjectivePrefix(b,c,l) ∧ SurjectivePrefix(b,c,l))",
+      "meaning": "An actual beta-coded bijection of the finite index interval [0,l), including all bounds, injectivity, and surjectivity.",
+      "parameters": [
+        "b",
+        "c",
+        "l"
+      ],
+      "reviewed_definition_id": "ND0148",
+      "reviewed_expansion_sha256": "4145090a616c423da718870c305d9d2c207fc0111a74c2e543158ef031c699fb"
     },
     "Phi": {
       "expansion": "n>0 and t counts the residue classes a<n satisfying Coprime(a,n)",
@@ -3321,6 +3636,36 @@
         "x",
         "z"
       ]
+    },
+    "PrimeFactorList": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "¬n = 0 ∧ (Product(b,c,l,n) ∧ AllPrime(b,c,l))",
+      "meaning": "A positive number n, an actual length-l beta product equal to n, and prime entries. No sortedness or supplied canonicalization is required.",
+      "parameters": [
+        "n",
+        "b",
+        "c",
+        "l"
+      ],
+      "reviewed_definition_id": "ND0149",
+      "reviewed_expansion_sha256": "724a46d2cbfdc1382eeea6157df27626ab8d7cd5fe30d4cc09103290603276c5"
+    },
+    "PrimeFactorListPermutation": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "l = m ∧ (PermutationPrefix(u,v,l) ∧ FactorListMatching(b,c,d,e,u,v,l))",
+      "meaning": "Equal list lengths and an actual bounded, injective, surjective beta index map matching all source and target prime occurrences, including repetitions.",
+      "parameters": [
+        "b",
+        "c",
+        "l",
+        "d",
+        "e",
+        "m",
+        "u",
+        "v"
+      ],
+      "reviewed_definition_id": "ND0151",
+      "reviewed_expansion_sha256": "b95c09a9f16389b001fdebc556023428b7ac1a27fcb8a8e069100b95cb4edba0"
     },
     "PrimeList": {
       "expansion": "s lists exactly k increasing primes and omits no smaller prime",
@@ -3580,6 +3925,23 @@
         "ring"
       ]
     },
+    "RoundedSignedDivision": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "p + N · qn + en = n + N · qp + ep ∧ (SignedDifferenceSquare(ep,en,t · t) ∧ Le(t + t,N))",
+      "meaning": "A genuine signed quotient and signed error represent p−n=N·(qp−qn)+(ep−en), with absolute error t and 2t≤N.",
+      "parameters": [
+        "p",
+        "n",
+        "N",
+        "qp",
+        "qn",
+        "ep",
+        "en",
+        "t"
+      ],
+      "reviewed_definition_id": "ND0162",
+      "reviewed_expansion_sha256": "516742567d5780545dd807f65413e6600b6dde562b4e827b79574cbfac8ab0f2"
+    },
     "ScaledFixedPoint": {
       "exact_defined_expansion_equivalence_checked": true,
       "expansion": "UnitResidue(m,a) ∧ ModEq(m,a · a,t)",
@@ -3660,6 +4022,18 @@
         "S"
       ]
     },
+    "SignedAdd": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ sa_lp_lowerlayer. ∃ sa_ln_lowerlayer. ∃ sa_rp_lowerlayer. ∃ sa_rn_lowerlayer. ∃ sa_op_lowerlayer. ∃ sa_on_lowerlayer. SignedDecode(a,sa_lp_lowerlayer,sa_ln_lowerlayer) ∧ (SignedDecode(b,sa_rp_lowerlayer,sa_rn_lowerlayer) ∧ (SignedDecode(c,sa_op_lowerlayer,sa_on_lowerlayer) ∧ sa_lp_lowerlayer + sa_rp_lowerlayer + sa_on_lowerlayer = sa_ln_lowerlayer + sa_rn_lowerlayer + sa_op_lowerlayer))",
+      "meaning": "Actual addition of original canonical signed codes, witnessed by their decoders and balanced equality.",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reviewed_definition_id": "ND0144",
+      "reviewed_expansion_sha256": "96bbbcabe876881ee3272ccc86aa55fe9bd8dfc90ffb4043cb0fc9a2dbf59fad"
+    },
     "SignedAlternatingCofactorFold": {
       "expansion": "∃ub uc vb vc. SignedAlternatingProductPrefix(ab,ac,db,dc,eb,ec,fb,fc,ub,uc,vb,vc,l) ∧ BetaSum(ub,uc,l,p) ∧ BetaSum(vb,vc,l,n)",
       "meaning": "The exact arbitrary-length subtraction-free positive/negative sum of every parity-correct signed cofactor product.",
@@ -3709,6 +4083,45 @@
         "l"
       ]
     },
+    "SignedBalance": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ sb_pos_lowerlayer. ∃ sb_neg_lowerlayer. SignedDecode(z,sb_pos_lowerlayer,sb_neg_lowerlayer) ∧ p + sb_neg_lowerlayer = n + sb_pos_lowerlayer",
+      "meaning": "The original canonical code z represents the integer difference p−n; these supplied components need not be normalized.",
+      "parameters": [
+        "z",
+        "p",
+        "n"
+      ],
+      "reviewed_definition_id": "ND0143",
+      "reviewed_expansion_sha256": "f6ebf61b71a55e09c12c51c7653ba92cb1e70afc3bc7918b0af6f71657961327"
+    },
+    "SignedBezout": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ sbz_xp_lowerlayer. ∃ sbz_xn_lowerlayer. ∃ sbz_yp_lowerlayer. ∃ sbz_yn_lowerlayer. SignedDecode(u,sbz_xp_lowerlayer,sbz_xn_lowerlayer) ∧ (SignedDecode(v,sbz_yp_lowerlayer,sbz_yn_lowerlayer) ∧ a · sbz_xp_lowerlayer + b · sbz_yp_lowerlayer = g + (a · sbz_xn_lowerlayer + b · sbz_yn_lowerlayer))",
+      "meaning": "The original signed coefficient codes u and v witness a·u+b·v=g by actual decoded balanced arithmetic.",
+      "parameters": [
+        "g",
+        "a",
+        "b",
+        "u",
+        "v"
+      ],
+      "reviewed_definition_id": "ND0147",
+      "reviewed_expansion_sha256": "27327519d0bc44212cbd93376c820fd937701b5995b769c5072ec2a26a23b1c7"
+    },
+    "SignedCodeFloor": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ sif_positive_lowerlayer. ∃ sif_negative_lowerlayer. ∃ sif_quotient_positive_lowerlayer. ∃ sif_quotient_negative_lowerlayer. SignedDecode(a,sif_positive_lowerlayer,sif_negative_lowerlayer) ∧ (SignedDecode(q,sif_quotient_positive_lowerlayer,sif_quotient_negative_lowerlayer) ∧ SignedFloor(sif_positive_lowerlayer,sif_negative_lowerlayer,m,sif_quotient_positive_lowerlayer,sif_quotient_negative_lowerlayer,r))",
+      "meaning": "Actual canonical signed input and quotient codes satisfy the very same floor equation with remainder r<m.",
+      "parameters": [
+        "a",
+        "m",
+        "q",
+        "r"
+      ],
+      "reviewed_definition_id": "ND0156",
+      "reviewed_expansion_sha256": "e36a7df877be390d31dd7271fab249a453800cc4ebd829a57389186c5f9b525d"
+    },
     "SignedCofactorMinorPrefix": {
       "expansion": "∀j. Lt(j,l) → ∃z. Beta(b,c,j,z) ∧ SignedMinorRecord(pb,pc,nb,nc,q,j,z)",
       "meaning": "A complete beta-coded finite prefix of exact injectively packed first-row signed cofactor minors.",
@@ -3722,6 +4135,18 @@
         "c",
         "l"
       ]
+    },
+    "SignedDecode": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "z = 2 · p ∧ n = 0 ∨ (∃ x. z = 2 · x + 1 ∧ p = 0 ∧ n = S x)",
+      "meaning": "The original canonical integer code: even 2p denotes p, and odd 2k+1 denotes −(k+1). The decoded positive and negative parts are normalized.",
+      "parameters": [
+        "z",
+        "p",
+        "n"
+      ],
+      "reviewed_definition_id": "ND0142",
+      "reviewed_expansion_sha256": "1674b231e352aa00e88ed892ac5dcbe49dc4de442fe440ffb30bcc4cb4ac3ae6"
     },
     "SignedDerivativeNonzero": {
       "exact_defined_expansion_equivalence_checked": true,
@@ -3848,6 +4273,18 @@
       "reviewed_definition_id": "ND0104",
       "reviewed_expansion_sha256": "47477dd07b39f71443766240f0e0f744873f2bf7c757cdc5fafa811f0f64c050"
     },
+    "SignedDifferenceSquare": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "p · p + n · n = s + (p · n + n · p)",
+      "meaning": "The natural value s of the integer square (p−n)², expressed as a subtraction-free balanced equality.",
+      "parameters": [
+        "p",
+        "n",
+        "s"
+      ],
+      "reviewed_definition_id": "ND0157",
+      "reviewed_expansion_sha256": "747d061c8dc5bc4b70dc2664441a3a0983b4b5d0e8d16440d0a3e37cf85fa933"
+    },
     "SignedDotProduct": {
       "expansion": "∃pp nn pn np. DotProduct(ab,ac,eb,ec,l,pp) ∧ DotProduct(db,dc,fb,fc,l,nn) ∧ DotProduct(ab,ac,fb,fc,l,pn) ∧ DotProduct(db,dc,eb,ec,l,np) ∧ p=pp+nn ∧ n=pn+np",
       "meaning": "The exact positive and negative dot-product components of two arbitrary finite signed vectors.",
@@ -3899,6 +4336,21 @@
         "p",
         "n"
       ]
+    },
+    "SignedFloor": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "p + m · t = n + m · q + r ∧ Lt(r,m)",
+      "meaning": "The genuine signed floor equation (p−n)=m·(q−t)+r and strict natural remainder bound r<m.",
+      "parameters": [
+        "p",
+        "n",
+        "m",
+        "q",
+        "t",
+        "r"
+      ],
+      "reviewed_definition_id": "ND0155",
+      "reviewed_expansion_sha256": "8a0b0be19abe00a43f167e316e962473a8a139d2e103bdf0baf1f198c3e4e9a6"
     },
     "SignedHornerRoot": {
       "exact_defined_expansion_equivalence_checked": true,
@@ -4004,6 +4456,29 @@
         "j",
         "z"
       ]
+    },
+    "SignedMul": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ sm_lp_lowerlayer. ∃ sm_ln_lowerlayer. ∃ sm_rp_lowerlayer. ∃ sm_rn_lowerlayer. ∃ sm_op_lowerlayer. ∃ sm_on_lowerlayer. SignedDecode(a,sm_lp_lowerlayer,sm_ln_lowerlayer) ∧ (SignedDecode(b,sm_rp_lowerlayer,sm_rn_lowerlayer) ∧ (SignedDecode(c,sm_op_lowerlayer,sm_on_lowerlayer) ∧ sm_lp_lowerlayer · sm_rp_lowerlayer + sm_ln_lowerlayer · sm_rn_lowerlayer + sm_on_lowerlayer = sm_lp_lowerlayer · sm_rn_lowerlayer + sm_ln_lowerlayer · sm_rp_lowerlayer + sm_op_lowerlayer))",
+      "meaning": "Actual multiplication of original canonical signed codes; opposite-sign products remain on the negative side of the balance.",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reviewed_definition_id": "ND0145",
+      "reviewed_expansion_sha256": "ea9c672cbfa97d76f980f41420a4cf7b0b6fc186e6b331fc68b38616369caec6"
+    },
+    "SignedNegate": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ sn_pos_lowerlayer. ∃ sn_neg_lowerlayer. SignedDecode(a,sn_pos_lowerlayer,sn_neg_lowerlayer) ∧ SignedDecode(b,sn_neg_lowerlayer,sn_pos_lowerlayer)",
+      "meaning": "Canonical signed negation swaps the positive and negative decoded parts.",
+      "parameters": [
+        "a",
+        "b"
+      ],
+      "reviewed_definition_id": "ND0146",
+      "reviewed_expansion_sha256": "5bf5d7f027aa55b036979be920fe6e2d0fc4779d01742abc3773cf08dfed9874"
     },
     "SignedNonsingularHornerRoot": {
       "exact_defined_expansion_equivalence_checked": true,
@@ -4310,6 +4785,20 @@
         "w"
       ]
     },
+    "WeightedSignedNormThree": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ee_real_square_lowerlayer. ∃ ee_imag_square_lowerlayer. SignedDifferenceSquare(ap,an,ee_real_square_lowerlayer) ∧ (SignedDifferenceSquare(bp,bn,ee_imag_square_lowerlayer) ∧ n = ee_real_square_lowerlayer + 3 · ee_imag_square_lowerlayer)",
+      "meaning": "The witnessed sum (ap−an)²+3(bp−bn)². It supports the proved identity 4N(a+bω)=(2a−b)²+3b², not a new norm axiom.",
+      "parameters": [
+        "ap",
+        "an",
+        "bp",
+        "bn",
+        "n"
+      ],
+      "reviewed_definition_id": "ND0175",
+      "reviewed_expansion_sha256": "9292b03df98beb47510d881cc08f4500a2e40769c7fa69d8670d20ce32304efe"
+    },
     "WeilPairing": {
       "expansion": "ell is PRIME and distinct from the field characteristic, F contains all ell-torsion and ellth roots, and a witnessed finite Miller trace evaluates z",
       "meaning": "Explicit Weil pairing value.",
@@ -4321,6 +4810,56 @@
         "Q",
         "z"
       ]
+    },
+    "ZPairAdd": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ge_first_rp_lowerlayer. ∃ ge_first_rn_lowerlayer. ∃ ge_first_ip_lowerlayer. ∃ ge_first_in_lowerlayer. ∃ ge_second_rp_lowerlayer. ∃ ge_second_rn_lowerlayer. ∃ ge_second_ip_lowerlayer. ∃ ge_second_in_lowerlayer. ZPairRep(a,ge_first_rp_lowerlayer,ge_first_rn_lowerlayer,ge_first_ip_lowerlayer,ge_first_in_lowerlayer) ∧ (ZPairRep(b,ge_second_rp_lowerlayer,ge_second_rn_lowerlayer,ge_second_ip_lowerlayer,ge_second_in_lowerlayer) ∧ ZPairRep(c,ge_first_rp_lowerlayer + ge_second_rp_lowerlayer,ge_first_rn_lowerlayer + ge_second_rn_lowerlayer,ge_first_ip_lowerlayer + ge_second_ip_lowerlayer,ge_first_in_lowerlayer + ge_second_in_lowerlayer))",
+      "meaning": "Actual coordinatewise integer addition in the shared signed-pair carrier. Both quadratic integer rings use this identical additive relation.",
+      "parameters": [
+        "a",
+        "b",
+        "c"
+      ],
+      "reviewed_definition_id": "ND0165",
+      "reviewed_expansion_sha256": "9a6577e14b1ce809587d9fac52285e9dd6d98170e3b435116ed48f5a140e3ea8"
+    },
+    "ZPairDecode": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ge_real_code_lowerlayer. ∃ ge_imaginary_code_lowerlayer. z = (ge_real_code_lowerlayer + ge_imaginary_code_lowerlayer) · S (ge_real_code_lowerlayer + ge_imaginary_code_lowerlayer) + (ge_imaginary_code_lowerlayer + ge_imaginary_code_lowerlayer) ∧ (SignedDecode(ge_real_code_lowerlayer,ap,an) ∧ SignedDecode(ge_imaginary_code_lowerlayer,bp,bn))",
+      "meaning": "The shared injective code of two original canonical signed integers, with their normalized coordinate decoders. Both quadratic integer rings use this same carrier.",
+      "parameters": [
+        "z",
+        "ap",
+        "an",
+        "bp",
+        "bn"
+      ],
+      "reviewed_definition_id": "ND0159",
+      "reviewed_expansion_sha256": "5f39a4d396eba3cd332d0485bf7e62a7e4db10b2d6c0498d318e4ec957a02867"
+    },
+    "ZPairRep": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ge_representation_real_code_lowerlayer. ∃ ge_representation_imaginary_code_lowerlayer. z = (ge_representation_real_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) · S (ge_representation_real_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) + (ge_representation_imaginary_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) ∧ (SignedBalance(ge_representation_real_code_lowerlayer,ap,an) ∧ SignedBalance(ge_representation_imaginary_code_lowerlayer,bp,bn))",
+      "meaning": "The shared pair code represents the two supplied signed differences, with arbitrary nonnormalized representatives allowed.",
+      "parameters": [
+        "z",
+        "ap",
+        "an",
+        "bp",
+        "bn"
+      ],
+      "reviewed_definition_id": "ND0161",
+      "reviewed_expansion_sha256": "484f8588e2d9b5e92fda7c8fda43f480f34dcfae16a7ad0137fc32cd8cf8eeb8"
+    },
+    "ZPairValid": {
+      "exact_defined_expansion_equivalence_checked": true,
+      "expansion": "∃ ge_real_positive_lowerlayer. ∃ ge_real_negative_lowerlayer. ∃ ge_imaginary_positive_lowerlayer. ∃ ge_imaginary_negative_lowerlayer. ZPairDecode(z,ge_real_positive_lowerlayer,ge_real_negative_lowerlayer,ge_imaginary_positive_lowerlayer,ge_imaginary_negative_lowerlayer)",
+      "meaning": "The natural z actually encodes a pair of signed integers; not every natural is assumed to be a valid pair code.",
+      "parameters": [
+        "z"
+      ],
+      "reviewed_definition_id": "ND0160",
+      "reviewed_expansion_sha256": "c8afae24be45ec748565850d52a98c496cec734a90d8bacb5c80eabb293448ab"
     },
     "ZeroSubsequence": {
       "expansion": "w chooses k distinct list indices, allowing repeated element values, whose sum in G is zero",
@@ -4567,6 +5106,24 @@
       "title": "Elliptic curves, lattices, and finite Selmer descent"
     }
   ],
+  "historical_lower_layer_definition_plan": {
+    "ENorm": {
+      "expansion": "z=(a,b) and n=a²-a*b+b² in signed-code arithmetic",
+      "meaning": "Eisenstein norm.",
+      "parameters": [
+        "z",
+        "n"
+      ]
+    },
+    "GNorm": {
+      "expansion": "z=(a,b) and n=a²+b² in signed-code arithmetic",
+      "meaning": "Gaussian norm.",
+      "parameters": [
+        "z",
+        "n"
+      ]
+    }
+  },
   "language": {
     "base_signature": [
       "0",
@@ -4649,8 +5206,8 @@
   ],
   "meta": {
     "anchor_count": 8,
-    "current_alpha_checked_use_count": 2560,
-    "current_alpha_version": "v27",
+    "current_alpha_checked_use_count": 2764,
+    "current_alpha_version": "v28",
     "generated_at": "2026-08-27",
     "goal_count": 120,
     "historical_alpha_versions": [
@@ -4665,8 +5222,21 @@
       "v23",
       "v24",
       "v25",
-      "v26"
+      "v26",
+      "v27"
     ],
+    "lower_layer_named_targets": [
+      "G001",
+      "G002",
+      "G003",
+      "G004",
+      "G005",
+      "G021",
+      "G022",
+      "G081",
+      "G084"
+    ],
+    "lower_layer_new_theorem_count": 204,
     "max_layer": 12,
     "milestones_include_existing_foundations_and_closure_targets": true,
     "node_count": 144,
@@ -5628,76 +6198,364 @@
       "why": "The immutable Alpha-v19 tranche independently proves its exact 44-row forward constructor and normal form. Its historical evidence does not itself prove the inverse or descent; those are separately completed by Alpha-v26 goals G077 and G078."
     },
     {
+      "conceptual_refs": [],
+      "definition_refs": [
+        "DivRem"
+      ],
       "deps": [
         "T06"
       ],
       "difficulty": "foundation",
+      "evidence": {
+        "actual_substrate_theorem_names": [
+          "division_remainder_exists",
+          "division_remainder_unique"
+        ],
+        "alpha_enrolled": true,
+        "alpha_version": "v28",
+        "bundle_campaign": "lower_layer",
+        "bundle_dependencies": 3090,
+        "bundle_node_id": 657,
+        "bundle_nodes": 862,
+        "bundle_path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+        "bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+        "checked_use": true,
+        "full_empty_context_closure": true,
+        "implementation": "independently_closed",
+        "independent_lean_bundle_verified": true,
+        "new_theorem_count": 27,
+        "proof_routes": [
+          {
+            "label": "foundation_division_exists_unique",
+            "route": "arithmetic-foundations",
+            "tag": "AF0001"
+          }
+        ],
+        "proof_tag": "AF0001",
+        "release_status": "alpha_closed",
+        "route": "arithmetic-foundations/",
+        "stable_member": false,
+        "theorem_name": "foundation_division_exists_unique",
+        "theorem_names": [
+          "foundation_division_exists_unique"
+        ],
+        "theorem_statement_sha256": "f43569ef56675e5aab556c26ad0606eea4f4de9c1c54078e6c51c3e96ef653ab"
+      },
       "family": "F01",
+      "historical_foundation_classification": "existing_foundation",
+      "historical_planned_dependencies": [
+        "T06"
+      ],
+      "historical_planned_layer": 2,
+      "historical_planned_statement": "∀n d>0. ∃q r. DivRem(n,d,q,r) ∧ ∀u v. DivRem(n,d,u,v)→u=q ∧ v=r.",
+      "historical_planned_why": "Expose existing division as a uniquely witnessed reusable foundation, not a newly missing theorem.",
       "id": "G001",
       "kind": "goal",
       "layer": 2,
-      "statement": "∀n d>0. ∃q r. DivRem(n,d,q,r) ∧ ∀u v. DivRem(n,d,u,v)→u=q ∧ v=r.",
-      "status": "existing_foundation",
+      "references": [
+        "S62",
+        "S63",
+        "S64",
+        "S65"
+      ],
+      "representation_refinement": "Expose the original actual quotient/remainder relation, with both outputs uniquely determined, from a positive divisor alone.",
+      "statement": "∀ n. ∀ d. ¬d = 0 → ∃ x. ∃ y. DivRem(n,d,x,y) ∧ (∀ z. ∀ m. DivRem(n,d,z,m) → z = x ∧ m = y)",
+      "status": "alpha_closed",
       "title": "Division with unique quotient and remainder",
-      "why": "Expose existing division as a uniquely witnessed reusable foundation, not a newly missing theorem."
+      "why": "Expose the original actual quotient/remainder relation, with both outputs uniquely determined, from a positive divisor alone."
     },
     {
+      "conceptual_refs": [],
+      "definition_refs": [
+        "SignedBezout",
+        "IsGCD"
+      ],
       "deps": [
         "T07"
       ],
       "difficulty": "foundation",
+      "evidence": {
+        "actual_signed_coefficient_codes_proved": true,
+        "actual_substrate_theorem_names": [
+          "gcd_signed_bezout_exists",
+          "is_gcd_unique"
+        ],
+        "alpha_enrolled": true,
+        "alpha_version": "v28",
+        "bundle_campaign": "lower_layer",
+        "bundle_dependencies": 3090,
+        "bundle_node_id": 658,
+        "bundle_nodes": 862,
+        "bundle_path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+        "bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+        "checked_use": true,
+        "full_empty_context_closure": true,
+        "implementation": "independently_closed",
+        "independent_lean_bundle_verified": true,
+        "new_theorem_count": 27,
+        "proof_routes": [
+          {
+            "label": "foundation_signed_bezout_canonical_gcd",
+            "route": "arithmetic-foundations",
+            "tag": "AF0002"
+          }
+        ],
+        "proof_tag": "AF0002",
+        "release_status": "alpha_closed",
+        "route": "arithmetic-foundations/",
+        "stable_member": false,
+        "theorem_name": "foundation_signed_bezout_canonical_gcd",
+        "theorem_names": [
+          "foundation_signed_bezout_canonical_gcd"
+        ],
+        "theorem_statement_sha256": "3d20b5eb4e05f3b50ba301946c3fc791504ef4586ae3d2bed3f2bd58648790a6",
+        "zero_zero_case_included": true
+      },
       "family": "F01",
+      "historical_foundation_classification": "existing_foundation",
+      "historical_planned_dependencies": [
+        "T07"
+      ],
+      "historical_planned_layer": 3,
+      "historical_planned_statement": "∀a b. a+b>0 → ∃g u v. Gcd(a,b,g) ∧ u*a+v*b=g ∧ ∀h.Gcd(a,b,h)→h=g.",
+      "historical_planned_why": "Package existing gcd and signed Bézout machinery into one canonical interface.",
       "id": "G002",
       "kind": "goal",
       "layer": 3,
-      "statement": "∀a b. a+b>0 → ∃g u v. Gcd(a,b,g) ∧ u*a+v*b=g ∧ ∀h.Gcd(a,b,h)→h=g.",
-      "status": "existing_foundation",
+      "references": [
+        "S62",
+        "S63",
+        "S64",
+        "S65"
+      ],
+      "representation_refinement": "Bézout coefficients are actual canonical signed-natural codes, not unsigned variables. The endpoint also handles a=b=0 and constructs the unique canonical gcd; the old positive-sum restriction is unnecessary.",
+      "statement": "∀ a. ∀ b. ∃ g. ∃ u. ∃ v. IsGCD(g,a,b) ∧ (SignedBezout(g,a,b,u,v) ∧ (∀ x. IsGCD(x,a,b) → x = g))",
+      "status": "alpha_closed",
       "title": "Bézout identity and canonical gcd",
-      "why": "Package existing gcd and signed Bézout machinery into one canonical interface."
+      "why": "Bézout coefficients are actual canonical signed-natural codes, not unsigned variables. The endpoint also handles a=b=0 and constructs the unique canonical gcd; the old positive-sum restriction is unnecessary."
     },
     {
-      "deps": [
+      "conceptual_refs": [
         "G002"
       ],
+      "definition_refs": [
+        "Dvd",
+        "Coprime"
+      ],
+      "deps": [
+        "T07"
+      ],
       "difficulty": "foundation",
+      "evidence": {
+        "actual_substrate_theorem_names": [
+          "gauss_coprime_cancel"
+        ],
+        "alpha_enrolled": true,
+        "alpha_version": "v28",
+        "bundle_campaign": "lower_layer",
+        "bundle_dependencies": 3090,
+        "bundle_node_id": 659,
+        "bundle_nodes": 862,
+        "bundle_path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+        "bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+        "checked_use": true,
+        "full_empty_context_closure": true,
+        "implementation": "independently_closed",
+        "independent_lean_bundle_verified": true,
+        "new_theorem_count": 27,
+        "proof_routes": [
+          {
+            "label": "foundation_coprime_product_divisor",
+            "route": "arithmetic-foundations",
+            "tag": "AF0003"
+          }
+        ],
+        "proof_tag": "AF0003",
+        "release_status": "alpha_closed",
+        "route": "arithmetic-foundations/",
+        "stable_member": false,
+        "theorem_name": "foundation_coprime_product_divisor",
+        "theorem_names": [
+          "foundation_coprime_product_divisor"
+        ],
+        "theorem_statement_sha256": "4ec0d3dde7c6319356d61d282abed4edd22af6eeffba58e03162a18c4e58de42"
+      },
       "family": "F01",
+      "historical_foundation_classification": "existing_foundation",
+      "historical_planned_dependencies": [
+        "G002"
+      ],
+      "historical_planned_layer": 4,
+      "historical_planned_statement": "∀a b c. Coprime(a,b) ∧ Dvd(a,b*c) → ∃q.c=a*q.",
+      "historical_planned_why": "Isolate the existing constructive divisibility cancellation foundation.",
       "id": "G003",
       "kind": "goal",
       "layer": 4,
-      "statement": "∀a b c. Coprime(a,b) ∧ Dvd(a,b*c) → ∃q.c=a*q.",
-      "status": "existing_foundation",
+      "references": [
+        "S62",
+        "S63",
+        "S64",
+        "S65"
+      ],
+      "representation_refinement": "The quotient witnessing divisibility of c by a is an actual existential output. No division, factorization, or coprimality oracle is supplied.",
+      "statement": "∀ a. ∀ b. ∀ c. Coprime(a,b) ∧ Dvd(a,b · c) → Dvd(a,c)",
+      "status": "alpha_closed",
       "title": "Euclid's coprime-product lemma",
-      "why": "Isolate the existing constructive divisibility cancellation foundation."
+      "why": "The quotient witnessing divisibility of c by a is an actual existential output. No division, factorization, or coprimality oracle is supplied."
     },
     {
+      "conceptual_refs": [],
+      "definition_refs": [
+        "PrimeFactorList"
+      ],
       "deps": [
         "T08",
+        "T11",
         "T15"
       ],
       "difficulty": "foundation",
+      "evidence": {
+        "actual_matching_bijection_proved": false,
+        "actual_substrate_theorem_names": [
+          "prime_factorization_existence"
+        ],
+        "alpha_enrolled": true,
+        "alpha_version": "v28",
+        "arbitrary_unsorted_prime_factor_lists": true,
+        "bundle_campaign": "lower_layer",
+        "bundle_dependencies": 3090,
+        "bundle_node_id": 660,
+        "bundle_nodes": 862,
+        "bundle_path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+        "bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+        "checked_use": true,
+        "full_empty_context_closure": true,
+        "implementation": "independently_closed",
+        "independent_lean_bundle_verified": true,
+        "new_theorem_count": 27,
+        "proof_routes": [
+          {
+            "label": "foundation_prime_factor_list_exists",
+            "route": "arithmetic-foundations",
+            "tag": "AF0004"
+          }
+        ],
+        "proof_tag": "AF0004",
+        "release_status": "alpha_closed",
+        "route": "arithmetic-foundations/",
+        "sortedness_premise": false,
+        "stable_member": false,
+        "theorem_name": "foundation_prime_factor_list_exists",
+        "theorem_names": [
+          "foundation_prime_factor_list_exists"
+        ],
+        "theorem_statement_sha256": "af68e2e841fe13eafddb375135f9f1abde79b0185d5722d3851c0fcf61af56dc"
+      },
       "family": "F01",
+      "historical_foundation_classification": "existing_foundation",
+      "historical_planned_dependencies": [
+        "T08",
+        "T15"
+      ],
+      "historical_planned_layer": 4,
+      "historical_planned_statement": "∀n>0. ∃s. Factorization(n,s).",
+      "historical_planned_why": "Index already available prime-divisor descent as a finite factorization witness.",
       "id": "G004",
       "kind": "goal",
       "layer": 4,
-      "statement": "∀n>0. ∃s. Factorization(n,s).",
-      "status": "existing_foundation",
+      "references": [
+        "S62",
+        "S63",
+        "S64",
+        "S65"
+      ],
+      "representation_refinement": "The opaque planning Factorization(n,s) is refined to PrimeFactorList(n,b,c,l): two beta parameters, a finite length, actual product n, and prime entries. The relation contains no sorting premise. The incompatible two-argument planning symbol is preserved, not silently aliased.",
+      "statement": "∀ n. ¬n = 0 → ∃ x. ∃ y. ∃ z. PrimeFactorList(n,y,z,x)",
+      "status": "alpha_closed",
       "title": "Existence of prime factorization",
-      "why": "Index already available prime-divisor descent as a finite factorization witness."
+      "why": "The opaque planning Factorization(n,s) is refined to PrimeFactorList(n,b,c,l): two beta parameters, a finite length, actual product n, and prime entries. The relation contains no sorting premise. The incompatible two-argument planning symbol is preserved, not silently aliased."
     },
     {
-      "deps": [
+      "conceptual_refs": [
         "G003",
         "G004"
       ],
+      "definition_refs": [
+        "PrimeFactorList",
+        "PrimeFactorListPermutation"
+      ],
+      "deps": [
+        "T08",
+        "T11",
+        "T15"
+      ],
       "difficulty": "foundation",
+      "evidence": {
+        "actual_matching_bijection_proved": true,
+        "actual_substrate_theorem_names": [
+          "prime_factor_lists_matching_by_length"
+        ],
+        "alpha_enrolled": true,
+        "alpha_version": "v28",
+        "arbitrary_unsorted_prime_factor_lists": true,
+        "bundle_campaign": "lower_layer",
+        "bundle_dependencies": 3090,
+        "bundle_node_id": 683,
+        "bundle_nodes": 862,
+        "bundle_path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+        "bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+        "checked_use": true,
+        "full_empty_context_closure": true,
+        "implementation": "independently_closed",
+        "independent_lean_bundle_verified": true,
+        "new_theorem_count": 27,
+        "proof_routes": [
+          {
+            "label": "prime_factor_lists_permutation_exists",
+            "route": "arithmetic-foundations",
+            "tag": "AF001A"
+          },
+          {
+            "label": "prime_factorization_exists_unique_up_to_permutation",
+            "route": "arithmetic-foundations",
+            "tag": "AF001B"
+          }
+        ],
+        "proof_tag": "AF001A",
+        "release_status": "alpha_closed",
+        "route": "arithmetic-foundations/",
+        "sortedness_premise": false,
+        "stable_member": false,
+        "theorem_name": "prime_factor_lists_permutation_exists",
+        "theorem_names": [
+          "prime_factor_lists_permutation_exists",
+          "prime_factorization_exists_unique_up_to_permutation"
+        ],
+        "theorem_statement_sha256": "89df5c484cb30ab9c74dd04af9a5700c635ae402d01f8088ff934f75e0254518"
+      },
       "family": "F01",
+      "historical_foundation_classification": "existing_foundation",
+      "historical_planned_dependencies": [
+        "G003",
+        "G004"
+      ],
+      "historical_planned_layer": 5,
+      "historical_planned_statement": "∀n s t. Factorization(n,s) ∧ Factorization(n,t) → ∃w.Permutation(s,t,w).",
+      "historical_planned_why": "Expose existing prime-factor uniqueness without claiming it is a novel open theorem.",
       "id": "G005",
       "kind": "goal",
       "layer": 5,
-      "statement": "∀n s t. Factorization(n,s) ∧ Factorization(n,t) → ∃w.Permutation(s,t,w).",
-      "status": "existing_foundation",
+      "references": [
+        "S62",
+        "S63",
+        "S64",
+        "S65"
+      ],
+      "representation_refinement": "Arbitrary unordered PrimeFactorList(n,b,c,l) and PrimeFactorList(n,d,e,m) admit equal lengths and an actual beta-coded bounded, injective, surjective matching of all prime occurrences. The planning three-argument Permutation is not treated as an arity-compatible abbreviation of the eight-argument checked relation.",
+      "statement": "∀ n. ∀ b. ∀ c. ∀ l. ∀ d. ∀ e. ∀ m. PrimeFactorList(n,b,c,l) ∧ PrimeFactorList(n,d,e,m) → ∃ x. ∃ y. PrimeFactorListPermutation(b,c,l,d,e,m,x,y)",
+      "status": "alpha_closed",
       "title": "Uniqueness of prime factorization",
-      "why": "Expose existing prime-factor uniqueness without claiming it is a novel open theorem."
+      "why": "Arbitrary unordered PrimeFactorList(n,b,c,l) and PrimeFactorList(n,d,e,m) admit equal lengths and an actual beta-coded bounded, injective, surjective matching of all prime occurrences. The planning three-argument Permutation is not treated as an arity-compatible abbreviation of the eight-argument checked relation."
     },
     {
       "deps": [
@@ -6091,34 +6949,184 @@
       "why": "Glue provided local roots without falsely claiming roots exist at arbitrary moduli."
     },
     {
+      "conceptual_refs": [],
+      "definition_refs": [
+        "Prime",
+        "Lt"
+      ],
       "deps": [
         "T08",
         "T11"
       ],
       "difficulty": "foundation",
+      "evidence": {
+        "actual_substrate_theorem_names": [
+          "prime_unbounded"
+        ],
+        "alpha_enrolled": true,
+        "alpha_version": "v28",
+        "bundle_campaign": "lower_layer",
+        "bundle_dependencies": 3090,
+        "bundle_node_id": 661,
+        "bundle_nodes": 862,
+        "bundle_path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+        "bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+        "checked_use": true,
+        "full_empty_context_closure": true,
+        "implementation": "independently_closed",
+        "independent_lean_bundle_verified": true,
+        "new_theorem_count": 19,
+        "proof_routes": [
+          {
+            "label": "foundation_primes_above_every_bound",
+            "route": "prime-enumeration",
+            "tag": "PE0001"
+          }
+        ],
+        "proof_tag": "PE0001",
+        "release_status": "alpha_closed",
+        "route": "prime-enumeration/",
+        "stable_member": false,
+        "theorem_name": "foundation_primes_above_every_bound",
+        "theorem_names": [
+          "foundation_primes_above_every_bound"
+        ],
+        "theorem_statement_sha256": "be3aeb8487e6cac71fa3093363e847f3afbdd176e23ebdbb5f003c080f518167"
+      },
       "family": "F03",
+      "historical_foundation_classification": "existing_foundation",
+      "historical_planned_dependencies": [
+        "T08",
+        "T11"
+      ],
+      "historical_planned_layer": 3,
+      "historical_planned_statement": "∀B. ∃p.Prime(p) ∧ p>B.",
+      "historical_planned_why": "Reindex the already available constructive finite-product proof, not a missing result.",
       "id": "G021",
       "kind": "goal",
       "layer": 3,
-      "statement": "∀B. ∃p.Prime(p) ∧ p>B.",
-      "status": "existing_foundation",
+      "references": [
+        "S62",
+        "S63",
+        "S64",
+        "S65"
+      ],
+      "representation_refinement": "This is an exact wrapper around the already proved prime-unboundedness foundation, not a claim of a newly discovered infinitude theorem.",
+      "statement": "∀ B. ∃ p. Prime(p) ∧ Lt(B,p)",
+      "status": "alpha_closed",
       "title": "Euclid's infinitude of primes",
-      "why": "Reindex the already available constructive finite-product proof, not a missing result."
+      "why": "This is an exact wrapper around the already proved prime-unboundedness foundation, not a claim of a newly discovered infinitude theorem."
     },
     {
+      "conceptual_refs": [
+        "G021"
+      ],
+      "definition_refs": [
+        "Lt",
+        "BetaAt",
+        "InitialPrimeList",
+        "PowTwo"
+      ],
       "deps": [
-        "G021",
+        "A02",
+        "T04",
         "T05"
       ],
       "difficulty": "near",
+      "evidence": {
+        "actual_first_primes_proved": true,
+        "actual_power_witnesses_constructed": true,
+        "actual_substrate_theorem_names": [
+          "prime_unbounded",
+          "bertrand_strict",
+          "least_prime_above_finite_scan",
+          "beta_prefix_extend"
+        ],
+        "alpha_enrolled": true,
+        "alpha_version": "v28",
+        "bundle_campaign": "lower_layer",
+        "bundle_dependencies": 3090,
+        "bundle_node_id": 853,
+        "bundle_nodes": 862,
+        "bundle_path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+        "bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+        "checked_use": true,
+        "full_empty_context_closure": true,
+        "implementation": "independently_closed",
+        "independent_lean_bundle_verified": true,
+        "new_theorem_count": 19,
+        "no_omission_proved": true,
+        "proof_routes": [
+          {
+            "label": "least_prime_above_exists_unique",
+            "route": "prime-enumeration",
+            "tag": "PE0006"
+          },
+          {
+            "label": "first_primes_list_exists",
+            "route": "prime-enumeration",
+            "tag": "PE0013"
+          },
+          {
+            "label": "prime_list_every_entry_is_prime",
+            "route": "prime-enumeration",
+            "tag": "PE0010"
+          },
+          {
+            "label": "prime_list_strictly_increasing",
+            "route": "prime-enumeration",
+            "tag": "PE0012"
+          },
+          {
+            "label": "prime_list_omits_no_smaller_prime",
+            "route": "prime-enumeration",
+            "tag": "PE0011"
+          },
+          {
+            "label": "first_primes_double_exponential_bound",
+            "route": "prime-enumeration",
+            "tag": "PE000C"
+          }
+        ],
+        "proof_tag": "PE000C",
+        "release_status": "alpha_closed",
+        "route": "prime-enumeration/",
+        "stable_member": false,
+        "supplied_prime_list_premise": false,
+        "theorem_name": "first_primes_double_exponential_bound",
+        "theorem_names": [
+          "least_prime_above_exists_unique",
+          "first_primes_list_exists",
+          "prime_list_every_entry_is_prime",
+          "prime_list_strictly_increasing",
+          "prime_list_omits_no_smaller_prime",
+          "first_primes_double_exponential_bound"
+        ],
+        "theorem_statement_sha256": "b69363aca6a0a887d3baba0ca6ddd13a550496075f15ec2cb4199e7c73054676"
+      },
       "family": "F03",
+      "historical_foundation_classification": "open",
+      "historical_planned_dependencies": [
+        "G021",
+        "T05"
+      ],
+      "historical_planned_layer": 5,
+      "historical_planned_statement": "∀k>0. ∃s p.PrimeList(s,k) ∧ At(s,k-1,p) ∧ p<2^(2^k).",
+      "historical_planned_why": "Give an explicitly finite doubly exponential search bound for the kth prime.",
       "id": "G022",
       "kind": "goal",
-      "layer": 5,
-      "statement": "∀k>0. ∃s p.PrimeList(s,k) ∧ At(s,k-1,p) ∧ p<2^(2^k).",
-      "status": "open",
+      "layer": 6,
+      "references": [
+        "S62",
+        "S63",
+        "S64",
+        "S65"
+      ],
+      "representation_refinement": "InitialPrimeList(b,c,k) uses two beta parameters and contains exactly the first k primes. Global least-prime transitions prove strict increase and no omission. The final theorem constructs the list, terminal entry, 2^k, and 2^(2^k) from k≠0 alone. The two-argument planning PrimeList remains distinct. Because this proof genuinely uses Bertrand, its proof-DAG layer follows the existing Bertrand anchor.",
+      "statement": "∀ k. ¬k = 0 → ∃ x. ∃ y. ∃ z. ∃ n. ∃ m. ∃ i. k = S z ∧ (InitialPrimeList(x,y,k) ∧ (BetaAt(x,y,z,n) ∧ (PowTwo(k,m) ∧ (PowTwo(m,i) ∧ Lt(n,i)))))",
+      "status": "alpha_closed",
       "title": "Effective nth-prime upper bound",
-      "why": "Give an explicitly finite doubly exponential search bound for the kth prime."
+      "why": "InitialPrimeList(b,c,k) uses two beta parameters and contains exactly the first k primes. Global least-prime transitions prove strict increase and no omission. The final theorem constructs the list, terminal entry, 2^k, and 2^(2^k) from k≠0 alone. The two-argument planning PrimeList remains distinct. Because this proof genuinely uses Bertrand, its proof-DAG layer follows the existing Bertrand anchor."
     },
     {
       "definition_refs": [
@@ -7695,19 +8703,106 @@
       "why": "Prove that the five known natural solutions are exhaustive, not merely that each example works."
     },
     {
+      "conceptual_refs": [
+        "T13"
+      ],
+      "definition_refs": [
+        "ZPairValid",
+        "GEuclideanDivision"
+      ],
       "deps": [
+        "T06"
+      ],
+      "difficulty": "near",
+      "evidence": {
+        "actual_canonical_signed_pair_codes": true,
+        "actual_norms_constructed": true,
+        "actual_ring_operations_proved": true,
+        "actual_substrate_theorem_names": [
+          "signed_integer_floor_exists",
+          "gaussian_nearest_signed_quotient_exists"
+        ],
+        "alpha_enrolled": true,
+        "alpha_version": "v28",
+        "bundle_campaign": "lower_layer",
+        "bundle_dependencies": 3090,
+        "bundle_node_id": 777,
+        "bundle_nodes": 862,
+        "bundle_path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+        "bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+        "checked_use": true,
+        "full_empty_context_closure": true,
+        "full_euclidean_division_proved": true,
+        "implementation": "independently_closed",
+        "independent_lean_bundle_verified": true,
+        "new_theorem_count": 93,
+        "prime_classification_claimed": false,
+        "proof_routes": [
+          {
+            "label": "gaussian_norm_exists_unique",
+            "route": "gaussian-integers",
+            "tag": "GI0051"
+          },
+          {
+            "label": "gaussian_add_exists",
+            "route": "gaussian-integers",
+            "tag": "GI0055"
+          },
+          {
+            "label": "gaussian_multiply_exists",
+            "route": "gaussian-integers",
+            "tag": "GI0059"
+          },
+          {
+            "label": "gaussian_norm_multiply",
+            "route": "gaussian-integers",
+            "tag": "GI005B"
+          },
+          {
+            "label": "gaussian_euclidean_division_exists",
+            "route": "gaussian-integers",
+            "tag": "GI005D"
+          }
+        ],
+        "proof_tag": "GI005D",
+        "release_status": "alpha_closed",
+        "route": "gaussian-integers/",
+        "stable_member": false,
+        "supplied_quotient_or_norm_bound_premise": false,
+        "theorem_name": "gaussian_euclidean_division_exists",
+        "theorem_names": [
+          "gaussian_norm_exists_unique",
+          "gaussian_add_exists",
+          "gaussian_multiply_exists",
+          "gaussian_norm_multiply",
+          "gaussian_euclidean_division_exists"
+        ],
+        "theorem_statement_sha256": "7c20ce64493b15888f961ece2d86e97171370aee53e8517ee21db8d53d82fd10",
+        "unique_factorization_claimed": false
+      },
+      "family": "F09",
+      "historical_foundation_classification": "open",
+      "historical_planned_dependencies": [
         "T06",
         "T13"
       ],
-      "difficulty": "near",
-      "family": "F09",
+      "historical_planned_layer": 5,
+      "historical_planned_statement": "∀ Gaussian a,b≠0. ∃q r u v.a=b*q+r ∧ GNorm(r,u) ∧ GNorm(b,v) ∧ u<v.",
+      "historical_planned_why": "Construct an actual nearest square-lattice quotient and strict norm decrease.",
       "id": "G081",
       "kind": "goal",
       "layer": 5,
-      "statement": "∀ Gaussian a,b≠0. ∃q r u v.a=b*q+r ∧ GNorm(r,u) ∧ GNorm(b,v) ∧ u<v.",
-      "status": "open",
+      "references": [
+        "S62",
+        "S63",
+        "S64",
+        "S65"
+      ],
+      "representation_refinement": "The input and output naturals are genuine injectively paired canonical signed-integer codes. GDivRem contains actual multiplication and addition; GNorm is the actual sum of two signed-coordinate squares. The quotient, remainder, and both norm witnesses are constructed, with no rounded-quotient or norm-bound premise. Higher matrix or lattice theorems are not prerequisites of this proof.",
+      "statement": "∀ ac. ∀ bc. ZPairValid(ac) → ZPairValid(bc) → ¬bc = 0 → ∃ x. ∃ y. ∃ z. ∃ n. GEuclideanDivision(ac,bc,x,y,z,n)",
+      "status": "alpha_closed",
       "title": "Gaussian Euclidean division",
-      "why": "Construct an actual nearest square-lattice quotient and strict norm decrease."
+      "why": "The input and output naturals are genuine injectively paired canonical signed-integer codes. GDivRem contains actual multiplication and addition; GNorm is the actual sum of two signed-coordinate squares. The quotient, remainder, and both norm witnesses are constructed, with no rounded-quotient or norm-bound premise. Higher matrix or lattice theorems are not prerequisites of this proof."
     },
     {
       "deps": [
@@ -7740,19 +8835,112 @@
       "why": "Tie the ramified p=2 branch to norm two; without that condition the classification is existentially vacuous."
     },
     {
+      "conceptual_refs": [
+        "T13"
+      ],
+      "definition_refs": [
+        "EEuclideanDivision",
+        "ZPairValid"
+      ],
       "deps": [
+        "T06"
+      ],
+      "difficulty": "near",
+      "evidence": {
+        "actual_canonical_signed_pair_codes": true,
+        "actual_norms_constructed": true,
+        "actual_ring_operations_proved": true,
+        "actual_substrate_theorem_names": [
+          "signed_integer_floor_exists"
+        ],
+        "alpha_enrolled": true,
+        "alpha_version": "v28",
+        "bundle_campaign": "lower_layer",
+        "bundle_dependencies": 3090,
+        "bundle_node_id": 842,
+        "bundle_nodes": 862,
+        "bundle_path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+        "bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+        "checked_use": true,
+        "full_empty_context_closure": true,
+        "full_euclidean_division_proved": true,
+        "globally_nearest_quotient_claimed": false,
+        "implementation": "independently_closed",
+        "independent_lean_bundle_verified": true,
+        "new_theorem_count": 65,
+        "prime_classification_claimed": false,
+        "proof_routes": [
+          {
+            "label": "eisenstein_norm_exists",
+            "route": "eisenstein-integers",
+            "tag": "EI0036"
+          },
+          {
+            "label": "eisenstein_norm_functional",
+            "route": "eisenstein-integers",
+            "tag": "EI0037"
+          },
+          {
+            "label": "eisenstein_add_exists",
+            "route": "eisenstein-integers",
+            "tag": "EI0039"
+          },
+          {
+            "label": "eisenstein_multiply_exists",
+            "route": "eisenstein-integers",
+            "tag": "EI003D"
+          },
+          {
+            "label": "eisenstein_norm_multiply",
+            "route": "eisenstein-integers",
+            "tag": "EI003F"
+          },
+          {
+            "label": "eisenstein_euclidean_division_exists",
+            "route": "eisenstein-integers",
+            "tag": "EI0041"
+          }
+        ],
+        "proof_tag": "EI0041",
+        "release_status": "alpha_closed",
+        "route": "eisenstein-integers/",
+        "stable_member": false,
+        "supplied_quotient_or_norm_bound_premise": false,
+        "theorem_name": "eisenstein_euclidean_division_exists",
+        "theorem_names": [
+          "eisenstein_norm_exists",
+          "eisenstein_norm_functional",
+          "eisenstein_add_exists",
+          "eisenstein_multiply_exists",
+          "eisenstein_norm_multiply",
+          "eisenstein_euclidean_division_exists"
+        ],
+        "theorem_statement_sha256": "160d72250ab01db0ed32ca57bc472fd22d5ea307e4042815397cc771c3e102a9",
+        "unique_factorization_claimed": false
+      },
+      "family": "F09",
+      "historical_foundation_classification": "open",
+      "historical_planned_dependencies": [
         "T06",
         "T13"
       ],
-      "difficulty": "near",
-      "family": "F09",
+      "historical_planned_layer": 6,
+      "historical_planned_statement": "∀ Eisenstein a,b≠0. ∃q r u v.a=b*q+r ∧ ENorm(r,u) ∧ ENorm(b,v) ∧ u<v.",
+      "historical_planned_why": "Construct the nearest hexagonal-lattice quotient and a strict norm decrease.",
       "id": "G084",
       "kind": "goal",
       "layer": 6,
-      "statement": "∀ Eisenstein a,b≠0. ∃q r u v.a=b*q+r ∧ ENorm(r,u) ∧ ENorm(b,v) ∧ u<v.",
-      "status": "open",
+      "references": [
+        "S62",
+        "S63",
+        "S64",
+        "S65"
+      ],
+      "representation_refinement": "Eisenstein integers reuse exactly the same signed-pair carrier and addition as Gaussian integers, but have multiplication ω²+ω+1=0 and norm a²−ab+b². A fundamental-parallelogram floor quotient gives strict norm decrease; the original planning suggestion of a globally nearest hexagonal quotient is not asserted or needed. No quotient or norm-bound oracle is supplied.",
+      "statement": "∀ ac. ∀ bc. ZPairValid(ac) → ZPairValid(bc) → ¬bc = 0 → ∃ x. ∃ y. ∃ z. ∃ n. EEuclideanDivision(ac,bc,x,y,z,n)",
+      "status": "alpha_closed",
       "title": "Eisenstein Euclidean division",
-      "why": "Construct the nearest hexagonal-lattice quotient and a strict norm decrease."
+      "why": "Eisenstein integers reuse exactly the same signed-pair carrier and addition as Gaussian integers, but have multiplication ω²+ω+1=0 and norm a²−ab+b². A fundamental-parallelogram floor quotient gives strict norm decrease; the original planning suggestion of a globally nearest hexagonal quotient is not asserted or needed. No quotient or norm-bound oracle is supplied."
     },
     {
       "deps": [
@@ -9015,6 +10203,36 @@
       "kind": "admission_record",
       "label": "Immutable additive Alpha v27 second-wave admission contract",
       "path": "research/arithmetic-library/alpha-v27-second-wave-rfc-v1.md"
+    },
+    {
+      "id": "S62",
+      "kind": "release_manifest",
+      "label": "Current Alpha v28 independently checked lower-layer channels",
+      "path": "artifacts/peano-library/channels-v28.json"
+    },
+    {
+      "id": "S63",
+      "kind": "independent_proof_artifact",
+      "label": "Complete original-kernel and Lean-verified lower-layer proof bundle",
+      "path": "research/arithmetic-library/artifacts/alpha-v28-lower-layer-proof-bundle-v1.json"
+    },
+    {
+      "id": "S64",
+      "kind": "independent_closure_record",
+      "label": "Exact lower-layer closure receipt and scope boundaries",
+      "path": "research/arithmetic-library/alpha-v28-lower-layer-receipt.md"
+    },
+    {
+      "id": "S65",
+      "kind": "admission_record",
+      "label": "Immutable additive Alpha v28 lower-layer admission contract",
+      "path": "research/arithmetic-library/alpha-v28-lower-layer-rfc-v1.md"
+    },
+    {
+      "id": "S66",
+      "kind": "historical_presentation_projection",
+      "label": "Exact archived v27 atlas inputs for unchanged historical checks",
+      "path": "research/arithmetic-library/artifacts/alpha-v27-campaign-projection-v1.json"
     }
   ],
   "subtitle": "120 major first-order arithmetic milestones, sixteen foundations, and eight honestly classified existing proof anchors",

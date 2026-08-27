@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PD0004 — Prime(p) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="multinomial-kummer"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
+       <a href="../graph.html?v=897410581b66">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=Prime&amp;v=897410581b66">Global definition: Prime</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F04&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G035" href="../../../../grand-campaign/?view=goal&amp;focus=G035&amp;v=897410581b66">G035 milestone</a></nav>
+  <p class="pd-tag">PD0004</p><h1>Prime(p)</h1>
+  <p>p is nonunit and every factorization of p has a unit factor.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>¬p = 1 ∧ (∀ x. ∀ y. p = x · y → x = 1 ∨ y = 1)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>~(p = 1) /\ forall a b. p = a * b -&gt; a = 1 \/ b = 1</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><span class="pd-empty">none — first-order arithmetic only</span></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0047.html?v=897410581b66">PrimePowerValuation(p,n,e)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/MK0006.html?v=897410581b66">MK0006 · beta_prime_product_valuation_eq_sum</a><a class="pd-chip" href="../tag/MK0007.html?v=897410581b66">MK0007 · beta_prime_product_valuation_from_sum</a><a class="pd-chip" href="../tag/MK0010.html?v=897410581b66">MK0010 · multinomial_valuations_give_carry_prefix</a><a class="pd-chip" href="../tag/MK0011.html?v=897410581b66">MK0011 · multinomial_kummer_carry_valuation</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>1</dd>
+  <dt>Topological notation layer</dt><dd>0</dd>
+  <dt>Transitive prerequisites</dt><dd>0</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity PD0004.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>62f78d205c303365b156144e260330ee3fd0798bb85f15e76eb44215d7759979</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v28/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

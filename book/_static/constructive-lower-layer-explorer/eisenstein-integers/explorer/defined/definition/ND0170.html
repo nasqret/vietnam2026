@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0170 — EisensteinCoordinateProduct(ap,an,bp,bn,cp,cn,dp,dn,rp,rn,sp,sn) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="eisenstein-integers"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
+       <a href="../graph.html?v=897410581b66">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=EisensteinCoordinateProduct&amp;v=897410581b66">Global definition: EisensteinCoordinateProduct</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G084" href="../../../../grand-campaign/?view=goal&amp;focus=G084&amp;v=897410581b66">G084 milestone</a></nav>
+  <p class="pd-tag">ND0170</p><h1>EisensteinCoordinateProduct(ap,an,bp,bn,cp,cn,dp,dn,rp,rn,sp,sn)</h1>
+  <p>The actual signed-coordinate product (a+bω)(c+dω)=(ac−bd)+(ad+bc−bd)ω, where ω²+ω+1=0; this is not Gaussian multiplication.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>ap · cp + an · cn + (bp · dn + bn · dp) + rn = rp + (ap · cn + an · cp + (bp · dp + bn · dn)) ∧ ap · dp + an · dn + (bp · cp + bn · cn) + (bp · dn + bn · dp) + sn = sp + (ap · dn + an · dp + (bp · cn + bn · cp) + (bp · dp + bn · dn))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>(((((((((ap) * (cp))) + (((an) * (cn))))) + (((((bp) * (dn))) + (((bn) * (dp))))))) + (rn)) = ((rp) + (((((((ap) * (cn))) + (((an) * (cp))))) + (((((bp) * (dp))) + (((bn) * (dn))))))))) /\ (((((((((((ap) * (dp))) + (((an) * (dn))))) + (((((bp) * (cp))) + (((bn) * (cn))))))) + (((((bp) * (dn))) + (((bn) * (dp))))))) + (sn)) = ((sp) + (((((((((ap) * (dn))) + (((an) * (dp))))) + (((((bp) * (cn))) + (((bn) * (cp))))))) + (((((bp) * (dp))) + (((bn) * (dn)))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><span class="pd-empty">none — first-order arithmetic only</span></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/EI0022.html?v=897410581b66">EI0022 · eisenstein_product_difference</a><a class="pd-chip" href="../tag/EI0023.html?v=897410581b66">EI0023 · eisenstein_product_integer_congruence</a><a class="pd-chip" href="../tag/EI0024.html?v=897410581b66">EI0024 · eisenstein_omega_product_covariance</a><a class="pd-chip" href="../tag/EI0025.html?v=897410581b66">EI0025 · eisenstein_product_associate_imaginary</a><a class="pd-chip" href="../tag/EI0026.html?v=897410581b66">EI0026 · eisenstein_product_associate</a><a class="pd-chip" href="../tag/EI0028.html?v=897410581b66">EI0028 · eisenstein_conjugate_product_is_norm</a><a class="pd-chip" href="../tag/EI0029.html?v=897410581b66">EI0029 · eisenstein_natural_scalar_product</a><a class="pd-chip" href="../tag/EI002A.html?v=897410581b66">EI002A · eisenstein_adjoint_product_is_norm_scale</a><a class="pd-chip" href="../tag/EI002B.html?v=897410581b66">EI002B · eisenstein_residual_conjugate_identity</a><a class="pd-chip" href="../tag/EI002C.html?v=897410581b66">EI002C · eisenstein_product_commute</a><a class="pd-chip" href="../tag/EI002E.html?v=897410581b66">EI002E · eisenstein_product_shuffle</a><a class="pd-chip" href="../tag/EI002F.html?v=897410581b66">EI002F · eisenstein_coordinate_norm_product</a><a class="pd-chip" href="../tag/EI0033.html?v=897410581b66">EI0033 · eisenstein_signed_euclidean_division_exists</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>12</dd>
+  <dt>Topological notation layer</dt><dd>0</dd>
+  <dt>Transitive prerequisites</dt><dd>0</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0170.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>56f2519e4bc7386d6f1f7bd73146aa14773f1927faf425703e456255830031c6</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

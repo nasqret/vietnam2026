@@ -18,6 +18,7 @@ from peano_lab.library import (
     editions_v25,
     editions_v26,
     editions_v27,
+    editions_v28,
 )
 from peano_lab.library.alpha_enrollment_v27 import ROOT_STATEMENT_SHA256
 from peano_lab.library.defined_syntax import DEFINITIONS_BY_NAME
@@ -77,12 +78,13 @@ def test_planning_never_replays_stable_or_alpha_theorems(monkeypatch) -> None:
     monkeypatch.setattr(editions_v25, "replay", forbidden)
     monkeypatch.setattr(editions_v26, "replay", forbidden)
     monkeypatch.setattr(editions_v27, "replay", forbidden)
+    monkeypatch.setattr(editions_v28, "replay", forbidden)
     assert plan_proof_strand("add_comm").node_count == 3
     alpha = plan_proof_strand(
         "distinct_primes_left_not_divide_right",
         edition="alpha",
     )
-    assert alpha.edition_version == "v27"
+    assert alpha.edition_version == "v28"
     assert alpha.root_node.evidence == "alpha_closed"
 
 
@@ -164,7 +166,7 @@ def test_historically_body_only_theorem_is_now_checked_in_current_alpha() -> Non
     name = editions_v19.RESIDUAL_PROMOTED_NAMES[0]
     assert not editions_v18.ALPHA_EDITION.by_name[name].checked_use
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v27"
+    assert plan.edition_version == "v28"
     assert plan.root_node.evidence == "alpha_closed"
     assert plan.root_node.name == name
 
@@ -186,7 +188,7 @@ def test_new_v19_frontier_theorem_has_metadata_only_checked_strand(
     )
     assert name not in editions_v18.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v27"
+    assert plan.edition_version == "v28"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -206,11 +208,13 @@ def test_new_v20_frontier_theorem_has_metadata_only_checked_strand(monkeypatch) 
     monkeypatch.setattr(editions_v25, "checked_breakthrough_layer_bundle", forbidden)
     monkeypatch.setattr(editions_v26, "checked_first_wave_bundle", forbidden)
     monkeypatch.setattr(editions_v27, "replay", forbidden)
+    monkeypatch.setattr(editions_v28, "replay", forbidden)
     monkeypatch.setattr(editions_v27, "checked_second_wave_bundle", forbidden)
+    monkeypatch.setattr(editions_v28, "checked_lower_layer_bundle", forbidden)
     name = "signed_matrix_two_determinant_exists"
     assert name not in editions_v19.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v27"
+    assert plan.edition_version == "v28"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -259,10 +263,12 @@ def test_v27_and_historical_frontier_theorems_have_metadata_only_checked_strands
     monkeypatch.setattr(editions_v25, "checked_breakthrough_layer_bundle", forbidden)
     monkeypatch.setattr(editions_v26, "checked_first_wave_bundle", forbidden)
     monkeypatch.setattr(editions_v27, "replay", forbidden)
+    monkeypatch.setattr(editions_v28, "replay", forbidden)
     monkeypatch.setattr(editions_v27, "checked_second_wave_bundle", forbidden)
+    monkeypatch.setattr(editions_v28, "checked_lower_layer_bundle", forbidden)
     assert name not in editions_v20.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v27"
+    assert plan.edition_version == "v28"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -272,7 +278,7 @@ def test_unsealed_alpha_cannot_authorize_a_strand_and_does_not_block_stable(
 ) -> None:
     from peano_lab.library import lean_proof_strand
 
-    monkeypatch.setattr(editions_v27, "EXPECTED_ALPHA_V27_COUNT", 0)
+    monkeypatch.setattr(editions_v28, "EXPECTED_ALPHA_V28_COUNT", 0)
     with pytest.raises(ProofStrandError, match="not sealed for checked use"):
         lean_proof_strand._edition_view("alpha")
     stable, version = lean_proof_strand._edition_view("stable")

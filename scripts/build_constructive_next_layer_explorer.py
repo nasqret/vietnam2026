@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Publish historical Alpha-v20 campaigns under current Alpha-v27 authority.
+"""Publish historical Alpha-v20 campaigns under current Alpha-v28 authority.
 
 This is an evidence-reading documentation generator, never a proof provider.
 First admission remains the already sealed Alpha-v20 catalog and its actual
 unchanged-kernel proof-bundle receipt; current checked use is separately
-authenticated against Alpha v27. The generator does not decode,
+authenticated against Alpha v28. The generator does not decode,
 replay, or construct a proof bundle. New display definitions are parsed into
 the unchanged first-order syntax, expanded hygienically, and accepted only
 when their compacted theorem statements re-expand to the identical native AST.
@@ -67,7 +67,8 @@ from peano_lab.kernel.terms import (  # noqa: E402
 from peano_lab.library import editions_v20 as v20  # noqa: E402
 from peano_lab.library import editions_v25 as v25  # noqa: E402
 from peano_lab.library import editions_v26 as v26  # noqa: E402
-from peano_lab.library import editions_v27 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v27 as v27  # noqa: E402
+from peano_lab.library import editions_v28 as current_alpha  # noqa: E402
 from peano_lab.library.alpha_enrollment_v20 import (  # noqa: E402
     EXPECTED_CAMPAIGN_COUNTS,
     FRONTIER_V20_EXPECTED_COUNT,
@@ -92,8 +93,8 @@ from peano_lab.library.defined_syntax import (  # noqa: E402
 
 OUTPUT = REPO / "book" / "_static" / "constructive-next-layer-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v20.json"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
-CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v27.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v28.json"
+CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v28.json"
 CAMPAIGN = REPO / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
 GLOBAL_DEFINITIONS = CAMPAIGN.with_name("definitions.json")
 EXPECTED_ALPHA_COUNT = 1_776
@@ -102,7 +103,7 @@ EXPECTED_BUNDLE_NODE_COUNT = 590
 MAX_DEFINED_EXPANSION_NODES = 1_000_000
 SCHEMA = "peano-lab-constructive-next-layer-explorer-v1"
 STATUS = (
-    "Alpha v27 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable"
+    "Alpha v28 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable"
 )
 # Current navigation never rewrites a chapter's historical proof authority.
 SECOND_WAVE_COMPLETIONS = {
@@ -145,6 +146,12 @@ PARENT_ALPHA_V26_CATALOG_SHA256 = (
 )
 PARENT_CHANNELS_V26_SHA256 = (
     "319d19275ca810b043305428320fb3999af03d34c0035acab70b4d6d33ae97d3"
+)
+PARENT_ALPHA_V27_CATALOG_SHA256 = (
+    "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+)
+PARENT_CHANNELS_V27_SHA256 = (
+    "87f28966431ca285dce738ad07386ce4c3baaf766ff7f70a4b6df988fc09de5e"
 )
 ASSET_SOURCES = {
     "defined-explorer.css": REPO / "book" / "_static" / "pa-proof-explorer" / "defined" / "assets" / "explorer.css",
@@ -194,7 +201,7 @@ class Family:
             )
         return (
             "Every displayed theorem was first admitted in Alpha v20, remains "
-            "independently kernel- and Lean-verified for current Alpha v27 checked "
+            "independently kernel- and Lean-verified for current Alpha v28 checked "
             "use, and has not been promoted to Stable."
         )
 
@@ -288,17 +295,17 @@ def _audit_current_atlas(
     metadata rather than trusting only a growing definition count.
     """
 
-    from constructive_second_wave_definition_graph import build_definition_graph
+    from constructive_lower_layer_definition_graph import build_definition_graph
 
-    message = "the global Alpha-v27 atlas definition artifact is stale"
+    message = "the global Alpha-v28 atlas definition artifact is stale"
     try:
         expected = build_definition_graph(campaign)
         if (
-            campaign.get("meta", {}).get("current_alpha_version") != "v27"
+            campaign.get("meta", {}).get("current_alpha_version") != "v28"
             or campaign.get("meta", {}).get("current_alpha_checked_use_count")
-            != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
-            or current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
-            <= v26.EXPECTED_ALPHA_V26_CHECKED_USE_COUNT
+            != current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
+            or current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
+            <= v27.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
             or graph != expected
         ):
             raise error_type(message)
@@ -314,9 +321,82 @@ def _audit_current_parent(
     *,
     error_type: type[ValueError] = NextLayerExplorerError,
 ) -> None:
+    """Bind exact v27 bytes and objects, then retain the full v26/v25 audit."""
+
+    message = "the current immutable Alpha-v28 release changed its exact v27/v26/v25 ancestry"
+    try:
+        parent_path = REPO / "artifacts/peano-library/alpha/catalog-v27.json"
+        parent_channels_path = REPO / "artifacts/peano-library/channels-v27.json"
+        parent_raw = parent_path.read_bytes()
+        parent_channels_raw = parent_channels_path.read_bytes()
+        if (
+            _digest(parent_raw) != PARENT_ALPHA_V27_CATALOG_SHA256
+            or _digest(parent_channels_raw) != PARENT_CHANNELS_V27_SHA256
+        ):
+            raise error_type(message)
+        parent = json.loads(parent_raw)
+        parent_channels = json.loads(parent_channels_raw)
+        parent_channel = parent_channels.get("channels", {}).get("alpha", {})
+        artifacts = parent_channel.get("artifacts", {})
+        expected_artifacts = {}
+        for label, relative in (
+            ("catalog", "artifacts/peano-library/alpha/catalog-v27.json"),
+            ("dependency_graph", "artifacts/peano-library/alpha/dependency-graph-v27.mmd"),
+            ("metrics", "artifacts/peano-library/alpha/metrics-v27.json"),
+        ):
+            expected = {"path": relative, "sha256": _file_digest(REPO / relative)}
+            if artifacts.get(label) != expected:
+                raise error_type(message)
+            expected_artifacts[label] = expected
+        expected_artifacts["channels"] = {
+            "path": "artifacts/peano-library/channels-v27.json",
+            "sha256": PARENT_CHANNELS_V27_SHA256,
+        }
+        if (
+            _digest(parent_raw) != PARENT_ALPHA_V27_CATALOG_SHA256
+            or _digest(parent_channels_raw) != PARENT_CHANNELS_V27_SHA256
+            or channels.get("parent_channels_v27") != expected_artifacts["channels"]
+            or channels.get("channels", {}).get("stable")
+            != parent_channels.get("channels", {}).get("stable")
+            or catalog.get("parent_alpha_v27") != {
+                "artifacts": expected_artifacts,
+                "edition_identity_sha256": v27.ALPHA_V27_IDENTITY_SHA256,
+                "ordered_enrollment_root_sha256": v27.ALPHA_V27_ENROLLMENT_SHA256,
+                "schema": "peano-library-alpha-snapshot-v27",
+                "theorem_count": v27.EXPECTED_ALPHA_V27_COUNT,
+            }
+            or channels.get("channels", {}).get("alpha", {}).get("parent_alpha_v27_sha256")
+            != PARENT_ALPHA_V27_CATALOG_SHA256
+            or not isinstance(catalog.get("theorems"), list)
+            or catalog["theorems"][:v27.EXPECTED_ALPHA_V27_COUNT] != parent["theorems"]
+            or tuple(current_alpha.ALPHA_ENTRIES[:v27.EXPECTED_ALPHA_V27_COUNT]) != v27.ALPHA_ENTRIES
+            or any(
+                current is not historical
+                for current, historical in zip(current_alpha.ALPHA_ENTRIES, v27.ALPHA_ENTRIES)
+            )
+            or any(
+                catalog.get(key) != value
+                for key, value in parent.items()
+                if key.startswith("parent_alpha_") or key.endswith("_promotion")
+            )
+        ):
+            raise error_type(message)
+        _audit_v26_parent(parent, parent_channels, error_type=error_type)
+    except (AttributeError, KeyError, OSError, TypeError, ValueError) as error:
+        if isinstance(error, error_type):
+            raise
+        raise error_type(message) from error
+
+
+def _audit_v26_parent(
+    catalog: Mapping[str, Any],
+    channels: Mapping[str, Any],
+    *,
+    error_type: type[ValueError] = NextLayerExplorerError,
+) -> None:
     """Retain the exact v26 objects, rows, receipts and v25 channel ancestry."""
 
-    message = "the current immutable Alpha-v27 release changed its exact v26/v25 ancestry"
+    message = "the current immutable Alpha-v28 release changed its exact v26/v25 ancestry"
     try:
         parent_path = REPO / "artifacts/peano-library/alpha/catalog-v26.json"
         parent_channels_path = REPO / "artifacts/peano-library/channels-v26.json"
@@ -520,7 +600,7 @@ def _preferred_reviewed_matches(graph: Mapping[str, Any]) -> dict[str, dict[str,
     still rejected, and historical pages retain their original destinations.
     """
 
-    from constructive_second_wave_definition_graph import REVIEWED_BLUEPRINT_ALIASES
+    from constructive_lower_layer_definition_graph import REVIEWED_BLUEPRINT_ALIASES
 
     preferred = {
         reviewed: blueprint
@@ -933,27 +1013,27 @@ def _load_inputs() -> dict[str, Any]:
     current_catalog = json.loads(CURRENT_CATALOG.read_bytes())
     _audit_current_parent(current_catalog, channels)
     if (
-        channels.get("schema") != "peano-library-channels-v27"
+        channels.get("schema") != "peano-library-channels-v28"
         or channels.get("default_channel") != "stable"
-        or channels.get("parent_channels_v26", {}).get("path")
-        != "artifacts/peano-library/channels-v26.json"
-        or channels.get("parent_channels_v26", {}).get("sha256")
-        != _file_digest(CURRENT_CHANNELS.with_name("channels-v26.json"))
-        or current.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v27.json"
+        or channels.get("parent_channels_v27", {}).get("path")
+        != "artifacts/peano-library/channels-v27.json"
+        or channels.get("parent_channels_v27", {}).get("sha256")
+        != _file_digest(CURRENT_CHANNELS.with_name("channels-v27.json"))
+        or current.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v28.json"
         or current.get("artifact_sha256") != current_digest
-        or current.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
-        or current.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
-        or current.get("edition_identity_sha256") != current_alpha.ALPHA_V27_IDENTITY_SHA256
-        or current.get("ordered_enrollment_root_sha256") != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        or current.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V28_COUNT
+        or current.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
+        or current.get("edition_identity_sha256") != current_alpha.ALPHA_V28_IDENTITY_SHA256
+        or current.get("ordered_enrollment_root_sha256") != current_alpha.ALPHA_V28_ENROLLMENT_SHA256
         or current.get("parent_alpha_v20_sha256") != _digest(raw_catalog)
-        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v27"
-        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
-        or current_catalog.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v28"
+        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V28_COUNT
+        or current_catalog.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V28_CHECKED_USE_COUNT
         or current_catalog.get("stable_count") != EXPECTED_STABLE_COUNT
-        or current_catalog.get("edition_identity_sha256") != current_alpha.ALPHA_V27_IDENTITY_SHA256
-        or current_catalog.get("ordered_enrollment_root_sha256") != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        or current_catalog.get("edition_identity_sha256") != current_alpha.ALPHA_V28_IDENTITY_SHA256
+        or current_catalog.get("ordered_enrollment_root_sha256") != current_alpha.ALPHA_V28_ENROLLMENT_SHA256
         or not isinstance(current_catalog.get("theorems"), list)
-        or len(current_catalog["theorems"]) != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or len(current_catalog["theorems"]) != current_alpha.EXPECTED_ALPHA_V28_COUNT
         or current_catalog["theorems"][:EXPECTED_ALPHA_COUNT] != catalog.get("theorems")
         or tuple(current_alpha.ALPHA_ENTRIES[:EXPECTED_ALPHA_COUNT]) != v20.ALPHA_ENTRIES
         or any(
@@ -961,7 +1041,7 @@ def _load_inputs() -> dict[str, Any]:
             for newer, historical in zip(current_alpha.ALPHA_ENTRIES, v20.ALPHA_ENTRIES)
         )
     ):
-        raise NextLayerExplorerError("the current immutable Alpha-v27 child release changed")
+        raise NextLayerExplorerError("the current immutable Alpha-v28 child release changed")
 
     entries = catalog.get("theorems")
     if not isinstance(entries, list) or len(entries) != EXPECTED_ALPHA_COUNT:
@@ -1030,14 +1110,14 @@ def _load_inputs() -> dict[str, Any]:
         current_row = current_alpha.entry(spec.name, edition="alpha")
         if current_row is None or current_row.spec != spec or not current_row.checked_use:
             raise NextLayerExplorerError(
-                f"Alpha-v27 lost the exact historically proved Alpha-v20 theorem {spec.name!r}"
+                f"Alpha-v28 lost the exact historically proved Alpha-v20 theorem {spec.name!r}"
             )
     return {
         "catalog": catalog,
         "current_catalog": current_catalog,
         "catalog_sha256": current_digest,
         "historical_catalog_sha256": _digest(raw_catalog),
-        "current_edition_identity_sha256": current_alpha.ALPHA_V27_IDENTITY_SHA256,
+        "current_edition_identity_sha256": current_alpha.ALPHA_V28_IDENTITY_SHA256,
         "revision": current_digest[:12],
         "bundle": bundle,
         "by_name": by_name,
@@ -1279,7 +1359,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
             "enrolled_in_alpha": True,
             "alpha_evidence": "alpha_closed",
             "alpha_checked_use": True,
-            "alpha_edition_version": "v27",
+            "alpha_edition_version": "v28",
             "alpha_first_enrolled_version": "v20",
             "stable_member": False,
             "admitted_to_alpha": True,
@@ -1387,7 +1467,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
         "statement_definition_use_count": len(usage_edges),
         "formal_line_count": sum(len(node["script"]) for node in nodes),
         "candidate_status": STATUS,
-        "alpha_edition_version": "v27",
+        "alpha_edition_version": "v28",
         "alpha_first_enrolled_version": "v20",
         "alpha_edition_identity_sha256": inputs["current_edition_identity_sha256"],
         "alpha_catalog_sha256": inputs["catalog_sha256"],
@@ -1491,7 +1571,7 @@ def _family_landing(
         family,
         corpus,
         revision=revision,
-        current_alpha_version="v27",
+        current_alpha_version="v28",
         first_admitted_version="v20",
         bundle_node_count=EXPECTED_BUNDLE_NODE_COUNT,
     )
@@ -1642,7 +1722,7 @@ def _defined_theorem(
     <p>All {len(node['script'])} lines are the exact independently kernel-checked original script.</p>
     <ol class="pd-formal-proof">{proof_lines}</ol></section>
 </div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
-  <dl><dt>Authority</dt><dd>Alpha v27 checked use</dd><dt>First admission</dt><dd>Alpha v20</dd><dt>Stable membership</dt><dd>none</dd>
+  <dl><dt>Authority</dt><dd>Alpha v28 checked use</dd><dt>First admission</dt><dd>Alpha v20</dd><dt>Stable membership</dt><dd>none</dd>
       <dt>Proof-bundle node</dt><dd>{node['proof_bundle_node_id']} / {EXPECTED_BUNDLE_NODE_COUNT}</dd>
       <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
       <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 590 exact bundle nodes</dd>
@@ -1735,7 +1815,7 @@ def _graph_payload(
             "layer": corpus["layers"][node["name"]],
             "href": _versioned(f"tag/{corpus['tags'][node['name']]}.html", revision),
             "alpha_checked_use": True,
-            "alpha_edition_version": "v27",
+            "alpha_edition_version": "v28",
             "alpha_first_enrolled_version": "v20",
             "independent_lean_bundle_verified": True,
             "stable_member": False,
@@ -1776,7 +1856,7 @@ def _graph_payload(
         "proof_adjacency": adjacency,
         "root_ids": [corpus["tags"][name] for name in family.roots],
         "path_policy": "proof_dependency_edges_only",
-        "alpha_edition_version": "v27",
+        "alpha_edition_version": "v28",
         "alpha_first_enrolled_version": "v20",
         "independent_lean_bundle_verified": True,
         "alpha_checked_use_node_count": corpus["node_count"],
@@ -1804,7 +1884,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var id = String(title.textContent || "").split(" · ")[0];
     var row = (window.PA_DEFINED_GRAPH.nodes || []).find(function (node) { return node.id === id; });
     if (row && row.kind === "theorem" && row.alpha_checked_use) {
-      kind.textContent = "Alpha v27 checked-use theorem — first admitted v20; independently kernel and Lean verified; not Stable";
+      kind.textContent = "Alpha v28 checked-use theorem — first admitted v20; independently kernel and Lean verified; not Stable";
     }
   }
   new MutationObserver(label).observe(title, { childList: true, characterData: true, subtree: true });
@@ -1853,13 +1933,13 @@ def _top_index(corpora: Sequence[tuple[Family, Mapping[str, Any]]], *, revision:
         for family, corpus in corpora
     )
     body = f"""<main class="proof-home proof-library-home"><header class="proof-hero">
- <p class="eyebrow">ALPHA v27 · CHECKED-USE · HISTORICAL v20 FIRST ADMISSION</p>
+ <p class="eyebrow">ALPHA v28 · CHECKED-USE · HISTORICAL v20 FIRST ADMISSION</p>
  <h1>Four independently checked number-theory campaigns</h1>
  <p>Thirty-nine completed intuitionistic Heyting-arithmetic proofs independently accepted by both the original kernel and the compiled Lean verifier, exposed with their exact original scripts, genuine proof DAGs, and hygienic conservative definition hierarchies.</p>
  <nav><a href="{_versioned('../', revision)}">Proof library</a>
  <a href="{_versioned('../grand-campaign/', revision)}">Full number-theory campaign atlas</a></nav>
  </header><section class="proof-grid">{entries}</section>
- <p>All displayed theorems were first independently admitted in Alpha v20 and retain checked-use authority in the current Alpha v27 release; Stable remains a separate immutable release.</p></main>"""
+ <p>All displayed theorems were first independently admitted in Alpha v20 and retain checked-use authority in the current Alpha v28 release; Stable remains a separate immutable release.</p></main>"""
     return _document(FAMILIES[0], title="Constructive Next-Layer Proof Library", body=body,
                      prefix="", defined=False)
 
@@ -1942,7 +2022,7 @@ def build_files() -> dict[str, bytes]:
         "first_enrollment_catalog_sha256": inputs["historical_catalog_sha256"],
         "html_revision": revision,
         "edition_identity_sha256": inputs["current_edition_identity_sha256"],
-        "alpha_edition_version": "v27",
+        "alpha_edition_version": "v28",
         "alpha_first_enrolled_version": "v20",
         "proof_bundle_sha256": inputs["bundle"]["artifact_sha256"],
         "independent_lean_bundle_verified": True,

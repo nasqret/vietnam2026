@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GI0024 — gaussian_product_difference_real_positive — Exact Proof</title>
+  <link rel="stylesheet" href="../../../assets/exact-explorer.css?v=6dd0cf105c49">
+  <script defer src="../../../assets/exact-explorer.js?v=98f11fff5d34"></script>
+</head>
+<body class="pa-proof-site" data-page="theorem" data-family="gaussian-integers"><header class="pa-proof-header pa-theorem-heading">
+  <nav><a href="../index.html?v=897410581b66">Explorer</a><a href="../defined/tag/GI0024.html?v=897410581b66">Defined notation</a><a href="../defined/graph.html?target=GI0024&amp;v=897410581b66">Dependency graph</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F09&amp;v=897410581b66">Campaign family</a><a data-campaign-link="global" href="../../../grand-campaign/?v=897410581b66">Full campaign map</a><a href="GI0023.html?v=897410581b66">← gaussian_product_associate_imaginary_negative</a><a href="GI0025.html?v=897410581b66">gaussian_product_difference_real_negative →</a><a data-campaign-link="global" href="../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F09&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=897410581b66">G081 milestone</a></nav>
+  <p class="pa-tag">GI0024</p><h1>gaussian_product_difference_real_positive</h1>
+  <p class="pa-status-candidate">Alpha v28 independently verified · alpha_closed; checked-use authorized; not Stable</p>
+  <p>Exact real positive component distributivity over a genuine signed Gaussian difference.</p>
+</header>
+<main class="pa-theorem-layout">
+  <div class="pa-proof-panel">
+    <section class="pa-statement"><h2>Exact expanded first-order arithmetic statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>forall a b c d e f g h i j k l. ((((((a) * (((e) + (j))))) + (((b) * (((f) + (i))))))) + (((((c) * (((h) + (k))))) + (((d) * (((g) + (l)))))))) = ((((((((a) * (e))) + (((b) * (f))))) + (((((c) * (h))) + (((d) * (g))))))) + (((((((a) * (j))) + (((b) * (i))))) + (((((c) * (k))) + (((d) * (l))))))))</code></pre></section>
+    <section class="pa-informal-proof" data-informal-kind="structural" data-informal-review="generated"><h2>Constructive proof overview</h2><p><strong>Generated structural guide</strong></p><p>Exact real positive component distributivity over a genuine signed Gaussian difference.</p><p>The unchanged tactic script uses 4 declared prerequisites and contains 13 exact native proof lines.</p><p>Alpha v28 checked-use · first admitted v28 · independently kernel and Lean verified; not Stable</p></section>
+    <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row"><span class="pa-external-dependency" data-external-name="mul_add" data-evidence="stable_closed"><code>mul_add</code> <small>Stable theorem; checked-use authorized</small></span> <span class="pa-external-dependency" data-external-name="add_assoc" data-evidence="stable_closed"><code>add_assoc</code> <small>Stable theorem; checked-use authorized</small></span> <span class="pa-external-dependency" data-external-name="add_comm" data-evidence="stable_closed"><code>add_comm</code> <small>Stable theorem; checked-use authorized</small></span> <span class="pa-external-dependency" data-external-name="four_square_add_swap_right_tail" data-evidence="alpha_closed"><code>four_square_add_swap_right_tail</code> <small>Alpha theorem; checked-use authorized</small></span></div><h3>Direct dependents</h3><div class="pa-chip-row"><a class="pa-theorem-ref" href="GI0029.html?v=897410581b66"><code>GI0029</code> gaussian_product_difference</a></div></section>
+    <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. This exact body belongs to a complete independently kernel-checked constructive proof bundle and has Alpha checked-use authority; it does not imply Stable membership.</p><ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="b205798debfa0059"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="954c980f32d218f0"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="7d1cc132849b4481"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="fca0564c48624ac6"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> d</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="69910eecd76b654b"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> e</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="intro" data-line-id="8ed21f99357a622a"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">intro</span> f</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="intro" data-line-id="d85bc8ae2a98838e"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">intro</span> g</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="intro" data-line-id="7edf9bee328f897a"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="intro" data-line-id="8c2bdae1b0a8c3f6"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">intro</span> i</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="intro" data-line-id="f7bdec112166ed07"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">intro</span> j</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="intro" data-line-id="d56fbafd7b8a8400"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">intro</span> k</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="intro" data-line-id="69c9d3049b006355"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">intro</span> l</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="simp" data-line-id="fc96823d47fd6e23"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">simp</span> [<span class="pa-external-ref">mul_add</span>, <span class="pa-external-ref">add_assoc</span>, <span class="pa-external-ref">add_comm</span>, <span class="pa-external-ref">four_square_add_swap_right_tail</span>]</code></li></ol></section>
+  </div>
+  <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>0</dd><dt>Tactic lines</dt><dd>13</dd><dt>Alpha evidence</dt><dd>alpha_closed</dd><dt>Checked-use authority</dt><dd>Alpha v28; independently verified</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>07278fe144e976e26ef5cda9004b592f5546b790a2f6e3ecb8a456b50f32fbd4</code></dd><dt>Exact script SHA-256</dt><dd><code>92c6a9da32862803a3832c4babfee16acb7ab8840d32deda41802df1a85f1b6d</code></dd><dt>Source module</dt><dd><code>peano_lab.library.gaussian_euclidean_candidate</code></dd><dt>Factory</dt><dd><code>make_gaussian_euclidean_candidate_theorems</code></dd></dl></aside>
+</main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

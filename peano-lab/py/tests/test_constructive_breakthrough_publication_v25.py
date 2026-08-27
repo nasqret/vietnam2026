@@ -1,4 +1,4 @@
-"""Read-only v25 first-admission proofs under current v27 campaign publication."""
+"""Read-only v25 first-admission proofs under current v28 campaign publication."""
 
 from __future__ import annotations
 
@@ -25,11 +25,11 @@ if str(ROOT / "scripts") not in sys.path:
 ATLAS = ROOT / "book/_static/constructive-grand-campaign"
 EXPLORERS = ROOT / "book/_static/constructive-breakthrough-layer-explorer"
 CATALOG = ROOT / "artifacts/peano-library/alpha/catalog-v25.json"
-CURRENT_CATALOG = ROOT / "artifacts/peano-library/alpha/catalog-v27.json"
+CURRENT_CATALOG = ROOT / "artifacts/peano-library/alpha/catalog-v28.json"
 PARENT = ROOT / "artifacts/peano-library/alpha/catalog-v24.json"
 FIRST_ADMISSION_CATALOG_SHA256 = "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
-CURRENT_CATALOG_SHA256 = "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
-CURRENT_EDITION_IDENTITY = "5c5935ed524b63827068cba37da222fc78b458de6c5af2e07cf572bb9fab7d05"
+CURRENT_CATALOG_SHA256 = "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+CURRENT_EDITION_IDENTITY = "4936d155e8d2a39409a4e83beb4ac5cb2481948d8b6eeecf1c7571161786646b"
 
 FAMILIES = (
     (FrontierV25Campaign.MATRIX_COFACTOR_EXPANSION, "matrix-cofactor-expansion", "T13"),
@@ -81,8 +81,8 @@ def test_v24_parent_rows_and_immutable_historical_corpus_remain_exact(catalog: d
     assert catalog["theorems"][: len(historical["theorems"])] == historical["theorems"]
     assert sha256(CATALOG.read_bytes()).hexdigest() == FIRST_ADMISSION_CATALOG_SHA256
     assert sha256(CURRENT_CATALOG.read_bytes()).hexdigest() == CURRENT_CATALOG_SHA256
-    assert active["schema"] == "peano-library-alpha-snapshot-v27"
-    assert active["theorem_count"] == active["checked_use_count"] == 2_560
+    assert active["schema"] == "peano-library-alpha-snapshot-v28"
+    assert active["theorem_count"] == active["checked_use_count"] == 2_764
     assert active["stable_count"] == 432
     assert active["edition_identity_sha256"] == CURRENT_EDITION_IDENTITY
     assert active["theorems"][: len(catalog["theorems"])] == catalog["theorems"]
@@ -94,10 +94,10 @@ def test_v24_parent_rows_and_immutable_historical_corpus_remain_exact(catalog: d
 
 
 def test_global_definition_dag_adds_only_hygienic_reviewed_identities(atlas) -> None:
-    from constructive_second_wave_definition_graph import build_definition_graph
+    from constructive_lower_layer_definition_graph import build_definition_graph
 
     campaign, graph = atlas
-    assert campaign["meta"]["current_alpha_version"] == "v27"
+    assert campaign["meta"]["current_alpha_version"] == "v28"
     assert graph == build_definition_graph(campaign)
     assert graph["definition_count"] == len(campaign["definitions"])
     assert graph["reviewed_definition_count"] == len(graph["reviewed_definitions"])
@@ -131,7 +131,7 @@ def test_new_family_exposes_exact_and_definition_aware_proof_graphs(
         (EXPLORERS / slug / "explorer/defined/api/graph.json").read_text(encoding="utf-8")
     )
     assert corpus["family_slug"] == graph["family_slug"] == slug
-    assert corpus["alpha_edition_version"] == graph["alpha_edition_version"] == "v27"
+    assert corpus["alpha_edition_version"] == graph["alpha_edition_version"] == "v28"
     assert corpus["alpha_edition_identity_sha256"] == CURRENT_EDITION_IDENTITY
     assert corpus["alpha_first_enrolled_version"] == graph["alpha_first_enrolled_version"] == "v25"
     assert corpus["node_count"] == EXPECTED_CAMPAIGN_COUNTS[campaign]

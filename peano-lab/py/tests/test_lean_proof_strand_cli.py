@@ -216,14 +216,14 @@ def test_dependency_limit_stops_before_recursive_certificate_replay(
         "infinitely_many_primes_one_mod_four",
     ),
 )
-def test_historical_alpha_theorems_have_replay_free_current_v27_strands(
+def test_historical_alpha_theorems_have_replay_free_current_v28_strands(
     name: str,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
     from peano_lab.library import (
-        editions_v19, editions_v23, editions_v24, editions_v25, editions_v26, editions_v27,
+        editions_v19, editions_v23, editions_v24, editions_v25, editions_v26, editions_v27, editions_v28,
     )
 
     monkeypatch.setattr(
@@ -269,6 +269,7 @@ def test_historical_alpha_theorems_have_replay_free_current_v27_strands(
     for module, provider in (
         (editions_v26, "_checked_first_wave_bundle"),
         (editions_v27, "_checked_second_wave_bundle"),
+        (editions_v28, "_checked_lower_layer_bundle"),
     ):
         monkeypatch.setattr(
             module, "replay",
@@ -282,7 +283,7 @@ def test_historical_alpha_theorems_have_replay_free_current_v27_strands(
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v27" in captured.out
+    assert "v28" in captured.out
     assert "no fresh Peano proof replay" in captured.err
 
 
@@ -312,18 +313,27 @@ def test_historical_alpha_theorems_have_replay_free_current_v27_strands(
         "prime_count_chebyshev_bounds",
         "cornacchia_prime_two_squares_complete",
         "prime_cauchy_davenport_sumset_bound",
+        "foundation_division_exists_unique",
+        "foundation_signed_bezout_canonical_gcd",
+        "prime_factorization_exists_unique_up_to_permutation",
+        "gaussian_euclidean_division_exists",
+        "gaussian_norm_exists_unique",
+        "eisenstein_euclidean_division_exists",
+        "eisenstein_norm_exists_unique",
+        "first_primes_list_exists",
+        "least_prime_above_exists_unique",
     ),
 )
-def test_current_v27_frontier_outline_never_loads_actual_proof_artifacts(
+def test_current_v28_frontier_outline_never_loads_actual_proof_artifacts(
     name: str,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v25, editions_v26, editions_v27
+    from peano_lab.library import editions_v25, editions_v26, editions_v27, editions_v28
 
     def forbidden(*_args: object, **_kwargs: object) -> None:
-        pytest.fail("an Alpha-v27 metadata-only outline loaded an actual proof")
+        pytest.fail("an Alpha-v28 metadata-only outline loaded an actual proof")
 
     monkeypatch.setattr(editions_v25, "replay", forbidden)
     monkeypatch.setattr(editions_v25, "_checked_breakthrough_layer_bundle", forbidden)
@@ -331,11 +341,13 @@ def test_current_v27_frontier_outline_never_loads_actual_proof_artifacts(
     monkeypatch.setattr(editions_v26, "_checked_first_wave_bundle", forbidden)
     monkeypatch.setattr(editions_v27, "replay", forbidden)
     monkeypatch.setattr(editions_v27, "_checked_second_wave_bundle", forbidden)
+    monkeypatch.setattr(editions_v28, "replay", forbidden)
+    monkeypatch.setattr(editions_v28, "_checked_lower_layer_bundle", forbidden)
 
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v27" in captured.out
+    assert "v28" in captured.out
     assert "no fresh Peano proof replay" in captured.err
 
 
@@ -383,7 +395,7 @@ def test_historical_v26_full_export_rejects_unavailable_actual_first_wave_proof(
     assert "theorem «square_zero_root»" not in captured.out
 
 
-def test_current_v27_full_export_rejects_unavailable_actual_second_wave_proof(
+def test_historical_v27_full_export_rejects_unavailable_actual_second_wave_proof(
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
@@ -402,6 +414,25 @@ def test_current_v27_full_export_rejects_unavailable_actual_second_wave_proof(
     assert f"theorem «{name}»" not in captured.out
 
 
+def test_current_v28_full_export_rejects_unavailable_actual_lower_layer_proof(
+    exporter,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    from peano_lab.library import editions_v28
+
+    def unavailable() -> None:
+        raise editions_v28.EditionV28ReplayError("actual Alpha-v28 proof bytes are unavailable")
+
+    editions_v28.replay.cache_clear()
+    monkeypatch.setattr(editions_v28, "_checked_lower_layer_bundle", unavailable)
+    name="gaussian_equal_reflexive"
+    assert exporter.main([name,"--edition","alpha","--format","full"])==1
+    captured=capsys.readouterr()
+    assert "actual Alpha-v28 proof bytes are unavailable" in captured.err
+    assert f"theorem «{name}»" not in captured.out
+
+
 @pytest.mark.parametrize("style", ("outline", "compact", "full"))
 def test_unsealed_current_alpha_cli_cannot_claim_checked_export(
     exporter,
@@ -409,12 +440,12 @@ def test_unsealed_current_alpha_cli_cannot_claim_checked_export(
     capsys: pytest.CaptureFixture[str],
     style: str,
 ) -> None:
-    from peano_lab.library import editions_v27
+    from peano_lab.library import editions_v28
 
-    monkeypatch.setattr(editions_v27, "EXPECTED_ALPHA_V27_COUNT", 0)
+    monkeypatch.setattr(editions_v28, "EXPECTED_ALPHA_V28_COUNT", 0)
     assert exporter.main(["zero_add", "--edition", "alpha", "--format", style]) == 1
     captured = capsys.readouterr()
-    assert "Alpha v27 is not sealed for checked use" in captured.err
+    assert "Alpha v28 is not sealed for checked use" in captured.err
     assert "theorem «zero_add»" not in captured.out
     assert exporter.main(["zero_add", "--format", "outline"]) == 0
 
@@ -956,6 +987,7 @@ def test_compiler_repair_never_retries_a_timeout_or_memory_failure(
         ("add_comm", "stable"),
         ("square_zero_root", "alpha"),
         ("matrix_recursive_node_code_exists", "alpha"),
+        ("gaussian_equal_reflexive", "alpha"),
     ),
 )
 def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
@@ -990,7 +1022,7 @@ def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
         assert "zero_add" in source
         assert "add_succ_left" in source
     else:
-        assert manifest["edition_version"] == "v27"
+        assert manifest["edition_version"] == "v28"
         if name == "square_zero_root":
             assert "mul_eq_zero" in source
     assert "sorry" not in source

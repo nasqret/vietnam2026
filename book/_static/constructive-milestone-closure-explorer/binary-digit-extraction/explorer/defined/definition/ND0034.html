@@ -8,18 +8,18 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="binary-digit-extraction"><header class="pd-header pd-definition-heading">
-  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
-       <a href="../graph.html?v=481a9a378e54">Interactive dependency graph</a>
-       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=BinaryDigitPrefix&amp;v=481a9a378e54">Global definition: BinaryDigitPrefix</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G102" href="../../../../grand-campaign/?view=goal&amp;focus=G102&amp;v=481a9a378e54">G102 milestone</a></nav>
+  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
+       <a href="../graph.html?v=897410581b66">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=BinaryDigitPrefix&amp;v=897410581b66">Global definition: BinaryDigitPrefix</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G102" href="../../../../grand-campaign/?view=goal&amp;focus=G102&amp;v=897410581b66">G102 milestone</a></nav>
   <p class="pd-tag">ND0034</p><h1>BinaryDigitPrefix(d,s,n)</h1>
   <p>Every genuinely beta-decoded entry of a bounded finite prefix is zero or one.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
 </header><main class="pd-theorem-layout"><div class="pd-proof-panel">
   <section><h2>Hygienic expanded first-order definition</h2>
     <pre><code>forall ff_index_be_transport ff_digit_be_transport. (exists ff_lt_be_transport_bound. ff_lt_be_transport_bound + S ff_index_be_transport = n) -&gt; (((exists ff_h_be_transport_digit. ff_h_be_transport_digit + S (ff_digit_be_transport) = S ((S (ff_index_be_transport)) * s)) /\ exists ff_q_be_transport_digit. d = ff_q_be_transport_digit * S ((S (ff_index_be_transport)) * s) + (ff_digit_be_transport))) -&gt; (ff_digit_be_transport = 0 \/ ff_digit_be_transport = 1)</code></pre>
     <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></section>
-  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0001.html?v=481a9a378e54">Beta(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=481a9a378e54">Lt(a,b)</a></div></section>
-  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0040.html?v=481a9a378e54">BinaryExponentDigitCode(e,ell,b,c)</a></div></section>
-  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/BD0002.html?v=481a9a378e54">BD0002 · binary_digit_prefix_recode</a><a class="pd-chip" href="../tag/BD0004.html?v=481a9a378e54">BD0004 · binary_digit_prefix_append</a><a class="pd-chip" href="../tag/BD0005.html?v=481a9a378e54">BD0005 · binary_digit_horner_append</a><a class="pd-chip" href="../tag/BD000D.html?v=481a9a378e54">BD000D · binary_digit_prefix_all_bits</a><a class="pd-chip" href="../tag/BD000E.html?v=481a9a378e54">BD000E · binary_digit_prefix_bit_count_exists</a><a class="pd-chip" href="../tag/BD0010.html?v=481a9a378e54">BD0010 · binary_digit_operation_count_exists</a></div></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0001.html?v=897410581b66">Beta(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=897410581b66">Lt(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0040.html?v=897410581b66">BinaryExponentDigitCode(e,ell,b,c)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/BD0002.html?v=897410581b66">BD0002 · binary_digit_prefix_recode</a><a class="pd-chip" href="../tag/BD0004.html?v=897410581b66">BD0004 · binary_digit_prefix_append</a><a class="pd-chip" href="../tag/BD0005.html?v=897410581b66">BD0005 · binary_digit_horner_append</a><a class="pd-chip" href="../tag/BD000D.html?v=897410581b66">BD000D · binary_digit_prefix_all_bits</a><a class="pd-chip" href="../tag/BD000E.html?v=897410581b66">BD000E · binary_digit_prefix_bit_count_exists</a><a class="pd-chip" href="../tag/BD0010.html?v=897410581b66">BD0010 · binary_digit_operation_count_exists</a></div></section>
 </div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
   <dt>Arity</dt><dd>3</dd>
   <dt>Topological notation layer</dt><dd>1</dd>
@@ -27,5 +27,5 @@
   <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
   <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0034.</dd>
   <dt>Expanded formula SHA-256</dt><dd><code>2c0f14af767623c4cdf64f106f2c0ec63d9b1ec4a8b8063948b1a842ba8a844b</code></dd>
-</dl></aside><p class="pd-callout">Separate complete second-wave branches: <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=481a9a378e54">Full T13 proof · Alpha v27</a>.</p></main></body>
+</dl></aside><p class="pd-callout">Separate complete second-wave branches: <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=897410581b66">Full T13 proof · Alpha v27</a>.</p></main></body>
 </html>

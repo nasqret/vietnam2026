@@ -5207,3 +5207,58 @@ $H/J$ transport are now complete at the dependency-curried body-evidence
 level. Bertrand's postulate itself remains open: the all-$s$ exponential
 envelope, binomial and prime-product bounds, the final large-$n$ inequality,
 finite coverage, and the constructive endpoint still require proof.
+
+## 2026-08-27 — Lower-layer saturation and additive Alpha v28
+
+The previously completed first/second waves were sealed and pushed in
+`ea90d1080a4ef59c4bd399c21097e9643aa786df`: 58 first-wave and 422 second-wave
+proofs. All 34 then-current proof families were deployed from a clean detached
+release checkout; the full remote checksum dry run reported zero differences.
+The separate `45cb35cb` documentation repair fixed MyST query-link navigation
+and passed the warning-as-error book build.
+
+The next additive tranche contains 204 actual new proofs and closes the exact
+G001–G005, G021–G022, G081, and G084 targets. Six focused mathematical suites
+pass 1,412 tests. Its complete 862-node bundle is independently accepted by the
+original intuitionistic kernel and compiled Lean verifier; SHA-256:
+`e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1`.
+The artifact has 3,090 edges, 230,464 structural body occurrences, and
+18,977,050 bytes. Proof assembly uses bounded microbatches, retaining the
+unchanged proof/resource guards rather than attempting one enormous replay.
+
+Alpha v28 has 2,764 checked rows, 8,984 direct edges, and 53 layers; the 432
+Stable rows and all 2,560 v27 records remain unchanged. The four new canonical
+explorers expose 27 arithmetic-foundation, 19 prime-enumeration, 93 Gaussian,
+and 65 Eisenstein theorem pages. Thirty-five additive hygienic definitions
+bring the reviewed registry to 233 objects and 441 definition edges, sharing
+the exact same signed-pair carrier and addition between the two rings.
+The atlas retains open Gaussian/Eisenstein factorization and classification
+goals instead of conflating them with the completed Euclidean divisions.
+
+Historical v27 explorer inputs are preserved as hash-authenticated exact byte
+snapshots; the live v28 successor uses the same public routes and unchanged
+Quadratic Reciprocity design. Ongoing unrelated Hydra capacity work is not
+part of this proof release and must not be staged or overwritten. Peano
+production remains governed by its mandatory cache-header checks; the faculty
+response observed today lacked the required Cache-Control headers. Publication
+must report that blocker, not silently bypass the gate.
+
+Final local v28 release gates accepted all 29 principal runtime proofs in
+1,529.68 seconds with peak RSS 844,414,976 bytes (about 805 MiB), clearing
+caches between independent roots. The final catalogue digest is
+`897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9`;
+the edition identity is
+`4936d155e8d2a39409a4e83beb4ac5cb2481948d8b6eeecf1c7571161786646b`.
+The 492 admission/closure/verifier regressions, 525 definition tests, 45 new
+explorer tests, 33 current-v28 historical-publication tests, and all 73
+unchanged frozen-v27 explorer tests pass. The warning-as-error book build and
+all 287 documented command replays pass. Public graph tests exercise actual
+new-family data with getter-only SVG `href` properties; browser visual QA
+cannot be claimed because no browser is connected in this session.
+
+The seven historical publishers and their current-site regressions pass all
+977 cases, including the eight real-family graph cases and both original SVG
+fixtures. Current atlas/book/deployment contracts pass another 382 tests;
+the UI, worker, CLI, and Lean strand integration passes 693. Four representative
+Stable/v26/v27/v28 CLI exports also compile in Lean. These checks preserve the
+historical first-admission evidence and do not promote any Alpha row to Stable.
