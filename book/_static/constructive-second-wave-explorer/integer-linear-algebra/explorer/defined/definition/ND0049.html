@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0049 — SignedMatrixMinor(pb,pc,nb,nc,w,r,d,q,up,us,un,ut) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="integer-linear-algebra"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
+       <a href="../graph.html?v=481a9a378e54">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedMatrixMinor&amp;v=481a9a378e54">Global definition: SignedMatrixMinor</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=481a9a378e54">T13 milestone</a></nav>
+  <p class="pd-tag">ND0049</p><h1>SignedMatrixMinor(pb,pc,nb,nc,w,r,d,q,up,us,un,ut)</h1>
+  <p>Both complete independently beta-coded natural components of a genuine signed square cofactor minor.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="ND0048" href="ND0048.html?v=481a9a378e54">MatrixMinorPrefix(pb,pc,w,r,d,up,us,q,q · q)</a> ∧ <a class="pd-definition-ref" data-definition="ND0048" href="ND0048.html?v=481a9a378e54">MatrixMinorPrefix(nb,nc,w,r,d,un,ut,q,q · q)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((forall ff_index_mdm_prefix_research_positive. (exists ff_gap_mdm_lt_research_positive_index_bound. ff_gap_mdm_lt_research_positive_index_bound + S (ff_index_mdm_prefix_research_positive) = ((q) * (q))) -&gt; exists ff_row_mdm_prefix_research_positive ff_column_mdm_prefix_research_positive ff_value_mdm_prefix_research_positive. (ff_index_mdm_prefix_research_positive = (q) * ff_row_mdm_prefix_research_positive + ff_column_mdm_prefix_research_positive /\ ((exists ff_gap_mdm_lt_research_positive_column_bound. ff_gap_mdm_lt_research_positive_column_bound + S (ff_column_mdm_prefix_research_positive) = (q)) /\ ((exists ff_row_mdm_cell_research_positive_cell ff_column_mdm_cell_research_positive_cell. (((((exists ff_gap_mdm_lt_research_positive_cell_row_before. ff_gap_mdm_lt_research_positive_cell_row_before + S (ff_row_mdm_prefix_research_positive) = (r)) /\ ff_row_mdm_cell_research_positive_cell = ff_row_mdm_prefix_research_positive) \/ ((exists ff_gap_mdm_le_research_positive_cell_row_after. ff_gap_mdm_le_research_positive_cell_row_after + (r) = (ff_row_mdm_prefix_research_positive)) /\ ff_row_mdm_cell_research_positive_cell = S ff_row_mdm_prefix_research_positive))) /\ (((((exists ff_gap_mdm_lt_research_positive_cell_column_before. ff_gap_mdm_lt_research_positive_cell_column_before + S (ff_column_mdm_prefix_research_positive) = (d)) /\ ff_column_mdm_cell_research_positive_cell = ff_column_mdm_prefix_research_positive) \/ ((exists ff_gap_mdm_le_research_positive_cell_column_after. ff_gap_mdm_le_research_positive_cell_column_after + (d) = (ff_column_mdm_prefix_research_positive)) /\ ff_column_mdm_cell_research_positive_cell = S ff_column_mdm_prefix_research_positive))) /\ (((exists ff_h_mdm_research_positive_cell_source. ff_h_mdm_research_positive_cell_source + S (ff_value_mdm_prefix_research_positive) = S ((S ((ff_row_mdm_cell_research_positive_cell) * (w) + (ff_column_mdm_cell_research_positive_cell))) * pc)) /\ exists ff_q_mdm_research_positive_cell_source. pb = ff_q_mdm_research_positive_cell_source * S ((S ((ff_row_mdm_cell_research_positive_cell) * (w) + (ff_column_mdm_cell_research_positive_cell))) * pc) + (ff_value_mdm_prefix_research_positive)))))) /\ (((exists ff_h_mdm_research_positive_target. ff_h_mdm_research_positive_target + S (ff_value_mdm_prefix_research_positive) = S ((S (ff_index_mdm_prefix_research_positive)) * us)) /\ exists ff_q_mdm_research_positive_target. up = ff_q_mdm_research_positive_target * S ((S (ff_index_mdm_prefix_research_positive)) * us) + (ff_value_mdm_prefix_research_positive))))))) /\ (forall ff_index_mdm_prefix_research_negative. (exists ff_gap_mdm_lt_research_negative_index_bound. ff_gap_mdm_lt_research_negative_index_bound + S (ff_index_mdm_prefix_research_negative) = ((q) * (q))) -&gt; exists ff_row_mdm_prefix_research_negative ff_column_mdm_prefix_research_negative ff_value_mdm_prefix_research_negative. (ff_index_mdm_prefix_research_negative = (q) * ff_row_mdm_prefix_research_negative + ff_column_mdm_prefix_research_negative /\ ((exists ff_gap_mdm_lt_research_negative_column_bound. ff_gap_mdm_lt_research_negative_column_bound + S (ff_column_mdm_prefix_research_negative) = (q)) /\ ((exists ff_row_mdm_cell_research_negative_cell ff_column_mdm_cell_research_negative_cell. (((((exists ff_gap_mdm_lt_research_negative_cell_row_before. ff_gap_mdm_lt_research_negative_cell_row_before + S (ff_row_mdm_prefix_research_negative) = (r)) /\ ff_row_mdm_cell_research_negative_cell = ff_row_mdm_prefix_research_negative) \/ ((exists ff_gap_mdm_le_research_negative_cell_row_after. ff_gap_mdm_le_research_negative_cell_row_after + (r) = (ff_row_mdm_prefix_research_negative)) /\ ff_row_mdm_cell_research_negative_cell = S ff_row_mdm_prefix_research_negative))) /\ (((((exists ff_gap_mdm_lt_research_negative_cell_column_before. ff_gap_mdm_lt_research_negative_cell_column_before + S (ff_column_mdm_prefix_research_negative) = (d)) /\ ff_column_mdm_cell_research_negative_cell = ff_column_mdm_prefix_research_negative) \/ ((exists ff_gap_mdm_le_research_negative_cell_column_after. ff_gap_mdm_le_research_negative_cell_column_after + (d) = (ff_column_mdm_prefix_research_negative)) /\ ff_column_mdm_cell_research_negative_cell = S ff_column_mdm_prefix_research_negative))) /\ (((exists ff_h_mdm_research_negative_cell_source. ff_h_mdm_research_negative_cell_source + S (ff_value_mdm_prefix_research_negative) = S ((S ((ff_row_mdm_cell_research_negative_cell) * (w) + (ff_column_mdm_cell_research_negative_cell))) * nc)) /\ exists ff_q_mdm_research_negative_cell_source. nb = ff_q_mdm_research_negative_cell_source * S ((S ((ff_row_mdm_cell_research_negative_cell) * (w) + (ff_column_mdm_cell_research_negative_cell))) * nc) + (ff_value_mdm_prefix_research_negative)))))) /\ (((exists ff_h_mdm_research_negative_target. ff_h_mdm_research_negative_target + S (ff_value_mdm_prefix_research_negative) = S ((S (ff_index_mdm_prefix_research_negative)) * ut)) /\ exists ff_q_mdm_research_negative_target. un = ff_q_mdm_research_negative_target * S ((S (ff_index_mdm_prefix_research_negative)) * ut) + (ff_value_mdm_prefix_research_negative))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0048.html?v=481a9a378e54">MatrixMinorPrefix(b,c,w,r,d,u,v,q,l)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0106.html?v=481a9a378e54">SignedDeterminantChildPrefix(b,c,limit,pb,pc,nb,nc,q,eb,ec,fb,fc,l)</a><a class="pd-chip" href="ND0110.html?v=481a9a378e54">SignedEvaluatedCofactors(pb,pc,nb,nc,q,eb,ec,fb,fc)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DL0008.html?v=481a9a378e54">DL0008 · matrix_recursive_children_transport</a><a class="pd-chip" href="../tag/DL000E.html?v=481a9a378e54">DL000E · matrix_recursive_children_recode</a><a class="pd-chip" href="../tag/DL000F.html?v=481a9a378e54">DL000F · matrix_recursive_children_extend</a><a class="pd-chip" href="../tag/DL0010.html?v=481a9a378e54">DL0010 · matrix_recursive_cofactor_prefix_from_recursion</a><a class="pd-chip" href="../tag/DL0018.html?v=481a9a378e54">DL0018 · signed_recursive_determinant_successor_decomposition</a><a class="pd-chip" href="../tag/DL001F.html?v=481a9a378e54">DL001F · matrix_recursive_signed_minor_extensional</a><a class="pd-chip" href="../tag/DL0025.html?v=481a9a378e54">DL0025 · matrix_recursive_cofactor_streams_from_functionality</a><a class="pd-chip" href="../tag/DL0091.html?v=481a9a378e54">DL0091 · matrix_integer_signed_minor_balance</a><a class="pd-chip" href="../tag/DL0092.html?v=481a9a378e54">DL0092 · matrix_integer_cofactor_streams_from_recursion</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>12</dd>
+  <dt>Topological notation layer</dt><dd>4</dd>
+  <dt>Transitive prerequisites</dt><dd>6</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0049.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>246a0d0f544d5494ff48406bf6eb180940676537f70aef6e892ca84499e51037</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v27-second-wave-/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

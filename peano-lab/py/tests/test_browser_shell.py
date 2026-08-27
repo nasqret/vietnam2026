@@ -45,6 +45,8 @@ PROOF_BUNDLE_FILENAMES = (
     "alpha-v23-milestone-closure-proof-bundle-v1.json",
     "alpha-v24-research-layer-proof-bundle-v1.json",
     "alpha-v25-breakthrough-layer-proof-bundle-v1.json",
+    "alpha-v26-first-wave-proof-bundle-v1.json",
+    "alpha-v27-second-wave-proof-bundle-v1.json",
 )
 PROOF_BUNDLE_SOURCES = {
     f"proof-artifacts/{filename}": (
@@ -160,12 +162,23 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
 
 def test_shell_connects_checked_alpha_research_to_multiscale_proof_atlas() -> None:
     assert 'aria-label="Course and research navigation"' in INDEX
-    assert '<a href="/proofs/?v=75fa146ac19b">Proof library</a>' in INDEX
-    assert '<a href="/proofs/grand-campaign/?v=75fa146ac19b">Research atlas</a>' in INDEX
-    assert "Alpha: 2,080 proofs" in INDEX
+    assert '<a href="/proofs/?v=481a9a378e54">Proof library</a>' in INDEX
+    assert '<a href="/proofs/grand-campaign/?v=481a9a378e54">Research atlas</a>' in INDEX
+    assert "Alpha: 2,560 proofs" in INDEX
     assert '<span class="lbl">research:</span>' in INDEX
     for command in (
         "pa lib alpha",
+        "pa lib alpha signed_recursive_determinant_exists_unique",
+        "pa lib alpha rectangular_matrix_rank_exists_unique",
+        "pa lib alpha integer_polynomial_prime_simple_root_lifts_all_positive_powers",
+        "pa lib alpha crt_pairwise_compatible_prefix_normalized_exists_unique",
+        "pa lib alpha multinomial_kummer_carry_valuation",
+        "pa lib alpha prime_count_chebyshev_bounds",
+        "pa lib alpha cornacchia_prime_two_squares_complete",
+        "pa lib alpha prime_cauchy_davenport_sumset_bound",
+        "pa lib alpha coprime_square_product_factors",
+        "pa lib alpha pythagorean_positive_primitive_classification",
+        "pa lib alpha fermat_four_positive_sum_not_square",
         "pa lib alpha signed_matrix_cofactor_family_and_fold_exists",
         "pa lib alpha beta_horner_hensel_lift_exists",
         "pa lib alpha crt_merge_compatible_prefix_canonical_exists_unique",

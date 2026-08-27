@@ -13,7 +13,7 @@ from pathlib import Path
 import re
 from typing import Any
 
-from constructive_definition_graph import (
+from constructive_second_wave_definition_graph import (
     DefinitionGraphError,
     SCHEMA as DEFINITION_SCHEMA,
     build_definition_graph,

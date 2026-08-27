@@ -6,6 +6,7 @@ import driver
 import pytest
 
 from peano_lab.library import editions_v19 as alpha
+from peano_lab.library import editions_v27 as current_alpha
 from peano_lab.library.lean import LIVE_LEAN_PREFIX, formula_to_lean
 from peano_lab.library.theorems import get, replay
 from peano_lab.ui import data_library
@@ -57,11 +58,12 @@ def test_alpha_inspection_modes_never_replay_or_export_certificates(
         raise AssertionError("Alpha inspection must never replay its large proof roots")
 
     monkeypatch.setattr(alpha, "replay", forbidden)
+    monkeypatch.setattr(current_alpha, "replay", forbidden)
     monkeypatch.setattr(data_library, "export_checked_theorem", forbidden)
 
     output = driver.LabSession().run(f"pa lean alpha {mode} zero_add")
 
-    assert "Release edition: Alpha v19." in output
+    assert "Release edition: Alpha v27." in output
     assert "Checked-use authority: YES." in output
     assert "Fresh independent empty-context Peano kernel replay: NOT RUN" in output
     assert "--edition alpha --format compact" in output
@@ -77,6 +79,7 @@ def test_real_large_alpha_root_preview_never_replays_root_certificate(
         raise AssertionError("quadratic reciprocity root must not replay from the browser")
 
     monkeypatch.setattr(alpha, "replay", forbidden)
+    monkeypatch.setattr(current_alpha, "replay", forbidden)
     monkeypatch.setattr(data_library, "export_checked_theorem", forbidden)
 
     output = driver.LabSession().run(f"pa lean alpha {QR_ROOT_NAME}")
@@ -164,6 +167,7 @@ def test_alpha_body_only_entries_are_rejected_before_any_replay(
         raise AssertionError("a body-only entry cannot have checked theorem authority")
 
     monkeypatch.setattr(alpha, "replay", forbidden)
+    monkeypatch.setattr(current_alpha, "replay", forbidden)
     monkeypatch.setattr(data_library, "_alpha_item", lambda _name: (alpha, item))
 
     output = driver.LabSession().run(f"pa lean alpha {item.spec.name}")
@@ -181,7 +185,7 @@ def test_alpha_body_only_entries_are_rejected_before_any_replay(
         ("alpha", "Usage: pa lean alpha <theorem>"),
         ("alpha full", "Usage: pa lean alpha full <theorem>"),
         ("missing", "No library theorem 'missing'"),
-        ("alpha missing", "No Alpha v19 theorem 'missing'"),
+        ("alpha missing", "No Alpha v27 theorem 'missing'"),
         ("exact zero_add trailing", "Usage: pa lean exact <theorem>"),
     ),
 )
@@ -252,6 +256,7 @@ def test_large_alpha_full_audit_is_blocked_before_any_proof_replay(
         raise AssertionError("large Alpha roots must not load a browser proof certificate")
 
     monkeypatch.setattr(alpha, "replay", forbidden)
+    monkeypatch.setattr(current_alpha, "replay", forbidden)
     monkeypatch.setattr(data_library, "export_checked_theorem", forbidden)
 
     output = driver.LabSession().run(f"pa lean alpha full {name}")
@@ -294,6 +299,7 @@ def test_large_alpha_root_preview_recommends_its_exact_self_contained_bundle(
         raise AssertionError("bundle guidance must not load or replay a proof")
 
     monkeypatch.setattr(alpha, "replay", forbidden)
+    monkeypatch.setattr(current_alpha, "replay", forbidden)
 
     output = driver.LabSession().run(f"pa lean alpha {name}")
 
@@ -331,7 +337,7 @@ def test_small_alpha_full_audit_remains_explicitly_available() -> None:
 
     assert "complete constructive certificate" in output
     assert "Independent empty-context Peano kernel check: PASS" in output
-    assert "Release edition: Alpha v19." in output
+    assert "Release edition: Alpha v27." in output
     assert "theorem «zero_add»" in output
 
 

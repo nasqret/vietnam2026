@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DL00AE — matrix_lattice_identity_selector_exists — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="integer-linear-algebra"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
+       <a href="../../tag/DL00AE.html?v=481a9a378e54">Exact original proof</a>
+       <a href="../graph.html?target=DL00AE&amp;v=481a9a378e54">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=481a9a378e54">T13 milestone</a></nav>
+  <p class="pd-tag">DL00AE</p><h1>matrix_lattice_identity_selector_exists</h1>
+  <p>Construct an actual beta-coded identity selector of every natural length from the checked finite range construction.</p><p class="pd-status">Alpha v27 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">This branch proves the finite determinant/rank/span substrate. It does not claim Smith or Hermite normal form, lattice index equals determinant, determinant multiplicativity, lattice reduction, or geometry-of-numbers theorems.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ d. ∃ b. ∃ c. <a class="pd-definition-ref" data-definition="ND0141" href="../definition/ND0141.html?v=481a9a378e54">IdentityMatrixSelector(b,c,d)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0141.html?v=481a9a378e54">IdentityMatrixSelector(b,c,l) · 1</a><a class="pd-chip" href="../definition/PD0002.html?v=481a9a378e54">Lt(a,b) · 1</a><a class="pd-chip" href="../definition/PD0013.html?v=481a9a378e54">BetaAt(b,c,i,x) · 2</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">beta_range_exists · checked external prerequisite</span><span class="pd-chip pd-external">zero_add · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall d. exists b c. (forall mdr_i_identity_exists. (exists mdr_gap_identity_existsbound. mdr_gap_identity_existsbound + S (mdr_i_identity_exists) = (d)) -&gt; (((exists ff_h_mdr_identity_existsentry. ff_h_mdr_identity_existsentry + S (mdr_i_identity_exists) = S ((S (mdr_i_identity_exists)) * c)) /\ exists ff_q_mdr_identity_existsentry. b = ff_q_mdr_identity_existsentry * S ((S (mdr_i_identity_exists)) * c) + (mdr_i_identity_exists))))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 20 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro d</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>have hrange : ∃ b. ∃ c. ∀ i. <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=481a9a378e54">Lt(i,d)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=481a9a378e54">BetaAt(b,c,i,0 + i)</a></code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>specialize beta_range_exists (0)</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>specialize beta_range_exists (d)</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>apply beta_range_exists</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>cases hrange</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>cases hrange_witness</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>exists x</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>exists x1</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>intro i</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>intro hi</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>have hentry : <a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=481a9a378e54">BetaAt(x,x1,i,0 + i)</a></code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>specialize hrange_witness_witness (i)</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>apply hrange_witness_witness</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>exact hi</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>have hzero : 0 + i = i</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>apply zero_add</code></li><li class="pd-proof-line" id="L18" data-line="18"><a class="pd-line-number" href="#L18">0018</a><code>rewrite hzero at hentry</code></li><li class="pd-proof-line" id="L19" data-line="19"><a class="pd-line-number" href="#L19">0019</a><code>rewrite hzero at hentry</code></li><li class="pd-proof-line" id="L20" data-line="20"><a class="pd-line-number" href="#L20">0020</a><code>exact hentry</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v27 checked use</dd><dt>First admission</dt><dd>Alpha v27</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>974 / 1224</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 1224 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>23 / 14</dd>
+      <dt>Statement SHA-256</dt><dd><code>5cd9208a9c75cd7dac3a357ea451283833ee6c04b0426d487994966621676dbf</code></dd>
+      <dt>Script SHA-256</dt><dd><code>0cad08c87a2a59bf0c554b7f78c37f7c3753d25bb41c50ac70de7a240a089ff0</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.matrix_lattice_data_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v27-second-wave-/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

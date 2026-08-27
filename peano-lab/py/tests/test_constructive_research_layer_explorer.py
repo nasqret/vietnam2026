@@ -1,4 +1,4 @@
-"""Canonical QR explorer, exact v24 proofs, reviewed definitions, and OPEN milestones."""
+"""Canonical QR v24 proofs, with separate v27 closure and unchanged historical scope."""
 
 from __future__ import annotations
 
@@ -90,9 +90,12 @@ def test_manifest_authenticates_current_channels_parent_catalog_kernel_and_lean(
     manifest = json.loads(generated["manifest.json"])
     digest = sha256(explorer.CURRENT_CATALOG.read_bytes()).hexdigest()
     assert manifest["schema"] == "peano-lab-constructive-research-layer-explorer-v1-manifest"
-    assert manifest["alpha_edition_version"] == "v25"
+    assert manifest["alpha_edition_version"] == "v27"
     assert manifest["alpha_first_enrolled_version"] == "v24"
     assert manifest["catalog_sha256"] == digest
+    assert manifest["first_enrollment_catalog_sha256"] == (
+        sha256(explorer.CATALOG.read_bytes()).hexdigest()
+    )
     assert manifest["html_revision"] == digest[:12]
     assert manifest["edition_identity_sha256"] == inputs["catalog"]["edition_identity_sha256"]
     assert inputs["channels"]["channels"]["alpha"]["artifact_sha256"] == digest
@@ -106,9 +109,9 @@ def test_manifest_authenticates_current_channels_parent_catalog_kernel_and_lean(
         slug: row[0] for slug, row in EXPECTED.items()
     }
     assert all(
-        item["milestone_status"] == "open"
-        and not item["milestone_checked_use"]
-        and item["milestone_partial_checked_use"]
+        item["milestone_status"] == "alpha_closed"
+        and item["milestone_checked_use"]
+        and item["historical_partial_checked_use"]
         for item in manifest["families"]
     )
     for item in manifest["files"]:
@@ -155,9 +158,9 @@ def test_every_research_branch_uses_the_exact_canonical_qr_landing_structure(
     assert f'href="explorer/defined/?v={revision}"' in source
     assert f'href="explorer/?v={revision}"' in source
     assert "first admitted v24" in source
-    assert "Alpha v25 checked-use theorem family" in source
+    assert "Alpha v27 checked-use theorem family" in source
     assert "independently accept all 203 bundle nodes" in source
-    assert f"{family.milestones[-1]} remains OPEN" in source
+    assert "Historical partial components only" in source
     assert corpus["alpha_proof_bundle_sha256"] in source
     for root in family.roots:
         assert f'explorer/defined/tag/{corpus["tags"][root]}.html?v={revision}' in source
@@ -192,7 +195,7 @@ def test_all_major_research_roots_have_exact_stable_tags(
 
 
 @pytest.mark.parametrize("slug", tuple(EXPECTED))
-def test_fully_verified_theorem_families_do_not_falsely_close_broader_milestones(
+def test_fully_verified_theorem_families_retain_historical_scope_beside_new_full_milestones(
     slug: str, corpora: dict[str, dict], inputs: dict, generated: dict[str, bytes],
 ) -> None:
     corpus = corpora[slug]
@@ -203,13 +206,22 @@ def test_fully_verified_theorem_families_do_not_falsely_close_broader_milestones
     assert corpus["campaign_family_id"] == family
     assert corpus["campaign_goal_id"] == milestone
     assert corpus["campaign_milestone_ids"] == [milestone]
-    assert corpus["milestone_status"] == "open"
-    assert not corpus["milestone_checked_use"]
-    assert corpus["milestone_partial_checked_use"]
-    assert inputs["milestones"][milestone]["status"] == "open"
-    assert not inputs["milestones"][milestone]["evidence"]["checked_use"]
-    assert inputs["milestones"][milestone]["evidence"]["partial_component_checked_use"]
-    assert f"{milestone} remains OPEN" in generated[f"{slug}/index.html"].decode()
+    assert corpus["milestone_status"] == "alpha_closed"
+    assert corpus["milestone_checked_use"]
+    assert corpus["historical_partial_checked_use"]
+    assert corpus["historical_component_only"]
+    assert corpus["historical_milestone_status"] == "open"
+    full_slug, full_root = explorer.original.SECOND_WAVE_COMPLETIONS[milestone]
+    assert corpus["milestone_full_proof_slug"] == full_slug
+    assert corpus["milestone_full_theorem_name"] == full_root
+    assert full_root not in corpus["tags"]
+    assert inputs["milestones"][milestone]["status"] == "alpha_closed"
+    assert inputs["milestones"][milestone]["evidence"]["checked_use"]
+    assert inputs["milestones"][milestone]["historical_partial_evidence"]["partial_component_checked_use"]
+    assert "Historical partial components only" in generated[f"{slug}/index.html"].decode()
+    assert f'{full_slug}/?v={corpus["alpha_catalog_sha256"][:12]}' in (
+        generated[f"{slug}/index.html"].decode()
+    )
     for node in corpus["nodes"]:
         sealed = inputs["by_name"][node["name"]]
         closure = sealed["empty_context_closure"]
@@ -220,7 +232,7 @@ def test_fully_verified_theorem_families_do_not_falsely_close_broader_milestones
         assert node["proof_bundle_node_id"] == closure["bundle_node_id"]
         assert node["proof_bundle_sha256"] == closure["certificate_sha256"]
         assert node["body_proof_nodes"] == closure["body_proof_nodes"]
-        assert node["alpha_edition_version"] == "v25"
+        assert node["alpha_edition_version"] == "v27"
         assert node["alpha_first_enrolled_version"] == "v24"
         assert node["alpha_checked_use"]
         assert node["independent_lean_bundle_verified"]
@@ -330,11 +342,11 @@ def test_proof_dependencies_notation_usage_and_definition_dags_remain_separate(
 ) -> None:
     corpus = corpora[slug]
     graph = json.loads(generated[f"{slug}/explorer/defined/api/graph.json"])
-    assert graph["alpha_edition_version"] == "v25"
+    assert graph["alpha_edition_version"] == "v27"
     assert graph["alpha_first_enrolled_version"] == "v24"
-    assert graph["milestone_status"] == "open"
-    assert not graph["milestone_checked_use"]
-    assert graph["milestone_partial_checked_use"]
+    assert graph["milestone_status"] == "alpha_closed"
+    assert graph["milestone_checked_use"]
+    assert graph["historical_partial_checked_use"]
     assert graph["path_policy"] == "proof_dependency_edges_only"
     tags = set(corpus["tags"].values())
     definitions = set(corpus["definition_topological_order"])
@@ -355,19 +367,19 @@ def test_proof_dependencies_notation_usage_and_definition_dags_remain_separate(
 
 
 @pytest.mark.parametrize(("key", "tag"), EXPECTED_ROOT_TAGS.items())
-def test_major_root_pages_display_complete_tactics_exact_evidence_and_open_scope(
+def test_major_root_pages_display_complete_tactics_exact_evidence_and_historical_scope(
     key: tuple[str, str], tag: str, generated: dict[str, bytes],
 ) -> None:
     slug, theorem = key
     exact = generated[f"{slug}/explorer/tag/{tag}.html"].decode()
     defined = generated[f"{slug}/explorer/defined/tag/{tag}.html"].decode()
     assert theorem in exact and theorem in defined
-    assert "Alpha v25" in defined
+    assert "Alpha v27" in defined
     assert "/ 203</dd>" in defined
     assert "all 203 exact bundle nodes" in defined
     assert "Actual proof prerequisites" in defined
     assert "Complete unchanged native tactic proof" in defined
-    assert f"{EXPECTED[slug][3]} remains OPEN" in defined
+    assert "Historical partial components only" in defined
 
 
 @pytest.mark.parametrize("slug", tuple(EXPECTED))
@@ -402,7 +414,7 @@ def test_canonical_renderer_fails_closed_for_unsafe_or_unsupported_families(
     with pytest.raises(ProofExplorerTemplateError):
         render_canonical_family_landing(
             family, corpora["matrix-determinant-minors"], revision=inputs["revision"],
-            current_alpha_version="v25", first_admitted_version="v24",
+            current_alpha_version="v27", first_admitted_version="v24",
             bundle_node_count=203,
         )
 
@@ -451,6 +463,113 @@ def test_corrupt_checked_release_rows_and_original_kernel_receipts_fail_closed(
             source=inputs["enrollment"].source_by_name[item.name],
             bundle=inputs["bundle"],
         )
+
+
+def test_current_v27_preserves_exact_historical_admission_and_separate_stable(
+    inputs: dict, corpora: dict[str, dict],
+) -> None:
+    current = inputs["catalog"]
+    historical = inputs["first_admission_catalog"]
+    assert current["schema"] == "peano-library-alpha-snapshot-v27"
+    assert current["theorem_count"] == current["checked_use_count"] == explorer.current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+    assert current["stable_count"] == 432
+    assert historical["schema"] == "peano-library-alpha-snapshot-v24"
+    assert current["theorems"][:historical["theorem_count"]] == historical["theorems"]
+    assert inputs["first_admission_catalog_sha256"] == sha256(
+        explorer.CATALOG.read_bytes()
+    ).hexdigest()
+    from constructive_second_wave_definition_graph import build_definition_graph
+
+    assert inputs["global_graph"] == build_definition_graph(inputs["campaign"])
+    for corpus in corpora.values():
+        assert corpus["alpha_edition_version"] == "v27"
+        assert corpus["alpha_first_enrolled_version"] == "v24"
+        assert corpus["alpha_first_enrollment_catalog_sha256"] == (
+            inputs["first_admission_catalog_sha256"]
+        )
+    for milestone in ("T13", "G095", "G011"):
+        evidence = inputs["milestones"][milestone]["evidence"]
+        historical_evidence = inputs["milestones"][milestone]["historical_partial_evidence"]
+        assert evidence["alpha_version"] == "v27"
+        assert evidence["checked_use"]
+        assert "partial_component_checked_use" not in evidence
+        assert historical_evidence["alpha_version"] == "v25"
+        assert not historical_evidence["checked_use"]
+        assert historical_evidence["partial_component_checked_use"]
+        assert evidence["bundle_sha256"] != historical_evidence["bundle_sha256"]
+
+
+@pytest.mark.parametrize(
+    ("surface", "path", "value"),
+    (
+        ("catalog", ("schema",), "peano-library-alpha-snapshot-v25"),
+        ("catalog", ("theorem_count",), 2080),
+        ("catalog", ("checked_use_count",), 2080),
+        ("catalog", ("stable_count",), 433),
+        ("catalog", ("edition_identity_sha256",), "0" * 64),
+        ("catalog", ("ordered_enrollment_root_sha256",), "0" * 64),
+        ("catalog", ("parent_alpha_v25",), None),
+        ("catalog", ("parent_alpha_v25", "schema"), "peano-library-alpha-snapshot-v24"),
+        ("catalog", ("parent_alpha_v25", "theorem_count"), 2008),
+        ("catalog", ("parent_alpha_v25", "edition_identity_sha256"), "0" * 64),
+        ("catalog", ("parent_alpha_v25", "ordered_enrollment_root_sha256"), "0" * 64),
+        ("catalog", ("parent_alpha_v25", "artifacts"), None),
+        ("catalog", ("parent_alpha_v25", "artifacts", "catalog", "sha256"), "0" * 64),
+        ("catalog", ("theorems",), []),
+        ("catalog", ("theorems", 0, "statement"), "false"),
+        ("catalog", ("theorems", 0, "checked_use"), False),
+        ("catalog", ("theorems", 0, "script"), ["forged"]),
+        ("channels", ("schema",), "peano-library-channels-v25"),
+        ("channels", ("default_channel",), "alpha"),
+        ("channels", ("parent_channels_v26", "path"), "artifacts/peano-library/channels-v24.json"),
+        ("channels", ("parent_channels_v26", "sha256"), "0" * 64),
+        ("channels", ("channels", "alpha", "artifact_path"), "artifacts/peano-library/alpha/catalog-v25.json"),
+        ("channels", ("channels", "alpha", "artifact_sha256"), "0" * 64),
+        ("channels", ("channels", "alpha", "theorem_count"), 2080),
+        ("channels", ("channels", "alpha", "checked_use_count"), 2080),
+        ("channels", ("channels", "alpha", "edition_identity_sha256"), "0" * 64),
+        ("channels", ("channels", "alpha", "ordered_enrollment_root_sha256"), "0" * 64),
+        ("channels", ("channels", "alpha", "parent_alpha_v25_sha256"), "0" * 64),
+        ("channels", ("channels", "stable", "artifact_sha256"), "0" * 64),
+        ("channels", ("channels", "stable", "theorem_count"), 433),
+    ),
+)
+def test_current_authority_corruption_fails_closed_even_with_rehashed_pointer(
+    inputs: dict,
+    monkeypatch: pytest.MonkeyPatch,
+    surface: str,
+    path: tuple[str | int, ...],
+    value: object,
+) -> None:
+    # Copy only the mutated path, preserving the large immutable theorem
+    # inventory and keeping each corruption case's memory use bounded.
+    document = dict(inputs["catalog"] if surface == "catalog" else inputs["channels"])
+    cursor = document
+    for key in path[:-1]:
+        child = cursor[key]
+        cursor[key] = dict(child) if isinstance(child, dict) else list(child)
+        cursor = cursor[key]
+    cursor[path[-1]] = value
+    channels = deepcopy(inputs["channels"])
+    current_raw = explorer.CURRENT_CATALOG.read_bytes()
+    if surface == "catalog":
+        current_raw = explorer._json(document)
+        channels["channels"]["alpha"]["artifact_sha256"] = sha256(current_raw).hexdigest()
+    else:
+        channels = document
+    channel_raw = explorer._json(channels)
+    read_bytes = Path.read_bytes
+
+    def mutated_read_bytes(path: Path) -> bytes:
+        if path == explorer.CURRENT_CATALOG:
+            return current_raw
+        if path == explorer.CHANNELS:
+            return channel_raw
+        return read_bytes(path)
+
+    monkeypatch.setattr(Path, "read_bytes", mutated_read_bytes)
+    with pytest.raises(explorer.ResearchLayerExplorerError, match="Alpha-v27"):
+        explorer._load_inputs()
 
 
 def test_generated_snapshot_and_cli_check_are_exact(generated: dict[str, bytes]) -> None:

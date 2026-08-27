@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PD0017 — BitCount(b,c,l,z) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="multinomial-kummer"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
+       <a href="../graph.html?v=481a9a378e54">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=BitCount&amp;v=481a9a378e54">Global definition: BitCount</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F04&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G035" href="../../../../grand-campaign/?view=goal&amp;focus=G035&amp;v=481a9a378e54">G035 milestone</a></nav>
+  <p class="pd-tag">PD0017</p><h1>BitCount(b,c,l,z)</h1>
+  <p>z is the sum of a beta-coded all-bit prefix.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="PD0015" href="PD0015.html?v=481a9a378e54">Sum(b,c,l,z)</a> ∧ <a class="pd-definition-ref" data-definition="PD0016" href="PD0016.html?v=481a9a378e54">AllBits(b,c,l)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((exists ff_u_defined_bit_count_sum ff_v_defined_bit_count_sum. ((((exists ff_h_defined_bit_count_sum_start. ff_h_defined_bit_count_sum_start + S (0) = S ((S (0)) * ff_v_defined_bit_count_sum)) /\ exists ff_q_defined_bit_count_sum_start. ff_u_defined_bit_count_sum = ff_q_defined_bit_count_sum_start * S ((S (0)) * ff_v_defined_bit_count_sum) + (0))) /\ ((((exists ff_h_defined_bit_count_sum_terminal. ff_h_defined_bit_count_sum_terminal + S (z) = S ((S (l)) * ff_v_defined_bit_count_sum)) /\ exists ff_q_defined_bit_count_sum_terminal. ff_u_defined_bit_count_sum = ff_q_defined_bit_count_sum_terminal * S ((S (l)) * ff_v_defined_bit_count_sum) + (z))) /\ forall ff_i_defined_bit_count_sum. (exists ff_lt_defined_bit_count_sum_bound. ff_lt_defined_bit_count_sum_bound + S ff_i_defined_bit_count_sum = l) -&gt; exists ff_a_defined_bit_count_sum ff_r_defined_bit_count_sum ff_s_defined_bit_count_sum. ((((exists ff_h_defined_bit_count_sum_summand. ff_h_defined_bit_count_sum_summand + S (ff_a_defined_bit_count_sum) = S ((S (ff_i_defined_bit_count_sum)) * c)) /\ exists ff_q_defined_bit_count_sum_summand. b = ff_q_defined_bit_count_sum_summand * S ((S (ff_i_defined_bit_count_sum)) * c) + (ff_a_defined_bit_count_sum))) /\ ((((exists ff_h_defined_bit_count_sum_partial. ff_h_defined_bit_count_sum_partial + S (ff_r_defined_bit_count_sum) = S ((S (ff_i_defined_bit_count_sum)) * ff_v_defined_bit_count_sum)) /\ exists ff_q_defined_bit_count_sum_partial. ff_u_defined_bit_count_sum = ff_q_defined_bit_count_sum_partial * S ((S (ff_i_defined_bit_count_sum)) * ff_v_defined_bit_count_sum) + (ff_r_defined_bit_count_sum))) /\ ((((exists ff_h_defined_bit_count_sum_successor. ff_h_defined_bit_count_sum_successor + S (ff_s_defined_bit_count_sum) = S ((S (S ff_i_defined_bit_count_sum)) * ff_v_defined_bit_count_sum)) /\ exists ff_q_defined_bit_count_sum_successor. ff_u_defined_bit_count_sum = ff_q_defined_bit_count_sum_successor * S ((S (S ff_i_defined_bit_count_sum)) * ff_v_defined_bit_count_sum) + (ff_s_defined_bit_count_sum))) /\ ff_s_defined_bit_count_sum = ff_r_defined_bit_count_sum + ff_a_defined_bit_count_sum)))))) /\ (forall ff_i_defined_bit_count_bits. (exists ff_lt_defined_bit_count_bits_bound. ff_lt_defined_bit_count_bits_bound + S ff_i_defined_bit_count_bits = l) -&gt; exists ff_bit_defined_bit_count_bits. ((((exists ff_h_defined_bit_count_bits_decoded. ff_h_defined_bit_count_bits_decoded + S (ff_bit_defined_bit_count_bits) = S ((S (ff_i_defined_bit_count_bits)) * c)) /\ exists ff_q_defined_bit_count_bits_decoded. b = ff_q_defined_bit_count_bits_decoded * S ((S (ff_i_defined_bit_count_bits)) * c) + (ff_bit_defined_bit_count_bits))) /\ (ff_bit_defined_bit_count_bits = 0 \/ ff_bit_defined_bit_count_bits = 1))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0015.html?v=481a9a378e54">Sum(b,c,l,z)</a><a class="pd-chip" href="PD0016.html?v=481a9a378e54">AllBits(b,c,l)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0091.html?v=481a9a378e54">BinaryColumnCarryCount(p,a,b,e)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><span class="pd-empty">none directly; see definition consumers</span></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>4</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity PD0017.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>b94a6fdb971a8d551c0bc09ef2676d106fb3e5c4bf37e3877289b2ac6f97c266</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v27-second-wave-/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

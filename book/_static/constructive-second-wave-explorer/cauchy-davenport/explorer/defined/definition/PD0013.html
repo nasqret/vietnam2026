@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PD0013 — BetaAt(b,c,i,x) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="cauchy-davenport"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
+       <a href="../graph.html?v=481a9a378e54">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=BetaAt&amp;v=481a9a378e54">Global definition: BetaAt</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D03&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F06&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G051" href="../../../../grand-campaign/?view=goal&amp;focus=G051&amp;v=481a9a378e54">G051 milestone</a></nav>
+  <p class="pd-tag">PD0013</p><h1>BetaAt(b,c,i,x)</h1>
+  <p>x is the bounded beta-decoded value at index i.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>S x ≤ S (S i · c) ∧ (∃ y. b = y · S (S i · c) + x)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((exists ff_h_defined_beta_at. ff_h_defined_beta_at + S (x) = S ((S (i)) * c)) /\ exists ff_q_defined_beta_at. b = ff_q_defined_beta_at * S ((S (i)) * c) + (x))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><span class="pd-empty">none — first-order arithmetic only</span></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0128.html?v=481a9a378e54">ModularSetMember(b,c,p,x)</a><a class="pd-chip" href="ND0129.html?v=481a9a378e54">ModularSetSubset(b,c,d,e,p)</a><a class="pd-chip" href="ND0130.html?v=481a9a378e54">ModularSetUnion(b,c,d,e,u,v,p)</a><a class="pd-chip" href="ND0131.html?v=481a9a378e54">ModularSetIntersection(b,c,d,e,u,v,p)</a><a class="pd-chip" href="ND0132.html?v=481a9a378e54">ModularSetPullback(b,c,d,e,p,t)</a><a class="pd-chip" href="ND0133.html?v=481a9a378e54">ModularSetSumCover(b,c,d,e,u,v,p)</a><a class="pd-chip" href="ND0134.html?v=481a9a378e54">ModularSetSum(b,c,d,e,u,v,p)</a><a class="pd-chip" href="ND0135.html?v=481a9a378e54">ModularTranslationBoundary(b,c,p,d,a,r)</a><a class="pd-chip" href="ND0136.html?v=481a9a378e54">ModularDysonTransform(b,c,d,e,ub,uc,vb,vc,p,t)</a><a class="pd-chip" href="PD0015.html?v=481a9a378e54">Sum(b,c,l,z)</a><a class="pd-chip" href="PD0016.html?v=481a9a378e54">AllBits(b,c,l)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/CD0001.html?v=481a9a378e54">CD0001 · finite_bit_entry_cases</a><a class="pd-chip" href="../tag/CD0002.html?v=481a9a378e54">CD0002 · finite_bit_membership_decidable</a><a class="pd-chip" href="../tag/CD0003.html?v=481a9a378e54">CD0003 · finite_bit_count_positive_member</a><a class="pd-chip" href="../tag/CD0004.html?v=481a9a378e54">CD0004 · finite_bit_subset_pointwise_le</a><a class="pd-chip" href="../tag/CD0009.html?v=481a9a378e54">CD0009 · finite_sum_entry_le</a><a class="pd-chip" href="../tag/CD000B.html?v=481a9a378e54">CD000B · finite_sum_pointwise_strict_at</a><a class="pd-chip" href="../tag/CD000C.html?v=481a9a378e54">CD000C · finite_bit_count_proper_subset_lt</a><a class="pd-chip" href="../tag/CD000D.html?v=481a9a378e54">CD000D · finite_bit_count_missing_zero</a><a class="pd-chip" href="../tag/CD000E.html?v=481a9a378e54">CD000E · finite_bit_count_two_nonzero_member</a><a class="pd-chip" href="../tag/CD000F.html?v=481a9a378e54">CD000F · finite_sum_pointwise_balance</a><a class="pd-chip" href="../tag/CD0011.html?v=481a9a378e54">CD0011 · finite_bit_intersection_from_product</a><a class="pd-chip" href="../tag/CD0012.html?v=481a9a378e54">CD0012 · finite_bit_intersection_exists</a><a class="pd-chip" href="../tag/CD0013.html?v=481a9a378e54">CD0013 · finite_bit_complement_exists</a><a class="pd-chip" href="../tag/CD0014.html?v=481a9a378e54">CD0014 · finite_bit_complement_member_iff</a><a class="pd-chip" href="../tag/CD0015.html?v=481a9a378e54">CD0015 · finite_bit_union_of_complements</a><a class="pd-chip" href="../tag/CD0016.html?v=481a9a378e54">CD0016 · finite_bit_union_exists</a><a class="pd-chip" href="../tag/CD0018.html?v=481a9a378e54">CD0018 · finite_beta_value_one_iff</a><a class="pd-chip" href="../tag/CD0019.html?v=481a9a378e54">CD0019 · finite_bit_nonmember_zero</a><a class="pd-chip" href="../tag/CD001B.html?v=481a9a378e54">CD001B · finite_bit_union_intersection_count_balance</a><a class="pd-chip" href="../tag/CD001C.html?v=481a9a378e54">CD001C · finite_beta_composition_exists</a><a class="pd-chip" href="../tag/CD001D.html?v=481a9a378e54">CD001D · finite_modular_translation_indices_exists</a><a class="pd-chip" href="../tag/CD001E.html?v=481a9a378e54">CD001E · finite_modular_translation_index_entry</a><a class="pd-chip" href="../tag/CD001F.html?v=481a9a378e54">CD001F · finite_modular_translation_indices_permutation</a><a class="pd-chip" href="../tag/CD0020.html?v=481a9a378e54">CD0020 · finite_modular_composition_all_bits</a><a class="pd-chip" href="../tag/CD0021.html?v=481a9a378e54">CD0021 · finite_modular_composition_pullback</a><a class="pd-chip" href="../tag/CD0022.html?v=481a9a378e54">CD0022 · finite_modular_set_pullback_exists</a><a class="pd-chip" href="../tag/CD0023.html?v=481a9a378e54">CD0023 · finite_bit_zero_nonmember</a><a class="pd-chip" href="../tag/CD0027.html?v=481a9a378e54">CD0027 · finite_modular_pullback_membership_witness</a><a class="pd-chip" href="../tag/CD0028.html?v=481a9a378e54">CD0028 · finite_modular_pushforward_membership_witness</a><a class="pd-chip" href="../tag/CD002A.html?v=481a9a378e54">CD002A · finite_beta_zero_code</a><a class="pd-chip" href="../tag/CD002C.html?v=481a9a378e54">CD002C · finite_partial_sumset_empty</a><a class="pd-chip" href="../tag/CD002D.html?v=481a9a378e54">CD002D · finite_partial_sumset_succ_absent</a><a class="pd-chip" href="../tag/CD002E.html?v=481a9a378e54">CD002E · finite_partial_sumset_succ_present</a><a class="pd-chip" href="../tag/CD002F.html?v=481a9a378e54">CD002F · finite_modular_sumset_prefix_exists</a><a class="pd-chip" href="../tag/CD0030.html?v=481a9a378e54">CD0030 · finite_modular_sumset_exists</a><a class="pd-chip" href="../tag/CD0031.html?v=481a9a378e54">CD0031 · finite_modular_sumset_cover</a><a class="pd-chip" href="../tag/CD0034.html?v=481a9a378e54">CD0034 · finite_modular_orbit_member_or_boundary</a><a class="pd-chip" href="../tag/CD0035.html?v=481a9a378e54">CD0035 · prime_modular_set_translation_boundary_exists</a><a class="pd-chip" href="../tag/CD0036.html?v=481a9a378e54">CD0036 · finite_modular_dyson_upper_from_union</a><a class="pd-chip" href="../tag/CD0037.html?v=481a9a378e54">CD0037 · finite_modular_dyson_lower_from_pullback</a><a class="pd-chip" href="../tag/CD0039.html?v=481a9a378e54">CD0039 · finite_modular_dyson_upper_member</a><a class="pd-chip" href="../tag/CD003A.html?v=481a9a378e54">CD003A · finite_modular_dyson_lower_subset</a><a class="pd-chip" href="../tag/CD003B.html?v=481a9a378e54">CD003B · finite_modular_dyson_lower_zero_member</a><a class="pd-chip" href="../tag/CD003C.html?v=481a9a378e54">CD003C · finite_modular_dyson_lower_boundary_nonmember</a><a class="pd-chip" href="../tag/CD003D.html?v=481a9a378e54">CD003D · finite_modular_dyson_sum_cover</a><a class="pd-chip" href="../tag/CD003E.html?v=481a9a378e54">CD003E · finite_modular_dyson_strict_sizes</a><a class="pd-chip" href="../tag/CD0041.html?v=481a9a378e54">CD0041 · prime_modular_normalized_boundary_exists</a><a class="pd-chip" href="../tag/CD0044.html?v=481a9a378e54">CD0044 · finite_modular_pullback_zero_member</a><a class="pd-chip" href="../tag/CD0045.html?v=481a9a378e54">CD0045 · finite_modular_opposite_translates_sum_cover</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>0</dd>
+  <dt>Transitive prerequisites</dt><dd>0</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity PD0013.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v27-second-wave-/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

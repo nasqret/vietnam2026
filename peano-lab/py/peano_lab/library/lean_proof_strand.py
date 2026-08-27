@@ -262,15 +262,19 @@ def _positive_limit(name: str, value: object, maximum: int) -> int:
 
 
 def _edition_view(edition: str) -> tuple[Any, str]:
-    """Import only the current sealed, artifact-free Alpha-v25 inventory."""
+    """Import only the current sealed, artifact-free Alpha-v27 inventory."""
 
     if type(edition) is not str or edition not in {"stable", "alpha"}:
         raise ProofStrandError("edition must be exactly 'stable' or 'alpha'")
-    from . import editions_v25
-
     if edition == "stable":
-        return editions_v25.STABLE_EDITION, "stable"
-    return editions_v25.ALPHA_EDITION, "v25"
+        from .editions_v26 import STABLE_EDITION
+
+        return STABLE_EDITION, "stable"
+    from . import editions_v27
+
+    if not editions_v27.EXPECTED_ALPHA_V27_COUNT:
+        raise ProofStrandError("Alpha v27 is not sealed for checked use")
+    return editions_v27.ALPHA_EDITION, "v27"
 
 
 @lru_cache(maxsize=512)
@@ -701,8 +705,22 @@ def preview_proof_strand(
     budget = _positive_limit("max_bytes", max_bytes, MAX_STATEMENT_BYTES)
     rows = _positive_limit("max_rows", max_rows, MAX_STRAND_NODES)
     root = plan.root_node
+    statement = root.readable_statement
+    statement_budget = min(4 * 1024, budget // 3)
+    encoded_statement = statement.encode("utf-8")
+    if len(encoded_statement) > statement_budget:
+        # Reserve room for the edition and provenance even when a completely
+        # expanded proposition is larger than the whole preview.  This changes
+        # only display text; the plan and every exact exported formula remain
+        # untouched.
+        notice = (
+            "\n-- [theorem statement abbreviated; export the complete strand "
+            "for the exact proposition]"
+        )
+        available = max(0, statement_budget - len(notice.encode("utf-8")))
+        statement = encoded_statement[:available].decode("utf-8", "ignore") + notice
     lines = [
-        f"theorem «{root.name}» : {root.readable_statement}",
+        f"theorem «{root.name}» : {statement}",
         f"-- {root.summary}",
         f"-- Edition: {plan.edition}" + (
             f" {plan.edition_version}" if plan.edition == "alpha" else ""

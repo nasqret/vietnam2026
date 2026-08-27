@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HL000C — beta_horner_root_mod_weaken — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="hensel-lifting"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
+       <a href="../../tag/HL000C.html?v=481a9a378e54">Exact original proof</a>
+       <a href="../graph.html?target=HL000C&amp;v=481a9a378e54">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G095" href="../../../../grand-campaign/?view=goal&amp;focus=G095&amp;v=481a9a378e54">G095 milestone</a></nav>
+  <p class="pd-tag">HL000C</p><h1>beta_horner_root_mod_weaken</h1>
+  <p>A witnessed root modulo a multiple is also a root modulo the old divisor.</p><p class="pd-status">Alpha v27 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">The derivative-nonzero criterion supplies no inverse or power witness: both are constructed. Roots may be arbitrary natural representatives of signed integer polynomials. Singular-root classification and p-adic completion are separate milestones.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ b. ∀ c. ∀ a. ∀ l. ∀ m. ∀ M. <a class="pd-definition-ref" data-definition="PD0003" href="../definition/PD0003.html?v=481a9a378e54">Dvd(m,M)</a> → <a class="pd-definition-ref" data-definition="ND0078" href="../definition/ND0078.html?v=481a9a378e54">HornerRootModulo(b,c,a,l,M)</a> → <a class="pd-definition-ref" data-definition="ND0078" href="../definition/ND0078.html?v=481a9a378e54">HornerRootModulo(b,c,a,l,m)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0078.html?v=481a9a378e54">HornerRootModulo(b,c,a,l,m) · 2</a><a class="pd-chip" href="../definition/PD0003.html?v=481a9a378e54">Dvd(d,n) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">mod_eq_of_mod_eq_multiple · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall b c a l m M. (exists q. M = m * q) -&gt; (exists hpl_value_root. ((exists ff_u_ph_hpl_root ff_v_ph_hpl_root. ((((exists fs_h_ph_hpl_root_body_start. fs_h_ph_hpl_root_body_start + S (0) = S ((S (0)) * ff_v_ph_hpl_root)) /\ exists fs_q_ph_hpl_root_body_start. ff_u_ph_hpl_root = fs_q_ph_hpl_root_body_start * S ((S (0)) * ff_v_ph_hpl_root) + (0))) /\ ((((exists fs_h_ph_hpl_root_body_terminal. fs_h_ph_hpl_root_body_terminal + S (hpl_value_root) = S ((S (l)) * ff_v_ph_hpl_root)) /\ exists fs_q_ph_hpl_root_body_terminal. ff_u_ph_hpl_root = fs_q_ph_hpl_root_body_terminal * S ((S (l)) * ff_v_ph_hpl_root) + (hpl_value_root))) /\ forall ff_i_ph_hpl_root_body_steps. (exists ph_bound_hpl_root_body_steps. ph_bound_hpl_root_body_steps + S ff_i_ph_hpl_root_body_steps = l) -&gt; exists ff_coefficient_ph_hpl_root_body_steps ff_previous_ph_hpl_root_body_steps ff_current_ph_hpl_root_body_steps. ((((exists fs_h_ph_hpl_root_body_steps_coefficient. fs_h_ph_hpl_root_body_steps_coefficient + S (ff_coefficient_ph_hpl_root_body_steps) = S ((S (ff_i_ph_hpl_root_body_steps)) * c)) /\ exists fs_q_ph_hpl_root_body_steps_coefficient. b = fs_q_ph_hpl_root_body_steps_coefficient * S ((S (ff_i_ph_hpl_root_body_steps)) * c) + (ff_coefficient_ph_hpl_root_body_steps))) /\ ((((exists fs_h_ph_hpl_root_body_steps_before. fs_h_ph_hpl_root_body_steps_before + S (ff_previous_ph_hpl_root_body_steps) = S ((S (ff_i_ph_hpl_root_body_steps)) * ff_v_ph_hpl_root)) /\ exists fs_q_ph_hpl_root_body_steps_before. ff_u_ph_hpl_root = fs_q_ph_hpl_root_body_steps_before * S ((S (ff_i_ph_hpl_root_body_steps)) * ff_v_ph_hpl_root) + (ff_previous_ph_hpl_root_body_steps))) /\ ((((exists fs_h_ph_hpl_root_body_steps_after. fs_h_ph_hpl_root_body_steps_after + S (ff_current_ph_hpl_root_body_steps) = S ((S (S ff_i_ph_hpl_root_body_steps)) * ff_v_ph_hpl_root)) /\ exists fs_q_ph_hpl_root_body_steps_after. ff_u_ph_hpl_root = fs_q_ph_hpl_root_body_steps_after * S ((S (S ff_i_ph_hpl_root_body_steps)) * ff_v_ph_hpl_root) + (ff_current_ph_hpl_root_body_steps))) /\ ff_current_ph_hpl_root_body_steps = ff_previous_ph_hpl_root_body_steps * a + ff_coefficient_ph_hpl_root_body_steps)))))) /\ (exists hgcrt_mod_left_hpl_root hgcrt_mod_right_hpl_root. hpl_value_root + M * hgcrt_mod_left_hpl_root = 0 + M * hgcrt_mod_right_hpl_root))) -&gt; (exists hpl_value_root. ((exists ff_u_ph_hpl_root ff_v_ph_hpl_root. ((((exists fs_h_ph_hpl_root_body_start. fs_h_ph_hpl_root_body_start + S (0) = S ((S (0)) * ff_v_ph_hpl_root)) /\ exists fs_q_ph_hpl_root_body_start. ff_u_ph_hpl_root = fs_q_ph_hpl_root_body_start * S ((S (0)) * ff_v_ph_hpl_root) + (0))) /\ ((((exists fs_h_ph_hpl_root_body_terminal. fs_h_ph_hpl_root_body_terminal + S (hpl_value_root) = S ((S (l)) * ff_v_ph_hpl_root)) /\ exists fs_q_ph_hpl_root_body_terminal. ff_u_ph_hpl_root = fs_q_ph_hpl_root_body_terminal * S ((S (l)) * ff_v_ph_hpl_root) + (hpl_value_root))) /\ forall ff_i_ph_hpl_root_body_steps. (exists ph_bound_hpl_root_body_steps. ph_bound_hpl_root_body_steps + S ff_i_ph_hpl_root_body_steps = l) -&gt; exists ff_coefficient_ph_hpl_root_body_steps ff_previous_ph_hpl_root_body_steps ff_current_ph_hpl_root_body_steps. ((((exists fs_h_ph_hpl_root_body_steps_coefficient. fs_h_ph_hpl_root_body_steps_coefficient + S (ff_coefficient_ph_hpl_root_body_steps) = S ((S (ff_i_ph_hpl_root_body_steps)) * c)) /\ exists fs_q_ph_hpl_root_body_steps_coefficient. b = fs_q_ph_hpl_root_body_steps_coefficient * S ((S (ff_i_ph_hpl_root_body_steps)) * c) + (ff_coefficient_ph_hpl_root_body_steps))) /\ ((((exists fs_h_ph_hpl_root_body_steps_before. fs_h_ph_hpl_root_body_steps_before + S (ff_previous_ph_hpl_root_body_steps) = S ((S (ff_i_ph_hpl_root_body_steps)) * ff_v_ph_hpl_root)) /\ exists fs_q_ph_hpl_root_body_steps_before. ff_u_ph_hpl_root = fs_q_ph_hpl_root_body_steps_before * S ((S (ff_i_ph_hpl_root_body_steps)) * ff_v_ph_hpl_root) + (ff_previous_ph_hpl_root_body_steps))) /\ ((((exists fs_h_ph_hpl_root_body_steps_after. fs_h_ph_hpl_root_body_steps_after + S (ff_current_ph_hpl_root_body_steps) = S ((S (S ff_i_ph_hpl_root_body_steps)) * ff_v_ph_hpl_root)) /\ exists fs_q_ph_hpl_root_body_steps_after. ff_u_ph_hpl_root = fs_q_ph_hpl_root_body_steps_after * S ((S (S ff_i_ph_hpl_root_body_steps)) * ff_v_ph_hpl_root) + (ff_current_ph_hpl_root_body_steps))) /\ ff_current_ph_hpl_root_body_steps = ff_previous_ph_hpl_root_body_steps * a + ff_coefficient_ph_hpl_root_body_steps)))))) /\ (exists hgcrt_mod_left_hpl_root hgcrt_mod_right_hpl_root. hpl_value_root + m * hgcrt_mod_left_hpl_root = 0 + m * hgcrt_mod_right_hpl_root)))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 20 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro b</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro c</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro a</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro l</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>intro m</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>intro M</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>intro hdiv</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>intro hroot</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>cases hroot</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>cases hroot_witness</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>exists x</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>split</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>exact hroot_witness_left</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>specialize mod_eq_of_mod_eq_multiple m</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>specialize mod_eq_of_mod_eq_multiple M</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>specialize mod_eq_of_mod_eq_multiple x</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>specialize mod_eq_of_mod_eq_multiple 0</code></li><li class="pd-proof-line" id="L18" data-line="18"><a class="pd-line-number" href="#L18">0018</a><code>apply mod_eq_of_mod_eq_multiple</code></li><li class="pd-proof-line" id="L19" data-line="19"><a class="pd-line-number" href="#L19">0019</a><code>exact hdiv</code></li><li class="pd-proof-line" id="L20" data-line="20"><a class="pd-line-number" href="#L20">0020</a><code>exact hroot_witness_right</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v27 checked use</dd><dt>First admission</dt><dd>Alpha v27</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>994 / 1224</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 1224 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>43 / 27</dd>
+      <dt>Statement SHA-256</dt><dd><code>ad2423039197a35201eb94b1e042cb4c35d1d98dd994f271ac194ba47ae0edbf</code></dd>
+      <dt>Script SHA-256</dt><dd><code>663ba7cf2eac457a2f7b2c17fc453f01bb8f6f4d3e0fd9ed92f6de1beff3b047</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.hensel_prime_power_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v27-second-wave-/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

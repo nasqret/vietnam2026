@@ -8,16 +8,16 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="euclidean-logarithmic-bound"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
-       <a href="../../tag/EL0004.html?v=75fa146ac19b">Exact original proof</a>
-       <a href="../graph.html?target=EL0004&amp;v=75fa146ac19b">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G101" href="../../../../grand-campaign/?view=goal&amp;focus=G101&amp;v=75fa146ac19b">G101 milestone</a></nav>
+  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
+       <a href="../../tag/EL0004.html?v=481a9a378e54">Exact original proof</a>
+       <a href="../graph.html?target=EL0004&amp;v=481a9a378e54">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G101" href="../../../../grand-campaign/?view=goal&amp;focus=G101&amp;v=481a9a378e54">G101 milestone</a></nav>
   <p class="pd-tag">EL0004</p><h1>euclidean_log_double_successor</h1>
-  <p>The exact two-step budget for a successor exponent grows by two.</p><p class="pd-status">Alpha v25 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable</p>
+  <p>The exact two-step budget for a successor exponent grows by two.</p><p class="pd-status">Alpha v27 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   
-  <p class="pd-callout">The exact G101 milestone is fully proved, including the stronger checked bound k≤2·BitLen(b), a real beta-coded execution, and its actual terminal gcd. The independent arbitrary-dimensional determinant and lattice milestone T13 remains open.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+  <p class="pd-callout">The exact G101 milestone is fully proved, including the stronger checked bound k≤2·BitLen(b), a real beta-coded execution, and its actual terminal gcd. The independent T13 determinant/rank/integer-span substrate is now closed in the separate Alpha-v27 integer-linear-algebra branch. <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=481a9a378e54">Full T13 proof · Alpha v27</a></p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
     <pre><code>∀ n. S n + S n = S S (n + n)</code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
   <section><h2>Definition DAG</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
@@ -28,7 +28,7 @@
     <p>All 6 lines are the exact independently kernel-checked original script.</p>
     <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro n</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>specialize add_succ_left n</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>specialize add_succ_left (S n)</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>rewrite add_succ_left</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>rewrite PA4</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>refl</code></li></ol></section>
 </div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
-  <dl><dt>Authority</dt><dd>Alpha v25 checked use</dd><dt>First admission</dt><dd>Alpha v23</dd><dt>Stable membership</dt><dd>none</dd>
+  <dl><dt>Authority</dt><dd>Alpha v27 checked use</dd><dt>First admission</dt><dd>Alpha v23</dd><dt>Stable membership</dt><dd>none</dd>
       <dt>Proof-bundle node</dt><dd>560 / 617</dd>
       <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
       <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 617 exact bundle nodes</dd>

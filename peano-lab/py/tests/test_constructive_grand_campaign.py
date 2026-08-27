@@ -11,6 +11,7 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
+import sys
 
 import pytest
 
@@ -20,6 +21,8 @@ CAMPAIGN = REPO / "book" / "_static" / "constructive-grand-campaign" / "campaign
 EXPLORER = CAMPAIGN.parent / "index.html"
 BLUEPRINT = REPO / "PLAN" / "14_constructive_number_theory_grand_campaign.md"
 ARITHMETIC_INDEX = REPO / "research" / "arithmetic-library" / "README.md"
+if str(REPO / "scripts") not in sys.path:
+    sys.path.insert(0, str(REPO / "scripts"))
 
 EXPECTED_FAMILIES = tuple(f"F{index:02d}" for index in range(1, 13))
 EXPECTED_TOOLS = {f"T{index:02d}" for index in range(1, 17)}
@@ -36,6 +39,7 @@ ALPHA_V22_IDENTITY = "2750384264856ad10910c1e9369746da886f4760d41e356bfc9e7f8f45
 ALPHA_V23_IDENTITY = "02059eef420eb96abd48c41bf62049a3cc69f025b00bed9dc3466e7eb2294a85"
 ALPHA_V24_IDENTITY = "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b"
 ALPHA_V25_IDENTITY = "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
+ALPHA_V26_IDENTITY = "8573945e4bdfe0a8d9414b499828ced67eff3b886e5adde50a0fcff81cfbdc19"
 ALPHA_V18_CATALOG_SHA256 = "cfbaeaf5d89be609d09aa2b84c9d102297a45b7b6aeeea6efcd32b1b328e62b2"
 ALPHA_V19_CATALOG_SHA256 = "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b"
 ALPHA_V20_CATALOG_SHA256 = "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
@@ -44,6 +48,7 @@ ALPHA_V22_CATALOG_SHA256 = "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082
 ALPHA_V23_CATALOG_SHA256 = "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
 ALPHA_V24_CATALOG_SHA256 = "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
 ALPHA_V25_CATALOG_SHA256 = "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+ALPHA_V26_CATALOG_SHA256 = "969c261f924060552dda393427b4fbc51515b9d4e69daa17f5e9f1691b5ab534"
 ALPHA_ENROLLMENT_IDENTITY = "44be61cdff1a093a78684a9d001d61d2b3761e73bacf6e79fe1a456f4ce50175"
 ALPHA_V19_ENROLLMENT_IDENTITY = "1295d6fc3da84646cb6bc8d5070627d42a6df33d673c44a2adfcd433edc41795"
 ALPHA_V20_ENROLLMENT_IDENTITY = "947e12db1db93decddd87b833067acf774a37fcb7d89de117010d53baf00065c"
@@ -52,6 +57,9 @@ ALPHA_V22_ENROLLMENT_IDENTITY = "431f7300f9190f6fdc35ef84212e93701f2bb565b7e32c1
 ALPHA_V23_ENROLLMENT_IDENTITY = "f5d94af7a11c642d7076a195e2e795e7b84c61a6de1a6b074708669b2dac1648"
 ALPHA_V24_ENROLLMENT_IDENTITY = "7463b938ffb87fe85eea6cd0e40c10ac73c799087ca1c408a070fcbe2687d4e1"
 ALPHA_V25_ENROLLMENT_IDENTITY = "f724872707cdcf401f35cb69680e1bbec86d626c4bf56e6d41f01a3724e2be81"
+ALPHA_V26_ENROLLMENT_IDENTITY = "cdf2cd0adfef8f1becd6f1f62d4d1d5d7a1891838e16b52a4d1cdaca98c496f2"
+FIRST_WAVE_NEW_NAMES_IDENTITY = "226cc91137521e0484dc6c3dcf90d2138e67acc79bf53798d84fb0deaf5973de"
+FIRST_WAVE_BUNDLE_IDENTITY = "59afca707b33b68df907c941683e335492f7de12ee3888219339c5dfce8ec4fc"
 QR_PROMOTION_NAMES_IDENTITY = "aba2d7a192b6f1c11fbafbed1001bf592ca9ed8f5bee7ac3f1de863dd870a80e"
 SUPPLEMENT_PROMOTION_NAMES_IDENTITY = "21e141da58e3262e250285ef9d43d78a5911d065e3746a824faea82642f7c8c7"
 FLAGSHIP_PROMOTION_NAMES_IDENTITY = "5b6faad95b90a3b3f11e6aea929aefd3cdbf9b5a1f3563e57d8e48f15e9d59e6"
@@ -84,6 +92,7 @@ ALPHA_V22_EVIDENCE_ROOT = "897ac1893550881538cf74274d0d48e15450125776f31be4edc10
 ALPHA_V23_EVIDENCE_ROOT = "e9c00544bdad559342da3ed5a0d1e26ef1576a0eecd9f580ec1fc98a2eb941cf"
 ALPHA_V24_EVIDENCE_ROOT = "2516501a609a5bd46114a53e20bbdd7c9f79bc801f7d3148be38dcd48f4ce3e0"
 ALPHA_V25_EVIDENCE_ROOT = "193ee636570fa9f7b69344dbebc6c7e53de8bebda01bcb86687f01a50ec19674"
+ALPHA_V26_EVIDENCE_ROOT = "fa9773708ab4eacfc981707e2cecb615dd46714df7c242008a5946821b8e4c52"
 HONEST_STATUSES = {
     "available",
     "stable_closed",
@@ -237,7 +246,7 @@ def test_dependency_graph_is_closed_and_strictly_layered() -> None:
 
     levels = {node["layer"] for node in payload["nodes"]}
     assert levels == set(range(13))
-    assert sum(len(node["deps"]) for node in payload["nodes"]) == 303
+    assert sum(len(node["deps"]) for node in payload["nodes"]) == 308
 
 
 def test_goal_status_and_layer_census_remain_honest_and_exact() -> None:
@@ -246,11 +255,10 @@ def test_goal_status_and_layer_census_remain_honest_and_exact() -> None:
     statuses = Counter(node["status"] for node in goals)
     assert statuses == Counter(
         {
-            "open": 93,
+            "open": 86,
             "existing_foundation": 6,
-            "existing_anchor_extension": 1,
             "stable_closed": 1,
-            "alpha_closed": 19,
+            "alpha_closed": 27,
         }
     )
 
@@ -413,9 +421,11 @@ def test_finite_generalized_crt_is_not_confused_with_checked_binary_crt() -> Non
     nodes = {node["id"]: node for node in payload["nodes"]}
     catalog = alpha_catalog(payload["meta"]["current_alpha_version"])
     finite = nodes["G011"]
-    evidence = finite["evidence"]
+    evidence = finite["historical_partial_evidence"]
 
-    assert finite["status"] == "open"
+    assert finite["status"] == "alpha_closed"
+    assert finite["evidence"]["full_generalized_crt_proved"] is True
+    assert finite["evidence"]["zero_moduli_and_empty_list_included"] is True
     assert "non-coprime" in evidence["available_scope"]
     assert "predecessor-LCM merge compatibility" in evidence["available_scope"]
     assert "zero-inclusive" in evidence["available_scope"]
@@ -469,10 +479,13 @@ def test_polynomial_and_matrix_tools_preserve_honest_evidence_boundaries() -> No
     )
 
     matrix = nodes["T13"]
-    partial = matrix["evidence"]
+    partial = matrix["historical_partial_evidence"]
     assert matrix["kind"] == "tool"
-    assert matrix["status"] == "open"
-    assert matrix["definition_refs"] == [
+    assert matrix["status"] == "alpha_closed"
+    assert matrix["evidence"]["full_arbitrary_determinant_proved"] is True
+    assert matrix["evidence"]["full_rank_substrate_proved"] is True
+    assert matrix["evidence"]["lattice_index_formula_proved"] is False
+    assert set(campaign()["definitions"]) >= {
         "MatrixAt", "DotProduct", "SignedDet2", "MatrixAffineSlice",
         "MatrixProductCell", "MatrixProductPrefix", "MatrixPointwiseAdd",
         "SignedDotProduct", "SignedMatrixProduct", "MatrixSkipIndex",
@@ -481,7 +494,9 @@ def test_polynomial_and_matrix_tools_preserve_honest_evidence_boundaries() -> No
         "SignedAlternatingCofactorTerm", "SignedAlternatingProductPrefix",
         "SignedAlternatingCofactorFold", "SignedFirstRowCofactorFold",
         "BetaSum", "Even", "Odd",
-    ]
+    }
+    assert {"SignedRecursiveDeterminant", "RectangularMatrixRank", "IntegerColumnSpan",
+            "PositiveDeterminantMatrixData"} <= set(matrix["definition_refs"])
     assert partial["implementation"] == "independently_closed_partial"
     assert partial["alpha_version"] == "v25"
     assert partial["alpha_enrolled"] is True
@@ -507,8 +522,10 @@ def test_polynomial_and_matrix_tools_preserve_honest_evidence_boundaries() -> No
     assert partial["bundle_sha256"] == BREAKTHROUGH_LAYER_BUNDLE_IDENTITY
 
     hensel = nodes["G095"]
-    foundation = hensel["evidence"]
-    assert hensel["status"] == "open"
+    foundation = hensel["historical_partial_evidence"]
+    assert hensel["status"] == "alpha_closed"
+    assert hensel["evidence"]["full_simple_root_hensel_lift_proved"] is True
+    assert hensel["evidence"]["arbitrary_prime_power_iteration_proved"] is True
     assert foundation["alpha_version"] == "v25"
     assert foundation["partial_theorem_name"] == "beta_horner_hensel_lift_exists"
     assert foundation["formal_derivative_exists_unique_proved"] is True
@@ -708,10 +725,10 @@ def test_v23_completed_milestones_bind_exact_original_kernel_objects_and_atlas_r
     assert corpus["milestone_checked_use"] is True
     assert theorem_name in corpus["root_names"]
     assert corpus["node_count"] == count
-    assert corpus["alpha_edition_version"] == "v25"
+    assert corpus["alpha_edition_version"] == "v27"
     assert corpus["alpha_first_enrolled_version"] == "v23"
-    assert corpus["alpha_catalog_sha256"] == ALPHA_V25_CATALOG_SHA256
-    assert corpus["alpha_edition_identity_sha256"] == ALPHA_V25_IDENTITY
+    assert corpus["alpha_catalog_sha256"] == campaign()["ambitious_boundaries"]["alpha_v27_edition"]["catalog_sha256"]
+    assert corpus["alpha_edition_identity_sha256"] == "5c5935ed524b63827068cba37da222fc78b458de6c5af2e07cf572bb9fab7d05"
     assert corpus["alpha_proof_bundle_sha256"] == MILESTONE_CLOSURE_BUNDLE_IDENTITY
 
 
@@ -993,7 +1010,7 @@ def test_every_new_checked_anchor_binds_exact_frozen_bundle_and_catalog_nodes(
         assert closure["bundle_dependency_edge_count"] == evidence["bundle_dependencies"]
 
 
-def test_current_v25_release_preserves_v15_through_v24_evidence_and_stable() -> None:
+def test_current_v27_release_preserves_v15_through_v26_evidence_and_stable() -> None:
     payload = campaign()
     boundaries = payload["ambitious_boundaries"]
     ancestor = boundaries["alpha_v15_edition"]
@@ -1007,6 +1024,7 @@ def test_current_v25_release_preserves_v15_through_v24_evidence_and_stable() -> 
     milestone = boundaries["alpha_v23_edition"]
     research = boundaries["alpha_v24_edition"]
     breakthrough = boundaries["alpha_v25_edition"]
+    completed = boundaries["alpha_v26_edition"]
     transition = boundaries["quadratic_reciprocity_evidence_transition"]
     supplementary = boundaries["supplementary_laws_evidence_transition"]
     flagship = boundaries["flagship_evidence_transition"]
@@ -1018,12 +1036,13 @@ def test_current_v25_release_preserves_v15_through_v24_evidence_and_stable() -> 
     milestone_layer = boundaries["milestone_closure_evidence_transition"]
     research_layer = boundaries["research_layer_evidence_transition"]
     breakthrough_layer = boundaries["breakthrough_layer_evidence_transition"]
+    first_wave = boundaries["first_wave_evidence_transition"]
 
-    assert payload["meta"]["current_alpha_version"] == "v25"
+    assert payload["meta"]["current_alpha_version"] == "v27"
     assert payload["meta"]["historical_alpha_versions"] == [
-        "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24"
+        "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25", "v26"
     ]
-    assert payload["meta"]["current_alpha_checked_use_count"] == 2_080
+    assert payload["meta"]["current_alpha_checked_use_count"] == 2_560
     assert boundaries["stable_edition"] == {
         "theorem_count": 432,
         "checked_use_count": 432,
@@ -1316,7 +1335,7 @@ def test_current_v25_release_preserves_v15_through_v24_evidence_and_stable() -> 
         "formal_polynomial_derivatives_and_finite_coprime_crt"
     )
 
-    assert breakthrough["role"] == "current_immutable_release"
+    assert breakthrough["role"] == "immutable_historical_parent"
     assert (
         breakthrough["theorem_count"],
         breakthrough["stable_closed_count"],
@@ -1344,6 +1363,26 @@ def test_current_v25_release_preserves_v15_through_v24_evidence_and_stable() -> 
     assert breakthrough["stable_unchanged"] is True
     assert all(breakthrough[f"historical_v{version}_unchanged"] for version in range(15, 25))
     assert breakthrough["independent_lean_bundle_verified"] is True
+
+    assert completed["role"] == "historical_immutable_release"
+    assert (
+        completed["theorem_count"], completed["stable_closed_count"],
+        completed["alpha_closed_count"], completed["body_checked_count"],
+        completed["pending_layered_closure_count"], completed["checked_use_count"],
+    ) == (2_138, 432, 1_706, 0, 0, 2_138)
+    assert completed["checked_use_promotion_count"] == completed["new_theorem_count"] == 58
+    assert completed["dependency_edge_count"] == completed["checked_dependency_edge_count"] == 6_851
+    assert completed["layer_count"] == 53
+    assert completed["identity_sha256"] == ALPHA_V26_IDENTITY
+    assert completed["catalog_sha256"] == ALPHA_V26_CATALOG_SHA256
+    assert sha256((REPO / "artifacts/peano-library/alpha/catalog-v26.json").read_bytes()).hexdigest() == ALPHA_V26_CATALOG_SHA256
+    assert completed["evidence_root_sha256"] == ALPHA_V26_EVIDENCE_ROOT
+    assert completed["frontier_new_names_sha256"] == FIRST_WAVE_NEW_NAMES_IDENTITY
+    assert completed["parent_enrollment_sha256"] == ALPHA_V25_ENROLLMENT_IDENTITY
+    assert completed["enrollment_sha256"] == ALPHA_V26_ENROLLMENT_IDENTITY
+    assert completed["stable_unchanged"] is True
+    assert all(completed[f"historical_v{version}_unchanged"] for version in range(15, 26))
+    assert completed["independent_lean_bundle_verified"] is True
 
     assert transition["historical_v15"] == {
         "stable_closed": 241,
@@ -1672,6 +1711,25 @@ def test_current_v25_release_preserves_v15_through_v24_evidence_and_stable() -> 
     assert breakthrough_layer["full_simple_hensel_milestone_closed"] is False
     assert breakthrough_layer["full_non_coprime_crt_milestone_closed"] is False
 
+    assert first_wave["parent_v25_theorem_count"] == 2_080
+    assert first_wave["new_theorem_count"] == 58
+    assert first_wave["current_v26_theorem_count"] == 2_138
+    assert first_wave["campaign_order"] == ["coprime_square_factor", "pythagorean_inverse", "fermat_four_descent"]
+    assert first_wave["new_theorem_counts"] == {"coprime_square_factor": 9, "pythagorean_inverse": 23, "fermat_four_descent": 26}
+    assert first_wave["theorem_node_count"] == 215
+    assert first_wave["bundle_node_count"] == 216
+    assert first_wave["synthetic_root_count"] == 1
+    assert first_wave["maximal_root_count"] == 4
+    assert first_wave["theorem_dependency_edge_count"] == 554
+    assert first_wave["dependency_edge_count"] == 558
+    assert first_wave["body_proof_nodes"] == 10_397
+    assert first_wave["bundle_bytes"] == 364_186
+    assert first_wave["bundle_sha256"] == FIRST_WAVE_BUNDLE_IDENTITY
+    assert first_wave["original_kernel_call_count"] == 216
+    assert first_wave["independent_lean_bundle_verified"] is True
+    assert first_wave["stable_unchanged"] is True
+    assert first_wave["historical_v25_unchanged"] is True
+
 
 def test_quadratic_reciprocity_goal_uses_current_exact_anchor_evidence() -> None:
     nodes = {node["id"]: node for node in campaign()["nodes"]}
@@ -1858,7 +1916,7 @@ def test_versioned_campaign_sources_distinguish_current_and_historical_channels(
         "research/arithmetic-library/alpha-v24-research-layer-rfc-v1.md"
     )
     assert sources["S50"]["path"] == "artifacts/peano-library/channels-v25.json"
-    assert "current" in sources["S50"]["label"].lower()
+    assert "historical" in sources["S50"]["label"].lower()
     assert sources["S51"]["path"] == (
         "research/arithmetic-library/artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json"
     )
@@ -1868,6 +1926,17 @@ def test_versioned_campaign_sources_distinguish_current_and_historical_channels(
     assert sources["S53"]["path"] == (
         "research/arithmetic-library/alpha-v25-breakthrough-layer-rfc-v1.md"
     )
+    assert sources["S54"]["path"] == "artifacts/peano-library/channels-v26.json"
+    assert "historical" in sources["S54"]["label"].lower()
+    assert sources["S55"]["path"] == "research/arithmetic-library/artifacts/alpha-v26-first-wave-proof-bundle-v1.json"
+    assert sources["S56"]["path"] == "research/arithmetic-library/alpha-v26-first-wave-receipt.md"
+    assert sources["S57"]["path"] == "research/arithmetic-library/alpha-v26-first-wave-rfc-v1.md"
+    assert sources["S58"]["path"] == "artifacts/peano-library/channels-v27.json"
+    assert "current" in sources["S58"]["label"].lower()
+    assert sources["S59"]["path"] == "research/arithmetic-library/artifacts/alpha-v27-second-wave-proof-bundle-v1.json"
+    assert sources["S60"]["path"] == "research/arithmetic-library/alpha-v27-second-wave-receipt.md"
+    assert sources["S61"]["path"] == "research/arithmetic-library/alpha-v27-second-wave-rfc-v1.md"
+    assert all((REPO / sources[name]["path"]).is_file() for name in ("S58", "S59", "S60", "S61"))
     for identifier, expected_size, expected_digest in (
         ("S27", 4_176_537, RESIDUAL_BUNDLE_IDENTITY),
         ("S28", 1_617_207, FRONTIER_BUNDLE_IDENTITY),
@@ -1877,6 +1946,7 @@ def test_versioned_campaign_sources_distinguish_current_and_historical_channels(
         ("S43", 2_518_315, MILESTONE_CLOSURE_BUNDLE_IDENTITY),
         ("S47", 738_923, RESEARCH_LAYER_BUNDLE_IDENTITY),
         ("S51", 1_041_166, BREAKTHROUGH_LAYER_BUNDLE_IDENTITY),
+        ("S55", 364_186, FIRST_WAVE_BUNDLE_IDENTITY),
     ):
         artifact = REPO / sources[identifier]["path"]
         assert artifact.stat().st_size == expected_size
@@ -1919,7 +1989,7 @@ def test_versioned_campaign_sources_distinguish_current_and_historical_channels(
     )
 
 
-def test_campaign_release_evidence_matches_all_eleven_immutable_channel_artifacts() -> None:
+def test_campaign_release_evidence_matches_all_thirteen_immutable_channel_artifacts() -> None:
     payload = campaign()
     boundaries = payload["ambitious_boundaries"]
     versions = {
@@ -1929,7 +1999,7 @@ def test_campaign_release_evidence_matches_all_eleven_immutable_channel_artifact
             )
         )
         for version in (
-            "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25"
+            "v15", "v16", "v17", "v18", "v19", "v20", "v21", "v22", "v23", "v24", "v25", "v26", "v27"
         )
     }
     historical_channels = versions["v15"]
@@ -2044,6 +2114,61 @@ def test_campaign_release_evidence_matches_all_eleven_immutable_channel_artifact
         "polynomial_taylor_hensel": 19,
         "generalized_crt_compatibility": 24,
     }
+    alpha_v26 = versions["v26"]["channels"]["alpha"]
+    assert alpha_v26["alpha_v26_frontier_new_count"] == 58
+    assert alpha_v26["parent_alpha_v25_sha256"] == ALPHA_V25_CATALOG_SHA256
+    assert alpha_v26["frontier_v26_campaign_counts"] == {
+        "coprime_square_factor": 9, "pythagorean_inverse": 23, "fermat_four_descent": 26,
+    }
+
+
+@pytest.mark.parametrize("identifier,name,digest,count,node_id", (
+    ("T13", "rectangular_matrix_rank_exists_unique", "677f945b5341792d5b2281cc8948922456c461c1aeeec880c452199df7d178f1", 182, 896),
+    ("G011", "crt_pairwise_compatible_prefix_normalized_exists_unique", "f333d811cf04309d630382e2c049885d0de6e2cf4f26a218faf0e6039b002587", 24, 1041),
+    ("G095", "integer_polynomial_prime_simple_root_lifts_all_positive_powers", "158b28822061f364d34a4badf84986d5f02301b58c555b1e67ec758c786709e8", 40, 1022),
+    ("G035", "multinomial_kummer_carry_valuation", "f69d92599b4eaa9e893e3a4c0e8ab998234bbce6223fbbde949433c1ee7c8266", 19, 1063),
+    ("G027", "prime_count_chebyshev_bounds", "38a80957c2e9e9545cf57e1a036768d506a64edd891be2d0125ffd499fab7428", 55, 1114),
+    ("G051", "prime_cauchy_davenport_sumset_bound", "634e3a5403ad025cef1e894dc2b9c3401691bb84bb57c2b70cb3aba185b806fb", 72, 1221),
+    ("G107", "cornacchia_prime_two_squares_complete", "becd01e6f073d37e512d385ffbc5e4e929ea3113f9d900fcc189718fc83eefc7", 30, 1150),
+))
+def test_second_wave_closed_milestones_bind_actual_full_theorem_roots(identifier, name, digest, count, node_id):
+    payload = campaign()
+    node = next(row for row in payload["nodes"] if row["id"] == identifier)
+    evidence = node["evidence"]
+    row = alpha_catalog("v27")[name]
+    assert node["status"] == "alpha_closed"
+    assert evidence["alpha_version"] == "v27"
+    assert evidence["theorem_name"] == name
+    assert evidence["theorem_statement_sha256"] == row["statement_sha256"]
+    if digest is not None:
+        assert row["statement_sha256"] == digest
+    assert evidence["new_theorem_count"] == count
+    assert evidence["bundle_node_id"] == row["empty_context_closure"]["bundle_node_id"] == node_id
+    assert evidence["bundle_nodes"] == 1224 and evidence["bundle_dependencies"] == 3999
+    assert evidence["bundle_sha256"] == "c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d"
+    assert evidence["full_empty_context_closure"] is evidence["independent_lean_bundle_verified"] is evidence["checked_use"] is True
+    assert evidence["stable_member"] is False
+    assert {"S58", "S59", "S60", "S61"} <= set(node["references"])
+    page = REPO / "book/_static/constructive-second-wave-explorer" / evidence["route"] / "explorer/defined/tag" / (evidence["proof_tag"] + ".html")
+    assert page.is_file() and name.encode() in page.read_bytes()
+
+
+def test_second_wave_current_release_is_additive_and_does_not_close_broader_roadmap():
+    payload = campaign()
+    current = payload["ambitious_boundaries"]["alpha_v27_edition"]
+    assert current["role"] == "current_immutable_release"
+    assert current["theorem_count"] == current["checked_use_count"] == 2560
+    assert current["stable_closed_count"] == 432 and current["alpha_closed_count"] == 2128
+    assert current["dependency_edge_count"] == current["checked_dependency_edge_count"] == 8196
+    assert current["identity_sha256"] == "5c5935ed524b63827068cba37da222fc78b458de6c5af2e07cf572bb9fab7d05"
+    assert current["enrollment_sha256"] == "20866c3865baec2bc6cee3c8e54bcb2f55e95a7b1a7fc85c103e3c9b055ecf4e"
+    assert current["parent_enrollment_sha256"] == ALPHA_V26_ENROLLMENT_IDENTITY
+    transition = payload["ambitious_boundaries"]["second_wave_evidence_transition"]
+    assert transition["new_theorem_count"] == 422
+    assert set(transition["named_targets_complete"]) == {"T13", "G011", "G095", "G035", "G027", "G051", "G107"}
+    assert transition["broader_roadmap_bullets_automatically_closed"] is False
+    nodes = {node["id"]: node for node in payload["nodes"]}
+    assert all(nodes[name]["status"] == "open" for name in ("G039", "G052", "G081", "G084", "G109", "G115"))
 
 
 def test_strict_heyting_signature_and_conservative_definitions_are_explicit() -> None:
@@ -2066,6 +2191,8 @@ def test_blueprint_has_exactly_one_contract_for_every_goal_and_twelve_families()
     families = re.findall(r"^### (F\d{2})\.", document, flags=re.MULTILINE)
     assert tuple(families) == EXPECTED_FAMILIES
     for value in (
+        "Alpha v26", "2,138", "1,706", "6,851", "216", "558", "10,397",
+        "189 blueprint", "131 hygienically", "231 reviewed", "99 compatible",
         "Alpha v25", "2,080", "1,648", "6,633", "302", "820", "16,947",
         "179 blueprint", "120 hygienically", "214 reviewed", "88 compatible",
         "83 exact names",
@@ -2079,7 +2206,7 @@ def test_blueprint_has_exactly_one_contract_for_every_goal_and_twelve_families()
         "61 compatible",
         "Alpha v20", "1,776", "1,344", "5,882", "39", "590", "2,045", "190,533",
         "Alpha v19", "1,737", "1,305", "5,779", "64",
-        "**93 genuinely open research", "**27 existing/revisited constructive",
+        "**92 genuinely open research", "**28 existing/revisited constructive",
         "475", "1,452", "38,688", "545", "1,650", "34,020",
         "Alpha v18", "1,157", "84", "1,589", "673", "1,113", "544", "1,917",
         "201,285", "45,254", "31,694",
@@ -2200,8 +2327,11 @@ def test_mathematical_exception_domains_and_nonvacuity_are_preserved() -> None:
     triple = definitions["PrimitiveTriple"]["expansion"]
     assert "Dvd(2,b)" not in triple
     pythagorean = nodes["G077"]["statement"]
-    assert "a=m²-k² ∧ b=2*m*k" in pythagorean
-    assert "a=2*m*k ∧ b=m²-k²" in pythagorean
+    assert pythagorean == "∀a b c. PrimitiveTriple(a,b,c) ↔ EuclidParametrization(a,b,c)."
+    parametrization = definitions["EuclidParametrization"]["expansion"]
+    assert "m*m=n*n+a" in parametrization.replace(" ", "")
+    assert "m*m=n*n+b" in parametrization.replace(" ", "")
+    assert "2*(m*n)" in parametrization.replace(" ", "")
 
     assert "p=2 ∧ GNorm(z,2)" in nodes["G083"]["statement"]
     assert "p=3 ∧ ENorm(z,3)" in nodes["G086"]["statement"]
@@ -2258,7 +2388,8 @@ def test_cross_family_summits_retain_required_transitive_prerequisites() -> None
         "G048": {"G082"},
         "G067": {"G066"},
         "G069": {"G066", "G095", "G068"},
-        "G078": {"G077", "G061"},
+        "G077": {"A08", "T07"},
+        "G078": {"G077", "T07", "T15"},
         "G079": {"G084", "G085"},
         "G090": {"G088", "G089"},
         "G114": {"G111", "G113"},
@@ -2266,6 +2397,10 @@ def test_cross_family_summits_retain_required_transitive_prerequisites() -> None
     }
     for summit, prerequisites in expected.items():
         assert prerequisites <= predecessors(summit)
+    assert nodes["G077"]["conceptual_refs"] == ["G005", "G062"]
+    assert nodes["G078"]["conceptual_refs"] == ["G061"]
+    assert "G005" not in nodes["G077"]["deps"]
+    assert "G061" not in nodes["G078"]["deps"]
 
 
 def test_blueprint_distinguishes_priority_from_topological_execution() -> None:
@@ -2289,18 +2424,18 @@ ATLAS_DOMAIN_FAMILIES = {
 }
 
 EXPECTED_CROSS_DOMAIN_PROOF_EDGES = {
-    ("D01", "D02"): 27,
-    ("D01", "D03"): 15,
-    ("D01", "D04"): 19,
+    ("D01", "D02"): 29,
+    ("D01", "D03"): 20,
+    ("D01", "D04"): 22,
     ("D01", "D05"): 4,
     ("D02", "D03"): 9,
     ("D02", "D04"): 3,
     ("D03", "D02"): 1,
-    ("D03", "D04"): 3,
+    ("D03", "D04"): 1,
     ("D03", "D05"): 2,
     ("D04", "D01"): 4,
     ("D04", "D02"): 4,
-    ("D04", "D03"): 6,
+    ("D04", "D03"): 5,
     ("D04", "D05"): 6,
     ("D05", "D02"): 2,
     ("D05", "D03"): 3,
@@ -2330,7 +2465,7 @@ def test_multiscale_domains_partition_all_families_and_count_real_proof_edges() 
         if domain(nodes[dependency]) != domain(node)
     )
     assert dict(actual) == EXPECTED_CROSS_DOMAIN_PROOF_EDGES
-    assert sum(actual.values()) == 110
+    assert sum(actual.values()) == 117
     assert len(actual) == 16
 
     explorer = EXPLORER.read_text(encoding="utf-8")
@@ -2347,11 +2482,11 @@ def test_blueprint_definition_dag_is_separate_acyclic_and_lexically_exact() -> N
     artifact = json.loads(
         (CAMPAIGN.parent / "definitions.json").read_text(encoding="utf-8")
     )
-    assert len(definitions) == artifact["definition_count"] == 179
-    assert artifact["reviewed_definition_count"] == 120
-    assert artifact["reviewed_definition_edge_count"] == 214
-    assert artifact["compatible_reviewed_match_count"] == 88
-    assert artifact["exact_name_reviewed_match_count"] == 83
+    assert len(definitions) == artifact["definition_count"] == 290
+    assert artifact["reviewed_definition_count"] == 198
+    assert artifact["reviewed_definition_edge_count"] == 388
+    assert artifact["compatible_reviewed_match_count"] == 201
+    assert artifact["exact_name_reviewed_match_count"] == 196
     assert artifact["explicit_alias_reviewed_match_count"] == 5
     assert artifact["incompatible_reviewed_match_count"] == 2
 
@@ -2372,12 +2507,12 @@ def test_blueprint_definition_dag_is_separate_acyclic_and_lexically_exact() -> N
     }
     assert sum(map(len, notation_edges.values())) == (
         artifact["definition_edge_count"]
-    ) == 165
+    ) == 406
     assert sum(map(len, statement_edges.values())) == (
         artifact["statement_usage_edge_count"]
-    ) == 311
-    assert artifact["declared_notation_edge_count"] == 84
-    assert artifact["milestone_usage_edge_count"] == 395
+    ) == 313
+    assert artifact["declared_notation_edge_count"] == 213
+    assert artifact["milestone_usage_edge_count"] == 526
     assert notation_edges["PowerValuation"] == {"Val"}
     assert notation_edges["Val"] == {"Prime", "Dvd"}
     assert notation_edges["Prime"] == {"Dvd"}
@@ -2493,25 +2628,12 @@ def test_blueprint_definition_dag_is_separate_acyclic_and_lexically_exact() -> N
 
     declared = {node["id"]: set(node.get("definition_refs", [])) for node in payload["nodes"]}
     assert declared["T12"] == {"Horner", "Beta"}
-    assert declared["T13"] == {
-        "MatrixAt", "DotProduct", "SignedDet2", "MatrixAffineSlice",
-        "MatrixProductCell", "MatrixProductPrefix", "MatrixPointwiseAdd",
-        "SignedDotProduct", "SignedMatrixProduct", "MatrixSkipIndex",
-        "MatrixMinorCell", "MatrixMinorPrefix", "SignedMatrixMinor",
-        "MatrixMinorFourCode", "SignedMinorRecord", "SignedCofactorMinorPrefix",
-        "SignedAlternatingCofactorTerm", "SignedAlternatingProductPrefix",
-        "SignedAlternatingCofactorFold", "SignedFirstRowCofactorFold",
-        "BetaSum", "Even", "Odd",
-    }
-    assert declared["G011"] == {
-        "CRTPositiveModuliPrefix", "CRTPairwiseCoprimePrefix",
-        "CRTPrefixSolution", "CRTPrefixLCM", "CRTCanonicalPrefixSolution",
-        "CRTPairwiseCompatiblePrefix", "CRTMergeCompatiblePrefix", "ModEq",
-    }
-    assert declared["G095"] == {
-        "Horner", "HornerDerivativeTrace", "HornerDerivative", "HornerDerivativeOnly",
-        "HornerTaylorRemainder", "HenselCorrection", "ModEq",
-    }
+    from build_constructive_second_wave_explorer import FAMILIES, _family_definitions
+    for family in FAMILIES:
+        assert declared[family.milestones[-1]] == {
+            item.name if item.name != "Sum" else "BetaSum"
+            for item in _family_definitions(family)
+        }
     assert declared["G023"] == {"BertrandWindow", "PowerValuationOne"}
     assert declared["G024"] == {"BertrandChain", "BertrandWindow"}
     assert declared["G071"] == {"ContinuedFraction", "Beta"}
@@ -2566,12 +2688,7 @@ def test_ready_frontier_never_treats_unverified_foundations_as_checked() -> None
         and all(nodes[dependency]["status"] in checked for dependency in node["deps"])
     }
     assert ready == {
-        "T13",
-        "G027",
-        "G035",
-        "G051",
-        "G095",
-        "G107",
+        "G039", "G052", "G081", "G084", "G109", "G115",
     }
     blueprint = BLUEPRINT.read_text(encoding="utf-8")
     scheduled = re.findall(
@@ -2587,18 +2704,23 @@ def test_ready_frontier_never_treats_unverified_foundations_as_checked() -> None
         ("8", "G035"),
         ("9", "G107"),
     ]
-    assert {identifier for _layer, identifier in scheduled} == ready
+    historical_ready = {identifier for _layer, identifier in scheduled}
+    assert historical_ready.isdisjoint(ready)
+    assert all(nodes[identifier]["status"] == "alpha_closed" for identifier in historical_ready)
     assert all(int(layer) == nodes[identifier]["layer"] for layer, identifier in scheduled)
     assert {"T12", "G023", "G024", "G025", "G071", "G101", "G102"}.isdisjoint(ready)
-    assert nodes["T13"]["evidence"]["partial_component_checked_use"] is True
-    assert nodes["T13"]["evidence"]["checked_use"] is False
+    assert nodes["T13"]["historical_partial_evidence"]["partial_component_checked_use"] is True
+    assert nodes["T13"]["historical_partial_evidence"]["checked_use"] is False
+    assert nodes["T13"]["evidence"]["checked_use"] is True
     assert nodes["G002"]["status"] == "existing_foundation"
     assert all(
         nodes[identifier]["status"] == "alpha_closed"
         for identifier in ("G025", "G101", "G102")
     )
-    assert nodes["G077"]["status"] == "existing_anchor_extension"
-    assert nodes["G077"]["evidence"]["inverse_direction_already_proved"] is False
+    assert nodes["G077"]["status"] == "alpha_closed"
+    assert nodes["G077"]["evidence"]["checked_use"] is True
+    assert nodes["G078"]["status"] == "alpha_closed"
+    assert nodes["G078"]["evidence"]["checked_use"] is True
 
     explorer = EXPLORER.read_text(encoding="utf-8")
     assert "Ready to investigate — not proved" in explorer
@@ -2696,7 +2818,34 @@ def test_checked_definition_cross_links_resolve_to_actual_explorer_pages() -> No
         "HenselCorrection": ("polynomial-taylor-hensel", "ND0066"),
         "CRTPairwiseCompatiblePrefix": ("generalized-crt-compatibility", "ND0067"),
         "CRTMergeCompatiblePrefix": ("generalized-crt-compatibility", "ND0068"),
+        "Pythagorean": ("pythagorean-fermat-four", "CF0011"),
+        "PrimitivePythagorean": ("pythagorean-fermat-four", "CF0013"),
+        "FermatFourCounterexample": ("pythagorean-fermat-four", "CF0014"),
+        "FermatFourStrictDescent": ("pythagorean-fermat-four", "CF0015"),
+        "OppositeParity": ("pythagorean-fermat-four", "CF0016"),
+        "PrimitiveTriple": ("pythagorean-fermat-four", "ND0069"),
+        "EuclidParameters": ("pythagorean-fermat-four", "ND0070"),
+        "PrimitiveFermatFourCounterexample": ("pythagorean-fermat-four", "ND0071"),
+        "SmallerFermatFourCounterexample": ("pythagorean-fermat-four", "ND0072"),
+        "TrivialFermatFourSolution": ("pythagorean-fermat-four", "ND0073"),
+        "EuclidParametrization": ("pythagorean-fermat-four", "ND0074"),
     }
+    # Preserve all 99 earlier hand-pinned aliases, then independently derive
+    # the newly exposed canonical names from the actual reviewed registries.
+    assert len(expected) == 99
+    from constructive_second_wave_definition_graph import DEFAULT_REGISTRIES, REVIEWED_BLUEPRINT_ALIASES
+
+    blueprint_definitions = campaign()["definitions"]
+    for route, group in DEFAULT_REGISTRIES:
+        for definition in group:
+            item = blueprint_definitions.get(definition.name)
+            if item and len(item["parameters"]) == len(definition.parameters):
+                value = (route, definition.stable_id)
+                if definition.name in expected:
+                    if expected[definition.name] != value:
+                        assert definition.name in REVIEWED_BLUEPRINT_ALIASES
+                    continue
+                expected[definition.name] = value
     artifact = json.loads(
         (CAMPAIGN.parent / "definitions.json").read_text(encoding="utf-8")
     )
@@ -2706,9 +2855,10 @@ def test_checked_definition_cross_links_resolve_to_actual_explorer_pages() -> No
     }
     explorer = EXPLORER.read_text(encoding="utf-8")
     for name, (route, identifier) in expected.items():
-        assert f'{name}: {{ id: "{identifier}", route: "{route}"' in explorer
         assert matches[name]["reviewed_id"] == identifier
         assert matches[name]["route"] == route
+        route = artifact.get("definition_page_overrides", {}).get(identifier, {}).get("route", route)
+        assert f'{name}: {{ id: "{identifier}", route: "{route}"' in explorer
         assert len(matches[name]["reviewed_parameters"]) == len(
             campaign()["definitions"][name]["parameters"]
         )
@@ -2759,13 +2909,26 @@ def test_checked_definition_cross_links_resolve_to_actual_explorer_pages() -> No
                 REPO / "book" / "_static" / "constructive-breakthrough-layer-explorer"
                 / route / "explorer" / "defined" / "definition" / f"{identifier}.html"
             )
+        elif route in {
+            "integer-linear-algebra", "hensel-lifting", "generalized-crt",
+            "multinomial-kummer", "prime-count-chebyshev", "cornacchia", "cauchy-davenport",
+        }:
+            destination = (
+                REPO / "book/_static/constructive-second-wave-explorer"
+                / route / "explorer/defined/definition" / f"{identifier}.html"
+            )
+        elif route == "pythagorean-fermat-four":
+            destination = (
+                REPO / "book/_static/constructive-frontier-explorer"
+                / route / "explorer/defined/definition" / f"{identifier}.html"
+            )
         else:
             destination = (
                 REPO / "book" / "_static" / "constructive-next-layer-explorer"
                 / route / "explorer" / "defined" / "definition" / f"{identifier}.html"
             )
         assert destination.is_file()
-    assert len(expected) == 88
+    assert len(expected) == 201
     assert set(matches) == set(expected)
     assert matches["Gcd"]["reviewed_argument_blueprint_positions"] == [2, 0, 1]
     assert {row["blueprint_name"] for row in artifact["incompatible_reviewed_matches"]} == {

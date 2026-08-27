@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Build three exact Alpha-v25 Quadratic Reciprocity-style breakthrough explorers.
+"""Publish historical Alpha-v25 breakthroughs under current Alpha-v27 authority.
 
 All displayed formulas, scripts, dependencies, definition DAGs and closure
-receipts are authenticated against the immutable current catalog, its v24
-parent, and the independently compiled-Lean-verified original-kernel bundle.
-The stronger milestones T13, G095 and G011 remain explicitly OPEN.
+receipts retain their immutable v25 first-admission catalog, its v24 parent,
+and the independently compiled-Lean-verified original-kernel bundle.  The
+current v27 release must preserve those exact rows and checked-use authority.
+The stronger milestones T13, G095 and G011 are now closed by separate v27
+second-wave proofs; these v25 chapters retain their original partial scope.
 """
 
 from __future__ import annotations
@@ -61,6 +63,7 @@ from constructive_transport_layer_definitions import (  # noqa: E402
 )
 from peano_lab.library import editions_v24 as v24  # noqa: E402
 from peano_lab.library import editions_v25 as v25  # noqa: E402
+from peano_lab.library import editions_v27 as current_alpha  # noqa: E402
 from peano_lab.library.alpha_enrollment_v25 import (  # noqa: E402
     EXPECTED_CAMPAIGN_COUNTS,
     FRONTIER_V25_EXPECTED_COUNT,
@@ -78,18 +81,22 @@ from peano_lab.library.defined_syntax import DefinitionSpec  # noqa: E402
 OUTPUT = REPO / "book" / "_static" / "constructive-breakthrough-layer-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
 PARENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
-CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v25.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
+CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v27.json"
 CAMPAIGN = REPO / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
 GLOBAL_DEFINITIONS = CAMPAIGN.with_name("definitions.json")
 EXPECTED_STABLE_COUNT = 432
+# Historical branch notation stays fixed; the complete current atlas is
+# independently reconstructed and authenticated by _audit_current_atlas.
 EXPECTED_REVIEWED_DEFINITION_COUNT = 120
-EXPECTED_BLUEPRINT_DEFINITION_COUNT = 179
-EXPECTED_COMPATIBLE_DEFINITION_COUNT = 88
 EXPECTED_BUNDLE_PATH = (
     "research/arithmetic-library/artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json"
 )
 SCHEMA = "peano-lab-constructive-breakthrough-layer-explorer-v1"
-STATUS = "Alpha v25 checked-use · independently kernel and Lean verified; not Stable"
+STATUS = (
+    "Alpha v27 checked-use · first admitted v25 · "
+    "independently kernel and Lean verified; not Stable"
+)
 ASSET_SOURCES = original.ASSET_SOURCES
 PINNED_ASSETS = original.PINNED_ASSETS
 _digest = original._digest
@@ -110,7 +117,7 @@ RESEARCH_LAYER_REGISTRIES = HISTORICAL_RESEARCH_REGISTRIES + BREAKTHROUGH_LAYER_
 
 
 class BreakthroughLayerExplorerError(ValueError):
-    """A current theorem, definition, proof receipt or OPEN boundary changed."""
+    """A theorem, definition, receipt, or historical/current scope boundary changed."""
 
 
 # The cloned audited helpers reference their original exception's global name.
@@ -170,11 +177,11 @@ FAMILIES = (
             "MatrixSkipIndex", "MatrixAffineSlice", "Sum", "Even", "Odd", "Beta", "Lt",
         ),
         caveat=(
-            "T13 remains OPEN. Every genuine signed first-row minor and the unique "
-            "arbitrary alternating fold of the actual matrix row are independently "
-            "proved. Supplied cofactor values have not been linked to recursively "
-            "evaluated minor determinants; unrestricted determinants, matrix rank "
-            "and lattices are not proved."
+            "Historical partial components only: this chapter proves genuine signed "
+            "first-row minors and unique alternating folds, with supplied cofactor "
+            "values. T13 is now closed in the separate Alpha-v27 integer-linear-algebra "
+            "branch with actual arbitrary determinant data, rank, and integer "
+            "column spans; lattice index and normal forms are not claimed."
         ),
     ),
     Family(
@@ -209,11 +216,11 @@ FAMILIES = (
             "Dvd", "Prime", "Beta", "Lt", "Pow",
         ),
         caveat=(
-            "G095 remains OPEN. The exact arbitrary-polynomial quadratic Taylor "
-            "remainder, unique bounded modular correction and actual one-step "
-            "Hensel divisibility lift are independently proved. Canonical "
-            "unrestricted-input root representatives, uniqueness of lifted "
-            "roots and the full prime-power lifting theorem are not proved."
+            "Historical partial components only: this chapter proves exact natural "
+            "polynomial Taylor remainders, bounded corrections, and one-step "
+            "divisibility lifts. G095 is now closed in the separate Alpha-v27 "
+            "hensel-lifting branch for integer polynomials, unrestricted input "
+            "roots, unique canonical representatives, and every positive prime power."
         ),
     ),
     Family(
@@ -249,11 +256,11 @@ FAMILIES = (
             "IsGCD", "Dvd", "ModEq", "Beta", "Lt", "Le",
         ),
         caveat=(
-            "G011 remains OPEN. Every positive genuinely noncoprime finite list "
-            "satisfying the exact successive-merge compatibility invariant has "
-            "a proved unique canonical solution; arbitrary pairwise-compatible "
-            "lists are proved only in the dominating-last case. The unrestricted "
-            "pairwise-to-merge gcd/LCM distributivity bridge is not proved."
+            "Historical partial components only: this chapter proves canonical "
+            "solutions under successive-merge compatibility and in the "
+            "pairwise-compatible dominating-last case. G011 is now closed in the "
+            "separate Alpha-v27 generalized-crt branch for arbitrary "
+            "pairwise-compatible finite lists, including noncoprime moduli."
         ),
     ),
 )
@@ -269,7 +276,7 @@ def _definition_specs() -> dict[str, DefinitionSpec]:
         or definitions.get("Mod4Three") is None
         or definitions["Mod4Three"].stable_id != "PD0012"
     ):
-        raise BreakthroughLayerExplorerError("the additive reviewed Alpha-v25 registry changed")
+        raise BreakthroughLayerExplorerError("the historical reviewed Alpha-v25 registry changed")
     for definition in definitions.values():
         required = definition.conceptual_dependencies
         if (
@@ -359,7 +366,7 @@ def _validate_theorem(
 
 
 def _load_inputs() -> dict[str, Any]:
-    """Authenticate v25 catalog, channels, exact v24 parent and OPEN evidence."""
+    """Authenticate v25 admission and the separately completed v27 milestones."""
 
     if (
         v25.EXPECTED_ALPHA_V25_COUNT <= PARENT_ALPHA_V24_COUNT
@@ -369,7 +376,11 @@ def _load_inputs() -> dict[str, Any]:
         raise BreakthroughLayerExplorerError("the Alpha-v25 breakthrough release is not sealed")
     raw_catalog = CATALOG.read_bytes()
     catalog = json.loads(raw_catalog)
+    current_raw_catalog = CURRENT_CATALOG.read_bytes()
+    current_catalog = json.loads(current_raw_catalog)
     channels = json.loads(CHANNELS.read_bytes())
+    parent_channels_raw = CHANNELS.with_name("channels-v26.json").read_bytes()
+    parent_channels = json.loads(parent_channels_raw)
     expected_counts = {
         campaign.value: count for campaign, count in EXPECTED_CAMPAIGN_COUNTS.items()
     }
@@ -386,15 +397,59 @@ def _load_inputs() -> dict[str, Any]:
     ):
         raise BreakthroughLayerExplorerError("the sealed fully checked Alpha-v25 catalog changed")
     channel = channels.get("channels", {}).get("alpha", {})
+    original._audit_current_parent(current_catalog, channels, error_type=BreakthroughLayerExplorerError)
+    current_parent = current_catalog.get("parent_alpha_v25", {})
     if (
-        channels.get("schema") != "peano-library-channels-v25"
-        or channel.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v25.json"
-        or channel.get("artifact_sha256") != _digest(raw_catalog)
-        or channel.get("theorem_count") != v25.EXPECTED_ALPHA_V25_COUNT
-        or channel.get("checked_use_count") != v25.EXPECTED_ALPHA_V25_CHECKED_USE_COUNT
-        or channel.get("edition_identity_sha256") != v25.ALPHA_V25_IDENTITY_SHA256
+        channels.get("schema") != "peano-library-channels-v27"
+        or channels.get("default_channel") != "stable"
+        or channels.get("parent_channels_v26", {}).get("path")
+        != "artifacts/peano-library/channels-v26.json"
+        or channels.get("parent_channels_v26", {}).get("sha256")
+        != _digest(parent_channels_raw)
+        or channels.get("channels", {}).get("stable")
+        != parent_channels.get("channels", {}).get("stable")
+        or channel.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v27.json"
+        or channel.get("artifact_sha256") != _digest(current_raw_catalog)
+        or channel.get("parent_alpha_v25_sha256") != _digest(raw_catalog)
+        or channel.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or channel.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        or channel.get("edition_identity_sha256") != current_alpha.ALPHA_V27_IDENTITY_SHA256
+        or channel.get("ordered_enrollment_root_sha256")
+        != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v27"
+        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or current_catalog.get("checked_use_count")
+        != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        or current_catalog.get("stable_count") != EXPECTED_STABLE_COUNT
+        or current_catalog.get("edition_identity_sha256")
+        != current_alpha.ALPHA_V27_IDENTITY_SHA256
+        or current_catalog.get("ordered_enrollment_root_sha256")
+        != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        or not isinstance(current_parent, dict)
+        or current_parent.get("schema") != "peano-library-alpha-snapshot-v25"
+        or current_parent.get("theorem_count") != v25.EXPECTED_ALPHA_V25_COUNT
+        or current_parent.get("edition_identity_sha256") != v25.ALPHA_V25_IDENTITY_SHA256
+        or current_parent.get("ordered_enrollment_root_sha256")
+        != v25.ALPHA_V25_ENROLLMENT_SHA256
+        or not isinstance(current_parent.get("artifacts"), dict)
+        or current_parent.get("artifacts", {}).get("catalog") != {
+            "path": "artifacts/peano-library/alpha/catalog-v25.json",
+            "sha256": _digest(raw_catalog),
+        }
+        or not isinstance(current_catalog.get("theorems"), list)
+        or len(current_catalog["theorems"]) != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or current_catalog["theorems"][:v25.EXPECTED_ALPHA_V25_COUNT]
+        != catalog.get("theorems")
+        or tuple(current_alpha.ALPHA_ENTRIES[:v25.EXPECTED_ALPHA_V25_COUNT])
+        != v25.ALPHA_ENTRIES
+        or any(
+            newer is not historical
+            for newer, historical in zip(current_alpha.ALPHA_ENTRIES, v25.ALPHA_ENTRIES)
+        )
     ):
-        raise BreakthroughLayerExplorerError("the current Alpha-v25 channel is not its sealed catalog")
+        raise BreakthroughLayerExplorerError(
+            "the current Alpha-v27 channel changed its sealed historical Alpha-v25 admission"
+        )
     parent = catalog.get("parent_alpha_v24")
     if (
         not isinstance(parent, dict)
@@ -454,53 +509,15 @@ def _load_inputs() -> dict[str, Any]:
 
     campaign = json.loads(CAMPAIGN.read_bytes())
     graph = json.loads(GLOBAL_DEFINITIONS.read_bytes())
-    canonical = json.dumps(
-        campaign, ensure_ascii=False, allow_nan=False, separators=(",", ":"), sort_keys=True
-    ).encode("utf-8")
-    if (
-        campaign.get("meta", {}).get("current_alpha_version") != "v25"
-        or campaign.get("meta", {}).get("current_alpha_checked_use_count")
-        != v25.EXPECTED_ALPHA_V25_COUNT
-        or graph.get("definition_count") != EXPECTED_BLUEPRINT_DEFINITION_COUNT
-        or graph.get("definition_count") != len(campaign.get("definitions", ()))
-        or graph.get("reviewed_definition_count") != len(_definition_specs())
-        or graph.get("compatible_reviewed_match_count")
-        != EXPECTED_COMPATIBLE_DEFINITION_COUNT
-        or graph.get("campaign_snapshot_sha256") != _digest(canonical)
-    ):
-        raise BreakthroughLayerExplorerError("the global Alpha-v25 atlas definition artifact is stale")
+    original._audit_current_atlas(campaign, graph, error_type=BreakthroughLayerExplorerError)
     blueprint = campaign.get("definitions")
     if not isinstance(blueprint, dict):
         raise BreakthroughLayerExplorerError("the global atlas has no exact named definition registry")
     goals = {item["id"]: item for item in campaign.get("nodes", ())}
-    open_partial_roots = {
-        "T13": "signed_matrix_cofactor_family_and_fold_exists",
-        "G095": "beta_horner_hensel_lift_exists",
-        "G011": "crt_merge_compatible_prefix_canonical_exists_unique",
-    }
-    for goal, root in open_partial_roots.items():
-        node = goals.get(goal)
-        evidence = node.get("evidence") if isinstance(node, dict) else None
-        theorem = by_name.get(root)
-        if (
-            not isinstance(node, dict)
-            or node.get("status") != "open"
-            or not isinstance(evidence, dict)
-            or evidence.get("alpha_version") != "v25"
-            or evidence.get("checked_use") is not False
-            or evidence.get("partial_component_checked_use") is not True
-            or evidence.get("partial_theorem_name") != root
-            or evidence.get("independent_lean_bundle_verified") is not True
-            or theorem is None
-            or evidence.get("partial_theorem_statement_sha256")
-            != theorem.get("statement_sha256")
-            or evidence.get("bundle_sha256") != bundle["artifact_sha256"]
-            or evidence.get("bundle_node_id")
-            != theorem.get("empty_context_closure", {}).get("bundle_node_id")
-        ):
-            raise BreakthroughLayerExplorerError(
-                f"OPEN milestone lacks an honestly separated checked partial theorem: {goal}"
-            )
+    for goal in original.SECOND_WAVE_COMPLETIONS:
+        original._audit_second_wave_milestone(
+            goal, goals.get(goal), current_catalog, error_type=BreakthroughLayerExplorerError
+        )
 
     enrollment = alpha_v25_enrollment()
     if len(enrollment.frontier_specs) != FRONTIER_V25_EXPECTED_COUNT:
@@ -514,10 +531,12 @@ def _load_inputs() -> dict[str, Any]:
             source=enrollment.source_by_name[spec.name], bundle=bundle,
         )
     return {
-        "catalog": catalog,
+        "catalog": current_catalog,
+        "first_admission_catalog": catalog,
         "channels": channels,
-        "catalog_sha256": _digest(raw_catalog),
-        "revision": _digest(raw_catalog)[:12],
+        "catalog_sha256": _digest(current_raw_catalog),
+        "first_admission_catalog_sha256": _digest(raw_catalog),
+        "revision": _digest(current_raw_catalog)[:12],
         "bundle": bundle,
         "by_name": by_name,
         "campaign": campaign,
@@ -556,10 +575,10 @@ _inherited_family_corpus = FunctionType(
 
 def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
     corpus = _inherited_family_corpus(family, inputs)
-    corpus["alpha_edition_version"] = "v25"
+    corpus["alpha_edition_version"] = "v27"
     corpus["alpha_first_enrolled_version"] = "v25"
     for node in corpus["nodes"]:
-        node["alpha_edition_version"] = "v25"
+        node["alpha_edition_version"] = "v27"
         node["alpha_first_enrolled_version"] = "v25"
     return corpus
 
@@ -567,22 +586,20 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
 def _graph_payload(family: Family, corpus: Mapping[str, Any], *, revision: str) -> dict[str, Any]:
     graph = original._graph_payload(family, corpus, revision=revision)
     graph["schema"] = f"{SCHEMA}-graph"
-    graph["alpha_edition_version"] = "v25"
+    graph["alpha_edition_version"] = "v27"
     graph["alpha_first_enrolled_version"] = "v25"
-    graph["milestone_status"] = "open"
-    graph["milestone_checked_use"] = False
-    graph["milestone_partial_checked_use"] = True
+    graph.update(original._completed_milestone_metadata(family.milestones[-1]))
     graph["milestone_caveat"] = family.caveat
     for node in graph["nodes"]:
         if node["kind"] == "theorem":
-            node["alpha_edition_version"] = "v25"
+            node["alpha_edition_version"] = "v27"
             node["alpha_first_enrolled_version"] = "v25"
     return graph
 
 
 def _retarget(document: bytes, family: Family, *, include_caveat: bool = False) -> bytes:
     # Keep the exact audited historical QR templates while upgrading the
-    # current/first-admission metadata of genuinely NEW v25 theorem rows.
+    # current checked use and immutable first-admission metadata of v25 rows.
     text = research._retarget(document, family, include_caveat=include_caveat).decode("utf-8")
     text = text.replace("first admitted v24", "first admitted v25")
     text = text.replace("FIRST ADMITTED v24", "FIRST ADMITTED v25")
@@ -606,18 +623,18 @@ def _top_index(
         f"{_e(family.title)}</a></h2><p>{_e(family.description)}</p>"
         f"<p>{corpus['node_count']} independently kernel- and Lean-verified theorems · "
         f"{corpus['definition_count']} conservative definitions · "
-        f"{family.milestones[-1]} broader milestone remains OPEN</p>"
+        f"{family.milestones[-1]} now closed in its separate second-wave branch</p>"
         f'<p class="pd-callout">{_e(family.caveat)}</p></article>'
         for family, corpus in corpora
     )
     body = f"""<main class="proof-home proof-library-home"><header class="proof-hero">
- <p class="eyebrow">ALPHA v25 · THREE INDEPENDENTLY VERIFIED CONSTRUCTIVE BREAKTHROUGHS</p>
+ <p class="eyebrow">ALPHA v27 · HISTORICAL v25 INDEPENDENTLY VERIFIED CONSTRUCTIVE BREAKTHROUGHS</p>
  <h1>Complete cofactor families, genuine Hensel lifts, and noncoprime CRT</h1>
- <p>Independently original-kernel- and Lean-verified proof families achieve genuine constructive mathematical advances while honestly retaining three stronger unfinished research milestones.</p>
+ <p>Independently original-kernel- and Lean-verified historical advances, linked to the separate second-wave proofs that now complete their broader milestones.</p>
  <nav><a href="{_versioned('../', revision)}">Proof library</a>
  <a href="{_versioned('../grand-campaign/', revision)}">Complete number-theory campaign atlas</a></nav>
  </header><section class="proof-grid">{entries}</section>
- <p>Each displayed theorem has current Alpha-v25 checked-use authority; T13, G095 and G011 remain OPEN, and Stable remains an unchanged separate edition.</p></main>"""
+ <p>Each displayed theorem first admitted in historical Alpha v25 retains current Alpha-v27 checked-use authority. These old components retain their partial scope; the separate second-wave branches now close T13, G095 and G011. Stable remains an unchanged separate edition.</p></main>"""
     return original._document(
         FAMILIES[0], title="Three Constructive Number-Theory Breakthroughs",
         body=body, prefix="", defined=False,
@@ -649,7 +666,7 @@ def build_files() -> dict[str, bytes]:
         prefix = family.slug
         files[f"{prefix}/index.html"] = render_canonical_family_landing(
             family, corpus, revision=revision,
-            current_alpha_version="v25", first_admitted_version="v25",
+            current_alpha_version="v27", first_admitted_version="v25",
             bundle_node_count=EXPECTED_BREAKTHROUGH_LAYER_BUNDLE_NODE_COUNT,
         )
         files[f"{prefix}/api/corpus.json"] = _json(corpus)
@@ -696,6 +713,7 @@ def build_files() -> dict[str, bytes]:
             )
         built.append((family, corpus))
     files["index.html"] = _top_index(built, revision=revision)
+    original._link_second_wave_completions(files, FAMILIES, revision=revision)
     files = {
         name: _trim_html_trailing_whitespace(payload) if name.endswith(".html") else payload
         for name, payload in files.items()
@@ -706,9 +724,10 @@ def build_files() -> dict[str, bytes]:
     ]
     manifest = {
         "schema": f"{SCHEMA}-manifest",
-        "alpha_edition_version": "v25",
+        "alpha_edition_version": "v27",
         "alpha_first_enrolled_version": "v25",
         "catalog_sha256": inputs["catalog_sha256"],
+        "first_enrollment_catalog_sha256": inputs["first_admission_catalog_sha256"],
         "html_revision": revision,
         "edition_identity_sha256": inputs["catalog"]["edition_identity_sha256"],
         "proof_bundle_sha256": inputs["bundle"]["artifact_sha256"],
@@ -721,14 +740,12 @@ def build_files() -> dict[str, bytes]:
             {
                 "slug": family.slug,
                 "campaign": family.campaign.value,
-                "alpha_edition_version": "v25",
+                "alpha_edition_version": "v27",
                 "alpha_first_enrolled_version": "v25",
                 "domain": family.domain,
                 "family": family.family_id,
                 "milestones": list(family.milestones),
-                "milestone_status": "open",
-                "milestone_checked_use": False,
-                "milestone_partial_checked_use": True,
+                **original._completed_milestone_metadata(family.milestones[-1]),
                 "theorem_count": corpus["node_count"],
                 "definition_count": corpus["definition_count"],
                 "root_tags": {name: corpus["tags"][name] for name in family.roots},

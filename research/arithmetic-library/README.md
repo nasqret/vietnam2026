@@ -3,6 +3,15 @@
 This directory is the planning and provenance source for Peano Lab's general
 arithmetic library. Start with:
 
+- [Alpha v27 second-wave receipt](alpha-v27-second-wave-receipt.md) and
+  [release specification](alpha-v27-second-wave-rfc-v1.md): **422 new
+  theorems**, closing the seven named second-wave targets T13, G011, G095,
+  G035, G027, G051, and G107; the exact 1,224-node self-contained bundle is
+  accepted by the original intuitionistic HA kernel and independent compiled
+  Lean verifier. Current local Alpha has 2,560 checked-use theorems; Stable
+  remains unchanged at 432. The [canonical second-wave proof maps](../../book/_static/constructive-second-wave-explorer/index.html)
+  expose exact proofs and conservative definitions. Broader roadmap bullets
+  are not automatically complete, and local generation is not deployment;
 - [`ha-number-theory-formalization-campaign-blueprint.md`](ha-number-theory-formalization-campaign-blueprint.md):
   the byte-frozen controlling blueprint for the strict-HA number-theory
   campaign;
@@ -13,13 +22,12 @@ arithmetic library. Start with:
 - [`Grand campaign machine-readable DAG`](../../book/_static/constructive-grand-campaign/campaign.json)
   and its [interactive proof-campaign atlas](../../book/_static/constructive-grand-campaign/index.html):
   five connected research domains, twelve mathematical families, 120 major
-  goals, 303 actual theorem/tool/anchor prerequisite edges, and 179 shared
-  mathematical terms; domain, family, goal, and definition drill-down links
-  directly to the completed proof explorers while distinguishing 165
-  definition-expansion edges, 311 lexical statement-notation occurrences,
-  and 84 explicitly typed notation links from genuine proof dependencies;
-  the shared registry independently audits 120 conservative definitions,
-  214 genuine definition prerequisites, and 88 signature-compatible links
+  goals and 290 shared mathematical terms; domain, family, goal, and
+  definition drill-down links directly to the completed proof explorers while
+  distinguishing definition-expansion edges, lexical statement-notation
+  occurrences, and explicitly typed notation links from genuine proof
+  dependencies. The shared registry independently audits 198 conservative
+  definitions, 388 genuine definition prerequisites, and 201 signature-compatible links
   while honestly identifying the open research frontier;
 - [`Completed quadratic-reciprocity closure receipt`](quadratic-reciprocity-closure-receipt.md)
   and its [complete canonical self-contained proof bundle](artifacts/quadratic-reciprocity-proof-bundle-v1.json):

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish checked Alpha-v21 families under current immutable Alpha-v25 authority.
+"""Publish checked Alpha-v21 families under current immutable Alpha-v27 authority.
 
 This is an evidence-reading static documentation generator, never a theorem
 provider.  The sealed Alpha-v21 catalog must authenticate a complete
@@ -10,8 +10,8 @@ replayed, imported as proof data or used to grant theorem authority.
 The exact and defined reading surfaces deliberately reuse the original
 quadratic-reciprocity explorer templates, stylesheets and JavaScript.
 The original G101/G102 campaigns were open at their Alpha-v21 first
-admission and are completely closed under current Alpha-v25 authority. T13
-remains honestly open for arbitrary-dimensional determinant and lattice data.
+admission and were closed in v23. T13 is separately closed by the v27
+integer-linear-algebra branch, not by these historical partial components.
 """
 
 from __future__ import annotations
@@ -56,7 +56,7 @@ from constructive_breakthrough_layer_definitions import (  # noqa: E402
 )
 from peano_lab.library import editions_v20 as v20  # noqa: E402
 from peano_lab.library import editions_v21 as v21  # noqa: E402
-from peano_lab.library import editions_v25 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v27 as current_alpha  # noqa: E402
 from peano_lab.library.alpha_enrollment_v21 import (  # noqa: E402
     EXPECTED_CAMPAIGN_COUNTS,
     FRONTIER_V21_EXPECTED_COUNT,
@@ -82,8 +82,8 @@ from peano_lab.library.campaign_breakthrough_layer_closure import (  # noqa: E40
 OUTPUT = REPO / "book" / "_static" / "constructive-advanced-layer-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v21.json"
 PARENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v20.json"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
-CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v25.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
+CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v27.json"
 CAMPAIGN = REPO / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
 GLOBAL_DEFINITIONS = CAMPAIGN.with_name("definitions.json")
 EXPECTED_ALPHA_COUNT = 1_830
@@ -94,7 +94,7 @@ EXPECTED_BUNDLE_PATH = (
 )
 SCHEMA = "peano-lab-constructive-advanced-layer-explorer-v1"
 STATUS = (
-    "Alpha v25 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable"
+    "Alpha v27 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable"
 )
 ASSET_SOURCES = original.ASSET_SOURCES
 PINNED_ASSETS = original.PINNED_ASSETS
@@ -162,9 +162,11 @@ FAMILIES = (
             "SignedMatrixProduct",
         ),
         caveat=(
-            "T13 remains OPEN: arbitrary natural and signed matrix multiplication and "
-            "signed two-/three-dimensional determinants are proved, but arbitrary-dimensional "
-            "determinants, rank and lattice foundations are not."
+            "Historical partial components only: this chapter proves arbitrary natural "
+            "and signed matrix multiplication and signed two-/three-dimensional "
+            "determinants. T13 is now closed in the separate Alpha-v27 "
+            "integer-linear-algebra branch with arbitrary determinant data, rank, "
+            "and integer column spans; lattice index and normal forms are outside that scope."
         ),
     ),
     Family(
@@ -400,21 +402,34 @@ def _load_inputs() -> dict[str, Any]:
     channels = json.loads(CURRENT_CHANNELS.read_text(encoding="utf-8"))
     current = channels.get("channels", {}).get("alpha", {})
     current_digest = _file_digest(CURRENT_CATALOG)
+    current_catalog = json.loads(CURRENT_CATALOG.read_bytes())
+    original._audit_current_parent(current_catalog, channels, error_type=AdvancedLayerExplorerError)
     if (
-        channels.get("schema") != "peano-library-channels-v25"
+        channels.get("schema") != "peano-library-channels-v27"
         or channels.get("default_channel") != "stable"
-        or channels.get("parent_channels_v24", {}).get("path")
-        != "artifacts/peano-library/channels-v24.json"
-        or current.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v25.json"
+        or channels.get("parent_channels_v26", {}).get("path")
+        != "artifacts/peano-library/channels-v26.json"
+        or channels.get("parent_channels_v26", {}).get("sha256")
+        != _file_digest(CURRENT_CHANNELS.with_name("channels-v26.json"))
+        or current.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v27.json"
         or current.get("artifact_sha256") != current_digest
-        or current.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V25_COUNT
+        or current.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
         or current.get("checked_use_count")
-        != current_alpha.EXPECTED_ALPHA_V25_CHECKED_USE_COUNT
+        != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
         or current.get("edition_identity_sha256")
-        != current_alpha.ALPHA_V25_IDENTITY_SHA256
+        != current_alpha.ALPHA_V27_IDENTITY_SHA256
         or current.get("ordered_enrollment_root_sha256")
-        != current_alpha.ALPHA_V25_ENROLLMENT_SHA256
+        != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
         or current.get("parent_alpha_v21_sha256") != _digest(raw_catalog)
+        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v27"
+        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or current_catalog.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        or current_catalog.get("stable_count") != EXPECTED_STABLE_COUNT
+        or current_catalog.get("edition_identity_sha256") != current_alpha.ALPHA_V27_IDENTITY_SHA256
+        or current_catalog.get("ordered_enrollment_root_sha256") != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        or not isinstance(current_catalog.get("theorems"), list)
+        or len(current_catalog["theorems"]) != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or current_catalog["theorems"][:EXPECTED_ALPHA_COUNT] != catalog.get("theorems")
         or tuple(current_alpha.ALPHA_ENTRIES[:EXPECTED_ALPHA_COUNT]) != v21.ALPHA_ENTRIES
         or any(
             newer is not historical
@@ -422,7 +437,7 @@ def _load_inputs() -> dict[str, Any]:
         )
     ):
         raise AdvancedLayerExplorerError(
-            "the current immutable Alpha-v25 release changed its exact Alpha-v21 parent"
+            "the current immutable Alpha-v27 release changed its exact Alpha-v21 first admission"
         )
 
     entries = catalog.get("theorems")
@@ -438,100 +453,50 @@ def _load_inputs() -> dict[str, Any]:
 
     campaign = json.loads(CAMPAIGN.read_text(encoding="utf-8"))
     graph = json.loads(GLOBAL_DEFINITIONS.read_text(encoding="utf-8"))
-    canonical = json.dumps(
-        campaign,
-        ensure_ascii=False,
-        allow_nan=False,
-        separators=(",", ":"),
-        sort_keys=True,
-    ).encode("utf-8")
-    if (
-        campaign.get("meta", {}).get("current_alpha_version") != "v25"
-        or campaign.get("meta", {}).get("current_alpha_checked_use_count")
-        != current_alpha.EXPECTED_ALPHA_V25_CHECKED_USE_COUNT
-        or graph.get("definition_count") != len(campaign.get("definitions", ()))
-        or graph.get("reviewed_definition_count")
-        != len(CURRENT_CONSTRUCTIVE_DEFINITIONS_BY_NAME)
-        or graph.get("campaign_snapshot_sha256") != _digest(canonical)
-    ):
-        raise AdvancedLayerExplorerError("the global Alpha-v25 atlas definition artifact is stale")
+    original._audit_current_atlas(campaign, graph, error_type=AdvancedLayerExplorerError)
     blueprint = campaign.get("definitions")
     if not isinstance(blueprint, dict):
         raise AdvancedLayerExplorerError("the global atlas has no named definition registry")
     goals = {item["id"]: item for item in campaign.get("nodes", ())}
+    original._audit_second_wave_milestone(
+        "T13", goals.get("T13"), current_catalog, error_type=AdvancedLayerExplorerError
+    )
     milestone_roots = {
-        "T13": ("signed_matrix_cofactor_family_and_fold_exists", "v25"),
         "G101": ("euclidean_gcd_execution_logarithmic_bound", "v23"),
         "G102": ("binary_modular_execution_logarithmic_bound", "v23"),
     }
     milestone_positions = {
         row.name: row.node_id for row in milestone_closure_plan().rows
     }
-    breakthrough_positions = {
-        row.name: row.node_id for row in breakthrough_layer_plan().rows
-    }
     for goal, (root, evidence_version) in milestone_roots.items():
         node = goals.get(goal)
         evidence = node.get("evidence") if isinstance(node, dict) else None
         current_theorem = current_alpha.entry(root, edition="alpha")
-        partial = goal == "T13"
         theorem_digest = (
             _digest(current_theorem.spec.statement) if current_theorem is not None else None
         )
-        expected_bundle_sha256 = (
-            EXPECTED_BREAKTHROUGH_LAYER_BUNDLE_SHA256
-            if partial
-            else EXPECTED_MILESTONE_CLOSURE_BUNDLE_SHA256
-        )
-        expected_bundle_node_count = (
-            EXPECTED_BREAKTHROUGH_LAYER_BUNDLE_NODE_COUNT
-            if partial
-            else EXPECTED_MILESTONE_CLOSURE_BUNDLE_NODE_COUNT
-        )
-        expected_node_id = (
-            breakthrough_positions.get(root)
-            if partial
-            else milestone_positions.get(root)
-        )
-        name_key = "partial_theorem_name" if partial else "theorem_name"
-        digest_key = (
-            "partial_theorem_statement_sha256" if partial else "theorem_statement_sha256"
-        )
         if (
             not isinstance(node, dict)
-            or node.get("status") != ("open" if partial else "alpha_closed")
+            or node.get("status") != "alpha_closed"
             or not isinstance(evidence, dict)
-            or evidence.get("implementation")
-            != ("independently_closed_partial" if partial else "independently_closed")
+            or evidence.get("implementation") != "independently_closed"
             or evidence.get("alpha_version") != evidence_version
-            or evidence.get("checked_use") is not (False if partial else True)
-            or (partial and evidence.get("partial_component_checked_use") is not True)
-            or (not partial and evidence.get("full_empty_context_closure") is not True)
+            or evidence.get("checked_use") is not True
+            or evidence.get("full_empty_context_closure") is not True
             or evidence.get("independent_lean_bundle_verified") is not True
-            or evidence.get(name_key) != root
+            or evidence.get("theorem_name") != root
             or current_theorem is None
-            or evidence.get(digest_key) != theorem_digest
-            or evidence.get("bundle_sha256") != expected_bundle_sha256
-            or evidence.get("bundle_nodes") != expected_bundle_node_count
-            or evidence.get("bundle_node_id") != expected_node_id
-            or (
-                not partial
-                and evidence.get("bundle_dependencies")
-                != EXPECTED_MILESTONE_CLOSURE_BUNDLE_EDGE_COUNT
-            )
+            or evidence.get("theorem_statement_sha256") != theorem_digest
+            or evidence.get("bundle_sha256") != EXPECTED_MILESTONE_CLOSURE_BUNDLE_SHA256
+            or evidence.get("bundle_nodes") != EXPECTED_MILESTONE_CLOSURE_BUNDLE_NODE_COUNT
+            or evidence.get("bundle_node_id") != milestone_positions.get(root)
+            or evidence.get("bundle_dependencies") != EXPECTED_MILESTONE_CLOSURE_BUNDLE_EDGE_COUNT
         ):
             raise AdvancedLayerExplorerError(
                 f"advanced milestone lacks its exact historical or independently closed evidence: {goal}"
             )
     if (
-        goals["T13"]["evidence"].get("full_arbitrary_signed_matrix_product_proved")
-        is not True
-        or goals["T13"]["evidence"].get("full_arbitrary_signed_minor_proved")
-        is not True
-        or goals["T13"]["evidence"].get("signed_four_by_four_determinant_proved")
-        is not True
-        or goals["T13"]["evidence"].get("full_arbitrary_determinant_proved") is not False
-        or goals["G101"]["evidence"].get("formal_logarithmic_bound_proved") is not True
+        goals["G101"]["evidence"].get("formal_logarithmic_bound_proved") is not True
         or goals["G101"]["evidence"].get("terminal_state_identified_with_gcd_proved")
         is not True
         or goals["G101"]["evidence"].get("formal_bit_length_proved") is not True
@@ -543,7 +508,7 @@ def _load_inputs() -> dict[str, Any]:
         or goals["G102"]["evidence"].get("formal_logarithmic_bound_proved") is not True
     ):
         raise AdvancedLayerExplorerError(
-            "a closed advanced milestone omitted its genuine formal endpoint, or open T13 was falsely closed"
+            "a closed advanced milestone omitted its genuine formal endpoint"
         )
 
     enrollment = alpha_v21_enrollment()
@@ -563,13 +528,14 @@ def _load_inputs() -> dict[str, Any]:
         current_row = current_alpha.entry(spec.name, edition="alpha")
         if current_row is None or current_row.spec != spec or not current_row.checked_use:
             raise AdvancedLayerExplorerError(
-                f"Alpha-v25 lost the exact historically proved Alpha-v21 theorem {spec.name!r}"
+                f"Alpha-v27 lost the exact historically proved Alpha-v21 theorem {spec.name!r}"
             )
     return {
         "catalog": catalog,
+        "current_catalog": current_catalog,
         "catalog_sha256": current_digest,
         "historical_catalog_sha256": _digest(raw_catalog),
-        "current_edition_identity_sha256": current_alpha.ALPHA_V25_IDENTITY_SHA256,
+        "current_edition_identity_sha256": current_alpha.ALPHA_V27_IDENTITY_SHA256,
         "revision": current_digest[:12],
         "bundle": bundle,
         "by_name": by_name,
@@ -586,10 +552,7 @@ def _definition_records(
 ) -> tuple[tuple[DefinitionSpec, ...], list[dict[str, Any]]]:
     specs = _definition_closure(family.definitions)
     by_name = {item.name: item for item in specs}
-    reviewed_links = {
-        row["reviewed_name"]: row
-        for row in inputs["global_graph"]["compatible_reviewed_matches"]
-    }
+    reviewed_links = original._preferred_reviewed_matches(inputs["global_graph"])
     global_reviewed = {
         row["name"]: row for row in inputs["global_graph"]["reviewed_definitions"]
     }
@@ -758,7 +721,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
             "enrolled_in_alpha": True,
             "alpha_evidence": "alpha_closed",
             "alpha_checked_use": True,
-            "alpha_edition_version": "v25",
+            "alpha_edition_version": "v27",
             "alpha_first_enrolled_version": "v21",
             "stable_member": False,
             "admitted_to_alpha": True,
@@ -848,6 +811,10 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
             "checked_use"
         ],
         "milestone_caveat": family.caveat,
+        **(
+            original._completed_milestone_metadata(family.milestones[-1])
+            if family.milestones[-1] in original.SECOND_WAVE_COMPLETIONS else {}
+        ),
         "root_names": list(family.roots),
         "nodes": nodes,
         "definitions": definitions,
@@ -866,7 +833,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
         "statement_definition_use_count": len(usage_edges),
         "formal_line_count": sum(len(node["script"]) for node in nodes),
         "candidate_status": STATUS,
-        "alpha_edition_version": "v25",
+        "alpha_edition_version": "v27",
         "alpha_first_enrolled_version": "v21",
         "alpha_edition_identity_sha256": inputs["current_edition_identity_sha256"],
         "alpha_catalog_sha256": inputs["catalog_sha256"],
@@ -889,13 +856,13 @@ def _graph_payload(
 ) -> dict[str, Any]:
     graph = original._graph_payload(family, corpus, revision=revision)
     graph["schema"] = f"{SCHEMA}-graph"
-    graph["alpha_edition_version"] = "v25"
+    graph["alpha_edition_version"] = "v27"
     graph["alpha_first_enrolled_version"] = "v21"
     graph["milestone_status"] = corpus["milestone_status"]
     graph["milestone_caveat"] = family.caveat
     for node in graph["nodes"]:
         if node["kind"] == "theorem":
-            node["alpha_edition_version"] = "v25"
+            node["alpha_edition_version"] = "v27"
             node["alpha_first_enrolled_version"] = "v21"
     return graph
 
@@ -911,25 +878,6 @@ def _retarget(document: bytes, family: Family, *, include_caveat: bool = False) 
     text = text.replace("590-node bundle", "209-node bundle")
     text = text.replace("all 590 exact bundle nodes", "all 209 exact bundle nodes")
     text = text.replace(" / 590</dd>", " / 209</dd>")
-    text = text.replace(
-        "The broader T13 milestone remains OPEN: these ten verified matrix and dot-product "
-        "components do not prove its full matrix-ring or Cayley–Hamilton target.",
-        family.caveat,
-    )
-    text = text.replace(
-        "T13 remains open: this proof is an independently checked "
-        "finite matrix/dot-product component, not a proof of the full matrix-ring or "
-        "Cayley–Hamilton milestone.",
-        family.caveat,
-    )
-    if family.domain == "D05" and include_caveat:
-        text = re.sub(
-            r"<p>The broader T13 milestone remains OPEN:.*?</p>",
-            f"<p>{_e(family.caveat)}</p>",
-            text,
-            count=1,
-            flags=re.DOTALL,
-        )
     if include_caveat and family.domain != "D05":
         marker = '<section class="pd-statement">'
         callout = f'<p class="pd-callout">{_e(family.caveat)}</p>'
@@ -956,13 +904,13 @@ def _top_index(
         for family, corpus in corpora
     )
     body = f"""<main class="proof-home proof-library-home"><header class="proof-hero">
- <p class="eyebrow">ALPHA v25 · HISTORICAL v21 CONSTRUCTIVE ADVANCED LAYER</p>
+ <p class="eyebrow">ALPHA v27 · HISTORICAL v21 CONSTRUCTIVE ADVANCED LAYER</p>
  <h1>Three independently checked constructive research campaigns</h1>
  <p>Fifty-four completed intuitionistic Heyting-arithmetic proofs independently accepted by both the original kernel and the compiled Lean verifier, exposed with their exact original scripts, genuine proof DAGs and shared hygienic conservative definitions.</p>
  <nav><a href="{_versioned('../', revision)}">Proof library</a>
  <a href="{_versioned('../grand-campaign/', revision)}">Full number-theory campaign atlas</a></nav>
  </header><section class="proof-grid">{entries}</section>
- <p>Every displayed theorem was independently first admitted in Alpha v21 and retains Alpha-v25 checked-use authority; Stable remains separate. G101 and G102 were fully closed in Alpha v23; arbitrary signed minors and exact four-dimensional determinants are proved in Alpha v25, while T13 remains open for arbitrary-dimensional determinants, rank, and lattice foundations.</p></main>"""
+ <p>Every displayed theorem was independently first admitted in Alpha v21 and retains Alpha-v27 checked-use authority; Stable remains separate. G101 and G102 were fully closed in Alpha v23. Historical T13 components retain their original scope; the separate Alpha-v27 integer-linear-algebra branch now closes its determinant/rank/integer-span substrate.</p></main>"""
     return original._document(
         FAMILIES[0],
         title="Constructive Advanced-Layer Proof Library",
@@ -993,7 +941,7 @@ def build_files() -> dict[str, bytes]:
             family,
             corpus,
             revision=revision,
-            current_alpha_version="v25",
+            current_alpha_version="v27",
             first_admitted_version="v21",
             bundle_node_count=EXPECTED_BUNDLE_NODE_COUNT,
         )
@@ -1048,6 +996,7 @@ def build_files() -> dict[str, bytes]:
             )
         built.append((family, corpus))
     files["index.html"] = _top_index(built, revision=revision)
+    original._link_second_wave_completions(files, FAMILIES, revision=revision)
     inventory = [
         {"path": name, "bytes": len(payload), "sha256": _digest(payload)}
         for name, payload in sorted(files.items())
@@ -1058,7 +1007,7 @@ def build_files() -> dict[str, bytes]:
         "first_enrollment_catalog_sha256": inputs["historical_catalog_sha256"],
         "html_revision": revision,
         "edition_identity_sha256": inputs["current_edition_identity_sha256"],
-        "alpha_edition_version": "v25",
+        "alpha_edition_version": "v27",
         "alpha_first_enrolled_version": "v21",
         "proof_bundle_sha256": inputs["bundle"]["artifact_sha256"],
         "proof_bundle_node_count": EXPECTED_BUNDLE_NODE_COUNT,
@@ -1074,6 +1023,10 @@ def build_files() -> dict[str, bytes]:
                 "family": family.family_id,
                 "milestones": list(family.milestones),
                 "milestone_status": corpus["milestone_status"],
+                **(
+                    original._completed_milestone_metadata(family.milestones[-1])
+                    if family.milestones[-1] in original.SECOND_WAVE_COMPLETIONS else {}
+                ),
                 "theorem_count": corpus["node_count"],
                 "definition_count": corpus["definition_count"],
                 "root_tags": {name: corpus["tags"][name] for name in family.roots},

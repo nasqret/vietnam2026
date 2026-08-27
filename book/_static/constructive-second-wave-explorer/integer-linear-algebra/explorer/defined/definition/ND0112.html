@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0112 — UniformBetaPrefixBox(c,T,l,B) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="integer-linear-algebra"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
+       <a href="../graph.html?v=481a9a378e54">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=UniformBetaPrefixBox&amp;v=481a9a378e54">Global definition: UniformBetaPrefixBox</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=481a9a378e54">T13 milestone</a></nav>
+  <p class="pd-tag">ND0112</p><h1>UniformBetaPrefixBox(c,T,l,B)</h1>
+  <p>One fixed scale c and positive finite code bound T recode every actual length-l prefix with values below B; completeness is part of the relation.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>¬T = 0 ∧ (∀ x. ∀ y. (∀ z. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=481a9a378e54">Lt(z,l)</a> → ∃ n. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=481a9a378e54">BetaAt(x,y,z,n)</a> ∧ <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=481a9a378e54">Lt(n,B)</a>) → ∃ z. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=481a9a378e54">Lt(z,T)</a> ∧ (∀ n. ∀ m. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=481a9a378e54">Lt(n,l)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=481a9a378e54">BetaAt(x,y,n,m)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=481a9a378e54">BetaAt(z,c,n,m)</a>))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((~(T = 0)) /\ (forall mdr_b_secondwave mdr_e_secondwave. (forall fom_index_mrf_secondwavesource. (exists fom_gap_mrf_secondwavesource_index_bound. fom_gap_mrf_secondwavesource_index_bound + S (fom_index_mrf_secondwavesource) = l) -&gt; exists fom_value_mrf_secondwavesource. ((((exists fom_beta_height_mrf_secondwavesource_entry. fom_beta_height_mrf_secondwavesource_entry + S (fom_value_mrf_secondwavesource) = S ((S (fom_index_mrf_secondwavesource)) * mdr_e_secondwave)) /\ exists fom_beta_quotient_mrf_secondwavesource_entry. mdr_b_secondwave = fom_beta_quotient_mrf_secondwavesource_entry * S ((S (fom_index_mrf_secondwavesource)) * mdr_e_secondwave) + (fom_value_mrf_secondwavesource))) /\ (exists fom_gap_mrf_secondwavesource_value_bound. fom_gap_mrf_secondwavesource_value_bound + S (fom_value_mrf_secondwavesource) = B))) -&gt; exists mdr_z_secondwave. (((exists mdr_gap_secondwavebound. mdr_gap_secondwavebound + S (mdr_z_secondwave) = (T)) /\ (forall mdr_i_secondwaveprefix mdr_a_secondwaveprefix. (exists mdr_gap_secondwaveprefixb. mdr_gap_secondwaveprefixb + S (mdr_i_secondwaveprefix) = (l)) -&gt; (((exists ff_h_mdr_secondwaveprefixo. ff_h_mdr_secondwaveprefixo + S (mdr_a_secondwaveprefix) = S ((S (mdr_i_secondwaveprefix)) * mdr_e_secondwave)) /\ exists ff_q_mdr_secondwaveprefixo. mdr_b_secondwave = ff_q_mdr_secondwaveprefixo * S ((S (mdr_i_secondwaveprefix)) * mdr_e_secondwave) + (mdr_a_secondwaveprefix))) -&gt; (((exists ff_h_mdr_secondwaveprefixn. ff_h_mdr_secondwaveprefixn + S (mdr_a_secondwaveprefix) = S ((S (mdr_i_secondwaveprefix)) * c)) /\ exists ff_q_mdr_secondwaveprefixn. mdr_z_secondwave = ff_q_mdr_secondwaveprefixn * S ((S (mdr_i_secondwaveprefix)) * c) + (mdr_a_secondwaveprefix))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0013.html?v=481a9a378e54">BetaAt(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=481a9a378e54">Lt(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DL0032.html?v=481a9a378e54">DL0032 · matrix_rank_uniform_beta_prefix_box_exists</a><a class="pd-chip" href="../tag/DL0057.html?v=481a9a378e54">DL0057 · matrix_rank_nonzero_minor_recode_in_box</a><a class="pd-chip" href="../tag/DL0059.html?v=481a9a378e54">DL0059 · matrix_rank_nonzero_minor_decidable</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0112.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>1ba61efb69895e675f9c7915f6bf093858f2b7887494a5a3457005dd2c215d43</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v27-second-wave-/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

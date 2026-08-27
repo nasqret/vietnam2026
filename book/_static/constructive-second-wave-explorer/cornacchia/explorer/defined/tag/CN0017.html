@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CN0017 — cornacchia_invariant_stop_correct — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="cornacchia"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
+       <a href="../../tag/CN0017.html?v=481a9a378e54">Exact original proof</a>
+       <a href="../graph.html?target=CN0017&amp;v=481a9a378e54">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G107" href="../../../../grand-campaign/?view=goal&amp;focus=G107&amp;v=481a9a378e54">G107 milestone</a></nav>
+  <p class="pd-tag">CN0017</p><h1>cornacchia_invariant_stop_correct</h1>
+  <p>A halted state of the rooted Cornacchia invariant is an exact two-square representation, not just a divisible norm.</p><p class="pd-status">Alpha v27 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">The output equation is proved from the real first-stop execution; it is not a trace-definition assumption. This is the prime sum-of-two-squares Cornacchia theorem, not a general x²+d y² solver.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ p. ∀ z. ∀ a. ∀ r. ∀ u. ∀ t. <a class="pd-definition-ref" data-definition="ND0099" href="../definition/ND0099.html?v=481a9a378e54">CornacchiaStateInvariant(p,z,a,r,u,t)</a> → <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=481a9a378e54">Lt(r · r,p)</a> → p = r · r + t · t</code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0099.html?v=481a9a378e54">CornacchiaStateInvariant(p,z,a,r,u,t) · 1</a><a class="pd-chip" href="../definition/PD0002.html?v=481a9a378e54">Lt(a,b) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip" href="CN0010.html?v=481a9a378e54">cornacchia_stopping_state_represents_prime</a></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall p z a r u t. ((((((~(p = 1) /\ forall frm_prime_left_cor_stop_invariant_root_prime frm_prime_right_cor_stop_invariant_root_prime. p = frm_prime_left_cor_stop_invariant_root_prime * frm_prime_right_cor_stop_invariant_root_prime -&gt; frm_prime_left_cor_stop_invariant_root_prime = 1 \/ frm_prime_right_cor_stop_invariant_root_prime = 1)) /\ (((~(z = 0)) /\ (((exists cor_gap_stop_invariant_root_bound. cor_gap_stop_invariant_root_bound + S (z) = (p)) /\ (exists cor_factor_stop_invariant_root. z * z + 1 = p * cor_factor_stop_invariant_root))))))) /\ (((~(r = 0)) /\ (((exists cor_gap_stop_invariant_order. cor_gap_stop_invariant_order + S (r) = (a)) /\ (((~(t = 0)) /\ (((exists cor_gap_stop_invariant_previous. cor_gap_stop_invariant_previous + S (p) = (a * a)) /\ (((p = a * t + r * u) /\ (((forall frp_divisor_cor_stop_invariant_coprime. (exists frp_left_factor_cor_stop_invariant_coprime. a = frp_divisor_cor_stop_invariant_coprime * frp_left_factor_cor_stop_invariant_coprime) -&gt; (exists frp_right_factor_cor_stop_invariant_coprime. r = frp_divisor_cor_stop_invariant_coprime * frp_right_factor_cor_stop_invariant_coprime) -&gt; frp_divisor_cor_stop_invariant_coprime = 1) /\ ((((exists hgcrt_mod_left_cor_stop_invariant_alternating_ap hgcrt_mod_right_cor_stop_invariant_alternating_ap. a + p * hgcrt_mod_left_cor_stop_invariant_alternating_ap = (z * u) + p * hgcrt_mod_right_cor_stop_invariant_alternating_ap) /\ (exists hgcrt_mod_left_cor_stop_invariant_alternating_rn hgcrt_mod_right_cor_stop_invariant_alternating_rn. (r + z * t) + p * hgcrt_mod_left_cor_stop_invariant_alternating_rn = 0 + p * hgcrt_mod_right_cor_stop_invariant_alternating_rn)) \/ ((exists hgcrt_mod_left_cor_stop_invariant_alternating_an hgcrt_mod_right_cor_stop_invariant_alternating_an. (a + z * u) + p * hgcrt_mod_left_cor_stop_invariant_alternating_an = 0 + p * hgcrt_mod_right_cor_stop_invariant_alternating_an) /\ (exists hgcrt_mod_left_cor_stop_invariant_alternating_rp hgcrt_mod_right_cor_stop_invariant_alternating_rp. r + p * hgcrt_mod_left_cor_stop_invariant_alternating_rp = (z * t) + p * hgcrt_mod_right_cor_stop_invariant_alternating_rp)))))))))))))))))) -&gt; (exists cor_gap_stop_guard. cor_gap_stop_guard + S (r * r) = (p)) -&gt; p = r * r + t * t</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 32 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro p</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro z</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro a</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro r</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>intro u</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>intro t</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>intro hi</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>intro hs</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>cases hi</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>cases hi_right</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>cases hi_right_right</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>cases hi_right_right_right</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>cases hi_right_right_right_right</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>cases hi_right_right_right_right_right</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>cases hi_right_right_right_right_right_right</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>specialize <a class="pd-theorem-ref" href="CN0010.html?v=481a9a378e54">cornacchia_stopping_state_represents_prime</a> p</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>specialize <a class="pd-theorem-ref" href="CN0010.html?v=481a9a378e54">cornacchia_stopping_state_represents_prime</a> z</code></li><li class="pd-proof-line" id="L18" data-line="18"><a class="pd-line-number" href="#L18">0018</a><code>specialize <a class="pd-theorem-ref" href="CN0010.html?v=481a9a378e54">cornacchia_stopping_state_represents_prime</a> a</code></li><li class="pd-proof-line" id="L19" data-line="19"><a class="pd-line-number" href="#L19">0019</a><code>specialize <a class="pd-theorem-ref" href="CN0010.html?v=481a9a378e54">cornacchia_stopping_state_represents_prime</a> r</code></li><li class="pd-proof-line" id="L20" data-line="20"><a class="pd-line-number" href="#L20">0020</a><code>specialize <a class="pd-theorem-ref" href="CN0010.html?v=481a9a378e54">cornacchia_stopping_state_represents_prime</a> u</code></li><li class="pd-proof-line" id="L21" data-line="21"><a class="pd-line-number" href="#L21">0021</a><code>specialize <a class="pd-theorem-ref" href="CN0010.html?v=481a9a378e54">cornacchia_stopping_state_represents_prime</a> t</code></li><li class="pd-proof-line" id="L22" data-line="22"><a class="pd-line-number" href="#L22">0022</a><code>apply <a class="pd-theorem-ref" href="CN0010.html?v=481a9a378e54">cornacchia_stopping_state_represents_prime</a></code></li><li class="pd-proof-line" id="L23" data-line="23"><a class="pd-line-number" href="#L23">0023</a><code>cases hi_left</code></li><li class="pd-proof-line" id="L24" data-line="24"><a class="pd-line-number" href="#L24">0024</a><code>cases hi_left_right</code></li><li class="pd-proof-line" id="L25" data-line="25"><a class="pd-line-number" href="#L25">0025</a><code>cases hi_left_right_right</code></li><li class="pd-proof-line" id="L26" data-line="26"><a class="pd-line-number" href="#L26">0026</a><code>exact hi_left_right_right_right</code></li><li class="pd-proof-line" id="L27" data-line="27"><a class="pd-line-number" href="#L27">0027</a><code>exact hi_right_right_right_right_right_right_right</code></li><li class="pd-proof-line" id="L28" data-line="28"><a class="pd-line-number" href="#L28">0028</a><code>exact hi_right_right_right_right_right_left</code></li><li class="pd-proof-line" id="L29" data-line="29"><a class="pd-line-number" href="#L29">0029</a><code>exact hi_right_right_right_right_left</code></li><li class="pd-proof-line" id="L30" data-line="30"><a class="pd-line-number" href="#L30">0030</a><code>exact hi_right_left</code></li><li class="pd-proof-line" id="L31" data-line="31"><a class="pd-line-number" href="#L31">0031</a><code>exact hi_right_right_right_left</code></li><li class="pd-proof-line" id="L32" data-line="32"><a class="pd-line-number" href="#L32">0032</a><code>exact hs</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v27 checked use</dd><dt>First admission</dt><dd>Alpha v27</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>1143 / 1224</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 1224 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>128 / 69</dd>
+      <dt>Statement SHA-256</dt><dd><code>20e9bd7cc9323eb533c1d6264157891a9477154e89e131c187ca10f8ed6a126b</code></dd>
+      <dt>Script SHA-256</dt><dd><code>2824a2c17a7c98a2dd0e51887e118485a3c637fd7b6163a0e3ccfaa2072df1a2</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.cornacchia_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v27-second-wave-/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

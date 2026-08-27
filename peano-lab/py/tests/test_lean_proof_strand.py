@@ -16,7 +16,10 @@ from peano_lab.library import (
     editions_v23,
     editions_v24,
     editions_v25,
+    editions_v26,
+    editions_v27,
 )
+from peano_lab.library.alpha_enrollment_v27 import ROOT_STATEMENT_SHA256
 from peano_lab.library.defined_syntax import DEFINITIONS_BY_NAME
 from peano_lab.library.lean_presentation import _NOTATION_CODE
 from peano_lab.library.lean_proof_reconstruction import LeanProofReconstruction
@@ -72,12 +75,14 @@ def test_planning_never_replays_stable_or_alpha_theorems(monkeypatch) -> None:
     monkeypatch.setattr(editions_v23, "replay", forbidden)
     monkeypatch.setattr(editions_v24, "replay", forbidden)
     monkeypatch.setattr(editions_v25, "replay", forbidden)
+    monkeypatch.setattr(editions_v26, "replay", forbidden)
+    monkeypatch.setattr(editions_v27, "replay", forbidden)
     assert plan_proof_strand("add_comm").node_count == 3
     alpha = plan_proof_strand(
         "distinct_primes_left_not_divide_right",
         edition="alpha",
     )
-    assert alpha.edition_version == "v25"
+    assert alpha.edition_version == "v27"
     assert alpha.root_node.evidence == "alpha_closed"
 
 
@@ -159,7 +164,7 @@ def test_historically_body_only_theorem_is_now_checked_in_current_alpha() -> Non
     name = editions_v19.RESIDUAL_PROMOTED_NAMES[0]
     assert not editions_v18.ALPHA_EDITION.by_name[name].checked_use
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v25"
+    assert plan.edition_version == "v27"
     assert plan.root_node.evidence == "alpha_closed"
     assert plan.root_node.name == name
 
@@ -181,7 +186,7 @@ def test_new_v19_frontier_theorem_has_metadata_only_checked_strand(
     )
     assert name not in editions_v18.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v25"
+    assert plan.edition_version == "v27"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -197,11 +202,15 @@ def test_new_v20_frontier_theorem_has_metadata_only_checked_strand(monkeypatch) 
     monkeypatch.setattr(editions_v24, "replay", forbidden)
     monkeypatch.setattr(editions_v24, "checked_research_layer_bundle", forbidden)
     monkeypatch.setattr(editions_v25, "replay", forbidden)
+    monkeypatch.setattr(editions_v26, "replay", forbidden)
     monkeypatch.setattr(editions_v25, "checked_breakthrough_layer_bundle", forbidden)
+    monkeypatch.setattr(editions_v26, "checked_first_wave_bundle", forbidden)
+    monkeypatch.setattr(editions_v27, "replay", forbidden)
+    monkeypatch.setattr(editions_v27, "checked_second_wave_bundle", forbidden)
     name = "signed_matrix_two_determinant_exists"
     assert name not in editions_v19.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v25"
+    assert plan.edition_version == "v27"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -227,25 +236,49 @@ def test_new_v20_frontier_theorem_has_metadata_only_checked_strand(monkeypatch) 
         "beta_horner_hensel_lift_exists",
         "crt_merge_compatible_prefix_canonical_exists_unique",
         "crt_pairwise_compatible_dominating_last_canonical_exists_unique",
+        "coprime_square_product_factors",
+        "square_divides_square_root",
+        "pythagorean_positive_primitive_classification",
+        "fermat_four_complete_classification",
+        "fermat_four_positive_sum_not_square",
+        *ROOT_STATEMENT_SHA256,
     ),
 )
-def test_v25_and_historical_frontier_theorems_have_metadata_only_checked_strands(
+def test_v27_and_historical_frontier_theorems_have_metadata_only_checked_strands(
     monkeypatch, name: str
 ) -> None:
     def forbidden(*args, **kwargs):
-        raise AssertionError("new Alpha-v25 proof planning must never load proof artifacts")
+        raise AssertionError("new Alpha-v27 proof planning must never load proof artifacts")
 
     monkeypatch.setattr(editions_v23, "replay", forbidden)
     monkeypatch.setattr(editions_v23, "checked_milestone_closure_bundle", forbidden)
     monkeypatch.setattr(editions_v24, "replay", forbidden)
     monkeypatch.setattr(editions_v24, "checked_research_layer_bundle", forbidden)
     monkeypatch.setattr(editions_v25, "replay", forbidden)
+    monkeypatch.setattr(editions_v26, "replay", forbidden)
     monkeypatch.setattr(editions_v25, "checked_breakthrough_layer_bundle", forbidden)
+    monkeypatch.setattr(editions_v26, "checked_first_wave_bundle", forbidden)
+    monkeypatch.setattr(editions_v27, "replay", forbidden)
+    monkeypatch.setattr(editions_v27, "checked_second_wave_bundle", forbidden)
     assert name not in editions_v20.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v25"
+    assert plan.edition_version == "v27"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
+
+
+def test_unsealed_alpha_cannot_authorize_a_strand_and_does_not_block_stable(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    from peano_lab.library import lean_proof_strand
+
+    monkeypatch.setattr(editions_v27, "EXPECTED_ALPHA_V27_COUNT", 0)
+    with pytest.raises(ProofStrandError, match="not sealed for checked use"):
+        lean_proof_strand._edition_view("alpha")
+    stable, version = lean_proof_strand._edition_view("stable")
+    assert stable is editions_v26.STABLE_EDITION
+    assert len(stable.entries) == 432
+    assert version == "stable"
 
 
 def test_node_budget_stops_before_provenance_or_proof_loading(monkeypatch) -> None:
@@ -374,6 +407,31 @@ def test_preview_keeps_complete_authority_footer_when_truncated(
     assert len(preview.encode("utf-8")) <= 320
     assert preview.endswith("Compile the complete proof-strand package.")
     assert "Lean verification: NOT RUN" in preview
+
+
+def test_oversized_statement_cannot_hide_preview_edition_or_source_identity(
+    addition_plan: ProofStrandPlan,
+) -> None:
+    root = addition_plan.root_node
+    oversized_root = replace(root, readable_statement="∀" * 40_000)
+    oversized_plan = replace(
+        addition_plan,
+        nodes=tuple(oversized_root if node.name == root.name else node for node in addition_plan.nodes),
+    )
+
+    preview = preview_proof_strand(oversized_plan)
+
+    assert preview.startswith("theorem «add_comm» : ∀")
+    assert "theorem statement abbreviated" in preview
+    assert "-- Edition: stable" in preview
+    assert "-- Checked-use evidence: stable_closed; membership: stable" in preview
+    assert root.source_sha256 in preview
+    assert root.specification_sha256 in preview
+    assert "Proof-body replay: NOT RUN" in preview
+    assert "Lean verification: NOT RUN" in preview
+    assert len(preview.encode("utf-8")) <= 15_360
+    assert oversized_plan.root_node.readable_statement == "∀" * 40_000
+    assert addition_plan.root_node is root
 
 
 def test_preview_rejects_counterfeit_plan() -> None:

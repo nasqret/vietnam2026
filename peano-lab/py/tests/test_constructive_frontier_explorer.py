@@ -38,6 +38,8 @@ from peano_lab.library import editions_v19 as v19  # noqa: E402
 from peano_lab.library import editions_v20 as v20  # noqa: E402
 from peano_lab.library import editions_v23 as v23  # noqa: E402
 from peano_lab.library import editions_v25 as v25  # noqa: E402
+from peano_lab.library import editions_v26 as v26  # noqa: E402
+from peano_lab.library import editions_v27 as current_alpha  # noqa: E402
 from peano_lab.library.alpha_enrollment_v19 import alpha_v19_enrollment  # noqa: E402
 from peano_lab.library import four_square_frontier_promotion as four_square_closure  # noqa: E402
 from peano_lab.library import lucas_mixed_promotion as lucas_closure  # noqa: E402
@@ -51,16 +53,16 @@ EXPECTED_FAMILIES = (
     "lucas",
     "pythagorean-fermat-four",
 )
-EXPECTED_ALPHA_V19_ENROLLMENT_BY_FAMILY = {
+EXPECTED_CURRENT_ENROLLMENT_BY_FAMILY = {
     "supplementary-laws": 28,
     "kummer": 13,
     "two-squares": 114,
     "four-squares": 178,
     "lucas": 44,
-    "pythagorean-fermat-four": 44,
+    "pythagorean-fermat-four": 102,
 }
-EXPECTED_ALPHA_V19_CHECKED_USE_BY_FAMILY = dict(
-    EXPECTED_ALPHA_V19_ENROLLMENT_BY_FAMILY
+EXPECTED_CURRENT_CHECKED_USE_BY_FAMILY = dict(
+    EXPECTED_CURRENT_ENROLLMENT_BY_FAMILY
 )
 EXPECTED_CAMPAIGN_TARGETS = {
     "supplementary-laws": ("F05", "G044"),
@@ -68,7 +70,7 @@ EXPECTED_CAMPAIGN_TARGETS = {
     "two-squares": ("F07", "G062"),
     "four-squares": ("F07", "G064"),
     "lucas": ("F04", "G033"),
-    "pythagorean-fermat-four": ("F08", "A08"),
+    "pythagorean-fermat-four": ("F08", "G078"),
 }
 REQUIRED_ROOTS = {
     "supplementary-laws": {
@@ -203,6 +205,17 @@ REQUIRED_ROOTS = {
         "fermat_four_bounded_descent",
         "fermat_four_no_square_from_descent",
         "fermat_four_no_fourth_from_descent",
+        "coprime_square_product_factors",
+        "square_divides_square_root",
+        "pythagorean_primitive_odd_even_inverse",
+        "pythagorean_positive_primitive_inverse",
+        "pythagorean_positive_primitive_classification",
+        "fermat_four_primitive_normalization",
+        "fermat_four_strict_descent_proved",
+        "fermat_four_no_square",
+        "fermat_four_no_fourth",
+        "fermat_four_complete_classification",
+        "fermat_four_positive_sum_not_square",
     },
 }
 
@@ -324,13 +337,18 @@ def test_frontier_global_definition_links_require_compatible_signatures() -> Non
     )
     audited = generator.build_definition_graph(blueprint)
 
-    assert len(matches) == audited["compatible_reviewed_match_count"]
+    assert audited["compatible_reviewed_match_count"] == len(audited["compatible_reviewed_matches"])
+    assert len(matches) == len({row["reviewed_name"] for row in audited["compatible_reviewed_matches"]})
     assert set(matches) == {
         row["reviewed_name"] for row in audited["compatible_reviewed_matches"]
     }
     assert matches["Sum"]["blueprint_name"] == "BetaSum"
     assert matches["Sum"]["reviewed_argument_blueprint_positions"] == [0, 1, 2, 3]
-    assert "Product" not in matches
+    # The new four-argument canonical definition is compatible; the old
+    # three-argument planning abbreviation is still not that relation.
+    assert matches["Product"]["blueprint_name"] == "Product"
+    assert matches["Product"]["reviewed_argument_blueprint_positions"] == [0, 1, 2, 3]
+    assert not any(row["blueprint_name"] == "Prod" for row in audited["compatible_reviewed_matches"])
     assert matches["BetaAt"]["blueprint_name"] == "Beta"
     assert matches["Choose"]["blueprint_name"] == "Binom"
     assert matches["Factorial"]["blueprint_name"] == "Fact"
@@ -396,19 +414,25 @@ def test_frontier_inventory_is_deterministic_complete_and_evidence_honest(
     assert manifest["family_count"] == 6
     assert tuple(row["slug"] for row in manifest["families"]) == EXPECTED_FAMILIES
     assert manifest["candidate_status"] == generator.CANDIDATE_STATUS
-    assert manifest["alpha_edition_version"] == "v25"
+    assert manifest["alpha_edition_version"] == "v27"
     assert manifest["alpha_edition_identity_sha256"] == (
-        v25.ALPHA_V25_IDENTITY_SHA256
+        current_alpha.ALPHA_V27_IDENTITY_SHA256
     )
-    assert manifest["alpha_edition_checked_use_count"] == 2080
+    assert manifest["alpha_edition_checked_use_count"] == current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
     assert manifest["alpha_catalog_sha256"] == generator.EXPECTED_CURRENT_ALPHA_CATALOG_SHA256
-    assert manifest["parent_alpha_edition_version"] == "v20"
+    assert manifest["parent_alpha_edition_version"] == "v26"
     assert manifest["parent_alpha_edition_identity_sha256"] == (
-        v20.ALPHA_V20_IDENTITY_SHA256
+        v26.ALPHA_V26_IDENTITY_SHA256
     )
-    assert manifest["parent_alpha_edition_checked_use_count"] == 1776
+    assert manifest["parent_alpha_edition_checked_use_count"] == 2138
     assert manifest["parent_alpha_catalog_sha256"] == (
-        "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+        "969c261f924060552dda393427b4fbc51515b9d4e69daa17f5e9f1691b5ab534"
+    )
+    assert manifest["previous_parent_alpha_edition_version"] == "v25"
+    assert manifest["previous_parent_alpha_edition_identity_sha256"] == v25.ALPHA_V25_IDENTITY_SHA256
+    assert manifest["previous_parent_alpha_edition_checked_use_count"] == 2080
+    assert manifest["previous_parent_alpha_catalog_sha256"] == (
+        "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
     )
     assert manifest["historical_alpha_edition_version"] == "v19"
     assert manifest["historical_alpha_edition_identity_sha256"] == (
@@ -418,8 +442,8 @@ def test_frontier_inventory_is_deterministic_complete_and_evidence_honest(
     assert manifest["historical_alpha_catalog_sha256"] == (
         "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b"
     )
-    assert manifest["alpha_enrolled_node_count"] == 421
-    assert manifest["alpha_checked_use_node_count"] == 421
+    assert manifest["alpha_enrolled_node_count"] == 479
+    assert manifest["alpha_checked_use_node_count"] == 479
     assert manifest["experimental_closure_status"] == (
         generator.EXPERIMENTAL_CLOSURE_STATUS
     )
@@ -446,7 +470,7 @@ def test_navigation_revision_follows_alpha_catalog_not_immutable_asset_bytes(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
     files, _manifest = generated
-    catalog = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
+    catalog = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
     historical = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v19.json"
     alpha_revision = sha256(catalog.read_bytes()).hexdigest()[:12]
     canonical_script_revision = sha256(
@@ -455,7 +479,7 @@ def test_navigation_revision_follows_alpha_catalog_not_immutable_asset_bytes(
     page = files["two-squares/explorer/defined/index.html"].decode()
 
     assert generator.CANONICAL_HTML_REVISION == alpha_revision
-    assert alpha_revision == "75fa146ac19b"
+    assert alpha_revision == generator.EXPECTED_CURRENT_ALPHA_CATALOG_SHA256[:12]
     assert sha256(historical.read_bytes()).hexdigest() == (
         generator.EXPECTED_HISTORICAL_ALPHA_CATALOG_SHA256
     )
@@ -482,11 +506,11 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
 
     assert corpus["slug"] == slug
     assert corpus["candidate_status"] == generator.CANDIDATE_STATUS
-    assert corpus["alpha_edition_version"] == "v25"
+    assert corpus["alpha_edition_version"] == "v27"
     assert corpus["alpha_edition_identity_sha256"] == (
-        v25.ALPHA_V25_IDENTITY_SHA256
+        current_alpha.ALPHA_V27_IDENTITY_SHA256
     )
-    assert corpus["alpha_edition_checked_use_count"] == 2080
+    assert corpus["alpha_edition_checked_use_count"] == current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
     assert corpus["historical_alpha_edition_version"] == "v19"
     assert corpus["historical_alpha_edition_identity_sha256"] == (
         v19.ALPHA_V19_IDENTITY_SHA256
@@ -499,10 +523,10 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
         corpus["campaign_family_id"], corpus["campaign_goal_id"]
     ) == EXPECTED_CAMPAIGN_TARGETS[slug]
     assert corpus["alpha_enrolled_node_count"] == (
-        EXPECTED_ALPHA_V19_ENROLLMENT_BY_FAMILY[slug]
+        EXPECTED_CURRENT_ENROLLMENT_BY_FAMILY[slug]
     )
     assert corpus["alpha_checked_use_node_count"] == (
-        EXPECTED_ALPHA_V19_CHECKED_USE_BY_FAMILY[slug]
+        EXPECTED_CURRENT_CHECKED_USE_BY_FAMILY[slug]
     )
     assert corpus["experimental_closure_status"] == (
         generator.EXPERIMENTAL_CLOSURE_STATUS
@@ -542,7 +566,7 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
 
     for node in nodes:
         assert node["statement_sha256"] == sha256(node["statement"].encode()).hexdigest()
-        alpha_entry = v25.ALPHA_EDITION.by_name.get(node["name"])
+        alpha_entry = current_alpha.ALPHA_EDITION.by_name.get(node["name"])
         assert node["enrolled_in_alpha"] is (alpha_entry is not None)
         assert node["alpha_checked_use"] is (
             alpha_entry.checked_use if alpha_entry is not None else False
@@ -561,12 +585,12 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
                 else generator.ALPHA_BODY_STATUS
             )
             assert node["alpha_evidence"] == alpha_entry.evidence.value
-            assert node["alpha_edition_version"] == "v25"
+            assert node["alpha_edition_version"] == "v27"
             assert node["alpha_admission_version"] in {
-                "v13", "v14", "v15", "v19", "v23"
+                "v13", "v14", "v15", "v19", "v23", "v26"
             }
             assert node["alpha_edition_identity_sha256"] == (
-                v25.ALPHA_V25_IDENTITY_SHA256
+                current_alpha.ALPHA_V27_IDENTITY_SHA256
             )
             assert node["alpha_campaign"] in {
                 "four_square",
@@ -577,6 +601,9 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
                 "pythagorean",
                 "prime_two_square",
                 "primes_three_mod_four",
+                "coprime_square_factor",
+                "pythagorean_inverse",
+                "fermat_four_descent",
             }
             assert alpha_entry.spec.statement == node["statement"]
             assert tuple(alpha_entry.spec.dependencies) == tuple(node["dependencies"])
@@ -612,7 +639,7 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
 
     for edge in corpus["edges"]:
         assert edge["target"] in names
-        alpha_entry = v25.ALPHA_EDITION.by_name.get(edge["source"])
+        alpha_entry = current_alpha.ALPHA_EDITION.by_name.get(edge["source"])
         assert edge["enrolled_in_alpha"] is (alpha_entry is not None)
         assert edge["alpha_checked_use"] is (
             alpha_entry.checked_use if alpha_entry is not None else False
@@ -673,7 +700,7 @@ def test_each_family_exposes_exact_candidate_bodies_and_dependency_types(
     ]
 
 
-def test_frontier_exactly_displays_historical_v19_and_v23_alpha_appends(
+def test_frontier_exactly_displays_historical_appends_and_new_v26_first_wave(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
     files, manifest = generated
@@ -695,16 +722,17 @@ def test_frontier_exactly_displays_historical_v19_and_v23_alpha_appends(
             in {"pythagorean", "prime_two_square"}
         }
         | generator.EXPECTED_ALPHA_V23_TWO_SQUARE_NAMES
+        | set(v26.FRONTIER_NEW_NAMES)
     )
-    assert len(enrolled) == manifest["alpha_enrolled_node_count"] == 421
+    assert len(enrolled) == manifest["alpha_enrolled_node_count"] == 479
     assert {
         row["slug"]: row["alpha_enrolled_node_count"]
         for row in manifest["families"]
-    } == EXPECTED_ALPHA_V19_ENROLLMENT_BY_FAMILY
+    } == EXPECTED_CURRENT_ENROLLMENT_BY_FAMILY
     assert {
         row["slug"]: row["alpha_checked_use_node_count"]
         for row in manifest["families"]
-    } == EXPECTED_ALPHA_V19_CHECKED_USE_BY_FAMILY
+    } == EXPECTED_CURRENT_CHECKED_USE_BY_FAMILY
 
 
 def test_independent_experimental_progress_uses_only_checked_named_microbatches(
@@ -842,7 +870,7 @@ def test_experimental_overlay_distinguishes_history_from_current_release_evidenc
     for dependency in four["external_dependencies"]:
         if dependency["name"] not in checked_parents:
             continue
-        current = v25.ALPHA_EDITION.by_name[dependency["name"]]
+        current = current_alpha.ALPHA_EDITION.by_name[dependency["name"]]
         historical = v15.ALPHA_EDITION.by_name[dependency["name"]]
         assert historical.evidence is v15.EvidenceStatus.BODY_CHECKED
         assert dependency["alpha_evidence"] == current.evidence.value
@@ -963,9 +991,21 @@ def test_defined_statements_and_local_propositions_have_exact_ast_receipts(
             ).hexdigest()
             assert receipt["expanded_characters"] == len(node["statement"])
             assert receipt["defined_characters"] == len(defined["defined_statement"])
-            assert parse_bertrand_defined_formula_in_context(
-                defined["defined_statement"], receipt["free_names"]
-            ) == parse_formula_in_context(node["statement"], receipt["free_names"])
+            if slug == "pythagorean-fermat-four":
+                from build_constructive_next_layer_explorer import _LocalDefinedParser
+                registry = {
+                    definition.name: definition
+                    for definition in generator.first_wave_defined_adapter.DEFINITIONS
+                }
+                parser = _LocalDefinedParser(defined["defined_statement"], registry)
+                parser.free = list(receipt["free_names"])
+                expanded = parser.parse()
+                assert parser.free == receipt["free_names"]
+            else:
+                expanded = parse_bertrand_defined_formula_in_context(
+                    defined["defined_statement"], receipt["free_names"]
+                )
+            assert expanded == parse_formula_in_context(node["statement"], receipt["free_names"])
 
         script_uses: Counter[str] = Counter()
         for line in defined["defined_script_lines"]:
@@ -1627,7 +1667,7 @@ def test_definition_dag_is_complete_ordered_and_bidirectionally_navigable(
             assert 'data-campaign-link="definition"' not in page
 
 
-def test_pythagorean_custom_definition_dag_preserves_honest_descent_boundary(
+def test_pythagorean_definition_dag_preserves_historical_ids_and_actual_descent(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
     files, _manifest = generated
@@ -1646,10 +1686,15 @@ def test_pythagorean_custom_definition_dag_preserves_honest_descent_boundary(
     assert definitions["FermatFourStrictDescent"]["dependency_names"] == [
         "FermatFourCounterexample", "Lt"
     ]
-    assert corpus["campaign_goal_id"] == "A08"
-    assert "premise remains unproved" in definitions[
-        "FermatFourStrictDescent"
-    ]["summary"]
+    assert corpus["campaign_goal_id"] == "G078"
+    assert "remains unproved" not in definitions["FermatFourStrictDescent"]["summary"]
+    assert definitions["PrimitiveTriple"]["dependency_names"] == ["PrimitivePythagorean"]
+    assert definitions["EuclidParameters"]["dependency_names"] == ["Lt", "Coprime", "OppositeParity"]
+    assert definitions["EuclidParametrization"]["dependency_names"] == ["Lt", "Coprime", "OppositeParity"]
+    assert definitions["PrimitivePythagorean"]["id"] == "CF0013"
+    assert definitions["FermatFourStrictDescent"]["id"] == "CF0015"
+    assert definitions["PrimitiveTriple"]["id"] == "ND0069"
+    assert definitions["EuclidParametrization"]["id"] == "ND0074"
 
 
 @pytest.mark.parametrize("slug", EXPECTED_FAMILIES)
@@ -1717,11 +1762,11 @@ def test_four_square_and_multidigit_lucas_have_independent_checked_authority(
     assert "all sixteen signed centered orientations" in four["scope"]
     assert "bounded strict prime-multiple descent" in four["scope"]
     assert "first enrolled in Alpha v13 as body_checked" in four["scope"]
-    assert "Alpha v25 checked-use theorems" in four["scope"]
+    assert "Alpha v27 checked-use theorems" in four["scope"]
     assert "without Stable admission" in four["scope"]
     assert "complete arbitrary-length multidigit Lucas congruence" in lucas["scope"]
     assert "first enrolled in Alpha v13 as body_checked" in lucas["scope"]
-    assert "Alpha v25 checked-use theorems" in lucas["scope"]
+    assert "Alpha v27 checked-use theorems" in lucas["scope"]
     assert "without Stable admission" in lucas["scope"]
     assert "kernel-checked universal theorem is available in the proof map" in files[
         "assets/frontier.js"
@@ -1987,7 +2032,7 @@ def test_two_square_surface_identifies_the_complete_zero_inclusive_iff(
     )
     assert "complete all-natural iff" in corpus["scope"]
     assert "first enrolled in Alpha v15 as body_checked" in corpus["scope"]
-    assert "Alpha v25 preserves their independently closed" in corpus["scope"]
+    assert "Alpha v27 preserves their independently closed" in corpus["scope"]
     assert "first admitted in Alpha v19" in corpus["scope"]
     assert "without Stable admission" in corpus["scope"]
     assert endpoint["enrolled_in_alpha"] is True
@@ -2017,7 +2062,7 @@ def test_two_square_factor_helpers_honestly_record_first_alpha_v23_admission(
     )
     for node in rows.values():
         assert node["alpha_evidence"] == "alpha_closed"
-        assert node["alpha_edition_version"] == "v25"
+        assert node["alpha_edition_version"] == "v27"
         assert node["alpha_admission_version"] == "v23"
         assert node["alpha_campaign"] == "primes_three_mod_four"
         assert node["alpha_checked_use"] is True
@@ -2037,7 +2082,7 @@ def test_supplementary_explorer_includes_exact_euler_and_gauss_prerequisites(
         "quadratic_supplement_two_complete",
     ]
     assert "first enrolled in Alpha v15" in corpus["scope"]
-    assert "Alpha v25 checked-use" in corpus["scope"]
+    assert "Alpha v27 checked-use" in corpus["scope"]
     for name in (
         "bounded_euler_criterion_complete",
         "bounded_gauss_lemma_complete",
@@ -2072,13 +2117,13 @@ def test_supplementary_exact_defined_and_graph_views_show_real_alpha_closure(
     assert all(row["alpha_checked_use"] is True for row in checked.values())
     assert all(row["admitted_to_alpha"] is True for row in checked.values())
     assert all(row["admitted_to_stable"] is False for row in nodes.values())
-    assert manifest["alpha_edition_identity_sha256"] == v25.ALPHA_V25_IDENTITY_SHA256
+    assert manifest["alpha_edition_identity_sha256"] == current_alpha.ALPHA_V27_IDENTITY_SHA256
     assert "Alpha-closed checked-use (28)" in files[
         "supplementary-laws/explorer/index.html"
     ].decode()
     graph_page = files["supplementary-laws/explorer/defined/graph.html"].decode()
     assert "28 independently verified alpha_closed checked-use theorems" in graph_page
-    assert "Alpha v25 enrolls exactly 28 of 28 displayed bodies as body_checked" not in graph_page
+    assert "Alpha v27 enrolls exactly 28 of 28 displayed bodies as body_checked" not in graph_page
     assert "checked-use theorem · independently verified; not Stable" in files[
         "assets/frontier.js"
     ].decode()
@@ -2087,7 +2132,7 @@ def test_supplementary_exact_defined_and_graph_views_show_real_alpha_closure(
         exact = files[f"supplementary-laws/explorer/tag/{tag}.html"].decode()
         defined = files[f"supplementary-laws/explorer/defined/tag/{tag}.html"].decode()
         assert "checked-use authorized; not Stable" in exact
-        assert "Alpha v25; independently verified" in exact
+        assert "Alpha v27; independently verified" in exact
         assert "alpha_closed; checked-use authorized; not Stable" in defined
         assert "body_checked; no checked-use authority" not in defined
 
@@ -2123,13 +2168,13 @@ def test_every_flagship_view_reports_real_v24_proof_bundle_authority(
     assert corpus["alpha_checked_use_node_count"] == expected_count
     assert corpus["alpha_enrolled_node_count"] == expected_count
     assert corpus["alpha_edition_identity_sha256"] == (
-        v25.ALPHA_V25_IDENTITY_SHA256
+        current_alpha.ALPHA_V27_IDENTITY_SHA256
     )
     assert root_node["alpha_evidence"] == "alpha_closed"
     assert root_node["alpha_checked_use"] is True
     assert root_node["alpha_admission_version"] == first_enrollment
     assert root_node["admitted_to_stable"] is False
-    assert manifest["alpha_checked_use_node_count"] == 421
+    assert manifest["alpha_checked_use_node_count"] == 479
 
     exact_index = files[f"{slug}/explorer/index.html"].decode()
     exact_theorem = files[f"{slug}/explorer/tag/{tag}.html"].decode()
@@ -2139,7 +2184,7 @@ def test_every_flagship_view_reports_real_v24_proof_bundle_authority(
     graph = files[f"{slug}/explorer/defined/graph.html"].decode()
 
     assert f"Alpha-closed checked-use ({expected_count})" in exact_index
-    assert "Alpha v25; independently verified" in exact_theorem
+    assert "Alpha v27; independently verified" in exact_theorem
     assert "checked-use authorized; not Stable" in exact_theorem
     assert "alpha_closed; checked-use authorized; not Stable" in defined_theorem
     assert "body_checked; no checked-use authority" not in defined_theorem
@@ -2193,24 +2238,26 @@ def test_frontier_preserves_each_flagships_original_enrollment_release(
         node = next(
             row for row in _corpus(files, slug)["nodes"] if row["name"] == name
         )
-        assert node["alpha_edition_version"] == "v25"
+        assert node["alpha_edition_version"] == "v27"
         assert node["alpha_admission_version"] == version
         assert node["alpha_checked_use"] is True
 
 
-def test_pythagorean_campaign_exposes_only_forward_and_conditional_proofs(
+def test_pythagorean_campaign_exposes_complete_inverse_and_unconditional_descent(
     generated: tuple[dict[str, bytes], dict[str, object]],
 ) -> None:
     files, _manifest = generated
     corpus = _corpus(files, "pythagorean-fermat-four")
     rows = {node["name"]: node for node in corpus["nodes"]}
 
-    assert corpus["node_count"] == 44
-    assert corpus["alpha_enrolled_node_count"] == 44
-    assert corpus["alpha_checked_use_node_count"] == 44
-    assert "primitive inverse classification" in corpus["scope"]
-    assert "Fermat strict-descent premise remain unproved" in corpus["scope"]
-    assert "complete forward primitive Pythagorean constructor" in corpus["scope"]
+    assert corpus["node_count"] == 102
+    assert corpus["alpha_enrolled_node_count"] == 102
+    assert corpus["alpha_checked_use_node_count"] == 102
+    assert "Alpha v27" in corpus["scope"]
+    assert "full inverse" in corpus["scope"].lower()
+    assert "unconditional" in corpus["scope"].lower()
+    assert "remain unproved" not in corpus["scope"]
+    assert "remain open" not in corpus["scope"]
     assert {
         "Pythagorean",
         "Coprime",
@@ -2218,20 +2265,31 @@ def test_pythagorean_campaign_exposes_only_forward_and_conditional_proofs(
         "PrimitivePythagorean",
         "FermatFourCounterexample",
         "FermatFourStrictDescent",
+        "PrimitiveTriple",
+        "EuclidParameters",
+        "EuclidParametrization",
+        "PrimitiveFermatFourCounterexample",
+        "SmallerFermatFourCounterexample",
+        "TrivialFermatFourSolution",
     } <= {definition["name"] for definition in corpus["definitions"]}
     assert " -> " in rows["fermat_four_no_square_from_descent"]["statement"]
     assert " -> " in rows["fermat_four_no_fourth_from_descent"]["statement"]
     assert all(node["enrolled_in_alpha"] for node in rows.values())
     assert all(node["alpha_checked_use"] for node in rows.values())
-    assert all(node["alpha_admission_version"] == "v19" for node in rows.values())
+    assert Counter(node["alpha_admission_version"] for node in rows.values()) == {"v19": 44, "v26": 58}
+    assert rows["pythagorean_positive_primitive_classification"]["alpha_admission_version"] == "v26"
+    assert rows["fermat_four_positive_sum_not_square"]["alpha_admission_version"] == "v26"
     assert {
         "peano_lab.library.pythagorean_fermat_four_candidate",
         "peano_lab.library.pythagorean_primitive_candidate",
+        "peano_lab.library.coprime_square_factor_candidate",
+        "peano_lab.library.pythagorean_inverse_candidate",
+        "peano_lab.library.fermat_four_descent_candidate",
     } == {node["source_module"] for node in rows.values()}
     assert 'data-input="m"' in files[
         "pythagorean-fermat-four/explorer/defined/graph.html"
     ].decode()
-    assert "primitive inverse classification and Fermat strict descent remain open" in (
+    assert "primitive inverse classification and Fermat strict descent remain open" not in (
         files["assets/frontier.js"].decode()
     )
 
@@ -2514,7 +2572,8 @@ def test_pythagorean_browser_calculator_constructs_exact_euclidean_triples(
     assert f"{difference}² + {doubled}² = {hypotenuse}²" in output
     assert difference * difference + doubled * doubled == hypotenuse * hypotenuse
     assert ("Coprime, opposite-parity parameters." in output) is primitive
-    assert "primitive inverse classification and Fermat strict descent remain open" in output
+    assert "primitive inverse classification and Fermat strict descent remain open" not in output
+    assert "Fermat" in output
 
 
 @pytest.mark.parametrize(("first", "second"), ((1, 1), (4, 0), (2, 3)))
@@ -2558,24 +2617,24 @@ def test_duplicate_factories_preserve_deterministic_first_source_and_provenance(
         "missing_campaign",
     ),
 )
-def test_alpha_v24_frontier_evidence_and_identity_mutations_are_rejected(
+def test_alpha_v27_frontier_evidence_and_identity_mutations_are_rejected(
     monkeypatch: pytest.MonkeyPatch, mutation: str,
 ) -> None:
     family = next(item for item in generator.FAMILIES if item.slug == "four-squares")
     root = "four_square_lagrange"
-    alpha_entries = dict(v25.ALPHA_EDITION.by_name)
+    alpha_entries = dict(current_alpha.ALPHA_EDITION.by_name)
     entry = alpha_entries[root]
-    message = "unexpected Alpha-v25 evidence"
+    message = "unexpected Alpha-v27 evidence"
 
     if mutation == "statement":
         entry = replace(entry, spec=replace(entry.spec, statement=entry.spec.statement + " "))
-        message = "sealed Alpha-v25 entry"
+        message = "sealed Alpha-v27 entry"
     elif mutation == "dependencies":
         entry = replace(entry, spec=replace(entry.spec, dependencies=entry.spec.dependencies[:-1]))
-        message = "sealed Alpha-v25 entry"
+        message = "sealed Alpha-v27 entry"
     elif mutation == "script":
         entry = replace(entry, spec=replace(entry.spec, script=entry.spec.script[:-1]))
-        message = "sealed Alpha-v25 entry"
+        message = "sealed Alpha-v27 entry"
     elif mutation == "body_evidence":
         entry = replace(entry, evidence=v13.EvidenceStatus.BODY_CHECKED)
     elif mutation == "pending_evidence":
@@ -2590,7 +2649,7 @@ def test_alpha_v24_frontier_evidence_and_identity_mutations_are_rejected(
         )
     alpha_entries[root] = entry
     monkeypatch.setattr(
-        generator.v25,
+        generator.current_alpha,
         "ALPHA_EDITION",
         SimpleNamespace(by_name=alpha_entries),
     )
@@ -2623,6 +2682,10 @@ def test_frontier_generation_never_mutates_sealed_release_authority() -> None:
         len(v23.ALPHA_CHECKED_SPECS),
         v25.ALPHA_V25_IDENTITY_SHA256,
         len(v25.ALPHA_CHECKED_SPECS),
+        v26.ALPHA_V26_IDENTITY_SHA256,
+        len(v26.ALPHA_CHECKED_SPECS),
+        current_alpha.ALPHA_V27_IDENTITY_SHA256,
+        len(current_alpha.ALPHA_CHECKED_SPECS),
     )
 
     generator.build_files()
@@ -2650,6 +2713,10 @@ def test_frontier_generation_never_mutates_sealed_release_authority() -> None:
         len(v23.ALPHA_CHECKED_SPECS),
         v25.ALPHA_V25_IDENTITY_SHA256,
         len(v25.ALPHA_CHECKED_SPECS),
+        v26.ALPHA_V26_IDENTITY_SHA256,
+        len(v26.ALPHA_CHECKED_SPECS),
+        current_alpha.ALPHA_V27_IDENTITY_SHA256,
+        len(current_alpha.ALPHA_CHECKED_SPECS),
     )
 
 
@@ -2677,7 +2744,8 @@ def test_repository_proof_hub_labels_all_six_candidate_families() -> None:
     assert "Alpha v13 enrolled · body_checked; no checked-use authority" not in hub
     assert "Alpha v14 enrolled · body_checked; no checked-use authority" not in hub
     assert "Alpha v15 enrolled · body_checked; no checked-use authority" not in hub
-    assert "Alpha v25 checked-use; Fermat descent remains conditional" in hub
+    assert "Fermat descent remains conditional" not in hub
+    assert "Alpha v27" in hub
     assert "Independent replay experiment:" not in hub
     assert "80/196" not in hub
     assert "33/44" not in hub

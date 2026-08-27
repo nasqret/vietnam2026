@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="polynomial-taylor-hensel"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=75fa146ac19b">Definitions and proofs</a>
-       <a href="../../tag/TH0001.html?v=75fa146ac19b">Exact original proof</a>
-       <a href="../graph.html?target=TH0001&amp;v=75fa146ac19b">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=75fa146ac19b">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=75fa146ac19b">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=75fa146ac19b">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G095" href="../../../../grand-campaign/?view=goal&amp;focus=G095&amp;v=75fa146ac19b">G095 milestone</a></nav>
+  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
+       <a href="../../tag/TH0001.html?v=481a9a378e54">Exact original proof</a>
+       <a href="../graph.html?target=TH0001&amp;v=481a9a378e54">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G095" href="../../../../grand-campaign/?view=goal&amp;focus=G095&amp;v=481a9a378e54">G095 milestone</a></nav>
   <p class="pd-tag">TH0001</p><h1>hensel_predecessor_annihilates_residue</h1>
-  <p>The predecessor of every positive modulus gives a witnessed subtraction-free negative residue.</p><p class="pd-status">Alpha v25 checked-use · first admitted v25 · independently kernel and Lean verified; not Stable</p>
+  <p>The predecessor of every positive modulus gives a witnessed subtraction-free negative residue.</p><p class="pd-status">Alpha v27 checked-use · first admitted v25 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
 
-  <p class="pd-callout">G095 remains OPEN. The exact arbitrary-polynomial quadratic Taylor remainder, unique bounded modular correction and actual one-step Hensel divisibility lift are independently proved. Canonical unrestricted-input root representatives, uniqueness of lifted roots and the full prime-power lifting theorem are not proved.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ k. ∀ q. <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=75fa146ac19b">ModEq(S k,q + k · q,0)</a></code></pre>
+  <p class="pd-callout">Historical partial components only: this chapter proves exact natural polynomial Taylor remainders, bounded corrections, and one-step divisibility lifts. G095 is now closed in the separate Alpha-v27 hensel-lifting branch for integer polynomials, unrestricted input roots, unique canonical representatives, and every positive prime power. <a data-current-milestone="G095" href="../../../../hensel-lifting/?v=481a9a378e54">Full G095 proof · Alpha v27</a></p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ k. ∀ q. <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=481a9a378e54">ModEq(S k,q + k · q,0)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0008.html?v=75fa146ac19b">ModEq(m,a,b) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0008.html?v=481a9a378e54">ModEq(m,a,b) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">mod_eq_predecessor_cancel · checked external prerequisite</span><span class="pd-chip pd-external">zero_add · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall k q. (exists hgcrt_mod_left_pth_negative hgcrt_mod_right_pth_negative. (q + k * q) + (S k) * hgcrt_mod_left_pth_negative = 0 + (S k) * hgcrt_mod_right_pth_negative)</code></pre></details>
@@ -28,7 +28,7 @@
     <p>All 9 lines are the exact independently kernel-checked original script.</p>
     <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro k</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro q</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>specialize mod_eq_predecessor_cancel k</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>specialize mod_eq_predecessor_cancel 0</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>specialize mod_eq_predecessor_cancel q</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>have hz : 0 + q = q</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>apply zero_add</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>rewrite hz at mod_eq_predecessor_cancel</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>exact mod_eq_predecessor_cancel</code></li></ol></section>
 </div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
-  <dl><dt>Authority</dt><dd>Alpha v25 checked use</dd><dt>First admission</dt><dd>Alpha v25</dd><dt>Stable membership</dt><dd>none</dd>
+  <dl><dt>Authority</dt><dd>Alpha v27 checked use</dd><dt>First admission</dt><dd>Alpha v25</dd><dt>Stable membership</dt><dd>none</dd>
       <dt>Proof-bundle node</dt><dd>258 / 302</dd>
       <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
       <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 302 exact bundle nodes</dd>

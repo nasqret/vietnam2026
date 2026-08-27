@@ -1,4 +1,4 @@
-"""Current Alpha-v25 explorers preserve three frozen Alpha-v21 proof campaigns."""
+"""Current Alpha-v27 explorers preserve three frozen Alpha-v21 proof campaigns."""
 
 from __future__ import annotations
 
@@ -71,7 +71,7 @@ def corpora(generated: dict[str, bytes]) -> dict[str, dict]:
     }
 
 
-def test_manifest_binds_current_v24_and_independently_verified_first_admission_v21(
+def test_manifest_binds_current_v27_and_independently_verified_first_admission_v21(
     generated: dict[str, bytes], inputs: dict
 ) -> None:
     manifest = json.loads(generated["manifest.json"])
@@ -82,7 +82,7 @@ def test_manifest_binds_current_v24_and_independently_verified_first_admission_v
     assert manifest["first_enrollment_catalog_sha256"] == historical_digest
     assert manifest["html_revision"] == digest[:12]
     assert manifest["edition_identity_sha256"] == inputs["current_edition_identity_sha256"]
-    assert manifest["alpha_edition_version"] == "v25"
+    assert manifest["alpha_edition_version"] == "v27"
     assert manifest["alpha_first_enrolled_version"] == "v21"
     assert manifest["proof_bundle_sha256"] == inputs["bundle"]["artifact_sha256"]
     assert manifest["proof_bundle_node_count"] == 209
@@ -136,7 +136,7 @@ def test_historical_v21_family_landing_reuses_quadratic_reciprocity_structure(
     assert 'class="proof-hero"' not in source
     assert source.count('<article class="view-card') == 3
     assert f'href="../assets/proofs.css?v={revision}"' in source
-    assert "Alpha v25 checked-use theorem family" in source
+    assert "Alpha v27 checked-use theorem family" in source
     assert "first admitted v21" in source
     assert "independently accept all 209 bundle nodes" in source
     assert corpus["alpha_proof_bundle_sha256"] in source
@@ -147,7 +147,7 @@ def test_historical_v21_family_landing_reuses_quadratic_reciprocity_structure(
 
 
 @pytest.mark.parametrize("slug", tuple(EXPECTED))
-def test_family_boundaries_exact_release_rows_and_honest_open_milestones(
+def test_family_boundaries_exact_release_rows_and_separate_full_milestones(
     slug: str, corpora: dict[str, dict], inputs: dict
 ) -> None:
     corpus = corpora[slug]
@@ -160,9 +160,12 @@ def test_family_boundaries_exact_release_rows_and_honest_open_milestones(
     assert corpus["campaign_family_id"] == family
     assert corpus["campaign_goal_id"] == milestone
     assert corpus["campaign_milestone_ids"] == [milestone]
-    assert corpus["milestone_status"] == ("open" if milestone == "T13" else "alpha_closed")
-    assert corpus["milestone_checked_use"] is (milestone != "T13")
-    assert corpus["alpha_edition_version"] == "v25"
+    assert corpus["milestone_status"] == "alpha_closed"
+    assert corpus["milestone_checked_use"] is True
+    if milestone == "T13":
+        assert corpus["historical_component_only"] is True
+        assert corpus["historical_milestone_status"] == "open"
+    assert corpus["alpha_edition_version"] == "v27"
     assert corpus["alpha_first_enrolled_version"] == "v21"
     assert corpus["alpha_first_enrollment_catalog_sha256"] == inputs[
         "historical_catalog_sha256"
@@ -182,7 +185,7 @@ def test_family_boundaries_exact_release_rows_and_honest_open_milestones(
         assert node["body_proof_depth"] == closure["body_proof_depth"]
         assert node["sources"][0]["script_sha256"] == sealed["script_sha256"]
         assert node["alpha_checked_use"] is True
-        assert node["alpha_edition_version"] == "v25"
+        assert node["alpha_edition_version"] == "v27"
         assert node["alpha_first_enrolled_version"] == "v21"
         assert node["independent_lean_bundle_verified"] is True
         assert node["stable_member"] is False
@@ -332,7 +335,7 @@ def test_proof_definition_and_notation_arrows_are_separate_and_acyclic(
 ) -> None:
     corpus = corpora[slug]
     graph = json.loads(generated[f"{slug}/explorer/defined/api/graph.json"])
-    assert graph["alpha_edition_version"] == "v25"
+    assert graph["alpha_edition_version"] == "v27"
     assert graph["alpha_first_enrolled_version"] == "v21"
     assert graph["milestone_status"] == corpus["milestone_status"]
     assert graph["path_policy"] == "proof_dependency_edges_only"
@@ -389,7 +392,7 @@ def test_every_major_root_has_exact_and_definition_aware_complete_proof_pages(
     defined = generated[f"{slug}/explorer/defined/tag/{tag}.html"].decode()
     assert theorem in exact
     assert theorem in defined
-    assert "Alpha v25" in defined
+    assert "Alpha v27" in defined
     assert "Alpha v21" in defined
     assert "/ 209</dd>" in defined
     assert "all 209 exact bundle nodes" in defined
@@ -398,7 +401,7 @@ def test_every_major_root_has_exact_and_definition_aware_complete_proof_pages(
 
 
 @pytest.mark.parametrize("slug", tuple(EXPECTED))
-def test_historical_open_milestones_distinguish_v23_closure_and_v24_open_t13(
+def test_historical_partial_milestones_distinguish_v23_and_v27_closures(
     slug: str, corpora: dict[str, dict], generated: dict[str, bytes]
 ) -> None:
     corpus = corpora[slug]
@@ -407,10 +410,16 @@ def test_historical_open_milestones_distinguish_v23_closure_and_v24_open_t13(
     root = corpus["tags"][corpus["root_names"][-1]]
     theorem = generated[f"{slug}/explorer/defined/tag/{root}.html"].decode()
     if goal == "T13":
-        assert f"{goal} remains OPEN" in landing
-        assert f"{goal} remains OPEN" in theorem
-        assert corpus["milestone_status"] == "open"
-        assert corpus["milestone_checked_use"] is False
+        assert "Historical partial components only" in landing
+        assert "Historical partial components only" in theorem
+        assert "Full T13 proof · Alpha v27" in landing
+        assert "Full T13 proof · Alpha v27" in theorem
+        assert "integer-linear-algebra/" in landing
+        assert "integer-linear-algebra/" in theorem
+        assert corpus["milestone_status"] == "alpha_closed"
+        assert corpus["milestone_checked_use"] is True
+        assert corpus["historical_component_only"] is True
+        assert corpus["milestone_full_theorem_name"] not in corpus["tags"]
     else:
         assert f"{goal} was OPEN" in landing
         assert f"{goal} was OPEN" in theorem

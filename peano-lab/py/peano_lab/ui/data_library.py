@@ -17,6 +17,7 @@ _LEAN_FULL_BROWSER_DEPENDENCY_LIMIT = 128
 _LEAN_MODES = frozenset({"compact", "pretty", "full", "exact", "tactics", "strand"})
 _PROOF_STRAND_SCRIPT_LINES = 48
 _PROOF_STRAND_DIRECT_DEPENDENCIES = 16
+_PROOF_STRAND_STATEMENT_LIMIT = 4 * 1024
 
 
 def _statement(spec: TheoremSpec) -> str:
@@ -108,23 +109,27 @@ def render_theorem(spec: TheoremSpec) -> str:
 def _alpha_edition():
     """Load the opt-in research channel without changing Stable boot behavior."""
 
-    from ..library import editions_v25
+    from ..library import editions_v27
 
-    return editions_v25
+    if not editions_v27.EXPECTED_ALPHA_V27_COUNT:
+        raise editions_v27.EditionV27Error("Alpha v27 is not sealed for checked use")
+    return editions_v27
 
 
 def render_alpha_index(*, checked_only: bool = False, include_entries: bool = False) -> str:
     """Inspect immutable Alpha evidence without loading or replaying proof data."""
 
     alpha = _alpha_edition()
-    historical_v24 = alpha.v24
+    historical_v26 = alpha.v26
+    historical_v25 = historical_v26.v25
+    historical_v24 = historical_v25.v24
     historical_v23 = historical_v24.v23
     historical_v22 = historical_v23.v22
     historical_v21 = historical_v22.v21
     selected = alpha.edition("alpha")
     counts = Counter(item.evidence.value for item in selected.entries)
     rows = [
-        "Peano Lab immutable Alpha v25 research theorem library",
+        "Peano Lab immutable Alpha v27 research theorem library",
         "",
         f"Enrolled statements: {len(selected.entries):,}",
         f"Stable closed: {counts.get('stable_closed', 0):,}",
@@ -146,8 +151,10 @@ def render_alpha_index(*, checked_only: bool = False, include_entries: bool = Fa
         f"Previously added Alpha v22 campaign results: {len(historical_v22.FRONTIER_NEW_NAMES):,}",
         f"Previously added Alpha v23 campaign results: {len(historical_v23.FRONTIER_NEW_NAMES):,}",
         f"Previously added Alpha v24 campaign results: {len(historical_v24.FRONTIER_NEW_NAMES):,}",
+        f"Previously added Alpha v25 campaign results: {len(historical_v25.FRONTIER_NEW_NAMES):,}",
+        f"Previously added Alpha v26 campaign results: {len(historical_v26.FRONTIER_NEW_NAMES):,}",
         f"New constructive campaign results: {len(alpha.FRONTIER_NEW_NAMES):,}",
-        f"Edition SHA-256: {alpha.ALPHA_V25_IDENTITY_SHA256}",
+        f"Edition SHA-256: {alpha.ALPHA_V27_IDENTITY_SHA256}",
         "",
         "Stable remains the default public theorem registry.",
         "Every enrolled Alpha theorem now has independently checked-use authority.",
@@ -175,11 +182,11 @@ def render_alpha_theorem(name: str, *, verify: bool = False) -> str:
 
     alpha, item = _alpha_item(name)
     if item is None:
-        return f"No Alpha v25 theorem {name!r}. Type `pa lib alpha`."
+        return f"No Alpha v27 theorem {name!r}. Type `pa lib alpha`."
     spec = item.spec
     dependencies = ", ".join(spec.dependencies) if spec.dependencies else "none"
     rows = [
-        f"{spec.name} — Alpha v25 theorem evidence",
+        f"{spec.name} — Alpha v27 theorem evidence",
         "",
         f"Statement: {_statement(spec)}",
         f"Summary: {spec.summary}",
@@ -275,16 +282,16 @@ def render_request(request: str) -> str:
                 "Peano Lab theorem library",
                 "  pa lib                 list the full ladder",
                 "  pa lib <name>          show statement and exact tactic script",
-                "  pa lib alpha           inspect the opt-in Alpha v25 research edition",
+                "  pa lib alpha           inspect the opt-in Alpha v27 research edition",
                 "  pa lib alpha check <name>  independently verify one Alpha theorem",
                 "  pa lean <name>         show a compact checked Lean 4 theorem",
                 "  pa lean full <name>    show its complete certificate explicitly",
                 "  pa lean exact <name>   inspect the exact unabbreviated proposition",
                 "  pa lean tactics <name> inspect its original Peano tactic script",
                 "  pa proof <name>        inspect a bounded readable proof strand",
-                "  pa proof alpha <name>  inspect an Alpha-v25 proof strand safely",
+                "  pa proof alpha <name>  inspect an Alpha-v27 proof strand safely",
                 "  pa lean strand <name>  alternate readable proof-strand spelling",
-                "  pa lean alpha <name>   inspect a checked Alpha-v25 theorem",
+                "  pa lean alpha <name>   inspect a checked Alpha-v27 theorem",
             )
         )
     spec = get(name)
@@ -365,7 +372,7 @@ def _lean_flagship_bundle_argument(spec: TheoremSpec, *, edition: str) -> str:
     if edition != "alpha":
         return ""
     alpha = _alpha_edition()
-    historical = alpha.v24.v23.v22.v21.v19.v18
+    historical = alpha.v26.v25.v24.v23.v22.v21.v19.v18
     owner = historical.FLAGSHIP_PROMOTION_OWNERS.get(spec.name)
     if owner is None or historical.FLAGSHIP_BUNDLE_ROOTS[owner] != (spec.name,):
         return ""
@@ -510,10 +517,10 @@ def render_proof(request: str) -> str:
     if edition == "alpha":
         alpha_module, item = _alpha_item(name)
         if item is None:
-            return f"No Alpha v25 theorem {name!r}. Type `pa lib alpha`."
+            return f"No Alpha v27 theorem {name!r}. Type `pa lib alpha`."
         if not item.checked_use:
             return (
-                f"Alpha v25 theorem {item.spec.name!r} has evidence "
+                f"Alpha v27 theorem {item.spec.name!r} has evidence "
                 f"{item.evidence.value!r}; a proof strand requires "
                 "closed checked-use authority."
             )
@@ -571,12 +578,21 @@ def render_proof(request: str) -> str:
             f"{_LEAN_FULL_BROWSER_DEPENDENCY_LIMIT + 1} without traversing the full graph"
         )
 
+    # A large exact statement must not crowd out authority, replay status, or
+    # the complete export command.  Keep the theorem first, but abbreviate its
+    # display separately from the final whole-view browser safety bound.
+    statement = _bounded_lean_view(
+        statement,
+        limit=_PROOF_STRAND_STATEMENT_LIMIT,
+        notice=NL + "... [theorem statement abbreviated; inspect the exact proposition below]",
+    )
+    browser_channel = "alpha " if edition == "alpha" else ""
     rows = [
         f"Readable Peano-to-Lean proof strand — {spec.name}",
         "",
         f"Theorem: {statement}",
         f"Summary: {spec.summary}",
-        f"Release edition: {'Alpha v25' if edition == 'alpha' else 'Stable'}.",
+        f"Release edition: {'Alpha v27' if edition == 'alpha' else 'Stable'}.",
         f"Authenticated release evidence: {evidence}.",
         f"Release membership: {membership}.",
         "Checked-use authority: YES.",
@@ -585,6 +601,7 @@ def render_proof(request: str) -> str:
         f"Root authored Peano tactic decisions: {len(spec.script):,}.",
         "Fresh Peano proof replay: NOT RUN; authenticated metadata only.",
         "Independent Lean compilation: NOT RUN; no proof certificate was loaded.",
+        f"Exact expanded proposition: `pa lean {browser_channel}exact {spec.name}`.",
         "",
         "Export the complete dependency strand and request independent Lean verification:",
         f"  {_proof_strand_terminal_command(spec, edition=edition)}",
@@ -621,7 +638,7 @@ def _lean_evidence_rows(
 ) -> list[str]:
     dependencies = ", ".join(spec.dependencies) if spec.dependencies else "none"
     rows = [
-        f"Release edition: {'Alpha v25' if edition == 'alpha' else 'Stable'}.",
+        f"Release edition: {'Alpha v27' if edition == 'alpha' else 'Stable'}.",
         f"Authenticated release evidence: {release_evidence}.",
         "Checked-use authority: YES.",
     ]
@@ -810,10 +827,10 @@ def render_lean(request: str) -> str:
     if edition == "alpha":
         alpha, item = _alpha_item(selected_name)
         if item is None:
-            return f"No Alpha v25 theorem {selected_name!r}. Type `pa lib alpha`."
+            return f"No Alpha v27 theorem {selected_name!r}. Type `pa lib alpha`."
         if not item.checked_use:
             return (
-                f"Alpha v25 theorem {item.spec.name!r} has evidence "
+                f"Alpha v27 theorem {item.spec.name!r} has evidence "
                 f"{item.evidence.value!r}; a complete checked Lean export "
                 "requires a closed theorem certificate."
             )

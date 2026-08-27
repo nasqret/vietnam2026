@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""Publish historical Alpha-v24 families under current sealed Alpha-v25 authority.
+"""Publish historical Alpha-v24 families under current sealed Alpha-v27 authority.
 
 Each displayed theorem is a fully dependency-closed original-kernel proof that
-was independently verified by the compiled Lean checker.  The surrounding
-research milestones T13, G095, and G011 remain OPEN: checked partial theorem
-components never acquire authority to close a stronger mathematical claim.
+was independently verified by the compiled Lean checker. The historical
+partial components remain unchanged; separate v27 second-wave proofs now
+close T13, G095, and G011 and are linked without upgrading these old proofs.
 """
 
 from __future__ import annotations
@@ -30,7 +30,7 @@ from constructive_advanced_layer_definitions import (  # noqa: E402
     ADVANCED_LAYER_REGISTRIES,
 )
 from constructive_breakthrough_layer_definitions import (  # noqa: E402
-    ALL_CONSTRUCTIVE_DEFINITIONS_BY_NAME as CURRENT_CONSTRUCTIVE_DEFINITIONS_BY_NAME,
+    ALL_CONSTRUCTIVE_DEFINITIONS_BY_NAME as HISTORICAL_CONSTRUCTIVE_DEFINITIONS_BY_NAME,
 )
 from constructive_frontier_exact_explorer import (  # noqa: E402
     render_exact_index,
@@ -58,7 +58,8 @@ from constructive_transport_layer_definitions import (  # noqa: E402
 )
 from peano_lab.library import editions_v23 as v23  # noqa: E402
 from peano_lab.library import editions_v24 as v24  # noqa: E402
-from peano_lab.library import editions_v25 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v25 as v25  # noqa: E402
+from peano_lab.library import editions_v27 as current_alpha  # noqa: E402
 from peano_lab.library.alpha_enrollment_v24 import (  # noqa: E402
     EXPECTED_CAMPAIGN_COUNTS,
     FRONTIER_V24_EXPECTED_COUNT,
@@ -81,20 +82,20 @@ from peano_lab.library.defined_syntax import DefinitionSpec  # noqa: E402
 OUTPUT = REPO / "book" / "_static" / "constructive-research-layer-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
 PARENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v23.json"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
-CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v25.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
+CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v27.json"
 CAMPAIGN = REPO / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
 GLOBAL_DEFINITIONS = CAMPAIGN.with_name("definitions.json")
 EXPECTED_STABLE_COUNT = 432
+# These branches retain their reviewed v25 notation; the complete current
+# additive atlas is independently authenticated by _audit_current_atlas.
 EXPECTED_REVIEWED_DEFINITION_COUNT = 120
-EXPECTED_BLUEPRINT_DEFINITION_COUNT = 179
-EXPECTED_COMPATIBLE_DEFINITION_COUNT = 88
 EXPECTED_BUNDLE_PATH = (
     "research/arithmetic-library/artifacts/alpha-v24-research-layer-proof-bundle-v1.json"
 )
 SCHEMA = "peano-lab-constructive-research-layer-explorer-v1"
 STATUS = (
-    "Alpha v25 checked-use · first admitted v24 · "
+    "Alpha v27 checked-use · first admitted v24 · "
     "independently kernel and Lean verified; not Stable"
 )
 ASSET_SOURCES = original.ASSET_SOURCES
@@ -109,7 +110,7 @@ _LocalDefinedParser = original._LocalDefinedParser
 
 
 class ResearchLayerExplorerError(ValueError):
-    """A current proof, reviewed definition, or open evidence boundary changed."""
+    """A proof, reviewed definition, or historical/current evidence boundary changed."""
 
 
 @dataclass(frozen=True, slots=True)
@@ -160,10 +161,11 @@ FAMILIES = (
             "Beta", "Lt", "Le",
         ),
         caveat=(
-            "T13 remains OPEN. Arbitrary-dimensional genuinely signed cofactor minors "
-            "and exact signed determinants through dimension four are independently "
-            "proved; unrestricted determinant evaluation, matrix rank, and lattices "
-            "are not proved."
+            "Historical partial components only: this chapter proves arbitrary signed "
+            "cofactor minors and exact signed determinants through dimension four. "
+            "T13 is now closed by the separate Alpha-v27 integer-linear-algebra "
+            "branch: arbitrary determinant data, rank, and integer column spans, "
+            "without a claim of lattice index or normal forms."
         ),
     ),
     Family(
@@ -193,11 +195,11 @@ FAMILIES = (
             "Horner", "Beta", "Lt", "Prime", "ModEq", "Pow",
         ),
         caveat=(
-            "G095 remains OPEN. Arbitrary beta-coded polynomial values and unique "
-            "formal derivatives are independently proved; the current Alpha-v25 "
-            "release additionally proves exact witnessed Taylor divisibility, unique "
-            "bounded corrections, and a genuine one-step root lift. The full "
-            "canonical prime-power representative, bound, and uniqueness remain open."
+            "Historical partial components only: this chapter proves arbitrary "
+            "natural polynomial values and unique formal derivatives. G095 is now "
+            "closed in the separate Alpha-v27 hensel-lifting branch for integer "
+            "polynomials, unrestricted input roots, unique canonical lifts, and "
+            "every positive prime power."
         ),
     ),
     Family(
@@ -228,11 +230,11 @@ FAMILIES = (
             "IsGCD", "Dvd", "ModEq", "Beta", "Lt", "Le",
         ),
         caveat=(
-            "G011 remains OPEN. Arbitrary finite positive noncoprime systems are "
-            "solved under the exact predecessor-LCM merge invariant, and "
-            "pairwise-compatible systems are solved when their final modulus "
-            "dominates predecessors. Deriving the merge invariant from unrestricted "
-            "pairwise gcd compatibility remains open."
+            "Historical partial components only: this chapter proves canonical "
+            "solutions for finite positive pairwise-coprime systems and exact LCM "
+            "solution classes. G011 is now closed in the separate Alpha-v27 "
+            "generalized-crt branch for arbitrary pairwise-compatible systems, "
+            "including noncoprime moduli."
         ),
     ),
 )
@@ -240,7 +242,7 @@ FAMILIES = (
 
 @lru_cache(maxsize=1)
 def _definition_specs() -> dict[str, DefinitionSpec]:
-    definitions = dict(CURRENT_CONSTRUCTIVE_DEFINITIONS_BY_NAME)
+    definitions = dict(HISTORICAL_CONSTRUCTIVE_DEFINITIONS_BY_NAME)
     if (
         len(definitions) != EXPECTED_REVIEWED_DEFINITION_COUNT
         or len({item.stable_id for item in definitions.values()})
@@ -248,7 +250,7 @@ def _definition_specs() -> dict[str, DefinitionSpec]:
         or definitions.get("Mod4Three") is None
         or definitions["Mod4Three"].stable_id != "PD0012"
     ):
-        raise ResearchLayerExplorerError("the additive reviewed Alpha-v25 registry changed")
+        raise ResearchLayerExplorerError("the historical reviewed Alpha-v25 registry changed")
     for definition in definitions.values():
         dependencies = definition.conceptual_dependencies
         if (
@@ -338,7 +340,7 @@ def _validate_theorem(
 
 
 def _load_inputs() -> dict[str, Any]:
-    """Authenticate immutable v24 admission, current v25, and honest OPEN goals."""
+    """Authenticate v24 admission and the separately completed v27 milestones."""
 
     if (
         v24.EXPECTED_ALPHA_V24_COUNT <= PARENT_ALPHA_V23_COUNT
@@ -351,6 +353,8 @@ def _load_inputs() -> dict[str, Any]:
     current_raw_catalog = CURRENT_CATALOG.read_bytes()
     current_catalog = json.loads(current_raw_catalog)
     channels = json.loads(CHANNELS.read_bytes())
+    parent_channels_raw = CHANNELS.with_name("channels-v26.json").read_bytes()
+    parent_channels = json.loads(parent_channels_raw)
     expected_counts = {
         campaign.value: count for campaign, count in EXPECTED_CAMPAIGN_COUNTS.items()
     }
@@ -367,27 +371,51 @@ def _load_inputs() -> dict[str, Any]:
     ):
         raise ResearchLayerExplorerError("the sealed fully checked Alpha-v24 catalog changed")
     channel = channels.get("channels", {}).get("alpha", {})
+    original._audit_current_parent(current_catalog, channels, error_type=ResearchLayerExplorerError)
+    current_parent = current_catalog.get("parent_alpha_v25", {})
     if (
-        channels.get("schema") != "peano-library-channels-v25"
+        channels.get("schema") != "peano-library-channels-v27"
         or channels.get("default_channel") != "stable"
-        or channels.get("parent_channels_v24", {}).get("path")
-        != "artifacts/peano-library/channels-v24.json"
-        or channel.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v25.json"
+        or channels.get("parent_channels_v26", {}).get("path")
+        != "artifacts/peano-library/channels-v26.json"
+        or channels.get("parent_channels_v26", {}).get("sha256")
+        != _digest(parent_channels_raw)
+        or channels.get("channels", {}).get("stable")
+        != parent_channels.get("channels", {}).get("stable")
+        or channel.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v27.json"
         or channel.get("artifact_sha256") != _digest(current_raw_catalog)
         or channel.get("parent_alpha_v24_sha256") != _digest(raw_catalog)
-        or channel.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V25_COUNT
-        or channel.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V25_CHECKED_USE_COUNT
-        or channel.get("edition_identity_sha256") != current_alpha.ALPHA_V25_IDENTITY_SHA256
+        or channel.get("parent_alpha_v25_sha256")
+        != _file_digest(CURRENT_CATALOG.with_name("catalog-v25.json"))
+        or channel.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or channel.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        or channel.get("edition_identity_sha256") != current_alpha.ALPHA_V27_IDENTITY_SHA256
         or channel.get("ordered_enrollment_root_sha256")
-        != current_alpha.ALPHA_V25_ENROLLMENT_SHA256
-        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v25"
-        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V25_COUNT
+        != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v27"
+        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
         or current_catalog.get("checked_use_count")
-        != current_alpha.EXPECTED_ALPHA_V25_CHECKED_USE_COUNT
+        != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        or current_catalog.get("stable_count") != EXPECTED_STABLE_COUNT
         or current_catalog.get("edition_identity_sha256")
-        != current_alpha.ALPHA_V25_IDENTITY_SHA256
+        != current_alpha.ALPHA_V27_IDENTITY_SHA256
         or current_catalog.get("ordered_enrollment_root_sha256")
-        != current_alpha.ALPHA_V25_ENROLLMENT_SHA256
+        != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        or not isinstance(current_parent, dict)
+        or current_parent.get("schema") != "peano-library-alpha-snapshot-v25"
+        or current_parent.get("theorem_count") != v25.EXPECTED_ALPHA_V25_COUNT
+        or current_parent.get("edition_identity_sha256") != v25.ALPHA_V25_IDENTITY_SHA256
+        or current_parent.get("ordered_enrollment_root_sha256")
+        != v25.ALPHA_V25_ENROLLMENT_SHA256
+        or not isinstance(current_parent.get("artifacts"), dict)
+        or current_parent.get("artifacts", {}).get("catalog") != {
+            "path": "artifacts/peano-library/alpha/catalog-v25.json",
+            "sha256": channel.get("parent_alpha_v25_sha256"),
+        }
+        or not isinstance(current_catalog.get("theorems"), list)
+        or len(current_catalog["theorems"]) != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or current_catalog["theorems"][:v24.EXPECTED_ALPHA_V24_COUNT]
+        != catalog.get("theorems")
         or tuple(current_alpha.ALPHA_ENTRIES[: v24.EXPECTED_ALPHA_V24_COUNT])
         != v24.ALPHA_ENTRIES
         or any(
@@ -396,7 +424,7 @@ def _load_inputs() -> dict[str, Any]:
         )
     ):
         raise ResearchLayerExplorerError(
-            "the current Alpha-v25 channel changed its sealed historical Alpha-v24 admission"
+            "the current Alpha-v27 channel changed its sealed historical Alpha-v24 admission"
         )
     parent = catalog.get("parent_alpha_v23")
     if (
@@ -457,56 +485,15 @@ def _load_inputs() -> dict[str, Any]:
 
     campaign = json.loads(CAMPAIGN.read_bytes())
     graph = json.loads(GLOBAL_DEFINITIONS.read_bytes())
-    canonical = json.dumps(
-        campaign, ensure_ascii=False, allow_nan=False, separators=(",", ":"), sort_keys=True
-    ).encode("utf-8")
-    if (
-        campaign.get("meta", {}).get("current_alpha_version") != "v25"
-        or campaign.get("meta", {}).get("current_alpha_checked_use_count")
-        != current_alpha.EXPECTED_ALPHA_V25_COUNT
-        or graph.get("definition_count") != EXPECTED_BLUEPRINT_DEFINITION_COUNT
-        or graph.get("definition_count") != len(campaign.get("definitions", ()))
-        or graph.get("reviewed_definition_count") != len(_definition_specs())
-        or graph.get("compatible_reviewed_match_count")
-        != EXPECTED_COMPATIBLE_DEFINITION_COUNT
-        or graph.get("campaign_snapshot_sha256") != _digest(canonical)
-    ):
-        raise ResearchLayerExplorerError("the global Alpha-v25 atlas definition artifact is stale")
+    original._audit_current_atlas(campaign, graph, error_type=ResearchLayerExplorerError)
     blueprint = campaign.get("definitions")
     if not isinstance(blueprint, dict):
         raise ResearchLayerExplorerError("the global atlas has no exact named definition registry")
     goals = {item["id"]: item for item in campaign.get("nodes", ())}
-    open_partial_roots = {
-        "T13": "signed_matrix_cofactor_family_and_fold_exists",
-        "G095": "beta_horner_hensel_lift_exists",
-        "G011": "crt_merge_compatible_prefix_canonical_exists_unique",
-    }
-    current_positions = {
-        row.name: row.node_id for row in breakthrough_layer_plan().rows
-    }
-    for goal, root in open_partial_roots.items():
-        node = goals.get(goal)
-        evidence = node.get("evidence") if isinstance(node, dict) else None
-        theorem = current_alpha.entry(root, edition="alpha")
-        if (
-            not isinstance(node, dict)
-            or node.get("status") != "open"
-            or not isinstance(evidence, dict)
-            or evidence.get("alpha_version") != "v25"
-            or evidence.get("checked_use") is not False
-            or evidence.get("partial_component_checked_use") is not True
-            or evidence.get("partial_theorem_name") != root
-            or evidence.get("independent_lean_bundle_verified") is not True
-            or theorem is None
-            or evidence.get("partial_theorem_statement_sha256")
-            != _digest(theorem.spec.statement)
-            or evidence.get("bundle_sha256") != EXPECTED_BREAKTHROUGH_LAYER_BUNDLE_SHA256
-            or evidence.get("bundle_nodes") != EXPECTED_BREAKTHROUGH_LAYER_BUNDLE_NODE_COUNT
-            or evidence.get("bundle_node_id") != current_positions.get(root)
-        ):
-            raise ResearchLayerExplorerError(
-                f"OPEN milestone lacks an honestly separated checked partial theorem: {goal}"
-            )
+    for goal in original.SECOND_WAVE_COMPLETIONS:
+        original._audit_second_wave_milestone(
+            goal, goals.get(goal), current_catalog, error_type=ResearchLayerExplorerError
+        )
 
     enrollment = alpha_v24_enrollment()
     if len(enrollment.frontier_specs) != FRONTIER_V24_EXPECTED_COUNT:
@@ -544,10 +531,7 @@ def _definition_records(
 ) -> tuple[tuple[DefinitionSpec, ...], list[dict[str, Any]]]:
     specs = _definition_closure(family.definitions)
     by_name = {item.name: item for item in specs}
-    reviewed_links = {
-        row["reviewed_name"]: row
-        for row in inputs["global_graph"]["compatible_reviewed_matches"]
-    }
+    reviewed_links = original._preferred_reviewed_matches(inputs["global_graph"])
     global_reviewed = {
         row["name"]: row for row in inputs["global_graph"]["reviewed_definitions"]
     }
@@ -729,7 +713,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
             "enrolled_in_alpha": True,
             "alpha_evidence": "alpha_closed",
             "alpha_checked_use": True,
-            "alpha_edition_version": "v25",
+            "alpha_edition_version": "v27",
             "alpha_first_enrolled_version": "v24",
             "stable_member": False,
             "admitted_to_alpha": True,
@@ -816,9 +800,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
         "campaign_family_id": family.family_id,
         "campaign_goal_id": family.milestones[-1],
         "campaign_milestone_ids": list(family.milestones),
-        "milestone_status": "open",
-        "milestone_checked_use": False,
-        "milestone_partial_checked_use": True,
+        **original._completed_milestone_metadata(family.milestones[-1]),
         "milestone_caveat": family.caveat,
         "root_names": list(family.roots),
         "nodes": nodes,
@@ -838,10 +820,11 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
         "statement_definition_use_count": len(usage_edges),
         "formal_line_count": sum(len(node["script"]) for node in nodes),
         "candidate_status": STATUS,
-        "alpha_edition_version": "v25",
+        "alpha_edition_version": "v27",
         "alpha_first_enrolled_version": "v24",
         "alpha_edition_identity_sha256": inputs["catalog"]["edition_identity_sha256"],
         "alpha_catalog_sha256": inputs["catalog_sha256"],
+        "alpha_first_enrollment_catalog_sha256": inputs["first_admission_catalog_sha256"],
         "alpha_proof_bundle_sha256": inputs["bundle"]["artifact_sha256"],
         "independent_lean_bundle_verified": True,
         "alpha_enrolled_node_count": len(nodes),
@@ -860,15 +843,13 @@ def _graph_payload(
 ) -> dict[str, Any]:
     graph = original._graph_payload(family, corpus, revision=revision)
     graph["schema"] = f"{SCHEMA}-graph"
-    graph["alpha_edition_version"] = "v25"
+    graph["alpha_edition_version"] = "v27"
     graph["alpha_first_enrolled_version"] = "v24"
-    graph["milestone_status"] = "open"
-    graph["milestone_checked_use"] = False
-    graph["milestone_partial_checked_use"] = True
+    graph.update(original._completed_milestone_metadata(family.milestones[-1]))
     graph["milestone_caveat"] = family.caveat
     for node in graph["nodes"]:
         if node["kind"] == "theorem":
-            node["alpha_edition_version"] = "v25"
+            node["alpha_edition_version"] = "v27"
             node["alpha_first_enrolled_version"] = "v24"
     return graph
 
@@ -877,7 +858,7 @@ def _retarget(document: bytes, family: Family, *, include_caveat: bool = False) 
     text = document.decode("utf-8")
     old_caveat = (
         "Every displayed theorem was first admitted in Alpha v20, remains independently "
-        "kernel- and Lean-verified for current Alpha v25 checked use, and has not been "
+        "kernel- and Lean-verified for current Alpha v27 checked use, and has not been "
         "promoted to Stable."
     )
     text = text.replace(old_caveat, family.caveat)
@@ -892,7 +873,7 @@ def _retarget(document: bytes, family: Family, *, include_caveat: bool = False) 
     text = text.replace("590-node bundle", f"{count}-node bundle")
     text = text.replace("all 590 exact bundle nodes", f"all {count} exact bundle nodes")
     text = text.replace(" / 590</dd>", f" / {count}</dd>")
-    if include_caveat:
+    if include_caveat and _e(family.caveat) not in text:
         marker = '<section class="pd-statement">'
         callout = f'<p class="pd-callout">{_e(family.caveat)}</p>'
         if marker in text:
@@ -910,18 +891,18 @@ def _top_index(
         f"{_e(family.title)}</a></h2><p>{_e(family.description)}</p>"
         f"<p>{corpus['node_count']} independently kernel- and Lean-verified theorems · "
         f"{corpus['definition_count']} conservative definitions · "
-        f"{family.milestones[-1]} broader milestone remains OPEN</p>"
+        f"{family.milestones[-1]} now closed in its separate second-wave branch</p>"
         f'<p class="pd-callout">{_e(family.caveat)}</p></article>'
         for family, corpus in corpora
     )
     body = f"""<main class="proof-home proof-library-home"><header class="proof-hero">
- <p class="eyebrow">ALPHA v25 · HISTORICAL v24 INDEPENDENTLY VERIFIED RESEARCH FOUNDATIONS</p>
+ <p class="eyebrow">ALPHA v27 · HISTORICAL v24 INDEPENDENTLY VERIFIED RESEARCH FOUNDATIONS</p>
  <h1>Signed matrix minors, formal derivatives, and finite Chinese remaindering</h1>
- <p>Independently original-kernel- and Lean-verified proof families advance three broad open mathematical campaigns without claiming their stronger unfinished milestones.</p>
+ <p>Independently original-kernel- and Lean-verified historical foundations, with links to the separate second-wave proofs that now complete their broader milestones.</p>
  <nav><a href="{_versioned('../', revision)}">Proof library</a>
  <a href="{_versioned('../grand-campaign/', revision)}">Complete number-theory campaign atlas</a></nav>
  </header><section class="proof-grid">{entries}</section>
- <p>Each displayed theorem first admitted in historical Alpha v24 retains current Alpha-v25 checked-use authority; T13, G095 and G011 remain OPEN, and Stable remains an unchanged separate edition.</p></main>"""
+ <p>Each displayed theorem first admitted in historical Alpha v24 retains current Alpha-v27 checked-use authority. These old components retain their partial scope; the separate second-wave branches now close T13, G095 and G011. Stable remains an unchanged separate edition.</p></main>"""
     return original._document(
         FAMILIES[0], title="Three Constructive Number-Theory Research Foundations",
         body=body, prefix="", defined=False,
@@ -947,7 +928,7 @@ def build_files() -> dict[str, bytes]:
         prefix = family.slug
         files[f"{prefix}/index.html"] = render_canonical_family_landing(
             family, corpus, revision=revision,
-            current_alpha_version="v25", first_admitted_version="v24",
+            current_alpha_version="v27", first_admitted_version="v24",
             bundle_node_count=EXPECTED_RESEARCH_LAYER_BUNDLE_NODE_COUNT,
         )
         files[f"{prefix}/api/corpus.json"] = _json(corpus)
@@ -994,15 +975,17 @@ def build_files() -> dict[str, bytes]:
             )
         built.append((family, corpus))
     files["index.html"] = _top_index(built, revision=revision)
+    original._link_second_wave_completions(files, FAMILIES, revision=revision)
     inventory = [
         {"path": name, "bytes": len(payload), "sha256": _digest(payload)}
         for name, payload in sorted(files.items())
     ]
     manifest = {
         "schema": f"{SCHEMA}-manifest",
-        "alpha_edition_version": "v25",
+        "alpha_edition_version": "v27",
         "alpha_first_enrolled_version": "v24",
         "catalog_sha256": inputs["catalog_sha256"],
+        "first_enrollment_catalog_sha256": inputs["first_admission_catalog_sha256"],
         "html_revision": revision,
         "edition_identity_sha256": inputs["catalog"]["edition_identity_sha256"],
         "proof_bundle_sha256": inputs["bundle"]["artifact_sha256"],
@@ -1015,14 +998,12 @@ def build_files() -> dict[str, bytes]:
             {
                 "slug": family.slug,
                 "campaign": family.campaign.value,
-                "alpha_edition_version": "v25",
+                "alpha_edition_version": "v27",
                 "alpha_first_enrolled_version": "v24",
                 "domain": family.domain,
                 "family": family.family_id,
                 "milestones": list(family.milestones),
-                "milestone_status": "open",
-                "milestone_checked_use": False,
-                "milestone_partial_checked_use": True,
+                **original._completed_milestone_metadata(family.milestones[-1]),
                 "theorem_count": corpus["node_count"],
                 "definition_count": corpus["definition_count"],
                 "root_tags": {name: corpus["tags"][name] for name in family.roots},

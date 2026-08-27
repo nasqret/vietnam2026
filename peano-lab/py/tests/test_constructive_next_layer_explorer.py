@@ -1,8 +1,8 @@
-"""Fail-closed audit of four historical Alpha-v20 / current Alpha-v25 explorers.
+"""Fail-closed audit of four historical Alpha-v20 / current Alpha-v27 explorers.
 
 These documentation tests never decode, construct, replay, or check a proof
 bundle. Original admission remains solely with the immutable Alpha-v20 proof;
-the explorer additionally authenticates current Alpha-v25 checked authority.
+the explorer additionally authenticates current Alpha-v27 checked authority.
 """
 
 from __future__ import annotations
@@ -13,6 +13,7 @@ from dataclasses import replace
 from hashlib import sha256
 import html
 from html.parser import HTMLParser
+import importlib
 import json
 from pathlib import Path
 import subprocess
@@ -62,7 +63,7 @@ def corpora(generated: dict[str, bytes]) -> dict[str, dict[str, Any]]:
     }
 
 
-def test_manifest_is_bound_to_current_v24_and_immutable_v20_first_admission(
+def test_manifest_is_bound_to_current_v27_and_immutable_v20_first_admission(
     generated: dict[str, bytes], inputs: dict[str, Any]
 ) -> None:
     manifest = json.loads(generated["manifest.json"])
@@ -73,7 +74,7 @@ def test_manifest_is_bound_to_current_v24_and_immutable_v20_first_admission(
     ).hexdigest()
     assert manifest["html_revision"] == sha256(actual_catalog).hexdigest()[:12]
     assert manifest["edition_identity_sha256"] == inputs["current_edition_identity_sha256"]
-    assert manifest["alpha_edition_version"] == "v25"
+    assert manifest["alpha_edition_version"] == "v27"
     assert manifest["alpha_first_enrolled_version"] == "v20"
     assert manifest["proof_bundle_sha256"] == inputs["bundle"]["artifact_sha256"]
     assert manifest["independent_lean_bundle_verified"] is True
@@ -116,7 +117,7 @@ def test_historical_v20_family_landing_reuses_quadratic_reciprocity_structure(
     assert 'class="proof-hero"' not in source
     assert source.count('<article class="view-card') == 3
     assert f'href="../assets/proofs.css?v={revision}"' in source
-    assert "Alpha v25 checked-use theorem family" in source
+    assert "Alpha v27 checked-use theorem family" in source
     assert "first admitted v20" in source
     assert "independently accept all 590 bundle nodes" in source
     assert corpus["alpha_proof_bundle_sha256"] in source
@@ -141,7 +142,7 @@ def test_family_boundaries_and_exact_checked_release_rows(
     assert corpus["campaign_domain_id"] == domain
     assert corpus["campaign_family_id"] == family
     assert tuple(corpus["campaign_milestone_ids"]) == milestones
-    assert corpus["alpha_edition_version"] == "v25"
+    assert corpus["alpha_edition_version"] == "v27"
     assert corpus["alpha_first_enrolled_version"] == "v20"
     assert corpus["alpha_proof_bundle_sha256"] == inputs["bundle"]["artifact_sha256"]
     assert corpus["independent_lean_bundle_verified"] is True
@@ -158,7 +159,7 @@ def test_family_boundaries_and_exact_checked_release_rows(
         assert node["body_proof_depth"] == closure["body_proof_depth"]
         assert node["sources"][0]["script_sha256"] == original["script_sha256"]
         assert node["alpha_checked_use"] is True
-        assert node["alpha_edition_version"] == "v25"
+        assert node["alpha_edition_version"] == "v27"
         assert node["alpha_first_enrolled_version"] == "v20"
         assert node["independent_lean_bundle_verified"] is True
         assert node["stable_member"] is False
@@ -440,7 +441,7 @@ def test_all_theorem_definition_graph_and_atlas_pages_are_navigable(
 
     graph = generated[f"{slug}/explorer/defined/graph.html"].decode()
     assert "window.PA_DEFINED_GRAPH=" in graph
-    assert "Alpha v25 checked-use theorem" in graph
+    assert "Alpha v27 checked-use theorem" in graph
     assert "first admitted v20" in graph
     assert "independently kernel and Lean verified" in graph
     assert "proof_dependency" in graph
@@ -448,19 +449,27 @@ def test_all_theorem_definition_graph_and_atlas_pages_are_navigable(
     assert all(f"focus={milestone}" in html.unescape(graph) for milestone in milestones)
 
 
-def test_matrix_explorer_never_claims_the_full_open_t13_milestone(
+def test_matrix_explorer_links_new_full_t13_without_upgrading_old_components(
     generated: dict[str, bytes], corpora: dict[str, dict[str, Any]]
 ) -> None:
     slug = "matrix-dot-product"
     landing = generated[f"{slug}/index.html"].decode()
-    assert "T13 milestone remains OPEN" in landing
-    assert "arbitrary signed matrix" in landing
-    assert "arbitrary-dimensional determinants, rank, and lattices remain open" in landing
+    assert "Historical partial components only" in landing
+    assert "T13 is now closed" in landing
+    assert "integer-linear-algebra/" in landing
+    assert 'data-current-milestone="T13"' in landing
+    assert "lattice index or normal-form" in landing
+    assert corpora[slug]["historical_component_only"] is True
+    assert corpora[slug]["historical_milestone_status"] == "open"
+    assert corpora[slug]["milestone_status"] == "alpha_closed"
+    assert "rectangular_matrix_rank_exists_unique" not in corpora[slug]["tags"]
     for node in corpora[slug]["nodes"]:
         tag = corpora[slug]["tags"][node["name"]]
         defined = generated[f"{slug}/explorer/defined/tag/{tag}.html"].decode()
-        assert "T13 remains open" in defined
-        assert "not a proof of the full matrix-ring" in defined
+        assert "Historical partial components only" in defined
+        assert "do not themselves establish the full T13 substrate" in defined
+        assert "Full T13 proof · Alpha v27" in defined
+        assert "integer-linear-algebra/" in defined
 
 
 @pytest.mark.parametrize(
@@ -725,3 +734,262 @@ process.stdout.write(JSON.stringify({
     assert result["getterOnlySvgHref"] is True
     assert result["viewportRendered"] is True
     assert "theorem nodes" in result["summary"]
+
+
+@pytest.mark.parametrize("mutation", ("version", "checked_count", "blueprint_count", "reviewed_count", "snapshot", "edge", "authority"))
+def test_current_atlas_accepts_only_the_exact_additive_graph(mutation: str) -> None:
+    campaign = json.loads(explorer.CAMPAIGN.read_text())
+    graph = json.loads(explorer.GLOBAL_DEFINITIONS.read_text())
+    explorer._audit_current_atlas(campaign, graph)
+    # Current checked-use authority does not relabel historical first admission.
+    assert explorer.CURRENT_CATALOG.name == "catalog-v27.json"
+    assert explorer.CATALOG.name == "catalog-v20.json"
+    if mutation == "version":
+        campaign["meta"]["current_alpha_version"] = "v25"
+    elif mutation == "checked_count":
+        campaign["meta"]["current_alpha_checked_use_count"] = 2_080
+    elif mutation == "blueprint_count":
+        graph["definition_count"] -= 1
+    elif mutation == "reviewed_count":
+        graph["reviewed_definition_count"] -= 1
+    elif mutation == "snapshot":
+        graph["campaign_snapshot_sha256"] = "0" * 64
+    elif mutation == "edge":
+        graph["definition_edges"][0]["target"] = "MissingDefinition"
+    else:
+        graph["authority_policy"]["notation_edges"] = "notation grants theorem authority"
+    with pytest.raises(explorer.NextLayerExplorerError, match="atlas definition artifact"):
+        explorer._audit_current_atlas(campaign, graph)
+
+
+CURRENT_RELEASE_PUBLISHERS = (
+    ("build_constructive_next_layer_explorer", "NextLayerExplorerError", "v20"),
+    ("build_constructive_advanced_layer_explorer", "AdvancedLayerExplorerError", "v21"),
+    ("build_constructive_transport_layer_explorer", "TransportLayerExplorerError", "v22"),
+    ("build_constructive_milestone_closure_explorer", "MilestoneClosureExplorerError", "v23"),
+)
+
+
+@pytest.mark.parametrize(("module_name", "error_name", "first_version"), CURRENT_RELEASE_PUBLISHERS)
+def test_current_v27_publishers_preserve_the_full_first_admission_catalog(
+    module_name: str, error_name: str, first_version: str
+) -> None:
+    publisher = importlib.import_module(module_name)
+    inputs = publisher._load_inputs()
+    channels = json.loads(publisher.CURRENT_CHANNELS.read_text())
+    current = inputs["current_catalog"]
+    assert publisher.CATALOG.name == f"catalog-{first_version}.json"
+    assert publisher.CURRENT_CATALOG.name == "catalog-v27.json"
+    assert publisher.CURRENT_CHANNELS.name == "channels-v27.json"
+    assert current["schema"] == "peano-library-alpha-snapshot-v27"
+    assert current["theorem_count"] == current["checked_use_count"] == (
+        publisher.current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+    )
+    assert current["stable_count"] == 432
+    assert current["theorems"][:publisher.EXPECTED_ALPHA_COUNT] == inputs["catalog"]["theorems"]
+    assert inputs["catalog"]["schema"] == f"peano-library-alpha-snapshot-{first_version}"
+    assert channels["parent_channels_v26"] == {
+        "path": "artifacts/peano-library/channels-v26.json",
+        "sha256": sha256(
+            (ROOT / "artifacts/peano-library/channels-v26.json").read_bytes()
+        ).hexdigest(),
+    }
+    for spec in inputs["enrollment"].frontier_specs:
+        checked = publisher.current_alpha.entry(spec.name, edition="alpha")
+        assert checked is not None and checked.checked_use
+        assert checked.spec == spec
+
+
+@pytest.mark.parametrize(("module_name", "error_name", "first_version"), CURRENT_RELEASE_PUBLISHERS)
+@pytest.mark.parametrize(
+    "mutation",
+    (
+        "channels_schema", "parent_path", "parent_digest", "catalog_digest",
+        "catalog_schema", "theorem_count", "checked_count", "edition_identity",
+        "enrollment_identity", "inherited_statement", "inherited_script",
+        "inherited_body_digest", "inherited_order",
+    ),
+)
+def test_current_publishers_reject_mutated_release_or_historical_proof_rows(
+    module_name: str,
+    error_name: str,
+    first_version: str,
+    mutation: str,
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    publisher = importlib.import_module(module_name)
+    catalog = json.loads(publisher.CURRENT_CATALOG.read_bytes())
+    channels = json.loads(publisher.CURRENT_CHANNELS.read_text())
+    if mutation == "channels_schema":
+        channels["schema"] = "peano-library-channels-v25"
+    elif mutation == "parent_path":
+        channels["parent_channels_v26"]["path"] = "artifacts/peano-library/channels-v24.json"
+    elif mutation == "parent_digest":
+        channels["parent_channels_v26"]["sha256"] = "0" * 64
+    elif mutation == "catalog_schema":
+        catalog["schema"] = f"peano-library-alpha-snapshot-{first_version}"
+    elif mutation == "theorem_count":
+        catalog["theorem_count"] -= 1
+    elif mutation == "checked_count":
+        catalog["checked_use_count"] -= 1
+    elif mutation == "edition_identity":
+        catalog["edition_identity_sha256"] = "0" * 64
+    elif mutation == "enrollment_identity":
+        catalog["ordered_enrollment_root_sha256"] = "0" * 64
+    elif mutation == "inherited_statement":
+        catalog["theorems"][0]["statement"] = "0 = S 0"
+    elif mutation == "inherited_script":
+        catalog["theorems"][0]["script"] = ["exact fabricated_proof"]
+    elif mutation == "inherited_body_digest":
+        catalog["theorems"][0]["empty_context_closure"]["certificate_sha256"] = "0" * 64
+    elif mutation == "inherited_order":
+        catalog["theorems"][0], catalog["theorems"][1] = catalog["theorems"][1], catalog["theorems"][0]
+
+    # Simulate changed file bytes with a matching channel checksum: metadata
+    # and complete historical rows must still authenticate independently.
+    catalog_bytes = json.dumps(catalog).encode()
+    catalog_digest = sha256(catalog_bytes).hexdigest()
+    channels["channels"]["alpha"]["artifact_sha256"] = (
+        "0" * 64 if mutation == "catalog_digest" else catalog_digest
+    )
+    original_read_bytes = Path.read_bytes
+    original_read_text = Path.read_text
+    original_file_digest = publisher._file_digest
+
+    def read_bytes(path: Path) -> bytes:
+        return catalog_bytes if path == publisher.CURRENT_CATALOG else original_read_bytes(path)
+
+    def read_text(path: Path, *args: Any, **kwargs: Any) -> str:
+        return json.dumps(channels) if path == publisher.CURRENT_CHANNELS else original_read_text(path, *args, **kwargs)
+
+    def file_digest(path: Path) -> str:
+        return catalog_digest if path == publisher.CURRENT_CATALOG else original_file_digest(path)
+
+    monkeypatch.setattr(Path, "read_bytes", read_bytes)
+    monkeypatch.setattr(Path, "read_text", read_text)
+    monkeypatch.setattr(publisher, "_file_digest", file_digest)
+    with pytest.raises(getattr(publisher, error_name), match="current immutable Alpha-v27"):
+        publisher._load_inputs()
+
+
+def test_v27_retains_exact_v26_objects_all_old_receipts_and_channel_ancestry(inputs: dict) -> None:
+    catalog = inputs["current_catalog"]
+    channels = json.loads(explorer.CURRENT_CHANNELS.read_bytes())
+    parent = json.loads((ROOT / "artifacts/peano-library/alpha/catalog-v26.json").read_bytes())
+    parent_channels = json.loads((ROOT / "artifacts/peano-library/channels-v26.json").read_bytes())
+    older_channels = json.loads((ROOT / "artifacts/peano-library/channels-v25.json").read_bytes())
+    explorer._audit_current_parent(catalog, channels)
+    assert catalog["theorems"][:2138] == parent["theorems"]
+    assert all(
+        current is historical
+        for current, historical in zip(explorer.current_alpha.ALPHA_ENTRIES, explorer.v26.ALPHA_ENTRIES)
+    )
+    assert channels["channels"]["stable"] == parent_channels["channels"]["stable"]
+    assert parent_channels["channels"]["stable"] == older_channels["channels"]["stable"]
+    for key, value in parent.items():
+        if key.startswith("parent_alpha_") or key.endswith("_promotion"):
+            assert catalog[key] == value
+
+
+@pytest.mark.parametrize("mutation", ("v26_catalog", "v26_channels", "v25_channels", "object_identity"))
+def test_current_parent_audit_rejects_changes_beneath_the_new_channel(
+    inputs: dict, mutation: str, monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    catalog = inputs["current_catalog"]
+    channels = json.loads(explorer.CURRENT_CHANNELS.read_bytes())
+    if mutation == "object_identity":
+        entries = list(explorer.current_alpha.ALPHA_ENTRIES)
+        entries[0] = replace(entries[0])
+        assert entries[0] == explorer.v26.ALPHA_ENTRIES[0]
+        assert entries[0] is not explorer.v26.ALPHA_ENTRIES[0]
+        monkeypatch.setattr(explorer.current_alpha, "ALPHA_ENTRIES", tuple(entries))
+    else:
+        path = ROOT / {
+            "v26_catalog": "artifacts/peano-library/alpha/catalog-v26.json",
+            "v26_channels": "artifacts/peano-library/channels-v26.json",
+            "v25_channels": "artifacts/peano-library/channels-v25.json",
+        }[mutation]
+        read_bytes = Path.read_bytes
+        monkeypatch.setattr(
+            Path, "read_bytes", lambda current: b"{}\n" if current == path else read_bytes(current)
+        )
+    with pytest.raises(explorer.NextLayerExplorerError, match="v26/v25 ancestry"):
+        explorer._audit_current_parent(catalog, channels)
+
+
+@pytest.mark.parametrize("goal", tuple(explorer.SECOND_WAVE_COMPLETIONS))
+@pytest.mark.parametrize(
+    "mutation",
+    (
+        "historical_missing", "historical_scope", "historical_statement", "historical_bundle",
+        "status", "root", "statement", "bundle", "node", "lean", "checked",
+        "partial_flag", "full_scope", "root_list",
+    ),
+)
+def test_closed_milestones_cannot_relabel_or_reuse_old_partial_proofs(
+    inputs: dict, goal: str, mutation: str,
+) -> None:
+    node = deepcopy(inputs["milestones"][goal])
+    catalog = inputs["current_catalog"]
+    explorer._audit_second_wave_milestone(goal, node, catalog)
+    if mutation == "historical_missing":
+        del node["historical_partial_evidence"]
+    elif mutation == "historical_scope":
+        node["historical_partial_evidence"]["checked_use"] = True
+    elif mutation == "historical_statement":
+        node["historical_partial_evidence"]["partial_theorem_statement_sha256"] = "0" * 64
+    elif mutation == "historical_bundle":
+        node["historical_partial_evidence"]["bundle_sha256"] = node["evidence"]["bundle_sha256"]
+    elif mutation == "status":
+        node["status"] = "open"
+    elif mutation == "root":
+        node["evidence"]["theorem_name"] = explorer.HISTORICAL_PARTIAL_ROOTS[goal]
+    elif mutation == "statement":
+        node["evidence"]["theorem_statement_sha256"] = "0" * 64
+    elif mutation == "bundle":
+        node["evidence"]["bundle_sha256"] = node["historical_partial_evidence"]["bundle_sha256"]
+    elif mutation == "node":
+        node["evidence"]["bundle_node_id"] += 1
+    elif mutation == "lean":
+        node["evidence"]["independent_lean_bundle_verified"] = False
+    elif mutation == "checked":
+        node["evidence"]["checked_use"] = False
+    elif mutation == "partial_flag":
+        node["evidence"]["partial_component_checked_use"] = True
+    elif mutation == "full_scope":
+        node["evidence"][explorer.SECOND_WAVE_REQUIRED_FLAGS[goal][0]] = False
+    else:
+        node["evidence"]["theorem_names"] = [explorer.HISTORICAL_PARTIAL_ROOTS[goal]]
+    with pytest.raises(explorer.NextLayerExplorerError, match="historical partial or full second-wave"):
+        explorer._audit_second_wave_milestone(goal, node, catalog)
+
+
+@pytest.mark.parametrize("name", ("BetaAt", "Factorial", "IsGCD"))
+def test_additive_canonical_alias_keeps_the_original_checked_destination(name: str) -> None:
+    blueprint = {"BetaAt": "Beta", "Factorial": "Fact", "IsGCD": "Gcd"}[name]
+    old = {"reviewed_name": name, "blueprint_name": blueprint, "reviewed_id": "PD-test", "route": "historical"}
+    new = {**old, "blueprint_name": name}
+    for rows in ([old, new], [new, old]):
+        assert explorer._preferred_reviewed_matches({"compatible_reviewed_matches": rows}) == {name: old}
+    with pytest.raises(explorer.NextLayerExplorerError, match="repeats the checked identity"):
+        explorer._preferred_reviewed_matches({"compatible_reviewed_matches": [old, old]})
+    with pytest.raises(explorer.NextLayerExplorerError, match="repeats the checked identity"):
+        explorer._preferred_reviewed_matches({"compatible_reviewed_matches": [old, {**new, "reviewed_id": "forged"}]})
+
+
+@pytest.mark.parametrize("suffix", ("index.html", "explorer/index.html", "explorer/defined/graph.html", "explorer/defined/tag/MD0006.html"))
+def test_completion_navigation_is_relative_at_every_historical_page_depth(suffix: str) -> None:
+    family = next(item for item in explorer.FAMILIES if item.slug == "matrix-dot-product")
+    path = f"{family.slug}/{suffix}"
+    original = (
+        f'<main class="shell family-main"><p>{html.escape(family.caveat)}</p></main>'
+    ).encode()
+    files = {path: original, "assets/defined-explorer.js": b"unchanged canonical asset"}
+    explorer._link_second_wave_completions(files, (family,), revision="012345abcdef")
+    page = files[path].decode()
+    target = "../" * path.count("/") + "integer-linear-algebra/?v=012345abcdef"
+    assert f'href="{target}"' in page
+    assert 'data-current-milestone="T13"' in page
+    assert family.caveat in html.unescape(page)
+    assert '<main class="shell family-main">' in page
+    assert files["assets/defined-explorer.js"] == b"unchanged canonical asset"

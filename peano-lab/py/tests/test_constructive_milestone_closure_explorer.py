@@ -1,4 +1,4 @@
-"""Historical v23 QR-design milestone proofs under current v25 authority."""
+"""Historical v23 QR-design milestone proofs under current v27 authority."""
 
 from __future__ import annotations
 
@@ -84,13 +84,13 @@ def corpora(generated: dict[str, bytes]) -> dict[str, dict]:
     return {slug: json.loads(generated[f"{slug}/api/corpus.json"]) for slug in EXPECTED}
 
 
-def test_manifest_authenticates_current_v24_and_immutable_v23_first_admission(
+def test_manifest_authenticates_current_v27_and_immutable_v23_first_admission(
     generated: dict[str, bytes], inputs: dict,
 ) -> None:
     manifest = json.loads(generated["manifest.json"])
     digest = sha256(explorer.CURRENT_CATALOG.read_bytes()).hexdigest()
     assert manifest["schema"] == "peano-lab-constructive-milestone-closure-explorer-v1-manifest"
-    assert manifest["alpha_edition_version"] == "v25"
+    assert manifest["alpha_edition_version"] == "v27"
     assert manifest["alpha_first_enrolled_version"] == "v23"
     assert manifest["catalog_sha256"] == digest
     assert manifest["first_enrollment_catalog_sha256"] == sha256(
@@ -161,7 +161,7 @@ def test_each_family_uses_the_exact_canonical_quadratic_reciprocity_structure(
     assert f'href="explorer/defined/?v={revision}"' in source
     assert f'href="explorer/?v={revision}"' in source
     assert "first admitted v23" in source
-    assert "Alpha v25 checked-use theorem family" in source
+    assert "Alpha v27 checked-use theorem family" in source
     assert "independently accept all 617 bundle nodes" in source
     assert "fully proved" in source
     assert corpus["alpha_proof_bundle_sha256"] in source
@@ -228,7 +228,7 @@ def test_all_three_milestones_are_genuinely_closed_not_open_or_body_only(
         assert node["proof_bundle_node_id"] == closure["bundle_node_id"]
         assert node["proof_bundle_sha256"] == closure["certificate_sha256"]
         assert node["body_proof_nodes"] == closure["body_proof_nodes"]
-        assert node["alpha_edition_version"] == "v25"
+        assert node["alpha_edition_version"] == "v27"
         assert node["alpha_first_enrolled_version"] == "v23"
         assert node["alpha_checked_use"]
         assert node["independent_lean_bundle_verified"]
@@ -347,7 +347,7 @@ def test_theorem_dependencies_notation_usage_and_definition_dags_stay_separate(
 ) -> None:
     corpus = corpora[slug]
     graph = json.loads(generated[f"{slug}/explorer/defined/api/graph.json"])
-    assert graph["alpha_edition_version"] == "v25"
+    assert graph["alpha_edition_version"] == "v27"
     assert graph["alpha_first_enrolled_version"] == "v23"
     assert graph["milestone_status"] == "alpha_closed"
     assert graph["milestone_checked_use"]
@@ -378,7 +378,7 @@ def test_major_root_pages_expose_complete_scripts_evidence_and_lean_receipts(
     exact = generated[f"{slug}/explorer/tag/{tag}.html"].decode()
     defined = generated[f"{slug}/explorer/defined/tag/{tag}.html"].decode()
     assert theorem in exact and theorem in defined
-    assert "Alpha v25" in defined
+    assert "Alpha v27" in defined
     assert "/ 617</dd>" in defined
     assert "all 617 exact bundle nodes" in defined
     assert "Actual proof prerequisites" in defined
@@ -418,7 +418,7 @@ def test_canonical_renderer_rejects_unsafe_family_and_missing_evidence_boundarie
             family,
             corpora["euclidean-logarithmic-bound"],
             revision=inputs["revision"],
-            current_alpha_version="v25",
+            current_alpha_version="v27",
             first_admitted_version="v23",
             bundle_node_count=617,
         )

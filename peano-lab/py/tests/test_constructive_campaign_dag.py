@@ -298,7 +298,8 @@ def test_partial_checked_components_never_close_open_research_milestones(
     changed = _milestone(
         campaign,
         index,
-        evidence={**campaign["nodes"][index]["evidence"], **updates},
+        status="open",
+        evidence={**campaign["nodes"][index]["historical_partial_evidence"], **updates},
     )
 
     with pytest.raises(synchronization.CampaignDagError, match=message):

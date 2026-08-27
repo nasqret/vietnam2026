@@ -30,6 +30,8 @@ PROOF_BUNDLES=(
   alpha-v23-milestone-closure-proof-bundle-v1.json
   alpha-v24-research-layer-proof-bundle-v1.json
   alpha-v25-breakthrough-layer-proof-bundle-v1.json
+  alpha-v26-first-wave-proof-bundle-v1.json
+  alpha-v27-second-wave-proof-bundle-v1.json
 )
 TMP_MANIFEST="$(mktemp)"
 trap 'rm -f "$TMP_MANIFEST"' EXIT

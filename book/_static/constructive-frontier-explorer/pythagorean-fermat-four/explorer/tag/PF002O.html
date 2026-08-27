@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PF002O — fermat_four_no_fourth — Exact Proof</title>
+  <link rel="stylesheet" href="../../../assets/exact-explorer.css?v=6dd0cf105c49">
+  <script defer src="../../../assets/exact-explorer.js?v=98f11fff5d34"></script>
+</head>
+<body class="pa-proof-site" data-page="theorem" data-family="pythagorean-fermat-four"><header class="pa-proof-header pa-theorem-heading">
+  <nav><a href="../index.html?v=481a9a378e54">Explorer</a><a href="../defined/tag/PF002O.html?v=481a9a378e54">Defined notation</a><a href="../defined/graph.html?target=PF002O&amp;v=481a9a378e54">Dependency graph</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F08&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="global" href="../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a href="PF002N.html?v=481a9a378e54">← fermat_four_no_square</a><a href="PF002P.html?v=481a9a378e54">fermat_four_equation_height_nonzero →</a></nav>
+  <p class="pa-tag">PF002O</p><h1>fermat_four_no_fourth</h1>
+  <p class="pa-status-candidate">Alpha v27 independently verified · alpha_closed; checked-use authorized; not Stable</p>
+  <p>Fermat&#x27;s last theorem for exponent four holds unconditionally for every positive natural triple in unchanged Heyting arithmetic.</p>
+</header>
+<main class="pa-theorem-layout">
+  <div class="pa-proof-panel">
+    <section class="pa-statement"><h2>Exact expanded first-order arithmetic statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>forall a b h. ~(a = 0) -&gt; ~(b = 0) -&gt; ~(h = 0) -&gt; ~(a * a * a * a + b * b * b * b = h * h * h * h)</code></pre></section>
+    <section class="pa-informal-proof" data-informal-kind="structural" data-informal-review="generated"><h2>Constructive proof overview</h2><p><strong>Generated structural guide</strong></p><p>Fermat&#x27;s last theorem for exponent four holds unconditionally for every positive natural triple in unchanged Heyting arithmetic.</p><p>The unchanged tactic script uses 2 declared prerequisites and contains 2 exact native proof lines.</p><p>dependency-curried kernel-checked theorem body; Alpha enrollment and checked-use authority follow separately sealed release evidence; Stable membership remains unchanged</p></section>
+    <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row"><a class="pa-theorem-ref" href="PF000G.html?v=481a9a378e54"><code>PF000G</code> fermat_four_no_fourth_from_descent</a> <a class="pa-theorem-ref" href="PF002M.html?v=481a9a378e54"><code>PF002M</code> fermat_four_strict_descent_proved</a></div><h3>Direct dependents</h3><div class="pa-chip-row"><span class="pa-empty">none</span></div></section>
+    <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. This exact body belongs to a complete independently kernel-checked constructive proof bundle and has Alpha checked-use authority; it does not imply Stable membership.</p><ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="apply" data-line-id="17bfe571c37cb81d"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">apply</span> <a class="pa-theorem-ref" href="PF000G.html?v=481a9a378e54">fermat_four_no_fourth_from_descent</a></code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="exact" data-line-id="e91baa11ab9664a5"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">exact</span> <a class="pa-theorem-ref" href="PF002M.html?v=481a9a378e54">fermat_four_strict_descent_proved</a></code></li></ol></section>
+  </div>
+  <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>9</dd><dt>Tactic lines</dt><dd>2</dd><dt>Alpha evidence</dt><dd>alpha_closed</dd><dt>Checked-use authority</dt><dd>Alpha v27; independently verified</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>9c058a04f2efb7f105017c15d34a94522937627b0008a4ea06305b66e0077cde</code></dd><dt>Exact script SHA-256</dt><dd><code>9f1628cc178ff536b715483bbaa2e10ca207330a72efe72751e64a0284bb10bb</code></dd><dt>Source module</dt><dd><code>peano_lab.library.fermat_four_descent_candidate</code></dd><dt>Factory</dt><dd><code>make_fermat_four_descent_candidate_theorems</code></dd></dl></aside>
+</main></body>
+</html>

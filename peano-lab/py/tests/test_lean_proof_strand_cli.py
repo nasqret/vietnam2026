@@ -216,13 +216,15 @@ def test_dependency_limit_stops_before_recursive_certificate_replay(
         "infinitely_many_primes_one_mod_four",
     ),
 )
-def test_historical_alpha_theorems_have_replay_free_current_v25_strands(
+def test_historical_alpha_theorems_have_replay_free_current_v27_strands(
     name: str,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v19, editions_v23, editions_v24, editions_v25
+    from peano_lab.library import (
+        editions_v19, editions_v23, editions_v24, editions_v25, editions_v26, editions_v27,
+    )
 
     monkeypatch.setattr(
         editions_v19,
@@ -264,11 +266,23 @@ def test_historical_alpha_theorems_have_replay_free_current_v25_strands(
         "checked_breakthrough_layer_bundle",
         lambda *_args, **_kwargs: pytest.fail("an Alpha-v25 outline loaded a proof bundle"),
     )
+    for module, provider in (
+        (editions_v26, "_checked_first_wave_bundle"),
+        (editions_v27, "_checked_second_wave_bundle"),
+    ):
+        monkeypatch.setattr(
+            module, "replay",
+            lambda *_args, **_kwargs: pytest.fail("a current Alpha outline replayed its proof"),
+        )
+        monkeypatch.setattr(
+            module, provider,
+            lambda *_args, **_kwargs: pytest.fail("a current Alpha outline loaded a proof bundle"),
+        )
 
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v25" in captured.out
+    assert "v27" in captured.out
     assert "no fresh Peano proof replay" in captured.err
 
 
@@ -281,30 +295,51 @@ def test_historical_alpha_theorems_have_replay_free_current_v25_strands(
         "signed_matrix_cofactor_family_and_fold_exists",
         "beta_horner_hensel_lift_exists",
         "crt_merge_compatible_prefix_canonical_exists_unique",
+        "coprime_square_product_factors",
+        "square_divides_square_root",
+        "pythagorean_positive_primitive_classification",
+        "fermat_four_complete_classification",
+        "fermat_four_positive_sum_not_square",
+        "signed_recursive_determinant_exists_unique",
+        "rectangular_matrix_rank_exists_unique",
+        "integer_column_span_add_exists",
+        "signed_recursive_determinant_integer_invariant",
+        "rectangular_matrix_rank_integer_invariant",
+        "positive_determinant_matrix_data_full_rank",
+        "integer_polynomial_prime_simple_root_lifts_all_positive_powers",
+        "crt_pairwise_compatible_prefix_normalized_exists_unique",
+        "multinomial_kummer_carry_valuation",
+        "prime_count_chebyshev_bounds",
+        "cornacchia_prime_two_squares_complete",
+        "prime_cauchy_davenport_sumset_bound",
     ),
 )
-def test_current_v25_frontier_outline_never_loads_actual_proof_artifacts(
+def test_current_v27_frontier_outline_never_loads_actual_proof_artifacts(
     name: str,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v25
+    from peano_lab.library import editions_v25, editions_v26, editions_v27
 
     def forbidden(*_args: object, **_kwargs: object) -> None:
-        pytest.fail("an Alpha-v25 metadata-only outline loaded an actual proof")
+        pytest.fail("an Alpha-v27 metadata-only outline loaded an actual proof")
 
     monkeypatch.setattr(editions_v25, "replay", forbidden)
     monkeypatch.setattr(editions_v25, "_checked_breakthrough_layer_bundle", forbidden)
+    monkeypatch.setattr(editions_v26, "replay", forbidden)
+    monkeypatch.setattr(editions_v26, "_checked_first_wave_bundle", forbidden)
+    monkeypatch.setattr(editions_v27, "replay", forbidden)
+    monkeypatch.setattr(editions_v27, "_checked_second_wave_bundle", forbidden)
 
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v25" in captured.out
+    assert "v27" in captured.out
     assert "no fresh Peano proof replay" in captured.err
 
 
-def test_current_v25_full_export_rejects_unavailable_actual_breakthrough_proof(
+def test_historical_v25_full_export_rejects_unavailable_actual_breakthrough_proof(
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
@@ -328,6 +363,60 @@ def test_current_v25_full_export_rejects_unavailable_actual_breakthrough_proof(
     captured = capsys.readouterr()
     assert "actual Alpha-v25 proof bytes are unavailable" in captured.err
     assert "theorem «crt_mod_one_universal»" not in captured.out
+
+
+def test_historical_v26_full_export_rejects_unavailable_actual_first_wave_proof(
+    exporter,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    from peano_lab.library import editions_v26
+
+    def unavailable() -> None:
+        raise editions_v26.EditionV26ReplayError("actual Alpha-v26 proof bytes are unavailable")
+
+    editions_v26.replay.cache_clear()
+    monkeypatch.setattr(editions_v26, "_checked_first_wave_bundle", unavailable)
+    assert exporter.main(["square_zero_root", "--edition", "alpha", "--format", "full"]) == 1
+    captured = capsys.readouterr()
+    assert "actual Alpha-v26 proof bytes are unavailable" in captured.err
+    assert "theorem «square_zero_root»" not in captured.out
+
+
+def test_current_v27_full_export_rejects_unavailable_actual_second_wave_proof(
+    exporter,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+) -> None:
+    from peano_lab.library import editions_v27
+
+    def unavailable() -> None:
+        raise editions_v27.EditionV27ReplayError("actual Alpha-v27 proof bytes are unavailable")
+
+    editions_v27.replay.cache_clear()
+    monkeypatch.setattr(editions_v27, "_checked_second_wave_bundle", unavailable)
+    name = "matrix_recursive_node_code_exists"
+    assert exporter.main([name, "--edition", "alpha", "--format", "full"]) == 1
+    captured = capsys.readouterr()
+    assert "actual Alpha-v27 proof bytes are unavailable" in captured.err
+    assert f"theorem «{name}»" not in captured.out
+
+
+@pytest.mark.parametrize("style", ("outline", "compact", "full"))
+def test_unsealed_current_alpha_cli_cannot_claim_checked_export(
+    exporter,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    style: str,
+) -> None:
+    from peano_lab.library import editions_v27
+
+    monkeypatch.setattr(editions_v27, "EXPECTED_ALPHA_V27_COUNT", 0)
+    assert exporter.main(["zero_add", "--edition", "alpha", "--format", style]) == 1
+    captured = capsys.readouterr()
+    assert "Alpha v27 is not sealed for checked use" in captured.err
+    assert "theorem «zero_add»" not in captured.out
+    assert exporter.main(["zero_add", "--format", "outline"]) == 0
 
 
 def test_unknown_theorem_is_never_rebranded_as_a_checked_strand() -> None:
@@ -648,10 +737,12 @@ def test_strict_readability_does_not_apply_to_other_export_modes() -> None:
     assert "only for proof strands" in result.stderr
 
 
+@pytest.mark.parametrize("diagnostic_tag", ("error:", "error(lean.unknownIdentifier):"))
 def test_real_lean_error_repairs_exactly_one_named_local_theorem(
     tmp_path: Path,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
+    diagnostic_tag: str,
 ) -> None:
     from peano_lab.library.lean_proof_strand import build_proof_strand, plan_proof_strand
 
@@ -669,7 +760,7 @@ def test_real_lean_error_repairs_exactly_one_named_local_theorem(
             source = root / candidate.relative_path
             raise exporter.LeanVerificationError(
                 "Lean rejected the generated theorem",
-                f"{source}:{first['source_line_start']}:3: error: unsupported tactic\n",
+                f"{source}:{first['source_line_start']}:3: {diagnostic_tag} unsupported tactic\n",
             )
 
     monkeypatch.setattr(exporter, "_verify_presentation_package", fake_verifier)
@@ -684,9 +775,11 @@ def test_real_lean_error_repairs_exactly_one_named_local_theorem(
     assert next(iter(_catalog(root)["strands"].values())) == repaired.manifest
 
 
+@pytest.mark.parametrize("diagnostic_tag", ("error:", "error(lean.unknownIdentifier):"))
 def test_real_lean_error_in_a_chunk_maps_to_its_exact_named_theorem(
     tmp_path: Path,
     exporter,
+    diagnostic_tag: str,
 ) -> None:
     from peano_lab.library.lean_proof_strand import build_proof_strand, plan_proof_strand
 
@@ -697,10 +790,11 @@ def test_real_lean_error_in_a_chunk_maps_to_its_exact_named_theorem(
     error = exporter.LeanVerificationError(
         "Lean rejected the generated theorem",
         f"{root / node['generated_relative_path']}:"
-        f"{node['source_line_start']}:2: error: local failure\n",
+        f"{node['source_line_start']}:2: {diagnostic_tag} local failure\n",
     )
 
     assert exporter._repairable_strand_node(error, package, root) == "zero_add"
+    assert "local failure" in exporter._summarize_failed_lean(error)
 
 
 def test_multiple_real_lean_errors_repair_one_bounded_dependency_order_batch(
@@ -753,11 +847,13 @@ def test_lean_failure_diagnostics_are_bounded_without_untrusted_placeholder_outp
 
 
 @pytest.mark.parametrize("failure", ("foreign", "foundation", "already_fallback"))
+@pytest.mark.parametrize("diagnostic_tag", ("error:", "error(lean.unknownIdentifier):"))
 def test_compiler_repair_never_guesses_non_readable_failure_locations(
     failure: str,
     tmp_path: Path,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
+    diagnostic_tag: str,
 ) -> None:
     from peano_lab.library.lean_proof_strand import build_proof_strand, plan_proof_strand
 
@@ -780,7 +876,7 @@ def test_compiler_repair_never_guesses_non_readable_failure_locations(
         line = 1 if failure == "foundation" else candidate.manifest["nodes"][0]["source_line_start"]
         raise exporter.LeanVerificationError(
             "Lean rejected the generated theorem",
-            f"{source}:{line}:1: error: malformed source\n",
+            f"{source}:{line}:1: {diagnostic_tag} malformed source\n",
         )
 
     monkeypatch.setattr(exporter, "_verify_presentation_package", fake_verifier)
@@ -854,12 +950,24 @@ def test_compiler_repair_never_retries_a_timeout_or_memory_failure(
     not (LEAN_PROJECT / ".lake" / "build" / "lib" / "lean" / "PeanoLab" / "Codec.olean").is_file(),
     reason="independently compiled sibling Lean companion is unavailable",
 )
-def test_real_lean_independently_compiles_entire_addition_commutativity_strand(
+@pytest.mark.parametrize(
+    ("name", "edition"),
+    (
+        ("add_comm", "stable"),
+        ("square_zero_root", "alpha"),
+        ("matrix_recursive_node_code_exists", "alpha"),
+    ),
+)
+def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
     tmp_path: Path,
+    name: str,
+    edition: str,
 ) -> None:
     package = tmp_path / "verified"
     result = _run(
-        "add_comm",
+        name,
+        "--edition",
+        edition,
         "--format",
         "strand",
         "--package-dir",
@@ -876,10 +984,15 @@ def test_real_lean_independently_compiles_entire_addition_commutativity_strand(
     assert "Independent Lean compilation: PASSED." in result.stderr
     catalog = _catalog(package)
     manifest = next(iter(catalog["strands"].values()))
-    source = (package / manifest["relative_path"]).read_text(encoding="utf-8")
-    assert "zero_add" in source
-    assert "add_succ_left" in source
-    assert "add_comm" in source
+    source = "\n".join((package / entry["relative_path"]).read_text(encoding="utf-8") for entry in manifest["files"])
+    assert name in source
+    if edition == "stable":
+        assert "zero_add" in source
+        assert "add_succ_left" in source
+    else:
+        assert manifest["edition_version"] == "v27"
+        if name == "square_zero_root":
+            assert "mul_eq_zero" in source
     assert "sorry" not in source
     assert "sorryAx" not in result.stderr
     assert "Lean.trustCompiler" not in result.stderr

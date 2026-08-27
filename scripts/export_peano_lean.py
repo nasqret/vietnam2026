@@ -49,7 +49,7 @@ LEAN_VERIFIER_SOURCE_MEMORY_AMPLIFICATION = 2_048
 _PACKAGE_TOKEN = re.compile(r"[A-Za-z][A-Za-z0-9_]*\Z")
 _SHA256 = re.compile(r"[0-9a-f]{64}\Z")
 _LEAN_ERROR_LOCATION = re.compile(
-    r"^(?P<source>.+\.lean):(?P<line>[0-9]+):[0-9]+: error:",
+    r"^(?P<source>.+\.lean):(?P<line>[0-9]+):[0-9]+: error(?:\([A-Za-z][A-Za-z0-9_.]*\))?:",
     re.MULTILINE,
 )
 _STRAND_AUTHORITY_FIELDS = frozenset(
@@ -1378,17 +1378,19 @@ def _load_selected_specification(args: argparse.Namespace) -> tuple[object | Non
     if args.edition == "stable":
         return get(args.theorem), None
 
-    from peano_lab.library import editions_v25
+    from peano_lab.library import editions_v27
 
-    item = editions_v25.entry(args.theorem, edition="alpha")
+    if not editions_v27.EXPECTED_ALPHA_V27_COUNT:
+        raise ValueError("Alpha v27 is not sealed for checked use")
+    item = editions_v27.entry(args.theorem, edition="alpha")
     if item is None:
-        return None, editions_v25
+        return None, editions_v27
     if not item.checked_use:
         raise ValueError(
             f"Alpha theorem {args.theorem!r} has evidence {item.evidence.value!r}; "
             "a complete export requires independently checked-use authority"
         )
-    return item.spec, editions_v25
+    return item.spec, editions_v27
 
 
 def _repairable_strand_nodes(
@@ -1440,7 +1442,7 @@ def _summarize_failed_lean(error: LeanVerificationError) -> str:
     """Avoid exposing thousands of cascading errors from a rejected candidate."""
 
     summary = next(
-        (line for line in error.diagnostics.splitlines() if ": error:" in line),
+        (line for line in error.diagnostics.splitlines() if _LEAN_ERROR_LOCATION.match(line)),
         "Lean rejected a generated proof candidate.",
     )
     encoded = summary.encode("utf-8")

@@ -192,7 +192,7 @@ async function failureChoiceIsDeterministicAndAtomic() {
   assert.deepStrictEqual(writes, []);
 }
 
-async function missingProofArtifactFailsBeforeAnyMount() {
+async function missingProofArtifactFailsBeforeAnyMount(missingArtifact) {
   const messages = [];
   const writes = [];
   const requests = new Map();
@@ -214,7 +214,7 @@ async function missingProofArtifactFailsBeforeAnyMount() {
   context.onmessage({ data: { type: "init", build: "missing-artifact" } });
 
   for (const relativePath of allRuntimeFiles) {
-    const failed = relativePath === listedProofArtifacts[0];
+    const failed = relativePath === missingArtifact;
     requests.get(relativePath).resolve({
       ok: !failed,
       status: failed ? 404 : 200,
@@ -225,7 +225,7 @@ async function missingProofArtifactFailsBeforeAnyMount() {
 
   assert.strictEqual(
     messages.find((message) => message.type === "error").msg,
-    "could not load " + listedProofArtifacts[0] + " (404)",
+    "could not load " + missingArtifact + " (404)",
   );
   assert.strictEqual(messages.some((message) => message.type === "ready"), false);
   assert.deepStrictEqual(writes, []);
@@ -249,10 +249,14 @@ async function missingProofArtifactFailsBeforeAnyMount() {
     "proof-artifacts/alpha-v23-milestone-closure-proof-bundle-v1.json",
     "proof-artifacts/alpha-v24-research-layer-proof-bundle-v1.json",
     "proof-artifacts/alpha-v25-breakthrough-layer-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v26-first-wave-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v27-second-wave-proof-bundle-v1.json",
   ]);
   await successfulBootIsConcurrentAndOrdered();
   await failureChoiceIsDeterministicAndAtomic();
-  await missingProofArtifactFailsBeforeAnyMount();
+  for (const artifact of listedProofArtifacts) {
+    await missingProofArtifactFailsBeforeAnyMount(artifact);
+  }
 })().catch((error) => {
   console.error(error.stack || String(error));
   process.exitCode = 1;

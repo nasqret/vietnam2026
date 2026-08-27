@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PD0049 — PowerQuotPrefix(p,n,b,c,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="multinomial-kummer"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=481a9a378e54">Definitions and proofs</a>
+       <a href="../graph.html?v=481a9a378e54">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=PowerQuotPrefix&amp;v=481a9a378e54">Global definition: PowerQuotPrefix</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=481a9a378e54">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=481a9a378e54">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F04&amp;v=481a9a378e54">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G035" href="../../../../grand-campaign/?view=goal&amp;focus=G035&amp;v=481a9a378e54">G035 milestone</a></nav>
+  <p class="pd-tag">PD0049</p><h1>PowerQuotPrefix(p,n,b,c,l)</h1>
+  <p>The beta-coded prefix stores the quotients of n by the first l positive powers of p.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ bls_index_bertrand_defined_power_quotients. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=481a9a378e54">Lt(bls_index_bertrand_defined_power_quotients,l)</a> → ∃ x. ∃ y. ∃ z. <a class="pd-definition-ref" data-definition="PD0020" href="PD0020.html?v=481a9a378e54">Pow(p,S bls_index_bertrand_defined_power_quotients,x)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=481a9a378e54">BetaAt(b,c,bls_index_bertrand_defined_power_quotients,y)</a> ∧ <a class="pd-definition-ref" data-definition="PD0007" href="PD0007.html?v=481a9a378e54">DivRem(n,x,y,z)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall bls_index_bertrand_defined_power_quotients. (exists bls_gap_bertrand_defined_power_quotients_bound. bls_gap_bertrand_defined_power_quotients_bound + S (bls_index_bertrand_defined_power_quotients) = (l)) -&gt; exists bls_power_bertrand_defined_power_quotients bls_quotient_bertrand_defined_power_quotients bls_remainder_bertrand_defined_power_quotients. ((exists bpvi_b_bls_bertrand_defined_power_quotients_power bpvi_c_bls_bertrand_defined_power_quotients_power. ((forall bpvi_i_bls_bertrand_defined_power_quotients_power. (exists bpvi_repeat_gap_bls_bertrand_defined_power_quotients_power. bpvi_repeat_gap_bls_bertrand_defined_power_quotients_power + S bpvi_i_bls_bertrand_defined_power_quotients_power = S bls_index_bertrand_defined_power_quotients) -&gt; (((exists bpvi_h_bls_bertrand_defined_power_quotients_power_repeat. bpvi_h_bls_bertrand_defined_power_quotients_power_repeat + S (p) = S ((S (bpvi_i_bls_bertrand_defined_power_quotients_power)) * bpvi_c_bls_bertrand_defined_power_quotients_power)) /\ exists bpvi_q_bls_bertrand_defined_power_quotients_power_repeat. bpvi_b_bls_bertrand_defined_power_quotients_power = bpvi_q_bls_bertrand_defined_power_quotients_power_repeat * S ((S (bpvi_i_bls_bertrand_defined_power_quotients_power)) * bpvi_c_bls_bertrand_defined_power_quotients_power) + (p)))) /\ (exists bpvi_u_bls_bertrand_defined_power_quotients_power bpvi_v_bls_bertrand_defined_power_quotients_power. ((((exists bpvi_h_bls_bertrand_defined_power_quotients_power_start. bpvi_h_bls_bertrand_defined_power_quotients_power_start + S (1) = S ((S (0)) * bpvi_v_bls_bertrand_defined_power_quotients_power)) /\ exists bpvi_q_bls_bertrand_defined_power_quotients_power_start. bpvi_u_bls_bertrand_defined_power_quotients_power = bpvi_q_bls_bertrand_defined_power_quotients_power_start * S ((S (0)) * bpvi_v_bls_bertrand_defined_power_quotients_power) + (1))) /\ ((((exists bpvi_h_bls_bertrand_defined_power_quotients_power_terminal. bpvi_h_bls_bertrand_defined_power_quotients_power_terminal + S (bls_power_bertrand_defined_power_quotients) = S ((S (S bls_index_bertrand_defined_power_quotients)) * bpvi_v_bls_bertrand_defined_power_quotients_power)) /\ exists bpvi_q_bls_bertrand_defined_power_quotients_power_terminal. bpvi_u_bls_bertrand_defined_power_quotients_power = bpvi_q_bls_bertrand_defined_power_quotients_power_terminal * S ((S (S bls_index_bertrand_defined_power_quotients)) * bpvi_v_bls_bertrand_defined_power_quotients_power) + (bls_power_bertrand_defined_power_quotients))) /\ forall bpvi_j_bls_bertrand_defined_power_quotients_power. (exists bpvi_product_gap_bls_bertrand_defined_power_quotients_power. bpvi_product_gap_bls_bertrand_defined_power_quotients_power + S bpvi_j_bls_bertrand_defined_power_quotients_power = S bls_index_bertrand_defined_power_quotients) -&gt; exists bpvi_factor_bls_bertrand_defined_power_quotients_power bpvi_partial_bls_bertrand_defined_power_quotients_power bpvi_successor_bls_bertrand_defined_power_quotients_power. ((((exists bpvi_h_bls_bertrand_defined_power_quotients_power_factor. bpvi_h_bls_bertrand_defined_power_quotients_power_factor + S (bpvi_factor_bls_bertrand_defined_power_quotients_power) = S ((S (bpvi_j_bls_bertrand_defined_power_quotients_power)) * bpvi_c_bls_bertrand_defined_power_quotients_power)) /\ exists bpvi_q_bls_bertrand_defined_power_quotients_power_factor. bpvi_b_bls_bertrand_defined_power_quotients_power = bpvi_q_bls_bertrand_defined_power_quotients_power_factor * S ((S (bpvi_j_bls_bertrand_defined_power_quotients_power)) * bpvi_c_bls_bertrand_defined_power_quotients_power) + (bpvi_factor_bls_bertrand_defined_power_quotients_power))) /\ ((((exists bpvi_h_bls_bertrand_defined_power_quotients_power_partial. bpvi_h_bls_bertrand_defined_power_quotients_power_partial + S (bpvi_partial_bls_bertrand_defined_power_quotients_power) = S ((S (bpvi_j_bls_bertrand_defined_power_quotients_power)) * bpvi_v_bls_bertrand_defined_power_quotients_power)) /\ exists bpvi_q_bls_bertrand_defined_power_quotients_power_partial. bpvi_u_bls_bertrand_defined_power_quotients_power = bpvi_q_bls_bertrand_defined_power_quotients_power_partial * S ((S (bpvi_j_bls_bertrand_defined_power_quotients_power)) * bpvi_v_bls_bertrand_defined_power_quotients_power) + (bpvi_partial_bls_bertrand_defined_power_quotients_power))) /\ ((((exists bpvi_h_bls_bertrand_defined_power_quotients_power_successor. bpvi_h_bls_bertrand_defined_power_quotients_power_successor + S (bpvi_successor_bls_bertrand_defined_power_quotients_power) = S ((S (S bpvi_j_bls_bertrand_defined_power_quotients_power)) * bpvi_v_bls_bertrand_defined_power_quotients_power)) /\ exists bpvi_q_bls_bertrand_defined_power_quotients_power_successor. bpvi_u_bls_bertrand_defined_power_quotients_power = bpvi_q_bls_bertrand_defined_power_quotients_power_successor * S ((S (S bpvi_j_bls_bertrand_defined_power_quotients_power)) * bpvi_v_bls_bertrand_defined_power_quotients_power) + (bpvi_successor_bls_bertrand_defined_power_quotients_power))) /\ bpvi_successor_bls_bertrand_defined_power_quotients_power = bpvi_partial_bls_bertrand_defined_power_quotients_power * bpvi_factor_bls_bertrand_defined_power_quotients_power)))))))) /\ ((((exists ff_h_bls_bertrand_defined_power_quotients_quotient_entry. ff_h_bls_bertrand_defined_power_quotients_quotient_entry + S (bls_quotient_bertrand_defined_power_quotients) = S ((S (bls_index_bertrand_defined_power_quotients)) * c)) /\ exists ff_q_bls_bertrand_defined_power_quotients_quotient_entry. b = ff_q_bls_bertrand_defined_power_quotients_quotient_entry * S ((S (bls_index_bertrand_defined_power_quotients)) * c) + (bls_quotient_bertrand_defined_power_quotients))) /\ ((n = bls_power_bertrand_defined_power_quotients * bls_quotient_bertrand_defined_power_quotients + bls_remainder_bertrand_defined_power_quotients /\ exists bls_remainder_gap_bertrand_defined_power_quotients_division. bls_remainder_gap_bertrand_defined_power_quotients_division + S (bls_remainder_bertrand_defined_power_quotients) = bls_power_bertrand_defined_power_quotients))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0007.html?v=481a9a378e54">DivRem(n,d,q,r)</a><a class="pd-chip" href="PD0013.html?v=481a9a378e54">BetaAt(b,c,i,x)</a><a class="pd-chip" href="PD0020.html?v=481a9a378e54">Pow(a,e,z)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0091.html?v=481a9a378e54">BinaryColumnCarryCount(p,a,b,e)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><span class="pd-empty">none directly; see definition consumers</span></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>5</dd>
+  <dt>Topological notation layer</dt><dd>3</dd>
+  <dt>Transitive prerequisites</dt><dd>6</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity PD0049.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>c89e442b76a056c8831e994d78c9555d48565d665ea51e69b7fe9eda31ded290</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-grand-campaign/";
+    } else if (/\/artifacts\/alpha-v27-second-wave-/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else return;
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

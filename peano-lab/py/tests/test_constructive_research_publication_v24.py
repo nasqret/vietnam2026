@@ -1,9 +1,11 @@
-"""Audit immutable Alpha-v24 research admission under current Alpha-v25 authority.
+"""Audit immutable Alpha-v24 admission under current Alpha-v27 publication.
 
 No test regenerates a snapshot, stages a website, starts a browser/server, or
 replays a proof.  In particular, the historically sealed Quadratic Reciprocity
-corpus is evidence in the immutable v23, v24, and v25 catalogs: its historical
+corpus is evidence in the immutable v23 through v27 catalogs: its historical
 bytes must never be silently replaced by the separate current reading surface.
+The QR/Bertrand reading snapshots retain their sealed v25 authority metadata;
+the constructive campaign publishers use v27 without changing first admission.
 """
 
 from __future__ import annotations
@@ -15,6 +17,7 @@ from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
+import sys
 
 import pytest
 
@@ -23,12 +26,16 @@ from peano_lab.library.proof_bundle import decode_formula
 
 
 ROOT = Path(__file__).resolve().parents[3]
+if str(ROOT / "scripts") not in sys.path:
+    sys.path.insert(0, str(ROOT / "scripts"))
 STATIC = ROOT / "book" / "_static"
 CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v24.json"
-CURRENT_CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
+SEALED_V25_CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
+CURRENT_CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
 PARENT_CATALOG_PATH = ROOT / "artifacts" / "peano-library" / "alpha" / "catalog-v23.json"
 CHANNELS_PATH = ROOT / "artifacts" / "peano-library" / "channels-v24.json"
-CURRENT_CHANNELS_PATH = ROOT / "artifacts" / "peano-library" / "channels-v25.json"
+SEALED_V25_CHANNELS_PATH = ROOT / "artifacts" / "peano-library" / "channels-v25.json"
+CURRENT_CHANNELS_PATH = ROOT / "artifacts" / "peano-library" / "channels-v27.json"
 CAMPAIGN_PATH = STATIC / "constructive-grand-campaign" / "campaign.json"
 DEFINITION_GRAPH_PATH = STATIC / "constructive-grand-campaign" / "definitions.json"
 BUNDLE_NAME = "alpha-v24-research-layer-proof-bundle-v1.json"
@@ -37,28 +44,44 @@ QR_CORPUS_PATH = STATIC / "pa-proof-explorer" / "api" / "corpus.json"
 QR_CURRENT_CORPUS_PATH = STATIC / "pa-proof-explorer" / "api" / "current-corpus.json"
 BERTRAND_CORPUS_PATH = STATIC / "bertrand-proof-explorer" / "api" / "corpus.json"
 
-ALPHA_VERSION = "v25"
-ALPHA_COUNT = 2_080
+SEALED_V25_VERSION = "v25"
+SEALED_V25_COUNT = 2_080
 FIRST_ADMISSION_VERSION = "v24"
 FIRST_ADMISSION_COUNT = 2_008
 STABLE_COUNT = 432
 PARENT_COUNT = 1_949
 NEW_THEOREM_COUNT = 59
-ALPHA_IDENTITY = "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
+SEALED_V25_IDENTITY = "3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28"
 FIRST_ADMISSION_IDENTITY = (
     "1f4390b8ca5784ece54857fa666007f884b79e2670ef8bb32b2710c10f298a1b"
 )
 PARENT_IDENTITY = "02059eef420eb96abd48c41bf62049a3cc69f025b00bed9dc3466e7eb2294a85"
-CATALOG_SHA256 = "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+SEALED_V25_CATALOG_SHA256 = "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
 FIRST_ADMISSION_CATALOG_SHA256 = (
     "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
 )
 PARENT_CATALOG_SHA256 = "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
-HTML_REVISION = CATALOG_SHA256[:12]
+ACTIVE_ATLAS_VERSION = "v27"
+ACTIVE_ATLAS_COUNT = 2_560
+ACTIVE_ATLAS_IDENTITY = "5c5935ed524b63827068cba37da222fc78b458de6c5af2e07cf572bb9fab7d05"
+ACTIVE_ATLAS_CATALOG_SHA256 = "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+ACTIVE_ATLAS_HTML_REVISION = ACTIVE_ATLAS_CATALOG_SHA256[:12]
 BUNDLE_SHA256 = "627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9"
-CURRENT_BUNDLE_SHA256 = (
+HISTORICAL_V25_BUNDLE_SHA256 = (
     "d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a"
 )
+SECOND_WAVE_BUNDLE_SHA256 = (
+    "c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d"
+)
+SECOND_WAVE_BRANCHES = {
+    "T13": ("integer-linear-algebra", "rectangular_matrix_rank_exists_unique"),
+    "G095": ("hensel-lifting", "integer_polynomial_prime_simple_root_lifts_all_positive_powers"),
+    "G011": ("generalized-crt", "crt_pairwise_compatible_prefix_normalized_exists_unique"),
+}
+SECOND_WAVE_SLUGS = {
+    "integer-linear-algebra", "hensel-lifting", "generalized-crt", "multinomial-kummer",
+    "prime-count-chebyshev", "cornacchia", "cauchy-davenport",
+}
 QR_CORPUS_SHA256 = "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a"
 
 LAYER_FAMILIES: tuple[tuple[str, tuple[str, ...]], ...] = (
@@ -104,6 +127,14 @@ LAYER_FAMILIES: tuple[tuple[str, tuple[str, ...]], ...] = (
 ALL_FAMILIES = tuple(
     (layer, slug) for layer, families in LAYER_FAMILIES for slug in families
 )
+HISTORICAL_FIRST_ADMISSION_BY_LAYER = {
+    "constructive-next-layer-explorer": "v20",
+    "constructive-advanced-layer-explorer": "v21",
+    "constructive-transport-layer-explorer": "v22",
+    "constructive-milestone-closure-explorer": "v23",
+    "constructive-research-layer-explorer": "v24",
+    "constructive-breakthrough-layer-explorer": "v25",
+}
 
 NEW_DEFINITIONS: dict[str, tuple[str, str]] = {
     "ND0046": ("MatrixSkipIndex", "matrix-determinant-minors"),
@@ -156,7 +187,7 @@ RESEARCH_ROOTS = (
     ),
 )
 
-CURRENT_MILESTONE_ROOTS = {
+HISTORICAL_PARTIAL_MILESTONE_ROOTS = {
     "T13": (
         "signed_matrix_cofactor_family_and_fold_exists",
         "1f013b934c7540f73e135257094d612345f43f3163b5ee7280dbe97f4f142d2a",
@@ -258,11 +289,14 @@ def bundle_record() -> list:
 
 def test_sealed_v24_catalog_channels_parent_and_exact_additive_counts(catalog: dict) -> None:
     channels = _json(CHANNELS_PATH)
+    sealed_v25_catalog = _json(SEALED_V25_CATALOG_PATH)
+    sealed_v25_channels = _json(SEALED_V25_CHANNELS_PATH)
     current_catalog = _json(CURRENT_CATALOG_PATH)
     current_channels = _json(CURRENT_CHANNELS_PATH)
     parent = _json(PARENT_CATALOG_PATH)
     assert _digest(CATALOG_PATH) == FIRST_ADMISSION_CATALOG_SHA256
-    assert _digest(CURRENT_CATALOG_PATH) == CATALOG_SHA256
+    assert _digest(SEALED_V25_CATALOG_PATH) == SEALED_V25_CATALOG_SHA256
+    assert _digest(CURRENT_CATALOG_PATH) == ACTIVE_ATLAS_CATALOG_SHA256
     assert _digest(PARENT_CATALOG_PATH) == PARENT_CATALOG_SHA256
     assert catalog["schema"] == "peano-library-alpha-snapshot-v24"
     assert catalog["theorem_count"] == catalog["checked_use_count"] == FIRST_ADMISSION_COUNT
@@ -295,18 +329,32 @@ def test_sealed_v24_catalog_channels_parent_and_exact_additive_counts(catalog: d
     assert alpha["edition_identity_sha256"] == FIRST_ADMISSION_IDENTITY
     assert alpha["artifact_sha256"] == FIRST_ADMISSION_CATALOG_SHA256
 
-    assert current_catalog["schema"] == "peano-library-alpha-snapshot-v25"
-    assert current_catalog["theorem_count"] == current_catalog["checked_use_count"] == ALPHA_COUNT
-    assert current_catalog["edition_identity_sha256"] == ALPHA_IDENTITY
-    assert current_catalog["parent_alpha_v24"]["edition_identity_sha256"] == (
+    assert sealed_v25_catalog["schema"] == "peano-library-alpha-snapshot-v25"
+    assert sealed_v25_catalog["theorem_count"] == sealed_v25_catalog["checked_use_count"] == SEALED_V25_COUNT
+    assert sealed_v25_catalog["edition_identity_sha256"] == SEALED_V25_IDENTITY
+    assert sealed_v25_catalog["parent_alpha_v24"]["edition_identity_sha256"] == (
         FIRST_ADMISSION_IDENTITY
     )
-    assert current_catalog["parent_alpha_v24"]["artifacts"]["catalog"]["sha256"] == (
+    assert sealed_v25_catalog["parent_alpha_v24"]["artifacts"]["catalog"]["sha256"] == (
         FIRST_ADMISSION_CATALOG_SHA256
     )
-    assert current_channels["schema"] == "peano-library-channels-v25"
-    assert current_channels["channels"]["alpha"]["artifact_sha256"] == CATALOG_SHA256
-    assert current_channels["channels"]["alpha"]["theorem_count"] == ALPHA_COUNT
+    assert sealed_v25_channels["schema"] == "peano-library-channels-v25"
+    assert sealed_v25_channels["channels"]["alpha"]["artifact_sha256"] == SEALED_V25_CATALOG_SHA256
+    assert sealed_v25_channels["channels"]["alpha"]["theorem_count"] == SEALED_V25_COUNT
+
+    assert current_catalog["schema"] == "peano-library-alpha-snapshot-v27"
+    assert current_catalog["theorem_count"] == current_catalog["checked_use_count"] == ACTIVE_ATLAS_COUNT
+    assert current_catalog["stable_count"] == STABLE_COUNT
+    assert current_catalog["edition_identity_sha256"] == ACTIVE_ATLAS_IDENTITY
+    assert current_catalog["theorems"][:SEALED_V25_COUNT] == sealed_v25_catalog["theorems"]
+    assert current_catalog["parent_alpha_v25"]["edition_identity_sha256"] == SEALED_V25_IDENTITY
+    assert current_catalog["parent_alpha_v25"]["artifacts"]["catalog"]["sha256"] == (
+        SEALED_V25_CATALOG_SHA256
+    )
+    assert current_channels["schema"] == "peano-library-channels-v27"
+    assert current_channels["channels"]["alpha"]["artifact_sha256"] == ACTIVE_ATLAS_CATALOG_SHA256
+    assert current_channels["channels"]["alpha"]["theorem_count"] == ACTIVE_ATLAS_COUNT
+    assert current_channels["channels"]["stable"]["theorem_count"] == STABLE_COUNT
 
 
 def test_exact_v24_bundle_envelope_is_bounded_without_replaying_proofs(
@@ -371,14 +419,13 @@ def test_global_campaign_and_conservative_definition_dag_are_exact_and_current(
     campaign: dict, definition_graph: dict,
 ) -> None:
     assert campaign["schema"] == "constructive-grand-campaign-v1"
-    assert campaign["meta"]["current_alpha_version"] == ALPHA_VERSION
-    assert campaign["meta"]["current_alpha_checked_use_count"] == ALPHA_COUNT
-    assert len(campaign["definitions"]) == 179
+    assert campaign["meta"]["current_alpha_version"] == ACTIVE_ATLAS_VERSION
+    assert campaign["meta"]["current_alpha_checked_use_count"] == ACTIVE_ATLAS_COUNT
+    from constructive_second_wave_definition_graph import build_definition_graph
+
     assert len(campaign["nodes"]) == 144
-    assert definition_graph["definition_count"] == 179
-    assert definition_graph["reviewed_definition_count"] == 120
-    assert definition_graph["compatible_reviewed_match_count"] == 88
-    assert definition_graph["reviewed_definition_edge_count"] == 214
+    assert definition_graph == build_definition_graph(campaign)
+    assert definition_graph["definition_count"] == len(campaign["definitions"])
 
     canonical_campaign = json.dumps(
         campaign, ensure_ascii=False, allow_nan=False, separators=(",", ":"), sort_keys=True
@@ -398,15 +445,15 @@ def test_global_campaign_and_conservative_definition_dag_are_exact_and_current(
 
 
 @pytest.mark.parametrize("root", RESEARCH_ROOTS, ids=lambda root: root.milestone)
-def test_partially_proved_major_milestones_stay_honestly_open(
+def test_new_full_milestones_keep_their_exact_historical_partial_receipts(
     root: _RootEvidence, campaign: dict,
 ) -> None:
     node = next(item for item in campaign["nodes"] if item["id"] == root.milestone)
-    evidence = node["evidence"]
-    current_name, current_digest, current_node = CURRENT_MILESTONE_ROOTS[root.milestone]
-    assert node["status"] == "open"
+    evidence = node["historical_partial_evidence"]
+    current_name, current_digest, current_node = HISTORICAL_PARTIAL_MILESTONE_ROOTS[root.milestone]
+    assert node["status"] == "alpha_closed"
     assert evidence["implementation"] == "independently_closed_partial"
-    assert evidence["alpha_version"] == ALPHA_VERSION
+    assert evidence["alpha_version"] == SEALED_V25_VERSION
     assert evidence["alpha_enrolled"]
     assert evidence["partial_component_checked_use"]
     assert not evidence["checked_use"]
@@ -414,45 +461,64 @@ def test_partially_proved_major_milestones_stay_honestly_open(
     assert evidence["partial_theorem_name"] == current_name
     assert evidence["partial_theorem_statement_sha256"] == current_digest
     assert evidence["bundle_node_id"] == current_node
-    assert evidence["bundle_sha256"] == CURRENT_BUNDLE_SHA256
+    assert evidence["bundle_sha256"] == HISTORICAL_V25_BUNDLE_SHA256
     assert evidence["bundle_nodes"] == 302
     assert evidence["independent_lean_bundle_verified"]
     assert evidence[root.full_scope_flag] is False
     assert root.definition in node["definition_refs"]
+    complete = node["evidence"]
+    _, complete_name = SECOND_WAVE_BRANCHES[root.milestone]
+    rows = {item["name"]: item for item in _json(CURRENT_CATALOG_PATH)["theorems"]}
+    actual = rows[complete_name]
+    assert complete["theorem_name"] == complete_name
+    assert complete["theorem_statement_sha256"] == actual["statement_sha256"]
+    assert complete["bundle_node_id"] == actual["empty_context_closure"]["bundle_node_id"]
+    assert complete["bundle_sha256"] == SECOND_WAVE_BUNDLE_SHA256
+    assert complete["bundle_nodes"] == 1224
+    assert complete["alpha_version"] == ACTIVE_ATLAS_VERSION
+    assert complete["checked_use"] is True
+    assert complete["independent_lean_bundle_verified"] is True
+    assert complete[root.full_scope_flag] is True
+    assert "partial_component_checked_use" not in complete
 
 
 @pytest.mark.parametrize("layer,expected_families", LAYER_FAMILIES)
-def test_all_six_published_layer_manifests_authorize_current_v24(
+def test_all_published_layer_manifests_authorize_current_v27(
     layer: str, expected_families: tuple[str, ...],
 ) -> None:
     manifest = _json(STATIC / layer / "manifest.json")
-    assert manifest["alpha_edition_version"] == ALPHA_VERSION
+    assert manifest["alpha_edition_version"] == ACTIVE_ATLAS_VERSION
     assert {row["slug"] for row in manifest["families"]} == set(expected_families)
     if layer == "constructive-frontier-explorer":
-        assert manifest["alpha_edition_identity_sha256"] == ALPHA_IDENTITY
-        assert manifest["alpha_edition_checked_use_count"] == ALPHA_COUNT
-        assert manifest["alpha_catalog_sha256"] == CATALOG_SHA256
+        assert manifest["alpha_edition_identity_sha256"] == ACTIVE_ATLAS_IDENTITY
+        assert manifest["alpha_edition_checked_use_count"] == ACTIVE_ATLAS_COUNT
+        assert manifest["alpha_catalog_sha256"] == ACTIVE_ATLAS_CATALOG_SHA256
     else:
-        assert manifest["edition_identity_sha256"] == ALPHA_IDENTITY
-        assert manifest["catalog_sha256"] == CATALOG_SHA256
-        assert manifest["html_revision"] == HTML_REVISION
+        assert manifest["edition_identity_sha256"] == ACTIVE_ATLAS_IDENTITY
+        assert manifest["catalog_sha256"] == ACTIVE_ATLAS_CATALOG_SHA256
+        assert manifest["html_revision"] == ACTIVE_ATLAS_HTML_REVISION
+        first_admission_version = HISTORICAL_FIRST_ADMISSION_BY_LAYER[layer]
+        assert manifest["alpha_first_enrolled_version"] == first_admission_version
+        first_admission_catalog = CATALOG_PATH.with_name(f"catalog-{first_admission_version}.json")
+        assert manifest["first_enrollment_catalog_sha256"] == _digest(first_admission_catalog)
 
 
-def test_public_hub_has_exactly_25_campaign_cards_and_both_original_anchors() -> None:
+def test_public_hub_has_all_32_campaign_cards_and_both_original_anchors() -> None:
     source = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
     parser = _HubMarkup()
     parser.feed(source)
 
     anchors = [card for card in parser.cards if "candidate-card" not in card["classes"]]
     campaigns = [card for card in parser.cards if "candidate-card" in card["classes"]]
-    assert len(parser.cards) == 27
+    assert len(parser.cards) == 34
     assert len(anchors) == 2
-    assert len(campaigns) == len(ALL_FAMILIES) == 25
+    assert len(ALL_FAMILIES) == 25
+    assert len(campaigns) == len(ALL_FAMILIES) + len(SECOND_WAVE_SLUGS) == 32
     assert {next(iter(card["classes"] - {"family-card"})) for card in anchors} == {
         "qr-card", "bertrand-card"
     }
 
-    slugs = {slug for _, slug in ALL_FAMILIES}
+    slugs = {slug for _, slug in ALL_FAMILIES} | SECOND_WAVE_SLUGS
     linked_slugs = {
         link["href"].split("/?", 1)[0]
         for card in campaigns
@@ -461,26 +527,33 @@ def test_public_hub_has_exactly_25_campaign_cards_and_both_original_anchors() ->
     }
     assert linked_slugs == slugs
     for slug in slugs | {"quadratic-reciprocity", "bertrand-postulate"}:
-        assert f'href="{slug}/?v={HTML_REVISION}"' in source
+        assert f'href="{slug}/?v={ACTIVE_ATLAS_HTML_REVISION}"' in source
 
-    assert "Alpha v25" in source
-    assert "2,080 theorems" in source
+    assert "Alpha v27" in source
+    assert "2,560 theorems" in source
     assert "432 unchanged Stable theorems" in source
-    assert "179 structured first-order definitions" in source
-    assert "120 reviewed conservative definitions" in source
+    definitions = _json(DEFINITION_GRAPH_PATH)
+    assert f'{definitions["definition_count"]} structured first-order definitions' in source
+    assert f'{definitions["reviewed_definition_count"]} reviewed conservative definitions' in source
     assert BUNDLE_NAME in source
 
     for root in RESEARCH_ROOTS:
-        assert f"focus={root.milestone}&amp;v={HTML_REVISION}" in source
-        assert f"view=definition&amp;focus={root.definition}&amp;v={HTML_REVISION}" in source
-    assert "milestones remain open" in source
-    assert "Fermat descent remains conditional" in source
+        assert f"focus={root.milestone}&amp;v={ACTIVE_ATLAS_HTML_REVISION}" in source
+        assert f"view=definition&amp;focus={root.definition}&amp;v={ACTIVE_ATLAS_HTML_REVISION}" in source
+    assert "T13, G095 and G011 remain OPEN" not in source
+    for slug, _theorem in SECOND_WAVE_BRANCHES.values():
+        assert f'href="{slug}/?v={ACTIVE_ATLAS_HTML_REVISION}"' in source
+    assert "Fermat descent remains conditional" not in source
 
 
 @pytest.mark.parametrize("layer,slug", ALL_FAMILIES, ids=[slug for _, slug in ALL_FAMILIES])
-def test_every_campaign_retains_original_qr_design_definition_graph_and_v24_authority(
+def test_every_campaign_retains_original_qr_design_definition_graph_and_v27_authority(
     layer: str, slug: str,
 ) -> None:
+    revision = ACTIVE_ATLAS_HTML_REVISION
+    version = ACTIVE_ATLAS_VERSION
+    identity = ACTIVE_ATLAS_IDENTITY
+    catalog_sha256 = ACTIVE_ATLAS_CATALOG_SHA256
     family_root = STATIC / layer / slug
     landing = (family_root / "index.html").read_text(encoding="utf-8")
     canonical_anchor = (ROOT / "deploy" / "proofs" / "quadratic-reciprocity.html").read_text(
@@ -491,12 +564,12 @@ def test_every_campaign_retains_original_qr_design_definition_graph_and_v24_auth
         assert marker in landing
     assert f'<body class="family-page {slug}-page">' in landing
     assert landing.count('<article class="view-card') == 3
-    assert f'href="../assets/proofs.css?v={HTML_REVISION}"' in landing
-    assert f'href="explorer/defined/?v={HTML_REVISION}"' in landing
-    assert f'href="explorer/?v={HTML_REVISION}"' in landing
+    assert f'href="../assets/proofs.css?v={revision}"' in landing
+    assert f'href="explorer/defined/?v={revision}"' in landing
+    assert f'href="explorer/?v={revision}"' in landing
     assert "explorer/defined/graph.html?" in landing
-    assert f"v={HTML_REVISION}" in landing
-    assert "Alpha v25" in landing
+    assert f"v={revision}" in landing
+    assert f"Alpha {version}" in landing
     assert "not Stable" in landing
 
     for path in (
@@ -506,15 +579,19 @@ def test_every_campaign_retains_original_qr_design_definition_graph_and_v24_auth
         assert (family_root / path).is_file(), f"{slug} lacks canonical {path}"
 
     corpus = _json(family_root / "api" / "corpus.json")
-    assert corpus["alpha_edition_version"] == ALPHA_VERSION
-    assert corpus["alpha_edition_identity_sha256"] == ALPHA_IDENTITY
-    assert corpus["alpha_catalog_sha256"] == CATALOG_SHA256
+    assert corpus["alpha_edition_version"] == version
+    assert corpus["alpha_edition_identity_sha256"] == identity
+    assert corpus["alpha_catalog_sha256"] == catalog_sha256
     assert corpus["alpha_checked_use_node_count"] > 0
     assert corpus["definition_count"] > 0
     assert corpus["root_names"]
 
     graph = _json(family_root / "explorer" / "defined" / "api" / "graph.json")
-    assert graph["alpha_edition_version"] == ALPHA_VERSION
+    assert graph["alpha_edition_version"] == version
+    if layer in HISTORICAL_FIRST_ADMISSION_BY_LAYER:
+        first_admission_version = HISTORICAL_FIRST_ADMISSION_BY_LAYER[layer]
+        assert corpus["alpha_first_enrolled_version"] == first_admission_version
+        assert graph["alpha_first_enrolled_version"] == first_admission_version
     assert {node["kind"] for node in graph["nodes"]} >= {"theorem", "definition"}
     assert {edge["kind"] for edge in graph["edges"]} >= {
         "proof_dependency", "uses_definition"
@@ -542,7 +619,7 @@ def test_every_new_conservative_definition_has_live_local_and_global_drill_down(
     assert identifier in page
     assert "Conservative notation; not a theorem, primitive, or axiom" in page
     assert "Hygienic expanded first-order definition" in page
-    assert f"view=definition&amp;focus={name}&amp;v={HTML_REVISION}" in page
+    assert f"view=definition&amp;focus={name}&amp;v={ACTIVE_ATLAS_HTML_REVISION}" in page
 
     reviewed = next(
         item for item in definition_graph["reviewed_definitions"] if item["id"] == identifier
@@ -553,21 +630,25 @@ def test_every_new_conservative_definition_has_live_local_and_global_drill_down(
 
 
 @pytest.mark.parametrize("root", RESEARCH_ROOTS, ids=lambda root: root.slug)
-def test_new_research_pages_keep_exact_honest_open_scope_boundaries(root: _RootEvidence) -> None:
+def test_historical_research_pages_link_new_closure_without_upgrading_old_proof_scope(root: _RootEvidence) -> None:
     family_root = STATIC / "constructive-research-layer-explorer" / root.slug
     landing = (family_root / "index.html").read_text(encoding="utf-8")
     corpus = _json(family_root / "api" / "corpus.json")
     graph = _json(family_root / "explorer" / "defined" / "api" / "graph.json")
 
-    assert f"{root.milestone} remains OPEN" in landing
-    assert root.open_boundary in landing
+    assert "Historical partial components only" in landing
+    complete_slug, complete_name = SECOND_WAVE_BRANCHES[root.milestone]
+    assert f'{complete_slug}/?v={ACTIVE_ATLAS_HTML_REVISION}' in landing
+    assert complete_name not in corpus["tags"]
     assert root.name in landing
-    assert f"tag/{root.tag}.html?v={HTML_REVISION}" in landing
+    assert f"tag/{root.tag}.html?v={ACTIVE_ATLAS_HTML_REVISION}" in landing
     assert BUNDLE_SHA256 in landing
     for evidence in (corpus, graph):
-        assert evidence["milestone_status"] == "open"
-        assert not evidence["milestone_checked_use"]
-        assert evidence["milestone_partial_checked_use"]
+        assert evidence["milestone_status"] == "alpha_closed"
+        assert evidence["milestone_checked_use"]
+        assert evidence["historical_component_only"]
+        assert evidence["historical_milestone_status"] == "open"
+        assert evidence["historical_partial_checked_use"]
         assert evidence["independent_lean_bundle_verified"]
 
 
@@ -595,13 +676,13 @@ def test_quadratic_reciprocity_anchor_bytes_remain_immutable_v23_parent_evidence
     assert "alpha_edition_version" not in corpus
 
 
-def test_quadratic_reciprocity_current_v24_sidecar_never_replaces_immutable_evidence() -> None:
+def test_quadratic_reciprocity_sealed_v25_sidecar_never_replaces_immutable_evidence() -> None:
     manifest = _json(STATIC / "pa-proof-explorer" / "manifest.json")
     current = _json(QR_CURRENT_CORPUS_PATH)
     assert current["schema"] == "peano-lab-pa-proof-corpus-v1"
-    assert current["alpha_edition_version"] == ALPHA_VERSION
-    assert current["alpha_edition_identity_sha256"] == ALPHA_IDENTITY
-    assert current["alpha_edition_checked_use_count"] == ALPHA_COUNT
+    assert current["alpha_edition_version"] == SEALED_V25_VERSION
+    assert current["alpha_edition_identity_sha256"] == SEALED_V25_IDENTITY
+    assert current["alpha_edition_checked_use_count"] == SEALED_V25_COUNT
     assert current["proof_edition_version"] == "v16"
     assert current["proof_edition_checked_use_count"] == 885
     assert current["theorem_count"] == 557
@@ -624,11 +705,11 @@ def test_quadratic_reciprocity_current_v24_sidecar_never_replaces_immutable_evid
     assert QR_CORPUS_SHA256 in generator
 
 
-def test_bertrand_preserves_historical_proof_but_uses_current_v24_authority() -> None:
+def test_bertrand_preserves_historical_proof_and_sealed_v25_reading_authority() -> None:
     corpus = _json(BERTRAND_CORPUS_PATH)
-    assert corpus["alpha_edition_version"] == ALPHA_VERSION
-    assert corpus["alpha_edition_identity_sha256"] == ALPHA_IDENTITY
-    assert corpus["alpha_edition_checked_use_count"] == ALPHA_COUNT
+    assert corpus["alpha_edition_version"] == SEALED_V25_VERSION
+    assert corpus["alpha_edition_identity_sha256"] == SEALED_V25_IDENTITY
+    assert corpus["alpha_edition_checked_use_count"] == SEALED_V25_COUNT
     assert corpus["proof_edition_version"] == "v18"
     assert corpus["proof_edition_checked_use_count"] == 1_589
     assert corpus["theorem_count"] == 544
@@ -699,6 +780,6 @@ def test_browser_app_worker_manifest_release_id_and_new_roots_are_consistent() -
 
     app_page = (app / "index.html").read_text(encoding="utf-8")
     assert f'const APP_ROOT="releases/{app_id}/";' in app_page
-    assert "Alpha: 2,080 proofs" in app_page
+    assert "Alpha: 2,560 proofs" in app_page
     for root in RESEARCH_ROOTS:
         assert f'data-cmd="pa lib alpha {root.name}"' in app_page

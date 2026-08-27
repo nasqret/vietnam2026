@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Publish three historical Alpha-v22 proof families under current v25 authority.
+"""Publish three historical Alpha-v22 proof families under current v27 authority.
 
 The static presentation authenticates the complete sealed original-kernel
 transport-layer bundle and its independent compiled-Lean-verifier receipt. It
@@ -56,7 +56,7 @@ from constructive_transport_layer_definitions import (  # noqa: E402
 )
 from peano_lab.library import editions_v21 as v21  # noqa: E402
 from peano_lab.library import editions_v22 as v22  # noqa: E402
-from peano_lab.library import editions_v25 as current_alpha  # noqa: E402
+from peano_lab.library import editions_v27 as current_alpha  # noqa: E402
 from peano_lab.library.alpha_enrollment_v22 import (  # noqa: E402
     EXPECTED_CAMPAIGN_COUNTS,
     FRONTIER_V22_EXPECTED_COUNT,
@@ -80,21 +80,19 @@ from peano_lab.library.defined_syntax import DefinitionSpec  # noqa: E402
 OUTPUT = REPO / "book" / "_static" / "constructive-transport-layer-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v22.json"
 PARENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v21.json"
-CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v25.json"
-CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v25.json"
+CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v27.json"
+CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v27.json"
 CAMPAIGN = REPO / "book" / "_static" / "constructive-grand-campaign" / "campaign.json"
 GLOBAL_DEFINITIONS = CAMPAIGN.with_name("definitions.json")
 EXPECTED_ALPHA_COUNT = 1_890
 EXPECTED_STABLE_COUNT = 432
 EXPECTED_REVIEWED_DEFINITION_COUNT = 89
-EXPECTED_CURRENT_REVIEWED_DEFINITION_COUNT = 120
-EXPECTED_BLUEPRINT_DEFINITION_COUNT = 179
 EXPECTED_BUNDLE_PATH = (
     "research/arithmetic-library/artifacts/alpha-v22-transport-layer-proof-bundle-v1.json"
 )
 SCHEMA = "peano-lab-constructive-transport-layer-explorer-v1"
 STATUS = (
-    "Alpha v25 checked-use · first admitted v22 · "
+    "Alpha v27 checked-use · first admitted v22 · "
     "independently kernel and Lean verified; not Stable"
 )
 ASSET_SOURCES = original.ASSET_SOURCES
@@ -347,7 +345,7 @@ def _validate_theorem(
 
 
 def _load_inputs() -> dict[str, Any]:
-    """Authenticate v22 first admission, current v25, Lean receipts, and DAG."""
+    """Authenticate v22 first admission, current v27, Lean receipts, and DAG."""
 
     raw_catalog = CATALOG.read_bytes()
     catalog = json.loads(raw_catalog)
@@ -418,20 +416,33 @@ def _load_inputs() -> dict[str, Any]:
     channels = json.loads(CURRENT_CHANNELS.read_text(encoding="utf-8"))
     current = channels.get("channels", {}).get("alpha", {})
     current_digest = _file_digest(CURRENT_CATALOG)
+    current_catalog = json.loads(CURRENT_CATALOG.read_bytes())
+    original._audit_current_parent(current_catalog, channels, error_type=TransportLayerExplorerError)
     if (
-        channels.get("schema") != "peano-library-channels-v25"
+        channels.get("schema") != "peano-library-channels-v27"
         or channels.get("default_channel") != "stable"
-        or channels.get("parent_channels_v24", {}).get("path")
-        != "artifacts/peano-library/channels-v24.json"
-        or current.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v25.json"
+        or channels.get("parent_channels_v26", {}).get("path")
+        != "artifacts/peano-library/channels-v26.json"
+        or channels.get("parent_channels_v26", {}).get("sha256")
+        != _file_digest(CURRENT_CHANNELS.with_name("channels-v26.json"))
+        or current.get("artifact_path") != "artifacts/peano-library/alpha/catalog-v27.json"
         or current.get("artifact_sha256") != current_digest
-        or current.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V25_COUNT
+        or current.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
         or current.get("checked_use_count")
-        != current_alpha.EXPECTED_ALPHA_V25_CHECKED_USE_COUNT
-        or current.get("edition_identity_sha256") != current_alpha.ALPHA_V25_IDENTITY_SHA256
+        != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        or current.get("edition_identity_sha256") != current_alpha.ALPHA_V27_IDENTITY_SHA256
         or current.get("ordered_enrollment_root_sha256")
-        != current_alpha.ALPHA_V25_ENROLLMENT_SHA256
+        != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
         or current.get("parent_alpha_v22_sha256") != _digest(raw_catalog)
+        or current_catalog.get("schema") != "peano-library-alpha-snapshot-v27"
+        or current_catalog.get("theorem_count") != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or current_catalog.get("checked_use_count") != current_alpha.EXPECTED_ALPHA_V27_CHECKED_USE_COUNT
+        or current_catalog.get("stable_count") != EXPECTED_STABLE_COUNT
+        or current_catalog.get("edition_identity_sha256") != current_alpha.ALPHA_V27_IDENTITY_SHA256
+        or current_catalog.get("ordered_enrollment_root_sha256") != current_alpha.ALPHA_V27_ENROLLMENT_SHA256
+        or not isinstance(current_catalog.get("theorems"), list)
+        or len(current_catalog["theorems"]) != current_alpha.EXPECTED_ALPHA_V27_COUNT
+        or current_catalog["theorems"][:EXPECTED_ALPHA_COUNT] != catalog.get("theorems")
         or tuple(current_alpha.ALPHA_ENTRIES[:EXPECTED_ALPHA_COUNT]) != v22.ALPHA_ENTRIES
         or any(
             newer is not historical
@@ -439,7 +450,7 @@ def _load_inputs() -> dict[str, Any]:
         )
     ):
         raise TransportLayerExplorerError(
-            "the current immutable Alpha-v25 release changed its exact Alpha-v22 first admission"
+            "the current immutable Alpha-v27 release changed its exact Alpha-v22 first admission"
         )
 
     entries = catalog.get("theorems")
@@ -455,26 +466,7 @@ def _load_inputs() -> dict[str, Any]:
 
     campaign = json.loads(CAMPAIGN.read_text(encoding="utf-8"))
     graph = json.loads(GLOBAL_DEFINITIONS.read_text(encoding="utf-8"))
-    canonical = json.dumps(
-        campaign,
-        ensure_ascii=False,
-        allow_nan=False,
-        separators=(",", ":"),
-        sort_keys=True,
-    ).encode("utf-8")
-    if (
-        campaign.get("meta", {}).get("current_alpha_version") != "v25"
-        or campaign.get("meta", {}).get("current_alpha_checked_use_count")
-        != current_alpha.EXPECTED_ALPHA_V25_CHECKED_USE_COUNT
-        or graph.get("definition_count") != EXPECTED_BLUEPRINT_DEFINITION_COUNT
-        or graph.get("definition_count") != len(campaign.get("definitions", ()))
-        or graph.get("reviewed_definition_count") != EXPECTED_CURRENT_REVIEWED_DEFINITION_COUNT
-        or graph.get("reviewed_definition_count")
-        != len(CURRENT_CONSTRUCTIVE_DEFINITIONS_BY_NAME)
-        or graph.get("compatible_reviewed_match_count") != 88
-        or graph.get("campaign_snapshot_sha256") != _digest(canonical)
-    ):
-        raise TransportLayerExplorerError("the global Alpha-v25 atlas definition artifact is stale")
+    original._audit_current_atlas(campaign, graph, error_type=TransportLayerExplorerError)
     blueprint = campaign.get("definitions")
     if not isinstance(blueprint, dict):
         raise TransportLayerExplorerError("the global atlas has no named definition registry")
@@ -539,9 +531,10 @@ def _load_inputs() -> dict[str, Any]:
         )
     return {
         "catalog": catalog,
+        "current_catalog": current_catalog,
         "catalog_sha256": current_digest,
         "historical_catalog_sha256": _digest(raw_catalog),
-        "current_edition_identity_sha256": current_alpha.ALPHA_V25_IDENTITY_SHA256,
+        "current_edition_identity_sha256": current_alpha.ALPHA_V27_IDENTITY_SHA256,
         "revision": current_digest[:12],
         "bundle": bundle,
         "by_name": by_name,
@@ -558,10 +551,7 @@ def _definition_records(
 ) -> tuple[tuple[DefinitionSpec, ...], list[dict[str, Any]]]:
     specs = _definition_closure(family.definitions)
     by_name = {item.name: item for item in specs}
-    reviewed_links = {
-        row["reviewed_name"]: row
-        for row in inputs["global_graph"]["compatible_reviewed_matches"]
-    }
+    reviewed_links = original._preferred_reviewed_matches(inputs["global_graph"])
     global_reviewed = {
         row["name"]: row for row in inputs["global_graph"]["reviewed_definitions"]
     }
@@ -737,7 +727,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
             "enrolled_in_alpha": True,
             "alpha_evidence": "alpha_closed",
             "alpha_checked_use": True,
-            "alpha_edition_version": "v25",
+            "alpha_edition_version": "v27",
             "alpha_first_enrolled_version": "v22",
             "stable_member": False,
             "admitted_to_alpha": True,
@@ -845,7 +835,7 @@ def _family_corpus(family: Family, inputs: Mapping[str, Any]) -> dict[str, Any]:
         "statement_definition_use_count": len(usage_edges),
         "formal_line_count": sum(len(node["script"]) for node in nodes),
         "candidate_status": STATUS,
-        "alpha_edition_version": "v25",
+        "alpha_edition_version": "v27",
         "alpha_first_enrolled_version": "v22",
         "alpha_edition_identity_sha256": inputs["current_edition_identity_sha256"],
         "alpha_catalog_sha256": inputs["catalog_sha256"],
@@ -868,13 +858,13 @@ def _graph_payload(
 ) -> dict[str, Any]:
     graph = original._graph_payload(family, corpus, revision=revision)
     graph["schema"] = f"{SCHEMA}-graph"
-    graph["alpha_edition_version"] = "v25"
+    graph["alpha_edition_version"] = "v27"
     graph["alpha_first_enrolled_version"] = "v22"
     graph["milestone_status"] = corpus["milestone_status"]
     graph["milestone_caveat"] = family.caveat
     for node in graph["nodes"]:
         if node["kind"] == "theorem":
-            node["alpha_edition_version"] = "v25"
+            node["alpha_edition_version"] = "v27"
             node["alpha_first_enrolled_version"] = "v22"
     return graph
 
@@ -883,7 +873,7 @@ def _retarget(document: bytes, family: Family, *, include_caveat: bool = False) 
     text = document.decode("utf-8")
     old_caveat = (
         "Every displayed theorem was first admitted in Alpha v20, remains independently "
-        "kernel- and Lean-verified for current Alpha v25 checked use, and has not been "
+        "kernel- and Lean-verified for current Alpha v27 checked use, and has not been "
         "promoted to Stable."
     )
     text = text.replace(old_caveat, family.caveat)
@@ -926,13 +916,13 @@ def _top_index(
         for family, corpus in corpora
     )
     body = f"""<main class="proof-home proof-library-home"><header class="proof-hero">
- <p class="eyebrow">ALPHA v25 · HISTORICAL v22 CONSTRUCTIVE TRANSPORT LAYER</p>
+ <p class="eyebrow">ALPHA v27 · HISTORICAL v22 CONSTRUCTIVE TRANSPORT LAYER</p>
  <h1>Three independently checked constructive research campaigns</h1>
  <p>Sixty completed intuitionistic Heyting-arithmetic proofs independently accepted by both the original kernel and the compiled Lean verifier: full unique bit length, terminal-correct Euclidean traces, and exact beta-coded modular executions.</p>
  <nav><a href="{_versioned('../', revision)}">Proof library</a>
  <a href="{_versioned('../grand-campaign/', revision)}">Full number-theory campaign atlas</a></nav>
  </header><section class="proof-grid">{entries}</section>
- <p>Every displayed theorem was first admitted in Alpha v22 and retains Alpha-v25 checked-use authority; Stable remains separate. Both formerly open logarithmic milestones G101 and G102 were completely proved in historical Alpha v23.</p></main>"""
+ <p>Every displayed theorem was first admitted in Alpha v22 and retains Alpha-v27 checked-use authority; Stable remains separate. Both formerly open logarithmic milestones G101 and G102 were completely proved in historical Alpha v23.</p></main>"""
     return original._document(
         FAMILIES[0],
         title="Constructive Transport-Layer Proof Library",
@@ -963,7 +953,7 @@ def build_files() -> dict[str, bytes]:
             family,
             corpus,
             revision=revision,
-            current_alpha_version="v25",
+            current_alpha_version="v27",
             first_admitted_version="v22",
             bundle_node_count=EXPECTED_TRANSPORT_LAYER_BUNDLE_NODE_COUNT,
         )
@@ -1027,13 +1017,14 @@ def build_files() -> dict[str, bytes]:
             )
         built.append((family, corpus))
     files["index.html"] = _top_index(built, revision=revision)
+    original._link_second_wave_completions(files, FAMILIES, revision=revision)
     inventory = [
         {"path": name, "bytes": len(payload), "sha256": _digest(payload)}
         for name, payload in sorted(files.items())
     ]
     manifest = {
         "schema": f"{SCHEMA}-manifest",
-        "alpha_edition_version": "v25",
+        "alpha_edition_version": "v27",
         "alpha_first_enrolled_version": "v22",
         "catalog_sha256": inputs["catalog_sha256"],
         "first_enrollment_catalog_sha256": inputs["historical_catalog_sha256"],
@@ -1049,7 +1040,7 @@ def build_files() -> dict[str, bytes]:
             {
                 "slug": family.slug,
                 "campaign": family.campaign.value,
-                "alpha_edition_version": "v25",
+                "alpha_edition_version": "v27",
                 "alpha_first_enrolled_version": "v22",
                 "domain": family.domain,
                 "family": family.family_id,

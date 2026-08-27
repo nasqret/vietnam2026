@@ -1,6 +1,9 @@
 # The Grand Constructive Number-Theory Campaign
 
-Planning baseline: 2026-08-26; current immutable evidence baseline: Alpha v25.
+Planning baseline: 2026-08-26; updated 2026-08-27; current immutable evidence
+baseline: Alpha v27. The first execution wave in §7.1 and the seven named
+second-wave targets in §7.2 are complete. The broader research directions
+listed after those targets remain separate, unfinished work.
 
 > **Mission.** Build a broad, spectacular, mathematically coherent library of
 > recognizable number-theoretic theorems whose final trusted artifacts are
@@ -22,10 +25,11 @@ its browsable interactive graph is
 The proposed inventory has **120 major theorem milestones**, grouped into
 **12 families of 10**, supported by **16 reusable proof-engineering tools**
 and **8 existing proof anchors**. Thus its machine-readable research graph
-contains **144 named vertices** and **303 explicit prerequisite edges**.
-The 120 milestones currently split into **93 genuinely open research
-objectives** and **27 existing/revisited constructive foundations or proof
-anchors**. Some milestones deliberately revisit existing
+contains **144 named vertices** and **308 explicit prerequisite edges**
+(303 at the historical v26 boundary). At that v26 boundary the 120 milestones
+split into **92 genuinely open research objectives** and **28 existing/revisited constructive foundations or proof
+anchors**. The six newly closed numbered goals reduce the open goal count to
+**86**; T13 is additionally closed as a reusable tool. Some milestones deliberately revisit existing
 mathematical roots to require genuine independent closure, stronger variants,
 or correct release promotion; they must not be advertised as 120 previously
 unknown or presently unproved mathematical statements. A goal in this
@@ -41,16 +45,34 @@ established merely by writing a plan.
 
 ## 1. Current position: substantial mathematics, honest evidence boundaries
 
-The current immutable release baseline is **Alpha v25**. It preserves every
-sealed v24 theorem specification, enrollment position, dependency, and Stable
-entry, then appends **72** genuinely new independently checked constructive
-theorems: **29** signed cofactor/alternating-fold results, **19** exact
-Taylor/formal-derivative and qualified one-step Hensel results, and **24**
-noncoprime CRT compatibility/gcd-LCM lattice results. Historical Alpha v23
-still completely closes milestones **G101, G102, and G025**. The stronger
-T13, G095, and G011 targets remain openly classified despite their
-substantial newly checked components. Consequently the entire 2,080-theorem
-Alpha ledger has actual checked-use authority:
+The current local release baseline is **Alpha v27**: **2,560** checked-use
+theorems, comprising the unchanged **432** Stable entries and **2,128**
+Alpha-only entries, with **8,196** actual theorem-dependency edges. It adds
+**422** independently checked theorem bodies closing the seven named targets
+**T13, G011, G095, G035, G027, G051, and G107**. The self-contained second-wave
+artifact contains **1,224** nodes (1,223 actual theorem bodies and one packaging
+root), **3,999** dependency edges and **103,215** body-proof nodes. Both the
+ordinary intuitionistic HA kernel and the compiled independent Lean verifier
+accept those exact bytes. The definition atlas now has **290 blueprint**
+terms and **198 hygienically** reviewed conservative definitions, with
+**388 reviewed** prerequisite edges and **201 compatible** blueprint links.
+The [second-wave receipt](../research/arithmetic-library/alpha-v27-second-wave-receipt.md)
+records the precise theorem boundaries and reproducible checks. These are
+local artifacts; remote publication is a separate operation.
+
+The immutable historical first-wave baseline is **Alpha v26**. It preserves every
+sealed v25 theorem specification, enrollment position, dependency, and Stable
+entry, then appends **58** independently checked constructive theorems:
+**9** coprime square-factor results, **23** positive primitive Pythagorean
+inverse/classification results, and **26** actual Fermat-four descent and
+zero-boundary results. This completes **G077 and G078** and the remaining
+mathematical obligations of the first execution wave. The same wave repairs
+the readable display of giant tactic-local propositions with exact,
+bounded conservative expansion checks. Historical Alpha v23 still completely
+closes **G101, G102, and G025**. At that historical v26 boundary, the stronger
+**T13, G095, and G011** targets were still open; v27 now closes the exact
+second-wave contracts described below. The historical **2,138-theorem** v26
+ledger and the current additive v27 ledger have actual checked-use authority:
 
 | Evidence or edition | Count | Meaning |
 |---|---:|---|
@@ -62,16 +84,20 @@ Alpha ledger has actual checked-use authority:
 | Historical v21 Alpha-only partition | 1,398 | Exactly `432 + 1,398 = 1,830` independently checked historical v21 theorems. |
 | Historical Alpha v22 ancestor | 1,890 | All 1,830 historical v21 entries plus 60 exact independently checked transport-layer entries. |
 | Historical Alpha v23 ancestor | 1,949 | All 1,890 historical v22 entries plus 59 exact independently checked complete-milestone entries. |
-| Historical Alpha v24 parent | 2,008 | All 1,949 historical v23 entries plus 59 exact independently checked matrix-minor, formal-derivative, and finite-CRT entries. |
-| Current Alpha v25 total | 2,080 | All 2,008 historical v24 entries plus 72 exact independently checked cofactor-fold, Taylor/Hensel, and noncoprime-CRT entries. |
+| Historical Alpha v24 ancestor | 2,008 | All 1,949 historical v23 entries plus 59 exact independently checked matrix-minor, formal-derivative, and finite-CRT entries. |
+| Historical Alpha v25 parent | 2,080 | All 2,008 historical v24 entries plus 72 exact independently checked cofactor-fold, Taylor/Hensel, and noncoprime-CRT entries. |
+| Historical Alpha v26 parent | 2,138 | All 2,080 immutable v25 entries plus 58 exact independently checked square-factor, primitive-inverse, and Fermat-four entries. |
+| Current Alpha v27 total | 2,560 | All 2,138 immutable v26 entries plus 422 exact independently checked second-wave entries. |
 | `stable_closed` in Alpha | 432 | Stable entries mirrored into Alpha. |
 | Historical v22 Alpha-only partition | 1,458 | Exactly `432 + 1,458 = 1,890` independently checked historical v22 theorems. |
 | Historical v23 Alpha-only partition | 1,517 | Exactly `432 + 1,517 = 1,949` independently checked historical v23 theorems. |
 | Historical v24 Alpha-only partition | 1,576 | Exactly `432 + 1,576 = 2,008` independently checked historical v24 theorems. |
-| `alpha_closed` | 1,648 | Independently closed Alpha-only entries, including every historical flagship and all cofactor-fold, Taylor/Hensel, and noncoprime-CRT research campaigns. |
+| Historical v25 Alpha-only partition | 1,648 | Exactly `432 + 1,648 = 2,080` independently checked historical v25 theorems. |
+| Historical v26 Alpha-only partition | 1,706 | Independently closed Alpha-only entries through the complete positive primitive classification and unconditional Fermat-four theorem. |
+| `alpha_closed` | 2,128 | Independently closed Alpha-only entries, including all seven named second-wave targets. |
 | `body_checked` | 0 | Every enrolled theorem is independently closed; no merely dependency-curried body is advertised as checked use. |
 | `pending_layered_closure` | 0 | All admitted roots have complete reviewed constructive evidence. |
-| Checked-use authority | 2,080 | Exactly `432 + 1,648`; every enrolled theorem is genuinely available. |
+| Checked-use authority | 2,560 | Exactly `432 + 2,128`; every enrolled theorem is genuinely available. |
 | Historical v19 body promotions | 84 | Every previously body-only v18 row, including both prime-specific valuation wrappers. |
 | Historical v19 new entries | 64 | Pythagorean forward construction 44, prime two-square iff 1, complete linear congruences 9, and infinitely many `1 mod 4` primes 10. |
 | Historical v20 new entries | 39 | Natural Horner evaluation 7, finite matrix components 10, strict Bertrand-prime extensions 13, and finite continued fractions 9. |
@@ -79,10 +105,13 @@ Alpha ledger has actual checked-use authority:
 | Historical v22 new entries | 60 | Total unique binary length 21, genuine Euclidean gcd-invariant/terminal-state transport 20, and complete supplied-digit binary modular execution 19. |
 | Historical v23 new entries | 59 | Exact logarithmic Euclidean execution 17, canonical arbitrary-exponent binary digits and execution 24, and constructively unbounded `3 mod 4` primes 18. |
 | Historical v24 new entries | 59 | Arbitrary signed cofactor minors and 4×4 determinants 17, exact simultaneous formal derivatives 15, and finite CRT/arbitrary-list LCM 27. |
-| Current v25 new entries | 72 | Signed cofactor/alternating-fold results 29, exact Taylor/formal-derivative and qualified one-step Hensel results 19, and noncoprime CRT compatibility/gcd-LCM results 24. |
+| Historical v25 new entries | 72 | Signed cofactor/alternating-fold results 29, exact Taylor/formal-derivative and qualified one-step Hensel results 19, and noncoprime CRT compatibility/gcd-LCM results 24. |
+| Historical v26 new entries | 58 | Coprime square-factor extraction 9, positive primitive inverse/classification 23, and unconditional Fermat-four descent and zero-boundary classification 26. |
+| Current v27 new entries | 422 | Integer linear algebra 182, signed Hensel lifting 40, generalized CRT 24, multinomial Kummer 19, Chebyshev bounds 55, Cornacchia 30, and Cauchy–Davenport 72. |
 | Historical v23 checked dependency graph | 6,285 edges | All 1,949 immutable historical v23 theorem proofs remain checked. |
 | Historical v24 checked dependency graph | 6,423 edges | All 2,008 immutable historical v24 theorem proofs remain checked. |
-| Current checked dependency graph | 6,633 edges | All 2,080 theorem proofs are checked; the graph retains 53 dependency-first layers. |
+| Historical v25 checked dependency graph | 6,633 edges | All 2,080 immutable historical v25 theorem proofs remain checked. |
+| Current checked dependency graph | 6,851 edges | All 2,138 theorem proofs are checked; the graph retains 53 dependency-first layers. |
 
 The historical sealed **Alpha v19** parent remains immutable and auditable:
 its 1,737 entries contain 432 `stable_closed`, 1,305 `alpha_closed`, and no
@@ -191,7 +220,7 @@ Its independently original-kernel- and compiled-Lean-verified constructive
 certificate contains **203 proof nodes**, **502 dependency edges**, **11,065
 structural proof-body nodes**, and exactly **738,923 bytes**, with SHA-256
 `627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9`.
-The current 2,080-entry v25 enrollment identity is
+The historical 2,080-entry v25 enrollment identity is
 `f724872707cdcf401f35cb69680e1bbec86d626c4bf56e6d41f01a3724e2be81`;
 its independently reviewed edition identity is
 `3516d4730428c79fc73aa6fbdbabc43d93921471941bb2f144ea3d29e0af5b28`;
@@ -203,9 +232,26 @@ Its independently original-kernel- and compiled-Lean-verified breakthrough
 certificate contains **302 proof nodes**, **820 dependency edges**, **16,947
 structural proof-body nodes**, and exactly **1,041,166 bytes**, with SHA-256
 `d4532076049be869e4e397d0fcee81b668bd3fd5c7d9173028bb1bdb80b9793a`.
+The historical **2,138-entry v26** enrollment identity is
+`cdf2cd0adfef8f1becd6f1f62d4d1d5d7a1891838e16b52a4d1cdaca98c496f2`;
+its independently reviewed edition identity is
+`8573945e4bdfe0a8d9414b499828ced67eff3b886e5adde50a0fcff81cfbdc19`;
+its frozen catalog has SHA-256
+`969c261f924060552dda393427b4fbc51515b9d4e69daa17f5e9f1691b5ab534`;
+and its exact checked evidence root is
+`fa9773708ab4eacfc981707e2cecb615dd46714df7c242008a5946821b8e4c52`.
+The unchanged original kernel and independently compiled Lean verifier accept
+its **216-node**, **558-edge** first-wave certificate containing **10,397
+structural proof-body nodes** in **364,186 bytes**, with SHA-256
+`59afca707b33b68df907c941683e335492f7de12ee3888219339c5dfce8ec4fc`.
+There are 215 actual theorem bodies and one unenrolled conjunction; historical
+dependencies are not counted as new theorems. Exact sources and evidence are
+linked from the
+[v26 admission RFC](../research/arithmetic-library/alpha-v26-first-wave-rfc-v1.md)
+and [full closure receipt](../research/arithmetic-library/alpha-v26-first-wave-receipt.md).
 The Quadratic Reciprocity evidence source `api/corpus.json` remains frozen
 at SHA-256 `ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a`;
-its contemporary Alpha-v25 presentation uses the separate
+its historical Alpha-v25 presentation uses the separate
 `api/current-corpus.json` sidecar. Publication, release construction, and
 independent verification fail closed if immutable historical evidence bytes
 are overwritten by an explorer regeneration.
@@ -217,16 +263,16 @@ make it Stable.
 The following existing roots are campaign anchors rather than claims of
 freshly established release authority:
 
-| Anchor | Reusable result | Exact present boundary |
+| Anchor | Reusable result | Provenance through v26; every checked root remains checked in v27 |
 |---|---|---|
-| A01 | Quadratic reciprocity. | Complete unchanged-kernel empty-context proof and independent Lean-verified 557-node proof bundle; first closed in historical Alpha v16 and still `alpha_closed` with checked use in current v25; historical v15 remains immutably pending; not Stable. |
-| A02 | Bertrand's postulate. | The exact strict all-natural root is independently kernel- and Lean-checked through a 544-node/1,917-edge proof bundle and remains `alpha_closed` with checked use in v25; its historical v17 root remains `body_checked`; not Stable. |
-| A03 | Both quadratic supplementary laws. | Both exact endpoints are independently checked by the unchanged kernel and Lean; their 438-node/1,429-edge proof bundle justified the exact historical 31-row Alpha-v17 promotion; v25 preserves checked use; not Stable. |
-| A04 | Both Kummer carry endpoints. | First enrolled in Alpha v14; both exact endpoints are independently kernel- and Lean-checked through 280 theorem nodes plus one synthetic conjunction, with 779 edges and checked use in v25; the historical v17 roots remain `body_checked`; not Stable. |
-| A05 | Complete all-natural two-square classification. | First enrolled in Alpha v15; the exact universal supplied-valuation equivalence has an independently kernel- and Lean-checked 517-node/1,599-edge proof bundle and checked use in v25; not Stable. |
-| A06 | Unconditional Lagrange four-square theorem. | First enrolled in Alpha v13; the exact all-natural root has an independently kernel- and Lean-checked 390-node/1,187-edge proof bundle and checked use in v25; not Stable. |
-| A07 | Complete multidigit Lucas theorem. | First enrolled in Alpha v13; the exact supplied-coefficient multidigit root has an independently kernel- and Lean-checked 213-node/617-edge proof bundle and checked use in v25; not Stable. |
-| A08 | Primitive Pythagorean forward constructor. | The exact 44-row forward construction and both primitive ordered/normal-form roots were first independently `alpha_closed` in v19 and remain checked in v25; the inverse classification and Fermat-four descent remain open; not Stable. |
+| A01 | Quadratic reciprocity. | Complete unchanged-kernel empty-context proof and independent Lean-verified 557-node proof bundle; first closed in historical Alpha v16 and still `alpha_closed` with checked use in current v26; historical v15 remains immutably pending; not Stable. |
+| A02 | Bertrand's postulate. | The exact strict all-natural root is independently kernel- and Lean-checked through a 544-node/1,917-edge proof bundle and remains `alpha_closed` with checked use in v26; its historical v17 root remains `body_checked`; not Stable. |
+| A03 | Both quadratic supplementary laws. | Both exact endpoints are independently checked by the unchanged kernel and Lean; their 438-node/1,429-edge proof bundle justified the exact historical 31-row Alpha-v17 promotion; v26 preserves checked use; not Stable. |
+| A04 | Both Kummer carry endpoints. | First enrolled in Alpha v14; both exact endpoints are independently kernel- and Lean-checked through 280 theorem nodes plus one synthetic conjunction, with 779 edges and checked use in v26; the historical v17 roots remain `body_checked`; not Stable. |
+| A05 | Complete all-natural two-square classification. | First enrolled in Alpha v15; the exact universal supplied-valuation equivalence has an independently kernel- and Lean-checked 517-node/1,599-edge proof bundle and checked use in v26; not Stable. |
+| A06 | Unconditional Lagrange four-square theorem. | First enrolled in Alpha v13; the exact all-natural root has an independently kernel- and Lean-checked 390-node/1,187-edge proof bundle and checked use in v26; not Stable. |
+| A07 | Complete multidigit Lucas theorem. | First enrolled in Alpha v13; the exact supplied-coefficient multidigit root has an independently kernel- and Lean-checked 213-node/617-edge proof bundle and checked use in v26; not Stable. |
+| A08 | Primitive Pythagorean forward constructor. | The exact 44-row forward construction and both primitive ordered/normal-form roots were first independently `alpha_closed` in v19 and remain checked in v26. The same 102-theorem family now includes 58 v26 additions closing inverse classification G077 and actual Fermat-four descent G078; not Stable. |
 
 In particular:
 
@@ -301,32 +347,39 @@ In particular:
   `49fd86708fe5b289d0159526285e73b2aea008c26e0eb41ae8a053c970d4210e`,
   19,062 body-proof occurrences, and separately kernel-checked ordinary
   endpoint certificates of 23,564 and 24,170 proof nodes;
-- the presently unproved Pythagorean inverse and Fermat-four strict descent
-  must remain visibly open.
+- the complete positive primitive Pythagorean inverse/classification and
+  actual Fermat-four strict descent are now independently kernel- and
+  Lean-checked in Alpha v26. The exact G078 endpoint excludes a square sum
+  of two positive fourth powers for every natural height, including zero;
+  no inverse or descent premise remains assumed.
 
-### 1.1 Exact evidence reconciliation and honest prerequisite arrows
+### 1.1 Historical v26 reconciliation and honest prerequisite arrows
 
 Every milestone must match the actual statement, hypotheses, witnesses, and
-release status of its claimed source. The current Alpha-v25 catalog resolves
-the following previously misleading classifications:
+release status of its claimed source. The historical Alpha-v26 catalog resolved
+the following previously misleading classifications. The table preserves that
+historical boundary; the new complete T13, G011, and G095 evidence is in §7.2,
+and all older checked entries remain unchanged in v27.
 
-| Milestone | Actual theorem or substrate | Independently usable now? |
+| Milestone | Actual theorem or substrate | Independently usable at v26? |
 |---|---|---|
 | G013, coprime modular cancellation | `mod_eq_cancel_coprime` proves cancellation for every nonzero modulus. | **Stable-closed**; checked use is already available. |
 | G041, Euler's criterion | `arbitrary_euler_criterion_complete` proves both residue and nonresidue equivalences, with its odd-prime, nondivisibility, and explicitly supplied power-trace hypotheses intact. | **Alpha-closed**; checked use is available, but the theorem is not Stable. |
 | G042, Gauss's lemma | `arbitrary_gauss_lemma_complete` constructs the reflection count from a supplied beta-coded half-range and proves its even/residue and odd/nonresidue equivalences. | **Alpha-closed**; checked use is available, but the theorem is not Stable. |
-| G044, both quadratic supplementary laws | `quadratic_supplement_minus_one_complete` and `quadratic_supplement_two_complete` have independently checked exact proofs and a shared 438-node proof bundle. | **Alpha-closed since v17**; both retain checked use in v25 but are not Stable. |
-| G031, Pascal and binomial totality | `choose_exists`, `choose_functional`, and `beta_pascal_table_successor_cell_recurrence` are all independently checked inside the Lucas proof graph. | **Alpha-closed since v18**; all three retain checked use in v25. |
-| G032, Legendre's factorial formula | `prime_factorial_valuation_eq_legendre_sum` compares an explicitly supplied factorial valuation and finite Legendre sum. | **Alpha-closed since v18** through the complete Kummer proof bundle and preserved in v25. |
-| G033 and G034, Lucas and Kummer | `lucas_theorem` supplies digit/product witnesses for an explicitly given coefficient; `kummer_binomial_carry_bit_count` constructs the full carry witness for explicitly supplied coefficient and valuation. | **Alpha-closed since v18** and retained in v25; their original hypotheses are preserved, and the separate Kummer carry-free endpoint is independently checked too. |
-| G062 and G064, two and four squares | The exact all-natural two-square supplied-valuation equivalence and unconditional all-natural four-square existence are independently proved by complete constructive bundles. | **Alpha-closed since v18** and retained in v25; both roots grant checked use but are not Stable. |
+| G044, both quadratic supplementary laws | `quadratic_supplement_minus_one_complete` and `quadratic_supplement_two_complete` have independently checked exact proofs and a shared 438-node proof bundle. | **Alpha-closed since v17**; both retain checked use in v26 but are not Stable. |
+| G031, Pascal and binomial totality | `choose_exists`, `choose_functional`, and `beta_pascal_table_successor_cell_recurrence` are all independently checked inside the Lucas proof graph. | **Alpha-closed since v18**; all three retain checked use in v26. |
+| G032, Legendre's factorial formula | `prime_factorial_valuation_eq_legendre_sum` compares an explicitly supplied factorial valuation and finite Legendre sum. | **Alpha-closed since v18** through the complete Kummer proof bundle and preserved in v26. |
+| G033 and G034, Lucas and Kummer | `lucas_theorem` supplies digit/product witnesses for an explicitly given coefficient; `kummer_binomial_carry_bit_count` constructs the full carry witness for explicitly supplied coefficient and valuation. | **Alpha-closed since v18** and retained in v26; their original hypotheses are preserved, and the separate Kummer carry-free endpoint is independently checked too. |
+| G062 and G064, two and four squares | The exact all-natural two-square supplied-valuation equivalence and unconditional all-natural four-square existence are independently proved by complete constructive bundles. | **Alpha-closed since v18** and retained in v26; both roots grant checked use but are not Stable. |
 | G012, complete linear congruences | `linear_congruence_solvable_iff_gcd_divides` proves both directions and constructs a strictly bounded residue for every nonzero modulus. | **Alpha-closed in v19**, through nine exact newly checked theorem bodies. |
 | G061, Fermat's prime two-square theorem | `prime_is_two_squares_iff_two_or_one_mod_four` is the exact individually packaged prime representation iff, not merely its checked directional ingredients. | **Alpha-closed in v19** as a genuinely new exact theorem. |
 | G025, infinitely many `3 mod 4` primes | `infinitely_many_primes_three_mod_four` constructs a genuine prime above every supplied bound using decidable beta-coded divisor search, the two-square obstruction, and the subtraction-free Euclid number `4*(c-1)+3`. | **Alpha-closed in v23**, through 18 independently kernel- and Lean-checked theorem bodies; the separate `1 mod 4` infinitude theorem is not a prerequisite. |
 | G026, infinitely many `1 mod 4` primes | `infinitely_many_primes_one_mod_four` constructs an explicit prime witness above every bound by applying prime extraction to `(2*c)^2+1` and excluding the `3 mod 4` case. | **Alpha-closed in v19**, through ten new exact bodies; the separately proved G025 is a conceptual connection, not a proof prerequisite. |
-| A08, primitive Pythagorean forward construction | `pythagorean_primitive_euclidean_from_order` and `pythagorean_primitive_normal_form` produce the exact primitive forward constructor and normal form. | **Alpha-closed in v19** through 44 newly enrolled rows; the primitive inverse G077 and Fermat-four descent G078 remain open. |
+| A08, primitive Pythagorean forward construction | `pythagorean_primitive_euclidean_from_order` and `pythagorean_primitive_normal_form` produce the exact primitive forward constructor and normal form. | **Alpha-closed in v19** through 44 newly enrolled rows; preserved unchanged in v26, alongside the now-complete G077 and G078. |
+| G077, complete positive primitive classification | `pythagorean_positive_primitive_classification` proves both directions with actual positive ordered coprime opposite-parity Euclidean parameters in either leg orientation. | **Alpha-closed in v26**, with 23 new inverse/classification results and nine square-factor foundations; positivity is explicit and the historical zero-permitting predicate is unchanged. |
+| G078, actual strict Fermat-four descent | `fermat_four_strict_descent_proved` constructs the strictly smaller counterexample; `fermat_four_positive_sum_not_square` excludes `x^4+y^4=z*z` for positive x,y and every z; `fermat_four_complete_classification` proves all exponent-four solutions are trivial. | **Alpha-closed in v26**, through 26 new descent and zero-boundary results. There is no assumed descent premise or extra positive-height hypothesis in G078. |
 | G011, generalized CRT over arbitrary finite lists | Twenty-seven historical Alpha-v24 theorems independently prove exact arbitrary-list LCM and pairwise-coprime finite-list CRT; 24 Alpha-v25 theorems additionally prove exact compatible noncoprime merges, gcd-LCM compatibility, and dominating-last canonical constructions. | **Open milestone with 53 checked components**: G011 remains open for arbitrary pairwise gcd-compatible, possibly noncoprime lists without an extra dominating-last or supplied compatible-prefix hypothesis. |
-| T09, prime-power valuations | `prime_power_valuation_exists`, `prime_power_valuation_functional`, `power_valuation_exact_cofactor`, and `prime_power_valuation_mul` are all individually checked; the alternative general existence/functionality interface remains checked too. | **Fully Alpha-closed since v19**; historical v18 wrappers remain immutably body-only in their own release, but current v25 grants checked use to all four exact interface theorems. |
+| T09, prime-power valuations | `prime_power_valuation_exists`, `prime_power_valuation_functional`, `power_valuation_exact_cofactor`, and `prime_power_valuation_mul` are all individually checked; the alternative general existence/functionality interface remains checked too. | **Fully Alpha-closed since v19**; historical v18 wrappers remain immutably body-only in their own release, but current v26 grants checked use to all four exact interface theorems. |
 | T12, finite natural polynomials | Seven historical Alpha-v20 theorems prove natural Horner evaluation; 15 historical Alpha-v24 theorems prove exact formal derivatives, and 19 Alpha-v25 theorems prove exact Taylor correction and qualified one-step Hensel lifting. | **Alpha-closed in v20** for its exact natural-evaluation statement; exact formal differentiation, Taylor correction, and qualified one-step lifting are now checked, while arbitrary-ring operations, unrestricted prime-power Hensel lifting, and root bounds remain separate obligations. |
 | T13, integer matrices and lattices | Seventy-nine exact theorems independently prove finite matrix cells, natural/signed matrix products, arbitrary-dimensional signed cofactor minors, genuine signed determinants through dimension four, and signed cofactor/alternating folds. | **Open milestone with 79 checked components**, including 29 new Alpha-v25 theorems; unrestricted-dimensional determinants, rank, and lattices remain unproved. |
 | G101, Euclidean complexity | `euclidean_gcd_execution_logarithmic_bound` combines genuine two-step halving, induction over witnessed powers of two, the actual beta-coded division history, and independent terminal-state gcd identification. | **Alpha-closed in v23** through 17 independently kernel- and Lean-checked theorems; it proves the exact requested `steps <= 2*BitLen(b)+1` and even the stronger `steps <= 2*BitLen(b)`. |
@@ -344,6 +397,11 @@ coded digits, finite products, and Pascal arithmetic. Likewise, the
 Alpha-v13 four-square construction does not depend on the Alpha-v15 all-natural
 two-square classification or the unbuilt general matrix substrate. The
 Pythagorean forward constructor does not require that substrate either. The
+new square-factor extraction uses constructive gcd reduction and checked
+Gauss cancellation, not prime-factorization uniqueness **G005** or the
+all-natural two-square classification **G062**. Accordingly the actual G077
+prerequisites are **A08 and T07**, while G078 uses **G077, T07, and T15**.
+Those two thematic connections are not introduced as proof dependencies. The
 already closed quadratic-reciprocity, Euler, Bertrand, Kummer, Legendre, and
 two-square proofs do not retrospectively acquire new dependencies on the
 prime-valuation wrappers merely because the full T09 interface is now closed.
@@ -351,9 +409,10 @@ Likewise, the `1 mod 4` prime-infinitude proof depends on prime extraction
 and the existing two-square obstruction, not on the separately constructed
 `3 mod 4` infinitude milestone G025; neither progression theorem is a proof
 prerequisite of the other. In contrast, general Hensel lifting requires the
-now-checked T12 natural polynomial evaluator and a still-unproved compatible
-formal-derivative interface; closing the evaluator does not itself close
-Hensel's theorem.
+now-checked T12 natural polynomial evaluator and exact formal-derivative and
+Taylor interfaces. Its qualified one-step lift is checked; unrestricted
+input normalization, canonical lifted-root uniqueness, and the prime-power
+iteration bridge remain separate open obligations.
 
 ## 2. Fixed object language and statement discipline
 
@@ -436,6 +495,30 @@ PolyEval(code,x,y)       := witnessed finite evaluation at x
 FiniteField(p,x)         := Prime(p) /\ Lt(x,p)
 SumTwoSquares(n)         := exists x y. n = x*x+y*y
 FourSquares(n)           := exists a b c d. n = a*a+b*b+c*c+d*d
+Pythagorean(a,b,c)       := a*a+b*b=c*c
+PrimitivePythagorean(a,b,c)
+                         := Pythagorean(a,b,c) /\ Coprime(a,b)
+PrimitiveTriple(a,b,c)   := a!=0 /\ b!=0 /\ c!=0
+                            /\ PrimitivePythagorean(a,b,c)
+OppositeParity(m,n)      := (Even(m) /\ Odd(n)) \/ (Odd(m) /\ Even(n))
+EuclidParameters(a,b,c,m,n)
+                         := m>n>0 /\ Coprime(m,n) /\ OppositeParity(m,n)
+                            /\ c=m*m+n*n /\ m*m=n*n+a /\ b=2*(m*n)
+EuclidParametrization(a,b,c)
+                         := exists m n. m>n>0 /\ Coprime(m,n)
+                            /\ OppositeParity(m,n) /\ c=m*m+n*n
+                            /\ ((m*m=n*n+a /\ b=2*(m*n))
+                                \/ (m*m=n*n+b /\ a=2*(m*n)))
+FermatFourCounterexample(a,b,h)
+                         := a!=0 /\ b!=0 /\ h!=0 /\ a^4+b^4=h*h
+PrimitiveFermatFourCounterexample(a,b,h)
+                         := FermatFourCounterexample(a,b,h) /\ Coprime(a,b)
+SmallerFermatFourCounterexample(a,b,h,H)
+                         := FermatFourCounterexample(a,b,h) /\ Lt(h,H)
+FermatFourStrictDescent  := forall a b h. FermatFourCounterexample(a,b,h)
+                            -> exists A B H. SmallerFermatFourCounterexample(A,B,H,h)
+TrivialFermatFourSolution(a,b,h)
+                         := (a=0 /\ b=h) \/ (b=0 /\ a=h)
 Signed(z)                := the already frozen canonical signed-natural code
 Rational(q)              := reduced signed numerator and positive denominator
 Matrix(code,r,c)         := a canonical bounded table of signed entries
@@ -449,21 +532,26 @@ because exponentiation is expressed through beta-coded constant and product
 histories. New work must preserve readable named definitions while retaining
 exact, audited expansion to the trusted kernel.
 
-At current immutable Alpha v25, the exact shared research graph contains
-**179 blueprint definition names**, **165 blueprint definition-dependency
-edges**, and **395 milestone-to-notation references**. Its distinct genuine
-registry contains **120 hygienically expansion-checked conservative
-definitions**, **214 reviewed definition prerequisites**, and **88 compatible
-blueprint/registry links**: **83 exact names** and five explicitly reviewed
+At historical immutable Alpha v26, the exact shared research graph contained
+**189 blueprint definition names**, **181 blueprint definition-dependency
+edges**, and **404 milestone-to-notation references**. Its distinct genuine
+registry contains **131 hygienically expansion-checked conservative
+definitions**, **231 reviewed definition prerequisites**, and **99 compatible
+blueprint/registry links**: **94 exact names** and five explicitly reviewed
 aliases. Existing reviewed `Mod4Three`, `AllBits`, and `BitCount` identities
 are reused rather than duplicated; the eight historical v23 definitions retain
 stable reviewed IDs `ND0038` through `ND0045`, while twelve genuinely distinct
 v24 matrix-minor, formal-derivative, and finite-CRT definitions retain stable
 reviewed IDs `ND0046` through `ND0057`, and the eleven genuinely new v25
-cofactor-fold, Taylor/Hensel, and compatibility definitions receive reviewed
-IDs `ND0058` through `ND0068`. This notation graph is not the 6,633-edge
-theorem-proof DAG and
-never adds axioms or proof premises.
+cofactor-fold, Taylor/Hensel, and compatibility definitions retain reviewed
+IDs `ND0058` through `ND0068`. Alpha v26 preserves the exact five historical
+Pythagorean identities `CF0011`, `CF0013`, `CF0014`, `CF0015`, and `CF0016`
+and adds the six distinct identities `ND0069` through `ND0074`: positive
+primitive triples, oriented Euclid parameters, primitive and smaller
+counterexamples, trivial Fermat solutions, and the complete two-orientation
+parametrization. The strict-descent definition retains its actual nullary
+signature. This notation graph is distinct from the **6,851-edge theorem-proof
+DAG** and never adds axioms or proof premises.
 
 ### 2.2 Mandatory constructive shapes
 
@@ -512,11 +600,11 @@ substitutes for an object-level HA witness or derivation.
 | T06 | Euclidean division. | Available. | Positive-divisor quotient/remainder existence, uniqueness, and normalized arithmetic. |
 | T07 | Bezout and canonical gcd. | Available. | Signed witnessed Bezout coefficients, canonical gcd functionality, coprimality. |
 | T08 | Prime divisor extraction. | Available. | Every nonunit positive natural yields an explicit prime factor. |
-| T09 | Bounded prime-power valuation. | **Fully Alpha-closed since v19 and preserved in v25; both exact prime-specific existence/functionality wrappers, exact cofactor, and multiplicativity have checked use.** | Preserve the complete independently checked prime-specific and general bounded-valuation interfaces, including their nonzero boundaries. |
-| T10 | Constructive binary CRT. | Binary CRT, pairwise-coprime finite-list CRT, arbitrary-list LCM, exact compatible noncoprime merges, and dominating-last canonical constructions are checked; the unrestricted possibly-noncoprime finite-list G011 remains open. | Reuse the checked binary, coprime, and compatible-merge folds; separately construct the missing arbitrary pairwise-gcd-compatible finite-list bridge. |
+| T09 | Bounded prime-power valuation. | **Fully Alpha-closed since v19 and preserved in v27; both exact prime-specific existence/functionality wrappers, exact cofactor, and multiplicativity have checked use.** | Preserve the complete independently checked prime-specific and general bounded-valuation interfaces, including their nonzero boundaries. |
+| T10 | Constructive binary CRT. | The binary and finite-list substrates are checked; Alpha v27 also closes the unrestricted possibly-noncoprime pairwise-compatible finite-list G011, including zero moduli and normalized uniqueness. | Reuse the fully constructed arbitrary-list bridge; stronger arithmetic-function and residue algorithms remain separate goals. |
 | T11 | Coded finite sums and products. | Available. | Explicit histories, concatenation, permutation invariance, and exact bounds. |
-| T12 | Finite natural polynomial evaluation. | **Alpha-closed in v20: seven exact Horner theorems; v24 adds 15 exact formal-derivative theorems, and v25 adds 19 exact Taylor/formal-derivative and qualified one-step Hensel theorems.** | Reuse checked evaluation, differentiation, Taylor correction, and qualified lifting; separately construct arbitrary-ring operations, unrestricted prime-power lifting, multiplication, and root bounds. |
-| T13 | Integer matrices and lattices. | **Open; 79 components are independently checked by Alpha v25, including arbitrary signed products/cofactor minors, signed determinants through dimension four, and exact alternating cofactor folds.** | Extend the checked signed minors and folds to unrestricted-dimensional determinants, rank witnesses, and finite lattice-basis operations. |
+| T12 | Finite natural polynomial evaluation. | **Alpha-closed in v20; v24/v25 add exact derivatives, Taylor correction, and qualified lifting. Alpha v27 adds 40 natural/signed lifting theorems closing G095 at every positive prime power.** | Reuse the actual signed-polynomial evaluation, derivative, and canonical Hensel witnesses; arbitrary-ring operations, root bounds, and singular-root classification remain separate goals. |
+| T13 | Integer matrices and lattices. | **Alpha-closed in v27: 182 new theorems give unrestricted-dimensional recursive determinants, unique rectangular rank, integer-representation invariance, column spans, and positive absolute-determinant/full-rank data.** | Reuse the complete finite determinant/rank/span substrate. Lattice index, basis independence, determinant multiplicativity, normal forms, and reduction remain additional theorems. |
 | T14 | Constructive modular inverse. | Available. | Actual inverse witness for each verified coprime residue. |
 | T15 | Strong induction and measured descent. | Available. | Ordinary HA induction compiled into explicit natural-measure decreases. |
 | T16 | Finite witnessed choice. | Available. | Selection over a bounded domain using decidable predicates and explicit output. |
@@ -581,8 +669,10 @@ arithmetic needed for residue algorithms and later algebraic number theory.
 1. **G011 - Generalized constructive Chinese remainder theorem.**
    `forall i,j. ModEq(gcd(m_i,m_j),a_i,a_j)
       -> exists x. forall i. ModEq(m_i,x,a_i)`.
-   Only binary generalized CRT is presently checked; the stated arbitrary
-   compatible finite-list fold and canonical uniqueness remain open.
+   Fully `alpha_closed` in v27: the actual pairwise-gcd-compatible finite-list
+   bridge and normalized uniqueness are constructed for arbitrary lists,
+   including the empty list and zero moduli. The exact first-order root is
+   `crt_pairwise_compatible_prefix_normalized_exists_unique`.
 2. **G012 - Complete linear congruence criterion and constructor.**
    `(exists x. ModEq(m,a*x,b)) <-> Dvd(gcd(a,m),b)`.
    Independently `alpha_closed` in v19 as the exact
@@ -824,7 +914,7 @@ representation-count formulas, ternary obstruction, and universal forms.
        (n!=0 /\ forall q e. Prime(q) /\ q=3 mod 4
          /\ PowerValuation(q,n,e) -> Even(e))`.
    The exact supplied-valuation equivalence first became `alpha_closed` in
-   v18 and remains independently checked in current v25.
+   v18 and remains independently checked in current v27.
 3. **G063 - Jacobi's exact two-square representation formula.**
    `n>0 -> r_2(n)=4*Sum_{d|n} chi_4(d)`, where `r_2` counts ordered
    signed integer coordinate pairs, including zero coordinates.
@@ -884,14 +974,21 @@ explicit period witnesses, and induction over the coded period.
        genuine solution s in S`, where the units belong to the explicit
    order `Z[sqrt(D)]` and `S` is empty exactly when no solution exists.
 7. **G077 - Complete primitive Pythagorean parametrization.**
-   `PrimitiveTriple(a,b,c) -> exists m k.
-       m>k>0 /\ Coprime(m,k) /\ OppositeParity(m,k)
-       /\ {a,b}={m*m-k*k,2*m*k} /\ c=m*m+k*k`.
-   Combine this still-missing inverse direction with the now independently
-   checked Alpha-v19 forward constructor A08 to obtain the complete
-   constructive equivalence; the inverse itself remains open.
+   **Completed in Alpha v26:**
+   `PrimitiveTriple(a,b,c) <-> EuclidParametrization(a,b,c)`.
+   Both orientations construct actual positive ordered coprime opposite-parity
+   parameters. The square difference is witnessed by `m*m=n*n+a` or
+   `m*m=n*n+b`; the proof introduces no subtraction operation. The complete
+   inverse and positive forward direction have independent kernel and Lean
+   evidence, and preserve the historical Alpha-v19 forward constructor A08.
 8. **G078 - Genuine Fermat exponent-four strict descent.**
-   `x*y*z>0 -> ~(x^4+y^4=z*z)`, hence `x^4+y^4!=z^4`.
+   **Completed in Alpha v26:**
+   `forall x y z. x!=0 -> y!=0 -> ~(x^4+y^4=z*z)`.
+   The exact all-z statement includes zero height. Gcd normalization and two
+   actual primitive inversions construct a strictly smaller counterexample
+   before the checked induction bridge is applied. The same tranche proves
+   `x^4+y^4=z^4 <-> TrivialFermatFourSolution(x,y,z)` with every natural
+   boundary case and no assumed descent premise.
 9. **G079 - Fermat exponent-three theorem.**
    `x*y*z>0 -> ~(x*x*x+y*y*y=z*z*z)`, using audited Eisenstein
    factorization, the ramified prime over `3`, and explicit descent.
@@ -1231,12 +1328,15 @@ operations and explicit divisibility witnesses.
 
 ### Layer 8 - continued fractions and deep Diophantine descent
 
-Build finite continued-fraction states, periodic-state witnesses, Pell
-solutions, primitive Pythagorean inverse classification, and genuine
-strictly-decreasing Fermat-four counterexample constructors.
+Finite positive continued-fraction expansion is checked. Alpha v26 also
+completes primitive Pythagorean inverse/classification and the actual
+strictly-decreasing Fermat-four counterexample construction. Periodic
+quadratic-state witnesses, Pell solutions, and their stronger Diophantine
+extensions remain future work in this layer.
 
-**Exit gate:** the currently open inverse and descent premises have actual
-proofs; no conditional theorem is described as unconditional.
+**Exit gate:** every remaining continued-fraction/Pell claim must have an
+actual witness construction. G077 and G078 have already met this gate;
+their completed inverse and descent proofs are reusable prerequisites.
 
 ### Layer 9 - higher reciprocity and arithmetic geometry substrate
 
@@ -1301,7 +1401,10 @@ vertex count, while the objective count tracks only the 120 theorem goals.
 
 ## 7. Immediate campaigns and long-range summits are different promises
 
-### 7.1 First execution wave: close existing mathematical liabilities
+### 7.1 First execution wave: completed in Alpha v26
+
+All 24 items below are complete. This is the first **execution wave**, not a
+claim that every later layer or all 120 research milestones have been proved.
 
 1. **Completed:** independently close the layered QR root and admit its exact
    315-row dependency-closed checked-use promotion in immutable Alpha v16,
@@ -1415,18 +1518,99 @@ vertex count, while the objective count tracks only the 120 theorem goals.
    definition dependencies**, and **88 compatible signature bindings**:
    **83 exact names** and **five explicit aliases**. Preserve every historical
    identity and add eleven exact reviewed definitions `ND0058`–`ND0068`.
-22. Produce the missing primitive Pythagorean inverse constructor.
-23. Produce the missing strictly decreasing Fermat-four descent constructor.
-24. Repair human-readable display of giant tactic-local propositions by using
-   conservative definition sharing instead of expanding a `PowerValuation`
-   predicate tens of thousands of characters inside a proof line.
+22. **Completed:** prove **nine coprime square-factor foundations** and **23
+   positive primitive Pythagorean inverse/classification theorems**. The
+   complete G077 equivalence constructs positive ordered coprime
+   opposite-parity parameters in either leg orientation. Gcd reduction and
+   Gauss cancellation supply the actual square-factor witnesses; neither
+   G005 prime-factorization uniqueness nor G062 two-square classification
+   is a proof prerequisite.
+23. **Completed:** prove **26 actual Fermat-four descent and natural-boundary
+   theorems**, including the exact historical strict-descent obligation, the
+   unconditional all-z square obstruction G078, and the complete natural
+   exponent-four solution classification. Seal all **58** new first-wave
+   rows in immutable **Alpha v26**: **2,138** checked-use entries,
+   **6,851** actual theorem-dependency edges, **53** layers, and exactly
+   **432** unchanged Stable entries. The **216-node**, **558-edge** bundle
+   has **10,397** structural proof-body nodes and SHA-256
+   `59afca707b33b68df907c941683e335492f7de12ee3888219339c5dfce8ec4fc`;
+   both the original kernel and independently compiled Lean verifier accept
+   it. The existing Pythagorean family now displays **102** proved theorems:
+   44 historical foundations plus 58 new first-wave results.
+24. **Completed:** compact giant tactic-local propositions with hygienic
+   conservative definitions and independent exact AST-equivalence receipts.
+   In TS003F, both **21,622-character** local `have` commands now render in
+   **231 characters**, while their exact **21,610-character** propositions
+   have **219-character** defined readings. Source, count, and aggregate
+   budgets remain explicit; repeated formulas share budget accounting, and
+   over-budget formulas retain exact source without a false receipt. The
+   shared DAG has **189 blueprint definitions / 181 edges**, **131 reviewed
+   definitions / 231 edges**, and **99** compatible signature bindings
+   (**94** exact names plus **five** aliases). Historical definitions and
+   proof text remain unchanged.
 
-These actions strengthen existing truth claims before the campaign acquires
-new visible flagship labels.
+The exact mathematical notes are
+[square factors](../research/arithmetic-library/coprime-square-factor-rfc-v1.md),
+[primitive inverse](../research/arithmetic-library/pythagorean-inverse-rfc-v1.md),
+and [Fermat descent](../research/arithmetic-library/fermat-four-descent-rfc-v1.md).
+The [v26 admission RFC](../research/arithmetic-library/alpha-v26-first-wave-rfc-v1.md)
+and [closure receipt](../research/arithmetic-library/alpha-v26-first-wave-receipt.md)
+bind the actual sources, tests, statements, dependencies, and certificates.
+These completions do not promote the second-wave milestones below.
 
-### 7.2 Second execution wave: high return from existing foundations
+Reproduce the complete first-wave release checks from the repository root:
 
-After the immutable Alpha-v25 promotion, exactly six still-open vertices
+```sh
+make peano-library-alpha-v26-check
+```
+
+The automatic Peano-to-Lean converter also compiles the exact G078 endpoint
+as a 181-theorem, 451-edge package: 175 readable proofs and six independently
+checked local certificate fallbacks. Reproduce it in a fresh directory with
+explicit 64-KiB chunk, 1-GiB memory, and 180-second verification limits:
+
+```sh
+first_wave_lean_dir="$(mktemp -d /private/tmp/peano-first-wave-lean.XXXXXX)"
+PYTHONMALLOC=malloc python3 scripts/export_peano_lean.py \
+  fermat_four_positive_sum_not_square --edition alpha --format strand \
+  --package-dir "$first_wave_lean_dir/g078" --verify \
+  --max-chunk-kib 64 --max-memory-mib 1024 --max-verify-seconds 180
+```
+
+The observed Lean axiom audit contains `propext`, `Classical.choice`, and
+`Quot.sound`, but neither `sorryAx` nor a compiler-trust axiom. This is not an
+axiom-free Lean claim; the original accepted HA proof remains intuitionistic.
+The generated manifest alone grants no compiler or publication authority.
+
+### 7.2 Second execution wave: seven named targets complete in Alpha v27
+
+The following exact seven-target implementation is complete locally. Each
+row denotes actual empty-context HA proofs and independent Lean acceptance,
+not just a checked dependency-curried body or a proposed future proof.
+
+| Target | New theorems | Completed constructive statement and scope |
+|---|---:|---|
+| T13 | 182 | Arbitrary-dimensional signed recursive determinants; unique rectangular rank via actual minors; invariance under signed-integer representations; integer column-span operations and positive absolute-determinant/full-rank matrix data. No lattice-index, basis-independence, determinant-multiplicativity, Hermite/Smith, or LLL theorem is claimed. |
+| G011 | 24 | An arbitrary finite pairwise-gcd-compatible list has a normalized unique CRT solution, including empty lists and zero moduli; predecessor-merge compatibility is proved rather than assumed. |
+| G095 | 40 | Every simple root of an arbitrary signed-integer polynomial modulo a prime lifts uniquely to every positive prime power, with the derivative inverse and power witnesses constructed internally. |
+| G035 | 19 | The actual finite multinomial coefficient has valuation equal to the total carries from sequential pairwise base-p additions, including empty lists and zero parts. This is not yet a simultaneous-grid permutation-invariance theorem. |
+| G027 | 55 | Certified two-sided constant-8 Chebyshev bounds using the actual finite prime count and binary length, with only the stated `N>=2` and representation premises. |
+| G107 | 30 | The prime `1 mod 4` Cornacchia two-square algorithm has an actual first-stop Euclidean trace and proves its output equation; not a generic `x²+d y²` solver. |
+| G051 | 72 | The sharp prime-field Cauchy–Davenport bound for actual nonempty finite residue sets and their constructed sumset, by cardinality-preserving Dyson transformation and strict finite descent. |
+
+The canonical [seven-family proof maps](../book/_static/constructive-second-wave-explorer/index.html)
+and [combined campaign atlas](../book/_static/constructive-grand-campaign/index.html)
+keep theorem-proof edges separate from conservative-definition prerequisites
+and notation-use edges. Reproduce the local release and maps with
+`make peano-library-alpha-v27-check`.
+
+The following dispatch notes are the **historical v26 starting plan**, retained
+to show how the seven implementations refine their original research targets.
+In particular, the actual Chebyshev proof uses central-binomial and primorial
+estimates, and Cauchy–Davenport uses finite-set descent; their final proof DAGs
+do not falsely claim the initially suggested chains or polynomial method.
+
+After the immutable Alpha-v26 promotion, exactly six still-open vertices
 have only independently checked direct prerequisites. Their dependency-first
 dispatch order is:
 
@@ -1441,8 +1625,9 @@ dispatch order is:
 
 A ready vertex is a scheduling opportunity, never a claim that its own proof,
 its additional internal lemmas, or its Alpha admission already exist. In
-particular, existing-but-unverified foundations and the separately open
-Pythagorean inverse do not silently enter this ready set.
+particular, existing-but-unverified foundations do not silently enter this
+ready set. The now-complete G077 and G078 are already checked prerequisites,
+not outstanding second-wave work.
 
 The preceding dependency-first microbatch completed the first three scheduled
 obligations and the separate prime progression:
@@ -1459,7 +1644,7 @@ obligations and the separate prime progression:
 4. **Completed witnessed `3 mod 4` prime infinitude:** decidable bounded
    divisor extraction and a genuine prime above every supplied bound.
 
-The immediate next dependency-first microbatch order is:
+The historical dependency-first microbatch order was:
 
 1. **General determinant recursion:** reuse the already checked arbitrary
    signed cofactor minors, signed four-dimensional determinants, and parity-
@@ -1484,14 +1669,19 @@ The immediate next dependency-first microbatch order is:
    milestone only when its exact full formula has an unchanged-kernel
    dependency certificate and a separately reviewed immutable Alpha release.
 
-- finite CRT and arithmetic-function strengthening;
+The broader directions below were exploratory roadmap bullets, not the seven
+named completion contracts. They **remain open except for the precise
+subresults listed above**; this release does not silently close them:
+
+- finite CRT and arithmetic-function strengthening beyond G011;
 - Jacobi-symbol definition, multiplicativity, reciprocity algorithm;
 - Tonelli-Shanks and Cornacchia correctness;
 - finite polynomial root bound and primitive roots for prime fields;
 - simple Hensel lifting and roots modulo prime powers;
 - valuation lifting with correctly stated exceptional `p=2` conditions;
 - Lucas/Kummer multinomial and carry extensions;
-- primitive Pythagorean inverse, Fermat exponent four, and Pell infrastructure;
+- periodic continued fractions and Pell infrastructure, reusing the completed
+  primitive Pythagorean and Fermat-four campaigns where relevant;
 - Gaussian integer Euclidean division and norm factorization;
 - constructive prime-generation families with genuinely elementary proofs.
 
@@ -1573,7 +1763,7 @@ the rows highlight priorities and are not an exhaustive coverage index.
 | Priority | Concrete objectives | Mathematical reason |
 |---|---|---|
 | 01 | A01-A07 closure/release slices; G043, G062, G064, G033-G034. | Stop conflating existing complete bodies with independent checked-use authority. |
-| 02 | G077 followed by G078. | The missing primitive-triple inverse is the natural strict-descent entry to genuine Fermat four. |
+| 02 | **Completed in Alpha v26:** G077 followed by G078. | Actual coprime square-factor witnesses, both primitive-triple orientations, strict descent, and all natural Fermat-four boundary cases are now independently checked; reuse their 58 new theorem bodies. |
 | 03 | G045, G106, G107. | Quadratic reciprocity plus supplementary laws immediately support Jacobi, modular roots, and binary-form algorithms. |
 | 04 | G001-G005 and G011-G016. | Reuse canonical gcd, factorization, CRT, and orders after recursively closing their exact package prerequisites. |
 | 05 | G095-G096 and the quadratic portions of G020. | Local roots and finite CRT become a reusable prime-power decision surface. |
@@ -1631,17 +1821,29 @@ Every major goal `Gnnn` eventually ships as the following package:
 
 ## 9. Formula sharing, proof sharing, and memory-safe scaling
 
-The existing TS003F two-square theorem illustrates why scaling is a serious
-engineering issue: its compact defined statement has **260 characters**, its
-fully expanded kernel statement has **21,670 characters**, and two local
-`have` propositions have **21,622 characters each**. Current display safety
-policy skips propositions larger than **2,400 characters**, leaving readable
-pages with giant raw formulas.
+The existing TS003F two-square theorem illustrates both the scaling issue and
+the completed first-wave remedy. Its compact statement has **260 characters**
+and its exact kernel statement has **21,670 characters**. The two local
+`have` commands formerly displayed **21,622 characters each**, because the
+old presentation skipped propositions larger than 2,400 characters. Alpha
+v26's bounded display compactor now renders each command in **231 characters**
+and each proposition in **219**, with exact free-variable and AST-equivalence
+receipts. The original **21,610-character** proposition sources remain
+available unchanged.
 
-The grand campaign therefore needs independent work packages for:
+The current compaction limits are **65,536 characters per proposition**, **32
+distinct propositions / 131,072 source characters per ordinary theorem**,
+and **64 / 262,144 per selected root**. Repeated sources share the count and
+source budget but keep separate line receipts. A failed or over-budget
+compaction keeps the exact formula and receives no equivalence claim. These
+presentation limits do not alter any proof-kernel resource limit.
 
-1. hygienic conservative definition registration and exact expansion;
-2. definition-aware compaction of large local tactic propositions;
+The campaign preserves and extends the following scaling components:
+
+1. **Completed:** hygienic conservative definition registration and exact
+   expansion, now 131 reviewed identities;
+2. **Completed:** bounded definition-aware compaction of large local tactic
+   propositions, including the two giant TS003F lemmas;
 3. content-addressed formula DAGs rather than repeated source inlining;
 4. layered retained `Cut` certificates rather than naive recursive expansion;
 5. explicit sharing of closed Stable premises in mixed closure packages;
