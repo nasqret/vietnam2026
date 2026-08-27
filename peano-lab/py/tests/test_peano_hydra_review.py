@@ -40,7 +40,7 @@ def _plan(*, batch_size=1, scope="full", budget=900):
     cold = {"targets": targets, "target_count": 2, "edition_identity_sha256": "b" * 64,
             "certificate_limits": r.CertificateLimits().to_dict(), "batch_size": batch_size,
             "batches": [list(range(start, min(2, start + batch_size))) for start in range(0, 2, batch_size)]}
-    return {"source": {"fixture": True}, "epoch_sha256": "a" * 64,
+    return {"source": {"fixture": True}, "execution_root": str(r.ROOT), "epoch_sha256": "a" * 64,
             "profile": {"profile_sha256": "c" * 64}, "cold_plan": cold,
             "cold_selection": r.cold_selection(cold, scope), "cold_wall_budget": budget}
 
@@ -98,7 +98,7 @@ def _ledger(plan):
         batches.append({"pass_number": number, "batch_number": index, "indices": indices,
                         "started_wall_seconds": len(batches) * 0.01,
                         "worker": worker, "completed_targets": len(rows)})
-    return _refresh(plan, {"schema": r.COLD_LEDGER_SCHEMA, "batches": batches, "rows": [],
+    return _refresh(plan, {"schema": r.COLD_LEDGER_SCHEMA, "execution_root": plan["execution_root"], "batches": batches, "rows": [],
                           "wall_seconds": len(batches) * 0.01 + 0.1, "wall_budget": plan["cold_wall_budget"],
                           "stop_reason": "completed", "summary": {}})
 
@@ -278,7 +278,7 @@ def test_fresh_reproduction_compares_complete_deterministic_receipts(field):
 def test_scope_none_and_insufficient_whole_budget_remain_explicit():
     for scope, budget in (("none", 900), ("full", 30)):
         plan = _plan(scope=scope, budget=budget)
-        ledger = {"schema": r.COLD_LEDGER_SCHEMA, "batches": [], "rows": [], "wall_seconds": 0.01,
+        ledger = {"schema": r.COLD_LEDGER_SCHEMA, "execution_root": plan["execution_root"], "batches": [], "rows": [], "wall_seconds": 0.01,
                   "wall_budget": budget, "stop_reason": "completed" if scope == "none" else "wall-budget-insufficient-for-next-worker"}
         ledger["summary"] = r.summarize_cold(plan, [], [], wall_seconds=0.01)
         r.validate_cold_ledger(plan, ledger)
@@ -294,6 +294,28 @@ def test_global_wall_overrun_cannot_satisfy_full_cold_gate():
     assert ledger["summary"]["matching_complete_selected_passes"] is True
     assert ledger["summary"]["whole_stage_within_budget"] is False
     assert ledger["summary"]["full_epoch_replayed_twice"] is False
+
+
+def test_reproduction_uses_current_checkout_but_authenticates_saved_command_location(monkeypatch, tmp_path):
+    plan = _plan()
+    old = _ledger(plan)
+    fresh = deepcopy(old)
+    fresh["execution_root"] = str(tmp_path)
+    for batch in fresh["batches"]:
+        batch["worker"]["command"] = list(r._worker_command(str(tmp_path)))
+    monkeypatch.setattr(r, "ROOT", tmp_path)
+    assert r.compare_cold_reproduction(plan, old, fresh) == 4
+    with pytest.raises(ValueError):
+        r.validate_cold_ledger(plan, fresh)
+    old["batches"][0]["worker"]["command"][1] = str(tmp_path / "unreviewed_worker.py")
+    with pytest.raises(ValueError, match="command"):
+        r.compare_cold_reproduction(plan, old, fresh)
+
+
+@pytest.mark.parametrize("path", ["relative", "/tmp/../other", "/tmp//other", "/tmp/./other", "/tmp/other\n", "/tmp/other\x00"])
+def test_execution_root_is_a_canonical_historical_path(path):
+    with pytest.raises(ValueError):
+        r._worker_command(path)
 
 
 @pytest.mark.parametrize("raw", [b'[],"extra":1', b'{}', b'null', b'[NaN]', b'[{"split":"train","split":"dev"}]', b'[] []'])

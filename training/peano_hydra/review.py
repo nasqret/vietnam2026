@@ -47,7 +47,7 @@ NATIVE_LIMITS = ProcessLimits(wall_seconds=30, cpu_seconds=20)
 COLD_LEDGER_SCHEMA = "peano-hydra-cold-review-ledger-v1"
 EVIDENCE_NAMES = {"native", "native_worker", "reference_build", "reference_results", "cold"}
 PLAN_FIELDS = {
-    "schema", "status", "source", "profile", "epoch_sha256", "development_directory",
+    "schema", "status", "source", "execution_root", "profile", "epoch_sha256", "development_directory",
     "development_plan_sha256", "preparation_directories", "allocation_input", "lineage_review",
     "reference", "reference_project", "conformance", "cold_plan", "cold_selection",
     "cold_wall_budget", "parallel_workers", "native_limits", "reserved_reference_processes",
@@ -81,6 +81,20 @@ def _relative(path: Path) -> str:
 def _same(actual: object, expected: object) -> bool:
     """Canonical equality does not confuse JSON booleans with integer counts."""
     return canonical(actual) == canonical(expected)
+
+
+def _execution_root(value: object) -> str:
+    # Historical execution paths need not exist during archive verification.
+    # They describe saved commands; they are never executed or used as inputs.
+    if (type(value) is not str or not 1 <= len(value.encode("utf-8")) <= 4096
+        or not Path(value).is_absolute() or Path(value).as_posix() != value
+        or ".." in Path(value).parts or any(ord(char) < 32 or ord(char) == 127 for char in value)):
+        raise HydraReviewError("execution root must be one canonical absolute historical path")
+    return value
+
+
+def _worker_command(execution_root: str) -> tuple[str, ...]:
+    return (sys.executable, str(Path(_execution_root(execution_root)) / "scripts/check_peano_hydra_review.py"), "--worker")
 
 
 def read_allocations(path: Path) -> list[dict[str, str]]:
@@ -155,7 +169,7 @@ def build_review_plan(
     selection = cold_selection(cold_plan, cold_scope)
     reference = inspect_reference(reference_project, lean_binary)
     plan = {
-        "schema": SCHEMA, "status": "planned", "source": source_identity(),
+        "schema": SCHEMA, "status": "planned", "source": source_identity(), "execution_root": str(ROOT),
         "profile": development_profile(), "epoch_sha256": epoch.epoch_sha256,
         "development_directory": _relative(development_directory), "development_plan_sha256": original["plan_sha256"],
         "preparation_directories": preparation_labels,
@@ -181,6 +195,7 @@ def validate_plan(plan: dict[str, object], *, live_audits: bool = True) -> None:
         raise HydraReviewError("review plan has missing or unknown fields")
     _signed(plan, "plan_sha256")
     validate_sources(plan["source"])
+    _execution_root(plan["execution_root"])
     if (plan["schema"] != SCHEMA or plan["status"] != "planned"
         or type(plan["parallel_workers"]) is not int or plan["parallel_workers"] != 1
         or not _same(plan["native_limits"], NATIVE_LIMITS.to_dict())
@@ -362,9 +377,9 @@ def validate_cold_receipt(plan: dict[str, object], target: dict[str, object], re
 
 
 def _decode_cold_worker(plan: dict[str, object], pass_number: int, batch_number: int,
-                        indices: list[int], result: dict[str, object]) -> list[dict[str, object]]:
+                        indices: list[int], result: dict[str, object], *, execution_root: str) -> list[dict[str, object]]:
     request = _cold_request(plan, pass_number, batch_number, indices)
-    validate_process_record(result, command=(sys.executable, str(SCRIPT), "--worker"),
+    validate_process_record(result, command=_worker_command(execution_root),
                             limits=COLD_LIMITS, input_bytes=canonical(request))
     successful = result["reason"] == "exited" and result["returncode"] == 0
     # Only LF-framed, complete records survive a killed or truncated worker.
@@ -403,7 +418,7 @@ def run_cold(plan: dict[str, object], *, progress=None) -> dict[str, object]:
             break
         result = run_bounded((sys.executable, str(SCRIPT), "--worker"), cwd=ROOT,
                               limits=COLD_LIMITS, input_bytes=request_bytes)
-        completed = _decode_cold_worker(plan, pass_number, batch_number, indices, result)
+        completed = _decode_cold_worker(plan, pass_number, batch_number, indices, result, execution_root=str(ROOT))
         rows.extend(completed)
         batches.append({"pass_number": pass_number, "batch_number": batch_number,
                         "indices": indices, "started_wall_seconds": launched - started,
@@ -412,11 +427,11 @@ def run_cold(plan: dict[str, object], *, progress=None) -> dict[str, object]:
             progress("cold_replay", len(batches), len(schedule),
                      f"pass {pass_number}, {len(completed)}/{len(indices)} receipts, {result['reason']}")
     elapsed = time.monotonic() - started
-    ledger = {"schema": COLD_LEDGER_SCHEMA, "batches": batches, "rows": rows,
+    ledger = {"schema": COLD_LEDGER_SCHEMA, "execution_root": str(ROOT), "batches": batches, "rows": rows,
               "wall_seconds": elapsed, "wall_budget": plan["cold_wall_budget"],
               "stop_reason": "completed" if len(batches) == len(schedule) else "wall-budget-insufficient-for-next-worker",
               "summary": summarize_cold(plan, rows, batches, wall_seconds=elapsed)}
-    validate_cold_ledger(plan, ledger)
+    validate_cold_ledger(plan, ledger, execution_root=str(ROOT))
     return ledger
 
 
@@ -452,10 +467,12 @@ def summarize_cold(plan: dict[str, object], rows: list[dict], batches: list[dict
             "all_scripts_regenerated": False, "model_calls": 0, "solver_calls": 0}
 
 
-def validate_cold_ledger(plan: dict[str, object], ledger: dict[str, object]) -> None:
+def validate_cold_ledger(plan: dict[str, object], ledger: dict[str, object], *, execution_root: str | None = None) -> None:
+    expected_root = _execution_root(plan["execution_root"] if execution_root is None else execution_root)
     if (type(ledger) is not dict or set(ledger) != {
-        "schema", "batches", "rows", "summary", "wall_seconds", "wall_budget", "stop_reason",
-    } or ledger["schema"] != COLD_LEDGER_SCHEMA or type(ledger["batches"]) is not list
+        "schema", "execution_root", "batches", "rows", "summary", "wall_seconds", "wall_budget", "stop_reason",
+    } or ledger["schema"] != COLD_LEDGER_SCHEMA or ledger["execution_root"] != expected_root
+        or type(ledger["batches"]) is not list
         or type(ledger["rows"]) is not list or type(ledger["wall_budget"]) is not int
         or ledger["wall_budget"] != plan["cold_wall_budget"]
         or type(ledger["wall_seconds"]) not in {int, float}
@@ -483,7 +500,7 @@ def validate_cold_ledger(plan: dict[str, object], ledger: dict[str, object]) -> 
             or launched + 1e-6 < previous_finish
             or launched + COLD_LIMITS.wall_seconds > plan["cold_wall_budget"]):
             raise HydraReviewError("cold workers overlap or started without their whole-stage reservation")
-        completed = _decode_cold_worker(plan, number, index, indices, batch["worker"])
+        completed = _decode_cold_worker(plan, number, index, indices, batch["worker"], execution_root=expected_root)
         if type(batch["completed_targets"]) is not int or batch["completed_targets"] != len(completed):
             raise HydraReviewError("cold batch count differs from its exact worker rows")
         for row in completed:
@@ -505,7 +522,7 @@ def validate_cold_ledger(plan: dict[str, object], ledger: dict[str, object]) -> 
 
 def compare_cold_reproduction(plan: dict[str, object], old: dict[str, object], fresh: dict[str, object]) -> int:
     validate_cold_ledger(plan, old)
-    validate_cold_ledger(plan, fresh)
+    validate_cold_ledger(plan, fresh, execution_root=str(ROOT))
     # Uniqueness and exact assignment have already been checked; only now is a
     # lookup safe. Every retained positive must reproduce. Unknowns need not.
     checked_before = {(row["pass_number"], row["receipt"]["name"]): row["receipt"]
@@ -527,7 +544,7 @@ def _execute_checks(plan: dict[str, object], directory: Path, *, reference_sourc
     if native_worker["reason"] != "exited" or native_worker["returncode"] != 0:
         raise HydraReviewError(f"native conformance worker did not complete: {native_worker['reason']}, exit {native_worker['returncode']}: {native_worker['stderr']}")
     native = decode(native_worker["stdout"].encode(), limit=8 * 1024**2)
-    validate_native_evidence(plan, native, native_worker, cases)
+    validate_native_evidence(plan, native, native_worker, cases, execution_root=str(ROOT))
     reference_dir = directory / "reference-build"
     stage_reference(reference_source, reference_dir, plan["reference"])
     build = build_reference(reference_dir, plan["reference"], progress=progress)
@@ -539,9 +556,11 @@ def _execute_checks(plan: dict[str, object], directory: Path, *, reference_sourc
             "reference_results": reference, "cold": cold}
 
 
-def validate_native_evidence(plan: dict[str, object], native: dict[str, object], result: dict[str, object], cases: tuple) -> None:
+def validate_native_evidence(plan: dict[str, object], native: dict[str, object], result: dict[str, object], cases: tuple,
+                             *, execution_root: str | None = None) -> None:
     request = _request(plan, "native", case_manifest_sha256=plan["conformance"]["manifest_sha256"])
-    validate_process_record(result, command=(sys.executable, str(SCRIPT), "--worker"),
+    expected_root = plan["execution_root"] if execution_root is None else execution_root
+    validate_process_record(result, command=_worker_command(expected_root),
                             limits=NATIVE_LIMITS, input_bytes=canonical(request), success_codes=(0,))
     _signed(native, "report_sha256")
     if (result["stderr"] or not _same(decode(result["stdout"].encode(), limit=8 * 1024**2), native)
@@ -603,7 +622,8 @@ def validate_saved_results(plan: dict[str, object], report: dict[str, object], r
 
 def execute_review(plan: dict[str, object], directory: Path, *, progress=None) -> dict[str, object]:
     validate_plan(plan)
-    if plan["source"]["git_dirty"] or plan["source"] != source_identity():
+    if (plan["source"]["git_dirty"] or plan["source"] != source_identity()
+        or plan["execution_root"] != str(ROOT)):
         raise HydraReviewError("execution requires its exact clean committed source plan")
     if directory.exists() or directory.is_symlink():
         raise HydraReviewError("review execution requires a fresh output directory")
