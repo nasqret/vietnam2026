@@ -18,10 +18,14 @@ with closure and **48/64** with a generic symbolic portfolio; its four
 historical diagnostics are separate (**2/4** versus **3/4**). The new lanes
 have narrower authority and must not be compared with the old Alpha scores.
 
-All eight DEV families overlap existing training exposure. The next single
-milestone is reviewed model-facing **TRAIN/DEV lineage separation together
-with the required H0 semantic/reference checks, before any further GPU
-comparison**. The `catalog-460` corpus is prepared, not trained, and must not
+All eight DEV families overlap existing training exposure. The
+[reference/lineage review workflow](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_REFERENCE_REVIEW.md)
+is implemented; it prepares evidence, not human approval. The next single
+milestone is a **human-reviewed new-lineage/reference readiness bundle**:
+reviewed model-facing TRAIN/DEV lineage separation, the required H0
+semantic/reference evidence in the pinned Lean 4.31 environment, and two
+complete cold library passes before any further GPU comparison.
+The `catalog-460` corpus is prepared, not trained, and must not
 be paired with these goals as an unseen evaluation. The older 247-theorem
 adapter is unchanged; H0/H1/H5 and the full H0.3 protocol remain open.
 No language-model advantage or new mathematical-discovery claim follows.
@@ -464,10 +468,30 @@ preparation's **175 exposed training roots** and `catalog-460`'s **436**.
 The 64 goals are not 64 independent lineages. This is useful public DEV
 coverage, not a sealed H1 benchmark.
 
-The one next milestone is **reviewed model-facing TRAIN/DEV lineage separation
-together with the required H0 semantic/reference checks, before any further
-GPU comparison**. Training `catalog-460` and then calling these goals unseen
-would not satisfy that milestone.
+The [reference/lineage review workflow](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_REFERENCE_REVIEW.md)
+now implements whole-component proposals, fresh Lean certificate checks,
+and bounded cold-replay evidence. Authored conformance fixtures are not
+autonomous discoveries; rejecting an invalid certificate does not prove that
+its target is a non-theorem.
+
+The [archived Alpha-v25 reference execution](https://github.com/nasqret/vietnam2026/blob/peano-lab/artifacts/peano-hydra/reference-review-2026-08-27/README.md)
+records eight fresh Lean 4.28 module builds, a passing axiom audit, and
+**1,321 matching fixture outcomes**. Its cold sample checked **14/16 targets
+in each pass**, producing 28 positive receipts for 14 distinct targets and
+the same **partial** root. The two remaining targets hit memory or CPU guards
+in both passes; those four workers remain unknown, not mathematically
+disproved. The 28-component allocation review has zero unexposed DEV
+candidates under the retained audits and remains blocked/not-reviewed.
+Fresh frozen-source archive verification passed, rechecking all 1,321
+reference cases and reproducing all 28 retained positive cold receipts.
+
+The one next milestone is a **human-reviewed new-lineage/reference readiness
+bundle**: reviewed model-facing TRAIN/DEV lineage separation and the required
+H0 semantic/reference checks, before any further GPU comparison. Lean 4.28
+checks remain compatibility evidence; the pinned 4.31 environment and two
+complete cold library passes are still required. A cold sample cannot close
+that gate. Training `catalog-460` and calling these goals unseen, or treating
+a generated proposal as human approval, would not satisfy the milestone.
 
 ## Build the strongest baseline first
 
@@ -597,6 +621,8 @@ none gets a vote on truth.
 - [Hydra post-training pipeline](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_POST_TRAINING.md)
 - [Bounded native DEV protocol](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_DEVELOPMENT_PROTOCOL.md)
 - [Model-free DEV evaluation guide](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_DEVELOPMENT_EVALUATION.md)
+- [Reference checks and human lineage review](https://github.com/nasqret/vietnam2026/blob/peano-lab/docs/HYDRA_REFERENCE_REVIEW.md)
+- [Archived Alpha-v25 reference execution](https://github.com/nasqret/vietnam2026/blob/peano-lab/artifacts/peano-hydra/reference-review-2026-08-27/README.md)
 - [Measured DEV evidence](https://github.com/nasqret/vietnam2026/blob/peano-lab/artifacts/peano-hydra/development-2026-08-27/README.md)
 - [Training a Peano policy](training-a-peano-policy.md)
 - [AlphaGeometry](https://www.nature.com/articles/s41586-023-06747-5)

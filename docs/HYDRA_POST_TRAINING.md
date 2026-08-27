@@ -277,7 +277,7 @@ preflight derives **892 optimizer steps** without starting CUDA. No model
 has been trained from this larger preparation. Its single 12-row validation
 theorem is unchanged. The broader DEV exposure audit below blocks an unseen
 comparison with either preparation; a reviewed lineage-clean split remains
-the next gate.
+required by the [new-lineage/reference readiness gate](HYDRA_REFERENCE_REVIEW.md).
 
 `--run-id` binds a distinct adapter path ending in `-catalog-460`. If an
 output directory is omitted, a named run defaults to
@@ -316,10 +316,27 @@ does not establish separation for this newly expanded component audit.
 The 740 statements outside bounded canonicalization are conservatively masked,
 not assumed clean; semantic-equivalence completeness is not claimed.
 
-Preserve both preparations and the completed adapter. The next step is a
+### Reference and lineage review execution
+
+The [Alpha-v25 execution archive](../artifacts/peano-hydra/reference-review-2026-08-27/README.md)
+records **1,321 matching Lean 4.28 fixture outcomes**, eight fresh module
+builds, and a passing axiom audit. The cold sample checked **14/16 targets
+per pass** (28 positive receipts); four workers remain unknown after resource
+guards. The complete allocation review has 28 components and zero unexposed
+DEV candidates under the retained audits, so it remains blocked/not-reviewed.
+Fresh frozen-source archive verification passed, rechecking all 1,321
+reference cases and reproducing all 28 retained positive cold receipts.
+
+Preserve both preparations and the completed adapter. The
+[reference/lineage review tools](HYDRA_REFERENCE_REVIEW.md) now implement
+authenticated whole-component proposals, fresh Lean certificate comparisons,
+and bounded cold replays without producing new model-facing data or approval.
+The next step is one human-reviewed new-lineage/reference readiness bundle:
 reviewed model-facing TRAIN/DEV lineage separation and required H0
-semantic/reference evidence, before preparing a new named model run. Do not
-silently remove dependency edges, train the existing `catalog-460` corpus, or
+semantic/reference evidence, before preparing a new named model run. The
+pinned Lean 4.31 environment and two complete cold library passes remain
+required; Lean 4.28 compatibility and a sampled replay do not replace them.
+Do not silently remove dependency edges, train the existing `catalog-460` corpus, or
 advertise these public DEV variants as unseen. Independent H1 final-set
 ownership/sealing and the H5 comparison remain separate open gates.
 
@@ -404,10 +421,13 @@ lengths, semantic mathematical novelty, broad model capability, or an LLM
 advantage; the experimental H0/H1 gates remain open until their separate
 reviewed protocols and evidence are complete.
 
-The next implementation remains a single line: reviewed model-facing
-TRAIN/DEV lineage separation plus the required H0 semantic/reference checks,
-then a newly authenticated preparation and explicitly authorized model
-comparison. The symbolic DEV baseline is now measured; the existing
+The next gate remains a single human-reviewed new-lineage/reference readiness
+bundle: reviewed model-facing TRAIN/DEV lineage separation plus the required
+H0 semantic/reference checks, pinned environment, and full cold-replay
+evidence, then a newly authenticated preparation and explicitly authorized
+model comparison. The [review workflow](HYDRA_REFERENCE_REVIEW.md) is already
+implemented; executing it does not create the required human acknowledgment.
+The symbolic DEV baseline is now measured; the existing
 `catalog-460` preparation does not pass its unseen-family audit. The
 independently owned final benchmark, future Alpha admission, public
 publication, and research claims each retain their separate review gates.

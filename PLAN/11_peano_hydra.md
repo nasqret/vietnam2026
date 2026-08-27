@@ -75,12 +75,32 @@ Hydra product or its original-goal verifier boundary is absent.
       theorems, exposing 175 original-run
       training roots and 436 `catalog-460` roots. All 16 induction and
       composed-witness DEV variants remain unsolved under the recorded limits.
+- [x] Implement authenticated whole-component lineage-review proposals,
+      bounded native/reference conformance execution, fresh Lean builds and
+      axiom audits, cold-replay planning, and independent saved-run checking.
+      These are review tools, not a granted human approval or completed H0 gate.
+- [x] Record the bounded reference execution: eight fresh Lean 4.28 modules,
+      a passing axiom audit, and **1,321 matching fixture outcomes**. The cold
+      sample checked **14/16 targets in each pass**, with 28 positive receipts
+      and four resource-limited workers remaining unknown; neither full cold
+      replay nor the pinned Lean 4.31 gate is complete.
 
-The next engineering milestone is reviewed model-facing TRAIN/DEV lineage
-separation and the required H0 semantic/reference checks before any further
-GPU comparison. The broader baseline is measured, but it is not a lineage-clean
-model benchmark. Do not train `catalog-460` and relabel these diagnostics as
-unseen. Independent H1 final-set ownership/sealing remains open. See the
+The [Alpha-v25 execution archive](../artifacts/peano-hydra/reference-review-2026-08-27/README.md)
+retains the blocked/not-reviewed 28-component allocation proposal: all 18
+structurally unmasked components (19 theorems) are exposed, leaving zero
+unexposed DEV candidates. Fresh frozen-source archive verification passed:
+all 1,321 reference cases were rechecked and all 28 retained positive cold
+receipts reproduced. The proposal and the full acceptance gates remain open.
+
+The next engineering milestone is one human-reviewed new-lineage/reference
+readiness bundle: reviewed model-facing TRAIN/DEV lineage separation, the
+required H0 semantic/reference checks in the pinned Lean 4.31 environment,
+and two complete cold library passes before any further GPU comparison.
+The [review walkthrough](../docs/HYDRA_REFERENCE_REVIEW.md) is implemented;
+Lean 4.28 compatibility evidence and a cold sample do not close those gates.
+The broader baseline is measured, but it is not a lineage-clean model
+benchmark. Do not train `catalog-460` and relabel these diagnostics as unseen.
+Independent H1 final-set ownership/sealing remains open. See the
 [completed run evidence](../artifacts/peano-hydra/alpha-v25-posttrain-2026-08-26/README.md)
 and [native development evidence](../artifacts/peano-hydra/development-2026-08-27/README.md)
 and the single product roadmap; this product progress is not an H3 scale claim
@@ -131,6 +151,13 @@ open; this implementation makes no negative-decision claim.
       every downstream artifact.
 
 ### H0.2 Establish independent semantic checks
+
+The [bounded reference/conformance workflow](../docs/HYDRA_REFERENCE_REVIEW.md)
+now implements authored certificate fixtures, independent Lean certificate
+comparison, fresh reference builds, axiom checks, and bounded cold workers.
+Implementation alone does not discharge the acceptance items below. Invalid
+certificate rejection is not a non-theorem result; a sample is not a full
+library pass, and Lean 4.28 compatibility is not the pinned 4.31 environment.
 
 - [ ] Cold-replay the entire initial library epoch twice and compare roots.
 - [ ] Assemble at least 1,000 semantic-conformance formulas: at least 400
@@ -192,6 +219,11 @@ canonical aliases, catalog anchors, and dependencies before outcomes. Its
 conservative audit blocks all eight families for both existing preparations;
 it does not establish the clean model-facing split or semantic-equivalence
 completeness required below.
+The model-facing review planner additionally preserves complete catalog
+components, authenticates preparation exposure beyond the DEV component, and
+rejects missing, duplicate, conflicting, or tampered allocations. Its output
+remains a blocked/not-reviewed proposal until a later explicit human decision;
+it never manufactures unseen status for exposed material.
 
 - [ ] Assign stable lineage IDs to authored, generated, translated, and
       reformulated problems.
@@ -441,8 +473,9 @@ have been measured.
       generator, and frozen 16/64-versus-48/64 symbolic result are implemented
       and independently checked. Both existing preparations fail the
       unseen-family audit; this is not a sealed model benchmark.
-- [ ] **H0 is not complete:** semantic/reference conformance, the full
-      structured-macro protocol, and publication-grade evidence are missing.
+- [ ] **H0 is not complete:** full semantic/reference acceptance, the pinned
+      toolchain, two complete cold passes, the full structured-macro protocol,
+      and the required human review remain open despite the bounded tooling.
 - [ ] **H1 is not complete:** no independently owned final benchmark is
       sealed, regardless of the useful product-preparation epoch.
 - [ ] **No H5 claim is available:** no language-model advantage has been

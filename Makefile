@@ -1224,6 +1224,7 @@ hydra-check:
 		tests/test_peano_hydra_review_runtime.py \
 		tests/test_peano_hydra_review_sources.py \
 		tests/test_peano_hydra_review.py \
+		tests/test_peano_hydra_review_archive.py \
 		tests/test_helios_control.py
 	PYTHONMALLOC=malloc python3 scripts/prepare_peano_hydra.py --check
 

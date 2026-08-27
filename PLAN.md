@@ -39,14 +39,27 @@ All eight generated families join one declared lineage component with **2,048
 catalog members**. Both the original preparation's **175 exposed training
 roots** and `catalog-460`'s **436** intersect that component: all eight families
 are **blocked for unseen-model comparison**. The 64 goals are not 64 independent
-lineages. The native typed
-seven-action DEV protocol is implemented; the full H0.3/reference/conformance
-target remains incomplete.
+lineages. The native typed seven-action DEV protocol and the
+[bounded reference/lineage review workflow](docs/HYDRA_REFERENCE_REVIEW.md)
+are implemented; the full H0.3/reference/conformance target remains incomplete.
+The review workflow produces evidence and component-allocation proposals,
+not human approval, a new dataset, or a sealed benchmark.
 
-The one next product milestone is **reviewed model-facing TRAIN/DEV lineage
-separation together with the required H0 semantic/reference checks, before
-any further GPU comparison**. Do not train `catalog-460` and relabel these
-DEV goals as unseen. The historical 247-theorem adapter remains unchanged.
+The [archived Alpha-v25 reference execution](artifacts/peano-hydra/reference-review-2026-08-27/README.md)
+records **1,321 matching Lean fixture outcomes**, eight fresh module builds
+and a passing axiom audit. The cold sample checked **14/16 targets per pass**
+(28 positive receipts); four resource-limited workers remain unknown.
+The complete 28-component allocation review still offers no unexposed DEV
+component and remains blocked/not-reviewed. Fresh frozen-source archive
+verification passed without granting human approval or closing H0/H1.
+
+The one next product milestone is a **human-reviewed new-lineage/reference
+readiness bundle**: reviewed model-facing TRAIN/DEV lineage separation,
+the required H0 semantic/reference checks in the pinned Lean 4.31 environment,
+and two complete cold library passes before any further GPU comparison.
+Lean 4.28 compatibility checks and a sampled cold replay do not fulfill those
+remaining obligations. Do not train `catalog-460` and relabel these DEV goals
+as unseen. The historical 247-theorem adapter remains unchanged.
 Use `make hydra-check`; do not silently widen Stable, admit a prospective v26
 candidate, or claim a research-grade model advantage before the required H0
 contracts, independently sealed H1 benchmark, and H5 evaluation are complete.
@@ -377,10 +390,16 @@ profile and typed `Use`/`Cut`/`Witness`/`Induct`/`Rewrite`/`Split`/`Dispatch`
 compiler now exist, including transactional execution and state/authority
 receipts. Their model-free evaluation is development evidence, not a sealed
 comparison: all eight generated families overlap existing training exposure.
-The full H0.3 protocol, semantic/reference campaign, independently held sealed
-benchmark, sufficiently scaled verified curriculum, and matched-compute model result are
-not complete. A useful production implementation therefore does not imply an
-LLM-advantage claim. See
+The [reference/lineage review tooling](docs/HYDRA_REFERENCE_REVIEW.md) now
+authenticates whole-component proposals and supports fresh Lean checks and
+bounded cold replays. Its
+[archived Alpha-v25 execution](artifacts/peano-hydra/reference-review-2026-08-27/README.md)
+records compatibility and partial cold evidence, not a completed acceptance
+gate. The full H0.3 protocol, pinned semantic/reference and
+full cold-replay acceptance, independently held sealed benchmark,
+sufficiently scaled verified curriculum, and matched-compute model result
+are not complete. A useful production implementation therefore does not
+imply an LLM-advantage claim. See
 [`docs/HYDRA_PRODUCT_ROADMAP.md`](docs/HYDRA_PRODUCT_ROADMAP.md),
 [`docs/HYDRA_POST_TRAINING.md`](docs/HYDRA_POST_TRAINING.md),
 [`docs/PEANO_HYDRA_DESIGN.md`](docs/PEANO_HYDRA_DESIGN.md) and

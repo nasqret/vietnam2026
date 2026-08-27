@@ -1,0 +1,81 @@
+reference_compile: 1/9 PeanoLab/Syntax.lean
+reference_compile: 2/9 PeanoLab/Substitution.lean
+reference_compile: 3/9 PeanoLab/Semantics.lean
+reference_compile: 4/9 PeanoLab/Derivation.lean
+reference_compile: 5/9 PeanoLab/Checker.lean
+reference_compile: 6/9 PeanoLab/Soundness.lean
+reference_compile: 7/9 PeanoLab/Codec.lean
+reference_compile: 8/9 PeanoLab/Verify.lean
+reference_compile: 9/9 axiom audit
+reference_cases: 64/1321 independent Lean decisions
+reference_cases: 128/1321 independent Lean decisions
+reference_cases: 192/1321 independent Lean decisions
+reference_cases: 256/1321 independent Lean decisions
+reference_cases: 320/1321 independent Lean decisions
+reference_cases: 384/1321 independent Lean decisions
+reference_cases: 448/1321 independent Lean decisions
+reference_cases: 512/1321 independent Lean decisions
+reference_cases: 576/1321 independent Lean decisions
+reference_cases: 640/1321 independent Lean decisions
+reference_cases: 704/1321 independent Lean decisions
+reference_cases: 768/1321 independent Lean decisions
+reference_cases: 832/1321 independent Lean decisions
+reference_cases: 896/1321 independent Lean decisions
+reference_cases: 960/1321 independent Lean decisions
+reference_cases: 1024/1321 independent Lean decisions
+reference_cases: 1088/1321 independent Lean decisions
+reference_cases: 1152/1321 independent Lean decisions
+reference_cases: 1216/1321 independent Lean decisions
+reference_cases: 1280/1321 independent Lean decisions
+reference_cases: 1321/1321 independent Lean decisions
+cold_replay: 1/32 pass 1, 1/1 receipts, exited
+cold_replay: 2/32 pass 1, 1/1 receipts, exited
+cold_replay: 3/32 pass 1, 1/1 receipts, exited
+cold_replay: 4/32 pass 1, 1/1 receipts, exited
+cold_replay: 5/32 pass 1, 1/1 receipts, exited
+cold_replay: 6/32 pass 1, 1/1 receipts, exited
+cold_replay: 7/32 pass 1, 1/1 receipts, exited
+cold_replay: 8/32 pass 1, 1/1 receipts, exited
+cold_replay: 9/32 pass 1, 0/1 receipts, rss_limit
+cold_replay: 10/32 pass 1, 1/1 receipts, exited
+cold_replay: 11/32 pass 1, 1/1 receipts, exited
+cold_replay: 12/32 pass 1, 1/1 receipts, exited
+cold_replay: 13/32 pass 1, 1/1 receipts, exited
+cold_replay: 14/32 pass 1, 1/1 receipts, exited
+cold_replay: 15/32 pass 1, 0/1 receipts, cpu_limit
+cold_replay: 16/32 pass 1, 1/1 receipts, exited
+cold_replay: 17/32 pass 2, 1/1 receipts, exited
+cold_replay: 18/32 pass 2, 1/1 receipts, exited
+cold_replay: 19/32 pass 2, 1/1 receipts, exited
+cold_replay: 20/32 pass 2, 1/1 receipts, exited
+cold_replay: 21/32 pass 2, 1/1 receipts, exited
+cold_replay: 22/32 pass 2, 1/1 receipts, exited
+cold_replay: 23/32 pass 2, 1/1 receipts, exited
+cold_replay: 24/32 pass 2, 1/1 receipts, exited
+cold_replay: 25/32 pass 2, 0/1 receipts, rss_limit
+cold_replay: 26/32 pass 2, 1/1 receipts, exited
+cold_replay: 27/32 pass 2, 0/1 receipts, exited
+cold_replay: 28/32 pass 2, 0/1 receipts, exited
+cold_replay: 29/32 pass 2, 0/1 receipts, exited
+cold_replay: 30/32 pass 2, 0/1 receipts, exited
+cold_replay: 31/32 pass 2, 0/1 receipts, exited
+cold_replay: 32/32 pass 2, 0/1 receipts, exited
+hydra-review: independent cold replay failed to reproduce a retained positive
+      371.10 real       348.17 user        78.15 sys
+          1088258048  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+             7818077  page reclaims
+               31544  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                   0  messages sent
+                   0  messages received
+                   0  signals received
+               19753  voluntary context switches
+              499627  involuntary context switches
+        299998969473  instructions retired
+        102183221189  cycles elapsed
+           283904192  peak memory footprint

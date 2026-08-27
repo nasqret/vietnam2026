@@ -20,6 +20,9 @@ the old Alpha run; the scores are not evidence of model advantage or a
 regression against its symbolic control. See the
 [DEV guide](../../docs/HYDRA_DEVELOPMENT_EVALUATION.md) and
 [archived results](../../artifacts/peano-hydra/development-2026-08-27/README.md).
+The [reference/lineage review workflow](../../docs/HYDRA_REFERENCE_REVIEW.md)
+is now implemented as the next operational step; it prepares evidence rather
+than granting approval or declaring H0/H1 complete.
 
 ## One current product workflow
 
@@ -217,10 +220,45 @@ The [native DEV protocol](../../docs/HYDRA_DEVELOPMENT_PROTOCOL.md) now
 implements typed `Use`, `Cut`, `Witness`, `Induct`, `Rewrite`, `Split`, and
 `Dispatch`, with source-bound limits and atomic public-tactic execution.
 This does not close the full H0.3 protocol or its reference/conformance gates.
-The **single next milestone** is reviewed model-facing **TRAIN/DEV lineage
-separation together with the required H0 semantic/reference checks, before
-any further GPU comparison**. Do not train `catalog-460` and label this DEV
-cohort unseen. The historical 247-theorem adapter remains unchanged.
+The **single next milestone** is one **human-reviewed new-lineage/reference
+readiness bundle**: reviewed model-facing TRAIN/DEV lineage separation,
+the required H0 semantic/reference checks in the pinned Lean 4.31 environment,
+and two complete cold library passes before any further GPU comparison.
+Do not train `catalog-460` and label this DEV cohort unseen. The historical
+247-theorem adapter remains unchanged.
+
+## Reference and lineage review
+
+The [human review guide](../../docs/HYDRA_REFERENCE_REVIEW.md) covers the
+implemented whole-component proposal planner, authenticated preparation
+exposure, fresh Lean builds and axiom checks, authored certificate fixtures,
+bounded cold workers, and independent saved-run verification. No generated
+allocation grants human approval or makes an exposed component unseen.
+
+The [Alpha-v25 execution archive](../../artifacts/peano-hydra/reference-review-2026-08-27/README.md)
+records source `a69e2e9b`, eight fresh Lean 4.28 module builds and a passing
+axiom audit. Native results were 1,024 positive-certificate acceptances and
+280 invalid-certificate rejections; Lean matched **1,321 outcomes**, including
+17 separate wire cases. Cold replay checked **14/16 targets in each pass**:
+28 positive receipts, 14 distinct targets, and matching **partial** roots.
+The same two targets were resource-limited in both passes, leaving four
+workers unknown. The cold stage used 422.49 of its 900 reserved wall seconds.
+The 28-component allocation review remains blocked/not-reviewed with zero
+unexposed DEV candidates. Fresh frozen-source archive verification passed:
+the reference was rebuilt, all 1,321 cases rechecked, all 28 retained positive
+cold receipts reproduced, and the live lineage audits repeated.
+
+`make hydra-review-plan` is read-only. It and `make hydra-review-run` require
+an explicit `HYDRA_REVIEW_LEAN=/absolute/path/to/installed/lean`, not an
+`elan` shim; no compiler is installed automatically. Execution also requires
+a fresh `HYDRA_REVIEW_DIR`. `make hydra-review-verify` uses only the frozen
+archive's inputs. The conservative default is a two-pass, 16-target cold
+sample with one target per worker and a 900-second cold-stage budget.
+
+Lean 4.28 is compatibility evidence only, not satisfaction of the 4.31 pin.
+The sample does not supply two complete library passes. Those remaining
+obligations and human review of genuinely new eligible lineages belong to
+the one readiness gate above; running a command does not close H0/H1.
 
 ## Historical teacher-oracle regression
 

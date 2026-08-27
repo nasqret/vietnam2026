@@ -105,11 +105,26 @@ python3 -m pytest -q tests/test_peano_hydra_protocol.py
 
 The tests exercise all seven actions, native original-goal replay, admission
 and authority failures, receipt bindings, and partial-prefix rollback for
-both local and imported multi-step `Use`. This is not the independently
-implemented reference/conformance suite or the twice-cold full-library replay
-required by [the normative design](PEANO_HYDRA_DESIGN.md).
+both local and imported multi-step `Use`. They remain separate from the
+[implemented reference/conformance and lineage-review workflow](HYDRA_REFERENCE_REVIEW.md).
+That workflow supports fresh Lean certificate checks and bounded cold
+replays; it does not grant human approval, satisfy the pinned Lean 4.31 gate
+with 4.28 compatibility evidence, or replace two full-library passes with a
+sample. The wider obligations in [the normative design](PEANO_HYDRA_DESIGN.md)
+remain open.
+
+The [archived Alpha-v25 reference execution](../artifacts/peano-hydra/reference-review-2026-08-27/README.md)
+records 1,024 native positive-certificate acceptances, 280 invalid-certificate
+rejections, and **1,321 matching Lean fixture outcomes**, including 17
+separate wire cases. Its cold sample checked **14/16 targets per pass**;
+four resource-limited workers remain unknown. These are authored certificate
+checks, not autonomous discoveries or a complete independent validation of
+the surface parser. The allocation review remains blocked/not-reviewed.
+Fresh frozen-source archive verification passed, rechecking all 1,321
+reference cases and reproducing all 28 retained positive cold receipts.
 
 The [development evaluation guide](HYDRA_DEVELOPMENT_EVALUATION.md) shows the
 measured symbolic run and blocked training-exposure audit. The
 [single product roadmap](HYDRA_PRODUCT_ROADMAP.md) sets the next review gate;
-the native action implementation does not authorize a new model comparison.
+the next milestone is one human-reviewed new-lineage/reference readiness
+bundle. The native action implementation does not authorize a new model comparison.

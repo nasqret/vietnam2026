@@ -355,12 +355,28 @@ and [archived results](artifacts/peano-hydra/development-2026-08-27/README.md).
 The lineage audit joins all eight generated families into **one component
 with 2,048 catalog members**. All eight families are **blocked for unseen-model
 comparison** with both existing preparations; 64 goals are not 64 independent
-lineages. The bounded native
-seven-action DEV protocol is implemented, but full H0.3 and H0/H1/H5
-acceptance remain open. **The single next milestone is reviewed model-facing
-TRAIN/DEV lineage separation together with the required H0 semantic/reference
-checks, before any further GPU comparison.** Do not train `catalog-460` and
-present these DEV goals as unseen.
+lineages. The bounded native seven-action DEV protocol and the
+[reference/lineage review workflow](docs/HYDRA_REFERENCE_REVIEW.md) are
+implemented. The latter prepares authenticated component proposals, fresh
+Lean reference checks, and bounded cold-replay evidence; it never grants
+human approval or seals a benchmark. Full H0.3 and H0/H1/H5 acceptance remain
+open.
+
+The [archived Alpha-v25 reference execution](artifacts/peano-hydra/reference-review-2026-08-27/README.md)
+records eight freshly built Lean 4.28 modules, a passing axiom audit, and
+**1,321 matching fixture outcomes**. Cold replay checked **14/16 targets in
+each pass**, yielding 28 positive receipts; four resource-limited workers
+remain unknown. The allocation review is still blocked, with no unexposed
+DEV component under the retained audits. Fresh frozen-source archive
+verification passed; it does not close the remaining review gates.
+
+**The single next milestone is a human-reviewed new-lineage/reference
+readiness bundle:** reviewed model-facing TRAIN/DEV lineage separation,
+the required H0 semantic/reference evidence in the pinned Lean 4.31
+environment, and two complete cold library passes before any further GPU
+comparison. Lean 4.28 checks are compatibility evidence only; a cold sample
+is not a full-library replay. Do not train `catalog-460` and present these
+DEV goals as unseen.
 
 The historical 247-theorem adapter remains untouched. The active next track
 and honest experimental gates are in the

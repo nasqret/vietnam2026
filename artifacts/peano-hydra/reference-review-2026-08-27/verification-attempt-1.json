@@ -1,0 +1,18 @@
+{
+  "schema": "peano-hydra-review-verification-attempt-note-v1",
+  "attempt": 1,
+  "status": "failed",
+  "execution_context": "primary checkout with concurrent Alpha authoring",
+  "exit_code": 2,
+  "reported_error": "independent cold replay failed to reproduce a retained positive",
+  "exact_console_log": "verification-attempt-1.log",
+  "followup_source_check": {
+    "status": "rejected",
+    "path": "peano-lab/py/peano_lab/library/lean_proof_strand.py",
+    "message": "review requires its recorded source bytes: peano-lab/py/peano_lab/library/lean_proof_strand.py"
+  },
+  "interpretation": "The failed verification did not produce a passed receipt. A subsequent exact-byte check confirmed source drift in the primary checkout. The recorded archive and resource limits were not changed; the next verification uses the isolated frozen source.",
+  "evidence_limit": "Fresh per-target verification files were temporary; this note does not reconstruct missing worker receipts or infer a new proof result.",
+  "model_training_authorized": false,
+  "research_claim_eligible": false
+}

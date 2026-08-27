@@ -60,9 +60,21 @@ in both preparations. Of 2,080 catalog statements, 1,340 fit bounded
 canonicalization; the remaining 740 and their descendants are masked, not
 declared clean. This does not alter either training corpus or model.
 
-The next milestone is reviewed model-facing TRAIN/DEV lineage separation and
-the required H0 semantic/reference checks, not another training run on the
-exposed component. These useful public diagnostics do not close H0/H1/H2/H5.
+The next milestone is one human-reviewed new-lineage/reference readiness
+bundle: reviewed model-facing TRAIN/DEV lineage separation and the required
+H0 semantic/reference evidence, not another training run on the exposed
+component. The [review workflow](HYDRA_REFERENCE_REVIEW.md) is implemented;
+these useful public diagnostics do not close H0/H1/H2/H5.
+
+In a separate [archived Alpha-v25 reference execution](../artifacts/peano-hydra/reference-review-2026-08-27/README.md),
+Lean 4.28 matched **1,321 authored fixture outcomes** after eight fresh module
+builds and a passing axiom audit. Cold replay checked **14/16 sampled targets
+per pass**, retaining 28 positive receipts; four resource-limited workers
+remain unknown. This does not change the native search scores above or make
+any exposed DEV component unseen. The allocation proposal remains
+blocked/not-reviewed, and the 4.31 pin and full cold scope remain open.
+Fresh frozen-source archive verification passed, rechecking all 1,321
+reference cases and reproducing all 28 retained positive cold receipts.
 
 ## Run it safely
 
@@ -183,9 +195,13 @@ measurements.
 ## What remains open
 
 The bounded native development protocol is not the entire H0 conformance or
-structured-solver protocol. Two complete cold library replays, the independent
-semantic/reference campaign, broader macro/solver attestation, and human
-fragment review remain separate gates. This DEV generator is not an
+structured-solver protocol. The separate
+[reference/lineage workflow](HYDRA_REFERENCE_REVIEW.md) now implements bounded
+certificate comparisons and cold-replay evidence. Full semantic/reference
+acceptance in the pinned Lean 4.31 environment, two complete cold library
+replays, broader macro/solver attestation, and human fragment review remain
+separate gates. Lean 4.28 checks are compatibility evidence only, and a cold
+sample is not a full-library pass. This DEV generator is not an
 independently owned, sealed H1 set, and a component exposure audit is not a
 complete semantic-novelty or equivalence audit.
 

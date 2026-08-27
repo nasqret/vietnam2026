@@ -120,6 +120,12 @@ and its own independent evaluation.
   freshly replayed successful proofs.
 - Conservative dependency/family exposure audits block an unseen-model claim
   when a prepared training corpus intersects the declared DEV component.
+- Whole-component lineage-review proposals authenticate both retained
+  preparations and reject conflicting or incomplete allocations without
+  authorizing model-facing data or human approval.
+- A bounded reference/cold-replay workflow rebuilds explicitly selected Lean
+  sources, audits axioms, compares authored certificate fixtures, and checks
+  saved-run evidence. Its implementation is separate from H0 acceptance.
 - All campaign theorem browsers reuse the established proof-explorer design
   and expose the same bounded Lean-strand workflow across **27 proof
   families**, **29 canonical theorem graphs**, and **3,937 eligible staged
@@ -476,34 +482,82 @@ adapter was changed. The bounded native contract is implemented; full H0
 semantic/reference conformance and publication-grade solver protocols remain
 open.
 
+## Archived reference and lineage execution — 2026-08-27
+
+The [Alpha-v25 execution archive](../artifacts/peano-hydra/reference-review-2026-08-27/README.md)
+records the run from source `a69e2e9b`: eight freshly built Lean 4.28 modules
+and a passing axiom audit. Native checks accepted **1,024 positive
+certificates** and rejected **280 invalid certificates**. Independent Lean
+matched all **1,321 fixture outcomes**: 1,024 `ACCEPT`, 282 `REJECT`, and
+15 `DECODE_ERROR`. The additional two rejections and 15 decoding errors are
+the 17 separate wire cases, not certified non-theorems. These authored
+conformance fixtures are not autonomous mathematical discoveries.
+
+The cold sample used 32 fresh workers for 16 fixed targets over two passes.
+Each pass checked **14/16 targets**, producing **28 positive receipts for 14
+distinct targets** and the same **partial** root. The same two targets remained
+unknown in each pass: `central_binom_upper_support_package` reached the
+sampled 1 GiB RSS guard, and `three_mod_four_good_prime_exclusive` reached the
+30-second CPU guard. These four resource-limited workers are not invalid
+proofs or disproofs. The cold stage took **422.49 seconds** within its
+900-second budget. Two full passes over all 2,080 catalog theorems were not run.
+
+The allocation review covers **28 components**. Its 18 structurally unmasked
+components contain 19 theorems, but all are exposed under the retained audits:
+there are **zero unexposed DEV candidates**, 30 traceable conflicts, and no
+human approval. The proposal remains **blocked/not-reviewed**. Lean 4.28
+provides compatibility evidence only; the pinned 4.31 gate remains open.
+[Fresh frozen-source archive verification](../artifacts/peano-hydra/reference-review-2026-08-27/verification.json)
+**passed**, rebuilding the reference, rechecking all 1,321 cases, reproducing
+all 28 retained positive cold receipts, and repeating the live lineage audits.
+The first attempt in the mutable primary checkout stopped on source drift
+during concurrent Alpha work; its
+[failed-attempt log](../artifacts/peano-hydra/reference-review-2026-08-27/verification-attempt-1.log)
+is retained. The passing check used frozen `a69e2e9b` source, not that changing
+checkout. None of these Alpha-v25 review results asserts anything about a
+later Alpha admission or completes H0/H1.
+
 ## The one next engineering milestone
 
-**Establish reviewed model-facing TRAIN/DEV lineage separation and the required
-H0 semantic/reference checks before another GPU comparison.** The broader
-symbolic DEV run is now measured and frozen, but its exposure audit did not
-establish a lineage-clean model benchmark. Do not train the prepared
+**Produce one human-reviewed new-lineage/reference readiness bundle before
+another GPU comparison.** It must establish reviewed model-facing TRAIN/DEV
+lineage separation and the required H0 semantic/reference evidence. The
+broader symbolic DEV run is measured and frozen, but its exposure audit did
+not establish a lineage-clean model benchmark. Do not train the prepared
 `catalog-460` corpus and relabel these diagnostics as unseen.
+
+The [reference/lineage review walkthrough](HYDRA_REFERENCE_REVIEW.md) is now
+the operational entry point. `make hydra-review-plan`, `hydra-review-run`,
+and `hydra-review-verify` implement bounded planning, execution, and saved-run
+checking. Planning and execution require an explicitly selected installed
+`HYDRA_REVIEW_LEAN`; execution requires a fresh output directory. No compiler
+is inferred or installed. The workflow cannot sign a human acknowledgment,
+approve a split, or turn exposed components into unseen evaluation material.
 
 Run `make hydra-check` at each change boundary and execute this milestone in
 order:
 
-1. Complete the required semantic/reference conformance and cold-replay
-   evidence around the implemented native profile. Review any wider action
-   or solver protocol before extending it; preserve original-goal checking.
-2. Review the declared dependency components before preparing model-facing
-   rows. Author or reserve genuinely disjoint lineages under that reviewed
-   contract; do not weaken masks or split the exposed giant component merely
+1. Review the declared dependency components, authorship, and exposure scope
+   before preparing model-facing rows. Identify genuinely new eligible
+   lineages and their owners; author or reserve them under that reviewed
+   contract. Do not weaken masks or split the exposed giant component merely
    to obtain a favorable score. Existing preparations remain historical.
+2. Provide the explicitly reviewed pinned Lean 4.31 environment and complete
+   the required semantic/reference checks and two full cold-library passes
+   within a separately reviewed resource envelope. Lean 4.28 checks are compatibility
+   evidence only; the default cold sample is not full-library acceptance.
+   Review any wider action or solver protocol before extending it.
 3. Produce an authenticated new split manifest, exposure audit, and frozen
    symbolic results with explicit authority and measured resource boundaries.
    Keep the current 16-goal induction/composed-witness frontier as public DEV
    engineering evidence, not a hidden test. An independent owner must
    separately control and seal the final H1 set.
 
-The exit artifact is one reviewed split/reference evidence bundle authorizing
-the next named preparation. Only after that gate should an explicitly
-authorized model run compare pretrained, trained, and symbolic lanes with
-the required ablations. Newly discovered theorems still require ordinary
+The exit artifact is one human-reviewed new-lineage/reference readiness
+bundle authorizing the next named preparation. A generated proposal or a
+successful command does not supply that human decision. Only after that gate
+should an explicitly authorized model run compare pretrained, trained, and
+symbolic lanes with the required ablations. Newly discovered theorems still require ordinary
 reviewed immutable Alpha admission, followed by browser/Lean projections from
 the same sealed theorem and definition DAGs.
 
