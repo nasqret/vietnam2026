@@ -5267,11 +5267,52 @@ The separate delivery integration authenticates the explicit v28 explorer
 publication paths while retaining v27 first-admission hashes. All 216 Lean
 service tests pass, including real read-only publication checks and rejection
 of forged versioned paths; the live operator-owned process was not restarted.
-CI now checks out the public Lean companion at
-`d2903c8bd507b7e4458b1249f840a4e274befdbf`, provisions its pinned Lean 4.31.0,
-and checks both verifier executables. A narrowly scoped pytest ID hook avoids
+CI is configured to check out the private Lean companion at
+`d2903c8bd507b7e4458b1249f840a4e274befdbf`, provision its pinned Lean 4.31.0,
+and check both verifier executables. A narrowly scoped pytest ID hook avoids
 decimal conversion of huge integer parameters without changing their values,
 Python's guard, proof limits, or the eight full test shards. The 30 environment
 regressions and all 200 frozen binary-execution tests pass on Python 3.12;
 four existing sharding tests pass. Remote CI and the exact CI toolchain build
 remain separate, not-yet-observed gates at this checkpoint.
+
+### Published release and remaining operational gates
+
+The proof release `c4383b2d` and delivery integration `5297ae12` were pushed
+normally to `origin/main`. The exact deployed candidate is
+`5297ae12bf551f0e01adcc1a0ef6a6119606c2e7`, assembled in the clean detached
+`vietnam2026-release-v28` checkout. `make deploy-proofs` succeeded for all 38
+families and 5,316 enhanced theorem/graph pages. The full remote checksum dry
+run reported **zero differences**; the preceding dry run proposed no removals.
+Independent HTTPS downloads of the hub, all four new corpora, graph JavaScript,
+campaign DAG, and complete v28 bundle matched their staged SHA-256 hashes.
+The proof-site byte total is 402,442,162.
+
+The managed faculty connection was restored while reusing the existing
+operator-owned worker: its recorded owned worker PID is null. No existing
+worker was stopped. The actual public `gaussian_equal_reflexive` v28 smoke test
+passed: one Lean-verified theorem node, zero certificate fallbacks, 648 bytes
+of import-free standalone Lean, a checked 632-byte compressed Lean Live URL,
+and a verified seven-file download package. This is a representative live
+build check, not a claim that every large root fits the browser service caps.
+
+`make deploy-peano-next` succeeded for application `a-dea2621afe2c`, build
+`2026-08-27c`; the staging file-byte comparison reported zero differences.
+The mandatory delivery verifier stopped on the missing HTML
+`Cache-Control: no-store` response header. **No Peano production promotion was
+performed.** The clean candidate remains unchanged; the faculty hosting
+administrator must restore the required cache guarantees.
+
+[GitHub CI run 33094506741](https://github.com/nasqret/vietnam2026/actions/runs/33094506741)
+passed the book and standalone Lean jobs, but all eight Peano shards stopped
+before proof testing: the default Actions token cannot check out the private
+`nasqret/peano-lab-lean` repository. The exact pinned companion commit exists;
+it is not a missing-source or theorem failure. Dedicated read-only CI access
+requires the owner's authorization. No credential was extracted or copied,
+and no repository visibility or permission was changed.
+
+The next audited dispatch is G072, G006, G010, G036, then G082, with missing
+internal lemmas and exceptional cases recorded in PLAN/14. A stale G095 prose
+sentence was corrected to match its actual v27 completion. All 81 affected
+atlas/book tests pass. This receipt and planning correction do not change the
+deployed proof bytes. Unrelated in-progress Hydra work remains untouched.

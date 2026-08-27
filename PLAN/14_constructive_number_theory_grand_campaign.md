@@ -1098,9 +1098,11 @@ the kernel.
    `Prime(p) /\ f(a)=0 mod p /\ f'(a)!=0 mod p
       -> forall k>0. exists! x mod p^k.
          x=a mod p /\ f(x)=0 mod p^k`.
-   Its T12 beta-coded natural polynomial evaluation prerequisite is now
-   independently checked; the compatible formal derivative and actual simple
-   lifting argument remain genuinely unimplemented.
+   Completed in Alpha v27 as
+   `integer_polynomial_prime_simple_root_lifts_all_positive_powers`: every
+   simple root of a coded signed integer polynomial has a unique canonical
+   lift at each positive prime-power precision. Multiple-root lifting (G096)
+   remains separate and open.
 6. **G096 - Certified multiple-root lifting and obstruction.**
    For `Prime(p)`, an arbitrary root, and positive precision, return either
    all valid lifts or an explicit finite obstruction; no simple-root
@@ -1747,21 +1749,37 @@ and [book chapter](../book/arithmetic-library/lower-layer-campaign.md) expose
 the witnesses and the actual mixed definition/proof DAG. Reproduce the release
 with `make peano-library-alpha-v28-check`.
 
-The next lower-layer dispatch priorities are:
+The next lower-layer dispatch order, audited against the actual v28 lemmas,
+is **G072 → G006 → G010 → G036 → G082**. Every item remains open:
 
-1. **Arithmetic functions (G006 then G007/G010):** reuse actual prime-factor lists for totient
-   products, finite divisor sums, Möbius inversion, and squarefree/perfect-power
-   witnesses. Build each missing arithmetic-function graph explicitly.
-2. **Quadratic ring factorization (G082/G085 before G083/G086):** turn the proved norm-decreasing divisions
-   into actual Euclidean traces, gcd/Bézout, factor extraction, and unique
-   factorization; only then prove the rational-prime classification bridges.
-3. **Finite-field foundations (G091/G093):** use finite polynomial operations and verified prime-field
-   arithmetic to construct prime-power fields and characteristic-aware
-   squarefree decomposition. Irreducibility and Frobenius hypotheses must be
-   proved, not supplied as unlabelled oracles.
-4. **Local arithmetic and approximation (G036/G045/G072):** complete exact valuation-lifting, Jacobi reciprocity,
-   and continued-fraction best-approximation contracts with all exceptional
-   and boundary cases retained.
+1. **Best approximation (G072; layer 5; G071 and G002):** construct actual
+   convergent recurrence and determinant certificates, then prove the uniform
+   denominator comparison. Audit initial, zero-numerator, and terminal cases.
+   This supplies the next continued-fraction and Pell prerequisites.
+2. **Totient products (G006; layer 6; G005 and T11):** build the genuine unit
+   counting graph, prime-power counts, and multiplicativity from witnessed
+   prime-factor lists. Include `n=1`; do not define the counting function to
+   equal the desired product formula.
+3. **Squarefree kernels and perfect powers (G010; layer 7; G005 and T09):**
+   construct finite exponent profiles and the unique squarefree-times-square
+   decomposition, then actual roots for divisors of the valuation gcd.
+   The `n=1` profile needs its separate all-positive-exponents case.
+4. **Odd-prime exponent lifting (G036; layer 7; T09 and G003):** prove the
+   prime-exponent increment, the exponent-coprime-to-prime case, and iteration.
+   Preserve `p>2`, `x>y>0`, `n>0`, `p|(x-y)`, and `p∤xy`; the binary-prime
+   branch is a separate theorem, not an implicit extension.
+5. **Gaussian factorization (G082; layer 7; G081 and G004):** build units and
+   associates, Euclidean gcd/Bézout, cancellation, irreducible-to-prime,
+   norm-descending factor extraction, and uniqueness up to units and witnessed
+   permutation. The planned `RingPrime` predicate expresses bounded
+   irreducibility, so its prime-divisor property still requires proof.
+
+Eisenstein factorization (G085) follows naturally, with its own exact
+prerequisites G084 and G004; G082 is not an invented dependency. Divisor sums,
+Möbius inversion, and Jacobi reciprocity remain valuable parallel targets.
+Prime-power fields and positive-characteristic squarefree decomposition
+(G091/G093) require additional polynomial division/gcd, irreducibility, and
+inseparability machinery despite their displayed ready status.
 
 The current exact ready frontier has sixteen entries. Readiness means only
 that its displayed direct prerequisites are checked; it does not certify
