@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from pathlib import Path
 import re
 import subprocess
@@ -82,6 +83,30 @@ LAKE_BINARIES = (
 )
 
 
+def _compile_with_installed_lean(
+    module: Path,
+    *,
+    memory_mib: str = "1024",
+    timeout: float | None = None,
+) -> subprocess.CompletedProcess[str]:
+    # Use the same installed compiler against the already-built companion,
+    # without refreshing its Lake cache or installing its pinned toolchain.
+    environment = dict(os.environ)
+    previous_path = environment.get("LEAN_PATH", "")
+    environment["LEAN_PATH"] = str(LEAN_PROJECT / ".lake" / "build" / "lib" / "lean") + (
+        os.pathsep + previous_path if previous_path else ""
+    )
+    return subprocess.run(
+        [str(LAKE_BINARIES[0].with_name("lean")), "-M", memory_mib, "-j", "1", str(module)],
+        cwd=LEAN_PROJECT,
+        env=environment,
+        check=False,
+        capture_output=True,
+        text=True,
+        timeout=timeout,
+    )
+
+
 @pytest.mark.parametrize(
     "name", ("zero_add", "add_comm", "mul_eq_zero", "mul_comm", "prime_unbounded")
 )
@@ -103,6 +128,8 @@ def test_real_public_theorems_export_complete_deterministic_certificates(name: s
     assert "import PeanoLab.Codec" in exported.code
     assert "PeanoLab.Artifact.check_sound accepted" in exported.code
     assert "    decide" in exported.code
+    assert "  exact sound (fun _ => 0)" in exported.code
+    assert "  simpa [" not in exported.code
     assert f"#print axioms «{name}»" in exported.code
     assert exported.live_url == ""
     assert re.search(
@@ -201,6 +228,42 @@ def _shared_proof_bundle() -> ProofBundle:
     )
 
 
+def _quantified_shared_export(*, bundle: bool):
+    # Several private Formula aliases lie below both universal binders.
+    # The semantic boundary also crosses implication, conjunction, existential
+    # quantification and disjunction; it must not depend on simp unfolding
+    # only the single outermost Formula definition.
+    target = parse_formula(
+        r"forall a b. (a = a /\ b = b) -> ((exists c. c = a) \/ b = b)"
+    )
+    proof = ForallIntro(
+        ForallIntro(ImpIntro(OrIntroL(ExistsIntro(Var(1), EqRefl(Var(1))))))
+    )
+    if bundle:
+        return export_checked_bundle_theorem(
+            "quantified_shared_bundle",
+            ProofBundle((BundleNode(0, target, (), proof),), root=0),
+            target,
+        )
+    return export_checked_theorem("quantified_shared_certificate", target, proof)
+
+
+@pytest.mark.parametrize("bundle", (False, True), ids=("certificate", "bundle"))
+def test_shared_quantifier_children_use_exact_semantic_conversion(bundle: bool) -> None:
+    exported = _quantified_shared_export(bundle=bundle)
+
+    assert exported.code.count(" : PeanoLab.Formula := .forallE ") == 2
+    assert " : PeanoLab.Formula := .existsE " in exported.code
+    assert " : PeanoLab.Formula := .imp " in exported.code
+    assert " : PeanoLab.Formula := .conj " in exported.code
+    assert " : PeanoLab.Formula := .disj " in exported.code
+    assert exported.code.count("  exact sound (fun _ => 0)") == 1
+    assert "  simpa [" not in exported.code
+    assert "    decide" in exported.code
+    assert f"#print axioms «{exported.name}»" in exported.code
+    assert re.search(r"\bsorry\b|\bnative_decide\b|^\s*axiom\s+", exported.code, re.M) is None
+
+
 def test_shared_checked_bundle_exports_a_complete_dense_lean_theorem() -> None:
     target = And(P, P)
     exported = export_checked_bundle_theorem("shared_bundle", _shared_proof_bundle(), target)
@@ -208,6 +271,8 @@ def test_shared_checked_bundle_exports_a_complete_dense_lean_theorem() -> None:
     assert exported.statement == "0 = 0 ∧ 0 = 0"
     assert "import PeanoLab.ProofBundle" in exported.code
     assert "PeanoLab.checkBundle_sound accepted" in exported.code
+    assert "  exact sound (fun _ => 0)" in exported.code
+    assert "  simpa [" not in exported.code
     assert "dependencies := [0]" in exported.code
     assert "root := 1" in exported.code
     assert "sorry" not in exported.code
@@ -289,22 +354,7 @@ def test_independent_lean_compiler_accepts_real_completed_public_theorems(
     module.write_text(exported.code + "\n", encoding="utf-8")
     memory_mib = "1536" if name == "prime_unbounded" else "1024"
 
-    result = subprocess.run(
-        [
-            str(LAKE_BINARIES[0]),
-            "env",
-            "lean",
-            "-M",
-            memory_mib,
-            "-j",
-            "1",
-            str(module),
-        ],
-        cwd=LEAN_PROJECT,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
+    result = _compile_with_installed_lean(module, memory_mib=memory_mib)
 
     assert result.returncode == 0, result.stdout + result.stderr
     assert f"'PeanoLab.{name}' depends on axioms:" in result.stdout
@@ -325,13 +375,7 @@ def test_independent_lean_compiler_accepts_compact_million_literal(
     module = tmp_path / "million_reflexivity.lean"
     module.write_text(exported.code + "\n", encoding="utf-8")
 
-    result = subprocess.run(
-        [str(LAKE_BINARIES[0]), "env", "lean", "-M", "1024", "-j", "1", str(module)],
-        cwd=LEAN_PROJECT,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
+    result = _compile_with_installed_lean(module)
 
     assert result.returncode == 0, result.stdout + result.stderr
     assert "sorryAx" not in result.stdout + result.stderr
@@ -353,17 +397,31 @@ def test_independent_lean_compiler_accepts_completed_shared_bundle_theorem(
     module = tmp_path / "shared_bundle_theorem.lean"
     module.write_text(exported.code + "\n", encoding="utf-8")
 
-    result = subprocess.run(
-        [str(LAKE_BINARIES[0]), "env", "lean", "-M", "1024", "-j", "1", str(module)],
-        cwd=LEAN_PROJECT,
-        check=False,
-        capture_output=True,
-        text=True,
-    )
+    result = _compile_with_installed_lean(module)
 
     assert result.returncode == 0, result.stdout + result.stderr
     assert "'PeanoLab.shared_bundle_theorem' depends on axioms:" in result.stdout
     assert "sorryAx" not in result.stdout + result.stderr
+
+
+@pytest.mark.skipif(
+    not LAKE_BINARIES or not (LEAN_PROJECT / "PeanoLab" / "ProofBundle.lean").is_file(),
+    reason="the independent sibling Lean bundle companion is unavailable",
+)
+@pytest.mark.parametrize("bundle", (False, True), ids=("certificate", "bundle"))
+def test_independent_lean_accepts_semantic_conversion_below_shared_quantifiers(
+    bundle: bool,
+    tmp_path: Path,
+) -> None:
+    exported = _quantified_shared_export(bundle=bundle)
+    module = tmp_path / f"{exported.name}.lean"
+    module.write_text(exported.code + "\n", encoding="utf-8")
+    result = _compile_with_installed_lean(module, timeout=35)
+
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert f"'PeanoLab.{exported.name}' depends on axioms:" in result.stdout
+    assert "sorryAx" not in result.stdout + result.stderr
+    assert "Lean.trustCompiler" not in result.stdout + result.stderr
 
 
 def test_converter_cli_rejects_unknown_theorems_and_existing_output(tmp_path: Path) -> None:

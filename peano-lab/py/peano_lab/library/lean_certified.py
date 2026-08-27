@@ -322,9 +322,11 @@ def export_checked_theorem(
             f"  have accepted : {artifact_identifier}.check = true := by",
             "    decide",
             "  have sound := PeanoLab.Artifact.check_sound accepted",
-            f"  simpa [{artifact_identifier}, {target_identifier},",
-            "    PeanoLab.Formula.Holds, PeanoLab.Term.eval,",
-            "    PeanoLab.Valuation.cons] using sound (fun _ => 0)",
+            # The rendered proposition is definitionally the interpretation
+            # of the closed target. Conversion unfolds every shared private
+            # AST binding, including children below quantifiers; a root-only
+            # simplifier list does not explicitly unfold those children.
+            "  exact sound (fun _ => 0)",
             "",
         )
     )
@@ -436,8 +438,9 @@ def export_checked_bundle_theorem(
             f"{target_identifier} = true := by",
             "    decide",
             "  have sound := PeanoLab.checkBundle_sound accepted",
-            f"  simpa [{target_identifier}, PeanoLab.Formula.Holds,",
-            "    PeanoLab.Term.eval, PeanoLab.Valuation.cons] using sound (fun _ => 0)",
+            # As above, use kernel conversion through the whole shared
+            # target DAG, not a tactic-dependent partial unfolding.
+            "  exact sound (fun _ => 0)",
             "",
         )
     )

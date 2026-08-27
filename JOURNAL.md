@@ -5479,3 +5479,28 @@ a separate gate. A monolithic reconstruction hit the unchanged CPU limit, so
 bounded, independently checked sections are being assembled and the combined
 artifact will be freshly checked before admission. This body checkpoint alone
 does not grant Alpha checked use or imply deployment.
+
+### 2026-08-28 — certified Lean conversion and honest CI follow-up
+
+The CI-only branch successfully exercised the dedicated read-only companion
+key in all eight Peano shards, checked the exact private source/toolchain pins,
+and built both independent Lean checkers. The full run
+<https://github.com/nasqret/vietnam2026/actions/runs/33117974009> nevertheless
+finished unsuccessfully: shard 5 reported 12 failures and 26 errors. The
+reported failures included a bounded Bertrand replay timeout, old registry
+expectations, Hydra definition-ID validation, and four ordinary Lean text
+exports. That run precedes this five-goal mathematical release; it is not a
+green full-CI receipt for the new proofs.
+
+Both certified text exporters now use exact kernel conversion from the
+existing soundness theorem instead of partially simplifying only the root
+shared formula. This unfolds child aliases below binders without adding a
+trusted rule, a new axiom, `sorry`, or `native_decide`. All 74 exporter tests
+pass, including actual Lean compilation of all five existing public examples,
+the million-sized binary numeral, shared proof bundles, and two new nested
+quantifier/implication/existential/disjunction regressions. The actual local
+compiler is Lean 4.28.0; this is not a claim of a completed 4.31.0 CI rerun.
+The test driver uses that installed compiler and the already-built companion
+libraries read-only, with the original per-proof memory limits and one thread.
+No companion source, build cache, historical proof evidence, or CI gate was
+modified to hide the other failures.
