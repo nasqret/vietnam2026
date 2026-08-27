@@ -5392,3 +5392,29 @@ checkpoint; no all-CI-green claim is made. GitHub main was not pushed, and no
 unrelated Hydra commit was published by this operation. The temporary new
 key files were removed; its encrypted Actions secret and read-only GitHub
 deploy-key registration remain. Peano production's cache gate is still intact.
+
+### 2026-08-28 — first-four priority targets, complete additive Alpha-v29 proof authority
+
+The 278-theorem priority layer is now sealed in the additive `editions_v29`
+runtime, preserving all 2,764 v28 entries as the same immutable objects and
+the separate Stable 432 registry. Its 3,042 checked entries have 9,915 direct
+dependency edges and 53 layers. The complete actual dependency bundle has
+566 nodes, 1,690 edges, 38,443 body-node occurrences and 4,200,971 bytes;
+SHA-256 `4fcb3cd45e83448776abb9e33692496a7acfa98a051cae15761826a0b15fda44`.
+Every body and its exact target/dependencies passed the original HA kernel;
+the separately compiled Lean checker accepted the final canonical artifact.
+The local binary/toolchain provenance remains explicitly recorded in the
+new receipt, distinct from the remote CI build with Lean 4.31.0.
+
+All four main statements also passed materialized ordinary empty-context
+checks: best approximation 10,186 nodes, totient product 24,921, squarefree
+kernel/profile 19,750, and odd-prime LTE 17,217. The signed best-approximation
+root separately passed with 10,092 nodes. The permanent closure and admission
+suites passed 92 and 96 tests with unchanged limits. Five development-only
+candidate artifacts were moved recoverably to a task-specific directory in
+`/private/tmp`; the release requires only its canonical combined bundle.
+
+The exact current UI pointer and remote publication are separate integration
+steps still in progress. No proof-site deployment or Peano production
+promotion is implied by this mathematical checkpoint. G082 remains a
+separate additive development, not part of the frozen v29 inventory.
