@@ -5342,3 +5342,53 @@ finite-factor/counting substrates, followed by G036 and G082. The first G072
 audit identified the genuine initial `0/1` convergent for positive rationals
 below one; the new recurrence definition will admit a zero numerator and
 retain a positive denominator, without modifying sealed v28 evidence.
+
+## 2026-08-27 — Four full priority endpoints and independent closure work
+
+The first four requested targets now have their exact original-kernel proof
+bodies, with real mathematical definitions rather than encoded conclusions:
+
+- G072: 83 theorems for actual convergents and best approximation, including
+  signed numerators, initial `0/1`, every valid index, and exact terminal
+  convergents; all 660 focused tests pass.
+- G006: 84 theorems for actual finite unit counts, multiplicativity,
+  prime-power counts and the full Euler product over complete distinct prime
+  support; all 1,084 focused tests pass, including the empty `n=1` case.
+- G010: 53 squarefree/perfect-power theorems over 20 shared prime-valuation
+  foundations; all 618 focused tests pass. The profile contains actual roots
+  for every positive divisor of the exponent gcd, with a separate uniform
+  unit case and a genuine encoded finite profile.
+- G036: 38 theorems close the odd-prime increment, coprime-exponent case,
+  prime-power iteration and the full guarded LTE endpoint, including its
+  extensional supplied-output form; all 196 focused tests pass.
+
+Together these are 278 new ordinary HA bodies. The 31 additive conservative
+definitions ND0177–ND0207 reuse all 233 historical definition objects and pass
+661 exact theorem/local-proposition roundtrip and definition-DAG tests. The
+count and product definitions are independent. Natural squarefree kernels do
+not alias the unrelated polynomial `SquarefreeDecomposition` homonym. The
+old planning-only positive-numerator `Convergent` is rejected as a reviewed
+match until its original record is archived and the corrected computation
+definition is introduced.
+
+Full proof closure is a separate gate: the G010 self-contained 286-node
+bundle has passed both the original HA kernel and the independent compiled
+Lean checker, and its main root also passes as one ordinary empty-context
+19,750-node HA certificate. The remaining first-four closures are in progress.
+Local compiled-Lean acceptance uses the existing audited 4.28-compatible
+binary and is not mislabeled as a local 4.31 build. These checkpoints do not
+alter Alpha-v28 admission, Stable 432, or deployed proof-site bytes. G082
+Gaussian unique factorization remains under implementation.
+
+The read-only-key CI change was also isolated from unrelated unpublished
+Hydra ancestry: clean branch `ci/read-only-lean-companion-20260827`, commit
+`e0f6a193ebfb813f933d9f26a08a7d5a0e3bfe12`, contains only the four authorized
+CI/documentation files over the previously published main. In
+[run 33117974009](https://github.com/nasqret/vietnam2026/actions/runs/33117974009),
+all eight Peano shards successfully checked out the private companion,
+verified its exact commit/toolchain pins, installed Lean 4.31.0 and built both
+independent checkers. Their full regression suites are still running at this
+checkpoint; no all-CI-green claim is made. GitHub main was not pushed, and no
+unrelated Hydra commit was published by this operation. The temporary new
+key files were removed; its encrypted Actions secret and read-only GitHub
+deploy-key registration remain. Peano production's cache gate is still intact.
