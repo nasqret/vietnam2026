@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0138 — IntegerMatrixEntrywiseEqual(ab,ac,bb,bc,eb,ec,fb,fc,r,w) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="integer-linear-algebra"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../graph.html?v=2db42c10aa31">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=IntegerMatrixEntrywiseEqual&amp;v=2db42c10aa31">Global definition: IntegerMatrixEntrywiseEqual</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=2db42c10aa31">T13 milestone</a></nav>
+  <p class="pd-tag">ND0138</p><h1>IntegerMatrixEntrywiseEqual(ab,ac,bb,bc,eb,ec,fb,fc,r,w)</h1>
+  <p>Genuine signed-integer equality at every actual row-major entry of two r-by-w matrices, reusing integer-vector equality at length r*w.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="ND0120" href="ND0120.html?v=2db42c10aa31">IntegerVectorEqual(ab,ac,bb,bc,eb,ec,fb,fc,r · w)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall ics_index_secondwave ics_value0_secondwave ics_value1_secondwave ics_value2_secondwave ics_value3_secondwave. (exists ics_gap_secondwave_bound. ics_gap_secondwave_bound + S (ics_index_secondwave) = ((r) * (w))) -&gt; (((exists fs_h_ics_secondwave_at0. fs_h_ics_secondwave_at0 + S (ics_value0_secondwave) = S ((S (ics_index_secondwave)) * ac)) /\ exists fs_q_ics_secondwave_at0. ab = fs_q_ics_secondwave_at0 * S ((S (ics_index_secondwave)) * ac) + (ics_value0_secondwave))) -&gt; (((exists fs_h_ics_secondwave_at1. fs_h_ics_secondwave_at1 + S (ics_value1_secondwave) = S ((S (ics_index_secondwave)) * bc)) /\ exists fs_q_ics_secondwave_at1. bb = fs_q_ics_secondwave_at1 * S ((S (ics_index_secondwave)) * bc) + (ics_value1_secondwave))) -&gt; (((exists fs_h_ics_secondwave_at2. fs_h_ics_secondwave_at2 + S (ics_value2_secondwave) = S ((S (ics_index_secondwave)) * ec)) /\ exists fs_q_ics_secondwave_at2. eb = fs_q_ics_secondwave_at2 * S ((S (ics_index_secondwave)) * ec) + (ics_value2_secondwave))) -&gt; (((exists fs_h_ics_secondwave_at3. fs_h_ics_secondwave_at3 + S (ics_value3_secondwave) = S ((S (ics_index_secondwave)) * fc)) /\ exists fs_q_ics_secondwave_at3. fb = fs_q_ics_secondwave_at3 * S ((S (ics_index_secondwave)) * fc) + (ics_value3_secondwave))) -&gt; ics_value0_secondwave + ics_value3_secondwave = ics_value2_secondwave + ics_value1_secondwave</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0120.html?v=2db42c10aa31">IntegerVectorEqual(ab,ac,db,dc,eb,ec,fb,fc,l)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DL008E.html?v=2db42c10aa31">DL008E · matrix_integer_minor_cell_balance</a><a class="pd-chip" href="../tag/DL0091.html?v=2db42c10aa31">DL0091 · matrix_integer_signed_minor_balance</a><a class="pd-chip" href="../tag/DL0092.html?v=2db42c10aa31">DL0092 · matrix_integer_cofactor_streams_from_recursion</a><a class="pd-chip" href="../tag/DL0093.html?v=2db42c10aa31">DL0093 · matrix_integer_first_row_equality</a><a class="pd-chip" href="../tag/DL0094.html?v=2db42c10aa31">DL0094 · signed_recursive_determinant_integer_invariant</a><a class="pd-chip" href="../tag/DL0097.html?v=2db42c10aa31">DL0097 · matrix_integer_selected_point_balance</a><a class="pd-chip" href="../tag/DL0099.html?v=2db42c10aa31">DL0099 · matrix_integer_signed_selected_balance</a><a class="pd-chip" href="../tag/DL009A.html?v=2db42c10aa31">DL009A · matrix_integer_selected_determinant_balance</a><a class="pd-chip" href="../tag/DL009C.html?v=2db42c10aa31">DL009C · matrix_integer_nonzero_minor_transport</a><a class="pd-chip" href="../tag/DL009D.html?v=2db42c10aa31">DL009D · matrix_integer_all_minors_zero_transport</a><a class="pd-chip" href="../tag/DL009E.html?v=2db42c10aa31">DL009E · rectangular_matrix_rank_integer_transport</a><a class="pd-chip" href="../tag/DL009F.html?v=2db42c10aa31">DL009F · rectangular_matrix_rank_integer_invariant</a><a class="pd-chip" href="../tag/DL00A9.html?v=2db42c10aa31">DL00A9 · absolute_recursive_determinant_integer_transport</a><a class="pd-chip" href="../tag/DL00AD.html?v=2db42c10aa31">DL00AD · positive_determinant_matrix_data_integer_transport</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>10</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>3</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0138.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>1a32fb4fa93b7765ff857fc6b182102298912842379194b062e858e2fcedca47</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v29/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

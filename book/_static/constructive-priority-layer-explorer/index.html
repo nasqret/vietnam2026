@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Four constructive number-theory targets — Proof library</title><link rel="stylesheet" href="assets/proofs.css?v=2db42c10aa31"></head><body><header class="hero"><div class="shell"><p class="eyebrow">Alpha v29 · unchanged intuitionistic HA · independently checked in Lean</p><h1>Four constructive number-theory targets</h1><p class="lede">278 independently closed theorems connect continued fractions, totient products, squarefree kernels, and odd-prime exponent lifting through shared finite prime support. Stable remains the separate unchanged 432-theorem edition.</p><nav class="hero-actions"><a class="secondary-action" href="../grand-campaign/?v=2db42c10aa31">Full campaign atlas</a><a class="secondary-action" href="../artifacts/alpha-v29-priority-layer-receipt.md?v=2db42c10aa31">Verification receipt</a></nav></div></header><main class="shell"><section class="family-grid" aria-label="Checked constructive proof families"><article class="family-card"><p class="card-kicker">Distinct primes · actual exponents · complete coverage</p><h2>Finite prime-valuation support</h2><p>Construct the shared finite data used by totient products and perfect-power profiles.</p><dl class="stats"><div><dt>20</dt><dd>checked theorems</dd></div><div><dt>19</dt><dd>definitions</dd></div><div><dt>81</dt><dd>proof edges</dd></div></dl><a class="primary-action" href="prime-valuation-support/?v=2db42c10aa31">Explore the proofs <span aria-hidden="true">→</span></a></article><article class="family-card"><p class="card-kicker">Actual quotient traces · determinant identities · signed competitors</p><h2>Convergents and best approximation</h2><p>Compute every convergent from the finite quotient history and prove best approximation of the second kind.</p><dl class="stats"><div><dt>83</dt><dd>checked theorems</dd></div><div><dt>18</dt><dd>definitions</dd></div><div><dt>247</dt><dd>proof edges</dd></div></dl><a class="primary-action" href="best-approximation/?v=2db42c10aa31">Explore the proofs <span aria-hidden="true">→</span></a></article><article class="family-card"><p class="card-kicker">Coprime-residue counts · prime-power blocks · distinct-prime products</p><h2>Euler&#x27;s totient product formula</h2><p>Prove the equality between an actual count of coprime residues and an independently computed Euler product.</p><dl class="stats"><div><dt>84</dt><dd>checked theorems</dd></div><div><dt>25</dt><dd>definitions</dd></div><div><dt>266</dt><dd>proof edges</dd></div></dl><a class="primary-action" href="totient-products/?v=2db42c10aa31">Explore the proofs <span aria-hidden="true">→</span></a></article><article class="family-card"><p class="card-kicker">Unique squarefree part · prime-exponent gcd · actual root tables</p><h2>Squarefree kernels and perfect powers</h2><p>Construct n=r·s² with unique squarefree r and a finite certificate classifying every positive perfect-power exponent.</p><dl class="stats"><div><dt>53</dt><dd>checked theorems</dd></div><div><dt>26</dt><dd>definitions</dd></div><div><dt>148</dt><dd>proof edges</dd></div></dl><a class="primary-action" href="squarefree-kernels/?v=2db42c10aa31">Explore the proofs <span aria-hidden="true">→</span></a></article><article class="family-card"><p class="card-kicker">Subtraction-free power differences · prime steps · full exponent decomposition</p><h2>Lifting the exponent for odd primes</h2><p>Construct the powers and their positive difference, and calculate its exact prime valuation.</p><dl class="stats"><div><dt>38</dt><dd>checked theorems</dd></div><div><dt>13</dt><dd>definitions</dd></div><div><dt>189</dt><dd>proof edges</dd></div></dl><a class="primary-action" href="exponent-lifting/?v=2db42c10aa31">Explore the proofs <span aria-hidden="true">→</span></a></article></section><section class="release-note"><p>Four exact blueprint targets have checked endpoints. Gaussian unique factorization is the next separately tracked target; no irreducibility, unit, or permutation claim is granted by this release. Finite-field factorization, prime classification, and the 2-adic LTE variants remain distinct.</p></section></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-priority-layer-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body></html>

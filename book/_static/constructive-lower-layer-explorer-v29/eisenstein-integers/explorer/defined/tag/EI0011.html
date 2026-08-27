@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EI0011 — eisenstein_weighted_norm_functional — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="eisenstein-integers"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../../tag/EI0011.html?v=2db42c10aa31">Exact original proof</a>
+       <a href="../graph.html?target=EI0011&amp;v=2db42c10aa31">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G084" href="../../../../grand-campaign/?view=goal&amp;focus=G084&amp;v=2db42c10aa31">G084 milestone</a></nav>
+  <p class="pd-tag">EI0011</p><h1>eisenstein_weighted_norm_functional</h1>
+  <p>The weighted norm is a genuine functional arithmetic relation, independent of chosen square witnesses.</p><p class="pd-status">Alpha v29 checked-use · first admitted v28 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">A floor quotient in the fundamental parallelogram already gives the required strict norm decrease; global nearest-point optimality is not asserted. The shared carrier is identical to the Gaussian carrier, but the multiplication law and norm are different. Eisenstein gcd, factorization, and prime classification remain separate targets.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ ap. ∀ an. ∀ bp. ∀ bn. ∀ N. ∀ M. <a class="pd-definition-ref" data-definition="ND0175" href="../definition/ND0175.html?v=2db42c10aa31">WeightedSignedNormThree(ap,an,bp,bn,N)</a> → <a class="pd-definition-ref" data-definition="ND0175" href="../definition/ND0175.html?v=2db42c10aa31">WeightedSignedNormThree(ap,an,bp,bn,M)</a> → N = M</code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0175.html?v=2db42c10aa31">WeightedSignedNormThree(ap,an,bp,bn,n) · 2</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip pd-external" href="../../../../gaussian-integers/explorer/defined/tag/GI0007.html?v=2db42c10aa31">gaussian_signed_square_functional · checked external prerequisite</a></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall ap an bp bn N M. (exists ee_real_square_first ee_imag_square_first. (((((ap) * (ap))) + (((an) * (an)))) = ((ee_real_square_first) + (((((ap) * (an))) + (((an) * (ap))))))) /\ ((((((bp) * (bp))) + (((bn) * (bn)))) = ((ee_imag_square_first) + (((((bp) * (bn))) + (((bn) * (bp))))))) /\ (N) = ee_real_square_first + 3 * ee_imag_square_first)) -&gt; (exists ee_real_square_second ee_imag_square_second. (((((ap) * (ap))) + (((an) * (an)))) = ((ee_real_square_second) + (((((ap) * (an))) + (((an) * (ap))))))) /\ ((((((bp) * (bp))) + (((bn) * (bn)))) = ((ee_imag_square_second) + (((((bp) * (bn))) + (((bn) * (bp))))))) /\ (M) = ee_real_square_second + 3 * ee_imag_square_second)) -&gt; N = M</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 38 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro ap</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro an</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro bp</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro bn</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>intro N</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>intro M</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>intro hfirst</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>intro hsecond</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>cases hfirst</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>cases hfirst_witness</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>cases hfirst_witness_witness</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>cases hfirst_witness_witness_right</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>cases hsecond</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>cases hsecond_witness</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>cases hsecond_witness_witness</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>cases hsecond_witness_witness_right</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>have heq : x = x2</code></li><li class="pd-proof-line" id="L18" data-line="18"><a class="pd-line-number" href="#L18">0018</a><code>specialize gaussian_signed_square_functional ap</code></li><li class="pd-proof-line" id="L19" data-line="19"><a class="pd-line-number" href="#L19">0019</a><code>specialize gaussian_signed_square_functional an</code></li><li class="pd-proof-line" id="L20" data-line="20"><a class="pd-line-number" href="#L20">0020</a><code>specialize gaussian_signed_square_functional x</code></li><li class="pd-proof-line" id="L21" data-line="21"><a class="pd-line-number" href="#L21">0021</a><code>specialize gaussian_signed_square_functional x2</code></li><li class="pd-proof-line" id="L22" data-line="22"><a class="pd-line-number" href="#L22">0022</a><code>apply gaussian_signed_square_functional</code></li><li class="pd-proof-line" id="L23" data-line="23"><a class="pd-line-number" href="#L23">0023</a><code>exact hfirst_witness_witness_left</code></li><li class="pd-proof-line" id="L24" data-line="24"><a class="pd-line-number" href="#L24">0024</a><code>exact hsecond_witness_witness_left</code></li><li class="pd-proof-line" id="L25" data-line="25"><a class="pd-line-number" href="#L25">0025</a><code>have heq2 : x1 = x3</code></li><li class="pd-proof-line" id="L26" data-line="26"><a class="pd-line-number" href="#L26">0026</a><code>specialize gaussian_signed_square_functional bp</code></li><li class="pd-proof-line" id="L27" data-line="27"><a class="pd-line-number" href="#L27">0027</a><code>specialize gaussian_signed_square_functional bn</code></li><li class="pd-proof-line" id="L28" data-line="28"><a class="pd-line-number" href="#L28">0028</a><code>specialize gaussian_signed_square_functional x1</code></li><li class="pd-proof-line" id="L29" data-line="29"><a class="pd-line-number" href="#L29">0029</a><code>specialize gaussian_signed_square_functional x3</code></li><li class="pd-proof-line" id="L30" data-line="30"><a class="pd-line-number" href="#L30">0030</a><code>apply gaussian_signed_square_functional</code></li><li class="pd-proof-line" id="L31" data-line="31"><a class="pd-line-number" href="#L31">0031</a><code>exact hfirst_witness_witness_right_left</code></li><li class="pd-proof-line" id="L32" data-line="32"><a class="pd-line-number" href="#L32">0032</a><code>exact hsecond_witness_witness_right_left</code></li><li class="pd-proof-line" id="L33" data-line="33"><a class="pd-line-number" href="#L33">0033</a><code>trans x + 3 * x1</code></li><li class="pd-proof-line" id="L34" data-line="34"><a class="pd-line-number" href="#L34">0034</a><code>exact hfirst_witness_witness_right_right</code></li><li class="pd-proof-line" id="L35" data-line="35"><a class="pd-line-number" href="#L35">0035</a><code>rewrite heq</code></li><li class="pd-proof-line" id="L36" data-line="36"><a class="pd-line-number" href="#L36">0036</a><code>rewrite heq2</code></li><li class="pd-proof-line" id="L37" data-line="37"><a class="pd-line-number" href="#L37">0037</a><code>symm</code></li><li class="pd-proof-line" id="L38" data-line="38"><a class="pd-line-number" href="#L38">0038</a><code>exact hsecond_witness_witness_right_right</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v29 checked use</dd><dt>First admission</dt><dd>Alpha v28</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>794 / 862</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 862 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>53 / 24</dd>
+      <dt>Statement SHA-256</dt><dd><code>39c3f73125688798920fb7e72244b8d4bbe04b69ecf458437c777f26fa2094c5</code></dd>
+      <dt>Script SHA-256</dt><dd><code>229aa2962edb399c74971756957de95f983557cbdd91d007c4d309c26d322da0</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.eisenstein_euclidean_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v29/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

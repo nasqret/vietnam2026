@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0015 — MatrixPointwiseAdd(mb,mc,sb,sc,tb,tc,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="integer-linear-algebra"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../graph.html?v=2db42c10aa31">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=MatrixPointwiseAdd&amp;v=2db42c10aa31">Global definition: MatrixPointwiseAdd</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=2db42c10aa31">T13 milestone</a></nav>
+  <p class="pd-tag">ND0015</p><h1>MatrixPointwiseAdd(mb,mc,sb,sc,tb,tc,l)</h1>
+  <p>The complete beta-coded pointwise sum of two exact bounded natural vector prefixes.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ ff_index_mcp_add_advanced. ∀ ff_left_mcp_add_advanced. ∀ ff_right_mcp_add_advanced. ∀ ff_target_mcp_add_advanced. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=2db42c10aa31">Lt(ff_index_mcp_add_advanced,l)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=2db42c10aa31">Beta(mb,mc,ff_index_mcp_add_advanced,ff_left_mcp_add_advanced)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=2db42c10aa31">Beta(sb,sc,ff_index_mcp_add_advanced,ff_right_mcp_add_advanced)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=2db42c10aa31">Beta(tb,tc,ff_index_mcp_add_advanced,ff_target_mcp_add_advanced)</a> → ff_target_mcp_add_advanced = ff_left_mcp_add_advanced + ff_right_mcp_add_advanced</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall ff_index_mcp_add_advanced ff_left_mcp_add_advanced ff_right_mcp_add_advanced ff_target_mcp_add_advanced. (exists mcp_gap_advanced_bound. mcp_gap_advanced_bound + S (ff_index_mcp_add_advanced) = (l)) -&gt; (((exists fs_h_mcp_advanced_left. fs_h_mcp_advanced_left + S (ff_left_mcp_add_advanced) = S ((S (ff_index_mcp_add_advanced)) * mc)) /\ exists fs_q_mcp_advanced_left. mb = fs_q_mcp_advanced_left * S ((S (ff_index_mcp_add_advanced)) * mc) + (ff_left_mcp_add_advanced))) -&gt; (((exists fs_h_mcp_advanced_right. fs_h_mcp_advanced_right + S (ff_right_mcp_add_advanced) = S ((S (ff_index_mcp_add_advanced)) * sc)) /\ exists fs_q_mcp_advanced_right. sb = fs_q_mcp_advanced_right * S ((S (ff_index_mcp_add_advanced)) * sc) + (ff_right_mcp_add_advanced))) -&gt; (((exists fs_h_mcp_advanced_target. fs_h_mcp_advanced_target + S (ff_target_mcp_add_advanced) = S ((S (ff_index_mcp_add_advanced)) * tc)) /\ exists fs_q_mcp_advanced_target. tb = fs_q_mcp_advanced_target * S ((S (ff_index_mcp_add_advanced)) * tc) + (ff_target_mcp_add_advanced))) -&gt; ff_target_mcp_add_advanced = ff_left_mcp_add_advanced + ff_right_mcp_add_advanced</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0001.html?v=2db42c10aa31">Beta(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=2db42c10aa31">Lt(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0017.html?v=2db42c10aa31">SignedMatrixProduct(ab,ac,db,dc,eb,ec,fb,fc,w,v,r,pb,pc,nb,nc)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DL0065.html?v=2db42c10aa31">DL0065 · integer_span_natural_cell_add_right</a><a class="pd-chip" href="../tag/DL0067.html?v=2db42c10aa31">DL0067 · integer_span_natural_product_add_right</a><a class="pd-chip" href="../tag/DL0068.html?v=2db42c10aa31">DL0068 · integer_span_pointwise_add_interchange</a><a class="pd-chip" href="../tag/DL006A.html?v=2db42c10aa31">DL006A · integer_span_signed_product_equal_coefficients</a><a class="pd-chip" href="../tag/DL006B.html?v=2db42c10aa31">DL006B · integer_span_signed_product_add_right</a><a class="pd-chip" href="../tag/DL0073.html?v=2db42c10aa31">DL0073 · integer_vector_add_from_component_sums</a><a class="pd-chip" href="../tag/DL0074.html?v=2db42c10aa31">DL0074 · integer_vector_add_exists</a><a class="pd-chip" href="../tag/DL007B.html?v=2db42c10aa31">DL007B · integer_matrix_vector_add_coefficients</a><a class="pd-chip" href="../tag/DL007C.html?v=2db42c10aa31">DL007C · integer_matrix_vector_add_constructive</a><a class="pd-chip" href="../tag/DL0082.html?v=2db42c10aa31">DL0082 · integer_column_span_add_closed</a><a class="pd-chip" href="../tag/DL008A.html?v=2db42c10aa31">DL008A · matrix_integer_signed_sum_balance</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>7</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0015.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>14c3286ed26a3b533bcfbd9896671ac23c5064800fd74b72687592cf50a6daaf</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v29/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

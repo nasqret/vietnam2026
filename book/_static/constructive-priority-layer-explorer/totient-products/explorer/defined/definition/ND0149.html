@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0149 — PrimeFactorList(n,b,c,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="totient-products"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../graph.html?v=2db42c10aa31">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=PrimeFactorList&amp;v=2db42c10aa31">Global definition: PrimeFactorList</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G006" href="../../../../grand-campaign/?view=goal&amp;focus=G006&amp;v=2db42c10aa31">G006 milestone</a></nav>
+  <p class="pd-tag">ND0149</p><h1>PrimeFactorList(n,b,c,l)</h1>
+  <p>A positive number n, an actual length-l beta product equal to n, and prime entries. No sortedness or supplied canonicalization is required.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>¬n = 0 ∧ (<a class="pd-definition-ref" data-definition="PD0014" href="PD0014.html?v=2db42c10aa31">Product(b,c,l,n)</a> ∧ <a class="pd-definition-ref" data-definition="PD0028" href="PD0028.html?v=2db42c10aa31">AllPrime(b,c,l)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>(~(n = 0) /\ ((exists ff_u_fsat_lowerlayer_product ff_v_fsat_lowerlayer_product. ((((exists ff_h_fsat_lowerlayer_product_start. ff_h_fsat_lowerlayer_product_start + S (1) = S ((S (0)) * ff_v_fsat_lowerlayer_product)) /\ exists ff_q_fsat_lowerlayer_product_start. ff_u_fsat_lowerlayer_product = ff_q_fsat_lowerlayer_product_start * S ((S (0)) * ff_v_fsat_lowerlayer_product) + (1))) /\ ((((exists ff_h_fsat_lowerlayer_product_terminal. ff_h_fsat_lowerlayer_product_terminal + S (n) = S ((S (l)) * ff_v_fsat_lowerlayer_product)) /\ exists ff_q_fsat_lowerlayer_product_terminal. ff_u_fsat_lowerlayer_product = ff_q_fsat_lowerlayer_product_terminal * S ((S (l)) * ff_v_fsat_lowerlayer_product) + (n))) /\ forall ff_i_fsat_lowerlayer_product. (exists ff_lt_fsat_lowerlayer_product_bound. ff_lt_fsat_lowerlayer_product_bound + S ff_i_fsat_lowerlayer_product = l) -&gt; exists ff_p_fsat_lowerlayer_product ff_r_fsat_lowerlayer_product ff_s_fsat_lowerlayer_product. ((((exists ff_h_fsat_lowerlayer_product_factor. ff_h_fsat_lowerlayer_product_factor + S (ff_p_fsat_lowerlayer_product) = S ((S (ff_i_fsat_lowerlayer_product)) * c)) /\ exists ff_q_fsat_lowerlayer_product_factor. b = ff_q_fsat_lowerlayer_product_factor * S ((S (ff_i_fsat_lowerlayer_product)) * c) + (ff_p_fsat_lowerlayer_product))) /\ ((((exists ff_h_fsat_lowerlayer_product_partial. ff_h_fsat_lowerlayer_product_partial + S (ff_r_fsat_lowerlayer_product) = S ((S (ff_i_fsat_lowerlayer_product)) * ff_v_fsat_lowerlayer_product)) /\ exists ff_q_fsat_lowerlayer_product_partial. ff_u_fsat_lowerlayer_product = ff_q_fsat_lowerlayer_product_partial * S ((S (ff_i_fsat_lowerlayer_product)) * ff_v_fsat_lowerlayer_product) + (ff_r_fsat_lowerlayer_product))) /\ ((((exists ff_h_fsat_lowerlayer_product_successor. ff_h_fsat_lowerlayer_product_successor + S (ff_s_fsat_lowerlayer_product) = S ((S (S ff_i_fsat_lowerlayer_product)) * ff_v_fsat_lowerlayer_product)) /\ exists ff_q_fsat_lowerlayer_product_successor. ff_u_fsat_lowerlayer_product = ff_q_fsat_lowerlayer_product_successor * S ((S (S ff_i_fsat_lowerlayer_product)) * ff_v_fsat_lowerlayer_product) + (ff_s_fsat_lowerlayer_product))) /\ ff_s_fsat_lowerlayer_product = ff_r_fsat_lowerlayer_product * ff_p_fsat_lowerlayer_product)))))) /\ (forall ftsf_index_fsat_lowerlayer_primes. (exists ftsf_gap_fsat_lowerlayer_primes_bound. ftsf_gap_fsat_lowerlayer_primes_bound + S ftsf_index_fsat_lowerlayer_primes = (l)) -&gt; exists ftsf_factor_fsat_lowerlayer_primes. ((((exists ff_h_ftsf_fsat_lowerlayer_primes_entry. ff_h_ftsf_fsat_lowerlayer_primes_entry + S (ftsf_factor_fsat_lowerlayer_primes) = S ((S (ftsf_index_fsat_lowerlayer_primes)) * c)) /\ exists ff_q_ftsf_fsat_lowerlayer_primes_entry. b = ff_q_ftsf_fsat_lowerlayer_primes_entry * S ((S (ftsf_index_fsat_lowerlayer_primes)) * c) + (ftsf_factor_fsat_lowerlayer_primes))) /\ ((~(ftsf_factor_fsat_lowerlayer_primes = 1) /\ forall frm_prime_left_ftsf_fsat_lowerlayer_primes_prime frm_prime_right_ftsf_fsat_lowerlayer_primes_prime. ftsf_factor_fsat_lowerlayer_primes = frm_prime_left_ftsf_fsat_lowerlayer_primes_prime * frm_prime_right_ftsf_fsat_lowerlayer_primes_prime -&gt; frm_prime_left_ftsf_fsat_lowerlayer_primes_prime = 1 \/ frm_prime_right_ftsf_fsat_lowerlayer_primes_prime = 1))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0014.html?v=2db42c10aa31">Product(b,c,l,z)</a><a class="pd-chip" href="PD0028.html?v=2db42c10aa31">AllPrime(b,c,l)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/TP003F.html?v=2db42c10aa31">TP003F · totient_coprime_multiplicative</a><a class="pd-chip" href="../tag/TP0054.html?v=2db42c10aa31">TP0054 · totient_euler_product_formula</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0149.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>724a46d2cbfdc1382eeea6157df27626ab8d7cd5fe30d4cc09103290603276c5</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-priority-layer-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

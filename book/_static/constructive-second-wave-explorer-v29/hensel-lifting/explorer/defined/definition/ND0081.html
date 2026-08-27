@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0081 — HornerCoefficientBlend(pb,pc,nb,nc,gb,gc,h,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="hensel-lifting"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../graph.html?v=2db42c10aa31">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=HornerCoefficientBlend&amp;v=2db42c10aa31">Global definition: HornerCoefficientBlend</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G095" href="../../../../grand-campaign/?view=goal&amp;focus=G095&amp;v=2db42c10aa31">G095 milestone</a></nav>
+  <p class="pd-tag">ND0081</p><h1>HornerCoefficientBlend(pb,pc,nb,nc,gb,gc,h,l)</h1>
+  <p>Every actual coefficient in the new code is the positive coefficient plus h times the negative coefficient.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ sph_i_secondwave. ∀ sph_A_secondwave. ∀ sph_B_secondwave. ∀ sph_C_secondwave. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=2db42c10aa31">Lt(sph_i_secondwave,l)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=2db42c10aa31">BetaAt(pb,pc,sph_i_secondwave,sph_A_secondwave)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=2db42c10aa31">BetaAt(nb,nc,sph_i_secondwave,sph_B_secondwave)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=2db42c10aa31">BetaAt(gb,gc,sph_i_secondwave,sph_C_secondwave)</a> → sph_C_secondwave = sph_A_secondwave + h · sph_B_secondwave</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall sph_i_secondwave sph_A_secondwave sph_B_secondwave sph_C_secondwave. (exists hpl_gap_secondwave. hpl_gap_secondwave + S (sph_i_secondwave) = (l)) -&gt; (((exists fs_h_sph_secondwave_positive. fs_h_sph_secondwave_positive + S (sph_A_secondwave) = S ((S (sph_i_secondwave)) * pc)) /\ exists fs_q_sph_secondwave_positive. pb = fs_q_sph_secondwave_positive * S ((S (sph_i_secondwave)) * pc) + (sph_A_secondwave))) -&gt; (((exists fs_h_sph_secondwave_negative. fs_h_sph_secondwave_negative + S (sph_B_secondwave) = S ((S (sph_i_secondwave)) * nc)) /\ exists fs_q_sph_secondwave_negative. nb = fs_q_sph_secondwave_negative * S ((S (sph_i_secondwave)) * nc) + (sph_B_secondwave))) -&gt; (((exists fs_h_sph_secondwave_combined. fs_h_sph_secondwave_combined + S (sph_C_secondwave) = S ((S (sph_i_secondwave)) * gc)) /\ exists fs_q_sph_secondwave_combined. gb = fs_q_sph_secondwave_combined * S ((S (sph_i_secondwave)) * gc) + (sph_C_secondwave))) -&gt; sph_C_secondwave = sph_A_secondwave + h * sph_B_secondwave</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0013.html?v=2db42c10aa31">BetaAt(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=2db42c10aa31">Lt(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/HL0014.html?v=2db42c10aa31">HL0014 · beta_horner_coefficient_blend_exists</a><a class="pd-chip" href="../tag/HL0016.html?v=2db42c10aa31">HL0016 · beta_horner_coefficient_blend_value_derivative</a><a class="pd-chip" href="../tag/HL001B.html?v=2db42c10aa31">HL001B · beta_signed_horner_blend_root_equivalence</a><a class="pd-chip" href="../tag/HL001F.html?v=2db42c10aa31">HL001F · beta_signed_horner_hensel_iterated_exists_unique</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>8</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0081.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>1dbc7c569b4d6ce506fd13ac1c15d2cc99bf4cf68054d29e3ed1503f5744b85f</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v29/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

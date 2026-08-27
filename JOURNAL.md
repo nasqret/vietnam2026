@@ -5418,3 +5418,29 @@ The exact current UI pointer and remote publication are separate integration
 steps still in progress. No proof-site deployment or Peano production
 promotion is implied by this mathematical checkpoint. G082 remains a
 separate additive development, not part of the frozen v29 inventory.
+
+### 2026-08-28 — frozen priority-layer publication and historical continuity
+
+The separate Alpha-v29 publication is now generated from the sealed 3,042-entry
+edition. Its catalog SHA-256 is
+`2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0`,
+with 699 authenticated evidence documents. All 33 principal statements passed
+ordinary empty-context proof replay, in addition to the complete HA/Lean bundle
+checks. The final release-verifier suite passed 375 tests; canonical new-family
+explorer tests passed 53, and historical-publication continuity passed 29.
+
+Five new canonical Quadratic-Reciprocity-style explorers present the shared
+prime-valuation tools and the four requested priority goals. The separate
+priority campaign atlas has 264 reviewed conservative definitions and 510
+reviewed definition edges. Historical v27 and v28 family presentations have
+separate current-v29 packages retaining their original first-admission records,
+statements, proof receipts, and immutable archived bytes. All original explorer
+JavaScript/CSS assets are reused unchanged. Exact/defined formula roundtrips,
+cross-family routes, graph structure and getter-only `href` compatibility pass
+automated checks. No interactive browser was connected, so this is not a claim
+of screenshot or visual-browser verification.
+
+This is a local, additive publication checkpoint, not remote deployment. The
+Gaussian endpoint will be admitted independently in v30, and current application
+selectors will be advanced directly to that final release. Peano production's
+hosting-cache gate remains unchanged and its promotion is deliberately deferred.

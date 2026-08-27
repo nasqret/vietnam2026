@@ -1,0 +1,2683 @@
+{
+  "alpha_edition_version": "v29",
+  "alpha_first_enrolled_version": "v28",
+  "catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0",
+  "checked_use_count": 204,
+  "edition_identity_sha256": "57da70c3718579cb8eb81c59a4c2898a5071140fa944e31bca312fe53432574c",
+  "families": [
+    {
+      "campaign": "foundations",
+      "definition_count": 22,
+      "domain": "D01",
+      "family": "F01",
+      "milestones": [
+        "G001",
+        "G002",
+        "G003",
+        "G004",
+        "G005"
+      ],
+      "root_tags": {
+        "foundation_coprime_product_divisor": "AF0003",
+        "foundation_division_exists_unique": "AF0001",
+        "foundation_prime_factor_list_exists": "AF0004",
+        "foundation_signed_bezout_canonical_gcd": "AF0002",
+        "prime_factor_lists_permutation_exists": "AF001A",
+        "prime_factorization_exists_unique_up_to_permutation": "AF001B"
+      },
+      "slug": "arithmetic-foundations",
+      "theorem_count": 27
+    },
+    {
+      "campaign": "prime_enumeration",
+      "definition_count": 11,
+      "domain": "D02",
+      "family": "F03",
+      "milestones": [
+        "G021",
+        "G022"
+      ],
+      "root_tags": {
+        "first_primes_double_exponential_bound": "PE000C",
+        "first_primes_list_exists": "PE0013",
+        "foundation_primes_above_every_bound": "PE0001",
+        "least_prime_above_exists_unique": "PE0006",
+        "prime_list_every_entry_is_prime": "PE0010",
+        "prime_list_omits_no_smaller_prime": "PE0011",
+        "prime_list_strictly_increasing": "PE0012"
+      },
+      "slug": "prime-enumeration",
+      "theorem_count": 19
+    },
+    {
+      "campaign": "gaussian_euclidean",
+      "definition_count": 21,
+      "domain": "D02",
+      "family": "F09",
+      "milestones": [
+        "G081"
+      ],
+      "root_tags": {
+        "gaussian_add_exists": "GI0055",
+        "gaussian_euclidean_division_exists": "GI005D",
+        "gaussian_multiply_exists": "GI0059",
+        "gaussian_norm_exists_unique": "GI0051",
+        "gaussian_norm_multiply": "GI005B"
+      },
+      "slug": "gaussian-integers",
+      "theorem_count": 93
+    },
+    {
+      "campaign": "eisenstein_euclidean",
+      "definition_count": 17,
+      "domain": "D02",
+      "family": "F09",
+      "milestones": [
+        "G084"
+      ],
+      "root_tags": {
+        "eisenstein_add_exists": "EI0039",
+        "eisenstein_euclidean_division_exists": "EI0041",
+        "eisenstein_multiply_exists": "EI003D",
+        "eisenstein_norm_exists": "EI0036",
+        "eisenstein_norm_functional": "EI0037",
+        "eisenstein_norm_multiply": "EI003F"
+      },
+      "slug": "eisenstein-integers",
+      "theorem_count": 65
+    }
+  ],
+  "file_count": 509,
+  "files": [
+    {
+      "bytes": 894895,
+      "path": "arithmetic-foundations/api/corpus.json",
+      "sha256": "55ae2ab79659c80a1916ce77fcbc5d18edfa97f36ab7198780442327c131a7af"
+    },
+    {
+      "bytes": 53715,
+      "path": "arithmetic-foundations/explorer/defined/api/graph.json",
+      "sha256": "66289794337cb468b9326e8637b199b3f9b84146ef2aace0f67a6e55a3c01872"
+    },
+    {
+      "bytes": 6730,
+      "path": "arithmetic-foundations/explorer/defined/definition/ND0142.html",
+      "sha256": "42628a6aebe36affd00759d45ecac9a6d4f37940317bfc7d49430fcddfdb0ab7"
+    },
+    {
+      "bytes": 6709,
+      "path": "arithmetic-foundations/explorer/defined/definition/ND0143.html",
+      "sha256": "0da838ad03cfd5e65509749d0c8769961d0c227efb0ddd6370ee141f921cd63d"
+    },
+    {
+      "bytes": 7687,
+      "path": "arithmetic-foundations/explorer/defined/definition/ND0144.html",
+      "sha256": "e55d496aa995cbff2df61adc64d7a475714e1c1795dd0769a78db8d691a1ffba"
+    },
+    {
+      "bytes": 7865,
+      "path": "arithmetic-foundations/explorer/defined/definition/ND0145.html",
+      "sha256": "bfa66f3d6d877eb0c08057d4ac35679ca534abd97b828bf52cc4b6bd13dd347c"
+    },
+    {
+      "bytes": 6933,
+      "path": "arithmetic-foundations/explorer/defined/definition/ND0146.html",
+      "sha256": "b181171ae66a8d26dd7a2bb339d9422bb5258190fa9f5dae2306370357d229f7"
+    },
+    {
+      "bytes": 7290,
+      "path": "arithmetic-foundations/explorer/defined/definition/ND0147.html",
+      "sha256": "733687592039aa4493aec36198f85005afb7a94d55354d24b7d950b10503ba7d"
+    },
+    {
+      "bytes": 9933,
+      "path": "arithmetic-foundations/explorer/defined/definition/ND0148.html",
+      "sha256": "6d1536deaa4fef3c8fce4497337004b58e89c44c8e0c1116983cbe37487fbe8c"
+    },
+    {
+      "bytes": 10819,
+      "path": "arithmetic-foundations/explorer/defined/definition/ND0149.html",
+      "sha256": "da82f4b5e09e46ccf35780119d97113459d0937e1e6536129d111b353cf823cd"
+    },
+    {
+      "bytes": 8630,
+      "path": "arithmetic-foundations/explorer/defined/definition/ND0150.html",
+      "sha256": "5fdf50bd6a7d5d8b68d7f09a73d1f64b13ffa1b31bb491bdae0f560f28cac219"
+    },
+    {
+      "bytes": 10849,
+      "path": "arithmetic-foundations/explorer/defined/definition/ND0151.html",
+      "sha256": "3b5dbf6c1eeace8dfaa7347fe702c0c9045c8cf93e91a40c031e615f6d4d4a69"
+    },
+    {
+      "bytes": 8398,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0002.html",
+      "sha256": "b462b272b5896594ee9753292dec703df5aabe5251ce6488a85bdd3cdcccffd2"
+    },
+    {
+      "bytes": 6328,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0003.html",
+      "sha256": "7ee0a38ede44b3c4f4f09ef99ca13421c3a3565b58d74b069b7a5ef8d209f24d"
+    },
+    {
+      "bytes": 6594,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0004.html",
+      "sha256": "48c166fe286fa11a0c10e566ec9c868fd0e45066d5211f3cacf1a2cddad70d6f"
+    },
+    {
+      "bytes": 6399,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0005.html",
+      "sha256": "db60144ce261127c74c8fc9ad300723a84fabb159407c51fdd0700a17a527cfc"
+    },
+    {
+      "bytes": 6789,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0006.html",
+      "sha256": "f1984bbac066a094ea614ad871b4924fad0ccff32388c932ce8dd6f13c88177e"
+    },
+    {
+      "bytes": 6282,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0007.html",
+      "sha256": "960285d124c851d08a2bdbbd218ca5fc6f95cca5fefd8a995fdc2f012edcdd4f"
+    },
+    {
+      "bytes": 8640,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0013.html",
+      "sha256": "4bc423a89bf8257d6fa44ff6df97888837d62a8b80344235ecb7723731d58d2d"
+    },
+    {
+      "bytes": 9484,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0014.html",
+      "sha256": "f9d2ce48166e2761752df97dffee20483b8150529cfcaa0435af0d220a2b8fd5"
+    },
+    {
+      "bytes": 7423,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0024.html",
+      "sha256": "38d978aa69f59d4b4c08c6dbbd8fa14e1acbfc8282b38c1cb020b5543f735bc8"
+    },
+    {
+      "bytes": 8252,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0025.html",
+      "sha256": "a40ba9df8406a36ea4f4a5e015c9692d463d5497dd9da2b73e507cc855d736f8"
+    },
+    {
+      "bytes": 7362,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0026.html",
+      "sha256": "2a5bb4f87c3f27c853a9d884600d31495cab97f0da6f8e30ce89640cf0cd4bb9"
+    },
+    {
+      "bytes": 7212,
+      "path": "arithmetic-foundations/explorer/defined/definition/PD0028.html",
+      "sha256": "f7d01061ac61c958fcd8e71fef6b19bc0b6f9142efb8afc05eec03ba3aa5eac8"
+    },
+    {
+      "bytes": 46605,
+      "path": "arithmetic-foundations/explorer/defined/graph.html",
+      "sha256": "ffc86501948c39624b9502c5517cdd4e1107a12a97a6f86391fc43eec14fe106"
+    },
+    {
+      "bytes": 36272,
+      "path": "arithmetic-foundations/explorer/defined/index.html",
+      "sha256": "f646d3b77aac0956ff1d7333c6e3e91fdcb3798ee00866363005d61a1bbe3c81"
+    },
+    {
+      "bytes": 11407,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0001.html",
+      "sha256": "acc5070d7d49eedda68254ec536fb016afb71e3182bf71f26cefe0de431657da"
+    },
+    {
+      "bytes": 12218,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0002.html",
+      "sha256": "347a6c0920902a2bec3afe3ddfac29972e2391cb90e5c0b02632d33ed76c2f7c"
+    },
+    {
+      "bytes": 8772,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0003.html",
+      "sha256": "5e54e4e948bbf0f476daca8b7ad877ea1976255a872c98abff377e68100a5841"
+    },
+    {
+      "bytes": 13367,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0004.html",
+      "sha256": "65dc29f2088d44808a6befe7b6ce17bf862f61725312846e85546c0682d568d0"
+    },
+    {
+      "bytes": 7439,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0005.html",
+      "sha256": "06db510e3b8e244de37e2eefde743a804872bd05daf87e4979461a97391cfe94"
+    },
+    {
+      "bytes": 13106,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0006.html",
+      "sha256": "38e55bf3ce806ddc31fa58913dfd940d678adcd2207d130fa5869eaa1f20fe28"
+    },
+    {
+      "bytes": 12255,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0007.html",
+      "sha256": "06f8c237c886a662fd0a3479438370f88327abe0b9fb7144b67257d0dd70db58"
+    },
+    {
+      "bytes": 10080,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0008.html",
+      "sha256": "cae81e7b08ad1e5ae9070acdbb3a9da5b77aec4f470230d43afb5128d6b03354"
+    },
+    {
+      "bytes": 25557,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0009.html",
+      "sha256": "518631da610376cb13b262e93801be9dd9b3bb4f0ab1c70600f3339f9b67454a"
+    },
+    {
+      "bytes": 23506,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF000A.html",
+      "sha256": "4e467a9fcfa843a4fa5234dcfa68e33810369de3a2d4e6207a9f7136d0c5f362"
+    },
+    {
+      "bytes": 12202,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF000B.html",
+      "sha256": "641f1de30fa62ce340e196985b0f995da2373c318739033e1507f23aa1eb8da3"
+    },
+    {
+      "bytes": 14761,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF000C.html",
+      "sha256": "365aa5d0df506969d08586082522e9e00393451c1fe3a3c506a06376f68cf013"
+    },
+    {
+      "bytes": 16264,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF000D.html",
+      "sha256": "63036126ffb6435ecec5273ccd17261308a6aa4b37d9b022dbbf94953333d510"
+    },
+    {
+      "bytes": 35343,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF000E.html",
+      "sha256": "73f813d7c8bfc78c435ff3bd7ab3d9646c2c10242a9d2efeb86321b8138126c9"
+    },
+    {
+      "bytes": 21726,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF000F.html",
+      "sha256": "dff522feaa52b14ade1d4c90f21065e2817030e19772b318c38bb4acfefd1e4c"
+    },
+    {
+      "bytes": 25479,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0010.html",
+      "sha256": "e01590401673fe058b4971c552d760558a355f49e560543db0d37899ffcf2042"
+    },
+    {
+      "bytes": 22870,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0011.html",
+      "sha256": "9263e3a34f0fb26357bd177c094b7ca6d46ddcfdbbadee30e90f6c60561fd350"
+    },
+    {
+      "bytes": 15881,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0012.html",
+      "sha256": "4f84178e1aa6c6f0de1b0177a5780dde6f3e578640adab97723343b12546c67d"
+    },
+    {
+      "bytes": 24422,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0013.html",
+      "sha256": "e1b677f6c09824557a2868e4d7f708e4a5e5819d898810c1bb2ab5f7de0ad04a"
+    },
+    {
+      "bytes": 30174,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0014.html",
+      "sha256": "1c0c2dd98dabeae3e674b7a899aa8249079bdf1848915980e9c4399efc4a3e34"
+    },
+    {
+      "bytes": 27024,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0015.html",
+      "sha256": "d581f837be9ec9b78a1787baa4ee7d2e0ae0a81dcc31556682511ed84930bc04"
+    },
+    {
+      "bytes": 28724,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0016.html",
+      "sha256": "4c8e369534d68fc24bd26a4cd805fb5585d24123341c507ef1f2e20d648f02c8"
+    },
+    {
+      "bytes": 49785,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0017.html",
+      "sha256": "f016ebf8c9028a231a74b3d4da0cef7287e788bcd2f963b27cbb34101e2a8bc1"
+    },
+    {
+      "bytes": 42484,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0018.html",
+      "sha256": "d648273b7030b579e0311d9917b276cc8b6b09085f71b5149e04af452c0681c0"
+    },
+    {
+      "bytes": 63835,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF0019.html",
+      "sha256": "83bd44f22d812fc00e870a602a64c1fe9f9e6ad2facdcff3499b8e16d5e564c7"
+    },
+    {
+      "bytes": 23360,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF001A.html",
+      "sha256": "0f6ed2afd6cf9bbe4c160ebe08d68c29e88cdedb39e37912160803a0aef6231d"
+    },
+    {
+      "bytes": 24536,
+      "path": "arithmetic-foundations/explorer/defined/tag/AF001B.html",
+      "sha256": "67a1096e779dcea553912747657e336baf6a973954d32d95473a25297eab23c6"
+    },
+    {
+      "bytes": 32285,
+      "path": "arithmetic-foundations/explorer/index.html",
+      "sha256": "c395d0634f55b509a544e66079a996134551233e7b04e07a684b99b7bf2c305d"
+    },
+    {
+      "bytes": 15716,
+      "path": "arithmetic-foundations/explorer/tag/AF0001.html",
+      "sha256": "e7dc48d982393a10e32d5be8a09b95adf18f4043ea4428feeb9f118b5fef71c5"
+    },
+    {
+      "bytes": 15735,
+      "path": "arithmetic-foundations/explorer/tag/AF0002.html",
+      "sha256": "bef73a3525ee2d23e869f57908ccaa10f8707909572e314fc00bb9547420bf53"
+    },
+    {
+      "bytes": 10617,
+      "path": "arithmetic-foundations/explorer/tag/AF0003.html",
+      "sha256": "f3519b40e02a7992e70a41ae8994d5e321c06fd4e2afebaf3d8c2783490dab52"
+    },
+    {
+      "bytes": 18877,
+      "path": "arithmetic-foundations/explorer/tag/AF0004.html",
+      "sha256": "ed32b5f06bb2294f5e43e1bb4b094b89759095fb2ec5a628648358f312452ba2"
+    },
+    {
+      "bytes": 9142,
+      "path": "arithmetic-foundations/explorer/tag/AF0005.html",
+      "sha256": "47b77f25b65c1b09b688cd0633be46a7c26248d26c1d450eaa571c8fcdacdffd"
+    },
+    {
+      "bytes": 17737,
+      "path": "arithmetic-foundations/explorer/tag/AF0006.html",
+      "sha256": "ba7a5957cd1615d978173eec35554b0601b2268208870c716dab60b4119933e5"
+    },
+    {
+      "bytes": 16035,
+      "path": "arithmetic-foundations/explorer/tag/AF0007.html",
+      "sha256": "169233111ee02bf1f340541b8eecf54a13920f080ab420d781933f1e50bd953a"
+    },
+    {
+      "bytes": 12180,
+      "path": "arithmetic-foundations/explorer/tag/AF0008.html",
+      "sha256": "5a68689925a25a12b48020fbfa760712a8f11e0b52f89fae66f56507c525c2e6"
+    },
+    {
+      "bytes": 37743,
+      "path": "arithmetic-foundations/explorer/tag/AF0009.html",
+      "sha256": "af36335f1f7124b13a3447c25db0fd181d247a70b9cb5b610e935acd1d2d4605"
+    },
+    {
+      "bytes": 33694,
+      "path": "arithmetic-foundations/explorer/tag/AF000A.html",
+      "sha256": "d4209ffc57d1619c696fda2c2df542f94c4c042fadf4d358adaeaabaff06c307"
+    },
+    {
+      "bytes": 15353,
+      "path": "arithmetic-foundations/explorer/tag/AF000B.html",
+      "sha256": "28cbdd00684439a7feddeac8b1db9a9cce8982dcaae437eb1bac9f519c4ea4f6"
+    },
+    {
+      "bytes": 17223,
+      "path": "arithmetic-foundations/explorer/tag/AF000C.html",
+      "sha256": "b721a52a90d8761622d3d9aa79b5f7eaf2aa076e97b20be248325ee990f019cc"
+    },
+    {
+      "bytes": 21227,
+      "path": "arithmetic-foundations/explorer/tag/AF000D.html",
+      "sha256": "3cdbfbed8e026ad6b90b3cbeceb7421bea2c76bfc5decc54f02604a15e0087e9"
+    },
+    {
+      "bytes": 54637,
+      "path": "arithmetic-foundations/explorer/tag/AF000E.html",
+      "sha256": "a9b2308d8a2314232534394e00230ef53c80064272359204429770440c6c9e63"
+    },
+    {
+      "bytes": 30355,
+      "path": "arithmetic-foundations/explorer/tag/AF000F.html",
+      "sha256": "563c6e71f418a8b72f74bb661eb7da8f9b59d65c32f0d0cf3a31ef3adbde4fbe"
+    },
+    {
+      "bytes": 33075,
+      "path": "arithmetic-foundations/explorer/tag/AF0010.html",
+      "sha256": "a496c3f8c76c87a292759057718a74bf27d43af5edf8021bf015e3e580f2df94"
+    },
+    {
+      "bytes": 31428,
+      "path": "arithmetic-foundations/explorer/tag/AF0011.html",
+      "sha256": "0d4187038c864128d3bfb105c3a2eafb9b468fefb4ca6221726d02ff130ac8e3"
+    },
+    {
+      "bytes": 21121,
+      "path": "arithmetic-foundations/explorer/tag/AF0012.html",
+      "sha256": "5c6e901317ec7fb12417f9889a25ad9150bc1de8c68d60ba16670e0b3289528d"
+    },
+    {
+      "bytes": 33266,
+      "path": "arithmetic-foundations/explorer/tag/AF0013.html",
+      "sha256": "58ac766a90dcc44e495fd0fd8478a006ffd0d8112e3a99f92bb9585e85bd7d03"
+    },
+    {
+      "bytes": 43860,
+      "path": "arithmetic-foundations/explorer/tag/AF0014.html",
+      "sha256": "7e52c12307516f746d848b1973801443164e52b14232853f800c77917460a422"
+    },
+    {
+      "bytes": 35978,
+      "path": "arithmetic-foundations/explorer/tag/AF0015.html",
+      "sha256": "2a55c7c043714a8c95c1d240f51d8b0ad6fd292c97ac960682c75f26b9a795b6"
+    },
+    {
+      "bytes": 36099,
+      "path": "arithmetic-foundations/explorer/tag/AF0016.html",
+      "sha256": "b49672df36d14d9a03343c4e52f4a6abd77b2b3de5ca474b11b61d0aa791fe06"
+    },
+    {
+      "bytes": 74354,
+      "path": "arithmetic-foundations/explorer/tag/AF0017.html",
+      "sha256": "cc5d9300bb58f6c94107d747f78ae9af3bb8c34be113de514e5f39318cce2476"
+    },
+    {
+      "bytes": 61608,
+      "path": "arithmetic-foundations/explorer/tag/AF0018.html",
+      "sha256": "0313eb1e2db3cc22ccdb0fbfa666bd8853f9e2ce4dc351d9133ec218506891d7"
+    },
+    {
+      "bytes": 129074,
+      "path": "arithmetic-foundations/explorer/tag/AF0019.html",
+      "sha256": "9fbf49a51d8b7cb388a126fb1fe52b689624e5b52f9e113d7dbaa3a6e10d2f3f"
+    },
+    {
+      "bytes": 31866,
+      "path": "arithmetic-foundations/explorer/tag/AF001A.html",
+      "sha256": "6c60f195a84881e2b3b4638956c52e360e91a6cc9ff8c7e247c250bd6752309f"
+    },
+    {
+      "bytes": 31971,
+      "path": "arithmetic-foundations/explorer/tag/AF001B.html",
+      "sha256": "10032f45c974d0c9328c0b848d73182d335c6227988ece2e7d8e181583e87cd6"
+    },
+    {
+      "bytes": 9844,
+      "path": "arithmetic-foundations/index.html",
+      "sha256": "b3bb1fc5ce23cafa7d4f6c234b5dbd707c2378db4d0b5c76c76b03250c7fb433"
+    },
+    {
+      "bytes": 15951,
+      "path": "assets/defined-explorer.css",
+      "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220"
+    },
+    {
+      "bytes": 29840,
+      "path": "assets/defined-explorer.js",
+      "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"
+    },
+    {
+      "bytes": 30856,
+      "path": "assets/exact-explorer.css",
+      "sha256": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc"
+    },
+    {
+      "bytes": 42701,
+      "path": "assets/exact-explorer.js",
+      "sha256": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606"
+    },
+    {
+      "bytes": 8341,
+      "path": "assets/proofs.css",
+      "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285"
+    },
+    {
+      "bytes": 3202169,
+      "path": "eisenstein-integers/api/corpus.json",
+      "sha256": "5373b55238c79307cbdf3f1a9f8b1a2f4ef6994b12372947b39419e8db4247b2"
+    },
+    {
+      "bytes": 82419,
+      "path": "eisenstein-integers/explorer/defined/api/graph.json",
+      "sha256": "4c58ec4bdf9d1eb8e57604cbfc79fc3011cf8cac936531a44ba7b1884110b2f6"
+    },
+    {
+      "bytes": 5902,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0142.html",
+      "sha256": "34df34d7f6cda5a27c9d75f25fd3c9335927f87c788d6f684d3e23417198b400"
+    },
+    {
+      "bytes": 6182,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0143.html",
+      "sha256": "557761822b93bf5cfb4d107db3a0e70288fff6587f07287858236e63258d4892"
+    },
+    {
+      "bytes": 5830,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0155.html",
+      "sha256": "638ab135d11a9ed7dfa236ead92c0bf93bf92ff1d9b9983459195eb411ccbe88"
+    },
+    {
+      "bytes": 6335,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0157.html",
+      "sha256": "a0b88c290d00634b097c8f47714af9d928d758f3d32aae168aab24fb9c5125e6"
+    },
+    {
+      "bytes": 6960,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0159.html",
+      "sha256": "f4482d76c69ea7848c202e406d41e5148a252cbc8e2006dd01cd54b28ce01ee6"
+    },
+    {
+      "bytes": 7580,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0160.html",
+      "sha256": "55725f32a6fb759766f29504861863ea29071b68a4bb7ed6e9f0e6c4d3fa1298"
+    },
+    {
+      "bytes": 8734,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0161.html",
+      "sha256": "71cc0c8c539059eb55cf83cec693d2f6cfe9789fc94782eafe4a9ec9719b33be"
+    },
+    {
+      "bytes": 12626,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0165.html",
+      "sha256": "72cc1a948267121c37706d68e66d084124673b5becfa1ab4310bb6627835b8bc"
+    },
+    {
+      "bytes": 8308,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0169.html",
+      "sha256": "2fc90efee901c65b8b946449902c221f6fcf7d61103fbb0d685551f7f09d055d"
+    },
+    {
+      "bytes": 7749,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0170.html",
+      "sha256": "18774c4bdc7033e4700cfca68a6434f4f6f07f6fac21df5d31b2b8b3502b8421"
+    },
+    {
+      "bytes": 9701,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0171.html",
+      "sha256": "2a9e95f18173f65060d0c68f764bc76e74742c4bc997292c0c35ac92a8887bd7"
+    },
+    {
+      "bytes": 14766,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0172.html",
+      "sha256": "33fc54457dcf4c54820aaffe87fc75e53061ae75d6a748b60946da0d0a530abd"
+    },
+    {
+      "bytes": 20576,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0173.html",
+      "sha256": "326b3153b12a84eddd278ca61fcd087d863ee0d1927bbf459aec497c1b427346"
+    },
+    {
+      "bytes": 30284,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0174.html",
+      "sha256": "798f06ee730f1bee8cb2f5946a4f199970425aa383fb8d59496712fdd874efdc"
+    },
+    {
+      "bytes": 7102,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0175.html",
+      "sha256": "916449cf93fae52d876da17f89860a39d5fa3b0948c426e7f8f2366d8f85fd8d"
+    },
+    {
+      "bytes": 7762,
+      "path": "eisenstein-integers/explorer/defined/definition/ND0176.html",
+      "sha256": "e4321e7d94c62e890f013053f9085bb8bf3a99f0534ec51600748627401075da"
+    },
+    {
+      "bytes": 5912,
+      "path": "eisenstein-integers/explorer/defined/definition/PD0002.html",
+      "sha256": "84669afccf6dbbdf5d7fd051fc52adfb4a574ec9089215f29b76302fd41d4fc5"
+    },
+    {
+      "bytes": 66748,
+      "path": "eisenstein-integers/explorer/defined/graph.html",
+      "sha256": "4d73118e1bb9796b7989addf8eafa553558f8897dce5badd4620a473529a2539"
+    },
+    {
+      "bytes": 57768,
+      "path": "eisenstein-integers/explorer/defined/index.html",
+      "sha256": "0a65ff210c6fecf67ea1247de67e2190b3afec472878122fb1ecc9e1e5af551a"
+    },
+    {
+      "bytes": 8103,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0001.html",
+      "sha256": "94c4749fb42e618c4a21632243b8ff03a7e845b6061d3cdb7bcd41cb3225c239"
+    },
+    {
+      "bytes": 9156,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0002.html",
+      "sha256": "fd38c4f532c00c79af7d74e7da63d8ffa2a76b011d97540fbf2865a4f4d10486"
+    },
+    {
+      "bytes": 9954,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0003.html",
+      "sha256": "166f0e8ff2ed283594905ab03750dc772bcbd278f38c40d5284db89cff105d6d"
+    },
+    {
+      "bytes": 21544,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0004.html",
+      "sha256": "9b66b7ea8807bdbc2ff1923a1e228510c470bc48b84d3c85eeed53f7b84bfc3a"
+    },
+    {
+      "bytes": 10043,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0005.html",
+      "sha256": "c5c8e7ba7db81eeacb7eb9d83a8dcdd37b1268f49adace45886c53c028bc580d"
+    },
+    {
+      "bytes": 14245,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0006.html",
+      "sha256": "db5d926531c797c0835bffe21d458ace178cec1adfe77bbd4894ba010065163c"
+    },
+    {
+      "bytes": 9718,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0007.html",
+      "sha256": "adb1c75f32f736005da7de1e3ef217bbc9383032ed5576df0c1689f4562d4f8b"
+    },
+    {
+      "bytes": 9407,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0008.html",
+      "sha256": "becd87758e4ce8a3cc58b39efceefa0e0d03e09c2dac6ac98de489280f290bf3"
+    },
+    {
+      "bytes": 11559,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0009.html",
+      "sha256": "9c6c7e0fa17d7d4b354934d927c02d14f051bc023b00558a92b68f773bbe9562"
+    },
+    {
+      "bytes": 8969,
+      "path": "eisenstein-integers/explorer/defined/tag/EI000A.html",
+      "sha256": "2ad8bf74160cdfdab80c7bbd4a44763a20509212600bfe9048442e7d8b17c140"
+    },
+    {
+      "bytes": 24309,
+      "path": "eisenstein-integers/explorer/defined/tag/EI000B.html",
+      "sha256": "f8e38ac47bd0b5a835a50855002768f7581c692005433cee4d1eeda0b207c82e"
+    },
+    {
+      "bytes": 17180,
+      "path": "eisenstein-integers/explorer/defined/tag/EI000C.html",
+      "sha256": "3956c1c1fa7fd038fc3b971605f93328cc63fa6472307093fbf787dee003f48f"
+    },
+    {
+      "bytes": 10971,
+      "path": "eisenstein-integers/explorer/defined/tag/EI000D.html",
+      "sha256": "f0c3253e3d4a697325e723e0eb86a69117fc87d722b06bd6ecdccf2cc2c09866"
+    },
+    {
+      "bytes": 51415,
+      "path": "eisenstein-integers/explorer/defined/tag/EI000E.html",
+      "sha256": "f720ce5caec0d3273feca1c90a04e85bf098dd5f88b1ad38c7d972d2f6395716"
+    },
+    {
+      "bytes": 18874,
+      "path": "eisenstein-integers/explorer/defined/tag/EI000F.html",
+      "sha256": "d7fec000639a10a56f6309669253bc682997c3c30be04194e69dcff05880a446"
+    },
+    {
+      "bytes": 10479,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0010.html",
+      "sha256": "7cc7816ff628e93ea8d06fe4a154f15a1b9c3bf259709019c72a186670a03414"
+    },
+    {
+      "bytes": 13061,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0011.html",
+      "sha256": "f3aa9a8f68cd6e206e98219af273bec6b6b3e7a432f76cb33ee5de963710c351"
+    },
+    {
+      "bytes": 14931,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0012.html",
+      "sha256": "fee830f281dc96dfa6078398b649f401d18a92abed6f29fcfd81f739c7744777"
+    },
+    {
+      "bytes": 13027,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0013.html",
+      "sha256": "12c8d18815d59035b91a64d7f4f9c73b319792c727a90a55021e641fe08bfe96"
+    },
+    {
+      "bytes": 12484,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0014.html",
+      "sha256": "30822ffd02a5fb330546168aebefb81c04b986e11a1e3c002d5f54e7cabf2313"
+    },
+    {
+      "bytes": 8722,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0015.html",
+      "sha256": "3c5ba581e071bdf5fd12f59e0966673c44b5874409076241615d2ed8bdd784fa"
+    },
+    {
+      "bytes": 12481,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0016.html",
+      "sha256": "e05ef7224965eff7c316cbbde0a2e8da84999085aa0372bb53740db3a2e523ee"
+    },
+    {
+      "bytes": 18932,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0017.html",
+      "sha256": "4a7557a9f4e7836aa6692dfb8f5baf1afef0daa83def0e6f9b72293407e91e46"
+    },
+    {
+      "bytes": 34710,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0018.html",
+      "sha256": "8e6e7736b5895e7cc2ac53a5654ccc1c8b9257320d460f78741394cf7353bd93"
+    },
+    {
+      "bytes": 22475,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0019.html",
+      "sha256": "069864fcd7284d033560f5a3c7656e00dfc46364f140639bd2b051f1de255e8e"
+    },
+    {
+      "bytes": 22475,
+      "path": "eisenstein-integers/explorer/defined/tag/EI001A.html",
+      "sha256": "dcdcf743c7e7463049262009164a66676afdfda33f4a8ccd2299cd7e3133c852"
+    },
+    {
+      "bytes": 20015,
+      "path": "eisenstein-integers/explorer/defined/tag/EI001B.html",
+      "sha256": "954672de8d7a2eca95fe91e20ade3d051d4b680907926c983c291cf5a0eb87f2"
+    },
+    {
+      "bytes": 20015,
+      "path": "eisenstein-integers/explorer/defined/tag/EI001C.html",
+      "sha256": "18a4a2bafd7645eecf9f3e97b9944a8fe7d63348b0ac839ac08049da4f443923"
+    },
+    {
+      "bytes": 17778,
+      "path": "eisenstein-integers/explorer/defined/tag/EI001D.html",
+      "sha256": "c10ce3d890724c1bac42b35714887c1b7e6652f1effb324f3299ed6e9ced1c6f"
+    },
+    {
+      "bytes": 13743,
+      "path": "eisenstein-integers/explorer/defined/tag/EI001E.html",
+      "sha256": "34136e0b17d7cfab4a6e4b0996cb36a250237c5528e1d328b0c9d6ec70c372ae"
+    },
+    {
+      "bytes": 13743,
+      "path": "eisenstein-integers/explorer/defined/tag/EI001F.html",
+      "sha256": "0254f35e92e6272b267532865c8b32f3d92f0a6395b279971bf72c2e852debb6"
+    },
+    {
+      "bytes": 20117,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0020.html",
+      "sha256": "5c9a9b4143f1e8bc14880f9c302a617c9ee1505e3ceba844ffa80a7e9f5fa2ed"
+    },
+    {
+      "bytes": 20117,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0021.html",
+      "sha256": "8e99c07748c04fe1b997dfbf1876bda2684671cf6ee8174e9f6f8c4378b8e825"
+    },
+    {
+      "bytes": 11902,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0022.html",
+      "sha256": "502acdffd0351123c6f1fac53367aa1dea2cb3288038a01c530b38c0c253ff31"
+    },
+    {
+      "bytes": 27361,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0023.html",
+      "sha256": "a3d813ad83f8ddf9b252e4d6230aae67c5bce7a31416f7a0a57f3503982e3e30"
+    },
+    {
+      "bytes": 59423,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0024.html",
+      "sha256": "fe2be6f486cd60b6378a719fc7a3c6fe266d87c20e7acd5a626f4e9fae96a0e7"
+    },
+    {
+      "bytes": 63148,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0025.html",
+      "sha256": "19063701a6b62d0e9c97ee70329e0a5203db3a418e3fcaa565cfda07e37d88dd"
+    },
+    {
+      "bytes": 20230,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0026.html",
+      "sha256": "e92108612805e21ead3378746cc11f4d8a95ef811a005acf7cc825593169f34c"
+    },
+    {
+      "bytes": 73714,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0027.html",
+      "sha256": "5f9047bd0770ac334267e9b6499a7f48b5c13111c0e8a71d49d4f3fac45caa96"
+    },
+    {
+      "bytes": 53306,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0028.html",
+      "sha256": "36654611eb8d6d463b4ad33877d2a7f66c6be9513e479122d56dd59687f2ab64"
+    },
+    {
+      "bytes": 8358,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0029.html",
+      "sha256": "d4052f3aee73513985f599ca29ce9df5afe317c47b2e6d81e586d66521a36550"
+    },
+    {
+      "bytes": 43704,
+      "path": "eisenstein-integers/explorer/defined/tag/EI002A.html",
+      "sha256": "31867f3eb3abe465f91b2c07091723167afd65f671c322f9a5558ead3ed87749"
+    },
+    {
+      "bytes": 33999,
+      "path": "eisenstein-integers/explorer/defined/tag/EI002B.html",
+      "sha256": "4e468def5086255158d2998eced85d2c997489eee6b3c58de7b4d6b3fdb5d803"
+    },
+    {
+      "bytes": 42010,
+      "path": "eisenstein-integers/explorer/defined/tag/EI002C.html",
+      "sha256": "4a269c3036c93f0853527c1fca1e5ad94b9c37684d6c091ff2ab004a4f7da334"
+    },
+    {
+      "bytes": 83909,
+      "path": "eisenstein-integers/explorer/defined/tag/EI002D.html",
+      "sha256": "674d454191d318f95f4044cb5c85a6bb1867dc914a4d56f7abb69ded154df06c"
+    },
+    {
+      "bytes": 263185,
+      "path": "eisenstein-integers/explorer/defined/tag/EI002E.html",
+      "sha256": "2b4ca37f1be6205e3e4a07ae70bc10410dd22a8b85622ed649a827ad1047d568"
+    },
+    {
+      "bytes": 105005,
+      "path": "eisenstein-integers/explorer/defined/tag/EI002F.html",
+      "sha256": "b05bdf20be0f99db0193c0dac27d93c4dd947906ed18cf6a1321c85ba9bf8b5a"
+    },
+    {
+      "bytes": 19766,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0030.html",
+      "sha256": "2b951024893d545ccdbd616b32113bc4570e03e31b950047222f05da1b15eb7a"
+    },
+    {
+      "bytes": 9525,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0031.html",
+      "sha256": "39573896c26f900feb31d88a2972fbd3d7297bdeb034415300793764907438e6"
+    },
+    {
+      "bytes": 7806,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0032.html",
+      "sha256": "b8a661baa4ec43e6a95b795775cf5a98c4b4133147b963a8fcf176b587ef14ed"
+    },
+    {
+      "bytes": 56295,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0033.html",
+      "sha256": "5eee68e08635added09f707fbc6a4ca4f06214ad40c354503512c7074ee45ec0"
+    },
+    {
+      "bytes": 14250,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0034.html",
+      "sha256": "9e87e996cbf6938fef2ca11b31f6ee144b674929c45731018e46ec170f1a67e7"
+    },
+    {
+      "bytes": 19205,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0035.html",
+      "sha256": "c2cd9fce2e87479363bde526698791c20751f798f4bf5d42e832b568cc4b7f48"
+    },
+    {
+      "bytes": 16769,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0036.html",
+      "sha256": "b9f8f2c6866d58d3b5d970b7231bd494b9b773ba3c01067911a8bf95fb42250b"
+    },
+    {
+      "bytes": 17868,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0037.html",
+      "sha256": "69038274dd702e047233d40a5ad2621fb355c7ce9aa8796652a97ad6d7065712"
+    },
+    {
+      "bytes": 17949,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0038.html",
+      "sha256": "ceae11bab118dfefbc0e74293de35423557e19672bba3ab973010b10859a98bc"
+    },
+    {
+      "bytes": 15674,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0039.html",
+      "sha256": "dda88d3d0d3973b57867fe8be35e32f3f9d1a81c5f32633b76941b8a25926d6e"
+    },
+    {
+      "bytes": 20697,
+      "path": "eisenstein-integers/explorer/defined/tag/EI003A.html",
+      "sha256": "b0d383ed386e689b9a3cec3179823dc1e6e85f6800b1af953ee9f7d0927d4afc"
+    },
+    {
+      "bytes": 25491,
+      "path": "eisenstein-integers/explorer/defined/tag/EI003B.html",
+      "sha256": "a2ef036a86c701cd4fe9d08912775e5fb8d0b7cad7ce48abb6c15faacf01adfb"
+    },
+    {
+      "bytes": 36307,
+      "path": "eisenstein-integers/explorer/defined/tag/EI003C.html",
+      "sha256": "edc5a68afa76925e16d05333941475f9641567ede9b62f461672fb7af8c2e7c7"
+    },
+    {
+      "bytes": 27867,
+      "path": "eisenstein-integers/explorer/defined/tag/EI003D.html",
+      "sha256": "9da91af71548f1c9da2e7f65a09a68053ab9cb1bfed6b765126762bffffcd01e"
+    },
+    {
+      "bytes": 31985,
+      "path": "eisenstein-integers/explorer/defined/tag/EI003E.html",
+      "sha256": "76764bdf4dee6424cdca11cbe4bddab1d280eea70b83fe0a32b71884027412ab"
+    },
+    {
+      "bytes": 37918,
+      "path": "eisenstein-integers/explorer/defined/tag/EI003F.html",
+      "sha256": "72716e64d777f3e8c479bfb04fb34e1da558ab626c68d8d11aaa9e875b94dfff"
+    },
+    {
+      "bytes": 48563,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0040.html",
+      "sha256": "627489bd3d4373c884320167f2f8c0f9803ed39152f4e959f5531ecec4d12e13"
+    },
+    {
+      "bytes": 66871,
+      "path": "eisenstein-integers/explorer/defined/tag/EI0041.html",
+      "sha256": "09637ef501bff2f28537bec36b8d82d95a03a8e34bd5695d560a8caef9ef8738"
+    },
+    {
+      "bytes": 65212,
+      "path": "eisenstein-integers/explorer/index.html",
+      "sha256": "0d28804176adc97872ccfe78003134efe113eaee2aa22ed90d11a4e8b5b2dfcc"
+    },
+    {
+      "bytes": 9773,
+      "path": "eisenstein-integers/explorer/tag/EI0001.html",
+      "sha256": "0378839c4fe50e695a15df2a2b6981b339f9feba3b0bc66987694da251c9c79f"
+    },
+    {
+      "bytes": 11910,
+      "path": "eisenstein-integers/explorer/tag/EI0002.html",
+      "sha256": "837a639ea634ff2bc2ea3b4217e04dcfc66fd65dff33ede684a2341b22dda2d7"
+    },
+    {
+      "bytes": 13753,
+      "path": "eisenstein-integers/explorer/tag/EI0003.html",
+      "sha256": "d10699fad5cc55cbb60062ee45b6684c662368abb6017ad1f1e2d3e2b5ceb186"
+    },
+    {
+      "bytes": 34541,
+      "path": "eisenstein-integers/explorer/tag/EI0004.html",
+      "sha256": "9a624393256514e2afd0a8970ac7c01b537c4eb62dae3ba1ca88e8eb2b209abe"
+    },
+    {
+      "bytes": 13589,
+      "path": "eisenstein-integers/explorer/tag/EI0005.html",
+      "sha256": "2f28b01014386ca40fb55b18bab420d5b41e9508e69b6182f168da43282d1483"
+    },
+    {
+      "bytes": 19806,
+      "path": "eisenstein-integers/explorer/tag/EI0006.html",
+      "sha256": "4af3a413fa5a292a0e977155034d73e9afcdf991f0c28c4b03fb29167c8ab717"
+    },
+    {
+      "bytes": 11674,
+      "path": "eisenstein-integers/explorer/tag/EI0007.html",
+      "sha256": "ccc9c63b43854d137eda4322fd10a6cbf55013b73e19912f2045eb7f983df837"
+    },
+    {
+      "bytes": 11075,
+      "path": "eisenstein-integers/explorer/tag/EI0008.html",
+      "sha256": "8f16124303de0d36ae3fcedd9fa2ef3f8c918a9cd4a691af51200e96540d79cb"
+    },
+    {
+      "bytes": 15041,
+      "path": "eisenstein-integers/explorer/tag/EI0009.html",
+      "sha256": "ca38b06699a4db901acefd7cb14d9cc293589890fa5225bffb9e27f9491f6f7d"
+    },
+    {
+      "bytes": 11838,
+      "path": "eisenstein-integers/explorer/tag/EI000A.html",
+      "sha256": "397fb105cd54443e5a1258dc82ebff386716c9829fbaf6dda9ce9b61beafdcc9"
+    },
+    {
+      "bytes": 36229,
+      "path": "eisenstein-integers/explorer/tag/EI000B.html",
+      "sha256": "62cdae483407c5a4e280ee9a9cffeac45b044800fa4f4326e917ae5b7d916814"
+    },
+    {
+      "bytes": 25167,
+      "path": "eisenstein-integers/explorer/tag/EI000C.html",
+      "sha256": "2be4a01f4912871c9de41f37f61df63d868517486134e14bedf3df136f397235"
+    },
+    {
+      "bytes": 13405,
+      "path": "eisenstein-integers/explorer/tag/EI000D.html",
+      "sha256": "01c517127d5a132c17645ad36c55d88fcd5b1f923f7c4e88575614b40f8bdd92"
+    },
+    {
+      "bytes": 91778,
+      "path": "eisenstein-integers/explorer/tag/EI000E.html",
+      "sha256": "6bf2b7d2476c689582f4985a239b9c0cfa88a464e8b5ca0c0069178e2bf36674"
+    },
+    {
+      "bytes": 25807,
+      "path": "eisenstein-integers/explorer/tag/EI000F.html",
+      "sha256": "cd169ee2f09f0ca8bca0f805fd8f8ff8306b36d89bb0bbae379551f130986d10"
+    },
+    {
+      "bytes": 12904,
+      "path": "eisenstein-integers/explorer/tag/EI0010.html",
+      "sha256": "1d8531e38631f80c1dcfdd9c13eb03643d1ddbd18995f4304463c3e2f06375d0"
+    },
+    {
+      "bytes": 17467,
+      "path": "eisenstein-integers/explorer/tag/EI0011.html",
+      "sha256": "797192f2506a90ff848ad9107b4895c135863ff6385d3bc57b7987b722d4662b"
+    },
+    {
+      "bytes": 19540,
+      "path": "eisenstein-integers/explorer/tag/EI0012.html",
+      "sha256": "a6d274d5f12941f7b822a1736a5e54c8cc07aa4a59a0f57cbb95b03189b4d5d7"
+    },
+    {
+      "bytes": 17342,
+      "path": "eisenstein-integers/explorer/tag/EI0013.html",
+      "sha256": "f07b74e993448e0ee52248c827b4d2847a4aed4e44476eec185f39e3b8c2f301"
+    },
+    {
+      "bytes": 16364,
+      "path": "eisenstein-integers/explorer/tag/EI0014.html",
+      "sha256": "8ff83b017c7ff547cb38f78ea13a4f502a31c2ccd82406dd9845a5a63d19e2b5"
+    },
+    {
+      "bytes": 11024,
+      "path": "eisenstein-integers/explorer/tag/EI0015.html",
+      "sha256": "7ee16bfae8e445ed5961ecb1e72f9acacc3a554caf7d468cf5f9f1e88341f69a"
+    },
+    {
+      "bytes": 18039,
+      "path": "eisenstein-integers/explorer/tag/EI0016.html",
+      "sha256": "fb45cfb4f134b837acf3acaa73eeccd54d4d979fdf4af9e296c17a7334e60063"
+    },
+    {
+      "bytes": 25621,
+      "path": "eisenstein-integers/explorer/tag/EI0017.html",
+      "sha256": "ad0f47582b9dd2eb74bace2748122ad7535b988da4ad08780dca823f3921ab23"
+    },
+    {
+      "bytes": 52586,
+      "path": "eisenstein-integers/explorer/tag/EI0018.html",
+      "sha256": "01452cb212c6fb514601168d1b7699960be9273299c08df00ea0df54b152d7ef"
+    },
+    {
+      "bytes": 33543,
+      "path": "eisenstein-integers/explorer/tag/EI0019.html",
+      "sha256": "66f3bd56172cd6b4b7ea91c882987ae82afd590509ec7797bd481e2415142323"
+    },
+    {
+      "bytes": 33551,
+      "path": "eisenstein-integers/explorer/tag/EI001A.html",
+      "sha256": "e94f962352585cff6cf05307455219d511e27867ac79e71d1ef488e251ddfdff"
+    },
+    {
+      "bytes": 29074,
+      "path": "eisenstein-integers/explorer/tag/EI001B.html",
+      "sha256": "ca9657c63648bddf2c7d76d4b7e6b501048dfac6d6385aa2a9a6aab147a88750"
+    },
+    {
+      "bytes": 29068,
+      "path": "eisenstein-integers/explorer/tag/EI001C.html",
+      "sha256": "a04744a46721558d6d89939b711711186fba2fd2b397b03ae6d7cc684962cc2a"
+    },
+    {
+      "bytes": 22278,
+      "path": "eisenstein-integers/explorer/tag/EI001D.html",
+      "sha256": "67fdfb4ddc8057e1d62aacfd98758892ebde3b4eee86995bd234e0df50ab39cb"
+    },
+    {
+      "bytes": 19685,
+      "path": "eisenstein-integers/explorer/tag/EI001E.html",
+      "sha256": "cb87f116176f39bee65bf3a17457f854ecab7c1fe5915dde97ff4eac7440154e"
+    },
+    {
+      "bytes": 19700,
+      "path": "eisenstein-integers/explorer/tag/EI001F.html",
+      "sha256": "d10c7b1796b381b8608c0e1bcbfec725796ebff89f503c0074ae04e86845d91d"
+    },
+    {
+      "bytes": 30327,
+      "path": "eisenstein-integers/explorer/tag/EI0020.html",
+      "sha256": "a5a31328017c0f9f5f0ca3f11d35c76ca7bcee400b08f9b88a3f99ce6af4246d"
+    },
+    {
+      "bytes": 30313,
+      "path": "eisenstein-integers/explorer/tag/EI0021.html",
+      "sha256": "5ad9fc1b030f54e4c2d5f886c1df9ee52ae076f2a04b37507597f37f4d5a95b1"
+    },
+    {
+      "bytes": 13868,
+      "path": "eisenstein-integers/explorer/tag/EI0022.html",
+      "sha256": "36c03f82aad311a93af75e5fef3312dc5aa3a7500f371fa9f4e84666dc9edab6"
+    },
+    {
+      "bytes": 43740,
+      "path": "eisenstein-integers/explorer/tag/EI0023.html",
+      "sha256": "b296fc4f5eb805c3babe021b88d91f48f6abe7ba81fa7d781a669bd4b809078d"
+    },
+    {
+      "bytes": 97758,
+      "path": "eisenstein-integers/explorer/tag/EI0024.html",
+      "sha256": "21ca9a8b48c5cd14aaa61a849d9f6dd2d628b934c745b25ab8ee7110f8064a36"
+    },
+    {
+      "bytes": 89469,
+      "path": "eisenstein-integers/explorer/tag/EI0025.html",
+      "sha256": "200247094589a68a46a4658a19f6912459fa98ce729e6c0323e0bfe5680945e9"
+    },
+    {
+      "bytes": 23432,
+      "path": "eisenstein-integers/explorer/tag/EI0026.html",
+      "sha256": "0c9b5fe26b2adab78fe1e19c3328c5219e148745af11620baa307244fc3c1c4b"
+    },
+    {
+      "bytes": 122154,
+      "path": "eisenstein-integers/explorer/tag/EI0027.html",
+      "sha256": "66f52d633b5b21c815c0998651cafde567694212491a12ac4a504702b3690642"
+    },
+    {
+      "bytes": 89875,
+      "path": "eisenstein-integers/explorer/tag/EI0028.html",
+      "sha256": "e1a1f9ca014ae53383d9db6104ad22f01c193fd44736aa128c2c9d402b734176"
+    },
+    {
+      "bytes": 9520,
+      "path": "eisenstein-integers/explorer/tag/EI0029.html",
+      "sha256": "5d41e734b3b6b8c628a37ffda85876c0d1f9be1751f90ba9e10d73495b7cb07b"
+    },
+    {
+      "bytes": 61675,
+      "path": "eisenstein-integers/explorer/tag/EI002A.html",
+      "sha256": "e8256a5600f3eeff76505618510675ccc7d3e136f5c004e8804182540897919a"
+    },
+    {
+      "bytes": 43016,
+      "path": "eisenstein-integers/explorer/tag/EI002B.html",
+      "sha256": "06b1beaadd7877cf986c9ac16a37902c04e7f3bad57c62090ad787e639b8c3b9"
+    },
+    {
+      "bytes": 71194,
+      "path": "eisenstein-integers/explorer/tag/EI002C.html",
+      "sha256": "2000cf99faab456a262ba891a33996cadf15b3df6a3ceeef67002a4640686726"
+    },
+    {
+      "bytes": 139586,
+      "path": "eisenstein-integers/explorer/tag/EI002D.html",
+      "sha256": "ebcbd2106b2e711da7579898aa1f3ea78c0df9f3c500e4d8a55449f52a0710a2"
+    },
+    {
+      "bytes": 403408,
+      "path": "eisenstein-integers/explorer/tag/EI002E.html",
+      "sha256": "eceb2915be39edf0034f719a259dcf24c6b1a04d8ccfe5b7fe4b86f2158a9995"
+    },
+    {
+      "bytes": 175525,
+      "path": "eisenstein-integers/explorer/tag/EI002F.html",
+      "sha256": "c032bcdeee41b99e7e526ceb67d133da537cfa8bbb7ebd385f65949f377619dc"
+    },
+    {
+      "bytes": 30542,
+      "path": "eisenstein-integers/explorer/tag/EI0030.html",
+      "sha256": "63c46e92499e6788a5d11ad82dc2cd2f02df885b6b9ec49f1afe1c4d9afc087a"
+    },
+    {
+      "bytes": 11298,
+      "path": "eisenstein-integers/explorer/tag/EI0031.html",
+      "sha256": "5c89bdee6a184b027a4c5e5f71dddb646598bae291b5ec830ae6ea1530766d63"
+    },
+    {
+      "bytes": 8634,
+      "path": "eisenstein-integers/explorer/tag/EI0032.html",
+      "sha256": "4c8dbab521b78e933ae8016c2223672b03f5e89560e5b96361904e4940e58f6c"
+    },
+    {
+      "bytes": 98906,
+      "path": "eisenstein-integers/explorer/tag/EI0033.html",
+      "sha256": "609b9d1bf209fef40ec14d9ccecaa09ad60c119023b7e667ef8f8ee6e56eb104"
+    },
+    {
+      "bytes": 15693,
+      "path": "eisenstein-integers/explorer/tag/EI0034.html",
+      "sha256": "8af6f01363457221fcb550c1741a5cbcebd69c84c0f4d59422127035a437d329"
+    },
+    {
+      "bytes": 23816,
+      "path": "eisenstein-integers/explorer/tag/EI0035.html",
+      "sha256": "99329fb4de261d58050d49ce2a663dd5337e3e7bc46dcbff71591a092ff31dd3"
+    },
+    {
+      "bytes": 20229,
+      "path": "eisenstein-integers/explorer/tag/EI0036.html",
+      "sha256": "24b6e5b072d2510609beb25d1d37f37e732c85062bc593f5918b22f5ec0beb2d"
+    },
+    {
+      "bytes": 20895,
+      "path": "eisenstein-integers/explorer/tag/EI0037.html",
+      "sha256": "96783d129214243aca3b2159a29ecc58ae6ebe4d49bbe5c76fd3b4aadd1f8db5"
+    },
+    {
+      "bytes": 23219,
+      "path": "eisenstein-integers/explorer/tag/EI0038.html",
+      "sha256": "d8465c8c1313a7ecd6824600cad6ee026e212c3e8b5ddf7a04746a9e445bd636"
+    },
+    {
+      "bytes": 15468,
+      "path": "eisenstein-integers/explorer/tag/EI0039.html",
+      "sha256": "301d789df42bac59f24eb31f32721800dac2b5da128b51291abac3c8efb3e215"
+    },
+    {
+      "bytes": 20707,
+      "path": "eisenstein-integers/explorer/tag/EI003A.html",
+      "sha256": "8bfaa07c2d25956552c0a94f5148740b94d592a0775da7bd37b300910e929810"
+    },
+    {
+      "bytes": 27950,
+      "path": "eisenstein-integers/explorer/tag/EI003B.html",
+      "sha256": "fccf8eabe8db483581e453b6136cb71ee941334bbdf1fff9c3ab3418f5f120f2"
+    },
+    {
+      "bytes": 45531,
+      "path": "eisenstein-integers/explorer/tag/EI003C.html",
+      "sha256": "e0d845bc15eb511f9afeafa81e99dc33f72d115625cc8ca9ebfc9934b5802b36"
+    },
+    {
+      "bytes": 35638,
+      "path": "eisenstein-integers/explorer/tag/EI003D.html",
+      "sha256": "435718c2458eba4f808439bb66a342ad82eecbb076ae6223804cfb009d7c3c1d"
+    },
+    {
+      "bytes": 36546,
+      "path": "eisenstein-integers/explorer/tag/EI003E.html",
+      "sha256": "a5066cbff231f848923adea7e67e2019837adef0112ad9fd79bf6243f81a30b3"
+    },
+    {
+      "bytes": 43761,
+      "path": "eisenstein-integers/explorer/tag/EI003F.html",
+      "sha256": "0a36f89f5aa21e9459f59f9fcd8648bd301dd372e209a4295d03804b16dbecb3"
+    },
+    {
+      "bytes": 60896,
+      "path": "eisenstein-integers/explorer/tag/EI0040.html",
+      "sha256": "aba14a1fb75065a29f4a1427f9bf21d610065496682b694aa4d6a022b4dfc7d8"
+    },
+    {
+      "bytes": 91260,
+      "path": "eisenstein-integers/explorer/tag/EI0041.html",
+      "sha256": "c854530140e018f24e312841bf8495bc0d466f62729ef2e09a719e11ddc57108"
+    },
+    {
+      "bytes": 9049,
+      "path": "eisenstein-integers/index.html",
+      "sha256": "7ccfc1076a4d87447a042438787d74b80dd46d161cc5a44988bfea59ad146d4b"
+    },
+    {
+      "bytes": 2132246,
+      "path": "gaussian-integers/api/corpus.json",
+      "sha256": "eabcb45d5ba01a970aa1614ef734fb1cbf7b5f403c64e92f433d3534b28db7f8"
+    },
+    {
+      "bytes": 115184,
+      "path": "gaussian-integers/explorer/defined/api/graph.json",
+      "sha256": "5665621336f152b898e10d9b15bf60811f0943519fb18750eae169752de75c90"
+    },
+    {
+      "bytes": 6448,
+      "path": "gaussian-integers/explorer/defined/definition/ND0142.html",
+      "sha256": "6f5d2ab4b842cca9553d4b7d66297ddb9cd02c0266d394242a7b70a076cf8130"
+    },
+    {
+      "bytes": 6817,
+      "path": "gaussian-integers/explorer/defined/definition/ND0143.html",
+      "sha256": "b51d3313aa8c5b97c3a5a05fe9454d04c20b617b18e2a7a5d988108491826bf8"
+    },
+    {
+      "bytes": 7214,
+      "path": "gaussian-integers/explorer/defined/definition/ND0144.html",
+      "sha256": "e7900d4b15cc8a19efd56bdb797849fbfae9dc97b44a700c9bce25adff0c6c3a"
+    },
+    {
+      "bytes": 7392,
+      "path": "gaussian-integers/explorer/defined/definition/ND0145.html",
+      "sha256": "e883c891ad6ee2017fec3912b5c812abbfd87fa562029bbe28eab6b1ae624d25"
+    },
+    {
+      "bytes": 6320,
+      "path": "gaussian-integers/explorer/defined/definition/ND0146.html",
+      "sha256": "782eeecd7091d397cd30cbd09ee567910a9b4a66c469afaba57a89894ed7a376"
+    },
+    {
+      "bytes": 6294,
+      "path": "gaussian-integers/explorer/defined/definition/ND0155.html",
+      "sha256": "8cc4443b2ce00aec97e564b5e09b1f452b279d4a529d4cd9fcea2c12f3c00d5b"
+    },
+    {
+      "bytes": 7257,
+      "path": "gaussian-integers/explorer/defined/definition/ND0156.html",
+      "sha256": "cc9f15dd207a931e8185e3391c474864e9d969a7f9db168679ac8e6a44eb4303"
+    },
+    {
+      "bytes": 7064,
+      "path": "gaussian-integers/explorer/defined/definition/ND0157.html",
+      "sha256": "bbb8090574b69047b636d5946a02780292fdb1347c5a4274e9200eb28c2c5bf8"
+    },
+    {
+      "bytes": 7971,
+      "path": "gaussian-integers/explorer/defined/definition/ND0158.html",
+      "sha256": "2df97419acb2472a51fceb8239e5d74a6bc788db990f0788be254867a8a2f94d"
+    },
+    {
+      "bytes": 7511,
+      "path": "gaussian-integers/explorer/defined/definition/ND0159.html",
+      "sha256": "a621c808bc0bd58248ef809b877f06b3fcb7dd50f91b1bf7549c7145219af88c"
+    },
+    {
+      "bytes": 7731,
+      "path": "gaussian-integers/explorer/defined/definition/ND0160.html",
+      "sha256": "35520e607d944dc0b146972c3b4da3f8893c39241887d01b1a1d9ff933ccc8aa"
+    },
+    {
+      "bytes": 9875,
+      "path": "gaussian-integers/explorer/defined/definition/ND0161.html",
+      "sha256": "9e2adcbf288cbe98e04918ca03ba2639c85381e979eba0740e26d64b871bfd52"
+    },
+    {
+      "bytes": 6390,
+      "path": "gaussian-integers/explorer/defined/definition/ND0162.html",
+      "sha256": "e16a6c6a214a01c80e309f6b3d00f126dc1cedf1651f829b3ed3dc90b96142a9"
+    },
+    {
+      "bytes": 7912,
+      "path": "gaussian-integers/explorer/defined/definition/ND0163.html",
+      "sha256": "5a1d9eca832aa5ce0f6b5d38581792900b8439a96299204c2264ece624aad065"
+    },
+    {
+      "bytes": 9658,
+      "path": "gaussian-integers/explorer/defined/definition/ND0164.html",
+      "sha256": "fd8be562fe103224f23fe4ca0c17c59df7c9a097f8d16828b0db8bf30d39d7bf"
+    },
+    {
+      "bytes": 12831,
+      "path": "gaussian-integers/explorer/defined/definition/ND0165.html",
+      "sha256": "184b5ef46090be2f41084bb92f81d65f9778054cc9a08489b99ce04dfae0720d"
+    },
+    {
+      "bytes": 14281,
+      "path": "gaussian-integers/explorer/defined/definition/ND0166.html",
+      "sha256": "34e8a0e051e3aecc1cc9f6c33a8102cca975ee961420e21b55c6b4c965b71323"
+    },
+    {
+      "bytes": 20243,
+      "path": "gaussian-integers/explorer/defined/definition/ND0167.html",
+      "sha256": "9bd4eaf6e8ea20d71ac07b0c0aa15e6832b1a8e4dae547c57a687dec62c12000"
+    },
+    {
+      "bytes": 33061,
+      "path": "gaussian-integers/explorer/defined/definition/ND0168.html",
+      "sha256": "b4923fdf874f2538df6afd0fba0934b834cbaa31de653bb9f8ecc9ebcf80ad91"
+    },
+    {
+      "bytes": 5797,
+      "path": "gaussian-integers/explorer/defined/definition/PD0001.html",
+      "sha256": "68fe2c5e0f2525b35c770fb9826e179b8e2bd18b24e8e69b6f2de42513535581"
+    },
+    {
+      "bytes": 6321,
+      "path": "gaussian-integers/explorer/defined/definition/PD0002.html",
+      "sha256": "419f0afdb45cf926d84fc5b5c20dbd459b397a062fb5764b682ccf0cd919a546"
+    },
+    {
+      "bytes": 89916,
+      "path": "gaussian-integers/explorer/defined/graph.html",
+      "sha256": "8c0fa64a39d3e90e7a413af2817203b26f43c2041d2ca991070154c218908e68"
+    },
+    {
+      "bytes": 75826,
+      "path": "gaussian-integers/explorer/defined/index.html",
+      "sha256": "e39ba5ca6704c5282e8cec12e527438137e8a965649b92d8c57557226454dc52"
+    },
+    {
+      "bytes": 7976,
+      "path": "gaussian-integers/explorer/defined/tag/GI0001.html",
+      "sha256": "7872f641e08c6c2992e52dc15ba96881020a8ce5dbc91576adff6fdbabae4ce9"
+    },
+    {
+      "bytes": 11431,
+      "path": "gaussian-integers/explorer/defined/tag/GI0002.html",
+      "sha256": "14ab73a39d937f7fd71874a17580b2d3de2f71b3a8239cfbf20fcf881326cb76"
+    },
+    {
+      "bytes": 10730,
+      "path": "gaussian-integers/explorer/defined/tag/GI0003.html",
+      "sha256": "58b9ea7007d8a6543e20ea37d8296d6ab9fc4c25d396cadb53da26e50b51f260"
+    },
+    {
+      "bytes": 13668,
+      "path": "gaussian-integers/explorer/defined/tag/GI0004.html",
+      "sha256": "fa7ff0968e84b3287522334751f960f4362e2d18f94e37bf6621379523fbf135"
+    },
+    {
+      "bytes": 12230,
+      "path": "gaussian-integers/explorer/defined/tag/GI0005.html",
+      "sha256": "982e21fbd9331746340fbb2d3eb596c5405a903a3cd67d95b28be34d86489a0b"
+    },
+    {
+      "bytes": 8633,
+      "path": "gaussian-integers/explorer/defined/tag/GI0006.html",
+      "sha256": "77bc82552ab87bbcec6c49b92da8cbbc0fd5fc1e6b262a78150d2273f7cbd9ca"
+    },
+    {
+      "bytes": 8837,
+      "path": "gaussian-integers/explorer/defined/tag/GI0007.html",
+      "sha256": "b36d6c2aa323adba453f1454281272a4a266b288224d2d3f87892d4ce207d2f3"
+    },
+    {
+      "bytes": 8347,
+      "path": "gaussian-integers/explorer/defined/tag/GI0008.html",
+      "sha256": "1d8e9a4d148c24ed787753ad7ec4cb4ec28a936d27dfeb4f21de1e53c2bc4d87"
+    },
+    {
+      "bytes": 11749,
+      "path": "gaussian-integers/explorer/defined/tag/GI0009.html",
+      "sha256": "f1f2c19c152dad1fddc9069358584f6556b4af0bdaf4968deb3c2f5fc2a8ef94"
+    },
+    {
+      "bytes": 45305,
+      "path": "gaussian-integers/explorer/defined/tag/GI000A.html",
+      "sha256": "d5e6954fb7097c48b96f11c24838f31c5d873f377545469fc5e3296b63851d9c"
+    },
+    {
+      "bytes": 45488,
+      "path": "gaussian-integers/explorer/defined/tag/GI000B.html",
+      "sha256": "04d0045df06a27ccba17dda716ee28d781fc76fa0b49a0a74bb0a3a0b8a84a50"
+    },
+    {
+      "bytes": 8151,
+      "path": "gaussian-integers/explorer/defined/tag/GI000C.html",
+      "sha256": "8150ce61c09ac70393182b7d20564ed506c7d7ff7b2aa94bcc723b78517a8706"
+    },
+    {
+      "bytes": 10487,
+      "path": "gaussian-integers/explorer/defined/tag/GI000D.html",
+      "sha256": "619f3a081b806f9f570679820d41386ef1df2530019a28a5624798f41c89e0a8"
+    },
+    {
+      "bytes": 7895,
+      "path": "gaussian-integers/explorer/defined/tag/GI000E.html",
+      "sha256": "8344530aa16fc774dcb72bc0f0d4764723fd5c1f9d0b9545ea77f1f4d4cff375"
+    },
+    {
+      "bytes": 7895,
+      "path": "gaussian-integers/explorer/defined/tag/GI000F.html",
+      "sha256": "898cbb306e80da315f9b489558db32005553ce038ebea9e12b2a925d20848d59"
+    },
+    {
+      "bytes": 12636,
+      "path": "gaussian-integers/explorer/defined/tag/GI0010.html",
+      "sha256": "ffe8b74073b8d27b85fbb33dbede647faf8e0fb10ee18792cf382ad7c7e4c49d"
+    },
+    {
+      "bytes": 12032,
+      "path": "gaussian-integers/explorer/defined/tag/GI0011.html",
+      "sha256": "729a402fdb0a08af46356a9f020f70ac6cbb433d69359bb5a1b026ba82a5c68c"
+    },
+    {
+      "bytes": 10717,
+      "path": "gaussian-integers/explorer/defined/tag/GI0012.html",
+      "sha256": "397d5465893600905e3ce7f8858514f402a29d8583ec2d3b44075371f4042811"
+    },
+    {
+      "bytes": 11407,
+      "path": "gaussian-integers/explorer/defined/tag/GI0013.html",
+      "sha256": "baea187efb5c155b4e329aad418cacea86e362c79b6fffd3618aed4bb8ed0ea5"
+    },
+    {
+      "bytes": 8433,
+      "path": "gaussian-integers/explorer/defined/tag/GI0014.html",
+      "sha256": "711bdfa167211cd8390781bceed03e7aacddd30a3c1cb9c13125d7a40356015a"
+    },
+    {
+      "bytes": 8433,
+      "path": "gaussian-integers/explorer/defined/tag/GI0015.html",
+      "sha256": "f32157bdea5d19a3f120c0cec318496609765def1972bb198423a069d4538e6a"
+    },
+    {
+      "bytes": 7637,
+      "path": "gaussian-integers/explorer/defined/tag/GI0016.html",
+      "sha256": "3ad5f6af2018862c9d2f757ebf44d219d58384793d82afb064b19ee927fdafae"
+    },
+    {
+      "bytes": 20916,
+      "path": "gaussian-integers/explorer/defined/tag/GI0017.html",
+      "sha256": "f4208053b26717455aa7233b8cfee4928783b585d49de80fdbc7203236bee995"
+    },
+    {
+      "bytes": 19463,
+      "path": "gaussian-integers/explorer/defined/tag/GI0018.html",
+      "sha256": "59f612a8125cb5aaf32d0952d60931f3e0018b6b55d6e09bb07c91e90f01cd1e"
+    },
+    {
+      "bytes": 19390,
+      "path": "gaussian-integers/explorer/defined/tag/GI0019.html",
+      "sha256": "9bca211176808ababdbbf2f5fda9218f2d8949b751bfa1f4190a0ebdef5d2a4d"
+    },
+    {
+      "bytes": 31642,
+      "path": "gaussian-integers/explorer/defined/tag/GI001A.html",
+      "sha256": "7aa1ebb46ea5b18efc251de28a64ed68854aa8c5ea367c9f7467e6f16e09f8bf"
+    },
+    {
+      "bytes": 13717,
+      "path": "gaussian-integers/explorer/defined/tag/GI001B.html",
+      "sha256": "353a5cdcc2fb3559e8a9efbc55fc64781d670f060991ae20032c77854b339ef5"
+    },
+    {
+      "bytes": 10679,
+      "path": "gaussian-integers/explorer/defined/tag/GI001C.html",
+      "sha256": "84b8462d4407e16bcf101a3d696e9ed12d831a37ff3b58e5098f3cb3a4792d72"
+    },
+    {
+      "bytes": 15108,
+      "path": "gaussian-integers/explorer/defined/tag/GI001D.html",
+      "sha256": "73ef9140033a52c41ce5c9db5f886808de7f087c831b1815ad1d2bb579ce9701"
+    },
+    {
+      "bytes": 13713,
+      "path": "gaussian-integers/explorer/defined/tag/GI001E.html",
+      "sha256": "d85a407f88166b0340ea5a0a351c3a2bbb1232b5f11340ea3598f19f9ea122e5"
+    },
+    {
+      "bytes": 12192,
+      "path": "gaussian-integers/explorer/defined/tag/GI001F.html",
+      "sha256": "4298433753610f1655d19b01872a426b0d588022ac3f37b7b1e82d75265a2df0"
+    },
+    {
+      "bytes": 48000,
+      "path": "gaussian-integers/explorer/defined/tag/GI0020.html",
+      "sha256": "0a319a23cc830cb2f2eea278fbb5d6c02cb3bf8fba999191509c314265329574"
+    },
+    {
+      "bytes": 48000,
+      "path": "gaussian-integers/explorer/defined/tag/GI0021.html",
+      "sha256": "7677eef8d443bc88457e4e8bf2d3021867544b0ea8fdc2451570e3c0898a9683"
+    },
+    {
+      "bytes": 48015,
+      "path": "gaussian-integers/explorer/defined/tag/GI0022.html",
+      "sha256": "4b8aaaa877806548156c97f5f0cd72c102c0268355eca1dbdf85b1b5e944d0cd"
+    },
+    {
+      "bytes": 48015,
+      "path": "gaussian-integers/explorer/defined/tag/GI0023.html",
+      "sha256": "f8bcd502b4228100cbe2eaafee5ba977e14288ede8351a374f0b31743f597e25"
+    },
+    {
+      "bytes": 8835,
+      "path": "gaussian-integers/explorer/defined/tag/GI0024.html",
+      "sha256": "6f098044b3869894c1aea7c64ad6d97668c844c4f0e75b0e171a781289b0f866"
+    },
+    {
+      "bytes": 8835,
+      "path": "gaussian-integers/explorer/defined/tag/GI0025.html",
+      "sha256": "6f05bd8ca92c6fa91f65e0dcf3fd202f50921581e85f706ef3c1bc327defa2fb"
+    },
+    {
+      "bytes": 8850,
+      "path": "gaussian-integers/explorer/defined/tag/GI0026.html",
+      "sha256": "959370309bf5afea92a1a9258904cf2f25b54d887b643b86a06b58cc36c1a373"
+    },
+    {
+      "bytes": 8850,
+      "path": "gaussian-integers/explorer/defined/tag/GI0027.html",
+      "sha256": "1e58ba46bbc132673cfa780ae133edcb83a6b80716cb158fa07d0923477ef538"
+    },
+    {
+      "bytes": 14082,
+      "path": "gaussian-integers/explorer/defined/tag/GI0028.html",
+      "sha256": "90ddb0725e8235845bf93ded2466ff49bdc0af34e64dbf3af7c55288cd30aaf9"
+    },
+    {
+      "bytes": 11450,
+      "path": "gaussian-integers/explorer/defined/tag/GI0029.html",
+      "sha256": "98f2b1fc23c5d0e82f7e38ab2f2376082abf88f51dedebe799a4dd77496d240a"
+    },
+    {
+      "bytes": 7274,
+      "path": "gaussian-integers/explorer/defined/tag/GI002A.html",
+      "sha256": "31c02cb47ceaaf35d28122ccadf169eea39e5bd334f4953950790fcdd13f8cbc"
+    },
+    {
+      "bytes": 8411,
+      "path": "gaussian-integers/explorer/defined/tag/GI002B.html",
+      "sha256": "78060606598d5b748cd269b0719c6199d660a8680ecc805909c37b371ac1fb29"
+    },
+    {
+      "bytes": 11760,
+      "path": "gaussian-integers/explorer/defined/tag/GI002C.html",
+      "sha256": "9ab3e8302efa0f94846d0b2c4b978381cc71c99796bf1f26af6f2e08047c822c"
+    },
+    {
+      "bytes": 21877,
+      "path": "gaussian-integers/explorer/defined/tag/GI002D.html",
+      "sha256": "672af703732ef5214fb1d652768020b60dce217af3699b0ff8a2ece22d1966ab"
+    },
+    {
+      "bytes": 14841,
+      "path": "gaussian-integers/explorer/defined/tag/GI002E.html",
+      "sha256": "b01ba2fa639889d2fffa24ca367aff6a456e0d624794d19503fdd6fe8d366612"
+    },
+    {
+      "bytes": 9367,
+      "path": "gaussian-integers/explorer/defined/tag/GI002F.html",
+      "sha256": "6659ebcbdbb5add1ffb102d2808576594774787fdc2befc5e96251fc4b4c5c61"
+    },
+    {
+      "bytes": 14268,
+      "path": "gaussian-integers/explorer/defined/tag/GI0030.html",
+      "sha256": "35345af8e1a3e80bbf057472169e004a5187218abdd55dd95de58620d515aa8e"
+    },
+    {
+      "bytes": 8124,
+      "path": "gaussian-integers/explorer/defined/tag/GI0031.html",
+      "sha256": "15fddf70a9dac2bba331cf4cfa8a448aefa549f0bad4c4ddc61ab310c290cbcf"
+    },
+    {
+      "bytes": 41650,
+      "path": "gaussian-integers/explorer/defined/tag/GI0032.html",
+      "sha256": "b88d356ee16a14dc08dc986ba7b141456fe32ef8513cc8c2ead756620feddc08"
+    },
+    {
+      "bytes": 31459,
+      "path": "gaussian-integers/explorer/defined/tag/GI0033.html",
+      "sha256": "b971955e7234c61436c37d7dfedb2d0ef494a10d3522342176ec79ec9c986726"
+    },
+    {
+      "bytes": 8358,
+      "path": "gaussian-integers/explorer/defined/tag/GI0034.html",
+      "sha256": "55f01bf45c01bdef50b8eef8d4b92ff0fc112f954ca0728bfdebdb8799886f30"
+    },
+    {
+      "bytes": 7945,
+      "path": "gaussian-integers/explorer/defined/tag/GI0035.html",
+      "sha256": "0710c1cfc61946d43f551ebb3c78ff59c5b3f221c8ae30b97a38e089a6b63ed0"
+    },
+    {
+      "bytes": 11171,
+      "path": "gaussian-integers/explorer/defined/tag/GI0036.html",
+      "sha256": "c9872bbc2ae7b2fb1a74bb533942a3b873898fc4d18151e5af378ce8f50f8dd6"
+    },
+    {
+      "bytes": 13601,
+      "path": "gaussian-integers/explorer/defined/tag/GI0037.html",
+      "sha256": "a7c2f1f793be48b9c8444d206c4374522b084bf6ccb2583037f33dc49c9dac36"
+    },
+    {
+      "bytes": 14197,
+      "path": "gaussian-integers/explorer/defined/tag/GI0038.html",
+      "sha256": "0fd0255a3c4542fa031464b6bd2fdce07a47d01e8fcec61b3be56d753a4941ab"
+    },
+    {
+      "bytes": 15915,
+      "path": "gaussian-integers/explorer/defined/tag/GI0039.html",
+      "sha256": "9064dae677f7424ddffcd170ac3937e105187589efdfbd3867d4480d168408ec"
+    },
+    {
+      "bytes": 54150,
+      "path": "gaussian-integers/explorer/defined/tag/GI003A.html",
+      "sha256": "143aade391ffe52d07dc6cb0dfd6150cfac9a1ec1db05b447ad73a606040f56d"
+    },
+    {
+      "bytes": 12126,
+      "path": "gaussian-integers/explorer/defined/tag/GI003B.html",
+      "sha256": "559d7aa20eacb761db62322ca16edc50dafae554f7ea24d47c7fbdeba1a3b6aa"
+    },
+    {
+      "bytes": 14013,
+      "path": "gaussian-integers/explorer/defined/tag/GI003C.html",
+      "sha256": "0f80d6db2d12aea30033fdf51ff255430c4800b533e8068850251aebeffe76eb"
+    },
+    {
+      "bytes": 10284,
+      "path": "gaussian-integers/explorer/defined/tag/GI003D.html",
+      "sha256": "b848e0568cc72eb9ef5300bffd6dbb04e9654d0ddec5b724f9531b53f9e06573"
+    },
+    {
+      "bytes": 17056,
+      "path": "gaussian-integers/explorer/defined/tag/GI003E.html",
+      "sha256": "eb6e370cf50dab3346ff8c541b24589217196a3121797917230e57f3d2750f48"
+    },
+    {
+      "bytes": 11875,
+      "path": "gaussian-integers/explorer/defined/tag/GI003F.html",
+      "sha256": "22f1d9335ff034e2a2f12cfe5ce34f20e3c29cac5bd0b968a1ba0b080ed3eb1e"
+    },
+    {
+      "bytes": 16762,
+      "path": "gaussian-integers/explorer/defined/tag/GI0040.html",
+      "sha256": "60a4b44a68ca1e6ecb509bf04d6acff702f801211ce4174be0f8a67c1493e511"
+    },
+    {
+      "bytes": 17632,
+      "path": "gaussian-integers/explorer/defined/tag/GI0041.html",
+      "sha256": "89479725d5ed855f5940ce74209a99dc17439e3a6aad3d5e8d2f80762400e922"
+    },
+    {
+      "bytes": 19184,
+      "path": "gaussian-integers/explorer/defined/tag/GI0042.html",
+      "sha256": "d0af40fcef7d09e677fd8b32d0b3a2e4ab75de5c395a5b3db09ac585ae4d16e2"
+    },
+    {
+      "bytes": 14899,
+      "path": "gaussian-integers/explorer/defined/tag/GI0043.html",
+      "sha256": "e92e74eda05f48eb8a93941e059da846065f49bbfeae65811fb99ddd15af0598"
+    },
+    {
+      "bytes": 13522,
+      "path": "gaussian-integers/explorer/defined/tag/GI0044.html",
+      "sha256": "1a833b0ec4f4f291c464cb25a07a577f106b82be667b104755ac644c29b7ca46"
+    },
+    {
+      "bytes": 14143,
+      "path": "gaussian-integers/explorer/defined/tag/GI0045.html",
+      "sha256": "e188b5b6bf6dffbc7f59edabad6b17e06bd559c970f8b095b841b107ca2f9b96"
+    },
+    {
+      "bytes": 8629,
+      "path": "gaussian-integers/explorer/defined/tag/GI0046.html",
+      "sha256": "c524f550bfe9e308529c4340521e6020a2eae71524985a9d2d7ec11ca7fe9675"
+    },
+    {
+      "bytes": 16181,
+      "path": "gaussian-integers/explorer/defined/tag/GI0047.html",
+      "sha256": "68a8ab3e18c68ba77c8bc3f44df0b882c47c2776fa6e699baa4fa13c923d62a2"
+    },
+    {
+      "bytes": 11152,
+      "path": "gaussian-integers/explorer/defined/tag/GI0048.html",
+      "sha256": "f59fece4c8fe6597d4893d93973b06f5f255f7a9faa62a69a598de3022431bc1"
+    },
+    {
+      "bytes": 19343,
+      "path": "gaussian-integers/explorer/defined/tag/GI0049.html",
+      "sha256": "2fad00db65e6ad04bdfb7232858074e8ca4fb8a26d7b3989b26da906a0ce2284"
+    },
+    {
+      "bytes": 16240,
+      "path": "gaussian-integers/explorer/defined/tag/GI004A.html",
+      "sha256": "eb8288c3bd8fb2233a3368a9860ba2ec7105cbc0ce909ff7fcfb8c5bec2e0e37"
+    },
+    {
+      "bytes": 19734,
+      "path": "gaussian-integers/explorer/defined/tag/GI004B.html",
+      "sha256": "82f9ffcf241ab83d347a8339170e76273030770061b46b39abb68782557a2b82"
+    },
+    {
+      "bytes": 16492,
+      "path": "gaussian-integers/explorer/defined/tag/GI004C.html",
+      "sha256": "296edb9119b8a00723bbb863ec9d44d83210a13b1a35fc7007ac6cc1748f4b7b"
+    },
+    {
+      "bytes": 14299,
+      "path": "gaussian-integers/explorer/defined/tag/GI004D.html",
+      "sha256": "5eda98c247152453056f72a7b8342c2869dc78807f1ba36b80070ce8e837ae10"
+    },
+    {
+      "bytes": 19246,
+      "path": "gaussian-integers/explorer/defined/tag/GI004E.html",
+      "sha256": "0006a02bb7421184e6fd998ae4303a0b05401687dd6e2fe73aecde10a2c07d27"
+    },
+    {
+      "bytes": 17575,
+      "path": "gaussian-integers/explorer/defined/tag/GI004F.html",
+      "sha256": "1ddbacce24aeac63f54f5826b1a0e13a86914e11b144962447f1d7db0d7103ca"
+    },
+    {
+      "bytes": 18606,
+      "path": "gaussian-integers/explorer/defined/tag/GI0050.html",
+      "sha256": "d535cf750f8f23e02b2bd52847467c2d1bb720280946ec72a39f3cac265658fc"
+    },
+    {
+      "bytes": 19427,
+      "path": "gaussian-integers/explorer/defined/tag/GI0051.html",
+      "sha256": "8f098b649f98613727e7a0d3341cec6818a03e2de20acae8429ffe085cd3443b"
+    },
+    {
+      "bytes": 13025,
+      "path": "gaussian-integers/explorer/defined/tag/GI0052.html",
+      "sha256": "b5254173cc7b9aef85716fee015f7a8421ae516771ecdb7208c6d5dfdff0342b"
+    },
+    {
+      "bytes": 22467,
+      "path": "gaussian-integers/explorer/defined/tag/GI0053.html",
+      "sha256": "a66e0358be2a97007c29a4b80ad831d74672020c0f872f5d336b7f4e6729bedc"
+    },
+    {
+      "bytes": 34217,
+      "path": "gaussian-integers/explorer/defined/tag/GI0054.html",
+      "sha256": "0bd75bc4fbc0f58b860f59dd730e13c86abd9cce9e0183d973e8c2780d77ce20"
+    },
+    {
+      "bytes": 25782,
+      "path": "gaussian-integers/explorer/defined/tag/GI0055.html",
+      "sha256": "897017c9b3a5db190d9ae5483d590e3e139690b81a2255af270342289d64e49f"
+    },
+    {
+      "bytes": 27819,
+      "path": "gaussian-integers/explorer/defined/tag/GI0056.html",
+      "sha256": "98fc396e0e7c6e05ba81b0fb7330613b5fea53b6cad58ab83950b8b0e19f0bee"
+    },
+    {
+      "bytes": 24970,
+      "path": "gaussian-integers/explorer/defined/tag/GI0057.html",
+      "sha256": "f01e57d36fdacea14b985b119a714f84c098f78e6da7845a9710fc78e616bdc3"
+    },
+    {
+      "bytes": 37293,
+      "path": "gaussian-integers/explorer/defined/tag/GI0058.html",
+      "sha256": "12e927bdb73b5738bc12ad0b8b3aa743b8f3d5372edb055c0af1e3590a96a0f2"
+    },
+    {
+      "bytes": 28206,
+      "path": "gaussian-integers/explorer/defined/tag/GI0059.html",
+      "sha256": "acc7749348909be1742812ba12992799be7185e0ae1b13e80a6f30f38038629b"
+    },
+    {
+      "bytes": 31472,
+      "path": "gaussian-integers/explorer/defined/tag/GI005A.html",
+      "sha256": "a2692fbad59ae788dfc78ae4ae31aa20541bc6b272b558ff11d30b0d4a593dd6"
+    },
+    {
+      "bytes": 37224,
+      "path": "gaussian-integers/explorer/defined/tag/GI005B.html",
+      "sha256": "068df9a8cc163a70f4adab8b238623ef80e2940468c45c23413fe183a938c2ef"
+    },
+    {
+      "bytes": 49547,
+      "path": "gaussian-integers/explorer/defined/tag/GI005C.html",
+      "sha256": "5d2ca2fd9ab4fc27631be2d15dfd237383dbe9d0fe96ba726188fe5517ef9a31"
+    },
+    {
+      "bytes": 74868,
+      "path": "gaussian-integers/explorer/defined/tag/GI005D.html",
+      "sha256": "57dac2d25bc72f40aaca19e4fc343637d9b6429bc43c06e012bff59edd4ad9f3"
+    },
+    {
+      "bytes": 86286,
+      "path": "gaussian-integers/explorer/index.html",
+      "sha256": "1d662ca334f8abbb9f8272cdaa7728b76f480e8ec60e128bd2f1ae380f132f61"
+    },
+    {
+      "bytes": 10103,
+      "path": "gaussian-integers/explorer/tag/GI0001.html",
+      "sha256": "806c071de69fcb2f433c155af19e643e3b4a41fedddba66ae42fc13c0c426cb4"
+    },
+    {
+      "bytes": 15681,
+      "path": "gaussian-integers/explorer/tag/GI0002.html",
+      "sha256": "f21ab588723f8b61b69b0cc0046a2dc2a717262d00f8943b5b2ef58ab3ed2c7c"
+    },
+    {
+      "bytes": 14310,
+      "path": "gaussian-integers/explorer/tag/GI0003.html",
+      "sha256": "2d2de89ded5dc9a1c840f006d8cb47d6b855a68cca71c544e64e3a49d7f40086"
+    },
+    {
+      "bytes": 17802,
+      "path": "gaussian-integers/explorer/tag/GI0004.html",
+      "sha256": "02ef0b98b980af2d3fc539b1338f896baf9bfbbddddac49a6e2216333e944565"
+    },
+    {
+      "bytes": 15397,
+      "path": "gaussian-integers/explorer/tag/GI0005.html",
+      "sha256": "332e722a51b5caeeaf6d7ec30d839a00246a369a8bf1a37922e4707d84872ce4"
+    },
+    {
+      "bytes": 10488,
+      "path": "gaussian-integers/explorer/tag/GI0006.html",
+      "sha256": "96e91e4fd1333b38067c710b5508e02cb1940078362d6686b12e2dd88e898421"
+    },
+    {
+      "bytes": 10679,
+      "path": "gaussian-integers/explorer/tag/GI0007.html",
+      "sha256": "153903b00cc5387b34df03104b02b14c4fdb7dd3979f227c81d1a35d60874f4f"
+    },
+    {
+      "bytes": 9791,
+      "path": "gaussian-integers/explorer/tag/GI0008.html",
+      "sha256": "a72f28842b4a2e3d0068ced65386e52cdd3819584b18710649246e02bd50fba3"
+    },
+    {
+      "bytes": 15879,
+      "path": "gaussian-integers/explorer/tag/GI0009.html",
+      "sha256": "872ec36cc579de7178d9752b5f3815d343396c1db5d83b8638b21f538419ce2b"
+    },
+    {
+      "bytes": 74688,
+      "path": "gaussian-integers/explorer/tag/GI000A.html",
+      "sha256": "33d389bd92c7401f6f1f487aca95c2f818c02fd10c9571def5bc1191c2a050be"
+    },
+    {
+      "bytes": 75382,
+      "path": "gaussian-integers/explorer/tag/GI000B.html",
+      "sha256": "70bf84ffe1b5e92830c66d92d79d50ae0b47ff1ee4d28c6f1ede20dddb42aa46"
+    },
+    {
+      "bytes": 10033,
+      "path": "gaussian-integers/explorer/tag/GI000C.html",
+      "sha256": "69362c3339a63aaa88d406e5b8e27060efc5abdb5c08093e6a4b10fa48b2e4ea"
+    },
+    {
+      "bytes": 12420,
+      "path": "gaussian-integers/explorer/tag/GI000D.html",
+      "sha256": "b6ba94c36aa682f55bf7aa63fc1ef4258b5a4d8554b78d984e404c5a29d27f4b"
+    },
+    {
+      "bytes": 9401,
+      "path": "gaussian-integers/explorer/tag/GI000E.html",
+      "sha256": "bbd431aa6c2d83c77c278d4642d51b5a8db933dde21019fe6229046a79695bb3"
+    },
+    {
+      "bytes": 9410,
+      "path": "gaussian-integers/explorer/tag/GI000F.html",
+      "sha256": "723bfb5a07ac330862b1d53c0583ce1241494943bb9d3cafcab2694314d5e451"
+    },
+    {
+      "bytes": 16515,
+      "path": "gaussian-integers/explorer/tag/GI0010.html",
+      "sha256": "da2a12d1441af5d8ba44968da70f57325a6c1562d2d11d226c813109b09e42bd"
+    },
+    {
+      "bytes": 14590,
+      "path": "gaussian-integers/explorer/tag/GI0011.html",
+      "sha256": "df291978fb7c9ab58a72cd016eb790a6c8bed8e94b219bdbc73985254f5ed20e"
+    },
+    {
+      "bytes": 13164,
+      "path": "gaussian-integers/explorer/tag/GI0012.html",
+      "sha256": "dc8b2e5556e410c9ff7db62cbec09a4bd28a54c8b9dd136b8e1d7754a73bcff6"
+    },
+    {
+      "bytes": 14551,
+      "path": "gaussian-integers/explorer/tag/GI0013.html",
+      "sha256": "4ec4b414c95dbf0adbf33185f7f61da0bd1ccd882f1a502b0f0d79de566f34d9"
+    },
+    {
+      "bytes": 10392,
+      "path": "gaussian-integers/explorer/tag/GI0014.html",
+      "sha256": "2231bca80ef98dee98c76d17667749d5bb51d0f06f1ad4af1affead67770b14f"
+    },
+    {
+      "bytes": 10396,
+      "path": "gaussian-integers/explorer/tag/GI0015.html",
+      "sha256": "246f88d556692ca380642062356293372163d1b4851ce76f8dd9d6a36b322a6b"
+    },
+    {
+      "bytes": 8967,
+      "path": "gaussian-integers/explorer/tag/GI0016.html",
+      "sha256": "2840ff42ba6b008be03f0e6ee92287d12b4b938608f49dbb41a63b6a14de555f"
+    },
+    {
+      "bytes": 29134,
+      "path": "gaussian-integers/explorer/tag/GI0017.html",
+      "sha256": "d0372d8de0915aac0178fe863e3c6aa3393ef369195d5be8178f78dca1e3f1be"
+    },
+    {
+      "bytes": 26386,
+      "path": "gaussian-integers/explorer/tag/GI0018.html",
+      "sha256": "e7167ee1d772484a0a90fe85e9177a9c916cda34cb13310ac872a69a98aad495"
+    },
+    {
+      "bytes": 26239,
+      "path": "gaussian-integers/explorer/tag/GI0019.html",
+      "sha256": "192f3ff00e5af8bf9a62a557f0bb35411a7b8c3a2b958b8b4b3cbf453007e650"
+    },
+    {
+      "bytes": 45307,
+      "path": "gaussian-integers/explorer/tag/GI001A.html",
+      "sha256": "6991dad9c29330d553471fb046bda2ac841a584f29c91d5f7e75cfd9f69b6d14"
+    },
+    {
+      "bytes": 17870,
+      "path": "gaussian-integers/explorer/tag/GI001B.html",
+      "sha256": "d99d24669b320f18518bca3a173d240c9e53994dabb4f8e3e17ca87e4f820bc8"
+    },
+    {
+      "bytes": 12982,
+      "path": "gaussian-integers/explorer/tag/GI001C.html",
+      "sha256": "be094b92a8a3694ae1ec5d85d9d1d5e563bb31c3a71a72979b13cdd3d9cd0306"
+    },
+    {
+      "bytes": 21160,
+      "path": "gaussian-integers/explorer/tag/GI001D.html",
+      "sha256": "fec9b8d14bcf0abd5d10656c77fef008f59d81a21a5facf307822f92d72a8b8e"
+    },
+    {
+      "bytes": 19003,
+      "path": "gaussian-integers/explorer/tag/GI001E.html",
+      "sha256": "adfda9a2198b0bc543fe8806ede4f441421a928c5e2131f55e5225fbc9738ae3"
+    },
+    {
+      "bytes": 15944,
+      "path": "gaussian-integers/explorer/tag/GI001F.html",
+      "sha256": "cf21156d37803ca825220deb7e84e7f6ec91cc25ebbde2078da1202c8e1bf1d8"
+    },
+    {
+      "bytes": 74216,
+      "path": "gaussian-integers/explorer/tag/GI0020.html",
+      "sha256": "615746982722fbe92aea61b5e34987e204923e33da97287374b2d2c3c4fdf203"
+    },
+    {
+      "bytes": 74232,
+      "path": "gaussian-integers/explorer/tag/GI0021.html",
+      "sha256": "5a26daeeda48571d2df57eefa37b1948f4261965249cb4498e7c166c7120e6fb"
+    },
+    {
+      "bytes": 74252,
+      "path": "gaussian-integers/explorer/tag/GI0022.html",
+      "sha256": "d0c58c50c9236160ef43d4596795fea14a8170a4bb4cedf6ca90428bc2b1d593"
+    },
+    {
+      "bytes": 74253,
+      "path": "gaussian-integers/explorer/tag/GI0023.html",
+      "sha256": "f0f5261f3347ae00211998540f32e1fcd0ce4fa16faec855fad970f8438c02a7"
+    },
+    {
+      "bytes": 10923,
+      "path": "gaussian-integers/explorer/tag/GI0024.html",
+      "sha256": "1b4367b33b141d495e13c106143dbfe92d07439668a3f2256b70cc328b2b3336"
+    },
+    {
+      "bytes": 10924,
+      "path": "gaussian-integers/explorer/tag/GI0025.html",
+      "sha256": "1dba9085aa640a1bc4211ceaf62a3a545ac4c6bed48a394b038c74e6145b29b4"
+    },
+    {
+      "bytes": 10944,
+      "path": "gaussian-integers/explorer/tag/GI0026.html",
+      "sha256": "657e9c15bb74e060876a87457c769f90942a54eeb4dcb86c4a80c14e64f7b6c2"
+    },
+    {
+      "bytes": 10929,
+      "path": "gaussian-integers/explorer/tag/GI0027.html",
+      "sha256": "11632763ccdec7452186155550a19e00281970bff07851415462c46486a30454"
+    },
+    {
+      "bytes": 15272,
+      "path": "gaussian-integers/explorer/tag/GI0028.html",
+      "sha256": "75d9644a54e29f18b91dc9960f2a1db7ec3b7414de6c6beca4030054553057ea"
+    },
+    {
+      "bytes": 13525,
+      "path": "gaussian-integers/explorer/tag/GI0029.html",
+      "sha256": "56903aa6418bab4b51f27c7db6f829cd31bf0c083cdd943ccecb607b3b576e0a"
+    },
+    {
+      "bytes": 8356,
+      "path": "gaussian-integers/explorer/tag/GI002A.html",
+      "sha256": "66d4de71e976f4c5894061cd2ea8aab5cfb236a6c907ab870a94a2cdd670b2a7"
+    },
+    {
+      "bytes": 10328,
+      "path": "gaussian-integers/explorer/tag/GI002B.html",
+      "sha256": "884b3b0e1df17f4e8f530844072e5106a689f11e8c891415ce8361e078708c37"
+    },
+    {
+      "bytes": 16616,
+      "path": "gaussian-integers/explorer/tag/GI002C.html",
+      "sha256": "426f46a36df49d7e6e96e727747e7bd135a947c9e987cc176c6b69dfd69e36bc"
+    },
+    {
+      "bytes": 34132,
+      "path": "gaussian-integers/explorer/tag/GI002D.html",
+      "sha256": "d61dc62a20bc9c10fae37cd53f05a0c99db2f991f4e72a7e9d91fbf13c603948"
+    },
+    {
+      "bytes": 21996,
+      "path": "gaussian-integers/explorer/tag/GI002E.html",
+      "sha256": "1dfa17c68d4018d8e8cc312a0e4808c69cab14de40d405bc5c08a9c98e34fe79"
+    },
+    {
+      "bytes": 11335,
+      "path": "gaussian-integers/explorer/tag/GI002F.html",
+      "sha256": "425c7dc57469788ed2067279dace6f11e319fbcc89c5e0f180ffe1aea8d772f7"
+    },
+    {
+      "bytes": 19305,
+      "path": "gaussian-integers/explorer/tag/GI0030.html",
+      "sha256": "b53982ed2f7412438e5447eb0299ff5ed02aa9f3d64b3ce40afe99e7caa11960"
+    },
+    {
+      "bytes": 9436,
+      "path": "gaussian-integers/explorer/tag/GI0031.html",
+      "sha256": "48d6a3b47759db3d6e021090916fe4565206734fd18eca340404b6f316db325e"
+    },
+    {
+      "bytes": 52236,
+      "path": "gaussian-integers/explorer/tag/GI0032.html",
+      "sha256": "779b41c054d2730ef23a622dc4270f1a87315073a3fe49f260ac3278ae437db2"
+    },
+    {
+      "bytes": 39001,
+      "path": "gaussian-integers/explorer/tag/GI0033.html",
+      "sha256": "45f16dc8e3ec96706e93ba095f4bd80ff76f1ab03e39b305270001a8191cbfa9"
+    },
+    {
+      "bytes": 10313,
+      "path": "gaussian-integers/explorer/tag/GI0034.html",
+      "sha256": "e747ea2f1c24188be20f1f3004ed320026a86326d7f22e516b83e68b8f1f938f"
+    },
+    {
+      "bytes": 9335,
+      "path": "gaussian-integers/explorer/tag/GI0035.html",
+      "sha256": "37d7ebcfba27be10e6005bd01f96ac9bc69d3fc73f3e1c97d37ea48c36b63ec0"
+    },
+    {
+      "bytes": 15525,
+      "path": "gaussian-integers/explorer/tag/GI0036.html",
+      "sha256": "5f84d5bd639dcde7a1d2c5abff994deabf0d69b2b01bc08cb5efc224b30ffc2a"
+    },
+    {
+      "bytes": 19352,
+      "path": "gaussian-integers/explorer/tag/GI0037.html",
+      "sha256": "1a0fb3873596e6aefec3636ffed039f91e64a8eaf27bc727c2ecaac6a262e40b"
+    },
+    {
+      "bytes": 20402,
+      "path": "gaussian-integers/explorer/tag/GI0038.html",
+      "sha256": "a04b28730c3ae164971023eaedb5c238627181a9585a67f47c43e43393a7d9c0"
+    },
+    {
+      "bytes": 23140,
+      "path": "gaussian-integers/explorer/tag/GI0039.html",
+      "sha256": "d08a62a2341fd7e01d0bb8687c7952d817f08f2390965ebb994f12374184843b"
+    },
+    {
+      "bytes": 84186,
+      "path": "gaussian-integers/explorer/tag/GI003A.html",
+      "sha256": "d51de888dfbd76ffd2647cbdd0e5a02963e86850d0018951d8c9de41f4c367b8"
+    },
+    {
+      "bytes": 16117,
+      "path": "gaussian-integers/explorer/tag/GI003B.html",
+      "sha256": "a47ca18f8e1b7519fc36b15884d78e175d67abbbc459c5f0a5fc52682c24cfe1"
+    },
+    {
+      "bytes": 19682,
+      "path": "gaussian-integers/explorer/tag/GI003C.html",
+      "sha256": "1bd0b1a1ceb3fe2ce7f31dd85e0dc4a60980d994190f1d36ad4c69075f245fe2"
+    },
+    {
+      "bytes": 11685,
+      "path": "gaussian-integers/explorer/tag/GI003D.html",
+      "sha256": "a862402573d2e73407ec6aaedc84822e367c0ffe17894e6bfb66d1195662e33f"
+    },
+    {
+      "bytes": 24459,
+      "path": "gaussian-integers/explorer/tag/GI003E.html",
+      "sha256": "92e218f2a4d62e726927882adb400b02a6c60e4f8f8444d0681b82bacca793a5"
+    },
+    {
+      "bytes": 16054,
+      "path": "gaussian-integers/explorer/tag/GI003F.html",
+      "sha256": "c2e7c37e243d38721642dd79259a567a0106b2388bd88d1108a443038077b5f7"
+    },
+    {
+      "bytes": 21989,
+      "path": "gaussian-integers/explorer/tag/GI0040.html",
+      "sha256": "04e019cdd35ee94306e839bc96f67c5989c8d76dc9cec7a2127654b60168d13f"
+    },
+    {
+      "bytes": 21949,
+      "path": "gaussian-integers/explorer/tag/GI0041.html",
+      "sha256": "51ba7102da521d838a6dc7a6e27083e5e3aaedfc98aaaf911f1ddc0b08f3a17b"
+    },
+    {
+      "bytes": 25310,
+      "path": "gaussian-integers/explorer/tag/GI0042.html",
+      "sha256": "833ff77fed6e201b14c66664cebd7c815448a7266de19af319052a3d34754ab4"
+    },
+    {
+      "bytes": 18764,
+      "path": "gaussian-integers/explorer/tag/GI0043.html",
+      "sha256": "6153d07394c393f06e8eb67641b5493ab6afbc998de62cf98d8d5fef47f96b93"
+    },
+    {
+      "bytes": 16995,
+      "path": "gaussian-integers/explorer/tag/GI0044.html",
+      "sha256": "ebc2b00267cb52710091938431c589459dff788922eba7212f0f3d64e720252e"
+    },
+    {
+      "bytes": 17494,
+      "path": "gaussian-integers/explorer/tag/GI0045.html",
+      "sha256": "b007dfa5ce2e7253e70504cd98093f55b48fac250c1417abcb13a9aa879238b3"
+    },
+    {
+      "bytes": 11002,
+      "path": "gaussian-integers/explorer/tag/GI0046.html",
+      "sha256": "aab467e15052fadc4b77731dd4369921c0044e5357fe689524517997cce954ed"
+    },
+    {
+      "bytes": 22630,
+      "path": "gaussian-integers/explorer/tag/GI0047.html",
+      "sha256": "954d46682d3796a8a7b44f1bd36c082cfa712dc1d6dcb7a242942f91f5cb424c"
+    },
+    {
+      "bytes": 13290,
+      "path": "gaussian-integers/explorer/tag/GI0048.html",
+      "sha256": "d1ad09cf32c7becc0c5ba5cc00be53985758d7c40f55fffeea19cc5c111a0180"
+    },
+    {
+      "bytes": 27048,
+      "path": "gaussian-integers/explorer/tag/GI0049.html",
+      "sha256": "1fc40acd696122bd002b4c1f88266e0503df256d79f6bd64183b483c5fb90914"
+    },
+    {
+      "bytes": 20922,
+      "path": "gaussian-integers/explorer/tag/GI004A.html",
+      "sha256": "643f4983f366fb871ac5d78500f6576c44e198b5c512497278e35cd9f67083cd"
+    },
+    {
+      "bytes": 27448,
+      "path": "gaussian-integers/explorer/tag/GI004B.html",
+      "sha256": "945b441f52dd6b21f5aee7ccf9039e90aed747cf46210c4fbecea62fc313307c"
+    },
+    {
+      "bytes": 21174,
+      "path": "gaussian-integers/explorer/tag/GI004C.html",
+      "sha256": "ae13e9b53eceff53344be4cebf6aa1a3d729285d6b4459dd600bc2262ccf10ef"
+    },
+    {
+      "bytes": 15798,
+      "path": "gaussian-integers/explorer/tag/GI004D.html",
+      "sha256": "a8b4c2ae8c8f5a589b4b6c90886969f7f6dbac09c71b580ae8bec8914449ce9e"
+    },
+    {
+      "bytes": 23107,
+      "path": "gaussian-integers/explorer/tag/GI004E.html",
+      "sha256": "fcc5981ae39a9806b9586a80362a205664a4be08d3619552f29728e3d43f6742"
+    },
+    {
+      "bytes": 21030,
+      "path": "gaussian-integers/explorer/tag/GI004F.html",
+      "sha256": "42ad37d81a1351ea6066ac71c56b8ff8296d38d3d11ec0fa7bc498b7ebbf875e"
+    },
+    {
+      "bytes": 21677,
+      "path": "gaussian-integers/explorer/tag/GI0050.html",
+      "sha256": "bcaf07725f8e42efe4614e0507b6936a01f55233a83365ad0911e99ab5d1c614"
+    },
+    {
+      "bytes": 25122,
+      "path": "gaussian-integers/explorer/tag/GI0051.html",
+      "sha256": "b669a6a503881f00744647938228171edc1043d6faee67a0eb20db0a38b8d5ae"
+    },
+    {
+      "bytes": 18618,
+      "path": "gaussian-integers/explorer/tag/GI0052.html",
+      "sha256": "86e2209349592c2b3337456e3eb438df0018d8ff1eaf42ba46998a355af81c6d"
+    },
+    {
+      "bytes": 25118,
+      "path": "gaussian-integers/explorer/tag/GI0053.html",
+      "sha256": "34bac9b3959e1babf1191e7fa2109a82836b8b4607be92205002184a6259c741"
+    },
+    {
+      "bytes": 42463,
+      "path": "gaussian-integers/explorer/tag/GI0054.html",
+      "sha256": "62fdd15fd1d1d1b173ff4ecc624b16e975616d0cee90b657337eb17cd8ff6021"
+    },
+    {
+      "bytes": 32614,
+      "path": "gaussian-integers/explorer/tag/GI0055.html",
+      "sha256": "04cc4050f81bc9f9b389d88b0b897b462e3cf0502f9797f3dfcc7d591c10dc99"
+    },
+    {
+      "bytes": 32155,
+      "path": "gaussian-integers/explorer/tag/GI0056.html",
+      "sha256": "fc786966efde410532571271807814598fd61b0fc4538adb0e3bbf3fbfe05d41"
+    },
+    {
+      "bytes": 27516,
+      "path": "gaussian-integers/explorer/tag/GI0057.html",
+      "sha256": "c4f8a2dec7cb9befc57d3b1d329e973615b2af2b1a350de1f7bd72a1cbd5c044"
+    },
+    {
+      "bytes": 45447,
+      "path": "gaussian-integers/explorer/tag/GI0058.html",
+      "sha256": "63d7eb40d800dad7a815f08347209aab465607171559d2f1f1d34b3010e7b14b"
+    },
+    {
+      "bytes": 35351,
+      "path": "gaussian-integers/explorer/tag/GI0059.html",
+      "sha256": "4b81295d88e1625beea23ba4b25ca61872ea7dc0316b877f9631d1ded84164a5"
+    },
+    {
+      "bytes": 35816,
+      "path": "gaussian-integers/explorer/tag/GI005A.html",
+      "sha256": "2ea658c68d9e5ceb538ccc9f8c781333914b3b8dfdf38eb46296edf09a88a1ca"
+    },
+    {
+      "bytes": 43126,
+      "path": "gaussian-integers/explorer/tag/GI005B.html",
+      "sha256": "44431edba6afb3c6b8f59bfbc85358730e7fe655ad40b77552f4473904312f2b"
+    },
+    {
+      "bytes": 60566,
+      "path": "gaussian-integers/explorer/tag/GI005C.html",
+      "sha256": "dfa138107102ec4849ec36d6e6f589174c15717404bde516f89f3305759a8e30"
+    },
+    {
+      "bytes": 100461,
+      "path": "gaussian-integers/explorer/tag/GI005D.html",
+      "sha256": "fab25acadbeb7052191c0d19ee61bc810093bc7abd7168c4b14d67f5922d3ece"
+    },
+    {
+      "bytes": 8931,
+      "path": "gaussian-integers/index.html",
+      "sha256": "d442a5496f4a0b781f5d257b696d8f47e6fd8e994f0680989d942ddd9b1d8acb"
+    },
+    {
+      "bytes": 6284,
+      "path": "index.html",
+      "sha256": "a1831ea78ce6e9314480b94ea920bd7603739a1e94b5d27f0c46b236c6cfaf4f"
+    },
+    {
+      "bytes": 476304,
+      "path": "prime-enumeration/api/corpus.json",
+      "sha256": "44db06bed180923f9727957c484707638004b06fb8b2f07b9d534aba0f872885"
+    },
+    {
+      "bytes": 34161,
+      "path": "prime-enumeration/explorer/defined/api/graph.json",
+      "sha256": "9aab28ea5feb39ba02aacf9ac530baf80d869422c6fa2457c0fa599620454336"
+    },
+    {
+      "bytes": 8591,
+      "path": "prime-enumeration/explorer/defined/definition/ND0028.html",
+      "sha256": "e8ae9386f9ca457ff3f39ab42ff00a9f06df39d2e6971fce8b847d52a7ab1f0e"
+    },
+    {
+      "bytes": 8274,
+      "path": "prime-enumeration/explorer/defined/definition/ND0152.html",
+      "sha256": "efdb8a856cb6d1b770399ca22852502a085335447709ffbbd0107263f182c0af"
+    },
+    {
+      "bytes": 9502,
+      "path": "prime-enumeration/explorer/defined/definition/ND0153.html",
+      "sha256": "3156fe9a42fe0ee6a7c55f158b419d193be2801fa7ce59aafed565fb47435a03"
+    },
+    {
+      "bytes": 8989,
+      "path": "prime-enumeration/explorer/defined/definition/ND0154.html",
+      "sha256": "df2199d670f023eed198ece191532ccf864930bfa329d9f8888900ac67cada12"
+    },
+    {
+      "bytes": 5919,
+      "path": "prime-enumeration/explorer/defined/definition/PD0001.html",
+      "sha256": "9874a3a451f97314d4b705fb51452f4012d0505fe4ac22db9a1ad18624341360"
+    },
+    {
+      "bytes": 7191,
+      "path": "prime-enumeration/explorer/defined/definition/PD0002.html",
+      "sha256": "cd2e22bc3c5f18b7c466377664754e74e4a8eaa23550e6637099838e9aa5c62f"
+    },
+    {
+      "bytes": 6544,
+      "path": "prime-enumeration/explorer/defined/definition/PD0004.html",
+      "sha256": "018020d02f04d2a1100ed9ae8650a32d710e7a45bd34c73be48478b99ad11988"
+    },
+    {
+      "bytes": 7027,
+      "path": "prime-enumeration/explorer/defined/definition/PD0013.html",
+      "sha256": "a8eb43114befccb5126bc0d7789e32705cbafad7feec86ae586fd1d018f494e4"
+    },
+    {
+      "bytes": 8424,
+      "path": "prime-enumeration/explorer/defined/definition/PD0014.html",
+      "sha256": "d7ca2707f101996da0acb799e77c9c46b1a7530db714a387e9d94a99b08874a2"
+    },
+    {
+      "bytes": 6344,
+      "path": "prime-enumeration/explorer/defined/definition/PD0019.html",
+      "sha256": "7217f0e6b0817f0f7196509f01175a1803dec3fae5572e1fdf1b2a8e5cde3388"
+    },
+    {
+      "bytes": 8724,
+      "path": "prime-enumeration/explorer/defined/definition/PD0020.html",
+      "sha256": "53ece5f76a37ff19ed0b112221640bb0fdd7c586f6ded740bf3b2e314b9f85d2"
+    },
+    {
+      "bytes": 31602,
+      "path": "prime-enumeration/explorer/defined/graph.html",
+      "sha256": "9d975b3ea8cacf9b9c89c65826bb6daa1028ee29c96557dc6e2a72f77b0c0b96"
+    },
+    {
+      "bytes": 22301,
+      "path": "prime-enumeration/explorer/defined/index.html",
+      "sha256": "6c23a7fdc0ac95c2d6008bcf366e2c282b63e074d3077d0d651e7bfb8877dd5e"
+    },
+    {
+      "bytes": 8169,
+      "path": "prime-enumeration/explorer/defined/tag/PE0001.html",
+      "sha256": "2f544ad86cb0fddf028e08fbf4d88c967bc306dcb3576fd6e9bb88158308dbe9"
+    },
+    {
+      "bytes": 16439,
+      "path": "prime-enumeration/explorer/defined/tag/PE0002.html",
+      "sha256": "82ec68bae197e45d7f31addf214a9c4359e0911a4516c4dd7dd91718bff56716"
+    },
+    {
+      "bytes": 12285,
+      "path": "prime-enumeration/explorer/defined/tag/PE0003.html",
+      "sha256": "64fd53875afc90e11bd1807117194a93d61c8e891ec33778fe5df6d3405e5ea1"
+    },
+    {
+      "bytes": 11191,
+      "path": "prime-enumeration/explorer/defined/tag/PE0004.html",
+      "sha256": "2bacecfa6f0bf35afb0dcc183fdbac1d89c3bef40d53d373f8326282d967cc8e"
+    },
+    {
+      "bytes": 12021,
+      "path": "prime-enumeration/explorer/defined/tag/PE0005.html",
+      "sha256": "9e9368bb46a0c97fd9a1b2cd6476a7b8b2ef82640fcc3629836354f04caf1e2b"
+    },
+    {
+      "bytes": 11228,
+      "path": "prime-enumeration/explorer/defined/tag/PE0006.html",
+      "sha256": "38fc008342cfa51c391c7c54ac86696849680466e213570751c2d1ffa29f232a"
+    },
+    {
+      "bytes": 10991,
+      "path": "prime-enumeration/explorer/defined/tag/PE0007.html",
+      "sha256": "aefe335fe74cf44d500b21e3a1b2a7a321b9c922ecc8cef321e44dc6a1365e3c"
+    },
+    {
+      "bytes": 25580,
+      "path": "prime-enumeration/explorer/defined/tag/PE0008.html",
+      "sha256": "118ad58e77b763eded51d6bb83dc35b444b1a866490395624d3458e94aa73313"
+    },
+    {
+      "bytes": 14207,
+      "path": "prime-enumeration/explorer/defined/tag/PE0009.html",
+      "sha256": "756e215c070396fd87cbf8122d11d5e7252c921fef6f66dff4547ba6f4ef4cce"
+    },
+    {
+      "bytes": 16433,
+      "path": "prime-enumeration/explorer/defined/tag/PE000A.html",
+      "sha256": "4fb3350d1e7177227510fee39fac139101269e5be922758d2ff568356154938c"
+    },
+    {
+      "bytes": 27600,
+      "path": "prime-enumeration/explorer/defined/tag/PE000B.html",
+      "sha256": "ce865d02a8ca5a62202ad2c1a21ed9a7bcafb35e5da4983471f6bdbfaac8a9fd"
+    },
+    {
+      "bytes": 27612,
+      "path": "prime-enumeration/explorer/defined/tag/PE000C.html",
+      "sha256": "c9dc22df3cafbcdc0b9f18b502ba87712c454ea739527acdc562d4f5bea4feb8"
+    },
+    {
+      "bytes": 23236,
+      "path": "prime-enumeration/explorer/defined/tag/PE000D.html",
+      "sha256": "8659f3ef3a37ac144d588de650fdaedf44bd85f39f59fb166937d71b345078e1"
+    },
+    {
+      "bytes": 27253,
+      "path": "prime-enumeration/explorer/defined/tag/PE000E.html",
+      "sha256": "4bdedfbce7226b4e7432f25f0e3c29af88e07f4efcf125961c59a680ec1abd14"
+    },
+    {
+      "bytes": 13140,
+      "path": "prime-enumeration/explorer/defined/tag/PE000F.html",
+      "sha256": "e711d62a08db89036868c05f0803260379d0f1b45ef5857c267a128b446a53e1"
+    },
+    {
+      "bytes": 16365,
+      "path": "prime-enumeration/explorer/defined/tag/PE0010.html",
+      "sha256": "cd80eded9a21a52b1c3f1e7a8f670b530ba5b0281b3be0d0280098ba420abe20"
+    },
+    {
+      "bytes": 18611,
+      "path": "prime-enumeration/explorer/defined/tag/PE0011.html",
+      "sha256": "37cdfe1ba8d93fc58edf9e02e63649a948ba1087cef8606abe05c921e2e3df4d"
+    },
+    {
+      "bytes": 18131,
+      "path": "prime-enumeration/explorer/defined/tag/PE0012.html",
+      "sha256": "2b7fc3de31110c9ed180602d857d71bef8a1a7bca9900c42be7ce201dcd4a030"
+    },
+    {
+      "bytes": 13855,
+      "path": "prime-enumeration/explorer/defined/tag/PE0013.html",
+      "sha256": "774a476c7876c0cf3e361ababf63dc3c958ad005838dc6b812ff335be20b1d35"
+    },
+    {
+      "bytes": 22079,
+      "path": "prime-enumeration/explorer/index.html",
+      "sha256": "a5538105b03170553361d744d7aef84ebaaa33b5145e1c1e67b66d33fd4f0b84"
+    },
+    {
+      "bytes": 9215,
+      "path": "prime-enumeration/explorer/tag/PE0001.html",
+      "sha256": "e23f5da80faa923a888c27b45fb0d1e0c5dc251305546d26bb1a3dd5bbd882dd"
+    },
+    {
+      "bytes": 23294,
+      "path": "prime-enumeration/explorer/tag/PE0002.html",
+      "sha256": "c54eddacae212564cb97ec814800523d34e2b7984050f8d98847afe2fd8cf55a"
+    },
+    {
+      "bytes": 17263,
+      "path": "prime-enumeration/explorer/tag/PE0003.html",
+      "sha256": "b93d7bf30fe4f41b72a588619647bbb7e3b99b0a31d812f0cd2bad06b2ba8b79"
+    },
+    {
+      "bytes": 13791,
+      "path": "prime-enumeration/explorer/tag/PE0004.html",
+      "sha256": "faa00e8feb3a6ec89f78d79cfddebe8346333fe12f38778862e47f144802ef77"
+    },
+    {
+      "bytes": 15279,
+      "path": "prime-enumeration/explorer/tag/PE0005.html",
+      "sha256": "a94e3708b6eeb385906fdf9be768a0d4e030cd55b4e9385a1339cabfcb7b9a13"
+    },
+    {
+      "bytes": 12938,
+      "path": "prime-enumeration/explorer/tag/PE0006.html",
+      "sha256": "7bcf660af87073dadb78cd1d9d88072b712a6879a6b526743145261f3b395d90"
+    },
+    {
+      "bytes": 13634,
+      "path": "prime-enumeration/explorer/tag/PE0007.html",
+      "sha256": "181123e2adc47f964a18ac36b44d23ea4aaf7b2f5b661925775a6a157d72a2b5"
+    },
+    {
+      "bytes": 36872,
+      "path": "prime-enumeration/explorer/tag/PE0008.html",
+      "sha256": "28b585f2ff3596a555c262bfff504ce84ffe9e813bcef4551f2649807614b2b2"
+    },
+    {
+      "bytes": 16971,
+      "path": "prime-enumeration/explorer/tag/PE0009.html",
+      "sha256": "0576a7d27d7803b898d1fc0634bbc983c78d0f136c4c893078902148f47a165b"
+    },
+    {
+      "bytes": 23222,
+      "path": "prime-enumeration/explorer/tag/PE000A.html",
+      "sha256": "cb4309d90adb05377fd75743b28b2f1050b2bcf4fc6984392b5da279c06534dc"
+    },
+    {
+      "bytes": 44659,
+      "path": "prime-enumeration/explorer/tag/PE000B.html",
+      "sha256": "71098a886da55ca95bec0da34a28592561cfbdf71bdd7de6ea1f41468dba221f"
+    },
+    {
+      "bytes": 48551,
+      "path": "prime-enumeration/explorer/tag/PE000C.html",
+      "sha256": "d9d497069c430bcac1401723130b2d4d79398e81554a0b3bd1740cd29a013cc6"
+    },
+    {
+      "bytes": 37557,
+      "path": "prime-enumeration/explorer/tag/PE000D.html",
+      "sha256": "fec8520552c01f7ad743fd7819048574e7a420ea9969692cd8d46c5a6b8952bd"
+    },
+    {
+      "bytes": 44021,
+      "path": "prime-enumeration/explorer/tag/PE000E.html",
+      "sha256": "023be485a5c3ca74c1a9fcb00eb70da2b28bee3da5ca2ad787a90fb1db99a86d"
+    },
+    {
+      "bytes": 14189,
+      "path": "prime-enumeration/explorer/tag/PE000F.html",
+      "sha256": "b74fb3bfadef5c9ace3607838837f184f6babbbc60ee1f4d14de7fed811bb63a"
+    },
+    {
+      "bytes": 20641,
+      "path": "prime-enumeration/explorer/tag/PE0010.html",
+      "sha256": "829696b3a497835dbac38af5d8d33a81feea3ab58ae61e19f618a9af0aae18cb"
+    },
+    {
+      "bytes": 23132,
+      "path": "prime-enumeration/explorer/tag/PE0011.html",
+      "sha256": "5613fe7036984abf3c4b648539eb3a1eb5c8507983b3959d46d5a352c1cb331b"
+    },
+    {
+      "bytes": 23143,
+      "path": "prime-enumeration/explorer/tag/PE0012.html",
+      "sha256": "097608f099134ab91990e932e1b18dedf6c4036f0e3bb4d340b48bcf925f9368"
+    },
+    {
+      "bytes": 27151,
+      "path": "prime-enumeration/explorer/tag/PE0013.html",
+      "sha256": "4ada14be5e76bd9677a5e9a2bd06aed187e954c6b0ae6c5d584f4985ae0adb0f"
+    },
+    {
+      "bytes": 9299,
+      "path": "prime-enumeration/index.html",
+      "sha256": "fca17a0abaa09323db906d770ca61e80f962a703b9ed5aaf3feed780827c362c"
+    }
+  ],
+  "first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9",
+  "html_revision": "2db42c10aa31",
+  "independent_lean_bundle_verified": true,
+  "inherited_revised_audit_sources": [
+    {
+      "changed_by_priority_layer": false,
+      "historical_sha256": "2125f1e0170447ca94cfd78a8d34c4f1034d2ef0e68884ef79b9787345e36d45",
+      "later_checked_in_sha256": "27b789cca2650a2c83fb0cd3eb185607111eac7075a1f44cee9cd274832ee9a1",
+      "path": "peano-lab/py/tests/test_library_editions_v19_admission.py",
+      "proof_authority": false
+    },
+    {
+      "changed_by_priority_layer": false,
+      "historical_sha256": "455c416e00618ecb4443da8af8f038d985308a7624431de4c63c9dcb6206c0e0",
+      "later_checked_in_sha256": "8a4d2588fe63a8c13477349899040f3122b0d1226b75adbfcb926364e0088736",
+      "path": "peano-lab/py/tests/test_linear_congruence_complete_candidate.py",
+      "proof_authority": false
+    },
+    {
+      "changed_by_priority_layer": false,
+      "historical_sha256": "cb6a22a23f44958546eebedd9bdadb28ba466519c2951920cd2ac5f3c04760f3",
+      "later_checked_in_sha256": "820fd1e4a262295bb85a50bbe2f9b5361c9cc3ce403fda443a1ff1b2a2d129ec",
+      "path": "research/arithmetic-library/ha-bertrand-b6-release-tranche-rfc-v1.md",
+      "proof_authority": false
+    },
+    {
+      "changed_by_priority_layer": false,
+      "historical_sha256": "857da462982d7798c69ca24053378c31e52d1b58fcc401bfe99ba92aac101383",
+      "later_checked_in_sha256": "ce32b9b9922e46be8abb8a61ae4a4cb3461f2dea6eeb56a65bfbc2684991cf35",
+      "path": "research/arithmetic-library/linear-congruence-complete-rfc-v1.md",
+      "proof_authority": false
+    },
+    {
+      "changed_by_priority_layer": false,
+      "historical_sha256": "b7774571ff25d0ab1c35707e4aa8b074b584179307bc25c2d9bcb5dc7a17f960",
+      "later_checked_in_sha256": "41b22f2291a4ef69746acedbfee346bf4044e67afb8f2ee77ded06156a0ca67b",
+      "path": "research/arithmetic-library/wmi-qr-replay.md",
+      "proof_authority": false
+    }
+  ],
+  "inventory_sha256": "148b6425ccae50e7a6b4a168558b149cfdc90d934af4dc1fa8abaeda2eee1a8c",
+  "proof_bundle_sha256": "e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1",
+  "schema": "peano-lab-constructive-historical-publication-v29-first-v28-manifest",
+  "stable_count": 0,
+  "theorem_count": 204
+}

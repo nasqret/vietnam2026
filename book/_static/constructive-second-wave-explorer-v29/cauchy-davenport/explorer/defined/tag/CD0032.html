@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>CD0032 — finite_modular_add_modulus — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="cauchy-davenport"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../../tag/CD0032.html?v=2db42c10aa31">Exact original proof</a>
+       <a href="../graph.html?target=CD0032&amp;v=2db42c10aa31">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D03&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F06&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G051" href="../../../../grand-campaign/?view=goal&amp;focus=G051&amp;v=2db42c10aa31">G051 milestone</a></nav>
+  <p class="pd-tag">CD0032</p><h1>finite_modular_add_modulus</h1>
+  <p>Adding the modulus preserves balanced congruence with explicit zero/one witnesses.</p><p class="pd-status">Alpha v29 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">Sets are complete characteristic-bit codes with actual finite cardinality witnesses. The proof constructs translations and the sumset; no finite-choice oracle, supplied cardinality conclusion, or unproved polynomial-method premise is used.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ p. ∀ a. <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=2db42c10aa31">ModEq(p,a + p,a)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0008.html?v=2db42c10aa31">ModEq(m,a,b) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">zero_add · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall p a. exists fms_u_mod fms_v_mod. (a+p) + (p) * fms_u_mod = (a) + (p) * fms_v_mod</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 5 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro p</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro a</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>exists 0</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>exists 1</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>simp [zero_add]</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v29 checked use</dd><dt>First admission</dt><dd>Alpha v27</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>1200 / 1224</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 1224 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>27 / 13</dd>
+      <dt>Statement SHA-256</dt><dd><code>2a257f9dfc0a9b134b6d166a9d862cd1a9edc92136cb59533596fb79c5557e46</code></dd>
+      <dt>Script SHA-256</dt><dd><code>ba44e622873ebf16bce4aa1e874e547a30d73a5a72a92a168f931a64f73f507c</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.cauchy_davenport_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v29/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

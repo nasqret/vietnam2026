@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HL001A — hensel_signed_blend_unit_coprime — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="hensel-lifting"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../../tag/HL001A.html?v=2db42c10aa31">Exact original proof</a>
+       <a href="../graph.html?target=HL001A&amp;v=2db42c10aa31">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G095" href="../../../../grand-campaign/?view=goal&amp;focus=G095&amp;v=2db42c10aa31">G095 milestone</a></nav>
+  <p class="pd-tag">HL001A</p><h1>hensel_signed_blend_unit_coprime</h1>
+  <p>An actual inverse of the integer derivative proves the recoded natural derivative coprime to the lifting base.</p><p class="pd-status">Alpha v29 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">The derivative-nonzero criterion supplies no inverse or power witness: both are constructed. Roots may be arbitrary natural representatives of signed integer polynomials. Singular-root classification and p-adic completion are separate milestones.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ p. ∀ M. ∀ h. ∀ dp. ∀ dn. ∀ dg. M = S h → <a class="pd-definition-ref" data-definition="PD0003" href="../definition/PD0003.html?v=2db42c10aa31">Dvd(p,M)</a> → dg = dp + h · dn → <a class="pd-definition-ref" data-definition="ND0083" href="../definition/ND0083.html?v=2db42c10aa31">SignedDerivativeUnit(p,dp,dn)</a> → <a class="pd-definition-ref" data-definition="PD0005" href="../definition/PD0005.html?v=2db42c10aa31">Coprime(dg,p)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0083.html?v=2db42c10aa31">SignedDerivativeUnit(p,dp,dn) · 1</a><a class="pd-chip" href="../definition/PD0003.html?v=2db42c10aa31">Dvd(d,n) · 1</a><a class="pd-chip" href="../definition/PD0005.html?v=2db42c10aa31">Coprime(a,b) · 1</a><a class="pd-chip" href="../definition/PD0008.html?v=2db42c10aa31">ModEq(m,a,b) · 4</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip" href="HL0018.html?v=2db42c10aa31">hensel_signed_blend_mod_iff</a><span class="pd-chip pd-external">mod_inverse_implies_coprime · checked external prerequisite</span><span class="pd-chip pd-external">add_mul · checked external prerequisite</span><span class="pd-chip pd-external">mul_assoc · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall p M h dp dn dg. M = S h -&gt; (exists q. M = p * q) -&gt; dg = dp + h * dn -&gt; (exists sph_inverse_unit. ((exists hpl_gap_unit. hpl_gap_unit + S (sph_inverse_unit) = (p)) /\ (exists hgcrt_mod_left_hpl_unit hgcrt_mod_right_hpl_unit. (dp * sph_inverse_unit) + p * hgcrt_mod_left_hpl_unit = (1 + dn * sph_inverse_unit) + p * hgcrt_mod_right_hpl_unit))) -&gt; (forall hmi_divisor_hpl_coprime. (exists hmi_left_factor_hpl_coprime. dg = hmi_divisor_hpl_coprime * hmi_left_factor_hpl_coprime) -&gt; (exists hmi_right_factor_hpl_coprime. p = hmi_divisor_hpl_coprime * hmi_right_factor_hpl_coprime) -&gt; hmi_divisor_hpl_coprime = 1)</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 38 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro p</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro M</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro h</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro dp</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>intro dn</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>intro dg</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>intro hM</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>intro hdiv</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>intro hdg</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>intro hunit</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>cases hunit</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>cases hunit_witness</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>have hproduct : dg * x = dp * x + h * (dn * x)</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>rewrite hdg</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>trans dp * x + (h * dn) * x</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>apply add_mul</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>congr</code></li><li class="pd-proof-line" id="L18" data-line="18"><a class="pd-line-number" href="#L18">0018</a><code>refl</code></li><li class="pd-proof-line" id="L19" data-line="19"><a class="pd-line-number" href="#L19">0019</a><code>apply mul_assoc</code></li><li class="pd-proof-line" id="L20" data-line="20"><a class="pd-line-number" href="#L20">0020</a><code>have hiff : (<a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=2db42c10aa31">ModEq(p,dg · x,1)</a> → <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=2db42c10aa31">ModEq(p,dp · x,1 + dn · x)</a>) ∧ (<a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=2db42c10aa31">ModEq(p,dp · x,1 + dn · x)</a> → <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=2db42c10aa31">ModEq(p,dg · x,1)</a>)</code></li><li class="pd-proof-line" id="L21" data-line="21"><a class="pd-line-number" href="#L21">0021</a><code>specialize <a class="pd-theorem-ref" href="HL0018.html?v=2db42c10aa31">hensel_signed_blend_mod_iff</a> p</code></li><li class="pd-proof-line" id="L22" data-line="22"><a class="pd-line-number" href="#L22">0022</a><code>specialize <a class="pd-theorem-ref" href="HL0018.html?v=2db42c10aa31">hensel_signed_blend_mod_iff</a> M</code></li><li class="pd-proof-line" id="L23" data-line="23"><a class="pd-line-number" href="#L23">0023</a><code>specialize <a class="pd-theorem-ref" href="HL0018.html?v=2db42c10aa31">hensel_signed_blend_mod_iff</a> h</code></li><li class="pd-proof-line" id="L24" data-line="24"><a class="pd-line-number" href="#L24">0024</a><code>specialize <a class="pd-theorem-ref" href="HL0018.html?v=2db42c10aa31">hensel_signed_blend_mod_iff</a> (dp * x)</code></li><li class="pd-proof-line" id="L25" data-line="25"><a class="pd-line-number" href="#L25">0025</a><code>specialize <a class="pd-theorem-ref" href="HL0018.html?v=2db42c10aa31">hensel_signed_blend_mod_iff</a> (dn * x)</code></li><li class="pd-proof-line" id="L26" data-line="26"><a class="pd-line-number" href="#L26">0026</a><code>specialize <a class="pd-theorem-ref" href="HL0018.html?v=2db42c10aa31">hensel_signed_blend_mod_iff</a> (dg * x)</code></li><li class="pd-proof-line" id="L27" data-line="27"><a class="pd-line-number" href="#L27">0027</a><code>specialize <a class="pd-theorem-ref" href="HL0018.html?v=2db42c10aa31">hensel_signed_blend_mod_iff</a> 1</code></li><li class="pd-proof-line" id="L28" data-line="28"><a class="pd-line-number" href="#L28">0028</a><code>apply <a class="pd-theorem-ref" href="HL0018.html?v=2db42c10aa31">hensel_signed_blend_mod_iff</a></code></li><li class="pd-proof-line" id="L29" data-line="29"><a class="pd-line-number" href="#L29">0029</a><code>exact hM</code></li><li class="pd-proof-line" id="L30" data-line="30"><a class="pd-line-number" href="#L30">0030</a><code>exact hdiv</code></li><li class="pd-proof-line" id="L31" data-line="31"><a class="pd-line-number" href="#L31">0031</a><code>exact hproduct</code></li><li class="pd-proof-line" id="L32" data-line="32"><a class="pd-line-number" href="#L32">0032</a><code>cases hiff</code></li><li class="pd-proof-line" id="L33" data-line="33"><a class="pd-line-number" href="#L33">0033</a><code>specialize mod_inverse_implies_coprime dg</code></li><li class="pd-proof-line" id="L34" data-line="34"><a class="pd-line-number" href="#L34">0034</a><code>specialize mod_inverse_implies_coprime p</code></li><li class="pd-proof-line" id="L35" data-line="35"><a class="pd-line-number" href="#L35">0035</a><code>specialize mod_inverse_implies_coprime x</code></li><li class="pd-proof-line" id="L36" data-line="36"><a class="pd-line-number" href="#L36">0036</a><code>apply mod_inverse_implies_coprime</code></li><li class="pd-proof-line" id="L37" data-line="37"><a class="pd-line-number" href="#L37">0037</a><code>apply hiff_right</code></li><li class="pd-proof-line" id="L38" data-line="38"><a class="pd-line-number" href="#L38">0038</a><code>exact hunit_witness_right</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v29 checked use</dd><dt>First admission</dt><dd>Alpha v27</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>1008 / 1224</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 1224 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>52 / 29</dd>
+      <dt>Statement SHA-256</dt><dd><code>bdf539fa7afa3ae65ec07f40af2097eb0cc9963b0f8c5cfa4f36c09e05184781</code></dd>
+      <dt>Script SHA-256</dt><dd><code>1cbce2600c61f0a07daa275b98bbcf2722eaf6972c571afc2c0ee82dd2314b7e</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.signed_hensel_lifting_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v29/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

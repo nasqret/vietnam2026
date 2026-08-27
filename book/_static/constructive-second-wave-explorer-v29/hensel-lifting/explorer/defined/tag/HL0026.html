@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HL0026 — hensel_prime_signed_nonzero_derivative_is_unit — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="hensel-lifting"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../../tag/HL0026.html?v=2db42c10aa31">Exact original proof</a>
+       <a href="../graph.html?target=HL0026&amp;v=2db42c10aa31">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G095" href="../../../../grand-campaign/?view=goal&amp;focus=G095&amp;v=2db42c10aa31">G095 milestone</a></nav>
+  <p class="pd-tag">HL0026</p><h1>hensel_prime_signed_nonzero_derivative_is_unit</h1>
+  <p>The ordinary signed nonzero-mod-prime derivative condition constructs the full bounded derivative-unit witness; neither an inverse nor a natural blend is supplied.</p><p class="pd-status">Alpha v29 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">The derivative-nonzero criterion supplies no inverse or power witness: both are constructed. Roots may be arbitrary natural representatives of signed integer polynomials. Singular-root classification and p-adic completion are separate milestones.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ p. ∀ dp. ∀ dn. <a class="pd-definition-ref" data-definition="PD0004" href="../definition/PD0004.html?v=2db42c10aa31">Prime(p)</a> → <a class="pd-definition-ref" data-definition="ND0126" href="../definition/ND0126.html?v=2db42c10aa31">SignedDerivativeNonzero(p,dp,dn)</a> → <a class="pd-definition-ref" data-definition="ND0083" href="../definition/ND0083.html?v=2db42c10aa31">SignedDerivativeUnit(p,dp,dn)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0083.html?v=2db42c10aa31">SignedDerivativeUnit(p,dp,dn) · 1</a><a class="pd-chip" href="../definition/ND0126.html?v=2db42c10aa31">SignedDerivativeNonzero(p,dp,dn) · 1</a><a class="pd-chip" href="../definition/PD0004.html?v=2db42c10aa31">Prime(p) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">prime_nonzero · checked external prerequisite</span><span class="pd-chip pd-external">nonzero_is_succ · checked external prerequisite</span><a class="pd-chip" href="HL0025.html?v=2db42c10aa31">hensel_prime_blended_nonzero_derivative_is_unit</a></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall p dp dn. ((~(p = 1) /\ forall frm_prime_left_hsc_derivative_prime frm_prime_right_hsc_derivative_prime. p = frm_prime_left_hsc_derivative_prime * frm_prime_right_hsc_derivative_prime -&gt; frm_prime_left_hsc_derivative_prime = 1 \/ frm_prime_right_hsc_derivative_prime = 1)) -&gt; (~(exists hgcrt_mod_left_hpl_hsc_derivative_criterion hgcrt_mod_right_hpl_hsc_derivative_criterion. dp + p * hgcrt_mod_left_hpl_hsc_derivative_criterion = dn + p * hgcrt_mod_right_hpl_hsc_derivative_criterion)) -&gt; (exists sph_inverse_hsc_derivative_unit. ((exists hpl_gap_hsc_derivative_unit. hpl_gap_hsc_derivative_unit + S (sph_inverse_hsc_derivative_unit) = (p)) /\ (exists hgcrt_mod_left_hpl_hsc_derivative_unit hgcrt_mod_right_hpl_hsc_derivative_unit. (dp * sph_inverse_hsc_derivative_unit) + p * hgcrt_mod_left_hpl_hsc_derivative_unit = (1 + dn * sph_inverse_hsc_derivative_unit) + p * hgcrt_mod_right_hpl_hsc_derivative_unit)))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 24 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro p</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro dp</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro dn</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro hp</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>intro hnonzero</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>have hpredecessor : exists h. p = S h</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>specialize nonzero_is_succ (p)</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>apply nonzero_is_succ</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>intro hz</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>specialize prime_nonzero (p)</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>apply prime_nonzero</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>exact hp</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>exact hz</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>cases hpredecessor</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>specialize <a class="pd-theorem-ref" href="HL0025.html?v=2db42c10aa31">hensel_prime_blended_nonzero_derivative_is_unit</a> (p)</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>specialize <a class="pd-theorem-ref" href="HL0025.html?v=2db42c10aa31">hensel_prime_blended_nonzero_derivative_is_unit</a> (x)</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>specialize <a class="pd-theorem-ref" href="HL0025.html?v=2db42c10aa31">hensel_prime_blended_nonzero_derivative_is_unit</a> (dp)</code></li><li class="pd-proof-line" id="L18" data-line="18"><a class="pd-line-number" href="#L18">0018</a><code>specialize <a class="pd-theorem-ref" href="HL0025.html?v=2db42c10aa31">hensel_prime_blended_nonzero_derivative_is_unit</a> (dn)</code></li><li class="pd-proof-line" id="L19" data-line="19"><a class="pd-line-number" href="#L19">0019</a><code>specialize <a class="pd-theorem-ref" href="HL0025.html?v=2db42c10aa31">hensel_prime_blended_nonzero_derivative_is_unit</a> (dp + x * dn)</code></li><li class="pd-proof-line" id="L20" data-line="20"><a class="pd-line-number" href="#L20">0020</a><code>apply <a class="pd-theorem-ref" href="HL0025.html?v=2db42c10aa31">hensel_prime_blended_nonzero_derivative_is_unit</a></code></li><li class="pd-proof-line" id="L21" data-line="21"><a class="pd-line-number" href="#L21">0021</a><code>exact hpredecessor_witness</code></li><li class="pd-proof-line" id="L22" data-line="22"><a class="pd-line-number" href="#L22">0022</a><code>refl</code></li><li class="pd-proof-line" id="L23" data-line="23"><a class="pd-line-number" href="#L23">0023</a><code>exact hp</code></li><li class="pd-proof-line" id="L24" data-line="24"><a class="pd-line-number" href="#L24">0024</a><code>exact hnonzero</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v29 checked use</dd><dt>First admission</dt><dd>Alpha v27</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>1020 / 1224</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 1224 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>33 / 19</dd>
+      <dt>Statement SHA-256</dt><dd><code>87891b4b911500f2331988d2bc0d98ec188a6ce554d7fa1c8fafce44a51161e5</code></dd>
+      <dt>Script SHA-256</dt><dd><code>5ef99c48bb0a49797c62dd900e9b3780c3efbbb7d1dcd04b111e1150d06d966f</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.hensel_simple_root_criterion_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v29/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

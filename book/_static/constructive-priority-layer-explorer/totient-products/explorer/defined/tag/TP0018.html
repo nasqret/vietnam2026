@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TP0018 — totient_one_value — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="totient-products"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../../tag/TP0018.html?v=2db42c10aa31">Exact original proof</a>
+       <a href="../graph.html?target=TP0018&amp;v=2db42c10aa31">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G006" href="../../../../grand-campaign/?view=goal&amp;focus=G006&amp;v=2db42c10aa31">G006 milestone</a></nav>
+  <p class="pd-tag">TP0018</p><h1>totient_one_value</h1>
+  <p>Construct the actual Phi(1,1) count witnesses, including the zero residue.</p><p class="pd-status">Alpha v29 checked-use · first admitted v29 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">Phi counts the actual 0/1 coprimality bits on 0≤a&lt;n. EulerProduct has no Phi assumption or conclusion hidden in its definition. The empty product and the residue zero give Phi(1,1). The theorem does not assert Phi at zero.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="ND0184" href="../definition/ND0184.html?v=2db42c10aa31">Phi(1,1)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0183.html?v=2db42c10aa31">UnitCount(n,l,t) · 1</a><a class="pd-chip" href="../definition/ND0184.html?v=2db42c10aa31">Phi(n,t) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip" href="TP000B.html?v=2db42c10aa31">totient_unit_count_exists</a><a class="pd-chip" href="TP0012.html?v=2db42c10aa31">totient_unit_count_mod_one</a><span class="pd-chip pd-external">succ_ne_zero · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>(~((1)=0) /\ (exists eut_code_phi_one_value_count eut_scale_phi_one_value_count. (forall eut_index_phi_one_value_count_mask. (exists eut_gap_phi_one_value_count_mask_bound. eut_gap_phi_one_value_count_mask_bound + S (eut_index_phi_one_value_count_mask) = (1)) -&gt; exists eut_bit_phi_one_value_count_mask. (((exists fs_h_eut_phi_one_value_count_mask_entry. fs_h_eut_phi_one_value_count_mask_entry + S (eut_bit_phi_one_value_count_mask) = S ((S (eut_index_phi_one_value_count_mask)) * eut_scale_phi_one_value_count)) /\ exists fs_q_eut_phi_one_value_count_mask_entry. eut_code_phi_one_value_count = fs_q_eut_phi_one_value_count_mask_entry * S ((S (eut_index_phi_one_value_count_mask)) * eut_scale_phi_one_value_count) + (eut_bit_phi_one_value_count_mask))) /\ ((((forall eut_divisor_phi_one_value_count_mask_choice_coprime. (exists eut_left_phi_one_value_count_mask_choice_coprime. (eut_index_phi_one_value_count_mask) = eut_divisor_phi_one_value_count_mask_choice_coprime * eut_left_phi_one_value_count_mask_choice_coprime) -&gt; (exists eut_right_phi_one_value_count_mask_choice_coprime. (1) = eut_divisor_phi_one_value_count_mask_choice_coprime * eut_right_phi_one_value_count_mask_choice_coprime) -&gt; eut_divisor_phi_one_value_count_mask_choice_coprime = 1) /\ (eut_bit_phi_one_value_count_mask) = 1) \/ (~(forall eut_divisor_phi_one_value_count_mask_choice_coprime. (exists eut_left_phi_one_value_count_mask_choice_coprime. (eut_index_phi_one_value_count_mask) = eut_divisor_phi_one_value_count_mask_choice_coprime * eut_left_phi_one_value_count_mask_choice_coprime) -&gt; (exists eut_right_phi_one_value_count_mask_choice_coprime. (1) = eut_divisor_phi_one_value_count_mask_choice_coprime * eut_right_phi_one_value_count_mask_choice_coprime) -&gt; eut_divisor_phi_one_value_count_mask_choice_coprime = 1) /\ (eut_bit_phi_one_value_count_mask) = 0)))) /\ (exists fs_u_eut_phi_one_value_count_sum fs_v_eut_phi_one_value_count_sum. ((((exists fs_h_eut_phi_one_value_count_sum_body_start. fs_h_eut_phi_one_value_count_sum_body_start + S (0) = S ((S (0)) * fs_v_eut_phi_one_value_count_sum)) /\ exists fs_q_eut_phi_one_value_count_sum_body_start. fs_u_eut_phi_one_value_count_sum = fs_q_eut_phi_one_value_count_sum_body_start * S ((S (0)) * fs_v_eut_phi_one_value_count_sum) + (0))) /\ ((((exists fs_h_eut_phi_one_value_count_sum_body_terminal. fs_h_eut_phi_one_value_count_sum_body_terminal + S (1) = S ((S (1)) * fs_v_eut_phi_one_value_count_sum)) /\ exists fs_q_eut_phi_one_value_count_sum_body_terminal. fs_u_eut_phi_one_value_count_sum = fs_q_eut_phi_one_value_count_sum_body_terminal * S ((S (1)) * fs_v_eut_phi_one_value_count_sum) + (1))) /\ forall fs_i_eut_phi_one_value_count_sum_body_steps. (exists fs_lt_eut_phi_one_value_count_sum_body_steps_bound. fs_lt_eut_phi_one_value_count_sum_body_steps_bound + S fs_i_eut_phi_one_value_count_sum_body_steps = 1) -&gt; exists fs_a_eut_phi_one_value_count_sum_body_steps fs_r_eut_phi_one_value_count_sum_body_steps fs_s_eut_phi_one_value_count_sum_body_steps. ((((exists fs_h_eut_phi_one_value_count_sum_body_steps_summand. fs_h_eut_phi_one_value_count_sum_body_steps_summand + S (fs_a_eut_phi_one_value_count_sum_body_steps) = S ((S (fs_i_eut_phi_one_value_count_sum_body_steps)) * eut_scale_phi_one_value_count)) /\ exists fs_q_eut_phi_one_value_count_sum_body_steps_summand. eut_code_phi_one_value_count = fs_q_eut_phi_one_value_count_sum_body_steps_summand * S ((S (fs_i_eut_phi_one_value_count_sum_body_steps)) * eut_scale_phi_one_value_count) + (fs_a_eut_phi_one_value_count_sum_body_steps))) /\ ((((exists fs_h_eut_phi_one_value_count_sum_body_steps_partial. fs_h_eut_phi_one_value_count_sum_body_steps_partial + S (fs_r_eut_phi_one_value_count_sum_body_steps) = S ((S (fs_i_eut_phi_one_value_count_sum_body_steps)) * fs_v_eut_phi_one_value_count_sum)) /\ exists fs_q_eut_phi_one_value_count_sum_body_steps_partial. fs_u_eut_phi_one_value_count_sum = fs_q_eut_phi_one_value_count_sum_body_steps_partial * S ((S (fs_i_eut_phi_one_value_count_sum_body_steps)) * fs_v_eut_phi_one_value_count_sum) + (fs_r_eut_phi_one_value_count_sum_body_steps))) /\ ((((exists fs_h_eut_phi_one_value_count_sum_body_steps_successor. fs_h_eut_phi_one_value_count_sum_body_steps_successor + S (fs_s_eut_phi_one_value_count_sum_body_steps) = S ((S (S fs_i_eut_phi_one_value_count_sum_body_steps)) * fs_v_eut_phi_one_value_count_sum)) /\ exists fs_q_eut_phi_one_value_count_sum_body_steps_successor. fs_u_eut_phi_one_value_count_sum = fs_q_eut_phi_one_value_count_sum_body_steps_successor * S ((S (S fs_i_eut_phi_one_value_count_sum_body_steps)) * fs_v_eut_phi_one_value_count_sum) + (fs_s_eut_phi_one_value_count_sum_body_steps))) /\ fs_s_eut_phi_one_value_count_sum_body_steps = fs_r_eut_phi_one_value_count_sum_body_steps + fs_a_eut_phi_one_value_count_sum_body_steps))))))))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 16 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>have hc : ∃ t. <a class="pd-definition-ref" data-definition="ND0183" href="../definition/ND0183.html?v=2db42c10aa31">UnitCount(1,1,t)</a></code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>specialize <a class="pd-theorem-ref" href="TP000B.html?v=2db42c10aa31">totient_unit_count_exists</a> (1)</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>specialize <a class="pd-theorem-ref" href="TP000B.html?v=2db42c10aa31">totient_unit_count_exists</a> (1)</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>apply <a class="pd-theorem-ref" href="TP000B.html?v=2db42c10aa31">totient_unit_count_exists</a></code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>cases hc</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>have ht : x=1</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>specialize <a class="pd-theorem-ref" href="TP0012.html?v=2db42c10aa31">totient_unit_count_mod_one</a> (1)</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>specialize <a class="pd-theorem-ref" href="TP0012.html?v=2db42c10aa31">totient_unit_count_mod_one</a> (x)</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>apply <a class="pd-theorem-ref" href="TP0012.html?v=2db42c10aa31">totient_unit_count_mod_one</a></code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>exact hc_witness</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>split</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>specialize succ_ne_zero (0)</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>apply succ_ne_zero</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>rewrite ht at hc_witness</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>rewrite ht at hc_witness</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>exact hc_witness</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v29 checked use</dd><dt>First admission</dt><dd>Alpha v29</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>413 / 566</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 566 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>23 / 11</dd>
+      <dt>Statement SHA-256</dt><dd><code>c25486aebde25c7405e66abd7d4018c19e607f1c9400ae0b5b15123a6e7b2b17</code></dd>
+      <dt>Script SHA-256</dt><dd><code>b0de50afa445ce0d47a6f5f0b442a4ed955749278cc43691fe002709e529e58a</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>4fcb3cd45e83448776abb9e33692496a7acfa98a051cae15761826a0b15fda44</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.euler_totient_count_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-priority-layer-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

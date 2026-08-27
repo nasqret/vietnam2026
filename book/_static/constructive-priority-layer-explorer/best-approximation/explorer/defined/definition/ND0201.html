@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0201 — ConvergentErrorInvariant(a,b,u,U,v,V) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="best-approximation"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../graph.html?v=2db42c10aa31">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=ConvergentErrorInvariant&amp;v=2db42c10aa31">Global definition: ConvergentErrorInvariant</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F08&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G072" href="../../../../grand-campaign/?view=goal&amp;focus=G072&amp;v=2db42c10aa31">G072 milestone</a></nav>
+  <p class="pd-tag">ND0201</p><h1>ConvergentErrorInvariant(a,b,u,U,v,V)</h1>
+  <p>Actual adjacent determinant/error witnesses with strictly decreasing current error and previous error at most b. This proved invariant is not part of Convergent.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ cfba_error_prioritylayer. ∃ cfba_previous_error_prioritylayer. <a class="pd-definition-ref" data-definition="ND0200" href="ND0200.html?v=2db42c10aa31">AlternatingConvergentIdentity(a,b,u,U,v,V,cfba_error_prioritylayer,cfba_previous_error_prioritylayer)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=2db42c10aa31">Lt(cfba_error_prioritylayer,cfba_previous_error_prioritylayer)</a> ∧ <a class="pd-definition-ref" data-definition="PD0001" href="PD0001.html?v=2db42c10aa31">Le(cfba_previous_error_prioritylayer,b)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists cfba_error_prioritylayer cfba_previous_error_prioritylayer. (((((u * V + 1 = U * v) /\ ((a * v = b * u + cfba_error_prioritylayer) /\ (b * U = a * V + cfba_previous_error_prioritylayer)))) \/ (((U * v + 1 = u * V) /\ ((b * u = a * v + cfba_error_prioritylayer) /\ (a * V = b * U + cfba_previous_error_prioritylayer))))) /\ ((exists cfba_gap_prioritylayerdecrease. cfba_gap_prioritylayerdecrease + S (cfba_error_prioritylayer) = (cfba_previous_error_prioritylayer)) /\ (exists cfba_bound_prioritylayerprevious_bound. cfba_bound_prioritylayerprevious_bound + (cfba_previous_error_prioritylayer) = (b))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0200.html?v=2db42c10aa31">AlternatingConvergentIdentity(a,b,u,U,v,V,E,F)</a><a class="pd-chip" href="PD0002.html?v=2db42c10aa31">Lt(a,b)</a><a class="pd-chip" href="PD0001.html?v=2db42c10aa31">Le(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/BA000B.html?v=2db42c10aa31">BA000B · cf_approximation_first_recurrence_error_invariant</a><a class="pd-chip" href="../tag/BA000C.html?v=2db42c10aa31">BA000C · cf_approximation_prepend_recurrence_error_invariant</a><a class="pd-chip" href="../tag/BA000D.html?v=2db42c10aa31">BA000D · cf_approximation_derived_invariant_denominator_positive</a><a class="pd-chip" href="../tag/BA000E.html?v=2db42c10aa31">BA000E · cf_approximation_derived_invariant_determinant</a><a class="pd-chip" href="../tag/BA0026.html?v=2db42c10aa31">BA0026 · cf_approximation_derived_invariant_best_signed</a><a class="pd-chip" href="../tag/BA003E.html?v=2db42c10aa31">BA003E · cf_convergent_actual_prefix_error_invariant</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>6</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>3</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0201.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>c9e77485a7f61989ffc96fdf94ed7987c1430458935e9e469cfeee00e818acac</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-priority-layer-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DL0086 — matrix_integer_vector_equality_symmetric — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="integer-linear-algebra"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../../tag/DL0086.html?v=2db42c10aa31">Exact original proof</a>
+       <a href="../graph.html?target=DL0086&amp;v=2db42c10aa31">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=2db42c10aa31">T13 milestone</a></nav>
+  <p class="pd-tag">DL0086</p><h1>matrix_integer_vector_equality_symmetric</h1>
+  <p>Signed-integer vector equality is symmetric at the actual decoded-entry level.</p><p class="pd-status">Alpha v29 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">This branch proves the finite determinant/rank/span substrate. It does not claim Smith or Hermite normal form, lattice index equals determinant, determinant multiplicativity, lattice reduction, or geometry-of-numbers theorems.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ ab. ∀ ac. ∀ bb. ∀ bc. ∀ eb. ∀ ec. ∀ fb. ∀ fc. ∀ l. <a class="pd-definition-ref" data-definition="ND0120" href="../definition/ND0120.html?v=2db42c10aa31">IntegerVectorEqual(ab,ac,bb,bc,eb,ec,fb,fc,l)</a> → <a class="pd-definition-ref" data-definition="ND0120" href="../definition/ND0120.html?v=2db42c10aa31">IntegerVectorEqual(eb,ec,fb,fc,ab,ac,bb,bc,l)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0120.html?v=2db42c10aa31">IntegerVectorEqual(ab,ac,db,dc,eb,ec,fb,fc,l) · 2</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">eq_symm · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall ab ac bb bc eb ec fb fc l. (forall ics_index_equal_source ics_value0_equal_source ics_value1_equal_source ics_value2_equal_source ics_value3_equal_source. (exists ics_gap_equal_source_bound. ics_gap_equal_source_bound + S (ics_index_equal_source) = (l)) -&gt; (((exists fs_h_ics_equal_source_at0. fs_h_ics_equal_source_at0 + S (ics_value0_equal_source) = S ((S (ics_index_equal_source)) * ac)) /\ exists fs_q_ics_equal_source_at0. ab = fs_q_ics_equal_source_at0 * S ((S (ics_index_equal_source)) * ac) + (ics_value0_equal_source))) -&gt; (((exists fs_h_ics_equal_source_at1. fs_h_ics_equal_source_at1 + S (ics_value1_equal_source) = S ((S (ics_index_equal_source)) * bc)) /\ exists fs_q_ics_equal_source_at1. bb = fs_q_ics_equal_source_at1 * S ((S (ics_index_equal_source)) * bc) + (ics_value1_equal_source))) -&gt; (((exists fs_h_ics_equal_source_at2. fs_h_ics_equal_source_at2 + S (ics_value2_equal_source) = S ((S (ics_index_equal_source)) * ec)) /\ exists fs_q_ics_equal_source_at2. eb = fs_q_ics_equal_source_at2 * S ((S (ics_index_equal_source)) * ec) + (ics_value2_equal_source))) -&gt; (((exists fs_h_ics_equal_source_at3. fs_h_ics_equal_source_at3 + S (ics_value3_equal_source) = S ((S (ics_index_equal_source)) * fc)) /\ exists fs_q_ics_equal_source_at3. fb = fs_q_ics_equal_source_at3 * S ((S (ics_index_equal_source)) * fc) + (ics_value3_equal_source))) -&gt; ics_value0_equal_source + ics_value3_equal_source = ics_value2_equal_source + ics_value1_equal_source) -&gt; (forall ics_index_equal_reverse ics_value0_equal_reverse ics_value1_equal_reverse ics_value2_equal_reverse ics_value3_equal_reverse. (exists ics_gap_equal_reverse_bound. ics_gap_equal_reverse_bound + S (ics_index_equal_reverse) = (l)) -&gt; (((exists fs_h_ics_equal_reverse_at0. fs_h_ics_equal_reverse_at0 + S (ics_value0_equal_reverse) = S ((S (ics_index_equal_reverse)) * ec)) /\ exists fs_q_ics_equal_reverse_at0. eb = fs_q_ics_equal_reverse_at0 * S ((S (ics_index_equal_reverse)) * ec) + (ics_value0_equal_reverse))) -&gt; (((exists fs_h_ics_equal_reverse_at1. fs_h_ics_equal_reverse_at1 + S (ics_value1_equal_reverse) = S ((S (ics_index_equal_reverse)) * fc)) /\ exists fs_q_ics_equal_reverse_at1. fb = fs_q_ics_equal_reverse_at1 * S ((S (ics_index_equal_reverse)) * fc) + (ics_value1_equal_reverse))) -&gt; (((exists fs_h_ics_equal_reverse_at2. fs_h_ics_equal_reverse_at2 + S (ics_value2_equal_reverse) = S ((S (ics_index_equal_reverse)) * ac)) /\ exists fs_q_ics_equal_reverse_at2. ab = fs_q_ics_equal_reverse_at2 * S ((S (ics_index_equal_reverse)) * ac) + (ics_value2_equal_reverse))) -&gt; (((exists fs_h_ics_equal_reverse_at3. fs_h_ics_equal_reverse_at3 + S (ics_value3_equal_reverse) = S ((S (ics_index_equal_reverse)) * bc)) /\ exists fs_q_ics_equal_reverse_at3. bb = fs_q_ics_equal_reverse_at3 * S ((S (ics_index_equal_reverse)) * bc) + (ics_value3_equal_reverse))) -&gt; ics_value0_equal_reverse + ics_value3_equal_reverse = ics_value2_equal_reverse + ics_value1_equal_reverse)</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 34 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro ab</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro ac</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro bb</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro bc</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>intro eb</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>intro ec</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>intro fb</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>intro fc</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>intro l</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>intro hequal</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>intro i</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>intro a</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>intro b</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>intro c</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>intro d</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>intro hi</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>intro ha</code></li><li class="pd-proof-line" id="L18" data-line="18"><a class="pd-line-number" href="#L18">0018</a><code>intro hb</code></li><li class="pd-proof-line" id="L19" data-line="19"><a class="pd-line-number" href="#L19">0019</a><code>intro hc</code></li><li class="pd-proof-line" id="L20" data-line="20"><a class="pd-line-number" href="#L20">0020</a><code>intro hd</code></li><li class="pd-proof-line" id="L21" data-line="21"><a class="pd-line-number" href="#L21">0021</a><code>specialize eq_symm (c + b)</code></li><li class="pd-proof-line" id="L22" data-line="22"><a class="pd-line-number" href="#L22">0022</a><code>specialize eq_symm (a + d)</code></li><li class="pd-proof-line" id="L23" data-line="23"><a class="pd-line-number" href="#L23">0023</a><code>apply eq_symm</code></li><li class="pd-proof-line" id="L24" data-line="24"><a class="pd-line-number" href="#L24">0024</a><code>specialize hequal (i)</code></li><li class="pd-proof-line" id="L25" data-line="25"><a class="pd-line-number" href="#L25">0025</a><code>specialize hequal (c)</code></li><li class="pd-proof-line" id="L26" data-line="26"><a class="pd-line-number" href="#L26">0026</a><code>specialize hequal (d)</code></li><li class="pd-proof-line" id="L27" data-line="27"><a class="pd-line-number" href="#L27">0027</a><code>specialize hequal (a)</code></li><li class="pd-proof-line" id="L28" data-line="28"><a class="pd-line-number" href="#L28">0028</a><code>specialize hequal (b)</code></li><li class="pd-proof-line" id="L29" data-line="29"><a class="pd-line-number" href="#L29">0029</a><code>apply hequal</code></li><li class="pd-proof-line" id="L30" data-line="30"><a class="pd-line-number" href="#L30">0030</a><code>exact hi</code></li><li class="pd-proof-line" id="L31" data-line="31"><a class="pd-line-number" href="#L31">0031</a><code>exact hc</code></li><li class="pd-proof-line" id="L32" data-line="32"><a class="pd-line-number" href="#L32">0032</a><code>exact hd</code></li><li class="pd-proof-line" id="L33" data-line="33"><a class="pd-line-number" href="#L33">0033</a><code>exact ha</code></li><li class="pd-proof-line" id="L34" data-line="34"><a class="pd-line-number" href="#L34">0034</a><code>exact hb</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v29 checked use</dd><dt>First admission</dt><dd>Alpha v27</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>934 / 1224</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 1224 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>62 / 42</dd>
+      <dt>Statement SHA-256</dt><dd><code>636e0e560b342598f679154e0d7f033cdf624001bb9b7e107b3002efc16bc9f2</code></dd>
+      <dt>Script SHA-256</dt><dd><code>588c2ef6d82a53a614dd8b0037c29da91402fa69bb36fb04ba8135b4fdb02811</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.matrix_integer_invariance_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v29/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

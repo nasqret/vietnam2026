@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0111 — SignedMatrixPrefixEquality(pb,pc,nb,nc,qb,qc,rb,rc,d) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="integer-linear-algebra"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../graph.html?v=2db42c10aa31">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedMatrixPrefixEquality&amp;v=2db42c10aa31">Global definition: SignedMatrixPrefixEquality</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=2db42c10aa31">T13 milestone</a></nav>
+  <p class="pd-tag">ND0111</p><h1>SignedMatrixPrefixEquality(pb,pc,nb,nc,qb,qc,rb,rc,d)</h1>
+  <p>Pointwise equality of both actual component streams of two square matrices; this is stronger than equality only of their signed differences.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>(∀ x. ∀ y. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=2db42c10aa31">Lt(x,d · d)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=2db42c10aa31">BetaAt(pb,pc,x,y)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=2db42c10aa31">BetaAt(qb,qc,x,y)</a>) ∧ (∀ x. ∀ y. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=2db42c10aa31">Lt(x,d · d)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=2db42c10aa31">BetaAt(nb,nc,x,y)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=2db42c10aa31">BetaAt(rb,rc,x,y)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((forall mdr_i_secondwavep mdr_a_secondwavep. (exists mdr_gap_secondwavepb. mdr_gap_secondwavepb + S (mdr_i_secondwavep) = ((d) * (d))) -&gt; (((exists ff_h_mdr_secondwavepo. ff_h_mdr_secondwavepo + S (mdr_a_secondwavep) = S ((S (mdr_i_secondwavep)) * pc)) /\ exists ff_q_mdr_secondwavepo. pb = ff_q_mdr_secondwavepo * S ((S (mdr_i_secondwavep)) * pc) + (mdr_a_secondwavep))) -&gt; (((exists ff_h_mdr_secondwavepn. ff_h_mdr_secondwavepn + S (mdr_a_secondwavep) = S ((S (mdr_i_secondwavep)) * qc)) /\ exists ff_q_mdr_secondwavepn. qb = ff_q_mdr_secondwavepn * S ((S (mdr_i_secondwavep)) * qc) + (mdr_a_secondwavep)))) /\ (forall mdr_i_secondwaven mdr_a_secondwaven. (exists mdr_gap_secondwavenb. mdr_gap_secondwavenb + S (mdr_i_secondwaven) = ((d) * (d))) -&gt; (((exists ff_h_mdr_secondwaveno. ff_h_mdr_secondwaveno + S (mdr_a_secondwaven) = S ((S (mdr_i_secondwaven)) * nc)) /\ exists ff_q_mdr_secondwaveno. nb = ff_q_mdr_secondwaveno * S ((S (mdr_i_secondwaven)) * nc) + (mdr_a_secondwaven))) -&gt; (((exists ff_h_mdr_secondwavenn. ff_h_mdr_secondwavenn + S (mdr_a_secondwaven) = S ((S (mdr_i_secondwaven)) * rc)) /\ exists ff_q_mdr_secondwavenn. rb = ff_q_mdr_secondwavenn * S ((S (mdr_i_secondwaven)) * rc) + (mdr_a_secondwaven)))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0013.html?v=2db42c10aa31">BetaAt(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=2db42c10aa31">Lt(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DL001F.html?v=2db42c10aa31">DL001F · matrix_recursive_signed_minor_extensional</a><a class="pd-chip" href="../tag/DL0023.html?v=2db42c10aa31">DL0023 · matrix_recursive_matrix_equality_refl</a><a class="pd-chip" href="../tag/DL0025.html?v=2db42c10aa31">DL0025 · matrix_recursive_cofactor_streams_from_functionality</a><a class="pd-chip" href="../tag/DL0026.html?v=2db42c10aa31">DL0026 · matrix_recursive_determinant_extensional</a><a class="pd-chip" href="../tag/DL0048.html?v=2db42c10aa31">DL0048 · matrix_rank_signed_selected_square_functional</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>9</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0111.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>5b2ed24e017b9ba45aece97dda0e1f5cee405f9120f805fb22ed4b00af9d96cd</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v29/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

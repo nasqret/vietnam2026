@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PE000F — prime_list_nonempty_chain — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-enumeration"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=2db42c10aa31">Definitions and proofs</a>
+       <a href="../../tag/PE000F.html?v=2db42c10aa31">Exact original proof</a>
+       <a href="../graph.html?target=PE000F&amp;v=2db42c10aa31">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=2db42c10aa31">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=2db42c10aa31">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F03&amp;v=2db42c10aa31">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G022" href="../../../../grand-campaign/?view=goal&amp;focus=G022&amp;v=2db42c10aa31">G022 milestone</a></nav>
+  <p class="pd-tag">PE000F</p><h1>prime_list_nonempty_chain</h1>
+  <p>Every positive-length first-prime list exposes its actual final index and minimal-successor chain.</p><p class="pd-status">Alpha v29 checked-use · first admitted v28 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">Every successor is the globally least prime above its predecessor. This is not a sparse Bertrand chain. The bound theorem constructs the list and both power witnesses from k≠0 alone; the separate total-list theorem includes k=0.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ b. ∀ c. ∀ k. <a class="pd-definition-ref" data-definition="ND0154" href="../definition/ND0154.html?v=2db42c10aa31">InitialPrimeList(b,c,k)</a> → ¬k = 0 → ∃ x. k = S x ∧ <a class="pd-definition-ref" data-definition="ND0153" href="../definition/ND0153.html?v=2db42c10aa31">InitialPrimeChain(b,c,x)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0153.html?v=2db42c10aa31">InitialPrimeChain(b,c,k) · 1</a><a class="pd-chip" href="../definition/ND0154.html?v=2db42c10aa31">InitialPrimeList(b,c,k) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall b c k. ((k = 0 \/ exists pen_last_index_nonempty_list. k = S pen_last_index_nonempty_list /\ ((((exists fs_h_pen_nonempty_list_chain_initial. fs_h_pen_nonempty_list_chain_initial + S (2) = S ((S (0)) * c)) /\ exists fs_q_pen_nonempty_list_chain_initial. b = fs_q_pen_nonempty_list_chain_initial * S ((S (0)) * c) + (2))) /\ forall pen_index_nonempty_list_chain. (exists pc_lt_pen_nonempty_list_chain_bound. pc_lt_pen_nonempty_list_chain_bound + S (pen_index_nonempty_list_chain) = (pen_last_index_nonempty_list)) -&gt; exists pen_previous_nonempty_list_chain pen_following_nonempty_list_chain. (((exists fs_h_pen_nonempty_list_chain_previous. fs_h_pen_nonempty_list_chain_previous + S (pen_previous_nonempty_list_chain) = S ((S (pen_index_nonempty_list_chain)) * c)) /\ exists fs_q_pen_nonempty_list_chain_previous. b = fs_q_pen_nonempty_list_chain_previous * S ((S (pen_index_nonempty_list_chain)) * c) + (pen_previous_nonempty_list_chain))) /\ ((((exists fs_h_pen_nonempty_list_chain_following. fs_h_pen_nonempty_list_chain_following + S (pen_following_nonempty_list_chain) = S ((S (S pen_index_nonempty_list_chain)) * c)) /\ exists fs_q_pen_nonempty_list_chain_following. b = fs_q_pen_nonempty_list_chain_following * S ((S (S pen_index_nonempty_list_chain)) * c) + (pen_following_nonempty_list_chain))) /\ (((~(pen_following_nonempty_list_chain = 1) /\ forall bpr_left_pc_pen_nonempty_list_chain_next_prime bpr_right_pc_pen_nonempty_list_chain_next_prime. pen_following_nonempty_list_chain = bpr_left_pc_pen_nonempty_list_chain_next_prime * bpr_right_pc_pen_nonempty_list_chain_next_prime -&gt; bpr_left_pc_pen_nonempty_list_chain_next_prime = 1 \/ bpr_right_pc_pen_nonempty_list_chain_next_prime = 1)) /\ ((exists pc_lt_pen_nonempty_list_chain_next_greater. pc_lt_pen_nonempty_list_chain_next_greater + S (pen_previous_nonempty_list_chain) = (pen_following_nonempty_list_chain)) /\ forall pen_comparison_nonempty_list_chain_next. ((~(pen_comparison_nonempty_list_chain_next = 1) /\ forall bpr_left_pc_pen_nonempty_list_chain_next_comparison bpr_right_pc_pen_nonempty_list_chain_next_comparison. pen_comparison_nonempty_list_chain_next = bpr_left_pc_pen_nonempty_list_chain_next_comparison * bpr_right_pc_pen_nonempty_list_chain_next_comparison -&gt; bpr_left_pc_pen_nonempty_list_chain_next_comparison = 1 \/ bpr_right_pc_pen_nonempty_list_chain_next_comparison = 1)) -&gt; (exists pc_lt_pen_nonempty_list_chain_next_above. pc_lt_pen_nonempty_list_chain_next_above + S (pen_previous_nonempty_list_chain) = (pen_comparison_nonempty_list_chain_next)) -&gt; (exists pc_le_pen_nonempty_list_chain_next_minimal. pc_le_pen_nonempty_list_chain_next_minimal + (pen_following_nonempty_list_chain) = (pen_comparison_nonempty_list_chain_next)))))))) -&gt; ~(k = 0) -&gt; exists j. k = S j /\ ((((exists fs_h_pen_nonempty_chain_initial. fs_h_pen_nonempty_chain_initial + S (2) = S ((S (0)) * c)) /\ exists fs_q_pen_nonempty_chain_initial. b = fs_q_pen_nonempty_chain_initial * S ((S (0)) * c) + (2))) /\ forall pen_index_nonempty_chain. (exists pc_lt_pen_nonempty_chain_bound. pc_lt_pen_nonempty_chain_bound + S (pen_index_nonempty_chain) = (j)) -&gt; exists pen_previous_nonempty_chain pen_following_nonempty_chain. (((exists fs_h_pen_nonempty_chain_previous. fs_h_pen_nonempty_chain_previous + S (pen_previous_nonempty_chain) = S ((S (pen_index_nonempty_chain)) * c)) /\ exists fs_q_pen_nonempty_chain_previous. b = fs_q_pen_nonempty_chain_previous * S ((S (pen_index_nonempty_chain)) * c) + (pen_previous_nonempty_chain))) /\ ((((exists fs_h_pen_nonempty_chain_following. fs_h_pen_nonempty_chain_following + S (pen_following_nonempty_chain) = S ((S (S pen_index_nonempty_chain)) * c)) /\ exists fs_q_pen_nonempty_chain_following. b = fs_q_pen_nonempty_chain_following * S ((S (S pen_index_nonempty_chain)) * c) + (pen_following_nonempty_chain))) /\ (((~(pen_following_nonempty_chain = 1) /\ forall bpr_left_pc_pen_nonempty_chain_next_prime bpr_right_pc_pen_nonempty_chain_next_prime. pen_following_nonempty_chain = bpr_left_pc_pen_nonempty_chain_next_prime * bpr_right_pc_pen_nonempty_chain_next_prime -&gt; bpr_left_pc_pen_nonempty_chain_next_prime = 1 \/ bpr_right_pc_pen_nonempty_chain_next_prime = 1)) /\ ((exists pc_lt_pen_nonempty_chain_next_greater. pc_lt_pen_nonempty_chain_next_greater + S (pen_previous_nonempty_chain) = (pen_following_nonempty_chain)) /\ forall pen_comparison_nonempty_chain_next. ((~(pen_comparison_nonempty_chain_next = 1) /\ forall bpr_left_pc_pen_nonempty_chain_next_comparison bpr_right_pc_pen_nonempty_chain_next_comparison. pen_comparison_nonempty_chain_next = bpr_left_pc_pen_nonempty_chain_next_comparison * bpr_right_pc_pen_nonempty_chain_next_comparison -&gt; bpr_left_pc_pen_nonempty_chain_next_comparison = 1 \/ bpr_right_pc_pen_nonempty_chain_next_comparison = 1)) -&gt; (exists pc_lt_pen_nonempty_chain_next_above. pc_lt_pen_nonempty_chain_next_above + S (pen_previous_nonempty_chain) = (pen_comparison_nonempty_chain_next)) -&gt; (exists pc_le_pen_nonempty_chain_next_minimal. pc_le_pen_nonempty_chain_next_minimal + (pen_following_nonempty_chain) = (pen_comparison_nonempty_chain_next))))))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 10 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro b</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro c</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro k</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro hl</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>intro hk</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>cases hl</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>exfalso</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>apply hk</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>exact hl_left</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>exact hl_right</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v29 checked use</dd><dt>First admission</dt><dd>Alpha v28</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>856 / 862</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 862 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>12 / 9</dd>
+      <dt>Statement SHA-256</dt><dd><code>366b76b499434780273f4fb79ee5f1b7d7ec92b69a1bc815fb7682586556d8f6</code></dd>
+      <dt>Script SHA-256</dt><dd><code>a55821023067c2982355c26b5afdaa7ebf727ba94bb321ebf8d000ef9b41ad5b</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.prime_enumeration_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v29/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v29", "best-approximation": "constructive-priority-layer-explorer", "cauchy-davenport": "constructive-second-wave-explorer-v29", "cornacchia": "constructive-second-wave-explorer-v29", "eisenstein-integers": "constructive-lower-layer-explorer-v29", "exponent-lifting": "constructive-priority-layer-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v29", "generalized-crt": "constructive-second-wave-explorer-v29", "hensel-lifting": "constructive-second-wave-explorer-v29", "integer-linear-algebra": "constructive-second-wave-explorer-v29", "multinomial-kummer": "constructive-second-wave-explorer-v29", "prime-count-chebyshev": "constructive-second-wave-explorer-v29", "prime-enumeration": "constructive-lower-layer-explorer-v29", "prime-valuation-support": "constructive-priority-layer-explorer", "squarefree-kernels": "constructive-priority-layer-explorer", "totient-products": "constructive-priority-layer-explorer"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-priority-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>
