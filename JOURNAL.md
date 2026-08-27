@@ -5444,3 +5444,38 @@ This is a local, additive publication checkpoint, not remote deployment. The
 Gaussian endpoint will be admitted independently in v30, and current application
 selectors will be advanced directly to that final release. Peano production's
 hosting-cache gate remains unchanged and its promotion is deliberately deferred.
+
+### 2026-08-28 — full Gaussian factorization bodies and conservative definitions
+
+The exact G082 statement now has 180 new ordinary HA theorem bodies in seven
+factories: Gaussian ring (65), divisibility (29), gcd/Bezout/primality (14),
+constructive finite factor search (23), factorization existence (28), product
+reindexing (3), and witnessed uniqueness (18). These contain 673 declared
+dependency edges and 7,859 tactic commands. The foundation/reindexing suites
+passed 961 tests; the search/existence/uniqueness suites passed 2,724, including
+fresh bounded kernel replays and actual Gaussian-code instances. All seven
+mathematical sources, tests and their three RFCs are frozen.
+
+The full root, `gaussian_unique_prime_factorization`, has statement SHA-256
+`57abdbebab6835ebe1fecb15f4229f2eee579b7d67c22638345cc0deb6e20219`.
+From valid canonical code and nonzeroness alone it constructs an actual unit,
+a finite list of elements with the prime-divisor property, and an actual
+Gaussian product. For every competitor it constructs equal lengths and a
+bounded, injective, surjective beta-coded map with an actual unit witness at
+every match. Repeated factors and empty factorizations of units are covered;
+zero is excluded. The multiplicative identity is Gaussian code six. No claim
+of sorted primary representatives, literal list uniqueness, Gaussian-prime
+classification, or Eisenstein factorization is added.
+
+Twenty conservative definitions ND0208–ND0227 retain every one of the 264
+historical definition objects. The resulting reviewed DAG has 284 definitions
+and 560 edges. All 456 new DAG/notation tests pass, including exact AST recovery
+for all 180 statements and every local proposition; the combined prior/new
+definition suites pass 1,117 tests. The generic planning `RingPrime` and the
+two-argument `GaussianFactorization` are not aliased to these actual predicates.
+
+The final closed dependency bundle and its independent Lean acceptance remain
+a separate gate. A monolithic reconstruction hit the unchanged CPU limit, so
+bounded, independently checked sections are being assembled and the combined
+artifact will be freshly checked before admission. This body checkpoint alone
+does not grant Alpha checked use or imply deployment.
