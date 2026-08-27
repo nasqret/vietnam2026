@@ -85,6 +85,53 @@ MAX_EXPLORER_CATALOG_BYTES = 64 * 1024 * 1024
 MAX_EXPLORER_FAMILIES = 512
 
 
+@dataclass(frozen=True, slots=True)
+class ConstructivePublication:
+    """Exact presentation schema and admission history, not proof authority."""
+
+    schema: str
+    current_version: str
+    first_enrolled_version: str
+    first_catalog_sha256: str | None = None
+
+
+CONSTRUCTIVE_PUBLICATIONS = {
+    "constructive-lower-layer-explorer": ConstructivePublication(
+        "peano-lab-constructive-lower-layer-explorer-v1-manifest", "v28", "v28"
+    ),
+    "constructive-second-wave-explorer-v28": ConstructivePublication(
+        "peano-lab-constructive-second-wave-explorer-v1-manifest",
+        "v28",
+        "v27",
+        "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6",
+    ),
+    # The original directory remains the immutable v27 publication. Relabeling
+    # its manifest does not make it the current v28 successor.
+    "constructive-second-wave-explorer": ConstructivePublication(
+        "peano-lab-constructive-second-wave-explorer-v1-manifest",
+        "v27",
+        "v27",
+        "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6",
+    ),
+}
+
+
+def _constructive_explorer_segment(segment: str) -> bool:
+    return (
+        segment in CONSTRUCTIVE_PUBLICATIONS
+        or CONSTRUCTIVE_EXPLORER_SEGMENT.fullmatch(segment) is not None
+    )
+
+
+def _constructive_explorer_candidate(segment: str) -> bool:
+    # Classification includes malformed/versioned spellings so they cannot
+    # bypass manifest review through the generic legacy graph fallback.
+    # Authorization still requires the original exact grammar or the explicit
+    # publication mapping above; no arbitrary version suffix is approved.
+    folded = segment.lower()
+    return folded.startswith("constructive-") and "-explorer" in folded
+
+
 class ServiceError(ValueError):
     """An unsafe request, job transition, or generated artifact was rejected."""
 
@@ -1303,7 +1350,7 @@ class LeanStrandServer(ThreadingHTTPServer):
                 or directory.is_symlink()
                 or not directory.is_dir()
                 or not directory.resolve().is_relative_to(self.static_directory)
-                or CONSTRUCTIVE_EXPLORER_SEGMENT.fullmatch(directory.name) is None
+                or not _constructive_explorer_segment(directory.name)
                 or type(slug) is not str
                 or CONSTRUCTIVE_FAMILY_SLUG.fullmatch(slug) is None
             ):
@@ -1324,8 +1371,14 @@ class LeanStrandServer(ThreadingHTTPServer):
                 families = self._constructive_manifest_cache.get(key)
                 if families is None:
                     expected_schema = f"peano-lab-{directory.name}-v1"
+                    publication = CONSTRUCTIVE_PUBLICATIONS.get(directory.name)
+                    schemas = (
+                        {publication.schema}
+                        if publication is not None
+                        else {expected_schema, expected_schema + "-manifest"}
+                    )
                     if (
-                        manifest.get("schema") not in {expected_schema, expected_schema + "-manifest"}
+                        manifest.get("schema") not in schemas
                         or manifest.get("alpha_edition_version") != version
                         or (manifest.get("catalog_sha256") or manifest.get("alpha_catalog_sha256"))
                         != digest
@@ -1334,6 +1387,18 @@ class LeanStrandServer(ThreadingHTTPServer):
                             or manifest.get("alpha_edition_identity_sha256")
                         )
                         != identity
+                    ):
+                        return False
+                    if publication is not None and (
+                        version != publication.current_version
+                        or manifest.get("alpha_first_enrolled_version")
+                        != publication.first_enrolled_version
+                        or manifest.get("first_enrollment_catalog_sha256")
+                        != (publication.first_catalog_sha256 or digest)
+                        or (
+                            publication.first_enrolled_version == version
+                            and manifest.get("first_enrollment_catalog_sha256") != digest
+                        )
                     ):
                         return False
                     entries = manifest.get("families")
@@ -1600,7 +1665,7 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
         candidates = [
             (index, part)
             for index, part in enumerate(parts)
-            if part.startswith("constructive-") and part.endswith("-explorer")
+            if _constructive_explorer_candidate(part)
         ]
         if len(candidates) != 1:
             return False
@@ -1608,7 +1673,7 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
         if (
             index == 0
             or parts[index - 1] != "_static"
-            or CONSTRUCTIVE_EXPLORER_SEGMENT.fullmatch(segment) is None
+            or not _constructive_explorer_segment(segment)
         ):
             return False
         trailing = parts[index + 1 :]
@@ -1632,10 +1697,7 @@ class LeanStrandHandler(BaseHTTPRequestHandler):
             or path.stat().st_size > self.server.job_manager.limits.html_bytes
         ):
             return None
-        constructive = any(
-            part.startswith("constructive-") and part.endswith("-explorer")
-            for part in parts
-        )
+        constructive = any(_constructive_explorer_candidate(part) for part in parts)
         if constructive:
             eligible = self._reviewed_constructive_request(path, parts)
         else:

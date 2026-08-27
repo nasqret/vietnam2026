@@ -5262,3 +5262,16 @@ fixtures. Current atlas/book/deployment contracts pass another 382 tests;
 the UI, worker, CLI, and Lean strand integration passes 693. Four representative
 Stable/v26/v27/v28 CLI exports also compile in Lean. These checks preserve the
 historical first-admission evidence and do not promote any Alpha row to Stable.
+
+The separate delivery integration authenticates the explicit v28 explorer
+publication paths while retaining v27 first-admission hashes. All 216 Lean
+service tests pass, including real read-only publication checks and rejection
+of forged versioned paths; the live operator-owned process was not restarted.
+CI now checks out the public Lean companion at
+`d2903c8bd507b7e4458b1249f840a4e274befdbf`, provisions its pinned Lean 4.31.0,
+and checks both verifier executables. A narrowly scoped pytest ID hook avoids
+decimal conversion of huge integer parameters without changing their values,
+Python's guard, proof limits, or the eight full test shards. The 30 environment
+regressions and all 200 frozen binary-execution tests pass on Python 3.12;
+four existing sharding tests pass. Remote CI and the exact CI toolchain build
+remain separate, not-yet-observed gates at this checkpoint.

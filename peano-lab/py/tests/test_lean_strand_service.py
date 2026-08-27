@@ -1,8 +1,9 @@
 """Safe HTTP, compiler-receipt, artifact, and concurrency proof-service tests.
 
 Every exporter process in this suite is a tiny in-memory fake: no test replays
-an Alpha theorem, launches Lean, touches a public release, or reads sibling
-private companion source.
+an Alpha theorem, launches Lean, rewrites a public release, or reads sibling
+private companion source. Actual publication checks are read-only and do not
+create a listening server.
 """
 
 from __future__ import annotations
@@ -12,11 +13,13 @@ from functools import lru_cache
 from hashlib import sha256
 import io
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
 import threading
 import time
+from types import SimpleNamespace
 from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.request import HTTPRedirectHandler, Request, build_opener, urlopen
@@ -38,6 +41,72 @@ import serve_lean_strands as service  # noqa: E402
 
 LIVE_SOURCE = "theorem add_comm : True := by trivial\n"
 LIVE_URL = "https://live.lean-lang.org/#code=" + quote(LIVE_SOURCE, safe="")
+V27_FIRST_CATALOG_SHA256 = "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+CURRENT_PUBLICATIONS = {
+    "constructive-lower-layer-explorer": {
+        "schema": "peano-lab-constructive-lower-layer-explorer-v1-manifest",
+        "first": "v28",
+        "slug": "arithmetic-foundations",
+        "tag": "AF0001",
+        "slugs": {"arithmetic-foundations", "prime-enumeration", "gaussian-integers", "eisenstein-integers"},
+    },
+    "constructive-second-wave-explorer-v28": {
+        "schema": "peano-lab-constructive-second-wave-explorer-v1-manifest",
+        "first": "v27",
+        "slug": "integer-linear-algebra",
+        "tag": "DL0028",
+        "slugs": {
+            "integer-linear-algebra", "hensel-lifting", "generalized-crt",
+            "multinomial-kummer", "prime-count-chebyshev", "cornacchia", "cauchy-davenport",
+        },
+    },
+}
+
+
+def install_test_release(root: Path, *, version: str = "v28") -> tuple[str, str]:
+    """A tiny, consistently hashed owned release for isolated HTTP tests."""
+
+    identity = "c" * 64
+    count = 2764
+    catalog = root / "artifacts/peano-library/alpha" / f"catalog-{version}.json"
+    catalog.parent.mkdir(parents=True, exist_ok=True)
+    catalog.write_bytes(json.dumps({
+        "schema": f"peano-library-alpha-snapshot-{version}",
+        "theorem_count": count, "checked_use_count": count,
+    }, sort_keys=True).encode("utf-8"))
+    digest = sha256(catalog.read_bytes()).hexdigest()
+    channel = root / "artifacts/peano-library" / f"channels-{version}.json"
+    channel.write_text(json.dumps({
+        "schema": f"peano-library-channels-{version}",
+        "channels": {"alpha": {
+            "artifact_path": f"artifacts/peano-library/alpha/catalog-{version}.json",
+            "artifact_sha256": digest, "edition_identity_sha256": identity,
+            "theorem_count": count, "checked_use_count": count,
+        }},
+    }), encoding="utf-8")
+    campaign = root / "book/_static/constructive-grand-campaign/campaign.json"
+    campaign.parent.mkdir(parents=True, exist_ok=True)
+    campaign.write_text(json.dumps({
+        "schema": "constructive-grand-campaign-v1",
+        "meta": {"current_alpha_version": version, "current_alpha_checked_use_count": count},
+        "ambitious_boundaries": {f"alpha_{version}_edition": {
+            "role": "current_immutable_release", "catalog_sha256": digest,
+            "identity_sha256": identity, "theorem_count": count, "checked_use_count": count,
+        }},
+    }), encoding="utf-8")
+    return digest, identity
+
+
+def non_listening_review_server(root: Path) -> service.LeanStrandServer:
+    """Use the real file/owner/hash review without sockets or proof workers."""
+
+    server = object.__new__(service.LeanStrandServer)
+    server.static_directory = root.resolve()
+    server.job_manager = SimpleNamespace(limits=service.ServiceLimits())
+    server._constructive_authority_lock = threading.RLock()
+    server._constructive_release_cache = {}
+    server._constructive_manifest_cache = {}
+    return server
 
 
 @lru_cache(maxsize=1)
@@ -351,6 +420,38 @@ def static_root(tmp_path: Path) -> Path:
         graph.write_text("<html><head><title>Proof</title></head><body>proof</body></html>", encoding="utf-8")
     (root / "public.txt").write_text("public\n", encoding="utf-8")
     return root
+
+
+@pytest.fixture()
+def v28_static_root(static_root: Path) -> Path:
+    digest, identity = install_test_release(static_root)
+    publications = dict(CURRENT_PUBLICATIONS)
+    publications["constructive-second-wave-explorer"] = {
+        **CURRENT_PUBLICATIONS["constructive-second-wave-explorer-v28"],
+    }
+    for segment, publication in publications.items():
+        historical = segment == "constructive-second-wave-explorer"
+        directory = static_root / "book/_static" / segment
+        directory.mkdir(parents=True)
+        first = publication["first"]
+        (directory / "manifest.json").write_text(json.dumps({
+            "schema": publication["schema"],
+            "alpha_edition_version": "v27" if historical else "v28",
+            "catalog_sha256": V27_FIRST_CATALOG_SHA256 if historical else digest,
+            "edition_identity_sha256": "d" * 64 if historical else identity,
+            "alpha_first_enrolled_version": first,
+            "first_enrollment_catalog_sha256": digest if first == "v28" else V27_FIRST_CATALOG_SHA256,
+            "families": [{"slug": publication["slug"], "theorem_count": 1}],
+        }), encoding="utf-8")
+        for suffix in (
+            "explorer/graph.html", "explorer/defined/graph.html",
+            f"explorer/tag/{publication['tag']}.html",
+            f"explorer/defined/tag/{publication['tag']}.html",
+        ):
+            page = directory / publication["slug"] / suffix
+            page.parent.mkdir(parents=True, exist_ok=True)
+            page.write_text("<html><head><title>Proof</title></head><body>proof</body></html>", encoding="utf-8")
+    return static_root
 
 
 @pytest.fixture()
@@ -1232,6 +1333,241 @@ def test_constructive_release_cache_cannot_preserve_tampered_catalog_authority(
 
     assert status == 200
     assert b"lean-selector.js" not in unreviewed
+
+
+@pytest.mark.parametrize("publication", tuple(CURRENT_PUBLICATIONS))
+@pytest.mark.parametrize("shape", (
+    "explorer/tag/{tag}.html", "explorer/defined/tag/{tag}.html",
+    "explorer/graph.html", "explorer/defined/graph.html",
+))
+def test_current_v28_publications_have_reviewed_exact_and_graph_controls(
+    http_server: tuple[str, service.LeanStrandServer],
+    v28_static_root: Path,
+    publication: str,
+    shape: str,
+) -> None:
+    base, server = http_server
+    selected = CURRENT_PUBLICATIONS[publication]
+    directory = v28_static_root / "book/_static" / publication
+    assert server.reviewed_constructive_family(directory, selected["slug"])
+    path = f"/book/_static/{publication}/{selected['slug']}/{shape.format(tag=selected['tag'])}"
+    original = (v28_static_root / path.lstrip("/")).read_bytes()
+
+    status, content, headers = request(base, path + "?v=current&target=checked")
+
+    assert status == 200
+    assert content.count(b"lean-selector.js") == content.count(b"lean-selector.css") == 1
+    assert content.index(b"lean-selector.js") < content.index(b"</head>")
+    assert (v28_static_root / path.lstrip("/")).read_bytes() == original
+    head_status, head_content, head_headers = request(base, path, method="HEAD")
+    assert head_status == 200 and head_content == b""
+    assert head_headers["Content-Length"] == headers["Content-Length"] == str(len(content))
+
+
+@pytest.mark.parametrize("publication", tuple(CURRENT_PUBLICATIONS))
+@pytest.mark.parametrize("tampering", (
+    "missing_manifest", "directory_derived_schema", "schema_without_manifest",
+    "wrong_current_version", "wrong_catalog", "wrong_identity",
+    "missing_first_version", "wrong_first_version", "missing_first_catalog", "wrong_first_catalog",
+    "zero_checked_theorems", "bool_checked_theorems", "duplicate_family", "unknown_family",
+    "wrong_family_version", "duplicate_json_field", "nonfinite_json_number",
+    "manifest_symlink", "wrong_owner", "oversized_manifest", "corrupt_catalog",
+))
+def test_current_v28_publication_review_fails_closed_after_manifest_tampering(
+    http_server: tuple[str, service.LeanStrandServer],
+    v28_static_root: Path,
+    monkeypatch: pytest.MonkeyPatch,
+    publication: str,
+    tampering: str,
+) -> None:
+    base, server = http_server
+    selected = CURRENT_PUBLICATIONS[publication]
+    directory = v28_static_root / "book/_static" / publication
+    manifest_path = directory / "manifest.json"
+    manifest = json.loads(manifest_path.read_bytes())
+    # Populate both real authority caches before invalidating the owned input.
+    assert server.reviewed_constructive_family(directory, selected["slug"])
+    assert server._constructive_release_cache and server._constructive_manifest_cache
+
+    if tampering == "missing_manifest":
+        manifest_path.rename(directory / "manifest-unreviewed.json")
+    elif tampering == "directory_derived_schema":
+        manifest["schema"] = (
+            f"peano-lab-{publication}-v1-manifest"
+            if publication.endswith("-v28")
+            else f"peano-lab-{publication}-v2-manifest"
+        )
+    elif tampering == "schema_without_manifest":
+        manifest["schema"] = manifest["schema"].removesuffix("-manifest")
+    elif tampering == "wrong_current_version":
+        manifest["alpha_edition_version"] = "v29"
+    elif tampering == "wrong_catalog":
+        manifest["catalog_sha256"] = "0" * 64
+    elif tampering == "wrong_identity":
+        manifest["edition_identity_sha256"] = "0" * 64
+    elif tampering == "missing_first_version":
+        del manifest["alpha_first_enrolled_version"]
+    elif tampering == "wrong_first_version":
+        manifest["alpha_first_enrolled_version"] = "v27" if selected["first"] == "v28" else "v28"
+    elif tampering == "missing_first_catalog":
+        del manifest["first_enrollment_catalog_sha256"]
+    elif tampering == "wrong_first_catalog":
+        manifest["first_enrollment_catalog_sha256"] = "0" * 64
+    elif tampering == "zero_checked_theorems":
+        manifest["families"][0]["theorem_count"] = 0
+    elif tampering == "bool_checked_theorems":
+        manifest["families"][0]["theorem_count"] = True
+    elif tampering == "duplicate_family":
+        manifest["families"].append(dict(manifest["families"][0]))
+    elif tampering == "unknown_family":
+        manifest["families"][0]["slug"] = "unreviewed-family"
+    elif tampering == "wrong_family_version":
+        manifest["families"][0]["alpha_edition_version"] = "v27"
+    elif tampering == "duplicate_json_field":
+        manifest_path.write_text('{"schema":"one","schema":"two"}', encoding="utf-8")
+    elif tampering == "nonfinite_json_number":
+        manifest_path.write_text('{"schema":NaN}', encoding="utf-8")
+    elif tampering == "manifest_symlink":
+        original = directory / "manifest-original.json"
+        manifest_path.rename(original)
+        manifest_path.symlink_to(original)
+    elif tampering == "wrong_owner":
+        ordinary_stat = Path.stat
+
+        def different_owner(path: Path, *args: object, **kwargs: object) -> os.stat_result:
+            information = ordinary_stat(path, *args, **kwargs)
+            if path == manifest_path:
+                fields = list(information)
+                fields[4] = information.st_uid + 1
+                return os.stat_result(fields)
+            return information
+
+        monkeypatch.setattr(Path, "stat", different_owner)
+    elif tampering == "oversized_manifest":
+        manifest_path.write_bytes(manifest_path.read_bytes() + b" " * (service.MAX_EXPLORER_MANIFEST_BYTES + 1))
+    elif tampering == "corrupt_catalog":
+        catalog = v28_static_root / "artifacts/peano-library/alpha/catalog-v28.json"
+        catalog.write_bytes(catalog.read_bytes() + b" ")
+
+    if tampering not in {
+        "missing_manifest", "duplicate_json_field", "nonfinite_json_number", "manifest_symlink",
+        "wrong_owner", "oversized_manifest", "corrupt_catalog",
+    }:
+        manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    assert not server.reviewed_constructive_family(directory, selected["slug"])
+    for suffix in (f"explorer/defined/tag/{selected['tag']}.html", "explorer/defined/graph.html"):
+        status, content, _ = request(base, f"/book/_static/{publication}/{selected['slug']}/{suffix}")
+        assert status == 200
+        assert b"lean-selector.js" not in content and b"lean-selector.css" not in content
+
+
+@pytest.mark.parametrize("segment", (
+    "constructive-second-wave-explorer-v29", "constructive-second-wave-explorer-v27",
+    "constructive-second-wave-explorer-v028", "constructive-second-wave-explorer-v28-extra",
+    "constructive-second-wave-explorer-V28", "constructive-lower-layer-explorer-v28",
+    "constructive-unreviewed-explorer-v28", "Constructive-second-wave-explorer-v28",
+    "constructive-second_wave-explorer-v28",
+))
+def test_unknown_versioned_publications_cannot_fall_through_to_legacy_graph_controls(
+    http_server: tuple[str, service.LeanStrandServer],
+    v28_static_root: Path,
+    segment: str,
+) -> None:
+    base, server = http_server
+    reviewed = v28_static_root / "book/_static/constructive-second-wave-explorer-v28"
+    manifest = json.loads((reviewed / "manifest.json").read_bytes())
+    directory = v28_static_root / "book/_static" / segment
+    # Case-only forged spellings alias the fixture directory on default macOS
+    # filesystems. Request spelling must still fail the exact route policy.
+    directory.mkdir(parents=True, exist_ok=True)
+    # All release/family fields are valid; neither a plausible derived schema
+    # nor the real successor schema authorizes an unreviewed directory name.
+    for schema in (manifest["schema"], f"peano-lab-{segment}-v1-manifest"):
+        manifest["schema"] = schema
+        (directory / "manifest.json").write_text(json.dumps(manifest), encoding="utf-8")
+        assert not server.reviewed_constructive_family(directory, "integer-linear-algebra")
+        for suffix in ("explorer/graph.html", "explorer/defined/graph.html", "explorer/defined/tag/DL0028.html"):
+            page = directory / "integer-linear-algebra" / suffix
+            page.parent.mkdir(parents=True, exist_ok=True)
+            page.write_text("<html><head></head><body>unreviewed</body></html>", encoding="utf-8")
+            status, content, _ = request(base, "/" + page.relative_to(v28_static_root).as_posix())
+            assert status == 200
+            assert b"lean-selector.js" not in content and b"lean-selector.css" not in content
+
+
+@pytest.mark.parametrize("relabel_current", (False, True))
+def test_frozen_v27_directory_is_not_the_current_v28_publication(
+    http_server: tuple[str, service.LeanStrandServer],
+    v28_static_root: Path,
+    relabel_current: bool,
+) -> None:
+    base, server = http_server
+    directory = v28_static_root / "book/_static/constructive-second-wave-explorer"
+    if relabel_current:
+        current = v28_static_root / "book/_static/constructive-second-wave-explorer-v28/manifest.json"
+        (directory / "manifest.json").write_bytes(current.read_bytes())
+    assert not server.reviewed_constructive_family(directory, "integer-linear-algebra")
+    for suffix in ("explorer/defined/tag/DL0028.html", "explorer/tag/DL0028.html", "explorer/defined/graph.html"):
+        status, content, _ = request(base, "/" + (directory / "integer-linear-algebra" / suffix).relative_to(v28_static_root).as_posix())
+        assert status == 200 and b"lean-selector.js" not in content
+
+
+@pytest.mark.parametrize("version", ("v27", "v29"))
+def test_known_successor_mapping_requires_v28_even_with_a_consistent_other_release(
+    v28_static_root: Path,
+    version: str,
+) -> None:
+    digest, identity = install_test_release(v28_static_root, version=version)
+    directory = v28_static_root / "book/_static/constructive-second-wave-explorer-v28"
+    manifest_path = directory / "manifest.json"
+    manifest = json.loads(manifest_path.read_bytes())
+    manifest.update(alpha_edition_version=version, catalog_sha256=digest, edition_identity_sha256=identity)
+    manifest_path.write_text(json.dumps(manifest), encoding="utf-8")
+    server = non_listening_review_server(v28_static_root)
+    assert server._current_constructive_release(directory.parent, owner=directory.stat().st_uid) == (version, digest, identity)
+    assert not server.reviewed_constructive_family(directory, "integer-linear-algebra")
+
+
+@pytest.mark.parametrize("publication", tuple(CURRENT_PUBLICATIONS))
+def test_actual_v28_publications_and_all_root_panels_pass_read_only_release_review(publication: str) -> None:
+    server = non_listening_review_server(ROOT)
+    handler = object.__new__(service.LeanStrandHandler)
+    handler.server = server
+    directory = ROOT / "book/_static" / publication
+    manifest_path = directory / "manifest.json"
+    manifest_bytes = manifest_path.read_bytes()
+    manifest = json.loads(manifest_bytes)
+    assert manifest["schema"] == CURRENT_PUBLICATIONS[publication]["schema"]
+    assert manifest["alpha_edition_version"] == "v28"
+    assert manifest["alpha_first_enrolled_version"] == CURRENT_PUBLICATIONS[publication]["first"]
+    assert {family["slug"] for family in manifest["families"]} == CURRENT_PUBLICATIONS[publication]["slugs"]
+
+    for family in manifest["families"]:
+        assert server.reviewed_constructive_family(directory, family["slug"])
+        suffixes = ["explorer/defined/graph.html"]
+        for tag in family["root_tags"].values():
+            suffixes.extend((f"explorer/tag/{tag}.html", f"explorer/defined/tag/{tag}.html"))
+        for suffix in suffixes:
+            page = directory / family["slug"] / suffix
+            original = page.read_bytes()
+            enhanced = handler._inject_selector(page, page.relative_to(ROOT).parts)
+            assert enhanced is not None
+            assert b"lean-selector.js" in enhanced and b"lean-selector.css" in enhanced
+            assert page.read_bytes() == original
+    assert manifest_path.read_bytes() == manifest_bytes
+
+
+def test_actual_frozen_v27_publication_remains_unreviewed_for_current_browser() -> None:
+    server = non_listening_review_server(ROOT)
+    handler = object.__new__(service.LeanStrandHandler)
+    handler.server = server
+    directory = ROOT / "book/_static/constructive-second-wave-explorer"
+    manifest = json.loads((directory / "manifest.json").read_bytes())
+    assert manifest["alpha_edition_version"] == manifest["alpha_first_enrolled_version"] == "v27"
+    for family in manifest["families"]:
+        assert not server.reviewed_constructive_family(directory, family["slug"])
+        page = directory / family["slug"] / "explorer/defined/graph.html"
+        assert handler._inject_selector(page, page.relative_to(ROOT).parts) is None
 
 
 def test_http_full_mocked_job_progress_and_safe_downloads(
