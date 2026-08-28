@@ -5774,3 +5774,58 @@ The published Alpha release is exactly catalog revision `ac7111ec14ff`, with
 G010, G036 (odd-prime LTE), and G082. This adds 458 theorem bodies and 51
 conservative definitions, without claiming completion of the remaining
 blueprint campaigns.
+
+### 2026-08-28 — 170 bottom-layer proofs committed and deployed as research checkpoints
+
+The user separately authorized commit and deployment of the completed lower
+foundations. The implementation is `72f6a4ae`, the public integration is
+`010bb985`, and final deployed source is
+`f1971ae7c2d240d7581f9bf5216c1e396520ef85`, all pushed on
+`proof/lower-foundations-v31-20260828`. This entry and the full
+[publication receipt](research/arithmetic-library/bottom-layer-publication-receipt-2026-08-28.md)
+are recorded after the observed deployment. No main-history rewrite, force
+push, unrelated Hydra cleanup or merge was performed.
+
+The live `/proofs/checkpoints/` section contains Euler units (32 theorems),
+prime fields (87), Möbius values (21), and signed finite sums (30). All 170
+statements are distinct from each other and every v30 parent statement.
+Four complete HA bundles passed the independently compiled Lean checker;
+seven principal ordinary empty-context roots were freshly checked as well.
+There are 34 new conservative definition identities, retaining every earlier
+identity. G014 is proved at its exact guarded statement; full Möbius inversion
+and general prime-power field construction remain open.
+
+These are public, complete proof checkpoints, not Alpha or Stable admissions.
+The separate public adapter preserves all proof, tactic, definition and
+literal source/bundle bytes. It provides 92 exact historical prerequisite
+page routes and 15 honest complete-bundle fallbacks. The original 493-file
+local snapshot remains unchanged. The public 495-file manifest is
+`f800d3436d7b053a6ba233e2c1014d7a1b8e7eb613ba3d9c36902ca5ede623ab`;
+its payload totals 17,256,376 bytes. The broad training-checkpoint ignore rule
+now has narrowly scoped exceptions for the actual proof-certificate copies.
+
+The final focused test groups passed 1,181 cases. The original serial full
+proof staging target passed, including all frozen flagship checks, 904
+historical theorems, current Gaussian publication and fresh checkpoint checks.
+Four final staged-site audits passed for 10,067 files, 9,861 HTML pages,
+615,944 local references, all 48 typed graphs, 143 graph/dashboard/reader
+runtime cases, 263 exact-navigation runtime cases, and 4,912 inline scripts.
+No visual browser test is claimed: the browser connection was unavailable.
+This is not a repository-wide green-CI claim.
+
+The read-only upload preview showed zero deletions: the new checkpoint
+subtree and only two changed existing HTML contents (hub and atlas navigation).
+The isolated proof-site rsync completed successfully. A complete read-only
+remote checksum comparison then found zero differences or extra files,
+excluding Finder metadata. Independent bounded, TLS-verified HTTPS checks
+matched 617 public objects and 39,066,732 bytes exactly against staging;
+all five legacy documentation redirects also passed. The remote checkpoint
+manifest, campaign JSON and definition JSON hashes were checked separately.
+
+Alpha remains v30 with 3,222 entries and catalog revision `ac7111ec14ff`;
+Stable remains the same 432 entries. No catalog, kernel or service limit was
+raised. The Alpha-only Lean selector excludes the checkpoint namespace.
+Local app packaging was refreshed to `a-86993f944ca2` with 483 Python files
+and 505 verified manifest entries, repairing the initial stale inventory
+checks. Neither Peano channel was deployed. The production cache policy,
+gateway, mailbox broker and running Lean worker were untouched.

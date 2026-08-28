@@ -160,6 +160,10 @@ app is `a-86993f944ca2` (483 browser Python sources, 505 manifest entries).
 This keeps checkout and local staging reproducible; it does not admit those
 modules' theorems or deploy either Peano channel. Production remains deferred.
 
+The [2026-08-28 checkpoint deployment receipt](../research/arithmetic-library/bottom-layer-publication-receipt-2026-08-28.md)
+records the actual pushed source, complete staging audits and exact live HTTPS
+verification, separately from the immutable mathematical proof receipts.
+
 ## Interactive Lean proof building
 
 The theorem-graph **Build Lean proof** action needs the bounded Python/Lean

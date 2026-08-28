@@ -183,6 +183,13 @@ generated browser source inventory. The reproducible local app manifest is
 This fixes the source-inventory integration checks without admitting the new
 theorems or publishing either Peano application channel.
 
+Publication completed and was checked live on 2026-08-28. The
+[deployment receipt](../research/arithmetic-library/bottom-layer-publication-receipt-2026-08-28.md)
+records the pushed source commits, complete staged-site checks, zero-difference
+remote checksum comparison, and 617 exact HTTPS object comparisons. The
+[checkpoint library](https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/)
+is live; Alpha and Stable remain unchanged.
+
 ## Next exact G007 sequence
 
 1. **Masks and append:** construct actual Möbius-value tables and signed
