@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>FP0004 — prime_field_residue_input_equal — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0004.html"><meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0004.html"><meta property="og:type" content="website"><meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png"><meta name="proof-publication-scope" content="public_research_checkpoint"></head>
+<body class="pa-defined-proof-site" data-family="prime-fields"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/FP0004.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=FP0004&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Research checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a><a data-public-proof-library href="../../../../../?v=ac7111ec14ff">Proof library</a></nav>
+  <p class="pd-tag">FP0004</p><h1>prime_field_residue_input_equal</h1><p class="pd-callout pa-callout" data-public-checkpoint-notice>Public research checkpoint, not admitted to Alpha or Stable. Alpha v30 remains 3222 checked-use theorems; Stable remains 432. The on-demand Alpha Lean service does not yet expose these checkpoint theorems; their independently checked literal bundles and unchanged sources are available below.</p>
+  <p>Equality transports the dividend of an actual residue graph.</p><p class="pd-status">Public research checkpoint: original HA and independently compiled Lean verified; not Alpha-enrolled, no Alpha checked-use authority; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">This checkpoint constructs prime-order fields (k=1), with genuine finite arithmetic tables, cardinality, and characteristic. Inversion is proved only for nonzero elements; the table&#x27;s zero entry is a zero-to-zero convention. G091 for every prime power p^k, with an irreducible polynomial of degree k, remains open. No extension-field construction or G091 closure is claimed.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ p. ∀ n. ∀ m. ∀ r. n = m → <a class="pd-definition-ref" data-definition="ND0023" href="../definition/ND0023.html?v=ac7111ec14ff">CanonicalModularResidue(p,m,r)</a> → <a class="pd-definition-ref" data-definition="ND0023" href="../definition/ND0023.html?v=ac7111ec14ff">CanonicalModularResidue(p,n,r)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0023.html?v=ac7111ec14ff">CanonicalModularResidue(m,a,r) · 2</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall p n m r. n = m -&gt; (((exists pfa_gap_input_equal_sourcebound. pfa_gap_input_equal_sourcebound + S (r) = (p)) /\ ((exists pfa_offset_left_input_equal_sourcecongruence pfa_offset_right_input_equal_sourcecongruence. (m) + (p) * pfa_offset_left_input_equal_sourcecongruence = (r) + (p) * pfa_offset_right_input_equal_sourcecongruence)))) -&gt; (((exists pfa_gap_input_equal_targetbound. pfa_gap_input_equal_targetbound + S (r) = (p)) /\ ((exists pfa_offset_left_input_equal_targetcongruence pfa_offset_right_input_equal_targetcongruence. (n) + (p) * pfa_offset_left_input_equal_targetcongruence = (r) + (p) * pfa_offset_right_input_equal_targetcongruence))))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 8 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="proof-line-0001" data-line="1"><a class="pd-line-number" href="#proof-line-0001">0001</a><code>intro p</code></li><li class="pd-proof-line" id="proof-line-0002" data-line="2"><a class="pd-line-number" href="#proof-line-0002">0002</a><code>intro n</code></li><li class="pd-proof-line" id="proof-line-0003" data-line="3"><a class="pd-line-number" href="#proof-line-0003">0003</a><code>intro m</code></li><li class="pd-proof-line" id="proof-line-0004" data-line="4"><a class="pd-line-number" href="#proof-line-0004">0004</a><code>intro r</code></li><li class="pd-proof-line" id="proof-line-0005" data-line="5"><a class="pd-line-number" href="#proof-line-0005">0005</a><code>intro heq</code></li><li class="pd-proof-line" id="proof-line-0006" data-line="6"><a class="pd-line-number" href="#proof-line-0006">0006</a><code>intro hr</code></li><li class="pd-proof-line" id="proof-line-0007" data-line="7"><a class="pd-line-number" href="#proof-line-0007">0007</a><code>rewrite heq</code></li><li class="pd-proof-line" id="proof-line-0008" data-line="8"><a class="pd-line-number" href="#proof-line-0008">0008</a><code>exact hr</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Public original-HA + independent Lean research checkpoint; no library admission</dd><dt>Alpha admission / checked use</dt><dd>none</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>143 / 228</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 228 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>10 / 9</dd>
+      <dt>Statement SHA-256</dt><dd><code>8a67e6b41afbd90d000146e21cc49bd896ad98a1f49f9abdb1a9dad0ed415f15</code></dd>
+      <dt>Script SHA-256</dt><dd><code>87a0c719d55d617ba00b5be0dc0d4e525ee6717ea8b3bd49355e429b610b422e</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>688e7141106c19adec6fa52a0ae77af3d389b77df512622adc93bd3b0c7ba04e</code></dd>
+      <dt>Exact source module</dt><dd><a href="../../../../sources/prime_field_arithmetic_candidate.py?v=ac7111ec14ff"><code>peano_lab.library.prime_field_arithmetic_candidate</code></a></dd>
+      <dt>Literal bundle and checkpoint receipt</dt><dd><a href="../../../checkpoint.html?v=ac7111ec14ff#theorem-prime_field_residue_input_equal">Inspect exact evidence</a></dd></dl>
+</aside></main></body>
+</html>

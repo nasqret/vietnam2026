@@ -104,6 +104,31 @@ def test_public_assets_are_byte_identical_to_the_reviewed_shared_selector(
         ).read_bytes()
 
 
+def test_non_admitted_checkpoint_pages_never_receive_alpha_service_controls(
+    public_selector: ModuleType,
+    proof_stage: Path,
+) -> None:
+    originals = {}
+    for relative, marker in (
+        ("checkpoints/euler-units/explorer/defined/graph.html", "pd-graph-details"),
+        ("checkpoints/euler-units/explorer/defined/tag/EU0022.html", "pd-theorem-layout"),
+        ("checkpoints/euler-units/explorer/tag/EU0022.html", "pa-proof-sidebar"),
+    ):
+        path = proof_stage / relative
+        path.parent.mkdir(parents=True, exist_ok=True)
+        original = ('<html><head></head><body><aside class="' + marker
+                    + '">HA/Lean checked; not Alpha admitted</aside></body></html>').encode()
+        path.write_bytes(original)
+        originals[path] = original
+
+    result = public_selector.stage_public_lean_selector(proof_stage)
+    checked = public_selector.stage_public_lean_selector(proof_stage, check=True)
+
+    assert result.candidates == checked.candidates == 6
+    assert all(path.read_bytes() == original for path, original in originals.items())
+    assert all(b"lean-selector.js" not in path.read_bytes() for path in originals)
+
+
 def test_public_selector_staging_is_idempotent_and_has_a_read_only_check(
     public_selector: ModuleType,
     proof_stage: Path,

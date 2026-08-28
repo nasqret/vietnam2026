@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EU0004 — euler_modular_unit_coprime — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/euler-units/explorer/defined/tag/EU0004.html"><meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/euler-units/explorer/defined/tag/EU0004.html"><meta property="og:type" content="website"><meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png"><meta name="proof-publication-scope" content="public_research_checkpoint"></head>
+<body class="pa-defined-proof-site" data-family="euler-units"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/EU0004.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=EU0004&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Research checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F02&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G014" href="../../../../grand-campaign/?view=goal&amp;focus=G014&amp;v=ac7111ec14ff">G014 milestone</a><a data-public-proof-library href="../../../../../?v=ac7111ec14ff">Proof library</a></nav>
+  <p class="pd-tag">EU0004</p><h1>euler_modular_unit_coprime</h1><p class="pd-callout pa-callout" data-public-checkpoint-notice>Public research checkpoint, not admitted to Alpha or Stable. Alpha v30 remains 3222 checked-use theorems; Stable remains 432. The on-demand Alpha Lean service does not yet expose these checkpoint theorems; their independently checked literal bundles and unchanged sources are available below.</p>
+  <p>An actual bounded inverse implies the frozen common-divisor coprimality graph.</p><p class="pd-status">Public research checkpoint: original HA and independently compiled Lean verified; not Alpha-enrolled, no Alpha checked-use authority; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">The exact G014 theorem is proved in this research checkpoint for m&gt;1 and genuinely invertible a. Phi counts coprime residues independently of the conclusion. The broader coprime theorem also handles m=1 by congruence, not by asserting that one is a canonical remainder. No multiplicative-order or RSA theorem is claimed. The published atlas and Alpha membership are unchanged.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ a. ∀ m. <a class="pd-definition-ref" data-definition="ND0237" href="../definition/ND0237.html?v=ac7111ec14ff">Unit(a,m)</a> → <a class="pd-definition-ref" data-definition="PD0005" href="../definition/PD0005.html?v=ac7111ec14ff">Coprime(a,m)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0237.html?v=ac7111ec14ff">Unit(a,m) · 1</a><a class="pd-chip" href="../definition/PD0005.html?v=ac7111ec14ff">Coprime(a,b) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip pd-external" href="../../../checkpoint.html?v=ac7111ec14ff#theorem-mod_inverse_implies_coprime">mod_inverse_implies_coprime · checked external prerequisite</a></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall a m. ((exists eut_gap_eu_unit_given_domain. eut_gap_eu_unit_given_domain + S (1) = (m)) /\ exists eu_inverse_unit_given. (exists eut_gap_eu_unit_given_bound. eut_gap_eu_unit_given_bound + S (eu_inverse_unit_given) = (m)) /\ (exists eu_mod_left_unit_given_inverse eu_mod_right_unit_given_inverse. ((a)*eu_inverse_unit_given) + (m) * eu_mod_left_unit_given_inverse = (1) + (m) * eu_mod_right_unit_given_inverse)) -&gt; (forall eut_divisor_eu_unit_coprime. (exists eut_left_eu_unit_coprime. (a) = eut_divisor_eu_unit_coprime * eut_left_eu_unit_coprime) -&gt; (exists eut_right_eu_unit_coprime. (m) = eut_divisor_eu_unit_coprime * eut_right_eu_unit_coprime) -&gt; eut_divisor_eu_unit_coprime = 1)</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 11 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="proof-line-0001" data-line="1"><a class="pd-line-number" href="#proof-line-0001">0001</a><code>intro a</code></li><li class="pd-proof-line" id="proof-line-0002" data-line="2"><a class="pd-line-number" href="#proof-line-0002">0002</a><code>intro m</code></li><li class="pd-proof-line" id="proof-line-0003" data-line="3"><a class="pd-line-number" href="#proof-line-0003">0003</a><code>intro hu</code></li><li class="pd-proof-line" id="proof-line-0004" data-line="4"><a class="pd-line-number" href="#proof-line-0004">0004</a><code>cases hu</code></li><li class="pd-proof-line" id="proof-line-0005" data-line="5"><a class="pd-line-number" href="#proof-line-0005">0005</a><code>cases hu_right</code></li><li class="pd-proof-line" id="proof-line-0006" data-line="6"><a class="pd-line-number" href="#proof-line-0006">0006</a><code>cases hu_right_witness</code></li><li class="pd-proof-line" id="proof-line-0007" data-line="7"><a class="pd-line-number" href="#proof-line-0007">0007</a><code>specialize mod_inverse_implies_coprime (a)</code></li><li class="pd-proof-line" id="proof-line-0008" data-line="8"><a class="pd-line-number" href="#proof-line-0008">0008</a><code>specialize mod_inverse_implies_coprime (m)</code></li><li class="pd-proof-line" id="proof-line-0009" data-line="9"><a class="pd-line-number" href="#proof-line-0009">0009</a><code>specialize mod_inverse_implies_coprime (x)</code></li><li class="pd-proof-line" id="proof-line-0010" data-line="10"><a class="pd-line-number" href="#proof-line-0010">0010</a><code>apply mod_inverse_implies_coprime</code></li><li class="pd-proof-line" id="proof-line-0011" data-line="11"><a class="pd-line-number" href="#proof-line-0011">0011</a><code>exact hu_right_witness_right</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Public original-HA + independent Lean research checkpoint; no library admission</dd><dt>Alpha admission / checked use</dt><dd>none</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>179 / 210</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 210 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>37 / 21</dd>
+      <dt>Statement SHA-256</dt><dd><code>b1bf1e0c0f5b08003abcb58464799ae1246411e44aceb18259e086b5c06dad1e</code></dd>
+      <dt>Script SHA-256</dt><dd><code>76a713478417df00f71e20cb74cbe8852776c3ac57d25bdd8be070d58ab59ba2</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>1edfcb7021a0869c2493383c75dea367d757be0b77f36fc6ad3f5fd18ed38210</code></dd>
+      <dt>Exact source module</dt><dd><a href="../../../../sources/euler_units_residue_candidate.py?v=ac7111ec14ff"><code>peano_lab.library.euler_units_residue_candidate</code></a></dd>
+      <dt>Literal bundle and checkpoint receipt</dt><dd><a href="../../../checkpoint.html?v=ac7111ec14ff#theorem-euler_modular_unit_coprime">Inspect exact evidence</a></dd></dl>
+</aside></main></body>
+</html>

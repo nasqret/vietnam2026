@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0237 — Unit(a,m) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/euler-units/explorer/defined/definition/ND0237.html"><meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/euler-units/explorer/defined/definition/ND0237.html"><meta property="og:type" content="website"><meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png"><meta name="proof-publication-scope" content="public_research_checkpoint"></head>
+<body class="pa-defined-proof-site" data-family="euler-units"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Research checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F02&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G014" href="../../../../grand-campaign/?view=goal&amp;focus=G014&amp;v=ac7111ec14ff">G014 milestone</a><a data-public-proof-library href="../../../../../?v=ac7111ec14ff">Proof library</a></nav>
+  <p class="pd-tag">ND0237</p><h1>Unit(a,m)</h1><p class="pd-callout pa-callout" data-public-checkpoint-notice>Public research checkpoint, not admitted to Alpha or Stable. Alpha v30 remains 3222 checked-use theorems; Stable remains 432. The on-demand Alpha Lean service does not yet expose these checkpoint theorems; their independently checked literal bundles and unchanged sources are available below.</p>
+  <p>Exactly m&gt;1 with a witnessed inverse b&lt;m and a*b congruent to one. Unlike the old UnitResidue range, this expresses genuine invertibility at composite moduli.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(1,m)</a> ∧ (∃ x. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(x,m)</a> ∧ <a class="pd-definition-ref" data-definition="PD0008" href="PD0008.html?v=ac7111ec14ff">ModEq(m,a · x,1)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>(exists eut_gap_eu_bottomlayer_domain. eut_gap_eu_bottomlayer_domain + S (1) = ((m))) /\ exists eu_inverse_bottomlayer. (exists eut_gap_eu_bottomlayer_bound. eut_gap_eu_bottomlayer_bound + S (eu_inverse_bottomlayer) = ((m))) /\ (exists eu_mod_left_bottomlayer_inverse eu_mod_right_bottomlayer_inverse. (((a))*eu_inverse_bottomlayer) + ((m)) * eu_mod_left_bottomlayer_inverse = (1) + ((m)) * eu_mod_right_bottomlayer_inverse)</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0008.html?v=ac7111ec14ff">ModEq(m,a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/EU0004.html?v=ac7111ec14ff">EU0004 · euler_modular_unit_coprime</a><a class="pd-chip" href="../tag/EU0005.html?v=ac7111ec14ff">EU0005 · euler_coprime_modular_unit</a><a class="pd-chip" href="../tag/EU0021.html?v=ac7111ec14ff">EU0021 · euler_modular_unit_totient_power</a><a class="pd-chip" href="../tag/EU0022.html?v=ac7111ec14ff">EU0022 · euler_theorem_for_units</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>2</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0237.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>98bd1a3d5eee7207680f39e32fc22cd57c8476769b00f29ecd261345d3b17052</code></dd>
+</dl></aside></main></body>
+</html>

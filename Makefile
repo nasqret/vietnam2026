@@ -40,7 +40,7 @@ PEANO_LEAN_PUBLIC_ARGS ?=
 override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override STAGELEANAPI := _deploy/lean-api
-override PEANOAPPID := a-541687a273a2
+override PEANOAPPID := a-86993f944ca2
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs stage-lean-api deploy-site deploy-lab deploy-lab-next deploy-peano \
@@ -66,6 +66,7 @@ help:
 	@echo "  make book-constructive-second-wave-current-explorer  publish unchanged v27/v28/v29 proofs under current v30 authority"
 	@echo "  make book-constructive-lower-layer-explorer  verify four frozen Alpha-v28 proof families"
 	@echo "  make book-constructive-gaussian-factorization-explorer  publish the complete Gaussian unique-factorization map"
+	@echo "  make book-constructive-bottom-layer-publication  verify four public research checkpoint maps without Alpha admission"
 	@echo "  make peano-library-alpha-v29-check  verify the exact four priority targets with all proof gates"
 	@echo "  make peano-library-alpha-v30-check  verify the complete Gaussian factorization release and current UI"
 	@echo "  make lean         build & axiom-check the Lean artifact"
@@ -312,6 +313,13 @@ book-constructive-priority-layer-explorer:
 
 book-constructive-second-wave-v28-explorer:
 	python3 scripts/upgrade_constructive_second_wave_publication_v28.py --check
+
+.PHONY: book-constructive-bottom-layer-publication
+
+# Public research checkpoints are complete proofs, not an Alpha promotion.
+# Verify the recorded snapshot and actual HA/Lean bundles before staging it.
+book-constructive-bottom-layer-publication:
+	PYTHONMALLOC=malloc python3 scripts/build_constructive_bottom_layer_publication.py --check
 
 book: book-atlas book-proof-explorer
 	rm -rf book/_build   # full rebuild: incremental Sphinx leaves stale sidebars after TOC changes
@@ -1632,7 +1640,7 @@ stage: book
 deploy-site: stage
 	rsync -avz --delete $(STAGE)/ $(SERVER):$(SITE)/
 
-stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book-constructive-next-layer-explorer book-constructive-advanced-layer-explorer book-constructive-transport-layer-explorer book-constructive-milestone-closure-explorer book-constructive-research-layer-explorer book-constructive-breakthrough-layer-explorer book-constructive-second-wave-current-explorer book-constructive-gaussian-factorization-explorer
+stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book-constructive-next-layer-explorer book-constructive-advanced-layer-explorer book-constructive-transport-layer-explorer book-constructive-milestone-closure-explorer book-constructive-research-layer-explorer book-constructive-breakthrough-layer-explorer book-constructive-second-wave-current-explorer book-constructive-gaussian-factorization-explorer book-constructive-bottom-layer-publication
 	@test "$$(shasum -a 256 book/_static/pa-proof-explorer/api/corpus.json | cut -d' ' -f1)" = \
 		"ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a" || \
 		{ echo "Immutable Alpha parent quadratic-reciprocity evidence corpus changed" >&2; exit 1; }
@@ -1878,6 +1886,10 @@ stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book
 		"$(STAGEPROOFS)/exponent-lifting/"
 	rsync -a --delete book/_static/constructive-gaussian-factorization-explorer/gaussian-factorization/ \
 		"$(STAGEPROOFS)/gaussian-factorization/"
+	mkdir -p "$(STAGEPROOFS)/checkpoints"
+	rsync -a --delete book/_static/constructive-bottom-layer-publication/ \
+		"$(STAGEPROOFS)/checkpoints/"
+	python3 scripts/stage_public_checkpoint_navigation.py --root "$(STAGEPROOFS)"
 	python3 scripts/stage_public_lean_selector.py \
 		--root "$(STAGEPROOFS)" \
 		--api-url "$(PEANO_LEAN_PUBLIC_API)"

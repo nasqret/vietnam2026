@@ -126,6 +126,11 @@ def _source_asset(filename: str) -> bytes:
 
 
 def _candidate(path: Path, relative: Path) -> tuple[bool, tuple[bytes, ...]]:
+    # Research checkpoints have complete independently verified certificates,
+    # but their names are not enrolled in the Alpha-only on-demand service.
+    # Publishing a proof must never manufacture a service admission.
+    if relative.parts and relative.parts[0] == "checkpoints":
+        return False, ()
     if path.suffix.lower() != ".html" or "explorer" not in relative.parts:
         return False, ()
     if path.name == "graph.html":

@@ -1,0 +1,59 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_frontier_roots": [
+    "mobius_zero_has_no_value",
+    "mobius_value_exists_unique",
+    "mobius_one",
+    "mobius_squarefree_divisor",
+    "mobius_prime_squarefree",
+    "mobius_fresh_prime_negates"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 15134,
+    "bytes": 813004,
+    "dependency_edges_including_packaging": 675,
+    "independent_lean_checked": true,
+    "inherited_theorems": 215,
+    "nodes_including_packaging_root": 237,
+    "original_ha_checked": true,
+    "packaging_root_id": 236,
+    "path": "research/arithmetic-library/artifacts/bottom-layer-mobius-values-proof-bundle-v1.json",
+    "sha256": "041f1a3471002ff3cd5fc3da2a6cc751ad2f4a4458a497b3de2a26276fd314b8"
+  },
+  "frontier_count": 21,
+  "frontier_dependency_edges": 64,
+  "frontier_specs_sha256": "547c6e1da76f74f5329b3cc2e5707584bd2534fece4406d7b3493ef11aaa1291",
+  "frontier_tactic_commands": 660,
+  "membership": "local_non_admitting_checkpoint",
+  "ordered_frontier_names_sha256": "bd03b8b7a07a1fb84279de822e042907ec8f0fe5bf4564c7468d53bc9b208602",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "mobius_value_exists_unique",
+      "node_id": 226,
+      "statement_sha256": "eb41094b2ceb2273e89e8966ced4cc921decf56dd6bc6dbcb5349c2087aa1135"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "mobius_fresh_prime_negates",
+      "node_id": 235,
+      "statement_sha256": "2b0116e6d32e45fe7ae5e9a8bd7c11e5f95a88021cd42786276cff6e7ec303d2"
+    }
+  ],
+  "rfc": "research/arithmetic-library/mobius-divisor-sum-foundations-rfc-v1.md",
+  "slug": "mobius-values",
+  "sources": [
+    {
+      "factory": "make_mobius_value_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/mobius_value_candidate.py",
+      "sha256": "18cc5aef4d4710a09bd8f2eac063ae2ccf54049a68eaab33d6b9ce7df87af9e0"
+    },
+    {
+      "factory": "make_mobius_prime_step_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/mobius_prime_step_candidate.py",
+      "sha256": "f6fe75aa8e5c899baff761edea21dc82a3b76ea52ef165511d20f34a6d332af7"
+    }
+  ],
+  "stable_member": false
+}

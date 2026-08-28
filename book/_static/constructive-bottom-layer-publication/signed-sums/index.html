@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signed arithmetic tables and finite sums — Proof Explorer</title>
+  <meta name="description" content="Construct finite signed tables, form their actual prefix sums, and prove that a witnessed permutation preserves the signed sum.">
+  <meta property="og:title" content="Signed arithmetic tables and finite sums — Proof Explorer">
+  <meta property="og:description" content="Construct finite signed tables, form their actual prefix sums, and prove that a witnessed permutation preserves the signed sum.">
+  
+  
+  
+  <link rel="stylesheet" href="../assets/proofs.css?v=ac7111ec14ff">
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/signed-sums/"><meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/signed-sums/"><meta property="og:type" content="website"><meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png"><meta name="proof-publication-scope" content="public_research_checkpoint"></head>
+<body class="family-page signed-sums-page">
+  <header class="family-hero">
+    <div class="shell">
+      <nav class="crumbs"><a href="../?v=ac7111ec14ff">Proof explorers</a><span>/</span><a data-campaign-link="global" href="../grand-campaign/?v=ac7111ec14ff">Research checkpoint map</a><span>/</span><a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Checkpoint family</a><span>/</span><span>Signed arithmetic tables and finite sums</span><a data-public-proof-library href="../../?v=ac7111ec14ff">Proof library</a></nav>
+      <p class="eyebrow">Actual packed tables · witnessed reindexing · permutation invariance · Constructive arithmetic</p>
+      <h1>Signed arithmetic tables and finite sums</h1><p class="pd-callout pa-callout" data-public-checkpoint-notice>Public research checkpoint, not admitted to Alpha or Stable. Alpha v30 remains 3222 checked-use theorems; Stable remains 432. The on-demand Alpha Lean service does not yet expose these checkpoint theorems; their independently checked literal bundles and unchanged sources are available below.</p>
+      <p class="formula">PermutationPrefix(r,s,l) ∧ ArithReindex(F,G,r,s,l) ∧ SignedPrefixSum(F,l,u) ∧ SignedPrefixSum(G,l,v) ⇒ u=v</p>
+      <p class="lede">Construct finite signed tables, form their actual prefix sums, and prove that a witnessed permutation preserves the signed sum.</p>
+      <div class="hero-actions">
+        <a class="primary-action" href="explorer/defined/graph.html?target=SS001E&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus&amp;v=ac7111ec14ff">Open the definition-aware map</a>
+        <a class="secondary-action" href="explorer/defined/tag/SS001E.html?v=ac7111ec14ff">Read the final theorem</a>
+        <a class="secondary-action" data-campaign-link="milestone" href="../grand-campaign/?view=goal&amp;focus=G007&amp;v=ac7111ec14ff">See campaign milestone G007</a>
+      </div>
+    </div>
+  </header>
+  <main class="shell family-main">
+    <section class="view-grid">
+      <article class="view-card featured">
+        <p class="card-kicker">Recommended</p>
+        <h2>Defined mathematical notation</h2>
+        <p>Browse 16 linked conservative definitions and 30 independently checked theorems without losing their exact first-order expansions.</p>
+        <a href="explorer/defined/?v=ac7111ec14ff">Browse definitions and theorems →</a>
+        <p><a href="explorer/defined/graph.html?target=SS001E&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=ac7111ec14ff">Inspect the family definition DAG →</a></p>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Exact certificate</p>
+        <h2>Fully expanded arithmetic</h2>
+        <p>Inspect all 1410 native tactic lines and 73 actual proof prerequisites with every definition fully expanded.</p>
+        <a href="explorer/?v=ac7111ec14ff">Open the exact edition →</a>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Focused route</p>
+        <h2>Final dependency cone</h2>
+        <p>Start at theorem <code>SS001E</code> and follow only the lemmas and conservative definitions supporting divisor_signed_sum_permutation_invariant.</p>
+        <a href="explorer/defined/graph.html?target=SS001E&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus&amp;v=ac7111ec14ff">Trace prerequisites →</a>
+      </article>
+    </section>
+    <section class="release-note"><strong>Zoom between mathematical scales:</strong> <a data-campaign-link="global" href="../grand-campaign/?v=ac7111ec14ff">research checkpoint map</a> → <a data-campaign-link="domain" href="../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">research domain</a> → <a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">proof family</a> → <a data-campaign-link="goal" data-campaign-goal="G007" href="../grand-campaign/?view=goal&amp;focus=G007&amp;v=ac7111ec14ff">G007 milestone</a> → <a href="explorer/defined/graph.html?target=SS001E&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=ac7111ec14ff">theorem and definition dependencies</a>.</section>
+    <section class="release-note"><strong>Major independently established statements:</strong> <a href="explorer/defined/tag/SS001B.html?v=ac7111ec14ff"><code>SS001B</code> divisor_signed_table_reindex_exists</a> · <a href="explorer/defined/tag/SS001E.html?v=ac7111ec14ff"><code>SS001E</code> divisor_signed_sum_permutation_invariant</a>.</section>
+    <section class="release-note"><strong>Public research checkpoint, independently verified:</strong> 30 theorems in a complete dependency-closed HA bundle · 73 proof prerequisites · 16 linked definitions · 27 definition-dependency arrows · 1410 exact tactic lines. Not Alpha-enrolled; no Alpha checked-use authority; not Stable. Alpha v30 remains 3222 theorems and Stable remains 432. The unchanged intuitionistic kernel and separately compiled Lean verifier independently accept all 214 bundle nodes; SHA-256 <code>35bc01ab3f12cc09a5ed9aa3098225090dcc40ac241f9cbd669f99cef4737e57</code>. <a href="checkpoint.html?v=ac7111ec14ff">Inspect the checkpoint receipt, literal bundle, and source files →</a></section>
+    <section class="release-note"><strong>Exact mathematical boundary:</strong> These are genuine signed-table and finite-sum foundations, not full divisor-sum cancellation or Möbius inversion. G007 remains open. The historical MatrixMinorFourCode definition is reused solely as generic nested pairing of four beta parameters; no matrix-specific hypothesis is imported. Equality is equality of represented signed values, not equality of arbitrary component codes.</section>
+  </main>
+</body>
+</html>

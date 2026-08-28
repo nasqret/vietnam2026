@@ -18,7 +18,7 @@ Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | all 44 checked proof families, the grand campaign atlas, proof artifacts, and public Lean selectors |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 44 Alpha proof families, four separate research checkpoint chapters, the grand campaign atlas, proof artifacts, and eligible public Lean selectors |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
@@ -113,6 +113,52 @@ publisher completed at an observed peak of 2,226,962,432 resident bytes. Run
 publication serially. The experimental 1,536 MiB bulk-publisher diagnostic did
 not pass and is not shipped; no original release, kernel, proof-job or service
 limit is disabled or increased.
+
+### Public research checkpoints without Alpha promotion
+
+The separate `/proofs/checkpoints/` section publishes 170 additional complete
+HA/Lean-checked theorems: Euler units (32), prime fields (87), Möbius values
+(21), and signed sums (30). These are independently checked dependency-closed
+proofs, **not Alpha or Stable admissions**. The current library remains Alpha
+v30 with 3,222 entries and the unchanged 432 Stable entries. The full G014
+Euler endpoint is proved at its guarded statement; full G091 prime-power
+fields and G007 Möbius inversion remain open.
+
+The immutable local development snapshot remains under
+`book/_static/constructive-bottom-layer-explorer`. A separate public adapter
+generates `book/_static/constructive-bottom-layer-publication`, preserving
+literal bundles, sources, theorem tags, proof statements and false admission
+flags. Each build freshly runs the original HA and independently compiled
+Lean verifiers. Stored receipts and a matching hash are not proof authority.
+
+```sh
+PYTHONMALLOC=malloc python3 scripts/check_constructive_bottom_layers.py --check
+PYTHONMALLOC=malloc python3 scripts/build_constructive_bottom_layer_publication.py --check
+make -j1 stage-proofs
+python3 scripts/stage_public_checkpoint_navigation.py --root _deploy/proofs --check
+python3 scripts/stage_public_lean_selector.py --root _deploy/proofs --check
+```
+
+The normal staging target includes the checkpoint subtree, so future complete
+deployments do not remove it. Its atlas backlink and scope notice are added
+only to staged HTML; frozen atlas source, campaign JSON, definition JSON and
+recorded admission statuses remain unchanged. The main hub links all four
+chapters separately from the 44 Alpha families.
+
+The existing on-demand Lean service accepts Alpha-enrolled theorem names.
+The public selector deliberately excludes the top-level `checkpoints` namespace;
+these readers offer their independently verified downloadable proof bundles,
+not unsupported Alpha service jobs. No worker restart, gateway change, catalog
+limit change, Peano production deployment or cache-header work is required.
+Before upload, inspect remote symlinks and the checksum/deletion preview. After
+upload, compare the complete staged tree and representative public HTTPS bytes.
+The deployment receipt records observed results separately from proof evidence.
+
+Adding the twelve Python modules also regenerates the local browser source
+inventory and its content-addressed application manifest. The prepared local
+app is `a-86993f944ca2` (483 browser Python sources, 505 manifest entries).
+This keeps checkout and local staging reproducible; it does not admit those
+modules' theorems or deploy either Peano channel. Production remains deferred.
 
 ## Interactive Lean proof building
 

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0243 — FpZeroExtendedInv(p,a,b) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/prime-fields/explorer/defined/definition/ND0243.html"><meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/prime-fields/explorer/defined/definition/ND0243.html"><meta property="og:type" content="website"><meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png"><meta name="proof-publication-scope" content="public_research_checkpoint"></head>
+<body class="pa-defined-proof-site" data-family="prime-fields"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Research checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a><a data-public-proof-library href="../../../../../?v=ac7111ec14ff">Proof library</a></nav>
+  <p class="pd-tag">ND0243</p><h1>FpZeroExtendedInv(p,a,b)</h1><p class="pd-callout pa-callout" data-public-checkpoint-notice>Public research checkpoint, not admitted to Alpha or Stable. Alpha v30 remains 3222 checked-use theorems; Stable remains 432. The on-demand Alpha Lean service does not yet expose these checkpoint theorems; their independently checked literal bundles and unchanged sources are available below.</p>
+  <p>The bounded nonzero inverse graph with an explicit zero-to-zero table convention. Zero is not asserted to be invertible.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(a,p)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(b,p)</a> ∧ (a = 0 ∧ b = 0 ∨ <a class="pd-definition-ref" data-definition="ND0232" href="ND0232.html?v=ac7111ec14ff">FpInv(p,a,b)</a>))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((exists pfa_gap_bottomlayerinput. pfa_gap_bottomlayerinput + S ((a)) = ((p))) /\ (((exists pfa_gap_bottomlayeroutput. pfa_gap_bottomlayeroutput + S ((b)) = ((p))) /\ (((((a)) = 0 /\ ((b)) = 0) \/ (((~(((a)) = 0)) /\ ((((exists pfa_gap_bottomlayernonzeromultiplicationleft. pfa_gap_bottomlayernonzeromultiplicationleft + S ((a)) = ((p))) /\ (((exists pfa_gap_bottomlayernonzeromultiplicationright. pfa_gap_bottomlayernonzeromultiplicationright + S ((b)) = ((p))) /\ ((((exists pfa_gap_bottomlayernonzeromultiplicationresultbound. pfa_gap_bottomlayernonzeromultiplicationresultbound + S (1) = ((p))) /\ ((exists pfa_offset_left_bottomlayernonzeromultiplicationresultcongruence pfa_offset_right_bottomlayernonzeromultiplicationresultcongruence. (((a)) * ((b))) + ((p)) * pfa_offset_left_bottomlayernonzeromultiplicationresultcongruence = (1) + ((p)) * pfa_offset_right_bottomlayernonzeromultiplicationresultcongruence)))))))))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="ND0232.html?v=ac7111ec14ff">FpInv(p,a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0249.html?v=ac7111ec14ff">FpInvPrefix(p,b,c,l)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/FP002D.html?v=ac7111ec14ff">FP002D · prime_field_zero_extended_inverse_exists</a><a class="pd-chip" href="../tag/FP002E.html?v=ac7111ec14ff">FP002E · prime_field_zero_extended_inverse_functional</a><a class="pd-chip" href="../tag/FP0032.html?v=ac7111ec14ff">FP0032 · prime_field_inverse_prefix_choice</a><a class="pd-chip" href="../tag/FP0040.html?v=ac7111ec14ff">FP0040 · prime_field_inverse_table_lookup</a><a class="pd-chip" href="../tag/FP0041.html?v=ac7111ec14ff">FP0041 · prime_field_inverse_table_reflect</a><a class="pd-chip" href="../tag/FP0047.html?v=ac7111ec14ff">FP0047 · prime_field_inverse_table_nonzero</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>3</dd>
+  <dt>Topological notation layer</dt><dd>4</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0243.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>0511028eb8a31a9035518e7bf9ef3c997a82d33e142964f36d240a55301283ae</code></dd>
+</dl></aside></main></body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0256 — FpUnitSteps(p,b,c,n) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/prime-fields/explorer/defined/definition/ND0256.html"><meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/prime-fields/explorer/defined/definition/ND0256.html"><meta property="og:type" content="website"><meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png"><meta name="proof-publication-scope" content="public_research_checkpoint"></head>
+<body class="pa-defined-proof-site" data-family="prime-fields"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Research checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a><a data-public-proof-library href="../../../../../?v=ac7111ec14ff">Proof library</a></nav>
+  <p class="pd-tag">ND0256</p><h1>FpUnitSteps(p,b,c,n)</h1><p class="pd-callout pa-callout" data-public-checkpoint-notice>Public research checkpoint, not admitted to Alpha or Stable. Alpha v30 remains 3222 checked-use theorems; Stable remains 432. The on-demand Alpha Lean service does not yet expose these checkpoint theorems; their independently checked literal bundles and unchanged sources are available below.</p>
+  <p>Each consecutive pair of actual history entries is related by addition of the canonical one. No modular-residue invariant is assumed.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ pff_trace_index_bottomlayer. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(pff_trace_index_bottomlayer,n)</a> → ∃ x. ∃ y. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,pff_trace_index_bottomlayer,x)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,S pff_trace_index_bottomlayer,y)</a> ∧ <a class="pd-definition-ref" data-definition="ND0229" href="ND0229.html?v=ac7111ec14ff">FpAdd(p,x,1,y)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall pff_trace_index_bottomlayer. (exists pfa_gap_bottomlayerindex. pfa_gap_bottomlayerindex + S (pff_trace_index_bottomlayer) = ((n))) -&gt; exists pff_trace_before_bottomlayer pff_trace_after_bottomlayer. ((((exists ff_h_pft_bottomlayerbefore. ff_h_pft_bottomlayerbefore + S (pff_trace_before_bottomlayer) = S ((S (pff_trace_index_bottomlayer)) * (c))) /\ exists ff_q_pft_bottomlayerbefore. (b) = ff_q_pft_bottomlayerbefore * S ((S (pff_trace_index_bottomlayer)) * (c)) + (pff_trace_before_bottomlayer))) /\ (((((exists ff_h_pft_bottomlayerafter. ff_h_pft_bottomlayerafter + S (pff_trace_after_bottomlayer) = S ((S (S (pff_trace_index_bottomlayer))) * (c))) /\ exists ff_q_pft_bottomlayerafter. (b) = ff_q_pft_bottomlayerafter * S ((S (S (pff_trace_index_bottomlayer))) * (c)) + (pff_trace_after_bottomlayer))) /\ ((((exists pfa_gap_bottomlayeradditionleft. pfa_gap_bottomlayeradditionleft + S (pff_trace_before_bottomlayer) = ((p))) /\ (((exists pfa_gap_bottomlayeradditionright. pfa_gap_bottomlayeradditionright + S (1) = ((p))) /\ ((((exists pfa_gap_bottomlayeradditionresultbound. pfa_gap_bottomlayeradditionresultbound + S (pff_trace_after_bottomlayer) = ((p))) /\ ((exists pfa_offset_left_bottomlayeradditionresultcongruence pfa_offset_right_bottomlayeradditionresultcongruence. ((pff_trace_before_bottomlayer) + (1)) + ((p)) * pfa_offset_left_bottomlayeradditionresultcongruence = (pff_trace_after_bottomlayer) + ((p)) * pfa_offset_right_bottomlayeradditionresultcongruence)))))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0229.html?v=ac7111ec14ff">FpAdd(p,a,b,c)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0257.html?v=ac7111ec14ff">FpUnitTrace(p,b,c,n,r)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><span class="pd-empty">none directly; see definition consumers</span></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>3</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0256.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>8b724d5530a7acac4dd17b3baee4bb225dceca7d4136a119b2ee943591883baa</code></dd>
+</dl></aside></main></body>
+</html>

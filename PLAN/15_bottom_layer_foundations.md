@@ -1,7 +1,8 @@
 # Bottom-layer implementation tranche after Alpha v30
 
-Date: 2026-08-28. Status: local mathematical development; not an Alpha
-admission, website publication, or Peano production deployment.
+Date: 2026-08-28. Initially completed as local mathematical development;
+the separately authorized publication follow-up below does not admit any
+theorem to Alpha or Stable and does not deploy Peano production.
 
 Completed mathematical checkpoint: **170 new theorems**, in eleven additive
 modules, with four complete original-HA bundles independently accepted by the
@@ -128,7 +129,9 @@ Any local proof explorer must keep the established Quadratic Reciprocity
 renderer and clearly distinguish independently checked local proof data from
 current Alpha membership. Published v30 artifacts and their original admission
 records remain unchanged. Commits, pushes, remote deployment, and Peano cache
-work are not part of this implementation-only request.
+work were not part of the original implementation-only request. The subsequent
+"Commit and deploy" request authorizes the separate proof-site publication
+described below, not a change to admission or production-cache gates.
 
 The new local preview is
 [`constructive-bottom-layer-explorer`](../book/_static/constructive-bottom-layer-explorer/index.html).
@@ -151,6 +154,34 @@ factories. The exact HA-checked bytes are passed to the pinned Lean binary in
 a private temporary snapshot, and the audit sidecar is compared with a
 bounded exact UTF-8 read. The original CPU, wall-time and memory ceilings are
 retained; no current catalogue or service limit has been increased.
+
+## Separately authorized commit and publication follow-up
+
+The 170-theorem implementation, four checked bundles, archived Euler v1
+sources and all 493 local explorer files are committed as `72f6a4ae`.
+The four small proof-certificate copies are explicitly included despite the
+general ignore rule for model-training checkpoints.
+
+A separate public presentation at `/proofs/checkpoints/` keeps the canonical
+Quadratic Reciprocity design and all original proof data. Its four chapters
+are `euler-units`, `prime-fields`, `mobius-values`, and `signed-sums`. Public
+navigation connects the checkpoint map to the unchanged Alpha campaign atlas;
+an added staged-HTML notice prevents a local proof from impersonating Alpha
+admission. The Alpha-only on-demand Lean controls are not enabled for these
+new names. Literal independently verified bundles remain downloadable.
+
+The durable build, staging and verification commands are documented in
+[`docs/DEPLOY.md`](../docs/DEPLOY.md#public-research-checkpoints-without-alpha-promotion).
+Remote deployment results belong in a separate release receipt, not in the
+immutable mathematical checkpoint audit. Neither `/peano-lab/` nor
+`/peano-lab-next/`, the existing Lean worker, or the unrelated Hydra worktree
+is part of this publication.
+
+Local packaging does include the twelve new Python modules in the existing
+generated browser source inventory. The reproducible local app manifest is
+`a-86993f944ca2`, with 483 browser Python files and 505 manifest entries.
+This fixes the source-inventory integration checks without admitting the new
+theorems or publishing either Peano application channel.
 
 ## Next exact G007 sequence
 

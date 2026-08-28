@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0246 — FpAddPrefix(p,b,c,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/prime-fields/explorer/defined/definition/ND0246.html"><meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/prime-fields/explorer/defined/definition/ND0246.html"><meta property="og:type" content="website"><meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png"><meta name="proof-publication-scope" content="public_research_checkpoint"></head>
+<body class="pa-defined-proof-site" data-family="prime-fields"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Research checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a><a data-public-proof-library href="../../../../../?v=ac7111ec14ff">Proof library</a></nav>
+  <p class="pd-tag">ND0246</p><h1>FpAddPrefix(p,b,c,l)</h1><p class="pd-callout pa-callout" data-public-checkpoint-notice>Public research checkpoint, not admitted to Alpha or Stable. Alpha v30 remains 3222 checked-use theorems; Stable remains 432. The on-demand Alpha Lean service does not yet expose these checkpoint theorems; their independently checked literal bundles and unchanged sources are available below.</p>
+  <p>Every genuine beta entry below l gives the addition grid value at its actual index.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ pft_index_bottomlayer. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(pft_index_bottomlayer,l)</a> → ∃ x. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,pft_index_bottomlayer,x)</a> ∧ <a class="pd-definition-ref" data-definition="ND0244" href="ND0244.html?v=ac7111ec14ff">FpAddGridValue(p,pft_index_bottomlayer,x)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall pft_index_bottomlayer. (exists pfa_gap_bottomlayerprefix. pfa_gap_bottomlayerprefix + S (pft_index_bottomlayer) = ((l))) -&gt; exists pft_value_bottomlayer. (((((exists ff_h_pft_bottomlayerpointentry. ff_h_pft_bottomlayerpointentry + S (pft_value_bottomlayer) = S ((S (pft_index_bottomlayer)) * (c))) /\ exists ff_q_pft_bottomlayerpointentry. (b) = ff_q_pft_bottomlayerpointentry * S ((S (pft_index_bottomlayer)) * (c)) + (pft_value_bottomlayer))) /\ ((exists pft_row_bottomlayerpointvalue pft_column_bottomlayerpointvalue. (((pft_index_bottomlayer) = pft_row_bottomlayerpointvalue * ((p)) + pft_column_bottomlayerpointvalue) /\ ((((exists pfa_gap_bottomlayerpointvalueoperationleft. pfa_gap_bottomlayerpointvalueoperationleft + S (pft_row_bottomlayerpointvalue) = ((p))) /\ (((exists pfa_gap_bottomlayerpointvalueoperationright. pfa_gap_bottomlayerpointvalueoperationright + S (pft_column_bottomlayerpointvalue) = ((p))) /\ ((((exists pfa_gap_bottomlayerpointvalueoperationresultbound. pfa_gap_bottomlayerpointvalueoperationresultbound + S (pft_value_bottomlayer) = ((p))) /\ ((exists pfa_offset_left_bottomlayerpointvalueoperationresultcongruence pfa_offset_right_bottomlayerpointvalueoperationresultcongruence. ((pft_row_bottomlayerpointvalue) + (pft_column_bottomlayerpointvalue)) + ((p)) * pfa_offset_left_bottomlayerpointvalueoperationresultcongruence = (pft_value_bottomlayer) + ((p)) * pfa_offset_right_bottomlayerpointvalueoperationresultcongruence)))))))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0244.html?v=ac7111ec14ff">FpAddGridValue(p,i,v)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0250.html?v=ac7111ec14ff">FpOperationTables(p,ab,ac,mb,mc,nb,nc,ib,ic)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/FP002F.html?v=ac7111ec14ff">FP002F · prime_field_add_prefix_choice</a><a class="pd-chip" href="../tag/FP0033.html?v=ac7111ec14ff">FP0033 · prime_field_add_table_exists</a><a class="pd-chip" href="../tag/FP0037.html?v=ac7111ec14ff">FP0037 · prime_field_operation_tables_exists</a><a class="pd-chip" href="../tag/FP0039.html?v=ac7111ec14ff">FP0039 · prime_field_add_table_lookup</a><a class="pd-chip" href="../tag/FP003A.html?v=ac7111ec14ff">FP003A · prime_field_add_table_reflect</a><a class="pd-chip" href="../tag/FP0042.html?v=ac7111ec14ff">FP0042 · prime_field_add_table_commutative</a><a class="pd-chip" href="../tag/FP0043.html?v=ac7111ec14ff">FP0043 · prime_field_add_table_associative</a><a class="pd-chip" href="../tag/FP0048.html?v=ac7111ec14ff">FP0048 · prime_field_left_table_distributive</a><a class="pd-chip" href="../tag/FP0049.html?v=ac7111ec14ff">FP0049 · prime_field_right_table_distributive</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>4</dd>
+  <dt>Transitive prerequisites</dt><dd>6</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0246.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>a3c9b44db612d1494e463624d8878ba078334f85e6acf816a63e019b25f07235</code></dd>
+</dl></aside></main></body>
+</html>
