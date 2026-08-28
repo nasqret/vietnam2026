@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="binary-length"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
-       <a href="../../tag/BL0001.html?v=897410581b66">Exact original proof</a>
-       <a href="../graph.html?target=BL0001&amp;v=897410581b66">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G102" href="../../../../grand-campaign/?view=goal&amp;focus=G102&amp;v=897410581b66">G102 milestone</a></nav>
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../../tag/BL0001.html?v=b3c647d19c00">Exact original proof</a>
+       <a href="../graph.html?target=BL0001&amp;v=b3c647d19c00">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G102" href="../../../../grand-campaign/?view=goal&amp;focus=G102&amp;v=b3c647d19c00">G102 milestone</a></nav>
   <p class="pd-tag">BL0001</p><h1>binary_length_digit_bounded</h1>
-  <p>Every witnessed binary digit is strictly below two.</p><p class="pd-status">Alpha v28 checked-use · first admitted v22 · independently kernel and Lean verified; not Stable</p>
+  <p>Every witnessed binary digit is strictly below two.</p><p class="pd-status">Alpha v30 checked-use · first admitted v22 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   
   <p class="pd-callout">G101 and G102 were OPEN when these BitLen foundations were first admitted in Alpha v22. Both are now CLOSED in Alpha v23: complete canonical exponent digits and both exact logarithmic execution bounds are proved.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ b. b = 0 ∨ b = 1 → <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=897410581b66">Lt(b,2)</a></code></pre>
+    <pre><code>∀ b. b = 0 ∨ b = 1 → <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=b3c647d19c00">Lt(b,2)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0002.html?v=897410581b66">Lt(a,b) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0002.html?v=b3c647d19c00">Lt(a,b) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall b. (b = 0 \/ b = 1) -&gt; exists gap. gap + S b = 2</code></pre></details>
@@ -28,7 +28,7 @@
     <p>All 9 lines are the exact independently kernel-checked original script.</p>
     <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro b</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro hbit</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>cases hbit</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>exists 1</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>rewrite hbit_left</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>simp</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>exists 0</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>rewrite hbit_right</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>simp</code></li></ol></section>
 </div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
-  <dl><dt>Authority</dt><dd>Alpha v28 checked use</dd><dt>First admission</dt><dd>Alpha v22</dd><dt>Stable membership</dt><dd>none</dd>
+  <dl><dt>Authority</dt><dd>Alpha v30 checked use</dd><dt>First admission</dt><dd>Alpha v22</dd><dt>Stable membership</dt><dd>none</dd>
       <dt>Proof-bundle node</dt><dd>179 / 240</dd>
       <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
       <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 240 exact bundle nodes</dd>

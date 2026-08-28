@@ -21,7 +21,7 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[3]
 HUB = ROOT / "deploy" / "proofs" / "index.html"
-ATLAS = ROOT / "book" / "_static" / "constructive-grand-campaign"
+ATLAS = ROOT / "book" / "_static" / "constructive-gaussian-campaign"
 HISTORIC = ROOT / "book" / "_static" / "constructive-frontier-explorer"
 NEXT = ROOT / "book" / "_static" / "constructive-next-layer-explorer"
 ADVANCED = ROOT / "book" / "_static" / "constructive-advanced-layer-explorer"
@@ -29,8 +29,10 @@ TRANSPORT = ROOT / "book" / "_static" / "constructive-transport-layer-explorer"
 MILESTONE = ROOT / "book" / "_static" / "constructive-milestone-closure-explorer"
 RESEARCH = ROOT / "book" / "_static" / "constructive-research-layer-explorer"
 BREAKTHROUGH = ROOT / "book" / "_static" / "constructive-breakthrough-layer-explorer"
-SECOND_WAVE = ROOT / "book/_static/constructive-second-wave-explorer-v28"
-LOWER_LAYER = ROOT / "book/_static/constructive-lower-layer-explorer"
+SECOND_WAVE = ROOT / "book/_static/constructive-second-wave-explorer-v30"
+LOWER_LAYER = ROOT / "book/_static/constructive-lower-layer-explorer-v30"
+PRIORITY_LAYER = ROOT / "book/_static/constructive-priority-layer-explorer-v30"
+GAUSSIAN_FACTORIZATION = ROOT / "book/_static/constructive-gaussian-factorization-explorer"
 CURRENT_ALPHA_VERSION = json.loads((ATLAS / "campaign.json").read_text(encoding="utf-8"))[
     "meta"
 ]["current_alpha_version"]
@@ -51,6 +53,11 @@ SECOND_WAVE_ROUTES = {
 LOWER_LAYER_ROUTES = {
     "arithmetic-foundations", "prime-enumeration", "gaussian-integers", "eisenstein-integers",
 }
+PRIORITY_LAYER_ROUTES = {
+    "prime-valuation-support", "best-approximation", "totient-products",
+    "squarefree-kernels", "exponent-lifting",
+}
+GAUSSIAN_FACTORIZATION_ROUTES = {"gaussian-factorization"}
 SECOND_WAVE_COMPLETIONS = {
     "T13": ("integer-linear-algebra", "rectangular_matrix_rank_exists_unique"),
     "G095": ("hensel-lifting", "integer_polynomial_prime_simple_root_lifts_all_positive_powers"),
@@ -441,9 +448,9 @@ def test_current_alpha_and_immutable_stable_are_bound_to_actual_catalog_bytes() 
     stable = channels["channels"]["stable"]
     digest = _catalog_digest()
 
-    assert CURRENT_ALPHA_VERSION == "v28"
-    assert digest == "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
-    assert CURRENT_ALPHA_IDENTITY == "4936d155e8d2a39409a4e83beb4ac5cb2481948d8b6eeecf1c7571161786646b"
+    assert CURRENT_ALPHA_VERSION == "v30"
+    assert digest == "b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb"
+    assert CURRENT_ALPHA_IDENTITY == "8986ab8b8d8493ab7c8f01e2080b0ac590fd3c7289ac811b6606710ca453e1e9"
     assert digest == alpha["artifact_sha256"]
     assert digest[:12] == CURRENT_REVISION
     assert alpha["artifact_path"] == (
@@ -461,13 +468,12 @@ def test_current_alpha_and_immutable_stable_are_bound_to_actual_catalog_bytes() 
     ]
     current_counts = alpha[f"frontier_{CURRENT_ALPHA_VERSION}_campaign_counts"]
     assert sum(current_counts.values()) == current["new_theorem_count"]
-    assert current["theorem_count"] == 2764
-    assert current["new_theorem_count"] == 204
-    assert current["dependency_edge_count"] == current["checked_dependency_edge_count"] == 8984
+    assert current["theorem_count"] == 3222
+    assert current["new_theorem_count"] == 180
+    assert current["dependency_edge_count"] == current["checked_dependency_edge_count"] == 10588
     assert current["layer_count"] == 53
     assert current_counts == {
-        "foundations": 28, "prime_enumeration": 18,
-        "gaussian_euclidean": 93, "eisenstein_euclidean": 65,
+        "gaussian_factorization": 180,
     }
     historical_campaign_counts = {
         "v24": {
@@ -514,11 +520,13 @@ def test_public_hub_publishes_every_current_independently_versioned_family_route
         | set(BREAKTHROUGH_FAMILIES)
         | SECOND_WAVE_ROUTES
         | LOWER_LAYER_ROUTES
+        | PRIORITY_LAYER_ROUTES
+        | GAUSSIAN_FACTORIZATION_ROUTES
     )
     manifest_routes = set()
     for package in (
         HISTORIC, NEXT, ADVANCED, TRANSPORT, MILESTONE, RESEARCH, BREAKTHROUGH,
-        SECOND_WAVE, LOWER_LAYER,
+        SECOND_WAVE, LOWER_LAYER, PRIORITY_LAYER, GAUSSIAN_FACTORIZATION,
     ):
         manifest = json.loads((package / "manifest.json").read_bytes())
         assert manifest["alpha_edition_version"] == CURRENT_ALPHA_VERSION
@@ -526,7 +534,7 @@ def test_public_hub_publishes_every_current_independently_versioned_family_route
         manifest_routes.update(family["slug"] for family in manifest["families"])
     assert known_routes == set(FLAGSHIP_ROUTES) | manifest_routes
     assert set(family_links) == set(FLAGSHIP_ROUTES) | manifest_routes
-    assert len(family_links) == 38
+    assert len(family_links) == 44
     assert all(_revision(item["href"]) == CURRENT_REVISION for item in family_links.values())
 
     atlas = next(
@@ -797,8 +805,10 @@ def test_atlas_definition_links_resolve_new_families_both_locally_and_when_deplo
     assert 'return "../constructive-milestone-closure-explorer/" + route + "/explorer/defined/";' in function
     assert 'return "../constructive-research-layer-explorer/" + route + "/explorer/defined/";' in function
     assert 'return "../constructive-breakthrough-layer-explorer/" + route + "/explorer/defined/";' in function
-    assert 'return "../constructive-second-wave-explorer-v28/" + route + "/explorer/defined/";' in function
-    assert 'return "../constructive-lower-layer-explorer/" + route + "/explorer/defined/";' in function
+    assert 'return "../constructive-second-wave-explorer-v30/" + route + "/explorer/defined/";' in function
+    assert 'return "../constructive-lower-layer-explorer-v30/" + route + "/explorer/defined/";' in function
+    assert 'return "../constructive-priority-layer-explorer-v30/" + route + "/explorer/defined/";' in function
+    assert 'return "../constructive-gaussian-factorization-explorer/" + route + "/explorer/defined/";' in function
     assert 'return "../constructive-frontier-explorer/" + route + "/explorer/defined/";' in function
     for slug in (
         *NEXT_FAMILIES,
@@ -809,6 +819,8 @@ def test_atlas_definition_links_resolve_new_families_both_locally_and_when_deplo
         *BREAKTHROUGH_FAMILIES,
         *SECOND_WAVE_ROUTES,
         *LOWER_LAYER_ROUTES,
+        *PRIORITY_LAYER_ROUTES,
+        *GAUSSIAN_FACTORIZATION_ROUTES,
     ):
         assert f'"{slug}"' in function
 
@@ -1469,10 +1481,10 @@ def test_stage_proofs_exposes_all_current_routes_and_exact_additive_artifacts() 
     assert "python3 scripts/build_constructive_milestone_closure_explorer.py" in output
     assert "python3 scripts/build_constructive_research_layer_explorer.py" in output
     assert "python3 scripts/build_constructive_breakthrough_layer_explorer.py" in output
-    assert "python3 scripts/upgrade_constructive_second_wave_publication_v28.py" in output
-    assert "python3 scripts/build_constructive_lower_layer_explorer.py" in output
-    assert "scripts/sync_constructive_grand_campaign.py --check" in output
-    assert "book/_static/constructive-grand-campaign/" in output
+    assert "python3 scripts/upgrade_constructive_priority_layer_publication_v30.py" in output
+    assert "python3 scripts/build_constructive_gaussian_factorization_explorer.py" in output
+    assert "scripts/extend_constructive_gaussian_factorization_campaign.py" in output
+    assert "book/_static/constructive-gaussian-campaign/" in output
     assert '"_deploy/proofs/grand-campaign/"' in output
 
     for slug in FLAGSHIP_ROUTES:
@@ -1499,10 +1511,16 @@ def test_stage_proofs_exposes_all_current_routes_and_exact_additive_artifacts() 
         assert f"book/_static/constructive-breakthrough-layer-explorer/{slug}/" in output
         assert f'"_deploy/proofs/{slug}/"' in output
     for slug in SECOND_WAVE_ROUTES:
-        assert f"book/_static/constructive-second-wave-explorer-v28/{slug}/" in output
+        assert f"book/_static/constructive-second-wave-explorer-v30/{slug}/" in output
         assert f'"_deploy/proofs/{slug}/"' in output
     for slug in LOWER_LAYER_ROUTES:
-        assert f"book/_static/constructive-lower-layer-explorer/{slug}/" in output
+        assert f"book/_static/constructive-lower-layer-explorer-v30/{slug}/" in output
+        assert f'"_deploy/proofs/{slug}/"' in output
+    for slug in PRIORITY_LAYER_ROUTES:
+        assert f"book/_static/constructive-priority-layer-explorer-v30/{slug}/" in output
+        assert f'"_deploy/proofs/{slug}/"' in output
+    for slug in GAUSSIAN_FACTORIZATION_ROUTES:
+        assert f"book/_static/constructive-gaussian-factorization-explorer/{slug}/" in output
         assert f'"_deploy/proofs/{slug}/"' in output
     for filename in (
         NEXT_BUNDLE,
@@ -1523,12 +1541,16 @@ def test_stage_proofs_exposes_all_current_routes_and_exact_additive_artifacts() 
         "alpha-v27-second-wave-receipt.md",
         "alpha-v28-lower-layer-proof-bundle-v1.json",
         "alpha-v28-lower-layer-receipt.md",
+        "alpha-v29-priority-layer-proof-bundle-v1.json",
+        "alpha-v29-priority-layer-receipt.md",
+        "alpha-v30-gaussian-factorization-proof-bundle-v1.json",
+        "alpha-v30-gaussian-factorization-receipt.md",
     ):
         assert f'"_deploy/proofs/artifacts/{filename}"' in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
 
 
-def test_stage_peano_includes_all_frozen_v20_through_v28_bundles_without_deployment() -> None:
+def test_stage_peano_includes_all_frozen_v20_through_v30_bundles_without_deployment() -> None:
     output = _staging_dry_run("stage-peano")
     assert f"research/arithmetic-library/artifacts/{NEXT_BUNDLE}" in output
     assert f"/proof-artifacts/{NEXT_BUNDLE}" in output
@@ -1546,6 +1568,8 @@ def test_stage_peano_includes_all_frozen_v20_through_v28_bundles_without_deploym
         "alpha-v26-first-wave-proof-bundle-v1.json",
         "alpha-v27-second-wave-proof-bundle-v1.json",
         "alpha-v28-lower-layer-proof-bundle-v1.json",
+        "alpha-v29-priority-layer-proof-bundle-v1.json",
+        "alpha-v30-gaussian-factorization-proof-bundle-v1.json",
     ):
         assert f"research/arithmetic-library/artifacts/{bundle}" in output
         assert f"/proof-artifacts/{bundle}" in output

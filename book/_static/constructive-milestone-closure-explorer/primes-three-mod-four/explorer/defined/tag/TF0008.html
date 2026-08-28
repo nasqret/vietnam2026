@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="primes-three-mod-four"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
-       <a href="../../tag/TF0008.html?v=897410581b66">Exact original proof</a>
-       <a href="../graph.html?target=TF0008&amp;v=897410581b66">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F03&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G025" href="../../../../grand-campaign/?view=goal&amp;focus=G025&amp;v=897410581b66">G025 milestone</a></nav>
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../../tag/TF0008.html?v=b3c647d19c00">Exact original proof</a>
+       <a href="../graph.html?target=TF0008&amp;v=b3c647d19c00">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F03&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G025" href="../../../../grand-campaign/?view=goal&amp;focus=G025&amp;v=b3c647d19c00">G025 milestone</a></nav>
   <p class="pd-tag">TF0008</p><h1>three_mod_four_progression_nonunit</h1>
-  <p>Every witnessed natural of the form 4k+3 differs from the unit one.</p><p class="pd-status">Alpha v28 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable</p>
+  <p>Every witnessed natural of the form 4k+3 differs from the unit one.</p><p class="pd-status">Alpha v30 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   
   <p class="pd-callout">The exact G025 progression-prime milestone is fully proved in unchanged constructive arithmetic; Mod4Three deliberately reuses its existing Quadratic Reciprocity definition PD0012. The much stronger full Dirichlet progression-prime milestone G030 remains open.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ n. <a class="pd-definition-ref" data-definition="PD0012" href="../definition/PD0012.html?v=897410581b66">Mod4Three(n)</a> → ¬n = 1</code></pre>
+    <pre><code>∀ n. <a class="pd-definition-ref" data-definition="PD0012" href="../definition/PD0012.html?v=b3c647d19c00">Mod4Three(n)</a> → ¬n = 1</code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0012.html?v=897410581b66">Mod4Three(n) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0012.html?v=b3c647d19c00">Mod4Three(n) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall n. (exists ff_residue_ptmf_number. (n) = 4 * ff_residue_ptmf_number + 3) -&gt; ~(n = 1)</code></pre></details>
@@ -28,7 +28,7 @@
     <p>All 12 lines are the exact independently kernel-checked original script.</p>
     <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro n</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro hthree</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro hone</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>cases hthree</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>rewrite hthree_witness at hone</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>rewrite PA4 at hone</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>have hzero : 4 * x + 2 = 0</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>apply PA2</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>exact hone</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>rewrite PA4 at hzero</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>apply PA1</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>exact hzero</code></li></ol></section>
 </div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
-  <dl><dt>Authority</dt><dd>Alpha v28 checked use</dd><dt>First admission</dt><dd>Alpha v23</dd><dt>Stable membership</dt><dd>none</dd>
+  <dl><dt>Authority</dt><dd>Alpha v30 checked use</dd><dt>First admission</dt><dd>Alpha v23</dd><dt>Stable membership</dt><dd>none</dd>
       <dt>Proof-bundle node</dt><dd>605 / 617</dd>
       <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
       <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 617 exact bundle nodes</dd>

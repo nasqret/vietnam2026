@@ -8,15 +8,15 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="matrix-coded-products"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=897410581b66">Definitions and proofs</a>
-       <a href="../../tag/MC000F.html?v=897410581b66">Exact original proof</a>
-       <a href="../graph.html?target=MC000F&amp;v=897410581b66">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=897410581b66">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=897410581b66">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=897410581b66">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=897410581b66">T13 milestone</a></nav>
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../../tag/MC000F.html?v=b3c647d19c00">Exact original proof</a>
+       <a href="../graph.html?target=MC000F&amp;v=b3c647d19c00">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=b3c647d19c00">T13 milestone</a></nav>
   <p class="pd-tag">MC000F</p><h1>signed_pair_product_exists</h1>
-  <p>Every pair of signed natural-pair integers has exact positive and negative multiplication components.</p><p class="pd-status">Alpha v28 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable</p>
+  <p>Every pair of signed natural-pair integers has exact positive and negative multiplication components.</p><p class="pd-status">Alpha v30 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
-  <p class="pd-callout">Historical partial components only: this chapter proves arbitrary natural and signed matrix multiplication and signed two-/three-dimensional determinants. T13 is now closed in the separate Alpha-v27 integer-linear-algebra branch with arbitrary determinant data, rank, and integer column spans; lattice index and normal forms are outside that scope. <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=897410581b66">Full T13 proof · Alpha v27</a></p>
+  <p class="pd-callout">Historical partial components only: this chapter proves arbitrary natural and signed matrix multiplication and signed two-/three-dimensional determinants. T13 is now closed in the separate Alpha-v27 integer-linear-algebra branch with arbitrary determinant data, rank, and integer column spans; lattice index and normal forms are outside that scope. <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=b3c647d19c00">Full T13 proof · Alpha v27</a></p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
     <pre><code>∀ a. ∀ b. ∀ c. ∀ d. ∃ p. ∃ n. p = a · c + b · d ∧ n = a · d + b · c</code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
@@ -28,7 +28,7 @@
     <p>All 9 lines are the exact independently kernel-checked original script.</p>
     <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro a</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro b</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro c</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro d</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>exists a * c + b * d</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>exists a * d + b * c</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>split</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>refl</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>refl</code></li></ol></section>
 </div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
-  <dl><dt>Authority</dt><dd>Alpha v28 checked use</dd><dt>First admission</dt><dd>Alpha v21</dd><dt>Stable membership</dt><dd>none</dd>
+  <dl><dt>Authority</dt><dd>Alpha v30 checked use</dd><dt>First admission</dt><dd>Alpha v21</dd><dt>Stable membership</dt><dd>none</dd>
       <dt>Proof-bundle node</dt><dd>168 / 209</dd>
       <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
       <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 209 exact bundle nodes</dd>
