@@ -404,6 +404,14 @@ class PublicHTML(HTMLParser):
         if self.protected:
             self.output.append(text)
             return
+        if self.stack and self.stack[-1][0] == "head" and text.isspace():
+            # Removing local-only metadata may leave an indented blank line.
+            # Join only adjacent head-whitespace chunks separated by a removed
+            # tag. Preserve indentation before retained tags and every byte of
+            # proof/code/script text; trim only complete whitespace-only lines.
+            if self.output and self.output[-1].isspace():
+                text = self.output.pop() + text
+            text = re.sub(r"(?m)^[ \t]+(?=\r?\n)", "", text)
         if text == "Inherited Alpha v30 premise, freshly checked in this complete bundle":
             article = next((attrs for tag, _, attrs in reversed(self.stack) if tag == "article"), {})
             name = str(article.get("id", "")).removeprefix("theorem-")

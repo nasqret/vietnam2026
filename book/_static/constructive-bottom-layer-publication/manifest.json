@@ -423,8 +423,8 @@
       "sha256": "ccc80a1f4ba62fc16ac69c968111a770b36e0477cd2647c054c61b1e23eb9772"
     },
     "euler-units/index.html": {
-      "bytes": 7214,
-      "sha256": "87f28d64c5145f7a628de79d9f94955d22519cb737c9aca256fb24d482a3264c"
+      "bytes": 7208,
+      "sha256": "54f030a3e6d8bf3bdd225f6e9c6ff27e2513bf000377eb676e5ad8faacdb6d54"
     },
     "grand-campaign/index.html": {
       "bytes": 7457,
@@ -719,8 +719,8 @@
       "sha256": "90678d01fac451e445cbfdc1848f1722dbf90392180ee1bee1c2430485e71c15"
     },
     "mobius-values/index.html": {
-      "bytes": 7023,
-      "sha256": "c668dc35104e41eb3d8f62033c63f78df57acb6fa91724f4e9913fef095f824a"
+      "bytes": 7017,
+      "sha256": "ed68f563f9053a892b56a50735ff1c0b053109ce4aa11a06a1f4cee1b3ad9f97"
     },
     "prime-fields/api/checkpoint.json": {
       "bytes": 2638,
@@ -1575,8 +1575,8 @@
       "sha256": "5310c255ec0d543b6e379b65c3ed4999738f95d36867ee4bcbb78ed1bc6a9f72"
     },
     "prime-fields/index.html": {
-      "bytes": 7184,
-      "sha256": "ec0d773965be108fbf62f7d9cf5b8139df5e1d13e5c18bb15e3ce7a573e98c79"
+      "bytes": 7178,
+      "sha256": "40799f04a88a5f1ccf962cd6f9534bd006be9fd038e68ce41ebaf3609817c0f1"
     },
     "receipts/local-checkpoints.json": {
       "bytes": 11537,
@@ -1919,8 +1919,8 @@
       "sha256": "b2599aa83d3259dd304ba394da7d78a4a1e2c55113095b5c8633f8969735d714"
     },
     "signed-sums/index.html": {
-      "bytes": 6957,
-      "sha256": "104f8a9a463e7b090762594cff4a065dcae88a48042d0c82fcc82aaf58c72ef3"
+      "bytes": 6951,
+      "sha256": "083a86e2dfa25f57a8e7f935804f6a749c0995cd5da41ec64fd9b25f293cdfea"
     },
     "sources/divisor_sum_algebra_candidate.py": {
       "bytes": 15382,

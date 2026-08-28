@@ -386,3 +386,22 @@ def test_public_snapshot_manifest_authenticates_all_literal_bytes(files):
     assert manifest["file_count_excluding_manifest"] == len(files) - 1 == 494
     assert manifest["files"] == {name: {"bytes": len(payload), "sha256": sha256(payload).hexdigest()}
                                  for name, payload in files.items() if name != "manifest.json"}
+
+
+def test_public_html_has_no_trailing_whitespace(files):
+    for name, payload in files.items():
+        if name.endswith(".html"):
+            assert not re.search(rb"[ \t]+\r?$", payload, re.MULTILINE), name
+
+
+def test_head_whitespace_cleanup_preserves_whitespace_inside_protected_text():
+    source = (b'<!doctype html><html><head>\n  \n  <meta name="robots" content="noindex">\n  \n'
+              b'<script>const value="  ";\n  \n</script></head><body><nav></nav><h1>Proof</h1>'
+              b'<pre><code>proof  \n  \n</code></pre></body></html>')
+    rendered = adapter.PublicHTML("index.html", {}).finish(source)
+    assert b'<script>const value="  ";\n  \n</script>' in rendered
+    assert b'<pre><code>proof  \n  \n</code></pre>' in rendered
+    assert b'<head>\n\n\n\n<script>' in rendered
+    retained = (b'<!doctype html><html><head>\n  <meta charset="utf-8">\n  <title>Proof</title>'
+                b'</head><body><nav></nav><h1>Proof</h1></body></html>')
+    assert b'<head>\n  <meta charset="utf-8">\n  <title>Proof</title>' in adapter.PublicHTML("index.html", {}).finish(retained)
