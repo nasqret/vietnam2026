@@ -5707,3 +5707,70 @@ mathematical source, historical sealed release or proof bundle changed during
 these final presentation repairs. The local app remains `a-541687a273a2`.
 The isolated release branch is ready for final staging and proof-only upload;
 this integration entry itself is not a deployment or full-CI-success receipt.
+
+### 2026-08-28 — verified priority/Gaussian proof-only WMI deployment
+
+The isolated `proof/priority-gaussian-v30-20260828` branch was pushed to
+`nasqret/vietnam2026`, with publication source commit
+`47146c82b1f0b625613f3ffc70628afda2d29a16`. Its thirteen linear implementation
+commits are based directly on remote main `0134bc3e95f78fffe4aeb568900c765bf0180451`;
+the four separate Hydra ancestor commits and ongoing Hydra work in the main
+worktree were not included or modified by this release. The final receipt is a separate
+documentation-only commit on this same release branch.
+
+The original `make deploy-proofs` completed successfully from the clean release
+worktree, including all original immutable Quadratic Reciprocity/Bertrand
+checks, seven current historical-family builds, the complete 904-row historical
+publication check, the 411-file Gaussian explorer and the exact current atlas.
+Bulk checks ran sequentially. The original gateway files were checksum-matched
+before upload; no public Lean worker or broker was stopped or restarted.
+Remote preflight found no symlinks in the proof tree, and its checksum preview
+reported zero deletions. Only the proof library and byte-identical gateway
+files were uploaded; the transferred proof tree totals 489,061,791 bytes.
+
+The actual staged site passed all three independent presentation audits:
+9,572 files, 44 families, 9,409 HTML pages, 3,096 exact/defined theorem-page
+pairs, and 828 definition-page occurrences. These are presentation counts,
+not additional mathematical theorem or definition counts. All 590,498 local
+references, including 53,055 cross-section references, resolve. All 44 inline
+graph payloads match their API data and pass their typed DAG checks.
+The audit checked 4,898 inline JavaScript occurrences, 1,168 unique scripts,
+eight inert JSON blocks, 98 actual defined-graph JavaScript runtime cases and
+89 complete exact-reader runtime cases, with zero failures. Five fixed
+documentation fallback pages passed 15 query/fragment cases; all 38 redirected
+book references and 29 destination fragments resolve. No visual browser or
+screenshot verification is claimed.
+
+Post-deployment read-only checksum comparison of the entire remote proof tree
+reported **zero differences**, including extra-file detection. Independent
+bounded HTTPS requests compared 122 public objects and 21,805,851 bytes exactly
+against staging in 6.221 seconds. This includes all 44 family entrances and
+definition-aware graphs, the six new families' exact indexes and root theorem
+pages, the combined campaign data, shared assets and both new canonical proof
+bundles. All five old documentation paths returned the exact expected HTTPS
+302 destination, retained their query strings, and reached their live chapters.
+
+The new public Gaussian graph, focused on `GF0002`, passed the complete live
+Lean smoke test for `gaussian_code_representation_transport`: one verified
+native theorem node, zero certificate fallbacks, a 1,534-byte import-free
+standalone source, a 1,169-byte compressed Lean Live URL, and seven generated
+package files totaling 26,837 uncompressed bytes. This is a real new-v30 leaf
+compilation, not a claim that the full 52,094-occurrence G082 text fits the
+unchanged single-file source-size guard. The complete canonical Gaussian
+bundle's separate compiled-Lean acceptance is recorded in its proof receipt.
+
+The dedicated CI deploy key is read-only. Private checkout, commit-pin and
+Lean 4.31 checker-build steps succeeded across all eight shards in the earlier run
+`33117974009`. That baseline run also had unrelated test failures/cancellations;
+neither it nor this deployment is reported as a repository-wide green CI run.
+The release branch push does not match the workflow's `main`/`peano-lab` push rules.
+
+Local Peano app staging also passed, with all 493 manifest entries checked for
+`a-541687a273a2`. Neither `/peano-lab/` nor `/peano-lab-next/` was deployed.
+Production cache-header work remains explicitly deferred, and no hosting-cache
+gate was bypassed or weakened. Default Stable remains the same 432 entries.
+The published Alpha release is exactly catalog revision `ac7111ec14ff`, with
+3,222 checked entries and the requested five closed goal families: G072, G006,
+G010, G036 (odd-prime LTE), and G082. This adds 458 theorem bodies and 51
+conservative definitions, without claiming completion of the remaining
+blueprint campaigns.
