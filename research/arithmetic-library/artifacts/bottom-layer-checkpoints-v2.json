@@ -1,0 +1,288 @@
+{
+  "alpha_admission_performed": false,
+  "checkpoint_revision": 2,
+  "checkpoints": [
+    {
+      "admitted_to_alpha": false,
+      "all_maximal_frontier_roots": [
+        "euler_coprime_modular_unit",
+        "euler_theorem_for_units"
+      ],
+      "alpha_checked_use": false,
+      "bundle": {
+        "body_proof_nodes": 12452,
+        "bytes": 571540,
+        "dependency_edges_including_packaging": 568,
+        "independent_lean_checked": true,
+        "inherited_theorems": 177,
+        "nodes_including_packaging_root": 210,
+        "original_ha_checked": true,
+        "packaging_root_id": 209,
+        "path": "research/arithmetic-library/artifacts/bottom-layer-euler-units-proof-bundle-v2.json",
+        "sha256": "1edfcb7021a0869c2493383c75dea367d757be0b77f36fc6ad3f5fd18ed38210"
+      },
+      "frontier_count": 32,
+      "frontier_dependency_edges": 91,
+      "frontier_specs_sha256": "38ecc1c3c4a6045b7fb301526b09ede9b7927524265909bd59bdbbef1dfaf02e",
+      "frontier_tactic_commands": 1203,
+      "membership": "local_non_admitting_checkpoint",
+      "ordered_frontier_names_sha256": "cd20126240c0f26016e1e6952a491db20eaf6759ecb4b795908db05635d30bd3",
+      "principal_roots": [
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "euler_theorem_for_units",
+          "node_id": 208,
+          "ordinary_certificate_nodes": 17918,
+          "statement_sha256": "fcfb262cc347ec2cd7624dffba31f9ed519292b3ba5f1669682cee308cbac39d"
+        },
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "euler_coprime_totient_power",
+          "node_id": 206,
+          "ordinary_certificate_nodes": 17610,
+          "statement_sha256": "4f3533b3d207055a1f56ca77655cf26a381735fa3999f34a0a2c7935a21497e4"
+        }
+      ],
+      "rfc": "research/arithmetic-library/euler-units-rfc-v1.md",
+      "slug": "euler-units",
+      "sources": [
+        {
+          "factory": "make_euler_units_residue_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/euler_units_residue_candidate.py",
+          "sha256": "dacb55219a5a5e9856d208a73e39b77156977d1de7d882044d4ed52907a7fdee"
+        },
+        {
+          "factory": "make_euler_units_product_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/euler_units_product_candidate.py",
+          "sha256": "dfbbc7dd69672992eb99a4eb99f64fb8273c28838aa6e1e749eb5b8a075ef8b9"
+        },
+        {
+          "factory": "make_euler_units_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/euler_units_candidate.py",
+          "sha256": "46e69f301a7215929958726a12ee151ad1972b771bcee57250a8fbbf18873458"
+        }
+      ],
+      "stable_member": false
+    },
+    {
+      "admitted_to_alpha": false,
+      "all_maximal_frontier_roots": [
+        "prime_field_residue_congruence_transport",
+        "prime_field_inverse_symmetric",
+        "prime_field_residue_multiply",
+        "prime_field_negate_table_reflect",
+        "prime_field_add_table_commutative",
+        "prime_field_add_table_associative",
+        "prime_field_multiply_table_commutative",
+        "prime_field_multiply_table_associative",
+        "prime_field_inverse_table_zero",
+        "prime_field_inverse_table_nonzero",
+        "prime_field_left_table_distributive",
+        "prime_field_right_table_distributive",
+        "prime_field_unit_multiple_exists_unique",
+        "prime_field_of_prime_order_exists"
+      ],
+      "alpha_checked_use": false,
+      "bundle": {
+        "body_proof_nodes": 12012,
+        "bytes": 594304,
+        "dependency_edges_including_packaging": 611,
+        "independent_lean_checked": true,
+        "inherited_theorems": 140,
+        "nodes_including_packaging_root": 228,
+        "original_ha_checked": true,
+        "packaging_root_id": 227,
+        "path": "research/arithmetic-library/artifacts/bottom-layer-prime-fields-proof-bundle-v1.json",
+        "sha256": "688e7141106c19adec6fa52a0ae77af3d389b77df512622adc93bd3b0c7ba04e"
+      },
+      "frontier_count": 87,
+      "frontier_dependency_edges": 254,
+      "frontier_specs_sha256": "2d007091fb22e1d6c78896feea9363526196ecbcc075d46b0968b372ae39f50b",
+      "frontier_tactic_commands": 3160,
+      "membership": "local_non_admitting_checkpoint",
+      "ordered_frontier_names_sha256": "bed3bd851257f868c2b99c8cb6a995fa2fa6e4375257d38471aaec093db361b1",
+      "principal_roots": [
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "prime_field_of_prime_order_exists",
+          "node_id": 226,
+          "ordinary_certificate_nodes": 15167,
+          "statement_sha256": "f0a61089155f5bb6cd5e6fa79774756a296253a412e2b131bf8f491e8099b8a7"
+        }
+      ],
+      "rfc": "research/arithmetic-library/prime-field-arithmetic-rfc-v1.md",
+      "slug": "prime-fields",
+      "sources": [
+        {
+          "factory": "make_prime_field_arithmetic_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/prime_field_arithmetic_candidate.py",
+          "sha256": "d4c26bad017d8f9fee173935e93d394ff5b14697b20d1f460c8a8c2fd3091d90"
+        },
+        {
+          "factory": "make_prime_field_tables_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/prime_field_tables_candidate.py",
+          "sha256": "2b24ad88c784eb558e36fba39bc181007986a9449194975d4f763723c0580400"
+        },
+        {
+          "factory": "make_prime_field_finiteness_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/prime_field_finiteness_candidate.py",
+          "sha256": "a86bc0d8913ebfc1ea84c8dad691db5f90e21029c612ee87ad804657b1971b28"
+        }
+      ],
+      "stable_member": false
+    },
+    {
+      "admitted_to_alpha": false,
+      "all_maximal_frontier_roots": [
+        "mobius_zero_has_no_value",
+        "mobius_value_exists_unique",
+        "mobius_one",
+        "mobius_squarefree_divisor",
+        "mobius_prime_squarefree",
+        "mobius_fresh_prime_negates"
+      ],
+      "alpha_checked_use": false,
+      "bundle": {
+        "body_proof_nodes": 15134,
+        "bytes": 813004,
+        "dependency_edges_including_packaging": 675,
+        "independent_lean_checked": true,
+        "inherited_theorems": 215,
+        "nodes_including_packaging_root": 237,
+        "original_ha_checked": true,
+        "packaging_root_id": 236,
+        "path": "research/arithmetic-library/artifacts/bottom-layer-mobius-values-proof-bundle-v1.json",
+        "sha256": "041f1a3471002ff3cd5fc3da2a6cc751ad2f4a4458a497b3de2a26276fd314b8"
+      },
+      "frontier_count": 21,
+      "frontier_dependency_edges": 64,
+      "frontier_specs_sha256": "547c6e1da76f74f5329b3cc2e5707584bd2534fece4406d7b3493ef11aaa1291",
+      "frontier_tactic_commands": 660,
+      "membership": "local_non_admitting_checkpoint",
+      "ordered_frontier_names_sha256": "bd03b8b7a07a1fb84279de822e042907ec8f0fe5bf4564c7468d53bc9b208602",
+      "principal_roots": [
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "mobius_value_exists_unique",
+          "node_id": 226,
+          "ordinary_certificate_nodes": 20227,
+          "statement_sha256": "eb41094b2ceb2273e89e8966ced4cc921decf56dd6bc6dbcb5349c2087aa1135"
+        },
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "mobius_fresh_prime_negates",
+          "node_id": 235,
+          "ordinary_certificate_nodes": 18203,
+          "statement_sha256": "2b0116e6d32e45fe7ae5e9a8bd7c11e5f95a88021cd42786276cff6e7ec303d2"
+        }
+      ],
+      "rfc": "research/arithmetic-library/mobius-divisor-sum-foundations-rfc-v1.md",
+      "slug": "mobius-values",
+      "sources": [
+        {
+          "factory": "make_mobius_value_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/mobius_value_candidate.py",
+          "sha256": "18cc5aef4d4710a09bd8f2eac063ae2ccf54049a68eaab33d6b9ce7df87af9e0"
+        },
+        {
+          "factory": "make_mobius_prime_step_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/mobius_prime_step_candidate.py",
+          "sha256": "f6fe75aa8e5c899baff761edea21dc82a3b76ea52ef165511d20f34a6d332af7"
+        }
+      ],
+      "stable_member": false
+    },
+    {
+      "admitted_to_alpha": false,
+      "all_maximal_frontier_roots": [
+        "divisor_signed_table_construct",
+        "divisor_signed_table_restrict",
+        "divisor_signed_sum_functional",
+        "divisor_signed_sum_empty_exists",
+        "divisor_signed_balance_negate_intro",
+        "divisor_signed_negate_fixed_zero",
+        "divisor_signed_sum_negation_transport",
+        "divisor_signed_sum_successor_intro",
+        "divisor_signed_sum_successor_decompose",
+        "divisor_signed_table_reindex_exists",
+        "divisor_signed_sum_permutation_invariant"
+      ],
+      "alpha_checked_use": false,
+      "bundle": {
+        "body_proof_nodes": 13724,
+        "bytes": 855381,
+        "dependency_edges_including_packaging": 571,
+        "independent_lean_checked": true,
+        "inherited_theorems": 183,
+        "nodes_including_packaging_root": 214,
+        "original_ha_checked": true,
+        "packaging_root_id": 213,
+        "path": "research/arithmetic-library/artifacts/bottom-layer-signed-sums-proof-bundle-v1.json",
+        "sha256": "35bc01ab3f12cc09a5ed9aa3098225090dcc40ac241f9cbd669f99cef4737e57"
+      },
+      "frontier_count": 30,
+      "frontier_dependency_edges": 73,
+      "frontier_specs_sha256": "ddf5801b9e89a639401d1c95ee3745fb44d17e5c255a2dd11d89f38b9de5b37b",
+      "frontier_tactic_commands": 1410,
+      "membership": "local_non_admitting_checkpoint",
+      "ordered_frontier_names_sha256": "b345686528e2c260f41059d26a1d1c314944534cca8fc541877b326f6ea1a90d",
+      "principal_roots": [
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "divisor_signed_table_reindex_exists",
+          "node_id": 209,
+          "ordinary_certificate_nodes": 8917,
+          "statement_sha256": "f2cc667b787e62fe9e43a8689834b3edf048e4fe71b615639db1d2062d93f9f9"
+        },
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "divisor_signed_sum_permutation_invariant",
+          "node_id": 212,
+          "ordinary_certificate_nodes": 16872,
+          "statement_sha256": "0e94ef4db7c6f73d73ae87525d29e24722764adabcd38a908ab3a844bfec57ac"
+        }
+      ],
+      "rfc": "research/arithmetic-library/mobius-divisor-sum-foundations-rfc-v1.md",
+      "slug": "signed-sums",
+      "sources": [
+        {
+          "factory": "make_divisor_sum_table_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/divisor_sum_table_candidate.py",
+          "sha256": "011980a3d5857c123e97359e048bb7f5b9e35685fb9d1357d1d543c4ff9d7692"
+        },
+        {
+          "factory": "make_divisor_sum_algebra_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/divisor_sum_algebra_candidate.py",
+          "sha256": "38cdcf7229cb43001f658bded3434d53b54efee3b28067f634e1f39af61a6c92"
+        },
+        {
+          "factory": "make_divisor_sum_reindex_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/divisor_sum_reindex_candidate.py",
+          "sha256": "e652ac90350d01c0ec6e4bbb7405950db316f35ff24fba3d019e1bc0c21d1ab4"
+        }
+      ],
+      "stable_member": false
+    }
+  ],
+  "independent_checker": {
+    "binary_bytes": 106787344,
+    "binary_sha256": "22a49645acdee1a90bdf09861729d62b7a9c5bc20bc1f799ad05adc54ee0b033",
+    "rebuilt_in_this_tranche": false
+  },
+  "new_theorems": 170,
+  "parent": {
+    "alpha_checked_use_count": 3222,
+    "catalog": "artifacts/peano-library/alpha/catalog-v30.json",
+    "catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7",
+    "stable_count": 432,
+    "version": "v30"
+  },
+  "proof_authority": "fresh_original_ha_and_independent_compiled_lean_checks",
+  "published": false,
+  "revision_reason": "reuse two exact parent Euler lemmas instead of counting duplicate statements",
+  "schema": "peano-lab-non-admitting-bottom-layer-checkpoints-v1",
+  "stable_admission_performed": false,
+  "stored_receipt_is_proof_authority": false,
+  "superseded_audit": "research/arithmetic-library/artifacts/bottom-layer-checkpoints-v1.json",
+  "superseded_euler_sources": "research/arithmetic-library/artifacts/bottom-layer-euler-units-v1-sources/manifest.json"
+}

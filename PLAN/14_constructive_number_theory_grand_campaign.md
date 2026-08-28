@@ -1749,8 +1749,11 @@ and [book chapter](../book/arithmetic-library/lower-layer-campaign.md) expose
 the witnesses and the actual mixed definition/proof DAG. Reproduce the release
 with `make peano-library-alpha-v28-check`.
 
-The next lower-layer dispatch order, audited against the actual v28 lemmas,
-is **G072 → G006 → G010 → G036 → G082**. Every item remains open:
+The v28 lower-layer dispatch order was **G072 → G006 → G010 → G036 → G082**.
+All five exact targets are now complete in Alpha v29/v30; the v29 priority and
+v30 Gaussian receipts record their original-HA and independent Lean checks.
+The following list preserves the mathematical acceptance contracts of that
+completed dispatch:
 
 1. **Best approximation (G072; layer 5; G071 and G002):** construct actual
    convergent recurrence and determinant certificates, then prove the uniform
@@ -1781,11 +1784,16 @@ Prime-power fields and positive-characteristic squarefree decomposition
 (G091/G093) require additional polynomial division/gcd, irreducibility, and
 inseparability machinery despite their displayed ready status.
 
-The current exact ready frontier has sixteen entries. Readiness means only
-that its displayed direct prerequisites are checked; it does not certify
-missing internal lemmas or make stronger lattice/LLL infrastructure available.
-Gaussian/Eisenstein unique factorization and prime classification remain open,
-as do higher reciprocity and representation-counting summits.
+The v28 ready frontier had sixteen entries; the current v30 graph has eighteen.
+Readiness means only that displayed direct prerequisites are checked; it does
+not certify missing internal lemmas or make stronger lattice/LLL infrastructure
+available. Gaussian unique factorization is now closed; Eisenstein unique
+factorization and both prime classifications remain open, as do higher
+reciprocity and representation-counting summits. The next implementation-only
+tranche is tracked in [the bottom-layer foundations plan](15_bottom_layer_foundations.md):
+actual prime-field arithmetic and tables for G091, Euler's theorem G014, and
+signed divisor-sum/Möbius inversion G007. Its progress is not an Alpha admission
+or deployment claim.
 
 ### 7.3 Third execution wave: breadth with shared finite machinery
 

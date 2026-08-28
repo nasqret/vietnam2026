@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Euler&#x27;s theorem for units — Proof Explorer</title>
+  <meta name="description" content="Follow the constructed multiplier permutation, the weighted finite product, and the count-prefix induction to an actual power congruent to one.">
+  <meta property="og:title" content="Euler&#x27;s theorem for units — Proof Explorer">
+  <meta property="og:description" content="Follow the constructed multiplier permutation, the weighted finite product, and the count-prefix induction to an actual power congruent to one.">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="noindex">
+  <meta name="proof-publication-scope" content="local-only-checkpoint">
+  <link rel="stylesheet" href="../assets/proofs.css?v=ac7111ec14ff">
+</head>
+<body class="family-page euler-units-page">
+  <header class="family-hero">
+    <div class="shell">
+      <nav class="crumbs"><a href="../?v=ac7111ec14ff">Proof explorers</a><span>/</span><a data-campaign-link="global" href="../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><span>/</span><a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F02&amp;v=ac7111ec14ff">Checkpoint family</a><span>/</span><span>Euler&#x27;s theorem for units</span></nav>
+      <p class="eyebrow">Actual unit permutations · independently counted totients · Constructive arithmetic</p>
+      <h1>Euler&#x27;s theorem for units</h1>
+      <p class="formula">m&gt;1 ∧ Unit(a,m) ∧ Phi(m,t) ⇒ ∃w. Pow(a,t,w) ∧ ModEq(m,w,1)</p>
+      <p class="lede">Follow the constructed multiplier permutation, the weighted finite product, and the count-prefix induction to an actual power congruent to one.</p>
+      <div class="hero-actions">
+        <a class="primary-action" href="explorer/defined/graph.html?target=EU0022&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus&amp;v=ac7111ec14ff">Open the definition-aware map</a>
+        <a class="secondary-action" href="explorer/defined/tag/EU0022.html?v=ac7111ec14ff">Read the final theorem</a>
+        <a class="secondary-action" data-campaign-link="milestone" href="../grand-campaign/?view=goal&amp;focus=G014&amp;v=ac7111ec14ff">See campaign milestone G014</a>
+      </div>
+    </div>
+  </header>
+  <main class="shell family-main">
+    <section class="view-grid">
+      <article class="view-card featured">
+        <p class="card-kicker">Recommended</p>
+        <h2>Defined mathematical notation</h2>
+        <p>Browse 23 linked conservative definitions and 32 independently checked theorems without losing their exact first-order expansions.</p>
+        <a href="explorer/defined/?v=ac7111ec14ff">Browse definitions and theorems →</a>
+        <p><a href="explorer/defined/graph.html?target=EU0022&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=ac7111ec14ff">Inspect the local definition DAG →</a></p>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Exact certificate</p>
+        <h2>Fully expanded arithmetic</h2>
+        <p>Inspect all 1203 native tactic lines and 91 actual proof prerequisites with every definition fully expanded.</p>
+        <a href="explorer/?v=ac7111ec14ff">Open the exact edition →</a>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Focused route</p>
+        <h2>Final dependency cone</h2>
+        <p>Start at theorem <code>EU0022</code> and follow only the lemmas and conservative definitions supporting euler_theorem_for_units.</p>
+        <a href="explorer/defined/graph.html?target=EU0022&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus&amp;v=ac7111ec14ff">Trace prerequisites →</a>
+      </article>
+    </section>
+    <section class="release-note"><strong>Zoom between mathematical scales:</strong> <a data-campaign-link="global" href="../grand-campaign/?v=ac7111ec14ff">local checkpoint map</a> → <a data-campaign-link="domain" href="../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">research domain</a> → <a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F02&amp;v=ac7111ec14ff">proof family</a> → <a data-campaign-link="goal" data-campaign-goal="G014" href="../grand-campaign/?view=goal&amp;focus=G014&amp;v=ac7111ec14ff">G014 milestone</a> → <a href="explorer/defined/graph.html?target=EU0022&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=ac7111ec14ff">theorem and definition dependencies</a>.</section>
+    <section class="release-note"><strong>Major independently established statements:</strong> <a href="explorer/defined/tag/EU000D.html?v=ac7111ec14ff"><code>EU000D</code> euler_multiplier_permutation_exists</a> · <a href="explorer/defined/tag/EU0017.html?v=ac7111ec14ff"><code>EU0017</code> euler_unit_product_coprime</a> · <a href="explorer/defined/tag/EU001E.html?v=ac7111ec14ff"><code>EU001E</code> euler_unit_count_product_balance</a> · <a href="explorer/defined/tag/EU0020.html?v=ac7111ec14ff"><code>EU0020</code> euler_coprime_totient_power</a> · <a href="explorer/defined/tag/EU0022.html?v=ac7111ec14ff"><code>EU0022</code> euler_theorem_for_units</a>.</section>
+    <section class="release-note"><strong>Local-only independently verified checkpoint:</strong> 32 theorems in a complete dependency-closed HA bundle · 91 proof prerequisites · 23 linked definitions · 40 definition-dependency arrows · 1203 exact tactic lines. Not Alpha-enrolled; no Alpha checked-use authority; not Stable. Alpha v30 remains 3222 theorems and Stable remains 432. The unchanged intuitionistic kernel and separately compiled Lean verifier independently accept all 210 bundle nodes; SHA-256 <code>1edfcb7021a0869c2493383c75dea367d757be0b77f36fc6ad3f5fd18ed38210</code>. <a href="checkpoint.html?v=ac7111ec14ff">Inspect the checkpoint receipt, literal bundle, and source files →</a></section>
+    <section class="release-note"><strong>Exact mathematical boundary:</strong> The exact G014 theorem is proved locally for m&gt;1 and genuinely invertible a. Phi counts coprime residues independently of the conclusion. The broader coprime theorem also handles m=1 by congruence, not by asserting that one is a canonical remainder. No multiplicative-order or RSA theorem is claimed. The published atlas and Alpha membership are unchanged.</section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_frontier_roots": [
+    "euler_coprime_modular_unit",
+    "euler_theorem_for_units"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 12452,
+    "bytes": 571540,
+    "dependency_edges_including_packaging": 568,
+    "independent_lean_checked": true,
+    "inherited_theorems": 177,
+    "nodes_including_packaging_root": 210,
+    "original_ha_checked": true,
+    "packaging_root_id": 209,
+    "path": "research/arithmetic-library/artifacts/bottom-layer-euler-units-proof-bundle-v2.json",
+    "sha256": "1edfcb7021a0869c2493383c75dea367d757be0b77f36fc6ad3f5fd18ed38210"
+  },
+  "frontier_count": 32,
+  "frontier_dependency_edges": 91,
+  "frontier_specs_sha256": "38ecc1c3c4a6045b7fb301526b09ede9b7927524265909bd59bdbbef1dfaf02e",
+  "frontier_tactic_commands": 1203,
+  "membership": "local_non_admitting_checkpoint",
+  "ordered_frontier_names_sha256": "cd20126240c0f26016e1e6952a491db20eaf6759ecb4b795908db05635d30bd3",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "euler_theorem_for_units",
+      "node_id": 208,
+      "statement_sha256": "fcfb262cc347ec2cd7624dffba31f9ed519292b3ba5f1669682cee308cbac39d"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "euler_coprime_totient_power",
+      "node_id": 206,
+      "statement_sha256": "4f3533b3d207055a1f56ca77655cf26a381735fa3999f34a0a2c7935a21497e4"
+    }
+  ],
+  "rfc": "research/arithmetic-library/euler-units-rfc-v1.md",
+  "slug": "euler-units",
+  "sources": [
+    {
+      "factory": "make_euler_units_residue_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/euler_units_residue_candidate.py",
+      "sha256": "dacb55219a5a5e9856d208a73e39b77156977d1de7d882044d4ed52907a7fdee"
+    },
+    {
+      "factory": "make_euler_units_product_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/euler_units_product_candidate.py",
+      "sha256": "dfbbc7dd69672992eb99a4eb99f64fb8273c28838aa6e1e749eb5b8a075ef8b9"
+    },
+    {
+      "factory": "make_euler_units_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/euler_units_candidate.py",
+      "sha256": "46e69f301a7215929958726a12ee151ad1972b771bcee57250a8fbbf18873458"
+    }
+  ],
+  "stable_member": false
+}

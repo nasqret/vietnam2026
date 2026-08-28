@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0257 — FpUnitTrace(p,b,c,n,r) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-fields"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">ND0257</p><h1>FpUnitTrace(p,b,c,n,r)</h1>
+  <p>An actual beta history starts at zero, performs n additions of one and terminates at r. The residue invariant is established by induction.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,0,0)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,n,r)</a> ∧ <a class="pd-definition-ref" data-definition="ND0256" href="ND0256.html?v=ac7111ec14ff">FpUnitSteps(p,b,c,n)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((((exists ff_h_pft_bottomlayerstart. ff_h_pft_bottomlayerstart + S (0) = S ((S (0)) * (c))) /\ exists ff_q_pft_bottomlayerstart. (b) = ff_q_pft_bottomlayerstart * S ((S (0)) * (c)) + (0))) /\ (((((exists ff_h_pft_bottomlayerterminal. ff_h_pft_bottomlayerterminal + S ((r)) = S ((S ((n))) * (c))) /\ exists ff_q_pft_bottomlayerterminal. (b) = ff_q_pft_bottomlayerterminal * S ((S ((n))) * (c)) + ((r)))) /\ ((forall pff_trace_index_bottomlayersteps. (exists pfa_gap_bottomlayerstepsindex. pfa_gap_bottomlayerstepsindex + S (pff_trace_index_bottomlayersteps) = ((n))) -&gt; exists pff_trace_before_bottomlayersteps pff_trace_after_bottomlayersteps. ((((exists ff_h_pft_bottomlayerstepsbefore. ff_h_pft_bottomlayerstepsbefore + S (pff_trace_before_bottomlayersteps) = S ((S (pff_trace_index_bottomlayersteps)) * (c))) /\ exists ff_q_pft_bottomlayerstepsbefore. (b) = ff_q_pft_bottomlayerstepsbefore * S ((S (pff_trace_index_bottomlayersteps)) * (c)) + (pff_trace_before_bottomlayersteps))) /\ (((((exists ff_h_pft_bottomlayerstepsafter. ff_h_pft_bottomlayerstepsafter + S (pff_trace_after_bottomlayersteps) = S ((S (S (pff_trace_index_bottomlayersteps))) * (c))) /\ exists ff_q_pft_bottomlayerstepsafter. (b) = ff_q_pft_bottomlayerstepsafter * S ((S (S (pff_trace_index_bottomlayersteps))) * (c)) + (pff_trace_after_bottomlayersteps))) /\ ((((exists pfa_gap_bottomlayerstepsadditionleft. pfa_gap_bottomlayerstepsadditionleft + S (pff_trace_before_bottomlayersteps) = ((p))) /\ (((exists pfa_gap_bottomlayerstepsadditionright. pfa_gap_bottomlayerstepsadditionright + S (1) = ((p))) /\ ((((exists pfa_gap_bottomlayerstepsadditionresultbound. pfa_gap_bottomlayerstepsadditionresultbound + S (pff_trace_after_bottomlayersteps) = ((p))) /\ ((exists pfa_offset_left_bottomlayerstepsadditionresultcongruence pfa_offset_right_bottomlayerstepsadditionresultcongruence. ((pff_trace_before_bottomlayersteps) + (1)) + ((p)) * pfa_offset_left_bottomlayerstepsadditionresultcongruence = (pff_trace_after_bottomlayersteps) + ((p)) * pfa_offset_right_bottomlayerstepsadditionresultcongruence))))))))))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0256.html?v=ac7111ec14ff">FpUnitSteps(p,b,c,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0258.html?v=ac7111ec14ff">FpUnitMultiple(p,n,r)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/FP004D.html?v=ac7111ec14ff">FP004D · prime_field_unit_trace_recode</a><a class="pd-chip" href="../tag/FP004E.html?v=ac7111ec14ff">FP004E · prime_field_unit_trace_successor</a><a class="pd-chip" href="../tag/FP004F.html?v=ac7111ec14ff">FP004F · prime_field_unit_trace_residue</a><a class="pd-chip" href="../tag/FP0050.html?v=ac7111ec14ff">FP0050 · prime_field_unit_trace_result_bounded</a><a class="pd-chip" href="../tag/FP0051.html?v=ac7111ec14ff">FP0051 · prime_field_unit_trace_exists</a><a class="pd-chip" href="../tag/FP0053.html?v=ac7111ec14ff">FP0053 · prime_field_unit_multiple_from_residue</a><a class="pd-chip" href="../tag/FP0055.html?v=ac7111ec14ff">FP0055 · prime_field_unit_multiple_exists_unique</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>5</dd>
+  <dt>Topological notation layer</dt><dd>4</dd>
+  <dt>Transitive prerequisites</dt><dd>6</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0257.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>d16e3a1307fc7f3e0b8686806b161325f9e3383b7602364ad0b90da19e498719</code></dd>
+</dl></aside></main></body>
+</html>

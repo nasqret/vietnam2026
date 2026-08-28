@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0244 — FpAddGridValue(p,i,v) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-fields"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">ND0244</p><h1>FpAddGridValue(p,i,v)</h1>
+  <p>An actual addition value at the row-major index i=a*p+b, with bounded coordinates supplied by FpAdd.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ pft_row_bottomlayer. ∃ pft_column_bottomlayer. i = pft_row_bottomlayer · p + pft_column_bottomlayer ∧ <a class="pd-definition-ref" data-definition="ND0229" href="ND0229.html?v=ac7111ec14ff">FpAdd(p,pft_row_bottomlayer,pft_column_bottomlayer,v)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists pft_row_bottomlayer pft_column_bottomlayer. ((((i)) = pft_row_bottomlayer * ((p)) + pft_column_bottomlayer) /\ ((((exists pfa_gap_bottomlayeroperationleft. pfa_gap_bottomlayeroperationleft + S (pft_row_bottomlayer) = ((p))) /\ (((exists pfa_gap_bottomlayeroperationright. pfa_gap_bottomlayeroperationright + S (pft_column_bottomlayer) = ((p))) /\ ((((exists pfa_gap_bottomlayeroperationresultbound. pfa_gap_bottomlayeroperationresultbound + S ((v)) = ((p))) /\ ((exists pfa_offset_left_bottomlayeroperationresultcongruence pfa_offset_right_bottomlayeroperationresultcongruence. ((pft_row_bottomlayer) + (pft_column_bottomlayer)) + ((p)) * pfa_offset_left_bottomlayeroperationresultcongruence = ((v)) + ((p)) * pfa_offset_right_bottomlayeroperationresultcongruence)))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0229.html?v=ac7111ec14ff">FpAdd(p,a,b,c)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0246.html?v=ac7111ec14ff">FpAddPrefix(p,b,c,l)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/FP002B.html?v=ac7111ec14ff">FP002B · prime_field_add_grid_value_exists</a><a class="pd-chip" href="../tag/FP002F.html?v=ac7111ec14ff">FP002F · prime_field_add_prefix_choice</a><a class="pd-chip" href="../tag/FP0038.html?v=ac7111ec14ff">FP0038 · prime_field_add_grid_value_lookup</a><a class="pd-chip" href="../tag/FP0039.html?v=ac7111ec14ff">FP0039 · prime_field_add_table_lookup</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>3</dd>
+  <dt>Topological notation layer</dt><dd>3</dd>
+  <dt>Transitive prerequisites</dt><dd>4</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0244.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>ebd5b497075ae9e2329d608830c3b08c7ed09396ce1995e704b2f540ad91b943</code></dd>
+</dl></aside></main></body>
+</html>

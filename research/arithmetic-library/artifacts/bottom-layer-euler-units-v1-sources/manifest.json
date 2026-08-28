@@ -1,0 +1,43 @@
+{
+  "schema": "peano-lab-superseded-non-admitting-euler-sources-v1",
+  "status": "superseded_non_admitting_checkpoint",
+  "alpha_admission_performed": false,
+  "stable_admission_performed": false,
+  "copied_from": "book/_static/constructive-bottom-layer-explorer/sources before Euler v2 regeneration",
+  "frontier_count": 34,
+  "successor_distinct_frontier_count": 32,
+  "parent_catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7",
+  "bundle": {
+    "path": "research/arithmetic-library/artifacts/bottom-layer-euler-units-proof-bundle-v1.json",
+    "bytes": 572243,
+    "sha256": "a21c22cbe23e48e540ec637ee75bed906ba6030b794b5b57a72c7bc5ec970949"
+  },
+  "reserved_tags": {
+    "EU0003": {
+      "superseded_name": "euler_modulus_above_one_nonzero",
+      "reused_parent_name": "binary_modulus_nontrivial_nonzero"
+    },
+    "EU001C": {
+      "superseded_name": "euler_product_scale_shuffle",
+      "reused_parent_name": "mul_shuffle_four"
+    }
+  },
+  "files": {
+    "euler_units_residue_candidate.py": {
+      "bytes": 16763,
+      "sha256": "8062c334d6654ccc856cec62f1e8ae6e22f4aeea86944ebd4f611bda87af6476"
+    },
+    "euler_units_product_candidate.py": {
+      "bytes": 16561,
+      "sha256": "dfbbc7dd69672992eb99a4eb99f64fb8273c28838aa6e1e749eb5b8a075ef8b9"
+    },
+    "euler_units_candidate.py": {
+      "bytes": 13342,
+      "sha256": "87554674bae4815b9837a14791314350dd43c38b73cf2de1c107560ce4c94aa2"
+    },
+    "euler-units-rfc-v1.md": {
+      "bytes": 11188,
+      "sha256": "436ee2e3ab872b3d5ae0cacdb9121b3f389168eb6981a01d42f1a52c892b7f40"
+    }
+  }
+}

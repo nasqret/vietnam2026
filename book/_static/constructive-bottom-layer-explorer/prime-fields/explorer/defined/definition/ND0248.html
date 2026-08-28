@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0248 — FpNegPrefix(p,b,c,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-fields"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">ND0248</p><h1>FpNegPrefix(p,b,c,l)</h1>
+  <p>The actual beta prefix records an additive inverse for each index below l.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ pft_index_bottomlayer. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(pft_index_bottomlayer,l)</a> → ∃ x. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,pft_index_bottomlayer,x)</a> ∧ <a class="pd-definition-ref" data-definition="ND0229" href="ND0229.html?v=ac7111ec14ff">FpAdd(p,pft_index_bottomlayer,x,0)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall pft_index_bottomlayer. (exists pfa_gap_bottomlayerprefix. pfa_gap_bottomlayerprefix + S (pft_index_bottomlayer) = ((l))) -&gt; exists pft_value_bottomlayer. (((((exists ff_h_pft_bottomlayerpointentry. ff_h_pft_bottomlayerpointentry + S (pft_value_bottomlayer) = S ((S (pft_index_bottomlayer)) * (c))) /\ exists ff_q_pft_bottomlayerpointentry. (b) = ff_q_pft_bottomlayerpointentry * S ((S (pft_index_bottomlayer)) * (c)) + (pft_value_bottomlayer))) /\ ((((exists pfa_gap_bottomlayerpointvalueadditionleft. pfa_gap_bottomlayerpointvalueadditionleft + S (pft_index_bottomlayer) = ((p))) /\ (((exists pfa_gap_bottomlayerpointvalueadditionright. pfa_gap_bottomlayerpointvalueadditionright + S (pft_value_bottomlayer) = ((p))) /\ ((((exists pfa_gap_bottomlayerpointvalueadditionresultbound. pfa_gap_bottomlayerpointvalueadditionresultbound + S (0) = ((p))) /\ ((exists pfa_offset_left_bottomlayerpointvalueadditionresultcongruence pfa_offset_right_bottomlayerpointvalueadditionresultcongruence. ((pft_index_bottomlayer) + (pft_value_bottomlayer)) + ((p)) * pfa_offset_left_bottomlayerpointvalueadditionresultcongruence = (0) + ((p)) * pfa_offset_right_bottomlayerpointvalueadditionresultcongruence))))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0231.html?v=ac7111ec14ff">FpNeg(p,a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0250.html?v=ac7111ec14ff">FpOperationTables(p,ab,ac,mb,mc,nb,nc,ib,ic)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/FP0031.html?v=ac7111ec14ff">FP0031 · prime_field_negate_prefix_choice</a><a class="pd-chip" href="../tag/FP0035.html?v=ac7111ec14ff">FP0035 · prime_field_negate_table_exists</a><a class="pd-chip" href="../tag/FP0037.html?v=ac7111ec14ff">FP0037 · prime_field_operation_tables_exists</a><a class="pd-chip" href="../tag/FP003E.html?v=ac7111ec14ff">FP003E · prime_field_negate_table_lookup</a><a class="pd-chip" href="../tag/FP003F.html?v=ac7111ec14ff">FP003F · prime_field_negate_table_reflect</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>4</dd>
+  <dt>Transitive prerequisites</dt><dd>6</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0248.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>2962e6286ae6129ca9ae79e644107cd92085d556773b00ae3a141b548a30570d</code></dd>
+</dl></aside></main></body>
+</html>

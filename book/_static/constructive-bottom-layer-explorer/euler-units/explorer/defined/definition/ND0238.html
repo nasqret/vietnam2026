@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0238 — UnitMultiplierPrefix(a,m,b,c,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="euler-units"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F02&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G014" href="../../../../grand-campaign/?view=goal&amp;focus=G014&amp;v=ac7111ec14ff">G014 milestone</a></nav>
+  <p class="pd-tag">ND0238</p><h1>UnitMultiplierPrefix(a,m,b,c,l)</h1>
+  <p>At every index i&lt;l, the actual beta entry is the canonical residue of a*i. A bijection is constructed by theorem, not assumed in this graph.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ eu_index_bottomlayer. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(eu_index_bottomlayer,l)</a> → ∃ x. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,eu_index_bottomlayer,x)</a> ∧ <a class="pd-definition-ref" data-definition="ND0023" href="ND0023.html?v=ac7111ec14ff">CanonicalModularResidue(m,a · eu_index_bottomlayer,x)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall eu_index_bottomlayer. (exists eut_gap_eu_bottomlayer_index. eut_gap_eu_bottomlayer_index + S (eu_index_bottomlayer) = ((l))) -&gt; exists eu_residue_bottomlayer. (((exists fs_h_eu_bottomlayer_at. fs_h_eu_bottomlayer_at + S (eu_residue_bottomlayer) = S ((S (eu_index_bottomlayer)) * (c))) /\ exists fs_q_eu_bottomlayer_at. (b) = fs_q_eu_bottomlayer_at * S ((S (eu_index_bottomlayer)) * (c)) + (eu_residue_bottomlayer))) /\ ((exists eut_gap_eu_bottomlayer_bound. eut_gap_eu_bottomlayer_bound + S (eu_residue_bottomlayer) = ((m))) /\ (exists eu_mod_left_bottomlayer_mod eu_mod_right_bottomlayer_mod. (((a))*eu_index_bottomlayer) + ((m)) * eu_mod_left_bottomlayer_mod = (eu_residue_bottomlayer) + ((m)) * eu_mod_right_bottomlayer_mod))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0023.html?v=ac7111ec14ff">CanonicalModularResidue(m,a,r)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/EU0007.html?v=ac7111ec14ff">EU0007 · euler_multiplier_prefix_empty</a><a class="pd-chip" href="../tag/EU0008.html?v=ac7111ec14ff">EU0008 · euler_multiplier_prefix_extend</a><a class="pd-chip" href="../tag/EU0009.html?v=ac7111ec14ff">EU0009 · euler_multiplier_prefix_exists</a><a class="pd-chip" href="../tag/EU000A.html?v=ac7111ec14ff">EU000A · euler_multiplier_prefix_entry</a><a class="pd-chip" href="../tag/EU000B.html?v=ac7111ec14ff">EU000B · euler_multiplier_prefix_bounded_injective</a><a class="pd-chip" href="../tag/EU000C.html?v=ac7111ec14ff">EU000C · euler_multiplier_prefix_permutation</a><a class="pd-chip" href="../tag/EU000D.html?v=ac7111ec14ff">EU000D · euler_multiplier_permutation_exists</a><a class="pd-chip" href="../tag/EU001B.html?v=ac7111ec14ff">EU001B · euler_unit_product_reindex_scale</a><a class="pd-chip" href="../tag/EU001F.html?v=ac7111ec14ff">EU001F · euler_coprime_totient_power_value</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>5</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>4</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0238.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>ece87ffaac917d17fa6c6aa415544e04682fee3d98bd0b7209fd3bffcb6f7a7b</code></dd>
+</dl></aside></main></body>
+</html>

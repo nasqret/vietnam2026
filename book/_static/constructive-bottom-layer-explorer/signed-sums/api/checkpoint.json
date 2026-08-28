@@ -1,0 +1,69 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_frontier_roots": [
+    "divisor_signed_table_construct",
+    "divisor_signed_table_restrict",
+    "divisor_signed_sum_functional",
+    "divisor_signed_sum_empty_exists",
+    "divisor_signed_balance_negate_intro",
+    "divisor_signed_negate_fixed_zero",
+    "divisor_signed_sum_negation_transport",
+    "divisor_signed_sum_successor_intro",
+    "divisor_signed_sum_successor_decompose",
+    "divisor_signed_table_reindex_exists",
+    "divisor_signed_sum_permutation_invariant"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 13724,
+    "bytes": 855381,
+    "dependency_edges_including_packaging": 571,
+    "independent_lean_checked": true,
+    "inherited_theorems": 183,
+    "nodes_including_packaging_root": 214,
+    "original_ha_checked": true,
+    "packaging_root_id": 213,
+    "path": "research/arithmetic-library/artifacts/bottom-layer-signed-sums-proof-bundle-v1.json",
+    "sha256": "35bc01ab3f12cc09a5ed9aa3098225090dcc40ac241f9cbd669f99cef4737e57"
+  },
+  "frontier_count": 30,
+  "frontier_dependency_edges": 73,
+  "frontier_specs_sha256": "ddf5801b9e89a639401d1c95ee3745fb44d17e5c255a2dd11d89f38b9de5b37b",
+  "frontier_tactic_commands": 1410,
+  "membership": "local_non_admitting_checkpoint",
+  "ordered_frontier_names_sha256": "b345686528e2c260f41059d26a1d1c314944534cca8fc541877b326f6ea1a90d",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "divisor_signed_table_reindex_exists",
+      "node_id": 209,
+      "statement_sha256": "f2cc667b787e62fe9e43a8689834b3edf048e4fe71b615639db1d2062d93f9f9"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "divisor_signed_sum_permutation_invariant",
+      "node_id": 212,
+      "statement_sha256": "0e94ef4db7c6f73d73ae87525d29e24722764adabcd38a908ab3a844bfec57ac"
+    }
+  ],
+  "rfc": "research/arithmetic-library/mobius-divisor-sum-foundations-rfc-v1.md",
+  "slug": "signed-sums",
+  "sources": [
+    {
+      "factory": "make_divisor_sum_table_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/divisor_sum_table_candidate.py",
+      "sha256": "011980a3d5857c123e97359e048bb7f5b9e35685fb9d1357d1d543c4ff9d7692"
+    },
+    {
+      "factory": "make_divisor_sum_algebra_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/divisor_sum_algebra_candidate.py",
+      "sha256": "38cdcf7229cb43001f658bded3434d53b54efee3b28067f634e1f39af61a6c92"
+    },
+    {
+      "factory": "make_divisor_sum_reindex_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/divisor_sum_reindex_candidate.py",
+      "sha256": "e652ac90350d01c0ec6e4bbb7405950db316f35ff24fba3d019e1bc0c21d1ab4"
+    }
+  ],
+  "stable_member": false
+}

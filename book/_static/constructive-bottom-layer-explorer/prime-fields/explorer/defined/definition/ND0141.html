@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0141 — IdentityMatrixSelector(b,c,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-fields"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">ND0141</p><h1>IdentityMatrixSelector(b,c,l)</h1>
+  <p>The actual beta-decoded coordinate list 0,1,…,l−1; its boundedness, injectivity, and full-matrix selection are proved separately.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ mdr_i_secondwave. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(mdr_i_secondwave,l)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,mdr_i_secondwave,mdr_i_secondwave)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall mdr_i_secondwave. (exists mdr_gap_secondwavebound. mdr_gap_secondwavebound + S (mdr_i_secondwave) = (l)) -&gt; (((exists ff_h_mdr_secondwaveentry. ff_h_mdr_secondwaveentry + S (mdr_i_secondwave) = S ((S (mdr_i_secondwave)) * c)) /\ exists ff_q_mdr_secondwaveentry. b = ff_q_mdr_secondwaveentry * S ((S (mdr_i_secondwave)) * c) + (mdr_i_secondwave)))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0255.html?v=ac7111ec14ff">FpCardinality(p,b,c)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/FP004A.html?v=ac7111ec14ff">FP004A · prime_field_enumeration_value</a><a class="pd-chip" href="../tag/FP004B.html?v=ac7111ec14ff">FP004B · prime_field_enumeration_is_bijection</a><a class="pd-chip" href="../tag/FP004C.html?v=ac7111ec14ff">FP004C · prime_field_cardinality_exists</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>3</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0141.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>fa657eed71b82e5b0cc99af4622c2cee814ae688de2eddd4e25aea9d9d5789bf</code></dd>
+</dl></aside></main></body>
+</html>
