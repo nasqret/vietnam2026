@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DL009B — matrix_integer_nonzero_pair_transport — Exact Proof</title>
+  <link rel="stylesheet" href="../../../assets/exact-explorer.css?v=6dd0cf105c49">
+  <script defer src="../../../assets/exact-explorer.js?v=98f11fff5d34"></script>
+</head>
+<body class="pa-proof-site" data-page="theorem" data-family="integer-linear-algebra"><header class="pa-proof-header pa-theorem-heading">
+  <nav><a href="../index.html?v=b3c647d19c00">Explorer</a><a href="../defined/tag/DL009B.html?v=b3c647d19c00">Defined notation</a><a href="../defined/graph.html?target=DL009B&amp;v=b3c647d19c00">Dependency graph</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="global" href="../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a href="DL009A.html?v=b3c647d19c00">← matrix_integer_selected_determinant_balance</a><a href="DL009C.html?v=b3c647d19c00">matrix_integer_nonzero_minor_transport →</a><a data-campaign-link="global" href="../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=b3c647d19c00">T13 milestone</a></nav>
+  <p class="pa-tag">DL009B</p><h1>matrix_integer_nonzero_pair_transport</h1>
+  <p class="pa-status-candidate">Alpha v30 independently verified · alpha_closed; checked-use authorized; not Stable</p>
+  <p>Nonzeroness of the represented integer is preserved by cross-sum equality, using actual additive cancellation.</p>
+</header>
+<main class="pa-theorem-layout">
+  <div class="pa-proof-panel">
+    <section class="pa-statement"><h2>Exact expanded first-order arithmetic statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>forall p n P N. p + N = P + n -&gt; ~(p = n) -&gt; ~(P = N)</code></pre></section>
+    <section class="pa-informal-proof" data-informal-kind="structural" data-informal-review="generated"><h2>Constructive proof overview</h2><p><strong>Generated structural guide</strong></p><p>Nonzeroness of the represented integer is preserved by cross-sum equality, using actual additive cancellation.</p><p>The unchanged tactic script uses 2 declared prerequisites and contains 16 exact native proof lines.</p><p>Alpha v30 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p></section>
+    <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row"><span class="pa-external-dependency" data-external-name="add_right_cancel" data-evidence="stable_closed"><code>add_right_cancel</code> <small>Stable theorem; checked-use authorized</small></span> <span class="pa-external-dependency" data-external-name="add_comm" data-evidence="stable_closed"><code>add_comm</code> <small>Stable theorem; checked-use authorized</small></span></div><h3>Direct dependents</h3><div class="pa-chip-row"><a class="pa-theorem-ref" href="DL009C.html?v=b3c647d19c00"><code>DL009C</code> matrix_integer_nonzero_minor_transport</a></div></section>
+    <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. This exact body belongs to a complete independently kernel-checked constructive proof bundle and has Alpha checked-use authority; it does not imply Stable membership.</p><ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="58866da45d85e58b"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> p</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="21fa39a7a804ebdc"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="2a1eb7e97081bab9"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> P</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="4210a5e1b0229a75"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> N</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="intro" data-line-id="59645d0426e5ec6a"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">intro</span> hbalance</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="intro" data-line-id="aac5ff7c0cc7f38b"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">intro</span> hnonzero</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="intro" data-line-id="08515aacd5490bde"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">intro</span> hzero</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="apply" data-line-id="c4ca0ddbc0bbe908"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">apply</span> hnonzero</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="specialize" data-line-id="db84a6bedebd3dab"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">specialize</span> <span class="pa-external-ref">add_right_cancel</span> (p)</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="specialize" data-line-id="2f6c7b45d0901e62"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">specialize</span> <span class="pa-external-ref">add_right_cancel</span> (n)</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="specialize" data-line-id="452098c2d7506765"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">specialize</span> <span class="pa-external-ref">add_right_cancel</span> (N)</code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="apply" data-line-id="369c1cc2927663c0"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-external-ref">add_right_cancel</span></code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="trans" data-line-id="15dbcb55c8a0dcb9"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">trans</span> P + n</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="exact" data-line-id="8547e57c383d5bce"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">exact</span> hbalance</code></li><li class="pa-proof-line" id="proof-line-0015" data-line="15" data-tactic="rewrite" data-line-id="b45d49121cb0a203"><a class="pa-line-number" href="#proof-line-0015">0015</a><code><span class="pa-tactic-ref">rewrite</span> hzero</code></li><li class="pa-proof-line" id="proof-line-0016" data-line="16" data-tactic="apply" data-line-id="1ad9990468dc5b1f"><a class="pa-line-number" href="#proof-line-0016">0016</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-external-ref">add_comm</span></code></li></ol></section>
+  </div>
+  <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>0</dd><dt>Tactic lines</dt><dd>16</dd><dt>Alpha evidence</dt><dd>alpha_closed</dd><dt>Checked-use authority</dt><dd>Alpha v30; independently verified</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>12a89ee533132859f88d1feee1b69e37376a3531a69ac6c73de210a22434f1b1</code></dd><dt>Exact script SHA-256</dt><dd><code>573f6b979b975fe6edc7f2fde4a9878e8b3a11da7f42fdf03e06fd39b757dafc</code></dd><dt>Source module</dt><dd><code>peano_lab.library.matrix_rank_integer_invariance_candidate</code></dd><dt>Factory</dt><dd><code>make_matrix_rank_integer_invariance_candidate_theorems</code></dd></dl></aside>
+</main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

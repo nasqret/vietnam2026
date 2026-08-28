@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>TP0026 — totient_divisor_reflexive — Exact Proof</title>
+  <link rel="stylesheet" href="../../../assets/exact-explorer.css?v=6dd0cf105c49">
+  <script defer src="../../../assets/exact-explorer.js?v=98f11fff5d34"></script>
+</head>
+<body class="pa-proof-site" data-page="theorem" data-family="totient-products"><header class="pa-proof-header pa-theorem-heading">
+  <nav><a href="../index.html?v=b3c647d19c00">Explorer</a><a href="../defined/tag/TP0026.html?v=b3c647d19c00">Defined notation</a><a href="../defined/graph.html?target=TP0026&amp;v=b3c647d19c00">Dependency graph</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F01&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="global" href="../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a href="TP0025.html?v=b3c647d19c00">← totient_modulus_transport</a><a href="TP0027.html?v=b3c647d19c00">totient_coprime_divisor_right →</a><a data-campaign-link="global" href="../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F01&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G006" href="../../../grand-campaign/?view=goal&amp;focus=G006&amp;v=b3c647d19c00">G006 milestone</a></nav>
+  <p class="pa-tag">TP0026</p><h1>totient_divisor_reflexive</h1>
+  <p class="pa-status-candidate">Alpha v30 independently verified · alpha_closed; checked-use authorized; not Stable</p>
+  <p>Every natural divides itself with the explicit quotient one.</p>
+</header>
+<main class="pa-theorem-layout">
+  <div class="pa-proof-panel">
+    <section class="pa-statement"><h2>Exact expanded first-order arithmetic statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>forall a. exists eutps_factor_reflexive_divisor. (a)=(a)*eutps_factor_reflexive_divisor</code></pre></section>
+    <section class="pa-informal-proof" data-informal-kind="structural" data-informal-review="generated"><h2>Constructive proof overview</h2><p><strong>Generated structural guide</strong></p><p>Every natural divides itself with the explicit quotient one.</p><p>The unchanged tactic script uses 1 declared prerequisite and contains 3 exact native proof lines.</p><p>Alpha v30 checked-use · first admitted v29 · independently kernel and Lean verified; not Stable</p></section>
+    <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row"><span class="pa-external-dependency" data-external-name="zero_add" data-evidence="stable_closed"><code>zero_add</code> <small>Stable theorem; checked-use authorized</small></span></div><h3>Direct dependents</h3><div class="pa-chip-row"><a class="pa-theorem-ref" href="TP0029.html?v=b3c647d19c00"><code>TP0029</code> totient_prime_coprime_iff_nondivisor</a> <a class="pa-theorem-ref" href="TP002D.html?v=b3c647d19c00"><code>TP002D</code> totient_nonzero_prime_block_offset_not_divisible</a></div></section>
+    <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. This exact body belongs to a complete independently kernel-checked constructive proof bundle and has Alpha checked-use authority; it does not imply Stable membership.</p><ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="8e7d47542782dc92"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="exists" data-line-id="a47838ee3f2358a4"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">exists</span> 1</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="simp" data-line-id="e805ac53a3022c8a"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">simp</span> [<span class="pa-external-ref">zero_add</span>]</code></li></ol></section>
+  </div>
+  <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>0</dd><dt>Tactic lines</dt><dd>3</dd><dt>Alpha evidence</dt><dd>alpha_closed</dd><dt>Checked-use authority</dt><dd>Alpha v30; independently verified</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>e6d85414f5f254de164828c58273768775082abe28b13faf5c6aabac21369845</code></dd><dt>Exact script SHA-256</dt><dd><code>edbd3fc06bca01be2d318b340ff6e70761b8c67355c7aa2587667cd758db80c0</code></dd><dt>Source module</dt><dd><code>peano_lab.library.euler_totient_prime_step_candidate</code></dd><dt>Factory</dt><dd><code>make_euler_totient_prime_step_candidate_theorems</code></dd></dl></aside>
+</main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-priority-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

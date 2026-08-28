@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GF000A — gaussian_natural_real_representation — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="gaussian-factorization"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../../tag/GF000A.html?v=b3c647d19c00">Exact original proof</a>
+       <a href="../graph.html?target=GF000A&amp;v=b3c647d19c00">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G082" href="../../../../grand-campaign/?view=goal&amp;focus=G082&amp;v=b3c647d19c00">G082 milestone</a></nav>
+  <p class="pd-tag">GF000A</p><h1>gaussian_natural_real_representation</h1>
+  <p>Embed a natural real coordinate using its actual even signed code and the unchanged Gaussian pair encoding.</p><p class="pd-status">Alpha v30 checked-use · first admitted v30 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">Inputs are genuine canonical signed-pair codes, not arbitrary naturals. Products start at the actual Gaussian identity, whose code is six. The factor list uses the proved prime-divisor property; irreducibility alone is not silently renamed primality. Uniqueness supplies equal lengths, a bounded bijection, and an actual unit at each match, including repeated factors. Units have empty factorizations and zero is excluded. Sorted primary representatives, Gaussian prime classification, and Eisenstein factorization are separate targets.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ k. <a class="pd-definition-ref" data-definition="ND0161" href="../definition/ND0161.html?v=b3c647d19c00">ZPairRep((2 · k + 0) · S (2 · k + 0) + (0 + 0),k,0,0,0)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0161.html?v=b3c647d19c00">ZPairRep(z,ap,an,bp,bn) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">zero_add · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall k. (exists ge_representation_real_code_ring_natural_real ge_representation_imaginary_code_ring_natural_real. (((((2*k) + (0)) * S ((2*k) + (0)) + ((0) + (0))) = ((ge_representation_real_code_ring_natural_real) + (ge_representation_imaginary_code_ring_natural_real)) * S ((ge_representation_real_code_ring_natural_real) + (ge_representation_imaginary_code_ring_natural_real)) + ((ge_representation_imaginary_code_ring_natural_real) + (ge_representation_imaginary_code_ring_natural_real))) /\ ((exists ge_balance_positive_ring_natural_realreal ge_balance_negative_ring_natural_realreal. (((((ge_representation_real_code_ring_natural_real) = 2 * (ge_balance_positive_ring_natural_realreal) /\ (ge_balance_negative_ring_natural_realreal) = 0) \/ exists ge_signed_half_ring_natural_realrealdecode. (((ge_representation_real_code_ring_natural_real) = 2 * ge_signed_half_ring_natural_realrealdecode + 1 /\ (ge_balance_positive_ring_natural_realreal) = 0) /\ (ge_balance_negative_ring_natural_realreal) = S ge_signed_half_ring_natural_realrealdecode))) /\ ((k) + ge_balance_negative_ring_natural_realreal = (0) + ge_balance_positive_ring_natural_realreal))) /\ (exists ge_balance_positive_ring_natural_realimaginary ge_balance_negative_ring_natural_realimaginary. (((((ge_representation_imaginary_code_ring_natural_real) = 2 * (ge_balance_positive_ring_natural_realimaginary) /\ (ge_balance_negative_ring_natural_realimaginary) = 0) \/ exists ge_signed_half_ring_natural_realimaginarydecode. (((ge_representation_imaginary_code_ring_natural_real) = 2 * ge_signed_half_ring_natural_realimaginarydecode + 1 /\ (ge_balance_positive_ring_natural_realimaginary) = 0) /\ (ge_balance_negative_ring_natural_realimaginary) = S ge_signed_half_ring_natural_realimaginarydecode))) /\ ((0) + ge_balance_negative_ring_natural_realimaginary = (0) + ge_balance_positive_ring_natural_realimaginary))))))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 22 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro k</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>exists (2*k)</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>exists (0)</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>split</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>refl</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>split</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>exists (k)</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>exists (0)</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>split</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>left</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>split</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>refl</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>refl</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>simp [zero_add]</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>exists (0)</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>exists (0)</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>split</code></li><li class="pd-proof-line" id="L18" data-line="18"><a class="pd-line-number" href="#L18">0018</a><code>left</code></li><li class="pd-proof-line" id="L19" data-line="19"><a class="pd-line-number" href="#L19">0019</a><code>split</code></li><li class="pd-proof-line" id="L20" data-line="20"><a class="pd-line-number" href="#L20">0020</a><code>simp</code></li><li class="pd-proof-line" id="L21" data-line="21"><a class="pd-line-number" href="#L21">0021</a><code>refl</code></li><li class="pd-proof-line" id="L22" data-line="22"><a class="pd-line-number" href="#L22">0022</a><code>simp</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v30 checked use</dd><dt>First admission</dt><dd>Alpha v30</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>281 / 453</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 453 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>43 / 15</dd>
+      <dt>Statement SHA-256</dt><dd><code>a9bfd5ded2ff1b98176e62813ac7d83cac5080d363bd7b872d157025a450f313</code></dd>
+      <dt>Script SHA-256</dt><dd><code>7fce6e1b66cfb545fce8eb7fb8dc0ad4c70e7a9134ecc455b0df709cccc38d59</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>e0e10f11c5b12b411843054000a77be22ede7db53602814f9532e3e7c8daa270</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.gaussian_ring_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-gaussian-factorization-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

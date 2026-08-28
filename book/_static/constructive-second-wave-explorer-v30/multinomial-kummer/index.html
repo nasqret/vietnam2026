@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kummer for arbitrary finite multinomials — Proof Explorer</title>
+  <meta name="description" content="Build the finite product of actual binomial factors and prove that its exact prime valuation equals the total column-carry count in successive addition of every part.">
+  <meta property="og:title" content="Kummer for arbitrary finite multinomials — Proof Explorer">
+  <meta property="og:description" content="Build the finite product of actual binomial factors and prove that its exact prime valuation equals the total column-carry count in successive addition of every part.">
+  <meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multinomial-kummer/">
+  <link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multinomial-kummer/">
+  <link rel="stylesheet" href="../assets/proofs.css?v=b3c647d19c00">
+</head>
+<body class="family-page multinomial-kummer-page">
+  <header class="family-hero">
+    <div class="shell">
+      <nav class="crumbs"><a href="../?v=b3c647d19c00">Proof explorers</a><span>/</span><a data-campaign-link="global" href="../grand-campaign/?v=b3c647d19c00">Grand campaign</a><span>/</span><a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F04&amp;v=b3c647d19c00">Family atlas</a><span>/</span><span>Kummer for arbitrary finite multinomials</span></nav>
+      <p class="eyebrow">Actual coefficients · quotient-column carries · empty and zero parts · Constructive arithmetic</p>
+      <h1>Kummer for arbitrary finite multinomials</h1>
+      <p class="formula">Prime(p) ∧ Multinomial(parts,n,z) ⇒ ∃e. vₚ(z)=e ∧ CarryCountMany(p,parts,e)</p>
+      <p class="lede">Build the finite product of actual binomial factors and prove that its exact prime valuation equals the total column-carry count in successive addition of every part.</p>
+      <div class="hero-actions">
+        <a class="primary-action" href="explorer/defined/graph.html?target=MK0011&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus&amp;v=b3c647d19c00">Open the definition-aware map</a>
+        <a class="secondary-action" href="explorer/defined/tag/MK0011.html?v=b3c647d19c00">Read the final theorem</a>
+        <a class="secondary-action" data-campaign-link="milestone" href="../grand-campaign/?view=goal&amp;focus=G035&amp;v=b3c647d19c00">See campaign milestone G035</a>
+      </div>
+    </div>
+  </header>
+  <main class="shell family-main">
+    <section class="view-grid">
+      <article class="view-card featured">
+        <p class="card-kicker">Recommended</p>
+        <h2>Defined mathematical notation</h2>
+        <p>Browse 26 linked conservative definitions and 19 independently checked theorems without losing their exact first-order expansions.</p>
+        <a href="explorer/defined/?v=b3c647d19c00">Browse definitions and theorems →</a>
+        <p><a href="explorer/defined/graph.html?target=MK0011&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=b3c647d19c00">Inspect the local definition DAG →</a></p>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Exact certificate</p>
+        <h2>Fully expanded arithmetic</h2>
+        <p>Inspect all 841 native tactic lines and 55 actual proof prerequisites with every definition fully expanded.</p>
+        <a href="explorer/?v=b3c647d19c00">Open the exact edition →</a>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Focused route</p>
+        <h2>Final dependency cone</h2>
+        <p>Start at theorem <code>MK0011</code> and follow only the lemmas and conservative definitions supporting multinomial_kummer_carry_valuation.</p>
+        <a href="explorer/defined/graph.html?target=MK0011&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus&amp;v=b3c647d19c00">Trace prerequisites →</a>
+      </article>
+    </section>
+    <section class="release-note"><strong>Zoom between mathematical scales:</strong> <a data-campaign-link="global" href="../grand-campaign/?v=b3c647d19c00">complete research atlas</a> → <a data-campaign-link="domain" href="../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">research domain</a> → <a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F04&amp;v=b3c647d19c00">proof family</a> → <a data-campaign-link="goal" data-campaign-goal="G035" href="../grand-campaign/?view=goal&amp;focus=G035&amp;v=b3c647d19c00">G035 milestone</a> → <a href="explorer/defined/graph.html?target=MK0011&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=b3c647d19c00">theorem and definition dependencies</a>.</section>
+    <section class="release-note"><strong>Major independently established statements:</strong> <a href="explorer/defined/tag/MK000E.html?v=b3c647d19c00"><code>MK000E</code> multinomial_exists</a> · <a href="explorer/defined/tag/MK0012.html?v=b3c647d19c00"><code>MK0012</code> multinomial_empty_values</a> · <a href="explorer/defined/tag/MK0013.html?v=b3c647d19c00"><code>MK0013</code> multinomial_empty_carry_count</a> · <a href="explorer/defined/tag/MK0011.html?v=b3c647d19c00"><code>MK0011</code> multinomial_kummer_carry_valuation</a>.</section>
+    <section class="release-note"><strong>Independently verified Alpha v30 checked-use theorem family:</strong> 19 dependency-curried kernel-checked theorem bodies · 55 proof prerequisites · 26 linked definitions · 48 definition-dependency arrows · 841 exact tactic lines · first admitted v27 · not Stable. The unchanged intuitionistic kernel and separately compiled Lean verifier independently accept all 1224 bundle nodes; SHA-256 <code>c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d</code>.</section>
+    <section class="release-note"><strong>Exact mathematical boundary:</strong> The carry relation contains actual quotient columns and carry bits, not the desired valuation. The theorem includes all finite lists and zero parts. It uses sequential binary-column carries; a separate simultaneous-grid or permutation-invariance theorem is not asserted.</section>
+  </main>
+<script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

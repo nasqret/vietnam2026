@@ -5541,3 +5541,37 @@ Gaussian representatives, prime classification and Eisenstein factorization
 remain separate open milestones. Current atlas/UI publication and the
 proof-only remote deployment are the remaining integration steps; this
 admission checkpoint does not imply a production Peano promotion.
+
+### 2026-08-28 — sealed Gaussian publication and five-goal campaign atlas
+
+The separate immutable v30 catalog now seals all 3,222 checked statements and
+740 evidence documents. Its SHA-256 is
+`b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb`;
+the public HTML revision is `b3c647d19c00`. Compact JSON preserves the entire
+catalog and every inherited document within the unchanged 64 MiB service
+limit. The final independent release verifier passed 343 tests, including
+literal independent contracts for all 23 principal Gaussian roots and strict
+authentication of the real dependency closure and parent publication chain.
+
+The Gaussian factorization family has 411 deterministic files and passed
+59 explorer tests. Separate current-v30 packages update 904 theorem rows in
+16 historical families while retaining their exact first-admission v27,
+v28, or v29 evidence; their publication suite passed 39 tests. The original
+historical catalogs, bundles, atlases and explorer snapshots remain untouched.
+The current atlas closes only the requested G082 endpoint beyond v29, and
+contains 370 blueprint definitions alongside the reviewed conservative DAG
+of 284 definitions and 560 actual definition-dependency edges. The five
+requested goal families are linked in the requested order, with separately
+identified shared prime-valuation tools.
+
+All newly generated entrances use the canonical Quadratic Reciprocity
+renderer and byte-identical explorer CSS/JavaScript. Actual proof arrows,
+theorem-definition uses, and abbreviation-dependency arrows stay distinct.
+The Gaussian closure uses both independently proved directions of the
+prime/irreducible equivalence, not an invented dependency on their combined
+conjunction. Final publication comparisons reject extra or reordered atlas
+claims as well as altered historical evidence. No visual-browser session was
+available; this checkpoint records automated graph, route, source, AST and
+evidence validation, not screenshot QA. Current app/legacy presentation
+integration, isolated branch publication and remote deployment follow this
+immutable snapshot commit; production Peano remains deliberately deferred.

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0105 — SignedDeterminantNodeAt(b,c,i,d,pb,pc,nb,nc,p,n) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="integer-linear-algebra"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedDeterminantNodeAt&amp;v=b3c647d19c00">Global definition: SignedDeterminantNodeAt</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=b3c647d19c00">T13 milestone</a></nav>
+  <p class="pd-tag">ND0105</p><h1>SignedDeterminantNodeAt(b,c,i,d,pb,pc,nb,nc,p,n)</h1>
+  <p>An actual determinant-node record decoded from a beta history.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ mdr_z_secondwave. <a class="pd-definition-ref" data-definition="ND0104" href="ND0104.html?v=b3c647d19c00">SignedDeterminantNodeCode(mdr_z_secondwave,d,pb,pc,nb,nc,p,n)</a> ∧ <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=b3c647d19c00">BetaAt(b,c,i,mdr_z_secondwave)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists mdr_z_secondwave. ((exists mdr_a_secondwavec mdr_b_secondwavec mdr_c_secondwavec mdr_e_secondwavec mdr_f_secondwavec. ((mdr_a_secondwavec = ((d) + (pb)) * S ((d) + (pb)) + ((pb) + (pb))) /\ ((mdr_b_secondwavec = ((pc) + (nb)) * S ((pc) + (nb)) + ((nb) + (nb))) /\ ((mdr_c_secondwavec = ((mdr_a_secondwavec) + (mdr_b_secondwavec)) * S ((mdr_a_secondwavec) + (mdr_b_secondwavec)) + ((mdr_b_secondwavec) + (mdr_b_secondwavec))) /\ ((mdr_e_secondwavec = ((p) + (n)) * S ((p) + (n)) + ((n) + (n))) /\ ((mdr_f_secondwavec = ((nc) + (mdr_e_secondwavec)) * S ((nc) + (mdr_e_secondwavec)) + ((mdr_e_secondwavec) + (mdr_e_secondwavec))) /\ ((mdr_z_secondwave) = ((mdr_c_secondwavec) + (mdr_f_secondwavec)) * S ((mdr_c_secondwavec) + (mdr_f_secondwavec)) + ((mdr_f_secondwavec) + (mdr_f_secondwavec))))))))) /\ (((exists ff_h_mdr_secondwaveb. ff_h_mdr_secondwaveb + S (mdr_z_secondwave) = S ((S (i)) * c)) /\ exists ff_q_mdr_secondwaveb. b = ff_q_mdr_secondwaveb * S ((S (i)) * c) + (mdr_z_secondwave))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0104.html?v=b3c647d19c00">SignedDeterminantNodeCode(z,d,pb,pc,nb,nc,p,n)</a><a class="pd-chip" href="PD0013.html?v=b3c647d19c00">BetaAt(b,c,i,x)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0106.html?v=b3c647d19c00">SignedDeterminantChildPrefix(b,c,limit,pb,pc,nb,nc,q,eb,ec,fb,fc,l)</a><a class="pd-chip" href="ND0108.html?v=b3c647d19c00">SignedDeterminantHistory(b,c,l)</a><a class="pd-chip" href="ND0109.html?v=b3c647d19c00">SignedRecursiveDeterminant(pb,pc,nb,nc,d,p,n)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DL0005.html?v=b3c647d19c00">DL0005 · matrix_recursive_record_transport</a><a class="pd-chip" href="../tag/DL0006.html?v=b3c647d19c00">DL0006 · matrix_recursive_record_append</a><a class="pd-chip" href="../tag/DL0008.html?v=b3c647d19c00">DL0008 · matrix_recursive_children_transport</a><a class="pd-chip" href="../tag/DL000A.html?v=b3c647d19c00">DL000A · matrix_recursive_history_transport</a><a class="pd-chip" href="../tag/DL000B.html?v=b3c647d19c00">DL000B · matrix_recursive_history_extend</a><a class="pd-chip" href="../tag/DL000C.html?v=b3c647d19c00">DL000C · matrix_recursive_zero_extension</a><a class="pd-chip" href="../tag/DL000E.html?v=b3c647d19c00">DL000E · matrix_recursive_children_recode</a><a class="pd-chip" href="../tag/DL000F.html?v=b3c647d19c00">DL000F · matrix_recursive_children_extend</a><a class="pd-chip" href="../tag/DL0010.html?v=b3c647d19c00">DL0010 · matrix_recursive_cofactor_prefix_from_recursion</a><a class="pd-chip" href="../tag/DL0011.html?v=b3c647d19c00">DL0011 · matrix_recursive_successor_extension</a><a class="pd-chip" href="../tag/DL0012.html?v=b3c647d19c00">DL0012 · matrix_recursive_all_extensions</a><a class="pd-chip" href="../tag/DL0013.html?v=b3c647d19c00">DL0013 · signed_recursive_determinant_exists</a><a class="pd-chip" href="../tag/DL0015.html?v=b3c647d19c00">DL0015 · matrix_recursive_record_injective</a><a class="pd-chip" href="../tag/DL0016.html?v=b3c647d19c00">DL0016 · matrix_recursive_history_step_at</a><a class="pd-chip" href="../tag/DL0018.html?v=b3c647d19c00">DL0018 · signed_recursive_determinant_successor_decomposition</a><a class="pd-chip" href="../tag/DL002B.html?v=b3c647d19c00">DL002B · signed_recursive_determinant_empty</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>10</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0105.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>72a61a6b1a25debb587f65f824bfbbdf4438d6c25173ee99b08c9acae3151e78</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

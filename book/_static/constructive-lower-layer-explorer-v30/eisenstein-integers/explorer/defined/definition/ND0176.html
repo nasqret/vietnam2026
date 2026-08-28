@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0176 — EisensteinSignedDivisionRemainder(ap,an,bp,bn,cp,cn,dp,dn,qp,qn,up,un,rp,rn,sp,sn,U,V) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="eisenstein-integers"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=EisensteinSignedDivisionRemainder&amp;v=b3c647d19c00">Global definition: EisensteinSignedDivisionRemainder</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G084" href="../../../../grand-campaign/?view=goal&amp;focus=G084&amp;v=b3c647d19c00">G084 milestone</a></nav>
+  <p class="pd-tag">ND0176</p><h1>EisensteinSignedDivisionRemainder(ap,an,bp,bn,cp,cn,dp,dn,qp,qn,up,un,rp,rn,sp,sn,U,V)</h1>
+  <p>The genuine signed-coordinate Eisenstein equation A=B·Q+R, actual coordinate norms U=N(R), V=N(B), and strict decrease U&lt;V.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>cp · qp + cn · qn + (dp · un + dn · up) + rp + an = ap + (cp · qn + cn · qp + (dp · up + dn · un) + rn) ∧ cp · up + cn · un + (dp · qp + dn · qn) + (dp · un + dn · up) + sp + bn = bp + (cp · un + cn · up + (dp · qn + dn · qp) + (dp · up + dn · un) + sn) ∧ (<a class="pd-definition-ref" data-definition="ND0169" href="ND0169.html?v=b3c647d19c00">EisensteinCoordinateNorm(rp,rn,sp,sn,U)</a> ∧ (<a class="pd-definition-ref" data-definition="ND0169" href="ND0169.html?v=b3c647d19c00">EisensteinCoordinateNorm(cp,cn,dp,dn,V)</a> ∧ <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=b3c647d19c00">Lt(U,V)</a>))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((((((((((((((cp) * (qp))) + (((cn) * (qn))))) + (((((dp) * (un))) + (((dn) * (up))))))) + (rp))) + (an)) = ((ap) + (((((((((cp) * (qn))) + (((cn) * (qp))))) + (((((dp) * (up))) + (((dn) * (un))))))) + (rn))))) /\ (((((((((((((cp) * (up))) + (((cn) * (un))))) + (((((dp) * (qp))) + (((dn) * (qn))))))) + (((((dp) * (un))) + (((dn) * (up))))))) + (sp))) + (bn)) = ((bp) + (((((((((((cp) * (un))) + (((cn) * (up))))) + (((((dp) * (qn))) + (((dn) * (qp))))))) + (((((dp) * (up))) + (((dn) * (un))))))) + (sn))))))) /\ ((((((((((rp) * (rp))) + (((rn) * (rn))))) + (((((sp) * (sp))) + (((sn) * (sn))))))) + (((((rp) * (sn))) + (((rn) * (sp)))))) = ((((((((((rp) * (rn))) + (((rn) * (rp))))) + (((((sp) * (sn))) + (((sn) * (sp))))))) + (((((rp) * (sp))) + (((rn) * (sn))))))) + (U))) /\ ((((((((((cp) * (cp))) + (((cn) * (cn))))) + (((((dp) * (dp))) + (((dn) * (dn))))))) + (((((cp) * (dn))) + (((cn) * (dp)))))) = ((((((((((cp) * (cn))) + (((cn) * (cp))))) + (((((dp) * (dn))) + (((dn) * (dp))))))) + (((((cp) * (dp))) + (((cn) * (dn))))))) + (V))) /\ (exists ee_gap_lowerlayer. ee_gap_lowerlayer + S (U) = (V)))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0169.html?v=b3c647d19c00">EisensteinCoordinateNorm(ap,an,bp,bn,n)</a><a class="pd-chip" href="PD0002.html?v=b3c647d19c00">Lt(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/EI0033.html?v=b3c647d19c00">EI0033 · eisenstein_signed_euclidean_division_exists</a><a class="pd-chip" href="../tag/EI0041.html?v=b3c647d19c00">EI0041 · eisenstein_euclidean_division_exists</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>18</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0176.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>fe243720d84d80e392fec6f0d08d8f545d60b4e4c93f7dd9b829f0bb5f7c7faf</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

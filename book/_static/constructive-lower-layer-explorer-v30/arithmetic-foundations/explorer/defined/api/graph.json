@@ -1,0 +1,1982 @@
+{
+  "alpha_checked_use_node_count": 27,
+  "alpha_edition_version": "v30",
+  "alpha_first_enrolled_version": "v28",
+  "definition_topological_order": [
+    "ND0142",
+    "ND0143",
+    "ND0144",
+    "ND0145",
+    "ND0146",
+    "ND0147",
+    "PD0002",
+    "PD0013",
+    "PD0024",
+    "PD0025",
+    "PD0026",
+    "ND0148",
+    "PD0014",
+    "PD0004",
+    "PD0028",
+    "ND0149",
+    "ND0150",
+    "ND0151",
+    "PD0007",
+    "PD0003",
+    "PD0006",
+    "PD0005"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "AF0007",
+      "target": "AF0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0007",
+      "target": "AF000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0009",
+      "target": "AF000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0005",
+      "target": "AF000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0006",
+      "target": "AF000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0006",
+      "target": "AF000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF000E",
+      "target": "AF0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF000F",
+      "target": "AF0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0010",
+      "target": "AF0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0007",
+      "target": "AF0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0012",
+      "target": "AF0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0008",
+      "target": "AF0015"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0014",
+      "target": "AF0015"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0015",
+      "target": "AF0016"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0012",
+      "target": "AF0017"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0010",
+      "target": "AF0018"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0013",
+      "target": "AF0018"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0017",
+      "target": "AF0018"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF000B",
+      "target": "AF0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF000D",
+      "target": "AF0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF000A",
+      "target": "AF0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF000C",
+      "target": "AF0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0005",
+      "target": "AF0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0009",
+      "target": "AF0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0011",
+      "target": "AF0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0016",
+      "target": "AF0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0018",
+      "target": "AF0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0019",
+      "target": "AF001A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF0004",
+      "target": "AF001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "AF001A",
+      "target": "AF001B"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "AF0001",
+      "statement_occurrences": 2,
+      "target": "PD0007"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF0002",
+      "statement_occurrences": 1,
+      "target": "ND0147"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0002",
+      "statement_occurrences": 2,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0003",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF0003",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF0004",
+      "statement_occurrences": 1,
+      "target": "ND0149"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF0004",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "AF0004",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF0004",
+      "statement_occurrences": 0,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF0004",
+      "statement_occurrences": 0,
+      "target": "PD0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF0005",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0006",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 6,
+      "source": "AF0006",
+      "statement_occurrences": 4,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF0007",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "AF0007",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "AF0007",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF0007",
+      "statement_occurrences": 1,
+      "target": "PD0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF0008",
+      "statement_occurrences": 1,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0009",
+      "statement_occurrences": 2,
+      "target": "ND0149"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "AF0009",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF0009",
+      "statement_occurrences": 0,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF000A",
+      "statement_occurrences": 2,
+      "target": "ND0149"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF000A",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "AF000A",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "AF000A",
+      "statement_occurrences": 0,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF000B",
+      "statement_occurrences": 1,
+      "target": "ND0149"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF000C",
+      "statement_occurrences": 1,
+      "target": "ND0149"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF000C",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF000C",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF000C",
+      "statement_occurrences": 1,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF000C",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF000D",
+      "statement_occurrences": 1,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF000D",
+      "statement_occurrences": 1,
+      "target": "ND0150"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF000E",
+      "statement_occurrences": 2,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 4,
+      "source": "AF000E",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 7,
+      "source": "AF000E",
+      "statement_occurrences": 3,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF000E",
+      "statement_occurrences": 0,
+      "target": "PD0024"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "AF000E",
+      "statement_occurrences": 0,
+      "target": "PD0025"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF000F",
+      "statement_occurrences": 2,
+      "target": "ND0150"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "AF000F",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 6,
+      "source": "AF000F",
+      "statement_occurrences": 5,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "AF0010",
+      "statement_occurrences": 2,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0010",
+      "statement_occurrences": 2,
+      "target": "ND0150"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "AF0010",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 8,
+      "source": "AF0010",
+      "statement_occurrences": 5,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "AF0011",
+      "statement_occurrences": 2,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "AF0011",
+      "statement_occurrences": 2,
+      "target": "ND0150"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF0011",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 5,
+      "source": "AF0011",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0012",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 10,
+      "source": "AF0012",
+      "statement_occurrences": 8,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0013",
+      "statement_occurrences": 2,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0013",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 6,
+      "source": "AF0013",
+      "statement_occurrences": 6,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF0013",
+      "statement_occurrences": 0,
+      "target": "PD0024"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF0013",
+      "statement_occurrences": 0,
+      "target": "PD0025"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "AF0014",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 7,
+      "occurrence_count": 13,
+      "source": "AF0014",
+      "statement_occurrences": 6,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0014",
+      "statement_occurrences": 2,
+      "target": "PD0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0015",
+      "statement_occurrences": 2,
+      "target": "ND0149"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0015",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 6,
+      "source": "AF0015",
+      "statement_occurrences": 6,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF0015",
+      "statement_occurrences": 0,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0016",
+      "statement_occurrences": 2,
+      "target": "ND0149"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "AF0016",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 11,
+      "occurrence_count": 18,
+      "source": "AF0016",
+      "statement_occurrences": 7,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF0017",
+      "statement_occurrences": 1,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF0017",
+      "statement_occurrences": 2,
+      "target": "ND0150"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 7,
+      "source": "AF0017",
+      "statement_occurrences": 4,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 16,
+      "occurrence_count": 28,
+      "source": "AF0017",
+      "statement_occurrences": 12,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "AF0018",
+      "statement_occurrences": 2,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "AF0018",
+      "statement_occurrences": 2,
+      "target": "ND0150"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 6,
+      "source": "AF0018",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 16,
+      "occurrence_count": 23,
+      "source": "AF0018",
+      "statement_occurrences": 7,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "AF0019",
+      "statement_occurrences": 1,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 5,
+      "occurrence_count": 7,
+      "source": "AF0019",
+      "statement_occurrences": 2,
+      "target": "ND0149"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "AF0019",
+      "statement_occurrences": 1,
+      "target": "ND0150"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 6,
+      "occurrence_count": 6,
+      "source": "AF0019",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF0019",
+      "statement_occurrences": 0,
+      "target": "PD0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 17,
+      "occurrence_count": 17,
+      "source": "AF0019",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF0019",
+      "statement_occurrences": 0,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF001A",
+      "statement_occurrences": 0,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "AF001A",
+      "statement_occurrences": 2,
+      "target": "ND0149"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "AF001A",
+      "statement_occurrences": 0,
+      "target": "ND0150"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF001A",
+      "statement_occurrences": 1,
+      "target": "ND0151"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "AF001B",
+      "statement_occurrences": 2,
+      "target": "ND0149"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "AF001B",
+      "statement_occurrences": 1,
+      "target": "ND0151"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0143",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0144",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0145",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0146",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0147",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0024",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0024",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0025",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0025",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0026",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0026",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0148",
+      "target": "PD0024"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0148",
+      "target": "PD0025"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0148",
+      "target": "PD0026"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0028",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0028",
+      "target": "PD0004"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0028",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0149",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0149",
+      "target": "PD0028"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0150",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0150",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0151",
+      "target": "ND0148"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0151",
+      "target": "ND0150"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0007",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0006",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0005",
+      "target": "PD0003"
+    }
+  ],
+  "family_slug": "arithmetic-foundations",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0001.html?v=b3c647d19c00",
+      "id": "AF0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "foundation_division_exists_unique",
+      "proof_bundle_node_id": 657,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "G001: construct the quotient and strict remainder for every nonzero divisor and prove the pair is literally unique."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0002.html?v=b3c647d19c00",
+      "id": "AF0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "foundation_signed_bezout_canonical_gcd",
+      "proof_bundle_node_id": 658,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "G002: every pair, including (0,0), has a canonical gcd value and actual signed-natural Bezout coefficient codes. Only the gcd is asserted unique, not its coefficients."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0003.html?v=b3c647d19c00",
+      "id": "AF0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "foundation_coprime_product_divisor",
+      "proof_bundle_node_id": 659,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "G003: coprimality and a witnessed divisor of the product construct an actual quotient of the other factor, with no positivity premise added."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0004.html?v=b3c647d19c00",
+      "id": "AF0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "foundation_prime_factor_list_exists",
+      "proof_bundle_node_id": 660,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "G004: every positive natural has a genuinely constructed finite beta-coded prime-factor list and actual product trace; the existing sorted construction is used only to obtain witnesses, not required as a premise."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0005.html?v=b3c647d19c00",
+      "id": "AF0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "factor_permutation_below_zero_impossible",
+      "proof_bundle_node_id": 662,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "There is no natural index below zero; empty list and permutation contracts are genuinely vacuous."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0006.html?v=b3c647d19c00",
+      "id": "AF0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "factor_permutation_prefix_reflect",
+      "proof_bundle_node_id": 663,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual beta functionality turns a finite forward entry preservation into reverse preservation at every original index."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0007.html?v=b3c647d19c00",
+      "id": "AF0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "factor_permutation_all_prime_entry",
+      "proof_bundle_node_id": 664,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual decoded entry of an all-prime prefix is prime, without a supplied choice of matching factor."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0008.html?v=b3c647d19c00",
+      "id": "AF0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "factor_permutation_product_exists",
+      "proof_bundle_node_id": 665,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct an actual product value and trace for every finite beta prefix, including empty prefixes."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0009.html?v=b3c647d19c00",
+      "id": "AF0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "factor_permutation_cancel_last",
+      "proof_bundle_node_id": 666,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Cancel an actual final prime factor, retaining the nonzero predecessor product and all actual prime prefix entries."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF000A.html?v=b3c647d19c00",
+      "id": "AF000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "factor_permutation_successor_decompose",
+      "proof_bundle_node_id": 667,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every nonempty prime factorization supplies an actual last prime, its actual quotient, and a genuine shorter factorization."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF000B.html?v=b3c647d19c00",
+      "id": "AF000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "factor_permutation_unit_length_zero",
+      "proof_bundle_node_id": 668,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The only prime factorization of one has empty length; this is an actual-product statement, not a convention imposed on a list."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF000C.html?v=b3c647d19c00",
+      "id": "AF000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "factor_permutation_prime_member",
+      "proof_bundle_node_id": 669,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual prime divisor is found at an actual occurrence of every unordered prime factorization of the product."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF000D.html?v=b3c647d19c00",
+      "id": "AF000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "factor_permutation_empty_matching",
+      "proof_bundle_node_id": 670,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual literal zero beta code is a bounded/injective/surjective matching permutation between any two empty factor prefixes."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF000E.html?v=b3c647d19c00",
+      "id": "AF000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "factor_permutation_index_extend",
+      "proof_bundle_node_id": 671,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Append the fresh top index to any actual finite permutation, construct the new beta code, and prove all three bijection conditions."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF000F.html?v=b3c647d19c00",
+      "id": "AF000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "factor_permutation_matching_append",
+      "proof_bundle_node_id": 672,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A matching map stays matching when the same actual last factor is appended to both lists and the fresh last index is appended to the map."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0010.html?v=b3c647d19c00",
+      "id": "AF0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "factor_permutation_matched_append",
+      "proof_bundle_node_id": 673,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct a genuine matching permutation after adjoining the same last factor, retaining the exact prefix-preservation and fresh-index equations."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0011.html?v=b3c647d19c00",
+      "id": "AF0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "factor_permutation_matched_append_exists",
+      "proof_bundle_node_id": 674,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Existence-only append interface still returns an actual fully bijective matching beta map."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0012.html?v=b3c647d19c00",
+      "id": "AF0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "factor_permutation_swap_reflect_unchanged",
+      "proof_bundle_node_id": 675,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual swapped prefix reflects back to the original entry at every index other than the two moved indices."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0013.html?v=b3c647d19c00",
+      "id": "AF0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "factor_permutation_swap_bijection",
+      "proof_bundle_node_id": 676,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Swapping two actual map entries preserves boundedness and injectivity and constructively recovers full finite surjectivity."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0014.html?v=b3c647d19c00",
+      "id": "AF0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "factor_permutation_swap_all_prime",
+      "proof_bundle_node_id": 677,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A genuine index swap retains every prime factor, including duplicate equal primes; no distinct-factor hypothesis is required."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0015.html?v=b3c647d19c00",
+      "id": "AF0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "factor_permutation_swap_factorization",
+      "proof_bundle_node_id": 678,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The swapped prime list has an actual product trace with the identical nonzero product, not merely a proposed rearrangement equality."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0016.html?v=b3c647d19c00",
+      "id": "AF0016",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "factor_permutation_swapped_factorization_exists",
+      "proof_bundle_node_id": 679,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct a full recoded prime-factor list moving a selected interior prime to the last position, with exact swap witnesses and an unchanged actual product."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0017.html?v=b3c647d19c00",
+      "id": "AF0017",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "factor_permutation_matching_unswap",
+      "proof_bundle_node_id": 680,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Undo a target-list swap by swapping the two corresponding actual source-map entries. Entry alignment follows at the two moved positions and everywhere else by map injectivity."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0018.html?v=b3c647d19c00",
+      "id": "AF0018",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "factor_permutation_matched_unswap_exists",
+      "proof_bundle_node_id": 681,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Use the recursively constructed finite permutation's actual preimage, construct both extended and transposed map codes, and return a full matching bijection into the original unswapped target list."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF0019.html?v=b3c647d19c00",
+      "id": "AF0019",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "prime_factor_lists_matching_by_length",
+      "proof_bundle_node_id": 682,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Full induction on an arbitrary source factor list: locate the last prime in the arbitrary target, genuinely swap and cancel it, recursively match the shorter lists, and construct the restored index bijection. Neither list is assumed sorted or distinct."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF001A.html?v=b3c647d19c00",
+      "id": "AF001A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "prime_factor_lists_permutation_exists",
+      "proof_bundle_node_id": 683,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Exact G005: every two arbitrary unordered prime factorizations of the same positive natural admit an actual coded matching bijection, with equal lengths and explicit boundedness, injectivity, and surjectivity."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v30",
+      "alpha_first_enrolled_version": "v28",
+      "href": "tag/AF001B.html?v=b3c647d19c00",
+      "id": "AF001B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "prime_factorization_exists_unique_up_to_permutation",
+      "proof_bundle_node_id": 684,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct an actual prime-factor list for every positive natural and an actual matching permutation to every competing unordered factorization. Both factor-list existence and uniqueness witnesses are conclusions, with no supplied canonical factorization."
+    },
+    {
+      "global_definition": "SignedDecode",
+      "href": "definition/ND0142.html?v=b3c647d19c00",
+      "id": "ND0142",
+      "kind": "definition",
+      "layer": 0,
+      "name": "SignedDecode",
+      "signature": "SignedDecode(z,p,n)",
+      "summary": "The original canonical integer code: even 2p denotes p, and odd 2k+1 denotes −(k+1). The decoded positive and negative parts are normalized."
+    },
+    {
+      "global_definition": "SignedBalance",
+      "href": "definition/ND0143.html?v=b3c647d19c00",
+      "id": "ND0143",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedBalance",
+      "signature": "SignedBalance(z,p,n)",
+      "summary": "The original canonical code z represents the integer difference p−n; these supplied components need not be normalized."
+    },
+    {
+      "global_definition": "SignedAdd",
+      "href": "definition/ND0144.html?v=b3c647d19c00",
+      "id": "ND0144",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedAdd",
+      "signature": "SignedAdd(a,b,c)",
+      "summary": "Actual addition of original canonical signed codes, witnessed by their decoders and balanced equality."
+    },
+    {
+      "global_definition": "SignedMul",
+      "href": "definition/ND0145.html?v=b3c647d19c00",
+      "id": "ND0145",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedMul",
+      "signature": "SignedMul(a,b,c)",
+      "summary": "Actual multiplication of original canonical signed codes; opposite-sign products remain on the negative side of the balance."
+    },
+    {
+      "global_definition": "SignedNegate",
+      "href": "definition/ND0146.html?v=b3c647d19c00",
+      "id": "ND0146",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedNegate",
+      "signature": "SignedNegate(a,b)",
+      "summary": "Canonical signed negation swaps the positive and negative decoded parts."
+    },
+    {
+      "global_definition": "SignedBezout",
+      "href": "definition/ND0147.html?v=b3c647d19c00",
+      "id": "ND0147",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedBezout",
+      "signature": "SignedBezout(g,a,b,u,v)",
+      "summary": "The original signed coefficient codes u and v witness a·u+b·v=g by actual decoded balanced arithmetic."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=b3c647d19c00",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "BetaAt",
+      "href": "definition/PD0013.html?v=b3c647d19c00",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": "BoundedPrefix",
+      "href": "definition/PD0024.html?v=b3c647d19c00",
+      "id": "PD0024",
+      "kind": "definition",
+      "layer": 1,
+      "name": "BoundedPrefix",
+      "signature": "BoundedPrefix(b,c,l)",
+      "summary": "Every decoded entry below l is itself below l."
+    },
+    {
+      "global_definition": "InjectivePrefix",
+      "href": "definition/PD0025.html?v=b3c647d19c00",
+      "id": "PD0025",
+      "kind": "definition",
+      "layer": 1,
+      "name": "InjectivePrefix",
+      "signature": "InjectivePrefix(b,c,l)",
+      "summary": "Equal decoded values below l have equal indices."
+    },
+    {
+      "global_definition": "SurjectivePrefix",
+      "href": "definition/PD0026.html?v=b3c647d19c00",
+      "id": "PD0026",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SurjectivePrefix",
+      "signature": "SurjectivePrefix(b,c,l)",
+      "summary": "Every value below l occurs at an index below l."
+    },
+    {
+      "global_definition": "PermutationPrefix",
+      "href": "definition/ND0148.html?v=b3c647d19c00",
+      "id": "ND0148",
+      "kind": "definition",
+      "layer": 2,
+      "name": "PermutationPrefix",
+      "signature": "PermutationPrefix(b,c,l)",
+      "summary": "An actual beta-coded bijection of the finite index interval [0,l), including all bounds, injectivity, and surjectivity."
+    },
+    {
+      "global_definition": "Product",
+      "href": "definition/PD0014.html?v=b3c647d19c00",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": "Prime",
+      "href": "definition/PD0004.html?v=b3c647d19c00",
+      "id": "PD0004",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Prime",
+      "signature": "Prime(p)",
+      "summary": "p is nonunit and every factorization of p has a unit factor."
+    },
+    {
+      "global_definition": "AllPrime",
+      "href": "definition/PD0028.html?v=b3c647d19c00",
+      "id": "PD0028",
+      "kind": "definition",
+      "layer": 1,
+      "name": "AllPrime",
+      "signature": "AllPrime(b,c,l)",
+      "summary": "Every decoded factor below l is prime."
+    },
+    {
+      "global_definition": "PrimeFactorList",
+      "href": "definition/ND0149.html?v=b3c647d19c00",
+      "id": "ND0149",
+      "kind": "definition",
+      "layer": 2,
+      "name": "PrimeFactorList",
+      "signature": "PrimeFactorList(n,b,c,l)",
+      "summary": "A positive number n, an actual length-l beta product equal to n, and prime entries. No sortedness or supplied canonicalization is required."
+    },
+    {
+      "global_definition": "FactorListMatching",
+      "href": "definition/ND0150.html?v=b3c647d19c00",
+      "id": "ND0150",
+      "kind": "definition",
+      "layer": 1,
+      "name": "FactorListMatching",
+      "signature": "FactorListMatching(b,c,d,e,u,v,l)",
+      "summary": "Each actual source factor equals the factor at the index decoded from its image under the witnessed map."
+    },
+    {
+      "global_definition": "PrimeFactorListPermutation",
+      "href": "definition/ND0151.html?v=b3c647d19c00",
+      "id": "ND0151",
+      "kind": "definition",
+      "layer": 3,
+      "name": "PrimeFactorListPermutation",
+      "signature": "PrimeFactorListPermutation(b,c,l,d,e,m,u,v)",
+      "summary": "Equal list lengths and an actual bounded, injective, surjective beta index map matching all source and target prime occurrences, including repetitions."
+    },
+    {
+      "global_definition": "DivRem",
+      "href": "definition/PD0007.html?v=b3c647d19c00",
+      "id": "PD0007",
+      "kind": "definition",
+      "layer": 1,
+      "name": "DivRem",
+      "signature": "DivRem(n,d,q,r)",
+      "summary": "q and r are a quotient and a strict remainder for n by d."
+    },
+    {
+      "global_definition": "Dvd",
+      "href": "definition/PD0003.html?v=b3c647d19c00",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": "IsGCD",
+      "href": "definition/PD0006.html?v=b3c647d19c00",
+      "id": "PD0006",
+      "kind": "definition",
+      "layer": 1,
+      "name": "IsGCD",
+      "signature": "IsGCD(g,a,b)",
+      "summary": "g is a common divisor divisible by every common divisor."
+    },
+    {
+      "global_definition": "Coprime",
+      "href": "definition/PD0005.html?v=b3c647d19c00",
+      "id": "PD0005",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Coprime",
+      "signature": "Coprime(a,b)",
+      "summary": "Every common divisor of a and b is one."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "AF0001": {
+      "critical_root_path": [
+        "AF0001"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "AF0002": {
+      "critical_root_path": [
+        "AF0002"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "AF0003": {
+      "critical_root_path": [
+        "AF0003"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "AF0004": {
+      "critical_root_path": [
+        "AF0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "AF001B"
+      ]
+    },
+    "AF0005": {
+      "critical_root_path": [
+        "AF0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "AF000D",
+        "AF0019"
+      ]
+    },
+    "AF0006": {
+      "critical_root_path": [
+        "AF0006"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "AF000E",
+        "AF000F"
+      ]
+    },
+    "AF0007": {
+      "critical_root_path": [
+        "AF0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "AF0009",
+        "AF000A",
+        "AF0014"
+      ]
+    },
+    "AF0008": {
+      "critical_root_path": [
+        "AF0008"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "AF0015"
+      ]
+    },
+    "AF0009": {
+      "critical_root_path": [
+        "AF0007",
+        "AF0009"
+      ],
+      "dependencies": [
+        "AF0007"
+      ],
+      "dependents": [
+        "AF000A",
+        "AF0019"
+      ]
+    },
+    "AF000A": {
+      "critical_root_path": [
+        "AF0007",
+        "AF0009",
+        "AF000A"
+      ],
+      "dependencies": [
+        "AF0007",
+        "AF0009"
+      ],
+      "dependents": [
+        "AF0019"
+      ]
+    },
+    "AF000B": {
+      "critical_root_path": [
+        "AF000B"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "AF0019"
+      ]
+    },
+    "AF000C": {
+      "critical_root_path": [
+        "AF000C"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "AF0019"
+      ]
+    },
+    "AF000D": {
+      "critical_root_path": [
+        "AF0005",
+        "AF000D"
+      ],
+      "dependencies": [
+        "AF0005"
+      ],
+      "dependents": [
+        "AF0019"
+      ]
+    },
+    "AF000E": {
+      "critical_root_path": [
+        "AF0006",
+        "AF000E"
+      ],
+      "dependencies": [
+        "AF0006"
+      ],
+      "dependents": [
+        "AF0010"
+      ]
+    },
+    "AF000F": {
+      "critical_root_path": [
+        "AF0006",
+        "AF000F"
+      ],
+      "dependencies": [
+        "AF0006"
+      ],
+      "dependents": [
+        "AF0010"
+      ]
+    },
+    "AF0010": {
+      "critical_root_path": [
+        "AF0006",
+        "AF000E",
+        "AF0010"
+      ],
+      "dependencies": [
+        "AF000E",
+        "AF000F"
+      ],
+      "dependents": [
+        "AF0011",
+        "AF0018"
+      ]
+    },
+    "AF0011": {
+      "critical_root_path": [
+        "AF0006",
+        "AF000E",
+        "AF0010",
+        "AF0011"
+      ],
+      "dependencies": [
+        "AF0010"
+      ],
+      "dependents": [
+        "AF0019"
+      ]
+    },
+    "AF0012": {
+      "critical_root_path": [
+        "AF0012"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "AF0014",
+        "AF0017"
+      ]
+    },
+    "AF0013": {
+      "critical_root_path": [
+        "AF0013"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "AF0018"
+      ]
+    },
+    "AF0014": {
+      "critical_root_path": [
+        "AF0007",
+        "AF0014"
+      ],
+      "dependencies": [
+        "AF0007",
+        "AF0012"
+      ],
+      "dependents": [
+        "AF0015"
+      ]
+    },
+    "AF0015": {
+      "critical_root_path": [
+        "AF0007",
+        "AF0014",
+        "AF0015"
+      ],
+      "dependencies": [
+        "AF0008",
+        "AF0014"
+      ],
+      "dependents": [
+        "AF0016"
+      ]
+    },
+    "AF0016": {
+      "critical_root_path": [
+        "AF0007",
+        "AF0014",
+        "AF0015",
+        "AF0016"
+      ],
+      "dependencies": [
+        "AF0015"
+      ],
+      "dependents": [
+        "AF0019"
+      ]
+    },
+    "AF0017": {
+      "critical_root_path": [
+        "AF0012",
+        "AF0017"
+      ],
+      "dependencies": [
+        "AF0012"
+      ],
+      "dependents": [
+        "AF0018"
+      ]
+    },
+    "AF0018": {
+      "critical_root_path": [
+        "AF0006",
+        "AF000E",
+        "AF0010",
+        "AF0018"
+      ],
+      "dependencies": [
+        "AF0010",
+        "AF0013",
+        "AF0017"
+      ],
+      "dependents": [
+        "AF0019"
+      ]
+    },
+    "AF0019": {
+      "critical_root_path": [
+        "AF0006",
+        "AF000E",
+        "AF0010",
+        "AF0011",
+        "AF0019"
+      ],
+      "dependencies": [
+        "AF000B",
+        "AF000D",
+        "AF000A",
+        "AF000C",
+        "AF0005",
+        "AF0009",
+        "AF0011",
+        "AF0016",
+        "AF0018"
+      ],
+      "dependents": [
+        "AF001A"
+      ]
+    },
+    "AF001A": {
+      "critical_root_path": [
+        "AF0006",
+        "AF000E",
+        "AF0010",
+        "AF0011",
+        "AF0019",
+        "AF001A"
+      ],
+      "dependencies": [
+        "AF0019"
+      ],
+      "dependents": [
+        "AF001B"
+      ]
+    },
+    "AF001B": {
+      "critical_root_path": [
+        "AF0006",
+        "AF000E",
+        "AF0010",
+        "AF0011",
+        "AF0019",
+        "AF001A",
+        "AF001B"
+      ],
+      "dependencies": [
+        "AF0004",
+        "AF001A"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "AF0001",
+    "AF0002",
+    "AF0003",
+    "AF0004",
+    "AF001A",
+    "AF001B"
+  ],
+  "schema": "peano-lab-constructive-historical-publication-v30-first-v28-graph",
+  "stable_admitted_node_count": 0
+}

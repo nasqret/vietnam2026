@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0055 — CRTPrefixSolution(r,s,b,c,l,x) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="generalized-crt"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=CRTPrefixSolution&amp;v=b3c647d19c00">Global definition: CRTPrefixSolution</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F02&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G011" href="../../../../grand-campaign/?view=goal&amp;focus=G011&amp;v=b3c647d19c00">G011 milestone</a></nav>
+  <p class="pd-tag">ND0055</p><h1>CRTPrefixSolution(r,s,b,c,l,x)</h1>
+  <p>One actual simultaneous solution to every beta-coded finite residue/modulus pair.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ gcrt_solution_index_research. ∀ gcrt_solution_residue_research. ∀ gcrt_solution_modulus_research. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=b3c647d19c00">Lt(gcrt_solution_index_research,l)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=b3c647d19c00">Beta(r,s,gcrt_solution_index_research,gcrt_solution_residue_research)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=b3c647d19c00">Beta(b,c,gcrt_solution_index_research,gcrt_solution_modulus_research)</a> → <a class="pd-definition-ref" data-definition="PD0008" href="PD0008.html?v=b3c647d19c00">ModEq(gcrt_solution_modulus_research,x,gcrt_solution_residue_research)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall gcrt_solution_index_research gcrt_solution_residue_research gcrt_solution_modulus_research. (exists ff_lt_gcrt_research_bound. ff_lt_gcrt_research_bound + S gcrt_solution_index_research = l) -&gt; (((exists ff_h_gcrt_research_residue. ff_h_gcrt_research_residue + S (gcrt_solution_residue_research) = S ((S (gcrt_solution_index_research)) * s)) /\ exists ff_q_gcrt_research_residue. r = ff_q_gcrt_research_residue * S ((S (gcrt_solution_index_research)) * s) + (gcrt_solution_residue_research))) -&gt; (((exists ff_h_gcrt_research_modulus. ff_h_gcrt_research_modulus + S (gcrt_solution_modulus_research) = S ((S (gcrt_solution_index_research)) * c)) /\ exists ff_q_gcrt_research_modulus. b = ff_q_gcrt_research_modulus * S ((S (gcrt_solution_index_research)) * c) + (gcrt_solution_modulus_research))) -&gt; (exists hgcrt_mod_left_gcrt_research_congruence hgcrt_mod_right_gcrt_research_congruence. x + gcrt_solution_modulus_research * hgcrt_mod_left_gcrt_research_congruence = gcrt_solution_residue_research + gcrt_solution_modulus_research * hgcrt_mod_right_gcrt_research_congruence)</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0001.html?v=b3c647d19c00">Beta(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=b3c647d19c00">Lt(a,b)</a><a class="pd-chip" href="PD0008.html?v=b3c647d19c00">ModEq(m,a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0077.html?v=b3c647d19c00">CRTNormalizedPrefixSolution(r,s,b,c,l,x,M)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/FC000C.html?v=b3c647d19c00">FC000C · crt_pairwise_compatible_prefix_induces_gcd_congruences</a><a class="pd-chip" href="../tag/FC000D.html?v=b3c647d19c00">FC000D · crt_pairwise_compatible_prefix_implies_merge_compatible</a><a class="pd-chip" href="../tag/FC000E.html?v=b3c647d19c00">FC000E · crt_pairwise_compatible_prefix_solution_exists</a><a class="pd-chip" href="../tag/FC000F.html?v=b3c647d19c00">FC000F · crt_pairwise_compatible_prefix_canonical_exists_unique</a><a class="pd-chip" href="../tag/FC0010.html?v=b3c647d19c00">FC0010 · crt_canonical_prefix_solution_implies_normalized</a><a class="pd-chip" href="../tag/FC0012.html?v=b3c647d19c00">FC0012 · crt_prefix_solution_normalized_exists</a><a class="pd-chip" href="../tag/FC0013.html?v=b3c647d19c00">FC0013 · crt_pairwise_compatible_prefix_normalized_exists_unique</a><a class="pd-chip" href="../tag/FC0014.html?v=b3c647d19c00">FC0014 · crt_pairwise_compatible_prefix_solvable_iff</a><a class="pd-chip" href="../tag/FC0015.html?v=b3c647d19c00">FC0015 · crt_pairwise_compatible_prefix_merge_iff</a><a class="pd-chip" href="../tag/FC0016.html?v=b3c647d19c00">FC0016 · crt_normalized_prefix_solution_class_iff_lcm</a><a class="pd-chip" href="../tag/FC0017.html?v=b3c647d19c00">FC0017 · crt_normalized_zero_lcm_all_solutions_unique</a><a class="pd-chip" href="../tag/FC0018.html?v=b3c647d19c00">FC0018 · crt_positive_normalized_prefix_iff_canonical</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>6</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>3</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0055.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>798c53a2ed3a66ad4c9d26695af673cfd808b4e53ba0abcd02dcae69a75ccb2f</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DL0019 — matrix_recursive_lt_add_left — Exact Proof</title>
+  <link rel="stylesheet" href="../../../assets/exact-explorer.css?v=6dd0cf105c49">
+  <script defer src="../../../assets/exact-explorer.js?v=98f11fff5d34"></script>
+</head>
+<body class="pa-proof-site" data-page="theorem" data-family="integer-linear-algebra"><header class="pa-proof-header pa-theorem-heading">
+  <nav><a href="../index.html?v=b3c647d19c00">Explorer</a><a href="../defined/tag/DL0019.html?v=b3c647d19c00">Defined notation</a><a href="../defined/graph.html?target=DL0019&amp;v=b3c647d19c00">Dependency graph</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="global" href="../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a href="DL0018.html?v=b3c647d19c00">← signed_recursive_determinant_successor_decomposition</a><a href="DL001A.html?v=b3c647d19c00">matrix_recursive_flattened_index_bound →</a><a data-campaign-link="global" href="../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=b3c647d19c00">T13 milestone</a></nav>
+  <p class="pa-tag">DL0019</p><h1>matrix_recursive_lt_add_left</h1>
+  <p class="pa-status-candidate">Alpha v30 independently verified · alpha_closed; checked-use authorized; not Stable</p>
+  <p>Strict natural order is preserved by a common left summand, by explicit successor transport.</p>
+</header>
+<main class="pa-theorem-layout">
+  <div class="pa-proof-panel">
+    <section class="pa-statement"><h2>Exact expanded first-order arithmetic statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>forall a b c. (exists mdr_gap_add_source. mdr_gap_add_source + S (a) = (b)) -&gt; (exists mdr_gap_add_result. mdr_gap_add_result + S (c + a) = (c + b))</code></pre></section>
+    <section class="pa-informal-proof" data-informal-kind="structural" data-informal-review="generated"><h2>Constructive proof overview</h2><p><strong>Generated structural guide</strong></p><p>Strict natural order is preserved by a common left summand, by explicit successor transport.</p><p>The unchanged tactic script uses 1 declared prerequisite and contains 14 exact native proof lines.</p><p>Alpha v30 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p></section>
+    <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row"><span class="pa-external-dependency" data-external-name="add_le_add_left" data-evidence="stable_closed"><code>add_le_add_left</code> <small>Stable theorem; checked-use authorized</small></span></div><h3>Direct dependents</h3><div class="pa-chip-row"><a class="pa-theorem-ref" href="DL001A.html?v=b3c647d19c00"><code>DL001A</code> matrix_recursive_flattened_index_bound</a> <a class="pa-theorem-ref" href="DL0095.html?v=b3c647d19c00"><code>DL0095</code> matrix_integer_rectangular_index_bound</a></div></section>
+    <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. This exact body belongs to a complete independently kernel-checked constructive proof bundle and has Alpha checked-use authority; it does not imply Stable membership.</p><ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="163da2bc220eeced"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> a</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="ff6cb2f1a78f5c49"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> b</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="dc8ad3da6f72de6b"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> c</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="c67ec82b7e97dcd9"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> hab</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="have" data-line-id="674416182fd871ea"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">have</span> heq : c + S a = S (c + a)</code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="apply" data-line-id="ce12510f21076227"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">apply</span> PA4</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="have" data-line-id="a6c09962cc816ede"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">have</span> hsum : exists mdr_gap_add_middle. mdr_gap_add_middle + (c + S a) = (c + b)</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="specialize" data-line-id="0c419c858994a445"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">specialize</span> <span class="pa-external-ref">add_le_add_left</span> (S a)</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="specialize" data-line-id="c23046e9be51da28"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">specialize</span> <span class="pa-external-ref">add_le_add_left</span> (b)</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="specialize" data-line-id="d6d678f93564e23b"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">specialize</span> <span class="pa-external-ref">add_le_add_left</span> (c)</code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="apply" data-line-id="78dd9dbf928132df"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-external-ref">add_le_add_left</span></code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="exact" data-line-id="731078116e094b75"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">exact</span> hab</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="rewrite" data-line-id="52101ebafe6440a1"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">rewrite</span> heq at hsum</code></li><li class="pa-proof-line" id="proof-line-0014" data-line="14" data-tactic="exact" data-line-id="14e422a7c5f0df37"><a class="pa-line-number" href="#proof-line-0014">0014</a><code><span class="pa-tactic-ref">exact</span> hsum</code></li></ol></section>
+  </div>
+  <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>0</dd><dt>Tactic lines</dt><dd>14</dd><dt>Alpha evidence</dt><dd>alpha_closed</dd><dt>Checked-use authority</dt><dd>Alpha v30; independently verified</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>066c15de995914fe5c790c0ff3d913e5968f3e7f03d152ed028aaa9bafc96441</code></dd><dt>Exact script SHA-256</dt><dd><code>df8394f1a3ca2c6f68e4be95ce4d08b5614852ce13c111fa848b4baa27a4a192</code></dd><dt>Source module</dt><dd><code>peano_lab.library.matrix_recursive_determinant_extensional_candidate</code></dd><dt>Factory</dt><dd><code>make_matrix_recursive_determinant_extensional_candidate_theorems</code></dd></dl></aside>
+</main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

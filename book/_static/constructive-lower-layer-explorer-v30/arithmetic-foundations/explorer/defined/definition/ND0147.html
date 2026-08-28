@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0147 — SignedBezout(g,a,b,u,v) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="arithmetic-foundations"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedBezout&amp;v=b3c647d19c00">Global definition: SignedBezout</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G001" href="../../../../grand-campaign/?view=goal&amp;focus=G001&amp;v=b3c647d19c00">G001 milestone</a><a data-campaign-link="goal" data-campaign-goal="G002" href="../../../../grand-campaign/?view=goal&amp;focus=G002&amp;v=b3c647d19c00">G002 milestone</a><a data-campaign-link="goal" data-campaign-goal="G003" href="../../../../grand-campaign/?view=goal&amp;focus=G003&amp;v=b3c647d19c00">G003 milestone</a><a data-campaign-link="goal" data-campaign-goal="G004" href="../../../../grand-campaign/?view=goal&amp;focus=G004&amp;v=b3c647d19c00">G004 milestone</a><a data-campaign-link="goal" data-campaign-goal="G005" href="../../../../grand-campaign/?view=goal&amp;focus=G005&amp;v=b3c647d19c00">G005 milestone</a></nav>
+  <p class="pd-tag">ND0147</p><h1>SignedBezout(g,a,b,u,v)</h1>
+  <p>The original signed coefficient codes u and v witness a·u+b·v=g by actual decoded balanced arithmetic.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ sbz_xp_lowerlayer. ∃ sbz_xn_lowerlayer. ∃ sbz_yp_lowerlayer. ∃ sbz_yn_lowerlayer. <a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=b3c647d19c00">SignedDecode(u,sbz_xp_lowerlayer,sbz_xn_lowerlayer)</a> ∧ (<a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=b3c647d19c00">SignedDecode(v,sbz_yp_lowerlayer,sbz_yn_lowerlayer)</a> ∧ a · sbz_xp_lowerlayer + b · sbz_yp_lowerlayer = g + (a · sbz_xn_lowerlayer + b · sbz_yn_lowerlayer))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists sbz_xp_lowerlayer sbz_xn_lowerlayer sbz_yp_lowerlayer sbz_yn_lowerlayer. (((u = 2 * sbz_xp_lowerlayer /\ sbz_xn_lowerlayer = 0) \/ exists sd_half_lowerlayer_x. ((u = 2 * sd_half_lowerlayer_x + 1 /\ sbz_xp_lowerlayer = 0) /\ sbz_xn_lowerlayer = S sd_half_lowerlayer_x)) /\ (((v = 2 * sbz_yp_lowerlayer /\ sbz_yn_lowerlayer = 0) \/ exists sd_half_lowerlayer_y. ((v = 2 * sd_half_lowerlayer_y + 1 /\ sbz_yp_lowerlayer = 0) /\ sbz_yn_lowerlayer = S sd_half_lowerlayer_y)) /\ a * sbz_xp_lowerlayer + b * sbz_yp_lowerlayer = g + (a * sbz_xn_lowerlayer + b * sbz_yn_lowerlayer)))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0142.html?v=b3c647d19c00">SignedDecode(z,p,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/AF0002.html?v=b3c647d19c00">AF0002 · foundation_signed_bezout_canonical_gcd</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>5</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>1</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0147.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>27327519d0bc44212cbd93376c820fd937701b5995b769c5072ec2a26a23b1c7</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

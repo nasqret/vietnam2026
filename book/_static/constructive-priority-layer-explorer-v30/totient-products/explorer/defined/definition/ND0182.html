@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0182 — UnitBitPrefix(n,b,c,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="totient-products"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=UnitBitPrefix&amp;v=b3c647d19c00">Global definition: UnitBitPrefix</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G006" href="../../../../grand-campaign/?view=goal&amp;focus=G006&amp;v=b3c647d19c00">G006 milestone</a></nav>
+  <p class="pd-tag">ND0182</p><h1>UnitBitPrefix(n,b,c,l)</h1>
+  <p>The decoded bit at i&lt;l is one exactly for Coprime(i,n), and zero otherwise. The interval starts at zero.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ eut_index_prioritylayer. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=b3c647d19c00">Lt(eut_index_prioritylayer,l)</a> → ∃ x. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=b3c647d19c00">BetaAt(b,c,eut_index_prioritylayer,x)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0005" href="PD0005.html?v=b3c647d19c00">Coprime(eut_index_prioritylayer,n)</a> ∧ x = 1 ∨ ¬<a class="pd-definition-ref" data-definition="PD0005" href="PD0005.html?v=b3c647d19c00">Coprime(eut_index_prioritylayer,n)</a> ∧ x = 0)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall eut_index_prioritylayer. (exists eut_gap_prioritylayer_bound. eut_gap_prioritylayer_bound + S (eut_index_prioritylayer) = (l)) -&gt; exists eut_bit_prioritylayer. (((exists fs_h_eut_prioritylayer_entry. fs_h_eut_prioritylayer_entry + S (eut_bit_prioritylayer) = S ((S (eut_index_prioritylayer)) * c)) /\ exists fs_q_eut_prioritylayer_entry. b = fs_q_eut_prioritylayer_entry * S ((S (eut_index_prioritylayer)) * c) + (eut_bit_prioritylayer))) /\ ((((forall eut_divisor_prioritylayer_choice_coprime. (exists eut_left_prioritylayer_choice_coprime. (eut_index_prioritylayer) = eut_divisor_prioritylayer_choice_coprime * eut_left_prioritylayer_choice_coprime) -&gt; (exists eut_right_prioritylayer_choice_coprime. (n) = eut_divisor_prioritylayer_choice_coprime * eut_right_prioritylayer_choice_coprime) -&gt; eut_divisor_prioritylayer_choice_coprime = 1) /\ (eut_bit_prioritylayer) = 1) \/ (~(forall eut_divisor_prioritylayer_choice_coprime. (exists eut_left_prioritylayer_choice_coprime. (eut_index_prioritylayer) = eut_divisor_prioritylayer_choice_coprime * eut_left_prioritylayer_choice_coprime) -&gt; (exists eut_right_prioritylayer_choice_coprime. (n) = eut_divisor_prioritylayer_choice_coprime * eut_right_prioritylayer_choice_coprime) -&gt; eut_divisor_prioritylayer_choice_coprime = 1) /\ (eut_bit_prioritylayer) = 0)))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=b3c647d19c00">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=b3c647d19c00">BetaAt(b,c,i,x)</a><a class="pd-chip" href="PD0005.html?v=b3c647d19c00">Coprime(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0183.html?v=b3c647d19c00">UnitCount(n,l,t)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/TP0004.html?v=b3c647d19c00">TP0004 · totient_unit_prefix_empty</a><a class="pd-chip" href="../tag/TP0005.html?v=b3c647d19c00">TP0005 · totient_unit_prefix_drop_last</a><a class="pd-chip" href="../tag/TP0006.html?v=b3c647d19c00">TP0006 · totient_unit_prefix_entry</a><a class="pd-chip" href="../tag/TP0007.html?v=b3c647d19c00">TP0007 · totient_unit_prefix_extend</a><a class="pd-chip" href="../tag/TP0008.html?v=b3c647d19c00">TP0008 · totient_unit_prefix_exists</a><a class="pd-chip" href="../tag/TP0009.html?v=b3c647d19c00">TP0009 · totient_unit_prefix_all_bits</a><a class="pd-chip" href="../tag/TP000A.html?v=b3c647d19c00">TP000A · totient_unit_prefix_equal_entry</a><a class="pd-chip" href="../tag/TP000B.html?v=b3c647d19c00">TP000B · totient_unit_count_exists</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>4</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0182.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>68bfeed11b46e917da390e3ba9cf9413b78f325aa9fb503d234084590ddd0882</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-priority-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

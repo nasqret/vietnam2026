@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Constructive lower-layer foundations — Proof library</title><link rel="stylesheet" href="assets/proofs.css?v=b3c647d19c00"></head><body><header class="hero"><div class="shell"><p class="eyebrow">Alpha v30 · unchanged intuitionistic HA · independently checked in Lean</p><h1>Constructive lower-layer foundations</h1><p class="lede">The same 204 exact v28 proofs, displayed with authenticated v30 checked-use authority. First admission remains v28. Stable remains the separate unchanged 432-theorem edition.</p><nav class="hero-actions"><a class="secondary-action" href="../grand-campaign/?v=b3c647d19c00">Full campaign atlas</a><a class="secondary-action" href="../artifacts/alpha-v28-lower-layer-receipt.md?v=b3c647d19c00">Verification receipt</a></nav></div></header><main class="shell"><section class="family-grid" aria-label="Checked constructive proof families"><article class="family-card"><p class="card-kicker">Unique division · canonical signed Bézout · unordered prime factors</p><h2>Constructive arithmetic and unique factorization</h2><p>Expose exact foundation interfaces and construct an actual finite permutation between arbitrary prime factorizations, with no sorting or supplied canonicalization.</p><dl class="stats"><div><dt>27</dt><dd>checked theorems</dd></div><div><dt>22</dt><dd>definitions</dd></div><div><dt>85</dt><dd>proof edges</dd></div></dl><a class="primary-action" href="arithmetic-foundations/?v=b3c647d19c00">Explore the proofs <span aria-hidden="true">→</span></a></article><article class="family-card"><p class="card-kicker">Least-prime search · complete increasing lists · witnessed powers</p><h2>The first primes with explicit constructive bounds</h2><p>Construct the actual first k primes, prove that none is omitted, and bound the last prime by explicitly constructed powers of two.</p><dl class="stats"><div><dt>19</dt><dd>checked theorems</dd></div><div><dt>11</dt><dd>definitions</dd></div><div><dt>75</dt><dd>proof edges</dd></div></dl><a class="primary-action" href="prime-enumeration/?v=b3c647d19c00">Explore the proofs <span aria-hidden="true">→</span></a></article><article class="family-card"><p class="card-kicker">Shared canonical integer codes · nearest square quotient · strict norm decrease</p><h2>Constructive Gaussian Euclidean division</h2><p>Construct actual Gaussian quotient and remainder codes for every nonzero divisor, using witnessed signed rounding and the genuine norm a²+b².</p><dl class="stats"><div><dt>93</dt><dd>checked theorems</dd></div><div><dt>21</dt><dd>definitions</dd></div><div><dt>320</dt><dd>proof edges</dd></div></dl><a class="primary-action" href="gaussian-integers/?v=b3c647d19c00">Explore the proofs <span aria-hidden="true">→</span></a></article><article class="family-card"><p class="card-kicker">Shared signed-pair carrier · explicit floor quotient · strict norm decrease</p><h2>Constructive Eisenstein Euclidean division</h2><p>Construct actual Eisenstein quotient and remainder codes in ℤ[ω], with ω²+ω+1=0 and the genuine norm a²−ab+b².</p><dl class="stats"><div><dt>65</dt><dd>checked theorems</dd></div><div><dt>17</dt><dd>definitions</dd></div><div><dt>308</dt><dd>proof edges</dd></div></dl><a class="primary-action" href="eisenstein-integers/?v=b3c647d19c00">Explore the proofs <span aria-hidden="true">→</span></a></article></section><section class="release-note"><p>Historical theorem statements, bodies, dependencies, first-admission receipts, and Stable membership remain unchanged. The newly closed Gaussian target is connected through the current atlas; other roadmap goals remain separate.</p></section></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body></html>

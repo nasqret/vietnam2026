@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0056 — CRTPrefixLCM(b,c,l,M) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="generalized-crt"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=CRTPrefixLCM&amp;v=b3c647d19c00">Global definition: CRTPrefixLCM</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F02&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G011" href="../../../../grand-campaign/?view=goal&amp;focus=G011&amp;v=b3c647d19c00">G011 milestone</a></nav>
+  <p class="pd-tag">ND0056</p><h1>CRTPrefixLCM(b,c,l,M)</h1>
+  <p>The exact beta-prefix least common multiple, specified by divisibility and its universal leastness property.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>(∀ x. ∀ y. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=b3c647d19c00">Lt(x,l)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=b3c647d19c00">Beta(b,c,x,y)</a> → <a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=b3c647d19c00">Dvd(y,M)</a>) ∧ (∀ x. (∀ y. ∀ z. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=b3c647d19c00">Lt(y,l)</a> → <a class="pd-definition-ref" data-definition="ND0001" href="ND0001.html?v=b3c647d19c00">Beta(b,c,y,z)</a> → <a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=b3c647d19c00">Dvd(z,x)</a>) → <a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=b3c647d19c00">Dvd(M,x)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((forall gcrt_common_index_research_own gcrt_common_modulus_research_own. (exists ff_lt_gcrt_research_own_bound. ff_lt_gcrt_research_own_bound + S gcrt_common_index_research_own = l) -&gt; (((exists ff_h_gcrt_research_own_entry. ff_h_gcrt_research_own_entry + S (gcrt_common_modulus_research_own) = S ((S (gcrt_common_index_research_own)) * c)) /\ exists ff_q_gcrt_research_own_entry. b = ff_q_gcrt_research_own_entry * S ((S (gcrt_common_index_research_own)) * c) + (gcrt_common_modulus_research_own))) -&gt; exists gcrt_common_quotient_research_own. M = gcrt_common_modulus_research_own * gcrt_common_quotient_research_own) /\ forall gcrt_lcm_common_research. (forall gcrt_common_index_research_other gcrt_common_modulus_research_other. (exists ff_lt_gcrt_research_other_bound. ff_lt_gcrt_research_other_bound + S gcrt_common_index_research_other = l) -&gt; (((exists ff_h_gcrt_research_other_entry. ff_h_gcrt_research_other_entry + S (gcrt_common_modulus_research_other) = S ((S (gcrt_common_index_research_other)) * c)) /\ exists ff_q_gcrt_research_other_entry. b = ff_q_gcrt_research_other_entry * S ((S (gcrt_common_index_research_other)) * c) + (gcrt_common_modulus_research_other))) -&gt; exists gcrt_common_quotient_research_other. gcrt_lcm_common_research = gcrt_common_modulus_research_other * gcrt_common_quotient_research_other) -&gt; exists gcrt_lcm_quotient_research. gcrt_lcm_common_research = M * gcrt_lcm_quotient_research)</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0001.html?v=b3c647d19c00">Beta(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=b3c647d19c00">Lt(a,b)</a><a class="pd-chip" href="PD0003.html?v=b3c647d19c00">Dvd(d,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0077.html?v=b3c647d19c00">CRTNormalizedPrefixSolution(r,s,b,c,l,x,M)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/FC000B.html?v=b3c647d19c00">FC000B · crt_prefix_gcd_congruences_lcm</a><a class="pd-chip" href="../tag/FC000D.html?v=b3c647d19c00">FC000D · crt_pairwise_compatible_prefix_implies_merge_compatible</a><a class="pd-chip" href="../tag/FC000F.html?v=b3c647d19c00">FC000F · crt_pairwise_compatible_prefix_canonical_exists_unique</a><a class="pd-chip" href="../tag/FC0010.html?v=b3c647d19c00">FC0010 · crt_canonical_prefix_solution_implies_normalized</a><a class="pd-chip" href="../tag/FC0012.html?v=b3c647d19c00">FC0012 · crt_prefix_solution_normalized_exists</a><a class="pd-chip" href="../tag/FC0015.html?v=b3c647d19c00">FC0015 · crt_pairwise_compatible_prefix_merge_iff</a><a class="pd-chip" href="../tag/FC0018.html?v=b3c647d19c00">FC0018 · crt_positive_normalized_prefix_iff_canonical</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>3</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0056.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>1d52052b1b8cb4770ebc8ee3286949ed1d780b5d0260f76a0da59ae734cc7431</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

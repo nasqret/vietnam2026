@@ -1,0 +1,2127 @@
+{
+  "alpha_edition_version": "v30",
+  "alpha_first_enrolled_version": "v30",
+  "catalog_sha256": "b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb",
+  "checked_use_count": 180,
+  "edition_identity_sha256": "8986ab8b8d8493ab7c8f01e2080b0ac590fd3c7289ac811b6606710ca453e1e9",
+  "families": [
+    {
+      "campaign": "gaussian_factorization",
+      "definition_count": 38,
+      "domain": "D02",
+      "family": "F09",
+      "milestones": [
+        "G082"
+      ],
+      "root_tags": {
+        "gaussian_divides_decidable": "GF0053",
+        "gaussian_gcd_bezout_exists": "GF0065",
+        "gaussian_gcd_unique_up_to_associate": "GF0066",
+        "gaussian_irreducible_iff_prime": "GF006C",
+        "gaussian_prime_factorization_exists": "GF0098",
+        "gaussian_unique_prime_factorization": "GF00B2",
+        "gaussian_unit_iff_norm_one": "GF001B"
+      },
+      "slug": "gaussian-factorization",
+      "theorem_count": 180
+    }
+  ],
+  "file_count": 410,
+  "files": [
+    {
+      "bytes": 15951,
+      "path": "assets/defined-explorer.css",
+      "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220"
+    },
+    {
+      "bytes": 29840,
+      "path": "assets/defined-explorer.js",
+      "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"
+    },
+    {
+      "bytes": 30856,
+      "path": "assets/exact-explorer.css",
+      "sha256": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc"
+    },
+    {
+      "bytes": 42701,
+      "path": "assets/exact-explorer.js",
+      "sha256": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606"
+    },
+    {
+      "bytes": 8341,
+      "path": "assets/proofs.css",
+      "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285"
+    },
+    {
+      "bytes": 15236273,
+      "path": "gaussian-factorization/api/corpus.json",
+      "sha256": "e8a9daa88aff8f4cfe7afe2662b708c9072976d22e3fa13cfa9169925e5aa986"
+    },
+    {
+      "bytes": 309319,
+      "path": "gaussian-factorization/explorer/defined/api/graph.json",
+      "sha256": "3bcd71bae93c83ba897246821a52a0edee90690dde998937ac31aba82967573f"
+    },
+    {
+      "bytes": 6144,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0142.html",
+      "sha256": "31da17383d126f77047c4b65fdfa7a342898f15d23739170f9e6680abdda6f28"
+    },
+    {
+      "bytes": 6248,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0143.html",
+      "sha256": "35daedc673068d74d5c8663497484c1148239cf16e8dc6e95dadbdb9dc8d9323"
+    },
+    {
+      "bytes": 8638,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0148.html",
+      "sha256": "a4ee391668ad4e0c7a212264b7bb3a0acad31b338af7811e29e297b948a04ecb"
+    },
+    {
+      "bytes": 5897,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0157.html",
+      "sha256": "262f252cfe04725f102b7e0900809be76226598f95c3336df196f7decdd4f9dc"
+    },
+    {
+      "bytes": 6565,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0158.html",
+      "sha256": "1ad9f5707465c3d96b170032a566d27fe25f68f40f44d73e474e3b2fad6e7b24"
+    },
+    {
+      "bytes": 7064,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0159.html",
+      "sha256": "1fb610a8097269a2a887e9f86c42e83d8c07b81ac49a381947a3a58c58b801c6"
+    },
+    {
+      "bytes": 11696,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0160.html",
+      "sha256": "40c0cf6b8e2f1c4ebf83593084a38d807738e453e05473b86eba157b371992a5"
+    },
+    {
+      "bytes": 9610,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0161.html",
+      "sha256": "8e3100737fab1ef029d05a4a9cca420b985f420ee1bb664ce248efa51f17d0d8"
+    },
+    {
+      "bytes": 12873,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0164.html",
+      "sha256": "80425e03462762ff9fe592130656f101c238e0ccf2dc598f8215776d542c661a"
+    },
+    {
+      "bytes": 15144,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0165.html",
+      "sha256": "5fe5afe668d149d3f860f81df473b5d5ce856a57a0839870560c642dbf2f2d59"
+    },
+    {
+      "bytes": 21294,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0166.html",
+      "sha256": "6dd46904d85406c4c10f6e2ff0159af65c9ffe984fcb18027d37b8fd7251803f"
+    },
+    {
+      "bytes": 5775,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0177.html",
+      "sha256": "2048e09d5cc44112440ce987b256fe8637ce6dc38a60481a2a1865b57238449e"
+    },
+    {
+      "bytes": 19458,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0208.html",
+      "sha256": "edf086d3a016aa25c6c517e85743560b6499045455a0eb4a135105f6fe7facd7"
+    },
+    {
+      "bytes": 19688,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0209.html",
+      "sha256": "461a9d03ea619cbb0f99cb67def3e9567fb5efb5c24991708b4f7d146b0fbaf7"
+    },
+    {
+      "bytes": 28030,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0210.html",
+      "sha256": "3596bd760c44fc4116ca9e7259cb0b9faffb6866cc9fb448aabec32e24a85fed"
+    },
+    {
+      "bytes": 54105,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0211.html",
+      "sha256": "0890813c6590e38b8e0aaea8086e197c49f4fbf7f83d07f072e7a51ac1691f7b"
+    },
+    {
+      "bytes": 62707,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0212.html",
+      "sha256": "d8e8d4dc08758f8fe0ee51e31222222c65b1ddb033f109e0b4c38073a0e3817a"
+    },
+    {
+      "bytes": 33410,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0213.html",
+      "sha256": "1fc09eaab008fb4197b958782a797ac3db4e551bd55238c910b26a8df71aa2a4"
+    },
+    {
+      "bytes": 61154,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0214.html",
+      "sha256": "9123ec4531841169c09f254710337e939af4a8c4cd979bc3a6d5d68e00aa1c1c"
+    },
+    {
+      "bytes": 7282,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0215.html",
+      "sha256": "8e52bad800fe6df78b65d83eab7fd3938e40a52fdc56d9d224202ba0d44949e2"
+    },
+    {
+      "bytes": 32765,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0216.html",
+      "sha256": "71ad87d566d28bdbe8fbe389e37f94a0ca8be819a55789b4cd7534628e5b5bb4"
+    },
+    {
+      "bytes": 48835,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0217.html",
+      "sha256": "2ff8ea5b260eb61f49ffcb9a4a769253fc64d4ef030417aed48340762298ec35"
+    },
+    {
+      "bytes": 17580,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0218.html",
+      "sha256": "55fd2473d948ab87f204ebd5a160054868d1ee2edd01d836215236cddf69f380"
+    },
+    {
+      "bytes": 17300,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0219.html",
+      "sha256": "386567d46d56c94030b3af6982baa10fa6858cd09294d386eebdd6cd9f3ad98b"
+    },
+    {
+      "bytes": 21688,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0220.html",
+      "sha256": "98279c7cf177027ff391def544d970b561e043a25cdc1c5f121a00725f237721"
+    },
+    {
+      "bytes": 60826,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0221.html",
+      "sha256": "c3683263a3710dda19072e7e75a3acdf306357e2078a559111e091514d8e5fe6"
+    },
+    {
+      "bytes": 67150,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0222.html",
+      "sha256": "f76f232afa3214eba2e599fb78854717ec63f7fa31de99a6526622c31bf4922d"
+    },
+    {
+      "bytes": 102729,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0223.html",
+      "sha256": "d4639162e5ee95339d4f773bce0e1261fc313fee7d33a9e6fda53391d757225b"
+    },
+    {
+      "bytes": 107374,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0224.html",
+      "sha256": "c21c733d8331145db7c222f29680400ac2456ec4cfebbee6136958876e953848"
+    },
+    {
+      "bytes": 32385,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0225.html",
+      "sha256": "029b1cd55b5f7621619cf392b1836f4c7f388901847312b96e0b0e7f502a88da"
+    },
+    {
+      "bytes": 38235,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0226.html",
+      "sha256": "39456675cd3d4d9ff36981a4ec52b125e14b61585499b5e602aac6fae13bcf3f"
+    },
+    {
+      "bytes": 40103,
+      "path": "gaussian-factorization/explorer/defined/definition/ND0227.html",
+      "sha256": "b1af7e2e1ddf1397ec435d5108cebe0fc85139d18d4809eba84e9b9619d25d18"
+    },
+    {
+      "bytes": 6451,
+      "path": "gaussian-factorization/explorer/defined/definition/PD0001.html",
+      "sha256": "4a3af3d10782460f468233c0df3caee1ceb07705a9e0b824deba86c82bb20f7f"
+    },
+    {
+      "bytes": 9858,
+      "path": "gaussian-factorization/explorer/defined/definition/PD0002.html",
+      "sha256": "f9f861205e30504c51609e135a76bb0037b60a19e0c5657339dce47212775878"
+    },
+    {
+      "bytes": 9072,
+      "path": "gaussian-factorization/explorer/defined/definition/PD0013.html",
+      "sha256": "73b5b7a6dd5a2c8bcb55fcf77f002c9d2a50a6174aed9b30495b08ea7f5aea0e"
+    },
+    {
+      "bytes": 6773,
+      "path": "gaussian-factorization/explorer/defined/definition/PD0024.html",
+      "sha256": "f765c978a4485f8959f22accac7a46827f45bafd25588ea907b23e54ed4750d0"
+    },
+    {
+      "bytes": 7602,
+      "path": "gaussian-factorization/explorer/defined/definition/PD0025.html",
+      "sha256": "88dd5d3c0058c2fc6b1ea6b895f87f3f4e83e8e2d3cbb0e831dcf210b479d230"
+    },
+    {
+      "bytes": 6855,
+      "path": "gaussian-factorization/explorer/defined/definition/PD0026.html",
+      "sha256": "19c5d227ae4d4cb45a0b17321f7184553a80a405f441da3956868e5cd2e00f8c"
+    },
+    {
+      "bytes": 224879,
+      "path": "gaussian-factorization/explorer/defined/graph.html",
+      "sha256": "b5a105a7e2c63d1fc8f613bdb889597f7ac608f92aa936aaf3d3d85e9f48b176"
+    },
+    {
+      "bytes": 142546,
+      "path": "gaussian-factorization/explorer/defined/index.html",
+      "sha256": "262b9b1bd84a256c49f97bce9b535836dccfbe552fab456e8314e22712631870"
+    },
+    {
+      "bytes": 12827,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0001.html",
+      "sha256": "afd55ee7a91d7864e0c024f6d1bed5771b39970de3c4b5c0ae9cb68b77c16b1a"
+    },
+    {
+      "bytes": 11766,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0002.html",
+      "sha256": "3606ba51de685eb8ff244e09a6d2ad13504922fe51a7972d4d75c13c58bd47b6"
+    },
+    {
+      "bytes": 13726,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0003.html",
+      "sha256": "b2120b99755299cb0b3cb950ab259b33b6547541458a54029a0a63118c086d6d"
+    },
+    {
+      "bytes": 19308,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0004.html",
+      "sha256": "237e61de59dc4f08c67c806945070687d1317a0d2f8545ac0d65f8c91e62e7cc"
+    },
+    {
+      "bytes": 19474,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0005.html",
+      "sha256": "78c2fd618877870c3b52ffb6d544df42709963e788db055dfc4d748d8eb7e855"
+    },
+    {
+      "bytes": 18723,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0006.html",
+      "sha256": "289489ddc8d387293b120ca6e6b2fded31e1e0eade2779816a42e911412b9de6"
+    },
+    {
+      "bytes": 21187,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0007.html",
+      "sha256": "185fbaa4c064a9d3f02201887fc36e77e6cea256248f973726a8b9c245fa238f"
+    },
+    {
+      "bytes": 21377,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0008.html",
+      "sha256": "f1cd27ca0f15d2cc01a972614e5c4e3fef4c61d64063b14bfebd4cd1cf08ed57"
+    },
+    {
+      "bytes": 20767,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0009.html",
+      "sha256": "7f5450eeb8b135fa2b47a2e9fe99ca5b646704c279e8bed4d74b4a33ab0e8ea7"
+    },
+    {
+      "bytes": 11558,
+      "path": "gaussian-factorization/explorer/defined/tag/GF000A.html",
+      "sha256": "28c3664efcd9a318f9dee9aea76486388b2d67601c39b5577092ab9d06698775"
+    },
+    {
+      "bytes": 11348,
+      "path": "gaussian-factorization/explorer/defined/tag/GF000B.html",
+      "sha256": "d1e20952a8dc2682b229f53751c8ea2ff29ba662924ef9a64fd91687baffb472"
+    },
+    {
+      "bytes": 9640,
+      "path": "gaussian-factorization/explorer/defined/tag/GF000C.html",
+      "sha256": "a9c94da276aeb221a3381a57fde4969a9f9f9fbf97ff76690677406115b0edf8"
+    },
+    {
+      "bytes": 12432,
+      "path": "gaussian-factorization/explorer/defined/tag/GF000D.html",
+      "sha256": "0ecebd584996cf638d683918e6816bcb8ff64d057037b2f49646c889e9caec8b"
+    },
+    {
+      "bytes": 11312,
+      "path": "gaussian-factorization/explorer/defined/tag/GF000E.html",
+      "sha256": "48e15abd5128ef85ad95e708d544814cab09633efb7b092ca1c081d3a3682c37"
+    },
+    {
+      "bytes": 9605,
+      "path": "gaussian-factorization/explorer/defined/tag/GF000F.html",
+      "sha256": "c837848f8e24b23507d41c92235f955a7ac36431ea6dee71eff6494a7fb4f98b"
+    },
+    {
+      "bytes": 12363,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0010.html",
+      "sha256": "e3a812bf0a511917d326c4b4ef01abb04af00e8f094a5eb1735f4541609f87c1"
+    },
+    {
+      "bytes": 8448,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0011.html",
+      "sha256": "5d6297810a67df2105e86dade088462edd6d4659bf5d2617fc33181efe41a61f"
+    },
+    {
+      "bytes": 30647,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0012.html",
+      "sha256": "d7d6c894e36a7a4e4b2f8aeccd8cfdf398f1dd58fd0795264ed3be06838be495"
+    },
+    {
+      "bytes": 9382,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0013.html",
+      "sha256": "eb9e73e6346b43a6531f4e099256c66bb00018165539c9f0f84be6a94639d3a0"
+    },
+    {
+      "bytes": 34851,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0014.html",
+      "sha256": "1b8ce0a4941fd3c157a18d2a1999430b43054d2a00aa7f7bc8fab1ea641d15e4"
+    },
+    {
+      "bytes": 14329,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0015.html",
+      "sha256": "0db0e81bfd1365dd609f9f3f939d90c54a98bcfaf8dc9c71f65f77e9cfe1eef7"
+    },
+    {
+      "bytes": 14862,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0016.html",
+      "sha256": "cdef612dca342e40a979e53c822bdcdc27e9c215242beabcae199b4da9c7e251"
+    },
+    {
+      "bytes": 12503,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0017.html",
+      "sha256": "b4706f070df93b0ae811dd33ae2f62fe655863ba565c20c1ee54467c5a70d135"
+    },
+    {
+      "bytes": 11920,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0018.html",
+      "sha256": "e026f83671c8cf909b5f5e6677644428bfc21f7ae056af79b16e35ad8480795e"
+    },
+    {
+      "bytes": 27884,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0019.html",
+      "sha256": "2592dcb2f4fd1cc2243246aca88e49b7874384f37d364d860af99424c06e1f32"
+    },
+    {
+      "bytes": 31362,
+      "path": "gaussian-factorization/explorer/defined/tag/GF001A.html",
+      "sha256": "54b4e3903173b30bc560e61c9b31a6949edb0ee72648fe63a98f61e78c17390a"
+    },
+    {
+      "bytes": 32304,
+      "path": "gaussian-factorization/explorer/defined/tag/GF001B.html",
+      "sha256": "957c388154a5b5cd0ad22a7a1f4a6faf5ce897bb66378c636895d7d1c0cc3a6a"
+    },
+    {
+      "bytes": 32776,
+      "path": "gaussian-factorization/explorer/defined/tag/GF001C.html",
+      "sha256": "d80a6ff1b01ccdf33f811523cf5d843aa94f3b4b4b4b3a5ff552466da07b994a"
+    },
+    {
+      "bytes": 17364,
+      "path": "gaussian-factorization/explorer/defined/tag/GF001D.html",
+      "sha256": "f708a3d20a6135f08f1d10bfd5d70432c266a59a01d5112f762b8bdf8c5265e4"
+    },
+    {
+      "bytes": 17943,
+      "path": "gaussian-factorization/explorer/defined/tag/GF001E.html",
+      "sha256": "a4100c549e6f45d557cd3ba556b762da230cabf0b14cbf097b0105c3fd21d4f6"
+    },
+    {
+      "bytes": 25242,
+      "path": "gaussian-factorization/explorer/defined/tag/GF001F.html",
+      "sha256": "0ac168922ac58bd0c7d560df36ce9086edc4abb36e6306c5077ecd2f3d0ed139"
+    },
+    {
+      "bytes": 17629,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0020.html",
+      "sha256": "0a772f268bcf9d78a8fa770bd4b2be2ca7dc24e088629ae381f54729fd2ca414"
+    },
+    {
+      "bytes": 9122,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0021.html",
+      "sha256": "cf51d808d0b88d062c85538a0843909ce3cb91674f122e6d0594f1cd8bbf0217"
+    },
+    {
+      "bytes": 9328,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0022.html",
+      "sha256": "4be91a629d79e50ede1daa4c5c4a08965696bc610ead93449a9c6014d50223fb"
+    },
+    {
+      "bytes": 12441,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0023.html",
+      "sha256": "94d18b853188450cb10e8432a7f9fe0ca20dff10794e994e72b502b33b5fe347"
+    },
+    {
+      "bytes": 60075,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0024.html",
+      "sha256": "75644e2a08efdd4335bb3d2365ba642129007721aa97686452797e42abd68d9a"
+    },
+    {
+      "bytes": 71039,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0025.html",
+      "sha256": "d7858ed7903bcccb45d39cf8e6251ab2fa5095e0558248cf0e463df25d41afca"
+    },
+    {
+      "bytes": 21702,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0026.html",
+      "sha256": "ace54f718cc2bc022d3451f841b20b24edb81769ef9148bc4b03428b4254c82a"
+    },
+    {
+      "bytes": 16697,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0027.html",
+      "sha256": "2181957d125663aff763553a0381235fab634a41551ab7069a9da81221e16739"
+    },
+    {
+      "bytes": 23695,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0028.html",
+      "sha256": "92a7d319bb048c8a940e02ccc201d90a3c509260b2704cc9f47e3d87a487a3fd"
+    },
+    {
+      "bytes": 18286,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0029.html",
+      "sha256": "02ac3aee13b730b2791620fd04ec81f4cc228e9ab95e27cc7e773458db8321ff"
+    },
+    {
+      "bytes": 23831,
+      "path": "gaussian-factorization/explorer/defined/tag/GF002A.html",
+      "sha256": "b359dfd7a278c808e499a735e775b659638037c72d36c41b084507a2ef884778"
+    },
+    {
+      "bytes": 18472,
+      "path": "gaussian-factorization/explorer/defined/tag/GF002B.html",
+      "sha256": "bd752f91f6cc5d47e98fb6d43731eb77646df20fcbacf2f2fd832720cd5dd5d5"
+    },
+    {
+      "bytes": 30669,
+      "path": "gaussian-factorization/explorer/defined/tag/GF002C.html",
+      "sha256": "29d0d97e969d6fde8236bad351d1fa3005e93f3aea5d09a4c1f1861cd942b303"
+    },
+    {
+      "bytes": 41073,
+      "path": "gaussian-factorization/explorer/defined/tag/GF002D.html",
+      "sha256": "fbd7200918f35a976f98853cd34e078c1528ff4b7db3fb7546b159c3ecab0a67"
+    },
+    {
+      "bytes": 20946,
+      "path": "gaussian-factorization/explorer/defined/tag/GF002E.html",
+      "sha256": "e4d9c7157fdb9c704080dfe00f79d32c036609dbce05ce9bfd0b3ee75a033608"
+    },
+    {
+      "bytes": 24153,
+      "path": "gaussian-factorization/explorer/defined/tag/GF002F.html",
+      "sha256": "80ae7e4036175be50f40648140b848ef18745d5d4d3cec4f8352f19009e597de"
+    },
+    {
+      "bytes": 48894,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0030.html",
+      "sha256": "d6ed148ada6f9bb968c93f24583fe36ce29cba9914334c4994f2234879e824b3"
+    },
+    {
+      "bytes": 43977,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0031.html",
+      "sha256": "0a30863ad50bd2e940e174ec0b9213c43c055140e6befea231321230b542fde3"
+    },
+    {
+      "bytes": 14103,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0032.html",
+      "sha256": "ca3cf4d052a1a8c1201b4a6e94d78bacd2263cbad6f8487b8d3473626bf9f67f"
+    },
+    {
+      "bytes": 14103,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0033.html",
+      "sha256": "32f6a217cd0b9b36ef45f5010312bd579400695195f7e0c0737e881d45c87ec5"
+    },
+    {
+      "bytes": 14118,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0034.html",
+      "sha256": "6f5806c74714f13abfc00d591217b4ada81f7fe2a1d10e70798e86689837221e"
+    },
+    {
+      "bytes": 14118,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0035.html",
+      "sha256": "b29e2a61bcd78d93a71a31736dd1dace5708d01a200c605660ebbe65e8f750c5"
+    },
+    {
+      "bytes": 12094,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0036.html",
+      "sha256": "5adfa7cdc71fad59a837ca58b799882985b6c091c253beac75de6b85b5fd5207"
+    },
+    {
+      "bytes": 76466,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0037.html",
+      "sha256": "0ab78dcbc60ed42cfdc0e0865082f8a4680e791a5f8f2893b4a8ea3b8083ddb6"
+    },
+    {
+      "bytes": 50712,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0038.html",
+      "sha256": "945d15c473f72fe1c75089cd747e87f70f3d4be74c8a5122bd60c51d4bb66bb4"
+    },
+    {
+      "bytes": 51938,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0039.html",
+      "sha256": "5a1c31176f85c4efbc0df1f9bf029816d1d2dffd705e8174b1f2bdd20942e2de"
+    },
+    {
+      "bytes": 24998,
+      "path": "gaussian-factorization/explorer/defined/tag/GF003A.html",
+      "sha256": "d29606717fe6df98f26a636367e177bd5c4f2b626e58f86861ae609d1303f939"
+    },
+    {
+      "bytes": 42274,
+      "path": "gaussian-factorization/explorer/defined/tag/GF003B.html",
+      "sha256": "2ec17091f8aa0a4587d138b2fae48d429b169c3235b8767b2c5a07257fb56257"
+    },
+    {
+      "bytes": 29673,
+      "path": "gaussian-factorization/explorer/defined/tag/GF003C.html",
+      "sha256": "5f8874b2eca2e78efdd178d252107d8025546fc2e91949643028c76fa40c7876"
+    },
+    {
+      "bytes": 15383,
+      "path": "gaussian-factorization/explorer/defined/tag/GF003D.html",
+      "sha256": "5c9298a3051aae6188df1f1deedc62f7512dd985c97176a025b7360513faa8dc"
+    },
+    {
+      "bytes": 41527,
+      "path": "gaussian-factorization/explorer/defined/tag/GF003E.html",
+      "sha256": "f33caa895f9bd7cd1f609f3d269b32cad60b46fbc0ba0eb708404cd35afd625b"
+    },
+    {
+      "bytes": 46899,
+      "path": "gaussian-factorization/explorer/defined/tag/GF003F.html",
+      "sha256": "80eeb963a97f542d856f805d3fdf8b21cda67dc5a94b3605e567421c01628eba"
+    },
+    {
+      "bytes": 39366,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0040.html",
+      "sha256": "ec81567540a24ec8b1eac8e837168ad4b64552cc10fabcf8ffb07fdd16c729c3"
+    },
+    {
+      "bytes": 38017,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0041.html",
+      "sha256": "9871f8dd92c2c3e22869049df7a0bee284adc64f1d947935505002c48834830d"
+    },
+    {
+      "bytes": 18410,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0042.html",
+      "sha256": "3005fcccf6c8b81ddeff44cc4446bb4cc7bfd912a1007e988ce1831a899d06d1"
+    },
+    {
+      "bytes": 18566,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0043.html",
+      "sha256": "48a50a157315b3b80626fe6be0c8a13f43e434d40be2fbdf4d0a75743374f818"
+    },
+    {
+      "bytes": 18519,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0044.html",
+      "sha256": "cfae7150e158cbac00d78d1adcab112d1e30e46c0d08e2da6fafa336e0afe054"
+    },
+    {
+      "bytes": 17667,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0045.html",
+      "sha256": "bca65faf06034693008c68cfc2ae2d96ed33c651b6c35108069e199c6ef887ea"
+    },
+    {
+      "bytes": 17471,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0046.html",
+      "sha256": "c7c3c3a3b852136a8735093d5bebba27d6328f849b83dd8f64dc560e55445d2e"
+    },
+    {
+      "bytes": 18059,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0047.html",
+      "sha256": "12fee78e0fc1ea6bfed0b6f84425fa6619aea9ce52dd33dcea132e9daebe0885"
+    },
+    {
+      "bytes": 39845,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0048.html",
+      "sha256": "3799642ab5e97984f65bff7866dca010a5cb70b6e67ac8adfdb4a97dd7fb9899"
+    },
+    {
+      "bytes": 34021,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0049.html",
+      "sha256": "7e21b5144b98614c398c8ac79bbd2cfa6eb20d4fda9b59bfb24dcd8e287af8b8"
+    },
+    {
+      "bytes": 37826,
+      "path": "gaussian-factorization/explorer/defined/tag/GF004A.html",
+      "sha256": "24f534a4e5af6df5466c98eb0de4ff5c0c4ebe80d38fbd913918eb9d51322bc0"
+    },
+    {
+      "bytes": 45645,
+      "path": "gaussian-factorization/explorer/defined/tag/GF004B.html",
+      "sha256": "5ff48c616154cec819c6a6234d2d101de3a0713da3cc8a2980b2a861e7a8e158"
+    },
+    {
+      "bytes": 56872,
+      "path": "gaussian-factorization/explorer/defined/tag/GF004C.html",
+      "sha256": "f85c89600927cbc1dfdfc00f91ab8eb01662a76d7c592ce0f39c25bd8fc35ac9"
+    },
+    {
+      "bytes": 27365,
+      "path": "gaussian-factorization/explorer/defined/tag/GF004D.html",
+      "sha256": "3ad1f427536b3a06ba74de28c4c31dfc2f4193d7b251950d655739b9a2c569f9"
+    },
+    {
+      "bytes": 35753,
+      "path": "gaussian-factorization/explorer/defined/tag/GF004E.html",
+      "sha256": "9df3a54dbb001de99da435c210ea372c517dbb7c038b38ea27cbf572687312e5"
+    },
+    {
+      "bytes": 58594,
+      "path": "gaussian-factorization/explorer/defined/tag/GF004F.html",
+      "sha256": "8af545545b86693c528532f09b4a3dcd5cf4f7500c5c906aac02ccac535c3f3e"
+    },
+    {
+      "bytes": 60161,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0050.html",
+      "sha256": "b2e3f2c76d2dc90cda5002beeb874c3e85997ddc4a594c12ca283897ec54a379"
+    },
+    {
+      "bytes": 40473,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0051.html",
+      "sha256": "c4f25c8504d8f7519f3807cc73cdcb366cc75d0644fb3e40d1b84bc7324cf383"
+    },
+    {
+      "bytes": 52737,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0052.html",
+      "sha256": "708594b6d5c0fb98b8e9eeafece605ebfd1646894dbbcce2cb6e4e2c83fe3447"
+    },
+    {
+      "bytes": 39767,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0053.html",
+      "sha256": "3869845086957802461159e076e24141a934c8fe24114c4811c463b1389b94f5"
+    },
+    {
+      "bytes": 27937,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0054.html",
+      "sha256": "5c03e11ca10c7478719d90aa79e6e86cc1b96868b20a765ff2c643fa7ac8fb47"
+    },
+    {
+      "bytes": 50931,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0055.html",
+      "sha256": "7a80ab0edde49d0a9310084d465aca3c2602d40365eabba1ae4ccdcc1121fd62"
+    },
+    {
+      "bytes": 70414,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0056.html",
+      "sha256": "203348fd6e391ae73a5b99229c322ef750c85b9b2885dfbdebd059fffe1bede4"
+    },
+    {
+      "bytes": 47549,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0057.html",
+      "sha256": "effd6936e6f5d5270763cf998940d06ad93319d524db64677e0ea4f5df19471c"
+    },
+    {
+      "bytes": 36929,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0058.html",
+      "sha256": "de82ed3ee494607120d8d65b60ebfd2ebf6a0da316ec1fcc86381477c6aef155"
+    },
+    {
+      "bytes": 38354,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0059.html",
+      "sha256": "629c7eca7e27fc0b86cca6505b52aab70a0e740940eb132d6c199020e04eef07"
+    },
+    {
+      "bytes": 58435,
+      "path": "gaussian-factorization/explorer/defined/tag/GF005A.html",
+      "sha256": "93188de7d65a4b2de11c5124c81d72d7cbad89d559db4cb78ea557ecde10064f"
+    },
+    {
+      "bytes": 41343,
+      "path": "gaussian-factorization/explorer/defined/tag/GF005B.html",
+      "sha256": "3e49d9d85be1a4678d46424c3651a98169aa8a039562059ac67212694e491be3"
+    },
+    {
+      "bytes": 29968,
+      "path": "gaussian-factorization/explorer/defined/tag/GF005C.html",
+      "sha256": "bf1fc01a74fc072fd034f67cd623025023dd39328e2e39111b59382cdd5b777b"
+    },
+    {
+      "bytes": 98482,
+      "path": "gaussian-factorization/explorer/defined/tag/GF005D.html",
+      "sha256": "5dd05c58fe1cbef412e33e80103f36505555ebdb84e9acc01121c446f0324561"
+    },
+    {
+      "bytes": 125435,
+      "path": "gaussian-factorization/explorer/defined/tag/GF005E.html",
+      "sha256": "1af4362e15ee02c030f2c13de93852edc7151568a6fc416f80a2206ab0794f0a"
+    },
+    {
+      "bytes": 79974,
+      "path": "gaussian-factorization/explorer/defined/tag/GF005F.html",
+      "sha256": "6fd0a769be727fe2d63a18182eef0f5964632ee38472d98ff58dfa1b69985b8a"
+    },
+    {
+      "bytes": 92320,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0060.html",
+      "sha256": "6e8e18dfca4b9e8f97bc6c0dc0ea3c12c8f509f0cc34e1e23305b4d63e868978"
+    },
+    {
+      "bytes": 68658,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0061.html",
+      "sha256": "36bc48de6935f2cc373b5b883d3b8689cbf1084cbf5b55faeb2bbaae19567489"
+    },
+    {
+      "bytes": 126620,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0062.html",
+      "sha256": "d8c4f1c6d10897f34bf2fc2bb4eb5b1db49da2c0e98c4c7f34a384d241ce2969"
+    },
+    {
+      "bytes": 102764,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0063.html",
+      "sha256": "8aeb1cc11e0eb88c1c4003f21823ac5e1647c0485b4e3726975d5141a66317ed"
+    },
+    {
+      "bytes": 117634,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0064.html",
+      "sha256": "1af8d6cd4ec78055b68a9f7221c10723e0f1b2b0692a2faa4401e47ce14fd8fc"
+    },
+    {
+      "bytes": 94829,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0065.html",
+      "sha256": "da8bb79a86311213a543c8902b02304d286c5b72178c2cbad29cd3e5a3868853"
+    },
+    {
+      "bytes": 130279,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0066.html",
+      "sha256": "1350f5f60ce2515ca5181b17d15d988e63130ebe7c709d77b9804034319fd70f"
+    },
+    {
+      "bytes": 93865,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0067.html",
+      "sha256": "19677b1f25e02733934886f23d84cb85d2446a9f0b4e3ae3bb5924b643622a06"
+    },
+    {
+      "bytes": 45398,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0068.html",
+      "sha256": "f2a04f9961c9b4c53e43699ebaca61ed1605d67658666e4a85b3ea62e0f8cf80"
+    },
+    {
+      "bytes": 94929,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0069.html",
+      "sha256": "cff0c458393970b06be249442b92e474a494b875bb7465c02d1c76adbf6a3733"
+    },
+    {
+      "bytes": 117119,
+      "path": "gaussian-factorization/explorer/defined/tag/GF006A.html",
+      "sha256": "24cb0d4b88ced694d0d1f0bce74c05c874ceef7ed7bd2b405dd32fc2109d82a5"
+    },
+    {
+      "bytes": 120448,
+      "path": "gaussian-factorization/explorer/defined/tag/GF006B.html",
+      "sha256": "31e30317ee914174cc895bfd259f73175b27dd669d566e2d3412c9b9cd11eec0"
+    },
+    {
+      "bytes": 203739,
+      "path": "gaussian-factorization/explorer/defined/tag/GF006C.html",
+      "sha256": "69383d4d40ce9aadb169cdcf8d91434e50301d4bf35081c83df6e849d7705d3d"
+    },
+    {
+      "bytes": 8713,
+      "path": "gaussian-factorization/explorer/defined/tag/GF006D.html",
+      "sha256": "e53a890883a88db7440de893751db829ab3f08251bc4259e4da283427247984c"
+    },
+    {
+      "bytes": 17021,
+      "path": "gaussian-factorization/explorer/defined/tag/GF006E.html",
+      "sha256": "5f798094e432adf110aa03f48a9064685a8c6cd03f79d4881b840f503b612bd0"
+    },
+    {
+      "bytes": 11911,
+      "path": "gaussian-factorization/explorer/defined/tag/GF006F.html",
+      "sha256": "9c2edbcee14960a7efee79d48dbddbe17dbd5cd9401a830b163ce530d21086e3"
+    },
+    {
+      "bytes": 22740,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0070.html",
+      "sha256": "1d1f01fe68df057e89b8ff88369ab0cba870a8c3c3a39d6733c78990c8609431"
+    },
+    {
+      "bytes": 8146,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0071.html",
+      "sha256": "049bf0c72589e856acee91637dfd7713ede5652a139990f2913487584f8255db"
+    },
+    {
+      "bytes": 10126,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0072.html",
+      "sha256": "00ccaa4dba93ecca1a55dca385ced266c16a5c6697043c89038b82351f388958"
+    },
+    {
+      "bytes": 53567,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0073.html",
+      "sha256": "c54cca8bb466d0ab6127ff9ca6eec92de532c9af70d3d558204ff29a00441587"
+    },
+    {
+      "bytes": 70679,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0074.html",
+      "sha256": "6585417b157a748a83a7103195486375b8488b7cd6934c4fa5fa162788cff283"
+    },
+    {
+      "bytes": 68952,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0075.html",
+      "sha256": "79977ce83354e7a484a3dfa069102ebc2b12306defcd01ac78237771fde2a181"
+    },
+    {
+      "bytes": 76999,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0076.html",
+      "sha256": "ed31ef51d8afca45d4e0cf9243baf4b5ac404e68f27e812928b7f8bd0f60ba53"
+    },
+    {
+      "bytes": 13062,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0077.html",
+      "sha256": "1ddc6d7f66bc0f5751a24ffd0fa60d0f41bfe6b91975a811d642945a05c5787c"
+    },
+    {
+      "bytes": 74292,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0078.html",
+      "sha256": "0ea45d9cdd3b3e8978ab6fa66a323c43af0e2e77973098f396eb433c42a2d0bb"
+    },
+    {
+      "bytes": 22621,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0079.html",
+      "sha256": "b48f7df7fc618eb1a341a382a5845bddd9dd855272a60a1ece83323b5cd621a6"
+    },
+    {
+      "bytes": 42262,
+      "path": "gaussian-factorization/explorer/defined/tag/GF007A.html",
+      "sha256": "2ae69d580a87f23910d4120bc3ff7be5162f4c69014ca90250e88f3f539dba22"
+    },
+    {
+      "bytes": 76579,
+      "path": "gaussian-factorization/explorer/defined/tag/GF007B.html",
+      "sha256": "4f7929b7091a93001ee6d31195064dd668c370a3a14be10f3543490e007ec278"
+    },
+    {
+      "bytes": 17041,
+      "path": "gaussian-factorization/explorer/defined/tag/GF007C.html",
+      "sha256": "c8632e0e29ee034a7bea0f8bde9be89ff7b45b8cdff3ab37277cbca2128cd470"
+    },
+    {
+      "bytes": 92262,
+      "path": "gaussian-factorization/explorer/defined/tag/GF007D.html",
+      "sha256": "49f14e0238d14ef42a799ae324e02610a4929ac81121473c4845822760b797ce"
+    },
+    {
+      "bytes": 128424,
+      "path": "gaussian-factorization/explorer/defined/tag/GF007E.html",
+      "sha256": "b4b42731ad5ef2998c794ed7e764f70f5aabc5acdf972dbff7d15276f5428e77"
+    },
+    {
+      "bytes": 114331,
+      "path": "gaussian-factorization/explorer/defined/tag/GF007F.html",
+      "sha256": "82dd296dc810421dca8bce0532b466e3ca26ea5f57ca197aa5744b4d4ba0968b"
+    },
+    {
+      "bytes": 98578,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0080.html",
+      "sha256": "34ea78aa2c32bbe69c890e6d4443495462973f83f47edbfe18f6d05621e0a907"
+    },
+    {
+      "bytes": 84495,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0081.html",
+      "sha256": "6c7203d9122ca93754ac879a89cef9e5a728713d582aa33ee954dd1335cdddae"
+    },
+    {
+      "bytes": 56131,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0082.html",
+      "sha256": "042bb00d0c785691bca3a4624031e76639fed49752f3655896ad3ddc95e92aff"
+    },
+    {
+      "bytes": 86910,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0083.html",
+      "sha256": "8736274aff8e50c324bbfdb58554d6f425ac3df9ef1935642bc95a7fb964e8ee"
+    },
+    {
+      "bytes": 8787,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0084.html",
+      "sha256": "a6fed18a037baa664148784d844852685ca32183d61906af52f6a989017174f4"
+    },
+    {
+      "bytes": 8773,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0085.html",
+      "sha256": "a953fbd9ca8ebb83756d2fb490f08c497e77c467418829e6c5d9c03bf3736d2d"
+    },
+    {
+      "bytes": 21312,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0086.html",
+      "sha256": "b5ed0d03ca298b24ed6a93c2be0d0f60be6fcc8c984821fa03f3bdf19d2bcec4"
+    },
+    {
+      "bytes": 21848,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0087.html",
+      "sha256": "483e6983a2c300f1c9973511a7f4c1ecea01a297e39e4de175ebba10b3cd5458"
+    },
+    {
+      "bytes": 37279,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0088.html",
+      "sha256": "c85a7c5ac3970d590e206b1037460ad382c9e160e94469f18383f60578deb8a4"
+    },
+    {
+      "bytes": 48975,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0089.html",
+      "sha256": "059d370031914d9f8b0b34bcadf465e822f6d0f68e9fa24437b2fac29f347aca"
+    },
+    {
+      "bytes": 61268,
+      "path": "gaussian-factorization/explorer/defined/tag/GF008A.html",
+      "sha256": "5fc60d5b6a463be9cc09faad96865823ddadeaf83e58368f2c87344af5b9f2ab"
+    },
+    {
+      "bytes": 35133,
+      "path": "gaussian-factorization/explorer/defined/tag/GF008B.html",
+      "sha256": "99c10f05b184ef579b60afb6bac0cf20fd568a2c100e74c69b3c14834bf347ab"
+    },
+    {
+      "bytes": 35684,
+      "path": "gaussian-factorization/explorer/defined/tag/GF008C.html",
+      "sha256": "2743efd138a05347838cd082818d0219216cb5d2646766056909cee2b8e16127"
+    },
+    {
+      "bytes": 44451,
+      "path": "gaussian-factorization/explorer/defined/tag/GF008D.html",
+      "sha256": "c0c47ee04bdb8eea3941476facd61a59ae3d7960832380711a15a9f0115d13c8"
+    },
+    {
+      "bytes": 27776,
+      "path": "gaussian-factorization/explorer/defined/tag/GF008E.html",
+      "sha256": "6910062ca8a8d8bec7fe666ac9f39c4105257a474067f191d9883ef587a92741"
+    },
+    {
+      "bytes": 108208,
+      "path": "gaussian-factorization/explorer/defined/tag/GF008F.html",
+      "sha256": "bd32b83a2b5c12321655b461b3f7b4bb77b812644af0665b6df7ec32b83b303b"
+    },
+    {
+      "bytes": 110993,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0090.html",
+      "sha256": "3edc0d84e5bc597d3743187c329049f399e45dc5e09c19ba38a7283f717433d3"
+    },
+    {
+      "bytes": 176875,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0091.html",
+      "sha256": "64ddaa81b34825d75c8fdfc46092ed12c472b23451386716c4009bb2a0f6a959"
+    },
+    {
+      "bytes": 112814,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0092.html",
+      "sha256": "78a2d27996f9b7ea6f71f1220ff70df8b182de82c7ebc4384f8ae196360da962"
+    },
+    {
+      "bytes": 256781,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0093.html",
+      "sha256": "a3a6463fb7c1c3408066fea5ac063697eaf4fb252c40e7da0279b64bd5a15aff"
+    },
+    {
+      "bytes": 122414,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0094.html",
+      "sha256": "94e0e84bdee1d4ee00f18ce418b8144776dd06bb1206be59c73c6f23dd4af0f3"
+    },
+    {
+      "bytes": 105801,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0095.html",
+      "sha256": "7e7eef38b6e0ce5ff094287af39933f03b0f920ae950b9b5f21b8becfd6e57a9"
+    },
+    {
+      "bytes": 224067,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0096.html",
+      "sha256": "8e1c694dac04a387eaef0a428478d8d7563c0ff332ada6c594a68497296894af"
+    },
+    {
+      "bytes": 223902,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0097.html",
+      "sha256": "1a43e17653798021df89cffa5a3222f7b81d8eaa7e16cce59aeb996856a0400a"
+    },
+    {
+      "bytes": 120082,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0098.html",
+      "sha256": "1ec7eef410ad0152ac80146171993eb11474234c90dd123d6ab100d9290374ed"
+    },
+    {
+      "bytes": 116046,
+      "path": "gaussian-factorization/explorer/defined/tag/GF0099.html",
+      "sha256": "45ca06872812705c87a0cb69c45a0c98613768d8442d83f65055dc2e6e92f45c"
+    },
+    {
+      "bytes": 91723,
+      "path": "gaussian-factorization/explorer/defined/tag/GF009A.html",
+      "sha256": "81a5a9caccaba6b93d7e0b401634c9bc96561e259db0bbef14d345f980bf65ea"
+    },
+    {
+      "bytes": 86312,
+      "path": "gaussian-factorization/explorer/defined/tag/GF009B.html",
+      "sha256": "9469890d033784fea5642672a5211e32232efd16e11f3c2055af72c9e13e35f6"
+    },
+    {
+      "bytes": 92718,
+      "path": "gaussian-factorization/explorer/defined/tag/GF009C.html",
+      "sha256": "eac78abc99eaa7d05b49caf9f6a98bbe370f8d71b09aedf705b8e3fe5811e341"
+    },
+    {
+      "bytes": 102596,
+      "path": "gaussian-factorization/explorer/defined/tag/GF009D.html",
+      "sha256": "5e97a503532d96518dc9b87323116813272ccde7cc5582dece087894af0e88a6"
+    },
+    {
+      "bytes": 106083,
+      "path": "gaussian-factorization/explorer/defined/tag/GF009E.html",
+      "sha256": "a403904287c92479f3498e7b58addf29e9d6e6f9770a0e9e3463b3cf4ecd9d49"
+    },
+    {
+      "bytes": 153597,
+      "path": "gaussian-factorization/explorer/defined/tag/GF009F.html",
+      "sha256": "b9dc8a3f2fa87291827a67ef58c64733265c6e44f0741f88c3fdd7ad75514f1f"
+    },
+    {
+      "bytes": 93627,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00A0.html",
+      "sha256": "8e25efb372b5b6ad90cfd45b81f12b65eced29d78b7a5bfe89161a2ac209f5e4"
+    },
+    {
+      "bytes": 87126,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00A1.html",
+      "sha256": "4dadc10acef0bbece9d59d4bd24a883e95cf54a6a085db84c41bf00f65c15cbf"
+    },
+    {
+      "bytes": 52860,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00A2.html",
+      "sha256": "f0bd6dcaf3a31e39760a3a4cd09bb90deea3cbc841cc5fb02301ab6654dc0b47"
+    },
+    {
+      "bytes": 48470,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00A3.html",
+      "sha256": "81abfd10ea8aa82a755899f344f91d7264c95eaa3249a5ff872c3eefc4778908"
+    },
+    {
+      "bytes": 48291,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00A4.html",
+      "sha256": "19ada1f99287fc968526756d8a8f4aff44c322664e359a45460780155d6ed244"
+    },
+    {
+      "bytes": 103568,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00A5.html",
+      "sha256": "b9cb27f3dd8ffc9578fdb66d8aa77e2165f4bae8f27a53f5172ff5832584d73a"
+    },
+    {
+      "bytes": 45822,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00A6.html",
+      "sha256": "16110d4b19cf4c29eff7176602a1d7c58d0cedd72a979d1dd04312666d662c1d"
+    },
+    {
+      "bytes": 41562,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00A7.html",
+      "sha256": "53b076e86cad5278c9c7d78ccc53397453f05bdc0c219ced702b58c3c5d01a5b"
+    },
+    {
+      "bytes": 97480,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00A8.html",
+      "sha256": "49868b5df19c8bec4e649e9266febd8451106598c67588ad965da3d7b7dbd8c9"
+    },
+    {
+      "bytes": 97992,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00A9.html",
+      "sha256": "1f216d276654c5ab304293335d04014e09d8324d27ecebb8c6202ac4f33b530a"
+    },
+    {
+      "bytes": 131923,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00AA.html",
+      "sha256": "4aa76de2c3f47156562f69afc84e2057488728ee5289e99930237367c2db9d9d"
+    },
+    {
+      "bytes": 105278,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00AB.html",
+      "sha256": "a8f22a8c153c0fd2e7a5939d3bce8993a5c3a14a6a1c07131d98e9bb16be5f7c"
+    },
+    {
+      "bytes": 116797,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00AC.html",
+      "sha256": "0fce83b0ad0cbe9ba6c9654ea251f947b97c1b62a52f04f114360337c4c73046"
+    },
+    {
+      "bytes": 14553,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00AD.html",
+      "sha256": "b4db03d68bfe321ec6b9c72f0effda5a3fb38faa4b201b780c5c57dabce3fa25"
+    },
+    {
+      "bytes": 172460,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00AE.html",
+      "sha256": "a10fd5defa55e19dae531690bc49f51f020a8b87a2403043c82f8f6b5372869d"
+    },
+    {
+      "bytes": 267963,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00AF.html",
+      "sha256": "906c3b051b117e5c5cafbd2f3b7b78c1c491bc0d7cff74da74039d145be45c59"
+    },
+    {
+      "bytes": 258654,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00B0.html",
+      "sha256": "d106f01ea29cc9bd939be85a628f5ff752f1fc197340bcab673db2b62698c446"
+    },
+    {
+      "bytes": 283006,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00B1.html",
+      "sha256": "dfcf64f6e9020184e6d100ca87842b790accd692454d1184f3078d674b6ce047"
+    },
+    {
+      "bytes": 325765,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00B2.html",
+      "sha256": "fc533f3890396c743a572975a4f8d213ffc0e206c91c63b897810a74322e055e"
+    },
+    {
+      "bytes": 114990,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00B3.html",
+      "sha256": "3ebf608f76eddc6c5c33de225f8c5b4206473bf84407e369fe8acec074dafa63"
+    },
+    {
+      "bytes": 126498,
+      "path": "gaussian-factorization/explorer/defined/tag/GF00B4.html",
+      "sha256": "29c70395dd6d6c41531c2df4e6910fffe809dcdf7b88f7e5adb92d80b4795a2f"
+    },
+    {
+      "bytes": 168542,
+      "path": "gaussian-factorization/explorer/index.html",
+      "sha256": "e69a1238fece7f9e24b56b6fbcb56f1eda729d734212e8eb3f6d92a6d6371472"
+    },
+    {
+      "bytes": 15285,
+      "path": "gaussian-factorization/explorer/tag/GF0001.html",
+      "sha256": "e4efb5fbdc9623df2093c6de118466c8f9383675d2cfe490de039363fb8df846"
+    },
+    {
+      "bytes": 12622,
+      "path": "gaussian-factorization/explorer/tag/GF0002.html",
+      "sha256": "0ec096ebc1cf694fc889df47d7f38f6efe955799f1402edf74947543996bdfe9"
+    },
+    {
+      "bytes": 16057,
+      "path": "gaussian-factorization/explorer/tag/GF0003.html",
+      "sha256": "6d1b889d0b01adfd865046336dace11619f3e254bc85b29a647a4c8697e2123b"
+    },
+    {
+      "bytes": 21997,
+      "path": "gaussian-factorization/explorer/tag/GF0004.html",
+      "sha256": "3c7bfed387b9a0d0db7aeeb05de84926eeee8d9b9e9fdbdc7c06d91ce58c54db"
+    },
+    {
+      "bytes": 21813,
+      "path": "gaussian-factorization/explorer/tag/GF0005.html",
+      "sha256": "4aa3f7ffea489caec81ad85eb00057ee27939cdf3c0b5dd47eb5de3a8d0efa14"
+    },
+    {
+      "bytes": 20968,
+      "path": "gaussian-factorization/explorer/tag/GF0006.html",
+      "sha256": "c0d6842f913ee361785859a2d8866d2bfa32193359fbe5fa8d32474fc3437a11"
+    },
+    {
+      "bytes": 25124,
+      "path": "gaussian-factorization/explorer/tag/GF0007.html",
+      "sha256": "5e4408c15270d40b3985ef4e5654aed9e435945fbf19aba99169c0d862e98d9d"
+    },
+    {
+      "bytes": 26133,
+      "path": "gaussian-factorization/explorer/tag/GF0008.html",
+      "sha256": "a0382f45123c30cd82f8bba40ac6b69c6b781f731e273f29cfb0687ace4e2a2f"
+    },
+    {
+      "bytes": 23976,
+      "path": "gaussian-factorization/explorer/tag/GF0009.html",
+      "sha256": "167517b391120ad51ec6ff8e445a101b7c54c5670cea1c46ab2ce834ab0dbf1b"
+    },
+    {
+      "bytes": 14043,
+      "path": "gaussian-factorization/explorer/tag/GF000A.html",
+      "sha256": "4f1d506a5378e865b78111f530d43576b2b9f687f7bf07ffe774334638058f7e"
+    },
+    {
+      "bytes": 12705,
+      "path": "gaussian-factorization/explorer/tag/GF000B.html",
+      "sha256": "a3e461b9f4c9b95bb79e831627c5a1cde0a2f4b8801f838876ce9e574a0309f9"
+    },
+    {
+      "bytes": 10780,
+      "path": "gaussian-factorization/explorer/tag/GF000C.html",
+      "sha256": "1231cfa31a15b93273184e3fb14d61dba04318e1be34156cfc1c4040442e9353"
+    },
+    {
+      "bytes": 14394,
+      "path": "gaussian-factorization/explorer/tag/GF000D.html",
+      "sha256": "ffe0329be0c48f93866f39d5e87dab70ffc0375a11bbcc20684de740e67a516d"
+    },
+    {
+      "bytes": 12647,
+      "path": "gaussian-factorization/explorer/tag/GF000E.html",
+      "sha256": "f86840ad1d03d807dcfddbd7a6871e37fd95d4fe980d4ba8212ea833d36b022b"
+    },
+    {
+      "bytes": 10609,
+      "path": "gaussian-factorization/explorer/tag/GF000F.html",
+      "sha256": "ba6115f6d9e6ce8d56fa358a3ce192bb6440840010445d1f0304d2b816482534"
+    },
+    {
+      "bytes": 14192,
+      "path": "gaussian-factorization/explorer/tag/GF0010.html",
+      "sha256": "bbf7be3259bb8535b7bedf7a87ef5009bda38dfc50adf64a3271def85e32ef2d"
+    },
+    {
+      "bytes": 9679,
+      "path": "gaussian-factorization/explorer/tag/GF0011.html",
+      "sha256": "f9321f193ad3ddc989ab24ec7f6ed1dccae5edcc51cf0c7a3aa2877f219872ec"
+    },
+    {
+      "bytes": 37214,
+      "path": "gaussian-factorization/explorer/tag/GF0012.html",
+      "sha256": "c8f0fcd9bbf42299fbfb71e2326ef09a482970be69c03d971734aeb31c9a2dad"
+    },
+    {
+      "bytes": 10519,
+      "path": "gaussian-factorization/explorer/tag/GF0013.html",
+      "sha256": "18c9ed83f2cec211e29bc7baed6d3355e2f941ea35bdbe3fdd997f93ceddf7d7"
+    },
+    {
+      "bytes": 42987,
+      "path": "gaussian-factorization/explorer/tag/GF0014.html",
+      "sha256": "179c54598f3bd9153faa07f5b229acf47ee442ebfc7f9175ec7b9d1cb5224a81"
+    },
+    {
+      "bytes": 15953,
+      "path": "gaussian-factorization/explorer/tag/GF0015.html",
+      "sha256": "0c06b28f4a5baf77f14c29bf46cd2b5b17663c97ed3c6854e1c626e0fcce57e3"
+    },
+    {
+      "bytes": 19158,
+      "path": "gaussian-factorization/explorer/tag/GF0016.html",
+      "sha256": "83e58830cfd6128d389b873d99db07411eb14e77c932565843244bad054d2178"
+    },
+    {
+      "bytes": 14786,
+      "path": "gaussian-factorization/explorer/tag/GF0017.html",
+      "sha256": "f7a4df28808b4c856bf52043502af4cffbc0adcaa7fffbba0b33ddd606006467"
+    },
+    {
+      "bytes": 13299,
+      "path": "gaussian-factorization/explorer/tag/GF0018.html",
+      "sha256": "a54e729c78e9576b7deff5fb97ca7196ff6178a1031dd55b74c7f59382a66a1a"
+    },
+    {
+      "bytes": 40847,
+      "path": "gaussian-factorization/explorer/tag/GF0019.html",
+      "sha256": "ac3753885071ebaef17c73e1c600786f16ea80863cb243addab3de5edcd8b879"
+    },
+    {
+      "bytes": 43711,
+      "path": "gaussian-factorization/explorer/tag/GF001A.html",
+      "sha256": "d70e18413de3b8b5e971b22577603296073801f07a53eb16bfcbeb351397344d"
+    },
+    {
+      "bytes": 34478,
+      "path": "gaussian-factorization/explorer/tag/GF001B.html",
+      "sha256": "e3e64ca94a6708d32413a1fd4170ea518f15e15dc8513796c80c7c6bc33cca32"
+    },
+    {
+      "bytes": 40281,
+      "path": "gaussian-factorization/explorer/tag/GF001C.html",
+      "sha256": "76a8b9fc3a1b7a88fb7addb7f70064bc3988eedda92ac8c3f7d401964e1ecfed"
+    },
+    {
+      "bytes": 18678,
+      "path": "gaussian-factorization/explorer/tag/GF001D.html",
+      "sha256": "fa4f21efec5a9d0b1a773d4b4f4de7598a58edcadad052e6b1635921ea12b7d8"
+    },
+    {
+      "bytes": 18858,
+      "path": "gaussian-factorization/explorer/tag/GF001E.html",
+      "sha256": "91b33fd8613c8e6123e0ba8f92c4ff1d989d01e4739bbebdf5b110dfe9f6d222"
+    },
+    {
+      "bytes": 39767,
+      "path": "gaussian-factorization/explorer/tag/GF001F.html",
+      "sha256": "714ccd3754b32d08a11d6cbca77fcb5b13a789a3d813e3d6151082127627a828"
+    },
+    {
+      "bytes": 23056,
+      "path": "gaussian-factorization/explorer/tag/GF0020.html",
+      "sha256": "321e9e0eb66ef83a24f1e0a0bc6841775d3824e9aff757fc3330da8b1f578b9d"
+    },
+    {
+      "bytes": 10748,
+      "path": "gaussian-factorization/explorer/tag/GF0021.html",
+      "sha256": "72df712e39a556624d63355e81e5ef4a2bee1ba205732eb532bfd73405619e29"
+    },
+    {
+      "bytes": 11845,
+      "path": "gaussian-factorization/explorer/tag/GF0022.html",
+      "sha256": "169e1da98471707960701f9ab3a69492ad69c88427e69d4e4ee71e6ee72e016d"
+    },
+    {
+      "bytes": 15743,
+      "path": "gaussian-factorization/explorer/tag/GF0023.html",
+      "sha256": "b0c90c1d8395d05a72f0c16e06576583a27c73a59897803c6688f6412e7a024f"
+    },
+    {
+      "bytes": 85996,
+      "path": "gaussian-factorization/explorer/tag/GF0024.html",
+      "sha256": "c2345aa0fa6177ec00accbd0b12d774d8b33475023e04604692c235cf1e74068"
+    },
+    {
+      "bytes": 99927,
+      "path": "gaussian-factorization/explorer/tag/GF0025.html",
+      "sha256": "42b44b3c6ac94a485f5e30274f18472629618cd1bc984719f6eba4f6ef76ee43"
+    },
+    {
+      "bytes": 28259,
+      "path": "gaussian-factorization/explorer/tag/GF0026.html",
+      "sha256": "f46766c76205ea6b14c9ffd4b66a4b822d903da93bae8b3b63055a19522ab3a5"
+    },
+    {
+      "bytes": 17352,
+      "path": "gaussian-factorization/explorer/tag/GF0027.html",
+      "sha256": "c31e4a11a17854051b09b42e109491e5c1192177840bb6d4059dd2a707366723"
+    },
+    {
+      "bytes": 30901,
+      "path": "gaussian-factorization/explorer/tag/GF0028.html",
+      "sha256": "57afebb234b15d98f862ef923154d980ad05182d6889633fc47ac6599af24a53"
+    },
+    {
+      "bytes": 19418,
+      "path": "gaussian-factorization/explorer/tag/GF0029.html",
+      "sha256": "797b0cdaaa293f2d9b9eacd6b31ed961bfaede97cf31d0bbcad306aa6a55665e"
+    },
+    {
+      "bytes": 30504,
+      "path": "gaussian-factorization/explorer/tag/GF002A.html",
+      "sha256": "96e5fbaa7ebdfa80746085571145a5644a90f23162b1f3c1efa4c3e123add02a"
+    },
+    {
+      "bytes": 19144,
+      "path": "gaussian-factorization/explorer/tag/GF002B.html",
+      "sha256": "975b2c52dfd14bee7a3033699dc488a874d4871a0e83a7d40558f8946900fd83"
+    },
+    {
+      "bytes": 45472,
+      "path": "gaussian-factorization/explorer/tag/GF002C.html",
+      "sha256": "a3775b06bbcf6eac6a22dcdf6075e782e2015492ede968313c18cc9542e630ec"
+    },
+    {
+      "bytes": 62476,
+      "path": "gaussian-factorization/explorer/tag/GF002D.html",
+      "sha256": "e3dd84ad1d984f1413713c52857595fbc6ddb0ee0eea963a04832a4813add38f"
+    },
+    {
+      "bytes": 21493,
+      "path": "gaussian-factorization/explorer/tag/GF002E.html",
+      "sha256": "df54b9bdd3712da15a95db5b32fa34314671703052b37c8869ac2f10ef73ffe8"
+    },
+    {
+      "bytes": 25461,
+      "path": "gaussian-factorization/explorer/tag/GF002F.html",
+      "sha256": "48e6c0a788b8902338f0c56cfd264e14fdcf56d86e876de2e04cea54293a10c2"
+    },
+    {
+      "bytes": 63057,
+      "path": "gaussian-factorization/explorer/tag/GF0030.html",
+      "sha256": "7424804f372bd8218c6ce851511ea880541cc10cc9dc770cc9a35783e4c24d29"
+    },
+    {
+      "bytes": 62414,
+      "path": "gaussian-factorization/explorer/tag/GF0031.html",
+      "sha256": "49ae84a194070aebba0785e4de47d10ea248a4d1c51dd437cc6894e8b42f1b7a"
+    },
+    {
+      "bytes": 19560,
+      "path": "gaussian-factorization/explorer/tag/GF0032.html",
+      "sha256": "b9deca8f7422d3edfc156ba23c248ff6160a4ff867acf457e6356aacab7432db"
+    },
+    {
+      "bytes": 19578,
+      "path": "gaussian-factorization/explorer/tag/GF0033.html",
+      "sha256": "db1a70cf6e72ad04bffb9befac37eebfe5e36443ee4d1f81035b52249c9e8dac"
+    },
+    {
+      "bytes": 19598,
+      "path": "gaussian-factorization/explorer/tag/GF0034.html",
+      "sha256": "79decffa4d50a8c6cceed26e8787874875cd11e07bd108b4f1781da9dda9c0a2"
+    },
+    {
+      "bytes": 19601,
+      "path": "gaussian-factorization/explorer/tag/GF0035.html",
+      "sha256": "30c6da439972f7a5d181e5a49d5555a96f7ce11baaf57ff31925f5c7f87b3727"
+    },
+    {
+      "bytes": 13798,
+      "path": "gaussian-factorization/explorer/tag/GF0036.html",
+      "sha256": "737cb8f41ebf14e13ed9ed80a529c3e2d1785eb5f3713e48f7e5e712aa6cae94"
+    },
+    {
+      "bytes": 107879,
+      "path": "gaussian-factorization/explorer/tag/GF0037.html",
+      "sha256": "4cadc9b5dbcbdebc3cce4bd0f047eddb13d3c01078643fcd82dee9184ebf8d10"
+    },
+    {
+      "bytes": 63333,
+      "path": "gaussian-factorization/explorer/tag/GF0038.html",
+      "sha256": "960af47a8ca5054446b2dcc9d9bd5a5e97940fd3f4db7d5d0548b1c1f19b9d00"
+    },
+    {
+      "bytes": 55294,
+      "path": "gaussian-factorization/explorer/tag/GF0039.html",
+      "sha256": "84da4a711fcb0243459ad967292b61d9101d01b220a597ddcbc18af10f264450"
+    },
+    {
+      "bytes": 27228,
+      "path": "gaussian-factorization/explorer/tag/GF003A.html",
+      "sha256": "0dd46aabdcc7a7c0b0635e3210f233f1426b13c473229e8aa7dd519d70e084f1"
+    },
+    {
+      "bytes": 76595,
+      "path": "gaussian-factorization/explorer/tag/GF003B.html",
+      "sha256": "e81573793114501e537dca5621c10baaa60a3ee236fcf73931b70c7a6ddbde50"
+    },
+    {
+      "bytes": 32012,
+      "path": "gaussian-factorization/explorer/tag/GF003C.html",
+      "sha256": "93ace6d8ed7553521764a395a5501dba7e6a4e24a069d83b076ff1ef4248938f"
+    },
+    {
+      "bytes": 16100,
+      "path": "gaussian-factorization/explorer/tag/GF003D.html",
+      "sha256": "ac8e9615f9b0e07278fbb21cab4dabaf3eed9d3eee19fb2e65b22999efb70c72"
+    },
+    {
+      "bytes": 43057,
+      "path": "gaussian-factorization/explorer/tag/GF003E.html",
+      "sha256": "e2ad95c6fd0e5b8e8c50ea3cfd28181b645fd84650c63d4eff23f650be0ce7de"
+    },
+    {
+      "bytes": 49701,
+      "path": "gaussian-factorization/explorer/tag/GF003F.html",
+      "sha256": "f457b62aaa38bd8ee17b6945b899511cf3aead681963262e8f29b3a4b4a06213"
+    },
+    {
+      "bytes": 50759,
+      "path": "gaussian-factorization/explorer/tag/GF0040.html",
+      "sha256": "3c1a013bcb15031238da447750e82105605bcd8a7a8786a8fdd55aae1a8168d3"
+    },
+    {
+      "bytes": 39398,
+      "path": "gaussian-factorization/explorer/tag/GF0041.html",
+      "sha256": "fcfe7eb42514b93d4bc02e423cc9e9ef9ed03d9cffb81a3fd3430e5ebbd81ba4"
+    },
+    {
+      "bytes": 18990,
+      "path": "gaussian-factorization/explorer/tag/GF0042.html",
+      "sha256": "b12615f040712a37cb5c1d54b8a0759ce07ab610c173728f1914500b04b668e3"
+    },
+    {
+      "bytes": 19140,
+      "path": "gaussian-factorization/explorer/tag/GF0043.html",
+      "sha256": "064ed3030adb370ecc9b46893af388c2568f4b03fb11a7e5856e3a110a2a83e7"
+    },
+    {
+      "bytes": 19332,
+      "path": "gaussian-factorization/explorer/tag/GF0044.html",
+      "sha256": "6b3cdd7862a5565c9eae4da34fbcc67da57fd3a8d141625ae7f085da34032628"
+    },
+    {
+      "bytes": 18087,
+      "path": "gaussian-factorization/explorer/tag/GF0045.html",
+      "sha256": "f2fc83fb51ecdb45381dd1a66cbad9119ba168075f5bc2f50880558c75dec0c7"
+    },
+    {
+      "bytes": 17768,
+      "path": "gaussian-factorization/explorer/tag/GF0046.html",
+      "sha256": "9506b860c9a89373bae43308de88cb2c267667c5ad23682af3a248363f83debd"
+    },
+    {
+      "bytes": 20205,
+      "path": "gaussian-factorization/explorer/tag/GF0047.html",
+      "sha256": "8af2ec87bfd3ce65bfdbca76b6c12a6a21ad10d96b5bfb6b35e48768b1e45448"
+    },
+    {
+      "bytes": 51836,
+      "path": "gaussian-factorization/explorer/tag/GF0048.html",
+      "sha256": "5c048a40e85f966b78a1b7f19d22e0a35b31bcc9e9dbea75ebfaaa69669357ad"
+    },
+    {
+      "bytes": 35487,
+      "path": "gaussian-factorization/explorer/tag/GF0049.html",
+      "sha256": "b263d122dc169ec671f0ad90a17ab375c670a0e64c07765f05838abb3090fdab"
+    },
+    {
+      "bytes": 39218,
+      "path": "gaussian-factorization/explorer/tag/GF004A.html",
+      "sha256": "27eb7909bdbb6a1cdc5eabc81f0ef17cdc4650bdace4f49fe5f24c627b9de092"
+    },
+    {
+      "bytes": 55751,
+      "path": "gaussian-factorization/explorer/tag/GF004B.html",
+      "sha256": "82cf7877e500f42bc4f3851216aade7801fca0b26ce36209751070aee00cbe2c"
+    },
+    {
+      "bytes": 87195,
+      "path": "gaussian-factorization/explorer/tag/GF004C.html",
+      "sha256": "2b4d46bc40b31330ada7218ed8fd92ec5f8d20f9619ad7ace26c61637f8eae4e"
+    },
+    {
+      "bytes": 28133,
+      "path": "gaussian-factorization/explorer/tag/GF004D.html",
+      "sha256": "898f0ce2a54767bd1c526d8169224711e323bc089c60fd4969b0776bfa0f4d1a"
+    },
+    {
+      "bytes": 36527,
+      "path": "gaussian-factorization/explorer/tag/GF004E.html",
+      "sha256": "02199b2861200f8863d224f197a7b26a214ff5ff2657028218cbc7139d450cf2"
+    },
+    {
+      "bytes": 60521,
+      "path": "gaussian-factorization/explorer/tag/GF004F.html",
+      "sha256": "8db5cbdd8ee5a6ad958772bb5a79cf1b820bc7aa74189a427dbe64d7116d64a8"
+    },
+    {
+      "bytes": 62721,
+      "path": "gaussian-factorization/explorer/tag/GF0050.html",
+      "sha256": "80c9e0b57b6344a9310aff18db58e193a4455f839ef3fb3c7dd27a18407184f9"
+    },
+    {
+      "bytes": 43792,
+      "path": "gaussian-factorization/explorer/tag/GF0051.html",
+      "sha256": "6f93368cd77fe2629c92a57409cf663def4c765339ee8c50c57cce46300223ee"
+    },
+    {
+      "bytes": 72745,
+      "path": "gaussian-factorization/explorer/tag/GF0052.html",
+      "sha256": "8d71164cc8741ce7fd1e0d07a8a86cf8ef288e352cf2cb86e1a3040411e6e1c1"
+    },
+    {
+      "bytes": 79935,
+      "path": "gaussian-factorization/explorer/tag/GF0053.html",
+      "sha256": "4b7b0c537faaad4b2dd1a0feeb980b2b6e897c75b624eea99753acac6a6083ae"
+    },
+    {
+      "bytes": 28416,
+      "path": "gaussian-factorization/explorer/tag/GF0054.html",
+      "sha256": "5e0ca02effe962754d9803d89fd2d2f08a6b1092fdaf14a13de26b85500c01c9"
+    },
+    {
+      "bytes": 81237,
+      "path": "gaussian-factorization/explorer/tag/GF0055.html",
+      "sha256": "f31c104986d4800828d206283a8b8a732bc3c4e5fefcde5885ba41c9e8275106"
+    },
+    {
+      "bytes": 82323,
+      "path": "gaussian-factorization/explorer/tag/GF0056.html",
+      "sha256": "3011f47819d747a071248b01c8a2db0ebe3349b0fc9a4fee2191176412cf4fa5"
+    },
+    {
+      "bytes": 48569,
+      "path": "gaussian-factorization/explorer/tag/GF0057.html",
+      "sha256": "ee571d80bc71a317bc4635c3b84dc4ce27979925d1721356d94a7e916a521350"
+    },
+    {
+      "bytes": 37954,
+      "path": "gaussian-factorization/explorer/tag/GF0058.html",
+      "sha256": "f94f360669f9e4dd8945a33bfc08df02ce60ce8a43ec6c1f68633549b842dffe"
+    },
+    {
+      "bytes": 40958,
+      "path": "gaussian-factorization/explorer/tag/GF0059.html",
+      "sha256": "ee0f90fa1a539ba5fea7da07206727d3cbf0be613b8ff83cf61cda9e60a45084"
+    },
+    {
+      "bytes": 82918,
+      "path": "gaussian-factorization/explorer/tag/GF005A.html",
+      "sha256": "caf44d9ed2dac21609a278ea98bfc05ded752fc13f9824cff2b514dc2de0413b"
+    },
+    {
+      "bytes": 49166,
+      "path": "gaussian-factorization/explorer/tag/GF005B.html",
+      "sha256": "667b24f73e00bda1f18979dd84a2eb451d7976cba47f47de73c60f842f21ac88"
+    },
+    {
+      "bytes": 45195,
+      "path": "gaussian-factorization/explorer/tag/GF005C.html",
+      "sha256": "a0ab15c86fd7c27768ebed16469b062fcbd2b4aaf2b2d34c5d44406145c4a932"
+    },
+    {
+      "bytes": 119974,
+      "path": "gaussian-factorization/explorer/tag/GF005D.html",
+      "sha256": "497d5e188c99ab31fb059d9e47588f6bfd0ba1d0db5dd635c5be188ffad5f576"
+    },
+    {
+      "bytes": 126355,
+      "path": "gaussian-factorization/explorer/tag/GF005E.html",
+      "sha256": "22ff02f8c450d68e906b85f5a9f263db2c70a2799adc305687976f8ba36ee03c"
+    },
+    {
+      "bytes": 82658,
+      "path": "gaussian-factorization/explorer/tag/GF005F.html",
+      "sha256": "8ee85f3f8be38e463169d7e53a6c85a9fea650e99ef10098cb78c4cdbc77420f"
+    },
+    {
+      "bytes": 95665,
+      "path": "gaussian-factorization/explorer/tag/GF0060.html",
+      "sha256": "2b7c7767328ec6320a879f76720f4b4280c906e9d1df3e9bfc5496e904cfab0a"
+    },
+    {
+      "bytes": 71693,
+      "path": "gaussian-factorization/explorer/tag/GF0061.html",
+      "sha256": "3dd866dab36db33baebbb3379491db3668a3fbdf3e11d8f9e71cbd236b259175"
+    },
+    {
+      "bytes": 130017,
+      "path": "gaussian-factorization/explorer/tag/GF0062.html",
+      "sha256": "e88d3ba3f9bb8334b1c0adb127eacbb9d26703e0eae79d8de03ea1c9a0a3aed1"
+    },
+    {
+      "bytes": 175028,
+      "path": "gaussian-factorization/explorer/tag/GF0063.html",
+      "sha256": "ed4a5e3153672cbc0fa3f44f128bf4ecc1bcb2de715b51f26396a152513596b9"
+    },
+    {
+      "bytes": 263090,
+      "path": "gaussian-factorization/explorer/tag/GF0064.html",
+      "sha256": "be4ee670d3c8a80cd02973f5d9ab98a0b17bc0e2ecd4ac268b0279e630a054b4"
+    },
+    {
+      "bytes": 99750,
+      "path": "gaussian-factorization/explorer/tag/GF0065.html",
+      "sha256": "c22ad6a0e02919eb540097fe769ca832d947b3a323e57db3c8b4b76fd56ec93c"
+    },
+    {
+      "bytes": 132081,
+      "path": "gaussian-factorization/explorer/tag/GF0066.html",
+      "sha256": "f697c19234034f07f1ea99321f1858aca60ba5ff93e3b5309ddab45b3abb507d"
+    },
+    {
+      "bytes": 175175,
+      "path": "gaussian-factorization/explorer/tag/GF0067.html",
+      "sha256": "67438929174997c4c6c0fc82fb5d408ebad8ce7900521881db3b6cb3e7c7f5b2"
+    },
+    {
+      "bytes": 67736,
+      "path": "gaussian-factorization/explorer/tag/GF0068.html",
+      "sha256": "df43da5079c2939177d526a543c82c6f97bd6ae0adde91810f7ccfe199e5a8c2"
+    },
+    {
+      "bytes": 198455,
+      "path": "gaussian-factorization/explorer/tag/GF0069.html",
+      "sha256": "2af055009aa8df3602085604cec26a9d97fc266b7eeaeed1752594c9db0bc752"
+    },
+    {
+      "bytes": 120293,
+      "path": "gaussian-factorization/explorer/tag/GF006A.html",
+      "sha256": "48d64fc673982fd6e8d187479a001df7696b53f92b6b613f1615eab14a72a94b"
+    },
+    {
+      "bytes": 143187,
+      "path": "gaussian-factorization/explorer/tag/GF006B.html",
+      "sha256": "7445f43acf08f4393320ad4c35613de57ce57a1078773c89a77b81769776a136"
+    },
+    {
+      "bytes": 204263,
+      "path": "gaussian-factorization/explorer/tag/GF006C.html",
+      "sha256": "1e6e8ec49c80ce43420ac2658b4009ccf2eb9fa93131d470181bef0fd6234bdc"
+    },
+    {
+      "bytes": 10356,
+      "path": "gaussian-factorization/explorer/tag/GF006D.html",
+      "sha256": "1c0cacfbd96c5264a6ec9585601d05c6e78e6744e4d8aed07bae6a6d0a6f2a24"
+    },
+    {
+      "bytes": 24295,
+      "path": "gaussian-factorization/explorer/tag/GF006E.html",
+      "sha256": "c27a60a4d244c00d37863b236a6ff957df91bbd88c10a4808a8fae99bb547103"
+    },
+    {
+      "bytes": 14618,
+      "path": "gaussian-factorization/explorer/tag/GF006F.html",
+      "sha256": "da8f3f368e87500ede565e8d13c5adac443acccf4a94977e0687bace90f5518e"
+    },
+    {
+      "bytes": 31656,
+      "path": "gaussian-factorization/explorer/tag/GF0070.html",
+      "sha256": "8d22eab84b08b41f58398ed1976c5bb3aff3f9bb056455ea2d0e201140a40c39"
+    },
+    {
+      "bytes": 9917,
+      "path": "gaussian-factorization/explorer/tag/GF0071.html",
+      "sha256": "8c63d4a3deb9977fcfee7c81d5f28d7cb28df1e6d6680b8ad826e5243817d91c"
+    },
+    {
+      "bytes": 13023,
+      "path": "gaussian-factorization/explorer/tag/GF0072.html",
+      "sha256": "cf6ad6f832e084c4947a69ca22c09f462fe2a6fceb01d254c2f9b90989e27565"
+    },
+    {
+      "bytes": 54613,
+      "path": "gaussian-factorization/explorer/tag/GF0073.html",
+      "sha256": "2a399dae47217d2a690ef6fde6d03f5ee57c7f6c631313502029254becc504c9"
+    },
+    {
+      "bytes": 114582,
+      "path": "gaussian-factorization/explorer/tag/GF0074.html",
+      "sha256": "ccee3e8cdd8a97b8dbfabfe2b6704406afe64740202cac9885736ec293491391"
+    },
+    {
+      "bytes": 170913,
+      "path": "gaussian-factorization/explorer/tag/GF0075.html",
+      "sha256": "8b642b187661d86678e76ce208130325b81b96b8756ceb684cc8ff35f718085c"
+    },
+    {
+      "bytes": 195478,
+      "path": "gaussian-factorization/explorer/tag/GF0076.html",
+      "sha256": "31ff20e2d7c011b7614b4c03fd7f32284ecaab17d6a72db2b7233785c52dc6da"
+    },
+    {
+      "bytes": 16742,
+      "path": "gaussian-factorization/explorer/tag/GF0077.html",
+      "sha256": "a15dde2174a53be3a459c9a8705d61f44fe79e92eb636ebcd6ba8bf3059ff13e"
+    },
+    {
+      "bytes": 136632,
+      "path": "gaussian-factorization/explorer/tag/GF0078.html",
+      "sha256": "c58a9c22003e054ebacf547a96661ce8b2a91fa22f7b5ee99f1f8a4c1d99e5b8"
+    },
+    {
+      "bytes": 24317,
+      "path": "gaussian-factorization/explorer/tag/GF0079.html",
+      "sha256": "a44cd8a3ff005356042842eb6005f7946077f608c5d2b18e818b9d1b996776f3"
+    },
+    {
+      "bytes": 48785,
+      "path": "gaussian-factorization/explorer/tag/GF007A.html",
+      "sha256": "c8d99102f9398b11d1ea3f09bd84ef0458648098e249a54e77c2b5e47612bf6c"
+    },
+    {
+      "bytes": 90937,
+      "path": "gaussian-factorization/explorer/tag/GF007B.html",
+      "sha256": "fc96427a014f90cb674c4ac88c6518b61c4dffbc31d07c755d3d986660cea4d4"
+    },
+    {
+      "bytes": 18050,
+      "path": "gaussian-factorization/explorer/tag/GF007C.html",
+      "sha256": "24e7bc17a778be8a8dabf2318fc09eb6e17183ba7732249dfdfe4964cacc9eda"
+    },
+    {
+      "bytes": 122198,
+      "path": "gaussian-factorization/explorer/tag/GF007D.html",
+      "sha256": "fad7b2a0a039308031b30a0b2a0a47d8807fa4a52d0fd0a176ab5237180b8974"
+    },
+    {
+      "bytes": 275804,
+      "path": "gaussian-factorization/explorer/tag/GF007E.html",
+      "sha256": "d27bbc1eca6c78a60ae4e359ec2cf9ec00dd0ca93ba9ebda5487cb73edef5e61"
+    },
+    {
+      "bytes": 271981,
+      "path": "gaussian-factorization/explorer/tag/GF007F.html",
+      "sha256": "217406b2a24403b5d7cf7981458454a1b8dc29f1c6e79e826c6b071267f3205a"
+    },
+    {
+      "bytes": 270050,
+      "path": "gaussian-factorization/explorer/tag/GF0080.html",
+      "sha256": "e2e666e557011301e695fb23ca147fc23dd25f9ab47c7db793bff032a8645d5c"
+    },
+    {
+      "bytes": 89810,
+      "path": "gaussian-factorization/explorer/tag/GF0081.html",
+      "sha256": "284fa20d38bb13149a4d55fde78a7cf72623ddbbba809745aa4bdc51319995dd"
+    },
+    {
+      "bytes": 77636,
+      "path": "gaussian-factorization/explorer/tag/GF0082.html",
+      "sha256": "a3b8d9fe4d5aea91f723fdeef952dc29cb3b0b8eea20eca5c1fe547823e3509c"
+    },
+    {
+      "bytes": 168388,
+      "path": "gaussian-factorization/explorer/tag/GF0083.html",
+      "sha256": "29cc4b059a5d9d81f2ea4745a1580464f9f5949509f861149ff0edb77b9c877d"
+    },
+    {
+      "bytes": 10334,
+      "path": "gaussian-factorization/explorer/tag/GF0084.html",
+      "sha256": "542b6b2f9406bb304bbf25a24c6acaff7640b006426a117b507e7db6db420bb2"
+    },
+    {
+      "bytes": 9580,
+      "path": "gaussian-factorization/explorer/tag/GF0085.html",
+      "sha256": "fa94b6aa47b5919ad065f46e59dbf1faf8b486cd29609c3aa486428159fc687c"
+    },
+    {
+      "bytes": 23797,
+      "path": "gaussian-factorization/explorer/tag/GF0086.html",
+      "sha256": "131f69b33bf8d21e8637cba2bb4451ef9f15d00864f69d1dee8325525b94317c"
+    },
+    {
+      "bytes": 24303,
+      "path": "gaussian-factorization/explorer/tag/GF0087.html",
+      "sha256": "51e34d5080e21673b203edf901f311e37827003105f53f90ae82f40b5d824217"
+    },
+    {
+      "bytes": 49887,
+      "path": "gaussian-factorization/explorer/tag/GF0088.html",
+      "sha256": "3719ab0fa2d8fa14709ee9e005c649f74015f58cfcd004c3774fa0f09bbcfb87"
+    },
+    {
+      "bytes": 65017,
+      "path": "gaussian-factorization/explorer/tag/GF0089.html",
+      "sha256": "3700724b636893c797018de2e9e7961de36eceac8b62de42921f831afa6a402c"
+    },
+    {
+      "bytes": 85068,
+      "path": "gaussian-factorization/explorer/tag/GF008A.html",
+      "sha256": "19fc092fbb596226100d1baebab775d5b73c6f6ebcbde1340750405fcdaea2e1"
+    },
+    {
+      "bytes": 35952,
+      "path": "gaussian-factorization/explorer/tag/GF008B.html",
+      "sha256": "f84d66efbd68d22da445f3f002fe94a487afeffe92602a220fe566b4cd5d48f0"
+    },
+    {
+      "bytes": 36759,
+      "path": "gaussian-factorization/explorer/tag/GF008C.html",
+      "sha256": "761776ffe337f2bd92f6bbcb1f1d4c2430ddbca47f1f66910bf036fa1a580905"
+    },
+    {
+      "bytes": 98019,
+      "path": "gaussian-factorization/explorer/tag/GF008D.html",
+      "sha256": "7e293c90540d94df4df6e63f86d210e41bf32c779e22763efbafb64c285ea521"
+    },
+    {
+      "bytes": 52156,
+      "path": "gaussian-factorization/explorer/tag/GF008E.html",
+      "sha256": "165ca1a8a673393ca2d24eef29c69ca5121cc8bf92cd56a9059a03d11583f63c"
+    },
+    {
+      "bytes": 109061,
+      "path": "gaussian-factorization/explorer/tag/GF008F.html",
+      "sha256": "8021b26f16b5ff81c84325aa3abc7daf01a18e60baf56718a76917a29e78161b"
+    },
+    {
+      "bytes": 113641,
+      "path": "gaussian-factorization/explorer/tag/GF0090.html",
+      "sha256": "aec1c30b3043107dce56664f23d685cad82fe0d3f66e00e6eecbddadef8e3fd0"
+    },
+    {
+      "bytes": 182930,
+      "path": "gaussian-factorization/explorer/tag/GF0091.html",
+      "sha256": "16877812622e3b51b39dc8390a7956beef81cb81761d23a423d266349689c4c0"
+    },
+    {
+      "bytes": 115166,
+      "path": "gaussian-factorization/explorer/tag/GF0092.html",
+      "sha256": "0fb23fde14c4018a9dae9ba58afd37d7bf0247a31a0b22d3b556febfa09ce215"
+    },
+    {
+      "bytes": 274791,
+      "path": "gaussian-factorization/explorer/tag/GF0093.html",
+      "sha256": "7e579999dcb98aa49cad98af2064e17f7195c0ca76d4d66a38872701cbd877b6"
+    },
+    {
+      "bytes": 405484,
+      "path": "gaussian-factorization/explorer/tag/GF0094.html",
+      "sha256": "8eb09b62c2322afd33fa3bc2009e52701cdfc01f2c519568c1588ef3f13a6688"
+    },
+    {
+      "bytes": 111285,
+      "path": "gaussian-factorization/explorer/tag/GF0095.html",
+      "sha256": "e735d3406a263542ea35382145c265a4a627e3c63ff48d9177bf2032212187e0"
+    },
+    {
+      "bytes": 226266,
+      "path": "gaussian-factorization/explorer/tag/GF0096.html",
+      "sha256": "ee13cf6b2307d80fa406c9187807b10ba5dcf2e26417629305f4a5f6b17ee430"
+    },
+    {
+      "bytes": 226342,
+      "path": "gaussian-factorization/explorer/tag/GF0097.html",
+      "sha256": "43487df3281964e5113b168cf714cae1ecea6a1f7cf95bbe8e9ed1e908ea5769"
+    },
+    {
+      "bytes": 216033,
+      "path": "gaussian-factorization/explorer/tag/GF0098.html",
+      "sha256": "9634208025949b0e095cabb6066efe6285768018708e4e881e7d7779628c6a5e"
+    },
+    {
+      "bytes": 116777,
+      "path": "gaussian-factorization/explorer/tag/GF0099.html",
+      "sha256": "a53f1de9b60bbadffa3d854b8134f2254c37f0bc4d4a9f7692607ece846ff7ef"
+    },
+    {
+      "bytes": 169118,
+      "path": "gaussian-factorization/explorer/tag/GF009A.html",
+      "sha256": "fde395dd3ff24832dbf9022c5ca28a4256a7d6a70c146b0ba6147125a8c036c2"
+    },
+    {
+      "bytes": 162160,
+      "path": "gaussian-factorization/explorer/tag/GF009B.html",
+      "sha256": "b7b5c530c07754482fb71239c2a9dd8fdef6bc1bfa0b20cb0ef01eec5c87c03b"
+    },
+    {
+      "bytes": 241316,
+      "path": "gaussian-factorization/explorer/tag/GF009C.html",
+      "sha256": "46e97656b29100b10251d5115c46f57f9e93147746de36e2f30636d2071b51ff"
+    },
+    {
+      "bytes": 103812,
+      "path": "gaussian-factorization/explorer/tag/GF009D.html",
+      "sha256": "3c0a225ae125bc8deea935aafc08b232d78842419adf18f5fdbadf7f7b7ac033"
+    },
+    {
+      "bytes": 109337,
+      "path": "gaussian-factorization/explorer/tag/GF009E.html",
+      "sha256": "86fe6709edf1b547b667a4cd4c285be3c541c6906c6331b0cd4c912b75cd4145"
+    },
+    {
+      "bytes": 223341,
+      "path": "gaussian-factorization/explorer/tag/GF009F.html",
+      "sha256": "2b3b348273f7fb4c602483c5721d1bf81fb1993a2ac0d9bafef3533bf0a5dd91"
+    },
+    {
+      "bytes": 205228,
+      "path": "gaussian-factorization/explorer/tag/GF00A0.html",
+      "sha256": "ed75012f184a510d1802ab42d4c6ee9a27e0514910c68a11629e8668f3aa0e93"
+    },
+    {
+      "bytes": 95730,
+      "path": "gaussian-factorization/explorer/tag/GF00A1.html",
+      "sha256": "50a190f4160d94ee3635cc0cfcccb63d83dfc3587abc8f6b5be2d0fd920a77b8"
+    },
+    {
+      "bytes": 101063,
+      "path": "gaussian-factorization/explorer/tag/GF00A2.html",
+      "sha256": "c952805cd53679238d34e4f6898f6e4219d1560477eb9c589270e17c734f1d90"
+    },
+    {
+      "bytes": 49408,
+      "path": "gaussian-factorization/explorer/tag/GF00A3.html",
+      "sha256": "83305870adf6ecb3eb911a91e84f1f5c030aea63ce308803d13e97678a5a1ed4"
+    },
+    {
+      "bytes": 49345,
+      "path": "gaussian-factorization/explorer/tag/GF00A4.html",
+      "sha256": "5a20f05a754688599e8eab37e1ea29fda21c0d55fbe5f6473071b855d67cf417"
+    },
+    {
+      "bytes": 130011,
+      "path": "gaussian-factorization/explorer/tag/GF00A5.html",
+      "sha256": "9051b4a92b168e9e201da6aef537946c2e388c9eaffa5e79d17950175434b55d"
+    },
+    {
+      "bytes": 71169,
+      "path": "gaussian-factorization/explorer/tag/GF00A6.html",
+      "sha256": "da74e613bc4b971f520150672fe87f2446e4eaf4490893f12449ecaa2dafb5c2"
+    },
+    {
+      "bytes": 46134,
+      "path": "gaussian-factorization/explorer/tag/GF00A7.html",
+      "sha256": "bfdb0689a33d07adcacde0645a98d30ba2a8e0a9dc8c7881b0e2d1bf79371baf"
+    },
+    {
+      "bytes": 109308,
+      "path": "gaussian-factorization/explorer/tag/GF00A8.html",
+      "sha256": "5f738764128f4382c27f212e0a5986faee7aeb012bf5960154f41f53ae30edff"
+    },
+    {
+      "bytes": 105461,
+      "path": "gaussian-factorization/explorer/tag/GF00A9.html",
+      "sha256": "965cfb49ce6303f6485ae9bffe17a20c13890554e83f204443b8ef71e2144291"
+    },
+    {
+      "bytes": 143810,
+      "path": "gaussian-factorization/explorer/tag/GF00AA.html",
+      "sha256": "992656012ea39ecb2d03b817815fbae7338158a696207463632aa56aad0cacca"
+    },
+    {
+      "bytes": 132677,
+      "path": "gaussian-factorization/explorer/tag/GF00AB.html",
+      "sha256": "195710a4aad16eaaa194a6aeb7e679479c7b1f55d4f106e9ab856a30628cdccf"
+    },
+    {
+      "bytes": 162146,
+      "path": "gaussian-factorization/explorer/tag/GF00AC.html",
+      "sha256": "c6a05f2766e0aed861dde26c20392f05b4c0c32cfe629fb5e35d986de5aa9b1b"
+    },
+    {
+      "bytes": 14604,
+      "path": "gaussian-factorization/explorer/tag/GF00AD.html",
+      "sha256": "966453f027f1881785f2c76ea3db6836fcdf750aee7bab4efbc8a27fd0b13c6d"
+    },
+    {
+      "bytes": 261367,
+      "path": "gaussian-factorization/explorer/tag/GF00AE.html",
+      "sha256": "ec2de3de80c4f9870f31c7a7382b1ee94d254b1cc2c5a528a572a13170259644"
+    },
+    {
+      "bytes": 762300,
+      "path": "gaussian-factorization/explorer/tag/GF00AF.html",
+      "sha256": "fdb593d16a4f228c043da777eed5beffdd0714d828d4c3910f5b4bcbc54b79b1"
+    },
+    {
+      "bytes": 263462,
+      "path": "gaussian-factorization/explorer/tag/GF00B0.html",
+      "sha256": "b5bae8fc13ed1954c7b4e2b2bc730c5406e71454cfe183f2a32025f1f9ecd9af"
+    },
+    {
+      "bytes": 286483,
+      "path": "gaussian-factorization/explorer/tag/GF00B1.html",
+      "sha256": "1c1c08a82ff306046c77c0132cfe9dc180f2db4366cfb1925fae54f2b7f6a3cb"
+    },
+    {
+      "bytes": 443612,
+      "path": "gaussian-factorization/explorer/tag/GF00B2.html",
+      "sha256": "1741737438a1cef5ac8816145c10016c671abbcbec5426c85972b7d1d263e44e"
+    },
+    {
+      "bytes": 116975,
+      "path": "gaussian-factorization/explorer/tag/GF00B3.html",
+      "sha256": "21462599900a671113e3f416fe64df0e92b019d8aa2b3884d22db87c841dba19"
+    },
+    {
+      "bytes": 235052,
+      "path": "gaussian-factorization/explorer/tag/GF00B4.html",
+      "sha256": "3238f44df477308dda3faca9a735f3347bb32c9fbec8f93ad54f5732982eda7c"
+    },
+    {
+      "bytes": 9561,
+      "path": "gaussian-factorization/index.html",
+      "sha256": "1b7f711d321fee48f69bdef6d4843843e831fbed0061de3cf6510d5a3aa11391"
+    },
+    {
+      "bytes": 4645,
+      "path": "index.html",
+      "sha256": "fb90d0e796ad5d4baf7a8f2cc08cc0294e8787345f745ee9c56aba9d4d003882"
+    }
+  ],
+  "first_enrollment_catalog_sha256": "b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb",
+  "html_revision": "b3c647d19c00",
+  "independent_lean_bundle_verified": true,
+  "inherited_revised_audit_sources": [
+    {
+      "changed_by_gaussian_factorization": false,
+      "historical_sha256": "2125f1e0170447ca94cfd78a8d34c4f1034d2ef0e68884ef79b9787345e36d45",
+      "later_checked_in_sha256": "27b789cca2650a2c83fb0cd3eb185607111eac7075a1f44cee9cd274832ee9a1",
+      "path": "peano-lab/py/tests/test_library_editions_v19_admission.py",
+      "proof_authority": false
+    },
+    {
+      "changed_by_gaussian_factorization": false,
+      "historical_sha256": "455c416e00618ecb4443da8af8f038d985308a7624431de4c63c9dcb6206c0e0",
+      "later_checked_in_sha256": "8a4d2588fe63a8c13477349899040f3122b0d1226b75adbfcb926364e0088736",
+      "path": "peano-lab/py/tests/test_linear_congruence_complete_candidate.py",
+      "proof_authority": false
+    },
+    {
+      "changed_by_gaussian_factorization": false,
+      "historical_sha256": "cb6a22a23f44958546eebedd9bdadb28ba466519c2951920cd2ac5f3c04760f3",
+      "later_checked_in_sha256": "820fd1e4a262295bb85a50bbe2f9b5361c9cc3ce403fda443a1ff1b2a2d129ec",
+      "path": "research/arithmetic-library/ha-bertrand-b6-release-tranche-rfc-v1.md",
+      "proof_authority": false
+    },
+    {
+      "changed_by_gaussian_factorization": false,
+      "historical_sha256": "857da462982d7798c69ca24053378c31e52d1b58fcc401bfe99ba92aac101383",
+      "later_checked_in_sha256": "ce32b9b9922e46be8abb8a61ae4a4cb3461f2dea6eeb56a65bfbc2684991cf35",
+      "path": "research/arithmetic-library/linear-congruence-complete-rfc-v1.md",
+      "proof_authority": false
+    },
+    {
+      "changed_by_gaussian_factorization": false,
+      "historical_sha256": "b7774571ff25d0ab1c35707e4aa8b074b584179307bc25c2d9bcb5dc7a17f960",
+      "later_checked_in_sha256": "41b22f2291a4ef69746acedbfee346bf4044e67afb8f2ee77ded06156a0ca67b",
+      "path": "research/arithmetic-library/wmi-qr-replay.md",
+      "proof_authority": false
+    }
+  ],
+  "inventory_sha256": "877659091fc354db244a5a96fe0c217e376e0976f6387725ec2487308d065fd5",
+  "proof_bundle_sha256": "e0e10f11c5b12b411843054000a77be22ede7db53602814f9532e3e7c8daa270",
+  "schema": "peano-lab-constructive-gaussian-factorization-explorer-v1-manifest",
+  "stable_count": 0,
+  "theorem_count": 180
+}

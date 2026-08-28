@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0143 — SignedBalance(z,p,n) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="gaussian-integers"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedBalance&amp;v=b3c647d19c00">Global definition: SignedBalance</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=b3c647d19c00">G081 milestone</a></nav>
+  <p class="pd-tag">ND0143</p><h1>SignedBalance(z,p,n)</h1>
+  <p>The original canonical code z represents the integer difference p−n; these supplied components need not be normalized.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ sb_pos_lowerlayer. ∃ sb_neg_lowerlayer. <a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=b3c647d19c00">SignedDecode(z,sb_pos_lowerlayer,sb_neg_lowerlayer)</a> ∧ p + sb_neg_lowerlayer = n + sb_pos_lowerlayer</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists sb_pos_lowerlayer sb_neg_lowerlayer. (((z = 2 * sb_pos_lowerlayer /\ sb_neg_lowerlayer = 0) \/ exists sd_half_lowerlayer. ((z = 2 * sd_half_lowerlayer + 1 /\ sb_pos_lowerlayer = 0) /\ sb_neg_lowerlayer = S sd_half_lowerlayer)) /\ p + sb_neg_lowerlayer = n + sb_pos_lowerlayer)</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0142.html?v=b3c647d19c00">SignedDecode(z,p,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0161.html?v=b3c647d19c00">ZPairRep(z,ap,an,bp,bn)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/GI003B.html?v=b3c647d19c00">GI003B · gaussian_signed_balance_integer_transport</a><a class="pd-chip" href="../tag/GI003C.html?v=b3c647d19c00">GI003C · gaussian_signed_balance_same_code</a><a class="pd-chip" href="../tag/GI003F.html?v=b3c647d19c00">GI003F · gaussian_representation_exists</a><a class="pd-chip" href="../tag/GI0049.html?v=b3c647d19c00">GI0049 · gaussian_signed_add_of_balances</a><a class="pd-chip" href="../tag/GI004A.html?v=b3c647d19c00">GI004A · gaussian_signed_add_to_balance</a><a class="pd-chip" href="../tag/GI004B.html?v=b3c647d19c00">GI004B · gaussian_signed_mul_of_balances</a><a class="pd-chip" href="../tag/GI004C.html?v=b3c647d19c00">GI004C · gaussian_signed_mul_to_balance</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>3</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>1</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0143.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>f6ebf61b71a55e09c12c51c7653ba92cb1e70afc3bc7918b0af6f71657961327</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GF00AD — gaussian_factor_swap_length_transport — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="gaussian-factorization"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../../tag/GF00AD.html?v=b3c647d19c00">Exact original proof</a>
+       <a href="../graph.html?target=GF00AD&amp;v=b3c647d19c00">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G082" href="../../../../grand-campaign/?view=goal&amp;focus=G082&amp;v=b3c647d19c00">G082 milestone</a></nav>
+  <p class="pd-tag">GF00AD</p><h1>gaussian_factor_swap_length_transport</h1>
+  <p>Equality of lengths transports all actual last-entry indices and the finite preservation bound of a witnessed swap.</p><p class="pd-status">Alpha v30 checked-use · first admitted v30 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">Inputs are genuine canonical signed-pair codes, not arbitrary naturals. Products start at the actual Gaussian identity, whose code is six. The factor list uses the proved prime-divisor property; irreducibility alone is not silently renamed primality. Uniqueness supplies equal lengths, a bounded bijection, and an actual unit at each match, including repeated factors. Units have empty factorizations and zero is excluded. Sorted primary representatives, Gaussian prime classification, and Eisenstein factorization are separate targets.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ b. ∀ c. ∀ d. ∀ e. ∀ k. ∀ l. ∀ i. ∀ p. ∀ q. k = l → <a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(b,c,i,p)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(b,c,k,q)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(d,e,i,q)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(d,e,k,p)</a> ∧ (∀ x. ∀ y. <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=b3c647d19c00">Lt(x,S k)</a> → ¬x = i → ¬x = k → <a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(b,c,x,y)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(d,e,x,y)</a>)))) → <a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(b,c,i,p)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(b,c,l,q)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(d,e,i,q)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(d,e,l,p)</a> ∧ (∀ x. ∀ y. <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=b3c647d19c00">Lt(x,S l)</a> → ¬x = i → ¬x = l → <a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(b,c,x,y)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(d,e,x,y)</a>))))</code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0002.html?v=b3c647d19c00">Lt(a,b) · 2</a><a class="pd-chip" href="../definition/PD0013.html?v=b3c647d19c00">BetaAt(b,c,i,x) · 12</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall b c d e k l i p q. k=l -&gt; (((((exists ff_h_pfp_swap_length_sourceoldi. ff_h_pfp_swap_length_sourceoldi + S (p) = S ((S (i)) * c)) /\ exists ff_q_pfp_swap_length_sourceoldi. b = ff_q_pfp_swap_length_sourceoldi * S ((S (i)) * c) + (p))) /\ (((((exists ff_h_pfp_swap_length_sourceoldlast. ff_h_pfp_swap_length_sourceoldlast + S (q) = S ((S (k)) * c)) /\ exists ff_q_pfp_swap_length_sourceoldlast. b = ff_q_pfp_swap_length_sourceoldlast * S ((S (k)) * c) + (q))) /\ (((((exists ff_h_pfp_swap_length_sourcenewi. ff_h_pfp_swap_length_sourcenewi + S (q) = S ((S (i)) * e)) /\ exists ff_q_pfp_swap_length_sourcenewi. d = ff_q_pfp_swap_length_sourcenewi * S ((S (i)) * e) + (q))) /\ (((((exists ff_h_pfp_swap_length_sourcenewlast. ff_h_pfp_swap_length_sourcenewlast + S (p) = S ((S (k)) * e)) /\ exists ff_q_pfp_swap_length_sourcenewlast. d = ff_q_pfp_swap_length_sourcenewlast * S ((S (k)) * e) + (p))) /\ (forall pfp_j_swap_length_source pfp_a_swap_length_source. (exists pfp_gap_swap_length_sourcebound. pfp_gap_swap_length_sourcebound + S (pfp_j_swap_length_source) = (S (k))) -&gt; ~(pfp_j_swap_length_source = i) -&gt; ~(pfp_j_swap_length_source = k) -&gt; (((exists ff_h_pfp_swap_length_sourceold. ff_h_pfp_swap_length_sourceold + S (pfp_a_swap_length_source) = S ((S (pfp_j_swap_length_source)) * c)) /\ exists ff_q_pfp_swap_length_sourceold. b = ff_q_pfp_swap_length_sourceold * S ((S (pfp_j_swap_length_source)) * c) + (pfp_a_swap_length_source))) -&gt; (((exists ff_h_pfp_swap_length_sourcenew. ff_h_pfp_swap_length_sourcenew + S (pfp_a_swap_length_source) = S ((S (pfp_j_swap_length_source)) * e)) /\ exists ff_q_pfp_swap_length_sourcenew. d = ff_q_pfp_swap_length_sourcenew * S ((S (pfp_j_swap_length_source)) * e) + (pfp_a_swap_length_source)))))))))))) -&gt; (((((exists ff_h_pfp_swap_length_targetoldi. ff_h_pfp_swap_length_targetoldi + S (p) = S ((S (i)) * c)) /\ exists ff_q_pfp_swap_length_targetoldi. b = ff_q_pfp_swap_length_targetoldi * S ((S (i)) * c) + (p))) /\ (((((exists ff_h_pfp_swap_length_targetoldlast. ff_h_pfp_swap_length_targetoldlast + S (q) = S ((S (l)) * c)) /\ exists ff_q_pfp_swap_length_targetoldlast. b = ff_q_pfp_swap_length_targetoldlast * S ((S (l)) * c) + (q))) /\ (((((exists ff_h_pfp_swap_length_targetnewi. ff_h_pfp_swap_length_targetnewi + S (q) = S ((S (i)) * e)) /\ exists ff_q_pfp_swap_length_targetnewi. d = ff_q_pfp_swap_length_targetnewi * S ((S (i)) * e) + (q))) /\ (((((exists ff_h_pfp_swap_length_targetnewlast. ff_h_pfp_swap_length_targetnewlast + S (p) = S ((S (l)) * e)) /\ exists ff_q_pfp_swap_length_targetnewlast. d = ff_q_pfp_swap_length_targetnewlast * S ((S (l)) * e) + (p))) /\ (forall pfp_j_swap_length_target pfp_a_swap_length_target. (exists pfp_gap_swap_length_targetbound. pfp_gap_swap_length_targetbound + S (pfp_j_swap_length_target) = (S (l))) -&gt; ~(pfp_j_swap_length_target = i) -&gt; ~(pfp_j_swap_length_target = l) -&gt; (((exists ff_h_pfp_swap_length_targetold. ff_h_pfp_swap_length_targetold + S (pfp_a_swap_length_target) = S ((S (pfp_j_swap_length_target)) * c)) /\ exists ff_q_pfp_swap_length_targetold. b = ff_q_pfp_swap_length_targetold * S ((S (pfp_j_swap_length_target)) * c) + (pfp_a_swap_length_target))) -&gt; (((exists ff_h_pfp_swap_length_targetnew. ff_h_pfp_swap_length_targetnew + S (pfp_a_swap_length_target) = S ((S (pfp_j_swap_length_target)) * e)) /\ exists ff_q_pfp_swap_length_targetnew. d = ff_q_pfp_swap_length_targetnew * S ((S (pfp_j_swap_length_target)) * e) + (pfp_a_swap_length_target))))))))))))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 18 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro b</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro c</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro d</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro e</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>intro k</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>intro l</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>intro i</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>intro p</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>intro q</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>intro heq</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>intro h</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>rewrite heq at h</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>rewrite heq at h</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>rewrite heq at h</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>rewrite heq at h</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>rewrite heq at h</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>rewrite heq at h</code></li><li class="pd-proof-line" id="L18" data-line="18"><a class="pd-line-number" href="#L18">0018</a><code>exact h</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v30 checked use</dd><dt>First admission</dt><dd>Alpha v30</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>444 / 453</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 453 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>42 / 24</dd>
+      <dt>Statement SHA-256</dt><dd><code>da584d9b53e3ded4341b4542531428e25df48ce98150c7fb9b7d8de9573aec88</code></dd>
+      <dt>Script SHA-256</dt><dd><code>b204cdf0c7f4e07d1965ce7038d27e614e24c3229b3b68f02b5c87c68db41b69</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>e0e10f11c5b12b411843054000a77be22ede7db53602814f9532e3e7c8daa270</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.gaussian_factor_permutation_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-gaussian-factorization-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

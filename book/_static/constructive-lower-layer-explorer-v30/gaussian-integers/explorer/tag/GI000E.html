@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GI000E — gaussian_signed_sum_square_positive — Exact Proof</title>
+  <link rel="stylesheet" href="../../../assets/exact-explorer.css?v=6dd0cf105c49">
+  <script defer src="../../../assets/exact-explorer.js?v=98f11fff5d34"></script>
+</head>
+<body class="pa-proof-site" data-page="theorem" data-family="gaussian-integers"><header class="pa-proof-header pa-theorem-heading">
+  <nav><a href="../index.html?v=b3c647d19c00">Explorer</a><a href="../defined/tag/GI000E.html?v=b3c647d19c00">Defined notation</a><a href="../defined/graph.html?target=GI000E&amp;v=b3c647d19c00">Dependency graph</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="global" href="../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a href="GI000D.html?v=b3c647d19c00">← gaussian_signed_square_product</a><a href="GI000F.html?v=b3c647d19c00">gaussian_signed_sum_square_negative →</a><a data-campaign-link="global" href="../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=b3c647d19c00">G081 milestone</a></nav>
+  <p class="pa-tag">GI000E</p><h1>gaussian_signed_sum_square_positive</h1>
+  <p class="pa-status-candidate">Alpha v30 independently verified · alpha_closed; checked-use authorized; not Stable</p>
+  <p>Positive square expansion for the sum of two genuine signed pairs.</p>
+</header>
+<main class="pa-theorem-layout">
+  <div class="pa-proof-panel">
+    <section class="pa-statement"><h2>Exact expanded first-order arithmetic statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>forall p n q m. ((((((p) + (q))) * (((p) + (q))))) + (((((n) + (m))) * (((n) + (m)))))) = ((((((((p) * (p))) + (((n) * (n))))) + (((((q) * (q))) + (((m) * (m))))))) + (((((((p) * (q))) + (((n) * (m))))) + (((((p) * (q))) + (((n) * (m))))))))</code></pre></section>
+    <section class="pa-informal-proof" data-informal-kind="structural" data-informal-review="generated"><h2>Constructive proof overview</h2><p><strong>Generated structural guide</strong></p><p>Positive square expansion for the sum of two genuine signed pairs.</p><p>The unchanged tactic script uses 6 declared prerequisites and contains 5 exact native proof lines.</p><p>Alpha v30 checked-use · first admitted v28 · independently kernel and Lean verified; not Stable</p></section>
+    <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row"><span class="pa-external-dependency" data-external-name="add_mul" data-evidence="stable_closed"><code>add_mul</code> <small>Stable theorem; checked-use authorized</small></span> <span class="pa-external-dependency" data-external-name="mul_add" data-evidence="stable_closed"><code>mul_add</code> <small>Stable theorem; checked-use authorized</small></span> <span class="pa-external-dependency" data-external-name="mul_comm" data-evidence="stable_closed"><code>mul_comm</code> <small>Stable theorem; checked-use authorized</small></span> <span class="pa-external-dependency" data-external-name="add_assoc" data-evidence="stable_closed"><code>add_assoc</code> <small>Stable theorem; checked-use authorized</small></span> <span class="pa-external-dependency" data-external-name="add_comm" data-evidence="stable_closed"><code>add_comm</code> <small>Stable theorem; checked-use authorized</small></span> <span class="pa-external-dependency" data-external-name="four_square_add_swap_right_tail" data-evidence="alpha_closed"><code>four_square_add_swap_right_tail</code> <small>Alpha theorem; checked-use authorized</small></span></div><h3>Direct dependents</h3><div class="pa-chip-row"><a class="pa-theorem-ref" href="GI0010.html?v=b3c647d19c00"><code>GI0010</code> gaussian_signed_square_sum_compensation</a></div></section>
+    <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. This exact body belongs to a complete independently kernel-checked constructive proof bundle and has Alpha checked-use authority; it does not imply Stable membership.</p><ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="f574acf856f6c56b"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> p</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="b6fbbbd8215239aa"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> n</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="intro" data-line-id="70d8fcb0796c1376"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">intro</span> q</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="intro" data-line-id="962fbe29f7e6041a"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">intro</span> m</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="simp" data-line-id="9a2bd187629e44e0"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">simp</span> [<span class="pa-external-ref">add_mul</span>, <span class="pa-external-ref">mul_add</span>, <span class="pa-external-ref">mul_comm</span>, <span class="pa-external-ref">add_assoc</span>, <span class="pa-external-ref">add_comm</span>, <span class="pa-external-ref">four_square_add_swap_right_tail</span>]</code></li></ol></section>
+  </div>
+  <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>0</dd><dt>Tactic lines</dt><dd>5</dd><dt>Alpha evidence</dt><dd>alpha_closed</dd><dt>Checked-use authority</dt><dd>Alpha v30; independently verified</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>0109510c7a6a0c312455093b9682e136b5aff7378c2c39746c03b17a98047154</code></dd><dt>Exact script SHA-256</dt><dd><code>972167f51417f1af8131c78fab8f11022597d1409b855a91e080a842442ab23b</code></dd><dt>Source module</dt><dd><code>peano_lab.library.gaussian_euclidean_candidate</code></dd><dt>Factory</dt><dd><code>make_gaussian_euclidean_candidate_theorems</code></dd></dl></aside>
+</main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

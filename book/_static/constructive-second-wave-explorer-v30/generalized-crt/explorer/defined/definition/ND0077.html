@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0077 — CRTNormalizedPrefixSolution(r,s,b,c,l,x,M) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="generalized-crt"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=CRTNormalizedPrefixSolution&amp;v=b3c647d19c00">Global definition: CRTNormalizedPrefixSolution</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F02&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G011" href="../../../../grand-campaign/?view=goal&amp;focus=G011&amp;v=b3c647d19c00">G011 milestone</a></nav>
+  <p class="pd-tag">ND0077</p><h1>CRTNormalizedPrefixSolution(r,s,b,c,l,x,M)</h1>
+  <p>The exact prefix LCM and an actual simultaneous solution, with x&lt;M when M is positive; the zero-LCM case retains exact congruences rather than an impossible bound.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="ND0056" href="ND0056.html?v=b3c647d19c00">CRTPrefixLCM(b,c,l,M)</a> ∧ ((M = 0 ∨ <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=b3c647d19c00">Lt(x,M)</a>) ∧ <a class="pd-definition-ref" data-definition="ND0055" href="ND0055.html?v=b3c647d19c00">CRTPrefixSolution(r,s,b,c,l,x)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((((forall gcrt_common_index_gfull_secondwave_lcm_own gcrt_common_modulus_gfull_secondwave_lcm_own. (exists ff_lt_gcrt_gfull_secondwave_lcm_own_bound. ff_lt_gcrt_gfull_secondwave_lcm_own_bound + S gcrt_common_index_gfull_secondwave_lcm_own = l) -&gt; (((exists ff_h_gcrt_gfull_secondwave_lcm_own_entry. ff_h_gcrt_gfull_secondwave_lcm_own_entry + S (gcrt_common_modulus_gfull_secondwave_lcm_own) = S ((S (gcrt_common_index_gfull_secondwave_lcm_own)) * c)) /\ exists ff_q_gcrt_gfull_secondwave_lcm_own_entry. b = ff_q_gcrt_gfull_secondwave_lcm_own_entry * S ((S (gcrt_common_index_gfull_secondwave_lcm_own)) * c) + (gcrt_common_modulus_gfull_secondwave_lcm_own))) -&gt; exists gcrt_common_quotient_gfull_secondwave_lcm_own. M = gcrt_common_modulus_gfull_secondwave_lcm_own * gcrt_common_quotient_gfull_secondwave_lcm_own) /\ forall gcrt_lcm_common_gfull_secondwave_lcm. (forall gcrt_common_index_gfull_secondwave_lcm_other gcrt_common_modulus_gfull_secondwave_lcm_other. (exists ff_lt_gcrt_gfull_secondwave_lcm_other_bound. ff_lt_gcrt_gfull_secondwave_lcm_other_bound + S gcrt_common_index_gfull_secondwave_lcm_other = l) -&gt; (((exists ff_h_gcrt_gfull_secondwave_lcm_other_entry. ff_h_gcrt_gfull_secondwave_lcm_other_entry + S (gcrt_common_modulus_gfull_secondwave_lcm_other) = S ((S (gcrt_common_index_gfull_secondwave_lcm_other)) * c)) /\ exists ff_q_gcrt_gfull_secondwave_lcm_other_entry. b = ff_q_gcrt_gfull_secondwave_lcm_other_entry * S ((S (gcrt_common_index_gfull_secondwave_lcm_other)) * c) + (gcrt_common_modulus_gfull_secondwave_lcm_other))) -&gt; exists gcrt_common_quotient_gfull_secondwave_lcm_other. gcrt_lcm_common_gfull_secondwave_lcm = gcrt_common_modulus_gfull_secondwave_lcm_other * gcrt_common_quotient_gfull_secondwave_lcm_other) -&gt; exists gcrt_lcm_quotient_gfull_secondwave_lcm. gcrt_lcm_common_gfull_secondwave_lcm = M * gcrt_lcm_quotient_gfull_secondwave_lcm)) /\ ((M = 0 \/ (exists ff_lt_gcrt_gfull_secondwave_bound. ff_lt_gcrt_gfull_secondwave_bound + S x = M)) /\ (forall gcrt_solution_index_gfull_secondwave_solution gcrt_solution_residue_gfull_secondwave_solution gcrt_solution_modulus_gfull_secondwave_solution. (exists ff_lt_gcrt_gfull_secondwave_solution_bound. ff_lt_gcrt_gfull_secondwave_solution_bound + S gcrt_solution_index_gfull_secondwave_solution = l) -&gt; (((exists ff_h_gcrt_gfull_secondwave_solution_residue. ff_h_gcrt_gfull_secondwave_solution_residue + S (gcrt_solution_residue_gfull_secondwave_solution) = S ((S (gcrt_solution_index_gfull_secondwave_solution)) * s)) /\ exists ff_q_gcrt_gfull_secondwave_solution_residue. r = ff_q_gcrt_gfull_secondwave_solution_residue * S ((S (gcrt_solution_index_gfull_secondwave_solution)) * s) + (gcrt_solution_residue_gfull_secondwave_solution))) -&gt; (((exists ff_h_gcrt_gfull_secondwave_solution_modulus. ff_h_gcrt_gfull_secondwave_solution_modulus + S (gcrt_solution_modulus_gfull_secondwave_solution) = S ((S (gcrt_solution_index_gfull_secondwave_solution)) * c)) /\ exists ff_q_gcrt_gfull_secondwave_solution_modulus. b = ff_q_gcrt_gfull_secondwave_solution_modulus * S ((S (gcrt_solution_index_gfull_secondwave_solution)) * c) + (gcrt_solution_modulus_gfull_secondwave_solution))) -&gt; (exists hgcrt_mod_left_gcrt_gfull_secondwave_solution_congruence hgcrt_mod_right_gcrt_gfull_secondwave_solution_congruence. x + gcrt_solution_modulus_gfull_secondwave_solution * hgcrt_mod_left_gcrt_gfull_secondwave_solution_congruence = gcrt_solution_residue_gfull_secondwave_solution + gcrt_solution_modulus_gfull_secondwave_solution * hgcrt_mod_right_gcrt_gfull_secondwave_solution_congruence))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0056.html?v=b3c647d19c00">CRTPrefixLCM(b,c,l,M)</a><a class="pd-chip" href="ND0055.html?v=b3c647d19c00">CRTPrefixSolution(r,s,b,c,l,x)</a><a class="pd-chip" href="PD0002.html?v=b3c647d19c00">Lt(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/FC0010.html?v=b3c647d19c00">FC0010 · crt_canonical_prefix_solution_implies_normalized</a><a class="pd-chip" href="../tag/FC0011.html?v=b3c647d19c00">FC0011 · crt_normalized_prefix_solution_unique</a><a class="pd-chip" href="../tag/FC0012.html?v=b3c647d19c00">FC0012 · crt_prefix_solution_normalized_exists</a><a class="pd-chip" href="../tag/FC0013.html?v=b3c647d19c00">FC0013 · crt_pairwise_compatible_prefix_normalized_exists_unique</a><a class="pd-chip" href="../tag/FC0016.html?v=b3c647d19c00">FC0016 · crt_normalized_prefix_solution_class_iff_lcm</a><a class="pd-chip" href="../tag/FC0017.html?v=b3c647d19c00">FC0017 · crt_normalized_zero_lcm_all_solutions_unique</a><a class="pd-chip" href="../tag/FC0018.html?v=b3c647d19c00">FC0018 · crt_positive_normalized_prefix_iff_canonical</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>7</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>6</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0077.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>6c9a2220dd0b6163a5b5b07afb7bb6fd1f6803a46d23e2c43fc4e502d7fe166f</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

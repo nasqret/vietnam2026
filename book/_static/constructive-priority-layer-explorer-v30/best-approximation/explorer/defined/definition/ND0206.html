@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0206 — BestApproximationSecondKind(a,b,u,v) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="best-approximation"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=BestApproximationSecondKind&amp;v=b3c647d19c00">Global definition: BestApproximationSecondKind</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F08&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G072" href="../../../../grand-campaign/?view=goal&amp;focus=G072&amp;v=b3c647d19c00">G072 milestone</a></nav>
+  <p class="pd-tag">ND0206</p><h1>BestApproximationSecondKind(a,b,u,v)</h1>
+  <p>Every natural numerator and strictly smaller positive denominator has cross-product error at least that of u/v. Both absolute errors are actual witnesses.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ cfc_numerator_prioritylayer. ∀ cfc_denominator_prioritylayer. ∀ cfc_current_error_prioritylayer. ∀ cfc_candidate_error_prioritylayer. ¬cfc_denominator_prioritylayer = 0 → <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=b3c647d19c00">Lt(cfc_denominator_prioritylayer,v)</a> → <a class="pd-definition-ref" data-definition="ND0178" href="ND0178.html?v=b3c647d19c00">NaturalAbsDifference(a · v,b · u,cfc_current_error_prioritylayer)</a> → <a class="pd-definition-ref" data-definition="ND0178" href="ND0178.html?v=b3c647d19c00">NaturalAbsDifference(a · cfc_denominator_prioritylayer,b · cfc_numerator_prioritylayer,cfc_candidate_error_prioritylayer)</a> → <a class="pd-definition-ref" data-definition="PD0001" href="PD0001.html?v=b3c647d19c00">Le(cfc_current_error_prioritylayer,cfc_candidate_error_prioritylayer)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall cfc_numerator_prioritylayer cfc_denominator_prioritylayer cfc_current_error_prioritylayer cfc_candidate_error_prioritylayer. ~(cfc_denominator_prioritylayer = 0) -&gt; (exists cfba_gap_prioritylayerdenominator. cfba_gap_prioritylayerdenominator + S (cfc_denominator_prioritylayer) = (v)) -&gt; ((((a) * (v)) = ((b) * (u)) + (cfc_current_error_prioritylayer)) \/ (((b) * (u)) = ((a) * (v)) + (cfc_current_error_prioritylayer))) -&gt; ((((a) * cfc_denominator_prioritylayer) = ((b) * cfc_numerator_prioritylayer) + (cfc_candidate_error_prioritylayer)) \/ (((b) * cfc_numerator_prioritylayer) = ((a) * cfc_denominator_prioritylayer) + (cfc_candidate_error_prioritylayer))) -&gt; (exists cfba_bound_prioritylayerresult. cfba_bound_prioritylayerresult + (cfc_current_error_prioritylayer) = (cfc_candidate_error_prioritylayer))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0178.html?v=b3c647d19c00">NaturalAbsDifference(p,n,D)</a><a class="pd-chip" href="PD0002.html?v=b3c647d19c00">Lt(a,b)</a><a class="pd-chip" href="PD0001.html?v=b3c647d19c00">Le(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/BA0053.html?v=b3c647d19c00">BA0053 · continued_fraction_convergent_best_approximation</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>3</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0206.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>486314aeeabe05876dc344671ba18a5b93831ffe0f3ac3c895c6ecda09a437bd</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-priority-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

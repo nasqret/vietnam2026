@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0132 — ModularSetPullback(b,c,d,e,p,t) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="cauchy-davenport"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=ModularSetPullback&amp;v=b3c647d19c00">Global definition: ModularSetPullback</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D03&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F06&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G051" href="../../../../grand-campaign/?view=goal&amp;focus=G051&amp;v=b3c647d19c00">G051 milestone</a></nav>
+  <p class="pd-tag">ND0132</p><h1>ModularSetPullback(b,c,d,e,p,t)</h1>
+  <p>The target is the actual translated pullback A−t: its bit at i equals A&#x27;s bit at the canonical residue of i+t.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ fms_i_secondwave. ∀ fms_j_secondwave. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=b3c647d19c00">Lt(fms_i_secondwave,p)</a> → <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=b3c647d19c00">Lt(fms_j_secondwave,p)</a> → <a class="pd-definition-ref" data-definition="PD0008" href="PD0008.html?v=b3c647d19c00">ModEq(p,fms_i_secondwave + t,fms_j_secondwave)</a> → (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=b3c647d19c00">BetaAt(d,e,fms_i_secondwave,1)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=b3c647d19c00">BetaAt(b,c,fms_j_secondwave,1)</a>) ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=b3c647d19c00">BetaAt(b,c,fms_j_secondwave,1)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=b3c647d19c00">BetaAt(d,e,fms_i_secondwave,1)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall fms_i_secondwave fms_j_secondwave. (exists fms_gap_secondwave_i. fms_gap_secondwave_i + S (fms_i_secondwave) = (p)) -&gt; (exists fms_gap_secondwave_j. fms_gap_secondwave_j + S (fms_j_secondwave) = (p)) -&gt; (exists fms_u_secondwave fms_v_secondwave. (fms_i_secondwave + t) + (p) * fms_u_secondwave = (fms_j_secondwave) + (p) * fms_v_secondwave) -&gt; ((((((exists fs_h_fms_secondwave_target. fs_h_fms_secondwave_target + S (1) = S ((S (fms_i_secondwave)) * e)) /\ exists fs_q_fms_secondwave_target. d = fs_q_fms_secondwave_target * S ((S (fms_i_secondwave)) * e) + (1))) -&gt; (((exists fs_h_fms_secondwave_source. fs_h_fms_secondwave_source + S (1) = S ((S (fms_j_secondwave)) * c)) /\ exists fs_q_fms_secondwave_source. b = fs_q_fms_secondwave_source * S ((S (fms_j_secondwave)) * c) + (1)))) /\ ((((exists fs_h_fms_secondwave_source. fs_h_fms_secondwave_source + S (1) = S ((S (fms_j_secondwave)) * c)) /\ exists fs_q_fms_secondwave_source. b = fs_q_fms_secondwave_source * S ((S (fms_j_secondwave)) * c) + (1))) -&gt; (((exists fs_h_fms_secondwave_target. fs_h_fms_secondwave_target + S (1) = S ((S (fms_i_secondwave)) * e)) /\ exists fs_q_fms_secondwave_target. d = fs_q_fms_secondwave_target * S ((S (fms_i_secondwave)) * e) + (1))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=b3c647d19c00">Lt(a,b)</a><a class="pd-chip" href="PD0008.html?v=b3c647d19c00">ModEq(m,a,b)</a><a class="pd-chip" href="PD0013.html?v=b3c647d19c00">BetaAt(b,c,i,x)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/CD0021.html?v=b3c647d19c00">CD0021 · finite_modular_composition_pullback</a><a class="pd-chip" href="../tag/CD0022.html?v=b3c647d19c00">CD0022 · finite_modular_set_pullback_exists</a><a class="pd-chip" href="../tag/CD0027.html?v=b3c647d19c00">CD0027 · finite_modular_pullback_membership_witness</a><a class="pd-chip" href="../tag/CD0028.html?v=b3c647d19c00">CD0028 · finite_modular_pushforward_membership_witness</a><a class="pd-chip" href="../tag/CD002E.html?v=b3c647d19c00">CD002E · finite_partial_sumset_succ_present</a><a class="pd-chip" href="../tag/CD002F.html?v=b3c647d19c00">CD002F · finite_modular_sumset_prefix_exists</a><a class="pd-chip" href="../tag/CD0036.html?v=b3c647d19c00">CD0036 · finite_modular_dyson_upper_from_union</a><a class="pd-chip" href="../tag/CD0037.html?v=b3c647d19c00">CD0037 · finite_modular_dyson_lower_from_pullback</a><a class="pd-chip" href="../tag/CD0038.html?v=b3c647d19c00">CD0038 · finite_modular_dyson_transform_exists</a><a class="pd-chip" href="../tag/CD0044.html?v=b3c647d19c00">CD0044 · finite_modular_pullback_zero_member</a><a class="pd-chip" href="../tag/CD0045.html?v=b3c647d19c00">CD0045 · finite_modular_opposite_translates_sum_cover</a><a class="pd-chip" href="../tag/CD0046.html?v=b3c647d19c00">CD0046 · prime_cauchy_davenport_cover_bound</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>6</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>3</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0132.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>1b40fcaeb7b906fea45fb957a69d0c9c3e6af056e8b6986e47c261c4db1bea39</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>

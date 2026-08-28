@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0161 — ZPairRep(z,ap,an,bp,bn) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="gaussian-integers"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
+       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=ZPairRep&amp;v=b3c647d19c00">Global definition: ZPairRep</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=b3c647d19c00">G081 milestone</a></nav>
+  <p class="pd-tag">ND0161</p><h1>ZPairRep(z,ap,an,bp,bn)</h1>
+  <p>The shared pair code represents the two supplied signed differences, with arbitrary nonnormalized representatives allowed.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ ge_representation_real_code_lowerlayer. ∃ ge_representation_imaginary_code_lowerlayer. z = (ge_representation_real_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) · S (ge_representation_real_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) + (ge_representation_imaginary_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) ∧ (<a class="pd-definition-ref" data-definition="ND0143" href="ND0143.html?v=b3c647d19c00">SignedBalance(ge_representation_real_code_lowerlayer,ap,an)</a> ∧ <a class="pd-definition-ref" data-definition="ND0143" href="ND0143.html?v=b3c647d19c00">SignedBalance(ge_representation_imaginary_code_lowerlayer,bp,bn)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists ge_representation_real_code_lowerlayer ge_representation_imaginary_code_lowerlayer. (((z) = ((ge_representation_real_code_lowerlayer) + (ge_representation_imaginary_code_lowerlayer)) * S ((ge_representation_real_code_lowerlayer) + (ge_representation_imaginary_code_lowerlayer)) + ((ge_representation_imaginary_code_lowerlayer) + (ge_representation_imaginary_code_lowerlayer))) /\ ((exists ge_balance_positive_lowerlayerreal ge_balance_negative_lowerlayerreal. (((((ge_representation_real_code_lowerlayer) = 2 * (ge_balance_positive_lowerlayerreal) /\ (ge_balance_negative_lowerlayerreal) = 0) \/ exists ge_signed_half_lowerlayerrealdecode. (((ge_representation_real_code_lowerlayer) = 2 * ge_signed_half_lowerlayerrealdecode + 1 /\ (ge_balance_positive_lowerlayerreal) = 0) /\ (ge_balance_negative_lowerlayerreal) = S ge_signed_half_lowerlayerrealdecode))) /\ ((ap) + ge_balance_negative_lowerlayerreal = (an) + ge_balance_positive_lowerlayerreal))) /\ (exists ge_balance_positive_lowerlayerimaginary ge_balance_negative_lowerlayerimaginary. (((((ge_representation_imaginary_code_lowerlayer) = 2 * (ge_balance_positive_lowerlayerimaginary) /\ (ge_balance_negative_lowerlayerimaginary) = 0) \/ exists ge_signed_half_lowerlayerimaginarydecode. (((ge_representation_imaginary_code_lowerlayer) = 2 * ge_signed_half_lowerlayerimaginarydecode + 1 /\ (ge_balance_positive_lowerlayerimaginary) = 0) /\ (ge_balance_negative_lowerlayerimaginary) = S ge_signed_half_lowerlayerimaginarydecode))) /\ ((bp) + ge_balance_negative_lowerlayerimaginary = (bn) + ge_balance_positive_lowerlayerimaginary)))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0143.html?v=b3c647d19c00">SignedBalance(z,p,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0164.html?v=b3c647d19c00">GNorm(z,n)</a><a class="pd-chip" href="ND0165.html?v=b3c647d19c00">ZPairAdd(a,b,c)</a><a class="pd-chip" href="ND0166.html?v=b3c647d19c00">GMul(a,b,c)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/GI003F.html?v=b3c647d19c00">GI003F · gaussian_representation_exists</a><a class="pd-chip" href="../tag/GI0040.html?v=b3c647d19c00">GI0040 · gaussian_representation_functional</a><a class="pd-chip" href="../tag/GI0041.html?v=b3c647d19c00">GI0041 · gaussian_representation_integer_transport</a><a class="pd-chip" href="../tag/GI0042.html?v=b3c647d19c00">GI0042 · gaussian_representation_equal</a><a class="pd-chip" href="../tag/GI0043.html?v=b3c647d19c00">GI0043 · gaussian_representation_decode</a><a class="pd-chip" href="../tag/GI0044.html?v=b3c647d19c00">GI0044 · gaussian_decode_representation</a><a class="pd-chip" href="../tag/GI0045.html?v=b3c647d19c00">GI0045 · gaussian_representation_is_gaussian</a><a class="pd-chip" href="../tag/GI0047.html?v=b3c647d19c00">GI0047 · gaussian_representation_zero_iff</a><a class="pd-chip" href="../tag/GI004D.html?v=b3c647d19c00">GI004D · gaussian_norm_of_representation</a><a class="pd-chip" href="../tag/GI004E.html?v=b3c647d19c00">GI004E · gaussian_norm_for_representation</a><a class="pd-chip" href="../tag/GI0053.html?v=b3c647d19c00">GI0053 · gaussian_add_of_representations</a><a class="pd-chip" href="../tag/GI0054.html?v=b3c647d19c00">GI0054 · gaussian_add_for_representations</a><a class="pd-chip" href="../tag/GI0055.html?v=b3c647d19c00">GI0055 · gaussian_add_exists</a><a class="pd-chip" href="../tag/GI0057.html?v=b3c647d19c00">GI0057 · gaussian_multiply_of_representations</a><a class="pd-chip" href="../tag/GI0058.html?v=b3c647d19c00">GI0058 · gaussian_multiply_for_representations</a><a class="pd-chip" href="../tag/GI0059.html?v=b3c647d19c00">GI0059 · gaussian_multiply_exists</a><a class="pd-chip" href="../tag/GI005C.html?v=b3c647d19c00">GI005C · gaussian_division_remainder_of_representations</a><a class="pd-chip" href="../tag/GI005D.html?v=b3c647d19c00">GI005D · gaussian_euclidean_division_exists</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>5</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0161.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>484f8588e2d9b5e92fda7c8fda43f480f34dcfae16a7ad0137fc32cd8cf8eeb8</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+</body>
+</html>
