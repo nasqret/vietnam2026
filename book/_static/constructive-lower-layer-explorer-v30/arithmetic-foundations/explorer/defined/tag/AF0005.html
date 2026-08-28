@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="arithmetic-foundations"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/AF0005.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=AF0005&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G005" href="../../../../grand-campaign/?view=goal&amp;focus=G005&amp;v=b3c647d19c00">G005 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/AF0005.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=AF0005&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G005" href="../../../../grand-campaign/?view=goal&amp;focus=G005&amp;v=ac7111ec14ff">G005 milestone</a></nav>
   <p class="pd-tag">AF0005</p><h1>factor_permutation_below_zero_impossible</h1>
   <p>There is no natural index below zero; empty list and permutation contracts are genuinely vacuous.</p><p class="pd-status">Alpha v30 checked-use · first admitted v28 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">The original division, gcd, cancellation, and factor-existence foundations are exposed through checked wrappers. Unordered uniqueness adds an actual bounded, injective, surjective index map matching repeated prime occurrences. The empty factor list represents one, not zero.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ i. ¬<a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=b3c647d19c00">Lt(i,0)</a></code></pre>
+    <pre><code>∀ i. ¬<a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=ac7111ec14ff">Lt(i,0)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0002.html?v=b3c647d19c00">Lt(a,b) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0002.html?v=ac7111ec14ff">Lt(a,b) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">le_zero · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall i. (exists pfp_gap_empty. pfp_gap_empty + S (i) = (0)) -&gt; false</code></pre></details>

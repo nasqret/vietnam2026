@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="exponent-lifting"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/EL000C.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=EL000C&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F04&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G036" href="../../../../grand-campaign/?view=goal&amp;focus=G036&amp;v=b3c647d19c00">G036 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/EL000C.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=EL000C&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F04&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G036" href="../../../../grand-campaign/?view=goal&amp;focus=G036&amp;v=ac7111ec14ff">G036 milestone</a></nav>
   <p class="pd-tag">EL000C</p><h1>lte_prime_nondivisor_one</h1>
   <p>An actual prime does not divide one.</p><p class="pd-status">Alpha v30 checked-use · first admitted v29 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">All displayed hypotheses are required. Powers and positive differences are actual existential outputs. The proof constructs second-order correction identities and iterates the prime step; no binomial expansion or LTE oracle is assumed. The 2-adic variants remain separate open targets.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ p. ¬p = 1 ∧ (∀ x. ∀ y. p = x · y → x = 1 ∨ y = 1) → ¬<a class="pd-definition-ref" data-definition="PD0003" href="../definition/PD0003.html?v=b3c647d19c00">Dvd(p,1)</a></code></pre>
+    <pre><code>∀ p. ¬p = 1 ∧ (∀ x. ∀ y. p = x · y → x = 1 ∨ y = 1) → ¬<a class="pd-definition-ref" data-definition="PD0003" href="../definition/PD0003.html?v=ac7111ec14ff">Dvd(p,1)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0003.html?v=b3c647d19c00">Dvd(d,n) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0003.html?v=ac7111ec14ff">Dvd(d,n) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">mul_eq_one_components · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall p. (~((p) = 1) /\ forall pvs_left_unit_prime pvs_right_unit_prime. (p) = pvs_left_unit_prime * pvs_right_unit_prime -&gt; pvs_left_unit_prime = 1 \/ pvs_right_unit_prime = 1) -&gt; ~(exists olte_factor_unit. (1) = (p) * olte_factor_unit)</code></pre></details>

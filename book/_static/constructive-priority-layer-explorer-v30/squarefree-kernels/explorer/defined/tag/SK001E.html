@@ -8,20 +8,20 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="squarefree-kernels"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/SK001E.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=SK001E&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G010" href="../../../../grand-campaign/?view=goal&amp;focus=G010&amp;v=b3c647d19c00">G010 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/SK001E.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=SK001E&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G010" href="../../../../grand-campaign/?view=goal&amp;focus=G010&amp;v=ac7111ec14ff">G010 milestone</a></nav>
   <p class="pd-tag">SK001E</p><h1>prime_exponent_prefix_gcd_empty</h1>
   <p>The empty exponent prefix has greatest common divisor zero, including all common divisors of the empty family.</p><p class="pd-status">Alpha v30 checked-use · first admitted v29 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">For n&gt;1 the exponent gcd and a real beta table classify and witness all positive root degrees. The unit n=1 has a separate uniform certificate for every positive degree. Zero is excluded. NaturalSquarefreeDecomposition is deliberately distinct from the unrelated polynomial definition.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ b. ∀ c. <a class="pd-definition-ref" data-definition="ND0191" href="../definition/ND0191.html?v=b3c647d19c00">PrimeExponentPrefixGCD(b,c,0,0)</a></code></pre>
+    <pre><code>∀ b. ∀ c. <a class="pd-definition-ref" data-definition="ND0191" href="../definition/ND0191.html?v=ac7111ec14ff">PrimeExponentPrefixGCD(b,c,0,0)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0191.html?v=b3c647d19c00">PrimeExponentPrefixGCD(b,c,l,g) · 1</a></div></section>
-  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip pd-external" href="../../../../arithmetic-foundations/explorer/defined/tag/AF0005.html?v=b3c647d19c00">factor_permutation_below_zero_impossible · checked external prerequisite</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0191.html?v=ac7111ec14ff">PrimeExponentPrefixGCD(b,c,l,g) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip pd-external" href="../../../../arithmetic-foundations/explorer/defined/tag/AF0005.html?v=ac7111ec14ff">factor_permutation_below_zero_impossible · checked external prerequisite</a></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall b c. (((forall ppf_index_empty_gcdcommon ppf_entry_empty_gcdcommon. (exists pvs_gap_empty_gcdcommonbound. pvs_gap_empty_gcdcommonbound + S (ppf_index_empty_gcdcommon) = (0)) -&gt; (((exists ff_h_pvs_empty_gcdcommonentry. ff_h_pvs_empty_gcdcommonentry + S (ppf_entry_empty_gcdcommon) = S ((S (ppf_index_empty_gcdcommon)) * c)) /\ exists ff_q_pvs_empty_gcdcommonentry. b = ff_q_pvs_empty_gcdcommonentry * S ((S (ppf_index_empty_gcdcommon)) * c) + (ppf_entry_empty_gcdcommon))) -&gt; (exists pvs_factor_empty_gcdcommondivisor. (ppf_entry_empty_gcdcommon) = (0) * pvs_factor_empty_gcdcommondivisor)) /\ (forall ppf_common_empty_gcd. (forall ppf_index_empty_gcdother ppf_entry_empty_gcdother. (exists pvs_gap_empty_gcdotherbound. pvs_gap_empty_gcdotherbound + S (ppf_index_empty_gcdother) = (0)) -&gt; (((exists ff_h_pvs_empty_gcdotherentry. ff_h_pvs_empty_gcdotherentry + S (ppf_entry_empty_gcdother) = S ((S (ppf_index_empty_gcdother)) * c)) /\ exists ff_q_pvs_empty_gcdotherentry. b = ff_q_pvs_empty_gcdotherentry * S ((S (ppf_index_empty_gcdother)) * c) + (ppf_entry_empty_gcdother))) -&gt; (exists pvs_factor_empty_gcdotherdivisor. (ppf_entry_empty_gcdother) = (ppf_common_empty_gcd) * pvs_factor_empty_gcdotherdivisor)) -&gt; (exists pvs_factor_empty_gcdgreatest. (0) = (ppf_common_empty_gcd) * pvs_factor_empty_gcdgreatest))))</code></pre></details>
   <section><h2>Complete tactic proof in conservative notation</h2>

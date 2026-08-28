@@ -8,21 +8,21 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="integer-linear-algebra"><header class="pd-header pd-definition-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
-       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedAlternatingCofactorTerm&amp;v=b3c647d19c00">Global definition: SignedAlternatingCofactorTerm</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=b3c647d19c00">T13 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedAlternatingCofactorTerm&amp;v=ac7111ec14ff">Global definition: SignedAlternatingCofactorTerm</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=ac7111ec14ff">T13 milestone</a></nav>
   <p class="pd-tag">ND0061</p><h1>SignedAlternatingCofactorTerm(ap,an,bp,bn,i,p,n)</h1>
   <p>The exact positive/negative natural-pair product with signs exchanged precisely at odd cofactor positions.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
 </header><main class="pd-theorem-layout"><div class="pd-proof-panel">
   <section><h2>Definition in prerequisite notation</h2>
-    <pre><code><a class="pd-definition-ref" data-definition="PD0009" href="PD0009.html?v=b3c647d19c00">Even(i)</a> ∧ (p = ap · bp + an · bn ∧ n = ap · bn + an · bp) ∨ <a class="pd-definition-ref" data-definition="PD0010" href="PD0010.html?v=b3c647d19c00">Odd(i)</a> ∧ (p = ap · bn + an · bp ∧ n = ap · bp + an · bn)</code></pre>
+    <pre><code><a class="pd-definition-ref" data-definition="PD0009" href="PD0009.html?v=ac7111ec14ff">Even(i)</a> ∧ (p = ap · bp + an · bn ∧ n = ap · bn + an · bp) ∨ <a class="pd-definition-ref" data-definition="PD0010" href="PD0010.html?v=ac7111ec14ff">Odd(i)</a> ∧ (p = ap · bn + an · bp ∧ n = ap · bp + an · bn)</code></pre>
     <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
   <details><summary>Hygienic expanded first-order definition</summary>
     <pre><code>((exists ff_even_mce_term_breakthrough. i = 2 * ff_even_mce_term_breakthrough) /\ (p = (ap) * (bp) + (an) * (bn) /\ n = (ap) * (bn) + (an) * (bp))) \/ ((exists ff_odd_mce_term_breakthrough. i = 2 * ff_odd_mce_term_breakthrough + 1) /\ (p = (ap) * (bn) + (an) * (bp) /\ n = (ap) * (bp) + (an) * (bn)))</code></pre>
     <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
-  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0009.html?v=b3c647d19c00">Even(n)</a><a class="pd-chip" href="PD0010.html?v=b3c647d19c00">Odd(n)</a></div></section>
-  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0062.html?v=b3c647d19c00">SignedAlternatingProductPrefix(ab,ac,db,dc,eb,ec,fb,fc,ub,uc,vb,vc,l)</a></div></section>
-  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DL0020.html?v=b3c647d19c00">DL0020 · matrix_recursive_alternating_prefix_transport</a><a class="pd-chip" href="../tag/DL0089.html?v=b3c647d19c00">DL0089 · matrix_integer_cofactor_term_balance</a><a class="pd-chip" href="../tag/DL008B.html?v=b3c647d19c00">DL008B · matrix_integer_alternating_prefix_balance</a></div></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0009.html?v=ac7111ec14ff">Even(n)</a><a class="pd-chip" href="PD0010.html?v=ac7111ec14ff">Odd(n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0062.html?v=ac7111ec14ff">SignedAlternatingProductPrefix(ab,ac,db,dc,eb,ec,fb,fc,ub,uc,vb,vc,l)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DL0020.html?v=ac7111ec14ff">DL0020 · matrix_recursive_alternating_prefix_transport</a><a class="pd-chip" href="../tag/DL0089.html?v=ac7111ec14ff">DL0089 · matrix_integer_cofactor_term_balance</a><a class="pd-chip" href="../tag/DL008B.html?v=ac7111ec14ff">DL008B · matrix_integer_alternating_prefix_balance</a></div></section>
 </div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
   <dt>Arity</dt><dd>7</dd>
   <dt>Topological notation layer</dt><dd>1</dd>

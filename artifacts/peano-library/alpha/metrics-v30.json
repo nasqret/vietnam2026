@@ -1157,7 +1157,7 @@
     "status": "kernel_checked_complete_dependency_closed_additive_edition"
   },
   "catalog_path": "artifacts/peano-library/alpha/catalog-v30.json",
-  "catalog_sha256": "b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb",
+  "catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7",
   "channel": "alpha",
   "checked_closure_metrics": {
     "campaign_v19_bundle_accounting": {

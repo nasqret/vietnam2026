@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="totient-products"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/TP0001.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=TP0001&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G006" href="../../../../grand-campaign/?view=goal&amp;focus=G006&amp;v=b3c647d19c00">G006 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/TP0001.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=TP0001&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G006" href="../../../../grand-campaign/?view=goal&amp;focus=G006&amp;v=ac7111ec14ff">G006 milestone</a></nav>
   <p class="pd-tag">TP0001</p><h1>totient_coprime_decidable</h1>
   <p>Decide common-divisor coprimality from the actual canonical gcd; includes both zero coordinates.</p><p class="pd-status">Alpha v30 checked-use · first admitted v29 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">Phi counts the actual 0/1 coprimality bits on 0≤a&lt;n. EulerProduct has no Phi assumption or conclusion hidden in its definition. The empty product and the residue zero give Phi(1,1). The theorem does not assert Phi at zero.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ a. ∀ n. <a class="pd-definition-ref" data-definition="PD0005" href="../definition/PD0005.html?v=b3c647d19c00">Coprime(a,n)</a> ∨ ¬<a class="pd-definition-ref" data-definition="PD0005" href="../definition/PD0005.html?v=b3c647d19c00">Coprime(a,n)</a></code></pre>
+    <pre><code>∀ a. ∀ n. <a class="pd-definition-ref" data-definition="PD0005" href="../definition/PD0005.html?v=ac7111ec14ff">Coprime(a,n)</a> ∨ ¬<a class="pd-definition-ref" data-definition="PD0005" href="../definition/PD0005.html?v=ac7111ec14ff">Coprime(a,n)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0005.html?v=b3c647d19c00">Coprime(a,b) · 2</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0005.html?v=ac7111ec14ff">Coprime(a,b) · 2</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">gcd_exists_relational · checked external prerequisite</span><span class="pd-chip pd-external">eq_decidable · checked external prerequisite</span><span class="pd-chip pd-external">is_gcd_one_to_coprime · checked external prerequisite</span><span class="pd-chip pd-external">is_gcd_dvd_left · checked external prerequisite</span><span class="pd-chip pd-external">is_gcd_dvd_right · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall a n. (forall eut_divisor_dec_yes. (exists eut_left_dec_yes. (a) = eut_divisor_dec_yes * eut_left_dec_yes) -&gt; (exists eut_right_dec_yes. (n) = eut_divisor_dec_yes * eut_right_dec_yes) -&gt; eut_divisor_dec_yes = 1) \/ ~(forall eut_divisor_dec_no. (exists eut_left_dec_no. (a) = eut_divisor_dec_no * eut_left_dec_no) -&gt; (exists eut_right_dec_no. (n) = eut_divisor_dec_no * eut_right_dec_no) -&gt; eut_divisor_dec_no = 1)</code></pre></details>

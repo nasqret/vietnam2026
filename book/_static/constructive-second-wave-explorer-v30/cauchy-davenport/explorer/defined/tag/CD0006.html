@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="cauchy-davenport"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/CD0006.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=CD0006&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D03&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F06&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G051" href="../../../../grand-campaign/?view=goal&amp;focus=G051&amp;v=b3c647d19c00">G051 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/CD0006.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=CD0006&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D03&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F06&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G051" href="../../../../grand-campaign/?view=goal&amp;focus=G051&amp;v=ac7111ec14ff">G051 milestone</a></nav>
   <p class="pd-tag">CD0006</p><h1>finite_add_le_add</h1>
   <p>The two genuine finite-order witnesses add componentwise.</p><p class="pd-status">Alpha v30 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">Sets are complete characteristic-bit codes with actual finite cardinality witnesses. The proof constructs translations and the sumset; no finite-choice oracle, supplied cardinality conclusion, or unproved polynomial-method premise is used.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ a. ∀ b. ∀ c. ∀ d. <a class="pd-definition-ref" data-definition="PD0001" href="../definition/PD0001.html?v=b3c647d19c00">Le(a,b)</a> → <a class="pd-definition-ref" data-definition="PD0001" href="../definition/PD0001.html?v=b3c647d19c00">Le(c,d)</a> → <a class="pd-definition-ref" data-definition="PD0001" href="../definition/PD0001.html?v=b3c647d19c00">Le(a + c,b + d)</a></code></pre>
+    <pre><code>∀ a. ∀ b. ∀ c. ∀ d. <a class="pd-definition-ref" data-definition="PD0001" href="../definition/PD0001.html?v=ac7111ec14ff">Le(a,b)</a> → <a class="pd-definition-ref" data-definition="PD0001" href="../definition/PD0001.html?v=ac7111ec14ff">Le(c,d)</a> → <a class="pd-definition-ref" data-definition="PD0001" href="../definition/PD0001.html?v=ac7111ec14ff">Le(a + c,b + d)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0001.html?v=b3c647d19c00">Le(a,b) · 3</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0001.html?v=ac7111ec14ff">Le(a,b) · 3</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">add_le_add_right · checked external prerequisite</span><span class="pd-chip pd-external">add_le_add_left · checked external prerequisite</span><span class="pd-chip pd-external">le_trans · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall a b c d. (exists fms_gap_le. fms_gap_le + (a) = (b)) -&gt; (exists fms_gap_le. fms_gap_le + (c) = (d)) -&gt; (exists fms_gap_le. fms_gap_le + (a+c) = (b+d))</code></pre></details>

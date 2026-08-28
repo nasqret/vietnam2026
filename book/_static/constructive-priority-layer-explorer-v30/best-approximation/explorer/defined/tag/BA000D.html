@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="best-approximation"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/BA000D.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=BA000D&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F08&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G072" href="../../../../grand-campaign/?view=goal&amp;focus=G072&amp;v=b3c647d19c00">G072 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/BA000D.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=BA000D&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F08&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G072" href="../../../../grand-campaign/?view=goal&amp;focus=G072&amp;v=ac7111ec14ff">G072 milestone</a></nav>
   <p class="pd-tag">BA000D</p><h1>cf_approximation_derived_invariant_denominator_positive</h1>
   <p>Every actual derived nonempty-prefix invariant forces a positive denominator; this is proved, rather than postulated to make the convergent predicate non-vacuous.</p><p class="pd-status">Alpha v30 checked-use · first admitted v29 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">The initial 0/1 convergent is included: u is natural, not necessarily positive. Comparison denominators are strictly smaller and positive. Signed competitors are represented by an arbitrary difference rp−rn. Approximation inequalities are proved from the trace, never stored as assumptions in Convergent.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ a. ∀ b. ∀ u. ∀ U. ∀ v. ∀ V. <a class="pd-definition-ref" data-definition="ND0201" href="../definition/ND0201.html?v=b3c647d19c00">ConvergentErrorInvariant(a,b,u,U,v,V)</a> → ¬v = 0</code></pre>
+    <pre><code>∀ a. ∀ b. ∀ u. ∀ U. ∀ v. ∀ V. <a class="pd-definition-ref" data-definition="ND0201" href="../definition/ND0201.html?v=ac7111ec14ff">ConvergentErrorInvariant(a,b,u,U,v,V)</a> → ¬v = 0</code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0201.html?v=b3c647d19c00">ConvergentErrorInvariant(a,b,u,U,v,V) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0201.html?v=ac7111ec14ff">ConvergentErrorInvariant(a,b,u,U,v,V) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">succ_ne_zero · checked external prerequisite</span><span class="pd-chip pd-external">mul_eq_one_components · checked external prerequisite</span><span class="pd-chip pd-external">mul_one · checked external prerequisite</span><span class="pd-chip pd-external">zero_add · checked external prerequisite</span><span class="pd-chip pd-external">lt_not_le · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall a b u U v V. (exists cfba_error_positive_denominator cfba_previous_error_positive_denominator. (((((u * V + 1 = U * v) /\ ((a * v = b * u + cfba_error_positive_denominator) /\ (b * U = a * V + cfba_previous_error_positive_denominator)))) \/ (((U * v + 1 = u * V) /\ ((b * u = a * v + cfba_error_positive_denominator) /\ (a * V = b * U + cfba_previous_error_positive_denominator))))) /\ ((exists cfba_gap_positive_denominatordecrease. cfba_gap_positive_denominatordecrease + S (cfba_error_positive_denominator) = (cfba_previous_error_positive_denominator)) /\ (exists cfba_bound_positive_denominatorprevious_bound. cfba_bound_positive_denominatorprevious_bound + (cfba_previous_error_positive_denominator) = (b))))) -&gt; ~(v = 0)</code></pre></details>

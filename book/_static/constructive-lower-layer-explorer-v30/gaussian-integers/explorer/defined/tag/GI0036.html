@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="gaussian-integers"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/GI0036.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=GI0036&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=b3c647d19c00">G081 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/GI0036.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=GI0036&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=ac7111ec14ff">G081 milestone</a></nav>
   <p class="pd-tag">GI0036</p><h1>gaussian_double_square_strict</h1>
   <p>Twice the square of a positive natural is strictly smaller than the square of its double.</p><p class="pd-status">Alpha v30 checked-use · first admitted v28 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">The natural-code carrier consists of genuine pairs of the existing signed integers; no new primitive arithmetic is trusted. The theorem constructs quotient, remainder, and actual norm witnesses. Gaussian gcd, unique factorization, and prime classification are separate targets.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ h. ¬h = 0 → <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=b3c647d19c00">Lt(h · h + h · h,(h + h) · (h + h))</a></code></pre>
+    <pre><code>∀ h. ¬h = 0 → <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=ac7111ec14ff">Lt(h · h + h · h,(h + h) · (h + h))</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0002.html?v=b3c647d19c00">Lt(a,b) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0002.html?v=ac7111ec14ff">Lt(a,b) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">mul_ne_zero · checked external prerequisite</span><span class="pd-chip pd-external">add_eq_zero_left · checked external prerequisite</span><span class="pd-chip pd-external">pairing_double_equals_two_mul · checked external prerequisite</span><span class="pd-chip pd-external">four_square_descent_double_square_four_sum · checked external prerequisite</span><span class="pd-chip pd-external">fermat_four_lt_add_positive · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall h. ~(h = 0) -&gt; (exists ge_gap_double_square. ge_gap_double_square + S (h * h + h * h) = ((h + h) * (h + h)))</code></pre></details>

@@ -25,6 +25,45 @@ from constructive_gaussian_factorization_definitions import ALL_CONSTRUCTIVE_DEF
 from extend_constructive_gaussian_factorization_campaign import extend_campaign, update_atlas_bindings
 from extend_constructive_gaussian_factorization_campaign import historical_campaign
 from extend_constructive_gaussian_factorization_campaign import SUBSTRATE_THEOREMS, _cone
+from extend_constructive_gaussian_factorization_campaign import embed_current_snapshot
+
+
+def test_current_snapshot_replaces_inherited_data_and_preserves_original_layout():
+    opening = '<script type="application/json" id="campaign-data">'
+    source = '<header>original layout</header>' + opening + '{"version":"v28"}</script><footer>original</footer>'
+    campaign = {"version": "v30", "label": "Gaussian α", "bounds": "0 ≤ u"}
+    expected = ('<header>original layout</header>' + opening
+                + json.dumps(campaign, ensure_ascii=False, allow_nan=False, separators=(",", ":"))
+                + '</script><footer>original</footer>')
+    assert embed_current_snapshot(source, campaign) == expected
+    assert embed_current_snapshot(expected, campaign) == expected
+
+
+@pytest.mark.parametrize("mutation", ("missing", "duplicate", "unterminated"))
+def test_current_snapshot_rejects_missing_duplicate_or_unterminated_container(mutation):
+    opening = '<script type="application/json" id="campaign-data">'
+    source = {"missing": '<script type="application/json">{}</script>',
+              "duplicate": (opening + '{}</script>') * 2,
+              "unterminated": opening + '{}'}[mutation]
+    with pytest.raises(ValueError):
+        embed_current_snapshot(source, {"version": "v30"})
+
+
+@pytest.mark.parametrize("value", ("</script><script>bad()</script>", "</ScRiPt >", float("nan"), float("inf")))
+def test_current_snapshot_rejects_script_termination_and_non_json_numbers(value):
+    source = '<script type="application/json" id="campaign-data">{}</script>'
+    with pytest.raises(ValueError):
+        embed_current_snapshot(source, {"value": value})
+
+
+def test_current_snapshot_keeps_the_original_byte_limit_and_exact_boundary(monkeypatch):
+    import extend_constructive_gaussian_factorization_campaign as atlas
+    assert atlas.MAX_CAMPAIGN_BYTES == 8 * 1024 * 1024
+    source = '<script type="application/json" id="campaign-data">{}</script>'
+    monkeypatch.setattr(atlas, "MAX_CAMPAIGN_BYTES", 7)
+    assert '{"a":1}' in embed_current_snapshot(source, {"a": 1})
+    with pytest.raises(ValueError, match="original atlas limit"):
+        embed_current_snapshot(source, {"a": 10})
 
 
 def test_seven_factories_form_one_complete_gaussian_target():
@@ -138,6 +177,19 @@ def test_major_goal_map_uses_the_actual_directional_prime_lemmas(inputs):
     # major root uses its two underlying directions, not this packaging row.
     assert "gaussian_irreducible_iff_prime" not in actual | required
     assert inputs["by_name"]["gaussian_irreducible_iff_prime"]["checked_use"] is True
+
+
+def test_actual_atlas_embeds_the_exact_current_campaign_and_all_five_closed_goals(inputs):
+    source = builder.CAMPAIGN.with_name("index.html").read_text()
+    snapshots = re.findall(r'<script type="application/json" id="campaign-data">(.*?)</script>', source, re.S)
+    assert len(snapshots) == 1
+    snapshot = json.loads(snapshots[0])
+    assert snapshot == inputs["campaign"]
+    assert snapshot["meta"]["current_alpha_version"] == "v30"
+    assert snapshot["ambitious_boundaries"]["alpha_v30_edition"]["catalog_sha256"] == inputs["catalog_sha256"]
+    nodes = {node["id"]: node for node in snapshot["nodes"]}
+    assert all(nodes[goal]["status"] == "alpha_closed" for goal in ("G072", "G006", "G010", "G036", "G082"))
+    assert embed_current_snapshot(source, snapshot) == source
 
 
 @pytest.mark.parametrize("pathname,deployed", (("/proofs/grand-campaign/", True),

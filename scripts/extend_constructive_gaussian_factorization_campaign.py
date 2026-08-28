@@ -24,6 +24,7 @@ from constructive_gaussian_factorization_definitions import (
 )
 from extend_constructive_second_wave_campaign import _table_source
 from peano_lab.kernel.formulas import parse_formula_with_names
+from sync_constructive_grand_campaign import MAX_CAMPAIGN_BYTES, _expected
 
 
 PRIMARY_ROOTS = explorer.MILESTONE_ROOTS
@@ -312,6 +313,19 @@ def update_atlas_bindings(source: str, campaign: dict[str, Any]) -> str:
 
 
 
+def embed_current_snapshot(source: str, campaign: dict[str, Any]) -> str:
+    """Bind the original atlas's inert data to this exact current campaign."""
+    snapshot = json.dumps(campaign, ensure_ascii=False, allow_nan=False,
+                          separators=(",", ":"))
+    if "</script" in snapshot.lower():
+        raise explorer.GaussianFactorizationExplorerError(
+            "current campaign JSON cannot contain a closing script element")
+    if len(snapshot.encode("utf-8")) > MAX_CAMPAIGN_BYTES:
+        raise explorer.GaussianFactorizationExplorerError(
+            "current campaign JSON exceeds the original atlas limit")
+    return _expected(source, snapshot)[1]
+
+
 def build_files(inputs: dict[str, Any] | None = None) -> dict[str, bytes]:
     if inputs is None:
         inputs = explorer._load_release_inputs()
@@ -320,7 +334,7 @@ def build_files(inputs: dict[str, Any] | None = None) -> dict[str, bytes]:
     return {
         "campaign.json": explorer._json(campaign),
         "definitions.json": explorer._json(build_definition_graph(campaign)),
-        "index.html": update_atlas_bindings(source, campaign).encode(),
+        "index.html": embed_current_snapshot(update_atlas_bindings(source, campaign), campaign).encode(),
     }
 
 

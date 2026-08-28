@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="squarefree-kernels"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/SK000D.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=SK000D&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G010" href="../../../../grand-campaign/?view=goal&amp;focus=G010&amp;v=b3c647d19c00">G010 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/SK000D.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=SK000D&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G010" href="../../../../grand-campaign/?view=goal&amp;focus=G010&amp;v=ac7111ec14ff">G010 milestone</a></nav>
   <p class="pd-tag">SK000D</p><h1>squarefree_one</h1>
   <p>The unit is squarefree under the exact positive, prime-square-free definition.</p><p class="pd-status">Alpha v30 checked-use · first admitted v29 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">For n&gt;1 the exponent gcd and a real beta table classify and witness all positive root degrees. The unit n=1 has a separate uniform certificate for every positive degree. Zero is excluded. NaturalSquarefreeDecomposition is deliberately distinct from the unrelated polynomial definition.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code><a class="pd-definition-ref" data-definition="ND0188" href="../definition/ND0188.html?v=b3c647d19c00">Squarefree(1)</a></code></pre>
+    <pre><code><a class="pd-definition-ref" data-definition="ND0188" href="../definition/ND0188.html?v=ac7111ec14ff">Squarefree(1)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0188.html?v=b3c647d19c00">Squarefree(n) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0188.html?v=ac7111ec14ff">Squarefree(n) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">divisor_one · checked external prerequisite</span><span class="pd-chip pd-external">multiple_trans · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>((~((1) = 0)) /\ (forall sfd_prime_one. (~((sfd_prime_one) = 1) /\ forall pvs_left_onedomain pvs_right_onedomain. (sfd_prime_one) = pvs_left_onedomain * pvs_right_onedomain -&gt; pvs_left_onedomain = 1 \/ pvs_right_onedomain = 1) -&gt; (exists pvs_le_gap_onebound. pvs_le_gap_onebound + (sfd_prime_one) = (1)) -&gt; ~(exists pvs_factor_onesquare. (1) = (sfd_prime_one * sfd_prime_one) * pvs_factor_onesquare)))</code></pre></details>

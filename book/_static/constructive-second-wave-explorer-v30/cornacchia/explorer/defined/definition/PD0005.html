@@ -8,21 +8,21 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="cornacchia"><header class="pd-header pd-definition-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
-       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=Coprime&amp;v=b3c647d19c00">Global definition: Coprime</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G107" href="../../../../grand-campaign/?view=goal&amp;focus=G107&amp;v=b3c647d19c00">G107 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=Coprime&amp;v=ac7111ec14ff">Global definition: Coprime</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G107" href="../../../../grand-campaign/?view=goal&amp;focus=G107&amp;v=ac7111ec14ff">G107 milestone</a></nav>
   <p class="pd-tag">PD0005</p><h1>Coprime(a,b)</h1>
   <p>Every common divisor of a and b is one.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
 </header><main class="pd-theorem-layout"><div class="pd-proof-panel">
   <section><h2>Definition in prerequisite notation</h2>
-    <pre><code>∀ d. <a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=b3c647d19c00">Dvd(d,a)</a> → <a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=b3c647d19c00">Dvd(d,b)</a> → d = 1</code></pre>
+    <pre><code>∀ d. <a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=ac7111ec14ff">Dvd(d,a)</a> → <a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=ac7111ec14ff">Dvd(d,b)</a> → d = 1</code></pre>
     <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
   <details><summary>Hygienic expanded first-order definition</summary>
     <pre><code>forall d. (exists x. a = d * x) -&gt; (exists y. b = d * y) -&gt; d = 1</code></pre>
     <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
-  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0003.html?v=b3c647d19c00">Dvd(d,n)</a></div></section>
-  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0099.html?v=b3c647d19c00">CornacchiaStateInvariant(p,z,a,r,u,t)</a></div></section>
-  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/CN0005.html?v=b3c647d19c00">CN0005 · cornacchia_coprime_euclidean_step</a><a class="pd-chip" href="../tag/CN0006.html?v=b3c647d19c00">CN0006 · cornacchia_above_threshold_remainder_nonzero</a><a class="pd-chip" href="../tag/CN0012.html?v=b3c647d19c00">CN0012 · cornacchia_root_coprime</a><a class="pd-chip" href="../tag/CN0016.html?v=b3c647d19c00">CN0016 · cornacchia_invariant_euclidean_step</a></div></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0003.html?v=ac7111ec14ff">Dvd(d,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0099.html?v=ac7111ec14ff">CornacchiaStateInvariant(p,z,a,r,u,t)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/CN0005.html?v=ac7111ec14ff">CN0005 · cornacchia_coprime_euclidean_step</a><a class="pd-chip" href="../tag/CN0006.html?v=ac7111ec14ff">CN0006 · cornacchia_above_threshold_remainder_nonzero</a><a class="pd-chip" href="../tag/CN0012.html?v=ac7111ec14ff">CN0012 · cornacchia_root_coprime</a><a class="pd-chip" href="../tag/CN0016.html?v=ac7111ec14ff">CN0016 · cornacchia_invariant_euclidean_step</a></div></section>
 </div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
   <dt>Arity</dt><dd>2</dd>
   <dt>Topological notation layer</dt><dd>1</dd>

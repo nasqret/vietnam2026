@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="hensel-lifting"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/HL0001.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=HL0001&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G095" href="../../../../grand-campaign/?view=goal&amp;focus=G095&amp;v=b3c647d19c00">G095 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/HL0001.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=HL0001&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G095" href="../../../../grand-campaign/?view=goal&amp;focus=G095&amp;v=ac7111ec14ff">G095 milestone</a></nav>
   <p class="pd-tag">HL0001</p><h1>hensel_mod_add_zero_cancel</h1>
   <p>A known zero-congruent summand can be cancelled without subtraction.</p><p class="pd-status">Alpha v30 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">The derivative-nonzero criterion supplies no inverse or power witness: both are constructed. Roots may be arbitrary natural representatives of signed integer polynomials. Singular-root classification and p-adic completion are separate milestones.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ m. ∀ a. ∀ q. <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=b3c647d19c00">ModEq(m,a + q,0)</a> → <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=b3c647d19c00">ModEq(m,q,0)</a> → <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=b3c647d19c00">ModEq(m,a,0)</a></code></pre>
+    <pre><code>∀ m. ∀ a. ∀ q. <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=ac7111ec14ff">ModEq(m,a + q,0)</a> → <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=ac7111ec14ff">ModEq(m,q,0)</a> → <a class="pd-definition-ref" data-definition="PD0008" href="../definition/PD0008.html?v=ac7111ec14ff">ModEq(m,a,0)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0008.html?v=b3c647d19c00">ModEq(m,a,b) · 3</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0008.html?v=ac7111ec14ff">ModEq(m,a,b) · 3</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">mod_eq_add_cancel_right · checked external prerequisite</span><span class="pd-chip pd-external">mod_eq_trans · checked external prerequisite</span><span class="pd-chip pd-external">mod_eq_symm · checked external prerequisite</span><span class="pd-chip pd-external">zero_add · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall m a q. (exists hgcrt_mod_left_hpl_mod hgcrt_mod_right_hpl_mod. (a + q) + m * hgcrt_mod_left_hpl_mod = 0 + m * hgcrt_mod_right_hpl_mod) -&gt; (exists hgcrt_mod_left_hpl_mod hgcrt_mod_right_hpl_mod. q + m * hgcrt_mod_left_hpl_mod = 0 + m * hgcrt_mod_right_hpl_mod) -&gt; (exists hgcrt_mod_left_hpl_mod hgcrt_mod_right_hpl_mod. a + m * hgcrt_mod_left_hpl_mod = 0 + m * hgcrt_mod_right_hpl_mod)</code></pre></details>

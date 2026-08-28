@@ -1,5 +1,5 @@
 {
-  "channel_pointer_root_sha256": "002b236aabbf85e769a8831e0e6a72815cc7c84dda75b921d5e644d1417dc42c",
+  "channel_pointer_root_sha256": "11e5f12735f2ffc5980781b830aab26db4520369e0ef6a90a1bce87a7261cb6c",
   "channels": {
     "alpha": {
       "alpha_v16_qr_promoted_count": 315,
@@ -19,11 +19,11 @@
       "alpha_v29_frontier_new_count": 278,
       "alpha_v30_frontier_new_count": 180,
       "artifact_path": "artifacts/peano-library/alpha/catalog-v30.json",
-      "artifact_sha256": "b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb",
+      "artifact_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7",
       "artifacts": {
         "catalog": {
           "path": "artifacts/peano-library/alpha/catalog-v30.json",
-          "sha256": "b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb"
+          "sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
         },
         "dependency_graph": {
           "path": "artifacts/peano-library/alpha/dependency-graph-v30.mmd",
@@ -31,7 +31,7 @@
         },
         "metrics": {
           "path": "artifacts/peano-library/alpha/metrics-v30.json",
-          "sha256": "8589f5f815067ceb29378001ede3a9e60c6f72d26b4a3a01c86dcb94213657d4"
+          "sha256": "f27488e5613c94e03f04f6b1d5f17ddfd70fad91eb011c5dbf3f6c3b4ee4c87b"
         }
       },
       "checked_use_count": 3222,

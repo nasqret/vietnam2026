@@ -8,10 +8,10 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="gaussian-integers"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/GI002C.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=GI002C&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=b3c647d19c00">G081 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/GI002C.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=GI002C&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=ac7111ec14ff">G081 milestone</a></nav>
   <p class="pd-tag">GI002C</p><h1>gaussian_equal_transitive</h1>
   <p>Represented Gaussian integer equality is transitive by actual signed cross-sum cancellation.</p><p class="pd-status">Alpha v30 checked-use · first admitted v28 · independently kernel and Lean verified; not Stable</p>
 </header>
@@ -21,7 +21,7 @@
     <pre><code>∀ a. ∀ b. ∀ c. ∀ d. ∀ e. ∀ f. ∀ g. ∀ h. ∀ i. ∀ j. ∀ k. ∀ l. a + f = e + b ∧ c + h = g + d → e + j = i + f ∧ g + l = k + h → a + j = i + b ∧ c + l = k + d</code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
   <section><h2>Definition DAG</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
-  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip pd-external" href="../../../../integer-linear-algebra/explorer/defined/tag/DL006C.html?v=b3c647d19c00">integer_span_pair_equal_transitive · checked external prerequisite</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip pd-external" href="../../../../integer-linear-algebra/explorer/defined/tag/DL006C.html?v=ac7111ec14ff">integer_span_pair_equal_transitive · checked external prerequisite</a></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall a b c d e f g h i j k l. (((((a) + (f)) = ((e) + (b))) /\ (((c) + (h)) = ((g) + (d))))) -&gt; (((((e) + (j)) = ((i) + (f))) /\ (((g) + (l)) = ((k) + (h))))) -&gt; (((((a) + (j)) = ((i) + (b))) /\ (((c) + (l)) = ((k) + (d)))))</code></pre></details>
   <section><h2>Complete tactic proof in conservative notation</h2>

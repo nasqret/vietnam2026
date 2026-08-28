@@ -8,21 +8,21 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="eisenstein-integers"><header class="pd-header pd-definition-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
-       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedBalance&amp;v=b3c647d19c00">Global definition: SignedBalance</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G084" href="../../../../grand-campaign/?view=goal&amp;focus=G084&amp;v=b3c647d19c00">G084 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedBalance&amp;v=ac7111ec14ff">Global definition: SignedBalance</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G084" href="../../../../grand-campaign/?view=goal&amp;focus=G084&amp;v=ac7111ec14ff">G084 milestone</a></nav>
   <p class="pd-tag">ND0143</p><h1>SignedBalance(z,p,n)</h1>
   <p>The original canonical code z represents the integer difference p−n; these supplied components need not be normalized.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
 </header><main class="pd-theorem-layout"><div class="pd-proof-panel">
   <section><h2>Definition in prerequisite notation</h2>
-    <pre><code>∃ sb_pos_lowerlayer. ∃ sb_neg_lowerlayer. <a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=b3c647d19c00">SignedDecode(z,sb_pos_lowerlayer,sb_neg_lowerlayer)</a> ∧ p + sb_neg_lowerlayer = n + sb_pos_lowerlayer</code></pre>
+    <pre><code>∃ sb_pos_lowerlayer. ∃ sb_neg_lowerlayer. <a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=ac7111ec14ff">SignedDecode(z,sb_pos_lowerlayer,sb_neg_lowerlayer)</a> ∧ p + sb_neg_lowerlayer = n + sb_pos_lowerlayer</code></pre>
     <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
   <details><summary>Hygienic expanded first-order definition</summary>
     <pre><code>exists sb_pos_lowerlayer sb_neg_lowerlayer. (((z = 2 * sb_pos_lowerlayer /\ sb_neg_lowerlayer = 0) \/ exists sd_half_lowerlayer. ((z = 2 * sd_half_lowerlayer + 1 /\ sb_pos_lowerlayer = 0) /\ sb_neg_lowerlayer = S sd_half_lowerlayer)) /\ p + sb_neg_lowerlayer = n + sb_pos_lowerlayer)</code></pre>
     <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
-  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0142.html?v=b3c647d19c00">SignedDecode(z,p,n)</a></div></section>
-  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0161.html?v=b3c647d19c00">ZPairRep(z,ap,an,bp,bn)</a></div></section>
-  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/EI000C.html?v=b3c647d19c00">EI000C · eisenstein_coordinate_norm_exists</a></div></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0142.html?v=ac7111ec14ff">SignedDecode(z,p,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0161.html?v=ac7111ec14ff">ZPairRep(z,ap,an,bp,bn)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/EI000C.html?v=ac7111ec14ff">EI000C · eisenstein_coordinate_norm_exists</a></div></section>
 </div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
   <dt>Arity</dt><dd>3</dd>
   <dt>Topological notation layer</dt><dd>1</dd>

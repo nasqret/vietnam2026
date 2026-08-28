@@ -5594,8 +5594,9 @@ Stable remains lazy and unchanged. Six guarded shortcuts expose the five new
 goal roots and shared valuation tools without changing the established layout.
 The UI/strand/CLI/browser integration passed 923 distinct tests, separately
 from the 74 already recorded certified-export tests (997 unique tests total).
-Five actual CLI compiler cases include the new v30
-`gaussian_equal_reflexive` strand under Lean 4.28.0. Test-only temporary copies
+Five actual CLI compiler cases include `gaussian_equal_reflexive`, inherited
+from v28 and checked through the current v30 strand route under Lean 4.28.0.
+Test-only temporary copies
 of the exact companion build avoid writing the original build cache.
 
 The full G082 certified single-file converter also passed: 52,094 proof
@@ -5612,3 +5613,36 @@ complete existing/new service suite passed 261 tests; the 64 MiB catalog limit
 and all proof-job resource/security limits remain unchanged. These are local
 integration results. No unowned public worker was stopped or restarted, and
 the production Peano hosting-cache gate remains intact.
+
+### 2026-08-28 — pre-publication atlas-data correction and final catalog binding
+
+The cross-site equality check caught a real presentation defect before push
+or deployment: the v30 atlas generator retained the inert v28 JSON snapshot
+inside inherited HTML, although its separate current `campaign.json` was
+correct. The generator now replaces that single inert data element using the
+original atlas synchronization helper. Missing, duplicated or unterminated
+containers, closing-script injection, non-JSON numbers and the unchanged
+8 MiB data limit have explicit regression coverage. The original layout and
+executable explorer assets are unchanged.
+
+The two changed presentation source/test digests produce the final catalog
+SHA-256 `ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7`,
+revision `ac7111ec14ff`. This supersedes the unpushed pre-publication
+`b3c647d19c00` candidate. A complete semantic comparison confirms that only
+those two evidence-document records changed: all 3,222 theorem rows and every
+other catalog field remain identical, with 740 documents. No mathematical
+source, admission seal, ordinary certificate, canonical proof bundle or
+historical v29 artifact changed.
+
+The final release-verifier suite passed 343 tests, Gaussian publication passed
+69 (including ten new snapshot regressions), and historical publication passed
+39. The full Lean-service suite passed 261 tests and the 41 browser/default-UI
+tests passed again. The application ID remains `a-541687a273a2`, since only
+its unsealed entrance navigation changed. The deployment contract passed all
+79 tests; its new collection guard proves that all 236 next-layer presentation
+cases occur exactly once across seven disjoint fresh-process windows.
+
+An additional actual-inline-JavaScript audit identified a separate legacy
+completion-link rendering issue in nine older graph pages. That unbound
+presentation repair and complete cross-site validation remain required before
+publication; this catalog correction is not a remote deployment claim.

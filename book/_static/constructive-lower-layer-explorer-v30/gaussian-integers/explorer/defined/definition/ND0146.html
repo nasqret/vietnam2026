@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="gaussian-integers"><header class="pd-header pd-definition-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
-       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedNegate&amp;v=b3c647d19c00">Global definition: SignedNegate</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=b3c647d19c00">G081 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=SignedNegate&amp;v=ac7111ec14ff">Global definition: SignedNegate</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=ac7111ec14ff">G081 milestone</a></nav>
   <p class="pd-tag">ND0146</p><h1>SignedNegate(a,b)</h1>
   <p>Canonical signed negation swaps the positive and negative decoded parts.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
 </header><main class="pd-theorem-layout"><div class="pd-proof-panel">
   <section><h2>Definition in prerequisite notation</h2>
-    <pre><code>∃ sn_pos_lowerlayer. ∃ sn_neg_lowerlayer. <a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=b3c647d19c00">SignedDecode(a,sn_pos_lowerlayer,sn_neg_lowerlayer)</a> ∧ <a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=b3c647d19c00">SignedDecode(b,sn_neg_lowerlayer,sn_pos_lowerlayer)</a></code></pre>
+    <pre><code>∃ sn_pos_lowerlayer. ∃ sn_neg_lowerlayer. <a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=ac7111ec14ff">SignedDecode(a,sn_pos_lowerlayer,sn_neg_lowerlayer)</a> ∧ <a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=ac7111ec14ff">SignedDecode(b,sn_neg_lowerlayer,sn_pos_lowerlayer)</a></code></pre>
     <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
   <details><summary>Hygienic expanded first-order definition</summary>
     <pre><code>exists sn_pos_lowerlayer sn_neg_lowerlayer. (((a = 2 * sn_pos_lowerlayer /\ sn_neg_lowerlayer = 0) \/ exists sd_half_lowerlayer_input. ((a = 2 * sd_half_lowerlayer_input + 1 /\ sn_pos_lowerlayer = 0) /\ sn_neg_lowerlayer = S sd_half_lowerlayer_input)) /\ ((b = 2 * sn_neg_lowerlayer /\ sn_pos_lowerlayer = 0) \/ exists sd_half_lowerlayer_output. ((b = 2 * sd_half_lowerlayer_output + 1 /\ sn_neg_lowerlayer = 0) /\ sn_pos_lowerlayer = S sd_half_lowerlayer_output)))</code></pre>
     <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
-  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0142.html?v=b3c647d19c00">SignedDecode(z,p,n)</a></div></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0142.html?v=ac7111ec14ff">SignedDecode(z,p,n)</a></div></section>
   <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
   <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><span class="pd-empty">none directly; see definition consumers</span></div></section>
 </div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>

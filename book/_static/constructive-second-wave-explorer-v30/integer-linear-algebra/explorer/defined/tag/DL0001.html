@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="integer-linear-algebra"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/DL0001.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=DL0001&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=b3c647d19c00">T13 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/DL0001.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=DL0001&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=ac7111ec14ff">T13 milestone</a></nav>
   <p class="pd-tag">DL0001</p><h1>matrix_recursive_node_code_exists</h1>
   <p>Six explicit doubled-Cantor constructors code one exact matrix evaluation record with conservatively shared intermediate values.</p><p class="pd-status">Alpha v30 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">This branch proves the finite determinant/rank/span substrate. It does not claim Smith or Hermite normal form, lattice index equals determinant, determinant multiplicativity, lattice reduction, or geometry-of-numbers theorems.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ d. ∀ pb. ∀ pc. ∀ nb. ∀ nc. ∀ p. ∀ n. ∃ z. <a class="pd-definition-ref" data-definition="ND0104" href="../definition/ND0104.html?v=b3c647d19c00">SignedDeterminantNodeCode(z,d,pb,pc,nb,nc,p,n)</a></code></pre>
+    <pre><code>∀ d. ∀ pb. ∀ pc. ∀ nb. ∀ nc. ∀ p. ∀ n. ∃ z. <a class="pd-definition-ref" data-definition="ND0104" href="../definition/ND0104.html?v=ac7111ec14ff">SignedDeterminantNodeCode(z,d,pb,pc,nb,nc,p,n)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0104.html?v=b3c647d19c00">SignedDeterminantNodeCode(z,d,pb,pc,nb,nc,p,n) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0104.html?v=ac7111ec14ff">SignedDeterminantNodeCode(z,d,pb,pc,nb,nc,p,n) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall d pb pc nb nc p n. exists z. (exists mdr_a_code_exists mdr_b_code_exists mdr_c_code_exists mdr_e_code_exists mdr_f_code_exists. ((mdr_a_code_exists = ((d) + (pb)) * S ((d) + (pb)) + ((pb) + (pb))) /\ ((mdr_b_code_exists = ((pc) + (nb)) * S ((pc) + (nb)) + ((nb) + (nb))) /\ ((mdr_c_code_exists = ((mdr_a_code_exists) + (mdr_b_code_exists)) * S ((mdr_a_code_exists) + (mdr_b_code_exists)) + ((mdr_b_code_exists) + (mdr_b_code_exists))) /\ ((mdr_e_code_exists = ((p) + (n)) * S ((p) + (n)) + ((n) + (n))) /\ ((mdr_f_code_exists = ((nc) + (mdr_e_code_exists)) * S ((nc) + (mdr_e_code_exists)) + ((mdr_e_code_exists) + (mdr_e_code_exists))) /\ ((z) = ((mdr_c_code_exists) + (mdr_f_code_exists)) * S ((mdr_c_code_exists) + (mdr_f_code_exists)) + ((mdr_f_code_exists) + (mdr_f_code_exists)))))))))</code></pre></details>

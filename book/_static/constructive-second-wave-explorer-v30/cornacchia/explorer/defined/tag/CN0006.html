@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="cornacchia"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/CN0006.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=CN0006&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G107" href="../../../../grand-campaign/?view=goal&amp;focus=G107&amp;v=b3c647d19c00">G107 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/CN0006.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=CN0006&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F11&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G107" href="../../../../grand-campaign/?view=goal&amp;focus=G107&amp;v=ac7111ec14ff">G107 milestone</a></nav>
   <p class="pd-tag">CN0006</p><h1>cornacchia_above_threshold_remainder_nonzero</h1>
   <p>Before the square-root threshold, coprime Euclid cannot jump to zero; its next remainder is positive.</p><p class="pd-status">Alpha v30 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   <p class="pd-callout">The output equation is proved from the real first-stop execution; it is not a trace-definition assumption. This is the prime sum-of-two-squares Cornacchia theorem, not a general x²+d y² solver.</p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ p. ∀ r. ∀ s. ¬p = 0 → <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=b3c647d19c00">Lt(p,r · r)</a> → <a class="pd-definition-ref" data-definition="PD0005" href="../definition/PD0005.html?v=b3c647d19c00">Coprime(r,s)</a> → ¬s = 0</code></pre>
+    <pre><code>∀ p. ∀ r. ∀ s. ¬p = 0 → <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=ac7111ec14ff">Lt(p,r · r)</a> → <a class="pd-definition-ref" data-definition="PD0005" href="../definition/PD0005.html?v=ac7111ec14ff">Coprime(r,s)</a> → ¬s = 0</code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0002.html?v=b3c647d19c00">Lt(a,b) · 1</a><a class="pd-chip" href="../definition/PD0005.html?v=b3c647d19c00">Coprime(a,b) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0002.html?v=ac7111ec14ff">Lt(a,b) · 1</a><a class="pd-chip" href="../definition/PD0005.html?v=ac7111ec14ff">Coprime(a,b) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">multiple_refl · checked external prerequisite</span><span class="pd-chip pd-external">one_le_of_ne_zero · checked external prerequisite</span><span class="pd-chip pd-external">lt_not_le · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall p r s. ~(p = 0) -&gt; (exists cor_gap_remainder_guard. cor_gap_remainder_guard + S (p) = (r * r)) -&gt; (forall frp_divisor_cor_remainder_coprime. (exists frp_left_factor_cor_remainder_coprime. r = frp_divisor_cor_remainder_coprime * frp_left_factor_cor_remainder_coprime) -&gt; (exists frp_right_factor_cor_remainder_coprime. s = frp_divisor_cor_remainder_coprime * frp_right_factor_cor_remainder_coprime) -&gt; frp_divisor_cor_remainder_coprime = 1) -&gt; ~(s = 0)</code></pre></details>

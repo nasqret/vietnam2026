@@ -5,7 +5,7 @@
     "notation_edges": "definition and milestone notation references only; never theorem-proof dependencies",
     "reviewed_matches": "only the separately linked conservative registry expansion is independently parsed and checked; the blueprint expansion itself remains uncertified"
   },
-  "campaign_snapshot_sha256": "96b13db126bdb1d9731fc3a725dd0260915b23f71cc77488b7543cf749a2a525",
+  "campaign_snapshot_sha256": "d4f28bd46caa8c32c7133bda1d4a4822627ac8da8dd6b65841b40cda3836ab37",
   "compatible_reviewed_match_count": 287,
   "compatible_reviewed_matches": [
     {
