@@ -6,7 +6,7 @@ import driver
 import pytest
 
 from peano_lab.library import editions_v19 as historical_alpha
-from peano_lab.library import editions_v28 as alpha
+from peano_lab.library import editions_v30 as alpha
 from peano_lab.library.alpha_enrollment_v27 import ROOT_STATEMENT_SHA256
 from peano_lab.library import lean_proof_strand
 from peano_lab.library.lean import LIVE_LEAN_PREFIX
@@ -94,7 +94,7 @@ def test_alpha_proof_strand_routes_preserve_explicit_release_authority(
 ) -> None:
     output = driver.LabSession().run(command)
 
-    assert "Release edition: Alpha v28." in output
+    assert "Release edition: Alpha v30." in output
     assert "Release membership: stable." in output
     assert "--edition alpha --format strand" in output
     assert "Independent Lean compilation: NOT RUN" in output
@@ -107,7 +107,7 @@ def test_checked_alpha_only_strand_does_not_claim_stable_membership() -> None:
 
     assert "Authenticated release evidence: alpha_closed." in output
     assert "Release membership: alpha_only." in output
-    assert "Release edition: Alpha v28." in output
+    assert "Release edition: Alpha v30." in output
     assert "--edition alpha --format strand" in output
 
 
@@ -118,7 +118,7 @@ def test_checked_alpha_only_strand_does_not_claim_stable_membership() -> None:
         "linear_congruence_solvable_iff_gcd_divides",
     ),
 )
-def test_historical_alpha_v19_frontier_root_has_current_v28_bounded_preview(
+def test_historical_alpha_v19_frontier_root_has_current_v30_bounded_preview(
     monkeypatch: pytest.MonkeyPatch,
     name: str,
 ) -> None:
@@ -135,7 +135,7 @@ def test_historical_alpha_v19_frontier_root_has_current_v28_bounded_preview(
     output = driver.LabSession().run(f"pa proof alpha {name}")
 
     assert output.startswith(f"Readable Peano-to-Lean proof strand — {name}")
-    assert "Release edition: Alpha v28." in output
+    assert "Release edition: Alpha v30." in output
     assert "Authenticated release evidence: alpha_closed." in output
     assert "Release membership: alpha_only." in output
     assert "Fresh Peano proof replay: NOT RUN" in output
@@ -144,7 +144,7 @@ def test_historical_alpha_v19_frontier_root_has_current_v28_bounded_preview(
     assert len(output.encode("utf-8")) <= 15 * 1024
 
 
-def test_historical_body_only_theorem_has_current_alpha_v28_checked_preview() -> None:
+def test_historical_body_only_theorem_has_current_alpha_v30_checked_preview() -> None:
     name = "cell_list_valid_nil"
     historical = historical_alpha.v18.entry(name, edition="alpha")
     current = alpha.entry(name, edition="alpha")
@@ -153,7 +153,7 @@ def test_historical_body_only_theorem_has_current_alpha_v28_checked_preview() ->
 
     output = driver.LabSession().run(f"pa proof alpha {name}")
 
-    assert "Release edition: Alpha v28." in output
+    assert "Release edition: Alpha v30." in output
     assert "Authenticated release evidence: alpha_closed." in output
     assert "Checked-use authority: YES." in output
     assert "Fresh Peano proof replay: NOT RUN" in output
@@ -230,8 +230,8 @@ def test_flagship_alpha_strand_shows_root_without_loading_full_certificate(
         raise AssertionError("Alpha flagship root viewing must not load its proof artifact")
 
     monkeypatch.setattr(alpha, "replay", forbidden)
-    monkeypatch.setattr(alpha.v27.v26, "_checked_first_wave_bundle", forbidden)
-    monkeypatch.setattr(alpha.v27, "_checked_second_wave_bundle", forbidden)
+    monkeypatch.setattr(alpha.v29.v28.v27.v26, "_checked_first_wave_bundle", forbidden)
+    monkeypatch.setattr(alpha.v29.v28.v27, "_checked_second_wave_bundle", forbidden)
     monkeypatch.setattr(data_library, "export_checked_theorem", forbidden)
     monkeypatch.setattr(lean_proof_strand, "plan_proof_strand", forbidden)
     monkeypatch.setattr(lean_proof_strand, "build_proof_strand", forbidden)
@@ -280,14 +280,17 @@ def test_second_wave_strands_are_bounded_current_metadata_only(
         raise AssertionError("a second-wave browser strand loaded proof data")
 
     monkeypatch.setattr(alpha, "replay", forbidden)
-    monkeypatch.setattr(alpha.v27, "_checked_second_wave_bundle", forbidden)
+    monkeypatch.setattr(alpha, "_checked_gaussian_factorization_bundle", forbidden)
+    monkeypatch.setattr(alpha.v29, "_checked_priority_layer_bundle", forbidden)
+    monkeypatch.setattr(alpha.v29.v28, "_checked_lower_layer_bundle", forbidden)
+    monkeypatch.setattr(alpha.v29.v28.v27, "_checked_second_wave_bundle", forbidden)
     monkeypatch.setattr(data_library, "export_checked_theorem", forbidden)
     monkeypatch.setattr(lean_proof_strand, "build_proof_strand", forbidden)
 
     output = driver.LabSession().run(f"pa proof alpha {name}")
 
     assert output.startswith(f"Readable Peano-to-Lean proof strand — {name}")
-    assert "Release edition: Alpha v28." in output
+    assert "Release edition: Alpha v30." in output
     assert "Authenticated release evidence: alpha_closed." in output
     assert "Release membership: alpha_only." in output
     assert "Fresh Peano proof replay: NOT RUN" in output
@@ -354,7 +357,7 @@ def test_oversized_theorem_keeps_release_evidence_and_exact_export_instructions(
         ("pa proof help", "Usage: pa proof [alpha] <theorem>"),
         ("pa proof alpha", "Usage: pa proof alpha <theorem>"),
         ("pa proof missing", "No library theorem 'missing'"),
-        ("pa proof alpha missing", "No Alpha v28 theorem 'missing'"),
+        ("pa proof alpha missing", "No Alpha v30 theorem 'missing'"),
         ("pa proof zero_add trailing", "Usage: pa proof [alpha] <theorem>"),
         ("pa lean strand", "Usage: pa lean strand <theorem>"),
     ),

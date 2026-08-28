@@ -7,6 +7,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 
@@ -43,6 +44,48 @@ def exporter():
 
 def _catalog(directory: Path) -> dict[str, object]:
     return json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
+
+
+def _isolated_lean_project(destination: Path) -> Path:
+    """Copy exact verifier inputs so Lake can only refresh an owned test cache."""
+
+    relatives = [
+        Path("lakefile.toml"), Path("lake-manifest.json"),
+        Path("lean-toolchain"), Path("PeanoLab.lean"),
+    ]
+    relatives.extend(
+        source.relative_to(LEAN_PROJECT)
+        for source in (LEAN_PROJECT / "PeanoLab").rglob("*.lean")
+    )
+    compiled = LEAN_PROJECT / ".lake/build/lib/lean/PeanoLab"
+    for name in (
+        "Syntax", "Substitution", "Derivation", "Checker", "Semantics",
+        "Soundness", "Codec", "ProofBundle",
+    ):
+        assert (compiled / f"{name}.olean").is_file()
+        for pattern in (f"{name}.olean*", f"{name}.ilean*"):
+            relatives.extend(source.relative_to(LEAN_PROJECT) for source in compiled.glob(pattern))
+    for relative in sorted(set(relatives)):
+        source, target = LEAN_PROJECT / relative, destination / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+        assert sha256(target.read_bytes()).digest() == sha256(source.read_bytes()).digest()
+    return destination
+
+
+def _clear_current_alpha_replay_caches() -> None:
+    # A previous test may have replayed this historical root through the
+    # current delegating editions. Exercise missing bytes from a cold chain.
+    from peano_lab.library import (
+        editions_v25, editions_v26, editions_v27,
+        editions_v28, editions_v29, editions_v30,
+    )
+
+    for edition in (
+        editions_v25, editions_v26, editions_v27,
+        editions_v28, editions_v29, editions_v30,
+    ):
+        edition.replay.cache_clear()
 
 
 @pytest.mark.parametrize("style", ("outline", "strand"))
@@ -216,7 +259,7 @@ def test_dependency_limit_stops_before_recursive_certificate_replay(
         "infinitely_many_primes_one_mod_four",
     ),
 )
-def test_historical_alpha_theorems_have_replay_free_current_v28_strands(
+def test_historical_alpha_theorems_have_replay_free_current_v30_strands(
     name: str,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
@@ -224,6 +267,7 @@ def test_historical_alpha_theorems_have_replay_free_current_v28_strands(
 ) -> None:
     from peano_lab.library import (
         editions_v19, editions_v23, editions_v24, editions_v25, editions_v26, editions_v27, editions_v28,
+        editions_v29, editions_v30,
     )
 
     monkeypatch.setattr(
@@ -270,6 +314,8 @@ def test_historical_alpha_theorems_have_replay_free_current_v28_strands(
         (editions_v26, "_checked_first_wave_bundle"),
         (editions_v27, "_checked_second_wave_bundle"),
         (editions_v28, "_checked_lower_layer_bundle"),
+        (editions_v29, "_checked_priority_layer_bundle"),
+        (editions_v30, "_checked_gaussian_factorization_bundle"),
     ):
         monkeypatch.setattr(
             module, "replay",
@@ -283,7 +329,7 @@ def test_historical_alpha_theorems_have_replay_free_current_v28_strands(
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v28" in captured.out
+    assert "v30" in captured.out
     assert "no fresh Peano proof replay" in captured.err
 
 
@@ -322,18 +368,26 @@ def test_historical_alpha_theorems_have_replay_free_current_v28_strands(
         "eisenstein_norm_exists_unique",
         "first_primes_list_exists",
         "least_prime_above_exists_unique",
+        "totient_euler_product_formula",
+        "positive_squarefree_kernel_and_power_profile",
+        "odd_prime_lifting_the_exponent",
+        "continued_fraction_convergent_best_approximation",
+        "gaussian_gcd_bezout_exists",
+        "gaussian_irreducible_iff_prime",
+        "gaussian_prime_factorization_exists",
+        "gaussian_unique_prime_factorization",
     ),
 )
-def test_current_v28_frontier_outline_never_loads_actual_proof_artifacts(
+def test_current_v30_frontier_outline_never_loads_actual_proof_artifacts(
     name: str,
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v25, editions_v26, editions_v27, editions_v28
+    from peano_lab.library import editions_v25, editions_v26, editions_v27, editions_v28, editions_v29, editions_v30
 
     def forbidden(*_args: object, **_kwargs: object) -> None:
-        pytest.fail("an Alpha-v28 metadata-only outline loaded an actual proof")
+        pytest.fail("an Alpha-v30 metadata-only outline loaded an actual proof")
 
     monkeypatch.setattr(editions_v25, "replay", forbidden)
     monkeypatch.setattr(editions_v25, "_checked_breakthrough_layer_bundle", forbidden)
@@ -343,11 +397,15 @@ def test_current_v28_frontier_outline_never_loads_actual_proof_artifacts(
     monkeypatch.setattr(editions_v27, "_checked_second_wave_bundle", forbidden)
     monkeypatch.setattr(editions_v28, "replay", forbidden)
     monkeypatch.setattr(editions_v28, "_checked_lower_layer_bundle", forbidden)
+    monkeypatch.setattr(editions_v29, "replay", forbidden)
+    monkeypatch.setattr(editions_v29, "_checked_priority_layer_bundle", forbidden)
+    monkeypatch.setattr(editions_v30, "replay", forbidden)
+    monkeypatch.setattr(editions_v30, "_checked_gaussian_factorization_bundle", forbidden)
 
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v28" in captured.out
+    assert "v30" in captured.out
     assert "no fresh Peano proof replay" in captured.err
 
 
@@ -363,7 +421,7 @@ def test_historical_v25_full_export_rejects_unavailable_actual_breakthrough_proo
             "actual Alpha-v25 proof bytes are unavailable"
         )
 
-    editions_v25.replay.cache_clear()
+    _clear_current_alpha_replay_caches()
     monkeypatch.setattr(editions_v25, "_checked_breakthrough_layer_bundle", unavailable)
 
     assert (
@@ -387,7 +445,7 @@ def test_historical_v26_full_export_rejects_unavailable_actual_first_wave_proof(
     def unavailable() -> None:
         raise editions_v26.EditionV26ReplayError("actual Alpha-v26 proof bytes are unavailable")
 
-    editions_v26.replay.cache_clear()
+    _clear_current_alpha_replay_caches()
     monkeypatch.setattr(editions_v26, "_checked_first_wave_bundle", unavailable)
     assert exporter.main(["square_zero_root", "--edition", "alpha", "--format", "full"]) == 1
     captured = capsys.readouterr()
@@ -405,7 +463,7 @@ def test_historical_v27_full_export_rejects_unavailable_actual_second_wave_proof
     def unavailable() -> None:
         raise editions_v27.EditionV27ReplayError("actual Alpha-v27 proof bytes are unavailable")
 
-    editions_v27.replay.cache_clear()
+    _clear_current_alpha_replay_caches()
     monkeypatch.setattr(editions_v27, "_checked_second_wave_bundle", unavailable)
     name = "matrix_recursive_node_code_exists"
     assert exporter.main([name, "--edition", "alpha", "--format", "full"]) == 1
@@ -414,7 +472,7 @@ def test_historical_v27_full_export_rejects_unavailable_actual_second_wave_proof
     assert f"theorem «{name}»" not in captured.out
 
 
-def test_current_v28_full_export_rejects_unavailable_actual_lower_layer_proof(
+def test_historical_v28_full_export_rejects_unavailable_actual_lower_layer_proof(
     exporter,
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
@@ -424,12 +482,44 @@ def test_current_v28_full_export_rejects_unavailable_actual_lower_layer_proof(
     def unavailable() -> None:
         raise editions_v28.EditionV28ReplayError("actual Alpha-v28 proof bytes are unavailable")
 
-    editions_v28.replay.cache_clear()
+    _clear_current_alpha_replay_caches()
     monkeypatch.setattr(editions_v28, "_checked_lower_layer_bundle", unavailable)
     name="gaussian_equal_reflexive"
     assert exporter.main([name,"--edition","alpha","--format","full"])==1
     captured=capsys.readouterr()
     assert "actual Alpha-v28 proof bytes are unavailable" in captured.err
+    assert f"theorem «{name}»" not in captured.out
+
+
+@pytest.mark.parametrize(
+    "version,name,provider",
+    (
+        (29, "totient_bounded", "_checked_priority_layer_bundle"),
+        (30, "gaussian_divides_input_valid", "_checked_gaussian_factorization_bundle"),
+    ),
+)
+def test_new_full_export_cannot_replace_actual_closed_proof_with_sealed_metadata(
+    exporter,
+    monkeypatch: pytest.MonkeyPatch,
+    capsys: pytest.CaptureFixture[str],
+    version: int,
+    name: str,
+    provider: str,
+) -> None:
+    from peano_lab.library import editions_v29, editions_v30
+
+    edition = editions_v29 if version == 29 else editions_v30
+    error_type = getattr(edition, f"EditionV{version}ReplayError")
+    message = f"actual Alpha-v{version} proof bytes are unavailable"
+
+    def unavailable():
+        raise error_type(message)
+
+    _clear_current_alpha_replay_caches()
+    monkeypatch.setattr(edition, provider, unavailable)
+    assert exporter.main([name, "--edition", "alpha", "--format", "full"]) == 1
+    captured = capsys.readouterr()
+    assert message in captured.err
     assert f"theorem «{name}»" not in captured.out
 
 
@@ -440,12 +530,12 @@ def test_unsealed_current_alpha_cli_cannot_claim_checked_export(
     capsys: pytest.CaptureFixture[str],
     style: str,
 ) -> None:
-    from peano_lab.library import editions_v28
+    from peano_lab.library import editions_v30
 
-    monkeypatch.setattr(editions_v28, "EXPECTED_ALPHA_V28_COUNT", 0)
+    monkeypatch.setattr(editions_v30, "EXPECTED_ALPHA_V30_COUNT", 0)
     assert exporter.main(["zero_add", "--edition", "alpha", "--format", style]) == 1
     captured = capsys.readouterr()
-    assert "Alpha v28 is not sealed for checked use" in captured.err
+    assert "Alpha v30 is not sealed for checked use" in captured.err
     assert "theorem «zero_add»" not in captured.out
     assert exporter.main(["zero_add", "--format", "outline"]) == 0
 
@@ -991,11 +1081,14 @@ def test_compiler_repair_never_retries_a_timeout_or_memory_failure(
     ),
 )
 def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
+    exporter,
     tmp_path: Path,
     name: str,
     edition: str,
 ) -> None:
     package = tmp_path / "verified"
+    project = _isolated_lean_project(tmp_path / "lean-companion")
+    lake = exporter._lake_binary(LEAN_PROJECT, None)
     result = _run(
         name,
         "--edition",
@@ -1004,6 +1097,10 @@ def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
         "strand",
         "--package-dir",
         package,
+        "--lean-project",
+        project,
+        "--lake",
+        lake,
         "--verify",
         "--max-memory-mib",
         "1024",
@@ -1022,7 +1119,7 @@ def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
         assert "zero_add" in source
         assert "add_succ_left" in source
     else:
-        assert manifest["edition_version"] == "v28"
+        assert manifest["edition_version"] == "v30"
         if name == "square_zero_root":
             assert "mul_eq_zero" in source
     assert "sorry" not in source

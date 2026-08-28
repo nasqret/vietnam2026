@@ -74,7 +74,12 @@ SENSITIVE_NAMES = frozenset(
     }
 )
 LEGACY_EXPLORER_SEGMENTS = frozenset(
-    {"pa-proof-explorer", "bertrand-proof-explorer", "constructive-grand-campaign"}
+    {"pa-proof-explorer", "bertrand-proof-explorer", "constructive-grand-campaign",
+     "constructive-priority-campaign", "constructive-gaussian-campaign"}
+)
+CONSTRUCTIVE_CAMPAIGN_SUCCESSORS = (
+    "constructive-gaussian-campaign", "constructive-priority-campaign",
+    "constructive-grand-campaign",
 )
 CONSTRUCTIVE_EXPLORER_SEGMENT = re.compile(r"constructive-[a-z][a-z0-9-]*-explorer\Z")
 CONSTRUCTIVE_FAMILY_SLUG = re.compile(r"[a-z][a-z0-9-]{0,127}\Z")
@@ -96,6 +101,24 @@ class ConstructivePublication:
 
 
 CONSTRUCTIVE_PUBLICATIONS = {
+    "constructive-gaussian-factorization-explorer": ConstructivePublication(
+        "peano-lab-constructive-gaussian-factorization-explorer-v1-manifest", "v30", "v30"
+    ),
+    "constructive-priority-layer-explorer-v30": ConstructivePublication(
+        "peano-lab-constructive-historical-publication-v30-first-v29-manifest",
+        "v30", "v29",
+        "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0",
+    ),
+    "constructive-lower-layer-explorer-v30": ConstructivePublication(
+        "peano-lab-constructive-historical-publication-v30-first-v28-manifest",
+        "v30", "v28",
+        "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9",
+    ),
+    "constructive-second-wave-explorer-v30": ConstructivePublication(
+        "peano-lab-constructive-historical-publication-v30-first-v27-manifest",
+        "v30", "v27",
+        "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6",
+    ),
     "constructive-lower-layer-explorer": ConstructivePublication(
         "peano-lab-constructive-lower-layer-explorer-v1-manifest", "v28", "v28"
     ),
@@ -1251,7 +1274,18 @@ class LeanStrandServer(ThreadingHTTPServer):
         )
 
     def _current_constructive_release(self, static_root: Path, *, owner: int) -> tuple[str, str, str]:
-        campaign_path = static_root / "constructive-grand-campaign" / "campaign.json"
+        # A present successor is authoritative even when broken: never turn an
+        # invalid current release into a silently accepted historical fallback.
+        # Older isolated deployments retain their original atlas and policies.
+        for segment in CONSTRUCTIVE_CAMPAIGN_SUCCESSORS:
+            directory = static_root / segment
+            if directory.exists() or directory.is_symlink():
+                if directory.is_symlink() or not directory.is_dir() or directory.stat().st_uid != owner:
+                    raise ServiceError("constructive campaign directory has unsafe owner or type")
+                campaign_path = directory / "campaign.json"
+                break
+        else:
+            raise ServiceError("constructive proof browser has no reviewed campaign directory")
         campaign, campaign_info = self._reviewed_json(
             campaign_path,
             maximum=MAX_EXPLORER_CAMPAIGN_BYTES,

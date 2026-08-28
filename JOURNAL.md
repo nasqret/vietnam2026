@@ -5575,3 +5575,40 @@ available; this checkpoint records automated graph, route, source, AST and
 evidence validation, not screenshot QA. Current app/legacy presentation
 integration, isolated branch publication and remote deployment follow this
 immutable snapshot commit; production Peano remains deliberately deferred.
+
+### 2026-08-28 — current Alpha app, Lean routes, and all principal ordinary proofs
+
+All 23 independently specified principal v30 roots passed fresh native-edition
+replay followed by a second original empty-context HA check against the exact
+source AST and literal statement hash. The serial, fresh-process audit took
+1,134.150 seconds; its largest resident set was 1,386,102,784 bytes, below the
+unchanged 1,536 MiB ceiling. The slowest root took 89.556 seconds, within the
+unchanged 170/175-second CPU and 180-second wall limits. The additional
+`gaussian_prime_factorizations_unique` root passed with 46,993 proof nodes.
+Every frozen provider, admission file and canonical bundle remained unchanged.
+
+The local immutable application is `a-541687a273a2`, build `2026-08-28a`,
+with all 471 mounted Python files and 20 exact proof bundles authenticated.
+All current Alpha entry points use the sealed v30 edition, while default
+Stable remains lazy and unchanged. Six guarded shortcuts expose the five new
+goal roots and shared valuation tools without changing the established layout.
+The UI/strand/CLI/browser integration passed 923 distinct tests, separately
+from the 74 already recorded certified-export tests (997 unique tests total).
+Five actual CLI compiler cases include the new v30
+`gaussian_equal_reflexive` strand under Lean 4.28.0. Test-only temporary copies
+of the exact companion build avoid writing the original build cache.
+
+The full G082 certified single-file converter also passed: 52,094 proof
+occurrences, 97.13 seconds, 984,989,696 peak resident bytes and 4,611,790 output
+bytes. Its text exceeds the existing compiler source-size ceilings, so text
+compilation was correctly refused before launching Lean. This is not a claim
+of full single-file text elaboration; acceptance of the complete canonical
+bundle by the independently compiled Lean verifier is recorded separately.
+
+Current Lean-service publication policies authenticate the separate v30 atlas
+and preserve exact first-admission v27/v28/v29 identities. A present but invalid
+successor fails closed rather than falling back to a historical atlas. The
+complete existing/new service suite passed 261 tests; the 64 MiB catalog limit
+and all proof-job resource/security limits remain unchanged. These are local
+integration results. No unowned public worker was stopped or restarted, and
+the production Peano hosting-cache gate remains intact.

@@ -252,6 +252,8 @@ async function missingProofArtifactFailsBeforeAnyMount(missingArtifact) {
     "proof-artifacts/alpha-v26-first-wave-proof-bundle-v1.json",
     "proof-artifacts/alpha-v27-second-wave-proof-bundle-v1.json",
     "proof-artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v29-priority-layer-proof-bundle-v1.json",
+    "proof-artifacts/alpha-v30-gaussian-factorization-proof-bundle-v1.json",
   ]);
   await successfulBootIsConcurrentAndOrdered();
   await failureChoiceIsDeterministicAndAtomic();

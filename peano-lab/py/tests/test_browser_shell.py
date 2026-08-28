@@ -48,6 +48,8 @@ PROOF_BUNDLE_FILENAMES = (
     "alpha-v26-first-wave-proof-bundle-v1.json",
     "alpha-v27-second-wave-proof-bundle-v1.json",
     "alpha-v28-lower-layer-proof-bundle-v1.json",
+    "alpha-v29-priority-layer-proof-bundle-v1.json",
+    "alpha-v30-gaussian-factorization-proof-bundle-v1.json",
 )
 PROOF_BUNDLE_SOURCES = {
     f"proof-artifacts/{filename}": (
@@ -140,6 +142,39 @@ def test_worker_source_inventory_is_reproducible() -> None:
     assert "source inventory verified" in result.stdout
 
 
+def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> None:
+    assert len(PROOF_BUNDLE_FILENAMES) == 20
+    assert len(set(PROOF_BUNDLE_FILENAMES)) == 20
+    assert all(name == name.lower() for name in PROOF_BUNDLE_FILENAMES)
+    for module in (
+        "prime_valuation_support_candidate",
+        "continued_fraction_approximation_candidate",
+        "continued_fraction_convergents_candidate",
+        "euler_totient_count_candidate",
+        "euler_totient_interval_candidate",
+        "euler_totient_prime_step_candidate",
+        "euler_totient_algebra_candidate",
+        "euler_totient_product_candidate",
+        "squarefree_decomposition_candidate",
+        "perfect_power_profile_candidate",
+        "odd_prime_lte_candidate",
+        "gaussian_ring_candidate",
+        "gaussian_divisibility_candidate",
+        "gaussian_gcd_candidate",
+        "gaussian_factor_search_candidate",
+        "gaussian_factorization_candidate",
+        "gaussian_product_reindex_candidate",
+        "gaussian_factor_permutation_candidate",
+        "campaign_priority_layer_closure",
+        "campaign_gaussian_factorization_closure",
+        "alpha_enrollment_v29",
+        "alpha_enrollment_v30",
+        "editions_v29",
+        "editions_v30",
+    ):
+        assert f'"py/peano_lab/library/{module}.py"' in WORKER
+
+
 def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
     assert 'role="status"' in INDEX
     assert 'aria-live="polite"' in INDEX
@@ -163,12 +198,20 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
 
 def test_shell_connects_checked_alpha_research_to_multiscale_proof_atlas() -> None:
     assert 'aria-label="Course and research navigation"' in INDEX
-    assert '<a href="/proofs/?v=897410581b66">Proof library</a>' in INDEX
-    assert '<a href="/proofs/grand-campaign/?v=897410581b66">Research atlas</a>' in INDEX
-    assert "Alpha: 2,764 proofs" in INDEX
+    assert '<a href="/proofs/?v=b3c647d19c00">Proof library</a>' in INDEX
+    assert '<a href="/proofs/grand-campaign/?v=b3c647d19c00">Research atlas</a>' in INDEX
+    assert "Alpha: 3,222 proofs" in INDEX
     assert '<span class="lbl">research:</span>' in INDEX
+    assert 'data-cmd="pa lib alpha odd_prime_lifting_the_exponent" disabled>odd-prime LTE</button>' in INDEX
+    assert 'data-cmd="pa lib alpha positive_squarefree_kernel_and_power_profile" disabled>positive squarefree &amp; power profiles</button>' in INDEX
     for command in (
         "pa lib alpha",
+        "pa lib alpha totient_euler_product_formula",
+        "pa lib alpha positive_squarefree_kernel_and_power_profile",
+        "pa lib alpha odd_prime_lifting_the_exponent",
+        "pa lib alpha continued_fraction_convergent_best_approximation",
+        "pa lib alpha gaussian_gcd_bezout_exists",
+        "pa lib alpha gaussian_unique_prime_factorization",
         "pa lib alpha foundation_division_exists_unique",
         "pa lib alpha prime_factorization_exists_unique_up_to_permutation",
         "pa lib alpha gaussian_euclidean_division_exists",

@@ -1529,7 +1529,7 @@ def test_known_successor_mapping_requires_v28_even_with_a_consistent_other_relea
 
 
 @pytest.mark.parametrize("publication", tuple(CURRENT_PUBLICATIONS))
-def test_actual_v28_publications_and_all_root_panels_pass_read_only_release_review(publication: str) -> None:
+def test_actual_v28_publications_keep_history_but_are_not_current_authority(publication: str) -> None:
     server = non_listening_review_server(ROOT)
     handler = object.__new__(service.LeanStrandHandler)
     handler.server = server
@@ -1543,7 +1543,7 @@ def test_actual_v28_publications_and_all_root_panels_pass_read_only_release_revi
     assert {family["slug"] for family in manifest["families"]} == CURRENT_PUBLICATIONS[publication]["slugs"]
 
     for family in manifest["families"]:
-        assert server.reviewed_constructive_family(directory, family["slug"])
+        assert not server.reviewed_constructive_family(directory, family["slug"])
         suffixes = ["explorer/defined/graph.html"]
         for tag in family["root_tags"].values():
             suffixes.extend((f"explorer/tag/{tag}.html", f"explorer/defined/tag/{tag}.html"))
@@ -1551,8 +1551,7 @@ def test_actual_v28_publications_and_all_root_panels_pass_read_only_release_revi
             page = directory / family["slug"] / suffix
             original = page.read_bytes()
             enhanced = handler._inject_selector(page, page.relative_to(ROOT).parts)
-            assert enhanced is not None
-            assert b"lean-selector.js" in enhanced and b"lean-selector.css" in enhanced
+            assert enhanced is None
             assert page.read_bytes() == original
     assert manifest_path.read_bytes() == manifest_bytes
 

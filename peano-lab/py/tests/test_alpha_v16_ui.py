@@ -5,7 +5,7 @@ from __future__ import annotations
 import driver
 import pytest
 from peano_lab.library import editions_v16 as historical_alpha
-from peano_lab.library import editions_v28 as alpha
+from peano_lab.library import editions_v30 as alpha
 from peano_lab.library.alpha_enrollment_v19 import (
     LINEAR_CONGRUENCE_ROOT_NAME,
     PRIME_TWO_SQUARE_ROOT_NAME,
@@ -43,13 +43,13 @@ def test_alpha_index_reports_exact_current_evidence_without_proof_replay(
 
     output = driver.LabSession().run("pa lib alpha")
 
-    assert "immutable Alpha v28" in output
-    assert "Enrolled statements: 2,764" in output
+    assert "immutable Alpha v30" in output
+    assert "Enrolled statements: 3,222" in output
     assert "Stable closed: 432" in output
-    assert "Alpha closed: 2,332" in output
+    assert "Alpha closed: 2,790" in output
     assert "Dependency-curried body only: 0" in output
     assert "Pending closure: 0" in output
-    assert "Available for independently checked use: 2,764" in output
+    assert "Available for independently checked use: 3,222" in output
     assert "Previously promoted quadratic-reciprocity results: 315" in output
     assert "Previously promoted supplementary-law results: 31" in output
     assert "Previously promoted five-campaign flagship results: 673" in output
@@ -63,8 +63,10 @@ def test_alpha_index_reports_exact_current_evidence_without_proof_replay(
     assert "Previously added Alpha v25 campaign results: 72" in output
     assert "Previously added Alpha v26 campaign results: 58" in output
     assert "Previously added Alpha v27 campaign results: 422" in output
-    assert "New constructive campaign results: 204" in output
-    assert alpha.ALPHA_V28_IDENTITY_SHA256 in output
+    assert "Previously added Alpha v28 campaign results: 204" in output
+    assert "Previously added Alpha v29 campaign results: 278" in output
+    assert "New constructive campaign results: 180" in output
+    assert alpha.ALPHA_V30_IDENTITY_SHA256 in output
 
 
 def test_alpha_root_evidence_card_is_cheap_and_never_claims_stable_membership(
@@ -92,7 +94,7 @@ def test_alpha_supplementary_roots_have_checked_cards_without_replaying(monkeypa
     monkeypatch.setattr(alpha, "replay", forbidden_replay)
     session = driver.LabSession()
 
-    for name in alpha.v27.v26.v25.v24.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES:
+    for name in alpha.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES:
         output = session.run(f"pa lib alpha {name}")
         assert "Release evidence: alpha_closed" in output
         assert "Release membership: alpha_only" in output
@@ -107,7 +109,7 @@ def test_all_six_flagship_roots_have_checked_cards_without_replaying(monkeypatch
     monkeypatch.setattr(alpha, "replay", forbidden_replay)
     session = driver.LabSession()
 
-    for name in alpha.v27.v26.v25.v24.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES:
+    for name in alpha.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES:
         output = session.run(f"pa lib alpha {name}")
         assert "Release evidence: alpha_closed" in output
         assert "Release membership: alpha_only" in output
@@ -117,7 +119,7 @@ def test_all_six_flagship_roots_have_checked_cards_without_replaying(monkeypatch
 
 def test_all_historical_body_only_theorems_now_have_checked_cards(monkeypatch) -> None:
     historical = next(
-        item for item in alpha.v27.v26.v25.v24.v23.v22.v21.v19.v18.ALPHA_ENTRIES if not item.checked_use
+        item for item in alpha.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.ALPHA_ENTRIES if not item.checked_use
     )
 
     def forbidden_replay(*_args, **_kwargs):
@@ -131,9 +133,9 @@ def test_all_historical_body_only_theorems_now_have_checked_cards(monkeypatch) -
 
     assert "Release evidence: alpha_closed" in inspection
     assert "Checked-use authority: YES" in inspection
-    assert "Release edition: Alpha v28." in preview
+    assert "Release edition: Alpha v30." in preview
     assert "Fresh independent empty-context Peano kernel replay: NOT RUN" in preview
-    assert historical.evidence is alpha.v27.v26.v25.v24.v23.v22.v21.v19.v18.EvidenceStatus.BODY_CHECKED
+    assert historical.evidence is alpha.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.EvidenceStatus.BODY_CHECKED
     assert not historical.checked_use
 
 
@@ -189,7 +191,7 @@ def test_new_campaign_goals_and_complete_valuation_have_checked_cards_without_re
 
     output = driver.LabSession().run(f"pa lib alpha {name}")
 
-    assert f"{name} — Alpha v28 theorem evidence" in output
+    assert f"{name} — Alpha v30 theorem evidence" in output
     assert "Release evidence: alpha_closed" in output
     assert "Release membership: alpha_only" in output
     assert "Checked-use authority: YES" in output
@@ -241,13 +243,16 @@ def test_new_campaign_lean_previews_are_bounded_and_never_use_synthetic_bundle_t
         raise AssertionError("safe campaign previews must not open or reconstruct proofs")
 
     monkeypatch.setattr(alpha, "replay", forbidden)
-    monkeypatch.setattr(alpha.v27.v26, "_checked_first_wave_bundle", forbidden)
-    monkeypatch.setattr(alpha.v27, "_checked_second_wave_bundle", forbidden)
+    monkeypatch.setattr(alpha, "_checked_gaussian_factorization_bundle", forbidden)
+    monkeypatch.setattr(alpha.v29, "_checked_priority_layer_bundle", forbidden)
+    monkeypatch.setattr(alpha.v29.v28, "_checked_lower_layer_bundle", forbidden)
+    monkeypatch.setattr(alpha.v29.v28.v27.v26, "_checked_first_wave_bundle", forbidden)
+    monkeypatch.setattr(alpha.v29.v28.v27, "_checked_second_wave_bundle", forbidden)
 
     output = driver.LabSession().run(f"pa lean alpha {name}")
 
     assert f"Lean 4 independently checked theorem — {name}" in output
-    assert "Release edition: Alpha v28." in output
+    assert "Release edition: Alpha v30." in output
     assert "Fresh independent empty-context Peano kernel replay: NOT RUN" in output
     assert "--edition alpha --format compact" in output
     assert "--proof-bundle" not in output
@@ -301,8 +306,8 @@ def test_alpha_explicit_verification_checks_actual_empty_context_certificate(nam
     "name",
     (
         QR_ROOT_NAME,
-        *alpha.v27.v26.v25.v24.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES,
-        *alpha.v27.v26.v25.v24.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES,
+        *alpha.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES,
+        *alpha.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES,
         PRIMES_ONE_MOD_FOUR_ROOT_NAME,
         PRIME_TWO_SQUARE_ROOT_NAME,
     ),
@@ -392,8 +397,8 @@ def test_alpha_commands_do_not_change_default_public_library() -> None:
 def test_alpha_unknown_theorems_fail_without_changing_surface() -> None:
     session = driver.LabSession()
 
-    assert "No Alpha v28 theorem 'missing'" in session.run("pa lib alpha missing")
-    assert "No Alpha v28 theorem 'missing'" in session.run("pa lean alpha missing")
+    assert "No Alpha v30 theorem 'missing'" in session.run("pa lib alpha missing")
+    assert "No Alpha v30 theorem 'missing'" in session.run("pa lean alpha missing")
     assert session.run("pa lib alpha check") == "Usage: pa lib alpha check <theorem>."
 
 
@@ -411,12 +416,12 @@ def test_unsealed_alpha_is_never_presented_as_checked_but_stable_remains_availab
     monkeypatch: pytest.MonkeyPatch,
     command: str,
 ) -> None:
-    monkeypatch.setattr(alpha, "EXPECTED_ALPHA_V28_COUNT", 0)
+    monkeypatch.setattr(alpha, "EXPECTED_ALPHA_V30_COUNT", 0)
     session = driver.LabSession()
 
     output = session.run(command)
 
-    assert "Alpha v28 is not sealed for checked use" in output
+    assert "Alpha v30 is not sealed for checked use" in output
     assert "Checked-use authority: YES" not in output
     assert "kernel check: PASS" not in output
     assert "432 scripted theorems" in session.run("pa lib")

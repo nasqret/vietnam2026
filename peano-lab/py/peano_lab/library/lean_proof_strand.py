@@ -1,7 +1,7 @@
 """Bounded, source-grounded readable Lean proof strands.
 
 Planning only inspects the immutable checked-use theorem ledger.  In
-particular it never replays a theorem, imports an artifact provider, or opens
+particular it never replays a theorem, invokes a proof-artifact provider, or opens
 a proof bundle.  Materialization translates each dependency-curried authored
 body separately.  If a body cannot yet be translated to readable Lean, only
 that *local* body is independently kernel-checked and embedded as a small
@@ -262,7 +262,7 @@ def _positive_limit(name: str, value: object, maximum: int) -> int:
 
 
 def _edition_view(edition: str) -> tuple[Any, str]:
-    """Import only the current sealed, artifact-free Alpha-v28 inventory."""
+    """Import only the current sealed, artifact-free Alpha-v30 inventory."""
 
     if type(edition) is not str or edition not in {"stable", "alpha"}:
         raise ProofStrandError("edition must be exactly 'stable' or 'alpha'")
@@ -270,11 +270,15 @@ def _edition_view(edition: str) -> tuple[Any, str]:
         from .editions_v26 import STABLE_EDITION
 
         return STABLE_EDITION, "stable"
-    from . import editions_v28
+    from . import editions_v30
 
-    if not editions_v28.EXPECTED_ALPHA_V28_COUNT:
-        raise ProofStrandError("Alpha v28 is not sealed for checked use")
-    return editions_v28.ALPHA_EDITION, "v28"
+    if not editions_v30.EXPECTED_ALPHA_V30_COUNT:
+        raise ProofStrandError("Alpha v30 is not sealed for checked use")
+    try:
+        editions_v30.require_gaussian_factorization_seal()
+    except editions_v30.EditionV30Error as error:
+        raise ProofStrandError(str(error)) from error
+    return editions_v30.ALPHA_EDITION, "v30"
 
 
 @lru_cache(maxsize=512)

@@ -8,6 +8,7 @@ import importlib.util
 import json
 import os
 from pathlib import Path
+import shutil
 import subprocess
 import sys
 
@@ -51,6 +52,33 @@ def _catalog(directory: Path) -> dict[str, object]:
     return json.loads((directory / "manifest.json").read_text(encoding="utf-8"))
 
 
+def _isolated_lean_project(destination: Path) -> Path:
+    """Copy exact verifier inputs so Lake can only refresh an owned test cache."""
+
+    relatives = [
+        Path("lakefile.toml"), Path("lake-manifest.json"),
+        Path("lean-toolchain"), Path("PeanoLab.lean"),
+    ]
+    relatives.extend(
+        source.relative_to(LEAN_PROJECT)
+        for source in (LEAN_PROJECT / "PeanoLab").rglob("*.lean")
+    )
+    compiled = LEAN_PROJECT / ".lake/build/lib/lean/PeanoLab"
+    for name in (
+        "Syntax", "Substitution", "Derivation", "Checker", "Semantics",
+        "Soundness", "Codec", "ProofBundle",
+    ):
+        assert (compiled / f"{name}.olean").is_file()
+        for pattern in (f"{name}.olean*", f"{name}.ilean*"):
+            relatives.extend(source.relative_to(LEAN_PROJECT) for source in compiled.glob(pattern))
+    for relative in sorted(set(relatives)):
+        source, target = LEAN_PROJECT / relative, destination / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
+        assert sha256(target.read_bytes()).digest() == sha256(source.read_bytes()).digest()
+    return destination
+
+
 def _bundle() -> ProofBundle:
     zero = Zero()
     proposition = Eq(zero, zero)
@@ -75,7 +103,7 @@ def test_named_checked_bundle_never_reconstructs_a_redundant_root_certificate(
     tmp_path: Path,
     edition: str,
 ) -> None:
-    from peano_lab.library import editions_v19
+    from peano_lab.library import editions_v19, editions_v30
     from peano_lab.library.theorems import replay as stable_replay
 
     checked = stable_replay("zero_add")
@@ -92,6 +120,7 @@ def test_named_checked_bundle_never_reconstructs_a_redundant_root_certificate(
 
     monkeypatch.setattr(exporter, "replay", forbidden)
     monkeypatch.setattr(editions_v19, "replay", forbidden)
+    monkeypatch.setattr(editions_v30, "replay", forbidden)
 
     assert exporter.main(
         [
@@ -163,12 +192,13 @@ def test_checked_alpha_statement_preview_does_not_replay_its_large_root(
     capsys: pytest.CaptureFixture[str],
     name: str,
 ) -> None:
-    from peano_lab.library import editions_v19
+    from peano_lab.library import editions_v19, editions_v30
 
     def forbidden(*_args, **_kwargs):
         raise AssertionError("an Alpha statement preview tried to replay its proof")
 
     monkeypatch.setattr(editions_v19, "replay", forbidden)
+    monkeypatch.setattr(editions_v30, "replay", forbidden)
     assert (
         exporter.main([name, "--edition", "alpha", "--format", "pretty"])
         == 0
@@ -461,12 +491,12 @@ def test_alpha_body_only_theorem_is_denied_even_for_statement_preview(
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v19
+    from peano_lab.library import editions_v19, editions_v30
 
     actual = editions_v19.entry("zero_add", edition="alpha")
     assert actual is not None
     unauthorized = replace(actual, evidence=editions_v19.EvidenceStatus.BODY_CHECKED)
-    monkeypatch.setattr(editions_v19, "entry", lambda *_args, **_kwargs: unauthorized)
+    monkeypatch.setattr(editions_v30, "entry", lambda *_args, **_kwargs: unauthorized)
 
     assert exporter.main(["zero_add", "--edition", "alpha", "--format", "pretty"]) == 1
     assert "checked-use authority" in capsys.readouterr().err
@@ -610,15 +640,22 @@ def test_oversized_later_package_module_prevents_even_a_prelude_launch(
     reason="independently compiled sibling Lean companion is unavailable",
 )
 def test_real_lean_compiles_shared_prelude_certificate_and_alias_facade(
+    exporter,
     tmp_path: Path,
 ) -> None:
     package = tmp_path / "verified"
+    project = _isolated_lean_project(tmp_path / "lean-companion")
+    lake = exporter._lake_binary(LEAN_PROJECT, None)
     result = _run(
         "le_refl",
         "--format",
         "compact",
         "--package-dir",
         package,
+        "--lean-project",
+        project,
+        "--lake",
+        lake,
         "--verify",
         "--max-memory-mib",
         "1024",
