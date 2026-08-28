@@ -194,11 +194,16 @@ def render_exact_index(
     graph_href = _navigation_href(
         f"defined/graph.html?target={root_tag}", html_revision
     )
+    graph_navigation = (
+        " data-graph-navigation"
+        if corpus.get("alpha_edition_version") == "v30"
+        else ""
+    )
     campaign_navigation = _campaign_navigation(
         corpus, prefix="../../", revision=html_revision
     )
     body = f"""<header class="pa-proof-header pa-hero">
-  <nav><a href="{family_href}">{_escape(family.title)}</a><a href="{defined_href}">Defined notation</a><a href="{graph_href}">Dependency graph</a>{campaign_navigation}</nav>
+  <nav><a href="{family_href}">{_escape(family.title)}</a><a href="{defined_href}">Defined notation</a><a href="{graph_href}"{graph_navigation}>Dependency graph</a>{campaign_navigation}</nav>
   <h1>{_escape(family.title)} — Exact Proof Explorer</h1>
   <p>{_escape(family.description)}</p>
   <div class="pa-proof-stats"><b>{count}</b> theorem bodies · <b>{corpus['edge_count']}</b> proof edges · <b>{corpus['formal_line_count']}</b> tactic lines · <b>{layer_count}</b> layers</div>
@@ -386,11 +391,16 @@ def render_exact_theorem(
     graph_href = _navigation_href(
         f"../defined/graph.html?target={tag}", html_revision
     )
+    graph_navigation = (
+        " data-graph-navigation"
+        if corpus.get("alpha_edition_version") == "v30"
+        else ""
+    )
     campaign_navigation = _campaign_navigation(
         corpus, prefix="../../../", revision=html_revision
     )
     body = f"""<header class="pa-proof-header pa-theorem-heading">
-  <nav><a href="{explorer_href}">Explorer</a><a href="{defined_href}">Defined notation</a><a href="{graph_href}">Dependency graph</a>{campaign_navigation}{previous_link}{following_link}</nav>
+  <nav><a href="{explorer_href}">Explorer</a><a href="{defined_href}">Defined notation</a><a href="{graph_href}"{graph_navigation}>Dependency graph</a>{campaign_navigation}{previous_link}{following_link}</nav>
   <p class="pa-tag">{_escape(tag)}</p><h1>{_escape(name)}</h1>
   <p class="pa-status-candidate">{_escape(_candidate_label(node))}</p>
   <p>{_escape(node['summary'])}</p>

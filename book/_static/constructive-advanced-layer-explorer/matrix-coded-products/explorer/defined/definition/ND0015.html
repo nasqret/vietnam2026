@@ -8,18 +8,18 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="matrix-coded-products"><header class="pd-header pd-definition-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../graph.html?v=b3c647d19c00">Interactive dependency graph</a>
-       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=MatrixPointwiseAdd&amp;v=b3c647d19c00">Global definition: MatrixPointwiseAdd</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=b3c647d19c00">T13 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=MatrixPointwiseAdd&amp;v=ac7111ec14ff">Global definition: MatrixPointwiseAdd</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=ac7111ec14ff">T13 milestone</a></nav>
   <p class="pd-tag">ND0015</p><h1>MatrixPointwiseAdd(mb,mc,sb,sc,tb,tc,l)</h1>
   <p>The complete beta-coded pointwise sum of two exact bounded natural vector prefixes.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
 </header><main class="pd-theorem-layout"><div class="pd-proof-panel">
   <section><h2>Hygienic expanded first-order definition</h2>
     <pre><code>forall ff_index_mcp_add_advanced ff_left_mcp_add_advanced ff_right_mcp_add_advanced ff_target_mcp_add_advanced. (exists mcp_gap_advanced_bound. mcp_gap_advanced_bound + S (ff_index_mcp_add_advanced) = (l)) -&gt; (((exists fs_h_mcp_advanced_left. fs_h_mcp_advanced_left + S (ff_left_mcp_add_advanced) = S ((S (ff_index_mcp_add_advanced)) * mc)) /\ exists fs_q_mcp_advanced_left. mb = fs_q_mcp_advanced_left * S ((S (ff_index_mcp_add_advanced)) * mc) + (ff_left_mcp_add_advanced))) -&gt; (((exists fs_h_mcp_advanced_right. fs_h_mcp_advanced_right + S (ff_right_mcp_add_advanced) = S ((S (ff_index_mcp_add_advanced)) * sc)) /\ exists fs_q_mcp_advanced_right. sb = fs_q_mcp_advanced_right * S ((S (ff_index_mcp_add_advanced)) * sc) + (ff_right_mcp_add_advanced))) -&gt; (((exists fs_h_mcp_advanced_target. fs_h_mcp_advanced_target + S (ff_target_mcp_add_advanced) = S ((S (ff_index_mcp_add_advanced)) * tc)) /\ exists fs_q_mcp_advanced_target. tb = fs_q_mcp_advanced_target * S ((S (ff_index_mcp_add_advanced)) * tc) + (ff_target_mcp_add_advanced))) -&gt; ff_target_mcp_add_advanced = ff_left_mcp_add_advanced + ff_right_mcp_add_advanced</code></pre>
     <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></section>
-  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0001.html?v=b3c647d19c00">Beta(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=b3c647d19c00">Lt(a,b)</a></div></section>
-  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0017.html?v=b3c647d19c00">SignedMatrixProduct(ab,ac,db,dc,eb,ec,fb,fc,w,v,r,pb,pc,nb,nc)</a></div></section>
-  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/MC000C.html?v=b3c647d19c00">MC000C · beta_pointwise_add_prefix_extend</a><a class="pd-chip" href="../tag/MC000D.html?v=b3c647d19c00">MC000D · beta_pointwise_add_prefix_exists</a></div></section>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0001.html?v=ac7111ec14ff">Beta(b,c,i,x)</a><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0017.html?v=ac7111ec14ff">SignedMatrixProduct(ab,ac,db,dc,eb,ec,fb,fc,w,v,r,pb,pc,nb,nc)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/MC000C.html?v=ac7111ec14ff">MC000C · beta_pointwise_add_prefix_extend</a><a class="pd-chip" href="../tag/MC000D.html?v=ac7111ec14ff">MC000D · beta_pointwise_add_prefix_exists</a></div></section>
 </div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
   <dt>Arity</dt><dd>7</dd>
   <dt>Topological notation layer</dt><dd>1</dd>
@@ -27,5 +27,5 @@
   <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
   <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0015.</dd>
   <dt>Expanded formula SHA-256</dt><dd><code>14c3286ed26a3b533bcfbd9896671ac23c5064800fd74b72687592cf50a6daaf</code></dd>
-</dl></aside><p class="pd-callout">Separate complete second-wave branches: <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=b3c647d19c00">Full T13 proof · Alpha v27</a>.</p></main></body>
+</dl></aside><p class="pd-callout">Separate complete second-wave branches: <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=ac7111ec14ff">Full T13 proof · Alpha v27</a>.</p></main></body>
 </html>

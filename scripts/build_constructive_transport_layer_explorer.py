@@ -21,6 +21,7 @@ from dataclasses import dataclass
 from functools import lru_cache
 import json
 from pathlib import Path
+import re
 import sys
 from typing import Any
 
@@ -872,27 +873,51 @@ def _graph_payload(
     return graph
 
 
+@lru_cache(maxsize=1)
+def _source_provenance_summaries() -> re.Pattern[str]:
+    """Protect exact theorem-source prose, not mutable admission labels.
+
+    Two v22 summaries name their inherited v21 execution relation.  Their
+    wording comes from the frozen TheoremSpecs, not a new presentation claim.
+    Splitting around those complete sentences leaves release chrome free to
+    acquire the correct v22 first-admission label.
+    """
+
+    summaries = sorted({
+        _e(spec.summary)
+        for spec in alpha_v22_enrollment().frontier_specs
+        if re.search(r"(?:Alpha-|Alpha |ALPHA )v2[01]\b", spec.summary)
+    }, key=lambda value: (-len(value), value))
+    if not summaries:
+        raise TransportLayerExplorerError("historical execution-source summaries disappeared")
+    return re.compile("(" + "|".join(re.escape(summary) for summary in summaries) + ")")
+
+
 def _retarget(document: bytes, family: Family, *, include_caveat: bool = False) -> bytes:
-    text = document.decode("utf-8")
+    parts = _source_provenance_summaries().split(document.decode("utf-8"))
     old_caveat = (
         "Every displayed theorem was first admitted in Alpha v20, remains independently "
         "kernel- and Lean-verified for current Alpha v30 checked use, and has not been "
         "promoted to Stable."
     )
-    text = text.replace(old_caveat, family.caveat)
-    text = text.replace("first admitted v20", "first admitted v22")
-    text = text.replace("FIRST ADMITTED v20", "FIRST ADMITTED v22")
-    text = text.replace("First admission</dt><dd>Alpha v20", "First admission</dt><dd>Alpha v22")
-    text = text.replace("Alpha v21", "Alpha v22")
-    text = text.replace("ALPHA v21", "ALPHA v22")
-    text = text.replace("Alpha-v21", "Alpha-v22")
-    text = text.replace("Alpha v20", "Alpha v22")
-    text = text.replace("ALPHA v20", "ALPHA v22")
-    text = text.replace("Alpha-v20", "Alpha-v22")
     count = EXPECTED_TRANSPORT_LAYER_BUNDLE_NODE_COUNT
-    text = text.replace("590-node bundle", f"{count}-node bundle")
-    text = text.replace("all 590 exact bundle nodes", f"all {count} exact bundle nodes")
-    text = text.replace(" / 590</dd>", f" / {count}</dd>")
+    for index in range(0, len(parts), 2):
+        text = parts[index]
+        text = text.replace(old_caveat, family.caveat)
+        text = text.replace("first admitted v20", "first admitted v22")
+        text = text.replace("FIRST ADMITTED v20", "FIRST ADMITTED v22")
+        text = text.replace("First admission</dt><dd>Alpha v20", "First admission</dt><dd>Alpha v22")
+        text = text.replace("Alpha v21", "Alpha v22")
+        text = text.replace("ALPHA v21", "ALPHA v22")
+        text = text.replace("Alpha-v21", "Alpha-v22")
+        text = text.replace("Alpha v20", "Alpha v22")
+        text = text.replace("ALPHA v20", "ALPHA v22")
+        text = text.replace("Alpha-v20", "Alpha-v22")
+        text = text.replace("590-node bundle", f"{count}-node bundle")
+        text = text.replace("all 590 exact bundle nodes", f"all {count} exact bundle nodes")
+        text = text.replace(" / 590</dd>", f" / {count}</dd>")
+        parts[index] = text
+    text = "".join(parts)
     if include_caveat:
         marker = '<section class="pd-statement">'
         callout = f'<p class="pd-callout">{_e(family.caveat)}</p>'
@@ -904,7 +929,7 @@ def _retarget(document: bytes, family: Family, *, include_caveat: bool = False) 
                 f"{callout}</section>\n</main>",
                 1,
             )
-    return text.encode("utf-8")
+    return original._preserve_defined_graph_data(document, text.encode("utf-8"))
 
 
 def _top_index(

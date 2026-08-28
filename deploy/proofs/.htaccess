@@ -7,6 +7,13 @@
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
 </IfModule>
 
+# Five legacy read-more destinations belong to the existing course book.
+# Preserve the immutable flagship HTML and redirect only these exact paths.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^arithmetic-library/(quadratic-reciprocity|defined-proof-explorer|cell-history-and-lookup|library-editions|bertrand-campaign)\.html$ https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026/book/arithmetic-library/$1.html [R=302,L]
+</IfModule>
+
 # Directory requests resolve to their index.html before this file match runs.
 # Never retain old explorer pages; revalidate shared assets without disabling
 # conditional ETag/Last-Modified requests or affecting unrelated faculty pages.

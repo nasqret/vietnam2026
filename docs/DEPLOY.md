@@ -1,10 +1,12 @@
 # Deploying
 
-The single current proof-product authority and development sequence are in
-[`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md). The supported public
+The current mathematical release is sealed by
+[`channels-v30.json`](../artifacts/peano-library/channels-v30.json). The separate
+Hydra development sequence is in [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md);
+each training epoch retains its own explicitly frozen authority. Publishing new
+proofs does not expand an existing training experiment. The supported public
 Lean route is the same-origin proof gateway; deployment commands below remain
-explicit, separately authorized operations, not automatic Hydra-preparation
-steps.
+explicit, separately authorized operations, not automatic Hydra preparation.
 
 Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 (`bnaskrecki@lts-faculty.wmi.amu.edu.pl`, static Apache + PHP,
@@ -16,7 +18,7 @@ Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | all 38 checked proof families, the grand campaign atlas, proof artifacts, and public Lean selectors |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | all 44 checked proof families, the grand campaign atlas, proof artifacts, and public Lean selectors |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
@@ -36,31 +38,81 @@ targets; `make deploy` does not publish either Peano channel.
 make deploy-proofs
 ```
 
-This rebuilds both exact and definition-aware proof editions, stages all 38
+This verifies the frozen flagship editions without rewriting them, regenerates
+the current constructive presentations, and stages all 44
 quadratic-reciprocity, Bertrand, constructive-frontier, next-layer,
 advanced-layer, transport-layer, milestone-closure, research-layer, and
-breakthrough-layer, second-wave, and lower-layer families under `_deploy/proofs`,
-and installs their shared public **Build Lean proof** controls. The four new
-canonical Quadratic-Reciprocity-style routes are `/proofs/arithmetic-foundations/`,
-`/proofs/prime-enumeration/`, `/proofs/gaussian-integers/`, and
-`/proofs/eisenstein-integers/`. The seven original v27 explorer snapshots
-remain byte-for-byte historical artifacts; their additive current publication
-is generated under `constructive-second-wave-explorer-v28` and maps to the
-same public family URLs.
+breakthrough-layer, second-wave, lower-layer, priority-layer and Gaussian
+factorization families under `_deploy/proofs`, and installs their shared public
+**Build Lean proof** controls. Six additional canonical Quadratic-Reciprocity-style
+routes are `/proofs/prime-valuation-support/`, `/proofs/best-approximation/`,
+`/proofs/totient-products/`, `/proofs/squarefree-kernels/`,
+`/proofs/exponent-lifting/`, and `/proofs/gaussian-factorization/`.
+The original v27, v28 and v29 explorer snapshots remain byte-for-byte historical
+artifacts. Separate current packages `constructive-second-wave-explorer-v30`,
+`constructive-lower-layer-explorer-v30`, and
+`constructive-priority-layer-explorer-v30` retain all 904 historical proofs and
+their exact first-admission receipts, at the same public URLs. The new Gaussian
+chapter is generated under `constructive-gaussian-factorization-explorer`.
+Five exact legacy `arithmetic-library/*.html` read-more destinations redirect
+to their existing `/vietnam2026/book/arithmetic-library/` chapters, preserving
+the frozen flagship HTML. This proof-site-only compatibility rule does not
+change any cache headers or the production Peano delivery gate.
+The same five paths also have ordinary static fallback pages: when hosting
+ignores rewrite rules, their fixed-destination browser redirects preserve the
+query and fragment, with a normal chapter link and a no-JavaScript fallback.
+The separate `constructive-gaussian-campaign` atlas is staged at the existing
+public `/proofs/grand-campaign/` URL; neither historical atlas is overwritten.
 It separately publishes the narrow two-file PHP gateway under
 `~/public_html/api/lean-strands/`; neither publication target can be widened by
 overriding its Make variable. The proof site also publishes the grand campaign
-atlas and exact checked proof artifacts through current Alpha v28: 2,764
-independently checked theorems, including 432 unchanged Stable and 2,332
-Alpha-only theorems, 8,984 proof-dependency edges, 323 blueprint definitions,
-and 233 reviewed conservative definitions. Its 862-node lower-layer proof
-bundle is independently accepted by the original intuitionistic kernel and
-the compiled Lean verifier. Each family retains its unchanged proof evidence,
+atlas and exact checked proof artifacts through current Alpha v30: 3,222
+independently checked theorems, including 432 unchanged Stable and 2,790
+Alpha-only theorems, 10,588 proof-dependency edges, 370 blueprint definitions,
+and 284 reviewed conservative definitions with 560 audited definition edges.
+The 566-node priority-layer and 453-node Gaussian-factorization bundles are
+independently accepted by the original intuitionistic kernel and the compiled
+Lean verifier; the receipts state the actual local compiler provenance separately
+from CI's pinned 4.31 toolchain. Each family retains its unchanged proof evidence,
 Stable/Alpha distinction, first-admission history, and original explorer assets.
 G001–G005, G021–G022, G081, and G084 are complete at their exact recorded scope;
-Gaussian/Eisenstein unique factorization and prime classification remain open.
+G072 best approximation, G006 totient products, G010 squarefree kernels and
+perfect-power profiles, G036 odd-prime LTE, and G082 Gaussian unique prime
+factorization are now complete at their exact guarded statements. G082
+constructs a genuine unit-matching bijection, not literal or sorted factor-list
+equality. Gaussian prime classification and the Eisenstein factorization and
+classification milestones remain separate open goals.
 The earlier v27 finite T13, Hensel G095, and generalized CRT G011 contracts
 remain closed without claiming stronger lattice or p-adic completion results.
+
+The current catalog uses compact JSON whitespace while preserving every exact
+theorem and inherited receipt. The service's 64 MiB catalog limit, one-worker
+policy and other resource/security bounds are unchanged. A broken present
+current atlas fails closed instead of silently falling back to an older release.
+`make peano-library-alpha-v30-check` also checks all seven historical-family
+presentation controllers and their ten regression suites serially, both Lean
+export formats, and the immutable application manifest. The v27, v28 and v29
+mathematical release gates remain separately available and unchanged.
+The next-layer presentation suite uses seven disjoint fresh-process windows
+to avoid retaining multiple large catalog fixtures at once. The deployment
+contract independently collects every case and verifies exact, once-only
+coverage of all 261 tests; no test or authority check is skipped.
+Research and breakthrough presentation tests separate their 30 adversarial
+catalogue cases from the 78 and 99 positive cases in fresh processes. Their
+test-only streaming JSON encoder preserves the exact compact catalogue bytes,
+all corruption cases, rehashed pointers and actual rejection checks. The
+deployment contract verifies complete, once-only coverage for both suites.
+These presentation checks explicitly use CPython's standard `pymalloc`
+allocator, matching the recorded resource measurements.
+The separate exact-reader navigation regression gate preserves frozen historical
+HTML while marking the current v30 links to their existing definition-aware
+graphs. The original explorer JavaScript and its QR/Bertrand behavior remain
+unchanged; current exact readers must not inject a second, nonexistent graph.
+Bulk publication is not a single proof job: the original combined historical
+publisher completed at an observed peak of 2,226,962,432 resident bytes. Run
+publication serially. The experimental 1,536 MiB bulk-publisher diagnostic did
+not pass and is not shipped; no original release, kernel, proof-job or service
+limit is disabled or increased.
 
 ## Interactive Lean proof building
 

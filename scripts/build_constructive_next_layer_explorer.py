@@ -19,6 +19,7 @@ from dataclasses import dataclass
 from functools import lru_cache
 from hashlib import sha256
 import html
+from html.parser import HTMLParser
 import json
 from pathlib import Path
 import re
@@ -97,7 +98,7 @@ OUTPUT = REPO / "book" / "_static" / "constructive-next-layer-explorer"
 CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v20.json"
 CURRENT_CATALOG = REPO / "artifacts" / "peano-library" / "alpha" / "catalog-v30.json"
 CURRENT_CHANNELS = REPO / "artifacts" / "peano-library" / "channels-v30.json"
-EXPECTED_CURRENT_CATALOG_SHA256 = "b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb"
+EXPECTED_CURRENT_CATALOG_SHA256 = "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
 CAMPAIGN = REPO / "book" / "_static" / "constructive-gaussian-campaign" / "campaign.json"
 GLOBAL_DEFINITIONS = CAMPAIGN.with_name("definitions.json")
 EXPECTED_ALPHA_COUNT = 1_776
@@ -804,6 +805,85 @@ def _preferred_reviewed_matches(graph: Mapping[str, Any]) -> dict[str, dict[str,
     return result
 
 
+class _PresentationRegions(HTMLParser):
+    """Locate real HTML insertion points without reserializing the page.
+
+    Script data and inert elements are not presentation text. Character
+    offsets keep all unrelated HTML, JavaScript and Unicode bytes unchanged.
+    """
+
+    _INERT = frozenset({"script", "style", "textarea", "title", "template", "noscript"})
+
+    def __init__(self, source: str) -> None:
+        super().__init__(convert_charrefs=False)
+        self.source = source
+        self._line_starts = [0, *(match.end() for match in re.finditer("\n", source))]
+        self._inert: list[str] = []
+        self._paragraph_starts: list[int] = []
+        self._graph_start: int | None = None
+        self.paragraphs: list[tuple[int, int]] = []
+        self.main_ends: list[int] = []
+        self.graph_data: list[tuple[int, int]] = []
+        self.feed(source)
+        self.close()
+        if self._inert:
+            raise NextLayerExplorerError("historical HTML contains an unclosed inert element")
+
+    def _offset(self) -> int:
+        line, column = self.getpos()
+        return self._line_starts[line - 1] + column
+
+    def handle_starttag(self, tag: str, attributes: list[tuple[str, str | None]]) -> None:
+        if self._inert:
+            if self._inert[-1] == "template" and tag == "template":
+                self._inert.append(tag)
+            return
+        start = self._offset() + len(self.get_starttag_text())
+        if tag in self._INERT:
+            self._inert.append(tag)
+            if tag == "script" and dict(attributes).get("id") == "pa-defined-graph-data":
+                self._graph_start = start
+        elif tag == "p":
+            self._paragraph_starts.append(start)
+
+    def handle_endtag(self, tag: str) -> None:
+        if self._inert:
+            if tag == self._inert[-1]:
+                if tag == "script" and self._graph_start is not None:
+                    self.graph_data.append((self._graph_start, self._offset()))
+                    self._graph_start = None
+                self._inert.pop()
+            return
+        if tag == "p" and self._paragraph_starts:
+            self.paragraphs.append((self._paragraph_starts.pop(), self._offset()))
+        elif tag == "main":
+            self.main_ends.append(self._offset())
+
+
+def _preserve_defined_graph_data(original: bytes, revised: bytes) -> bytes:
+    """Retarget presentation labels, never historical theorem summaries in JSON.
+
+    The separate overlay script may intentionally update its first-admission
+    label. Only the graph's exact data assignment must remain byte-identical.
+    """
+
+    marker = b"pa-defined-graph-data"
+    if marker not in original and marker not in revised:
+        return revised
+    before, after = original.decode("utf-8"), revised.decode("utf-8")
+    original_regions = _PresentationRegions(before).graph_data
+    revised_regions = _PresentationRegions(after).graph_data
+    if len(original_regions) != len(revised_regions) or len(original_regions) > 1:
+        raise NextLayerExplorerError("historical retargeting changed the graph data script boundary")
+    if not original_regions:
+        return revised
+    original_start, original_end = original_regions[0]
+    revised_start, revised_end = revised_regions[0]
+    return (
+        after[:revised_start] + before[original_start:original_end] + after[revised_end:]
+    ).encode("utf-8")
+
+
 def _link_second_wave_completions(
     files: dict[str, bytes], families: Sequence[Any], *, revision: str
 ) -> None:
@@ -836,12 +916,18 @@ def _link_second_wave_completions(
         )
         note = f'<p class="pd-callout">Separate complete second-wave branches: {links}.</p>'
         text = payload.decode("utf-8")
-        if "</main>" not in text:
+        regions = _PresentationRegions(text)
+        if len(regions.main_ends) != 1:
             raise NextLayerExplorerError(f"the historical page has no canonical main: {path}")
-        if family is not None and _e(family.caveat) in text:
-            text = text.replace(_e(family.caveat), _e(family.caveat) + " " + links, 1)
+        caveat_end = next((
+            end for start, end in regions.paragraphs
+            if family is not None and family.caveat and text[start:end] == _e(family.caveat)
+        ), None)
+        if caveat_end is not None:
+            text = text[:caveat_end] + " " + links + text[caveat_end:]
         else:
-            text = text.replace("</main>", note + "</main>", 1)
+            main_end = regions.main_ends[0]
+            text = text[:main_end] + note + text[main_end:]
         files[path] = text.encode("utf-8")
 
 

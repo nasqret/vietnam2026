@@ -13,6 +13,7 @@ from hashlib import sha256
 from html.parser import HTMLParser
 import json
 from pathlib import Path
+import re
 import subprocess
 from urllib.parse import parse_qs, urlsplit
 
@@ -327,6 +328,24 @@ REVIEWED_NEXT_DEFINITIONS = {
 }
 
 
+GRAPH_CASES = (
+    ("quadratic-reciprocity", ROOT / "book/_static/pa-proof-explorer/defined/graph.html"),
+    ("bertrand-postulate", ROOT / "book/_static/bertrand-proof-explorer/defined/graph.html"),
+    *(
+        (slug, root / slug / "explorer/defined/graph.html")
+        for root, slugs in (
+            (HISTORIC, HISTORIC_ROUTES), (NEXT, NEXT_FAMILIES),
+            (ADVANCED, ADVANCED_FAMILIES), (TRANSPORT, TRANSPORT_FAMILIES),
+            (MILESTONE, MILESTONE_FAMILIES), (RESEARCH, RESEARCH_FAMILIES),
+            (BREAKTHROUGH, BREAKTHROUGH_FAMILIES), (SECOND_WAVE, SECOND_WAVE_ROUTES),
+            (LOWER_LAYER, LOWER_LAYER_ROUTES), (PRIORITY_LAYER, PRIORITY_LAYER_ROUTES),
+            (GAUSSIAN_FACTORIZATION, GAUSSIAN_FACTORIZATION_ROUTES),
+        )
+        for slug in sorted(slugs)
+    ),
+)
+
+
 class _Document(HTMLParser):
     """Capture real rendered anchors and the atlas's inert JSON snapshot."""
 
@@ -335,19 +354,28 @@ class _Document(HTMLParser):
         self.links: list[dict[str, str]] = []
         self._inside_snapshot = False
         self.snapshot: list[str] = []
+        self.scripts: list[dict] = []
+        self._script: dict | None = None
 
     def handle_starttag(self, tag: str, attributes: list[tuple[str, str | None]]) -> None:
         values = {key: value or "" for key, value in attributes}
         if tag == "a":
             self.links.append(values)
+        if tag == "script":
+            self._script = {"attributes": values, "body": []}
+            self.scripts.append(self._script)
         if tag == "script" and values.get("id") == "campaign-data":
             self._inside_snapshot = True
 
     def handle_endtag(self, tag: str) -> None:
+        if tag == "script":
+            self._script = None
         if tag == "script" and self._inside_snapshot:
             self._inside_snapshot = False
 
     def handle_data(self, data: str) -> None:
+        if self._script is not None:
+            self._script["body"].append(data)
         if self._inside_snapshot:
             self.snapshot.append(data)
 
@@ -356,6 +384,41 @@ def _document(path: Path) -> _Document:
     result = _Document()
     result.feed(path.read_text(encoding="utf-8"))
     return result
+
+
+def _assert_actual_inline_graph_contract(document: _Document, expected: dict, label: str) -> None:
+    data = [
+        row for row in document.scripts
+        if row["attributes"].get("id") == "pa-defined-graph-data"
+    ]
+    assert len(data) == 1, label
+    assert data[0]["attributes"].get("type", "").lower() in {
+        "", "text/javascript", "application/javascript",
+    }, label
+    javascript = [
+        {"source": "".join(row["body"]), "filename": f"{label}:script-{index}"}
+        for index, row in enumerate(document.scripts)
+        if "".join(row["body"]).strip()
+        and row["attributes"].get("type", "").lower() not in {
+            "application/json", "application/ld+json",
+        }
+    ]
+    result = subprocess.run(
+        ["node", "--max-old-space-size=128", "-e", r"""
+const fs = require('node:fs'), vm = require('node:vm');
+const scripts = JSON.parse(fs.readFileSync(0, 'utf8'));
+for (const script of scripts) new vm.Script(script.source, {filename: script.filename});
+process.stdout.write(String(scripts.length));
+"""],
+        input=json.dumps(javascript), check=True, text=True, capture_output=True, timeout=30,
+    )
+    assert int(result.stdout) == len(javascript) >= 1, label
+    assignment = re.fullmatch(
+        r"\s*window\.PA_DEFINED_GRAPH\s*=\s*(\{.*\})\s*;\s*",
+        "".join(data[0]["body"]), re.DOTALL,
+    )
+    assert assignment is not None, label
+    assert json.loads(assignment.group(1)) == expected, label
 
 
 @lru_cache(maxsize=1)
@@ -449,7 +512,7 @@ def test_current_alpha_and_immutable_stable_are_bound_to_actual_catalog_bytes() 
     digest = _catalog_digest()
 
     assert CURRENT_ALPHA_VERSION == "v30"
-    assert digest == "b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb"
+    assert digest == "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
     assert CURRENT_ALPHA_IDENTITY == "8986ab8b8d8493ab7c8f01e2080b0ac590fd3c7289ac811b6606710ca453e1e9"
     assert digest == alpha["artifact_sha256"]
     assert digest[:12] == CURRENT_REVISION
@@ -495,6 +558,37 @@ def test_current_alpha_and_immutable_stable_are_bound_to_actual_catalog_bytes() 
         assert historical["channels"]["stable"] == stable
     assert stable["theorem_count"] == stable["checked_use_count"] == 432
     assert channels["default_channel"] == "stable"
+
+
+@pytest.mark.parametrize("slug,path", GRAPH_CASES, ids=[row[0] for row in GRAPH_CASES])
+def test_actual_inline_graph_javascript_compiles_and_equals_its_published_api(slug: str, path: Path) -> None:
+    assert len(GRAPH_CASES) == len({row[0] for row in GRAPH_CASES}) == 44
+    assert path.is_file(), slug
+    graph = json.loads((path.parent / "api/graph.json").read_bytes())
+    _assert_actual_inline_graph_contract(_document(path), graph, path.relative_to(ROOT).as_posix())
+
+
+@pytest.mark.parametrize("mutation", (
+    "raw_anchor", "summary_relabel", "broken_overlay", "missing_data", "duplicate_data",
+))
+def test_inline_graph_contract_rejects_html_injection_data_drift_and_invalid_scripts(mutation: str) -> None:
+    expected = {"nodes": [{"summary": "Historical Alpha-v21 evidence"}], "edges": []}
+    block = f'<script id="pa-defined-graph-data">window.PA_DEFINED_GRAPH={json.dumps(expected)};</script>'
+    source = '<main><p>Proof graph</p></main>' + block
+    if mutation == "raw_anchor":
+        source = source.replace("Alpha-v21", 'Alpha-v21 <a data-current-milestone="T13">Full</a>')
+    elif mutation == "summary_relabel":
+        source = source.replace("Alpha-v21", "Alpha-v22")
+    elif mutation == "broken_overlay":
+        source += '<script>const broken = ;</script>'
+    elif mutation == "missing_data":
+        source = source.replace(block, "")
+    else:
+        source += block
+    document = _Document()
+    document.feed(source)
+    with pytest.raises((AssertionError, subprocess.CalledProcessError, json.JSONDecodeError)):
+        _assert_actual_inline_graph_contract(document, expected, mutation)
 
 
 def test_public_hub_publishes_every_current_independently_versioned_family_route() -> None:
@@ -578,10 +672,12 @@ def test_grand_atlas_embeds_the_exact_current_snapshot_without_rewriting_history
     assert "v25" in snapshot["meta"]["historical_alpha_versions"]
     assert "v26" in snapshot["meta"]["historical_alpha_versions"]
     assert "v27" in snapshot["meta"]["historical_alpha_versions"]
+    assert "v28" in snapshot["meta"]["historical_alpha_versions"]
+    assert "v29" in snapshot["meta"]["historical_alpha_versions"]
     assert Counter(node["status"] for node in snapshot["nodes"] if node["kind"] == "goal") == {
-        "open": 83, "alpha_closed": 36, "stable_closed": 1,
+        "open": 78, "alpha_closed": 41, "stable_closed": 1,
     }
-    assert sum(len(node["deps"]) for node in snapshot["nodes"]) == 309
+    assert sum(len(node["deps"]) for node in snapshot["nodes"]) == 313
 
     boundaries = snapshot["ambitious_boundaries"]
     current = boundaries[f"alpha_{CURRENT_ALPHA_VERSION}_edition"]
@@ -595,9 +691,10 @@ def test_grand_atlas_embeds_the_exact_current_snapshot_without_rewriting_history
     parent = boundaries["alpha_v24_edition"]
     assert parent["role"] in {"immutable_historical_parent", "immutable_historical_ancestor"}
     assert parent["theorem_count"] == parent["checked_use_count"] == 2_008
-    immediate_parent = boundaries["alpha_v27_edition"]
-    assert immediate_parent["role"] == "historical_immutable_release"
-    assert immediate_parent["theorem_count"] == immediate_parent["checked_use_count"] == 2560
+    for version, count in (("v27", 2560), ("v28", 2764), ("v29", 3042)):
+        historical_parent = boundaries[f"alpha_{version}_edition"]
+        assert historical_parent["role"] == "historical_immutable_release"
+        assert historical_parent["theorem_count"] == historical_parent["checked_use_count"] == count
 
 
 def test_grand_atlas_preserves_historical_closures_and_honest_open_boundaries() -> None:
@@ -739,20 +836,20 @@ def test_global_definition_dag_is_downloadable_layered_and_genuinely_reviewed() 
     rows = {item["name"]: item for item in graph["definitions"]}
     assert graph["schema"] == "constructive-number-theory-definition-dag-v1"
     assert graph["definition_count"] == len(rows) == len(_campaign()["definitions"])
-    assert graph["definition_count"] == 323
-    assert graph["definition_edge_count"] == sum(len(row["dependencies"]) for row in rows.values()) == 459
-    assert graph["statement_usage_edge_count"] == 317
-    assert graph["declared_notation_edge_count"] == 231
+    assert graph["definition_count"] == 370
+    assert graph["definition_edge_count"] == sum(len(row["dependencies"]) for row in rows.values()) == 576
+    assert graph["statement_usage_edge_count"] == 320
+    assert graph["declared_notation_edge_count"] == 246
     assert graph["milestone_usage_edge_count"] == (
         graph["statement_usage_edge_count"] + graph["declared_notation_edge_count"]
     )
-    assert graph["milestone_usage_edge_count"] == 548
-    assert graph["reviewed_definition_count"] == 233
+    assert graph["milestone_usage_edge_count"] == 566
+    assert graph["reviewed_definition_count"] == 284
     assert graph["reviewed_definition_edge_count"] == sum(
         len(row["dependencies"]) for row in graph["reviewed_definitions"]
-    ) == 441
-    assert graph["compatible_reviewed_match_count"] == 236
-    assert graph["exact_name_reviewed_match_count"] == 231
+    ) == 560
+    assert graph["compatible_reviewed_match_count"] == 287
+    assert graph["exact_name_reviewed_match_count"] == 282
     assert graph["explicit_alias_reviewed_match_count"] == 5
     assert graph["incompatible_reviewed_match_count"] == 2
     assert graph["definition_edge_count"] == len(graph["definition_edges"])

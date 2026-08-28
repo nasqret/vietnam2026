@@ -5646,3 +5646,64 @@ An additional actual-inline-JavaScript audit identified a separate legacy
 completion-link rendering issue in nine older graph pages. That unbound
 presentation repair and complete cross-site validation remain required before
 publication; this catalog correction is not a remote deployment claim.
+
+### 2026-08-28 — final canonical graph, navigation, and publication integration
+
+The seven current historical-family controllers now preserve the exact graph
+data when retargeting release chrome. Completion links are inserted only into
+real visible HTML paragraphs or the main element, never into script strings,
+attributes, comments or inert elements. Nine broken inline graph assignments
+are repaired. Two v22 Euclidean execution summaries correctly retain their
+references to their inherited v21 relation; neither source prose nor proof
+dependency metadata is relabeled as a new mathematical result.
+
+The exact reader now marks its already-correct definition-aware graph link
+only for current v30 corpora. This prevents the unchanged canonical JavaScript
+from adding nonexistent exact-graph links on 2,037 current index/theorem pages.
+Fifty new regressions preserve byte-identical v27/v28/v29 and unversioned
+rendering. The actual complete JavaScript passed 89 navigation cases, including
+GF0002; no replacement explorer asset or renderer design was introduced.
+
+All 1,083 historical-family presentation regressions passed, together with
+all seven generator and seven deterministic-output checks. The next-layer
+261 cases run in seven exact, disjoint fresh-process windows. Research and
+breakthrough use 30 negative cases separately from their 78 and 99 positive
+cases. Their test-only streaming JSON encoder reproduces the complete
+66,503,303-byte current catalogue exactly, retaining all mutations, rehashed
+pointers and real loader rejections. Its 27 separate regressions also pass.
+These measured presentation windows use standard CPython pymalloc; their
+largest resident set was 1,566,785,536 bytes, below 1,536 MiB. No test or
+original proof, source, admission, or resource assertion is skipped.
+
+The full Gaussian explorer suite passed all 69 tests again, in 216.27 seconds
+with 1,590,575,104 peak resident bytes. The final deployment contract passed
+83 tests, including independently collected once-only coverage of all three
+windowed suites. Five exact old documentation destinations have both narrow
+redirect rules and static fixed-destination fallback pages; the latter preserve
+browser query strings and fragments without depending on hosting rewrite
+support. This does not change any hosting cache header or Peano production gate.
+
+Bulk publication is a separate operation from a single proof request. The
+original combined historical publisher completed all checks and reproduced all
+904 historical theorem rows at an observed peak of 2,226,962,432 resident bytes.
+Our additional 1,536 MiB bulk-publication diagnostic did not pass. Its optional
+scheduling prototype and tests were archived outside the repository and are
+not shipped. The original publisher and every original mathematical, kernel,
+Lean, admission and service guard remain unchanged; bulk publication is run
+serially. No failed experimental memory measurement is reported as a pass.
+
+The additional first-v30 theorem `gaussian_code_representation_transport`
+(GF0002) passed actual readable Lean conversion and compilation: one native
+node, zero edges and zero fallback nodes. This raises the previously recorded
+923 UI/strand/CLI integration cases to 924, or 998 including the separate 74
+certified-export tests. A bounded job through the existing public Lean gateway
+also succeeded without stopping or restarting its unowned worker; before the
+website upload this tests backend readiness, not availability of the new page.
+
+The mathematical release remains exactly `ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7`:
+3,222 checked entries, 432 unchanged default Stable entries, 458 added theorems
+and 51 conservative definitions across the requested five-goal chain. No
+mathematical source, historical sealed release or proof bundle changed during
+these final presentation repairs. The local app remains `a-541687a273a2`.
+The isolated release branch is ready for final staging and proof-only upload;
+this integration entry itself is not a deployment or full-CI-success receipt.

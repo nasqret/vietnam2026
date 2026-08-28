@@ -1198,13 +1198,15 @@ peano-library-alpha-v30-check:
 	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line tests/test_lean_proof_strand_cli.py
 	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line tests/test_lean_presentation_cli.py
 	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line tests/test_lean_strand_service_v30.py
+	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line tests/test_constructive_exact_graph_navigation.py
+	cd peano-lab/py && PYTHONMALLOC=pymalloc python3 -m pytest -q --tb=line tests/test_constructive_publication_json_encoding.py
 	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line tests/test_deploy_contract.py
 	cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line tests/test_browser_shell.py
 	PYTHONMALLOC=malloc python3 scripts/extend_constructive_gaussian_factorization_campaign.py --check
 	PYTHONMALLOC=malloc python3 scripts/build_constructive_gaussian_factorization_explorer.py --check
 	PYTHONMALLOC=malloc python3 scripts/upgrade_constructive_priority_layer_publication_v30.py --check
 	@for layer in frontier next_layer advanced_layer transport_layer milestone_closure research_layer breakthrough_layer; do \
-		PYTHONMALLOC=malloc python3 "scripts/build_constructive_$${layer}_explorer.py" --check || exit $$?; \
+		PYTHONMALLOC=pymalloc python3 "scripts/build_constructive_$${layer}_explorer.py" --check || exit $$?; \
 	done
 	@for suite in \
 		constructive_frontier_explorer \
@@ -1226,10 +1228,14 @@ peano-library-alpha-v30-check:
 				'(current or recent) and not (current_publishers_reject or v30_retains_exact or current_parent or current_v30_publishers or recent_parent_audit)' \
 				'current_publishers_reject and not v30_retains_exact' \
 				'v30_retains_exact'; do \
-				(cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line "tests/test_$${suite}.py" -k "$${selection}") || exit $$?; \
+				(cd peano-lab/py && PYTHONMALLOC=pymalloc python3 -m pytest -q --tb=line "tests/test_$${suite}.py" -k "$${selection}") || exit $$?; \
+			done; \
+		elif test "$${suite}" = constructive_research_layer_explorer || test "$${suite}" = constructive_breakthrough_layer_explorer; then \
+			for selection in 'current_authority_corruption' 'not current_authority_corruption'; do \
+				(cd peano-lab/py && PYTHONMALLOC=pymalloc python3 -m pytest -q --tb=line "tests/test_$${suite}.py" -k "$${selection}") || exit $$?; \
 			done; \
 		else \
-			(cd peano-lab/py && PYTHONMALLOC=malloc python3 -m pytest -q --tb=line "tests/test_$${suite}.py") || exit $$?; \
+			(cd peano-lab/py && PYTHONMALLOC=pymalloc python3 -m pytest -q --tb=line "tests/test_$${suite}.py") || exit $$?; \
 		fi; \
 	done
 	bash scripts/update_peano_app_manifest.sh --check
@@ -1636,6 +1642,7 @@ stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book
 	mkdir -p "$(STAGEPROOFS)/assets"
 	mkdir -p "$(STAGEPROOFS)/grand-campaign"
 	mkdir -p "$(STAGEPROOFS)/artifacts"
+	mkdir -p "$(STAGEPROOFS)/arithmetic-library"
 	mkdir -p "$(STAGEPROOFS)/quadratic-reciprocity/explorer"
 	mkdir -p "$(STAGEPROOFS)/bertrand-postulate/explorer"
 	cp deploy/proofs/index.html "$(STAGEPROOFS)/index.html"
@@ -1646,6 +1653,7 @@ stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book
 	cp deploy/proofs/proofs.css "$(STAGEPROOFS)/assets/proofs.css"
 	cp deploy/proofs/proofs-og.png "$(STAGEPROOFS)/assets/proofs-og.png"
 	cp deploy/proofs/.htaccess "$(STAGEPROOFS)/.htaccess"
+	rsync -a --delete deploy/proofs/arithmetic-library/ "$(STAGEPROOFS)/arithmetic-library/"
 	rsync -a --delete book/_static/constructive-gaussian-campaign/ \
 		"$(STAGEPROOFS)/grand-campaign/"
 	cp research/arithmetic-library/artifacts/quadratic-reciprocity-proof-bundle-v1.json \

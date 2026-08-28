@@ -614,7 +614,7 @@ def _retarget(document: bytes, family: Family, *, include_caveat: bool = False) 
     text = text.replace(f"{old_count}-node bundle", f"{count}-node bundle")
     text = text.replace(f"all {old_count} exact bundle nodes", f"all {count} exact bundle nodes")
     text = text.replace(f" / {old_count}</dd>", f" / {count}</dd>")
-    return text.encode("utf-8")
+    return original._preserve_defined_graph_data(document, text.encode("utf-8"))
 
 
 def _top_index(

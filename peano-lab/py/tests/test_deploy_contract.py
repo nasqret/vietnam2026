@@ -4,12 +4,16 @@ These tests deliberately use ``make -n``: CI must verify the exact assembled
 tree and destinations without touching the faculty server.
 """
 
+from collections import Counter
 from hashlib import sha256
 from html.parser import HTMLParser
 import ast
 import json
 from pathlib import Path
+import re
+import shlex
 import subprocess
+import sys
 from urllib.parse import parse_qs, urljoin, urlsplit
 
 import pytest
@@ -18,7 +22,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[3]
 FRONTIER = ROOT / "book" / "_static" / "constructive-frontier-explorer"
 CURRENT_CAMPAIGN = json.loads(
-    (ROOT / "book" / "_static" / "constructive-grand-campaign" / "campaign.json").read_bytes()
+    (ROOT / "book" / "_static" / "constructive-gaussian-campaign" / "campaign.json").read_bytes()
 )
 CURRENT_ALPHA_VERSION = CURRENT_CAMPAIGN["meta"]["current_alpha_version"]
 CURRENT_ALPHA_CHANNEL = json.loads(
@@ -87,6 +91,19 @@ SECOND_WAVE_FAMILIES = (
 LOWER_LAYER_FAMILIES = (
     "arithmetic-foundations", "prime-enumeration", "gaussian-integers", "eisenstein-integers",
 )
+PRIORITY_LAYER_FAMILIES = (
+    "prime-valuation-support", "best-approximation", "totient-products",
+    "squarefree-kernels", "exponent-lifting",
+)
+GAUSSIAN_FACTORIZATION_FAMILIES = ("gaussian-factorization",)
+CURRENT_PUBLICATION_DIRECTORIES = (
+    "constructive-frontier-explorer", "constructive-next-layer-explorer",
+    "constructive-advanced-layer-explorer", "constructive-transport-layer-explorer",
+    "constructive-milestone-closure-explorer", "constructive-research-layer-explorer",
+    "constructive-breakthrough-layer-explorer", "constructive-second-wave-explorer-v30",
+    "constructive-lower-layer-explorer-v30", "constructive-priority-layer-explorer-v30",
+    "constructive-gaussian-factorization-explorer",
+)
 CANONICAL_FRONTIER_ASSETS = (
     ("defined-explorer.css", "defined/assets/explorer.css"),
     ("defined-explorer.js", "defined/assets/explorer.js"),
@@ -121,12 +138,9 @@ def test_every_constructive_manifest_and_family_follow_the_actual_sealed_alpha_r
     historical = json.loads(historical_manifest.read_bytes())
     assert historical["alpha_edition_version"] == historical["alpha_first_enrolled_version"] == "v27"
     assert historical["catalog_sha256"] == "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
-    # Historical v27 output remains frozen. The separately tested successor
-    # is the current source staged at the same public family URLs.
-    manifests = tuple(sorted(
-        [path for path in static.glob("constructive-*-explorer/manifest.json") if path != historical_manifest]
-        + [static / "constructive-second-wave-explorer-v28/manifest.json"]
-    ))
+    # Every historical snapshot stays frozen. Only explicitly current
+    # successors are staged; a historical directory cannot be relabeled.
+    manifests = tuple(static / name / "manifest.json" for name in CURRENT_PUBLICATION_DIRECTORIES)
     routes: set[str] = set()
 
     assert release["role"] == "current_immutable_release"
@@ -157,9 +171,11 @@ def test_every_constructive_manifest_and_family_follow_the_actual_sealed_alpha_r
         | set(BREAKTHROUGH_LAYER_FAMILIES)
         | set(SECOND_WAVE_FAMILIES)
         | set(LOWER_LAYER_FAMILIES)
+        | set(PRIORITY_LAYER_FAMILIES)
+        | set(GAUSSIAN_FACTORIZATION_FAMILIES)
     )
     assert known_routes <= routes
-    assert len(routes) == 36
+    assert len(routes) == 42
     hub = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
     assert all(f'href="{slug}/?v={CANONICAL_HTML_REVISION}"' in hub for slug in routes)
 
@@ -192,6 +208,8 @@ def test_peano_production_deploy_uses_an_isolated_staging_tree() -> None:
         "alpha-v26-first-wave-proof-bundle-v1.json",
         "alpha-v27-second-wave-proof-bundle-v1.json",
         "alpha-v28-lower-layer-proof-bundle-v1.json",
+        "alpha-v29-priority-layer-proof-bundle-v1.json",
+        "alpha-v30-gaussian-factorization-proof-bundle-v1.json",
     ):
         assert f"research/arithmetic-library/artifacts/{filename}" in output
         assert f"/proof-artifacts/{filename}" in output
@@ -285,8 +303,9 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
     assert "python3 scripts/build_constructive_milestone_closure_explorer.py" in output
     assert "python3 scripts/build_constructive_research_layer_explorer.py" in output
     assert "python3 scripts/build_constructive_breakthrough_layer_explorer.py" in output
-    assert "python3 scripts/upgrade_constructive_second_wave_publication_v28.py" in output
-    assert "python3 scripts/build_constructive_lower_layer_explorer.py" in output
+    assert "python3 scripts/upgrade_constructive_priority_layer_publication_v30.py" in output
+    assert "python3 scripts/build_constructive_gaussian_factorization_explorer.py" in output
+    assert "scripts/extend_constructive_gaussian_factorization_campaign.py" in output
     assert "book/_static/constructive-frontier-explorer/assets/" in output
     assert "book/_static/constructive-next-layer-explorer/assets/" in output
     assert "book/_static/constructive-advanced-layer-explorer/assets/" in output
@@ -294,8 +313,10 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
     assert "book/_static/constructive-milestone-closure-explorer/assets/" in output
     assert "book/_static/constructive-research-layer-explorer/assets/" in output
     assert "book/_static/constructive-breakthrough-layer-explorer/assets/" in output
-    assert "book/_static/constructive-second-wave-explorer-v28/assets/" in output
-    assert "book/_static/constructive-lower-layer-explorer/assets/" in output
+    assert "book/_static/constructive-second-wave-explorer-v30/assets/" in output
+    assert "book/_static/constructive-lower-layer-explorer-v30/assets/" in output
+    assert "book/_static/constructive-priority-layer-explorer-v30/assets/" in output
+    assert "book/_static/constructive-gaussian-factorization-explorer/assets/" in output
     for family in FRONTIER_FAMILIES:
         assert f"book/_static/constructive-frontier-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
@@ -318,10 +339,16 @@ def test_all_constructive_frontier_families_stage_without_remote_deployment() ->
         assert f"book/_static/constructive-breakthrough-layer-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
     for family in SECOND_WAVE_FAMILIES:
-        assert f"book/_static/constructive-second-wave-explorer-v28/{family}/" in output
+        assert f"book/_static/constructive-second-wave-explorer-v30/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
     for family in LOWER_LAYER_FAMILIES:
-        assert f"book/_static/constructive-lower-layer-explorer/{family}/" in output
+        assert f"book/_static/constructive-lower-layer-explorer-v30/{family}/" in output
+        assert f'"_deploy/proofs/{family}/"' in output
+    for family in PRIORITY_LAYER_FAMILIES:
+        assert f"book/_static/constructive-priority-layer-explorer-v30/{family}/" in output
+        assert f'"_deploy/proofs/{family}/"' in output
+    for family in GAUSSIAN_FACTORIZATION_FAMILIES:
+        assert f"book/_static/constructive-gaussian-factorization-explorer/{family}/" in output
         assert f'"_deploy/proofs/{family}/"' in output
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
 
@@ -400,13 +427,15 @@ def test_v28_checks_each_math_suite_in_isolation_and_keeps_all_independent_gates
     assert "lts-faculty.wmi.amu.edu.pl:" not in output
 
 
-def test_v28_build_and_current_publication_targets_never_deploy_implicitly() -> None:
+def test_v28_build_and_v30_current_publication_targets_never_deploy_implicitly() -> None:
     build = _dry_run("peano-library-alpha-v28")
     assert build == _dry_run("peano-library-channels-v28")
     publication = _dry_run("book-constructive-second-wave-current-explorer")
     lower = _dry_run("book-constructive-lower-layer-explorer")
-    assert publication.strip() == "python3 scripts/upgrade_constructive_second_wave_publication_v28.py"
-    assert lower.strip() == "python3 scripts/build_constructive_lower_layer_explorer.py"
+    assert "scripts/extend_constructive_gaussian_factorization_campaign.py" in publication
+    assert "python3 scripts/upgrade_constructive_priority_layer_publication_v30.py" in publication
+    assert "rsync" not in publication and "ssh" not in publication
+    assert lower.strip() == "python3 scripts/build_constructive_lower_layer_explorer.py --check"
     assert "rsync" not in build + publication + lower
 
 
@@ -415,7 +444,8 @@ def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> Non
     page = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
 
     assert "scripts/sync_constructive_grand_campaign.py --check" in output
-    assert "book/_static/constructive-grand-campaign/" in output
+    assert "book/_static/constructive-gaussian-campaign/" in output
+    assert "rsync -a --delete book/_static/constructive-grand-campaign/" not in output
     assert '"_deploy/proofs/grand-campaign/"' in output
     assert '"_deploy/proofs/artifacts/quadratic-reciprocity-proof-bundle-v1.json"' in output
     assert '"_deploy/proofs/artifacts/quadratic-reciprocity-closure-receipt.md"' in output
@@ -437,6 +467,8 @@ def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> Non
         "alpha-v26-first-wave-proof-bundle-v1.json",
         "alpha-v27-second-wave-proof-bundle-v1.json",
         "alpha-v28-lower-layer-proof-bundle-v1.json",
+        "alpha-v29-priority-layer-proof-bundle-v1.json",
+        "alpha-v30-gaussian-factorization-proof-bundle-v1.json",
     ):
         assert f'"_deploy/proofs/artifacts/{filename}"' in output
         assert f'href="artifacts/{filename}"' in page
@@ -446,6 +478,9 @@ def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> Non
     assert 'href="artifacts/alpha-v27-second-wave-receipt.md"' in page
     assert '"_deploy/proofs/artifacts/alpha-v28-lower-layer-receipt.md"' in output
     assert 'href="artifacts/alpha-v28-lower-layer-receipt.md"' in page
+    for stem in ("alpha-v29-priority-layer", "alpha-v30-gaussian-factorization"):
+        assert f'"_deploy/proofs/artifacts/{stem}-receipt.md"' in output
+        assert f'href="artifacts/{stem}-receipt.md"' in page
 
 
 def test_proof_explorer_stage_installs_only_the_proof_site_cache_policy() -> None:
@@ -455,6 +490,96 @@ def test_proof_explorer_stage_installs_only_the_proof_site_cache_policy() -> Non
     assert 'cp deploy/proofs/.htaccess "_deploy/proofs/.htaccess"' in output
     assert 'cp deploy/site.htaccess "_deploy/proofs/.htaccess"' not in output
     assert "cp deploy/site.htaccess $(STAGE)/.htaccess" in makefile
+
+
+def test_legacy_book_redirect_is_limited_to_five_real_chapters() -> None:
+    policy = (ROOT / "deploy/proofs/.htaccess").read_text(encoding="utf-8")
+    rules = [line.strip().split() for line in policy.splitlines()
+             if line.strip().startswith("RewriteRule ^arithmetic-library/")]
+    assert len(rules) == 1
+    directive, pattern, destination, flags = rules[0]
+    assert directive == "RewriteRule" and flags == "[R=302,L]"
+    assert destination == (
+        "https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026/book/arithmetic-library/$1.html"
+    )
+    allowed = ("quadratic-reciprocity", "defined-proof-explorer", "cell-history-and-lookup",
+               "library-editions", "bertrand-campaign")
+    assert pattern == "^arithmetic-library/(" + "|".join(allowed) + r")\.html$"
+    expression = re.compile(pattern)
+    for chapter in allowed:
+        match = expression.fullmatch("arithmetic-library/" + chapter + ".html")
+        assert match is not None and match.group(1) == chapter
+        assert (ROOT / "book/arithmetic-library" / (chapter + ".md")).is_file()
+        assert destination.replace("$1", match.group(1)).endswith("/" + chapter + ".html")
+    for path in ("arithmetic-library/other.html", "arithmetic-library/quadratic-reciprocity.html/extra",
+                 "arithmetic-library/quadratic-reciprocityXhtml", "arithmetic-library/library-editions.html.bak",
+                 "assets/explorer.js", "gaussian-factorization/explorer/defined/index.html",
+                 "peano-lab/index.html", "api/lean-strands/config", "../arithmetic-library/library-editions.html"):
+        assert expression.fullmatch(path) is None
+
+
+def test_legacy_book_links_also_work_on_static_hosts_without_rewrite_support() -> None:
+    chapters = ("quadratic-reciprocity", "defined-proof-explorer", "cell-history-and-lookup",
+                "library-editions", "bertrand-campaign")
+    directory = ROOT / "deploy/proofs/arithmetic-library"
+    assert {path.name for path in directory.iterdir()} == {name + ".html" for name in chapters}
+    output = _dry_run("stage-proofs")
+    assert 'rsync -a --delete deploy/proofs/arithmetic-library/ "_deploy/proofs/arithmetic-library/"' in output
+
+    class RedirectPage(HTMLParser):
+        def __init__(self, source: str) -> None:
+            super().__init__(convert_charrefs=True)
+            self.elements = []
+            self.scripts = []
+            self.script = None
+            self.feed(source)
+
+        def handle_starttag(self, tag, attrs):
+            self.elements.append((tag, dict(attrs)))
+            if tag == "script":
+                assert self.script is None
+                self.script = ""
+
+        def handle_endtag(self, tag):
+            if tag == "script":
+                self.scripts.append(self.script)
+                self.script = None
+
+        def handle_data(self, data):
+            if self.script is not None:
+                self.script += data
+
+    cases = []
+    expected = []
+    for chapter in chapters:
+        page = RedirectPage((directory / (chapter + ".html")).read_text(encoding="utf-8"))
+        target = "https://bnaskrecki.faculty.wmi.amu.edu.pl/vietnam2026/book/arithmetic-library/" + chapter + ".html"
+        assert len(page.scripts) == 1
+        assert [(tag, attrs) for tag, attrs in page.elements if tag == "link"] == [
+            ("link", {"rel": "canonical", "href": target})]
+        assert [attrs["href"] for tag, attrs in page.elements if tag == "a"] == [target]
+        assert any(tag == "noscript" for tag, _ in page.elements)
+        assert any(tag == "meta" and attrs.get("http-equiv") == "refresh"
+                   and attrs.get("content") == "0;url=" + target for tag, attrs in page.elements)
+        for query, fragment in (("", ""), ("?v=" + CANONICAL_HTML_REVISION, "#theorem-section"),
+                                ("?url=https%3A%2F%2Fexample.invalid&x=a%2Fb", "#%CE%A9")):
+            cases.append({"source": page.scripts[0], "search": query, "hash": fragment})
+            expected.append([target + query + fragment])
+    program = r'''
+const vm = require("node:vm");
+const cases = JSON.parse(process.argv[1]);
+const results = cases.map(item => {
+  const calls = [];
+  const location = {search:item.search, hash:item.hash, replace:value => calls.push(value)};
+  Object.defineProperty(location, "href", {get:() => "https://example.invalid/old"});
+  new vm.Script(item.source).runInNewContext({window:{location}}, {timeout:1000});
+  return calls;
+});
+process.stdout.write(JSON.stringify(results));
+'''
+    result = subprocess.run(["node", "-e", program, json.dumps(cases)],
+                            check=True, capture_output=True, text=True, timeout=10)
+    assert json.loads(result.stdout) == expected
 
 
 def test_proof_site_cache_headers_preserve_https_and_stay_extension_scoped() -> None:
@@ -996,6 +1121,147 @@ def test_proof_explorer_deploy_paths_cannot_be_overridden() -> None:
     assert 'rm -rf "_deploy/proofs"' in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/" in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/\n" not in output
+
+
+
+@pytest.mark.parametrize("version,stem,count", (("v29", "priority_layer", 11), ("v30", "gaussian_factorization", 7)))
+def test_new_release_targets_replay_all_factories_and_both_independent_verifiers(version, stem, count):
+    from importlib import import_module
+    closure = import_module("peano_lab.library.campaign_" + stem + "_closure")
+    output = _dry_run("peano-library-alpha-" + version + "-check")
+    assert output == _dry_run("peano-library-channels-" + version + "-check")
+    assert len(closure.FACTORIES) == count
+    loop = output.split("for suite in", 1)[1].split("done", 1)[0]
+    for factory in closure.FACTORIES:
+        assert factory.module in loop
+        assert (ROOT / f"peano-lab/py/tests/test_{factory.module}.py").is_file()
+    assert 'python3 -m pytest -q --tb=line "tests/test_${suite}.py"' in loop
+    assert "|| exit $?" in loop
+    for gate in (
+        f"scripts/build_peano_library_channels_{version}.py --check",
+        f"scripts/verify_peano_library_channels_{version}.py --verify-roots",
+        f"scripts/test_verify_peano_library_channels_{version}.py",
+        f"tests/test_library_editions_{version}_admission.py",
+        f"tests/test_campaign_{stem}_closure.py",
+        f"tests/test_constructive_{stem}_definitions.py",
+        f"scripts/extend_constructive_{stem}_campaign.py --check",
+        f"scripts/build_constructive_{stem}_explorer.py --check",
+        "peano-lab-lean/.lake/build/bin/peano_lab_bundle_verify",
+        f"alpha-{version}-{stem.replace('_', '-')}-proof-bundle-v1.json",
+    ):
+        assert gate in output
+    if version == "v30":
+        assert "tests/test_lean_certified_export.py" in output
+        assert "tests/test_lean_proof_strand_cli.py" in output
+        assert "tests/test_lean_presentation_cli.py" in output
+        assert "tests/test_constructive_exact_graph_navigation.py" in output
+        assert "tests/test_constructive_publication_json_encoding.py" in output
+    assert "lts-faculty.wmi.amu.edu.pl:" not in output
+
+
+def test_current_atlas_is_separate_and_all_historical_atlases_are_preserved():
+    output = _dry_run("stage-proofs")
+    assert 'rsync -a --delete book/_static/constructive-gaussian-campaign/' in output
+    assert '"_deploy/proofs/grand-campaign/"' in output
+    assert "scripts/extend_constructive_gaussian_factorization_campaign.py --check" in output
+    assert "scripts/sync_constructive_grand_campaign.py --check" in output
+    for directory in ("constructive-grand-campaign", "constructive-priority-campaign"):
+        assert (ROOT / "book/_static" / directory / "campaign.json").is_file()
+    assert "deploy-peano" not in output
+
+
+def test_current_publication_never_rewrites_the_frozen_flagship_or_lower_layer_trees():
+    output = _dry_run("stage-proofs")
+    for name in ("bertrand_proof", "bertrand_defined", "pa_proof", "pa_defined"):
+        command = f"python3 scripts/build_{name}_explorer.py --check"
+        assert command in output
+        assert all(line.endswith("--check") for line in output.splitlines()
+                   if f"scripts/build_{name}_explorer.py" in line)
+    assert _dry_run("book-constructive-lower-layer-explorer").strip().endswith(
+        "scripts/build_constructive_lower_layer_explorer.py --check"
+    )
+
+
+def test_v30_gates_cover_all_current_presentations_and_immutable_app_bytes():
+    output = _dry_run("peano-library-alpha-v30-check")
+    layers = ("frontier", "next_layer", "advanced_layer", "transport_layer",
+              "milestone_closure", "research_layer", "breakthrough_layer")
+    loop = output.split("for layer in", 1)[1].split("done", 1)[0]
+    assert loop.split(";", 1)[0].split() == list(layers)
+    assert 'python3 "scripts/build_constructive_${layer}_explorer.py" --check || exit $?' in loop
+    tests = output.rsplit("for suite in", 1)[1].split("done", 1)[0]
+    expected = [f"constructive_{name}_explorer" for name in layers]
+    expected.extend(("constructive_next_layer_public_site",
+                     "constructive_research_publication_v24",
+                     "constructive_breakthrough_publication_v25"))
+    assert set(tests.split(";", 1)[0].replace("\\", " ").split()) == set(expected)
+    assert 'python3 -m pytest -q --tb=line "tests/test_${suite}.py"' in tests
+    assert "|| exit $?" in tests
+    assert "bash scripts/update_peano_app_manifest.sh --check" in output
+    assert "lts-faculty.wmi.amu.edu.pl:" not in output
+
+
+def _collected_release_windows(suite: str, selections: list[str]) -> dict:
+    # Collect once, with no fixture/proof execution, and use pytest's own
+    # keyword matcher for every actual Make selector. Separate executions
+    # retain fresh-process isolation without repeating expensive collection.
+    program = '''import json, sys, pytest
+from _pytest.mark import KeywordMatcher
+from _pytest.mark.expression import Expression
+selections = json.loads(sys.argv[1])
+class Coverage:
+    def pytest_collection_finish(self, session):
+        items = session.items
+        windows = [[item.nodeid for item in items
+                    if Expression.compile(selection).evaluate(KeywordMatcher.from_item(item))]
+                   for selection in selections]
+        print("PEANO_WINDOWS=" + json.dumps({"complete": [item.nodeid for item in items], "windows": windows}))
+raise SystemExit(pytest.main(["--collect-only", "-q", sys.argv[2]], plugins=[Coverage()]))
+'''
+    result = subprocess.run([sys.executable, "-c", program, json.dumps(selections), suite],
+                            cwd=ROOT / "peano-lab/py", text=True, capture_output=True,
+                            timeout=45, check=False)
+    assert result.returncode == 0, result.stdout + result.stderr
+    records = [line.removeprefix("PEANO_WINDOWS=") for line in result.stdout.splitlines()
+               if line.startswith("PEANO_WINDOWS=")]
+    assert len(records) == 1
+    return json.loads(records[0])
+
+
+def test_next_layer_release_windows_cover_every_collected_case_exactly_once() -> None:
+    output = _dry_run("peano-library-alpha-v30-check")
+    header = output.split("for selection in", 1)[1].split("; do", 1)[0]
+    selections = shlex.split(header.replace("\\\n", ""))
+    assert len(selections) == len(set(selections)) == 7
+    suite = "tests/test_constructive_next_layer_explorer.py"
+    coverage = _collected_release_windows(suite, selections)
+    complete, windows = coverage["complete"], coverage["windows"]
+    assert len(complete) == len(set(complete))
+    assert all(node.startswith(suite + "::") for node in complete)
+    assert len(complete) == 261
+    assert tuple(map(len, windows)) == (133, 58, 4, 1, 12, 52, 1)
+    assert Counter(node for window in windows for node in window) == Counter(complete)
+    assert '-k "${selection}"' in output and "|| exit $?" in output
+
+
+@pytest.mark.parametrize("layer,count", (("research", 108), ("breakthrough", 129)))
+def test_large_current_catalog_negatives_have_complete_fresh_process_windows(layer, count) -> None:
+    output = _dry_run("peano-library-alpha-v30-check")
+    condition = ('elif test "${suite}" = constructive_research_layer_explorer || '
+                 'test "${suite}" = constructive_breakthrough_layer_explorer; then')
+    branch = output.split(condition, 1)[1].split("else", 1)[0]
+    header = branch.split("for selection in", 1)[1].split("; do", 1)[0]
+    selections = shlex.split(header.replace("\\\n", ""))
+    assert selections == ["current_authority_corruption", "not current_authority_corruption"]
+    assert 'PYTHONMALLOC=pymalloc python3 -m pytest' in branch
+    assert '-k "${selection}"' in branch and "|| exit $?" in branch
+    suite = f"tests/test_constructive_{layer}_layer_explorer.py"
+    coverage = _collected_release_windows(suite, selections)
+    complete, windows = coverage["complete"], coverage["windows"]
+    assert len(complete) == len(set(complete)) == count
+    assert all(node.startswith(suite + "::") for node in complete)
+    assert tuple(map(len, windows)) == (30, count - 30)
+    assert Counter(node for window in windows for node in window) == Counter(complete)
 
 
 def test_shared_vendor_fetch_creates_matching_local_trees() -> None:

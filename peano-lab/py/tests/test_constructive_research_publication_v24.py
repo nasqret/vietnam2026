@@ -64,7 +64,7 @@ PARENT_CATALOG_SHA256 = "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297
 ACTIVE_ATLAS_VERSION = "v30"
 ACTIVE_ATLAS_COUNT = 3_222
 ACTIVE_ATLAS_IDENTITY = "8986ab8b8d8493ab7c8f01e2080b0ac590fd3c7289ac811b6606710ca453e1e9"
-ACTIVE_ATLAS_CATALOG_SHA256 = "b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb"
+ACTIVE_ATLAS_CATALOG_SHA256 = "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
 ACTIVE_ATLAS_HTML_REVISION = ACTIVE_ATLAS_CATALOG_SHA256[:12]
 BUNDLE_SHA256 = "627e39ed29b10db48bf37d5bef8750d48009a7524c822a7c5e7c83e96a8e9cf9"
 HISTORICAL_V25_BUNDLE_SHA256 = (
@@ -738,7 +738,15 @@ def test_read_only_stage_recipes_reference_every_campaign_and_exact_v24_artifact
     start = makefile.index("\nstage-proofs:")
     end = makefile.index("\nstage-lean-api:", start)
     recipe = makefile[start:end]
-    assert recipe.startswith("\nstage-proofs: book-proof-explorer ")
+    assert recipe.startswith("\nstage-proofs: book-proof-explorer-check ")
+    flagship_check = makefile.split("\nbook-proof-explorer-check:", 1)[1].split("\n\n", 1)[0]
+    assert [line.strip() for line in flagship_check.splitlines() if line.startswith("\t")] == [
+        f"PYTHONMALLOC=malloc python3 scripts/{script}.py --check"
+        for script in (
+            "build_bertrand_proof_explorer", "build_bertrand_defined_explorer",
+            "build_pa_proof_explorer", "build_pa_defined_explorer",
+        )
+    ]
     assert "book/_static/pa-proof-explorer/api/corpus.json" in recipe
     assert QR_CORPUS_SHA256 in recipe
     assert "Immutable Alpha parent quadratic-reciprocity evidence corpus changed" in recipe

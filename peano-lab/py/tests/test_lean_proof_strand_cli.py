@@ -1077,7 +1077,9 @@ def test_compiler_repair_never_retries_a_timeout_or_memory_failure(
         ("add_comm", "stable"),
         ("square_zero_root", "alpha"),
         ("matrix_recursive_node_code_exists", "alpha"),
+        # This inherited v28 control checks routing through current Alpha.
         ("gaussian_equal_reflexive", "alpha"),
+        ("gaussian_code_representation_transport", "alpha"),
     ),
 )
 def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
@@ -1086,6 +1088,24 @@ def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
     name: str,
     edition: str,
 ) -> None:
+    if name == "gaussian_code_representation_transport":
+        from peano_lab.library import editions_v30
+
+        assert name in editions_v30.FRONTIER_NEW_NAMES
+        assert editions_v30.v29.entry(name, edition="alpha") is None
+        entry = editions_v30.entry(name, edition="alpha")
+        assert entry is not None and entry.checked_use
+        assert entry.spec.dependencies == ()
+        assert editions_v30.entry(name, edition="stable") is None
+        corpus = json.loads((
+            ROOT / "book/_static/constructive-gaussian-factorization-explorer"
+            / "gaussian-factorization/api/corpus.json"
+        ).read_bytes())
+        assert corpus["tags"][name] == "GF0002"
+        row = next(row for row in corpus["nodes"] if row["name"] == name)
+        assert row["alpha_first_enrolled_version"] == "v30"
+        assert row["source_module"] == "peano_lab.library.gaussian_ring_candidate"
+
     package = tmp_path / "verified"
     project = _isolated_lean_project(tmp_path / "lean-companion")
     lake = exporter._lake_binary(LEAN_PROJECT, None)
@@ -1113,6 +1133,12 @@ def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
     assert "Independent Lean compilation: PASSED." in result.stderr
     catalog = _catalog(package)
     manifest = next(iter(catalog["strands"].values()))
+    if name == "gaussian_code_representation_transport":
+        assert manifest["node_count"] == 1
+        assert manifest["edge_count"] == 0
+        assert manifest["translated_node_count"] == 1
+        assert manifest["fallback_node_count"] == 0
+        assert manifest["nodes"][0]["proof_status"] == "readable_lean"
     source = "\n".join((package / entry["relative_path"]).read_text(encoding="utf-8") for entry in manifest["files"])
     assert name in source
     if edition == "stable":

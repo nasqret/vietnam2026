@@ -8,15 +8,15 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="matrix-determinant-minors"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/MN000F.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=MN000F&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=b3c647d19c00">T13 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/MN000F.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=MN000F&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=ac7111ec14ff">T13 milestone</a></nav>
   <p class="pd-tag">MN000F</p><h1>signed_matrix_four_cofactor_expansion_functional</h1>
   <p>Both natural components of a four-term signed Laplace cofactor expansion are unique.</p><p class="pd-status">Alpha v30 checked-use · first admitted v24 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
-  <p class="pd-callout">Historical partial components only: this chapter proves arbitrary signed cofactor minors and exact signed determinants through dimension four. T13 is now closed by the separate Alpha-v27 integer-linear-algebra branch: arbitrary determinant data, rank, and integer column spans, without a claim of lattice index or normal forms. <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=b3c647d19c00">Full T13 proof · Alpha v27</a></p>
+  <p class="pd-callout">Historical partial components only: this chapter proves arbitrary signed cofactor minors and exact signed determinants through dimension four. T13 is now closed by the separate Alpha-v27 integer-linear-algebra branch: arbitrary determinant data, rank, and integer column spans, without a claim of lattice index or normal forms. <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=ac7111ec14ff">Full T13 proof · Alpha v27</a></p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
     <pre><code>∀ ap. ∀ an. ∀ bp. ∀ bn. ∀ cp. ∀ cn. ∀ dp. ∀ dn. ∀ up. ∀ un. ∀ vp. ∀ vn. ∀ wp. ∀ wn. ∀ xp. ∀ xn. ∀ p. ∀ n. ∀ q. ∀ m. p = ap · up + an · un + (bp · vn + bn · vp) + (cp · wp + cn · wn) + (dp · xn + dn · xp) ∧ n = ap · un + an · up + (bp · vp + bn · vn) + (cp · wn + cn · wp) + (dp · xp + dn · xn) → q = ap · up + an · un + (bp · vn + bn · vp) + (cp · wp + cn · wn) + (dp · xn + dn · xp) ∧ m = ap · un + an · up + (bp · vp + bn · vn) + (cp · wn + cn · wp) + (dp · xp + dn · xn) → p = q ∧ n = m</code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>

@@ -892,7 +892,7 @@ def _retarget(document: bytes, family: Family, *, include_caveat: bool = False) 
                 f'<p class="pd-callout">{_e(family.caveat)}</p></section>\n</main>',
                 1,
             )
-    return text.encode("utf-8")
+    return original._preserve_defined_graph_data(document, text.encode("utf-8"))
 
 
 def _top_index(

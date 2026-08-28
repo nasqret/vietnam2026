@@ -198,8 +198,8 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
 
 def test_shell_connects_checked_alpha_research_to_multiscale_proof_atlas() -> None:
     assert 'aria-label="Course and research navigation"' in INDEX
-    assert '<a href="/proofs/?v=b3c647d19c00">Proof library</a>' in INDEX
-    assert '<a href="/proofs/grand-campaign/?v=b3c647d19c00">Research atlas</a>' in INDEX
+    assert '<a href="/proofs/?v=ac7111ec14ff">Proof library</a>' in INDEX
+    assert '<a href="/proofs/grand-campaign/?v=ac7111ec14ff">Research atlas</a>' in INDEX
     assert "Alpha: 3,222 proofs" in INDEX
     assert '<span class="lbl">research:</span>' in INDEX
     assert 'data-cmd="pa lib alpha odd_prime_lifting_the_exponent" disabled>odd-prime LTE</button>' in INDEX

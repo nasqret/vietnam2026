@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="matrix-cofactor-expansion"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/CE000F.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=CE000F&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=b3c647d19c00">T13 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/CE000F.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=CE000F&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D05&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F12&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T13" href="../../../../grand-campaign/?view=goal&amp;focus=T13&amp;v=ac7111ec14ff">T13 milestone</a></nav>
   <p class="pd-tag">CE000F</p><h1>signed_alternating_cofactor_term_odd</h1>
   <p>At every odd cofactor column, the signed alternating product swaps its exact positive and negative components.</p><p class="pd-status">Alpha v30 checked-use · first admitted v25 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
-  <p class="pd-callout">Historical partial components only: this chapter proves genuine signed first-row minors and unique alternating folds, with supplied cofactor values. T13 is now closed in the separate Alpha-v27 integer-linear-algebra branch with actual arbitrary determinant data, rank, and integer column spans; lattice index and normal forms are not claimed. <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=b3c647d19c00">Full T13 proof · Alpha v27</a></p>
+  <p class="pd-callout">Historical partial components only: this chapter proves genuine signed first-row minors and unique alternating folds, with supplied cofactor values. T13 is now closed in the separate Alpha-v27 integer-linear-algebra branch with actual arbitrary determinant data, rank, and integer column spans; lattice index and normal forms are not claimed. <a data-current-milestone="T13" href="../../../../integer-linear-algebra/?v=ac7111ec14ff">Full T13 proof · Alpha v27</a></p>
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ ap. ∀ an. ∀ bp. ∀ bn. ∀ i. ∀ p. ∀ n. <a class="pd-definition-ref" data-definition="ND0061" href="../definition/ND0061.html?v=b3c647d19c00">SignedAlternatingCofactorTerm(ap,an,bp,bn,i,p,n)</a> → <a class="pd-definition-ref" data-definition="PD0010" href="../definition/PD0010.html?v=b3c647d19c00">Odd(i)</a> → p = ap · bn + an · bp ∧ n = ap · bp + an · bn</code></pre>
+    <pre><code>∀ ap. ∀ an. ∀ bp. ∀ bn. ∀ i. ∀ p. ∀ n. <a class="pd-definition-ref" data-definition="ND0061" href="../definition/ND0061.html?v=ac7111ec14ff">SignedAlternatingCofactorTerm(ap,an,bp,bn,i,p,n)</a> → <a class="pd-definition-ref" data-definition="PD0010" href="../definition/PD0010.html?v=ac7111ec14ff">Odd(i)</a> → p = ap · bn + an · bp ∧ n = ap · bp + an · bn</code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0061.html?v=b3c647d19c00">SignedAlternatingCofactorTerm(ap,an,bp,bn,i,p,n) · 1</a><a class="pd-chip" href="../definition/PD0010.html?v=b3c647d19c00">Odd(n) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0061.html?v=ac7111ec14ff">SignedAlternatingCofactorTerm(ap,an,bp,bn,i,p,n) · 1</a><a class="pd-chip" href="../definition/PD0010.html?v=ac7111ec14ff">Odd(n) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">odd_not_even · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall ap an bp bn i p n. (((exists ff_even_mce_term_result. i = 2 * ff_even_mce_term_result) /\ (p = (ap) * (bp) + (an) * (bn) /\ n = (ap) * (bn) + (an) * (bp))) \/ ((exists ff_odd_mce_term_result. i = 2 * ff_odd_mce_term_result + 1) /\ (p = (ap) * (bn) + (an) * (bp) /\ n = (ap) * (bp) + (an) * (bn)))) -&gt; (exists k. i = 2 * k + 1) -&gt; (p = ap * bn + an * bp /\ n = ap * bp + an * bn)</code></pre></details>

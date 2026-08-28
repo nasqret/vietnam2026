@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="primes-three-mod-four"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/TF0008.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=TF0008&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F03&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G025" href="../../../../grand-campaign/?view=goal&amp;focus=G025&amp;v=b3c647d19c00">G025 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/TF0008.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=TF0008&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F03&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G025" href="../../../../grand-campaign/?view=goal&amp;focus=G025&amp;v=ac7111ec14ff">G025 milestone</a></nav>
   <p class="pd-tag">TF0008</p><h1>three_mod_four_progression_nonunit</h1>
   <p>Every witnessed natural of the form 4k+3 differs from the unit one.</p><p class="pd-status">Alpha v30 checked-use · first admitted v23 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   
   <p class="pd-callout">The exact G025 progression-prime milestone is fully proved in unchanged constructive arithmetic; Mod4Three deliberately reuses its existing Quadratic Reciprocity definition PD0012. The much stronger full Dirichlet progression-prime milestone G030 remains open.</p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ n. <a class="pd-definition-ref" data-definition="PD0012" href="../definition/PD0012.html?v=b3c647d19c00">Mod4Three(n)</a> → ¬n = 1</code></pre>
+    <pre><code>∀ n. <a class="pd-definition-ref" data-definition="PD0012" href="../definition/PD0012.html?v=ac7111ec14ff">Mod4Three(n)</a> → ¬n = 1</code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0012.html?v=b3c647d19c00">Mod4Three(n) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0012.html?v=ac7111ec14ff">Mod4Three(n) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall n. (exists ff_residue_ptmf_number. (n) = 4 * ff_residue_ptmf_number + 3) -&gt; ~(n = 1)</code></pre></details>

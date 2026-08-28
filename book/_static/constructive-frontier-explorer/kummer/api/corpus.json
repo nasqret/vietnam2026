@@ -1,7 +1,7 @@
 {
   "admitted_to_alpha": true,
   "admitted_to_stable": false,
-  "alpha_catalog_sha256": "b3c647d19c00f793458301e96ccefd3a07e87dec569c3de92c21e10d89b875fb",
+  "alpha_catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7",
   "alpha_checked_use_node_count": 13,
   "alpha_checked_use_root_names": [
     "kummer_binomial_carry_bit_count",

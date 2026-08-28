@@ -17,8 +17,10 @@ import importlib
 from io import BytesIO
 import json
 from pathlib import Path
+import re
 import subprocess
 import sys
+from types import SimpleNamespace
 from typing import Any
 
 import pytest
@@ -603,7 +605,14 @@ def test_actual_shared_graph_renders_each_checked_family_and_firefox_svg_links(
 ) -> None:
     """Run every real mixed DAG through the reviewed browser JavaScript."""
 
-    payload = json.loads(generated[f"{slug}/explorer/defined/api/graph.json"])
+    page = generated[f"{slug}/explorer/defined/graph.html"].decode()
+    assignment = re.search(
+        r'<script id="pa-defined-graph-data">\s*window\.PA_DEFINED_GRAPH=(\{.*?\});\s*</script>',
+        page, re.DOTALL,
+    )
+    assert assignment is not None
+    payload = json.loads(assignment.group(1))
+    assert payload == json.loads(generated[f"{slug}/explorer/defined/api/graph.json"])
     target = corpora[slug]["tags"][corpora[slug]["root_names"][-1]]
     focus = (
         target if focus_kind == "theorem"
@@ -876,32 +885,15 @@ def test_current_publishers_reject_mutated_release_or_historical_proof_rows(
 def test_v30_retains_exact_v29_v28_v27_v26_objects_all_old_receipts_and_channel_ancestry(inputs: dict) -> None:
     catalog = inputs["current_catalog"]
     channels = json.loads(explorer.CURRENT_CHANNELS.read_bytes())
-    parent = json.loads((ROOT / "artifacts/peano-library/alpha/catalog-v26.json").read_bytes())
-    parent_channels = json.loads((ROOT / "artifacts/peano-library/channels-v26.json").read_bytes())
-    second_wave = json.loads((ROOT / "artifacts/peano-library/alpha/catalog-v27.json").read_bytes())
-    second_wave_channels = json.loads((ROOT / "artifacts/peano-library/channels-v27.json").read_bytes())
-    older_channels = json.loads((ROOT / "artifacts/peano-library/channels-v25.json").read_bytes())
+    # Audit before loading additional comparison copies, then retain only one
+    # old catalogue at a time. Every prefix, object, receipt and Stable check
+    # is unchanged; unrelated parsed parent copies need not coexist.
     explorer._audit_current_parent(catalog, channels)
-    assert catalog["theorems"][:2138] == parent["theorems"]
-    assert catalog["theorems"][:2560] == second_wave["theorems"]
-    assert all(
-        current is historical
-        for current, historical in zip(explorer.current_alpha.ALPHA_ENTRIES, explorer.v26.ALPHA_ENTRIES)
-    )
-    assert channels["channels"]["stable"] == parent_channels["channels"]["stable"]
-    assert channels["channels"]["stable"] == second_wave_channels["channels"]["stable"]
-    assert all(
-        current is historical
-        for current, historical in zip(explorer.current_alpha.ALPHA_ENTRIES, explorer.v27.ALPHA_ENTRIES)
-    )
-    assert parent_channels["channels"]["stable"] == older_channels["channels"]["stable"]
-    for key, value in parent.items():
-        if key.startswith("parent_alpha_") or key.endswith("_promotion"):
-            assert catalog[key] == value
-    for key, value in second_wave.items():
-        if key.startswith("parent_alpha_") or key.endswith("_promotion"):
-            assert catalog[key] == value
-    for version, edition, count in (("v28", explorer.v28, 2764), ("v29", explorer.v29, 3042)):
+    older_channels = json.loads((ROOT / "artifacts/peano-library/channels-v25.json").read_bytes())
+    for version, edition, count in (
+        ("v26", explorer.v26, 2138), ("v27", explorer.v27, 2560),
+        ("v28", explorer.v28, 2764), ("v29", explorer.v29, 3042),
+    ):
         recent = json.loads((ROOT / f"artifacts/peano-library/alpha/catalog-{version}.json").read_bytes())
         recent_channels = json.loads((ROOT / f"artifacts/peano-library/channels-{version}.json").read_bytes())
         assert catalog["theorems"][:count] == recent["theorems"]
@@ -911,9 +903,12 @@ def test_v30_retains_exact_v29_v28_v27_v26_objects_all_old_receipts_and_channel_
             for current, historical in zip(explorer.current_alpha.ALPHA_ENTRIES, edition.ALPHA_ENTRIES)
         )
         assert channels["channels"]["stable"] == recent_channels["channels"]["stable"]
-        for key, value in recent.items():
+        if version == "v26":
+            assert recent_channels["channels"]["stable"] == older_channels["channels"]["stable"]
+        for key in recent:
             if key.startswith("parent_alpha_") or key.endswith("_promotion"):
-                assert catalog[key] == value
+                assert catalog[key] == recent[key]
+        del recent, recent_channels
 
 
 @pytest.mark.parametrize("mutation", (
@@ -1212,3 +1207,92 @@ def test_completion_navigation_is_relative_at_every_historical_page_depth(suffix
     assert family.caveat in html.unescape(page)
     assert '<main class="shell family-main">' in page
     assert files["assets/defined-explorer.js"] == b"unchanged canonical asset"
+
+
+@pytest.mark.parametrize("context", ("script", "style", "textarea", "template", "attribute", "comment"))
+@pytest.mark.parametrize("visible_paragraph", (False, True), ids=("fallback", "paragraph"))
+def test_completion_links_only_change_real_html_context(context: str, visible_paragraph: bool) -> None:
+    original_family = next(item for item in explorer.FAMILIES if item.slug == "matrix-dot-product")
+    family = SimpleNamespace(
+        slug=original_family.slug, milestones=original_family.milestones,
+        caveat="Known T13 boundary Ω",
+    )
+    caveat = html.escape(family.caveat)
+    hidden = {
+        "script": f'<script>window.note={json.dumps(family.caveat)};window.end="</main>";</script>',
+        "style": f'<style>/* {family.caveat} </main> */</style>',
+        "textarea": f'<textarea>{caveat} </main></textarea>',
+        "template": f'<template><p>{caveat}</p><main></main></template>',
+        "attribute": f'<div data-note="{caveat}"></div>',
+        "comment": f'<!-- <p>{caveat}</p></main> -->',
+    }[context]
+    path = f"{family.slug}/explorer/defined/graph.html"
+    prefix = f"<!doctype html>\n<html>\n{hidden}\n<main class=\"shell family-main\">\n"
+    body = f"<p>{caveat}</p>" if visible_paragraph else "<section>Proof graph</section>"
+    suffix = "\n</main></html>"
+    original = (prefix + body + suffix).encode()
+    files = {path: original}
+    explorer._link_second_wave_completions(files, (family,), revision="012345abcdef")
+    link = (
+        '<a data-current-milestone="T13" '
+        'href="../../../integer-linear-algebra/?v=012345abcdef">'
+        'Full T13 proof · Alpha v27</a>'
+    )
+    if visible_paragraph:
+        expected = prefix + f"<p>{caveat} {link}</p>" + suffix
+    else:
+        note = f'<p class="pd-callout">Separate complete second-wave branches: {link}.</p>'
+        expected = prefix + body + "\n" + note + "</main></html>"
+    assert files[path] == expected.encode()
+    assert hidden in files[path].decode()
+
+
+@pytest.mark.parametrize("document", (
+    '<script>window.text="</main>";</script>',
+    '<!-- <main></main> -->',
+    '<template><main></main></template>',
+    '<main></main><main></main>',
+    '<script>window.text="unfinished";<main></main>',
+))
+def test_completion_links_reject_fake_or_ambiguous_html_boundaries(document: str) -> None:
+    family = next(item for item in explorer.FAMILIES if item.slug == "matrix-dot-product")
+    path = f"{family.slug}/explorer/defined/graph.html"
+    files = {path: document.encode()}
+    with pytest.raises(explorer.NextLayerExplorerError):
+        explorer._link_second_wave_completions(files, (family,), revision="012345abcdef")
+    assert files[path] == document.encode()
+
+
+@pytest.mark.parametrize("module_name,first_version", (
+    ("build_constructive_advanced_layer_explorer", "v21"),
+    ("build_constructive_transport_layer_explorer", "v22"),
+    ("build_constructive_milestone_closure_explorer", "v23"),
+    ("build_constructive_research_layer_explorer", "v24"),
+    ("build_constructive_breakthrough_layer_explorer", "v25"),
+))
+def test_presentation_retargets_preserve_exact_inline_graph_data(module_name: str, first_version: str) -> None:
+    publisher = importlib.import_module(module_name)
+    payload = {"summary": "Alpha v20 / Alpha v21 / Alpha-v20 / Alpha-v21; first admitted v20"}
+    assignment = f'window.PA_DEFINED_GRAPH={json.dumps(payload)};'
+    document = (
+        '<main><p>Alpha v20; first admitted v20; 590-node bundle</p></main>'
+        f'<script id="pa-defined-graph-data">{assignment}</script>'
+        '<script>window.status="Alpha v20 first admitted v20";</script>'
+    ).encode()
+    result = publisher._retarget(document, publisher.FAMILIES[0]).decode()
+    assert f'<script id="pa-defined-graph-data">{assignment}</script>' in result
+    assert f'<main><p>Alpha {first_version}; first admitted {first_version};' in result
+    assert f'window.status="Alpha {first_version} first admitted {first_version}";' in result
+
+
+@pytest.mark.parametrize("mutation", ("missing", "duplicate", "renamed"))
+def test_graph_data_preservation_rejects_altered_script_boundaries(mutation: str) -> None:
+    script = '<script id="pa-defined-graph-data">window.PA_DEFINED_GRAPH={"summary":"Alpha v20"};</script>'
+    original = ('<main></main>' + script).encode()
+    changed = {
+        "missing": b'<main></main>',
+        "duplicate": original + script.encode(),
+        "renamed": original.replace(b'pa-defined-graph-data', b'different-graph-data'),
+    }[mutation]
+    with pytest.raises(explorer.NextLayerExplorerError, match="script boundary"):
+        explorer._preserve_defined_graph_data(original, changed)

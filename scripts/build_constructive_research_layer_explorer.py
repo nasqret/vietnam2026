@@ -882,7 +882,7 @@ def _retarget(document: bytes, family: Family, *, include_caveat: bool = False) 
             text = text.replace(marker, callout + marker, 1)
         elif family.caveat not in text and "</section>\n</main>" in text:
             text = text.replace("</section>\n</main>", f"{callout}</section>\n</main>", 1)
-    return text.encode("utf-8")
+    return original._preserve_defined_graph_data(document, text.encode("utf-8"))
 
 
 def _top_index(

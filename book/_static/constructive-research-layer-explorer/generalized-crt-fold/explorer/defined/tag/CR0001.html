@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="generalized-crt-fold"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/CR0001.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=CR0001&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F02&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G011" href="../../../../grand-campaign/?view=goal&amp;focus=G011&amp;v=b3c647d19c00">G011 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/CR0001.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=CR0001&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F02&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G011" href="../../../../grand-campaign/?view=goal&amp;focus=G011&amp;v=ac7111ec14ff">G011 milestone</a></nav>
   <p class="pd-tag">CR0001</p><h1>crt_positive_moduli_prefix_empty</h1>
   <p>An empty decoded modulus prefix has no zero-valued member.</p><p class="pd-status">Alpha v30 checked-use · first admitted v24 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   
-  <p class="pd-callout">Historical partial components only: this chapter proves canonical solutions for finite positive pairwise-coprime systems and exact LCM solution classes. G011 is now closed in the separate Alpha-v27 generalized-crt branch for arbitrary pairwise-compatible systems, including noncoprime moduli. <a data-current-milestone="G011" href="../../../../generalized-crt/?v=b3c647d19c00">Full G011 proof · Alpha v27</a></p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ b. ∀ c. ∀ l. l = 0 → <a class="pd-definition-ref" data-definition="ND0053" href="../definition/ND0053.html?v=b3c647d19c00">CRTPositiveModuliPrefix(b,c,l)</a></code></pre>
+  <p class="pd-callout">Historical partial components only: this chapter proves canonical solutions for finite positive pairwise-coprime systems and exact LCM solution classes. G011 is now closed in the separate Alpha-v27 generalized-crt branch for arbitrary pairwise-compatible systems, including noncoprime moduli. <a data-current-milestone="G011" href="../../../../generalized-crt/?v=ac7111ec14ff">Full G011 proof · Alpha v27</a></p><section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ b. ∀ c. ∀ l. l = 0 → <a class="pd-definition-ref" data-definition="ND0053" href="../definition/ND0053.html?v=ac7111ec14ff">CRTPositiveModuliPrefix(b,c,l)</a></code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0053.html?v=b3c647d19c00">CRTPositiveModuliPrefix(b,c,l) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0053.html?v=ac7111ec14ff">CRTPositiveModuliPrefix(b,c,l) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">le_zero · checked external prerequisite</span><span class="pd-chip pd-external">succ_ne_zero · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall b c l. l = 0 -&gt; (forall gcrt_positive_index_empty gcrt_positive_value_empty. (exists ff_lt_gcrt_empty_bound. ff_lt_gcrt_empty_bound + S gcrt_positive_index_empty = l) -&gt; (((exists ff_h_gcrt_empty_entry. ff_h_gcrt_empty_entry + S (gcrt_positive_value_empty) = S ((S (gcrt_positive_index_empty)) * c)) /\ exists ff_q_gcrt_empty_entry. b = ff_q_gcrt_empty_entry * S ((S (gcrt_positive_index_empty)) * c) + (gcrt_positive_value_empty))) -&gt; ~(gcrt_positive_value_empty = 0))</code></pre></details>

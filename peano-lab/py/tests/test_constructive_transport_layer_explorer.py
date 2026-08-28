@@ -90,6 +90,57 @@ def corpora(generated: dict[str, bytes]) -> dict[str, dict]:
     }
 
 
+@pytest.mark.parametrize("name", (
+    "euclidean_execution_output_unique",
+    "euclidean_execution_terminal_identified",
+))
+def test_retarget_preserves_exact_prerequisite_provenance_but_updates_admission_chrome(
+    name: str,
+) -> None:
+    spec = next(
+        item for item in explorer.alpha_v22_enrollment().frontier_specs if item.name == name
+    )
+    assert "Alpha-v21" in spec.summary
+    summary = html.escape(spec.summary)
+    document = (
+        f'<main><p>{summary}</p><p>Alpha v21; Alpha-v21; first admitted v20</p>'
+        '<dl><dt>First admission</dt><dd>Alpha v20</dd></dl></main>'
+        '<script>window.status="Alpha v20 first admitted v20";</script>'
+    ).encode()
+    family = next(item for item in explorer.FAMILIES if item.slug == "euclidean-gcd-transport")
+    assert explorer._retarget(document, family).decode() == (
+        f'<main><p>{summary}</p><p>Alpha v22; Alpha-v22; first admitted v22</p>'
+        '<dl><dt>First admission</dt><dd>Alpha v22</dd></dl></main>'
+        '<script>window.status="Alpha v22 first admitted v22";</script>'
+    )
+
+
+@pytest.mark.parametrize("suffix,tags", (
+    ("explorer/index.html", ("GT000B", "GT0010")),
+    ("explorer/defined/index.html", ("GT000B", "GT0010")),
+    ("explorer/tag/GT000B.html", ("GT000B",)),
+    ("explorer/tag/GT0010.html", ("GT0010",)),
+    ("explorer/defined/tag/GT000B.html", ("GT000B",)),
+    ("explorer/defined/tag/GT0010.html", ("GT0010",)),
+))
+def test_visible_execution_summaries_equal_frozen_source_on_every_surface(
+    suffix: str, tags: tuple[str, ...], generated: dict[str, bytes], corpora: dict[str, dict],
+) -> None:
+    corpus = corpora["euclidean-gcd-transport"]
+    rows = {node["id"]: node for node in corpus["nodes"]}
+    frozen = {spec.name: spec for spec in explorer.alpha_v22_enrollment().frontier_specs}
+    page = generated[f"euclidean-gcd-transport/{suffix}"].decode()
+    for tag in tags:
+        source_summary = frozen[rows[tag]["name"]].summary
+        assert rows[tag]["summary"] == source_summary
+        assert "Alpha-v21" in source_summary
+        assert html.escape(source_summary) in page
+        assert html.escape(source_summary.replace("Alpha-v21", "Alpha-v22")) not in page
+    assert "Alpha v30 checked-use" in page
+    assert "first admitted v22" in page
+    assert corpus["alpha_first_enrolled_version"] == "v22"
+
+
 def test_manifest_binds_current_v30_to_independently_verified_first_admission_v22(
     generated: dict[str, bytes], inputs: dict
 ) -> None:

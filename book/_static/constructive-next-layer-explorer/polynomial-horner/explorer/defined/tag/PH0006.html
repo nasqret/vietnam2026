@@ -8,19 +8,19 @@
   <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
 </head>
 <body class="pa-defined-proof-site" data-family="polynomial-horner"><header class="pd-header pd-theorem-heading">
-  <nav><a href="../?v=b3c647d19c00">Definitions and proofs</a>
-       <a href="../../tag/PH0006.html?v=b3c647d19c00">Exact original proof</a>
-       <a href="../graph.html?target=PH0006&amp;v=b3c647d19c00">Interactive proof graph</a>
-       <a data-campaign-link="global" href="../../../../grand-campaign/?v=b3c647d19c00">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=b3c647d19c00">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=b3c647d19c00">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T12" href="../../../../grand-campaign/?view=goal&amp;focus=T12&amp;v=b3c647d19c00">T12 milestone</a></nav>
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/PH0006.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=PH0006&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="T12" href="../../../../grand-campaign/?view=goal&amp;focus=T12&amp;v=ac7111ec14ff">T12 milestone</a></nav>
   <p class="pd-tag">PH0006</p><h1>beta_horner_eval_empty</h1>
   <p>The empty polynomial&#x27;s exact constructive Horner value is zero.</p><p class="pd-status">Alpha v30 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable</p>
 </header>
 <main class="pd-theorem-layout"><div class="pd-proof-panel">
   
   <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
-    <pre><code>∀ b. ∀ c. ∀ t. ∀ n. <a class="pd-definition-ref" data-definition="ND0002" href="../definition/ND0002.html?v=b3c647d19c00">Horner(b,c,t,0,n)</a> → n = 0</code></pre>
+    <pre><code>∀ b. ∀ c. ∀ t. ∀ n. <a class="pd-definition-ref" data-definition="ND0002" href="../definition/ND0002.html?v=ac7111ec14ff">Horner(b,c,t,0,n)</a> → n = 0</code></pre>
     <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
-  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0002.html?v=b3c647d19c00">Horner(b,c,x,ell,z) · 1</a></div></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0002.html?v=ac7111ec14ff">Horner(b,c,x,ell,z) · 1</a></div></section>
   <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">beta_at_unique · checked external prerequisite</span></div></section>
   <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
     <pre><code>forall b c t n. (exists ff_u_ph_zero ff_v_ph_zero. ((((exists fs_h_ph_zero_body_start. fs_h_ph_zero_body_start + S (0) = S ((S (0)) * ff_v_ph_zero)) /\ exists fs_q_ph_zero_body_start. ff_u_ph_zero = fs_q_ph_zero_body_start * S ((S (0)) * ff_v_ph_zero) + (0))) /\ ((((exists fs_h_ph_zero_body_terminal. fs_h_ph_zero_body_terminal + S (n) = S ((S (0)) * ff_v_ph_zero)) /\ exists fs_q_ph_zero_body_terminal. ff_u_ph_zero = fs_q_ph_zero_body_terminal * S ((S (0)) * ff_v_ph_zero) + (n))) /\ forall ff_i_ph_zero_body_steps. (exists ph_bound_zero_body_steps. ph_bound_zero_body_steps + S ff_i_ph_zero_body_steps = 0) -&gt; exists ff_coefficient_ph_zero_body_steps ff_previous_ph_zero_body_steps ff_current_ph_zero_body_steps. ((((exists fs_h_ph_zero_body_steps_coefficient. fs_h_ph_zero_body_steps_coefficient + S (ff_coefficient_ph_zero_body_steps) = S ((S (ff_i_ph_zero_body_steps)) * c)) /\ exists fs_q_ph_zero_body_steps_coefficient. b = fs_q_ph_zero_body_steps_coefficient * S ((S (ff_i_ph_zero_body_steps)) * c) + (ff_coefficient_ph_zero_body_steps))) /\ ((((exists fs_h_ph_zero_body_steps_before. fs_h_ph_zero_body_steps_before + S (ff_previous_ph_zero_body_steps) = S ((S (ff_i_ph_zero_body_steps)) * ff_v_ph_zero)) /\ exists fs_q_ph_zero_body_steps_before. ff_u_ph_zero = fs_q_ph_zero_body_steps_before * S ((S (ff_i_ph_zero_body_steps)) * ff_v_ph_zero) + (ff_previous_ph_zero_body_steps))) /\ ((((exists fs_h_ph_zero_body_steps_after. fs_h_ph_zero_body_steps_after + S (ff_current_ph_zero_body_steps) = S ((S (S ff_i_ph_zero_body_steps)) * ff_v_ph_zero)) /\ exists fs_q_ph_zero_body_steps_after. ff_u_ph_zero = fs_q_ph_zero_body_steps_after * S ((S (S ff_i_ph_zero_body_steps)) * ff_v_ph_zero) + (ff_current_ph_zero_body_steps))) /\ ff_current_ph_zero_body_steps = ff_previous_ph_zero_body_steps * t + ff_coefficient_ph_zero_body_steps)))))) -&gt; n = 0</code></pre></details>

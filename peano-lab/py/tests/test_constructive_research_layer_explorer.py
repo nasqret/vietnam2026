@@ -6,6 +6,7 @@ from collections import Counter
 from copy import deepcopy
 from dataclasses import replace
 from hashlib import sha256
+import gc
 import html
 from html.parser import HTMLParser
 import json
@@ -14,6 +15,8 @@ import subprocess
 import sys
 
 import pytest
+
+from test_constructive_publication_json_encoding import compact_current_catalog_bytes
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -535,29 +538,38 @@ def test_current_v30_preserves_exact_historical_admission_and_separate_stable(
     ),
 )
 def test_current_authority_corruption_fails_closed_even_with_rehashed_pointer(
-    inputs: dict,
     monkeypatch: pytest.MonkeyPatch,
     surface: str,
     path: tuple[str | int, ...],
     value: object,
 ) -> None:
-    # Copy only the mutated path, preserving the large immutable theorem
-    # inventory and keeping each corruption case's memory use bounded.
-    document = dict(inputs["catalog"] if surface == "catalog" else inputs["channels"])
+    # The positive tests independently authenticate the complete inputs.
+    # Counterfactuals need only the same source bytes, not another retained
+    # historical/current catalogue pair while the real loader runs again.
+    # Dispose of the preceding expected failure's large traceback cycles.
+    gc.collect()
+    current_raw = explorer.CURRENT_CATALOG.read_bytes()
+    channel_raw = explorer.CHANNELS.read_bytes()
+    document = json.loads(current_raw if surface == "catalog" else channel_raw)
     cursor = document
+    child = None
     for key in path[:-1]:
         child = cursor[key]
         cursor[key] = dict(child) if isinstance(child, dict) else list(child)
         cursor = cursor[key]
     cursor[path[-1]] = value
-    channels = deepcopy(inputs["channels"])
-    current_raw = explorer.CURRENT_CATALOG.read_bytes()
     if surface == "catalog":
-        current_raw = explorer._json(document)
+        # Preserve the active catalog's compact JSON representation while
+        # changing the same complete document and rehashing its actual bytes.
+        del current_raw
+        current_raw = compact_current_catalog_bytes(document)
+        channels = json.loads(channel_raw)
         channels["channels"]["alpha"]["artifact_sha256"] = sha256(current_raw).hexdigest()
+        channel_raw = explorer._json(channels)
+        del channels
     else:
-        channels = document
-    channel_raw = explorer._json(channels)
+        channel_raw = explorer._json(document)
+    del document, cursor, child
     read_bytes = Path.read_bytes
 
     def mutated_read_bytes(path: Path) -> bytes:
