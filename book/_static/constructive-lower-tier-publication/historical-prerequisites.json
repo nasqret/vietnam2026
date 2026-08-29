@@ -1,0 +1,812 @@
+{
+  "explicit_complete_bundle_fallbacks": 12,
+  "navigation_revision": "ac7111ec14ff",
+  "routes": {
+    "add_comm": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "add_comm",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA000F.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA000F.html",
+      "standalone_page": true,
+      "statement_sha256": "d0964c9be754ff543a32b916d0b2a1bc278f849ba40378004f32a397d83a168c"
+    },
+    "add_eq_zero_right": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "add_eq_zero_right",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA0004.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA0004.html",
+      "standalone_page": true,
+      "statement_sha256": "80f155113c1ed6af4126e1411c83c3c95b9f90b28aca748e5f8c2d4bd31fad9d"
+    },
+    "arithmetic_signed_sum_exists": {
+      "inventory_role": "new_cross_track_support",
+      "name": "arithmetic_signed_sum_exists",
+      "public_path": "/proofs/checkpoints/lower-tier/divisor-sums/explorer/defined/tag/DV0006.html",
+      "route_index": "constructive-lower-tier-explorer/divisor-sums/api/corpus.json",
+      "route_index_sha256": "06d0efea0563ae26d7a8dee205c8b34d832c6db648ecc4e90442220749aa4999",
+      "source_page": "book/_static/constructive-lower-tier-explorer/divisor-sums/explorer/defined/tag/DV0006.html",
+      "standalone_page": true,
+      "statement_sha256": "7bb45a2e5b2803d34704616cef0c8007b1ea4cfe478e9230cccba80afa9f249c"
+    },
+    "arithmetic_signed_table_equal_entry_transport": {
+      "inventory_role": "new_cross_track_support",
+      "name": "arithmetic_signed_table_equal_entry_transport",
+      "public_path": "/proofs/checkpoints/lower-tier/divisor-sums/explorer/defined/tag/DV0002.html",
+      "route_index": "constructive-lower-tier-explorer/divisor-sums/api/corpus.json",
+      "route_index_sha256": "06d0efea0563ae26d7a8dee205c8b34d832c6db648ecc4e90442220749aa4999",
+      "source_page": "book/_static/constructive-lower-tier-explorer/divisor-sums/explorer/defined/tag/DV0002.html",
+      "standalone_page": true,
+      "statement_sha256": "4e04ddcaa4c53c823cce502be3989db78fcddfd56beefffea38691a50260bb68"
+    },
+    "arithmetic_signed_table_extend_at": {
+      "inventory_role": "new_cross_track_support",
+      "name": "arithmetic_signed_table_extend_at",
+      "public_path": "/proofs/checkpoints/lower-tier/divisor-sums/explorer/defined/tag/DV0003.html",
+      "route_index": "constructive-lower-tier-explorer/divisor-sums/api/corpus.json",
+      "route_index_sha256": "06d0efea0563ae26d7a8dee205c8b34d832c6db648ecc4e90442220749aa4999",
+      "source_page": "book/_static/constructive-lower-tier-explorer/divisor-sums/explorer/defined/tag/DV0003.html",
+      "standalone_page": true,
+      "statement_sha256": "8315f86e7a5f4cd47a5320566ce9aa00d52e4873f5dca8da2f26da8662040eb5"
+    },
+    "beta_at_exists": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "beta_at_exists",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA0029.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA0029.html",
+      "standalone_page": true,
+      "statement_sha256": "acd7a937d6ec7c3c4d6214357bdfcdf3a975ccd71f7e14a540a1690d5e9b1773"
+    },
+    "beta_at_unique": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "beta_at_unique",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA002F.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA002F.html",
+      "standalone_page": true,
+      "statement_sha256": "eac0700b7c24aa059073c61ffdf1541dc02d23400571b003fe964b9df65f5afd"
+    },
+    "beta_division_prefix_exists": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "beta_division_prefix_exists",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA00BY.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA00BY.html",
+      "standalone_page": true,
+      "statement_sha256": "d82de890a8fdd2afd3f31bb1621391d7f8385f5ca7d8f78ca5556f6c5f40ec89"
+    },
+    "beta_horner_eval_empty": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "beta_horner_eval_empty",
+      "public_path": "/proofs/polynomial-horner/explorer/defined/tag/PH0006.html",
+      "route_index": "constructive-next-layer-explorer/polynomial-horner/api/corpus.json",
+      "route_index_sha256": "d91f62bfec89263036f4895cf6e742a63c00c19028af3333f6d5123575ff6685",
+      "source_page": "book/_static/constructive-next-layer-explorer/polynomial-horner/explorer/defined/tag/PH0006.html",
+      "standalone_page": true,
+      "statement_sha256": "ade4e8cda97412983e3c0491d316d62ee4e5a85f04d0578a13fc387377c900c0"
+    },
+    "beta_horner_eval_exists": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "beta_horner_eval_exists",
+      "public_path": "/proofs/polynomial-horner/explorer/defined/tag/PH0002.html",
+      "route_index": "constructive-next-layer-explorer/polynomial-horner/api/corpus.json",
+      "route_index_sha256": "d91f62bfec89263036f4895cf6e742a63c00c19028af3333f6d5123575ff6685",
+      "source_page": "book/_static/constructive-next-layer-explorer/polynomial-horner/explorer/defined/tag/PH0002.html",
+      "standalone_page": true,
+      "statement_sha256": "bd1fa1601bd14a7dd6e769eb49bb646326d12f9a26d206c89eea1c7de54ac7d3"
+    },
+    "beta_horner_eval_successor_decompose": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "beta_horner_eval_successor_decompose",
+      "public_path": "/proofs/polynomial-horner/explorer/defined/tag/PH0007.html",
+      "route_index": "constructive-next-layer-explorer/polynomial-horner/api/corpus.json",
+      "route_index_sha256": "d91f62bfec89263036f4895cf6e742a63c00c19028af3333f6d5123575ff6685",
+      "source_page": "book/_static/constructive-next-layer-explorer/polynomial-horner/explorer/defined/tag/PH0007.html",
+      "standalone_page": true,
+      "statement_sha256": "7b429b8d533dea0ef39b123ad3431ff060b75a581b48b5b18f5b0d7f28e35f48"
+    },
+    "beta_pointwise_add_prefix_exists": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "beta_pointwise_add_prefix_exists",
+      "public_path": "/proofs/matrix-coded-products/explorer/defined/tag/MC000D.html",
+      "route_index": "constructive-advanced-layer-explorer/matrix-coded-products/api/corpus.json",
+      "route_index_sha256": "d82f51dee7cb1d0d3daa0796d2cc310ca75cd2457b244162297fdba677ee329e",
+      "source_page": "book/_static/constructive-advanced-layer-explorer/matrix-coded-products/explorer/defined/tag/MC000D.html",
+      "standalone_page": true,
+      "statement_sha256": "0003860b43d5c86f8b1880d746f7d1025bb545146e6e1067b7965b1f76ed21c4"
+    },
+    "beta_pointwise_mul_prefix_exists": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "beta_pointwise_mul_prefix_exists",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA007L.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA007L.html",
+      "standalone_page": true,
+      "statement_sha256": "61170d1ab57371e2d19f5f39e0d8f8a69ca31b2d0918a5e33a3a10c72fba8019"
+    },
+    "beta_prefix_extend": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "beta_prefix_extend",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA002X.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA002X.html",
+      "standalone_page": true,
+      "statement_sha256": "292c7a2a1abbf591e9a3cfd77ad0533f12761f691460fca7a20f413c6f66a1e0"
+    },
+    "beta_repeat_exists": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "beta_repeat_exists",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA0045.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA0045.html",
+      "standalone_page": true,
+      "statement_sha256": "9ab591572e48818c23c1accbf4f53decd14eef661b0bd6895ebf7e41bb392b3f"
+    },
+    "binary_canonical_residue_functional": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "binary_canonical_residue_functional",
+      "public_path": "/proofs/binary-modular-exponentiation/explorer/defined/tag/BX0003.html",
+      "route_index": "constructive-advanced-layer-explorer/binary-modular-exponentiation/api/corpus.json",
+      "route_index_sha256": "580c75157c94bf9ecf8f3ed1b4f26d760a9f4c89ba568eb43b0819b903bc558b",
+      "source_page": "book/_static/constructive-advanced-layer-explorer/binary-modular-exponentiation/explorer/defined/tag/BX0003.html",
+      "standalone_page": true,
+      "statement_sha256": "6ceca7d1c5171f65ecad03675e8ac1c4a69bfaf38c82b9a3423795134e3c797d"
+    },
+    "divisor_signed_sum_empty_value": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_sum_empty_value",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS000D.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS000D.html",
+      "standalone_page": true,
+      "statement_sha256": "e8642c62a9360306119f85a4f994cd94861c3c685d27204f53ada36b6dd45bcd"
+    },
+    "divisor_signed_sum_exists_from_components": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_sum_exists_from_components",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS000B.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS000B.html",
+      "standalone_page": true,
+      "statement_sha256": "dc8a67265f62df88cc20398fae6101b8f7708646af331e0efbb077fb07fde474"
+    },
+    "divisor_signed_sum_extensional": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_sum_extensional",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS0014.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS0014.html",
+      "standalone_page": true,
+      "statement_sha256": "b5d76a97376567d4d2e34212f1172b134f14781a661d76925a3615f38065c348"
+    },
+    "divisor_signed_sum_successor_decompose": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_sum_successor_decompose",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS0017.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS0017.html",
+      "standalone_page": true,
+      "statement_sha256": "a80bff0e0c60f0dedf876beae0647e202aef3e8a900512a077957755470c3f67"
+    },
+    "divisor_signed_sum_successor_intro": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_sum_successor_intro",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS0016.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS0016.html",
+      "standalone_page": true,
+      "statement_sha256": "67f6acbf8ddd9dc6d4963b7ee11403c734e768abd48aad9d04dbd11d69c4b5c5"
+    },
+    "divisor_signed_table_at_from_components": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_table_at_from_components",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS0001.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS0001.html",
+      "standalone_page": true,
+      "statement_sha256": "6b292868fda937823a4dfc13fe3f5577a2f91913c3ff758e7ad9032e0af31ce3"
+    },
+    "divisor_signed_table_at_functional": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_table_at_functional",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS0007.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS0007.html",
+      "standalone_page": true,
+      "statement_sha256": "c47babd7207da358b0bfd877418fabee735ca070824b94fcbfdd81eb07957575"
+    },
+    "divisor_signed_table_at_to_components": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_table_at_to_components",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS0002.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS0002.html",
+      "standalone_page": true,
+      "statement_sha256": "3b275347602b0aa7fa93ed2d78491dda483509d0d7de3147c8eb924c0ee89ab7"
+    },
+    "divisor_signed_table_components": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_table_components",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS0005.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS0005.html",
+      "standalone_page": true,
+      "statement_sha256": "48ef6e47809edda57f20ad719e0cab9f9c6da9a366b156fe2f68f04d931a8142"
+    },
+    "divisor_signed_table_from_components": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_table_from_components",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS0003.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS0003.html",
+      "standalone_page": true,
+      "statement_sha256": "5fd017177babe11d163fc123d3f4e63c6e2f654c82c3f81765194d6e14cfd98d"
+    },
+    "divisor_signed_table_lookup": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_table_lookup",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS0006.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS0006.html",
+      "standalone_page": true,
+      "statement_sha256": "6cf135d9868dc10b2399e4768deccbcb2fc7ca1ae34e9c4258c3c8713b67feab"
+    },
+    "divisor_signed_table_restrict": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "divisor_signed_table_restrict",
+      "public_path": "/proofs/checkpoints/signed-sums/explorer/defined/tag/SS0008.html",
+      "route_index": "constructive-bottom-layer-publication/signed-sums/api/corpus.json",
+      "route_index_sha256": "59f499d6cebdbc7f5b7ec05829df383b7d32ca2e409ab3eea459f6278ff2517d",
+      "source_page": "book/_static/constructive-bottom-layer-publication/signed-sums/explorer/defined/tag/SS0008.html",
+      "standalone_page": true,
+      "statement_sha256": "3e56a4039f59b96cf697e14e305740fdfe11d7f1667875630c1d79b09d2c54dc"
+    },
+    "eq_decidable": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "eq_decidable",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA004G.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA004G.html",
+      "standalone_page": true,
+      "statement_sha256": "c13a817645afe596d7f55f88eb9400073ae742c17213dfbf907f4c497aa1aca1"
+    },
+    "finite_lt_succ_eq_or_lt": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "finite_lt_succ_eq_or_lt",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA003D.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA003D.html",
+      "standalone_page": true,
+      "statement_sha256": "4829550fa55790a5ce617b99bbd357d27af724ca5316fbc0a5afef062fb3a1f6"
+    },
+    "le_eq_or_lt": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "le_eq_or_lt",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA000W.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA000W.html",
+      "standalone_page": true,
+      "statement_sha256": "c62d7d9dd2e202f7ef167c085afae1c16f5ee96d7d8269234b68249f5038f72a"
+    },
+    "le_of_succ_le_succ": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "le_of_succ_le_succ",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA000V.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA000V.html",
+      "standalone_page": true,
+      "statement_sha256": "bfa8be55903d6a037b942f30e28a0606ad55956d00b47532ab2c1cadb87d9a2a"
+    },
+    "le_refl": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "le_refl",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA001A.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA001A.html",
+      "standalone_page": true,
+      "statement_sha256": "4a63925d2370803a106dd819be4a0b5369ca4575fd36d6bcdb133020703a17fd"
+    },
+    "le_succ": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "le_succ",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA002O.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA002O.html",
+      "standalone_page": true,
+      "statement_sha256": "3adee5fa95d2437f4677d9f9a0937c5b48a7fcebb3350403b5be969ed30c7c50"
+    },
+    "le_succ_self": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "le_succ_self",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA000Q.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA000Q.html",
+      "standalone_page": true,
+      "statement_sha256": "60174e116dc1779726af5ab6335933bf94a1278b174352205c842e300e570651"
+    },
+    "le_trans": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "le_trans",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA000R.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA000R.html",
+      "standalone_page": true,
+      "statement_sha256": "9283783a3d2617190746cb05073cdf1f8a1b90c1a6bbdd640a26e28eb44b887d"
+    },
+    "le_zero": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "le_zero",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA001B.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA001B.html",
+      "standalone_page": true,
+      "statement_sha256": "f9c4e4faa5263ab84d5c6221a21f22a3a581de21585d30f87fe8e24fcb81faef"
+    },
+    "matrix_rank_bounded_prefix_empty": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "matrix_rank_bounded_prefix_empty",
+      "public_path": "/proofs/integer-linear-algebra/explorer/defined/tag/DL0038.html",
+      "route_index": "constructive-second-wave-explorer-v30/integer-linear-algebra/api/corpus.json",
+      "route_index_sha256": "1c27c9bf9053795f4f5146546a48e6f8f479d659e3a8c0c96b4de36096eb49ca",
+      "source_page": "book/_static/constructive-second-wave-explorer-v30/integer-linear-algebra/explorer/defined/tag/DL0038.html",
+      "standalone_page": true,
+      "statement_sha256": "cf8f846bcc8bebac874164f0347cea5021f8c5e756c53b872c8db186f4f1fb5c"
+    },
+    "matrix_rank_bounded_prefix_extend": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "matrix_rank_bounded_prefix_extend",
+      "public_path": "/proofs/integer-linear-algebra/explorer/defined/tag/DL003A.html",
+      "route_index": "constructive-second-wave-explorer-v30/integer-linear-algebra/api/corpus.json",
+      "route_index_sha256": "1c27c9bf9053795f4f5146546a48e6f8f479d659e3a8c0c96b4de36096eb49ca",
+      "source_page": "book/_static/constructive-second-wave-explorer-v30/integer-linear-algebra/explorer/defined/tag/DL003A.html",
+      "standalone_page": true,
+      "statement_sha256": "3e6c4881d091ca1a110988cb42b8c4b011520d31eebc013cdc8667f3a54c2924"
+    },
+    "matrix_rank_bounded_prefix_value": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "matrix_rank_bounded_prefix_value",
+      "public_path": "/proofs/integer-linear-algebra/explorer/defined/tag/DL002D.html",
+      "route_index": "constructive-second-wave-explorer-v30/integer-linear-algebra/api/corpus.json",
+      "route_index_sha256": "1c27c9bf9053795f4f5146546a48e6f8f479d659e3a8c0c96b4de36096eb49ca",
+      "source_page": "book/_static/constructive-second-wave-explorer-v30/integer-linear-algebra/explorer/defined/tag/DL002D.html",
+      "standalone_page": true,
+      "statement_sha256": "6087cc007f5164665c5bf8cc8232594a35c74d0229c5249183a6b433d43f4f54"
+    },
+    "mobius_one": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "mobius_one",
+      "public_path": "/proofs/checkpoints/mobius-values/explorer/defined/tag/MV000D.html",
+      "route_index": "constructive-bottom-layer-publication/mobius-values/api/corpus.json",
+      "route_index_sha256": "40ccbee992aa0083b6ed045f394ec8e8962f744edf59277961ba645ee0e0cc2f",
+      "source_page": "book/_static/constructive-bottom-layer-publication/mobius-values/explorer/defined/tag/MV000D.html",
+      "standalone_page": true,
+      "statement_sha256": "7e25b6ee50f327823f711ec20cfbd25178b198c7210f11bc73f08441e73273e6"
+    },
+    "mobius_value_exists": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "mobius_value_exists",
+      "public_path": "/proofs/checkpoints/mobius-values/explorer/defined/tag/MV0009.html",
+      "route_index": "constructive-bottom-layer-publication/mobius-values/api/corpus.json",
+      "route_index_sha256": "40ccbee992aa0083b6ed045f394ec8e8962f744edf59277961ba645ee0e0cc2f",
+      "source_page": "book/_static/constructive-bottom-layer-publication/mobius-values/explorer/defined/tag/MV0009.html",
+      "standalone_page": true,
+      "statement_sha256": "66d70409d9b65a8d69997c5ed6ccb6e002ae29046eb3d1dd1e563685fc4897da"
+    },
+    "mobius_value_functional": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "mobius_value_functional",
+      "public_path": "/proofs/checkpoints/mobius-values/explorer/defined/tag/MV000B.html",
+      "route_index": "constructive-bottom-layer-publication/mobius-values/api/corpus.json",
+      "route_index_sha256": "40ccbee992aa0083b6ed045f394ec8e8962f744edf59277961ba645ee0e0cc2f",
+      "source_page": "book/_static/constructive-bottom-layer-publication/mobius-values/explorer/defined/tag/MV000B.html",
+      "standalone_page": true,
+      "statement_sha256": "d6bf764d3fcc08f8b8f2294fb16cb0d1fb91dc58b9563920db33dc522b7e4eb3"
+    },
+    "mul_comm": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "mul_comm",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA000H.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA000H.html",
+      "standalone_page": true,
+      "statement_sha256": "b5277583d2ad3b537c2ccf0fecc33912b9ff69674ec9659cf8d70f58b691b65d"
+    },
+    "multiple_decidable_nonzero": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "multiple_decidable_nonzero",
+      "public_path": "/proofs/bertrand-postulate/explorer/defined/tag/BT003B.html",
+      "route_index": "bertrand-proof-explorer/api/corpus.json",
+      "route_index_sha256": "50d1f69e62745b8a39d1980abf38d75dec587a90f64c5664ce446a0e8aea8651",
+      "source_page": "book/_static/bertrand-proof-explorer/defined/tag/BT003B.html",
+      "standalone_page": true,
+      "statement_sha256": "08cd13450e5d21cb8318d95c115340c0ad6bfe7b90d4bba6ef8905d3d90c4684"
+    },
+    "one_mul": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "one_mul",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA000M.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA000M.html",
+      "standalone_page": true,
+      "statement_sha256": "a3fba3e972fc2ec6f5a274a8d21550e1081cf5f1581eda98922616aa20cda490"
+    },
+    "prime_field_add_associative": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_add_associative",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0010.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0010.html",
+      "standalone_page": true,
+      "statement_sha256": "c9db339df9862949b1545c9b23388756020fcac89a1a0cbe219a8e6c33138a11"
+    },
+    "prime_field_add_commutative": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_add_commutative",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP000B.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP000B.html",
+      "standalone_page": true,
+      "statement_sha256": "6b6feebc3278dbe6c1f0e607290ea212c37e926e5deafc09806c985281266eef"
+    },
+    "prime_field_add_exists": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_add_exists",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0008.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0008.html",
+      "standalone_page": true,
+      "statement_sha256": "f868f012a0cf475ff501e3a1889c43a6ffe188c356b48a599e0c09dc944c249f"
+    },
+    "prime_field_add_functional": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_add_functional",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0009.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0009.html",
+      "standalone_page": true,
+      "statement_sha256": "30463b4d09266ac2d9772aab0c66c91c7d0cb7d126004461f56772d6c785cc5a"
+    },
+    "prime_field_add_zero_left": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_add_zero_left",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0015.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0015.html",
+      "standalone_page": true,
+      "statement_sha256": "469e5eb02eedb1a79a093ee26fb4bb2ca2b7adedf500f210ba12c8ba9db80cf2"
+    },
+    "prime_field_add_zero_right": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_add_zero_right",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0014.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0014.html",
+      "standalone_page": true,
+      "statement_sha256": "da05372cea2d4e4921c6c60c8e37d16e7abc18ed004d242b61f4494eea636530"
+    },
+    "prime_field_left_distributive": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_left_distributive",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0012.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0012.html",
+      "standalone_page": true,
+      "statement_sha256": "10e3d13bc4c07f85af2fd5fba4407b1e4ff0b3654bd589810138d4bb3317e265"
+    },
+    "prime_field_multiply_associative": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_multiply_associative",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0011.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0011.html",
+      "standalone_page": true,
+      "statement_sha256": "336b83b70a36429e4ae3310807df7b0d0becbb681ff562e22ed31ec3d65c76b0"
+    },
+    "prime_field_multiply_exists": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_multiply_exists",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP000C.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP000C.html",
+      "standalone_page": true,
+      "statement_sha256": "c69574574d3f512ae1f7bee7bd628795a321f8ac444161a4171e9d921cd544a1"
+    },
+    "prime_field_multiply_functional": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_multiply_functional",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP000D.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP000D.html",
+      "standalone_page": true,
+      "statement_sha256": "f824a9ae47e91cfab40a6fe0f3799442ce2500eef067434c7f2c536be1020d26"
+    },
+    "prime_field_multiply_one_left": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_multiply_one_left",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0017.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0017.html",
+      "standalone_page": true,
+      "statement_sha256": "2f74146518b15a749b86265bd455b8584ef930b2f1ac71d05ee5d1555eab94ed"
+    },
+    "prime_field_multiply_zero_left": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_multiply_zero_left",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0019.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0019.html",
+      "standalone_page": true,
+      "statement_sha256": "0485b38eac98443931c7193796de1d246fc8732eb47ab8db9203e03efcd5107c"
+    },
+    "prime_field_residue_add": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_residue_add",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0027.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0027.html",
+      "standalone_page": true,
+      "statement_sha256": "21f19a24eb41c181a5679bcf876c54ee8630c28703b2c2ed933b632b3671c115"
+    },
+    "prime_field_residue_bounded_value": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_residue_bounded_value",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0006.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0006.html",
+      "standalone_page": true,
+      "statement_sha256": "b00356da2ba62c76d1f86eaafa4748773449d83bde803ce79ffce841e10c7eb6"
+    },
+    "prime_field_residue_input_equal": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_residue_input_equal",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0004.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0004.html",
+      "standalone_page": true,
+      "statement_sha256": "8a67e6b41afbd90d000146e21cc49bd896ad98a1f49f9abdb1a9dad0ed415f15"
+    },
+    "prime_field_residue_multiply": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_residue_multiply",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0028.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0028.html",
+      "standalone_page": true,
+      "statement_sha256": "fb59dec5a02f6dbbb8a9ae73af052afe68121e646ee5047e2e893c98efdf4a40"
+    },
+    "prime_field_residue_reflexive": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_residue_reflexive",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0003.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0003.html",
+      "standalone_page": true,
+      "statement_sha256": "d2f71ba56bfef6344db6ecf06faa53db86a44fa6662b28eb9995f7e78964c34e"
+    },
+    "prime_field_right_distributive": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_right_distributive",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0013.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0013.html",
+      "standalone_page": true,
+      "statement_sha256": "de4fbab28fd0c0bfff165b7f57ecadb93f33b2e7e43ad30d1c7a659d8ddbea85"
+    },
+    "prime_field_zero_below_prime": {
+      "inventory_role": "inherited_published_non_admitted_checkpoint",
+      "name": "prime_field_zero_below_prime",
+      "public_path": "/proofs/checkpoints/prime-fields/explorer/defined/tag/FP0002.html",
+      "route_index": "constructive-bottom-layer-publication/prime-fields/api/corpus.json",
+      "route_index_sha256": "333ce22866c8e27361917ad834f70158be1cd1682d2b71851d8ef31442a96b06",
+      "source_page": "book/_static/constructive-bottom-layer-publication/prime-fields/explorer/defined/tag/FP0002.html",
+      "standalone_page": true,
+      "statement_sha256": "0ca8b7560d07740725a4338b9178c29262b28e42b942dd7d3f916ebbc8994a65"
+    },
+    "prime_nonzero": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "prime_nonzero",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA0031.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA0031.html",
+      "standalone_page": true,
+      "statement_sha256": "f74d3a446b0634b8019db1906e37846c34e3d71f60d5261139ed9ed69b465ed7"
+    },
+    "prime_two_le": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "prime_two_le",
+      "public_path": "/proofs/bertrand-postulate/explorer/defined/tag/BT00QD.html",
+      "route_index": "bertrand-proof-explorer/api/corpus.json",
+      "route_index_sha256": "50d1f69e62745b8a39d1980abf38d75dec587a90f64c5664ce446a0e8aea8651",
+      "source_page": "book/_static/bertrand-proof-explorer/defined/tag/BT00QD.html",
+      "standalone_page": true,
+      "statement_sha256": "1b3c7c140e6ce0e53d771c6580a3b8cf081835013d994878a22e5de1d1a04e7c"
+    },
+    "remainder_decomposition_to_mod_eq": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "remainder_decomposition_to_mod_eq",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA003C.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA003C.html",
+      "standalone_page": true,
+      "statement_sha256": "5329024af13cfcbc0e4662ef24110fcbe2ece3d384ffca5c07cf3f6b7a49b55b"
+    },
+    "signed_add_associative": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_add_associative",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "62a4c1b9837905a14af15fc6a8931fa07fe338252787f2ce1ebb7d9a892ad094"
+    },
+    "signed_add_commutative": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_add_commutative",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "62fa5a5c2045b88379c68b93ab8d0e357c145ecb5832f3bf2b7597c76e008856"
+    },
+    "signed_add_functional": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_add_functional",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "09bcd858c7bddac1940bc48cbbccd32b26b83963408b8da3165f2b6a529b11a6"
+    },
+    "signed_add_total": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_add_total",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "a833317e218667421cc08336f1ad6a3575c29b6b52114437234900023bff1c64"
+    },
+    "signed_add_zero_left": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_add_zero_left",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "afb5ba61d840581893d6d198841aca38eff57cfe962462807b08de3b40139ec6"
+    },
+    "signed_decode_total": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_decode_total",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "c057ebd0f11884b8c25ade6f499a867c82213a4257ae911d3362737171491bb9"
+    },
+    "signed_mul_associative": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_mul_associative",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "46c4da4af308165a42a12146c79541411b780c85f2fc4e010b90b413975a28e8"
+    },
+    "signed_mul_commutative": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_mul_commutative",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "8e25f4cf6b48c125f7df426ee648ad9bae88fd6acc05257dde2afdffbeddd09c"
+    },
+    "signed_mul_functional": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_mul_functional",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "6493bb4d1759df101717a003411aaf38c80794559b9b4504987b96937f0c49eb"
+    },
+    "signed_mul_left_distributive": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_mul_left_distributive",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "78ef06cea880e1060206ba39e591685e26ecc96d3e7140695e791c0339763baa"
+    },
+    "signed_mul_total": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_mul_total",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "68ddcb2c4357f12cbedd89908414452a6a1b1684adcc6e2822a7ae1cfafcd3b7"
+    },
+    "signed_mul_zero_right": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "signed_mul_zero_right",
+      "note": "Inherited Alpha proof; no standalone historical explorer page. Exact statement and freshly checked complete-bundle node are linked.",
+      "standalone_page": false,
+      "statement_sha256": "bcdea695be4d1c8d6102a1962ab9ede07e1ea7c79a31b7311702c5f02e0cce8c"
+    },
+    "succ_le_succ": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "succ_le_succ",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA002K.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA002K.html",
+      "standalone_page": true,
+      "statement_sha256": "97c872aaa1b7fe31e8728e6f814edf1e967b5a4009d1e7716d52d4c136ac0a06"
+    },
+    "succ_ne_zero": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "succ_ne_zero",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA0005.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA0005.html",
+      "standalone_page": true,
+      "statement_sha256": "38711df11e3d8fa1d5014115f8bcef8fbbaf89b5cdab99a80006dc2eb96b952e"
+    },
+    "zero_add": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "zero_add",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA0001.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA0001.html",
+      "standalone_page": true,
+      "statement_sha256": "b759e0dfbf2a583a91d2b5db09cc55d201ef09cc1690d6ab1a32fcca5af5cdb9"
+    },
+    "zero_le": {
+      "inventory_role": "inherited_alpha_v30",
+      "name": "zero_le",
+      "public_path": "/proofs/quadratic-reciprocity/explorer/defined/tag/PA003F.html",
+      "route_index": "pa-proof-explorer/api/corpus.json",
+      "route_index_sha256": "ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a",
+      "source_page": "book/_static/pa-proof-explorer/defined/tag/PA003F.html",
+      "standalone_page": true,
+      "statement_sha256": "d3cad8d0d0ea07e339bdb8eb3b864e3511e648763977ff6882e77d60c984aa01"
+    }
+  },
+  "schema": "peano-lab-public-lower-tier-checkpoints-v1-inherited-routes",
+  "standalone_pages": 72
+}

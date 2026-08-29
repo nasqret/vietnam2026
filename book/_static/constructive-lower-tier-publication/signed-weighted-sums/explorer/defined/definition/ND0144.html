@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0144 — SignedAdd(a,b,c) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/lower-tier/signed-weighted-sums/explorer/defined/definition/ND0144.html"><meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/lower-tier/signed-weighted-sums/explorer/defined/definition/ND0144.html"><meta property="og:type" content="website"><meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png"><meta name="proof-publication-scope" content="public_research_checkpoint"></head>
+<body class="pa-defined-proof-site" data-family="signed-weighted-sums"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Research checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G007" href="../../../../grand-campaign/?view=goal&amp;focus=G007&amp;v=ac7111ec14ff">G007 milestone</a><a data-public-proof-library href="../../../../../../?v=ac7111ec14ff">Proof library</a></nav>
+  <p class="pd-tag">ND0144</p><h1>SignedAdd(a,b,c)</h1><p class="pd-callout pa-callout" data-public-checkpoint-notice>Public research checkpoint, not admitted to Alpha or Stable. Alpha v30 remains 3222 checked-use theorems; Stable remains 432. The on-demand Alpha Lean service does not yet expose these checkpoint theorems; their independently checked literal bundles and unchanged sources are available below.</p>
+  <p>Actual addition of original canonical signed codes, witnessed by their decoders and balanced equality.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ sa_lp_lowerlayer. ∃ sa_ln_lowerlayer. ∃ sa_rp_lowerlayer. ∃ sa_rn_lowerlayer. ∃ sa_op_lowerlayer. ∃ sa_on_lowerlayer. <a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=ac7111ec14ff">SignedDecode(a,sa_lp_lowerlayer,sa_ln_lowerlayer)</a> ∧ (<a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=ac7111ec14ff">SignedDecode(b,sa_rp_lowerlayer,sa_rn_lowerlayer)</a> ∧ (<a class="pd-definition-ref" data-definition="ND0142" href="ND0142.html?v=ac7111ec14ff">SignedDecode(c,sa_op_lowerlayer,sa_on_lowerlayer)</a> ∧ sa_lp_lowerlayer + sa_rp_lowerlayer + sa_on_lowerlayer = sa_ln_lowerlayer + sa_rn_lowerlayer + sa_op_lowerlayer))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists sa_lp_lowerlayer sa_ln_lowerlayer sa_rp_lowerlayer sa_rn_lowerlayer sa_op_lowerlayer sa_on_lowerlayer. (((a = 2 * sa_lp_lowerlayer /\ sa_ln_lowerlayer = 0) \/ exists sd_half_lowerlayer_left. ((a = 2 * sd_half_lowerlayer_left + 1 /\ sa_lp_lowerlayer = 0) /\ sa_ln_lowerlayer = S sd_half_lowerlayer_left)) /\ (((b = 2 * sa_rp_lowerlayer /\ sa_rn_lowerlayer = 0) \/ exists sd_half_lowerlayer_right. ((b = 2 * sd_half_lowerlayer_right + 1 /\ sa_rp_lowerlayer = 0) /\ sa_rn_lowerlayer = S sd_half_lowerlayer_right)) /\ (((c = 2 * sa_op_lowerlayer /\ sa_on_lowerlayer = 0) \/ exists sd_half_lowerlayer_output. ((c = 2 * sd_half_lowerlayer_output + 1 /\ sa_op_lowerlayer = 0) /\ sa_on_lowerlayer = S sd_half_lowerlayer_output)) /\ (sa_lp_lowerlayer + sa_rp_lowerlayer) + sa_on_lowerlayer = (sa_ln_lowerlayer + sa_rn_lowerlayer) + sa_op_lowerlayer)))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0142.html?v=ac7111ec14ff">SignedDecode(z,p,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0266.html?v=ac7111ec14ff">ArithAdd(F,G,H,l)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/WS0003.html?v=ac7111ec14ff">WS0003 · signed_table_add_lookup</a><a class="pd-chip" href="../tag/WS000F.html?v=ac7111ec14ff">WS000F · signed_table_add_extend</a><a class="pd-chip" href="../tag/WS0010.html?v=ac7111ec14ff">WS0010 · signed_table_add_exists</a><a class="pd-chip" href="../tag/WS0018.html?v=ac7111ec14ff">WS0018 · signed_table_add_reassociate</a><a class="pd-chip" href="../tag/WS0019.html?v=ac7111ec14ff">WS0019 · signed_table_add_medial</a><a class="pd-chip" href="../tag/WS001A.html?v=ac7111ec14ff">WS001A · signed_table_scalar_add_intro</a><a class="pd-chip" href="../tag/WS001B.html?v=ac7111ec14ff">WS001B · signed_prefix_sum_pointwise_add</a><a class="pd-chip" href="../tag/WS001C.html?v=ac7111ec14ff">WS001C · signed_prefix_sum_scalar_multiply</a><a class="pd-chip" href="../tag/WS001D.html?v=ac7111ec14ff">WS001D · signed_prefix_sum_pointwise_add_values_exist</a><a class="pd-chip" href="../tag/WS0027.html?v=ac7111ec14ff">WS0027 · signed_weighted_sum_add_linearity</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>3</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>1</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0144.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>96bbbcabe876881ee3272ccc86aa55fe9bd8dfc90ffb4043cb0fc9a2dbf59fad</code></dd>
+</dl></aside></main></body>
+</html>

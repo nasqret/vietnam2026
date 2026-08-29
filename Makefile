@@ -67,6 +67,7 @@ help:
 	@echo "  make book-constructive-lower-layer-explorer  verify four frozen Alpha-v28 proof families"
 	@echo "  make book-constructive-gaussian-factorization-explorer  publish the complete Gaussian unique-factorization map"
 	@echo "  make book-constructive-bottom-layer-publication  verify four public research checkpoint maps without Alpha admission"
+	@echo "  make book-constructive-lower-tier-publication  verify 126 further public research proofs without Alpha admission"
 	@echo "  make peano-library-alpha-v29-check  verify the exact four priority targets with all proof gates"
 	@echo "  make peano-library-alpha-v30-check  verify the complete Gaussian factorization release and current UI"
 	@echo "  make lean         build & axiom-check the Lean artifact"
@@ -320,6 +321,10 @@ book-constructive-second-wave-v28-explorer:
 # Verify the recorded snapshot and actual HA/Lean bundles before staging it.
 book-constructive-bottom-layer-publication:
 	PYTHONMALLOC=malloc python3 scripts/build_constructive_bottom_layer_publication.py --check
+
+.PHONY: book-constructive-lower-tier-publication
+book-constructive-lower-tier-publication:
+	PYTHONMALLOC=malloc python3 scripts/build_constructive_lower_tier_publication.py --check
 
 book: book-atlas book-proof-explorer
 	rm -rf book/_build   # full rebuild: incremental Sphinx leaves stale sidebars after TOC changes
@@ -1640,7 +1645,7 @@ stage: book
 deploy-site: stage
 	rsync -avz --delete $(STAGE)/ $(SERVER):$(SITE)/
 
-stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book-constructive-next-layer-explorer book-constructive-advanced-layer-explorer book-constructive-transport-layer-explorer book-constructive-milestone-closure-explorer book-constructive-research-layer-explorer book-constructive-breakthrough-layer-explorer book-constructive-second-wave-current-explorer book-constructive-gaussian-factorization-explorer book-constructive-bottom-layer-publication
+stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book-constructive-next-layer-explorer book-constructive-advanced-layer-explorer book-constructive-transport-layer-explorer book-constructive-milestone-closure-explorer book-constructive-research-layer-explorer book-constructive-breakthrough-layer-explorer book-constructive-second-wave-current-explorer book-constructive-gaussian-factorization-explorer book-constructive-bottom-layer-publication book-constructive-lower-tier-publication
 	@test "$$(shasum -a 256 book/_static/pa-proof-explorer/api/corpus.json | cut -d' ' -f1)" = \
 		"ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a" || \
 		{ echo "Immutable Alpha parent quadratic-reciprocity evidence corpus changed" >&2; exit 1; }
@@ -1889,7 +1894,11 @@ stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book
 	mkdir -p "$(STAGEPROOFS)/checkpoints"
 	rsync -a --delete book/_static/constructive-bottom-layer-publication/ \
 		"$(STAGEPROOFS)/checkpoints/"
+	mkdir -p "$(STAGEPROOFS)/checkpoints/lower-tier"
+	rsync -a --delete book/_static/constructive-lower-tier-publication/ \
+		"$(STAGEPROOFS)/checkpoints/lower-tier/"
 	python3 scripts/stage_public_checkpoint_navigation.py --root "$(STAGEPROOFS)"
+	python3 scripts/stage_lower_tier_checkpoint_navigation.py --root "$(STAGEPROOFS)"
 	python3 scripts/stage_public_lean_selector.py \
 		--root "$(STAGEPROOFS)" \
 		--api-url "$(PEANO_LEAN_PUBLIC_API)"

@@ -1,0 +1,108 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_owned_roots": [
+    "arithmetic_signed_sum_append_transport",
+    "mobius_table_exists",
+    "mobius_table_one_entry",
+    "mobius_table_extensional",
+    "mobius_table_restrict",
+    "divisor_mask_entry_quotient_input",
+    "divisor_mask_prefix_restrict",
+    "signed_divisor_sum_exists_unique",
+    "signed_divisor_sum_zero_excluded",
+    "signed_divisor_sum_one",
+    "signed_divisor_sum_positive_source_extensional"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 20685,
+    "bytes": 1841261,
+    "dependency_edges_including_packaging": 875,
+    "independent_lean_checked": true,
+    "nodes_including_packaging_root": 315,
+    "original_ha_checked": true,
+    "packaging_root_id": 314,
+    "path": "research/arithmetic-library/artifacts/lower-tier-divisor-sums-proof-bundle-v1.json",
+    "sha256": "96740bcedad194ebed5066ae03fa20cd922e702ae925b2c85f4ed45649aa0307"
+  },
+  "complete_non_alpha_specs_sha256": "bc820d7e1561fc7bb8916fb222b62ed7d315e9633431807bda3f8bbd7dd386ef",
+  "membership": "local_non_admitting_checkpoint",
+  "new_specs_sha256": "9bfd07e098154dd119b767459f69f8670151b4acd5c3ab0fc3813a987b704870",
+  "new_theorem_count": 37,
+  "new_theorem_dependency_edges": 92,
+  "new_theorem_tactic_commands": 1380,
+  "ordered_new_names_sha256": "ae8fb6562e9f2ee88b0996a6d8887013f714732d02728daff85ee37ca289f6af",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "mobius_table_exists",
+      "node_id": 286,
+      "statement_sha256": "9d90a11bd987bfe516272671293b30a0d264fe613d2632c628b5701634cf5dd3"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "signed_divisor_sum_positive_source_extensional",
+      "node_id": 313,
+      "statement_sha256": "5db775338790a36cdffa83a65f52f26d244827ba90942feb09600b9f5a202672"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "signed_divisor_sum_exists_unique",
+      "node_id": 310,
+      "statement_sha256": "c148a766390471cd871ca467503a9a7c380142964aff8830ca412a20f743ba6d"
+    }
+  ],
+  "rfc": "research/arithmetic-library/mobius-tables-divisor-sums-rfc-v1.md",
+  "slug": "divisor-sums",
+  "sources": [
+    {
+      "factory": "make_arithmetic_table_extension_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/arithmetic_table_extension_candidate.py",
+      "sha256": "d39d08f7178b526daad51aaf4a75c325f567424bb8ae74906c030f4d72e9e294"
+    },
+    {
+      "factory": "make_mobius_table_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/mobius_table_candidate.py",
+      "sha256": "7631337dd93f4a65e6f74ce9a5129d6701a496aa49969764c0945f4248676fc4"
+    },
+    {
+      "factory": "make_divisor_mask_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/divisor_mask_candidate.py",
+      "sha256": "740efabb5cbf6e0c804e901dae423e319c52c86f605ebe2a4ad0bffb033d9543"
+    }
+  ],
+  "stable_member": false,
+  "support": {
+    "alpha_v30_count": 253,
+    "counted_as_new_owned_theorems": false,
+    "current_cross_track_count": 0,
+    "current_cross_track_theorems": [],
+    "published_non_admitted_count": 24,
+    "published_non_admitted_theorems": [
+      "alternating_signed_unit_exists",
+      "alternating_signed_unit_functional",
+      "alternating_signed_unit_zero",
+      "mobius_prime_factor_count_unique",
+      "mobius_from_prime_square",
+      "mobius_from_squarefree_factor_count",
+      "mobius_value_exists",
+      "mobius_squarefree_evaluation",
+      "mobius_value_functional",
+      "mobius_one",
+      "divisor_signed_table_at_from_components",
+      "divisor_signed_table_at_to_components",
+      "divisor_signed_table_from_components",
+      "divisor_signed_table_components",
+      "divisor_signed_table_lookup",
+      "divisor_signed_table_at_functional",
+      "divisor_signed_table_restrict",
+      "divisor_signed_sum_from_components",
+      "divisor_signed_sum_exists_from_components",
+      "divisor_signed_sum_empty_value",
+      "divisor_natural_sum_successor_intro",
+      "divisor_signed_table_equality_component_balance",
+      "divisor_signed_sum_extensional",
+      "divisor_signed_sum_successor_intro"
+    ]
+  }
+}

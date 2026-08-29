@@ -1,0 +1,117 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_owned_roots": [
+    "prime_field_polynomial_normalization_transport",
+    "prime_field_polynomial_normalization_idempotent",
+    "prime_field_polynomial_zero_exists",
+    "prime_field_polynomial_add_exists",
+    "prime_field_polynomial_add_bounded",
+    "prime_field_polynomial_add_functional",
+    "prime_field_polynomial_add_transport",
+    "prime_field_polynomial_add_commutative",
+    "prime_field_polynomial_add_zero_right",
+    "prime_field_polynomial_scale_exists",
+    "prime_field_polynomial_scale_bounded",
+    "prime_field_polynomial_scale_functional",
+    "prime_field_polynomial_scale_transport",
+    "prime_field_polynomial_scale_one",
+    "prime_field_polynomial_scale_zero",
+    "prime_field_polynomial_add_associative",
+    "prime_field_polynomial_scale_associative",
+    "prime_field_polynomial_scale_distributes_over_add",
+    "prime_field_polynomial_scalar_add_distributes",
+    "prime_field_polynomial_horner_transport",
+    "prime_field_polynomial_horner_exists_unique",
+    "prime_field_polynomial_horner_constant",
+    "prime_field_polynomial_horner_zero",
+    "prime_field_polynomial_normalized_horner_iff",
+    "prime_field_polynomial_horner_result_bounded",
+    "prime_field_polynomial_reduce_and_evaluate_exists"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 11889,
+    "bytes": 688987,
+    "dependency_edges_including_packaging": 519,
+    "independent_lean_checked": true,
+    "nodes_including_packaging_root": 202,
+    "original_ha_checked": true,
+    "packaging_root_id": 201,
+    "path": "research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json",
+    "sha256": "6e3a08c73b8a45de127e6d50a771f95b52fd54894b1c2e43468751421488a01a"
+  },
+  "complete_non_alpha_specs_sha256": "2c9acf7b60877733669e07560e670111754c34ceb361441befc55bb034bf3dff",
+  "membership": "local_non_admitting_checkpoint",
+  "new_specs_sha256": "0ff662d165003510ed2cd20d724762d9d4166e62cd67e361073e7e15bc5fcd8b",
+  "new_theorem_count": 49,
+  "new_theorem_dependency_edges": 131,
+  "new_theorem_tactic_commands": 2829,
+  "ordered_new_names_sha256": "1657e984d7cd41d0bd36458fc043e00f65af437c8228a2e118eeed014c69fa9b",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "prime_field_polynomial_horner_exists_unique",
+      "node_id": 193,
+      "statement_sha256": "b4e5a2cd91b33b7366aa11d591d5da743acdb244348f438797daf1be243c3941"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "prime_field_polynomial_normalized_horner_iff",
+      "node_id": 198,
+      "statement_sha256": "fbed602c60a29f5b4474d678ccd397c2ff5d50e7fb52f06480c26e1938a762e5"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "prime_field_polynomial_reduce_and_evaluate_exists",
+      "node_id": 200,
+      "statement_sha256": "2f0d67795bf12542c6c9fb48cb4d63d26213e8e090bbca1a7a89257a49dd0e2c"
+    }
+  ],
+  "rfc": "research/arithmetic-library/prime-field-polynomials-rfc-v1.md",
+  "slug": "prime-field-polynomials",
+  "sources": [
+    {
+      "factory": "make_prime_field_polynomial_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py",
+      "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+    },
+    {
+      "factory": "make_prime_field_polynomial_evaluation_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_evaluation_candidate.py",
+      "sha256": "9638337f69bdc1f5491255b767dc90042244402e34ceab84902b0481c2eab802"
+    }
+  ],
+  "stable_member": false,
+  "support": {
+    "alpha_v30_count": 129,
+    "counted_as_new_owned_theorems": false,
+    "current_cross_track_count": 0,
+    "current_cross_track_theorems": [],
+    "published_non_admitted_count": 23,
+    "published_non_admitted_theorems": [
+      "prime_field_mod_of_equal",
+      "prime_field_zero_below_prime",
+      "prime_field_residue_reflexive",
+      "prime_field_residue_input_equal",
+      "prime_field_residue_bounded_value",
+      "prime_field_add_exists",
+      "prime_field_add_functional",
+      "prime_field_add_commutative",
+      "prime_field_multiply_exists",
+      "prime_field_multiply_functional",
+      "prime_field_multiply_commutative",
+      "prime_field_add_associative",
+      "prime_field_multiply_associative",
+      "prime_field_left_distributive",
+      "prime_field_right_distributive",
+      "prime_field_add_zero_right",
+      "prime_field_add_zero_left",
+      "prime_field_multiply_one_right",
+      "prime_field_multiply_one_left",
+      "prime_field_multiply_zero_right",
+      "prime_field_multiply_zero_left",
+      "prime_field_residue_add",
+      "prime_field_residue_multiply"
+    ]
+  }
+}

@@ -1,0 +1,100 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_owned_roots": [
+    "signed_table_multiply_restrict",
+    "signed_table_add_exists_extensionally_unique",
+    "signed_table_multiply_exists_extensionally_unique",
+    "signed_table_scalar_exists_extensionally_unique",
+    "signed_prefix_sum_pointwise_add_values_exist",
+    "signed_prefix_sum_scalar_multiply_values_exist",
+    "signed_weighted_sum_exists_unique",
+    "signed_weighted_sum_empty_exists",
+    "signed_weighted_sum_add_linearity",
+    "signed_weighted_sum_scalar_linearity"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 13692,
+    "bytes": 2293317,
+    "dependency_edges_including_packaging": 584,
+    "independent_lean_checked": true,
+    "nodes_including_packaging_root": 227,
+    "original_ha_checked": true,
+    "packaging_root_id": 226,
+    "path": "research/arithmetic-library/artifacts/lower-tier-signed-weighted-sums-proof-bundle-v1.json",
+    "sha256": "e88ddec495a71d673e670299ea3943a5a996eecb1296fb746e107c8e0b81c967"
+  },
+  "complete_non_alpha_specs_sha256": "c6546860fac1a31e7e248bbd362a83d4d2f9cf26e1f8f9d9036286cebdf59f0e",
+  "membership": "local_non_admitting_checkpoint",
+  "new_specs_sha256": "d1e23134d7f367d169f181c67939df5548101c83e9a73da43544c49e96590fae",
+  "new_theorem_count": 40,
+  "new_theorem_dependency_edges": 121,
+  "new_theorem_tactic_commands": 2117,
+  "ordered_new_names_sha256": "508f9c9dfde41f64ade7fa5fd2a6ca673fd7c8ca226655e1aa4dea98c4f3439c",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "signed_weighted_sum_exists_unique",
+      "node_id": 218,
+      "statement_sha256": "1ed794504914ee8304903be9fce6c08e5e310c7b0e75c244382438433c4c3f14"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "signed_weighted_sum_scalar_linearity",
+      "node_id": 225,
+      "statement_sha256": "488852252ab9e41daf5e2e6e234f8a9e046042f269dd9f5fd1bd9a074c45cbeb"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "signed_weighted_sum_add_linearity",
+      "node_id": 224,
+      "statement_sha256": "0515fa77e429a50f266b273b77efa2682ec7cc78c3e30948559d6a5c3363f255"
+    }
+  ],
+  "rfc": "research/arithmetic-library/signed-weighted-sums-rfc-v1.md",
+  "slug": "signed-weighted-sums",
+  "sources": [
+    {
+      "factory": "make_signed_table_operations_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/signed_table_operations_candidate.py",
+      "sha256": "465e623dbe3fcac0eb70ca72e890d1cc8046b3a476014dc65d187b3f30f4893f"
+    },
+    {
+      "factory": "make_signed_sum_linearity_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/signed_sum_linearity_candidate.py",
+      "sha256": "8da9d92ec3e204583e7539fc2ff6ca7af5677a909a59831951e978deab9d69c0"
+    },
+    {
+      "factory": "make_signed_weighted_sum_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/signed_weighted_sum_candidate.py",
+      "sha256": "2cbbb6486f0a75bbf97165018ef7539dd90c8a06317d0ed037ed95afcc72db07"
+    }
+  ],
+  "stable_member": false,
+  "support": {
+    "alpha_v30_count": 170,
+    "counted_as_new_owned_theorems": false,
+    "current_cross_track_count": 4,
+    "current_cross_track_theorems": [
+      "arithmetic_signed_table_component_prefix_preserved",
+      "arithmetic_signed_table_equal_entry_transport",
+      "arithmetic_signed_table_extend_at",
+      "arithmetic_signed_sum_exists"
+    ],
+    "published_non_admitted_count": 12,
+    "published_non_admitted_theorems": [
+      "divisor_signed_table_at_from_components",
+      "divisor_signed_table_at_to_components",
+      "divisor_signed_table_from_components",
+      "divisor_signed_table_components",
+      "divisor_signed_table_lookup",
+      "divisor_signed_table_at_functional",
+      "divisor_signed_sum_from_components",
+      "divisor_signed_sum_exists_from_components",
+      "divisor_signed_sum_empty_value",
+      "divisor_signed_table_equality_component_balance",
+      "divisor_signed_sum_extensional",
+      "divisor_signed_sum_successor_decompose"
+    ]
+  }
+}
