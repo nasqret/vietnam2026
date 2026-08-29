@@ -59,6 +59,34 @@ PRIORITY_LAYER_ROUTES = {
     "squarefree-kernels", "exponent-lifting",
 }
 GAUSSIAN_FACTORIZATION_ROUTES = {"gaussian-factorization"}
+# These immutable delivery manifests authorize research navigation, not Alpha
+# membership.  Their own v30 provenance/revision survives later Alpha releases.
+PUBLIC_RESEARCH_PARENT = {
+    "alpha_checked_use_count": 3222,
+    "alpha_version": "v30",
+    "catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7",
+    "stable_count": 432,
+}
+PUBLIC_RESEARCH_PACKAGES = (
+    {
+        "directory": "constructive-bottom-layer-publication",
+        "base": "checkpoints",
+        "schema": "peano-lab-public-bottom-layer-checkpoints-v1",
+        "manifest": {"bytes": 81153, "sha256": "f800d3436d7b053a6ba233e2c1014d7a1b8e7eb613ba3d9c36902ca5ede623ab"},
+        "checkpoint_digest": "fc592c0a4a0c385178528860634b18678e846327e9206b410cab043eb2ce7d48",
+        "families": {"euler-units": 32, "prime-fields": 87, "mobius-values": 21, "signed-sums": 30},
+        "count_key": "frontier_count",
+    },
+    {
+        "directory": "constructive-lower-tier-publication",
+        "base": "checkpoints/lower-tier",
+        "schema": "peano-lab-public-lower-tier-checkpoints-v1",
+        "manifest": {"bytes": 63621, "sha256": "a44222194449c465f9e89915ab07e1a93ad74f61e319d502745a1d4b7dbee152"},
+        "checkpoint_digest": "fc8f85092b7a4ae03f3614e940c4ca4ab5cdf4da63710ea692cb10ca8be5bca9",
+        "families": {"divisor-sums": 37, "signed-weighted-sums": 40, "prime-field-polynomials": 49},
+        "count_key": "new_theorem_count",
+    },
+)
 SECOND_WAVE_COMPLETIONS = {
     "T13": ("integer-linear-algebra", "rectangular_matrix_rank_exists_unique"),
     "G095": ("hensel-lifting", "integer_polynomial_prime_simple_root_lifts_all_positive_powers"),
@@ -386,6 +414,95 @@ def _document(path: Path) -> _Document:
     return result
 
 
+def _pinned_publication_bytes(path: Path, expected: dict) -> bytes:
+    """Authenticate small delivery metadata/landing pages, never proof bodies."""
+    size = expected["bytes"]
+    assert type(size) is int and size > 0
+    assert not path.is_symlink() and path.is_file(), path
+    assert path.stat().st_size == size, path
+    with path.open("rb") as source:
+        payload = source.read(size + 1)
+    assert len(payload) == size and sha256(payload).hexdigest() == expected["sha256"], path
+    return payload
+
+
+def _assert_research_publication_inventory(package: dict, manifest: dict, inventory: dict) -> None:
+    """Keep a public delivery record distinct from its non-admitting evidence."""
+    for value in (manifest, inventory):
+        assert value["publication_scope"] == "public_research_checkpoint"
+        assert value["checkpoint_digest"] == package["checkpoint_digest"]
+        assert value["navigation_revision"] == PUBLIC_RESEARCH_PARENT["catalog_sha256"][:12]
+    assert manifest["schema"] == package["schema"] + "-manifest"
+    assert manifest["file_count_excluding_manifest"] == len(manifest["files"])
+    assert inventory["schema"] == package["schema"]
+    assert inventory["public_base_path"] == f"/proofs/{package['base']}/"
+    assert inventory["parent"] == PUBLIC_RESEARCH_PARENT
+    assert inventory["delivery_metadata_only"] is True
+    for flag in ("alpha_admission_performed", "stable_admission_performed",
+                 "on_demand_alpha_lean_service_exposes_frontier"):
+        assert inventory[flag] is False, flag
+    for count in ("alpha_checked_use_node_count", "stable_admitted_node_count"):
+        assert type(inventory[count]) is int and inventory[count] == 0, count
+    assert inventory["families"] == package["families"]
+    assert inventory["new_theorem_count"] == sum(package["families"].values())
+    rows = inventory["checkpoints"]
+    assert Counter(row["slug"] for row in rows) == Counter(package["families"].keys())
+    for row in rows:
+        assert row[package["count_key"]] == package["families"][row["slug"]]
+        assert row["membership"] == "local_non_admitting_checkpoint"
+        for flag in ("admitted_to_alpha", "alpha_checked_use", "stable_member"):
+            assert row[flag] is False, (row["slug"], flag)
+        # Inspect the pinned historical declarations; this test performs no
+        # proof replay and grants no authority from a saved success receipt.
+        assert row["bundle"]["original_ha_checked"] is True
+        assert row["bundle"]["independent_lean_checked"] is True
+
+
+def _published_research_hub_routes() -> dict[str, str]:
+    routes = {}
+    for package in PUBLIC_RESEARCH_PACKAGES:
+        directory = ROOT / "book/_static" / package["directory"]
+        manifest = json.loads(_pinned_publication_bytes(directory / "manifest.json", package["manifest"]))
+        inventory = json.loads(_pinned_publication_bytes(directory / "checkpoints.json", manifest["files"]["checkpoints.json"]))
+        _assert_research_publication_inventory(package, manifest, inventory)
+        historical = inventory["historical_local_inventory"]
+        assert historical["path"] == "receipts/local-checkpoints.json"
+        assert manifest["files"][historical["path"]] == {
+            "bytes": historical["bytes"], "sha256": historical["sha256"],
+        }
+        local = json.loads(_pinned_publication_bytes(directory / historical["path"], historical))
+        assert local["published"] is False
+        for key in ("checkpoint_digest", "parent", "checkpoints"):
+            assert local[key] == inventory[key]
+        for slug in ("", *package["families"]):
+            page = f"{slug}/index.html" if slug else "index.html"
+            _pinned_publication_bytes(directory / page, manifest["files"][page])
+            route = f"{package['base']}/{slug}" if slug else package["base"]
+            assert route not in routes
+            routes[route] = inventory["navigation_revision"]
+    assert len(routes) == 9  # Seven research families and two separate indexes.
+    return routes
+
+
+def _assert_public_hub_routes(document: _Document, alpha_routes: set[str], research_routes: dict[str, str]) -> None:
+    assert not alpha_routes.intersection(research_routes)
+    assert "grand-campaign" not in alpha_routes | research_routes.keys()
+    expected = {route: CURRENT_REVISION for route in alpha_routes | {"grand-campaign"}}
+    expected.update(research_routes)
+    actual = []
+    for item in document.links:
+        if "primary-action" not in item.get("class", "").split():
+            continue
+        href = item["href"]
+        route = urlsplit(href).path.removesuffix("/")
+        assert route in expected, href
+        # Exact relative URLs reject foreign origins, query duplicates,
+        # fragments and path aliases as well as incorrect edition revisions.
+        assert href == f"{route}/?v={expected[route]}", href
+        actual.append(route)
+    assert Counter(actual) == Counter(expected.keys())
+
+
 def _assert_actual_inline_graph_contract(document: _Document, expected: dict, label: str) -> None:
     data = [
         row for row in document.scripts
@@ -592,17 +709,6 @@ def test_inline_graph_contract_rejects_html_injection_data_drift_and_invalid_scr
 
 
 def test_public_hub_publishes_every_current_independently_versioned_family_route() -> None:
-    document = _document(HUB)
-    links = [
-        item
-        for item in document.links
-        if "primary-action" in item.get("class", "").split()
-    ]
-    family_links = {
-        urlsplit(item["href"]).path.strip("/"): item
-        for item in links
-        if urlsplit(item["href"]).path.strip("/") != "grand-campaign"
-    }
     known_routes = (
         set(FLAGSHIP_ROUTES)
         | set(HISTORIC_ROUTES)
@@ -625,16 +731,107 @@ def test_public_hub_publishes_every_current_independently_versioned_family_route
         manifest = json.loads((package / "manifest.json").read_bytes())
         assert manifest["alpha_edition_version"] == CURRENT_ALPHA_VERSION
         assert manifest.get("catalog_sha256", manifest.get("alpha_catalog_sha256")) == _catalog_digest()
-        manifest_routes.update(family["slug"] for family in manifest["families"])
+        family_routes = [family["slug"] for family in manifest["families"]]
+        assert len(family_routes) == len(set(family_routes))
+        assert not manifest_routes.intersection(family_routes)
+        manifest_routes.update(family_routes)
     assert known_routes == set(FLAGSHIP_ROUTES) | manifest_routes
-    assert set(family_links) == set(FLAGSHIP_ROUTES) | manifest_routes
-    assert len(family_links) == 44
-    assert all(_revision(item["href"]) == CURRENT_REVISION for item in family_links.values())
+    assert len(known_routes) == 44
+    _assert_public_hub_routes(_document(HUB), known_routes, _published_research_hub_routes())
 
-    atlas = next(
-        item for item in links if urlsplit(item["href"]).path.strip("/") == "grand-campaign"
-    )
-    assert _revision(atlas["href"]) == CURRENT_REVISION
+
+@pytest.mark.parametrize("mutation", (
+    "missing_alpha", "duplicate_alpha", "missing_research", "duplicate_research",
+    "missing_index", "duplicate_atlas", "local_only", "misclassified_alpha",
+    "wrong_revision", "external_origin", "duplicate_revision", "fragment",
+))
+def test_public_hub_route_inventory_rejects_unregistered_or_ambiguous_actions(mutation: str) -> None:
+    # A small syntax-only hub fixture exercises the same exact route checker;
+    # it is not a substitute for the real manifest/pin checks above.
+    alpha = {"quadratic-reciprocity"}
+    research = {"checkpoints": "ac7111ec14ff", "checkpoints/euler-units": "ac7111ec14ff"}
+    hrefs = [f"{route}/?v={revision}" for route, revision in {
+        **{route: CURRENT_REVISION for route in alpha | {"grand-campaign"}}, **research,
+    }.items()]
+    target = {
+        "missing_alpha": "quadratic-reciprocity", "duplicate_alpha": "quadratic-reciprocity",
+        "missing_research": "checkpoints/euler-units", "duplicate_research": "checkpoints/euler-units",
+        "missing_index": "checkpoints", "duplicate_atlas": "grand-campaign",
+    }.get(mutation, "checkpoints/euler-units")
+    original = next(href for href in hrefs if urlsplit(href).path == target + "/")
+    if mutation.startswith("missing_"):
+        hrefs.remove(original)
+    elif mutation.startswith("duplicate_") and mutation != "duplicate_revision":
+        hrefs.append(original)
+    elif mutation == "local_only":
+        hrefs.append(f"checkpoints/dirichlet-inverses/?v={CURRENT_REVISION}")
+    elif mutation == "misclassified_alpha":
+        research["quadratic-reciprocity"] = CURRENT_REVISION
+    else:
+        replacement = {
+            "wrong_revision": original.replace("ac7111ec14ff", "000000000000"),
+            "external_origin": "https://example.invalid/" + original,
+            "duplicate_revision": original + "&v=ac7111ec14ff",
+            "fragment": original + "#unchecked",
+        }[mutation]
+        hrefs[hrefs.index(original)] = replacement
+    document = _Document()
+    document.feed("".join(f'<a class="primary-action" href="{href}">Open</a>' for href in hrefs))
+    with pytest.raises(AssertionError):
+        _assert_public_hub_routes(document, alpha, research)
+
+
+@pytest.mark.parametrize("package", PUBLIC_RESEARCH_PACKAGES, ids=lambda row: row["directory"])
+@pytest.mark.parametrize("mutation", (
+    "local_scope", "wrong_base", "wrong_parent", "extra_family", "missing_family",
+    "duplicate_checkpoint", "wrong_count", "alpha_admission", "stable_admission",
+    "service_exposure", "checked_use_count", "checkpoint_admission",
+))
+def test_public_research_hub_inventory_rejects_scope_count_and_authority_drift(package: dict, mutation: str) -> None:
+    directory = ROOT / "book/_static" / package["directory"]
+    manifest = json.loads(_pinned_publication_bytes(directory / "manifest.json", package["manifest"]))
+    inventory = json.loads(_pinned_publication_bytes(directory / "checkpoints.json", manifest["files"]["checkpoints.json"]))
+    if mutation == "local_scope":
+        inventory["publication_scope"] = "local_non_admitting_checkpoint"
+    elif mutation == "wrong_base":
+        inventory["public_base_path"] = "/book/_static/local-only/"
+    elif mutation == "wrong_parent":
+        inventory["parent"]["catalog_sha256"] = "0" * 64
+    elif mutation == "extra_family":
+        inventory["families"]["dirichlet-inverses"] = 21
+    elif mutation == "missing_family":
+        inventory["families"].pop(next(iter(inventory["families"])))
+    elif mutation == "duplicate_checkpoint":
+        inventory["checkpoints"].append(inventory["checkpoints"][0])
+    elif mutation == "wrong_count":
+        inventory["checkpoints"][0][package["count_key"]] += 1
+    elif mutation == "checkpoint_admission":
+        inventory["checkpoints"][0]["admitted_to_alpha"] = True
+    else:
+        key, value = {
+            "alpha_admission": ("alpha_admission_performed", True),
+            "stable_admission": ("stable_admission_performed", True),
+            "service_exposure": ("on_demand_alpha_lean_service_exposes_frontier", True),
+            "checked_use_count": ("alpha_checked_use_node_count", 1),
+        }[mutation]
+        inventory[key] = value
+    # This separately tests semantic rejection even before considering that a
+    # changed inventory could not match the pinned delivery manifest.
+    with pytest.raises(AssertionError):
+        _assert_research_publication_inventory(package, manifest, inventory)
+
+
+@pytest.mark.parametrize("member", ("manifest.json", "checkpoints.json", "index.html"))
+def test_public_research_hub_requires_literal_pinned_delivery_bytes(tmp_path: Path, member: str) -> None:
+    package = PUBLIC_RESEARCH_PACKAGES[0]
+    directory = ROOT / "book/_static" / package["directory"]
+    manifest = json.loads(_pinned_publication_bytes(directory / "manifest.json", package["manifest"]))
+    expected = package["manifest"] if member == "manifest.json" else manifest["files"][member]
+    payload = _pinned_publication_bytes(directory / member, expected)
+    altered = tmp_path / member
+    altered.write_bytes(bytes([payload[0] ^ 1]) + payload[1:])
+    with pytest.raises(AssertionError):
+        _pinned_publication_bytes(altered, expected)
 
 
 def test_public_hub_truthfully_identifies_the_current_sealed_release() -> None:
