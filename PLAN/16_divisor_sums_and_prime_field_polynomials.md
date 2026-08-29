@@ -154,3 +154,17 @@ remain untouched. No commit or push was performed.
 Full G007 and G091 therefore remain open. Publication and Alpha promotion are
 separate later actions; any catalog-capacity work must preserve the existing
 limits and complete evidence rather than silently discarding or enlarging it.
+
+## Subsequent authorized publication: 2026-08-29
+
+The user's next request explicitly authorized commits and deployment. The
+126-theorem checkpoint was committed and pushed as `4fc164a8`; its separate
+public presentation and staging were committed and pushed as `122feea4`.
+All three [public chapters](https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/checkpoints/lower-tier/)
+are now live with the canonical design and exact proof/definition evidence.
+The [deployment receipt](../research/arithmetic-library/lower-tier-publication-receipt-2026-08-29.md)
+records 280 focused tests, unchanged historical snapshots, zero differences in
+the final remote checksum comparison, and 908 exact TLS-verified HTTPS objects.
+No Alpha/Stable admission or Peano production deployment was performed.
+Subsequent proof implementation is separately scoped and verified, not merged
+into this immutable mathematical/public checkpoint.

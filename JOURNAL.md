@@ -5883,3 +5883,27 @@ Hydra worktree modification, gateway/mailbox change or worker restart.
 Full G007 and G091 remain open; the next steps are actual finite Fubini,
 divisor cancellation and convolution, followed by polynomial division and
 the irreducible-polynomial/extension-field constructions.
+
+### 2026-08-29 — 126-proof checkpoint committed, pushed and deployed
+
+The subsequent explicit publication request was completed. Commit `4fc164a8`
+freezes the 126 new mathematical results; `122feea4` publishes their separate
+373-file canonical presentation at `/proofs/checkpoints/lower-tier/`. The old
+495-file public snapshot remains literal. Both checkpoint generations are
+linked from the library and from a navigation-only overlay on the Alpha atlas.
+
+Fresh original-HA and independently compiled Lean checks passed, together with
+280 focused publication/staging/JavaScript/transport tests. Complete staging
+has 10,440 files and 537,177,611 bytes. All 22,631 local references in the 338
+new pages resolve. The proof-only upload transferred 373 new files and the
+two revised entrances, with no deletions; the final recursive remote checksum
+comparison had no differences. All 908 TLS-verified HTTPS objects, totaling
+50,737,154 bytes, matched staging. The
+[deployment receipt](research/arithmetic-library/lower-tier-publication-receipt-2026-08-29.md)
+records exact pins, tests, the unavailable visual browser, and the native
+system-trust HTTPS check after Python correctly rejected its missing-CA setup.
+
+Alpha v30, Stable 432, all proof/resource limits, both Peano production
+channels, cache headers and the Lean gateway/mailbox/worker remain unchanged.
+Further proofs are being implemented in an isolated continuation worktree;
+they are not silently included in this published 126-theorem checkpoint.

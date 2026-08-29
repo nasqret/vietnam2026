@@ -16,6 +16,7 @@ import json
 from pathlib import Path, PurePosixPath
 import posixpath
 import ssl
+import subprocess
 from time import monotonic
 from urllib.parse import quote, unquote, urlsplit
 from urllib.request import Request, urlopen
@@ -138,7 +139,9 @@ def staged(root: Path):
     return report, payloads
 
 
-def live(payloads: dict[str, bytes]):
+def live(payloads: dict[str, bytes], *, transport="urllib"):
+    if transport not in {"urllib", "curl"}:
+        raise ValueError("unknown TLS-verifying transport")
     context = ssl.create_default_context()
     deadline = monotonic() + 90
     def fetch(item):
@@ -147,11 +150,26 @@ def live(payloads: dict[str, bytes]):
         if remaining <= 0:
             raise TimeoutError("HTTPS audit exceeded its 90-second request window")
         url = ORIGIN + "/proofs/" + quote(name, safe="/") + "?v=ac7111ec14ff"
-        request = Request(url, headers={"User-Agent": "Peano-proof-delivery-check/1", "Accept-Encoding": "identity"})
-        with urlopen(request, context=context, timeout=min(25, remaining)) as response:
-            if response.status != 200 or response.geturl() != url:
+        if transport == "curl":
+            # On macOS the ordinary system curl uses its native trusted roots;
+            # Python's separately installed OpenSSL may have no CA bundle.
+            # Neither transport disables certificate checks or follows redirects.
+            command = ["curl", "--proto", "=https", "--fail", "--silent", "--show-error",
+                       "--max-time", str(min(25, remaining)), "--max-filesize", str(len(expected) + 1),
+                       "--header", "Accept-Encoding: identity", "--user-agent", "Peano-proof-delivery-check/1",
+                       "--write-out", "\n%{http_code}\n%{url_effective}", url]
+            result = subprocess.run(command, capture_output=True, timeout=min(30, remaining + 2))
+            if result.returncode:
+                raise ValueError("TLS-verified curl request failed: " + name + ": " + result.stderr.decode(errors="replace")[:250])
+            actual, status, effective = result.stdout.rsplit(b"\n", 2)
+            if status != b"200" or effective != url.encode():
                 raise ValueError("unexpected HTTPS status or redirect: " + name)
-            actual = response.read(len(expected) + 1)
+        else:
+            request = Request(url, headers={"User-Agent": "Peano-proof-delivery-check/1", "Accept-Encoding": "identity"})
+            with urlopen(request, context=context, timeout=min(25, remaining)) as response:
+                if response.status != 200 or response.geturl() != url:
+                    raise ValueError("unexpected HTTPS status or redirect: " + name)
+                actual = response.read(len(expected) + 1)
         if actual != expected:
             raise ValueError("served bytes differ from exact staging: " + name)
         return len(actual)
@@ -159,17 +177,18 @@ def live(payloads: dict[str, bytes]):
     with ThreadPoolExecutor(max_workers=4) as executor:
         lengths = tuple(executor.map(fetch, sorted(payloads.items())))
     return {"https_objects_compared": len(lengths), "https_bytes_compared": sum(lengths),
-            "tls_certificate_verification": True, "differences": 0}
+            "tls_certificate_verification": True, "https_transport": transport, "differences": 0}
 
 
 def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT / "_deploy/proofs")
     parser.add_argument("--live", action="store_true")
+    parser.add_argument("--transport", choices=("urllib", "curl"), default="urllib")
     args = parser.parse_args(argv)
     report, payloads = staged(args.root)
     if args.live:
-        report.update(live(payloads))
+        report.update(live(payloads, transport=args.transport))
     print(json.dumps(report, sort_keys=True, indent=2))
     return 0
 
