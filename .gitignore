@@ -23,6 +23,8 @@ checkpoints/
 !book/_static/constructive-lower-tier-explorer/checkpoints/*.json
 !book/_static/constructive-lower-tier-publication/checkpoints/
 !book/_static/constructive-lower-tier-publication/checkpoints/*.json
+!book/_static/constructive-lower-continuation-explorer/checkpoints/
+!book/_static/constructive-lower-continuation-explorer/checkpoints/*.json
 logs/*.out
 logs/*.err
 

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0282 — DivisorComplementPrefix(n,b,c,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="divisor-involutions"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G007" href="../../../../grand-campaign/?view=goal&amp;focus=G007&amp;v=ac7111ec14ff">G007 milestone</a></nav>
+  <p class="pd-tag">ND0282</p><h1>DivisorComplementPrefix(n,b,c,l)</h1>
+  <p>An actual beta prefix records complementary-divisor outputs at every i&lt;l. For n&gt;0 such prefixes exist at every length; the prefix of length S n is proved a permutation.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ dvi_index_lowercontinuation. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(dvi_index_lowercontinuation,l)</a> → ∃ x. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,dvi_index_lowercontinuation,x)</a> ∧ <a class="pd-definition-ref" data-definition="ND0281" href="ND0281.html?v=ac7111ec14ff">DivisorComplement(n,dvi_index_lowercontinuation,x)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall dvi_index_lowercontinuation. (exists pvs_gap_lowercontinuationdomain. pvs_gap_lowercontinuationdomain + S (dvi_index_lowercontinuation) = ((l))) -&gt; exists dvi_value_lowercontinuation. ((((exists ff_h_pvs_lowercontinuationentry. ff_h_pvs_lowercontinuationentry + S (dvi_value_lowercontinuation) = S ((S (dvi_index_lowercontinuation)) * (c))) /\ exists ff_q_pvs_lowercontinuationentry. (b) = ff_q_pvs_lowercontinuationentry * S ((S (dvi_index_lowercontinuation)) * (c)) + (dvi_value_lowercontinuation))) /\ ((((~((dvi_index_lowercontinuation)=0)) /\ (((n))=(dvi_index_lowercontinuation)*(dvi_value_lowercontinuation)))) \/ ((((dvi_index_lowercontinuation)=0 \/ ~(exists pvs_factor_lowercontinuationgraphnondivisor. ((n)) = (dvi_index_lowercontinuation) * pvs_factor_lowercontinuationgraphnondivisor)) /\ ((dvi_value_lowercontinuation)=(dvi_index_lowercontinuation))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0281.html?v=ac7111ec14ff">DivisorComplement(n,d,q)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DI0007.html?v=ac7111ec14ff">DI0007 · divisor_complement_prefix_exists</a><a class="pd-chip" href="../tag/DI0008.html?v=ac7111ec14ff">DI0008 · divisor_complement_prefix_lookup</a><a class="pd-chip" href="../tag/DI0009.html?v=ac7111ec14ff">DI0009 · divisor_complement_prefix_permutation</a><a class="pd-chip" href="../tag/DI000A.html?v=ac7111ec14ff">DI000A · positive_divisor_involution_exists</a><a class="pd-chip" href="../tag/DI000B.html?v=ac7111ec14ff">DI000B · divisor_complement_prefix_involution</a><a class="pd-chip" href="../tag/DI000C.html?v=ac7111ec14ff">DI000C · divisor_complement_prefix_positive_quotient</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>4</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0282.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>0ece50ae6b22768e1a79419f83f743483f26bbdab8de51aa854498dba5eb2c4f</code></dd>
+</dl></aside></main></body>
+</html>

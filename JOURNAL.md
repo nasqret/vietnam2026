@@ -5907,3 +5907,55 @@ Alpha v30, Stable 432, all proof/resource limits, both Peano production
 channels, cache headers and the Lean gateway/mailbox/worker remain unchanged.
 Further proofs are being implemented in an isolated continuation worktree;
 they are not silently included in this published 126-theorem checkpoint.
+
+### 2026-08-29 — 125 subsequent proofs: cancellation, finite Fubini and products
+
+The next [saved plan](PLAN/17_rectangular_sums_divisor_involutions_polynomial_products.md)
+has 125 genuinely new statements in six ordinary-HA modules: 12 complementary
+divisor/involution results, 28 Möbius divisor-cancellation results, 32 actual
+signed slice/row-sum/Fubini results and 53 prime-field polynomial-convolution
+and represented-degree results. All statements are AST-distinct from the
+3,518 preceding rows and one another. The previous 296 research results
+remain separate actual proof support, not assumptions or recounted additions.
+
+Four complete bundles passed the unchanged original HA checker and the
+pinned independently compiled Lean checker. Twelve principal theorems also
+compiled to ordinary empty-context certificates, followed by exact
+statement/specification and original-kernel rechecks. Möbius cancellation
+includes the unit boundary and permits arbitrary input-table F(0); affine
+finite Fubini includes zero dimensions and strides. Polynomial degree
+addition retains explicit representation lengths and nonzero leading terms.
+The [verification receipt](research/arithmetic-library/lower-continuation-verification-receipt-2026-08-29.md)
+records exact artifacts, principal certificates and support partitions.
+The final five-window audit also passed, with maximum observed RSS
+516,931,584 bytes and deterministic audit SHA-256
+`c665db9d1edb12670c1719c00c645eb5eec388e381fb87d9cf4723cbc99314ee`.
+All 2,040 distinct focused continuation tests passed. Separate fresh workers
+retain the original proof CPU/wall/memory bounds; their controller has only
+a derived multi-window scheduling deadline. Saved reports are not authority.
+The final Make audit gate repeated every check and matched the saved bytes,
+with peak RSS 504,872,960 bytes across its fresh bounded processes.
+
+Nineteen new hygienic definitions, ND0281–ND0299, extend the registry to
+356 definitions and 742 genuine expansion arrows, preserving all earlier
+337 identities and graph records. Existing signed operations, beta tables,
+finite sums, field multiplication and equality relations are reused. No
+Python helper import is turned into a fictitious proof-dependency arrow.
+
+The [four local explorers](book/_static/constructive-lower-continuation-explorer/index.html)
+preserve the canonical Quadratic Reciprocity design and literal assets.
+Their 395 files include 358 HTML pages; manifest SHA-256 is
+`98d78a16815e40281ebf9ef0f4b8b9d183109e5c25960576189e3f5d0c0735a3`.
+All 61 explorer regressions passed, including fresh full HA/Lean checks,
+exact statements/tactics/local propositions, three edge kinds, historical
+links and actual canonical JavaScript with getter-only SVG hrefs.
+
+Local browser metadata now covers 497 Python files and 519 manifest entries,
+with `a-e367fe077425` and build `2026-08-29a`. Neither this new application
+nor the new 125-proof explorer is included in the preceding website upload.
+Alpha remains v30 with 3,222 checked-use entries and Stable remains 432.
+All kernel/resource/catalog/service limits, production cache headers, Peano
+channels and running Lean services remain unchanged; unrelated Hydra work
+is untouched. Full G007 inversion and G091 prime-power fields remain open;
+the next frontier is actual Dirichlet convolution and inversion, followed
+by polynomial evaluation compatibility, division/gcd and irreducibles.

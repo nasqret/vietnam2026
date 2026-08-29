@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0148 — PermutationPrefix(b,c,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="divisor-involutions"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G007" href="../../../../grand-campaign/?view=goal&amp;focus=G007&amp;v=ac7111ec14ff">G007 milestone</a></nav>
+  <p class="pd-tag">ND0148</p><h1>PermutationPrefix(b,c,l)</h1>
+  <p>An actual beta-coded bijection of the finite index interval [0,l), including all bounds, injectivity, and surjectivity.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="PD0024" href="PD0024.html?v=ac7111ec14ff">BoundedPrefix(b,c,l)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0025" href="PD0025.html?v=ac7111ec14ff">InjectivePrefix(b,c,l)</a> ∧ <a class="pd-definition-ref" data-definition="PD0026" href="PD0026.html?v=ac7111ec14ff">SurjectivePrefix(b,c,l)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((forall fp_i_lowerlayer_bounded. (exists fp_gap_lowerlayer_bounded_index. fp_gap_lowerlayer_bounded_index + S fp_i_lowerlayer_bounded = l) -&gt; exists fp_value_lowerlayer_bounded. ((((exists ff_h_lowerlayer_bounded_entry. ff_h_lowerlayer_bounded_entry + S (fp_value_lowerlayer_bounded) = S ((S (fp_i_lowerlayer_bounded)) * c)) /\ exists ff_q_lowerlayer_bounded_entry. b = ff_q_lowerlayer_bounded_entry * S ((S (fp_i_lowerlayer_bounded)) * c) + (fp_value_lowerlayer_bounded))) /\ (exists fp_gap_lowerlayer_bounded_value. fp_gap_lowerlayer_bounded_value + S fp_value_lowerlayer_bounded = l))) /\ ((forall fp_i_lowerlayer_injective fp_j_lowerlayer_injective fp_value_lowerlayer_injective. (exists fp_gap_lowerlayer_injective_i. fp_gap_lowerlayer_injective_i + S fp_i_lowerlayer_injective = l) -&gt; (exists fp_gap_lowerlayer_injective_j. fp_gap_lowerlayer_injective_j + S fp_j_lowerlayer_injective = l) -&gt; (((exists ff_h_lowerlayer_injective_left. ff_h_lowerlayer_injective_left + S (fp_value_lowerlayer_injective) = S ((S (fp_i_lowerlayer_injective)) * c)) /\ exists ff_q_lowerlayer_injective_left. b = ff_q_lowerlayer_injective_left * S ((S (fp_i_lowerlayer_injective)) * c) + (fp_value_lowerlayer_injective))) -&gt; (((exists ff_h_lowerlayer_injective_right. ff_h_lowerlayer_injective_right + S (fp_value_lowerlayer_injective) = S ((S (fp_j_lowerlayer_injective)) * c)) /\ exists ff_q_lowerlayer_injective_right. b = ff_q_lowerlayer_injective_right * S ((S (fp_j_lowerlayer_injective)) * c) + (fp_value_lowerlayer_injective))) -&gt; fp_i_lowerlayer_injective = fp_j_lowerlayer_injective) /\ (forall fp_value_lowerlayer_surjective. (exists fp_gap_lowerlayer_surjective_value. fp_gap_lowerlayer_surjective_value + S fp_value_lowerlayer_surjective = l) -&gt; exists fp_i_lowerlayer_surjective. ((exists fp_gap_lowerlayer_surjective_index. fp_gap_lowerlayer_surjective_index + S fp_i_lowerlayer_surjective = l) /\ (((exists ff_h_lowerlayer_surjective_entry. ff_h_lowerlayer_surjective_entry + S (fp_value_lowerlayer_surjective) = S ((S (fp_i_lowerlayer_surjective)) * c)) /\ exists ff_q_lowerlayer_surjective_entry. b = ff_q_lowerlayer_surjective_entry * S ((S (fp_i_lowerlayer_surjective)) * c) + (fp_value_lowerlayer_surjective)))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0024.html?v=ac7111ec14ff">BoundedPrefix(b,c,l)</a><a class="pd-chip" href="PD0025.html?v=ac7111ec14ff">InjectivePrefix(b,c,l)</a><a class="pd-chip" href="PD0026.html?v=ac7111ec14ff">SurjectivePrefix(b,c,l)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DI0009.html?v=ac7111ec14ff">DI0009 · divisor_complement_prefix_permutation</a><a class="pd-chip" href="../tag/DI000A.html?v=ac7111ec14ff">DI000A · positive_divisor_involution_exists</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>3</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0148.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>4145090a616c423da718870c305d9d2c207fc0111a74c2e543158ef031c699fb</code></dd>
+</dl></aside></main></body>
+</html>

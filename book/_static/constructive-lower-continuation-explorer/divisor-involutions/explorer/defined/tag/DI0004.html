@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>DI0004 — divisor_complement_positive_equation — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="divisor-involutions"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/DI0004.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=DI0004&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G007" href="../../../../grand-campaign/?view=goal&amp;focus=G007&amp;v=ac7111ec14ff">G007 milestone</a></nav>
+  <p class="pd-tag">DI0004</p><h1>divisor_complement_positive_equation</h1>
+  <p>At every genuine positive divisor the complement output satisfies n=d*q; the identity convention cannot supply that branch.</p><p class="pd-status">Local checkpoint: original HA and independently compiled Lean verified; not Alpha-enrolled, no Alpha checked-use authority; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">The complementary quotient is witnessed by n=d*q at positive divisors. The actual permutation covers indices 0 through n, with zero and nondivisors fixed. This is an involution foundation, not Möbius inversion; full G007 remains open.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ n. ∀ d. ∀ q. ¬d = 0 → <a class="pd-definition-ref" data-definition="PD0003" href="../definition/PD0003.html?v=ac7111ec14ff">Dvd(d,n)</a> → <a class="pd-definition-ref" data-definition="ND0281" href="../definition/ND0281.html?v=ac7111ec14ff">DivisorComplement(n,d,q)</a> → n = d · q</code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0281.html?v=ac7111ec14ff">DivisorComplement(n,d,q) · 1</a><a class="pd-chip" href="../definition/PD0003.html?v=ac7111ec14ff">Dvd(d,n) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall n d q. ~(d=0) -&gt; (exists pvs_factor_equation_divisor. (n) = (d) * pvs_factor_equation_divisor) -&gt; ((((~((d)=0)) /\ ((n)=(d)*(q)))) \/ ((((d)=0 \/ ~(exists pvs_factor_equation_graphnondivisor. (n) = (d) * pvs_factor_equation_graphnondivisor)) /\ ((q)=(d))))) -&gt; n=d*q</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 16 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="proof-line-0001" data-line="1"><a class="pd-line-number" href="#proof-line-0001">0001</a><code>intro n</code></li><li class="pd-proof-line" id="proof-line-0002" data-line="2"><a class="pd-line-number" href="#proof-line-0002">0002</a><code>intro d</code></li><li class="pd-proof-line" id="proof-line-0003" data-line="3"><a class="pd-line-number" href="#proof-line-0003">0003</a><code>intro q</code></li><li class="pd-proof-line" id="proof-line-0004" data-line="4"><a class="pd-line-number" href="#proof-line-0004">0004</a><code>intro hd</code></li><li class="pd-proof-line" id="proof-line-0005" data-line="5"><a class="pd-line-number" href="#proof-line-0005">0005</a><code>intro hdiv</code></li><li class="pd-proof-line" id="proof-line-0006" data-line="6"><a class="pd-line-number" href="#proof-line-0006">0006</a><code>intro hq</code></li><li class="pd-proof-line" id="proof-line-0007" data-line="7"><a class="pd-line-number" href="#proof-line-0007">0007</a><code>cases hq</code></li><li class="pd-proof-line" id="proof-line-0008" data-line="8"><a class="pd-line-number" href="#proof-line-0008">0008</a><code>cases hq_left</code></li><li class="pd-proof-line" id="proof-line-0009" data-line="9"><a class="pd-line-number" href="#proof-line-0009">0009</a><code>exact hq_left_right</code></li><li class="pd-proof-line" id="proof-line-0010" data-line="10"><a class="pd-line-number" href="#proof-line-0010">0010</a><code>cases hq_right</code></li><li class="pd-proof-line" id="proof-line-0011" data-line="11"><a class="pd-line-number" href="#proof-line-0011">0011</a><code>exfalso</code></li><li class="pd-proof-line" id="proof-line-0012" data-line="12"><a class="pd-line-number" href="#proof-line-0012">0012</a><code>cases hq_right_left</code></li><li class="pd-proof-line" id="proof-line-0013" data-line="13"><a class="pd-line-number" href="#proof-line-0013">0013</a><code>apply hd</code></li><li class="pd-proof-line" id="proof-line-0014" data-line="14"><a class="pd-line-number" href="#proof-line-0014">0014</a><code>exact hq_right_left_left</code></li><li class="pd-proof-line" id="proof-line-0015" data-line="15"><a class="pd-line-number" href="#proof-line-0015">0015</a><code>apply hq_right_left_right</code></li><li class="pd-proof-line" id="proof-line-0016" data-line="16"><a class="pd-line-number" href="#proof-line-0016">0016</a><code>exact hdiv</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Local original-HA + independent Lean checkpoint only</dd><dt>Alpha admission / checked use</dt><dd>none</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>130 / 140</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 140 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>34 / 15</dd>
+      <dt>Statement SHA-256</dt><dd><code>c729538ec1d70e5012777a36b646866864f4bd7858461c507465e471cc3a15f7</code></dd>
+      <dt>Script SHA-256</dt><dd><code>51a4dae984e722fafcdf766c7b7262954e677a8e481bd35985bba1c02a9c6d00</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>deffb1e384e64cd2cb56b4c1603a0fdde7578cec15e80618f5b06197fabf6fed</code></dd>
+      <dt>Exact source module</dt><dd><a href="../../../../sources/divisor_involution_candidate.py?v=ac7111ec14ff"><code>peano_lab.library.divisor_involution_candidate</code></a></dd>
+      <dt>Literal bundle and checkpoint receipt</dt><dd><a href="../../../checkpoint.html?v=ac7111ec14ff#theorem-divisor_complement_positive_equation">Inspect exact evidence</a></dd></dl>
+</aside></main></body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0283 — PrimeFactorToggle(p,d,e) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="mobius-divisor-cancellation"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G007" href="../../../../grand-campaign/?view=goal&amp;focus=G007&amp;v=ac7111ec14ff">G007 milestone</a></nav>
+  <p class="pd-tag">ND0283</p><h1>PrimeFactorToggle(p,d,e)</h1>
+  <p>Add a fresh factor p, remove a single factor p with p-free quotient, or fix a multiple of p squared. The graph contains no Möbius sign or cancellation hypothesis.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>¬<a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=ac7111ec14ff">Dvd(p,d)</a> ∧ e = p · d ∨ (d = p · e ∧ ¬<a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=ac7111ec14ff">Dvd(p,e)</a> ∨ <a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=ac7111ec14ff">Dvd(p · p,d)</a> ∧ e = d)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>(((~(exists pvs_factor_lowercontinuationfresh_input. ((d)) = ((p)) * pvs_factor_lowercontinuationfresh_input)) /\ (((e))=((p))*((d))))) \/ ((((((d))=((p))*((e))) /\ (~(exists pvs_factor_lowercontinuationfresh_output. ((e)) = ((p)) * pvs_factor_lowercontinuationfresh_output)))) \/ (((exists pvs_factor_lowercontinuationsquare. ((d)) = (((p))*((p))) * pvs_factor_lowercontinuationsquare) /\ (((e))=((d))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0003.html?v=ac7111ec14ff">Dvd(d,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0284.html?v=ac7111ec14ff">DivisorPrimeToggle(n,p,d,e)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/MC0003.html?v=ac7111ec14ff">MC0003 · prime_factor_toggle_exists</a><a class="pd-chip" href="../tag/MC0004.html?v=ac7111ec14ff">MC0004 · prime_factor_toggle_functional</a><a class="pd-chip" href="../tag/MC0005.html?v=ac7111ec14ff">MC0005 · prime_factor_toggle_symmetric</a><a class="pd-chip" href="../tag/MC0006.html?v=ac7111ec14ff">MC0006 · prime_factor_toggle_positive</a><a class="pd-chip" href="../tag/MC0007.html?v=ac7111ec14ff">MC0007 · prime_factor_toggle_preserves_divisor</a><a class="pd-chip" href="../tag/MC0008.html?v=ac7111ec14ff">MC0008 · divisor_prime_toggle_exists</a><a class="pd-chip" href="../tag/MC0010.html?v=ac7111ec14ff">MC0010 · mobius_prime_factor_toggle_negates</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>3</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>1</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0283.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>afff450c3860baf0d0857a1e5e1c8b62ac1fbb339c7b45b9833e69b0b0a5a909</code></dd>
+</dl></aside></main></body>
+</html>

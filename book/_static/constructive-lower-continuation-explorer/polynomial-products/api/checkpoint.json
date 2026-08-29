@@ -1,0 +1,97 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_owned_roots": [
+    "polynomial_zero_extended_entry_inside",
+    "polynomial_diagonal_prefix_recoding",
+    "prime_field_polynomial_convolution_transport",
+    "prime_field_polynomial_convolution_exists_unique",
+    "prime_field_polynomial_convolution_empty",
+    "prime_field_polynomial_convolution_zero_left",
+    "prime_field_polynomial_convolution_zero_right",
+    "prime_field_polynomial_convolution_outside_zero",
+    "prime_field_polynomial_represented_degree_leading_nonzero",
+    "prime_field_polynomial_represented_degree_transport",
+    "prime_field_polynomial_represented_degree_excludes_zero",
+    "prime_field_polynomial_monic_degree_examples",
+    "prime_field_polynomial_convolution_represented_degree_exists"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 11604,
+    "bytes": 745307,
+    "dependency_edges_including_packaging": 503,
+    "independent_lean_checked": true,
+    "nodes_including_packaging_root": 210,
+    "original_ha_checked": true,
+    "packaging_root_id": 209,
+    "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+    "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+  },
+  "complete_non_alpha_specs_sha256": "109d0194057f4b216d9f2717a475fa22d3c39c882a6d724cf0b1d1957b6d0103",
+  "membership": "local_non_admitting_checkpoint",
+  "new_specs_sha256": "4ee9ff43d58fac794947ac67349efd966b78472b2f9777c16fe222e5ca194eaa",
+  "new_theorem_count": 53,
+  "new_theorem_dependency_edges": 123,
+  "new_theorem_tactic_commands": 2496,
+  "ordered_new_names_sha256": "67a5ca213e79b42852e3579d12c012b4e44f5b605a029e77f3ebb9f63768ecf5",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "prime_field_polynomial_convolution_exists_unique",
+      "node_id": 196,
+      "statement_sha256": "68befd01e16fc6522f2c848ddaac2bef81ead256b41bf6b03fbff132b7693410"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "prime_field_polynomial_convolution_outside_zero",
+      "node_id": 200,
+      "statement_sha256": "724cc30193c104f03c1777ace6bec5f40681be6436e7da9f165d44d10cb97501"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "prime_field_polynomial_convolution_represented_degree_exists",
+      "node_id": 208,
+      "statement_sha256": "8ff4406ec7462fc8e97a47932550abde9c428392cda01a1c86fe2dfd082fc51a"
+    }
+  ],
+  "rfc": "research/arithmetic-library/prime-field-polynomial-convolution-rfc-v1.md",
+  "slug": "polynomial-products",
+  "sources": [
+    {
+      "factory": "make_prime_field_polynomial_convolution_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_convolution_candidate.py",
+      "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+    },
+    {
+      "factory": "make_prime_field_polynomial_degree_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_degree_candidate.py",
+      "sha256": "3419cefca1f8e4b130a7c8935218815153eaf9865fe1eeed89118ced8bf339e5"
+    }
+  ],
+  "stable_member": false,
+  "support": {
+    "alpha_v30_count": 144,
+    "counted_as_new_owned_theorems": false,
+    "current_cross_track_count": 0,
+    "current_cross_track_theorems": [],
+    "prior_bottom_layer_count": 10,
+    "prior_bottom_layer_theorems": [
+      "prime_field_mod_of_equal",
+      "prime_field_zero_below_prime",
+      "prime_field_residue_reflexive",
+      "prime_field_residue_input_equal",
+      "prime_field_residue_bounded_value",
+      "prime_field_multiply_zero_right",
+      "prime_field_inverse_exists",
+      "prime_field_nonzero_coprime",
+      "prime_field_multiply_cancel_nonzero_left",
+      "prime_field_no_zero_divisors"
+    ],
+    "prior_lower_tier_count": 2,
+    "prior_lower_tier_theorems": [
+      "prime_field_polynomial_repeat_coefficients",
+      "prime_field_polynomial_repeat_exists"
+    ],
+    "published_non_admitted_count": 12
+  }
+}

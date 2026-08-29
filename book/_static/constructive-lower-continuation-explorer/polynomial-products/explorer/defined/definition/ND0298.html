@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0298 — FpRepresentedDegree(p,b,c,L,d) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="polynomial-products"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">ND0298</p><h1>FpRepresentedDegree(p,b,c,L,d)</h1>
+  <p>A length-annotated canonical coefficient prefix has L=S d and an actually decoded nonzero leading coefficient. This does not assign degree to zero or normalize arbitrary leading-zero representations.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>L = S d ∧ (<a class="pd-definition-ref" data-definition="ND0262" href="ND0262.html?v=ac7111ec14ff">BetaPrefixInto(b,c,L,p)</a> ∧ (∃ x. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,0,x)</a> ∧ ¬x = 0))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((((L))=S ((d))) /\ (((forall fom_index_pfp_lowercontinuationcoefficients. (exists fom_gap_pfp_lowercontinuationcoefficients_index_bound. fom_gap_pfp_lowercontinuationcoefficients_index_bound + S (fom_index_pfp_lowercontinuationcoefficients) = (L)) -&gt; exists fom_value_pfp_lowercontinuationcoefficients. ((((exists fom_beta_height_pfp_lowercontinuationcoefficients_entry. fom_beta_height_pfp_lowercontinuationcoefficients_entry + S (fom_value_pfp_lowercontinuationcoefficients) = S ((S (fom_index_pfp_lowercontinuationcoefficients)) * (c))) /\ exists fom_beta_quotient_pfp_lowercontinuationcoefficients_entry. (b) = fom_beta_quotient_pfp_lowercontinuationcoefficients_entry * S ((S (fom_index_pfp_lowercontinuationcoefficients)) * (c)) + (fom_value_pfp_lowercontinuationcoefficients))) /\ (exists fom_gap_pfp_lowercontinuationcoefficients_value_bound. fom_gap_pfp_lowercontinuationcoefficients_value_bound + S (fom_value_pfp_lowercontinuationcoefficients) = (p)))) /\ ((exists pfd_leading_lowercontinuation. ((((exists ff_h_pfp_lowercontinuationentry. ff_h_pfp_lowercontinuationentry + S (pfd_leading_lowercontinuation) = S ((S (0)) * (c))) /\ exists ff_q_pfp_lowercontinuationentry. (b) = ff_q_pfp_lowercontinuationentry * S ((S (0)) * (c)) + (pfd_leading_lowercontinuation))) /\ ((~(pfd_leading_lowercontinuation=0)))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0262.html?v=ac7111ec14ff">BetaPrefixInto(b,c,l,B)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PC002F.html?v=ac7111ec14ff">PC002F · prime_field_polynomial_represented_degree_leading_nonzero</a><a class="pd-chip" href="../tag/PC0030.html?v=ac7111ec14ff">PC0030 · prime_field_polynomial_represented_degree_transport</a><a class="pd-chip" href="../tag/PC0031.html?v=ac7111ec14ff">PC0031 · prime_field_polynomial_represented_degree_excludes_zero</a><a class="pd-chip" href="../tag/PC0032.html?v=ac7111ec14ff">PC0032 · prime_field_polynomial_monic_degree_examples</a><a class="pd-chip" href="../tag/PC0034.html?v=ac7111ec14ff">PC0034 · prime_field_polynomial_convolution_represented_degree</a><a class="pd-chip" href="../tag/PC0035.html?v=ac7111ec14ff">PC0035 · prime_field_polynomial_convolution_represented_degree_exists</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>5</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>3</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0298.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>e77adce5c9368d8fcc510417f0dfb9d1872f2e7e7a3e651fa458d981a7b50ae6</code></dd>
+</dl></aside></main></body>
+</html>

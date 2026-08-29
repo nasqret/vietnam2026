@@ -1,0 +1,105 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_owned_roots": [
+    "signed_rectangular_slice_exists_extensionally_unique",
+    "signed_rectangular_slice_sum_empty_exists",
+    "signed_rectangular_slice_sum_successor_decompose",
+    "signed_rectangular_slice_sum_exists_unique",
+    "signed_rectangular_row_sums_exists_extensionally_unique",
+    "signed_rectangular_sum_exists_unique",
+    "signed_rectangular_row_major_fubini"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 12534,
+    "bytes": 2151122,
+    "dependency_edges_including_packaging": 551,
+    "independent_lean_checked": true,
+    "nodes_including_packaging_root": 217,
+    "original_ha_checked": true,
+    "packaging_root_id": 216,
+    "path": "research/arithmetic-library/artifacts/lower-continuation-rectangular-sums-proof-bundle-v1.json",
+    "sha256": "a6f62d8a0c89431b3596a0d15278643da6981afe166107cdc6aefa5433485395"
+  },
+  "complete_non_alpha_specs_sha256": "b3268079729a43f3edb77867b94feeb4918c6a40caa90a6b5ee7dc3ae36c7a16",
+  "membership": "local_non_admitting_checkpoint",
+  "new_specs_sha256": "3f774e07d82400c19850521fae1779bc363aff5e56bb32cbc1042a5d3dd4403d",
+  "new_theorem_count": 32,
+  "new_theorem_dependency_edges": 92,
+  "new_theorem_tactic_commands": 1393,
+  "ordered_new_names_sha256": "83e70a5b157fded2c2ec78b7c2dbc57779b622ace39eff51c6e09d34c12024c8",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "signed_rectangular_slice_exists_extensionally_unique",
+      "node_id": 190,
+      "statement_sha256": "d0fbe7f70725333cc208f00e860d04886fafdc5fef4a36bc6e811dd88391ddd4"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "signed_rectangular_fubini",
+      "node_id": 213,
+      "statement_sha256": "74787482d51c759b2472790323be3c54494bbf97fab08de48afce458898fd14d"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "signed_rectangular_row_major_fubini",
+      "node_id": 215,
+      "statement_sha256": "df286640d573e43c4ce8fc84ed9a405eb4568577f4f683001adb7ae8324ff3ec"
+    }
+  ],
+  "rfc": "research/arithmetic-library/signed-rectangular-sums-rfc-v1.md",
+  "slug": "rectangular-sums",
+  "sources": [
+    {
+      "factory": "make_signed_rectangular_slice_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/signed_rectangular_slice_candidate.py",
+      "sha256": "d676600c931936ff00996209c7d744c269427eaf08611fb625e471f608861e5e"
+    },
+    {
+      "factory": "make_signed_rectangular_sums_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/signed_rectangular_sums_candidate.py",
+      "sha256": "0ce96c5155bb7bf47f5ae2b8151631bd981263f7d05c25f6ec8b3cd365d7a26e"
+    }
+  ],
+  "stable_member": false,
+  "support": {
+    "alpha_v30_count": 158,
+    "counted_as_new_owned_theorems": false,
+    "current_cross_track_count": 0,
+    "current_cross_track_theorems": [],
+    "prior_bottom_layer_count": 14,
+    "prior_bottom_layer_theorems": [
+      "divisor_signed_table_at_from_components",
+      "divisor_signed_table_at_to_components",
+      "divisor_signed_table_from_components",
+      "divisor_signed_table_components",
+      "divisor_signed_table_lookup",
+      "divisor_signed_table_at_functional",
+      "divisor_signed_sum_from_components",
+      "divisor_signed_sum_exists_from_components",
+      "divisor_signed_sum_empty_value",
+      "divisor_natural_sum_successor_intro",
+      "divisor_signed_table_equality_component_balance",
+      "divisor_signed_sum_extensional",
+      "divisor_signed_sum_successor_intro",
+      "divisor_signed_sum_successor_decompose"
+    ],
+    "prior_lower_tier_count": 12,
+    "prior_lower_tier_theorems": [
+      "arithmetic_signed_table_component_prefix_preserved",
+      "arithmetic_signed_table_equal_entry_transport",
+      "arithmetic_signed_table_extend_at",
+      "arithmetic_signed_sum_exists",
+      "arithmetic_signed_sum_append_transport",
+      "signed_table_domain_resize",
+      "signed_table_lookup_any",
+      "signed_table_add_lookup",
+      "signed_table_add_restrict",
+      "signed_table_add_reassociate",
+      "signed_table_add_medial",
+      "signed_prefix_sum_pointwise_add"
+    ],
+    "published_non_admitted_count": 26
+  }
+}

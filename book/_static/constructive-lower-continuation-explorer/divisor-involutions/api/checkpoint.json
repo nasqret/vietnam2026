@@ -1,0 +1,70 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_owned_roots": [
+    "positive_divisor_quotient_exists_unique",
+    "divisor_complement_positive_equation",
+    "positive_divisor_involution_exists",
+    "divisor_complement_prefix_involution",
+    "divisor_complement_prefix_positive_quotient"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 7711,
+    "bytes": 292245,
+    "dependency_edges_including_packaging": 355,
+    "independent_lean_checked": true,
+    "nodes_including_packaging_root": 140,
+    "original_ha_checked": true,
+    "packaging_root_id": 139,
+    "path": "research/arithmetic-library/artifacts/lower-continuation-divisor-involutions-proof-bundle-v1.json",
+    "sha256": "deffb1e384e64cd2cb56b4c1603a0fdde7578cec15e80618f5b06197fabf6fed"
+  },
+  "complete_non_alpha_specs_sha256": "c15344f6e8ca8335116cea82dec586421c75f66ff0e9badb06858fda12aee0c6",
+  "membership": "local_non_admitting_checkpoint",
+  "new_specs_sha256": "c15344f6e8ca8335116cea82dec586421c75f66ff0e9badb06858fda12aee0c6",
+  "new_theorem_count": 12,
+  "new_theorem_dependency_edges": 34,
+  "new_theorem_tactic_commands": 480,
+  "ordered_new_names_sha256": "078bb720ba7af1a3bf09c30b252c4f8c8b4bbcdc7494d40f43d6235348abd0ee",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "positive_divisor_quotient_exists_unique",
+      "node_id": 127,
+      "statement_sha256": "a02a6f2e061e89191c7e4dff86b60611ebf035717468a17707bf5537486da384"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "positive_divisor_involution_exists",
+      "node_id": 136,
+      "statement_sha256": "7fff4b15206b4bc27488134518c5e8231aee964a484e515576a6426be170719d"
+    },
+    {
+      "complete_ordinary_ha_checked": false,
+      "name": "divisor_complement_prefix_involution",
+      "node_id": 137,
+      "statement_sha256": "24bdefde49ebf80220bf5c974be3261d250dc98472d1228f6f3484492a9f34c1"
+    }
+  ],
+  "rfc": "research/arithmetic-library/divisor-involution-rfc-v1.md",
+  "slug": "divisor-involutions",
+  "sources": [
+    {
+      "factory": "make_divisor_involution_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/divisor_involution_candidate.py",
+      "sha256": "67297015bcfbeb16b9090f537a2771d5c3cbfa4000d5c83c90cd0ba16cb15be7"
+    }
+  ],
+  "stable_member": false,
+  "support": {
+    "alpha_v30_count": 127,
+    "counted_as_new_owned_theorems": false,
+    "current_cross_track_count": 0,
+    "current_cross_track_theorems": [],
+    "prior_bottom_layer_count": 0,
+    "prior_bottom_layer_theorems": [],
+    "prior_lower_tier_count": 0,
+    "prior_lower_tier_theorems": [],
+    "published_non_admitted_count": 0
+  }
+}

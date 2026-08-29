@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PC0003 — polynomial_zero_extended_entry_inside — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="polynomial-products"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/PC0003.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=PC0003&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">PC0003</p><h1>polynomial_zero_extended_entry_inside</h1>
+  <p>Inside the finite input domain the padded lookup is exactly the original beta entry.</p><p class="pd-status">Local checkpoint: original HA and independently compiled Lean verified; not Alpha-enrolled, no Alpha checked-use authority; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">Coefficients are highest-degree-first and every representation carries its explicit length. Empty inputs give an empty product; zero extension does not constrain unrelated beta entries past the prefix. Represented degree requires a decoded nonzero leading coefficient and does not assign a degree to zero. This checkpoint claims coefficient convolution and degree addition, not polynomial division, gcd, irreducible search, an evaluation-product identity, or general prime-power extension fields; full G091 remains open.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ b. ∀ c. ∀ L. ∀ i. ∀ a. <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=ac7111ec14ff">Lt(i,L)</a> → <a class="pd-definition-ref" data-definition="ND0291" href="../definition/ND0291.html?v=ac7111ec14ff">BetaZeroExtend(b,c,L,i,a)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="../definition/PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,a)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0291.html?v=ac7111ec14ff">BetaZeroExtend(b,c,L,i,a) · 1</a><a class="pd-chip" href="../definition/PD0002.html?v=ac7111ec14ff">Lt(a,b) · 1</a><a class="pd-chip" href="../definition/PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><a class="pd-chip pd-external" href="../../../../polynomial-products/checkpoint.html?v=ac7111ec14ff#theorem-lt_not_le">lt_not_le · checked external prerequisite</a></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall b c L i a. (exists pfa_gap_pad_inside_bound. pfa_gap_pad_inside_bound + S (i) = (L)) -&gt; ((((exists pfa_gap_pad_inside_sourceinside. pfa_gap_pad_inside_sourceinside + S (i) = (L)) /\ ((((exists ff_h_pfp_pad_inside_sourceentry. ff_h_pfp_pad_inside_sourceentry + S (a) = S ((S (i)) * c)) /\ exists ff_q_pfp_pad_inside_sourceentry. b = ff_q_pfp_pad_inside_sourceentry * S ((S (i)) * c) + (a)))))) \/ (((exists pfc_gap_pad_inside_sourceoutside. pfc_gap_pad_inside_sourceoutside+(L)=(i)) /\ (((a)=0))))) -&gt; (((exists ff_h_pfp_pad_inside_result. ff_h_pfp_pad_inside_result + S (a) = S ((S (i)) * c)) /\ exists ff_q_pfp_pad_inside_result. b = ff_q_pfp_pad_inside_result * S ((S (i)) * c) + (a)))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 17 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="proof-line-0001" data-line="1"><a class="pd-line-number" href="#proof-line-0001">0001</a><code>intro b</code></li><li class="pd-proof-line" id="proof-line-0002" data-line="2"><a class="pd-line-number" href="#proof-line-0002">0002</a><code>intro c</code></li><li class="pd-proof-line" id="proof-line-0003" data-line="3"><a class="pd-line-number" href="#proof-line-0003">0003</a><code>intro L</code></li><li class="pd-proof-line" id="proof-line-0004" data-line="4"><a class="pd-line-number" href="#proof-line-0004">0004</a><code>intro i</code></li><li class="pd-proof-line" id="proof-line-0005" data-line="5"><a class="pd-line-number" href="#proof-line-0005">0005</a><code>intro a</code></li><li class="pd-proof-line" id="proof-line-0006" data-line="6"><a class="pd-line-number" href="#proof-line-0006">0006</a><code>intro hi</code></li><li class="pd-proof-line" id="proof-line-0007" data-line="7"><a class="pd-line-number" href="#proof-line-0007">0007</a><code>intro ha</code></li><li class="pd-proof-line" id="proof-line-0008" data-line="8"><a class="pd-line-number" href="#proof-line-0008">0008</a><code>cases ha</code></li><li class="pd-proof-line" id="proof-line-0009" data-line="9"><a class="pd-line-number" href="#proof-line-0009">0009</a><code>cases ha_left</code></li><li class="pd-proof-line" id="proof-line-0010" data-line="10"><a class="pd-line-number" href="#proof-line-0010">0010</a><code>exact ha_left_right</code></li><li class="pd-proof-line" id="proof-line-0011" data-line="11"><a class="pd-line-number" href="#proof-line-0011">0011</a><code>cases ha_right</code></li><li class="pd-proof-line" id="proof-line-0012" data-line="12"><a class="pd-line-number" href="#proof-line-0012">0012</a><code>exfalso</code></li><li class="pd-proof-line" id="proof-line-0013" data-line="13"><a class="pd-line-number" href="#proof-line-0013">0013</a><code>specialize lt_not_le (i)</code></li><li class="pd-proof-line" id="proof-line-0014" data-line="14"><a class="pd-line-number" href="#proof-line-0014">0014</a><code>specialize lt_not_le (L)</code></li><li class="pd-proof-line" id="proof-line-0015" data-line="15"><a class="pd-line-number" href="#proof-line-0015">0015</a><code>apply lt_not_le</code></li><li class="pd-proof-line" id="proof-line-0016" data-line="16"><a class="pd-line-number" href="#proof-line-0016">0016</a><code>exact hi</code></li><li class="pd-proof-line" id="proof-line-0017" data-line="17"><a class="pd-line-number" href="#proof-line-0017">0017</a><code>exact ha_right_left</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Local original-HA + independent Lean checkpoint only</dd><dt>Alpha admission / checked use</dt><dd>none</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>158 / 210</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 210 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>41 / 21</dd>
+      <dt>Statement SHA-256</dt><dd><code>4a43635d934708c5bee45b52f93a2f4e400770c1af0381714f858a6d24971a0d</code></dd>
+      <dt>Script SHA-256</dt><dd><code>471dffb4a81834bd597756a8c238a9c207d977c3d539924ea16f1c9cc5c2fc85</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3</code></dd>
+      <dt>Exact source module</dt><dd><a href="../../../../sources/prime_field_polynomial_convolution_candidate.py?v=ac7111ec14ff"><code>peano_lab.library.prime_field_polynomial_convolution_candidate</code></a></dd>
+      <dt>Literal bundle and checkpoint receipt</dt><dd><a href="../../../checkpoint.html?v=ac7111ec14ff#theorem-polynomial_zero_extended_entry_inside">Inspect exact evidence</a></dd></dl>
+</aside></main></body>
+</html>

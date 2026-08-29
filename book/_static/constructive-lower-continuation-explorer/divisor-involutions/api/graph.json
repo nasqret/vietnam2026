@@ -1,0 +1,894 @@
+{
+  "admitted_to_alpha": false,
+  "admitted_to_stable": false,
+  "alpha_checked_use": false,
+  "alpha_checked_use_node_count": 0,
+  "alpha_enrolled_node_count": 0,
+  "checked_use": false,
+  "definition_topological_order": [
+    "PD0001",
+    "PD0002",
+    "PD0003",
+    "PD0013",
+    "PD0024",
+    "PD0025",
+    "PD0026",
+    "ND0148",
+    "ND0281",
+    "ND0282"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "DI0002",
+      "target": "DI0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0006",
+      "target": "DI0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0003",
+      "target": "DI0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0005",
+      "target": "DI0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0008",
+      "target": "DI0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0007",
+      "target": "DI000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0009",
+      "target": "DI000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0008",
+      "target": "DI000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0006",
+      "target": "DI000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0003",
+      "target": "DI000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0005",
+      "target": "DI000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DI0003",
+      "target": "DI000C"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI0001",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DI0001",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI0002",
+      "statement_occurrences": 1,
+      "target": "ND0281"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "DI0002",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DI0003",
+      "statement_occurrences": 2,
+      "target": "ND0281"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI0004",
+      "statement_occurrences": 1,
+      "target": "ND0281"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI0004",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DI0005",
+      "statement_occurrences": 2,
+      "target": "ND0281"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI0006",
+      "statement_occurrences": 1,
+      "target": "ND0281"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DI0006",
+      "statement_occurrences": 2,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "DI0007",
+      "statement_occurrences": 0,
+      "target": "ND0281"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DI0007",
+      "statement_occurrences": 1,
+      "target": "ND0282"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "DI0007",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "DI0007",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DI0008",
+      "statement_occurrences": 1,
+      "target": "ND0281"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI0008",
+      "statement_occurrences": 1,
+      "target": "ND0282"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI0008",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DI0008",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI0009",
+      "statement_occurrences": 1,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DI0009",
+      "statement_occurrences": 0,
+      "target": "ND0281"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI0009",
+      "statement_occurrences": 1,
+      "target": "ND0282"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DI0009",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DI0009",
+      "statement_occurrences": 0,
+      "target": "PD0024"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DI0009",
+      "statement_occurrences": 0,
+      "target": "PD0025"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI000A",
+      "statement_occurrences": 1,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DI000A",
+      "statement_occurrences": 1,
+      "target": "ND0282"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "DI000B",
+      "statement_occurrences": 0,
+      "target": "ND0281"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI000B",
+      "statement_occurrences": 1,
+      "target": "ND0282"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DI000B",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "DI000B",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DI000C",
+      "statement_occurrences": 0,
+      "target": "ND0281"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DI000C",
+      "statement_occurrences": 1,
+      "target": "ND0282"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DI000C",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DI000C",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0024",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0024",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0025",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0025",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0026",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0026",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0148",
+      "target": "PD0024"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0148",
+      "target": "PD0025"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0148",
+      "target": "PD0026"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0281",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0282",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0282",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0282",
+      "target": "ND0281"
+    }
+  ],
+  "enrolled_in_alpha": false,
+  "family_slug": "divisor-involutions",
+  "independent_lean_bundle_verified": true,
+  "local_checkpoint_verified": true,
+  "local_checkpoint_verified_node_count": 12,
+  "nodes": [
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI0001.html?v=ac7111ec14ff",
+      "id": "DI0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "positive_divisor_quotient_exists_unique",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 127,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every divisor of a positive input has a unique actual positive quotient, itself a divisor bounded by the input."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI0002.html?v=ac7111ec14ff",
+      "id": "DI0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "divisor_complement_exists",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 128,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Decide zero and divisibility constructively, extracting a real quotient only in the positive-divisor branch."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI0003.html?v=ac7111ec14ff",
+      "id": "DI0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "divisor_complement_functional",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 129,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual quotient and identity branches are disjoint and determine one output; beta-code equality is not assumed."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI0004.html?v=ac7111ec14ff",
+      "id": "DI0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "divisor_complement_positive_equation",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 130,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "At every genuine positive divisor the complement output satisfies n=d*q; the identity convention cannot supply that branch."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI0005.html?v=ac7111ec14ff",
+      "id": "DI0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "divisor_complement_symmetric",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 131,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For positive n the actual complementary quotient is reversible; zero and nondivisors remain fixed."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI0006.html?v=ac7111ec14ff",
+      "id": "DI0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "divisor_complement_bounded",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 132,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Divisor complementation stays in the exact inclusive interval 0..n, including its explicitly fixed omitted indices."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI0007.html?v=ac7111ec14ff",
+      "id": "DI0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "divisor_complement_prefix_exists",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 133,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Finite HA induction constructs a genuine beta prefix of quotient values, rather than assuming a finite-choice or coding oracle."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI0008.html?v=ac7111ec14ff",
+      "id": "DI0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "divisor_complement_prefix_lookup",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 134,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual beta lookup in the constructed finite window has the literal complementary-divisor graph."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI0009.html?v=ac7111ec14ff",
+      "id": "DI0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "divisor_complement_prefix_permutation",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 135,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The real S n-entry complement code is bounded and injective by its proved involution; constructive finite surjectivity yields a genuine permutation."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI000A.html?v=ac7111ec14ff",
+      "id": "DI000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "positive_divisor_involution_exists",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 136,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every positive natural has an actually constructed finite divisor-complement permutation, with exact quotient equations on positive divisors."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI000B.html?v=ac7111ec14ff",
+      "id": "DI000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "divisor_complement_prefix_involution",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 137,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Decoding the constructed finite map twice returns the original index, with the intermediate index proved to remain in bounds."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/DI000C.html?v=ac7111ec14ff",
+      "id": "DI000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "divisor_complement_prefix_positive_quotient",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 138,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual beta code at a positive divisor is precisely its witnessed quotient, not merely an unspecified bounded permutation image."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0001.html?v=ac7111ec14ff",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0002.html?v=ac7111ec14ff",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0003.html?v=ac7111ec14ff",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0013.html?v=ac7111ec14ff",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0024.html?v=ac7111ec14ff",
+      "id": "PD0024",
+      "kind": "definition",
+      "layer": 1,
+      "name": "BoundedPrefix",
+      "signature": "BoundedPrefix(b,c,l)",
+      "summary": "Every decoded entry below l is itself below l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0025.html?v=ac7111ec14ff",
+      "id": "PD0025",
+      "kind": "definition",
+      "layer": 1,
+      "name": "InjectivePrefix",
+      "signature": "InjectivePrefix(b,c,l)",
+      "summary": "Equal decoded values below l have equal indices."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0026.html?v=ac7111ec14ff",
+      "id": "PD0026",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SurjectivePrefix",
+      "signature": "SurjectivePrefix(b,c,l)",
+      "summary": "Every value below l occurs at an index below l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0148.html?v=ac7111ec14ff",
+      "id": "ND0148",
+      "kind": "definition",
+      "layer": 2,
+      "name": "PermutationPrefix",
+      "signature": "PermutationPrefix(b,c,l)",
+      "summary": "An actual beta-coded bijection of the finite index interval [0,l), including all bounds, injectivity, and surjectivity."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0281.html?v=ac7111ec14ff",
+      "id": "ND0281",
+      "kind": "definition",
+      "layer": 1,
+      "name": "DivisorComplement",
+      "signature": "DivisorComplement(n,d,q)",
+      "summary": "At a positive divisor d, a genuine product witness n=d*q specifies the complementary quotient. Zero and nondivisors are fixed. For n>0, totality, reversibility and bounds are proved separately, not assumed in this graph."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0282.html?v=ac7111ec14ff",
+      "id": "ND0282",
+      "kind": "definition",
+      "layer": 2,
+      "name": "DivisorComplementPrefix",
+      "signature": "DivisorComplementPrefix(n,b,c,l)",
+      "summary": "An actual beta prefix records complementary-divisor outputs at every i<l. For n>0 such prefixes exist at every length; the prefix of length S n is proved a permutation."
+    }
+  ],
+  "original_ha_bundle_verified": true,
+  "parent_alpha_edition_version": "v30",
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "DI0001": {
+      "critical_root_path": [
+        "DI0001"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "DI0002": {
+      "critical_root_path": [
+        "DI0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DI0007"
+      ]
+    },
+    "DI0003": {
+      "critical_root_path": [
+        "DI0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DI0009",
+        "DI000B",
+        "DI000C"
+      ]
+    },
+    "DI0004": {
+      "critical_root_path": [
+        "DI0004"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "DI0005": {
+      "critical_root_path": [
+        "DI0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DI0009",
+        "DI000B"
+      ]
+    },
+    "DI0006": {
+      "critical_root_path": [
+        "DI0006"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DI0009",
+        "DI000B"
+      ]
+    },
+    "DI0007": {
+      "critical_root_path": [
+        "DI0002",
+        "DI0007"
+      ],
+      "dependencies": [
+        "DI0002"
+      ],
+      "dependents": [
+        "DI000A"
+      ]
+    },
+    "DI0008": {
+      "critical_root_path": [
+        "DI0008"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DI0009",
+        "DI000B"
+      ]
+    },
+    "DI0009": {
+      "critical_root_path": [
+        "DI0006",
+        "DI0009"
+      ],
+      "dependencies": [
+        "DI0006",
+        "DI0003",
+        "DI0005",
+        "DI0008"
+      ],
+      "dependents": [
+        "DI000A"
+      ]
+    },
+    "DI000A": {
+      "critical_root_path": [
+        "DI0002",
+        "DI0007",
+        "DI000A"
+      ],
+      "dependencies": [
+        "DI0007",
+        "DI0009"
+      ],
+      "dependents": []
+    },
+    "DI000B": {
+      "critical_root_path": [
+        "DI0008",
+        "DI000B"
+      ],
+      "dependencies": [
+        "DI0008",
+        "DI0006",
+        "DI0003",
+        "DI0005"
+      ],
+      "dependents": []
+    },
+    "DI000C": {
+      "critical_root_path": [
+        "DI0003",
+        "DI000C"
+      ],
+      "dependencies": [
+        "DI0003"
+      ],
+      "dependents": []
+    }
+  },
+  "publication_scope": "local-only-checkpoint",
+  "root_ids": [
+    "DI0001",
+    "DI000A",
+    "DI000B"
+  ],
+  "schema": "peano-lab-local-lower-continuation-proof-explorers-v1-graph",
+  "stable_admitted_node_count": 0,
+  "stable_member": false
+}

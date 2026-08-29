@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0293 — PolynomialDiagonalPrefix(ab,ac,L,bb,bc,M,i,db,dc,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="polynomial-products"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">ND0293</p><h1>PolynomialDiagonalPrefix(ab,ac,L,bb,bc,M,i,db,dc,l)</h1>
+  <p>A real beta table contains the actual antidiagonal products for j&lt;l. The full window l=S i is constructed, so every complementary index is natural.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ pfc_index_lowercontinuation. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(pfc_index_lowercontinuation,l)</a> → ∃ x. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(db,dc,pfc_index_lowercontinuation,x)</a> ∧ <a class="pd-definition-ref" data-definition="ND0292" href="ND0292.html?v=ac7111ec14ff">PolynomialDiagonalTerm(ab,ac,L,bb,bc,M,i,pfc_index_lowercontinuation,x)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall pfc_index_lowercontinuation. (exists pfa_gap_lowercontinuationbound. pfa_gap_lowercontinuationbound + S (pfc_index_lowercontinuation) = ((l))) -&gt; exists pfc_value_lowercontinuation. ((((exists ff_h_pfp_lowercontinuationentry. ff_h_pfp_lowercontinuationentry + S (pfc_value_lowercontinuation) = S ((S (pfc_index_lowercontinuation)) * (dc))) /\ exists ff_q_pfp_lowercontinuationentry. (db) = ff_q_pfp_lowercontinuationentry * S ((S (pfc_index_lowercontinuation)) * (dc)) + (pfc_value_lowercontinuation))) /\ ((exists pfc_complement_lowercontinuationterm pfc_left_lowercontinuationterm pfc_right_lowercontinuationterm. (((pfc_index_lowercontinuation)+pfc_complement_lowercontinuationterm=((i))) /\ ((((((exists pfa_gap_lowercontinuationtermleftinside. pfa_gap_lowercontinuationtermleftinside + S (pfc_index_lowercontinuation) = ((L))) /\ ((((exists ff_h_pfp_lowercontinuationtermleftentry. ff_h_pfp_lowercontinuationtermleftentry + S (pfc_left_lowercontinuationterm) = S ((S (pfc_index_lowercontinuation)) * (ac))) /\ exists ff_q_pfp_lowercontinuationtermleftentry. (ab) = ff_q_pfp_lowercontinuationtermleftentry * S ((S (pfc_index_lowercontinuation)) * (ac)) + (pfc_left_lowercontinuationterm)))))) \/ (((exists pfc_gap_lowercontinuationtermleftoutside. pfc_gap_lowercontinuationtermleftoutside+((L))=(pfc_index_lowercontinuation)) /\ (((pfc_left_lowercontinuationterm)=0))))) /\ ((((((exists pfa_gap_lowercontinuationtermrightinside. pfa_gap_lowercontinuationtermrightinside + S (pfc_complement_lowercontinuationterm) = ((M))) /\ ((((exists ff_h_pfp_lowercontinuationtermrightentry. ff_h_pfp_lowercontinuationtermrightentry + S (pfc_right_lowercontinuationterm) = S ((S (pfc_complement_lowercontinuationterm)) * (bc))) /\ exists ff_q_pfp_lowercontinuationtermrightentry. (bb) = ff_q_pfp_lowercontinuationtermrightentry * S ((S (pfc_complement_lowercontinuationterm)) * (bc)) + (pfc_right_lowercontinuationterm)))))) \/ (((exists pfc_gap_lowercontinuationtermrightoutside. pfc_gap_lowercontinuationtermrightoutside+((M))=(pfc_complement_lowercontinuationterm)) /\ (((pfc_right_lowercontinuationterm)=0))))) /\ (((pfc_value_lowercontinuation)=pfc_left_lowercontinuationterm*pfc_right_lowercontinuationterm))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0292.html?v=ac7111ec14ff">PolynomialDiagonalTerm(ab,ac,L,bb,bc,M,i,j,t)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0294.html?v=ac7111ec14ff">FpConvolutionCoefficient(p,ab,ac,L,bb,bc,M,i,r)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PC000D.html?v=ac7111ec14ff">PC000D · polynomial_diagonal_prefix_entry</a><a class="pd-chip" href="../tag/PC000E.html?v=ac7111ec14ff">PC000E · polynomial_diagonal_prefix_recoding</a><a class="pd-chip" href="../tag/PC000F.html?v=ac7111ec14ff">PC000F · polynomial_diagonal_prefix_from_pointwise</a><a class="pd-chip" href="../tag/PC0010.html?v=ac7111ec14ff">PC0010 · polynomial_diagonal_prefix_functional</a><a class="pd-chip" href="../tag/PC0011.html?v=ac7111ec14ff">PC0011 · polynomial_diagonal_prefix_exists</a><a class="pd-chip" href="../tag/PC0012.html?v=ac7111ec14ff">PC0012 · polynomial_diagonal_prefix_input_transport</a><a class="pd-chip" href="../tag/PC0013.html?v=ac7111ec14ff">PC0013 · prime_field_convolution_coefficient_exists</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>10</dd>
+  <dt>Topological notation layer</dt><dd>3</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0293.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>a270998bab2e1fc414cae8e2b3f7e1728d8332b7ea17d172bae887eb2a53a62a</code></dd>
+</dl></aside></main></body>
+</html>

@@ -1,0 +1,1585 @@
+{
+  "checkpoint_digest": "25c837e9a7eb4f587f40a5d9fc5a8b0af406d91d629a48cc87115a8b2f935091",
+  "file_count_excluding_manifest": 394,
+  "files": {
+    "assets/defined-explorer.css": {
+      "bytes": 15951,
+      "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220"
+    },
+    "assets/defined-explorer.js": {
+      "bytes": 29840,
+      "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"
+    },
+    "assets/exact-explorer.css": {
+      "bytes": 30856,
+      "sha256": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc"
+    },
+    "assets/exact-explorer.js": {
+      "bytes": 42701,
+      "sha256": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606"
+    },
+    "assets/proofs.css": {
+      "bytes": 8341,
+      "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285"
+    },
+    "checkpoints.json": {
+      "bytes": 19279,
+      "sha256": "43dafd1a61a0937de191dda721836e1b66d728ab03dfa294d31beeab7bc5c29b"
+    },
+    "checkpoints/lower-continuation-divisor-involutions-proof-bundle-v1.json": {
+      "bytes": 292245,
+      "sha256": "deffb1e384e64cd2cb56b4c1603a0fdde7578cec15e80618f5b06197fabf6fed"
+    },
+    "checkpoints/lower-continuation-mobius-divisor-cancellation-proof-bundle-v1.json": {
+      "bytes": 2498683,
+      "sha256": "f858f6bd9e09d6ec33b48689b385222153ad9d326eccb8239ac5776b39955542"
+    },
+    "checkpoints/lower-continuation-polynomial-products-proof-bundle-v1.json": {
+      "bytes": 745307,
+      "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3"
+    },
+    "checkpoints/lower-continuation-rectangular-sums-proof-bundle-v1.json": {
+      "bytes": 2151122,
+      "sha256": "a6f62d8a0c89431b3596a0d15278643da6981afe166107cdc6aefa5433485395"
+    },
+    "divisor-involutions/api/checkpoint.json": {
+      "bytes": 2674,
+      "sha256": "6c4a0142bb8e1b2afa242cc48f6f8069b4b2d4ecb5f7cdd045c1dc183698183a"
+    },
+    "divisor-involutions/api/corpus.json": {
+      "bytes": 212614,
+      "sha256": "e299a6b4a5ce5f8a6aca9f65a0b0aab3ecbfefc2857bca653c9a18f8a85be770"
+    },
+    "divisor-involutions/api/graph.json": {
+      "bytes": 24509,
+      "sha256": "def5aadcc0c6d895107868583606a92eadd7c4109ba52004dcc3f49ef586ed40"
+    },
+    "divisor-involutions/checkpoint.html": {
+      "bytes": 31470,
+      "sha256": "d0a7557c6ab8817520592284c16ce858af854e2953ef74d1800c28a0254e5f0a"
+    },
+    "divisor-involutions/explorer/defined/api/graph.json": {
+      "bytes": 24509,
+      "sha256": "def5aadcc0c6d895107868583606a92eadd7c4109ba52004dcc3f49ef586ed40"
+    },
+    "divisor-involutions/explorer/defined/definition/ND0148.html": {
+      "bytes": 5915,
+      "sha256": "8fb6ecb1e2d1f606d54b32a225050413dce322f0a853cf1960adc3bbaa8dd46c"
+    },
+    "divisor-involutions/explorer/defined/definition/ND0281.html": {
+      "bytes": 4490,
+      "sha256": "14b307f0f704dc67193f2c3f203e387130886dbefda0f2a1a0d49927a9e54d7c"
+    },
+    "divisor-involutions/explorer/defined/definition/ND0282.html": {
+      "bytes": 5143,
+      "sha256": "4c45980615937fda34557263bdc70f7b77278fa3049d1a1f8f090973123cb63b"
+    },
+    "divisor-involutions/explorer/defined/definition/PD0001.html": {
+      "bytes": 3184,
+      "sha256": "d98ab6a2dbde6b799cc2e09b770a8b781086982927b8d20435d3c8ec9f9f4755"
+    },
+    "divisor-involutions/explorer/defined/definition/PD0002.html": {
+      "bytes": 3481,
+      "sha256": "ae337ada7b27488cb69de4eb19a8dd9b0b9df8935f78dbe92079adfa08eeae79"
+    },
+    "divisor-involutions/explorer/defined/definition/PD0003.html": {
+      "bytes": 3221,
+      "sha256": "6e50c9a6c9e4d3df9cf141dc4c3c513d2ed2a4d43c40de6fe421cc4d489ca3ee"
+    },
+    "divisor-involutions/explorer/defined/definition/PD0013.html": {
+      "bytes": 3906,
+      "sha256": "e93036fd3f9c80a9f01ba68ff773370c103800c6d9443ce5a1b65b644d60510b"
+    },
+    "divisor-involutions/explorer/defined/definition/PD0024.html": {
+      "bytes": 4143,
+      "sha256": "20f3d2642776d3e37cce29f8c35f1f736cef91dffca98aaa52ce30981c58a1dd"
+    },
+    "divisor-involutions/explorer/defined/definition/PD0025.html": {
+      "bytes": 4968,
+      "sha256": "15ad4e7ef556aee13aae09037d0556843016c3c9a752af63ebd028dca5e8d655"
+    },
+    "divisor-involutions/explorer/defined/definition/PD0026.html": {
+      "bytes": 4177,
+      "sha256": "e4c7086035f83e3cbdd0e2aa207dc296b7d7505da1b9f55a28d66aee93a1b25d"
+    },
+    "divisor-involutions/explorer/defined/graph.html": {
+      "bytes": 22391,
+      "sha256": "7b7675cffa646b48c472e00a72e4a51124470959d9471dae29ca8584411ba75a"
+    },
+    "divisor-involutions/explorer/defined/index.html": {
+      "bytes": 18124,
+      "sha256": "f1bc3a1ffcf07abfc58436db2f29b72baedca3eaef1a06b4539b6da731d05a3e"
+    },
+    "divisor-involutions/explorer/defined/tag/DI0001.html": {
+      "bytes": 13605,
+      "sha256": "95ca51ef80e2a52d453881017afe0fcdf2d028a38c2f4986e91621aaeb9edcd3"
+    },
+    "divisor-involutions/explorer/defined/tag/DI0002.html": {
+      "bytes": 10084,
+      "sha256": "a9999a0094a590bd26d2dc4d5e70b4e4594833c5a010a8f12f85c618751a6d1b"
+    },
+    "divisor-involutions/explorer/defined/tag/DI0003.html": {
+      "bytes": 11531,
+      "sha256": "eb9c5cdb375ff83fc6d048d76fc9f3803de9cb90b4a6bb2993a4f334e7a04511"
+    },
+    "divisor-involutions/explorer/defined/tag/DI0004.html": {
+      "bytes": 7355,
+      "sha256": "86d8bfe69951cfc349b74c624fda4f46105d0333afa2236ae7bc8a7068790d36"
+    },
+    "divisor-involutions/explorer/defined/tag/DI0005.html": {
+      "bytes": 9803,
+      "sha256": "392ee877a77b0658c23cbac9220794caefbde364ed219db49d5cbb6d955d2750"
+    },
+    "divisor-involutions/explorer/defined/tag/DI0006.html": {
+      "bytes": 8268,
+      "sha256": "651cff729f9a0cc0e9e635f9a58d2bd87585788429446d642e3b600ac8c58fd7"
+    },
+    "divisor-involutions/explorer/defined/tag/DI0007.html": {
+      "bytes": 18229,
+      "sha256": "2cc4a98db3cc2b3b8452477b05d1f40381e6811d69ed4fe7035d78cad225d483"
+    },
+    "divisor-involutions/explorer/defined/tag/DI0008.html": {
+      "bytes": 10819,
+      "sha256": "42dcb8d7ee83889a43615d2f0f17f88df6fbfcf866808304b9f7470f8d93e3be"
+    },
+    "divisor-involutions/explorer/defined/tag/DI0009.html": {
+      "bytes": 25688,
+      "sha256": "0e731bfb3e90b59507c4348f371464eea614d6121621a3d83316336cbf8e14ad"
+    },
+    "divisor-involutions/explorer/defined/tag/DI000A.html": {
+      "bytes": 12437,
+      "sha256": "82de772f62993c9b52644d37eb345b34c275899c2db2be98e5467796edd589f7"
+    },
+    "divisor-involutions/explorer/defined/tag/DI000B.html": {
+      "bytes": 17770,
+      "sha256": "78b8e8c704e9bd2d2c8a60e30f212bc4ab8f83259f6e205f087d393d532aeb66"
+    },
+    "divisor-involutions/explorer/defined/tag/DI000C.html": {
+      "bytes": 13405,
+      "sha256": "c260ab626ddad5a77e842f31931a3feba3f5847b513cde91c41d1454dc405e94"
+    },
+    "divisor-involutions/explorer/index.html": {
+      "bytes": 14476,
+      "sha256": "9313220a0a774176e2883d96284a7274a3a06ba898f4936274fb07a63cbc3928"
+    },
+    "divisor-involutions/explorer/tag/DI0001.html": {
+      "bytes": 17967,
+      "sha256": "26f13fb7840482a5da4655f01fe1332219893899309a3adfea33bcb70c98aee8"
+    },
+    "divisor-involutions/explorer/tag/DI0002.html": {
+      "bytes": 12704,
+      "sha256": "2b2be066f23a53bfc951fad1d8dcdd9db1dc110e9dee32988b5be8ac0a2ad8d9"
+    },
+    "divisor-involutions/explorer/tag/DI0003.html": {
+      "bytes": 15164,
+      "sha256": "7ee5c33553ff7927e4bd8ebe9bf483db85072abf9814158a8871e30aa0dbd94a"
+    },
+    "divisor-involutions/explorer/tag/DI0004.html": {
+      "bytes": 8095,
+      "sha256": "738f097d5bcf4aaca4e87be698c081dff98b07acfe8532f5907eadbf50ba599d"
+    },
+    "divisor-involutions/explorer/tag/DI0005.html": {
+      "bytes": 12355,
+      "sha256": "ae01c26627df4af143460a0514175533734b68ea885ba997344047128c7e5a26"
+    },
+    "divisor-involutions/explorer/tag/DI0006.html": {
+      "bytes": 9647,
+      "sha256": "29db94af1066201fddda698cdcb2de83eeb028be5fb5d13619ab14267471202d"
+    },
+    "divisor-involutions/explorer/tag/DI0007.html": {
+      "bytes": 25289,
+      "sha256": "76b348b43982a2e976e8d8191b5f9e57b6198a7bb106705d5f4d0b9acaac8d86"
+    },
+    "divisor-involutions/explorer/tag/DI0008.html": {
+      "bytes": 12640,
+      "sha256": "73798df1c2999cd8e0e9cd3d3004dd6a764f93dbbe6001dd2c41456211b63dcf"
+    },
+    "divisor-involutions/explorer/tag/DI0009.html": {
+      "bytes": 34293,
+      "sha256": "8a181c23fd8092e778c3cd6f18e70a3e9807f9607490620ba9908e74e99a0eca"
+    },
+    "divisor-involutions/explorer/tag/DI000A.html": {
+      "bytes": 14307,
+      "sha256": "52b5d196f338c16add5cefbc3f045aa7add920e6722f9b9d25cea531b5a8eafa"
+    },
+    "divisor-involutions/explorer/tag/DI000B.html": {
+      "bytes": 22127,
+      "sha256": "0b5362ce40596712403e3a997323b22a3148dd5f4210fcb44d78761e7d7104f7"
+    },
+    "divisor-involutions/explorer/tag/DI000C.html": {
+      "bytes": 16365,
+      "sha256": "2d01d5302d60ed498332981d4f7f3cbeb81128cb49e195877dd06a22bc67420d"
+    },
+    "divisor-involutions/index.html": {
+      "bytes": 6225,
+      "sha256": "b70e40557c207ebabe9323c61e9a46e42b82a947b84b8395adaacddf02a368ab"
+    },
+    "grand-campaign/index.html": {
+      "bytes": 7324,
+      "sha256": "ef78d1a630420ed7cc361ebe95d5a5be5b6a0ed8327f066431220e11ea42ee42"
+    },
+    "index.html": {
+      "bytes": 7272,
+      "sha256": "202b1604d33799d218e2c66cdcaf2e417c1f0d0c56adb91efadf5277c7fc3981"
+    },
+    "mobius-divisor-cancellation/api/checkpoint.json": {
+      "bytes": 5640,
+      "sha256": "0d74cc3c6bb63df1d5c6181b179a0f9fd37b3a3e970a16549601f86505f21a0e"
+    },
+    "mobius-divisor-cancellation/api/corpus.json": {
+      "bytes": 2037680,
+      "sha256": "dfeff6be77f532be9d4c16bc2dd5398e618aa29bb23c3d971804656c885fe97d"
+    },
+    "mobius-divisor-cancellation/api/graph.json": {
+      "bytes": 76853,
+      "sha256": "f4c5e7ee0f4c2c4c74f6f67241294ea25f34cc80c6c06f5c0950ecd63eb9fac8"
+    },
+    "mobius-divisor-cancellation/checkpoint.html": {
+      "bytes": 958474,
+      "sha256": "28fb14ac74363d1fcb75b96bc8313fa1d2257d7c614baed57b99ddd17cf5a67d"
+    },
+    "mobius-divisor-cancellation/explorer/defined/api/graph.json": {
+      "bytes": 76853,
+      "sha256": "f4c5e7ee0f4c2c4c74f6f67241294ea25f34cc80c6c06f5c0950ecd63eb9fac8"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0058.html": {
+      "bytes": 3812,
+      "sha256": "c5fce3bf3d64316813a3ce5bab79375a23cf7c3c664f213d9ccff420b4aaab1a"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0142.html": {
+      "bytes": 3335,
+      "sha256": "cf5ec992d3ef463129a59d0e00719852df3acd8db21883e0902b819d0bcba5d8"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0143.html": {
+      "bytes": 3774,
+      "sha256": "f44cb6bae02e8ae60383ea84d6132ad9e35350f4033537f011b831a0293f5f8c"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0146.html": {
+      "bytes": 4414,
+      "sha256": "754dfefb0a782fde6e3e96788cff4c2be2b5c57d4e2f7d5d5b9421a51d93a73e"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0148.html": {
+      "bytes": 6045,
+      "sha256": "20c7c6cd23965d5e0a65b8453432fbfa7b34468548b5a9379d40ae8f3d74e7c6"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0149.html": {
+      "bytes": 6639,
+      "sha256": "397139d098a482b7bd6132e629b3f6a8be0481a683d02f1c416f7f39f3c9f350"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0188.html": {
+      "bytes": 4083,
+      "sha256": "9462efa439cec6dfb2c35394a8df18afac0720445826754b08835241e303f9c6"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0233.html": {
+      "bytes": 3530,
+      "sha256": "2feefefdd5ac18768f3165fa8aa1c0eba5ec9c004bada109a0eb63dd9da3dad3"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0234.html": {
+      "bytes": 3863,
+      "sha256": "8a9f47534eb1e3937235fa084adc638bea4618d4164fa6faee7a55f620322b08"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0235.html": {
+      "bytes": 8556,
+      "sha256": "7302a5b84b2d06f26380a220b28aafa77f37db5efbf5c967b53448051f9284d6"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0236.html": {
+      "bytes": 10774,
+      "sha256": "65b5166b79f5f191213cdfd10e22030461aa1e82a376862696965635eb33da3c"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0251.html": {
+      "bytes": 7647,
+      "sha256": "dbf0338e16ddc3834fa01b8d7e4cbad0ffb5834879f50c59003c0dc11003201a"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0252.html": {
+      "bytes": 7864,
+      "sha256": "e50bce0bf0dc3049cd781624991c4d57c10d04129043c70b894731793e42b8b7"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0253.html": {
+      "bytes": 12245,
+      "sha256": "772d80a2153a2aaaaf0e747907065e54da3622218dc68b9e45d0806c01bd5170"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0261.html": {
+      "bytes": 11060,
+      "sha256": "9e19bb14f7a199e93b5027fdd61a7c9855f5ff2f23bbe7d1a172ce6dcab11a13"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0265.html": {
+      "bytes": 21762,
+      "sha256": "522fc5faceb7fe43c57071ad99c5d779f4176ac566a503c0eac238ca63d3cc86"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0273.html": {
+      "bytes": 6634,
+      "sha256": "4e91caa65f7e78742cd718dab91e5c0d387ed354ea2634324d899cfa65493a23"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0274.html": {
+      "bytes": 14429,
+      "sha256": "39db25fa4ad011c83e1549a37d7a8e4fdb7d9861dcef4e702c771f19a5c574ee"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0275.html": {
+      "bytes": 23661,
+      "sha256": "32e5e1e2487aa30d1dc7e6e2d74b30dda19d782a2b2f9fdfe90ff37fc1674e92"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0276.html": {
+      "bytes": 10271,
+      "sha256": "d71210c55414f99d2a2fbbf4a6790b5f65a2ff248c84dd04baa90fff0f223098"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0283.html": {
+      "bytes": 4533,
+      "sha256": "25acf6bb44569f71e522f9251d65cd4ebdbe8d0d48cdc7b7b46167fcd5312e58"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0284.html": {
+      "bytes": 5198,
+      "sha256": "e49fdb9d57715f65e765d1f9528ffe523e867cde21244f0281a834af23036e89"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0285.html": {
+      "bytes": 5784,
+      "sha256": "3bed0a28ade90078af1fae165938e453f620123b86d59b6bdfddb72945969a3d"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0286.html": {
+      "bytes": 12846,
+      "sha256": "6d9abc1aac5d205ba7c89c49b27eb18d9a5cfe731a9b2d108aeb9933983935a9"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/ND0299.html": {
+      "bytes": 16727,
+      "sha256": "49abbb74335ece3fd75bd9df60399f7dfb1293099df84d9ff3bbed32636a6127"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0001.html": {
+      "bytes": 4173,
+      "sha256": "4007d3d23398a3978b5c3e616a375aa9cdaf61fe5c00978617bc422b5b7da825"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0002.html": {
+      "bytes": 3957,
+      "sha256": "557b9eba70a5fe47e3d6d08d783f11d41dd9f5816eb48eb596640e292ddd4080"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0003.html": {
+      "bytes": 4701,
+      "sha256": "3954a74b1b9e863fc1a5d72559d61741656ee328011e46b69b975f82bb40956c"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0004.html": {
+      "bytes": 4567,
+      "sha256": "ae88661e1dde06622f2aa6e3d49c199e0ac433f3c35736ed3813c132a997144b"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0005.html": {
+      "bytes": 3240,
+      "sha256": "2a7b21831bdf466c7632a928b55147ac31949afbc71f0a3846cd8898cb2da0d0"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0009.html": {
+      "bytes": 2973,
+      "sha256": "c11841fa260b3d85e8170f715c7f4aaa97bdb568725045e9a2a8765b0c8e0539"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0010.html": {
+      "bytes": 2978,
+      "sha256": "26ae6ea70c7fea232d4bba1879b53493198dfc0d9ffbc1a2827c462f773fd197"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0013.html": {
+      "bytes": 4365,
+      "sha256": "ede1846bb81d33580f801e964b6651a0d91d81c27a8fcba636166c2cf97cabcb"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0014.html": {
+      "bytes": 5740,
+      "sha256": "09576b1c603db7a54401809e14509b11fa414ddce4f3acced8427fb821b37c46"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0015.html": {
+      "bytes": 5465,
+      "sha256": "fc80fc9b4b1a9d0117f434476c194876f34d4d9bff5096bfde2f08f6dee1568a"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0024.html": {
+      "bytes": 4269,
+      "sha256": "eac26cec8f5fba7153abc080fb22604667d4f09888d3f39b8360b9ec0b05c0d8"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0025.html": {
+      "bytes": 5094,
+      "sha256": "707fa862590bd68cb37f81791f08787e5dcdef588d0051adfd105221b35ac807"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0026.html": {
+      "bytes": 4185,
+      "sha256": "64d5265f21ada12470604e9f5135406efd69e73c10963f43133c5de01e42dbdb"
+    },
+    "mobius-divisor-cancellation/explorer/defined/definition/PD0028.html": {
+      "bytes": 3796,
+      "sha256": "74fd1d5bcbbe45114b9fc8915b103f09adc458d7e5aa11a6056a098712fcfbda"
+    },
+    "mobius-divisor-cancellation/explorer/defined/graph.html": {
+      "bytes": 60606,
+      "sha256": "6c12125c74e257d238883ed9f7599af83ff7f9d1247fb87f5f73a4c59670ecb0"
+    },
+    "mobius-divisor-cancellation/explorer/defined/index.html": {
+      "bytes": 47265,
+      "sha256": "a6749ffae1f48436ceb8eb202414c92c2ac55772cfff7511471898a152527b4e"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0001.html": {
+      "bytes": 8114,
+      "sha256": "42243701ce832281422f35cd0cfa380e3afba37fcd7213ea1b2273f06ee14550"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0002.html": {
+      "bytes": 12795,
+      "sha256": "fbca3f118f2f2a774ff87bb51528bd26879a9f0868a402ccae27960d7ee99b22"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0003.html": {
+      "bytes": 12056,
+      "sha256": "27601e8328d9ed19b9ddeebf89fe701b3d9927bf1fec34b25f36147925d9062e"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0004.html": {
+      "bytes": 20410,
+      "sha256": "aca76eee64a414f786e98945c948e4d437e8cc9035b984e71de6ca536e783672"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0005.html": {
+      "bytes": 9770,
+      "sha256": "33c9e1e73c3f557c340bed3a35ade96e00be9361f758b3e535953b475da762a2"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0006.html": {
+      "bytes": 9836,
+      "sha256": "e480262a37fc2e1f7661d8adcb072e76f4cc3e4d6d02bdcd1cd63e2db83fbf6e"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0007.html": {
+      "bytes": 11832,
+      "sha256": "ed86769730640720980c3487251c47d28c4b74ef992b1aba2adf76298584350d"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0008.html": {
+      "bytes": 13781,
+      "sha256": "1f7866bb4479472fe8445011286ae44045bf93e3a18a2660a740cd28b10fa749"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0009.html": {
+      "bytes": 14730,
+      "sha256": "bd856e1d703f15124c904c31b5539acd5b6eff22d725f1497aba378a11db526c"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC000A.html": {
+      "bytes": 17172,
+      "sha256": "308334ab6c6d0877768979c70551d261ebc0c034aeab058c0bb841b173711830"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC000B.html": {
+      "bytes": 11590,
+      "sha256": "f076589259a803f1f0d83ac54d5bc8c54b6855691a60e2f3c7bca6b465c9454d"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC000C.html": {
+      "bytes": 20630,
+      "sha256": "c2a333a1639bea00c042ace3f00ee79c1c3150bc754c48d60f78da77db9e55a4"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC000D.html": {
+      "bytes": 13138,
+      "sha256": "1392790c32d611779288e061020918e08479b790fc6be2dc09fd272c6865bafa"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC000E.html": {
+      "bytes": 30412,
+      "sha256": "945073bcfb2c8fe9e9bafe282621e5aacf09e439cdecda8956d114249b63ab16"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC000F.html": {
+      "bytes": 15419,
+      "sha256": "d9f24968cad6c145cf86c1876b69e40629b4ef5076dffe3cce01011052014728"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0010.html": {
+      "bytes": 34471,
+      "sha256": "2fdb3e34dceb3f6519dfd03e254b7e9514bbda9f74a5a45a7d58b0ced63563b9"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0011.html": {
+      "bytes": 52461,
+      "sha256": "96a85e5bfa3a4e882505d614dcf38dded2341ca8e868a90eb6d0e6423ea9a251"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0012.html": {
+      "bytes": 69390,
+      "sha256": "8499a2caeef0cea1a156f379d1727054ce7828f70c3fca4a5226e695dd8f8148"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0013.html": {
+      "bytes": 22017,
+      "sha256": "d7a8b3c8a18eb2fc5defea8be2eeeb5a9215d36e5615afbca2dcf2dcb003a41a"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0014.html": {
+      "bytes": 55769,
+      "sha256": "70aa53a8ab4f61e3eb3fb1ce7420c7e248e50e8433a092aad76b1e1011fe302b"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0015.html": {
+      "bytes": 46963,
+      "sha256": "1d9d4a08345304dcf95b11746c2e99a75662b1847b0c880a56c98e7afacdf1e4"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0016.html": {
+      "bytes": 71727,
+      "sha256": "1415fbae26b9618c0d3b190099764292d0304cefb5c3cbd4362ae2abe7051ecb"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0017.html": {
+      "bytes": 54638,
+      "sha256": "554e47a8e2c3c3e77ac9565d1cf92adefc91e849803b9f02ccf72b7124b6dd1c"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0018.html": {
+      "bytes": 54451,
+      "sha256": "157fce17568194c2e2f51ad46c2dcef3340d047c711fe05f2282ec4a507a88af"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC0019.html": {
+      "bytes": 51640,
+      "sha256": "4e54cb92302ec7913457190964b756742fcb79848b848340e851013623c2d403"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC001A.html": {
+      "bytes": 92748,
+      "sha256": "b8affd85d6970893ced4354089067405efb3b9b34459a16bc5fb1790e7896bd3"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC001B.html": {
+      "bytes": 56270,
+      "sha256": "a307681464d82be3ffd7dab232c739cddabdd5a3f49c1f3e0a86fe30f59d2a66"
+    },
+    "mobius-divisor-cancellation/explorer/defined/tag/MC001C.html": {
+      "bytes": 99501,
+      "sha256": "e955c7214beffde53a877cffba754ac7d74033141924a3d1f5192e898aeb1cfd"
+    },
+    "mobius-divisor-cancellation/explorer/index.html": {
+      "bytes": 32193,
+      "sha256": "ce92f36ef450f47a8606afd5c19a7286183669e15d4c0e86f89c16dc0e7f075c"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0001.html": {
+      "bytes": 9411,
+      "sha256": "cfe119c4f6595648ad66569e1b431cb362d02276147873bbeaa525e22b7de8bd"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0002.html": {
+      "bytes": 15972,
+      "sha256": "f07613c50198370161c8d5f72f0deabb0154516003cef6853c38b3222ef8dbae"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0003.html": {
+      "bytes": 15276,
+      "sha256": "573440787ee3d787535dfa48a1d67856b7d20187ad5c29f23d059a0170413af3"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0004.html": {
+      "bytes": 28111,
+      "sha256": "303ed5eb91dccfedb000b487281cefff4e6ed31599e6ee7545fb2a15f335ea96"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0005.html": {
+      "bytes": 11612,
+      "sha256": "8b95b4bf993060d6cb86d85961cd38dcda8845f383d70b31fbf6b460a3b445c0"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0006.html": {
+      "bytes": 12371,
+      "sha256": "9fe72d993820da46bf717eeb0d2499f796f6e237d85da397593627501bb7ff55"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0007.html": {
+      "bytes": 14168,
+      "sha256": "79cbe10a3f901a66c2bb5dcb6d9dde1dd1677b85a88cfa7a4369c674b868e8fd"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0008.html": {
+      "bytes": 17461,
+      "sha256": "84d70bda033c4f2234043a81314b82c6ae55931e9f94464c78ef18df14a5f833"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0009.html": {
+      "bytes": 18252,
+      "sha256": "1bca911f40a3c78e342a381c26d0b353d69e8a71368950559c3653929dfdb4ba"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC000A.html": {
+      "bytes": 21321,
+      "sha256": "4a319900f4668668145ebd83cc945a5194815201e8f649a837c7ff98ebc7f932"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC000B.html": {
+      "bytes": 13309,
+      "sha256": "d12b2ac415ae2a15373cbe4298ee5afbed8f7b410769e094a8b4368abeaeb585"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC000C.html": {
+      "bytes": 29632,
+      "sha256": "98f6613c56a7397f96363ad717070ca25fc1fd1b7940a26d352f66ad96ec9c27"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC000D.html": {
+      "bytes": 15530,
+      "sha256": "f2ce6ae87acad9dbdca18eeec691e40f9327cab096f830dafff42364c35af538"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC000E.html": {
+      "bytes": 40766,
+      "sha256": "0cd089ce26cd2dce17aef3c86280530659b86a2a2fbc36c8ce1f2664e18e7c41"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC000F.html": {
+      "bytes": 18064,
+      "sha256": "5a2f9984be4395e3fa3f5cbe47ae573914a1f02b8877814c3419fbf2f141de5a"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0010.html": {
+      "bytes": 41495,
+      "sha256": "957403472f8db38b50617012151f54d1fca36692111c6e763dd388458a8ae782"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0011.html": {
+      "bytes": 54910,
+      "sha256": "7b02ac1b0e0bcf2665286f3b513a82d8c79daf56371933900eb4e81386921ea7"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0012.html": {
+      "bytes": 79015,
+      "sha256": "2b39f8e7356e030ed24b4818b0716b0ba71784a5bb208594f0b39abb4f2b9eb8"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0013.html": {
+      "bytes": 26892,
+      "sha256": "8135466718bf4e861b1131f8695a496e7a3824f19bddeecfd07eee7f6ae53586"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0014.html": {
+      "bytes": 87149,
+      "sha256": "0a6fa744372404d98d01b9f6b8b536c756cfcfd4b7929e42f17acc5ea430a058"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0015.html": {
+      "bytes": 50412,
+      "sha256": "619d10cb7b2b9a2c02300c969e1f540529d9295bdf75481038285339e231d44c"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0016.html": {
+      "bytes": 122668,
+      "sha256": "a416729b924d0c3a24bd4ff8c597cff3f2c3b54f020131c0c2a5c17646187768"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0017.html": {
+      "bytes": 56862,
+      "sha256": "9f1cbca68519084a5dfac20e77758429c907f30e87a4cffd175b2498f79a4b83"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0018.html": {
+      "bytes": 81390,
+      "sha256": "3b4e746c5477e01c8bf0ef51fc14e67f816aa35d780ba09247a9d69fdd30b0f6"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC0019.html": {
+      "bytes": 52730,
+      "sha256": "389d082919e00730a75c805e6862c99b6bd6983be146f2d5146d19670d4b1fcb"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC001A.html": {
+      "bytes": 100020,
+      "sha256": "f5d28f5110cbf13c048f62fb4bf357b468bd17f5b7fd437c194b20fd7882de5b"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC001B.html": {
+      "bytes": 159545,
+      "sha256": "710cad872d4869a1c2530a6bcecc0185e5d032a2d8221a3e0ede62123c43c3e9"
+    },
+    "mobius-divisor-cancellation/explorer/tag/MC001C.html": {
+      "bytes": 279334,
+      "sha256": "c5033e8baf94a5470538f2c25173e54b34ec7cd2e8318fbd6b7c9d532652fa6e"
+    },
+    "mobius-divisor-cancellation/index.html": {
+      "bytes": 6412,
+      "sha256": "6460609cfe6fcd8aa655b6885b365ce768a7c3ce77b4d2e297b06b67db655d7c"
+    },
+    "polynomial-products/api/checkpoint.json": {
+      "bytes": 4020,
+      "sha256": "7e1af256ab1e539e916f042530baaa0eced939f344aae7f2a338671b69b4283e"
+    },
+    "polynomial-products/api/corpus.json": {
+      "bytes": 1570522,
+      "sha256": "813da33279b056a6d4b279fe0cfe3ea2b93efd97a57db044d5a53a8f911db889"
+    },
+    "polynomial-products/api/graph.json": {
+      "bytes": 96858,
+      "sha256": "30476fa9a6b5dbdac50c89dcb98a089000c0afc6658d1c27ddf35ead8937f711"
+    },
+    "polynomial-products/checkpoint.html": {
+      "bytes": 529795,
+      "sha256": "73c490db3e85283d5dbcd14649ba347dbf539f79baca315c6a8d72cc106afa6c"
+    },
+    "polynomial-products/explorer/defined/api/graph.json": {
+      "bytes": 96858,
+      "sha256": "30476fa9a6b5dbdac50c89dcb98a089000c0afc6658d1c27ddf35ead8937f711"
+    },
+    "polynomial-products/explorer/defined/definition/ND0023.html": {
+      "bytes": 3713,
+      "sha256": "351414251100800bda9c5c36cc7030cf8431199708285ea8f9d690b43f289270"
+    },
+    "polynomial-products/explorer/defined/definition/ND0230.html": {
+      "bytes": 4198,
+      "sha256": "a7b9c476d1febc6175951380bc21ce111a6cbf79e38b7b9958f20362760b4f07"
+    },
+    "polynomial-products/explorer/defined/definition/ND0262.html": {
+      "bytes": 5075,
+      "sha256": "f6713fd9e94e7479a0f04fbf69eb834cd1ceba5fac9109997c4200cf46ffb08a"
+    },
+    "polynomial-products/explorer/defined/definition/ND0263.html": {
+      "bytes": 5935,
+      "sha256": "c0fd17bac395b8e03e82a45b8cbab6ebfc3d5313a7eab2ba77c67547cc8bf35c"
+    },
+    "polynomial-products/explorer/defined/definition/ND0291.html": {
+      "bytes": 4638,
+      "sha256": "df53e5731cc32714f4626de69096080760e08670d9f1e20b59824eefcb8c4965"
+    },
+    "polynomial-products/explorer/defined/definition/ND0292.html": {
+      "bytes": 6790,
+      "sha256": "0bc42e01084455d17f1009c5455da687293fa6999acb1e8be7dfd694048e7393"
+    },
+    "polynomial-products/explorer/defined/definition/ND0293.html": {
+      "bytes": 6739,
+      "sha256": "b658655eedeb5475b974adcf170ccf32d132779d7e493006a2637a631ebb21d0"
+    },
+    "polynomial-products/explorer/defined/definition/ND0294.html": {
+      "bytes": 12108,
+      "sha256": "a0021733406bd9ccf8f671c5d4ec24ba0f83d65ad963284f1ccd704bf04b98ed"
+    },
+    "polynomial-products/explorer/defined/definition/ND0295.html": {
+      "bytes": 12845,
+      "sha256": "dab236a402115a08096aba090ef29ae4974a7826d26fbdde1518c8b8e58d84d8"
+    },
+    "polynomial-products/explorer/defined/definition/ND0296.html": {
+      "bytes": 4104,
+      "sha256": "19d454a3c47b60519c21ab8f0c2da813345e803891af79628c66555d188f4725"
+    },
+    "polynomial-products/explorer/defined/definition/ND0297.html": {
+      "bytes": 17054,
+      "sha256": "ab6df67ad14e73cac7f6692d74671122c2d342a31e0effa0f8f035218cd672a7"
+    },
+    "polynomial-products/explorer/defined/definition/ND0298.html": {
+      "bytes": 5468,
+      "sha256": "3226112184b81e6bd651cd381502754c5692d876a7e2330acd87a4aa2327a650"
+    },
+    "polynomial-products/explorer/defined/definition/PD0001.html": {
+      "bytes": 3484,
+      "sha256": "1877343ada9e41acbcd854b68331fab9615f8bb51659a31bfac90e5959e68c55"
+    },
+    "polynomial-products/explorer/defined/definition/PD0002.html": {
+      "bytes": 4590,
+      "sha256": "9f0d89be3c7b9ff906c4cafed81d720424bd5a13a6e123e22ffe56a0bf8b6bb2"
+    },
+    "polynomial-products/explorer/defined/definition/PD0004.html": {
+      "bytes": 3336,
+      "sha256": "8ce490cedc0857af2bb4d73deede16e88117d8d8f9e596193df1a42e961a2aab"
+    },
+    "polynomial-products/explorer/defined/definition/PD0008.html": {
+      "bytes": 3022,
+      "sha256": "6cf2224a815a01a22a73a9a04457c9651a128ac2361ddf5000eefe866ce58e2b"
+    },
+    "polynomial-products/explorer/defined/definition/PD0013.html": {
+      "bytes": 6509,
+      "sha256": "2b7b3242e5ed8a195876c62d7a79d2a882ef2a0598d0248146d80ee4d862a635"
+    },
+    "polynomial-products/explorer/defined/definition/PD0015.html": {
+      "bytes": 5766,
+      "sha256": "cee46deceb411daec2f6625350c3fda25e09ed3c6ed72b43915db77a30b65a25"
+    },
+    "polynomial-products/explorer/defined/definition/PD0019.html": {
+      "bytes": 4714,
+      "sha256": "1dae2abfdb3bcd084220a488cfd1cc8931d5a9c4b320fe09de371eaeaa9981e5"
+    },
+    "polynomial-products/explorer/defined/graph.html": {
+      "bytes": 75049,
+      "sha256": "1a8170ab92e399a30d365bfe98881e3fc4dff5c047a981380f02f79d604d58a4"
+    },
+    "polynomial-products/explorer/defined/index.html": {
+      "bytes": 53476,
+      "sha256": "5f27189e02e397275cde0c6c9d9e448f3f51fccb27e8f9e8d7d5a7faca2f091b"
+    },
+    "polynomial-products/explorer/defined/tag/PC0001.html": {
+      "bytes": 9808,
+      "sha256": "817289dabb08e18e5037d75f69432836bebd5a11c2b1713e2c2d0cc1c4f933b4"
+    },
+    "polynomial-products/explorer/defined/tag/PC0002.html": {
+      "bytes": 12230,
+      "sha256": "81e18313a312932bd6afc6bd7cc30e558410159aadd00bf4027eedd30b6a91c1"
+    },
+    "polynomial-products/explorer/defined/tag/PC0003.html": {
+      "bytes": 8535,
+      "sha256": "c24d23849f90c6c94b57cf6d0eec137f6ed7d65b5ebb64a9ecd1c488819829a0"
+    },
+    "polynomial-products/explorer/defined/tag/PC0004.html": {
+      "bytes": 9632,
+      "sha256": "7c96e0bfae75e606db89ca7dd31d9cbc1b66819a21a4df979c827dc2d5641006"
+    },
+    "polynomial-products/explorer/defined/tag/PC0005.html": {
+      "bytes": 9238,
+      "sha256": "7adea6add1ad8a9478583ce0b5a19a9a2eb8caffcc1dded1ce25876d024ac060"
+    },
+    "polynomial-products/explorer/defined/tag/PC0006.html": {
+      "bytes": 14933,
+      "sha256": "223a224c5e31d6c81651a9326d8622a87b62a8d8596596480fe2d541cfade4bb"
+    },
+    "polynomial-products/explorer/defined/tag/PC0007.html": {
+      "bytes": 19959,
+      "sha256": "f8aef64a232220f577cc8458c0ff25232740861202d365de30b24777928a1344"
+    },
+    "polynomial-products/explorer/defined/tag/PC0008.html": {
+      "bytes": 19263,
+      "sha256": "8d593e3738c639a88b7bbf3655f5c80c95a8069c51ab2323acc9e781209032d1"
+    },
+    "polynomial-products/explorer/defined/tag/PC0009.html": {
+      "bytes": 18079,
+      "sha256": "65b734bd81aa4b072549de9cf3c5f8a0b6d252e226a2a5d0cf8e09b3f9aecd39"
+    },
+    "polynomial-products/explorer/defined/tag/PC000A.html": {
+      "bytes": 12634,
+      "sha256": "66c493780f0e5d255ae588721192e569a766dcda38fe8762035a3ad12a8e3a37"
+    },
+    "polynomial-products/explorer/defined/tag/PC000B.html": {
+      "bytes": 12331,
+      "sha256": "bb1a55efd978378496621e1f8a7bf19585381a94518a2c4ddcd25b86bfb1b94c"
+    },
+    "polynomial-products/explorer/defined/tag/PC000C.html": {
+      "bytes": 17487,
+      "sha256": "74a9cec26045e962f058c4a836d3a9865aace7407d2606afb7c0957f736db8e9"
+    },
+    "polynomial-products/explorer/defined/tag/PC000D.html": {
+      "bytes": 14310,
+      "sha256": "9cef0aeb28fad89775f51440a58618722844bf9804a65e43e4a8790bf4eea6f3"
+    },
+    "polynomial-products/explorer/defined/tag/PC000E.html": {
+      "bytes": 14636,
+      "sha256": "3fe3e37f967206fd5a62bf2964fe923548a1a268c771579a3eac7593982deccc"
+    },
+    "polynomial-products/explorer/defined/tag/PC000F.html": {
+      "bytes": 24033,
+      "sha256": "e79ab8a8e609aac94d8c80a1861b2c5a3c200fc9390ffa9e2a918720228ce2cc"
+    },
+    "polynomial-products/explorer/defined/tag/PC0010.html": {
+      "bytes": 25687,
+      "sha256": "1ef21d652ac858542d7733d9a3e7cec990d8cc6f979b10a2695cf1a612a3f2ad"
+    },
+    "polynomial-products/explorer/defined/tag/PC0011.html": {
+      "bytes": 13131,
+      "sha256": "bf61b5e4182a8072fa8ffca04d42fe4f8df05ba9ba3d1cbae5965053e9216ee0"
+    },
+    "polynomial-products/explorer/defined/tag/PC0012.html": {
+      "bytes": 19661,
+      "sha256": "6ed15c5def1f23060db40d029bfc9b49a2fb43f50e03eba371caee54aa316de0"
+    },
+    "polynomial-products/explorer/defined/tag/PC0013.html": {
+      "bytes": 19360,
+      "sha256": "5f100fbdec316882702c061e2e9d1691f518e2be12912aa65d13058b13a32507"
+    },
+    "polynomial-products/explorer/defined/tag/PC0014.html": {
+      "bytes": 29835,
+      "sha256": "90f941556bbd064738f30d09a56da51ef5d14d10f0372c1e0734ca849e1bb092"
+    },
+    "polynomial-products/explorer/defined/tag/PC0015.html": {
+      "bytes": 14983,
+      "sha256": "6d2fd15242540e2bb094806fd6cc21fb3278182a47e0f39c6399b35cc016d7d3"
+    },
+    "polynomial-products/explorer/defined/tag/PC0016.html": {
+      "bytes": 27540,
+      "sha256": "a9e9469330cbc2d3310415bbd1188403e91f3fada77012cd122947f9ef3d7900"
+    },
+    "polynomial-products/explorer/defined/tag/PC0017.html": {
+      "bytes": 35722,
+      "sha256": "5214689ec88a2e098d110cdd4b93c16dd2915a0a3698f517843d91d1c650d293"
+    },
+    "polynomial-products/explorer/defined/tag/PC0018.html": {
+      "bytes": 25250,
+      "sha256": "22d5fe0de4d0e84c2c689975a3128b087b49d90146e96e46c26f17d911732753"
+    },
+    "polynomial-products/explorer/defined/tag/PC0019.html": {
+      "bytes": 25400,
+      "sha256": "a8312a6fe099805660e6c081663791a5d59f36210896702add9adc7f3bd1fc10"
+    },
+    "polynomial-products/explorer/defined/tag/PC001A.html": {
+      "bytes": 25901,
+      "sha256": "9487049ca706bcc131ad02732772bfb56f22de2ec0a6fc1f45c9a65ec68e7779"
+    },
+    "polynomial-products/explorer/defined/tag/PC001B.html": {
+      "bytes": 24189,
+      "sha256": "13770b0b2ace1cb2158de7904561a026259c24b5d6a544bc123349c5c71d621d"
+    },
+    "polynomial-products/explorer/defined/tag/PC001C.html": {
+      "bytes": 25231,
+      "sha256": "833b9dff47bcce3cd8747b684a0de633e0b90dadc1447ded2f3dbd14e6d2c949"
+    },
+    "polynomial-products/explorer/defined/tag/PC001D.html": {
+      "bytes": 34206,
+      "sha256": "a40865129a5d9aac9e75898f42ef1faa158fed0c0f12cbcc5f24a1d1ce7b084b"
+    },
+    "polynomial-products/explorer/defined/tag/PC001E.html": {
+      "bytes": 38304,
+      "sha256": "17073f40a806ef984dede9c9157625d11015dfe0d61fa0b5ae71e2f9934eca58"
+    },
+    "polynomial-products/explorer/defined/tag/PC001F.html": {
+      "bytes": 20811,
+      "sha256": "4ba710b463946ee05bfcd3638c7c8de382b655369f4335a93a9afec9c46676a7"
+    },
+    "polynomial-products/explorer/defined/tag/PC0020.html": {
+      "bytes": 21205,
+      "sha256": "14e6c0d41585d97a3d628601d5db945eb801dcb616eddcbbb603eb492a8e4c7c"
+    },
+    "polynomial-products/explorer/defined/tag/PC0021.html": {
+      "bytes": 32104,
+      "sha256": "4c7ef3ed4b18ac7122a0c050b5b51df47802a71bc8fd7eb1f8a863b27e7b572c"
+    },
+    "polynomial-products/explorer/defined/tag/PC0022.html": {
+      "bytes": 12126,
+      "sha256": "7ef9bcf729adb834dc981f564c16a05680756e18e7c1a548ac74725653fb71df"
+    },
+    "polynomial-products/explorer/defined/tag/PC0023.html": {
+      "bytes": 11362,
+      "sha256": "c3621c9b40f2f7d295b6c35eea9e77eb1eb3fe46514a2755052986496ddd92b0"
+    },
+    "polynomial-products/explorer/defined/tag/PC0024.html": {
+      "bytes": 23926,
+      "sha256": "ab2351e1ce4e0973ae0a7b52dedee76897f50c7951a5b5176631d6beb8dbd040"
+    },
+    "polynomial-products/explorer/defined/tag/PC0025.html": {
+      "bytes": 32188,
+      "sha256": "0f172ae12a15e1470184f722aa3cb6f748a12721731a16414dc3361e7e7a9a7a"
+    },
+    "polynomial-products/explorer/defined/tag/PC0026.html": {
+      "bytes": 46328,
+      "sha256": "4d7fe1afee8cf81bb715a9b30ef57a9f40bd83d8208ce75da0f6525e37e03b56"
+    },
+    "polynomial-products/explorer/defined/tag/PC0027.html": {
+      "bytes": 41572,
+      "sha256": "b10646c99e430d33c48bbc909ecca534f61864496c1e67cf567475ce5c68490f"
+    },
+    "polynomial-products/explorer/defined/tag/PC0028.html": {
+      "bytes": 26733,
+      "sha256": "f5928acc855880c3723d7d7d75bbcce392230ed1bdce4d5101a3fee121bf5b77"
+    },
+    "polynomial-products/explorer/defined/tag/PC0029.html": {
+      "bytes": 45961,
+      "sha256": "34cfed39b1ba7b1be67a56f70f0636f97b1b916e6156c9ff3821d25daa6d2bbb"
+    },
+    "polynomial-products/explorer/defined/tag/PC002A.html": {
+      "bytes": 24592,
+      "sha256": "6393b76e04bbd893802d325e709648dea0680dfa48b5b45396e92f9045d3a455"
+    },
+    "polynomial-products/explorer/defined/tag/PC002B.html": {
+      "bytes": 27762,
+      "sha256": "884fa26d7bc7caa988119097ed1ae8b03c5ce5be75e1d47161292ee1e59af6f2"
+    },
+    "polynomial-products/explorer/defined/tag/PC002C.html": {
+      "bytes": 27974,
+      "sha256": "ef37e57b423a65c9c784263881fb26e09a2bc221e9a94ccb7704de7fea551106"
+    },
+    "polynomial-products/explorer/defined/tag/PC002D.html": {
+      "bytes": 40387,
+      "sha256": "2a44737d1af4477262459babc8051f9cbe76eba4a79e40670dd013b4051d3f1c"
+    },
+    "polynomial-products/explorer/defined/tag/PC002E.html": {
+      "bytes": 9108,
+      "sha256": "1ea481cb29aa3c30a6f0cbf6381aea89eb4822ff5f8595b00958ddf8ccb33019"
+    },
+    "polynomial-products/explorer/defined/tag/PC002F.html": {
+      "bytes": 10973,
+      "sha256": "ba40981d4161530b995fd0e34bd5494dd6866777da05d4cfd5791132dc7f4b92"
+    },
+    "polynomial-products/explorer/defined/tag/PC0030.html": {
+      "bytes": 13945,
+      "sha256": "8d5c952dc93278777ae4ef2c4bf074f1288e1e31b6869698b9ad2c83fce4b819"
+    },
+    "polynomial-products/explorer/defined/tag/PC0031.html": {
+      "bytes": 10681,
+      "sha256": "eba8261cd77192ffc9992284939540fc02c4473c2b2220af345403431a1c63a0"
+    },
+    "polynomial-products/explorer/defined/tag/PC0032.html": {
+      "bytes": 13181,
+      "sha256": "f8c4d21ad4d3fb6d5ed62564f5864d579d0eae752140c4c6cc9e176f3797daef"
+    },
+    "polynomial-products/explorer/defined/tag/PC0033.html": {
+      "bytes": 30589,
+      "sha256": "68161f229edf3332a615bdff5917774d637deb34c64113fca417d27ebea2da10"
+    },
+    "polynomial-products/explorer/defined/tag/PC0034.html": {
+      "bytes": 45652,
+      "sha256": "3681c572b6fe7f3885c0cf38d62cfabca1cf54222ec26cc15b551a95b08bd770"
+    },
+    "polynomial-products/explorer/defined/tag/PC0035.html": {
+      "bytes": 38585,
+      "sha256": "763619fc85681a6f8646dadb4a03280f6986a2164af132860943c2575e28a460"
+    },
+    "polynomial-products/explorer/index.html": {
+      "bytes": 55457,
+      "sha256": "c9954cc5641927dffcd339c6ba30cd35468babfd6922cc7bd51b9a1f0e693651"
+    },
+    "polynomial-products/explorer/tag/PC0001.html": {
+      "bytes": 11344,
+      "sha256": "c202ff862fc11b0caf98b981244e6d911549115420e938dc70875f44156e0778"
+    },
+    "polynomial-products/explorer/tag/PC0002.html": {
+      "bytes": 15719,
+      "sha256": "1dff9ef4aa69b9352a78d338ca91660e30aa32ebc812f6b4878d75527213cfb1"
+    },
+    "polynomial-products/explorer/tag/PC0003.html": {
+      "bytes": 9052,
+      "sha256": "d3b01fd4030e885f3ea0eae952feeecfdd2977e5dc5108b618a2b5eedccb0b66"
+    },
+    "polynomial-products/explorer/tag/PC0004.html": {
+      "bytes": 10459,
+      "sha256": "6efa35a0232f816fa785727e1aad805a4111fd73a45418c06329f2b8b8ff1dc7"
+    },
+    "polynomial-products/explorer/tag/PC0005.html": {
+      "bytes": 10663,
+      "sha256": "817e9510cf4d9b6b2ee5bb48379c754740a4563e8247e75c34bf0777b3bd2664"
+    },
+    "polynomial-products/explorer/tag/PC0006.html": {
+      "bytes": 18565,
+      "sha256": "0100b4a412df2e5cd1b2b0bbb741ffbd7ae1ba216aabe417ea8d9198be754aec"
+    },
+    "polynomial-products/explorer/tag/PC0007.html": {
+      "bytes": 25037,
+      "sha256": "af277498eeefb6b6f8243da7c676767099aa2f295e9b12a270898a074291a666"
+    },
+    "polynomial-products/explorer/tag/PC0008.html": {
+      "bytes": 22417,
+      "sha256": "849b7f72f84183ee4a84fdc2560604974ed2a58965e84694559dae0aeff01306"
+    },
+    "polynomial-products/explorer/tag/PC0009.html": {
+      "bytes": 22521,
+      "sha256": "d4a95832f552c892c9ebc201bceacd89a973bb79dff4490cfeb8e9a1678e02f6"
+    },
+    "polynomial-products/explorer/tag/PC000A.html": {
+      "bytes": 14577,
+      "sha256": "2de38c4f709d53189084fe1165bc3229f64360c04b177766237cce6b8d2aee5e"
+    },
+    "polynomial-products/explorer/tag/PC000B.html": {
+      "bytes": 14053,
+      "sha256": "76d98f29a47e34f1b51f76e92a98a501534f8a1f53d4ca3a94770619bf5cb5df"
+    },
+    "polynomial-products/explorer/tag/PC000C.html": {
+      "bytes": 22881,
+      "sha256": "95247bc03c3b60ae5b3a9acda06c924fb9a0adda544e61acd2d2e6ee7dedca0a"
+    },
+    "polynomial-products/explorer/tag/PC000D.html": {
+      "bytes": 17447,
+      "sha256": "857e1243b643ecb233b71c0776edc40471c6a41016a74a5e907ee1557bda2738"
+    },
+    "polynomial-products/explorer/tag/PC000E.html": {
+      "bytes": 16964,
+      "sha256": "6467cfefbda5baf271aff1f5be475a6ea1483fd09f530c867d95df9911ac0914"
+    },
+    "polynomial-products/explorer/tag/PC000F.html": {
+      "bytes": 36035,
+      "sha256": "b1efc3ab6a200d399987ad681474bb71501c58b7559248615a7e5b442582050c"
+    },
+    "polynomial-products/explorer/tag/PC0010.html": {
+      "bytes": 31163,
+      "sha256": "5f649bdac63dbe88b355cbbcc750b62c8368c72540f79bf2fefd6f6eab89cae3"
+    },
+    "polynomial-products/explorer/tag/PC0011.html": {
+      "bytes": 15009,
+      "sha256": "448ddcefdd046a5f186b53de863c2cdb4932236c6f72aee61ba272652662b479"
+    },
+    "polynomial-products/explorer/tag/PC0012.html": {
+      "bytes": 23610,
+      "sha256": "9e2699c8cb8fd0fed7a1b371bb1f5869ac04751577fdd2e9b9a335901668bf50"
+    },
+    "polynomial-products/explorer/tag/PC0013.html": {
+      "bytes": 27053,
+      "sha256": "4eba2e8229279320e36ceee896c6f28087a9324a0c8a165406f4db127bd04dd5"
+    },
+    "polynomial-products/explorer/tag/PC0014.html": {
+      "bytes": 38754,
+      "sha256": "ef2015ea133f3408cc92e109daa126f35b72248a158c69af623876dac961fdb6"
+    },
+    "polynomial-products/explorer/tag/PC0015.html": {
+      "bytes": 15569,
+      "sha256": "b2181115346683a51045967af991339ac7acd0cb053fb05b74b0b5dba99920e2"
+    },
+    "polynomial-products/explorer/tag/PC0016.html": {
+      "bytes": 30375,
+      "sha256": "e0538acf1df841c9def246c35a03ccce8c060fb1e713dd4732e14c4b6037ea82"
+    },
+    "polynomial-products/explorer/tag/PC0017.html": {
+      "bytes": 48677,
+      "sha256": "17f09d3f6542e216ec36cf6c775be394e165a958b027d8eec33e08ce155b95e3"
+    },
+    "polynomial-products/explorer/tag/PC0018.html": {
+      "bytes": 32288,
+      "sha256": "ab3d8d4bb3d2e2d53a5ab6fc640932b7800f6fc87eb086e7cebe5fb66a427064"
+    },
+    "polynomial-products/explorer/tag/PC0019.html": {
+      "bytes": 32495,
+      "sha256": "54a7d156f4e26c52248ba57356d43f030142c2c4ed6bec47fb74d437607a339f"
+    },
+    "polynomial-products/explorer/tag/PC001A.html": {
+      "bytes": 33075,
+      "sha256": "42e8757a9253034e695ca6bd40866b769f724ae7a676e42a07c48681a36c6a18"
+    },
+    "polynomial-products/explorer/tag/PC001B.html": {
+      "bytes": 32215,
+      "sha256": "38c57b4a0be95c8f730b8739b60e0ae36e341aff47818ea0625caa73a4dd4348"
+    },
+    "polynomial-products/explorer/tag/PC001C.html": {
+      "bytes": 31889,
+      "sha256": "2b5b77b141fbe303251eb903d8f540ca49d4e85221cf4f4f4148ef6b025ea70a"
+    },
+    "polynomial-products/explorer/tag/PC001D.html": {
+      "bytes": 60795,
+      "sha256": "915439a230659d932ac1078d337e990a35e8159650ddf93f879b6ba50599fa3d"
+    },
+    "polynomial-products/explorer/tag/PC001E.html": {
+      "bytes": 43802,
+      "sha256": "e7dcd88e505f61e9ccd3b2de85c603c27a72e2d1cdc7704ae82a55013317639d"
+    },
+    "polynomial-products/explorer/tag/PC001F.html": {
+      "bytes": 22865,
+      "sha256": "715c416746e0323f2f060b0c556d7b4bab16f1dd1601306cf2197eddc7597cac"
+    },
+    "polynomial-products/explorer/tag/PC0020.html": {
+      "bytes": 29385,
+      "sha256": "5d2fa75f600832f27ccc33b4aca5161961f0dd094c9eab2b9cc4d3bd22c28632"
+    },
+    "polynomial-products/explorer/tag/PC0021.html": {
+      "bytes": 40868,
+      "sha256": "b8b5ee82cfc66d9decc6f5db1826e70a5f9ca5cf51255d3256bbe9c2bd1b3815"
+    },
+    "polynomial-products/explorer/tag/PC0022.html": {
+      "bytes": 15972,
+      "sha256": "7c21b2e34ad154e5fa08f0b5bf95c58ccf102bd032535c531a37e764f1660436"
+    },
+    "polynomial-products/explorer/tag/PC0023.html": {
+      "bytes": 14289,
+      "sha256": "515545c419241a00c18eb85b62a4e87c9cef479e05578a59fe97cbe20e869607"
+    },
+    "polynomial-products/explorer/tag/PC0024.html": {
+      "bytes": 25338,
+      "sha256": "dc85f3a78108b1468843d4b2cbf5215370f72a2fde3479b77ca1d7fb39989305"
+    },
+    "polynomial-products/explorer/tag/PC0025.html": {
+      "bytes": 33855,
+      "sha256": "60f5bcedbbbb26abc1c290d40a61e7758d5209d76229a45ddeaa0baf85549ea6"
+    },
+    "polynomial-products/explorer/tag/PC0026.html": {
+      "bytes": 52357,
+      "sha256": "40989c4bb565124297f001e9d021c8337a642e5f8f06a8df04b9a99fcab26b38"
+    },
+    "polynomial-products/explorer/tag/PC0027.html": {
+      "bytes": 44808,
+      "sha256": "a4120551d0c8f1cb783b5c5089d32cb4612bb6cf751f8a36184d1c6adfcd74da"
+    },
+    "polynomial-products/explorer/tag/PC0028.html": {
+      "bytes": 37655,
+      "sha256": "31bb5d6242b0b36b218f8b23eb737af4136a724d7f2c59d5e112b04a56663136"
+    },
+    "polynomial-products/explorer/tag/PC0029.html": {
+      "bytes": 62123,
+      "sha256": "2bfeaf4cb7dbb3427c91b6eeab2203fd81298d7b873952447c95f7f869dc0e84"
+    },
+    "polynomial-products/explorer/tag/PC002A.html": {
+      "bytes": 26413,
+      "sha256": "2dc155bb66a38271a7ca265d0a1b7d5c4c69b52e1205c3ce0857462693a1c72e"
+    },
+    "polynomial-products/explorer/tag/PC002B.html": {
+      "bytes": 37357,
+      "sha256": "67c89ca1d58b62fbeec5e84a7ae074dd638c59b0303018c0ffb1b1a7595cd8a6"
+    },
+    "polynomial-products/explorer/tag/PC002C.html": {
+      "bytes": 37705,
+      "sha256": "a9b537eb2fdff58185b523df2b2d14dd9732bf7753143de6080cf7a719681393"
+    },
+    "polynomial-products/explorer/tag/PC002D.html": {
+      "bytes": 47487,
+      "sha256": "2a54bba7ccd965858179a2238b492606f54668ade0f0dc72e592d88b6a3e07a1"
+    },
+    "polynomial-products/explorer/tag/PC002E.html": {
+      "bytes": 10908,
+      "sha256": "59d4888084a8b37ef71a3f2bd772a8267ff867fc8af9254c0e918435368186fe"
+    },
+    "polynomial-products/explorer/tag/PC002F.html": {
+      "bytes": 12677,
+      "sha256": "06b569a3532f1f64e2b753191c105ec2dcf3dfbb59cfc61158447a34a264792f"
+    },
+    "polynomial-products/explorer/tag/PC0030.html": {
+      "bytes": 16284,
+      "sha256": "ea362641c849c1340f99db265545c625ca0cebd52aea98f87623e6241705164d"
+    },
+    "polynomial-products/explorer/tag/PC0031.html": {
+      "bytes": 12187,
+      "sha256": "c1e0c4e6ae46f7c671204f3de74adc45f6376fbbfd5475d3ea54391ecb96b934"
+    },
+    "polynomial-products/explorer/tag/PC0032.html": {
+      "bytes": 16527,
+      "sha256": "a3c657f3275f9073962dedbb680f62f0973e894e8ac663bae1c69ec0e56cf8b3"
+    },
+    "polynomial-products/explorer/tag/PC0033.html": {
+      "bytes": 46800,
+      "sha256": "206ed991249ef2c826c412cc74c1626c3ae13eb03340f94cd7752b541a00a247"
+    },
+    "polynomial-products/explorer/tag/PC0034.html": {
+      "bytes": 92636,
+      "sha256": "734f072c78541a2f196c1c0aeb4453f1fe72438ebc0baffe1bf15afb229f6b06"
+    },
+    "polynomial-products/explorer/tag/PC0035.html": {
+      "bytes": 60047,
+      "sha256": "55863b1e2742f3cfa230f470c35be2050df7457b72619be5ffc419356252808d"
+    },
+    "polynomial-products/index.html": {
+      "bytes": 6788,
+      "sha256": "78e50304cd9d6e3eee6d53e6f5bcfeb86bdbecdc30b67b79a99190e005dba94f"
+    },
+    "rectangular-sums/api/checkpoint.json": {
+      "bytes": 4214,
+      "sha256": "9b34d342ba2fea6bcbdbae8e82913274b791daf750844d613c823c2b1aa4ba9f"
+    },
+    "rectangular-sums/api/corpus.json": {
+      "bytes": 3942065,
+      "sha256": "1ce36b7acc4b3fad5d2c7489936a9d285d57adb0af2790a7afb9ab0b504ff32c"
+    },
+    "rectangular-sums/api/graph.json": {
+      "bytes": 64460,
+      "sha256": "4485a127845f23675a88fa5581824d392ca65904a1de48d0c52ad762f9319802"
+    },
+    "rectangular-sums/checkpoint.html": {
+      "bytes": 2457468,
+      "sha256": "ef03eb8c97d172cade82471e31ec415b8d791395a75d1120afcdbb53b35d65ea"
+    },
+    "rectangular-sums/explorer/defined/api/graph.json": {
+      "bytes": 64460,
+      "sha256": "4485a127845f23675a88fa5581824d392ca65904a1de48d0c52ad762f9319802"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0058.html": {
+      "bytes": 3753,
+      "sha256": "fa80915f0359ec904a21a51a00a70ca43ad5617ee091f6b9bc52602810441162"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0142.html": {
+      "bytes": 3323,
+      "sha256": "ba3b112516ce31efe5c1b48b816e2dd968603d171be959948f9ee85b31f6812c"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0143.html": {
+      "bytes": 3715,
+      "sha256": "f872e92d39cb3d846db985aefa6e785aa9883edfa9e4e2cd1c2d59eafe549e28"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0144.html": {
+      "bytes": 5051,
+      "sha256": "499b1352137a657dc72db8cd6a3224c8abd3d94e764ae66b78c6feafb48393f4"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0251.html": {
+      "bytes": 9220,
+      "sha256": "b1424ad85a57c304a26b2d54ca3f65f09b88f566c2f39fc4a54481a7a559690f"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0252.html": {
+      "bytes": 8423,
+      "sha256": "2b355f647d9d416136b9350c7762aca216361680128c5789cc5b2a5c42622422"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0253.html": {
+      "bytes": 12755,
+      "sha256": "de16b6fa2b286f3c4f37f9d9100c51f77fbbc94accef43f8bb4c87c41420290c"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0254.html": {
+      "bytes": 11075,
+      "sha256": "10e24f76e45e3cff740b705c4b55b1b22673d5b3028cb1f49f9c80326e169ca9"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0264.html": {
+      "bytes": 17539,
+      "sha256": "e1ae085757ea1533d0b02ba831831d8ee8abbf938e5b0775f68952c779bf3545"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0266.html": {
+      "bytes": 29978,
+      "sha256": "3cd9c3129d3779db7617bd81da2788ac257f7b81c1053f463847c386a584609b"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0287.html": {
+      "bytes": 22580,
+      "sha256": "43a7778e2d355eb20d784b9451514af82684b757784562e3a888a0694e361fb3"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0288.html": {
+      "bytes": 33701,
+      "sha256": "2f2c3f99718666f1b57b6af2c776b11bea2cb28c846da0f6d31d4c7982a57377"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0289.html": {
+      "bytes": 52709,
+      "sha256": "20036899f4b3c704c54b15a46b84d69a9ca3b37f212f2905a0c12f2accf3fb00"
+    },
+    "rectangular-sums/explorer/defined/definition/ND0290.html": {
+      "bytes": 64322,
+      "sha256": "f2df405a769f5e28092987c77d2279065ce83b8fef672cc79f5d5b0ad3c90169"
+    },
+    "rectangular-sums/explorer/defined/definition/PD0001.html": {
+      "bytes": 2965,
+      "sha256": "f17a771aca7670d479ecae0d0d0064d48d25bf1c8fcc9a0fa257e5bbebcaed6d"
+    },
+    "rectangular-sums/explorer/defined/definition/PD0002.html": {
+      "bytes": 3634,
+      "sha256": "18d28e5e0412c63b83cbc41b3e66f33ffe5e8467ba00522e45213be3846e12ed"
+    },
+    "rectangular-sums/explorer/defined/definition/PD0013.html": {
+      "bytes": 3309,
+      "sha256": "efb2cea68d158aa40e01e911e8840e58ac48abc76f5f0e3208f6a0732b5d2595"
+    },
+    "rectangular-sums/explorer/defined/definition/PD0015.html": {
+      "bytes": 5454,
+      "sha256": "ed24938d17c2a32116b2fd2a1970985c0a437baa37c035ba4da3e7224835ec66"
+    },
+    "rectangular-sums/explorer/defined/graph.html": {
+      "bytes": 51217,
+      "sha256": "5deb2ca548f2a5bba27fd73fb9333630f0ff2d8ee852f85e702da63ec64a0dc8"
+    },
+    "rectangular-sums/explorer/defined/index.html": {
+      "bytes": 37843,
+      "sha256": "a93c71e7d6f683a3dd4b095381c49c3480c06f43dacb702098a951573018cd2d"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0001.html": {
+      "bytes": 32176,
+      "sha256": "a3bdd61fe6a5743799336d0fc32ef6a904b2f2bc706a6959a23963cfba7dea10"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0002.html": {
+      "bytes": 43104,
+      "sha256": "a4de0556e81333b1e61ed756cc219c5ad0ca230a2ac3917bed24772a486c1857"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0003.html": {
+      "bytes": 30838,
+      "sha256": "fb65918276ac07ff0804b38d623148cb36b3774338a030e9c02f876cf3ec3bbe"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0004.html": {
+      "bytes": 52865,
+      "sha256": "76efddd27233317597ac5eb2c822efcdb8a4cd446d92428ca5e82c89910912e6"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0005.html": {
+      "bytes": 67211,
+      "sha256": "2a47a014b01747dc414f5bba4eaed86727da4569fc6e4070489c752e62d47eef"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0006.html": {
+      "bytes": 38177,
+      "sha256": "f5046efb50bd503ff21fda010e68df75d449b41dd3f83cd0535b607cf7a44432"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0007.html": {
+      "bytes": 60004,
+      "sha256": "c89dc4a10ac950cb53104cff3954646ccf36afb53f43af74dd281e776ce1c19f"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0008.html": {
+      "bytes": 42631,
+      "sha256": "5bde2ee6ca57e959e24f3481fbfbe94d384c1713fe6776146bcc1cfcbc2699a7"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0009.html": {
+      "bytes": 71697,
+      "sha256": "b4170ac414162f17e08f79e55ce2fb2468b4b3b5b13ec39c7d4e65631f47af2d"
+    },
+    "rectangular-sums/explorer/defined/tag/RS000A.html": {
+      "bytes": 34381,
+      "sha256": "221a77cfda3baee7132bbb3afae5eeea0eb9e612303e081f1900e26166055954"
+    },
+    "rectangular-sums/explorer/defined/tag/RS000B.html": {
+      "bytes": 41290,
+      "sha256": "6cf1715abfdd5042ac2a1d5df554b8ccb61745ce763859ea21ec634a834ee1d9"
+    },
+    "rectangular-sums/explorer/defined/tag/RS000C.html": {
+      "bytes": 76234,
+      "sha256": "0166b2f7d3dc4132feabb6cc07721ee8e592c8c29c145cb309196894441884d2"
+    },
+    "rectangular-sums/explorer/defined/tag/RS000D.html": {
+      "bytes": 75954,
+      "sha256": "f4830b0c78bd8b9adaf44fc3cd14b39165b96ae621b2e75f50832489b6b82a99"
+    },
+    "rectangular-sums/explorer/defined/tag/RS000E.html": {
+      "bytes": 70871,
+      "sha256": "23e7203b0c328fcd9760b47f80f2702b42fbb4614af82bccd20009065f8ec34a"
+    },
+    "rectangular-sums/explorer/defined/tag/RS000F.html": {
+      "bytes": 71360,
+      "sha256": "317c3eebfa45c97d03a60ce34232bf7201d221c3b62f527f63fb71f3635ef110"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0010.html": {
+      "bytes": 81607,
+      "sha256": "6d9b41b28e78af03953bf8e247693dae49cc928994a913ed3f48ab8cac197bb7"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0011.html": {
+      "bytes": 100784,
+      "sha256": "a23702c41b25b206fd079f3fc676b854c761625f87fd15c527a87fa7136c412f"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0012.html": {
+      "bytes": 58418,
+      "sha256": "b7178b5cb8809cc7c511e69c4a5d1dfd148f71f39862057e0d20530cb13da8e3"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0013.html": {
+      "bytes": 109958,
+      "sha256": "179f872b9447a4c62795cdc9958e4306c56e4cce6816fad4ea72bf7342aa2cb7"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0014.html": {
+      "bytes": 144982,
+      "sha256": "199f357246cbfb3de7319671430d3297e6a9cb1b4806ce47f680ad5e593aa908"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0015.html": {
+      "bytes": 68495,
+      "sha256": "36bce7a1bf0b3095e3326b01d85fb580901360d4d446a60147f5db99d16968c5"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0016.html": {
+      "bytes": 110233,
+      "sha256": "91fa92ea348216a0a912e22135ec4300888b6391a246b4fb9821e56e8f8c3cac"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0017.html": {
+      "bytes": 74859,
+      "sha256": "ec832808263c6f02eeac024f645b6eb2ad81366c5fb973a6949cf1be573e31eb"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0018.html": {
+      "bytes": 138291,
+      "sha256": "89e43fa0c8f75a28a99369ab2f0bafc03200144a539f3f59903aacc4785211a6"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0019.html": {
+      "bytes": 134879,
+      "sha256": "9cf0d7ec8df248adf63915115e27b69f35acef8fb11ae48b88050fe6830477d0"
+    },
+    "rectangular-sums/explorer/defined/tag/RS001A.html": {
+      "bytes": 66088,
+      "sha256": "fb62f112be1d0dc30bcca60c91daca70f3b08430de1508f3e2e8b4b4659ffc23"
+    },
+    "rectangular-sums/explorer/defined/tag/RS001B.html": {
+      "bytes": 75892,
+      "sha256": "830afc56942106cc78c291267367c7e696e62bf58b1e7e02e44830c46a611839"
+    },
+    "rectangular-sums/explorer/defined/tag/RS001C.html": {
+      "bytes": 67597,
+      "sha256": "bdaf7fa6a2eaf5e1d839193bd44aa0071c1539f81243195dd040a81eb15b194b"
+    },
+    "rectangular-sums/explorer/defined/tag/RS001D.html": {
+      "bytes": 169192,
+      "sha256": "d33acd6b55dd3f5bc69f8a49fcebcb2cf438f01ffacf358cb74e52bfaf197eea"
+    },
+    "rectangular-sums/explorer/defined/tag/RS001E.html": {
+      "bytes": 148361,
+      "sha256": "22eda2f5a4065c1d148f508fc461a0ad25711b00e95faedbc643abc576b63153"
+    },
+    "rectangular-sums/explorer/defined/tag/RS001F.html": {
+      "bytes": 154185,
+      "sha256": "8de2dd5e7fdc4f247ad5edbbb7a88181984c1164725535f01729f30f012e6001"
+    },
+    "rectangular-sums/explorer/defined/tag/RS0020.html": {
+      "bytes": 134935,
+      "sha256": "513d630861d0979b6a98d40f9aedca75fc0214bcb009f8d4195056c4ac7ca062"
+    },
+    "rectangular-sums/explorer/index.html": {
+      "bytes": 35368,
+      "sha256": "74e9ce792641f22e501698095af228f18fdf6ea9b1cf13de543402b141512e96"
+    },
+    "rectangular-sums/explorer/tag/RS0001.html": {
+      "bytes": 40479,
+      "sha256": "071c2e2759dfbcf4d7e85ae28bf1ef0ae1942c9b03fe53013dda7808fa3033ac"
+    },
+    "rectangular-sums/explorer/tag/RS0002.html": {
+      "bytes": 45011,
+      "sha256": "606fb96969ef75a66531c0ede2ecb7a87ec86a0b42aa2272179c5c2e7e0f4f7a"
+    },
+    "rectangular-sums/explorer/tag/RS0003.html": {
+      "bytes": 32088,
+      "sha256": "ba9bb28e69d037687aab2b5c0b4bc09951d516e2741c43ca32cdaf7f8c97cba3"
+    },
+    "rectangular-sums/explorer/tag/RS0004.html": {
+      "bytes": 56132,
+      "sha256": "d2a45551e7844c4831309675ea365dcdc9d06ae0fc5a826950931745067aeb8d"
+    },
+    "rectangular-sums/explorer/tag/RS0005.html": {
+      "bytes": 78913,
+      "sha256": "260ac8fc70a47d2bfaa1037c01845450a97a48129145bdb1492160a59c2c8da6"
+    },
+    "rectangular-sums/explorer/tag/RS0006.html": {
+      "bytes": 76161,
+      "sha256": "e798a06b818731e2c3b2f9c0001b7a343a1e0b4c6a89e040949af6a1ba91b18f"
+    },
+    "rectangular-sums/explorer/tag/RS0007.html": {
+      "bytes": 78673,
+      "sha256": "e32a7b1814f26f73adea1fe1ac3aa3b629dbd51612227b98aa93a81ad822a102"
+    },
+    "rectangular-sums/explorer/tag/RS0008.html": {
+      "bytes": 70487,
+      "sha256": "4c139280673ae0fa811b59aeaae90c4147b73a5807132a6dd1c082b473c947ed"
+    },
+    "rectangular-sums/explorer/tag/RS0009.html": {
+      "bytes": 74233,
+      "sha256": "820d415a4ee0b94e5d3055e9794190cde66c1be29f3ebe76b54892d9f147d208"
+    },
+    "rectangular-sums/explorer/tag/RS000A.html": {
+      "bytes": 35189,
+      "sha256": "138f4495ab43fd29682bee82c5988c77c471557d150812c5abae832662fa9af0"
+    },
+    "rectangular-sums/explorer/tag/RS000B.html": {
+      "bytes": 72317,
+      "sha256": "635f9910b415b2017016b52086c1cb9a00efe8aaad1abcc1af14b0a58c97b953"
+    },
+    "rectangular-sums/explorer/tag/RS000C.html": {
+      "bytes": 92034,
+      "sha256": "543755a72e1281eda75e86ece74cd9f5474efc39c2466a7b1a130a1151e5869a"
+    },
+    "rectangular-sums/explorer/tag/RS000D.html": {
+      "bytes": 93753,
+      "sha256": "b5d4a55baf14c3f86ccbe308bf6514491b8361abf3be2db5fd5ee03a8b2ef5a2"
+    },
+    "rectangular-sums/explorer/tag/RS000E.html": {
+      "bytes": 74506,
+      "sha256": "c91b124407647981f9af86a98099e04e69197950065d0d1da74e81bc34d019f8"
+    },
+    "rectangular-sums/explorer/tag/RS000F.html": {
+      "bytes": 103160,
+      "sha256": "27755c940730d7a8a45ed48f474ae9ec0c97e6047b8abdc1bf852abd66237d5c"
+    },
+    "rectangular-sums/explorer/tag/RS0010.html": {
+      "bytes": 116700,
+      "sha256": "53f1b72e6ea17e50b4f4dba660b0c79d6a73a52e3d98b3fe9b393cb0ad197b5e"
+    },
+    "rectangular-sums/explorer/tag/RS0011.html": {
+      "bytes": 102929,
+      "sha256": "4232d1519403e98ea370d6bc8995b2c2c89bbd4d3c3c4c05ec52f531f7d8014e"
+    },
+    "rectangular-sums/explorer/tag/RS0012.html": {
+      "bytes": 59815,
+      "sha256": "364a1335079ef82030359ee61c6c5106910def387cc3dd2c38282c24bab79771"
+    },
+    "rectangular-sums/explorer/tag/RS0013.html": {
+      "bytes": 113649,
+      "sha256": "c009d9d6386d032f7134ae9729b3b134e74eb990b31e63b67117d7a7ec987d5e"
+    },
+    "rectangular-sums/explorer/tag/RS0014.html": {
+      "bytes": 182275,
+      "sha256": "9d30ce8ab07b4ae998076b1d8630803e76350e4c0acc39b55d4110f333c57949"
+    },
+    "rectangular-sums/explorer/tag/RS0015.html": {
+      "bytes": 157632,
+      "sha256": "5bdc19322ec907c823de7a6079d717805672eb43c00dcaf9f541a7db298ca04c"
+    },
+    "rectangular-sums/explorer/tag/RS0016.html": {
+      "bytes": 158487,
+      "sha256": "e99a04263203a671dd199ec2cc086052d61b37384f421b09fb62164ef714bcda"
+    },
+    "rectangular-sums/explorer/tag/RS0017.html": {
+      "bytes": 131092,
+      "sha256": "d1382a8afdcd679b7dcd9d8794f68473281c053ca49850812ee0a1d8db43ba0a"
+    },
+    "rectangular-sums/explorer/tag/RS0018.html": {
+      "bytes": 140875,
+      "sha256": "b8bbd44491c644197d652051aea570b3297719473b7967b08c9ca2cad086f66f"
+    },
+    "rectangular-sums/explorer/tag/RS0019.html": {
+      "bytes": 199789,
+      "sha256": "d0209f07050e99a4474579e02fc735cfe5399391be42f191b36504aa48ca7cae"
+    },
+    "rectangular-sums/explorer/tag/RS001A.html": {
+      "bytes": 66897,
+      "sha256": "bc6ed4cfc47a97eba235fbfa2c02b59174a38820704125ed768fe9c08501e71e"
+    },
+    "rectangular-sums/explorer/tag/RS001B.html": {
+      "bytes": 94190,
+      "sha256": "95526217b06ef85b746af9cc09e963f8a38cd645acdcd73f852db900f998a00a"
+    },
+    "rectangular-sums/explorer/tag/RS001C.html": {
+      "bytes": 68748,
+      "sha256": "742af62bc0ac29fa0fdadb6dcc280cf819095568b85a46af4279aa489bf64df9"
+    },
+    "rectangular-sums/explorer/tag/RS001D.html": {
+      "bytes": 189636,
+      "sha256": "0f4dd26a390e947cee6887abfb084497e046095342e3261afe6ae027aaf69ad5"
+    },
+    "rectangular-sums/explorer/tag/RS001E.html": {
+      "bytes": 285126,
+      "sha256": "a671e746780de3015de8f4fcbf0a830af4fa338fae94bd46b5a401ac21ef6e67"
+    },
+    "rectangular-sums/explorer/tag/RS001F.html": {
+      "bytes": 277704,
+      "sha256": "b4982c551e89ec07f488ec76924773949d7bad097c48a102df3f887740d6066e"
+    },
+    "rectangular-sums/explorer/tag/RS0020.html": {
+      "bytes": 135275,
+      "sha256": "d3de61718250a5666fa3a6b2a0c3b766e1c6045ed8b6fcaf17dbe0005d7260be"
+    },
+    "rectangular-sums/index.html": {
+      "bytes": 6359,
+      "sha256": "5b96dbd8822fece1801d78527b40975a0581cb9948f28f2c1df8423faa06dea9"
+    },
+    "sources/divisor-involution-rfc-v1.md": {
+      "bytes": 7033,
+      "sha256": "be08d072c445cf0e63f19f1e1b95d65ffcf4abc8ffa9a95a2255e1252fde9960"
+    },
+    "sources/divisor_involution_candidate.py": {
+      "bytes": 17031,
+      "sha256": "67297015bcfbeb16b9090f537a2771d5c3cbfa4000d5c83c90cd0ba16cb15be7"
+    },
+    "sources/mobius-divisor-cancellation-rfc-v1.md": {
+      "bytes": 10664,
+      "sha256": "b9ceaa869d49b8ecf1b28b4e82337b0e6da15922ee82dd0583653562c43d7d79"
+    },
+    "sources/mobius_divisor_cancellation_candidate.py": {
+      "bytes": 46279,
+      "sha256": "9af47fd019e5899586cb02c0e124579d82c4b65d093cfc73d721f411130b457f"
+    },
+    "sources/prime-field-polynomial-convolution-rfc-v1.md": {
+      "bytes": 15150,
+      "sha256": "3c052f38582fa06142c4e856dbc90aa5ad5e938bec0277ff382f425560213cec"
+    },
+    "sources/prime_field_polynomial_convolution_candidate.py": {
+      "bytes": 49060,
+      "sha256": "20502be0d2beaee44ba4bbdb3f7c376db142dbc9c19a5a472c073b0228367c24"
+    },
+    "sources/prime_field_polynomial_degree_candidate.py": {
+      "bytes": 12579,
+      "sha256": "3419cefca1f8e4b130a7c8935218815153eaf9865fe1eeed89118ced8bf339e5"
+    },
+    "sources/signed-rectangular-sums-rfc-v1.md": {
+      "bytes": 10790,
+      "sha256": "00afe4712bfa3c5bc33c9b7c4ff436003acb37eb35ca5f6ad87fc9c1d9cea61a"
+    },
+    "sources/signed_rectangular_slice_candidate.py": {
+      "bytes": 18374,
+      "sha256": "d676600c931936ff00996209c7d744c269427eaf08611fb625e471f608861e5e"
+    },
+    "sources/signed_rectangular_sums_candidate.py": {
+      "bytes": 25356,
+      "sha256": "0ce96c5155bb7bf47f5ae2b8151631bd981263f7d05c25f6ec8b3cd365d7a26e"
+    }
+  },
+  "navigation_revision": "ac7111ec14ff",
+  "publication_scope": "local-only-checkpoint",
+  "schema": "peano-lab-local-lower-continuation-proof-explorers-v1-manifest"
+}
