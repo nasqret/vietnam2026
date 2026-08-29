@@ -1,0 +1,140 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_owned_roots": [
+    "dirichlet_constant_one_table_reencoding",
+    "dirichlet_constant_one_table_positive_unique",
+    "dirichlet_kronecker_delta_table_reencoding",
+    "dirichlet_kronecker_delta_table_positive_unique",
+    "dirichlet_delta_unit_exists",
+    "dirichlet_constant_one_realizes_divisor_sum"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 18734,
+    "bytes": 2158014,
+    "dependency_edges_including_packaging": 760,
+    "independent_lean_checked": true,
+    "nodes_including_packaging_root": 282,
+    "original_ha_checked": true,
+    "packaging_root_id": 281,
+    "path": "research/arithmetic-library/artifacts/dirichlet-units-proof-bundle-v1.json",
+    "sha256": "232ddd461eb83d97c1a6255a872be7e970b635ce1d4e958c8bed7706419687b7"
+  },
+  "complete_non_alpha_specs_sha256": "941e5868847308abdf83c321ddcfbd7375eb225234872d5688026e229d564f86",
+  "membership": "local_non_admitting_checkpoint",
+  "new_specs_sha256": "954a654694207db14acb799d843520fb12b3ff2233153b07cadb7bb5c7940911",
+  "new_theorem_count": 25,
+  "new_theorem_dependency_edges": 82,
+  "new_theorem_tactic_commands": 1109,
+  "ordered_new_names_sha256": "028ca36f90f03f3fd62bc9c92abadeae7a83386b0bd6b44abaefba0bb78358cf",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_delta_unit_exists",
+      "node_id": 274,
+      "ordinary_certificate_nodes": 25065,
+      "statement_sha256": "6924256ebdc7a4a8b46c532d5808e5794dea1430b6d1892c764a826191b4d710"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_constant_one_sum_iff",
+      "node_id": 279,
+      "ordinary_certificate_nodes": 3389,
+      "statement_sha256": "f502d0a59a4eb50a35be7b76d39904729a96e3d6d5c91d4e019a6aad9639908f"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_constant_one_realizes_divisor_sum",
+      "node_id": 280,
+      "ordinary_certificate_nodes": 12003,
+      "statement_sha256": "5aafb1de83c084f4d86aef3f3649ebc962a43b64c55c7356c45500c8db072d09"
+    }
+  ],
+  "rfc": "research/arithmetic-library/dirichlet-units-rfc-v1.md",
+  "slug": "dirichlet-units",
+  "sources": [
+    {
+      "factory": "make_dirichlet_units_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/dirichlet_units_candidate.py",
+      "sha256": "4821a0e7a8ecac28080db207dd96abf4d02a285a85da6d1173b6a1349a82b77c"
+    }
+  ],
+  "stable_member": false,
+  "support": {
+    "alpha_v30_count": 197,
+    "counted_as_new_owned_theorems": false,
+    "current_cross_track_count": 22,
+    "current_cross_track_theorems": [
+      "signed_zero_window_restrict",
+      "signed_prefix_sum_zero_tail",
+      "signed_prefix_sum_zero_value",
+      "signed_prefix_sum_last_value",
+      "dirichlet_convolution_entry_zero",
+      "dirichlet_convolution_entry_from_quotient",
+      "dirichlet_convolution_entry_from_nondivisor",
+      "dirichlet_convolution_entry_omitted_value",
+      "dirichlet_convolution_entry_quotient_product",
+      "dirichlet_convolution_entry_functional",
+      "dirichlet_convolution_entry_exists",
+      "dirichlet_convolution_prefix_zero_constructor",
+      "dirichlet_convolution_prefix_append",
+      "dirichlet_convolution_prefix_exists",
+      "dirichlet_convolution_prefix_lookup",
+      "dirichlet_convolution_sum_exists",
+      "dirichlet_convolution_entry_complement",
+      "dirichlet_convolution_prefix_value_from_entry",
+      "dirichlet_convolution_prefix_complement_reindex",
+      "dirichlet_convolution_sum_commutative",
+      "dirichlet_convolution_sum_swap",
+      "dirichlet_convolution_table_commutative"
+    ],
+    "local_non_admitted_count": 8,
+    "prior_bottom_layer_count": 21,
+    "prior_bottom_layer_theorems": [
+      "divisor_signed_table_at_from_components",
+      "divisor_signed_table_at_to_components",
+      "divisor_signed_table_from_components",
+      "divisor_signed_table_components",
+      "divisor_signed_table_lookup",
+      "divisor_signed_table_at_functional",
+      "divisor_signed_sum_from_components",
+      "divisor_signed_sum_to_components",
+      "divisor_signed_sum_exists_from_components",
+      "divisor_signed_sum_functional",
+      "divisor_signed_sum_empty_value",
+      "divisor_signed_sum_empty_exists",
+      "divisor_signed_table_equality_component_balance",
+      "divisor_signed_sum_extensional",
+      "divisor_signed_sum_successor_decompose",
+      "divisor_signed_table_lookup_from_components",
+      "divisor_signed_table_reindex_data_exists",
+      "divisor_signed_table_reindex_from_components",
+      "divisor_signed_table_reindex_functional",
+      "divisor_signed_sum_component_reindex",
+      "divisor_signed_sum_permutation_invariant"
+    ],
+    "prior_lower_continuation_count": 8,
+    "prior_lower_continuation_theorems": [
+      "divisor_complement_exists",
+      "divisor_complement_functional",
+      "divisor_complement_symmetric",
+      "divisor_complement_bounded",
+      "divisor_complement_prefix_exists",
+      "divisor_complement_prefix_lookup",
+      "divisor_complement_prefix_permutation",
+      "positive_divisor_involution_exists"
+    ],
+    "prior_lower_tier_count": 8,
+    "prior_lower_tier_theorems": [
+      "arithmetic_signed_table_component_prefix_preserved",
+      "arithmetic_signed_table_equal_entry_transport",
+      "arithmetic_signed_table_extend_at",
+      "arithmetic_signed_table_append",
+      "arithmetic_signed_table_singleton",
+      "arithmetic_signed_sum_exists",
+      "signed_table_domain_resize",
+      "signed_table_lookup_any"
+    ],
+    "published_non_admitted_count": 29
+  }
+}

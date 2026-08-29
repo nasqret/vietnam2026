@@ -1,0 +1,76 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_owned_roots": [
+    "dirichlet_signed_unit_inverse_iff",
+    "dirichlet_signed_unit_affine_solve",
+    "dirichlet_signed_unit_affine_unique"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 4704,
+    "bytes": 214864,
+    "dependency_edges_including_packaging": 146,
+    "independent_lean_checked": true,
+    "nodes_including_packaging_root": 71,
+    "original_ha_checked": true,
+    "packaging_root_id": 70,
+    "path": "research/arithmetic-library/artifacts/dirichlet-signed-units-proof-bundle-v1.json",
+    "sha256": "5045f1feb2f21a79ecb3cb03f95aaefeb8f01e616a4aa8640cbada3da62ae47b"
+  },
+  "complete_non_alpha_specs_sha256": "503e22e4a75aae8b39054144d2d3371f4c8c8f27ac584b18a1383d0e7c9660b7",
+  "membership": "local_non_admitting_checkpoint",
+  "new_specs_sha256": "503e22e4a75aae8b39054144d2d3371f4c8c8f27ac584b18a1383d0e7c9660b7",
+  "new_theorem_count": 9,
+  "new_theorem_dependency_edges": 36,
+  "new_theorem_tactic_commands": 401,
+  "ordered_new_names_sha256": "5fa7ad76083b6bd935f66698b4418e6ce85720b134ce19b40696ab87433a116c",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_signed_unit_product_classification",
+      "node_id": 62,
+      "ordinary_certificate_nodes": 2126,
+      "statement_sha256": "4c6820280f2a7c6e35eb66968d2f4819ea3276baa1af24e495ec1626e963db08"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_signed_unit_affine_solve",
+      "node_id": 68,
+      "ordinary_certificate_nodes": 4634,
+      "statement_sha256": "3c8f3184a683b282d0ef7f8d9f3671f71a9b9509599ff78b4ff47623c65660e4"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_signed_unit_affine_unique",
+      "node_id": 69,
+      "ordinary_certificate_nodes": 4908,
+      "statement_sha256": "68b300d496090f0911613338c333747776a606c71fd28d4c82849bfca1c32d11"
+    }
+  ],
+  "rfc": "research/arithmetic-library/dirichlet-signed-unit-rfc-v1.md",
+  "slug": "dirichlet-signed-units",
+  "sources": [
+    {
+      "factory": "make_dirichlet_signed_unit_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/dirichlet_signed_unit_candidate.py",
+      "sha256": "263ae0497206cee991e34e08f03df3b1922fc4918e67d4d300887aa1ba7de4df"
+    }
+  ],
+  "stable_member": false,
+  "support": {
+    "alpha_v30_count": 61,
+    "counted_as_new_owned_theorems": false,
+    "current_cross_track_count": 0,
+    "current_cross_track_theorems": [],
+    "local_non_admitted_count": 0,
+    "prior_bottom_layer_count": 0,
+    "prior_bottom_layer_theorems": [],
+    "prior_dirichlet_count": 0,
+    "prior_dirichlet_theorems": [],
+    "prior_lower_continuation_count": 0,
+    "prior_lower_continuation_theorems": [],
+    "prior_lower_tier_count": 0,
+    "prior_lower_tier_theorems": [],
+    "published_non_admitted_count": 0
+  }
+}

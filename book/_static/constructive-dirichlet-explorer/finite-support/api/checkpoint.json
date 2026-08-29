@@ -1,0 +1,90 @@
+{
+  "admitted_to_alpha": false,
+  "all_maximal_owned_roots": [
+    "signed_zero_window_empty",
+    "signed_zero_window_raise_lower",
+    "signed_prefix_sum_zero_exists",
+    "signed_prefix_sum_last_value",
+    "signed_prefix_sum_zero_padding_iff"
+  ],
+  "alpha_checked_use": false,
+  "bundle": {
+    "body_proof_nodes": 8697,
+    "bytes": 587407,
+    "dependency_edges_including_packaging": 397,
+    "independent_lean_checked": true,
+    "nodes_including_packaging_root": 170,
+    "original_ha_checked": true,
+    "packaging_root_id": 169,
+    "path": "research/arithmetic-library/artifacts/dirichlet-finite-support-proof-bundle-v1.json",
+    "sha256": "99d889c64fb066f79247afa4310e0143f42bfffbc2cf56e4bd9be3735e0cac47"
+  },
+  "complete_non_alpha_specs_sha256": "bc7cc71f059f01879f0f4812014a30cb0a720f5e8769215a3d923186847a4b9d",
+  "membership": "local_non_admitting_checkpoint",
+  "new_specs_sha256": "55874e400c4ecca7dce6e05d5d66e93ef23c091dcf9e8e5ec0a1cc772d9fa5e0",
+  "new_theorem_count": 8,
+  "new_theorem_dependency_edges": 25,
+  "new_theorem_tactic_commands": 312,
+  "ordered_new_names_sha256": "95ec8fdb5146fe8ca849860dc675e6145b8d3932fa658490e1c60079d785aefb",
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_prefix_sum_zero_tail",
+      "node_id": 164,
+      "ordinary_certificate_nodes": 5755,
+      "statement_sha256": "ae30d900f38f2fa5e22a59fe2a38056ffb4242b1fcb8ebf364c7673606f1d46b"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_prefix_sum_last_value",
+      "node_id": 167,
+      "ordinary_certificate_nodes": 12421,
+      "statement_sha256": "d813ceef952a622bca2fb25909b732dc7c4f9987720b050a3c5a41b590690013"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_prefix_sum_zero_padding_iff",
+      "node_id": 168,
+      "ordinary_certificate_nodes": 11846,
+      "statement_sha256": "0a6919b464fecaa0138aef0d8ce9f24d3e2f48357a29544523c17e67b3200f4e"
+    }
+  ],
+  "rfc": "research/arithmetic-library/signed-finite-support-rfc-v1.md",
+  "slug": "finite-support",
+  "sources": [
+    {
+      "factory": "make_signed_finite_support_candidate_theorems",
+      "path": "peano-lab/py/peano_lab/library/signed_finite_support_candidate.py",
+      "sha256": "624040e65e0852e652ecda46d2078703e8c0d062dcb06566e24e7d86e9878191"
+    }
+  ],
+  "stable_member": false,
+  "support": {
+    "alpha_v30_count": 149,
+    "counted_as_new_owned_theorems": false,
+    "current_cross_track_count": 0,
+    "current_cross_track_theorems": [],
+    "local_non_admitted_count": 0,
+    "prior_bottom_layer_count": 11,
+    "prior_bottom_layer_theorems": [
+      "divisor_signed_table_at_from_components",
+      "divisor_signed_table_at_to_components",
+      "divisor_signed_table_components",
+      "divisor_signed_table_at_functional",
+      "divisor_signed_sum_from_components",
+      "divisor_signed_sum_to_components",
+      "divisor_signed_sum_exists_from_components",
+      "divisor_signed_sum_functional",
+      "divisor_signed_sum_empty_value",
+      "divisor_signed_sum_empty_exists",
+      "divisor_signed_sum_successor_decompose"
+    ],
+    "prior_lower_continuation_count": 0,
+    "prior_lower_continuation_theorems": [],
+    "prior_lower_tier_count": 1,
+    "prior_lower_tier_theorems": [
+      "arithmetic_signed_sum_exists"
+    ],
+    "published_non_admitted_count": 12
+  }
+}

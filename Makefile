@@ -40,7 +40,7 @@ PEANO_LEAN_PUBLIC_ARGS ?=
 override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override STAGELEANAPI := _deploy/lean-api
-override PEANOAPPID := a-e367fe077425
+override PEANOAPPID := a-3c18234f975c
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs stage-lean-api deploy-site deploy-lab deploy-lab-next deploy-peano \
@@ -70,6 +70,10 @@ help:
 	@echo "  make book-constructive-lower-tier-publication  verify 126 further public research proofs without Alpha admission"
 	@echo "  make check-constructive-lower-continuation  recheck 125 subsequent local proofs and twelve ordinary certificates"
 	@echo "  make book-constructive-lower-continuation-explorer  verify four subsequent local-only canonical proof maps"
+	@echo "  make check-constructive-dirichlet  recheck 113 local convolution/inversion proofs and fifteen ordinary certificates"
+	@echo "  make book-constructive-dirichlet-explorer  verify five local canonical maps, including full finite Mobius inversion"
+	@echo "  make check-constructive-dirichlet-inverse  recheck 40 local general-inverse proofs and nine ordinary certificates"
+	@echo "  make book-constructive-dirichlet-inverse-explorer  verify three local canonical maps toward G009"
 	@echo "  make peano-library-alpha-v29-check  verify the exact four priority targets with all proof gates"
 	@echo "  make peano-library-alpha-v30-check  verify the complete Gaussian factorization release and current UI"
 	@echo "  make lean         build & axiom-check the Lean artifact"
@@ -335,6 +339,22 @@ check-constructive-lower-continuation:
 
 book-constructive-lower-continuation-explorer:
 	PYTHONMALLOC=malloc python3 scripts/build_constructive_lower_continuation_explorer.py --check
+
+.PHONY: check-constructive-dirichlet book-constructive-dirichlet-explorer
+# Dirichlet research is local only; neither target is a stage-proofs input.
+check-constructive-dirichlet:
+	PYTHONMALLOC=malloc python3 scripts/check_constructive_dirichlet.py --check
+
+book-constructive-dirichlet-explorer:
+	PYTHONMALLOC=malloc python3 scripts/build_constructive_dirichlet_explorer.py --check
+
+.PHONY: check-constructive-dirichlet-inverse book-constructive-dirichlet-inverse-explorer
+# General inverses remain local; these gates do not stage or promote proofs.
+check-constructive-dirichlet-inverse:
+	PYTHONMALLOC=malloc python3 scripts/check_constructive_dirichlet_inverse.py --check
+
+book-constructive-dirichlet-inverse-explorer:
+	PYTHONMALLOC=malloc python3 scripts/build_constructive_dirichlet_inverse_explorer.py --check
 
 book: book-atlas book-proof-explorer
 	rm -rf book/_build   # full rebuild: incremental Sphinx leaves stale sidebars after TOC changes
