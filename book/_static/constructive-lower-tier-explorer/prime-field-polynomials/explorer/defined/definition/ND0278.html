@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0278 — FpHornerSteps(p,b,c,x,l,u,v) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-field-polynomials"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">ND0278</p><h1>FpHornerSteps(p,b,c,x,l,u,v)</h1>
+  <p>Every step i&lt;l in the actual history performs modular multiply-and-add with coefficient a_i. Highest-degree-first order is inherited from the existing natural Horner interpretation.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ pfh_index_lowertier. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(pfh_index_lowertier,l)</a> → <a class="pd-definition-ref" data-definition="ND0277" href="ND0277.html?v=ac7111ec14ff">FpHornerStep(p,b,c,x,u,v,pfh_index_lowertier)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall pfh_index_lowertier. (exists pfa_gap_lowertierindex. pfa_gap_lowertierindex + S (pfh_index_lowertier) = ((l))) -&gt; (exists pfh_coefficient_lowertierstep pfh_before_lowertierstep pfh_after_lowertierstep pfh_product_lowertierstep. ((((exists ff_h_pfp_lowertierstepcoefficient. ff_h_pfp_lowertierstepcoefficient + S (pfh_coefficient_lowertierstep) = S ((S (pfh_index_lowertier)) * (c))) /\ exists ff_q_pfp_lowertierstepcoefficient. (b) = ff_q_pfp_lowertierstepcoefficient * S ((S (pfh_index_lowertier)) * (c)) + (pfh_coefficient_lowertierstep))) /\ (((((exists ff_h_pfp_lowertierstepbefore. ff_h_pfp_lowertierstepbefore + S (pfh_before_lowertierstep) = S ((S (pfh_index_lowertier)) * (v))) /\ exists ff_q_pfp_lowertierstepbefore. (u) = ff_q_pfp_lowertierstepbefore * S ((S (pfh_index_lowertier)) * (v)) + (pfh_before_lowertierstep))) /\ (((((exists ff_h_pfp_lowertierstepafter. ff_h_pfp_lowertierstepafter + S (pfh_after_lowertierstep) = S ((S (S (pfh_index_lowertier))) * (v))) /\ exists ff_q_pfp_lowertierstepafter. (u) = ff_q_pfp_lowertierstepafter * S ((S (S (pfh_index_lowertier))) * (v)) + (pfh_after_lowertierstep))) /\ (((((exists pfa_gap_lowertierstepmultiplyleft. pfa_gap_lowertierstepmultiplyleft + S (pfh_before_lowertierstep) = ((p))) /\ (((exists pfa_gap_lowertierstepmultiplyright. pfa_gap_lowertierstepmultiplyright + S ((x)) = ((p))) /\ ((((exists pfa_gap_lowertierstepmultiplyresultbound. pfa_gap_lowertierstepmultiplyresultbound + S (pfh_product_lowertierstep) = ((p))) /\ ((exists pfa_offset_left_lowertierstepmultiplyresultcongruence pfa_offset_right_lowertierstepmultiplyresultcongruence. ((pfh_before_lowertierstep) * ((x))) + ((p)) * pfa_offset_left_lowertierstepmultiplyresultcongruence = (pfh_product_lowertierstep) + ((p)) * pfa_offset_right_lowertierstepmultiplyresultcongruence))))))))) /\ ((((exists pfa_gap_lowertierstepaddleft. pfa_gap_lowertierstepaddleft + S (pfh_product_lowertierstep) = ((p))) /\ (((exists pfa_gap_lowertierstepaddright. pfa_gap_lowertierstepaddright + S (pfh_coefficient_lowertierstep) = ((p))) /\ ((((exists pfa_gap_lowertierstepaddresultbound. pfa_gap_lowertierstepaddresultbound + S (pfh_after_lowertierstep) = ((p))) /\ ((exists pfa_offset_left_lowertierstepaddresultcongruence pfa_offset_right_lowertierstepaddresultcongruence. ((pfh_product_lowertierstep) + (pfh_coefficient_lowertierstep)) + ((p)) * pfa_offset_left_lowertierstepaddresultcongruence = (pfh_after_lowertierstep) + ((p)) * pfa_offset_right_lowertierstepaddresultcongruence))))))))))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="ND0277.html?v=ac7111ec14ff">FpHornerStep(p,b,c,x,u,v,i)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0279.html?v=ac7111ec14ff">FpHornerTrace(p,b,c,x,l,r,u,v)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><span class="pd-empty">none directly; see definition consumers</span></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>7</dd>
+  <dt>Topological notation layer</dt><dd>4</dd>
+  <dt>Transitive prerequisites</dt><dd>7</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0278.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>035a88ce52eb7005a50ea6eea9a581acb787a50a925874027cbb669e444e8f07</code></dd>
+</dl></aside></main></body>
+</html>

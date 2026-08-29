@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0277 — FpHornerStep(p,b,c,x,u,v,i) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-field-polynomials"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">ND0277</p><h1>FpHornerStep(p,b,c,x,u,v,i)</h1>
+  <p>Actual coefficient and consecutive history entries, with witnessed FpMul followed by FpAdd. This is an execution step, not an assumed equality with a natural Horner value or its residue.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ pfh_coefficient_lowertier. ∃ pfh_before_lowertier. ∃ pfh_after_lowertier. ∃ pfh_product_lowertier. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,pfh_coefficient_lowertier)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(u,v,i,pfh_before_lowertier)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(u,v,S i,pfh_after_lowertier)</a> ∧ (<a class="pd-definition-ref" data-definition="ND0230" href="ND0230.html?v=ac7111ec14ff">FpMul(p,pfh_before_lowertier,x,pfh_product_lowertier)</a> ∧ <a class="pd-definition-ref" data-definition="ND0229" href="ND0229.html?v=ac7111ec14ff">FpAdd(p,pfh_product_lowertier,pfh_coefficient_lowertier,pfh_after_lowertier)</a>)))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists pfh_coefficient_lowertier pfh_before_lowertier pfh_after_lowertier pfh_product_lowertier. ((((exists ff_h_pfp_lowertiercoefficient. ff_h_pfp_lowertiercoefficient + S (pfh_coefficient_lowertier) = S ((S ((i))) * (c))) /\ exists ff_q_pfp_lowertiercoefficient. (b) = ff_q_pfp_lowertiercoefficient * S ((S ((i))) * (c)) + (pfh_coefficient_lowertier))) /\ (((((exists ff_h_pfp_lowertierbefore. ff_h_pfp_lowertierbefore + S (pfh_before_lowertier) = S ((S ((i))) * (v))) /\ exists ff_q_pfp_lowertierbefore. (u) = ff_q_pfp_lowertierbefore * S ((S ((i))) * (v)) + (pfh_before_lowertier))) /\ (((((exists ff_h_pfp_lowertierafter. ff_h_pfp_lowertierafter + S (pfh_after_lowertier) = S ((S (S ((i)))) * (v))) /\ exists ff_q_pfp_lowertierafter. (u) = ff_q_pfp_lowertierafter * S ((S (S ((i)))) * (v)) + (pfh_after_lowertier))) /\ (((((exists pfa_gap_lowertiermultiplyleft. pfa_gap_lowertiermultiplyleft + S (pfh_before_lowertier) = ((p))) /\ (((exists pfa_gap_lowertiermultiplyright. pfa_gap_lowertiermultiplyright + S ((x)) = ((p))) /\ ((((exists pfa_gap_lowertiermultiplyresultbound. pfa_gap_lowertiermultiplyresultbound + S (pfh_product_lowertier) = ((p))) /\ ((exists pfa_offset_left_lowertiermultiplyresultcongruence pfa_offset_right_lowertiermultiplyresultcongruence. ((pfh_before_lowertier) * ((x))) + ((p)) * pfa_offset_left_lowertiermultiplyresultcongruence = (pfh_product_lowertier) + ((p)) * pfa_offset_right_lowertiermultiplyresultcongruence))))))))) /\ ((((exists pfa_gap_lowertieraddleft. pfa_gap_lowertieraddleft + S (pfh_product_lowertier) = ((p))) /\ (((exists pfa_gap_lowertieraddright. pfa_gap_lowertieraddright + S (pfh_coefficient_lowertier) = ((p))) /\ ((((exists pfa_gap_lowertieraddresultbound. pfa_gap_lowertieraddresultbound + S (pfh_after_lowertier) = ((p))) /\ ((exists pfa_offset_left_lowertieraddresultcongruence pfa_offset_right_lowertieraddresultcongruence. ((pfh_product_lowertier) + (pfh_coefficient_lowertier)) + ((p)) * pfa_offset_left_lowertieraddresultcongruence = (pfh_after_lowertier) + ((p)) * pfa_offset_right_lowertieraddresultcongruence)))))))))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0230.html?v=ac7111ec14ff">FpMul(p,a,b,c)</a><a class="pd-chip" href="ND0229.html?v=ac7111ec14ff">FpAdd(p,a,b,c)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0278.html?v=ac7111ec14ff">FpHornerSteps(p,b,c,x,l,u,v)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PP0023.html?v=ac7111ec14ff">PP0023 · prime_field_polynomial_horner_input_bounds</a><a class="pd-chip" href="../tag/PP0025.html?v=ac7111ec14ff">PP0025 · prime_field_polynomial_horner_successor_decompose</a><a class="pd-chip" href="../tag/PP0026.html?v=ac7111ec14ff">PP0026 · prime_field_polynomial_horner_transport</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>7</dd>
+  <dt>Topological notation layer</dt><dd>3</dd>
+  <dt>Transitive prerequisites</dt><dd>6</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0277.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>f37890f29cd8cab0612410f800af323730bb34bd624ecd2d90e5fe30b6e68442</code></dd>
+</dl></aside></main></body>
+</html>

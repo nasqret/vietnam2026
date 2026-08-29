@@ -1,0 +1,362 @@
+{
+  "alpha_admission_performed": false,
+  "checkpoints": [
+    {
+      "admitted_to_alpha": false,
+      "all_maximal_owned_roots": [
+        "arithmetic_signed_sum_append_transport",
+        "mobius_table_exists",
+        "mobius_table_one_entry",
+        "mobius_table_extensional",
+        "mobius_table_restrict",
+        "divisor_mask_entry_quotient_input",
+        "divisor_mask_prefix_restrict",
+        "signed_divisor_sum_exists_unique",
+        "signed_divisor_sum_zero_excluded",
+        "signed_divisor_sum_one",
+        "signed_divisor_sum_positive_source_extensional"
+      ],
+      "alpha_checked_use": false,
+      "bundle": {
+        "body_proof_nodes": 20685,
+        "bytes": 1841261,
+        "dependency_edges_including_packaging": 875,
+        "independent_lean_checked": true,
+        "nodes_including_packaging_root": 315,
+        "original_ha_checked": true,
+        "packaging_root_id": 314,
+        "path": "research/arithmetic-library/artifacts/lower-tier-divisor-sums-proof-bundle-v1.json",
+        "sha256": "96740bcedad194ebed5066ae03fa20cd922e702ae925b2c85f4ed45649aa0307"
+      },
+      "complete_non_alpha_specs_sha256": "bc820d7e1561fc7bb8916fb222b62ed7d315e9633431807bda3f8bbd7dd386ef",
+      "membership": "local_non_admitting_checkpoint",
+      "new_specs_sha256": "9bfd07e098154dd119b767459f69f8670151b4acd5c3ab0fc3813a987b704870",
+      "new_theorem_count": 37,
+      "new_theorem_dependency_edges": 92,
+      "new_theorem_tactic_commands": 1380,
+      "ordered_new_names_sha256": "ae8fb6562e9f2ee88b0996a6d8887013f714732d02728daff85ee37ca289f6af",
+      "principal_roots": [
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "mobius_table_exists",
+          "node_id": 286,
+          "ordinary_certificate_nodes": 14044,
+          "statement_sha256": "9d90a11bd987bfe516272671293b30a0d264fe613d2632c628b5701634cf5dd3"
+        },
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "signed_divisor_sum_positive_source_extensional",
+          "node_id": 313,
+          "ordinary_certificate_nodes": 9955,
+          "statement_sha256": "5db775338790a36cdffa83a65f52f26d244827ba90942feb09600b9f5a202672"
+        },
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "signed_divisor_sum_exists_unique",
+          "node_id": 310,
+          "ordinary_certificate_nodes": 13081,
+          "statement_sha256": "c148a766390471cd871ca467503a9a7c380142964aff8830ca412a20f743ba6d"
+        }
+      ],
+      "rfc": "research/arithmetic-library/mobius-tables-divisor-sums-rfc-v1.md",
+      "slug": "divisor-sums",
+      "sources": [
+        {
+          "factory": "make_arithmetic_table_extension_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/arithmetic_table_extension_candidate.py",
+          "sha256": "d39d08f7178b526daad51aaf4a75c325f567424bb8ae74906c030f4d72e9e294"
+        },
+        {
+          "factory": "make_mobius_table_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/mobius_table_candidate.py",
+          "sha256": "7631337dd93f4a65e6f74ce9a5129d6701a496aa49969764c0945f4248676fc4"
+        },
+        {
+          "factory": "make_divisor_mask_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/divisor_mask_candidate.py",
+          "sha256": "740efabb5cbf6e0c804e901dae423e319c52c86f605ebe2a4ad0bffb033d9543"
+        }
+      ],
+      "stable_member": false,
+      "support": {
+        "alpha_v30_count": 253,
+        "counted_as_new_owned_theorems": false,
+        "current_cross_track_count": 0,
+        "current_cross_track_theorems": [],
+        "published_non_admitted_count": 24,
+        "published_non_admitted_theorems": [
+          "alternating_signed_unit_exists",
+          "alternating_signed_unit_functional",
+          "alternating_signed_unit_zero",
+          "mobius_prime_factor_count_unique",
+          "mobius_from_prime_square",
+          "mobius_from_squarefree_factor_count",
+          "mobius_value_exists",
+          "mobius_squarefree_evaluation",
+          "mobius_value_functional",
+          "mobius_one",
+          "divisor_signed_table_at_from_components",
+          "divisor_signed_table_at_to_components",
+          "divisor_signed_table_from_components",
+          "divisor_signed_table_components",
+          "divisor_signed_table_lookup",
+          "divisor_signed_table_at_functional",
+          "divisor_signed_table_restrict",
+          "divisor_signed_sum_from_components",
+          "divisor_signed_sum_exists_from_components",
+          "divisor_signed_sum_empty_value",
+          "divisor_natural_sum_successor_intro",
+          "divisor_signed_table_equality_component_balance",
+          "divisor_signed_sum_extensional",
+          "divisor_signed_sum_successor_intro"
+        ]
+      }
+    },
+    {
+      "admitted_to_alpha": false,
+      "all_maximal_owned_roots": [
+        "signed_table_multiply_restrict",
+        "signed_table_add_exists_extensionally_unique",
+        "signed_table_multiply_exists_extensionally_unique",
+        "signed_table_scalar_exists_extensionally_unique",
+        "signed_prefix_sum_pointwise_add_values_exist",
+        "signed_prefix_sum_scalar_multiply_values_exist",
+        "signed_weighted_sum_exists_unique",
+        "signed_weighted_sum_empty_exists",
+        "signed_weighted_sum_add_linearity",
+        "signed_weighted_sum_scalar_linearity"
+      ],
+      "alpha_checked_use": false,
+      "bundle": {
+        "body_proof_nodes": 13692,
+        "bytes": 2293317,
+        "dependency_edges_including_packaging": 584,
+        "independent_lean_checked": true,
+        "nodes_including_packaging_root": 227,
+        "original_ha_checked": true,
+        "packaging_root_id": 226,
+        "path": "research/arithmetic-library/artifacts/lower-tier-signed-weighted-sums-proof-bundle-v1.json",
+        "sha256": "e88ddec495a71d673e670299ea3943a5a996eecb1296fb746e107c8e0b81c967"
+      },
+      "complete_non_alpha_specs_sha256": "c6546860fac1a31e7e248bbd362a83d4d2f9cf26e1f8f9d9036286cebdf59f0e",
+      "membership": "local_non_admitting_checkpoint",
+      "new_specs_sha256": "d1e23134d7f367d169f181c67939df5548101c83e9a73da43544c49e96590fae",
+      "new_theorem_count": 40,
+      "new_theorem_dependency_edges": 121,
+      "new_theorem_tactic_commands": 2117,
+      "ordered_new_names_sha256": "508f9c9dfde41f64ade7fa5fd2a6ca673fd7c8ca226655e1aa4dea98c4f3439c",
+      "principal_roots": [
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "signed_weighted_sum_exists_unique",
+          "node_id": 218,
+          "ordinary_certificate_nodes": 13146,
+          "statement_sha256": "1ed794504914ee8304903be9fce6c08e5e310c7b0e75c244382438433c4c3f14"
+        },
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "signed_weighted_sum_scalar_linearity",
+          "node_id": 225,
+          "ordinary_certificate_nodes": 8505,
+          "statement_sha256": "488852252ab9e41daf5e2e6e234f8a9e046042f269dd9f5fd1bd9a074c45cbeb"
+        },
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "signed_weighted_sum_add_linearity",
+          "node_id": 224,
+          "ordinary_certificate_nodes": 8241,
+          "statement_sha256": "0515fa77e429a50f266b273b77efa2682ec7cc78c3e30948559d6a5c3363f255"
+        }
+      ],
+      "rfc": "research/arithmetic-library/signed-weighted-sums-rfc-v1.md",
+      "slug": "signed-weighted-sums",
+      "sources": [
+        {
+          "factory": "make_signed_table_operations_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/signed_table_operations_candidate.py",
+          "sha256": "465e623dbe3fcac0eb70ca72e890d1cc8046b3a476014dc65d187b3f30f4893f"
+        },
+        {
+          "factory": "make_signed_sum_linearity_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/signed_sum_linearity_candidate.py",
+          "sha256": "8da9d92ec3e204583e7539fc2ff6ca7af5677a909a59831951e978deab9d69c0"
+        },
+        {
+          "factory": "make_signed_weighted_sum_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/signed_weighted_sum_candidate.py",
+          "sha256": "2cbbb6486f0a75bbf97165018ef7539dd90c8a06317d0ed037ed95afcc72db07"
+        }
+      ],
+      "stable_member": false,
+      "support": {
+        "alpha_v30_count": 170,
+        "counted_as_new_owned_theorems": false,
+        "current_cross_track_count": 4,
+        "current_cross_track_theorems": [
+          "arithmetic_signed_table_component_prefix_preserved",
+          "arithmetic_signed_table_equal_entry_transport",
+          "arithmetic_signed_table_extend_at",
+          "arithmetic_signed_sum_exists"
+        ],
+        "published_non_admitted_count": 12,
+        "published_non_admitted_theorems": [
+          "divisor_signed_table_at_from_components",
+          "divisor_signed_table_at_to_components",
+          "divisor_signed_table_from_components",
+          "divisor_signed_table_components",
+          "divisor_signed_table_lookup",
+          "divisor_signed_table_at_functional",
+          "divisor_signed_sum_from_components",
+          "divisor_signed_sum_exists_from_components",
+          "divisor_signed_sum_empty_value",
+          "divisor_signed_table_equality_component_balance",
+          "divisor_signed_sum_extensional",
+          "divisor_signed_sum_successor_decompose"
+        ]
+      }
+    },
+    {
+      "admitted_to_alpha": false,
+      "all_maximal_owned_roots": [
+        "prime_field_polynomial_normalization_transport",
+        "prime_field_polynomial_normalization_idempotent",
+        "prime_field_polynomial_zero_exists",
+        "prime_field_polynomial_add_exists",
+        "prime_field_polynomial_add_bounded",
+        "prime_field_polynomial_add_functional",
+        "prime_field_polynomial_add_transport",
+        "prime_field_polynomial_add_commutative",
+        "prime_field_polynomial_add_zero_right",
+        "prime_field_polynomial_scale_exists",
+        "prime_field_polynomial_scale_bounded",
+        "prime_field_polynomial_scale_functional",
+        "prime_field_polynomial_scale_transport",
+        "prime_field_polynomial_scale_one",
+        "prime_field_polynomial_scale_zero",
+        "prime_field_polynomial_add_associative",
+        "prime_field_polynomial_scale_associative",
+        "prime_field_polynomial_scale_distributes_over_add",
+        "prime_field_polynomial_scalar_add_distributes",
+        "prime_field_polynomial_horner_transport",
+        "prime_field_polynomial_horner_exists_unique",
+        "prime_field_polynomial_horner_constant",
+        "prime_field_polynomial_horner_zero",
+        "prime_field_polynomial_normalized_horner_iff",
+        "prime_field_polynomial_horner_result_bounded",
+        "prime_field_polynomial_reduce_and_evaluate_exists"
+      ],
+      "alpha_checked_use": false,
+      "bundle": {
+        "body_proof_nodes": 11889,
+        "bytes": 688987,
+        "dependency_edges_including_packaging": 519,
+        "independent_lean_checked": true,
+        "nodes_including_packaging_root": 202,
+        "original_ha_checked": true,
+        "packaging_root_id": 201,
+        "path": "research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json",
+        "sha256": "6e3a08c73b8a45de127e6d50a771f95b52fd54894b1c2e43468751421488a01a"
+      },
+      "complete_non_alpha_specs_sha256": "2c9acf7b60877733669e07560e670111754c34ceb361441befc55bb034bf3dff",
+      "membership": "local_non_admitting_checkpoint",
+      "new_specs_sha256": "0ff662d165003510ed2cd20d724762d9d4166e62cd67e361073e7e15bc5fcd8b",
+      "new_theorem_count": 49,
+      "new_theorem_dependency_edges": 131,
+      "new_theorem_tactic_commands": 2829,
+      "ordered_new_names_sha256": "1657e984d7cd41d0bd36458fc043e00f65af437c8228a2e118eeed014c69fa9b",
+      "principal_roots": [
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "prime_field_polynomial_horner_exists_unique",
+          "node_id": 193,
+          "ordinary_certificate_nodes": 10310,
+          "statement_sha256": "b4e5a2cd91b33b7366aa11d591d5da743acdb244348f438797daf1be243c3941"
+        },
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "prime_field_polynomial_normalized_horner_iff",
+          "node_id": 198,
+          "ordinary_certificate_nodes": 10228,
+          "statement_sha256": "fbed602c60a29f5b4474d678ccd397c2ff5d50e7fb52f06480c26e1938a762e5"
+        },
+        {
+          "complete_ordinary_ha_checked": true,
+          "name": "prime_field_polynomial_reduce_and_evaluate_exists",
+          "node_id": 200,
+          "ordinary_certificate_nodes": 10192,
+          "statement_sha256": "2f0d67795bf12542c6c9fb48cb4d63d26213e8e090bbca1a7a89257a49dd0e2c"
+        }
+      ],
+      "rfc": "research/arithmetic-library/prime-field-polynomials-rfc-v1.md",
+      "slug": "prime-field-polynomials",
+      "sources": [
+        {
+          "factory": "make_prime_field_polynomial_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_candidate.py",
+          "sha256": "644c11d8838a94716aaec3ef2e88645c32fb837e78ed70aa7ae346e3deb79f72"
+        },
+        {
+          "factory": "make_prime_field_polynomial_evaluation_candidate_theorems",
+          "path": "peano-lab/py/peano_lab/library/prime_field_polynomial_evaluation_candidate.py",
+          "sha256": "9638337f69bdc1f5491255b767dc90042244402e34ceab84902b0481c2eab802"
+        }
+      ],
+      "stable_member": false,
+      "support": {
+        "alpha_v30_count": 129,
+        "counted_as_new_owned_theorems": false,
+        "current_cross_track_count": 0,
+        "current_cross_track_theorems": [],
+        "published_non_admitted_count": 23,
+        "published_non_admitted_theorems": [
+          "prime_field_mod_of_equal",
+          "prime_field_zero_below_prime",
+          "prime_field_residue_reflexive",
+          "prime_field_residue_input_equal",
+          "prime_field_residue_bounded_value",
+          "prime_field_add_exists",
+          "prime_field_add_functional",
+          "prime_field_add_commutative",
+          "prime_field_multiply_exists",
+          "prime_field_multiply_functional",
+          "prime_field_multiply_commutative",
+          "prime_field_add_associative",
+          "prime_field_multiply_associative",
+          "prime_field_left_distributive",
+          "prime_field_right_distributive",
+          "prime_field_add_zero_right",
+          "prime_field_add_zero_left",
+          "prime_field_multiply_one_right",
+          "prime_field_multiply_one_left",
+          "prime_field_multiply_zero_right",
+          "prime_field_multiply_zero_left",
+          "prime_field_residue_add",
+          "prime_field_residue_multiply"
+        ]
+      }
+    }
+  ],
+  "independent_checker": {
+    "binary_bytes": 106787344,
+    "binary_sha256": "22a49645acdee1a90bdf09861729d62b7a9c5bc20bc1f799ad05adc54ee0b033",
+    "rebuilt_in_this_tranche": false
+  },
+  "new_theorems": 126,
+  "parent": {
+    "alpha_checked_use_count": 3222,
+    "catalog": "artifacts/peano-library/alpha/catalog-v30.json",
+    "catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7",
+    "stable_count": 432,
+    "version": "v30"
+  },
+  "previous_research_audit": "research/arithmetic-library/artifacts/bottom-layer-checkpoints-v2.json",
+  "previous_research_membership": "published_non_admitted_checkpoints",
+  "previous_research_theorems": 170,
+  "prior_theorem_count_for_exact_ast_novelty_check": 3392,
+  "proof_authority": "fresh_original_ha_and_independent_compiled_lean_checks",
+  "published": false,
+  "schema": "peano-lab-local-lower-tier-checkpoints-v1",
+  "stable_admission_performed": false,
+  "statement_asts_distinct_from_prior_and_within_tranche": true,
+  "stored_receipt_is_proof_authority": false
+}

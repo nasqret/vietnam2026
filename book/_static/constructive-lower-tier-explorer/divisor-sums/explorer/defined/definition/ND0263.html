@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0263 — BetaPrefixEqual(b,c,d,e,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="divisor-sums"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G007" href="../../../../grand-campaign/?view=goal&amp;focus=G007&amp;v=ac7111ec14ff">G007 milestone</a></nav>
+  <p class="pd-tag">ND0263</p><h1>BetaPrefixEqual(b,c,d,e,l)</h1>
+  <p>Every decoded source entry at i&lt;l also decodes in the target. Actual beta totality and functionality make this extensional prefix equality, not equality of the two code parameters.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ mdr_i_pfp_lowertier. ∀ mdr_a_pfp_lowertier. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(mdr_i_pfp_lowertier,l)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,mdr_i_pfp_lowertier,mdr_a_pfp_lowertier)</a> → <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(d,e,mdr_i_pfp_lowertier,mdr_a_pfp_lowertier)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall mdr_i_pfp_lowertier mdr_a_pfp_lowertier. (exists mdr_gap_pfp_lowertierb. mdr_gap_pfp_lowertierb + S (mdr_i_pfp_lowertier) = ((l))) -&gt; (((exists ff_h_mdr_pfp_lowertiero. ff_h_mdr_pfp_lowertiero + S (mdr_a_pfp_lowertier) = S ((S (mdr_i_pfp_lowertier)) * (c))) /\ exists ff_q_mdr_pfp_lowertiero. (b) = ff_q_mdr_pfp_lowertiero * S ((S (mdr_i_pfp_lowertier)) * (c)) + (mdr_a_pfp_lowertier))) -&gt; (((exists ff_h_mdr_pfp_lowertiern. ff_h_mdr_pfp_lowertiern + S (mdr_a_pfp_lowertier) = S ((S (mdr_i_pfp_lowertier)) * (e))) /\ exists ff_q_mdr_pfp_lowertiern. (d) = ff_q_mdr_pfp_lowertiern * S ((S (mdr_i_pfp_lowertier)) * (e)) + (mdr_a_pfp_lowertier)))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/DV0001.html?v=ac7111ec14ff">DV0001 · arithmetic_signed_table_component_prefix_preserved</a><a class="pd-chip" href="../tag/DV0003.html?v=ac7111ec14ff">DV0003 · arithmetic_signed_table_extend_at</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>5</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0263.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>57aad2596b9538685346d56869bebc6ec32fa4c404c5e14035aa98e32c535823</code></dd>
+</dl></aside></main></body>
+</html>

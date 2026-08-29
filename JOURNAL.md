@@ -5829,3 +5829,57 @@ Local app packaging was refreshed to `a-86993f944ca2` with 483 Python files
 and 505 verified manifest entries, repairing the initial stale inventory
 checks. Neither Peano channel was deployed. The production cache policy,
 gateway, mailbox broker and running Lean worker were untouched.
+
+### 2026-08-28–29 — 126 further lower-tier proofs, local only
+
+The user asked to continue implementing the low-tier campaign. The saved
+[plan](PLAN/16_divisor_sums_and_prime_field_polynomials.md) now has a completed
+126-theorem checkpoint: 37 genuine table-extension/Möbius-table/divisor-sum
+results, 40 signed-table and weighted-sum results, and 49 coefficient-table
+and modular-Horner results. Eight new ordinary-HA modules were added; all old
+170 research-checkpoint sources and published evidence remain unchanged.
+
+All 126 statements are AST-distinct from all 3,392 prior rows and each other.
+Three complete dependency-closed bundles passed both original HA and the
+pinned independently compiled Lean checker. Nine selected principal roots
+also passed ordinary empty-context replay, exact specification/formula
+comparison and another original-kernel certificate check. The
+[verification receipt](research/arithmetic-library/lower-tier-verification-receipt-2026-08-28.md)
+records every exact artifact and support partition. The machine-readable
+audit has SHA-256
+`c97cb8503e40a0eee2c667a1ab625b71542e2537818c9b73f9cc49fa2bca42ec`.
+Previous non-admitted research proofs and four shared cross-track prerequisites
+are actual checked bodies, not assumed lemmas or newly recounted results.
+
+Nineteen conservative definitions, ND0262–ND0280, retain all earlier 318
+definition objects and records. The resulting registry has 337 definitions,
+697 genuine expansion edges and maximum zero-based layer 12. The divisor sum
+uses an actual S n-entry mask with zero at index zero independently of F(0).
+Weighted sums use constructed pointwise product tables. Modular Horner uses
+actual multiply-and-add history steps in highest-degree-first order; its
+natural-residue invariant is proved rather than assumed in its definition.
+
+The [new local explorer](book/_static/constructive-lower-tier-explorer/index.html)
+uses the canonical Quadratic Reciprocity renderer and unchanged assets. Its
+371-file snapshot includes 338 HTML pages, genuine typed proof/definition DAGs,
+cross-track proof links, all literal sources and complete bundles. Manifest
+SHA-256 is `ac6c7b3f53a27ba3812969031d7a3eea25bc0c2abeb7944c45f240ca5bb59c32`.
+Both earlier local and public snapshots remain unchanged.
+
+There were 1,747 distinct passing focused tests: 1,307 mathematical/adversarial,
+143 new integration, 44 explorer, 20 browser-shell and 233 unchanged
+trusted-foundation cases. The direct explorer regeneration check passed too.
+Actual canonical JavaScript ran against the getter-only-SVG and navigation
+harnesses. No visual browser test is claimed because no browser was connected;
+this is not a repository-wide or remote green-CI claim. Existing authoring,
+kernel, formula, replay, catalog and service limits were preserved.
+
+Local browser metadata now covers 491 Python files and 513 manifest entries,
+with `a-2501572d3333` and build label `2026-08-28c`. Alpha remains v30 with
+3,222 entries, Stable remains 432, and the previous 170 research theorems
+remain separately published non-admitted checkpoints. There was no commit,
+push, promotion, deployment, old-stage deletion, production cache change,
+Hydra worktree modification, gateway/mailbox change or worker restart.
+Full G007 and G091 remain open; the next steps are actual finite Fubini,
+divisor cancellation and convolution, followed by polynomial division and
+the irreducible-polynomial/extension-field constructions.

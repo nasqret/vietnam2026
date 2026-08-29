@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0271 — FpPolyScale(p,k,ab,ac,bb,bc,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-field-polynomials"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">ND0271</p><h1>FpPolyScale(p,k,ab,ac,bb,bc,l)</h1>
+  <p>A scalar k&lt;p and actual canonical field products at every coefficient index i&lt;l. The empty polynomial retains the scalar bound and denotes zero.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(k,p)</a> ∧ (∀ x. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(x,l)</a> → ∃ y. ∃ z. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(ab,ac,x,y)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(bb,bc,x,z)</a> ∧ <a class="pd-definition-ref" data-definition="ND0230" href="ND0230.html?v=ac7111ec14ff">FpMul(p,k,y,z)</a>))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((exists pfa_gap_lowertierscalar. pfa_gap_lowertierscalar + S ((k)) = ((p))) /\ ((forall pfp_index_lowertier. (exists pfa_gap_lowertierindex. pfa_gap_lowertierindex + S (pfp_index_lowertier) = ((l))) -&gt; exists pfp_source_lowertier pfp_value_lowertier. ((((exists ff_h_pfp_lowertiersource. ff_h_pfp_lowertiersource + S (pfp_source_lowertier) = S ((S (pfp_index_lowertier)) * (ac))) /\ exists ff_q_pfp_lowertiersource. (ab) = ff_q_pfp_lowertiersource * S ((S (pfp_index_lowertier)) * (ac)) + (pfp_source_lowertier))) /\ (((((exists ff_h_pfp_lowertiertarget. ff_h_pfp_lowertiertarget + S (pfp_value_lowertier) = S ((S (pfp_index_lowertier)) * (bc))) /\ exists ff_q_pfp_lowertiertarget. (bb) = ff_q_pfp_lowertiertarget * S ((S (pfp_index_lowertier)) * (bc)) + (pfp_value_lowertier))) /\ ((((exists pfa_gap_lowertieroperationleft. pfa_gap_lowertieroperationleft + S ((k)) = ((p))) /\ (((exists pfa_gap_lowertieroperationright. pfa_gap_lowertieroperationright + S (pfp_source_lowertier) = ((p))) /\ ((((exists pfa_gap_lowertieroperationresultbound. pfa_gap_lowertieroperationresultbound + S (pfp_value_lowertier) = ((p))) /\ ((exists pfa_offset_left_lowertieroperationresultcongruence pfa_offset_right_lowertieroperationresultcongruence. (((k)) * (pfp_source_lowertier)) + ((p)) * pfa_offset_left_lowertieroperationresultcongruence = (pfp_value_lowertier) + ((p)) * pfa_offset_right_lowertieroperationresultcongruence))))))))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0230.html?v=ac7111ec14ff">FpMul(p,a,b,c)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PP0014.html?v=ac7111ec14ff">PP0014 · prime_field_polynomial_scale_from_normalization</a><a class="pd-chip" href="../tag/PP0015.html?v=ac7111ec14ff">PP0015 · prime_field_polynomial_scale_exists</a><a class="pd-chip" href="../tag/PP0016.html?v=ac7111ec14ff">PP0016 · prime_field_polynomial_scale_entry</a><a class="pd-chip" href="../tag/PP0017.html?v=ac7111ec14ff">PP0017 · prime_field_polynomial_scale_bounded</a><a class="pd-chip" href="../tag/PP0018.html?v=ac7111ec14ff">PP0018 · prime_field_polynomial_scale_functional</a><a class="pd-chip" href="../tag/PP0019.html?v=ac7111ec14ff">PP0019 · prime_field_polynomial_scale_transport</a><a class="pd-chip" href="../tag/PP001A.html?v=ac7111ec14ff">PP001A · prime_field_polynomial_scale_one</a><a class="pd-chip" href="../tag/PP001B.html?v=ac7111ec14ff">PP001B · prime_field_polynomial_scale_zero</a><a class="pd-chip" href="../tag/PP001D.html?v=ac7111ec14ff">PP001D · prime_field_polynomial_scale_associative</a><a class="pd-chip" href="../tag/PP001E.html?v=ac7111ec14ff">PP001E · prime_field_polynomial_scale_distributes_over_add</a><a class="pd-chip" href="../tag/PP001F.html?v=ac7111ec14ff">PP001F · prime_field_polynomial_scalar_add_distributes</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>7</dd>
+  <dt>Topological notation layer</dt><dd>3</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0271.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>b2eebbb9c2fb4ad387aa3e4141debad3bf0c844ff8b7496bc2a0dd251ab71433</code></dd>
+</dl></aside></main></body>
+</html>

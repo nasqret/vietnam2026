@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PD0040 — DivisionPrefix(m,b,c,qb,qc,rb,rc,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-field-polynomials"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../graph.html?v=ac7111ec14ff">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">PD0040</p><h1>DivisionPrefix(m,b,c,qb,qc,rb,rc,l)</h1>
+  <p>Beta prefixes encode pointwise quotients and strict remainders.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ dp_i. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=ac7111ec14ff">Lt(dp_i,l)</a> → ∃ x. ∃ y. ∃ z. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,dp_i,x)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(qb,qc,dp_i,y)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=ac7111ec14ff">BetaAt(rb,rc,dp_i,z)</a> ∧ <a class="pd-definition-ref" data-definition="PD0007" href="PD0007.html?v=ac7111ec14ff">DivRem(x,m,y,z)</a>))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall dp_i. (exists dp_index_gap. dp_index_gap + S dp_i = l) -&gt; exists dp_x dp_q dp_r. (((exists ff_h_defined_division_prefix_source. ff_h_defined_division_prefix_source + S (dp_x) = S ((S (dp_i)) * c)) /\ exists ff_q_defined_division_prefix_source. b = ff_q_defined_division_prefix_source * S ((S (dp_i)) * c) + (dp_x))) /\ ((((exists ff_h_defined_division_prefix_quotient. ff_h_defined_division_prefix_quotient + S (dp_q) = S ((S (dp_i)) * qc)) /\ exists ff_q_defined_division_prefix_quotient. qb = ff_q_defined_division_prefix_quotient * S ((S (dp_i)) * qc) + (dp_q))) /\ ((((exists ff_h_defined_division_prefix_remainder. ff_h_defined_division_prefix_remainder + S (dp_r) = S ((S (dp_i)) * rc)) /\ exists ff_q_defined_division_prefix_remainder. rb = ff_q_defined_division_prefix_remainder * S ((S (dp_i)) * rc) + (dp_r))) /\ (dp_x = m * dp_q + dp_r /\ (exists dp_remainder_gap. dp_remainder_gap + S dp_r = m))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=ac7111ec14ff">Lt(a,b)</a><a class="pd-chip" href="PD0007.html?v=ac7111ec14ff">DivRem(n,d,q,r)</a><a class="pd-chip" href="PD0013.html?v=ac7111ec14ff">BetaAt(b,c,i,x)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PP0001.html?v=ac7111ec14ff">PP0001 · prime_field_polynomial_normalization_from_division</a><a class="pd-chip" href="../tag/PP0002.html?v=ac7111ec14ff">PP0002 · prime_field_polynomial_normalization_exists</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>8</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>3</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity PD0040.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>20a0d00357b2a8bc340d039973753667784f4ffcecacfe0126308b3d35cb0a6b</code></dd>
+</dl></aside></main></body>
+</html>

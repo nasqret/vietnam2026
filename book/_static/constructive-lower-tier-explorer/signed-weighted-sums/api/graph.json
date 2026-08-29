@@ -1,0 +1,2930 @@
+{
+  "admitted_to_alpha": false,
+  "admitted_to_stable": false,
+  "alpha_checked_use": false,
+  "alpha_checked_use_node_count": 0,
+  "alpha_enrolled_node_count": 0,
+  "checked_use": false,
+  "definition_topological_order": [
+    "PD0002",
+    "ND0058",
+    "PD0001",
+    "PD0013",
+    "ND0142",
+    "ND0143",
+    "ND0251",
+    "ND0252",
+    "ND0254",
+    "ND0264",
+    "ND0144",
+    "ND0266",
+    "ND0145",
+    "ND0267",
+    "ND0268",
+    "PD0015",
+    "ND0253",
+    "ND0272"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "WS0001",
+      "target": "WS0002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0001",
+      "target": "WS0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0002",
+      "target": "WS0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0003",
+      "target": "WS0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0001",
+      "target": "WS0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0002",
+      "target": "WS000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0007",
+      "target": "WS000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0001",
+      "target": "WS000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0002",
+      "target": "WS000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS000B",
+      "target": "WS000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0001",
+      "target": "WS000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0005",
+      "target": "WS0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0001",
+      "target": "WS0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0002",
+      "target": "WS0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS000F",
+      "target": "WS0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0010",
+      "target": "WS0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0006",
+      "target": "WS0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0001",
+      "target": "WS0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0009",
+      "target": "WS0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0001",
+      "target": "WS0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0002",
+      "target": "WS0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0012",
+      "target": "WS0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0013",
+      "target": "WS0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS000A",
+      "target": "WS0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0001",
+      "target": "WS0015"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS000D",
+      "target": "WS0016"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0001",
+      "target": "WS0016"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0002",
+      "target": "WS0016"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0015",
+      "target": "WS0016"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0016",
+      "target": "WS0017"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS000E",
+      "target": "WS0017"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0018",
+      "target": "WS0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0004",
+      "target": "WS001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0003",
+      "target": "WS001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0019",
+      "target": "WS001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS000C",
+      "target": "WS001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS000B",
+      "target": "WS001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS001A",
+      "target": "WS001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS001B",
+      "target": "WS001D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS001C",
+      "target": "WS001E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0013",
+      "target": "WS001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS000A",
+      "target": "WS0020"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS001F",
+      "target": "WS0021"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0020",
+      "target": "WS0021"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS001F",
+      "target": "WS0023"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0022",
+      "target": "WS0023"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0002",
+      "target": "WS0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0003",
+      "target": "WS0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0007",
+      "target": "WS0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0002",
+      "target": "WS0026"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0025",
+      "target": "WS0026"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS000B",
+      "target": "WS0026"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0007",
+      "target": "WS0026"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0024",
+      "target": "WS0027"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS001B",
+      "target": "WS0027"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS0026",
+      "target": "WS0028"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "WS001C",
+      "target": "WS0028"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS0001",
+      "statement_occurrences": 0,
+      "target": "ND0058"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0001",
+      "statement_occurrences": 2,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0002",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0002",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "WS0003",
+      "statement_occurrences": 1,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 6,
+      "source": "WS0003",
+      "statement_occurrences": 3,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0003",
+      "statement_occurrences": 1,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0003",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0004",
+      "statement_occurrences": 2,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "WS0005",
+      "statement_occurrences": 3,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0005",
+      "statement_occurrences": 1,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "WS0006",
+      "statement_occurrences": 0,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "WS0006",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0006",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0006",
+      "statement_occurrences": 2,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "WS0007",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 6,
+      "source": "WS0007",
+      "statement_occurrences": 3,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0007",
+      "statement_occurrences": 1,
+      "target": "ND0267"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0007",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0008",
+      "statement_occurrences": 2,
+      "target": "ND0267"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "WS0009",
+      "statement_occurrences": 3,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0009",
+      "statement_occurrences": 1,
+      "target": "ND0267"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "WS000A",
+      "statement_occurrences": 0,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "WS000A",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS000A",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS000A",
+      "statement_occurrences": 2,
+      "target": "ND0267"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "WS000B",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "WS000B",
+      "statement_occurrences": 2,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS000B",
+      "statement_occurrences": 1,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS000B",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS000C",
+      "statement_occurrences": 2,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS000D",
+      "statement_occurrences": 2,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS000D",
+      "statement_occurrences": 1,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS000E",
+      "statement_occurrences": 0,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS000E",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS000E",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS000E",
+      "statement_occurrences": 2,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "WS000F",
+      "statement_occurrences": 1,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS000F",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 6,
+      "source": "WS000F",
+      "statement_occurrences": 3,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS000F",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS000F",
+      "statement_occurrences": 2,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS000F",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS0010",
+      "statement_occurrences": 0,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0010",
+      "statement_occurrences": 2,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "WS0010",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS0010",
+      "statement_occurrences": 0,
+      "target": "ND0264"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "WS0010",
+      "statement_occurrences": 1,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0011",
+      "statement_occurrences": 2,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0011",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "WS0011",
+      "statement_occurrences": 2,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "WS0012",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0012",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 6,
+      "source": "WS0012",
+      "statement_occurrences": 3,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0012",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0012",
+      "statement_occurrences": 2,
+      "target": "ND0267"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS0012",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS0013",
+      "statement_occurrences": 0,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0013",
+      "statement_occurrences": 2,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "WS0013",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS0013",
+      "statement_occurrences": 0,
+      "target": "ND0264"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "WS0013",
+      "statement_occurrences": 1,
+      "target": "ND0267"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0014",
+      "statement_occurrences": 2,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0014",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "WS0014",
+      "statement_occurrences": 2,
+      "target": "ND0267"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "WS0015",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0015",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "WS0015",
+      "statement_occurrences": 2,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0015",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0015",
+      "statement_occurrences": 2,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS0015",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS0016",
+      "statement_occurrences": 0,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0016",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS0016",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS0016",
+      "statement_occurrences": 0,
+      "target": "ND0264"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "WS0016",
+      "statement_occurrences": 1,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0017",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0017",
+      "statement_occurrences": 1,
+      "target": "ND0254"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "WS0017",
+      "statement_occurrences": 2,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 5,
+      "source": "WS0018",
+      "statement_occurrences": 4,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 9,
+      "source": "WS0019",
+      "statement_occurrences": 6,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS001A",
+      "statement_occurrences": 2,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "WS001A",
+      "statement_occurrences": 3,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 5,
+      "occurrence_count": 6,
+      "source": "WS001B",
+      "statement_occurrences": 1,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "WS001B",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 6,
+      "source": "WS001B",
+      "statement_occurrences": 3,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS001B",
+      "statement_occurrences": 1,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "WS001C",
+      "statement_occurrences": 0,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "WS001C",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "WS001C",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "WS001C",
+      "statement_occurrences": 2,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS001C",
+      "statement_occurrences": 1,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS001D",
+      "statement_occurrences": 1,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 6,
+      "source": "WS001D",
+      "statement_occurrences": 3,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS001D",
+      "statement_occurrences": 1,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS001E",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "WS001E",
+      "statement_occurrences": 2,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS001E",
+      "statement_occurrences": 1,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS001F",
+      "statement_occurrences": 2,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS001F",
+      "statement_occurrences": 0,
+      "target": "ND0253"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "WS001F",
+      "statement_occurrences": 0,
+      "target": "ND0267"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS001F",
+      "statement_occurrences": 1,
+      "target": "ND0272"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0020",
+      "statement_occurrences": 2,
+      "target": "ND0272"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0021",
+      "statement_occurrences": 2,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "WS0021",
+      "statement_occurrences": 2,
+      "target": "ND0272"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0022",
+      "statement_occurrences": 1,
+      "target": "ND0272"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0023",
+      "statement_occurrences": 2,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "WS0023",
+      "statement_occurrences": 1,
+      "target": "ND0272"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 7,
+      "occurrence_count": 7,
+      "source": "WS0024",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0024",
+      "statement_occurrences": 2,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "WS0024",
+      "statement_occurrences": 3,
+      "target": "ND0267"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 5,
+      "source": "WS0025",
+      "statement_occurrences": 4,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 5,
+      "occurrence_count": 5,
+      "source": "WS0026",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0026",
+      "statement_occurrences": 2,
+      "target": "ND0267"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0026",
+      "statement_occurrences": 2,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0027",
+      "statement_occurrences": 1,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0027",
+      "statement_occurrences": 1,
+      "target": "ND0266"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "WS0027",
+      "statement_occurrences": 3,
+      "target": "ND0272"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0028",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "WS0028",
+      "statement_occurrences": 1,
+      "target": "ND0268"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "WS0028",
+      "statement_occurrences": 2,
+      "target": "ND0272"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0143",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0254",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0254",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0264",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0264",
+      "target": "ND0254"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0264",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0144",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0266",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0266",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0266",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0266",
+      "target": "ND0144"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0145",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0267",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0267",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0267",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0267",
+      "target": "ND0145"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0268",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0268",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0268",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0268",
+      "target": "ND0145"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "PD0015"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0272",
+      "target": "ND0267"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0272",
+      "target": "ND0253"
+    }
+  ],
+  "enrolled_in_alpha": false,
+  "family_slug": "signed-weighted-sums",
+  "independent_lean_bundle_verified": true,
+  "local_checkpoint_verified": true,
+  "local_checkpoint_verified_node_count": 40,
+  "nodes": [
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0001.html?v=ac7111ec14ff",
+      "id": "WS0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_domain_resize",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 186,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual packed beta table has canonical entries on every finite domain; resizing the certificate never changes its streams."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0002.html?v=ac7111ec14ff",
+      "id": "WS0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_lookup_any",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 187,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual table supplies an actual signed value at any requested index, rather than a totality oracle."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0003.html?v=ac7111ec14ff",
+      "id": "WS0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_add_lookup",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 188,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every supplied canonical lookup value satisfies the actual add graph, by lookup functionality and the witnessed pointwise entries."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0004.html?v=ac7111ec14ff",
+      "id": "WS0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_add_restrict",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 189,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Restrict the strict pointwise window from S l to l while retaining genuine input and output table certificates."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0005.html?v=ac7111ec14ff",
+      "id": "WS0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_add_empty",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 190,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The zero-length operation is empty on i<0 but still requires actual packed input and output tables."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0006.html?v=ac7111ec14ff",
+      "id": "WS0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_add_extensional_unique",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 191,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Outputs of the same pointwise add operation agree in every represented value, not necessarily in their table codes or raw components."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0007.html?v=ac7111ec14ff",
+      "id": "WS0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_multiply_lookup",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 192,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every supplied canonical lookup value satisfies the actual multiply graph, by lookup functionality and the witnessed pointwise entries."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0008.html?v=ac7111ec14ff",
+      "id": "WS0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_multiply_restrict",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 193,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Restrict the strict pointwise window from S l to l while retaining genuine input and output table certificates."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0009.html?v=ac7111ec14ff",
+      "id": "WS0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_multiply_empty",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 194,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The zero-length operation is empty on i<0 but still requires actual packed input and output tables."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS000A.html?v=ac7111ec14ff",
+      "id": "WS000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_multiply_extensional_unique",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 195,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Outputs of the same pointwise multiply operation agree in every represented value, not necessarily in their table codes or raw components."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS000B.html?v=ac7111ec14ff",
+      "id": "WS000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_scalar_lookup",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 196,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every supplied canonical lookup value satisfies the actual scalar graph, by lookup functionality and the witnessed pointwise entries."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS000C.html?v=ac7111ec14ff",
+      "id": "WS000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_scalar_restrict",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 197,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Restrict the strict pointwise window from S l to l while retaining genuine input and output table certificates."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS000D.html?v=ac7111ec14ff",
+      "id": "WS000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_scalar_empty",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 198,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The zero-length operation is empty on i<0 but still requires actual packed input and output tables."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS000E.html?v=ac7111ec14ff",
+      "id": "WS000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_scalar_extensional_unique",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 199,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Outputs of the same pointwise scalar operation agree in every represented value, not necessarily in their table codes or raw components."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS000F.html?v=ac7111ec14ff",
+      "id": "WS000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_add_extend",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 200,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual pointwise add graph extends across a preserved strict prefix and a genuine new entry, without equating table codes."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0010.html?v=ac7111ec14ff",
+      "id": "WS0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_add_exists",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 201,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Ordinary finite induction constructs both beta output streams and their actual packed table for pointwise add; no finite-choice or supplied-table oracle is used."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0011.html?v=ac7111ec14ff",
+      "id": "WS0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_add_exists_extensionally_unique",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 202,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct an actual pointwise add output and prove uniqueness of every represented entry; the raw table code is deliberately not claimed unique."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0012.html?v=ac7111ec14ff",
+      "id": "WS0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_multiply_extend",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 203,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual pointwise multiply graph extends across a preserved strict prefix and a genuine new entry, without equating table codes."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0013.html?v=ac7111ec14ff",
+      "id": "WS0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_multiply_exists",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 204,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Ordinary finite induction constructs both beta output streams and their actual packed table for pointwise multiply; no finite-choice or supplied-table oracle is used."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0014.html?v=ac7111ec14ff",
+      "id": "WS0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_multiply_exists_extensionally_unique",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 205,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct an actual pointwise multiply output and prove uniqueness of every represented entry; the raw table code is deliberately not claimed unique."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0015.html?v=ac7111ec14ff",
+      "id": "WS0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_scalar_extend",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 206,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual pointwise scalar graph extends across a preserved strict prefix and a genuine new entry, without equating table codes."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0016.html?v=ac7111ec14ff",
+      "id": "WS0016",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_scalar_exists",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 207,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Ordinary finite induction constructs both beta output streams and their actual packed table for pointwise scalar; no finite-choice or supplied-table oracle is used."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0017.html?v=ac7111ec14ff",
+      "id": "WS0017",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_scalar_exists_extensionally_unique",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 208,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct an actual pointwise scalar output and prove uniqueness of every represented entry; the raw table code is deliberately not claimed unique."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0018.html?v=ac7111ec14ff",
+      "id": "WS0018",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_add_reassociate",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 209,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Constructing the other parenthesization and applying literal signed-add functionality proves reverse associativity."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0019.html?v=ac7111ec14ff",
+      "id": "WS0019",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_add_medial",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 210,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual four canonical signed summands may be regrouped across two prefix/last-entry pairs, with a genuinely constructed intermediate sum."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS001A.html?v=ac7111ec14ff",
+      "id": "WS001A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_scalar_add_intro",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 211,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual sum of the two scalar products is the actual scalar multiple of the sum; no product witness or distributivity oracle is assumed."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS001B.html?v=ac7111ec14ff",
+      "id": "WS001B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "signed_prefix_sum_pointwise_add",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 212,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Ordinary prefix induction proves that the actual sum of a witnessed pointwise table addition is the canonical signed sum of the two actual prefix sums, including length zero."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS001C.html?v=ac7111ec14ff",
+      "id": "WS001C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "signed_prefix_sum_scalar_multiply",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 213,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual prefix sum commutes with multiplication by an arbitrary canonical signed scalar, via genuine successor sums and distributivity; zero length and negative scalars are included."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS001D.html?v=ac7111ec14ff",
+      "id": "WS001D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "local_checkpoint_verified": true,
+      "name": "signed_prefix_sum_pointwise_add_values_exist",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 214,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct all actual signed prefix-sum values and prove their addition relation, including the empty-prefix boundary."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS001E.html?v=ac7111ec14ff",
+      "id": "WS001E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "local_checkpoint_verified": true,
+      "name": "signed_prefix_sum_scalar_multiply_values_exist",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 215,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct all actual signed prefix-sum values and prove their scalar product relation, including the empty-prefix boundary."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS001F.html?v=ac7111ec14ff",
+      "id": "WS001F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "local_checkpoint_verified": true,
+      "name": "signed_weighted_sum_exists",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 216,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the actual pointwise product table and both natural prefix-sum histories, then their canonical signed weighted-sum value."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0020.html?v=ac7111ec14ff",
+      "id": "WS0020",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "local_checkpoint_verified": true,
+      "name": "signed_weighted_sum_functional",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 217,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every genuine product-table witness gives the same canonical signed weighted sum, even when its raw beta codes and representatives differ."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0021.html?v=ac7111ec14ff",
+      "id": "WS0021",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "local_checkpoint_verified": true,
+      "name": "signed_weighted_sum_exists_unique",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 218,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every two valid input tables have a genuinely constructed, literally unique canonical signed weighted-sum value."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0022.html?v=ac7111ec14ff",
+      "id": "WS0022",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_weighted_sum_empty_value",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 219,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The empty weighted sum is canonical zero, regardless of the unused endpoint values of its valid table witnesses."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0023.html?v=ac7111ec14ff",
+      "id": "WS0023",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "local_checkpoint_verified": true,
+      "name": "signed_weighted_sum_empty_exists",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 220,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the real zero-length product table and signed fold; its output is then proved to be zero."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0024.html?v=ac7111ec14ff",
+      "id": "WS0024",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_weighted_add_distributive",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 221,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual pointwise product tables distribute over a witnessed pointwise addition; every entry is constructed and checked against canonical signed scalar distributivity."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0025.html?v=ac7111ec14ff",
+      "id": "WS0025",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "local_checkpoint_verified": true,
+      "name": "signed_weighted_scalar_commute",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 222,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the reordered product and identify its canonical value by signed multiplication associativity, commutativity and functionality."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0026.html?v=ac7111ec14ff",
+      "id": "WS0026",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "local_checkpoint_verified": true,
+      "name": "signed_table_weighted_scalar_commute",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 223,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An arbitrary signed scalar commutes with an actual table of pointwise weighted products, with the same strict prefix window and actual table witnesses."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0027.html?v=ac7111ec14ff",
+      "id": "WS0027",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "local_checkpoint_verified": true,
+      "name": "signed_weighted_sum_add_linearity",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 224,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual signed weighted sums are additive in their value table, by genuine pointwise product distributivity and the proved prefix-sum induction."
+    },
+    {
+      "admitted_to_alpha": false,
+      "admitted_to_stable": false,
+      "alpha_checked_use": false,
+      "checked_use": false,
+      "enrolled_in_alpha": false,
+      "href": "tag/WS0028.html?v=ac7111ec14ff",
+      "id": "WS0028",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "local_checkpoint_verified": true,
+      "name": "signed_weighted_sum_scalar_linearity",
+      "original_ha_bundle_verified": true,
+      "proof_bundle_node_id": 225,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual signed weighted sums commute with an arbitrary signed scalar; negative values, zero scalars and the empty prefix are included."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0002.html?v=ac7111ec14ff",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0058.html?v=ac7111ec14ff",
+      "id": "ND0058",
+      "kind": "definition",
+      "layer": 0,
+      "name": "MatrixMinorFourCode",
+      "signature": "MatrixMinorFourCode(z,up,us,un,ut)",
+      "summary": "One canonical injective doubled-Cantor code for all four signed-minor beta-code parameters."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0001.html?v=ac7111ec14ff",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0013.html?v=ac7111ec14ff",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0142.html?v=ac7111ec14ff",
+      "id": "ND0142",
+      "kind": "definition",
+      "layer": 0,
+      "name": "SignedDecode",
+      "signature": "SignedDecode(z,p,n)",
+      "summary": "The original canonical integer code: even 2p denotes p, and odd 2k+1 denotes −(k+1). The decoded positive and negative parts are normalized."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0143.html?v=ac7111ec14ff",
+      "id": "ND0143",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedBalance",
+      "signature": "SignedBalance(z,p,n)",
+      "summary": "The original canonical code z represents the integer difference p−n; these supplied components need not be normalized."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0251.html?v=ac7111ec14ff",
+      "id": "ND0251",
+      "kind": "definition",
+      "layer": 2,
+      "name": "ArithTable",
+      "signature": "ArithTable(N,F)",
+      "summary": "An actual packed signed table with canonical signed entries through index N, including index zero. It contains no divisor transform or inversion hypothesis."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0252.html?v=ac7111ec14ff",
+      "id": "ND0252",
+      "kind": "definition",
+      "layer": 2,
+      "name": "ArithAt",
+      "signature": "ArithAt(F,i,z)",
+      "summary": "Two genuine beta entries of the packed table represent the unique canonical signed value z. Distinct component representations need not be equal."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0254.html?v=ac7111ec14ff",
+      "id": "ND0254",
+      "kind": "definition",
+      "layer": 3,
+      "name": "ArithTableEqual",
+      "signature": "ArithTableEqual(F,G,l)",
+      "summary": "Pointwise equality of actual canonical signed lookups below l, not equality of table codes or their positive/negative components."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0264.html?v=ac7111ec14ff",
+      "id": "ND0264",
+      "kind": "definition",
+      "layer": 4,
+      "name": "ArithExtend",
+      "signature": "ArithExtend(F,G,l,z)",
+      "summary": "A genuine output signed table through l preserves the represented source values at i<l and records the prescribed signed value z at l. Existence is proved by recoding both beta streams."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0144.html?v=ac7111ec14ff",
+      "id": "ND0144",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedAdd",
+      "signature": "SignedAdd(a,b,c)",
+      "summary": "Actual addition of original canonical signed codes, witnessed by their decoders and balanced equality."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0266.html?v=ac7111ec14ff",
+      "id": "ND0266",
+      "kind": "definition",
+      "layer": 3,
+      "name": "ArithAdd",
+      "signature": "ArithAdd(F,G,H,l)",
+      "summary": "Three actual signed tables and witnessed SignedAdd entries at each i<l. The unused endpoint certified by ArithTable(l,...) is not included in the prefix sum."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0145.html?v=ac7111ec14ff",
+      "id": "ND0145",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedMul",
+      "signature": "SignedMul(a,b,c)",
+      "summary": "Actual multiplication of original canonical signed codes; opposite-sign products remain on the negative side of the balance."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0267.html?v=ac7111ec14ff",
+      "id": "ND0267",
+      "kind": "definition",
+      "layer": 3,
+      "name": "ArithMul",
+      "signature": "ArithMul(F,G,H,l)",
+      "summary": "Three actual signed tables and witnessed SignedMul entries at each i<l; neither a finite-choice principle nor a product-of-sums identity is assumed."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0268.html?v=ac7111ec14ff",
+      "id": "ND0268",
+      "kind": "definition",
+      "layer": 3,
+      "name": "ArithScale",
+      "signature": "ArithScale(a,F,G,l)",
+      "summary": "Actual source and output tables with witnessed multiplication of every represented entry below l by the signed scalar a. Sum distributivity is a separate theorem."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0015.html?v=ac7111ec14ff",
+      "id": "PD0015",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Sum",
+      "signature": "Sum(b,c,l,z)",
+      "summary": "z is the sum of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0253.html?v=ac7111ec14ff",
+      "id": "ND0253",
+      "kind": "definition",
+      "layer": 2,
+      "name": "SignedPrefixSum",
+      "signature": "SignedPrefixSum(F,l,z)",
+      "summary": "The signed balance of two actual natural finite sums, at exactly the indices 0<=i<l. Existence, uniqueness and representation independence are proved separately."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0272.html?v=ac7111ec14ff",
+      "id": "ND0272",
+      "kind": "definition",
+      "layer": 4,
+      "name": "SignedWeightedSum",
+      "signature": "SignedWeightedSum(W,F,l,z)",
+      "summary": "An actual signed pointwise product table of weights W and values F, followed by its real signed prefix sum at indices i<l. No linearity, divisor cancellation or inversion is assumed in this graph."
+    }
+  ],
+  "original_ha_bundle_verified": true,
+  "parent_alpha_edition_version": "v30",
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "WS0001": {
+      "critical_root_path": [
+        "WS0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS0002",
+        "WS0004",
+        "WS0008",
+        "WS000C",
+        "WS000F",
+        "WS0010",
+        "WS0012",
+        "WS0013",
+        "WS0015",
+        "WS0016"
+      ]
+    },
+    "WS0002": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002"
+      ],
+      "dependencies": [
+        "WS0001"
+      ],
+      "dependents": [
+        "WS0006",
+        "WS000A",
+        "WS000E",
+        "WS0010",
+        "WS0013",
+        "WS0016",
+        "WS0024",
+        "WS0026"
+      ]
+    },
+    "WS0003": {
+      "critical_root_path": [
+        "WS0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS0006",
+        "WS001B",
+        "WS0024"
+      ]
+    },
+    "WS0004": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0004"
+      ],
+      "dependencies": [
+        "WS0001"
+      ],
+      "dependents": [
+        "WS001B"
+      ]
+    },
+    "WS0005": {
+      "critical_root_path": [
+        "WS0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS0010"
+      ]
+    },
+    "WS0006": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0006"
+      ],
+      "dependencies": [
+        "WS0002",
+        "WS0003"
+      ],
+      "dependents": [
+        "WS0011"
+      ]
+    },
+    "WS0007": {
+      "critical_root_path": [
+        "WS0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS000A",
+        "WS0024",
+        "WS0026"
+      ]
+    },
+    "WS0008": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0008"
+      ],
+      "dependencies": [
+        "WS0001"
+      ],
+      "dependents": []
+    },
+    "WS0009": {
+      "critical_root_path": [
+        "WS0009"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS0013"
+      ]
+    },
+    "WS000A": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS000A"
+      ],
+      "dependencies": [
+        "WS0002",
+        "WS0007"
+      ],
+      "dependents": [
+        "WS0014",
+        "WS0020"
+      ]
+    },
+    "WS000B": {
+      "critical_root_path": [
+        "WS000B"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS000E",
+        "WS001C",
+        "WS0026"
+      ]
+    },
+    "WS000C": {
+      "critical_root_path": [
+        "WS0001",
+        "WS000C"
+      ],
+      "dependencies": [
+        "WS0001"
+      ],
+      "dependents": [
+        "WS001C"
+      ]
+    },
+    "WS000D": {
+      "critical_root_path": [
+        "WS000D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS0016"
+      ]
+    },
+    "WS000E": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS000E"
+      ],
+      "dependencies": [
+        "WS0002",
+        "WS000B"
+      ],
+      "dependents": [
+        "WS0017"
+      ]
+    },
+    "WS000F": {
+      "critical_root_path": [
+        "WS0001",
+        "WS000F"
+      ],
+      "dependencies": [
+        "WS0001"
+      ],
+      "dependents": [
+        "WS0010"
+      ]
+    },
+    "WS0010": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0010"
+      ],
+      "dependencies": [
+        "WS0005",
+        "WS0001",
+        "WS0002",
+        "WS000F"
+      ],
+      "dependents": [
+        "WS0011"
+      ]
+    },
+    "WS0011": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0010",
+        "WS0011"
+      ],
+      "dependencies": [
+        "WS0010",
+        "WS0006"
+      ],
+      "dependents": []
+    },
+    "WS0012": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0012"
+      ],
+      "dependencies": [
+        "WS0001"
+      ],
+      "dependents": [
+        "WS0013"
+      ]
+    },
+    "WS0013": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0013"
+      ],
+      "dependencies": [
+        "WS0009",
+        "WS0001",
+        "WS0002",
+        "WS0012"
+      ],
+      "dependents": [
+        "WS0014",
+        "WS001F"
+      ]
+    },
+    "WS0014": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0013",
+        "WS0014"
+      ],
+      "dependencies": [
+        "WS0013",
+        "WS000A"
+      ],
+      "dependents": []
+    },
+    "WS0015": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0015"
+      ],
+      "dependencies": [
+        "WS0001"
+      ],
+      "dependents": [
+        "WS0016"
+      ]
+    },
+    "WS0016": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0016"
+      ],
+      "dependencies": [
+        "WS000D",
+        "WS0001",
+        "WS0002",
+        "WS0015"
+      ],
+      "dependents": [
+        "WS0017"
+      ]
+    },
+    "WS0017": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0016",
+        "WS0017"
+      ],
+      "dependencies": [
+        "WS0016",
+        "WS000E"
+      ],
+      "dependents": []
+    },
+    "WS0018": {
+      "critical_root_path": [
+        "WS0018"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS0019"
+      ]
+    },
+    "WS0019": {
+      "critical_root_path": [
+        "WS0018",
+        "WS0019"
+      ],
+      "dependencies": [
+        "WS0018"
+      ],
+      "dependents": [
+        "WS001B"
+      ]
+    },
+    "WS001A": {
+      "critical_root_path": [
+        "WS001A"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS001C"
+      ]
+    },
+    "WS001B": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0004",
+        "WS001B"
+      ],
+      "dependencies": [
+        "WS0004",
+        "WS0003",
+        "WS0019"
+      ],
+      "dependents": [
+        "WS001D",
+        "WS0027"
+      ]
+    },
+    "WS001C": {
+      "critical_root_path": [
+        "WS0001",
+        "WS000C",
+        "WS001C"
+      ],
+      "dependencies": [
+        "WS000C",
+        "WS000B",
+        "WS001A"
+      ],
+      "dependents": [
+        "WS001E",
+        "WS0028"
+      ]
+    },
+    "WS001D": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0004",
+        "WS001B",
+        "WS001D"
+      ],
+      "dependencies": [
+        "WS001B"
+      ],
+      "dependents": []
+    },
+    "WS001E": {
+      "critical_root_path": [
+        "WS0001",
+        "WS000C",
+        "WS001C",
+        "WS001E"
+      ],
+      "dependencies": [
+        "WS001C"
+      ],
+      "dependents": []
+    },
+    "WS001F": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0013",
+        "WS001F"
+      ],
+      "dependencies": [
+        "WS0013"
+      ],
+      "dependents": [
+        "WS0021",
+        "WS0023"
+      ]
+    },
+    "WS0020": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS000A",
+        "WS0020"
+      ],
+      "dependencies": [
+        "WS000A"
+      ],
+      "dependents": [
+        "WS0021"
+      ]
+    },
+    "WS0021": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0013",
+        "WS001F",
+        "WS0021"
+      ],
+      "dependencies": [
+        "WS001F",
+        "WS0020"
+      ],
+      "dependents": []
+    },
+    "WS0022": {
+      "critical_root_path": [
+        "WS0022"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS0023"
+      ]
+    },
+    "WS0023": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0013",
+        "WS001F",
+        "WS0023"
+      ],
+      "dependencies": [
+        "WS001F",
+        "WS0022"
+      ],
+      "dependents": []
+    },
+    "WS0024": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0024"
+      ],
+      "dependencies": [
+        "WS0002",
+        "WS0003",
+        "WS0007"
+      ],
+      "dependents": [
+        "WS0027"
+      ]
+    },
+    "WS0025": {
+      "critical_root_path": [
+        "WS0025"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "WS0026"
+      ]
+    },
+    "WS0026": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0026"
+      ],
+      "dependencies": [
+        "WS0002",
+        "WS0025",
+        "WS000B",
+        "WS0007"
+      ],
+      "dependents": [
+        "WS0028"
+      ]
+    },
+    "WS0027": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0024",
+        "WS0027"
+      ],
+      "dependencies": [
+        "WS0024",
+        "WS001B"
+      ],
+      "dependents": []
+    },
+    "WS0028": {
+      "critical_root_path": [
+        "WS0001",
+        "WS0002",
+        "WS0026",
+        "WS0028"
+      ],
+      "dependencies": [
+        "WS0026",
+        "WS001C"
+      ],
+      "dependents": []
+    }
+  },
+  "publication_scope": "local-only-checkpoint",
+  "root_ids": [
+    "WS0021",
+    "WS0028",
+    "WS0027"
+  ],
+  "schema": "peano-lab-local-lower-tier-proof-explorers-v1-graph",
+  "stable_admitted_node_count": 0,
+  "stable_member": false
+}

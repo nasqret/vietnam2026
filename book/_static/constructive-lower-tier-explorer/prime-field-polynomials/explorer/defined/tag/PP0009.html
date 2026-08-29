@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PP0009 — prime_field_polynomial_repeat_coefficients — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+</head>
+<body class="pa-defined-proof-site" data-family="prime-field-polynomials"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=ac7111ec14ff">Definitions and proofs</a>
+       <a href="../../tag/PP0009.html?v=ac7111ec14ff">Exact original proof</a>
+       <a href="../graph.html?target=PP0009&amp;v=ac7111ec14ff">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=ac7111ec14ff">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=ac7111ec14ff">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=ac7111ec14ff">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=ac7111ec14ff">G091 milestone</a></nav>
+  <p class="pd-tag">PP0009</p><h1>prime_field_polynomial_repeat_coefficients</h1>
+  <p>A genuinely repeated canonical value forms a bounded coefficient table, including length zero.</p><p class="pd-status">Local checkpoint: original HA and independently compiled Lean verified; not Alpha-enrolled, no Alpha checked-use authority; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <p class="pd-callout">Length is representation length, not polynomial degree. Leading zeros and the empty zero polynomial are allowed; the canonical argument guard x&lt;p also applies to the empty case. Evaluation is defined by actual field-operation steps, not an assumed residue invariant. Polynomial division, gcd, irreducibles and general prime-power extension fields remain open; this does not close G091.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ p. ∀ b. ∀ c. ∀ a. ∀ l. <a class="pd-definition-ref" data-definition="PD0002" href="../definition/PD0002.html?v=ac7111ec14ff">Lt(a,p)</a> → <a class="pd-definition-ref" data-definition="PD0019" href="../definition/PD0019.html?v=ac7111ec14ff">Repeat(b,c,a,l)</a> → <a class="pd-definition-ref" data-definition="ND0262" href="../definition/ND0262.html?v=ac7111ec14ff">BetaPrefixInto(b,c,l,p)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/ND0262.html?v=ac7111ec14ff">BetaPrefixInto(b,c,l,B) · 1</a><a class="pd-chip" href="../definition/PD0002.html?v=ac7111ec14ff">Lt(a,b) · 1</a><a class="pd-chip" href="../definition/PD0019.html?v=ac7111ec14ff">Repeat(b,c,a,l) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall p b c a l. (exists pfa_gap_constant_bound. pfa_gap_constant_bound + S (a) = (p)) -&gt; (forall pfp_repeat_index_constant_repeat. (exists pfa_gap_constant_repeatindex. pfa_gap_constant_repeatindex + S (pfp_repeat_index_constant_repeat) = (l)) -&gt; (((exists ff_h_pfp_constant_repeatentry. ff_h_pfp_constant_repeatentry + S (a) = S ((S (pfp_repeat_index_constant_repeat)) * c)) /\ exists ff_q_pfp_constant_repeatentry. b = ff_q_pfp_constant_repeatentry * S ((S (pfp_repeat_index_constant_repeat)) * c) + (a)))) -&gt; (forall fom_index_pfp_constant_result. (exists fom_gap_pfp_constant_result_index_bound. fom_gap_pfp_constant_result_index_bound + S (fom_index_pfp_constant_result) = l) -&gt; exists fom_value_pfp_constant_result. ((((exists fom_beta_height_pfp_constant_result_entry. fom_beta_height_pfp_constant_result_entry + S (fom_value_pfp_constant_result) = S ((S (fom_index_pfp_constant_result)) * c)) /\ exists fom_beta_quotient_pfp_constant_result_entry. b = fom_beta_quotient_pfp_constant_result_entry * S ((S (fom_index_pfp_constant_result)) * c) + (fom_value_pfp_constant_result))) /\ (exists fom_gap_pfp_constant_result_value_bound. fom_gap_pfp_constant_result_value_bound + S (fom_value_pfp_constant_result) = p)))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 15 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="proof-line-0001" data-line="1"><a class="pd-line-number" href="#proof-line-0001">0001</a><code>intro p</code></li><li class="pd-proof-line" id="proof-line-0002" data-line="2"><a class="pd-line-number" href="#proof-line-0002">0002</a><code>intro b</code></li><li class="pd-proof-line" id="proof-line-0003" data-line="3"><a class="pd-line-number" href="#proof-line-0003">0003</a><code>intro c</code></li><li class="pd-proof-line" id="proof-line-0004" data-line="4"><a class="pd-line-number" href="#proof-line-0004">0004</a><code>intro a</code></li><li class="pd-proof-line" id="proof-line-0005" data-line="5"><a class="pd-line-number" href="#proof-line-0005">0005</a><code>intro l</code></li><li class="pd-proof-line" id="proof-line-0006" data-line="6"><a class="pd-line-number" href="#proof-line-0006">0006</a><code>intro ha</code></li><li class="pd-proof-line" id="proof-line-0007" data-line="7"><a class="pd-line-number" href="#proof-line-0007">0007</a><code>intro hr</code></li><li class="pd-proof-line" id="proof-line-0008" data-line="8"><a class="pd-line-number" href="#proof-line-0008">0008</a><code>intro i</code></li><li class="pd-proof-line" id="proof-line-0009" data-line="9"><a class="pd-line-number" href="#proof-line-0009">0009</a><code>intro hi</code></li><li class="pd-proof-line" id="proof-line-0010" data-line="10"><a class="pd-line-number" href="#proof-line-0010">0010</a><code>exists a</code></li><li class="pd-proof-line" id="proof-line-0011" data-line="11"><a class="pd-line-number" href="#proof-line-0011">0011</a><code>split</code></li><li class="pd-proof-line" id="proof-line-0012" data-line="12"><a class="pd-line-number" href="#proof-line-0012">0012</a><code>specialize hr (i)</code></li><li class="pd-proof-line" id="proof-line-0013" data-line="13"><a class="pd-line-number" href="#proof-line-0013">0013</a><code>apply hr</code></li><li class="pd-proof-line" id="proof-line-0014" data-line="14"><a class="pd-line-number" href="#proof-line-0014">0014</a><code>exact hi</code></li><li class="pd-proof-line" id="proof-line-0015" data-line="15"><a class="pd-line-number" href="#proof-line-0015">0015</a><code>exact ha</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Local original-HA + independent Lean checkpoint only</dd><dt>Alpha admission / checked use</dt><dd>none</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>160 / 202</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 202 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>19 / 15</dd>
+      <dt>Statement SHA-256</dt><dd><code>5e41628e2201525a8b4ec3799e5fba8abe37ceddd3191156eb13ee23a414abb1</code></dd>
+      <dt>Script SHA-256</dt><dd><code>34f77d221fa07b0c74c90ba44f3abcbc05c795d11424e92838fb0c0cac8088a1</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>6e3a08c73b8a45de127e6d50a771f95b52fd54894b1c2e43468751421488a01a</code></dd>
+      <dt>Exact source module</dt><dd><a href="../../../../sources/prime_field_polynomial_candidate.py?v=ac7111ec14ff"><code>peano_lab.library.prime_field_polynomial_candidate</code></a></dd>
+      <dt>Literal bundle and checkpoint receipt</dt><dd><a href="../../../checkpoint.html?v=ac7111ec14ff#theorem-prime_field_polynomial_repeat_coefficients">Inspect exact evidence</a></dd></dl>
+</aside></main></body>
+</html>
