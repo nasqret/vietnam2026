@@ -11,9 +11,10 @@ Stable unchanged at 432), pushed and delivered to the faculty proof site.
 The original finite-coded G009 contract is now proved, including
 multiplicative convolution closure. Its 90 new research theorems and canonical
 reader passed the fresh proof/UI gates, standalone pytest, and all 946 final
-integration regressions. They are not yet Alpha admissions. The 64-family
-static payload is fully staged and checked; its G009 commit and remote
-delivery are the remaining steps recorded below.
+integration regressions. They are not yet Alpha admissions. Commit
+`4185eca2` is pushed, and the 64-family proof website is deployed with complete
+staged/live hash equality and successful HTTPS comparisons. Separate Peano
+staging/production and public-worker boundaries are recorded below.
 
 ## Authorization and invariants
 
@@ -358,3 +359,58 @@ canonical full-SHA inventory
 No symlink, special file or multiply linked file was present; the tree and
 ancestors were unchanged before and after hashing. This is the local payload
 identity for the subsequent remote byte comparison, not a deployment claim.
+
+Commit `4185eca2abf749713ed2b8c922445d69ff2562a0` records all 297 reviewed
+source/reader files and is pushed without rewriting history. Its complete
+255-file reader includes the exact proof bundle under `checkpoints/`; that
+single generated artifact was explicitly added despite the repository's
+general training-checkpoint ignore pattern. The task worktree was clean
+after the commit.
+
+The live proof site still exactly matched the completed v31 baseline before
+upload. The checksum preview contained 246 new files and exactly five existing
+file updates (the hub and four atlas files), with no deletion. Pages/data
+were uploaded first, then the root index, without remote deletions. The
+entire resulting live tree matches the local 12,618-file, 860,601,841-byte
+inventory `6a5fad02de5d5409e311ae29e811e26013fc363a9e3fdd60f2fa356970b87008`.
+The post-preview reports no file difference or deletion, only the root
+directory timestamp changed by the index-last operation. All 21
+certificate-verifying HTTPS checks returned 200 and matched 35,077,500 bytes
+exactly, including the G009 principal, graph, definition, corpus, full proof
+bundle, new atlas, and preserved flagship/inverse surfaces.
+
+The canonical live entrance is
+<https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/>;
+the actual closure root is its definition-aware `MX0059` theorem. The combined
+atlas now records the proved finite-prefix G009 endpoint without promoting
+the new research rows to Alpha or changing the remaining G091 obligation.
+
+Peano-next was then staged from the clean pushed source commit. The previous
+local stage was moved intact to
+`/private/tmp/g009-peano-stage.mA0vC2/peano-lab`; nothing was discarded.
+The new immutable release namespace was confirmed absent before upload.
+Its assets/release files were sent first and its index last, with no deletion
+or production write. All 582 staged/live files (160,542,945 bytes) match,
+canonical inventory
+`f113ce59ddb7440da35e62a2b4a6295ce500f6895ae8e87d28d92c0cf3889658`.
+All ten previous release namespaces and 2,818 unselected legacy files remain.
+Four additional certificate-verifying HTTPS checks matched all 154,599 bytes
+of the new index, worker, manifest and G009 closure source.
+
+The unchanged `verify_peano_delivery.sh` was actually rerun against this
+new Peano-next assembly. It returned exit 1 at the first required
+`Cache-Control: no-store` header after the HTTP-200 root/index byte comparison
+passed; later checks did not execute. Production is unchanged. A separate
+live health check still returned HTTP 503 with the public Lean worker offline;
+no job was submitted and no worker was stopped or restarted. Restarting the
+older-checkout worker awaits the user's requested approval. The Linux CI
+4.31.0 versus locally pinned 4.28.0 verifier-distribution issue is also not
+reported as a successful cross-platform CI run. These boundaries do not
+change the completed original-HA/compiled-Lean G009 proof or verified static
+proof-site deployment.
+
+The requested baseline repair, additive v31 promotion, G009 implementation,
+canonical definition-aware explorer, combined campaign update, commits/push,
+and authorized static/Peano-next delivery are complete. No Alpha v32 admission,
+production cache-policy bypass, unrelated Hydra cleanup, force-push, or
+training-authority expansion was performed.

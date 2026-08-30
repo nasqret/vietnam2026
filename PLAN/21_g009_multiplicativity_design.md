@@ -326,7 +326,9 @@ The corrected publisher installed 255 canonical local reader files in
 594,690,048 bytes. The definition-namespace and standalone-fixture defects
 and their regression evidence are recorded in PLAN/20. The original G009
 finite-coded-prefix contract is therefore proved, with the exact scope
-below. Remote delivery remains a separate subsequent step. The new 90 rows
+below. Separate static-delivery checks also passed: the reader is deployed at
+<https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/>,
+and every staged/live proof-site file matches. The new 90 rows
 have **not** been admitted to Alpha or Stable: Alpha stays 3,796 and Stable
 432. The existing v31 algebra and inverse results retain their separate,
 prior admission and verification provenance.
