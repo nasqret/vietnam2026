@@ -3,8 +3,10 @@
 
 The frozen publisher remains literal historical evidence.  This successor
 corrects its aggregate index link and preserves the two exact historical
-edition-agnostic graph schemas. It does not change a theorem, proof gate,
-receipt, resource limit or historical test.
+edition-agnostic graph schemas. Its source-bound pytest adapter corrects
+compact/filtered graph observations while retaining every mandatory case.
+It does not change a theorem, proof gate, receipt, resource limit or frozen
+historical test source.
 Every public invocation still requires the original genuine live verifier.
 """
 
@@ -52,6 +54,18 @@ FROZEN_SOURCES = (
     ("peano-lab/py/tests/test_constructive_historical_publication_v31.py", 15147, "da2979c6547e0d3b29c12a2ace8be64270f40203ee9b7084d80aaf6af27296fa"),
     ("peano-lab/py/tests/test_constructive_alpha_v31_publication_process.py", 43555, "dd84a1245043424daf75dbe1b3a4683c9c9126f04ac2b6de25e7326df0cec41e"),
 )
+GRAPH_RUNTIME_SOURCES = (
+    ("peano-lab/py/tests/test_constructive_frontier_explorer.py", 129142,
+     "9692861c8354409ad114e0537b98e71811e8bfd31c1ea3fe345a9b3e1ae57792"),
+    ("book/_static/pa-proof-explorer/defined/assets/explorer.js", 29840,
+     "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"),
+)
+GRAPH_TEST_SUPPORT_SOURCES = (
+    "conftest.py",
+    "pytest.ini",
+    "scripts/constructive_historical_graph_test_support.py",
+    "scripts/test_constructive_historical_graph_test_support.py",
+)
 
 
 class CorrectionError(original.PublicationProcessError):
@@ -96,7 +110,11 @@ def _observe_source(root: Path, name: str) -> tuple[str, int, str]:
 
 
 def _capture_sources() -> SourceBinding:
-    result = SourceBinding(ROOT, (*FROZEN_SOURCES, _observe_source(ROOT, SOURCE), _observe_source(ROOT, TEST)))
+    result = SourceBinding(ROOT, (
+        *FROZEN_SOURCES, *GRAPH_RUNTIME_SOURCES,
+        *(_observe_source(ROOT, name) for name in GRAPH_TEST_SUPPORT_SOURCES),
+        _observe_source(ROOT, SOURCE), _observe_source(ROOT, TEST),
+    ))
     result.require_unchanged()
     return result
 

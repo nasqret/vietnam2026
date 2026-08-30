@@ -104,21 +104,56 @@ errors (31.879 seconds, peak RSS 818,659,328 bytes). All output was discarded;
 this was presentation diagnostics, not a proof audit or publication. All 133
 focused compatibility/transport regressions then passed (5.076 seconds,
 peak RSS 511,787,008 bytes), including Boolean-versus-numeric schema changes.
-The next full fresh publication audit remains required.
+Commit `51108a20` records that compatibility correction and is pushed.
+The next actual fresh 72-job proof audit passed, followed by all 108
+completed-family UI tests (71.269 seconds including rendering, peak RSS
+893,255,680 bytes). Historical rendering succeeded, but its UI phase reported
+148 passing and seven failing cases. Six failures were the observation harness
+dereferencing a nonexistent SVG anchor in deliberately compact graphs; the
+seventh incorrectly expected an unused definition to remain selected in
+visible-definition mode. The actual canonical renderer completed successfully.
+No publication tree was installed. The additive test adapter retains all 155
+case identities, runs 111 original bodies and 44 corrected graph checks, and
+adds actual focused-view anchor assertions for every family. It preserves all
+frozen test and renderer bytes. A fresh full proof/publication run remains
+mandatory after the adapter and its negative tests pass.
+The final adapter suite passed all 316 cases, including actual full and
+focused views of all 44 pinned families (7.516 seconds, peak RSS 164,528,128
+bytes). All 134 additive publisher regressions passed (5.517 seconds,
+peak RSS 491,061,248 bytes). Normal pytest independently collected all 155
+historical case identities, and all 64 source-only cases in that frozen suite
+passed without changes (4.636 seconds, peak RSS 735,133,696 bytes). These
+preflights grant no publication authority; the next invocation must still
+run all 72 fresh proof jobs and all three mandatory same-live UI phases.
 The catalogue and original renderer sources remain unchanged.
 Proof workers retain
 their original isolation and all resource limits. Existing catalogue artifacts
 are neither overwritten nor accepted merely from a receipt.
 
-No new remote deployment or full dependency-closed G009 proof is yet claimed.
+Peano-next was deployed from pushed commit `51108a20`, immutable application
+`a-e4012dd8e319`: all 573 staged/live files (160,377,764 bytes) match, and the
+four directly sampled HTTPS resources match their staged bytes. All observed
+responses still lack the required Cache-Control headers. Peano production is
+untouched; the actual unchanged `verify_peano_delivery.sh` invocation against
+Peano-next returned exit 1 at the first required non-storable HTML header
+after its staged/index byte comparison passed (HTTP 200). Its later checks
+did not run, and its protected delivery gate remains in force. The static proof-site
+deployment awaits successful publication and staging. The public Lean gateway
+currently returns 503; restarting its older-checkout worker awaits the user's
+permission and is separate from static proof-site delivery.
+
 The independent mathematical design is in `PLAN/21_g009_multiplicativity_design.md`.
 The implementation is being checked separately in an isolated scratch tree so
 that the current release sources remain frozen throughout publication.
-All 90 proposed G009 statement/body pairs have passed conditional original-HA
-checks, and the first 86 have an actual dependency-closed original-HA bundle
-(371 nodes, 284 inherited Alpha-v31 theorems, SHA-256
-`e8e42dd7b343c068586dfe840d5c1a3572d76bc35a454b629d9ab252437f5a7d`).
-This intermediate authoring checkpoint is not a full G009 certificate,
-independent Lean verification, or Alpha admission. The eleven additive
-conservative definitions and combined-map formatter have separate executable
-audits; final proof-dependent publication remains gated on the complete bundle.
+All 90 new G009 statement/body pairs now belong to an actual dependency-closed
+bundle accepted by both the original HA checker and the existing compiled
+Lean verifier: 462 nodes (including the root), 1,371 edges and 35,945 proof-body
+occurrences; 7,840,579 bytes, SHA-256
+`953dc5ef340379b1e34883c2f9ab2181e91c872f5bbb7943c52b2fb70ce76959`.
+The full HA authoring check took 92.97 seconds, peak RSS 1,230,356,480 bytes;
+the independent compiled-Lean check returned ACCEPT with root 461, exit zero
+and empty stderr (0.604 seconds, peak observed RSS 236,929,024 bytes). These
+are real authoring checks, not a final release receipt or Alpha admission.
+Production adoption, all eight fresh final proof windows and the mandatory
+same-live reader tests remain required. The eleven additive conservative
+definitions and combined-map formatter have separate executable audits.

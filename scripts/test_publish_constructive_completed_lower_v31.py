@@ -1,8 +1,9 @@
 """Pure navigation/transport regressions, NOT proof acceptance.
 
 Synthetic pages and private filesystem transactions below never manufacture
-a LiveReleaseContext.  The public rejection tests use its actual guard; the
-unchanged same-live reader suites still run during every real publication.
+a LiveReleaseContext. The public rejection tests use its actual guard; all
+mandatory same-live reader cases still run during every real publication,
+including the explicitly reviewed historical graph-observation successor.
 """
 
 from __future__ import annotations
@@ -277,8 +278,34 @@ def test_initial_source_observation_is_bounded_and_regular(kind, tmp_path, monke
 def test_real_source_inventory_is_exact_and_unchanged():
     correction._SOURCES.require_unchanged()
     assert correction._SOURCES.pins[:10] == correction.FROZEN_SOURCES
+    assert correction._SOURCES.pins[10:12] == correction.GRAPH_RUNTIME_SOURCES
+    assert tuple(pin[0] for pin in correction._SOURCES.pins[12:16]) == correction.GRAPH_TEST_SUPPORT_SOURCES
     assert tuple(pin[0] for pin in correction._SOURCES.pins[-2:]) == (correction.SOURCE, correction.TEST)
-    assert len(set(pin[0] for pin in correction._SOURCES.pins)) == 12
+    assert len(set(pin[0] for pin in correction._SOURCES.pins)) == 18
+
+
+def test_graph_observation_support_and_discovery_are_bound_not_historical_rewrites():
+    assert correction.GRAPH_TEST_SUPPORT_SOURCES == (
+        "conftest.py", "pytest.ini",
+        "scripts/constructive_historical_graph_test_support.py",
+        "scripts/test_constructive_historical_graph_test_support.py",
+    )
+    descriptor = correction._SOURCES.descriptor()
+    for name in correction.GRAPH_TEST_SUPPORT_SOURCES:
+        raw = (correction.ROOT / name).read_bytes()
+        assert descriptor[name] == {"bytes": len(raw), "sha256": publication.digest(raw)}
+    assert correction.GRAPH_RUNTIME_SOURCES == (
+        ("peano-lab/py/tests/test_constructive_frontier_explorer.py", 129142,
+         "9692861c8354409ad114e0537b98e71811e8bfd31c1ea3fe345a9b3e1ae57792"),
+        ("book/_static/pa-proof-explorer/defined/assets/explorer.js", 29840,
+         "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"),
+    )
+    # Discovery has no options that can filter, skip or weaken any suite.
+    import configparser
+    config = configparser.ConfigParser()
+    config.read(correction.ROOT / "pytest.ini")
+    assert config.sections() == ["pytest"]
+    assert dict(config["pytest"]) == {}
 
 
 def _underlying(function):

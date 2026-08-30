@@ -68,9 +68,24 @@ literal pinned schemas receive that exception; other schemas retain the
 original reviewed version migration and rejection rules. The adapter uses
 private function globals without modifying a historical module. It
 preserves the six sealed release files and their original source pins; the
-original proof gates, mandatory same-live UI tests and atomic non-overwriting
-publication remain in force. The original catalogue-bound renderer sources
-are historical evidence, not files to edit when correcting a delivery link.
+original proof gates and atomic non-overwriting publication remain in force.
+The original catalogue-bound renderer and test sources are historical evidence,
+not files to edit when correcting a delivery link or an observation harness.
+
+The historical UI phase retains all 155 collected case identities. Of these,
+111 execute their original assertions unchanged. The 44 mixed-graph cases use
+the reviewed `constructive_historical_graph_test_support.py` pytest adapter:
+the canonical renderer deliberately omits SVG anchors in compact graphs, and
+visible-definition mode excludes definitions unused by the displayed theorems.
+The adapter checks the exact visible node sets and typed-arrow counts, actual selection
+and viewport, and compact-mode behavior. It also renders a focused view with
+real SVG anchors to check getter-only `href` handling for every family. It
+changes only test observations, not the renderer, graphs, theorem evidence, or
+original test files. A source-pinned, exact-file/function hook selects these
+44 cases; mandatory collection and outcome checks reject missing, filtered,
+skipped, duplicated or failed cases. Normal pytest and publication use the
+same repository plugin. The publisher binds that plugin, its tests and root
+pytest configuration before the fresh proof run and after every phase.
 
 The current presentation directories are:
 
