@@ -35,6 +35,25 @@ PROOF_BUNDLES=(
   alpha-v28-lower-layer-proof-bundle-v1.json
   alpha-v29-priority-layer-proof-bundle-v1.json
   alpha-v30-gaussian-factorization-proof-bundle-v1.json
+  bottom-layer-euler-units-proof-bundle-v2.json
+  bottom-layer-prime-fields-proof-bundle-v1.json
+  bottom-layer-mobius-values-proof-bundle-v1.json
+  bottom-layer-signed-sums-proof-bundle-v1.json
+  lower-tier-divisor-sums-proof-bundle-v1.json
+  lower-tier-signed-weighted-sums-proof-bundle-v1.json
+  lower-tier-prime-field-polynomials-proof-bundle-v1.json
+  lower-continuation-divisor-involutions-proof-bundle-v1.json
+  lower-continuation-mobius-divisor-cancellation-proof-bundle-v1.json
+  lower-continuation-rectangular-sums-proof-bundle-v1.json
+  lower-continuation-polynomial-products-proof-bundle-v1.json
+  dirichlet-finite-support-proof-bundle-v1.json
+  dirichlet-convolution-proof-bundle-v1.json
+  dirichlet-fubini-proof-bundle-v1.json
+  dirichlet-units-proof-bundle-v1.json
+  mobius-inversion-proof-bundle-v1.json
+  dirichlet-signed-units-proof-bundle-v1.json
+  dirichlet-triangular-proof-bundle-v1.json
+  dirichlet-inverses-proof-bundle-v1.json
 )
 TMP_MANIFEST="$(mktemp)"
 trap 'rm -f "$TMP_MANIFEST"' EXIT

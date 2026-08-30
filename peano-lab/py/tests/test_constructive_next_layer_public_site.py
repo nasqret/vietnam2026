@@ -21,7 +21,9 @@ import pytest
 
 
 ROOT = Path(__file__).resolve().parents[3]
-HUB = ROOT / "deploy" / "proofs" / "index.html"
+# Literal v30 regression surface, retained when the live v31 hub supersedes it.
+# The current hub and every v31 route have their own non-optional release tests.
+HUB = ROOT / "deploy" / "proofs" / "history" / "index-v30.html"
 ATLAS = ROOT / "book" / "_static" / "constructive-gaussian-campaign"
 HISTORIC = ROOT / "book" / "_static" / "constructive-frontier-explorer"
 NEXT = ROOT / "book" / "_static" / "constructive-next-layer-explorer"

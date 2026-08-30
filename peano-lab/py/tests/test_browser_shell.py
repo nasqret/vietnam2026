@@ -7,6 +7,7 @@ deployment properties that are easy to lose during an otherwise cosmetic edit.
 from __future__ import annotations
 
 import hashlib
+import json
 from html import unescape
 import re
 from pathlib import Path
@@ -50,6 +51,25 @@ PROOF_BUNDLE_FILENAMES = (
     "alpha-v28-lower-layer-proof-bundle-v1.json",
     "alpha-v29-priority-layer-proof-bundle-v1.json",
     "alpha-v30-gaussian-factorization-proof-bundle-v1.json",
+    "bottom-layer-euler-units-proof-bundle-v2.json",
+    "bottom-layer-prime-fields-proof-bundle-v1.json",
+    "bottom-layer-mobius-values-proof-bundle-v1.json",
+    "bottom-layer-signed-sums-proof-bundle-v1.json",
+    "lower-tier-divisor-sums-proof-bundle-v1.json",
+    "lower-tier-signed-weighted-sums-proof-bundle-v1.json",
+    "lower-tier-prime-field-polynomials-proof-bundle-v1.json",
+    "lower-continuation-divisor-involutions-proof-bundle-v1.json",
+    "lower-continuation-mobius-divisor-cancellation-proof-bundle-v1.json",
+    "lower-continuation-rectangular-sums-proof-bundle-v1.json",
+    "lower-continuation-polynomial-products-proof-bundle-v1.json",
+    "dirichlet-finite-support-proof-bundle-v1.json",
+    "dirichlet-convolution-proof-bundle-v1.json",
+    "dirichlet-fubini-proof-bundle-v1.json",
+    "dirichlet-units-proof-bundle-v1.json",
+    "mobius-inversion-proof-bundle-v1.json",
+    "dirichlet-signed-units-proof-bundle-v1.json",
+    "dirichlet-triangular-proof-bundle-v1.json",
+    "dirichlet-inverses-proof-bundle-v1.json",
 )
 PROOF_BUNDLE_SOURCES = {
     f"proof-artifacts/{filename}": (
@@ -171,6 +191,9 @@ def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> 
         "alpha_enrollment_v30",
         "editions_v29",
         "editions_v30",
+        "alpha_enrollment_v31",
+        "campaign_completed_lower_closure",
+        "editions_v31",
     ):
         assert f'"py/peano_lab/library/{module}.py"' in WORKER
 
@@ -198,9 +221,12 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
 
 def test_shell_connects_checked_alpha_research_to_multiscale_proof_atlas() -> None:
     assert 'aria-label="Course and research navigation"' in INDEX
-    assert '<a href="/proofs/?v=ac7111ec14ff">Proof library</a>' in INDEX
-    assert '<a href="/proofs/grand-campaign/?v=ac7111ec14ff">Research atlas</a>' in INDEX
-    assert "Alpha: 3,222 proofs" in INDEX
+    channel = json.loads((LAB.parent / "artifacts/peano-library/channels-v31.json").read_bytes())["channels"]["alpha"]
+    revision = channel["artifact_sha256"][:12]
+    assert channel["theorem_count"] == channel["checked_use_count"] == 3796
+    assert f'<a href="/proofs/?v={revision}">Proof library</a>' in INDEX
+    assert f'<a href="/proofs/grand-campaign/?v={revision}">Research atlas</a>' in INDEX
+    assert "Alpha: 3,796 proofs" in INDEX
     assert '<span class="lbl">research:</span>' in INDEX
     assert 'data-cmd="pa lib alpha odd_prime_lifting_the_exponent" disabled>odd-prime LTE</button>' in INDEX
     assert 'data-cmd="pa lib alpha positive_squarefree_kernel_and_power_profile" disabled>positive squarefree &amp; power profiles</button>' in INDEX

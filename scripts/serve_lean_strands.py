@@ -75,9 +75,11 @@ SENSITIVE_NAMES = frozenset(
 )
 LEGACY_EXPLORER_SEGMENTS = frozenset(
     {"pa-proof-explorer", "bertrand-proof-explorer", "constructive-grand-campaign",
-     "constructive-priority-campaign", "constructive-gaussian-campaign"}
+     "constructive-priority-campaign", "constructive-gaussian-campaign",
+     "constructive-completed-lower-campaign-v31"}
 )
 CONSTRUCTIVE_CAMPAIGN_SUCCESSORS = (
+    "constructive-completed-lower-campaign-v31",
     "constructive-gaussian-campaign", "constructive-priority-campaign",
     "constructive-grand-campaign",
 )
@@ -88,6 +90,65 @@ MAX_EXPLORER_MANIFEST_BYTES = 2 * 1024 * 1024
 MAX_EXPLORER_CAMPAIGN_BYTES = 8 * 1024 * 1024
 MAX_EXPLORER_CATALOG_BYTES = 64 * 1024 * 1024
 MAX_EXPLORER_FAMILIES = 512
+
+COMPLETED_LOWER_V31_FAMILIES = {
+    "euler-units": 32, "prime-fields": 87, "mobius-values": 21, "signed-sums": 30,
+    "divisor-sums": 37, "signed-weighted-sums": 40, "prime-field-polynomials": 49,
+    "divisor-involutions": 12, "mobius-divisor-cancellation": 28, "rectangular-sums": 32,
+    "polynomial-products": 53, "finite-support": 8, "dirichlet-convolution": 40,
+    "dirichlet-fubini": 32, "dirichlet-units": 25, "mobius-inversion": 8,
+    "dirichlet-signed-units": 9, "dirichlet-triangular": 10, "dirichlet-inverses": 21,
+}
+
+# Literal metadata identities from the forty-four byte-pinned historical
+# readers. Mixed/unrecorded first admissions and non-admitted display aliases
+# are retained; these descriptors authorize navigation, never theorem proof.
+HISTORICAL_V31_FIRST_ADMISSIONS = {
+    "arithmetic-foundations": "cfdffcc16315c05a275144d61ae40fe9f58c6ea8bc7834b851154e00d52b099d",
+    "bertrand-postulate": "254577900ce3022e7c6930fc3f062a81ae05566601c9e54a14d894a5214c7fd2",
+    "bertrand-prime-chains": "423370113995b149fe8121ab28fd0aa7f62bd47d62754e42ac272709d62a2f10",
+    "best-approximation": "8b6330c4c2ba8577459b1cd36aea77d02ca27f4b1206cf1780ce282bf354e4a3",
+    "binary-digit-extraction": "282c40c3215fc59ad46516482c6e860db32c982d92cf66fd2feb58753ea3cfe2",
+    "binary-length": "2713cb1125c849c966e35a870280db49637e153600c740cac9083b238ee3507c",
+    "binary-modular-execution": "c8569bf3fa1c3d5bc3efeb8579b17669ec3b9aee844570178afb3fadb51d1ea8",
+    "binary-modular-exponentiation": "9f2c23240c97514228b9ca159c77ef0416ef0c2c7a8aad4ff603f37ce71ea0ee",
+    "cauchy-davenport": "f733207080b339ee8507579e0e84b3989f1c2c6c2589d31c3d04721aa82c671b",
+    "continued-fractions": "bbdbd4c47a9aae1ccbf06ed74e914e460b264d0b13f5d622add7f5f6e133c7b8",
+    "cornacchia": "b9e8ccca7ee3d58cebb1e9a81dfdfbd18723fed529bdebe746260f76f50af76d",
+    "eisenstein-integers": "945d9b6bce5ff9650d1992383ded3c9d66d6998f1a633b8e26417f3a6c8b0f71",
+    "euclidean-complexity": "d3a7c04f53469fd3ef4198c1f0ff1e3d9d8c280dba1bafefbd77703a06fa10f3",
+    "euclidean-gcd-transport": "693590c5284a7c1df4f0f36a8d54adbb823973a9e8ad7199c948e524f2e6ee37",
+    "euclidean-logarithmic-bound": "99de192c6bd3c338815235282e7b5596273f1b1aa92a500353c1ebd27380b816",
+    "exponent-lifting": "1f4efde4320edb946ec777c929dd18dc2c87e72cbc6eedd53b6894d1ecee3b26",
+    "four-squares": "1e59942892966dfcea70f29a1be44c4d4fd0fd56a707aafd65f70d046e06e242",
+    "gaussian-factorization": "724c4d0e91b54c354a5158a395a1ecb7e8519c48ac18a0357900ceabe4ae90ce",
+    "gaussian-integers": "3ad385415c5639baa62adbb1352a272d84f85b787d507be0d46cf00f18cf0411",
+    "generalized-crt": "4af026b4c1658811650c4138d38ea6f064f003ab5bc610199904a6dc99d6d44c",
+    "generalized-crt-compatibility": "709337ff759f1392ccdd305aa3f73e8e7382e6820deaff90e2ca7f818f22c5ec",
+    "generalized-crt-fold": "d81d62b444f8b9ba3a5913de09be3309638633ff00022bb6872561f2dd1d3aef",
+    "hensel-lifting": "4080ec0c58faeabac8bc24c393cf108a3b51c195aba6125e08f2039720b1f4e4",
+    "integer-linear-algebra": "a3fe5c696aee11e33a48b474b63aa14dd6f50d7150999f85f3a2039b1c6d2fcb",
+    "kummer": "50a5634551a5e8bdd631ba03dc24f55d63cf5c5d97dd676eb80f1fcd28ca61e7",
+    "lucas": "723649d33b1d7ca32a12fe01f4d95f072547bc6e31bc5756b4122544bb7ad53a",
+    "matrix-coded-products": "a08af99b0160d6c7c72efb14c53b273fe80c475fa970896168f6e6fde107dae5",
+    "matrix-cofactor-expansion": "7b7c5cf2a1eb18c1aa53d3a11dbacf242016b1f075108c251f9cde67831c8ceb",
+    "matrix-determinant-minors": "ee3df980d0c70f10fdd284820a89de9c68e3c66f2b68cdc03b72f022c853e3e7",
+    "matrix-dot-product": "c2384c2a8914c1fe4eec0335f0dc73971cf173151fdc1f39eac159582ca70a36",
+    "multinomial-kummer": "23c74fc9c92c28b3f67f3d251f9d369fe6be0bba8ca39503f05e48f71336d53c",
+    "polynomial-hensel": "1fb5bb73d3262afa2246c7b08ceaf658f42fde035665e6f1b9f70e025c81cb35",
+    "polynomial-horner": "50899ce24a7060e49212b81e463e1406a671058688472ce1c858daf336df6bb8",
+    "polynomial-taylor-hensel": "387617ea6f729fb7f34851959786b47ff468408e1dcaab2cd6607c37e2a13b3b",
+    "prime-count-chebyshev": "8c853603b4289101d2861eb2ee5ee4cd85407262af0b8d3d7f252eae0b52bdce",
+    "prime-enumeration": "4f143b049846e1b02fe3fa087c65e500ba7a42dbdfabbdd8791332d0ec55226e",
+    "prime-valuation-support": "ba66c595076a9708393151277cf398555d36fb9cf115f9f13f384358940cc28e",
+    "primes-three-mod-four": "2b8dfac78f8c4d3b6b571328b89679bb78c1799a822f9cb47e212f030eaeabb7",
+    "pythagorean-fermat-four": "4611ca49f9d6d19336e2049d21ad4246f7841c1fe7e20dc53f15848a97dbdd27",
+    "quadratic-reciprocity": "4b07f41f1331eddef05ac148c476157e0ec5cd7111a9d57bfc39b62768ba2c8d",
+    "squarefree-kernels": "5a1c259dfb2ec468adfd256a6756fc2c78d720a3a3e3136bd2a51e7eb351105a",
+    "supplementary-laws": "b5825f0d2d77359296dbb5f9080a58b51f1450809c921d8448c85a3761e26010",
+    "totient-products": "a916830eb4236a84cef9e96dc9b77aa7d2370965fdca2ee2fb4b6073165716d0",
+    "two-squares": "a70f74c7e962dccb1a5a13772c6ad5215199f21fe05311186d6c21209023ccfd"
+}
 
 
 @dataclass(frozen=True, slots=True)
@@ -101,6 +162,12 @@ class ConstructivePublication:
 
 
 CONSTRUCTIVE_PUBLICATIONS = {
+    "constructive-historical-explorers-v31": ConstructivePublication(
+        "peano-lab-constructive-historical-publication-v31-manifest", "v31", "mixed_preserved"
+    ),
+    "constructive-completed-lower-explorer-v31": ConstructivePublication(
+        "peano-lab-constructive-completed-lower-explorer-v31-manifest", "v31", "v31"
+    ),
     "constructive-gaussian-factorization-explorer": ConstructivePublication(
         "peano-lab-constructive-gaussian-factorization-explorer-v1-manifest", "v30", "v30"
     ),
@@ -1270,6 +1337,8 @@ class LeanStrandServer(ThreadingHTTPServer):
             information.st_ino,
             information.st_size,
             information.st_mtime_ns,
+            information.st_ctime_ns,
+            information.st_mode,
             information.st_uid,
         )
 
@@ -1299,6 +1368,8 @@ class LeanStrandServer(ThreadingHTTPServer):
         version = metadata.get("current_alpha_version")
         if type(version) is not str or CONSTRUCTIVE_RELEASE_VERSION.fullmatch(version) is None:
             raise ServiceError("constructive proof browser has no safe current Alpha release")
+        if directory.name == "constructive-completed-lower-campaign-v31" and version != "v31":
+            raise ServiceError("the present v31 campaign cannot downgrade to a historical release")
         boundaries = campaign.get("ambitious_boundaries")
         release = boundaries.get(f"alpha_{version}_edition") if type(boundaries) is dict else None
         if type(release) is not dict or release.get("role") != "current_immutable_release":
@@ -1336,10 +1407,23 @@ class LeanStrandServer(ThreadingHTTPServer):
             maximum=MAX_EXPLORER_CAMPAIGN_BYTES,
             owner=owner,
         )
+        shard_fingerprint = ()
+        if version == "v31":
+            # A manifest digest does not authenticate its referenced rows.
+            # All three immutable files participate in cache invalidation;
+            # the codec does no proof loading and retains the 64 MiB/file cap.
+            from peano_catalog_shards import catalog_input_fingerprint
+            try:
+                shard_fingerprint = catalog_input_fingerprint(
+                    catalog_path, expected_sha256=digest, owner_uid=owner,
+                )
+            except (OSError, ValueError) as error:
+                raise ServiceError("constructive sharded catalogue binding is invalid") from error
         key = (
             self._fingerprint(campaign_path, campaign_info),
             self._fingerprint(channel_path, channel_info),
             self._fingerprint(catalog_path, catalog_info),
+            shard_fingerprint,
         )
         with self._constructive_authority_lock:
             cached = self._constructive_release_cache.get(key)
@@ -1359,21 +1443,83 @@ class LeanStrandServer(ThreadingHTTPServer):
                 or channel.get("checked_use_count") != count
             ):
                 raise ServiceError("constructive proof browser channel disagrees with its current release")
-            actual = sha256()
-            observed = 0
-            with catalog_path.open("rb") as stream:
-                while chunk := stream.read(1024 * 1024):
-                    observed += len(chunk)
-                    if observed > MAX_EXPLORER_CATALOG_BYTES:
-                        raise ServiceError("constructive proof browser catalog exceeds its safe size")
-                    actual.update(chunk)
-            if actual.hexdigest() != digest:
-                raise ServiceError("constructive proof browser catalog differs from its sealed digest")
+            if version == "v31":
+                from peano_catalog_shards import verify_catalog_bindings
+                try:
+                    bindings = verify_catalog_bindings(catalog_path, expected_sha256=digest, owner_uid=owner)
+                    if bindings.fingerprint != shard_fingerprint:
+                        raise ValueError("catalogue inputs changed during authorization")
+                    manifest, _ = self._reviewed_json(catalog_path, maximum=MAX_EXPLORER_CATALOG_BYTES, owner=owner)
+                    header = manifest.get("metadata", {})
+                    if (header.get("edition_identity_sha256") != identity
+                            or type(header.get("theorem_count")) is not int or header["theorem_count"] != count
+                            or type(header.get("checked_use_count")) is not int or header["checked_use_count"] != count):
+                        raise ValueError("catalogue manifest disagrees with the actual current release")
+                except (OSError, ValueError) as error:
+                    raise ServiceError("constructive sharded catalogue differs from its sealed data") from error
+            else:
+                actual = sha256()
+                observed = 0
+                with catalog_path.open("rb") as stream:
+                    while chunk := stream.read(1024 * 1024):
+                        observed += len(chunk)
+                        if observed > MAX_EXPLORER_CATALOG_BYTES:
+                            raise ServiceError("constructive proof browser catalog exceeds its safe size")
+                        actual.update(chunk)
+                if actual.hexdigest() != digest:
+                    raise ServiceError("constructive proof browser catalog differs from its sealed digest")
             result = (version, digest, identity)
             if len(self._constructive_release_cache) >= 16:
                 self._constructive_release_cache.clear()
             self._constructive_release_cache[key] = result
             return result
+
+    def _historical_v31_provenance(self, directory: Path, manifest: dict, *, owner: int) -> None:
+        """Authenticate exact mixed first admissions, including their full rows.
+
+        The small manifest carries literal per-family descriptors; their
+        complete historical per-theorem records live in bounded sidecars.
+        Recheck these bytes even on a warm family cache. They establish honest
+        provenance, not permission to bypass an actual theorem proof.
+        """
+        entries = manifest.get("families")
+        if type(entries) is not list or len(entries) != 44:
+            raise ServiceError("historical v31 publication has an incomplete family inventory")
+        names = set()
+        for family in entries:
+            if type(family) is not dict:
+                raise ServiceError("malformed historical first-admission family")
+            name = family.get("slug")
+            descriptor = family.get("first_admission")
+            if (type(name) is not str or name not in HISTORICAL_V31_FIRST_ADMISSIONS
+                    or name in names or type(descriptor) is not dict):
+                raise ServiceError("unreviewed or duplicate historical first admission")
+            names.add(name)
+            encoded = json.dumps(descriptor, ensure_ascii=False, allow_nan=False,
+                                 sort_keys=True, separators=(",", ":")).encode("utf-8")
+            if sha256(encoded).hexdigest() != HISTORICAL_V31_FIRST_ADMISSIONS[name]:
+                raise ServiceError("literal historical first-admission descriptor changed")
+            records = descriptor.get("per_theorem_records")
+            if (type(records) is not dict or set(records) != {"path", "bytes", "sha256"}
+                    or records["path"] != name + "/api/first-admission.json"
+                    or type(records["bytes"]) is not int
+                    or not 0 < records["bytes"] <= MAX_EXPLORER_MANIFEST_BYTES):
+                raise ServiceError("unsafe historical first-admission sidecar binding")
+            parent = directory
+            for component in (name, "api"):
+                parent /= component
+                if parent.is_symlink() or not parent.is_dir() or parent.stat().st_uid != owner:
+                    raise ServiceError("unsafe historical first-admission directory")
+            path = parent / "first-admission.json"
+            if path.is_symlink() or not path.is_file():
+                raise ServiceError("historical first-admission rows are unavailable")
+            information = path.stat()
+            if information.st_uid != owner or information.st_size != records["bytes"]:
+                raise ServiceError("historical first-admission rows have unsafe owner or size")
+            with path.open("rb") as stream:
+                raw = stream.read(records["bytes"] + 1)
+            if len(raw) != records["bytes"] or sha256(raw).hexdigest() != records["sha256"]:
+                raise ServiceError("literal historical first-admission rows changed")
 
     def reviewed_constructive_family(self, directory: Path, slug: str) -> bool:
         """Authorize one real family only under the current sealed checked release."""
@@ -1400,6 +1546,8 @@ class LeanStrandServer(ThreadingHTTPServer):
                 maximum=MAX_EXPLORER_MANIFEST_BYTES,
                 owner=owner,
             )
+            if directory.name == "constructive-historical-explorers-v31":
+                self._historical_v31_provenance(directory, manifest, owner=owner)
             key = (self._fingerprint(manifest_path, information), version, digest, identity)
             with self._constructive_authority_lock:
                 families = self._constructive_manifest_cache.get(key)
@@ -1423,18 +1571,18 @@ class LeanStrandServer(ThreadingHTTPServer):
                         != identity
                     ):
                         return False
-                    if publication is not None and (
-                        version != publication.current_version
-                        or manifest.get("alpha_first_enrolled_version")
-                        != publication.first_enrolled_version
-                        or manifest.get("first_enrollment_catalog_sha256")
-                        != (publication.first_catalog_sha256 or digest)
-                        or (
-                            publication.first_enrolled_version == version
-                            and manifest.get("first_enrollment_catalog_sha256") != digest
-                        )
-                    ):
-                        return False
+                    if publication is not None:
+                        if (version != publication.current_version
+                                or manifest.get("alpha_first_enrolled_version") != publication.first_enrolled_version):
+                            return False
+                        if publication.first_enrolled_version == "mixed_preserved":
+                            # This one reviewed aggregate has heterogeneous
+                            # literal history; a scalar first-catalog claim
+                            # would be false even when the current digest fits.
+                            if "first_enrollment_catalog_sha256" in manifest:
+                                return False
+                        elif manifest.get("first_enrollment_catalog_sha256") != (publication.first_catalog_sha256 or digest):
+                            return False
                     entries = manifest.get("families")
                     if type(entries) is not list or not 1 <= len(entries) <= MAX_EXPLORER_FAMILIES:
                         return False
@@ -1452,10 +1600,27 @@ class LeanStrandServer(ThreadingHTTPServer):
                         checked = family.get("alpha_checked_use_node_count", family.get("theorem_count"))
                         if type(checked) is not int or checked < 1:
                             return False
+                        if (directory.name == "constructive-completed-lower-explorer-v31"
+                                and checked != COMPLETED_LOWER_V31_FAMILIES.get(name)):
+                            return False
                         family_version = family.get("alpha_edition_version")
                         if family_version is not None and family_version != version:
                             return False
+                        if directory.name == "constructive-historical-explorers-v31":
+                            descriptor = family.get("first_admission")
+                            if type(descriptor) is not dict or name not in HISTORICAL_V31_FIRST_ADMISSIONS:
+                                return False
+                            encoded = json.dumps(descriptor, ensure_ascii=False, allow_nan=False,
+                                                 sort_keys=True, separators=(",", ":")).encode("utf-8")
+                            if sha256(encoded).hexdigest() != HISTORICAL_V31_FIRST_ADMISSIONS[name]:
+                                return False
                         names.add(name)
+                    if (directory.name == "constructive-historical-explorers-v31"
+                            and names != set(HISTORICAL_V31_FIRST_ADMISSIONS)):
+                        return False
+                    if (directory.name == "constructive-completed-lower-explorer-v31"
+                            and names != set(COMPLETED_LOWER_V31_FAMILIES)):
+                        return False
                     families = frozenset(names)
                     if len(self._constructive_manifest_cache) >= 64:
                         self._constructive_manifest_cache.clear()

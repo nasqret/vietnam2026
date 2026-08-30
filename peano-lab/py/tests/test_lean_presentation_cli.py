@@ -103,7 +103,7 @@ def test_named_checked_bundle_never_reconstructs_a_redundant_root_certificate(
     tmp_path: Path,
     edition: str,
 ) -> None:
-    from peano_lab.library import editions_v19, editions_v30
+    from peano_lab.library import editions_v19, editions_v30, editions_v31
     from peano_lab.library.theorems import replay as stable_replay
 
     checked = stable_replay("zero_add")
@@ -121,6 +121,9 @@ def test_named_checked_bundle_never_reconstructs_a_redundant_root_certificate(
     monkeypatch.setattr(exporter, "replay", forbidden)
     monkeypatch.setattr(editions_v19, "replay", forbidden)
     monkeypatch.setattr(editions_v30, "replay", forbidden)
+    monkeypatch.setattr(editions_v31, "replay", forbidden)
+    monkeypatch.setattr(editions_v31, "_checked_completed_lower_bundle", forbidden)
+    monkeypatch.setattr(editions_v31, "checked_completed_lower_bundle", forbidden)
 
     assert exporter.main(
         [
@@ -192,13 +195,16 @@ def test_checked_alpha_statement_preview_does_not_replay_its_large_root(
     capsys: pytest.CaptureFixture[str],
     name: str,
 ) -> None:
-    from peano_lab.library import editions_v19, editions_v30
+    from peano_lab.library import editions_v19, editions_v30, editions_v31
 
     def forbidden(*_args, **_kwargs):
         raise AssertionError("an Alpha statement preview tried to replay its proof")
 
     monkeypatch.setattr(editions_v19, "replay", forbidden)
     monkeypatch.setattr(editions_v30, "replay", forbidden)
+    monkeypatch.setattr(editions_v31, "replay", forbidden)
+    monkeypatch.setattr(editions_v31, "_checked_completed_lower_bundle", forbidden)
+    monkeypatch.setattr(editions_v31, "checked_completed_lower_bundle", forbidden)
     assert (
         exporter.main([name, "--edition", "alpha", "--format", "pretty"])
         == 0
@@ -491,12 +497,12 @@ def test_alpha_body_only_theorem_is_denied_even_for_statement_preview(
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v19, editions_v30
+    from peano_lab.library import editions_v19, editions_v30, editions_v31
 
     actual = editions_v19.entry("zero_add", edition="alpha")
     assert actual is not None
     unauthorized = replace(actual, evidence=editions_v19.EvidenceStatus.BODY_CHECKED)
-    monkeypatch.setattr(editions_v30, "entry", lambda *_args, **_kwargs: unauthorized)
+    monkeypatch.setattr(editions_v31, "entry", lambda *_args, **_kwargs: unauthorized)
 
     assert exporter.main(["zero_add", "--edition", "alpha", "--format", "pretty"]) == 1
     assert "checked-use authority" in capsys.readouterr().err

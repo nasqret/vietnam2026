@@ -1,0 +1,2 @@
+# Historical documentary byte snapshots; line endings and trailing spaces are evidence.
+*.snapshot -text -diff

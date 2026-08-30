@@ -1,7 +1,7 @@
 # Deploying
 
 The current mathematical release is sealed by
-[`channels-v30.json`](../artifacts/peano-library/channels-v30.json). The separate
+[`channels-v31.json`](../artifacts/peano-library/channels-v31.json). The separate
 Hydra development sequence is in [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md);
 each training epoch retains its own explicitly frozen authority. Publishing new
 proofs does not expand an existing training experiment. The supported public
@@ -18,7 +18,7 @@ Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 44 Alpha proof families, four separate research checkpoint chapters, the grand campaign atlas, proof artifacts, and eligible public Lean selectors |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 63 proof families under current Alpha v31, preserved historical checkpoint routes, the grand campaign atlas, proof artifacts, and eligible public Lean selectors |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
@@ -34,12 +34,82 @@ targets; `make deploy` does not publish either Peano channel.
 
 ## Standalone proof explorers
 
+### Current v31 release
+
+The additive v31 release admits 574 completed lower-layer theorems, giving
+3,796 Alpha checked-use entries. Stable remains the unchanged default 432.
+Its 19 new families cover Euler units, prime fields, Möbius values, signed
+sums, divisor tables, polynomial arithmetic, convolution, finite Möbius
+inversion and general signed Dirichlet inverses. G007 and G014 have exact
+closed endpoints. Full G009 multiplicative closure and general prime-power
+fields G091 remain open in this release.
+
+Run `make peano-library-alpha-v31` once to create the six new release files
+and the three current presentation trees. If the six sealed release files
+already exist but publication has not installed its output trees, run
+`make peano-library-alpha-v31-publish`. To verify an existing release and its
+published trees, run `make peano-library-alpha-v31-check`. All three workflows
+execute all 72 fresh
+verification jobs: exact-statement novelty, 19 full original-HA/compiled-Lean
+bundles and 52 ordinary principal certificates. Each proof job retains the
+original 170/175 CPU seconds, 180 wall seconds and 1,536 MiB peak-RSS bounds.
+The three subsequent renderers each inherit the genuine live verification
+capability, have their own original bounded window, and must pass their
+same-live UI tests before any new output tree is installed. No saved receipt
+can replace the proof gate or create that capability.
+
+These targets use the additive `publish_constructive_completed_lower_v31.py`
+entrypoint. Its narrowly scoped presentation correction fixes the aggregate
+index's relative atlas link and recomputes that page's manifest entry. It
+preserves the six sealed release files and their original source pins; the
+original proof gates, mandatory same-live UI tests and atomic non-overwriting
+publication remain in force. The original catalogue-bound renderer sources
+are historical evidence, not files to edit when correcting a delivery link.
+
+The current presentation directories are:
+
+- `constructive-completed-lower-explorer-v31`: 19 new families, 574 proofs.
+- `constructive-historical-explorers-v31`: 44 established families, with exact
+  per-theorem first-admission sidecars and original eligibility/aliases.
+- `constructive-completed-lower-campaign-v31`: the combined 120-goal atlas,
+  372 reviewed conservative definitions and 787 actual expansion arrows.
+
+The historical readers contain 3,096 displayed theorem instances, of which
+3,007 were source-checked and 89 intentionally not admitted. These display
+counts include repeated shared prerequisites; they are not the unique
+3,796-entry Alpha count. Publication never upgrades a historical alias.
+
+The v30 catalogue is within the existing 64 MiB file limit but a monolithic v31
+successor would not be. The new catalogue is therefore a small authenticated
+manifest plus one 574-row delta referencing the literal v30 parent. All three
+files are bound, including in the service's warm-cache key; the 64 MiB per-file
+limit is unchanged. Missing, changed or unsafe inputs fail closed. A present
+v31 atlas cannot downgrade the current service to a valid old release.
+
+`make stage-proofs` retains the original historical staging checks and routes,
+then overlays the exact current v31 files. The delivery-only hub and staging
+scripts compare the actual published byte inventories; they do not grant
+proof authority. The public root uses the original Quadratic Reciprocity
+design, with exactly 63 primary family entrances. Old research checkpoints
+and the explicitly staged QR/k3b supplement remain available. The literal
+v30 hub remains in `deploy/proofs/history/index-v30.html` for its historical
+regressions; a separate mandatory suite checks the real v31 hub and routes.
+
+The final staging audit runs after the existing public Lean-selector overlay
+and permits only that exact insertion into eligible proof HTML. The remote
+upload remains the existing dedicated faculty `deploy-proofs` workflow below.
+Inspect exact remote targets and a checksum/deletion preview before upload;
+verify complete staged/live bytes afterward. Proof-site delivery is separate
+from Peano-next and the protected Peano production/cache-header gate.
+
+### Historical v30 staging base (preserved)
+
 ```bash
 make deploy-proofs
 ```
 
-This verifies the frozen flagship editions without rewriting them, regenerates
-the current constructive presentations, and stages all 44
+The retained base verifies the frozen flagship editions without rewriting them,
+regenerates its historical constructive presentations, and stages all 44
 quadratic-reciprocity, Bertrand, constructive-frontier, next-layer,
 advanced-layer, transport-layer, milestone-closure, research-layer, and
 breakthrough-layer, second-wave, lower-layer, priority-layer and Gaussian
@@ -61,12 +131,13 @@ change any cache headers or the production Peano delivery gate.
 The same five paths also have ordinary static fallback pages: when hosting
 ignores rewrite rules, their fixed-destination browser redirects preserve the
 query and fragment, with a normal chapter link and a no-JavaScript fallback.
-The separate `constructive-gaussian-campaign` atlas is staged at the existing
-public `/proofs/grand-campaign/` URL; neither historical atlas is overwritten.
+The separate `constructive-gaussian-campaign` atlas is the historical staging
+base; the v31 overlay supplies the current public `/proofs/grand-campaign/`
+URL. Neither historical source atlas is overwritten.
 It separately publishes the narrow two-file PHP gateway under
 `~/public_html/api/lean-strands/`; neither publication target can be widened by
 overriding its Make variable. The proof site also publishes the grand campaign
-atlas and exact checked proof artifacts through current Alpha v30: 3,222
+atlas and exact checked proof artifacts through historical Alpha v30: 3,222
 independently checked theorems, including 432 unchanged Stable and 2,790
 Alpha-only theorems, 10,588 proof-dependency edges, 370 blueprint definitions,
 and 284 reviewed conservative definitions with 560 audited definition edges.

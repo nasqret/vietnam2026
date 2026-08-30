@@ -1,4 +1,4 @@
-"""Current v30 publication authority, exact first admission, and fail-closed atlas succession.
+"""Historical v30 authority, exact first admission, and isolated atlas succession.
 
 Isolated fixtures are tiny owned files; actual publication tests are read-only
 and start neither proof workers nor sockets. Historical artifacts stay exact.
@@ -151,7 +151,17 @@ def test_unreviewed_version_suffix_cannot_borrow_a_valid_manifest(current_releas
 
 
 @pytest.mark.parametrize("segment", PUBLICATIONS)
-def test_actual_current_publications_and_every_principal_panel_pass_read_only_review(segment):
+def test_actual_v30_history_and_every_principal_panel_pass_explicit_historical_review(segment, monkeypatch):
+    # This is deliberately an audit of the immutable v30 publication, not a
+    # claim that its pages remain current after a v31 atlas is installed.
+    # Select only the original atlas chain; every real owner/schema/catalog
+    # digest, first-admission and selector check below is unchanged. The new
+    # v31 suite separately checks the unmodified current-selection policy.
+    historical = tuple(name for name in service.CONSTRUCTIVE_CAMPAIGN_SUCCESSORS
+                       if name != "constructive-completed-lower-campaign-v31")
+    assert historical == ("constructive-gaussian-campaign", "constructive-priority-campaign",
+                          "constructive-grand-campaign")
+    monkeypatch.setattr(service, "CONSTRUCTIVE_CAMPAIGN_SUCCESSORS", historical)
     server = non_listening_review_server(ROOT)
     handler = object.__new__(service.LeanStrandHandler)
     handler.server = server
@@ -178,9 +188,11 @@ def test_actual_current_publications_and_every_principal_panel_pass_read_only_re
     assert manifest_path.read_bytes() == original_manifest
 
 
-def test_actual_current_catalog_keeps_original_streaming_size_limit():
+def test_actual_immutable_v30_catalog_keeps_original_streaming_size_limit():
     catalog = ROOT / "artifacts/peano-library/alpha/catalog-v30.json"
     assert service.MAX_EXPLORER_CATALOG_BYTES == 64 * 1024 * 1024
+    assert catalog.stat().st_size == 66_503_303
     assert catalog.stat().st_size <= service.MAX_EXPLORER_CATALOG_BYTES
     channel = json.loads((ROOT / "artifacts/peano-library/channels-v30.json").read_bytes())
-    assert sha256(catalog.read_bytes()).hexdigest() == channel["channels"]["alpha"]["artifact_sha256"]
+    assert sha256(catalog.read_bytes()).hexdigest() == channel["channels"]["alpha"]["artifact_sha256"] == (
+        "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7")

@@ -40,7 +40,7 @@ PEANO_LEAN_PUBLIC_ARGS ?=
 override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override STAGELEANAPI := _deploy/lean-api
-override PEANOAPPID := a-3c18234f975c
+override PEANOAPPID := a-e4012dd8e319
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs stage-lean-api deploy-site deploy-lab deploy-lab-next deploy-peano \
@@ -355,6 +355,24 @@ check-constructive-dirichlet-inverse:
 
 book-constructive-dirichlet-inverse-explorer:
 	PYTHONMALLOC=malloc python3 scripts/build_constructive_dirichlet_inverse_explorer.py --check
+
+.PHONY: peano-library-alpha-v31 peano-library-alpha-v31-publish peano-library-alpha-v31-check book-constructive-completed-lower-explorer-v31
+# The additive presentation entrypoint preserves all sealed v31 sources and
+# corrects the aggregate atlas link. Saved receipts never replace its 72 fresh
+# proof jobs. Rendering keeps three original 180s windows and mandatory tests.
+peano-library-alpha-v31:
+	PYTHONMALLOC=malloc python3 scripts/publish_constructive_completed_lower_v31.py --create-release
+	python3 scripts/build_constructive_completed_lower_hub_v31.py
+
+peano-library-alpha-v31-publish:
+	PYTHONMALLOC=malloc python3 scripts/publish_constructive_completed_lower_v31.py
+	python3 scripts/build_constructive_completed_lower_hub_v31.py
+
+peano-library-alpha-v31-check:
+	PYTHONMALLOC=malloc python3 scripts/publish_constructive_completed_lower_v31.py --check
+	python3 scripts/build_constructive_completed_lower_hub_v31.py --check
+
+book-constructive-completed-lower-explorer-v31: peano-library-alpha-v31-check
 
 book: book-atlas book-proof-explorer
 	rm -rf book/_build   # full rebuild: incremental Sphinx leaves stale sidebars after TOC changes
@@ -1929,9 +1947,13 @@ stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book
 		"$(STAGEPROOFS)/checkpoints/lower-tier/"
 	python3 scripts/stage_public_checkpoint_navigation.py --root "$(STAGEPROOFS)"
 	python3 scripts/stage_lower_tier_checkpoint_navigation.py --root "$(STAGEPROOFS)"
+	python3 scripts/build_constructive_completed_lower_hub_v31.py --check
+	python3 scripts/stage_completed_lower_publication_v31.py --root "$(STAGEPROOFS)"
 	python3 scripts/stage_public_lean_selector.py \
 		--root "$(STAGEPROOFS)" \
 		--api-url "$(PEANO_LEAN_PUBLIC_API)"
+	python3 scripts/stage_completed_lower_publication_v31.py --root "$(STAGEPROOFS)" \
+		--check --api-url "$(PEANO_LEAN_PUBLIC_API)"
 	@echo "Staged proof explorers in $(STAGEPROOFS)"
 
 stage-lean-api:
@@ -2036,6 +2058,44 @@ stage-peano:
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/alpha-v29-priority-layer-proof-bundle-v1.json"
 	cp research/arithmetic-library/artifacts/alpha-v30-gaussian-factorization-proof-bundle-v1.json \
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/alpha-v30-gaussian-factorization-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/bottom-layer-euler-units-proof-bundle-v2.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/bottom-layer-euler-units-proof-bundle-v2.json"
+	cp research/arithmetic-library/artifacts/bottom-layer-prime-fields-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/bottom-layer-prime-fields-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/bottom-layer-mobius-values-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/bottom-layer-mobius-values-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/bottom-layer-signed-sums-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/bottom-layer-signed-sums-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/lower-tier-divisor-sums-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/lower-tier-divisor-sums-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/lower-tier-signed-weighted-sums-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/lower-tier-signed-weighted-sums-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/lower-continuation-divisor-involutions-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/lower-continuation-divisor-involutions-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/lower-continuation-mobius-divisor-cancellation-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/lower-continuation-mobius-divisor-cancellation-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/lower-continuation-rectangular-sums-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/lower-continuation-rectangular-sums-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/dirichlet-finite-support-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/dirichlet-finite-support-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/dirichlet-convolution-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/dirichlet-convolution-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/dirichlet-fubini-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/dirichlet-fubini-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/dirichlet-units-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/dirichlet-units-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/mobius-inversion-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/mobius-inversion-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/dirichlet-signed-units-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/dirichlet-signed-units-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/dirichlet-triangular-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/dirichlet-triangular-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/dirichlet-inverses-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/dirichlet-inverses-proof-bundle-v1.json"
 	rsync -a --delete --exclude '/tests/***' --exclude '__pycache__/' --exclude '.pytest_cache/' --include '*/' --include '*.py' --exclude '*' peano-lab/py/ "$(STAGEPEANO)/releases/$(PEANOAPPID)/py/"
 	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"
 	@echo "Staged Peano Lab in $(STAGEPEANO)"
