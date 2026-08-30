@@ -163,9 +163,12 @@ def test_worker_source_inventory_is_reproducible() -> None:
 
 
 def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> None:
-    assert len(PROOF_BUNDLE_FILENAMES) == 20
-    assert len(set(PROOF_BUNDLE_FILENAMES)) == 20
+    assert len(PROOF_BUNDLE_FILENAMES) == 39
+    assert len(set(PROOF_BUNDLE_FILENAMES)) == 39
     assert all(name == name.lower() for name in PROOF_BUNDLE_FILENAMES)
+    assert tuple(re.findall(r'"(proof-artifacts/[^"\n]+\.json)"', WORKER)) == tuple(
+        PROOF_BUNDLE_SOURCES
+    )
     for module in (
         "prime_valuation_support_candidate",
         "continued_fraction_approximation_candidate",
@@ -354,14 +357,40 @@ def test_apache_contract_caches_only_versioned_assets_and_never_the_page() -> No
     assert "no-store, no-cache, must-revalidate, max-age=0" in HTACCESS
 
 
-def test_worker_fetches_sources_concurrently_but_mounts_deterministically() -> None:
+def test_worker_fetches_sources_concurrently_but_mounts_deterministically(tmp_path: Path) -> None:
     harness = Path(__file__).with_name("worker_boot_harness.js")
     result = subprocess.run(
         ["node", str(harness), str(LAB / "worker.js")],
         capture_output=True,
         text=True,
+        timeout=30,
     )
     assert result.returncode == 0, result.stderr
+
+    # Exercise the real harness against stale and same-cardinality inventories;
+    # accepting only a count (or only the old twenty providers) must not pass.
+    historical_only = WORKER
+    for filename in PROOF_BUNDLE_FILENAMES[20:]:
+        historical_only = historical_only.replace(f'  "proof-artifacts/{filename}",\n', "")
+    last_artifact = "proof-artifacts/" + PROOF_BUNDLE_FILENAMES[-1]
+    mutations = {
+        "historical-only": historical_only,
+        "duplicate": WORKER.replace(last_artifact, "proof-artifacts/" + PROOF_BUNDLE_FILENAMES[20]),
+        "wrong-case": WORKER.replace(last_artifact, last_artifact.replace("inverses", "Inverses")),
+        "foreign": WORKER.replace(last_artifact, last_artifact.replace("-v1.json", "-v2.json")),
+    }
+    for label, source in mutations.items():
+        assert source != WORKER
+        candidate = tmp_path / f"{label}-worker.js"
+        candidate.write_text(source, encoding="utf-8")
+        rejected = subprocess.run(
+            ["node", str(harness), str(candidate)],
+            capture_output=True,
+            text=True,
+            timeout=30,
+        )
+        assert rejected.returncode != 0, label
+        assert "AssertionError" in rejected.stderr, rejected.stderr
 
 
 def test_multiline_paste_is_validated_sequential_and_stop_safe() -> None:

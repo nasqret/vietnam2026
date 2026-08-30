@@ -15,10 +15,8 @@ const listedFiles = Array.from(
   (match) => match[1],
 );
 const listedProofArtifacts = Array.from(
-  new Set(Array.from(
-    workerSource.matchAll(/"(proof-artifacts\/[^"\n]+\.json)"/g),
-    (match) => match[1],
-  )),
+  workerSource.matchAll(/"(proof-artifacts\/[^"\n]+\.json)"/g),
+  (match) => match[1],
 );
 const allRuntimeFiles = [...listedFiles, ...listedProofArtifacts];
 
@@ -223,8 +221,10 @@ async function missingProofArtifactFailsBeforeAnyMount(missingArtifact) {
   }
   for (let attempt = 0; attempt < 5; attempt += 1) await tick();
 
+  const errors = messages.filter((message) => message.type === "error");
+  assert.strictEqual(errors.length, 1);
   assert.strictEqual(
-    messages.find((message) => message.type === "error").msg,
+    errors[0].msg,
     "could not load " + missingArtifact + " (404)",
   );
   assert.strictEqual(messages.some((message) => message.type === "ready"), false);
@@ -254,6 +254,25 @@ async function missingProofArtifactFailsBeforeAnyMount(missingArtifact) {
     "proof-artifacts/alpha-v28-lower-layer-proof-bundle-v1.json",
     "proof-artifacts/alpha-v29-priority-layer-proof-bundle-v1.json",
     "proof-artifacts/alpha-v30-gaussian-factorization-proof-bundle-v1.json",
+    "proof-artifacts/bottom-layer-euler-units-proof-bundle-v2.json",
+    "proof-artifacts/bottom-layer-prime-fields-proof-bundle-v1.json",
+    "proof-artifacts/bottom-layer-mobius-values-proof-bundle-v1.json",
+    "proof-artifacts/bottom-layer-signed-sums-proof-bundle-v1.json",
+    "proof-artifacts/lower-tier-divisor-sums-proof-bundle-v1.json",
+    "proof-artifacts/lower-tier-signed-weighted-sums-proof-bundle-v1.json",
+    "proof-artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json",
+    "proof-artifacts/lower-continuation-divisor-involutions-proof-bundle-v1.json",
+    "proof-artifacts/lower-continuation-mobius-divisor-cancellation-proof-bundle-v1.json",
+    "proof-artifacts/lower-continuation-rectangular-sums-proof-bundle-v1.json",
+    "proof-artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+    "proof-artifacts/dirichlet-finite-support-proof-bundle-v1.json",
+    "proof-artifacts/dirichlet-convolution-proof-bundle-v1.json",
+    "proof-artifacts/dirichlet-fubini-proof-bundle-v1.json",
+    "proof-artifacts/dirichlet-units-proof-bundle-v1.json",
+    "proof-artifacts/mobius-inversion-proof-bundle-v1.json",
+    "proof-artifacts/dirichlet-signed-units-proof-bundle-v1.json",
+    "proof-artifacts/dirichlet-triangular-proof-bundle-v1.json",
+    "proof-artifacts/dirichlet-inverses-proof-bundle-v1.json",
   ]);
   await successfulBootIsConcurrentAndOrdered();
   await failureChoiceIsDeterministicAndAtomic();

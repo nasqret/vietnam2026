@@ -143,6 +143,20 @@ finished; this is not recorded as a clean wrapper exit or a failed proof/UI
 gate. Its privileged statistics query was not retried. The separate remaining
 service/navigation checks and full historical staging workflow precede upload.
 
+The publication trees and hub are committed and pushed as `ba4d000b`.
+The subsequent service/public checks passed all 278 non-browser cases.
+The browser suite exposed two stale expectations of 20 packaged artifacts;
+the actual worker and authenticated application manifest already agreed on
+the exact 39-provider v31 inventory. Only the two unsealed test files were
+changed: they now check the ordered 39 paths, every actual mount and every
+missing-artifact failure, and reject old-only, duplicate, wrong-case and
+foreign same-cardinality inventories. All 20 original browser cases passed;
+the combined suite is 298/298. No worker, manifest, kernel or sealed release
+byte changed. The previous `_deploy/proofs` tree was moved intact to
+`/private/tmp/alpha-v31-proof-stage.fkFNSe/proofs` before the serial full
+historical staging build. A fresh remote checksum/deletion dry run still
+matches that preserved previous stage with zero differences.
+
 Peano-next was deployed from pushed commit `51108a20`, immutable application
 `a-e4012dd8e319`: all 573 staged/live files (160,377,764 bytes) match, and the
 four directly sampled HTTPS resources match their staged bytes. All observed
