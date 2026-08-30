@@ -4,6 +4,17 @@ Date: 2026-08-29. User request: fix the known website-test failure, commit,
 promote and deploy the completed work, then prove the remaining G009
 multiplicative-closure obligation.
 
+## Current result
+
+The prior completed work is committed, promoted to Alpha v31 (3,796 entries,
+Stable unchanged at 432), pushed and delivered to the faculty proof site.
+The original finite-coded G009 contract is now proved, including
+multiplicative convolution closure. Its 90 new research theorems and canonical
+reader passed the fresh proof/UI gates, standalone pytest, and all 946 final
+integration regressions. They are not yet Alpha admissions. The 64-family
+static payload is fully staged and checked; its G009 commit and remote
+delivery are the remaining steps recorded below.
+
 ## Authorization and invariants
 
 - Commit and push the completed proof work and verified release changes.
@@ -40,7 +51,7 @@ multiplicative-closure obligation.
    Update G009 only after its original full contract is proved, then finish
    the authorized commits and release.
 
-## Current evidence boundary
+## Starting evidence boundary (historical)
 
 The starting worktree is `proof/lower-foundations-v31-20260828` at
 `cef66ddf52658ee9f878b9a81ff8eca19f991485`. Alpha v30 contains 3,222 checked-use
@@ -56,7 +67,7 @@ G009 still separately requires multiplicative convolution closure on honest
 nonempty finite positive prefixes. Its original PLAN/14 clause controls even
 where a condensed atlas statement omits that obligation.
 
-## Status
+## Execution record
 
 The known public-hub regression is fixed, with 138 passing tests and 39 new
 negative cases. Commit `2ae54ec9` records that repair. Commit `41ccb54d`
@@ -183,8 +194,9 @@ responses still lack the required Cache-Control headers. Peano production is
 untouched; the actual unchanged `verify_peano_delivery.sh` invocation against
 Peano-next returned exit 1 at the first required non-storable HTML header
 after its staged/index byte comparison passed (HTTP 200). Its later checks
-did not run, and its protected delivery gate remains in force. The static proof-site
-deployment awaits successful publication and staging. The public Lean gateway
+did not run, and its protected delivery gate remains in force. The completed
+static proof-site deployment described above is independent of that gate.
+The public Lean gateway
 currently returns 503; restarting its older-checkout worker awaits the user's
 permission and is separate from static proof-site delivery.
 
@@ -214,3 +226,135 @@ OS-timer permission error; the actual proof result and post-run source hashes
 passed, and no clean outer timer exit is claimed. These authoring results do
 not replace the eight fresh final production checks or admit the 90 new
 statements to Alpha.
+
+Production adoption then preserved all nine mathematical source identities
+and exported the exact same 7,840,579-byte bundle through the original HA
+assembler (all 462 bodies checked; peak RSS 1,335,951,360 bytes). The first
+full production publication attempt passed novelty, whole-bundle HA/same-byte
+compiled Lean, and the first three ordinary principals. Its fourth ordinary
+principal, `dirichlet_convolution_multiplicative_values`, exceeded the original
+1,536 MiB observed-RSS limit. No G009 reader was installed, no remaining
+principal or same-live reader phase is claimed, and no resource limit was
+raised. A phase diagnostic located the excess inside the unchanged ordinary
+replay; dropping no-longer-needed adapter locals alone reduced the observed
+peak from 1,664,450,560 to 1,633,812,480 bytes, still above the limit. A further
+allocation reduction and a fresh complete eight-job/277-reader-test run are
+required before G009 publication.
+
+The four new source-only test modules also now observe whether their own
+operations add, remove or replace an authority module, instead of assuming
+that unrelated tests have not already imported it in a shared pytest shard.
+All 574 original case identities remain; 42 adversarial identity cases were
+added. All 614 currently runnable cases passed together (34.028477 seconds;
+peak RSS 215,040,000 bytes). The two unchanged actual-reader/staging cases
+still require genuine generated outputs. These tests perform no mathematical
+acceptance, and their success does not substitute for the final proof gates.
+
+The memory diagnosis then retained all numerical and proof limits while
+streaming the same 39 provider pins and releasing unused adapter locals.
+The value diagnostic passed, but the larger existential root still exceeded
+the bound (1,665,974,272 bytes). An additional scratch whole-layer interning
+experiment was rejected by the existing formula-occurrence limit and was
+not adopted. No graph limit was changed. CPython's standard `pymalloc`
+allocation policy then let the actual largest existential root complete all
+original bundle/ordinary/exact-HA and input-rebinding checks in 116.928647
+seconds, with peak RSS 1,262,141,440 bytes. The proof bytes and original
+checker/compiler were identical; no earlier sharing pass was used.
+
+Only the new G009 launcher and its dedicated Make targets now select that
+allocator; historical launchers remain unchanged. The source-only portability
+suite preserves all original callable-hash constants through narrowly
+reviewed allocation-scheduling normalizations and now passes 228 cases
+(3.536254 seconds, 74,563,584 bytes). The final presentation-cost preflight
+passed in 14.885881 seconds at 532,250,624 bytes, confirming 90 compacted
+statements, 5,388 script commands, 42 local definition records, and the global
+383-definition/825-edge DAG. These are diagnostics and regressions, not final
+acceptance. A complete fresh eight-worker/277-reader publication run has
+started from the frozen corrected sources; no G009 output is yet claimed.
+
+That fresh run passed all eight proof jobs, including all six complete
+ordinary principal certificates and their original resource gates. The
+same-live reader phase then passed 276 cases and rejected one incorrect
+definition-inventory test: lexicographic `id >= 'ND0316'` also selected older
+`PD...` definitions. No reader was installed. The correction restricts the
+comparison to the `ND` namespace and additionally requires the exact eleven
+IDs ND0316–ND0326; the mathematical sources and definition registry are
+unchanged. A separate review found that ordinary pytest did not supply the
+required fresh-snapshot fixture. Its bootstrap must invoke the actual full
+eight-job/277-test builder, never read a saved receipt into proof authority.
+Both test-runner corrections require a fresh final publication run.
+
+The standalone bootstrap is now implemented without a receipt-input path or
+an optional proof gate. It obtains the actual retained syntax and canonical
+report bytes only after the real eight-job/277-test build has finished in
+its owned temporary directory. It independently owns the returned file map
+and decoded report, rechecks both emitted audit copies and source binding,
+and leaves the outer pytest scheduler, resource limits and caches alone.
+An invalid present plugin is rejected; only an absent/None plugin triggers
+the fresh build. Independent review found no blocking issue. All 310 pure
+production regressions passed (4.550015 seconds, 88,555,520-byte peak),
+preserving the original 228 cases and all 277 reader identities. The final
+presentation preflight passed at 527,974,400 bytes; its source binding is
+`74fb4adc5f899346a86d4791ae19675fd9adf4bdf193bcf09d84915ae6856b76`.
+An actual unfiltered standalone run is now exercising the complete fresh
+proof/inner-reader bootstrap before final publication. The independent
+compiled-Lean evidence uses the literally pinned local 4.28.0 verifier;
+the Linux CI workflow's separate 4.31.0 executable distribution is not
+claimed verified by this local compatibility repair.
+
+A read-only audit found ten registered worktrees and no staged changes. This
+task branch has only its known G009 changes. The main and detached legacy
+Hydra-authority worktrees contain unrelated work; they are preserved, not
+discarded or silently included in the G009 commit. Cleanup in this task is
+therefore scoped to its own branch and generated delivery trees.
+
+The genuine standalone run then passed: all eight fresh production proof
+jobs, all 277 nested reader tests (13.40 seconds), and all 277 outer reader
+tests, with no filtering, skips or xfail. Total wall time was 748.898600
+seconds, controller CPU 52.380610 seconds and observed controller peak
+1,476,116,480 bytes, below the original 1,536 MiB ceiling. The final source
+binding was unchanged, and the temporary bootstrap did not install the
+canonical reader. The ordinary publisher now repeats the required fresh
+eight-job/277-test gate for the actual immutable output; no retained
+standalone report or fixture is used as its acceptance input.
+
+The accompanying current browser check passed all 20 actual cases, without
+skips, xfail or deselection. Application and vendor manifest checks both
+passed for `a-d271dc743387` / `v-85fb3352e49c`; all 594 observed files were
+unchanged before and after the 3.073263-second run (peak RSS 126,238,720
+bytes). Its 560 application records comprise 520 Python files, 39 admitted
+proof bundles and the worker. The nine new G009 sources do not expand that
+admitted-provider set. This is staging readiness, not an upload or a passed
+Peano production cache-policy gate.
+
+The separate corrected publication run completed with exit zero: all eight
+fresh proof jobs, all 277 mandatory same-live reader tests (13.03 seconds),
+and exclusive installation of 255 canonical local files. Total wall time
+was 731.530 seconds; largest observed worker/controller RSS was
+1,461,321,728 bytes, and the render peak was 594,690,048 bytes. The original
+G009 finite-coded-prefix contract is now proved. The eleven new definitions
+extend the actual global DAG to 383 definitions and 825 expansion edges.
+The 45,222-byte reader manifest has SHA-256
+`3882fba2f018961d90d8afd1ffbe317ec49e85320b7a0d6adb9e97d48db91f20`.
+Delivery registration now uses that actual manifest and the unchanged actual
+v31 root hub and lock. Full merged-site staging and link checks precede
+commit/upload. The new 90 research theorems are not Alpha admissions;
+Alpha remains 3,796 and Stable remains 432.
+
+Both actual G009 staging operations passed: creation in 40.015988 seconds
+(317,865,984-byte peak) and the separate read-only check in 37.008163 seconds
+(305,463,296-byte peak). The merged source overlay contains 11,694 files and
+712,494,238 bytes, including 11,290 HTML files; all 698,576 local links and
+414,696 fragment references resolve, with 45 preserved supplemental targets.
+The complete six-module final regression suite then passed all 946 cases,
+including both actual-reader/stage tests, with no skips, xfail or deselection
+(74.721874 seconds, CPU 66.938484 seconds, peak RSS 505,659,392 bytes).
+All observed test/control/reader-manifest inputs were unchanged.
+
+The entire actual `_deploy/proofs` tree, including older supplemental data,
+has 12,618 ordinary owned files in 626 directories, 860,601,841 bytes and
+canonical full-SHA inventory
+`6a5fad02de5d5409e311ae29e811e26013fc363a9e3fdd60f2fa356970b87008`.
+No symlink, special file or multiply linked file was present; the tree and
+ancestors were unchanged before and after hashing. This is the local payload
+identity for the subsequent remote byte comparison, not a deployment claim.

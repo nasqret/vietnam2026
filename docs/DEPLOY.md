@@ -18,7 +18,7 @@ Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 63 proof families under current Alpha v31, preserved historical checkpoint routes, the grand campaign atlas, proof artifacts, and eligible public Lean selectors |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 63 Alpha-v31 proof families plus the verified G009 research family, preserved checkpoint routes, the combined campaign atlas, proof artifacts, and eligible public Lean selectors |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
@@ -42,7 +42,9 @@ Its 19 new families cover Euler units, prime fields, Möbius values, signed
 sums, divisor tables, polynomial arithmetic, convolution, finite Möbius
 inversion and general signed Dirichlet inverses. G007 and G014 have exact
 closed endpoints. Full G009 multiplicative closure and general prime-power
-fields G091 remain open in this release.
+fields G091 remain open in the sealed v31 catalogue. The separately verified
+G009 research reader below closes the finite-prefix G009 contract without
+altering that catalogue or admitting its 90 new rows. G091 remains open.
 
 Run `make peano-library-alpha-v31` once to create the six new release files
 and the three current presentation trees. If the six sealed release files
@@ -107,11 +109,12 @@ files are bound, including in the service's warm-cache key; the 64 MiB per-file
 limit is unchanged. Missing, changed or unsafe inputs fail closed. A present
 v31 atlas cannot downgrade the current service to a valid old release.
 
-`make stage-proofs` retains the original historical staging checks and routes,
+The v31 staging layer retains the original historical checks and routes,
 then overlays the exact current v31 files. The delivery-only hub and staging
 scripts compare the actual published byte inventories; they do not grant
-proof authority. The public root uses the original Quadratic Reciprocity
-design, with exactly 63 primary family entrances. Old research checkpoints
+proof authority. This base uses the original Quadratic Reciprocity
+design, with exactly 63 primary family entrances. The subsequent G009 overlay
+adds the explicitly non-admitted 64th family. Old research checkpoints
 and the explicitly staged QR/k3b supplement remain available. The literal
 v30 hub remains in `deploy/proofs/history/index-v30.html` for its historical
 regressions; a separate mandatory suite checks the real v31 hub and routes.
@@ -122,6 +125,100 @@ upload remains the existing dedicated faculty `deploy-proofs` workflow below.
 Inspect exact remote targets and a checksum/deletion preview before upload;
 verify complete staged/live bytes afterward. Proof-site delivery is separate
 from Peano-next and the protected Peano production/cache-header gate.
+
+### Non-admitting G009 research workflow
+
+The additive `multiplicative-convolution` family implements the remaining
+finite-signed G009 closure contract. It has 90 new statements, 371 inherited
+Alpha-v31 prerequisites, and eleven new conservative definitions. Its exact
+scope is nonempty actual signed prefixes normalized by `F(1)=+1`, with the
+product law for positive coprime inputs whose product is within the prefix.
+Zeroth values and table encodings remain unrestricted; uniqueness is equality
+of represented positive values. Multiplicativity of the constructed inverse
+is not asserted. General prime-power fields in G091 remain separate.
+
+Create the reader once, or recheck an existing immutable reader:
+
+```sh
+PYTHONMALLOC=pymalloc python3 scripts/build_constructive_g009_explorer.py
+make book-constructive-g009-explorer
+```
+
+Both operations require all eight fresh bounded proof jobs: exact-AST novelty
+against all 3,796 parent statements, the complete original-HA bundle and
+independently compiled Lean check of its identical bytes, and six ordinary
+empty-context principal certificates. All 277 same-live explorer tests are
+mandatory. The original CPU, wall, RSS, file-size and certificate limits stay
+unchanged. No saved audit, authoring seed, partial prefix, filtered suite or
+successful transport check can replace this acceptance. Creation never
+overwrites an existing reader tree. `make check-constructive-g009` runs the
+fresh proof audit without constructing pages.
+
+Ordinary pytest also obtains a genuinely fresh snapshot:
+
+```sh
+PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -m pytest -q \
+  peano-lab/py/tests/test_constructive_g009_explorer.py
+```
+
+With no live builder plugin, its fixture runs all eight proof jobs and the
+mandatory inner 277-case suite in an owned temporary directory, then runs the
+outer tests against those exact bytes. It neither installs the public reader
+nor accepts a saved report. A present but invalid plugin fails; it is not
+replaced. The helper does not alter the outer test scheduler, alarms, CPU
+limits or proof caches.
+
+The independent verification recorded for this release uses the literally
+pinned local Lean 4.28.0 executable. The general Linux CI workflow currently
+provisions Lean 4.31.0 and cannot reproduce that native executable's byte
+identity. Standalone-fixture support is not a claim of cross-platform CI
+verification; that separate verifier-distribution boundary remains explicit.
+
+G009 uses CPython's standard `pymalloc` allocator in its new proof workers
+and the two dedicated Make targets. This allocation policy is independently
+regressed; it does not raise any limit or change the old kernel, proof
+compiler, caches or historical launchers. Inherited provider authentication
+streams all 39 exact files instead of retaining complete byte buffers, and
+unused local input owners are released before ordinary replay/exact checking.
+
+The canonical reader lives in `book/_static/constructive-g009-explorer`.
+It reuses the five original Quadratic Reciprocity assets unchanged, publishes
+exact and definition-aware theorem pages `MX0001`–`MX005A`, and retains all
+earlier definition identities. Its principal closure theorem is `MX0059`.
+Definition-expansion, definition-usage and proof-dependency arrows remain
+distinct. The extended combined atlas has 383 reviewed definitions and 825
+actual expansion edges; research verification does not change Alpha 3,796,
+Stable 432, or a historical first admission.
+
+The fresh production run installed 255 files (53,690,970 bytes), after all
+eight proof jobs and 277 reader tests passed. The literal reader-manifest
+identity is `3882fba2f018961d90d8afd1ffbe317ec49e85320b7a0d6adb9e97d48db91f20`.
+Its evidence remains separate from subsequent static delivery observations
+and from a future additive Alpha promotion.
+
+After the reader passes, its literal manifest and the actual v31 hub/lock
+identify the narrowly scoped delivery registration. `make stage-proofs` keeps
+all original staging gates, applies the v31 overlay and eligible Lean controls,
+then applies and checks the G009 overlay. Only the root hub and four atlas
+files may replace existing content; all five shared assets must be identical.
+The additional root card is explicitly non-admitted research. Checkpoint
+metadata is served under `release-g009/`, while its unchanged proof bundle is
+under `checkpoints/g009-multiplicative-convolution-proof-bundle-v1.json`.
+Every merged byte, local link and fragment is checked. The new research pages
+do not receive an unsupported Alpha-only on-demand Lean selector.
+
+For an already completely verified v31 stage, the same additive delivery step
+can be checked independently without rebuilding or changing historical data:
+
+```sh
+python3 scripts/stage_constructive_g009_publication.py --root _deploy/proofs
+python3 scripts/stage_constructive_g009_publication.py --root _deploy/proofs --check
+```
+
+These are delivery checks only. The separately verified reader and all old
+stage prerequisites must already exist. Upload remains the same dedicated
+faculty proof-site workflow, with a checksum/deletion preview, root index last,
+complete local/remote hashes and certificate-verifying HTTPS comparisons.
 
 ### Historical v30 staging base (preserved)
 
@@ -371,8 +468,10 @@ bash scripts/verify_peano_delivery.sh \
   are green. Its application and vendor directories are manifest-versioned; never reuse an
   `a-<digest>` or `v-<digest>` namespace for different bytes. Deployment retains old immutable
   directories, uploads new assets first, and publishes `index.html` last.
-- Formal artifacts are browsed on GitHub (`nasqret/vietnam2026/tree/main/artifacts`), not deployed to the
-  server, so the landing page's artifact links point there.
+- The course landing page's general artifact links point to GitHub
+  (`nasqret/vietnam2026/tree/main/artifacts`). The proof explorers separately
+  publish their explicitly inventoried proof bundles and source snapshots
+  under the dedicated `/proofs/` delivery tree.
 
 ## Peano Lab delivery gate
 

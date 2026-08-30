@@ -292,3 +292,124 @@ Full dependency-closed HA verification, independent compiled-Lean checking,
 ordinary principal certificates, definition-DAG tests, and reader checks must
 precede any G009 completion or admission claim. No kernel, resource limit,
 historical artifact, or existing source is changed by this design.
+
+## Implementation-status addendum — 2026-08-30
+
+The preceding sections preserve the historical design and source-inventory
+audit dated 2026-08-29. Their statements about proposed or missing bridges
+describe that audit, not the implementation status recorded below.
+
+### Implemented source and evidence boundary
+
+There are now 90 new theorem rows in nine production mathematical modules:
+
+- `arithmetic_multiplicative_candidate.py`
+- `coprime_divisor_decomposition_candidate.py`
+- `divisor_pair_index_candidate.py`
+- `signed_block_sum_candidate.py`
+- `signed_cartesian_product_candidate.py`
+- `signed_support_reindex_candidate.py`
+- `dirichlet_multiplicative_entry_candidate.py`
+- `dirichlet_multiplicative_support_candidate.py`
+- `dirichlet_multiplicative_candidate.py`
+
+These files reside in `peano-lab/py/peano_lab/library/`. Their actual
+dependency-closed bundle has now passed the complete fresh production gate:
+exact-AST novelty, whole-bundle original HA and same-byte compiled Lean,
+and all six ordinary empty-context principal certificates. All 277 mandatory
+reader tests passed. The independent standalone test path also passed its
+own eight fresh proof jobs, 277 inner reader tests and 277 outer reader tests.
+The original proof, CPU, wall-time and memory limits were unchanged.
+
+The corrected publisher installed 255 canonical local reader files in
+731.530 seconds; worker peak RSS was 1,461,321,728 bytes and render peak
+594,690,048 bytes. The definition-namespace and standalone-fixture defects
+and their regression evidence are recorded in PLAN/20. The original G009
+finite-coded-prefix contract is therefore proved, with the exact scope
+below. Remote delivery remains a separate subsequent step. The new 90 rows
+have **not** been admitted to Alpha or Stable: Alpha stays 3,796 and Stable
+432. The existing v31 algebra and inverse results retain their separate,
+prior admission and verification provenance.
+
+### Original G009 obligations mapped to exact roots
+
+A source-only review of all nine new modules, their actual graph contracts,
+and the existing v31 roots found no mathematical contract gap against the
+**nonempty finite-coded prefix alternative** explicitly allowed by PLAN/14.
+The mapping is:
+
+| Original obligation | Exact theorem root(s) | Source and precise guarantee |
+|---|---|---|
+| Multiplicative convolution closure | `dirichlet_convolution_multiplicative_values`; `dirichlet_convolution_multiplicative_table`; `dirichlet_convolution_multiplicative_exists_unique` | [New closure module](../peano-lab/py/peano_lab/library/dirichlet_multiplicative_candidate.py): the scalar law, preservation of normalized multiplicativity by an actual convolution table, and construction of such a table with uniqueness of represented positive values. |
+| Associativity | `dirichlet_convolution_associative_tables_exists` | [Existing associativity module](../peano-lab/py/peano_lab/library/dirichlet_associativity_candidate.py): construct all four intermediate/output tables for both parenthesizations and prove equality on `0<n<=N`. |
+| Identity | `dirichlet_delta_unit_exists` | [Existing units module](../peano-lab/py/peano_lab/library/dirichlet_units_candidate.py): construct an actual delta table and prove both convolution unit laws, with any prescribed unrelated zeroth value of the delta table. |
+| Exact signed inverse criterion | `dirichlet_inverse_positive_criterion` | [Existing inverse module](../peano-lab/py/peano_lab/library/dirichlet_inverse_candidate.py): for an actual table and `N!=0`, an actual two-sided inverse exists exactly when the value at one is signed `+1` or `-1`. |
+
+The new bridge definitions contain actual table, entry, divisor-pair and
+native-beta-map data, not the conclusions they are used to prove. In
+particular, `signed_prefix_sum_row_major_iff` supplies the missing flattened
+prefix/rectangular-sum equivalence; `signed_cartesian_product_prefix_sum`
+proves the product-of-sums law; and `signed_support_reindex_sum_equal` proves
+sum equality using a constructed incidence table. The product map is proved
+bijective on nonzero support, not asserted to permute the unequal full
+windows. Actual table and sum witnesses are constructed throughout.
+
+### Conservative definition identities now present
+
+The current [G009 definition registry](../scripts/constructive_g009_definitions.py)
+preserves all 372 inherited identities and adds exactly these eleven:
+
+| Stable ID | Definition name |
+|---|---|
+| ND0316 | `MultiplicativePrefix` |
+| ND0317 | `DivisorFactorPair` |
+| ND0318 | `DivisorPairIndexMap` |
+| ND0319 | `SignedCartesianProduct` |
+| ND0320 | `SignedSupportReindex` |
+| ND0321 | `SignedIncidenceEntry` |
+| ND0322 | `SignedIncidenceFlatEntry` |
+| ND0323 | `SignedIncidenceFlatPrefix` |
+| ND0324 | `SignedSupportIncidence` |
+| ND0325 | `DirichletCoprimeProductData` |
+| ND0326 | `DirichletDivisorGridWitness` |
+
+The unchanged relevant inherited identities are `DirichletTable` (ND0304),
+`KroneckerDeltaTable` (ND0311), `SignedUnit` (ND0313),
+`DirichletUnitAtOne` (ND0314), and `DirichletInverse` (ND0315).
+ND0316 expands through `ArithTable`, `ArithAt`, `Le`, `Coprime`, and
+`SignedMul`; it has no `SignedUnit` definition edge. Definition identities
+and expansion arrows are notation evidence, not theorem or admission evidence.
+
+### Required scope of any later completion statement
+
+- The domain is an actual nonempty finite positive prefix `0<n<=N`, with
+  `N>0`. No arbitrary second-order function or unproved infinite-function
+  coding theorem is asserted.
+- Multiplicativity uses `ArithAt(F,1,2)`: canonical code **2** is signed
+  **+1**. General invertibility permits signed **+1 or -1**, codes **2 or
+  1**. These are different properties.
+- The product law requires positive coprime `m,n` and the inclusive bound
+  `m*n<=N`. Separate factor bounds do not suffice, and complete
+  multiplicativity without coprimality is not claimed.
+- Uniqueness and associativity identify represented canonical signed values
+  only on `0<n<=N`, never table encodings, their arbitrary zeroth values,
+  or outside-prefix values. Those outside values exist but are not
+  constrained by this finite-prefix property.
+- At `N=0`, strict multiplicativity is false. Existing empty-window
+  convolution and inverse results are separate; the general
+  `dirichlet_inverse_criterion` has the condition
+  `N=0 or DirichletUnitAtOne(F)`. The bare signed-unit iff requires `N!=0`.
+- The new existential convolution endpoint constructs an actual table; it
+  does not additionally promise an arbitrarily prescribed output zeroth
+  value. The separate inverse and delta constructors do have their stated
+  prescribed-zero-value arguments.
+- `dirichlet_multiplicative_function_invertible` constructs an actual
+  two-sided inverse from positive-one normalization. It does **not** prove
+  that the inverse is multiplicative. Neither inverse multiplicativity nor
+  a convolution-group theorem for multiplicative prefixes is claimed; that
+  further corollary is not an obligation of the original PLAN/14 G009 text.
+
+This mapping identifies the original mathematical contract whose fresh
+production proof and reader checks are recorded above. Alpha admission and
+remote publication remain distinct gates; neither follows automatically
+from the proof result or this documentation update.

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PD0013 — BetaAt(b,c,i,x) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/definition/PD0013.html">
+<meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/definition/PD0013.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PD0013 — BetaAt(b,c,i,x) — Definition">
+</head>
+<body class="pa-defined-proof-site" data-family="multiplicative-convolution"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=6c9ebfb3c37e">Definitions and proofs</a>
+       <a href="../graph.html?v=6c9ebfb3c37e">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=6c9ebfb3c37e">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=6c9ebfb3c37e">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=6c9ebfb3c37e">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G009" href="../../../../grand-campaign/?view=goal&amp;focus=G009&amp;v=6c9ebfb3c37e">G009 milestone</a></nav>
+  <p class="pd-tag">PD0013</p><h1>BetaAt(b,c,i,x)</h1>
+  <p>x is the bounded beta-decoded value at index i.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>S x ≤ S (S i · c) ∧ (∃ y. b = y · S (S i · c) + x)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((exists ff_h_defined_beta_at. ff_h_defined_beta_at + S (x) = S ((S (i)) * c)) /\ exists ff_q_defined_beta_at. b = ff_q_defined_beta_at * S ((S (i)) * c) + (x))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><span class="pd-empty">none — first-order arithmetic only</span></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0252.html?v=6c9ebfb3c37e">ArithAt(F,i,z)</a><a class="pd-chip" href="ND0251.html?v=6c9ebfb3c37e">ArithTable(N,F)</a><a class="pd-chip" href="PD0015.html?v=6c9ebfb3c37e">Sum(b,c,l,z)</a><a class="pd-chip" href="ND0318.html?v=6c9ebfb3c37e">DivisorPairIndexMap(V,L,r,s)</a><a class="pd-chip" href="ND0320.html?v=6c9ebfb3c37e">SignedSupportReindex(A,B,r,s,L,M)</a><a class="pd-chip" href="ND0321.html?v=6c9ebfb3c37e">SignedIncidenceEntry(A,r,s,i,j,z)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/MX0014.html?v=6c9ebfb3c37e">MX0014 · divisor_pair_index_map_append</a><a class="pd-chip" href="../tag/MX0015.html?v=6c9ebfb3c37e">MX0015 · divisor_pair_index_map_exists</a><a class="pd-chip" href="../tag/MX0016.html?v=6c9ebfb3c37e">MX0016 · divisor_pair_index_map_lookup</a><a class="pd-chip" href="../tag/MX0017.html?v=6c9ebfb3c37e">MX0017 · divisor_pair_index_map_value</a><a class="pd-chip" href="../tag/MX0036.html?v=6c9ebfb3c37e">MX0036 · signed_support_incidence_entry_hit</a><a class="pd-chip" href="../tag/MX0037.html?v=6c9ebfb3c37e">MX0037 · signed_support_incidence_entry_miss</a><a class="pd-chip" href="../tag/MX0038.html?v=6c9ebfb3c37e">MX0038 · signed_support_incidence_entry_decode</a><a class="pd-chip" href="../tag/MX003A.html?v=6c9ebfb3c37e">MX003A · signed_support_incidence_entry_exists</a><a class="pd-chip" href="../tag/MX003C.html?v=6c9ebfb3c37e">MX003C · signed_support_incidence_nonzero_source_image</a><a class="pd-chip" href="../tag/MX0046.html?v=6c9ebfb3c37e">MX0046 · signed_support_incidence_row_sum_value</a><a class="pd-chip" href="../tag/MX0047.html?v=6c9ebfb3c37e">MX0047 · signed_support_incidence_column_sum_value</a><a class="pd-chip" href="../tag/MX0052.html?v=6c9ebfb3c37e">MX0052 · dirichlet_coprime_grid_support_preserving</a><a class="pd-chip" href="../tag/MX0053.html?v=6c9ebfb3c37e">MX0053 · dirichlet_coprime_grid_support_injective</a><a class="pd-chip" href="../tag/MX0054.html?v=6c9ebfb3c37e">MX0054 · dirichlet_coprime_grid_support_covering</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>0</dd>
+  <dt>Transitive prerequisites</dt><dd>0</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity PD0013.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9</code></dd>
+</dl></aside></main></body>
+</html>

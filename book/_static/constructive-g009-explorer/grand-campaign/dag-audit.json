@@ -1,0 +1,33 @@
+{
+  "alpha_version": "v31",
+  "campaign_snapshot_sha256": "1254a74b412e273610bc1550feaf2b864e9d90340cfa788c75dc0d3bc1946f50",
+  "catalog_sha256": "6c9ebfb3c37e42aefab200b710f78e7693dc5826c80f053544deea41caf44aab",
+  "declared_notation_edge_count": 258,
+  "definition_count": 467,
+  "definition_dag_sha256": "c97c74a9f00ee7f95efb187ae6317eee5fd5caeb4dac158f0479ec6f1a9f78aa",
+  "definition_edge_count": 836,
+  "milestone_count": 144,
+  "milestone_dag_sha256": "7f1ff409b835ddc97bd7869729538eda5f3cfd4bcf1eeb5c84b800238473a07b",
+  "milestone_proof_edge_count": 313,
+  "milestone_usage_edge_count": 583,
+  "research_proof_dag": {
+    "all_theorem_bodies_original_ha_checked": true,
+    "bundle_sha256": "953dc5ef340379b1e34883c2f9ab2181e91c872f5bbb7943c52b2fb70ce76959",
+    "dependency_edges": 1350,
+    "inherited_alpha_theorem_count": 371,
+    "new_theorem_count": 90,
+    "notation_edges_are_proof_premises": false,
+    "ordered_names_sha256": "78418f04be696b39352ae11a3470fd970d2d3ed7f792035bcd385ad7c0076deb",
+    "ordinary_principal_count": 6,
+    "purpose": "Separate actual checked research dependency cone; never Alpha authority",
+    "same_bytes_compiled_lean_checked": true,
+    "theorem_count": 461
+  },
+  "reviewed_definition_count": 383,
+  "reviewed_definition_dag_sha256": "f0bd74de9352c9d07c486852d27a8d5d32d64566dd7c327fa30a6f3f494e3383",
+  "reviewed_definition_edge_count": 825,
+  "statement_usage_edge_count": 325,
+  "theorem_count": 3796,
+  "theorem_dag_sha256": "6c71b8235399d081d99da7438ecb2c9e1f05ae93331a5365191d91225e133c49",
+  "theorem_edge_count": 12248
+}

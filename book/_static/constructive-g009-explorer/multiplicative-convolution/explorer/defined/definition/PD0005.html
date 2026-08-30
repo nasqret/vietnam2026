@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PD0005 — Coprime(a,b) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/definition/PD0005.html">
+<meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/multiplicative-convolution/explorer/defined/definition/PD0005.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PD0005 — Coprime(a,b) — Definition">
+</head>
+<body class="pa-defined-proof-site" data-family="multiplicative-convolution"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=6c9ebfb3c37e">Definitions and proofs</a>
+       <a href="../graph.html?v=6c9ebfb3c37e">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=6c9ebfb3c37e">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=6c9ebfb3c37e">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=6c9ebfb3c37e">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G009" href="../../../../grand-campaign/?view=goal&amp;focus=G009&amp;v=6c9ebfb3c37e">G009 milestone</a></nav>
+  <p class="pd-tag">PD0005</p><h1>Coprime(a,b)</h1>
+  <p>Every common divisor of a and b is one.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ d. <a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=6c9ebfb3c37e">Dvd(d,a)</a> → <a class="pd-definition-ref" data-definition="PD0003" href="PD0003.html?v=6c9ebfb3c37e">Dvd(d,b)</a> → d = 1</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall d. (exists x. a = d * x) -&gt; (exists y. b = d * y) -&gt; d = 1</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0003.html?v=6c9ebfb3c37e">Dvd(d,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0316.html?v=6c9ebfb3c37e">MultiplicativePrefix(N,F)</a><a class="pd-chip" href="ND0325.html?v=6c9ebfb3c37e">DirichletCoprimeProductData(N,F,G,m,n,A,B,T,Q,r,s)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/MX0004.html?v=6c9ebfb3c37e">MX0004 · signed_multiplicative_coprime_product</a><a class="pd-chip" href="../tag/MX0005.html?v=6c9ebfb3c37e">MX0005 · signed_multiplicative_intro</a><a class="pd-chip" href="../tag/MX0009.html?v=6c9ebfb3c37e">MX0009 · signed_multiplicative_product_values_exist</a><a class="pd-chip" href="../tag/MX000C.html?v=6c9ebfb3c37e">MX000C · coprime_divisor_gcd_product</a><a class="pd-chip" href="../tag/MX000D.html?v=6c9ebfb3c37e">MX000D · coprime_divisor_factor_pair_coordinates</a><a class="pd-chip" href="../tag/MX000E.html?v=6c9ebfb3c37e">MX000E · coprime_divisor_factor_pair_unique</a><a class="pd-chip" href="../tag/MX000F.html?v=6c9ebfb3c37e">MX000F · coprime_divisor_factor_pair_exists</a><a class="pd-chip" href="../tag/MX0010.html?v=6c9ebfb3c37e">MX0010 · coprime_divisor_factor_pair_bounds</a><a class="pd-chip" href="../tag/MX0011.html?v=6c9ebfb3c37e">MX0011 · coprime_divisor_factor_pair_exists_unique</a><a class="pd-chip" href="../tag/MX0012.html?v=6c9ebfb3c37e">MX0012 · coprime_divisor_factor_pair_cofactors</a><a class="pd-chip" href="../tag/MX004F.html?v=6c9ebfb3c37e">MX004F · dirichlet_multiplicative_pair_factorization</a><a class="pd-chip" href="../tag/MX0050.html?v=6c9ebfb3c37e">MX0050 · dirichlet_multiplicative_pair_entry</a><a class="pd-chip" href="../tag/MX0054.html?v=6c9ebfb3c37e">MX0054 · dirichlet_coprime_grid_support_covering</a><a class="pd-chip" href="../tag/MX0056.html?v=6c9ebfb3c37e">MX0056 · dirichlet_coprime_product_data_construct</a><a class="pd-chip" href="../tag/MX0057.html?v=6c9ebfb3c37e">MX0057 · dirichlet_convolution_multiplicative_values</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>2</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>1</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity PD0005.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>9309813a1797d5b48ddd1596997e568cefb9260ed22f0486c4675d6a70b58f8b</code></dd>
+</dl></aside></main></body>
+</html>

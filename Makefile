@@ -40,7 +40,7 @@ PEANO_LEAN_PUBLIC_ARGS ?=
 override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override STAGELEANAPI := _deploy/lean-api
-override PEANOAPPID := a-e4012dd8e319
+override PEANOAPPID := a-d271dc743387
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs stage-lean-api deploy-site deploy-lab deploy-lab-next deploy-peano \
@@ -355,6 +355,15 @@ check-constructive-dirichlet-inverse:
 
 book-constructive-dirichlet-inverse-explorer:
 	PYTHONMALLOC=malloc python3 scripts/build_constructive_dirichlet_inverse_explorer.py --check
+
+.PHONY: check-constructive-g009 book-constructive-g009-explorer
+# Non-admitting G009 research: eight fresh original-bounded proof windows.
+# The reader additionally requires all 277 same-live presentation cases.
+check-constructive-g009:
+	PYTHONMALLOC=pymalloc python3 scripts/check_constructive_g009.py
+
+book-constructive-g009-explorer:
+	PYTHONMALLOC=pymalloc python3 scripts/build_constructive_g009_explorer.py --check
 
 .PHONY: peano-library-alpha-v31 peano-library-alpha-v31-publish peano-library-alpha-v31-check book-constructive-completed-lower-explorer-v31
 # The additive presentation entrypoint preserves all sealed v31 sources and
@@ -1953,6 +1962,10 @@ stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book
 		--root "$(STAGEPROOFS)" \
 		--api-url "$(PEANO_LEAN_PUBLIC_API)"
 	python3 scripts/stage_completed_lower_publication_v31.py --root "$(STAGEPROOFS)" \
+		--check --api-url "$(PEANO_LEAN_PUBLIC_API)"
+	python3 scripts/stage_constructive_g009_publication.py --root "$(STAGEPROOFS)" \
+		--api-url "$(PEANO_LEAN_PUBLIC_API)"
+	python3 scripts/stage_constructive_g009_publication.py --root "$(STAGEPROOFS)" \
 		--check --api-url "$(PEANO_LEAN_PUBLIC_API)"
 	@echo "Staged proof explorers in $(STAGEPROOFS)"
 
