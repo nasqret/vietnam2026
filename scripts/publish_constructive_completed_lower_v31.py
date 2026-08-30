@@ -1,15 +1,17 @@
 #!/usr/bin/env python3
-"""Fresh Alpha-v31 publication with one additive aggregate-navigation fix.
+"""Fresh Alpha-v31 publication with additive presentation compatibility.
 
 The frozen publisher remains literal historical evidence.  This successor
-changes only its aggregate index link and the corresponding manifest record;
-it does not change a theorem, proof gate, receipt, resource limit or test.
+corrects its aggregate index link and preserves the two exact historical
+edition-agnostic graph schemas. It does not change a theorem, proof gate,
+receipt, resource limit or historical test.
 Every public invocation still requires the original genuine live verifier.
 """
 
 from __future__ import annotations
 
 import argparse
+from copy import deepcopy
 from dataclasses import dataclass
 from html.parser import HTMLParser
 import os
@@ -22,12 +24,22 @@ from types import FunctionType
 
 import constructive_alpha_v31_publication_process as original
 import constructive_completed_lower_publication_v31 as publication
+import upgrade_constructive_historical_publication_v31 as historical
 
 
 ROOT = publication.ROOT
 SOURCE = "scripts/publish_constructive_completed_lower_v31.py"
 TEST = "scripts/test_publish_constructive_completed_lower_v31.py"
 CORRECTION_SCHEMA = "peano-lab-alpha-v31-aggregate-navigation-correction-v1"
+# These complete, immutable schemas deliberately impose no current Alpha
+# version. Their lack of a v25 constraint is not an incomplete proof record.
+# Do not generalize this exception to an arbitrary edition-agnostic schema.
+EDITION_AGNOSTIC_SCHEMAS = (
+    ("book/_static/pa-proof-explorer/defined/api/graph.schema.json", 1057,
+     "0d5313078ef36d47733b1d2dae06778db8a53b7b18e91adab4e92e445eecd559"),
+    ("book/_static/bertrand-proof-explorer/defined/api/graph.schema.json", 1136,
+     "289a39e7e66690db269f540ca79b2e074add9575bb0f1cdbc9f8a0435f0aa859"),
+)
 FROZEN_SOURCES = (
     ("scripts/build_constructive_completed_lower_explorer_v31.py", 24547, "d138a6f6f2dba46567b71f514f2aec3d3042449302b80a652d12f57bcb2818fe"),
     ("scripts/constructive_alpha_v31_publication_process.py", 20539, "6cc39f32255b0e36317bd1b9b806d0aa6031e7fcd39ebcab0396df440ed3b828"),
@@ -196,18 +208,45 @@ def _correct_completed_files(files: dict[str, bytes], *, catalog_sha256: str, so
     return corrected
 
 
-def _process_namespace(sources: SourceBinding) -> dict:
-    """Copy every local function; never patch the frozen module's globals."""
-    sources.require_unchanged()
-    namespace = dict(vars(original))
-    # Mutable routing dictionaries also belong to this private namespace.
-    namespace["OUTPUTS"], namespace["TESTS"] = dict(original.OUTPUTS), dict(original.TESTS)
-    for name, function in vars(original).items():
-        if isinstance(function, FunctionType) and function.__module__ == original.__name__:
+def _private_namespace(module) -> dict:
+    """Keep unchanged function code in new globals, never mutate an old module."""
+    namespace = dict(vars(module))
+    for name, function in vars(module).items():
+        if isinstance(function, FunctionType) and function.__module__ == module.__name__:
             copied = FunctionType(function.__code__, namespace, function.__name__, function.__defaults__, function.__closure__)
             copied.__kwdefaults__ = None if function.__kwdefaults__ is None else dict(function.__kwdefaults__)
             copied.__annotations__ = dict(function.__annotations__)
             namespace[name] = copied
+    return namespace
+
+
+def _compatible_historical_graph_schema(value: dict) -> dict:
+    """Pure schema formatting, not a graph verifier or proof authority."""
+    if type(value) is not dict:
+        raise CorrectionError("historical graph schema must be an object")
+    encoded = historical.canonical_bytes(value)
+    for path, size, digest in EDITION_AGNOSTIC_SCHEMAS:
+        raw = publication.read_pinned(ROOT / path, size, digest)
+        if encoded == historical.canonical_bytes(publication.strict_json(raw)):
+            return deepcopy(value)
+    # The original reviewed v25-to-v31 migration and all its rejection cases
+    # remain in force for every input except those two exact literal schemas.
+    return historical._refresh_graph_schema(value)
+
+
+def _historical_namespace(sources: SourceBinding) -> dict:
+    sources.require_unchanged()
+    namespace = _private_namespace(historical)
+    namespace["_refresh_graph_schema"] = _compatible_historical_graph_schema
+    return namespace
+
+
+def _process_namespace(sources: SourceBinding) -> dict:
+    """Copy every local function; never patch the frozen module's globals."""
+    sources.require_unchanged()
+    namespace = _private_namespace(original)
+    # Mutable routing dictionaries also belong to this private namespace.
+    namespace["OUTPUTS"], namespace["TESTS"] = dict(original.OUTPUTS), dict(original.TESTS)
     originals = dict(namespace)
 
     def phase_entries(context, phase):
@@ -215,6 +254,8 @@ def _process_namespace(sources: SourceBinding) -> dict:
         if phase == "completed":
             from build_constructive_completed_lower_explorer_v31 import build_files_from_live
             entries = _correct_completed_files(build_files_from_live(context), catalog_sha256=context.catalog_sha256, sources=sources).items()
+        elif phase == "historical":
+            entries = _historical_namespace(sources)["iter_files_from_live"](context)
         else:
             entries = originals["_phase_entries"](context, phase)
         yield from entries

@@ -410,6 +410,101 @@ def test_cli_uses_one_fresh_audit_for_each_mode_and_original_schedule():
     assert "resource.setrlimit(resource.RLIMIT_CPU, proof_audit.CPU_LIMITS)" in text
 
 
+@pytest.mark.parametrize("path,size,digest", correction.EDITION_AGNOSTIC_SCHEMAS)
+def test_exact_edition_agnostic_schema_is_preserved_byte_for_byte(path, size, digest):
+    raw = publication.read_pinned(ROOT / path, size, digest)
+    value = publication.strict_json(raw)
+    before = deepcopy(value)
+    revised = correction._compatible_historical_graph_schema(value)
+    assert value == revised == before and revised is not value
+    assert publication.json_bytes(revised) == raw
+    assert set(value["properties"]) == {"edges", "nodes", "path_policy", "schema"}
+    assert value["additionalProperties"] is True
+    # The original catalogue-bound implementation remains unchanged.
+    with pytest.raises(ValueError, match="no reviewed current-edition constraint"):
+        correction.historical._refresh_graph_schema(value)
+
+
+@pytest.mark.parametrize("path,size,digest", correction.EDITION_AGNOSTIC_SCHEMAS)
+@pytest.mark.parametrize("mutation", (
+    "foreign_id", "path_policy", "missing_required", "wrong_nodes", "extra_field",
+    "closed_properties", "unexpected_edition", "boolean_number", "boolean_float",
+))
+def test_schema_exception_never_accepts_an_altered_agnostic_schema(path, size, digest, mutation):
+    value = publication.strict_json(publication.read_pinned(ROOT / path, size, digest))
+    if mutation == "foreign_id": value["$id"] += ":foreign"
+    elif mutation == "path_policy": value["properties"]["path_policy"]["const"] = "notation_is_proof"
+    elif mutation == "missing_required": value["required"].pop()
+    elif mutation == "wrong_nodes": value["properties"]["nodes"]["type"] = "string"
+    elif mutation == "extra_field": value["unreviewed"] = True
+    elif mutation == "closed_properties": value["additionalProperties"] = False
+    elif mutation == "boolean_number": value["additionalProperties"] = 1
+    elif mutation == "boolean_float": value["additionalProperties"] = 1.0
+    else: value["properties"]["alpha_edition_version"] = {"const": "v30"}
+    with pytest.raises(ValueError, match="no reviewed current-edition constraint"):
+        correction._compatible_historical_graph_schema(value)
+
+
+@pytest.mark.parametrize("value", (None, [], True, b"{}"))
+def test_schema_exception_rejects_non_objects(value):
+    with pytest.raises(ValueError, match="schema must be an object"):
+        correction._compatible_historical_graph_schema(value)
+
+
+def test_all_fifteen_literal_historical_manifests_have_only_three_reviewed_schemas():
+    historical = correction.historical
+    sources = historical.manifests()
+    assert len(sources) == 15 and len(historical.FAMILY_ORDER) == 44
+    seen = set()
+    agnostic = {path for path, _, _ in correction.EDITION_AGNOSTIC_SCHEMAS}
+    for item in historical.SNAPSHOTS:
+        pins = {row["path"]: row for row in sources[item.directory]["files"]}
+        for name in pins:
+            if not name.endswith("api/graph.schema.json"):
+                continue
+            path = "book/_static/" + item.directory + "/" + name
+            assert path not in seen
+            seen.add(path)
+            raw = historical.source_file(item, pins, name)
+            value = publication.strict_json(raw)
+            revised = correction._compatible_historical_graph_schema(value)
+            if path in agnostic:
+                assert publication.json_bytes(revised) == raw
+            else:
+                assert revised == historical._refresh_graph_schema(value)
+                assert revised["properties"]["alpha_edition_version"]["const"] == "v31"
+                assert revised["properties"]["proof_edition_version"] == value["properties"]["proof_edition_version"]
+    assert seen == agnostic | {"book/_static/pa-proof-explorer/api/graph.schema.json"}
+
+
+def test_historical_functions_have_private_globals_without_changing_the_original_module(source):
+    historical = correction.historical
+    before = dict(vars(historical))
+    namespace = correction._historical_namespace(source)
+    for name, function in before.items():
+        if isinstance(function, FunctionType) and function.__module__ == historical.__name__:
+            if name == "_refresh_graph_schema":
+                assert namespace[name] is correction._compatible_historical_graph_schema
+                continue
+            actual = namespace[name]
+            assert actual is not function and actual.__code__ is function.__code__
+            assert actual.__globals__ is namespace
+            assert actual.__defaults__ == function.__defaults__
+            assert actual.__kwdefaults__ == function.__kwdefaults__
+            assert actual.__annotations__ == function.__annotations__
+    assert set(vars(historical)) == set(before)
+    assert all(vars(historical)[name] is value for name, value in before.items())
+    with pytest.raises(ValueError, match="live v31 verification capability"):
+        tuple(namespace["iter_files_from_live"](object()))
+
+
+def test_changed_sources_reject_historical_namespace_before_formatting(source):
+    path = source.root / source.pins[0][0]
+    path.write_bytes(b"!" + path.read_bytes()[1:])
+    with pytest.raises(ValueError, match="pinned presentation input changed"):
+        correction._historical_namespace(source)
+
+
 if __name__ == "__main__":
     resource.setrlimit(resource.RLIMIT_CPU, (170, 175))
     signal.alarm(180)

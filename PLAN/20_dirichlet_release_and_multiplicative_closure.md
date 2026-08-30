@@ -90,8 +90,22 @@ completed-reader UI phase then passed 107 tests and rejected one incorrect
 aggregate-index atlas link (`../grand-campaign/` instead of `grand-campaign/`).
 No reader output tree was installed. The additive presentation entrypoint
 corrects only that link and its page-manifest identity, preserves every sealed
-release/source byte, and passed 106 focused correction/transport tests. Its
-fresh 72-job proof audit and mandatory same-live UI gates are running again.
+release/source byte, and passed 106 focused correction/transport tests. The
+next fresh 72-job audit passed, followed by all 108 completed-family UI tests
+(79.487 seconds including rendering; peak RSS 743,096,320 bytes). Historical
+rendering then rejected the two legitimate edition-agnostic graph schemas
+used by the Quadratic Reciprocity and Bertrand definition-aware readers.
+Neither schema has a v25 constraint to migrate. No reader tree was installed.
+The additive compatibility correction preserves those two complete pinned
+schemas unchanged. The exhaustive actual-input formatting preflight passed:
+15 pinned snapshots, all 44 families and 46 graphs, 9,399 HTML projections,
+93 JSON projections and both flagship landings, with zero further format
+errors (31.879 seconds, peak RSS 818,659,328 bytes). All output was discarded;
+this was presentation diagnostics, not a proof audit or publication. All 133
+focused compatibility/transport regressions then passed (5.076 seconds,
+peak RSS 511,787,008 bytes), including Boolean-versus-numeric schema changes.
+The next full fresh publication audit remains required.
+The catalogue and original renderer sources remain unchanged.
 Proof workers retain
 their original isolation and all resource limits. Existing catalogue artifacts
 are neither overwritten nor accepted merely from a receipt.
@@ -101,9 +115,9 @@ The independent mathematical design is in `PLAN/21_g009_multiplicativity_design.
 The implementation is being checked separately in an isolated scratch tree so
 that the current release sources remain frozen throughout publication.
 All 90 proposed G009 statement/body pairs have passed conditional original-HA
-checks, and the first 80 have an actual dependency-closed original-HA bundle
-(360 nodes, 279 inherited Alpha-v31 theorems, SHA-256
-`3dbbe5a8e6ab787c03be8102e0b22395a556f8854bac4258e391a34d28f8da6f`).
+checks, and the first 86 have an actual dependency-closed original-HA bundle
+(371 nodes, 284 inherited Alpha-v31 theorems, SHA-256
+`e8e42dd7b343c068586dfe840d5c1a3572d76bc35a454b629d9ab252437f5a7d`).
 This intermediate authoring checkpoint is not a full G009 certificate,
 independent Lean verification, or Alpha admission. The eleven additive
 conservative definitions and combined-map formatter have separate executable

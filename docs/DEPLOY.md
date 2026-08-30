@@ -60,7 +60,13 @@ can replace the proof gate or create that capability.
 
 These targets use the additive `publish_constructive_completed_lower_v31.py`
 entrypoint. Its narrowly scoped presentation correction fixes the aggregate
-index's relative atlas link and recomputes that page's manifest entry. It
+index's relative atlas link and recomputes that page's manifest entry. Its
+schema compatibility adapter also preserves the exact edition-agnostic
+definition-graph schemas of Quadratic Reciprocity and Bertrand: neither
+schema has a current Alpha-version constraint to migrate. Only these two
+literal pinned schemas receive that exception; other schemas retain the
+original reviewed version migration and rejection rules. The adapter uses
+private function globals without modifying a historical module. It
 preserves the six sealed release files and their original source pins; the
 original proof gates, mandatory same-live UI tests and atomic non-overwriting
 publication remain in force. The original catalogue-bound renderer sources
