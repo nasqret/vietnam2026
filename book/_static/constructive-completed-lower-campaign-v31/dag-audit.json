@@ -1,0 +1,20 @@
+{
+  "alpha_version": "v31",
+  "campaign_snapshot_sha256": "d35dd518130261d35190a904d74278ba5e8334b06f17520533dc18ef3ceb98bb",
+  "catalog_sha256": "6c9ebfb3c37e42aefab200b710f78e7693dc5826c80f053544deea41caf44aab",
+  "declared_notation_edge_count": 255,
+  "definition_count": 456,
+  "definition_dag_sha256": "91f34c748e6c07a38f0936a4d8b20934cd07afbe3fb0af67b3fb65ec778e9e87",
+  "definition_edge_count": 798,
+  "milestone_count": 144,
+  "milestone_dag_sha256": "7f1ff409b835ddc97bd7869729538eda5f3cfd4bcf1eeb5c84b800238473a07b",
+  "milestone_proof_edge_count": 313,
+  "milestone_usage_edge_count": 578,
+  "reviewed_definition_count": 372,
+  "reviewed_definition_dag_sha256": "999614e63098880afd2967518d2134c93ca3fe66bcaefb0df2f0e2d9211e6556",
+  "reviewed_definition_edge_count": 787,
+  "statement_usage_edge_count": 323,
+  "theorem_count": 3796,
+  "theorem_dag_sha256": "6c71b8235399d081d99da7438ecb2c9e1f05ae93331a5365191d91225e133c49",
+  "theorem_edge_count": 12248
+}

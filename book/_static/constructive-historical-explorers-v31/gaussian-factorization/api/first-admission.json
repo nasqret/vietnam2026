@@ -1,0 +1,2548 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v30": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
+  },
+  "per_theorem": [
+    {
+      "name": "gaussian_valid_has_representation",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0001"
+    },
+    {
+      "name": "gaussian_code_representation_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0002"
+    },
+    {
+      "name": "gaussian_norm_input_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0003"
+    },
+    {
+      "name": "gaussian_add_input_left_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0004"
+    },
+    {
+      "name": "gaussian_add_input_right_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0005"
+    },
+    {
+      "name": "gaussian_add_output_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0006"
+    },
+    {
+      "name": "gaussian_multiply_input_left_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0007"
+    },
+    {
+      "name": "gaussian_multiply_input_right_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0008"
+    },
+    {
+      "name": "gaussian_multiply_output_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0009"
+    },
+    {
+      "name": "gaussian_natural_real_representation",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF000A"
+    },
+    {
+      "name": "gaussian_zero_representation",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF000B"
+    },
+    {
+      "name": "gaussian_zero_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF000C"
+    },
+    {
+      "name": "gaussian_zero_norm",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF000D"
+    },
+    {
+      "name": "gaussian_one_representation",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF000E"
+    },
+    {
+      "name": "gaussian_one_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF000F"
+    },
+    {
+      "name": "gaussian_one_norm",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0010"
+    },
+    {
+      "name": "gaussian_ring_raw_add_commutative",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0011"
+    },
+    {
+      "name": "gaussian_add_commutative",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0012"
+    },
+    {
+      "name": "gaussian_ring_raw_multiply_commutative",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0013"
+    },
+    {
+      "name": "gaussian_multiply_commutative",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0014"
+    },
+    {
+      "name": "gaussian_norm_value_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0015"
+    },
+    {
+      "name": "gaussian_norm_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0016"
+    },
+    {
+      "name": "gaussian_norm_zero_implies_code_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0017"
+    },
+    {
+      "name": "gaussian_code_zero_implies_norm_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0018"
+    },
+    {
+      "name": "gaussian_unit_has_norm_one",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0019"
+    },
+    {
+      "name": "gaussian_norm_one_is_unit",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF001A"
+    },
+    {
+      "name": "gaussian_unit_iff_norm_one",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF001B"
+    },
+    {
+      "name": "gaussian_unit_decidable",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF001C"
+    },
+    {
+      "name": "gaussian_unit_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF001D"
+    },
+    {
+      "name": "gaussian_unit_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF001E"
+    },
+    {
+      "name": "gaussian_multiply_zero_implies_zero_factor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF001F"
+    },
+    {
+      "name": "gaussian_codes_equal_of_representations",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0020"
+    },
+    {
+      "name": "gaussian_ring_raw_add_associative",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0021"
+    },
+    {
+      "name": "gaussian_ring_pair_sum_cancel",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0022"
+    },
+    {
+      "name": "gaussian_ring_raw_add_cancel_left",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0023"
+    },
+    {
+      "name": "gaussian_add_associative",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0024"
+    },
+    {
+      "name": "gaussian_multiply_associative",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0025"
+    },
+    {
+      "name": "gaussian_add_zero_right",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0026"
+    },
+    {
+      "name": "gaussian_add_zero_left",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0027"
+    },
+    {
+      "name": "gaussian_multiply_one_right",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0028"
+    },
+    {
+      "name": "gaussian_multiply_one_left",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0029"
+    },
+    {
+      "name": "gaussian_multiply_zero_right",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF002A"
+    },
+    {
+      "name": "gaussian_multiply_zero_left",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF002B"
+    },
+    {
+      "name": "gaussian_subtract_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF002C"
+    },
+    {
+      "name": "gaussian_add_cancel_left",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF002D"
+    },
+    {
+      "name": "gaussian_add_output_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF002E"
+    },
+    {
+      "name": "gaussian_multiply_output_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF002F"
+    },
+    {
+      "name": "gaussian_multiply_associative_reverse",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0030"
+    },
+    {
+      "name": "gaussian_multiply_swap_tail",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0031"
+    },
+    {
+      "name": "gaussian_ring_multiply_add_real_positive",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0032"
+    },
+    {
+      "name": "gaussian_ring_multiply_add_real_negative",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0033"
+    },
+    {
+      "name": "gaussian_ring_multiply_add_imaginary_positive",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0034"
+    },
+    {
+      "name": "gaussian_ring_multiply_add_imaginary_negative",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0035"
+    },
+    {
+      "name": "gaussian_ring_raw_multiply_add_distributive",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0036"
+    },
+    {
+      "name": "gaussian_multiply_add_compose",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0037"
+    },
+    {
+      "name": "gaussian_multiply_add_distribute",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0038"
+    },
+    {
+      "name": "gaussian_multiply_add_distribute_right",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0039"
+    },
+    {
+      "name": "gaussian_add_cancel_right",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF003A"
+    },
+    {
+      "name": "gaussian_multiply_cancel_left",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF003B"
+    },
+    {
+      "name": "gaussian_multiply_cancel_right",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF003C"
+    },
+    {
+      "name": "gaussian_one_unit",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF003D"
+    },
+    {
+      "name": "gaussian_unit_inverse",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF003E"
+    },
+    {
+      "name": "gaussian_unit_product",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF003F"
+    },
+    {
+      "name": "gaussian_unit_factor_left",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0040"
+    },
+    {
+      "name": "gaussian_unit_factor_right",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0041"
+    },
+    {
+      "name": "gaussian_divides_input_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0042"
+    },
+    {
+      "name": "gaussian_divides_value_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0043"
+    },
+    {
+      "name": "gaussian_divides_reflexive",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0044"
+    },
+    {
+      "name": "gaussian_divides_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0045"
+    },
+    {
+      "name": "gaussian_one_divides",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0046"
+    },
+    {
+      "name": "gaussian_zero_divides_only_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0047"
+    },
+    {
+      "name": "gaussian_divides_transitive",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0048"
+    },
+    {
+      "name": "gaussian_divides_product_left",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0049"
+    },
+    {
+      "name": "gaussian_divides_product_right",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF004A"
+    },
+    {
+      "name": "gaussian_common_divisor_add",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF004B"
+    },
+    {
+      "name": "gaussian_common_divisor_subtract",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF004C"
+    },
+    {
+      "name": "gaussian_unit_divides",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF004D"
+    },
+    {
+      "name": "gaussian_divisor_of_unit_is_unit",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF004E"
+    },
+    {
+      "name": "gaussian_common_divisor_euclidean_forward",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF004F"
+    },
+    {
+      "name": "gaussian_common_divisor_euclidean_backward",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0050"
+    },
+    {
+      "name": "gaussian_division_zero_remainder_divides",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0051"
+    },
+    {
+      "name": "gaussian_division_divisible_remainder_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0052"
+    },
+    {
+      "name": "gaussian_divides_decidable",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0053"
+    },
+    {
+      "name": "gaussian_associate_reflexive",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0054"
+    },
+    {
+      "name": "gaussian_associate_symmetric",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0055"
+    },
+    {
+      "name": "gaussian_associate_transitive",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0056"
+    },
+    {
+      "name": "gaussian_associate_of_unit_cofactor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0057"
+    },
+    {
+      "name": "gaussian_associate_divides",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0058"
+    },
+    {
+      "name": "gaussian_associate_norm",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0059"
+    },
+    {
+      "name": "gaussian_mutual_divisibility_associate",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF005A"
+    },
+    {
+      "name": "gaussian_divisor_norm_factor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF005B"
+    },
+    {
+      "name": "gaussian_divisor_norm_bound",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF005C"
+    },
+    {
+      "name": "gaussian_nonunit_divisor_of_irreducible_is_associate",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF005D"
+    },
+    {
+      "name": "gaussian_irreducible_divides_irreducible_associate",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF005E"
+    },
+    {
+      "name": "gaussian_gcd_bezout_zero_right",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF005F"
+    },
+    {
+      "name": "gaussian_gcd_bezout_zero_case",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0060"
+    },
+    {
+      "name": "gaussian_common_divisor_of_bezout",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0061"
+    },
+    {
+      "name": "gaussian_gcd_euclidean_backward",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0062"
+    },
+    {
+      "name": "gaussian_bezout_euclidean_backward",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0063"
+    },
+    {
+      "name": "gaussian_gcd_bezout_bounded_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0064"
+    },
+    {
+      "name": "gaussian_gcd_bezout_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0065"
+    },
+    {
+      "name": "gaussian_gcd_unique_up_to_associate",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0066"
+    },
+    {
+      "name": "gaussian_bezout_unit_divisor_cancel",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0067"
+    },
+    {
+      "name": "gaussian_nonzero_product_divisor_unit_cofactor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0068"
+    },
+    {
+      "name": "gaussian_irreducible_dvd_product",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0069"
+    },
+    {
+      "name": "gaussian_irreducible_is_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF006A"
+    },
+    {
+      "name": "gaussian_prime_is_irreducible",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF006B"
+    },
+    {
+      "name": "gaussian_irreducible_iff_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF006C"
+    },
+    {
+      "name": "gaussian_search_natural_le_square",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF006D"
+    },
+    {
+      "name": "gaussian_search_signed_code_bound",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF006E"
+    },
+    {
+      "name": "gaussian_search_pair_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF006F"
+    },
+    {
+      "name": "gaussian_norm_bounded_coordinates",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0070"
+    },
+    {
+      "name": "gaussian_search_no_index_below_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0071"
+    },
+    {
+      "name": "gaussian_search_two_le_nonzero_not_one",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0072"
+    },
+    {
+      "name": "gaussian_search_proper_divisor_code_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0073"
+    },
+    {
+      "name": "gaussian_proper_norm_divisor_decidable",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0074"
+    },
+    {
+      "name": "gaussian_factor_search_coordinate_row",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0075"
+    },
+    {
+      "name": "gaussian_factor_search_coordinate_rectangle",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0076"
+    },
+    {
+      "name": "gaussian_search_bounded_coordinates_monotone",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0077"
+    },
+    {
+      "name": "gaussian_factor_search_complete",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0078"
+    },
+    {
+      "name": "gaussian_search_nonunit_norm_two",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0079"
+    },
+    {
+      "name": "gaussian_search_norm_factors_strict",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF007A"
+    },
+    {
+      "name": "gaussian_nonunit_factor_is_proper_norm_divisor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF007B"
+    },
+    {
+      "name": "gaussian_search_divisor_of_nonzero_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF007C"
+    },
+    {
+      "name": "gaussian_proper_norm_divisor_split",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF007D"
+    },
+    {
+      "name": "gaussian_irreducible_or_strict_nonunit_factorization",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF007E"
+    },
+    {
+      "name": "gaussian_irreducible_decidable",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF007F"
+    },
+    {
+      "name": "gaussian_irreducible_divisor_bounded_norm",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0080"
+    },
+    {
+      "name": "gaussian_irreducible_divisor_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0081"
+    },
+    {
+      "name": "gaussian_nonunit_divisor_strict_quotient",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0082"
+    },
+    {
+      "name": "gaussian_irreducible_factor_reduction",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0083"
+    },
+    {
+      "name": "gaussian_product_beta_index_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0084"
+    },
+    {
+      "name": "gaussian_product_beta_value_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0085"
+    },
+    {
+      "name": "gaussian_product_empty_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0086"
+    },
+    {
+      "name": "gaussian_product_empty_value",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0087"
+    },
+    {
+      "name": "gaussian_product_prefix_recode",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0088"
+    },
+    {
+      "name": "gaussian_product_successor_decompose",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0089"
+    },
+    {
+      "name": "gaussian_product_successor_intro",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF008A"
+    },
+    {
+      "name": "gaussian_product_value_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF008B"
+    },
+    {
+      "name": "gaussian_product_length_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF008C"
+    },
+    {
+      "name": "gaussian_product_functional",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF008D"
+    },
+    {
+      "name": "gaussian_product_result_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF008E"
+    },
+    {
+      "name": "gaussian_irreducible_code_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF008F"
+    },
+    {
+      "name": "gaussian_all_irreducible_prefix",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0090"
+    },
+    {
+      "name": "gaussian_all_irreducible_append",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0091"
+    },
+    {
+      "name": "gaussian_unit_empty_factorization",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0092"
+    },
+    {
+      "name": "gaussian_factorization_append_irreducible",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0093"
+    },
+    {
+      "name": "gaussian_irreducible_factorization_bounded_norm",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0094"
+    },
+    {
+      "name": "gaussian_irreducible_factorization_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0095"
+    },
+    {
+      "name": "gaussian_irreducible_factorization_is_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0096"
+    },
+    {
+      "name": "gaussian_prime_factorization_is_irreducible",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0097"
+    },
+    {
+      "name": "gaussian_prime_factorization_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0098"
+    },
+    {
+      "name": "gaussian_all_irreducible_length_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF0099"
+    },
+    {
+      "name": "gaussian_all_irreducible_product_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF009A"
+    },
+    {
+      "name": "gaussian_all_irreducible_product_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF009B"
+    },
+    {
+      "name": "gaussian_all_irreducible_product_unit_length_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF009C"
+    },
+    {
+      "name": "gaussian_factorization_value_valid",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF009D"
+    },
+    {
+      "name": "gaussian_factorization_value_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF009E"
+    },
+    {
+      "name": "gaussian_irreducible_divisor_product_member",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF009F"
+    },
+    {
+      "name": "gaussian_product_replace_balance",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00A0"
+    },
+    {
+      "name": "gaussian_product_replace_balance_iff",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00A1"
+    },
+    {
+      "name": "gaussian_product_swap_last_invariant",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00A2"
+    },
+    {
+      "name": "gaussian_factor_associate_code_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00A3"
+    },
+    {
+      "name": "gaussian_factor_associate_unit",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00A4"
+    },
+    {
+      "name": "gaussian_factor_associate_cancel_products",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00A5"
+    },
+    {
+      "name": "gaussian_product_decompose_at_last",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00A6"
+    },
+    {
+      "name": "gaussian_factor_empty_matching",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00A7"
+    },
+    {
+      "name": "gaussian_factor_matching_append",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00A8"
+    },
+    {
+      "name": "gaussian_factor_matched_append",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00A9"
+    },
+    {
+      "name": "gaussian_factor_swap_all_irreducible",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00AA"
+    },
+    {
+      "name": "gaussian_factor_matching_unswap",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00AB"
+    },
+    {
+      "name": "gaussian_factor_matched_unswap_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00AC"
+    },
+    {
+      "name": "gaussian_factor_swap_length_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00AD"
+    },
+    {
+      "name": "gaussian_factor_swapped_product_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00AE"
+    },
+    {
+      "name": "gaussian_irreducible_products_associate_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00AF"
+    },
+    {
+      "name": "gaussian_irreducible_factorizations_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00B0"
+    },
+    {
+      "name": "gaussian_prime_factorizations_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00B1"
+    },
+    {
+      "name": "gaussian_unique_prime_factorization",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00B2"
+    },
+    {
+      "name": "gaussian_zero_has_no_prime_factorization",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00B3"
+    },
+    {
+      "name": "gaussian_unit_prime_factorization_length_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v30",
+      "tag": "GF00B4"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 15236273,
+    "path": "book/_static/constructive-gaussian-factorization-explorer/gaussian-factorization/api/corpus.json",
+    "sha256": "314b0302f6e156042f394dced53a3f2fadd4896c4fc6a6ac0aa12f8400b2952d"
+  },
+  "source_corpus_fields": {
+    "alpha_first_enrolled_version": "v30",
+    "alpha_first_enrollment_catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
+  },
+  "source_family_fields": {},
+  "source_manifest": {
+    "bytes": 80302,
+    "path": "book/_static/constructive-gaussian-factorization-explorer/manifest.json",
+    "sha256": "3897c42a773ebcecb3616bdaeb548506e7cdd0d4ddd2047ce97c4b3ea73e8fba"
+  },
+  "source_manifest_fields": {
+    "alpha_first_enrolled_version": "v30",
+    "first_enrollment_catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v23": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+  },
+  "per_theorem": [
+    {
+      "name": "beta_two_square_prefix_drop_last",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0001"
+    },
+    {
+      "name": "beta_two_square_prefix_last_represented",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0002"
+    },
+    {
+      "name": "beta_two_square_represented_factor_product",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0003"
+    },
+    {
+      "name": "beta_all_prime_entry_is_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0004"
+    },
+    {
+      "name": "beta_admissible_prime_factor_product_is_two_square",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0005"
+    },
+    {
+      "name": "positive_number_with_admissible_prime_divisors_is_two_square",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0006"
+    },
+    {
+      "name": "three_mod_four_progression_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0007"
+    },
+    {
+      "name": "three_mod_four_progression_nonunit",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0008"
+    },
+    {
+      "name": "three_mod_four_progression_not_two_square",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0009"
+    },
+    {
+      "name": "three_mod_four_good_prime_exclusive",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF000A"
+    },
+    {
+      "name": "three_mod_four_prime_divisor_decidable",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF000B"
+    },
+    {
+      "name": "three_mod_four_prime_divisor_bounded_search",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF000C"
+    },
+    {
+      "name": "three_mod_four_prime_divisor_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF000D"
+    },
+    {
+      "name": "euclid_three_number_successor_balance",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF000E"
+    },
+    {
+      "name": "euclid_three_progression_prime_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF000F"
+    },
+    {
+      "name": "euclid_three_common_multiple_exclusion",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0010"
+    },
+    {
+      "name": "euclid_three_prime_divisor_exceeds_bound",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0011"
+    },
+    {
+      "name": "infinitely_many_primes_three_mod_four",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "TF0012"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 140702,
+    "path": "book/_static/constructive-milestone-closure-explorer/primes-three-mod-four/api/corpus.json",
+    "sha256": "33b5d6b7391059c7bbaf844bf2e162de00c403205ad623cc407bfdcb22fdf6a2"
+  },
+  "source_corpus_fields": {
+    "alpha_first_enrolled_version": "v23"
+  },
+  "source_family_fields": {
+    "alpha_first_enrolled_version": "v23"
+  },
+  "source_manifest": {
+    "bytes": 40557,
+    "path": "book/_static/constructive-milestone-closure-explorer/manifest.json",
+    "sha256": "a3b49ffb8d7147fabc12a32a195370ad550047c6bb54137c0b3470c96b91bf15"
+  },
+  "source_manifest_fields": {
+    "alpha_first_enrolled_version": "v23",
+    "first_enrollment_catalog_sha256": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+  }
+}

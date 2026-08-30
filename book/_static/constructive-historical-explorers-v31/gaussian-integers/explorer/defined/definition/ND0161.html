@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0161 — ZPairRep(z,ap,an,bp,bn) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/gaussian-integers/explorer/defined/definition/ND0161.html"><meta name="proof-publication-scope" content="alpha-v31-historical-first-admission-preserved"></head>
+<body class="pa-defined-proof-site" data-family="gaussian-integers"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=6c9ebfb3c37e">Definitions and proofs</a>
+       <a href="../graph.html?v=6c9ebfb3c37e">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=ZPairRep&amp;v=6c9ebfb3c37e">Global definition: ZPairRep</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=6c9ebfb3c37e">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=6c9ebfb3c37e">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=6c9ebfb3c37e">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G081" href="../../../../grand-campaign/?view=goal&amp;focus=G081&amp;v=6c9ebfb3c37e">G081 milestone</a></nav>
+  <p class="pd-tag">ND0161</p><h1>ZPairRep(z,ap,an,bp,bn)</h1>
+  <p>The shared pair code represents the two supplied signed differences, with arbitrary nonnormalized representatives allowed.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><p class="pa-callout pd-callout" data-current-release="v31">Current library: Alpha v31, 3,796 checked-use theorems; Stable remains 432. Historical first admissions, original proof editions, and non-admitted aliases are preserved. <a href="../../../api/first-admission.json?v=6c9ebfb3c37e">Exact original first-admission records</a>.</p><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ ge_representation_real_code_lowerlayer. ∃ ge_representation_imaginary_code_lowerlayer. z = (ge_representation_real_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) · S (ge_representation_real_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) + (ge_representation_imaginary_code_lowerlayer + ge_representation_imaginary_code_lowerlayer) ∧ (<a class="pd-definition-ref" data-definition="ND0143" href="ND0143.html?v=6c9ebfb3c37e">SignedBalance(ge_representation_real_code_lowerlayer,ap,an)</a> ∧ <a class="pd-definition-ref" data-definition="ND0143" href="ND0143.html?v=6c9ebfb3c37e">SignedBalance(ge_representation_imaginary_code_lowerlayer,bp,bn)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists ge_representation_real_code_lowerlayer ge_representation_imaginary_code_lowerlayer. (((z) = ((ge_representation_real_code_lowerlayer) + (ge_representation_imaginary_code_lowerlayer)) * S ((ge_representation_real_code_lowerlayer) + (ge_representation_imaginary_code_lowerlayer)) + ((ge_representation_imaginary_code_lowerlayer) + (ge_representation_imaginary_code_lowerlayer))) /\ ((exists ge_balance_positive_lowerlayerreal ge_balance_negative_lowerlayerreal. (((((ge_representation_real_code_lowerlayer) = 2 * (ge_balance_positive_lowerlayerreal) /\ (ge_balance_negative_lowerlayerreal) = 0) \/ exists ge_signed_half_lowerlayerrealdecode. (((ge_representation_real_code_lowerlayer) = 2 * ge_signed_half_lowerlayerrealdecode + 1 /\ (ge_balance_positive_lowerlayerreal) = 0) /\ (ge_balance_negative_lowerlayerreal) = S ge_signed_half_lowerlayerrealdecode))) /\ ((ap) + ge_balance_negative_lowerlayerreal = (an) + ge_balance_positive_lowerlayerreal))) /\ (exists ge_balance_positive_lowerlayerimaginary ge_balance_negative_lowerlayerimaginary. (((((ge_representation_imaginary_code_lowerlayer) = 2 * (ge_balance_positive_lowerlayerimaginary) /\ (ge_balance_negative_lowerlayerimaginary) = 0) \/ exists ge_signed_half_lowerlayerimaginarydecode. (((ge_representation_imaginary_code_lowerlayer) = 2 * ge_signed_half_lowerlayerimaginarydecode + 1 /\ (ge_balance_positive_lowerlayerimaginary) = 0) /\ (ge_balance_negative_lowerlayerimaginary) = S ge_signed_half_lowerlayerimaginarydecode))) /\ ((bp) + ge_balance_negative_lowerlayerimaginary = (bn) + ge_balance_positive_lowerlayerimaginary)))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0143.html?v=6c9ebfb3c37e">SignedBalance(z,p,n)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0164.html?v=6c9ebfb3c37e">GNorm(z,n)</a><a class="pd-chip" href="ND0165.html?v=6c9ebfb3c37e">ZPairAdd(a,b,c)</a><a class="pd-chip" href="ND0166.html?v=6c9ebfb3c37e">GMul(a,b,c)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/GI003F.html?v=6c9ebfb3c37e">GI003F · gaussian_representation_exists</a><a class="pd-chip" href="../tag/GI0040.html?v=6c9ebfb3c37e">GI0040 · gaussian_representation_functional</a><a class="pd-chip" href="../tag/GI0041.html?v=6c9ebfb3c37e">GI0041 · gaussian_representation_integer_transport</a><a class="pd-chip" href="../tag/GI0042.html?v=6c9ebfb3c37e">GI0042 · gaussian_representation_equal</a><a class="pd-chip" href="../tag/GI0043.html?v=6c9ebfb3c37e">GI0043 · gaussian_representation_decode</a><a class="pd-chip" href="../tag/GI0044.html?v=6c9ebfb3c37e">GI0044 · gaussian_decode_representation</a><a class="pd-chip" href="../tag/GI0045.html?v=6c9ebfb3c37e">GI0045 · gaussian_representation_is_gaussian</a><a class="pd-chip" href="../tag/GI0047.html?v=6c9ebfb3c37e">GI0047 · gaussian_representation_zero_iff</a><a class="pd-chip" href="../tag/GI004D.html?v=6c9ebfb3c37e">GI004D · gaussian_norm_of_representation</a><a class="pd-chip" href="../tag/GI004E.html?v=6c9ebfb3c37e">GI004E · gaussian_norm_for_representation</a><a class="pd-chip" href="../tag/GI0053.html?v=6c9ebfb3c37e">GI0053 · gaussian_add_of_representations</a><a class="pd-chip" href="../tag/GI0054.html?v=6c9ebfb3c37e">GI0054 · gaussian_add_for_representations</a><a class="pd-chip" href="../tag/GI0055.html?v=6c9ebfb3c37e">GI0055 · gaussian_add_exists</a><a class="pd-chip" href="../tag/GI0057.html?v=6c9ebfb3c37e">GI0057 · gaussian_multiply_of_representations</a><a class="pd-chip" href="../tag/GI0058.html?v=6c9ebfb3c37e">GI0058 · gaussian_multiply_for_representations</a><a class="pd-chip" href="../tag/GI0059.html?v=6c9ebfb3c37e">GI0059 · gaussian_multiply_exists</a><a class="pd-chip" href="../tag/GI005C.html?v=6c9ebfb3c37e">GI005C · gaussian_division_remainder_of_representations</a><a class="pd-chip" href="../tag/GI005D.html?v=6c9ebfb3c37e">GI005D · gaussian_euclidean_division_exists</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>5</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0161.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>484f8588e2d9b5e92fda7c8fda43f480f34dcfae16a7ad0137fc32cd8cf8eeb8</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-completed-lower-explorer-v31/", "/constructive-historical-explorers-v31/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v31", "bertrand-postulate": "constructive-historical-explorers-v31", "bertrand-prime-chains": "constructive-historical-explorers-v31", "best-approximation": "constructive-historical-explorers-v31", "binary-digit-extraction": "constructive-historical-explorers-v31", "binary-length": "constructive-historical-explorers-v31", "binary-modular-execution": "constructive-historical-explorers-v31", "binary-modular-exponentiation": "constructive-historical-explorers-v31", "cauchy-davenport": "constructive-historical-explorers-v31", "continued-fractions": "constructive-historical-explorers-v31", "cornacchia": "constructive-historical-explorers-v31", "dirichlet-convolution": "constructive-completed-lower-explorer-v31", "dirichlet-fubini": "constructive-completed-lower-explorer-v31", "dirichlet-inverses": "constructive-completed-lower-explorer-v31", "dirichlet-signed-units": "constructive-completed-lower-explorer-v31", "dirichlet-triangular": "constructive-completed-lower-explorer-v31", "dirichlet-units": "constructive-completed-lower-explorer-v31", "divisor-involutions": "constructive-completed-lower-explorer-v31", "divisor-sums": "constructive-completed-lower-explorer-v31", "eisenstein-integers": "constructive-historical-explorers-v31", "euclidean-complexity": "constructive-historical-explorers-v31", "euclidean-gcd-transport": "constructive-historical-explorers-v31", "euclidean-logarithmic-bound": "constructive-historical-explorers-v31", "euler-units": "constructive-completed-lower-explorer-v31", "exponent-lifting": "constructive-historical-explorers-v31", "finite-support": "constructive-completed-lower-explorer-v31", "four-squares": "constructive-historical-explorers-v31", "gaussian-factorization": "constructive-historical-explorers-v31", "gaussian-integers": "constructive-historical-explorers-v31", "generalized-crt": "constructive-historical-explorers-v31", "generalized-crt-compatibility": "constructive-historical-explorers-v31", "generalized-crt-fold": "constructive-historical-explorers-v31", "hensel-lifting": "constructive-historical-explorers-v31", "integer-linear-algebra": "constructive-historical-explorers-v31", "kummer": "constructive-historical-explorers-v31", "lucas": "constructive-historical-explorers-v31", "matrix-coded-products": "constructive-historical-explorers-v31", "matrix-cofactor-expansion": "constructive-historical-explorers-v31", "matrix-determinant-minors": "constructive-historical-explorers-v31", "matrix-dot-product": "constructive-historical-explorers-v31", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v31", "mobius-inversion": "constructive-completed-lower-explorer-v31", "mobius-values": "constructive-completed-lower-explorer-v31", "multinomial-kummer": "constructive-historical-explorers-v31", "polynomial-hensel": "constructive-historical-explorers-v31", "polynomial-horner": "constructive-historical-explorers-v31", "polynomial-products": "constructive-completed-lower-explorer-v31", "polynomial-taylor-hensel": "constructive-historical-explorers-v31", "prime-count-chebyshev": "constructive-historical-explorers-v31", "prime-enumeration": "constructive-historical-explorers-v31", "prime-field-polynomials": "constructive-completed-lower-explorer-v31", "prime-fields": "constructive-completed-lower-explorer-v31", "prime-valuation-support": "constructive-historical-explorers-v31", "primes-three-mod-four": "constructive-historical-explorers-v31", "pythagorean-fermat-four": "constructive-historical-explorers-v31", "quadratic-reciprocity": "constructive-historical-explorers-v31", "rectangular-sums": "constructive-completed-lower-explorer-v31", "signed-sums": "constructive-completed-lower-explorer-v31", "signed-weighted-sums": "constructive-completed-lower-explorer-v31", "squarefree-kernels": "constructive-historical-explorers-v31", "supplementary-laws": "constructive-historical-explorers-v31", "totient-products": "constructive-historical-explorers-v31", "two-squares": "constructive-historical-explorers-v31"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-completed-lower-campaign-v31/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Möbius divisor cancellation — Proof Explorer</title>
+  <meta name="description" content="Construct a prime-factor toggle and prove cancellation of the actual Möbius divisor sum, including the separate value at one and unrestricted input-table value at zero.">
+  <meta property="og:title" content="Möbius divisor cancellation — Proof Explorer">
+  <meta property="og:description" content="Construct a prime-factor toggle and prove cancellation of the actual Möbius divisor sum, including the separate value at one and unrestricted input-table value at zero.">
+  <meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/">
+  <link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/mobius-divisor-cancellation/">
+  <link rel="stylesheet" href="../assets/proofs.css?v=6c9ebfb3c37e">
+<meta name="proof-publication-scope" content="alpha-v31-checked-use"></head>
+<body class="family-page mobius-divisor-cancellation-page">
+  <header class="family-hero">
+    <div class="shell">
+      <nav class="crumbs"><a href="../?v=6c9ebfb3c37e">Proof explorers</a><span>/</span><a data-campaign-link="global" href="../grand-campaign/?v=6c9ebfb3c37e">Grand campaign</a><span>/</span><a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F01&amp;v=6c9ebfb3c37e">Family atlas</a><span>/</span><span>Möbius divisor cancellation</span></nav>
+      <p class="eyebrow">Constructed prime toggles · signed anti-invariance · the unit boundary · Constructive arithmetic</p>
+      <h1>Möbius divisor cancellation</h1>
+      <p class="formula">n≠0 ⇒ ∃M z. MobiusTable(n,M) ∧ DivisorSum(M,n,z) ∧ ((n=1 ∧ z=2) ∨ (n≠1 ∧ z=0))</p>
+      <p class="lede">Construct a prime-factor toggle and prove cancellation of the actual Möbius divisor sum, including the separate value at one and unrestricted input-table value at zero.</p>
+      <div class="hero-actions">
+        <a class="primary-action" href="explorer/defined/graph.html?target=MC001C&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus&amp;v=6c9ebfb3c37e">Open the definition-aware map</a>
+        <a class="secondary-action" href="explorer/defined/tag/MC001C.html?v=6c9ebfb3c37e">Read the final theorem</a>
+        <a class="secondary-action" data-campaign-link="milestone" href="../grand-campaign/?view=goal&amp;focus=G007&amp;v=6c9ebfb3c37e">See campaign milestone G007</a>
+      </div>
+    </div>
+  </header>
+  <main class="shell family-main">
+    <section class="view-grid">
+      <article class="view-card featured">
+        <p class="card-kicker">Recommended</p>
+        <h2>Defined mathematical notation</h2>
+        <p>Browse 39 linked conservative definitions and 28 independently checked theorems without losing their exact first-order expansions.</p>
+        <a href="explorer/defined/?v=6c9ebfb3c37e">Browse definitions and theorems →</a>
+        <p><a href="explorer/defined/graph.html?target=MC001C&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=6c9ebfb3c37e">Inspect the local definition DAG →</a></p>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Exact certificate</p>
+        <h2>Fully expanded arithmetic</h2>
+        <p>Inspect all 1569 native tactic lines and 99 actual proof prerequisites with every definition fully expanded.</p>
+        <a href="explorer/?v=6c9ebfb3c37e">Open the exact edition →</a>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Focused route</p>
+        <h2>Final dependency cone</h2>
+        <p>Start at theorem <code>MC001C</code> and follow only the lemmas and conservative definitions supporting mobius_divisor_sum_cancellation_on_positive_values.</p>
+        <a href="explorer/defined/graph.html?target=MC001C&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus&amp;v=6c9ebfb3c37e">Trace prerequisites →</a>
+      </article>
+    </section>
+    <section class="release-note"><strong>Zoom between mathematical scales:</strong> <a data-campaign-link="global" href="../grand-campaign/?v=6c9ebfb3c37e">complete research atlas</a> → <a data-campaign-link="domain" href="../grand-campaign/?view=domain&amp;focus=D01&amp;v=6c9ebfb3c37e">research domain</a> → <a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F01&amp;v=6c9ebfb3c37e">proof family</a> → <a data-campaign-link="goal" data-campaign-goal="G007" href="../grand-campaign/?view=goal&amp;focus=G007&amp;v=6c9ebfb3c37e">G007 milestone</a> → <a href="explorer/defined/graph.html?target=MC001C&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=6c9ebfb3c37e">theorem and definition dependencies</a>.</section>
+    <section class="release-note"><strong>Major independently established statements:</strong> <a href="explorer/defined/tag/MC001A.html?v=6c9ebfb3c37e"><code>MC001A</code> mobius_divisor_sum_cancellation</a> · <a href="explorer/defined/tag/MC001B.html?v=6c9ebfb3c37e"><code>MC001B</code> mobius_divisor_sum_cancellation_exists</a> · <a href="explorer/defined/tag/MC001C.html?v=6c9ebfb3c37e"><code>MC001C</code> mobius_divisor_sum_cancellation_on_positive_values</a>.</section>
+    <section class="release-note"><strong>Independently verified Alpha v31 checked-use theorem family:</strong> 28 dependency-curried kernel-checked theorem bodies · 99 proof prerequisites · 39 linked definitions · 71 definition-dependency arrows · 1569 exact tactic lines · first admitted v31 · not Stable. The unchanged intuitionistic kernel and separately compiled Lean verifier independently accept all 377 bundle nodes; SHA-256 <code>f858f6bd9e09d6ec33b48689b385222153ad9d326eccb8239ac5776b39955542</code>.</section>
+    <section class="release-note"><strong>Exact mathematical boundary:</strong> The input n is positive. Signed code 2 denotes +1, so the actual sum is +1 at n=1 and zero for n&gt;1. The positive-values result permits arbitrary F(0), which the divisor mask excludes. Prime-square multiples contribute zero. Full G007 inversion is established in its separate family.</section>
+  </main>
+<script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-completed-lower-explorer-v31/", "/constructive-historical-explorers-v31/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v31", "bertrand-postulate": "constructive-historical-explorers-v31", "bertrand-prime-chains": "constructive-historical-explorers-v31", "best-approximation": "constructive-historical-explorers-v31", "binary-digit-extraction": "constructive-historical-explorers-v31", "binary-length": "constructive-historical-explorers-v31", "binary-modular-execution": "constructive-historical-explorers-v31", "binary-modular-exponentiation": "constructive-historical-explorers-v31", "cauchy-davenport": "constructive-historical-explorers-v31", "continued-fractions": "constructive-historical-explorers-v31", "cornacchia": "constructive-historical-explorers-v31", "dirichlet-convolution": "constructive-completed-lower-explorer-v31", "dirichlet-fubini": "constructive-completed-lower-explorer-v31", "dirichlet-inverses": "constructive-completed-lower-explorer-v31", "dirichlet-signed-units": "constructive-completed-lower-explorer-v31", "dirichlet-triangular": "constructive-completed-lower-explorer-v31", "dirichlet-units": "constructive-completed-lower-explorer-v31", "divisor-involutions": "constructive-completed-lower-explorer-v31", "divisor-sums": "constructive-completed-lower-explorer-v31", "eisenstein-integers": "constructive-historical-explorers-v31", "euclidean-complexity": "constructive-historical-explorers-v31", "euclidean-gcd-transport": "constructive-historical-explorers-v31", "euclidean-logarithmic-bound": "constructive-historical-explorers-v31", "euler-units": "constructive-completed-lower-explorer-v31", "exponent-lifting": "constructive-historical-explorers-v31", "finite-support": "constructive-completed-lower-explorer-v31", "four-squares": "constructive-historical-explorers-v31", "gaussian-factorization": "constructive-historical-explorers-v31", "gaussian-integers": "constructive-historical-explorers-v31", "generalized-crt": "constructive-historical-explorers-v31", "generalized-crt-compatibility": "constructive-historical-explorers-v31", "generalized-crt-fold": "constructive-historical-explorers-v31", "hensel-lifting": "constructive-historical-explorers-v31", "integer-linear-algebra": "constructive-historical-explorers-v31", "kummer": "constructive-historical-explorers-v31", "lucas": "constructive-historical-explorers-v31", "matrix-coded-products": "constructive-historical-explorers-v31", "matrix-cofactor-expansion": "constructive-historical-explorers-v31", "matrix-determinant-minors": "constructive-historical-explorers-v31", "matrix-dot-product": "constructive-historical-explorers-v31", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v31", "mobius-inversion": "constructive-completed-lower-explorer-v31", "mobius-values": "constructive-completed-lower-explorer-v31", "multinomial-kummer": "constructive-historical-explorers-v31", "polynomial-hensel": "constructive-historical-explorers-v31", "polynomial-horner": "constructive-historical-explorers-v31", "polynomial-products": "constructive-completed-lower-explorer-v31", "polynomial-taylor-hensel": "constructive-historical-explorers-v31", "prime-count-chebyshev": "constructive-historical-explorers-v31", "prime-enumeration": "constructive-historical-explorers-v31", "prime-field-polynomials": "constructive-completed-lower-explorer-v31", "prime-fields": "constructive-completed-lower-explorer-v31", "prime-valuation-support": "constructive-historical-explorers-v31", "primes-three-mod-four": "constructive-historical-explorers-v31", "pythagorean-fermat-four": "constructive-historical-explorers-v31", "quadratic-reciprocity": "constructive-historical-explorers-v31", "rectangular-sums": "constructive-completed-lower-explorer-v31", "signed-sums": "constructive-completed-lower-explorer-v31", "signed-weighted-sums": "constructive-completed-lower-explorer-v31", "squarefree-kernels": "constructive-historical-explorers-v31", "supplementary-laws": "constructive-historical-explorers-v31", "totient-products": "constructive-historical-explorers-v31", "two-squares": "constructive-historical-explorers-v31"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-completed-lower-campaign-v31/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body>
+</html>

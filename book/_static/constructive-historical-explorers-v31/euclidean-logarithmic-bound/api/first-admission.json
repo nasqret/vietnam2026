@@ -1,0 +1,267 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v23": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+  },
+  "per_theorem": [
+    {
+      "name": "euclidean_log_double_monotone",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0001"
+    },
+    {
+      "name": "euclidean_log_strict_half_cancel",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0002"
+    },
+    {
+      "name": "euclidean_log_halving_power_drop",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0003"
+    },
+    {
+      "name": "euclidean_log_double_successor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0004"
+    },
+    {
+      "name": "euclidean_log_budget_weaken",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0005"
+    },
+    {
+      "name": "euclidean_log_budget_extend",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0006"
+    },
+    {
+      "name": "euclidean_log_budget_extend_twice",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0007"
+    },
+    {
+      "name": "euclidean_log_budget_zero_divisor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0008"
+    },
+    {
+      "name": "euclidean_log_budget_successor_power",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0009"
+    },
+    {
+      "name": "euclidean_log_zero_below_power",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL000A"
+    },
+    {
+      "name": "euclidean_log_power_zero_divisor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL000B"
+    },
+    {
+      "name": "euclidean_log_trace_below_power",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL000C"
+    },
+    {
+      "name": "euclidean_log_binary_length_upper_power",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL000D"
+    },
+    {
+      "name": "euclidean_log_trace_bound",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL000E"
+    },
+    {
+      "name": "euclidean_log_execution_strong",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL000F"
+    },
+    {
+      "name": "euclidean_gcd_execution_logarithmic_bound",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0010"
+    },
+    {
+      "name": "euclidean_gcd_execution_logarithmic_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v23",
+      "tag": "EL0011"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 466758,
+    "path": "book/_static/constructive-milestone-closure-explorer/euclidean-logarithmic-bound/api/corpus.json",
+    "sha256": "27735e2894516389fc912a168004cab755d61f6ba26da62f4c633dceadb4fd38"
+  },
+  "source_corpus_fields": {
+    "alpha_first_enrolled_version": "v23"
+  },
+  "source_family_fields": {
+    "alpha_first_enrolled_version": "v23"
+  },
+  "source_manifest": {
+    "bytes": 40557,
+    "path": "book/_static/constructive-milestone-closure-explorer/manifest.json",
+    "sha256": "a3b49ffb8d7147fabc12a32a195370ad550047c6bb54137c0b3470c96b91bf15"
+  },
+  "source_manifest_fields": {
+    "alpha_first_enrolled_version": "v23",
+    "first_enrollment_catalog_sha256": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+  }
+}

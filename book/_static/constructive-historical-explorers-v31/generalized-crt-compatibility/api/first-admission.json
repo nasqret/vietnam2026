@@ -1,0 +1,366 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v25": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+  },
+  "per_theorem": [
+    {
+      "name": "crt_mod_one_universal",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0001"
+    },
+    {
+      "name": "crt_coprime_divisor_pair",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0002"
+    },
+    {
+      "name": "crt_pairwise_compatible_prefix_empty",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0003"
+    },
+    {
+      "name": "crt_pairwise_compatible_prefix_drop_last",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0004"
+    },
+    {
+      "name": "crt_prefix_solution_implies_pairwise_compatible",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0005"
+    },
+    {
+      "name": "crt_pairwise_compatible_prefix_last",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0006"
+    },
+    {
+      "name": "crt_merge_compatible_prefix_drop_last",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0007"
+    },
+    {
+      "name": "generalized_binary_crt_merge_step",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0008"
+    },
+    {
+      "name": "crt_merge_compatible_prefix_solution_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0009"
+    },
+    {
+      "name": "crt_positive_prefix_lcm_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC000A"
+    },
+    {
+      "name": "crt_prefix_zero_lcm_solution_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC000B"
+    },
+    {
+      "name": "crt_merge_compatible_prefix_canonical_exists_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC000C"
+    },
+    {
+      "name": "crt_balanced_bezout_scale",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC000D"
+    },
+    {
+      "name": "crt_is_gcd_scale",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC000E"
+    },
+    {
+      "name": "crt_is_gcd_coprime_factor_remove",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC000F"
+    },
+    {
+      "name": "crt_product_witness",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0010"
+    },
+    {
+      "name": "crt_is_gcd_coprime_product",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0011"
+    },
+    {
+      "name": "crt_lcm_gcd_cofactor_product",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0012"
+    },
+    {
+      "name": "crt_gcd_scaled_coprime_component",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0013"
+    },
+    {
+      "name": "crt_gcd_monotone_under_divisibility",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0014"
+    },
+    {
+      "name": "crt_gcd_lcm_distributes_divisibility",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0015"
+    },
+    {
+      "name": "crt_merge_compatible_prefix_implies_pairwise_compatible",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0016"
+    },
+    {
+      "name": "crt_pairwise_compatible_dominating_last_solution",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0017"
+    },
+    {
+      "name": "crt_pairwise_compatible_dominating_last_canonical_exists_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v25",
+      "tag": "GC0018"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 342752,
+    "path": "book/_static/constructive-breakthrough-layer-explorer/generalized-crt-compatibility/api/corpus.json",
+    "sha256": "611421000a0b3cd08680d45e631e68601437966553b2b6871fb5a4ed98c202e6"
+  },
+  "source_corpus_fields": {
+    "alpha_first_enrolled_version": "v25",
+    "alpha_first_enrollment_catalog_sha256": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+  },
+  "source_family_fields": {
+    "alpha_first_enrolled_version": "v25"
+  },
+  "source_manifest": {
+    "bytes": 46166,
+    "path": "book/_static/constructive-breakthrough-layer-explorer/manifest.json",
+    "sha256": "83186a2fee2108f091192f1eb46cd7b4e4eb0082268cbd7b39870c4da224e1f6"
+  },
+  "source_manifest_fields": {
+    "alpha_first_enrolled_version": "v25",
+    "first_enrollment_catalog_sha256": "75fa146ac19bf6aa5f799265b6fc031b725c1e1b2e044854da91b31898d5876e"
+  }
+}

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PC0022 — binary_split_successor_le_double_successor — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/prime-count-chebyshev/explorer/defined/tag/PC0022.html"><meta name="proof-publication-scope" content="alpha-v31-historical-first-admission-preserved"></head>
+<body class="pa-defined-proof-site" data-family="prime-count-chebyshev"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=6c9ebfb3c37e">Definitions and proofs</a>
+       <a href="../../tag/PC0022.html?v=6c9ebfb3c37e">Exact original proof</a>
+       <a href="../graph.html?target=PC0022&amp;v=6c9ebfb3c37e">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=6c9ebfb3c37e">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=6c9ebfb3c37e">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F03&amp;v=6c9ebfb3c37e">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G027" href="../../../../grand-campaign/?view=goal&amp;focus=G027&amp;v=6c9ebfb3c37e">G027 milestone</a></nav>
+  <p class="pd-tag">PC0022</p><h1>binary_split_successor_le_double_successor</h1>
+  <p>The successor of a binary-split exponent is at most twice the successor of its half.</p><p class="pd-status">Alpha v31 checked-use · first admitted v27 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><p class="pa-callout pd-callout" data-current-release="v31">Current library: Alpha v31, 3,796 checked-use theorems; Stable remains 432. Historical first admissions, original proof editions, and non-admitted aliases are preserved. <a href="../../../api/first-admission.json?v=6c9ebfb3c37e">Exact original first-admission records</a>.</p><div class="pd-proof-panel">
+  <p class="pd-callout">These are the exact finite integer inequalities with constant 8, for every N≥2. The proof uses constructive binomial and primorial infrastructure; it does not assume logarithms, asymptotic estimates, the prime number theorem, or a factorization oracle.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ e. ∀ h. ∀ d. ∀ ell. d = 0 ∨ d = 1 → e = h + h + d → ell = S e → <a class="pd-definition-ref" data-definition="PD0001" href="../definition/PD0001.html?v=6c9ebfb3c37e">Le(ell,S h + S h)</a></code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><a class="pd-chip" href="../definition/PD0001.html?v=6c9ebfb3c37e">Le(a,b) · 1</a></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">euclidean_log_double_successor · checked external prerequisite</span><span class="pd-chip pd-external">le_succ_self · checked external prerequisite</span><span class="pd-chip pd-external">le_refl · checked external prerequisite</span></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall e h d ell. (d = 0 \/ d = 1) -&gt; e = (h + h) + d -&gt; ell = S e -&gt; (exists pc_le_half_successor_result. pc_le_half_successor_result + (ell) = (S h + S h))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 26 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro e</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro h</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro d</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro ell</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>intro hd</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>intro he</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>intro hl</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>have hdouble : S h + S h = S (S (h + h))</code></li><li class="pd-proof-line" id="L9" data-line="9"><a class="pd-line-number" href="#L9">0009</a><code>specialize euclidean_log_double_successor h</code></li><li class="pd-proof-line" id="L10" data-line="10"><a class="pd-line-number" href="#L10">0010</a><code>apply euclidean_log_double_successor</code></li><li class="pd-proof-line" id="L11" data-line="11"><a class="pd-line-number" href="#L11">0011</a><code>rewrite hl</code></li><li class="pd-proof-line" id="L12" data-line="12"><a class="pd-line-number" href="#L12">0012</a><code>rewrite he</code></li><li class="pd-proof-line" id="L13" data-line="13"><a class="pd-line-number" href="#L13">0013</a><code>rewrite hdouble</code></li><li class="pd-proof-line" id="L14" data-line="14"><a class="pd-line-number" href="#L14">0014</a><code>cases hd</code></li><li class="pd-proof-line" id="L15" data-line="15"><a class="pd-line-number" href="#L15">0015</a><code>rewrite hd_left</code></li><li class="pd-proof-line" id="L16" data-line="16"><a class="pd-line-number" href="#L16">0016</a><code>have hz : (h + h) + 0 = h + h</code></li><li class="pd-proof-line" id="L17" data-line="17"><a class="pd-line-number" href="#L17">0017</a><code>apply PA3</code></li><li class="pd-proof-line" id="L18" data-line="18"><a class="pd-line-number" href="#L18">0018</a><code>rewrite hz</code></li><li class="pd-proof-line" id="L19" data-line="19"><a class="pd-line-number" href="#L19">0019</a><code>specialize le_succ_self (S (h + h))</code></li><li class="pd-proof-line" id="L20" data-line="20"><a class="pd-line-number" href="#L20">0020</a><code>apply le_succ_self</code></li><li class="pd-proof-line" id="L21" data-line="21"><a class="pd-line-number" href="#L21">0021</a><code>rewrite hd_right</code></li><li class="pd-proof-line" id="L22" data-line="22"><a class="pd-line-number" href="#L22">0022</a><code>have hone : S ((h + h) + 1) = S (S (h + h))</code></li><li class="pd-proof-line" id="L23" data-line="23"><a class="pd-line-number" href="#L23">0023</a><code>simp</code></li><li class="pd-proof-line" id="L24" data-line="24"><a class="pd-line-number" href="#L24">0024</a><code>rewrite hone</code></li><li class="pd-proof-line" id="L25" data-line="25"><a class="pd-line-number" href="#L25">0025</a><code>specialize le_refl (S (S (h + h)))</code></li><li class="pd-proof-line" id="L26" data-line="26"><a class="pd-line-number" href="#L26">0026</a><code>apply le_refl</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v30 checked use</dd><dt>First admission</dt><dd>Alpha v27</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>1099 / 1224</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 1224 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>48 / 22</dd>
+      <dt>Statement SHA-256</dt><dd><code>effa7b205fae4e9d39734c554d3192ba5b9e08d19b2ebe51cda98439e97462d3</code></dd>
+      <dt>Script SHA-256</dt><dd><code>73781d6b316e5da4357a5fd6e43d52731c01e7dff0c8237b1424c42342ed66c4</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.prime_count_chebyshev_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-completed-lower-explorer-v31/", "/constructive-historical-explorers-v31/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v31", "bertrand-postulate": "constructive-historical-explorers-v31", "bertrand-prime-chains": "constructive-historical-explorers-v31", "best-approximation": "constructive-historical-explorers-v31", "binary-digit-extraction": "constructive-historical-explorers-v31", "binary-length": "constructive-historical-explorers-v31", "binary-modular-execution": "constructive-historical-explorers-v31", "binary-modular-exponentiation": "constructive-historical-explorers-v31", "cauchy-davenport": "constructive-historical-explorers-v31", "continued-fractions": "constructive-historical-explorers-v31", "cornacchia": "constructive-historical-explorers-v31", "dirichlet-convolution": "constructive-completed-lower-explorer-v31", "dirichlet-fubini": "constructive-completed-lower-explorer-v31", "dirichlet-inverses": "constructive-completed-lower-explorer-v31", "dirichlet-signed-units": "constructive-completed-lower-explorer-v31", "dirichlet-triangular": "constructive-completed-lower-explorer-v31", "dirichlet-units": "constructive-completed-lower-explorer-v31", "divisor-involutions": "constructive-completed-lower-explorer-v31", "divisor-sums": "constructive-completed-lower-explorer-v31", "eisenstein-integers": "constructive-historical-explorers-v31", "euclidean-complexity": "constructive-historical-explorers-v31", "euclidean-gcd-transport": "constructive-historical-explorers-v31", "euclidean-logarithmic-bound": "constructive-historical-explorers-v31", "euler-units": "constructive-completed-lower-explorer-v31", "exponent-lifting": "constructive-historical-explorers-v31", "finite-support": "constructive-completed-lower-explorer-v31", "four-squares": "constructive-historical-explorers-v31", "gaussian-factorization": "constructive-historical-explorers-v31", "gaussian-integers": "constructive-historical-explorers-v31", "generalized-crt": "constructive-historical-explorers-v31", "generalized-crt-compatibility": "constructive-historical-explorers-v31", "generalized-crt-fold": "constructive-historical-explorers-v31", "hensel-lifting": "constructive-historical-explorers-v31", "integer-linear-algebra": "constructive-historical-explorers-v31", "kummer": "constructive-historical-explorers-v31", "lucas": "constructive-historical-explorers-v31", "matrix-coded-products": "constructive-historical-explorers-v31", "matrix-cofactor-expansion": "constructive-historical-explorers-v31", "matrix-determinant-minors": "constructive-historical-explorers-v31", "matrix-dot-product": "constructive-historical-explorers-v31", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v31", "mobius-inversion": "constructive-completed-lower-explorer-v31", "mobius-values": "constructive-completed-lower-explorer-v31", "multinomial-kummer": "constructive-historical-explorers-v31", "polynomial-hensel": "constructive-historical-explorers-v31", "polynomial-horner": "constructive-historical-explorers-v31", "polynomial-products": "constructive-completed-lower-explorer-v31", "polynomial-taylor-hensel": "constructive-historical-explorers-v31", "prime-count-chebyshev": "constructive-historical-explorers-v31", "prime-enumeration": "constructive-historical-explorers-v31", "prime-field-polynomials": "constructive-completed-lower-explorer-v31", "prime-fields": "constructive-completed-lower-explorer-v31", "prime-valuation-support": "constructive-historical-explorers-v31", "primes-three-mod-four": "constructive-historical-explorers-v31", "pythagorean-fermat-four": "constructive-historical-explorers-v31", "quadratic-reciprocity": "constructive-historical-explorers-v31", "rectangular-sums": "constructive-completed-lower-explorer-v31", "signed-sums": "constructive-completed-lower-explorer-v31", "signed-weighted-sums": "constructive-completed-lower-explorer-v31", "squarefree-kernels": "constructive-historical-explorers-v31", "supplementary-laws": "constructive-historical-explorers-v31", "totient-products": "constructive-historical-explorers-v31", "two-squares": "constructive-historical-explorers-v31"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-completed-lower-campaign-v31/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body>
+</html>

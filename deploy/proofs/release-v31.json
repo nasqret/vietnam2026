@@ -1,0 +1,53 @@
+{
+  "G007_finite_signed_mobius_inversion": "proved",
+  "G009_multiplicative_closure": "open",
+  "G091_general_prime_power_fields": "open",
+  "alpha_version": "v31",
+  "atlas": {
+    "campaign.json": {
+      "bytes": 604401,
+      "sha256": "dbf0c778d26c82b7495290e9dfc8bc7d02de0c8a0ea3ba71d55378d609251691"
+    },
+    "dag-audit.json": {
+      "bytes": 968,
+      "sha256": "48f548cb20523c8199aa6badec80f5cfd60947622b5ae9b68625ea46c23a722b"
+    },
+    "definitions.json": {
+      "bytes": 1408443,
+      "sha256": "99edf2afdf124d89f1415e63d021da991bc43809b7c7fc0c2cc9a78cc7b88b92"
+    },
+    "index.html": {
+      "bytes": 665366,
+      "sha256": "158bbcb81028309c74f1171587b6162107e4cbd85463c62b79170f1c02a15d20"
+    }
+  },
+  "catalog_sha256": "6c9ebfb3c37e42aefab200b710f78e7693dc5826c80f053544deea41caf44aab",
+  "checked_use_count": 3796,
+  "edition_identity_sha256": "902fa75c2bf4624bb7fc5aca9a6c49b71ff8fa4499f8bdf9ce726cfd4166a5d7",
+  "family_count": 63,
+  "historical_hub_sha256": "6c4738a077b2cc147ccb4393b1f3c369274b6253553a11f2bfaa5ec9f025be6b",
+  "hub": {
+    "bytes": 80289,
+    "sha256": "7d82eafef7694aee35970a546a82542caa5045cbb79eb284fd5117ffcaae3992"
+  },
+  "new_family_count": 19,
+  "new_theorem_count": 574,
+  "purpose": "Byte-exact delivery of an already verified release; not proof or admission authority.",
+  "reader_manifests": {
+    "constructive-completed-lower-explorer-v31": {
+      "bytes": 368715,
+      "sha256": "3fd1e3ceac74d898800030bb0429198c3ec873a3c67ee41d3c06b07b8dc3f1f8"
+    },
+    "constructive-historical-explorers-v31": {
+      "bytes": 1496113,
+      "sha256": "e6805a7a4a09754c4cbaec214b4de6720e6226f609ac4f1a9ad6514cae524372"
+    }
+  },
+  "schema": "peano-lab-alpha-v31-public-delivery-v1",
+  "stable_count": 432,
+  "verification_record": {
+    "bytes": 262419,
+    "path": "research/arithmetic-library/artifacts/alpha-v31-completed-lower-receipt-v1.json",
+    "sha256": "43868e208756e869136c0f6a595919850e21354587cdd8bc2205441236c0f47f"
+  }
+}

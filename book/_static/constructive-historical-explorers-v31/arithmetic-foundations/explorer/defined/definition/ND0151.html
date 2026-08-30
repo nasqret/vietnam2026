@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0151 — PrimeFactorListPermutation(b,c,l,d,e,m,u,v) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/arithmetic-foundations/explorer/defined/definition/ND0151.html"><meta name="proof-publication-scope" content="alpha-v31-historical-first-admission-preserved"></head>
+<body class="pa-defined-proof-site" data-family="arithmetic-foundations"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=6c9ebfb3c37e">Definitions and proofs</a>
+       <a href="../graph.html?v=6c9ebfb3c37e">Interactive dependency graph</a>
+       <a data-campaign-link="definition" href="../../../../grand-campaign/?view=definition&amp;focus=PrimeFactorListPermutation&amp;v=6c9ebfb3c37e">Global definition: PrimeFactorListPermutation</a><a data-campaign-link="global" href="../../../../grand-campaign/?v=6c9ebfb3c37e">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=6c9ebfb3c37e">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F01&amp;v=6c9ebfb3c37e">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G001" href="../../../../grand-campaign/?view=goal&amp;focus=G001&amp;v=6c9ebfb3c37e">G001 milestone</a><a data-campaign-link="goal" data-campaign-goal="G002" href="../../../../grand-campaign/?view=goal&amp;focus=G002&amp;v=6c9ebfb3c37e">G002 milestone</a><a data-campaign-link="goal" data-campaign-goal="G003" href="../../../../grand-campaign/?view=goal&amp;focus=G003&amp;v=6c9ebfb3c37e">G003 milestone</a><a data-campaign-link="goal" data-campaign-goal="G004" href="../../../../grand-campaign/?view=goal&amp;focus=G004&amp;v=6c9ebfb3c37e">G004 milestone</a><a data-campaign-link="goal" data-campaign-goal="G005" href="../../../../grand-campaign/?view=goal&amp;focus=G005&amp;v=6c9ebfb3c37e">G005 milestone</a></nav>
+  <p class="pd-tag">ND0151</p><h1>PrimeFactorListPermutation(b,c,l,d,e,m,u,v)</h1>
+  <p>Equal list lengths and an actual bounded, injective, surjective beta index map matching all source and target prime occurrences, including repetitions.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><p class="pa-callout pd-callout" data-current-release="v31">Current library: Alpha v31, 3,796 checked-use theorems; Stable remains 432. Historical first admissions, original proof editions, and non-admitted aliases are preserved. <a href="../../../api/first-admission.json?v=6c9ebfb3c37e">Exact original first-admission records</a>.</p><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>l = m ∧ (<a class="pd-definition-ref" data-definition="ND0148" href="ND0148.html?v=6c9ebfb3c37e">PermutationPrefix(u,v,l)</a> ∧ <a class="pd-definition-ref" data-definition="ND0150" href="ND0150.html?v=6c9ebfb3c37e">FactorListMatching(b,c,d,e,u,v,l)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((l = m) /\ (((((forall pfp_i_lowerlayerpermutationbounded. (exists pfp_gap_lowerlayerpermutationboundedindex. pfp_gap_lowerlayerpermutationboundedindex + S (pfp_i_lowerlayerpermutationbounded) = (l)) -&gt; exists pfp_a_lowerlayerpermutationbounded. (((exists ff_h_pfp_lowerlayerpermutationboundedentry. ff_h_pfp_lowerlayerpermutationboundedentry + S (pfp_a_lowerlayerpermutationbounded) = S ((S (pfp_i_lowerlayerpermutationbounded)) * v)) /\ exists ff_q_pfp_lowerlayerpermutationboundedentry. u = ff_q_pfp_lowerlayerpermutationboundedentry * S ((S (pfp_i_lowerlayerpermutationbounded)) * v) + (pfp_a_lowerlayerpermutationbounded))) /\ (exists pfp_gap_lowerlayerpermutationboundedvalue. pfp_gap_lowerlayerpermutationboundedvalue + S (pfp_a_lowerlayerpermutationbounded) = (l))) /\ (((forall pfp_i_lowerlayerpermutationinjective pfp_j_lowerlayerpermutationinjective pfp_a_lowerlayerpermutationinjective. (exists pfp_gap_lowerlayerpermutationinjectivefirst. pfp_gap_lowerlayerpermutationinjectivefirst + S (pfp_i_lowerlayerpermutationinjective) = (l)) -&gt; (exists pfp_gap_lowerlayerpermutationinjectivesecond. pfp_gap_lowerlayerpermutationinjectivesecond + S (pfp_j_lowerlayerpermutationinjective) = (l)) -&gt; (((exists ff_h_pfp_lowerlayerpermutationinjectiveleft. ff_h_pfp_lowerlayerpermutationinjectiveleft + S (pfp_a_lowerlayerpermutationinjective) = S ((S (pfp_i_lowerlayerpermutationinjective)) * v)) /\ exists ff_q_pfp_lowerlayerpermutationinjectiveleft. u = ff_q_pfp_lowerlayerpermutationinjectiveleft * S ((S (pfp_i_lowerlayerpermutationinjective)) * v) + (pfp_a_lowerlayerpermutationinjective))) -&gt; (((exists ff_h_pfp_lowerlayerpermutationinjectiveright. ff_h_pfp_lowerlayerpermutationinjectiveright + S (pfp_a_lowerlayerpermutationinjective) = S ((S (pfp_j_lowerlayerpermutationinjective)) * v)) /\ exists ff_q_pfp_lowerlayerpermutationinjectiveright. u = ff_q_pfp_lowerlayerpermutationinjectiveright * S ((S (pfp_j_lowerlayerpermutationinjective)) * v) + (pfp_a_lowerlayerpermutationinjective))) -&gt; pfp_i_lowerlayerpermutationinjective = pfp_j_lowerlayerpermutationinjective) /\ (forall pfp_a_lowerlayerpermutationsurjective. (exists pfp_gap_lowerlayerpermutationsurjectivevalue. pfp_gap_lowerlayerpermutationsurjectivevalue + S (pfp_a_lowerlayerpermutationsurjective) = (l)) -&gt; exists pfp_i_lowerlayerpermutationsurjective. (exists pfp_gap_lowerlayerpermutationsurjectiveindex. pfp_gap_lowerlayerpermutationsurjectiveindex + S (pfp_i_lowerlayerpermutationsurjective) = (l)) /\ (((exists ff_h_pfp_lowerlayerpermutationsurjectiveentry. ff_h_pfp_lowerlayerpermutationsurjectiveentry + S (pfp_a_lowerlayerpermutationsurjective) = S ((S (pfp_i_lowerlayerpermutationsurjective)) * v)) /\ exists ff_q_pfp_lowerlayerpermutationsurjectiveentry. u = ff_q_pfp_lowerlayerpermutationsurjectiveentry * S ((S (pfp_i_lowerlayerpermutationsurjective)) * v) + (pfp_a_lowerlayerpermutationsurjective)))))))) /\ (forall pfp_i_lowerlayermatching pfp_j_lowerlayermatching pfp_a_lowerlayermatching. (exists pfp_gap_lowerlayermatchingbound. pfp_gap_lowerlayermatchingbound + S (pfp_i_lowerlayermatching) = (l)) -&gt; (((exists ff_h_pfp_lowerlayermatchingmap. ff_h_pfp_lowerlayermatchingmap + S (pfp_j_lowerlayermatching) = S ((S (pfp_i_lowerlayermatching)) * v)) /\ exists ff_q_pfp_lowerlayermatchingmap. u = ff_q_pfp_lowerlayermatchingmap * S ((S (pfp_i_lowerlayermatching)) * v) + (pfp_j_lowerlayermatching))) -&gt; (((exists ff_h_pfp_lowerlayermatchingsource. ff_h_pfp_lowerlayermatchingsource + S (pfp_a_lowerlayermatching) = S ((S (pfp_i_lowerlayermatching)) * c)) /\ exists ff_q_pfp_lowerlayermatchingsource. b = ff_q_pfp_lowerlayermatchingsource * S ((S (pfp_i_lowerlayermatching)) * c) + (pfp_a_lowerlayermatching))) -&gt; (((exists ff_h_pfp_lowerlayermatchingtarget. ff_h_pfp_lowerlayermatchingtarget + S (pfp_a_lowerlayermatching) = S ((S (pfp_j_lowerlayermatching)) * e)) /\ exists ff_q_pfp_lowerlayermatchingtarget. d = ff_q_pfp_lowerlayermatchingtarget * S ((S (pfp_j_lowerlayermatching)) * e) + (pfp_a_lowerlayermatching)))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0148.html?v=6c9ebfb3c37e">PermutationPrefix(b,c,l)</a><a class="pd-chip" href="ND0150.html?v=6c9ebfb3c37e">FactorListMatching(b,c,d,e,u,v,l)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/AF001A.html?v=6c9ebfb3c37e">AF001A · prime_factor_lists_permutation_exists</a><a class="pd-chip" href="../tag/AF001B.html?v=6c9ebfb3c37e">AF001B · prime_factorization_exists_unique_up_to_permutation</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>8</dd>
+  <dt>Topological notation layer</dt><dd>3</dd>
+  <dt>Transitive prerequisites</dt><dd>7</dd>
+  <dt>Origin</dt><dd>shared-reviewed-hygienic-conservative-definition</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0151.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>b95c09a9f16389b001fdebc556023428b7ac1a27fcb8a8e069100b95cb4edba0</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-completed-lower-explorer-v31/", "/constructive-historical-explorers-v31/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v31", "bertrand-postulate": "constructive-historical-explorers-v31", "bertrand-prime-chains": "constructive-historical-explorers-v31", "best-approximation": "constructive-historical-explorers-v31", "binary-digit-extraction": "constructive-historical-explorers-v31", "binary-length": "constructive-historical-explorers-v31", "binary-modular-execution": "constructive-historical-explorers-v31", "binary-modular-exponentiation": "constructive-historical-explorers-v31", "cauchy-davenport": "constructive-historical-explorers-v31", "continued-fractions": "constructive-historical-explorers-v31", "cornacchia": "constructive-historical-explorers-v31", "dirichlet-convolution": "constructive-completed-lower-explorer-v31", "dirichlet-fubini": "constructive-completed-lower-explorer-v31", "dirichlet-inverses": "constructive-completed-lower-explorer-v31", "dirichlet-signed-units": "constructive-completed-lower-explorer-v31", "dirichlet-triangular": "constructive-completed-lower-explorer-v31", "dirichlet-units": "constructive-completed-lower-explorer-v31", "divisor-involutions": "constructive-completed-lower-explorer-v31", "divisor-sums": "constructive-completed-lower-explorer-v31", "eisenstein-integers": "constructive-historical-explorers-v31", "euclidean-complexity": "constructive-historical-explorers-v31", "euclidean-gcd-transport": "constructive-historical-explorers-v31", "euclidean-logarithmic-bound": "constructive-historical-explorers-v31", "euler-units": "constructive-completed-lower-explorer-v31", "exponent-lifting": "constructive-historical-explorers-v31", "finite-support": "constructive-completed-lower-explorer-v31", "four-squares": "constructive-historical-explorers-v31", "gaussian-factorization": "constructive-historical-explorers-v31", "gaussian-integers": "constructive-historical-explorers-v31", "generalized-crt": "constructive-historical-explorers-v31", "generalized-crt-compatibility": "constructive-historical-explorers-v31", "generalized-crt-fold": "constructive-historical-explorers-v31", "hensel-lifting": "constructive-historical-explorers-v31", "integer-linear-algebra": "constructive-historical-explorers-v31", "kummer": "constructive-historical-explorers-v31", "lucas": "constructive-historical-explorers-v31", "matrix-coded-products": "constructive-historical-explorers-v31", "matrix-cofactor-expansion": "constructive-historical-explorers-v31", "matrix-determinant-minors": "constructive-historical-explorers-v31", "matrix-dot-product": "constructive-historical-explorers-v31", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v31", "mobius-inversion": "constructive-completed-lower-explorer-v31", "mobius-values": "constructive-completed-lower-explorer-v31", "multinomial-kummer": "constructive-historical-explorers-v31", "polynomial-hensel": "constructive-historical-explorers-v31", "polynomial-horner": "constructive-historical-explorers-v31", "polynomial-products": "constructive-completed-lower-explorer-v31", "polynomial-taylor-hensel": "constructive-historical-explorers-v31", "prime-count-chebyshev": "constructive-historical-explorers-v31", "prime-enumeration": "constructive-historical-explorers-v31", "prime-field-polynomials": "constructive-completed-lower-explorer-v31", "prime-fields": "constructive-completed-lower-explorer-v31", "prime-valuation-support": "constructive-historical-explorers-v31", "primes-three-mod-four": "constructive-historical-explorers-v31", "pythagorean-fermat-four": "constructive-historical-explorers-v31", "quadratic-reciprocity": "constructive-historical-explorers-v31", "rectangular-sums": "constructive-completed-lower-explorer-v31", "signed-sums": "constructive-completed-lower-explorer-v31", "signed-weighted-sums": "constructive-completed-lower-explorer-v31", "squarefree-kernels": "constructive-historical-explorers-v31", "supplementary-laws": "constructive-historical-explorers-v31", "totient-products": "constructive-historical-explorers-v31", "two-squares": "constructive-historical-explorers-v31"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-completed-lower-campaign-v31/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+{
+  "$id": "urn:peano-lab:bertrand-defined-graph-v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": true,
+  "properties": {
+    "edges": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "nodes": {
+      "items": {
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "path_policy": {
+      "const": "proof_dependency_edges_only"
+    },
+    "schema": {
+      "const": "peano-lab-bertrand-defined-graph-v1"
+    }
+  },
+  "required": [
+    "schema",
+    "orientation",
+    "path_policy",
+    "edition_identity_sha256",
+    "theorem_count",
+    "definition_count",
+    "proof_edge_count",
+    "definition_edge_count",
+    "definition_layer_count",
+    "definition_topological_order",
+    "theorem_definition_edge_count",
+    "notation_edge_count",
+    "nodes",
+    "edges",
+    "proof_foundations",
+    "proof_terminals",
+    "proof_layers",
+    "proof_adjacency",
+    "notation_adjacency",
+    "root_name",
+    "root_tag",
+    "explicit_graph_sha256"
+  ],
+  "title": "Bertrand proof theorem and conservative-definition graph",
+  "type": "object"
+}

@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BT00U5 — primorial_factor_choice_exists</title>
+<link rel="stylesheet" href="../assets/explorer.css">
+<script defer src="../assets/explorer.js"></script><link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/bertrand-postulate/explorer/tag/BT00U5.html"><meta name="proof-publication-scope" content="alpha-v31-historical-first-admission-preserved"></head>
+<body class="pa-proof-site" data-page="theorem"><header class="pa-proof-header pa-theorem-heading"><nav>
+<a href="../index.html?v=6c9ebfb3c37e">Explorer</a>
+<a href="../defined/tag/BT00U5.html?v=6c9ebfb3c37e">Definition-aware theorem</a>
+<a href="../defined/graph.html?target=BT00U5&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=6c9ebfb3c37e">Theorem and definition graph</a>
+<a href="../../../grand-campaign/?v=6c9ebfb3c37e">Grand campaign</a><a href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=6c9ebfb3c37e">Research domain</a><a href="../../../grand-campaign/?view=family&amp;focus=F03&amp;v=6c9ebfb3c37e">Prime-distribution family</a><a href="../../../grand-campaign/?view=goal&amp;focus=A02&amp;v=6c9ebfb3c37e">Campaign milestone</a><a href="BT00U4.html?v=6c9ebfb3c37e">← four_pow_lt_mul_central_binom</a><a href="BT00U6.html?v=6c9ebfb3c37e">primorial_factor_choice_functional →</a></nav>
+<p class="pa-tag">BT00U5</p><h1>primorial_factor_choice_exists</h1>
+<p class="pa-status-candidate">Alpha v31 checked-use theorem · independently kernel and Lean verified; not Stable</p>
+<p>Every index has its exact prime-or-one selector factor.</p></header>
+<main class="pa-theorem-layout"><p class="pa-callout pd-callout" data-current-release="v31">Current library: Alpha v31, 3,796 checked-use theorems; Stable remains 432. Historical first admissions, original proof editions, and non-admitted aliases are preserved. <a href="../../api/first-admission.json?v=6c9ebfb3c37e">Exact original first-admission records</a>.</p><div class="pa-proof-panel">
+<section class="pa-statement"><h2>Exact expanded PA statement</h2>
+<button data-copy-target="statement" type="button">Copy</button>
+<pre id="statement"><code>forall i. exists a. (((((~(S (i) = 1) /\ forall bpr_left_bpfc_exists_prime bpr_right_bpfc_exists_prime. S (i) = bpr_left_bpfc_exists_prime * bpr_right_bpfc_exists_prime -&gt; bpr_left_bpfc_exists_prime = 1 \/ bpr_right_bpfc_exists_prime = 1)) /\ a = S (i)) \/ (~((~(S (i) = 1) /\ forall bpr_left_bpfc_exists_prime bpr_right_bpfc_exists_prime. S (i) = bpr_left_bpfc_exists_prime * bpr_right_bpfc_exists_prime -&gt; bpr_left_bpfc_exists_prime = 1 \/ bpr_right_bpfc_exists_prime = 1)) /\ a = 1)))</code></pre></section>
+<section class="pa-informal-proof"><h2>Structural proof guide</h2>
+<p>Every index has its exact prime-or-one selector factor.</p><p>Direct prerequisites:
+prime_decidable.
+The authored body proceeds by case analysis (1).</p></section>
+<section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3>
+<div class="pa-chip-row"><a class="pa-theorem-ref" href="BT003H.html?v=6c9ebfb3c37e"><code>BT003H</code> prime_decidable</a></div>
+<h3>Direct dependents</h3><div class="pa-chip-row">
+<a class="pa-theorem-ref" href="BT00U7.html?v=6c9ebfb3c37e"><code>BT00U7</code> primorial_factor_prefix_extend</a> <a class="pa-theorem-ref" href="BT00UR.html?v=6c9ebfb3c37e"><code>BT00UR</code> primorial_interval_factor_prefix_extend</a></div></section>
+<section><h2>Formal native tactic body</h2>
+<p>Dependencies are hypotheses of the historical Alpha-v12 body receipt.
+The complete historical Alpha-v18 proof bundle independently checks every
+dependency; current Alpha v25 preserves that checked theorem use without
+changing Stable membership.</p>
+<ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="176fa82b6dcf400e"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> i</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="specialize" data-line-id="d497ff0cbe24e463"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">specialize</span> <a class="pa-theorem-ref" href="BT003H.html?v=6c9ebfb3c37e">prime_decidable</a> (S i)</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="cases" data-line-id="6846c0d10d4902df"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">cases</span> <a class="pa-theorem-ref" href="BT003H.html?v=6c9ebfb3c37e">prime_decidable</a></code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="exists" data-line-id="5fa0c216706179fd"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">exists</span> S i</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="left" data-line-id="bfa0565583f2fd91"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">left</span></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="split" data-line-id="59489be198e056c6"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">split</span></code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="exact" data-line-id="ceeb2847f977327a"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">exact</span> prime_decidable_left</code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="refl" data-line-id="72ea9109c34aee02"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">refl</span></code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exists" data-line-id="8edfb3bcaebd874f"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exists</span> 1</code></li><li class="pa-proof-line" id="proof-line-0010" data-line="10" data-tactic="right" data-line-id="601fa2499e257bd8"><a class="pa-line-number" href="#proof-line-0010">0010</a><code><span class="pa-tactic-ref">right</span></code></li><li class="pa-proof-line" id="proof-line-0011" data-line="11" data-tactic="split" data-line-id="b303f3e5f97116fa"><a class="pa-line-number" href="#proof-line-0011">0011</a><code><span class="pa-tactic-ref">split</span></code></li><li class="pa-proof-line" id="proof-line-0012" data-line="12" data-tactic="exact" data-line-id="5d4939ecdda660d1"><a class="pa-line-number" href="#proof-line-0012">0012</a><code><span class="pa-tactic-ref">exact</span> prime_decidable_right</code></li><li class="pa-proof-line" id="proof-line-0013" data-line="13" data-tactic="refl" data-line-id="9812df43f4571970"><a class="pa-line-number" href="#proof-line-0013">0013</a><code><span class="pa-tactic-ref">refl</span></code></li></ol></section></div>
+<aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and provenance</h2>
+<dl><dt>Enrollment index</dt><dd>1055</dd>
+<dt>Layer</dt><dd>9</dd><dt>Lines</dt><dd>13</dd>
+<dt>Current Alpha edition</dt><dd>v25</dd>
+<dt>Proof-bearing Alpha edition</dt><dd>v18</dd>
+<dt>Current release evidence</dt><dd>alpha_closed</dd>
+<dt>Checked theorem use</dt><dd>yes</dd>
+<dt>Stable membership</dt><dd>no</dd>
+<dt>Historical Alpha-v12 evidence</dt><dd>body_checked</dd>
+<dt>Body proof nodes</dt><dd>18</dd>
+<dt>Statement SHA-256</dt><dd><code>c02e015e6be53fa0fe884fd84f34a6d8b51371325ce15e6356e197d6dac03bfa</code></dd>
+<dt>Script SHA-256</dt><dd><code>5a3ba948d63cb95a7d1fb0f16eba2392ef666801f396c3bb7017a2d4540c9ed8</code></dd>
+<dt>Source</dt><dd><a href="https://github.com/nasqret/vietnam2026/blob/agent/new-theorems-tranche-01/peano-lab/py/peano_lab/library/bertrand_primorial_foundation_candidate.py">
+peano-lab/py/peano_lab/library/bertrand_primorial_foundation_candidate.py</a></dd>
+<dt>Source SHA-256</dt><dd><code>70e50275253977d96537a256c2b0b676975ade8464c33b29786b5f70963e7a98</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-completed-lower-explorer-v31/", "/constructive-historical-explorers-v31/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v31", "bertrand-postulate": "constructive-historical-explorers-v31", "bertrand-prime-chains": "constructive-historical-explorers-v31", "best-approximation": "constructive-historical-explorers-v31", "binary-digit-extraction": "constructive-historical-explorers-v31", "binary-length": "constructive-historical-explorers-v31", "binary-modular-execution": "constructive-historical-explorers-v31", "binary-modular-exponentiation": "constructive-historical-explorers-v31", "cauchy-davenport": "constructive-historical-explorers-v31", "continued-fractions": "constructive-historical-explorers-v31", "cornacchia": "constructive-historical-explorers-v31", "dirichlet-convolution": "constructive-completed-lower-explorer-v31", "dirichlet-fubini": "constructive-completed-lower-explorer-v31", "dirichlet-inverses": "constructive-completed-lower-explorer-v31", "dirichlet-signed-units": "constructive-completed-lower-explorer-v31", "dirichlet-triangular": "constructive-completed-lower-explorer-v31", "dirichlet-units": "constructive-completed-lower-explorer-v31", "divisor-involutions": "constructive-completed-lower-explorer-v31", "divisor-sums": "constructive-completed-lower-explorer-v31", "eisenstein-integers": "constructive-historical-explorers-v31", "euclidean-complexity": "constructive-historical-explorers-v31", "euclidean-gcd-transport": "constructive-historical-explorers-v31", "euclidean-logarithmic-bound": "constructive-historical-explorers-v31", "euler-units": "constructive-completed-lower-explorer-v31", "exponent-lifting": "constructive-historical-explorers-v31", "finite-support": "constructive-completed-lower-explorer-v31", "four-squares": "constructive-historical-explorers-v31", "gaussian-factorization": "constructive-historical-explorers-v31", "gaussian-integers": "constructive-historical-explorers-v31", "generalized-crt": "constructive-historical-explorers-v31", "generalized-crt-compatibility": "constructive-historical-explorers-v31", "generalized-crt-fold": "constructive-historical-explorers-v31", "hensel-lifting": "constructive-historical-explorers-v31", "integer-linear-algebra": "constructive-historical-explorers-v31", "kummer": "constructive-historical-explorers-v31", "lucas": "constructive-historical-explorers-v31", "matrix-coded-products": "constructive-historical-explorers-v31", "matrix-cofactor-expansion": "constructive-historical-explorers-v31", "matrix-determinant-minors": "constructive-historical-explorers-v31", "matrix-dot-product": "constructive-historical-explorers-v31", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v31", "mobius-inversion": "constructive-completed-lower-explorer-v31", "mobius-values": "constructive-completed-lower-explorer-v31", "multinomial-kummer": "constructive-historical-explorers-v31", "polynomial-hensel": "constructive-historical-explorers-v31", "polynomial-horner": "constructive-historical-explorers-v31", "polynomial-products": "constructive-completed-lower-explorer-v31", "polynomial-taylor-hensel": "constructive-historical-explorers-v31", "prime-count-chebyshev": "constructive-historical-explorers-v31", "prime-enumeration": "constructive-historical-explorers-v31", "prime-field-polynomials": "constructive-completed-lower-explorer-v31", "prime-fields": "constructive-completed-lower-explorer-v31", "prime-valuation-support": "constructive-historical-explorers-v31", "primes-three-mod-four": "constructive-historical-explorers-v31", "pythagorean-fermat-four": "constructive-historical-explorers-v31", "quadratic-reciprocity": "constructive-historical-explorers-v31", "rectangular-sums": "constructive-completed-lower-explorer-v31", "signed-sums": "constructive-completed-lower-explorer-v31", "signed-weighted-sums": "constructive-completed-lower-explorer-v31", "squarefree-kernels": "constructive-historical-explorers-v31", "supplementary-laws": "constructive-historical-explorers-v31", "totient-products": "constructive-historical-explorers-v31", "two-squares": "constructive-historical-explorers-v31"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-completed-lower-campaign-v31/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body></html>

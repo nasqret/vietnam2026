@@ -1,0 +1,1667 @@
+{
+  "alpha_catalog_sha256": "6c9ebfb3c37e42aefab200b710f78e7693dc5826c80f053544deea41caf44aab",
+  "alpha_checked_use_node_count": 10,
+  "alpha_edition_identity_sha256": "902fa75c2bf4624bb7fc5aca9a6c49b71ff8fa4499f8bdf9ce726cfd4166a5d7",
+  "alpha_edition_version": "v31",
+  "alpha_enrolled_node_count": 10,
+  "alpha_first_enrolled_version": "v20",
+  "alpha_first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce",
+  "alpha_proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+  "campaign_domain_id": "D05",
+  "campaign_family_id": "F12",
+  "campaign_goal_id": "T13",
+  "campaign_milestone_ids": [
+    "T13"
+  ],
+  "candidate_status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+  "definition_count": 7,
+  "definition_dependency_count": 6,
+  "definition_layer_count": 3,
+  "definition_topological_order": [
+    "ND0001",
+    "PD0002",
+    "PD0013",
+    "PD0015",
+    "ND0003",
+    "ND0004",
+    "ND0005"
+  ],
+  "definitions": [
+    {
+      "arity": 4,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "((exists ff_h_defined_beta_at. ff_h_defined_beta_at + S (x) = S ((S (i)) * c)) /\\ exists ff_q_defined_beta_at. b = ff_q_defined_beta_at * S ((S (i)) * c) + (x))",
+      "expansion_sha256": "469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "global_definition": "Beta",
+      "id": "ND0001",
+      "kernel_signature_unchanged": true,
+      "name": "Beta",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "i",
+        "x"
+      ],
+      "reviewed_definition_id": "PD0013",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": "ND0001",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 2,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "exists h. h + S a = b",
+      "expansion_sha256": "8245ec2119fd9d5b970a1d301ae58fa593733fff741593deb4858a5130b52cce",
+      "global_argument_positions": [
+        0,
+        1
+      ],
+      "global_definition": "Lt",
+      "id": "PD0002",
+      "kernel_signature_unchanged": true,
+      "name": "Lt",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "a",
+        "b"
+      ],
+      "reviewed_definition_id": "PD0002",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 4,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "((exists ff_h_defined_beta_at. ff_h_defined_beta_at + S (x) = S ((S (i)) * c)) /\\ exists ff_q_defined_beta_at. b = ff_q_defined_beta_at * S ((S (i)) * c) + (x))",
+      "expansion_sha256": "469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "global_definition": "Beta",
+      "id": "PD0013",
+      "kernel_signature_unchanged": true,
+      "name": "BetaAt",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "i",
+        "x"
+      ],
+      "reviewed_definition_id": "PD0013",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 4,
+      "dependencies": [
+        "PD0002",
+        "PD0013"
+      ],
+      "dependency_names": [
+        "Lt",
+        "BetaAt"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "exists ff_u_defined_sum ff_v_defined_sum. ((((exists ff_h_defined_sum_start. ff_h_defined_sum_start + S (0) = S ((S (0)) * ff_v_defined_sum)) /\\ exists ff_q_defined_sum_start. ff_u_defined_sum = ff_q_defined_sum_start * S ((S (0)) * ff_v_defined_sum) + (0))) /\\ ((((exists ff_h_defined_sum_terminal. ff_h_defined_sum_terminal + S (z) = S ((S (l)) * ff_v_defined_sum)) /\\ exists ff_q_defined_sum_terminal. ff_u_defined_sum = ff_q_defined_sum_terminal * S ((S (l)) * ff_v_defined_sum) + (z))) /\\ forall ff_i_defined_sum. (exists ff_lt_defined_sum_bound. ff_lt_defined_sum_bound + S ff_i_defined_sum = l) -> exists ff_a_defined_sum ff_r_defined_sum ff_s_defined_sum. ((((exists ff_h_defined_sum_summand. ff_h_defined_sum_summand + S (ff_a_defined_sum) = S ((S (ff_i_defined_sum)) * c)) /\\ exists ff_q_defined_sum_summand. b = ff_q_defined_sum_summand * S ((S (ff_i_defined_sum)) * c) + (ff_a_defined_sum))) /\\ ((((exists ff_h_defined_sum_partial. ff_h_defined_sum_partial + S (ff_r_defined_sum) = S ((S (ff_i_defined_sum)) * ff_v_defined_sum)) /\\ exists ff_q_defined_sum_partial. ff_u_defined_sum = ff_q_defined_sum_partial * S ((S (ff_i_defined_sum)) * ff_v_defined_sum) + (ff_r_defined_sum))) /\\ ((((exists ff_h_defined_sum_successor. ff_h_defined_sum_successor + S (ff_s_defined_sum) = S ((S (S ff_i_defined_sum)) * ff_v_defined_sum)) /\\ exists ff_q_defined_sum_successor. ff_u_defined_sum = ff_q_defined_sum_successor * S ((S (S ff_i_defined_sum)) * ff_v_defined_sum) + (ff_s_defined_sum))) /\\ ff_s_defined_sum = ff_r_defined_sum + ff_a_defined_sum)))))",
+      "expansion_sha256": "e77d758e2118ffddffef0040007a3fa468938ddf33f66035b1ea59a3308db937",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "global_definition": "BetaSum",
+      "id": "PD0015",
+      "kernel_signature_unchanged": true,
+      "name": "Sum",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "l",
+        "z"
+      ],
+      "reviewed_definition_id": "PD0015",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Sum(b,c,l,z)",
+      "summary": "z is the sum of a beta-coded prefix of length l.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
+    },
+    {
+      "arity": 6,
+      "dependencies": [
+        "ND0001"
+      ],
+      "dependency_names": [
+        "Beta"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "((exists fs_h_matrix_explorer. fs_h_matrix_explorer + S (z) = S ((S (i * w + j)) * c)) /\\ exists fs_q_matrix_explorer. b = fs_q_matrix_explorer * S ((S (i * w + j)) * c) + (z))",
+      "expansion_sha256": "2ed14165f516f8f0272e7f05cfe7f130fefff3c0234403c63235d86f4f77d45b",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "global_definition": "MatrixAt",
+      "id": "ND0003",
+      "kernel_signature_unchanged": true,
+      "name": "MatrixAt",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "w",
+        "i",
+        "j",
+        "z"
+      ],
+      "reviewed_definition_id": "ND0003",
+      "reviewed_definition_route": "matrix-dot-product",
+      "shared_definition_identity": "ND0003",
+      "signature": "MatrixAt(b,c,w,i,j,z)",
+      "summary": "The exact natural matrix entry stored at flattened beta index i*w+j.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "ND0001"
+      ]
+    },
+    {
+      "arity": 6,
+      "dependencies": [
+        "ND0001",
+        "PD0002",
+        "PD0015"
+      ],
+      "dependency_names": [
+        "Beta",
+        "Lt",
+        "Sum"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "exists ff_code_dot_explorer ff_scale_dot_explorer. ((forall fpmp_index_dot_explorer_pointwise fpmp_left_dot_explorer_pointwise fpmp_right_dot_explorer_pointwise fpmp_target_dot_explorer_pointwise. (exists fpmp_gap_dot_explorer_pointwise. fpmp_gap_dot_explorer_pointwise + S fpmp_index_dot_explorer_pointwise = ell) -> (((exists ff_h_fpmp_dot_explorer_pointwise_left. ff_h_fpmp_dot_explorer_pointwise_left + S (fpmp_left_dot_explorer_pointwise) = S ((S (fpmp_index_dot_explorer_pointwise)) * c)) /\\ exists ff_q_fpmp_dot_explorer_pointwise_left. b = ff_q_fpmp_dot_explorer_pointwise_left * S ((S (fpmp_index_dot_explorer_pointwise)) * c) + (fpmp_left_dot_explorer_pointwise))) -> (((exists ff_h_fpmp_dot_explorer_pointwise_right. ff_h_fpmp_dot_explorer_pointwise_right + S (fpmp_right_dot_explorer_pointwise) = S ((S (fpmp_index_dot_explorer_pointwise)) * e)) /\\ exists ff_q_fpmp_dot_explorer_pointwise_right. d = ff_q_fpmp_dot_explorer_pointwise_right * S ((S (fpmp_index_dot_explorer_pointwise)) * e) + (fpmp_right_dot_explorer_pointwise))) -> (((exists ff_h_fpmp_dot_explorer_pointwise_target. ff_h_fpmp_dot_explorer_pointwise_target + S (fpmp_target_dot_explorer_pointwise) = S ((S (fpmp_index_dot_explorer_pointwise)) * ff_scale_dot_explorer)) /\\ exists ff_q_fpmp_dot_explorer_pointwise_target. ff_code_dot_explorer = ff_q_fpmp_dot_explorer_pointwise_target * S ((S (fpmp_index_dot_explorer_pointwise)) * ff_scale_dot_explorer) + (fpmp_target_dot_explorer_pointwise))) -> fpmp_target_dot_explorer_pointwise = fpmp_left_dot_explorer_pointwise * fpmp_right_dot_explorer_pointwise) /\\ (exists ff_u_dot_explorer_sum ff_v_dot_explorer_sum. ((((exists ff_h_dot_explorer_sum_start. ff_h_dot_explorer_sum_start + S (0) = S ((S (0)) * ff_v_dot_explorer_sum)) /\\ exists ff_q_dot_explorer_sum_start. ff_u_dot_explorer_sum = ff_q_dot_explorer_sum_start * S ((S (0)) * ff_v_dot_explorer_sum) + (0))) /\\ ((((exists ff_h_dot_explorer_sum_terminal. ff_h_dot_explorer_sum_terminal + S (z) = S ((S (ell)) * ff_v_dot_explorer_sum)) /\\ exists ff_q_dot_explorer_sum_terminal. ff_u_dot_explorer_sum = ff_q_dot_explorer_sum_terminal * S ((S (ell)) * ff_v_dot_explorer_sum) + (z))) /\\ forall ff_i_dot_explorer_sum. (exists ff_lt_dot_explorer_sum_bound. ff_lt_dot_explorer_sum_bound + S ff_i_dot_explorer_sum = ell) -> exists ff_a_dot_explorer_sum ff_r_dot_explorer_sum ff_s_dot_explorer_sum. ((((exists ff_h_dot_explorer_sum_summand. ff_h_dot_explorer_sum_summand + S (ff_a_dot_explorer_sum) = S ((S (ff_i_dot_explorer_sum)) * ff_scale_dot_explorer)) /\\ exists ff_q_dot_explorer_sum_summand. ff_code_dot_explorer = ff_q_dot_explorer_sum_summand * S ((S (ff_i_dot_explorer_sum)) * ff_scale_dot_explorer) + (ff_a_dot_explorer_sum))) /\\ ((((exists ff_h_dot_explorer_sum_partial. ff_h_dot_explorer_sum_partial + S (ff_r_dot_explorer_sum) = S ((S (ff_i_dot_explorer_sum)) * ff_v_dot_explorer_sum)) /\\ exists ff_q_dot_explorer_sum_partial. ff_u_dot_explorer_sum = ff_q_dot_explorer_sum_partial * S ((S (ff_i_dot_explorer_sum)) * ff_v_dot_explorer_sum) + (ff_r_dot_explorer_sum))) /\\ ((((exists ff_h_dot_explorer_sum_successor. ff_h_dot_explorer_sum_successor + S (ff_s_dot_explorer_sum) = S ((S (S ff_i_dot_explorer_sum)) * ff_v_dot_explorer_sum)) /\\ exists ff_q_dot_explorer_sum_successor. ff_u_dot_explorer_sum = ff_q_dot_explorer_sum_successor * S ((S (S ff_i_dot_explorer_sum)) * ff_v_dot_explorer_sum) + (ff_s_dot_explorer_sum))) /\\ ff_s_dot_explorer_sum = ff_r_dot_explorer_sum + ff_a_dot_explorer_sum)))))))",
+      "expansion_sha256": "ea85b31677c2c6017e4cdc0f03c1e9bee0e65fa106206f4f3119aff4a22e4d0d",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "global_definition": "DotProduct",
+      "id": "ND0004",
+      "kernel_signature_unchanged": true,
+      "name": "DotProduct",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "d",
+        "e",
+        "ell",
+        "z"
+      ],
+      "reviewed_definition_id": "ND0004",
+      "reviewed_definition_route": "matrix-dot-product",
+      "shared_definition_identity": "ND0004",
+      "signature": "DotProduct(b,c,d,e,ell,z)",
+      "summary": "The witnessed sum of the pointwise products of two beta-coded natural vectors.",
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "ND0001",
+        "PD0002",
+        "PD0013",
+        "PD0015"
+      ]
+    },
+    {
+      "arity": 6,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "p = a * d /\\ n = b * c",
+      "expansion_sha256": "3ac99120c5c42d6d54c7109dae21f9f5ff27f2a82854100ddf07ad7e6c5201dd",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "global_definition": "SignedDet2",
+      "id": "ND0005",
+      "kernel_signature_unchanged": true,
+      "name": "SignedDet2",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "a",
+        "b",
+        "c",
+        "d",
+        "p",
+        "n"
+      ],
+      "reviewed_definition_id": "ND0005",
+      "reviewed_definition_route": "matrix-dot-product",
+      "shared_definition_identity": "ND0005",
+      "signature": "SignedDet2(a,b,c,d,p,n)",
+      "summary": "The exact positive and negative natural components p=ad and n=bc of a signed 2×2 determinant.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    }
+  ],
+  "edge_count": 13,
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "MD0001",
+      "target": "MD0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MD0002",
+      "target": "MD0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MD0004",
+      "target": "MD0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MD0005",
+      "target": "MD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MD0001",
+      "statement_occurrences": 1,
+      "target": "ND0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD0002",
+      "statement_occurrences": 2,
+      "target": "ND0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD0003",
+      "statement_occurrences": 2,
+      "target": "ND0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MD0004",
+      "statement_occurrences": 1,
+      "target": "ND0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD0005",
+      "statement_occurrences": 2,
+      "target": "ND0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD0006",
+      "statement_occurrences": 2,
+      "target": "ND0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MD0007",
+      "statement_occurrences": 1,
+      "target": "ND0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD0008",
+      "statement_occurrences": 2,
+      "target": "ND0004"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MD0009",
+      "statement_occurrences": 1,
+      "target": "ND0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MD000A",
+      "statement_occurrences": 2,
+      "target": "ND0005"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0003",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "PD0015"
+    }
+  ],
+  "external_dependencies": [
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_at_exists",
+      "statement_sha256": "acd7a937d6ec7c3c4d6214357bdfcdf3a975ccd71f7e14a540a1690d5e9b1773"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_at_unique",
+      "statement_sha256": "eac0700b7c24aa059073c61ffdf1541dc02d23400571b003fe964b9df65f5afd"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_evidence": "alpha_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "alpha_closed",
+      "kind": "alpha-admitted-theorem",
+      "name": "beta_pointwise_mul_prefix_exists",
+      "statement_sha256": "61170d1ab57371e2d19f5f39e0d8f8a69ca31b2d0918a5e33a3a10c72fba8019"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_sum_exists",
+      "statement_sha256": "97209b3dd1a6cecb2ed728484fcab57198efa167eb4bab80ccdd89abc6807088"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_sum_functional",
+      "statement_sha256": "9f3fed643e53f457ebf661ddcd2751fe7599a5da1ee869289435c099655e5617"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_evidence": "alpha_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "alpha_closed",
+      "kind": "alpha-admitted-theorem",
+      "name": "beta_sum_transport_prefix",
+      "statement_sha256": "ef6c6fcebc40c7149a557d9037414398349e241100405799e4fc2bbd5c9913b0"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "beta_sum_zero",
+      "statement_sha256": "a4ad6bb157898eb13c75907ede72658f8ddc10374241fb93e85d8f18316099a3"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "mul_comm",
+      "statement_sha256": "b5277583d2ad3b537c2ccf0fecc33912b9ff69674ec9659cf8d70f58b691b65d"
+    }
+  ],
+  "external_dependency_count": 8,
+  "family_slug": "matrix-dot-product",
+  "family_title": "Finite matrices and dot products",
+  "formal_line_count": 263,
+  "historical_component_only": true,
+  "historical_milestone_status": "open",
+  "historical_partial_checked_use": true,
+  "independent_lean_bundle_verified": true,
+  "internal_edge_count": 4,
+  "layers": {
+    "beta_dot_product_commutative": 0,
+    "beta_dot_product_empty": 0,
+    "beta_dot_product_exists": 0,
+    "beta_dot_product_exists_unique": 1,
+    "beta_dot_product_functional": 0,
+    "beta_matrix_cell_exists": 0,
+    "beta_matrix_cell_exists_unique": 1,
+    "beta_matrix_cell_functional": 0,
+    "signed_matrix_two_determinant_exists": 0,
+    "signed_matrix_two_determinant_functional": 0
+  },
+  "milestone_checked_use": true,
+  "milestone_full_proof_slug": "integer-linear-algebra",
+  "milestone_full_theorem_name": "rectangular_matrix_rank_exists_unique",
+  "milestone_status": "alpha_closed",
+  "node_count": 10,
+  "nodes": [
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 13,
+      "body_proof_nodes": 19,
+      "campaign_milestone": "T13",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ w. ∀ i. ∀ j. ∃ n. MatrixAt(b,c,w,i,j,n)",
+        "defined_statement_sha256": "65bf6955c157f9de0369a1b0bc1c46d0fb0def95615626a922f7ac72f0c86ffe",
+        "definition_uses": {
+          "ND0003": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "5f1ec32a3d52ce873b66a8b8da67c3d9a9ce6f544135a91845d44e8edcd6f509",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0003": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ w. ∀ i. ∀ j. ∃ n. "
+          },
+          {
+            "definition": "ND0003",
+            "kind": "definition",
+            "text": "MatrixAt(b,c,w,i,j,n)"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_at_exists"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_matrix_dot_product_candidate_theorems",
+      "id": "MD0001",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_matrix_cell_exists",
+      "proof_bundle_node_id": 557,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro w",
+        "intro i",
+        "intro j",
+        "specialize beta_at_exists b",
+        "specialize beta_at_exists c",
+        "specialize beta_at_exists (i * w + j)",
+        "exact beta_at_exists"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+      "sources": [
+        {
+          "factory": "make_matrix_dot_product_candidate_theorems",
+          "script_sha256": "e976990fa0541b56a508b2f3feaa4150d7bad31700c1f7c2f1e9ae381f8445bd",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+          "statement_sha256": "5f1ec32a3d52ce873b66a8b8da67c3d9a9ce6f544135a91845d44e8edcd6f509"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c w i j. exists n. (((exists fs_h_matrix_entry. fs_h_matrix_entry + S (n) = S ((S (i * w + j)) * c)) /\\ exists fs_q_matrix_entry. b = fs_q_matrix_entry * S ((S (i * w + j)) * c) + (n)))",
+      "statement_sha256": "5f1ec32a3d52ce873b66a8b8da67c3d9a9ce6f544135a91845d44e8edcd6f509",
+      "status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "Every requested finite matrix coordinate has a witnessed beta-decoded entry."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 23,
+      "body_proof_nodes": 35,
+      "campaign_milestone": "T13",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ w. ∀ i. ∀ j. ∀ n. ∀ m. MatrixAt(b,c,w,i,j,n) → MatrixAt(b,c,w,i,j,m) → n = m",
+        "defined_statement_sha256": "d6dd1d7434141472498370505dca586fd483cc6543fd47b4ed2be77ac5803bf1",
+        "definition_uses": {
+          "ND0003": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "4a69f4da61ea376d15221d87f7e199dd4f7f270342ebe39ea01aca88f139fec2",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0003": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ w. ∀ i. ∀ j. ∀ n. ∀ m. "
+          },
+          {
+            "definition": "ND0003",
+            "kind": "definition",
+            "text": "MatrixAt(b,c,w,i,j,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "ND0003",
+            "kind": "definition",
+            "text": "MatrixAt(b,c,w,i,j,m)"
+          },
+          {
+            "kind": "text",
+            "text": " → n = m"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_at_unique"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_matrix_dot_product_candidate_theorems",
+      "id": "MD0002",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_matrix_cell_functional",
+      "proof_bundle_node_id": 558,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro w",
+        "intro i",
+        "intro j",
+        "intro n",
+        "intro m",
+        "intro hn",
+        "intro hm",
+        "specialize beta_at_unique b",
+        "specialize beta_at_unique c",
+        "specialize beta_at_unique (i * w + j)",
+        "specialize beta_at_unique n",
+        "specialize beta_at_unique m",
+        "apply beta_at_unique",
+        "exact hn",
+        "exact hm"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+      "sources": [
+        {
+          "factory": "make_matrix_dot_product_candidate_theorems",
+          "script_sha256": "81eace7eb5492375e8745e56b2d64a649dae9cab4e3d96445f376b39d6b9c5c8",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+          "statement_sha256": "4a69f4da61ea376d15221d87f7e199dd4f7f270342ebe39ea01aca88f139fec2"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c w i j n m. (((exists fs_h_matrix_entry. fs_h_matrix_entry + S (n) = S ((S (i * w + j)) * c)) /\\ exists fs_q_matrix_entry. b = fs_q_matrix_entry * S ((S (i * w + j)) * c) + (n))) -> (((exists fs_h_matrix_other. fs_h_matrix_other + S (m) = S ((S (i * w + j)) * c)) /\\ exists fs_q_matrix_other. b = fs_q_matrix_other * S ((S (i * w + j)) * c) + (m))) -> n = m",
+      "statement_sha256": "4a69f4da61ea376d15221d87f7e199dd4f7f270342ebe39ea01aca88f139fec2",
+      "status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "The decoded natural value of every flattened matrix cell is unique."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 39,
+      "body_proof_nodes": 67,
+      "campaign_milestone": "T13",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ b. ∀ c. ∀ w. ∀ i. ∀ j. ∃ n. MatrixAt(b,c,w,i,j,n) ∧ (∀ x. MatrixAt(b,c,w,i,j,x) → n = x)",
+        "defined_statement_sha256": "eeb4462f55719ba82693016e24139627e6bfadde9ecc3725d4f5b01e10502478",
+        "definition_uses": {
+          "ND0003": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "1d98384a57ec080fdaf6d502d73c0b4e73efa034f24f6443d726bd996243b511",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0003": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ b. ∀ c. ∀ w. ∀ i. ∀ j. ∃ n. "
+          },
+          {
+            "definition": "ND0003",
+            "kind": "definition",
+            "text": "MatrixAt(b,c,w,i,j,n)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ (∀ x. "
+          },
+          {
+            "definition": "ND0003",
+            "kind": "definition",
+            "text": "MatrixAt(b,c,w,i,j,x)"
+          },
+          {
+            "kind": "text",
+            "text": " → n = x)"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_matrix_cell_exists",
+        "beta_matrix_cell_functional"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_matrix_dot_product_candidate_theorems",
+      "id": "MD0003",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_matrix_cell_exists_unique",
+      "proof_bundle_node_id": 559,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro b",
+        "intro c",
+        "intro w",
+        "intro i",
+        "intro j",
+        "specialize beta_matrix_cell_exists b",
+        "specialize beta_matrix_cell_exists c",
+        "specialize beta_matrix_cell_exists w",
+        "specialize beta_matrix_cell_exists i",
+        "specialize beta_matrix_cell_exists j",
+        "cases beta_matrix_cell_exists",
+        "exists x",
+        "split",
+        "exact beta_matrix_cell_exists_witness",
+        "intro m",
+        "intro hm",
+        "specialize beta_matrix_cell_functional b",
+        "specialize beta_matrix_cell_functional c",
+        "specialize beta_matrix_cell_functional w",
+        "specialize beta_matrix_cell_functional i",
+        "specialize beta_matrix_cell_functional j",
+        "specialize beta_matrix_cell_functional x",
+        "specialize beta_matrix_cell_functional m",
+        "apply beta_matrix_cell_functional",
+        "exact beta_matrix_cell_exists_witness",
+        "exact hm"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+      "sources": [
+        {
+          "factory": "make_matrix_dot_product_candidate_theorems",
+          "script_sha256": "345248f2008bbdcb5c5aa663fdaf273c4881edce73286b0d8e3856de67580ccd",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+          "statement_sha256": "1d98384a57ec080fdaf6d502d73c0b4e73efa034f24f6443d726bd996243b511"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall b c w i j. exists n. ((((exists fs_h_matrix_entry. fs_h_matrix_entry + S (n) = S ((S (i * w + j)) * c)) /\\ exists fs_q_matrix_entry. b = fs_q_matrix_entry * S ((S (i * w + j)) * c) + (n))) /\\ forall m. (((exists fs_h_matrix_other. fs_h_matrix_other + S (m) = S ((S (i * w + j)) * c)) /\\ exists fs_q_matrix_other. b = fs_q_matrix_other * S ((S (i * w + j)) * c) + (m))) -> n = m)",
+      "statement_sha256": "1d98384a57ec080fdaf6d502d73c0b4e73efa034f24f6443d726bd996243b511",
+      "status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "Every finite beta-coded matrix entry has exactly one actual value."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 31,
+      "body_proof_nodes": 51,
+      "campaign_milestone": "T13",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ mb. ∀ mc. ∀ sb. ∀ sc. ∀ l. ∃ n. DotProduct(mb,mc,sb,sc,l,n)",
+        "defined_statement_sha256": "e170e7c92dd057a1dbb5df3e7f33713658fef168c1131af1b29284c2fd9a8039",
+        "definition_uses": {
+          "ND0004": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "fdce25fa4cf4f1a0e801d044a46376acaa2c401230f7d8fc393f3f92c2e742bf",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0004": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ mb. ∀ mc. ∀ sb. ∀ sc. ∀ l. ∃ n. "
+          },
+          {
+            "definition": "ND0004",
+            "kind": "definition",
+            "text": "DotProduct(mb,mc,sb,sc,l,n)"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_pointwise_mul_prefix_exists",
+        "beta_sum_exists"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_matrix_dot_product_candidate_theorems",
+      "id": "MD0004",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_dot_product_exists",
+      "proof_bundle_node_id": 560,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro mb",
+        "intro mc",
+        "intro sb",
+        "intro sc",
+        "intro l",
+        "specialize beta_pointwise_mul_prefix_exists mb",
+        "specialize beta_pointwise_mul_prefix_exists mc",
+        "specialize beta_pointwise_mul_prefix_exists sb",
+        "specialize beta_pointwise_mul_prefix_exists sc",
+        "specialize beta_pointwise_mul_prefix_exists l",
+        "cases beta_pointwise_mul_prefix_exists",
+        "cases beta_pointwise_mul_prefix_exists_witness",
+        "specialize beta_sum_exists x",
+        "specialize beta_sum_exists x1",
+        "specialize beta_sum_exists l",
+        "cases beta_sum_exists",
+        "exists x2",
+        "exists x",
+        "exists x1",
+        "split",
+        "exact beta_pointwise_mul_prefix_exists_witness_witness",
+        "exact beta_sum_exists_witness"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+      "sources": [
+        {
+          "factory": "make_matrix_dot_product_candidate_theorems",
+          "script_sha256": "4997f1b45a03d7a728a3380d370979d47e36b837b7b47d3046975ea1b73590eb",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+          "statement_sha256": "fdce25fa4cf4f1a0e801d044a46376acaa2c401230f7d8fc393f3f92c2e742bf"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall mb mc sb sc l. exists n. (exists ff_code_dot_value ff_scale_dot_value. ((forall fpmp_index_dot_value_pointwise fpmp_left_dot_value_pointwise fpmp_right_dot_value_pointwise fpmp_target_dot_value_pointwise. (exists fpmp_gap_dot_value_pointwise. fpmp_gap_dot_value_pointwise + S fpmp_index_dot_value_pointwise = l) -> (((exists ff_h_fpmp_dot_value_pointwise_left. ff_h_fpmp_dot_value_pointwise_left + S (fpmp_left_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * mc)) /\\ exists ff_q_fpmp_dot_value_pointwise_left. mb = ff_q_fpmp_dot_value_pointwise_left * S ((S (fpmp_index_dot_value_pointwise)) * mc) + (fpmp_left_dot_value_pointwise))) -> (((exists ff_h_fpmp_dot_value_pointwise_right. ff_h_fpmp_dot_value_pointwise_right + S (fpmp_right_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * sc)) /\\ exists ff_q_fpmp_dot_value_pointwise_right. sb = ff_q_fpmp_dot_value_pointwise_right * S ((S (fpmp_index_dot_value_pointwise)) * sc) + (fpmp_right_dot_value_pointwise))) -> (((exists ff_h_fpmp_dot_value_pointwise_target. ff_h_fpmp_dot_value_pointwise_target + S (fpmp_target_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * ff_scale_dot_value)) /\\ exists ff_q_fpmp_dot_value_pointwise_target. ff_code_dot_value = ff_q_fpmp_dot_value_pointwise_target * S ((S (fpmp_index_dot_value_pointwise)) * ff_scale_dot_value) + (fpmp_target_dot_value_pointwise))) -> fpmp_target_dot_value_pointwise = fpmp_left_dot_value_pointwise * fpmp_right_dot_value_pointwise) /\\ (exists ff_u_dot_value_sum ff_v_dot_value_sum. ((((exists ff_h_dot_value_sum_start. ff_h_dot_value_sum_start + S (0) = S ((S (0)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_start. ff_u_dot_value_sum = ff_q_dot_value_sum_start * S ((S (0)) * ff_v_dot_value_sum) + (0))) /\\ ((((exists ff_h_dot_value_sum_terminal. ff_h_dot_value_sum_terminal + S (n) = S ((S (l)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_terminal. ff_u_dot_value_sum = ff_q_dot_value_sum_terminal * S ((S (l)) * ff_v_dot_value_sum) + (n))) /\\ forall ff_i_dot_value_sum. (exists ff_lt_dot_value_sum_bound. ff_lt_dot_value_sum_bound + S ff_i_dot_value_sum = l) -> exists ff_a_dot_value_sum ff_r_dot_value_sum ff_s_dot_value_sum. ((((exists ff_h_dot_value_sum_summand. ff_h_dot_value_sum_summand + S (ff_a_dot_value_sum) = S ((S (ff_i_dot_value_sum)) * ff_scale_dot_value)) /\\ exists ff_q_dot_value_sum_summand. ff_code_dot_value = ff_q_dot_value_sum_summand * S ((S (ff_i_dot_value_sum)) * ff_scale_dot_value) + (ff_a_dot_value_sum))) /\\ ((((exists ff_h_dot_value_sum_partial. ff_h_dot_value_sum_partial + S (ff_r_dot_value_sum) = S ((S (ff_i_dot_value_sum)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_partial. ff_u_dot_value_sum = ff_q_dot_value_sum_partial * S ((S (ff_i_dot_value_sum)) * ff_v_dot_value_sum) + (ff_r_dot_value_sum))) /\\ ((((exists ff_h_dot_value_sum_successor. ff_h_dot_value_sum_successor + S (ff_s_dot_value_sum) = S ((S (S ff_i_dot_value_sum)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_successor. ff_u_dot_value_sum = ff_q_dot_value_sum_successor * S ((S (S ff_i_dot_value_sum)) * ff_v_dot_value_sum) + (ff_s_dot_value_sum))) /\\ ff_s_dot_value_sum = ff_r_dot_value_sum + ff_a_dot_value_sum))))))))",
+      "statement_sha256": "fdce25fa4cf4f1a0e801d044a46376acaa2c401230f7d8fc393f3f92c2e742bf",
+      "status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "Two arbitrary finite coded vectors have an exactly witnessed dot product."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 41,
+      "body_proof_nodes": 125,
+      "campaign_milestone": "T13",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ mb. ∀ mc. ∀ sb. ∀ sc. ∀ l. ∀ n. ∀ m. DotProduct(mb,mc,sb,sc,l,n) → DotProduct(mb,mc,sb,sc,l,m) → n = m",
+        "defined_statement_sha256": "248b34e156783822380f844164c7fd6aa7631dcd90b3cd78346b5e4c9c31af86",
+        "definition_uses": {
+          "ND0004": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "7d526c19ef5c2d1495a7a7a201fe869195c1a157f8eacc9805bde0ddcb780273",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0004": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ mb. ∀ mc. ∀ sb. ∀ sc. ∀ l. ∀ n. ∀ m. "
+          },
+          {
+            "definition": "ND0004",
+            "kind": "definition",
+            "text": "DotProduct(mb,mc,sb,sc,l,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "ND0004",
+            "kind": "definition",
+            "text": "DotProduct(mb,mc,sb,sc,l,m)"
+          },
+          {
+            "kind": "text",
+            "text": " → n = m"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_at_exists",
+        "beta_sum_transport_prefix",
+        "beta_sum_functional"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_matrix_dot_product_candidate_theorems",
+      "id": "MD0005",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_dot_product_functional",
+      "proof_bundle_node_id": 561,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro mb",
+        "intro mc",
+        "intro sb",
+        "intro sc",
+        "intro l",
+        "intro n",
+        "intro m",
+        "intro hn",
+        "intro hm",
+        "cases hn",
+        "cases hn_witness",
+        "cases hn_witness_witness",
+        "cases hm",
+        "cases hm_witness",
+        "cases hm_witness_witness",
+        "have htransport : exists ff_u_dot_transport ff_v_dot_transport. ((((exists ff_h_dot_transport_start. ff_h_dot_transport_start + S (0) = S ((S (0)) * ff_v_dot_transport)) /\\ exists ff_q_dot_transport_start. ff_u_dot_transport = ff_q_dot_transport_start * S ((S (0)) * ff_v_dot_transport) + (0))) /\\ ((((exists ff_h_dot_transport_terminal. ff_h_dot_transport_terminal + S (n) = S ((S (l)) * ff_v_dot_transport)) /\\ exists ff_q_dot_transport_terminal. ff_u_dot_transport = ff_q_dot_transport_terminal * S ((S (l)) * ff_v_dot_transport) + (n))) /\\ forall ff_i_dot_transport. (exists ff_lt_dot_transport_bound. ff_lt_dot_transport_bound + S ff_i_dot_transport = l) -> exists ff_a_dot_transport ff_r_dot_transport ff_s_dot_transport. ((((exists ff_h_dot_transport_summand. ff_h_dot_transport_summand + S (ff_a_dot_transport) = S ((S (ff_i_dot_transport)) * x3)) /\\ exists ff_q_dot_transport_summand. x2 = ff_q_dot_transport_summand * S ((S (ff_i_dot_transport)) * x3) + (ff_a_dot_transport))) /\\ ((((exists ff_h_dot_transport_partial. ff_h_dot_transport_partial + S (ff_r_dot_transport) = S ((S (ff_i_dot_transport)) * ff_v_dot_transport)) /\\ exists ff_q_dot_transport_partial. ff_u_dot_transport = ff_q_dot_transport_partial * S ((S (ff_i_dot_transport)) * ff_v_dot_transport) + (ff_r_dot_transport))) /\\ ((((exists ff_h_dot_transport_successor. ff_h_dot_transport_successor + S (ff_s_dot_transport) = S ((S (S ff_i_dot_transport)) * ff_v_dot_transport)) /\\ exists ff_q_dot_transport_successor. ff_u_dot_transport = ff_q_dot_transport_successor * S ((S (S ff_i_dot_transport)) * ff_v_dot_transport) + (ff_s_dot_transport))) /\\ ff_s_dot_transport = ff_r_dot_transport + ff_a_dot_transport)))))",
+        "specialize beta_sum_transport_prefix x",
+        "specialize beta_sum_transport_prefix x1",
+        "specialize beta_sum_transport_prefix x2",
+        "specialize beta_sum_transport_prefix x3",
+        "specialize beta_sum_transport_prefix l",
+        "specialize beta_sum_transport_prefix n",
+        "apply beta_sum_transport_prefix",
+        "exact hn_witness_witness_right",
+        "intro i",
+        "intro a",
+        "intro hi",
+        "intro ha",
+        "have hleft : exists z. ((exists fs_h_dot_left. fs_h_dot_left + S (z) = S ((S (i)) * mc)) /\\ exists fs_q_dot_left. mb = fs_q_dot_left * S ((S (i)) * mc) + (z))",
+        "specialize beta_at_exists mb",
+        "specialize beta_at_exists mc",
+        "specialize beta_at_exists i",
+        "exact beta_at_exists",
+        "cases hleft",
+        "have hright : exists z. ((exists fs_h_dot_right. fs_h_dot_right + S (z) = S ((S (i)) * sc)) /\\ exists fs_q_dot_right. sb = fs_q_dot_right * S ((S (i)) * sc) + (z))",
+        "specialize beta_at_exists sb",
+        "specialize beta_at_exists sc",
+        "specialize beta_at_exists i",
+        "exact beta_at_exists",
+        "cases hright",
+        "have htarget : exists z. ((exists fs_h_dot_target. fs_h_dot_target + S (z) = S ((S (i)) * x3)) /\\ exists fs_q_dot_target. x2 = fs_q_dot_target * S ((S (i)) * x3) + (z))",
+        "specialize beta_at_exists x2",
+        "specialize beta_at_exists x3",
+        "specialize beta_at_exists i",
+        "exact beta_at_exists",
+        "cases htarget",
+        "have hfirst : a = x4 * x5",
+        "specialize hn_witness_witness_left i",
+        "specialize hn_witness_witness_left x4",
+        "specialize hn_witness_witness_left x5",
+        "specialize hn_witness_witness_left a",
+        "apply hn_witness_witness_left",
+        "exact hi",
+        "exact hleft_witness",
+        "exact hright_witness",
+        "exact ha",
+        "have hsecond : x6 = x4 * x5",
+        "specialize hm_witness_witness_left i",
+        "specialize hm_witness_witness_left x4",
+        "specialize hm_witness_witness_left x5",
+        "specialize hm_witness_witness_left x6",
+        "apply hm_witness_witness_left",
+        "exact hi",
+        "exact hleft_witness",
+        "exact hright_witness",
+        "exact htarget_witness",
+        "have heq : a = x6",
+        "trans x4 * x5",
+        "exact hfirst",
+        "symm",
+        "exact hsecond",
+        "rewrite heq",
+        "rewrite heq",
+        "exact htarget_witness",
+        "specialize beta_sum_functional x2",
+        "specialize beta_sum_functional x3",
+        "specialize beta_sum_functional l",
+        "specialize beta_sum_functional n",
+        "specialize beta_sum_functional m",
+        "apply beta_sum_functional",
+        "exact htransport",
+        "exact hm_witness_witness_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+      "sources": [
+        {
+          "factory": "make_matrix_dot_product_candidate_theorems",
+          "script_sha256": "090782af55abd5dfeb36babdbf2ec58c5fdd2bffe953840980d43d068682877e",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+          "statement_sha256": "7d526c19ef5c2d1495a7a7a201fe869195c1a157f8eacc9805bde0ddcb780273"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall mb mc sb sc l n m. (exists ff_code_dot_value ff_scale_dot_value. ((forall fpmp_index_dot_value_pointwise fpmp_left_dot_value_pointwise fpmp_right_dot_value_pointwise fpmp_target_dot_value_pointwise. (exists fpmp_gap_dot_value_pointwise. fpmp_gap_dot_value_pointwise + S fpmp_index_dot_value_pointwise = l) -> (((exists ff_h_fpmp_dot_value_pointwise_left. ff_h_fpmp_dot_value_pointwise_left + S (fpmp_left_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * mc)) /\\ exists ff_q_fpmp_dot_value_pointwise_left. mb = ff_q_fpmp_dot_value_pointwise_left * S ((S (fpmp_index_dot_value_pointwise)) * mc) + (fpmp_left_dot_value_pointwise))) -> (((exists ff_h_fpmp_dot_value_pointwise_right. ff_h_fpmp_dot_value_pointwise_right + S (fpmp_right_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * sc)) /\\ exists ff_q_fpmp_dot_value_pointwise_right. sb = ff_q_fpmp_dot_value_pointwise_right * S ((S (fpmp_index_dot_value_pointwise)) * sc) + (fpmp_right_dot_value_pointwise))) -> (((exists ff_h_fpmp_dot_value_pointwise_target. ff_h_fpmp_dot_value_pointwise_target + S (fpmp_target_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * ff_scale_dot_value)) /\\ exists ff_q_fpmp_dot_value_pointwise_target. ff_code_dot_value = ff_q_fpmp_dot_value_pointwise_target * S ((S (fpmp_index_dot_value_pointwise)) * ff_scale_dot_value) + (fpmp_target_dot_value_pointwise))) -> fpmp_target_dot_value_pointwise = fpmp_left_dot_value_pointwise * fpmp_right_dot_value_pointwise) /\\ (exists ff_u_dot_value_sum ff_v_dot_value_sum. ((((exists ff_h_dot_value_sum_start. ff_h_dot_value_sum_start + S (0) = S ((S (0)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_start. ff_u_dot_value_sum = ff_q_dot_value_sum_start * S ((S (0)) * ff_v_dot_value_sum) + (0))) /\\ ((((exists ff_h_dot_value_sum_terminal. ff_h_dot_value_sum_terminal + S (n) = S ((S (l)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_terminal. ff_u_dot_value_sum = ff_q_dot_value_sum_terminal * S ((S (l)) * ff_v_dot_value_sum) + (n))) /\\ forall ff_i_dot_value_sum. (exists ff_lt_dot_value_sum_bound. ff_lt_dot_value_sum_bound + S ff_i_dot_value_sum = l) -> exists ff_a_dot_value_sum ff_r_dot_value_sum ff_s_dot_value_sum. ((((exists ff_h_dot_value_sum_summand. ff_h_dot_value_sum_summand + S (ff_a_dot_value_sum) = S ((S (ff_i_dot_value_sum)) * ff_scale_dot_value)) /\\ exists ff_q_dot_value_sum_summand. ff_code_dot_value = ff_q_dot_value_sum_summand * S ((S (ff_i_dot_value_sum)) * ff_scale_dot_value) + (ff_a_dot_value_sum))) /\\ ((((exists ff_h_dot_value_sum_partial. ff_h_dot_value_sum_partial + S (ff_r_dot_value_sum) = S ((S (ff_i_dot_value_sum)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_partial. ff_u_dot_value_sum = ff_q_dot_value_sum_partial * S ((S (ff_i_dot_value_sum)) * ff_v_dot_value_sum) + (ff_r_dot_value_sum))) /\\ ((((exists ff_h_dot_value_sum_successor. ff_h_dot_value_sum_successor + S (ff_s_dot_value_sum) = S ((S (S ff_i_dot_value_sum)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_successor. ff_u_dot_value_sum = ff_q_dot_value_sum_successor * S ((S (S ff_i_dot_value_sum)) * ff_v_dot_value_sum) + (ff_s_dot_value_sum))) /\\ ff_s_dot_value_sum = ff_r_dot_value_sum + ff_a_dot_value_sum)))))))) -> (exists ff_code_dot_other ff_scale_dot_other. ((forall fpmp_index_dot_other_pointwise fpmp_left_dot_other_pointwise fpmp_right_dot_other_pointwise fpmp_target_dot_other_pointwise. (exists fpmp_gap_dot_other_pointwise. fpmp_gap_dot_other_pointwise + S fpmp_index_dot_other_pointwise = l) -> (((exists ff_h_fpmp_dot_other_pointwise_left. ff_h_fpmp_dot_other_pointwise_left + S (fpmp_left_dot_other_pointwise) = S ((S (fpmp_index_dot_other_pointwise)) * mc)) /\\ exists ff_q_fpmp_dot_other_pointwise_left. mb = ff_q_fpmp_dot_other_pointwise_left * S ((S (fpmp_index_dot_other_pointwise)) * mc) + (fpmp_left_dot_other_pointwise))) -> (((exists ff_h_fpmp_dot_other_pointwise_right. ff_h_fpmp_dot_other_pointwise_right + S (fpmp_right_dot_other_pointwise) = S ((S (fpmp_index_dot_other_pointwise)) * sc)) /\\ exists ff_q_fpmp_dot_other_pointwise_right. sb = ff_q_fpmp_dot_other_pointwise_right * S ((S (fpmp_index_dot_other_pointwise)) * sc) + (fpmp_right_dot_other_pointwise))) -> (((exists ff_h_fpmp_dot_other_pointwise_target. ff_h_fpmp_dot_other_pointwise_target + S (fpmp_target_dot_other_pointwise) = S ((S (fpmp_index_dot_other_pointwise)) * ff_scale_dot_other)) /\\ exists ff_q_fpmp_dot_other_pointwise_target. ff_code_dot_other = ff_q_fpmp_dot_other_pointwise_target * S ((S (fpmp_index_dot_other_pointwise)) * ff_scale_dot_other) + (fpmp_target_dot_other_pointwise))) -> fpmp_target_dot_other_pointwise = fpmp_left_dot_other_pointwise * fpmp_right_dot_other_pointwise) /\\ (exists ff_u_dot_other_sum ff_v_dot_other_sum. ((((exists ff_h_dot_other_sum_start. ff_h_dot_other_sum_start + S (0) = S ((S (0)) * ff_v_dot_other_sum)) /\\ exists ff_q_dot_other_sum_start. ff_u_dot_other_sum = ff_q_dot_other_sum_start * S ((S (0)) * ff_v_dot_other_sum) + (0))) /\\ ((((exists ff_h_dot_other_sum_terminal. ff_h_dot_other_sum_terminal + S (m) = S ((S (l)) * ff_v_dot_other_sum)) /\\ exists ff_q_dot_other_sum_terminal. ff_u_dot_other_sum = ff_q_dot_other_sum_terminal * S ((S (l)) * ff_v_dot_other_sum) + (m))) /\\ forall ff_i_dot_other_sum. (exists ff_lt_dot_other_sum_bound. ff_lt_dot_other_sum_bound + S ff_i_dot_other_sum = l) -> exists ff_a_dot_other_sum ff_r_dot_other_sum ff_s_dot_other_sum. ((((exists ff_h_dot_other_sum_summand. ff_h_dot_other_sum_summand + S (ff_a_dot_other_sum) = S ((S (ff_i_dot_other_sum)) * ff_scale_dot_other)) /\\ exists ff_q_dot_other_sum_summand. ff_code_dot_other = ff_q_dot_other_sum_summand * S ((S (ff_i_dot_other_sum)) * ff_scale_dot_other) + (ff_a_dot_other_sum))) /\\ ((((exists ff_h_dot_other_sum_partial. ff_h_dot_other_sum_partial + S (ff_r_dot_other_sum) = S ((S (ff_i_dot_other_sum)) * ff_v_dot_other_sum)) /\\ exists ff_q_dot_other_sum_partial. ff_u_dot_other_sum = ff_q_dot_other_sum_partial * S ((S (ff_i_dot_other_sum)) * ff_v_dot_other_sum) + (ff_r_dot_other_sum))) /\\ ((((exists ff_h_dot_other_sum_successor. ff_h_dot_other_sum_successor + S (ff_s_dot_other_sum) = S ((S (S ff_i_dot_other_sum)) * ff_v_dot_other_sum)) /\\ exists ff_q_dot_other_sum_successor. ff_u_dot_other_sum = ff_q_dot_other_sum_successor * S ((S (S ff_i_dot_other_sum)) * ff_v_dot_other_sum) + (ff_s_dot_other_sum))) /\\ ff_s_dot_other_sum = ff_r_dot_other_sum + ff_a_dot_other_sum)))))))) -> n = m",
+      "statement_sha256": "7d526c19ef5c2d1495a7a7a201fe869195c1a157f8eacc9805bde0ddcb780273",
+      "status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "The exact finite dot-product value is independent of its coding witness."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 39,
+      "body_proof_nodes": 67,
+      "campaign_milestone": "T13",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ mb. ∀ mc. ∀ sb. ∀ sc. ∀ l. ∃ n. DotProduct(mb,mc,sb,sc,l,n) ∧ (∀ x. DotProduct(mb,mc,sb,sc,l,x) → n = x)",
+        "defined_statement_sha256": "2af31d6e0ca39b8fbe2b7e5d2857be1b6131e1d05b9625ae02e81100719335df",
+        "definition_uses": {
+          "ND0004": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "8a40343d3cb482060f468b5d8d2f3fe02f76bf740482be0ee67730d0d8c2969d",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0004": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ mb. ∀ mc. ∀ sb. ∀ sc. ∀ l. ∃ n. "
+          },
+          {
+            "definition": "ND0004",
+            "kind": "definition",
+            "text": "DotProduct(mb,mc,sb,sc,l,n)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ (∀ x. "
+          },
+          {
+            "definition": "ND0004",
+            "kind": "definition",
+            "text": "DotProduct(mb,mc,sb,sc,l,x)"
+          },
+          {
+            "kind": "text",
+            "text": " → n = x)"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_dot_product_exists",
+        "beta_dot_product_functional"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_matrix_dot_product_candidate_theorems",
+      "id": "MD0006",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_dot_product_exists_unique",
+      "proof_bundle_node_id": 562,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro mb",
+        "intro mc",
+        "intro sb",
+        "intro sc",
+        "intro l",
+        "specialize beta_dot_product_exists mb",
+        "specialize beta_dot_product_exists mc",
+        "specialize beta_dot_product_exists sb",
+        "specialize beta_dot_product_exists sc",
+        "specialize beta_dot_product_exists l",
+        "cases beta_dot_product_exists",
+        "exists x",
+        "split",
+        "exact beta_dot_product_exists_witness",
+        "intro m",
+        "intro hm",
+        "specialize beta_dot_product_functional mb",
+        "specialize beta_dot_product_functional mc",
+        "specialize beta_dot_product_functional sb",
+        "specialize beta_dot_product_functional sc",
+        "specialize beta_dot_product_functional l",
+        "specialize beta_dot_product_functional x",
+        "specialize beta_dot_product_functional m",
+        "apply beta_dot_product_functional",
+        "exact beta_dot_product_exists_witness",
+        "exact hm"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+      "sources": [
+        {
+          "factory": "make_matrix_dot_product_candidate_theorems",
+          "script_sha256": "2dcdf37d83ef08c73e0239736d9062644eb2a6664290a38e68a815100c927d39",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+          "statement_sha256": "8a40343d3cb482060f468b5d8d2f3fe02f76bf740482be0ee67730d0d8c2969d"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall mb mc sb sc l. exists n. ((exists ff_code_dot_value ff_scale_dot_value. ((forall fpmp_index_dot_value_pointwise fpmp_left_dot_value_pointwise fpmp_right_dot_value_pointwise fpmp_target_dot_value_pointwise. (exists fpmp_gap_dot_value_pointwise. fpmp_gap_dot_value_pointwise + S fpmp_index_dot_value_pointwise = l) -> (((exists ff_h_fpmp_dot_value_pointwise_left. ff_h_fpmp_dot_value_pointwise_left + S (fpmp_left_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * mc)) /\\ exists ff_q_fpmp_dot_value_pointwise_left. mb = ff_q_fpmp_dot_value_pointwise_left * S ((S (fpmp_index_dot_value_pointwise)) * mc) + (fpmp_left_dot_value_pointwise))) -> (((exists ff_h_fpmp_dot_value_pointwise_right. ff_h_fpmp_dot_value_pointwise_right + S (fpmp_right_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * sc)) /\\ exists ff_q_fpmp_dot_value_pointwise_right. sb = ff_q_fpmp_dot_value_pointwise_right * S ((S (fpmp_index_dot_value_pointwise)) * sc) + (fpmp_right_dot_value_pointwise))) -> (((exists ff_h_fpmp_dot_value_pointwise_target. ff_h_fpmp_dot_value_pointwise_target + S (fpmp_target_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * ff_scale_dot_value)) /\\ exists ff_q_fpmp_dot_value_pointwise_target. ff_code_dot_value = ff_q_fpmp_dot_value_pointwise_target * S ((S (fpmp_index_dot_value_pointwise)) * ff_scale_dot_value) + (fpmp_target_dot_value_pointwise))) -> fpmp_target_dot_value_pointwise = fpmp_left_dot_value_pointwise * fpmp_right_dot_value_pointwise) /\\ (exists ff_u_dot_value_sum ff_v_dot_value_sum. ((((exists ff_h_dot_value_sum_start. ff_h_dot_value_sum_start + S (0) = S ((S (0)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_start. ff_u_dot_value_sum = ff_q_dot_value_sum_start * S ((S (0)) * ff_v_dot_value_sum) + (0))) /\\ ((((exists ff_h_dot_value_sum_terminal. ff_h_dot_value_sum_terminal + S (n) = S ((S (l)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_terminal. ff_u_dot_value_sum = ff_q_dot_value_sum_terminal * S ((S (l)) * ff_v_dot_value_sum) + (n))) /\\ forall ff_i_dot_value_sum. (exists ff_lt_dot_value_sum_bound. ff_lt_dot_value_sum_bound + S ff_i_dot_value_sum = l) -> exists ff_a_dot_value_sum ff_r_dot_value_sum ff_s_dot_value_sum. ((((exists ff_h_dot_value_sum_summand. ff_h_dot_value_sum_summand + S (ff_a_dot_value_sum) = S ((S (ff_i_dot_value_sum)) * ff_scale_dot_value)) /\\ exists ff_q_dot_value_sum_summand. ff_code_dot_value = ff_q_dot_value_sum_summand * S ((S (ff_i_dot_value_sum)) * ff_scale_dot_value) + (ff_a_dot_value_sum))) /\\ ((((exists ff_h_dot_value_sum_partial. ff_h_dot_value_sum_partial + S (ff_r_dot_value_sum) = S ((S (ff_i_dot_value_sum)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_partial. ff_u_dot_value_sum = ff_q_dot_value_sum_partial * S ((S (ff_i_dot_value_sum)) * ff_v_dot_value_sum) + (ff_r_dot_value_sum))) /\\ ((((exists ff_h_dot_value_sum_successor. ff_h_dot_value_sum_successor + S (ff_s_dot_value_sum) = S ((S (S ff_i_dot_value_sum)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_successor. ff_u_dot_value_sum = ff_q_dot_value_sum_successor * S ((S (S ff_i_dot_value_sum)) * ff_v_dot_value_sum) + (ff_s_dot_value_sum))) /\\ ff_s_dot_value_sum = ff_r_dot_value_sum + ff_a_dot_value_sum)))))))) /\\ forall m. (exists ff_code_dot_other ff_scale_dot_other. ((forall fpmp_index_dot_other_pointwise fpmp_left_dot_other_pointwise fpmp_right_dot_other_pointwise fpmp_target_dot_other_pointwise. (exists fpmp_gap_dot_other_pointwise. fpmp_gap_dot_other_pointwise + S fpmp_index_dot_other_pointwise = l) -> (((exists ff_h_fpmp_dot_other_pointwise_left. ff_h_fpmp_dot_other_pointwise_left + S (fpmp_left_dot_other_pointwise) = S ((S (fpmp_index_dot_other_pointwise)) * mc)) /\\ exists ff_q_fpmp_dot_other_pointwise_left. mb = ff_q_fpmp_dot_other_pointwise_left * S ((S (fpmp_index_dot_other_pointwise)) * mc) + (fpmp_left_dot_other_pointwise))) -> (((exists ff_h_fpmp_dot_other_pointwise_right. ff_h_fpmp_dot_other_pointwise_right + S (fpmp_right_dot_other_pointwise) = S ((S (fpmp_index_dot_other_pointwise)) * sc)) /\\ exists ff_q_fpmp_dot_other_pointwise_right. sb = ff_q_fpmp_dot_other_pointwise_right * S ((S (fpmp_index_dot_other_pointwise)) * sc) + (fpmp_right_dot_other_pointwise))) -> (((exists ff_h_fpmp_dot_other_pointwise_target. ff_h_fpmp_dot_other_pointwise_target + S (fpmp_target_dot_other_pointwise) = S ((S (fpmp_index_dot_other_pointwise)) * ff_scale_dot_other)) /\\ exists ff_q_fpmp_dot_other_pointwise_target. ff_code_dot_other = ff_q_fpmp_dot_other_pointwise_target * S ((S (fpmp_index_dot_other_pointwise)) * ff_scale_dot_other) + (fpmp_target_dot_other_pointwise))) -> fpmp_target_dot_other_pointwise = fpmp_left_dot_other_pointwise * fpmp_right_dot_other_pointwise) /\\ (exists ff_u_dot_other_sum ff_v_dot_other_sum. ((((exists ff_h_dot_other_sum_start. ff_h_dot_other_sum_start + S (0) = S ((S (0)) * ff_v_dot_other_sum)) /\\ exists ff_q_dot_other_sum_start. ff_u_dot_other_sum = ff_q_dot_other_sum_start * S ((S (0)) * ff_v_dot_other_sum) + (0))) /\\ ((((exists ff_h_dot_other_sum_terminal. ff_h_dot_other_sum_terminal + S (m) = S ((S (l)) * ff_v_dot_other_sum)) /\\ exists ff_q_dot_other_sum_terminal. ff_u_dot_other_sum = ff_q_dot_other_sum_terminal * S ((S (l)) * ff_v_dot_other_sum) + (m))) /\\ forall ff_i_dot_other_sum. (exists ff_lt_dot_other_sum_bound. ff_lt_dot_other_sum_bound + S ff_i_dot_other_sum = l) -> exists ff_a_dot_other_sum ff_r_dot_other_sum ff_s_dot_other_sum. ((((exists ff_h_dot_other_sum_summand. ff_h_dot_other_sum_summand + S (ff_a_dot_other_sum) = S ((S (ff_i_dot_other_sum)) * ff_scale_dot_other)) /\\ exists ff_q_dot_other_sum_summand. ff_code_dot_other = ff_q_dot_other_sum_summand * S ((S (ff_i_dot_other_sum)) * ff_scale_dot_other) + (ff_a_dot_other_sum))) /\\ ((((exists ff_h_dot_other_sum_partial. ff_h_dot_other_sum_partial + S (ff_r_dot_other_sum) = S ((S (ff_i_dot_other_sum)) * ff_v_dot_other_sum)) /\\ exists ff_q_dot_other_sum_partial. ff_u_dot_other_sum = ff_q_dot_other_sum_partial * S ((S (ff_i_dot_other_sum)) * ff_v_dot_other_sum) + (ff_r_dot_other_sum))) /\\ ((((exists ff_h_dot_other_sum_successor. ff_h_dot_other_sum_successor + S (ff_s_dot_other_sum) = S ((S (S ff_i_dot_other_sum)) * ff_v_dot_other_sum)) /\\ exists ff_q_dot_other_sum_successor. ff_u_dot_other_sum = ff_q_dot_other_sum_successor * S ((S (S ff_i_dot_other_sum)) * ff_v_dot_other_sum) + (ff_s_dot_other_sum))) /\\ ff_s_dot_other_sum = ff_r_dot_other_sum + ff_a_dot_other_sum)))))))) -> n = m)",
+      "statement_sha256": "8a40343d3cb482060f468b5d8d2f3fe02f76bf740482be0ee67730d0d8c2969d",
+      "status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "Every pair of coded finite vectors has exactly one natural dot product."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 21,
+      "body_proof_nodes": 34,
+      "campaign_milestone": "T13",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ mb. ∀ mc. ∀ sb. ∀ sc. ∀ n. DotProduct(mb,mc,sb,sc,0,n) → n = 0",
+        "defined_statement_sha256": "3ed42266408be93c6140ddab8563720c3196c0e66e1caef7f18f5170958355e5",
+        "definition_uses": {
+          "ND0004": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "bb69edb801ccd17b3bcdc95e6fdabe1f155a774c6609cd278e452dcc04174ba6",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0004": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ mb. ∀ mc. ∀ sb. ∀ sc. ∀ n. "
+          },
+          {
+            "definition": "ND0004",
+            "kind": "definition",
+            "text": "DotProduct(mb,mc,sb,sc,0,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → n = 0"
+          }
+        ]
+      },
+      "dependencies": [
+        "beta_sum_zero"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_matrix_dot_product_candidate_theorems",
+      "id": "MD0007",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_dot_product_empty",
+      "proof_bundle_node_id": 563,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro mb",
+        "intro mc",
+        "intro sb",
+        "intro sc",
+        "intro n",
+        "intro hdot",
+        "cases hdot",
+        "cases hdot_witness",
+        "cases hdot_witness_witness",
+        "specialize beta_sum_zero x",
+        "specialize beta_sum_zero x1",
+        "specialize beta_sum_zero n",
+        "apply beta_sum_zero",
+        "exact hdot_witness_witness_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+      "sources": [
+        {
+          "factory": "make_matrix_dot_product_candidate_theorems",
+          "script_sha256": "b7062c99bd5e8079a30dc1dcb961e2cb5e6caf5b4dcb2ad7f04b51c5e6b77060",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+          "statement_sha256": "bb69edb801ccd17b3bcdc95e6fdabe1f155a774c6609cd278e452dcc04174ba6"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall mb mc sb sc n. (exists ff_code_dot_empty ff_scale_dot_empty. ((forall fpmp_index_dot_empty_pointwise fpmp_left_dot_empty_pointwise fpmp_right_dot_empty_pointwise fpmp_target_dot_empty_pointwise. (exists fpmp_gap_dot_empty_pointwise. fpmp_gap_dot_empty_pointwise + S fpmp_index_dot_empty_pointwise = 0) -> (((exists ff_h_fpmp_dot_empty_pointwise_left. ff_h_fpmp_dot_empty_pointwise_left + S (fpmp_left_dot_empty_pointwise) = S ((S (fpmp_index_dot_empty_pointwise)) * mc)) /\\ exists ff_q_fpmp_dot_empty_pointwise_left. mb = ff_q_fpmp_dot_empty_pointwise_left * S ((S (fpmp_index_dot_empty_pointwise)) * mc) + (fpmp_left_dot_empty_pointwise))) -> (((exists ff_h_fpmp_dot_empty_pointwise_right. ff_h_fpmp_dot_empty_pointwise_right + S (fpmp_right_dot_empty_pointwise) = S ((S (fpmp_index_dot_empty_pointwise)) * sc)) /\\ exists ff_q_fpmp_dot_empty_pointwise_right. sb = ff_q_fpmp_dot_empty_pointwise_right * S ((S (fpmp_index_dot_empty_pointwise)) * sc) + (fpmp_right_dot_empty_pointwise))) -> (((exists ff_h_fpmp_dot_empty_pointwise_target. ff_h_fpmp_dot_empty_pointwise_target + S (fpmp_target_dot_empty_pointwise) = S ((S (fpmp_index_dot_empty_pointwise)) * ff_scale_dot_empty)) /\\ exists ff_q_fpmp_dot_empty_pointwise_target. ff_code_dot_empty = ff_q_fpmp_dot_empty_pointwise_target * S ((S (fpmp_index_dot_empty_pointwise)) * ff_scale_dot_empty) + (fpmp_target_dot_empty_pointwise))) -> fpmp_target_dot_empty_pointwise = fpmp_left_dot_empty_pointwise * fpmp_right_dot_empty_pointwise) /\\ (exists ff_u_dot_empty_sum ff_v_dot_empty_sum. ((((exists ff_h_dot_empty_sum_start. ff_h_dot_empty_sum_start + S (0) = S ((S (0)) * ff_v_dot_empty_sum)) /\\ exists ff_q_dot_empty_sum_start. ff_u_dot_empty_sum = ff_q_dot_empty_sum_start * S ((S (0)) * ff_v_dot_empty_sum) + (0))) /\\ ((((exists ff_h_dot_empty_sum_terminal. ff_h_dot_empty_sum_terminal + S (n) = S ((S (0)) * ff_v_dot_empty_sum)) /\\ exists ff_q_dot_empty_sum_terminal. ff_u_dot_empty_sum = ff_q_dot_empty_sum_terminal * S ((S (0)) * ff_v_dot_empty_sum) + (n))) /\\ forall ff_i_dot_empty_sum. (exists ff_lt_dot_empty_sum_bound. ff_lt_dot_empty_sum_bound + S ff_i_dot_empty_sum = 0) -> exists ff_a_dot_empty_sum ff_r_dot_empty_sum ff_s_dot_empty_sum. ((((exists ff_h_dot_empty_sum_summand. ff_h_dot_empty_sum_summand + S (ff_a_dot_empty_sum) = S ((S (ff_i_dot_empty_sum)) * ff_scale_dot_empty)) /\\ exists ff_q_dot_empty_sum_summand. ff_code_dot_empty = ff_q_dot_empty_sum_summand * S ((S (ff_i_dot_empty_sum)) * ff_scale_dot_empty) + (ff_a_dot_empty_sum))) /\\ ((((exists ff_h_dot_empty_sum_partial. ff_h_dot_empty_sum_partial + S (ff_r_dot_empty_sum) = S ((S (ff_i_dot_empty_sum)) * ff_v_dot_empty_sum)) /\\ exists ff_q_dot_empty_sum_partial. ff_u_dot_empty_sum = ff_q_dot_empty_sum_partial * S ((S (ff_i_dot_empty_sum)) * ff_v_dot_empty_sum) + (ff_r_dot_empty_sum))) /\\ ((((exists ff_h_dot_empty_sum_successor. ff_h_dot_empty_sum_successor + S (ff_s_dot_empty_sum) = S ((S (S ff_i_dot_empty_sum)) * ff_v_dot_empty_sum)) /\\ exists ff_q_dot_empty_sum_successor. ff_u_dot_empty_sum = ff_q_dot_empty_sum_successor * S ((S (S ff_i_dot_empty_sum)) * ff_v_dot_empty_sum) + (ff_s_dot_empty_sum))) /\\ ff_s_dot_empty_sum = ff_r_dot_empty_sum + ff_a_dot_empty_sum)))))))) -> n = 0",
+      "statement_sha256": "bb69edb801ccd17b3bcdc95e6fdabe1f155a774c6609cd278e452dcc04174ba6",
+      "status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "The exact dot product of two empty finite vectors is zero."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 32,
+      "body_proof_nodes": 43,
+      "campaign_milestone": "T13",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ mb. ∀ mc. ∀ sb. ∀ sc. ∀ l. ∀ n. DotProduct(mb,mc,sb,sc,l,n) → DotProduct(sb,sc,mb,mc,l,n)",
+        "defined_statement_sha256": "f9162a16ed5223bb8a8b611557c7dfb0a011f08f56186807492ff3eb9572d94f",
+        "definition_uses": {
+          "ND0004": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "8f589232c19145adab8c27537c4adc3da97e79ab2b3e5be47679e3a6676bba82",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0004": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ mb. ∀ mc. ∀ sb. ∀ sc. ∀ l. ∀ n. "
+          },
+          {
+            "definition": "ND0004",
+            "kind": "definition",
+            "text": "DotProduct(mb,mc,sb,sc,l,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "ND0004",
+            "kind": "definition",
+            "text": "DotProduct(sb,sc,mb,mc,l,n)"
+          }
+        ]
+      },
+      "dependencies": [
+        "mul_comm"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_matrix_dot_product_candidate_theorems",
+      "id": "MD0008",
+      "independent_lean_bundle_verified": true,
+      "name": "beta_dot_product_commutative",
+      "proof_bundle_node_id": 564,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro mb",
+        "intro mc",
+        "intro sb",
+        "intro sc",
+        "intro l",
+        "intro n",
+        "intro hdot",
+        "cases hdot",
+        "cases hdot_witness",
+        "cases hdot_witness_witness",
+        "exists x",
+        "exists x1",
+        "split",
+        "intro i",
+        "intro a",
+        "intro b",
+        "intro z",
+        "intro hi",
+        "intro ha",
+        "intro hb",
+        "intro hz",
+        "have hproduct : z = b * a",
+        "specialize hdot_witness_witness_left i",
+        "specialize hdot_witness_witness_left b",
+        "specialize hdot_witness_witness_left a",
+        "specialize hdot_witness_witness_left z",
+        "apply hdot_witness_witness_left",
+        "exact hi",
+        "exact hb",
+        "exact ha",
+        "exact hz",
+        "trans b * a",
+        "exact hproduct",
+        "specialize mul_comm b",
+        "specialize mul_comm a",
+        "exact mul_comm",
+        "exact hdot_witness_witness_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+      "sources": [
+        {
+          "factory": "make_matrix_dot_product_candidate_theorems",
+          "script_sha256": "10d067eab9e67632d056203e5d303afbd935ce66c2f92f052ec0068e65737abc",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+          "statement_sha256": "8f589232c19145adab8c27537c4adc3da97e79ab2b3e5be47679e3a6676bba82"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall mb mc sb sc l n. (exists ff_code_dot_value ff_scale_dot_value. ((forall fpmp_index_dot_value_pointwise fpmp_left_dot_value_pointwise fpmp_right_dot_value_pointwise fpmp_target_dot_value_pointwise. (exists fpmp_gap_dot_value_pointwise. fpmp_gap_dot_value_pointwise + S fpmp_index_dot_value_pointwise = l) -> (((exists ff_h_fpmp_dot_value_pointwise_left. ff_h_fpmp_dot_value_pointwise_left + S (fpmp_left_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * mc)) /\\ exists ff_q_fpmp_dot_value_pointwise_left. mb = ff_q_fpmp_dot_value_pointwise_left * S ((S (fpmp_index_dot_value_pointwise)) * mc) + (fpmp_left_dot_value_pointwise))) -> (((exists ff_h_fpmp_dot_value_pointwise_right. ff_h_fpmp_dot_value_pointwise_right + S (fpmp_right_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * sc)) /\\ exists ff_q_fpmp_dot_value_pointwise_right. sb = ff_q_fpmp_dot_value_pointwise_right * S ((S (fpmp_index_dot_value_pointwise)) * sc) + (fpmp_right_dot_value_pointwise))) -> (((exists ff_h_fpmp_dot_value_pointwise_target. ff_h_fpmp_dot_value_pointwise_target + S (fpmp_target_dot_value_pointwise) = S ((S (fpmp_index_dot_value_pointwise)) * ff_scale_dot_value)) /\\ exists ff_q_fpmp_dot_value_pointwise_target. ff_code_dot_value = ff_q_fpmp_dot_value_pointwise_target * S ((S (fpmp_index_dot_value_pointwise)) * ff_scale_dot_value) + (fpmp_target_dot_value_pointwise))) -> fpmp_target_dot_value_pointwise = fpmp_left_dot_value_pointwise * fpmp_right_dot_value_pointwise) /\\ (exists ff_u_dot_value_sum ff_v_dot_value_sum. ((((exists ff_h_dot_value_sum_start. ff_h_dot_value_sum_start + S (0) = S ((S (0)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_start. ff_u_dot_value_sum = ff_q_dot_value_sum_start * S ((S (0)) * ff_v_dot_value_sum) + (0))) /\\ ((((exists ff_h_dot_value_sum_terminal. ff_h_dot_value_sum_terminal + S (n) = S ((S (l)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_terminal. ff_u_dot_value_sum = ff_q_dot_value_sum_terminal * S ((S (l)) * ff_v_dot_value_sum) + (n))) /\\ forall ff_i_dot_value_sum. (exists ff_lt_dot_value_sum_bound. ff_lt_dot_value_sum_bound + S ff_i_dot_value_sum = l) -> exists ff_a_dot_value_sum ff_r_dot_value_sum ff_s_dot_value_sum. ((((exists ff_h_dot_value_sum_summand. ff_h_dot_value_sum_summand + S (ff_a_dot_value_sum) = S ((S (ff_i_dot_value_sum)) * ff_scale_dot_value)) /\\ exists ff_q_dot_value_sum_summand. ff_code_dot_value = ff_q_dot_value_sum_summand * S ((S (ff_i_dot_value_sum)) * ff_scale_dot_value) + (ff_a_dot_value_sum))) /\\ ((((exists ff_h_dot_value_sum_partial. ff_h_dot_value_sum_partial + S (ff_r_dot_value_sum) = S ((S (ff_i_dot_value_sum)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_partial. ff_u_dot_value_sum = ff_q_dot_value_sum_partial * S ((S (ff_i_dot_value_sum)) * ff_v_dot_value_sum) + (ff_r_dot_value_sum))) /\\ ((((exists ff_h_dot_value_sum_successor. ff_h_dot_value_sum_successor + S (ff_s_dot_value_sum) = S ((S (S ff_i_dot_value_sum)) * ff_v_dot_value_sum)) /\\ exists ff_q_dot_value_sum_successor. ff_u_dot_value_sum = ff_q_dot_value_sum_successor * S ((S (S ff_i_dot_value_sum)) * ff_v_dot_value_sum) + (ff_s_dot_value_sum))) /\\ ff_s_dot_value_sum = ff_r_dot_value_sum + ff_a_dot_value_sum)))))))) -> (exists ff_code_dot_reverse ff_scale_dot_reverse. ((forall fpmp_index_dot_reverse_pointwise fpmp_left_dot_reverse_pointwise fpmp_right_dot_reverse_pointwise fpmp_target_dot_reverse_pointwise. (exists fpmp_gap_dot_reverse_pointwise. fpmp_gap_dot_reverse_pointwise + S fpmp_index_dot_reverse_pointwise = l) -> (((exists ff_h_fpmp_dot_reverse_pointwise_left. ff_h_fpmp_dot_reverse_pointwise_left + S (fpmp_left_dot_reverse_pointwise) = S ((S (fpmp_index_dot_reverse_pointwise)) * sc)) /\\ exists ff_q_fpmp_dot_reverse_pointwise_left. sb = ff_q_fpmp_dot_reverse_pointwise_left * S ((S (fpmp_index_dot_reverse_pointwise)) * sc) + (fpmp_left_dot_reverse_pointwise))) -> (((exists ff_h_fpmp_dot_reverse_pointwise_right. ff_h_fpmp_dot_reverse_pointwise_right + S (fpmp_right_dot_reverse_pointwise) = S ((S (fpmp_index_dot_reverse_pointwise)) * mc)) /\\ exists ff_q_fpmp_dot_reverse_pointwise_right. mb = ff_q_fpmp_dot_reverse_pointwise_right * S ((S (fpmp_index_dot_reverse_pointwise)) * mc) + (fpmp_right_dot_reverse_pointwise))) -> (((exists ff_h_fpmp_dot_reverse_pointwise_target. ff_h_fpmp_dot_reverse_pointwise_target + S (fpmp_target_dot_reverse_pointwise) = S ((S (fpmp_index_dot_reverse_pointwise)) * ff_scale_dot_reverse)) /\\ exists ff_q_fpmp_dot_reverse_pointwise_target. ff_code_dot_reverse = ff_q_fpmp_dot_reverse_pointwise_target * S ((S (fpmp_index_dot_reverse_pointwise)) * ff_scale_dot_reverse) + (fpmp_target_dot_reverse_pointwise))) -> fpmp_target_dot_reverse_pointwise = fpmp_left_dot_reverse_pointwise * fpmp_right_dot_reverse_pointwise) /\\ (exists ff_u_dot_reverse_sum ff_v_dot_reverse_sum. ((((exists ff_h_dot_reverse_sum_start. ff_h_dot_reverse_sum_start + S (0) = S ((S (0)) * ff_v_dot_reverse_sum)) /\\ exists ff_q_dot_reverse_sum_start. ff_u_dot_reverse_sum = ff_q_dot_reverse_sum_start * S ((S (0)) * ff_v_dot_reverse_sum) + (0))) /\\ ((((exists ff_h_dot_reverse_sum_terminal. ff_h_dot_reverse_sum_terminal + S (n) = S ((S (l)) * ff_v_dot_reverse_sum)) /\\ exists ff_q_dot_reverse_sum_terminal. ff_u_dot_reverse_sum = ff_q_dot_reverse_sum_terminal * S ((S (l)) * ff_v_dot_reverse_sum) + (n))) /\\ forall ff_i_dot_reverse_sum. (exists ff_lt_dot_reverse_sum_bound. ff_lt_dot_reverse_sum_bound + S ff_i_dot_reverse_sum = l) -> exists ff_a_dot_reverse_sum ff_r_dot_reverse_sum ff_s_dot_reverse_sum. ((((exists ff_h_dot_reverse_sum_summand. ff_h_dot_reverse_sum_summand + S (ff_a_dot_reverse_sum) = S ((S (ff_i_dot_reverse_sum)) * ff_scale_dot_reverse)) /\\ exists ff_q_dot_reverse_sum_summand. ff_code_dot_reverse = ff_q_dot_reverse_sum_summand * S ((S (ff_i_dot_reverse_sum)) * ff_scale_dot_reverse) + (ff_a_dot_reverse_sum))) /\\ ((((exists ff_h_dot_reverse_sum_partial. ff_h_dot_reverse_sum_partial + S (ff_r_dot_reverse_sum) = S ((S (ff_i_dot_reverse_sum)) * ff_v_dot_reverse_sum)) /\\ exists ff_q_dot_reverse_sum_partial. ff_u_dot_reverse_sum = ff_q_dot_reverse_sum_partial * S ((S (ff_i_dot_reverse_sum)) * ff_v_dot_reverse_sum) + (ff_r_dot_reverse_sum))) /\\ ((((exists ff_h_dot_reverse_sum_successor. ff_h_dot_reverse_sum_successor + S (ff_s_dot_reverse_sum) = S ((S (S ff_i_dot_reverse_sum)) * ff_v_dot_reverse_sum)) /\\ exists ff_q_dot_reverse_sum_successor. ff_u_dot_reverse_sum = ff_q_dot_reverse_sum_successor * S ((S (S ff_i_dot_reverse_sum)) * ff_v_dot_reverse_sum) + (ff_s_dot_reverse_sum))) /\\ ff_s_dot_reverse_sum = ff_r_dot_reverse_sum + ff_a_dot_reverse_sum))))))))",
+      "statement_sha256": "8f589232c19145adab8c27537c4adc3da97e79ab2b3e5be47679e3a6676bba82",
+      "status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "Finite natural dot products are constructively symmetric."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 8,
+      "body_proof_nodes": 9,
+      "campaign_milestone": "T13",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ a. ∀ b. ∀ c. ∀ d. ∃ p. ∃ n. SignedDet2(a,b,c,d,p,n)",
+        "defined_statement_sha256": "36460fd50da61ece44fb141fe2cacc8bccd56a2f2c40ae21dd4c319faa64b711",
+        "definition_uses": {
+          "ND0005": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "7864b408f77f88984cc1c2a78d651c1ff00c649866a806be9eec2196c58cc867",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0005": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ a. ∀ b. ∀ c. ∀ d. ∃ p. ∃ n. "
+          },
+          {
+            "definition": "ND0005",
+            "kind": "definition",
+            "text": "SignedDet2(a,b,c,d,p,n)"
+          }
+        ]
+      },
+      "dependencies": [],
+      "enrolled_in_alpha": true,
+      "factory": "make_matrix_dot_product_candidate_theorems",
+      "id": "MD0009",
+      "independent_lean_bundle_verified": true,
+      "name": "signed_matrix_two_determinant_exists",
+      "proof_bundle_node_id": 565,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro a",
+        "intro b",
+        "intro c",
+        "intro d",
+        "exists a * d",
+        "exists b * c",
+        "split",
+        "refl",
+        "refl"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+      "sources": [
+        {
+          "factory": "make_matrix_dot_product_candidate_theorems",
+          "script_sha256": "5facab15629a8e82b9fc447a8b2d48bc1d29fe31fa48b321dfddf573b9d63ebc",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+          "statement_sha256": "7864b408f77f88984cc1c2a78d651c1ff00c649866a806be9eec2196c58cc867"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall a b c d. exists p n. (p = a * d /\\ n = b * c)",
+      "statement_sha256": "7864b408f77f88984cc1c2a78d651c1ff00c649866a806be9eec2196c58cc867",
+      "status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "Every natural 2-by-2 matrix has an exact signed-pair determinant witness."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v20",
+      "body_proof_depth": 22,
+      "body_proof_nodes": 35,
+      "campaign_milestone": "T13",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ a. ∀ b. ∀ c. ∀ d. ∀ p. ∀ n. ∀ q. ∀ m. SignedDet2(a,b,c,d,p,n) → SignedDet2(a,b,c,d,q,m) → p = q ∧ n = m",
+        "defined_statement_sha256": "162ea0a8aea206ed194ce167a6e008d5c734ee4d3f2f4c8b1876a8fea3dc7546",
+        "definition_uses": {
+          "ND0005": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "b231bb05d6335eb3badb484195dd61eb1e32edf727e93ef83bbaf1840532c196",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0005": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ a. ∀ b. ∀ c. ∀ d. ∀ p. ∀ n. ∀ q. ∀ m. "
+          },
+          {
+            "definition": "ND0005",
+            "kind": "definition",
+            "text": "SignedDet2(a,b,c,d,p,n)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "ND0005",
+            "kind": "definition",
+            "text": "SignedDet2(a,b,c,d,q,m)"
+          },
+          {
+            "kind": "text",
+            "text": " → p = q ∧ n = m"
+          }
+        ]
+      },
+      "dependencies": [],
+      "enrolled_in_alpha": true,
+      "factory": "make_matrix_dot_product_candidate_theorems",
+      "id": "MD000A",
+      "independent_lean_bundle_verified": true,
+      "name": "signed_matrix_two_determinant_functional",
+      "proof_bundle_node_id": 566,
+      "proof_bundle_sha256": "1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069",
+      "script": [
+        "intro a",
+        "intro b",
+        "intro c",
+        "intro d",
+        "intro p",
+        "intro n",
+        "intro q",
+        "intro m",
+        "intro hp",
+        "intro hq",
+        "cases hp",
+        "cases hq",
+        "split",
+        "trans a * d",
+        "exact hp_left",
+        "symm",
+        "exact hq_left",
+        "trans b * c",
+        "exact hp_right",
+        "symm",
+        "exact hq_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+      "sources": [
+        {
+          "factory": "make_matrix_dot_product_candidate_theorems",
+          "script_sha256": "da40f1b65ca9e5cab4e7b6f9b89720226661ddbf2e1f06c3c58b81bbccc1c3a4",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/matrix_dot_product_candidate.py",
+          "statement_sha256": "b231bb05d6335eb3badb484195dd61eb1e32edf727e93ef83bbaf1840532c196"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall a b c d p n q m. (p = a * d /\\ n = b * c) -> (q = a * d /\\ m = b * c) -> (p = q /\\ n = m)",
+      "statement_sha256": "b231bb05d6335eb3badb484195dd61eb1e32edf727e93ef83bbaf1840532c196",
+      "status": "Alpha v31 checked-use · first admitted v20 · independently kernel and Lean verified; not Stable",
+      "summary": "The positive/negative natural components of a 2-by-2 determinant are unique."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "beta_dot_product_commutative": {
+      "critical_root_path": [
+        "MD0008"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "beta_dot_product_empty": {
+      "critical_root_path": [
+        "MD0007"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "beta_dot_product_exists": {
+      "critical_root_path": [
+        "MD0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "beta_dot_product_exists_unique"
+      ]
+    },
+    "beta_dot_product_exists_unique": {
+      "critical_root_path": [
+        "MD0004",
+        "MD0006"
+      ],
+      "dependencies": [
+        "beta_dot_product_exists",
+        "beta_dot_product_functional"
+      ],
+      "dependents": []
+    },
+    "beta_dot_product_functional": {
+      "critical_root_path": [
+        "MD0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "beta_dot_product_exists_unique"
+      ]
+    },
+    "beta_matrix_cell_exists": {
+      "critical_root_path": [
+        "MD0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "beta_matrix_cell_exists_unique"
+      ]
+    },
+    "beta_matrix_cell_exists_unique": {
+      "critical_root_path": [
+        "MD0001",
+        "MD0003"
+      ],
+      "dependencies": [
+        "beta_matrix_cell_exists",
+        "beta_matrix_cell_functional"
+      ],
+      "dependents": []
+    },
+    "beta_matrix_cell_functional": {
+      "critical_root_path": [
+        "MD0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "beta_matrix_cell_exists_unique"
+      ]
+    },
+    "signed_matrix_two_determinant_exists": {
+      "critical_root_path": [
+        "MD0009"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "signed_matrix_two_determinant_functional": {
+      "critical_root_path": [
+        "MD000A"
+      ],
+      "dependencies": [],
+      "dependents": []
+    }
+  },
+  "proof_paths": {
+    "MD0001": [
+      "MD0001"
+    ],
+    "MD0002": [
+      "MD0002"
+    ],
+    "MD0003": [
+      "MD0001",
+      "MD0003"
+    ],
+    "MD0004": [
+      "MD0004"
+    ],
+    "MD0005": [
+      "MD0005"
+    ],
+    "MD0006": [
+      "MD0004",
+      "MD0006"
+    ],
+    "MD0007": [
+      "MD0007"
+    ],
+    "MD0008": [
+      "MD0008"
+    ],
+    "MD0009": [
+      "MD0009"
+    ],
+    "MD000A": [
+      "MD000A"
+    ]
+  },
+  "root_names": [
+    "beta_matrix_cell_exists_unique",
+    "signed_matrix_two_determinant_functional",
+    "beta_dot_product_exists_unique"
+  ],
+  "schema": "peano-lab-constructive-next-layer-explorer-v1",
+  "stable_admitted_node_count": 0,
+  "statement_definition_use_count": 10,
+  "tags": {
+    "beta_dot_product_commutative": "MD0008",
+    "beta_dot_product_empty": "MD0007",
+    "beta_dot_product_exists": "MD0004",
+    "beta_dot_product_exists_unique": "MD0006",
+    "beta_dot_product_functional": "MD0005",
+    "beta_matrix_cell_exists": "MD0001",
+    "beta_matrix_cell_exists_unique": "MD0003",
+    "beta_matrix_cell_functional": "MD0002",
+    "signed_matrix_two_determinant_exists": "MD0009",
+    "signed_matrix_two_determinant_functional": "MD000A"
+  }
+}

@@ -1,0 +1,319 @@
+{
+  "bundle": {
+    "body_proof_nodes": 18734,
+    "bytes": 2158014,
+    "dependency_edges_including_packaging": 760,
+    "independent_lean_checked": true,
+    "kernel_calls": 282,
+    "nodes_including_packaging_root": 282,
+    "original_ha_checked": true,
+    "packaging_root_id": 281,
+    "path": "research/arithmetic-library/artifacts/dirichlet-units-proof-bundle-v1.json",
+    "sha256": "232ddd461eb83d97c1a6255a872be7e970b635ce1d4e958c8bed7706419687b7"
+  },
+  "new_theorem_count": 25,
+  "owned_node_ids": {
+    "dirichlet_constant_one_entry_from_divisor_mask": 276,
+    "dirichlet_constant_one_entry_to_divisor_mask": 275,
+    "dirichlet_constant_one_prefix_from_divisor_mask": 278,
+    "dirichlet_constant_one_prefix_to_divisor_mask": 277,
+    "dirichlet_constant_one_realizes_divisor_sum": 280,
+    "dirichlet_constant_one_sum_iff": 279,
+    "dirichlet_constant_one_table_append": 260,
+    "dirichlet_constant_one_table_exists": 262,
+    "dirichlet_constant_one_table_positive_unique": 265,
+    "dirichlet_constant_one_table_reencoding": 264,
+    "dirichlet_constant_one_table_value": 256,
+    "dirichlet_delta_left_table": 273,
+    "dirichlet_delta_right_entry_before_input": 268,
+    "dirichlet_delta_right_last_entry": 269,
+    "dirichlet_delta_right_sum": 271,
+    "dirichlet_delta_right_sum_value": 270,
+    "dirichlet_delta_right_table": 272,
+    "dirichlet_delta_unit_exists": 274,
+    "dirichlet_kronecker_delta_table_append": 261,
+    "dirichlet_kronecker_delta_table_exists": 263,
+    "dirichlet_kronecker_delta_table_one_value": 257,
+    "dirichlet_kronecker_delta_table_other_value": 258,
+    "dirichlet_kronecker_delta_table_positive_unique": 267,
+    "dirichlet_kronecker_delta_table_reencoding": 266,
+    "dirichlet_kronecker_delta_value_exists": 259
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_delta_unit_exists",
+      "node_id": 274,
+      "ordinary_certificate_nodes": 25065,
+      "statement_sha256": "6924256ebdc7a4a8b46c532d5808e5794dea1430b6d1892c764a826191b4d710"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_constant_one_sum_iff",
+      "node_id": 279,
+      "ordinary_certificate_nodes": 3389,
+      "statement_sha256": "f502d0a59a4eb50a35be7b76d39904729a96e3d6d5c91d4e019a6aad9639908f"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_constant_one_realizes_divisor_sum",
+      "node_id": 280,
+      "ordinary_certificate_nodes": 12003,
+      "statement_sha256": "5aafb1de83c084f4d86aef3f3649ebc962a43b64c55c7356c45500c8db072d09"
+    }
+  ],
+  "rows": [
+    {
+      "name": "dirichlet_constant_one_table_value",
+      "node_id": 256,
+      "proof_depth": 20,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "591d307c93f2220579cd9e3174f5433f66cfdf3f9def21bd7193cb4c6396daf5"
+    },
+    {
+      "name": "dirichlet_kronecker_delta_table_one_value",
+      "node_id": 257,
+      "proof_depth": 15,
+      "proof_edges": 22,
+      "proof_nodes": 23,
+      "proof_objects": 23,
+      "reused_objects": 0,
+      "statement_sha256": "08f5c1a5b6f8660c677f33041d96d783d3164b5f3cdc61157397670eb18fa6cc"
+    },
+    {
+      "name": "dirichlet_kronecker_delta_table_other_value",
+      "node_id": 258,
+      "proof_depth": 18,
+      "proof_edges": 21,
+      "proof_nodes": 22,
+      "proof_objects": 22,
+      "reused_objects": 0,
+      "statement_sha256": "c1b7b1a50008867c603a1fd8f6382303f65931f868edab30fbb0dd19265f127d"
+    },
+    {
+      "name": "dirichlet_kronecker_delta_value_exists",
+      "node_id": 259,
+      "proof_depth": 9,
+      "proof_edges": 23,
+      "proof_nodes": 24,
+      "proof_objects": 24,
+      "reused_objects": 0,
+      "statement_sha256": "9fffb7327771b81690d583051a9a95c15580a1c412c5f86c5ec432fc086a8870"
+    },
+    {
+      "name": "dirichlet_constant_one_table_append",
+      "node_id": 260,
+      "proof_depth": 31,
+      "proof_edges": 107,
+      "proof_nodes": 108,
+      "proof_objects": 108,
+      "reused_objects": 0,
+      "statement_sha256": "07b101c8658c419b1f6dba4b72e17bc32a285dde849b8aaa9d551a0923cd6aee"
+    },
+    {
+      "name": "dirichlet_kronecker_delta_table_append",
+      "node_id": 261,
+      "proof_depth": 33,
+      "proof_edges": 139,
+      "proof_nodes": 140,
+      "proof_objects": 140,
+      "reused_objects": 0,
+      "statement_sha256": "00f286a0308359f4aab5a26bcb6d8b8b00eee7abc004da3bd678e005febb9f7c"
+    },
+    {
+      "name": "dirichlet_constant_one_table_exists",
+      "node_id": 262,
+      "proof_depth": 28,
+      "proof_edges": 75,
+      "proof_nodes": 76,
+      "proof_objects": 76,
+      "reused_objects": 0,
+      "statement_sha256": "9aaee3c4df2da5b15404dc0c849514ed690260b2f4eea7a233150583d9a083c4"
+    },
+    {
+      "name": "dirichlet_kronecker_delta_table_exists",
+      "node_id": 263,
+      "proof_depth": 30,
+      "proof_edges": 82,
+      "proof_nodes": 83,
+      "proof_objects": 83,
+      "reused_objects": 0,
+      "statement_sha256": "f813084e32cd4cadc64740d7472c6349add5a56acf621a132b551b21ea9c1a2d"
+    },
+    {
+      "name": "dirichlet_constant_one_table_reencoding",
+      "node_id": 264,
+      "proof_depth": 24,
+      "proof_edges": 47,
+      "proof_nodes": 48,
+      "proof_objects": 48,
+      "reused_objects": 0,
+      "statement_sha256": "d114c3700bb2b9c0be9ba714d08c0fc521d2077d75f5866074ea496406c05116"
+    },
+    {
+      "name": "dirichlet_constant_one_table_positive_unique",
+      "node_id": 265,
+      "proof_depth": 24,
+      "proof_edges": 40,
+      "proof_nodes": 41,
+      "proof_objects": 41,
+      "reused_objects": 0,
+      "statement_sha256": "9315ab0e1162da2d40c7bf40521d9de8f7e9efc90d1c45bbb1f35ff496e3737f"
+    },
+    {
+      "name": "dirichlet_kronecker_delta_table_reencoding",
+      "node_id": 266,
+      "proof_depth": 24,
+      "proof_edges": 59,
+      "proof_nodes": 60,
+      "proof_objects": 60,
+      "reused_objects": 0,
+      "statement_sha256": "c5c6f3c5c4c8c5ea3dc56f76f774dd9e36bfa6073615d0becaeeda22aea5f9a4"
+    },
+    {
+      "name": "dirichlet_kronecker_delta_table_positive_unique",
+      "node_id": 267,
+      "proof_depth": 25,
+      "proof_edges": 72,
+      "proof_nodes": 73,
+      "proof_objects": 73,
+      "reused_objects": 0,
+      "statement_sha256": "6b69052ca9cddbff653eaae86a635952ef6f685cef88550ab51916c066e207a6"
+    },
+    {
+      "name": "dirichlet_delta_right_entry_before_input",
+      "node_id": 268,
+      "proof_depth": 41,
+      "proof_edges": 182,
+      "proof_nodes": 183,
+      "proof_objects": 183,
+      "reused_objects": 0,
+      "statement_sha256": "8d3d256351f40fcd3dee77f70c9ac6b69913bb7041ed8b2724d9771c646ac952"
+    },
+    {
+      "name": "dirichlet_delta_right_last_entry",
+      "node_id": 269,
+      "proof_depth": 31,
+      "proof_edges": 99,
+      "proof_nodes": 100,
+      "proof_objects": 100,
+      "reused_objects": 0,
+      "statement_sha256": "9811a92f27366190d46167981648f9bf62841939630d48de6c9ae5eff8f16161"
+    },
+    {
+      "name": "dirichlet_delta_right_sum_value",
+      "node_id": 270,
+      "proof_depth": 39,
+      "proof_edges": 105,
+      "proof_nodes": 106,
+      "proof_objects": 106,
+      "reused_objects": 0,
+      "statement_sha256": "0cc51f5ae92205742a48cc0829bdf9eb955eb6dff96a58fcf2f1a8f9a1f71cc1"
+    },
+    {
+      "name": "dirichlet_delta_right_sum",
+      "node_id": 271,
+      "proof_depth": 26,
+      "proof_edges": 59,
+      "proof_nodes": 60,
+      "proof_objects": 60,
+      "reused_objects": 0,
+      "statement_sha256": "4c41b9c4dba418293ba182b39be4fd44040ce2541bbf39dfe125285f254e9b2e"
+    },
+    {
+      "name": "dirichlet_delta_right_table",
+      "node_id": 272,
+      "proof_depth": 34,
+      "proof_edges": 55,
+      "proof_nodes": 56,
+      "proof_objects": 56,
+      "reused_objects": 0,
+      "statement_sha256": "efc194f50a4b53a0ad93327f7c5946573c748ecb7aa44b90ea25220e9da2c6a6"
+    },
+    {
+      "name": "dirichlet_delta_left_table",
+      "node_id": 273,
+      "proof_depth": 25,
+      "proof_edges": 41,
+      "proof_nodes": 42,
+      "proof_objects": 42,
+      "reused_objects": 0,
+      "statement_sha256": "4b2721dc3806bd8399c9bab81f2f8153a9b1196a5a7c4a82f9ee02a5be10b989"
+    },
+    {
+      "name": "dirichlet_delta_unit_exists",
+      "node_id": 274,
+      "proof_depth": 18,
+      "proof_edges": 36,
+      "proof_nodes": 37,
+      "proof_objects": 37,
+      "reused_objects": 0,
+      "statement_sha256": "6924256ebdc7a4a8b46c532d5808e5794dea1430b6d1892c764a826191b4d710"
+    },
+    {
+      "name": "dirichlet_constant_one_entry_to_divisor_mask",
+      "node_id": 275,
+      "proof_depth": 43,
+      "proof_edges": 256,
+      "proof_nodes": 257,
+      "proof_objects": 257,
+      "reused_objects": 0,
+      "statement_sha256": "dbe9d1582c91201fa9204a3053cf93349dc77efc478b08dba83c0a251cf9cade"
+    },
+    {
+      "name": "dirichlet_constant_one_entry_from_divisor_mask",
+      "node_id": 276,
+      "proof_depth": 36,
+      "proof_edges": 164,
+      "proof_nodes": 165,
+      "proof_objects": 165,
+      "reused_objects": 0,
+      "statement_sha256": "fdbd1b5bd3f9d599267c79cd86ebf4c894435e16c06342186436a7f270477487"
+    },
+    {
+      "name": "dirichlet_constant_one_prefix_to_divisor_mask",
+      "node_id": 277,
+      "proof_depth": 40,
+      "proof_edges": 69,
+      "proof_nodes": 70,
+      "proof_objects": 70,
+      "reused_objects": 0,
+      "statement_sha256": "02a74e3012a96fa9f1031e96b77c823e4ac3b3add6d3d2f3f1db841987ee25b0"
+    },
+    {
+      "name": "dirichlet_constant_one_prefix_from_divisor_mask",
+      "node_id": 278,
+      "proof_depth": 40,
+      "proof_edges": 69,
+      "proof_nodes": 70,
+      "proof_objects": 70,
+      "reused_objects": 0,
+      "statement_sha256": "32484d737ff69a19766f39379bc5af83fc422d7fba35c13d61734228b9edea94"
+    },
+    {
+      "name": "dirichlet_constant_one_sum_iff",
+      "node_id": 279,
+      "proof_depth": 42,
+      "proof_edges": 125,
+      "proof_nodes": 126,
+      "proof_objects": 126,
+      "reused_objects": 0,
+      "statement_sha256": "f502d0a59a4eb50a35be7b76d39904729a96e3d6d5c91d4e019a6aad9639908f"
+    },
+    {
+      "name": "dirichlet_constant_one_realizes_divisor_sum",
+      "node_id": 280,
+      "proof_depth": 24,
+      "proof_edges": 35,
+      "proof_nodes": 36,
+      "proof_objects": 36,
+      "reused_objects": 0,
+      "statement_sha256": "5aafb1de83c084f4d86aef3f3649ebc962a43b64c55c7356c45500c8db072d09"
+    }
+  ],
+  "slug": "dirichlet-units",
+  "specs_sha256": "954a654694207db14acb799d843520fb12b3ff2233153b07cadb7bb5c7940911"
+}

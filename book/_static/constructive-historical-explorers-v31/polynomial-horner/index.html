@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Constructive polynomial evaluation — Proof Explorer</title>
+  <meta name="description" content="Seven independently checked first-order proofs construct, characterize, and uniquely evaluate every finite beta-coded natural polynomial.">
+  <meta property="og:title" content="Constructive polynomial evaluation — Proof Explorer">
+  <meta property="og:description" content="Seven independently checked first-order proofs construct, characterize, and uniquely evaluate every finite beta-coded natural polynomial.">
+  <meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-horner/">
+  <link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-horner/">
+  <link rel="stylesheet" href="../assets/proofs.css?v=ac7111ec14ff">
+<meta name="proof-publication-scope" content="alpha-v31-historical-first-admission-preserved"></head>
+<body class="family-page polynomial-horner-page">
+  <header class="family-hero">
+    <div class="shell">
+      <nav class="crumbs"><a href="../?v=6c9ebfb3c37e">Proof explorers</a><span>/</span><a data-campaign-link="global" href="../grand-campaign/?v=6c9ebfb3c37e">Grand campaign</a><span>/</span><a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F10&amp;v=6c9ebfb3c37e">Family atlas</a><span>/</span><span>Constructive polynomial evaluation</span></nav>
+      <p class="eyebrow">Horner traces · totality · uniqueness · Constructive arithmetic</p>
+      <h1>Constructive polynomial evaluation</h1>
+      <p class="formula">Horner(b,c,x,ℓ,z) · zᵢ₊₁ = zᵢx + aᵢ</p>
+      <p class="lede">Seven independently checked first-order proofs construct, characterize, and uniquely evaluate every finite beta-coded natural polynomial.</p>
+      <div class="hero-actions">
+        <a class="primary-action" href="explorer/defined/graph.html?target=PH0002&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus&amp;v=6c9ebfb3c37e">Open the definition-aware map</a>
+        <a class="secondary-action" href="explorer/defined/tag/PH0002.html?v=6c9ebfb3c37e">Read the final theorem</a>
+        <a class="secondary-action" data-campaign-link="milestone" href="../grand-campaign/?view=goal&amp;focus=T12&amp;v=6c9ebfb3c37e">See campaign milestone T12</a>
+      </div>
+    </div>
+  </header>
+  <main class="shell family-main"><p class="pa-callout pd-callout" data-current-release="v31">Current library: Alpha v31, 3,796 checked-use theorems; Stable remains 432. Historical first admissions, original proof editions, and non-admitted aliases are preserved. <a href="api/first-admission.json?v=6c9ebfb3c37e">Exact original first-admission records</a>.</p>
+    <section class="view-grid">
+      <article class="view-card featured">
+        <p class="card-kicker">Recommended</p>
+        <h2>Defined mathematical notation</h2>
+        <p>Browse 3 linked conservative definitions and 7 independently checked theorems without losing their exact first-order expansions.</p>
+        <a href="explorer/defined/?v=6c9ebfb3c37e">Browse definitions and theorems →</a>
+        <p><a href="explorer/defined/graph.html?target=PH0002&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=6c9ebfb3c37e">Inspect the local definition DAG →</a></p>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Exact certificate</p>
+        <h2>Fully expanded arithmetic</h2>
+        <p>Inspect all 441 native tactic lines and 25 actual proof prerequisites with every definition fully expanded.</p>
+        <a href="explorer/?v=6c9ebfb3c37e">Open the exact edition →</a>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Focused route</p>
+        <h2>Final dependency cone</h2>
+        <p>Start at theorem <code>PH0002</code> and follow only the lemmas and conservative definitions supporting beta_horner_eval_exists.</p>
+        <a href="explorer/defined/graph.html?target=PH0002&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus&amp;v=6c9ebfb3c37e">Trace prerequisites →</a>
+      </article>
+    </section>
+    <section class="release-note"><strong>Zoom between mathematical scales:</strong> <a data-campaign-link="global" href="../grand-campaign/?v=6c9ebfb3c37e">complete research atlas</a> → <a data-campaign-link="domain" href="../grand-campaign/?view=domain&amp;focus=D04&amp;v=6c9ebfb3c37e">research domain</a> → <a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F10&amp;v=6c9ebfb3c37e">proof family</a> → <a data-campaign-link="goal" data-campaign-goal="T12" href="../grand-campaign/?view=goal&amp;focus=T12&amp;v=6c9ebfb3c37e">T12 milestone</a> → <a href="explorer/defined/graph.html?target=PH0002&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=6c9ebfb3c37e">theorem and definition dependencies</a>.</section>
+    <section class="release-note"><strong>Major independently established statements:</strong> <a href="explorer/defined/tag/PH0005.html?v=6c9ebfb3c37e"><code>PH0005</code> beta_horner_eval_exists_unique</a> · <a href="explorer/defined/tag/PH0007.html?v=6c9ebfb3c37e"><code>PH0007</code> beta_horner_eval_successor_decompose</a> · <a href="explorer/defined/tag/PH0002.html?v=6c9ebfb3c37e"><code>PH0002</code> beta_horner_eval_exists</a>.</section>
+    <section class="release-note"><strong>Independently verified Alpha v31 checked-use theorem family:</strong> 7 dependency-curried kernel-checked theorem bodies · 25 proof prerequisites · 3 linked definitions · 2 definition-dependency arrows · 441 exact tactic lines · first admitted v20 · not Stable. The unchanged intuitionistic kernel and separately compiled Lean verifier independently accept all 590 bundle nodes; SHA-256 <code>1b623064f36e362c1a117daa193b1ee33ee7905ec804ee1ac164b42345b67069</code>.</section>
+    <section class="release-note"><strong>Exact mathematical boundary:</strong> Every displayed theorem was first admitted in Alpha v20, remains independently kernel- and Lean-verified for current Alpha v30 checked use, and has not been promoted to Stable.</section>
+  </main>
+<script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-completed-lower-explorer-v31/", "/constructive-historical-explorers-v31/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v31", "bertrand-postulate": "constructive-historical-explorers-v31", "bertrand-prime-chains": "constructive-historical-explorers-v31", "best-approximation": "constructive-historical-explorers-v31", "binary-digit-extraction": "constructive-historical-explorers-v31", "binary-length": "constructive-historical-explorers-v31", "binary-modular-execution": "constructive-historical-explorers-v31", "binary-modular-exponentiation": "constructive-historical-explorers-v31", "cauchy-davenport": "constructive-historical-explorers-v31", "continued-fractions": "constructive-historical-explorers-v31", "cornacchia": "constructive-historical-explorers-v31", "dirichlet-convolution": "constructive-completed-lower-explorer-v31", "dirichlet-fubini": "constructive-completed-lower-explorer-v31", "dirichlet-inverses": "constructive-completed-lower-explorer-v31", "dirichlet-signed-units": "constructive-completed-lower-explorer-v31", "dirichlet-triangular": "constructive-completed-lower-explorer-v31", "dirichlet-units": "constructive-completed-lower-explorer-v31", "divisor-involutions": "constructive-completed-lower-explorer-v31", "divisor-sums": "constructive-completed-lower-explorer-v31", "eisenstein-integers": "constructive-historical-explorers-v31", "euclidean-complexity": "constructive-historical-explorers-v31", "euclidean-gcd-transport": "constructive-historical-explorers-v31", "euclidean-logarithmic-bound": "constructive-historical-explorers-v31", "euler-units": "constructive-completed-lower-explorer-v31", "exponent-lifting": "constructive-historical-explorers-v31", "finite-support": "constructive-completed-lower-explorer-v31", "four-squares": "constructive-historical-explorers-v31", "gaussian-factorization": "constructive-historical-explorers-v31", "gaussian-integers": "constructive-historical-explorers-v31", "generalized-crt": "constructive-historical-explorers-v31", "generalized-crt-compatibility": "constructive-historical-explorers-v31", "generalized-crt-fold": "constructive-historical-explorers-v31", "hensel-lifting": "constructive-historical-explorers-v31", "integer-linear-algebra": "constructive-historical-explorers-v31", "kummer": "constructive-historical-explorers-v31", "lucas": "constructive-historical-explorers-v31", "matrix-coded-products": "constructive-historical-explorers-v31", "matrix-cofactor-expansion": "constructive-historical-explorers-v31", "matrix-determinant-minors": "constructive-historical-explorers-v31", "matrix-dot-product": "constructive-historical-explorers-v31", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v31", "mobius-inversion": "constructive-completed-lower-explorer-v31", "mobius-values": "constructive-completed-lower-explorer-v31", "multinomial-kummer": "constructive-historical-explorers-v31", "polynomial-hensel": "constructive-historical-explorers-v31", "polynomial-horner": "constructive-historical-explorers-v31", "polynomial-products": "constructive-completed-lower-explorer-v31", "polynomial-taylor-hensel": "constructive-historical-explorers-v31", "prime-count-chebyshev": "constructive-historical-explorers-v31", "prime-enumeration": "constructive-historical-explorers-v31", "prime-field-polynomials": "constructive-completed-lower-explorer-v31", "prime-fields": "constructive-completed-lower-explorer-v31", "prime-valuation-support": "constructive-historical-explorers-v31", "primes-three-mod-four": "constructive-historical-explorers-v31", "pythagorean-fermat-four": "constructive-historical-explorers-v31", "quadratic-reciprocity": "constructive-historical-explorers-v31", "rectangular-sums": "constructive-completed-lower-explorer-v31", "signed-sums": "constructive-completed-lower-explorer-v31", "signed-weighted-sums": "constructive-completed-lower-explorer-v31", "squarefree-kernels": "constructive-historical-explorers-v31", "supplementary-laws": "constructive-historical-explorers-v31", "totient-products": "constructive-historical-explorers-v31", "two-squares": "constructive-historical-explorers-v31"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-completed-lower-campaign-v31/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body>
+</html>

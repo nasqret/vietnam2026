@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PD0014 — Product(b,c,l,z) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/euler-units/explorer/defined/definition/PD0014.html"><meta name="proof-publication-scope" content="alpha-v31-checked-use"></head>
+<body class="pa-defined-proof-site" data-family="euler-units"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=6c9ebfb3c37e">Definitions and proofs</a>
+       <a href="../graph.html?v=6c9ebfb3c37e">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=6c9ebfb3c37e">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D01&amp;v=6c9ebfb3c37e">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F02&amp;v=6c9ebfb3c37e">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G014" href="../../../../grand-campaign/?view=goal&amp;focus=G014&amp;v=6c9ebfb3c37e">G014 milestone</a></nav>
+  <p class="pd-tag">PD0014</p><h1>Product(b,c,l,z)</h1>
+  <p>z is the product of a beta-coded prefix of length l.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∃ ff_u_defined_product. ∃ ff_v_defined_product. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(ff_u_defined_product,ff_v_defined_product,0,1)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(ff_u_defined_product,ff_v_defined_product,l,z)</a> ∧ (∀ x. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=6c9ebfb3c37e">Lt(x,l)</a> → ∃ y. ∃ n. ∃ m. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(b,c,x,y)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(ff_u_defined_product,ff_v_defined_product,x,n)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(ff_u_defined_product,ff_v_defined_product,S x,m)</a> ∧ m = n · y))))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>exists ff_u_defined_product ff_v_defined_product. ((((exists ff_h_defined_product_start. ff_h_defined_product_start + S (1) = S ((S (0)) * ff_v_defined_product)) /\ exists ff_q_defined_product_start. ff_u_defined_product = ff_q_defined_product_start * S ((S (0)) * ff_v_defined_product) + (1))) /\ ((((exists ff_h_defined_product_terminal. ff_h_defined_product_terminal + S (z) = S ((S (l)) * ff_v_defined_product)) /\ exists ff_q_defined_product_terminal. ff_u_defined_product = ff_q_defined_product_terminal * S ((S (l)) * ff_v_defined_product) + (z))) /\ forall ff_i_defined_product. (exists ff_lt_defined_product_bound. ff_lt_defined_product_bound + S ff_i_defined_product = l) -&gt; exists ff_p_defined_product ff_r_defined_product ff_s_defined_product. ((((exists ff_h_defined_product_factor. ff_h_defined_product_factor + S (ff_p_defined_product) = S ((S (ff_i_defined_product)) * c)) /\ exists ff_q_defined_product_factor. b = ff_q_defined_product_factor * S ((S (ff_i_defined_product)) * c) + (ff_p_defined_product))) /\ ((((exists ff_h_defined_product_partial. ff_h_defined_product_partial + S (ff_r_defined_product) = S ((S (ff_i_defined_product)) * ff_v_defined_product)) /\ exists ff_q_defined_product_partial. ff_u_defined_product = ff_q_defined_product_partial * S ((S (ff_i_defined_product)) * ff_v_defined_product) + (ff_r_defined_product))) /\ ((((exists ff_h_defined_product_successor. ff_h_defined_product_successor + S (ff_s_defined_product) = S ((S (S ff_i_defined_product)) * ff_v_defined_product)) /\ exists ff_q_defined_product_successor. ff_u_defined_product = ff_q_defined_product_successor * S ((S (S ff_i_defined_product)) * ff_v_defined_product) + (ff_s_defined_product))) /\ ff_s_defined_product = ff_r_defined_product * ff_p_defined_product)))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=6c9ebfb3c37e">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(b,c,i,x)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0020.html?v=6c9ebfb3c37e">Pow(a,e,z)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/EU0017.html?v=6c9ebfb3c37e">EU0017 · euler_unit_product_coprime</a><a class="pd-chip" href="../tag/EU001E.html?v=6c9ebfb3c37e">EU001E · euler_unit_count_product_balance</a><a class="pd-chip" href="../tag/EU001F.html?v=6c9ebfb3c37e">EU001F · euler_coprime_totient_power_value</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity PD0014.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>f39381e906a4c89c28a06167c706e2e14937eaa40a879fc5658d85f9892c1653</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-completed-lower-explorer-v31/", "/constructive-historical-explorers-v31/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v31", "bertrand-postulate": "constructive-historical-explorers-v31", "bertrand-prime-chains": "constructive-historical-explorers-v31", "best-approximation": "constructive-historical-explorers-v31", "binary-digit-extraction": "constructive-historical-explorers-v31", "binary-length": "constructive-historical-explorers-v31", "binary-modular-execution": "constructive-historical-explorers-v31", "binary-modular-exponentiation": "constructive-historical-explorers-v31", "cauchy-davenport": "constructive-historical-explorers-v31", "continued-fractions": "constructive-historical-explorers-v31", "cornacchia": "constructive-historical-explorers-v31", "dirichlet-convolution": "constructive-completed-lower-explorer-v31", "dirichlet-fubini": "constructive-completed-lower-explorer-v31", "dirichlet-inverses": "constructive-completed-lower-explorer-v31", "dirichlet-signed-units": "constructive-completed-lower-explorer-v31", "dirichlet-triangular": "constructive-completed-lower-explorer-v31", "dirichlet-units": "constructive-completed-lower-explorer-v31", "divisor-involutions": "constructive-completed-lower-explorer-v31", "divisor-sums": "constructive-completed-lower-explorer-v31", "eisenstein-integers": "constructive-historical-explorers-v31", "euclidean-complexity": "constructive-historical-explorers-v31", "euclidean-gcd-transport": "constructive-historical-explorers-v31", "euclidean-logarithmic-bound": "constructive-historical-explorers-v31", "euler-units": "constructive-completed-lower-explorer-v31", "exponent-lifting": "constructive-historical-explorers-v31", "finite-support": "constructive-completed-lower-explorer-v31", "four-squares": "constructive-historical-explorers-v31", "gaussian-factorization": "constructive-historical-explorers-v31", "gaussian-integers": "constructive-historical-explorers-v31", "generalized-crt": "constructive-historical-explorers-v31", "generalized-crt-compatibility": "constructive-historical-explorers-v31", "generalized-crt-fold": "constructive-historical-explorers-v31", "hensel-lifting": "constructive-historical-explorers-v31", "integer-linear-algebra": "constructive-historical-explorers-v31", "kummer": "constructive-historical-explorers-v31", "lucas": "constructive-historical-explorers-v31", "matrix-coded-products": "constructive-historical-explorers-v31", "matrix-cofactor-expansion": "constructive-historical-explorers-v31", "matrix-determinant-minors": "constructive-historical-explorers-v31", "matrix-dot-product": "constructive-historical-explorers-v31", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v31", "mobius-inversion": "constructive-completed-lower-explorer-v31", "mobius-values": "constructive-completed-lower-explorer-v31", "multinomial-kummer": "constructive-historical-explorers-v31", "polynomial-hensel": "constructive-historical-explorers-v31", "polynomial-horner": "constructive-historical-explorers-v31", "polynomial-products": "constructive-completed-lower-explorer-v31", "polynomial-taylor-hensel": "constructive-historical-explorers-v31", "prime-count-chebyshev": "constructive-historical-explorers-v31", "prime-enumeration": "constructive-historical-explorers-v31", "prime-field-polynomials": "constructive-completed-lower-explorer-v31", "prime-fields": "constructive-completed-lower-explorer-v31", "prime-valuation-support": "constructive-historical-explorers-v31", "primes-three-mod-four": "constructive-historical-explorers-v31", "pythagorean-fermat-four": "constructive-historical-explorers-v31", "quadratic-reciprocity": "constructive-historical-explorers-v31", "rectangular-sums": "constructive-completed-lower-explorer-v31", "signed-sums": "constructive-completed-lower-explorer-v31", "signed-weighted-sums": "constructive-completed-lower-explorer-v31", "squarefree-kernels": "constructive-historical-explorers-v31", "supplementary-laws": "constructive-historical-explorers-v31", "totient-products": "constructive-historical-explorers-v31", "two-squares": "constructive-historical-explorers-v31"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-completed-lower-campaign-v31/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body>
+</html>

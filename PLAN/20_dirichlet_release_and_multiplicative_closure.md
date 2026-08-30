@@ -130,6 +130,19 @@ Proof workers retain
 their original isolation and all resource limits. Existing catalogue artifacts
 are neither overwritten nor accepted merely from a receipt.
 
+The fresh publication from pushed commit `4893bfaa` then passed all 72 proof
+jobs, with maximum observed proof RSS 1,440,268,288 bytes. All three mandatory
+same-live website phases passed: 108 completed-family tests (69.095 seconds,
+924,598,272 bytes peak RSS), all 155 historical tests including the 44 reviewed
+graph cases (114.349 seconds, 816,185,344 bytes), and both atlas tests (11.027
+seconds, 602,587,136 bytes). All three output trees were atomically installed.
+The delivery-only 63-family hub subsequently passed in a separate command
+with exit zero. The optional outer `/usr/bin/time -l` statistics wrapper
+reported `sysctl kern.clockrate: Operation not permitted` after publication
+finished; this is not recorded as a clean wrapper exit or a failed proof/UI
+gate. Its privileged statistics query was not retried. The separate remaining
+service/navigation checks and full historical staging workflow precede upload.
+
 Peano-next was deployed from pushed commit `51108a20`, immutable application
 `a-e4012dd8e319`: all 573 staged/live files (160,377,764 bytes) match, and the
 four directly sampled HTTPS resources match their staged bytes. All observed
@@ -157,3 +170,14 @@ are real authoring checks, not a final release receipt or Alpha admission.
 Production adoption, all eight fresh final proof windows and the mandatory
 same-live reader tests remain required. The eleven additive conservative
 definitions and combined-map formatter have separate executable audits.
+
+All 1,690 distinct mathematical regression cases passed in 43 bounded windows.
+All six ordinary principal authoring diagnostics also passed the original
+empty-context HA check, including multiplicativity of values, tables, and
+the extensionally unique convolution. Their largest observed RSS was
+1,549,647,872 bytes and their longest wall time was 124.432328 seconds. One
+successful Cartesian-product diagnostic was followed by the same optional
+OS-timer permission error; the actual proof result and post-run source hashes
+passed, and no clean outer timer exit is claimed. These authoring results do
+not replace the eight fresh final production checks or admit the 90 new
+statements to Alpha.

@@ -1,0 +1,484 @@
+{
+  "bundle": {
+    "body_proof_nodes": 18180,
+    "bytes": 2756953,
+    "dependency_edges_including_packaging": 712,
+    "independent_lean_checked": true,
+    "kernel_calls": 270,
+    "nodes_including_packaging_root": 270,
+    "original_ha_checked": true,
+    "packaging_root_id": 269,
+    "path": "research/arithmetic-library/artifacts/dirichlet-convolution-proof-bundle-v1.json",
+    "sha256": "313316e788a10dc281dfb0541a447bad9b7b26bbbd68b1030db89d8d28c5a38b"
+  },
+  "new_theorem_count": 40,
+  "owned_node_ids": {
+    "dirichlet_convolution_entry_complement": 259,
+    "dirichlet_convolution_entry_exists": 235,
+    "dirichlet_convolution_entry_from_nondivisor": 231,
+    "dirichlet_convolution_entry_from_quotient": 230,
+    "dirichlet_convolution_entry_functional": 234,
+    "dirichlet_convolution_entry_omitted_value": 232,
+    "dirichlet_convolution_entry_past_support_zero": 265,
+    "dirichlet_convolution_entry_positive_source_extensional": 248,
+    "dirichlet_convolution_entry_quotient_product": 233,
+    "dirichlet_convolution_entry_zero": 229,
+    "dirichlet_convolution_from_padded_prefix": 267,
+    "dirichlet_convolution_padded_prefix_iff": 268,
+    "dirichlet_convolution_positive_source_extensional": 250,
+    "dirichlet_convolution_positive_source_transport": 251,
+    "dirichlet_convolution_prefix_append": 237,
+    "dirichlet_convolution_prefix_complement_reindex": 261,
+    "dirichlet_convolution_prefix_exists": 238,
+    "dirichlet_convolution_prefix_extensional": 240,
+    "dirichlet_convolution_prefix_lookup": 239,
+    "dirichlet_convolution_prefix_omitted_entry": 243,
+    "dirichlet_convolution_prefix_positive_source_extensional": 249,
+    "dirichlet_convolution_prefix_quotient_entry": 242,
+    "dirichlet_convolution_prefix_restrict": 241,
+    "dirichlet_convolution_prefix_value_from_entry": 260,
+    "dirichlet_convolution_prefix_zero_constructor": 236,
+    "dirichlet_convolution_prefix_zero_tail": 266,
+    "dirichlet_convolution_sum_commutative": 262,
+    "dirichlet_convolution_sum_exists": 244,
+    "dirichlet_convolution_sum_exists_unique": 246,
+    "dirichlet_convolution_sum_functional": 245,
+    "dirichlet_convolution_sum_swap": 263,
+    "dirichlet_convolution_sum_zero_excluded": 247,
+    "dirichlet_convolution_table_append": 253,
+    "dirichlet_convolution_table_commutative": 264,
+    "dirichlet_convolution_table_exists": 254,
+    "dirichlet_convolution_table_exists_extensionally_unique": 257,
+    "dirichlet_convolution_table_extensional": 256,
+    "dirichlet_convolution_table_lookup": 255,
+    "dirichlet_convolution_table_restrict": 258,
+    "dirichlet_convolution_table_zero_constructor": 252
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_convolution_table_exists_extensionally_unique",
+      "node_id": 257,
+      "ordinary_certificate_nodes": 14437,
+      "statement_sha256": "dd3b6ce98b1cda129a5105bc176ffbb4e7ca7d9549ea61a8ddcfc53a4a1ced13"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_convolution_table_commutative",
+      "node_id": 264,
+      "ordinary_certificate_nodes": 21266,
+      "statement_sha256": "bcbe8d62a9c065aa28bd6caf8450e86381156e555ae1b4bcc6067a08aa6bbb40"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_convolution_padded_prefix_iff",
+      "node_id": 268,
+      "ordinary_certificate_nodes": 15043,
+      "statement_sha256": "81ea53acd86ba6b094a55b9de9d69ee97c444f5a9f5eedfa3e5e6c9afcb9002e"
+    }
+  ],
+  "rows": [
+    {
+      "name": "dirichlet_convolution_entry_zero",
+      "node_id": 229,
+      "proof_depth": 7,
+      "proof_edges": 7,
+      "proof_nodes": 8,
+      "proof_objects": 8,
+      "reused_objects": 0,
+      "statement_sha256": "b6cce57c83e06f64cba67954de7ea85df169192e5ff1ebc3ef322921f1e8a134"
+    },
+    {
+      "name": "dirichlet_convolution_entry_from_quotient",
+      "node_id": 230,
+      "proof_depth": 22,
+      "proof_edges": 25,
+      "proof_nodes": 26,
+      "proof_objects": 26,
+      "reused_objects": 0,
+      "statement_sha256": "caca752332a833f5c3b1688cd29543f6de78c7eac0d7309f295d0eccf3821f6d"
+    },
+    {
+      "name": "dirichlet_convolution_entry_from_nondivisor",
+      "node_id": 231,
+      "proof_depth": 9,
+      "proof_edges": 9,
+      "proof_nodes": 10,
+      "proof_objects": 10,
+      "reused_objects": 0,
+      "statement_sha256": "46545ce637a8fc0d38f67cfc84658600c1a539bbe34f1e9cb7b262ac4697d61b"
+    },
+    {
+      "name": "dirichlet_convolution_entry_omitted_value",
+      "node_id": 232,
+      "proof_depth": 32,
+      "proof_edges": 65,
+      "proof_nodes": 66,
+      "proof_objects": 66,
+      "reused_objects": 0,
+      "statement_sha256": "f6de70c960a4a229beb39b68b336387b90cdabd6a15ffcbce9f43f61ddc454c6"
+    },
+    {
+      "name": "dirichlet_convolution_entry_quotient_product",
+      "node_id": 233,
+      "proof_depth": 33,
+      "proof_edges": 192,
+      "proof_nodes": 193,
+      "proof_objects": 193,
+      "reused_objects": 0,
+      "statement_sha256": "90d7a7090ae4ba86c6e91a778e3132a4c8a075d300bc0aacbcb329678e85df86"
+    },
+    {
+      "name": "dirichlet_convolution_entry_functional",
+      "node_id": 234,
+      "proof_depth": 30,
+      "proof_edges": 71,
+      "proof_nodes": 72,
+      "proof_objects": 72,
+      "reused_objects": 0,
+      "statement_sha256": "b7de33a90851ed698d7a8d278f64df82eb6eb60597c381b03e985b58a4b9c20f"
+    },
+    {
+      "name": "dirichlet_convolution_entry_exists",
+      "node_id": 235,
+      "proof_depth": 34,
+      "proof_edges": 99,
+      "proof_nodes": 100,
+      "proof_objects": 100,
+      "reused_objects": 0,
+      "statement_sha256": "fb7bc5bdfbb2586a86695974a91d16719eb6189fbde2312efc8ed0fe06ba8b64"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_zero_constructor",
+      "node_id": 236,
+      "proof_depth": 24,
+      "proof_edges": 49,
+      "proof_nodes": 50,
+      "proof_objects": 50,
+      "reused_objects": 0,
+      "statement_sha256": "f0381df9eef396925f5fd16a2891a8683d81a3f53219445fc3c8511715102cf8"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_append",
+      "node_id": 237,
+      "proof_depth": 40,
+      "proof_edges": 175,
+      "proof_nodes": 176,
+      "proof_objects": 176,
+      "reused_objects": 0,
+      "statement_sha256": "cbd6622669bf4d846cc728652f5792da8d07d0d043fe7795bdb3ab796636b2ff"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_exists",
+      "node_id": 238,
+      "proof_depth": 26,
+      "proof_edges": 61,
+      "proof_nodes": 62,
+      "proof_objects": 62,
+      "reused_objects": 0,
+      "statement_sha256": "5d71df6c16221c88381a9655b865904b4e799509b1656f93618ed965a008c8bb"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_lookup",
+      "node_id": 239,
+      "proof_depth": 21,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "c1fc945749c3cc04dc884ae1a8b48abef9c83a07e65fb1999528a5daf9ec76d1"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_extensional",
+      "node_id": 240,
+      "proof_depth": 25,
+      "proof_edges": 48,
+      "proof_nodes": 49,
+      "proof_objects": 49,
+      "reused_objects": 0,
+      "statement_sha256": "8d7cfcb0eb6849d321677a1736006c47c1f37f9fbf736cac41796a60596a4525"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_restrict",
+      "node_id": 241,
+      "proof_depth": 34,
+      "proof_edges": 68,
+      "proof_nodes": 69,
+      "proof_objects": 69,
+      "reused_objects": 0,
+      "statement_sha256": "71172209a7cac8d1e00b20aceddf0cc665f4162f3b2a13eebe446453f4dabdb3"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_quotient_entry",
+      "node_id": 242,
+      "proof_depth": 38,
+      "proof_edges": 104,
+      "proof_nodes": 105,
+      "proof_objects": 105,
+      "reused_objects": 0,
+      "statement_sha256": "aff45b120265c6f55f1a4f9a870c8acd79a6f106a4a268cd55d8e8c5af1c5f81"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_omitted_entry",
+      "node_id": 243,
+      "proof_depth": 22,
+      "proof_edges": 57,
+      "proof_nodes": 58,
+      "proof_objects": 58,
+      "reused_objects": 0,
+      "statement_sha256": "ce1a9362125f6ab5d756f6ad2b7e06900591fca70072bd9ae6451cb0a61d57ea"
+    },
+    {
+      "name": "dirichlet_convolution_sum_exists",
+      "node_id": 244,
+      "proof_depth": 19,
+      "proof_edges": 45,
+      "proof_nodes": 46,
+      "proof_objects": 46,
+      "reused_objects": 0,
+      "statement_sha256": "d946632aa1396c8cfa30d1cb1f82bc1383c5bae8b529f2ebbcbaafd7fc5e4f7e"
+    },
+    {
+      "name": "dirichlet_convolution_sum_functional",
+      "node_id": 245,
+      "proof_depth": 55,
+      "proof_edges": 99,
+      "proof_nodes": 100,
+      "proof_objects": 100,
+      "reused_objects": 0,
+      "statement_sha256": "6c9f60ca8c5e766119d2e59d6bab92004f4e7108997d9dbbb475ee77d9d5a266"
+    },
+    {
+      "name": "dirichlet_convolution_sum_exists_unique",
+      "node_id": 246,
+      "proof_depth": 23,
+      "proof_edges": 38,
+      "proof_nodes": 39,
+      "proof_objects": 39,
+      "reused_objects": 0,
+      "statement_sha256": "2f33c7fba0740a4b1f9c4e429e4e2ec41a8a1290ae96ec44e2dfc103d67907fa"
+    },
+    {
+      "name": "dirichlet_convolution_sum_zero_excluded",
+      "node_id": 247,
+      "proof_depth": 10,
+      "proof_edges": 14,
+      "proof_nodes": 15,
+      "proof_objects": 15,
+      "reused_objects": 0,
+      "statement_sha256": "c51581d4ceaf871d6879ae1cc72dc7b6fe1949dc1d09cc500696ab2e1950f40f"
+    },
+    {
+      "name": "dirichlet_convolution_entry_positive_source_extensional",
+      "node_id": 248,
+      "proof_depth": 43,
+      "proof_edges": 332,
+      "proof_nodes": 333,
+      "proof_objects": 333,
+      "reused_objects": 0,
+      "statement_sha256": "328f820c6cbb5a3fdaf5bbd5582d7fa3cf0c31e77c1c3040ff467c45988a2685"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_positive_source_extensional",
+      "node_id": 249,
+      "proof_depth": 35,
+      "proof_edges": 66,
+      "proof_nodes": 67,
+      "proof_objects": 67,
+      "reused_objects": 0,
+      "statement_sha256": "f52e78b75f669d6ee41e0007a482ed7d334b59dadbd3e11651050a42f3270f9d"
+    },
+    {
+      "name": "dirichlet_convolution_positive_source_extensional",
+      "node_id": 250,
+      "proof_depth": 64,
+      "proof_edges": 113,
+      "proof_nodes": 114,
+      "proof_objects": 114,
+      "reused_objects": 0,
+      "statement_sha256": "635bb97f7e138da0de5ca75648b84eb0216689251097759faa8a859febef3249"
+    },
+    {
+      "name": "dirichlet_convolution_positive_source_transport",
+      "node_id": 251,
+      "proof_depth": 31,
+      "proof_edges": 66,
+      "proof_nodes": 67,
+      "proof_objects": 67,
+      "reused_objects": 0,
+      "statement_sha256": "8451fcb58644a7b0856ca2eadb5460d990de8687fd517d9b0ef56847f11520dd"
+    },
+    {
+      "name": "dirichlet_convolution_table_zero_constructor",
+      "node_id": 252,
+      "proof_depth": 21,
+      "proof_edges": 27,
+      "proof_nodes": 28,
+      "proof_objects": 28,
+      "reused_objects": 0,
+      "statement_sha256": "f3bcf8933a4d49c98b05f3e58d329ba3b098086dc1b143e58bb1e9caa141fa02"
+    },
+    {
+      "name": "dirichlet_convolution_table_append",
+      "node_id": 253,
+      "proof_depth": 45,
+      "proof_edges": 190,
+      "proof_nodes": 191,
+      "proof_objects": 191,
+      "reused_objects": 0,
+      "statement_sha256": "20f3315ecce5a92905044012f3b45ff85ae53b01b4bfc28c0151760360f05f6b"
+    },
+    {
+      "name": "dirichlet_convolution_table_exists",
+      "node_id": 254,
+      "proof_depth": 25,
+      "proof_edges": 79,
+      "proof_nodes": 80,
+      "proof_objects": 80,
+      "reused_objects": 0,
+      "statement_sha256": "c3e1d13fbb6de6ae4f9ce6dfdf5ce56b930caff2138078591b016874b53878d2"
+    },
+    {
+      "name": "dirichlet_convolution_table_lookup",
+      "node_id": 255,
+      "proof_depth": 21,
+      "proof_edges": 35,
+      "proof_nodes": 36,
+      "proof_objects": 36,
+      "reused_objects": 0,
+      "statement_sha256": "c0c7ca3dfd6ed7bd24868764d5c5ebf0ef4da4571d7a403186d8e63562561b82"
+    },
+    {
+      "name": "dirichlet_convolution_table_extensional",
+      "node_id": 256,
+      "proof_depth": 59,
+      "proof_edges": 115,
+      "proof_nodes": 116,
+      "proof_objects": 116,
+      "reused_objects": 0,
+      "statement_sha256": "753bd4a933f61fba6a2485c9b58727379bc1cb4d7d6312905994737a0bcf06ed"
+    },
+    {
+      "name": "dirichlet_convolution_table_exists_extensionally_unique",
+      "node_id": 257,
+      "proof_depth": 20,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "dd3b6ce98b1cda129a5105bc176ffbb4e7ca7d9549ea61a8ddcfc53a4a1ced13"
+    },
+    {
+      "name": "dirichlet_convolution_table_restrict",
+      "node_id": 258,
+      "proof_depth": 44,
+      "proof_edges": 122,
+      "proof_nodes": 123,
+      "proof_objects": 123,
+      "reused_objects": 0,
+      "statement_sha256": "6f40305ce333617d4f471641799c384206b7a927c2beaaf5456cd736e04cefb5"
+    },
+    {
+      "name": "dirichlet_convolution_entry_complement",
+      "node_id": 259,
+      "proof_depth": 37,
+      "proof_edges": 238,
+      "proof_nodes": 239,
+      "proof_objects": 239,
+      "reused_objects": 0,
+      "statement_sha256": "8ba4cd4e2141b14efd889e504731ecbb33b1e8c64633e51b8104e654111c1d90"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_value_from_entry",
+      "node_id": 260,
+      "proof_depth": 25,
+      "proof_edges": 62,
+      "proof_nodes": 63,
+      "proof_objects": 63,
+      "reused_objects": 0,
+      "statement_sha256": "1031f3adc64b35d907a3589a5332f0c25c50ff83804551a62eecddb134e2291e"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_complement_reindex",
+      "node_id": 261,
+      "proof_depth": 38,
+      "proof_edges": 102,
+      "proof_nodes": 103,
+      "proof_objects": 103,
+      "reused_objects": 0,
+      "statement_sha256": "5eab7645b915584ea550798f03ea61c5f26288d65dac0b5219ff120ca21338c6"
+    },
+    {
+      "name": "dirichlet_convolution_sum_commutative",
+      "node_id": 262,
+      "proof_depth": 29,
+      "proof_edges": 67,
+      "proof_nodes": 68,
+      "proof_objects": 68,
+      "reused_objects": 0,
+      "statement_sha256": "14e45612a6d150c7350945923f93283dfd2d53e18b31f81495672de7a98aa391"
+    },
+    {
+      "name": "dirichlet_convolution_sum_swap",
+      "node_id": 263,
+      "proof_depth": 23,
+      "proof_edges": 50,
+      "proof_nodes": 51,
+      "proof_objects": 51,
+      "reused_objects": 0,
+      "statement_sha256": "d83b302944f143f9eb017574e9a4fff611324918f8f07ec0917c5febc7f80e49"
+    },
+    {
+      "name": "dirichlet_convolution_table_commutative",
+      "node_id": 264,
+      "proof_depth": 45,
+      "proof_edges": 83,
+      "proof_nodes": 84,
+      "proof_objects": 84,
+      "reused_objects": 0,
+      "statement_sha256": "bcbe8d62a9c065aa28bd6caf8450e86381156e555ae1b4bcc6067a08aa6bbb40"
+    },
+    {
+      "name": "dirichlet_convolution_entry_past_support_zero",
+      "node_id": 265,
+      "proof_depth": 37,
+      "proof_edges": 61,
+      "proof_nodes": 62,
+      "proof_objects": 62,
+      "reused_objects": 0,
+      "statement_sha256": "82e5b6a7354cae241952ed70570b1b3adcbe94157e56ccbc6cf551837ff64e30"
+    },
+    {
+      "name": "dirichlet_convolution_prefix_zero_tail",
+      "node_id": 266,
+      "proof_depth": 48,
+      "proof_edges": 85,
+      "proof_nodes": 86,
+      "proof_objects": 86,
+      "reused_objects": 0,
+      "statement_sha256": "fc60c6d4c5ce245d19ad205f02cab5189de926410364f704f06c4f4dad479a88"
+    },
+    {
+      "name": "dirichlet_convolution_from_padded_prefix",
+      "node_id": 267,
+      "proof_depth": 32,
+      "proof_edges": 94,
+      "proof_nodes": 95,
+      "proof_objects": 95,
+      "reused_objects": 0,
+      "statement_sha256": "d608392e0ad4134e4f072d400d56135d4f93469100620d38edbcc8f6f9729b5b"
+    },
+    {
+      "name": "dirichlet_convolution_padded_prefix_iff",
+      "node_id": 268,
+      "proof_depth": 30,
+      "proof_edges": 88,
+      "proof_nodes": 89,
+      "proof_objects": 89,
+      "reused_objects": 0,
+      "statement_sha256": "81ea53acd86ba6b094a55b9de9d69ee97c444f5a9f5eedfa3e5e6c9afcb9002e"
+    }
+  ],
+  "slug": "dirichlet-convolution",
+  "specs_sha256": "8780d9e343234b030e0cd2de518df0ddd9c5c5b4bee89eb00251f770d3ff29ce"
+}

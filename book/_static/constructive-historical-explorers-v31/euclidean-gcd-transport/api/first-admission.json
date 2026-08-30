@@ -1,0 +1,310 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v22": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+  },
+  "per_theorem": [
+    {
+      "name": "euclidean_divisor_remainder_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0001"
+    },
+    {
+      "name": "euclidean_divisor_dividend_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0002"
+    },
+    {
+      "name": "euclidean_common_divisor_forward",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0003"
+    },
+    {
+      "name": "euclidean_common_divisor_backward",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0004"
+    },
+    {
+      "name": "euclidean_common_divisor_iff",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0005"
+    },
+    {
+      "name": "euclidean_gcd_step_forward",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0006"
+    },
+    {
+      "name": "euclidean_gcd_step_backward",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0007"
+    },
+    {
+      "name": "euclidean_gcd_step_iff",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0008"
+    },
+    {
+      "name": "euclidean_gcd_step_output_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0009"
+    },
+    {
+      "name": "euclidean_gcd_zero_terminal_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT000A"
+    },
+    {
+      "name": "euclidean_execution_output_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT000B"
+    },
+    {
+      "name": "euclidean_beta_state_functional",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT000C"
+    },
+    {
+      "name": "euclidean_trace_prefix_gcd_invariant",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT000D"
+    },
+    {
+      "name": "euclidean_trace_initial_state_is_gcd",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT000E"
+    },
+    {
+      "name": "euclidean_trace_terminal_gcd_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT000F"
+    },
+    {
+      "name": "euclidean_execution_terminal_identified",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0010"
+    },
+    {
+      "name": "euclidean_anchored_execution_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0011"
+    },
+    {
+      "name": "euclidean_anchored_execution_linear_bound",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0012"
+    },
+    {
+      "name": "euclidean_anchored_execution_gcd_correct",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0013"
+    },
+    {
+      "name": "euclidean_anchored_execution_state_correct",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v22",
+      "tag": "GT0014"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 309644,
+    "path": "book/_static/constructive-transport-layer-explorer/euclidean-gcd-transport/api/corpus.json",
+    "sha256": "f3e287ca92637e17be24706faf0f718b9fde85abf613b910a2a347efb6ee2ec7"
+  },
+  "source_corpus_fields": {
+    "alpha_first_enrolled_version": "v22",
+    "alpha_first_enrollment_catalog_sha256": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+  },
+  "source_family_fields": {
+    "alpha_first_enrolled_version": "v22"
+  },
+  "source_manifest": {
+    "bytes": 38703,
+    "path": "book/_static/constructive-transport-layer-explorer/manifest.json",
+    "sha256": "868405ab8cbf7cdcdfe830ff5772dd1be9812757c755555541c3e55e801081f0"
+  },
+  "source_manifest_fields": {
+    "alpha_first_enrolled_version": "v22",
+    "first_enrollment_catalog_sha256": "fd0e385e3d0c2d614bfa2754a2c3b70939b9437076ec53501082ddfb5bf9ae22"
+  }
+}

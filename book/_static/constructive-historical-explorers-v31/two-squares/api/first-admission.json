@@ -1,0 +1,1713 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v13": "cad57a21657e2df09f01174069efcfed194d87b68c0b4042b234df5759583e5a",
+    "v15": "0123e5938f43cf67833751e2a6102d6598ac24c9be6db9a0d353ec3f55e5f32c",
+    "v19": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+    "v23": "818da349674b1ef33c17fa85b2e9a0a6653370046d88e7814300297f7bc7f4d2"
+  },
+  "per_theorem": [
+    {
+      "name": "even_square_is_four_multiple",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0000"
+    },
+    {
+      "name": "odd_square_is_four_multiple_plus_one",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0001"
+    },
+    {
+      "name": "square_mod_four_zero_or_one",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0002"
+    },
+    {
+      "name": "sum_two_squares_mod_four_cases",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0003"
+    },
+    {
+      "name": "sum_two_squares_not_four_mod_three",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0004"
+    },
+    {
+      "name": "prime_mod_four_one_minus_one_square_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0005"
+    },
+    {
+      "name": "prime_mod_four_one_bounded_minus_one_square_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0006"
+    },
+    {
+      "name": "predecessor_square_congruence_yields_divisible_norm",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0007"
+    },
+    {
+      "name": "prime_mod_four_one_divisible_two_square_norm_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS0008"
+    },
+    {
+      "name": "prime_mod_four_one_bounded_divisible_two_square_norm_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0009"
+    },
+    {
+      "name": "positive_multiple_below_twice_equals_base",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000A"
+    },
+    {
+      "name": "bounded_divisible_two_square_norm_equals_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000B"
+    },
+    {
+      "name": "prime_is_not_natural_square",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000C"
+    },
+    {
+      "name": "natural_square_monotone_expanded",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000D"
+    },
+    {
+      "name": "prime_floor_square_strictly_below_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000E"
+    },
+    {
+      "name": "prime_floor_bounded_coordinate_square_strict",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000F"
+    },
+    {
+      "name": "two_strict_values_sum_below_double",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000G"
+    },
+    {
+      "name": "prime_floor_bounded_two_square_norm_below_double",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000H"
+    },
+    {
+      "name": "floor_square_successor_grid_strictly_exceeds_input",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000I"
+    },
+    {
+      "name": "floor_square_oversized_grid_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS000J"
+    },
+    {
+      "name": "prime_floor_bounded_divisible_norm_represents_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000K"
+    },
+    {
+      "name": "finite_bounded_into_oversized_not_injective",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS000L"
+    },
+    {
+      "name": "floor_square_oversized_bounded_grid_not_injective",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS000M"
+    },
+    {
+      "name": "finite_bounded_into_collision_from_constructive_decision",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS000N"
+    },
+    {
+      "name": "finite_prefix_collision_succ",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS000O"
+    },
+    {
+      "name": "finite_prefix_last_occurrence_collision",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS000P"
+    },
+    {
+      "name": "finite_prefix_injective_extend_fresh",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS000Q"
+    },
+    {
+      "name": "finite_prefix_collision_or_injective",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS000R"
+    },
+    {
+      "name": "finite_bounded_into_oversized_collision",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS000S"
+    },
+    {
+      "name": "floor_square_oversized_bounded_grid_collision",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000T"
+    },
+    {
+      "name": "affine_grid_point_remainder_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000U"
+    },
+    {
+      "name": "beta_affine_residue_grid_extend",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000V"
+    },
+    {
+      "name": "beta_affine_residue_grid_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000W"
+    },
+    {
+      "name": "beta_affine_residue_grid_bounded",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000X"
+    },
+    {
+      "name": "prime_floor_affine_residue_grid_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000Y"
+    },
+    {
+      "name": "prime_floor_affine_residue_grid_collision",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS000Z"
+    },
+    {
+      "name": "equal_affine_remainders_balanced",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0010"
+    },
+    {
+      "name": "balanced_zero_congruence_implies_multiple",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS0011"
+    },
+    {
+      "name": "multiple_implies_balanced_zero_congruence",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS0012"
+    },
+    {
+      "name": "negative_one_scaled_square_identity",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0013"
+    },
+    {
+      "name": "negative_one_scaled_square_congruent_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0014"
+    },
+    {
+      "name": "balanced_linear_congruence_implies_squared_congruence",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0015"
+    },
+    {
+      "name": "balanced_zero_sum_implies_squared_congruence",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS0016"
+    },
+    {
+      "name": "negative_one_congruent_square_norm_multiple",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0017"
+    },
+    {
+      "name": "negative_one_linear_congruence_norm_multiple",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0018"
+    },
+    {
+      "name": "negative_one_opposite_linear_congruence_norm_multiple",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0019"
+    },
+    {
+      "name": "natural_absolute_difference_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001A"
+    },
+    {
+      "name": "bounded_natural_absolute_difference",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001B"
+    },
+    {
+      "name": "affine_collision_difference_linear_or_opposite",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001C"
+    },
+    {
+      "name": "affine_collision_absolute_difference_norm_multiple",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001D"
+    },
+    {
+      "name": "flat_square_index_row_not_at_least_width",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001E"
+    },
+    {
+      "name": "flat_square_index_row_below_width",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001F"
+    },
+    {
+      "name": "absolute_difference_zero_forces_coordinate_equality",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001G"
+    },
+    {
+      "name": "nonzero_coordinate_pair_has_positive_square_norm",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001H"
+    },
+    {
+      "name": "distinct_flat_indices_have_positive_difference_norm",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001I"
+    },
+    {
+      "name": "strict_successor_coordinate_bound_is_weak_bound",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001J"
+    },
+    {
+      "name": "shared_beta_collision_remainders_equal",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001K"
+    },
+    {
+      "name": "equal_remainder_affine_values_balanced_congruent",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001L"
+    },
+    {
+      "name": "prime_floor_decoded_affine_collision_represents_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001M"
+    },
+    {
+      "name": "prime_floor_affine_grid_collision_represents_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001N"
+    },
+    {
+      "name": "prime_mod_four_one_is_sum_of_two_squares",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001O"
+    },
+    {
+      "name": "two_square_add_swap_nested",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS001P"
+    },
+    {
+      "name": "two_square_sum_square_expands",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS001Q"
+    },
+    {
+      "name": "two_square_absolute_difference_square_balance",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS001R"
+    },
+    {
+      "name": "two_square_cross_product_interchange",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS001S"
+    },
+    {
+      "name": "two_square_product_expands",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS001T"
+    },
+    {
+      "name": "two_square_product_norm_blocks",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS001U"
+    },
+    {
+      "name": "two_square_sum_square_blocks",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS001V"
+    },
+    {
+      "name": "brahmagupta_fibonacci_two_square_identity",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "TS001W"
+    },
+    {
+      "name": "two_square_representation_multiplicatively_closed",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001X"
+    },
+    {
+      "name": "zero_one_and_two_have_two_square_representations",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS001Y"
+    },
+    {
+      "name": "every_natural_square_is_sum_of_two_squares",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS001Z"
+    },
+    {
+      "name": "prime_is_two_or_odd",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0020"
+    },
+    {
+      "name": "prime_mod_four_trichotomy",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0021"
+    },
+    {
+      "name": "two_square_scaled_norm_identity",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0022"
+    },
+    {
+      "name": "negative_one_norm_multiple_yields_predecessor_residue",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0023"
+    },
+    {
+      "name": "prime_divisible_two_square_norm_unit_coordinate_yields_negative_one_root",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0024"
+    },
+    {
+      "name": "three_mod_four_prime_has_no_negative_one_root",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0025"
+    },
+    {
+      "name": "three_mod_four_prime_norm_divisor_forces_second_coordinate",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0026"
+    },
+    {
+      "name": "three_mod_four_prime_divides_two_square_norm_divides_both",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0027"
+    },
+    {
+      "name": "prime_is_two_squares_iff_two_or_one_mod_four",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v19",
+      "tag": "TS0028"
+    },
+    {
+      "name": "two_square_add_left_comm",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS0029"
+    },
+    {
+      "name": "two_square_mul_left_comm",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002A"
+    },
+    {
+      "name": "two_square_cross_products_equal",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002B"
+    },
+    {
+      "name": "two_square_product_norm_expanded",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002C"
+    },
+    {
+      "name": "two_square_balanced_difference_identity",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002D"
+    },
+    {
+      "name": "two_square_product_difference_forward",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002E"
+    },
+    {
+      "name": "two_square_product_difference_reverse",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002F"
+    },
+    {
+      "name": "two_square_product_explicit_witness",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002G"
+    },
+    {
+      "name": "two_square_product_is_two_square",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002H"
+    },
+    {
+      "name": "two_square_representations_closed_under_multiplication",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002I"
+    },
+    {
+      "name": "beta_two_square_prefix_drop_last",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v23",
+      "tag": "TS002J"
+    },
+    {
+      "name": "beta_witnessed_two_square_prefix_implies_pointwise",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002K"
+    },
+    {
+      "name": "beta_two_square_prefix_last_represented",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v23",
+      "tag": "TS002L"
+    },
+    {
+      "name": "beta_two_square_represented_factor_product",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v23",
+      "tag": "TS002M"
+    },
+    {
+      "name": "beta_witnessed_two_square_factor_product",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002N"
+    },
+    {
+      "name": "prime_two_or_one_mod_four_is_sum_of_two_squares",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS002O"
+    },
+    {
+      "name": "beta_all_prime_entry_is_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v23",
+      "tag": "TS002P"
+    },
+    {
+      "name": "beta_admissible_prime_factor_product_is_two_square",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v23",
+      "tag": "TS002Q"
+    },
+    {
+      "name": "represented_factor_product_times_square_is_two_square",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002R"
+    },
+    {
+      "name": "beta_grouped_prime_square_factor_product_is_two_square",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002S"
+    },
+    {
+      "name": "beta_product_adjacent_equal_pair_decomposes_as_square",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002T"
+    },
+    {
+      "name": "beta_two_square_prefix_append_equal_pair",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS002U"
+    },
+    {
+      "name": "positive_number_with_admissible_prime_divisors_is_two_square",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v23",
+      "tag": "TS002V"
+    },
+    {
+      "name": "prime_divisor_of_prime_forces_equality",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS002W"
+    },
+    {
+      "name": "distinct_prime_power_valuation_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS002X"
+    },
+    {
+      "name": "positive_double_at_least_two",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS002Y"
+    },
+    {
+      "name": "even_positive_prime_valuation_has_square_divisor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS002Z"
+    },
+    {
+      "name": "prime_square_divisibility_forces_suffix_prime_divisor",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS0030"
+    },
+    {
+      "name": "beta_sorted_prime_prefix_divisor_equals_bounded_last",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS0031"
+    },
+    {
+      "name": "even_valuation_sorted_terminal_prime_has_equal_predecessor",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS0032"
+    },
+    {
+      "name": "pairing_double_equals_two_mul",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0033"
+    },
+    {
+      "name": "even_double_sum_reflects_even_tail",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0034"
+    },
+    {
+      "name": "distinct_prime_factor_even_valuation_reflects_prefix",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0035"
+    },
+    {
+      "name": "square_factor_even_valuation_reflects_cofactor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0036"
+    },
+    {
+      "name": "three_mod_four_number_not_equal_represented",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0037"
+    },
+    {
+      "name": "all_bad_prime_even_valuations_strip_represented_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0038"
+    },
+    {
+      "name": "all_bad_prime_even_valuations_strip_square_factor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS0039"
+    },
+    {
+      "name": "all_bad_prime_even_valuation_value_eq_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003A"
+    },
+    {
+      "name": "prime_mod_four_good_or_three",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003B"
+    },
+    {
+      "name": "all_bad_prime_even_two_square_sufficiency_bounded",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003C"
+    },
+    {
+      "name": "positive_number_with_even_bad_prime_valuations_is_two_square",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003D"
+    },
+    {
+      "name": "nonzero_two_square_iff_even_three_mod_four_prime_valuations",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003E"
+    },
+    {
+      "name": "two_square_iff_zero_or_even_three_mod_four_prime_valuations",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003F"
+    },
+    {
+      "name": "two_square_self_square_zero_reflects",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS003G"
+    },
+    {
+      "name": "two_square_norm_zero_iff_coordinates_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS003H"
+    },
+    {
+      "name": "prime_power_valuation_square_even",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003I"
+    },
+    {
+      "name": "two_square_common_factor_norm_identity",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003J"
+    },
+    {
+      "name": "two_square_common_divisor_extracts_squared_factor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003K"
+    },
+    {
+      "name": "two_square_common_squared_factor_divides_norm",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "TS003L"
+    },
+    {
+      "name": "two_square_representation_preserved_by_square_factor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003M"
+    },
+    {
+      "name": "three_mod_four_prime_two_square_norm_extracts_squared_factor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003N"
+    },
+    {
+      "name": "three_mod_four_prime_nonzero_two_square_norm_extracts_nonzero_quotient",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003O"
+    },
+    {
+      "name": "prime_power_valuation_square_factor_shift",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003P"
+    },
+    {
+      "name": "prime_power_valuation_square_factor_preserves_evenness",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003Q"
+    },
+    {
+      "name": "three_mod_four_prime_nonzero_norm_positive_valuation_extracts",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003R"
+    },
+    {
+      "name": "prime_square_times_nonzero_strictly_increases",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003S"
+    },
+    {
+      "name": "three_mod_four_prime_two_square_norm_valuation_even_bounded",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003T"
+    },
+    {
+      "name": "three_mod_four_prime_two_square_norm_valuation_even",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003U"
+    },
+    {
+      "name": "three_mod_four_prime_represented_nonzero_valuation_even",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "TS003V"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 2455790,
+    "path": "book/_static/constructive-frontier-explorer/two-squares/api/corpus.json",
+    "sha256": "d6589c8dd111a50edfa5e3c5e10c7928d5cce52b667a424f5eb04614b789f886"
+  },
+  "source_corpus_fields": {
+    "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+    "historical_alpha_edition_version": "v19"
+  },
+  "source_family_fields": {
+    "historical_alpha_edition_version": "v19"
+  },
+  "source_manifest": {
+    "bytes": 319521,
+    "path": "book/_static/constructive-frontier-explorer/manifest.json",
+    "sha256": "416aba94c6a451d7080d7503fd1d093e822fc2ad5afb07fa92bada0bda34e021"
+  },
+  "source_manifest_fields": {
+    "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+    "historical_alpha_edition_version": "v19"
+  }
+}

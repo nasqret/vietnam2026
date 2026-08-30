@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Full constructive simple-root Hensel lifting — Proof Explorer</title>
+  <meta name="description" content="Evaluate actual signed polynomials, derive the derivative inverse from nonvanishing modulo the prime, and construct the unique canonical lift at every positive prime-power precision.">
+  <meta property="og:title" content="Full constructive simple-root Hensel lifting — Proof Explorer">
+  <meta property="og:description" content="Evaluate actual signed polynomials, derive the derivative inverse from nonvanishing modulo the prime, and construct the unique canonical lift at every positive prime-power precision.">
+  <meta property="og:image" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/assets/proofs-og.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/hensel-lifting/">
+  <link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/hensel-lifting/">
+  <link rel="stylesheet" href="../assets/proofs.css?v=ac7111ec14ff">
+<meta name="proof-publication-scope" content="alpha-v31-historical-first-admission-preserved"></head>
+<body class="family-page hensel-lifting-page">
+  <header class="family-hero">
+    <div class="shell">
+      <nav class="crumbs"><a href="../?v=6c9ebfb3c37e">Proof explorers</a><span>/</span><a data-campaign-link="global" href="../grand-campaign/?v=6c9ebfb3c37e">Grand campaign</a><span>/</span><a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F10&amp;v=6c9ebfb3c37e">Family atlas</a><span>/</span><span>Full constructive simple-root Hensel lifting</span></nav>
+      <p class="eyebrow">Integer polynomials · unrestricted roots · every prime power · Constructive arithmetic</p>
+      <h1>Full constructive simple-root Hensel lifting</h1>
+      <p class="formula">f(a)≡0 (mod p) ∧ f′(a)≢0 (mod p) ⇒ ∀k&gt;0. ∃!r&lt;pᵏ. r≡a (mod p) ∧ f(r)≡0 (mod pᵏ)</p>
+      <p class="lede">Evaluate actual signed polynomials, derive the derivative inverse from nonvanishing modulo the prime, and construct the unique canonical lift at every positive prime-power precision.</p>
+      <div class="hero-actions">
+        <a class="primary-action" href="explorer/defined/graph.html?target=HL0028&amp;view=neighborhood&amp;definitions=selected&amp;edges=focus&amp;v=6c9ebfb3c37e">Open the definition-aware map</a>
+        <a class="secondary-action" href="explorer/defined/tag/HL0028.html?v=6c9ebfb3c37e">Read the final theorem</a>
+        <a class="secondary-action" data-campaign-link="milestone" href="../grand-campaign/?view=goal&amp;focus=G095&amp;v=6c9ebfb3c37e">See campaign milestone G095</a>
+      </div>
+    </div>
+  </header>
+  <main class="shell family-main"><p class="pa-callout pd-callout" data-current-release="v31">Current library: Alpha v31, 3,796 checked-use theorems; Stable remains 432. Historical first admissions, original proof editions, and non-admitted aliases are preserved. <a href="api/first-admission.json?v=6c9ebfb3c37e">Exact original first-admission records</a>.</p>
+    <section class="view-grid">
+      <article class="view-card featured">
+        <p class="card-kicker">Recommended</p>
+        <h2>Defined mathematical notation</h2>
+        <p>Browse 25 linked conservative definitions and 40 independently checked theorems without losing their exact first-order expansions.</p>
+        <a href="explorer/defined/?v=6c9ebfb3c37e">Browse definitions and theorems →</a>
+        <p><a href="explorer/defined/graph.html?target=HL0028&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=6c9ebfb3c37e">Inspect the local definition DAG →</a></p>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Exact certificate</p>
+        <h2>Fully expanded arithmetic</h2>
+        <p>Inspect all 2692 native tactic lines and 197 actual proof prerequisites with every definition fully expanded.</p>
+        <a href="explorer/?v=6c9ebfb3c37e">Open the exact edition →</a>
+      </article>
+      <article class="view-card">
+        <p class="card-kicker">Focused route</p>
+        <h2>Final dependency cone</h2>
+        <p>Start at theorem <code>HL0028</code> and follow only the lemmas and conservative definitions supporting integer_polynomial_prime_simple_root_lifts_all_positive_powers.</p>
+        <a href="explorer/defined/graph.html?target=HL0028&amp;view=prerequisites&amp;definitions=selected&amp;edges=focus&amp;v=6c9ebfb3c37e">Trace prerequisites →</a>
+      </article>
+    </section>
+    <section class="release-note"><strong>Zoom between mathematical scales:</strong> <a data-campaign-link="global" href="../grand-campaign/?v=6c9ebfb3c37e">complete research atlas</a> → <a data-campaign-link="domain" href="../grand-campaign/?view=domain&amp;focus=D04&amp;v=6c9ebfb3c37e">research domain</a> → <a data-campaign-link="family" href="../grand-campaign/?view=family&amp;focus=F10&amp;v=6c9ebfb3c37e">proof family</a> → <a data-campaign-link="goal" data-campaign-goal="G095" href="../grand-campaign/?view=goal&amp;focus=G095&amp;v=6c9ebfb3c37e">G095 milestone</a> → <a href="explorer/defined/graph.html?target=HL0028&amp;view=neighborhood&amp;definitions=visible&amp;edges=focus&amp;v=6c9ebfb3c37e">theorem and definition dependencies</a>.</section>
+    <section class="release-note"><strong>Major independently established statements:</strong> <a href="explorer/defined/tag/HL0023.html?v=6c9ebfb3c37e"><code>HL0023</code> integer_polynomial_prime_power_hensel_lift_exists_unique</a> · <a href="explorer/defined/tag/HL0024.html?v=6c9ebfb3c37e"><code>HL0024</code> integer_polynomial_prime_power_hensel_iterated_exists_unique</a> · <a href="explorer/defined/tag/HL0028.html?v=6c9ebfb3c37e"><code>HL0028</code> integer_polynomial_prime_simple_root_lifts_all_positive_powers</a>.</section>
+    <section class="release-note"><strong>Independently verified Alpha v31 checked-use theorem family:</strong> 40 dependency-curried kernel-checked theorem bodies · 197 proof prerequisites · 25 linked definitions · 38 definition-dependency arrows · 2692 exact tactic lines · first admitted v27 · not Stable. The unchanged intuitionistic kernel and separately compiled Lean verifier independently accept all 1224 bundle nodes; SHA-256 <code>c4711433c92b67d2ebeb30131669c60563c70e0464dafa851d417fb88fb21a6d</code>.</section>
+    <section class="release-note"><strong>Exact mathematical boundary:</strong> The derivative-nonzero criterion supplies no inverse or power witness: both are constructed. Roots may be arbitrary natural representatives of signed integer polynomials. Singular-root classification and p-adic completion are separate milestones.</section>
+  </main>
+<script>
+(function () {
+  "use strict";
+  var marker = "/constructive-second-wave-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-completed-lower-explorer-v31/", "/constructive-historical-explorers-v31/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v31", "bertrand-postulate": "constructive-historical-explorers-v31", "bertrand-prime-chains": "constructive-historical-explorers-v31", "best-approximation": "constructive-historical-explorers-v31", "binary-digit-extraction": "constructive-historical-explorers-v31", "binary-length": "constructive-historical-explorers-v31", "binary-modular-execution": "constructive-historical-explorers-v31", "binary-modular-exponentiation": "constructive-historical-explorers-v31", "cauchy-davenport": "constructive-historical-explorers-v31", "continued-fractions": "constructive-historical-explorers-v31", "cornacchia": "constructive-historical-explorers-v31", "dirichlet-convolution": "constructive-completed-lower-explorer-v31", "dirichlet-fubini": "constructive-completed-lower-explorer-v31", "dirichlet-inverses": "constructive-completed-lower-explorer-v31", "dirichlet-signed-units": "constructive-completed-lower-explorer-v31", "dirichlet-triangular": "constructive-completed-lower-explorer-v31", "dirichlet-units": "constructive-completed-lower-explorer-v31", "divisor-involutions": "constructive-completed-lower-explorer-v31", "divisor-sums": "constructive-completed-lower-explorer-v31", "eisenstein-integers": "constructive-historical-explorers-v31", "euclidean-complexity": "constructive-historical-explorers-v31", "euclidean-gcd-transport": "constructive-historical-explorers-v31", "euclidean-logarithmic-bound": "constructive-historical-explorers-v31", "euler-units": "constructive-completed-lower-explorer-v31", "exponent-lifting": "constructive-historical-explorers-v31", "finite-support": "constructive-completed-lower-explorer-v31", "four-squares": "constructive-historical-explorers-v31", "gaussian-factorization": "constructive-historical-explorers-v31", "gaussian-integers": "constructive-historical-explorers-v31", "generalized-crt": "constructive-historical-explorers-v31", "generalized-crt-compatibility": "constructive-historical-explorers-v31", "generalized-crt-fold": "constructive-historical-explorers-v31", "hensel-lifting": "constructive-historical-explorers-v31", "integer-linear-algebra": "constructive-historical-explorers-v31", "kummer": "constructive-historical-explorers-v31", "lucas": "constructive-historical-explorers-v31", "matrix-coded-products": "constructive-historical-explorers-v31", "matrix-cofactor-expansion": "constructive-historical-explorers-v31", "matrix-determinant-minors": "constructive-historical-explorers-v31", "matrix-dot-product": "constructive-historical-explorers-v31", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v31", "mobius-inversion": "constructive-completed-lower-explorer-v31", "mobius-values": "constructive-completed-lower-explorer-v31", "multinomial-kummer": "constructive-historical-explorers-v31", "polynomial-hensel": "constructive-historical-explorers-v31", "polynomial-horner": "constructive-historical-explorers-v31", "polynomial-products": "constructive-completed-lower-explorer-v31", "polynomial-taylor-hensel": "constructive-historical-explorers-v31", "prime-count-chebyshev": "constructive-historical-explorers-v31", "prime-enumeration": "constructive-historical-explorers-v31", "prime-field-polynomials": "constructive-completed-lower-explorer-v31", "prime-fields": "constructive-completed-lower-explorer-v31", "prime-valuation-support": "constructive-historical-explorers-v31", "primes-three-mod-four": "constructive-historical-explorers-v31", "pythagorean-fermat-four": "constructive-historical-explorers-v31", "quadratic-reciprocity": "constructive-historical-explorers-v31", "rectangular-sums": "constructive-completed-lower-explorer-v31", "signed-sums": "constructive-completed-lower-explorer-v31", "signed-weighted-sums": "constructive-completed-lower-explorer-v31", "squarefree-kernels": "constructive-historical-explorers-v31", "supplementary-laws": "constructive-historical-explorers-v31", "totient-products": "constructive-historical-explorers-v31", "two-squares": "constructive-historical-explorers-v31"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-completed-lower-campaign-v31/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body>
+</html>

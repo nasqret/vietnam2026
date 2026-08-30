@@ -1,0 +1,994 @@
+{
+  "alpha_checked_use_node_count": 17,
+  "alpha_edition_version": "v31",
+  "alpha_first_enrolled_version": "v24",
+  "definition_topological_order": [
+    "PD0002",
+    "PD0001",
+    "ND0046",
+    "ND0001",
+    "ND0047",
+    "ND0048",
+    "ND0049",
+    "ND0003",
+    "ND0005",
+    "ND0012",
+    "PD0013",
+    "PD0015",
+    "ND0004",
+    "ND0013",
+    "ND0014",
+    "ND0015",
+    "ND0017"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "MN0001",
+      "target": "MN0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MN0002",
+      "target": "MN0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MN0005",
+      "target": "MN0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MN0007",
+      "target": "MN0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MN0008",
+      "target": "MN0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MN000A",
+      "target": "MN000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MN0009",
+      "target": "MN000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MN000B",
+      "target": "MN000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MN000C",
+      "target": "MN000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MN000E",
+      "target": "MN0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MN000F",
+      "target": "MN0011"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN0001",
+      "statement_occurrences": 1,
+      "target": "ND0046"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MN0002",
+      "statement_occurrences": 2,
+      "target": "ND0046"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN0003",
+      "statement_occurrences": 1,
+      "target": "ND0046"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN0004",
+      "statement_occurrences": 1,
+      "target": "ND0046"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MN0004",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN0005",
+      "statement_occurrences": 1,
+      "target": "ND0047"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MN0006",
+      "statement_occurrences": 2,
+      "target": "ND0047"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN0007",
+      "statement_occurrences": 1,
+      "target": "ND0047"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN0007",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN0008",
+      "statement_occurrences": 1,
+      "target": "ND0047"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MN0008",
+      "statement_occurrences": 2,
+      "target": "ND0048"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN0008",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN0009",
+      "statement_occurrences": 1,
+      "target": "ND0048"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN000A",
+      "statement_occurrences": 1,
+      "target": "ND0048"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN000B",
+      "statement_occurrences": 1,
+      "target": "ND0048"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN000C",
+      "statement_occurrences": 1,
+      "target": "ND0048"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MN000C",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MN000D",
+      "statement_occurrences": 1,
+      "target": "ND0049"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MN000D",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0046",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0046",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0047",
+      "target": "ND0046"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0047",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0048",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0048",
+      "target": "ND0047"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0048",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0049",
+      "target": "ND0048"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0003",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0012",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0012",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "PD0015"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0013",
+      "target": "ND0012"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0013",
+      "target": "ND0004"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0014",
+      "target": "ND0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0014",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0015",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0017",
+      "target": "ND0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0017",
+      "target": "ND0015"
+    }
+  ],
+  "family_slug": "matrix-determinant-minors",
+  "historical_component_only": true,
+  "historical_milestone_status": "open",
+  "historical_partial_checked_use": true,
+  "independent_lean_bundle_verified": true,
+  "milestone_caveat": "Historical partial components only: this chapter proves arbitrary signed cofactor minors and exact signed determinants through dimension four. T13 is now closed by the separate Alpha-v27 integer-linear-algebra branch: arbitrary determinant data, rank, and integer column spans, without a claim of lattice index or normal forms.",
+  "milestone_checked_use": true,
+  "milestone_full_proof_slug": "integer-linear-algebra",
+  "milestone_full_theorem_name": "rectangular_matrix_rank_exists_unique",
+  "milestone_status": "alpha_closed",
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0001.html?v=ac7111ec14ff",
+      "id": "MN0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "matrix_skip_index_exists",
+      "proof_bundle_node_id": 143,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every minor coordinate has a constructive source coordinate that skips an arbitrary deleted index."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0002.html?v=ac7111ec14ff",
+      "id": "MN0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "matrix_skip_index_functional",
+      "proof_bundle_node_id": 144,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Deleting one coordinate induces a unique source coordinate, including both threshold branches."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0003.html?v=ac7111ec14ff",
+      "id": "MN0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "matrix_skip_index_avoids_removed",
+      "proof_bundle_node_id": 145,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A skipped matrix coordinate never equals the row or column that was actually deleted."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0004.html?v=ac7111ec14ff",
+      "id": "MN0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "matrix_skip_index_bounded",
+      "proof_bundle_node_id": 146,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every minor coordinate below width q maps to an original coordinate strictly below S q."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0005.html?v=ac7111ec14ff",
+      "id": "MN0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_matrix_minor_cell_exists",
+      "proof_bundle_node_id": 147,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every coordinate of an arbitrary deleted-row/deleted-column matrix minor has its exact decoded source value."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0006.html?v=ac7111ec14ff",
+      "id": "MN0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_matrix_minor_cell_functional",
+      "proof_bundle_node_id": 148,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The decoded value of a beta-coded cofactor minor is independent of every skipped-coordinate witness."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0007.html?v=ac7111ec14ff",
+      "id": "MN0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "beta_matrix_minor_point_exists",
+      "proof_bundle_node_id": 149,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every flat index of a nonempty cofactor-minor row has genuine quotient, remainder and skipped-source witnesses."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0008.html?v=ac7111ec14ff",
+      "id": "MN0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_matrix_minor_prefix_extend",
+      "proof_bundle_node_id": 150,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Extend one exact row-major beta-coded cofactor minor while preserving every earlier skipped-source entry."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0009.html?v=ac7111ec14ff",
+      "id": "MN0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "beta_matrix_minor_prefix_exists_nonzero",
+      "proof_bundle_node_id": 151,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every finite prefix of a nonempty arbitrary-dimensional cofactor minor has one complete beta code."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN000A.html?v=ac7111ec14ff",
+      "id": "MN000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_matrix_minor_prefix_empty_exists",
+      "proof_bundle_node_id": 152,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The zero-dimensional cofactor minor has an unconditional constructive empty beta code."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN000B.html?v=ac7111ec14ff",
+      "id": "MN000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "beta_matrix_minor_prefix_exists",
+      "proof_bundle_node_id": 153,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every arbitrary finite rectangular deleted-row/deleted-column matrix prefix is beta-coded, including width zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN000C.html?v=ac7111ec14ff",
+      "id": "MN000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "beta_matrix_minor_exists",
+      "proof_bundle_node_id": 154,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Deleting any valid row and column from an unrestricted square beta-coded natural matrix constructs its complete exact square cofactor minor."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN000D.html?v=ac7111ec14ff",
+      "id": "MN000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "beta_signed_matrix_minor_exists",
+      "proof_bundle_node_id": 155,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every arbitrary-dimensional signed integer matrix has the complete exact beta-coded minor obtained by deleting any valid row and column."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN000E.html?v=ac7111ec14ff",
+      "id": "MN000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_matrix_four_cofactor_expansion_exists",
+      "proof_bundle_node_id": 156,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Four arbitrary signed first-row entries and four signed minor determinants have their exact alternating subtraction-free Laplace cofactor expansion."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN000F.html?v=ac7111ec14ff",
+      "id": "MN000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_matrix_four_cofactor_expansion_functional",
+      "proof_bundle_node_id": 157,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Both natural components of a four-term signed Laplace cofactor expansion are unique."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0010.html?v=ac7111ec14ff",
+      "id": "MN0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "signed_matrix_four_full_determinant_exists",
+      "proof_bundle_node_id": 158,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every genuinely signed four-by-four integer matrix has its exact constructive first-row cofactor determinant with all 32 natural entry components."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/MN0011.html?v=ac7111ec14ff",
+      "id": "MN0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "signed_matrix_four_full_determinant_functional",
+      "proof_bundle_node_id": 159,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Both exact subtraction-free components of every signed four-by-four cofactor determinant are independent of the witnesses."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=ac7111ec14ff",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "Le",
+      "href": "definition/PD0001.html?v=ac7111ec14ff",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": "MatrixSkipIndex",
+      "href": "definition/ND0046.html?v=ac7111ec14ff",
+      "id": "ND0046",
+      "kind": "definition",
+      "layer": 1,
+      "name": "MatrixSkipIndex",
+      "signature": "MatrixSkipIndex(i,r,s)",
+      "summary": "The unique order-preserving source coordinate that skips one genuinely deleted matrix row or column."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/ND0001.html?v=ac7111ec14ff",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "MatrixMinorCell",
+      "href": "definition/ND0047.html?v=ac7111ec14ff",
+      "id": "ND0047",
+      "kind": "definition",
+      "layer": 2,
+      "name": "MatrixMinorCell",
+      "signature": "MatrixMinorCell(b,c,w,r,d,i,j,z)",
+      "summary": "The exact beta-decoded source entry after independently skipping the removed row and column."
+    },
+    {
+      "global_definition": "MatrixMinorPrefix",
+      "href": "definition/ND0048.html?v=ac7111ec14ff",
+      "id": "ND0048",
+      "kind": "definition",
+      "layer": 3,
+      "name": "MatrixMinorPrefix",
+      "signature": "MatrixMinorPrefix(b,c,w,r,d,u,v,q,l)",
+      "summary": "One complete row-major beta code containing every genuine skipped-row/skipped-column matrix entry."
+    },
+    {
+      "global_definition": "SignedMatrixMinor",
+      "href": "definition/ND0049.html?v=ac7111ec14ff",
+      "id": "ND0049",
+      "kind": "definition",
+      "layer": 4,
+      "name": "SignedMatrixMinor",
+      "signature": "SignedMatrixMinor(pb,pc,nb,nc,w,r,d,q,up,us,un,ut)",
+      "summary": "Both complete independently beta-coded natural components of a genuine signed square cofactor minor."
+    },
+    {
+      "global_definition": "MatrixAt",
+      "href": "definition/ND0003.html?v=ac7111ec14ff",
+      "id": "ND0003",
+      "kind": "definition",
+      "layer": 1,
+      "name": "MatrixAt",
+      "signature": "MatrixAt(b,c,w,i,j,z)",
+      "summary": "The exact natural matrix entry stored at flattened beta index i*w+j."
+    },
+    {
+      "global_definition": "SignedDet2",
+      "href": "definition/ND0005.html?v=ac7111ec14ff",
+      "id": "ND0005",
+      "kind": "definition",
+      "layer": 0,
+      "name": "SignedDet2",
+      "signature": "SignedDet2(a,b,c,d,p,n)",
+      "summary": "The exact positive and negative natural components p=ad and n=bc of a signed 2×2 determinant."
+    },
+    {
+      "global_definition": "MatrixAffineSlice",
+      "href": "definition/ND0012.html?v=ac7111ec14ff",
+      "id": "ND0012",
+      "kind": "definition",
+      "layer": 1,
+      "name": "MatrixAffineSlice",
+      "signature": "MatrixAffineSlice(b,c,s,d,u,v,l)",
+      "summary": "A complete beta-coded affine matrix slice whose exact target entry at i equals the source entry at s+d*i."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/PD0013.html?v=ac7111ec14ff",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": "BetaSum",
+      "href": "definition/PD0015.html?v=ac7111ec14ff",
+      "id": "PD0015",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Sum",
+      "signature": "Sum(b,c,l,z)",
+      "summary": "z is the sum of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": "DotProduct",
+      "href": "definition/ND0004.html?v=ac7111ec14ff",
+      "id": "ND0004",
+      "kind": "definition",
+      "layer": 2,
+      "name": "DotProduct",
+      "signature": "DotProduct(b,c,d,e,ell,z)",
+      "summary": "The witnessed sum of the pointwise products of two beta-coded natural vectors."
+    },
+    {
+      "global_definition": "MatrixProductCell",
+      "href": "definition/ND0013.html?v=ac7111ec14ff",
+      "id": "ND0013",
+      "kind": "definition",
+      "layer": 3,
+      "name": "MatrixProductCell",
+      "signature": "MatrixProductCell(lb,lc,rb,rc,w,v,i,j,n)",
+      "summary": "An exact natural matrix multiplication cell with witnessed beta-coded row, column and finite dot product."
+    },
+    {
+      "global_definition": "MatrixProductPrefix",
+      "href": "definition/ND0014.html?v=ac7111ec14ff",
+      "id": "ND0014",
+      "kind": "definition",
+      "layer": 4,
+      "name": "MatrixProductPrefix",
+      "signature": "MatrixProductPrefix(lb,lc,rb,rc,w,v,tb,tc,l)",
+      "summary": "Every bounded row-major natural matrix product cell together with its exact coordinate, strict column bound and output beta witness."
+    },
+    {
+      "global_definition": "MatrixPointwiseAdd",
+      "href": "definition/ND0015.html?v=ac7111ec14ff",
+      "id": "ND0015",
+      "kind": "definition",
+      "layer": 1,
+      "name": "MatrixPointwiseAdd",
+      "signature": "MatrixPointwiseAdd(mb,mc,sb,sc,tb,tc,l)",
+      "summary": "The complete beta-coded pointwise sum of two exact bounded natural vector prefixes."
+    },
+    {
+      "global_definition": "SignedMatrixProduct",
+      "href": "definition/ND0017.html?v=ac7111ec14ff",
+      "id": "ND0017",
+      "kind": "definition",
+      "layer": 5,
+      "name": "SignedMatrixProduct",
+      "signature": "SignedMatrixProduct(ab,ac,db,dc,eb,ec,fb,fc,w,v,r,pb,pc,nb,nc)",
+      "summary": "The exact complete signed finite matrix product: four natural coded products and two beta-coded pointwise-summed positive/negative output matrices."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "MN0001": {
+      "critical_root_path": [
+        "MN0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MN0005"
+      ]
+    },
+    "MN0002": {
+      "critical_root_path": [
+        "MN0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MN0006"
+      ]
+    },
+    "MN0003": {
+      "critical_root_path": [
+        "MN0003"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "MN0004": {
+      "critical_root_path": [
+        "MN0004"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "MN0005": {
+      "critical_root_path": [
+        "MN0001",
+        "MN0005"
+      ],
+      "dependencies": [
+        "MN0001"
+      ],
+      "dependents": [
+        "MN0007"
+      ]
+    },
+    "MN0006": {
+      "critical_root_path": [
+        "MN0002",
+        "MN0006"
+      ],
+      "dependencies": [
+        "MN0002"
+      ],
+      "dependents": []
+    },
+    "MN0007": {
+      "critical_root_path": [
+        "MN0001",
+        "MN0005",
+        "MN0007"
+      ],
+      "dependencies": [
+        "MN0005"
+      ],
+      "dependents": [
+        "MN0009"
+      ]
+    },
+    "MN0008": {
+      "critical_root_path": [
+        "MN0008"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MN0009"
+      ]
+    },
+    "MN0009": {
+      "critical_root_path": [
+        "MN0001",
+        "MN0005",
+        "MN0007",
+        "MN0009"
+      ],
+      "dependencies": [
+        "MN0007",
+        "MN0008"
+      ],
+      "dependents": [
+        "MN000B"
+      ]
+    },
+    "MN000A": {
+      "critical_root_path": [
+        "MN000A"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MN000B"
+      ]
+    },
+    "MN000B": {
+      "critical_root_path": [
+        "MN0001",
+        "MN0005",
+        "MN0007",
+        "MN0009",
+        "MN000B"
+      ],
+      "dependencies": [
+        "MN000A",
+        "MN0009"
+      ],
+      "dependents": [
+        "MN000C"
+      ]
+    },
+    "MN000C": {
+      "critical_root_path": [
+        "MN0001",
+        "MN0005",
+        "MN0007",
+        "MN0009",
+        "MN000B",
+        "MN000C"
+      ],
+      "dependencies": [
+        "MN000B"
+      ],
+      "dependents": [
+        "MN000D"
+      ]
+    },
+    "MN000D": {
+      "critical_root_path": [
+        "MN0001",
+        "MN0005",
+        "MN0007",
+        "MN0009",
+        "MN000B",
+        "MN000C",
+        "MN000D"
+      ],
+      "dependencies": [
+        "MN000C"
+      ],
+      "dependents": []
+    },
+    "MN000E": {
+      "critical_root_path": [
+        "MN000E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MN0010"
+      ]
+    },
+    "MN000F": {
+      "critical_root_path": [
+        "MN000F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MN0011"
+      ]
+    },
+    "MN0010": {
+      "critical_root_path": [
+        "MN000E",
+        "MN0010"
+      ],
+      "dependencies": [
+        "MN000E"
+      ],
+      "dependents": []
+    },
+    "MN0011": {
+      "critical_root_path": [
+        "MN000F",
+        "MN0011"
+      ],
+      "dependencies": [
+        "MN000F"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "MN0003",
+    "MN0006",
+    "MN000E",
+    "MN0010",
+    "MN0011",
+    "MN000C",
+    "MN000D"
+  ],
+  "schema": "peano-lab-constructive-research-layer-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

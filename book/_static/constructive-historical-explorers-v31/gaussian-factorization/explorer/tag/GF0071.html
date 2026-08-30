@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>GF0071 — gaussian_search_no_index_below_zero — Exact Proof</title>
+  <link rel="stylesheet" href="../../../assets/exact-explorer.css?v=6dd0cf105c49">
+  <script defer src="../../../assets/exact-explorer.js?v=98f11fff5d34"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/gaussian-factorization/explorer/tag/GF0071.html"><meta name="proof-publication-scope" content="alpha-v31-historical-first-admission-preserved"></head>
+<body class="pa-proof-site" data-page="theorem" data-family="gaussian-factorization"><header class="pa-proof-header pa-theorem-heading">
+  <nav><a href="../index.html?v=6c9ebfb3c37e">Explorer</a><a href="../defined/tag/GF0071.html?v=6c9ebfb3c37e">Defined notation</a><a href="../defined/graph.html?target=GF0071&amp;v=6c9ebfb3c37e" data-graph-navigation>Dependency graph</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F09&amp;v=6c9ebfb3c37e">Campaign family</a><a data-campaign-link="global" href="../../../grand-campaign/?v=6c9ebfb3c37e">Full campaign map</a><a href="GF0070.html?v=6c9ebfb3c37e">← gaussian_norm_bounded_coordinates</a><a href="GF0072.html?v=6c9ebfb3c37e">gaussian_search_two_le_nonzero_not_one →</a><a data-campaign-link="global" href="../../../grand-campaign/?v=6c9ebfb3c37e">Full campaign map</a><a data-campaign-link="domain" href="../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=6c9ebfb3c37e">Campaign domain</a><a data-campaign-link="family" href="../../../grand-campaign/?view=family&amp;focus=F09&amp;v=6c9ebfb3c37e">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G082" href="../../../grand-campaign/?view=goal&amp;focus=G082&amp;v=6c9ebfb3c37e">G082 milestone</a></nav>
+  <p class="pa-tag">GF0071</p><h1>gaussian_search_no_index_below_zero</h1>
+  <p class="pa-status-candidate">Alpha v31 independently verified · alpha_closed; checked-use authorized; not Stable</p>
+  <p>The empty search interval has no index, proved in the original natural arithmetic.</p>
+</header>
+<main class="pa-theorem-layout"><p class="pa-callout pd-callout" data-current-release="v31">Current library: Alpha v31, 3,796 checked-use theorems; Stable remains 432. Historical first admissions, original proof editions, and non-admitted aliases are preserved. <a href="../../api/first-admission.json?v=6c9ebfb3c37e">Exact original first-admission records</a>.</p>
+  <div class="pa-proof-panel">
+    <section class="pa-statement"><h2>Exact expanded first-order arithmetic statement</h2><button data-copy-target="statement" type="button">Copy</button><pre id="statement"><code>forall i. ~(exists ge_gap_empty_search. ge_gap_empty_search + S (i) = (0))</code></pre></section>
+    <section class="pa-informal-proof" data-informal-kind="structural" data-informal-review="generated"><h2>Constructive proof overview</h2><p><strong>Generated structural guide</strong></p><p>The empty search interval has no index, proved in the original natural arithmetic.</p><p>The unchanged tactic script uses 1 declared prerequisite and contains 9 exact native proof lines.</p><p>Alpha v31 checked-use · first admitted v30 · independently kernel and Lean verified; not Stable</p></section>
+    <section><h2>Proof neighborhood</h2><h3>Direct dependencies</h3><div class="pa-chip-row"><span class="pa-external-dependency" data-external-name="succ_ne_zero" data-evidence="stable_closed"><code>succ_ne_zero</code> <small>Stable theorem; checked-use authorized</small></span></div><h3>Direct dependents</h3><div class="pa-chip-row"><a class="pa-theorem-ref" href="GF0075.html?v=6c9ebfb3c37e"><code>GF0075</code> gaussian_factor_search_coordinate_row</a> <a class="pa-theorem-ref" href="GF0076.html?v=6c9ebfb3c37e"><code>GF0076</code> gaussian_factor_search_coordinate_rectangle</a> <a class="pa-theorem-ref" href="GF0086.html?v=6c9ebfb3c37e"><code>GF0086</code> gaussian_product_empty_exists</a> <a class="pa-theorem-ref" href="GF0092.html?v=6c9ebfb3c37e"><code>GF0092</code> gaussian_unit_empty_factorization</a> <a class="pa-theorem-ref" href="GF00A0.html?v=6c9ebfb3c37e"><code>GF00A0</code> gaussian_product_replace_balance</a> <a class="pa-theorem-ref" href="GF00A7.html?v=6c9ebfb3c37e"><code>GF00A7</code> gaussian_factor_empty_matching</a> <a class="pa-theorem-ref" href="GF00AF.html?v=6c9ebfb3c37e"><code>GF00AF</code> gaussian_irreducible_products_associate_unique</a></div></section>
+    <section><h2>Formal native tactic body</h2><p>Dependencies are introduced as named hypotheses before line 1. Local theorem links identify exact declared prerequisites. This exact body belongs to a complete independently kernel-checked constructive proof bundle and has Alpha checked-use authority; it does not imply Stable membership.</p><ol class="pa-formal-proof"><li class="pa-proof-line" id="proof-line-0001" data-line="1" data-tactic="intro" data-line-id="a28830ba85347e5b"><a class="pa-line-number" href="#proof-line-0001">0001</a><code><span class="pa-tactic-ref">intro</span> i</code></li><li class="pa-proof-line" id="proof-line-0002" data-line="2" data-tactic="intro" data-line-id="c2b81713e7a32321"><a class="pa-line-number" href="#proof-line-0002">0002</a><code><span class="pa-tactic-ref">intro</span> h</code></li><li class="pa-proof-line" id="proof-line-0003" data-line="3" data-tactic="cases" data-line-id="0dd646269d06fc89"><a class="pa-line-number" href="#proof-line-0003">0003</a><code><span class="pa-tactic-ref">cases</span> h</code></li><li class="pa-proof-line" id="proof-line-0004" data-line="4" data-tactic="specialize" data-line-id="22297ce61792b412"><a class="pa-line-number" href="#proof-line-0004">0004</a><code><span class="pa-tactic-ref">specialize</span> <span class="pa-external-ref">succ_ne_zero</span> (x+i)</code></li><li class="pa-proof-line" id="proof-line-0005" data-line="5" data-tactic="apply" data-line-id="1384cb772a6391d6"><a class="pa-line-number" href="#proof-line-0005">0005</a><code><span class="pa-tactic-ref">apply</span> <span class="pa-external-ref">succ_ne_zero</span></code></li><li class="pa-proof-line" id="proof-line-0006" data-line="6" data-tactic="trans" data-line-id="8e04479f15335e8d"><a class="pa-line-number" href="#proof-line-0006">0006</a><code><span class="pa-tactic-ref">trans</span> x+S i</code></li><li class="pa-proof-line" id="proof-line-0007" data-line="7" data-tactic="symm" data-line-id="399a4e610f0dee14"><a class="pa-line-number" href="#proof-line-0007">0007</a><code><span class="pa-tactic-ref">symm</span></code></li><li class="pa-proof-line" id="proof-line-0008" data-line="8" data-tactic="apply" data-line-id="491861db9414ab55"><a class="pa-line-number" href="#proof-line-0008">0008</a><code><span class="pa-tactic-ref">apply</span> PA4</code></li><li class="pa-proof-line" id="proof-line-0009" data-line="9" data-tactic="exact" data-line-id="3b99a8ae3b7d3b00"><a class="pa-line-number" href="#proof-line-0009">0009</a><code><span class="pa-tactic-ref">exact</span> h_witness</code></li></ol></section>
+  </div>
+  <aside class="pa-proof-sidebar pa-trust-panel"><h2>Receipt and source provenance</h2><dl><dt>Proof layer</dt><dd>0</dd><dt>Tactic lines</dt><dd>9</dd><dt>Alpha evidence</dt><dd>alpha_closed</dd><dt>Checked-use authority</dt><dd>Alpha v30; independently verified</dd><dt>Stable membership</dt><dd>none</dd><dt>Exact statement SHA-256</dt><dd><code>7b176cbf16970e5ad3323dd8b7f03277d192ba12a23b3418c62576c0291c659a</code></dd><dt>Exact script SHA-256</dt><dd><code>c5d0601d8214df6e14fe6433da2c77f44f1b02d0c6c2a560a7478ab88e64ac47</code></dd><dt>Source module</dt><dd><code>peano_lab.library.gaussian_factor_search_candidate</code></dd><dt>Factory</dt><dd><code>make_gaussian_factor_search_candidate_theorems</code></dd></dl></aside>
+</main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-gaussian-factorization-explorer/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-completed-lower-explorer-v31/", "/constructive-historical-explorers-v31/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v31", "bertrand-postulate": "constructive-historical-explorers-v31", "bertrand-prime-chains": "constructive-historical-explorers-v31", "best-approximation": "constructive-historical-explorers-v31", "binary-digit-extraction": "constructive-historical-explorers-v31", "binary-length": "constructive-historical-explorers-v31", "binary-modular-execution": "constructive-historical-explorers-v31", "binary-modular-exponentiation": "constructive-historical-explorers-v31", "cauchy-davenport": "constructive-historical-explorers-v31", "continued-fractions": "constructive-historical-explorers-v31", "cornacchia": "constructive-historical-explorers-v31", "dirichlet-convolution": "constructive-completed-lower-explorer-v31", "dirichlet-fubini": "constructive-completed-lower-explorer-v31", "dirichlet-inverses": "constructive-completed-lower-explorer-v31", "dirichlet-signed-units": "constructive-completed-lower-explorer-v31", "dirichlet-triangular": "constructive-completed-lower-explorer-v31", "dirichlet-units": "constructive-completed-lower-explorer-v31", "divisor-involutions": "constructive-completed-lower-explorer-v31", "divisor-sums": "constructive-completed-lower-explorer-v31", "eisenstein-integers": "constructive-historical-explorers-v31", "euclidean-complexity": "constructive-historical-explorers-v31", "euclidean-gcd-transport": "constructive-historical-explorers-v31", "euclidean-logarithmic-bound": "constructive-historical-explorers-v31", "euler-units": "constructive-completed-lower-explorer-v31", "exponent-lifting": "constructive-historical-explorers-v31", "finite-support": "constructive-completed-lower-explorer-v31", "four-squares": "constructive-historical-explorers-v31", "gaussian-factorization": "constructive-historical-explorers-v31", "gaussian-integers": "constructive-historical-explorers-v31", "generalized-crt": "constructive-historical-explorers-v31", "generalized-crt-compatibility": "constructive-historical-explorers-v31", "generalized-crt-fold": "constructive-historical-explorers-v31", "hensel-lifting": "constructive-historical-explorers-v31", "integer-linear-algebra": "constructive-historical-explorers-v31", "kummer": "constructive-historical-explorers-v31", "lucas": "constructive-historical-explorers-v31", "matrix-coded-products": "constructive-historical-explorers-v31", "matrix-cofactor-expansion": "constructive-historical-explorers-v31", "matrix-determinant-minors": "constructive-historical-explorers-v31", "matrix-dot-product": "constructive-historical-explorers-v31", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v31", "mobius-inversion": "constructive-completed-lower-explorer-v31", "mobius-values": "constructive-completed-lower-explorer-v31", "multinomial-kummer": "constructive-historical-explorers-v31", "polynomial-hensel": "constructive-historical-explorers-v31", "polynomial-horner": "constructive-historical-explorers-v31", "polynomial-products": "constructive-completed-lower-explorer-v31", "polynomial-taylor-hensel": "constructive-historical-explorers-v31", "prime-count-chebyshev": "constructive-historical-explorers-v31", "prime-enumeration": "constructive-historical-explorers-v31", "prime-field-polynomials": "constructive-completed-lower-explorer-v31", "prime-fields": "constructive-completed-lower-explorer-v31", "prime-valuation-support": "constructive-historical-explorers-v31", "primes-three-mod-four": "constructive-historical-explorers-v31", "pythagorean-fermat-four": "constructive-historical-explorers-v31", "quadratic-reciprocity": "constructive-historical-explorers-v31", "rectangular-sums": "constructive-completed-lower-explorer-v31", "signed-sums": "constructive-completed-lower-explorer-v31", "signed-weighted-sums": "constructive-completed-lower-explorer-v31", "squarefree-kernels": "constructive-historical-explorers-v31", "supplementary-laws": "constructive-historical-explorers-v31", "totient-products": "constructive-historical-explorers-v31", "two-squares": "constructive-historical-explorers-v31"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-completed-lower-campaign-v31/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body>
+</html>

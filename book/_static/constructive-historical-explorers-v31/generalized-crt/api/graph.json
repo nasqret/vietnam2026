@@ -1,0 +1,1612 @@
+{
+  "alpha_checked_use_node_count": 24,
+  "alpha_edition_version": "v31",
+  "alpha_first_enrolled_version": "v27",
+  "definition_topological_order": [
+    "PD0013",
+    "PD0002",
+    "PD0003",
+    "PD0006",
+    "PD0008",
+    "ND0076",
+    "ND0001",
+    "ND0056",
+    "ND0055",
+    "ND0077",
+    "ND0067",
+    "ND0053",
+    "PD0001"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "FC0002",
+      "target": "FC0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0002",
+      "target": "FC0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0003",
+      "target": "FC0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0004",
+      "target": "FC0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0005",
+      "target": "FC0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0001",
+      "target": "FC0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0007",
+      "target": "FC0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0008",
+      "target": "FC0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0006",
+      "target": "FC0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC000A",
+      "target": "FC000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0009",
+      "target": "FC000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC000B",
+      "target": "FC000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC000C",
+      "target": "FC000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC000D",
+      "target": "FC000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC000D",
+      "target": "FC000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0010",
+      "target": "FC0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC000E",
+      "target": "FC0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0012",
+      "target": "FC0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0011",
+      "target": "FC0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC000E",
+      "target": "FC0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC000D",
+      "target": "FC0015"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "FC0010",
+      "target": "FC0018"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0001",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "FC0002",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0002",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0003",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "FC0004",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0004",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 7,
+      "occurrence_count": 16,
+      "source": "FC0005",
+      "statement_occurrences": 9,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 6,
+      "occurrence_count": 9,
+      "source": "FC0005",
+      "statement_occurrences": 3,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 14,
+      "source": "FC0006",
+      "statement_occurrences": 10,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 5,
+      "source": "FC0006",
+      "statement_occurrences": 3,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 5,
+      "occurrence_count": 15,
+      "source": "FC0007",
+      "statement_occurrences": 10,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "FC0007",
+      "statement_occurrences": 3,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 10,
+      "source": "FC0008",
+      "statement_occurrences": 10,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "FC0008",
+      "statement_occurrences": 3,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 10,
+      "source": "FC0009",
+      "statement_occurrences": 10,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "FC0009",
+      "statement_occurrences": 3,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC000A",
+      "statement_occurrences": 2,
+      "target": "ND0076"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000B",
+      "statement_occurrences": 1,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000B",
+      "statement_occurrences": 1,
+      "target": "ND0076"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 10,
+      "occurrence_count": 10,
+      "source": "FC000B",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "FC000B",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "FC000B",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "FC000B",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000C",
+      "statement_occurrences": 1,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000C",
+      "statement_occurrences": 1,
+      "target": "ND0067"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000C",
+      "statement_occurrences": 1,
+      "target": "ND0076"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000C",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "FC000C",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000D",
+      "statement_occurrences": 1,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000D",
+      "statement_occurrences": 1,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000D",
+      "statement_occurrences": 1,
+      "target": "ND0067"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000D",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000D",
+      "statement_occurrences": 1,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000D",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC000D",
+      "statement_occurrences": 2,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000E",
+      "statement_occurrences": 1,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000E",
+      "statement_occurrences": 1,
+      "target": "ND0067"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000F",
+      "statement_occurrences": 1,
+      "target": "ND0053"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC000F",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC000F",
+      "statement_occurrences": 2,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC000F",
+      "statement_occurrences": 1,
+      "target": "ND0067"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC000F",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0010",
+      "statement_occurrences": 1,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0010",
+      "statement_occurrences": 1,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0010",
+      "statement_occurrences": 1,
+      "target": "ND0077"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0010",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0011",
+      "statement_occurrences": 2,
+      "target": "ND0077"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "FC0012",
+      "statement_occurrences": 1,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "FC0012",
+      "statement_occurrences": 1,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0012",
+      "statement_occurrences": 1,
+      "target": "ND0077"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "FC0012",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "FC0013",
+      "statement_occurrences": 0,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0013",
+      "statement_occurrences": 1,
+      "target": "ND0067"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "FC0013",
+      "statement_occurrences": 2,
+      "target": "ND0077"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0014",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0014",
+      "statement_occurrences": 2,
+      "target": "ND0067"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0015",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0015",
+      "statement_occurrences": 2,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0015",
+      "statement_occurrences": 2,
+      "target": "ND0067"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0015",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0015",
+      "statement_occurrences": 2,
+      "target": "PD0006"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0015",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 4,
+      "source": "FC0015",
+      "statement_occurrences": 4,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0016",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0016",
+      "statement_occurrences": 1,
+      "target": "ND0077"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0016",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0017",
+      "statement_occurrences": 1,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0017",
+      "statement_occurrences": 1,
+      "target": "ND0077"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "FC0018",
+      "statement_occurrences": 1,
+      "target": "ND0053"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0018",
+      "statement_occurrences": 2,
+      "target": "ND0055"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0018",
+      "statement_occurrences": 2,
+      "target": "ND0056"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0018",
+      "statement_occurrences": 2,
+      "target": "ND0077"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "FC0018",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0006",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0076",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0076",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0076",
+      "target": "PD0006"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0076",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0056",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0056",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0056",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0055",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0055",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0055",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0077",
+      "target": "ND0056"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0077",
+      "target": "ND0055"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0077",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0067",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0067",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0067",
+      "target": "PD0006"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0067",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0053",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0053",
+      "target": "PD0002"
+    }
+  ],
+  "family_slug": "generalized-crt",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0001.html?v=ac7111ec14ff",
+      "id": "FC0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_gcd_zero_right_value",
+      "proof_bundle_node_id": 1023,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A relational gcd with zero on the right equals its other input."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0002.html?v=ac7111ec14ff",
+      "id": "FC0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_gcd_nonzero_left",
+      "proof_bundle_node_id": 1024,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A gcd of a nonzero left input is nonzero, without restricting the right input."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0003.html?v=ac7111ec14ff",
+      "id": "FC0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "crt_gcd_nonzero_right",
+      "proof_bundle_node_id": 1025,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A gcd of a nonzero right input is nonzero, including a zero left input."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0004.html?v=ac7111ec14ff",
+      "id": "FC0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_gcd_coprime_cofactors",
+      "proof_bundle_node_id": 1026,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A nonzero gcd yields both exact natural cofactors and their constructive coprimality."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0005.html?v=ac7111ec14ff",
+      "id": "FC0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_gcd_lcm_distributes_scaled_coprime",
+      "proof_bundle_node_id": 1027,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Factoring a common gcd scale reduces unrestricted gcd--LCM distributivity to genuinely coprime cofactors."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0006.html?v=ac7111ec14ff",
+      "id": "FC0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "crt_gcd_lcm_distributes_nonzero",
+      "proof_bundle_node_id": 1028,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "GCD distributes over the actual binary LCM for a nonzero left input and nonzero comparison input; the right input may be zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0007.html?v=ac7111ec14ff",
+      "id": "FC0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_gcd_lcm_distributes_zero_left",
+      "proof_bundle_node_id": 1029,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The zero-left-modulus boundary of gcd--LCM distributivity follows from exact divisibility, not a positivity assumption."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0008.html?v=ac7111ec14ff",
+      "id": "FC0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "crt_gcd_lcm_distributes_zero_comparison",
+      "proof_bundle_node_id": 1030,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Comparison with zero turns all three gcds into their other inputs and preserves the exact original LCM."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0009.html?v=ac7111ec14ff",
+      "id": "FC0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "crt_gcd_lcm_distributes",
+      "proof_bundle_node_id": 1031,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Unconditional constructive gcd(lcm(a,b),n)=lcm(gcd(a,n),gcd(b,n)), including every zero boundary."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC000A.html?v=ac7111ec14ff",
+      "id": "FC000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_prefix_gcd_congruences_drop_last",
+      "proof_bundle_node_id": 1032,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Pointwise congruence modulo decoded gcds restricts to the preceding finite prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC000B.html?v=ac7111ec14ff",
+      "id": "FC000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "crt_prefix_gcd_congruences_lcm",
+      "proof_bundle_node_id": 1033,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Induction over every finite decoded modulus list lifts pointwise gcd congruences to congruence modulo the gcd of its exact list LCM; zero moduli and the empty list are included."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC000C.html?v=ac7111ec14ff",
+      "id": "FC000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_pairwise_compatible_prefix_induces_gcd_congruences",
+      "proof_bundle_node_id": 1034,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Pairwise compatibility and an actual prefix solution imply every gcd congruence needed for the next merge, without any dominating-last or coprimality assumption."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC000D.html?v=ac7111ec14ff",
+      "id": "FC000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "crt_pairwise_compatible_prefix_implies_merge_compatible",
+      "proof_bundle_node_id": 1035,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every pairwise gcd-compatible finite list satisfies every actual predecessor-LCM merge condition, including arbitrary noncoprime and zero moduli."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC000E.html?v=ac7111ec14ff",
+      "id": "FC000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "crt_pairwise_compatible_prefix_solution_exists",
+      "proof_bundle_node_id": 1036,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Unrestricted finite-list generalized CRT: every pairwise-compatible decoded residue/modulus list has a genuine simultaneous natural solution, including zero and repeated moduli and empty lists."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC000F.html?v=ac7111ec14ff",
+      "id": "FC000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "crt_pairwise_compatible_prefix_canonical_exists_unique",
+      "proof_bundle_node_id": 1037,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Full constructive canonical generalized CRT for arbitrary finite pairwise-compatible positive moduli: an exact list LCM and a unique strictly bounded simultaneous solution, with no supplied merge invariant or dominating modulus."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0010.html?v=ac7111ec14ff",
+      "id": "FC0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_canonical_prefix_solution_implies_normalized",
+      "proof_bundle_node_id": 1038,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every historical strictly bounded canonical solution is also a zero-safe normalized solution, without changing either definition."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0011.html?v=ac7111ec14ff",
+      "id": "FC0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_normalized_prefix_solution_unique",
+      "proof_bundle_node_id": 1039,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Normalized representatives are literally unique at every list LCM; the zero case uses congruence equality, not a false bound below zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0012.html?v=ac7111ec14ff",
+      "id": "FC0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "crt_prefix_solution_normalized_exists",
+      "proof_bundle_node_id": 1040,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every simultaneous solution has a normalized representative for its exact list LCM, with zero retained rather than divided by."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0013.html?v=ac7111ec14ff",
+      "id": "FC0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 7,
+      "name": "crt_pairwise_compatible_prefix_normalized_exists_unique",
+      "proof_bundle_node_id": 1041,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Full zero-inclusive generalized CRT: every arbitrary pairwise-compatible finite list has its exact LCM and a unique normalized simultaneous solution; neither positivity nor an operational merge invariant is assumed."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0014.html?v=ac7111ec14ff",
+      "id": "FC0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 7,
+      "name": "crt_pairwise_compatible_prefix_solvable_iff",
+      "proof_bundle_node_id": 1042,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Exact pairwise gcd compatibility is necessary and sufficient for solvability of every finite natural congruence list, including zero moduli."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0015.html?v=ac7111ec14ff",
+      "id": "FC0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "crt_pairwise_compatible_prefix_merge_iff",
+      "proof_bundle_node_id": 1043,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Pairwise compatibility and the formerly stronger predecessor-LCM merge invariant are constructively equivalent for arbitrary finite natural lists."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0016.html?v=ac7111ec14ff",
+      "id": "FC0016",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_normalized_prefix_solution_class_iff_lcm",
+      "proof_bundle_node_id": 1044,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "All simultaneous solutions form exactly the congruence class of the normalized solution modulo the exact list LCM, also when that LCM is zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0017.html?v=ac7111ec14ff",
+      "id": "FC0017",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "crt_normalized_zero_lcm_all_solutions_unique",
+      "proof_bundle_node_id": 1045,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "At zero list LCM every actual simultaneous solution equals the normalized one; no bound or normalization premise is imposed on the comparison solution."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v31",
+      "alpha_first_enrolled_version": "v27",
+      "href": "tag/FC0018.html?v=ac7111ec14ff",
+      "id": "FC0018",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "crt_positive_normalized_prefix_iff_canonical",
+      "proof_bundle_node_id": 1046,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For positive modulus lists, zero-safe normalization is exactly the historical strict canonical definition, not a weaker replacement."
+    },
+    {
+      "global_definition": "BetaAt",
+      "href": "definition/PD0013.html?v=ac7111ec14ff",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=ac7111ec14ff",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "Dvd",
+      "href": "definition/PD0003.html?v=ac7111ec14ff",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": "IsGCD",
+      "href": "definition/PD0006.html?v=ac7111ec14ff",
+      "id": "PD0006",
+      "kind": "definition",
+      "layer": 1,
+      "name": "IsGCD",
+      "signature": "IsGCD(g,a,b)",
+      "summary": "g is a common divisor divisible by every common divisor."
+    },
+    {
+      "global_definition": "ModEq",
+      "href": "definition/PD0008.html?v=ac7111ec14ff",
+      "id": "PD0008",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ModEq",
+      "signature": "ModEq(m,a,b)",
+      "summary": "Balanced-natural congruence modulo m."
+    },
+    {
+      "global_definition": "CRTPrefixGcdCongruences",
+      "href": "definition/ND0076.html?v=ac7111ec14ff",
+      "id": "ND0076",
+      "kind": "definition",
+      "layer": 2,
+      "name": "CRTPrefixGcdCongruences",
+      "signature": "CRTPrefixGcdCongruences(b,c,l,m,u,v)",
+      "summary": "The two residues agree modulo the actual gcd of each decoded prefix modulus with m."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0001.html?v=ac7111ec14ff",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "CRTPrefixLCM",
+      "href": "definition/ND0056.html?v=ac7111ec14ff",
+      "id": "ND0056",
+      "kind": "definition",
+      "layer": 1,
+      "name": "CRTPrefixLCM",
+      "signature": "CRTPrefixLCM(b,c,l,M)",
+      "summary": "The exact beta-prefix least common multiple, specified by divisibility and its universal leastness property."
+    },
+    {
+      "global_definition": "CRTPrefixSolution",
+      "href": "definition/ND0055.html?v=ac7111ec14ff",
+      "id": "ND0055",
+      "kind": "definition",
+      "layer": 1,
+      "name": "CRTPrefixSolution",
+      "signature": "CRTPrefixSolution(r,s,b,c,l,x)",
+      "summary": "One actual simultaneous solution to every beta-coded finite residue/modulus pair."
+    },
+    {
+      "global_definition": "CRTNormalizedPrefixSolution",
+      "href": "definition/ND0077.html?v=ac7111ec14ff",
+      "id": "ND0077",
+      "kind": "definition",
+      "layer": 2,
+      "name": "CRTNormalizedPrefixSolution",
+      "signature": "CRTNormalizedPrefixSolution(r,s,b,c,l,x,M)",
+      "summary": "The exact prefix LCM and an actual simultaneous solution, with x<M when M is positive; the zero-LCM case retains exact congruences rather than an impossible bound."
+    },
+    {
+      "global_definition": "CRTPairwiseCompatiblePrefix",
+      "href": "definition/ND0067.html?v=ac7111ec14ff",
+      "id": "ND0067",
+      "kind": "definition",
+      "layer": 2,
+      "name": "CRTPairwiseCompatiblePrefix",
+      "signature": "CRTPairwiseCompatiblePrefix(r,s,b,c,l)",
+      "summary": "Every pair of finite beta-coded residue/modulus entries agrees modulo its genuinely witnessed greatest common divisor."
+    },
+    {
+      "global_definition": "CRTPositiveModuliPrefix",
+      "href": "definition/ND0053.html?v=ac7111ec14ff",
+      "id": "ND0053",
+      "kind": "definition",
+      "layer": 1,
+      "name": "CRTPositiveModuliPrefix",
+      "signature": "CRTPositiveModuliPrefix(b,c,l)",
+      "summary": "A bounded beta-coded finite prefix consisting entirely of genuinely positive moduli."
+    },
+    {
+      "global_definition": "Le",
+      "href": "definition/PD0001.html?v=ac7111ec14ff",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "FC0001": {
+      "critical_root_path": [
+        "FC0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "FC0008"
+      ]
+    },
+    "FC0002": {
+      "critical_root_path": [
+        "FC0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "FC0003",
+        "FC0006"
+      ]
+    },
+    "FC0003": {
+      "critical_root_path": [
+        "FC0002",
+        "FC0003"
+      ],
+      "dependencies": [
+        "FC0002"
+      ],
+      "dependents": [
+        "FC0006"
+      ]
+    },
+    "FC0004": {
+      "critical_root_path": [
+        "FC0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "FC0006"
+      ]
+    },
+    "FC0005": {
+      "critical_root_path": [
+        "FC0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "FC0006"
+      ]
+    },
+    "FC0006": {
+      "critical_root_path": [
+        "FC0002",
+        "FC0003",
+        "FC0006"
+      ],
+      "dependencies": [
+        "FC0002",
+        "FC0003",
+        "FC0004",
+        "FC0005"
+      ],
+      "dependents": [
+        "FC0009"
+      ]
+    },
+    "FC0007": {
+      "critical_root_path": [
+        "FC0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "FC0009"
+      ]
+    },
+    "FC0008": {
+      "critical_root_path": [
+        "FC0001",
+        "FC0008"
+      ],
+      "dependencies": [
+        "FC0001"
+      ],
+      "dependents": [
+        "FC0009"
+      ]
+    },
+    "FC0009": {
+      "critical_root_path": [
+        "FC0002",
+        "FC0003",
+        "FC0006",
+        "FC0009"
+      ],
+      "dependencies": [
+        "FC0007",
+        "FC0008",
+        "FC0006"
+      ],
+      "dependents": [
+        "FC000B"
+      ]
+    },
+    "FC000A": {
+      "critical_root_path": [
+        "FC000A"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "FC000B"
+      ]
+    },
+    "FC000B": {
+      "critical_root_path": [
+        "FC0002",
+        "FC0003",
+        "FC0006",
+        "FC0009",
+        "FC000B"
+      ],
+      "dependencies": [
+        "FC000A",
+        "FC0009"
+      ],
+      "dependents": [
+        "FC000D"
+      ]
+    },
+    "FC000C": {
+      "critical_root_path": [
+        "FC000C"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "FC000D"
+      ]
+    },
+    "FC000D": {
+      "critical_root_path": [
+        "FC0002",
+        "FC0003",
+        "FC0006",
+        "FC0009",
+        "FC000B",
+        "FC000D"
+      ],
+      "dependencies": [
+        "FC000B",
+        "FC000C"
+      ],
+      "dependents": [
+        "FC000E",
+        "FC000F",
+        "FC0015"
+      ]
+    },
+    "FC000E": {
+      "critical_root_path": [
+        "FC0002",
+        "FC0003",
+        "FC0006",
+        "FC0009",
+        "FC000B",
+        "FC000D",
+        "FC000E"
+      ],
+      "dependencies": [
+        "FC000D"
+      ],
+      "dependents": [
+        "FC0013",
+        "FC0014"
+      ]
+    },
+    "FC000F": {
+      "critical_root_path": [
+        "FC0002",
+        "FC0003",
+        "FC0006",
+        "FC0009",
+        "FC000B",
+        "FC000D",
+        "FC000F"
+      ],
+      "dependencies": [
+        "FC000D"
+      ],
+      "dependents": []
+    },
+    "FC0010": {
+      "critical_root_path": [
+        "FC0010"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "FC0012",
+        "FC0018"
+      ]
+    },
+    "FC0011": {
+      "critical_root_path": [
+        "FC0011"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "FC0013"
+      ]
+    },
+    "FC0012": {
+      "critical_root_path": [
+        "FC0010",
+        "FC0012"
+      ],
+      "dependencies": [
+        "FC0010"
+      ],
+      "dependents": [
+        "FC0013"
+      ]
+    },
+    "FC0013": {
+      "critical_root_path": [
+        "FC0002",
+        "FC0003",
+        "FC0006",
+        "FC0009",
+        "FC000B",
+        "FC000D",
+        "FC000E",
+        "FC0013"
+      ],
+      "dependencies": [
+        "FC000E",
+        "FC0012",
+        "FC0011"
+      ],
+      "dependents": []
+    },
+    "FC0014": {
+      "critical_root_path": [
+        "FC0002",
+        "FC0003",
+        "FC0006",
+        "FC0009",
+        "FC000B",
+        "FC000D",
+        "FC000E",
+        "FC0014"
+      ],
+      "dependencies": [
+        "FC000E"
+      ],
+      "dependents": []
+    },
+    "FC0015": {
+      "critical_root_path": [
+        "FC0002",
+        "FC0003",
+        "FC0006",
+        "FC0009",
+        "FC000B",
+        "FC000D",
+        "FC0015"
+      ],
+      "dependencies": [
+        "FC000D"
+      ],
+      "dependents": []
+    },
+    "FC0016": {
+      "critical_root_path": [
+        "FC0016"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "FC0017": {
+      "critical_root_path": [
+        "FC0017"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "FC0018": {
+      "critical_root_path": [
+        "FC0010",
+        "FC0018"
+      ],
+      "dependencies": [
+        "FC0010"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "FC0014",
+    "FC000F",
+    "FC0013"
+  ],
+  "schema": "peano-lab-constructive-historical-publication-v30-first-v27-graph",
+  "stable_admitted_node_count": 0
+}

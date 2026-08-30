@@ -1,0 +1,126 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v20": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+  },
+  "per_theorem": [
+    {
+      "name": "beta_prefix_horner_trace_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "PH0001"
+    },
+    {
+      "name": "beta_horner_eval_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "PH0002"
+    },
+    {
+      "name": "beta_horner_trace_functional",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "PH0003"
+    },
+    {
+      "name": "beta_horner_eval_functional",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "PH0004"
+    },
+    {
+      "name": "beta_horner_eval_exists_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "PH0005"
+    },
+    {
+      "name": "beta_horner_eval_empty",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "PH0006"
+    },
+    {
+      "name": "beta_horner_eval_successor_decompose",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "PH0007"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 88306,
+    "path": "book/_static/constructive-next-layer-explorer/polynomial-horner/api/corpus.json",
+    "sha256": "d91f62bfec89263036f4895cf6e742a63c00c19028af3333f6d5123575ff6685"
+  },
+  "source_corpus_fields": {
+    "alpha_first_enrolled_version": "v20",
+    "alpha_first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+  },
+  "source_family_fields": {},
+  "source_manifest": {
+    "bytes": 27841,
+    "path": "book/_static/constructive-next-layer-explorer/manifest.json",
+    "sha256": "66c5baf8e317d1ab391f74ffea161e9869995ac7b34017bf449c6ccc9a74c155"
+  },
+  "source_manifest_fields": {
+    "alpha_first_enrolled_version": "v20",
+    "first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+  }
+}
