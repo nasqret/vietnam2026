@@ -1,0 +1,277 @@
+"""Fail-closed Stable/Alpha runtime for the Bertrand Alpha-v9 append.
+
+The exact 1,055-row Alpha-v8 ledger is retained as an immutable prefix.
+Twenty-one reviewed Primorial rows are appended with dependency-curried body
+evidence only.  Alpha membership records their exact identity and provenance;
+it does not admit any appended row as an empty-context theorem.
+"""
+
+from __future__ import annotations
+
+from collections import Counter
+from functools import lru_cache
+
+from . import editions_v8 as v8
+from .alpha_enrollment_v9 import (
+    BERTRAND_V9_EXPECTED_COUNT,
+    BERTRAND_V9_EXPECTED_NAMES,
+    BERTRAND_V9_START_INDEX,
+    PARENT_ALPHA_V8_COUNT,
+    PARENT_ALPHA_V8_ENROLLMENT_SHA256,
+    PARENT_ALPHA_V8_IDENTITY_SHA256,
+    alpha_v9_enrollment,
+)
+from .theorems import CheckedTheorem, TheoremSpec
+
+
+EditionName = v8.EditionName
+Membership = v8.Membership
+EvidenceStatus = v8.EvidenceStatus
+EnrollmentOrigin = v8.EnrollmentOrigin
+EditionEntry = v8.EditionEntry
+LibraryEdition = v8.LibraryEdition
+
+
+class EditionV9Error(ValueError):
+    """An Alpha-v9 manifest, topology, or lookup violates its seal."""
+
+
+class EditionV9ReplayError(EditionV9Error):
+    """A v9 theorem is absent or lacks empty-context closure evidence."""
+
+
+def dependency_depths(specs):
+    return v8.dependency_depths(specs)
+
+
+def dependency_layers(specs):
+    return v8.dependency_layers(specs)
+
+
+def _alpha_entries() -> tuple[EditionEntry, ...]:
+    enrollment = alpha_v9_enrollment()
+    result = list(enrollment.parent_entries)
+    for spec in enrollment.bertrand_specs:
+        origin = EnrollmentOrigin(enrollment.origin_by_name[spec.name].value)
+        result.append(
+            EditionEntry(
+                spec=spec,
+                membership=Membership.ALPHA_ONLY,
+                evidence=EvidenceStatus.BODY_CHECKED,
+                enrollment_origin=origin,
+                provenance=(origin,),
+                source_module=enrollment.source_by_name[spec.name],
+            )
+        )
+    return tuple(result)
+
+
+ALPHA_ENTRIES: tuple[EditionEntry, ...] = _alpha_entries()
+ALPHA_SPECS: tuple[TheoremSpec, ...] = tuple(entry.spec for entry in ALPHA_ENTRIES)
+ALPHA_CHECKED_SPECS: tuple[TheoremSpec, ...] = tuple(
+    entry.spec for entry in ALPHA_ENTRIES if entry.checked_use
+)
+
+STABLE_RELEASE_ORDER: tuple[str, ...] = tuple(spec.name for spec in v8.STABLE_SPECS)
+_ALPHA_BY_NAME = {entry.spec.name: entry for entry in ALPHA_ENTRIES}
+STABLE_ENTRIES: tuple[EditionEntry, ...] = tuple(
+    _ALPHA_BY_NAME[name] for name in STABLE_RELEASE_ORDER
+)
+STABLE_SPECS: tuple[TheoremSpec, ...] = tuple(entry.spec for entry in STABLE_ENTRIES)
+
+STABLE_EDITION = v8.v7.v6.v5._make_edition(EditionName.STABLE, STABLE_ENTRIES)
+ALPHA_EDITION = v8.v7.v6.v5._make_edition(EditionName.ALPHA, ALPHA_ENTRIES)
+
+ALPHA_V9_ENROLLMENT_SHA256 = ALPHA_EDITION.enrollment_identity_sha256
+ALPHA_V9_IDENTITY_SHA256 = ALPHA_EDITION.identity_sha256
+ALPHA_ENROLLMENT_SHA256 = ALPHA_V9_ENROLLMENT_SHA256
+
+EXPECTED_ALPHA_V9_EDGE_COUNT = 3_276
+EXPECTED_ALPHA_V9_LAYER_COUNT = 45
+EXPECTED_ALPHA_V9_ENROLLMENT_SHA256 = (
+    "fe862a0c9d0c47f05ae6740cbc95c67e9b984a715397e18078c11d44f709046f"
+)
+EXPECTED_ALPHA_V9_IDENTITY_SHA256 = (
+    "b74d7479d749500dbbd737f7cf5e7ea97a7998f8079233ed87b11c84823e2f80"
+)
+
+
+def _validate_seals() -> None:
+    if len(ALPHA_ENTRIES) != PARENT_ALPHA_V8_COUNT + BERTRAND_V9_EXPECTED_COUNT:
+        raise EditionV9Error("Alpha v9 theorem count changed")
+    if tuple(
+        entry.spec.name for entry in ALPHA_ENTRIES[BERTRAND_V9_START_INDEX:]
+    ) != BERTRAND_V9_EXPECTED_NAMES:
+        raise EditionV9Error("Alpha v9 Bertrand append order changed")
+    parent = ALPHA_ENTRIES[:PARENT_ALPHA_V8_COUNT]
+    if parent != v8.ALPHA_ENTRIES:
+        raise EditionV9Error("Alpha v9 no longer preserves exact v8 entries")
+    if (
+        v8.v7.v6.v5._enrollment_identity(parent)
+        != PARENT_ALPHA_V8_ENROLLMENT_SHA256
+    ):
+        raise EditionV9Error("Alpha v9 no longer preserves its v8 parent ledger")
+    if (
+        v8.v7.v6.v5._identity(EditionName.ALPHA, parent)
+        != PARENT_ALPHA_V8_IDENTITY_SHA256
+    ):
+        raise EditionV9Error("Alpha v9 changed v8 edition metadata")
+    if STABLE_SPECS != v8.STABLE_SPECS or len(STABLE_SPECS) != 432:
+        raise EditionV9Error("Stable v9 view changed the sealed 432-row release")
+    if STABLE_EDITION.identity_sha256 != v8.STABLE_EDITION.identity_sha256:
+        raise EditionV9Error("Stable v9 metadata changed")
+
+    actual_topology = (ALPHA_EDITION.edge_count, ALPHA_EDITION.layer_count)
+    expected_topology = (
+        EXPECTED_ALPHA_V9_EDGE_COUNT,
+        EXPECTED_ALPHA_V9_LAYER_COUNT,
+    )
+    if -1 in expected_topology:
+        raise EditionV9Error(
+            "Alpha v9 topology bootstrap required: "
+            f"edge_count={actual_topology[0]}, layer_count={actual_topology[1]}, "
+            f"enrollment={ALPHA_V9_ENROLLMENT_SHA256}, "
+            f"identity={ALPHA_V9_IDENTITY_SHA256}"
+        )
+    if actual_topology != expected_topology:
+        raise EditionV9Error("Alpha v9 topology seal changed")
+    if (
+        EXPECTED_ALPHA_V9_ENROLLMENT_SHA256.startswith("UNSEALED_")
+        or EXPECTED_ALPHA_V9_IDENTITY_SHA256.startswith("UNSEALED_")
+    ):
+        raise EditionV9Error(
+            "Alpha v9 identity bootstrap required: "
+            f"enrollment={ALPHA_V9_ENROLLMENT_SHA256}, "
+            f"identity={ALPHA_V9_IDENTITY_SHA256}"
+        )
+    if ALPHA_V9_ENROLLMENT_SHA256 != EXPECTED_ALPHA_V9_ENROLLMENT_SHA256:
+        raise EditionV9Error("Alpha v9 enrollment identity changed")
+    if ALPHA_V9_IDENTITY_SHA256 != EXPECTED_ALPHA_V9_IDENTITY_SHA256:
+        raise EditionV9Error("Alpha v9 edition identity changed")
+
+    if Counter(entry.membership for entry in ALPHA_ENTRIES) != {
+        Membership.STABLE: 432,
+        Membership.ALPHA_ONLY: 644,
+    }:
+        raise EditionV9Error("Alpha v9 release-membership counts changed")
+    if Counter(entry.evidence for entry in ALPHA_ENTRIES) != {
+        EvidenceStatus.STABLE_CLOSED: 432,
+        EvidenceStatus.ALPHA_CLOSED: 138,
+        EvidenceStatus.BODY_CHECKED: 505,
+        EvidenceStatus.PENDING_LAYERED_CLOSURE: 1,
+    }:
+        raise EditionV9Error("Alpha v9 evidence counts changed")
+    origins = Counter(entry.enrollment_origin for entry in ALPHA_ENTRIES)
+    if origins[EnrollmentOrigin.BERTRAND] != 111 or sum(origins.values()) != 1076:
+        raise EditionV9Error("Alpha v9 enrollment-origin counts changed")
+    if len(ALPHA_CHECKED_SPECS) != 570:
+        raise EditionV9Error("body-only v9 rows changed checked use")
+    checked = {spec.name for spec in ALPHA_CHECKED_SPECS}
+    for spec in ALPHA_CHECKED_SPECS:
+        if not set(spec.dependencies) <= checked:
+            raise EditionV9Error(
+                f"checked theorem {spec.name!r} depends on unchecked evidence"
+            )
+    for entry in ALPHA_ENTRIES[BERTRAND_V9_START_INDEX:]:
+        if (
+            entry.membership is not Membership.ALPHA_ONLY
+            or entry.evidence is not EvidenceStatus.BODY_CHECKED
+            or entry.checked_use
+            or entry.enrollment_origin is not EnrollmentOrigin.BERTRAND
+            or entry.provenance != (EnrollmentOrigin.BERTRAND,)
+        ):
+            raise EditionV9Error("Bertrand v9 evidence boundary changed")
+
+
+_validate_seals()
+
+
+def _coerce_edition(value: EditionName | str) -> EditionName:
+    if isinstance(value, EditionName):
+        return value
+    if isinstance(value, str):
+        wanted = value.strip().casefold()
+        for candidate in EditionName:
+            if candidate.value == wanted:
+                return candidate
+    raise EditionV9Error(f"unknown theorem-library v9 edition {value!r}")
+
+
+def edition(name: EditionName | str = EditionName.STABLE) -> LibraryEdition:
+    selected = _coerce_edition(name)
+    return STABLE_EDITION if selected is EditionName.STABLE else ALPHA_EDITION
+
+
+def entry(
+    name: str,
+    *,
+    edition: EditionName | str = EditionName.STABLE,
+) -> EditionEntry | None:
+    if not isinstance(name, str):
+        return None
+    selected = globals()["edition"](edition)
+    return selected.by_name.get(name.strip()) or next(
+        (
+            item
+            for item in selected.entries
+            if item.spec.name.casefold() == name.strip().casefold()
+        ),
+        None,
+    )
+
+
+@lru_cache(maxsize=None)
+def replay(
+    name: str,
+    *,
+    edition: EditionName | str = EditionName.STABLE,
+) -> CheckedTheorem:
+    selected_name = _coerce_edition(edition)
+    item = entry(name, edition=selected_name)
+    if item is None:
+        raise EditionV9ReplayError(
+            f"unknown {selected_name.value} v9 theorem {name!r}"
+        )
+    if not item.checked_use:
+        raise EditionV9ReplayError(
+            f"{selected_name.value} v9 theorem {item.spec.name!r} has evidence "
+            f"{item.evidence.value!r}; checked theorem use requires "
+            "stable_closed or alpha_closed"
+        )
+    return v8.replay(item.spec.name, edition=selected_name)
+
+
+__all__ = [
+    "ALPHA_CHECKED_SPECS",
+    "ALPHA_EDITION",
+    "ALPHA_ENROLLMENT_SHA256",
+    "ALPHA_ENTRIES",
+    "ALPHA_SPECS",
+    "ALPHA_V9_ENROLLMENT_SHA256",
+    "ALPHA_V9_IDENTITY_SHA256",
+    "BERTRAND_V9_START_INDEX",
+    "EXPECTED_ALPHA_V9_EDGE_COUNT",
+    "EXPECTED_ALPHA_V9_ENROLLMENT_SHA256",
+    "EXPECTED_ALPHA_V9_IDENTITY_SHA256",
+    "EXPECTED_ALPHA_V9_LAYER_COUNT",
+    "EditionEntry",
+    "EditionName",
+    "EditionV9Error",
+    "EditionV9ReplayError",
+    "EnrollmentOrigin",
+    "EvidenceStatus",
+    "LibraryEdition",
+    "Membership",
+    "PARENT_ALPHA_V8_COUNT",
+    "PARENT_ALPHA_V8_ENROLLMENT_SHA256",
+    "PARENT_ALPHA_V8_IDENTITY_SHA256",
+    "STABLE_EDITION",
+    "STABLE_ENTRIES",
+    "STABLE_RELEASE_ORDER",
+    "STABLE_SPECS",
+    "dependency_depths",
+    "dependency_layers",
+    "edition",
+    "entry",
+    "replay",
+]

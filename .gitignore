@@ -1,0 +1,91 @@
+# ── Python ─────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+*.egg-info/
+.ipynb_checkpoints/
+.venv-helios/
+.cache/huggingface/
+
+# Peano policy runs keep manifests/reports selectively; never stage weights,
+# optimizer checkpoints, or scheduler streams by accident.
+results/peano-policy/
+results/peano-hydra/
+checkpoints/
+logs/*.out
+logs/*.err
+# Runtime ledgers are independently authenticated; reviewed copies live in artifacts/.
+/logs/hydra-corrective-v1.jsonl
+/logs/hydra-corrective-v2.jsonl
+
+# ── JupyterBook / Sphinx build ─────────────────────────
+book/_build/
+_build/
+.jupyter_cache/
+
+# ── Lean / Mathlib ─────────────────────────────────────
+artifacts/lean/**/.lake/
+artifacts/lean/**/lake-packages/
+artifacts/lean/**/build/
+artifacts/lean-fta/.lake/
+*.olean
+
+# ── Agda ───────────────────────────────────────────────
+artifacts/agda/**/_build/
+*.agdai
+
+# ── Rocq / Coq ─────────────────────────────────────────
+artifacts/rocq/**/*.vo
+artifacts/rocq/**/*.vok
+artifacts/rocq/**/*.vos
+artifacts/rocq/**/*.glob
+artifacts/rocq/**/.*.aux
+
+# ── Browser lab (vendored/built assets) ────────────────
+lab-lambda/vendor/
+lab-lambda/_dist/
+peano-lab/vendor/
+peano-lab/_dist/
+
+# ── Node (only used for tooling, not committed) ────────
+node_modules/
+
+# ── OS / editor ────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# ── Local-only notes ───────────────────────────────────
+scratch/
+*.local.md
+
+# Local generated reports and one-off debugging scratch. Reviewed deliverables
+# belong under artifacts/ instead of these working directories.
+output/
+tmp/
+peano-lab/py/debug_candidate.py
+
+# Claude Code local settings
+.claude/
+
+# Deploy staging (make stage)
+/_deploy/
+
+# Coq/Rocq lia/nia caches
+artifacts/rocq/.lia.cache
+artifacts/rocq/.nia.cache
+**/.lia.cache
+**/.nia.cache
+
+# audit input bundle (report preserved in docs/lambda-lab-audit.md)
+src/*.zip
+
+# raw source assets (originals; optimized copies live in assets/)
+/src/
+
+# local preview symlink tree (make serve)
+_preview/
