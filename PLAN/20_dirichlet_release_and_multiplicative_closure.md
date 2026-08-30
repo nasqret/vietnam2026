@@ -157,6 +157,25 @@ byte changed. The previous `_deploy/proofs` tree was moved intact to
 historical staging build. A fresh remote checksum/deletion dry run still
 matches that preserved previous stage with zero differences.
 
+The complete `make -j1 stage-proofs` finished with exit zero, retaining every
+original flagship, historical-generator, Gaussian, and fresh checkpoint gate.
+The final v31 overlay checked 11,448 files after insertion of 7,405 eligible
+public Lean selectors. Commit `4c3f7e00` contains the browser correction and
+is pushed. Its static proof-site payload was deployed to the existing faculty
+proof root, assets/pages first and the root index last, without remote
+deletions. The complete local and remote trees match: 12,372 files, 616
+directories including the root, 807,669,961 bytes, and SHA-256 inventory
+`b493e8c0de91a7018ba07885742cd116e0c4b315b671e14fc860e05c35776e0d`.
+Every file was hashed; no links, special files or hardlinked files were found.
+The checksum/deletion post-preview has no file differences or deletions; it
+reports only the root-directory timestamp changed by the index-last upload.
+Thirteen certificate-verifying HTTPS requests returned 200 and matched all
+10,605,486 staged bytes exactly.
+The three Lean gateway files already match production and required no upload
+or service action. This completes the requested current-release commit,
+promotion, website-test correction and static deployment. G009 production
+adoption and its separate final proof/publication gates follow.
+
 Peano-next was deployed from pushed commit `51108a20`, immutable application
 `a-e4012dd8e319`: all 573 staged/live files (160,377,764 bytes) match, and the
 four directly sampled HTTPS resources match their staged bytes. All observed
