@@ -724,10 +724,24 @@ def test_v23_completed_milestones_bind_exact_original_kernel_objects_and_atlas_r
     assert corpus["milestone_checked_use"] is True
     assert theorem_name in corpus["root_names"]
     assert corpus["node_count"] == count
-    assert corpus["alpha_edition_version"] == "v28"
+    # These immutable readers were already refreshed to v30. Their first
+    # admission is still v23; the older v28 planning atlas is not their
+    # current-edition catalog authority.
+    assert corpus["alpha_edition_version"] == "v30"
     assert corpus["alpha_first_enrolled_version"] == "v23"
-    assert corpus["alpha_catalog_sha256"] == campaign()["ambitious_boundaries"]["alpha_v28_edition"]["catalog_sha256"]
-    assert corpus["alpha_edition_identity_sha256"] == campaign()["ambitious_boundaries"]["alpha_v28_edition"]["identity_sha256"]
+    catalog_digest = sha256()
+    with (REPO / "artifacts/peano-library/alpha/catalog-v30.json").open("rb") as stream:
+        while chunk := stream.read(1024 * 1024):
+            catalog_digest.update(chunk)
+    assert corpus["alpha_catalog_sha256"] == catalog_digest.hexdigest() == (
+        "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7"
+    )
+    assert corpus["alpha_edition_identity_sha256"] == (
+        "8986ab8b8d8493ab7c8f01e2080b0ac590fd3c7289ac811b6606710ca453e1e9"
+    )
+    current_theorem = alpha_catalog("v30")[theorem_name]
+    assert current_theorem["statement_sha256"] == statement_digest
+    assert current_theorem["empty_context_closure"]["certificate_sha256"] == MILESTONE_CLOSURE_BUNDLE_IDENTITY
     assert corpus["alpha_proof_bundle_sha256"] == MILESTONE_CLOSURE_BUNDLE_IDENTITY
 
 

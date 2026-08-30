@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0327 — FpCoefficientNegation(p,ab,ac,rb,rc,L) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/definition/ND0327.html">
+<meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/definition/ND0327.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ND0327 — FpCoefficientNegation(p,ab,ac,rb,rc,L) — Definition">
+</head>
+<body class="pa-defined-proof-site" data-family="polynomial-division-prerequisites"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=6c9ebfb3c37e">Definitions and proofs</a>
+       <a href="../graph.html?v=6c9ebfb3c37e">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=6c9ebfb3c37e">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=6c9ebfb3c37e">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=6c9ebfb3c37e">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=6c9ebfb3c37e">G091 milestone</a></nav>
+  <p class="pd-tag">ND0327</p><h1>FpCoefficientNegation(p,ab,ac,rb,rc,L)</h1>
+  <p>At each strict index i&lt;L, actual beta source and result coefficients satisfy FpNeg(p,a,r), namely bounded field addition a+r=0. The common representation length and highest-degree-first order are retained. Empty prefixes impose no coefficient condition, even at p=0; existence for canonical prime-field inputs is a separate theorem.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ pfs_index_polynomial_division_definition. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=6c9ebfb3c37e">Lt(pfs_index_polynomial_division_definition,L)</a> → ∃ x. ∃ y. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(ab,ac,pfs_index_polynomial_division_definition,x)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(rb,rc,pfs_index_polynomial_division_definition,y)</a> ∧ <a class="pd-definition-ref" data-definition="ND0229" href="ND0229.html?v=6c9ebfb3c37e">FpAdd(p,x,y,0)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall pfs_index_polynomial_division_definition. (exists pfa_gap_polynomial_division_definitionindex. pfa_gap_polynomial_division_definitionindex + S (pfs_index_polynomial_division_definition) = ((L))) -&gt; exists pfs_source_polynomial_division_definition pfs_result_polynomial_division_definition. ((((exists ff_h_pfp_polynomial_division_definitionsource. ff_h_pfp_polynomial_division_definitionsource + S (pfs_source_polynomial_division_definition) = S ((S (pfs_index_polynomial_division_definition)) * (ac))) /\ exists ff_q_pfp_polynomial_division_definitionsource. (ab) = ff_q_pfp_polynomial_division_definitionsource * S ((S (pfs_index_polynomial_division_definition)) * (ac)) + (pfs_source_polynomial_division_definition))) /\ (((((exists ff_h_pfp_polynomial_division_definitionresult. ff_h_pfp_polynomial_division_definitionresult + S (pfs_result_polynomial_division_definition) = S ((S (pfs_index_polynomial_division_definition)) * (rc))) /\ exists ff_q_pfp_polynomial_division_definitionresult. (rb) = ff_q_pfp_polynomial_division_definitionresult * S ((S (pfs_index_polynomial_division_definition)) * (rc)) + (pfs_result_polynomial_division_definition))) /\ ((((exists pfa_gap_polynomial_division_definitionoperationadditionleft. pfa_gap_polynomial_division_definitionoperationadditionleft + S (pfs_source_polynomial_division_definition) = ((p))) /\ (((exists pfa_gap_polynomial_division_definitionoperationadditionright. pfa_gap_polynomial_division_definitionoperationadditionright + S (pfs_result_polynomial_division_definition) = ((p))) /\ ((((exists pfa_gap_polynomial_division_definitionoperationadditionresultbound. pfa_gap_polynomial_division_definitionoperationadditionresultbound + S (0) = ((p))) /\ ((exists pfa_offset_left_polynomial_division_definitionoperationadditionresultcongruence pfa_offset_right_polynomial_division_definitionoperationadditionresultcongruence. ((pfs_source_polynomial_division_definition) + (pfs_result_polynomial_division_definition)) + ((p)) * pfa_offset_left_polynomial_division_definitionoperationadditionresultcongruence = (0) + ((p)) * pfa_offset_right_polynomial_division_definitionoperationadditionresultcongruence)))))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=6c9ebfb3c37e">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0231.html?v=6c9ebfb3c37e">FpNeg(p,a,b)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PQ0003.html?v=6c9ebfb3c37e">PQ0003 · prime_field_polynomial_negate_empty</a><a class="pd-chip" href="../tag/PQ0004.html?v=6c9ebfb3c37e">PQ0004 · prime_field_polynomial_negate_exists</a><a class="pd-chip" href="../tag/PQ0005.html?v=6c9ebfb3c37e">PQ0005 · prime_field_polynomial_negate_entry</a><a class="pd-chip" href="../tag/PQ0006.html?v=6c9ebfb3c37e">PQ0006 · prime_field_polynomial_negate_bounded</a><a class="pd-chip" href="../tag/PQ0007.html?v=6c9ebfb3c37e">PQ0007 · prime_field_polynomial_negate_functional</a><a class="pd-chip" href="../tag/PQ0008.html?v=6c9ebfb3c37e">PQ0008 · prime_field_polynomial_negate_transport</a><a class="pd-chip" href="../tag/PQ0009.html?v=6c9ebfb3c37e">PQ0009 · prime_field_polynomial_negate_involutive</a><a class="pd-chip" href="../tag/PQ000A.html?v=6c9ebfb3c37e">PQ000A · prime_field_polynomial_negate_zero</a><a class="pd-chip" href="../tag/PQ000B.html?v=6c9ebfb3c37e">PQ000B · prime_field_polynomial_negate_add_zero</a><a class="pd-chip" href="../tag/PQ0016.html?v=6c9ebfb3c37e">PQ0016 · prime_field_polynomial_subtract_zero_left</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>6</dd>
+  <dt>Topological notation layer</dt><dd>4</dd>
+  <dt>Transitive prerequisites</dt><dd>6</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0327.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>4589678e8a6dcc0fb7910ec9ddae51bd7b467b47846a0fff834c1def1436b35d</code></dd>
+</dl></aside></main></body>
+</html>

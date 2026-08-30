@@ -1,0 +1,909 @@
+{
+  "checkpoint_digest": "02aaa68b0af58f2373414908119d171e5890ef9b6926231df07109fab6e49c86",
+  "file_count_excluding_manifest": 225,
+  "files": {
+    "assets/defined-explorer.css": {
+      "bytes": 15951,
+      "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220"
+    },
+    "assets/defined-explorer.js": {
+      "bytes": 29840,
+      "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"
+    },
+    "assets/exact-explorer.css": {
+      "bytes": 30856,
+      "sha256": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc"
+    },
+    "assets/exact-explorer.js": {
+      "bytes": 42701,
+      "sha256": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606"
+    },
+    "assets/proofs.css": {
+      "bytes": 8341,
+      "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285"
+    },
+    "checkpoints.json": {
+      "bytes": 22438,
+      "sha256": "4309253c92009c5b8a7298dbda78665fed5f2932262df57a00098ba565e5dccd"
+    },
+    "checkpoints/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json": {
+      "bytes": 1060637,
+      "sha256": "fec8cf768ef2b94430d58d947daa0affada315bbc5160a03991dc4d2550dd0e9"
+    },
+    "grand-campaign/campaign.json": {
+      "bytes": 640568,
+      "sha256": "064d5a5d3525cd6222908dea11706693e44f22a8b3684dcc6673b394d36a9ab2"
+    },
+    "grand-campaign/dag-audit.json": {
+      "bytes": 2819,
+      "sha256": "c929df4553fb3ff066ec95aafe3b5dc6f6945c535d4d3b4bbac48dcce4bed851"
+    },
+    "grand-campaign/definitions.json": {
+      "bytes": 1484978,
+      "sha256": "55696e74c18e18a3ff8587763465f000fba72f1f387042bdee1e3691c1fffdea"
+    },
+    "grand-campaign/index.html": {
+      "bytes": 700235,
+      "sha256": "591ae8e4d893203a55993da8feea3619c2e176f337f963508924d069fcd2f069"
+    },
+    "index.html": {
+      "bytes": 1828,
+      "sha256": "c3ea13bc9b926f87c0b6f017817424e1a433ee31eebc94e4e0a36c28a886f1db"
+    },
+    "polynomial-division-prerequisites/api/checkpoint.json": {
+      "bytes": 12722,
+      "sha256": "87e9e6d3e1467a263ee2cc6fcb5044c440f1f563511db93ffafa7b7a70c0f10e"
+    },
+    "polynomial-division-prerequisites/api/corpus.json": {
+      "bytes": 2646297,
+      "sha256": "679f56b32595c7a44d358870bb11829e24636d94bb79e21337d3038e8daaa6f5"
+    },
+    "polynomial-division-prerequisites/api/graph.json": {
+      "bytes": 159788,
+      "sha256": "ce5dc3ff1249fa63f0e2159279857ffbbc4ebc4540bc615344a3814125a0b821"
+    },
+    "polynomial-division-prerequisites/checkpoint.html": {
+      "bytes": 1036649,
+      "sha256": "9661d31a97bd1bd258ad2ef708c147ed99b280547130edae9a2f976734c4772e"
+    },
+    "polynomial-division-prerequisites/explorer/defined/api/graph.json": {
+      "bytes": 159788,
+      "sha256": "ce5dc3ff1249fa63f0e2159279857ffbbc4ebc4540bc615344a3814125a0b821"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0001.html": {
+      "bytes": 3669,
+      "sha256": "1217d7781ec6ae9782c3cd014afb454b3a4fc911bd8c7a6906e6a040e0bfefd5"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0012.html": {
+      "bytes": 5097,
+      "sha256": "90ea19bc21029f705fc3cddbec2c9496d6bb82ecee65939afc3b417c74196227"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0023.html": {
+      "bytes": 4096,
+      "sha256": "e848c4d9dcc4333d581e7c88c8671eaed466a23c166558a0a931b3c4963ba5d6"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0229.html": {
+      "bytes": 6522,
+      "sha256": "cf33d174420a445002c9bae4050b344ac78334c0a9411a1de5bc8d6cfc399324"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0230.html": {
+      "bytes": 5096,
+      "sha256": "979806a64a057c05191ea10502abbc989ec92b143111767ca11a9937270feb34"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0231.html": {
+      "bytes": 4147,
+      "sha256": "f7d34b315f542abef71d238ff16cd41046a07aec4d875d93c6cb537bd7e79e76"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0232.html": {
+      "bytes": 4447,
+      "sha256": "230ab389b834ef14a0fa099b1a3de8ce150676facdd71e37b52cb82ae0f87686"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0262.html": {
+      "bytes": 6735,
+      "sha256": "bfc76f0d0bc85352386e7fd3cb742de1510c4461a56d4be2c49e020f7d092439"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0270.html": {
+      "bytes": 6382,
+      "sha256": "547cc864485242fe639aae7ede35c31d5dd6786bc81a1e622f8c7fc0df43fc83"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0271.html": {
+      "bytes": 5889,
+      "sha256": "6d913b0684e9b038765d2383975cadb904b45822b9783e1c099e1c7299aedbcb"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0277.html": {
+      "bytes": 6660,
+      "sha256": "c064c5650d5a53cc616163253ddd247834d15e7610a5941991f48e15547cd176"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0278.html": {
+      "bytes": 6479,
+      "sha256": "d5a3f5784ecfa5257af67ef67477df19274e54d77661c324bfba3fa674e9d43c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0279.html": {
+      "bytes": 7782,
+      "sha256": "69b78d4f5c165355e5aa6f6285d76d1fea3042199c131c3cfe32994b2af485ff"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0280.html": {
+      "bytes": 8563,
+      "sha256": "937e62bf142d67accf244ceb54040ff933ec13b3a31e1ff7911a340441db26fc"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0298.html": {
+      "bytes": 6302,
+      "sha256": "ec3be8c0d9699ec54f3f15a8123ea73ddeda6123ed7623481b19dae0d875e7b5"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0327.html": {
+      "bytes": 7704,
+      "sha256": "35e6557ccf4f93cdd91185d56b62fc155e947a613096b372a068796ad355872b"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0328.html": {
+      "bytes": 8943,
+      "sha256": "c39c787c6b7b33256247e1483f14b0f64fae3837dafbfd622fd2a45c8359a203"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0329.html": {
+      "bytes": 6148,
+      "sha256": "41085eda7a1056b7efc2e4f53b2e733e9e20b5ed867ea29028a4f6fdf3395f29"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0330.html": {
+      "bytes": 9997,
+      "sha256": "bc09553312a8d4d20f5532c4e2ae4321548fc33e3cffac3904e11032fdc7cb40"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0331.html": {
+      "bytes": 6145,
+      "sha256": "cc7fb954cd6f6bebf84593f524cd1f7a761f095af470b9121a5142a20a0861f6"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0332.html": {
+      "bytes": 10124,
+      "sha256": "91dc950705760dc7d01e9f66d5adca2c50264e44b6f4ee1710d636224e3f905c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/ND0333.html": {
+      "bytes": 13557,
+      "sha256": "510909dafa92a0fd1466af0285902321136b6a0905c8fa43bc250ee878e6f2b1"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0001.html": {
+      "bytes": 3767,
+      "sha256": "0194adbde1e8336de910494e3c32ccb7f24c072b26321182cf65f14ee200a1cb"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0002.html": {
+      "bytes": 9050,
+      "sha256": "601342b6b3402152a6a2b8058c8197d7674da3be535ef59e7fc1fbd0cffaffac"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0004.html": {
+      "bytes": 6744,
+      "sha256": "c1e2915fa2fc3989e2e1be01bac8c8a5aafe0643eae620fd74054d5748aa686c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0008.html": {
+      "bytes": 3467,
+      "sha256": "81db1ce11c816bb16181fc71ada8876ac965cec70cd3e8de3164ea544acc86ec"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0013.html": {
+      "bytes": 10590,
+      "sha256": "5e79c7e737af5526e79ee859be3c416c1e6f8732129badebfa59c1fd102628fc"
+    },
+    "polynomial-division-prerequisites/explorer/defined/definition/PD0019.html": {
+      "bytes": 5717,
+      "sha256": "42eaec36b33dd50ceaa5036442f99aa3bc585e977000be6ba3bafa6e3ac8a477"
+    },
+    "polynomial-division-prerequisites/explorer/defined/graph.html": {
+      "bytes": 122014,
+      "sha256": "5a655fecf91b7e58c64599cd350184e6245023c61a140cb044f59f33a4fe2204"
+    },
+    "polynomial-division-prerequisites/explorer/defined/index.html": {
+      "bytes": 84136,
+      "sha256": "c22193350ad069a3524f2ac0efad9e08aaf66f81ea0c22a7e7630122542194ad"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0001.html": {
+      "bytes": 18011,
+      "sha256": "c574db63353a16fc1dcd75bfe22f86a2918a772d6d9ed68f60dfc3c843bf701c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0002.html": {
+      "bytes": 9585,
+      "sha256": "8c076eb2d0cc73a44cb921ab8237e38eca55fa5fdd5b781c93482ec59640481f"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0003.html": {
+      "bytes": 9307,
+      "sha256": "99b289fb8fb213023d766d87ee4ee370a704f2a7e8c94594e65252cfb762612b"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0004.html": {
+      "bytes": 26337,
+      "sha256": "d3aae9fba0422bc943a81471cfdafa5c0d69e6cbbc78d20a29bf5e8871842985"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0005.html": {
+      "bytes": 16503,
+      "sha256": "68020bdf3910fde54d23681b1f1af9604ca3c07766ea23c3cb9c9b435b2810a3"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0006.html": {
+      "bytes": 16571,
+      "sha256": "323f1f4c71901121c961c2c76f76d893fd63ae782bc4bced8e35b5ca5ca3b219"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0007.html": {
+      "bytes": 23427,
+      "sha256": "cfabcb11b85ca422895e0deb310f8d65ebfa8c5d2b1fd21f1d15dab8525c03ea"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0008.html": {
+      "bytes": 18068,
+      "sha256": "e061e12714afe499714a71ddcde2095a656bbcdbb5c618befc8653e3bf6ebc07"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0009.html": {
+      "bytes": 13784,
+      "sha256": "9033ceea17dd4e1164f41bf423d0a087e5ec46f373a917a9ca50e432143b6208"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000A.html": {
+      "bytes": 12227,
+      "sha256": "8d833ea208d397d64b5c62c511ab0c601559afb4415b93c9be0b0a8ecd45bcd8"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000B.html": {
+      "bytes": 15041,
+      "sha256": "3ca93759ab5028dfef4cfd0c3d528a278dfa2516d1b3d574671b8941bd6bcddb"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000C.html": {
+      "bytes": 9989,
+      "sha256": "51ea221355564e5653564f157030226e8fe3b1b17a88485c0fc605b61baebf41"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000D.html": {
+      "bytes": 33709,
+      "sha256": "eb25eb01ad2762c6e48caf4b7105e212a209e59e5e00be986002f5edc2e277b7"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000E.html": {
+      "bytes": 20297,
+      "sha256": "d54cd91bb25954c38ae01521c13e9a0ce5ee5b06c1ca345fe571fe4faec84357"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ000F.html": {
+      "bytes": 23261,
+      "sha256": "7280412c0d02f97d7340437460cddc3a1009f389ef09e32c3a1bb8149e25322f"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0010.html": {
+      "bytes": 27911,
+      "sha256": "03105a29f791c294712274dc38127a7e708cb305ebd55b914e33c24b3caafece"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0011.html": {
+      "bytes": 22726,
+      "sha256": "082f1c142974e1fa33048932ab7d3f2b6b03deca031db732076091bc586048fd"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0012.html": {
+      "bytes": 16038,
+      "sha256": "bcb8cff227823c702a7f0351025739bf013d32c8d9908e2f530599b47c0ab928"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0013.html": {
+      "bytes": 15744,
+      "sha256": "f51d163947175fbc08020ae03acb6c2f70bb50266ee779463d7f5550ad4714b5"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0014.html": {
+      "bytes": 15012,
+      "sha256": "58da5b8d67d1933802cb20727e53b131ab5658f57fd7a97b51eb8099d7f5f504"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0015.html": {
+      "bytes": 16986,
+      "sha256": "12b37b89102b4d50107b002ade7d1d402f4eae468efec226097d70b4704559cf"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0016.html": {
+      "bytes": 16727,
+      "sha256": "27dca226e6ebbcb8f2454dd9beed113225e1e5584a551c83d5b998a90211d863"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0017.html": {
+      "bytes": 17265,
+      "sha256": "b6393ed30b3e029fb138892044e5fb3f792f5ee527af727c682802f805d3f2fd"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0018.html": {
+      "bytes": 19478,
+      "sha256": "e2579ae18e95e2a9f6123a96e4b16442642eb319b75d5dcb08e499e1987b5611"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0019.html": {
+      "bytes": 18514,
+      "sha256": "aefe8d4ed07f17fad91f503d22f9026195d574de26ead1dc449bb82354ddc214"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001A.html": {
+      "bytes": 20794,
+      "sha256": "9b2a20b3c562676a86b703a43dbd423ed30efa25ab3d6272cf35ef291cbf2429"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001B.html": {
+      "bytes": 13505,
+      "sha256": "73f5d73f77832921b08304c4502c4fe3e143ccd3d086082164707a29fdce9098"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001C.html": {
+      "bytes": 11089,
+      "sha256": "c835a45e5a9b98e0924d505339c6268c9dafcc29161794f13a21429c1f2f6212"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001D.html": {
+      "bytes": 14208,
+      "sha256": "e9485f30e1311b8d09c89921bac0146c68e4de6ee40558a3e42d73f281522a1a"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001E.html": {
+      "bytes": 15232,
+      "sha256": "aebab5246c5a218ad055c3c6bbf4402259b36ac678f255cec503668107cb4fa3"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ001F.html": {
+      "bytes": 23420,
+      "sha256": "db22957e30344395e7d99a9ab5e10c36db3ea56df1658c0043e922f6979cf53a"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0020.html": {
+      "bytes": 18519,
+      "sha256": "e1e5ee5f5c3f4397609c68eadaa4630bcc5c4e97ee2bda284fc957e4abb08bd3"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0021.html": {
+      "bytes": 17503,
+      "sha256": "c6fbe3f3dda16b4a99f8cd42d5e096ebdc2027e6f7f88175ae2f4501586d6869"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0022.html": {
+      "bytes": 13072,
+      "sha256": "8ce4ce1b917c5ee2c6ef3301d010d424e9ee596c94bda1f047bc86e09fa39d50"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0023.html": {
+      "bytes": 14072,
+      "sha256": "59ee8868209e61ef330cb8fe6db47e797190dd25c51c321ef1df3999457b1251"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0024.html": {
+      "bytes": 12091,
+      "sha256": "43eed50060dae8c6b1f96a1a389665602f9b4cfe7465b0481fdfe04da2170308"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0025.html": {
+      "bytes": 16900,
+      "sha256": "8c9cea6448abc5fbaf788ff2f09264cadba516ac49aadf60d867ac17ff1a0646"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0026.html": {
+      "bytes": 11943,
+      "sha256": "b600bacd640e9b80d30742367d37e05f77b0f298d5fbdb51fbe7a9ca8d6b00e9"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0027.html": {
+      "bytes": 19162,
+      "sha256": "cae4bcdc5133e4da411eef4fd64201feaa9c9c3a1ff9e7bcf25e4320afbb3607"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0028.html": {
+      "bytes": 16771,
+      "sha256": "3865e5a0e048c76bb1e7805457e4733a1133ee0dfda308dc6d39fa379faa5009"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0029.html": {
+      "bytes": 26818,
+      "sha256": "7e95fc940fbe08a16207a9a0abfc7b9c82b54107af5e9592cce741a1685a58cf"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002A.html": {
+      "bytes": 20648,
+      "sha256": "4c505e2914ac25f95c0bd7ec87889b395efd6bd6356c7b36d7826416fbf25426"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002B.html": {
+      "bytes": 20078,
+      "sha256": "3aecd0371813d4a0fe3af8ae481ae571f0300d3f90a4f6a8ef026576fb1f5dde"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002C.html": {
+      "bytes": 26670,
+      "sha256": "8b3ce41820d4f8e34d8088c4fb64f0ea7dfccc7246d107d613e8e9c429cac0ae"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002D.html": {
+      "bytes": 30203,
+      "sha256": "70d0b317ba3023178133fdad6c40f4b71b8258f204b93cc7e23bda2db8c8c60a"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002E.html": {
+      "bytes": 16994,
+      "sha256": "c7fab820e109a347cf4d206a872b8d9b9829745933954ed1796b776db696e05b"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ002F.html": {
+      "bytes": 15561,
+      "sha256": "3ce5506965211bc4b597e73d7ed24f2e4e500b07e7d7a297f843db97275a9bd2"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0030.html": {
+      "bytes": 15074,
+      "sha256": "e4f413f48f655487116f609ebfa6026e7563829e5c2709b39439132bfcf90370"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0031.html": {
+      "bytes": 9691,
+      "sha256": "a27bca61d0bbf5643d8d19386291026a6bedbdb58933a3e5a684ec56bdff3c3b"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0032.html": {
+      "bytes": 11296,
+      "sha256": "341722fb55a0d84a06293e7b216d63cbc1689cb13e58a301b75e1fdb15870058"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0033.html": {
+      "bytes": 13748,
+      "sha256": "c1a0342f23ebb2d30675170a157d2be1879261a3ff4f371ede6e26daf89fe75d"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0034.html": {
+      "bytes": 10308,
+      "sha256": "59553165f0efbaa48846260ea3e32318d308689101b7a28fcc95c62088e38365"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0035.html": {
+      "bytes": 14952,
+      "sha256": "4f57b30fcc0d4a86313412a4277a31cec04183a5da1dacd6e09a22188224ae21"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0036.html": {
+      "bytes": 13147,
+      "sha256": "3214c1314c22ba1f2558c8ed990af2d008830ea15fc6fe987c919a47913879a1"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0037.html": {
+      "bytes": 16216,
+      "sha256": "c56e38724e5ff9ed96c6f2b49c06aef7b1df11e662cd428f9fdad31a79b31264"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0038.html": {
+      "bytes": 15808,
+      "sha256": "1613268acab6fc6c07101258000a096ed70130aaeb5276a8538d630d69a3eb79"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0039.html": {
+      "bytes": 22107,
+      "sha256": "5f8997352d39857588458f4998dc1607144406c1a3a165864d3dc57a46be6102"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003A.html": {
+      "bytes": 18865,
+      "sha256": "afb17f24b3feea8be2f1e93675c7692cd17e36f1cf98174f294352fca1790b5c"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003B.html": {
+      "bytes": 18416,
+      "sha256": "daaabf466d7d72bd9ba2b67b2d6a4bbbc85c6eb5a9ae816cd3042995bfd747c8"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003C.html": {
+      "bytes": 24350,
+      "sha256": "40405c4fcfe7b7b072d8fc56602f3a79e6c7cafe463a2ac91ba9a0a24ea86368"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003D.html": {
+      "bytes": 19692,
+      "sha256": "8a544d1217f36a4ef5d56ff64ed9af96cf0009f5ad365cee05beddb17bf4750e"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003E.html": {
+      "bytes": 23752,
+      "sha256": "97636e599f5ae8a9f03fcd7842fdf7ba167117a24ce139f40db25a149c911447"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ003F.html": {
+      "bytes": 22809,
+      "sha256": "03728fa174be187b68184384d6c9738b04be23def62ac9638ea62c60528fd117"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0040.html": {
+      "bytes": 23460,
+      "sha256": "688589aaf89a54e90d0071956c4eb890e003a14bfd318b9e6f87869325356509"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0041.html": {
+      "bytes": 17015,
+      "sha256": "0c79bbc048f7749b8044b2ce901798345d8e5c721811ff76eb0f6e399bd222f2"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0042.html": {
+      "bytes": 14447,
+      "sha256": "23910924a426bcc78a41f6832859c85fd232f7c0f63133f87dbdf116c9c747b7"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0043.html": {
+      "bytes": 38046,
+      "sha256": "41ae195c842b87dbabffa499bef6040bd30287272214ae6b0b7c297cf24fe481"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0044.html": {
+      "bytes": 18337,
+      "sha256": "1eaa354d591e1434d621460299b0e02426de27f4762f000b88110bfe86772e23"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0045.html": {
+      "bytes": 19560,
+      "sha256": "1843c4405155d8354c1b636f388a97176c280c661d792274d565380675054598"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0046.html": {
+      "bytes": 17357,
+      "sha256": "68640791adab1c0c6fe188f5dcde4d2c9373d544b8b22c6a4c7339c47a1ecd8e"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0047.html": {
+      "bytes": 20212,
+      "sha256": "2e85af5e1f9ba660651d9b0df9969999b58997a8e831eaa739982d20ac991df3"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0048.html": {
+      "bytes": 18732,
+      "sha256": "532b627c1ce66181e919d8ee59f6523f961bccbdaa54e5d10e877cb02ebdd924"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0049.html": {
+      "bytes": 28345,
+      "sha256": "f246a72ba4e2fb0a7cabea4b755e179fc76f9ec3682b54e6d0c1c1b87110c0cd"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004A.html": {
+      "bytes": 21593,
+      "sha256": "3367a6463b7794563b114166733904a4305e7a210cb5ea84acd552945211385e"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004B.html": {
+      "bytes": 17822,
+      "sha256": "0bd4fb2663170e8310f80f7f6b9cce9879ef5ac966c929a47b9374b891c45767"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004C.html": {
+      "bytes": 39797,
+      "sha256": "764cc62d81d2f8c38ac678e646c76866970d5af56f213ccb8792bab0869165bc"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004D.html": {
+      "bytes": 20759,
+      "sha256": "723f1671845043a9e9a2ebad290cda601f863d27c1d807b71dfb5c41f9768ea2"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004E.html": {
+      "bytes": 27879,
+      "sha256": "4ba2f861b609cc04cb4a4008752239915c79a65a63956435b43790c3cad8fa45"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ004F.html": {
+      "bytes": 22040,
+      "sha256": "bcea638b651943c74ce2ff3ffe04f8907c844907cf4f2cdaa451a8bcaed16cda"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0050.html": {
+      "bytes": 28000,
+      "sha256": "2429cd5ace9a59627168121c308b017f244377a1d79e54e92898de3db464a845"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0051.html": {
+      "bytes": 24964,
+      "sha256": "e5b1e3d1a66557df0e0fec8b9cf14dac0f35cdfac60c837bac3084e21c9bfb55"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0052.html": {
+      "bytes": 23791,
+      "sha256": "1021a45a2039c358564698fa1b9d5b007d00f3be762e176ad318fd1c5de10f07"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0053.html": {
+      "bytes": 18931,
+      "sha256": "b609dd891ce274d885f9799c762e02b67c9d86d55dab8eeca4439be291846e52"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0054.html": {
+      "bytes": 29094,
+      "sha256": "94a855928621a3aa85d8162b595681b0b6554c4167f602b4c72fd5d274623ceb"
+    },
+    "polynomial-division-prerequisites/explorer/defined/tag/PQ0055.html": {
+      "bytes": 27983,
+      "sha256": "00fa2ff4e34847e5b3a60741b794678ab4b219d64108f241e44f2038992bbbd6"
+    },
+    "polynomial-division-prerequisites/explorer/index.html": {
+      "bytes": 88174,
+      "sha256": "f4539dccb6051c51e4bc44ca7699df6677339e438fd0bd5ac51a09ee306a9f5b"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0001.html": {
+      "bytes": 24139,
+      "sha256": "447424b203c13c6b150ba58394f81e038cc61160545afe4f7d5b5b4b5211b063"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0002.html": {
+      "bytes": 10564,
+      "sha256": "8306b87941018583e68e2cb72d8baefff457fa9202dd339bfe8a58640a16922e"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0003.html": {
+      "bytes": 9939,
+      "sha256": "c952d8b282461d80783c89f9d9f089e6fbc769e07389a9103a49f6436bbd9030"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0004.html": {
+      "bytes": 36326,
+      "sha256": "39253fca904a774c17d7011a7219b0be77baf9dd84282222e1159c8f7c334e7c"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0005.html": {
+      "bytes": 20034,
+      "sha256": "ee8a00a27e0b3faeadf8a0cca29209a59b18c24260eed61e40681bb2a4880ac0"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0006.html": {
+      "bytes": 20335,
+      "sha256": "8079e05fb61fdf87b57f5ba6746a25823479819dddf054b0733e5a7620c35d61"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0007.html": {
+      "bytes": 28088,
+      "sha256": "45585229fde440f0805e9d3cef80ef17138c916785e143a9a03be1f42abaf2c0"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0008.html": {
+      "bytes": 20146,
+      "sha256": "350ce58a1312f3b00944565eb06afc22ff54d0bcd04b3d1223871fbba4a6f75f"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0009.html": {
+      "bytes": 15883,
+      "sha256": "8ff47312d61bd8868144e594abc12baaff0747feb423aa8f3fdc2777111e299e"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000A.html": {
+      "bytes": 13309,
+      "sha256": "81e6bda8d32555c66c78374d22d3dc766bdbc3b4f27f55b91d13e5bea43cb108"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000B.html": {
+      "bytes": 16934,
+      "sha256": "1f611e351697b7ce189be45db2e54634199a7be6e2d804eb941366c9d155ff80"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000C.html": {
+      "bytes": 10772,
+      "sha256": "6c6c20589a92a819e863ed08fdc5131748a973af505d0a8d47490c1024046f08"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000D.html": {
+      "bytes": 46912,
+      "sha256": "011c910c2e0647b5d7f539e5168cf45d4b213e9db343c21a27b771d4df4442c8"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000E.html": {
+      "bytes": 25566,
+      "sha256": "3007ef53b0c2b2c6ac967ee3230d2f73a1941afaab5d8e433eac33a94f9c5451"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ000F.html": {
+      "bytes": 30006,
+      "sha256": "25f5ef930d542cf9b4f2f4d849529f247075a92b5eeacc85a177d6d1b25cd9f4"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0010.html": {
+      "bytes": 34435,
+      "sha256": "7e32d3959634576eb05c0878b3b2db716aba088d828aaf2458fae855270dfc90"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0011.html": {
+      "bytes": 25643,
+      "sha256": "3bf0e906ae9909b08f94c7b7598a387b42e48a8c509e0c2d7d7e55d0850380e3"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0012.html": {
+      "bytes": 18302,
+      "sha256": "78a6a6b59fe2be68dab0937db1e413f8dfb6524c6e60aad8ce462952ee7d0b5d"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0013.html": {
+      "bytes": 18315,
+      "sha256": "3a598eded46527c9fd3046671364625d590b6e961d5f29d469570244a70d4e68"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0014.html": {
+      "bytes": 16249,
+      "sha256": "44c786672cb9c1435d8102e71f007c64748561d07d23dec42e18a091901080b9"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0015.html": {
+      "bytes": 19370,
+      "sha256": "7b81321ac6139f227749ea608bdef879e247f96af51aa8aedc60ebcbe0246b35"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0016.html": {
+      "bytes": 18094,
+      "sha256": "56708310c45bb8f4a38e3cf52940064dd7fb874e062cecfc53b3c8bf73454eae"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0017.html": {
+      "bytes": 19166,
+      "sha256": "bbe56f5882c5eeb777498cc93641267bf7a80ba1123347d2a63de67936f0cd04"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0018.html": {
+      "bytes": 22583,
+      "sha256": "c64b72a813fdcadfb30f16cdce694e94fde0c70b3856518396cfefb4e4fd4ba2"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0019.html": {
+      "bytes": 19907,
+      "sha256": "622e8e9b8e4a5d165d6e61d6b93ff5cc97fda18f18bfbafb8548ac19dc648d9e"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001A.html": {
+      "bytes": 23453,
+      "sha256": "8da0564de931385164e3a0d079fa0c51f5448b7e2ee42e93dc47c8ef2505f577"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001B.html": {
+      "bytes": 17431,
+      "sha256": "642d412a0b9d591c4f0228cec9bd91e316bc41c13b05dd82ee11381ff9048138"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001C.html": {
+      "bytes": 12060,
+      "sha256": "9bb8b4415aa3938cb27719de2e02950913d501c3cd605d78ebaee60d914c5cc0"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001D.html": {
+      "bytes": 16012,
+      "sha256": "9e874846838f2f8595335215b354d5d0eb100e4f189e14b0cc40f9e923930db1"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001E.html": {
+      "bytes": 17743,
+      "sha256": "5a7ee7651a6cee2fb31d0cddc37f7af4eb33264e589481e13b7928eb4aa68655"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ001F.html": {
+      "bytes": 32515,
+      "sha256": "715d3f1c93b834b9e8f3c226bc9c12d905620658f6a10383d6c4d5c3a52f94e0"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0020.html": {
+      "bytes": 20535,
+      "sha256": "50f08480dbf3310261f2a6b5973a18ba841de7fe79d7150a49c8483391f84770"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0021.html": {
+      "bytes": 20842,
+      "sha256": "ce4c104e948047af340cc3436f23fe6213ffadc8334fbd5b6b628d85c081a10a"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0022.html": {
+      "bytes": 15302,
+      "sha256": "8716e4722d50ddfad6e1fa993ac6d6efa7b23b309b235cf013bf120fbaa5bbb4"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0023.html": {
+      "bytes": 15319,
+      "sha256": "1759c88c97b5f910f1c47dcf34d4817b8be60993a8bd1bd4ba0c2065f9879c78"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0024.html": {
+      "bytes": 12958,
+      "sha256": "9f3f430e40f136de267d08d2a48f62df1789703c315c52a97206fb0338237de1"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0025.html": {
+      "bytes": 20656,
+      "sha256": "01f51ac6592d4e3870f79bdc17f831c3108ceea2399fe10335dc1992708cd0e5"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0026.html": {
+      "bytes": 12752,
+      "sha256": "31e54495968ac7fabe734f5ef14a71455d5ec1f485e8dc70fa00ddc0756a8662"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0027.html": {
+      "bytes": 25531,
+      "sha256": "ce533a5c88b4c07b77f120107d8c96c0dccb0e95cdeee9b650f1f8dc4745296a"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0028.html": {
+      "bytes": 18609,
+      "sha256": "79be3842daaed9bd5131a1ef54898e6a51ea6f92314cc982c4bee92d3117f7d4"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0029.html": {
+      "bytes": 38183,
+      "sha256": "5623588f7e5ffa87083f9d9d9c9d1f2df565f485dfa6be82bcaea1b9e4d81cb9"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002A.html": {
+      "bytes": 24299,
+      "sha256": "c4f5fd06fce234b914bf4b9a35429e48652fc3743f561e694bf16c1b68afcddd"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002B.html": {
+      "bytes": 23918,
+      "sha256": "0485f7138e92a980e314a2fa5d1e7e41cad0653ee3520724a0c3eefa87d8b584"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002C.html": {
+      "bytes": 31432,
+      "sha256": "664572d2aa5d5fd5cab72c96025f2324f87425bd9eab80481bba7d681493a71f"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002D.html": {
+      "bytes": 37922,
+      "sha256": "cba3a654d82cc6d5f3c2da5460a55d3fb8ba9d4056222c53d1e6c4d12eaf99fc"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002E.html": {
+      "bytes": 19546,
+      "sha256": "123e83382b7f594ab8d4edb2157825e22f594337e1ffa5c4006fd71f124e8229"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ002F.html": {
+      "bytes": 17022,
+      "sha256": "c7e51ffef041be66f51aa75cd148e097cd407c8df1bb74faacec508e8db79c3c"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0030.html": {
+      "bytes": 17331,
+      "sha256": "853bd1108c8b8f2f1b4958b275824f1c75a7ecacd3f8829d317c5e0617a41962"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0031.html": {
+      "bytes": 10346,
+      "sha256": "097d9fcd395948d2c45854c7a785f94a93de028c154c07395fd6109597c9b840"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0032.html": {
+      "bytes": 12117,
+      "sha256": "92436644ce240d7fe9d90dc90c74b69ef35ddfe6d61b2d19c9627520e8ca0750"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0033.html": {
+      "bytes": 15111,
+      "sha256": "ebb4ddcf8101fe800b14924f670650d0ad6d344459c1f781ca2d8fd38b32d051"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0034.html": {
+      "bytes": 11140,
+      "sha256": "c787b8fb218a2c1f0ce4d588583535533ac2ef4795c4a32c522da1ec4feea5c6"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0035.html": {
+      "bytes": 16230,
+      "sha256": "d12210de1ab1f2deef4082900b5a76ec333db463a084de0d3fdc58153bfb9362"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0036.html": {
+      "bytes": 14046,
+      "sha256": "20592e13b82e9adcd07b8f652229d7739874aee8daa1a457f56467cca0a76fe8"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0037.html": {
+      "bytes": 17816,
+      "sha256": "f8dd76b6384ebb41ca3f616b8c66521baedfb7cd5474e50242a83d10b3522514"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0038.html": {
+      "bytes": 18631,
+      "sha256": "02472bc2f9bd04991c4d7f5bc79250f1b5db09302aa3f3ef7ea1898bc3dd74ed"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0039.html": {
+      "bytes": 31524,
+      "sha256": "a0235af8487ac5cd28e351385abcf3b503f5c3c1edb4479ec90d3ea06e4644a4"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003A.html": {
+      "bytes": 26164,
+      "sha256": "617ec906e0035b2ec8e0c6bc3ec1a8cc1632154e8932d8526bd229b175b3d30b"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003B.html": {
+      "bytes": 19714,
+      "sha256": "86569d3bda9d8b8d026776f07790bfbf58cb25824379b50aca6c82e19ccc33b1"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003C.html": {
+      "bytes": 33268,
+      "sha256": "9528771dd5ce7f93a942212a133bed20016bbbe36ad5022e657eb2340954a5a2"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003D.html": {
+      "bytes": 22733,
+      "sha256": "2de473c3d87b86d39e8897169c94d68bcee1a3cb0c0d4c21a827ea903149303b"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003E.html": {
+      "bytes": 26840,
+      "sha256": "b0245fa9d773c04ebec0bf5eb03dd05f737bee866f48dd7ba60fdc02555f2d93"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ003F.html": {
+      "bytes": 25731,
+      "sha256": "0f25b6856f1a3037073b89722e9a239ed368b3cd96a019c5d9c39894311ab0ae"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0040.html": {
+      "bytes": 26055,
+      "sha256": "dcb8664d2b5ed75a09e9b1160a541af7fb7706bcee7ed2106cc420d60f2eaa66"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0041.html": {
+      "bytes": 19087,
+      "sha256": "b4585084e882256eaccab728b95b07176ad819a5305599d231e98a1991b71bea"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0042.html": {
+      "bytes": 15312,
+      "sha256": "bf60ff96ceb15377c222156cd93e636d776f8817878cffcbab60e53c7cd39271"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0043.html": {
+      "bytes": 46223,
+      "sha256": "a320f122bd13e77570feae970df2bfd23f592b384c1935233cfdde8dcedd1e18"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0044.html": {
+      "bytes": 22950,
+      "sha256": "51e14c51f6ff364bd8d28099b37801e306eb70c881b13bd137cb28bad973eaae"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0045.html": {
+      "bytes": 21427,
+      "sha256": "67da556069fa4aa7c68ba1e54bd4c9013003c2563ce4c91a36797f389fb2d7bb"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0046.html": {
+      "bytes": 19178,
+      "sha256": "52521298639d6d3810513520532254f8a601c6f767f6b58cd5e76ae9effc287d"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0047.html": {
+      "bytes": 27600,
+      "sha256": "de73635d6a0e04e314f2db1a6a6e2f66db456ca4ab6f22bd6ba114609b66b2b7"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0048.html": {
+      "bytes": 19579,
+      "sha256": "b4d79be8d648c5d6ab547fd58df982376bd33dfb600cdfecea02b98cd0d7d07b"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0049.html": {
+      "bytes": 38251,
+      "sha256": "d6a88cbbfb57204d97ba5acd50da86d8bebb90268d9907331fa6d27be6c7e5be"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004A.html": {
+      "bytes": 24653,
+      "sha256": "dd587ec9c555845e294aa839b87bf7c304c74e5ab369aa6eb82728c1ff2d7f93"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004B.html": {
+      "bytes": 19292,
+      "sha256": "8c538dfbe0fe214d324b5076526c8bf16f1f025e06d7b925e3bf2dda61e56a88"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004C.html": {
+      "bytes": 47487,
+      "sha256": "17ebb792dbbce5f09548dd3eef52e30636f9fdef57c6d22627649ee2836df41a"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004D.html": {
+      "bytes": 25608,
+      "sha256": "74c39795239c722c38db85ee37eb1591ad82a1c8e700c0372db932060b76feef"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004E.html": {
+      "bytes": 38244,
+      "sha256": "6c49e4ee1dce999f0841b042343d9d8a3dfc83b65665fd8715e86fc8c9b4b57d"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ004F.html": {
+      "bytes": 25140,
+      "sha256": "b2a6105ef29fa11a4f034cff6856a1293d27bbec0220466145b72365dc260f2a"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0050.html": {
+      "bytes": 31732,
+      "sha256": "32433d9f8c3bcc6e962d1f9d549bd73ee419a1dc120b702804946df0d50ce551"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0051.html": {
+      "bytes": 27687,
+      "sha256": "0c4b688815dd9c3803d1a8481adc66df8ea531c29004163688a3029208bfe77f"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0052.html": {
+      "bytes": 26405,
+      "sha256": "a565f8853a19cc8ec2fd80d73551419f4aa67e25bdb9d3f42903ef085f659565"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0053.html": {
+      "bytes": 20387,
+      "sha256": "2dd3283cdcc36ff381618de0c47427e62c5700f3fb52b70095242225af5e1dec"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0054.html": {
+      "bytes": 36496,
+      "sha256": "fe33c23e67aab3adb2120b6a15f89f2adcc9125a1e48e975a914d90b63a63a9d"
+    },
+    "polynomial-division-prerequisites/explorer/tag/PQ0055.html": {
+      "bytes": 35054,
+      "sha256": "d287f1a82b36b48995941704c519d4f473e48734eebd838cb65d8e8371792d35"
+    },
+    "polynomial-division-prerequisites/index.html": {
+      "bytes": 7303,
+      "sha256": "a9f282677578e8a7e0be2d6d2501862e9a7dcd865ea6e0ba7d952909a10ea64c"
+    },
+    "proof-audit.json": {
+      "bytes": 12722,
+      "sha256": "87e9e6d3e1467a263ee2cc6fcb5044c440f1f563511db93ffafa7b7a70c0f10e"
+    },
+    "sources/prime-field-polynomial-division-prerequisites-rfc-v1.md": {
+      "bytes": 5104,
+      "sha256": "744016632b32f7f4eaec9467dbb6816386373089a30c00cd919c815e9bfa7a92"
+    },
+    "sources/prime_field_polynomial_monic_candidate.py": {
+      "bytes": 25658,
+      "sha256": "3bf93aff71b48a332920b1a6174e44167bf78238caac3b6d35634f3591582eef"
+    },
+    "sources/prime_field_polynomial_subtraction_candidate.py": {
+      "bytes": 27165,
+      "sha256": "d08562b26c683a891e58a4b10faa495867d7487054b1ee7c99f091dd1c707b2b"
+    },
+    "sources/prime_field_polynomial_synthetic_candidate.py": {
+      "bytes": 25265,
+      "sha256": "0938e369e528666e8e52c5d49b157a12bd00bf50150783182b3b5ebc36b02022"
+    },
+    "sources/prime_field_polynomial_trim_candidate.py": {
+      "bytes": 26425,
+      "sha256": "1125c02fd11646efaa20963380ba1086e18551f2c89b242b8900a8043d358e4c"
+    }
+  },
+  "navigation_revision": "6c9ebfb3c37e",
+  "publication_scope": "local-only-checkpoint",
+  "schema": "peano-lab-local-polynomial-division-proof-explorer-v1-manifest"
+}

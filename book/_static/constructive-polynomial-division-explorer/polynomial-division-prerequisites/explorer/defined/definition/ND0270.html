@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0270 — FpPolyAdd(p,ab,ac,bb,bc,cb,cc,l) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/definition/ND0270.html">
+<meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/definition/ND0270.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ND0270 — FpPolyAdd(p,ab,ac,bb,bc,cb,cc,l) — Definition">
+</head>
+<body class="pa-defined-proof-site" data-family="polynomial-division-prerequisites"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=6c9ebfb3c37e">Definitions and proofs</a>
+       <a href="../graph.html?v=6c9ebfb3c37e">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=6c9ebfb3c37e">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=6c9ebfb3c37e">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=6c9ebfb3c37e">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=6c9ebfb3c37e">G091 milestone</a></nav>
+  <p class="pd-tag">ND0270</p><h1>FpPolyAdd(p,ab,ac,bb,bc,cb,cc,l)</h1>
+  <p>Witnessed canonical addition at each aligned coefficient position. Coefficients are highest-degree-first, and l is a common representation length, not a claimed degree.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ pfp_index_lowertier. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=6c9ebfb3c37e">Lt(pfp_index_lowertier,l)</a> → ∃ x. ∃ y. ∃ z. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(ab,ac,pfp_index_lowertier,x)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(bb,bc,pfp_index_lowertier,y)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(cb,cc,pfp_index_lowertier,z)</a> ∧ <a class="pd-definition-ref" data-definition="ND0229" href="ND0229.html?v=6c9ebfb3c37e">FpAdd(p,x,y,z)</a>))</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall pfp_index_lowertier. (exists pfa_gap_lowertierindex. pfa_gap_lowertierindex + S (pfp_index_lowertier) = ((l))) -&gt; exists pfp_left_lowertier pfp_right_lowertier pfp_value_lowertier. ((((exists ff_h_pfp_lowertierleft. ff_h_pfp_lowertierleft + S (pfp_left_lowertier) = S ((S (pfp_index_lowertier)) * (ac))) /\ exists ff_q_pfp_lowertierleft. (ab) = ff_q_pfp_lowertierleft * S ((S (pfp_index_lowertier)) * (ac)) + (pfp_left_lowertier))) /\ (((((exists ff_h_pfp_lowertierright. ff_h_pfp_lowertierright + S (pfp_right_lowertier) = S ((S (pfp_index_lowertier)) * (bc))) /\ exists ff_q_pfp_lowertierright. (bb) = ff_q_pfp_lowertierright * S ((S (pfp_index_lowertier)) * (bc)) + (pfp_right_lowertier))) /\ (((((exists ff_h_pfp_lowertiertarget. ff_h_pfp_lowertiertarget + S (pfp_value_lowertier) = S ((S (pfp_index_lowertier)) * (cc))) /\ exists ff_q_pfp_lowertiertarget. (cb) = ff_q_pfp_lowertiertarget * S ((S (pfp_index_lowertier)) * (cc)) + (pfp_value_lowertier))) /\ ((((exists pfa_gap_lowertieroperationleft. pfa_gap_lowertieroperationleft + S (pfp_left_lowertier) = ((p))) /\ (((exists pfa_gap_lowertieroperationright. pfa_gap_lowertieroperationright + S (pfp_right_lowertier) = ((p))) /\ ((((exists pfa_gap_lowertieroperationresultbound. pfa_gap_lowertieroperationresultbound + S (pfp_value_lowertier) = ((p))) /\ ((exists pfa_offset_left_lowertieroperationresultcongruence pfa_offset_right_lowertieroperationresultcongruence. ((pfp_left_lowertier) + (pfp_right_lowertier)) + ((p)) * pfa_offset_left_lowertieroperationresultcongruence = (pfp_value_lowertier) + ((p)) * pfa_offset_right_lowertieroperationresultcongruence)))))))))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=6c9ebfb3c37e">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(b,c,i,x)</a><a class="pd-chip" href="ND0229.html?v=6c9ebfb3c37e">FpAdd(p,a,b,c)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PQ000B.html?v=6c9ebfb3c37e">PQ000B · prime_field_polynomial_negate_add_zero</a><a class="pd-chip" href="../tag/PQ0012.html?v=6c9ebfb3c37e">PQ0012 · prime_field_polynomial_subtract_recover_add</a><a class="pd-chip" href="../tag/PQ0013.html?v=6c9ebfb3c37e">PQ0013 · prime_field_polynomial_subtract_from_add</a><a class="pd-chip" href="../tag/PQ0019.html?v=6c9ebfb3c37e">PQ0019 · prime_field_polynomial_subtract_add_cancel</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>8</dd>
+  <dt>Topological notation layer</dt><dd>3</dd>
+  <dt>Transitive prerequisites</dt><dd>5</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0270.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>99c485c0e531ba23d8f6199753620fe5ed626c189de57a1433ca406c4e4154f8</code></dd>
+</dl></aside></main></body>
+</html>

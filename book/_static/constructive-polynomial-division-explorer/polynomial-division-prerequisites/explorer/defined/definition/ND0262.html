@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0262 — BetaPrefixInto(b,c,l,B) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/definition/ND0262.html">
+<meta property="og:url" content="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-division-prerequisites/explorer/defined/definition/ND0262.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ND0262 — BetaPrefixInto(b,c,l,B) — Definition">
+</head>
+<body class="pa-defined-proof-site" data-family="polynomial-division-prerequisites"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=6c9ebfb3c37e">Definitions and proofs</a>
+       <a href="../graph.html?v=6c9ebfb3c37e">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=6c9ebfb3c37e">Local checkpoint map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=6c9ebfb3c37e">Checkpoint domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=6c9ebfb3c37e">Checkpoint family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=6c9ebfb3c37e">G091 milestone</a></nav>
+  <p class="pd-tag">ND0262</p><h1>BetaPrefixInto(b,c,l,B)</h1>
+  <p>Every actual beta entry below the strict length l has a witnessed value below B. The same generic graph describes canonical polynomial coefficients when B is the modulus; empty prefixes are allowed.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code>∀ fom_index_pfp_lowertier. <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=6c9ebfb3c37e">Lt(fom_index_pfp_lowertier,l)</a> → ∃ x. <a class="pd-definition-ref" data-definition="PD0013" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(b,c,fom_index_pfp_lowertier,x)</a> ∧ <a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=6c9ebfb3c37e">Lt(x,B)</a></code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>forall fom_index_pfp_lowertier. (exists fom_gap_pfp_lowertier_index_bound. fom_gap_pfp_lowertier_index_bound + S (fom_index_pfp_lowertier) = (l)) -&gt; exists fom_value_pfp_lowertier. ((((exists fom_beta_height_pfp_lowertier_entry. fom_beta_height_pfp_lowertier_entry + S (fom_value_pfp_lowertier) = S ((S (fom_index_pfp_lowertier)) * (c))) /\ exists fom_beta_quotient_pfp_lowertier_entry. (b) = fom_beta_quotient_pfp_lowertier_entry * S ((S (fom_index_pfp_lowertier)) * (c)) + (fom_value_pfp_lowertier))) /\ (exists fom_gap_pfp_lowertier_value_bound. fom_gap_pfp_lowertier_value_bound + S (fom_value_pfp_lowertier) = (B)))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=6c9ebfb3c37e">Lt(a,b)</a><a class="pd-chip" href="PD0013.html?v=6c9ebfb3c37e">BetaAt(b,c,i,x)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0298.html?v=6c9ebfb3c37e">FpRepresentedDegree(p,b,c,L,d)</a><a class="pd-chip" href="ND0330.html?v=6c9ebfb3c37e">FpPolynomialTrim(p,b,c,L,t,d,e,M)</a><a class="pd-chip" href="ND0331.html?v=6c9ebfb3c37e">FpMonic(p,b,c,L)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PQ0004.html?v=6c9ebfb3c37e">PQ0004 · prime_field_polynomial_negate_exists</a><a class="pd-chip" href="../tag/PQ0006.html?v=6c9ebfb3c37e">PQ0006 · prime_field_polynomial_negate_bounded</a><a class="pd-chip" href="../tag/PQ000D.html?v=6c9ebfb3c37e">PQ000D · prime_field_polynomial_subtract_exists</a><a class="pd-chip" href="../tag/PQ000F.html?v=6c9ebfb3c37e">PQ000F · prime_field_polynomial_subtract_bounded</a><a class="pd-chip" href="../tag/PQ0014.html?v=6c9ebfb3c37e">PQ0014 · prime_field_polynomial_subtract_self_zero</a><a class="pd-chip" href="../tag/PQ0015.html?v=6c9ebfb3c37e">PQ0015 · prime_field_polynomial_subtract_zero_right</a><a class="pd-chip" href="../tag/PQ001D.html?v=6c9ebfb3c37e">PQ001D · prime_field_polynomial_suffix_bounded</a><a class="pd-chip" href="../tag/PQ0020.html?v=6c9ebfb3c37e">PQ0020 · prime_field_polynomial_trim_from_cut</a><a class="pd-chip" href="../tag/PQ0021.html?v=6c9ebfb3c37e">PQ0021 · prime_field_polynomial_trim_exists</a><a class="pd-chip" href="../tag/PQ0023.html?v=6c9ebfb3c37e">PQ0023 · prime_field_polynomial_trim_output_coefficients</a><a class="pd-chip" href="../tag/PQ002D.html?v=6c9ebfb3c37e">PQ002D · prime_field_polynomial_trim_exists_unique</a><a class="pd-chip" href="../tag/PQ0038.html?v=6c9ebfb3c37e">PQ0038 · prime_field_polynomial_monic_normalization_bounded</a><a class="pd-chip" href="../tag/PQ003A.html?v=6c9ebfb3c37e">PQ003A · prime_field_polynomial_monic_normalization_monic</a><a class="pd-chip" href="../tag/PQ0047.html?v=6c9ebfb3c37e">PQ0047 · prime_field_polynomial_synthetic_exists</a><a class="pd-chip" href="../tag/PQ004A.html?v=6c9ebfb3c37e">PQ004A · prime_field_polynomial_synthetic_quotient_bounded</a><a class="pd-chip" href="../tag/PQ004D.html?v=6c9ebfb3c37e">PQ004D · prime_field_polynomial_horner_constant_value</a><a class="pd-chip" href="../tag/PQ0054.html?v=6c9ebfb3c37e">PQ0054 · prime_field_polynomial_synthetic_exists_unique</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>1</dd>
+  <dt>Transitive prerequisites</dt><dd>2</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0262.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>8761d21550e7982c1c21c17dbccefafaee5466ac658344d943b5c1fe7b26dea4</code></dd>
+</dl></aside></main></body>
+</html>
