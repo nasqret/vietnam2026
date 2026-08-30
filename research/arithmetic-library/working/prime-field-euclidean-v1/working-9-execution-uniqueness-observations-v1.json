@@ -1,0 +1,184 @@
+{
+  "schema": "working-9-execution-uniqueness-observations-v1",
+  "authority": {
+    "kind": "non_authorizing_observations",
+    "may_authorize_proof_acceptance": false,
+    "may_authorize_admission": false,
+    "may_authorize_publication": false,
+    "warning": "Human-readable records of past checks only. No proof checker, admission loader, publisher or live-context constructor may consume this file as authority."
+  },
+  "scope": "Nine working-only actual division execution uniqueness rows. Conditional HA body acceptance and hostile/model regressions are observed, not closed-bundle, independent Lean, global novelty, admission, arbitrary formal identity uniqueness, or gcd/Bezout.",
+  "path_base": "repository_root",
+  "test_id_hash_encoding": "SHA-256 of UTF-8 compact JSON ordered nodeid list, ensure_ascii=False, no trailing LF",
+  "ranges": "zero-based, end-exclusive within the full ordered 379-item test file collection",
+  "limits_per_fresh_window": {
+    "cpu_soft_seconds": 170,
+    "cpu_hard_seconds": 175,
+    "wall_seconds": 180,
+    "peak_rss_ceiling_bytes": 1610612736,
+    "python_allocator": "pymalloc"
+  },
+  "source_pins": [
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/prime_field_polynomial_division_uniqueness_candidate.py",
+      "bytes": 23258,
+      "sha256": "6a9d9ebe1f72202743e5df2c069b9aa367fdb3d61108f1d9354cdc9276ab2d15"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_division_uniqueness_candidate.py",
+      "bytes": 15599,
+      "sha256": "b74083e6707eb83e7fab3efa3f610d562edf2168511b07c5995f9ef9f7f588e2"
+    }
+  ],
+  "inventory": {
+    "factory": "make_prime_field_polynomial_division_uniqueness_candidate_theorems",
+    "rows": 9,
+    "dependencies": 39,
+    "script_commands": 846,
+    "proof_body_occurrences": 2237,
+    "max_body_occurrences": 652,
+    "max_body_depth": 74,
+    "ordered_specs_sha256": "41bb0ad58b6e7ef3cc6fefba62bcc75ae0fe18a10fb87019905cb43e810ae1da",
+    "ordered_spec_hash_encoding": "SHA-256 of consecutive UTF-8 compact JSON [name,statement,dependencies,script,summary] records, ensure_ascii=True, each followed by LF"
+  },
+  "summary": {
+    "passed_unique_cases": 379,
+    "successful_windows": 3,
+    "max_successful_wall_seconds": 104.55020208400674,
+    "max_successful_cpu_seconds": 103.514045,
+    "max_successful_peak_rss_bytes": 154009600,
+    "sum_successful_window_wall_seconds": 194.06267150118947,
+    "sum_wall_is_not_one_resource_window": true,
+    "all_windows_avoided_alpha_imports": true
+  },
+  "cases_by_function": {
+    "test_actual_beta_executions_are_value_unique_but_codes_are_not": 181,
+    "test_characteristic_two_uses_field_one_and_allows_empty_remainder": 1,
+    "test_each_poisoned_dependency_rejected": 39,
+    "test_each_removed_dependency_rejected": 39,
+    "test_exact_local_inventory_and_dependency_topology": 1,
+    "test_false_conclusion_rejected": 9,
+    "test_formal_polynomial_identity_does_not_force_a_chosen_representation_length": 1,
+    "test_functionality_has_no_prime_or_identity_premise": 1,
+    "test_independently_expanded_exact_contract": 9,
+    "test_missing_body_rejected": 9,
+    "test_nonzero_invertible_head_and_canonical_input_are_not_silently_dropped": 4,
+    "test_original_ha_body": 9,
+    "test_quotient_length_has_exactly_one_actual_natural_witness": 49,
+    "test_stronger_or_guardless_claim_rejected": 27
+  },
+  "successful_windows": [
+    {
+      "window": 1,
+      "file": "research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_division_uniqueness_candidate.py",
+      "pytest_k": "not each_removed_dependency and not each_poisoned_dependency",
+      "ranges_start_end_exclusive": [
+        [
+          0,
+          37
+        ],
+        [
+          115,
+          379
+        ]
+      ],
+      "count": 301,
+      "result": 0,
+      "outcomes": {
+        "passed": 301
+      },
+      "ordered_test_ids_sha256": "46c11d2a6ef94edc00da2c8e0a91b59993e7e9656e280ce3b74f66ed96f7a31f",
+      "source_pins_unchanged": true,
+      "no_alpha_import": true,
+      "resources": {
+        "wall_seconds": 104.55020208400674,
+        "cpu_seconds": 103.514045,
+        "peak_rss_bytes": 154009600
+      }
+    },
+    {
+      "window": 2,
+      "file": "research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_division_uniqueness_candidate.py",
+      "pytest_k": "each_removed_dependency",
+      "ranges_start_end_exclusive": [
+        [
+          37,
+          76
+        ]
+      ],
+      "count": 39,
+      "result": 0,
+      "outcomes": {
+        "passed": 39
+      },
+      "ordered_test_ids_sha256": "68632d64b8609df58100139288fc2fd20ad0a3442134a64ff00cf5a013cc5110",
+      "source_pins_unchanged": true,
+      "no_alpha_import": true,
+      "resources": {
+        "wall_seconds": 44.71029158309102,
+        "cpu_seconds": 44.131448,
+        "peak_rss_bytes": 94568448
+      }
+    },
+    {
+      "window": 3,
+      "file": "research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_division_uniqueness_candidate.py",
+      "pytest_k": "each_poisoned_dependency",
+      "ranges_start_end_exclusive": [
+        [
+          76,
+          115
+        ]
+      ],
+      "count": 39,
+      "result": 0,
+      "outcomes": {
+        "passed": 39
+      },
+      "ordered_test_ids_sha256": "3c9cf35f1ec2f8e10d156876991cfdef58b945d9507858e3c76a5e92d1417d5e",
+      "source_pins_unchanged": true,
+      "no_alpha_import": true,
+      "resources": {
+        "wall_seconds": 44.80217783409171,
+        "cpu_seconds": 44.135369000000004,
+        "peak_rss_bytes": 85950464
+      }
+    }
+  ],
+  "uncredited_incidents": [],
+  "final_reconciliation": {
+    "kind": "actual_collection_only_no_proof_replay",
+    "result": 0,
+    "unique_cases": 379,
+    "ordered_test_ids_sha256": "c87db178742e157f7646ff6a925f24dde28c2501efc60c25ceb087bf826504c2",
+    "complete_disjoint_exact_successful_coverage": true,
+    "all_source_pins_unchanged": true,
+    "no_alpha_import": true,
+    "resources": {
+      "wall_seconds": 0.33515145897399634,
+      "cpu_seconds": 0.26884300000000005,
+      "peak_rss_bytes": 51003392
+    }
+  },
+  "mathematical_boundary": "Functionality identifies the uniquely chosen execution lengths and decoded coefficients within those lengths, not beta-code numbers or entries outside the prefix. Conditional functionality needs no Prime premise; existence retains Prime(p), canonical input coefficients and an actual nonzero represented divisor degree. General uniqueness of arbitrary formal quotient/remainder representations remains unproved.",
+  "reproduction": {
+    "cwd": "repository_root",
+    "parameter_substitutions": {
+      "FILTER": "successful_windows[].pytest_k"
+    },
+    "note": "Exact recorded original-bounded runner as inert text. Its eight previous working source/test pins guard genuine dependencies; no previous test-suite results are imported into this nine-row count.",
+    "template": {
+      "sha256": "0a7a7aed1a77e71a1fff436986d4a0529d6542f24cc8c7a44f6f60d25ba81d45",
+      "utf8_bytes": 3677,
+      "exact_text": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 - <<'PY'\nimport base64,collections,contextlib,hashlib,io,json,resource,signal,sys,time,zlib\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic();cpu=time.process_time()\nbase=Path('research/arithmetic-library/working/prime-field-euclidean-v1')\nold={'prime_field_polynomial_convolution_triangular_candidate.py':'d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f','test_prime_field_polynomial_convolution_triangular_candidate.py':'e6bf4d2a0b2b00336b8d83b4ffe5d068e34e3d5bd44e8af4b995ca2723289822','prime_field_polynomial_division_candidate.py':'edfc7806caf7a83b9cb0e3e420bd2c3a8679f2d4d9ee6ca9f8eae53faca8d5b2','test_prime_field_polynomial_division_candidate.py':'c4f7555b19e88789c4a561ec5b66d1f9487f44a32b388f2beea90f9ec42eed3b','prime_field_polynomial_representation_candidate.py':'fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a','test_prime_field_polynomial_representation_candidate.py':'75a2cee90850ff07468b1d568ce4d3665f8006fdbb892c5838186abbc8fd57b7','prime_field_polynomial_distributivity_candidate.py':'a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86','test_prime_field_polynomial_distributivity_candidate.py':'d6200ef1e0447f3efb98461ce343a1a3ae5530f74490bd4b7782cbc13ed2e9a6'}\nnew=['prime_field_polynomial_division_uniqueness_candidate.py','test_prime_field_polynomial_division_uniqueness_candidate.py']\nbefore={name:hashlib.sha256((base/name).read_bytes()).hexdigest() for name in (*old,*new)}\nassert all(before[name]==digest for name,digest in old.items())\nimport pytest\nclass Audit:\n def __init__(self):self.selected=[];self.records=[]\n def pytest_collection_finish(self,session):self.selected=[i.nodeid for i in session.items]\n def pytest_runtest_logreport(self,report):\n  if report.when=='call' or report.outcome!='passed':self.records.append((report.nodeid,report.when,report.outcome,report.duration))\n  if report.when=='call' and (len(self.records)%20==0 or report.outcome!='passed'):print('PROGRESS',len(self.records),report.outcome,report.nodeid[:180],file=sys.__stdout__,flush=True)\na=Audit();out=io.StringIO()\nwith contextlib.redirect_stdout(out),contextlib.redirect_stderr(out):result=pytest.main(['-q','-x','-p','no:cacheprovider','--tb=short',str(base/new[1]),'-k','FILTER'],plugins=[a])\nafter={name:hashlib.sha256((base/name).read_bytes()).hexdigest() for name in (*old,*new)}\nassert before==after\nassert not any(name.startswith('peano_lab.library.editions_') for name in sys.modules)\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nreport={'result':int(result),'selected_count':len(a.selected),'outcomes':dict(collections.Counter(r[2] for r in a.records)),'ids_sha256':hashlib.sha256(json.dumps(a.selected,ensure_ascii=False,separators=(',',':')).encode()).hexdigest(),'selected_zlib_base64':base64.b64encode(zlib.compress(json.dumps(a.selected,separators=(',',':')).encode())).decode(),'records_zlib_base64':base64.b64encode(zlib.compress(json.dumps(a.records,separators=(',',':')).encode())).decode(),'source_pins':before,'source_bytes':{n:(base/n).stat().st_size for n in new},'all_sources_unchanged':True,'no_alpha_import':True,'wall_seconds':time.monotonic()-start,'cpu_seconds':time.process_time()-cpu,'peak_rss_bytes':peak,'cpu_limits':[170,175],'wall_limit':180,'rss_limit_bytes':1536*1024*1024}\nprint('UNIQUENESS_METADATA='+json.dumps(report,sort_keys=True),flush=True)\nif result:print(out.getvalue()[-20000:])\nassert peak<=1536*1024*1024\nsys.exit(int(result))\nPY\n"
+    }
+  },
+  "evidence_transcription": {
+    "mode": "stdlib_only_saved_ID_reconciliation_and_current_source_byte_hashing",
+    "pytest_or_proof_jobs_run": false,
+    "alpha_imports": false,
+    "all_current_source_hashes_match_recorded_pins": true,
+    "raw_compressed_case_records_omitted": true,
+    "private_paths_omitted": true
+  }
+}

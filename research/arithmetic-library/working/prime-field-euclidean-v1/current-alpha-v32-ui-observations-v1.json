@@ -1,0 +1,745 @@
+{
+  "schema": "current-alpha-v32-ui-observations-v1",
+  "authority": {
+    "kind": "non_authorizing_observations",
+    "may_authorize_proof_acceptance": false,
+    "may_authorize_admission": false,
+    "may_authorize_publication": false,
+    "warning": "Human-readable records of past checks only. No proof checker, admission loader, publisher or live-context constructor may consume this file as authority."
+  },
+  "scope": "Nine existing UI/strand/presentation suites migrated to current Alpha v32. Historical theorem statements and first-admission evidence retained; no release capability is represented.",
+  "path_base": "repository_root",
+  "test_id_hash_encoding": "SHA-256 of UTF-8 compact JSON ordered nodeid list, ensure_ascii=False, no trailing LF",
+  "ranges": "zero-based, end-exclusive within each file",
+  "limits_per_fresh_window": {
+    "cpu_soft_seconds": 170,
+    "cpu_hard_seconds": 175,
+    "wall_seconds": 180,
+    "peak_rss_ceiling_bytes": 1610612736,
+    "python_allocator": "pymalloc"
+  },
+  "source_pins": [
+    {
+      "path": "peano-lab/py/tests/test_alpha_v16_ui.py",
+      "bytes": 18768,
+      "sha256": "abf4db580262cf05e8460c0346bae02a3f3fcf6802a90a2c2b26e00c7d7593eb",
+      "test_count": 181,
+      "ordered_test_ids_sha256": "ca407e5ae03227565487f2f7ed603e922f2ce965c4d499a786e8ef56f7dfb4bd"
+    },
+    {
+      "path": "peano-lab/py/tests/test_alpha_v28_ui.py",
+      "bytes": 4962,
+      "sha256": "c8e8d63269b0d51c5d6a976f9848f3cadc910b8e6851d54bf9b00d52efa62054",
+      "test_count": 146,
+      "ordered_test_ids_sha256": "061b34dc608035f11c9a9d67b6966717a51ca3d6b9a953a0298852690219013b"
+    },
+    {
+      "path": "peano-lab/py/tests/test_alpha_v30_ui.py",
+      "bytes": 12554,
+      "sha256": "c2985faacfd54864950cf2ad833362d9cb813e36b9e8a8141e0e8a0af8944035",
+      "test_count": 148,
+      "ordered_test_ids_sha256": "8a8c5fc9fbda9f33d6028aef05ca9cd5e85b31a7d8497cc82c38ac99cc5e843b"
+    },
+    {
+      "path": "peano-lab/py/tests/test_alpha_v31_ui.py",
+      "bytes": 13957,
+      "sha256": "7ad57d3b43ff922f20aa06a2c8e064fa25e6c7a3ec501247c3bab9c08523b24e",
+      "test_count": 168,
+      "ordered_test_ids_sha256": "0aa4a7f40c2b62622c3aada49716053bf71e652d3578170e0e97a2956344a629"
+    },
+    {
+      "path": "peano-lab/py/tests/test_lean_proof_strand.py",
+      "bytes": 31879,
+      "sha256": "2de8eb6509643ac10235b42b1d86ebb46a3585d6fea8c86bd7214b439da4b703",
+      "test_count": 122,
+      "ordered_test_ids_sha256": "3466c87443088301bc8e95325ee157e5434d4af4a273053acf788ab190d8f5ba"
+    },
+    {
+      "path": "peano-lab/py/tests/test_lean_proof_strand_ui.py",
+      "bytes": 16185,
+      "sha256": "f303e4bf117bde932ec2c93d3cd89fe0df0ad42c85391dc23a115c33d0e32f02",
+      "test_count": 73,
+      "ordered_test_ids_sha256": "a2e3b8b4c2136ee0defac71f541e7c28cefe532d760b860f7de60051932d165a"
+    },
+    {
+      "path": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "bytes": 45329,
+      "sha256": "48cc0f208c62cd1bcf6cb04309c6ac0276f5eadcb0364131aed1a6a7a2b45ecf",
+      "test_count": 120,
+      "ordered_test_ids_sha256": "a7b3e8c7cb3e9f8977aa7e7604db4a5705e352f0361bb5c4c19f92afd3ac275e"
+    },
+    {
+      "path": "peano-lab/py/tests/test_lean_presentation_ui.py",
+      "bytes": 14114,
+      "sha256": "42c9e33b09e68bcb0a341ca65b488974a3cb6079b6952a65b7f84ebfec622138",
+      "test_count": 45,
+      "ordered_test_ids_sha256": "3b1d22315629278ce6b8baa16ba9bc2764cfbc0c4c6c850831d801ab182d2df4"
+    },
+    {
+      "path": "peano-lab/py/tests/test_lean_presentation_cli.py",
+      "bytes": 24007,
+      "sha256": "ac04fd77cffff6b4c106d81d5f6ca77065ffbd14f7898a0293ab29fb005569e8",
+      "test_count": 50,
+      "ordered_test_ids_sha256": "35ea62e07eac013ead3581cdbf3e90b697e1857047fa92ec43492c2884c814cc"
+    }
+  ],
+  "summary": {
+    "passed_unique_cases": 1053,
+    "original_test_functions": 196,
+    "successful_windows": 27,
+    "genuine_isolated_lean_cases": 7,
+    "max_successful_wall_seconds": 119.10125304094981,
+    "max_successful_parent_rss_bytes": 1135132672,
+    "max_successful_child_rss_bytes": 1113587712,
+    "sum_successful_window_wall_seconds": 1204.243863916956,
+    "sum_wall_is_not_one_resource_window": true
+  },
+  "successful_windows": [
+    {
+      "window": 1,
+      "file": "peano-lab/py/tests/test_alpha_v16_ui.py",
+      "range_start": 0,
+      "range_end_exclusive": 181,
+      "count": 181,
+      "result": 0,
+      "outcomes": {
+        "passed": 181
+      },
+      "ordered_test_ids_sha256": "ca407e5ae03227565487f2f7ed603e922f2ce965c4d499a786e8ef56f7dfb4bd",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 38.8044769159751,
+        "cpu_seconds": 38.483564,
+        "peak_rss_bytes": 1131462656,
+        "child_peak_rss_bytes": 0
+      }
+    },
+    {
+      "window": 2,
+      "file": "peano-lab/py/tests/test_alpha_v28_ui.py",
+      "range_start": 0,
+      "range_end_exclusive": 146,
+      "count": 146,
+      "result": 0,
+      "outcomes": {
+        "passed": 146
+      },
+      "ordered_test_ids_sha256": "061b34dc608035f11c9a9d67b6966717a51ca3d6b9a953a0298852690219013b",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 56.85894241707865,
+        "cpu_seconds": 56.450871,
+        "peak_rss_bytes": 1105674240,
+        "child_peak_rss_bytes": 0
+      }
+    },
+    {
+      "window": 3,
+      "file": "peano-lab/py/tests/test_alpha_v30_ui.py",
+      "range_start": 0,
+      "range_end_exclusive": 148,
+      "count": 148,
+      "result": 0,
+      "outcomes": {
+        "passed": 148
+      },
+      "ordered_test_ids_sha256": "8a8c5fc9fbda9f33d6028aef05ca9cd5e85b31a7d8497cc82c38ac99cc5e843b",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 114.75127745897043,
+        "cpu_seconds": 106.917344,
+        "peak_rss_bytes": 1135132672,
+        "child_peak_rss_bytes": 729661440
+      }
+    },
+    {
+      "window": 4,
+      "file": "peano-lab/py/tests/test_alpha_v31_ui.py",
+      "range_start": 0,
+      "range_end_exclusive": 121,
+      "count": 121,
+      "result": 0,
+      "outcomes": {
+        "passed": 121
+      },
+      "ordered_test_ids_sha256": "bbc8eb8ac0ffdc97063e546bb6b28304793ddb9a68df463504ca4e3deaa20af1",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 101.33927120803855,
+        "cpu_seconds": 100.46326599999999,
+        "peak_rss_bytes": 990380032,
+        "child_peak_rss_bytes": 0
+      }
+    },
+    {
+      "window": 5,
+      "file": "peano-lab/py/tests/test_alpha_v31_ui.py",
+      "range_start": 121,
+      "range_end_exclusive": 168,
+      "count": 47,
+      "result": 0,
+      "outcomes": {
+        "passed": 47
+      },
+      "ordered_test_ids_sha256": "aab5c6b6edf30940278111efce78748c9337cd24666dc85a7950529186f91374",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 30.235302290995605,
+        "cpu_seconds": 29.964111,
+        "peak_rss_bytes": 1114718208,
+        "child_peak_rss_bytes": 0
+      }
+    },
+    {
+      "window": 6,
+      "file": "peano-lab/py/tests/test_lean_proof_strand.py",
+      "range_start": 0,
+      "range_end_exclusive": 122,
+      "count": 122,
+      "result": 0,
+      "outcomes": {
+        "passed": 122
+      },
+      "ordered_test_ids_sha256": "3466c87443088301bc8e95325ee157e5434d4af4a273053acf788ab190d8f5ba",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 87.33067612489685,
+        "cpu_seconds": 86.454199,
+        "peak_rss_bytes": 1103495168,
+        "child_peak_rss_bytes": 0
+      }
+    },
+    {
+      "window": 7,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_ui.py",
+      "range_start": 0,
+      "range_end_exclusive": 73,
+      "count": 73,
+      "result": 0,
+      "outcomes": {
+        "passed": 73
+      },
+      "ordered_test_ids_sha256": "a2e3b8b4c2136ee0defac71f541e7c28cefe532d760b860f7de60051932d165a",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 32.1254263339797,
+        "cpu_seconds": 31.869965,
+        "peak_rss_bytes": 901791744,
+        "child_peak_rss_bytes": 0
+      }
+    },
+    {
+      "window": 8,
+      "file": "peano-lab/py/tests/test_lean_presentation_ui.py",
+      "range_start": 0,
+      "range_end_exclusive": 45,
+      "count": 45,
+      "result": 0,
+      "outcomes": {
+        "passed": 45
+      },
+      "ordered_test_ids_sha256": "3b1d22315629278ce6b8baa16ba9bc2764cfbc0c4c6c850831d801ab182d2df4",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 26.347659083083272,
+        "cpu_seconds": 25.680947,
+        "peak_rss_bytes": 1099726848,
+        "child_peak_rss_bytes": 0
+      }
+    },
+    {
+      "window": 9,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 0,
+      "range_end_exclusive": 77,
+      "count": 77,
+      "result": 0,
+      "outcomes": {
+        "passed": 77
+      },
+      "ordered_test_ids_sha256": "10d1fd91ecee8b0e938177efd85e8150ffb2f8a7588213cb3ca721991acf8f28",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 119.10125304094981,
+        "cpu_seconds": 116.238499,
+        "peak_rss_bytes": 927907840,
+        "child_peak_rss_bytes": 35749888
+      }
+    },
+    {
+      "window": 10,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 77,
+      "range_end_exclusive": 80,
+      "count": 3,
+      "result": 0,
+      "outcomes": {
+        "passed": 3
+      },
+      "ordered_test_ids_sha256": "87ce8d174130bbb1bd39b616f34a36bc3807b1bf9a4b15bcb4d672323b7e058b",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 20.42725349997636,
+        "cpu_seconds": 0.239484,
+        "peak_rss_bytes": 42516480,
+        "child_peak_rss_bytes": 700334080
+      }
+    },
+    {
+      "window": 11,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 80,
+      "range_end_exclusive": 83,
+      "count": 3,
+      "result": 0,
+      "outcomes": {
+        "passed": 3
+      },
+      "ordered_test_ids_sha256": "60bf440b89815328a38bcd0ef053bfe013f720cf0fa08f99bdff7bd561aa66a6",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 29.22964845900424,
+        "cpu_seconds": 0.28794000000000003,
+        "peak_rss_bytes": 43728896,
+        "child_peak_rss_bytes": 736116736
+      }
+    },
+    {
+      "window": 12,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 83,
+      "range_end_exclusive": 86,
+      "count": 3,
+      "result": 0,
+      "outcomes": {
+        "passed": 3
+      },
+      "ordered_test_ids_sha256": "738db391294d22bc864fff85db8f30f0fb154a822b10ba683056996b5a565aeb",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 58.52543408295605,
+        "cpu_seconds": 0.254075,
+        "peak_rss_bytes": 43319296,
+        "child_peak_rss_bytes": 1090617344
+      }
+    },
+    {
+      "window": 13,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 86,
+      "range_end_exclusive": 89,
+      "count": 3,
+      "result": 0,
+      "outcomes": {
+        "passed": 3
+      },
+      "ordered_test_ids_sha256": "ae6543871f845f89f915d5437c6ee9e037c8ebeec87afdefb07ac300559d7b6d",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 41.05664833402261,
+        "cpu_seconds": 0.328336,
+        "peak_rss_bytes": 49184768,
+        "child_peak_rss_bytes": 737460224
+      }
+    },
+    {
+      "window": 14,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 89,
+      "range_end_exclusive": 92,
+      "count": 3,
+      "result": 0,
+      "outcomes": {
+        "passed": 3
+      },
+      "ordered_test_ids_sha256": "3ec5f0ea8a87f387d87378eb32a045f17c6ce21f7efa1cd7c6534fd46322d847",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 40.01943341700826,
+        "cpu_seconds": 0.29927000000000004,
+        "peak_rss_bytes": 48431104,
+        "child_peak_rss_bytes": 748240896
+      }
+    },
+    {
+      "window": 15,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 92,
+      "range_end_exclusive": 95,
+      "count": 3,
+      "result": 0,
+      "outcomes": {
+        "passed": 3
+      },
+      "ordered_test_ids_sha256": "52fa2d0f31641ba1d86d9371f8abec6838999edfb13aefd813ed58bda4870074",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 43.80116062506568,
+        "cpu_seconds": 0.358433,
+        "peak_rss_bytes": 47972352,
+        "child_peak_rss_bytes": 723189760
+      }
+    },
+    {
+      "window": 16,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 95,
+      "range_end_exclusive": 98,
+      "count": 3,
+      "result": 0,
+      "outcomes": {
+        "passed": 3
+      },
+      "ordered_test_ids_sha256": "bb8a2f3d076f5756a9e7cb352290fa397732dba257f198767084bdbf2db0013f",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 15.215948541997932,
+        "cpu_seconds": 0.24451499999999998,
+        "peak_rss_bytes": 43827200,
+        "child_peak_rss_bytes": 721092608
+      }
+    },
+    {
+      "window": 17,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 98,
+      "range_end_exclusive": 114,
+      "count": 16,
+      "result": 0,
+      "outcomes": {
+        "passed": 16
+      },
+      "ordered_test_ids_sha256": "8df5ccc271f427f0c96fd7d93142bedc8be79f06d02e9903692c768e28e9ff9d",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 7.414140041102655,
+        "cpu_seconds": 7.014963,
+        "peak_rss_bytes": 730628096,
+        "child_peak_rss_bytes": 27541504
+      }
+    },
+    {
+      "window": 18,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 114,
+      "range_end_exclusive": 115,
+      "count": 1,
+      "result": 0,
+      "outcomes": {
+        "passed": 1
+      },
+      "ordered_test_ids_sha256": "26678f86d003e0104fcbd3cfb0f5b09a7334269f10cf1e0e49160de31baf6a8c",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 10.824832499958575,
+        "cpu_seconds": 0.299927,
+        "peak_rss_bytes": 55902208,
+        "child_peak_rss_bytes": 744554496
+      },
+      "genuine_lean_case": "stable:add_comm"
+    },
+    {
+      "window": 19,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 115,
+      "range_end_exclusive": 116,
+      "count": 1,
+      "result": 0,
+      "outcomes": {
+        "passed": 1
+      },
+      "ordered_test_ids_sha256": "56015516f097aae8377c3195c0db2e7487033b5418187777827b271100915b12",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 34.23153891705442,
+        "cpu_seconds": 0.350497,
+        "peak_rss_bytes": 59736064,
+        "child_peak_rss_bytes": 1049804800
+      },
+      "genuine_lean_case": "alpha:square_zero_root"
+    },
+    {
+      "window": 20,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 116,
+      "range_end_exclusive": 117,
+      "count": 1,
+      "result": 0,
+      "outcomes": {
+        "passed": 1
+      },
+      "ordered_test_ids_sha256": "2de2739ed14e45642e06b83f82eadf2cbc3e06c59bfdaf20867b94d0a7707044",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 29.681544999941252,
+        "cpu_seconds": 0.29570100000000005,
+        "peak_rss_bytes": 57262080,
+        "child_peak_rss_bytes": 1095172096
+      },
+      "genuine_lean_case": "alpha:matrix_recursive_node_code_exists"
+    },
+    {
+      "window": 21,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 117,
+      "range_end_exclusive": 118,
+      "count": 1,
+      "result": 0,
+      "outcomes": {
+        "passed": 1
+      },
+      "ordered_test_ids_sha256": "211977ca6d78c14d8976b727b0695ee8b9e7431b6a81de8723fda2791ff68b22",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 29.06760629103519,
+        "cpu_seconds": 0.310396,
+        "peak_rss_bytes": 57737216,
+        "child_peak_rss_bytes": 1096564736
+      },
+      "genuine_lean_case": "alpha:gaussian_equal_reflexive"
+    },
+    {
+      "window": 22,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 118,
+      "range_end_exclusive": 119,
+      "count": 1,
+      "result": 0,
+      "outcomes": {
+        "passed": 1
+      },
+      "ordered_test_ids_sha256": "d20a0d27916cc26867599a936ce5aaf1e41b965427d659693e551a53df7647ce",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 56.41089916694909,
+        "cpu_seconds": 26.043421,
+        "peak_rss_bytes": 1048821760,
+        "child_peak_rss_bytes": 1090142208
+      },
+      "genuine_lean_case": "alpha:gaussian_code_representation_transport"
+    },
+    {
+      "window": 23,
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 119,
+      "range_end_exclusive": 120,
+      "count": 1,
+      "result": 0,
+      "outcomes": {
+        "passed": 1
+      },
+      "ordered_test_ids_sha256": "5df31310e98935c63ad28b6c52f02dda24cb00086478efc78a4848f8708351f4",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 57.568940624943934,
+        "cpu_seconds": 25.594820000000002,
+        "peak_rss_bytes": 1085407232,
+        "child_peak_rss_bytes": 958447616
+      },
+      "genuine_lean_case": "alpha:dirichlet_unit_at_one_witness"
+    },
+    {
+      "window": 24,
+      "file": "peano-lab/py/tests/test_lean_presentation_cli.py",
+      "range_start": 0,
+      "range_end_exclusive": 13,
+      "count": 13,
+      "result": 0,
+      "outcomes": {
+        "passed": 13
+      },
+      "ordered_test_ids_sha256": "b5889b91b41eefaa85f14826e399897a1cc18eab8b77c5876093a434210a7846",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 29.427475124946795,
+        "cpu_seconds": 26.355818,
+        "peak_rss_bytes": 1114013696,
+        "child_peak_rss_bytes": 31637504
+      }
+    },
+    {
+      "window": 25,
+      "file": "peano-lab/py/tests/test_lean_presentation_cli.py",
+      "range_start": 13,
+      "range_end_exclusive": 25,
+      "count": 12,
+      "result": 0,
+      "outcomes": {
+        "passed": 12
+      },
+      "ordered_test_ids_sha256": "8fef83f62f6bcd562e18070cd92d2b7614222ff7bce03f85d35efda0dd6c068a",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 32.643757374957204,
+        "cpu_seconds": 0.310281,
+        "peak_rss_bytes": 41172992,
+        "child_peak_rss_bytes": 1113587712
+      }
+    },
+    {
+      "window": 26,
+      "file": "peano-lab/py/tests/test_lean_presentation_cli.py",
+      "range_start": 25,
+      "range_end_exclusive": 49,
+      "count": 24,
+      "result": 0,
+      "outcomes": {
+        "passed": 24
+      },
+      "ordered_test_ids_sha256": "baddfcc34210affb6aaee284ec7c47f767047a4a19de6db912330c9cb59b02fd",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 56.92516283306759,
+        "cpu_seconds": 25.96602,
+        "peak_rss_bytes": 973766656,
+        "child_peak_rss_bytes": 913866752
+      }
+    },
+    {
+      "window": 27,
+      "file": "peano-lab/py/tests/test_lean_presentation_cli.py",
+      "range_start": 49,
+      "range_end_exclusive": 50,
+      "count": 1,
+      "result": 0,
+      "outcomes": {
+        "passed": 1
+      },
+      "ordered_test_ids_sha256": "52d43ced23f33fd73cd2ac040b7eabf1713e30a80c0090d4110a9ab57330d8e1",
+      "source_pins_unchanged": true,
+      "resources": {
+        "wall_seconds": 4.8781542090000585,
+        "cpu_seconds": 0.273928,
+        "peak_rss_bytes": 53510144,
+        "child_peak_rss_bytes": 672268288
+      },
+      "genuine_lean_case": "stable:le_refl (compact prelude/certificate/facade)"
+    }
+  ],
+  "genuine_lean_cases": [
+    {
+      "window": 18,
+      "case": "stable:add_comm",
+      "test_id": "peano-lab/py/tests/test_lean_proof_strand_cli.py::test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands[add_comm-stable]",
+      "result": 0,
+      "isolated_lean_compilation_observed": true
+    },
+    {
+      "window": 19,
+      "case": "alpha:square_zero_root",
+      "test_id": "peano-lab/py/tests/test_lean_proof_strand_cli.py::test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands[square_zero_root-alpha]",
+      "result": 0,
+      "isolated_lean_compilation_observed": true
+    },
+    {
+      "window": 20,
+      "case": "alpha:matrix_recursive_node_code_exists",
+      "test_id": "peano-lab/py/tests/test_lean_proof_strand_cli.py::test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands[matrix_recursive_node_code_exists-alpha]",
+      "result": 0,
+      "isolated_lean_compilation_observed": true
+    },
+    {
+      "window": 21,
+      "case": "alpha:gaussian_equal_reflexive",
+      "test_id": "peano-lab/py/tests/test_lean_proof_strand_cli.py::test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands[gaussian_equal_reflexive-alpha]",
+      "result": 0,
+      "isolated_lean_compilation_observed": true
+    },
+    {
+      "window": 22,
+      "case": "alpha:gaussian_code_representation_transport",
+      "test_id": "peano-lab/py/tests/test_lean_proof_strand_cli.py::test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands[gaussian_code_representation_transport-alpha]",
+      "result": 0,
+      "isolated_lean_compilation_observed": true
+    },
+    {
+      "window": 23,
+      "case": "alpha:dirichlet_unit_at_one_witness",
+      "test_id": "peano-lab/py/tests/test_lean_proof_strand_cli.py::test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands[dirichlet_unit_at_one_witness-alpha]",
+      "result": 0,
+      "isolated_lean_compilation_observed": true
+    },
+    {
+      "window": 27,
+      "case": "stable:le_refl (compact prelude/certificate/facade)",
+      "test_id": "peano-lab/py/tests/test_lean_presentation_cli.py::test_real_lean_compiles_shared_prelude_certificate_and_alias_facade",
+      "result": 0,
+      "isolated_lean_compilation_observed": true
+    }
+  ],
+  "uncredited_incidents": [
+    {
+      "file": "peano-lab/py/tests/test_lean_proof_strand_cli.py",
+      "range_start": 77,
+      "range_end_exclusive": 100,
+      "attempted_cases": 23,
+      "exit_code": 142,
+      "reason": "The original 180-second wall alarm terminated the aggregate window. No case from this window is credited; all affected IDs passed in smaller clean windows.",
+      "credited_cases": 0,
+      "final_wall_seconds": null,
+      "final_cpu_seconds": null,
+      "final_peak_rss_bytes": null,
+      "replacement_windows": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ]
+    }
+  ],
+  "final_reconciliation": {
+    "kind": "actual_collection_only_no_proof_replay",
+    "result": 0,
+    "unique_cases": 1053,
+    "original_test_functions": 196,
+    "ordered_test_ids_sha256": "f15126cdbf1a63b722d36ae9f49af8f1c42fcb7517c0fac23dcadba8634524ae",
+    "complete_disjoint_exact_successful_coverage": true,
+    "all_source_pins_unchanged": true,
+    "resources": {
+      "wall_seconds": 32.81712787505239,
+      "cpu_seconds": 27.099581999999998,
+      "peak_rss_bytes": 898580480
+    }
+  },
+  "original_assertion_preservation": {
+    "test_function_definitions": 196,
+    "original_assertions": 857,
+    "literal_statement_sha256_pins": 20,
+    "wall_seconds": 0.312574584,
+    "peak_rss_bytes": 27738112,
+    "notes": "Source-only audit completed before execution on the same final nine source hashes; generic current-selector expectations normalized, historical statements/first admissions retained."
+  },
+  "reproduction": {
+    "cwd": "repository_root",
+    "parameter_substitutions": {
+      "TARGET_PATH": "successful_windows[].file",
+      "WINDOW_START": "successful_windows[].range_start",
+      "WINDOW_END": "successful_windows[].range_end_exclusive"
+    },
+    "note": "These are the exact recorded reusable templates, retained as inert text; they are not executed by this observation file. The CLI variant changes progress frequency only.",
+    "templates": {
+      "ordinary": {
+        "sha256": "f60a2d59dc64cfbf312b9566dd5ea4b71386cab86f82d3b40b03beb75d6ee07b",
+        "utf8_bytes": 4133,
+        "exact_text": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 - <<'PY'\nimport base64,collections,contextlib,hashlib,io,json,resource,signal,sys,time,zlib\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic();cpu=time.process_time()\nfiles=[\"test_alpha_v16_ui.py\",\"test_alpha_v28_ui.py\",\"test_alpha_v30_ui.py\",\"test_alpha_v31_ui.py\",\"test_lean_proof_strand.py\",\"test_lean_proof_strand_ui.py\",\"test_lean_proof_strand_cli.py\",\"test_lean_presentation_ui.py\",\"test_lean_presentation_cli.py\"]\npaths=[str(Path('peano-lab/py/tests')/name) for name in files]\nbefore={path:hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in paths}\nexpected={\"peano-lab/py/tests/test_alpha_v16_ui.py\":\"abf4db580262cf05e8460c0346bae02a3f3fcf6802a90a2c2b26e00c7d7593eb\",\"peano-lab/py/tests/test_alpha_v28_ui.py\":\"c8e8d63269b0d51c5d6a976f9848f3cadc910b8e6851d54bf9b00d52efa62054\",\"peano-lab/py/tests/test_alpha_v30_ui.py\":\"c2985faacfd54864950cf2ad833362d9cb813e36b9e8a8141e0e8a0af8944035\",\"peano-lab/py/tests/test_alpha_v31_ui.py\":\"7ad57d3b43ff922f20aa06a2c8e064fa25e6c7a3ec501247c3bab9c08523b24e\",\"peano-lab/py/tests/test_lean_presentation_cli.py\":\"ac04fd77cffff6b4c106d81d5f6ca77065ffbd14f7898a0293ab29fb005569e8\",\"peano-lab/py/tests/test_lean_presentation_ui.py\":\"42c9e33b09e68bcb0a341ca65b488974a3cb6079b6952a65b7f84ebfec622138\",\"peano-lab/py/tests/test_lean_proof_strand.py\":\"2de8eb6509643ac10235b42b1d86ebb46a3585d6fea8c86bd7214b439da4b703\",\"peano-lab/py/tests/test_lean_proof_strand_cli.py\":\"48cc0f208c62cd1bcf6cb04309c6ac0276f5eadcb0364131aed1a6a7a2b45ecf\",\"peano-lab/py/tests/test_lean_proof_strand_ui.py\":\"f303e4bf117bde932ec2c93d3cd89fe0df0ad42c85391dc23a115c33d0e32f02\"}\nassert before==expected\nimport pytest\nclass Audit:\n def __init__(self):self.selected=[];self.reports=[];self.selected_all=[]\n def pytest_collection_modifyitems(self,session,config,items):\n  self.selected_all=[item.nodeid for item in items]\n  chosen=items[WINDOW_START:WINDOW_END]\n  omitted=items[:WINDOW_START]+items[WINDOW_END:]\n  if omitted:config.hook.pytest_deselected(items=omitted)\n  items[:]=chosen\n  self.selected=[item.nodeid for item in items]\n def pytest_runtest_logreport(self,report):\n  if report.when=='call' or report.outcome!='passed':\n   self.reports.append({'id':report.nodeid,'when':report.when,'outcome':report.outcome,'duration':report.duration})\n  if report.when=='call' and (len(self.reports)%20==0 or report.outcome!='passed'):\n   print('PROGRESS',len(self.reports),report.outcome,report.nodeid,file=sys.__stdout__,flush=True)\naudit=Audit();out=io.StringIO()\nwith contextlib.redirect_stdout(out),contextlib.redirect_stderr(out):\n result=pytest.main(['-q','-x','-p','no:cacheprovider','--tb=short','TARGET_PATH'],plugins=[audit])\nafter={path:hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in paths}\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nchild_peak=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nunchanged=before==after\nreport={'result':int(result),'source_unchanged':unchanged,'selected_count':len(audit.selected),'all_file_count':len(audit.selected_all),'outcomes':dict(collections.Counter(r['outcome'] for r in audit.reports)), 'records_zlib_base64':base64.b64encode(zlib.compress(json.dumps(audit.reports,separators=(',',':')).encode())).decode(),'selected_ids_zlib_base64':base64.b64encode(zlib.compress(json.dumps(audit.selected,separators=(',',':')).encode())).decode(),'selected_sha256':hashlib.sha256(json.dumps(audit.selected,ensure_ascii=False,separators=(',',':')).encode()).hexdigest(),'wall_seconds':time.monotonic()-start,'cpu_seconds':time.process_time()-cpu,'peak_rss_bytes':peak,'child_peak_rss_bytes':child_peak,'cpu_limits':[170,175],'wall_limit':180,'rss_limit_bytes':1536*1024*1024}\nprint('WINDOW_METADATA='+json.dumps(report,sort_keys=True),flush=True)\nif result!=0:print(out.getvalue()[-22000:])\nassert unchanged\nassert max(peak,child_peak)<=1536*1024*1024\nsys.exit(int(result))\nPY\n"
+      },
+      "cli": {
+        "sha256": "acc2fed8fcd6c3708b28974787273fc78bd6dffa67b5a69d8126505b3bff4a3d",
+        "utf8_bytes": 4132,
+        "exact_text": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 python3 - <<'PY'\nimport base64,collections,contextlib,hashlib,io,json,resource,signal,sys,time,zlib\nfrom pathlib import Path\nresource.setrlimit(resource.RLIMIT_CPU,(170,175));signal.alarm(180)\nstart=time.monotonic();cpu=time.process_time()\nfiles=[\"test_alpha_v16_ui.py\",\"test_alpha_v28_ui.py\",\"test_alpha_v30_ui.py\",\"test_alpha_v31_ui.py\",\"test_lean_proof_strand.py\",\"test_lean_proof_strand_ui.py\",\"test_lean_proof_strand_cli.py\",\"test_lean_presentation_ui.py\",\"test_lean_presentation_cli.py\"]\npaths=[str(Path('peano-lab/py/tests')/name) for name in files]\nbefore={path:hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in paths}\nexpected={\"peano-lab/py/tests/test_alpha_v16_ui.py\":\"abf4db580262cf05e8460c0346bae02a3f3fcf6802a90a2c2b26e00c7d7593eb\",\"peano-lab/py/tests/test_alpha_v28_ui.py\":\"c8e8d63269b0d51c5d6a976f9848f3cadc910b8e6851d54bf9b00d52efa62054\",\"peano-lab/py/tests/test_alpha_v30_ui.py\":\"c2985faacfd54864950cf2ad833362d9cb813e36b9e8a8141e0e8a0af8944035\",\"peano-lab/py/tests/test_alpha_v31_ui.py\":\"7ad57d3b43ff922f20aa06a2c8e064fa25e6c7a3ec501247c3bab9c08523b24e\",\"peano-lab/py/tests/test_lean_presentation_cli.py\":\"ac04fd77cffff6b4c106d81d5f6ca77065ffbd14f7898a0293ab29fb005569e8\",\"peano-lab/py/tests/test_lean_presentation_ui.py\":\"42c9e33b09e68bcb0a341ca65b488974a3cb6079b6952a65b7f84ebfec622138\",\"peano-lab/py/tests/test_lean_proof_strand.py\":\"2de8eb6509643ac10235b42b1d86ebb46a3585d6fea8c86bd7214b439da4b703\",\"peano-lab/py/tests/test_lean_proof_strand_cli.py\":\"48cc0f208c62cd1bcf6cb04309c6ac0276f5eadcb0364131aed1a6a7a2b45ecf\",\"peano-lab/py/tests/test_lean_proof_strand_ui.py\":\"f303e4bf117bde932ec2c93d3cd89fe0df0ad42c85391dc23a115c33d0e32f02\"}\nassert before==expected\nimport pytest\nclass Audit:\n def __init__(self):self.selected=[];self.reports=[];self.selected_all=[]\n def pytest_collection_modifyitems(self,session,config,items):\n  self.selected_all=[item.nodeid for item in items]\n  chosen=items[WINDOW_START:WINDOW_END]\n  omitted=items[:WINDOW_START]+items[WINDOW_END:]\n  if omitted:config.hook.pytest_deselected(items=omitted)\n  items[:]=chosen\n  self.selected=[item.nodeid for item in items]\n def pytest_runtest_logreport(self,report):\n  if report.when=='call' or report.outcome!='passed':\n   self.reports.append({'id':report.nodeid,'when':report.when,'outcome':report.outcome,'duration':report.duration})\n  if report.when=='call' and (len(self.reports)%1==0 or report.outcome!='passed'):\n   print('PROGRESS',len(self.reports),report.outcome,report.nodeid,file=sys.__stdout__,flush=True)\naudit=Audit();out=io.StringIO()\nwith contextlib.redirect_stdout(out),contextlib.redirect_stderr(out):\n result=pytest.main(['-q','-x','-p','no:cacheprovider','--tb=short','TARGET_PATH'],plugins=[audit])\nafter={path:hashlib.sha256(Path(path).read_bytes()).hexdigest() for path in paths}\npeak=resource.getrusage(resource.RUSAGE_SELF).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nchild_peak=resource.getrusage(resource.RUSAGE_CHILDREN).ru_maxrss*(1 if sys.platform=='darwin' else 1024)\nunchanged=before==after\nreport={'result':int(result),'source_unchanged':unchanged,'selected_count':len(audit.selected),'all_file_count':len(audit.selected_all),'outcomes':dict(collections.Counter(r['outcome'] for r in audit.reports)), 'records_zlib_base64':base64.b64encode(zlib.compress(json.dumps(audit.reports,separators=(',',':')).encode())).decode(),'selected_ids_zlib_base64':base64.b64encode(zlib.compress(json.dumps(audit.selected,separators=(',',':')).encode())).decode(),'selected_sha256':hashlib.sha256(json.dumps(audit.selected,ensure_ascii=False,separators=(',',':')).encode()).hexdigest(),'wall_seconds':time.monotonic()-start,'cpu_seconds':time.process_time()-cpu,'peak_rss_bytes':peak,'child_peak_rss_bytes':child_peak,'cpu_limits':[170,175],'wall_limit':180,'rss_limit_bytes':1536*1024*1024}\nprint('WINDOW_METADATA='+json.dumps(report,sort_keys=True),flush=True)\nif result!=0:print(out.getvalue()[-22000:])\nassert unchanged\nassert max(peak,child_peak)<=1536*1024*1024\nsys.exit(int(result))\nPY\n"
+      }
+    }
+  },
+  "evidence_transcription": {
+    "mode": "stdlib_only_saved_ID_reconciliation_and_current_source_byte_hashing",
+    "pytest_or_proof_jobs_run": false,
+    "alpha_imports": false,
+    "all_current_source_hashes_match_recorded_pins": true,
+    "raw_compressed_case_records_omitted": true,
+    "private_paths_omitted": true
+  }
+}

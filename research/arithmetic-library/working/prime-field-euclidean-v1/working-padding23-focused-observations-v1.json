@@ -1,0 +1,175 @@
+{
+  "schema": "peano-working-polynomial-padding-focused-observations-v1",
+  "observations_only": true,
+  "saved_record_is_proof_authority": false,
+  "read_by_proof_checker_or_admission_gate": false,
+  "scope": "23 conditional original-HA bodies plus independent syntax, beta-model and rejecting mutation tests. No dependency-closed bundle, ordinary principal, Lean, Alpha novelty or admission claim.",
+  "inputs": {
+    "candidate": {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/prime_field_polynomial_convolution_padding_candidate.py",
+      "bytes": 39740,
+      "sha256": "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007",
+      "factory": "make_prime_field_polynomial_convolution_padding_candidate_theorems",
+      "rows": 23
+    },
+    "tests": {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_convolution_padding_candidate.py",
+      "bytes": 27054,
+      "sha256": "7632654e36e18cf7c872bd29dd783a55cf597e33e7b5369be178a2d2f42b87f9",
+      "collected_cases": 594
+    },
+    "specs_sha256": "5bd7b23cf69bfd35fbf99c47da09a0751c3e267b8cdc31a078b2b65b99f5d619",
+    "specs_digest_recipe": "campaign_lower_layer_closure._specs_digest: stream one compact ensure_ascii JSON array [name,statement,dependencies,script,summary] followed by LF per row.",
+    "ordered_theorem_names_sha256": "6ed46dd9d27f8a15275f69bb9b0774e7058053cf6f90c7f44035708fddd62a00",
+    "ordered_theorem_names_digest_recipe": "SHA-256 of UTF-8 theorem names joined by LF, with no final LF.",
+    "ordered_test_ids_sha256": "07e319d959ffb66b22f4028e60d215ffa60467bb8bfae49e21d23b157ac1470c",
+    "test_ids_digest_recipe": "SHA-256 of UTF-8 pytest node IDs in collection order, joined by LF and followed by one final LF."
+  },
+  "original_limits": {
+    "cpu_seconds": [
+      170,
+      175
+    ],
+    "wall_seconds": 180,
+    "max_peak_rss_bytes": 1610612736,
+    "python_allocator": "pymalloc"
+  },
+  "windows": [
+    {
+      "group": "independent syntax/model/source",
+      "command": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -B research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_convolution_padding_candidate.py --pytest -q -k 'not original_ha_body and not rejected'",
+      "expected_selected": 181,
+      "passed": 181,
+      "deselected": 413,
+      "skipped": 0,
+      "xfail": 0,
+      "exit_code": 0,
+      "seconds": 2.291254458,
+      "peak_rss_bytes": 61489152,
+      "selected_ids_sha256": "ff4c40c3730efff376142ba6f57c5d1b662684a18f5f32255ab8d2cfd63e7374"
+    },
+    {
+      "group": "all original HA bodies",
+      "command": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -B research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_convolution_padding_candidate.py --pytest -q -k 'original_ha_body'",
+      "expected_selected": 23,
+      "passed": 23,
+      "deselected": 571,
+      "skipped": 0,
+      "xfail": 0,
+      "exit_code": 0,
+      "seconds": 42.982275958987884,
+      "cpu_seconds": 40.439119,
+      "peak_rss_bytes": 110231552,
+      "selected_ids_sha256": "07dac0a8c1a2204a668bfcf567104f07559b81c72b7c9dc316473cf4132024af"
+    },
+    {
+      "group": "false/missing/premise/changed-contract rejects",
+      "command": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -B research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_convolution_padding_candidate.py --pytest -q -k 'false_conclusion or missing_body or removed_actual_graph or stronger_or_changed'",
+      "expected_selected": 138,
+      "passed": 138,
+      "deselected": 456,
+      "skipped": 0,
+      "xfail": 0,
+      "exit_code": 0,
+      "seconds": 49.79775587504264,
+      "cpu_seconds": 47.366221,
+      "peak_rss_bytes": 76972032,
+      "selected_ids_sha256": "e0d42a3631f3f056c36310e7b4e7a0b405c05883c45b43fb1d462a1f0b1a48ae"
+    },
+    {
+      "group": "all removed dependency edges",
+      "command": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -B research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_convolution_padding_candidate.py --pytest -q -k 'each_removed_dependency'",
+      "expected_selected": 126,
+      "passed": 126,
+      "deselected": 468,
+      "skipped": 0,
+      "xfail": 0,
+      "exit_code": 0,
+      "seconds": 102.01931583299302,
+      "cpu_seconds": 97.588905,
+      "peak_rss_bytes": 93405184,
+      "selected_ids_sha256": "29911267dbf8339ee013407ecd52991da17e418cb109693c42935e10d96459d2"
+    },
+    {
+      "group": "all poisoned dependency edges",
+      "command": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -B research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_convolution_padding_candidate.py --pytest -q -k 'each_poisoned_dependency'",
+      "expected_selected": 126,
+      "passed": 126,
+      "deselected": 468,
+      "skipped": 0,
+      "xfail": 0,
+      "exit_code": 0,
+      "seconds": 127.47836924996227,
+      "cpu_seconds": 100.38262,
+      "peak_rss_bytes": 92291072,
+      "selected_ids_sha256": "c5263f329a9be833abb8557b3e5efb20c50252419bbf2704e16f2b372f394297"
+    }
+  ],
+  "reconciliation": {
+    "collection_command": "PYTHONPATH=peano-lab/py:scripts PYTHONMALLOC=pymalloc PYTHONDONTWRITEBYTECODE=1 python3 -B research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_convolution_padding_candidate.py --pytest --collect-only -q",
+    "collected_unique_node_ids": 594,
+    "passed_unique_node_ids": 594,
+    "window_counts": [
+      181,
+      23,
+      138,
+      126,
+      126
+    ],
+    "sum_window_counts": 594,
+    "pairwise_intersection_count": 0,
+    "union_equals_final_collection": true,
+    "all_five_window_id_hashes_match_final_collection_partition": true,
+    "counted_windows_only": "Only the five final disjoint execution windows are counted. Earlier authoring checks, repeated contract checks and collection/hash probes are excluded.",
+    "hash_probe_note": "A read-only ancillary reconciliation probe initially used literal backslash-n; the corrected LF calculation matched all five existing runner hashes. No source, test or proof gate changed.",
+    "total_window_seconds": 324.56897137498584,
+    "max_window_seconds": 127.47836924996227,
+    "max_window_peak_rss_bytes": 110231552
+  },
+  "coverage": {
+    "independently_expanded_contracts": 23,
+    "direct_provider_novelty_and_topology_cases": 1,
+    "literal_source_pin_cases": 5,
+    "no_edition_import_cases": 1,
+    "actual_beta_sum_models": 30,
+    "actual_beta_product_and_antidiagonal_models": 120,
+    "concrete_boundary_counterexample_cases": 1,
+    "original_conditional_ha_bodies": 23,
+    "false_conclusion_rejections": 23,
+    "missing_body_rejections": 23,
+    "removed_graph_or_domain_premise_rejections": 78,
+    "changed_representation_contract_rejections": 14,
+    "removed_dependency_rejections": 126,
+    "poisoned_dependency_rejections": 126
+  },
+  "preserved_working81_math_sha256": {
+    "research/arithmetic-library/working/prime-field-euclidean-v1/prime_field_polynomial_representation_candidate.py": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a",
+    "research/arithmetic-library/working/prime-field-euclidean-v1/prime_field_polynomial_convolution_triangular_candidate.py": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f",
+    "research/arithmetic-library/working/prime-field-euclidean-v1/prime_field_polynomial_division_candidate.py": "edfc7806caf7a83b9cb0e3e420bd2c3a8679f2d4d9ee6ca9f8eae53faca8d5b2",
+    "research/arithmetic-library/working/prime-field-euclidean-v1/prime_field_polynomial_distributivity_candidate.py": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+  },
+  "mathematical_scope": {
+    "compatibility": "For p nonzero, actual leading-zero padding of either or both factors preserves the formal coefficient-at-power equivalence class of actual convolution outputs.",
+    "construction": "Under Prime(p), actual factor paddings and an original product suffice to construct a real padded product with formal equivalence.",
+    "empty_factors": "Handled using actual zero products. The exact output-length shift is asserted only with both original factor lengths nonzero.",
+    "false_identifications_excluded": [
+      "raw beta-code equality",
+      "right padding as harmless representation change",
+      "unit normalization as formal equality",
+      "finite-field evaluation equality as formal coefficient equality"
+    ],
+    "ordinary_root_candidates": [
+      "prime_field_polynomial_convolution_both_left_paddings_equivalent",
+      "prime_field_polynomial_convolution_both_left_paddings_exists"
+    ]
+  },
+  "whole_bundle_original_ha_checked": false,
+  "independent_lean_checked": false,
+  "ordinary_empty_context_principals_checked": false,
+  "global_alpha_novelty_checked": false,
+  "alpha_admission_performed": false,
+  "stable_admission_performed": false,
+  "public_reader_built": false,
+  "polynomial_associativity_proved": false,
+  "polynomial_gcd_bezout_proved": false
+}

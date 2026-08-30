@@ -1,0 +1,502 @@
+{
+  "schema": "peano-working-polynomial-euclidean-extension-observations-v1",
+  "observations_only": true,
+  "saved_record_is_proof_authority": false,
+  "read_by_proof_checker_or_exporter": false,
+  "scope": {
+    "current_alpha_version": "v32",
+    "current_alpha_count": 3971,
+    "stable_count": 432,
+    "combined_working_theorems": 113,
+    "prior_non_admitted_working_theorems": 81,
+    "added_non_admitted_working_theorems": 32,
+    "inherited_alpha_theorems_in_cone": 254,
+    "factory_counts": [
+      8,
+      30,
+      25,
+      18,
+      9,
+      23
+    ],
+    "ordered_working_specs_sha256": "aac561ef7706c53af00464feba7d0f4a51a3e3960404dba4a53d80405913b8a9",
+    "prior81_is_overlapping_not_additional_distinct_work": true,
+    "prior81_reclassified_as_alpha": false,
+    "alpha_or_stable_admission": false,
+    "publication": false,
+    "gcd_bezout_or_g091_closure_claimed": false,
+    "arbitrary_identity_witness_uniqueness_claimed": false
+  },
+  "artifact": {
+    "path": "research/arithmetic-library/working/prime-field-euclidean-v1/artifacts/working-euclidean-extension-proof-bundle-v1.json",
+    "bytes": 2219445,
+    "sha256": "c2e097f0e04c4b4f01bb219102405d0e93bc847c19625113eb48e55c7900734d",
+    "nodes_including_packaging": 368,
+    "dependency_edges_including_packaging": 1033,
+    "body_nodes": 29292
+  },
+  "verification_windows": [
+    {
+      "added_working_rows": 32,
+      "alpha_admission_performed": false,
+      "artifact_sha256": "c2e097f0e04c4b4f01bb219102405d0e93bc847c19625113eb48e55c7900734d",
+      "body_nodes": 29292,
+      "combined_working_rows": 113,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "edges": 1033,
+      "independent_same_byte_lean_checked": true,
+      "inherited_alpha_v32_rows": 254,
+      "kernel_calls": 368,
+      "nodes": 368,
+      "ordinary_principals_checked": false,
+      "original_ha_checked": true,
+      "peak_rss_bytes": 1234698240,
+      "prior_working_rows": 81,
+      "prior_working_rows_reclassified_as_alpha": false,
+      "schema": "peano-working-polynomial-euclidean-extension-bundle-check-v1",
+      "seconds": 40.15485616691876,
+      "source_binding": "560b0b12b39044e4dc09ad79deadac702faeae583a9a83b6a0bfdf69bc6fc276",
+      "stable_admission_performed": false,
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "c2e097f0e04c4b4f01bb219102405d0e93bc847c19625113eb48e55c7900734d",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_division_execution_functional",
+      "node_id": 342,
+      "ordinary_certificate_nodes": 8744,
+      "peak_rss_bytes": 1258061824,
+      "schema": "peano-working-polynomial-euclidean-extension-principal-check-v1",
+      "seconds": 46.41622395894956,
+      "source_binding": "560b0b12b39044e4dc09ad79deadac702faeae583a9a83b6a0bfdf69bc6fc276",
+      "stable_admission_performed": false,
+      "statement_sha256": "b14ad2149cd34386887dcac50cb06b7df7014500b1ab918fac7967976b6042fe",
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "c2e097f0e04c4b4f01bb219102405d0e93bc847c19625113eb48e55c7900734d",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_division_execution_exists_unique",
+      "node_id": 343,
+      "ordinary_certificate_nodes": 19739,
+      "peak_rss_bytes": 1319944192,
+      "schema": "peano-working-polynomial-euclidean-extension-principal-check-v1",
+      "seconds": 50.092598624993116,
+      "source_binding": "560b0b12b39044e4dc09ad79deadac702faeae583a9a83b6a0bfdf69bc6fc276",
+      "stable_admission_performed": false,
+      "statement_sha256": "0ac4c1f5ca519e7db039365ff2a703f8772e22e58376d4c55a3f7777e08565fc",
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "c2e097f0e04c4b4f01bb219102405d0e93bc847c19625113eb48e55c7900734d",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_convolution_both_left_paddings_equivalent",
+      "node_id": 365,
+      "ordinary_certificate_nodes": 16447,
+      "peak_rss_bytes": 1281114112,
+      "schema": "peano-working-polynomial-euclidean-extension-principal-check-v1",
+      "seconds": 46.121539791929536,
+      "source_binding": "560b0b12b39044e4dc09ad79deadac702faeae583a9a83b6a0bfdf69bc6fc276",
+      "stable_admission_performed": false,
+      "statement_sha256": "fbefa6c478ac7028d2c60d742799660f05d010578ce4ed30b0f72f6f0af237d6",
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "c2e097f0e04c4b4f01bb219102405d0e93bc847c19625113eb48e55c7900734d",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_convolution_both_left_paddings_exists",
+      "node_id": 366,
+      "ordinary_certificate_nodes": 16811,
+      "peak_rss_bytes": 1311703040,
+      "schema": "peano-working-polynomial-euclidean-extension-principal-check-v1",
+      "seconds": 46.7421769159846,
+      "source_binding": "560b0b12b39044e4dc09ad79deadac702faeae583a9a83b6a0bfdf69bc6fc276",
+      "stable_admission_performed": false,
+      "statement_sha256": "b79ee5e0362c752f6b0189437e25cacc49e7060037adf8837f3105db832f8ffd",
+      "wall_alarm_seconds": 180
+    }
+  ],
+  "verification_summary": {
+    "actual_final_windows": 5,
+    "actual_ordinary_roots": 4,
+    "total_seconds": 229.52739545877557,
+    "max_window_seconds": 50.092598624993116,
+    "max_peak_rss_bytes": 1319944192,
+    "ordinary_certificate_nodes": [
+      8744,
+      19739,
+      16447,
+      16811
+    ],
+    "source_binding": "560b0b12b39044e4dc09ad79deadac702faeae583a9a83b6a0bfdf69bc6fc276",
+    "whole368_ha_and_same_byte_compiled_lean_passed": true,
+    "all_four_ordinary_empty_context_certificates_passed": true,
+    "original_whole_bundle_rechecked_in_each_ordinary_window": true,
+    "before_after_bindings_match_all_five_windows": true,
+    "all19_prior81_files_and_all4_added_math_test_files_unchanged": true
+  },
+  "final_boundary_guards": {
+    "cpu_limits": [
+      170,
+      175
+    ],
+    "cpu_seconds": 7.933784999999999,
+    "node_ids_sha256": "e4b269ba7c47c3e3a316061d84325f82fcd583b1747b9722f8e565dac5a9f283",
+    "peak_rss_bytes": 117686272,
+    "seconds": 9.428478916059248,
+    "status": 0,
+    "unique_cases": 253,
+    "wall_alarm_seconds": 180,
+    "prior252_ids_retained_plus_one_actual_data_pin_case": true,
+    "alpha_import_or_positive_proof_mocks": false
+  },
+  "global_novelty": {
+    "actual_current_alpha_comparands": 3971,
+    "working_rows": 113,
+    "duplicate_statements": [],
+    "actual_complete_theorems": 367,
+    "inherited_alpha_rows": 254,
+    "execution_frontier_rows": 206,
+    "complete_dependency_edges": 1010,
+    "packaging_premises": 23,
+    "ordered_complete_names_sha256": "8df11fd0a0527026d7c0bf2a42d9014f7d4a88669f9f78f052ded61b009680cf",
+    "seconds": 62.50381495896727,
+    "peak_rss_bytes": 877723648,
+    "source_binding": "85a9bf8feaedee91b02f5dba0fd3542ebebc06161ced157c6143aa21cff3ae1e",
+    "syntax_only": true,
+    "record": "research/arithmetic-library/working/prime-field-euclidean-v1/working-113-global-syntax-v1.json",
+    "bytes": 9835,
+    "sha256": "e138bc133d3ff566f98381fb18e5e74faf91fa42b0122e0f2978a1a99139e49a"
+  },
+  "actual_authoring": {
+    "whole_original_ha_kernel_calls": 368,
+    "body_nodes": 29292,
+    "edges": 1033,
+    "retained_exact_preexisting_bodies": 335,
+    "freshly_reconstructed_added_bodies": 32,
+    "prior81_bodies_freshly_checked_not_reconstructed_again": true,
+    "seconds": 126.5215027499944,
+    "peak_rss_bytes": 1387495424,
+    "source_binding": "85a9bf8feaedee91b02f5dba0fd3542ebebc06161ced157c6143aa21cff3ae1e",
+    "no_overwrite_output": true,
+    "broad_historical_provider_decode_scan": false,
+    "seeds": [
+      {
+        "path": "research/arithmetic-library/working/prime-field-euclidean-v1/artifacts/working-prime-field-euclidean-proof-bundle-v1.json",
+        "bytes": 1635441,
+        "sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+        "original_kernel_calls": 314,
+        "retained_exact_bodies": 313,
+        "role": "prior_working81_and_inherited_alpha"
+      },
+      {
+        "path": "research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
+        "bytes": 1060637,
+        "sha256": "fec8cf768ef2b94430d58d947daa0affada315bbc5160a03991dc4d2550dd0e9",
+        "original_kernel_calls": 293,
+        "retained_exact_bodies": 14,
+        "role": "inherited_alpha"
+      },
+      {
+        "path": "research/arithmetic-library/artifacts/lower-continuation-polynomial-products-proof-bundle-v1.json",
+        "bytes": 745307,
+        "sha256": "55f12903e1b1d3b4832f6c728cb366c20868c4e88810a736316b30cddf01dde3",
+        "original_kernel_calls": 210,
+        "retained_exact_bodies": 7,
+        "role": "inherited_alpha"
+      },
+      {
+        "path": "research/arithmetic-library/working/prime-field-euclidean-v1/artifacts/inherited-successor-injective-seed-v1.json",
+        "bytes": 256,
+        "sha256": "bcdf16c331497c3dc26bec8cdfe92b991eb83bfe353d1d9429527a32541f1edb",
+        "original_kernel_calls": 1,
+        "retained_exact_bodies": 1,
+        "role": "inherited_alpha"
+      }
+    ],
+    "seed_kernel_calls_total": 818
+  },
+  "inherited_successor_seed": {
+    "name": "succ_injective",
+    "role": "inherited_alpha_v32",
+    "source": [
+      "peano-lab/py/peano_lab/library/theorems.py",
+      536011,
+      "05a17b1f33a1c415582785885ca428ce2acb0f3da72700b2b25ad17e890b8919"
+    ],
+    "statement": "forall n m. S n = S m -> n = m",
+    "script": [
+      "apply PA2"
+    ],
+    "dependencies": [],
+    "artifact": "research/arithmetic-library/working/prime-field-euclidean-v1/artifacts/inherited-successor-injective-seed-v1.json",
+    "bytes": 256,
+    "sha256": "bcdf16c331497c3dc26bec8cdfe92b991eb83bfe353d1d9429527a32541f1edb",
+    "nodes": 1,
+    "body_nodes": 1,
+    "ordinary_ha_checked": true,
+    "whole_bundle_ha_checked": true,
+    "exact_decoded_bundle_ha_checked": true,
+    "source_binding": "8766aa64505b04bb30a14b2bbce1827ee8a89e6d890a1d186376c21e1eda51d3",
+    "seconds": 0.3860663330415264,
+    "peak_rss_bytes": 48316416,
+    "alpha_imported": false,
+    "new_working_rows": 0
+  },
+  "source_registration_transition": {
+    "before_authoring_binding": "85a9bf8feaedee91b02f5dba0fd3542ebebc06161ced157c6143aa21cff3ae1e",
+    "final_verification_binding": "560b0b12b39044e4dc09ad79deadac702faeae583a9a83b6a0bfdf69bc6fc276",
+    "math_or_frozen81_changes": false,
+    "only_changes": "New checker actual artifact pin, one new data-pin regression, and new RFC authoring observations. All five controls were frozen before the final five verification windows."
+  },
+  "current_pins": {
+    "base": "research/arithmetic-library/working/prime-field-euclidean-v1/",
+    "fields": [
+      "relative_path",
+      "bytes",
+      "sha256"
+    ],
+    "files": [
+      [
+        "working_euclidean_support.py",
+        18552,
+        "80e73f977f2464e2f62939610667def8bbf96f19e4d95bf734c52969c39cec4a"
+      ],
+      [
+        "export_working_euclidean.py",
+        7319,
+        "5b5ff76c08c01240baa239ca189ad3a372f5d6e7777a0aa9b12eaf88a37b19de"
+      ],
+      [
+        "check_working_euclidean.py",
+        9619,
+        "390033da96271b2347a99d5fe5f033d1c6c60f0b82496a1707df6260de353603"
+      ],
+      [
+        "test_working_euclidean_integration.py",
+        18658,
+        "04f66780d6b0d7408b72b8e9a8cdc54772d1593e03dfb2e61579a44410ba1038"
+      ],
+      [
+        "working-euclidean-integration-rfc-v1.md",
+        9958,
+        "f39c915949e5ca9312553836e7672c4c1b07bffb8b6d8a4efe3d3a0c02d560d9"
+      ],
+      [
+        "prime_field_polynomial_convolution_triangular_candidate.py",
+        16677,
+        "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+      ],
+      [
+        "prime_field_polynomial_representation_candidate.py",
+        42623,
+        "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+      ],
+      [
+        "prime_field_polynomial_division_candidate.py",
+        47986,
+        "edfc7806caf7a83b9cb0e3e420bd2c3a8679f2d4d9ee6ca9f8eae53faca8d5b2"
+      ],
+      [
+        "prime_field_polynomial_distributivity_candidate.py",
+        26118,
+        "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+      ],
+      [
+        "test_prime_field_polynomial_convolution_triangular_candidate.py",
+        9162,
+        "e6bf4d2a0b2b00336b8d83b4ffe5d068e34e3d5bd44e8af4b995ca2723289822"
+      ],
+      [
+        "test_prime_field_polynomial_representation_candidate.py",
+        25517,
+        "75a2cee90850ff07468b1d568ce4d3665f8006fdbb892c5838186abbc8fd57b7"
+      ],
+      [
+        "test_prime_field_polynomial_division_candidate.py",
+        23978,
+        "c4f7555b19e88789c4a561ec5b66d1f9487f44a32b388f2beea90f9ec42eed3b"
+      ],
+      [
+        "test_prime_field_polynomial_distributivity_candidate.py",
+        21925,
+        "d6200ef1e0447f3efb98461ce343a1a3ae5530f74490bd4b7782cbc13ed2e9a6"
+      ],
+      [
+        "augment_inherited_polynomial_seed.py",
+        10355,
+        "e9dce56cff718bdce62ecfb258e4f2eb640053c010a1ebd1e8fb433f1b4f3a0f"
+      ],
+      [
+        "inspect_working_seed_syntax.py",
+        11886,
+        "f4b374f6696d8772bbd24a4dd830e9e5679ac2a58f8a81489a44dfa591858f61"
+      ],
+      [
+        "artifacts/inherited-polynomial-products-three-lemmas-seed-v1.json",
+        812095,
+        "f4d2567e664ae3ad6092e6b54a6599d2858ac4fafc0b4343085a218da6735624"
+      ],
+      [
+        "artifacts/working-prime-field-euclidean-proof-bundle-v1.json",
+        1635441,
+        "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83"
+      ],
+      [
+        "working-81-global-syntax-v1.json",
+        10290,
+        "38e99d5574810ff9820b94952d11fa7b4f17a09a030c36fd42e4df94f2bf23b7"
+      ],
+      [
+        "working-81-verification-observations-v1.json",
+        14806,
+        "28fba8440872bcc852f43ce0511d3a7659edc6da9a773bf373f037c7495be5ac"
+      ],
+      [
+        "prime_field_polynomial_division_uniqueness_candidate.py",
+        23258,
+        "6a9d9ebe1f72202743e5df2c069b9aa367fdb3d61108f1d9354cdc9276ab2d15"
+      ],
+      [
+        "test_prime_field_polynomial_division_uniqueness_candidate.py",
+        15599,
+        "b74083e6707eb83e7fab3efa3f610d562edf2168511b07c5995f9ef9f7f588e2"
+      ],
+      [
+        "prime_field_polynomial_convolution_padding_candidate.py",
+        39740,
+        "2d874ecfb35a5db0aecdeb07b549464efebad9072c363113aa5a0a977845d007"
+      ],
+      [
+        "test_prime_field_polynomial_convolution_padding_candidate.py",
+        27054,
+        "7632654e36e18cf7c872bd29dd783a55cf597e33e7b5369be178a2d2f42b87f9"
+      ],
+      [
+        "working_euclidean_extension_support.py",
+        19237,
+        "df377f2ada5015601945caedc93b442a83cb3142ea5d4a652bab78f705ef460e"
+      ],
+      [
+        "export_working_euclidean_extension.py",
+        5158,
+        "33eb64d1e7015d596f217e5a190577bdb9f36665de5074d1922ff8af15071f56"
+      ],
+      [
+        "check_working_euclidean_extension.py",
+        10353,
+        "be03cbdb4e19b22a2ffac2ce50625b4bd9f81dcf1b9e8b8bcac782ab05cb74e4"
+      ],
+      [
+        "test_working_euclidean_extension.py",
+        30204,
+        "f92f8784ad84247328b8ebd0f27bfe1595d9989caf37c22b2e9439bcc8ef9c4b"
+      ],
+      [
+        "working-euclidean-extension-rfc-v1.md",
+        6400,
+        "60227449868efa500ba8dde65d3a80697ea6c2f102d7323586de7c9aba31a280"
+      ],
+      [
+        "artifacts/working-euclidean-extension-proof-bundle-v1.json",
+        2219445,
+        "c2e097f0e04c4b4f01bb219102405d0e93bc847c19625113eb48e55c7900734d"
+      ],
+      [
+        "artifacts/inherited-successor-injective-seed-v1.json",
+        256,
+        "bcdf16c331497c3dc26bec8cdfe92b991eb83bfe353d1d9429527a32541f1edb"
+      ],
+      [
+        "author_inherited_successor_seed.py",
+        7093,
+        "312df3229ae99a8ec39538d8fd8c2d7f19936d9c9c70062197e0eb23c40512ea"
+      ],
+      [
+        "working-113-global-syntax-v1.json",
+        9835,
+        "e138bc133d3ff566f98381fb18e5e74faf91fa42b0122e0f2978a1a99139e49a"
+      ],
+      [
+        "inspect_euclidean_extension_seeds.py",
+        6797,
+        "3aa8e9f74200f960641c7e14f9971dea9d4b28c763412c8f20087ecd0ff6fff5"
+      ]
+    ],
+    "verification": "All33 actual byte counts and all32 previously known digests matched after the final ordinary window; the unbound seed-planning diagnostic digest was measured for this record. Both external old seed hashes were separately rechecked.",
+    "proof_authority": false
+  },
+  "independent_read_only_review": {
+    "reviewer": "primitive_inverse",
+    "result": "no concrete findings in final controls,253-case test source,RFC or successor seed helper",
+    "proof_jobs_or_imports": false
+  },
+  "non_accepting_setup_events": [
+    {
+      "phase": "initial three-seed syntax inspection",
+      "exit_code": 1,
+      "covered": 334,
+      "required": 335,
+      "missing": [
+        "succ_injective"
+      ],
+      "seconds": 1.8607911670114845,
+      "peak_rss_bytes": 91176960,
+      "proof_acceptance": false,
+      "resolution": "A fourth genuinely checked one-theorem inherited seed closes the gap. The unbound inert diagnostic preserves the initial three-seed planning set."
+    },
+    {
+      "phase": "first successor-helper invocation",
+      "exit_code": 1,
+      "artifact_written": false,
+      "seconds": null,
+      "peak_rss_bytes": null,
+      "resolution": "The new helper's full structural roundtrip comparison initially compared fuel=None to decoded24; it now sets exactly the unchanged codec default8*1+16 before comparison. No original source or limit changed."
+    }
+  ],
+  "resource_and_authority_boundaries": {
+    "cpu_limits": [
+      170,
+      175
+    ],
+    "wall_alarm_seconds": 180,
+    "rss_limit_bytes": 1610612736,
+    "original_kernel_codec_compiler_lean_limits_unchanged": true,
+    "readme_plan_and_this_observation_not_acceptance_inputs": true,
+    "final_checker": "research/arithmetic-library/working/prime-field-euclidean-v1/check_working_euclidean_extension.py",
+    "separate_tasks": [
+      "bundle",
+      "root --name prime_field_polynomial_division_execution_functional",
+      "root --name prime_field_polynomial_division_execution_exists_unique",
+      "root --name prime_field_polynomial_convolution_both_left_paddings_equivalent",
+      "root --name prime_field_polynomial_convolution_both_left_paddings_exists"
+    ]
+  }
+}

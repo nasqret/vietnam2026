@@ -1,0 +1,215 @@
+# UNEXECUTED DESIGN DRAFT — outside the checked nine-row inventory.
+# Deferred by root during the v32 release. No HA/test/novelty claim.
+# These seven proposed rows additionally require importing _repeat.
+
+def _inverse_recovers_row(spec: Callable[..., Any]) -> Any:
+    body = _intro('p', 'b', 'k', 'a', 't', 'hprime', 'hinverse', 'hproduct')
+    body += ('cases hinverse',) + _parts('hinverse_right', 4) + _parts('hproduct', 4)
+    body += (f"have hvalue : exists v. ({_mul('p', 'k', 't', 'v', 'inverse_recovers_actual')})",)
+    body += _call('prime_field_multiply_exists', 'p', 'k', 't')
+    body += ('exact hprime', 'exact hinverse_right_right_left', 'exact hproduct_right_right_left', 'cases hvalue', 'have hequal : a=x')
+    body += _call('prime_field_multiply_associative', 'p', 'k', 'b', 'a', '1', 't', 'a', 'x')
+    body += _call('prime_field_multiply_commutative', 'p', 'b', 'k', '1') + ('exact hinverse_right',)
+    body += _call('prime_field_multiply_one_left', 'p', 'a') + ('exact hprime', 'exact hproduct_left')
+    body += _call('prime_field_multiply_commutative', 'p', 'a', 'b', 't') + ('exact hproduct', 'exact hvalue_witness')
+    body += _rewrite_all('hequal', _mul('p', 'k', 't', 'a', 'inverse_recovers_output'), 'a') + ('exact hvalue_witness',)
+    return spec(
+        'prime_field_polynomial_quotient_inverse_recovers_factor',
+        f"forall p b k a t. ({_prime('p', 'inverse_recovers_prime')}) -> "
+        f"({_inv('p', 'b', 'k', 'inverse_recovers_inverse')}) -> ({_mul('p', 'a', 'b', 't', 'inverse_recovers_product')}) -> "
+        f"({_mul('p', 'k', 't', 'a', 'inverse_recovers_result')})",
+        ('prime_field_multiply_exists', 'prime_field_multiply_associative',
+         'prime_field_multiply_commutative', 'prime_field_multiply_one_left'), body,
+        'Multiplication of an actual product by the actual inverse of its right factor recovers the canonical left factor, including characteristic two.',
+    )
+
+
+def _step_from_coefficient_row(spec: Callable[..., Any]) -> Any:
+    params = ('p', 'k', 'ab', 'ac', 'bb', 'bc', 'd', 'qb', 'qc', 'N', 'b', 'i', 'a', 'q')
+    body = _intro(*params, 'hprime', 'hhead', 'hinverse', 'hcanonical', 'hindex', 'hinput', 'hquotient', 'hcoefficient')
+    body += (f"have hprevious : exists c. ({_coefficient('p', 'qb', 'qc', 'i', 'bb', 'bc', 'S d', 'i', 'c', 'converse_step_previous')})",)
+    body += _call('prime_field_convolution_coefficient_exists', 'p', 'qb', 'qc', 'i', 'bb', 'bc', 'S d', 'i')
+    body += ('intro hzero',) + _call('prime_nonzero', 'p') + ('exact hprime', 'exact hzero', 'cases hprevious')
+    body += (f"have hproduct : exists t. ({_mul('p', 'q', 'b', 't', 'converse_step_product')})",)
+    body += _call('prime_field_multiply_exists', 'p', 'q', 'b') + ('exact hprime',)
+    body += _call('matrix_rank_bounded_prefix_value', 'qb', 'qc', 'N', 'p', 'i', 'q')
+    body += ('exact hcanonical', 'exact hindex', 'exact hquotient', 'cases hinverse', 'cases hinverse_right',
+             'exact hinverse_right_left', 'cases hproduct')
+    body += (f"have hshort : {_coefficient('p', 'qb', 'qc', 'S i', 'bb', 'bc', 'S d', 'i', 'a', 'converse_step_short')}",)
+    body += _call('prime_field_convolution_coefficient_prefix_transport', 'p', 'qb', 'qc', 'N', 'qb', 'qc', 'S i', 'bb', 'bc', 'S d', 'S i', 'i', 'a')
+    body += ('exact hindex',) + _call('le_refl', 'S i') + _intro('j', 'v', 'hj', 'hv') + ('exact hv',)
+    body += _call('le_refl', 'S i') + ('exact hcoefficient',)
+    body += (f"have hsum : {_add('p', 'x', 'x1', 'a', 'converse_step_sum')}",)
+    body += _call('prime_field_convolution_coefficient_append', 'p', 'qb', 'qc', 'qb', 'qc', 'bb', 'bc', 'd', 'i', 'q', 'b', 'x', 'x1', 'a')
+    body += _intro('j', 'v', 'hj', 'hv') + ('exact hv', 'exact hquotient', 'exact hhead', 'exact hprevious_witness',
+                                          'exact hshort', 'exact hproduct_witness')
+    body += ('exists a', 'exists x', 'exists x1', 'split', 'exact hinput', 'split', 'exact hprevious_witness', 'split', 'exact hsum')
+    body += _call('prime_field_polynomial_quotient_inverse_recovers_factor', 'p', 'b', 'k', 'q', 'x1')
+    body += ('exact hprime', 'exact hinverse', 'exact hproduct_witness')
+    return spec(
+        'prime_field_polynomial_quotient_step_from_coefficient',
+        f"forall {' '.join(params)}. ({_prime('p', 'converse_step_prime')}) -> "
+        f"({_at('bb', 'bc', '0', 'b', 'converse_step_head')}) -> ({_inv('p', 'b', 'k', 'converse_step_inverse')}) -> "
+        f"({_coeff('p', 'qb', 'qc', 'N', 'converse_step_canonical')}) -> ({_lt('i', 'N', 'converse_step_index')}) -> "
+        f"({_at('ab', 'ac', 'i', 'a', 'converse_step_input')}) -> ({_at('qb', 'qc', 'i', 'q', 'converse_step_quotient')}) -> "
+        f"({_coefficient('p', 'qb', 'qc', 'N', 'bb', 'bc', 'S d', 'i', 'a', 'converse_step_coefficient')}) -> "
+        f"({_quotient_step('p', 'k', 'ab', 'ac', 'bb', 'bc', 'S d', 'qb', 'qc', 'i', 'q', 'converse_step_result')})",
+        ('prime_field_convolution_coefficient_exists', 'prime_nonzero', 'prime_field_multiply_exists',
+         'matrix_rank_bounded_prefix_value', 'prime_field_convolution_coefficient_prefix_transport', 'le_refl',
+         'prime_field_convolution_coefficient_append', 'prime_field_polynomial_quotient_inverse_recovers_factor'), body,
+        'A canonical quotient coefficient whose genuine convolution coefficient matches the input necessarily satisfies the actual triangular step, with constructed previous-coefficient and product witnesses.',
+    )
+
+
+def _prefix_from_matching_row(spec: Callable[..., Any]) -> Any:
+    params = ('p', 'k', 'ab', 'ac', 'bb', 'bc', 'd', 'qb', 'qc', 'N', 'b', 'pb', 'pc', 'L')
+    body = _intro(*params, 'hprime', 'hhead', 'hinverse', 'hcanonical', 'hlength', 'hproduct', 'hmatch', 'i', 'hindex')
+    body += (f"have hquotient : exists q. {_and(_at('qb', 'qc', 'i', 'q', 'matching_prefix_quotient'), _lt('q', 'p', 'matching_prefix_bound'))}",)
+    body += _call('hcanonical', 'i') + ('exact hindex', 'cases hquotient', 'cases hquotient_witness')
+    body += (f"have hinput : exists a. ({_at('ab', 'ac', 'i', 'a', 'matching_prefix_input')})",)
+    body += _call('beta_at_exists', 'ab', 'ac', 'i') + ('cases hinput', 'exists x', 'split', 'exact hquotient_witness_left')
+    body += _call('prime_field_polynomial_quotient_step_from_coefficient', 'p', 'k', 'ab', 'ac', 'bb', 'bc', 'd', 'qb', 'qc', 'N', 'b', 'i', 'x1', 'x')
+    body += ('exact hprime', 'exact hhead', 'exact hinverse', 'exact hcanonical', 'exact hindex', 'exact hinput_witness', 'exact hquotient_witness_left')
+    body += _call('prime_field_convolution_prefix_entry', 'p', 'qb', 'qc', 'N', 'bb', 'bc', 'S d', 'pb', 'pc', 'L', 'i', 'x1')
+    body += ('exact hproduct',) + _call('lt_of_lt_of_le', 'i', 'N', 'L') + ('exact hindex', 'exact hlength')
+    body += _call('hmatch', 'i', 'x1') + ('exact hindex', 'exact hinput_witness')
+    return spec(
+        'prime_field_polynomial_quotient_prefix_from_matching_product',
+        f"forall {' '.join(params)}. ({_prime('p', 'matching_prefix_prime')}) -> "
+        f"({_at('bb', 'bc', '0', 'b', 'matching_prefix_head')}) -> ({_inv('p', 'b', 'k', 'matching_prefix_inverse')}) -> "
+        f"({_coeff('p', 'qb', 'qc', 'N', 'matching_prefix_canonical')}) -> ({_le('N', 'L', 'matching_prefix_length')}) -> "
+        f"({_prefix('p', 'qb', 'qc', 'N', 'bb', 'bc', 'S d', 'pb', 'pc', 'L', 'matching_prefix_product')}) -> "
+        f"({_equal('ab', 'ac', 'pb', 'pc', 'N', 'matching_prefix_equal')}) -> "
+        f"({_quotient_prefix('p', 'k', 'ab', 'ac', 'bb', 'bc', 'S d', 'qb', 'qc', 'N', 'matching_prefix_result')})",
+        ('beta_at_exists', 'prime_field_polynomial_quotient_step_from_coefficient',
+         'prime_field_convolution_prefix_entry', 'lt_of_lt_of_le'), body,
+        'Every canonical quotient with a genuine product matching the input on its bounded prefix is an actual triangular execution prefix; execution is derived rather than assumed.',
+    )
+
+
+def _zero_difference_row(spec: Callable[..., Any]) -> Any:
+    params = ('p', 'ab', 'ac', 'pb', 'pc', 'ub', 'uc', 'L', 'N')
+    body = _intro(*params, 'hprime', 'hlength', 'hsubtract', 'hzero', 'i', 'a', 'hindex', 'hinput')
+    body += (f"have hproduct : exists b. ({_at('pb', 'pc', 'i', 'b', 'zero_difference_product')})",)
+    body += _call('beta_at_exists', 'pb', 'pc', 'i') + ('cases hproduct',)
+    body += (f"have hadd : {_add('p', 'x', '0', 'a', 'zero_difference_sum')}",)
+    body += _call('prime_field_polynomial_subtract_entry', 'p', 'ab', 'ac', 'pb', 'pc', 'ub', 'uc', 'L', 'i', 'a', 'x', '0')
+    body += ('exact hsubtract',) + _call('lt_of_lt_of_le', 'i', 'N', 'L') + ('exact hindex', 'exact hlength', 'exact hinput', 'exact hproduct_witness')
+    body += _call('hzero', 'i') + ('exact hindex', 'have hequal : a=x')
+    body += _call('prime_field_add_functional', 'p', 'x', '0', 'a', 'x') + ('exact hadd',)
+    body += _call('prime_field_add_zero_right', 'p', 'x') + ('exact hprime', 'cases hadd', 'exact hadd_left')
+    body += _rewrite_all('hequal', _at('pb', 'pc', 'i', 'a', 'zero_difference_result'), 'a') + ('exact hproduct_witness',)
+    return spec(
+        'prime_field_polynomial_subtract_zero_prefix_inputs_equal',
+        f"forall {' '.join(params)}. ({_prime('p', 'zero_difference_prime')}) -> ({_le('N', 'L', 'zero_difference_length')}) -> "
+        f"({_subtract('p', 'ab', 'ac', 'pb', 'pc', 'ub', 'uc', 'L', 'zero_difference_actual')}) -> "
+        f"({_repeat('ub', 'uc', '0', 'N', 'zero_difference_zero')}) -> ({_equal('ab', 'ac', 'pb', 'pc', 'N', 'zero_difference_equal')})",
+        ('beta_at_exists', 'prime_field_polynomial_subtract_entry', 'lt_of_lt_of_le',
+         'prime_field_add_functional', 'prime_field_add_zero_right'), body,
+        'An actual subtraction with zero residual on a bounded prefix forces equality of the two source prefixes; the converse is not inserted into the subtraction graph.',
+    )
+
+
+def _cut_from_small_remainder_row(spec: Callable[..., Any]) -> Any:
+    params = ('p', 'ub', 'uc', 'L', 't', 'rb', 'rc', 'R', 'q', 'd')
+    body = _intro(*params, 'hlength', 'htrim', 'hbound') + _parts('htrim', 5)
+    body += ('cases hlength', 'cases hlength_left', 'rewrite hlength_left_left') + _call('zero_le', 't')
+    body += ('cases hlength_right', 'cases hbound', 'have hequal : q+x=t') + _call('add_right_cancel', 'q+x', 't', 'R')
+    body += ('trans q+(x+R)',) + _call('add_assoc', 'q', 'x', 'R')
+    body += ('trans q+d', 'congr', 'refl', 'exact hbound_witness', 'trans L', 'exact hlength_right_right', 'exact htrim_left',
+             'exists x', 'trans q+x') + _call('add_comm', 'x', 'q') + ('exact hequal',)
+    return spec(
+        'polynomial_quotient_length_trim_cut_bound',
+        f"forall {' '.join(params)}. ({_quotient_length('L', 'd', 'q', 'small_remainder_quotient_length')}) -> "
+        f"({_trim('p', 'ub', 'uc', 'L', 't', 'rb', 'rc', 'R', 'small_remainder_trim')}) -> "
+        f"({_le('R', 'd', 'small_remainder_bound')}) -> ({_le('q', 't', 'small_remainder_cut')})",
+        ('zero_le', 'add_right_cancel', 'add_assoc', 'add_comm'), body,
+        'A normalized remainder of length at most the divisor degree begins after the conventional quotient prefix, by actual length equations, including the zero-quotient case.',
+    )
+
+
+def _prefix_from_small_remainder_row(spec: Callable[..., Any]) -> Any:
+    params = ('p', 'k', 'ab', 'ac', 'L', 'bb', 'bc', 'd', 'b', 'qb', 'qc', 'q', 'pb', 'pc', 'ub', 'uc', 't', 'rb', 'rc', 'R')
+    residual = ('p', 'ab', 'ac', 'L', 'bb', 'bc', 'd', 'qb', 'qc', 'q', 'pb', 'pc', 'ub', 'uc', 't', 'rb', 'rc', 'R')
+    body = _intro(*params, 'hprime', 'hhead', 'hinverse', 'hcanonical', 'hlength', 'hresidual', 'hbound') + _parts('hresidual', 3)
+    body += (f"have hcut : {_le('q', 't', 'identity_prefix_cut')}",)
+    body += _call('polynomial_quotient_length_trim_cut_bound', 'p', 'ub', 'uc', 'L', 't', 'rb', 'rc', 'R', 'q', 'd')
+    body += ('exact hlength', 'exact hresidual_right_right', 'exact hbound')
+    body += (f"have hbounds : {_and(_le('q', 'L', 'identity_prefix_length'), _le('L', 'q+d', 'identity_prefix_cover'))}",)
+    body += _call('polynomial_quotient_length_bounds', 'L', 'd', 'q') + ('exact hlength', 'cases hbounds')
+    body += _call('prime_field_polynomial_quotient_prefix_from_matching_product', 'p', 'k', 'ab', 'ac', 'bb', 'bc', 'd', 'qb', 'qc', 'q', 'b', 'pb', 'pc', 'L')
+    body += ('exact hprime', 'exact hhead', 'exact hinverse', 'exact hcanonical', 'exact hbounds_left', 'exact hresidual_left')
+    body += _call('prime_field_polynomial_subtract_zero_prefix_inputs_equal', 'p', 'ab', 'ac', 'pb', 'pc', 'ub', 'uc', 'L', 'q')
+    body += ('exact hprime', 'exact hbounds_left', 'exact hresidual_right_left') + _parts('hresidual_right_right', 5)
+    body += _intro('i', 'hindex') + _call('hresidual_right_right_right_right_left', 'i')
+    body += _call('lt_of_lt_of_le', 'i', 'q', 't') + ('exact hindex', 'exact hcut')
+    return spec(
+        'prime_field_polynomial_quotient_prefix_from_small_remainder',
+        f"forall {' '.join(params)}. ({_prime('p', 'identity_prefix_prime')}) -> "
+        f"({_at('bb', 'bc', '0', 'b', 'identity_prefix_head')}) -> ({_inv('p', 'b', 'k', 'identity_prefix_inverse')}) -> "
+        f"({_coeff('p', 'qb', 'qc', 'q', 'identity_prefix_canonical')}) -> "
+        f"({_quotient_length('L', 'd', 'q', 'identity_prefix_quotient_length')}) -> "
+        f"({_residual_data(*residual, 'identity_prefix_data')}) -> ({_le('R', 'd', 'identity_prefix_small')}) -> "
+        f"({_quotient_prefix('p', 'k', 'ab', 'ac', 'bb', 'bc', 'S d', 'qb', 'qc', 'q', 'identity_prefix_result')})",
+        ('polynomial_quotient_length_trim_cut_bound', 'polynomial_quotient_length_bounds',
+         'prime_field_polynomial_quotient_prefix_from_matching_product',
+         'prime_field_polynomial_subtract_zero_prefix_inputs_equal', 'lt_of_lt_of_le'), body,
+        'An arbitrary actual ambient product/subtraction/trim identity with canonical conventional-length quotient and small normalized remainder must follow the triangular recursion; no execution premise is assumed.',
+    )
+
+
+def _aligned_identity_functional_row(spec: Callable[..., Any]) -> Any:
+    initial = ('p', 'ab', 'ac', 'L', 'bb', 'bc', 'd')
+    first = ('qb', 'qc', 'q', 'pb', 'pc', 'ub', 'uc', 't', 'rb', 'rc', 'R')
+    second = ('QB', 'QC', 'Q', 'PB', 'PC', 'UB', 'UC', 'T', 'RB', 'RC', 'K')
+    params = (*initial, *first, *second)
+    body = _intro(*params, 'hprime', 'hdivisor', 'hcanonical', 'hother_canonical', 'hlength', 'hother_length',
+                  'hresidual', 'hother_residual', 'hbound', 'hother_bound') + _parts('hdivisor', 3)
+    body += ('cases hdivisor_right_right', 'cases hdivisor_right_right_witness')
+    body += (f"have hinverse : exists k. ({_inv('p', 'x', 'k', 'aligned_identity_inverse')})",)
+    body += _call('prime_field_inverse_exists', 'p', 'x') + ('exact hprime',)
+    body += _call('matrix_rank_bounded_prefix_value', 'bb', 'bc', 'S d', 'p', '0', 'x')
+    body += ('exact hdivisor_right_left', 'exists d', 'simp', 'exact hdivisor_right_right_witness_left',
+             'exact hdivisor_right_right_witness_right', 'cases hinverse')
+    quotient_result = _and('x=x', 'x1=x1', 'q=Q', _equal('qb', 'qc', 'QB', 'QC', 'q', 'aligned_identity_quotients'))
+    body += (f'have hquotients : {quotient_result}',)
+    body += _call('prime_field_polynomial_division_quotient_data_functional', *initial,
+                  'x', 'x1', 'q', 'qb', 'qc', 'x', 'x1', 'Q', 'QB', 'QC')
+    for data, canonical, length, residual, bound in (
+        (first, 'hcanonical', 'hlength', 'hresidual', 'hbound'),
+        (second, 'hother_canonical', 'hother_length', 'hother_residual', 'hother_bound'),
+    ):
+        body += ('split', 'exact hdivisor_right_right_witness_left', 'split', 'exact hinverse_witness',
+                 'split', 'exact ' + length)
+        body += _call('prime_field_polynomial_quotient_prefix_from_small_remainder',
+                      'p', 'x1', 'ab', 'ac', 'L', 'bb', 'bc', 'd', 'x', *data)
+        body += ('exact hprime', 'exact hdivisor_right_right_witness_left', 'exact hinverse_witness',
+                 'exact ' + canonical, 'exact ' + length, 'exact ' + residual, 'exact ' + bound)
+    body += _parts('hquotients', 4)
+    residual_result = _and('t=T', 'R=K', _equal('rb', 'rc', 'RB', 'RC', 'R', 'aligned_identity_remainders'))
+    body += (f'have hremainder : {residual_result}',)
+    body += _call('prime_field_polynomial_division_residual_data_functional', *initial,
+                  'qb', 'qc', 'QB', 'QC', 'q', *first[3:], *second[3:])
+    body += ('exact hquotients_right_right_right', 'exact hresidual')
+    body += _rewrite_all('hquotients_right_right_left', _residual_data(*initial, 'QB', 'QC', 'q', *second[3:], 'aligned_identity_length_rewrite'), 'q')
+    body += ('exact hother_residual',) + _parts('hremainder', 3)
+    body += ('split', 'exact hquotients_right_right_left', 'split', 'exact hquotients_right_right_right',
+             'split', 'exact hremainder_right_left', 'exact hremainder_right_right')
+    result = _execution_equal('qb', 'qc', 'q', 'rb', 'rc', 'R', 'QB', 'QC', 'Q', 'RB', 'RC', 'K', 'aligned_identity_outputs')
+    return spec(
+        'prime_field_polynomial_aligned_division_identity_functional',
+        f"forall {' '.join(params)}. ({_prime('p', 'aligned_identity_prime')}) -> "
+        f"({_degree('p', 'bb', 'bc', 'S d', 'd', 'aligned_identity_divisor')}) -> "
+        f"({_coeff('p', 'qb', 'qc', 'q', 'aligned_identity_canonical')}) -> "
+        f"({_coeff('p', 'QB', 'QC', 'Q', 'aligned_identity_other_canonical')}) -> "
+        f"({_quotient_length('L', 'd', 'q', 'aligned_identity_length')}) -> "
+        f"({_quotient_length('L', 'd', 'Q', 'aligned_identity_other_length')}) -> "
+        f"({_residual_data(*initial, *first, 'aligned_identity_data')}) -> "
+        f"({_residual_data(*initial, *second, 'aligned_identity_other_data')}) -> "
+        f"({_le('R', 'd', 'aligned_identity_bound')}) -> ({_le('K', 'd', 'aligned_identity_other_bound')}) -> ({result})",
+        ('prime_field_inverse_exists', 'matrix_rank_bounded_prefix_value',
+         'prime_field_polynomial_division_quotient_data_functional',
+         'prime_field_polynomial_quotient_prefix_from_small_remainder',
+         'prime_field_polynomial_division_residual_data_functional'), body,
+        'Arbitrary actual coefficient identities with canonical quotients at the conventional lengths and normalized degree-bounded remainders have unique decoded outputs; neither execution is assumed. Cross-length formal-polynomial equivalence still needs a separate alignment theorem.',
+    )

@@ -1,0 +1,50 @@
+{
+  "schema": "peano-working-euclidean-definition-observations-v1",
+  "observations_only": true,
+  "saved_record_is_proof_authority": false,
+  "read_by_proof_checker_or_exporter": false,
+  "scope": "Seven conservative working aliases; not theorem acceptance, admission or publication",
+  "passing_cases": 92,
+  "inherited_definitions_preserved": 390,
+  "inherited_expansion_edges_preserved": 844,
+  "working_definition_count": 397,
+  "working_expansion_edges": 865,
+  "new_definition_ids": ["ND0334", "ND0335", "ND0336", "ND0337", "ND0338", "ND0339", "ND0340"],
+  "fresh_recheck": {
+    "date": "2026-08-31",
+    "exit_code": 0,
+    "pytest_seconds": 7.20,
+    "wall_seconds": 7.719277416006662,
+    "peak_rss_bytes": 94175232,
+    "cpu_limits_seconds": [170, 175],
+    "wall_limit_seconds": 180,
+    "rss_limit_bytes": 1610612736,
+    "command": "PYTHONPATH=research/arithmetic-library/working/prime-field-euclidean-v1:peano-lab/py:scripts python3 -c 'import json,resource,signal,time; resource.setrlimit(resource.RLIMIT_CPU,(170,175)); signal.alarm(180); started=time.monotonic(); import pytest; from check_constructive_bottom_layers import authoring_rss_bytes; result=pytest.main([\"-q\",\"research/arithmetic-library/working/prime-field-euclidean-v1/test_working_euclidean_definitions.py\",\"--tb=short\"]); print(json.dumps({\"scope\":\"working_euclidean_conservative_definitions\",\"result\":result,\"wall_seconds\":time.monotonic()-started,\"peak_rss_bytes\":authoring_rss_bytes(),\"cpu_limits\":list(resource.getrlimit(resource.RLIMIT_CPU)),\"wall_limit_seconds\":180,\"proof_or_admission_authority\":False},sort_keys=True)); raise SystemExit(result)'"
+  },
+  "source_pins": [
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/working_euclidean_definitions.py",
+      "bytes": 7278,
+      "sha256": "aec02f0130c3bcaa0b09395874530e2d844eb583411e1a5b7f8033c3fba9c49d"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/working_euclidean_definition_graph.py",
+      "bytes": 1226,
+      "sha256": "4489cec7dff3a1ea48d12725f2d28b9c9c648543d94f8ee6a7233b3350e7ba15"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/test_working_euclidean_definitions.py",
+      "bytes": 16004,
+      "sha256": "c30ef4a5aec9065ed745b512fef3e464e53e32a0be2d642d5f3a4f96d62cd3af"
+    }
+  ],
+  "tests_cover": [
+    "Independent lower-vocabulary formula contracts and exact core AST round trips",
+    "Binder hygiene with compound arguments, repeated variables and large double-and-add numerals",
+    "Every new expansion edge occurs in the actual parent formula",
+    "All inherited definition objects, routes and source bytes remain unchanged",
+    "Definitions invoke no theorem factories or admission authority",
+    "Each new alias occurs in an actual working theorem statement",
+    "The division execution does not assume its final identity or degree bound"
+  ]
+}

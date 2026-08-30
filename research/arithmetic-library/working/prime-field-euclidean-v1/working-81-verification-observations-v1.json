@@ -1,0 +1,375 @@
+{
+  "schema": "peano-working-polynomial-euclidean-observations-v1",
+  "observations_only": true,
+  "saved_record_is_proof_authority": false,
+  "read_by_proof_checker_or_exporter": false,
+  "scope": {
+    "working_new_theorems": 81,
+    "inherited_alpha_v32_theorems": 232,
+    "current_alpha_version": "v32",
+    "current_alpha_count": 3971,
+    "stable_count": 432,
+    "working_factory_counts": [
+      8,
+      30,
+      25,
+      18
+    ],
+    "ordered_new_specs_sha256": "b9fef22dbce3893dfadb7c9c5192c7a5a3c8d717ae112a0fff9e016aa68162fb",
+    "separate_uniqueness_and_convolution_padding_work_included": false
+  },
+  "artifact": {
+    "path": "research/arithmetic-library/working/prime-field-euclidean-v1/artifacts/working-prime-field-euclidean-proof-bundle-v1.json",
+    "bytes": 1635441,
+    "sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+    "nodes_including_packaging": 314,
+    "edges_including_packaging": 822,
+    "body_nodes": 21794
+  },
+  "actual_global_novelty_diagnostic": {
+    "compared_against_current_alpha": 3971,
+    "new_rows": 81,
+    "duplicates": 0,
+    "seconds": 59.088162667,
+    "peak_rss_bytes": 1239957504,
+    "proof_acceptance": false,
+    "record": "research/arithmetic-library/working/prime-field-euclidean-v1/working-81-global-syntax-v1.json"
+  },
+  "inherited_seed_authoring": {
+    "path": "research/arithmetic-library/working/prime-field-euclidean-v1/artifacts/inherited-polynomial-products-three-lemmas-seed-v1.json",
+    "bytes": 812095,
+    "sha256": "f4d2567e664ae3ad6092e6b54a6599d2858ac4fafc0b4343085a218da6735624",
+    "all_mathematical_rows_inherited": true,
+    "new_working_rows": 0,
+    "original_seed_nodes_checked": 210,
+    "augmented_nodes_checked": 214,
+    "original_ha_checked": true,
+    "seconds": 1.7517732919659466,
+    "peak_rss_bytes": 73318400,
+    "ordinary_or_independent_lean_claim": false,
+    "new_packaging_preserves_old_packaging": true,
+    "reconstructed_names": [
+      "add_le_cancel_right",
+      "lt_of_lt_of_le",
+      "matrix_rank_prefix_equality_symmetric"
+    ]
+  },
+  "actual_full_authoring": {
+    "original_ha_checked": true,
+    "all_81_scripts_reconstructed": true,
+    "all_232_inherited_bodies_freshly_checked": true,
+    "fresh_seed_kernel_calls": [
+      214,
+      293,
+      202
+    ],
+    "retained_inherited_bodies_by_seed": [
+      178,
+      51,
+      3
+    ],
+    "broad_historical_provider_decode_scan_performed": false,
+    "peak_rss_bytes": 1312243712,
+    "seconds": null,
+    "elapsed_note": "The unchanged authoring CLI enforced its original wall gate but did not print an exact duration.",
+    "no_overwrite_output": true
+  },
+  "small_final_integration_guards": {
+    "actual_passed_cases": 84,
+    "node_ids_sha256": "4f8f30e678258b060c951ede83b79ce59c886e96672d5bbb92e916de3a8fe091",
+    "seconds": 2.2801648329477757,
+    "peak_rss_bytes": 121208832,
+    "alpha_import_or_positive_proof_mock": false
+  },
+  "verification_windows": [
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+      "body_nodes": 21794,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "edges": 822,
+      "independent_same_byte_lean_checked": true,
+      "kernel_calls": 314,
+      "new_rows": 81,
+      "nodes": 314,
+      "ordinary_principals_checked": false,
+      "original_ha_checked": true,
+      "parent_count": 3971,
+      "parent_version": "v32",
+      "peak_rss_bytes": 1238171648,
+      "schema": "peano-working-polynomial-euclidean-bundle-check-v1",
+      "seconds": 37.40255258302204,
+      "stable_admission_performed": false,
+      "stable_count": 432,
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_division_execution_exists",
+      "node_id": 288,
+      "ordinary_certificate_nodes": 13508,
+      "peak_rss_bytes": 1231912960,
+      "schema": "peano-working-polynomial-euclidean-principal-check-v1",
+      "seconds": 39.71778112498578,
+      "stable_admission_performed": false,
+      "statement_sha256": "2284a51ec603ab07a511343bd12a1d73d9414e266a808b8129d9ca306b54f622",
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_division_remainder_degree",
+      "node_id": 289,
+      "ordinary_certificate_nodes": 7517,
+      "peak_rss_bytes": 802635776,
+      "schema": "peano-working-polynomial-euclidean-principal-check-v1",
+      "seconds": 44.221747250063345,
+      "stable_admission_performed": false,
+      "statement_sha256": "32cecdb99ac8a5614e401737422ca965bf89729c762ce08999e8b493cb519ea2",
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_division_coefficient_identity",
+      "node_id": 294,
+      "ordinary_certificate_nodes": 2661,
+      "peak_rss_bytes": 1086996480,
+      "schema": "peano-working-polynomial-euclidean-principal-check-v1",
+      "seconds": 38.191220583044924,
+      "stable_admission_performed": false,
+      "statement_sha256": "8cc8fa1862d8912600d53092565c286758eb9796e6d8cc047df55dc0245ab195",
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_trim_equivalent",
+      "node_id": 259,
+      "ordinary_certificate_nodes": 2029,
+      "peak_rss_bytes": 1076150272,
+      "schema": "peano-working-polynomial-euclidean-principal-check-v1",
+      "seconds": 36.02221041708253,
+      "stable_admission_performed": false,
+      "statement_sha256": "91f6957177fe1ebd0e703aa9589e43543711999ef6c5a19a1f8b027c7e2fea8f",
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_add_left_pad_transport",
+      "node_id": 261,
+      "ordinary_certificate_nodes": 786,
+      "peak_rss_bytes": 1114308608,
+      "schema": "peano-working-polynomial-euclidean-principal-check-v1",
+      "seconds": 35.50795891706366,
+      "stable_admission_performed": false,
+      "statement_sha256": "84b47eb63bbe304d2c27147929425db8e526f71ba8e32f4b6bec956762d09b37",
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_left_distributive_products_exists",
+      "node_id": 311,
+      "ordinary_certificate_nodes": 10783,
+      "peak_rss_bytes": 1242546176,
+      "schema": "peano-working-polynomial-euclidean-principal-check-v1",
+      "seconds": 40.93718516698573,
+      "stable_admission_performed": false,
+      "statement_sha256": "9df1dde91e1e57221d120a6aff8a84019d6f860ed274037ecab2e9281c7a00c9",
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_polynomial_right_distributive_products_exists",
+      "node_id": 312,
+      "ordinary_certificate_nodes": 10783,
+      "peak_rss_bytes": 1232093184,
+      "schema": "peano-working-polynomial-euclidean-principal-check-v1",
+      "seconds": 40.36899191699922,
+      "stable_admission_performed": false,
+      "statement_sha256": "5d5b6ab21dec48cbd5387f86a0a235bc8784d56db4fd82131f46815ed63a5f10",
+      "wall_alarm_seconds": 180
+    },
+    {
+      "alpha_admission_performed": false,
+      "artifact_sha256": "3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83",
+      "complete_ordinary_ha_checked": true,
+      "cpu_limits": [
+        170,
+        175
+      ],
+      "independent_lean_checked": false,
+      "name": "prime_field_convolution_prefix_left_subtract",
+      "node_id": 305,
+      "ordinary_certificate_nodes": 3629,
+      "peak_rss_bytes": 1192394752,
+      "schema": "peano-working-polynomial-euclidean-principal-check-v1",
+      "seconds": 39.61584962508641,
+      "stable_admission_performed": false,
+      "statement_sha256": "c7aff7528e669df6c6f8ce54813521b30bae733c30ad30bd260dee00343019d9",
+      "wall_alarm_seconds": 180
+    }
+  ],
+  "summary": {
+    "actual_successful_windows": 9,
+    "independent_same_byte_compiled_lean": true,
+    "whole_original_ha": true,
+    "ordinary_empty_context_principals": 8,
+    "local_non_admitting_checkpoint_complete": true,
+    "total_window_seconds": 351.98549758433364,
+    "max_window_seconds": 44.221747250063345,
+    "max_window_peak_rss_bytes": 1242546176,
+    "original_cpu_limits": [
+      170,
+      175
+    ],
+    "original_wall_seconds": 180,
+    "original_rss_bytes": 1610612736,
+    "source_rebinding_performed_before_and_after_every_window": true,
+    "all_five_controls_unchanged_across_all_nine_windows": true,
+    "all_eight_frozen_math_and_test_files_unchanged": true,
+    "alpha_admission_performed": false,
+    "stable_admission_performed": false,
+    "public_reader_built": false,
+    "full_G091_proved": false,
+    "polynomial_gcd_bezout_proved": false
+  },
+  "frozen_proof_controls": [
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/working_euclidean_support.py",
+      "bytes": 18552,
+      "sha256": "80e73f977f2464e2f62939610667def8bbf96f19e4d95bf734c52969c39cec4a"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/export_working_euclidean.py",
+      "bytes": 7319,
+      "sha256": "5b5ff76c08c01240baa239ca189ad3a372f5d6e7777a0aa9b12eaf88a37b19de"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/check_working_euclidean.py",
+      "bytes": 9619,
+      "sha256": "390033da96271b2347a99d5fe5f033d1c6c60f0b82496a1707df6260de353603"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/test_working_euclidean_integration.py",
+      "bytes": 18658,
+      "sha256": "04f66780d6b0d7408b72b8e9a8cdc54772d1593e03dfb2e61579a44410ba1038"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/working-euclidean-integration-rfc-v1.md",
+      "bytes": 9958,
+      "sha256": "f39c915949e5ca9312553836e7672c4c1b07bffb8b6d8a4efe3d3a0c02d560d9"
+    }
+  ],
+  "frozen_mathematical_sources_and_tests": [
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/prime_field_polynomial_convolution_triangular_candidate.py",
+      "bytes": 16677,
+      "sha256": "d53722e52ffb3f98d16d693c8cc28d605e62da8f36d5e6ecffe3df66179aa11f"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/prime_field_polynomial_representation_candidate.py",
+      "bytes": 42623,
+      "sha256": "fc3b40a6ec88841b937251bfc2b4c2dcce55ddeec9932c2533e0f74e46fc5c6a"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/prime_field_polynomial_division_candidate.py",
+      "bytes": 47986,
+      "sha256": "edfc7806caf7a83b9cb0e3e420bd2c3a8679f2d4d9ee6ca9f8eae53faca8d5b2"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/prime_field_polynomial_distributivity_candidate.py",
+      "bytes": 26118,
+      "sha256": "a959962d631759cd1fc773dd7eef2fadf4f3f95361d6d7bc8c6a9e82d0d4ab86"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_convolution_triangular_candidate.py",
+      "bytes": 9162,
+      "sha256": "e6bf4d2a0b2b00336b8d83b4ffe5d068e34e3d5bd44e8af4b995ca2723289822"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_representation_candidate.py",
+      "bytes": 25517,
+      "sha256": "75a2cee90850ff07468b1d568ce4d3665f8006fdbb892c5838186abbc8fd57b7"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_division_candidate.py",
+      "bytes": 23978,
+      "sha256": "c4f7555b19e88789c4a561ec5b66d1f9487f44a32b388f2beea90f9ec42eed3b"
+    },
+    {
+      "path": "research/arithmetic-library/working/prime-field-euclidean-v1/test_prime_field_polynomial_distributivity_candidate.py",
+      "bytes": 21925,
+      "sha256": "d6200ef1e0447f3efb98461ce343a1a3ae5530f74490bd4b7782cbc13ed2e9a6"
+    }
+  ],
+  "launcher_incidents": [
+    {
+      "stage": "before final subtraction Python startup",
+      "exit_code": 127,
+      "kind": "incorrect Versions3.10 executable path",
+      "proof_code_started": false,
+      "input_or_limit_change": false
+    },
+    {
+      "stage": "corrected command process creation",
+      "exit_code": null,
+      "kind": "transient execution service CreateProcess ENOENT",
+      "proof_code_started": false,
+      "follow_up": "Read-only exact directory/executable checks succeeded; the same corrected command then ran.",
+      "permission_escalation_or_process_cleanup": false,
+      "input_or_limit_change": false
+    }
+  ],
+  "rfc_status_note": "The frozen RFC records the earlier authoring-registration stage, when the nine final checks were pending. This later observations file records their actual completion without changing any proof-bound control or RFC bytes.",
+  "recheck_instruction": "Run the actual registered bundle and each of the eight named ordinary-root commands again; neither this observations file nor any stored receipt authorizes proof acceptance."
+}

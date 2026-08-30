@@ -3,6 +3,13 @@
 User authorization (2026-08-30): commit, deploy and promote the completed
 proof campaigns, then proceed with general polynomial division and gcd/Bézout.
 
+Latest checkpoint (2026-08-31): Alpha v32 is committed, pushed and deployed
+with 3,971 checked-use entries; Stable remains the identical default 432.
+The new 113-row working division/algebra checkpoint has passed complete HA,
+same-byte compiled Lean and all four standalone principal certificates.
+Those 113 rows are not yet admitted or published. Generic formal-equivalence
+congruence, convolution associativity and full gcd/Bézout remain open.
+
 ## Release scope
 
 - Preserve Alpha v31's 3,796 entries and every historical proof/admission
@@ -48,7 +55,8 @@ proof campaigns, then proceed with general polynomial division and gcd/Bézout.
 4. Prove polynomial gcd and actual Bézout witnesses by induction on the
    second reduced length, using genuine Euclidean division and actual
    associativity/distributivity. The backward step constructs
-   `G = V*A + (U-V*Q)*B` from `A=B*Q+R` and `G=U*B+V*R`.
+   `G = V*A + (U-V*Q)*B` from `A=Q*B+R` and `G=U*B+V*R`.
+   This factor order does not assume polynomial commutativity.
    The gcd of two zeros is zero; otherwise use a monic representative.
    Gcd uniqueness is coefficientwise, never raw-code identity. Bézout
    coefficients are not claimed unique.
@@ -218,3 +226,136 @@ edges and 21,794 body nodes. Its 1,635,441-byte payload SHA-256 is
 `3614e9504b84cfd24a52780d54ddc9eb16e49bf2df996c99664c9427e9a9fd83`;
 peak RSS was 1,312,243,712 bytes. Independent same-byte Lean verification and
 eight ordinary principal certificates are still pending at this checkpoint.
+
+### Commit, deployment and completed division checks
+
+Release commit `5c21c771a` was pushed normally to
+`proof/lower-foundations-v31-20260828`; main and unrelated worktrees were not
+changed. The dedicated stage's final read-only check passed in 93.913 seconds
+at 759,791,616 bytes RSS. Both confirmed faculty target directories were
+ordinary, owned directories without symlinks.
+
+All 12,861 non-index proof files were uploaded without deletion and matched
+fresh SHA-256 hashes of the entire local stage. Only then was the root index
+switched and its hash checked: `307611d61cf2deabd021f50f920f305368aadfc040f7ceb0e78c66806ed20a36`.
+The 569 application-manifest entries and 18 vendor entries of Peano preview
+also matched; its index was switched afterward. Preview index, both manifest
+files and the unchanged `.htaccess` matched their exact local hashes. Prior
+remote indexes are retained locally under
+`/private/tmp/faculty-v32-index-rollback.1KiMYj/` for rollback. No remote
+historical release or unrelated file was deleted.
+
+A TLS-verifying four-request-concurrency audit matched all 93 selected HTTPS
+responses (17,324,562 bytes, 52.618 seconds): all 65 family landing pages,
+current atlas, original/new critical graphs, seven assets, release evidence,
+and preview index/manifest/worker. The managed, idle public Lean service was
+restarted with the original one-worker, 1,024 MiB and 1,024-node settings.
+An actual online Alpha-v32 `prime_field_polynomial_negate_empty` job passed:
+three Lean-verified theorem nodes, zero certificate fallbacks, an exact
+3,558-byte import-free Lean Live source and a seven-file verified package.
+
+The original preview delivery-policy checker matched the new index bytes but
+still rejected the missing `Cache-Control: no-store` response header.
+Production Peano was not changed; this protected hosting gate was not bypassed.
+
+The separate working 81-row checkpoint is now complete. All nine original-
+bounded windows passed: the complete 314-node HA/same-byte Lean check and all
+eight ordinary principals, with exact source rebindings. Their total was
+351.985 seconds; maximum single-window time was 44.222 seconds and maximum
+RSS 1,242,546,176 bytes. The unbound observations ledger records each actual
+result without becoming proof authority or rewriting proof-bound inputs.
+The seven-definition registry's 92 syntax tests also passed. Alpha and Stable
+membership have not changed since the 175-row v32 promotion.
+
+### Completed current-selector regressions and the next working extension
+
+All 1,053 distinct current-selector regression cases passed in 27 disjoint
+windows at the original CPU, wall and RSS limits. The nine suites preserve
+196 original test functions, 857 original assertions and 20 literal theorem-
+specification hashes. Their ordered test-ID digest is
+`f15126cdbf1a63b722d36ae9f49af8f1c42fcb7517c0fac23dcadba8634524ae`.
+The maximum successful window was 119.101 seconds; maximum parent and child
+RSS were 1,135,132,672 and 1,113,587,712 bytes. Seven genuine isolated Lean
+compilations cover both editions, historical first admissions and ordinary
+proof presentation. The one oversized 23-case CLI window hit the unchanged
+180-second alarm and was credited with no cases; all 23 subsequently passed
+in smaller original-bounded windows. Final collection and source-hash
+reconciliation found exact disjoint coverage and no changed inputs.
+
+The next 32 working lemmas have independently passed focused conditional HA
+checks: nine actual division-execution uniqueness lemmas in 379 cases, and
+23 convolution-padding lemmas in 594 cases. Every actual body was checked;
+each removed or poisoned dependency was rejected. Uniqueness identifies
+decoded quotient/remainder prefixes and their lengths, never raw beta codes.
+Padding compatibility includes both factors and the empty-factor cases,
+using equality of formal coefficients rather than finite-field evaluations.
+
+A separate dependency-closed 113-row integration is now being checked. It
+preserves all 81 previous working rows and artifacts literally and appends
+only these 9+23 rows. All 113 remain new relative to admitted Alpha v32;
+the earlier 81 are not relabeled as inherited Alpha. Complete HA/same-byte
+Lean checks and four ordinary principal certificates have their own fresh
+gates. Focused body tests alone are not recorded as a completed integration,
+an Alpha admission or a public deployment. General associativity and full
+polynomial gcd/Bézout remain open.
+
+The combined extension's 252 source/alias/inventory guard cases passed in
+9.316 seconds at 118,456,320 bytes RSS; independent review found no concrete
+issue. The actual 113-statement comparison against all 3,971 Alpha entries
+then passed with zero exact-AST duplicates (62.504 seconds, 877,723,648 bytes).
+Its actual dependency cone has 367 theorem rows: 254 inherited Alpha entries,
+81 prior non-admitted working rows and 32 additional working rows. There are
+1,010 theorem edges and 23 maximal packaging roots, hence 368 prospective
+bundle nodes and 1,033 edges. The ordered 113-specification digest is
+`aac561ef7706c53af00464feba7d0f4a51a3e3960404dba4a53d80405913b8a9`.
+This successful syntax/closure comparison is not the pending complete
+HA/Lean proof-bundle verification.
+
+The actual three-seed syntax inspection covers 334 of the 335 pre-existing
+targets needed for this export (254 inherited Alpha plus 81 earlier working
+rows). Its sole uncovered inherited target is `succ_injective`, whose exact
+existing statement is `forall n m. S n = S m -> n = m`, dependency list is
+empty and original script is `apply PA2`. A separate, genuinely checked
+one-theorem seed is authorized for that existing result; neither an old
+artifact nor the kernel/axiom set is changed. This is proof-data construction
+for an inherited theorem, not a 114th working theorem or another admission.
+
+The separate successor seed passed original ordinary HA, complete one-node
+HA and exact codec-round-trip HA. Its 256 bytes have SHA-256
+`bcdf16c331497c3dc26bec8cdfe92b991eb83bfe353d1d9429527a32541f1edb`.
+The full extension export then checked all 818 bodies in the four supplied
+seeds and retained all 335 required pre-existing targets with their exact
+ordered premises. All 32 added bodies were freshly reconstructed. The full
+368-node result passed original HA, with 1,033 edges and 29,292 body nodes.
+Authoring took 126.522 seconds and peaked at 1,387,495,424 bytes RSS, below
+the unchanged limits. Its 2,219,445-byte artifact has SHA-256
+`c2e097f0e04c4b4f01bb219102405d0e93bc847c19625113eb48e55c7900734d`.
+Independent same-byte Lean and the four standalone certificates are still
+separate pending gates at this authoring checkpoint.
+
+After registration of only the actual artifact bytes, all 253 final guard
+cases passed; independent review cleared the narrow registration/test/RFC
+updates and the separate inherited seed helper. The final complete-bundle
+gate then passed all 368 original HA bodies and independently compiled Lean
+on exactly the registered 2,219,445 bytes (40.155 seconds, 1,234,698,240 bytes
+RSS). Before/after final source bindings matched:
+`560b0b12b39044e4dc09ad79deadac702faeae583a9a83b6a0bfdf69bc6fc276`.
+The four ordinary principal windows are the remaining checkpoint gates.
+
+All four ordinary windows subsequently passed. Their exact empty-context
+certificates have 8,744 nodes (execution functionality), 19,739 (actual
+execution existence-and-uniqueness), 16,447 (two-factor padding equivalence)
+and 16,811 (actual padded-product construction). Every window first checked
+the complete 368-node artifact and then performed the extra exact ordinary
+HA check and final source rebinding. The five final proof windows totalled
+229.527 seconds; the largest individual window was 50.093 seconds and the
+largest RSS was 1,319,944,192 bytes. All used the original limits.
+
+The 113-row working checkpoint is therefore complete, separately from the
+already deployed v32 promotion. Seven conservative definitions remain in the
+working-only DAG (397 total definitions, 865 expansion arrows); their fresh
+92-case recheck passed in 7.719 seconds at 94,175,232 bytes RSS. The next
+unproved representation contracts and the remaining associativity/gcd/Bézout
+boundary are recorded in the working README. No new Alpha/Stable admission,
+public reader, production-Peano switch or kernel change occurred during this
+working extension.
