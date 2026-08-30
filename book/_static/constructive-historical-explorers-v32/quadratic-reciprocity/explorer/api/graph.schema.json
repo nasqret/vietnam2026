@@ -1,0 +1,381 @@
+{
+  "$defs": {
+    "edge": {
+      "additionalProperties": false,
+      "properties": {
+        "body_reference": {
+          "type": "boolean"
+        },
+        "dependency": {
+          "$ref": "#/$defs/tag"
+        },
+        "dependency_name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "dependent": {
+          "$ref": "#/$defs/tag"
+        },
+        "dependent_name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "explicit_reference_count": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "dependency",
+        "dependency_name",
+        "dependent",
+        "dependent_name",
+        "body_reference",
+        "explicit_reference_count"
+      ],
+      "type": "object"
+    },
+    "layer": {
+      "additionalProperties": false,
+      "properties": {
+        "index": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "nodes": {
+          "$ref": "#/$defs/tag_array"
+        }
+      },
+      "required": [
+        "index",
+        "nodes"
+      ],
+      "type": "object"
+    },
+    "neighborhood": {
+      "additionalProperties": false,
+      "properties": {
+        "ancestors": {
+          "$ref": "#/$defs/tag_array"
+        },
+        "critical_root_path": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/tag_array"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        },
+        "dependencies": {
+          "$ref": "#/$defs/tag_array"
+        },
+        "dependents": {
+          "$ref": "#/$defs/tag_array"
+        },
+        "descendants": {
+          "$ref": "#/$defs/tag_array"
+        },
+        "foundation_path": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/tag_array"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        },
+        "root_path_count": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "shortest_root_path": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/tag_array"
+            },
+            {
+              "minItems": 1
+            }
+          ]
+        }
+      },
+      "required": [
+        "dependencies",
+        "dependents",
+        "ancestors",
+        "descendants",
+        "foundation_path",
+        "shortest_root_path",
+        "critical_root_path",
+        "root_path_count"
+      ],
+      "type": "object"
+    },
+    "node": {
+      "additionalProperties": false,
+      "properties": {
+        "alpha_checked_use": {
+          "const": true
+        },
+        "alpha_edition_version": {
+          "const": "v32"
+        },
+        "alpha_evidence": {
+          "enum": [
+            "stable_closed",
+            "alpha_closed"
+          ]
+        },
+        "href": {
+          "pattern": "^\\.\\./tag/PA[0-9A-Y]{4}\\.html$",
+          "type": "string"
+        },
+        "layer": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "name": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "scope": {
+          "enum": [
+            "public",
+            "candidate"
+          ]
+        },
+        "stable_member": {
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "public",
+            "alpha_closed",
+            "candidate_body_checked",
+            "pending_layered_closure"
+          ]
+        },
+        "summary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "tag": {
+          "$ref": "#/$defs/tag"
+        }
+      },
+      "required": [
+        "tag",
+        "name",
+        "scope",
+        "status",
+        "layer",
+        "summary",
+        "href",
+        "alpha_edition_version",
+        "alpha_evidence",
+        "alpha_checked_use",
+        "stable_member"
+      ],
+      "type": "object"
+    },
+    "path_policy": {
+      "additionalProperties": false,
+      "properties": {
+        "critical_root_path": {
+          "const": "dependency_depth_witness"
+        },
+        "foundation_path_alias": {
+          "const": "shortest_root_path"
+        },
+        "includes_endpoints": {
+          "const": true
+        },
+        "shortest_root_path": {
+          "const": "fewest_edges_from_any_foundation"
+        },
+        "tie_break": {
+          "const": "admission_order_lexicographic"
+        }
+      },
+      "required": [
+        "foundation_path_alias",
+        "shortest_root_path",
+        "critical_root_path",
+        "tie_break",
+        "includes_endpoints"
+      ],
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "tag": {
+      "pattern": "^PA[0-9A-Y]{4}$",
+      "type": "string"
+    },
+    "tag_array": {
+      "items": {
+        "$ref": "#/$defs/tag"
+      },
+      "type": "array",
+      "uniqueItems": true
+    }
+  },
+  "$id": "urn:peano-lab:pa-proof-graph-v2",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "adjacency": {
+      "additionalProperties": false,
+      "patternProperties": {
+        "^PA[0-9A-Y]{4}$": {
+          "$ref": "#/$defs/neighborhood"
+        }
+      },
+      "type": "object"
+    },
+    "alpha_edition_checked_use_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "alpha_edition_identity_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "alpha_edition_version": {
+      "const": "v32"
+    },
+    "candidate_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "edge_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "edges": {
+      "items": {
+        "$ref": "#/$defs/edge"
+      },
+      "type": "array"
+    },
+    "explicit_dependency_reference_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "formal_line_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "foundations": {
+      "$ref": "#/$defs/tag_array"
+    },
+    "graph_alpha_closed_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "graph_checked_use_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "graph_newly_promoted_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "graph_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "graph_stable_closed_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "layer_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "layers": {
+      "items": {
+        "$ref": "#/$defs/layer"
+      },
+      "type": "array"
+    },
+    "nodes": {
+      "items": {
+        "$ref": "#/$defs/node"
+      },
+      "type": "array"
+    },
+    "orientation": {
+      "const": "dependency_to_dependent"
+    },
+    "path_policy": {
+      "$ref": "#/$defs/path_policy"
+    },
+    "proof_edition_checked_use_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "proof_edition_identity_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "proof_edition_version": {
+      "const": "v16"
+    },
+    "public_count": {
+      "minimum": 0,
+      "type": "integer"
+    },
+    "schema": {
+      "const": "peano-lab-pa-proof-graph-v2"
+    },
+    "source_scope_policy": {
+      "const": "historical_origin_not_current_release_authority"
+    },
+    "source_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "terminals": {
+      "$ref": "#/$defs/tag_array"
+    },
+    "theorem_count": {
+      "minimum": 0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "schema",
+    "theorem_count",
+    "public_count",
+    "candidate_count",
+    "edge_count",
+    "layer_count",
+    "formal_line_count",
+    "explicit_dependency_reference_count",
+    "graph_sha256",
+    "source_sha256",
+    "alpha_edition_version",
+    "alpha_edition_identity_sha256",
+    "alpha_edition_checked_use_count",
+    "proof_edition_version",
+    "proof_edition_identity_sha256",
+    "proof_edition_checked_use_count",
+    "graph_checked_use_count",
+    "graph_stable_closed_count",
+    "graph_alpha_closed_count",
+    "graph_newly_promoted_count",
+    "source_scope_policy",
+    "orientation",
+    "path_policy",
+    "foundations",
+    "terminals",
+    "layers",
+    "nodes",
+    "edges",
+    "adjacency"
+  ],
+  "title": "Peano Lab native-PA proof dependency graph",
+  "type": "object"
+}

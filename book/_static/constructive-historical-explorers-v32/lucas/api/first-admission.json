@@ -1,0 +1,798 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v13": "cad57a21657e2df09f01174069efcfed194d87b68c0b4042b234df5759583e5a"
+  },
+  "per_theorem": [
+    {
+      "name": "lucas_digit_carry_implies_prime_divides",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU0000"
+    },
+    {
+      "name": "lucas_prime_row_interior_divisible",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0001"
+    },
+    {
+      "name": "lucas_choose_prime_divisor_bound",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU0002"
+    },
+    {
+      "name": "lucas_digit_carry_iff_prime_divides",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU0003"
+    },
+    {
+      "name": "lucas_digit_no_carry_iff_not_divides",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU0004"
+    },
+    {
+      "name": "lucas_base_p_digit_total",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU0005"
+    },
+    {
+      "name": "lucas_prime_base_digit_total",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU0006"
+    },
+    {
+      "name": "lucas_base_p_digit_functional",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU0007"
+    },
+    {
+      "name": "lucas_base_p_digit_of_small_value",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU0008"
+    },
+    {
+      "name": "lucas_base_p_zero_digit_iff_divides",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU0009"
+    },
+    {
+      "name": "lucas_base_p_digit_prefix_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU000A"
+    },
+    {
+      "name": "lucas_prime_base_digit_prefix_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU000B"
+    },
+    {
+      "name": "lucas_base_p_digit_prefix_point",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU000C"
+    },
+    {
+      "name": "lucas_base_p_two_digit_total",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU000D"
+    },
+    {
+      "name": "lucas_prime_base_two_digit_total",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU000E"
+    },
+    {
+      "name": "lucas_base_p_two_digit_reconstruction",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU000F"
+    },
+    {
+      "name": "lucas_prime_row_initial_coefficient_one",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU000G"
+    },
+    {
+      "name": "lucas_prime_row_terminal_coefficient_one",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU000H"
+    },
+    {
+      "name": "lucas_prime_row_sparse_complete",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU000I"
+    },
+    {
+      "name": "lucas_positive_lower_quotient_exceeds_upper_digit",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000J"
+    },
+    {
+      "name": "lucas_positive_lower_quotient_digit_coefficient_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000K"
+    },
+    {
+      "name": "lucas_zero_upper_quotient_high_column_vanishes",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000L"
+    },
+    {
+      "name": "lucas_prime_block_digit_congruence",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000M"
+    },
+    {
+      "name": "lucas_one_step_division_congruence",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000N"
+    },
+    {
+      "name": "lucas_choose_lower_eq_transport",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000O"
+    },
+    {
+      "name": "lucas_choose_zero_index_is_one",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000P"
+    },
+    {
+      "name": "lucas_choose_zero_upper_positive_is_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000Q"
+    },
+    {
+      "name": "lucas_divisible_implies_zero_mod",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000R"
+    },
+    {
+      "name": "lucas_positive_digit_has_bounded_complement",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000S"
+    },
+    {
+      "name": "lucas_prime_row_interior_zero_mod",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000T"
+    },
+    {
+      "name": "lucas_pascal_congruence_step",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000U"
+    },
+    {
+      "name": "lucas_predecessor_digit_below_base",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000V"
+    },
+    {
+      "name": "lucas_prime_shift_below_base",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000W"
+    },
+    {
+      "name": "lucas_prime_plus_index_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000X"
+    },
+    {
+      "name": "lucas_add_positive_index_strict",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000Y"
+    },
+    {
+      "name": "lucas_prime_shift_high_column",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU000Z"
+    },
+    {
+      "name": "lucas_prime_block_zero_reassociation",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0010"
+    },
+    {
+      "name": "lucas_prime_block_successor_reassociation",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0011"
+    },
+    {
+      "name": "lucas_repeated_prime_shift_below_base",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0012"
+    },
+    {
+      "name": "lucas_low_digit_congruence",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0013"
+    },
+    {
+      "name": "lucas_low_digit_product_congruence",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0014"
+    },
+    {
+      "name": "lucas_digit_chain_initial_code_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0015"
+    },
+    {
+      "name": "lucas_digit_chain_empty",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0016"
+    },
+    {
+      "name": "lucas_digit_chain_empty_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0017"
+    },
+    {
+      "name": "lucas_digit_chain_extend",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0018"
+    },
+    {
+      "name": "lucas_digit_chain_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU0019"
+    },
+    {
+      "name": "lucas_prime_digit_chain_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001A"
+    },
+    {
+      "name": "lucas_digit_chain_initial_value",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001B"
+    },
+    {
+      "name": "lucas_digit_chain_step_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU001C"
+    },
+    {
+      "name": "lucas_modular_backward_product_fold",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001D"
+    },
+    {
+      "name": "lucas_choose_prefix_empty",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001E"
+    },
+    {
+      "name": "lucas_choose_prefix_extend",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001F"
+    },
+    {
+      "name": "lucas_choose_prefix_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001G"
+    },
+    {
+      "name": "lucas_choose_prefix_point",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001H"
+    },
+    {
+      "name": "lucas_multidigit_congruence_from_one_step",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001I"
+    },
+    {
+      "name": "lucas_terminating_multidigit_theorem_from_one_step",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001J"
+    },
+    {
+      "name": "lucas_prime_digit_nonzero_quotient_strict",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001K"
+    },
+    {
+      "name": "lucas_prime_digit_chain_nonzero_index_bound",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001L"
+    },
+    {
+      "name": "lucas_prime_digit_chain_terminal_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001M"
+    },
+    {
+      "name": "lucas_terminating_prime_digit_chain_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001N"
+    },
+    {
+      "name": "lucas_multidigit_congruence",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "LU001O"
+    },
+    {
+      "name": "lucas_terminating_multidigit_theorem",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001P"
+    },
+    {
+      "name": "lucas_theorem_for_length",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001Q"
+    },
+    {
+      "name": "lucas_theorem",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v13",
+      "tag": "LU001R"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 2791327,
+    "path": "book/_static/constructive-frontier-explorer/lucas/api/corpus.json",
+    "sha256": "4b73ef8af99a17fc9c706841cd428d08241b4acee9fd5d41c68a824989539e80"
+  },
+  "source_corpus_fields": {
+    "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+    "historical_alpha_edition_version": "v19"
+  },
+  "source_family_fields": {
+    "historical_alpha_edition_version": "v19"
+  },
+  "source_manifest": {
+    "bytes": 319521,
+    "path": "book/_static/constructive-frontier-explorer/manifest.json",
+    "sha256": "416aba94c6a451d7080d7503fd1d093e822fc2ad5afb07fa92bada0bda34e021"
+  },
+  "source_manifest_fields": {
+    "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+    "historical_alpha_edition_version": "v19"
+  }
+}

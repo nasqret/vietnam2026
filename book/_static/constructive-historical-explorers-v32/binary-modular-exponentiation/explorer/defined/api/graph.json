@@ -1,0 +1,891 @@
+{
+  "alpha_checked_use_node_count": 16,
+  "alpha_edition_version": "v32",
+  "alpha_first_enrolled_version": "v21",
+  "definition_topological_order": [
+    "PD0002",
+    "ND0021",
+    "ND0022",
+    "PD0008",
+    "ND0023",
+    "PD0013",
+    "PD0014",
+    "PD0019",
+    "PD0020",
+    "ND0024",
+    "ND0025",
+    "ND0026",
+    "ND0027"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "BX0001",
+      "target": "BX0002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0002",
+      "target": "BX0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0003",
+      "target": "BX0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0006",
+      "target": "BX0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0002",
+      "target": "BX000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0002",
+      "target": "BX000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0002",
+      "target": "BX000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0003",
+      "target": "BX000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0002",
+      "target": "BX000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0003",
+      "target": "BX000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX000E",
+      "target": "BX0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX000F",
+      "target": "BX0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0001",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0002",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0002",
+      "statement_occurrences": 1,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX0003",
+      "statement_occurrences": 2,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0004",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX0004",
+      "statement_occurrences": 2,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0005",
+      "statement_occurrences": 1,
+      "target": "ND0022"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0006",
+      "statement_occurrences": 1,
+      "target": "ND0024"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0007",
+      "statement_occurrences": 1,
+      "target": "ND0025"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX0008",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "BX0009",
+      "statement_occurrences": 3,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000A",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000A",
+      "statement_occurrences": 1,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000B",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000B",
+      "statement_occurrences": 1,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000C",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000C",
+      "statement_occurrences": 1,
+      "target": "ND0026"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX000D",
+      "statement_occurrences": 2,
+      "target": "ND0026"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000E",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000E",
+      "statement_occurrences": 1,
+      "target": "ND0027"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX000F",
+      "statement_occurrences": 2,
+      "target": "ND0027"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0010",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX0010",
+      "statement_occurrences": 2,
+      "target": "ND0027"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0021",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0023",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0023",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0019"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0024",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0025",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0026",
+      "target": "ND0023"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0027",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0027",
+      "target": "ND0023"
+    }
+  ],
+  "family_slug": "binary-modular-exponentiation",
+  "independent_lean_bundle_verified": true,
+  "milestone_caveat": "G102 was OPEN when this family was first admitted in Alpha v21. It is now CLOSED in Alpha v23: every arbitrary exponent has actual canonical beta-coded digits, a complete modular execution, and exact counted bound operations≤3*BitLen(e)+2.",
+  "milestone_status": "alpha_closed",
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX0001.html?v=ac7111ec14ff",
+      "id": "BX0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_modulus_nontrivial_nonzero",
+      "proof_bundle_node_id": 192,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every explicitly guarded modulus m>1 is constructively nonzero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX0002.html?v=ac7111ec14ff",
+      "id": "BX0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "binary_canonical_residue_exists",
+      "proof_bundle_node_id": 193,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every value has a witnessed canonical residue below every modulus m>1."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX0003.html?v=ac7111ec14ff",
+      "id": "BX0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_canonical_residue_functional",
+      "proof_bundle_node_id": 194,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Two canonical residues of the same natural and modulus are equal."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX0004.html?v=ac7111ec14ff",
+      "id": "BX0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_canonical_residue_exists_unique",
+      "proof_bundle_node_id": 195,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Each guarded modulus admits exactly one actual bounded residue."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX0005.html?v=ac7111ec14ff",
+      "id": "BX0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_exponent_split_exists",
+      "proof_bundle_node_id": 196,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every exponent has an exact half and a witnessed zero-or-one binary digit."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX0006.html?v=ac7111ec14ff",
+      "id": "BX0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_exponent_doubled_power",
+      "proof_bundle_node_id": 197,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The relational power at an even exponent is the square of its half power."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX0007.html?v=ac7111ec14ff",
+      "id": "BX0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "binary_exponent_odd_power",
+      "proof_bundle_node_id": 198,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The relational power at an odd exponent is its squared half power times the base."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX0008.html?v=ac7111ec14ff",
+      "id": "BX0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_modular_square_congruence",
+      "proof_bundle_node_id": 199,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Squaring preserves witnessed balanced natural congruence."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX0009.html?v=ac7111ec14ff",
+      "id": "BX0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "binary_modular_multiply_congruence",
+      "proof_bundle_node_id": 200,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Multiplication preserves both witnessed modular factors."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX000A.html?v=ac7111ec14ff",
+      "id": "BX000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_modular_square_residue_exists",
+      "proof_bundle_node_id": 201,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every squaring step has an actual canonical modular residue."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX000B.html?v=ac7111ec14ff",
+      "id": "BX000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_modular_multiply_residue_exists",
+      "proof_bundle_node_id": 202,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every multiplication step has an actual canonical modular residue."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX000C.html?v=ac7111ec14ff",
+      "id": "BX000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_modular_step_exists",
+      "proof_bundle_node_id": 203,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every guarded square-and-optional-multiply binary transition has a canonical result."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX000D.html?v=ac7111ec14ff",
+      "id": "BX000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "binary_modular_step_functional",
+      "proof_bundle_node_id": 204,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A fixed binary digit and state determine exactly one modular transition result."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX000E.html?v=ac7111ec14ff",
+      "id": "BX000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "binary_modular_exponentiation_result_exists",
+      "proof_bundle_node_id": 205,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every a,e and every modulus m>1 have an exact bounded residue of the relational power a^e."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX000F.html?v=ac7111ec14ff",
+      "id": "BX000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "binary_modular_exponentiation_result_functional",
+      "proof_bundle_node_id": 206,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Any two exact bounded residues of the same relational power are equal."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/BX0010.html?v=ac7111ec14ff",
+      "id": "BX0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "binary_modular_exponentiation_result_exists_unique",
+      "proof_bundle_node_id": 207,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every guarded modular exponentiation has exactly one actual canonical natural result."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=ac7111ec14ff",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "BinaryModulus",
+      "href": "definition/ND0021.html?v=ac7111ec14ff",
+      "id": "ND0021",
+      "kind": "definition",
+      "layer": 1,
+      "name": "BinaryModulus",
+      "signature": "BinaryModulus(m)",
+      "summary": "The exact constructive nontrivial-modulus guard 1<m."
+    },
+    {
+      "global_definition": "BinaryExponentSplit",
+      "href": "definition/ND0022.html?v=ac7111ec14ff",
+      "id": "ND0022",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BinaryExponentSplit",
+      "signature": "BinaryExponentSplit(e,h,b)",
+      "summary": "The exact binary decomposition e=2*h+b with an explicit b=0 or b=1 witness."
+    },
+    {
+      "global_definition": "ModEq",
+      "href": "definition/PD0008.html?v=ac7111ec14ff",
+      "id": "PD0008",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ModEq",
+      "signature": "ModEq(m,a,b)",
+      "summary": "Balanced-natural congruence modulo m."
+    },
+    {
+      "global_definition": "CanonicalModularResidue",
+      "href": "definition/ND0023.html?v=ac7111ec14ff",
+      "id": "ND0023",
+      "kind": "definition",
+      "layer": 1,
+      "name": "CanonicalModularResidue",
+      "signature": "CanonicalModularResidue(m,a,r)",
+      "summary": "A strictly bounded canonical natural residue r<m together with exact balanced congruence to a modulo m."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/PD0013.html?v=ac7111ec14ff",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": "Product",
+      "href": "definition/PD0014.html?v=ac7111ec14ff",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": "Repeat",
+      "href": "definition/PD0019.html?v=ac7111ec14ff",
+      "id": "PD0019",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Repeat",
+      "signature": "Repeat(b,c,a,l)",
+      "summary": "The decoded prefix repeats a for l positions."
+    },
+    {
+      "global_definition": "Pow",
+      "href": "definition/PD0020.html?v=ac7111ec14ff",
+      "id": "PD0020",
+      "kind": "definition",
+      "layer": 2,
+      "name": "Pow",
+      "signature": "Pow(a,e,z)",
+      "summary": "z is the relational e-th power of a."
+    },
+    {
+      "global_definition": "BinaryDoubledPower",
+      "href": "definition/ND0024.html?v=ac7111ec14ff",
+      "id": "ND0024",
+      "kind": "definition",
+      "layer": 3,
+      "name": "BinaryDoubledPower",
+      "signature": "BinaryDoubledPower(a,h,e,u,z)",
+      "summary": "The exact even-exponent prerequisites e=2*h, Pow(a,h,u) and Pow(a,e,z)."
+    },
+    {
+      "global_definition": "BinaryOddPower",
+      "href": "definition/ND0025.html?v=ac7111ec14ff",
+      "id": "ND0025",
+      "kind": "definition",
+      "layer": 3,
+      "name": "BinaryOddPower",
+      "signature": "BinaryOddPower(a,h,e,u,z)",
+      "summary": "The exact odd-exponent prerequisites e=2*h+1, Pow(a,h,u) and Pow(a,e,z)."
+    },
+    {
+      "global_definition": "BinaryModularStep",
+      "href": "definition/ND0026.html?v=ac7111ec14ff",
+      "id": "ND0026",
+      "kind": "definition",
+      "layer": 2,
+      "name": "BinaryModularStep",
+      "signature": "BinaryModularStep(m,u,a,b,r)",
+      "summary": "One exact binary square or square-and-multiply transition with a genuinely canonical reduced output."
+    },
+    {
+      "global_definition": "BinaryModularPower",
+      "href": "definition/ND0027.html?v=ac7111ec14ff",
+      "id": "ND0027",
+      "kind": "definition",
+      "layer": 3,
+      "name": "BinaryModularPower",
+      "signature": "BinaryModularPower(a,e,m,r)",
+      "summary": "The exact canonical natural residue of the existing beta-coded exponentiation relation Pow(a,e,z)."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "BX0001": {
+      "critical_root_path": [
+        "BX0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BX0002"
+      ]
+    },
+    "BX0002": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002"
+      ],
+      "dependencies": [
+        "BX0001"
+      ],
+      "dependents": [
+        "BX0004",
+        "BX000A",
+        "BX000B",
+        "BX000C",
+        "BX000E"
+      ]
+    },
+    "BX0003": {
+      "critical_root_path": [
+        "BX0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BX0004",
+        "BX000D",
+        "BX000F"
+      ]
+    },
+    "BX0004": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX0004"
+      ],
+      "dependencies": [
+        "BX0002",
+        "BX0003"
+      ],
+      "dependents": []
+    },
+    "BX0005": {
+      "critical_root_path": [
+        "BX0005"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "BX0006": {
+      "critical_root_path": [
+        "BX0006"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "BX0007"
+      ]
+    },
+    "BX0007": {
+      "critical_root_path": [
+        "BX0006",
+        "BX0007"
+      ],
+      "dependencies": [
+        "BX0006"
+      ],
+      "dependents": []
+    },
+    "BX0008": {
+      "critical_root_path": [
+        "BX0008"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "BX0009": {
+      "critical_root_path": [
+        "BX0009"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "BX000A": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX000A"
+      ],
+      "dependencies": [
+        "BX0002"
+      ],
+      "dependents": []
+    },
+    "BX000B": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX000B"
+      ],
+      "dependencies": [
+        "BX0002"
+      ],
+      "dependents": []
+    },
+    "BX000C": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX000C"
+      ],
+      "dependencies": [
+        "BX0002"
+      ],
+      "dependents": []
+    },
+    "BX000D": {
+      "critical_root_path": [
+        "BX0003",
+        "BX000D"
+      ],
+      "dependencies": [
+        "BX0003"
+      ],
+      "dependents": []
+    },
+    "BX000E": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX000E"
+      ],
+      "dependencies": [
+        "BX0002"
+      ],
+      "dependents": [
+        "BX0010"
+      ]
+    },
+    "BX000F": {
+      "critical_root_path": [
+        "BX0003",
+        "BX000F"
+      ],
+      "dependencies": [
+        "BX0003"
+      ],
+      "dependents": [
+        "BX0010"
+      ]
+    },
+    "BX0010": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX000E",
+        "BX0010"
+      ],
+      "dependencies": [
+        "BX000E",
+        "BX000F"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "BX0005",
+    "BX000D",
+    "BX0010"
+  ],
+  "schema": "peano-lab-constructive-advanced-layer-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

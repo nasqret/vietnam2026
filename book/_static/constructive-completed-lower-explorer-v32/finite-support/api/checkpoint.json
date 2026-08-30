@@ -1,0 +1,132 @@
+{
+  "bundle": {
+    "body_proof_nodes": 8697,
+    "bytes": 587407,
+    "dependency_edges_including_packaging": 397,
+    "independent_lean_checked": true,
+    "kernel_calls": 170,
+    "nodes_including_packaging_root": 170,
+    "original_ha_checked": true,
+    "packaging_root_id": 169,
+    "path": "research/arithmetic-library/artifacts/dirichlet-finite-support-proof-bundle-v1.json",
+    "sha256": "99d889c64fb066f79247afa4310e0143f42bfffbc2cf56e4bd9be3735e0cac47"
+  },
+  "new_theorem_count": 8,
+  "owned_node_ids": {
+    "signed_prefix_sum_last_value": 167,
+    "signed_prefix_sum_zero_exists": 166,
+    "signed_prefix_sum_zero_padding_iff": 168,
+    "signed_prefix_sum_zero_tail": 164,
+    "signed_prefix_sum_zero_value": 165,
+    "signed_zero_window_empty": 161,
+    "signed_zero_window_raise_lower": 163,
+    "signed_zero_window_restrict": 162
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_prefix_sum_zero_tail",
+      "node_id": 164,
+      "ordinary_certificate_nodes": 5755,
+      "statement_sha256": "ae30d900f38f2fa5e22a59fe2a38056ffb4242b1fcb8ebf364c7673606f1d46b"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_prefix_sum_last_value",
+      "node_id": 167,
+      "ordinary_certificate_nodes": 12421,
+      "statement_sha256": "d813ceef952a622bca2fb25909b732dc7c4f9987720b050a3c5a41b590690013"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_prefix_sum_zero_padding_iff",
+      "node_id": 168,
+      "ordinary_certificate_nodes": 11846,
+      "statement_sha256": "0a6919b464fecaa0138aef0d8ce9f24d3e2f48357a29544523c17e67b3200f4e"
+    }
+  ],
+  "rows": [
+    {
+      "name": "signed_zero_window_empty",
+      "node_id": 161,
+      "proof_depth": 16,
+      "proof_edges": 21,
+      "proof_nodes": 22,
+      "proof_objects": 22,
+      "reused_objects": 0,
+      "statement_sha256": "7b5af760cbc8a3ec4ea47d606285d5b25dd910ccef6bce05e7252c27ff09c700"
+    },
+    {
+      "name": "signed_zero_window_restrict",
+      "node_id": 162,
+      "proof_depth": 27,
+      "proof_edges": 42,
+      "proof_nodes": 43,
+      "proof_objects": 43,
+      "reused_objects": 0,
+      "statement_sha256": "e8fce3bc463f4ae2c84740c13396688fa26845d8c1525efe782b26ea30449c89"
+    },
+    {
+      "name": "signed_zero_window_raise_lower",
+      "node_id": 163,
+      "proof_depth": 28,
+      "proof_edges": 42,
+      "proof_nodes": 43,
+      "proof_objects": 43,
+      "reused_objects": 0,
+      "statement_sha256": "807c900e83b7bd11cff151d0178987595db3c84d398d47c7904373a443d4d223"
+    },
+    {
+      "name": "signed_prefix_sum_zero_tail",
+      "node_id": 164,
+      "proof_depth": 39,
+      "proof_edges": 176,
+      "proof_nodes": 177,
+      "proof_objects": 177,
+      "reused_objects": 0,
+      "statement_sha256": "ae30d900f38f2fa5e22a59fe2a38056ffb4242b1fcb8ebf364c7673606f1d46b"
+    },
+    {
+      "name": "signed_prefix_sum_zero_value",
+      "node_id": 165,
+      "proof_depth": 25,
+      "proof_edges": 43,
+      "proof_nodes": 44,
+      "proof_objects": 44,
+      "reused_objects": 0,
+      "statement_sha256": "4581bcf1071c92632bb983863bca4bd7bc0fa24f840cc706f0513b1a5c4cd46a"
+    },
+    {
+      "name": "signed_prefix_sum_zero_exists",
+      "node_id": 166,
+      "proof_depth": 15,
+      "proof_edges": 31,
+      "proof_nodes": 32,
+      "proof_objects": 32,
+      "reused_objects": 0,
+      "statement_sha256": "bac11c819917910111150bdf921cc9e5da095570869d564a9e921358c1842af0"
+    },
+    {
+      "name": "signed_prefix_sum_last_value",
+      "node_id": 167,
+      "proof_depth": 26,
+      "proof_edges": 76,
+      "proof_nodes": 77,
+      "proof_objects": 77,
+      "reused_objects": 0,
+      "statement_sha256": "d813ceef952a622bca2fb25909b732dc7c4f9987720b050a3c5a41b590690013"
+    },
+    {
+      "name": "signed_prefix_sum_zero_padding_iff",
+      "node_id": 168,
+      "proof_depth": 25,
+      "proof_edges": 89,
+      "proof_nodes": 90,
+      "proof_objects": 90,
+      "reused_objects": 0,
+      "statement_sha256": "0a6919b464fecaa0138aef0d8ce9f24d3e2f48357a29544523c17e67b3200f4e"
+    }
+  ],
+  "slug": "finite-support",
+  "specs_sha256": "55874e400c4ecca7dce6e05d5d66e93ef23c091dcf9e8e5ec0a1cc772d9fa5e0"
+}

@@ -5,7 +5,7 @@ from __future__ import annotations
 import driver
 import pytest
 from peano_lab.library import editions_v16 as historical_alpha
-from peano_lab.library import editions_v31 as alpha
+from peano_lab.library import editions_v32 as alpha
 from peano_lab.library.alpha_enrollment_v19 import (
     LINEAR_CONGRUENCE_ROOT_NAME,
     PRIME_TWO_SQUARE_ROOT_NAME,
@@ -33,26 +33,32 @@ from peano_lab.library.quadratic_reciprocity_stack import QR_ROOT_NAME
 from peano_lab.ui import data_library
 
 
+def _forbid_current_alpha_proofs(monkeypatch, forbidden):
+    # Current and inherited proof providers must all remain unused by previews.
+    for edition, provider in ((alpha, "research"), (alpha.v31, "completed_lower")):
+        monkeypatch.setattr(edition, "replay", forbidden)
+        monkeypatch.setattr(edition, "_checked_" + provider + "_bundle", forbidden)
+        monkeypatch.setattr(edition, "checked_" + provider + "_bundle", forbidden)
+    monkeypatch.setattr(alpha.v31.v30, "replay", forbidden)
+
+
 def test_alpha_index_reports_exact_current_evidence_without_proof_replay(
     monkeypatch,
 ) -> None:
     def forbidden_replay(*_args, **_kwargs):
         raise AssertionError("Alpha inventory must not load or replay any proof")
 
-    monkeypatch.setattr(alpha, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha.v30, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha, "_checked_completed_lower_bundle", forbidden_replay)
-    monkeypatch.setattr(alpha, "checked_completed_lower_bundle", forbidden_replay)
+    _forbid_current_alpha_proofs(monkeypatch, forbidden_replay)
 
     output = driver.LabSession().run("pa lib alpha")
 
-    assert "immutable Alpha v31" in output
-    assert "Enrolled statements: 3,796" in output
+    assert "immutable Alpha v32" in output
+    assert "Enrolled statements: 3,971" in output
     assert "Stable closed: 432" in output
-    assert "Alpha closed: 3,364" in output
+    assert "Alpha closed: 3,539" in output
     assert "Dependency-curried body only: 0" in output
     assert "Pending closure: 0" in output
-    assert "Available for independently checked use: 3,796" in output
+    assert "Available for independently checked use: 3,971" in output
     assert "Previously promoted quadratic-reciprocity results: 315" in output
     assert "Previously promoted supplementary-law results: 31" in output
     assert "Previously promoted five-campaign flagship results: 673" in output
@@ -69,8 +75,9 @@ def test_alpha_index_reports_exact_current_evidence_without_proof_replay(
     assert "Previously added Alpha v28 campaign results: 204" in output
     assert "Previously added Alpha v29 campaign results: 278" in output
     assert "Previously added Alpha v30 campaign results: 180" in output
-    assert "New constructive campaign results: 574" in output
-    assert alpha.ALPHA_V31_IDENTITY_SHA256 in output
+    assert "Previously added Alpha v31 campaign results: 574" in output
+    assert "New constructive campaign results: 175" in output
+    assert alpha.ALPHA_V32_IDENTITY_SHA256 in output
 
 
 def test_alpha_root_evidence_card_is_cheap_and_never_claims_stable_membership(
@@ -79,10 +86,7 @@ def test_alpha_root_evidence_card_is_cheap_and_never_claims_stable_membership(
     def forbidden_replay(*_args, **_kwargs):
         raise AssertionError("Alpha evidence cards do not independently replay")
 
-    monkeypatch.setattr(alpha, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha.v30, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha, "_checked_completed_lower_bundle", forbidden_replay)
-    monkeypatch.setattr(alpha, "checked_completed_lower_bundle", forbidden_replay)
+    _forbid_current_alpha_proofs(monkeypatch, forbidden_replay)
 
     output = driver.LabSession().run(f"pa lib alpha {QR_ROOT_NAME}")
 
@@ -98,13 +102,10 @@ def test_alpha_supplementary_roots_have_checked_cards_without_replaying(monkeypa
     def forbidden_replay(*_args, **_kwargs):
         raise AssertionError("supplementary inventory must not load or replay a proof")
 
-    monkeypatch.setattr(alpha, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha.v30, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha, "_checked_completed_lower_bundle", forbidden_replay)
-    monkeypatch.setattr(alpha, "checked_completed_lower_bundle", forbidden_replay)
+    _forbid_current_alpha_proofs(monkeypatch, forbidden_replay)
     session = driver.LabSession()
 
-    for name in alpha.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES:
+    for name in alpha.v31.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES:
         output = session.run(f"pa lib alpha {name}")
         assert "Release evidence: alpha_closed" in output
         assert "Release membership: alpha_only" in output
@@ -116,13 +117,10 @@ def test_all_six_flagship_roots_have_checked_cards_without_replaying(monkeypatch
     def forbidden_replay(*_args, **_kwargs):
         raise AssertionError("flagship evidence cards never replay large proof roots")
 
-    monkeypatch.setattr(alpha, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha.v30, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha, "_checked_completed_lower_bundle", forbidden_replay)
-    monkeypatch.setattr(alpha, "checked_completed_lower_bundle", forbidden_replay)
+    _forbid_current_alpha_proofs(monkeypatch, forbidden_replay)
     session = driver.LabSession()
 
-    for name in alpha.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES:
+    for name in alpha.v31.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES:
         output = session.run(f"pa lib alpha {name}")
         assert "Release evidence: alpha_closed" in output
         assert "Release membership: alpha_only" in output
@@ -132,16 +130,13 @@ def test_all_six_flagship_roots_have_checked_cards_without_replaying(monkeypatch
 
 def test_all_historical_body_only_theorems_now_have_checked_cards(monkeypatch) -> None:
     historical = next(
-        item for item in alpha.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.ALPHA_ENTRIES if not item.checked_use
+        item for item in alpha.v31.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.ALPHA_ENTRIES if not item.checked_use
     )
 
     def forbidden_replay(*_args, **_kwargs):
         raise AssertionError("historically residual evidence cards never replay a proof")
 
-    monkeypatch.setattr(alpha, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha.v30, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha, "_checked_completed_lower_bundle", forbidden_replay)
-    monkeypatch.setattr(alpha, "checked_completed_lower_bundle", forbidden_replay)
+    _forbid_current_alpha_proofs(monkeypatch, forbidden_replay)
     session = driver.LabSession()
 
     inspection = session.run(f"pa lib alpha {historical.spec.name}")
@@ -149,9 +144,9 @@ def test_all_historical_body_only_theorems_now_have_checked_cards(monkeypatch) -
 
     assert "Release evidence: alpha_closed" in inspection
     assert "Checked-use authority: YES" in inspection
-    assert "Release edition: Alpha v31." in preview
+    assert "Release edition: Alpha v32." in preview
     assert "Fresh independent empty-context Peano kernel replay: NOT RUN" in preview
-    assert historical.evidence is alpha.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.EvidenceStatus.BODY_CHECKED
+    assert historical.evidence is alpha.v31.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.EvidenceStatus.BODY_CHECKED
     assert not historical.checked_use
 
 
@@ -203,14 +198,11 @@ def test_new_campaign_goals_and_complete_valuation_have_checked_cards_without_re
     def forbidden_replay(*_args, **_kwargs):
         raise AssertionError("campaign evidence cards must never load or replay proofs")
 
-    monkeypatch.setattr(alpha, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha.v30, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha, "_checked_completed_lower_bundle", forbidden_replay)
-    monkeypatch.setattr(alpha, "checked_completed_lower_bundle", forbidden_replay)
+    _forbid_current_alpha_proofs(monkeypatch, forbidden_replay)
 
     output = driver.LabSession().run(f"pa lib alpha {name}")
 
-    assert f"{name} — Alpha v31 theorem evidence" in output
+    assert f"{name} — Alpha v32 theorem evidence" in output
     assert "Release evidence: alpha_closed" in output
     assert "Release membership: alpha_only" in output
     assert "Checked-use authority: YES" in output
@@ -261,20 +253,17 @@ def test_new_campaign_lean_previews_are_bounded_and_never_use_synthetic_bundle_t
     def forbidden(*_args, **_kwargs):
         raise AssertionError("safe campaign previews must not open or reconstruct proofs")
 
-    monkeypatch.setattr(alpha, "replay", forbidden)
-    monkeypatch.setattr(alpha.v30, "replay", forbidden)
-    monkeypatch.setattr(alpha, "_checked_completed_lower_bundle", forbidden)
-    monkeypatch.setattr(alpha, "checked_completed_lower_bundle", forbidden)
-    monkeypatch.setattr(alpha.v30, "_checked_gaussian_factorization_bundle", forbidden)
-    monkeypatch.setattr(alpha.v30.v29, "_checked_priority_layer_bundle", forbidden)
-    monkeypatch.setattr(alpha.v30.v29.v28, "_checked_lower_layer_bundle", forbidden)
-    monkeypatch.setattr(alpha.v30.v29.v28.v27.v26, "_checked_first_wave_bundle", forbidden)
-    monkeypatch.setattr(alpha.v30.v29.v28.v27, "_checked_second_wave_bundle", forbidden)
+    _forbid_current_alpha_proofs(monkeypatch, forbidden)
+    monkeypatch.setattr(alpha.v31.v30, "_checked_gaussian_factorization_bundle", forbidden)
+    monkeypatch.setattr(alpha.v31.v30.v29, "_checked_priority_layer_bundle", forbidden)
+    monkeypatch.setattr(alpha.v31.v30.v29.v28, "_checked_lower_layer_bundle", forbidden)
+    monkeypatch.setattr(alpha.v31.v30.v29.v28.v27.v26, "_checked_first_wave_bundle", forbidden)
+    monkeypatch.setattr(alpha.v31.v30.v29.v28.v27, "_checked_second_wave_bundle", forbidden)
 
     output = driver.LabSession().run(f"pa lean alpha {name}")
 
     assert f"Lean 4 independently checked theorem — {name}" in output
-    assert "Release edition: Alpha v31." in output
+    assert "Release edition: Alpha v32." in output
     assert "Fresh independent empty-context Peano kernel replay: NOT RUN" in output
     assert "--edition alpha --format compact" in output
     assert "--proof-bundle" not in output
@@ -328,8 +317,8 @@ def test_alpha_explicit_verification_checks_actual_empty_context_certificate(nam
     "name",
     (
         QR_ROOT_NAME,
-        *alpha.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES,
-        *alpha.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES,
+        *alpha.v31.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.v17.SUPPLEMENTARY_ROOT_NAMES,
+        *alpha.v31.v30.v29.v28.v27.v26.v25.v24.v23.v22.v21.v19.v18.FLAGSHIP_ROOT_NAMES,
         PRIMES_ONE_MOD_FOUR_ROOT_NAME,
         PRIME_TWO_SQUARE_ROOT_NAME,
     ),
@@ -341,10 +330,7 @@ def test_large_alpha_browser_kernel_audits_fail_safely_before_proof_loading(
     def forbidden_replay(*_args, **_kwargs):
         raise AssertionError("a huge Alpha root must not load a browser proof")
 
-    monkeypatch.setattr(alpha, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha.v30, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha, "_checked_completed_lower_bundle", forbidden_replay)
-    monkeypatch.setattr(alpha, "checked_completed_lower_bundle", forbidden_replay)
+    _forbid_current_alpha_proofs(monkeypatch, forbidden_replay)
 
     output = driver.LabSession().run(f"pa lib alpha check {name}")
 
@@ -373,10 +359,7 @@ def test_alpha_checked_listing_includes_every_residual_and_new_theorem_without_r
     def forbidden_replay(*_args, **_kwargs):
         raise AssertionError("listing must not check or load theorem proofs")
 
-    monkeypatch.setattr(alpha, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha.v30, "replay", forbidden_replay)
-    monkeypatch.setattr(alpha, "_checked_completed_lower_bundle", forbidden_replay)
-    monkeypatch.setattr(alpha, "checked_completed_lower_bundle", forbidden_replay)
+    _forbid_current_alpha_proofs(monkeypatch, forbidden_replay)
     listing = driver.LabSession().run("pa lib alpha checked")
 
     assert QR_ROOT_NAME in listing
@@ -404,6 +387,7 @@ def test_alpha_checked_listing_includes_every_residual_and_new_theorem_without_r
     assert "crt_prefix_lcm_exists_unique" in listing
     assert "crt_pairwise_coprime_prefix_canonical_exists_unique" in listing
     assert all(name in listing for name in alpha.FRONTIER_NEW_NAMES)
+    assert all(name in listing for name in alpha.v31.FRONTIER_NEW_NAMES)
     assert "Alpha evidence ledger:" in listing
 
 
@@ -425,8 +409,8 @@ def test_alpha_commands_do_not_change_default_public_library() -> None:
 def test_alpha_unknown_theorems_fail_without_changing_surface() -> None:
     session = driver.LabSession()
 
-    assert "No Alpha v31 theorem 'missing'" in session.run("pa lib alpha missing")
-    assert "No Alpha v31 theorem 'missing'" in session.run("pa lean alpha missing")
+    assert "No Alpha v32 theorem 'missing'" in session.run("pa lib alpha missing")
+    assert "No Alpha v32 theorem 'missing'" in session.run("pa lean alpha missing")
     assert session.run("pa lib alpha check") == "Usage: pa lib alpha check <theorem>."
 
 
@@ -444,12 +428,12 @@ def test_unsealed_alpha_is_never_presented_as_checked_but_stable_remains_availab
     monkeypatch: pytest.MonkeyPatch,
     command: str,
 ) -> None:
-    monkeypatch.setattr(alpha, "EXPECTED_ALPHA_V31_COUNT", 0)
+    monkeypatch.setattr(alpha, "EXPECTED_ALPHA_V32_COUNT", 0)
     session = driver.LabSession()
 
     output = session.run(command)
 
-    assert "Alpha v31 is not sealed for checked use" in output
+    assert "Alpha v32 is not sealed for checked use" in output
     assert "Checked-use authority: YES" not in output
     assert "kernel check: PASS" not in output
     assert "432 scripted theorems" in session.run("pa lib")

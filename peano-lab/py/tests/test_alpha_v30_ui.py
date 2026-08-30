@@ -32,9 +32,9 @@ GAUSSIAN_ROOT = "gaussian_unique_prime_factorization"
 
 @pytest.fixture(scope="module")
 def alpha():
-    from peano_lab.library import editions_v31
+    from peano_lab.library import editions_v32
 
-    return editions_v31
+    return editions_v32
 
 
 @pytest.fixture(scope="module")
@@ -60,12 +60,13 @@ def _forbid_proof_loading(monkeypatch, alpha, closure):
         raise AssertionError("Alpha inspection invoked an actual proof provider")
 
     for edition, provider in (
-        (alpha, "completed_lower"),
-        (alpha.v30, "gaussian_factorization"),
-        (alpha.v30.v29, "priority_layer"),
-        (alpha.v30.v29.v28, "lower_layer"),
-        (alpha.v30.v29.v28.v27, "second_wave"),
-        (alpha.v30.v29.v28.v27.v26, "first_wave"),
+        (alpha, "research"),
+        (alpha.v31, "completed_lower"),
+        (alpha.v31.v30, "gaussian_factorization"),
+        (alpha.v31.v30.v29, "priority_layer"),
+        (alpha.v31.v30.v29.v28, "lower_layer"),
+        (alpha.v31.v30.v29.v28.v27, "second_wave"),
+        (alpha.v31.v30.v29.v28.v27.v26, "first_wave"),
     ):
         monkeypatch.setattr(edition, "replay", forbidden)
         monkeypatch.setattr(edition, f"_checked_{provider}_bundle", forbidden)
@@ -89,33 +90,36 @@ def _forbid_proof_loading(monkeypatch, alpha, closure):
 
 def test_current_inventory_preserves_both_historical_editions(alpha, closure, monkeypatch):
     _forbid_proof_loading(monkeypatch, alpha, closure)
-    assert len(alpha.ALPHA_ENTRIES) == 3_796
-    assert len(alpha.v30.ALPHA_ENTRIES) == 3_222
-    assert len(alpha.FRONTIER_NEW_NAMES) == 574
-    assert len(alpha.v30.FRONTIER_NEW_NAMES) == 180
-    assert len(alpha.v30.v29.ALPHA_ENTRIES) == 3_042
-    assert len(alpha.v30.v29.FRONTIER_NEW_NAMES) == 278
-    assert len(alpha.v30.v29.v28.ALPHA_ENTRIES) == 2_764
-    assert len(alpha.v30.v29.v28.FRONTIER_NEW_NAMES) == 204
+    assert len(alpha.ALPHA_ENTRIES) == 3_971
+    assert len(alpha.v31.ALPHA_ENTRIES) == 3_796
+    assert len(alpha.v31.v30.ALPHA_ENTRIES) == 3_222
+    assert len(alpha.FRONTIER_NEW_NAMES) == 175
+    assert len(alpha.v31.FRONTIER_NEW_NAMES) == 574
+    assert len(alpha.v31.v30.FRONTIER_NEW_NAMES) == 180
+    assert len(alpha.v31.v30.v29.ALPHA_ENTRIES) == 3_042
+    assert len(alpha.v31.v30.v29.FRONTIER_NEW_NAMES) == 278
+    assert len(alpha.v31.v30.v29.v28.ALPHA_ENTRIES) == 2_764
+    assert len(alpha.v31.v30.v29.v28.FRONTIER_NEW_NAMES) == 204
     assert len(alpha.STABLE_SPECS) == 432
-    assert alpha.STABLE_EDITION is alpha.v30.v29.v28.STABLE_EDITION
+    assert alpha.STABLE_EDITION is alpha.v31.v30.v29.v28.STABLE_EDITION
     assert all(
         alpha.ALPHA_EDITION.by_name[item.spec.name] is item
-        for item in alpha.v30.v29.ALPHA_ENTRIES
+        for item in alpha.v31.v30.v29.ALPHA_ENTRIES
     )
 
     output = driver.LabSession().run("pa lib alpha")
 
-    assert "immutable Alpha v31" in output
-    assert "Enrolled statements: 3,796" in output
+    assert "immutable Alpha v32" in output
+    assert "Enrolled statements: 3,971" in output
     assert "Stable closed: 432" in output
-    assert "Alpha closed: 3,364" in output
-    assert "Available for independently checked use: 3,796" in output
+    assert "Alpha closed: 3,539" in output
+    assert "Available for independently checked use: 3,971" in output
     assert "Previously added Alpha v28 campaign results: 204" in output
     assert "Previously added Alpha v29 campaign results: 278" in output
     assert "Previously added Alpha v30 campaign results: 180" in output
-    assert "New constructive campaign results: 574" in output
-    assert alpha.ALPHA_V31_IDENTITY_SHA256 in output
+    assert "Previously added Alpha v31 campaign results: 574" in output
+    assert "New constructive campaign results: 175" in output
+    assert alpha.ALPHA_V32_IDENTITY_SHA256 in output
     assert "Independent empty-context kernel check: PASS" not in output
 
 
@@ -129,12 +133,12 @@ def test_current_principal_cards_keep_exact_source_and_opt_in_authority(
     assert sha256(item.spec.statement.encode()).hexdigest() == ROOT_PINS[name]
     assert alpha.entry(name, edition="stable") is None
     assert theorems.get(name) is None
-    original = alpha.v30.v29 if name in PRIORITY_ROOTS else alpha.v30
+    original = alpha.v31.v30.v29 if name in PRIORITY_ROOTS else alpha.v31.v30
     assert name in original.FRONTIER_NEW_NAMES
 
     output = driver.LabSession().run(f"pa lib alpha {name}")
 
-    assert f"{name} — Alpha v31 theorem evidence" in output
+    assert f"{name} — Alpha v32 theorem evidence" in output
     assert "Release membership: alpha_only" in output
     assert "Checked-use authority: YES" in output
     assert "This evidence card does not itself replay a proof." in output
@@ -151,7 +155,7 @@ def test_new_principal_previews_are_bounded_and_do_not_replay(
     output = driver.LabSession().run(f"{command} {name}")
 
     assert name in output
-    assert "Release edition: Alpha v31." in output
+    assert "Release edition: Alpha v32." in output
     assert "Authenticated release evidence: alpha_closed." in output
     assert "Checked-use authority: YES." in output
     assert "Independent Lean compilation: NOT RUN" in output
@@ -173,8 +177,8 @@ def test_current_exact_strand_plans_keep_historical_statement_pins_without_proof
 
     plan = lean_proof_strand.plan_proof_strand(name, edition="alpha")
 
-    assert plan.edition_version == "v31"
-    assert plan.edition_identity_sha256 == alpha.ALPHA_V31_IDENTITY_SHA256
+    assert plan.edition_version == "v32"
+    assert plan.edition_identity_sha256 == alpha.ALPHA_V32_IDENTITY_SHA256
     assert plan.root == name
     assert plan.root_node.evidence == "alpha_closed"
     assert plan.root_node.membership == "alpha_only"
@@ -192,7 +196,7 @@ def test_three_metadata_entrypoints_do_not_read_files_or_construct_artifact_plan
     monkeypatch.setattr(Path, "read_bytes", forbidden)
     monkeypatch.setattr(Path, "read_text", forbidden)
     assert data_library._alpha_edition() is alpha
-    assert lean_proof_strand._edition_view("alpha") == (alpha.ALPHA_EDITION, "v31")
+    assert lean_proof_strand._edition_view("alpha") == (alpha.ALPHA_EDITION, "v32")
     spec, edition = exporter._load_selected_specification(
         SimpleNamespace(edition="alpha", theorem=GAUSSIAN_ROOT)
     )
@@ -265,7 +269,7 @@ import driver
 session = driver.LabSession()
 assert '432 scripted theorems' in session.run('pa lib')
 assert 'Release edition: Stable.' in session.run('pa proof zero_add')
-for name in ('editions_v29', 'editions_v30', 'editions_v31', 'campaign_gaussian_factorization_closure', 'campaign_completed_lower_closure'):
+for name in ('editions_v29', 'editions_v30', 'editions_v31', 'editions_v32', 'campaign_gaussian_factorization_closure', 'campaign_completed_lower_closure', 'campaign_research_v32_closure'):
     assert 'peano_lab.library.' + name not in sys.modules, name
 print('Stable boot remains independent of current Alpha')
 """

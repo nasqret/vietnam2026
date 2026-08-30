@@ -64,6 +64,7 @@ const PY_FILES = [
   "py/peano_lab/library/alpha_enrollment_v3.py",
   "py/peano_lab/library/alpha_enrollment_v30.py",
   "py/peano_lab/library/alpha_enrollment_v31.py",
+  "py/peano_lab/library/alpha_enrollment_v32.py",
   "py/peano_lab/library/alpha_enrollment_v4.py",
   "py/peano_lab/library/alpha_enrollment_v5.py",
   "py/peano_lab/library/alpha_enrollment_v6.py",
@@ -164,6 +165,7 @@ const PY_FILES = [
   "py/peano_lab/library/campaign_next_layer_closure.py",
   "py/peano_lab/library/campaign_priority_layer_closure.py",
   "py/peano_lab/library/campaign_research_layer_closure.py",
+  "py/peano_lab/library/campaign_research_v32_closure.py",
   "py/peano_lab/library/campaign_residual_closure.py",
   "py/peano_lab/library/campaign_second_wave_closure.py",
   "py/peano_lab/library/campaign_transport_layer_closure.py",
@@ -220,6 +222,7 @@ const PY_FILES = [
   "py/peano_lab/library/editions_v3.py",
   "py/peano_lab/library/editions_v30.py",
   "py/peano_lab/library/editions_v31.py",
+  "py/peano_lab/library/editions_v32.py",
   "py/peano_lab/library/editions_v4.py",
   "py/peano_lab/library/editions_v5.py",
   "py/peano_lab/library/editions_v6.py",
@@ -585,6 +588,8 @@ const PROOF_ARTIFACT_FILES = [
   "proof-artifacts/dirichlet-signed-units-proof-bundle-v1.json",
   "proof-artifacts/dirichlet-triangular-proof-bundle-v1.json",
   "proof-artifacts/dirichlet-inverses-proof-bundle-v1.json",
+  "proof-artifacts/g009-multiplicative-convolution-proof-bundle-v1.json",
+  "proof-artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
 ];
 
 let runLine = null;

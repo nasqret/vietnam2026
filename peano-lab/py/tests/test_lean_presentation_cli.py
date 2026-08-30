@@ -25,6 +25,16 @@ CLI = ROOT / "scripts" / "export_peano_lean.py"
 LEAN_PROJECT = ROOT.parent / "peano-lab-lean"
 
 
+def _forbid_current_alpha_proofs(monkeypatch):
+    from peano_lab.library import editions_v32
+
+    def forbidden(*_arguments, **_options):
+        raise AssertionError("a proof-lazy current Alpha route requested an actual v32 proof")
+
+    for name in ("replay", "_checked_research_bundle", "checked_research_bundle"):
+        monkeypatch.setattr(editions_v32, name, forbidden)
+
+
 def _run(*arguments: object, timeout: int = 30) -> subprocess.CompletedProcess[str]:
     environment = dict(os.environ)
     environment["PYTHONDONTWRITEBYTECODE"] = "1"
@@ -103,6 +113,7 @@ def test_named_checked_bundle_never_reconstructs_a_redundant_root_certificate(
     tmp_path: Path,
     edition: str,
 ) -> None:
+    _forbid_current_alpha_proofs(monkeypatch)
     from peano_lab.library import editions_v19, editions_v30, editions_v31
     from peano_lab.library.theorems import replay as stable_replay
 
@@ -195,6 +206,7 @@ def test_checked_alpha_statement_preview_does_not_replay_its_large_root(
     capsys: pytest.CaptureFixture[str],
     name: str,
 ) -> None:
+    _forbid_current_alpha_proofs(monkeypatch)
     from peano_lab.library import editions_v19, editions_v30, editions_v31
 
     def forbidden(*_args, **_kwargs):
@@ -497,12 +509,13 @@ def test_alpha_body_only_theorem_is_denied_even_for_statement_preview(
     monkeypatch: pytest.MonkeyPatch,
     capsys: pytest.CaptureFixture[str],
 ) -> None:
-    from peano_lab.library import editions_v19, editions_v30, editions_v31
+    _forbid_current_alpha_proofs(monkeypatch)
+    from peano_lab.library import editions_v19, editions_v30, editions_v31, editions_v32
 
     actual = editions_v19.entry("zero_add", edition="alpha")
     assert actual is not None
     unauthorized = replace(actual, evidence=editions_v19.EvidenceStatus.BODY_CHECKED)
-    monkeypatch.setattr(editions_v31, "entry", lambda *_args, **_kwargs: unauthorized)
+    monkeypatch.setattr(editions_v32, "entry", lambda *_args, **_kwargs: unauthorized)
 
     assert exporter.main(["zero_add", "--edition", "alpha", "--format", "pretty"]) == 1
     assert "checked-use authority" in capsys.readouterr().err

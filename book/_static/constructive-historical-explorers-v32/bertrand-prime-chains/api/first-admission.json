@@ -1,0 +1,210 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v20": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+  },
+  "per_theorem": [
+    {
+      "name": "bertrand_window_prime_divides_central_binom",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP0001"
+    },
+    {
+      "name": "bertrand_window_prime_square_exceeds_double",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP0002"
+    },
+    {
+      "name": "bertrand_window_central_valuation_at_most_one",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP0003"
+    },
+    {
+      "name": "bertrand_window_central_valuation_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP0004"
+    },
+    {
+      "name": "bertrand_window_central_valuation_equals_one",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP0005"
+    },
+    {
+      "name": "bertrand_window_central_valuation_one",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP0006"
+    },
+    {
+      "name": "central_binom_prime_divisor_multiplicity_one_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP0007"
+    },
+    {
+      "name": "bertrand_chain_singleton_code_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP0008"
+    },
+    {
+      "name": "bertrand_chain_singleton_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP0009"
+    },
+    {
+      "name": "bertrand_chain_successor_preserves_guard",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP000A"
+    },
+    {
+      "name": "bertrand_chain_prefix_extend",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP000B"
+    },
+    {
+      "name": "bertrand_chain_prefix_terminal_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP000C"
+    },
+    {
+      "name": "iterated_bertrand_prime_chain_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v20",
+      "tag": "BP000D"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 300244,
+    "path": "book/_static/constructive-next-layer-explorer/bertrand-prime-chains/api/corpus.json",
+    "sha256": "9f687620a681a2f0dd1c1460ccc16fb3df6f65c25f8ef1b31549ecc5f95a2e9b"
+  },
+  "source_corpus_fields": {
+    "alpha_first_enrolled_version": "v20",
+    "alpha_first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+  },
+  "source_family_fields": {},
+  "source_manifest": {
+    "bytes": 27841,
+    "path": "book/_static/constructive-next-layer-explorer/manifest.json",
+    "sha256": "66c5baf8e317d1ab391f74ffea161e9869995ac7b34017bf449c6ccc9a74c155"
+  },
+  "source_manifest_fields": {
+    "alpha_first_enrolled_version": "v20",
+    "first_enrollment_catalog_sha256": "8f86225cc560d7b59ff665e58594ac6249c12dbb5cdfe47ae2708a0e497c86ce"
+  }
+}

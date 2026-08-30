@@ -1,0 +1,484 @@
+{
+  "bundle": {
+    "body_proof_nodes": 13692,
+    "bytes": 2293317,
+    "dependency_edges_including_packaging": 584,
+    "independent_lean_checked": true,
+    "kernel_calls": 227,
+    "nodes_including_packaging_root": 227,
+    "original_ha_checked": true,
+    "packaging_root_id": 226,
+    "path": "research/arithmetic-library/artifacts/lower-tier-signed-weighted-sums-proof-bundle-v1.json",
+    "sha256": "e88ddec495a71d673e670299ea3943a5a996eecb1296fb746e107c8e0b81c967"
+  },
+  "new_theorem_count": 40,
+  "owned_node_ids": {
+    "signed_prefix_sum_pointwise_add": 212,
+    "signed_prefix_sum_pointwise_add_values_exist": 214,
+    "signed_prefix_sum_scalar_multiply": 213,
+    "signed_prefix_sum_scalar_multiply_values_exist": 215,
+    "signed_table_add_empty": 190,
+    "signed_table_add_exists": 201,
+    "signed_table_add_exists_extensionally_unique": 202,
+    "signed_table_add_extend": 200,
+    "signed_table_add_extensional_unique": 191,
+    "signed_table_add_lookup": 188,
+    "signed_table_add_medial": 210,
+    "signed_table_add_reassociate": 209,
+    "signed_table_add_restrict": 189,
+    "signed_table_domain_resize": 186,
+    "signed_table_lookup_any": 187,
+    "signed_table_multiply_empty": 194,
+    "signed_table_multiply_exists": 204,
+    "signed_table_multiply_exists_extensionally_unique": 205,
+    "signed_table_multiply_extend": 203,
+    "signed_table_multiply_extensional_unique": 195,
+    "signed_table_multiply_lookup": 192,
+    "signed_table_multiply_restrict": 193,
+    "signed_table_scalar_add_intro": 211,
+    "signed_table_scalar_empty": 198,
+    "signed_table_scalar_exists": 207,
+    "signed_table_scalar_exists_extensionally_unique": 208,
+    "signed_table_scalar_extend": 206,
+    "signed_table_scalar_extensional_unique": 199,
+    "signed_table_scalar_lookup": 196,
+    "signed_table_scalar_restrict": 197,
+    "signed_table_weighted_add_distributive": 221,
+    "signed_table_weighted_scalar_commute": 223,
+    "signed_weighted_scalar_commute": 222,
+    "signed_weighted_sum_add_linearity": 224,
+    "signed_weighted_sum_empty_exists": 220,
+    "signed_weighted_sum_empty_value": 219,
+    "signed_weighted_sum_exists": 216,
+    "signed_weighted_sum_exists_unique": 218,
+    "signed_weighted_sum_functional": 217,
+    "signed_weighted_sum_scalar_linearity": 225
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_weighted_sum_exists_unique",
+      "node_id": 218,
+      "ordinary_certificate_nodes": 13146,
+      "statement_sha256": "1ed794504914ee8304903be9fce6c08e5e310c7b0e75c244382438433c4c3f14"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_weighted_sum_scalar_linearity",
+      "node_id": 225,
+      "ordinary_certificate_nodes": 8505,
+      "statement_sha256": "488852252ab9e41daf5e2e6e234f8a9e046042f269dd9f5fd1bd9a074c45cbeb"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_weighted_sum_add_linearity",
+      "node_id": 224,
+      "ordinary_certificate_nodes": 8241,
+      "statement_sha256": "0515fa77e429a50f266b273b77efa2682ec7cc78c3e30948559d6a5c3363f255"
+    }
+  ],
+  "rows": [
+    {
+      "name": "signed_table_domain_resize",
+      "node_id": 186,
+      "proof_depth": 18,
+      "proof_edges": 26,
+      "proof_nodes": 27,
+      "proof_objects": 27,
+      "reused_objects": 0,
+      "statement_sha256": "939e1f3ead69a4d04567e3a7c78f79d9f659c833b238440d5904d4f768fc3fbc"
+    },
+    {
+      "name": "signed_table_lookup_any",
+      "node_id": 187,
+      "proof_depth": 23,
+      "proof_edges": 41,
+      "proof_nodes": 42,
+      "proof_objects": 42,
+      "reused_objects": 0,
+      "statement_sha256": "c61f7426aa8984f1cbb28031b742b02c554d45836867f8d72fbf43125214502e"
+    },
+    {
+      "name": "signed_table_add_lookup",
+      "node_id": 188,
+      "proof_depth": 30,
+      "proof_edges": 101,
+      "proof_nodes": 102,
+      "proof_objects": 102,
+      "reused_objects": 0,
+      "statement_sha256": "0530673d325ad22ad7cfcd0cfdae833d930f7e7dfc912cfa3e2e5428bd89dbec"
+    },
+    {
+      "name": "signed_table_add_restrict",
+      "node_id": 189,
+      "proof_depth": 33,
+      "proof_edges": 97,
+      "proof_nodes": 98,
+      "proof_objects": 98,
+      "reused_objects": 0,
+      "statement_sha256": "aaf357463764c5176f398f2bc8f2888b6bd08c4d37e9cc75cf60beb94a43ce91"
+    },
+    {
+      "name": "signed_table_add_empty",
+      "node_id": 190,
+      "proof_depth": 24,
+      "proof_edges": 35,
+      "proof_nodes": 36,
+      "proof_objects": 36,
+      "reused_objects": 0,
+      "statement_sha256": "e2ad936bcaa75dd56062fc9a708a8d1f7e07216ec408c4fc9758603ec7b822d4"
+    },
+    {
+      "name": "signed_table_add_extensional_unique",
+      "node_id": 191,
+      "proof_depth": 34,
+      "proof_edges": 77,
+      "proof_nodes": 78,
+      "proof_objects": 78,
+      "reused_objects": 0,
+      "statement_sha256": "095c60061ee86eaf6ac2f6656542b46e71d58b9b25d870ec3d021f47e6bf3647"
+    },
+    {
+      "name": "signed_table_multiply_lookup",
+      "node_id": 192,
+      "proof_depth": 30,
+      "proof_edges": 101,
+      "proof_nodes": 102,
+      "proof_objects": 102,
+      "reused_objects": 0,
+      "statement_sha256": "749a5e871352818781d167a9c52190dd2c633dfa000775676fd082d9873d6de9"
+    },
+    {
+      "name": "signed_table_multiply_restrict",
+      "node_id": 193,
+      "proof_depth": 33,
+      "proof_edges": 97,
+      "proof_nodes": 98,
+      "proof_objects": 98,
+      "reused_objects": 0,
+      "statement_sha256": "c7c8d97375e84f673df20ab92a7ed205c3602847d424a3c984888f4f8451c7b7"
+    },
+    {
+      "name": "signed_table_multiply_empty",
+      "node_id": 194,
+      "proof_depth": 24,
+      "proof_edges": 35,
+      "proof_nodes": 36,
+      "proof_objects": 36,
+      "reused_objects": 0,
+      "statement_sha256": "1f15b5474af256c1646c5ea44a0826444aac7a12dbdd3fc117630246b36d7e58"
+    },
+    {
+      "name": "signed_table_multiply_extensional_unique",
+      "node_id": 195,
+      "proof_depth": 34,
+      "proof_edges": 77,
+      "proof_nodes": 78,
+      "proof_objects": 78,
+      "reused_objects": 0,
+      "statement_sha256": "4a9905773c997502a7e1b98a74da24b276857397bf9fda05820b0408b3e02e36"
+    },
+    {
+      "name": "signed_table_scalar_lookup",
+      "node_id": 196,
+      "proof_depth": 25,
+      "proof_edges": 69,
+      "proof_nodes": 70,
+      "proof_objects": 70,
+      "reused_objects": 0,
+      "statement_sha256": "636ce34d2604ddfd6d64ac5531452a65d7883951f68a993573e8e09575826531"
+    },
+    {
+      "name": "signed_table_scalar_restrict",
+      "node_id": 197,
+      "proof_depth": 28,
+      "proof_edges": 73,
+      "proof_nodes": 74,
+      "proof_objects": 74,
+      "reused_objects": 0,
+      "statement_sha256": "a770111e77c1bd178b41986310177dac9f4ff280ab82ee0169f1dc887c395aaf"
+    },
+    {
+      "name": "signed_table_scalar_empty",
+      "node_id": 198,
+      "proof_depth": 22,
+      "proof_edges": 32,
+      "proof_nodes": 33,
+      "proof_objects": 33,
+      "reused_objects": 0,
+      "statement_sha256": "b2d12c42f06fba06b22b3da74830cc012ef829003350c169a64feabc71e0cc09"
+    },
+    {
+      "name": "signed_table_scalar_extensional_unique",
+      "node_id": 199,
+      "proof_depth": 31,
+      "proof_edges": 62,
+      "proof_nodes": 63,
+      "proof_objects": 63,
+      "reused_objects": 0,
+      "statement_sha256": "a1002d684e7474988dbbb91089b7be60478be2b8d9a710336a7649bd2674941f"
+    },
+    {
+      "name": "signed_table_add_extend",
+      "node_id": 200,
+      "proof_depth": 46,
+      "proof_edges": 149,
+      "proof_nodes": 150,
+      "proof_objects": 150,
+      "reused_objects": 0,
+      "statement_sha256": "dd7d844c9b62817e16e20d6f5bba8f33d5e525376e863157cf94e10b01d609df"
+    },
+    {
+      "name": "signed_table_add_exists",
+      "node_id": 201,
+      "proof_depth": 36,
+      "proof_edges": 112,
+      "proof_nodes": 113,
+      "proof_objects": 113,
+      "reused_objects": 0,
+      "statement_sha256": "f5da734299948cdf20150db6935c794057b8b51fb1479d9496e471cc228759fc"
+    },
+    {
+      "name": "signed_table_add_exists_extensionally_unique",
+      "node_id": 202,
+      "proof_depth": 20,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "993d774742a26b57c7d03d6d8c483fa0d69fd36e785e0eb72385c989bf1a3065"
+    },
+    {
+      "name": "signed_table_multiply_extend",
+      "node_id": 203,
+      "proof_depth": 46,
+      "proof_edges": 149,
+      "proof_nodes": 150,
+      "proof_objects": 150,
+      "reused_objects": 0,
+      "statement_sha256": "eb92c412c6e49e0c14fef6efb8ae5e24a28a36a9725830ff97e00888ebe9a4de"
+    },
+    {
+      "name": "signed_table_multiply_exists",
+      "node_id": 204,
+      "proof_depth": 36,
+      "proof_edges": 112,
+      "proof_nodes": 113,
+      "proof_objects": 113,
+      "reused_objects": 0,
+      "statement_sha256": "6992b7c6fa4503ffde3eecab49ea93ef2212e907a1459b5e063f1c3eefc7c6f2"
+    },
+    {
+      "name": "signed_table_multiply_exists_extensionally_unique",
+      "node_id": 205,
+      "proof_depth": 20,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "e545ed562de151ca5c6f0be2092ebe7f0383df70d418340b78e384c4fe856fae"
+    },
+    {
+      "name": "signed_table_scalar_extend",
+      "node_id": 206,
+      "proof_depth": 40,
+      "proof_edges": 113,
+      "proof_nodes": 114,
+      "proof_objects": 114,
+      "reused_objects": 0,
+      "statement_sha256": "8df0b47bfb648aa446036c45524a72959ae89e16fa0dfbba25b9c9cb0e040c39"
+    },
+    {
+      "name": "signed_table_scalar_exists",
+      "node_id": 207,
+      "proof_depth": 32,
+      "proof_edges": 90,
+      "proof_nodes": 91,
+      "proof_objects": 91,
+      "reused_objects": 0,
+      "statement_sha256": "8cf51db1c08911e2643d9aa773b9479d5e6e988489115056961b85d3ffdb4dc3"
+    },
+    {
+      "name": "signed_table_scalar_exists_extensionally_unique",
+      "node_id": 208,
+      "proof_depth": 19,
+      "proof_edges": 27,
+      "proof_nodes": 28,
+      "proof_objects": 28,
+      "reused_objects": 0,
+      "statement_sha256": "ab9954f8f2a293ddade9a4cfff5ba1b94d62d0f32d68c8628130ee518a425f82"
+    },
+    {
+      "name": "signed_table_add_reassociate",
+      "node_id": 209,
+      "proof_depth": 27,
+      "proof_edges": 60,
+      "proof_nodes": 61,
+      "proof_objects": 61,
+      "reused_objects": 0,
+      "statement_sha256": "dfca5184110e1b5e71c77b7535b99bc2be8927856267dabee3ba32cbd15cf8c8"
+    },
+    {
+      "name": "signed_table_add_medial",
+      "node_id": 210,
+      "proof_depth": 31,
+      "proof_edges": 68,
+      "proof_nodes": 69,
+      "proof_objects": 69,
+      "reused_objects": 0,
+      "statement_sha256": "da374954370aff7b561c3bba0be59ab68006b6354525985808568d2b68a89810"
+    },
+    {
+      "name": "signed_table_scalar_add_intro",
+      "node_id": 211,
+      "proof_depth": 31,
+      "proof_edges": 68,
+      "proof_nodes": 69,
+      "proof_objects": 69,
+      "reused_objects": 0,
+      "statement_sha256": "2de7c1450016d754483c519e53f122670bd2fe5cdc2464392ebf42e28558cc6a"
+    },
+    {
+      "name": "signed_prefix_sum_pointwise_add",
+      "node_id": 212,
+      "proof_depth": 42,
+      "proof_edges": 174,
+      "proof_nodes": 175,
+      "proof_objects": 175,
+      "reused_objects": 0,
+      "statement_sha256": "8cdea91bcb14f0f475b838413f29a8c4e1df9ded8ac198d8c97fbf09d8088464"
+    },
+    {
+      "name": "signed_prefix_sum_scalar_multiply",
+      "node_id": 213,
+      "proof_depth": 36,
+      "proof_edges": 132,
+      "proof_nodes": 133,
+      "proof_objects": 133,
+      "reused_objects": 0,
+      "statement_sha256": "37350038ed9cf4a84bf46ecc195ab93684a0e11246c87d9e366b8e75622791c3"
+    },
+    {
+      "name": "signed_prefix_sum_pointwise_add_values_exist",
+      "node_id": 214,
+      "proof_depth": 28,
+      "proof_edges": 58,
+      "proof_nodes": 59,
+      "proof_objects": 59,
+      "reused_objects": 0,
+      "statement_sha256": "5707fca094b98099db7c4a612f7a5382fb5a36f992c64c4c8cdd62a553c2c7b3"
+    },
+    {
+      "name": "signed_prefix_sum_scalar_multiply_values_exist",
+      "node_id": 215,
+      "proof_depth": 23,
+      "proof_edges": 42,
+      "proof_nodes": 43,
+      "proof_objects": 43,
+      "reused_objects": 0,
+      "statement_sha256": "1060efcba4f4e9d0350f2931bdcfec3184edf52ad5b7d66568601271568a28ff"
+    },
+    {
+      "name": "signed_weighted_sum_exists",
+      "node_id": 216,
+      "proof_depth": 14,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "6f4efda3cb9445a6dac44e81f084c44b45ca1382fd701ebe83ef5f2b44d226ce"
+    },
+    {
+      "name": "signed_weighted_sum_functional",
+      "node_id": 217,
+      "proof_depth": 45,
+      "proof_edges": 79,
+      "proof_nodes": 80,
+      "proof_objects": 80,
+      "reused_objects": 0,
+      "statement_sha256": "a4ea9690d42ab1c679d4182af1b2e90b278c1ed9091954474cba5412774a69f8"
+    },
+    {
+      "name": "signed_weighted_sum_exists_unique",
+      "node_id": 218,
+      "proof_depth": 20,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "1ed794504914ee8304903be9fce6c08e5e310c7b0e75c244382438433c4c3f14"
+    },
+    {
+      "name": "signed_weighted_sum_empty_value",
+      "node_id": 219,
+      "proof_depth": 16,
+      "proof_edges": 25,
+      "proof_nodes": 26,
+      "proof_objects": 26,
+      "reused_objects": 0,
+      "statement_sha256": "1c9fc5302ca265115b30ee1fb088276590e452cce3e440f551a2f6a3dc76e86b"
+    },
+    {
+      "name": "signed_weighted_sum_empty_exists",
+      "node_id": 220,
+      "proof_depth": 14,
+      "proof_edges": 29,
+      "proof_nodes": 30,
+      "proof_objects": 30,
+      "reused_objects": 0,
+      "statement_sha256": "5552784b27b08ae3dce4252579655ffc55f1b6e5021d6c70c7d309b58456a2fa"
+    },
+    {
+      "name": "signed_table_weighted_add_distributive",
+      "node_id": 221,
+      "proof_depth": 52,
+      "proof_edges": 194,
+      "proof_nodes": 195,
+      "proof_objects": 195,
+      "reused_objects": 0,
+      "statement_sha256": "ad1040b1c2b65c3d5c12df1c535df5a8138eef06345a389249eb14c9a4de2fb0"
+    },
+    {
+      "name": "signed_weighted_scalar_commute",
+      "node_id": 222,
+      "proof_depth": 28,
+      "proof_edges": 81,
+      "proof_nodes": 82,
+      "proof_objects": 82,
+      "reused_objects": 0,
+      "statement_sha256": "2eb049093e44065c0a56a8d78b7a65040c36da800348b231e93a153cfa78ba44"
+    },
+    {
+      "name": "signed_table_weighted_scalar_commute",
+      "node_id": 223,
+      "proof_depth": 43,
+      "proof_edges": 140,
+      "proof_nodes": 141,
+      "proof_objects": 141,
+      "reused_objects": 0,
+      "statement_sha256": "22d349303750cad224a03cb94c900fa81b25596a6b5c76d692079d191e277150"
+    },
+    {
+      "name": "signed_weighted_sum_add_linearity",
+      "node_id": 224,
+      "proof_depth": 68,
+      "proof_edges": 120,
+      "proof_nodes": 121,
+      "proof_objects": 121,
+      "reused_objects": 0,
+      "statement_sha256": "0515fa77e429a50f266b273b77efa2682ec7cc78c3e30948559d6a5c3363f255"
+    },
+    {
+      "name": "signed_weighted_sum_scalar_linearity",
+      "node_id": 225,
+      "proof_depth": 55,
+      "proof_edges": 96,
+      "proof_nodes": 97,
+      "proof_objects": 97,
+      "reused_objects": 0,
+      "statement_sha256": "488852252ab9e41daf5e2e6e234f8a9e046042f269dd9f5fd1bd9a074c45cbeb"
+    }
+  ],
+  "slug": "signed-weighted-sums",
+  "specs_sha256": "d1e23134d7f367d169f181c67939df5548101c83e9a73da43544c49e96590fae"
+}

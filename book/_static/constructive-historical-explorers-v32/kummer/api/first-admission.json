@@ -1,0 +1,210 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v14": "37ad33cc709903ae327ca72c67f9308a6214e2792b9269cd3b16e6e5527260fa"
+  },
+  "per_theorem": [
+    {
+      "name": "division_add_quotient_bit",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU0000"
+    },
+    {
+      "name": "division_add_quotient_lower",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "KU0001"
+    },
+    {
+      "name": "division_add_quotient_upper",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "KU0002"
+    },
+    {
+      "name": "choose_factorial_valuation_balance",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU0003"
+    },
+    {
+      "name": "choose_legendre_valuation_balance",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU0004"
+    },
+    {
+      "name": "binomial_legendre_valuation_balance",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU0005"
+    },
+    {
+      "name": "add_quotient_carry_choice",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU0006"
+    },
+    {
+      "name": "add_quotient_carry_prefix_extend",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU0007"
+    },
+    {
+      "name": "add_quotient_carry_prefix_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU0008"
+    },
+    {
+      "name": "add_quotient_carry_prefix_all_bits",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU0009"
+    },
+    {
+      "name": "add_quotient_carry_prefix_restrict",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU000A"
+    },
+    {
+      "name": "beta_sum_add_carry_exact",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU000B"
+    },
+    {
+      "name": "kummer_binomial_carry_bit_count",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU000C"
+    },
+    {
+      "name": "prime_power_valuation_zero_iff_not_divides",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU000D"
+    },
+    {
+      "name": "kummer_carry_free_iff_not_divides",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v14",
+      "tag": "KU000E"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 1113287,
+    "path": "book/_static/constructive-frontier-explorer/kummer/api/corpus.json",
+    "sha256": "88d15593c0c8ca1c2eeae2073742c60d8e0e22ba0226d416e7698eb45d85197d"
+  },
+  "source_corpus_fields": {
+    "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+    "historical_alpha_edition_version": "v19"
+  },
+  "source_family_fields": {
+    "historical_alpha_edition_version": "v19"
+  },
+  "source_manifest": {
+    "bytes": 319521,
+    "path": "book/_static/constructive-frontier-explorer/manifest.json",
+    "sha256": "416aba94c6a451d7080d7503fd1d093e822fc2ad5afb07fa92bada0bda34e021"
+  },
+  "source_manifest_fields": {
+    "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+    "historical_alpha_edition_version": "v19"
+  }
+}

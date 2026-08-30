@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>EI0015 — eisenstein_signed_product_scaled_right — Defined Proof</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/eisenstein-integers/explorer/defined/tag/EI0015.html"><meta name="proof-publication-scope" content="alpha-v32-historical-first-admission-preserved"></head>
+<body class="pa-defined-proof-site" data-family="eisenstein-integers"><header class="pd-header pd-theorem-heading">
+  <nav><a href="../?v=41b9f387d88a">Definitions and proofs</a>
+       <a href="../../tag/EI0015.html?v=41b9f387d88a">Exact original proof</a>
+       <a href="../graph.html?target=EI0015&amp;v=41b9f387d88a">Interactive proof graph</a>
+       <a data-campaign-link="global" href="../../../../grand-campaign/?v=41b9f387d88a">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D02&amp;v=41b9f387d88a">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F09&amp;v=41b9f387d88a">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G084" href="../../../../grand-campaign/?view=goal&amp;focus=G084&amp;v=41b9f387d88a">G084 milestone</a></nav>
+  <p class="pd-tag">EI0015</p><h1>eisenstein_signed_product_scaled_right</h1>
+  <p>Scaling one genuine signed factor scales both exact natural product components.</p><p class="pd-status">Alpha v32 checked-use · first admitted v28 · independently kernel and Lean verified; not Stable</p>
+</header>
+<main class="pd-theorem-layout"><p class="pa-callout pd-callout" data-current-release="v32">Current library: Alpha v32, 3,971 checked-use theorems; Stable remains 432. Historical first admissions, original proof editions, and non-admitted aliases are preserved. <a href="../../../api/first-admission.json?v=41b9f387d88a">Exact original first-admission records</a>.</p><div class="pd-proof-panel">
+  <p class="pd-callout">A floor quotient in the fundamental parallelogram already gives the required strict norm decrease; global nearest-point optimality is not asserted. The shared carrier is identical to the Gaussian carrier, but the multiplication law and norm are different. Eisenstein gcd, factorization, and prime classification remain separate targets.</p>
+  <section class="pd-statement"><h2>Exact theorem in conservative defined notation</h2>
+    <pre><code>∀ p. ∀ n. ∀ q. ∀ m. ∀ k. p · (k · q) + n · (k · m) = k · (p · q + n · m) ∧ p · (k · m) + n · (k · q) = k · (p · m + n · q)</code></pre>
+    <p>Every linked abbreviation expands hygienically to the identical original native formula.</p></section>
+  <section><h2>Definition DAG</h2><div class="pd-chip-row"><span class="pd-empty">none</span></div></section>
+  <section><h2>Actual proof prerequisites</h2><div class="pd-chip-row"><span class="pd-chip pd-external">add_mul · checked external prerequisite</span><span class="pd-chip pd-external">mul_add · checked external prerequisite</span><span class="pd-chip pd-external">mul_assoc · checked external prerequisite</span><span class="pd-chip pd-external">add_assoc · checked external prerequisite</span><span class="pd-chip pd-external">add_comm · checked external prerequisite</span><span class="pd-chip pd-external">mul_comm · checked external prerequisite</span><span class="pd-chip pd-external">four_square_add_swap_right_tail · checked external prerequisite</span><a class="pd-chip pd-external" href="../../../../gaussian-integers/explorer/defined/tag/GI0001.html?v=41b9f387d88a">natural_mul_swap_right_tail · checked external prerequisite</a></div></section>
+  <details class="pd-expanded"><summary>Original expanded first-order statement</summary>
+    <pre><code>forall p n q m k. (((((p) * (((k) * (q))))) + (((n) * (((k) * (m)))))) = k * (((((p) * (q))) + (((n) * (m)))))) /\ (((((p) * (((k) * (m))))) + (((n) * (((k) * (q)))))) = k * (((((p) * (m))) + (((n) * (q))))))</code></pre></details>
+  <section><h2>Complete tactic proof in conservative notation</h2>
+    <p>All 8 original proof lines are preserved. Only local proposition formulas are abbreviated; every abbreviation has an exact binder-safe expansion check. The linked exact edition contains the unchanged replay script.</p>
+    <ol class="pd-formal-proof"><li class="pd-proof-line" id="L1" data-line="1"><a class="pd-line-number" href="#L1">0001</a><code>intro p</code></li><li class="pd-proof-line" id="L2" data-line="2"><a class="pd-line-number" href="#L2">0002</a><code>intro n</code></li><li class="pd-proof-line" id="L3" data-line="3"><a class="pd-line-number" href="#L3">0003</a><code>intro q</code></li><li class="pd-proof-line" id="L4" data-line="4"><a class="pd-line-number" href="#L4">0004</a><code>intro m</code></li><li class="pd-proof-line" id="L5" data-line="5"><a class="pd-line-number" href="#L5">0005</a><code>intro k</code></li><li class="pd-proof-line" id="L6" data-line="6"><a class="pd-line-number" href="#L6">0006</a><code>split</code></li><li class="pd-proof-line" id="L7" data-line="7"><a class="pd-line-number" href="#L7">0007</a><code>simp [add_mul, mul_add, mul_assoc, add_assoc, add_comm, mul_comm, four_square_add_swap_right_tail, natural_mul_swap_right_tail]</code></li><li class="pd-proof-line" id="L8" data-line="8"><a class="pd-line-number" href="#L8">0008</a><code>simp [add_mul, mul_add, mul_assoc, add_assoc, add_comm, mul_comm, four_square_add_swap_right_tail, natural_mul_swap_right_tail]</code></li></ol></section>
+</div><aside class="pd-proof-sidebar pd-trust-panel"><h2>Independent closure receipt</h2>
+  <dl><dt>Authority</dt><dd>Alpha v30 checked use</dd><dt>First admission</dt><dd>Alpha v28</dd><dt>Stable membership</dt><dd>none</dd>
+      <dt>Proof-bundle node</dt><dd>798 / 862</dd>
+      <dt>Kernel mode</dt><dd>unchanged intuitionistic Heyting arithmetic</dd>
+      <dt>Independent Lean verifier</dt><dd>compiled verifier accepted all 862 exact bundle nodes</dd>
+      <dt>Body proof nodes / depth</dt><dd>112 / 27</dd>
+      <dt>Statement SHA-256</dt><dd><code>c1548a95b393fa01508aa6ad53bd417169e54fae3481235c2692a648c4b188f8</code></dd>
+      <dt>Script SHA-256</dt><dd><code>05b7e2ae132509fb0c3bdaf507870230a878f9623c8fa294ec25d4e1532c61a2</code></dd>
+      <dt>Proof bundle SHA-256</dt><dd><code>e56dda386bf60759d1bacda45417eacd7e6a67fd6e23799f002aac9964253ae1</code></dd>
+      <dt>Exact source module</dt><dd><code>peano_lab.library.eisenstein_euclidean_candidate</code></dd></dl>
+</aside></main><script>
+(function () {
+  "use strict";
+  var marker = "/constructive-lower-layer-explorer-v30/";
+  var offset = location.pathname.indexOf(marker);
+  if (offset < 0) return;
+  var staticRoot = location.pathname.slice(0, offset);
+  var repository = staticRoot.replace(/\/book\/_static$/, "");
+  var familyPackages = {"arithmetic-foundations": "constructive-lower-layer-explorer-v30", "best-approximation": "constructive-priority-layer-explorer-v30", "cauchy-davenport": "constructive-second-wave-explorer-v30", "cornacchia": "constructive-second-wave-explorer-v30", "eisenstein-integers": "constructive-lower-layer-explorer-v30", "exponent-lifting": "constructive-priority-layer-explorer-v30", "gaussian-factorization": "constructive-gaussian-factorization-explorer", "gaussian-integers": "constructive-lower-layer-explorer-v30", "generalized-crt": "constructive-second-wave-explorer-v30", "hensel-lifting": "constructive-second-wave-explorer-v30", "integer-linear-algebra": "constructive-second-wave-explorer-v30", "multinomial-kummer": "constructive-second-wave-explorer-v30", "prime-count-chebyshev": "constructive-second-wave-explorer-v30", "prime-enumeration": "constructive-lower-layer-explorer-v30", "prime-valuation-support": "constructive-priority-layer-explorer-v30", "squarefree-kernels": "constructive-priority-layer-explorer-v30", "totient-products": "constructive-priority-layer-explorer-v30"};
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var destination = new URL(original, location.href);
+    if (destination.pathname.indexOf("/grand-campaign/") >= 0) {
+      destination.pathname = staticRoot + "/constructive-gaussian-campaign/";
+    } else if (/\/artifacts\/alpha-v[0-9]+-[a-z0-9-]+\.(?:json|md)$/.test(destination.pathname)) {
+      var filename = destination.pathname.slice(destination.pathname.lastIndexOf("/") + 1);
+      destination.pathname = repository + "/research/arithmetic-library/" +
+        (filename.endsWith(".json") ? "artifacts/" : "") + filename;
+    } else {
+      var family = Object.keys(familyPackages).find(function (name) {
+        return destination.pathname.indexOf("/" + name + "/") >= 0;
+      });
+      if (!family) return;
+      var familyOffset = destination.pathname.indexOf("/" + family + "/");
+      destination.pathname = staticRoot + "/" + familyPackages[family] +
+        destination.pathname.slice(familyOffset);
+    }
+    link.setAttribute("href", destination.href);
+  });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-completed-lower-explorer-v31/", "/constructive-historical-explorers-v31/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v31", "bertrand-postulate": "constructive-historical-explorers-v31", "bertrand-prime-chains": "constructive-historical-explorers-v31", "best-approximation": "constructive-historical-explorers-v31", "binary-digit-extraction": "constructive-historical-explorers-v31", "binary-length": "constructive-historical-explorers-v31", "binary-modular-execution": "constructive-historical-explorers-v31", "binary-modular-exponentiation": "constructive-historical-explorers-v31", "cauchy-davenport": "constructive-historical-explorers-v31", "continued-fractions": "constructive-historical-explorers-v31", "cornacchia": "constructive-historical-explorers-v31", "dirichlet-convolution": "constructive-completed-lower-explorer-v31", "dirichlet-fubini": "constructive-completed-lower-explorer-v31", "dirichlet-inverses": "constructive-completed-lower-explorer-v31", "dirichlet-signed-units": "constructive-completed-lower-explorer-v31", "dirichlet-triangular": "constructive-completed-lower-explorer-v31", "dirichlet-units": "constructive-completed-lower-explorer-v31", "divisor-involutions": "constructive-completed-lower-explorer-v31", "divisor-sums": "constructive-completed-lower-explorer-v31", "eisenstein-integers": "constructive-historical-explorers-v31", "euclidean-complexity": "constructive-historical-explorers-v31", "euclidean-gcd-transport": "constructive-historical-explorers-v31", "euclidean-logarithmic-bound": "constructive-historical-explorers-v31", "euler-units": "constructive-completed-lower-explorer-v31", "exponent-lifting": "constructive-historical-explorers-v31", "finite-support": "constructive-completed-lower-explorer-v31", "four-squares": "constructive-historical-explorers-v31", "gaussian-factorization": "constructive-historical-explorers-v31", "gaussian-integers": "constructive-historical-explorers-v31", "generalized-crt": "constructive-historical-explorers-v31", "generalized-crt-compatibility": "constructive-historical-explorers-v31", "generalized-crt-fold": "constructive-historical-explorers-v31", "hensel-lifting": "constructive-historical-explorers-v31", "integer-linear-algebra": "constructive-historical-explorers-v31", "kummer": "constructive-historical-explorers-v31", "lucas": "constructive-historical-explorers-v31", "matrix-coded-products": "constructive-historical-explorers-v31", "matrix-cofactor-expansion": "constructive-historical-explorers-v31", "matrix-determinant-minors": "constructive-historical-explorers-v31", "matrix-dot-product": "constructive-historical-explorers-v31", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v31", "mobius-inversion": "constructive-completed-lower-explorer-v31", "mobius-values": "constructive-completed-lower-explorer-v31", "multinomial-kummer": "constructive-historical-explorers-v31", "polynomial-hensel": "constructive-historical-explorers-v31", "polynomial-horner": "constructive-historical-explorers-v31", "polynomial-products": "constructive-completed-lower-explorer-v31", "polynomial-taylor-hensel": "constructive-historical-explorers-v31", "prime-count-chebyshev": "constructive-historical-explorers-v31", "prime-enumeration": "constructive-historical-explorers-v31", "prime-field-polynomials": "constructive-completed-lower-explorer-v31", "prime-fields": "constructive-completed-lower-explorer-v31", "prime-valuation-support": "constructive-historical-explorers-v31", "primes-three-mod-four": "constructive-historical-explorers-v31", "pythagorean-fermat-four": "constructive-historical-explorers-v31", "quadratic-reciprocity": "constructive-historical-explorers-v31", "rectangular-sums": "constructive-completed-lower-explorer-v31", "signed-sums": "constructive-completed-lower-explorer-v31", "signed-weighted-sums": "constructive-completed-lower-explorer-v31", "squarefree-kernels": "constructive-historical-explorers-v31", "supplementary-laws": "constructive-historical-explorers-v31", "totient-products": "constructive-historical-explorers-v31", "two-squares": "constructive-historical-explorers-v31"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-completed-lower-campaign-v31/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+<script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-research-explorer-v32/", "/constructive-completed-lower-explorer-v32/", "/constructive-historical-explorers-v32/", "/constructive-research-campaign-v32/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v32", "bertrand-postulate": "constructive-historical-explorers-v32", "bertrand-prime-chains": "constructive-historical-explorers-v32", "best-approximation": "constructive-historical-explorers-v32", "binary-digit-extraction": "constructive-historical-explorers-v32", "binary-length": "constructive-historical-explorers-v32", "binary-modular-execution": "constructive-historical-explorers-v32", "binary-modular-exponentiation": "constructive-historical-explorers-v32", "cauchy-davenport": "constructive-historical-explorers-v32", "continued-fractions": "constructive-historical-explorers-v32", "cornacchia": "constructive-historical-explorers-v32", "dirichlet-convolution": "constructive-completed-lower-explorer-v32", "dirichlet-fubini": "constructive-completed-lower-explorer-v32", "dirichlet-inverses": "constructive-completed-lower-explorer-v32", "dirichlet-signed-units": "constructive-completed-lower-explorer-v32", "dirichlet-triangular": "constructive-completed-lower-explorer-v32", "dirichlet-units": "constructive-completed-lower-explorer-v32", "divisor-involutions": "constructive-completed-lower-explorer-v32", "divisor-sums": "constructive-completed-lower-explorer-v32", "eisenstein-integers": "constructive-historical-explorers-v32", "euclidean-complexity": "constructive-historical-explorers-v32", "euclidean-gcd-transport": "constructive-historical-explorers-v32", "euclidean-logarithmic-bound": "constructive-historical-explorers-v32", "euler-units": "constructive-completed-lower-explorer-v32", "exponent-lifting": "constructive-historical-explorers-v32", "finite-support": "constructive-completed-lower-explorer-v32", "four-squares": "constructive-historical-explorers-v32", "gaussian-factorization": "constructive-historical-explorers-v32", "gaussian-integers": "constructive-historical-explorers-v32", "generalized-crt": "constructive-historical-explorers-v32", "generalized-crt-compatibility": "constructive-historical-explorers-v32", "generalized-crt-fold": "constructive-historical-explorers-v32", "hensel-lifting": "constructive-historical-explorers-v32", "integer-linear-algebra": "constructive-historical-explorers-v32", "kummer": "constructive-historical-explorers-v32", "lucas": "constructive-historical-explorers-v32", "matrix-coded-products": "constructive-historical-explorers-v32", "matrix-cofactor-expansion": "constructive-historical-explorers-v32", "matrix-determinant-minors": "constructive-historical-explorers-v32", "matrix-dot-product": "constructive-historical-explorers-v32", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v32", "mobius-inversion": "constructive-completed-lower-explorer-v32", "mobius-values": "constructive-completed-lower-explorer-v32", "multinomial-kummer": "constructive-historical-explorers-v32", "multiplicative-convolution": "constructive-research-explorer-v32", "polynomial-division-prerequisites": "constructive-research-explorer-v32", "polynomial-hensel": "constructive-historical-explorers-v32", "polynomial-horner": "constructive-historical-explorers-v32", "polynomial-products": "constructive-completed-lower-explorer-v32", "polynomial-taylor-hensel": "constructive-historical-explorers-v32", "prime-count-chebyshev": "constructive-historical-explorers-v32", "prime-enumeration": "constructive-historical-explorers-v32", "prime-field-polynomials": "constructive-completed-lower-explorer-v32", "prime-fields": "constructive-completed-lower-explorer-v32", "prime-valuation-support": "constructive-historical-explorers-v32", "primes-three-mod-four": "constructive-historical-explorers-v32", "pythagorean-fermat-four": "constructive-historical-explorers-v32", "quadratic-reciprocity": "constructive-historical-explorers-v32", "rectangular-sums": "constructive-completed-lower-explorer-v32", "signed-sums": "constructive-completed-lower-explorer-v32", "signed-weighted-sums": "constructive-completed-lower-explorer-v32", "squarefree-kernels": "constructive-historical-explorers-v32", "supplementary-laws": "constructive-historical-explorers-v32", "totient-products": "constructive-historical-explorers-v32", "two-squares": "constructive-historical-explorers-v32"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-research-campaign-v32/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body>
+</html>

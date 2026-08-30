@@ -1,0 +1,3608 @@
+{
+  "alpha_edition_version": "v30",
+  "alpha_first_enrolled_version": "v29",
+  "catalog_sha256": "ac7111ec14ff07bf899238ed465de337e6d76e9343384947022360dc7e65d9f7",
+  "checked_use_count": 278,
+  "edition_identity_sha256": "8986ab8b8d8493ab7c8f01e2080b0ac590fd3c7289ac811b6606710ca453e1e9",
+  "families": [
+    {
+      "campaign": "prime_valuation_support",
+      "definition_count": 19,
+      "domain": "D01",
+      "family": "F01",
+      "milestones": [
+        "T09"
+      ],
+      "root_tags": {
+        "prime_valuation_support_exists": "PV0014"
+      },
+      "slug": "prime-valuation-support",
+      "theorem_count": 20
+    },
+    {
+      "campaign": "continued_fraction_approximation",
+      "definition_count": 18,
+      "domain": "D02",
+      "family": "F08",
+      "milestones": [
+        "G072"
+      ],
+      "root_tags": {
+        "continued_fraction_adjacent_convergent_determinant": "BA0050",
+        "continued_fraction_convergent_best_approximation": "BA0053",
+        "continued_fraction_convergent_best_approximation_signed": "BA0052",
+        "continued_fraction_convergent_coprime": "BA0051",
+        "continued_fraction_convergent_exists_unique_at_history_index": "BA004D",
+        "continued_fraction_has_exact_terminal_convergent": "BA004A",
+        "continued_fraction_initial_zero_over_one": "BA0046"
+      },
+      "slug": "best-approximation",
+      "theorem_count": 83
+    },
+    {
+      "campaign": "euler_totient",
+      "definition_count": 25,
+      "domain": "D01",
+      "family": "F01",
+      "milestones": [
+        "G006"
+      ],
+      "root_tags": {
+        "totient_coprime_multiplicative": "TP003F",
+        "totient_euler_product_formula": "TP0054",
+        "totient_euler_product_iff": "TP0051",
+        "totient_euler_product_one": "TP0052",
+        "totient_exists_unique": "TP0019",
+        "totient_prime_power_value": "TP003B"
+      },
+      "slug": "totient-products",
+      "theorem_count": 84
+    },
+    {
+      "campaign": "squarefree_perfect_power",
+      "definition_count": 26,
+      "domain": "D01",
+      "family": "F01",
+      "milestones": [
+        "G010"
+      ],
+      "root_tags": {
+        "perfect_power_profile_data_degree_classification": "SK0030",
+        "perfect_power_profile_data_root_lookup": "SK0031",
+        "perfect_power_profile_unit_code": "SK0033",
+        "positive_squarefree_kernel_and_power_profile": "SK0035",
+        "squarefree_decomposition_exists_unique": "SK0010"
+      },
+      "slug": "squarefree-kernels",
+      "theorem_count": 53
+    },
+    {
+      "campaign": "odd_prime_lte",
+      "definition_count": 13,
+      "domain": "D02",
+      "family": "F04",
+      "milestones": [
+        "G036"
+      ],
+      "root_tags": {
+        "odd_prime_lifting_the_exponent": "EL0024",
+        "odd_prime_lifting_the_exponent_value": "EL0026"
+      },
+      "slug": "exponent-lifting",
+      "theorem_count": 38
+    }
+  ],
+  "file_count": 693,
+  "files": [
+    {
+      "bytes": 15951,
+      "path": "assets/defined-explorer.css",
+      "sha256": "eb26033797a96d83d62b36d9562ffa37afe7443e2a54bd1d693fc9d5da5ad220"
+    },
+    {
+      "bytes": 29840,
+      "path": "assets/defined-explorer.js",
+      "sha256": "1b95ce2289502ba87f76708096aa76c07961be733d37dd56f64711b04621d982"
+    },
+    {
+      "bytes": 30856,
+      "path": "assets/exact-explorer.css",
+      "sha256": "6dd0cf105c498dec70fe6a7fac04dcda397b40f947de677b36fc9c01962d84bc"
+    },
+    {
+      "bytes": 42701,
+      "path": "assets/exact-explorer.js",
+      "sha256": "98f11fff5d34b5fa481c1dd6a6b39eef58fed28d00bb7d1f4ac7d1226b4d6606"
+    },
+    {
+      "bytes": 8341,
+      "path": "assets/proofs.css",
+      "sha256": "44ac9983416435ac33efada9eaa3ff914588845fe55932f5e8c54623b28c9285"
+    },
+    {
+      "bytes": 2351111,
+      "path": "best-approximation/api/corpus.json",
+      "sha256": "33b69b418defa386664c4f619e4eedd5d4d05ff48a3bfdbb2d7720a766e8a41e"
+    },
+    {
+      "bytes": 118432,
+      "path": "best-approximation/explorer/defined/api/graph.json",
+      "sha256": "6d0ca41a94973f7d1f1211ba8f96101ca202f8d1b0bbc645cc5a063526310ff7"
+    },
+    {
+      "bytes": 5799,
+      "path": "best-approximation/explorer/defined/definition/ND0001.html",
+      "sha256": "582a80b0a87ef093c5ff91bdc3ccdb10ad1f8f8e6df80273bcc9214bc825ed70"
+    },
+    {
+      "bytes": 7391,
+      "path": "best-approximation/explorer/defined/definition/ND0009.html",
+      "sha256": "b61b8a2a4d847c08b02fb3e7fb7e422c7baf80639512ea239063347370f78ac7"
+    },
+    {
+      "bytes": 13955,
+      "path": "best-approximation/explorer/defined/definition/ND0010.html",
+      "sha256": "8395f43e5e5f106cf282bd6613c5fe9f7810fc62a610f3e8e163d220ac84c5a0"
+    },
+    {
+      "bytes": 12907,
+      "path": "best-approximation/explorer/defined/definition/ND0011.html",
+      "sha256": "1dfb7c42c5a0a819df8691f244ec9cb5d482875877c156eb857e990e1dec3f90"
+    },
+    {
+      "bytes": 6030,
+      "path": "best-approximation/explorer/defined/definition/ND0177.html",
+      "sha256": "4f02c34c616e8004f48df7121d8cf4149853a931a958e5ce913062564cc9bfe5"
+    },
+    {
+      "bytes": 6519,
+      "path": "best-approximation/explorer/defined/definition/ND0178.html",
+      "sha256": "b5542f14707a4c4f0d7e847352ebd7dfc9fabce9288519a8167381d9886cea68"
+    },
+    {
+      "bytes": 6651,
+      "path": "best-approximation/explorer/defined/definition/ND0199.html",
+      "sha256": "85e8775e6e99d8e21cb7280b86d1b718e8f598c0ea125be2386e8d03c53b2a79"
+    },
+    {
+      "bytes": 6750,
+      "path": "best-approximation/explorer/defined/definition/ND0200.html",
+      "sha256": "fed131e13007bc97b336d6c825b326090904964569a73fc9dce96a92c47a1c3b"
+    },
+    {
+      "bytes": 7756,
+      "path": "best-approximation/explorer/defined/definition/ND0201.html",
+      "sha256": "ae93019a59ee2653518bcbe03b2b76099b0266f2d59f222de37d4b9acbbc5302"
+    },
+    {
+      "bytes": 7473,
+      "path": "best-approximation/explorer/defined/definition/ND0202.html",
+      "sha256": "896952cc01dca4047b5e4ece50adb976e05affd64444f818591fb8773c9794ea"
+    },
+    {
+      "bytes": 7560,
+      "path": "best-approximation/explorer/defined/definition/ND0203.html",
+      "sha256": "2b0d3d8146bd512e8b528c87887812b0a8e5c2375da28ade974672ca099e41f8"
+    },
+    {
+      "bytes": 15135,
+      "path": "best-approximation/explorer/defined/definition/ND0204.html",
+      "sha256": "20b8f81eec9216709635d1576327620eaf6846d443558bdde7ae48403b5d724e"
+    },
+    {
+      "bytes": 16321,
+      "path": "best-approximation/explorer/defined/definition/ND0205.html",
+      "sha256": "29ba1f032de4cc4a80dbc4602df06fb38edb3cf2cfa97dad80179a9013d62fe9"
+    },
+    {
+      "bytes": 7644,
+      "path": "best-approximation/explorer/defined/definition/ND0206.html",
+      "sha256": "94c1e32ec72a7e4bf320f8a5bd6c07a72ac3fa756bba50d4ce7f3c689b543867"
+    },
+    {
+      "bytes": 7996,
+      "path": "best-approximation/explorer/defined/definition/ND0207.html",
+      "sha256": "954c923f0e1fbeeeaaf0fc4e2a97332781348f272d55792d51ab29d7e7b16e28"
+    },
+    {
+      "bytes": 6713,
+      "path": "best-approximation/explorer/defined/definition/PD0001.html",
+      "sha256": "f74b03070caaafaa1355d93a35a15109c393f93a726f15ad8450b5eceb23e9a1"
+    },
+    {
+      "bytes": 8673,
+      "path": "best-approximation/explorer/defined/definition/PD0002.html",
+      "sha256": "23b042fd8519ffc52336a5237a28abe62e50aaa9df31d93e94d22850d50fecc0"
+    },
+    {
+      "bytes": 6457,
+      "path": "best-approximation/explorer/defined/definition/PD0013.html",
+      "sha256": "94a8c093ab3aa066a84de1fa847731f6ed2a77f9cf90a7cf5971b9d177dd84f6"
+    },
+    {
+      "bytes": 92449,
+      "path": "best-approximation/explorer/defined/graph.html",
+      "sha256": "b637b4d1ac72d92ede9e6ff381ef7cc4621f6a468162437c1406e425c336c4ca"
+    },
+    {
+      "bytes": 72959,
+      "path": "best-approximation/explorer/defined/index.html",
+      "sha256": "52941bfe6a217088b0c2a8d5ce77a092a43486adf6310357c6304ba24693398a"
+    },
+    {
+      "bytes": 8291,
+      "path": "best-approximation/explorer/defined/tag/BA0001.html",
+      "sha256": "0697d273a3e8de0ec303d72927eefe2dc687b2a307dba47199929481f2df474a"
+    },
+    {
+      "bytes": 9018,
+      "path": "best-approximation/explorer/defined/tag/BA0002.html",
+      "sha256": "6e87e84043a5f04becd9a5bedad629428f019b9f70fb3958d7922d9aa1d42b18"
+    },
+    {
+      "bytes": 8942,
+      "path": "best-approximation/explorer/defined/tag/BA0003.html",
+      "sha256": "6df9fdb537936b71f02dbdae55ce7afac9d399eb04545c4019ce6731d006f263"
+    },
+    {
+      "bytes": 8955,
+      "path": "best-approximation/explorer/defined/tag/BA0004.html",
+      "sha256": "6a30ec6211fc89cd7e8e0e0487b07c07a884bba43b70500b8f3ad0aa51592c30"
+    },
+    {
+      "bytes": 7956,
+      "path": "best-approximation/explorer/defined/tag/BA0005.html",
+      "sha256": "0eae1c3c3a1901957467787d13e712baa1cc831c240cf3ab552a75643ab76135"
+    },
+    {
+      "bytes": 22124,
+      "path": "best-approximation/explorer/defined/tag/BA0006.html",
+      "sha256": "b889dd8ff63d75976b125afbaab84bdfb6016a9cfe561ef7add7c1c4c92fe3b1"
+    },
+    {
+      "bytes": 11993,
+      "path": "best-approximation/explorer/defined/tag/BA0007.html",
+      "sha256": "3bd78b7e5bdc80154ae942b13081ae7fec97ceee7748af8ceaba4b21e369a933"
+    },
+    {
+      "bytes": 13698,
+      "path": "best-approximation/explorer/defined/tag/BA0008.html",
+      "sha256": "21417093fa36e37501e1fbd1054cebfcdac1f91c34b15bbb31d30a32317576fa"
+    },
+    {
+      "bytes": 9577,
+      "path": "best-approximation/explorer/defined/tag/BA0009.html",
+      "sha256": "8f0aabb905cb821e8bfde60e78e3ff176f2d9cf95cb5a3d73e97e5c15b83ee51"
+    },
+    {
+      "bytes": 8744,
+      "path": "best-approximation/explorer/defined/tag/BA000A.html",
+      "sha256": "f1e305e36ea8af909ff7763fb078ac582781d61e0b6d6054d03061006b2ffba8"
+    },
+    {
+      "bytes": 22817,
+      "path": "best-approximation/explorer/defined/tag/BA000B.html",
+      "sha256": "19dfc7841f8a4a8f7a83a7a294a3680b22d98fad1ec42f151d72ff4a1253bcc9"
+    },
+    {
+      "bytes": 20064,
+      "path": "best-approximation/explorer/defined/tag/BA000C.html",
+      "sha256": "a59cb46d302c0c8da06bda2fa1b2abc7a864477ffd4316eaa84b7ac44baaa20a"
+    },
+    {
+      "bytes": 14762,
+      "path": "best-approximation/explorer/defined/tag/BA000D.html",
+      "sha256": "4d58133f44f2ef5b88e9dc1391e8ba15cd527345d576b775ab93a0f8dc42756b"
+    },
+    {
+      "bytes": 9851,
+      "path": "best-approximation/explorer/defined/tag/BA000E.html",
+      "sha256": "012282705a34ff0676dd6b810487b26fd9525717c19ea61d05554b2f64022801"
+    },
+    {
+      "bytes": 10524,
+      "path": "best-approximation/explorer/defined/tag/BA000F.html",
+      "sha256": "b17fe876d63648701c9f9b045fd98ac100e93f3304e1e2d24eafdf00f5b8821b"
+    },
+    {
+      "bytes": 9820,
+      "path": "best-approximation/explorer/defined/tag/BA0010.html",
+      "sha256": "47511717f7bc93fb1764798981622a8160a1bd715e95ec8b4055fe751b728a67"
+    },
+    {
+      "bytes": 16913,
+      "path": "best-approximation/explorer/defined/tag/BA0011.html",
+      "sha256": "641560beffc0878f75d4694d3bb2cf86014d5c2e25f4cd86dc14946377680183"
+    },
+    {
+      "bytes": 10466,
+      "path": "best-approximation/explorer/defined/tag/BA0012.html",
+      "sha256": "a5ec0bfb9b39a7b95d0ce5e2336def6bfabcadff4a1ec548ac391faf242d3800"
+    },
+    {
+      "bytes": 10460,
+      "path": "best-approximation/explorer/defined/tag/BA0013.html",
+      "sha256": "e467f67774aa25f79d4bc8392332419304e840467827152bd9a4fc64a0ad7b04"
+    },
+    {
+      "bytes": 10460,
+      "path": "best-approximation/explorer/defined/tag/BA0014.html",
+      "sha256": "9b3ebc6df8809218d7dd13bdd2f6c50025aa2bd3110f03b537f8e1bd34beb502"
+    },
+    {
+      "bytes": 10466,
+      "path": "best-approximation/explorer/defined/tag/BA0015.html",
+      "sha256": "5a46e931b8a4bcefdfc534d9ff881418ef7156cae8b888ebdbecb3a100c004df"
+    },
+    {
+      "bytes": 9645,
+      "path": "best-approximation/explorer/defined/tag/BA0016.html",
+      "sha256": "e4d4b8ac76762020fbad3787859842ab7c8b1511e5eaf4f579d170f781dc0bb8"
+    },
+    {
+      "bytes": 9412,
+      "path": "best-approximation/explorer/defined/tag/BA0017.html",
+      "sha256": "2b2cedb3f347f2db0f6581f3f13ee25b5ccd5e4cd95dcc43a769513de2df46b2"
+    },
+    {
+      "bytes": 37309,
+      "path": "best-approximation/explorer/defined/tag/BA0018.html",
+      "sha256": "d4acf804fd9aea624262d3c80b97ea1285e11d85df715c567a4968981a41e958"
+    },
+    {
+      "bytes": 15410,
+      "path": "best-approximation/explorer/defined/tag/BA0019.html",
+      "sha256": "34c1f3ea66445dd2c32f7fe742aafee570ac37d841cdf113faaabdfae9740abf"
+    },
+    {
+      "bytes": 8629,
+      "path": "best-approximation/explorer/defined/tag/BA001A.html",
+      "sha256": "23efb23ea482b9c32dd44d1b1f095aa40b16a67279db17f021b05c0cd0fd1ccd"
+    },
+    {
+      "bytes": 19759,
+      "path": "best-approximation/explorer/defined/tag/BA001B.html",
+      "sha256": "ce326c82a6408199c3e34871d2fb3fd4499aec38025782ea150b7e97b3c43024"
+    },
+    {
+      "bytes": 12690,
+      "path": "best-approximation/explorer/defined/tag/BA001C.html",
+      "sha256": "0aad24f0f59e88dd6ab91e6a5584c3e1ec4b49c8319923cb3db8b9c6e6cf88c6"
+    },
+    {
+      "bytes": 9629,
+      "path": "best-approximation/explorer/defined/tag/BA001D.html",
+      "sha256": "4daee06145bc09c835db778cf914276cf5ce503afaeb2b63d8895837b35a2ee3"
+    },
+    {
+      "bytes": 12353,
+      "path": "best-approximation/explorer/defined/tag/BA001E.html",
+      "sha256": "96ce7bec34ca08f54ad631e470309aa35b3ec71770635f9eb1db579fdaa27256"
+    },
+    {
+      "bytes": 8883,
+      "path": "best-approximation/explorer/defined/tag/BA001F.html",
+      "sha256": "e68e9b3efaaa6aef8a119e18e84a478b3202fa3f6afe53159d6d8c7c3976b6b8"
+    },
+    {
+      "bytes": 10241,
+      "path": "best-approximation/explorer/defined/tag/BA0020.html",
+      "sha256": "51ac7b85d8bd190ddf68f837efa46da00330cb517cea9a3e6639f234d39f2740"
+    },
+    {
+      "bytes": 26416,
+      "path": "best-approximation/explorer/defined/tag/BA0021.html",
+      "sha256": "2c7b96a437faa9f8c9f7c38ddb1e191e8c44b6dd530fb8d2313523427f9a1cac"
+    },
+    {
+      "bytes": 9438,
+      "path": "best-approximation/explorer/defined/tag/BA0022.html",
+      "sha256": "ec9efdabc0204b676dbbb2832e8f2a2a127d237c71027a59fd4f8dbd34c55ef5"
+    },
+    {
+      "bytes": 17546,
+      "path": "best-approximation/explorer/defined/tag/BA0023.html",
+      "sha256": "dbce742fba7a1209cf008dabba72c0950a5d9139a8fab238e6e27a6403ae4ed1"
+    },
+    {
+      "bytes": 25032,
+      "path": "best-approximation/explorer/defined/tag/BA0024.html",
+      "sha256": "24779b4ac0dd93ce9484cec0c79182e8f49dfbad5dc574b07a7226623823785b"
+    },
+    {
+      "bytes": 19341,
+      "path": "best-approximation/explorer/defined/tag/BA0025.html",
+      "sha256": "c157e0bc1db622d10b34f8aded143aef3550fdd6f9dc4fde0ae5df80ad5fda99"
+    },
+    {
+      "bytes": 19662,
+      "path": "best-approximation/explorer/defined/tag/BA0026.html",
+      "sha256": "6ac7d8b75a6d09f3b8cc6b1801ab65a5ea90187d2aa2546e1fa5c8d64eeae5f4"
+    },
+    {
+      "bytes": 9011,
+      "path": "best-approximation/explorer/defined/tag/BA0027.html",
+      "sha256": "ec8a44218cd282721d995c15314924a0fc1c179b35761aff5b5400bf317ae228"
+    },
+    {
+      "bytes": 15219,
+      "path": "best-approximation/explorer/defined/tag/BA0028.html",
+      "sha256": "eccd11132893683a006fd58904d549986b486ae72ee86d9604d42d817095e7ae"
+    },
+    {
+      "bytes": 15845,
+      "path": "best-approximation/explorer/defined/tag/BA0029.html",
+      "sha256": "2e54acd9f357a5c72539ce37051d16e4113153afa093294ceb098bef551b67da"
+    },
+    {
+      "bytes": 35723,
+      "path": "best-approximation/explorer/defined/tag/BA002A.html",
+      "sha256": "31593408d6fb4dc2cede4f5337727fc1b2c7cbead7c07aeafd3855c951fa9b50"
+    },
+    {
+      "bytes": 8054,
+      "path": "best-approximation/explorer/defined/tag/BA002B.html",
+      "sha256": "93a85e53aa7a1b9d411c792d3f86286ab08850d74adc8a2e5c1b8c79df7ab1d4"
+    },
+    {
+      "bytes": 21109,
+      "path": "best-approximation/explorer/defined/tag/BA002C.html",
+      "sha256": "f772febcc2407358607127d1f55e1f5a60a04771024679ad3ca0646f20e2b16d"
+    },
+    {
+      "bytes": 34428,
+      "path": "best-approximation/explorer/defined/tag/BA002D.html",
+      "sha256": "051a7df820182c23c3404bb0d62076c18d648632af3d45b178a296d79c8f1dc9"
+    },
+    {
+      "bytes": 11074,
+      "path": "best-approximation/explorer/defined/tag/BA002E.html",
+      "sha256": "64153bd79482c7a2f7ff1a6e75e13da6231bb05ac0eb8802d75e6982964e4382"
+    },
+    {
+      "bytes": 14397,
+      "path": "best-approximation/explorer/defined/tag/BA002F.html",
+      "sha256": "fd0d2c6e98a8e0479bd8b3695758fe0e2c3d3fd67de43f350e8f0d0b7280b4f6"
+    },
+    {
+      "bytes": 18976,
+      "path": "best-approximation/explorer/defined/tag/BA0030.html",
+      "sha256": "719aafc8128a9d610cc0a505a1ffb33ca47e61783841db0ac2a783da3796a4f8"
+    },
+    {
+      "bytes": 15797,
+      "path": "best-approximation/explorer/defined/tag/BA0031.html",
+      "sha256": "a71d32b3c9ff20a186d92d02d31f388caa6a798adce136d7575d3bafbbe3c1fe"
+    },
+    {
+      "bytes": 18000,
+      "path": "best-approximation/explorer/defined/tag/BA0032.html",
+      "sha256": "fa7694b5188d0e9646600c436bafe536eaf38050d22d5f9b4624acd08f9b4bdd"
+    },
+    {
+      "bytes": 36062,
+      "path": "best-approximation/explorer/defined/tag/BA0033.html",
+      "sha256": "81c29e986721c0ff188aa7c5c833619fd909133c7f8553a838b32c98d0ecbf9e"
+    },
+    {
+      "bytes": 20493,
+      "path": "best-approximation/explorer/defined/tag/BA0034.html",
+      "sha256": "4fdcac32fa07d1f0d850d559cbe3c5aea778e67a75e06cf45592988577ff51b7"
+    },
+    {
+      "bytes": 20004,
+      "path": "best-approximation/explorer/defined/tag/BA0035.html",
+      "sha256": "e2f46e3df5b7ce1eff1974efc4e207457de65d05e096a3eb719e8fcf12869872"
+    },
+    {
+      "bytes": 23054,
+      "path": "best-approximation/explorer/defined/tag/BA0036.html",
+      "sha256": "fb5d91ff4704ce6edfea76f892becef6b009e571eb7c82bce9c17ad38d38f8a9"
+    },
+    {
+      "bytes": 23036,
+      "path": "best-approximation/explorer/defined/tag/BA0037.html",
+      "sha256": "09f14a8aea75c7cfa8629e786409a4d5d5e600b06a65ee000b236e0874cdc689"
+    },
+    {
+      "bytes": 13772,
+      "path": "best-approximation/explorer/defined/tag/BA0038.html",
+      "sha256": "bed44ad217057cb7615a93a214d4cd17d2fd9457f213ad50ab3d62c6cc72ca44"
+    },
+    {
+      "bytes": 17862,
+      "path": "best-approximation/explorer/defined/tag/BA0039.html",
+      "sha256": "a38a4b9f950c941723d7656b3cffab8350f86d3a43aeb0870df211b070be3265"
+    },
+    {
+      "bytes": 19349,
+      "path": "best-approximation/explorer/defined/tag/BA003A.html",
+      "sha256": "712eea54f97f99e42db5c6577547353d462e392a3ebbd213d4a61ddba24f8af6"
+    },
+    {
+      "bytes": 46719,
+      "path": "best-approximation/explorer/defined/tag/BA003B.html",
+      "sha256": "55e84a98edd8f3fa8e2aae483d08a8eb696839bcb0792bf18896d17513034a42"
+    },
+    {
+      "bytes": 31658,
+      "path": "best-approximation/explorer/defined/tag/BA003C.html",
+      "sha256": "de2287c107accb6ad660b18f3c6f3833263a79c90643c8a285931d66cddb6124"
+    },
+    {
+      "bytes": 58045,
+      "path": "best-approximation/explorer/defined/tag/BA003D.html",
+      "sha256": "41c54709f4e1590cf21bdb15564cf0365f137ebf0eb839e6f76a04f256e2cfca"
+    },
+    {
+      "bytes": 55901,
+      "path": "best-approximation/explorer/defined/tag/BA003E.html",
+      "sha256": "dbff69b8f6ab7cf47d503ab7224369d0a8b569075596af917a2bb8d33ae45ff2"
+    },
+    {
+      "bytes": 47167,
+      "path": "best-approximation/explorer/defined/tag/BA003F.html",
+      "sha256": "181b9a9796a1b4cd3d5c0d5d1704e4329087bad3340d11d8795fa9734974aad4"
+    },
+    {
+      "bytes": 33094,
+      "path": "best-approximation/explorer/defined/tag/BA0040.html",
+      "sha256": "dbe2d1ebb437ecdf8cf40eb2a41744e710c7bafcb80ef25e14f00ad68fa39980"
+    },
+    {
+      "bytes": 36232,
+      "path": "best-approximation/explorer/defined/tag/BA0041.html",
+      "sha256": "a37852e65c079f9f4dee6fa8705d6e01b83c261c38b96cfec13944fb1736f20a"
+    },
+    {
+      "bytes": 29927,
+      "path": "best-approximation/explorer/defined/tag/BA0042.html",
+      "sha256": "437368be49dc3a84a340aa43e07d851bc284426dea7371e304d9e13da41175c4"
+    },
+    {
+      "bytes": 22133,
+      "path": "best-approximation/explorer/defined/tag/BA0043.html",
+      "sha256": "cf0474c82335e5ceaf1ea486442d930983db03eec17751f69523603ec3d0e2d0"
+    },
+    {
+      "bytes": 19980,
+      "path": "best-approximation/explorer/defined/tag/BA0044.html",
+      "sha256": "8f7b32ee76ea2446ce2d607444d617462b8495b4a1e7511373d745187434343d"
+    },
+    {
+      "bytes": 26174,
+      "path": "best-approximation/explorer/defined/tag/BA0045.html",
+      "sha256": "cdea23ce65dc062e0f7744faa167fb908d293f7095f92014337b31fb4518ab97"
+    },
+    {
+      "bytes": 35474,
+      "path": "best-approximation/explorer/defined/tag/BA0046.html",
+      "sha256": "990bf942a9c31d3ef32e6cc03d082157d7586afa633b815001804c19fc5f5473"
+    },
+    {
+      "bytes": 43278,
+      "path": "best-approximation/explorer/defined/tag/BA0047.html",
+      "sha256": "15053c718961cb63b0a6811b338326a06a9477999ff3add8c228248485a0f9bc"
+    },
+    {
+      "bytes": 27987,
+      "path": "best-approximation/explorer/defined/tag/BA0048.html",
+      "sha256": "8ef6c235dc70438b10a1400b24378b50784992ebf76fa494cebfa8949a21fdc2"
+    },
+    {
+      "bytes": 30815,
+      "path": "best-approximation/explorer/defined/tag/BA0049.html",
+      "sha256": "84627b5a8a6a16690d8f544d5a1dc21a9dbc89d5b5adaa8f1bc1af7f2ce46bbf"
+    },
+    {
+      "bytes": 28968,
+      "path": "best-approximation/explorer/defined/tag/BA004A.html",
+      "sha256": "32623e039293e66b5dc08fd4c2922cb4b9c8ff49abeb10833b0c051e2693bf30"
+    },
+    {
+      "bytes": 53739,
+      "path": "best-approximation/explorer/defined/tag/BA004B.html",
+      "sha256": "5b809db07337e2034e7ef4d4eaf77ab6cd9248310201a8f017558dd404d690d4"
+    },
+    {
+      "bytes": 36404,
+      "path": "best-approximation/explorer/defined/tag/BA004C.html",
+      "sha256": "d3b9fd0ab568d0a48095e4497a05935edaf615dafc78c90cbd91fc13fdda8052"
+    },
+    {
+      "bytes": 42411,
+      "path": "best-approximation/explorer/defined/tag/BA004D.html",
+      "sha256": "f112f5313878294abea616e21fbe2d8a0c41682ea835266980403da30bf4d0b3"
+    },
+    {
+      "bytes": 20718,
+      "path": "best-approximation/explorer/defined/tag/BA004E.html",
+      "sha256": "cfdabab1530fea27179bbfdfc820fc073b13ebeb2639c0556e6f0fb3e3cf9024"
+    },
+    {
+      "bytes": 57072,
+      "path": "best-approximation/explorer/defined/tag/BA004F.html",
+      "sha256": "69b946ab3d682e304e683f729feed1fdec917f740f0e6dae927838a90b7058f8"
+    },
+    {
+      "bytes": 51146,
+      "path": "best-approximation/explorer/defined/tag/BA0050.html",
+      "sha256": "4b10296d4fd3edfedd70d15cf2cc333dcf5ce2e25dd354b8404acb1530296572"
+    },
+    {
+      "bytes": 34120,
+      "path": "best-approximation/explorer/defined/tag/BA0051.html",
+      "sha256": "9148b5319e649417e7329987138e71d39cb97e8f208bdb3c9aced8fce0746b88"
+    },
+    {
+      "bytes": 37762,
+      "path": "best-approximation/explorer/defined/tag/BA0052.html",
+      "sha256": "a986768793e6b126ae3bd297e546fdbb9e1521ea26a2e823493e5a5208e6c40b"
+    },
+    {
+      "bytes": 33829,
+      "path": "best-approximation/explorer/defined/tag/BA0053.html",
+      "sha256": "fd98b5675aaf6c19f6d203d7477722273a269043c76332a5d14a95ad62aa86b5"
+    },
+    {
+      "bytes": 83721,
+      "path": "best-approximation/explorer/index.html",
+      "sha256": "d783c99528df4d09ac43f7deabdae752f6841a6a993828c097af01ddf666c069"
+    },
+    {
+      "bytes": 10343,
+      "path": "best-approximation/explorer/tag/BA0001.html",
+      "sha256": "b0c59f9b79ae78b4eaae2c736e553bd98129bdbb7f79b02adf189f8e132b5309"
+    },
+    {
+      "bytes": 10725,
+      "path": "best-approximation/explorer/tag/BA0002.html",
+      "sha256": "f89c724be7312e98b3c24e858f393675b7e6fc803df56bcab964a5bd312477cc"
+    },
+    {
+      "bytes": 11527,
+      "path": "best-approximation/explorer/tag/BA0003.html",
+      "sha256": "4222aa8036e2ef5d247c424211b14a5e883670ada6d07b3b907891c1e914eb79"
+    },
+    {
+      "bytes": 11543,
+      "path": "best-approximation/explorer/tag/BA0004.html",
+      "sha256": "f6f0c7624dd0ddde91f43341b63b4af40b825afc60afdf5dd14265172d56b3fa"
+    },
+    {
+      "bytes": 9120,
+      "path": "best-approximation/explorer/tag/BA0005.html",
+      "sha256": "eec547e5f9492718b0cb0a2652c6ea97a2d2f8bb066db19a3dfcacc39350b39b"
+    },
+    {
+      "bytes": 30958,
+      "path": "best-approximation/explorer/tag/BA0006.html",
+      "sha256": "4f60d4d9d900b24a12af2a240d9a6a3fdabe1a1ac74c3c11b5ba3327cce3d2c6"
+    },
+    {
+      "bytes": 17031,
+      "path": "best-approximation/explorer/tag/BA0007.html",
+      "sha256": "286ac0488b5595bc3b064c27b76bdfbddfbe408ba6dbf9c20cd4b89cdb745c60"
+    },
+    {
+      "bytes": 19296,
+      "path": "best-approximation/explorer/tag/BA0008.html",
+      "sha256": "a9b74d2503c5157da67d88bcce9d664b2f25178038a19c1be4cfd06d9bf0a3e4"
+    },
+    {
+      "bytes": 11379,
+      "path": "best-approximation/explorer/tag/BA0009.html",
+      "sha256": "1add1c25d6b4a13e8634f1315f197cce38143634729d32669dfb3efe2ca56ee1"
+    },
+    {
+      "bytes": 11151,
+      "path": "best-approximation/explorer/tag/BA000A.html",
+      "sha256": "49623e6c3349e0282cb7daad6113156e7671d24860fcb708dc14381f4be08f89"
+    },
+    {
+      "bytes": 31774,
+      "path": "best-approximation/explorer/tag/BA000B.html",
+      "sha256": "4ce2cab780f70b2f2d8c428ff3d012b8a0d0e34188255920e1cc1633e118fe77"
+    },
+    {
+      "bytes": 27827,
+      "path": "best-approximation/explorer/tag/BA000C.html",
+      "sha256": "050fe38015d428d9851d60fe3fbee7eefb754f8e97a4facebb4c1dac4c8d396c"
+    },
+    {
+      "bytes": 21475,
+      "path": "best-approximation/explorer/tag/BA000D.html",
+      "sha256": "b5bbd5162b11f1ad10e2640bea7d6ea4fa3aec365abc281e7096fa0759483792"
+    },
+    {
+      "bytes": 11948,
+      "path": "best-approximation/explorer/tag/BA000E.html",
+      "sha256": "b2bac5e79cf01889a70099319067764f21e23f1c7f194bf4ef80591560e9fa05"
+    },
+    {
+      "bytes": 13772,
+      "path": "best-approximation/explorer/tag/BA000F.html",
+      "sha256": "d228c3959a3f59cfaace9dc8366eff7a90542ee953798016e31efd7f37996adb"
+    },
+    {
+      "bytes": 13011,
+      "path": "best-approximation/explorer/tag/BA0010.html",
+      "sha256": "a80558463c91bcee06ea007132223ca2c9effe7e5ddf3a6c8cd18a38d434f1cc"
+    },
+    {
+      "bytes": 22686,
+      "path": "best-approximation/explorer/tag/BA0011.html",
+      "sha256": "28458087a7795eb0a0d1f8da72f1a4d2339a5dc8bbec9c8bdb0d786893f02542"
+    },
+    {
+      "bytes": 14288,
+      "path": "best-approximation/explorer/tag/BA0012.html",
+      "sha256": "617f5224a252c2ab8f07bc83d04a5b91af1261c58d46abf5002bbf61f810a008"
+    },
+    {
+      "bytes": 14273,
+      "path": "best-approximation/explorer/tag/BA0013.html",
+      "sha256": "5440f9ed980dc91138f3e5d9ff898deb9d118b56e5aff50af73c1aedcdbf45a5"
+    },
+    {
+      "bytes": 14273,
+      "path": "best-approximation/explorer/tag/BA0014.html",
+      "sha256": "aa5d49340d9eb0fd4d6935189c4661ac9ff7dae9196bc5618ab8f13e72c5809a"
+    },
+    {
+      "bytes": 14282,
+      "path": "best-approximation/explorer/tag/BA0015.html",
+      "sha256": "d97b2c95fdaceba580e59927e2f740886cc4c381240c68effa985ebc3f32478a"
+    },
+    {
+      "bytes": 12793,
+      "path": "best-approximation/explorer/tag/BA0016.html",
+      "sha256": "7191ccc7106fb662cb30e88c37a356fe5dccb164965d074e0fc81c1fb6bb242f"
+    },
+    {
+      "bytes": 12559,
+      "path": "best-approximation/explorer/tag/BA0017.html",
+      "sha256": "e3b67755374fb1759be366526d9dba00b7d3a4df0b2ca9e715f4ea512d53c406"
+    },
+    {
+      "bytes": 54788,
+      "path": "best-approximation/explorer/tag/BA0018.html",
+      "sha256": "6aa07b3c960fb0ebeea80b621d4d6bac665f8deb00a05df4914cbd149d4c8bf4"
+    },
+    {
+      "bytes": 19872,
+      "path": "best-approximation/explorer/tag/BA0019.html",
+      "sha256": "8715ddc14a9bb09f8a7eadbdc73237dc65571c46e75a7c750df210278c64786a"
+    },
+    {
+      "bytes": 10570,
+      "path": "best-approximation/explorer/tag/BA001A.html",
+      "sha256": "9bbce734ab46522bfee757527ad1ceb88f0460848570f4b928a6939cac7a9fa4"
+    },
+    {
+      "bytes": 26295,
+      "path": "best-approximation/explorer/tag/BA001B.html",
+      "sha256": "1d7db58f7400ce4e0184798bfd767d5247169154e4872d7f39a1a9e934e0c9b3"
+    },
+    {
+      "bytes": 15848,
+      "path": "best-approximation/explorer/tag/BA001C.html",
+      "sha256": "ffa397d3071d9983d86a8e8216d412828be335597559f1ab36400bbe86c43201"
+    },
+    {
+      "bytes": 12805,
+      "path": "best-approximation/explorer/tag/BA001D.html",
+      "sha256": "1390dae014718a3da40a30ca11b7ad6cee6f229d77813f4da44e3330570c5a46"
+    },
+    {
+      "bytes": 17294,
+      "path": "best-approximation/explorer/tag/BA001E.html",
+      "sha256": "4da484542e67a7a531cd1fe1ecd91484ca11a9ab4f360388bcd9ee435b909d53"
+    },
+    {
+      "bytes": 11317,
+      "path": "best-approximation/explorer/tag/BA001F.html",
+      "sha256": "db2cc952e1ced564b1e361dad9adcdbacddf02eb74f4dfad42e5b71c1ac06c7b"
+    },
+    {
+      "bytes": 13646,
+      "path": "best-approximation/explorer/tag/BA0020.html",
+      "sha256": "852f8981bcecdea462bd849ed0050862ea6f8f7cbe7610c240e4697f8c4176a9"
+    },
+    {
+      "bytes": 38325,
+      "path": "best-approximation/explorer/tag/BA0021.html",
+      "sha256": "547d2d0e113566abe933a6c382aae0b27508d944f503aa324437fa245dc826e7"
+    },
+    {
+      "bytes": 11767,
+      "path": "best-approximation/explorer/tag/BA0022.html",
+      "sha256": "e9822744a0203b368b43a1fab3a9e279db2a323760e3a46eb5616d5771c57e08"
+    },
+    {
+      "bytes": 23785,
+      "path": "best-approximation/explorer/tag/BA0023.html",
+      "sha256": "d999ca33faab21cc9367cc903c1c1ac481cc8e080abddda198d038f1508afff1"
+    },
+    {
+      "bytes": 34705,
+      "path": "best-approximation/explorer/tag/BA0024.html",
+      "sha256": "37c392dd329417c7bf4d7fb369f1d47e37b5bf368979490bb6fec37d4e65881b"
+    },
+    {
+      "bytes": 25901,
+      "path": "best-approximation/explorer/tag/BA0025.html",
+      "sha256": "c09093f3b5e20d59940b79cb9de6441b3784110da8973888d52498095ede75f1"
+    },
+    {
+      "bytes": 25999,
+      "path": "best-approximation/explorer/tag/BA0026.html",
+      "sha256": "01a2184635006daec9c89b303d93eead2f05e27560e1ce2834d762c8c45e81b4"
+    },
+    {
+      "bytes": 10506,
+      "path": "best-approximation/explorer/tag/BA0027.html",
+      "sha256": "5e10fc275defb254e0547405e97ab5321a36eea543cc4066947a175de8cabb97"
+    },
+    {
+      "bytes": 20336,
+      "path": "best-approximation/explorer/tag/BA0028.html",
+      "sha256": "82644313f5ed47374abab52ebce751ae22187317cffd99e2eeec2116a083283d"
+    },
+    {
+      "bytes": 18766,
+      "path": "best-approximation/explorer/tag/BA0029.html",
+      "sha256": "e29ed46e983aa48ea1fd14ea8049b9e4ca722a5f18bb25ca5263fbe2fb5fa64b"
+    },
+    {
+      "bytes": 52969,
+      "path": "best-approximation/explorer/tag/BA002A.html",
+      "sha256": "5fe77bc0356cab54a7ff306f859c431227fa63c81ea885f1b7ef3513ddc1dd38"
+    },
+    {
+      "bytes": 9582,
+      "path": "best-approximation/explorer/tag/BA002B.html",
+      "sha256": "677530291182ab7018205920dd73a7c544da3e16bd76b2c83df5c0e3dbb7afc8"
+    },
+    {
+      "bytes": 22585,
+      "path": "best-approximation/explorer/tag/BA002C.html",
+      "sha256": "f3022d24b765becc4a9cdb5498fd108c2e317d8965f3dda3e8664801f5f94a89"
+    },
+    {
+      "bytes": 58923,
+      "path": "best-approximation/explorer/tag/BA002D.html",
+      "sha256": "d268b5209bd8b2d42155f60b13aea5716dbe81255d2d3349971da346c03b0ba9"
+    },
+    {
+      "bytes": 13073,
+      "path": "best-approximation/explorer/tag/BA002E.html",
+      "sha256": "06781a9e37902c57490facc4a8f598d78494ae4e639923f0afb3395d3999b388"
+    },
+    {
+      "bytes": 19285,
+      "path": "best-approximation/explorer/tag/BA002F.html",
+      "sha256": "adb2b28e11816335360981120b8158a60c84b167c62f1a558bd354ececbfce61"
+    },
+    {
+      "bytes": 28436,
+      "path": "best-approximation/explorer/tag/BA0030.html",
+      "sha256": "d9332bddddffd5f8a778b4516dfffa9a6188aefb8bc42944a0b43a89d6268c42"
+    },
+    {
+      "bytes": 20950,
+      "path": "best-approximation/explorer/tag/BA0031.html",
+      "sha256": "bbfddb0dac7db22bd9d5b8f0b4e672e74c784df20cbd5c8ca44611714d58a23c"
+    },
+    {
+      "bytes": 21687,
+      "path": "best-approximation/explorer/tag/BA0032.html",
+      "sha256": "59510a39ad036702187c6c9be86febdec6b8047a14d8f2b53c1a3fe34ca577fe"
+    },
+    {
+      "bytes": 48183,
+      "path": "best-approximation/explorer/tag/BA0033.html",
+      "sha256": "e24fbd834826b9ed2d9fc803d89edfe917a82fd127307b7b124529a79ac49fcd"
+    },
+    {
+      "bytes": 33173,
+      "path": "best-approximation/explorer/tag/BA0034.html",
+      "sha256": "cc76f8c0f7a34b74b3e30562564ccef9b93a378b8ecef2366e40647ff67f7bda"
+    },
+    {
+      "bytes": 21568,
+      "path": "best-approximation/explorer/tag/BA0035.html",
+      "sha256": "c49f5e8e732cda235fd8a4a9d0887e9eefe0963356aead9873c03748fceb74b0"
+    },
+    {
+      "bytes": 24626,
+      "path": "best-approximation/explorer/tag/BA0036.html",
+      "sha256": "50124cf74e2d1ab6e85eb8a7990afed619314512bc4dacc02d3b56a7012c7ebe"
+    },
+    {
+      "bytes": 26369,
+      "path": "best-approximation/explorer/tag/BA0037.html",
+      "sha256": "b798c0b389d8e9c9b021b5f52cbe3aa23778fcf585c736d3ef3b7d4370ce5514"
+    },
+    {
+      "bytes": 15665,
+      "path": "best-approximation/explorer/tag/BA0038.html",
+      "sha256": "f2b646b294ed31c572088d57cf4a3e2239f47bfa4e9254e522295b8af86ecfcf"
+    },
+    {
+      "bytes": 19396,
+      "path": "best-approximation/explorer/tag/BA0039.html",
+      "sha256": "dd32e16469bd352d320d7e9cc44a8723852f394f9eb668add332e85a55cb9429"
+    },
+    {
+      "bytes": 23994,
+      "path": "best-approximation/explorer/tag/BA003A.html",
+      "sha256": "8a009303b807f2a585dc872110a9b4bf974c8988bbe266fe758fd93d8355bae2"
+    },
+    {
+      "bytes": 64805,
+      "path": "best-approximation/explorer/tag/BA003B.html",
+      "sha256": "8570c08a36a4cda9f0a2468a4db35e6b93226600c3e5b61c171d91b8c6c65a47"
+    },
+    {
+      "bytes": 38468,
+      "path": "best-approximation/explorer/tag/BA003C.html",
+      "sha256": "41a8f2c7bbe6bf46e7dfa3bd7a3dbea46a4e64c8e8eebb3ffeaf55b7f2f7c985"
+    },
+    {
+      "bytes": 86033,
+      "path": "best-approximation/explorer/tag/BA003D.html",
+      "sha256": "9b2ee6ab7f470fbb443c551db9bbccd97f480f9f43810fc4a498e80058c9a555"
+    },
+    {
+      "bytes": 107029,
+      "path": "best-approximation/explorer/tag/BA003E.html",
+      "sha256": "fac0abd40766291ee215ad616d1d7a1493685fec3dca1c27b69c2da99080d6ad"
+    },
+    {
+      "bytes": 95540,
+      "path": "best-approximation/explorer/tag/BA003F.html",
+      "sha256": "db807e8de80c20dd0f76bb265bc561a8d3219456e647289c35710eefcf557d1c"
+    },
+    {
+      "bytes": 56987,
+      "path": "best-approximation/explorer/tag/BA0040.html",
+      "sha256": "a4f26dfd00b1eb9b1ee9ecd410fb5bfcf93fce55734c9c76d007b010267a86e9"
+    },
+    {
+      "bytes": 51444,
+      "path": "best-approximation/explorer/tag/BA0041.html",
+      "sha256": "fe8501f1db9daf8c6af523bf1a56ec91ca957935d078e767b58b3a4850f3ba94"
+    },
+    {
+      "bytes": 33157,
+      "path": "best-approximation/explorer/tag/BA0042.html",
+      "sha256": "22cafba72c1cf186c8ddc46e5fe81b079e92f4cb3f02aa6fb341ee3090934940"
+    },
+    {
+      "bytes": 39471,
+      "path": "best-approximation/explorer/tag/BA0043.html",
+      "sha256": "f40344e3892208744ab1e3d3fdc2d6bbb2abaa543afc1fa6897e2e19a288e8ee"
+    },
+    {
+      "bytes": 28573,
+      "path": "best-approximation/explorer/tag/BA0044.html",
+      "sha256": "3084136171e47d607fd2d17733971041beff8d8c8ab5ce5ab703d4d41899a4b7"
+    },
+    {
+      "bytes": 27308,
+      "path": "best-approximation/explorer/tag/BA0045.html",
+      "sha256": "6d841518db404b78826486058d844f615cbfc5396f1a02ca84ea26e170fb544a"
+    },
+    {
+      "bytes": 47874,
+      "path": "best-approximation/explorer/tag/BA0046.html",
+      "sha256": "3f0aa4df00f9c56be85b9b3ef46f3a212f230fc2ea4199aba9f43f5b11b5b404"
+    },
+    {
+      "bytes": 72443,
+      "path": "best-approximation/explorer/tag/BA0047.html",
+      "sha256": "c4a767dd14ce0633f4dd2802af497116c8455f7542f8ddd6792d521522e20a2d"
+    },
+    {
+      "bytes": 31263,
+      "path": "best-approximation/explorer/tag/BA0048.html",
+      "sha256": "ddec115b83a3b35fab32df32780634b5fc62d9b81df96cda52ba8aa0c4ba7530"
+    },
+    {
+      "bytes": 44401,
+      "path": "best-approximation/explorer/tag/BA0049.html",
+      "sha256": "600285bab0285042715e32a9234ed7b0dad09b205a5cacaf4aee3b84bf7e1f3e"
+    },
+    {
+      "bytes": 41704,
+      "path": "best-approximation/explorer/tag/BA004A.html",
+      "sha256": "4e620de77ef29b79f96fccc70884458bf4692b102e240025fff986148662fec2"
+    },
+    {
+      "bytes": 90695,
+      "path": "best-approximation/explorer/tag/BA004B.html",
+      "sha256": "856d83a7d3c717cd6d87e0fe7e52d740a2ffa0133a896f49fa4d5c927e0c27b8"
+    },
+    {
+      "bytes": 41340,
+      "path": "best-approximation/explorer/tag/BA004C.html",
+      "sha256": "04f60c9daa55218f8e2458c71e1a270cf469814c559c4751b41a48133d10f2dc"
+    },
+    {
+      "bytes": 57083,
+      "path": "best-approximation/explorer/tag/BA004D.html",
+      "sha256": "b083bf30300a32997807a736ebee85ac99c68dc07f6851c3f9c7e0e30bc3da32"
+    },
+    {
+      "bytes": 22878,
+      "path": "best-approximation/explorer/tag/BA004E.html",
+      "sha256": "f7e7718159888d5b07a40e5a3507bbe528e4079688d6f1e26945537bc903be52"
+    },
+    {
+      "bytes": 119315,
+      "path": "best-approximation/explorer/tag/BA004F.html",
+      "sha256": "e1c297012ae98e2fc83d2cf778c7353ee9745dbf35edacfe96ac01f36d584dbd"
+    },
+    {
+      "bytes": 69606,
+      "path": "best-approximation/explorer/tag/BA0050.html",
+      "sha256": "e753d70e4a460b6123d83d5f392c25eb1830b07c8caa9340928ace7ef2eecef7"
+    },
+    {
+      "bytes": 39436,
+      "path": "best-approximation/explorer/tag/BA0051.html",
+      "sha256": "9538aabfcb5caf0ff75d3485c0f88074c847005760d78dcb790b0598ba746c82"
+    },
+    {
+      "bytes": 44419,
+      "path": "best-approximation/explorer/tag/BA0052.html",
+      "sha256": "73be107cdfa4e03136999fadec4fb36b9bc3d1ba3e06edb8f18ac622476248a4"
+    },
+    {
+      "bytes": 39000,
+      "path": "best-approximation/explorer/tag/BA0053.html",
+      "sha256": "0e99a9141b07d86c5c8f9f03808c9709ea151b9f3b5d331ebb12591251792628"
+    },
+    {
+      "bytes": 9352,
+      "path": "best-approximation/index.html",
+      "sha256": "9e6dd5c8c3028bd905b8c7e6eaf5d1bc91efe949d0a240e61444bc3990d2f7d4"
+    },
+    {
+      "bytes": 1412251,
+      "path": "exponent-lifting/api/corpus.json",
+      "sha256": "e0c2d72f2e082a728c3f054293edd2db97830b3f3859deba433e5a81c5ff024e"
+    },
+    {
+      "bytes": 54826,
+      "path": "exponent-lifting/explorer/defined/api/graph.json",
+      "sha256": "10df0b921c46faec4c4d34135bb614e4f661475327e62143802a898a65f9e18b"
+    },
+    {
+      "bytes": 12934,
+      "path": "exponent-lifting/explorer/defined/definition/ND0196.html",
+      "sha256": "9f7f15a05d26962d888e5ac6bb976b7fbc1d4031458a70ecc82468a0f0cb0578"
+    },
+    {
+      "bytes": 19325,
+      "path": "exponent-lifting/explorer/defined/definition/ND0197.html",
+      "sha256": "161e855993e64d264f72a1d71991d40a51cb9b8e0fd85d8669e0007ac00b866b"
+    },
+    {
+      "bytes": 24847,
+      "path": "exponent-lifting/explorer/defined/definition/ND0198.html",
+      "sha256": "a799e012465d4754ab820fcbf2642c2aa284c3d69b341fe95f1195d23c223f61"
+    },
+    {
+      "bytes": 5623,
+      "path": "exponent-lifting/explorer/defined/definition/PD0001.html",
+      "sha256": "de9b7641a01a2cddd90fb4a69e2eff9e54103f76b32063a073d3485de349ddd8"
+    },
+    {
+      "bytes": 6026,
+      "path": "exponent-lifting/explorer/defined/definition/PD0002.html",
+      "sha256": "92ffe0745fa612300d6b14b61f64c6ea618bbea97fe40dca36176ed4f24a6e7c"
+    },
+    {
+      "bytes": 7578,
+      "path": "exponent-lifting/explorer/defined/definition/PD0003.html",
+      "sha256": "a42492ff97f93d7ee6e8dd9500bdcafb9367ffc102cecacc04be29cc85a2eb05"
+    },
+    {
+      "bytes": 5893,
+      "path": "exponent-lifting/explorer/defined/definition/PD0013.html",
+      "sha256": "537232facdc3f00e4fd1a0105071d3de835ea8cbe867522f56fc6e650268f6a6"
+    },
+    {
+      "bytes": 8368,
+      "path": "exponent-lifting/explorer/defined/definition/PD0014.html",
+      "sha256": "85a9aff36250ae83bf626d35680c24186991487d3abcee1e160c278b034e9482"
+    },
+    {
+      "bytes": 6288,
+      "path": "exponent-lifting/explorer/defined/definition/PD0019.html",
+      "sha256": "221be0cd5cb124350bac70ba1387b4d929470a45d318ca088ff0ac8eecaaf005"
+    },
+    {
+      "bytes": 10848,
+      "path": "exponent-lifting/explorer/defined/definition/PD0020.html",
+      "sha256": "512184082e2ecc0c167c30c56cbe586ff74527f36c75b1dc9d8369aabbd36ce0"
+    },
+    {
+      "bytes": 10716,
+      "path": "exponent-lifting/explorer/defined/definition/PD0044.html",
+      "sha256": "df6dccd907786f405c5a80bf9a49fe7d7d26345b546f347edb7788832c0fb1ee"
+    },
+    {
+      "bytes": 19758,
+      "path": "exponent-lifting/explorer/defined/definition/PD0045.html",
+      "sha256": "0109d555f54fe69cb7f82129222e42ea17bead9b779110e73ea395fb05aaf802"
+    },
+    {
+      "bytes": 17731,
+      "path": "exponent-lifting/explorer/defined/definition/PD0046.html",
+      "sha256": "811366e4373f13fd12b2a8d0370c1f473738238dddbf2413c020a2076f4fa648"
+    },
+    {
+      "bytes": 46027,
+      "path": "exponent-lifting/explorer/defined/graph.html",
+      "sha256": "f99e04dbdbddcac0ddce2c0fe6913da82c3572a2842a7fd9e6f3b7a68d3c15c1"
+    },
+    {
+      "bytes": 35248,
+      "path": "exponent-lifting/explorer/defined/index.html",
+      "sha256": "cf68e9c476bf8d0cea123f14a89ff6a86bd2fd5d1ea5f7ef8ef132fe799b673d"
+    },
+    {
+      "bytes": 13414,
+      "path": "exponent-lifting/explorer/defined/tag/EL0001.html",
+      "sha256": "75767220cf7e44ae0a1731503739991abbe6fffab4b4f9d467f3efd6d9680b6b"
+    },
+    {
+      "bytes": 18973,
+      "path": "exponent-lifting/explorer/defined/tag/EL0002.html",
+      "sha256": "230772b1c54c6d5b33a7a808a2bd242f95761666de13bdd30dce080b359b6445"
+    },
+    {
+      "bytes": 25541,
+      "path": "exponent-lifting/explorer/defined/tag/EL0003.html",
+      "sha256": "06741e75869d6473c402551fc30886f94c8de4b5e9322c67384fd73650ae65b1"
+    },
+    {
+      "bytes": 33974,
+      "path": "exponent-lifting/explorer/defined/tag/EL0004.html",
+      "sha256": "6180a2eeb894c24f422911d74764cad7700ac252204a9f88d5da25536ddf7bf0"
+    },
+    {
+      "bytes": 8267,
+      "path": "exponent-lifting/explorer/defined/tag/EL0005.html",
+      "sha256": "be511334cdeeda80265180bb5465a7e3c9dd9134fc2fe9de73e0d931efc28366"
+    },
+    {
+      "bytes": 11311,
+      "path": "exponent-lifting/explorer/defined/tag/EL0006.html",
+      "sha256": "302c59a8da4c3c5494fed7d7c62cf79428e558dd0f920ba196ea7c43fc5adf29"
+    },
+    {
+      "bytes": 11361,
+      "path": "exponent-lifting/explorer/defined/tag/EL0007.html",
+      "sha256": "90ee3d5fad910f8de6e727e5c1c97f662a37bf769ae076597356a262c75d3289"
+    },
+    {
+      "bytes": 10645,
+      "path": "exponent-lifting/explorer/defined/tag/EL0008.html",
+      "sha256": "7c3e40814344e79283f16695eb6b92fe965a5cad169565bc2d69616863aa3b54"
+    },
+    {
+      "bytes": 10455,
+      "path": "exponent-lifting/explorer/defined/tag/EL0009.html",
+      "sha256": "86efbdd2e179ea0c4ccb7ce92494a35a5fd706191d5ce7e0811fff318ff2cbc0"
+    },
+    {
+      "bytes": 45561,
+      "path": "exponent-lifting/explorer/defined/tag/EL000A.html",
+      "sha256": "21f633485575d8d05cd22ff667ace330c19efcb2897b0f854682a07759329b3f"
+    },
+    {
+      "bytes": 7758,
+      "path": "exponent-lifting/explorer/defined/tag/EL000B.html",
+      "sha256": "cbc4dbac286f81d6a0f4f43f18013f7af4bae62a68c1cea33f83d1cd8395c783"
+    },
+    {
+      "bytes": 8765,
+      "path": "exponent-lifting/explorer/defined/tag/EL000C.html",
+      "sha256": "2e8a2ffa6506243c0878eea971f73bb918bdbf158c01905d86f58620fde2321f"
+    },
+    {
+      "bytes": 8371,
+      "path": "exponent-lifting/explorer/defined/tag/EL000D.html",
+      "sha256": "08d01ee77e957b29d35739d093ccceec421d3b5ca881e67609f6586597ed149e"
+    },
+    {
+      "bytes": 10893,
+      "path": "exponent-lifting/explorer/defined/tag/EL000E.html",
+      "sha256": "eb01716111c0ff63bf82e3307a160dbfa4c3c4f3c2aeb5f2b7af670c922b9037"
+    },
+    {
+      "bytes": 8554,
+      "path": "exponent-lifting/explorer/defined/tag/EL000F.html",
+      "sha256": "cf89d169304c1b35a54e39ea1cdc766a7633baf51b4a53a12ac183ace0d6635f"
+    },
+    {
+      "bytes": 17628,
+      "path": "exponent-lifting/explorer/defined/tag/EL0010.html",
+      "sha256": "e243ddce896afa39bc7cfa9878b4de78166528970df62466a7e51440e252b343"
+    },
+    {
+      "bytes": 12513,
+      "path": "exponent-lifting/explorer/defined/tag/EL0011.html",
+      "sha256": "a627a72c86a4642a05766d8efb937a6dc6c560c07abc942f3a3357f546f51b1a"
+    },
+    {
+      "bytes": 18100,
+      "path": "exponent-lifting/explorer/defined/tag/EL0012.html",
+      "sha256": "392350491f90676ef12a1a263f094ada0bdbc504c92b6df9b7c647daaf9b70e6"
+    },
+    {
+      "bytes": 17881,
+      "path": "exponent-lifting/explorer/defined/tag/EL0013.html",
+      "sha256": "88a7e00da664242d3489a02d33b5e034c4153e1fc68788aa4688fcd9f8bf59aa"
+    },
+    {
+      "bytes": 17164,
+      "path": "exponent-lifting/explorer/defined/tag/EL0014.html",
+      "sha256": "d3f720cab67e78ae6f20c4c9eac25eea83645cbe86a490dce68b721ca56259f8"
+    },
+    {
+      "bytes": 21615,
+      "path": "exponent-lifting/explorer/defined/tag/EL0015.html",
+      "sha256": "eac5e2d3b43976cb1d60b135fbddff6cabfe31cb63dac8d009462b14929c0ffd"
+    },
+    {
+      "bytes": 33462,
+      "path": "exponent-lifting/explorer/defined/tag/EL0016.html",
+      "sha256": "07604ef89ed5f92e80a6b6d746bd38816761ef925b60ea1bed0438a1dd72547f"
+    },
+    {
+      "bytes": 20404,
+      "path": "exponent-lifting/explorer/defined/tag/EL0017.html",
+      "sha256": "f27ec5bbffc7926b25ca56237ba04b02991a0e73981c3a6a79563df94e2143d5"
+    },
+    {
+      "bytes": 38924,
+      "path": "exponent-lifting/explorer/defined/tag/EL0018.html",
+      "sha256": "953db7197801eb11c690993c2c6f9a5bfa726904d166e9b17756df5f70452319"
+    },
+    {
+      "bytes": 24753,
+      "path": "exponent-lifting/explorer/defined/tag/EL0019.html",
+      "sha256": "facde898468206ab91d6d83c437f3c5b24505a96df39414a1bba75d474398799"
+    },
+    {
+      "bytes": 30461,
+      "path": "exponent-lifting/explorer/defined/tag/EL001A.html",
+      "sha256": "150058c2c52c8a011b7201e49f9a5f5ee192b2f29ccd2f0d99375ce8ce1ba18a"
+    },
+    {
+      "bytes": 30048,
+      "path": "exponent-lifting/explorer/defined/tag/EL001B.html",
+      "sha256": "89d946bdcd41f2f0db21077c2afe99313d4f2dfad0106030cd61dfa9346a62b4"
+    },
+    {
+      "bytes": 39559,
+      "path": "exponent-lifting/explorer/defined/tag/EL001C.html",
+      "sha256": "c024d2142e061a274b7879f3c8ab319c66ebd884fce9a657140ace9b82267903"
+    },
+    {
+      "bytes": 66353,
+      "path": "exponent-lifting/explorer/defined/tag/EL001D.html",
+      "sha256": "0f2082d5182c8ffc560b81867f31da8045a9199787c3e3446140b43fb30ad17d"
+    },
+    {
+      "bytes": 51386,
+      "path": "exponent-lifting/explorer/defined/tag/EL001E.html",
+      "sha256": "9adf689eed7d4558b4c463251051b297382c096ab44c8929591641bc60935f7d"
+    },
+    {
+      "bytes": 47961,
+      "path": "exponent-lifting/explorer/defined/tag/EL001F.html",
+      "sha256": "b8d4457ab823cfb765d998eeb3070f3cbf0a74ba8b4208af440b90a685063f28"
+    },
+    {
+      "bytes": 63953,
+      "path": "exponent-lifting/explorer/defined/tag/EL0020.html",
+      "sha256": "7b40e4ec4dd33b22848819cf8ef5b4405348d8cf02c0b59bcfe265be60868ee4"
+    },
+    {
+      "bytes": 69712,
+      "path": "exponent-lifting/explorer/defined/tag/EL0021.html",
+      "sha256": "c6147a19521908c7b9b435a1ce6fe7576bc123db2078ca3ca53b91a0bbc6cb0c"
+    },
+    {
+      "bytes": 8716,
+      "path": "exponent-lifting/explorer/defined/tag/EL0022.html",
+      "sha256": "0ad97df8d0f2cf248e0d2c9ed289eae96bfdfdf6f92bf08335e53c9679669a64"
+    },
+    {
+      "bytes": 7662,
+      "path": "exponent-lifting/explorer/defined/tag/EL0023.html",
+      "sha256": "4344cf47f8867cff71e652b1ab0a6264cab802ccc4438aee839cb808ffc24ed2"
+    },
+    {
+      "bytes": 59409,
+      "path": "exponent-lifting/explorer/defined/tag/EL0024.html",
+      "sha256": "bb0b8853e1ba2c9bb700f935036b1b858b1f75107ff1075b65f4490c0c4460b7"
+    },
+    {
+      "bytes": 24584,
+      "path": "exponent-lifting/explorer/defined/tag/EL0025.html",
+      "sha256": "41101dc78a0a821792c22d997f95d7b43d1a886185d47e1140b7caa955329334"
+    },
+    {
+      "bytes": 58349,
+      "path": "exponent-lifting/explorer/defined/tag/EL0026.html",
+      "sha256": "1fb5c48bab2d4514e3d4e094d5efd012f5ea51a2b4616c59ec3d9440b0630758"
+    },
+    {
+      "bytes": 39154,
+      "path": "exponent-lifting/explorer/index.html",
+      "sha256": "8554912830d9a418a2408a2021b58e7b06b5d0d1dd64fbf90c33f12e9130d683"
+    },
+    {
+      "bytes": 20127,
+      "path": "exponent-lifting/explorer/tag/EL0001.html",
+      "sha256": "007bad41dc0895944def8872bef65042abb53b9d4ef2a3e88556543717f89e95"
+    },
+    {
+      "bytes": 30674,
+      "path": "exponent-lifting/explorer/tag/EL0002.html",
+      "sha256": "0f4844f7531a91befce83b8eadaa8c61fb5c267e51fd1db76c6f492bed935685"
+    },
+    {
+      "bytes": 43117,
+      "path": "exponent-lifting/explorer/tag/EL0003.html",
+      "sha256": "5d450401436e743d54911a8098570379148de7f132aae3f27e5b28b95e16782a"
+    },
+    {
+      "bytes": 59378,
+      "path": "exponent-lifting/explorer/tag/EL0004.html",
+      "sha256": "c905583c04c792cce053f919851adfc773e19d0e327a638019bc0071a1927657"
+    },
+    {
+      "bytes": 10254,
+      "path": "exponent-lifting/explorer/tag/EL0005.html",
+      "sha256": "5c4361f1e2156963fdbf59d128eacfd4de69619205a3fe0790e363d8dbb1b9b0"
+    },
+    {
+      "bytes": 14407,
+      "path": "exponent-lifting/explorer/tag/EL0006.html",
+      "sha256": "063287ffc29b8c42d998a75772b1292e9ccec8aa882cb64512d1ee7c6ed1df1e"
+    },
+    {
+      "bytes": 16802,
+      "path": "exponent-lifting/explorer/tag/EL0007.html",
+      "sha256": "2c4c1abe02cdbfb66497745ec94c545b19237e32e00fb85c4cd25689482eec4d"
+    },
+    {
+      "bytes": 12769,
+      "path": "exponent-lifting/explorer/tag/EL0008.html",
+      "sha256": "60fb9080b17ee9e28319026a6cd82c18d0d861b7f20dae78bfc34fdde5c5d27e"
+    },
+    {
+      "bytes": 11906,
+      "path": "exponent-lifting/explorer/tag/EL0009.html",
+      "sha256": "3ae9cf89649ee898e2435633f7465a715688fb79a4133b953edda9d8fb143481"
+    },
+    {
+      "bytes": 77679,
+      "path": "exponent-lifting/explorer/tag/EL000A.html",
+      "sha256": "783ea492768025b955dc4bf25c818771029d958e552cdcd47a1abdf1ef9780b6"
+    },
+    {
+      "bytes": 9254,
+      "path": "exponent-lifting/explorer/tag/EL000B.html",
+      "sha256": "cca811d5806da721be4381fa4875e7b4bd42ae404f6a853fe37c5e25c96b5259"
+    },
+    {
+      "bytes": 10771,
+      "path": "exponent-lifting/explorer/tag/EL000C.html",
+      "sha256": "2e7e37f3570a59a1a965db770a7726f2bfa575a42f9edab9622a8f1b74472865"
+    },
+    {
+      "bytes": 9816,
+      "path": "exponent-lifting/explorer/tag/EL000D.html",
+      "sha256": "4f4f567394dc78aa5a8bdabd7f3bf26c937992255b192186d86605b33df5d21f"
+    },
+    {
+      "bytes": 14396,
+      "path": "exponent-lifting/explorer/tag/EL000E.html",
+      "sha256": "1b20a585289a71e68c07bcad9407c34b0fec5c6ac444c48d2cd90b083a895c94"
+    },
+    {
+      "bytes": 10172,
+      "path": "exponent-lifting/explorer/tag/EL000F.html",
+      "sha256": "fb44a40df75f2d1e3cc9c125ebe8e36695988ca74959799eb847d3f1c725f21e"
+    },
+    {
+      "bytes": 27166,
+      "path": "exponent-lifting/explorer/tag/EL0010.html",
+      "sha256": "4498fb3bc75b1c3f57f6110a289e695075d437f76f79ceadb2137c3cfe30ef41"
+    },
+    {
+      "bytes": 17247,
+      "path": "exponent-lifting/explorer/tag/EL0011.html",
+      "sha256": "8b95fce4ce81dea15c27afcf3191743850197b6c6d8f83885afcbe4b972c0f1b"
+    },
+    {
+      "bytes": 26247,
+      "path": "exponent-lifting/explorer/tag/EL0012.html",
+      "sha256": "1ca68a3dd72bee67baa00317c2ea35f257e6301f6de6c97a5e22716448463aba"
+    },
+    {
+      "bytes": 19229,
+      "path": "exponent-lifting/explorer/tag/EL0013.html",
+      "sha256": "8c741f3ae2622d49f63a95d0c1cab658d707e99d67655b6c67ca9dab2a9b5870"
+    },
+    {
+      "bytes": 18158,
+      "path": "exponent-lifting/explorer/tag/EL0014.html",
+      "sha256": "b4eec4e262c9e4b7bf97b9cb5d4e1fca64fdc1806d6fe217944f00d1776993e3"
+    },
+    {
+      "bytes": 29077,
+      "path": "exponent-lifting/explorer/tag/EL0015.html",
+      "sha256": "c0ff86a44d54efeda9ca879b7ce70d76d28c529882dda9810299acf47d21ad6d"
+    },
+    {
+      "bytes": 55071,
+      "path": "exponent-lifting/explorer/tag/EL0016.html",
+      "sha256": "70a10d8a6686fbe237bd7bd4611cf3987723edb3c7035409741675270afc60ae"
+    },
+    {
+      "bytes": 32955,
+      "path": "exponent-lifting/explorer/tag/EL0017.html",
+      "sha256": "df3c88665ed2d7ab424ada9f5d6d92f79532574f4c9fce60a5a68862225c340b"
+    },
+    {
+      "bytes": 52207,
+      "path": "exponent-lifting/explorer/tag/EL0018.html",
+      "sha256": "21ca6f29b524c02d6d1906c8777a3e80d4cbb0e853a5fbd8f83a3500bc875f01"
+    },
+    {
+      "bytes": 28411,
+      "path": "exponent-lifting/explorer/tag/EL0019.html",
+      "sha256": "6e0ede464e0dcf387848c94c5518f948cbf1ac93b4e6b2ad58bf2e3aa92d751a"
+    },
+    {
+      "bytes": 38560,
+      "path": "exponent-lifting/explorer/tag/EL001A.html",
+      "sha256": "988229dbdc08c46495edcdd8a83c22c7df56893eba0f668223f52927ca7224cd"
+    },
+    {
+      "bytes": 51990,
+      "path": "exponent-lifting/explorer/tag/EL001B.html",
+      "sha256": "bdc1949eeddf4ed36722ef56d7be11c49570b06b193f0eabaea96fd56bd05cad"
+    },
+    {
+      "bytes": 68595,
+      "path": "exponent-lifting/explorer/tag/EL001C.html",
+      "sha256": "f6048f0d83040fbe3b3613e1e6243a5bbf991c09f7d2a4abd39f9b3ea21434de"
+    },
+    {
+      "bytes": 73941,
+      "path": "exponent-lifting/explorer/tag/EL001D.html",
+      "sha256": "e6d7ccf362894c4c19543ef5d47940a90616303fe2b9b96f22b11005fc852125"
+    },
+    {
+      "bytes": 66489,
+      "path": "exponent-lifting/explorer/tag/EL001E.html",
+      "sha256": "25cde9d81c8795f2f5f79cf99e4c9453fccea6ff91e6b6bf2fb0cb7255c16868"
+    },
+    {
+      "bytes": 60682,
+      "path": "exponent-lifting/explorer/tag/EL001F.html",
+      "sha256": "03da5a397bcf8e43ea18f1f6e001da6a0e8de4867139e448cca96fe90c0ab342"
+    },
+    {
+      "bytes": 121174,
+      "path": "exponent-lifting/explorer/tag/EL0020.html",
+      "sha256": "dfc4f101a0c464f2552352fc43ee8513af60de1c87e4f6e59f16bc0acad1cfac"
+    },
+    {
+      "bytes": 128506,
+      "path": "exponent-lifting/explorer/tag/EL0021.html",
+      "sha256": "a8bc0af6b1b710522145be78f705c5604bc1f9129df25db84138677e70af4673"
+    },
+    {
+      "bytes": 10617,
+      "path": "exponent-lifting/explorer/tag/EL0022.html",
+      "sha256": "5d659e664b2503c99fdc6f647746507889f3f0865f5ab256b929ea5407f6df01"
+    },
+    {
+      "bytes": 8730,
+      "path": "exponent-lifting/explorer/tag/EL0023.html",
+      "sha256": "51db2fec890ce0d2f81cf2e42dd538d0faa957d6fc30095ada5bcee0c9d650e3"
+    },
+    {
+      "bytes": 64198,
+      "path": "exponent-lifting/explorer/tag/EL0024.html",
+      "sha256": "755fe3bc44a49c1cbaaf7e4e0a8455f958594b81ea12cf748e7e8085ed7f7829"
+    },
+    {
+      "bytes": 29648,
+      "path": "exponent-lifting/explorer/tag/EL0025.html",
+      "sha256": "abb47ab19a74ea9416d3f1162b110a02b5883029970f89ddfe96732e8bc09246"
+    },
+    {
+      "bytes": 85178,
+      "path": "exponent-lifting/explorer/tag/EL0026.html",
+      "sha256": "ee59241cfb950f76f0bb693cceeb1ef74b8a70112b258bf8e0eae1e0999dac47"
+    },
+    {
+      "bytes": 8581,
+      "path": "exponent-lifting/index.html",
+      "sha256": "98732393e84de935aa8c44526e23f9c2d019250b12113784acc3f8418a0b7789"
+    },
+    {
+      "bytes": 6753,
+      "path": "index.html",
+      "sha256": "de33f41791e2e931b9d8caff957630b67a6b658576d1797966cf18605d40e2f6"
+    },
+    {
+      "bytes": 1262359,
+      "path": "prime-valuation-support/api/corpus.json",
+      "sha256": "61872ca9e1678f0ae3df583d7bf68b4a616b141502c312307eb832e20e1c86c2"
+    },
+    {
+      "bytes": 43749,
+      "path": "prime-valuation-support/explorer/defined/api/graph.json",
+      "sha256": "e225febc18b0c21be78fc19792b18cffa27fabc02308709d1c17056dd6cdc807"
+    },
+    {
+      "bytes": 9257,
+      "path": "prime-valuation-support/explorer/defined/definition/ND0149.html",
+      "sha256": "f04957427595821d890a44b5439db74582c123a10f8609ad644367a3baafc2f6"
+    },
+    {
+      "bytes": 5718,
+      "path": "prime-valuation-support/explorer/defined/definition/ND0177.html",
+      "sha256": "503942d3ccb3cecc5d6e29c8af3ad7a9f9af82c6cc0de21759e2b488196f760d"
+    },
+    {
+      "bytes": 5739,
+      "path": "prime-valuation-support/explorer/defined/definition/ND0178.html",
+      "sha256": "4e9a1c1e6cacfb4c3545d94dde789dd80a71355582d29df78770357c68114336"
+    },
+    {
+      "bytes": 23067,
+      "path": "prime-valuation-support/explorer/defined/definition/ND0179.html",
+      "sha256": "5208b7fd1ae6fc2ca826959ba7e9ee4fa577694c7e778fd9d4799c29df4092fd"
+    },
+    {
+      "bytes": 7356,
+      "path": "prime-valuation-support/explorer/defined/definition/ND0180.html",
+      "sha256": "7104b41a55b458f9eaa394aba356d6e9e207c80a9df788c3861a1490f1fd29d3"
+    },
+    {
+      "bytes": 29282,
+      "path": "prime-valuation-support/explorer/defined/definition/ND0181.html",
+      "sha256": "551beedd286f176323086e11b86512e01891bb4d10d9ca80f8d6ea423d37206e"
+    },
+    {
+      "bytes": 5627,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0001.html",
+      "sha256": "fb9addd136c9c58a51ca228508d3a327ef86e82925f83e437eed079a405fc3fa"
+    },
+    {
+      "bytes": 6609,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0002.html",
+      "sha256": "a0d57afff2259d5202e769e4cec0c329e901d1e6ad2af2e5eb819c44c113cbcf"
+    },
+    {
+      "bytes": 6618,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0003.html",
+      "sha256": "fcaa30183984ff829ca158c749edb49f7812e1a51feec227bf544d4075fe590d"
+    },
+    {
+      "bytes": 7454,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0004.html",
+      "sha256": "9e0749a36e2f8e1d6c31fb109e198b2670a2d36e9c0fca7b76a69694a17e5a56"
+    },
+    {
+      "bytes": 6713,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0013.html",
+      "sha256": "d0a8fa4c7c788c8335145449e98ff327ad94caaf92e7252a9d23ee66c3f34acd"
+    },
+    {
+      "bytes": 8701,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0014.html",
+      "sha256": "f4e9e74161389a974470796c27cfa77b8451d121f075cf27f082e204f78bfade"
+    },
+    {
+      "bytes": 6292,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0019.html",
+      "sha256": "70009545e45b07bd724433e9fc6b9b9208be7527331f8dd8973c3be840261815"
+    },
+    {
+      "bytes": 10118,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0020.html",
+      "sha256": "11c64add3419fb30340eaafb127bfd52bb2b5c1b3c78d4b28b6788e5ccd03130"
+    },
+    {
+      "bytes": 7662,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0025.html",
+      "sha256": "078ad1cfa2b9e95674fa50dc290765756da1b1866ca72bfb2ffede7f53b7e34b"
+    },
+    {
+      "bytes": 6444,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0028.html",
+      "sha256": "f90287373b5543d22ab9d639a7eb1ffd230fd1aab6c9194a05a01f9c7932e025"
+    },
+    {
+      "bytes": 10720,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0044.html",
+      "sha256": "d954d62197938a15f9712da7f6119d95a0a0f8c5644e2b88ebb399df5e3d84ed"
+    },
+    {
+      "bytes": 20158,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0045.html",
+      "sha256": "30fc1a0fb889f0adc06db5d0fc0e7d6a3eac98eb71833a7fb444b8e17e3e09f0"
+    },
+    {
+      "bytes": 17740,
+      "path": "prime-valuation-support/explorer/defined/definition/PD0046.html",
+      "sha256": "d36ef66aa4d0bbccb1b66acb5a6bbe5b8868a612c8fc76a3a68abd9966462502"
+    },
+    {
+      "bytes": 38493,
+      "path": "prime-valuation-support/explorer/defined/graph.html",
+      "sha256": "e23ee187f095e0785f96dd6e68507f81d1f9c8a098fc406283ccda1c921a0613"
+    },
+    {
+      "bytes": 27558,
+      "path": "prime-valuation-support/explorer/defined/index.html",
+      "sha256": "5ba62650f1e7c3612ffd276a04fe7da6ab935089c048281102049076752ade21"
+    },
+    {
+      "bytes": 27084,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0001.html",
+      "sha256": "098bddc372ebfa02335813670dd1e8443513632cbb70b0e8e3b2f6259d41bec3"
+    },
+    {
+      "bytes": 20394,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0002.html",
+      "sha256": "9e36e3edabd7da648f29fc70fc2cc48ed71a89985396c9ae2b17ba2b5e37d3bd"
+    },
+    {
+      "bytes": 19409,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0003.html",
+      "sha256": "671107d270c0a1a46975362f022027b536e5d071becd74ee31e37725784497db"
+    },
+    {
+      "bytes": 40905,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0004.html",
+      "sha256": "d83e64bc1c31d1e3ae06645f2d69f40d28ee132098feb86e6f06356a478228ba"
+    },
+    {
+      "bytes": 36306,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0005.html",
+      "sha256": "298ef462cc91717e00f5fdf8de67f5b1847c25cf9ef3085b1136422b19c047c7"
+    },
+    {
+      "bytes": 13533,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0006.html",
+      "sha256": "b001119f3d9a70eb4af46368c7f24b7889905310c78dc166147de9b09a44ce88"
+    },
+    {
+      "bytes": 27030,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0007.html",
+      "sha256": "87a1d74e7db12111ffc26ec1f8b127317bc153e721646daa0183a6143ff3f843"
+    },
+    {
+      "bytes": 17581,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0008.html",
+      "sha256": "fe547ef49c27f564f2f6c12cd39b0015fffcd9f6f6c3285a0f74cec3ce20824b"
+    },
+    {
+      "bytes": 42022,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0009.html",
+      "sha256": "aa808087d4d4673a9b2b841ca14d10e8a5a33bdacc3ea0b61e0c68bb69670d9b"
+    },
+    {
+      "bytes": 34781,
+      "path": "prime-valuation-support/explorer/defined/tag/PV000A.html",
+      "sha256": "dbbd212846a2b844df8899e3dcc934017e933cbd4f0c45ae35c747e5169ebc80"
+    },
+    {
+      "bytes": 31844,
+      "path": "prime-valuation-support/explorer/defined/tag/PV000B.html",
+      "sha256": "0e0dfecf7129f7beb0ad6ca8e444905c0dbcc22830a000b54b7168c67c612f05"
+    },
+    {
+      "bytes": 55737,
+      "path": "prime-valuation-support/explorer/defined/tag/PV000C.html",
+      "sha256": "5ae105c6ae72ab9ac1b0afb18c2e33469100bf01e01708191fb02799c3820daa"
+    },
+    {
+      "bytes": 51035,
+      "path": "prime-valuation-support/explorer/defined/tag/PV000D.html",
+      "sha256": "97bdf2dbb1349e29b68da84b0c8868144e046051024fb44e3093dbc2ddea24ca"
+    },
+    {
+      "bytes": 56289,
+      "path": "prime-valuation-support/explorer/defined/tag/PV000E.html",
+      "sha256": "aa8317244bbf46717cc836737720035d8d7b0b7c4d51081e8c0ec77e1111ff04"
+    },
+    {
+      "bytes": 35504,
+      "path": "prime-valuation-support/explorer/defined/tag/PV000F.html",
+      "sha256": "fa474b8597d09e12422f439fc75bb6df71bcff57a782b1350ac462d62a4484b2"
+    },
+    {
+      "bytes": 59625,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0010.html",
+      "sha256": "ff8badaf7b900b07cf55a62f340b872ca627f0b3c7dcc208793904956e837ebb"
+    },
+    {
+      "bytes": 35124,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0011.html",
+      "sha256": "b9209b876b582d66ea6046376ba2bd0a2979fbd508c39633a50e3eb95eb0f27f"
+    },
+    {
+      "bytes": 111210,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0012.html",
+      "sha256": "6396dc51b300780158bcebe61aa318786a2594124417d023278d2acc8d971cb0"
+    },
+    {
+      "bytes": 50083,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0013.html",
+      "sha256": "5ed5016bc094274fd59ede2455b4682330a5493f961568846daed07b1b275e7e"
+    },
+    {
+      "bytes": 33352,
+      "path": "prime-valuation-support/explorer/defined/tag/PV0014.html",
+      "sha256": "e797c0f62acf1ebbd87a4a74e669b13ef31fa2cc31cb75e8472f4e44fc5f4d71"
+    },
+    {
+      "bytes": 24152,
+      "path": "prime-valuation-support/explorer/index.html",
+      "sha256": "9e826be329b5098d08080b3d4e5e5208e19f47f03593dd75e0d692a197e41d1b"
+    },
+    {
+      "bytes": 28812,
+      "path": "prime-valuation-support/explorer/tag/PV0001.html",
+      "sha256": "b00fbdef07c498b3a54d0a1820696655288c72842a4ec10ff377f24148e6e371"
+    },
+    {
+      "bytes": 31911,
+      "path": "prime-valuation-support/explorer/tag/PV0002.html",
+      "sha256": "85154830c00082f7056dadc128fecdfd3909e2f9eed1b89bf98ad3866fc3c737"
+    },
+    {
+      "bytes": 21352,
+      "path": "prime-valuation-support/explorer/tag/PV0003.html",
+      "sha256": "5bebdea4938be321cda1112f389fff3054868df292bf73aac1b9e401d88b286a"
+    },
+    {
+      "bytes": 74918,
+      "path": "prime-valuation-support/explorer/tag/PV0004.html",
+      "sha256": "c189ac02281d42ab79afd8759051aae801806aac5e7f13a1e3656cadc21c7561"
+    },
+    {
+      "bytes": 49660,
+      "path": "prime-valuation-support/explorer/tag/PV0005.html",
+      "sha256": "3c08df20f3a7e51c31223faaa43fbda5749584fcba552294beb0262d994dade6"
+    },
+    {
+      "bytes": 19980,
+      "path": "prime-valuation-support/explorer/tag/PV0006.html",
+      "sha256": "f2bc86bc269ea084dbcff8d10cbac24d785eb80bbff2a5500e0feca5991ba6df"
+    },
+    {
+      "bytes": 41702,
+      "path": "prime-valuation-support/explorer/tag/PV0007.html",
+      "sha256": "ef291f70a7ab3766db2cc0b201f4ee0319b2f5308ae7cba960da3a46857784b6"
+    },
+    {
+      "bytes": 22727,
+      "path": "prime-valuation-support/explorer/tag/PV0008.html",
+      "sha256": "0e5f867831f0d13c74383f5ff3c5a8244559177a779d9d255ad2ebd263e5ec91"
+    },
+    {
+      "bytes": 56026,
+      "path": "prime-valuation-support/explorer/tag/PV0009.html",
+      "sha256": "6e9ad2f200a9c457c29d43e75b4a2b51ffd8e59bcdafc6383ad38813802a05f0"
+    },
+    {
+      "bytes": 39740,
+      "path": "prime-valuation-support/explorer/tag/PV000A.html",
+      "sha256": "ca59f3ddbbe4946df85f09776262ac92b28cbfe68dbc7b38c9f57a20f9228a80"
+    },
+    {
+      "bytes": 48582,
+      "path": "prime-valuation-support/explorer/tag/PV000B.html",
+      "sha256": "26eb4d88ba2e441c023458b925d745c8f0bb61e1f74f0d51dfeadea061a26b1e"
+    },
+    {
+      "bytes": 78417,
+      "path": "prime-valuation-support/explorer/tag/PV000C.html",
+      "sha256": "ae8a28509e609f76f22aa91367c9669b54458cc98233d72e993afc5939903cfb"
+    },
+    {
+      "bytes": 68050,
+      "path": "prime-valuation-support/explorer/tag/PV000D.html",
+      "sha256": "2df07ad4cbd41cc465251de392b807cc64a65196e1a351bb6527b1644114ceb8"
+    },
+    {
+      "bytes": 58940,
+      "path": "prime-valuation-support/explorer/tag/PV000E.html",
+      "sha256": "36155f936d298ca56142dfab9d7ae015687dcb53995b93be726dcf57fdcd3dae"
+    },
+    {
+      "bytes": 43502,
+      "path": "prime-valuation-support/explorer/tag/PV000F.html",
+      "sha256": "016d8bbef719daf8e7f8a77e3372414b0022bf15eaad73c5bc62dd3174ac9f12"
+    },
+    {
+      "bytes": 61774,
+      "path": "prime-valuation-support/explorer/tag/PV0010.html",
+      "sha256": "82d4b366679335111a74f6437fc94939eaeac5ef380b1a8d12a4234d1e835eb3"
+    },
+    {
+      "bytes": 57432,
+      "path": "prime-valuation-support/explorer/tag/PV0011.html",
+      "sha256": "23c5ddf7e64a09a2eff3ad95754d1e7c68c44543bdb21254450df28532ab6c90"
+    },
+    {
+      "bytes": 178256,
+      "path": "prime-valuation-support/explorer/tag/PV0012.html",
+      "sha256": "72cafdb8496f7e13652bf501aa9b057ece3b94be7d5b1b115490685d54a0e1b8"
+    },
+    {
+      "bytes": 124328,
+      "path": "prime-valuation-support/explorer/tag/PV0013.html",
+      "sha256": "02dfa6100f7bde32c08e39ada5ed16fc59e9119e4a703af2b094c98756c45d8c"
+    },
+    {
+      "bytes": 34461,
+      "path": "prime-valuation-support/explorer/tag/PV0014.html",
+      "sha256": "c3475cfd2ca7bc1856436fdb7b9426ded515cb0723b2bf221de5d6f1c41fc8db"
+    },
+    {
+      "bytes": 8326,
+      "path": "prime-valuation-support/index.html",
+      "sha256": "812ccfde62bae6242138897197e665682d0623e69d1063654f2e26f2a4ff7c5b"
+    },
+    {
+      "bytes": 2037215,
+      "path": "squarefree-kernels/api/corpus.json",
+      "sha256": "0b075de1032f6123a40806f5dde110373cfddca6356d90d624dc8f90497682e7"
+    },
+    {
+      "bytes": 91898,
+      "path": "squarefree-kernels/explorer/defined/api/graph.json",
+      "sha256": "5fc9ad42c91edc63e14573c24c0f9ce81154b409665c1998681973e9913df452"
+    },
+    {
+      "bytes": 9255,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0149.html",
+      "sha256": "c19fa49020b627defd785576af13eb6a3da920b9c3f6ffba6d9d459ac60669ff"
+    },
+    {
+      "bytes": 5831,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0177.html",
+      "sha256": "ea018f2a5b9db79bb5c540e8a514658492295cc551e6419bf8884c3c221b672b"
+    },
+    {
+      "bytes": 22632,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0179.html",
+      "sha256": "e512c28a94368905e572f3037b73430ce91d481fc21954f41cea11c57f91391f"
+    },
+    {
+      "bytes": 7354,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0180.html",
+      "sha256": "54ec2f8548d3da8688c483bc45ef1f10a6509be664180a692002841775ce5958"
+    },
+    {
+      "bytes": 29741,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0181.html",
+      "sha256": "54aa7472e2fed8c9702c44d73148a9ed4219f96412f755a7faf1358c5bd77b88"
+    },
+    {
+      "bytes": 7659,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0188.html",
+      "sha256": "ddb64b3bc718e68ca484ba2c79c452add3c0a1c71dea4896a44aedb7fc102b5e"
+    },
+    {
+      "bytes": 6978,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0189.html",
+      "sha256": "bfb12e4d105a9f34806ea7d5a3604b635fcd43578298eb2d3858e72a097bbfcd"
+    },
+    {
+      "bytes": 18240,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0190.html",
+      "sha256": "f13cd08ffadf6007a021821b85ca1cf43b1e01136320c9089a347f5ed962f722"
+    },
+    {
+      "bytes": 9128,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0191.html",
+      "sha256": "72a135e04059fdcf55192fea9e726562c4fc6aee2d4638aafd138480c1ebab1f"
+    },
+    {
+      "bytes": 10639,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0192.html",
+      "sha256": "aaf79f1292b663442721394eaa387ddb384dcc1f5b50d9593cf7bf7df5cb2c6b"
+    },
+    {
+      "bytes": 9323,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0193.html",
+      "sha256": "1dc74f853b74e2b88f6b5fe6931c758ac81170a8401a32e82b14dd29cac8b538"
+    },
+    {
+      "bytes": 40222,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0194.html",
+      "sha256": "5eec60858fac214f2cbcc939fbdb7e4f5d2e488312e9a964a60a252273d2ea1b"
+    },
+    {
+      "bytes": 47716,
+      "path": "squarefree-kernels/explorer/defined/definition/ND0195.html",
+      "sha256": "90a52705babe2d488c0c089b19c3bda48a582e4157dfc04eed7dc3b56521259b"
+    },
+    {
+      "bytes": 5695,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0001.html",
+      "sha256": "7ba2386bfde9deeeff9a352749fb7b8a9bb6a15d7e6e2ad115587ad0f50648fc"
+    },
+    {
+      "bytes": 7630,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0002.html",
+      "sha256": "e97b3e9c28660f3de2217f4b07ba277bba0bf1731ba87c3752a64c2ee5920283"
+    },
+    {
+      "bytes": 9400,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0003.html",
+      "sha256": "b25c88d75afb7ed48f100faa3dc89b9325c949df983f713af2b0b0db5775c68b"
+    },
+    {
+      "bytes": 7333,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0004.html",
+      "sha256": "0a25c28c57fa9efe67a712d2f229bdbe4c07e0e46479370cfb2fb7b161a1255b"
+    },
+    {
+      "bytes": 7808,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0013.html",
+      "sha256": "180e02aaea5815cb611be4b968870649351d463a9976062fe555b9153628d43f"
+    },
+    {
+      "bytes": 8552,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0014.html",
+      "sha256": "d4bd00c7629a41393aa3a75d6c0f168460a739e974c10735b9cf500c2897dd3f"
+    },
+    {
+      "bytes": 6290,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0019.html",
+      "sha256": "ff1b3c822332cb65c64d6a477b2c4de99f578fc30154f2362abdb58bedb6dae4"
+    },
+    {
+      "bytes": 11293,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0020.html",
+      "sha256": "97c6617d2c914737bbdb6e4bcda4d735a24d2351e72c9e157c6d13892bfe1bd7"
+    },
+    {
+      "bytes": 7614,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0025.html",
+      "sha256": "de239979cded8c939a84a761a1bff9f29bf1cca92ef65d0d13bbe33a2883df7a"
+    },
+    {
+      "bytes": 6442,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0028.html",
+      "sha256": "f71e94769c4c46a170242ac84cf5eb50fc0ca0c5c7076cdb6479853fd29bff12"
+    },
+    {
+      "bytes": 10718,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0044.html",
+      "sha256": "972d94954e7444e6871760e8fa62ba2a78bbfbe6fda02e6a8188ff7e5f432875"
+    },
+    {
+      "bytes": 19240,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0045.html",
+      "sha256": "340b152535bca5ce5fc1c19b97431974bc89754de9aed0ad31ea7acc4bb27a4a"
+    },
+    {
+      "bytes": 17824,
+      "path": "squarefree-kernels/explorer/defined/definition/PD0046.html",
+      "sha256": "fa4edc03880da75dccb23cf7dce74445410c3cd871e2a5bacbb36eeb4f37af87"
+    },
+    {
+      "bytes": 73572,
+      "path": "squarefree-kernels/explorer/defined/graph.html",
+      "sha256": "2f2fb96741730ccdfb0f2582560cbaabee5e49906362740a0fd2bc00f2119848"
+    },
+    {
+      "bytes": 53740,
+      "path": "squarefree-kernels/explorer/defined/index.html",
+      "sha256": "874d63e9eba246b9342888f3704d765d4277efbed0712cc3b042ac8a1f05032a"
+    },
+    {
+      "bytes": 8013,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0001.html",
+      "sha256": "812f612926c6851ecf74cf9dbbf3aac189134bf691c5e731e838d4ad7d01b62c"
+    },
+    {
+      "bytes": 11007,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0002.html",
+      "sha256": "5608ada8d3b4d4219a34ed02389ba858182f09cf797879e4057c88ba49e76d4e"
+    },
+    {
+      "bytes": 8145,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0003.html",
+      "sha256": "decda68519b161c5667653dcdef57675e9e3ca8f87e9278947ecb826180d3118"
+    },
+    {
+      "bytes": 15050,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0004.html",
+      "sha256": "68e623628025ef59b0a9ed81af97dfbf3d76882e8ee7a53662703d7947c52593"
+    },
+    {
+      "bytes": 10466,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0005.html",
+      "sha256": "d426e4a4ce7abd1fb837a12397d4cb9a68c3d9877cabed11661ed49d92bb8160"
+    },
+    {
+      "bytes": 12155,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0006.html",
+      "sha256": "a2d13b84967ed17a4ee4f500872047c7be364390c179b96e9a9dc216f82b8228"
+    },
+    {
+      "bytes": 8887,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0007.html",
+      "sha256": "b231ea28e8db3f1f2ca8c8ee1cf249bfae59ce9fcb38398476b099781c3d5eec"
+    },
+    {
+      "bytes": 8029,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0008.html",
+      "sha256": "72fda44535990cd55e6d13f7438d228a23b59b192de0d49a5be124ab45b26581"
+    },
+    {
+      "bytes": 19863,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0009.html",
+      "sha256": "cc7623512387c01542e4a1e81c288be5cbc9704bf13ff1b481b29f48b92d49f8"
+    },
+    {
+      "bytes": 13251,
+      "path": "squarefree-kernels/explorer/defined/tag/SK000A.html",
+      "sha256": "4788fe7070023307beb9643d5708dfe321367862ca9b096c7fc8b3e7738eece8"
+    },
+    {
+      "bytes": 20414,
+      "path": "squarefree-kernels/explorer/defined/tag/SK000B.html",
+      "sha256": "d390853fb039ca45370d229742449f670b82f4e17a521c74d1c7c7cb72681fe5"
+    },
+    {
+      "bytes": 9076,
+      "path": "squarefree-kernels/explorer/defined/tag/SK000C.html",
+      "sha256": "53b70d08fee2abb6d67f7c473242b656650efd935c824e42d4e1e87dd42a637e"
+    },
+    {
+      "bytes": 9567,
+      "path": "squarefree-kernels/explorer/defined/tag/SK000D.html",
+      "sha256": "382bd6b3beacd4b3a49ddb922a4ec71acb5f8e3a455a83e081013ff9832d0d24"
+    },
+    {
+      "bytes": 16782,
+      "path": "squarefree-kernels/explorer/defined/tag/SK000E.html",
+      "sha256": "9adf73d7e3879c30c5cfa76270e2fe120fccacffd2413991816a1f74b93e5f05"
+    },
+    {
+      "bytes": 25165,
+      "path": "squarefree-kernels/explorer/defined/tag/SK000F.html",
+      "sha256": "c4914874d289449bb36258dc5a26d7f7574ef664413a4c67d3385f2490934e61"
+    },
+    {
+      "bytes": 13276,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0010.html",
+      "sha256": "8ae8001a034a25daca1025f0936767a654170e002d24abe765adaf853e62862b"
+    },
+    {
+      "bytes": 14312,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0011.html",
+      "sha256": "41faff7ac40883e6e14e2e330a5cce68c14367b2b45cae18f5d14edde9d68075"
+    },
+    {
+      "bytes": 13683,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0012.html",
+      "sha256": "c57ec6adfa63d5ca44760385af76d628727fcf94728d374276cae6e826943be9"
+    },
+    {
+      "bytes": 12661,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0013.html",
+      "sha256": "f650707adae2799717b477e51733613c43e725a964087bfa7d0b65bf55f77b45"
+    },
+    {
+      "bytes": 20843,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0014.html",
+      "sha256": "c80eca0895b5abdf1ca4350b14327efc3ae0a8c699e6d4b3d717ed8a217c104a"
+    },
+    {
+      "bytes": 18948,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0015.html",
+      "sha256": "7ea17345483dcae9fb845d6231a05af2aa382a64967415f8b68044d63ad5388c"
+    },
+    {
+      "bytes": 12926,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0016.html",
+      "sha256": "adf9c1175f6e4920fb28be980ca9e27f7d9a554907c1f577f5acceeccfd1e737"
+    },
+    {
+      "bytes": 28534,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0017.html",
+      "sha256": "844cf96c187cea6d10ee66f20f6507d1d688f57675910b053250e4f4c054b135"
+    },
+    {
+      "bytes": 43440,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0018.html",
+      "sha256": "60180633159cfbf3056767f2d99f566613ac9b3c06879959c3ecc6707f98a399"
+    },
+    {
+      "bytes": 42679,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0019.html",
+      "sha256": "bc36c0998a986f0be49ddf5c9e02c9ba4c473000e96dda3a205c9906b2b26998"
+    },
+    {
+      "bytes": 26713,
+      "path": "squarefree-kernels/explorer/defined/tag/SK001A.html",
+      "sha256": "d2321f82cc045c1bbd043817b3c399e995e8435f45db91c16fa8f30c3b64245b"
+    },
+    {
+      "bytes": 10871,
+      "path": "squarefree-kernels/explorer/defined/tag/SK001B.html",
+      "sha256": "dc590a1733efb05a21a8e7fe47f599846d21341831e5280db4f10bd42af8386c"
+    },
+    {
+      "bytes": 14028,
+      "path": "squarefree-kernels/explorer/defined/tag/SK001C.html",
+      "sha256": "b8c19d267faac184257870d2f86e079729ead0976a2fa1ce12cdcefbc764304e"
+    },
+    {
+      "bytes": 11611,
+      "path": "squarefree-kernels/explorer/defined/tag/SK001D.html",
+      "sha256": "a75e85b94a8677c95ef3dec81c52f3f806a99292d0b744788135731c95f1d4db"
+    },
+    {
+      "bytes": 10234,
+      "path": "squarefree-kernels/explorer/defined/tag/SK001E.html",
+      "sha256": "1f8d181150956454ef319eb226013d7051a7c3c62ad72069b8ccb30f41c7ce39"
+    },
+    {
+      "bytes": 21086,
+      "path": "squarefree-kernels/explorer/defined/tag/SK001F.html",
+      "sha256": "66a7a562ba82d7e6990099a8c56e903bb72ea406ab716bdb5d729f8621ae5ab5"
+    },
+    {
+      "bytes": 15268,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0020.html",
+      "sha256": "cc7634fb1960ecdb729cf626dbd15a8d564293ce6ab1a56bd2c6fea6ad0ca392"
+    },
+    {
+      "bytes": 12497,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0021.html",
+      "sha256": "15d72f0afe0aa73841b547b46ddc8a5dc1a8f8d38fdef8d1293e3c729a055c78"
+    },
+    {
+      "bytes": 33568,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0022.html",
+      "sha256": "ec45521e3164d8021ccf0ed4e1608045c0f3195a309e20f3d6c4de310106d934"
+    },
+    {
+      "bytes": 44448,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0023.html",
+      "sha256": "1a8ed269d0d3d16c9ad6c6b75bdaea7d4dad7b920f5644db9ca994e94a2290c7"
+    },
+    {
+      "bytes": 41449,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0024.html",
+      "sha256": "fef49fa442884f766e7bbb46df3d7040a9eb5a2ca87cdd53f37688f83e14063e"
+    },
+    {
+      "bytes": 55622,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0025.html",
+      "sha256": "84493cb755ba41985e4a27b3f18d003eb70b8be55a54da518637d42d1660e851"
+    },
+    {
+      "bytes": 49842,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0026.html",
+      "sha256": "c985415d10b190c968e19fdfa3f822f43a31c7ce486c05564611cd31ec39eb7d"
+    },
+    {
+      "bytes": 67304,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0027.html",
+      "sha256": "7c2c9b2cef84db6beecc735586239a5bc8f1eeb12acd5a92ac2298755a26e11f"
+    },
+    {
+      "bytes": 48808,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0028.html",
+      "sha256": "ec16f2cc7904bca6dc58b706334fa03c6f26c238eddcb48dcd09a1da7c2d24d0"
+    },
+    {
+      "bytes": 42512,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0029.html",
+      "sha256": "8708fbc855c07f9b363633a02aac6ac511bfc177adcc07e195124b06304a48cd"
+    },
+    {
+      "bytes": 28588,
+      "path": "squarefree-kernels/explorer/defined/tag/SK002A.html",
+      "sha256": "8db7c286a2e51c9dd6c6c8cb0f9ddabe8345a3152af249d7326fa42958ab029d"
+    },
+    {
+      "bytes": 19762,
+      "path": "squarefree-kernels/explorer/defined/tag/SK002B.html",
+      "sha256": "9769a2be8c3f663a36a0a8c4d9243c4315dcd329dbc9c1c49b3cb00219b42b84"
+    },
+    {
+      "bytes": 27822,
+      "path": "squarefree-kernels/explorer/defined/tag/SK002C.html",
+      "sha256": "96bdd7ab452e7d7b6c73b67d11ca70206cea859af9bbebb46902345a79fb0ba1"
+    },
+    {
+      "bytes": 21139,
+      "path": "squarefree-kernels/explorer/defined/tag/SK002D.html",
+      "sha256": "9126270ba520189ca89081305420ca62d3170e117e40c04259abcde15736da4a"
+    },
+    {
+      "bytes": 20786,
+      "path": "squarefree-kernels/explorer/defined/tag/SK002E.html",
+      "sha256": "2126c5fe5ef63a61caa5f3fd8a3eb038e709d0552f8a75bcf50f4dcb1936d4bd"
+    },
+    {
+      "bytes": 72873,
+      "path": "squarefree-kernels/explorer/defined/tag/SK002F.html",
+      "sha256": "ec681aac6d4989fafb53f57299d2676315edb61c3da8abca3e062eaed03da356"
+    },
+    {
+      "bytes": 58145,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0030.html",
+      "sha256": "45c0ad04646bc545337568732e93cd0d88666a1775a2aa20382d374c81347f5a"
+    },
+    {
+      "bytes": 45889,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0031.html",
+      "sha256": "44932c81a5e080cff97439fe6d26cbac696b15912d331d3cfe92eb246a5d00a0"
+    },
+    {
+      "bytes": 53080,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0032.html",
+      "sha256": "3ef7c751a2a7e24870d97d26865c4b10a987d2473edb9786365d619746c75f61"
+    },
+    {
+      "bytes": 57826,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0033.html",
+      "sha256": "8970120754ff00e365b675d3b6da05d9188ca84f9b428af1b834199f03ba766f"
+    },
+    {
+      "bytes": 87473,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0034.html",
+      "sha256": "e3ce152c35bb1d1e7b143d0965dfa34f283ff399c145af7b883634e0a54a2930"
+    },
+    {
+      "bytes": 57476,
+      "path": "squarefree-kernels/explorer/defined/tag/SK0035.html",
+      "sha256": "bc339d202bfe11753c1bb138e69d77e95cb61c944fe3006e0a839f5fe7e11e39"
+    },
+    {
+      "bytes": 52464,
+      "path": "squarefree-kernels/explorer/index.html",
+      "sha256": "9f61589ddacf5ee613d22ee3ce4aa49c5412b9bf9b3d0b537fedb5c061e2b968"
+    },
+    {
+      "bytes": 8968,
+      "path": "squarefree-kernels/explorer/tag/SK0001.html",
+      "sha256": "1e8200f761ee3597eb877bd6f1ec1020901a9dc59f80d481f4adb91ffb4b3170"
+    },
+    {
+      "bytes": 13580,
+      "path": "squarefree-kernels/explorer/tag/SK0002.html",
+      "sha256": "66ca1bbf5e76a4cbae2ed4a457b5a234ef94bab68773fcc944ade7a0936bf90b"
+    },
+    {
+      "bytes": 9522,
+      "path": "squarefree-kernels/explorer/tag/SK0003.html",
+      "sha256": "6e2de307641ebc432f586eca0da2c13d787b00d78e8f9e9e039b782ad77f6879"
+    },
+    {
+      "bytes": 21083,
+      "path": "squarefree-kernels/explorer/tag/SK0004.html",
+      "sha256": "5e80cf8bd080fa8fc3b5609d2e91fbeee38f92651d0d96fba72fe3d7498f080e"
+    },
+    {
+      "bytes": 12454,
+      "path": "squarefree-kernels/explorer/tag/SK0005.html",
+      "sha256": "07d8e5c0ba124239e4fedb46213c26d308a57397f4a54067eaf16d90dcdcaf1c"
+    },
+    {
+      "bytes": 14845,
+      "path": "squarefree-kernels/explorer/tag/SK0006.html",
+      "sha256": "f681babf4ae3ab7618fa5cf271951580e958269bc869ab84c8bff665a07627c1"
+    },
+    {
+      "bytes": 11494,
+      "path": "squarefree-kernels/explorer/tag/SK0007.html",
+      "sha256": "c6e568ad00569c97d2ab4fd0aafe8c55b8ae0e33c10cbcdaacaecb8615e92d39"
+    },
+    {
+      "bytes": 9594,
+      "path": "squarefree-kernels/explorer/tag/SK0008.html",
+      "sha256": "ef6a6447211cbc51f8952e3395a87c86ba456de7b443177196ce061df17faea5"
+    },
+    {
+      "bytes": 29329,
+      "path": "squarefree-kernels/explorer/tag/SK0009.html",
+      "sha256": "fa4b1d9b883e78e25517b35086697b9638c7060755c769cc8c655bd2c7b2dd88"
+    },
+    {
+      "bytes": 16848,
+      "path": "squarefree-kernels/explorer/tag/SK000A.html",
+      "sha256": "659069eae43643f661deb7deb3eb2a422668f2a7c7cb1d3296f86ba14c763195"
+    },
+    {
+      "bytes": 31242,
+      "path": "squarefree-kernels/explorer/tag/SK000B.html",
+      "sha256": "927d26777a3101acd590d3535b56b44607c31d38daba5026c967dfe40ddf19bf"
+    },
+    {
+      "bytes": 10221,
+      "path": "squarefree-kernels/explorer/tag/SK000C.html",
+      "sha256": "2fabcee002a71620bffe007d8f559939706b2741db15ea7b0ae9981de85ee46d"
+    },
+    {
+      "bytes": 12165,
+      "path": "squarefree-kernels/explorer/tag/SK000D.html",
+      "sha256": "94eaf820f7570c801a3a948cb8daca53afff099565b6601378f1c6fedddc2250"
+    },
+    {
+      "bytes": 23057,
+      "path": "squarefree-kernels/explorer/tag/SK000E.html",
+      "sha256": "71d9dd0af0030591986605e7673ff195ff39a68d11a08b7dec97ceac17e104f2"
+    },
+    {
+      "bytes": 38174,
+      "path": "squarefree-kernels/explorer/tag/SK000F.html",
+      "sha256": "7025dc03e6f3776be2310dcd5193eff087a18dd1cba111fb264e551a6067a425"
+    },
+    {
+      "bytes": 16993,
+      "path": "squarefree-kernels/explorer/tag/SK0010.html",
+      "sha256": "c298c0b562103b0616c9cccd580e4fb5b2cee1434106ad0ab1b15796a42d15f6"
+    },
+    {
+      "bytes": 15607,
+      "path": "squarefree-kernels/explorer/tag/SK0011.html",
+      "sha256": "f102e62456f0e86e8b6999162c80d7e81870670103bb8e0aef9382b42f7e026a"
+    },
+    {
+      "bytes": 20718,
+      "path": "squarefree-kernels/explorer/tag/SK0012.html",
+      "sha256": "4dd33e09d68c83736692f1f2a533d3a5b0aa3fda0690a23400a3cf7721dfbcf1"
+    },
+    {
+      "bytes": 17604,
+      "path": "squarefree-kernels/explorer/tag/SK0013.html",
+      "sha256": "4fb8c7d609635ce0ce5ecf5383e6884ce91c4ce9ea5a328df7dfc69ee00ceb84"
+    },
+    {
+      "bytes": 27324,
+      "path": "squarefree-kernels/explorer/tag/SK0014.html",
+      "sha256": "8ca3bbae8d03bcf2e7bb123798471983b609e61f77845270a08b45981ab9aba7"
+    },
+    {
+      "bytes": 30020,
+      "path": "squarefree-kernels/explorer/tag/SK0015.html",
+      "sha256": "fde6bccf4fb2b31e27c6f676c3a81bafe5083642def2cfccaf885822c70c9ffa"
+    },
+    {
+      "bytes": 15460,
+      "path": "squarefree-kernels/explorer/tag/SK0016.html",
+      "sha256": "2f1dfbee6404db30cdb3e5735b20d7cdbc6e54fc2be97a80497b4ddac5410ef0"
+    },
+    {
+      "bytes": 41967,
+      "path": "squarefree-kernels/explorer/tag/SK0017.html",
+      "sha256": "a6a9c2a6b65da74ff29bc2a32914db3d36023a5885be4a0a972c370a26c04f11"
+    },
+    {
+      "bytes": 51494,
+      "path": "squarefree-kernels/explorer/tag/SK0018.html",
+      "sha256": "db2708eb7de335edd030ded0ce701641cd0a36d17afeb48da2b6ba31422095dd"
+    },
+    {
+      "bytes": 74747,
+      "path": "squarefree-kernels/explorer/tag/SK0019.html",
+      "sha256": "caca9e0ef3d93fc27a1968dc880a18b156d8e4a53d8df1a523547da7e305524e"
+    },
+    {
+      "bytes": 28392,
+      "path": "squarefree-kernels/explorer/tag/SK001A.html",
+      "sha256": "50c0cd9da3df540ea1eaa4cff639c032cef0ce36cbe7f1b5437a8ea5e09970d9"
+    },
+    {
+      "bytes": 12301,
+      "path": "squarefree-kernels/explorer/tag/SK001B.html",
+      "sha256": "1a43af70ab472504f5346b2bb5aef4fd1cd499571ab0b47f65b81f0fa899333b"
+    },
+    {
+      "bytes": 17638,
+      "path": "squarefree-kernels/explorer/tag/SK001C.html",
+      "sha256": "f08f10891a5345836018c74ec3e0d5e958897bcd00de69dbe72e0aa36ded78b7"
+    },
+    {
+      "bytes": 13539,
+      "path": "squarefree-kernels/explorer/tag/SK001D.html",
+      "sha256": "5e00cb748b5c44551495e3f299a65a2e977e17c8b039c6f25c89d8feea1fe066"
+    },
+    {
+      "bytes": 12244,
+      "path": "squarefree-kernels/explorer/tag/SK001E.html",
+      "sha256": "e0917a0caa092c41bc12cc0c5201446f622f4fe5eaf606bdc0e413570376bd66"
+    },
+    {
+      "bytes": 27628,
+      "path": "squarefree-kernels/explorer/tag/SK001F.html",
+      "sha256": "ff59ff95661535ad29c38eb3b23c8bf64b6a8dd773119e3c74bf79881f6ed421"
+    },
+    {
+      "bytes": 21244,
+      "path": "squarefree-kernels/explorer/tag/SK0020.html",
+      "sha256": "7acf6452e83b3764c6292400d6d2d4a798280c1d78cdc2bb67545929543b152d"
+    },
+    {
+      "bytes": 14544,
+      "path": "squarefree-kernels/explorer/tag/SK0021.html",
+      "sha256": "b9f9cc126d47f44d67f038778ac3b5394a85fefef32bb9367a6a0be69de158fe"
+    },
+    {
+      "bytes": 36535,
+      "path": "squarefree-kernels/explorer/tag/SK0022.html",
+      "sha256": "9bbab0ca69d4f04231b6fe72a14d77857469a041c53e75e02a97b0fcb85bd47f"
+    },
+    {
+      "bytes": 65660,
+      "path": "squarefree-kernels/explorer/tag/SK0023.html",
+      "sha256": "2c7b442c217cf9c6dd29ef8d708e013a341cd69746549bf80e3481c2ccb661a5"
+    },
+    {
+      "bytes": 59934,
+      "path": "squarefree-kernels/explorer/tag/SK0024.html",
+      "sha256": "d0f0c66e9b59fc65c513feeb9c4e12bdcf7b5a16174dfefd3b135b02144c0095"
+    },
+    {
+      "bytes": 79559,
+      "path": "squarefree-kernels/explorer/tag/SK0025.html",
+      "sha256": "4a8a1c649927430d9575c0e6e003caf5a29afefc95845ee735ef5716b67c0dad"
+    },
+    {
+      "bytes": 63417,
+      "path": "squarefree-kernels/explorer/tag/SK0026.html",
+      "sha256": "5c7b0386e23a614d9247b56f73e97f82050e973a3c42e1444609c6420e599271"
+    },
+    {
+      "bytes": 72036,
+      "path": "squarefree-kernels/explorer/tag/SK0027.html",
+      "sha256": "fabba8384d5699e80f734d090849b15725bc05428d34072ceff8223f83c1f8d0"
+    },
+    {
+      "bytes": 80135,
+      "path": "squarefree-kernels/explorer/tag/SK0028.html",
+      "sha256": "d2b2e1949c9b3820409f1b619cbd0418de86b786cb93f595ebee9139dce30c37"
+    },
+    {
+      "bytes": 51794,
+      "path": "squarefree-kernels/explorer/tag/SK0029.html",
+      "sha256": "58823d8fc9bed988c789c72950c88adf8a996315fc2e00532ec7707e26feb03d"
+    },
+    {
+      "bytes": 36152,
+      "path": "squarefree-kernels/explorer/tag/SK002A.html",
+      "sha256": "2026bf437938ba59ee2534032a72e3bad4cada570d2aebdc636c1c4ad4c60d7e"
+    },
+    {
+      "bytes": 26641,
+      "path": "squarefree-kernels/explorer/tag/SK002B.html",
+      "sha256": "3af05098477616c6e23c2671e01803bc3393d2fe5574f2f4546e30d55ca0ce1d"
+    },
+    {
+      "bytes": 42561,
+      "path": "squarefree-kernels/explorer/tag/SK002C.html",
+      "sha256": "ea45f48d46b51e556c8a65b3ac61197f4cde6a6307a7f4993e30e961c990623a"
+    },
+    {
+      "bytes": 28206,
+      "path": "squarefree-kernels/explorer/tag/SK002D.html",
+      "sha256": "7e2310550dce9c5cda9ad0789ca122f36b0f50123b312e320ee97e6650d2d109"
+    },
+    {
+      "bytes": 30257,
+      "path": "squarefree-kernels/explorer/tag/SK002E.html",
+      "sha256": "7df0bd2ad1a9a76255fbab2e694af53b20dc83a401955f7828d9f6535d815a14"
+    },
+    {
+      "bytes": 119344,
+      "path": "squarefree-kernels/explorer/tag/SK002F.html",
+      "sha256": "f4cccd177253810712ef3e219f06f298583766ba72facb6ee2d4ab765eab3c3b"
+    },
+    {
+      "bytes": 61212,
+      "path": "squarefree-kernels/explorer/tag/SK0030.html",
+      "sha256": "d3c3b1eeee3ada60f00e2ff762a82f46583e78a6536c391156cbdd0054146119"
+    },
+    {
+      "bytes": 47953,
+      "path": "squarefree-kernels/explorer/tag/SK0031.html",
+      "sha256": "5edc304892693a96ad3db239411218736a752f95efcaf0f919c7179ad0a73f48"
+    },
+    {
+      "bytes": 56113,
+      "path": "squarefree-kernels/explorer/tag/SK0032.html",
+      "sha256": "77d3324ca5df65233cef75c01dc460379fdea15f4828bbef0a1eda72e8a8a79c"
+    },
+    {
+      "bytes": 60565,
+      "path": "squarefree-kernels/explorer/tag/SK0033.html",
+      "sha256": "971e3d04ab84d208cfc00cd6aa0166a753dc589aa6b2dc34943705f88e0f5122"
+    },
+    {
+      "bytes": 88308,
+      "path": "squarefree-kernels/explorer/tag/SK0034.html",
+      "sha256": "9c4b8553400ca01f173b7cbaef94a5ff1afcf7d08d30246fe01a7b91ce7de8b4"
+    },
+    {
+      "bytes": 110708,
+      "path": "squarefree-kernels/explorer/tag/SK0035.html",
+      "sha256": "65acb3189c83eef6000abf7d8593ba742dd3e20868618304473dc15a45ef3594"
+    },
+    {
+      "bytes": 9057,
+      "path": "squarefree-kernels/index.html",
+      "sha256": "acb1c5687e7b3a17bc108f7f65cf33df91b7a17dafd9cd8c3200f9719844c1bd"
+    },
+    {
+      "bytes": 2777243,
+      "path": "totient-products/api/corpus.json",
+      "sha256": "79deafc1e309ad3d269db14a9ecc757d3a1bceced797e839634e85e68919ef8f"
+    },
+    {
+      "bytes": 136953,
+      "path": "totient-products/explorer/defined/api/graph.json",
+      "sha256": "fc8b7ce56fd1cc603ac7d091455ad153c0518661514684b73b2bb4c47671306d"
+    },
+    {
+      "bytes": 9391,
+      "path": "totient-products/explorer/defined/definition/ND0149.html",
+      "sha256": "d38ba8b86fff03eacf7d084f0c061505cad2d9cf0c19c63641f72f2415433c85"
+    },
+    {
+      "bytes": 23070,
+      "path": "totient-products/explorer/defined/definition/ND0179.html",
+      "sha256": "bc06c8954c742aa661c705c18a988c6e44e59367a360c46577917bc97c71de5f"
+    },
+    {
+      "bytes": 7352,
+      "path": "totient-products/explorer/defined/definition/ND0180.html",
+      "sha256": "e295f870862bef1721965b8da536ae5889c3a7d30887922911580646e88e4c4e"
+    },
+    {
+      "bytes": 28980,
+      "path": "totient-products/explorer/defined/definition/ND0181.html",
+      "sha256": "fe4194d05ca180cd79a61f0e848d51727e79bf19efc70fda81ce3b1a62dc760f"
+    },
+    {
+      "bytes": 8473,
+      "path": "totient-products/explorer/defined/definition/ND0182.html",
+      "sha256": "e56ed1b7c5a9423c446bdca0ac853e396b575f604c866df6e1f3a40c674c540f"
+    },
+    {
+      "bytes": 12772,
+      "path": "totient-products/explorer/defined/definition/ND0183.html",
+      "sha256": "2bfa63f1beac65fca4e14f64ee7d1cfec035bf1db68fd0b72ec8cc847479db2d"
+    },
+    {
+      "bytes": 13004,
+      "path": "totient-products/explorer/defined/definition/ND0184.html",
+      "sha256": "1771a255efd0a3b5e0568f63e12526b5d586b0848e318000ed218649d201660f"
+    },
+    {
+      "bytes": 10971,
+      "path": "totient-products/explorer/defined/definition/ND0185.html",
+      "sha256": "f123f001ab6983ea1c173e9df831633e7b9663002a7c7264695812716f9041e0"
+    },
+    {
+      "bytes": 13974,
+      "path": "totient-products/explorer/defined/definition/ND0186.html",
+      "sha256": "cc47e9dc446fb2d95505e75482f2dc89f1d50fb3bc7691768769e7146bcd6d0d"
+    },
+    {
+      "bytes": 45174,
+      "path": "totient-products/explorer/defined/definition/ND0187.html",
+      "sha256": "d900ce75b76335fd238d4998206c04f4e7948c864145012c726ff247f41063d5"
+    },
+    {
+      "bytes": 5743,
+      "path": "totient-products/explorer/defined/definition/PD0001.html",
+      "sha256": "63ee92b64d4b13e21ded057b3673ccc0aa946ed49d16071e6637d99a01c44bbd"
+    },
+    {
+      "bytes": 7718,
+      "path": "totient-products/explorer/defined/definition/PD0002.html",
+      "sha256": "bf3ab18cad19a46007987ef64adf9807b621772d687b46f1459a390e56002342"
+    },
+    {
+      "bytes": 6665,
+      "path": "totient-products/explorer/defined/definition/PD0003.html",
+      "sha256": "db159c2752ce587074bef7fa14e7a190195765dbcf35f5b37d83dd60690a5361"
+    },
+    {
+      "bytes": 7975,
+      "path": "totient-products/explorer/defined/definition/PD0004.html",
+      "sha256": "0f32218511a732949d2941a4ebc4eb92a2d03532ef32316c80a17f8b1073f7a1"
+    },
+    {
+      "bytes": 9439,
+      "path": "totient-products/explorer/defined/definition/PD0005.html",
+      "sha256": "4ae24da86927eda0f4b3e96062e0104ed59dc854cf6dc694bad59660459d4119"
+    },
+    {
+      "bytes": 7811,
+      "path": "totient-products/explorer/defined/definition/PD0013.html",
+      "sha256": "2d87c539d54e967e20299d2c827bf19df3a5932b41e39d2636a119a46f59bf6e"
+    },
+    {
+      "bytes": 8996,
+      "path": "totient-products/explorer/defined/definition/PD0014.html",
+      "sha256": "76396f420539179ef6ecdd47b6cec2be84613dbf067b45322c336155eda53f17"
+    },
+    {
+      "bytes": 8238,
+      "path": "totient-products/explorer/defined/definition/PD0015.html",
+      "sha256": "51c2bfaa2e9504115994aac7d819f4845203054db65088ce5154658ea256a459"
+    },
+    {
+      "bytes": 6288,
+      "path": "totient-products/explorer/defined/definition/PD0019.html",
+      "sha256": "7b0eb3dc26177d0f9b9dd9c000ef1753a4cc72e98527f506d64bac623c49d4ff"
+    },
+    {
+      "bytes": 9754,
+      "path": "totient-products/explorer/defined/definition/PD0020.html",
+      "sha256": "04639067e2b5d32fe55c93e7fe0efa63ab16a50c3a9221e196f8ebe6866a02e5"
+    },
+    {
+      "bytes": 7662,
+      "path": "totient-products/explorer/defined/definition/PD0025.html",
+      "sha256": "2cec5577ed79b8fc086b0e2ee41a87d490daefdf415a59c7488c311618e5c0e5"
+    },
+    {
+      "bytes": 6491,
+      "path": "totient-products/explorer/defined/definition/PD0028.html",
+      "sha256": "1b6c06394b0170f59b03c3f58f044f0c2ed3b19304c468455ffb046ec60f02f0"
+    },
+    {
+      "bytes": 10716,
+      "path": "totient-products/explorer/defined/definition/PD0044.html",
+      "sha256": "0ff13b48455490b420ecb9ac863d7565a60ff2bd4bbd018d7a6f6cdda864d9cd"
+    },
+    {
+      "bytes": 18740,
+      "path": "totient-products/explorer/defined/definition/PD0045.html",
+      "sha256": "cdad853da1205039ed081b07214ac7905aa2d2ade4973f9688805984a091596f"
+    },
+    {
+      "bytes": 17736,
+      "path": "totient-products/explorer/defined/definition/PD0046.html",
+      "sha256": "88eeb88d62d28b96496f78a335b76454a98681184872f560e435abd08f76888d"
+    },
+    {
+      "bytes": 103513,
+      "path": "totient-products/explorer/defined/graph.html",
+      "sha256": "03f23ec1235d744259c6571db7c45a40c6a8c9ff3b041f38bbb8dc4fab8c7db2"
+    },
+    {
+      "bytes": 69145,
+      "path": "totient-products/explorer/defined/index.html",
+      "sha256": "ef7bc1bedf5f7440720b9c78dd91aee280394dfaa5e9ef9cd1b1de8116910eb6"
+    },
+    {
+      "bytes": 12154,
+      "path": "totient-products/explorer/defined/tag/TP0001.html",
+      "sha256": "f0d6d0b6fff90eb2b3c510b4e1370819d34e1a8c1a857f04198d70bba20a4244"
+    },
+    {
+      "bytes": 10069,
+      "path": "totient-products/explorer/defined/tag/TP0002.html",
+      "sha256": "db8fe14d0fbd49fa63385c0176bc44577f6c9c7e339b20f680a46cbbe5e90fcd"
+    },
+    {
+      "bytes": 11985,
+      "path": "totient-products/explorer/defined/tag/TP0003.html",
+      "sha256": "88ef4558259cc7ff2447e09243d3ef4f374c3885d8cb4e7b511638e213e53930"
+    },
+    {
+      "bytes": 9444,
+      "path": "totient-products/explorer/defined/tag/TP0004.html",
+      "sha256": "bbe86e804834677d07f661407a9949f6165d83d716dbfa4d53fabbf4da2404c3"
+    },
+    {
+      "bytes": 10937,
+      "path": "totient-products/explorer/defined/tag/TP0005.html",
+      "sha256": "484fe50ba9111b40202a4ec95badd9f49ffd4cfac9bd717a070fe08f148df9bc"
+    },
+    {
+      "bytes": 13486,
+      "path": "totient-products/explorer/defined/tag/TP0006.html",
+      "sha256": "924488afae1b8cdb7289b56d961baf6df1eaab389227546da1ac2bdf6e150dd1"
+    },
+    {
+      "bytes": 18596,
+      "path": "totient-products/explorer/defined/tag/TP0007.html",
+      "sha256": "22be5300470b5e02a119acdc909d023340d6a40903825632ffda5b8f1796c027"
+    },
+    {
+      "bytes": 12946,
+      "path": "totient-products/explorer/defined/tag/TP0008.html",
+      "sha256": "6d8af48bd259c3a9eedaade87ea8dee4095aaca242c844503a83df5f636c205c"
+    },
+    {
+      "bytes": 12126,
+      "path": "totient-products/explorer/defined/tag/TP0009.html",
+      "sha256": "67d483c7e2d28330c6b3459d0fa9a1b343f2c9f4e8644cfeaa57caae48702682"
+    },
+    {
+      "bytes": 16954,
+      "path": "totient-products/explorer/defined/tag/TP000A.html",
+      "sha256": "dfabe1aebb8d626cc464816768aca0ea1f0f9a01926cf50a8bccf3439028b55a"
+    },
+    {
+      "bytes": 14153,
+      "path": "totient-products/explorer/defined/tag/TP000B.html",
+      "sha256": "5387ba306a2eca4863fb14b98b2424ec2c6551baf16936cc8d99f643d5141b3d"
+    },
+    {
+      "bytes": 28159,
+      "path": "totient-products/explorer/defined/tag/TP000C.html",
+      "sha256": "25da52cd2daeb8f48e009957f930df2a6100c37a409eae4c97561f1f5e4aa666"
+    },
+    {
+      "bytes": 14291,
+      "path": "totient-products/explorer/defined/tag/TP000D.html",
+      "sha256": "e374095d013603ad5ff9bd4c3be05e8cb6d0eb060bf924d6fdaa03d83e88137f"
+    },
+    {
+      "bytes": 12156,
+      "path": "totient-products/explorer/defined/tag/TP000E.html",
+      "sha256": "2f60ed09ea5b17749b1a75acd47580f49b8e098cf395358118b4edba78c043d0"
+    },
+    {
+      "bytes": 23639,
+      "path": "totient-products/explorer/defined/tag/TP000F.html",
+      "sha256": "1a69a7756994280a9ca724089f5eb60ebe7ede152f593f6ed1b7a0717653208b"
+    },
+    {
+      "bytes": 24505,
+      "path": "totient-products/explorer/defined/tag/TP0010.html",
+      "sha256": "445f142ff8a0433a27fd7db3bf83eeb5246f09d3d42f50406b9b0f110c8cb3ba"
+    },
+    {
+      "bytes": 8851,
+      "path": "totient-products/explorer/defined/tag/TP0011.html",
+      "sha256": "8c39871f7076aa0ee18e6f5429baef9bbd37c9e82a23257f5035d297aa740038"
+    },
+    {
+      "bytes": 16596,
+      "path": "totient-products/explorer/defined/tag/TP0012.html",
+      "sha256": "1294da2d2f1356bfe99911ebb1b3afdadfa5159e59a5f9b63d3072988f96186b"
+    },
+    {
+      "bytes": 13007,
+      "path": "totient-products/explorer/defined/tag/TP0013.html",
+      "sha256": "ad828d81633ed30380abd4bfc3dc07637036238aea743d2a7e6eec2da819bd2b"
+    },
+    {
+      "bytes": 17720,
+      "path": "totient-products/explorer/defined/tag/TP0014.html",
+      "sha256": "bda87e4af6ea4088453706f033ba35310eab064e7fbe51c00c1b496ad5703c82"
+    },
+    {
+      "bytes": 12927,
+      "path": "totient-products/explorer/defined/tag/TP0015.html",
+      "sha256": "84c19170b4443118e6a59e57428dac78b68ae9ecda47155419d5a5a259ae5f87"
+    },
+    {
+      "bytes": 11531,
+      "path": "totient-products/explorer/defined/tag/TP0016.html",
+      "sha256": "5c7778e77e17a99d85db170668fe4afde6acd24ab4518c83040dd0f980c872d0"
+    },
+    {
+      "bytes": 11961,
+      "path": "totient-products/explorer/defined/tag/TP0017.html",
+      "sha256": "ba29c5e85a4ed0565bd46a2cc1d3eff9310755a8b58be4655c808a150b477271"
+    },
+    {
+      "bytes": 14363,
+      "path": "totient-products/explorer/defined/tag/TP0018.html",
+      "sha256": "2eebcd5a24728265d72cb6a300a1fb0125c96fab9a9ec3f52df30de063be766a"
+    },
+    {
+      "bytes": 18695,
+      "path": "totient-products/explorer/defined/tag/TP0019.html",
+      "sha256": "ffe94aeab08553e21da88d14e4c2c0102bb0d1fcb1226270da92ecf2b9a972ff"
+    },
+    {
+      "bytes": 16008,
+      "path": "totient-products/explorer/defined/tag/TP001A.html",
+      "sha256": "6ec6509947ec7b96a6dcb0f9568b4c1002a604e78f46d343ddafc2cd11462cc0"
+    },
+    {
+      "bytes": 15532,
+      "path": "totient-products/explorer/defined/tag/TP001B.html",
+      "sha256": "b42044c5dc0b10d32ab52411c21aed4de7eeb116d6bb4005d58ea2faab0ff1ee"
+    },
+    {
+      "bytes": 14035,
+      "path": "totient-products/explorer/defined/tag/TP001C.html",
+      "sha256": "c4d50441241d2829eca96ecc35d7837aa8e666c484b6b10e13b022566a8cfcef"
+    },
+    {
+      "bytes": 14719,
+      "path": "totient-products/explorer/defined/tag/TP001D.html",
+      "sha256": "97608147e0be753f552f198046f8b865e92729fc41aeb5d7659d121dc80a3324"
+    },
+    {
+      "bytes": 54844,
+      "path": "totient-products/explorer/defined/tag/TP001E.html",
+      "sha256": "645e3d556cd481833f371b4f35792e9fa7038badae29bbc071e9609da0c2c0f2"
+    },
+    {
+      "bytes": 14119,
+      "path": "totient-products/explorer/defined/tag/TP001F.html",
+      "sha256": "f8252b59cca7f73bf9ace22ca37c135be01cb04e79676ec37cc8b6d9fdc66423"
+    },
+    {
+      "bytes": 27578,
+      "path": "totient-products/explorer/defined/tag/TP0020.html",
+      "sha256": "0565741d344a7c9e9d7cadd743592b204a75716c988b3f46702a396149e79809"
+    },
+    {
+      "bytes": 25214,
+      "path": "totient-products/explorer/defined/tag/TP0021.html",
+      "sha256": "8106b307b085f7e4e828dbd8bf3dc1b99b73f21e4bc324286b2348541796704b"
+    },
+    {
+      "bytes": 27855,
+      "path": "totient-products/explorer/defined/tag/TP0022.html",
+      "sha256": "cbf62fc956ac250f3fde08e7db98e8dff12848dd13ddc3636747697cd338f309"
+    },
+    {
+      "bytes": 15940,
+      "path": "totient-products/explorer/defined/tag/TP0023.html",
+      "sha256": "5055f88b44e4c4081bcaaf79f0103bf7802a65d12bb3f3cda44299453d9289b4"
+    },
+    {
+      "bytes": 17332,
+      "path": "totient-products/explorer/defined/tag/TP0024.html",
+      "sha256": "5735f98ffb115aa60aad234c175015757935f8847022cba23d39e91d1e91be95"
+    },
+    {
+      "bytes": 18396,
+      "path": "totient-products/explorer/defined/tag/TP0025.html",
+      "sha256": "f5e0e569a0c46ffa869f0be3fbc0a47702aa631e4174f993b1b5967fe0f41900"
+    },
+    {
+      "bytes": 7052,
+      "path": "totient-products/explorer/defined/tag/TP0026.html",
+      "sha256": "1c304793e7aec3dbcd43fb763fd20435834d93fb44d61b20cf1952e7f13d2967"
+    },
+    {
+      "bytes": 10012,
+      "path": "totient-products/explorer/defined/tag/TP0027.html",
+      "sha256": "2974927cd61eb0d5baad8e2f541e01499c0e6efc621e2c86951a6e7b006b1ac5"
+    },
+    {
+      "bytes": 13660,
+      "path": "totient-products/explorer/defined/tag/TP0028.html",
+      "sha256": "0d3316f258ae0bf2e36d8aa61df8c36e2326c9e78272c9ed4948f1de712953c4"
+    },
+    {
+      "bytes": 11369,
+      "path": "totient-products/explorer/defined/tag/TP0029.html",
+      "sha256": "139c58a574e5ec8926c218fd248dba5c379919a1c93829adf4a2dfeb99b62b7a"
+    },
+    {
+      "bytes": 14080,
+      "path": "totient-products/explorer/defined/tag/TP002A.html",
+      "sha256": "317c2092df3ad89a8aac68f24a3eb0c06591b0346fb02e6bba7bb85c213b383d"
+    },
+    {
+      "bytes": 13395,
+      "path": "totient-products/explorer/defined/tag/TP002B.html",
+      "sha256": "ba580db4cd507d6ca425d8f60a7a964195dbf48351e687fec5dc1b931fb346c7"
+    },
+    {
+      "bytes": 9186,
+      "path": "totient-products/explorer/defined/tag/TP002C.html",
+      "sha256": "d84e260be5ecba05cef9bbeb01cf240fb81fae1aedea117447b8d34f3688ca9f"
+    },
+    {
+      "bytes": 10231,
+      "path": "totient-products/explorer/defined/tag/TP002D.html",
+      "sha256": "7cfdf9230d730cbd684e37438b551912e7d0986a525cd1f9df08bb0d2313a564"
+    },
+    {
+      "bytes": 14990,
+      "path": "totient-products/explorer/defined/tag/TP002E.html",
+      "sha256": "d252bb945c4953e9c8dfe600cb07be2a8b066eb59f2a451a1adb5293924d40e1"
+    },
+    {
+      "bytes": 22839,
+      "path": "totient-products/explorer/defined/tag/TP002F.html",
+      "sha256": "c6e1f48afe2cab495d523d89e624547602e67cf94f5e9b6e8c360f6ba690a205"
+    },
+    {
+      "bytes": 13572,
+      "path": "totient-products/explorer/defined/tag/TP0030.html",
+      "sha256": "c666bb6c169e8f7397951a22e07138a7ef5c1471ea8eeb655a89eb5cd7325b23"
+    },
+    {
+      "bytes": 7990,
+      "path": "totient-products/explorer/defined/tag/TP0031.html",
+      "sha256": "f9a259a85c4011de0c3a07093561ebf38075e4597353c96cd5c43d0cb9f5c9e5"
+    },
+    {
+      "bytes": 8968,
+      "path": "totient-products/explorer/defined/tag/TP0032.html",
+      "sha256": "b1466f7abb3a3bd376c6038c268f2630c6004ce092050d712fa02eed9cf6d332"
+    },
+    {
+      "bytes": 50426,
+      "path": "totient-products/explorer/defined/tag/TP0033.html",
+      "sha256": "26cc525f95456f42e440ae3a321b638335fed7ac88487ce1e36dbc71e84ada54"
+    },
+    {
+      "bytes": 43033,
+      "path": "totient-products/explorer/defined/tag/TP0034.html",
+      "sha256": "f0b5a8eac8c087b8b73a8a5dc4f0b8fed4862942c92130a922bf93167de026d6"
+    },
+    {
+      "bytes": 26946,
+      "path": "totient-products/explorer/defined/tag/TP0035.html",
+      "sha256": "7f943221cbc3f0f809151678445c29408a4a361e20b7f24b5819a2b7752c705e"
+    },
+    {
+      "bytes": 22093,
+      "path": "totient-products/explorer/defined/tag/TP0036.html",
+      "sha256": "2a36c79b1e8f82eb0cc8e89897eef4031decd7569f4f7626ca0bb952cdfd18e1"
+    },
+    {
+      "bytes": 24285,
+      "path": "totient-products/explorer/defined/tag/TP0037.html",
+      "sha256": "aa7d0a0495b24ca7e4bdad7c9b49ac091429dda23e21133b4648392681fcb4a4"
+    },
+    {
+      "bytes": 24165,
+      "path": "totient-products/explorer/defined/tag/TP0038.html",
+      "sha256": "03c9aed33421117ecb7e0a29fd12efcee1335c32a2db2c251e5cf6c2e4e20bfe"
+    },
+    {
+      "bytes": 16662,
+      "path": "totient-products/explorer/defined/tag/TP0039.html",
+      "sha256": "385fe3a1c4e9c4c1e20c37936fe68f71b307c6d6a965fc9030c5dd57cb53e264"
+    },
+    {
+      "bytes": 29922,
+      "path": "totient-products/explorer/defined/tag/TP003A.html",
+      "sha256": "6bf1a13e854691e01e9fbe8a84d78f17f4b71043cf0b5b6cf330f71f7385798d"
+    },
+    {
+      "bytes": 28680,
+      "path": "totient-products/explorer/defined/tag/TP003B.html",
+      "sha256": "897df9c7f419758012ac7d7d015c1ab51a5c007a47aaa0e0c11b30da3183ab1a"
+    },
+    {
+      "bytes": 10521,
+      "path": "totient-products/explorer/defined/tag/TP003C.html",
+      "sha256": "63329dab59e8961463ee47e7ab77247215cfdd9d133158b8c8ad78feed3e962c"
+    },
+    {
+      "bytes": 47218,
+      "path": "totient-products/explorer/defined/tag/TP003D.html",
+      "sha256": "fb0d1ecfc684089e83527a37069c7fd450d49dd3b7ae409c9d7e2a222473f368"
+    },
+    {
+      "bytes": 52562,
+      "path": "totient-products/explorer/defined/tag/TP003E.html",
+      "sha256": "36189d5745ec36814c6caf189a06339196abc1d5f7d6608b0d9f20eaac5cb041"
+    },
+    {
+      "bytes": 29619,
+      "path": "totient-products/explorer/defined/tag/TP003F.html",
+      "sha256": "dfe11799a88d677e0782f2cb93289daad1394258532d401912c7c7a55237c4f8"
+    },
+    {
+      "bytes": 16667,
+      "path": "totient-products/explorer/defined/tag/TP0040.html",
+      "sha256": "41e4d0611b0fe38b405cc9659b3fa33e722282aadf33bafbc81ddcdd2f42eb4b"
+    },
+    {
+      "bytes": 27697,
+      "path": "totient-products/explorer/defined/tag/TP0041.html",
+      "sha256": "40cf59669a44b63cc9a923fdcea58f4ad45f2ff451b06ac7089263303a79ddaf"
+    },
+    {
+      "bytes": 20617,
+      "path": "totient-products/explorer/defined/tag/TP0042.html",
+      "sha256": "d890927863be51632d9c6dbb41a3d1b235e55ccdc8f098f1be4cdf5b56ee9e80"
+    },
+    {
+      "bytes": 35559,
+      "path": "totient-products/explorer/defined/tag/TP0043.html",
+      "sha256": "529444b35dbdf1f07ac0ead2d0d69272162ae690b5f34bf8ab0dd80d616b5d58"
+    },
+    {
+      "bytes": 38301,
+      "path": "totient-products/explorer/defined/tag/TP0044.html",
+      "sha256": "8c687899632d6c1da538d74cf371b1b2096012e9ba107771d22d3a77f88c439c"
+    },
+    {
+      "bytes": 41187,
+      "path": "totient-products/explorer/defined/tag/TP0045.html",
+      "sha256": "69a637b866c0236bc1fbab9ffa8bcb368480ad3d7d694ebc1ba35cf96e9d11ba"
+    },
+    {
+      "bytes": 45945,
+      "path": "totient-products/explorer/defined/tag/TP0046.html",
+      "sha256": "dd92f1e8bfc0e98f2b0116508f0405f3c2a056d1fdeb475383b1529f71d8f4c2"
+    },
+    {
+      "bytes": 15380,
+      "path": "totient-products/explorer/defined/tag/TP0047.html",
+      "sha256": "474d3608a13068f677af559cced86d0f35873b1b72df901a86cf2e6ccb297835"
+    },
+    {
+      "bytes": 22247,
+      "path": "totient-products/explorer/defined/tag/TP0048.html",
+      "sha256": "f764a169fa49b1ed1dfb06c438a36e00b9f05451fb189545466668ed989da52b"
+    },
+    {
+      "bytes": 37417,
+      "path": "totient-products/explorer/defined/tag/TP0049.html",
+      "sha256": "64e1cec37ef0311d054bfd4300e057db284ac46d51fac3740c71dbfa7d9024ef"
+    },
+    {
+      "bytes": 43981,
+      "path": "totient-products/explorer/defined/tag/TP004A.html",
+      "sha256": "d5ffa6bfd557a369fbc0f30d0a774108602e8d2b8ae777357fd66ae084d6355f"
+    },
+    {
+      "bytes": 47588,
+      "path": "totient-products/explorer/defined/tag/TP004B.html",
+      "sha256": "bb73222745c2fadbf58795ab35714670e1c56edfa74e1ca55842a44431aafb46"
+    },
+    {
+      "bytes": 54278,
+      "path": "totient-products/explorer/defined/tag/TP004C.html",
+      "sha256": "00bd6d7fcd363fbe91774c21e95cc772f83409278e54cba0499c6b760d0f2bdd"
+    },
+    {
+      "bytes": 55723,
+      "path": "totient-products/explorer/defined/tag/TP004D.html",
+      "sha256": "e85f1fd6017ee93b2c00abf901434a0d3e61e77d74fd5a11ba96f6b136ac6e20"
+    },
+    {
+      "bytes": 53677,
+      "path": "totient-products/explorer/defined/tag/TP004E.html",
+      "sha256": "86b660d86cb35ad613e4c2372ac8060757b3d86261d1f246d2c14ce63d401192"
+    },
+    {
+      "bytes": 88985,
+      "path": "totient-products/explorer/defined/tag/TP004F.html",
+      "sha256": "429d43f2c8463b7feb08394f32699680021883dc3412d004bb0a91b690ef5b2a"
+    },
+    {
+      "bytes": 52655,
+      "path": "totient-products/explorer/defined/tag/TP0050.html",
+      "sha256": "cccb175845d1f6a1bb9e27217963c62f0ce7dd11414415122a8f81db9359f4a5"
+    },
+    {
+      "bytes": 102931,
+      "path": "totient-products/explorer/defined/tag/TP0051.html",
+      "sha256": "1caf07e24036372044e5f2a3bd39f00a33186e337511e23fa36cf41ab12b9c81"
+    },
+    {
+      "bytes": 51213,
+      "path": "totient-products/explorer/defined/tag/TP0052.html",
+      "sha256": "edd0e03bbbd2122d5064fcaf401a6256a37b346e1e4cc19eb05a75cdb72ab327"
+    },
+    {
+      "bytes": 48716,
+      "path": "totient-products/explorer/defined/tag/TP0053.html",
+      "sha256": "83fb5a950585d9395ca971b43d4bf3151ff01257bf3cc7f40b39da3e882e0a74"
+    },
+    {
+      "bytes": 63511,
+      "path": "totient-products/explorer/defined/tag/TP0054.html",
+      "sha256": "ef03b203f917d7479f3882770ad2cb2c85c41d211b39708389dd34e044f5b97f"
+    },
+    {
+      "bytes": 76630,
+      "path": "totient-products/explorer/index.html",
+      "sha256": "2829b29698330bff73dc520de254f616c0d2d25dfb2ddf10889bdf92c3ce500f"
+    },
+    {
+      "bytes": 17030,
+      "path": "totient-products/explorer/tag/TP0001.html",
+      "sha256": "03da96bc91662a4bf7e71543214dc7ced7270365a635f2a0cbac92e8902b587d"
+    },
+    {
+      "bytes": 12301,
+      "path": "totient-products/explorer/tag/TP0002.html",
+      "sha256": "56793c2cd7aab9b7e0c471e69100ef19ade0e9ff4aa83e9c2071669951ce8812"
+    },
+    {
+      "bytes": 15025,
+      "path": "totient-products/explorer/tag/TP0003.html",
+      "sha256": "f7744b8dfe5e0e8831da63013660e32b24933587f23c66c29ea8b93379a227b8"
+    },
+    {
+      "bytes": 11277,
+      "path": "totient-products/explorer/tag/TP0004.html",
+      "sha256": "0697e7a18453b1a32cefd0e25205ff03ab954378173898c094977541e56d3ee5"
+    },
+    {
+      "bytes": 12569,
+      "path": "totient-products/explorer/tag/TP0005.html",
+      "sha256": "827bf6cf898f4f77aa789a1221781c23bafc3144167333869c3a3be6c027d41f"
+    },
+    {
+      "bytes": 16871,
+      "path": "totient-products/explorer/tag/TP0006.html",
+      "sha256": "3256c74d8fce5d6f87281597436880e9311efc9c6ed92618402dde4b051240c7"
+    },
+    {
+      "bytes": 24985,
+      "path": "totient-products/explorer/tag/TP0007.html",
+      "sha256": "eb651d4b0a378669a281b287eed50e2322c0cca605aa8713811edb52c8579f61"
+    },
+    {
+      "bytes": 17285,
+      "path": "totient-products/explorer/tag/TP0008.html",
+      "sha256": "bd9f95d309dc6416f1e481de88909d82eb6ee2a52db540e31b15ef367ed768ae"
+    },
+    {
+      "bytes": 14655,
+      "path": "totient-products/explorer/tag/TP0009.html",
+      "sha256": "832586676eeefb2f489c001b50edb86da12e64ddec58c1b3fc61469dd7507f4d"
+    },
+    {
+      "bytes": 20800,
+      "path": "totient-products/explorer/tag/TP000A.html",
+      "sha256": "70d64c3896d1db9687b2a237d6ffbe2dfb92868f797efa4f105616b92b243b5a"
+    },
+    {
+      "bytes": 20741,
+      "path": "totient-products/explorer/tag/TP000B.html",
+      "sha256": "9c22bcdd8868500c9a5980ee538f7bbe6bc37db90d12712b1c3f4cd627b5d8ce"
+    },
+    {
+      "bytes": 39163,
+      "path": "totient-products/explorer/tag/TP000C.html",
+      "sha256": "e8d7a3c05d68f1890c4e76b73a84e55f70b1d755f9c6e2db5a996260b35b9884"
+    },
+    {
+      "bytes": 16779,
+      "path": "totient-products/explorer/tag/TP000D.html",
+      "sha256": "8216ded95fb1fbc0fdf5dcbc24beb0a420b7a6dbbdd6928345c7a03089085368"
+    },
+    {
+      "bytes": 14149,
+      "path": "totient-products/explorer/tag/TP000E.html",
+      "sha256": "9a79b09f3b87fdc797ef47eefc07464b9317f9a1e9be9c7eae7894a0c27795d9"
+    },
+    {
+      "bytes": 31293,
+      "path": "totient-products/explorer/tag/TP000F.html",
+      "sha256": "af81fdb128022c8ebb69917e1e8159340863e4a009f7c09e2c82f0ad67ac2a0f"
+    },
+    {
+      "bytes": 38228,
+      "path": "totient-products/explorer/tag/TP0010.html",
+      "sha256": "55745256247b0cc7e9fae7b0bfcbf03e6900cb48f20d4f1e5f9e0c423c2ad8e1"
+    },
+    {
+      "bytes": 10259,
+      "path": "totient-products/explorer/tag/TP0011.html",
+      "sha256": "931b8e874b1826132248b0d5843e92149cf3c12e5b8f054b5f8d6b5849a5ec4f"
+    },
+    {
+      "bytes": 24702,
+      "path": "totient-products/explorer/tag/TP0012.html",
+      "sha256": "8d98a2b59ef563c91ba5098a7b1ef245c73159f0511c807c924154ed1bed747d"
+    },
+    {
+      "bytes": 18843,
+      "path": "totient-products/explorer/tag/TP0013.html",
+      "sha256": "82871d4696db8b4cb12b10827696dbaebdd6b95302aa8097cae0f2a31c325129"
+    },
+    {
+      "bytes": 19786,
+      "path": "totient-products/explorer/tag/TP0014.html",
+      "sha256": "2d4dc5e4c9a9212ac5b85226cafc001f5a9763155a904013fe165a09edc87211"
+    },
+    {
+      "bytes": 13806,
+      "path": "totient-products/explorer/tag/TP0015.html",
+      "sha256": "a40dd30a2e95109f0d6fdda5f87d6eaf2ee207c5debfe5b4cd0f6159447a03bf"
+    },
+    {
+      "bytes": 12258,
+      "path": "totient-products/explorer/tag/TP0016.html",
+      "sha256": "912d31e77305648a919d8c95a910581b52e372e5a15335486eb9de65d5d9ae10"
+    },
+    {
+      "bytes": 12920,
+      "path": "totient-products/explorer/tag/TP0017.html",
+      "sha256": "7917e8c7a747cacb698d146490e13ad0d98441c848627bc27f1472db50a91287"
+    },
+    {
+      "bytes": 20959,
+      "path": "totient-products/explorer/tag/TP0018.html",
+      "sha256": "82c579ef133bf772477881a33cf362cd6a5654b0fb6589a4e967862ebaf0cdac"
+    },
+    {
+      "bytes": 25834,
+      "path": "totient-products/explorer/tag/TP0019.html",
+      "sha256": "3795dd7715d89085aec7d141b29a31238f2ca472101e1b61215ac58e7138a360"
+    },
+    {
+      "bytes": 17973,
+      "path": "totient-products/explorer/tag/TP001A.html",
+      "sha256": "44d3f0f4be697dc95512845d03b148cb41c7b673545a0f383d9e707579b233ec"
+    },
+    {
+      "bytes": 16760,
+      "path": "totient-products/explorer/tag/TP001B.html",
+      "sha256": "15b50484177513b857cf946bd49a7e3827264f033895f9aa4cb2fd0cd53d3c5c"
+    },
+    {
+      "bytes": 20157,
+      "path": "totient-products/explorer/tag/TP001C.html",
+      "sha256": "b64b4baa1fd77e49ff43ca949558d03273198aa44ee48f9bb5e55c673758b100"
+    },
+    {
+      "bytes": 17838,
+      "path": "totient-products/explorer/tag/TP001D.html",
+      "sha256": "0a1ad4e66825b8b28709baa0d0452aa9b1bf494351b1f61a34cd53298b34eb57"
+    },
+    {
+      "bytes": 98379,
+      "path": "totient-products/explorer/tag/TP001E.html",
+      "sha256": "13a1a6184a37159ebf588468e31aea7a9b68ac9fe0157f60a05578fcc4f9b176"
+    },
+    {
+      "bytes": 20130,
+      "path": "totient-products/explorer/tag/TP001F.html",
+      "sha256": "9234ad6a1da270c2e6ebb2d81aa9c54099779017e31da0f9051fa1b19d4bc1c1"
+    },
+    {
+      "bytes": 33654,
+      "path": "totient-products/explorer/tag/TP0020.html",
+      "sha256": "73458ac3d0757cef18e27fe8d96f3f5ae6f36ecf4b23a1bdcaa788f0d3b0f12d"
+    },
+    {
+      "bytes": 36915,
+      "path": "totient-products/explorer/tag/TP0021.html",
+      "sha256": "b240f10a76d21f17e96f304b6ca6e81813740768228ca734a1e6fa8237e36626"
+    },
+    {
+      "bytes": 34044,
+      "path": "totient-products/explorer/tag/TP0022.html",
+      "sha256": "7dbec4a6a642deb7e08e1f1986bd70631f0998fe1b3f0ac49508d76ced26fac2"
+    },
+    {
+      "bytes": 16875,
+      "path": "totient-products/explorer/tag/TP0023.html",
+      "sha256": "97c8dc1935e3e7bde45088fe8efccf7411167bb93f37d131e668039b301e8fa0"
+    },
+    {
+      "bytes": 18965,
+      "path": "totient-products/explorer/tag/TP0024.html",
+      "sha256": "3a7f037b9fb21930318dba3a24698480ac5e12845b27372a3e14332577d4f42a"
+    },
+    {
+      "bytes": 20613,
+      "path": "totient-products/explorer/tag/TP0025.html",
+      "sha256": "c65434e002cf355b7224158677e538a91d0a2f56457643d596ddac744165646f"
+    },
+    {
+      "bytes": 7804,
+      "path": "totient-products/explorer/tag/TP0026.html",
+      "sha256": "5c747e44c034d2c18d87518fdb1ab0099427158719f01ef850f93693d976fc14"
+    },
+    {
+      "bytes": 12789,
+      "path": "totient-products/explorer/tag/TP0027.html",
+      "sha256": "719b701e472e4ebbe1bc52ee78f5aa635767cbffdf37d25db5e31b23c41bfe86"
+    },
+    {
+      "bytes": 17012,
+      "path": "totient-products/explorer/tag/TP0028.html",
+      "sha256": "14d56491bdbe4e72206b2621b94ea44c54e7957a44e15e4c020c5955f9d4cde7"
+    },
+    {
+      "bytes": 13753,
+      "path": "totient-products/explorer/tag/TP0029.html",
+      "sha256": "9ef53c8c70e6287f7f416a0f6c7c2312640d742c5612b5bb7a3294dde80906ee"
+    },
+    {
+      "bytes": 18474,
+      "path": "totient-products/explorer/tag/TP002A.html",
+      "sha256": "219a4d2e883990deacc8def8fa23123b57ce7c3026f7ba0a238f1b17ff7c3c81"
+    },
+    {
+      "bytes": 17409,
+      "path": "totient-products/explorer/tag/TP002B.html",
+      "sha256": "58c54b9ff0a7801ad759979ae45c175b467e055bd3d313aa89557b9753eb475c"
+    },
+    {
+      "bytes": 11029,
+      "path": "totient-products/explorer/tag/TP002C.html",
+      "sha256": "bbbe4e6710d13ce4909701f5efff66908572df24b58a0f6883ada7ed484575a7"
+    },
+    {
+      "bytes": 13157,
+      "path": "totient-products/explorer/tag/TP002D.html",
+      "sha256": "42980f94866baed203246b18b8ac6d14715115bf4a6b2a751fe2975accf75fd0"
+    },
+    {
+      "bytes": 19278,
+      "path": "totient-products/explorer/tag/TP002E.html",
+      "sha256": "935653448402238fccdf5478bc1115ef07904cba299859e240f306cbaade4e9d"
+    },
+    {
+      "bytes": 31396,
+      "path": "totient-products/explorer/tag/TP002F.html",
+      "sha256": "162cc598db0a1ebfd7dc0661c749a88ad01f12cfabeeac6460582f7ba8993bf6"
+    },
+    {
+      "bytes": 15386,
+      "path": "totient-products/explorer/tag/TP0030.html",
+      "sha256": "94af41cfdf7aff0fe5bacbb2b91d45ff86a55ae130bce334085c977c3b80c1c9"
+    },
+    {
+      "bytes": 9754,
+      "path": "totient-products/explorer/tag/TP0031.html",
+      "sha256": "7e1a19adc1d65b738085f4711a1f390ed7331967af1735a2306249406e23b70b"
+    },
+    {
+      "bytes": 11721,
+      "path": "totient-products/explorer/tag/TP0032.html",
+      "sha256": "bc74f981fa7504399df1592f7c111169745c74b78f3c5d471a8469b3e1d34f87"
+    },
+    {
+      "bytes": 74306,
+      "path": "totient-products/explorer/tag/TP0033.html",
+      "sha256": "d862aa331e61ae2c8e64249706432843a61da97c7d66d809ca96365d15f34e2f"
+    },
+    {
+      "bytes": 70610,
+      "path": "totient-products/explorer/tag/TP0034.html",
+      "sha256": "9059d27487114916d7022d29f9237a6e52eaf92e414b7ad763578c4dbe8f2dda"
+    },
+    {
+      "bytes": 38080,
+      "path": "totient-products/explorer/tag/TP0035.html",
+      "sha256": "89acb4acb757c9cb6a432397088b6bd4d3b43690320bc3f2eb2848adf31e1c99"
+    },
+    {
+      "bytes": 25770,
+      "path": "totient-products/explorer/tag/TP0036.html",
+      "sha256": "c305f783e97b3d3094103a7e88f6a1a9b78d0d7e99441ed7e12d419f0aba53fc"
+    },
+    {
+      "bytes": 33033,
+      "path": "totient-products/explorer/tag/TP0037.html",
+      "sha256": "dd820ab80b1b563d1a97b397526d891d3d211c575c0cbd0faa5c7119014930c6"
+    },
+    {
+      "bytes": 32922,
+      "path": "totient-products/explorer/tag/TP0038.html",
+      "sha256": "9fba93961041df933c9cd174b3ac1ee1efc109fa81ea605520767e9b18151fef"
+    },
+    {
+      "bytes": 20223,
+      "path": "totient-products/explorer/tag/TP0039.html",
+      "sha256": "9c30262035ccf0e394797c3ac40f29df4beb81f0de2ead1845c3d158699e0cf8"
+    },
+    {
+      "bytes": 48441,
+      "path": "totient-products/explorer/tag/TP003A.html",
+      "sha256": "45996b100a964d35937ce8d8b4573865c5f7cdca22f8f36330b6aa43f8dd3968"
+    },
+    {
+      "bytes": 39757,
+      "path": "totient-products/explorer/tag/TP003B.html",
+      "sha256": "f405e556f585ecd985c958289e5d474549f8d20e377f4381a93ea3db170c1681"
+    },
+    {
+      "bytes": 13036,
+      "path": "totient-products/explorer/tag/TP003C.html",
+      "sha256": "80d2fa98844413c9cee45f09855c9021b8d0a9a228f102f86ef178dc0ea3885a"
+    },
+    {
+      "bytes": 59975,
+      "path": "totient-products/explorer/tag/TP003D.html",
+      "sha256": "6b6405d4848b609b65be947935c79be5c23233a7ebaaa1040edd3cae92471453"
+    },
+    {
+      "bytes": 91521,
+      "path": "totient-products/explorer/tag/TP003E.html",
+      "sha256": "ca1094e305c7d13fda46dd731a64a9974b1a8957a80eaaac24c66ff01b33497c"
+    },
+    {
+      "bytes": 37153,
+      "path": "totient-products/explorer/tag/TP003F.html",
+      "sha256": "9afec130c62539f09175df1b3aa4376c7b9d8ea8fefba38bfeea04d69d696bf6"
+    },
+    {
+      "bytes": 24801,
+      "path": "totient-products/explorer/tag/TP0040.html",
+      "sha256": "865933a4fd9a26bfdf7b6134eae1fd3dd8d747dd3eed4ab474f04f6af6fffd85"
+    },
+    {
+      "bytes": 33571,
+      "path": "totient-products/explorer/tag/TP0041.html",
+      "sha256": "54ae4180686fa8c47982b0724882bf7f52a92ed85cb3e3f4a60e9f1409a68c1e"
+    },
+    {
+      "bytes": 27369,
+      "path": "totient-products/explorer/tag/TP0042.html",
+      "sha256": "74478f7fa0052f9e6b56a369f93c7cc47ef5161fb601d3e312904962241d9eac"
+    },
+    {
+      "bytes": 55868,
+      "path": "totient-products/explorer/tag/TP0043.html",
+      "sha256": "6572bc0298b18ed561ba05fbc298d2c6fae3983ce3bcd7fe25143060d10d0ce2"
+    },
+    {
+      "bytes": 48894,
+      "path": "totient-products/explorer/tag/TP0044.html",
+      "sha256": "231e37c1be8588b2642787675fdc00f33219d81a8c5f8310f2f5ff4622a80da7"
+    },
+    {
+      "bytes": 57385,
+      "path": "totient-products/explorer/tag/TP0045.html",
+      "sha256": "2798b6c0c60c39b0ef474c7c0be9959d99f07bfcff02738a67fc4649091ef841"
+    },
+    {
+      "bytes": 71040,
+      "path": "totient-products/explorer/tag/TP0046.html",
+      "sha256": "4ddd84ed212e05d3523c99704793303b716030c8f6e20d8d6608069e767873cf"
+    },
+    {
+      "bytes": 17657,
+      "path": "totient-products/explorer/tag/TP0047.html",
+      "sha256": "27d1423e7190deaa2ba951250317fc36109e886f9d9e7dfb2a11d578da196167"
+    },
+    {
+      "bytes": 24097,
+      "path": "totient-products/explorer/tag/TP0048.html",
+      "sha256": "6266d9c0b9158f7f1214829582d3f9c69d07de3890564192f563952c9566b752"
+    },
+    {
+      "bytes": 51769,
+      "path": "totient-products/explorer/tag/TP0049.html",
+      "sha256": "faa5a74bee042bb8a0dbc2d4d0678fc74f037e21616fd4d3e8f4132b0638b400"
+    },
+    {
+      "bytes": 80074,
+      "path": "totient-products/explorer/tag/TP004A.html",
+      "sha256": "abc39d752df8732aaf45fde4ad916b1adcdacbfa94e42e3654604806616876db"
+    },
+    {
+      "bytes": 59722,
+      "path": "totient-products/explorer/tag/TP004B.html",
+      "sha256": "83558ee5e4d4d388cd7d9132cf9bfd661e20d95b315a1e68161e5db1b3abaa53"
+    },
+    {
+      "bytes": 59653,
+      "path": "totient-products/explorer/tag/TP004C.html",
+      "sha256": "1b7031de98eb3dec001d17f6431e9d682d2d1990ee6ad6f0197411e7c36b09e0"
+    },
+    {
+      "bytes": 59466,
+      "path": "totient-products/explorer/tag/TP004D.html",
+      "sha256": "79fc5111ac57bfe271588202e7019386573581a7cf77dd0b09e57290cb2bda5e"
+    },
+    {
+      "bytes": 91130,
+      "path": "totient-products/explorer/tag/TP004E.html",
+      "sha256": "c98bcde5bc8107200639e7397cb31edd12ed625d0dbd78678595b463ddafb474"
+    },
+    {
+      "bytes": 90909,
+      "path": "totient-products/explorer/tag/TP004F.html",
+      "sha256": "da3fc4cef60958767073deb13d21ab6ab06213344e4e018d4da2071d1a87868d"
+    },
+    {
+      "bytes": 96894,
+      "path": "totient-products/explorer/tag/TP0050.html",
+      "sha256": "940de4a04338293180c33242974511dd3619a4a185e02fddd79bd663c80889cc"
+    },
+    {
+      "bytes": 104123,
+      "path": "totient-products/explorer/tag/TP0051.html",
+      "sha256": "3d8e3fe0df5cf2b47aa8c3e14a43fcd1d55a2e41c8281bc6381900e2d4f847c3"
+    },
+    {
+      "bytes": 54182,
+      "path": "totient-products/explorer/tag/TP0052.html",
+      "sha256": "6d500671328e976c2fa91d4620292c5564a6ea43c83ad34c3581feb814ee4520"
+    },
+    {
+      "bytes": 49775,
+      "path": "totient-products/explorer/tag/TP0053.html",
+      "sha256": "06a791c0d6e6df2053c085fc689d2a333a85e37700173cb4ab1704e5f852a3f6"
+    },
+    {
+      "bytes": 111756,
+      "path": "totient-products/explorer/tag/TP0054.html",
+      "sha256": "1185a499efce5e1755023e0fb878868badc25981067ac47af943ef32814d0a65"
+    },
+    {
+      "bytes": 8977,
+      "path": "totient-products/index.html",
+      "sha256": "5ad0f9fcaadd5003320c605b916063ac5d1066c04904c28e6c34ee9ca375927d"
+    }
+  ],
+  "first_enrollment_catalog_sha256": "2db42c10aa3196dda6a2fff73db02a86906091826a880abf4b38227f5f34f0b0",
+  "html_revision": "ac7111ec14ff",
+  "independent_lean_bundle_verified": true,
+  "inherited_revised_audit_sources": [
+    {
+      "changed_by_gaussian_factorization": false,
+      "historical_sha256": "2125f1e0170447ca94cfd78a8d34c4f1034d2ef0e68884ef79b9787345e36d45",
+      "later_checked_in_sha256": "27b789cca2650a2c83fb0cd3eb185607111eac7075a1f44cee9cd274832ee9a1",
+      "path": "peano-lab/py/tests/test_library_editions_v19_admission.py",
+      "proof_authority": false
+    },
+    {
+      "changed_by_gaussian_factorization": false,
+      "historical_sha256": "455c416e00618ecb4443da8af8f038d985308a7624431de4c63c9dcb6206c0e0",
+      "later_checked_in_sha256": "8a4d2588fe63a8c13477349899040f3122b0d1226b75adbfcb926364e0088736",
+      "path": "peano-lab/py/tests/test_linear_congruence_complete_candidate.py",
+      "proof_authority": false
+    },
+    {
+      "changed_by_gaussian_factorization": false,
+      "historical_sha256": "cb6a22a23f44958546eebedd9bdadb28ba466519c2951920cd2ac5f3c04760f3",
+      "later_checked_in_sha256": "820fd1e4a262295bb85a50bbe2f9b5361c9cc3ce403fda443a1ff1b2a2d129ec",
+      "path": "research/arithmetic-library/ha-bertrand-b6-release-tranche-rfc-v1.md",
+      "proof_authority": false
+    },
+    {
+      "changed_by_gaussian_factorization": false,
+      "historical_sha256": "857da462982d7798c69ca24053378c31e52d1b58fcc401bfe99ba92aac101383",
+      "later_checked_in_sha256": "ce32b9b9922e46be8abb8a61ae4a4cb3461f2dea6eeb56a65bfbc2684991cf35",
+      "path": "research/arithmetic-library/linear-congruence-complete-rfc-v1.md",
+      "proof_authority": false
+    },
+    {
+      "changed_by_gaussian_factorization": false,
+      "historical_sha256": "b7774571ff25d0ab1c35707e4aa8b074b584179307bc25c2d9bcb5dc7a17f960",
+      "later_checked_in_sha256": "41b22f2291a4ef69746acedbfee346bf4044e67afb8f2ee77ded06156a0ca67b",
+      "path": "research/arithmetic-library/wmi-qr-replay.md",
+      "proof_authority": false
+    }
+  ],
+  "inventory_sha256": "4efc188bedf78ada953dbb2c336d04432511c2de5c360d2caa9c5e7260a48c3a",
+  "proof_bundle_sha256": "4fcb3cd45e83448776abb9e33692496a7acfa98a051cae15761826a0b15fda44",
+  "schema": "peano-lab-constructive-historical-publication-v30-first-v29-manifest",
+  "stable_count": 0,
+  "theorem_count": 278
+}

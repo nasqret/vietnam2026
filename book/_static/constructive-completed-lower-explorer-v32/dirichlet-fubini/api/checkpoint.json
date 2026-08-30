@@ -1,0 +1,396 @@
+{
+  "bundle": {
+    "body_proof_nodes": 25115,
+    "bytes": 4455766,
+    "dependency_edges_including_packaging": 971,
+    "independent_lean_checked": true,
+    "kernel_calls": 347,
+    "nodes_including_packaging_root": 347,
+    "original_ha_checked": true,
+    "packaging_root_id": 346,
+    "path": "research/arithmetic-library/artifacts/dirichlet-fubini-proof-bundle-v1.json",
+    "sha256": "05cb102ae5fb423e325223589eb17b8f1dd0aa8d3cb8419425142f9be087d9f3"
+  },
+  "new_theorem_count": 32,
+  "owned_node_ids": {
+    "dirichlet_convolution_associative": 343,
+    "dirichlet_convolution_associative_tables_exists": 345,
+    "dirichlet_convolution_fubini_interchange": 342,
+    "dirichlet_convolution_tables_associative": 344,
+    "dirichlet_factor_row_nested_entry": 339,
+    "dirichlet_factor_row_scalar": 333,
+    "dirichlet_factor_row_sum_product": 338,
+    "dirichlet_factor_row_zero_sum": 337,
+    "dirichlet_grid_column_slice": 335,
+    "dirichlet_grid_column_sums_convolution_prefix": 341,
+    "dirichlet_grid_entry_convolution_product": 331,
+    "dirichlet_grid_entry_exists": 319,
+    "dirichlet_grid_entry_factor_product": 317,
+    "dirichlet_grid_entry_from_convolution_entry": 330,
+    "dirichlet_grid_entry_from_factorization": 315,
+    "dirichlet_grid_entry_functional": 318,
+    "dirichlet_grid_entry_omitted": 314,
+    "dirichlet_grid_entry_omitted_value": 316,
+    "dirichlet_grid_entry_transpose": 320,
+    "dirichlet_grid_flat_entry_coordinates": 322,
+    "dirichlet_grid_flat_entry_exists": 321,
+    "dirichlet_grid_flat_prefix_append": 324,
+    "dirichlet_grid_flat_prefix_exists": 325,
+    "dirichlet_grid_flat_prefix_zero": 323,
+    "dirichlet_grid_from_flat_prefix": 326,
+    "dirichlet_grid_fubini_exists": 336,
+    "dirichlet_grid_middle_factor_equation": 329,
+    "dirichlet_grid_nondivisor_row_value_zero": 332,
+    "dirichlet_grid_row_slice": 334,
+    "dirichlet_grid_row_sums_convolution_prefix": 340,
+    "dirichlet_grid_table_exists": 327,
+    "dirichlet_grid_table_lookup": 328
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_convolution_fubini_interchange",
+      "node_id": 342,
+      "ordinary_certificate_nodes": 27262,
+      "statement_sha256": "52ec70863e39714463cce993fd232ffe99a1a5e0c5a97f0daecfe5b41ed8e3bd"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_convolution_associative",
+      "node_id": 343,
+      "ordinary_certificate_nodes": 34386,
+      "statement_sha256": "7963b56c370b9ff42ae43dc3e12d13dd36b6bd1dd356b62269a062a6a90d6738"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_convolution_associative_tables_exists",
+      "node_id": 345,
+      "ordinary_certificate_nodes": 35039,
+      "statement_sha256": "f0e95e4639f59cc7b592d82384c2cf72b63e594814599db6b7bf24339b35adc1"
+    }
+  ],
+  "rows": [
+    {
+      "name": "dirichlet_grid_entry_omitted",
+      "node_id": 314,
+      "proof_depth": 10,
+      "proof_edges": 10,
+      "proof_nodes": 11,
+      "proof_objects": 11,
+      "reused_objects": 0,
+      "statement_sha256": "3c657a9c8550d7572e480f40ef555fa7116107b969822917598bcb57840e00d8"
+    },
+    {
+      "name": "dirichlet_grid_entry_from_factorization",
+      "node_id": 315,
+      "proof_depth": 34,
+      "proof_edges": 40,
+      "proof_nodes": 41,
+      "proof_objects": 41,
+      "reused_objects": 0,
+      "statement_sha256": "b098b9437988fac3a3d34559d9e96d9dabd41f7aae0de7f9658ee6149c3158cc"
+    },
+    {
+      "name": "dirichlet_grid_entry_omitted_value",
+      "node_id": 316,
+      "proof_depth": 44,
+      "proof_edges": 90,
+      "proof_nodes": 91,
+      "proof_objects": 91,
+      "reused_objects": 0,
+      "statement_sha256": "db6ca0608ba8bf2e2e206e824a8e6ea991fbb23b45bf2232b3e3f90b6fd2d907"
+    },
+    {
+      "name": "dirichlet_grid_entry_factor_product",
+      "node_id": 317,
+      "proof_depth": 43,
+      "proof_edges": 307,
+      "proof_nodes": 308,
+      "proof_objects": 308,
+      "reused_objects": 0,
+      "statement_sha256": "9f83161f42364cc2613d80a889207b04e1a2a1664d5098a277eea4f78646b0e3"
+    },
+    {
+      "name": "dirichlet_grid_entry_functional",
+      "node_id": 318,
+      "proof_depth": 39,
+      "proof_edges": 122,
+      "proof_nodes": 123,
+      "proof_objects": 123,
+      "reused_objects": 0,
+      "statement_sha256": "c92fd63da95fe56f69e24d84a9c1c4c2ddaf8fcf6df2dc67883a3f68e4a8a6cc"
+    },
+    {
+      "name": "dirichlet_grid_entry_exists",
+      "node_id": 319,
+      "proof_depth": 47,
+      "proof_edges": 134,
+      "proof_nodes": 135,
+      "proof_objects": 135,
+      "reused_objects": 0,
+      "statement_sha256": "2a491de99c3dc1a47eacf3a569690fbd3fa47fa584750c9bb00d4248f6025452"
+    },
+    {
+      "name": "dirichlet_grid_entry_transpose",
+      "node_id": 320,
+      "proof_depth": 41,
+      "proof_edges": 141,
+      "proof_nodes": 142,
+      "proof_objects": 142,
+      "reused_objects": 0,
+      "statement_sha256": "b322c424cd18258ec758b9c539b7a19f25f944b0f0619506e6d988daef6e9788"
+    },
+    {
+      "name": "dirichlet_grid_flat_entry_exists",
+      "node_id": 321,
+      "proof_depth": 24,
+      "proof_edges": 43,
+      "proof_nodes": 44,
+      "proof_objects": 44,
+      "reused_objects": 0,
+      "statement_sha256": "6eb1297458bad4acb5bfe3645409ab977dd48430eca821978f5372efb81515d8"
+    },
+    {
+      "name": "dirichlet_grid_flat_entry_coordinates",
+      "node_id": 322,
+      "proof_depth": 40,
+      "proof_edges": 336,
+      "proof_nodes": 337,
+      "proof_objects": 337,
+      "reused_objects": 0,
+      "statement_sha256": "4533ae333cee74bc5bcc577976d3068719c0e0c7e44fbef1184ab6288d02a3a1"
+    },
+    {
+      "name": "dirichlet_grid_flat_prefix_zero",
+      "node_id": 323,
+      "proof_depth": 28,
+      "proof_edges": 113,
+      "proof_nodes": 114,
+      "proof_objects": 114,
+      "reused_objects": 0,
+      "statement_sha256": "76e2d8a8b4c29d21373bd3a6fb21ff1ea3798b0793b34e340ed3e6e37acc5af9"
+    },
+    {
+      "name": "dirichlet_grid_flat_prefix_append",
+      "node_id": 324,
+      "proof_depth": 36,
+      "proof_edges": 155,
+      "proof_nodes": 156,
+      "proof_objects": 156,
+      "reused_objects": 0,
+      "statement_sha256": "f223808a0135f153dda9bf39598ea660b9d12b73fbf7dad5c82f8c26de4b7fbb"
+    },
+    {
+      "name": "dirichlet_grid_flat_prefix_exists",
+      "node_id": 325,
+      "proof_depth": 29,
+      "proof_edges": 87,
+      "proof_nodes": 88,
+      "proof_objects": 88,
+      "reused_objects": 0,
+      "statement_sha256": "1b943924e7270f9e130740f5b4d4ad36661725a2bab74f17909faccacb6c720e"
+    },
+    {
+      "name": "dirichlet_grid_from_flat_prefix",
+      "node_id": 326,
+      "proof_depth": 29,
+      "proof_edges": 66,
+      "proof_nodes": 67,
+      "proof_objects": 67,
+      "reused_objects": 0,
+      "statement_sha256": "2523dad4b7c2978374512e288a413418039915794ba8c435e5b41c5d965a9d63"
+    },
+    {
+      "name": "dirichlet_grid_table_exists",
+      "node_id": 327,
+      "proof_depth": 19,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "ef386d6ac10cfafeeb56893d3efa02aa4fa4e6ca6a7a2988d5a571c43508ad9c"
+    },
+    {
+      "name": "dirichlet_grid_table_lookup",
+      "node_id": 328,
+      "proof_depth": 26,
+      "proof_edges": 38,
+      "proof_nodes": 39,
+      "proof_objects": 39,
+      "reused_objects": 0,
+      "statement_sha256": "fcd8990ba5ec55163a06d50d4f0214d8b0fa6661606a457355dc12fa9c30157c"
+    },
+    {
+      "name": "dirichlet_grid_middle_factor_equation",
+      "node_id": 329,
+      "proof_depth": 23,
+      "proof_edges": 34,
+      "proof_nodes": 35,
+      "proof_objects": 35,
+      "reused_objects": 0,
+      "statement_sha256": "dee21f56fe63f9eb944374d42d6509693115ed61a78ca7e3e9f6bddc8716f57e"
+    },
+    {
+      "name": "dirichlet_grid_entry_from_convolution_entry",
+      "node_id": 330,
+      "proof_depth": 46,
+      "proof_edges": 165,
+      "proof_nodes": 166,
+      "proof_objects": 166,
+      "reused_objects": 0,
+      "statement_sha256": "e50c005d118d2a3310c755109e7a653afe0894a956422677c410a2e9cb4ccd1c"
+    },
+    {
+      "name": "dirichlet_grid_entry_convolution_product",
+      "node_id": 331,
+      "proof_depth": 39,
+      "proof_edges": 90,
+      "proof_nodes": 91,
+      "proof_objects": 91,
+      "reused_objects": 0,
+      "statement_sha256": "01d4dcf5b81f650115359faeffd638707e7b0ce91108fdbf86031940201ae3b8"
+    },
+    {
+      "name": "dirichlet_grid_nondivisor_row_value_zero",
+      "node_id": 332,
+      "proof_depth": 39,
+      "proof_edges": 60,
+      "proof_nodes": 61,
+      "proof_objects": 61,
+      "reused_objects": 0,
+      "statement_sha256": "4f65cb694a1959263389a5780a99856aec1b382e6acf0995a5ee924ddc5fc8d4"
+    },
+    {
+      "name": "dirichlet_factor_row_scalar",
+      "node_id": 333,
+      "proof_depth": 45,
+      "proof_edges": 102,
+      "proof_nodes": 103,
+      "proof_objects": 103,
+      "reused_objects": 0,
+      "statement_sha256": "12d455e66e075ecf5960458a861f10cf520a3bee1ae2cef1834288009ae07370"
+    },
+    {
+      "name": "dirichlet_grid_row_slice",
+      "node_id": 334,
+      "proof_depth": 36,
+      "proof_edges": 80,
+      "proof_nodes": 81,
+      "proof_objects": 81,
+      "reused_objects": 0,
+      "statement_sha256": "6cc938f3fa60180d332bd18523756b747bc9832ad2c288693a2dd1e6ff346d83"
+    },
+    {
+      "name": "dirichlet_grid_column_slice",
+      "node_id": 335,
+      "proof_depth": 39,
+      "proof_edges": 115,
+      "proof_nodes": 116,
+      "proof_objects": 116,
+      "reused_objects": 0,
+      "statement_sha256": "6189fbd4c12a8c505f62cd17243c4e1665dd56910e769d0401a3598c401f6a6b"
+    },
+    {
+      "name": "dirichlet_grid_fubini_exists",
+      "node_id": 336,
+      "proof_depth": 19,
+      "proof_edges": 39,
+      "proof_nodes": 40,
+      "proof_objects": 40,
+      "reused_objects": 0,
+      "statement_sha256": "84c13a3b8852328db17b1b2a3b7b6bf8939a9b5c62a1dccbabf9fbe2a6892675"
+    },
+    {
+      "name": "dirichlet_factor_row_zero_sum",
+      "node_id": 337,
+      "proof_depth": 57,
+      "proof_edges": 96,
+      "proof_nodes": 97,
+      "proof_objects": 97,
+      "reused_objects": 0,
+      "statement_sha256": "87d05162d5a5ef5f2615d660ba1f147abbfd8d6b13114e56ebf19af5b5c813aa"
+    },
+    {
+      "name": "dirichlet_factor_row_sum_product",
+      "node_id": 338,
+      "proof_depth": 47,
+      "proof_edges": 112,
+      "proof_nodes": 113,
+      "proof_objects": 113,
+      "reused_objects": 0,
+      "statement_sha256": "37ff14054513f81c6346aabd84784e29391d336a933f0f5797966c47de630280"
+    },
+    {
+      "name": "dirichlet_factor_row_nested_entry",
+      "node_id": 339,
+      "proof_depth": 52,
+      "proof_edges": 213,
+      "proof_nodes": 214,
+      "proof_objects": 214,
+      "reused_objects": 0,
+      "statement_sha256": "53e33a68c155d72e61076119059696efe54d5491b41876018631386742842941"
+    },
+    {
+      "name": "dirichlet_grid_row_sums_convolution_prefix",
+      "node_id": 340,
+      "proof_depth": 42,
+      "proof_edges": 91,
+      "proof_nodes": 92,
+      "proof_objects": 92,
+      "reused_objects": 0,
+      "statement_sha256": "3ac6f81e783427fdd045b9575f685dfb037b415bd87b1701bd6c7dcafc431297"
+    },
+    {
+      "name": "dirichlet_grid_column_sums_convolution_prefix",
+      "node_id": 341,
+      "proof_depth": 42,
+      "proof_edges": 91,
+      "proof_nodes": 92,
+      "proof_objects": 92,
+      "reused_objects": 0,
+      "statement_sha256": "8cb63e08fbcaeacb24b90321402e341c89e4dab507c4fc418858e9e14b7675cd"
+    },
+    {
+      "name": "dirichlet_convolution_fubini_interchange",
+      "node_id": 342,
+      "proof_depth": 45,
+      "proof_edges": 144,
+      "proof_nodes": 145,
+      "proof_objects": 145,
+      "reused_objects": 0,
+      "statement_sha256": "52ec70863e39714463cce993fd232ffe99a1a5e0c5a97f0daecfe5b41ed8e3bd"
+    },
+    {
+      "name": "dirichlet_convolution_associative",
+      "node_id": 343,
+      "proof_depth": 65,
+      "proof_edges": 160,
+      "proof_nodes": 161,
+      "proof_objects": 161,
+      "reused_objects": 0,
+      "statement_sha256": "7963b56c370b9ff42ae43dc3e12d13dd36b6bd1dd356b62269a062a6a90d6738"
+    },
+    {
+      "name": "dirichlet_convolution_tables_associative",
+      "node_id": 344,
+      "proof_depth": 60,
+      "proof_edges": 144,
+      "proof_nodes": 145,
+      "proof_objects": 145,
+      "reused_objects": 0,
+      "statement_sha256": "804e50efe285fc4b5536b7ed6200fc5fa8b0d8f83b806da81e1707c5769e9b49"
+    },
+    {
+      "name": "dirichlet_convolution_associative_tables_exists",
+      "node_id": 345,
+      "proof_depth": 34,
+      "proof_edges": 79,
+      "proof_nodes": 80,
+      "proof_objects": 80,
+      "reused_objects": 0,
+      "statement_sha256": "f0e95e4639f59cc7b592d82384c2cf72b63e594814599db6b7bf24339b35adc1"
+    }
+  ],
+  "slug": "dirichlet-fubini",
+  "specs_sha256": "f00c81c55fe725c7595315fbec8345305bebb3e20f532e6c844c2156fa2fc6cf"
+}

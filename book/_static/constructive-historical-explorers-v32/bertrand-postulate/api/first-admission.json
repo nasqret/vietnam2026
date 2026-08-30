@@ -1,0 +1,6560 @@
+{
+  "catalog_sha256_by_recorded_version": {},
+  "per_theorem": [
+    {
+      "name": "zero_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0000"
+    },
+    {
+      "name": "add_succ_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0001"
+    },
+    {
+      "name": "add_comm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0002"
+    },
+    {
+      "name": "add_assoc",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0003"
+    },
+    {
+      "name": "mul_zero_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0004"
+    },
+    {
+      "name": "mul_succ_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0005"
+    },
+    {
+      "name": "mul_comm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0006"
+    },
+    {
+      "name": "mul_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0007"
+    },
+    {
+      "name": "mul_assoc",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0008"
+    },
+    {
+      "name": "one_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0009"
+    },
+    {
+      "name": "mul_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000A"
+    },
+    {
+      "name": "add_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000B"
+    },
+    {
+      "name": "succ_ne_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000C"
+    },
+    {
+      "name": "succ_injective",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000D"
+    },
+    {
+      "name": "le_refl",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000E"
+    },
+    {
+      "name": "le_trans",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000F"
+    },
+    {
+      "name": "no_succ_add_fixed",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000G"
+    },
+    {
+      "name": "drop_add_prefix_from_fixed",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000H"
+    },
+    {
+      "name": "antisymm_from_witnesses",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000I"
+    },
+    {
+      "name": "le_antisymm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000J"
+    },
+    {
+      "name": "le_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000K"
+    },
+    {
+      "name": "add_eq_zero_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000L"
+    },
+    {
+      "name": "mul_eq_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000M"
+    },
+    {
+      "name": "zero_or_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000Q"
+    },
+    {
+      "name": "nonzero_is_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000R"
+    },
+    {
+      "name": "add_congr",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000S"
+    },
+    {
+      "name": "mul_congr",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000T"
+    },
+    {
+      "name": "add_right_cancel",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000U"
+    },
+    {
+      "name": "add_left_cancel",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000V"
+    },
+    {
+      "name": "zero_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000W"
+    },
+    {
+      "name": "le_succ_self",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000X"
+    },
+    {
+      "name": "le_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT000Y"
+    },
+    {
+      "name": "one_le_of_ne_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0010"
+    },
+    {
+      "name": "ne_zero_of_one_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0011"
+    },
+    {
+      "name": "le_add_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0012"
+    },
+    {
+      "name": "le_add_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0013"
+    },
+    {
+      "name": "add_le_add_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0014"
+    },
+    {
+      "name": "add_le_add_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0015"
+    },
+    {
+      "name": "succ_le_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0016"
+    },
+    {
+      "name": "le_of_succ_le_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0017"
+    },
+    {
+      "name": "le_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0018"
+    },
+    {
+      "name": "lt_to_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0019"
+    },
+    {
+      "name": "lt_irrefl_expanded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001B"
+    },
+    {
+      "name": "le_eq_or_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001C"
+    },
+    {
+      "name": "lt_of_lt_of_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001D"
+    },
+    {
+      "name": "lt_of_le_of_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001E"
+    },
+    {
+      "name": "lt_trans",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001F"
+    },
+    {
+      "name": "le_or_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001G"
+    },
+    {
+      "name": "lt_trichotomy",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001H"
+    },
+    {
+      "name": "lt_not_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001I"
+    },
+    {
+      "name": "le_not_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001J"
+    },
+    {
+      "name": "lt_not_eq_add_middle",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001K"
+    },
+    {
+      "name": "mul_le_mul_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001L"
+    },
+    {
+      "name": "mul_le_mul_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001M"
+    },
+    {
+      "name": "mul_lt_mul_succ_left_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001N"
+    },
+    {
+      "name": "division_remainder_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001O"
+    },
+    {
+      "name": "division_remainder_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001P"
+    },
+    {
+      "name": "division_block_upper",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001R"
+    },
+    {
+      "name": "positive_quotient_gap_impossible",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001S"
+    },
+    {
+      "name": "division_remainder_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001U"
+    },
+    {
+      "name": "zero_remainder_implies_multiple",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001V"
+    },
+    {
+      "name": "multiple_has_zero_remainder",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001W"
+    },
+    {
+      "name": "add_eq_zero_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT001X"
+    },
+    {
+      "name": "mul_eq_one_components",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0020"
+    },
+    {
+      "name": "mul_ne_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0021"
+    },
+    {
+      "name": "mul_left_cancel_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0022"
+    },
+    {
+      "name": "two_large_factors_impossible",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0024"
+    },
+    {
+      "name": "prime_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0025"
+    },
+    {
+      "name": "multiple_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0026"
+    },
+    {
+      "name": "one_multiple",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0027"
+    },
+    {
+      "name": "multiple_refl",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0028"
+    },
+    {
+      "name": "multiple_mul_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002A"
+    },
+    {
+      "name": "multiple_mul_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002B"
+    },
+    {
+      "name": "multiple_trans",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002C"
+    },
+    {
+      "name": "divisor_le_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002D"
+    },
+    {
+      "name": "divisor_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002E"
+    },
+    {
+      "name": "multiple_antisymm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002F"
+    },
+    {
+      "name": "factor_difference",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002G"
+    },
+    {
+      "name": "divides_remainder",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002H"
+    },
+    {
+      "name": "divides_linear_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002I"
+    },
+    {
+      "name": "is_gcd_zero_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002L"
+    },
+    {
+      "name": "is_gcd_euclid_forward",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002S"
+    },
+    {
+      "name": "gcd_exists_up_to",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002U"
+    },
+    {
+      "name": "gcd_exists_relational",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002V"
+    },
+    {
+      "name": "coprime_symm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002W"
+    },
+    {
+      "name": "coprime_one_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002X"
+    },
+    {
+      "name": "coprime_one_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT002Y"
+    },
+    {
+      "name": "is_gcd_one_to_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0031"
+    },
+    {
+      "name": "add_permute_outer",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0032"
+    },
+    {
+      "name": "balanced_bezout_euclid_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0033"
+    },
+    {
+      "name": "gcd_balanced_bezout_exists_up_to",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0034"
+    },
+    {
+      "name": "gcd_balanced_bezout_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0035"
+    },
+    {
+      "name": "balanced_combination_scale_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0036"
+    },
+    {
+      "name": "common_divisor_divides_balanced_result",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0037"
+    },
+    {
+      "name": "coprime_balanced_bezout",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0038"
+    },
+    {
+      "name": "gauss_coprime_cancel",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0039"
+    },
+    {
+      "name": "eq_decidable",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003A"
+    },
+    {
+      "name": "multiple_decidable_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003B"
+    },
+    {
+      "name": "multiple_decidable",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003C"
+    },
+    {
+      "name": "factor_property_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003D"
+    },
+    {
+      "name": "factor_search_up_to",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003E"
+    },
+    {
+      "name": "prime_or_composite",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003F"
+    },
+    {
+      "name": "prime_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003G"
+    },
+    {
+      "name": "prime_decidable",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003H"
+    },
+    {
+      "name": "proper_factor_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003J"
+    },
+    {
+      "name": "prime_divisor_exists_up_to",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003K"
+    },
+    {
+      "name": "prime_divisor_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003L"
+    },
+    {
+      "name": "prime_divisor_eq_one_or_self",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003M"
+    },
+    {
+      "name": "euclid_prime_dvd_product",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003N"
+    },
+    {
+      "name": "mod_eq_refl",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003O"
+    },
+    {
+      "name": "mod_eq_trans",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003Q"
+    },
+    {
+      "name": "mod_eq_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003R"
+    },
+    {
+      "name": "mod_eq_mul_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003S"
+    },
+    {
+      "name": "mod_eq_mul_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003T"
+    },
+    {
+      "name": "mod_eq_bounded_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003W"
+    },
+    {
+      "name": "mod_eq_to_remainder_decomposition",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003X"
+    },
+    {
+      "name": "beta_modulus_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT003Y"
+    },
+    {
+      "name": "beta_at_self_of_bound",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0040"
+    },
+    {
+      "name": "beta_at_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0041"
+    },
+    {
+      "name": "beta_at_unique",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0042"
+    },
+    {
+      "name": "beta_at_of_mod_eq_bound",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0045"
+    },
+    {
+      "name": "dvd_to_mod_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0046"
+    },
+    {
+      "name": "bezout_mod_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004C"
+    },
+    {
+      "name": "bezout_mod_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004D"
+    },
+    {
+      "name": "mod_eq_predecessor_cancel",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004E"
+    },
+    {
+      "name": "binary_crt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004F"
+    },
+    {
+      "name": "beta_modulus_coprime_base",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004I"
+    },
+    {
+      "name": "common_divisor_beta_moduli_divides_gap_times_c",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004J"
+    },
+    {
+      "name": "beta_moduli_coprime_of_gap_dvd",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004K"
+    },
+    {
+      "name": "bounded_common_multiple_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004M"
+    },
+    {
+      "name": "bounded_common_multiple_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004N"
+    },
+    {
+      "name": "beta_moduli_coprime_of_lt_bounded_common_multiple",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004O"
+    },
+    {
+      "name": "beta_moduli_pairwise_coprime_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004P"
+    },
+    {
+      "name": "coprime_mul_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004R"
+    },
+    {
+      "name": "coprime_mul_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004S"
+    },
+    {
+      "name": "mod_eq_of_mod_eq_multiple",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004T"
+    },
+    {
+      "name": "binary_crt_fold_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004U"
+    },
+    {
+      "name": "right_factor_divides_product",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT004V"
+    },
+    {
+      "name": "beta_value_le_code",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0053"
+    },
+    {
+      "name": "base_le_beta_modulus",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0054"
+    },
+    {
+      "name": "le_scaled_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0055"
+    },
+    {
+      "name": "scaled_bounded_common_multiple",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0056"
+    },
+    {
+      "name": "beta_value_lt_scaled_base",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0057"
+    },
+    {
+      "name": "new_value_lt_scaled_base",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0058"
+    },
+    {
+      "name": "beta_exclusive_accumulated_product_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0059"
+    },
+    {
+      "name": "beta_exclusive_recode_congruence_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005A"
+    },
+    {
+      "name": "beta_exclusive_recode_invariant_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005B"
+    },
+    {
+      "name": "bounded_beta_exclusive_recode_invariant",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005C"
+    },
+    {
+      "name": "beta_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005D"
+    },
+    {
+      "name": "beta_prefix_product_trace_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005E"
+    },
+    {
+      "name": "beta_product_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005F"
+    },
+    {
+      "name": "beta_product_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005G"
+    },
+    {
+      "name": "beta_product_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005I"
+    },
+    {
+      "name": "beta_product_succ_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005J"
+    },
+    {
+      "name": "beta_product_succ_append",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005K"
+    },
+    {
+      "name": "beta_product_transport_prefix",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT005L"
+    },
+    {
+      "name": "beta_factor_divides_product",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0069"
+    },
+    {
+      "name": "prime_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT006N"
+    },
+    {
+      "name": "parity_cases",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0072"
+    },
+    {
+      "name": "beta_repeat_empty",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT007U"
+    },
+    {
+      "name": "beta_repeat_succ_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT007V"
+    },
+    {
+      "name": "beta_repeat_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT007W"
+    },
+    {
+      "name": "beta_repeat_entry_eq",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT007X"
+    },
+    {
+      "name": "beta_repeat_transport_entry",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT007Y"
+    },
+    {
+      "name": "pow_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0080"
+    },
+    {
+      "name": "pow_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0081"
+    },
+    {
+      "name": "pow_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0082"
+    },
+    {
+      "name": "pow_successor_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0083"
+    },
+    {
+      "name": "beta_range_empty",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0084"
+    },
+    {
+      "name": "beta_range_succ_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0085"
+    },
+    {
+      "name": "beta_range_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0086"
+    },
+    {
+      "name": "beta_range_entry_eq",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0087"
+    },
+    {
+      "name": "beta_range_transport_entry",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0088"
+    },
+    {
+      "name": "beta_prefix_sum_trace_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0089"
+    },
+    {
+      "name": "beta_sum_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008A"
+    },
+    {
+      "name": "beta_sum_trace_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008B"
+    },
+    {
+      "name": "beta_sum_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008C"
+    },
+    {
+      "name": "beta_sum_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008E"
+    },
+    {
+      "name": "beta_sum_succ_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008F"
+    },
+    {
+      "name": "all_bits_prefix_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008J"
+    },
+    {
+      "name": "all_bits_last_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008K"
+    },
+    {
+      "name": "bit_count_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008L"
+    },
+    {
+      "name": "bit_count_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008N"
+    },
+    {
+      "name": "bit_count_succ_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008O"
+    },
+    {
+      "name": "bit_count_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008P"
+    },
+    {
+      "name": "prime_coprime_or_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008Q"
+    },
+    {
+      "name": "prime_not_divides_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008R"
+    },
+    {
+      "name": "distinct_primes_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008S"
+    },
+    {
+      "name": "factorial_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT008Y"
+    },
+    {
+      "name": "factorial_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0090"
+    },
+    {
+      "name": "factorial_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0091"
+    },
+    {
+      "name": "factorial_succ_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0092"
+    },
+    {
+      "name": "pow_one_from_zero_successor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0093"
+    },
+    {
+      "name": "pow_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0094"
+    },
+    {
+      "name": "pow_successor_pair_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0095"
+    },
+    {
+      "name": "lt_three_cases",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0097"
+    },
+    {
+      "name": "pow_two_from_one_successor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT009V"
+    },
+    {
+      "name": "pow_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT009W"
+    },
+    {
+      "name": "pow_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT009X"
+    },
+    {
+      "name": "finite_lt_succ_eq_or_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00AA"
+    },
+    {
+      "name": "prime_is_succ_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00AW"
+    },
+    {
+      "name": "coprime_product_is_lcm",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "stable_closed",
+        "checked_use": true,
+        "evidence_status": "stable_closed",
+        "stable_member": true
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00BG"
+    },
+    {
+      "name": "beta_product_pointwise_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00DH"
+    },
+    {
+      "name": "beta_sum_transport_prefix",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00I9"
+    },
+    {
+      "name": "eisenstein_initial_segment_prefix_all_bits",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00JA"
+    },
+    {
+      "name": "eisenstein_initial_segment_decoded_choice",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00JB"
+    },
+    {
+      "name": "beta_all_one_bit_count_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00JC"
+    },
+    {
+      "name": "eisenstein_initial_segment_bit_count_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00JD"
+    },
+    {
+      "name": "eisenstein_initial_segment_bit_count_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00JE"
+    },
+    {
+      "name": "beta_sum_pointwise_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00K5"
+    },
+    {
+      "name": "add_shuffle_middle",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00MY"
+    },
+    {
+      "name": "prime_strictly_above_decidable",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00PR"
+    },
+    {
+      "name": "bounded_prime_interval_search",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00PS"
+    },
+    {
+      "name": "mul_le_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00PV"
+    },
+    {
+      "name": "le_mul_of_one_le_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00PW"
+    },
+    {
+      "name": "le_mul_of_one_le_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00PX"
+    },
+    {
+      "name": "pow_base_monotone",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00PY"
+    },
+    {
+      "name": "one_le_pow",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Q0"
+    },
+    {
+      "name": "pow_nonzero_of_one_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Q1"
+    },
+    {
+      "name": "power_divides_decidable",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Q3"
+    },
+    {
+      "name": "power_divides_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Q4"
+    },
+    {
+      "name": "bounded_power_valuation_search",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Q5"
+    },
+    {
+      "name": "bounded_power_valuation_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Q6"
+    },
+    {
+      "name": "power_valuation_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Q7"
+    },
+    {
+      "name": "power_valuation_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Q8"
+    },
+    {
+      "name": "power_valuation_power_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Q9"
+    },
+    {
+      "name": "power_valuation_dominates",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QA"
+    },
+    {
+      "name": "prime_two_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QD"
+    },
+    {
+      "name": "succ_le_mul_of_two_le_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QE"
+    },
+    {
+      "name": "prime_power_exponent_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QF"
+    },
+    {
+      "name": "prime_power_divides_exponent_le_value",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QG"
+    },
+    {
+      "name": "power_valuation_successor_not_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QH"
+    },
+    {
+      "name": "power_valuation_selected_and_successor_not_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QI"
+    },
+    {
+      "name": "mul_shuffle_four",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QJ"
+    },
+    {
+      "name": "power_divides_exponent_antitone",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QK"
+    },
+    {
+      "name": "power_divides_add_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QL"
+    },
+    {
+      "name": "power_divides_successor_of_cofactor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QM"
+    },
+    {
+      "name": "prime_power_successor_cancel_cofactor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QN"
+    },
+    {
+      "name": "prime_nondivisor_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QO"
+    },
+    {
+      "name": "power_valuation_exact_cofactor",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QP"
+    },
+    {
+      "name": "power_valuation_mul_successor_not_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QQ"
+    },
+    {
+      "name": "power_valuation_mul_lower",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QR"
+    },
+    {
+      "name": "power_valuation_mul_upper",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QS"
+    },
+    {
+      "name": "prime_power_valuation_mul",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QT"
+    },
+    {
+      "name": "two_mul_eq_add_self",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QU"
+    },
+    {
+      "name": "pow_mul_base",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QV"
+    },
+    {
+      "name": "pow_two_base_two_value_four",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00QW"
+    },
+    {
+      "name": "ceil_div_six_shift",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00R0"
+    },
+    {
+      "name": "ceil_div_six_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00R1"
+    },
+    {
+      "name": "ceil_div_six_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00R2"
+    },
+    {
+      "name": "square_six_shift_identity",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00R4"
+    },
+    {
+      "name": "ceil_div_six_square_six_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00R5"
+    },
+    {
+      "name": "floor_sqrt_lower_bound",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00R6"
+    },
+    {
+      "name": "floor_sqrt_strict_upper_bound",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00R7"
+    },
+    {
+      "name": "square_lt_successor_square",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00R9"
+    },
+    {
+      "name": "floor_sqrt_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RA"
+    },
+    {
+      "name": "floor_sqrt_monotone",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RC"
+    },
+    {
+      "name": "mul_le_cancel_left_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RD"
+    },
+    {
+      "name": "three_mul_eq_two_mul_add_self",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RE"
+    },
+    {
+      "name": "ceil_div_six_le_of_upper",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RF"
+    },
+    {
+      "name": "double_triple_remainder_complement_budget",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RG"
+    },
+    {
+      "name": "canonical_double_triple_remainder_complement_budget",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RH"
+    },
+    {
+      "name": "floor_ceil_complement_budget",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RI"
+    },
+    {
+      "name": "floor_ceil_division_budget",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RJ"
+    },
+    {
+      "name": "factorial_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RK"
+    },
+    {
+      "name": "prime_power_valuation_one_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RL"
+    },
+    {
+      "name": "factorial_valuation_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RM"
+    },
+    {
+      "name": "prime_factorial_valuation_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RO"
+    },
+    {
+      "name": "prime_factorial_valuation_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00RP"
+    },
+    {
+      "name": "prime_power_quotient_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00S0"
+    },
+    {
+      "name": "power_quotient_prefix_transport",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00S1"
+    },
+    {
+      "name": "prime_legendre_sum_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00S2"
+    },
+    {
+      "name": "legendre_sum_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00S3"
+    },
+    {
+      "name": "legendre_sum_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00S4"
+    },
+    {
+      "name": "pow_successor_compose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00S5"
+    },
+    {
+      "name": "prime_power_quotient_tail_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SA"
+    },
+    {
+      "name": "prime_power_divides_exponent_le_valuation",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SB"
+    },
+    {
+      "name": "power_divides_of_exponent_le_valuation",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SC"
+    },
+    {
+      "name": "eisenstein_initial_segment_indicator_choice",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SD"
+    },
+    {
+      "name": "eisenstein_initial_segment_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SE"
+    },
+    {
+      "name": "eisenstein_initial_segment_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SF"
+    },
+    {
+      "name": "division_remainder_successor_cases",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SG"
+    },
+    {
+      "name": "division_successor_quotient_by_bit",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SH"
+    },
+    {
+      "name": "valuation_threshold_bit_decides_power_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SI"
+    },
+    {
+      "name": "power_quotient_prefix_decoded_divrem",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SJ"
+    },
+    {
+      "name": "power_quotient_successor_pointwise_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SK"
+    },
+    {
+      "name": "pow_successor_compose_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SL"
+    },
+    {
+      "name": "pow_mul_exp_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SM"
+    },
+    {
+      "name": "pow_exponent_monotone_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SN"
+    },
+    {
+      "name": "pow_two_seed_bundle_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SO"
+    },
+    {
+      "name": "beta_sum_succ_last_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SR"
+    },
+    {
+      "name": "prime_power_quotient_prefix_last_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SS"
+    },
+    {
+      "name": "legendre_sum_zero_extended_prefix",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00ST"
+    },
+    {
+      "name": "initial_segment_prefix_sum_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SU"
+    },
+    {
+      "name": "prime_legendre_sum_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SV"
+    },
+    {
+      "name": "bertrand_h_six_step_transport_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SW"
+    },
+    {
+      "name": "bertrand_j_six_step_transport_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SX"
+    },
+    {
+      "name": "bertrand_hj_six_step_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00SY"
+    },
+    {
+      "name": "factorial_legendre_successor_agreement",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00T0"
+    },
+    {
+      "name": "prime_factorial_valuation_eq_legendre_sum",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00T1"
+    },
+    {
+      "name": "beta_pascal_zero_row_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00T2"
+    },
+    {
+      "name": "beta_pascal_zero_row_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00T3"
+    },
+    {
+      "name": "beta_pascal_row_step_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00T4"
+    },
+    {
+      "name": "beta_pascal_row_step_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00T5"
+    },
+    {
+      "name": "beta_pascal_table_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00T6"
+    },
+    {
+      "name": "beta_pascal_table_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00T7"
+    },
+    {
+      "name": "choose_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00T8"
+    },
+    {
+      "name": "beta_pascal_zero_row_pointwise_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00T9"
+    },
+    {
+      "name": "beta_pascal_row_step_pointwise_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TA"
+    },
+    {
+      "name": "beta_pascal_table_row_pointwise_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TB"
+    },
+    {
+      "name": "choose_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TC"
+    },
+    {
+      "name": "choose_out_of_range_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TD"
+    },
+    {
+      "name": "choose_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TE"
+    },
+    {
+      "name": "beta_pascal_table_diagonal_boundary",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TF"
+    },
+    {
+      "name": "choose_self",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TG"
+    },
+    {
+      "name": "beta_pascal_table_successor_cell_recurrence",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TH"
+    },
+    {
+      "name": "choose_succ_succ_of_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TI"
+    },
+    {
+      "name": "choose_succ_succ",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TJ"
+    },
+    {
+      "name": "choose_self_of_eq",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TK"
+    },
+    {
+      "name": "choose_symmetry",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TL"
+    },
+    {
+      "name": "choose_positive",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TM"
+    },
+    {
+      "name": "central_binom_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TN"
+    },
+    {
+      "name": "central_binom_positive",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TP"
+    },
+    {
+      "name": "central_binom_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TQ"
+    },
+    {
+      "name": "choose_upper_eq_transport",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TR"
+    },
+    {
+      "name": "central_binom_succ_double_middle",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TS"
+    },
+    {
+      "name": "choose_weighted_vertical",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TT"
+    },
+    {
+      "name": "central_binom_succ_recurrence",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TU"
+    },
+    {
+      "name": "factorial_length_eq_transport",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TV"
+    },
+    {
+      "name": "factorial_weighted_product_combine",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TW"
+    },
+    {
+      "name": "choose_factorial_bridge",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TX"
+    },
+    {
+      "name": "mul_lt_mul_right_nonzero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00TY"
+    },
+    {
+      "name": "four_power_central_recurrence_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00U0"
+    },
+    {
+      "name": "pow_four_four_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00U1"
+    },
+    {
+      "name": "central_binom_four_weighted_of_recurrence",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00U2"
+    },
+    {
+      "name": "four_pow_central_seed_package",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00U3"
+    },
+    {
+      "name": "four_pow_lt_mul_central_binom",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00U4"
+    },
+    {
+      "name": "primorial_factor_choice_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00U5"
+    },
+    {
+      "name": "primorial_factor_choice_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00U6"
+    },
+    {
+      "name": "primorial_factor_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00U7"
+    },
+    {
+      "name": "primorial_factor_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00U8"
+    },
+    {
+      "name": "primorial_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00UA"
+    },
+    {
+      "name": "primorial_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00UC"
+    },
+    {
+      "name": "primorial_succ_decompose",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00UD"
+    },
+    {
+      "name": "primorial_positive",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00UE"
+    },
+    {
+      "name": "primorial_index_eq_transport",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00UF"
+    },
+    {
+      "name": "beta_product_prefix_suffix_split",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00UQ"
+    },
+    {
+      "name": "primorial_interval_factor_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00UR"
+    },
+    {
+      "name": "primorial_interval_factor_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00US"
+    },
+    {
+      "name": "primorial_interval_factor_prefix_shift",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00UW"
+    },
+    {
+      "name": "primorial_factor_prefix_restrict_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00UX"
+    },
+    {
+      "name": "primorial_prefix_interval_split",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00UY"
+    },
+    {
+      "name": "factorial_prime_divides_of_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VA"
+    },
+    {
+      "name": "factorial_prime_le_of_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VB"
+    },
+    {
+      "name": "choose_prime_divides_between",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VC"
+    },
+    {
+      "name": "beta_pairwise_coprime_product_divides_common_multiple",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VD"
+    },
+    {
+      "name": "primorial_interval_pairwise_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VE"
+    },
+    {
+      "name": "primorial_interval_divides_choose_between",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VF"
+    },
+    {
+      "name": "primorial_even_interval_divides_central",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VG"
+    },
+    {
+      "name": "primorial_odd_interval_divides_middle",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VH"
+    },
+    {
+      "name": "primorial_even_interval_le_central",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VI"
+    },
+    {
+      "name": "primorial_odd_interval_le_middle",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VJ"
+    },
+    {
+      "name": "central_binom_strong_upper_step",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VK"
+    },
+    {
+      "name": "central_binom_recurrence_double_bundle",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VL"
+    },
+    {
+      "name": "central_binom_strong_upper_of_laws",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VM"
+    },
+    {
+      "name": "central_binom_upper_support_package",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VN"
+    },
+    {
+      "name": "central_binom_strong_upper",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VO"
+    },
+    {
+      "name": "central_binom_odd_middle_le_four_pow",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VP"
+    },
+    {
+      "name": "primorial_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VQ"
+    },
+    {
+      "name": "double_half_predecessor_data",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VR"
+    },
+    {
+      "name": "odd_positive_prefix_predecessor_bound",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VS"
+    },
+    {
+      "name": "central_binom_nonzero_strong_upper",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VT"
+    },
+    {
+      "name": "primorial_four_power_support_package",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VU"
+    },
+    {
+      "name": "primorial_le_four_pow_bounded",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VV"
+    },
+    {
+      "name": "primorial_le_four_pow",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VW"
+    },
+    {
+      "name": "central_binom_prime_divisor_le_double",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VX"
+    },
+    {
+      "name": "no_bertrand_central_prime_divisor_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00VY"
+    },
+    {
+      "name": "power_valuation_nonzero_exponent_divides_base",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00W0"
+    },
+    {
+      "name": "no_bertrand_central_prime_divisor_ranges",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00W2"
+    },
+    {
+      "name": "pow_block_bound_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00W3"
+    },
+    {
+      "name": "pow_three_five_le_pow_four_four_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00W4"
+    },
+    {
+      "name": "pow_eleven_two_le_pow_two_seven_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00W5"
+    },
+    {
+      "name": "pow_six_ten_le_pow_four_thirteen_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00W6"
+    },
+    {
+      "name": "linear_square_budget",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00W7"
+    },
+    {
+      "name": "bertrand_scaled_budget_root_32",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00W8"
+    },
+    {
+      "name": "bertrand_scaled_budget_root_33",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00W9"
+    },
+    {
+      "name": "bertrand_scaled_budget_root_34",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WA"
+    },
+    {
+      "name": "bertrand_scaled_budget_root_35",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WB"
+    },
+    {
+      "name": "bertrand_scaled_budget_root_36",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WC"
+    },
+    {
+      "name": "bertrand_scaled_budget_root_37",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WD"
+    },
+    {
+      "name": "ceil_div_six_budget_of_scaled_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WE"
+    },
+    {
+      "name": "pow_six_six_le_pow_four_eight_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WF"
+    },
+    {
+      "name": "pow_six_four_le_pow_four_six_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WG"
+    },
+    {
+      "name": "pow_three_five_block_plus_one_le_pow_four_four_block_plus_one_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WH"
+    },
+    {
+      "name": "pow_two_double_eq_pow_four_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WI"
+    },
+    {
+      "name": "pow_two_successor_double_le_pow_four_successor_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WJ"
+    },
+    {
+      "name": "pow_eleven_double_block_le_pow_two_seven_block_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WK"
+    },
+    {
+      "name": "pow_eleven_double_block_le_pow_four_even_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WL"
+    },
+    {
+      "name": "pow_eleven_double_block_le_pow_four_odd_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WM"
+    },
+    {
+      "name": "pow_six_ten_block_le_pow_four_thirteen_block_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WN"
+    },
+    {
+      "name": "pow_thirty_six_double_block_eq_pow_six_four_block_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WO"
+    },
+    {
+      "name": "bertrand_h_root_32_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WP"
+    },
+    {
+      "name": "bertrand_h_root_33_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WQ"
+    },
+    {
+      "name": "bertrand_h_root_34_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WR"
+    },
+    {
+      "name": "bertrand_h_root_35_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WS"
+    },
+    {
+      "name": "bertrand_h_root_36_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WT"
+    },
+    {
+      "name": "bertrand_h_root_37_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WU"
+    },
+    {
+      "name": "bertrand_j_base_thirty_two_window_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WV"
+    },
+    {
+      "name": "bertrand_hj_base_window_thirty_two_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WW"
+    },
+    {
+      "name": "scaled_factor_square_identity",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WX"
+    },
+    {
+      "name": "thirty_two_square_eq_twice_sixteen_times_thirty_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00WY"
+    },
+    {
+      "name": "floor_sqrt_factorized_threshold_thirty_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00X0"
+    },
+    {
+      "name": "six_block_window_decomposition_above_thirty_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00X1"
+    },
+    {
+      "name": "bertrand_hj_six_block_iterate_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00X2"
+    },
+    {
+      "name": "bertrand_hj_envelope_thirty_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00X3"
+    },
+    {
+      "name": "bertrand_floor_power_product_le_h_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00X4"
+    },
+    {
+      "name": "bertrand_four_power_product_le_of_sum_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00X5"
+    },
+    {
+      "name": "bertrand_main_inequality_factorized_from_total",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00X6"
+    },
+    {
+      "name": "bertrand_main_inequality_factorized",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00X7"
+    },
+    {
+      "name": "bertrand_main_inequality_nat",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00X8"
+    },
+    {
+      "name": "beta_product_pointwise_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00X9"
+    },
+    {
+      "name": "beta_product_uniform_le_pow",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XA"
+    },
+    {
+      "name": "add_lt_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XB"
+    },
+    {
+      "name": "add_lt_cancel_left",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XC"
+    },
+    {
+      "name": "division_zero_quotient_of_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XF"
+    },
+    {
+      "name": "division_double_quotient_bit",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XG"
+    },
+    {
+      "name": "pow_le_pow_of_exponent_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XJ"
+    },
+    {
+      "name": "pow_tail_strict_of_square",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XK"
+    },
+    {
+      "name": "power_valuation_value_eq_transport",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XL"
+    },
+    {
+      "name": "central_binom_factorial_valuation_balance",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XM"
+    },
+    {
+      "name": "central_binom_legendre_valuation_balance",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XN"
+    },
+    {
+      "name": "prime_power_quotient_zero_of_exponent_gt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XO"
+    },
+    {
+      "name": "power_quotient_prefix_tail_entry_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XP"
+    },
+    {
+      "name": "power_quotient_prefix_sum_extend_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XQ"
+    },
+    {
+      "name": "legendre_sum_extended_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XR"
+    },
+    {
+      "name": "double_quotient_carry_choice",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XV"
+    },
+    {
+      "name": "double_quotient_carry_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XW"
+    },
+    {
+      "name": "double_quotient_carry_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XX"
+    },
+    {
+      "name": "double_quotient_carry_prefix_all_bits",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00XY"
+    },
+    {
+      "name": "double_quotient_carry_prefix_restrict",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Y0"
+    },
+    {
+      "name": "bit_count_positive_last_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Y1"
+    },
+    {
+      "name": "division_successor_quotient_divisor_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Y2"
+    },
+    {
+      "name": "beta_sum_double_carry_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Y3"
+    },
+    {
+      "name": "central_binom_carry_bit_count",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Y4"
+    },
+    {
+      "name": "central_binom_prime_power_contribution_le_double",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Y5"
+    },
+    {
+      "name": "central_binom_prime_square_tail_exponent_not_two_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Y6"
+    },
+    {
+      "name": "central_binom_prime_square_tail_valuation_le_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Y7"
+    },
+    {
+      "name": "division_quotient_one_of_bounds",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Y8"
+    },
+    {
+      "name": "division_quotient_two_of_bounds",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00Y9"
+    },
+    {
+      "name": "prime_square_tail_of_two_three_range",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YA"
+    },
+    {
+      "name": "division_first_two_of_two_three_range",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YB"
+    },
+    {
+      "name": "double_quotient_carry_prefix_entries_zero",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YC"
+    },
+    {
+      "name": "central_binom_prime_valuation_zero_of_exact_double_quotients",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YD"
+    },
+    {
+      "name": "central_binom_prime_valuation_zero_two_thirds_range",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YE"
+    },
+    {
+      "name": "division_three_scaled_upper_of_quotient_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YF"
+    },
+    {
+      "name": "central_binom_prime_valuation_zero_above_third_quotient",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YG"
+    },
+    {
+      "name": "floor_sqrt_above_root_power_two_strict",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YH"
+    },
+    {
+      "name": "central_binom_prime_above_floor_sqrt_valuation_le_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YI"
+    },
+    {
+      "name": "no_bertrand_central_nonzero_valuation_live_ranges",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YJ"
+    },
+    {
+      "name": "no_bertrand_central_nonzero_valuation_factor_ranges",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YK"
+    },
+    {
+      "name": "no_bertrand_central_nonzero_contribution_factor_ranges",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YL"
+    },
+    {
+      "name": "no_bertrand_central_prime_contribution_ranges",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YM"
+    },
+    {
+      "name": "prime_contribution_choice_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YN"
+    },
+    {
+      "name": "prime_contribution_choice_functional",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YO"
+    },
+    {
+      "name": "prime_contribution_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YP"
+    },
+    {
+      "name": "prime_contribution_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YQ"
+    },
+    {
+      "name": "prime_contribution_product_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YS"
+    },
+    {
+      "name": "coprime_power_right",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YU"
+    },
+    {
+      "name": "coprime_powers",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YV"
+    },
+    {
+      "name": "prime_contribution_prefix_pairwise_coprime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YW"
+    },
+    {
+      "name": "prime_contribution_factor_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YX"
+    },
+    {
+      "name": "prime_contribution_product_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT00YY"
+    },
+    {
+      "name": "prime_contribution_selected_entry",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0100"
+    },
+    {
+      "name": "prime_contribution_selected_successor_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0101"
+    },
+    {
+      "name": "prime_contribution_cofactor_prime_contradiction",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0102"
+    },
+    {
+      "name": "prime_contribution_cofactor_eq_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0103"
+    },
+    {
+      "name": "prime_contribution_reverse_divides",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0104"
+    },
+    {
+      "name": "prime_contribution_product_eq",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0105"
+    },
+    {
+      "name": "prime_contribution_complete_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0106"
+    },
+    {
+      "name": "central_binom_prime_contribution_product_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0107"
+    },
+    {
+      "name": "no_bertrand_central_contribution_choice_ranges",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0108"
+    },
+    {
+      "name": "two_lt_double_lower_six",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010A"
+    },
+    {
+      "name": "floor_sqrt_two_le_of_two_lt",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010B"
+    },
+    {
+      "name": "three_mul_le_square_of_three_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010C"
+    },
+    {
+      "name": "floor_sqrt_three_mul_le_double",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010D"
+    },
+    {
+      "name": "division_quotient_lower_of_scaled_le",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010E"
+    },
+    {
+      "name": "floor_sqrt_le_third_quotient",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010F"
+    },
+    {
+      "name": "floor_sqrt_third_quotient_gap_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010G"
+    },
+    {
+      "name": "division_quotient_le_dividend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010H"
+    },
+    {
+      "name": "third_quotient_double_gap_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010I"
+    },
+    {
+      "name": "floor_third_double_gap_package",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010J"
+    },
+    {
+      "name": "prime_contribution_interval_prefix_extend",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010K"
+    },
+    {
+      "name": "prime_contribution_interval_prefix_exists",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010L"
+    },
+    {
+      "name": "prime_contribution_interval_prefix_shift",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010P"
+    },
+    {
+      "name": "prime_contribution_prefix_restrict_add",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010Q"
+    },
+    {
+      "name": "prime_contribution_prefix_interval_split",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010R"
+    },
+    {
+      "name": "prime_contribution_product_length_eq_transport",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010S"
+    },
+    {
+      "name": "beta_product_all_one_exact",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010U"
+    },
+    {
+      "name": "no_bertrand_small_contribution_choice_le_double",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010V"
+    },
+    {
+      "name": "no_bertrand_middle_contribution_choice_le_selector",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010W"
+    },
+    {
+      "name": "no_bertrand_high_contribution_choice_eq_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010X"
+    },
+    {
+      "name": "no_bertrand_small_contribution_product_le_power",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT010Y"
+    },
+    {
+      "name": "no_bertrand_middle_contribution_interval_le_primorial_interval",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0110"
+    },
+    {
+      "name": "no_bertrand_middle_contribution_interval_le_four_pow",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0111"
+    },
+    {
+      "name": "no_bertrand_high_contribution_interval_eq_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0112"
+    },
+    {
+      "name": "central_binom_factorization_small",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0113"
+    },
+    {
+      "name": "central_binom_le_of_no_bertrand_prime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0114"
+    },
+    {
+      "name": "bertrand_eventually_closed_upper",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0115"
+    },
+    {
+      "name": "fixed_nontrivial_factor_not_prime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0116"
+    },
+    {
+      "name": "factor_pair_has_small_member_below_square",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0117"
+    },
+    {
+      "name": "nonprime_has_small_prime_divisor_below_square",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0118"
+    },
+    {
+      "name": "prime_of_no_small_prime_divisor_below_square",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0119"
+    },
+    {
+      "name": "prime_le_twenty_two_cases",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011A"
+    },
+    {
+      "name": "nonzero_remainder_not_multiple",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011B"
+    },
+    {
+      "name": "scaled_remainder_lift",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011C"
+    },
+    {
+      "name": "double_scaled_remainder_lift",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011E"
+    },
+    {
+      "name": "prime_five",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011F"
+    },
+    {
+      "name": "prime_seven",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011G"
+    },
+    {
+      "name": "prime_thirteen",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011H"
+    },
+    {
+      "name": "prime_twenty_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011I"
+    },
+    {
+      "name": "prime_forty_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011J"
+    },
+    {
+      "name": "prime_eighty_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011K"
+    },
+    {
+      "name": "prime_one_hundred_sixty_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011L"
+    },
+    {
+      "name": "prime_three_hundred_seventeen",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011M"
+    },
+    {
+      "name": "prime_five_hundred_twenty_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011N"
+    },
+    {
+      "name": "bertrand_add_swap_nested",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011O"
+    },
+    {
+      "name": "bertrand_add_six_permute",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011P"
+    },
+    {
+      "name": "bertrand_covering_interval",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011Q"
+    },
+    {
+      "name": "bertrand_cover_one_two",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011R"
+    },
+    {
+      "name": "bertrand_cover_two_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011S"
+    },
+    {
+      "name": "bertrand_cover_three_five",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011T"
+    },
+    {
+      "name": "bertrand_cover_five_seven",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011U"
+    },
+    {
+      "name": "bertrand_cover_seven_thirteen",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011V"
+    },
+    {
+      "name": "bertrand_cover_thirteen_twenty_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011W"
+    },
+    {
+      "name": "bertrand_cover_twenty_three_forty_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011X"
+    },
+    {
+      "name": "bertrand_cover_forty_three_eighty_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT011Y"
+    },
+    {
+      "name": "bertrand_cover_eighty_three_one_hundred_sixty_three",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0120"
+    },
+    {
+      "name": "bertrand_cover_one_hundred_sixty_three_three_hundred_seventeen",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0121"
+    },
+    {
+      "name": "bertrand_cover_three_hundred_seventeen_five_hundred_twenty_one",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0122"
+    },
+    {
+      "name": "bertrand_cutoff_lt_final_prime",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0123"
+    },
+    {
+      "name": "bertrand_small_closed_upper",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0124"
+    },
+    {
+      "name": "bertrand_closed_upper",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0125"
+    },
+    {
+      "name": "bertrand_upper_endpoint_factorization",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0126"
+    },
+    {
+      "name": "bertrand_strict",
+      "recorded_authority": {
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "evidence_status": "alpha_closed",
+        "stable_member": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "BT0127"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 15707214,
+    "path": "book/_static/bertrand-proof-explorer/api/corpus.json",
+    "sha256": "50d1f69e62745b8a39d1980abf38d75dec587a90f64c5664ce446a0e8aea8651"
+  },
+  "source_corpus_fields": {
+    "proof_edition_identity_sha256": "f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66",
+    "proof_edition_version": "v18",
+    "source_edition_identity_sha256": "bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061",
+    "source_edition_version": "v12",
+    "source_scope_policy": "historical_origin_not_current_release_authority"
+  },
+  "source_family_fields": {},
+  "source_manifest": {
+    "bytes": 177717,
+    "path": "book/_static/bertrand-proof-explorer/manifest.json",
+    "sha256": "c5035a7adef61c4414701bb84ba412a99db460c2eebcd11e5aab393587624f1b"
+  },
+  "source_manifest_fields": {
+    "proof_edition_identity_sha256": "f694881096fd09b1002d0d49bb7be2d68d9894457749ef04128deebd92a64f66",
+    "proof_edition_version": "v18",
+    "source_edition_identity_sha256": "bacd84f2db14bdd20c09b1ac862348fa14bca9c440099c066fc7e1201a192061",
+    "source_edition_version": "v12",
+    "source_scope_policy": "historical_origin_not_current_release_authority"
+  }
+}

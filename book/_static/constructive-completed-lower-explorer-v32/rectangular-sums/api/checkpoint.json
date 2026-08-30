@@ -1,0 +1,396 @@
+{
+  "bundle": {
+    "body_proof_nodes": 12534,
+    "bytes": 2151122,
+    "dependency_edges_including_packaging": 551,
+    "independent_lean_checked": true,
+    "kernel_calls": 217,
+    "nodes_including_packaging_root": 217,
+    "original_ha_checked": true,
+    "packaging_root_id": 216,
+    "path": "research/arithmetic-library/artifacts/lower-continuation-rectangular-sums-proof-bundle-v1.json",
+    "sha256": "a6f62d8a0c89431b3596a0d15278643da6981afe166107cdc6aefa5433485395"
+  },
+  "new_theorem_count": 32,
+  "owned_node_ids": {
+    "signed_rectangular_columns_successor_add": 212,
+    "signed_rectangular_fubini": 213,
+    "signed_rectangular_fubini_exists": 214,
+    "signed_rectangular_row_major_fubini": 215,
+    "signed_rectangular_row_sums_empty": 201,
+    "signed_rectangular_row_sums_exists": 204,
+    "signed_rectangular_row_sums_exists_extensionally_unique": 205,
+    "signed_rectangular_row_sums_extend": 203,
+    "signed_rectangular_row_sums_extensional_unique": 202,
+    "signed_rectangular_row_sums_lookup": 199,
+    "signed_rectangular_row_sums_restrict_outer": 200,
+    "signed_rectangular_row_sums_zero_inner": 210,
+    "signed_rectangular_slice_empty": 186,
+    "signed_rectangular_slice_exists": 189,
+    "signed_rectangular_slice_exists_extensionally_unique": 190,
+    "signed_rectangular_slice_extend": 188,
+    "signed_rectangular_slice_extensional_unique": 187,
+    "signed_rectangular_slice_lookup": 184,
+    "signed_rectangular_slice_restrict": 185,
+    "signed_rectangular_slice_sum_empty_exists": 194,
+    "signed_rectangular_slice_sum_empty_value": 193,
+    "signed_rectangular_slice_sum_exists": 191,
+    "signed_rectangular_slice_sum_exists_unique": 198,
+    "signed_rectangular_slice_sum_functional": 192,
+    "signed_rectangular_slice_sum_successor_add": 197,
+    "signed_rectangular_slice_sum_successor_decompose": 195,
+    "signed_rectangular_slice_sum_successor_intro": 196,
+    "signed_rectangular_sum_exists": 206,
+    "signed_rectangular_sum_exists_unique": 208,
+    "signed_rectangular_sum_functional": 207,
+    "signed_rectangular_sum_zero_inner": 211,
+    "signed_rectangular_sum_zero_outer": 209
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_rectangular_slice_exists_extensionally_unique",
+      "node_id": 190,
+      "ordinary_certificate_nodes": 10224,
+      "statement_sha256": "d0fbe7f70725333cc208f00e860d04886fafdc5fef4a36bc6e811dd88391ddd4"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_rectangular_fubini",
+      "node_id": 213,
+      "ordinary_certificate_nodes": 17146,
+      "statement_sha256": "74787482d51c759b2472790323be3c54494bbf97fab08de48afce458898fd14d"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "signed_rectangular_row_major_fubini",
+      "node_id": 215,
+      "ordinary_certificate_nodes": 17334,
+      "statement_sha256": "df286640d573e43c4ce8fc84ed9a405eb4568577f4f683001adb7ae8324ff3ec"
+    }
+  ],
+  "rows": [
+    {
+      "name": "signed_rectangular_slice_lookup",
+      "node_id": 184,
+      "proof_depth": 21,
+      "proof_edges": 41,
+      "proof_nodes": 42,
+      "proof_objects": 42,
+      "reused_objects": 0,
+      "statement_sha256": "68d380ab828f38f7d4fc91dc79fbcb3ffc7adf12684e007d0c6baea451fa9463"
+    },
+    {
+      "name": "signed_rectangular_slice_restrict",
+      "node_id": 185,
+      "proof_depth": 29,
+      "proof_edges": 60,
+      "proof_nodes": 61,
+      "proof_objects": 61,
+      "reused_objects": 0,
+      "statement_sha256": "9cfdae3e7131c341de5fe8f5d35356e43c4f063d0e598dad1150763dc8710550"
+    },
+    {
+      "name": "signed_rectangular_slice_empty",
+      "node_id": 186,
+      "proof_depth": 23,
+      "proof_edges": 33,
+      "proof_nodes": 34,
+      "proof_objects": 34,
+      "reused_objects": 0,
+      "statement_sha256": "961be0d63141f7f011e23586228faf658dddd7ecd41783aa1f17d2f7903b0f3f"
+    },
+    {
+      "name": "signed_rectangular_slice_extensional_unique",
+      "node_id": 187,
+      "proof_depth": 44,
+      "proof_edges": 104,
+      "proof_nodes": 105,
+      "proof_objects": 105,
+      "reused_objects": 0,
+      "statement_sha256": "efb320080fa8bf993625729a90c79448021826c2cfc679617e14410411758d69"
+    },
+    {
+      "name": "signed_rectangular_slice_extend",
+      "node_id": 188,
+      "proof_depth": 36,
+      "proof_edges": 96,
+      "proof_nodes": 97,
+      "proof_objects": 97,
+      "reused_objects": 0,
+      "statement_sha256": "20b95076e667f7ad538f6a92fee4b40ea956f3d7c29bb5d274a36899d8183be6"
+    },
+    {
+      "name": "signed_rectangular_slice_exists",
+      "node_id": 189,
+      "proof_depth": 29,
+      "proof_edges": 81,
+      "proof_nodes": 82,
+      "proof_objects": 82,
+      "reused_objects": 0,
+      "statement_sha256": "bfc5c5c74a0402d93e744636f0ff665dfe6162113cacf7ec7239c566fee3a167"
+    },
+    {
+      "name": "signed_rectangular_slice_exists_extensionally_unique",
+      "node_id": 190,
+      "proof_depth": 21,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "d0fbe7f70725333cc208f00e860d04886fafdc5fef4a36bc6e811dd88391ddd4"
+    },
+    {
+      "name": "signed_rectangular_slice_sum_exists",
+      "node_id": 191,
+      "proof_depth": 14,
+      "proof_edges": 28,
+      "proof_nodes": 29,
+      "proof_objects": 29,
+      "reused_objects": 0,
+      "statement_sha256": "d50b9ae711849527eea71e6ee3d4285383687f17d726768d178a83b84ac9dc5e"
+    },
+    {
+      "name": "signed_rectangular_slice_sum_functional",
+      "node_id": 192,
+      "proof_depth": 48,
+      "proof_edges": 84,
+      "proof_nodes": 85,
+      "proof_objects": 85,
+      "reused_objects": 0,
+      "statement_sha256": "ad46e66debd26968bb02d5afd894103dffc9b585b1625a2bcdbfcb2e84381282"
+    },
+    {
+      "name": "signed_rectangular_slice_sum_empty_value",
+      "node_id": 193,
+      "proof_depth": 17,
+      "proof_edges": 26,
+      "proof_nodes": 27,
+      "proof_objects": 27,
+      "reused_objects": 0,
+      "statement_sha256": "edc07e159da29344f5e8f95ecb4de8af8376dd3f16c3c0902fed82bf42a53a38"
+    },
+    {
+      "name": "signed_rectangular_slice_sum_empty_exists",
+      "node_id": 194,
+      "proof_depth": 15,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "48450446a048c5577f53bb4ba4b5cfe5f78a5a1887a0c312b5b9169aa17a55fb"
+    },
+    {
+      "name": "signed_rectangular_slice_sum_successor_decompose",
+      "node_id": 195,
+      "proof_depth": 28,
+      "proof_edges": 59,
+      "proof_nodes": 60,
+      "proof_objects": 60,
+      "reused_objects": 0,
+      "statement_sha256": "d5d957b89203860cf19216d315ed67c60e89ca771a4f4a443bd5319fcc491d21"
+    },
+    {
+      "name": "signed_rectangular_slice_sum_successor_intro",
+      "node_id": 196,
+      "proof_depth": 30,
+      "proof_edges": 74,
+      "proof_nodes": 75,
+      "proof_objects": 75,
+      "reused_objects": 0,
+      "statement_sha256": "1b968837255e84d1eb8457b1aaea174b65ba6cac334194d46febefdc677c8d2f"
+    },
+    {
+      "name": "signed_rectangular_slice_sum_successor_add",
+      "node_id": 197,
+      "proof_depth": 29,
+      "proof_edges": 67,
+      "proof_nodes": 68,
+      "proof_objects": 68,
+      "reused_objects": 0,
+      "statement_sha256": "d99daffda3611eca9fc709dcc8c33935ad5ba44f77380c1054cd17213b434e13"
+    },
+    {
+      "name": "signed_rectangular_slice_sum_exists_unique",
+      "node_id": 198,
+      "proof_depth": 21,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "f107eddb02016e9261c9f110f0ee226c8c19190739e2820b53f6f804a474a128"
+    },
+    {
+      "name": "signed_rectangular_row_sums_lookup",
+      "node_id": 199,
+      "proof_depth": 23,
+      "proof_edges": 43,
+      "proof_nodes": 44,
+      "proof_objects": 44,
+      "reused_objects": 0,
+      "statement_sha256": "a245bf5fd7006e98c5278edd4604a7f42b73bcd0126c96d275044cbe455d62b0"
+    },
+    {
+      "name": "signed_rectangular_row_sums_restrict_outer",
+      "node_id": 200,
+      "proof_depth": 31,
+      "proof_edges": 62,
+      "proof_nodes": 63,
+      "proof_objects": 63,
+      "reused_objects": 0,
+      "statement_sha256": "7454c6bb563cebaf6062afb8a81dbbee178a23d94cfce4cca644747d7d7058bc"
+    },
+    {
+      "name": "signed_rectangular_row_sums_empty",
+      "node_id": 201,
+      "proof_depth": 25,
+      "proof_edges": 35,
+      "proof_nodes": 36,
+      "proof_objects": 36,
+      "reused_objects": 0,
+      "statement_sha256": "02158fddb7fc0500e214cb79b60afee87fe3d105778f861324695e8df6ccb233"
+    },
+    {
+      "name": "signed_rectangular_row_sums_extensional_unique",
+      "node_id": 202,
+      "proof_depth": 54,
+      "proof_edges": 130,
+      "proof_nodes": 131,
+      "proof_objects": 131,
+      "reused_objects": 0,
+      "statement_sha256": "47c97b305f668a87c65e06a416ee4ed02a8a827f86c1e6a28b2f6abcf5f32b62"
+    },
+    {
+      "name": "signed_rectangular_row_sums_extend",
+      "node_id": 203,
+      "proof_depth": 38,
+      "proof_edges": 98,
+      "proof_nodes": 99,
+      "proof_objects": 99,
+      "reused_objects": 0,
+      "statement_sha256": "070ea92bd36f951822de3ce168d64d6d504bf2463913f098a1a49ee13704442a"
+    },
+    {
+      "name": "signed_rectangular_row_sums_exists",
+      "node_id": 204,
+      "proof_depth": 33,
+      "proof_edges": 92,
+      "proof_nodes": 93,
+      "proof_objects": 93,
+      "reused_objects": 0,
+      "statement_sha256": "588ce29a7953a7a2c90db29611851e7cfa320084092c8d198dbf7aa826ad37f5"
+    },
+    {
+      "name": "signed_rectangular_row_sums_exists_extensionally_unique",
+      "node_id": 205,
+      "proof_depth": 25,
+      "proof_edges": 36,
+      "proof_nodes": 37,
+      "proof_objects": 37,
+      "reused_objects": 0,
+      "statement_sha256": "569840ec13f17c1453d77ba6fe32c85f118240b2fdba55d5ef035fa8b249e5f5"
+    },
+    {
+      "name": "signed_rectangular_sum_exists",
+      "node_id": 206,
+      "proof_depth": 18,
+      "proof_edges": 32,
+      "proof_nodes": 33,
+      "proof_objects": 33,
+      "reused_objects": 0,
+      "statement_sha256": "b4588d35ae1eccfbc26d8e02559102bb969c7ebf7341d55543bfc878239e4f9f"
+    },
+    {
+      "name": "signed_rectangular_sum_functional",
+      "node_id": 207,
+      "proof_depth": 54,
+      "proof_edges": 94,
+      "proof_nodes": 95,
+      "proof_objects": 95,
+      "reused_objects": 0,
+      "statement_sha256": "e047f75ed55433b0755c40b9832f25bd6e6f2b6c5eb06cb185050cec7c66c7a9"
+    },
+    {
+      "name": "signed_rectangular_sum_exists_unique",
+      "node_id": 208,
+      "proof_depth": 25,
+      "proof_edges": 36,
+      "proof_nodes": 37,
+      "proof_objects": 37,
+      "reused_objects": 0,
+      "statement_sha256": "9b245f658835b10db273dc4753e86e65be5eccc6d2f4e7d29eea62663a0c9833"
+    },
+    {
+      "name": "signed_rectangular_sum_zero_outer",
+      "node_id": 209,
+      "proof_depth": 19,
+      "proof_edges": 28,
+      "proof_nodes": 29,
+      "proof_objects": 29,
+      "reused_objects": 0,
+      "statement_sha256": "398a0390ab5a3822b787d95639446db7843b77e888333d09731e8575e732fade"
+    },
+    {
+      "name": "signed_rectangular_row_sums_zero_inner",
+      "node_id": 210,
+      "proof_depth": 39,
+      "proof_edges": 148,
+      "proof_nodes": 149,
+      "proof_objects": 149,
+      "reused_objects": 0,
+      "statement_sha256": "506c8f95ab8b6e1017921f42e017daf99e1dd11a266690b4e1431aa35d1a1c0f"
+    },
+    {
+      "name": "signed_rectangular_sum_zero_inner",
+      "node_id": 211,
+      "proof_depth": 30,
+      "proof_edges": 50,
+      "proof_nodes": 51,
+      "proof_objects": 51,
+      "reused_objects": 0,
+      "statement_sha256": "b007dae76ae142435ebc72c9b8e702c1cce1778a76fddc9fbe73b66c737062b5"
+    },
+    {
+      "name": "signed_rectangular_columns_successor_add",
+      "node_id": 212,
+      "proof_depth": 48,
+      "proof_edges": 143,
+      "proof_nodes": 144,
+      "proof_objects": 144,
+      "reused_objects": 0,
+      "statement_sha256": "1867fb032da7181bdf2da2425be2336666f7466847b47f12ce6a877fd71e264c"
+    },
+    {
+      "name": "signed_rectangular_fubini",
+      "node_id": 213,
+      "proof_depth": 48,
+      "proof_edges": 212,
+      "proof_nodes": 213,
+      "proof_objects": 213,
+      "reused_objects": 0,
+      "statement_sha256": "74787482d51c759b2472790323be3c54494bbf97fab08de48afce458898fd14d"
+    },
+    {
+      "name": "signed_rectangular_fubini_exists",
+      "node_id": 214,
+      "proof_depth": 34,
+      "proof_edges": 99,
+      "proof_nodes": 100,
+      "proof_objects": 100,
+      "reused_objects": 0,
+      "statement_sha256": "438e430f2b7689b3318149e7112187f3611e7eb3c0147e76479fb5aec365f819"
+    },
+    {
+      "name": "signed_rectangular_row_major_fubini",
+      "node_id": 215,
+      "proof_depth": 27,
+      "proof_edges": 46,
+      "proof_nodes": 47,
+      "proof_objects": 47,
+      "reused_objects": 0,
+      "statement_sha256": "df286640d573e43c4ce8fc84ed9a405eb4568577f4f683001adb7ae8324ff3ec"
+    }
+  ],
+  "slug": "rectangular-sums",
+  "specs_sha256": "3f774e07d82400c19850521fae1779bc363aff5e56bb32cbc1042a5d3dd4403d"
+}

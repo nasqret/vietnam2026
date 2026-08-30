@@ -1,0 +1,352 @@
+{
+  "bundle": {
+    "body_proof_nodes": 27012,
+    "bytes": 2498683,
+    "dependency_edges_including_packaging": 1081,
+    "independent_lean_checked": true,
+    "kernel_calls": 377,
+    "nodes_including_packaging_root": 377,
+    "original_ha_checked": true,
+    "packaging_root_id": 376,
+    "path": "research/arithmetic-library/artifacts/lower-continuation-mobius-divisor-cancellation-proof-bundle-v1.json",
+    "sha256": "f858f6bd9e09d6ec33b48689b385222153ad9d326eccb8239ac5776b39955542"
+  },
+  "new_theorem_count": 28,
+  "owned_node_ids": {
+    "anti_invariant_signed_permutation_sum_zero": 368,
+    "divisor_prime_toggle_bounded": 358,
+    "divisor_prime_toggle_exists": 355,
+    "divisor_prime_toggle_functional": 356,
+    "divisor_prime_toggle_permutation_exists": 362,
+    "divisor_prime_toggle_prefix_exists": 359,
+    "divisor_prime_toggle_prefix_lookup": 360,
+    "divisor_prime_toggle_prefix_permutation": 361,
+    "divisor_prime_toggle_symmetric": 357,
+    "mobius_divisor_mask_actual_value": 364,
+    "mobius_divisor_mask_prime_factor_sum_zero": 369,
+    "mobius_divisor_mask_prime_toggle_negates": 365,
+    "mobius_divisor_sum_cancellation": 373,
+    "mobius_divisor_sum_cancellation_exists": 374,
+    "mobius_divisor_sum_cancellation_on_positive_values": 375,
+    "mobius_divisor_sum_nonunit_value_zero": 370,
+    "mobius_divisor_sum_nonunit_zero": 371,
+    "mobius_divisor_sum_unit_one": 372,
+    "mobius_prime_factor_toggle_negates": 363,
+    "prime_factor_toggle_exists": 350,
+    "prime_factor_toggle_functional": 351,
+    "prime_factor_toggle_positive": 353,
+    "prime_factor_toggle_preserves_divisor": 354,
+    "prime_factor_toggle_symmetric": 352,
+    "prime_toggle_fresh_divisor_product": 349,
+    "prime_toggle_square_quotient_divides": 348,
+    "signed_prefix_sum_pointwise_negate": 367,
+    "signed_table_swapped_components_negation_at": 366
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "mobius_divisor_sum_cancellation",
+      "node_id": 373,
+      "ordinary_certificate_nodes": 36537,
+      "statement_sha256": "dc605f677a0cdb931e7f3e65b29569dea83f1b9db136b932913a1936dc2b3406"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "mobius_divisor_sum_cancellation_exists",
+      "node_id": 374,
+      "ordinary_certificate_nodes": 37429,
+      "statement_sha256": "50bcf039c53ca70483eadd8ff3f9c3baf484d1fc82f84afe21009620ff674280"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "mobius_divisor_sum_cancellation_on_positive_values",
+      "node_id": 375,
+      "ordinary_certificate_nodes": 38137,
+      "statement_sha256": "be20bbedecba3566c7d3611f121e3d2e4fdaffd7fdee715dcd7e60afdb4cfd56"
+    }
+  ],
+  "rows": [
+    {
+      "name": "prime_toggle_square_quotient_divides",
+      "node_id": 348,
+      "proof_depth": 23,
+      "proof_edges": 35,
+      "proof_nodes": 36,
+      "proof_objects": 36,
+      "reused_objects": 0,
+      "statement_sha256": "aec2c0f6b7bf8ec599848d89776f9cc3e38bf32e681fefd410c04cae24ac59a7"
+    },
+    {
+      "name": "prime_toggle_fresh_divisor_product",
+      "node_id": 349,
+      "proof_depth": 22,
+      "proof_edges": 51,
+      "proof_nodes": 52,
+      "proof_objects": 52,
+      "reused_objects": 0,
+      "statement_sha256": "e9efdce9cc67109f5777d98a448f7c398af0bf81301f922c7f309143cbdaea60"
+    },
+    {
+      "name": "prime_factor_toggle_exists",
+      "node_id": 350,
+      "proof_depth": 21,
+      "proof_edges": 49,
+      "proof_nodes": 50,
+      "proof_objects": 50,
+      "reused_objects": 0,
+      "statement_sha256": "d39ee19da784da81fb878d1256017d6fb1f1e719e782e4ebe7680b5656c8c5cd"
+    },
+    {
+      "name": "prime_factor_toggle_functional",
+      "node_id": 351,
+      "proof_depth": 34,
+      "proof_edges": 245,
+      "proof_nodes": 246,
+      "proof_objects": 246,
+      "reused_objects": 0,
+      "statement_sha256": "0ddc01d14e7c3b7c92efa2379683d0e8c53384763c2c949d90593a14918e0ffc"
+    },
+    {
+      "name": "prime_factor_toggle_symmetric",
+      "node_id": 352,
+      "proof_depth": 19,
+      "proof_edges": 60,
+      "proof_nodes": 61,
+      "proof_objects": 61,
+      "reused_objects": 0,
+      "statement_sha256": "2d58b68ceda9edb172c8d74a89e7eeadc5e3230680cc48ca12a85869d4aedf11"
+    },
+    {
+      "name": "prime_factor_toggle_positive",
+      "node_id": 353,
+      "proof_depth": 25,
+      "proof_edges": 83,
+      "proof_nodes": 84,
+      "proof_objects": 84,
+      "reused_objects": 0,
+      "statement_sha256": "31cf93ee4df8debb2f8f6a1a7dca6a3fd42e2aaf99befc78d18cfec7da9da667"
+    },
+    {
+      "name": "prime_factor_toggle_preserves_divisor",
+      "node_id": 354,
+      "proof_depth": 29,
+      "proof_edges": 88,
+      "proof_nodes": 89,
+      "proof_objects": 89,
+      "reused_objects": 0,
+      "statement_sha256": "a5b1bf090bd0245318050350c668a5697f4a62f9b2a96229e8b687f0e28831d7"
+    },
+    {
+      "name": "divisor_prime_toggle_exists",
+      "node_id": 355,
+      "proof_depth": 17,
+      "proof_edges": 48,
+      "proof_nodes": 49,
+      "proof_objects": 49,
+      "reused_objects": 0,
+      "statement_sha256": "240c50fa34f679ddae4a594bad674e912b7d42be3a7c1383adeab02014dc45f5"
+    },
+    {
+      "name": "divisor_prime_toggle_functional",
+      "node_id": 356,
+      "proof_depth": 45,
+      "proof_edges": 141,
+      "proof_nodes": 142,
+      "proof_objects": 142,
+      "reused_objects": 0,
+      "statement_sha256": "3e993432742aded428db0b57e5b0f53fd941882f216ae0901a944be707858611"
+    },
+    {
+      "name": "divisor_prime_toggle_symmetric",
+      "node_id": 357,
+      "proof_depth": 40,
+      "proof_edges": 145,
+      "proof_nodes": 146,
+      "proof_objects": 146,
+      "reused_objects": 0,
+      "statement_sha256": "6267f59cd587dae3e04b0945adbdfeba5b400d5ce9f6ca6e90c3c33ba6bc50de"
+    },
+    {
+      "name": "divisor_prime_toggle_bounded",
+      "node_id": 358,
+      "proof_depth": 38,
+      "proof_edges": 77,
+      "proof_nodes": 78,
+      "proof_objects": 78,
+      "reused_objects": 0,
+      "statement_sha256": "03e1ec341a06db0b352de697af73316b924cacd83bc0e61e3d56fbbca8094fd0"
+    },
+    {
+      "name": "divisor_prime_toggle_prefix_exists",
+      "node_id": 359,
+      "proof_depth": 38,
+      "proof_edges": 111,
+      "proof_nodes": 112,
+      "proof_objects": 112,
+      "reused_objects": 0,
+      "statement_sha256": "f53be98c1d5eb025a6b5d23e43ff262c7c4b87858823a2d334821646a29a62b7"
+    },
+    {
+      "name": "divisor_prime_toggle_prefix_lookup",
+      "node_id": 360,
+      "proof_depth": 26,
+      "proof_edges": 82,
+      "proof_nodes": 83,
+      "proof_objects": 83,
+      "reused_objects": 0,
+      "statement_sha256": "7677f2f19e45f6bbaac322f05165d92901e6c613e19043ec023adcde3a997cc7"
+    },
+    {
+      "name": "divisor_prime_toggle_prefix_permutation",
+      "node_id": 361,
+      "proof_depth": 39,
+      "proof_edges": 230,
+      "proof_nodes": 231,
+      "proof_objects": 231,
+      "reused_objects": 0,
+      "statement_sha256": "5723d64b1e0e59fa1b64b8f585bada867ed11b42f7c7703aa9bdf25ca6989fd4"
+    },
+    {
+      "name": "divisor_prime_toggle_permutation_exists",
+      "node_id": 362,
+      "proof_depth": 21,
+      "proof_edges": 32,
+      "proof_nodes": 33,
+      "proof_objects": 33,
+      "reused_objects": 0,
+      "statement_sha256": "76ed082f3e75e22e2a1f0bbb45321b76ef34d24837573006f7b20061b972acf7"
+    },
+    {
+      "name": "mobius_prime_factor_toggle_negates",
+      "node_id": 363,
+      "proof_depth": 31,
+      "proof_edges": 197,
+      "proof_nodes": 198,
+      "proof_objects": 198,
+      "reused_objects": 0,
+      "statement_sha256": "d7557dab771fcfa62eb43519745c343defbad51148868f893f8f44d20353d353"
+    },
+    {
+      "name": "mobius_divisor_mask_actual_value",
+      "node_id": 364,
+      "proof_depth": 51,
+      "proof_edges": 109,
+      "proof_nodes": 110,
+      "proof_objects": 110,
+      "reused_objects": 0,
+      "statement_sha256": "08976fd8b22acdec7676b3f688f452a498ad8c4890b5030eb78ccb09de7fb00b"
+    },
+    {
+      "name": "mobius_divisor_mask_prime_toggle_negates",
+      "node_id": 365,
+      "proof_depth": 44,
+      "proof_edges": 239,
+      "proof_nodes": 240,
+      "proof_objects": 240,
+      "reused_objects": 0,
+      "statement_sha256": "3edd7391357e5093df3268e98cea1dc5216ae419a11c487dd73b0905f03c254e"
+    },
+    {
+      "name": "signed_table_swapped_components_negation_at",
+      "node_id": 366,
+      "proof_depth": 32,
+      "proof_edges": 61,
+      "proof_nodes": 62,
+      "proof_objects": 62,
+      "reused_objects": 0,
+      "statement_sha256": "f4fed5cd6bea9aac7758ef60a838dc60e8b3505af32b9f132991e6ed93c7ad48"
+    },
+    {
+      "name": "signed_prefix_sum_pointwise_negate",
+      "node_id": 367,
+      "proof_depth": 51,
+      "proof_edges": 220,
+      "proof_nodes": 221,
+      "proof_objects": 221,
+      "reused_objects": 0,
+      "statement_sha256": "e4d248f05716b45c6d171098f9d658af2e3ac2eef5bc554146d7cb46774a6370"
+    },
+    {
+      "name": "anti_invariant_signed_permutation_sum_zero",
+      "node_id": 368,
+      "proof_depth": 33,
+      "proof_edges": 70,
+      "proof_nodes": 71,
+      "proof_objects": 71,
+      "reused_objects": 0,
+      "statement_sha256": "c1a6d544a9275653b40fa6faa9af676a4076963a42979921ec1b6801ffd5ea2f"
+    },
+    {
+      "name": "mobius_divisor_mask_prime_factor_sum_zero",
+      "node_id": 369,
+      "proof_depth": 59,
+      "proof_edges": 194,
+      "proof_nodes": 195,
+      "proof_objects": 195,
+      "reused_objects": 0,
+      "statement_sha256": "3cc4dd2582981bddafe583bbcd28139a9222aa04edac0f80c2bddcd7bf2fe15c"
+    },
+    {
+      "name": "mobius_divisor_sum_nonunit_value_zero",
+      "node_id": 370,
+      "proof_depth": 27,
+      "proof_edges": 45,
+      "proof_nodes": 46,
+      "proof_objects": 46,
+      "reused_objects": 0,
+      "statement_sha256": "f5e810fcf70b944aab452f812867e217f484a7761af32c9495c77dabbb71573e"
+    },
+    {
+      "name": "mobius_divisor_sum_nonunit_zero",
+      "node_id": 371,
+      "proof_depth": 22,
+      "proof_edges": 53,
+      "proof_nodes": 54,
+      "proof_objects": 54,
+      "reused_objects": 0,
+      "statement_sha256": "dd80478c6ddcecbd24102539b4863b5e31fbb92ecf32dbf558c30c4efaaecc4c"
+    },
+    {
+      "name": "mobius_divisor_sum_unit_one",
+      "node_id": 372,
+      "proof_depth": 28,
+      "proof_edges": 52,
+      "proof_nodes": 53,
+      "proof_objects": 53,
+      "reused_objects": 0,
+      "statement_sha256": "3aea322990ab42aabe7a6728845d3124ae60894909e55412b35b0b582247f21f"
+    },
+    {
+      "name": "mobius_divisor_sum_cancellation",
+      "node_id": 373,
+      "proof_depth": 33,
+      "proof_edges": 163,
+      "proof_nodes": 164,
+      "proof_objects": 164,
+      "reused_objects": 0,
+      "statement_sha256": "dc605f677a0cdb931e7f3e65b29569dea83f1b9db136b932913a1936dc2b3406"
+    },
+    {
+      "name": "mobius_divisor_sum_cancellation_exists",
+      "node_id": 374,
+      "proof_depth": 22,
+      "proof_edges": 42,
+      "proof_nodes": 43,
+      "proof_objects": 43,
+      "reused_objects": 0,
+      "statement_sha256": "50bcf039c53ca70483eadd8ff3f9c3baf484d1fc82f84afe21009620ff674280"
+    },
+    {
+      "name": "mobius_divisor_sum_cancellation_on_positive_values",
+      "node_id": 375,
+      "proof_depth": 43,
+      "proof_edges": 321,
+      "proof_nodes": 322,
+      "proof_objects": 322,
+      "reused_objects": 0,
+      "statement_sha256": "be20bbedecba3566c7d3611f121e3d2e4fdaffd7fdee715dcd7e60afdb4cfd56"
+    }
+  ],
+  "slug": "mobius-divisor-cancellation",
+  "specs_sha256": "a305d44cc8c8e1274fc7832efb571bacc872ee84cb5f2538fd41cb65c7edfc3b"
+}

@@ -1,0 +1,864 @@
+{
+  "alpha_checked_use_node_count": 15,
+  "alpha_edition_version": "v32",
+  "alpha_first_enrolled_version": "v24",
+  "definition_topological_order": [
+    "ND0001",
+    "PD0002",
+    "ND0002",
+    "ND0050",
+    "ND0051",
+    "ND0052",
+    "PD0004",
+    "PD0008",
+    "PD0013",
+    "PD0014",
+    "PD0019",
+    "PD0020"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "HD0001",
+      "target": "HD0002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0002",
+      "target": "HD0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0003",
+      "target": "HD0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0007",
+      "target": "HD0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0008",
+      "target": "HD0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0009",
+      "target": "HD000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0002",
+      "target": "HD000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0009",
+      "target": "HD000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD000A",
+      "target": "HD000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0005",
+      "target": "HD000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD000C",
+      "target": "HD000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0008",
+      "target": "HD000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0007",
+      "target": "HD000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD0008",
+      "target": "HD000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "HD000E",
+      "target": "HD000F"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD0001",
+      "statement_occurrences": 1,
+      "target": "ND0050"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD0002",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD0003",
+      "statement_occurrences": 1,
+      "target": "ND0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD0003",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD0004",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD0004",
+      "statement_occurrences": 1,
+      "target": "ND0052"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD0005",
+      "statement_occurrences": 1,
+      "target": "ND0052"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HD0006",
+      "statement_occurrences": 2,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD0007",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD0008",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HD0008",
+      "statement_occurrences": 2,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HD0009",
+      "statement_occurrences": 2,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HD000A",
+      "statement_occurrences": 2,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HD000B",
+      "statement_occurrences": 2,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HD000C",
+      "statement_occurrences": 2,
+      "target": "ND0052"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HD000D",
+      "statement_occurrences": 2,
+      "target": "ND0052"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD000E",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD000E",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "HD000F",
+      "statement_occurrences": 2,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "HD000F",
+      "statement_occurrences": 1,
+      "target": "ND0051"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0002",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0002",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0050",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0050",
+      "target": "ND0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0051",
+      "target": "ND0050"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0051",
+      "target": "ND0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0052",
+      "target": "ND0051"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0019"
+    }
+  ],
+  "family_slug": "polynomial-hensel",
+  "historical_component_only": true,
+  "historical_milestone_status": "open",
+  "historical_partial_checked_use": true,
+  "independent_lean_bundle_verified": true,
+  "milestone_caveat": "Historical partial components only: this chapter proves arbitrary natural polynomial values and unique formal derivatives. G095 is now closed in the separate Alpha-v27 hensel-lifting branch for integer polynomials, unrestricted input roots, unique canonical lifts, and every positive prime power.",
+  "milestone_checked_use": true,
+  "milestone_full_proof_slug": "hensel-lifting",
+  "milestone_full_theorem_name": "integer_polynomial_prime_simple_root_lifts_all_positive_powers",
+  "milestone_status": "alpha_closed",
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD0001.html?v=ac7111ec14ff",
+      "id": "HD0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_horner_derivative_trace_exists",
+      "proof_bundle_node_id": 160,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every beta-coded polynomial has two actual coupled Horner traces, the second being its formal derivative trace."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD0002.html?v=ac7111ec14ff",
+      "id": "HD0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_horner_derivative_value_exists",
+      "proof_bundle_node_id": 161,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every arbitrary beta-coded natural polynomial has an actual simultaneous value and exact formal derivative."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD0003.html?v=ac7111ec14ff",
+      "id": "HD0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_horner_derivative_value_projection",
+      "proof_bundle_node_id": 162,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The first component of simultaneous formal differentiation is exactly the preexisting polynomial Horner value."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD0004.html?v=ac7111ec14ff",
+      "id": "HD0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_horner_derivative_only_projection",
+      "proof_bundle_node_id": 163,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A simultaneously evaluated polynomial pair yields an actual formal-derivative witness."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD0005.html?v=ac7111ec14ff",
+      "id": "HD0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "beta_horner_derivative_only_exists",
+      "proof_bundle_node_id": 164,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The exact formal derivative of every arbitrary beta-coded natural polynomial exists."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD0006.html?v=ac7111ec14ff",
+      "id": "HD0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_horner_derivative_first_component_functional",
+      "proof_bundle_node_id": 165,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The value component of every simultaneous polynomial/derivative evaluation is unique."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD0007.html?v=ac7111ec14ff",
+      "id": "HD0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_horner_derivative_empty",
+      "proof_bundle_node_id": 166,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The empty beta-coded polynomial and its exact formal derivative both evaluate to zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD0008.html?v=ac7111ec14ff",
+      "id": "HD0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_horner_derivative_successor_decompose",
+      "proof_bundle_node_id": 167,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A successor polynomial obeys both exact Horner recurrences: f_new=f_old*t+a and f'_new=f'_old*t+f_old."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD0009.html?v=ac7111ec14ff",
+      "id": "HD0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_horner_derivative_functional",
+      "proof_bundle_node_id": 168,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Both the value and exact formal derivative of every beta-coded polynomial are simultaneously unique."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD000A.html?v=ac7111ec14ff",
+      "id": "HD000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "beta_horner_derivative_second_component_functional",
+      "proof_bundle_node_id": 169,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The formal derivative component is independent of every possible choice of coupled beta trace."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD000B.html?v=ac7111ec14ff",
+      "id": "HD000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "beta_horner_derivative_exists_unique",
+      "proof_bundle_node_id": 170,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every arbitrary beta-coded natural polynomial has exactly one simultaneously evaluated value/formal-derivative pair."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD000C.html?v=ac7111ec14ff",
+      "id": "HD000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "beta_horner_derivative_only_functional",
+      "proof_bundle_node_id": 171,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The exact formal derivative, considered without its accompanying polynomial value, is functional."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD000D.html?v=ac7111ec14ff",
+      "id": "HD000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "beta_horner_derivative_only_exists_unique",
+      "proof_bundle_node_id": 172,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every beta-coded natural polynomial has one and only one exact formal derivative at every evaluation point."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD000E.html?v=ac7111ec14ff",
+      "id": "HD000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_horner_derivative_constant",
+      "proof_bundle_node_id": 173,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A one-coefficient polynomial evaluates to its actual decoded constant and has formal derivative zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v24",
+      "href": "tag/HD000F.html?v=ac7111ec14ff",
+      "id": "HD000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "beta_horner_derivative_linear",
+      "proof_bundle_node_id": 174,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A genuine two-coefficient polynomial a*t+k has the exact decoded formal derivative a."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/ND0001.html?v=ac7111ec14ff",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=ac7111ec14ff",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "Horner",
+      "href": "definition/ND0002.html?v=ac7111ec14ff",
+      "id": "ND0002",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Horner",
+      "signature": "Horner(b,c,x,ell,z)",
+      "summary": "A complete beta-coded natural-polynomial Horner trace with an explicitly witnessed terminal value."
+    },
+    {
+      "global_definition": "HornerDerivativeTrace",
+      "href": "definition/ND0050.html?v=ac7111ec14ff",
+      "id": "ND0050",
+      "kind": "definition",
+      "layer": 2,
+      "name": "HornerDerivativeTrace",
+      "signature": "HornerDerivativeTrace(b,c,t,l,u,v,d,e)",
+      "summary": "Parallel beta-coded Horner value and derivative traces satisfying the exact formal differentiation recurrence."
+    },
+    {
+      "global_definition": "HornerDerivative",
+      "href": "definition/ND0051.html?v=ac7111ec14ff",
+      "id": "ND0051",
+      "kind": "definition",
+      "layer": 3,
+      "name": "HornerDerivative",
+      "signature": "HornerDerivative(b,c,t,l,n,z)",
+      "summary": "The exact jointly witnessed natural Horner polynomial value and its formal derivative."
+    },
+    {
+      "global_definition": "HornerDerivativeOnly",
+      "href": "definition/ND0052.html?v=ac7111ec14ff",
+      "id": "ND0052",
+      "kind": "definition",
+      "layer": 4,
+      "name": "HornerDerivativeOnly",
+      "signature": "HornerDerivativeOnly(b,c,t,l,z)",
+      "summary": "The exact natural formal derivative obtained by existentially packaging its actual Horner value."
+    },
+    {
+      "global_definition": "Prime",
+      "href": "definition/PD0004.html?v=ac7111ec14ff",
+      "id": "PD0004",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Prime",
+      "signature": "Prime(p)",
+      "summary": "p is nonunit and every factorization of p has a unit factor."
+    },
+    {
+      "global_definition": "ModEq",
+      "href": "definition/PD0008.html?v=ac7111ec14ff",
+      "id": "PD0008",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ModEq",
+      "signature": "ModEq(m,a,b)",
+      "summary": "Balanced-natural congruence modulo m."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/PD0013.html?v=ac7111ec14ff",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": "Product",
+      "href": "definition/PD0014.html?v=ac7111ec14ff",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": "Repeat",
+      "href": "definition/PD0019.html?v=ac7111ec14ff",
+      "id": "PD0019",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Repeat",
+      "signature": "Repeat(b,c,a,l)",
+      "summary": "The decoded prefix repeats a for l positions."
+    },
+    {
+      "global_definition": "Pow",
+      "href": "definition/PD0020.html?v=ac7111ec14ff",
+      "id": "PD0020",
+      "kind": "definition",
+      "layer": 2,
+      "name": "Pow",
+      "signature": "Pow(a,e,z)",
+      "summary": "z is the relational e-th power of a."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "HD0001": {
+      "critical_root_path": [
+        "HD0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HD0002"
+      ]
+    },
+    "HD0002": {
+      "critical_root_path": [
+        "HD0001",
+        "HD0002"
+      ],
+      "dependencies": [
+        "HD0001"
+      ],
+      "dependents": [
+        "HD0005",
+        "HD000B"
+      ]
+    },
+    "HD0003": {
+      "critical_root_path": [
+        "HD0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HD0006"
+      ]
+    },
+    "HD0004": {
+      "critical_root_path": [
+        "HD0004"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "HD0005": {
+      "critical_root_path": [
+        "HD0001",
+        "HD0002",
+        "HD0005"
+      ],
+      "dependencies": [
+        "HD0002"
+      ],
+      "dependents": [
+        "HD000D"
+      ]
+    },
+    "HD0006": {
+      "critical_root_path": [
+        "HD0003",
+        "HD0006"
+      ],
+      "dependencies": [
+        "HD0003"
+      ],
+      "dependents": []
+    },
+    "HD0007": {
+      "critical_root_path": [
+        "HD0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HD0009",
+        "HD000E"
+      ]
+    },
+    "HD0008": {
+      "critical_root_path": [
+        "HD0008"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "HD0009",
+        "HD000E",
+        "HD000F"
+      ]
+    },
+    "HD0009": {
+      "critical_root_path": [
+        "HD0007",
+        "HD0009"
+      ],
+      "dependencies": [
+        "HD0007",
+        "HD0008"
+      ],
+      "dependents": [
+        "HD000A",
+        "HD000B"
+      ]
+    },
+    "HD000A": {
+      "critical_root_path": [
+        "HD0007",
+        "HD0009",
+        "HD000A"
+      ],
+      "dependencies": [
+        "HD0009"
+      ],
+      "dependents": [
+        "HD000C"
+      ]
+    },
+    "HD000B": {
+      "critical_root_path": [
+        "HD0001",
+        "HD0002",
+        "HD000B"
+      ],
+      "dependencies": [
+        "HD0002",
+        "HD0009"
+      ],
+      "dependents": []
+    },
+    "HD000C": {
+      "critical_root_path": [
+        "HD0007",
+        "HD0009",
+        "HD000A",
+        "HD000C"
+      ],
+      "dependencies": [
+        "HD000A"
+      ],
+      "dependents": [
+        "HD000D"
+      ]
+    },
+    "HD000D": {
+      "critical_root_path": [
+        "HD0007",
+        "HD0009",
+        "HD000A",
+        "HD000C",
+        "HD000D"
+      ],
+      "dependencies": [
+        "HD0005",
+        "HD000C"
+      ],
+      "dependents": []
+    },
+    "HD000E": {
+      "critical_root_path": [
+        "HD0008",
+        "HD000E"
+      ],
+      "dependencies": [
+        "HD0008",
+        "HD0007"
+      ],
+      "dependents": [
+        "HD000F"
+      ]
+    },
+    "HD000F": {
+      "critical_root_path": [
+        "HD0008",
+        "HD000E",
+        "HD000F"
+      ],
+      "dependencies": [
+        "HD0008",
+        "HD000E"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "HD0002",
+    "HD0008",
+    "HD0009",
+    "HD000D",
+    "HD000B"
+  ],
+  "schema": "peano-lab-constructive-research-layer-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

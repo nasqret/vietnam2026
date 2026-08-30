@@ -1,0 +1,389 @@
+{
+  "bundle": {
+    "body_proof_nodes": 12452,
+    "bytes": 571540,
+    "dependency_edges_including_packaging": 568,
+    "independent_lean_checked": true,
+    "kernel_calls": 210,
+    "nodes_including_packaging_root": 210,
+    "original_ha_checked": true,
+    "packaging_root_id": 209,
+    "path": "research/arithmetic-library/artifacts/bottom-layer-euler-units-proof-bundle-v2.json",
+    "sha256": "1edfcb7021a0869c2493383c75dea367d757be0b77f36fc6ad3f5fd18ed38210"
+  },
+  "new_theorem_count": 32,
+  "owned_node_ids": {
+    "euler_coprime_mod_transport": 177,
+    "euler_coprime_modular_unit": 180,
+    "euler_coprime_totient_power": 206,
+    "euler_coprime_totient_power_value": 205,
+    "euler_coprime_weighted_product_cancel": 203,
+    "euler_modular_unit_coprime": 179,
+    "euler_modular_unit_totient_power": 207,
+    "euler_multiplier_coprime_iff": 178,
+    "euler_multiplier_permutation_exists": 188,
+    "euler_multiplier_prefix_bounded_injective": 186,
+    "euler_multiplier_prefix_empty": 182,
+    "euler_multiplier_prefix_entry": 185,
+    "euler_multiplier_prefix_exists": 184,
+    "euler_multiplier_prefix_extend": 183,
+    "euler_multiplier_prefix_permutation": 187,
+    "euler_multiplier_residue_exists": 181,
+    "euler_nonunit_factor_unchanged_congruence": 200,
+    "euler_theorem_for_units": 208,
+    "euler_unit_count_product_balance": 204,
+    "euler_unit_factor_scaled_congruence": 199,
+    "euler_unit_product_coprime": 198,
+    "euler_unit_product_factor_coprime": 192,
+    "euler_unit_product_factor_exists": 189,
+    "euler_unit_product_factor_nonunit_value": 191,
+    "euler_unit_product_factor_unit_value": 190,
+    "euler_unit_product_prefix_drop_last": 196,
+    "euler_unit_product_prefix_empty": 193,
+    "euler_unit_product_prefix_entry": 197,
+    "euler_unit_product_prefix_exists": 195,
+    "euler_unit_product_prefix_extend": 194,
+    "euler_unit_product_reindex_scale": 202,
+    "euler_unit_scaled_prefix_drop_last": 201
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "euler_theorem_for_units",
+      "node_id": 208,
+      "ordinary_certificate_nodes": 17918,
+      "statement_sha256": "fcfb262cc347ec2cd7624dffba31f9ed519292b3ba5f1669682cee308cbac39d"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "euler_coprime_totient_power",
+      "node_id": 206,
+      "ordinary_certificate_nodes": 17610,
+      "statement_sha256": "4f3533b3d207055a1f56ca77655cf26a381735fa3999f34a0a2c7935a21497e4"
+    }
+  ],
+  "rows": [
+    {
+      "name": "euler_coprime_mod_transport",
+      "node_id": 177,
+      "proof_depth": 17,
+      "proof_edges": 33,
+      "proof_nodes": 34,
+      "proof_objects": 34,
+      "reused_objects": 0,
+      "statement_sha256": "7062f086d29001d616e94defb389843ee39504a89cba651b0252442fba50700d"
+    },
+    {
+      "name": "euler_multiplier_coprime_iff",
+      "node_id": 178,
+      "proof_depth": 20,
+      "proof_edges": 48,
+      "proof_nodes": 49,
+      "proof_objects": 49,
+      "reused_objects": 0,
+      "statement_sha256": "f57e70aacb5f1b988c88c32532b2e7eb847865ea595b5ddde73ee3e0967dba18"
+    },
+    {
+      "name": "euler_modular_unit_coprime",
+      "node_id": 179,
+      "proof_depth": 21,
+      "proof_edges": 36,
+      "proof_nodes": 37,
+      "proof_objects": 37,
+      "reused_objects": 0,
+      "statement_sha256": "b1bf1e0c0f5b08003abcb58464799ae1246411e44aceb18259e086b5c06dad1e"
+    },
+    {
+      "name": "euler_coprime_modular_unit",
+      "node_id": 180,
+      "proof_depth": 19,
+      "proof_edges": 29,
+      "proof_nodes": 30,
+      "proof_objects": 30,
+      "reused_objects": 0,
+      "statement_sha256": "f7e48360a26f60feecd3230bc7763645cdc4030776feedf1c54f3ee570b2f482"
+    },
+    {
+      "name": "euler_multiplier_residue_exists",
+      "node_id": 181,
+      "proof_depth": 17,
+      "proof_edges": 32,
+      "proof_nodes": 33,
+      "proof_objects": 33,
+      "reused_objects": 0,
+      "statement_sha256": "9de1021720684713e7efde8d1798e1cbe3983071c36344c9344c633378ea7546"
+    },
+    {
+      "name": "euler_multiplier_prefix_empty",
+      "node_id": 182,
+      "proof_depth": 17,
+      "proof_edges": 25,
+      "proof_nodes": 26,
+      "proof_objects": 26,
+      "reused_objects": 0,
+      "statement_sha256": "2c4467d8202daf7fdae1277f192069305523d8f825ee9d9b832e5133125b9031"
+    },
+    {
+      "name": "euler_multiplier_prefix_extend",
+      "node_id": 183,
+      "proof_depth": 27,
+      "proof_edges": 62,
+      "proof_nodes": 63,
+      "proof_objects": 63,
+      "reused_objects": 0,
+      "statement_sha256": "edbbb58982e8d7c1c2ddb8b11be96b7299b5dfc1373475558cb65a0a95bb7cac"
+    },
+    {
+      "name": "euler_multiplier_prefix_exists",
+      "node_id": 184,
+      "proof_depth": 22,
+      "proof_edges": 44,
+      "proof_nodes": 45,
+      "proof_objects": 45,
+      "reused_objects": 0,
+      "statement_sha256": "412a351b42c3e450b545606ea9294da3998ee0979028ad2ddc0428b3e9d52845"
+    },
+    {
+      "name": "euler_multiplier_prefix_entry",
+      "node_id": 185,
+      "proof_depth": 22,
+      "proof_edges": 41,
+      "proof_nodes": 42,
+      "proof_objects": 42,
+      "reused_objects": 0,
+      "statement_sha256": "afc11650b48d7885f40955397d542280506adb9faa472af3255487bd9bec6d0a"
+    },
+    {
+      "name": "euler_multiplier_prefix_bounded_injective",
+      "node_id": 186,
+      "proof_depth": 36,
+      "proof_edges": 94,
+      "proof_nodes": 95,
+      "proof_objects": 95,
+      "reused_objects": 0,
+      "statement_sha256": "e452a7c7a56663212d442f6c0fe3f94ffe1af9d54374de440bdcf6ca35b6b5dd"
+    },
+    {
+      "name": "euler_multiplier_prefix_permutation",
+      "node_id": 187,
+      "proof_depth": 22,
+      "proof_edges": 64,
+      "proof_nodes": 65,
+      "proof_objects": 65,
+      "reused_objects": 0,
+      "statement_sha256": "8bf2f9b81d905047940e3c674cc2a1bf0c81ecbfdf8d62bbf330fdd56628bad2"
+    },
+    {
+      "name": "euler_multiplier_permutation_exists",
+      "node_id": 188,
+      "proof_depth": 19,
+      "proof_edges": 29,
+      "proof_nodes": 30,
+      "proof_objects": 30,
+      "reused_objects": 0,
+      "statement_sha256": "ee049e3a4d625ec0da3ab6d4ecff22da14d26fb3d4297031b23b2ece92c14fec"
+    },
+    {
+      "name": "euler_unit_product_factor_exists",
+      "node_id": 189,
+      "proof_depth": 8,
+      "proof_edges": 16,
+      "proof_nodes": 17,
+      "proof_objects": 17,
+      "reused_objects": 0,
+      "statement_sha256": "d464f429c73c1db9580e1ef98ebc51c22866737f9ccbd11ddf368371fe89e0d8"
+    },
+    {
+      "name": "euler_unit_product_factor_unit_value",
+      "node_id": 190,
+      "proof_depth": 13,
+      "proof_edges": 27,
+      "proof_nodes": 28,
+      "proof_objects": 28,
+      "reused_objects": 0,
+      "statement_sha256": "4d337f58a62df33f6427d404a65b684aa7ad253a9ae5dee15010334e25f54f2f"
+    },
+    {
+      "name": "euler_unit_product_factor_nonunit_value",
+      "node_id": 191,
+      "proof_depth": 13,
+      "proof_edges": 27,
+      "proof_nodes": 28,
+      "proof_objects": 28,
+      "reused_objects": 0,
+      "statement_sha256": "bec2a490e13b80421a93f41f9dcf212a93f646804dc7ef416083a718eaf4cd34"
+    },
+    {
+      "name": "euler_unit_product_factor_coprime",
+      "node_id": 192,
+      "proof_depth": 14,
+      "proof_edges": 34,
+      "proof_nodes": 35,
+      "proof_objects": 35,
+      "reused_objects": 0,
+      "statement_sha256": "933a0cc3eb6dc3db2a7da526b41e1ff8c6c427564b67358e500febf948111283"
+    },
+    {
+      "name": "euler_unit_product_prefix_empty",
+      "node_id": 193,
+      "proof_depth": 16,
+      "proof_edges": 24,
+      "proof_nodes": 25,
+      "proof_objects": 25,
+      "reused_objects": 0,
+      "statement_sha256": "f5b0dce226c5c248d56cff9ddc6ce17272fac3e29724222c309a7e6b1de43103"
+    },
+    {
+      "name": "euler_unit_product_prefix_extend",
+      "node_id": 194,
+      "proof_depth": 25,
+      "proof_edges": 64,
+      "proof_nodes": 65,
+      "proof_objects": 65,
+      "reused_objects": 0,
+      "statement_sha256": "bbe6fc05890ef26713fe18288fa56b338c231987b8dc350297254f79c255dfeb"
+    },
+    {
+      "name": "euler_unit_product_prefix_exists",
+      "node_id": 195,
+      "proof_depth": 18,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "de45c6bd8d75a991c06a3907d7dcabaf48bc9ef10d67c244e52825809427c063"
+    },
+    {
+      "name": "euler_unit_product_prefix_drop_last",
+      "node_id": 196,
+      "proof_depth": 17,
+      "proof_edges": 24,
+      "proof_nodes": 25,
+      "proof_objects": 25,
+      "reused_objects": 0,
+      "statement_sha256": "31393dd2e1e7a0007d76f77cd03e34ce7303fccdb7f0a33a96acc43c9a9e5916"
+    },
+    {
+      "name": "euler_unit_product_prefix_entry",
+      "node_id": 197,
+      "proof_depth": 21,
+      "proof_edges": 40,
+      "proof_nodes": 41,
+      "proof_objects": 41,
+      "reused_objects": 0,
+      "statement_sha256": "cde130018d9fe14836650745f70eae3cc5588c7d7b998b2b0f72b4c4b28cd41e"
+    },
+    {
+      "name": "euler_unit_product_coprime",
+      "node_id": 198,
+      "proof_depth": 32,
+      "proof_edges": 90,
+      "proof_nodes": 91,
+      "proof_objects": 91,
+      "reused_objects": 0,
+      "statement_sha256": "d916c0ca5702f2b839e086c3921bc113ea614f0eb2564ab86f034bc8c1ae39d6"
+    },
+    {
+      "name": "euler_unit_factor_scaled_congruence",
+      "node_id": 199,
+      "proof_depth": 27,
+      "proof_edges": 44,
+      "proof_nodes": 45,
+      "proof_objects": 45,
+      "reused_objects": 0,
+      "statement_sha256": "74d6703066307aa5051b402474ee0f77ca6cf55b18889ccced90a986544e56c4"
+    },
+    {
+      "name": "euler_nonunit_factor_unchanged_congruence",
+      "node_id": 200,
+      "proof_depth": 30,
+      "proof_edges": 50,
+      "proof_nodes": 51,
+      "proof_objects": 51,
+      "reused_objects": 0,
+      "statement_sha256": "7877925743897554942af46b999efcba072ee5a494d05a0cbe22bb3bd019f448"
+    },
+    {
+      "name": "euler_unit_scaled_prefix_drop_last",
+      "node_id": 201,
+      "proof_depth": 30,
+      "proof_edges": 43,
+      "proof_nodes": 44,
+      "proof_objects": 44,
+      "reused_objects": 0,
+      "statement_sha256": "ee71d6a86b08a8c02a5e75164d7249fd034e668ced74ed4f3b36587a1a77b02e"
+    },
+    {
+      "name": "euler_unit_product_reindex_scale",
+      "node_id": 202,
+      "proof_depth": 39,
+      "proof_edges": 188,
+      "proof_nodes": 189,
+      "proof_objects": 189,
+      "reused_objects": 0,
+      "statement_sha256": "391ddd7444ca43df4a15af4adf699dd2e6394fdb26ef4fad2e88a3bcc3d3c374"
+    },
+    {
+      "name": "euler_coprime_weighted_product_cancel",
+      "node_id": 203,
+      "proof_depth": 17,
+      "proof_edges": 28,
+      "proof_nodes": 29,
+      "proof_objects": 29,
+      "reused_objects": 0,
+      "statement_sha256": "d11e2c14bfdc12464ac540d1414e627c4159a010ddb46d7c019f971fd2f4fc36"
+    },
+    {
+      "name": "euler_unit_count_product_balance",
+      "node_id": 204,
+      "proof_depth": 61,
+      "proof_edges": 378,
+      "proof_nodes": 379,
+      "proof_objects": 379,
+      "reused_objects": 0,
+      "statement_sha256": "a3514f1c5b92ba0b29541eb681b313f98d01a910aa26f25044e29fc13ebc6fbd"
+    },
+    {
+      "name": "euler_coprime_totient_power_value",
+      "node_id": 205,
+      "proof_depth": 44,
+      "proof_edges": 136,
+      "proof_nodes": 137,
+      "proof_objects": 137,
+      "reused_objects": 0,
+      "statement_sha256": "62401bc3ae6050ed789b54eb3028512546c4c3f927f19bda5ca6ce77dc293f55"
+    },
+    {
+      "name": "euler_coprime_totient_power",
+      "node_id": 206,
+      "proof_depth": 20,
+      "proof_edges": 27,
+      "proof_nodes": 28,
+      "proof_objects": 28,
+      "reused_objects": 0,
+      "statement_sha256": "4f3533b3d207055a1f56ca77655cf26a381735fa3999f34a0a2c7935a21497e4"
+    },
+    {
+      "name": "euler_modular_unit_totient_power",
+      "node_id": 207,
+      "proof_depth": 27,
+      "proof_edges": 53,
+      "proof_nodes": 54,
+      "proof_objects": 54,
+      "reused_objects": 0,
+      "statement_sha256": "9640b53a89a7ed7e2e15db573380a9a7133af60e7ebed2215390034354b4a4d6"
+    },
+    {
+      "name": "euler_theorem_for_units",
+      "node_id": 208,
+      "proof_depth": 22,
+      "proof_edges": 37,
+      "proof_nodes": 38,
+      "proof_objects": 38,
+      "reused_objects": 0,
+      "statement_sha256": "fcfb262cc347ec2cd7624dffba31f9ed519292b3ba5f1669682cee308cbac39d"
+    }
+  ],
+  "slug": "euler-units",
+  "specs_sha256": "38ecc1c3c4a6045b7fb301526b09ede9b7927524265909bd59bdbbef1dfaf02e"
+}

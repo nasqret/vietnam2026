@@ -1,0 +1,511 @@
+{
+  "alpha_checked_use_node_count": 9,
+  "alpha_edition_version": "v32",
+  "alpha_first_enrolled_version": "v31",
+  "definition_topological_order": [
+    "ND0142",
+    "ND0145",
+    "ND0144",
+    "ND0313"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "ZU0002",
+      "target": "ZU0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZU0001",
+      "target": "ZU0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZU0001",
+      "target": "ZU0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZU0006",
+      "target": "ZU0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZU0005",
+      "target": "ZU0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZU0006",
+      "target": "ZU0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZU0004",
+      "target": "ZU0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "ZU0007",
+      "target": "ZU0009"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZU0001",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZU0001",
+      "statement_occurrences": 1,
+      "target": "ND0313"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "ZU0002",
+      "statement_occurrences": 0,
+      "target": "ND0142"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZU0002",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "ZU0003",
+      "statement_occurrences": 2,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "ZU0003",
+      "statement_occurrences": 2,
+      "target": "ND0313"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "ZU0004",
+      "statement_occurrences": 0,
+      "target": "ND0142"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "ZU0004",
+      "statement_occurrences": 2,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "ZU0005",
+      "statement_occurrences": 0,
+      "target": "ND0142"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "ZU0005",
+      "statement_occurrences": 1,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "ZU0006",
+      "statement_occurrences": 2,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZU0006",
+      "statement_occurrences": 1,
+      "target": "ND0313"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "ZU0007",
+      "statement_occurrences": 2,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZU0007",
+      "statement_occurrences": 1,
+      "target": "ND0313"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "ZU0008",
+      "statement_occurrences": 1,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "ZU0008",
+      "statement_occurrences": 1,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZU0008",
+      "statement_occurrences": 1,
+      "target": "ND0313"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "ZU0009",
+      "statement_occurrences": 2,
+      "target": "ND0144"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "ZU0009",
+      "statement_occurrences": 2,
+      "target": "ND0145"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "ZU0009",
+      "statement_occurrences": 1,
+      "target": "ND0313"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0145",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0144",
+      "target": "ND0142"
+    }
+  ],
+  "family_slug": "dirichlet-signed-units",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZU0001.html?v=6c9ebfb3c37e",
+      "id": "ZU0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_signed_unit_self_product",
+      "proof_bundle_node_id": 61,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Each of the two canonical signed units has an actual signed square equal to positive one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZU0002.html?v=6c9ebfb3c37e",
+      "id": "ZU0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_signed_unit_product_classification",
+      "proof_bundle_node_id": 62,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual signed product is positive one only for the two equal canonical units; mixed signs are constructively impossible."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZU0003.html?v=6c9ebfb3c37e",
+      "id": "ZU0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_signed_unit_inverse_iff",
+      "proof_bundle_node_id": 63,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The finite signed-unit predicate is equivalent to existence of an actual signed multiplicative inverse, not defined by an inverse oracle."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZU0004.html?v=6c9ebfb3c37e",
+      "id": "ZU0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_signed_add_cancel_left",
+      "proof_bundle_node_id": 64,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Cancellation of a common canonical signed summand follows by constructing its actual additive inverse."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZU0005.html?v=6c9ebfb3c37e",
+      "id": "ZU0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_signed_add_solve",
+      "proof_bundle_node_id": 65,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the signed addend taking any canonical signed r to any canonical signed e, including zero and negative values."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZU0006.html?v=6c9ebfb3c37e",
+      "id": "ZU0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_signed_unit_multiply_involution",
+      "proof_bundle_node_id": 66,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Multiplication by either actual signed unit is an involution on canonical signed codes."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZU0007.html?v=6c9ebfb3c37e",
+      "id": "ZU0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "dirichlet_signed_unit_multiply_cancel_right",
+      "proof_bundle_node_id": 67,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual signed unit can be cancelled from a common right factor without cancelling arbitrary zero or nonunit factors."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZU0008.html?v=6c9ebfb3c37e",
+      "id": "ZU0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "dirichlet_signed_unit_affine_solve",
+      "proof_bundle_node_id": 68,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Given either actual signed unit, construct both x and its actual product y with r+y=e; no difference, product or solution witness is supplied."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/ZU0009.html?v=6c9ebfb3c37e",
+      "id": "ZU0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "dirichlet_signed_unit_affine_unique",
+      "proof_bundle_node_id": 69,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Any two witnessed solutions of the same unit-affine equation have equal canonical inputs and equal actual product outputs."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0142.html?v=6c9ebfb3c37e",
+      "id": "ND0142",
+      "kind": "definition",
+      "layer": 0,
+      "name": "SignedDecode",
+      "signature": "SignedDecode(z,p,n)",
+      "summary": "The original canonical integer code: even 2p denotes p, and odd 2k+1 denotes −(k+1). The decoded positive and negative parts are normalized."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0145.html?v=6c9ebfb3c37e",
+      "id": "ND0145",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedMul",
+      "signature": "SignedMul(a,b,c)",
+      "summary": "Actual multiplication of original canonical signed codes; opposite-sign products remain on the negative side of the balance."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0144.html?v=6c9ebfb3c37e",
+      "id": "ND0144",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedAdd",
+      "signature": "SignedAdd(a,b,c)",
+      "summary": "Actual addition of original canonical signed codes, witnessed by their decoders and balanced equality."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0313.html?v=6c9ebfb3c37e",
+      "id": "ND0313",
+      "kind": "definition",
+      "layer": 0,
+      "name": "SignedUnit",
+      "signature": "SignedUnit(u)",
+      "summary": "Exactly the canonical signed codes 2 (+1) and 1 (-1). Its equivalence with an actual signed multiplicative inverse and the affine-equation solver are separately proved, not assumed by this two-case graph."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "ZU0001": {
+      "critical_root_path": [
+        "ZU0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "ZU0003",
+        "ZU0006"
+      ]
+    },
+    "ZU0002": {
+      "critical_root_path": [
+        "ZU0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "ZU0003"
+      ]
+    },
+    "ZU0003": {
+      "critical_root_path": [
+        "ZU0002",
+        "ZU0003"
+      ],
+      "dependencies": [
+        "ZU0002",
+        "ZU0001"
+      ],
+      "dependents": []
+    },
+    "ZU0004": {
+      "critical_root_path": [
+        "ZU0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "ZU0009"
+      ]
+    },
+    "ZU0005": {
+      "critical_root_path": [
+        "ZU0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "ZU0008"
+      ]
+    },
+    "ZU0006": {
+      "critical_root_path": [
+        "ZU0001",
+        "ZU0006"
+      ],
+      "dependencies": [
+        "ZU0001"
+      ],
+      "dependents": [
+        "ZU0007",
+        "ZU0008"
+      ]
+    },
+    "ZU0007": {
+      "critical_root_path": [
+        "ZU0001",
+        "ZU0006",
+        "ZU0007"
+      ],
+      "dependencies": [
+        "ZU0006"
+      ],
+      "dependents": [
+        "ZU0009"
+      ]
+    },
+    "ZU0008": {
+      "critical_root_path": [
+        "ZU0001",
+        "ZU0006",
+        "ZU0008"
+      ],
+      "dependencies": [
+        "ZU0005",
+        "ZU0006"
+      ],
+      "dependents": []
+    },
+    "ZU0009": {
+      "critical_root_path": [
+        "ZU0001",
+        "ZU0006",
+        "ZU0007",
+        "ZU0009"
+      ],
+      "dependencies": [
+        "ZU0004",
+        "ZU0007"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "ZU0002",
+    "ZU0008",
+    "ZU0009"
+  ],
+  "schema": "peano-lab-constructive-completed-lower-explorer-v31-graph",
+  "stable_admitted_node_count": 0
+}

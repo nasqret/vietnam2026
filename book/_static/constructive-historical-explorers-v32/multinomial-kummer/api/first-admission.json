@@ -1,0 +1,294 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v27": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+  },
+  "per_theorem": [
+    {
+      "name": "beta_valuation_prefix_empty",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0001"
+    },
+    {
+      "name": "beta_valuation_prefix_drop_last",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0002"
+    },
+    {
+      "name": "beta_valuation_prefix_last",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0003"
+    },
+    {
+      "name": "beta_valuation_prefix_extend",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0004"
+    },
+    {
+      "name": "beta_valuation_prefix_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0005"
+    },
+    {
+      "name": "beta_prime_product_valuation_eq_sum",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0006"
+    },
+    {
+      "name": "beta_prime_product_valuation_from_sum",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0007"
+    },
+    {
+      "name": "multinomial_binomial_prefix_empty",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0008"
+    },
+    {
+      "name": "multinomial_binomial_prefix_drop_last",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0009"
+    },
+    {
+      "name": "multinomial_binomial_prefix_extend",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK000A"
+    },
+    {
+      "name": "multinomial_binomial_prefix_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK000B"
+    },
+    {
+      "name": "multinomial_binomial_prefix_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK000C"
+    },
+    {
+      "name": "multinomial_exists_of_sum",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK000D"
+    },
+    {
+      "name": "multinomial_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK000E"
+    },
+    {
+      "name": "multinomial_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK000F"
+    },
+    {
+      "name": "multinomial_valuations_give_carry_prefix",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0010"
+    },
+    {
+      "name": "multinomial_kummer_carry_valuation",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0011"
+    },
+    {
+      "name": "multinomial_empty_values",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0012"
+    },
+    {
+      "name": "multinomial_empty_carry_count",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v27",
+      "tag": "MK0013"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 1356850,
+    "path": "book/_static/constructive-second-wave-explorer-v30/multinomial-kummer/api/corpus.json",
+    "sha256": "8887659744bfa985851cf2d736b732842454d2afbd46735003431b2bde16f6f3"
+  },
+  "source_corpus_fields": {
+    "alpha_first_enrolled_version": "v27",
+    "alpha_first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+  },
+  "source_family_fields": {},
+  "source_manifest": {
+    "bytes": 199909,
+    "path": "book/_static/constructive-second-wave-explorer-v30/manifest.json",
+    "sha256": "502bc77536b7ec5b7bfc14a0f140e43eef59d4943083edbf861527cbb3a1c5ca"
+  },
+  "source_manifest_fields": {
+    "alpha_first_enrolled_version": "v27",
+    "first_enrollment_catalog_sha256": "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6"
+  }
+}

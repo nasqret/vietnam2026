@@ -70,6 +70,8 @@ PROOF_BUNDLE_FILENAMES = (
     "dirichlet-signed-units-proof-bundle-v1.json",
     "dirichlet-triangular-proof-bundle-v1.json",
     "dirichlet-inverses-proof-bundle-v1.json",
+    "g009-multiplicative-convolution-proof-bundle-v1.json",
+    "prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
 )
 PROOF_BUNDLE_SOURCES = {
     f"proof-artifacts/{filename}": (
@@ -163,8 +165,8 @@ def test_worker_source_inventory_is_reproducible() -> None:
 
 
 def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> None:
-    assert len(PROOF_BUNDLE_FILENAMES) == 39
-    assert len(set(PROOF_BUNDLE_FILENAMES)) == 39
+    assert len(PROOF_BUNDLE_FILENAMES) == 41
+    assert len(set(PROOF_BUNDLE_FILENAMES)) == 41
     assert all(name == name.lower() for name in PROOF_BUNDLE_FILENAMES)
     assert tuple(re.findall(r'"(proof-artifacts/[^"\n]+\.json)"', WORKER)) == tuple(
         PROOF_BUNDLE_SOURCES
@@ -197,6 +199,9 @@ def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> 
         "alpha_enrollment_v31",
         "campaign_completed_lower_closure",
         "editions_v31",
+        "alpha_enrollment_v32",
+        "campaign_research_v32_closure",
+        "editions_v32",
     ):
         assert f'"py/peano_lab/library/{module}.py"' in WORKER
 
@@ -224,12 +229,12 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
 
 def test_shell_connects_checked_alpha_research_to_multiscale_proof_atlas() -> None:
     assert 'aria-label="Course and research navigation"' in INDEX
-    channel = json.loads((LAB.parent / "artifacts/peano-library/channels-v31.json").read_bytes())["channels"]["alpha"]
+    channel = json.loads((LAB.parent / "artifacts/peano-library/channels-v32.json").read_bytes())["channels"]["alpha"]
     revision = channel["artifact_sha256"][:12]
-    assert channel["theorem_count"] == channel["checked_use_count"] == 3796
+    assert channel["theorem_count"] == channel["checked_use_count"] == 3971
     assert f'<a href="/proofs/?v={revision}">Proof library</a>' in INDEX
     assert f'<a href="/proofs/grand-campaign/?v={revision}">Research atlas</a>' in INDEX
-    assert "Alpha: 3,796 proofs" in INDEX
+    assert "Alpha: 3,971 proofs" in INDEX
     assert '<span class="lbl">research:</span>' in INDEX
     assert 'data-cmd="pa lib alpha odd_prime_lifting_the_exponent" disabled>odd-prime LTE</button>' in INDEX
     assert 'data-cmd="pa lib alpha positive_squarefree_kernel_and_power_profile" disabled>positive squarefree &amp; power profiles</button>' in INDEX
@@ -375,8 +380,10 @@ def test_worker_fetches_sources_concurrently_but_mounts_deterministically(tmp_pa
     last_artifact = "proof-artifacts/" + PROOF_BUNDLE_FILENAMES[-1]
     mutations = {
         "historical-only": historical_only,
+        "v31-only": WORKER.replace(f'  "proof-artifacts/{PROOF_BUNDLE_FILENAMES[-2]}",\n', "").replace(
+            f'  "proof-artifacts/{PROOF_BUNDLE_FILENAMES[-1]}",\n', ""),
         "duplicate": WORKER.replace(last_artifact, "proof-artifacts/" + PROOF_BUNDLE_FILENAMES[20]),
-        "wrong-case": WORKER.replace(last_artifact, last_artifact.replace("inverses", "Inverses")),
+        "wrong-case": WORKER.replace(last_artifact, last_artifact.replace("division", "Division")),
         "foreign": WORKER.replace(last_artifact, last_artifact.replace("-v1.json", "-v2.json")),
     }
     for label, source in mutations.items():

@@ -54,6 +54,8 @@ PROOF_BUNDLES=(
   dirichlet-signed-units-proof-bundle-v1.json
   dirichlet-triangular-proof-bundle-v1.json
   dirichlet-inverses-proof-bundle-v1.json
+  g009-multiplicative-convolution-proof-bundle-v1.json
+  prime-field-polynomial-division-prerequisites-proof-bundle-v1.json
 )
 TMP_MANIFEST="$(mktemp)"
 trap 'rm -f "$TMP_MANIFEST"' EXIT

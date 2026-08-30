@@ -40,7 +40,7 @@ PEANO_LEAN_PUBLIC_ARGS ?=
 override STAGEPEANO := _deploy/peano-lab
 override STAGEPROOFS := _deploy/proofs
 override STAGELEANAPI := _deploy/lean-api
-override PEANOAPPID := a-d33dd94cc45d
+override PEANOAPPID := a-a39b5079aa8a
 
 .PHONY: help book book-atlas book-proof-explorer book-bertrand-proof-explorer book-bertrand-defined-explorer book-constructive-frontier-explorer lean lean-fta peano-library-alpha peano-library-alpha-check peano-library-alpha-v2 peano-library-alpha-v2-check peano-library-alpha-v3 peano-library-alpha-v3-check peano-library-alpha-v4 peano-library-alpha-v4-check peano-library-alpha-v5 peano-library-alpha-v5-check peano-library-alpha-v6 peano-library-alpha-v6-check peano-library-alpha-v7 peano-library-alpha-v7-check peano-library-alpha-v8 peano-library-alpha-v8-check peano-library-alpha-v9 peano-library-alpha-v9-check peano-library-alpha-v10 peano-library-alpha-v10-check peano-library-alpha-v11 peano-library-alpha-v11-check peano-library-alpha-v12 peano-library-alpha-v12-check peano-library-alpha-v13 peano-library-alpha-v13-check peano-library-alpha-v14 peano-library-alpha-v14-check peano-library-alpha-v15 peano-library-alpha-v15-check peano-library-channels peano-library-channels-check peano-library-channels-v2 peano-library-channels-v2-check peano-library-channels-v3 peano-library-channels-v3-check peano-library-channels-v4 peano-library-channels-v4-check peano-library-channels-v5 peano-library-channels-v5-check peano-library-channels-v6 peano-library-channels-v6-check peano-library-channels-v7 peano-library-channels-v7-check peano-library-channels-v8 peano-library-channels-v8-check peano-library-channels-v9 peano-library-channels-v9-check peano-library-channels-v10 peano-library-channels-v10-check peano-library-channels-v11 peano-library-channels-v11-check peano-library-channels-v12 peano-library-channels-v12-check peano-library-channels-v13 peano-library-channels-v13-check peano-library-channels-v14 peano-library-channels-v14-check peano-library-channels-v15 peano-library-channels-v15-check ha-number-theory-check ha-constructive-frontier-check ha-k3b-cell-history-check ha-k3b-list-lookup-check lab-serve peano-serve peano-training-dashboard peano-corpus peano-corpus-smoke peano-policy-pilot peano-policy-data peano-eval stage \
 	stage-peano stage-proofs stage-lean-api deploy-site deploy-lab deploy-lab-next deploy-peano \
@@ -1702,7 +1702,7 @@ stage: book
 deploy-site: stage
 	rsync -avz --delete $(STAGE)/ $(SERVER):$(SITE)/
 
-stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book-constructive-next-layer-explorer book-constructive-advanced-layer-explorer book-constructive-transport-layer-explorer book-constructive-milestone-closure-explorer book-constructive-research-layer-explorer book-constructive-breakthrough-layer-explorer book-constructive-second-wave-current-explorer book-constructive-gaussian-factorization-explorer book-constructive-bottom-layer-publication book-constructive-lower-tier-publication
+stage-proofs-v31: book-proof-explorer-check book-constructive-frontier-explorer book-constructive-next-layer-explorer book-constructive-advanced-layer-explorer book-constructive-transport-layer-explorer book-constructive-milestone-closure-explorer book-constructive-research-layer-explorer book-constructive-breakthrough-layer-explorer book-constructive-second-wave-current-explorer book-constructive-gaussian-factorization-explorer book-constructive-bottom-layer-publication book-constructive-lower-tier-publication
 	@test "$$(shasum -a 256 book/_static/pa-proof-explorer/api/corpus.json | cut -d' ' -f1)" = \
 		"ebc78a0c16fe6e9123a52363a69929590d8ca875380431776ef0de28b9b1193a" || \
 		{ echo "Immutable Alpha parent quadratic-reciprocity evidence corpus changed" >&2; exit 1; }
@@ -1969,6 +1969,25 @@ stage-proofs: book-proof-explorer-check book-constructive-frontier-explorer book
 		--check --api-url "$(PEANO_LEAN_PUBLIC_API)"
 	@echo "Staged proof explorers in $(STAGEPROOFS)"
 
+.PHONY: alpha-v32-release alpha-v32-release-check stage-proofs-v31 stage-proofs-v32
+
+alpha-v32-release:
+	PYTHONMALLOC=pymalloc python3 scripts/publish_constructive_research_v32.py --create-release
+
+alpha-v32-release-check:
+	PYTHONMALLOC=pymalloc python3 scripts/publish_constructive_research_v32.py --check
+
+# The new delivery tree retains the validated old stage without overwriting it.
+# The independent live Alpha-v32 publication must already be registered.
+stage-proofs: stage-proofs-v32
+
+stage-proofs-v32:
+	@if test -e _deploy/proofs-v32 || test -L _deploy/proofs-v32; then \
+		python3 scripts/stage_constructive_research_publication_v32.py --check --api-url "$(PEANO_LEAN_PUBLIC_API)"; \
+	else \
+		python3 scripts/stage_constructive_research_publication_v32.py --api-url "$(PEANO_LEAN_PUBLIC_API)"; \
+	fi
+
 stage-lean-api:
 	rm -rf "$(STAGELEANAPI)"
 	mkdir -p "$(STAGELEANAPI)"
@@ -1985,7 +2004,8 @@ deploy-lean-api: stage-lean-api
 	@echo "Deployed public Lean proof gateway → $(PEANO_LEAN_PUBLIC_ORIGIN)/api/lean-strands/"
 
 deploy-proofs: stage-proofs deploy-lean-api
-	rsync -avz --delete "$(STAGEPROOFS)/" $(SERVER):$(PROOFS)/
+	rsync -avz --exclude '/index.html' _deploy/proofs-v32/ $(SERVER):$(PROOFS)/
+	rsync -avz _deploy/proofs-v32/index.html $(SERVER):$(PROOFS)/index.html
 	@echo "Deployed proof explorers → https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/"
 
 deploy-lean-public: deploy-proofs
@@ -2109,6 +2129,10 @@ stage-peano:
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/dirichlet-triangular-proof-bundle-v1.json"
 	cp research/arithmetic-library/artifacts/dirichlet-inverses-proof-bundle-v1.json \
 		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/dirichlet-inverses-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/g009-multiplicative-convolution-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/g009-multiplicative-convolution-proof-bundle-v1.json"
+	cp research/arithmetic-library/artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json \
+		"$(STAGEPEANO)/releases/$(PEANOAPPID)/proof-artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json"
 	rsync -a --delete --exclude '/tests/***' --exclude '__pycache__/' --exclude '.pytest_cache/' --include '*/' --include '*.py' --exclude '*' peano-lab/py/ "$(STAGEPEANO)/releases/$(PEANOAPPID)/py/"
 	rsync -a --delete peano-lab/vendor/ "$(STAGEPEANO)/vendor/"
 	@echo "Staged Peano Lab in $(STAGEPEANO)"

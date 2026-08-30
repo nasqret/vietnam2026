@@ -1,0 +1,583 @@
+{
+  "bundle": {
+    "body_proof_nodes": 11889,
+    "bytes": 688987,
+    "dependency_edges_including_packaging": 519,
+    "independent_lean_checked": true,
+    "kernel_calls": 202,
+    "nodes_including_packaging_root": 202,
+    "original_ha_checked": true,
+    "packaging_root_id": 201,
+    "path": "research/arithmetic-library/artifacts/lower-tier-prime-field-polynomials-proof-bundle-v1.json",
+    "sha256": "6e3a08c73b8a45de127e6d50a771f95b52fd54894b1c2e43468751421488a01a"
+  },
+  "new_theorem_count": 49,
+  "owned_node_ids": {
+    "prime_field_polynomial_add_associative": 179,
+    "prime_field_polynomial_add_bounded": 166,
+    "prime_field_polynomial_add_commutative": 169,
+    "prime_field_polynomial_add_entry": 165,
+    "prime_field_polynomial_add_exists": 164,
+    "prime_field_polynomial_add_from_normalization": 163,
+    "prime_field_polynomial_add_functional": 167,
+    "prime_field_polynomial_add_transport": 168,
+    "prime_field_polynomial_add_zero_right": 170,
+    "prime_field_polynomial_horner_canonical_step": 183,
+    "prime_field_polynomial_horner_constant": 196,
+    "prime_field_polynomial_horner_empty": 187,
+    "prime_field_polynomial_horner_empty_construct": 194,
+    "prime_field_polynomial_horner_exists": 185,
+    "prime_field_polynomial_horner_exists_unique": 193,
+    "prime_field_polynomial_horner_functional": 192,
+    "prime_field_polynomial_horner_input_bounds": 186,
+    "prime_field_polynomial_horner_normalization_residue": 190,
+    "prime_field_polynomial_horner_residue": 191,
+    "prime_field_polynomial_horner_result_bounded": 199,
+    "prime_field_polynomial_horner_successor_construct": 195,
+    "prime_field_polynomial_horner_successor_decompose": 188,
+    "prime_field_polynomial_horner_trace_from_normalization": 184,
+    "prime_field_polynomial_horner_transport": 189,
+    "prime_field_polynomial_horner_zero": 197,
+    "prime_field_polynomial_normalization_bounded": 155,
+    "prime_field_polynomial_normalization_entry": 154,
+    "prime_field_polynomial_normalization_exists": 153,
+    "prime_field_polynomial_normalization_from_division": 152,
+    "prime_field_polynomial_normalization_functional": 156,
+    "prime_field_polynomial_normalization_idempotent": 159,
+    "prime_field_polynomial_normalization_reflexive": 157,
+    "prime_field_polynomial_normalization_transport": 158,
+    "prime_field_polynomial_normalized_horner_iff": 198,
+    "prime_field_polynomial_reduce_and_evaluate_exists": 200,
+    "prime_field_polynomial_repeat_coefficients": 160,
+    "prime_field_polynomial_repeat_exists": 161,
+    "prime_field_polynomial_scalar_add_distributes": 182,
+    "prime_field_polynomial_scale_associative": 180,
+    "prime_field_polynomial_scale_bounded": 174,
+    "prime_field_polynomial_scale_distributes_over_add": 181,
+    "prime_field_polynomial_scale_entry": 173,
+    "prime_field_polynomial_scale_exists": 172,
+    "prime_field_polynomial_scale_from_normalization": 171,
+    "prime_field_polynomial_scale_functional": 175,
+    "prime_field_polynomial_scale_one": 177,
+    "prime_field_polynomial_scale_transport": 176,
+    "prime_field_polynomial_scale_zero": 178,
+    "prime_field_polynomial_zero_exists": 162
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "prime_field_polynomial_horner_exists_unique",
+      "node_id": 193,
+      "ordinary_certificate_nodes": 10310,
+      "statement_sha256": "b4e5a2cd91b33b7366aa11d591d5da743acdb244348f438797daf1be243c3941"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "prime_field_polynomial_normalized_horner_iff",
+      "node_id": 198,
+      "ordinary_certificate_nodes": 10228,
+      "statement_sha256": "fbed602c60a29f5b4474d678ccd397c2ff5d50e7fb52f06480c26e1938a762e5"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "prime_field_polynomial_reduce_and_evaluate_exists",
+      "node_id": 200,
+      "ordinary_certificate_nodes": 10192,
+      "statement_sha256": "2f0d67795bf12542c6c9fb48cb4d63d26213e8e090bbca1a7a89257a49dd0e2c"
+    }
+  ],
+  "rows": [
+    {
+      "name": "prime_field_polynomial_normalization_from_division",
+      "node_id": 152,
+      "proof_depth": 28,
+      "proof_edges": 54,
+      "proof_nodes": 55,
+      "proof_objects": 55,
+      "reused_objects": 0,
+      "statement_sha256": "35f1d5d132dc9cfec171139fc1613a31252e42e8fca9a095f8096335d405b306"
+    },
+    {
+      "name": "prime_field_polynomial_normalization_exists",
+      "node_id": 153,
+      "proof_depth": 23,
+      "proof_edges": 33,
+      "proof_nodes": 34,
+      "proof_objects": 34,
+      "reused_objects": 0,
+      "statement_sha256": "fc691cdfddf49e1a62efec0e453562a4f92e605903fd5907835ab03472dba157"
+    },
+    {
+      "name": "prime_field_polynomial_normalization_entry",
+      "node_id": 154,
+      "proof_depth": 27,
+      "proof_edges": 61,
+      "proof_nodes": 62,
+      "proof_objects": 62,
+      "reused_objects": 0,
+      "statement_sha256": "87acf245cc6c82286159d34db5029e8c9f5f1ce9e27fa763dd59502d1352214f"
+    },
+    {
+      "name": "prime_field_polynomial_normalization_bounded",
+      "node_id": 155,
+      "proof_depth": 17,
+      "proof_edges": 24,
+      "proof_nodes": 25,
+      "proof_objects": 25,
+      "reused_objects": 0,
+      "statement_sha256": "11748a029cfba27df8c1381e372a19466fa5b27c7abe4141445c68f925d59663"
+    },
+    {
+      "name": "prime_field_polynomial_normalization_functional",
+      "node_id": 156,
+      "proof_depth": 38,
+      "proof_edges": 117,
+      "proof_nodes": 118,
+      "proof_objects": 118,
+      "reused_objects": 0,
+      "statement_sha256": "5111d6fc14b72a8d3623d1b560053f63ca9a6fa07459c9fbda0a77692243dee9"
+    },
+    {
+      "name": "prime_field_polynomial_normalization_reflexive",
+      "node_id": 157,
+      "proof_depth": 17,
+      "proof_edges": 26,
+      "proof_nodes": 27,
+      "proof_objects": 27,
+      "reused_objects": 0,
+      "statement_sha256": "f5226ccb8886346c9f2c82b81afaccf3e994c6c38b3cbb3c476df92afad24081"
+    },
+    {
+      "name": "prime_field_polynomial_normalization_transport",
+      "node_id": 158,
+      "proof_depth": 26,
+      "proof_edges": 45,
+      "proof_nodes": 46,
+      "proof_objects": 46,
+      "reused_objects": 0,
+      "statement_sha256": "861545b04e9fae88a687f21289a7c7330a1d42416c214db2fd6b6a270b36dd6d"
+    },
+    {
+      "name": "prime_field_polynomial_normalization_idempotent",
+      "node_id": 159,
+      "proof_depth": 54,
+      "proof_edges": 93,
+      "proof_nodes": 94,
+      "proof_objects": 94,
+      "reused_objects": 0,
+      "statement_sha256": "185a1a1dcffb6984b47aa4126ecf0ef1df0c2cb90097a797b7af5d3acbb3633f"
+    },
+    {
+      "name": "prime_field_polynomial_repeat_coefficients",
+      "node_id": 160,
+      "proof_depth": 15,
+      "proof_edges": 18,
+      "proof_nodes": 19,
+      "proof_objects": 19,
+      "reused_objects": 0,
+      "statement_sha256": "5e41628e2201525a8b4ec3799e5fba8abe37ceddd3191156eb13ee23a414abb1"
+    },
+    {
+      "name": "prime_field_polynomial_repeat_exists",
+      "node_id": 161,
+      "proof_depth": 19,
+      "proof_edges": 25,
+      "proof_nodes": 26,
+      "proof_objects": 26,
+      "reused_objects": 0,
+      "statement_sha256": "8aebd68190bb7fb16f0e1879ac8140a14abb2f83c0995cc3bcec055cdcae6512"
+    },
+    {
+      "name": "prime_field_polynomial_zero_exists",
+      "node_id": 162,
+      "proof_depth": 16,
+      "proof_edges": 25,
+      "proof_nodes": 26,
+      "proof_objects": 26,
+      "reused_objects": 0,
+      "statement_sha256": "c4d6a91e45653574df00ada9f40f52a7f72c9fdeefbb59f3c8e81cbc5704b796"
+    },
+    {
+      "name": "prime_field_polynomial_add_from_normalization",
+      "node_id": 163,
+      "proof_depth": 41,
+      "proof_edges": 79,
+      "proof_nodes": 80,
+      "proof_objects": 80,
+      "reused_objects": 0,
+      "statement_sha256": "b30c57c81c66d69f6dfb81660cfbeae10daf3c66331b17031cf60cbe9281e506"
+    },
+    {
+      "name": "prime_field_polynomial_add_exists",
+      "node_id": 164,
+      "proof_depth": 33,
+      "proof_edges": 51,
+      "proof_nodes": 52,
+      "proof_objects": 52,
+      "reused_objects": 0,
+      "statement_sha256": "2f11528fb5b4414fcc64407de086430d3dde3cd8c5f3ac1603a77a04100739ca"
+    },
+    {
+      "name": "prime_field_polynomial_add_entry",
+      "node_id": 165,
+      "proof_depth": 35,
+      "proof_edges": 108,
+      "proof_nodes": 109,
+      "proof_objects": 109,
+      "reused_objects": 0,
+      "statement_sha256": "3822c1cb92ee314db9989f85492490b7ebe47dfcd2717f24e7b8fb1de7cfe7b4"
+    },
+    {
+      "name": "prime_field_polynomial_add_bounded",
+      "node_id": 166,
+      "proof_depth": 25,
+      "proof_edges": 76,
+      "proof_nodes": 77,
+      "proof_objects": 77,
+      "reused_objects": 0,
+      "statement_sha256": "ae4ad7dcaa66a4f97f16aab74c42173cef063ab4b288140bdc566d6b32dfb26e"
+    },
+    {
+      "name": "prime_field_polynomial_add_functional",
+      "node_id": 167,
+      "proof_depth": 45,
+      "proof_edges": 146,
+      "proof_nodes": 147,
+      "proof_objects": 147,
+      "reused_objects": 0,
+      "statement_sha256": "8f864f869b0b6846487cae5f80d402f778dbb633c7a8b7f3fd9f238136f4dfa6"
+    },
+    {
+      "name": "prime_field_polynomial_add_transport",
+      "node_id": 168,
+      "proof_depth": 34,
+      "proof_edges": 65,
+      "proof_nodes": 66,
+      "proof_objects": 66,
+      "reused_objects": 0,
+      "statement_sha256": "8dff62aa83e53df45d937e2eafff88dea0e10347c5ade2657778002b46da50a2"
+    },
+    {
+      "name": "prime_field_polynomial_add_commutative",
+      "node_id": 169,
+      "proof_depth": 27,
+      "proof_edges": 45,
+      "proof_nodes": 46,
+      "proof_objects": 46,
+      "reused_objects": 0,
+      "statement_sha256": "ffee9e116918227e6f019279da1093548b47fe34200f8bba12be3a67b893536e"
+    },
+    {
+      "name": "prime_field_polynomial_add_zero_right",
+      "node_id": 170,
+      "proof_depth": 24,
+      "proof_edges": 38,
+      "proof_nodes": 39,
+      "proof_objects": 39,
+      "reused_objects": 0,
+      "statement_sha256": "42cfe21acd406ee675f3ec496c634f2cb681a79e7ed0cf7572071af3a105dae6"
+    },
+    {
+      "name": "prime_field_polynomial_scale_from_normalization",
+      "node_id": 171,
+      "proof_depth": 41,
+      "proof_edges": 75,
+      "proof_nodes": 76,
+      "proof_objects": 76,
+      "reused_objects": 0,
+      "statement_sha256": "1955b2fa2a5b6af239f13b79a825986de4ad0750d5c6b3f717f885d8e1a92631"
+    },
+    {
+      "name": "prime_field_polynomial_scale_exists",
+      "node_id": 172,
+      "proof_depth": 37,
+      "proof_edges": 60,
+      "proof_nodes": 61,
+      "proof_objects": 61,
+      "reused_objects": 0,
+      "statement_sha256": "05428ef8dbdd1751708288e1153c03b9f565d8b50900118153fa4c031e52b278"
+    },
+    {
+      "name": "prime_field_polynomial_scale_entry",
+      "node_id": 173,
+      "proof_depth": 29,
+      "proof_edges": 75,
+      "proof_nodes": 76,
+      "proof_objects": 76,
+      "reused_objects": 0,
+      "statement_sha256": "7ece59877d49222f32886e569691e4309b9acebdb12238fbda11712669abae4b"
+    },
+    {
+      "name": "prime_field_polynomial_scale_bounded",
+      "node_id": 174,
+      "proof_depth": 21,
+      "proof_edges": 48,
+      "proof_nodes": 49,
+      "proof_objects": 49,
+      "reused_objects": 0,
+      "statement_sha256": "6fe3b703f788bbfcb279577d621eb93810dcfe01db5526c261f591dad9b11a44"
+    },
+    {
+      "name": "prime_field_polynomial_scale_functional",
+      "node_id": 175,
+      "proof_depth": 40,
+      "proof_edges": 124,
+      "proof_nodes": 125,
+      "proof_objects": 125,
+      "reused_objects": 0,
+      "statement_sha256": "28bca0f231661b224c770499e9956abf29237e13adcd557f55e9cb8f373ff1fb"
+    },
+    {
+      "name": "prime_field_polynomial_scale_transport",
+      "node_id": 176,
+      "proof_depth": 28,
+      "proof_edges": 50,
+      "proof_nodes": 51,
+      "proof_objects": 51,
+      "reused_objects": 0,
+      "statement_sha256": "bc1419f45446bab30caaa1d0592e30309230605969b0e488af86f983d9a3250f"
+    },
+    {
+      "name": "prime_field_polynomial_scale_one",
+      "node_id": 177,
+      "proof_depth": 21,
+      "proof_edges": 35,
+      "proof_nodes": 36,
+      "proof_objects": 36,
+      "reused_objects": 0,
+      "statement_sha256": "3a93ef4144478db7e14db037c4f9b07e075e5874226cdd5db2fe6afddf998ce5"
+    },
+    {
+      "name": "prime_field_polynomial_scale_zero",
+      "node_id": 178,
+      "proof_depth": 24,
+      "proof_edges": 40,
+      "proof_nodes": 41,
+      "proof_objects": 41,
+      "reused_objects": 0,
+      "statement_sha256": "9699a9c90554d08c1ea7e9d686de38a67aac464d1ee219fe0eaf2c76775cf8bc"
+    },
+    {
+      "name": "prime_field_polynomial_add_associative",
+      "node_id": 179,
+      "proof_depth": 58,
+      "proof_edges": 271,
+      "proof_nodes": 272,
+      "proof_objects": 272,
+      "reused_objects": 0,
+      "statement_sha256": "d78ddc12d230df4512e11b6880f4005c48721cc20051769e6bac6d01d6afaf19"
+    },
+    {
+      "name": "prime_field_polynomial_scale_associative",
+      "node_id": 180,
+      "proof_depth": 49,
+      "proof_edges": 187,
+      "proof_nodes": 188,
+      "proof_objects": 188,
+      "reused_objects": 0,
+      "statement_sha256": "34783333ce4daff9f00ca102f4fe7f5720249c018a2abd40afabe00c6fb3163f"
+    },
+    {
+      "name": "prime_field_polynomial_scale_distributes_over_add",
+      "node_id": 181,
+      "proof_depth": 62,
+      "proof_edges": 300,
+      "proof_nodes": 301,
+      "proof_objects": 301,
+      "reused_objects": 0,
+      "statement_sha256": "c573b16ea3b8e00595563c44cc2bdc1c93643719402592694b384199449007a2"
+    },
+    {
+      "name": "prime_field_polynomial_scalar_add_distributes",
+      "node_id": 182,
+      "proof_depth": 54,
+      "proof_edges": 244,
+      "proof_nodes": 245,
+      "proof_objects": 245,
+      "reused_objects": 0,
+      "statement_sha256": "eb1093e2151f4a25af548360f3aa46d76eb7567075c52da21101bd5b267ae6e9"
+    },
+    {
+      "name": "prime_field_polynomial_horner_canonical_step",
+      "node_id": 183,
+      "proof_depth": 38,
+      "proof_edges": 130,
+      "proof_nodes": 131,
+      "proof_objects": 131,
+      "reused_objects": 0,
+      "statement_sha256": "ea813d1097ae7e3e4c77ed8a428e7413ce592bc26e327e2d980fd45e6f67ca8a"
+    },
+    {
+      "name": "prime_field_polynomial_horner_trace_from_normalization",
+      "node_id": 184,
+      "proof_depth": 55,
+      "proof_edges": 273,
+      "proof_nodes": 274,
+      "proof_objects": 274,
+      "reused_objects": 0,
+      "statement_sha256": "76d4a6658c009763e0faabff565a2d192c258f16c43e0df2ec22810f572a131b"
+    },
+    {
+      "name": "prime_field_polynomial_horner_exists",
+      "node_id": 185,
+      "proof_depth": 34,
+      "proof_edges": 64,
+      "proof_nodes": 65,
+      "proof_objects": 65,
+      "reused_objects": 0,
+      "statement_sha256": "d20f5626eccc002e43ac2ced49a8306e9ccdf28f87e31ba10ff3244792186ff4"
+    },
+    {
+      "name": "prime_field_polynomial_horner_input_bounds",
+      "node_id": 186,
+      "proof_depth": 25,
+      "proof_edges": 40,
+      "proof_nodes": 41,
+      "proof_objects": 41,
+      "reused_objects": 0,
+      "statement_sha256": "e563ee3bee3e3a1502d9b83563b3aadfc9b4c86e3e16ad5e4879d707ce2fafb2"
+    },
+    {
+      "name": "prime_field_polynomial_horner_empty",
+      "node_id": 187,
+      "proof_depth": 34,
+      "proof_edges": 59,
+      "proof_nodes": 60,
+      "proof_objects": 60,
+      "reused_objects": 0,
+      "statement_sha256": "1fa13241e787f64f91c227d9d34c29035b6ae36a56a123bda2c4affeea8020db"
+    },
+    {
+      "name": "prime_field_polynomial_horner_successor_decompose",
+      "node_id": 188,
+      "proof_depth": 34,
+      "proof_edges": 107,
+      "proof_nodes": 108,
+      "proof_objects": 108,
+      "reused_objects": 0,
+      "statement_sha256": "7e8b2052c5b9f73ab4aa503b0070c4a7e0230e7832e4ab21be06f3265a7f3e76"
+    },
+    {
+      "name": "prime_field_polynomial_horner_transport",
+      "node_id": 189,
+      "proof_depth": 36,
+      "proof_edges": 76,
+      "proof_nodes": 77,
+      "proof_objects": 77,
+      "reused_objects": 0,
+      "statement_sha256": "60c9506e99ff668856624c81502bffb3e0ade3e586e61c61479b409a84f5e3d5"
+    },
+    {
+      "name": "prime_field_polynomial_horner_normalization_residue",
+      "node_id": 190,
+      "proof_depth": 52,
+      "proof_edges": 197,
+      "proof_nodes": 198,
+      "proof_objects": 198,
+      "reused_objects": 0,
+      "statement_sha256": "d89d968c3507bf1dfcfc9d0d39f20bd3dd7b47780985c8e070ac1005c9f759b8"
+    },
+    {
+      "name": "prime_field_polynomial_horner_residue",
+      "node_id": 191,
+      "proof_depth": 27,
+      "proof_edges": 45,
+      "proof_nodes": 46,
+      "proof_objects": 46,
+      "reused_objects": 0,
+      "statement_sha256": "7ffa39e11c1706835f782e8659d2290777ae027643c755b890c347112ec80088"
+    },
+    {
+      "name": "prime_field_polynomial_horner_functional",
+      "node_id": 192,
+      "proof_depth": 27,
+      "proof_edges": 53,
+      "proof_nodes": 54,
+      "proof_objects": 54,
+      "reused_objects": 0,
+      "statement_sha256": "20663f3e98709fcdfa12afece84c9c8746c7a73cc40da85c932906cfa39563a6"
+    },
+    {
+      "name": "prime_field_polynomial_horner_exists_unique",
+      "node_id": 193,
+      "proof_depth": 26,
+      "proof_edges": 41,
+      "proof_nodes": 42,
+      "proof_objects": 42,
+      "reused_objects": 0,
+      "statement_sha256": "b4e5a2cd91b33b7366aa11d591d5da743acdb244348f438797daf1be243c3941"
+    },
+    {
+      "name": "prime_field_polynomial_horner_empty_construct",
+      "node_id": 194,
+      "proof_depth": 19,
+      "proof_edges": 43,
+      "proof_nodes": 44,
+      "proof_objects": 44,
+      "reused_objects": 0,
+      "statement_sha256": "2fbec403ba7eeb388824725719f0a15f45a53a18790aa12b83e735b3c2663708"
+    },
+    {
+      "name": "prime_field_polynomial_horner_successor_construct",
+      "node_id": 195,
+      "proof_depth": 47,
+      "proof_edges": 348,
+      "proof_nodes": 349,
+      "proof_objects": 349,
+      "reused_objects": 0,
+      "statement_sha256": "43beb73e5b62d0a8cf653f8791a5b68db5457ff612ced4be14065636d6dde84a"
+    },
+    {
+      "name": "prime_field_polynomial_horner_constant",
+      "node_id": 196,
+      "proof_depth": 45,
+      "proof_edges": 103,
+      "proof_nodes": 104,
+      "proof_objects": 104,
+      "reused_objects": 0,
+      "statement_sha256": "98acb3c27abc02fb603fd48b1259d73e5d658b60f0abfd75019ecff19f798fd3"
+    },
+    {
+      "name": "prime_field_polynomial_horner_zero",
+      "node_id": 197,
+      "proof_depth": 52,
+      "proof_edges": 151,
+      "proof_nodes": 152,
+      "proof_objects": 152,
+      "reused_objects": 0,
+      "statement_sha256": "b0da109e1cfb25569d1c74bfd36846cbce5aa61c70336f2ac6ac3cfa7559165b"
+    },
+    {
+      "name": "prime_field_polynomial_normalized_horner_iff",
+      "node_id": 198,
+      "proof_depth": 38,
+      "proof_edges": 113,
+      "proof_nodes": 114,
+      "proof_objects": 114,
+      "reused_objects": 0,
+      "statement_sha256": "fbed602c60a29f5b4474d678ccd397c2ff5d50e7fb52f06480c26e1938a762e5"
+    },
+    {
+      "name": "prime_field_polynomial_horner_result_bounded",
+      "node_id": 199,
+      "proof_depth": 23,
+      "proof_edges": 30,
+      "proof_nodes": 31,
+      "proof_objects": 31,
+      "reused_objects": 0,
+      "statement_sha256": "32fab22c3878b09b350edd338b7a37dbec0fd2dfe103e24b52b19ece410a0a5d"
+    },
+    {
+      "name": "prime_field_polynomial_reduce_and_evaluate_exists",
+      "node_id": 200,
+      "proof_depth": 36,
+      "proof_edges": 75,
+      "proof_nodes": 76,
+      "proof_objects": 76,
+      "reused_objects": 0,
+      "statement_sha256": "2f0d67795bf12542c6c9fb48cb4d63d26213e8e090bbca1a7a89257a49dd0e2c"
+    }
+  ],
+  "slug": "prime-field-polynomials",
+  "specs_sha256": "0ff662d165003510ed2cd20d724762d9d4166e62cd67e361073e7e15bc5fcd8b"
+}

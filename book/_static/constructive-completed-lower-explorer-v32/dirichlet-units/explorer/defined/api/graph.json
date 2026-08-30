@@ -1,0 +1,2046 @@
+{
+  "alpha_checked_use_node_count": 25,
+  "alpha_edition_version": "v32",
+  "alpha_first_enrolled_version": "v31",
+  "definition_topological_order": [
+    "PD0001",
+    "PD0002",
+    "ND0058",
+    "PD0013",
+    "ND0142",
+    "ND0143",
+    "ND0252",
+    "PD0003",
+    "ND0145",
+    "ND0301",
+    "ND0251",
+    "ND0302",
+    "PD0015",
+    "ND0253",
+    "ND0303",
+    "ND0304",
+    "ND0273",
+    "ND0274",
+    "ND0275",
+    "ND0276",
+    "ND0300",
+    "ND0310",
+    "ND0311"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "DU0005",
+      "target": "DU0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0004",
+      "target": "DU0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0006",
+      "target": "DU0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0001",
+      "target": "DU000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0003",
+      "target": "DU000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0002",
+      "target": "DU000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU000D",
+      "target": "DU000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU000E",
+      "target": "DU000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU000F",
+      "target": "DU0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0010",
+      "target": "DU0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0011",
+      "target": "DU0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0008",
+      "target": "DU0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0011",
+      "target": "DU0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0012",
+      "target": "DU0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0001",
+      "target": "DU0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0001",
+      "target": "DU0015"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0014",
+      "target": "DU0016"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0015",
+      "target": "DU0017"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0016",
+      "target": "DU0018"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0017",
+      "target": "DU0018"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0007",
+      "target": "DU0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "DU0018",
+      "target": "DU0019"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0001",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0001",
+      "statement_occurrences": 1,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0001",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0002",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0002",
+      "statement_occurrences": 1,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0002",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0003",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0003",
+      "statement_occurrences": 1,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0003",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU0005",
+      "statement_occurrences": 0,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 6,
+      "source": "DU0005",
+      "statement_occurrences": 2,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU0005",
+      "statement_occurrences": 2,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU0005",
+      "statement_occurrences": 0,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "DU0005",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU0006",
+      "statement_occurrences": 0,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 6,
+      "source": "DU0006",
+      "statement_occurrences": 2,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU0006",
+      "statement_occurrences": 2,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU0006",
+      "statement_occurrences": 0,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "DU0006",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU0007",
+      "statement_occurrences": 0,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 5,
+      "source": "DU0007",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "DU0007",
+      "statement_occurrences": 1,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU0007",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU0008",
+      "statement_occurrences": 0,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 5,
+      "source": "DU0008",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "DU0008",
+      "statement_occurrences": 1,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU0008",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0009",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU0009",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0009",
+      "statement_occurrences": 1,
+      "target": "ND0276"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU0009",
+      "statement_occurrences": 2,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000A",
+      "statement_occurrences": 1,
+      "target": "ND0276"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU000A",
+      "statement_occurrences": 2,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000B",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU000B",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000B",
+      "statement_occurrences": 1,
+      "target": "ND0276"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU000B",
+      "statement_occurrences": 2,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000C",
+      "statement_occurrences": 1,
+      "target": "ND0276"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU000C",
+      "statement_occurrences": 2,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000D",
+      "statement_occurrences": 1,
+      "target": "ND0301"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000D",
+      "statement_occurrences": 1,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DU000D",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000D",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DU000E",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000E",
+      "statement_occurrences": 1,
+      "target": "ND0301"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000E",
+      "statement_occurrences": 1,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000E",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU000E",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DU000F",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU000F",
+      "statement_occurrences": 0,
+      "target": "ND0300"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000F",
+      "statement_occurrences": 1,
+      "target": "ND0303"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000F",
+      "statement_occurrences": 1,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU000F",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0010",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0010",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DU0010",
+      "statement_occurrences": 1,
+      "target": "ND0303"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0010",
+      "statement_occurrences": 1,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0010",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0011",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0011",
+      "statement_occurrences": 1,
+      "target": "ND0304"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0011",
+      "statement_occurrences": 1,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0012",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0012",
+      "statement_occurrences": 1,
+      "target": "ND0304"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0012",
+      "statement_occurrences": 1,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0013",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DU0013",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU0013",
+      "statement_occurrences": 2,
+      "target": "ND0304"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DU0013",
+      "statement_occurrences": 1,
+      "target": "ND0311"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0014",
+      "statement_occurrences": 1,
+      "target": "ND0273"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0014",
+      "statement_occurrences": 1,
+      "target": "ND0301"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0014",
+      "statement_occurrences": 1,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DU0014",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "DU0015",
+      "statement_occurrences": 0,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0015",
+      "statement_occurrences": 1,
+      "target": "ND0273"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0015",
+      "statement_occurrences": 1,
+      "target": "ND0301"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0015",
+      "statement_occurrences": 1,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DU0015",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0016",
+      "statement_occurrences": 1,
+      "target": "ND0274"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0016",
+      "statement_occurrences": 1,
+      "target": "ND0302"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0016",
+      "statement_occurrences": 1,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0016",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0017",
+      "statement_occurrences": 1,
+      "target": "ND0274"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0017",
+      "statement_occurrences": 1,
+      "target": "ND0302"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0017",
+      "statement_occurrences": 1,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0017",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0018",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU0018",
+      "statement_occurrences": 2,
+      "target": "ND0275"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU0018",
+      "statement_occurrences": 2,
+      "target": "ND0303"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0018",
+      "statement_occurrences": 1,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0018",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0019",
+      "statement_occurrences": 1,
+      "target": "ND0251"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DU0019",
+      "statement_occurrences": 1,
+      "target": "ND0252"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU0019",
+      "statement_occurrences": 2,
+      "target": "ND0275"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "DU0019",
+      "statement_occurrences": 2,
+      "target": "ND0303"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "DU0019",
+      "statement_occurrences": 1,
+      "target": "ND0310"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "DU0019",
+      "statement_occurrences": 1,
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0143",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0252",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0145",
+      "target": "ND0142"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0301",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0301",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0301",
+      "target": "ND0145"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0251",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0302",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0302",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0302",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0302",
+      "target": "ND0301"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "ND0058"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "PD0015"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0253",
+      "target": "ND0143"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0303",
+      "target": "ND0302"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0303",
+      "target": "ND0253"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0304",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0304",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0304",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0304",
+      "target": "ND0303"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0273",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0273",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0274",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0274",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0274",
+      "target": "ND0273"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0275",
+      "target": "ND0274"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0275",
+      "target": "ND0253"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0276",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0276",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0300",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0300",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0300",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0310",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0310",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0310",
+      "target": "ND0252"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0311",
+      "target": "ND0251"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0311",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0311",
+      "target": "ND0252"
+    }
+  ],
+  "family_slug": "dirichlet-units",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0001.html?v=6c9ebfb3c37e",
+      "id": "DU0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_constant_one_table_value",
+      "proof_bundle_node_id": 256,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual positive in-domain lookup in a constant-one table is canonical signed one, independently of its zero entry."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0002.html?v=6c9ebfb3c37e",
+      "id": "DU0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_kronecker_delta_table_one_value",
+      "proof_bundle_node_id": 257,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual entry at index one is signed one whenever that index lies in the finite table domain."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0003.html?v=6c9ebfb3c37e",
+      "id": "DU0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_kronecker_delta_table_other_value",
+      "proof_bundle_node_id": 258,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every other positive in-domain delta entry is canonical zero; the omitted index-zero case remains unrestricted."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0004.html?v=6c9ebfb3c37e",
+      "id": "DU0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_kronecker_delta_value_exists",
+      "proof_bundle_node_id": 259,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Constructively decide whether an index is one, obtaining its actual zero-or-one signed value before extending any table."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0005.html?v=6c9ebfb3c37e",
+      "id": "DU0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_constant_one_table_append",
+      "proof_bundle_node_id": 260,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actually append signed one at the next positive index by paired beta recoding, preserving the full previous prefix including zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0006.html?v=6c9ebfb3c37e",
+      "id": "DU0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_kronecker_delta_table_append",
+      "proof_bundle_node_id": 261,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Append the separately chosen actual delta value, preserving every earlier signed entry rather than assuming a table oracle."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0007.html?v=6c9ebfb3c37e",
+      "id": "DU0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_constant_one_table_exists",
+      "proof_bundle_node_id": 262,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every finite bound, construct a genuine constant-one table retaining any prescribed signed value at zero, including the empty positive domain."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0008.html?v=6c9ebfb3c37e",
+      "id": "DU0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_kronecker_delta_table_exists",
+      "proof_bundle_node_id": 263,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Finite constructive equality decisions and actual beta extensions build the delta table for every N, preserving any zero entry."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0009.html?v=6c9ebfb3c37e",
+      "id": "DU0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_constant_one_table_reencoding",
+      "proof_bundle_node_id": 264,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Equal represented positive values preserve this table graph without equating table codes, component representatives or their arbitrary zero entries."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU000A.html?v=6c9ebfb3c37e",
+      "id": "DU000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_constant_one_table_positive_unique",
+      "proof_bundle_node_id": 265,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "All constructed representations agree at every positive in-domain entry; neither equality at zero nor equality of arbitrary table encodings is asserted."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU000B.html?v=6c9ebfb3c37e",
+      "id": "DU000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_kronecker_delta_table_reencoding",
+      "proof_bundle_node_id": 266,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Equal represented positive values preserve this table graph without equating table codes, component representatives or their arbitrary zero entries."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU000C.html?v=6c9ebfb3c37e",
+      "id": "DU000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "dirichlet_kronecker_delta_table_positive_unique",
+      "proof_bundle_node_id": 267,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "All constructed representations agree at every positive in-domain entry; neither equality at zero nor equality of arbitrary table encodings is asserted."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU000D.html?v=6c9ebfb3c37e",
+      "id": "DU000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_delta_right_entry_before_input",
+      "proof_bundle_node_id": 268,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual summand before n vanishes: a real complementary quotient is positive and cannot be one, while omitted indices are already zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU000E.html?v=6c9ebfb3c37e",
+      "id": "DU000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_delta_right_last_entry",
+      "proof_bundle_node_id": 269,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "At the final divisor n, actually read delta(1), use the quotient n=n*1, and multiply F(n) by signed one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU000F.html?v=6c9ebfb3c37e",
+      "id": "DU000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "dirichlet_delta_right_sum_value",
+      "proof_bundle_node_id": 270,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual zero-prefix/last-entry fold proves (F*delta)(n)=F(n), with positivity supplied by the convolution itself."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0010.html?v=6c9ebfb3c37e",
+      "id": "DU0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "dirichlet_delta_right_sum",
+      "proof_bundle_node_id": 271,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct a genuine convolution fold and prove its value equals the given actual F(n), rather than postulating the desired unit identity."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0011.html?v=6c9ebfb3c37e",
+      "id": "DU0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "dirichlet_delta_right_table",
+      "proof_bundle_node_id": 272,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The original represented table F is a genuine whole-table right-unit convolution output on every positive input through N."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0012.html?v=6c9ebfb3c37e",
+      "id": "DU0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "dirichlet_delta_left_table",
+      "proof_bundle_node_id": 273,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual divisor-complement commutativity turns the proved right-unit table into the left-unit table without imposing a zero-entry condition."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0013.html?v=6c9ebfb3c37e",
+      "id": "DU0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "dirichlet_delta_unit_exists",
+      "proof_bundle_node_id": 274,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every actual finite signed arithmetic table has a constructed two-sided convolution unit, with any requested unrelated value at index zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0014.html?v=6c9ebfb3c37e",
+      "id": "DU0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_constant_one_entry_to_divisor_mask",
+      "proof_bundle_node_id": 275,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "At every actual positive divisor the complementary one-table factor is signed one, so the convolution entry is precisely the existing divisor-mask entry."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0015.html?v=6c9ebfb3c37e",
+      "id": "DU0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "dirichlet_constant_one_entry_from_divisor_mask",
+      "proof_bundle_node_id": 276,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the actual bounded complementary lookup and its signed product from a genuine divisor-mask entry; omitted zero/nondivisor entries stay zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0016.html?v=6c9ebfb3c37e",
+      "id": "DU0016",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "dirichlet_constant_one_prefix_to_divisor_mask",
+      "proof_bundle_node_id": 277,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The same actual signed prefix represents the weighted convolution mask and the existing divisor mask; this preserves all witnesses and arbitrary prefix lengths."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0017.html?v=6c9ebfb3c37e",
+      "id": "DU0017",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "dirichlet_constant_one_prefix_from_divisor_mask",
+      "proof_bundle_node_id": 278,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The same actual signed prefix represents the weighted convolution mask and the existing divisor mask; this preserves all witnesses and arbitrary prefix lengths."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0018.html?v=6c9ebfb3c37e",
+      "id": "DU0018",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "dirichlet_constant_one_sum_iff",
+      "proof_bundle_node_id": 279,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual convolution with a constant-one table is equivalent to the independently defined signed divisor sum, with exactly the same constructed mask and fold."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v32",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/DU0019.html?v=6c9ebfb3c37e",
+      "id": "DU0019",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "dirichlet_constant_one_realizes_divisor_sum",
+      "proof_bundle_node_id": 280,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct an actual constant-one table with any chosen zero entry, and prove simultaneously at every positive in-domain input that its convolution is the existing divisor transform."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0001.html?v=6c9ebfb3c37e",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0002.html?v=6c9ebfb3c37e",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0058.html?v=6c9ebfb3c37e",
+      "id": "ND0058",
+      "kind": "definition",
+      "layer": 0,
+      "name": "MatrixMinorFourCode",
+      "signature": "MatrixMinorFourCode(z,up,us,un,ut)",
+      "summary": "One canonical injective doubled-Cantor code for all four signed-minor beta-code parameters."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0013.html?v=6c9ebfb3c37e",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0142.html?v=6c9ebfb3c37e",
+      "id": "ND0142",
+      "kind": "definition",
+      "layer": 0,
+      "name": "SignedDecode",
+      "signature": "SignedDecode(z,p,n)",
+      "summary": "The original canonical integer code: even 2p denotes p, and odd 2k+1 denotes −(k+1). The decoded positive and negative parts are normalized."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0143.html?v=6c9ebfb3c37e",
+      "id": "ND0143",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedBalance",
+      "signature": "SignedBalance(z,p,n)",
+      "summary": "The original canonical code z represents the integer difference p−n; these supplied components need not be normalized."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0252.html?v=6c9ebfb3c37e",
+      "id": "ND0252",
+      "kind": "definition",
+      "layer": 2,
+      "name": "ArithAt",
+      "signature": "ArithAt(F,i,z)",
+      "summary": "Two genuine beta entries of the packed table represent the unique canonical signed value z. Distinct component representations need not be equal."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0003.html?v=6c9ebfb3c37e",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0145.html?v=6c9ebfb3c37e",
+      "id": "ND0145",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SignedMul",
+      "signature": "SignedMul(a,b,c)",
+      "summary": "Actual multiplication of original canonical signed codes; opposite-sign products remain on the negative side of the balance."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0301.html?v=6c9ebfb3c37e",
+      "id": "ND0301",
+      "kind": "definition",
+      "layer": 3,
+      "name": "DirichletEntry",
+      "signature": "DirichletEntry(F,G,n,d,z)",
+      "summary": "At a positive divisor d, witness n=d*q, read the actual signed values F(d) and G(q), and multiply them. Zero and nondivisors contribute canonical zero without reading either input at zero. Source-table validity is separate."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0251.html?v=6c9ebfb3c37e",
+      "id": "ND0251",
+      "kind": "definition",
+      "layer": 2,
+      "name": "ArithTable",
+      "signature": "ArithTable(N,F)",
+      "summary": "An actual packed signed table with canonical signed entries through index N, including index zero. It contains no divisor transform or inversion hypothesis."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0302.html?v=6c9ebfb3c37e",
+      "id": "ND0302",
+      "kind": "definition",
+      "layer": 4,
+      "name": "DirichletPrefix",
+      "signature": "DirichletPrefix(F,G,n,l,M)",
+      "summary": "An actual signed table M records the independently defined convolution entry at every inclusive index 0<=d<=l. The endpoint l is included and can differ from n; no sum or convolution identity is assumed."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0015.html?v=6c9ebfb3c37e",
+      "id": "PD0015",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Sum",
+      "signature": "Sum(b,c,l,z)",
+      "summary": "z is the sum of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0253.html?v=6c9ebfb3c37e",
+      "id": "ND0253",
+      "kind": "definition",
+      "layer": 2,
+      "name": "SignedPrefixSum",
+      "signature": "SignedPrefixSum(F,l,z)",
+      "summary": "The signed balance of two actual natural finite sums, at exactly the indices 0<=i<l. Existence, uniqueness and representation independence are proved separately."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0303.html?v=6c9ebfb3c37e",
+      "id": "ND0303",
+      "kind": "definition",
+      "layer": 5,
+      "name": "DirichletSum",
+      "signature": "DirichletSum(F,G,n,z)",
+      "summary": "Require n>0, construct a real convolution-summand prefix through n, and take its actual signed fold over exactly S n entries. Zero is outside this sum's input domain; no value is assigned by a unit or inversion formula."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0304.html?v=6c9ebfb3c37e",
+      "id": "ND0304",
+      "kind": "definition",
+      "layer": 6,
+      "name": "DirichletTable",
+      "signature": "DirichletTable(N,F,G,H)",
+      "summary": "Three actual finite signed tables whose output H(n), at every 0<n<=N, is the independently defined convolution sum of F and G. All zero entries are unrestricted; only represented positive values, not table codes, are subsequently proved unique."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0273.html?v=6c9ebfb3c37e",
+      "id": "ND0273",
+      "kind": "definition",
+      "layer": 3,
+      "name": "DivisorMaskEntry",
+      "signature": "DivisorMaskEntry(F,n,d,z)",
+      "summary": "A positive d with an actual quotient n=d*q keeps the genuine input value F(d); zero and nondivisors give canonical zero. The zero branch never reads or restricts F(0)."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0274.html?v=6c9ebfb3c37e",
+      "id": "ND0274",
+      "kind": "definition",
+      "layer": 4,
+      "name": "DivisorMask",
+      "signature": "DivisorMask(F,n,l,M)",
+      "summary": "An actual signed table through the inclusive bound l satisfies the independent divisor-mask entry graph at every represented index. The construction bound l is independent of n, enabling ordinary finite induction."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0275.html?v=6c9ebfb3c37e",
+      "id": "ND0275",
+      "kind": "definition",
+      "layer": 5,
+      "name": "DivisorSum",
+      "signature": "DivisorSum(F,n,z)",
+      "summary": "For explicitly positive n, construct a genuine mask through n and take its actual signed fold over S n entries. Index zero is masked away; neither divisor cancellation nor Möbius inversion is part of the graph."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0276.html?v=6c9ebfb3c37e",
+      "id": "ND0276",
+      "kind": "definition",
+      "layer": 3,
+      "name": "ArithPositiveEqual",
+      "signature": "ArithPositiveEqual(F,G,N)",
+      "summary": "Equality of represented values at precisely 0<d<=N. Values at zero are unrestricted, and raw codes or positive/negative representatives are not asserted equal."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0300.html?v=6c9ebfb3c37e",
+      "id": "ND0300",
+      "kind": "definition",
+      "layer": 3,
+      "name": "SignedZeroWindow",
+      "signature": "SignedZeroWindow(F,k,l)",
+      "summary": "Every actual signed lookup on the half-open interval k<=i<l has value zero. Table validity, existence of folds, and equality after padding are separate hypotheses or theorems, not part of this graph."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0310.html?v=6c9ebfb3c37e",
+      "id": "ND0310",
+      "kind": "definition",
+      "layer": 3,
+      "name": "ConstantOneTable",
+      "signature": "ConstantOneTable(N,U)",
+      "summary": "An actual signed table has canonical one, code 2, at every 0<n<=N. Its value at zero is unrestricted, including when N=0. Existence with any prescribed zero entry and the divisor-sum identity are separately proved."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0311.html?v=6c9ebfb3c37e",
+      "id": "ND0311",
+      "kind": "definition",
+      "layer": 3,
+      "name": "KroneckerDeltaTable",
+      "signature": "KroneckerDeltaTable(N,E)",
+      "summary": "An actual signed table has code 2 at n=1 and code 0 at all other positive n<=N. Its zero entry is unrestricted and N=0 has an empty positive domain. Both convolution unit laws are theorems, not definition premises."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "DU0001": {
+      "critical_root_path": [
+        "DU0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DU000A",
+        "DU0014",
+        "DU0015"
+      ]
+    },
+    "DU0002": {
+      "critical_root_path": [
+        "DU0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DU000E"
+      ]
+    },
+    "DU0003": {
+      "critical_root_path": [
+        "DU0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DU000D"
+      ]
+    },
+    "DU0004": {
+      "critical_root_path": [
+        "DU0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DU0008"
+      ]
+    },
+    "DU0005": {
+      "critical_root_path": [
+        "DU0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DU0007"
+      ]
+    },
+    "DU0006": {
+      "critical_root_path": [
+        "DU0006"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "DU0008"
+      ]
+    },
+    "DU0007": {
+      "critical_root_path": [
+        "DU0005",
+        "DU0007"
+      ],
+      "dependencies": [
+        "DU0005"
+      ],
+      "dependents": [
+        "DU0019"
+      ]
+    },
+    "DU0008": {
+      "critical_root_path": [
+        "DU0004",
+        "DU0008"
+      ],
+      "dependencies": [
+        "DU0004",
+        "DU0006"
+      ],
+      "dependents": [
+        "DU0013"
+      ]
+    },
+    "DU0009": {
+      "critical_root_path": [
+        "DU0009"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "DU000A": {
+      "critical_root_path": [
+        "DU0001",
+        "DU000A"
+      ],
+      "dependencies": [
+        "DU0001"
+      ],
+      "dependents": []
+    },
+    "DU000B": {
+      "critical_root_path": [
+        "DU000B"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "DU000C": {
+      "critical_root_path": [
+        "DU000C"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "DU000D": {
+      "critical_root_path": [
+        "DU0003",
+        "DU000D"
+      ],
+      "dependencies": [
+        "DU0003"
+      ],
+      "dependents": [
+        "DU000F"
+      ]
+    },
+    "DU000E": {
+      "critical_root_path": [
+        "DU0002",
+        "DU000E"
+      ],
+      "dependencies": [
+        "DU0002"
+      ],
+      "dependents": [
+        "DU000F"
+      ]
+    },
+    "DU000F": {
+      "critical_root_path": [
+        "DU0003",
+        "DU000D",
+        "DU000F"
+      ],
+      "dependencies": [
+        "DU000D",
+        "DU000E"
+      ],
+      "dependents": [
+        "DU0010"
+      ]
+    },
+    "DU0010": {
+      "critical_root_path": [
+        "DU0003",
+        "DU000D",
+        "DU000F",
+        "DU0010"
+      ],
+      "dependencies": [
+        "DU000F"
+      ],
+      "dependents": [
+        "DU0011"
+      ]
+    },
+    "DU0011": {
+      "critical_root_path": [
+        "DU0003",
+        "DU000D",
+        "DU000F",
+        "DU0010",
+        "DU0011"
+      ],
+      "dependencies": [
+        "DU0010"
+      ],
+      "dependents": [
+        "DU0012",
+        "DU0013"
+      ]
+    },
+    "DU0012": {
+      "critical_root_path": [
+        "DU0003",
+        "DU000D",
+        "DU000F",
+        "DU0010",
+        "DU0011",
+        "DU0012"
+      ],
+      "dependencies": [
+        "DU0011"
+      ],
+      "dependents": [
+        "DU0013"
+      ]
+    },
+    "DU0013": {
+      "critical_root_path": [
+        "DU0003",
+        "DU000D",
+        "DU000F",
+        "DU0010",
+        "DU0011",
+        "DU0012",
+        "DU0013"
+      ],
+      "dependencies": [
+        "DU0008",
+        "DU0011",
+        "DU0012"
+      ],
+      "dependents": []
+    },
+    "DU0014": {
+      "critical_root_path": [
+        "DU0001",
+        "DU0014"
+      ],
+      "dependencies": [
+        "DU0001"
+      ],
+      "dependents": [
+        "DU0016"
+      ]
+    },
+    "DU0015": {
+      "critical_root_path": [
+        "DU0001",
+        "DU0015"
+      ],
+      "dependencies": [
+        "DU0001"
+      ],
+      "dependents": [
+        "DU0017"
+      ]
+    },
+    "DU0016": {
+      "critical_root_path": [
+        "DU0001",
+        "DU0014",
+        "DU0016"
+      ],
+      "dependencies": [
+        "DU0014"
+      ],
+      "dependents": [
+        "DU0018"
+      ]
+    },
+    "DU0017": {
+      "critical_root_path": [
+        "DU0001",
+        "DU0015",
+        "DU0017"
+      ],
+      "dependencies": [
+        "DU0015"
+      ],
+      "dependents": [
+        "DU0018"
+      ]
+    },
+    "DU0018": {
+      "critical_root_path": [
+        "DU0001",
+        "DU0014",
+        "DU0016",
+        "DU0018"
+      ],
+      "dependencies": [
+        "DU0016",
+        "DU0017"
+      ],
+      "dependents": [
+        "DU0019"
+      ]
+    },
+    "DU0019": {
+      "critical_root_path": [
+        "DU0001",
+        "DU0014",
+        "DU0016",
+        "DU0018",
+        "DU0019"
+      ],
+      "dependencies": [
+        "DU0007",
+        "DU0018"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "DU0013",
+    "DU0018",
+    "DU0019"
+  ],
+  "schema": "peano-lab-constructive-completed-lower-explorer-v31-graph",
+  "stable_admitted_node_count": 0
+}
