@@ -1,8 +1,10 @@
 """Separately versioned DEV retention/transfer evaluation for a mixed adapter.
 
 This is not a FRONTIER BoundEvaluation or a legacy training origin. A genuine
-old OriginReference and the new retention training artifact loader bind the
-two roles. The exact old DEV32 and existing frontier DEV32 are registered
+old OriginReference and an explicitly typed retention artifact loader bind
+the two roles. A preserved producer uses its separate corrected-admission
+receipt; its original training source identity is never rebound to this
+evaluator. The exact old DEV32 and existing frontier DEV32 are registered
 before training; no TRAIN or reserved benchmark goals enter this protocol.
 
 The original search/model lane, proposal validation, saved-proof validation,
@@ -209,8 +211,11 @@ def build_evaluation_plan(checked_data, *, frontier_evaluation_plan_path, expect
 
 def execution_sources():
     result = original.execution_sources()
-    for name in ("retention_data.py", "retention_training.py", "retention_evaluation.py"):
-        relative = "training/peano_hydra/" + name
+    for relative in ("training/peano_hydra/retention_data.py",
+        "training/peano_hydra/retention_training.py", "training/peano_hydra/retention_evaluation.py",
+        "training/peano_hydra/retention_saved_artifact.py",
+        "scripts/authenticate_peano_hydra_retention_saved.py",
+        "scripts/execute_peano_hydra_retention_evaluation_recovery.py"):
         result[relative] = hashlib.sha256(bridge._read(ROOT / relative, bridge.MAX_PYTHON_BYTES)).hexdigest()
     _require(len(result) <= capacity.MAX_SOURCE_FILES, "retention execution inventory exceeds inherited bound")
     return dict(sorted(result.items()))
@@ -241,7 +246,9 @@ def _training_identity(kind, identity):
 def bind_evaluation(evaluation_plan_path, *, expected_evaluation_plan_sha256, baseline, candidate):
     """Authenticate the real old origin and separately typed completed mixture."""
     from training.peano_hydra.retention_training import TrainingArtifactReference
-    _require(type(baseline) is original.OriginReference and type(candidate) is TrainingArtifactReference,
+    from training.peano_hydra.retention_saved_artifact import PreservedRetentionArtifactReference
+    _require(type(baseline) is original.OriginReference
+             and type(candidate) in (TrainingArtifactReference, PreservedRetentionArtifactReference),
              "retention evaluation needs genuine old and mixed artifact reference types")
     path = bridge._absolute(Path(evaluation_plan_path))
     proposal, raw = _read(path, expected_evaluation_plan_sha256, experiment.MAX_RECORD_BYTES)
@@ -741,8 +748,15 @@ def _reservation(record):
         "source_commit", "source_files_sha256", "payloads_sha256", "reservation", "allocation_elapsed_seconds",
         "allocation_remaining_seconds", "scientific_input", "automatic_retry", "resume"}
     _require(type(record) is dict and fields <= set(record), "trusted scheduler observation is incomplete")
-    _require(record["status"] == "job-verified" and record["profile"] == "peano-hydra-retention-pilot-v1"
-             and record["run_id"] == "retention-pilot-v1" and record["stage"] == "evaluate"
+    packages = {
+        ("peano-hydra-retention-pilot-v1", "retention-pilot-v1"): "_deploy/hydra-retention-pilot-v1/",
+        ("peano-hydra-retention-evaluation-recovery-v1", "retention-evaluation-recovery-v1"):
+            "_deploy/hydra-retention-evaluation-recovery-v1/",
+    }
+    _require(type(record["profile"]) is str and type(record["run_id"]) is str,
+             "trusted scheduler observation has malformed profile/run labels")
+    package = packages.get((record["profile"], record["run_id"]))
+    _require(record["status"] == "job-verified" and package is not None and record["stage"] == "evaluate"
              and type(record["job_id"]) is str and record["job_id"].isascii() and record["job_id"].isdigit()
              and 1 <= len(record["job_id"]) <= 16
              and record["automatic_retry"] is False and record["resume"] is False
@@ -759,7 +773,7 @@ def _reservation(record):
              "scheduler elapsed/remaining allocation clocks differ")
     descriptor = record["scientific_input"]
     _keys(descriptor, {"path", "bytes", "sha256"}, "approved scientific input")
-    _require(bridge._relative(descriptor["path"]).startswith("_deploy/hydra-retention-pilot-v1/"),
+    _require(bridge._relative(descriptor["path"]).startswith(package),
              "scientific input escaped the approved pilot package")
     _integer(descriptor["bytes"], "scientific input bytes", shared.MAX_MANIFEST_BYTES, 1)
     experiment.sha(descriptor["sha256"], "approved scientific input raw SHA")

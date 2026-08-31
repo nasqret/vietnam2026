@@ -666,16 +666,22 @@ class TrainingArtifactReference:
         return load_training_artifact(self)
 
 
+def _verified_artifact_directories(root, record):
+    """Check saved file bytes only; this does not admit training provenance."""
+    from training.peano_policy import manifest as artifacts
+    artifacts.require_safetensors_adapter(record["adapter"])
+    adapter = artifacts.verify_artifact_directory(root, record["adapter"], "adapter")
+    tokenizer = artifacts.verify_artifact_directory(root, record["tokenizer"], "tokenizer")
+    return adapter, tokenizer
+
+
 def load_training_artifact(reference):
     """Explicit mixed-adapter admission; no model/native worker is run."""
     require(type(reference) is TrainingArtifactReference, "exact new artifact-reference type required")
-    from training.peano_policy import manifest as artifacts
     plan = bind_training(reference.inputs)
     record, raw = _record(reference.manifest_path, reference.manifest_sha256)
     _validate_artifact_record(plan, record)
-    artifacts.require_safetensors_adapter(record["adapter"])
-    artifacts.verify_artifact_directory(reference.manifest_path.parent, record["adapter"])
-    artifacts.verify_artifact_directory(reference.manifest_path.parent, record["tokenizer"])
+    adapter, tokenizer = _verified_artifact_directories(reference.manifest_path.parent, record)
     require(bridge._read(reference.manifest_path, MAX_METADATA) == raw, "mixed manifest changed during admission")
     require(training_sources() == plan.to_dict()["training_sources"], "mixed training implementation changed")
     contract = record["common_contract"]
@@ -688,5 +694,4 @@ def load_training_artifact(reference):
         "initialization": INITIALIZATION, "job_id": record["reservation"]["job_id"],
         "claim_boundary": "Mixed retention SFT with both original data origins; no legacy origin, unseen-test or hardware attestation.",
         **CLAIMS}
-    return AuthenticatedRetentionArtifact(identity, reference.manifest_path.parent / "adapter",
-        reference.manifest_path.parent / "tokenizer", plan.checked_data, record, plan)
+    return AuthenticatedRetentionArtifact(identity, adapter, tokenizer, plan.checked_data, record, plan)

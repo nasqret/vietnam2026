@@ -52,6 +52,8 @@ _JOBS = {
         ("aarch64", "PEANO_HELIOS_ML_MODULE", "ML-bundle/25.10"),
     "slurm/peano_hydra_retention_evaluate.sbatch":
         ("aarch64", "PEANO_HELIOS_ML_MODULE", "ML-bundle/25.10"),
+    "slurm/peano_hydra_retention_evaluation_recovery.sbatch":
+        ("aarch64", "PEANO_HELIOS_ML_MODULE", "ML-bundle/25.10"),
 }
 # The operational v2 jobs retain the reviewed script filenames. Historical v1
 # library receipts keep their profile; neither version accepts an arbitrary
@@ -169,6 +171,9 @@ def reviewed_runtime_library_paths(environment: Mapping[str, str] | None = None)
     if (job in ("slurm/peano_hydra_retention_train.sbatch", "slurm/peano_hydra_retention_evaluate.sbatch")
         and values.get("PEANO_HYDRA_PROFILE") != "peano-hydra-retention-pilot-v1"):
         raise ReviewRuntimeError("scheduled retention pilot changed its exact experiment profile")
+    if (job == "slurm/peano_hydra_retention_evaluation_recovery.sbatch"
+        and values.get("PEANO_HYDRA_PROFILE") != "peano-hydra-retention-evaluation-recovery-v1"):
+        raise ReviewRuntimeError("scheduled saved-retention evaluation changed its exact experiment profile")
     architecture, marker, expected_module = _JOBS[job]
     if values.get(marker) != expected_module:
         raise ReviewRuntimeError("scheduled authority job changed its reviewed central module")
