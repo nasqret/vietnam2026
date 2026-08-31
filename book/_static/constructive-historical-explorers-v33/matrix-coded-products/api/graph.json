@@ -1,0 +1,1125 @@
+{
+  "alpha_checked_use_node_count": 23,
+  "alpha_edition_version": "v33",
+  "alpha_first_enrolled_version": "v21",
+  "definition_topological_order": [
+    "ND0001",
+    "ND0003",
+    "PD0002",
+    "PD0013",
+    "PD0015",
+    "ND0004",
+    "ND0005",
+    "ND0012",
+    "ND0013",
+    "ND0014",
+    "ND0015",
+    "ND0016",
+    "ND0017"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "MC0001",
+      "target": "MC0002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0002",
+      "target": "MC0003"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0002",
+      "target": "MC0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0003",
+      "target": "MC0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0004",
+      "target": "MC0005"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0005",
+      "target": "MC0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0006",
+      "target": "MC0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0007",
+      "target": "MC0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0008",
+      "target": "MC0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC000A",
+      "target": "MC000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0009",
+      "target": "MC000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC000C",
+      "target": "MC000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC000B",
+      "target": "MC000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC000D",
+      "target": "MC000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0011",
+      "target": "MC0013"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "MC0012",
+      "target": "MC0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0001",
+      "statement_occurrences": 1,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MC0001",
+      "statement_occurrences": 2,
+      "target": "ND0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0002",
+      "statement_occurrences": 1,
+      "target": "ND0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0003",
+      "statement_occurrences": 1,
+      "target": "ND0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0004",
+      "statement_occurrences": 1,
+      "target": "ND0012"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0005",
+      "statement_occurrences": 1,
+      "target": "ND0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0006",
+      "statement_occurrences": 1,
+      "target": "ND0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0006",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0007",
+      "statement_occurrences": 1,
+      "target": "ND0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MC0007",
+      "statement_occurrences": 2,
+      "target": "ND0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0007",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0008",
+      "statement_occurrences": 1,
+      "target": "ND0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0009",
+      "statement_occurrences": 1,
+      "target": "ND0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC000A",
+      "statement_occurrences": 1,
+      "target": "ND0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC000B",
+      "statement_occurrences": 1,
+      "target": "ND0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MC000C",
+      "statement_occurrences": 2,
+      "target": "ND0001"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MC000C",
+      "statement_occurrences": 2,
+      "target": "ND0015"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC000D",
+      "statement_occurrences": 1,
+      "target": "ND0015"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC000E",
+      "statement_occurrences": 1,
+      "target": "ND0017"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "MC0011",
+      "statement_occurrences": 1,
+      "target": "ND0016"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MC0012",
+      "statement_occurrences": 2,
+      "target": "ND0016"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "MC0013",
+      "statement_occurrences": 2,
+      "target": "ND0016"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0003",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0004",
+      "target": "PD0015"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0012",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0012",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0013",
+      "target": "ND0012"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0013",
+      "target": "ND0004"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0014",
+      "target": "ND0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0014",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0015",
+      "target": "ND0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0016",
+      "target": "ND0004"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0017",
+      "target": "ND0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0017",
+      "target": "ND0015"
+    }
+  ],
+  "family_slug": "matrix-coded-products",
+  "historical_component_only": true,
+  "historical_milestone_status": "open",
+  "historical_partial_checked_use": true,
+  "independent_lean_bundle_verified": true,
+  "milestone_caveat": "Historical partial components only: this chapter proves arbitrary natural and signed matrix multiplication and signed two-/three-dimensional determinants. T13 is now closed in the separate Alpha-v27 integer-linear-algebra branch with arbitrary determinant data, rank, and integer column spans; lattice index and normal forms are outside that scope.",
+  "milestone_checked_use": true,
+  "milestone_full_proof_slug": "integer-linear-algebra",
+  "milestone_full_theorem_name": "rectangular_matrix_rank_exists_unique",
+  "milestone_status": "alpha_closed",
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0001.html?v=ac7111ec14ff",
+      "id": "MC0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_affine_matrix_slice_extend",
+      "proof_bundle_node_id": 154,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Extend an affine beta-coded matrix slice while preserving every earlier decoded value."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0002.html?v=ac7111ec14ff",
+      "id": "MC0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_affine_matrix_slice_exists",
+      "proof_bundle_node_id": 155,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every finite affine reindexing of a beta-coded natural matrix has its own complete beta code."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0003.html?v=ac7111ec14ff",
+      "id": "MC0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "beta_matrix_row_slice_exists",
+      "proof_bundle_node_id": 156,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every requested finite matrix row has an explicitly encoded row-major beta slice."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0004.html?v=ac7111ec14ff",
+      "id": "MC0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "beta_matrix_column_slice_exists",
+      "proof_bundle_node_id": 157,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every requested finite matrix column has an explicitly encoded stride-width beta slice."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0005.html?v=ac7111ec14ff",
+      "id": "MC0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "beta_matrix_product_cell_exists",
+      "proof_bundle_node_id": 158,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every row and column of two arbitrary finite coded natural matrices has an exactly witnessed product cell."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0006.html?v=ac7111ec14ff",
+      "id": "MC0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "beta_matrix_product_point_exists",
+      "proof_bundle_node_id": 159,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A nonempty output width constructs the exact row, column and product value of every flat output index."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0007.html?v=ac7111ec14ff",
+      "id": "MC0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_matrix_product_prefix_extend",
+      "proof_bundle_node_id": 160,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Append one computed matrix-product cell to a beta-coded row-major prefix without losing any earlier exact cell."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0008.html?v=ac7111ec14ff",
+      "id": "MC0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "beta_matrix_product_prefix_exists_nonzero",
+      "proof_bundle_node_id": 161,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every finite prefix of the product of arbitrary coded natural matrices admits one complete output beta code."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0009.html?v=ac7111ec14ff",
+      "id": "MC0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "beta_matrix_product_exists_nonzero_width",
+      "proof_bundle_node_id": 162,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Arbitrary finite natural matrix multiplication with a nonzero output width has a fully coded row-major output."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC000A.html?v=ac7111ec14ff",
+      "id": "MC000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_matrix_product_empty_exists",
+      "proof_bundle_node_id": 163,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every empty matrix-output prefix has a constructive beta code regardless of the declared dimensions."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC000B.html?v=ac7111ec14ff",
+      "id": "MC000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 7,
+      "name": "beta_matrix_product_exists",
+      "proof_bundle_node_id": 164,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every pair of arbitrary finite natural matrices, including zero-width boundaries, has a complete beta-coded product."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC000C.html?v=ac7111ec14ff",
+      "id": "MC000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_pointwise_add_prefix_extend",
+      "proof_bundle_node_id": 165,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Extend a beta-coded pointwise sum while preserving every earlier decoded summand and sum."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC000D.html?v=ac7111ec14ff",
+      "id": "MC000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_pointwise_add_prefix_exists",
+      "proof_bundle_node_id": 166,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every pair of finite beta-coded natural vectors has a fully coded exact pointwise sum."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC000E.html?v=ac7111ec14ff",
+      "id": "MC000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 8,
+      "name": "beta_signed_matrix_product_exists",
+      "proof_bundle_node_id": 167,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every pair of arbitrary finite signed natural-pair matrices has a complete exact beta-coded signed matrix product, including all zero-dimensional boundaries."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC000F.html?v=ac7111ec14ff",
+      "id": "MC000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_pair_product_exists",
+      "proof_bundle_node_id": 168,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every pair of signed natural-pair integers has exact positive and negative multiplication components."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0010.html?v=ac7111ec14ff",
+      "id": "MC0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_pair_product_functional",
+      "proof_bundle_node_id": 169,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Exact positive and negative multiplication components of two signed pairs are independently unique."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0011.html?v=ac7111ec14ff",
+      "id": "MC0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_signed_dot_product_exists",
+      "proof_bundle_node_id": 170,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every pair of arbitrarily long beta-coded signed vectors has an exact constructive signed dot product."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0012.html?v=ac7111ec14ff",
+      "id": "MC0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "beta_signed_dot_product_functional",
+      "proof_bundle_node_id": 171,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Both natural components of the arbitrary finite signed dot product are independent of all product-code witnesses."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0013.html?v=ac7111ec14ff",
+      "id": "MC0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "beta_signed_dot_product_exists_unique",
+      "proof_bundle_node_id": 172,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every arbitrarily long beta-coded signed vector pair has exactly one positive/negative dot-product pair."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0014.html?v=ac7111ec14ff",
+      "id": "MC0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_matrix_two_full_determinant_exists",
+      "proof_bundle_node_id": 173,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every genuinely signed two-by-two integer matrix has an exact subtraction-free signed determinant pair."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0015.html?v=ac7111ec14ff",
+      "id": "MC0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_matrix_two_full_determinant_functional",
+      "proof_bundle_node_id": 174,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Both natural components of a genuinely signed two-by-two determinant are unique."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0016.html?v=ac7111ec14ff",
+      "id": "MC0016",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_matrix_three_full_determinant_exists",
+      "proof_bundle_node_id": 175,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every genuinely signed three-by-three integer matrix has its exact constructive cofactor-expansion determinant pair."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v21",
+      "href": "tag/MC0017.html?v=ac7111ec14ff",
+      "id": "MC0017",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "signed_matrix_three_full_determinant_functional",
+      "proof_bundle_node_id": 176,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Both exact constructive cofactor components of every signed three-by-three determinant are unique."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/ND0001.html?v=ac7111ec14ff",
+      "id": "ND0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Beta",
+      "signature": "Beta(b,c,i,x)",
+      "summary": "Exact hygienic Gödel-beta extraction; a signature-identical alias of checked BetaAt."
+    },
+    {
+      "global_definition": "MatrixAt",
+      "href": "definition/ND0003.html?v=ac7111ec14ff",
+      "id": "ND0003",
+      "kind": "definition",
+      "layer": 1,
+      "name": "MatrixAt",
+      "signature": "MatrixAt(b,c,w,i,j,z)",
+      "summary": "The exact natural matrix entry stored at flattened beta index i*w+j."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=ac7111ec14ff",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "Beta",
+      "href": "definition/PD0013.html?v=ac7111ec14ff",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": "BetaSum",
+      "href": "definition/PD0015.html?v=ac7111ec14ff",
+      "id": "PD0015",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Sum",
+      "signature": "Sum(b,c,l,z)",
+      "summary": "z is the sum of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": "DotProduct",
+      "href": "definition/ND0004.html?v=ac7111ec14ff",
+      "id": "ND0004",
+      "kind": "definition",
+      "layer": 2,
+      "name": "DotProduct",
+      "signature": "DotProduct(b,c,d,e,ell,z)",
+      "summary": "The witnessed sum of the pointwise products of two beta-coded natural vectors."
+    },
+    {
+      "global_definition": "SignedDet2",
+      "href": "definition/ND0005.html?v=ac7111ec14ff",
+      "id": "ND0005",
+      "kind": "definition",
+      "layer": 0,
+      "name": "SignedDet2",
+      "signature": "SignedDet2(a,b,c,d,p,n)",
+      "summary": "The exact positive and negative natural components p=ad and n=bc of a signed 2×2 determinant."
+    },
+    {
+      "global_definition": "MatrixAffineSlice",
+      "href": "definition/ND0012.html?v=ac7111ec14ff",
+      "id": "ND0012",
+      "kind": "definition",
+      "layer": 1,
+      "name": "MatrixAffineSlice",
+      "signature": "MatrixAffineSlice(b,c,s,d,u,v,l)",
+      "summary": "A complete beta-coded affine matrix slice whose exact target entry at i equals the source entry at s+d*i."
+    },
+    {
+      "global_definition": "MatrixProductCell",
+      "href": "definition/ND0013.html?v=ac7111ec14ff",
+      "id": "ND0013",
+      "kind": "definition",
+      "layer": 3,
+      "name": "MatrixProductCell",
+      "signature": "MatrixProductCell(lb,lc,rb,rc,w,v,i,j,n)",
+      "summary": "An exact natural matrix multiplication cell with witnessed beta-coded row, column and finite dot product."
+    },
+    {
+      "global_definition": "MatrixProductPrefix",
+      "href": "definition/ND0014.html?v=ac7111ec14ff",
+      "id": "ND0014",
+      "kind": "definition",
+      "layer": 4,
+      "name": "MatrixProductPrefix",
+      "signature": "MatrixProductPrefix(lb,lc,rb,rc,w,v,tb,tc,l)",
+      "summary": "Every bounded row-major natural matrix product cell together with its exact coordinate, strict column bound and output beta witness."
+    },
+    {
+      "global_definition": "MatrixPointwiseAdd",
+      "href": "definition/ND0015.html?v=ac7111ec14ff",
+      "id": "ND0015",
+      "kind": "definition",
+      "layer": 1,
+      "name": "MatrixPointwiseAdd",
+      "signature": "MatrixPointwiseAdd(mb,mc,sb,sc,tb,tc,l)",
+      "summary": "The complete beta-coded pointwise sum of two exact bounded natural vector prefixes."
+    },
+    {
+      "global_definition": "SignedDotProduct",
+      "href": "definition/ND0016.html?v=ac7111ec14ff",
+      "id": "ND0016",
+      "kind": "definition",
+      "layer": 3,
+      "name": "SignedDotProduct",
+      "signature": "SignedDotProduct(ab,ac,db,dc,eb,ec,fb,fc,l,p,n)",
+      "summary": "The exact positive and negative components of an arbitrary finite signed-vector dot product, witnessed by four natural dot products."
+    },
+    {
+      "global_definition": "SignedMatrixProduct",
+      "href": "definition/ND0017.html?v=ac7111ec14ff",
+      "id": "ND0017",
+      "kind": "definition",
+      "layer": 5,
+      "name": "SignedMatrixProduct",
+      "signature": "SignedMatrixProduct(ab,ac,db,dc,eb,ec,fb,fc,w,v,r,pb,pc,nb,nc)",
+      "summary": "The exact complete signed finite matrix product: four natural coded products and two beta-coded pointwise-summed positive/negative output matrices."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "MC0001": {
+      "critical_root_path": [
+        "MC0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MC0002"
+      ]
+    },
+    "MC0002": {
+      "critical_root_path": [
+        "MC0001",
+        "MC0002"
+      ],
+      "dependencies": [
+        "MC0001"
+      ],
+      "dependents": [
+        "MC0003",
+        "MC0004"
+      ]
+    },
+    "MC0003": {
+      "critical_root_path": [
+        "MC0001",
+        "MC0002",
+        "MC0003"
+      ],
+      "dependencies": [
+        "MC0002"
+      ],
+      "dependents": [
+        "MC0005"
+      ]
+    },
+    "MC0004": {
+      "critical_root_path": [
+        "MC0001",
+        "MC0002",
+        "MC0004"
+      ],
+      "dependencies": [
+        "MC0002"
+      ],
+      "dependents": [
+        "MC0005"
+      ]
+    },
+    "MC0005": {
+      "critical_root_path": [
+        "MC0001",
+        "MC0002",
+        "MC0003",
+        "MC0005"
+      ],
+      "dependencies": [
+        "MC0003",
+        "MC0004"
+      ],
+      "dependents": [
+        "MC0006"
+      ]
+    },
+    "MC0006": {
+      "critical_root_path": [
+        "MC0001",
+        "MC0002",
+        "MC0003",
+        "MC0005",
+        "MC0006"
+      ],
+      "dependencies": [
+        "MC0005"
+      ],
+      "dependents": [
+        "MC0008"
+      ]
+    },
+    "MC0007": {
+      "critical_root_path": [
+        "MC0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MC0008"
+      ]
+    },
+    "MC0008": {
+      "critical_root_path": [
+        "MC0001",
+        "MC0002",
+        "MC0003",
+        "MC0005",
+        "MC0006",
+        "MC0008"
+      ],
+      "dependencies": [
+        "MC0006",
+        "MC0007"
+      ],
+      "dependents": [
+        "MC0009"
+      ]
+    },
+    "MC0009": {
+      "critical_root_path": [
+        "MC0001",
+        "MC0002",
+        "MC0003",
+        "MC0005",
+        "MC0006",
+        "MC0008",
+        "MC0009"
+      ],
+      "dependencies": [
+        "MC0008"
+      ],
+      "dependents": [
+        "MC000B"
+      ]
+    },
+    "MC000A": {
+      "critical_root_path": [
+        "MC000A"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MC000B"
+      ]
+    },
+    "MC000B": {
+      "critical_root_path": [
+        "MC0001",
+        "MC0002",
+        "MC0003",
+        "MC0005",
+        "MC0006",
+        "MC0008",
+        "MC0009",
+        "MC000B"
+      ],
+      "dependencies": [
+        "MC000A",
+        "MC0009"
+      ],
+      "dependents": [
+        "MC000E"
+      ]
+    },
+    "MC000C": {
+      "critical_root_path": [
+        "MC000C"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MC000D"
+      ]
+    },
+    "MC000D": {
+      "critical_root_path": [
+        "MC000C",
+        "MC000D"
+      ],
+      "dependencies": [
+        "MC000C"
+      ],
+      "dependents": [
+        "MC000E"
+      ]
+    },
+    "MC000E": {
+      "critical_root_path": [
+        "MC0001",
+        "MC0002",
+        "MC0003",
+        "MC0005",
+        "MC0006",
+        "MC0008",
+        "MC0009",
+        "MC000B",
+        "MC000E"
+      ],
+      "dependencies": [
+        "MC000B",
+        "MC000D"
+      ],
+      "dependents": []
+    },
+    "MC000F": {
+      "critical_root_path": [
+        "MC000F"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "MC0010": {
+      "critical_root_path": [
+        "MC0010"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "MC0011": {
+      "critical_root_path": [
+        "MC0011"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MC0013"
+      ]
+    },
+    "MC0012": {
+      "critical_root_path": [
+        "MC0012"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "MC0013"
+      ]
+    },
+    "MC0013": {
+      "critical_root_path": [
+        "MC0011",
+        "MC0013"
+      ],
+      "dependencies": [
+        "MC0011",
+        "MC0012"
+      ],
+      "dependents": []
+    },
+    "MC0014": {
+      "critical_root_path": [
+        "MC0014"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "MC0015": {
+      "critical_root_path": [
+        "MC0015"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "MC0016": {
+      "critical_root_path": [
+        "MC0016"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "MC0017": {
+      "critical_root_path": [
+        "MC0017"
+      ],
+      "dependencies": [],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "MC000B",
+    "MC0013",
+    "MC0016",
+    "MC000E"
+  ],
+  "schema": "peano-lab-constructive-advanced-layer-explorer-v1-graph",
+  "stable_admitted_node_count": 0
+}

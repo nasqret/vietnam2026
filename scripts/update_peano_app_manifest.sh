@@ -56,6 +56,7 @@ PROOF_BUNDLES=(
   dirichlet-inverses-proof-bundle-v1.json
   g009-multiplicative-convolution-proof-bundle-v1.json
   prime-field-polynomial-division-prerequisites-proof-bundle-v1.json
+  prime-field-polynomial-euclidean-division-proof-bundle-v1.json
 )
 TMP_MANIFEST="$(mktemp)"
 trap 'rm -f "$TMP_MANIFEST"' EXIT

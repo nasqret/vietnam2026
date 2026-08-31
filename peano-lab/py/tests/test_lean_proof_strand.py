@@ -22,7 +22,7 @@ from peano_lab.library import (
     editions_v29,
     editions_v30,
     editions_v31,
-    editions_v32,
+    editions_v33,
 )
 from peano_lab.library.alpha_enrollment_v27 import ROOT_STATEMENT_SHA256
 from peano_lab.library.defined_syntax import DEFINITIONS_BY_NAME
@@ -41,13 +41,13 @@ from peano_lab.library.theorems import TheoremSpec, _closed_formula
 
 
 def _forbid_current_alpha_proofs(monkeypatch):
-    from peano_lab.library import editions_v32
+    from peano_lab.library import editions_v33
 
     def forbidden(*_arguments, **_options):
         raise AssertionError("a proof-lazy current Alpha route requested an actual v32 proof")
 
     for name in ("replay", "_checked_research_bundle", "checked_research_bundle"):
-        monkeypatch.setattr(editions_v32, name, forbidden)
+        monkeypatch.setattr(editions_v33, name, forbidden)
 
 
 @pytest.fixture(scope="module")
@@ -104,7 +104,7 @@ def test_planning_never_replays_stable_or_alpha_theorems(monkeypatch) -> None:
         "distinct_primes_left_not_divide_right",
         edition="alpha",
     )
-    assert alpha.edition_version == "v32"
+    assert alpha.edition_version == "v33"
     assert alpha.root_node.evidence == "alpha_closed"
 
 
@@ -186,7 +186,7 @@ def test_historically_body_only_theorem_is_now_checked_in_current_alpha() -> Non
     name = editions_v19.RESIDUAL_PROMOTED_NAMES[0]
     assert not editions_v18.ALPHA_EDITION.by_name[name].checked_use
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v32"
+    assert plan.edition_version == "v33"
     assert plan.root_node.evidence == "alpha_closed"
     assert plan.root_node.name == name
 
@@ -210,7 +210,7 @@ def test_new_v19_frontier_theorem_has_metadata_only_checked_strand(
     )
     assert name not in editions_v18.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v32"
+    assert plan.edition_version == "v33"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -245,7 +245,7 @@ def test_new_v20_frontier_theorem_has_metadata_only_checked_strand(monkeypatch) 
     name = "signed_matrix_two_determinant_exists"
     assert name not in editions_v19.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v32"
+    assert plan.edition_version == "v33"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -308,7 +308,7 @@ def test_v27_and_historical_frontier_theorems_have_metadata_only_checked_strands
     monkeypatch.setattr(editions_v30, "checked_gaussian_factorization_bundle", forbidden)
     assert name not in editions_v20.ALPHA_EDITION.by_name
     plan = plan_proof_strand(name, edition="alpha")
-    assert plan.edition_version == "v32"
+    assert plan.edition_version == "v33"
     assert plan.root_node.name == name
     assert plan.root_node.evidence == "alpha_closed"
 
@@ -318,7 +318,7 @@ def test_unsealed_alpha_cannot_authorize_a_strand_and_does_not_block_stable(
 ) -> None:
     from peano_lab.library import lean_proof_strand
 
-    monkeypatch.setattr(editions_v32, "EXPECTED_ALPHA_V32_COUNT", 0)
+    monkeypatch.setattr(editions_v33, "EXPECTED_ALPHA_V33_COUNT", 0)
     with pytest.raises(ProofStrandError, match="not sealed for checked use"):
         lean_proof_strand._edition_view("alpha")
     stable, version = lean_proof_strand._edition_view("stable")

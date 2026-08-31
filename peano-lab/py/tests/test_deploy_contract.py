@@ -21,6 +21,9 @@ import pytest
 
 ROOT = Path(__file__).resolve().parents[3]
 FRONTIER = ROOT / "book" / "_static" / "constructive-frontier-explorer"
+# These retained presentation contracts describe the immutable v30 sources,
+# not the subsequently promoted public hub or the dedicated v33 delivery tree.
+HISTORICAL_HUB = ROOT / "deploy/proofs/history/index-v30.html"
 CURRENT_CAMPAIGN = json.loads(
     (ROOT / "book" / "_static" / "constructive-gaussian-campaign" / "campaign.json").read_bytes()
 )
@@ -176,7 +179,7 @@ def test_every_constructive_manifest_and_family_follow_the_actual_sealed_alpha_r
     )
     assert known_routes <= routes
     assert len(routes) == 42
-    hub = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
+    hub = HISTORICAL_HUB.read_text(encoding="utf-8")
     assert all(f'href="{slug}/?v={CANONICAL_HTML_REVISION}"' in hub for slug in routes)
 
 
@@ -283,19 +286,27 @@ def test_local_peano_server_serves_the_staged_release_tree() -> None:
 
 def test_proof_explorer_deploy_uses_an_isolated_staging_tree() -> None:
     output = _dry_run("deploy-proofs")
+    historical = _dry_run("stage-proofs-v31")
 
-    assert 'rm -rf "_deploy/proofs"' in output
-    assert "python3 scripts/build_bertrand_defined_explorer.py" in output
-    assert "book/_static/pa-proof-explorer/" in output
-    assert "book/_static/bertrand-proof-explorer/" in output
-    assert '"_deploy/proofs/quadratic-reciprocity/explorer/"' in output
-    assert '"_deploy/proofs/bertrand-postulate/explorer/"' in output
+    assert 'rm -rf "_deploy/proofs"' in historical
+    assert "python3 scripts/build_bertrand_defined_explorer.py" in historical
+    assert "book/_static/pa-proof-explorer/" in historical
+    assert "book/_static/bertrand-proof-explorer/" in historical
+    assert '"_deploy/proofs/quadratic-reciprocity/explorer/"' in historical
+    assert '"_deploy/proofs/bertrand-postulate/explorer/"' in historical
+    assert "python3 -B scripts/stage_constructive_research_publication_v33.py --check" in output
+    assert "python3 -B scripts/stage_constructive_research_publication_v33.py --api-url" in output
+    assert "if test -e _deploy/proofs-v33 || test -L _deploy/proofs-v33" in output
+    assert 'rm -rf "_deploy/proofs"' not in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/" in output
-    assert "rsync -avz --delete \"_deploy/proofs/\"" in output
+    payload = "rsync -avz --exclude '/index.html' _deploy/proofs-v33/ lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/"
+    index = "rsync -avz _deploy/proofs-v33/index.html lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/index.html"
+    assert output.index(payload) < output.index(index)
+    assert "--delete" not in output
 
 
 def test_all_constructive_frontier_families_stage_without_remote_deployment() -> None:
-    output = _dry_run("stage-proofs")
+    output = _dry_run("stage-proofs-v31")
 
     assert "python3 scripts/build_constructive_frontier_explorer.py" in output
     assert "python3 scripts/build_constructive_next_layer_explorer.py" in output
@@ -440,8 +451,8 @@ def test_v28_build_and_v30_current_publication_targets_never_deploy_implicitly()
 
 
 def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> None:
-    output = _dry_run("stage-proofs")
-    page = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
+    output = _dry_run("stage-proofs-v31")
+    page = HISTORICAL_HUB.read_text(encoding="utf-8")
 
     assert "scripts/sync_constructive_grand_campaign.py --check" in output
     assert "book/_static/constructive-gaussian-campaign/" in output
@@ -484,7 +495,7 @@ def test_grand_campaign_and_complete_proof_artifacts_stage_with_the_hub() -> Non
 
 
 def test_proof_explorer_stage_installs_only_the_proof_site_cache_policy() -> None:
-    output = _dry_run("stage-proofs")
+    output = _dry_run("stage-proofs-v31")
     makefile = (ROOT / "Makefile").read_text(encoding="utf-8")
 
     assert 'cp deploy/proofs/.htaccess "_deploy/proofs/.htaccess"' in output
@@ -523,7 +534,7 @@ def test_legacy_book_links_also_work_on_static_hosts_without_rewrite_support() -
                 "library-editions", "bertrand-campaign")
     directory = ROOT / "deploy/proofs/arithmetic-library"
     assert {path.name for path in directory.iterdir()} == {name + ".html" for name in chapters}
-    output = _dry_run("stage-proofs")
+    output = _dry_run("stage-proofs-v31")
     assert 'rsync -a --delete deploy/proofs/arithmetic-library/ "_deploy/proofs/arithmetic-library/"' in output
 
     class RedirectPage(HTMLParser):
@@ -929,7 +940,7 @@ def test_frontier_defined_library_restores_original_searchable_reading_surface(
 
 
 def test_public_proof_hub_keeps_original_cards_without_experiment_progress() -> None:
-    page = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
+    page = HISTORICAL_HUB.read_text(encoding="utf-8")
 
     assert '<header class="hero">' in page
     assert '<section class="family-grid" aria-label="Proof families">' in page
@@ -959,7 +970,7 @@ def test_public_proof_hub_keeps_original_cards_without_experiment_progress() -> 
 
 
 def test_public_proof_hub_links_every_family_to_the_multiscale_campaign() -> None:
-    page = (ROOT / "deploy" / "proofs" / "index.html").read_text(encoding="utf-8")
+    page = HISTORICAL_HUB.read_text(encoding="utf-8")
 
     assert f'href="grand-campaign/?v={CANONICAL_HTML_REVISION}"' in page
     for family in ("F02", "F03", "F04", "F05", "F07", "F08", "F11", "F12"):
@@ -1118,7 +1129,9 @@ def test_proof_explorer_deploy_paths_cannot_be_overridden() -> None:
     ).stdout
 
     assert "/tmp/unsafe" not in output
-    assert 'rm -rf "_deploy/proofs"' in output
+    assert "_deploy/proofs-v33/" in output
+    assert "scripts/stage_constructive_research_publication_v33.py" in output
+    assert "--delete" not in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/" in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/\n" not in output
 
@@ -1160,7 +1173,7 @@ def test_new_release_targets_replay_all_factories_and_both_independent_verifiers
 
 
 def test_current_atlas_is_separate_and_all_historical_atlases_are_preserved():
-    output = _dry_run("stage-proofs")
+    output = _dry_run("stage-proofs-v31")
     assert 'rsync -a --delete book/_static/constructive-gaussian-campaign/' in output
     assert '"_deploy/proofs/grand-campaign/"' in output
     assert "scripts/extend_constructive_gaussian_factorization_campaign.py --check" in output
@@ -1171,7 +1184,7 @@ def test_current_atlas_is_separate_and_all_historical_atlases_are_preserved():
 
 
 def test_current_publication_never_rewrites_the_frozen_flagship_or_lower_layer_trees():
-    output = _dry_run("stage-proofs")
+    output = _dry_run("stage-proofs-v31")
     for name in ("bertrand_proof", "bertrand_defined", "pa_proof", "pa_defined"):
         command = f"python3 scripts/build_{name}_explorer.py --check"
         assert command in output
@@ -1216,7 +1229,7 @@ class Coverage:
                     if Expression.compile(selection).evaluate(KeywordMatcher.from_item(item))]
                    for selection in selections]
         print("PEANO_WINDOWS=" + json.dumps({"complete": [item.nodeid for item in items], "windows": windows}))
-raise SystemExit(pytest.main(["--collect-only", "-q", sys.argv[2]], plugins=[Coverage()]))
+raise SystemExit(pytest.main(["--rootdir", ".", "--collect-only", "-q", sys.argv[2]], plugins=[Coverage()]))
 '''
     result = subprocess.run([sys.executable, "-c", program, json.dumps(selections), suite],
                             cwd=ROOT / "peano-lab/py", text=True, capture_output=True,

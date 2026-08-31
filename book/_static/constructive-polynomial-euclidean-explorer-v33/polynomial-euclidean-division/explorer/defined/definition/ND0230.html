@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>ND0230 — FpMul(p,a,b,c) — Definition</title>
+  <link rel="stylesheet" href="../../../../assets/defined-explorer.css?v=eb26033797a9">
+  <script defer src="../../../../assets/defined-explorer.js?v=1b95ce228950"></script>
+<link rel="canonical" href="https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/polynomial-euclidean-division/explorer/defined/definition/ND0230.html"><meta name="proof-publication-scope" content="alpha-v33-historical-first-admission-preserved"></head>
+<body class="pa-defined-proof-site" data-family="polynomial-euclidean-division"><header class="pd-header pd-definition-heading">
+  <nav><a href="../?v=6be052da195a">Definitions and proofs</a>
+       <a href="../graph.html?v=6be052da195a">Interactive dependency graph</a>
+       <span>No signature-compatible global blueprint alias is asserted.</span><a data-campaign-link="global" href="../../../../grand-campaign/?v=6be052da195a">Full campaign map</a><a data-campaign-link="domain" href="../../../../grand-campaign/?view=domain&amp;focus=D04&amp;v=6be052da195a">Campaign domain</a><a data-campaign-link="family" href="../../../../grand-campaign/?view=family&amp;focus=F10&amp;v=6be052da195a">Campaign family</a><a data-campaign-link="goal" data-campaign-goal="G091" href="../../../../grand-campaign/?view=goal&amp;focus=G091&amp;v=6be052da195a">G091 milestone</a></nav>
+  <p class="pd-tag">ND0230</p><h1>FpMul(p,a,b,c)</h1>
+  <p>Bounded operands and the actual canonical residue of their natural product; no multiplication law is assumed.</p><p class="pd-status">Conservative notation; not a theorem, primitive, or axiom.</p>
+</header><main class="pd-theorem-layout"><p class="pa-callout pd-callout" data-current-release="v33">Current library: Alpha v33, 4,092 checked-use theorems; Stable remains 432. Historical first admissions, original proof editions, and non-admitted aliases are preserved.</p><div class="pd-proof-panel">
+  <section><h2>Definition in prerequisite notation</h2>
+    <pre><code><a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=6be052da195a">Lt(a,p)</a> ∧ (<a class="pd-definition-ref" data-definition="PD0002" href="PD0002.html?v=6be052da195a">Lt(b,p)</a> ∧ <a class="pd-definition-ref" data-definition="ND0023" href="ND0023.html?v=6be052da195a">CanonicalModularResidue(p,a · b,c)</a>)</code></pre>
+    <p>Only definitions earlier in this acyclic notation graph are used here.</p></section>
+  <details><summary>Hygienic expanded first-order definition</summary>
+    <pre><code>((exists pfa_gap_bottomlayerleft. pfa_gap_bottomlayerleft + S ((a)) = ((p))) /\ (((exists pfa_gap_bottomlayerright. pfa_gap_bottomlayerright + S ((b)) = ((p))) /\ ((((exists pfa_gap_bottomlayerresultbound. pfa_gap_bottomlayerresultbound + S ((c)) = ((p))) /\ ((exists pfa_offset_left_bottomlayerresultcongruence pfa_offset_right_bottomlayerresultcongruence. (((a)) * ((b))) + ((p)) * pfa_offset_left_bottomlayerresultcongruence = ((c)) + ((p)) * pfa_offset_right_bottomlayerresultcongruence))))))))</code></pre>
+    <p>The unchanged native kernel never receives this surface symbol. Binder-safe expansion produces only its existing first-order syntax.</p></details>
+  <section><h2>Direct definition dependencies</h2><div class="pd-chip-row"><a class="pd-chip" href="PD0002.html?v=6be052da195a">Lt(a,b)</a><a class="pd-chip" href="ND0023.html?v=6be052da195a">CanonicalModularResidue(m,a,r)</a></div></section>
+  <section><h2>Definitions depending on this notation</h2><div class="pd-chip-row"><a class="pd-chip" href="ND0232.html?v=6be052da195a">FpInv(p,a,b)</a><a class="pd-chip" href="ND0271.html?v=6be052da195a">FpPolyScale(p,k,ab,ac,bb,bc,l)</a><a class="pd-chip" href="ND0337.html?v=6be052da195a">FpPolynomialQuotientStep(p,k,ab,ac,bb,bc,M,qb,qc,i,q)</a></div></section>
+  <section><h2>Checked theorems using this definition</h2><div class="pd-chip-row"><a class="pd-chip" href="../tag/PX0008.html?v=6be052da195a">PX0008 · prime_field_convolution_coefficient_append</a><a class="pd-chip" href="../tag/PX0020.html?v=6be052da195a">PX0020 · prime_field_polynomial_scale_left_pad_transport</a><a class="pd-chip" href="../tag/PX0023.html?v=6be052da195a">PX0023 · prime_field_polynomial_constant_right_coefficient</a><a class="pd-chip" href="../tag/PX0025.html?v=6be052da195a">PX0025 · prime_field_polynomial_scale_to_constant_product</a><a class="pd-chip" href="../tag/PX0026.html?v=6be052da195a">PX0026 · prime_field_polynomial_inverse_scale</a><a class="pd-chip" href="../tag/PX0027.html?v=6be052da195a">PX0027 · prime_field_polynomial_quotient_scalar_cancellation</a><a class="pd-chip" href="../tag/PX002E.html?v=6be052da195a">PX002E · prime_field_polynomial_quotient_prefix_exists</a><a class="pd-chip" href="../tag/PX002F.html?v=6be052da195a">PX002F · prime_field_polynomial_quotient_prefix_convolution_entry</a></div></section>
+</div><aside class="pd-proof-sidebar"><h2>Definition identity</h2><dl>
+  <dt>Arity</dt><dd>4</dd>
+  <dt>Topological notation layer</dt><dd>2</dd>
+  <dt>Transitive prerequisites</dt><dd>3</dd>
+  <dt>Origin</dt><dd>shared-hygienic-conservative-definition-not-proof-authority</dd>
+  <dt>Reviewed identity</dt><dd>Exact reviewed registry identity ND0230.</dd>
+  <dt>Expanded formula SHA-256</dt><dd><code>fb4a514d8fde9cfe0c0a1e0750741796266c60184b63b4948f856c0cada70acd</code></dd>
+</dl></aside></main><script>
+(function () {
+  "use strict";
+  var markers = ["/constructive-polynomial-euclidean-explorer-v33/", "/constructive-research-explorer-v33/", "/constructive-completed-lower-explorer-v33/", "/constructive-historical-explorers-v33/", "/constructive-research-campaign-v33/"], packages = {"arithmetic-foundations": "constructive-historical-explorers-v33", "bertrand-postulate": "constructive-historical-explorers-v33", "bertrand-prime-chains": "constructive-historical-explorers-v33", "best-approximation": "constructive-historical-explorers-v33", "binary-digit-extraction": "constructive-historical-explorers-v33", "binary-length": "constructive-historical-explorers-v33", "binary-modular-execution": "constructive-historical-explorers-v33", "binary-modular-exponentiation": "constructive-historical-explorers-v33", "cauchy-davenport": "constructive-historical-explorers-v33", "continued-fractions": "constructive-historical-explorers-v33", "cornacchia": "constructive-historical-explorers-v33", "dirichlet-convolution": "constructive-completed-lower-explorer-v33", "dirichlet-fubini": "constructive-completed-lower-explorer-v33", "dirichlet-inverses": "constructive-completed-lower-explorer-v33", "dirichlet-signed-units": "constructive-completed-lower-explorer-v33", "dirichlet-triangular": "constructive-completed-lower-explorer-v33", "dirichlet-units": "constructive-completed-lower-explorer-v33", "divisor-involutions": "constructive-completed-lower-explorer-v33", "divisor-sums": "constructive-completed-lower-explorer-v33", "eisenstein-integers": "constructive-historical-explorers-v33", "euclidean-complexity": "constructive-historical-explorers-v33", "euclidean-gcd-transport": "constructive-historical-explorers-v33", "euclidean-logarithmic-bound": "constructive-historical-explorers-v33", "euler-units": "constructive-completed-lower-explorer-v33", "exponent-lifting": "constructive-historical-explorers-v33", "finite-support": "constructive-completed-lower-explorer-v33", "four-squares": "constructive-historical-explorers-v33", "gaussian-factorization": "constructive-historical-explorers-v33", "gaussian-integers": "constructive-historical-explorers-v33", "generalized-crt": "constructive-historical-explorers-v33", "generalized-crt-compatibility": "constructive-historical-explorers-v33", "generalized-crt-fold": "constructive-historical-explorers-v33", "hensel-lifting": "constructive-historical-explorers-v33", "integer-linear-algebra": "constructive-historical-explorers-v33", "kummer": "constructive-historical-explorers-v33", "lucas": "constructive-historical-explorers-v33", "matrix-coded-products": "constructive-historical-explorers-v33", "matrix-cofactor-expansion": "constructive-historical-explorers-v33", "matrix-determinant-minors": "constructive-historical-explorers-v33", "matrix-dot-product": "constructive-historical-explorers-v33", "mobius-divisor-cancellation": "constructive-completed-lower-explorer-v33", "mobius-inversion": "constructive-completed-lower-explorer-v33", "mobius-values": "constructive-completed-lower-explorer-v33", "multinomial-kummer": "constructive-historical-explorers-v33", "multiplicative-convolution": "constructive-research-explorer-v33", "polynomial-division-prerequisites": "constructive-research-explorer-v33", "polynomial-euclidean-division": "constructive-polynomial-euclidean-explorer-v33", "polynomial-hensel": "constructive-historical-explorers-v33", "polynomial-horner": "constructive-historical-explorers-v33", "polynomial-products": "constructive-completed-lower-explorer-v33", "polynomial-taylor-hensel": "constructive-historical-explorers-v33", "prime-count-chebyshev": "constructive-historical-explorers-v33", "prime-enumeration": "constructive-historical-explorers-v33", "prime-field-polynomials": "constructive-completed-lower-explorer-v33", "prime-fields": "constructive-completed-lower-explorer-v33", "prime-valuation-support": "constructive-historical-explorers-v33", "primes-three-mod-four": "constructive-historical-explorers-v33", "pythagorean-fermat-four": "constructive-historical-explorers-v33", "quadratic-reciprocity": "constructive-historical-explorers-v33", "rectangular-sums": "constructive-completed-lower-explorer-v33", "signed-sums": "constructive-completed-lower-explorer-v33", "signed-weighted-sums": "constructive-completed-lower-explorer-v33", "squarefree-kernels": "constructive-historical-explorers-v33", "supplementary-laws": "constructive-historical-explorers-v33", "totient-products": "constructive-historical-explorers-v33", "two-squares": "constructive-historical-explorers-v33"};
+  var marker = markers.find(function (value) { return location.pathname.indexOf(value) >= 0; });
+  if (!marker) return;
+  var staticRoot = location.pathname.slice(0, location.pathname.indexOf(marker));
+  document.querySelectorAll("a[href]").forEach(function (link) {
+    var original = link.getAttribute("href");
+    if (!original || /^(?:https?:|mailto:|#)/.test(original)) return;
+    var target = new URL(original, location.href);
+    if (target.pathname.indexOf("/grand-campaign/") >= 0) {
+      target.pathname = staticRoot + "/constructive-research-campaign-v33/index.html";
+    } else {
+      var slug = Object.keys(packages).find(function (value) { return target.pathname.indexOf("/" + value + "/") >= 0; });
+      if (!slug) return;
+      target.pathname = staticRoot + "/" + packages[slug] + target.pathname.slice(target.pathname.indexOf("/" + slug + "/"));
+    }
+    link.setAttribute("href", target.href);
+  });
+})();
+</script>
+</body>
+</html>

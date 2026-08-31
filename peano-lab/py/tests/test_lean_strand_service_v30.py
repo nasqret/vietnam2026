@@ -162,6 +162,7 @@ def test_actual_v30_history_and_every_principal_panel_pass_explicit_historical_r
     assert historical == ("constructive-gaussian-campaign", "constructive-priority-campaign",
                           "constructive-grand-campaign")
     monkeypatch.setattr(service, "CONSTRUCTIVE_CAMPAIGN_SUCCESSORS", historical)
+    monkeypatch.setattr(service, "CONSTRUCTIVE_RESEARCH_CAMPAIGNS", {})
     server = non_listening_review_server(ROOT)
     handler = object.__new__(service.LeanStrandHandler)
     handler.server = server

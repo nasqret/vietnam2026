@@ -20,6 +20,7 @@ from datetime import datetime, timezone
 from hashlib import sha256
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from importlib import import_module
 import ipaddress
 import json
 import mimetypes
@@ -29,6 +30,7 @@ import re
 import secrets
 import shutil
 import signal
+import stat
 import subprocess
 import sys
 import tempfile
@@ -76,13 +78,25 @@ SENSITIVE_NAMES = frozenset(
 LEGACY_EXPLORER_SEGMENTS = frozenset(
     {"pa-proof-explorer", "bertrand-proof-explorer", "constructive-grand-campaign",
      "constructive-priority-campaign", "constructive-gaussian-campaign",
-     "constructive-completed-lower-campaign-v31"}
+     "constructive-completed-lower-campaign-v31", "constructive-research-campaign-v32",
+     "constructive-research-campaign-v33"}
 )
 CONSTRUCTIVE_CAMPAIGN_SUCCESSORS = (
     "constructive-completed-lower-campaign-v31",
     "constructive-gaussian-campaign", "constructive-priority-campaign",
     "constructive-grand-campaign",
 )
+# Keep the older isolated-deployment order literal.  The explicitly reviewed
+# current successors precede it; a present invalid one can never fall through.
+CONSTRUCTIVE_RESEARCH_CAMPAIGNS = {
+    "constructive-research-campaign-v33": "v33",
+    "constructive-research-campaign-v32": "v32",
+}
+CONSTRUCTIVE_CATALOG_CODECS = {
+    "v31": "peano_catalog_shards",
+    "v32": "peano_catalog_shards_v32",
+    "v33": "peano_catalog_shards_v33",
+}
 CONSTRUCTIVE_EXPLORER_SEGMENT = re.compile(r"constructive-[a-z][a-z0-9-]*-explorer\Z")
 CONSTRUCTIVE_FAMILY_SLUG = re.compile(r"[a-z][a-z0-9-]{0,127}\Z")
 CONSTRUCTIVE_RELEASE_VERSION = re.compile(r"v[1-9][0-9]{0,3}\Z")
@@ -162,6 +176,27 @@ class ConstructivePublication:
 
 
 CONSTRUCTIVE_PUBLICATIONS = {
+    "constructive-polynomial-euclidean-explorer-v33": ConstructivePublication(
+        "peano-lab-alpha-v33-canonical-publication-v1-manifest", "v33", "v33"
+    ),
+    "constructive-research-explorer-v33": ConstructivePublication(
+        "peano-lab-alpha-v33-canonical-publication-v1-manifest", "v33", "v32"
+    ),
+    "constructive-completed-lower-explorer-v33": ConstructivePublication(
+        "peano-lab-alpha-v33-canonical-publication-v1-manifest", "v33", "v31"
+    ),
+    "constructive-historical-explorers-v33": ConstructivePublication(
+        "peano-lab-alpha-v33-canonical-publication-v1-manifest", "v33", "mixed_preserved"
+    ),
+    "constructive-research-explorer-v32": ConstructivePublication(
+        "peano-lab-alpha-v32-canonical-publication-v1-manifest", "v32", "v32"
+    ),
+    "constructive-completed-lower-explorer-v32": ConstructivePublication(
+        "peano-lab-alpha-v32-canonical-publication-v1-manifest", "v32", "v31"
+    ),
+    "constructive-historical-explorers-v32": ConstructivePublication(
+        "peano-lab-alpha-v32-canonical-publication-v1-manifest", "v32", "mixed_preserved"
+    ),
     "constructive-historical-explorers-v31": ConstructivePublication(
         "peano-lab-constructive-historical-publication-v31-manifest", "v31", "mixed_preserved"
     ),
@@ -203,6 +238,38 @@ CONSTRUCTIVE_PUBLICATIONS = {
         "v27",
         "481a9a378e54dc389422819587e8377a07b63a0d5d50286ffdfd28f0c4bdb2e6",
     ),
+}
+
+CONSTRUCTIVE_MODERN_PHASES = {
+    "constructive-polynomial-euclidean-explorer-v33": "polynomial",
+    **{f"constructive-{component}-v{version}": phase
+       for version in (32, 33)
+       for component, phase in (("research-explorer", "research"),
+                                ("completed-lower-explorer", "completed"),
+                                ("historical-explorers", "historical"))},
+}
+CONSTRUCTIVE_MODERN_COUNTS = {
+    "polynomial": (121, 121, 0), "research": (175, 175, 0),
+    "completed": (574, 574, 0), "historical": (3096, 3007, 443),
+}
+CONSTRUCTIVE_MODERN_NEW_FAMILIES = {
+    "multiplicative-convolution": (90, "MX", "v32", "2013935a09dcd2d7fefdae65ad31f63815e73e5e45da37cd71a880fdb2f5031f"),
+    "polynomial-division-prerequisites": (85, "PQ", "v32", "c7fe5ba9e5b0cbfbdde4f0bea7ef321355661f2408ca31e5a78e3041cfb19ce0"),
+    "polynomial-euclidean-division": (121, "PX", "v33", "80db0f58a3e58fa9edd5a8b2cc4a11314e262cdeb52a79955a63967e9dc674cc"),
+}
+# Literal presentation parents, never proof receipts.  Current successors copy
+# these exact manifests; historical first-admission records remain separate.
+CONSTRUCTIVE_MODERN_PARENTS = {
+    "constructive-completed-lower-explorer-v32": ("constructive-completed-lower-explorer-v31", 368715,
+        "3fd1e3ceac74d898800030bb0429198c3ec873a3c67ee41d3c06b07b8dc3f1f8"),
+    "constructive-historical-explorers-v32": ("constructive-historical-explorers-v31", 1496113,
+        "e6805a7a4a09754c4cbaec214b4de6720e6226f609ac4f1a9ad6514cae524372"),
+    "constructive-research-explorer-v33": ("constructive-research-explorer-v32", 100223,
+        "d69e3793319a6eb97e4224fe5c44f6d374a3f16b5b151e75e79af310121df02f"),
+    "constructive-completed-lower-explorer-v33": ("constructive-completed-lower-explorer-v32", 368650,
+        "9c0a8703425c7c65dc147af798eb6f5bbed8765ab42dc84e5f10be7b80a1037d"),
+    "constructive-historical-explorers-v33": ("constructive-historical-explorers-v32", 1780753,
+        "f92a442588e30476be619b01552115e0cd7cc818becde21beb316c12be0cc610"),
 }
 
 
@@ -1346,7 +1413,7 @@ class LeanStrandServer(ThreadingHTTPServer):
         # A present successor is authoritative even when broken: never turn an
         # invalid current release into a silently accepted historical fallback.
         # Older isolated deployments retain their original atlas and policies.
-        for segment in CONSTRUCTIVE_CAMPAIGN_SUCCESSORS:
+        for segment in (*CONSTRUCTIVE_RESEARCH_CAMPAIGNS, *CONSTRUCTIVE_CAMPAIGN_SUCCESSORS):
             directory = static_root / segment
             if directory.exists() or directory.is_symlink():
                 if directory.is_symlink() or not directory.is_dir() or directory.stat().st_uid != owner:
@@ -1368,6 +1435,9 @@ class LeanStrandServer(ThreadingHTTPServer):
         version = metadata.get("current_alpha_version")
         if type(version) is not str or CONSTRUCTIVE_RELEASE_VERSION.fullmatch(version) is None:
             raise ServiceError("constructive proof browser has no safe current Alpha release")
+        if (directory.name in CONSTRUCTIVE_RESEARCH_CAMPAIGNS
+                and version != CONSTRUCTIVE_RESEARCH_CAMPAIGNS[directory.name]):
+            raise ServiceError("the present research campaign cannot downgrade to a historical release")
         if directory.name == "constructive-completed-lower-campaign-v31" and version != "v31":
             raise ServiceError("the present v31 campaign cannot downgrade to a historical release")
         boundaries = campaign.get("ambitious_boundaries")
@@ -1407,17 +1477,20 @@ class LeanStrandServer(ThreadingHTTPServer):
             maximum=MAX_EXPLORER_CAMPAIGN_BYTES,
             owner=owner,
         )
+        if version in {"v32", "v33"} and channels.get("default_channel") != "stable":
+            raise ServiceError("the current research release changed the default Stable channel")
         shard_fingerprint = ()
-        if version == "v31":
+        codec = None
+        if version in CONSTRUCTIVE_CATALOG_CODECS:
             # A manifest digest does not authenticate its referenced rows.
             # All three immutable files participate in cache invalidation;
             # the codec does no proof loading and retains the 64 MiB/file cap.
-            from peano_catalog_shards import catalog_input_fingerprint
             try:
-                shard_fingerprint = catalog_input_fingerprint(
+                codec = import_module(CONSTRUCTIVE_CATALOG_CODECS[version])
+                shard_fingerprint = codec.catalog_input_fingerprint(
                     catalog_path, expected_sha256=digest, owner_uid=owner,
                 )
-            except (OSError, ValueError) as error:
+            except (ImportError, OSError, ValueError) as error:
                 raise ServiceError("constructive sharded catalogue binding is invalid") from error
         key = (
             self._fingerprint(campaign_path, campaign_info),
@@ -1443,10 +1516,9 @@ class LeanStrandServer(ThreadingHTTPServer):
                 or channel.get("checked_use_count") != count
             ):
                 raise ServiceError("constructive proof browser channel disagrees with its current release")
-            if version == "v31":
-                from peano_catalog_shards import verify_catalog_bindings
+            if codec is not None:
                 try:
-                    bindings = verify_catalog_bindings(catalog_path, expected_sha256=digest, owner_uid=owner)
+                    bindings = codec.verify_catalog_bindings(catalog_path, expected_sha256=digest, owner_uid=owner)
                     if bindings.fingerprint != shard_fingerprint:
                         raise ValueError("catalogue inputs changed during authorization")
                     manifest, _ = self._reviewed_json(catalog_path, maximum=MAX_EXPLORER_CATALOG_BYTES, owner=owner)
@@ -1521,6 +1593,107 @@ class LeanStrandServer(ThreadingHTTPServer):
             if len(raw) != records["bytes"] or sha256(raw).hexdigest() != records["sha256"]:
                 raise ServiceError("literal historical first-admission rows changed")
 
+    def _modern_constructive_provenance(self, directory: Path, manifest: dict, *, owner: int) -> None:
+        """Review current labels and literal history, never theorem authority."""
+        phase = CONSTRUCTIVE_MODERN_PHASES[directory.name]
+        policy = CONSTRUCTIVE_PUBLICATIONS[directory.name]
+        expected_counts = CONSTRUCTIVE_MODERN_COUNTS[phase]
+        if (manifest.get("phase") != phase
+                or manifest.get("publication_scope") != "alpha_checked_use_publication"
+                or manifest.get("alpha_first_enrolled_version") != policy.first_enrolled_version
+                or "first_enrollment_catalog_sha256" in manifest
+                or type(manifest.get("alpha_edition_checked_use_count")) is not int
+                or manifest["alpha_edition_checked_use_count"] != {"v32": 3971, "v33": 4092}[policy.current_version]
+                or type(manifest.get("stable_edition_count")) is not int or manifest["stable_edition_count"] != 432
+                or manifest.get("current_G009_multiplicative_closure_proved") is not True
+                or manifest.get("current_G091_prime_power_fields_proved") is not False
+                or any(type(manifest.get(key)) is not int or manifest[key] != count
+                       for key, count in zip(("theorem_count", "checked_use_count", "stable_count"), expected_counts, strict=True))):
+            raise ServiceError("modern reader changed its exact phase, counts or first admission")
+        entries = manifest.get("families")
+        expected_names = (set(COMPLETED_LOWER_V31_FAMILIES) if phase == "completed"
+                          else set(HISTORICAL_V31_FIRST_ADMISSIONS) if phase == "historical"
+                          else {"multiplicative-convolution", "polynomial-division-prerequisites"} if phase == "research"
+                          else {"polynomial-euclidean-division"})
+        if (type(entries) is not list or len(entries) != len(expected_names)
+                or any(type(row) is not dict for row in entries)
+                or any(type(row.get("slug")) is not str for row in entries)
+                or {row.get("slug") for row in entries} != expected_names):
+            raise ServiceError("modern reader has a missing, repeated or foreign family")
+        for row in entries:
+            if row.get("package") != directory.name:
+                raise ServiceError("modern family claims a foreign reader package")
+            if phase != "historical":
+                name = row["slug"]
+                count = (COMPLETED_LOWER_V31_FAMILIES[name] if phase == "completed"
+                         else CONSTRUCTIVE_MODERN_NEW_FAMILIES[name][0])
+                if (row.get("first_admitted_version") != policy.first_enrolled_version
+                        or any(type(row.get(key)) is not int or row[key] != expected
+                               for key, expected in (("theorem_count", count), ("checked_use_count", count), ("stable_count", 0)))):
+                    raise ServiceError("modern family changed its checked count or admission history")
+                tags = row.get("tags")
+                if (type(tags) is not dict or len(tags) != count
+                        or any(type(name) is not str or THEOREM_NAME.fullmatch(name) is None
+                               or type(tag) is not str for name, tag in tags.items())
+                        or len(set(tags.values())) != count):
+                    raise ServiceError("modern family has missing or ambiguous theorem tags")
+                if phase in {"research", "polynomial"}:
+                    _count, prefix, first, expected = CONSTRUCTIVE_MODERN_NEW_FAMILIES[name]
+                    ordered = "\n".join(name for name, _tag in sorted(tags.items(), key=lambda item: item[1]))
+                    if (first != policy.first_enrolled_version
+                            or set(tags.values()) != {f"{prefix}{index:04X}" for index in range(1, count + 1)}
+                            or sha256(ordered.encode()).hexdigest() != expected):
+                        raise ServiceError("the exact research theorem names or stable tags changed")
+        predecessor = CONSTRUCTIVE_MODERN_PARENTS.get(directory.name)
+        if predecessor is None:
+            if "historical_parent" in manifest:
+                raise ServiceError("first admission invented a historical reader parent")
+            return
+        name, size, expected = predecessor
+        record = {"directory": name, "bytes": size, "sha256": expected}
+        relative = "historical/" + name + "/manifest.json"
+        if (manifest.get("historical_parent") != record
+                or type(manifest.get("files")) is not dict
+                or manifest["files"].get(relative) != {"bytes": size, "sha256": expected}):
+            raise ServiceError("modern reader lost its exact historical manifest binding")
+        path = directory
+        ancestors = []
+        for part in ("historical", name):
+            path /= part
+            info = path.lstat()
+            if not stat.S_ISDIR(info.st_mode) or info.st_uid != owner:
+                raise ServiceError("unsafe historical manifest directory")
+            ancestors.append((path, (info.st_dev, info.st_ino, info.st_mode, info.st_uid)))
+        path /= "manifest.json"
+        before = path.lstat()
+        if not stat.S_ISREG(before.st_mode) or before.st_uid != owner or before.st_size != size or size > MAX_EXPLORER_MANIFEST_BYTES:
+            raise ServiceError("historical manifest is not its exact bounded ordinary file")
+        descriptor = os.open(path, os.O_RDONLY | os.O_NOFOLLOW | os.O_CLOEXEC | os.O_NONBLOCK)
+        with os.fdopen(descriptor, "rb") as stream:
+            if self._fingerprint(path, os.fstat(stream.fileno())) != self._fingerprint(path, before):
+                raise ServiceError("historical manifest changed while opening")
+            raw = stream.read(size + 1)
+            after = os.fstat(stream.fileno())
+        if (self._fingerprint(path, before) != self._fingerprint(path, after)
+                or self._fingerprint(path, after) != self._fingerprint(path, path.lstat())
+                or len(raw) != size or sha256(raw).hexdigest() != expected):
+            raise ServiceError("literal historical manifest bytes changed")
+        for parent, identity in ancestors:
+            info = parent.lstat()
+            if (info.st_dev, info.st_ino, info.st_mode, info.st_uid) != identity:
+                raise ServiceError("historical manifest ancestor changed")
+        # These bytes are a literal registered JSON document, not a supplied
+        # proof report.  Only the current package route is changed in its rows.
+        old = json.loads(raw.decode("utf-8"))
+        inherited = []
+        for row in old["families"]:
+            item = {**row, "package": directory.name}
+            if directory.name == "constructive-completed-lower-explorer-v32":
+                item.update(checked_use_count=row["theorem_count"], stable_count=0, first_admitted_version="v31")
+            inherited.append(item)
+        if entries != inherited:
+            raise ServiceError("current reader rewrote a literal historical family identity")
+
     def reviewed_constructive_family(self, directory: Path, slug: str) -> bool:
         """Authorize one real family only under the current sealed checked release."""
 
@@ -1546,8 +1719,11 @@ class LeanStrandServer(ThreadingHTTPServer):
                 maximum=MAX_EXPLORER_MANIFEST_BYTES,
                 owner=owner,
             )
-            if directory.name == "constructive-historical-explorers-v31":
+            modern_phase = CONSTRUCTIVE_MODERN_PHASES.get(directory.name)
+            if directory.name == "constructive-historical-explorers-v31" or modern_phase == "historical":
                 self._historical_v31_provenance(directory, manifest, owner=owner)
+            if modern_phase is not None:
+                self._modern_constructive_provenance(directory, manifest, owner=owner)
             key = (self._fingerprint(manifest_path, information), version, digest, identity)
             with self._constructive_authority_lock:
                 families = self._constructive_manifest_cache.get(key)
@@ -1575,7 +1751,12 @@ class LeanStrandServer(ThreadingHTTPServer):
                         if (version != publication.current_version
                                 or manifest.get("alpha_first_enrolled_version") != publication.first_enrolled_version):
                             return False
-                        if publication.first_enrolled_version == "mixed_preserved":
+                        if modern_phase is not None:
+                            # The canonical schema binds heterogeneous literal
+                            # first admissions above, not a fictitious scalar
+                            # first-catalog field copied from the current one.
+                            pass
+                        elif publication.first_enrolled_version == "mixed_preserved":
                             # This one reviewed aggregate has heterogeneous
                             # literal history; a scalar first-catalog claim
                             # would be false even when the current digest fits.
@@ -1600,13 +1781,13 @@ class LeanStrandServer(ThreadingHTTPServer):
                         checked = family.get("alpha_checked_use_node_count", family.get("theorem_count"))
                         if type(checked) is not int or checked < 1:
                             return False
-                        if (directory.name == "constructive-completed-lower-explorer-v31"
+                        if ((directory.name == "constructive-completed-lower-explorer-v31" or modern_phase == "completed")
                                 and checked != COMPLETED_LOWER_V31_FAMILIES.get(name)):
                             return False
                         family_version = family.get("alpha_edition_version")
                         if family_version is not None and family_version != version:
                             return False
-                        if directory.name == "constructive-historical-explorers-v31":
+                        if directory.name == "constructive-historical-explorers-v31" or modern_phase == "historical":
                             descriptor = family.get("first_admission")
                             if type(descriptor) is not dict or name not in HISTORICAL_V31_FIRST_ADMISSIONS:
                                 return False
@@ -1615,10 +1796,10 @@ class LeanStrandServer(ThreadingHTTPServer):
                             if sha256(encoded).hexdigest() != HISTORICAL_V31_FIRST_ADMISSIONS[name]:
                                 return False
                         names.add(name)
-                    if (directory.name == "constructive-historical-explorers-v31"
+                    if ((directory.name == "constructive-historical-explorers-v31" or modern_phase == "historical")
                             and names != set(HISTORICAL_V31_FIRST_ADMISSIONS)):
                         return False
-                    if (directory.name == "constructive-completed-lower-explorer-v31"
+                    if ((directory.name == "constructive-completed-lower-explorer-v31" or modern_phase == "completed")
                             and names != set(COMPLETED_LOWER_V31_FAMILIES)):
                         return False
                     families = frozenset(names)

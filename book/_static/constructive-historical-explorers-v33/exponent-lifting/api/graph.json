@@ -1,0 +1,2115 @@
+{
+  "alpha_checked_use_node_count": 38,
+  "alpha_edition_version": "v33",
+  "alpha_first_enrolled_version": "v29",
+  "definition_topological_order": [
+    "PD0002",
+    "PD0013",
+    "PD0014",
+    "PD0019",
+    "PD0020",
+    "ND0196",
+    "ND0197",
+    "PD0003",
+    "PD0001",
+    "PD0044",
+    "PD0045",
+    "PD0046",
+    "ND0198"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "EL0004",
+      "target": "EL0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0005",
+      "target": "EL0006"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0007",
+      "target": "EL0008"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0008",
+      "target": "EL0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0007",
+      "target": "EL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0008",
+      "target": "EL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0009",
+      "target": "EL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0001",
+      "target": "EL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0002",
+      "target": "EL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0003",
+      "target": "EL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0006",
+      "target": "EL000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000C",
+      "target": "EL0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000F",
+      "target": "EL0011"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0011",
+      "target": "EL0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000E",
+      "target": "EL0012"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0014",
+      "target": "EL0015"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000C",
+      "target": "EL0016"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0016",
+      "target": "EL0017"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0017",
+      "target": "EL0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0018",
+      "target": "EL001A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000B",
+      "target": "EL001A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0019",
+      "target": "EL001A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000A",
+      "target": "EL001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0012",
+      "target": "EL001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0010",
+      "target": "EL001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0013",
+      "target": "EL001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0013",
+      "target": "EL001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0008",
+      "target": "EL001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000C",
+      "target": "EL001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000B",
+      "target": "EL001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000A",
+      "target": "EL001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000E",
+      "target": "EL001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0010",
+      "target": "EL001C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0010",
+      "target": "EL001D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0018",
+      "target": "EL001D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL001B",
+      "target": "EL001E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000B",
+      "target": "EL001E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL001D",
+      "target": "EL001E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL001A",
+      "target": "EL001E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0008",
+      "target": "EL001E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL001C",
+      "target": "EL001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000B",
+      "target": "EL001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL001D",
+      "target": "EL001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0007",
+      "target": "EL0020"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0008",
+      "target": "EL0020"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL001E",
+      "target": "EL0020"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0015",
+      "target": "EL0020"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0020",
+      "target": "EL0021"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL001F",
+      "target": "EL0021"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0015",
+      "target": "EL0021"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0021",
+      "target": "EL0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0023",
+      "target": "EL0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0022",
+      "target": "EL0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL000D",
+      "target": "EL0024"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0024",
+      "target": "EL0026"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EL0025",
+      "target": "EL0026"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EL0007",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL0008",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL0009",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EL000A",
+      "statement_occurrences": 1,
+      "target": "ND0197"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL000B",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL000C",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL000D",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "EL000E",
+      "statement_occurrences": 3,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL000F",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0010",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EL0010",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0011",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "EL0012",
+      "statement_occurrences": 3,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0013",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0014",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "EL0015",
+      "statement_occurrences": 3,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "EL0016",
+      "statement_occurrences": 0,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "EL0016",
+      "statement_occurrences": 0,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL0016",
+      "statement_occurrences": 1,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EL0017",
+      "statement_occurrences": 1,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "EL0018",
+      "statement_occurrences": 3,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL0019",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL0019",
+      "statement_occurrences": 1,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL001A",
+      "statement_occurrences": 1,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL001A",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL001A",
+      "statement_occurrences": 1,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EL001B",
+      "statement_occurrences": 0,
+      "target": "ND0197"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "EL001B",
+      "statement_occurrences": 3,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL001B",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EL001C",
+      "statement_occurrences": 0,
+      "target": "ND0197"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 4,
+      "source": "EL001C",
+      "statement_occurrences": 4,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL001C",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL001D",
+      "statement_occurrences": 1,
+      "target": "ND0198"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL001D",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL001D",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL001D",
+      "statement_occurrences": 2,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL001E",
+      "statement_occurrences": 1,
+      "target": "ND0198"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "EL001E",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "EL001E",
+      "statement_occurrences": 0,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL001E",
+      "statement_occurrences": 1,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL001F",
+      "statement_occurrences": 1,
+      "target": "ND0198"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 4,
+      "source": "EL001F",
+      "statement_occurrences": 3,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "EL001F",
+      "statement_occurrences": 0,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL001F",
+      "statement_occurrences": 1,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "EL0020",
+      "statement_occurrences": 1,
+      "target": "ND0198"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0020",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EL0020",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL0020",
+      "statement_occurrences": 1,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 3,
+      "source": "EL0021",
+      "statement_occurrences": 1,
+      "target": "ND0198"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "EL0021",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "EL0021",
+      "statement_occurrences": 0,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0021",
+      "statement_occurrences": 2,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL0022",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL0023",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EL0024",
+      "statement_occurrences": 1,
+      "target": "ND0198"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0024",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0024",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0024",
+      "statement_occurrences": 2,
+      "target": "PD0045"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 4,
+      "source": "EL0025",
+      "statement_occurrences": 4,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EL0026",
+      "statement_occurrences": 0,
+      "target": "ND0198"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0026",
+      "statement_occurrences": 2,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0026",
+      "statement_occurrences": 2,
+      "target": "PD0003"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EL0026",
+      "statement_occurrences": 2,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "EL0026",
+      "statement_occurrences": 3,
+      "target": "PD0045"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0019"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0196",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0197",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0044",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0044",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0045",
+      "target": "PD0001"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0045",
+      "target": "PD0044"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0046",
+      "target": "PD0045"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0198",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0198",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0198",
+      "target": "PD0046"
+    }
+  ],
+  "family_slug": "exponent-lifting",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0001.html?v=ac7111ec14ff",
+      "id": "EL0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_natural_difference_square",
+      "proof_bundle_node_id": 527,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The square difference has a genuine nonnegative geometric quotient."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0002.html?v=ac7111ec14ff",
+      "id": "EL0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_natural_difference_successor",
+      "proof_bundle_node_id": 528,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A power-difference quotient advances by the actual recurrence a*Q+B."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0003.html?v=ac7111ec14ff",
+      "id": "EL0003",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_first_correction_successor",
+      "proof_bundle_node_id": 529,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The first correction term advances by b*C+Q without division or subtraction."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0004.html?v=ac7111ec14ff",
+      "id": "EL0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_twice_correction_polynomial",
+      "proof_bundle_node_id": 530,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The doubled correction recurrence has an ordinary polynomial certificate with explicit coefficient carriers."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0005.html?v=ac7111ec14ff",
+      "id": "EL0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_adjacent_coefficient_identity",
+      "proof_bundle_node_id": 531,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Consecutive triangular coefficients advance by exactly twice the next index."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0006.html?v=ac7111ec14ff",
+      "id": "EL0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "lte_twice_correction_successor",
+      "proof_bundle_node_id": 532,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Twice the correction has the exact triangular coefficient and an actual next remainder."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0007.html?v=ac7111ec14ff",
+      "id": "EL0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_power_zero_exact",
+      "proof_bundle_node_id": 533,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every natural base has an actual beta-coded zeroth power equal to one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0008.html?v=ac7111ec14ff",
+      "id": "EL0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "lte_power_one_exact",
+      "proof_bundle_node_id": 534,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The relational first power is constructed, not supplied as an oracle."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0009.html?v=ac7111ec14ff",
+      "id": "EL0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "lte_power_two_exact",
+      "proof_bundle_node_id": 535,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The relational second power is the actual square, including a zero base."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL000A.html?v=ac7111ec14ff",
+      "id": "EL000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "lte_power_difference_second_order_exists",
+      "proof_bundle_node_id": 536,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the real powers, difference quotient, first correction, and doubled triangular correction at every exponent at least two."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL000B.html?v=ac7111ec14ff",
+      "id": "EL000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_nondivisor_nonzero",
+      "proof_bundle_node_id": 537,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A value not divisible by p is nonzero, for every p including zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL000C.html?v=ac7111ec14ff",
+      "id": "EL000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_prime_nondivisor_one",
+      "proof_bundle_node_id": 538,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual prime does not divide one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL000D.html?v=ac7111ec14ff",
+      "id": "EL000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_nondivisor_product_right",
+      "proof_bundle_node_id": 539,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Nondivisibility of a product excludes divisibility of its right factor."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL000E.html?v=ac7111ec14ff",
+      "id": "EL000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_nondivisor_add_multiple",
+      "proof_bundle_node_id": 540,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Adding any actual p-multiple preserves nondivisibility; natural differences are witnessed by balanced equality."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL000F.html?v=ac7111ec14ff",
+      "id": "EL000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_prime_nondivisor_two",
+      "proof_bundle_node_id": 541,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Two is a nondivisor unit for every prime explicitly different from two."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0010.html?v=ac7111ec14ff",
+      "id": "EL0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "lte_nondivisor_power",
+      "proof_bundle_node_id": 542,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every witnessed power of a nondivisor remains a nondivisor of the actual prime, including the zeroth power."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0011.html?v=ac7111ec14ff",
+      "id": "EL0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "lte_prime_divides_correction",
+      "proof_bundle_node_id": 543,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The doubled second-order remainder is divisible by an odd prime, so its actual correction is divisible too."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0012.html?v=ac7111ec14ff",
+      "id": "EL0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "lte_odd_prime_quotient_unit",
+      "proof_bundle_node_id": 544,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The prime-step quotient is exactly p times a genuine p-nondivisible cofactor; no valuation conclusion is assumed."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0013.html?v=ac7111ec14ff",
+      "id": "EL0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_power_exponent_eq_transport",
+      "proof_bundle_node_id": 545,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Equality transports one actual relational-power argument without changing the graph or adding a choice principle."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0014.html?v=ac7111ec14ff",
+      "id": "EL0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_power_value_eq_transport",
+      "proof_bundle_node_id": 546,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Equality transports one actual relational-power argument without changing the graph or adding a choice principle."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0015.html?v=ac7111ec14ff",
+      "id": "EL0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "lte_power_iteration_construct",
+      "proof_bundle_node_id": 547,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct a composed power graph from two actual powers and their exact multiplied exponent."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0016.html?v=ac7111ec14ff",
+      "id": "EL0016",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "lte_prime_self_valuation_value",
+      "proof_bundle_node_id": 548,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every maximal valuation of a prime at itself is exactly one, derived by actual cofactor cancellation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0017.html?v=ac7111ec14ff",
+      "id": "EL0017",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "lte_prime_self_valuation",
+      "proof_bundle_node_id": 549,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the actual bounded maximal valuation graph Val(p,p,1) for an actual prime."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0018.html?v=ac7111ec14ff",
+      "id": "EL0018",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_valuation_product_exact",
+      "proof_bundle_node_id": 550,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the exact sum valuation of a nonzero product instead of requiring its output valuation as an input."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0019.html?v=ac7111ec14ff",
+      "id": "EL0019",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "lte_prime_power_valuation_exact",
+      "proof_bundle_node_id": 551,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The actual e-th power of a prime has exactly valuation e, including exponent zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL001A.html?v=ac7111ec14ff",
+      "id": "EL001A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "lte_valuation_from_exact_cofactor",
+      "proof_bundle_node_id": 552,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual prime-power times a genuine nondivisor cofactor constructs its precise maximal valuation, including the unit boundary."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL001B.html?v=ac7111ec14ff",
+      "id": "EL001B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "lte_odd_prime_power_difference_quotient",
+      "proof_bundle_node_id": 553,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the actual p-th powers and their geometric quotient p*u with a genuine p-nondivisible cofactor for every odd prime."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL001C.html?v=ac7111ec14ff",
+      "id": "EL001C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "lte_coprime_power_difference_quotient",
+      "proof_bundle_node_id": 554,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every exponent not divisible by the actual prime, construct real power differences with a nondivisible geometric quotient; exponent one is handled explicitly."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL001D.html?v=ac7111ec14ff",
+      "id": "EL001D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "lte_power_difference_valuation_step",
+      "proof_bundle_node_id": 555,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Combine real power graphs, a nonzero difference quotient, and its independently constructed valuation into the exact lifted difference."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL001E.html?v=ac7111ec14ff",
+      "id": "EL001E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "lte_odd_prime_power_step",
+      "proof_bundle_node_id": 556,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Raising a genuine nonzero p-divisible difference to an odd-prime exponent increases its exact valuation by one and constructs all power/difference witnesses."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL001F.html?v=ac7111ec14ff",
+      "id": "EL001F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "lte_coprime_exponent_step",
+      "proof_bundle_node_id": 557,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every exponent not divisible by p preserves the exact valuation of the difference, with actual power/difference witnesses and nonzero guards."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0020.html?v=ac7111ec14ff",
+      "id": "EL0020",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "lte_prime_power_iteration",
+      "proof_bundle_node_id": 558,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Ordinary HA induction constructs every prime-power exponent and its power difference, raising the valuation by exactly the number of prime steps."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0021.html?v=ac7111ec14ff",
+      "id": "EL0021",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 7,
+      "name": "lte_positive_exponent_exact",
+      "proof_bundle_node_id": 559,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every positive exponent, strip its actual prime-power valuation, iterate the prime step, and apply the nondivisor cofactor step to construct the full exact LTE valuation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0022.html?v=ac7111ec14ff",
+      "id": "EL0022",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_strict_difference_nonzero",
+      "proof_bundle_node_id": 560,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A witnessed strictly positive natural difference is nonzero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0023.html?v=ac7111ec14ff",
+      "id": "EL0023",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_exceeds_two_not_two",
+      "proof_bundle_node_id": 561,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The exact p>2 guard excludes the binary prime without an implicit case extension."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0024.html?v=ac7111ec14ff",
+      "id": "EL0024",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 8,
+      "name": "odd_prime_lifting_the_exponent",
+      "proof_bundle_node_id": 562,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Full guarded odd-prime LTE: for p>2, x>y>0, n>0, p|(x-y), and p not dividing xy, construct x^n,y^n and their positive difference of exact valuation v_p(x-y)+v_p(n)."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0025.html?v=ac7111ec14ff",
+      "id": "EL0025",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "lte_power_difference_functional",
+      "proof_bundle_node_id": 563,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Any two witnesses for the same natural power difference have exactly the same value; no selected representation can change the valuation output."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v29",
+      "href": "tag/EL0026.html?v=ac7111ec14ff",
+      "id": "EL0026",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 9,
+      "name": "odd_prime_lifting_the_exponent_value",
+      "proof_bundle_node_id": 564,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The full LTE valuation holds for every actual supplied power/difference witness, by extensionality of the constructed power graphs."
+    },
+    {
+      "global_definition": "Lt",
+      "href": "definition/PD0002.html?v=ac7111ec14ff",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": "BetaAt",
+      "href": "definition/PD0013.html?v=ac7111ec14ff",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": "Product",
+      "href": "definition/PD0014.html?v=ac7111ec14ff",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": "Repeat",
+      "href": "definition/PD0019.html?v=ac7111ec14ff",
+      "id": "PD0019",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Repeat",
+      "signature": "Repeat(b,c,a,l)",
+      "summary": "The decoded prefix repeats a for l positions."
+    },
+    {
+      "global_definition": "Pow",
+      "href": "definition/PD0020.html?v=ac7111ec14ff",
+      "id": "PD0020",
+      "kind": "definition",
+      "layer": 2,
+      "name": "Pow",
+      "signature": "Pow(a,e,z)",
+      "summary": "z is the relational e-th power of a."
+    },
+    {
+      "global_definition": "PowerDifferenceQuotient",
+      "href": "definition/ND0196.html?v=ac7111ec14ff",
+      "id": "ND0196",
+      "kind": "definition",
+      "layer": 3,
+      "name": "PowerDifferenceQuotient",
+      "signature": "PowerDifferenceQuotient(a,b,n,A,B,d,q)",
+      "summary": "Actual powers A=a^n, B=b^n and balances a=b+d, A=B+dq. No prime, valuation, or LTE conclusion is assumed."
+    },
+    {
+      "global_definition": "PowerDifferenceSecondOrder",
+      "href": "definition/ND0197.html?v=ac7111ec14ff",
+      "id": "ND0197",
+      "kind": "definition",
+      "layer": 3,
+      "name": "PowerDifferenceSecondOrder",
+      "signature": "PowerDifferenceSecondOrder(a,b,d,k,A,B,R,T,Q,C,H)",
+      "summary": "Four actual powers at exponents k+2,k+1,k and three subtraction-free difference/correction balances. Ordinary induction constructs all seven witnesses."
+    },
+    {
+      "global_definition": "Dvd",
+      "href": "definition/PD0003.html?v=ac7111ec14ff",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": "Le",
+      "href": "definition/PD0001.html?v=ac7111ec14ff",
+      "id": "PD0001",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Le",
+      "signature": "Le(a,b)",
+      "summary": "Witness-defined non-strict order on natural numbers."
+    },
+    {
+      "global_definition": "PowerDivides",
+      "href": "definition/PD0044.html?v=ac7111ec14ff",
+      "id": "PD0044",
+      "kind": "definition",
+      "layer": 3,
+      "name": "PowerDivides",
+      "signature": "PowerDivides(p,e,n)",
+      "summary": "The relational power p to exponent e divides n."
+    },
+    {
+      "global_definition": "BoundedPowerValuation",
+      "href": "definition/PD0045.html?v=ac7111ec14ff",
+      "id": "PD0045",
+      "kind": "definition",
+      "layer": 4,
+      "name": "BoundedPowerValuation",
+      "signature": "BoundedPowerValuation(p,n,b,e)",
+      "summary": "e is the greatest exponent at most b for which p to that exponent divides n."
+    },
+    {
+      "global_definition": "PowerValuation",
+      "href": "definition/PD0046.html?v=ac7111ec14ff",
+      "id": "PD0046",
+      "kind": "definition",
+      "layer": 5,
+      "name": "PowerValuation",
+      "signature": "PowerValuation(p,n,e)",
+      "summary": "e is the canonical bounded p-adic power valuation of n."
+    },
+    {
+      "global_definition": "LiftedPowerDifference",
+      "href": "definition/ND0198.html?v=ac7111ec14ff",
+      "id": "ND0198",
+      "kind": "definition",
+      "layer": 6,
+      "name": "LiftedPowerDifference",
+      "signature": "LiftedPowerDifference(p,a,b,n,e,A,B,D)",
+      "summary": "An output certificate: actual n-th powers, positive p-divisible difference D, a p-nondivisible second power, and actual valuation e. Its existence is proved, not assumed."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "EL0001": {
+      "critical_root_path": [
+        "EL0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL000A"
+      ]
+    },
+    "EL0002": {
+      "critical_root_path": [
+        "EL0002"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL000A"
+      ]
+    },
+    "EL0003": {
+      "critical_root_path": [
+        "EL0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL000A"
+      ]
+    },
+    "EL0004": {
+      "critical_root_path": [
+        "EL0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0006"
+      ]
+    },
+    "EL0005": {
+      "critical_root_path": [
+        "EL0005"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0006"
+      ]
+    },
+    "EL0006": {
+      "critical_root_path": [
+        "EL0004",
+        "EL0006"
+      ],
+      "dependencies": [
+        "EL0004",
+        "EL0005"
+      ],
+      "dependents": [
+        "EL000A"
+      ]
+    },
+    "EL0007": {
+      "critical_root_path": [
+        "EL0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0008",
+        "EL000A",
+        "EL0020"
+      ]
+    },
+    "EL0008": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008"
+      ],
+      "dependencies": [
+        "EL0007"
+      ],
+      "dependents": [
+        "EL0009",
+        "EL000A",
+        "EL001C",
+        "EL001E",
+        "EL0020"
+      ]
+    },
+    "EL0009": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008",
+        "EL0009"
+      ],
+      "dependencies": [
+        "EL0008"
+      ],
+      "dependents": [
+        "EL000A"
+      ]
+    },
+    "EL000A": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008",
+        "EL0009",
+        "EL000A"
+      ],
+      "dependencies": [
+        "EL0007",
+        "EL0008",
+        "EL0009",
+        "EL0001",
+        "EL0002",
+        "EL0003",
+        "EL0006"
+      ],
+      "dependents": [
+        "EL001B",
+        "EL001C"
+      ]
+    },
+    "EL000B": {
+      "critical_root_path": [
+        "EL000B"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL001A",
+        "EL001C",
+        "EL001E",
+        "EL001F"
+      ]
+    },
+    "EL000C": {
+      "critical_root_path": [
+        "EL000C"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0010",
+        "EL0016",
+        "EL001C"
+      ]
+    },
+    "EL000D": {
+      "critical_root_path": [
+        "EL000D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0024"
+      ]
+    },
+    "EL000E": {
+      "critical_root_path": [
+        "EL000E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0012",
+        "EL001C"
+      ]
+    },
+    "EL000F": {
+      "critical_root_path": [
+        "EL000F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0011"
+      ]
+    },
+    "EL0010": {
+      "critical_root_path": [
+        "EL000C",
+        "EL0010"
+      ],
+      "dependencies": [
+        "EL000C"
+      ],
+      "dependents": [
+        "EL001B",
+        "EL001C",
+        "EL001D"
+      ]
+    },
+    "EL0011": {
+      "critical_root_path": [
+        "EL000F",
+        "EL0011"
+      ],
+      "dependencies": [
+        "EL000F"
+      ],
+      "dependents": [
+        "EL0012"
+      ]
+    },
+    "EL0012": {
+      "critical_root_path": [
+        "EL000F",
+        "EL0011",
+        "EL0012"
+      ],
+      "dependencies": [
+        "EL0011",
+        "EL000E"
+      ],
+      "dependents": [
+        "EL001B"
+      ]
+    },
+    "EL0013": {
+      "critical_root_path": [
+        "EL0013"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL001B",
+        "EL001C"
+      ]
+    },
+    "EL0014": {
+      "critical_root_path": [
+        "EL0014"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0015"
+      ]
+    },
+    "EL0015": {
+      "critical_root_path": [
+        "EL0014",
+        "EL0015"
+      ],
+      "dependencies": [
+        "EL0014"
+      ],
+      "dependents": [
+        "EL0020",
+        "EL0021"
+      ]
+    },
+    "EL0016": {
+      "critical_root_path": [
+        "EL000C",
+        "EL0016"
+      ],
+      "dependencies": [
+        "EL000C"
+      ],
+      "dependents": [
+        "EL0017"
+      ]
+    },
+    "EL0017": {
+      "critical_root_path": [
+        "EL000C",
+        "EL0016",
+        "EL0017"
+      ],
+      "dependencies": [
+        "EL0016"
+      ],
+      "dependents": [
+        "EL0019"
+      ]
+    },
+    "EL0018": {
+      "critical_root_path": [
+        "EL0018"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL001A",
+        "EL001D"
+      ]
+    },
+    "EL0019": {
+      "critical_root_path": [
+        "EL000C",
+        "EL0016",
+        "EL0017",
+        "EL0019"
+      ],
+      "dependencies": [
+        "EL0017"
+      ],
+      "dependents": [
+        "EL001A"
+      ]
+    },
+    "EL001A": {
+      "critical_root_path": [
+        "EL000C",
+        "EL0016",
+        "EL0017",
+        "EL0019",
+        "EL001A"
+      ],
+      "dependencies": [
+        "EL0018",
+        "EL000B",
+        "EL0019"
+      ],
+      "dependents": [
+        "EL001E"
+      ]
+    },
+    "EL001B": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008",
+        "EL0009",
+        "EL000A",
+        "EL001B"
+      ],
+      "dependencies": [
+        "EL000A",
+        "EL0012",
+        "EL0010",
+        "EL0013"
+      ],
+      "dependents": [
+        "EL001E"
+      ]
+    },
+    "EL001C": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008",
+        "EL0009",
+        "EL000A",
+        "EL001C"
+      ],
+      "dependencies": [
+        "EL0013",
+        "EL0008",
+        "EL000C",
+        "EL000B",
+        "EL000A",
+        "EL000E",
+        "EL0010"
+      ],
+      "dependents": [
+        "EL001F"
+      ]
+    },
+    "EL001D": {
+      "critical_root_path": [
+        "EL000C",
+        "EL0010",
+        "EL001D"
+      ],
+      "dependencies": [
+        "EL0010",
+        "EL0018"
+      ],
+      "dependents": [
+        "EL001E",
+        "EL001F"
+      ]
+    },
+    "EL001E": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008",
+        "EL0009",
+        "EL000A",
+        "EL001B",
+        "EL001E"
+      ],
+      "dependencies": [
+        "EL001B",
+        "EL000B",
+        "EL001D",
+        "EL001A",
+        "EL0008"
+      ],
+      "dependents": [
+        "EL0020"
+      ]
+    },
+    "EL001F": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008",
+        "EL0009",
+        "EL000A",
+        "EL001C",
+        "EL001F"
+      ],
+      "dependencies": [
+        "EL001C",
+        "EL000B",
+        "EL001D"
+      ],
+      "dependents": [
+        "EL0021"
+      ]
+    },
+    "EL0020": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008",
+        "EL0009",
+        "EL000A",
+        "EL001B",
+        "EL001E",
+        "EL0020"
+      ],
+      "dependencies": [
+        "EL0007",
+        "EL0008",
+        "EL001E",
+        "EL0015"
+      ],
+      "dependents": [
+        "EL0021"
+      ]
+    },
+    "EL0021": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008",
+        "EL0009",
+        "EL000A",
+        "EL001B",
+        "EL001E",
+        "EL0020",
+        "EL0021"
+      ],
+      "dependencies": [
+        "EL0020",
+        "EL001F",
+        "EL0015"
+      ],
+      "dependents": [
+        "EL0024"
+      ]
+    },
+    "EL0022": {
+      "critical_root_path": [
+        "EL0022"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0024"
+      ]
+    },
+    "EL0023": {
+      "critical_root_path": [
+        "EL0023"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0024"
+      ]
+    },
+    "EL0024": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008",
+        "EL0009",
+        "EL000A",
+        "EL001B",
+        "EL001E",
+        "EL0020",
+        "EL0021",
+        "EL0024"
+      ],
+      "dependencies": [
+        "EL0021",
+        "EL0023",
+        "EL0022",
+        "EL000D"
+      ],
+      "dependents": [
+        "EL0026"
+      ]
+    },
+    "EL0025": {
+      "critical_root_path": [
+        "EL0025"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EL0026"
+      ]
+    },
+    "EL0026": {
+      "critical_root_path": [
+        "EL0007",
+        "EL0008",
+        "EL0009",
+        "EL000A",
+        "EL001B",
+        "EL001E",
+        "EL0020",
+        "EL0021",
+        "EL0024",
+        "EL0026"
+      ],
+      "dependencies": [
+        "EL0024",
+        "EL0025"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "EL0024",
+    "EL0026"
+  ],
+  "schema": "peano-lab-constructive-historical-publication-v30-first-v29-graph",
+  "stable_admitted_node_count": 0
+}

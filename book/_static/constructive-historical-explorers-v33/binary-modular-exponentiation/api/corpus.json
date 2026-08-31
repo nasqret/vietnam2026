@@ -1,0 +1,2884 @@
+{
+  "alpha_catalog_sha256": "6be052da195a295edce02f4b1955cd9e3dd71d7acefb9ac5794277eda7ef40cc",
+  "alpha_checked_use_node_count": 16,
+  "alpha_edition_identity_sha256": "9e66890600db5f787230fb5e48e18ce08026750ba4a9d3fa7b0b1e30f6e39a3d",
+  "alpha_edition_version": "v33",
+  "alpha_enrolled_node_count": 16,
+  "alpha_first_enrolled_version": "v21",
+  "alpha_first_enrollment_catalog_sha256": "84bafa545c3c529eb4bcda9d9b501af8577a8e414f5cabf58a4c2a88da5129f1",
+  "alpha_proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+  "campaign_domain_id": "D04",
+  "campaign_family_id": "F11",
+  "campaign_goal_id": "G102",
+  "campaign_milestone_ids": [
+    "G102"
+  ],
+  "candidate_status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+  "definition_count": 13,
+  "definition_dependency_count": 14,
+  "definition_layer_count": 4,
+  "definition_topological_order": [
+    "PD0002",
+    "ND0021",
+    "ND0022",
+    "PD0008",
+    "ND0023",
+    "PD0013",
+    "PD0014",
+    "PD0019",
+    "PD0020",
+    "ND0024",
+    "ND0025",
+    "ND0026",
+    "ND0027"
+  ],
+  "definitions": [
+    {
+      "arity": 2,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "exists h. h + S a = b",
+      "expansion_sha256": "8245ec2119fd9d5b970a1d301ae58fa593733fff741593deb4858a5130b52cce",
+      "global_argument_positions": [
+        0,
+        1
+      ],
+      "global_definition": "Lt",
+      "id": "PD0002",
+      "kernel_signature_unchanged": true,
+      "name": "Lt",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "a",
+        "b"
+      ],
+      "reviewed_definition_id": "PD0002",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 1,
+      "dependencies": [
+        "PD0002"
+      ],
+      "dependency_names": [
+        "Lt"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "exists ff_modulus_gap_binary_advanced. ff_modulus_gap_binary_advanced + S 1 = m",
+      "expansion_sha256": "724c17cc778c40e320beb2316b6193971ecc363d145fa7c91a706234618d8be8",
+      "global_argument_positions": [
+        0
+      ],
+      "global_definition": "BinaryModulus",
+      "id": "ND0021",
+      "kernel_signature_unchanged": true,
+      "name": "BinaryModulus",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "m"
+      ],
+      "reviewed_definition_id": "ND0021",
+      "reviewed_definition_route": "binary-modular-exponentiation",
+      "shared_definition_identity": "ND0021",
+      "signature": "BinaryModulus(m)",
+      "summary": "The exact constructive nontrivial-modulus guard 1<m.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002"
+      ]
+    },
+    {
+      "arity": 3,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "(((b = 0) \\/ (b = 1)) /\\ e = (h + h) + b)",
+      "expansion_sha256": "69132ea8ff49d6fab656c371027fbfd5bdaece96465332e6b502b398b0735aeb",
+      "global_argument_positions": [
+        0,
+        1,
+        2
+      ],
+      "global_definition": "BinaryExponentSplit",
+      "id": "ND0022",
+      "kernel_signature_unchanged": true,
+      "name": "BinaryExponentSplit",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "e",
+        "h",
+        "b"
+      ],
+      "reviewed_definition_id": "ND0022",
+      "reviewed_definition_route": "binary-modular-exponentiation",
+      "shared_definition_identity": "ND0022",
+      "signature": "BinaryExponentSplit(e,h,b)",
+      "summary": "The exact binary decomposition e=2*h+b with an explicit b=0 or b=1 witness.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 3,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "exists u v. a + m * u = b + m * v",
+      "expansion_sha256": "14b22c6894ec6a5f7d1a8a1cb62865dc5effcb102a2fdae0d7b9a87820a44fb6",
+      "global_argument_positions": [
+        0,
+        1,
+        2
+      ],
+      "global_definition": "ModEq",
+      "id": "PD0008",
+      "kernel_signature_unchanged": true,
+      "name": "ModEq",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "m",
+        "a",
+        "b"
+      ],
+      "reviewed_definition_id": "PD0008",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "ModEq(m,a,b)",
+      "summary": "Balanced-natural congruence modulo m.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 3,
+      "dependencies": [
+        "PD0002",
+        "PD0008"
+      ],
+      "dependency_names": [
+        "Lt",
+        "ModEq"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "((exists ff_gap_binary_advanced. ff_gap_binary_advanced + S (r) = m) /\\ (exists ff_left_binary_advanced_congruence ff_right_binary_advanced_congruence. (a) + m * ff_left_binary_advanced_congruence = (r) + m * ff_right_binary_advanced_congruence))",
+      "expansion_sha256": "b5def46e1332ad938c788d97ce9b1a5e9f66cb1981cdf5dfd62d8b9a1b6410e0",
+      "global_argument_positions": [
+        0,
+        1,
+        2
+      ],
+      "global_definition": "CanonicalModularResidue",
+      "id": "ND0023",
+      "kernel_signature_unchanged": true,
+      "name": "CanonicalModularResidue",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "m",
+        "a",
+        "r"
+      ],
+      "reviewed_definition_id": "ND0023",
+      "reviewed_definition_route": "binary-modular-exponentiation",
+      "shared_definition_identity": "ND0023",
+      "signature": "CanonicalModularResidue(m,a,r)",
+      "summary": "A strictly bounded canonical natural residue r<m together with exact balanced congruence to a modulo m.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0008"
+      ]
+    },
+    {
+      "arity": 4,
+      "dependencies": [],
+      "dependency_names": [],
+      "exact_ast_verified": true,
+      "expanded_template": "((exists ff_h_defined_beta_at. ff_h_defined_beta_at + S (x) = S ((S (i)) * c)) /\\ exists ff_q_defined_beta_at. b = ff_q_defined_beta_at * S ((S (i)) * c) + (x))",
+      "expansion_sha256": "469d8f255ea8dd94ea2088cf49a8c80a8bccf69fd14a841394717e7e449e73e9",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "global_definition": "Beta",
+      "id": "PD0013",
+      "kernel_signature_unchanged": true,
+      "name": "BetaAt",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "i",
+        "x"
+      ],
+      "reviewed_definition_id": "PD0013",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i.",
+      "topological_layer": 0,
+      "transitive_dependencies": []
+    },
+    {
+      "arity": 4,
+      "dependencies": [
+        "PD0002",
+        "PD0013"
+      ],
+      "dependency_names": [
+        "Lt",
+        "BetaAt"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "exists ff_u_defined_product ff_v_defined_product. ((((exists ff_h_defined_product_start. ff_h_defined_product_start + S (1) = S ((S (0)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_start. ff_u_defined_product = ff_q_defined_product_start * S ((S (0)) * ff_v_defined_product) + (1))) /\\ ((((exists ff_h_defined_product_terminal. ff_h_defined_product_terminal + S (z) = S ((S (l)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_terminal. ff_u_defined_product = ff_q_defined_product_terminal * S ((S (l)) * ff_v_defined_product) + (z))) /\\ forall ff_i_defined_product. (exists ff_lt_defined_product_bound. ff_lt_defined_product_bound + S ff_i_defined_product = l) -> exists ff_p_defined_product ff_r_defined_product ff_s_defined_product. ((((exists ff_h_defined_product_factor. ff_h_defined_product_factor + S (ff_p_defined_product) = S ((S (ff_i_defined_product)) * c)) /\\ exists ff_q_defined_product_factor. b = ff_q_defined_product_factor * S ((S (ff_i_defined_product)) * c) + (ff_p_defined_product))) /\\ ((((exists ff_h_defined_product_partial. ff_h_defined_product_partial + S (ff_r_defined_product) = S ((S (ff_i_defined_product)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_partial. ff_u_defined_product = ff_q_defined_product_partial * S ((S (ff_i_defined_product)) * ff_v_defined_product) + (ff_r_defined_product))) /\\ ((((exists ff_h_defined_product_successor. ff_h_defined_product_successor + S (ff_s_defined_product) = S ((S (S ff_i_defined_product)) * ff_v_defined_product)) /\\ exists ff_q_defined_product_successor. ff_u_defined_product = ff_q_defined_product_successor * S ((S (S ff_i_defined_product)) * ff_v_defined_product) + (ff_s_defined_product))) /\\ ff_s_defined_product = ff_r_defined_product * ff_p_defined_product)))))",
+      "expansion_sha256": "f39381e906a4c89c28a06167c706e2e14937eaa40a879fc5658d85f9892c1653",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "global_definition": "Product",
+      "id": "PD0014",
+      "kernel_signature_unchanged": true,
+      "name": "Product",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "l",
+        "z"
+      ],
+      "reviewed_definition_id": "PD0014",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
+    },
+    {
+      "arity": 4,
+      "dependencies": [
+        "PD0002",
+        "PD0013"
+      ],
+      "dependency_names": [
+        "Lt",
+        "BetaAt"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "forall ff_i_defined_repeat. (exists ff_lt_defined_repeat_bound. ff_lt_defined_repeat_bound + S ff_i_defined_repeat = l) -> (((exists ff_h_defined_repeat_decoded. ff_h_defined_repeat_decoded + S (a) = S ((S (ff_i_defined_repeat)) * c)) /\\ exists ff_q_defined_repeat_decoded. b = ff_q_defined_repeat_decoded * S ((S (ff_i_defined_repeat)) * c) + (a)))",
+      "expansion_sha256": "5ddd6737391a6ae01b8d7fad7a817a96233301d196787fc9c22d602290da819d",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "global_definition": "Repeat",
+      "id": "PD0019",
+      "kernel_signature_unchanged": true,
+      "name": "Repeat",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "b",
+        "c",
+        "a",
+        "l"
+      ],
+      "reviewed_definition_id": "PD0019",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Repeat(b,c,a,l)",
+      "summary": "The decoded prefix repeats a for l positions.",
+      "topological_layer": 1,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013"
+      ]
+    },
+    {
+      "arity": 3,
+      "dependencies": [
+        "PD0014",
+        "PD0019"
+      ],
+      "dependency_names": [
+        "Product",
+        "Repeat"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "exists ff_b_defined_power ff_c_defined_power. ((forall ff_i_defined_power_repeat. (exists ff_lt_defined_power_repeat_bound. ff_lt_defined_power_repeat_bound + S ff_i_defined_power_repeat = e) -> (((exists ff_h_defined_power_repeat_decoded. ff_h_defined_power_repeat_decoded + S (a) = S ((S (ff_i_defined_power_repeat)) * ff_c_defined_power)) /\\ exists ff_q_defined_power_repeat_decoded. ff_b_defined_power = ff_q_defined_power_repeat_decoded * S ((S (ff_i_defined_power_repeat)) * ff_c_defined_power) + (a)))) /\\ (exists ff_u_defined_power_product ff_v_defined_power_product. ((((exists ff_h_defined_power_product_start. ff_h_defined_power_product_start + S (1) = S ((S (0)) * ff_v_defined_power_product)) /\\ exists ff_q_defined_power_product_start. ff_u_defined_power_product = ff_q_defined_power_product_start * S ((S (0)) * ff_v_defined_power_product) + (1))) /\\ ((((exists ff_h_defined_power_product_terminal. ff_h_defined_power_product_terminal + S (z) = S ((S (e)) * ff_v_defined_power_product)) /\\ exists ff_q_defined_power_product_terminal. ff_u_defined_power_product = ff_q_defined_power_product_terminal * S ((S (e)) * ff_v_defined_power_product) + (z))) /\\ forall ff_i_defined_power_product. (exists ff_lt_defined_power_product_bound. ff_lt_defined_power_product_bound + S ff_i_defined_power_product = e) -> exists ff_p_defined_power_product ff_r_defined_power_product ff_s_defined_power_product. ((((exists ff_h_defined_power_product_factor. ff_h_defined_power_product_factor + S (ff_p_defined_power_product) = S ((S (ff_i_defined_power_product)) * ff_c_defined_power)) /\\ exists ff_q_defined_power_product_factor. ff_b_defined_power = ff_q_defined_power_product_factor * S ((S (ff_i_defined_power_product)) * ff_c_defined_power) + (ff_p_defined_power_product))) /\\ ((((exists ff_h_defined_power_product_partial. ff_h_defined_power_product_partial + S (ff_r_defined_power_product) = S ((S (ff_i_defined_power_product)) * ff_v_defined_power_product)) /\\ exists ff_q_defined_power_product_partial. ff_u_defined_power_product = ff_q_defined_power_product_partial * S ((S (ff_i_defined_power_product)) * ff_v_defined_power_product) + (ff_r_defined_power_product))) /\\ ((((exists ff_h_defined_power_product_successor. ff_h_defined_power_product_successor + S (ff_s_defined_power_product) = S ((S (S ff_i_defined_power_product)) * ff_v_defined_power_product)) /\\ exists ff_q_defined_power_product_successor. ff_u_defined_power_product = ff_q_defined_power_product_successor * S ((S (S ff_i_defined_power_product)) * ff_v_defined_power_product) + (ff_s_defined_power_product))) /\\ ff_s_defined_power_product = ff_r_defined_power_product * ff_p_defined_power_product)))))))",
+      "expansion_sha256": "7bf8dc5933e3f5226c6d1c81ba902c46bb7688d42f73313aa8d8deeda0b2ba81",
+      "global_argument_positions": [
+        0,
+        1,
+        2
+      ],
+      "global_definition": "Pow",
+      "id": "PD0020",
+      "kernel_signature_unchanged": true,
+      "name": "Pow",
+      "origin": "reviewed-conservative-definition",
+      "parameters": [
+        "a",
+        "e",
+        "z"
+      ],
+      "reviewed_definition_id": "PD0020",
+      "reviewed_definition_route": "quadratic-reciprocity",
+      "shared_definition_identity": null,
+      "signature": "Pow(a,e,z)",
+      "summary": "z is the relational e-th power of a.",
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013",
+        "PD0014",
+        "PD0019"
+      ]
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "PD0020"
+      ],
+      "dependency_names": [
+        "Pow"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "((e = h + h) /\\ ((exists ff_b_binary_advanced_half ff_c_binary_advanced_half. ((forall ff_i_binary_advanced_half_repeat. (exists ff_lt_binary_advanced_half_repeat_bound. ff_lt_binary_advanced_half_repeat_bound + S ff_i_binary_advanced_half_repeat = h) -> (((exists ff_h_binary_advanced_half_repeat_decoded. ff_h_binary_advanced_half_repeat_decoded + S (a) = S ((S (ff_i_binary_advanced_half_repeat)) * ff_c_binary_advanced_half)) /\\ exists ff_q_binary_advanced_half_repeat_decoded. ff_b_binary_advanced_half = ff_q_binary_advanced_half_repeat_decoded * S ((S (ff_i_binary_advanced_half_repeat)) * ff_c_binary_advanced_half) + (a)))) /\\ (exists ff_u_binary_advanced_half_product ff_v_binary_advanced_half_product. ((((exists ff_h_binary_advanced_half_product_start. ff_h_binary_advanced_half_product_start + S (1) = S ((S (0)) * ff_v_binary_advanced_half_product)) /\\ exists ff_q_binary_advanced_half_product_start. ff_u_binary_advanced_half_product = ff_q_binary_advanced_half_product_start * S ((S (0)) * ff_v_binary_advanced_half_product) + (1))) /\\ ((((exists ff_h_binary_advanced_half_product_terminal. ff_h_binary_advanced_half_product_terminal + S (u) = S ((S (h)) * ff_v_binary_advanced_half_product)) /\\ exists ff_q_binary_advanced_half_product_terminal. ff_u_binary_advanced_half_product = ff_q_binary_advanced_half_product_terminal * S ((S (h)) * ff_v_binary_advanced_half_product) + (u))) /\\ forall ff_i_binary_advanced_half_product. (exists ff_lt_binary_advanced_half_product_bound. ff_lt_binary_advanced_half_product_bound + S ff_i_binary_advanced_half_product = h) -> exists ff_p_binary_advanced_half_product ff_r_binary_advanced_half_product ff_s_binary_advanced_half_product. ((((exists ff_h_binary_advanced_half_product_factor. ff_h_binary_advanced_half_product_factor + S (ff_p_binary_advanced_half_product) = S ((S (ff_i_binary_advanced_half_product)) * ff_c_binary_advanced_half)) /\\ exists ff_q_binary_advanced_half_product_factor. ff_b_binary_advanced_half = ff_q_binary_advanced_half_product_factor * S ((S (ff_i_binary_advanced_half_product)) * ff_c_binary_advanced_half) + (ff_p_binary_advanced_half_product))) /\\ ((((exists ff_h_binary_advanced_half_product_partial. ff_h_binary_advanced_half_product_partial + S (ff_r_binary_advanced_half_product) = S ((S (ff_i_binary_advanced_half_product)) * ff_v_binary_advanced_half_product)) /\\ exists ff_q_binary_advanced_half_product_partial. ff_u_binary_advanced_half_product = ff_q_binary_advanced_half_product_partial * S ((S (ff_i_binary_advanced_half_product)) * ff_v_binary_advanced_half_product) + (ff_r_binary_advanced_half_product))) /\\ ((((exists ff_h_binary_advanced_half_product_successor. ff_h_binary_advanced_half_product_successor + S (ff_s_binary_advanced_half_product) = S ((S (S ff_i_binary_advanced_half_product)) * ff_v_binary_advanced_half_product)) /\\ exists ff_q_binary_advanced_half_product_successor. ff_u_binary_advanced_half_product = ff_q_binary_advanced_half_product_successor * S ((S (S ff_i_binary_advanced_half_product)) * ff_v_binary_advanced_half_product) + (ff_s_binary_advanced_half_product))) /\\ ff_s_binary_advanced_half_product = ff_r_binary_advanced_half_product * ff_p_binary_advanced_half_product)))))))) /\\ (exists ff_b_binary_advanced_full ff_c_binary_advanced_full. ((forall ff_i_binary_advanced_full_repeat. (exists ff_lt_binary_advanced_full_repeat_bound. ff_lt_binary_advanced_full_repeat_bound + S ff_i_binary_advanced_full_repeat = e) -> (((exists ff_h_binary_advanced_full_repeat_decoded. ff_h_binary_advanced_full_repeat_decoded + S (a) = S ((S (ff_i_binary_advanced_full_repeat)) * ff_c_binary_advanced_full)) /\\ exists ff_q_binary_advanced_full_repeat_decoded. ff_b_binary_advanced_full = ff_q_binary_advanced_full_repeat_decoded * S ((S (ff_i_binary_advanced_full_repeat)) * ff_c_binary_advanced_full) + (a)))) /\\ (exists ff_u_binary_advanced_full_product ff_v_binary_advanced_full_product. ((((exists ff_h_binary_advanced_full_product_start. ff_h_binary_advanced_full_product_start + S (1) = S ((S (0)) * ff_v_binary_advanced_full_product)) /\\ exists ff_q_binary_advanced_full_product_start. ff_u_binary_advanced_full_product = ff_q_binary_advanced_full_product_start * S ((S (0)) * ff_v_binary_advanced_full_product) + (1))) /\\ ((((exists ff_h_binary_advanced_full_product_terminal. ff_h_binary_advanced_full_product_terminal + S (z) = S ((S (e)) * ff_v_binary_advanced_full_product)) /\\ exists ff_q_binary_advanced_full_product_terminal. ff_u_binary_advanced_full_product = ff_q_binary_advanced_full_product_terminal * S ((S (e)) * ff_v_binary_advanced_full_product) + (z))) /\\ forall ff_i_binary_advanced_full_product. (exists ff_lt_binary_advanced_full_product_bound. ff_lt_binary_advanced_full_product_bound + S ff_i_binary_advanced_full_product = e) -> exists ff_p_binary_advanced_full_product ff_r_binary_advanced_full_product ff_s_binary_advanced_full_product. ((((exists ff_h_binary_advanced_full_product_factor. ff_h_binary_advanced_full_product_factor + S (ff_p_binary_advanced_full_product) = S ((S (ff_i_binary_advanced_full_product)) * ff_c_binary_advanced_full)) /\\ exists ff_q_binary_advanced_full_product_factor. ff_b_binary_advanced_full = ff_q_binary_advanced_full_product_factor * S ((S (ff_i_binary_advanced_full_product)) * ff_c_binary_advanced_full) + (ff_p_binary_advanced_full_product))) /\\ ((((exists ff_h_binary_advanced_full_product_partial. ff_h_binary_advanced_full_product_partial + S (ff_r_binary_advanced_full_product) = S ((S (ff_i_binary_advanced_full_product)) * ff_v_binary_advanced_full_product)) /\\ exists ff_q_binary_advanced_full_product_partial. ff_u_binary_advanced_full_product = ff_q_binary_advanced_full_product_partial * S ((S (ff_i_binary_advanced_full_product)) * ff_v_binary_advanced_full_product) + (ff_r_binary_advanced_full_product))) /\\ ((((exists ff_h_binary_advanced_full_product_successor. ff_h_binary_advanced_full_product_successor + S (ff_s_binary_advanced_full_product) = S ((S (S ff_i_binary_advanced_full_product)) * ff_v_binary_advanced_full_product)) /\\ exists ff_q_binary_advanced_full_product_successor. ff_u_binary_advanced_full_product = ff_q_binary_advanced_full_product_successor * S ((S (S ff_i_binary_advanced_full_product)) * ff_v_binary_advanced_full_product) + (ff_s_binary_advanced_full_product))) /\\ ff_s_binary_advanced_full_product = ff_r_binary_advanced_full_product * ff_p_binary_advanced_full_product))))))))))",
+      "expansion_sha256": "e47333bbd69d0c2e79bf9e924493ca7f87dd7853e6041d09584682fa72d36b0f",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "global_definition": "BinaryDoubledPower",
+      "id": "ND0024",
+      "kernel_signature_unchanged": true,
+      "name": "BinaryDoubledPower",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "a",
+        "h",
+        "e",
+        "u",
+        "z"
+      ],
+      "reviewed_definition_id": "ND0024",
+      "reviewed_definition_route": "binary-modular-exponentiation",
+      "shared_definition_identity": "ND0024",
+      "signature": "BinaryDoubledPower(a,h,e,u,z)",
+      "summary": "The exact even-exponent prerequisites e=2*h, Pow(a,h,u) and Pow(a,e,z).",
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013",
+        "PD0014",
+        "PD0019",
+        "PD0020"
+      ]
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "PD0020"
+      ],
+      "dependency_names": [
+        "Pow"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "((e = S (h + h)) /\\ ((exists ff_b_binary_advanced_half ff_c_binary_advanced_half. ((forall ff_i_binary_advanced_half_repeat. (exists ff_lt_binary_advanced_half_repeat_bound. ff_lt_binary_advanced_half_repeat_bound + S ff_i_binary_advanced_half_repeat = h) -> (((exists ff_h_binary_advanced_half_repeat_decoded. ff_h_binary_advanced_half_repeat_decoded + S (a) = S ((S (ff_i_binary_advanced_half_repeat)) * ff_c_binary_advanced_half)) /\\ exists ff_q_binary_advanced_half_repeat_decoded. ff_b_binary_advanced_half = ff_q_binary_advanced_half_repeat_decoded * S ((S (ff_i_binary_advanced_half_repeat)) * ff_c_binary_advanced_half) + (a)))) /\\ (exists ff_u_binary_advanced_half_product ff_v_binary_advanced_half_product. ((((exists ff_h_binary_advanced_half_product_start. ff_h_binary_advanced_half_product_start + S (1) = S ((S (0)) * ff_v_binary_advanced_half_product)) /\\ exists ff_q_binary_advanced_half_product_start. ff_u_binary_advanced_half_product = ff_q_binary_advanced_half_product_start * S ((S (0)) * ff_v_binary_advanced_half_product) + (1))) /\\ ((((exists ff_h_binary_advanced_half_product_terminal. ff_h_binary_advanced_half_product_terminal + S (u) = S ((S (h)) * ff_v_binary_advanced_half_product)) /\\ exists ff_q_binary_advanced_half_product_terminal. ff_u_binary_advanced_half_product = ff_q_binary_advanced_half_product_terminal * S ((S (h)) * ff_v_binary_advanced_half_product) + (u))) /\\ forall ff_i_binary_advanced_half_product. (exists ff_lt_binary_advanced_half_product_bound. ff_lt_binary_advanced_half_product_bound + S ff_i_binary_advanced_half_product = h) -> exists ff_p_binary_advanced_half_product ff_r_binary_advanced_half_product ff_s_binary_advanced_half_product. ((((exists ff_h_binary_advanced_half_product_factor. ff_h_binary_advanced_half_product_factor + S (ff_p_binary_advanced_half_product) = S ((S (ff_i_binary_advanced_half_product)) * ff_c_binary_advanced_half)) /\\ exists ff_q_binary_advanced_half_product_factor. ff_b_binary_advanced_half = ff_q_binary_advanced_half_product_factor * S ((S (ff_i_binary_advanced_half_product)) * ff_c_binary_advanced_half) + (ff_p_binary_advanced_half_product))) /\\ ((((exists ff_h_binary_advanced_half_product_partial. ff_h_binary_advanced_half_product_partial + S (ff_r_binary_advanced_half_product) = S ((S (ff_i_binary_advanced_half_product)) * ff_v_binary_advanced_half_product)) /\\ exists ff_q_binary_advanced_half_product_partial. ff_u_binary_advanced_half_product = ff_q_binary_advanced_half_product_partial * S ((S (ff_i_binary_advanced_half_product)) * ff_v_binary_advanced_half_product) + (ff_r_binary_advanced_half_product))) /\\ ((((exists ff_h_binary_advanced_half_product_successor. ff_h_binary_advanced_half_product_successor + S (ff_s_binary_advanced_half_product) = S ((S (S ff_i_binary_advanced_half_product)) * ff_v_binary_advanced_half_product)) /\\ exists ff_q_binary_advanced_half_product_successor. ff_u_binary_advanced_half_product = ff_q_binary_advanced_half_product_successor * S ((S (S ff_i_binary_advanced_half_product)) * ff_v_binary_advanced_half_product) + (ff_s_binary_advanced_half_product))) /\\ ff_s_binary_advanced_half_product = ff_r_binary_advanced_half_product * ff_p_binary_advanced_half_product)))))))) /\\ (exists ff_b_binary_advanced_full ff_c_binary_advanced_full. ((forall ff_i_binary_advanced_full_repeat. (exists ff_lt_binary_advanced_full_repeat_bound. ff_lt_binary_advanced_full_repeat_bound + S ff_i_binary_advanced_full_repeat = e) -> (((exists ff_h_binary_advanced_full_repeat_decoded. ff_h_binary_advanced_full_repeat_decoded + S (a) = S ((S (ff_i_binary_advanced_full_repeat)) * ff_c_binary_advanced_full)) /\\ exists ff_q_binary_advanced_full_repeat_decoded. ff_b_binary_advanced_full = ff_q_binary_advanced_full_repeat_decoded * S ((S (ff_i_binary_advanced_full_repeat)) * ff_c_binary_advanced_full) + (a)))) /\\ (exists ff_u_binary_advanced_full_product ff_v_binary_advanced_full_product. ((((exists ff_h_binary_advanced_full_product_start. ff_h_binary_advanced_full_product_start + S (1) = S ((S (0)) * ff_v_binary_advanced_full_product)) /\\ exists ff_q_binary_advanced_full_product_start. ff_u_binary_advanced_full_product = ff_q_binary_advanced_full_product_start * S ((S (0)) * ff_v_binary_advanced_full_product) + (1))) /\\ ((((exists ff_h_binary_advanced_full_product_terminal. ff_h_binary_advanced_full_product_terminal + S (z) = S ((S (e)) * ff_v_binary_advanced_full_product)) /\\ exists ff_q_binary_advanced_full_product_terminal. ff_u_binary_advanced_full_product = ff_q_binary_advanced_full_product_terminal * S ((S (e)) * ff_v_binary_advanced_full_product) + (z))) /\\ forall ff_i_binary_advanced_full_product. (exists ff_lt_binary_advanced_full_product_bound. ff_lt_binary_advanced_full_product_bound + S ff_i_binary_advanced_full_product = e) -> exists ff_p_binary_advanced_full_product ff_r_binary_advanced_full_product ff_s_binary_advanced_full_product. ((((exists ff_h_binary_advanced_full_product_factor. ff_h_binary_advanced_full_product_factor + S (ff_p_binary_advanced_full_product) = S ((S (ff_i_binary_advanced_full_product)) * ff_c_binary_advanced_full)) /\\ exists ff_q_binary_advanced_full_product_factor. ff_b_binary_advanced_full = ff_q_binary_advanced_full_product_factor * S ((S (ff_i_binary_advanced_full_product)) * ff_c_binary_advanced_full) + (ff_p_binary_advanced_full_product))) /\\ ((((exists ff_h_binary_advanced_full_product_partial. ff_h_binary_advanced_full_product_partial + S (ff_r_binary_advanced_full_product) = S ((S (ff_i_binary_advanced_full_product)) * ff_v_binary_advanced_full_product)) /\\ exists ff_q_binary_advanced_full_product_partial. ff_u_binary_advanced_full_product = ff_q_binary_advanced_full_product_partial * S ((S (ff_i_binary_advanced_full_product)) * ff_v_binary_advanced_full_product) + (ff_r_binary_advanced_full_product))) /\\ ((((exists ff_h_binary_advanced_full_product_successor. ff_h_binary_advanced_full_product_successor + S (ff_s_binary_advanced_full_product) = S ((S (S ff_i_binary_advanced_full_product)) * ff_v_binary_advanced_full_product)) /\\ exists ff_q_binary_advanced_full_product_successor. ff_u_binary_advanced_full_product = ff_q_binary_advanced_full_product_successor * S ((S (S ff_i_binary_advanced_full_product)) * ff_v_binary_advanced_full_product) + (ff_s_binary_advanced_full_product))) /\\ ff_s_binary_advanced_full_product = ff_r_binary_advanced_full_product * ff_p_binary_advanced_full_product))))))))))",
+      "expansion_sha256": "f88757139d4922eb12194faeb5dd0c0a28249a742ae242941d011ce166e25cd4",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "global_definition": "BinaryOddPower",
+      "id": "ND0025",
+      "kernel_signature_unchanged": true,
+      "name": "BinaryOddPower",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "a",
+        "h",
+        "e",
+        "u",
+        "z"
+      ],
+      "reviewed_definition_id": "ND0025",
+      "reviewed_definition_route": "binary-modular-exponentiation",
+      "shared_definition_identity": "ND0025",
+      "signature": "BinaryOddPower(a,h,e,u,z)",
+      "summary": "The exact odd-exponent prerequisites e=2*h+1, Pow(a,h,u) and Pow(a,e,z).",
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "PD0002",
+        "PD0013",
+        "PD0014",
+        "PD0019",
+        "PD0020"
+      ]
+    },
+    {
+      "arity": 5,
+      "dependencies": [
+        "ND0023"
+      ],
+      "dependency_names": [
+        "CanonicalModularResidue"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "(((b = 0) /\\ (((exists ff_gap_binary_advanced_square. ff_gap_binary_advanced_square + S (r) = m) /\\ (exists ff_left_binary_advanced_square_congruence ff_right_binary_advanced_square_congruence. (u * u) + m * ff_left_binary_advanced_square_congruence = (r) + m * ff_right_binary_advanced_square_congruence)))) \\/ ((b = 1) /\\ (((exists ff_gap_binary_advanced_multiply. ff_gap_binary_advanced_multiply + S (r) = m) /\\ (exists ff_left_binary_advanced_multiply_congruence ff_right_binary_advanced_multiply_congruence. ((u * u) * a) + m * ff_left_binary_advanced_multiply_congruence = (r) + m * ff_right_binary_advanced_multiply_congruence)))))",
+      "expansion_sha256": "228b6f10bc31d04789b8b95c2531dfd98db6c2ba808c9ec2466b15734dd229f3",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "global_definition": "BinaryModularStep",
+      "id": "ND0026",
+      "kernel_signature_unchanged": true,
+      "name": "BinaryModularStep",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "m",
+        "u",
+        "a",
+        "b",
+        "r"
+      ],
+      "reviewed_definition_id": "ND0026",
+      "reviewed_definition_route": "binary-modular-exponentiation",
+      "shared_definition_identity": "ND0026",
+      "signature": "BinaryModularStep(m,u,a,b,r)",
+      "summary": "One exact binary square or square-and-multiply transition with a genuinely canonical reduced output.",
+      "topological_layer": 2,
+      "transitive_dependencies": [
+        "ND0023",
+        "PD0002",
+        "PD0008"
+      ]
+    },
+    {
+      "arity": 4,
+      "dependencies": [
+        "PD0020",
+        "ND0023"
+      ],
+      "dependency_names": [
+        "Pow",
+        "CanonicalModularResidue"
+      ],
+      "exact_ast_verified": true,
+      "expanded_template": "exists ff_power_binary_advanced. ((exists ff_b_binary_advanced_value ff_c_binary_advanced_value. ((forall ff_i_binary_advanced_value_repeat. (exists ff_lt_binary_advanced_value_repeat_bound. ff_lt_binary_advanced_value_repeat_bound + S ff_i_binary_advanced_value_repeat = e) -> (((exists ff_h_binary_advanced_value_repeat_decoded. ff_h_binary_advanced_value_repeat_decoded + S (a) = S ((S (ff_i_binary_advanced_value_repeat)) * ff_c_binary_advanced_value)) /\\ exists ff_q_binary_advanced_value_repeat_decoded. ff_b_binary_advanced_value = ff_q_binary_advanced_value_repeat_decoded * S ((S (ff_i_binary_advanced_value_repeat)) * ff_c_binary_advanced_value) + (a)))) /\\ (exists ff_u_binary_advanced_value_product ff_v_binary_advanced_value_product. ((((exists ff_h_binary_advanced_value_product_start. ff_h_binary_advanced_value_product_start + S (1) = S ((S (0)) * ff_v_binary_advanced_value_product)) /\\ exists ff_q_binary_advanced_value_product_start. ff_u_binary_advanced_value_product = ff_q_binary_advanced_value_product_start * S ((S (0)) * ff_v_binary_advanced_value_product) + (1))) /\\ ((((exists ff_h_binary_advanced_value_product_terminal. ff_h_binary_advanced_value_product_terminal + S (ff_power_binary_advanced) = S ((S (e)) * ff_v_binary_advanced_value_product)) /\\ exists ff_q_binary_advanced_value_product_terminal. ff_u_binary_advanced_value_product = ff_q_binary_advanced_value_product_terminal * S ((S (e)) * ff_v_binary_advanced_value_product) + (ff_power_binary_advanced))) /\\ forall ff_i_binary_advanced_value_product. (exists ff_lt_binary_advanced_value_product_bound. ff_lt_binary_advanced_value_product_bound + S ff_i_binary_advanced_value_product = e) -> exists ff_p_binary_advanced_value_product ff_r_binary_advanced_value_product ff_s_binary_advanced_value_product. ((((exists ff_h_binary_advanced_value_product_factor. ff_h_binary_advanced_value_product_factor + S (ff_p_binary_advanced_value_product) = S ((S (ff_i_binary_advanced_value_product)) * ff_c_binary_advanced_value)) /\\ exists ff_q_binary_advanced_value_product_factor. ff_b_binary_advanced_value = ff_q_binary_advanced_value_product_factor * S ((S (ff_i_binary_advanced_value_product)) * ff_c_binary_advanced_value) + (ff_p_binary_advanced_value_product))) /\\ ((((exists ff_h_binary_advanced_value_product_partial. ff_h_binary_advanced_value_product_partial + S (ff_r_binary_advanced_value_product) = S ((S (ff_i_binary_advanced_value_product)) * ff_v_binary_advanced_value_product)) /\\ exists ff_q_binary_advanced_value_product_partial. ff_u_binary_advanced_value_product = ff_q_binary_advanced_value_product_partial * S ((S (ff_i_binary_advanced_value_product)) * ff_v_binary_advanced_value_product) + (ff_r_binary_advanced_value_product))) /\\ ((((exists ff_h_binary_advanced_value_product_successor. ff_h_binary_advanced_value_product_successor + S (ff_s_binary_advanced_value_product) = S ((S (S ff_i_binary_advanced_value_product)) * ff_v_binary_advanced_value_product)) /\\ exists ff_q_binary_advanced_value_product_successor. ff_u_binary_advanced_value_product = ff_q_binary_advanced_value_product_successor * S ((S (S ff_i_binary_advanced_value_product)) * ff_v_binary_advanced_value_product) + (ff_s_binary_advanced_value_product))) /\\ ff_s_binary_advanced_value_product = ff_r_binary_advanced_value_product * ff_p_binary_advanced_value_product)))))))) /\\ (((exists ff_gap_binary_advanced_residue. ff_gap_binary_advanced_residue + S (r) = m) /\\ (exists ff_left_binary_advanced_residue_congruence ff_right_binary_advanced_residue_congruence. (ff_power_binary_advanced) + m * ff_left_binary_advanced_residue_congruence = (r) + m * ff_right_binary_advanced_residue_congruence))))",
+      "expansion_sha256": "c511b279bab567e8d6b35620a6b8b71476927c7fbd33982ce920a2329cc60f72",
+      "global_argument_positions": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "global_definition": "BinaryModularPower",
+      "id": "ND0027",
+      "kernel_signature_unchanged": true,
+      "name": "BinaryModularPower",
+      "origin": "shared-reviewed-hygienic-conservative-definition",
+      "parameters": [
+        "a",
+        "e",
+        "m",
+        "r"
+      ],
+      "reviewed_definition_id": "ND0027",
+      "reviewed_definition_route": "binary-modular-exponentiation",
+      "shared_definition_identity": "ND0027",
+      "signature": "BinaryModularPower(a,e,m,r)",
+      "summary": "The exact canonical natural residue of the existing beta-coded exponentiation relation Pow(a,e,z).",
+      "topological_layer": 3,
+      "transitive_dependencies": [
+        "ND0023",
+        "PD0002",
+        "PD0008",
+        "PD0013",
+        "PD0014",
+        "PD0019",
+        "PD0020"
+      ]
+    }
+  ],
+  "edge_count": 29,
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "BX0001",
+      "target": "BX0002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0002",
+      "target": "BX0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0003",
+      "target": "BX0004"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0006",
+      "target": "BX0007"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0002",
+      "target": "BX000A"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0002",
+      "target": "BX000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0002",
+      "target": "BX000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0003",
+      "target": "BX000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0002",
+      "target": "BX000E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX0003",
+      "target": "BX000F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX000E",
+      "target": "BX0010"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "BX000F",
+      "target": "BX0010"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0001",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0002",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0002",
+      "statement_occurrences": 1,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX0003",
+      "statement_occurrences": 2,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0004",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX0004",
+      "statement_occurrences": 2,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0005",
+      "statement_occurrences": 1,
+      "target": "ND0022"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0006",
+      "statement_occurrences": 1,
+      "target": "ND0024"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0007",
+      "statement_occurrences": 1,
+      "target": "ND0025"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX0008",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 3,
+      "source": "BX0009",
+      "statement_occurrences": 3,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000A",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000A",
+      "statement_occurrences": 1,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000B",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000B",
+      "statement_occurrences": 1,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000C",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000C",
+      "statement_occurrences": 1,
+      "target": "ND0026"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX000D",
+      "statement_occurrences": 2,
+      "target": "ND0026"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000E",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX000E",
+      "statement_occurrences": 1,
+      "target": "ND0027"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX000F",
+      "statement_occurrences": 2,
+      "target": "ND0027"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "BX0010",
+      "statement_occurrences": 1,
+      "target": "ND0021"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "BX0010",
+      "statement_occurrences": 2,
+      "target": "ND0027"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0021",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0023",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0023",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0019"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0024",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0025",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0026",
+      "target": "ND0023"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0027",
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0027",
+      "target": "ND0023"
+    }
+  ],
+  "external_dependencies": [
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "add_eq_zero_right",
+      "statement_sha256": "80f155113c1ed6af4126e1411c83c3c95b9f90b28aca748e5f8c2d4bd31fad9d"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "division_remainder_exists",
+      "statement_sha256": "5129cc09f73a6bfed8749bccdd181148e27fa13ee31c796f9e3a8010fb8197a0"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "mod_eq_bounded_unique",
+      "statement_sha256": "8e73abc172b556b5fb557c527977e6f07c1e366080b207163dd58b7931643c0d"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "mod_eq_mul",
+      "statement_sha256": "a3983a74ea581e76450a400c1ed5b4e06e6feac6ff9a6ebb90d8f82f3c316d2b"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "mod_eq_symm",
+      "statement_sha256": "198ad914d976d480b8d9df5b0ada71e74e1be9e0b01656dd7e641038874ff27e"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "mod_eq_trans",
+      "statement_sha256": "07009140b6d6d7f4e1e34d6c33bf1b007ea29c26a14eeafa9b2fa3d377abe7a9"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "mul_comm",
+      "statement_sha256": "b5277583d2ad3b537c2ccf0fecc33912b9ff69674ec9659cf8d70f58b691b65d"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "parity_cases",
+      "statement_sha256": "44703e32a0dd9b0c57a83f302061ae8d9b347664615deb0fd5159d5fa6ebb7c0"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "pow_add",
+      "statement_sha256": "7ede92eb4825c0936cf43eb575041c886b24d07683cf2e7268d079f1a37123ab"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "pow_exists",
+      "statement_sha256": "b773cba57ba44f87431d84dcaeb85cdf6ee363ab259e593ad25aa0ba4ec81543"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "pow_functional",
+      "statement_sha256": "a165bbcd196d1d36843397b85e6b018527828d717d34f17691cd3330f97b751d"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "pow_successor_pair_mul",
+      "statement_sha256": "0057e37220405bfa53138560953bc6b0fed8aefe6c3f9babdf2fb60351e7424d"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "remainder_decomposition_to_mod_eq",
+      "statement_sha256": "5329024af13cfcbc0e4662ef24110fcbe2ece3d384ffca5c07cf3f6b7a49b55b"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": true,
+      "alpha_checked_use": true,
+      "alpha_evidence": "stable_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "stable_closed",
+      "kind": "stable-admitted-theorem",
+      "name": "succ_ne_zero",
+      "statement_sha256": "38711df11e3d8fa1d5014115f8bcef8fbbaf89b5cdab99a80006dc2eb96b952e"
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_evidence": "alpha_closed",
+      "enrolled_in_alpha": true,
+      "evidence": "alpha_closed",
+      "kind": "alpha-admitted-theorem",
+      "name": "two_mul_eq_add_self",
+      "statement_sha256": "c2fb8e5dff4b74e69f8d470029d5dbc303a896aa10bc95323c79e6e392f271d2"
+    }
+  ],
+  "external_dependency_count": 15,
+  "family_slug": "binary-modular-exponentiation",
+  "family_title": "Constructive binary modular exponentiation",
+  "formal_line_count": 360,
+  "independent_lean_bundle_verified": true,
+  "internal_edge_count": 12,
+  "layers": {
+    "binary_canonical_residue_exists": 1,
+    "binary_canonical_residue_exists_unique": 2,
+    "binary_canonical_residue_functional": 0,
+    "binary_exponent_doubled_power": 0,
+    "binary_exponent_odd_power": 1,
+    "binary_exponent_split_exists": 0,
+    "binary_modular_exponentiation_result_exists": 2,
+    "binary_modular_exponentiation_result_exists_unique": 3,
+    "binary_modular_exponentiation_result_functional": 1,
+    "binary_modular_multiply_congruence": 0,
+    "binary_modular_multiply_residue_exists": 2,
+    "binary_modular_square_congruence": 0,
+    "binary_modular_square_residue_exists": 2,
+    "binary_modular_step_exists": 2,
+    "binary_modular_step_functional": 1,
+    "binary_modulus_nontrivial_nonzero": 0
+  },
+  "milestone_caveat": "G102 was OPEN when this family was first admitted in Alpha v21. It is now CLOSED in Alpha v23: every arbitrary exponent has actual canonical beta-coded digits, a complete modular execution, and exact counted bound operations≤3*BitLen(e)+2.",
+  "milestone_checked_use": true,
+  "milestone_status": "alpha_closed",
+  "node_count": 16,
+  "nodes": [
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 11,
+      "body_proof_nodes": 17,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ m. BinaryModulus(m) → ¬m = 0",
+        "defined_statement_sha256": "fe77631e48db7ce2a9079863ab2e12cc0bd76e4768484de1c7c15bf79ed1c499",
+        "definition_uses": {
+          "ND0021": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "df3f3be5ae7d754326f0e766d53d1ffa784fcf4f01007049ff0c24ce56dceba0",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0021": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ m. "
+          },
+          {
+            "definition": "ND0021",
+            "kind": "definition",
+            "text": "BinaryModulus(m)"
+          },
+          {
+            "kind": "text",
+            "text": " → ¬m = 0"
+          }
+        ]
+      },
+      "dependencies": [
+        "add_eq_zero_right",
+        "succ_ne_zero"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX0001",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_modulus_nontrivial_nonzero",
+      "proof_bundle_node_id": 192,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro m",
+        "intro hmodulus",
+        "intro hzero",
+        "cases hmodulus",
+        "rewrite hzero at hmodulus_witness",
+        "have hsuccessor : S 1 = 0",
+        "specialize add_eq_zero_right x",
+        "specialize add_eq_zero_right (S 1)",
+        "apply add_eq_zero_right",
+        "exact hmodulus_witness",
+        "specialize succ_ne_zero 1",
+        "apply succ_ne_zero",
+        "exact hsuccessor"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "473419e0dac900ee9310e0eff37cfae9eccf84a4f27822e86135671a3fc7890d",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "df3f3be5ae7d754326f0e766d53d1ffa784fcf4f01007049ff0c24ce56dceba0"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall m. (exists ff_modulus_gap_binary_guard. ff_modulus_gap_binary_guard + S 1 = m) -> ~(m = 0)",
+      "statement_sha256": "df3f3be5ae7d754326f0e766d53d1ffa784fcf4f01007049ff0c24ce56dceba0",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Every explicitly guarded modulus m>1 is constructively nonzero."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 17,
+      "body_proof_nodes": 39,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ m. ∀ n. BinaryModulus(m) → ∃ x. CanonicalModularResidue(m,n,x)",
+        "defined_statement_sha256": "083a4ec09debc49de7819569c0b008d0ddc8e1580aef232c10e4faed7f9f5ced",
+        "definition_uses": {
+          "ND0021": 1,
+          "ND0023": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "706d0ba66fb532a65b37b61b26361fd923778d52c970750415c1f3e46a6fd265",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0021": 1,
+          "ND0023": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ m. ∀ n. "
+          },
+          {
+            "definition": "ND0021",
+            "kind": "definition",
+            "text": "BinaryModulus(m)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ x. "
+          },
+          {
+            "definition": "ND0023",
+            "kind": "definition",
+            "text": "CanonicalModularResidue(m,n,x)"
+          }
+        ]
+      },
+      "dependencies": [
+        "binary_modulus_nontrivial_nonzero",
+        "division_remainder_exists",
+        "mul_comm",
+        "remainder_decomposition_to_mod_eq"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX0002",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_canonical_residue_exists",
+      "proof_bundle_node_id": 193,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro m",
+        "intro n",
+        "intro hmodulus",
+        "have hnonzero : ~(m = 0)",
+        "intro hzero",
+        "specialize binary_modulus_nontrivial_nonzero m",
+        "apply binary_modulus_nontrivial_nonzero",
+        "exact hmodulus",
+        "exact hzero",
+        "have hdivision : exists q r. n = m * q + r /\\ exists gap. gap + S r = m",
+        "specialize division_remainder_exists m",
+        "specialize division_remainder_exists n",
+        "apply division_remainder_exists",
+        "exact hnonzero",
+        "cases hdivision",
+        "cases hdivision_witness",
+        "cases hdivision_witness_witness",
+        "have hdecomposition : n = x * m + x1",
+        "trans m * x + x1",
+        "exact hdivision_witness_witness_left",
+        "congr",
+        "apply mul_comm",
+        "refl",
+        "exists x1",
+        "split",
+        "exact hdivision_witness_witness_right",
+        "specialize remainder_decomposition_to_mod_eq m",
+        "specialize remainder_decomposition_to_mod_eq n",
+        "specialize remainder_decomposition_to_mod_eq x",
+        "specialize remainder_decomposition_to_mod_eq x1",
+        "apply remainder_decomposition_to_mod_eq",
+        "exact hdecomposition"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "818b36a2696f920a1d10ead764633a18435a2d1936c44d0725707c85220a3918",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "706d0ba66fb532a65b37b61b26361fd923778d52c970750415c1f3e46a6fd265"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall m n. (exists ff_modulus_gap_binary_guard. ff_modulus_gap_binary_guard + S 1 = m) -> exists r. (((exists ff_gap_binary_value. ff_gap_binary_value + S (r) = m) /\\ (exists ff_left_binary_value_congruence ff_right_binary_value_congruence. (n) + m * ff_left_binary_value_congruence = (r) + m * ff_right_binary_value_congruence)))",
+      "statement_sha256": "706d0ba66fb532a65b37b61b26361fd923778d52c970750415c1f3e46a6fd265",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Every value has a witnessed canonical residue below every modulus m>1."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 17,
+      "body_proof_nodes": 36,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ m. ∀ n. ∀ r. ∀ s. CanonicalModularResidue(m,n,r) → CanonicalModularResidue(m,n,s) → r = s",
+        "defined_statement_sha256": "1a4a6b11d5e22142af4caf85ba871358c68a8be73d9d4e81c8bbac94ee408a8b",
+        "definition_uses": {
+          "ND0023": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "6ceca7d1c5171f65ecad03675e8ac1c4a69bfaf38c82b9a3423795134e3c797d",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0023": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ m. ∀ n. ∀ r. ∀ s. "
+          },
+          {
+            "definition": "ND0023",
+            "kind": "definition",
+            "text": "CanonicalModularResidue(m,n,r)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "ND0023",
+            "kind": "definition",
+            "text": "CanonicalModularResidue(m,n,s)"
+          },
+          {
+            "kind": "text",
+            "text": " → r = s"
+          }
+        ]
+      },
+      "dependencies": [
+        "mod_eq_symm",
+        "mod_eq_trans",
+        "mod_eq_bounded_unique"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX0003",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_canonical_residue_functional",
+      "proof_bundle_node_id": 194,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro m",
+        "intro n",
+        "intro r",
+        "intro s",
+        "intro hr",
+        "intro hs",
+        "cases hr",
+        "cases hs",
+        "have hreverse : exists ff_left_binary_functional_reverse ff_right_binary_functional_reverse. (r) + m * ff_left_binary_functional_reverse = (n) + m * ff_right_binary_functional_reverse",
+        "specialize mod_eq_symm m",
+        "specialize mod_eq_symm n",
+        "specialize mod_eq_symm r",
+        "apply mod_eq_symm",
+        "exact hr_right",
+        "have hrelated : exists ff_left_binary_functional_related ff_right_binary_functional_related. (r) + m * ff_left_binary_functional_related = (s) + m * ff_right_binary_functional_related",
+        "specialize mod_eq_trans m",
+        "specialize mod_eq_trans r",
+        "specialize mod_eq_trans n",
+        "specialize mod_eq_trans s",
+        "apply mod_eq_trans",
+        "exact hreverse",
+        "exact hs_right",
+        "specialize mod_eq_bounded_unique m",
+        "specialize mod_eq_bounded_unique r",
+        "specialize mod_eq_bounded_unique s",
+        "apply mod_eq_bounded_unique",
+        "exact hr_left",
+        "exact hs_left",
+        "exact hrelated"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "d7eb234146ff764a351f24ab625a9504b65fd5e0a87d6bc1d9871437c44f0317",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "6ceca7d1c5171f65ecad03675e8ac1c4a69bfaf38c82b9a3423795134e3c797d"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall m n r s. (((exists ff_gap_binary_value. ff_gap_binary_value + S (r) = m) /\\ (exists ff_left_binary_value_congruence ff_right_binary_value_congruence. (n) + m * ff_left_binary_value_congruence = (r) + m * ff_right_binary_value_congruence))) -> (((exists ff_gap_binary_other. ff_gap_binary_other + S (s) = m) /\\ (exists ff_left_binary_other_congruence ff_right_binary_other_congruence. (n) + m * ff_left_binary_other_congruence = (s) + m * ff_right_binary_other_congruence))) -> r = s",
+      "statement_sha256": "6ceca7d1c5171f65ecad03675e8ac1c4a69bfaf38c82b9a3423795134e3c797d",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Two canonical residues of the same natural and modulus are equal."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 17,
+      "body_proof_nodes": 25,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ m. ∀ n. BinaryModulus(m) → ∃ x. CanonicalModularResidue(m,n,x) ∧ (∀ y. CanonicalModularResidue(m,n,y) → x = y)",
+        "defined_statement_sha256": "a9f71e0fbe5ea8d6143f8ddc4b9998a3d7a07c46e9f5ead553b497949509d634",
+        "definition_uses": {
+          "ND0021": 1,
+          "ND0023": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "8ca2d35dd61d917caa15ccadc4c5587422812bed2b2e7b14d83235d12222e378",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0021": 1,
+          "ND0023": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ m. ∀ n. "
+          },
+          {
+            "definition": "ND0021",
+            "kind": "definition",
+            "text": "BinaryModulus(m)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ x. "
+          },
+          {
+            "definition": "ND0023",
+            "kind": "definition",
+            "text": "CanonicalModularResidue(m,n,x)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ (∀ y. "
+          },
+          {
+            "definition": "ND0023",
+            "kind": "definition",
+            "text": "CanonicalModularResidue(m,n,y)"
+          },
+          {
+            "kind": "text",
+            "text": " → x = y)"
+          }
+        ]
+      },
+      "dependencies": [
+        "binary_canonical_residue_exists",
+        "binary_canonical_residue_functional"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX0004",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_canonical_residue_exists_unique",
+      "proof_bundle_node_id": 195,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro m",
+        "intro n",
+        "intro hmodulus",
+        "specialize binary_canonical_residue_exists m",
+        "specialize binary_canonical_residue_exists n",
+        "have hexists : exists r. (((exists ff_gap_binary_value. ff_gap_binary_value + S (r) = m) /\\ (exists ff_left_binary_value_congruence ff_right_binary_value_congruence. (n) + m * ff_left_binary_value_congruence = (r) + m * ff_right_binary_value_congruence)))",
+        "apply binary_canonical_residue_exists",
+        "exact hmodulus",
+        "cases hexists",
+        "exists x",
+        "split",
+        "exact hexists_witness",
+        "intro s",
+        "intro hs",
+        "specialize binary_canonical_residue_functional m",
+        "specialize binary_canonical_residue_functional n",
+        "specialize binary_canonical_residue_functional x",
+        "specialize binary_canonical_residue_functional s",
+        "apply binary_canonical_residue_functional",
+        "exact hexists_witness",
+        "exact hs"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "08f947263fa17fe302d79e6748fc0a154f52188c468d7927273a22ca32ed39ae",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "8ca2d35dd61d917caa15ccadc4c5587422812bed2b2e7b14d83235d12222e378"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall m n. (exists ff_modulus_gap_binary_guard. ff_modulus_gap_binary_guard + S 1 = m) -> exists r. ((((exists ff_gap_binary_value. ff_gap_binary_value + S (r) = m) /\\ (exists ff_left_binary_value_congruence ff_right_binary_value_congruence. (n) + m * ff_left_binary_value_congruence = (r) + m * ff_right_binary_value_congruence))) /\\ forall s. (((exists ff_gap_binary_other. ff_gap_binary_other + S (s) = m) /\\ (exists ff_left_binary_other_congruence ff_right_binary_other_congruence. (n) + m * ff_left_binary_other_congruence = (s) + m * ff_right_binary_other_congruence))) -> r = s)",
+      "statement_sha256": "8ca2d35dd61d917caa15ccadc4c5587422812bed2b2e7b14d83235d12222e378",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Each guarded modulus admits exactly one actual bounded residue."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 16,
+      "body_proof_nodes": 37,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ e. ∃ h. ∃ b. BinaryExponentSplit(e,h,b)",
+        "defined_statement_sha256": "305849b9d7aac23e5242273a0a74f7102958eb31657153b6fecc39cb2fd7a1df",
+        "definition_uses": {
+          "ND0022": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "b2326893e40c7faf7753ab6269ac5baaf0237b00954651b6d45634e9b4f5464b",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0022": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ e. ∃ h. ∃ b. "
+          },
+          {
+            "definition": "ND0022",
+            "kind": "definition",
+            "text": "BinaryExponentSplit(e,h,b)"
+          }
+        ]
+      },
+      "dependencies": [
+        "parity_cases",
+        "two_mul_eq_add_self"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX0005",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_exponent_split_exists",
+      "proof_bundle_node_id": 196,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro e",
+        "specialize parity_cases e",
+        "cases parity_cases",
+        "cases parity_cases_witness",
+        "exists x",
+        "exists 0",
+        "split",
+        "left",
+        "refl",
+        "trans 2 * x",
+        "exact parity_cases_witness_left",
+        "trans x + x",
+        "apply two_mul_eq_add_self",
+        "simp",
+        "exists x",
+        "exists 1",
+        "split",
+        "right",
+        "refl",
+        "trans 2 * x + 1",
+        "exact parity_cases_witness_right",
+        "congr",
+        "apply two_mul_eq_add_self",
+        "refl"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "36a192bcc8c8051c3d346c6917e4904b63fbe4d9fdb72ac7b634af4f3fffdc24",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "b2326893e40c7faf7753ab6269ac5baaf0237b00954651b6d45634e9b4f5464b"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall e. exists h b. ((((b = 0) \\/ (b = 1)) /\\ e = (h + h) + b))",
+      "statement_sha256": "b2326893e40c7faf7753ab6269ac5baaf0237b00954651b6d45634e9b4f5464b",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Every exponent has an exact half and a witnessed zero-or-one binary digit."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 34,
+      "body_proof_nodes": 60,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ a. ∀ h. ∀ e. ∀ x. ∀ y. BinaryDoubledPower(a,h,e,x,y) → y = x · x",
+        "defined_statement_sha256": "af9511fe627c8c84f70636d4dcabfdba743fcf5162308fb7aca8cf79b6403be8",
+        "definition_uses": {
+          "ND0024": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "0807f7552efeb57c6c5a1c2ed74a2635af2b06ab18d27e56bfeb8a2267a1539a",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0024": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ a. ∀ h. ∀ e. ∀ x. ∀ y. "
+          },
+          {
+            "definition": "ND0024",
+            "kind": "definition",
+            "text": "BinaryDoubledPower(a,h,e,x,y)"
+          },
+          {
+            "kind": "text",
+            "text": " → y = x · x"
+          }
+        ]
+      },
+      "dependencies": [
+        "pow_add"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX0006",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_exponent_doubled_power",
+      "proof_bundle_node_id": 197,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro a",
+        "intro h",
+        "intro e",
+        "intro x",
+        "intro y",
+        "intro hdouble",
+        "cases hdouble",
+        "cases hdouble_right",
+        "specialize pow_add a",
+        "specialize pow_add h",
+        "specialize pow_add h",
+        "specialize pow_add e",
+        "specialize pow_add x",
+        "specialize pow_add x",
+        "specialize pow_add y",
+        "apply pow_add",
+        "exact hdouble_left",
+        "exact hdouble_right_left",
+        "exact hdouble_right_left",
+        "exact hdouble_right_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "5d0be8500bc2212f6da354ef640a1274ad6803038fb472ecbecc422d1f3823c9",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "0807f7552efeb57c6c5a1c2ed74a2635af2b06ab18d27e56bfeb8a2267a1539a"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall a h e x y. (((e = h + h) /\\ ((exists ff_b_binary_double_half ff_c_binary_double_half. ((forall ff_i_binary_double_half_repeat. (exists ff_lt_binary_double_half_repeat_bound. ff_lt_binary_double_half_repeat_bound + S ff_i_binary_double_half_repeat = h) -> (((exists ff_h_binary_double_half_repeat_decoded. ff_h_binary_double_half_repeat_decoded + S (a) = S ((S (ff_i_binary_double_half_repeat)) * ff_c_binary_double_half)) /\\ exists ff_q_binary_double_half_repeat_decoded. ff_b_binary_double_half = ff_q_binary_double_half_repeat_decoded * S ((S (ff_i_binary_double_half_repeat)) * ff_c_binary_double_half) + (a)))) /\\ (exists ff_u_binary_double_half_product ff_v_binary_double_half_product. ((((exists ff_h_binary_double_half_product_start. ff_h_binary_double_half_product_start + S (1) = S ((S (0)) * ff_v_binary_double_half_product)) /\\ exists ff_q_binary_double_half_product_start. ff_u_binary_double_half_product = ff_q_binary_double_half_product_start * S ((S (0)) * ff_v_binary_double_half_product) + (1))) /\\ ((((exists ff_h_binary_double_half_product_terminal. ff_h_binary_double_half_product_terminal + S (x) = S ((S (h)) * ff_v_binary_double_half_product)) /\\ exists ff_q_binary_double_half_product_terminal. ff_u_binary_double_half_product = ff_q_binary_double_half_product_terminal * S ((S (h)) * ff_v_binary_double_half_product) + (x))) /\\ forall ff_i_binary_double_half_product. (exists ff_lt_binary_double_half_product_bound. ff_lt_binary_double_half_product_bound + S ff_i_binary_double_half_product = h) -> exists ff_p_binary_double_half_product ff_r_binary_double_half_product ff_s_binary_double_half_product. ((((exists ff_h_binary_double_half_product_factor. ff_h_binary_double_half_product_factor + S (ff_p_binary_double_half_product) = S ((S (ff_i_binary_double_half_product)) * ff_c_binary_double_half)) /\\ exists ff_q_binary_double_half_product_factor. ff_b_binary_double_half = ff_q_binary_double_half_product_factor * S ((S (ff_i_binary_double_half_product)) * ff_c_binary_double_half) + (ff_p_binary_double_half_product))) /\\ ((((exists ff_h_binary_double_half_product_partial. ff_h_binary_double_half_product_partial + S (ff_r_binary_double_half_product) = S ((S (ff_i_binary_double_half_product)) * ff_v_binary_double_half_product)) /\\ exists ff_q_binary_double_half_product_partial. ff_u_binary_double_half_product = ff_q_binary_double_half_product_partial * S ((S (ff_i_binary_double_half_product)) * ff_v_binary_double_half_product) + (ff_r_binary_double_half_product))) /\\ ((((exists ff_h_binary_double_half_product_successor. ff_h_binary_double_half_product_successor + S (ff_s_binary_double_half_product) = S ((S (S ff_i_binary_double_half_product)) * ff_v_binary_double_half_product)) /\\ exists ff_q_binary_double_half_product_successor. ff_u_binary_double_half_product = ff_q_binary_double_half_product_successor * S ((S (S ff_i_binary_double_half_product)) * ff_v_binary_double_half_product) + (ff_s_binary_double_half_product))) /\\ ff_s_binary_double_half_product = ff_r_binary_double_half_product * ff_p_binary_double_half_product)))))))) /\\ (exists ff_b_binary_double_full ff_c_binary_double_full. ((forall ff_i_binary_double_full_repeat. (exists ff_lt_binary_double_full_repeat_bound. ff_lt_binary_double_full_repeat_bound + S ff_i_binary_double_full_repeat = e) -> (((exists ff_h_binary_double_full_repeat_decoded. ff_h_binary_double_full_repeat_decoded + S (a) = S ((S (ff_i_binary_double_full_repeat)) * ff_c_binary_double_full)) /\\ exists ff_q_binary_double_full_repeat_decoded. ff_b_binary_double_full = ff_q_binary_double_full_repeat_decoded * S ((S (ff_i_binary_double_full_repeat)) * ff_c_binary_double_full) + (a)))) /\\ (exists ff_u_binary_double_full_product ff_v_binary_double_full_product. ((((exists ff_h_binary_double_full_product_start. ff_h_binary_double_full_product_start + S (1) = S ((S (0)) * ff_v_binary_double_full_product)) /\\ exists ff_q_binary_double_full_product_start. ff_u_binary_double_full_product = ff_q_binary_double_full_product_start * S ((S (0)) * ff_v_binary_double_full_product) + (1))) /\\ ((((exists ff_h_binary_double_full_product_terminal. ff_h_binary_double_full_product_terminal + S (y) = S ((S (e)) * ff_v_binary_double_full_product)) /\\ exists ff_q_binary_double_full_product_terminal. ff_u_binary_double_full_product = ff_q_binary_double_full_product_terminal * S ((S (e)) * ff_v_binary_double_full_product) + (y))) /\\ forall ff_i_binary_double_full_product. (exists ff_lt_binary_double_full_product_bound. ff_lt_binary_double_full_product_bound + S ff_i_binary_double_full_product = e) -> exists ff_p_binary_double_full_product ff_r_binary_double_full_product ff_s_binary_double_full_product. ((((exists ff_h_binary_double_full_product_factor. ff_h_binary_double_full_product_factor + S (ff_p_binary_double_full_product) = S ((S (ff_i_binary_double_full_product)) * ff_c_binary_double_full)) /\\ exists ff_q_binary_double_full_product_factor. ff_b_binary_double_full = ff_q_binary_double_full_product_factor * S ((S (ff_i_binary_double_full_product)) * ff_c_binary_double_full) + (ff_p_binary_double_full_product))) /\\ ((((exists ff_h_binary_double_full_product_partial. ff_h_binary_double_full_product_partial + S (ff_r_binary_double_full_product) = S ((S (ff_i_binary_double_full_product)) * ff_v_binary_double_full_product)) /\\ exists ff_q_binary_double_full_product_partial. ff_u_binary_double_full_product = ff_q_binary_double_full_product_partial * S ((S (ff_i_binary_double_full_product)) * ff_v_binary_double_full_product) + (ff_r_binary_double_full_product))) /\\ ((((exists ff_h_binary_double_full_product_successor. ff_h_binary_double_full_product_successor + S (ff_s_binary_double_full_product) = S ((S (S ff_i_binary_double_full_product)) * ff_v_binary_double_full_product)) /\\ exists ff_q_binary_double_full_product_successor. ff_u_binary_double_full_product = ff_q_binary_double_full_product_successor * S ((S (S ff_i_binary_double_full_product)) * ff_v_binary_double_full_product) + (ff_s_binary_double_full_product))) /\\ ff_s_binary_double_full_product = ff_r_binary_double_full_product * ff_p_binary_double_full_product))))))))))) -> y = x * x",
+      "statement_sha256": "0807f7552efeb57c6c5a1c2ed74a2635af2b06ab18d27e56bfeb8a2267a1539a",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "The relational power at an even exponent is the square of its half power."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 20,
+      "body_proof_nodes": 45,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ a. ∀ h. ∀ e. ∀ x. ∀ z. BinaryOddPower(a,h,e,x,z) → z = x · x · a",
+        "defined_statement_sha256": "13184613286b0303feef81f5ebd407b33bad01f30b5fc4954bf80a7a767bbcab",
+        "definition_uses": {
+          "ND0025": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "2cd3019ccf6bc8147ba67b664de89adbc3ba0b38ad45d3f555182777f4b2c503",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0025": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ a. ∀ h. ∀ e. ∀ x. ∀ z. "
+          },
+          {
+            "definition": "ND0025",
+            "kind": "definition",
+            "text": "BinaryOddPower(a,h,e,x,z)"
+          },
+          {
+            "kind": "text",
+            "text": " → z = x · x · a"
+          }
+        ]
+      },
+      "dependencies": [
+        "pow_exists",
+        "binary_exponent_doubled_power",
+        "pow_successor_pair_mul"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX0007",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_exponent_odd_power",
+      "proof_bundle_node_id": 198,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro a",
+        "intro h",
+        "intro e",
+        "intro x",
+        "intro z",
+        "intro hodd",
+        "cases hodd",
+        "cases hodd_right",
+        "have hdouble : exists y. (exists pa_b_binary_odd_double pa_c_binary_odd_double. ((forall pa_i_binary_odd_double_repeat. (exists pa_lt_binary_odd_double_repeat_bound. pa_lt_binary_odd_double_repeat_bound + S pa_i_binary_odd_double_repeat = h + h) -> (((exists pa_h_binary_odd_double_repeat_decoded. pa_h_binary_odd_double_repeat_decoded + S (a) = S ((S (pa_i_binary_odd_double_repeat)) * pa_c_binary_odd_double)) /\\ exists pa_q_binary_odd_double_repeat_decoded. pa_b_binary_odd_double = pa_q_binary_odd_double_repeat_decoded * S ((S (pa_i_binary_odd_double_repeat)) * pa_c_binary_odd_double) + (a)))) /\\ (exists pa_u_binary_odd_double_product pa_v_binary_odd_double_product. ((((exists pa_h_binary_odd_double_product_start. pa_h_binary_odd_double_product_start + S (1) = S ((S (0)) * pa_v_binary_odd_double_product)) /\\ exists pa_q_binary_odd_double_product_start. pa_u_binary_odd_double_product = pa_q_binary_odd_double_product_start * S ((S (0)) * pa_v_binary_odd_double_product) + (1))) /\\ ((((exists pa_h_binary_odd_double_product_terminal. pa_h_binary_odd_double_product_terminal + S (y) = S ((S (h + h)) * pa_v_binary_odd_double_product)) /\\ exists pa_q_binary_odd_double_product_terminal. pa_u_binary_odd_double_product = pa_q_binary_odd_double_product_terminal * S ((S (h + h)) * pa_v_binary_odd_double_product) + (y))) /\\ forall pa_i_binary_odd_double_product. (exists pa_lt_binary_odd_double_product_bound. pa_lt_binary_odd_double_product_bound + S pa_i_binary_odd_double_product = h + h) -> exists pa_p_binary_odd_double_product pa_r_binary_odd_double_product pa_s_binary_odd_double_product. ((((exists pa_h_binary_odd_double_product_factor. pa_h_binary_odd_double_product_factor + S (pa_p_binary_odd_double_product) = S ((S (pa_i_binary_odd_double_product)) * pa_c_binary_odd_double)) /\\ exists pa_q_binary_odd_double_product_factor. pa_b_binary_odd_double = pa_q_binary_odd_double_product_factor * S ((S (pa_i_binary_odd_double_product)) * pa_c_binary_odd_double) + (pa_p_binary_odd_double_product))) /\\ ((((exists pa_h_binary_odd_double_product_partial. pa_h_binary_odd_double_product_partial + S (pa_r_binary_odd_double_product) = S ((S (pa_i_binary_odd_double_product)) * pa_v_binary_odd_double_product)) /\\ exists pa_q_binary_odd_double_product_partial. pa_u_binary_odd_double_product = pa_q_binary_odd_double_product_partial * S ((S (pa_i_binary_odd_double_product)) * pa_v_binary_odd_double_product) + (pa_r_binary_odd_double_product))) /\\ ((((exists pa_h_binary_odd_double_product_successor. pa_h_binary_odd_double_product_successor + S (pa_s_binary_odd_double_product) = S ((S (S pa_i_binary_odd_double_product)) * pa_v_binary_odd_double_product)) /\\ exists pa_q_binary_odd_double_product_successor. pa_u_binary_odd_double_product = pa_q_binary_odd_double_product_successor * S ((S (S pa_i_binary_odd_double_product)) * pa_v_binary_odd_double_product) + (pa_s_binary_odd_double_product))) /\\ pa_s_binary_odd_double_product = pa_r_binary_odd_double_product * pa_p_binary_odd_double_product))))))))",
+        "specialize pow_exists a",
+        "specialize pow_exists (h + h)",
+        "exact pow_exists",
+        "cases hdouble",
+        "have hsquare : x1 = x * x",
+        "specialize binary_exponent_doubled_power a",
+        "specialize binary_exponent_doubled_power h",
+        "specialize binary_exponent_doubled_power (h + h)",
+        "specialize binary_exponent_doubled_power x",
+        "specialize binary_exponent_doubled_power x1",
+        "apply binary_exponent_doubled_power",
+        "split",
+        "refl",
+        "split",
+        "exact hodd_right_left",
+        "exact hdouble_witness",
+        "have hsuccessor : z = x1 * a",
+        "specialize pow_successor_pair_mul a",
+        "specialize pow_successor_pair_mul (h + h)",
+        "specialize pow_successor_pair_mul e",
+        "specialize pow_successor_pair_mul x1",
+        "specialize pow_successor_pair_mul z",
+        "apply pow_successor_pair_mul",
+        "exact hodd_left",
+        "exact hdouble_witness",
+        "exact hodd_right_right",
+        "trans x1 * a",
+        "exact hsuccessor",
+        "congr",
+        "exact hsquare",
+        "refl"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "c364525c4a23f43dc6147ce3eceecb3984e91491bb2ee1a9a84c076d256936a1",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "2cd3019ccf6bc8147ba67b664de89adbc3ba0b38ad45d3f555182777f4b2c503"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall a h e x z. (((e = S (h + h)) /\\ ((exists ff_b_binary_odd_half ff_c_binary_odd_half. ((forall ff_i_binary_odd_half_repeat. (exists ff_lt_binary_odd_half_repeat_bound. ff_lt_binary_odd_half_repeat_bound + S ff_i_binary_odd_half_repeat = h) -> (((exists ff_h_binary_odd_half_repeat_decoded. ff_h_binary_odd_half_repeat_decoded + S (a) = S ((S (ff_i_binary_odd_half_repeat)) * ff_c_binary_odd_half)) /\\ exists ff_q_binary_odd_half_repeat_decoded. ff_b_binary_odd_half = ff_q_binary_odd_half_repeat_decoded * S ((S (ff_i_binary_odd_half_repeat)) * ff_c_binary_odd_half) + (a)))) /\\ (exists ff_u_binary_odd_half_product ff_v_binary_odd_half_product. ((((exists ff_h_binary_odd_half_product_start. ff_h_binary_odd_half_product_start + S (1) = S ((S (0)) * ff_v_binary_odd_half_product)) /\\ exists ff_q_binary_odd_half_product_start. ff_u_binary_odd_half_product = ff_q_binary_odd_half_product_start * S ((S (0)) * ff_v_binary_odd_half_product) + (1))) /\\ ((((exists ff_h_binary_odd_half_product_terminal. ff_h_binary_odd_half_product_terminal + S (x) = S ((S (h)) * ff_v_binary_odd_half_product)) /\\ exists ff_q_binary_odd_half_product_terminal. ff_u_binary_odd_half_product = ff_q_binary_odd_half_product_terminal * S ((S (h)) * ff_v_binary_odd_half_product) + (x))) /\\ forall ff_i_binary_odd_half_product. (exists ff_lt_binary_odd_half_product_bound. ff_lt_binary_odd_half_product_bound + S ff_i_binary_odd_half_product = h) -> exists ff_p_binary_odd_half_product ff_r_binary_odd_half_product ff_s_binary_odd_half_product. ((((exists ff_h_binary_odd_half_product_factor. ff_h_binary_odd_half_product_factor + S (ff_p_binary_odd_half_product) = S ((S (ff_i_binary_odd_half_product)) * ff_c_binary_odd_half)) /\\ exists ff_q_binary_odd_half_product_factor. ff_b_binary_odd_half = ff_q_binary_odd_half_product_factor * S ((S (ff_i_binary_odd_half_product)) * ff_c_binary_odd_half) + (ff_p_binary_odd_half_product))) /\\ ((((exists ff_h_binary_odd_half_product_partial. ff_h_binary_odd_half_product_partial + S (ff_r_binary_odd_half_product) = S ((S (ff_i_binary_odd_half_product)) * ff_v_binary_odd_half_product)) /\\ exists ff_q_binary_odd_half_product_partial. ff_u_binary_odd_half_product = ff_q_binary_odd_half_product_partial * S ((S (ff_i_binary_odd_half_product)) * ff_v_binary_odd_half_product) + (ff_r_binary_odd_half_product))) /\\ ((((exists ff_h_binary_odd_half_product_successor. ff_h_binary_odd_half_product_successor + S (ff_s_binary_odd_half_product) = S ((S (S ff_i_binary_odd_half_product)) * ff_v_binary_odd_half_product)) /\\ exists ff_q_binary_odd_half_product_successor. ff_u_binary_odd_half_product = ff_q_binary_odd_half_product_successor * S ((S (S ff_i_binary_odd_half_product)) * ff_v_binary_odd_half_product) + (ff_s_binary_odd_half_product))) /\\ ff_s_binary_odd_half_product = ff_r_binary_odd_half_product * ff_p_binary_odd_half_product)))))))) /\\ (exists ff_b_binary_odd_full ff_c_binary_odd_full. ((forall ff_i_binary_odd_full_repeat. (exists ff_lt_binary_odd_full_repeat_bound. ff_lt_binary_odd_full_repeat_bound + S ff_i_binary_odd_full_repeat = e) -> (((exists ff_h_binary_odd_full_repeat_decoded. ff_h_binary_odd_full_repeat_decoded + S (a) = S ((S (ff_i_binary_odd_full_repeat)) * ff_c_binary_odd_full)) /\\ exists ff_q_binary_odd_full_repeat_decoded. ff_b_binary_odd_full = ff_q_binary_odd_full_repeat_decoded * S ((S (ff_i_binary_odd_full_repeat)) * ff_c_binary_odd_full) + (a)))) /\\ (exists ff_u_binary_odd_full_product ff_v_binary_odd_full_product. ((((exists ff_h_binary_odd_full_product_start. ff_h_binary_odd_full_product_start + S (1) = S ((S (0)) * ff_v_binary_odd_full_product)) /\\ exists ff_q_binary_odd_full_product_start. ff_u_binary_odd_full_product = ff_q_binary_odd_full_product_start * S ((S (0)) * ff_v_binary_odd_full_product) + (1))) /\\ ((((exists ff_h_binary_odd_full_product_terminal. ff_h_binary_odd_full_product_terminal + S (z) = S ((S (e)) * ff_v_binary_odd_full_product)) /\\ exists ff_q_binary_odd_full_product_terminal. ff_u_binary_odd_full_product = ff_q_binary_odd_full_product_terminal * S ((S (e)) * ff_v_binary_odd_full_product) + (z))) /\\ forall ff_i_binary_odd_full_product. (exists ff_lt_binary_odd_full_product_bound. ff_lt_binary_odd_full_product_bound + S ff_i_binary_odd_full_product = e) -> exists ff_p_binary_odd_full_product ff_r_binary_odd_full_product ff_s_binary_odd_full_product. ((((exists ff_h_binary_odd_full_product_factor. ff_h_binary_odd_full_product_factor + S (ff_p_binary_odd_full_product) = S ((S (ff_i_binary_odd_full_product)) * ff_c_binary_odd_full)) /\\ exists ff_q_binary_odd_full_product_factor. ff_b_binary_odd_full = ff_q_binary_odd_full_product_factor * S ((S (ff_i_binary_odd_full_product)) * ff_c_binary_odd_full) + (ff_p_binary_odd_full_product))) /\\ ((((exists ff_h_binary_odd_full_product_partial. ff_h_binary_odd_full_product_partial + S (ff_r_binary_odd_full_product) = S ((S (ff_i_binary_odd_full_product)) * ff_v_binary_odd_full_product)) /\\ exists ff_q_binary_odd_full_product_partial. ff_u_binary_odd_full_product = ff_q_binary_odd_full_product_partial * S ((S (ff_i_binary_odd_full_product)) * ff_v_binary_odd_full_product) + (ff_r_binary_odd_full_product))) /\\ ((((exists ff_h_binary_odd_full_product_successor. ff_h_binary_odd_full_product_successor + S (ff_s_binary_odd_full_product) = S ((S (S ff_i_binary_odd_full_product)) * ff_v_binary_odd_full_product)) /\\ exists ff_q_binary_odd_full_product_successor. ff_u_binary_odd_full_product = ff_q_binary_odd_full_product_successor * S ((S (S ff_i_binary_odd_full_product)) * ff_v_binary_odd_full_product) + (ff_s_binary_odd_full_product))) /\\ ff_s_binary_odd_full_product = ff_r_binary_odd_full_product * ff_p_binary_odd_full_product))))))))))) -> z = (x * x) * a",
+      "statement_sha256": "2cd3019ccf6bc8147ba67b664de89adbc3ba0b38ad45d3f555182777f4b2c503",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "The relational power at an odd exponent is its squared half power times the base."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 18,
+      "body_proof_nodes": 30,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ m. ∀ x. ∀ r. ModEq(m,x,r) → ModEq(m,x · x,r · r)",
+        "defined_statement_sha256": "1e453e1c48d56b3eccd09001d0c596601362bc97499ae381a2ae870541f0bd35",
+        "definition_uses": {
+          "PD0008": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "dd7000cbba9db94eb6fdd43fdae304c5c5dadaa5677cb897b0a9e308fae3457e",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0008": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ m. ∀ x. ∀ r. "
+          },
+          {
+            "definition": "PD0008",
+            "kind": "definition",
+            "text": "ModEq(m,x,r)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0008",
+            "kind": "definition",
+            "text": "ModEq(m,x · x,r · r)"
+          }
+        ]
+      },
+      "dependencies": [
+        "mod_eq_mul"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX0008",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_modular_square_congruence",
+      "proof_bundle_node_id": 199,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro m",
+        "intro x",
+        "intro r",
+        "intro hcongruence",
+        "specialize mod_eq_mul m",
+        "specialize mod_eq_mul x",
+        "specialize mod_eq_mul r",
+        "specialize mod_eq_mul x",
+        "specialize mod_eq_mul r",
+        "apply mod_eq_mul",
+        "exact hcongruence",
+        "exact hcongruence"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "f07042b1d46e5fdc74cbb64cdece3846ed37103ab77d0b19d167ae0b7864abab",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "dd7000cbba9db94eb6fdd43fdae304c5c5dadaa5677cb897b0a9e308fae3457e"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall m x r. (exists ff_left_binary_square_source ff_right_binary_square_source. (x) + m * ff_left_binary_square_source = (r) + m * ff_right_binary_square_source) -> (exists ff_left_binary_square_result ff_right_binary_square_result. (x * x) + m * ff_left_binary_square_result = (r * r) + m * ff_right_binary_square_result)",
+      "statement_sha256": "dd7000cbba9db94eb6fdd43fdae304c5c5dadaa5677cb897b0a9e308fae3457e",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Squaring preserves witnessed balanced natural congruence."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 21,
+      "body_proof_nodes": 33,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ m. ∀ x. ∀ r. ∀ y. ∀ s. ModEq(m,x,r) → ModEq(m,y,s) → ModEq(m,x · y,r · s)",
+        "defined_statement_sha256": "d89b0621fbbfd68021a74396f6ae5a6a7ad1258828297b96b2f0b3fd1ef36d8a",
+        "definition_uses": {
+          "PD0008": 3
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "754a02c664355818e9b6a8c2ac217263043c9159955b23b72a9627c0906ef025",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "PD0008": 3
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ m. ∀ x. ∀ r. ∀ y. ∀ s. "
+          },
+          {
+            "definition": "PD0008",
+            "kind": "definition",
+            "text": "ModEq(m,x,r)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0008",
+            "kind": "definition",
+            "text": "ModEq(m,y,s)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "PD0008",
+            "kind": "definition",
+            "text": "ModEq(m,x · y,r · s)"
+          }
+        ]
+      },
+      "dependencies": [
+        "mod_eq_mul"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX0009",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_modular_multiply_congruence",
+      "proof_bundle_node_id": 200,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro m",
+        "intro x",
+        "intro r",
+        "intro y",
+        "intro s",
+        "intro hleft",
+        "intro hright",
+        "specialize mod_eq_mul m",
+        "specialize mod_eq_mul x",
+        "specialize mod_eq_mul r",
+        "specialize mod_eq_mul y",
+        "specialize mod_eq_mul s",
+        "apply mod_eq_mul",
+        "exact hleft",
+        "exact hright"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "9b598ed7d8f436e6da94806279bf75af871af3666893579fee3c617a7964dd31",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "754a02c664355818e9b6a8c2ac217263043c9159955b23b72a9627c0906ef025"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall m x r y s. (exists ff_left_binary_multiply_left ff_right_binary_multiply_left. (x) + m * ff_left_binary_multiply_left = (r) + m * ff_right_binary_multiply_left) -> (exists ff_left_binary_multiply_right ff_right_binary_multiply_right. (y) + m * ff_left_binary_multiply_right = (s) + m * ff_right_binary_multiply_right) -> (exists ff_left_binary_multiply_result ff_right_binary_multiply_result. (x * y) + m * ff_left_binary_multiply_result = (r * s) + m * ff_right_binary_multiply_result)",
+      "statement_sha256": "754a02c664355818e9b6a8c2ac217263043c9159955b23b72a9627c0906ef025",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Multiplication preserves both witnessed modular factors."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 10,
+      "body_proof_nodes": 15,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ m. ∀ x. BinaryModulus(m) → ∃ y. CanonicalModularResidue(m,x · x,y)",
+        "defined_statement_sha256": "0a285921a5cf68d9ec9ab6c8ef24dfc10bbf016f54cb4e11bbb306da0e6ece79",
+        "definition_uses": {
+          "ND0021": 1,
+          "ND0023": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "b340cd21e4e115d0513971251ef10dd832a30730b872af306bcabf083d88c2e9",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0021": 1,
+          "ND0023": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ m. ∀ x. "
+          },
+          {
+            "definition": "ND0021",
+            "kind": "definition",
+            "text": "BinaryModulus(m)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ y. "
+          },
+          {
+            "definition": "ND0023",
+            "kind": "definition",
+            "text": "CanonicalModularResidue(m,x · x,y)"
+          }
+        ]
+      },
+      "dependencies": [
+        "binary_canonical_residue_exists"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX000A",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_modular_square_residue_exists",
+      "proof_bundle_node_id": 201,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro m",
+        "intro x",
+        "intro hmodulus",
+        "specialize binary_canonical_residue_exists m",
+        "specialize binary_canonical_residue_exists (x * x)",
+        "apply binary_canonical_residue_exists",
+        "exact hmodulus"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "6c8a056421e725f0cc114c6bc891e98999980d8f9c6ba88aee3b5dfeaaf79959",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "b340cd21e4e115d0513971251ef10dd832a30730b872af306bcabf083d88c2e9"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall m x. (exists ff_modulus_gap_binary_guard. ff_modulus_gap_binary_guard + S 1 = m) -> exists r. (((exists ff_gap_binary_squared. ff_gap_binary_squared + S (r) = m) /\\ (exists ff_left_binary_squared_congruence ff_right_binary_squared_congruence. (x * x) + m * ff_left_binary_squared_congruence = (r) + m * ff_right_binary_squared_congruence)))",
+      "statement_sha256": "b340cd21e4e115d0513971251ef10dd832a30730b872af306bcabf083d88c2e9",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Every squaring step has an actual canonical modular residue."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 11,
+      "body_proof_nodes": 16,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ m. ∀ x. ∀ y. BinaryModulus(m) → ∃ z. CanonicalModularResidue(m,x · y,z)",
+        "defined_statement_sha256": "89814372730fee56986648bdd157e9649f09c76e0cd03bfe8453eba18ac0d4b7",
+        "definition_uses": {
+          "ND0021": 1,
+          "ND0023": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "ac16738fb62f093da4fb0dd71f9d94739d7d1631df4f70c90344116e30b17be0",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0021": 1,
+          "ND0023": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ m. ∀ x. ∀ y. "
+          },
+          {
+            "definition": "ND0021",
+            "kind": "definition",
+            "text": "BinaryModulus(m)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ z. "
+          },
+          {
+            "definition": "ND0023",
+            "kind": "definition",
+            "text": "CanonicalModularResidue(m,x · y,z)"
+          }
+        ]
+      },
+      "dependencies": [
+        "binary_canonical_residue_exists"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX000B",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_modular_multiply_residue_exists",
+      "proof_bundle_node_id": 202,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro m",
+        "intro x",
+        "intro y",
+        "intro hmodulus",
+        "specialize binary_canonical_residue_exists m",
+        "specialize binary_canonical_residue_exists (x * y)",
+        "apply binary_canonical_residue_exists",
+        "exact hmodulus"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "d32b46fed0972f907a7261f117d117f3e15e872e98884ded5ce16a1906179b71",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "ac16738fb62f093da4fb0dd71f9d94739d7d1631df4f70c90344116e30b17be0"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall m x y. (exists ff_modulus_gap_binary_guard. ff_modulus_gap_binary_guard + S 1 = m) -> exists r. (((exists ff_gap_binary_product. ff_gap_binary_product + S (r) = m) /\\ (exists ff_left_binary_product_congruence ff_right_binary_product_congruence. (x * y) + m * ff_left_binary_product_congruence = (r) + m * ff_right_binary_product_congruence)))",
+      "statement_sha256": "ac16738fb62f093da4fb0dd71f9d94739d7d1631df4f70c90344116e30b17be0",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Every multiplication step has an actual canonical modular residue."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 13,
+      "body_proof_nodes": 31,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ m. ∀ x. ∀ a. ∀ b. BinaryModulus(m) → b = 0 ∨ b = 1 → ∃ y. BinaryModularStep(m,x,a,b,y)",
+        "defined_statement_sha256": "4f1eb1f3cde07de7f9390eedb963999aaecad241bfab9dfb1431ac759d4f6698",
+        "definition_uses": {
+          "ND0021": 1,
+          "ND0026": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "5e460347370cb0ab996c0c8eff7b587c9d1eb29bd836503c791ce95c8b6160dc",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0021": 1,
+          "ND0026": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ m. ∀ x. ∀ a. ∀ b. "
+          },
+          {
+            "definition": "ND0021",
+            "kind": "definition",
+            "text": "BinaryModulus(m)"
+          },
+          {
+            "kind": "text",
+            "text": " → b = 0 ∨ b = 1 → ∃ y. "
+          },
+          {
+            "definition": "ND0026",
+            "kind": "definition",
+            "text": "BinaryModularStep(m,x,a,b,y)"
+          }
+        ]
+      },
+      "dependencies": [
+        "binary_canonical_residue_exists"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX000C",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_modular_step_exists",
+      "proof_bundle_node_id": 203,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro m",
+        "intro x",
+        "intro a",
+        "intro b",
+        "intro hmodulus",
+        "intro hbit",
+        "cases hbit",
+        "have hsquare : exists r. (((exists ff_gap_binary_step_square_witness. ff_gap_binary_step_square_witness + S (r) = m) /\\ (exists ff_left_binary_step_square_witness_congruence ff_right_binary_step_square_witness_congruence. (x * x) + m * ff_left_binary_step_square_witness_congruence = (r) + m * ff_right_binary_step_square_witness_congruence)))",
+        "specialize binary_canonical_residue_exists m",
+        "specialize binary_canonical_residue_exists (x * x)",
+        "apply binary_canonical_residue_exists",
+        "exact hmodulus",
+        "cases hsquare",
+        "exists x1",
+        "left",
+        "split",
+        "exact hbit_left",
+        "exact hsquare_witness",
+        "have hproduct : exists r. (((exists ff_gap_binary_step_product_witness. ff_gap_binary_step_product_witness + S (r) = m) /\\ (exists ff_left_binary_step_product_witness_congruence ff_right_binary_step_product_witness_congruence. ((x * x) * a) + m * ff_left_binary_step_product_witness_congruence = (r) + m * ff_right_binary_step_product_witness_congruence)))",
+        "specialize binary_canonical_residue_exists m",
+        "specialize binary_canonical_residue_exists ((x * x) * a)",
+        "apply binary_canonical_residue_exists",
+        "exact hmodulus",
+        "cases hproduct",
+        "exists x1",
+        "right",
+        "split",
+        "exact hbit_right",
+        "exact hproduct_witness"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "10e66dd53b271da6f04483e7791c13e5224a4ab7cf099164d881604c164e49de",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "5e460347370cb0ab996c0c8eff7b587c9d1eb29bd836503c791ce95c8b6160dc"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall m x a b. (exists ff_modulus_gap_binary_guard. ff_modulus_gap_binary_guard + S 1 = m) -> (b = 0 \\/ b = 1) -> exists r. ((((b = 0) /\\ (((exists ff_gap_binary_step_square. ff_gap_binary_step_square + S (r) = m) /\\ (exists ff_left_binary_step_square_congruence ff_right_binary_step_square_congruence. (x * x) + m * ff_left_binary_step_square_congruence = (r) + m * ff_right_binary_step_square_congruence)))) \\/ ((b = 1) /\\ (((exists ff_gap_binary_step_multiply. ff_gap_binary_step_multiply + S (r) = m) /\\ (exists ff_left_binary_step_multiply_congruence ff_right_binary_step_multiply_congruence. ((x * x) * a) + m * ff_left_binary_step_multiply_congruence = (r) + m * ff_right_binary_step_multiply_congruence))))))",
+      "statement_sha256": "5e460347370cb0ab996c0c8eff7b587c9d1eb29bd836503c791ce95c8b6160dc",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Every guarded square-and-optional-multiply binary transition has a canonical result."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 30,
+      "body_proof_nodes": 127,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ m. ∀ x. ∀ a. ∀ b. ∀ r. ∀ s. BinaryModularStep(m,x,a,b,r) → BinaryModularStep(m,x,a,b,s) → r = s",
+        "defined_statement_sha256": "c3810a9518651bd20713a62a7fcce1457d7f0fc718a5e7afe02a0bfe3c24086b",
+        "definition_uses": {
+          "ND0026": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "67d1d84c903060b083196eab0de743722fb068cb4c176a4cd91f13bff253bed9",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0026": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ m. ∀ x. ∀ a. ∀ b. ∀ r. ∀ s. "
+          },
+          {
+            "definition": "ND0026",
+            "kind": "definition",
+            "text": "BinaryModularStep(m,x,a,b,r)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "ND0026",
+            "kind": "definition",
+            "text": "BinaryModularStep(m,x,a,b,s)"
+          },
+          {
+            "kind": "text",
+            "text": " → r = s"
+          }
+        ]
+      },
+      "dependencies": [
+        "binary_canonical_residue_functional"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX000D",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_modular_step_functional",
+      "proof_bundle_node_id": 204,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro m",
+        "intro x",
+        "intro a",
+        "intro b",
+        "intro r",
+        "intro s",
+        "intro hr",
+        "intro hs",
+        "cases hr",
+        "cases hr_left",
+        "cases hs",
+        "cases hs_left",
+        "specialize binary_canonical_residue_functional m",
+        "specialize binary_canonical_residue_functional (x * x)",
+        "specialize binary_canonical_residue_functional r",
+        "specialize binary_canonical_residue_functional s",
+        "apply binary_canonical_residue_functional",
+        "exact hr_left_right",
+        "exact hs_left_right",
+        "cases hs_right",
+        "rewrite hr_left_left at hs_right_left",
+        "exfalso",
+        "apply PA1",
+        "symm",
+        "exact hs_right_left",
+        "cases hr_right",
+        "cases hs",
+        "cases hs_left",
+        "rewrite hs_left_left at hr_right_left",
+        "exfalso",
+        "apply PA1",
+        "symm",
+        "exact hr_right_left",
+        "cases hs_right",
+        "specialize binary_canonical_residue_functional m",
+        "specialize binary_canonical_residue_functional ((x * x) * a)",
+        "specialize binary_canonical_residue_functional r",
+        "specialize binary_canonical_residue_functional s",
+        "apply binary_canonical_residue_functional",
+        "exact hr_right_right",
+        "exact hs_right_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "871b93926530304be5d0f75655523dcfe59252b451df9ac2324495181a19ea88",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "67d1d84c903060b083196eab0de743722fb068cb4c176a4cd91f13bff253bed9"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall m x a b r s. ((((b = 0) /\\ (((exists ff_gap_binary_step_square. ff_gap_binary_step_square + S (r) = m) /\\ (exists ff_left_binary_step_square_congruence ff_right_binary_step_square_congruence. (x * x) + m * ff_left_binary_step_square_congruence = (r) + m * ff_right_binary_step_square_congruence)))) \\/ ((b = 1) /\\ (((exists ff_gap_binary_step_multiply. ff_gap_binary_step_multiply + S (r) = m) /\\ (exists ff_left_binary_step_multiply_congruence ff_right_binary_step_multiply_congruence. ((x * x) * a) + m * ff_left_binary_step_multiply_congruence = (r) + m * ff_right_binary_step_multiply_congruence)))))) -> ((((b = 0) /\\ (((exists ff_gap_binary_step_other_square. ff_gap_binary_step_other_square + S (s) = m) /\\ (exists ff_left_binary_step_other_square_congruence ff_right_binary_step_other_square_congruence. (x * x) + m * ff_left_binary_step_other_square_congruence = (s) + m * ff_right_binary_step_other_square_congruence)))) \\/ ((b = 1) /\\ (((exists ff_gap_binary_step_other_multiply. ff_gap_binary_step_other_multiply + S (s) = m) /\\ (exists ff_left_binary_step_other_multiply_congruence ff_right_binary_step_other_multiply_congruence. ((x * x) * a) + m * ff_left_binary_step_other_multiply_congruence = (s) + m * ff_right_binary_step_other_multiply_congruence)))))) -> r = s",
+      "statement_sha256": "67d1d84c903060b083196eab0de743722fb068cb4c176a4cd91f13bff253bed9",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "A fixed binary digit and state determine exactly one modular transition result."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 12,
+      "body_proof_nodes": 21,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ a. ∀ e. ∀ m. BinaryModulus(m) → ∃ x. BinaryModularPower(a,e,m,x)",
+        "defined_statement_sha256": "0ffef4997e0c77f1329d346a8482defbed404149dcfe1aea103ac6bb031ba7df",
+        "definition_uses": {
+          "ND0021": 1,
+          "ND0027": 1
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "b04df34ba7fdadb96d3c20a5d07094d73012589ea9a5521dc6c1b181040da1d5",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0021": 1,
+          "ND0027": 1
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ a. ∀ e. ∀ m. "
+          },
+          {
+            "definition": "ND0021",
+            "kind": "definition",
+            "text": "BinaryModulus(m)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ x. "
+          },
+          {
+            "definition": "ND0027",
+            "kind": "definition",
+            "text": "BinaryModularPower(a,e,m,x)"
+          }
+        ]
+      },
+      "dependencies": [
+        "pow_exists",
+        "binary_canonical_residue_exists"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX000E",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_modular_exponentiation_result_exists",
+      "proof_bundle_node_id": 205,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro a",
+        "intro e",
+        "intro m",
+        "intro hmodulus",
+        "specialize pow_exists a",
+        "specialize pow_exists e",
+        "cases pow_exists",
+        "have hresidue : exists r. (((exists ff_gap_binary_power_exists. ff_gap_binary_power_exists + S (r) = m) /\\ (exists ff_left_binary_power_exists_congruence ff_right_binary_power_exists_congruence. (x) + m * ff_left_binary_power_exists_congruence = (r) + m * ff_right_binary_power_exists_congruence)))",
+        "specialize binary_canonical_residue_exists m",
+        "specialize binary_canonical_residue_exists x",
+        "apply binary_canonical_residue_exists",
+        "exact hmodulus",
+        "cases hresidue",
+        "exists x1",
+        "exists x",
+        "split",
+        "exact pow_exists_witness",
+        "exact hresidue_witness"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "3f21c1785ee869b3c07e1c45398874084bedf25904eb506ab20b6496bda6783a",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "b04df34ba7fdadb96d3c20a5d07094d73012589ea9a5521dc6c1b181040da1d5"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall a e m. (exists ff_modulus_gap_binary_guard. ff_modulus_gap_binary_guard + S 1 = m) -> exists r. (exists ff_power_binary_result. ((exists ff_b_binary_result_value ff_c_binary_result_value. ((forall ff_i_binary_result_value_repeat. (exists ff_lt_binary_result_value_repeat_bound. ff_lt_binary_result_value_repeat_bound + S ff_i_binary_result_value_repeat = e) -> (((exists ff_h_binary_result_value_repeat_decoded. ff_h_binary_result_value_repeat_decoded + S (a) = S ((S (ff_i_binary_result_value_repeat)) * ff_c_binary_result_value)) /\\ exists ff_q_binary_result_value_repeat_decoded. ff_b_binary_result_value = ff_q_binary_result_value_repeat_decoded * S ((S (ff_i_binary_result_value_repeat)) * ff_c_binary_result_value) + (a)))) /\\ (exists ff_u_binary_result_value_product ff_v_binary_result_value_product. ((((exists ff_h_binary_result_value_product_start. ff_h_binary_result_value_product_start + S (1) = S ((S (0)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_start. ff_u_binary_result_value_product = ff_q_binary_result_value_product_start * S ((S (0)) * ff_v_binary_result_value_product) + (1))) /\\ ((((exists ff_h_binary_result_value_product_terminal. ff_h_binary_result_value_product_terminal + S (ff_power_binary_result) = S ((S (e)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_terminal. ff_u_binary_result_value_product = ff_q_binary_result_value_product_terminal * S ((S (e)) * ff_v_binary_result_value_product) + (ff_power_binary_result))) /\\ forall ff_i_binary_result_value_product. (exists ff_lt_binary_result_value_product_bound. ff_lt_binary_result_value_product_bound + S ff_i_binary_result_value_product = e) -> exists ff_p_binary_result_value_product ff_r_binary_result_value_product ff_s_binary_result_value_product. ((((exists ff_h_binary_result_value_product_factor. ff_h_binary_result_value_product_factor + S (ff_p_binary_result_value_product) = S ((S (ff_i_binary_result_value_product)) * ff_c_binary_result_value)) /\\ exists ff_q_binary_result_value_product_factor. ff_b_binary_result_value = ff_q_binary_result_value_product_factor * S ((S (ff_i_binary_result_value_product)) * ff_c_binary_result_value) + (ff_p_binary_result_value_product))) /\\ ((((exists ff_h_binary_result_value_product_partial. ff_h_binary_result_value_product_partial + S (ff_r_binary_result_value_product) = S ((S (ff_i_binary_result_value_product)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_partial. ff_u_binary_result_value_product = ff_q_binary_result_value_product_partial * S ((S (ff_i_binary_result_value_product)) * ff_v_binary_result_value_product) + (ff_r_binary_result_value_product))) /\\ ((((exists ff_h_binary_result_value_product_successor. ff_h_binary_result_value_product_successor + S (ff_s_binary_result_value_product) = S ((S (S ff_i_binary_result_value_product)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_successor. ff_u_binary_result_value_product = ff_q_binary_result_value_product_successor * S ((S (S ff_i_binary_result_value_product)) * ff_v_binary_result_value_product) + (ff_s_binary_result_value_product))) /\\ ff_s_binary_result_value_product = ff_r_binary_result_value_product * ff_p_binary_result_value_product)))))))) /\\ (((exists ff_gap_binary_result_residue. ff_gap_binary_result_residue + S (r) = m) /\\ (exists ff_left_binary_result_residue_congruence ff_right_binary_result_residue_congruence. (ff_power_binary_result) + m * ff_left_binary_result_residue_congruence = (r) + m * ff_right_binary_result_residue_congruence)))))",
+      "statement_sha256": "b04df34ba7fdadb96d3c20a5d07094d73012589ea9a5521dc6c1b181040da1d5",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Every a,e and every modulus m>1 have an exact bounded residue of the relational power a^e."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 21,
+      "body_proof_nodes": 37,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ a. ∀ e. ∀ m. ∀ r. ∀ s. BinaryModularPower(a,e,m,r) → BinaryModularPower(a,e,m,s) → r = s",
+        "defined_statement_sha256": "62fecc99587f9e41c3ac79bd7fa18259bfa8ed3d0062993f7d03b178b10bee31",
+        "definition_uses": {
+          "ND0027": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "453385706238c475f61dd57108282cdfcb7b3b8b1e7aa4b98e3fdb5878a79e12",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0027": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ a. ∀ e. ∀ m. ∀ r. ∀ s. "
+          },
+          {
+            "definition": "ND0027",
+            "kind": "definition",
+            "text": "BinaryModularPower(a,e,m,r)"
+          },
+          {
+            "kind": "text",
+            "text": " → "
+          },
+          {
+            "definition": "ND0027",
+            "kind": "definition",
+            "text": "BinaryModularPower(a,e,m,s)"
+          },
+          {
+            "kind": "text",
+            "text": " → r = s"
+          }
+        ]
+      },
+      "dependencies": [
+        "pow_functional",
+        "binary_canonical_residue_functional"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX000F",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_modular_exponentiation_result_functional",
+      "proof_bundle_node_id": 206,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro a",
+        "intro e",
+        "intro m",
+        "intro r",
+        "intro s",
+        "intro hr",
+        "intro hs",
+        "cases hr",
+        "cases hr_witness",
+        "cases hs",
+        "cases hs_witness",
+        "have hpower : x = x1",
+        "specialize pow_functional a",
+        "specialize pow_functional e",
+        "specialize pow_functional x",
+        "specialize pow_functional x1",
+        "apply pow_functional",
+        "exact hr_witness_left",
+        "exact hs_witness_left",
+        "rewrite <- hpower at hs_witness_right",
+        "specialize binary_canonical_residue_functional m",
+        "specialize binary_canonical_residue_functional x",
+        "specialize binary_canonical_residue_functional r",
+        "specialize binary_canonical_residue_functional s",
+        "apply binary_canonical_residue_functional",
+        "exact hr_witness_right",
+        "exact hs_witness_right"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "ab93011c6ae888790093a52b4bce54935b029ef1810764f00ca6e4b9c3d6c855",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "453385706238c475f61dd57108282cdfcb7b3b8b1e7aa4b98e3fdb5878a79e12"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall a e m r s. (exists ff_power_binary_result. ((exists ff_b_binary_result_value ff_c_binary_result_value. ((forall ff_i_binary_result_value_repeat. (exists ff_lt_binary_result_value_repeat_bound. ff_lt_binary_result_value_repeat_bound + S ff_i_binary_result_value_repeat = e) -> (((exists ff_h_binary_result_value_repeat_decoded. ff_h_binary_result_value_repeat_decoded + S (a) = S ((S (ff_i_binary_result_value_repeat)) * ff_c_binary_result_value)) /\\ exists ff_q_binary_result_value_repeat_decoded. ff_b_binary_result_value = ff_q_binary_result_value_repeat_decoded * S ((S (ff_i_binary_result_value_repeat)) * ff_c_binary_result_value) + (a)))) /\\ (exists ff_u_binary_result_value_product ff_v_binary_result_value_product. ((((exists ff_h_binary_result_value_product_start. ff_h_binary_result_value_product_start + S (1) = S ((S (0)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_start. ff_u_binary_result_value_product = ff_q_binary_result_value_product_start * S ((S (0)) * ff_v_binary_result_value_product) + (1))) /\\ ((((exists ff_h_binary_result_value_product_terminal. ff_h_binary_result_value_product_terminal + S (ff_power_binary_result) = S ((S (e)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_terminal. ff_u_binary_result_value_product = ff_q_binary_result_value_product_terminal * S ((S (e)) * ff_v_binary_result_value_product) + (ff_power_binary_result))) /\\ forall ff_i_binary_result_value_product. (exists ff_lt_binary_result_value_product_bound. ff_lt_binary_result_value_product_bound + S ff_i_binary_result_value_product = e) -> exists ff_p_binary_result_value_product ff_r_binary_result_value_product ff_s_binary_result_value_product. ((((exists ff_h_binary_result_value_product_factor. ff_h_binary_result_value_product_factor + S (ff_p_binary_result_value_product) = S ((S (ff_i_binary_result_value_product)) * ff_c_binary_result_value)) /\\ exists ff_q_binary_result_value_product_factor. ff_b_binary_result_value = ff_q_binary_result_value_product_factor * S ((S (ff_i_binary_result_value_product)) * ff_c_binary_result_value) + (ff_p_binary_result_value_product))) /\\ ((((exists ff_h_binary_result_value_product_partial. ff_h_binary_result_value_product_partial + S (ff_r_binary_result_value_product) = S ((S (ff_i_binary_result_value_product)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_partial. ff_u_binary_result_value_product = ff_q_binary_result_value_product_partial * S ((S (ff_i_binary_result_value_product)) * ff_v_binary_result_value_product) + (ff_r_binary_result_value_product))) /\\ ((((exists ff_h_binary_result_value_product_successor. ff_h_binary_result_value_product_successor + S (ff_s_binary_result_value_product) = S ((S (S ff_i_binary_result_value_product)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_successor. ff_u_binary_result_value_product = ff_q_binary_result_value_product_successor * S ((S (S ff_i_binary_result_value_product)) * ff_v_binary_result_value_product) + (ff_s_binary_result_value_product))) /\\ ff_s_binary_result_value_product = ff_r_binary_result_value_product * ff_p_binary_result_value_product)))))))) /\\ (((exists ff_gap_binary_result_residue. ff_gap_binary_result_residue + S (r) = m) /\\ (exists ff_left_binary_result_residue_congruence ff_right_binary_result_residue_congruence. (ff_power_binary_result) + m * ff_left_binary_result_residue_congruence = (r) + m * ff_right_binary_result_residue_congruence))))) -> (exists ff_power_binary_other. ((exists ff_b_binary_other_value ff_c_binary_other_value. ((forall ff_i_binary_other_value_repeat. (exists ff_lt_binary_other_value_repeat_bound. ff_lt_binary_other_value_repeat_bound + S ff_i_binary_other_value_repeat = e) -> (((exists ff_h_binary_other_value_repeat_decoded. ff_h_binary_other_value_repeat_decoded + S (a) = S ((S (ff_i_binary_other_value_repeat)) * ff_c_binary_other_value)) /\\ exists ff_q_binary_other_value_repeat_decoded. ff_b_binary_other_value = ff_q_binary_other_value_repeat_decoded * S ((S (ff_i_binary_other_value_repeat)) * ff_c_binary_other_value) + (a)))) /\\ (exists ff_u_binary_other_value_product ff_v_binary_other_value_product. ((((exists ff_h_binary_other_value_product_start. ff_h_binary_other_value_product_start + S (1) = S ((S (0)) * ff_v_binary_other_value_product)) /\\ exists ff_q_binary_other_value_product_start. ff_u_binary_other_value_product = ff_q_binary_other_value_product_start * S ((S (0)) * ff_v_binary_other_value_product) + (1))) /\\ ((((exists ff_h_binary_other_value_product_terminal. ff_h_binary_other_value_product_terminal + S (ff_power_binary_other) = S ((S (e)) * ff_v_binary_other_value_product)) /\\ exists ff_q_binary_other_value_product_terminal. ff_u_binary_other_value_product = ff_q_binary_other_value_product_terminal * S ((S (e)) * ff_v_binary_other_value_product) + (ff_power_binary_other))) /\\ forall ff_i_binary_other_value_product. (exists ff_lt_binary_other_value_product_bound. ff_lt_binary_other_value_product_bound + S ff_i_binary_other_value_product = e) -> exists ff_p_binary_other_value_product ff_r_binary_other_value_product ff_s_binary_other_value_product. ((((exists ff_h_binary_other_value_product_factor. ff_h_binary_other_value_product_factor + S (ff_p_binary_other_value_product) = S ((S (ff_i_binary_other_value_product)) * ff_c_binary_other_value)) /\\ exists ff_q_binary_other_value_product_factor. ff_b_binary_other_value = ff_q_binary_other_value_product_factor * S ((S (ff_i_binary_other_value_product)) * ff_c_binary_other_value) + (ff_p_binary_other_value_product))) /\\ ((((exists ff_h_binary_other_value_product_partial. ff_h_binary_other_value_product_partial + S (ff_r_binary_other_value_product) = S ((S (ff_i_binary_other_value_product)) * ff_v_binary_other_value_product)) /\\ exists ff_q_binary_other_value_product_partial. ff_u_binary_other_value_product = ff_q_binary_other_value_product_partial * S ((S (ff_i_binary_other_value_product)) * ff_v_binary_other_value_product) + (ff_r_binary_other_value_product))) /\\ ((((exists ff_h_binary_other_value_product_successor. ff_h_binary_other_value_product_successor + S (ff_s_binary_other_value_product) = S ((S (S ff_i_binary_other_value_product)) * ff_v_binary_other_value_product)) /\\ exists ff_q_binary_other_value_product_successor. ff_u_binary_other_value_product = ff_q_binary_other_value_product_successor * S ((S (S ff_i_binary_other_value_product)) * ff_v_binary_other_value_product) + (ff_s_binary_other_value_product))) /\\ ff_s_binary_other_value_product = ff_r_binary_other_value_product * ff_p_binary_other_value_product)))))))) /\\ (((exists ff_gap_binary_other_residue. ff_gap_binary_other_residue + S (s) = m) /\\ (exists ff_left_binary_other_residue_congruence ff_right_binary_other_residue_congruence. (ff_power_binary_other) + m * ff_left_binary_other_residue_congruence = (s) + m * ff_right_binary_other_residue_congruence))))) -> r = s",
+      "statement_sha256": "453385706238c475f61dd57108282cdfcb7b3b8b1e7aa4b98e3fdb5878a79e12",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Any two exact bounded residues of the same relational power are equal."
+    },
+    {
+      "admitted_to_alpha": true,
+      "admitted_to_stable": false,
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_evidence": "alpha_closed",
+      "alpha_first_enrolled_version": "v21",
+      "body_proof_depth": 19,
+      "body_proof_nodes": 28,
+      "campaign_milestone": "G102",
+      "checked_use": true,
+      "defined": {
+        "defined_statement": "∀ a. ∀ e. ∀ m. BinaryModulus(m) → ∃ x. BinaryModularPower(a,e,m,x) ∧ (∀ y. BinaryModularPower(a,e,m,y) → x = y)",
+        "defined_statement_sha256": "78114b009cc3f81e792959a6c018d0af44b4f441053b9e0852484e3ee19a2bb4",
+        "definition_uses": {
+          "ND0021": 1,
+          "ND0027": 2
+        },
+        "exact_ast_equivalence": true,
+        "expanded_statement_sha256": "7b9895f8ad3956c33e9fb06ea8040113f17f272be5e97d942ca71aed2a88f136",
+        "free_names": [],
+        "script_definition_uses": {},
+        "statement_definition_uses": {
+          "ND0021": 1,
+          "ND0027": 2
+        },
+        "statement_parts": [
+          {
+            "kind": "text",
+            "text": "∀ a. ∀ e. ∀ m. "
+          },
+          {
+            "definition": "ND0021",
+            "kind": "definition",
+            "text": "BinaryModulus(m)"
+          },
+          {
+            "kind": "text",
+            "text": " → ∃ x. "
+          },
+          {
+            "definition": "ND0027",
+            "kind": "definition",
+            "text": "BinaryModularPower(a,e,m,x)"
+          },
+          {
+            "kind": "text",
+            "text": " ∧ (∀ y. "
+          },
+          {
+            "definition": "ND0027",
+            "kind": "definition",
+            "text": "BinaryModularPower(a,e,m,y)"
+          },
+          {
+            "kind": "text",
+            "text": " → x = y)"
+          }
+        ]
+      },
+      "dependencies": [
+        "binary_modular_exponentiation_result_exists",
+        "binary_modular_exponentiation_result_functional"
+      ],
+      "enrolled_in_alpha": true,
+      "factory": "make_binary_modular_exponentiation_candidate_theorems",
+      "id": "BX0010",
+      "independent_lean_bundle_verified": true,
+      "name": "binary_modular_exponentiation_result_exists_unique",
+      "proof_bundle_node_id": 207,
+      "proof_bundle_sha256": "65ecae7cb6b3e102790efa281451db3da5ab83868afcf9d57e6656f7a3eafda0",
+      "script": [
+        "intro a",
+        "intro e",
+        "intro m",
+        "intro hmodulus",
+        "specialize binary_modular_exponentiation_result_exists a",
+        "specialize binary_modular_exponentiation_result_exists e",
+        "specialize binary_modular_exponentiation_result_exists m",
+        "have hresult : exists r. (exists ff_power_binary_result. ((exists ff_b_binary_result_value ff_c_binary_result_value. ((forall ff_i_binary_result_value_repeat. (exists ff_lt_binary_result_value_repeat_bound. ff_lt_binary_result_value_repeat_bound + S ff_i_binary_result_value_repeat = e) -> (((exists ff_h_binary_result_value_repeat_decoded. ff_h_binary_result_value_repeat_decoded + S (a) = S ((S (ff_i_binary_result_value_repeat)) * ff_c_binary_result_value)) /\\ exists ff_q_binary_result_value_repeat_decoded. ff_b_binary_result_value = ff_q_binary_result_value_repeat_decoded * S ((S (ff_i_binary_result_value_repeat)) * ff_c_binary_result_value) + (a)))) /\\ (exists ff_u_binary_result_value_product ff_v_binary_result_value_product. ((((exists ff_h_binary_result_value_product_start. ff_h_binary_result_value_product_start + S (1) = S ((S (0)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_start. ff_u_binary_result_value_product = ff_q_binary_result_value_product_start * S ((S (0)) * ff_v_binary_result_value_product) + (1))) /\\ ((((exists ff_h_binary_result_value_product_terminal. ff_h_binary_result_value_product_terminal + S (ff_power_binary_result) = S ((S (e)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_terminal. ff_u_binary_result_value_product = ff_q_binary_result_value_product_terminal * S ((S (e)) * ff_v_binary_result_value_product) + (ff_power_binary_result))) /\\ forall ff_i_binary_result_value_product. (exists ff_lt_binary_result_value_product_bound. ff_lt_binary_result_value_product_bound + S ff_i_binary_result_value_product = e) -> exists ff_p_binary_result_value_product ff_r_binary_result_value_product ff_s_binary_result_value_product. ((((exists ff_h_binary_result_value_product_factor. ff_h_binary_result_value_product_factor + S (ff_p_binary_result_value_product) = S ((S (ff_i_binary_result_value_product)) * ff_c_binary_result_value)) /\\ exists ff_q_binary_result_value_product_factor. ff_b_binary_result_value = ff_q_binary_result_value_product_factor * S ((S (ff_i_binary_result_value_product)) * ff_c_binary_result_value) + (ff_p_binary_result_value_product))) /\\ ((((exists ff_h_binary_result_value_product_partial. ff_h_binary_result_value_product_partial + S (ff_r_binary_result_value_product) = S ((S (ff_i_binary_result_value_product)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_partial. ff_u_binary_result_value_product = ff_q_binary_result_value_product_partial * S ((S (ff_i_binary_result_value_product)) * ff_v_binary_result_value_product) + (ff_r_binary_result_value_product))) /\\ ((((exists ff_h_binary_result_value_product_successor. ff_h_binary_result_value_product_successor + S (ff_s_binary_result_value_product) = S ((S (S ff_i_binary_result_value_product)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_successor. ff_u_binary_result_value_product = ff_q_binary_result_value_product_successor * S ((S (S ff_i_binary_result_value_product)) * ff_v_binary_result_value_product) + (ff_s_binary_result_value_product))) /\\ ff_s_binary_result_value_product = ff_r_binary_result_value_product * ff_p_binary_result_value_product)))))))) /\\ (((exists ff_gap_binary_result_residue. ff_gap_binary_result_residue + S (r) = m) /\\ (exists ff_left_binary_result_residue_congruence ff_right_binary_result_residue_congruence. (ff_power_binary_result) + m * ff_left_binary_result_residue_congruence = (r) + m * ff_right_binary_result_residue_congruence)))))",
+        "apply binary_modular_exponentiation_result_exists",
+        "exact hmodulus",
+        "cases hresult",
+        "exists x",
+        "split",
+        "exact hresult_witness",
+        "intro s",
+        "intro hs",
+        "specialize binary_modular_exponentiation_result_functional a",
+        "specialize binary_modular_exponentiation_result_functional e",
+        "specialize binary_modular_exponentiation_result_functional m",
+        "specialize binary_modular_exponentiation_result_functional x",
+        "specialize binary_modular_exponentiation_result_functional s",
+        "apply binary_modular_exponentiation_result_functional",
+        "exact hresult_witness",
+        "exact hs"
+      ],
+      "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+      "sources": [
+        {
+          "factory": "make_binary_modular_exponentiation_candidate_theorems",
+          "script_sha256": "6548761842832d61bfcdd1b7ac1cc0fee9b2135c57b1e204e10dca7d17f14455",
+          "selected": true,
+          "source_module": "peano-lab/py/peano_lab/library/binary_modular_exponentiation_candidate.py",
+          "statement_sha256": "7b9895f8ad3956c33e9fb06ea8040113f17f272be5e97d942ca71aed2a88f136"
+        }
+      ],
+      "stable_member": false,
+      "statement": "forall a e m. (exists ff_modulus_gap_binary_guard. ff_modulus_gap_binary_guard + S 1 = m) -> exists r. ((exists ff_power_binary_result. ((exists ff_b_binary_result_value ff_c_binary_result_value. ((forall ff_i_binary_result_value_repeat. (exists ff_lt_binary_result_value_repeat_bound. ff_lt_binary_result_value_repeat_bound + S ff_i_binary_result_value_repeat = e) -> (((exists ff_h_binary_result_value_repeat_decoded. ff_h_binary_result_value_repeat_decoded + S (a) = S ((S (ff_i_binary_result_value_repeat)) * ff_c_binary_result_value)) /\\ exists ff_q_binary_result_value_repeat_decoded. ff_b_binary_result_value = ff_q_binary_result_value_repeat_decoded * S ((S (ff_i_binary_result_value_repeat)) * ff_c_binary_result_value) + (a)))) /\\ (exists ff_u_binary_result_value_product ff_v_binary_result_value_product. ((((exists ff_h_binary_result_value_product_start. ff_h_binary_result_value_product_start + S (1) = S ((S (0)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_start. ff_u_binary_result_value_product = ff_q_binary_result_value_product_start * S ((S (0)) * ff_v_binary_result_value_product) + (1))) /\\ ((((exists ff_h_binary_result_value_product_terminal. ff_h_binary_result_value_product_terminal + S (ff_power_binary_result) = S ((S (e)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_terminal. ff_u_binary_result_value_product = ff_q_binary_result_value_product_terminal * S ((S (e)) * ff_v_binary_result_value_product) + (ff_power_binary_result))) /\\ forall ff_i_binary_result_value_product. (exists ff_lt_binary_result_value_product_bound. ff_lt_binary_result_value_product_bound + S ff_i_binary_result_value_product = e) -> exists ff_p_binary_result_value_product ff_r_binary_result_value_product ff_s_binary_result_value_product. ((((exists ff_h_binary_result_value_product_factor. ff_h_binary_result_value_product_factor + S (ff_p_binary_result_value_product) = S ((S (ff_i_binary_result_value_product)) * ff_c_binary_result_value)) /\\ exists ff_q_binary_result_value_product_factor. ff_b_binary_result_value = ff_q_binary_result_value_product_factor * S ((S (ff_i_binary_result_value_product)) * ff_c_binary_result_value) + (ff_p_binary_result_value_product))) /\\ ((((exists ff_h_binary_result_value_product_partial. ff_h_binary_result_value_product_partial + S (ff_r_binary_result_value_product) = S ((S (ff_i_binary_result_value_product)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_partial. ff_u_binary_result_value_product = ff_q_binary_result_value_product_partial * S ((S (ff_i_binary_result_value_product)) * ff_v_binary_result_value_product) + (ff_r_binary_result_value_product))) /\\ ((((exists ff_h_binary_result_value_product_successor. ff_h_binary_result_value_product_successor + S (ff_s_binary_result_value_product) = S ((S (S ff_i_binary_result_value_product)) * ff_v_binary_result_value_product)) /\\ exists ff_q_binary_result_value_product_successor. ff_u_binary_result_value_product = ff_q_binary_result_value_product_successor * S ((S (S ff_i_binary_result_value_product)) * ff_v_binary_result_value_product) + (ff_s_binary_result_value_product))) /\\ ff_s_binary_result_value_product = ff_r_binary_result_value_product * ff_p_binary_result_value_product)))))))) /\\ (((exists ff_gap_binary_result_residue. ff_gap_binary_result_residue + S (r) = m) /\\ (exists ff_left_binary_result_residue_congruence ff_right_binary_result_residue_congruence. (ff_power_binary_result) + m * ff_left_binary_result_residue_congruence = (r) + m * ff_right_binary_result_residue_congruence))))) /\\ forall s. (exists ff_power_binary_other. ((exists ff_b_binary_other_value ff_c_binary_other_value. ((forall ff_i_binary_other_value_repeat. (exists ff_lt_binary_other_value_repeat_bound. ff_lt_binary_other_value_repeat_bound + S ff_i_binary_other_value_repeat = e) -> (((exists ff_h_binary_other_value_repeat_decoded. ff_h_binary_other_value_repeat_decoded + S (a) = S ((S (ff_i_binary_other_value_repeat)) * ff_c_binary_other_value)) /\\ exists ff_q_binary_other_value_repeat_decoded. ff_b_binary_other_value = ff_q_binary_other_value_repeat_decoded * S ((S (ff_i_binary_other_value_repeat)) * ff_c_binary_other_value) + (a)))) /\\ (exists ff_u_binary_other_value_product ff_v_binary_other_value_product. ((((exists ff_h_binary_other_value_product_start. ff_h_binary_other_value_product_start + S (1) = S ((S (0)) * ff_v_binary_other_value_product)) /\\ exists ff_q_binary_other_value_product_start. ff_u_binary_other_value_product = ff_q_binary_other_value_product_start * S ((S (0)) * ff_v_binary_other_value_product) + (1))) /\\ ((((exists ff_h_binary_other_value_product_terminal. ff_h_binary_other_value_product_terminal + S (ff_power_binary_other) = S ((S (e)) * ff_v_binary_other_value_product)) /\\ exists ff_q_binary_other_value_product_terminal. ff_u_binary_other_value_product = ff_q_binary_other_value_product_terminal * S ((S (e)) * ff_v_binary_other_value_product) + (ff_power_binary_other))) /\\ forall ff_i_binary_other_value_product. (exists ff_lt_binary_other_value_product_bound. ff_lt_binary_other_value_product_bound + S ff_i_binary_other_value_product = e) -> exists ff_p_binary_other_value_product ff_r_binary_other_value_product ff_s_binary_other_value_product. ((((exists ff_h_binary_other_value_product_factor. ff_h_binary_other_value_product_factor + S (ff_p_binary_other_value_product) = S ((S (ff_i_binary_other_value_product)) * ff_c_binary_other_value)) /\\ exists ff_q_binary_other_value_product_factor. ff_b_binary_other_value = ff_q_binary_other_value_product_factor * S ((S (ff_i_binary_other_value_product)) * ff_c_binary_other_value) + (ff_p_binary_other_value_product))) /\\ ((((exists ff_h_binary_other_value_product_partial. ff_h_binary_other_value_product_partial + S (ff_r_binary_other_value_product) = S ((S (ff_i_binary_other_value_product)) * ff_v_binary_other_value_product)) /\\ exists ff_q_binary_other_value_product_partial. ff_u_binary_other_value_product = ff_q_binary_other_value_product_partial * S ((S (ff_i_binary_other_value_product)) * ff_v_binary_other_value_product) + (ff_r_binary_other_value_product))) /\\ ((((exists ff_h_binary_other_value_product_successor. ff_h_binary_other_value_product_successor + S (ff_s_binary_other_value_product) = S ((S (S ff_i_binary_other_value_product)) * ff_v_binary_other_value_product)) /\\ exists ff_q_binary_other_value_product_successor. ff_u_binary_other_value_product = ff_q_binary_other_value_product_successor * S ((S (S ff_i_binary_other_value_product)) * ff_v_binary_other_value_product) + (ff_s_binary_other_value_product))) /\\ ff_s_binary_other_value_product = ff_r_binary_other_value_product * ff_p_binary_other_value_product)))))))) /\\ (((exists ff_gap_binary_other_residue. ff_gap_binary_other_residue + S (s) = m) /\\ (exists ff_left_binary_other_residue_congruence ff_right_binary_other_residue_congruence. (ff_power_binary_other) + m * ff_left_binary_other_residue_congruence = (s) + m * ff_right_binary_other_residue_congruence))))) -> r = s)",
+      "statement_sha256": "7b9895f8ad3956c33e9fb06ea8040113f17f272be5e97d942ca71aed2a88f136",
+      "status": "Alpha v33 checked-use · first admitted v21 · independently kernel and Lean verified; not Stable",
+      "summary": "Every guarded modular exponentiation has exactly one actual canonical natural result."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "binary_canonical_residue_exists": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002"
+      ],
+      "dependencies": [
+        "binary_modulus_nontrivial_nonzero"
+      ],
+      "dependents": [
+        "binary_canonical_residue_exists_unique",
+        "binary_modular_square_residue_exists",
+        "binary_modular_multiply_residue_exists",
+        "binary_modular_step_exists",
+        "binary_modular_exponentiation_result_exists"
+      ]
+    },
+    "binary_canonical_residue_exists_unique": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX0004"
+      ],
+      "dependencies": [
+        "binary_canonical_residue_exists",
+        "binary_canonical_residue_functional"
+      ],
+      "dependents": []
+    },
+    "binary_canonical_residue_functional": {
+      "critical_root_path": [
+        "BX0003"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "binary_canonical_residue_exists_unique",
+        "binary_modular_step_functional",
+        "binary_modular_exponentiation_result_functional"
+      ]
+    },
+    "binary_exponent_doubled_power": {
+      "critical_root_path": [
+        "BX0006"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "binary_exponent_odd_power"
+      ]
+    },
+    "binary_exponent_odd_power": {
+      "critical_root_path": [
+        "BX0006",
+        "BX0007"
+      ],
+      "dependencies": [
+        "binary_exponent_doubled_power"
+      ],
+      "dependents": []
+    },
+    "binary_exponent_split_exists": {
+      "critical_root_path": [
+        "BX0005"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "binary_modular_exponentiation_result_exists": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX000E"
+      ],
+      "dependencies": [
+        "binary_canonical_residue_exists"
+      ],
+      "dependents": [
+        "binary_modular_exponentiation_result_exists_unique"
+      ]
+    },
+    "binary_modular_exponentiation_result_exists_unique": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX000E",
+        "BX0010"
+      ],
+      "dependencies": [
+        "binary_modular_exponentiation_result_exists",
+        "binary_modular_exponentiation_result_functional"
+      ],
+      "dependents": []
+    },
+    "binary_modular_exponentiation_result_functional": {
+      "critical_root_path": [
+        "BX0003",
+        "BX000F"
+      ],
+      "dependencies": [
+        "binary_canonical_residue_functional"
+      ],
+      "dependents": [
+        "binary_modular_exponentiation_result_exists_unique"
+      ]
+    },
+    "binary_modular_multiply_congruence": {
+      "critical_root_path": [
+        "BX0009"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "binary_modular_multiply_residue_exists": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX000B"
+      ],
+      "dependencies": [
+        "binary_canonical_residue_exists"
+      ],
+      "dependents": []
+    },
+    "binary_modular_square_congruence": {
+      "critical_root_path": [
+        "BX0008"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "binary_modular_square_residue_exists": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX000A"
+      ],
+      "dependencies": [
+        "binary_canonical_residue_exists"
+      ],
+      "dependents": []
+    },
+    "binary_modular_step_exists": {
+      "critical_root_path": [
+        "BX0001",
+        "BX0002",
+        "BX000C"
+      ],
+      "dependencies": [
+        "binary_canonical_residue_exists"
+      ],
+      "dependents": []
+    },
+    "binary_modular_step_functional": {
+      "critical_root_path": [
+        "BX0003",
+        "BX000D"
+      ],
+      "dependencies": [
+        "binary_canonical_residue_functional"
+      ],
+      "dependents": []
+    },
+    "binary_modulus_nontrivial_nonzero": {
+      "critical_root_path": [
+        "BX0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "binary_canonical_residue_exists"
+      ]
+    }
+  },
+  "proof_paths": {
+    "BX0001": [
+      "BX0001"
+    ],
+    "BX0002": [
+      "BX0001",
+      "BX0002"
+    ],
+    "BX0003": [
+      "BX0003"
+    ],
+    "BX0004": [
+      "BX0001",
+      "BX0002",
+      "BX0004"
+    ],
+    "BX0005": [
+      "BX0005"
+    ],
+    "BX0006": [
+      "BX0006"
+    ],
+    "BX0007": [
+      "BX0006",
+      "BX0007"
+    ],
+    "BX0008": [
+      "BX0008"
+    ],
+    "BX0009": [
+      "BX0009"
+    ],
+    "BX000A": [
+      "BX0001",
+      "BX0002",
+      "BX000A"
+    ],
+    "BX000B": [
+      "BX0001",
+      "BX0002",
+      "BX000B"
+    ],
+    "BX000C": [
+      "BX0001",
+      "BX0002",
+      "BX000C"
+    ],
+    "BX000D": [
+      "BX0003",
+      "BX000D"
+    ],
+    "BX000E": [
+      "BX0001",
+      "BX0002",
+      "BX000E"
+    ],
+    "BX000F": [
+      "BX0003",
+      "BX000F"
+    ],
+    "BX0010": [
+      "BX0001",
+      "BX0002",
+      "BX000E",
+      "BX0010"
+    ]
+  },
+  "root_names": [
+    "binary_exponent_split_exists",
+    "binary_modular_step_functional",
+    "binary_modular_exponentiation_result_exists_unique"
+  ],
+  "schema": "peano-lab-constructive-advanced-layer-explorer-v1",
+  "stable_admitted_node_count": 0,
+  "statement_definition_use_count": 23,
+  "tags": {
+    "binary_canonical_residue_exists": "BX0002",
+    "binary_canonical_residue_exists_unique": "BX0004",
+    "binary_canonical_residue_functional": "BX0003",
+    "binary_exponent_doubled_power": "BX0006",
+    "binary_exponent_odd_power": "BX0007",
+    "binary_exponent_split_exists": "BX0005",
+    "binary_modular_exponentiation_result_exists": "BX000E",
+    "binary_modular_exponentiation_result_exists_unique": "BX0010",
+    "binary_modular_exponentiation_result_functional": "BX000F",
+    "binary_modular_multiply_congruence": "BX0009",
+    "binary_modular_multiply_residue_exists": "BX000B",
+    "binary_modular_square_congruence": "BX0008",
+    "binary_modular_square_residue_exists": "BX000A",
+    "binary_modular_step_exists": "BX000C",
+    "binary_modular_step_functional": "BX000D",
+    "binary_modulus_nontrivial_nonzero": "BX0001"
+  }
+}

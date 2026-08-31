@@ -1,0 +1,390 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v15": "0123e5938f43cf67833751e2a6102d6598ac24c9be6db9a0d353ec3f55e5f32c"
+  },
+  "per_theorem": [
+    {
+      "name": "bounded_euler_criterion_complete",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL0000"
+    },
+    {
+      "name": "prime_predecessor_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL0001"
+    },
+    {
+      "name": "odd_predecessor_double_half",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL0002"
+    },
+    {
+      "name": "quadratic_supplement_minus_one_half_parity",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL0003"
+    },
+    {
+      "name": "quadratic_supplement_minus_one_residue_iff_mod_four_one",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL0004"
+    },
+    {
+      "name": "quadratic_supplement_minus_one_nonresidue_iff_mod_four_three",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL0005"
+    },
+    {
+      "name": "quadratic_supplement_minus_one_complete",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL0006"
+    },
+    {
+      "name": "bounded_gauss_lemma_complete",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL0007"
+    },
+    {
+      "name": "eight_mul_eq_double_four",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL0008"
+    },
+    {
+      "name": "odd_mod_eight_cases",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "SL0009"
+    },
+    {
+      "name": "doubling_gauss_count_shape_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": false,
+        "admitted_to_stable": false,
+        "alpha_checked_use": false,
+        "alpha_evidence": null,
+        "enrolled_in_alpha": false
+      },
+      "recorded_first_version": "not_recorded",
+      "tag": "SL000A"
+    },
+    {
+      "name": "mod_eight_remainder_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000B"
+    },
+    {
+      "name": "mod_eight_good_bad_exclusive",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000C"
+    },
+    {
+      "name": "doubling_gauss_even_count_implies_good_mod_eight",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000D"
+    },
+    {
+      "name": "doubling_gauss_odd_count_implies_bad_mod_eight",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000E"
+    },
+    {
+      "name": "doubling_gauss_count_parity_mod_eight_complete",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000F"
+    },
+    {
+      "name": "doubling_floor_below_implies_double_at_most_half",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000G"
+    },
+    {
+      "name": "doubling_floor_above_implies_double_above_half",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000H"
+    },
+    {
+      "name": "doubling_half_range_below_odd_modulus",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000I"
+    },
+    {
+      "name": "reflected_double_above_odd_half",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000J"
+    },
+    {
+      "name": "doubling_gauss_initial_segment_complement",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000K"
+    },
+    {
+      "name": "doubling_half_decomposition_lower_bound",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000L"
+    },
+    {
+      "name": "doubling_gauss_count_shape_from_initial_segment_complement",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000M"
+    },
+    {
+      "name": "doubling_gauss_reflection_count_shape",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000N"
+    },
+    {
+      "name": "quadratic_supplement_two_conditional_on_gauss_count_shape",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000O"
+    },
+    {
+      "name": "odd_prime_strictly_exceeds_two",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000P"
+    },
+    {
+      "name": "quadratic_supplement_two_half_complete",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000Q"
+    },
+    {
+      "name": "quadratic_supplement_two_residue_iff_mod_eight_one_or_seven",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000R"
+    },
+    {
+      "name": "quadratic_supplement_two_nonresidue_iff_mod_eight_three_or_five",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000S"
+    },
+    {
+      "name": "quadratic_supplement_two_complete",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "enrolled_in_alpha": true
+      },
+      "recorded_first_version": "v15",
+      "tag": "SL000T"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 480986,
+    "path": "book/_static/constructive-frontier-explorer/supplementary-laws/api/corpus.json",
+    "sha256": "71ebd5e90449df68f7da53185000aa9ae4d1e171264ea543681727a81c5c2291"
+  },
+  "source_corpus_fields": {
+    "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+    "historical_alpha_edition_version": "v19"
+  },
+  "source_family_fields": {
+    "historical_alpha_edition_version": "v19"
+  },
+  "source_manifest": {
+    "bytes": 319521,
+    "path": "book/_static/constructive-frontier-explorer/manifest.json",
+    "sha256": "416aba94c6a451d7080d7503fd1d093e822fc2ad5afb07fa92bada0bda34e021"
+  },
+  "source_manifest_fields": {
+    "historical_alpha_catalog_sha256": "f1c3d3fba013ca3a5b62a4103dd00bd5b7e39b1f785ed9023099704ad033004b",
+    "historical_alpha_edition_version": "v19"
+  }
+}

@@ -74,13 +74,13 @@ def _isolated_lean_project(destination: Path) -> Path:
 
 
 def _forbid_current_alpha_proofs(monkeypatch):
-    from peano_lab.library import editions_v32
+    from peano_lab.library import editions_v33
 
     def forbidden(*_arguments, **_options):
         raise AssertionError("a proof-lazy current Alpha route requested an actual v32 proof")
 
     for name in ("replay", "_checked_research_bundle", "checked_research_bundle"):
-        monkeypatch.setattr(editions_v32, name, forbidden)
+        monkeypatch.setattr(editions_v33, name, forbidden)
 
 
 def _clear_current_alpha_replay_caches() -> None:
@@ -88,12 +88,12 @@ def _clear_current_alpha_replay_caches() -> None:
     # current delegating editions. Exercise missing bytes from a cold chain.
     from peano_lab.library import (
         editions_v25, editions_v26, editions_v27,
-        editions_v28, editions_v29, editions_v30, editions_v31, editions_v32,
+        editions_v28, editions_v29, editions_v30, editions_v31, editions_v32, editions_v33,
     )
 
     for edition in (
         editions_v25, editions_v26, editions_v27,
-        editions_v28, editions_v29, editions_v30, editions_v31, editions_v32,
+        editions_v28, editions_v29, editions_v30, editions_v31, editions_v32, editions_v33,
     ):
         edition.replay.cache_clear()
 
@@ -347,7 +347,7 @@ def test_historical_alpha_theorems_have_replay_free_current_v31_strands(
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v32" in captured.out
+    assert "v33" in captured.out
     assert "no fresh Peano proof replay" in captured.err
 
 
@@ -427,7 +427,7 @@ def test_current_v31_frontier_outline_never_loads_actual_proof_artifacts(
     assert exporter.main([name, "--edition", "alpha", "--format", "outline"]) == 0
     captured = capsys.readouterr()
     assert name in captured.out
-    assert "v32" in captured.out
+    assert "v33" in captured.out
     assert "no fresh Peano proof replay" in captured.err
 
 
@@ -553,12 +553,12 @@ def test_unsealed_current_alpha_cli_cannot_claim_checked_export(
     capsys: pytest.CaptureFixture[str],
     style: str,
 ) -> None:
-    from peano_lab.library import editions_v32
+    from peano_lab.library import editions_v33
 
-    monkeypatch.setattr(editions_v32, "EXPECTED_ALPHA_V32_COUNT", 0)
+    monkeypatch.setattr(editions_v33, "EXPECTED_ALPHA_V33_COUNT", 0)
     assert exporter.main(["zero_add", "--edition", "alpha", "--format", style]) == 1
     captured = capsys.readouterr()
-    assert "Alpha v32 is not sealed for checked use" in captured.err
+    assert "Alpha v33 is not sealed for checked use" in captured.err
     assert "theorem «zero_add»" not in captured.out
     assert exporter.main(["zero_add", "--format", "outline"]) == 0
 
@@ -1113,7 +1113,7 @@ def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
     edition: str,
 ) -> None:
     if name == "gaussian_code_representation_transport":
-        from peano_lab.library import editions_v30, editions_v31, editions_v32
+        from peano_lab.library import editions_v30, editions_v31, editions_v32, editions_v33
 
         assert name in editions_v30.FRONTIER_NEW_NAMES
         assert editions_v30.v29.entry(name, edition="alpha") is None
@@ -1122,7 +1122,7 @@ def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
         assert entry.spec.dependencies == ()
         assert editions_v30.entry(name, edition="stable") is None
         assert editions_v31.entry(name, edition="alpha") is entry
-        assert editions_v32.entry(name, edition="alpha") is entry
+        assert editions_v33.entry(name, edition="alpha") is entry
         corpus = json.loads((
             ROOT / "book/_static/constructive-gaussian-factorization-explorer"
             / "gaussian-factorization/api/corpus.json"
@@ -1133,14 +1133,14 @@ def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
         assert row["source_module"] == "peano_lab.library.gaussian_ring_candidate"
 
     if name == "dirichlet_unit_at_one_witness":
-        from peano_lab.library import editions_v31, editions_v32
+        from peano_lab.library import editions_v31, editions_v33
 
         assert name in editions_v31.FRONTIER_NEW_NAMES
         assert editions_v31.v30.entry(name, edition="alpha") is None
         entry = editions_v31.entry(name, edition="alpha")
         assert entry is not None and entry.checked_use and entry.spec.dependencies == ()
         assert editions_v31.entry(name, edition="stable") is None
-        assert editions_v32.entry(name, edition="alpha") is entry
+        assert editions_v33.entry(name, edition="alpha") is entry
 
     package = tmp_path / "verified"
     project = _isolated_lean_project(tmp_path / "lean-companion")
@@ -1184,7 +1184,7 @@ def test_real_lean_independently_compiles_entire_stable_and_new_alpha_strands(
         assert "zero_add" in source
         assert "add_succ_left" in source
     else:
-        assert manifest["edition_version"] == "v32"
+        assert manifest["edition_version"] == "v33"
         if name == "square_zero_root":
             assert "mul_eq_zero" in source
     assert "sorry" not in source

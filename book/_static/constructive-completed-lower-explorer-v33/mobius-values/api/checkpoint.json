@@ -1,0 +1,268 @@
+{
+  "bundle": {
+    "body_proof_nodes": 15134,
+    "bytes": 813004,
+    "dependency_edges_including_packaging": 675,
+    "independent_lean_checked": true,
+    "kernel_calls": 237,
+    "nodes_including_packaging_root": 237,
+    "original_ha_checked": true,
+    "packaging_root_id": 236,
+    "path": "research/arithmetic-library/artifacts/bottom-layer-mobius-values-proof-bundle-v1.json",
+    "sha256": "041f1a3471002ff3cd5fc3da2a6cc751ad2f4a4458a497b3de2a26276fd314b8"
+  },
+  "new_theorem_count": 21,
+  "owned_node_ids": {
+    "alternating_signed_unit_exists": 215,
+    "alternating_signed_unit_functional": 216,
+    "alternating_signed_unit_successor_negates": 233,
+    "alternating_signed_unit_zero": 217,
+    "mobius_fresh_prime_negates": 235,
+    "mobius_from_prime_square": 221,
+    "mobius_from_squarefree_factor_count": 222,
+    "mobius_input_positive": 219,
+    "mobius_one": 227,
+    "mobius_positive_unit_negates_to_negative_unit": 232,
+    "mobius_prime_factor_count_unique": 218,
+    "mobius_prime_factor_list_append": 231,
+    "mobius_prime_square_value_zero": 234,
+    "mobius_prime_squarefree": 229,
+    "mobius_squarefree_divisor": 228,
+    "mobius_squarefree_evaluation": 224,
+    "mobius_squarefree_fresh_prime_product": 230,
+    "mobius_value_exists": 223,
+    "mobius_value_exists_unique": 226,
+    "mobius_value_functional": 225,
+    "mobius_zero_has_no_value": 220
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "mobius_value_exists_unique",
+      "node_id": 226,
+      "ordinary_certificate_nodes": 20227,
+      "statement_sha256": "eb41094b2ceb2273e89e8966ced4cc921decf56dd6bc6dbcb5349c2087aa1135"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "mobius_fresh_prime_negates",
+      "node_id": 235,
+      "ordinary_certificate_nodes": 18203,
+      "statement_sha256": "2b0116e6d32e45fe7ae5e9a8bd7c11e5f95a88021cd42786276cff6e7ec303d2"
+    }
+  ],
+  "rows": [
+    {
+      "name": "alternating_signed_unit_exists",
+      "node_id": 215,
+      "proof_depth": 9,
+      "proof_edges": 18,
+      "proof_nodes": 19,
+      "proof_objects": 19,
+      "reused_objects": 0,
+      "statement_sha256": "813b3e387681b8430c9679903198ae7a2c996d215f7877cee0fc2d4a1a2a6365"
+    },
+    {
+      "name": "alternating_signed_unit_functional",
+      "node_id": 216,
+      "proof_depth": 23,
+      "proof_edges": 88,
+      "proof_nodes": 89,
+      "proof_objects": 89,
+      "reused_objects": 0,
+      "statement_sha256": "5194ebe1bcf99180157a8957f1b97f1e7ec332599fb5ccb495d6e64710c22e73"
+    },
+    {
+      "name": "alternating_signed_unit_zero",
+      "node_id": 217,
+      "proof_depth": 6,
+      "proof_edges": 6,
+      "proof_nodes": 7,
+      "proof_objects": 7,
+      "reused_objects": 0,
+      "statement_sha256": "b1bef2aff69743b2b7e49803648f233d7919ebb4770a60287c8c895a41c79b27"
+    },
+    {
+      "name": "mobius_prime_factor_count_unique",
+      "node_id": 218,
+      "proof_depth": 21,
+      "proof_edges": 22,
+      "proof_nodes": 23,
+      "proof_objects": 23,
+      "reused_objects": 0,
+      "statement_sha256": "fe8496e776d5a018527080e6bfe82b2bc67ef992506572a1787bd58fbbb1f3c8"
+    },
+    {
+      "name": "mobius_input_positive",
+      "node_id": 219,
+      "proof_depth": 8,
+      "proof_edges": 11,
+      "proof_nodes": 12,
+      "proof_objects": 12,
+      "reused_objects": 0,
+      "statement_sha256": "241850395062196a80457ae78195e0c967327a45c465701e9e0191d60dcf143d"
+    },
+    {
+      "name": "mobius_zero_has_no_value",
+      "node_id": 220,
+      "proof_depth": 10,
+      "proof_edges": 15,
+      "proof_nodes": 16,
+      "proof_objects": 16,
+      "reused_objects": 0,
+      "statement_sha256": "59a34d9fef563bfde51da513e76b88f3a368ce67aaf93b5d4bf1dca8d6505fe2"
+    },
+    {
+      "name": "mobius_from_prime_square",
+      "node_id": 221,
+      "proof_depth": 11,
+      "proof_edges": 13,
+      "proof_nodes": 14,
+      "proof_objects": 14,
+      "reused_objects": 0,
+      "statement_sha256": "d4939003ea99a37daea16178f694e25ae3aa5aeeadc98e4d535ac88529da12ba"
+    },
+    {
+      "name": "mobius_from_squarefree_factor_count",
+      "node_id": 222,
+      "proof_depth": 20,
+      "proof_edges": 26,
+      "proof_nodes": 27,
+      "proof_objects": 27,
+      "reused_objects": 0,
+      "statement_sha256": "af94f7f9242bb7d0d94d074224952bb3db154b4deaff9935fd7a94b91d1f2b96"
+    },
+    {
+      "name": "mobius_value_exists",
+      "node_id": 223,
+      "proof_depth": 22,
+      "proof_edges": 50,
+      "proof_nodes": 51,
+      "proof_objects": 51,
+      "reused_objects": 0,
+      "statement_sha256": "66d70409d9b65a8d69997c5ed6ccb6e002ae29046eb3d1dd1e563685fc4897da"
+    },
+    {
+      "name": "mobius_squarefree_evaluation",
+      "node_id": 224,
+      "proof_depth": 26,
+      "proof_edges": 64,
+      "proof_nodes": 65,
+      "proof_objects": 65,
+      "reused_objects": 0,
+      "statement_sha256": "90196a9966b1fa7ab9107257bb645f2c4b6c1662a84c4e50b1a3273eb8aa00fd"
+    },
+    {
+      "name": "mobius_value_functional",
+      "node_id": 225,
+      "proof_depth": 22,
+      "proof_edges": 64,
+      "proof_nodes": 65,
+      "proof_objects": 65,
+      "reused_objects": 0,
+      "statement_sha256": "d6bf764d3fcc08f8b8f2294fb16cb0d1fb91dc58b9563920db33dc522b7e4eb3"
+    },
+    {
+      "name": "mobius_value_exists_unique",
+      "node_id": 226,
+      "proof_depth": 15,
+      "proof_edges": 21,
+      "proof_nodes": 22,
+      "proof_objects": 22,
+      "reused_objects": 0,
+      "statement_sha256": "eb41094b2ceb2273e89e8966ced4cc921decf56dd6bc6dbcb5349c2087aa1135"
+    },
+    {
+      "name": "mobius_one",
+      "node_id": 227,
+      "proof_depth": 19,
+      "proof_edges": 51,
+      "proof_nodes": 52,
+      "proof_objects": 52,
+      "reused_objects": 0,
+      "statement_sha256": "7e25b6ee50f327823f711ec20cfbd25178b198c7210f11bc73f08441e73273e6"
+    },
+    {
+      "name": "mobius_squarefree_divisor",
+      "node_id": 228,
+      "proof_depth": 30,
+      "proof_edges": 72,
+      "proof_nodes": 73,
+      "proof_objects": 73,
+      "reused_objects": 0,
+      "statement_sha256": "18e75b910b5a1825152440613d1ca15e8b951a7fd7020066e104a22d5d6833a7"
+    },
+    {
+      "name": "mobius_prime_squarefree",
+      "node_id": 229,
+      "proof_depth": 25,
+      "proof_edges": 87,
+      "proof_nodes": 88,
+      "proof_objects": 88,
+      "reused_objects": 0,
+      "statement_sha256": "c51862a507ea4c30431199732d527fcbebfaa4a2c37b7ae7d62edbbada9a7f26"
+    },
+    {
+      "name": "mobius_squarefree_fresh_prime_product",
+      "node_id": 230,
+      "proof_depth": 31,
+      "proof_edges": 106,
+      "proof_nodes": 107,
+      "proof_objects": 107,
+      "reused_objects": 0,
+      "statement_sha256": "6c8b8ec36c0aa7b8741753a928b524bb4b049a4a5ca8b046f52b2cb456a0244a"
+    },
+    {
+      "name": "mobius_prime_factor_list_append",
+      "node_id": 231,
+      "proof_depth": 28,
+      "proof_edges": 73,
+      "proof_nodes": 74,
+      "proof_objects": 74,
+      "reused_objects": 0,
+      "statement_sha256": "1536449156e44f130343327ed2f57635f67299e450aeefef8681d9fdac6e8cfe"
+    },
+    {
+      "name": "mobius_positive_unit_negates_to_negative_unit",
+      "node_id": 232,
+      "proof_depth": 13,
+      "proof_edges": 23,
+      "proof_nodes": 24,
+      "proof_objects": 24,
+      "reused_objects": 0,
+      "statement_sha256": "279162e9773a3aa35ac83c96557290090cd9686942e5c882d9bafbf849763a64"
+    },
+    {
+      "name": "alternating_signed_unit_successor_negates",
+      "node_id": 233,
+      "proof_depth": 22,
+      "proof_edges": 101,
+      "proof_nodes": 102,
+      "proof_objects": 102,
+      "reused_objects": 0,
+      "statement_sha256": "6966042ee3f11a8d46af7773ff9dabf6cb048a649b3c294b5fea003ea5091bb0"
+    },
+    {
+      "name": "mobius_prime_square_value_zero",
+      "node_id": 234,
+      "proof_depth": 31,
+      "proof_edges": 52,
+      "proof_nodes": 53,
+      "proof_objects": 53,
+      "reused_objects": 0,
+      "statement_sha256": "91a233976cfdb569c20bf7af0bd3e27cf984aeb8bcdabb76a000851f579d613c"
+    },
+    {
+      "name": "mobius_fresh_prime_negates",
+      "node_id": 235,
+      "proof_depth": 32,
+      "proof_edges": 130,
+      "proof_nodes": 131,
+      "proof_objects": 131,
+      "reused_objects": 0,
+      "statement_sha256": "2b0116e6d32e45fe7ae5e9a8bd7c11e5f95a88021cd42786276cff6e7ec303d2"
+    }
+  ],
+  "slug": "mobius-values",
+  "specs_sha256": "547c6e1da76f74f5329b3cc2e5707584bd2534fece4406d7b3493ef11aaa1291"
+}

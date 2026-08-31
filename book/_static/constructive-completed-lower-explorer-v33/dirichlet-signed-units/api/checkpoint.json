@@ -1,0 +1,143 @@
+{
+  "bundle": {
+    "body_proof_nodes": 4704,
+    "bytes": 214864,
+    "dependency_edges_including_packaging": 146,
+    "independent_lean_checked": true,
+    "kernel_calls": 71,
+    "nodes_including_packaging_root": 71,
+    "original_ha_checked": true,
+    "packaging_root_id": 70,
+    "path": "research/arithmetic-library/artifacts/dirichlet-signed-units-proof-bundle-v1.json",
+    "sha256": "5045f1feb2f21a79ecb3cb03f95aaefeb8f01e616a4aa8640cbada3da62ae47b"
+  },
+  "new_theorem_count": 9,
+  "owned_node_ids": {
+    "dirichlet_signed_add_cancel_left": 64,
+    "dirichlet_signed_add_solve": 65,
+    "dirichlet_signed_unit_affine_solve": 68,
+    "dirichlet_signed_unit_affine_unique": 69,
+    "dirichlet_signed_unit_inverse_iff": 63,
+    "dirichlet_signed_unit_multiply_cancel_right": 67,
+    "dirichlet_signed_unit_multiply_involution": 66,
+    "dirichlet_signed_unit_product_classification": 62,
+    "dirichlet_signed_unit_self_product": 61
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_signed_unit_product_classification",
+      "node_id": 62,
+      "ordinary_certificate_nodes": 2126,
+      "statement_sha256": "4c6820280f2a7c6e35eb66968d2f4819ea3276baa1af24e495ec1626e963db08"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_signed_unit_affine_solve",
+      "node_id": 68,
+      "ordinary_certificate_nodes": 4634,
+      "statement_sha256": "3c8f3184a683b282d0ef7f8d9f3671f71a9b9509599ff78b4ff47623c65660e4"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "dirichlet_signed_unit_affine_unique",
+      "node_id": 69,
+      "ordinary_certificate_nodes": 4908,
+      "statement_sha256": "68b300d496090f0911613338c333747776a606c71fd28d4c82849bfca1c32d11"
+    }
+  ],
+  "rows": [
+    {
+      "name": "dirichlet_signed_unit_self_product",
+      "node_id": 61,
+      "proof_depth": 48,
+      "proof_edges": 175,
+      "proof_nodes": 176,
+      "proof_objects": 176,
+      "reused_objects": 0,
+      "statement_sha256": "780d9dd89725bbab5d855c954b515efebcc63f1144231844332dd12d51bde395"
+    },
+    {
+      "name": "dirichlet_signed_unit_product_classification",
+      "node_id": 62,
+      "proof_depth": 44,
+      "proof_edges": 671,
+      "proof_nodes": 672,
+      "proof_objects": 672,
+      "reused_objects": 0,
+      "statement_sha256": "4c6820280f2a7c6e35eb66968d2f4819ea3276baa1af24e495ec1626e963db08"
+    },
+    {
+      "name": "dirichlet_signed_unit_inverse_iff",
+      "node_id": 63,
+      "proof_depth": 11,
+      "proof_edges": 24,
+      "proof_nodes": 25,
+      "proof_objects": 25,
+      "reused_objects": 0,
+      "statement_sha256": "f1fc281c8f5c286aecce35c64d5751a85fdf238016f38868ac8dace9068d96b6"
+    },
+    {
+      "name": "dirichlet_signed_add_cancel_left",
+      "node_id": 64,
+      "proof_depth": 24,
+      "proof_edges": 56,
+      "proof_nodes": 57,
+      "proof_objects": 57,
+      "reused_objects": 0,
+      "statement_sha256": "70b035df7d0471a236eab2a9626f6df1a66c238b391acbf60f2389be001ae71a"
+    },
+    {
+      "name": "dirichlet_signed_add_solve",
+      "node_id": 65,
+      "proof_depth": 20,
+      "proof_edges": 32,
+      "proof_nodes": 33,
+      "proof_objects": 33,
+      "reused_objects": 0,
+      "statement_sha256": "f0508996bd81d5bd73e7917ca25d84471aec82c9cf856983a4a8cd9f754844b4"
+    },
+    {
+      "name": "dirichlet_signed_unit_multiply_involution",
+      "node_id": 66,
+      "proof_depth": 25,
+      "proof_edges": 66,
+      "proof_nodes": 67,
+      "proof_objects": 67,
+      "reused_objects": 0,
+      "statement_sha256": "847ae8b4b31d190bea6a648badd1059445bcc8e107b1d2527da3519ecaac52a0"
+    },
+    {
+      "name": "dirichlet_signed_unit_multiply_cancel_right",
+      "node_id": 67,
+      "proof_depth": 28,
+      "proof_edges": 61,
+      "proof_nodes": 62,
+      "proof_objects": 62,
+      "reused_objects": 0,
+      "statement_sha256": "4f10c8764cd2c581b41cc65310db45eeb7e61855aac510ccf57c6f56ca38ac5a"
+    },
+    {
+      "name": "dirichlet_signed_unit_affine_solve",
+      "node_id": 68,
+      "proof_depth": 18,
+      "proof_edges": 26,
+      "proof_nodes": 27,
+      "proof_objects": 27,
+      "reused_objects": 0,
+      "statement_sha256": "3c8f3184a683b282d0ef7f8d9f3671f71a9b9509599ff78b4ff47623c65660e4"
+    },
+    {
+      "name": "dirichlet_signed_unit_affine_unique",
+      "node_id": 69,
+      "proof_depth": 26,
+      "proof_edges": 54,
+      "proof_nodes": 55,
+      "proof_objects": 55,
+      "reused_objects": 0,
+      "statement_sha256": "68b300d496090f0911613338c333747776a606c71fd28d4c82849bfca1c32d11"
+    }
+  ],
+  "slug": "dirichlet-signed-units",
+  "specs_sha256": "503e22e4a75aae8b39054144d2d3371f4c8c8f27ac584b18a1383d0e7c9660b7"
+}

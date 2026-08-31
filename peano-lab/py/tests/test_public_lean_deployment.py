@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import importlib.util
 import io
 import json
@@ -85,7 +86,26 @@ def test_public_gateway_delete_targets_cannot_be_widened() -> None:
 def test_public_proof_deployment_installs_both_isolated_surfaces() -> None:
     output = _dry_run("deploy-lean-public")
 
-    assert "python3 scripts/stage_public_lean_selector.py" in output
+    assert "python3 -B scripts/stage_constructive_research_publication_v33.py" in output
+    # The current Python stager applies the unchanged selector implementation;
+    # the historical shell-only staging command is no longer the public entry.
+    source = (ROOT / "scripts/stage_constructive_research_publication_v33.py").read_text(encoding="utf-8")
+    tree = ast.parse(source)
+    assert any(isinstance(node, ast.Import) and any(
+        name.name == "stage_public_lean_selector" and name.asname == "selector" for name in node.names
+    ) for node in tree.body)
+    functions = {node.name: node for node in tree.body if isinstance(node, ast.FunctionDef)}
+    selection = ast.unparse(functions["_selector_bytes"])
+    inventory = ast.unparse(functions["source_inventory"])
+    assert "selector._candidate(Path(name), Path(name))" in selection
+    assert "selector.CLOSING_HEAD.search(raw)" in selection
+    assert "insertion = selector._overlay(selector._api_url(api_url))" in inventory
+    assert "_selector_bytes(destination, payload, insertion)" in inventory
+    assert "read(selector.SOURCE / name)" in inventory
+    payload = "rsync -avz --exclude '/index.html' _deploy/proofs-v33/ lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/"
+    index = "rsync -avz _deploy/proofs-v33/index.html lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/index.html"
+    assert output.index(payload) < output.index(index)
+    assert "--delete" not in output
     assert "deploy/lean-api/index.php" in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/api/lean-strands/" in output
     assert "lts-faculty.wmi.amu.edu.pl:~/public_html/proofs/" in output

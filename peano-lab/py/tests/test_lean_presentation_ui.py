@@ -6,7 +6,7 @@ import driver
 import pytest
 
 from peano_lab.library import editions_v19 as alpha
-from peano_lab.library import editions_v32 as current_alpha
+from peano_lab.library import editions_v33 as current_alpha
 from peano_lab.library.lean import LIVE_LEAN_PREFIX, formula_to_lean
 from peano_lab.library.theorems import get, replay
 from peano_lab.ui import data_library
@@ -14,11 +14,11 @@ from peano_lab.ui import data_library
 
 def _forbid_current_alpha_proofs(monkeypatch, forbidden):
     # Current and inherited proof providers must all remain unused by previews.
-    for edition, provider in ((current_alpha, "research"), (current_alpha.v31, "completed_lower")):
+    for edition, provider in ((current_alpha, "research"), (current_alpha.v32.v31, "completed_lower")):
         monkeypatch.setattr(edition, "replay", forbidden)
         monkeypatch.setattr(edition, "_checked_" + provider + "_bundle", forbidden)
         monkeypatch.setattr(edition, "checked_" + provider + "_bundle", forbidden)
-    monkeypatch.setattr(current_alpha.v31.v30, "replay", forbidden)
+    monkeypatch.setattr(current_alpha.v32.v31.v30, "replay", forbidden)
 
 
 @pytest.mark.parametrize("command", ("zero_add", "compact zero_add", "pretty zero_add"))
@@ -72,7 +72,7 @@ def test_alpha_inspection_modes_never_replay_or_export_certificates(
 
     output = driver.LabSession().run(f"pa lean alpha {mode} zero_add")
 
-    assert "Release edition: Alpha v32." in output
+    assert "Release edition: Alpha v33." in output
     assert "Checked-use authority: YES." in output
     assert "Fresh independent empty-context Peano kernel replay: NOT RUN" in output
     assert "--edition alpha --format compact" in output
@@ -194,7 +194,7 @@ def test_alpha_body_only_entries_are_rejected_before_any_replay(
         ("alpha", "Usage: pa lean alpha <theorem>"),
         ("alpha full", "Usage: pa lean alpha full <theorem>"),
         ("missing", "No library theorem 'missing'"),
-        ("alpha missing", "No Alpha v32 theorem 'missing'"),
+        ("alpha missing", "No Alpha v33 theorem 'missing'"),
         ("exact zero_add trailing", "Usage: pa lean exact <theorem>"),
     ),
 )
@@ -346,7 +346,7 @@ def test_small_alpha_full_audit_remains_explicitly_available() -> None:
 
     assert "complete constructive certificate" in output
     assert "Independent empty-context Peano kernel check: PASS" in output
-    assert "Release edition: Alpha v32." in output
+    assert "Release edition: Alpha v33." in output
     assert "theorem «zero_add»" in output
 
 

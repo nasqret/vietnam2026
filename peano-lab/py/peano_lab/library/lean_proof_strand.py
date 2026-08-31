@@ -262,7 +262,7 @@ def _positive_limit(name: str, value: object, maximum: int) -> int:
 
 
 def _edition_view(edition: str) -> tuple[Any, str]:
-    """Import only the current sealed, artifact-free Alpha-v32 inventory."""
+    """Import only the current sealed, artifact-free Alpha-v33 inventory."""
 
     if type(edition) is not str or edition not in {"stable", "alpha"}:
         raise ProofStrandError("edition must be exactly 'stable' or 'alpha'")
@@ -270,15 +270,15 @@ def _edition_view(edition: str) -> tuple[Any, str]:
         from .editions_v26 import STABLE_EDITION
 
         return STABLE_EDITION, "stable"
-    from . import editions_v32
+    from . import editions_v33
 
-    if not editions_v32.EXPECTED_ALPHA_V32_COUNT:
-        raise ProofStrandError("Alpha v32 is not sealed for checked use")
+    if not editions_v33.EXPECTED_ALPHA_V33_COUNT:
+        raise ProofStrandError("Alpha v33 is not sealed for checked use")
     try:
-        editions_v32.require_research_seal()
-    except editions_v32.EditionV32Error as error:
+        editions_v33.require_research_seal()
+    except editions_v33.EditionV33Error as error:
         raise ProofStrandError(str(error)) from error
-    return editions_v32.ALPHA_EDITION, "v32"
+    return editions_v33.ALPHA_EDITION, "v33"
 
 
 @lru_cache(maxsize=512)

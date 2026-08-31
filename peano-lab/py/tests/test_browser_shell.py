@@ -72,6 +72,7 @@ PROOF_BUNDLE_FILENAMES = (
     "dirichlet-inverses-proof-bundle-v1.json",
     "g009-multiplicative-convolution-proof-bundle-v1.json",
     "prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
+    "prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
 )
 PROOF_BUNDLE_SOURCES = {
     f"proof-artifacts/{filename}": (
@@ -165,8 +166,8 @@ def test_worker_source_inventory_is_reproducible() -> None:
 
 
 def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> None:
-    assert len(PROOF_BUNDLE_FILENAMES) == 41
-    assert len(set(PROOF_BUNDLE_FILENAMES)) == 41
+    assert len(PROOF_BUNDLE_FILENAMES) == 42
+    assert len(set(PROOF_BUNDLE_FILENAMES)) == 42
     assert all(name == name.lower() for name in PROOF_BUNDLE_FILENAMES)
     assert tuple(re.findall(r'"(proof-artifacts/[^"\n]+\.json)"', WORKER)) == tuple(
         PROOF_BUNDLE_SOURCES
@@ -200,8 +201,19 @@ def test_worker_mounts_every_current_alpha_provider_with_exact_bundle_case() -> 
         "campaign_completed_lower_closure",
         "editions_v31",
         "alpha_enrollment_v32",
+        "alpha_enrollment_v33",
         "campaign_research_v32_closure",
+        "campaign_research_v33_closure",
         "editions_v32",
+        "editions_v33",
+        "prime_field_polynomial_convolution_triangular_candidate",
+        "prime_field_polynomial_representation_candidate",
+        "prime_field_polynomial_division_candidate",
+        "prime_field_polynomial_distributivity_candidate",
+        "prime_field_polynomial_division_uniqueness_candidate",
+        "prime_field_polynomial_convolution_padding_candidate",
+        "prime_field_polynomial_equivalence_candidate",
+        "prime_field_polynomial_convolution_congruence_candidate",
     ):
         assert f'"py/peano_lab/library/{module}.py"' in WORKER
 
@@ -229,12 +241,12 @@ def test_shell_exposes_accessible_proof_controls_and_ladder_shortcuts() -> None:
 
 def test_shell_connects_checked_alpha_research_to_multiscale_proof_atlas() -> None:
     assert 'aria-label="Course and research navigation"' in INDEX
-    channel = json.loads((LAB.parent / "artifacts/peano-library/channels-v32.json").read_bytes())["channels"]["alpha"]
+    channel = json.loads((LAB.parent / "artifacts/peano-library/channels-v33.json").read_bytes())["channels"]["alpha"]
     revision = channel["artifact_sha256"][:12]
-    assert channel["theorem_count"] == channel["checked_use_count"] == 3971
+    assert channel["theorem_count"] == channel["checked_use_count"] == 4092
     assert f'<a href="/proofs/?v={revision}">Proof library</a>' in INDEX
     assert f'<a href="/proofs/grand-campaign/?v={revision}">Research atlas</a>' in INDEX
-    assert "Alpha: 3,971 proofs" in INDEX
+    assert "Alpha: 4,092 proofs" in INDEX
     assert '<span class="lbl">research:</span>' in INDEX
     assert 'data-cmd="pa lib alpha odd_prime_lifting_the_exponent" disabled>odd-prime LTE</button>' in INDEX
     assert 'data-cmd="pa lib alpha positive_squarefree_kernel_and_power_profile" disabled>positive squarefree &amp; power profiles</button>' in INDEX

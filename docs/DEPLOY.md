@@ -1,7 +1,7 @@
 # Deploying
 
 The current mathematical release is sealed by
-[`channels-v31.json`](../artifacts/peano-library/channels-v31.json). The separate
+[`channels-v33.json`](../artifacts/peano-library/channels-v33.json). The separate
 Hydra development sequence is in [`HYDRA_PRODUCT_ROADMAP.md`](HYDRA_PRODUCT_ROADMAP.md);
 each training epoch retains its own explicitly frozen authority. Publishing new
 proofs does not expand an existing training experiment. The supported public
@@ -18,7 +18,7 @@ Five browser surfaces and one narrowly scoped PHP endpoint on the faculty server
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/lab-lambda> | `~/public_html/lab-lambda/` | the browser Lambda Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab/> | `~/public_html/peano-lab/` | production Peano Lab |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/peano-lab-next/> | `~/public_html/peano-lab-next/` | Peano Lab staging channel |
-| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 63 Alpha-v31 proof families plus the verified G009 research family, preserved checkpoint routes, the combined campaign atlas, proof artifacts, and eligible public Lean selectors |
+| <https://bnaskrecki.faculty.wmi.amu.edu.pl/proofs/> | `~/public_html/proofs/` | 66 current proof families, preserved first-admission/checkpoint routes, the combined campaign atlas, proof artifacts, and eligible public Lean selectors |
 | <https://bnaskrecki.faculty.wmi.amu.edu.pl/api/lean-strands/> | `~/public_html/api/lean-strands/` | isolated same-origin PHP gateway to the operator's loopback-only Lean proof worker |
 
 The SSH key (`~/.ssh/id_ed25519`) is already configured for the `lts-faculty` host.
@@ -34,7 +34,76 @@ targets; `make deploy` does not publish either Peano channel.
 
 ## Standalone proof explorers
 
-### Current v31 release
+### Current v33 release
+
+The additive polynomial release contains 4,092 Alpha checked-use entries:
+the unchanged 3,971-entry v32 parent plus exactly 121 first admissions.
+Stable remains the identical 432-theorem default. The new
+`polynomial-euclidean-division` family covers arbitrary nonzero-divisor
+execution, its formal coefficient identity and remainder bound, execution
+uniqueness, leading-zero padding and representation-independent operations.
+It does not claim arbitrary identity-pair quotient uniqueness, polynomial
+associativity, gcd/Bézout, or the full G091 prime-power-field construction.
+G009 retains its original v32 first admission.
+
+The canonical Quadratic Reciprocity design is unchanged. The combined map
+retains 144 milestone nodes and 120 major goals, with 397 reviewed conservative
+definitions, 865 expansion arrows and 13,212 actual theorem dependencies.
+Notation arrows never become proof premises. Seven new reviewed definitions
+link from G091 to their exact expansion pages, without invented blueprint aliases.
+
+```bash
+make alpha-v33-release        # create a new immutable release and five reader trees
+make alpha-v33-release-check  # fresh verification; compare existing immutable bytes
+make stage-proofs-v33         # new dedicated _deploy/proofs-v33 tree, or exact check
+```
+
+If the six immutable v33 release files exist but the reader directories were
+not installed, rerun publication without `--create-release` or `--check`:
+
+```bash
+PYTHONDONTWRITEBYTECODE=1 PYTHONMALLOC=pymalloc python3 -B scripts/publish_constructive_research_v33.py
+```
+
+This repeats all ten fresh proof jobs, checks the existing release bytes,
+and creates the readers only after all five publication phases pass.
+
+Admission requires ten fresh jobs: exact-statement novelty, the complete
+377-node artifact checked in original HA and independently compiled Lean,
+and eight complete ordinary principal certificates. Each job retains CPU
+170/175 seconds, wall 180 seconds and 1,536 MiB RSS. Five subsequent sequential
+publication phases inherit the genuine live capability and must pass all
+163 declared same-live UI cases before any reader directory is installed.
+Stored receipts, display metadata and generated manifests cannot authorize
+new proofs. The three-file catalogue remains nonrecursive: the literal
+v30 base plus one cumulative 870-row delta and the current manifest. The
+64 MiB/file and 4,096-entry limits are unchanged; v33 leaves four entry slots.
+
+The four family packages are `constructive-polynomial-euclidean-explorer-v33`
+(one family), `constructive-research-explorer-v33` (two v32-admitted families),
+`constructive-completed-lower-explorer-v33` (19 v31-admitted families), and
+`constructive-historical-explorers-v33` (44 established families). The fifth
+tree is `constructive-research-campaign-v33`. All older source trees, proof
+bundles and first-admission records remain literal history; the 89 historical
+non-admitted aliases are not promoted by a new display version.
+
+Register delivery hashes only after the real publication passes. The v33
+stager authenticates every source and retains `_deploy/proofs-v32`, creating
+a separate tree without overwriting either historical stage. For faculty
+deployment, inspect the exact owned remote destinations, retain rollback
+entrypoints, upload without deletion, verify all staged remote file hashes,
+and publish entrypoints last. Proof-site delivery and Peano preview are
+separate from the protected Peano production cache-header gate below.
+Do not change hosting headers or weaken that gate as part of this release.
+
+The two completed working archives (`prime-field-euclidean-v1` and
+`prime-field-equivalence-v1`) retain their original strict temporary-import
+guards. They are historical tests for commit `022330e80`, not entrypoints for
+the canonical v33 runtime. Use the new canonical v33 suites for current
+admission; use an exact historical checkout to reproduce archived tests.
+Do not weaken those guards or execute archived loaders after promotion.
+
+### Historical v31 release
 
 The additive v31 release admits 574 completed lower-layer theorems, giving
 3,796 Alpha checked-use entries. Stable remains the unchanged default 432.

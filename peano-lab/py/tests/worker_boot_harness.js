@@ -275,6 +275,7 @@ async function missingProofArtifactFailsBeforeAnyMount(missingArtifact) {
     "proof-artifacts/dirichlet-inverses-proof-bundle-v1.json",
     "proof-artifacts/g009-multiplicative-convolution-proof-bundle-v1.json",
     "proof-artifacts/prime-field-polynomial-division-prerequisites-proof-bundle-v1.json",
+    "proof-artifacts/prime-field-polynomial-euclidean-division-proof-bundle-v1.json",
   ]);
   await successfulBootIsConcurrentAndOrdered();
   await failureChoiceIsDeterministicAndAtomic();

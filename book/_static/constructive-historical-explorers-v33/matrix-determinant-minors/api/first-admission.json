@@ -1,0 +1,268 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v24": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+  },
+  "per_theorem": [
+    {
+      "name": "matrix_skip_index_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0001"
+    },
+    {
+      "name": "matrix_skip_index_functional",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0002"
+    },
+    {
+      "name": "matrix_skip_index_avoids_removed",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0003"
+    },
+    {
+      "name": "matrix_skip_index_bounded",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0004"
+    },
+    {
+      "name": "beta_matrix_minor_cell_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0005"
+    },
+    {
+      "name": "beta_matrix_minor_cell_functional",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0006"
+    },
+    {
+      "name": "beta_matrix_minor_point_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0007"
+    },
+    {
+      "name": "beta_matrix_minor_prefix_extend",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0008"
+    },
+    {
+      "name": "beta_matrix_minor_prefix_exists_nonzero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0009"
+    },
+    {
+      "name": "beta_matrix_minor_prefix_empty_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN000A"
+    },
+    {
+      "name": "beta_matrix_minor_prefix_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN000B"
+    },
+    {
+      "name": "beta_matrix_minor_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN000C"
+    },
+    {
+      "name": "beta_signed_matrix_minor_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN000D"
+    },
+    {
+      "name": "signed_matrix_four_cofactor_expansion_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN000E"
+    },
+    {
+      "name": "signed_matrix_four_cofactor_expansion_functional",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN000F"
+    },
+    {
+      "name": "signed_matrix_four_full_determinant_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0010"
+    },
+    {
+      "name": "signed_matrix_four_full_determinant_functional",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v24",
+      "tag": "MN0011"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 306817,
+    "path": "book/_static/constructive-research-layer-explorer/matrix-determinant-minors/api/corpus.json",
+    "sha256": "87126aeb5e50dfbbbf1c4e5123e1b2d0b79233fe7db4a87529c5e949ff320996"
+  },
+  "source_corpus_fields": {
+    "alpha_first_enrolled_version": "v24",
+    "alpha_first_enrollment_catalog_sha256": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+  },
+  "source_family_fields": {
+    "alpha_first_enrolled_version": "v24"
+  },
+  "source_manifest": {
+    "bytes": 38058,
+    "path": "book/_static/constructive-research-layer-explorer/manifest.json",
+    "sha256": "1cbcb25267304abc0331c6ea09ec40c1ebe792f537689cb2f8af4c3c4c98d3ec"
+  },
+  "source_manifest_fields": {
+    "alpha_first_enrolled_version": "v24",
+    "first_enrollment_catalog_sha256": "94ac4d193cbfe8c2ec04e54024221bc2c3a534c0ae014d381663b86174b3dcc1"
+  }
+}

@@ -1,0 +1,2363 @@
+{
+  "alpha_checked_use_node_count": 32,
+  "alpha_edition_version": "v33",
+  "alpha_first_enrolled_version": "v31",
+  "definition_topological_order": [
+    "PD0002",
+    "PD0003",
+    "PD0005",
+    "PD0007",
+    "PD0008",
+    "PD0013",
+    "PD0014",
+    "PD0019",
+    "PD0020",
+    "PD0024",
+    "PD0025",
+    "ND0182",
+    "PD0015",
+    "ND0183",
+    "ND0184",
+    "PD0026",
+    "ND0148",
+    "ND0237",
+    "ND0023",
+    "ND0238",
+    "ND0239",
+    "ND0240",
+    "ND0241"
+  ],
+  "edges": [
+    {
+      "kind": "proof_dependency",
+      "source": "EU0001",
+      "target": "EU0002"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0007",
+      "target": "EU0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0006",
+      "target": "EU0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0008",
+      "target": "EU0009"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU000A",
+      "target": "EU000B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU000B",
+      "target": "EU000C"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0009",
+      "target": "EU000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU000C",
+      "target": "EU000D"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0012",
+      "target": "EU0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU000E",
+      "target": "EU0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0013",
+      "target": "EU0014"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0015",
+      "target": "EU0017"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0016",
+      "target": "EU0017"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0011",
+      "target": "EU0017"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0002",
+      "target": "EU0018"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU000F",
+      "target": "EU0018"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0002",
+      "target": "EU0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0010",
+      "target": "EU0019"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0016",
+      "target": "EU001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0018",
+      "target": "EU001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0019",
+      "target": "EU001B"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU001A",
+      "target": "EU001E"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0014",
+      "target": "EU001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU000D",
+      "target": "EU001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU001B",
+      "target": "EU001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU001E",
+      "target": "EU001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0017",
+      "target": "EU001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU001D",
+      "target": "EU001F"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU001F",
+      "target": "EU0020"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0020",
+      "target": "EU0021"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0004",
+      "target": "EU0021"
+    },
+    {
+      "kind": "proof_dependency",
+      "source": "EU0021",
+      "target": "EU0022"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 3,
+      "source": "EU0001",
+      "statement_occurrences": 2,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0001",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 9,
+      "source": "EU0002",
+      "statement_occurrences": 5,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0002",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0004",
+      "statement_occurrences": 1,
+      "target": "ND0237"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0004",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0005",
+      "statement_occurrences": 1,
+      "target": "ND0237"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0005",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0005",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0006",
+      "statement_occurrences": 1,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU0006",
+      "statement_occurrences": 0,
+      "target": "PD0007"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0007",
+      "statement_occurrences": 1,
+      "target": "ND0238"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU0008",
+      "statement_occurrences": 0,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EU0008",
+      "statement_occurrences": 2,
+      "target": "ND0238"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU0008",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0008",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU0008",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU0009",
+      "statement_occurrences": 0,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU0009",
+      "statement_occurrences": 1,
+      "target": "ND0238"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU000A",
+      "statement_occurrences": 1,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000A",
+      "statement_occurrences": 1,
+      "target": "ND0238"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000A",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU000A",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "EU000B",
+      "statement_occurrences": 0,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000B",
+      "statement_occurrences": 1,
+      "target": "ND0238"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000B",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU000B",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000B",
+      "statement_occurrences": 1,
+      "target": "PD0024"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000B",
+      "statement_occurrences": 1,
+      "target": "PD0025"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000C",
+      "statement_occurrences": 1,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000C",
+      "statement_occurrences": 1,
+      "target": "ND0238"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000C",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU000C",
+      "statement_occurrences": 0,
+      "target": "PD0024"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU000C",
+      "statement_occurrences": 0,
+      "target": "PD0025"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000D",
+      "statement_occurrences": 1,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU000D",
+      "statement_occurrences": 1,
+      "target": "ND0238"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000D",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000E",
+      "statement_occurrences": 1,
+      "target": "ND0239"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "EU000E",
+      "statement_occurrences": 0,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000F",
+      "statement_occurrences": 1,
+      "target": "ND0239"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU000F",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0010",
+      "statement_occurrences": 1,
+      "target": "ND0239"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0010",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0011",
+      "statement_occurrences": 1,
+      "target": "ND0239"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0011",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0012",
+      "statement_occurrences": 1,
+      "target": "ND0240"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU0013",
+      "statement_occurrences": 1,
+      "target": "ND0239"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EU0013",
+      "statement_occurrences": 2,
+      "target": "ND0240"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU0013",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU0013",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU0014",
+      "statement_occurrences": 0,
+      "target": "ND0239"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0014",
+      "statement_occurrences": 1,
+      "target": "ND0240"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EU0015",
+      "statement_occurrences": 2,
+      "target": "ND0240"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU0016",
+      "statement_occurrences": 1,
+      "target": "ND0239"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0016",
+      "statement_occurrences": 1,
+      "target": "ND0240"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0016",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU0016",
+      "statement_occurrences": 1,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0017",
+      "statement_occurrences": 1,
+      "target": "ND0240"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0017",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU0017",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU0017",
+      "statement_occurrences": 1,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EU0018",
+      "statement_occurrences": 2,
+      "target": "ND0239"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 6,
+      "source": "EU0018",
+      "statement_occurrences": 2,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EU0018",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EU0019",
+      "statement_occurrences": 2,
+      "target": "ND0239"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 6,
+      "source": "EU0019",
+      "statement_occurrences": 2,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EU0019",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EU001A",
+      "statement_occurrences": 2,
+      "target": "ND0241"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU001B",
+      "statement_occurrences": 0,
+      "target": "ND0023"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU001B",
+      "statement_occurrences": 1,
+      "target": "ND0238"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "EU001B",
+      "statement_occurrences": 0,
+      "target": "ND0239"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU001B",
+      "statement_occurrences": 1,
+      "target": "ND0240"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU001B",
+      "statement_occurrences": 1,
+      "target": "ND0241"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU001B",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU001B",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 5,
+      "source": "EU001B",
+      "statement_occurrences": 3,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU001D",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 2,
+      "source": "EU001D",
+      "statement_occurrences": 2,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU001E",
+      "statement_occurrences": 1,
+      "target": "ND0183"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU001E",
+      "statement_occurrences": 1,
+      "target": "ND0241"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 4,
+      "occurrence_count": 4,
+      "source": "EU001E",
+      "statement_occurrences": 0,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 4,
+      "source": "EU001E",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "EU001E",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 4,
+      "source": "EU001E",
+      "statement_occurrences": 2,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU001E",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU001F",
+      "statement_occurrences": 0,
+      "target": "ND0148"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU001F",
+      "statement_occurrences": 1,
+      "target": "ND0184"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU001F",
+      "statement_occurrences": 0,
+      "target": "ND0238"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU001F",
+      "statement_occurrences": 0,
+      "target": "ND0240"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU001F",
+      "statement_occurrences": 0,
+      "target": "ND0241"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 1,
+      "source": "EU001F",
+      "statement_occurrences": 0,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU001F",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU001F",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 3,
+      "occurrence_count": 3,
+      "source": "EU001F",
+      "statement_occurrences": 0,
+      "target": "PD0013"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 2,
+      "occurrence_count": 2,
+      "source": "EU001F",
+      "statement_occurrences": 0,
+      "target": "PD0014"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU001F",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0020",
+      "statement_occurrences": 1,
+      "target": "ND0184"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0020",
+      "statement_occurrences": 1,
+      "target": "PD0005"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0020",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 1,
+      "occurrence_count": 2,
+      "source": "EU0020",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0021",
+      "statement_occurrences": 1,
+      "target": "ND0184"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0021",
+      "statement_occurrences": 1,
+      "target": "ND0237"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0021",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0021",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0022",
+      "statement_occurrences": 1,
+      "target": "ND0184"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0022",
+      "statement_occurrences": 1,
+      "target": "ND0237"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0022",
+      "statement_occurrences": 1,
+      "target": "PD0002"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0022",
+      "statement_occurrences": 1,
+      "target": "PD0008"
+    },
+    {
+      "kind": "uses_definition",
+      "local_proposition_occurrences": 0,
+      "occurrence_count": 1,
+      "source": "EU0022",
+      "statement_occurrences": 1,
+      "target": "PD0020"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0005",
+      "target": "PD0003"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0007",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0014",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0019",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0014"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0020",
+      "target": "PD0019"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0024",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0024",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0025",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0025",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0182",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0182",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0182",
+      "target": "PD0005"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0015",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0183",
+      "target": "ND0182"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0183",
+      "target": "PD0015"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0184",
+      "target": "ND0183"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0026",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "PD0026",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0148",
+      "target": "PD0024"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0148",
+      "target": "PD0025"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0148",
+      "target": "PD0026"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0237",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0237",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0023",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0023",
+      "target": "PD0008"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0238",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0238",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0238",
+      "target": "ND0023"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0239",
+      "target": "PD0005"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0240",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0240",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0240",
+      "target": "ND0239"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0241",
+      "target": "PD0002"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0241",
+      "target": "PD0013"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0241",
+      "target": "PD0005"
+    },
+    {
+      "kind": "definition_uses_definition",
+      "source": "ND0241",
+      "target": "PD0008"
+    }
+  ],
+  "family_slug": "euler-units",
+  "independent_lean_bundle_verified": true,
+  "nodes": [
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0001.html?v=6c9ebfb3c37e",
+      "id": "EU0001",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_coprime_mod_transport",
+      "proof_bundle_node_id": 177,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Balanced congruence transports actual common-divisor coprimality, even at modulus zero or one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0002.html?v=6c9ebfb3c37e",
+      "id": "EU0002",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "euler_multiplier_coprime_iff",
+      "proof_bundle_node_id": 178,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Multiplication by a coprime multiplier preserves and reflects precisely the unit predicate used by Phi."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0004.html?v=6c9ebfb3c37e",
+      "id": "EU0004",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_modular_unit_coprime",
+      "proof_bundle_node_id": 179,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "An actual bounded inverse implies the frozen common-divisor coprimality graph."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0005.html?v=6c9ebfb3c37e",
+      "id": "EU0005",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_coprime_modular_unit",
+      "proof_bundle_node_id": 180,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Above modulus one, coprimality constructs the blueprint's actual bounded inverse without assuming it."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0006.html?v=6c9ebfb3c37e",
+      "id": "EU0006",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_multiplier_residue_exists",
+      "proof_bundle_node_id": 181,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual Euclidean division constructs a canonical residue of every multiplied index, including index zero."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0007.html?v=6c9ebfb3c37e",
+      "id": "EU0007",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_multiplier_prefix_empty",
+      "proof_bundle_node_id": 182,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The empty multiplier prefix has no residue obligations."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0008.html?v=6c9ebfb3c37e",
+      "id": "EU0008",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_multiplier_prefix_extend",
+      "proof_bundle_node_id": 183,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Append the actual next canonical residue, preserving every earlier decoded multiplier value."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0009.html?v=6c9ebfb3c37e",
+      "id": "EU0009",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "euler_multiplier_prefix_exists",
+      "proof_bundle_node_id": 184,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "HA induction builds the complete beta-coded multiplier prefix; no map or bijection is supplied as a premise."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU000A.html?v=6c9ebfb3c37e",
+      "id": "EU000A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_multiplier_prefix_entry",
+      "proof_bundle_node_id": 185,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every decoded map entry, not just its construction witness, has the required bound and balanced congruence."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU000B.html?v=6c9ebfb3c37e",
+      "id": "EU000B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "euler_multiplier_prefix_bounded_injective",
+      "proof_bundle_node_id": 186,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Coprime modular cancellation makes the genuinely constructed full multiplier map a bounded injection."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU000C.html?v=6c9ebfb3c37e",
+      "id": "EU000C",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "euler_multiplier_prefix_permutation",
+      "proof_bundle_node_id": 187,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The multiplier map has actual bounded, injective, and surjective prefix evidence, not an assumed permutation label."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU000D.html?v=6c9ebfb3c37e",
+      "id": "EU000D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "euler_multiplier_permutation_exists",
+      "proof_bundle_node_id": 188,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every coprime multiplier at every positive modulus constructs a genuine canonical finite permutation, including modulus one."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU000E.html?v=6c9ebfb3c37e",
+      "id": "EU000E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_unit_product_factor_exists",
+      "proof_bundle_node_id": 189,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the actual weighted factor by the independent decidable coprimality predicate."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU000F.html?v=6c9ebfb3c37e",
+      "id": "EU000F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_unit_product_factor_unit_value",
+      "proof_bundle_node_id": 190,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "At a genuine unit index the weighted factor is the index itself."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0010.html?v=6c9ebfb3c37e",
+      "id": "EU0010",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_unit_product_factor_nonunit_value",
+      "proof_bundle_node_id": 191,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A nonunit index contributes exactly one, not a zero or an assumed cancellable residue."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0011.html?v=6c9ebfb3c37e",
+      "id": "EU0011",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_unit_product_factor_coprime",
+      "proof_bundle_node_id": 192,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Every weighted factor is coprime to the modulus, including the modulus-one zero factor."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0012.html?v=6c9ebfb3c37e",
+      "id": "EU0012",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_unit_product_prefix_empty",
+      "proof_bundle_node_id": 193,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The empty weighted-factor prefix is valid for any beta codes."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0013.html?v=6c9ebfb3c37e",
+      "id": "EU0013",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_unit_product_prefix_extend",
+      "proof_bundle_node_id": 194,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actually append the independently chosen next factor while preserving every earlier factor."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0014.html?v=6c9ebfb3c37e",
+      "id": "EU0014",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "euler_unit_product_prefix_exists",
+      "proof_bundle_node_id": 195,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "HA induction constructs all coprime-weighted factors; their list is never an endpoint assumption."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0015.html?v=6c9ebfb3c37e",
+      "id": "EU0015",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_unit_product_prefix_drop_last",
+      "proof_bundle_node_id": 196,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Restrict an actual weighted-factor prefix to its predecessor interval."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0016.html?v=6c9ebfb3c37e",
+      "id": "EU0016",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_unit_product_prefix_entry",
+      "proof_bundle_node_id": 197,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The weighted-factor choice holds for every actual decoded entry, independently of beta encoding."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0017.html?v=6c9ebfb3c37e",
+      "id": "EU0017",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "euler_unit_product_coprime",
+      "proof_bundle_node_id": 198,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The entire actual unit-weighted product is coprime to m; this is the proved cancellation premise."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0018.html?v=6c9ebfb3c37e",
+      "id": "EU0018",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "euler_unit_factor_scaled_congruence",
+      "proof_bundle_node_id": 199,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A unit index contributes exactly one multiplier factor under the actual residue permutation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0019.html?v=6c9ebfb3c37e",
+      "id": "EU0019",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 2,
+      "name": "euler_nonunit_factor_unchanged_congruence",
+      "proof_bundle_node_id": 200,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "A nonunit index and its image both contribute one, so neither adds to the exponent."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU001A.html?v=6c9ebfb3c37e",
+      "id": "EU001A",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_unit_scaled_prefix_drop_last",
+      "proof_bundle_node_id": 201,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Restrict the independently specified unit-scaled action to its predecessor prefix."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU001B.html?v=6c9ebfb3c37e",
+      "id": "EU001B",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 3,
+      "name": "euler_unit_product_reindex_scale",
+      "proof_bundle_node_id": 202,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Actual beta composition along the multiplier permutation scales precisely the factors counted by Phi."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU001D.html?v=6c9ebfb3c37e",
+      "id": "EU001D",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 0,
+      "name": "euler_coprime_weighted_product_cancel",
+      "proof_bundle_node_id": 203,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Cancel the proved coprime finite product in a balanced congruence, including the valid modulus-one case."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU001E.html?v=6c9ebfb3c37e",
+      "id": "EU001E",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 1,
+      "name": "euler_unit_count_product_balance",
+      "proof_bundle_node_id": 204,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Induction on the actual independently counted zero-based unit prefix proves the exact power/product congruence; no Euler conclusion or unit-count oracle is a premise."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU001F.html?v=6c9ebfb3c37e",
+      "id": "EU001F",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 4,
+      "name": "euler_coprime_totient_power_value",
+      "proof_bundle_node_id": 205,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "For every positive modulus and any actual Phi and Pow values, construct all finite permutation/product witnesses and prove the Euler congruence by coprime cancellation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0020.html?v=6c9ebfb3c37e",
+      "id": "EU0020",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 5,
+      "name": "euler_coprime_totient_power",
+      "proof_bundle_node_id": 206,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Construct the actual exponentiation witness for Euler's theorem at every positive modulus, without supplying a power, factor list, or permutation."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0021.html?v=6c9ebfb3c37e",
+      "id": "EU0021",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 6,
+      "name": "euler_modular_unit_totient_power",
+      "proof_bundle_node_id": 207,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "The exact actual-inverse Unit graph suffices for a constructed Euler power; no prime-modulus restriction is introduced."
+    },
+    {
+      "alpha_checked_use": true,
+      "alpha_edition_version": "v33",
+      "alpha_first_enrolled_version": "v31",
+      "href": "tag/EU0022.html?v=6c9ebfb3c37e",
+      "id": "EU0022",
+      "independent_lean_bundle_verified": true,
+      "kind": "theorem",
+      "layer": 7,
+      "name": "euler_theorem_for_units",
+      "proof_bundle_node_id": 208,
+      "scope": "candidate",
+      "stable_member": false,
+      "summary": "Full exact G014: m>1 and a genuinely witnessed modular unit and independently counted Phi imply an actual Pow witness congruent to one."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0002.html?v=6c9ebfb3c37e",
+      "id": "PD0002",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Lt",
+      "signature": "Lt(a,b)",
+      "summary": "Witness-defined strict order on natural numbers."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0003.html?v=6c9ebfb3c37e",
+      "id": "PD0003",
+      "kind": "definition",
+      "layer": 0,
+      "name": "Dvd",
+      "signature": "Dvd(d,n)",
+      "summary": "The natural number d divides n."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0005.html?v=6c9ebfb3c37e",
+      "id": "PD0005",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Coprime",
+      "signature": "Coprime(a,b)",
+      "summary": "Every common divisor of a and b is one."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0007.html?v=6c9ebfb3c37e",
+      "id": "PD0007",
+      "kind": "definition",
+      "layer": 1,
+      "name": "DivRem",
+      "signature": "DivRem(n,d,q,r)",
+      "summary": "q and r are a quotient and a strict remainder for n by d."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0008.html?v=6c9ebfb3c37e",
+      "id": "PD0008",
+      "kind": "definition",
+      "layer": 0,
+      "name": "ModEq",
+      "signature": "ModEq(m,a,b)",
+      "summary": "Balanced-natural congruence modulo m."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0013.html?v=6c9ebfb3c37e",
+      "id": "PD0013",
+      "kind": "definition",
+      "layer": 0,
+      "name": "BetaAt",
+      "signature": "BetaAt(b,c,i,x)",
+      "summary": "x is the bounded beta-decoded value at index i."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0014.html?v=6c9ebfb3c37e",
+      "id": "PD0014",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Product",
+      "signature": "Product(b,c,l,z)",
+      "summary": "z is the product of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0019.html?v=6c9ebfb3c37e",
+      "id": "PD0019",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Repeat",
+      "signature": "Repeat(b,c,a,l)",
+      "summary": "The decoded prefix repeats a for l positions."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0020.html?v=6c9ebfb3c37e",
+      "id": "PD0020",
+      "kind": "definition",
+      "layer": 2,
+      "name": "Pow",
+      "signature": "Pow(a,e,z)",
+      "summary": "z is the relational e-th power of a."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0024.html?v=6c9ebfb3c37e",
+      "id": "PD0024",
+      "kind": "definition",
+      "layer": 1,
+      "name": "BoundedPrefix",
+      "signature": "BoundedPrefix(b,c,l)",
+      "summary": "Every decoded entry below l is itself below l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0025.html?v=6c9ebfb3c37e",
+      "id": "PD0025",
+      "kind": "definition",
+      "layer": 1,
+      "name": "InjectivePrefix",
+      "signature": "InjectivePrefix(b,c,l)",
+      "summary": "Equal decoded values below l have equal indices."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0182.html?v=6c9ebfb3c37e",
+      "id": "ND0182",
+      "kind": "definition",
+      "layer": 2,
+      "name": "UnitBitPrefix",
+      "signature": "UnitBitPrefix(n,b,c,l)",
+      "summary": "The decoded bit at i<l is one exactly for Coprime(i,n), and zero otherwise. The interval starts at zero."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0015.html?v=6c9ebfb3c37e",
+      "id": "PD0015",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Sum",
+      "signature": "Sum(b,c,l,z)",
+      "summary": "z is the sum of a beta-coded prefix of length l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0183.html?v=6c9ebfb3c37e",
+      "id": "ND0183",
+      "kind": "definition",
+      "layer": 3,
+      "name": "UnitCount",
+      "signature": "UnitCount(n,l,t)",
+      "summary": "An actual beta sum counts the coprime residues in 0≤i<l. This auxiliary count is total even at modulus zero."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0184.html?v=6c9ebfb3c37e",
+      "id": "ND0184",
+      "kind": "definition",
+      "layer": 4,
+      "name": "Phi",
+      "signature": "Phi(n,t)",
+      "summary": "Positive n and the actual count of canonical residues i<n coprime to n. Phi(1,1) counts residue zero; Phi excludes n=0."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/PD0026.html?v=6c9ebfb3c37e",
+      "id": "PD0026",
+      "kind": "definition",
+      "layer": 1,
+      "name": "SurjectivePrefix",
+      "signature": "SurjectivePrefix(b,c,l)",
+      "summary": "Every value below l occurs at an index below l."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0148.html?v=6c9ebfb3c37e",
+      "id": "ND0148",
+      "kind": "definition",
+      "layer": 2,
+      "name": "PermutationPrefix",
+      "signature": "PermutationPrefix(b,c,l)",
+      "summary": "An actual beta-coded bijection of the finite index interval [0,l), including all bounds, injectivity, and surjectivity."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0237.html?v=6c9ebfb3c37e",
+      "id": "ND0237",
+      "kind": "definition",
+      "layer": 1,
+      "name": "Unit",
+      "signature": "Unit(a,m)",
+      "summary": "Exactly m>1 with a witnessed inverse b<m and a*b congruent to one. Unlike the old UnitResidue range, this expresses genuine invertibility at composite moduli."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0023.html?v=6c9ebfb3c37e",
+      "id": "ND0023",
+      "kind": "definition",
+      "layer": 1,
+      "name": "CanonicalModularResidue",
+      "signature": "CanonicalModularResidue(m,a,r)",
+      "summary": "A strictly bounded canonical natural residue r<m together with exact balanced congruence to a modulo m."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0238.html?v=6c9ebfb3c37e",
+      "id": "ND0238",
+      "kind": "definition",
+      "layer": 2,
+      "name": "UnitMultiplierPrefix",
+      "signature": "UnitMultiplierPrefix(a,m,b,c,l)",
+      "summary": "At every index i<l, the actual beta entry is the canonical residue of a*i. A bijection is constructed by theorem, not assumed in this graph."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0239.html?v=6c9ebfb3c37e",
+      "id": "ND0239",
+      "kind": "definition",
+      "layer": 2,
+      "name": "UnitProductFactor",
+      "signature": "UnitProductFactor(m,i,v)",
+      "summary": "The independently decided weighted factor is i when Coprime(i,m), and one otherwise. It contains neither Phi nor Euler's conclusion."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0240.html?v=6c9ebfb3c37e",
+      "id": "ND0240",
+      "kind": "definition",
+      "layer": 3,
+      "name": "UnitProductPrefix",
+      "signature": "UnitProductPrefix(m,b,c,l)",
+      "summary": "Every actual beta entry in 0<=i<l satisfies UnitProductFactor at the same index. Product values are computed by the existing finite-product graph."
+    },
+    {
+      "global_definition": null,
+      "href": "definition/ND0241.html?v=6c9ebfb3c37e",
+      "id": "ND0241",
+      "kind": "definition",
+      "layer": 2,
+      "name": "UnitScaledPrefix",
+      "signature": "UnitScaledPrefix(a,m,b,c,d,e,l)",
+      "summary": "Two genuine beta prefixes are related by modular multiplication by a precisely at coprime indices, with the other factors unchanged."
+    }
+  ],
+  "path_policy": "proof_dependency_edges_only",
+  "proof_adjacency": {
+    "EU0001": {
+      "critical_root_path": [
+        "EU0001"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0002"
+      ]
+    },
+    "EU0002": {
+      "critical_root_path": [
+        "EU0001",
+        "EU0002"
+      ],
+      "dependencies": [
+        "EU0001"
+      ],
+      "dependents": [
+        "EU0018",
+        "EU0019"
+      ]
+    },
+    "EU0004": {
+      "critical_root_path": [
+        "EU0004"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0021"
+      ]
+    },
+    "EU0005": {
+      "critical_root_path": [
+        "EU0005"
+      ],
+      "dependencies": [],
+      "dependents": []
+    },
+    "EU0006": {
+      "critical_root_path": [
+        "EU0006"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0009"
+      ]
+    },
+    "EU0007": {
+      "critical_root_path": [
+        "EU0007"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0009"
+      ]
+    },
+    "EU0008": {
+      "critical_root_path": [
+        "EU0008"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0009"
+      ]
+    },
+    "EU0009": {
+      "critical_root_path": [
+        "EU0007",
+        "EU0009"
+      ],
+      "dependencies": [
+        "EU0007",
+        "EU0006",
+        "EU0008"
+      ],
+      "dependents": [
+        "EU000D"
+      ]
+    },
+    "EU000A": {
+      "critical_root_path": [
+        "EU000A"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU000B"
+      ]
+    },
+    "EU000B": {
+      "critical_root_path": [
+        "EU000A",
+        "EU000B"
+      ],
+      "dependencies": [
+        "EU000A"
+      ],
+      "dependents": [
+        "EU000C"
+      ]
+    },
+    "EU000C": {
+      "critical_root_path": [
+        "EU000A",
+        "EU000B",
+        "EU000C"
+      ],
+      "dependencies": [
+        "EU000B"
+      ],
+      "dependents": [
+        "EU000D"
+      ]
+    },
+    "EU000D": {
+      "critical_root_path": [
+        "EU000A",
+        "EU000B",
+        "EU000C",
+        "EU000D"
+      ],
+      "dependencies": [
+        "EU0009",
+        "EU000C"
+      ],
+      "dependents": [
+        "EU001F"
+      ]
+    },
+    "EU000E": {
+      "critical_root_path": [
+        "EU000E"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0014"
+      ]
+    },
+    "EU000F": {
+      "critical_root_path": [
+        "EU000F"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0018"
+      ]
+    },
+    "EU0010": {
+      "critical_root_path": [
+        "EU0010"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0019"
+      ]
+    },
+    "EU0011": {
+      "critical_root_path": [
+        "EU0011"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0017"
+      ]
+    },
+    "EU0012": {
+      "critical_root_path": [
+        "EU0012"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0014"
+      ]
+    },
+    "EU0013": {
+      "critical_root_path": [
+        "EU0013"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0014"
+      ]
+    },
+    "EU0014": {
+      "critical_root_path": [
+        "EU0012",
+        "EU0014"
+      ],
+      "dependencies": [
+        "EU0012",
+        "EU000E",
+        "EU0013"
+      ],
+      "dependents": [
+        "EU001F"
+      ]
+    },
+    "EU0015": {
+      "critical_root_path": [
+        "EU0015"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0017"
+      ]
+    },
+    "EU0016": {
+      "critical_root_path": [
+        "EU0016"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU0017",
+        "EU001B"
+      ]
+    },
+    "EU0017": {
+      "critical_root_path": [
+        "EU0015",
+        "EU0017"
+      ],
+      "dependencies": [
+        "EU0015",
+        "EU0016",
+        "EU0011"
+      ],
+      "dependents": [
+        "EU001F"
+      ]
+    },
+    "EU0018": {
+      "critical_root_path": [
+        "EU0001",
+        "EU0002",
+        "EU0018"
+      ],
+      "dependencies": [
+        "EU0002",
+        "EU000F"
+      ],
+      "dependents": [
+        "EU001B"
+      ]
+    },
+    "EU0019": {
+      "critical_root_path": [
+        "EU0001",
+        "EU0002",
+        "EU0019"
+      ],
+      "dependencies": [
+        "EU0002",
+        "EU0010"
+      ],
+      "dependents": [
+        "EU001B"
+      ]
+    },
+    "EU001A": {
+      "critical_root_path": [
+        "EU001A"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU001E"
+      ]
+    },
+    "EU001B": {
+      "critical_root_path": [
+        "EU0001",
+        "EU0002",
+        "EU0018",
+        "EU001B"
+      ],
+      "dependencies": [
+        "EU0016",
+        "EU0018",
+        "EU0019"
+      ],
+      "dependents": [
+        "EU001F"
+      ]
+    },
+    "EU001D": {
+      "critical_root_path": [
+        "EU001D"
+      ],
+      "dependencies": [],
+      "dependents": [
+        "EU001F"
+      ]
+    },
+    "EU001E": {
+      "critical_root_path": [
+        "EU001A",
+        "EU001E"
+      ],
+      "dependencies": [
+        "EU001A"
+      ],
+      "dependents": [
+        "EU001F"
+      ]
+    },
+    "EU001F": {
+      "critical_root_path": [
+        "EU000A",
+        "EU000B",
+        "EU000C",
+        "EU000D",
+        "EU001F"
+      ],
+      "dependencies": [
+        "EU0014",
+        "EU000D",
+        "EU001B",
+        "EU001E",
+        "EU0017",
+        "EU001D"
+      ],
+      "dependents": [
+        "EU0020"
+      ]
+    },
+    "EU0020": {
+      "critical_root_path": [
+        "EU000A",
+        "EU000B",
+        "EU000C",
+        "EU000D",
+        "EU001F",
+        "EU0020"
+      ],
+      "dependencies": [
+        "EU001F"
+      ],
+      "dependents": [
+        "EU0021"
+      ]
+    },
+    "EU0021": {
+      "critical_root_path": [
+        "EU000A",
+        "EU000B",
+        "EU000C",
+        "EU000D",
+        "EU001F",
+        "EU0020",
+        "EU0021"
+      ],
+      "dependencies": [
+        "EU0020",
+        "EU0004"
+      ],
+      "dependents": [
+        "EU0022"
+      ]
+    },
+    "EU0022": {
+      "critical_root_path": [
+        "EU000A",
+        "EU000B",
+        "EU000C",
+        "EU000D",
+        "EU001F",
+        "EU0020",
+        "EU0021",
+        "EU0022"
+      ],
+      "dependencies": [
+        "EU0021"
+      ],
+      "dependents": []
+    }
+  },
+  "root_ids": [
+    "EU000D",
+    "EU0017",
+    "EU001E",
+    "EU0020",
+    "EU0022"
+  ],
+  "schema": "peano-lab-constructive-completed-lower-explorer-v31-graph",
+  "stable_admitted_node_count": 0
+}

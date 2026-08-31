@@ -1,0 +1,406 @@
+{
+  "catalog_sha256_by_recorded_version": {
+    "v28": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+  },
+  "per_theorem": [
+    {
+      "name": "foundation_division_exists_unique",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0001"
+    },
+    {
+      "name": "foundation_signed_bezout_canonical_gcd",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0002"
+    },
+    {
+      "name": "foundation_coprime_product_divisor",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0003"
+    },
+    {
+      "name": "foundation_prime_factor_list_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0004"
+    },
+    {
+      "name": "factor_permutation_below_zero_impossible",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0005"
+    },
+    {
+      "name": "factor_permutation_prefix_reflect",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0006"
+    },
+    {
+      "name": "factor_permutation_all_prime_entry",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0007"
+    },
+    {
+      "name": "factor_permutation_product_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0008"
+    },
+    {
+      "name": "factor_permutation_cancel_last",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0009"
+    },
+    {
+      "name": "factor_permutation_successor_decompose",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF000A"
+    },
+    {
+      "name": "factor_permutation_unit_length_zero",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF000B"
+    },
+    {
+      "name": "factor_permutation_prime_member",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF000C"
+    },
+    {
+      "name": "factor_permutation_empty_matching",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF000D"
+    },
+    {
+      "name": "factor_permutation_index_extend",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF000E"
+    },
+    {
+      "name": "factor_permutation_matching_append",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF000F"
+    },
+    {
+      "name": "factor_permutation_matched_append",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0010"
+    },
+    {
+      "name": "factor_permutation_matched_append_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0011"
+    },
+    {
+      "name": "factor_permutation_swap_reflect_unchanged",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0012"
+    },
+    {
+      "name": "factor_permutation_swap_bijection",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0013"
+    },
+    {
+      "name": "factor_permutation_swap_all_prime",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0014"
+    },
+    {
+      "name": "factor_permutation_swap_factorization",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0015"
+    },
+    {
+      "name": "factor_permutation_swapped_factorization_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0016"
+    },
+    {
+      "name": "factor_permutation_matching_unswap",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0017"
+    },
+    {
+      "name": "factor_permutation_matched_unswap_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0018"
+    },
+    {
+      "name": "prime_factor_lists_matching_by_length",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF0019"
+    },
+    {
+      "name": "prime_factor_lists_permutation_exists",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF001A"
+    },
+    {
+      "name": "prime_factorization_exists_unique_up_to_permutation",
+      "recorded_authority": {
+        "admitted_to_alpha": true,
+        "admitted_to_stable": false,
+        "alpha_checked_use": true,
+        "alpha_evidence": "alpha_closed",
+        "checked_use": true,
+        "enrolled_in_alpha": true,
+        "stable_member": false
+      },
+      "recorded_first_version": "v28",
+      "tag": "AF001B"
+    }
+  ],
+  "policy": "preserve_recorded_first_admission_without_inferring_it_from_current_or_proof_editions",
+  "schema": "peano-lab-historical-first-admission-v1",
+  "source_corpus": {
+    "bytes": 921932,
+    "path": "book/_static/constructive-lower-layer-explorer-v30/arithmetic-foundations/api/corpus.json",
+    "sha256": "037d0deead674e444650b1e8d1fd165d2b088f789d83a1b24239d305bd3930ca"
+  },
+  "source_corpus_fields": {
+    "alpha_first_enrolled_version": "v28",
+    "alpha_first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+  },
+  "source_family_fields": {},
+  "source_manifest": {
+    "bytes": 98859,
+    "path": "book/_static/constructive-lower-layer-explorer-v30/manifest.json",
+    "sha256": "6a40a3ec03840ad8ae73a6a29b594bd04d666a2aeb251a5f07fbfff2fd85bda2"
+  },
+  "source_manifest_fields": {
+    "alpha_first_enrolled_version": "v28",
+    "first_enrollment_catalog_sha256": "897410581b66552c7f01f4b1266de887e52b3198b1ff2d2ac5135ab694d467e9"
+  }
+}

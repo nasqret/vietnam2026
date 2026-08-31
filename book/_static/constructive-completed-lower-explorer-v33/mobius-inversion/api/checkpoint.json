@@ -1,0 +1,132 @@
+{
+  "bundle": {
+    "body_proof_nodes": 40028,
+    "bytes": 6488786,
+    "dependency_edges_including_packaging": 1579,
+    "independent_lean_checked": true,
+    "kernel_calls": 531,
+    "nodes_including_packaging_root": 531,
+    "original_ha_checked": true,
+    "packaging_root_id": 530,
+    "path": "research/arithmetic-library/artifacts/mobius-inversion-proof-bundle-v1.json",
+    "sha256": "22e7e61d5d4567df695d67830b465664fbe5a070f0367196e5cfd542ccba5b75"
+  },
+  "new_theorem_count": 8,
+  "owned_node_ids": {
+    "arithmetic_divisor_convolution_transform": 523,
+    "arithmetic_divisor_transform_convolution": 522,
+    "mobius_constant_one_convolution_delta": 524,
+    "mobius_dirichlet_inversion_value": 525,
+    "mobius_inversion_arithmetic_tables": 527,
+    "mobius_inversion_for_actual_mobius_table": 526,
+    "mobius_inversion_iff": 529,
+    "mobius_inversion_reconstructs_divisor_transform": 528
+  },
+  "principal_roots": [
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "mobius_inversion_for_actual_mobius_table",
+      "node_id": 526,
+      "ordinary_certificate_nodes": 55381,
+      "statement_sha256": "c69a34ea1a32d3d1188c00a95754507739ed77b953a355e2ffccf0ad69e21dab"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "mobius_inversion_arithmetic_tables",
+      "node_id": 527,
+      "ordinary_certificate_nodes": 56221,
+      "statement_sha256": "a0cacd2561b809b9cd7e9909fd37cbbcd7a60f086560bf1bd5a2fecad5c978b9"
+    },
+    {
+      "complete_ordinary_ha_checked": true,
+      "name": "mobius_inversion_iff",
+      "node_id": 529,
+      "ordinary_certificate_nodes": 55727,
+      "statement_sha256": "c98dbac33cefe8835eb9c023fd942e6fcb998e7bb8ca0607989b462724a8cad1"
+    }
+  ],
+  "rows": [
+    {
+      "name": "arithmetic_divisor_transform_convolution",
+      "node_id": 522,
+      "proof_depth": 29,
+      "proof_edges": 45,
+      "proof_nodes": 46,
+      "proof_objects": 46,
+      "reused_objects": 0,
+      "statement_sha256": "1a1351a2192050706a610c087073608db1607e6a95211c455f4c8c96b788face"
+    },
+    {
+      "name": "arithmetic_divisor_convolution_transform",
+      "node_id": 523,
+      "proof_depth": 24,
+      "proof_edges": 40,
+      "proof_nodes": 41,
+      "proof_objects": 41,
+      "reused_objects": 0,
+      "statement_sha256": "cc0fac1007dfddd037c1bb6d520900e5b9f78eec48d064ad9947588d5890dc88"
+    },
+    {
+      "name": "mobius_constant_one_convolution_delta",
+      "node_id": 524,
+      "proof_depth": 32,
+      "proof_edges": 89,
+      "proof_nodes": 90,
+      "proof_objects": 90,
+      "reused_objects": 0,
+      "statement_sha256": "80179388561a414b176711cc9c2f1d5547bd30a628ea4628e77cdb3333c99d9e"
+    },
+    {
+      "name": "mobius_dirichlet_inversion_value",
+      "node_id": 525,
+      "proof_depth": 40,
+      "proof_edges": 91,
+      "proof_nodes": 92,
+      "proof_objects": 92,
+      "reused_objects": 0,
+      "statement_sha256": "d0939137bcaad092eca200d68eba1e4c44602c41c31bc854983f7594c632b0da"
+    },
+    {
+      "name": "mobius_inversion_for_actual_mobius_table",
+      "node_id": 526,
+      "proof_depth": 46,
+      "proof_edges": 115,
+      "proof_nodes": 116,
+      "proof_objects": 116,
+      "reused_objects": 0,
+      "statement_sha256": "c69a34ea1a32d3d1188c00a95754507739ed77b953a355e2ffccf0ad69e21dab"
+    },
+    {
+      "name": "mobius_inversion_arithmetic_tables",
+      "node_id": 527,
+      "proof_depth": 28,
+      "proof_edges": 45,
+      "proof_nodes": 46,
+      "proof_objects": 46,
+      "reused_objects": 0,
+      "statement_sha256": "a0cacd2561b809b9cd7e9909fd37cbbcd7a60f086560bf1bd5a2fecad5c978b9"
+    },
+    {
+      "name": "mobius_inversion_reconstructs_divisor_transform",
+      "node_id": 528,
+      "proof_depth": 45,
+      "proof_edges": 215,
+      "proof_nodes": 216,
+      "proof_objects": 216,
+      "reused_objects": 0,
+      "statement_sha256": "6cb49be33af24bbb85373f81287581f2ae0492116acd5163300ab049ed7c533b"
+    },
+    {
+      "name": "mobius_inversion_iff",
+      "node_id": 529,
+      "proof_depth": 24,
+      "proof_edges": 61,
+      "proof_nodes": 62,
+      "proof_objects": 62,
+      "reused_objects": 0,
+      "statement_sha256": "c98dbac33cefe8835eb9c023fd942e6fcb998e7bb8ca0607989b462724a8cad1"
+    }
+  ],
+  "slug": "mobius-inversion",
+  "specs_sha256": "4c40808fd2d52ae3feee2f9ab24039f2ae66aa584327c11f8bb2251cab77ef29"
+}
